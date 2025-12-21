@@ -42,26 +42,41 @@ export const useProductDetails = (
       setNotFound(false);
 
       try {
-        const response = await fetch(
-          `/react_phone-catalog/api/${category}.json`,
-        );
-        const data: ProductDetails[] = await response.json();
+        const [detailsRes, productsRes] = await Promise.all([
+          fetch(`/react_phone-catalog/api/${category}.json`),
+          fetch(`/react_phone-catalog/api/products.json`),
+        ]);
 
-        const found = data.find(
+        const detailsData: ProductDetails[] = await detailsRes.json();
+        const productsData: { id: number; itemId: string }[] =
+          await productsRes.json();
+
+        const found = detailsData.find(
           p =>
             p.namespaceId === productId ||
             normalizeForUrlPart(p.id) === productId,
         );
 
-        if (found) {
-          cache.current.set(cacheKey, found);
-          setProduct(found);
-          setNotFound(false);
-        } else {
+        if (!found) {
           setProduct(null);
           setNotFound(true);
+
+          return;
         }
-      } catch {
+
+        const matchedProduct = productsData.find(
+          p => p.itemId === found.namespaceId,
+        );
+
+        const enrichedProduct: ProductDetails = {
+          ...found,
+          databaseId: matchedProduct?.id,
+        };
+
+        cache.current.set(cacheKey, enrichedProduct);
+        setProduct(enrichedProduct);
+        setNotFound(false);
+      } catch (e) {
         setError(true);
         setProduct(null);
       } finally {
