@@ -1,6 +1,7 @@
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { ProductCardShared } from '../HomePage/ProductCardShared';
+import { useEffect } from 'react';
 import styles from './ProductSpec.module.scss';
 
 type Props = {
@@ -62,6 +63,17 @@ export const ProductSpec: React.FC<Props> = ({
     image: product.images[0],
     type: product.category,
   };
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('currentProductDetails', JSON.stringify(product));
+
+      localStorage.setItem(
+        'currentAdaptedProduct',
+        JSON.stringify(adaptedProduct),
+      );
+    } catch (error) {}
+  }, [product, activeIndex, activeCapacityIndex]);
 
   return (
     <div className={styles.spec}>
