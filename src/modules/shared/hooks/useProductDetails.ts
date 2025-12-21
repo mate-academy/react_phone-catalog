@@ -12,7 +12,8 @@ export const useProductDetails = (
 
   const cache = useRef<Map<string, ProductDetails>>(new Map());
 
-  const normalizeForUrlPart = (str: string) =>
+  // normalize strings to compare safely
+  const normalizeId = (str: string) =>
     str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export const useProductDetails = (
 
     const cacheKey = `${category}/${productId}`;
 
+    // return cached product if exists
     if (cache.current.has(cacheKey)) {
       setProduct(cache.current.get(cacheKey)!);
       setLoading(false);
@@ -42,6 +44,7 @@ export const useProductDetails = (
       setNotFound(false);
 
       try {
+        // fetch both datasets in parallel
         const [detailsRes, productsRes] = await Promise.all([
           fetch(`/react_phone-catalog/api/${category}.json`),
           fetch(`/react_phone-catalog/api/products.json`),
@@ -51,10 +54,11 @@ export const useProductDetails = (
         const productsData: { id: number; itemId: string }[] =
           await productsRes.json();
 
+        // find ProductDetails by namespaceId or normalized id
         const found = detailsData.find(
           p =>
             p.namespaceId === productId ||
-            normalizeForUrlPart(p.id) === productId,
+            normalizeId(p.id) === normalizeId(productId),
         );
 
         if (!found) {
@@ -64,12 +68,19 @@ export const useProductDetails = (
           return;
         }
 
-        const matchedProduct = productsData.find(p => p.itemId === found.id);
+        // match with products.json by normalized itemId
+        const matchedProduct = productsData.find(
+          p => normalizeId(p.itemId) === normalizeId(found.id),
+        );
 
-        found.databaseId = matchedProduct?.id ?? -1;
+        const enrichedProduct: ProductDetails = {
+          ...found,
+          databaseId: matchedProduct?.id ?? -1,
+        };
 
-        cache.current.set(cacheKey, found);
-        setProduct(found);
+        // cache & set state
+        cache.current.set(cacheKey, enrichedProduct);
+        setProduct(enrichedProduct);
         setNotFound(false);
       } catch (e) {
         setError(true);
