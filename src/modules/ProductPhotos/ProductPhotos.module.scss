@@ -30,15 +30,11 @@
 
   @include respond-to(tablet) {
     margin-right: 17px;
-    width: 273px;
-    height: 273px;
   }
 
   @include respond-to(phone) {
     margin-right: 0;
-    width: 273px;
-    height: 273px;
-     order: 1;
+    order: 1;
   }
 }
 
@@ -46,6 +42,11 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+
+  @include respond-to(phone) {
+    height: 273px;
+    width: 273px;
+  }
 }
 
 .photos_slide {
@@ -65,7 +66,6 @@
 
   @include respond-to(phone) {
     flex-direction: row;
-    gap: 8px;
     justify-content: center;
     margin-top: 16px;
   }
