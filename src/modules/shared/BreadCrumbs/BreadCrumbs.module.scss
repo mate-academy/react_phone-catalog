@@ -19,8 +19,6 @@
 .breadcrumbs_item {
   @include nav-responsive;
 
-  white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 

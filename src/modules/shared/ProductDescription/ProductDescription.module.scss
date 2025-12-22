@@ -19,20 +19,15 @@
 
 .description_about {
   flex: 2;
-  margin-right: 0;
+  margin-right: 64px;
 
-  @include respond-to(desktop) {
-    margin-right: 64px;
+  @include respond-to(phone) {
+    margin-right: 0;
   }
 }
 
 .description_content {
   width: 100%;
-  max-width: 560px;
-
-  @include respond-to(phone) {
-    margin: 0 auto;
-  }
 }
 
 .section_title {
@@ -66,7 +61,6 @@
   height: 1px;
   background-color: $gray-elements;
   width: 100%;
-  max-width: 560px;
 }
 
 .description__specs dl {
