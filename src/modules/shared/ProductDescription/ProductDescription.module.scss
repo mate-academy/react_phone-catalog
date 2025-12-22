@@ -19,14 +19,14 @@
 
 .description_about {
   flex: 2;
-  margin-right: 64px;
+  margin-right: 0;
 
-  @include respond-to(phone) {
-    margin-right: 0;
+  @include respond-to(desktop) {
+    margin-right: 64px;
   }
 
-  @include respond-to(tablet) {
-    margin-right: 0;
+  @include respond-to(wide) {
+    margin-right: 64px;
   }
 }
 
