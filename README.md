@@ -42,6 +42,9 @@ All data is currently static, but the project is structured for **easy backend i
 - Supports adding checkout flows  
 - Can be extended with **Redux / Context API** if needed  
 
+## 🔗 Demo
+https://mishadoloh.github.io/react_phone-catalog/
+
 ---
 
 ## 🚀 Getting Started
