@@ -64,7 +64,6 @@
 
   @include respond-to(phone) {
     flex-direction: row;
-    gap: 8px;
     justify-content: center;
     margin-top: 16px;
   }

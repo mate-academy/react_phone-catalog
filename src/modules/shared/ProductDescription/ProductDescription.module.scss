@@ -5,11 +5,26 @@
   display: flex;
   flex-direction: row;
   margin-top: 80px;
+
+  @include respond-to(phone) {
+    flex-direction: column;
+    margin-top: 56px;
+  }
+
+  @include respond-to(tablet) {
+    flex-direction: column;
+    margin-top: 64px;
+  }
 }
 
 .description_about {
   flex: 2;
-  margin-right: 64px;
+  margin-right: 0;
+
+  @include respond-to(desktop) {
+    margin-right: 64px;
+  }
+
 }
 
 .section_title {
