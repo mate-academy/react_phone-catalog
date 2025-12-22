@@ -73,6 +73,10 @@
   gap: 8px 20px;
 
   @include body-text;
+
+  @include respond-to(phone) {
+    gap: 8px;
+  }
 }
 
 .description__specs dt {
@@ -81,10 +85,5 @@
 
 .description__specs dd {
   text-align: right;
-  white-space: nowrap;
-
-  @include respond-to(phone) {
-    text-align: left;
-    white-space: wrap;
-  }
+  margin-left: 0;
 }
