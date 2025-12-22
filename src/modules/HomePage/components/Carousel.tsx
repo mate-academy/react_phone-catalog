@@ -104,7 +104,11 @@ export const Carousel: React.FC = () => {
           <img src="img/arrow-right.svg" alt="Next" />
         </button>
       </div>
-      <CarouselIndicator activeIndex={activeIndex} />
+      <CarouselIndicator
+        activeIndex={activeIndex}
+        numberOfSlides={slides.length}
+        setActiveIndex={setActiveIndex}
+      />
     </section>
   );
 };

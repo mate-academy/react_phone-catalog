@@ -43,11 +43,11 @@ export const CatalogPage: React.FC = () => {
   const formatTitle = (param: string | undefined): string => {
     switch (param) {
       case 'phones':
-        return 'Phones';
+        return 'Phones page';
       case 'tablets':
-        return 'Tablets';
+        return 'Tablets page';
       case 'accessories':
-        return 'Accessories';
+        return 'Accessories page';
       default:
         return param
           ? param
@@ -168,7 +168,6 @@ export const CatalogPage: React.FC = () => {
       params.delete('perPage');
     } else if (value === DEFAULT_PER_PAGE.toString()) {
       // Якщо це дефолтне значення (наприклад, "16"), можна не показувати в URL
-      // (або приберіть цю умову, якщо хочете бачити ?perPage=16 завжди)
       params.delete('perPage');
     } else {
       // Тут обробляється і "4", і "8", і "all"
@@ -196,7 +195,7 @@ export const CatalogPage: React.FC = () => {
 
   let filteredProducts = products;
 
-  if (category) {
+  if (category  ) {
     const normalized = category.toLowerCase();
     filteredProducts = products.filter(
       product => product.category.toLowerCase() === normalized,

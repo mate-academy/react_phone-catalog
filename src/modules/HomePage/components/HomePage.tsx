@@ -43,6 +43,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
       <PageHeader
         title="Welcome to Nice Gadgets store!"
         showBreadCrumbs={false}

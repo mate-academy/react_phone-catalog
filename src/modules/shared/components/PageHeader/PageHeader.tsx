@@ -30,8 +30,11 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       {extraContent && (
         <div className={styles.extraContentWrapper}>{extraContent}</div>
       )}
-
-      <h1 className={styles.pageTitle}>{title}</h1>
+      {variant === 'homePage' ? (
+        <h1 className={styles.pageTitle}>{title}</h1>
+      ) : (
+        <h2 className={styles.pageTitle}>{title}</h2>
+      )}
     </div>
   );
 };
