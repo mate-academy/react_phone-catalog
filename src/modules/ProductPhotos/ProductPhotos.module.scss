@@ -21,6 +21,7 @@
   height: 442px;
   margin-right: 64px;
   align-items: center;
+  justify-content: center;
 
   -webkit-overflow-scrolling: touch;
 
@@ -29,10 +30,14 @@
   }
 
   @include respond-to(tablet) {
+    width: 273px;
+    height: 273px;
     margin-right: 17px;
   }
 
   @include respond-to(phone) {
+    width: 273px;
+    height: 273px;
     margin-right: 0;
     order: 1;
   }
@@ -42,11 +47,6 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-
-  @include respond-to(phone) {
-    height: 273px;
-    width: 273px;
-  }
 }
 
 .photos_slide {
