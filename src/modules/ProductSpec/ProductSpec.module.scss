@@ -1,6 +1,18 @@
 @use '../../styles/variables.scss' as *;
 @use '../../styles/mixins.scss' as *;
 
+.spec {
+  width: 320px;
+
+  @include respond-to(tablet) {
+    width: 237px;
+  }
+
+   @include respond-to(tablet) {
+    width: 288px;
+  }
+}
+
 .spec_colors_container {
   @include grid-for-rows;
 }
