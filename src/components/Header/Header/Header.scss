@@ -1,7 +1,7 @@
 .header {
   width: 100%;
-  height: 64px;
-  border-bottom: 0.5px solid #89939a;
+  height: 56px;
+  border-bottom: 0.5px solid #E2E6E9;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -9,9 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   &__grid {
     display: flex;
-    align-items: center;
+
     gap: 24px;
     justify-content: space-between;
   }
@@ -51,7 +52,9 @@
 
   &__sections {
     margin-left: 25px;
+    height: 100%;
     display: flex;
+    align-items: center;
     gap: 32px;
 
     @media (max-width: 639px) {
@@ -60,6 +63,10 @@
   }
 
   &__section {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
     font-family: 'Mont-Bold';
     font-size: 12px;
     letter-spacing: 0.04em;
@@ -67,6 +74,16 @@
     color: #89939a;
     text-decoration: none;
     transition: color 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: transparent;
+    }
 
     &:hover {
       color: #313237;
@@ -76,15 +93,15 @@
   &__section--active {
     color: #313237;
     border-bottom: 2px solid #313237;
-    padding-bottom: 4px;
   }
-.header__icon,
-.header_cart {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+  .header__icon,
+  .header_cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &__icons {
     display: flex;
@@ -109,46 +126,47 @@
       align-items: center;
     }
   }
- &__iconLink {
-   display: flex;
-   align-items: flex-start;
-   justify-content: center;
 
-   width: 48px;
-   height: 64px;
+  &__iconLink {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 
-   padding-top: 18px;
-   text-decoration: none;
- }
+    width: 48px;
+    height: 64px;
 
- &__iconLink img {
-   width: 24px;
-   height: 24px;
-   display: block;
- }
+    padding-top: 18px;
+    text-decoration: none;
+  }
 
-    &__badge {
-      position: absolute;
-      top: 8px;
-      right: 6px;
+  &__iconLink img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
 
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+  &__badge {
+    position: absolute;
+    top: 8px;
+    right: 6px;
 
-      width: 16px;
-      height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-      background-color: #eb5757;
-      color: #fff;
+    width: 16px;
+    height: 16px;
 
-      font-size: 10px;
-      font-weight: 700;
-      line-height: 1;
+    background-color: #eb5757;
+    color: #fff;
 
-      border-radius: 50%;
-      pointer-events: none;
-    }
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+
+    border-radius: 50%;
+    pointer-events: none;
+  }
 }
 
 

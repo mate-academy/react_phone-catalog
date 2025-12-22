@@ -4,7 +4,7 @@ import { ProductBase } from '../types/ProductBase';
 interface FavouritesContextType {
   items: ProductBase[];
   toggle: (product: ProductBase) => void;
-  isFavourite: (id: number) => boolean;
+  isFavourite: (id: string) => boolean;
   count: number;
 }
 
@@ -37,15 +37,16 @@ export const FavouritesProvider = ({
   /** ✅ TOGGLE ПРАЦЮЄ ПО product.id */
   const toggle = (product: ProductBase) => {
     setItems(prev =>
-      prev.some(p => p.id === product.id)
-        ? prev.filter(p => p.id !== product.id)
+      prev.some(p => p.favouriteKey === product.favouriteKey)
+        ? prev.filter(p => p.favouriteKey !== product.favouriteKey)
         : [...prev, product],
     );
   };
 
 
-  const isFavourite = (id: number) =>
-    items.some(p => p.id === id);
+
+  const isFavourite = (key: string) =>
+    items.some(p => p.favouriteKey === key);
 
   return (
     <FavouritesContext.Provider

@@ -16,7 +16,8 @@ export const ProductCard: React.FC<Props> = ({
   const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggle, isFavourite } = useFavourites();
 
-  const cartKey = String(product.id);
+  const cartKey = product.favouriteKey;
+
 
   const cartProduct = {
     id: String(product.id),
@@ -28,81 +29,83 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <div className="card">
-      <Link
-        to={`/${product.category}/${product.itemId}`}
-        className="card__link-wrapper"
-      >
-        <img
-          src={`${product.image}`}
-          alt={product.name}
-          className="card__image"
-        />
-        <h3 className="card__name">{product.name}</h3>
-      </Link>
-
-      <div className="card__price">
-        <span className="card__price-new">${product.price}</span>
-
-        {isDiscounted && product.fullPrice > product.price && (
-          <span className="card__price-old">${product.fullPrice}</span>
-        )}
-      </div>
-
-      <div className="card__chars">
-        <div className="card__char-item">
-          <span className="card__char-name">Screen</span>
-          <span className="card__char-value">{product.screen}</span>
-        </div>
-
-        <div className="card__char-item">
-          <span className="card__char-name">Capacity</span>
-          <span className="card__char-value">{product.capacity}</span>
-        </div>
-
-        <div className="card__char-item">
-          <span className="card__char-name">RAM</span>
-          <span className="card__char-value">{product.ram}</span>
-        </div>
-      </div>
-
-      <div className="card__actions" onClick={e => e.stopPropagation()}>
-        <button
-          className={`card__add-to-cart-button ${isInCart(cartKey) ? "added" : ""}`}
-          onClick={(e) => {
-            e.stopPropagation();
-
-            if (isInCart(cartKey)) {
-              removeFromCart(cartKey);
-            } else {
-              addToCart(cartProduct);
-            }
-          }}
+    <div className="container">
+      <div className="card">
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className="card__link-wrapper"
         >
-          {isInCart(cartKey) ? "Added to cart" : "Add to cart"}
-        </button>
+          <img
+            src={`${product.image}`}
+            alt={product.name}
+            className="card__image"
+          />
+          <h3 className="card__name">{product.name}</h3>
+        </Link>
 
+        <div className="card__price">
+          <span className="card__price-new">${product.price}</span>
 
-        <button
-          className={`card__favourites-button ${isFavourite(product.id) ? 'is-active' : ''
-            }`}
-          onClick={e => {
-            e.stopPropagation();
-            toggle(product);
-          }}
-        >
-          <span className="icon icon--favourite">
-            <img
-              src={
-                isFavourite(product.id)
-                  ? 'img/favourite_checked.png'
-                  : 'img/favourite_default.png'
+          {isDiscounted && product.fullPrice > product.price && (
+            <span className="card__price-old">${product.fullPrice}</span>
+          )}
+        </div>
+
+        <div className="card__chars">
+          <div className="card__char-item">
+            <span className="card__char-name">Screen</span>
+            <span className="card__char-value">{product.screen}</span>
+          </div>
+
+          <div className="card__char-item">
+            <span className="card__char-name">Capacity</span>
+            <span className="card__char-value">{product.capacity}</span>
+          </div>
+
+          <div className="card__char-item">
+            <span className="card__char-name">RAM</span>
+            <span className="card__char-value">{product.ram}</span>
+          </div>
+        </div>
+
+        <div className="card__actions" onClick={e => e.stopPropagation()}>
+          <button
+            className={`card__add-to-cart-button ${isInCart(cartKey) ? "added" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+
+              if (isInCart(cartKey)) {
+                removeFromCart(cartKey);
+              } else {
+                addToCart(cartProduct);
               }
-              alt="Favourite"
-              className="icon__img"
-            />
-          </span>
-        </button>
+            }}
+          >
+            {isInCart(cartKey) ? "Added to cart" : "Add to cart"}
+          </button>
+
+
+          <button
+            className={`card__favourites-button ${isFavourite(product.favouriteKey) ? 'is-active' : ''
+              }`}
+            onClick={e => {
+              e.stopPropagation();
+              toggle(product);
+            }}
+          >
+            <span className="icon icon--favourite">
+              <img
+                src={
+                  isFavourite(product.favouriteKey)
+                    ? 'img/favourite_checked.png'
+                    : 'img/favourite_default.png'
+                }
+                alt="Favourite"
+                className="icon__img"
+              />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

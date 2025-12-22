@@ -10,4 +10,6 @@ export interface ProductBase {
   ram: string;
   fullPrice: number;
   itemId: string;
+  favouriteKey: string;
+  color:string | undefined;
 }

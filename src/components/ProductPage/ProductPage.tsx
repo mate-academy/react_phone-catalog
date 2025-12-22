@@ -78,7 +78,13 @@ export const ProductPage = () => {
   const { addToCart, removeFromCart, isInCart } = useCart();
 
 
-  const productBase: ProductBase = mapToProductBase(product);
+
+  const favouriteKey = `${product.id}-${product.capacity}-${product.color}`;
+
+  const productBase: ProductBase = {
+    ...mapToProductBase(product),
+    favouriteKey,
+  };
 
   const cartKey = `${product.id}-${product.capacity}-${product.color}`;
   const cartProduct = {
@@ -189,12 +195,13 @@ export const ProductPage = () => {
 
 
               <button
-                className={`productPage__favourites-button ${isFavourite(productBase.id) ? 'is-active' : ''
+                className={`productPage__favourites-button ${isFavourite(favouriteKey) ? 'is-active' : ''
                   }`}
                 onClick={() => toggle(productBase)}
               >
                 <span className="icon icon--favourite" />
               </button>
+
 
             </div>
 

@@ -1,6 +1,6 @@
-import { PhoneFull } from '../types/PhoneFull';
-import { PhoneShort } from '../types/PhoneShort';
-import { ProductBase } from '../types/ProductBase';
+import { PhoneFull } from "../types/PhoneFull";
+import { PhoneShort } from "../types/PhoneShort";
+import { ProductBase } from "../types/ProductBase";
 
 export function mapToProductBase(product: PhoneFull | PhoneShort): ProductBase {
   return {
@@ -18,5 +18,8 @@ export function mapToProductBase(product: PhoneFull | PhoneShort): ProductBase {
     screen: product.screen,
     capacity: product.capacity,
     ram: product.ram,
+    color: 'color' in product ? product.color : undefined,
+
+    favouriteKey: `${product.id}-${product.capacity}-${'color' in product ? product.color : ''}`,
   };
 }
