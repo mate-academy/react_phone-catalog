@@ -8,7 +8,7 @@
 
   @include respond-to(phone) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
@@ -63,8 +63,8 @@
 
   @include respond-to(phone) {
     flex-direction: row;
-    gap: 8px; 
-    justify-content: flex-start;
+    gap: 8px;
+    justify-content: center;
     margin-top: 16px;
   }
 }
@@ -84,7 +84,6 @@
   width: 80px;
   height: 80px;
   border: 1px solid $gray-elements;
-  padding: 8px;
   background: $background;
   display: flex;
   align-items: center;
