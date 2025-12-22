@@ -1,1 +1,0 @@
-export { PhoneCatalog } from './PhoneCatalog';

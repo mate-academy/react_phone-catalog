@@ -1,1 +1,0 @@
-export { DescriptionAndSpecifications } from './DescriptionAndSpecifications';

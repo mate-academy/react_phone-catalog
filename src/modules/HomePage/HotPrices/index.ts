@@ -1,1 +1,0 @@
-export { HotPrices } from './HotPrices';

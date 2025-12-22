@@ -1,0 +1,160 @@
+.header {
+  width: 100%;
+  height: 64px;
+  border-bottom: 0.5px solid #89939a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__grid {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    grid-column: span 18;
+
+    @media (max-width: 1199px) {
+      grid-column: span 8;
+    }
+
+    @media (max-width: 639px) {
+      grid-column: span 2;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    grid-column: span 6;
+
+    @media (max-width: 1199px) {
+      grid-column: span 4;
+    }
+
+    @media (max-width: 639px) {
+      grid-column: span 2;
+    }
+  }
+
+  &__sections {
+    margin-left: 25px;
+    display: flex;
+    gap: 32px;
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &__section {
+    font-family: 'Mont-Bold';
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939a;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__section--active {
+    color: #313237;
+    border-bottom: 2px solid #313237;
+    padding-bottom: 4px;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__cart {
+    border-left: 1px solid #313237;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+
+    @media (max-width: 639px) {
+      display: flex;
+      width: 48px;
+      height: 48px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &__iconLink {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 48px;
+    height: 64px;
+
+    padding-top: 18px;
+    text-decoration: none;
+  }
+
+  &__iconLink img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+
+    margin-left: -6px;
+    margin-top: -6px;
+
+    background-color: #eb5757;
+    color: #fff;
+
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+.header img {
+  transition: transform 0.3s ease;
+}
+
+.header img:hover {
+  transform: scale(1.1);
+}
+
+.header__heart {
+  border: none;
+}

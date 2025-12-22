@@ -1,11 +1,10 @@
 import { createRoot } from 'react-dom/client';
-import { Root } from './Mixins/Root';
-import { MyProvider } from './Context/ProductContexts';
+import { HashRouter as Router } from 'react-router-dom';
+import { App } from './App';
+import './fonts.scss';
 
-const rootElement = document.getElementById('root') as HTMLElement;
-
-createRoot(rootElement).render(
-  <MyProvider>
-    <Root />
-  </MyProvider>,
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <Router>
+    <App />
+  </Router>,
 );
