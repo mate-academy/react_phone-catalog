@@ -1,13 +1,13 @@
 @use './styles/mixins.scss' as *;
 
 body {
+  margin: 0;
   background-color: #0f1121;
   scroll-behavior: smooth;
 }
 
 html {
   height: 100%;
-  overflow-y: auto;
 }
 
 .App {
