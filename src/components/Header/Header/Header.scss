@@ -78,14 +78,13 @@
     border-bottom: 2px solid #313237;
     padding-bottom: 4px;
   }
-  &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &__cart {
-    border-left: 1px solid #313237;
-  }
+.header__icon,
+.header_cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
   &__icons {
     display: flex;
@@ -129,15 +128,16 @@
  }
 
     &__badge {
+      position: absolute;
+      top: 8px;
+      right: 6px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
       width: 16px;
       height: 16px;
-
-      margin-left: -6px;
-      margin-top: -6px;
 
       background-color: #eb5757;
       color: #fff;
