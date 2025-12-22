@@ -80,9 +80,9 @@ export const ProductPage = () => {
 
   const productBase: ProductBase = mapToProductBase(product);
 
-  const cartKey = String(productBase.id);
+  const cartKey = `${product.id}-${product.capacity}-${product.color}`;
   const cartProduct = {
-    id: String(productBase.id),
+    id: cartKey,
     name: productBase.name,
     price: productBase.price,
     priceDiscount:
