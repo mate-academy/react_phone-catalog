@@ -5,4 +5,6 @@ export interface CartProduct {
   priceDiscount?: number;
   images: string[];
   category: string;
+  capacity: string;
+  color: string;
 }

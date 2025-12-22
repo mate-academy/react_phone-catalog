@@ -96,6 +96,9 @@ export const ProductPage = () => {
         ? productBase.price
         : undefined,
     images: [productBase.image],
+    capacity: product.capacity,
+    color: product.color,
+    category: product.category, 
   };
   return (
     <div className="productPage" key={product.id}>

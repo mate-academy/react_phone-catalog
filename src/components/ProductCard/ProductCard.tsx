@@ -26,6 +26,9 @@ export const ProductCard: React.FC<Props> = ({
     priceDiscount:
       product.fullPrice > product.price ? product.price : undefined,
     images: [product.image],
+    category: product.category,
+    capacity: product.capacity,
+    color: product.color,
   };
   const favouriteKey = `${product.id}-${product.capacity ?? 'base'}-${product.color ?? 'base'}`;
 

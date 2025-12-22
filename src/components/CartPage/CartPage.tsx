@@ -63,7 +63,10 @@ export const CartPage = () => {
                     </div>
                   )}
 
-                  <div className="cartPage__itemInfo">{product.name}</div>
+                  <div className="cartPage__itemInfo">{product.name}
+                         <span>{product.capacity}</span>
+                    <span>•</span>
+                    <span>{product.color}</span></div>
 
                   <div className="cartPage__itemQuantity">
                     <button
