@@ -24,6 +24,10 @@
   @include respond-to(phone) {
     margin-right: 0;
   }
+
+  @include respond-to(tablet) {
+    margin-right: 0;
+  }
 }
 
 .description_content {
