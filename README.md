@@ -6,7 +6,7 @@ All data is currently static, but the project is structured for **easy backend i
 
 ---
 
-## 🌟 Key Features
+##  Key Features
 
 - **Category Pages:** Phones, Tablets, Accessories  
 - **Favorites Page:** Mark products as favorites  
@@ -19,7 +19,7 @@ All data is currently static, but the project is structured for **easy backend i
 
 ---
 
-## 🛠 Tech Stack & Skills Demonstrated
+##  Tech Stack & Skills Demonstrated
 
 **Frontend & Styling:**  
 - React (Functional Components + Hooks)  
@@ -42,12 +42,12 @@ All data is currently static, but the project is structured for **easy backend i
 - Supports adding checkout flows  
 - Can be extended with **Redux / Context API** if needed  
 
-## 🔗 Demo
+##  Demo
 https://mishadoloh.github.io/react_phone-catalog/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 1. **Clone the repository:**
 ```bash
