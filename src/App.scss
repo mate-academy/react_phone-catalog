@@ -28,7 +28,6 @@ html {
 .container {
   margin-inline: auto;
   padding-inline: 16px;
-  max-width: 1440px;
 
   @include respond-to(tablet) {
     padding-inline: 24px;
@@ -37,7 +36,7 @@ html {
   @include respond-to(desktop) {
     padding-inline: 32px;
   }
-  
+
   @include respond-to(wide) {
     padding-inline: 152px;
   }

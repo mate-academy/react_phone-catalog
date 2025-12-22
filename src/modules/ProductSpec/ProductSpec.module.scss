@@ -2,7 +2,15 @@
 @use '../../styles/mixins.scss' as *;
 
 .spec {
-  margin-right: 0;
+  width: 100%;
+
+  @include respond-to(desktop) {
+    width: 320px;
+  }
+
+  @include respond-to(wide) {
+    width: 320px;
+  }
 }
 
 .spec_colors_container {
