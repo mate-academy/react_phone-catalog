@@ -20,6 +20,7 @@
   width: 442px;
   height: 442px;
   margin-right: 64px;
+  align-items: center;
 
   -webkit-overflow-scrolling: touch;
 
@@ -37,6 +38,7 @@
     margin-right: 0;
     width: 273px;
     height: 273px;
+     order: 1;
   }
 }
 
