@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './CartPage.scss';
 
@@ -57,16 +57,23 @@ export const CartPage = () => {
                     <img src="img/Union.png" alt="remove" />
                   </button>
 
-                  {image && (
-                    <div className="cartPage__itemImage">
-                      <img src={`${image}`} alt={product.name} />
-                    </div>
-                  )}
+                  <Link
+                    to={`/${product.category}/${product.itemId}`}
+                    className="cartPage__itemLink"
+                  >
+                    {image && (
+                      <div className="cartPage__itemImage">
+                        <img src={image} alt={product.name} />
+                      </div>
+                    )}
 
-                  <div className="cartPage__itemInfo">{product.name}
-                         <span>{product.capacity}</span>
-                    <span>•</span>
-                    <span>{product.color}</span></div>
+                    <div className="cartPage__itemInfo">
+                      {product.name}
+                      <span> {product.capacity}</span>
+                      <span> • </span>
+                      <span>{product.color}</span>
+                    </div>
+                  </Link>
 
                   <div className="cartPage__itemQuantity">
                     <button

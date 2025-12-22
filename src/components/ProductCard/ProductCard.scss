@@ -23,10 +23,17 @@
     width: 208px;
     height: 208px;
     object-fit: contain;
-    margin: 0 auto 16px;
+    margin: 0;
     display: block;
   }
 
+        &__image-wrapper {
+          height: 208px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          margin-bottom: 16px;
+        }
 
   &__name {
     font-size: 14px;

@@ -37,17 +37,19 @@ export const ProductCard: React.FC<Props> = ({
     favouriteKey,
   };
   return (
-    <div className="container">
+
       <div className="card">
         <Link
           to={`/${product.category}/${product.itemId}`}
           className="card__link-wrapper"
         >
+          <div className="card__image-wrapper">
           <img
             src={`${product.image}`}
             alt={product.name}
             className="card__image"
           />
+          </div>
           <h3 className="card__name">{product.name}</h3>
         </Link>
 
@@ -116,6 +118,6 @@ export const ProductCard: React.FC<Props> = ({
 
         </div>
       </div>
-    </div>
+
   );
 };
