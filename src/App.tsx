@@ -5,6 +5,8 @@ import { Header } from './components/Header/Header';
 import { HomePage } from './components/Home/HomePage';
 import { Route, Routes } from 'react-router-dom';
 import { MobilePhones } from './components/MobilePhones/MobilePhones';
+import { PhonePage } from './components/PhonePage/PhonePage';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
 export const App = () => (
   <div className="App">
@@ -13,6 +15,9 @@ export const App = () => (
         <Routes>
           <Route path="/" element={<HomePage /> }/>
           <Route path="/phones" element={<MobilePhones />} />
+          <Route path="/phones/:phoneId" element={<PhonePage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 

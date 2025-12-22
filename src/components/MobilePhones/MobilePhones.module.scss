@@ -90,9 +90,7 @@
         }
       }
     }
-
   }
-
 
   &__products {
     display: flex;
@@ -107,6 +105,11 @@
       width: 272px;
       height: 506px;
       color: $main-text-color;
+
+      &__link {
+        text-decoration: none;
+        color: inherit;
+      }
 
       &__container {
         padding: 32px;

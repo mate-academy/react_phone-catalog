@@ -1,0 +1,45 @@
+.phone_page {
+  &__container {
+    padding-inline: 152px;
+    color: $main-text-color;
+  }
+
+  &__path {
+    display: flex;
+    gap: 8px;
+    height: 16px;
+    padding-top: 24px;
+    padding-bottom: 40px;
+    font-weight: 700;
+    font-size: 12px;
+
+    p {
+      margin: 0;
+    }
+
+    &__name {
+      margin: 0;
+      color: $secondary-text-color;
+    }
+  }
+
+  &__back {
+    cursor: pointer;
+    display: flex;
+    gap: 4px;
+    height: 16px;
+    padding-bottom: 16px;
+
+    &__icon {
+      width: 16px;
+      height: 16px;;
+    }
+
+    &__text {
+      margin: 0;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+}
