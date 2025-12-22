@@ -12,19 +12,9 @@
   height: 48px;
   z-index: 100;
   background-color: $background;
-  padding-inline: 16px;
 
   @include respond-to(desktop) {
     height: 64px;
-    padding-inline: 32px;
-  }
-
-  @include respond-to(tablet) {
-    padding-inline: 24px;
-  }
-
-  @include respond-to(wide) {
-    padding-inline: 152px;
   }
 
   &::after {

@@ -20,50 +20,46 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className="container">
-        <div className={styles.left}>
-          <Logo />
-          <div className={styles.navLinks}>
-            <HeaderNavItems />
-          </div>
+      <div className="container"></div>
+      <div className={styles.left}>
+        <Logo />
+        <div className={styles.navLinks}>
+          <HeaderNavItems />
         </div>
+      </div>
 
-        <nav className={styles.right}>
+      <nav className={styles.right}>
+        <FavoriteAndCart cartCount={totalQuantity} favCount={totalFavorites} />
+      </nav>
+
+      <div className={styles.burger_container}>
+        <button className={styles.burger_button} onClick={toggleBurger}>
+          <img src={burgerIcon} alt="burgerIcon" />
+        </button>
+      </div>
+
+      {isBurgerOpen && (
+        <div className={styles.burgerMenu}>
+          <div className={styles.burger_header}>
+            <Logo />
+            <button className={styles.close_button} onClick={toggleBurger}>
+              <img src={closeIcon} alt="closeIcon" />
+            </button>
+          </div>
+
+          <HeaderNavItems
+            className={styles.burgerNav}
+            onLinkClick={toggleBurger}
+          />
           <FavoriteAndCart
+            className={styles.burgerFavAndCartIcons}
+            isBurger={true}
+            onLinkClick={toggleBurger}
             cartCount={totalQuantity}
             favCount={totalFavorites}
           />
-        </nav>
-
-        <div className={styles.burger_container}>
-          <button className={styles.burger_button} onClick={toggleBurger}>
-            <img src={burgerIcon} alt="burgerIcon" />
-          </button>
         </div>
-
-        {isBurgerOpen && (
-          <div className={styles.burgerMenu}>
-            <div className={styles.burger_header}>
-              <Logo />
-              <button className={styles.close_button} onClick={toggleBurger}>
-                <img src={closeIcon} alt="closeIcon" />
-              </button>
-            </div>
-
-            <HeaderNavItems
-              className={styles.burgerNav}
-              onLinkClick={toggleBurger}
-            />
-            <FavoriteAndCart
-              className={styles.burgerFavAndCartIcons}
-              isBurger={true}
-              onLinkClick={toggleBurger}
-              cartCount={totalQuantity}
-              favCount={totalFavorites}
-            />
-          </div>
-        )}
-      </div>
+      )}
     </header>
   );
 };
