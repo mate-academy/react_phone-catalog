@@ -10,6 +10,7 @@ import styles from './ProductDetailsPage.module.scss';
 import { useProductDetails } from '../shared/hooks/useProductDetails';
 import { ProductDetails } from '../../types/ProductDetails';
 import { ProductDescription } from '../shared/ProductDescription';
+import { RandomProducts } from '../shared/RandomProducts';
 
 const normalizeForUrlPart = (str: string) =>
   str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
@@ -205,6 +206,7 @@ export const ProductDetailsPage = () => {
         />
       </div>
       <ProductDescription details={product} />
+      <RandomProducts />
     </div>
   );
 };

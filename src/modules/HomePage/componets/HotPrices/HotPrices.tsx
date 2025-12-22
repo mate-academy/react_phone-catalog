@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import styles from './HotPrices.module.scss';
 import { Product } from '../../../../types/Product';
 import { ProductsSlider } from '../ProductsSlider/ProductsSlider';
 

@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../../../contexts/CartContext';
-import {
-  useFavorites,
-  FavoriteItem,
-} from '../../../../contexts/FavoritesContext';
+import { useFavorites } from '../../../../contexts/FavoritesContext';
 import styles from './ProductCard.module.scss';
 import favIcon from '/icons/fav-icon.png';
 import favActIcon from '/icons/favorite-active-icon.png';
+import { Product } from '../../../../types/Product';
 
 type Props = {
-  product: FavoriteItem;
+  product: Product;
   showDiscount?: boolean;
 };
 
