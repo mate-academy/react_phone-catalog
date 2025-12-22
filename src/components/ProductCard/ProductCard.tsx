@@ -27,7 +27,12 @@ export const ProductCard: React.FC<Props> = ({
       product.fullPrice > product.price ? product.price : undefined,
     images: [product.image],
   };
+  const favouriteKey = `${product.id}-${product.capacity ?? 'base'}-${product.color ?? 'base'}`;
 
+  const productWithKey: ProductBase = {
+    ...product,
+    favouriteKey,
+  };
   return (
     <div className="container">
       <div className="card">
@@ -86,17 +91,17 @@ export const ProductCard: React.FC<Props> = ({
 
 
           <button
-            className={`card__favourites-button ${isFavourite(product.favouriteKey) ? 'is-active' : ''
+            className={`card__favourites-button ${isFavourite(favouriteKey) ? 'is-active' : ''
               }`}
             onClick={e => {
               e.stopPropagation();
-              toggle(product);
+              toggle(productWithKey);
             }}
           >
             <span className="icon icon--favourite">
               <img
                 src={
-                  isFavourite(product.favouriteKey)
+                  isFavourite(favouriteKey)
                     ? 'img/favourite_checked.png'
                     : 'img/favourite_default.png'
                 }
@@ -105,6 +110,7 @@ export const ProductCard: React.FC<Props> = ({
               />
             </span>
           </button>
+
         </div>
       </div>
     </div>
