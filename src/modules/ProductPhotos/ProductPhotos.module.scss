@@ -5,6 +5,11 @@
   display: flex;
   gap: 16px;
   align-items: center;
+
+  @include respond-to(phone) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .photos_main {
@@ -55,6 +60,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include respond-to(phone) {
+    flex-direction: row;
+    gap: 8px; 
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
 }
 
 .photos_previewBtn {
@@ -79,8 +91,8 @@
   justify-content: center;
 
   @include respond-to(tablet) {
-   width: 35px;
-  height: 35px;
+    width: 35px;
+    height: 35px;
   }
 
   @include respond-to(phone) {
