@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Product } from '../../../types/Product';
 import { useCart } from '../../../contexts/CartContext';
 import { useFavorites } from '../../../contexts/FavoritesContext';
@@ -11,10 +12,15 @@ type Props = {
   showDiscount?: boolean;
 };
 
+const normalizeForUrlPart = (str: string) =>
+  str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
+
 export const ProductCardShared: React.FC<Props> = ({
   product,
   showDiscount = false,
 }) => {
+  const navigate = useNavigate();
+
   const hasDiscount = product.fullPrice > product.price;
 
   const { cart, addToCart, removeFromCart, createCartItemId } = useCart();
@@ -23,6 +29,20 @@ export const ProductCardShared: React.FC<Props> = ({
 
   const { toggleFavorite, isFavorite } = useFavorites();
   const isFav = isFavorite(product);
+
+  const handleClickProduct = () => {
+    const productId = normalizeForUrlPart(product.itemId);
+
+    navigate(`/${product.category}/${productId}`, {
+      state: {
+        category: product.category,
+        name: product.name,
+        showDiscount,
+        color: product.color,
+        capacity: product.capacity,
+      },
+    });
+  };
 
   return (
     <>
@@ -36,7 +56,9 @@ export const ProductCardShared: React.FC<Props> = ({
       <div className={styles.card__actions}>
         <button
           type="button"
-          className={`${styles.card__addBtn} ${inCart ? styles.card__btn__disabled : ''}`}
+          className={`${styles.card__addBtn} ${
+            inCart ? styles.card__btn__disabled : ''
+          }`}
           onClick={() => {
             if (inCart) {
               removeFromCart(cartItemId);
@@ -50,8 +72,10 @@ export const ProductCardShared: React.FC<Props> = ({
 
         <button
           type="button"
-          className={`${styles.card__favBtn} ${isFav ? styles['card__favBtn--active'] : ''}`}
-          onClick={() => toggleFavorite(product)}
+          className={`${styles.card__favBtn} ${
+            isFav ? styles['card__favBtn--active'] : ''
+          }`}
+          onClick={() => toggleFavorite(product, showDiscount)}
         >
           <img
             src={isFav ? favActIcon : favIcon}
@@ -61,7 +85,12 @@ export const ProductCardShared: React.FC<Props> = ({
         </button>
       </div>
 
-      <div className={styles.card__specs}>
+      <div
+        className={styles.card__specs}
+        onClick={handleClickProduct}
+        role="button"
+        tabIndex={0}
+      >
         <dl>
           <dt>Screen</dt>
           <dd>{product.screen}</dd>
