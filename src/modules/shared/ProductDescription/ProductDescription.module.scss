@@ -73,10 +73,6 @@
   gap: 8px 20px;
 
   @include body-text;
-
-  @include respond-to(phone) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .description__specs dt {
@@ -89,6 +85,6 @@
 
   @include respond-to(phone) {
     text-align: left;
-    white-space: normal;
+    white-space: wrap;
   }
 }
