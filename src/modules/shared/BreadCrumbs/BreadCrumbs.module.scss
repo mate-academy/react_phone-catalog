@@ -4,15 +4,22 @@
   @include margin-top-responsive;
 }
 
+.breadcrumbs_icon {
+  line-height: 0;
+}
+
 .breadcrumbs_list {
   display: flex;
   gap: 8px;
   list-style: none;
   padding-left: 0;
+  align-items: center;
 }
 
 .breadcrumbs_item {
   @include nav-responsive;
+
+  text-overflow: ellipsis;
 }
 
 .breadcrumbs_link {

@@ -9,6 +9,7 @@
   @include respond-to(phone) {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
   }
 
 }

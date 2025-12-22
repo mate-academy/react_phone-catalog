@@ -24,7 +24,6 @@
   @include respond-to(desktop) {
     margin-right: 64px;
   }
-
 }
 
 .section_title {
@@ -41,6 +40,13 @@
   flex: 1;
 }
 
+.description__specs {
+  @include respond-to(phone) {
+    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .description_title {
   @include header-3;
 
@@ -48,7 +54,6 @@
 }
 
 .description_divide_line {
-  width: 512px;
   height: 1px;
   background-color: $gray-elements;
 }

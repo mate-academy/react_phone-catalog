@@ -5,6 +5,10 @@
   margin-bottom: 40px;
 
   @include header-h2;
+
+  @include respond-to(phone) {
+    @include header-3;
+  }
 }
 
 .productPage_spec {
