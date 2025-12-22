@@ -20,7 +20,6 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className="container"></div>
       <div className={styles.left}>
         <Logo />
         <div className={styles.navLinks}>
