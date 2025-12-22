@@ -18,7 +18,7 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
 );
 
 const generateFavoriteItemId = (product: Product) => {
-  return `${product.itemId}-${product.color}-${product.capacity}`;
+  return product.itemId;
 };
 
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
