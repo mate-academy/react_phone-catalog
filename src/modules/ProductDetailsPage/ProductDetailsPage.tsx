@@ -154,9 +154,9 @@ export const ProductDetailsPage = () => {
 
     const capacity =
       product.capacityAvailable[activeCapacityIndex] || product.capacity;
-    const baseName = getBaseName(product.name, product.capacityAvailable);
+    const baseName = product.namespaceId;
 
-    const newProductId = `${normalizeForUrlPart(baseName)}-${normalizeForUrlPart(capacity)}-${normalizeForUrlPart(color)}`;
+    const newProductId = `${baseName}-${normalizeForUrlPart(capacity)}-${normalizeForUrlPart(color)}`;
 
     navigate(`/${category}/${newProductId}`, { replace: true });
   };
