@@ -91,10 +91,6 @@
     gap: 16px;
     margin: 0;
   }
-
-  &:hover {
-    color: $purple;
-  }
 }
 
 .footer_nav {
@@ -105,6 +101,10 @@
   text-transform: uppercase;
   text-decoration: none;
   color: $gray-white;
+
+  &:hover {
+    color: $purple;
+  }
 }
 
 .footer_backToTop {
