@@ -4,6 +4,10 @@
 
 .cart {
   @include margin-top-responsive;
+
+  @include respond-to(phone) {
+    overflow: hidden;
+  }
 }
 
 .cart_header {

@@ -19,10 +19,17 @@ export const Header: React.FC = () => {
   const closeBurger = () => setIsBurgerOpen(false);
 
   useEffect(() => {
-    document.body.style.overflow = isBurgerOpen ? 'hidden' : '';
+    if (isBurgerOpen) {
+      document.body.style.overflow = 'hidden'; // блокуємо вертикальний і горизонтальний скрол
+      document.body.style.width = '100vw'; // прибирає горизонтальний стрибок
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.width = '';
+    }
 
     return () => {
       document.body.style.overflow = '';
+      document.body.style.width = '';
     };
   }, [isBurgerOpen]);
 
