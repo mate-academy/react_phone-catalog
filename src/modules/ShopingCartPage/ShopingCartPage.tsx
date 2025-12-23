@@ -14,7 +14,7 @@ export const ShopingCartPage = () => {
 
         <div>
           <img
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="product_cart_empty"
             className={styles.product__cart__empty__img}
           />
