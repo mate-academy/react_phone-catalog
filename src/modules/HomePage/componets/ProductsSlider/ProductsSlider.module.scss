@@ -33,10 +33,10 @@
   color: $gray-white;
   border: none;
   cursor: pointer;
-  transition: transform 0.6s ease;
 
   &:hover {
     background-color: $gray-elements;
+    transition: transform 0.6s ease;
   }
 }
 

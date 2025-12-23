@@ -20,8 +20,9 @@
     opacity: 0.5;
   }
 
-   &:hover {
+  &:hover {
     background-color: $gray-elements;
+    transition: transform 0.6s ease;
   }
 }
 
@@ -48,7 +49,8 @@
     background-color: $purple;
   }
 
-   &:hover {
+  &:hover {
     background-color: $gray-elements;
+    transition: transform 0.6s ease;
   }
 }

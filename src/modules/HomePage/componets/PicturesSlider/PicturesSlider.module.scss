@@ -16,7 +16,6 @@
   color: $gray-white;
   border: none;
   cursor: pointer;
-  transition: transform 0.6s ease;
 
   @include respond-to(tablet) {
     height: 189px;
@@ -28,6 +27,7 @@
 
   &:hover {
     background-color: $gray-elements;
+    transition: transform 0.6s ease;
   }
 }
 
