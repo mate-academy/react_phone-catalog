@@ -6,20 +6,6 @@ body {
   scroll-behavior: smooth;
 }
 
- @include respond-to(tablet) {
-    html,
-    body {
-      overflow-x: hidden;
-    }
-  }
-
-   @include respond-to(phone) {
-    html,
-    body {
-      overflow-x: hidden;
-    }
-  }
-
 html {
   height: 100%;
 }
