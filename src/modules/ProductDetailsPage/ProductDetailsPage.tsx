@@ -34,6 +34,12 @@ const getColorAndCapacityFromUrl = (
   return { capacity, color };
 };
 
+const capitalizeWords = (str: string) =>
+  str
+    .split(' ')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
+
 const buildProductName = (
   product: ProductDetails,
   newCapacity: string,
@@ -48,7 +54,7 @@ const buildProductName = (
 
   name = name.replace(
     new RegExp(product.color.replace(/\s+/g, '\\s+'), 'i'),
-    newColor,
+    capitalizeWords(newColor),
   );
 
   return name;
