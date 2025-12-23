@@ -34,19 +34,25 @@ const getColorAndCapacityFromUrl = (
   return { capacity, color };
 };
 
-const getBaseName = (name: string, capacities: string[]) => {
-  for (const cap of capacities) {
-    const index = name.toLowerCase().indexOf(cap.toLowerCase());
+const buildProductName = (
+  product: ProductDetails,
+  newCapacity: string,
+  newColor: string,
+) => {
+  let name = product.name;
 
-    if (index !== -1) {
-      return name.slice(0, index).trim();
-    }
-  }
+  name = name.replace(
+    new RegExp(product.capacity, 'i'),
+    newCapacity.toUpperCase(),
+  );
+
+  name = name.replace(
+    new RegExp(product.color.replace(/\s+/g, '\\s+'), 'i'),
+    newColor,
+  );
 
   return name;
 };
-
-const formatCapacity = (capacity: string) => capacity.toUpperCase();
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -63,27 +69,6 @@ export const ProductDetailsPage = () => {
 
   const { product, loading, error } = useProductDetails(productId, category);
 
-  const updateProductName = useCallback(
-    (color: string, capacity: string) => {
-      if (!product) {
-        return '';
-      }
-
-      const baseName = getBaseName(product.name, product.capacityAvailable);
-      const formattedCapacity = formatCapacity(capacity);
-
-      return `${baseName} ${formattedCapacity} ${color}`
-        .split(' ')
-        .map(word =>
-          /\d+(GB|TB)/i.test(word)
-            ? word.toUpperCase()
-            : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-        )
-        .join(' ');
-    },
-    [product],
-  );
-
   const updateColor = useCallback(
     (color: string) => {
       if (!product) {
@@ -92,6 +77,7 @@ export const ProductDetailsPage = () => {
 
       const normalizeColor = (c: string) =>
         c.toLowerCase().replace(/\s+/g, '-');
+
       const colorKey = normalizeColor(color);
 
       const newImages = product.images.filter(img =>
@@ -103,7 +89,7 @@ export const ProductDetailsPage = () => {
       const capacity =
         product.capacityAvailable[activeCapacityIndex] || product.capacity;
 
-      setProductName(updateProductName(color, capacity));
+      setProductName(buildProductName(product, capacity, color));
 
       const newColorIndex = product.colorsAvailable.findIndex(
         c => c.toLowerCase() === color.toLowerCase(),
@@ -111,7 +97,7 @@ export const ProductDetailsPage = () => {
 
       setActiveColorIndex(newColorIndex >= 0 ? newColorIndex : 0);
     },
-    [product, activeCapacityIndex, updateProductName],
+    [product, activeCapacityIndex],
   );
 
   const updateCapacity = useCallback(
@@ -122,7 +108,7 @@ export const ProductDetailsPage = () => {
 
       const color = product.colorsAvailable[activeColorIndex] || product.color;
 
-      setProductName(updateProductName(color, capacity));
+      setProductName(buildProductName(product, capacity, color));
 
       const capacityIdx = product.capacityAvailable.findIndex(
         c => c === capacity,
@@ -130,7 +116,7 @@ export const ProductDetailsPage = () => {
 
       setActiveCapacityIndex(capacityIdx >= 0 ? capacityIdx : 0);
     },
-    [product, activeColorIndex, updateProductName],
+    [product, activeColorIndex],
   );
 
   useEffect(() => {
@@ -154,9 +140,10 @@ export const ProductDetailsPage = () => {
 
     const capacity =
       product.capacityAvailable[activeCapacityIndex] || product.capacity;
-    const baseName = product.namespaceId;
 
-    const newProductId = `${baseName}-${normalizeForUrlPart(capacity)}-${normalizeForUrlPart(color)}`;
+    const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
+      capacity,
+    )}-${normalizeForUrlPart(color)}`;
 
     navigate(`/${category}/${newProductId}`, { replace: true });
   };
@@ -169,9 +156,10 @@ export const ProductDetailsPage = () => {
     updateCapacity(capacity);
 
     const color = product.colorsAvailable[activeColorIndex] || product.color;
-    const baseName = getBaseName(product.name, product.capacityAvailable);
 
-    const newProductId = `${normalizeForUrlPart(baseName)}-${normalizeForUrlPart(capacity)}-${normalizeForUrlPart(color)}`;
+    const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
+      capacity,
+    )}-${normalizeForUrlPart(color)}`;
 
     navigate(`/${category}/${newProductId}`, { replace: true });
   };

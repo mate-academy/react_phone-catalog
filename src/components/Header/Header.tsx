@@ -1,11 +1,12 @@
+import { useEffect, useState } from 'react';
 import { FavoriteAndCart } from './components/FavoriteAndCart';
 import { HeaderNavItems } from './components/HeaderNavItems';
 import { Logo } from './components/Logo';
 import styles from './Header.module.scss';
-import { useState } from 'react';
 
 import burgerIcon from '/icons/menu-icon.png';
 import closeIcon from '/icons/close-icon.png';
+
 import { useCart } from '../../contexts/CartContext';
 import { useFavorites } from '../../contexts/FavoritesContext';
 
@@ -14,9 +15,16 @@ export const Header: React.FC = () => {
   const { totalQuantity } = useCart();
   const { totalFavorites } = useFavorites();
 
-  const toggleBurger = () => {
-    setIsBurgerOpen(prev => !prev);
-  };
+  const openBurger = () => setIsBurgerOpen(true);
+  const closeBurger = () => setIsBurgerOpen(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isBurgerOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isBurgerOpen]);
 
   return (
     <header className={styles.header}>
@@ -32,8 +40,12 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className={styles.burger_container}>
-        <button className={styles.burger_button} onClick={toggleBurger}>
-          <img src={burgerIcon} alt="burgerIcon" />
+        <button
+          className={styles.burger_button}
+          onClick={openBurger}
+          aria-label="Open menu"
+        >
+          <img src={burgerIcon} alt="" />
         </button>
       </div>
 
@@ -41,19 +53,24 @@ export const Header: React.FC = () => {
         <div className={styles.burgerMenu}>
           <div className={styles.burger_header}>
             <Logo />
-            <button className={styles.close_button} onClick={toggleBurger}>
-              <img src={closeIcon} alt="closeIcon" />
+            <button
+              className={styles.close_button}
+              onClick={closeBurger}
+              aria-label="Close menu"
+            >
+              <img src={closeIcon} alt="Close" />
             </button>
           </div>
 
           <HeaderNavItems
             className={styles.burgerNav}
-            onLinkClick={toggleBurger}
+            onLinkClick={closeBurger}
           />
+
           <FavoriteAndCart
             className={styles.burgerFavAndCartIcons}
-            isBurger={true}
-            onLinkClick={toggleBurger}
+            isBurger
+            onLinkClick={closeBurger}
             cartCount={totalQuantity}
             favCount={totalFavorites}
           />
