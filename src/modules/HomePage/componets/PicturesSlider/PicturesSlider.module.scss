@@ -16,6 +16,7 @@
   color: $gray-white;
   border: none;
   cursor: pointer;
+  transition: transform 0.6s ease;
 
   @include respond-to(tablet) {
     height: 189px;
@@ -32,7 +33,7 @@
 
 .slider_container {
   height: 400px;
-   margin-left: 16px;
+  margin-left: 16px;
   margin-right: 16px;
 
   @include respond-to(tablet) {
