@@ -39,9 +39,11 @@
   width: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(0.9);
+    transition: transform 0.6s ease;
   }
 }
 
