@@ -8,6 +8,10 @@
 
 .accessories {
   @include margin-top-responsive;
+
+  @include respond-to(phone) {
+    overflow: hidden;
+  }
 }
 
 .accessories_header {

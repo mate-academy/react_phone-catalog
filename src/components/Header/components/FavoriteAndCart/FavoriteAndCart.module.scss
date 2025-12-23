@@ -61,7 +61,7 @@
 
 .badge {
   position: absolute;
-  top: 8px;
+  top: 14px;
   right: 7px;
   display: flex;
   align-items: center;
@@ -83,11 +83,11 @@
     transform: translateX(50%);
   }
 
-  @include respond-to(desktop) {
-    top: 15px;
-    right: 40%;
-    transform: translateX(50%);
-  }
+  // @include respond-to(desktop) {
+  //   top: 15px;
+  //   right: 40%;
+  //   transform: translateX(50%);
+  // }
 }
 
 

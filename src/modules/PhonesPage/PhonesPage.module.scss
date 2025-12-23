@@ -8,6 +8,10 @@
 
 .phones {
   @include margin-top-responsive;
+
+  @include respond-to(phone) {
+    overflow: hidden;
+  }
 }
 
 .phones_header {
@@ -19,4 +23,3 @@
 .phones_quantity {
   @include total-amount-of-products;
 }
-
