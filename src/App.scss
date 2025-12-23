@@ -1,1 +1,26 @@
-// not empty
+/* Define variables for dark theme */
+body.dark {
+  --color-accent: #905BFF;
+  --color-secondary: #75767f;
+  --color-icons: #3a3d58;
+  --color-elements: #3b3e4a;
+  --color-hover: #323542;
+  --color-disabled: #0f1121;
+  --color-bg: #161827;
+  --color-white: #f1f2f9;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
+
+body.light {
+  --color-accent: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover: #fafbfc;
+  --color-bg: #fafbfc;
+  --color-disabled: #fff;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
