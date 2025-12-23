@@ -16,9 +16,13 @@ export const ProductCard: React.FC<Props> = ({
   product,
   showDiscount = false,
 }) => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const hasDiscount = product.fullPrice > product.price;
 
-  const { cart, addToCart, removeFromCart, createCartItemId } = useCart();
+  const { cart, addToCart, createCartItemId } = useCart();
   const cartItemId = createCartItemId(product);
   const inCart = cart.some(item => item.cartItemId === cartItemId);
 
@@ -33,6 +37,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.card_content}>
         <Link
           to={`/${product.category}/${product.itemId}`}
+          onClick={handleClick}
           state={{
             category: product.category,
             name: product.name,
@@ -72,12 +77,11 @@ export const ProductCard: React.FC<Props> = ({
             type="button"
             className={`${styles.card__addBtn} ${inCart ? styles.card__btn__disabled : ''}`}
             onClick={() => {
-              if (inCart) {
-                removeFromCart(cartItemId);
-              } else {
+              if (!inCart) {
                 addToCart(product);
               }
             }}
+            disabled={inCart}
           >
             {inCart ? 'Added to cart' : 'Add to cart'}
           </button>

@@ -28,6 +28,7 @@
   object-fit: contain;
   cursor: pointer;
   margin-bottom: 8px;
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(1.1);
@@ -105,6 +106,7 @@
   letter-spacing: 0;
   text-align: center;
   cursor: pointer;
+  transition: transform 0.6s ease;
 
   &:hover {
     background-color: $light-purple;
@@ -122,7 +124,7 @@
   border: none;
   padding: 12px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: transform 0.6s ease;
 
   &:hover {
     background-color: $light-gray;

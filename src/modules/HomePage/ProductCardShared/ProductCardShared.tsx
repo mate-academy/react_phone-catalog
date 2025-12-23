@@ -23,7 +23,7 @@ export const ProductCardShared: React.FC<Props> = ({
 
   const hasDiscount = product.fullPrice > product.price;
 
-  const { cart, addToCart, removeFromCart, createCartItemId } = useCart();
+  const { cart, addToCart, createCartItemId } = useCart();
   const cartItemId = createCartItemId(product);
   const inCart = cart.some(item => item.cartItemId === cartItemId);
 
@@ -60,12 +60,11 @@ export const ProductCardShared: React.FC<Props> = ({
             inCart ? styles.card__btn__disabled : ''
           }`}
           onClick={() => {
-            if (inCart) {
-              removeFromCart(cartItemId);
-            } else {
+            if (!inCart) {
               addToCart(product);
             }
           }}
+          disabled={inCart}
         >
           {inCart ? 'Added to cart' : 'Add to cart'}
         </button>

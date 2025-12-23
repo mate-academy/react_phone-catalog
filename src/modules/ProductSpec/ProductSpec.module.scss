@@ -36,6 +36,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: transform 0.6s ease;
 
   &:hover {
     border-color: $gray-secondary;
@@ -85,6 +86,8 @@
 
 .spec_capacity_item {
   @include body-text;
+
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(1.1);

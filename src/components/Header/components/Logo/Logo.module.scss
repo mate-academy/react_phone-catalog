@@ -21,6 +21,7 @@
 .logo_img {
   color: $gray-white;
   cursor: pointer;
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(1.1);
