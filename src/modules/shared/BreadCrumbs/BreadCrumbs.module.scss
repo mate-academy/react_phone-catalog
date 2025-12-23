@@ -6,6 +6,11 @@
 
 .breadcrumbs_icon {
   line-height: 0;
+  transition: transform 0.6s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .breadcrumbs_list {
