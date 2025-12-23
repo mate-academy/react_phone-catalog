@@ -1,5 +1,14 @@
-.hot_prices {
+.product_slider {
   margin-block: 80px;
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 
   h3 {
     margin: 0;
@@ -22,7 +31,6 @@
       gap: 16px;
       justify-content: center;
       align-items: center;
-
 
       &__button {
         width: 32px;
@@ -145,9 +153,12 @@
       }
 
       &__cart {
-        background-color: #905BFF;
+        background-color: $purple-button-color;
         border: none;
         color: $main-text-color;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
         width: 160px;
         height: 40px;
       }
