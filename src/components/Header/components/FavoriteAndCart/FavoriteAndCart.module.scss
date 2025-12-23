@@ -11,6 +11,10 @@
   @include respond-to(desktop) {
     height: 64px;
   }
+
+  @include respond-to(wide) {
+    height: 64px;
+  }
 }
 
 .icon {

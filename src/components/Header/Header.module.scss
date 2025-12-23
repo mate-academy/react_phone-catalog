@@ -17,6 +17,10 @@
     height: 64px;
   }
 
+  @include respond-to(wide) {
+    height: 64px;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -114,6 +118,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-y: hidden;
 }
 
 .burger_header {

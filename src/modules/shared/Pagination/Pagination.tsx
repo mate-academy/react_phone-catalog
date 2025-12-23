@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import styles from './Pagination.module.scss';
 
 import arrowLeft from '/icons/arrow-left.png';
@@ -58,8 +58,11 @@ export const Pagination = ({ total, perPage }: Props) => {
 
     newParams.set('page', page.toString());
     setSearchParams(newParams);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   if (perPageLower === 'all' || total <= perPageNum) {
     return null;
