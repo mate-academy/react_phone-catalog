@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { ProductSpec } from '../ProductSpec';
 import { ProductPhotos } from '../ProductPhotos';
 import { Loader } from '../shared/Loader';
@@ -22,12 +22,12 @@ const getColorAndCapacityFromUrl = (
   const segments = productId.toLowerCase().split('-');
 
   const capacity =
-    product.capacityAvailable.find((cap: string) =>
+    product.capacityAvailable.find(cap =>
       segments.some(seg => seg.includes(cap.toLowerCase())),
     ) || product.capacityAvailable[0];
 
   const color =
-    product.colorsAvailable.find((c: string) =>
+    product.colorsAvailable.find(c =>
       segments.some(seg => seg.includes(c.toLowerCase().replace(/\s+/g, '-'))),
     ) || product.colorsAvailable[0];
 
@@ -50,7 +50,6 @@ const buildProductName = (
   const currentColor = capitalizeWords(
     product.colorsAvailable[activeColorIndex],
   );
-
   let name = product.name;
 
   name = name.replace(new RegExp(product.capacity, 'i'), currentCapacity);
@@ -65,7 +64,6 @@ const buildProductName = (
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
 
   const [activeColorIndex, setActiveColorIndex] = useState(0);
   const [activeCapacityIndex, setActiveCapacityIndex] = useState(0);
@@ -108,9 +106,9 @@ export const ProductDetailsPage = () => {
         product.capacityAvailable[activeCapacityIndex],
       )}-${normalizeForUrlPart(color)}`;
 
-      navigate(`/${category}/${newProductId}`, { replace: true });
+      window.history.replaceState({}, '', `/${category}/${newProductId}`);
     },
-    [product, activeCapacityIndex, category, navigate],
+    [product, activeCapacityIndex, category],
   );
 
   const handleCapacitySelect = useCallback(
@@ -137,9 +135,10 @@ export const ProductDetailsPage = () => {
         capacity,
       )}-${normalizeForUrlPart(product.colorsAvailable[activeColorIndex])}`;
 
-      navigate(`/${category}/${newProductId}`, { replace: true });
+      window.history.replaceState({}, '', `/${category}/${newProductId}`);
+
     },
-    [product, activeColorIndex, category, navigate],
+    [product, activeColorIndex, category],
   );
 
   useEffect(() => {
@@ -207,6 +206,7 @@ export const ProductDetailsPage = () => {
           setActiveCapacityIndex={setActiveCapacityIndex}
         />
       </div>
+
       <ProductDescription details={product} />
       <RandomProducts />
     </div>

@@ -38,11 +38,11 @@ export const ProductSpec: React.FC<Props> = ({
   onColorChange,
   handleCapacitySelect,
   activeCapacityIndex,
-  setActiveCapacityIndex,
   showDiscount,
 }) => {
   const selectedCapacity =
     product.capacityAvailable[activeCapacityIndex].toLowerCase();
+
   const capacityOption = product.capacityOptions?.find(
     option => option.capacity === selectedCapacity,
   );
@@ -76,8 +76,10 @@ export const ProductSpec: React.FC<Props> = ({
 
             return (
               <div
-                className={`${styles.spec_color} ${isActive ? styles['spec_color--active'] : ''}`}
                 key={normalizeColor(color)}
+                className={`${styles.spec_color} ${
+                  isActive ? styles['spec_color--active'] : ''
+                }`}
                 onClick={() => {
                   const index = product.colorsAvailable.indexOf(color);
 
@@ -88,7 +90,7 @@ export const ProductSpec: React.FC<Props> = ({
                 <p
                   className={styles.spec_item_color}
                   style={{ backgroundColor: displayColor }}
-                ></p>
+                />
               </div>
             );
           })}
@@ -104,12 +106,11 @@ export const ProductSpec: React.FC<Props> = ({
 
             return (
               <div
-                className={`${styles.spec_capacity_item_block} ${isActive ? styles['spec_capacity_item_block--active'] : ''}`}
-                key={index}
-                onClick={() => {
-                  setActiveCapacityIndex(index);
-                  handleCapacitySelect(capacity);
-                }}
+                key={capacity}
+                className={`${styles.spec_capacity_item_block} ${
+                  isActive ? styles['spec_capacity_item_block--active'] : ''
+                }`}
+                onClick={() => handleCapacitySelect(capacity)}
               >
                 <p className={styles.spec_capacity_item}>{capacity}</p>
               </div>
