@@ -75,6 +75,22 @@ export const ProductDetailsPage = () => {
 
   const { product, loading, error } = useProductDetails(productId, category);
 
+  const getImagesByColor = useCallback(
+    (color: string) => {
+      if (!product) {
+        return [];
+      }
+
+      const normalizedColor = color.toLowerCase().replace(/\s+/g, '-');
+      const filtered = product.images.filter(img =>
+        img.toLowerCase().includes(`/${normalizedColor}/`),
+      );
+
+      return filtered.length > 0 ? filtered : product.images;
+    },
+    [product],
+  );
+
   const handleColorChange = useCallback(
     (color: string) => {
       if (!product) {
@@ -90,13 +106,7 @@ export const ProductDetailsPage = () => {
       }
 
       setActiveColorIndex(colorIndex);
-
-      const colorKey = color.toLowerCase().replace(/\s+/g, '-');
-      const newImages = product.images.filter(img =>
-        img.toLowerCase().includes(colorKey),
-      );
-
-      setImages(newImages.length > 0 ? newImages : product.images);
+      setImages(getImagesByColor(color));
 
       setProductName(
         buildProductName(product, activeCapacityIndex, colorIndex),
@@ -108,7 +118,7 @@ export const ProductDetailsPage = () => {
 
       window.history.replaceState({}, '', `/${category}/${newProductId}`);
     },
-    [product, activeCapacityIndex, category],
+    [product, activeCapacityIndex, category, getImagesByColor],
   );
 
   const handleCapacitySelect = useCallback(
@@ -155,26 +165,16 @@ export const ProductDetailsPage = () => {
       c => c.toLowerCase() === initialColor.toLowerCase(),
     );
 
-    setActiveCapacityIndex(capacityIndex >= 0 ? capacityIndex : 0);
-    setActiveColorIndex(colorIndex >= 0 ? colorIndex : 0);
+    const finalCapacityIndex = capacityIndex >= 0 ? capacityIndex : 0;
+    const finalColorIndex = colorIndex >= 0 ? colorIndex : 0;
 
-    const colorKey = product.colorsAvailable[colorIndex >= 0 ? colorIndex : 0]
-      .toLowerCase()
-      .replace(/\s+/g, '-');
-    const newImages = product.images.filter(img =>
-      img.toLowerCase().includes(colorKey),
-    );
-
-    setImages(newImages.length > 0 ? newImages : product.images);
-
+    setActiveCapacityIndex(finalCapacityIndex);
+    setActiveColorIndex(finalColorIndex);
+    setImages(getImagesByColor(product.colorsAvailable[finalColorIndex]));
     setProductName(
-      buildProductName(
-        product,
-        capacityIndex >= 0 ? capacityIndex : 0,
-        colorIndex >= 0 ? colorIndex : 0,
-      ),
+      buildProductName(product, finalCapacityIndex, finalColorIndex),
     );
-  }, [product, productId]);
+  }, [product, productId, getImagesByColor]);
 
   if (loading) {
     return <Loader />;
