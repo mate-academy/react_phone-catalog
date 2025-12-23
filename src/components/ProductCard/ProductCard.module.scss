@@ -1,0 +1,138 @@
+.card {
+  width: 272px;
+  padding: 16px;
+  background: #161827;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s;
+}
+
+.card:hover {
+  border-color: #323542;
+  box-shadow: 0px 2px 16px 0px #0000001A;
+}
+.imageLink {
+  display: flex;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  width: 208px;
+  height: 196px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.specs {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.specs div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #75767f;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Add to cart */
+.cartButton {
+  flex: 1;
+  height: 40px;
+  background: #905bff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cartButton:hover {
+  background: #A378FF;
+}
+
+.cartButton:active {
+  background: #323542
+}
+
+.cartButtonAdded {
+  background: #323542;
+}
+
+// .cartButton:disabled {
+//   background: #3b3e4a;
+//   cursor: not-allowed;
+//   opacity: 0.6;
+// }
+
+/* Favourite */
+.favouriteButton {
+  width: 40px;
+  height: 40px;
+  background: #3b3e4a;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s;
+}
+
+.favouriteIcon {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.favouriteButtonActive {
+  border-color: #905bff;
+  background: none;
+}
+
+.favouriteButton:hover {
+  border-color: #905bff;
+  background-color: #2a2c3f;
+}
+
+.favouriteButton:hover .favouriteIcon {
+  opacity: 1;
+}

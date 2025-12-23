@@ -1,0 +1,36 @@
+.categories {
+  margin-top: 64px;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.list a {
+  height: 120px;
+  border-radius: 16px;
+  background: #1c1c2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.list a:hover {
+  transform: scale(1.05);
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
