@@ -101,7 +101,9 @@
   text-transform: uppercase;
   text-decoration: none;
   color: $gray-white;
+}
 
+.footer_nav_item {
   &:hover {
     color: $purple;
   }

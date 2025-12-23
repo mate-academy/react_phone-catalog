@@ -92,7 +92,7 @@
 
 .cart_checkout_total_amout {
   @include header-h2;
-  
+
   margin: 0;
 }
 
@@ -118,6 +118,7 @@
   border: none;
   cursor: pointer;
   color: $gray-white;
+  transition: transform 0.6s ease;
 
   &:hover {
     background-color: $light-purple;

@@ -43,7 +43,7 @@
   width: 16px;
   background: none;
   border: none;
-
+  transition: transform 0.6s ease;
   cursor: pointer;
 
   &:hover {
@@ -60,6 +60,7 @@
   width: 80px;
   object-fit: contain;
   cursor: pointer;
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(1.1);
@@ -88,6 +89,7 @@
   cursor: pointer;
   background-color: $gray-surface;
   border: 1px solid $gray-elements;
+  transition: transform 0.6s ease;
 
   &:hover {
     transform: scale(1.1);
