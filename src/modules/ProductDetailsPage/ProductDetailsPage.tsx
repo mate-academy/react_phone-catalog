@@ -136,7 +136,6 @@ export const ProductDetailsPage = () => {
       )}-${normalizeForUrlPart(product.colorsAvailable[activeColorIndex])}`;
 
       window.history.replaceState({}, '', `/${category}/${newProductId}`);
-
     },
     [product, activeColorIndex, category],
   );
@@ -198,12 +197,12 @@ export const ProductDetailsPage = () => {
         <ProductSpec
           product={product}
           showDiscount={showDiscount}
-          activeIndex={activeColorIndex}
-          setActiveIndex={setActiveColorIndex}
+          activeColorIndex={activeColorIndex}
+          setActiveColorIndex={setActiveColorIndex}
           onColorChange={handleColorChange}
-          handleCapacitySelect={handleCapacitySelect}
           activeCapacityIndex={activeCapacityIndex}
           setActiveCapacityIndex={setActiveCapacityIndex}
+          handleCapacitySelect={handleCapacitySelect}
         />
       </div>
 

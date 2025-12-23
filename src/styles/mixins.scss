@@ -80,6 +80,14 @@
   font-size: 14px;
   line-height: 15px;
   color: $gray-secondary;
+
+  @include respond-to(desktop) {
+    margin-top: 88px;
+  }
+
+  @include respond-to(wide) {
+    margin-top: 88px;
+  }
 }
 
 @mixin error-messages {

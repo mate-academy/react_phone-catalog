@@ -30,5 +30,13 @@
     font-size: 32px;
     line-height: 41px;
   }
+
+  @include respond-to(desktop) {
+    margin-top: 72px;
+  }
+
+   @include respond-to(wide) {
+    margin-top: 72px;
+  }
 }
 

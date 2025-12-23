@@ -5,12 +5,12 @@ import styles from './ProductSpec.module.scss';
 
 type Props = {
   product: ProductDetails;
-  activeIndex: number;
-  setActiveIndex: (index: number) => void;
+  activeColorIndex: number;
+  setActiveColorIndex: (index: number) => void;
   onColorChange: (color: string) => void;
-  handleCapacitySelect: (capacity: string) => void;
   activeCapacityIndex: number;
   setActiveCapacityIndex: (index: number) => void;
+  handleCapacitySelect: (capacity: string) => void;
   showDiscount?: boolean;
 };
 
@@ -33,18 +33,18 @@ const normalizeColor = (color: string) =>
 
 export const ProductSpec: React.FC<Props> = ({
   product,
-  activeIndex,
-  setActiveIndex,
+  activeColorIndex,
+  setActiveColorIndex,
   onColorChange,
-  handleCapacitySelect,
   activeCapacityIndex,
+  setActiveCapacityIndex,
+  handleCapacitySelect,
   showDiscount,
 }) => {
-  const selectedCapacity =
-    product.capacityAvailable[activeCapacityIndex].toLowerCase();
+  const selectedCapacity = product.capacityAvailable[activeCapacityIndex];
 
   const capacityOption = product.capacityOptions?.find(
-    option => option.capacity === selectedCapacity,
+    option => option.capacity.toLowerCase() === selectedCapacity.toLowerCase(),
   );
 
   const adaptedProduct: Product = {
@@ -56,7 +56,7 @@ export const ProductSpec: React.FC<Props> = ({
     price: capacityOption?.priceDiscount ?? product.priceDiscount,
     screen: product.screen,
     capacity: selectedCapacity,
-    color: product.color,
+    color: product.colorsAvailable[activeColorIndex],
     ram: product.ram,
     year: product.year,
     image: product.images[0],
@@ -68,10 +68,8 @@ export const ProductSpec: React.FC<Props> = ({
       <div className={styles.spec_colors}>
         <p className={styles.spec_title}>Available colors</p>
         <div className={styles.spec_colors_container}>
-          {product.colorsAvailable.map(color => {
-            const isActive =
-              normalizeColor(color) ===
-              normalizeColor(product.colorsAvailable[activeIndex]);
+          {product.colorsAvailable.map((color, index) => {
+            const isActive = index === activeColorIndex;
             const displayColor = COLOR_MAP[normalizeColor(color)] || color;
 
             return (
@@ -81,9 +79,7 @@ export const ProductSpec: React.FC<Props> = ({
                   isActive ? styles['spec_color--active'] : ''
                 }`}
                 onClick={() => {
-                  const index = product.colorsAvailable.indexOf(color);
-
-                  setActiveIndex(index);
+                  setActiveColorIndex(index);
                   onColorChange(color);
                 }}
               >
@@ -110,7 +106,10 @@ export const ProductSpec: React.FC<Props> = ({
                 className={`${styles.spec_capacity_item_block} ${
                   isActive ? styles['spec_capacity_item_block--active'] : ''
                 }`}
-                onClick={() => handleCapacitySelect(capacity)}
+                onClick={() => {
+                  setActiveCapacityIndex(index);
+                  handleCapacitySelect(capacity);
+                }}
               >
                 <p className={styles.spec_capacity_item}>{capacity}</p>
               </div>
