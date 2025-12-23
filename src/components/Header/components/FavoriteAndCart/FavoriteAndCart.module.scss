@@ -61,7 +61,7 @@
 
 .badge {
   position: absolute;
-  top: 14px;
+  top: 15px;
   right: 7px;
   display: flex;
   align-items: center;
@@ -78,16 +78,11 @@
   background-color: $color-red;
 
   @include respond-to(phone) {
-    top: 15px;
     right: 45%;
     transform: translateX(50%);
   }
 
-  // @include respond-to(desktop) {
-  //   top: 15px;
-  //   right: 40%;
-  //   transform: translateX(50%);
-  // }
+  @include respond-to(tablet) {
+    top: 8px;
+  }
 }
-
-
