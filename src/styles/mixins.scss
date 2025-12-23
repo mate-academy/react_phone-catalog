@@ -22,19 +22,16 @@
 }
 
 @mixin margin-top-responsive {
-  margin-top: 72px;
+  margin-top: 105px;
 
   @include respond-to(tablet) {
     margin-top: 88px;
   }
 
-  @include respond-to(desktop) {
-    margin-top: 105px;
+  @include respond-to(phone) {
+    margin-top: 88px;
   }
 
-  @include respond-to(wide) {
-    margin-top: 105px;
-  }
 }
 
 @mixin header-responsive {
