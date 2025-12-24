@@ -7,6 +7,7 @@ import { Price } from '../Price';
 import { CartButton } from '../CartButton';
 import { FavButton } from '../FavButton';
 import { Link } from 'react-router-dom';
+import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
   product: Product;

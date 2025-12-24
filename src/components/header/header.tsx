@@ -6,8 +6,31 @@ import classNames from 'classnames';
 import { GlobalContext } from '../../context/GlobalContext';
 import { Link, NavLink } from 'react-router-dom';
 
-const getActiveLink = ({ isActive }: { isActive: boolean }) =>
-  classNames('header__link', { 'header__link--active': isActive });
+const getActiveLink =
+  (type: 'link' | 'fav' | 'cart') =>
+  ({ isActive }: { isActive: boolean }) => {
+    switch (type) {
+      case 'link':
+        return classNames(
+          'header__link',
+          { 'header__link--active': isActive }
+        );
+
+      case 'fav':
+        return classNames(
+          'header__btn',
+          'header__btn--fav',
+          { 'header__btn--active': isActive }
+        );
+
+      case 'cart':
+        return classNames(
+          'header__btn',
+          'header__btn--cart',
+          { 'header__btn--active': isActive }
+        );
+    }
+  };
 
 const navLinks = [
   { page: 'home', path: '/' },
@@ -38,7 +61,7 @@ export const Header = () => {
                 <li key={link.page}>
                   <NavLink
                     to={link.path}
-                    className={getActiveLink}
+                    className={getActiveLink('link')}
                   >
                     {link.page}
                   </NavLink>
@@ -48,16 +71,22 @@ export const Header = () => {
           </nav>
 
           <div className="header__buttons">
-            <div className="header__btn header__btn--fav">
+            <NavLink 
+              to={'/favorites'}
+              className={getActiveLink('fav')}
+            >
               {!!favorites.length && (
                 <span className="header__value">{favorites.length}</span>
               )}
-            </div>
-            <div className="header__btn header__btn--cart">
+            </NavLink>
+            <NavLink 
+              to={'/cart'}
+              className={getActiveLink('cart')}
+            >
               {!!cart.length && (
                 <span className="header__value">{cart.length}</span>
               )}
-            </div>
+            </NavLink>
           </div>
         </div>
         <div

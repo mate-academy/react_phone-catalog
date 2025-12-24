@@ -1,19 +1,42 @@
+import { Link } from 'react-router-dom';
 import './NaviLine.scss';
 
 type Props = {
-  link: string;
+  category: string;
+  productName?: string;
 }
 
-export const NaviLine: React.FC<Props> = ({ link }) => {
+export const NaviLine: React.FC<Props> = ({ category, productName }) => {
   return (
     <div className="navi__line">
-      <a href="#" className="navi__icon">
-        <span></span>
-      </a>
+      <Link
+        to={'/#'}
+        className="navi__icon"
+      ></Link>
       <span className="navi__arrow" />
-      <a href="#" className="navi__item">
-        <span>{link}</span>
-      </a>
+      
+      {productName
+        ? (
+          <>
+            <Link
+              to={`/${category}`}
+              className="navi__item"
+            >
+              <span>{category}</span>
+            </Link>
+            <span className="navi__arrow" />
+            <div className="navi__item">
+              <span>{productName}</span>
+            </div>
+          </>
+        ) : (
+          <span
+            className="navi__item"
+          >
+            <span>{category}</span>
+          </span>
+        )
+      }
     </div>
   )
 }

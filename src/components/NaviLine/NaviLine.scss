@@ -12,17 +12,11 @@
     display: flex;
     align-items: center;
     height: 16px;
-    text-decoration: none;
-
-    span {
-      display: block;
-      height: 16px;
-      width: 16px;
-      background-image: url(../../assets/icons/home.svg);
-      background-repeat: no-repeat;
-      background-size: 90%;
-      background-position: center;
-    }
+    width: 16px;
+    background-image: url(../../assets/icons/home.svg);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
   }
 
   &__arrow {

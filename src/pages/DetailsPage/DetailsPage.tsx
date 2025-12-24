@@ -1,8 +1,5 @@
-import './DetailsPage.scss';
-import details1 from '../../../dist/api/phones.json';
-
 import { NaviLine } from '../../components/NaviLine';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { Price } from '../../components/Price';
 import { CartButton } from '../../components/CartButton';
@@ -13,6 +10,12 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { getProductsDetails } from '../../utils/api';
 import { ProductName } from '../../types/prodName';
 import { Loader } from '../../components/Loader';
+import { getCssColor } from '../../utils/cssColor';
+import { GlobalContext } from '../../context/GlobalContext';
+import './DetailsPage.scss';
+import { Product } from '../../types/Product';
+
+type Option = 'color' | 'capacity';
 
 const formatter = (str?: string | string[]) => {
   if (!str) return '';
@@ -26,6 +29,7 @@ const formatter = (str?: string | string[]) => {
   return str.join(', ');
 }
 
+
 export const DetailsPage = () => {
   const [prodDetail, setProdDetail] = useState<ProductDetails | null>(null);
   const [prodDetails, setProdDetails] = useState<ProductDetails[]>([]);
@@ -34,6 +38,7 @@ export const DetailsPage = () => {
   const [activePhoto, setActivePhoto] = useState(0);
   const [prevPhoto, setPrevPhoto] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const { allProducts } = useContext(GlobalContext)
   
   const { productId } = useParams();
   const category = useLocation().pathname.split('/')[1];
@@ -86,27 +91,30 @@ export const DetailsPage = () => {
     }
   }, [productId, prodDetails]);
 
-  const getLink = useCallback((option: string, value: string) => {
-    if (!prodDetail) return null;
+  const getLink = useCallback((option: Option, value: string) => {
+  if (!prodDetail) return null;
 
-    const {color, capacity, namespaceId} = prodDetail;
-    
-    const elem = prodDetails.find(d => {
-      const isNameMatch = d.namespaceId === namespaceId;
+  const { color, capacity, namespaceId } = prodDetail;
+  
+  const elem = prodDetails.find(d => {
+    const isNameMatch = d.namespaceId === namespaceId;
 
-      if (option === 'color') {
-        return isNameMatch && d.color === value && d.capacity === capacity;
-      }
+    if (option === 'color') {
+      const normalizedDColor = String(d.color).toLowerCase().replace(/[-\s]/g, '');
+      const normalizedValue = String(value).toLowerCase().replace(/[-\s]/g, '');
+      
+      return isNameMatch && normalizedDColor === normalizedValue && d.capacity === capacity;
+    }
 
-      if (option === 'capacity') {
-        return isNameMatch && d.capacity === value && d.color === color;
-      }
+    if (option === 'capacity') {
+      return isNameMatch && d.capacity === value && d.color === color;
+    }
 
-      return false;
-    });
+    return false;
+  });
 
-    return elem?.id;
-  }, [prodDetail, prodDetails]);
+  return elem?.id;
+}, [prodDetail, prodDetails]);
 
   const switchPhoto = (index: number) => {
     if (index === activePhoto) return;
@@ -121,9 +129,19 @@ export const DetailsPage = () => {
     }, 300);
   };
 
-  const suggestedProducts = useMemo(() => {
+  const suggestedProducts: Product[] = useMemo(() => {
+    if (!prodDetail || !allProducts.length) {
+      return [];
+    }
 
-  }, []);
+    return allProducts.filter(p => {
+      const isMatchPrice = p.price >= prodDetail!.priceDiscount - 300;
+      const isMatchCategory = p.category === prodDetail?.category;
+      const isNotSameProduct = p.itemId !== prodDetail.id;
+
+      return isMatchCategory && isMatchPrice && isNotSameProduct;
+    });
+  }, [prodDetail, allProducts]);
 
   if (error) {
     return <div className="container"><p style={{ color: 'red' }}>{error}</p></div>;
@@ -142,8 +160,11 @@ export const DetailsPage = () => {
       <div className="details">
         <div className="container">
           <div className="details__content">
-            <div className="details__some-link">
-              <NaviLine link={`${category}/${prodDetail}`} />
+            <div className="details__navi-line">
+              <NaviLine
+                category={category}
+                productName={prodDetail.name}
+              />
             </div>
             <h1 className="details__title">{prodDetail.name}</h1>
           
@@ -197,22 +218,26 @@ export const DetailsPage = () => {
                     <div className="details__colors">
                       <span className="details__colors-label">Available colors</span>
                       <div className="details__color-items">
-                        {prodDetail.colorsAvailable.map((col, i) =>
-                          <Link
-                            key={i}
-                            to={`/${prodDetail.category}/${getLink('color', col)}`}
-                            className={classNames(
-                                'details__color-item',
-                                col === prodDetail.color
-                                  ? 'details__color-item--active'
-                                  : ''
-                            )}
-                          >
-                            <div
-                              style={{ "backgroundColor": col }}
-                            ></div>
-                          </Link>
-                        )}
+                        {[...prodDetail.colorsAvailable].sort().map(col => {
+                          const targetId = getLink('color', col);
+
+                          return (
+                            <Link
+                              key={`${prodDetail.id}-${col}`}
+                              to={targetId ? `/${prodDetail.category}/${targetId}` : '#'}
+                              className={classNames(
+                                  'details__color-item',
+                                  col === prodDetail.color
+                                    ? 'details__color-item--active'
+                                    : ''
+                              )}
+                            >
+                              <div
+                                style={{ "backgroundColor": getCssColor(col) }}
+                              ></div>
+                            </Link>
+                          )
+                        })}
                       </div>
                     </div>
               
@@ -222,9 +247,9 @@ export const DetailsPage = () => {
                   <div className="details__capacity">
                     <span className="details__capacity-label">Select capacity</span>
                     <div className="details__capacity-items">
-                      {prodDetail.capacityAvailable.map((cap, i) =>
+                      {prodDetail.capacityAvailable.map(cap =>
                         <Link 
-                          key={i} 
+                          key={`${prodDetail.id}-${cap}`} 
                           to={`/${prodDetail.category}/${getLink('capacity', cap)}`}
                         >
                           <span
@@ -314,11 +339,11 @@ export const DetailsPage = () => {
               </div>
 
               <section className="details__swiper">
-                {/* <ProductsSwiper
-                  products={allProducts}
+                <ProductsSwiper
+                  products={suggestedProducts}
                   discount={true}
                   title={'You may also like'}
-                /> */}
+                />
               </section>
             </div>
           </div>

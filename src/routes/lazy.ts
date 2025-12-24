@@ -24,11 +24,11 @@ export const DetailsPageLazy = lazy(() =>
 //   })),
 // );
 
-// export const LazyFavoritesPage = lazy(() =>
-//   import('../pages/FavoritesPage').then(({ FavoritesPage }) => ({
-//     default: FavoritesPage,
-//   })),
-// );
+export const FavoritesPageLazy = lazy(() =>
+  import('../pages/FavoritesPage').then(({ FavoritesPage }) => ({
+    default: FavoritesPage,
+  })),
+);
 
 // export const LazyNotFoundPage = lazy(() =>
 //   import('../pages/NotFoundPage').then(({ NotFoundPage }) => ({

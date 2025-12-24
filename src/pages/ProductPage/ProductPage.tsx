@@ -9,6 +9,8 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../../components/ProductCard';
 import { NaviLine } from '../../components/NaviLine';
 import { Button } from '../../components/Button';
+import { ProductsList } from '../../components/ProductsList';
+import { useLocation } from 'react-router-dom';
 
 type Props = {
   type: ProductName;
@@ -19,6 +21,8 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
   const [itemsOnPage, setItemsOnPage] = useState<ItemsOnPage>(ItemsOnPage.all);
   const [page, setPage] = useState(1);
   const { allProducts } = useContext(GlobalContext);
+
+  const category = useLocation().pathname.slice(1);
 
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => product.category === type);
@@ -57,11 +61,15 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
       <div className="container">
         <div className="product-page__content">
           <div className="product-page__navi-line">
-            <NaviLine link={'some-link'} />
+            <NaviLine category={type} />
           </div>
 
-          <h1 className="product-page__title">Mobile phones</h1>
-          <span className="product-page__desc">{`${33} models`}</span>
+          <h1 className="product-page__title">
+            {type === 'phones'
+              ? `Mobile ${type}`
+              : type[0].toUpperCase() + type.slice(1)}
+          </h1>
+          <span className="product-page__desc">{`${filteredProducts.length} models`}</span>
 
           <div className="product-page__drop-block">
             <DropDown<SortType>
@@ -78,20 +86,9 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
             />
           </div>
 
-          <div className="product-page__list">
-            {currentProducts.map(product => (
-            // {currentProducts.slice(0, 3).map(product => (
-              <div 
-                className="product-page__item" 
-                key={product.itemId}
-              >
-                <ProductCard
-                  discount={true}
-                  product={product}
-                />
-              </div>
-            ))}
-          </div>
+          <ProductsList
+            products={currentProducts}
+          />
 
           <div className="product-page__pagination">
             {/* <Pagination

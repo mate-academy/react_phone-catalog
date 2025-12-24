@@ -277,26 +277,4 @@
     justify-content: space-between;
     gap: 8px;
   }
-
-  // &__button-fav {
-  //   height: 40px;
-  //   width: 40px;
-  //   padding: 0;
-  //   border-radius: 40px;
-  //   border: 1px solid $gray-icons-placeholders;
-  //   background-color: $gray-white;
-  //   background-image: url(../../assets/icons/favorite-icon--default.svg);
-  //   background-repeat: no-repeat;
-  //   background-position: center;
-  //   transition: all 0.3s ease;
-
-  //   &:hover {
-  //     cursor: pointer;
-  //     border-color: $gray-primary;
-  //   }
-
-  //   &--selected {
-  //     background-image: url(../../assets/icons/favorite-icon--selected.svg);
-  //   }
-  // }
 }
