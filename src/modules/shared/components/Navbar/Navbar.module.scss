@@ -4,11 +4,12 @@
 .header {
   display: flex;
   justify-content: center;
+  background-color: var(--bg-main);
 }
 
 .navbar {
   display: flex;
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  box-shadow: 0 1px 0 0 var(--bg-hover);
   height: 48px;
   width: 100%;
   box-sizing: border-box;
@@ -60,11 +61,11 @@
     font-size: $uppercase-size;
     line-height: $uppercase-line;
     letter-spacing: $uppercase-track;
-    color: $color-secondary;
+    color: $light-text-secondary;
     font-weight: 800;
     height: 100%;
     &:hover {
-      color: $color-primary;
+      color: $light-text-main;
     }
 
     &::after {
@@ -74,12 +75,12 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $color-primary;
+      background-color: $light-text-main;
       transition: width 0.3s ease;
     }
 
     &--active {
-      color: $color-primary;
+      color: $light-text-main;
       &::after {
         width: 100%; // full width when active
       }
@@ -98,7 +99,12 @@
   }
 
   &__iconImage {
-    position: relative;
+    &--container {
+      position: relative;
+    }
+
+    display: block;
+    color: var(--text-main);
   }
 
   &__iconCount {
@@ -115,7 +121,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    border: 1px solid $color-bg;
+    border: 1px solid $light-bg-main;
   }
 
   &__icon {
@@ -125,7 +131,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 1px 0 0 0 #e2e6e9;
+    box-shadow: inset 1px 0 0 0 var(--bg-hover);
     position: relative;
 
     &::after {
@@ -136,12 +142,12 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $color-primary;
+      background-color: $light-text-main;
       transition: width 0.3s ease;
     }
 
     &--active {
-      color: $color-primary;
+      color: $light-text-main;
       &::after {
         width: 100%; // full width when active
       }

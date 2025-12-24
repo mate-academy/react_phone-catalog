@@ -65,7 +65,7 @@
     font-size: $uppercase-size;
     line-height: $uppercase-line;
     letter-spacing: $uppercase-track;
-    color: $color-secondary;
+    color: $light-text-secondary;
     font-weight: 800;
     height: 100%;
 
@@ -76,11 +76,11 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $color-primary;
+      background-color: $light-text-main;
       transition: width 0.3s ease;
     }
     &--active {
-      color: $color-primary;
+      color: $light-text-main;
       &::after {
         width: 100%; // full width when active
       }
@@ -94,7 +94,7 @@
     // justify-content: flex-end;
     // align-items: center;
   }
-  &__iconImage {
+  &__iconImage--container {
     position: relative;
   }
   &__iconCount {
@@ -111,7 +111,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    border: 1px solid $color-bg;
+    border: 1px solid $light-bg-main;
   }
   &__icon {
     cursor: pointer;
@@ -133,11 +133,11 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $color-primary;
+      background-color: $light-text-main;
       transition: width 0.3s ease;
     }
     &--active {
-      color: $color-primary;
+      color: $light-text-main;
       &::after {
         width: 100%; // full width when active
       }

@@ -6,9 +6,9 @@
   &__label {
     margin-bottom: 4px;
     font-size: $small-size;
-    color: $color-secondary;
+    color: $light-text-secondary;
   }
-  &__arrow{
+  &__arrow {
     flex-shrink: 0;
     display: flex;
   }
@@ -17,22 +17,22 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border: 1px solid $color-icons;
-    background-color: $color-bg;
+    border: 1px solid $light-icon;
+    background-color: $light-bg-main;
     user-select: none;
     &--open {
-      border-color: $color-primary;
+      border-color: $light-text-main;
     }
   }
   &__placeholder {
-    color: $color-secondary;
+    color: $light-text-secondary;
     font-size: $body-size;
   }
   &__currentLabel {
-    color: $color-primary;
+    color: $light-text-main;
     font-size: $body-size;
     &--open {
-      border-color: $color-primary;
+      border-color: $light-text-main;
     }
   }
 
@@ -41,8 +41,8 @@
     top: calc(100% + 4px);
     left: 0;
     right: 0;
-    background-color: $color-bg;
-    border: 1px solid $color-icons;
+    background-color: $light-bg-main;
+    border: 1px solid $light-icon;
     max-height: 200px;
     overflow-y: auto;
     z-index: 10;
@@ -50,13 +50,13 @@
   }
   &__option {
     padding: 10px;
-    color: $color-secondary;
+    color: $light-text-secondary;
     user-select: none;
     font-size: $body-size;
 
     &:hover {
-      background-color: $color-option-bg;
-      color: $color-primary;
+      background-color: $light-bg-card;
+      color: $light-text-main;
     }
   }
 }

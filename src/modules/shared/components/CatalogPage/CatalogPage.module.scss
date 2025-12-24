@@ -20,7 +20,7 @@
 
   &__modelsCount {
     font-size: $body-size;
-    color: $color-secondary;
+    color: $light-text-secondary;
     margin-bottom: 40px;
   }
 
@@ -38,14 +38,14 @@
     padding: 40px;
 
     p {
-      color: $color-secondary;
+      color: $light-text-secondary;
       font-size: $h3-size;
     }
 
     button {
       padding: 10px 20px;
-      background: $color-primary;
-      color: $color-text;
+      background: $light-text-main;
+      color: $color-text-white;
       border: none;
       cursor: pointer;
       font-size: $button-size;
@@ -62,6 +62,6 @@
     align-items: center;
     padding: 80px 20px;
     font-size: $h3-size;
-    color: $color-secondary;
+    color: $light-text-secondary;
   }
 }

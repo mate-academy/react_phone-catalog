@@ -46,8 +46,12 @@ const Menu: React.FC<MenuProps> = ({ onClose, isMenuOpen }) => {
             }
             onClick={onClose}
           >
-            <div className={styles.navbar__iconImage}>
-              <img src={HeartIcon} alt="Favorites" />
+            <div className={styles['navbar__iconImage--container']}>
+              <img
+                className={styles.navbar__iconImage}
+                src={HeartIcon}
+                alt="Favorites"
+              />
               {totalFavoritesCount > 0 && (
                 <div className={styles.navbar__iconCount}>
                   {totalFavoritesCount}
@@ -64,8 +68,12 @@ const Menu: React.FC<MenuProps> = ({ onClose, isMenuOpen }) => {
             }
             onClick={onClose}
           >
-            <div className={styles.navbar__iconImage}>
-              <img src={CartIcon} alt="Cart" />
+            <div className={styles['navbar__iconImage--container']}>
+              <img
+                className={styles['navbar__iconImage']}
+                src={CartIcon}
+                alt="Cart"
+              />
               {totalCount > 0 && (
                 <div className={styles.navbar__iconCount}>{totalCount}</div>
               )}

@@ -2,7 +2,7 @@
 
 .product-card {
   flex: 0 0 272px;
-  border: 1px solid $color-elements;
+  border: 1px solid $light-border;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@
   &__title {
     font-size: 14px;
     font-weight: 500;
-    color: $color-primary;
+    color: $light-text-main;
     margin: 0 0 8px;
     line-height: 21px;
     height: 42px; /* Обмеження на 2 рядки */
@@ -49,20 +49,20 @@
     gap: 8px;
     align-items: center;
     margin-bottom: 8px;
-    border-bottom: 1px solid $color-elements;
+    border-bottom: 1px solid $light-border;
     padding-bottom: 8px;
   }
 
   &__price {
     font-size: 22px;
     font-weight: 800;
-    color: $color-primary;
+    color: $light-text-main;
   }
 
   &__full-price {
     font-size: 22px;
     font-weight: 500;
-    color: $color-secondary;
+    color: $light-text-secondary;
     text-decoration: line-through;
   }
 
@@ -77,10 +77,10 @@
     margin-bottom: 8px;
 
     .spec-label {
-      color: $color-secondary;
+      color: $light-text-secondary;
     }
     .spec-value {
-      color: $color-primary;
+      color: $light-text-main;
       font-weight: 700;
     }
   }
@@ -93,7 +93,7 @@
     .btn-add {
       flex: 1;
       height: 40px;
-      background: $color-primary;
+      background: $light-text-main;
       color: #fff;
       border: none;
       font-weight: 700;
@@ -109,7 +109,7 @@
       &--added {
         color: $color-green;
         background-color: #fff;
-        border: 1px solid $color-elements;
+        border: 1px solid $light-border;
 
         &:hover {
           box-shadow: none;
@@ -121,13 +121,13 @@
     .btn-fav {
       width: 40px;
       height: 40px;
-      border: 1px solid $color-icons;
+      border: 1px solid $light-icon;
       background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      color: $color-primary;
+      color: $light-text-main;
       transition:
         border-color 0.3s,
         color 0.3s;
@@ -135,12 +135,12 @@
 
       @include desktop {
         &:hover {
-          border-color: $color-primary;
-          color: $color-primary;
+          border-color: $light-text-main;
+          color: $light-text-main;
         }
       }
       &--added {
-        border-color: $color-elements;
+        border-color: $light-border;
         svg {
           fill: $color-red;
           stroke: $color-red;

@@ -11,12 +11,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $color-icons;
-    background-color: $color-bg;
-    color: $color-primary;
+    border: 1px solid $light-icon;
+    background-color: $light-bg-main;
+    color: $light-text-main;
     cursor: pointer;
     &:hover {
-      border-color: $color-primary;
+      border-color: $light-text-main;
     }
   }
   &__pages {
@@ -29,12 +29,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $color-elements;
-    background-color: $color-bg;
-    color: $color-primary;
+    border: 1px solid $light-border;
+    background-color: $light-bg-main;
+    color: $light-text-main;
     cursor: pointer;
     &:hover {
-      border-color: $color-primary;
+      border-color: $light-text-main;
     }
 
     &--active {
@@ -43,9 +43,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: $color-bg;
-      border: 1px solid $color-elements;
-      background-color: $color-primary;
+      color: $light-bg-main;
+      border: 1px solid $light-border;
+      background-color: $light-text-main;
     }
   }
 }
@@ -53,13 +53,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $color-elements;
-  background-color: $color-bg;
+  border: 1px solid $light-border;
+  background-color: $light-bg-main;
   width: 32px;
   height: 32px;
-  color: $color-primary;
+  color: $light-text-main;
   cursor: pointer;
   &:hover {
-    border-color: $color-primary;
+    border-color: $light-text-main;
   }
 }

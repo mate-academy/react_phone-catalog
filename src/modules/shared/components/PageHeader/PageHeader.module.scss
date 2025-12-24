@@ -63,12 +63,12 @@
 // Іконки
 .icon {
   display: block; // Прибирає зайві відступи SVG
-  color: $color-primary;
+  color: $light-text-main;
 }
 
 .chevron {
   display: block;
-  color: $color-secondary;
+  color: $light-text-secondary;
   margin: 0 8px; // Відступи навколо стрілочки
 }
 
@@ -76,7 +76,7 @@
 .link {
   font-size: $small-size;
   font-weight: 700;
-  color: $color-primary;
+  color: $light-text-main;
   text-decoration: none;
   display: flex; // Важливо для центрування іконки Home всередині Link
   align-items: center;
@@ -86,9 +86,9 @@
 .current {
   font-size: $small-size;
   font-weight: 700;
-  color: $color-secondary; // Активний елемент зазвичай темніший
+  color: $light-text-secondary; // Активний елемент зазвичай темніший
   cursor: default;
   &:hover {
-    color: $color-primary;
+    color: $light-text-main;
   }
 }

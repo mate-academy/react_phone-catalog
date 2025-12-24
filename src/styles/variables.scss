@@ -38,18 +38,34 @@ $small-track: 0;
 $small-weight: 600;
 
 // Colors, layout, etc.
-$color-primary: #313237;
-$color-secondary: #89939a;
-$color-elements: #e2e6e9;
-$color-icons: #b4bdc3;
-$color-text: #fff;
-$color-option-bg:#FAFBFC;
-$color-bg: #fff;
-$color-green: #27AE60;
+
+$color-text-white: #fff;
+
+// --- LIGHT PALETTE (Твої старі кольори) ---
+$light-text-main: #313237; // light-text-main
+$light-text-secondary: #89939a; // light-text-secondary
+$light-border: #e2e6e9; // light-border
+$light-icon: #b4bdc3; // light-icon
+$light-bg-main: #ffffff; // light-bg-main
+$light-bg-card: #fafbfc; // light-bg-card
+
+// --- DARK PALETTE (Твої нові кольори) ---
+$dark-bg-main: #0f1121; // Black
+$dark-bg-card: #161827; // Surface 1
+$dark-bg-hover: #323542; // Surface 2 (для ховерів або модалок)
+$dark-text-main: #f1f2f9; // White
+$dark-text-secondary: #75767f; // Secondary
+$dark-border: #3b3e4a; // Elements
+$dark-icon: #4a4d58; // Icons
+$dark-accent: #e8e9ee; // Accent
+
+// --- SHARED (Спільні кольори) ---
+$color-green: #27ae60;
+$color-red: #eb5757;
+
+// --- TECHNICAL ---
 $container-width: 1136px;
 $loading-grey: #ededed;
-$color-red:#EB5757;
-
 //spacing
 
 $spacing-sm: 8px;

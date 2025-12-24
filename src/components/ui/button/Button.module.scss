@@ -1,5 +1,5 @@
 // Імпортуйте ваші глобальні змінні та міксини
-@import '@/styles/variables'; // або шлях до вашого файлу з $color-primary
+@import '@/styles/variables'; // або шлях до вашого файлу з $light-text-main
 // @import '@/styles/mixins'; // якщо використовуєте міксини для шрифтів
 
 .button {
@@ -27,9 +27,9 @@
 
   // Основна кнопка (синя/чорна)
   &--primary {
-    background-color: $color-primary; // Ваш колір з variables
+    background-color: $light-text-main; // Ваш колір з variables
     color: #fff;
-    border-color: $color-primary;
+    border-color: $light-text-main;
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
@@ -40,7 +40,7 @@
   &--outline {
     background-color: #fff;
     color: $color-green; // Зелений колір для "Added"
-    border-color: $color-elements; // Сірий бордер
+    border-color: $light-border; // Сірий бордер
 
     &:hover {
       box-shadow: none;

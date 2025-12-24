@@ -16,7 +16,7 @@
   left: 50%;
   width: 400px;
   min-height: 200px;
-  background: $color-bg;
+  background: $light-bg-main;
   padding: 32px;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -31,7 +31,7 @@
     align-items: center;
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 1px solid $color-elements;
+    border-bottom: 1px solid $light-border;
   }
 
   &__title {
@@ -45,7 +45,7 @@
     font-size: 32px;
     line-height: 1;
     cursor: pointer;
-    color: $color-secondary;
+    color: $light-text-secondary;
     padding: 0;
     width: 32px;
     height: 32px;
@@ -55,7 +55,7 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: $color-primary;
+      color: $light-text-main;
     }
   }
 
@@ -68,13 +68,13 @@
   &__message {
     @include type($body-size, $body-line, $body-track, $body-weight);
     margin: 0;
-    color: $color-primary;
+    color: $light-text-main;
   }
 
   &__subMessage {
     @include type($small-size, $small-line, $small-track, $small-weight);
     margin: 0;
-    color: $color-secondary;
+    color: $light-text-secondary;
   }
 }
 

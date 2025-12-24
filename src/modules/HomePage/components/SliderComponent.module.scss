@@ -17,16 +17,16 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid $color-icons;
+    border: 1px solid $light-icon;
     cursor: pointer;
     background-color: #ffffff;
 
     &:hover {
-      border: 1px solid $color-primary;
+      border: 1px solid $light-text-main;
     }
 
     &--disabled {
-      border: 1px solid $color-elements;
+      border: 1px solid $light-border;
       cursor: default;
       pointer-events: none;
     }
@@ -49,7 +49,7 @@
     flex-direction: column;
     width: 100%;
     // max-width: 272px;
-    border: 1px solid $color-elements;
+    border: 1px solid $light-border;
     min-height: 512px;
     display: flex;
     flex-direction: column;
@@ -115,7 +115,7 @@
       }
     }
     &__infoName {
-      color: $color-secondary;
+      color: $light-text-secondary;
       @include type($small-size, $small-line, $small-track, $small-weight);
     }
     &__infoValue {
@@ -126,7 +126,7 @@
     }
     &__fullPrice {
       font-weight: 600;
-      color: $color-secondary;
+      color: $light-text-secondary;
       line-height: normal;
       font-size: $h3-size;
       position: relative;
@@ -135,7 +135,7 @@
 
       // Налаштування товщини лінії (змініть за бажанням)
       $line-height: 2px;
-      $line-color: $color-secondary; // Колір лінії (зазвичай такий же, як у тексту)
+      $line-color: $light-text-secondary; // Колір лінії (зазвичай такий же, як у тексту)
       $center-pos: 47%;
       // 1. Малюємо ЛІНІЮ (Середній шар)
       &::before {
@@ -144,7 +144,7 @@
         left: 0;
         width: 100%;
         height: $line-height;
-        background-color: $color-secondary; // Колір лінії
+        background-color: $light-text-secondary; // Колір лінії
         z-index: 1;
 
         // Позиціонування
@@ -178,12 +178,12 @@
       column-gap: 8px;
     }
     &__cartButton {
-      background-color: $color-primary;
+      background-color: $light-text-main;
       flex: 1;
       height: 40px;
       border: none;
       cursor: pointer;
-      color: $color-text;
+      color: $color-text-white;
       @include type($button-size, $button-line, $button-track, $button-weight);
 
       &:hover {
@@ -193,7 +193,7 @@
       &--added {
         color: $color-green;
         background-color: #fff;
-        border: 1px solid $color-elements;
+        border: 1px solid $light-border;
 
         &:hover {
           box-shadow: none;
@@ -205,14 +205,14 @@
       background: none;
       width: 40px;
       height: 40px;
-      border: 1px solid $color-elements;
+      border: 1px solid $light-border;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       &:hover {
-        border: 1px solid $color-primary;
+        border: 1px solid $light-text-main;
       }
     }
   }
