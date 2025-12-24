@@ -60,13 +60,14 @@
       justify-content: center;
       width: 32px;
       cursor: pointer;
-      background-color: #ffffff;
-      border: 1px solid $light-icon;
+      color: var(--text-main);
+      background-color: var(--bg-hover);
+      border: 1px solid var(--icon);
       transition: all 0.3s;
     }
 
     &:hover {
-      border-color: $light-text-main;
+      border-color: var(--text-main);
     }
   }
 }

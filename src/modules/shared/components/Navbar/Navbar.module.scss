@@ -26,9 +26,15 @@
   }
 
   &__logo {
+    width: 128px;
+    height: 64px;
     display: flex;
+    padding: 0 24px;
     img {
+      width: 100%;
+      height: 100%;
       display: block;
+      object-fit: contain;
     }
   }
 
@@ -61,11 +67,11 @@
     font-size: $uppercase-size;
     line-height: $uppercase-line;
     letter-spacing: $uppercase-track;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
     font-weight: 800;
     height: 100%;
     &:hover {
-      color: $light-text-main;
+      color: var(--text-main);
     }
 
     &::after {
@@ -75,12 +81,12 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $light-text-main;
+      background-color: var(--text-main);
       transition: width 0.3s ease;
     }
 
     &--active {
-      color: $light-text-main;
+      color: var(--text-main);
       &::after {
         width: 100%; // full width when active
       }
