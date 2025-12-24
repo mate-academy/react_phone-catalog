@@ -9,7 +9,7 @@
 
 .navbar {
   display: flex;
-  box-shadow: 0 1px 0 0 var(--bg-hover);
+  box-shadow: 0 1px 0 0 var(--border-color);
   height: 48px;
   width: 100%;
   box-sizing: border-box;
@@ -127,7 +127,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    border: 1px solid $light-bg-main;
+    border: 1px solid var(--bg-main);
   }
 
   &__icon {
@@ -137,7 +137,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 1px 0 0 0 var(--bg-hover);
+    box-shadow: inset 1px 0 0 0 var(--border-color);
     position: relative;
 
     &::after {
@@ -148,12 +148,12 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $light-text-main;
+      background-color: var(--text-main);
       transition: width 0.3s ease;
     }
 
     &--active {
-      color: $light-text-main;
+      color: var(--text-main);
       &::after {
         width: 100%; // full width when active
       }

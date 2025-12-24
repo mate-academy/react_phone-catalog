@@ -45,18 +45,22 @@ $color-text-white: #fff;
 $light-text-main: #313237; // light-text-main
 $light-text-secondary: #89939a; // light-text-secondary
 $light-border: #e2e6e9; // light-border
-$light-icon: #b4bdc3; // light-icon
+$light-color-disabled: #e2e6e9; // light-disabled
+$light-btn-border: #b4bdc3; // light-btn-border
+$light-btn-bg: #fff; // light-btn-bg
+
 $light-bg-main: #ffffff; // light-bg-main
-$light-bg-card: #fafbfc; // light-bg-card
+$light-bg-select: #fafbfc; // light-bg-select
 
 // --- DARK PALETTE (Твої нові кольори) ---
 $dark-bg-main: #0f1121; // Black
 $dark-bg-card: #161827; // Surface 1
-$dark-bg-hover: #323542; // Surface 2 (для ховерів або модалок)
+$dark-border: #323542;
+$dark-btn-bg: #323542; // Button background
 $dark-text-main: #f1f2f9; // White
 $dark-text-secondary: #75767f; // Secondary
-$dark-border: #3b3e4a; // Elements
-$dark-icon: #4a4d58; // Icons
+$dark-color-disabled: #3b3e4a; // Disabled elements
+$dark-btn-hover: #4a4d58; // Icons
 $dark-accent: #e8e9ee; // Accent
 
 // --- SHARED (Спільні кольори) ---

@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { CarouselIndicator } from './CarouselIndicator';
 import styles from './Carousel.module.scss';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@/context/ThemeContext';
 
 export const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const { theme } = useTheme();
   const slides = [
     { image: 'img/phone-banner.webp', link: '/phones' },
     { image: 'img/tablet-banner.webp', link: '/tablets' },
@@ -61,7 +63,10 @@ export const Carousel: React.FC = () => {
   return (
     <section className={styles.carousel}>
       <div className={styles.carousel__body}>
-        <button className={styles.carousel__button} onClick={prev}>
+        <button
+          className={`${styles.carousel__button} ${theme === 'dark' ? styles['carousel__button--dark'] : ''}`}
+          onClick={prev}
+        >
           <svg
             width="16"
             height="16"
@@ -113,7 +118,10 @@ export const Carousel: React.FC = () => {
           </div>
         </div>
 
-        <button className={styles.carousel__button} onClick={next}>
+        <button
+          className={`${styles.carousel__button} ${theme === 'dark' ? styles['carousel__button--dark'] : ''}`}
+          onClick={next}
+        >
           <svg
             width="16"
             height="16"

@@ -9,8 +9,8 @@ export const CarouselIndicator: React.FC<CarouselIndicatorProps> = ({
   numberOfSlides,
   setActiveIndex,
 }) => {
-  const ACTIVE = '#313237';
-  const INACTIVE = '#E2E6E9';
+  const ACTIVE = 'var(--text-main)';
+  const INACTIVE = 'var(--border-color)';
 
   return (
     <svg

@@ -61,13 +61,18 @@
       width: 32px;
       cursor: pointer;
       color: var(--text-main);
-      background-color: var(--bg-hover);
-      border: 1px solid var(--icon);
+      background-color: var(--btn-bg);
+      border: 1px solid var(--btn-border);
       transition: all 0.3s;
     }
 
     &:hover {
-      border-color: var(--text-main);
+      border-color: var(--btn-hover-color);
+    }
+    &--dark {
+      &:hover {
+        background-color: var(--btn-hover-color);
+      }
     }
   }
 }

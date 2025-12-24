@@ -11,30 +11,42 @@
 :root {
   /* --- LIGHT THEME (Дефолт) --- */
   --bg-main: #{$light-bg-main};
-  --bg-secondary: #{$light-bg-card};
-  --bg-hover: #ffffff;
+  --bg-secondary: #{$light-bg-select};
 
+  --btn-border: #{$light-btn-border};
+  --btn-bg: #{$light-btn-bg};
+  --color-disabled: #{$light-color-disabled};
   --text-main: #{$light-text-main};
   --text-secondary: #{$light-text-secondary};
-
+  --card-border: #{$light-border};
+  --card-bg: #{$light-bg-main};
   --border-color: #{$light-border};
-  --icon-color: #{$light-icon};
+
+  --color-elements: #{$light-border};
+
 
   --status-green: #{$color-green};
   --status-red: #{$color-red};
+  --btn-hover-color: #{$light-text-main};
 }
 
 [data-theme='dark'] {
   /* --- DARK THEME --- */
   --bg-main: #{$dark-bg-main};
   --bg-secondary: #{$dark-bg-card};
-  --bg-hover: #{$dark-bg-hover};
+  --card-border: #{$dark-bg-card};
+  --card-bg: #{$dark-bg-card};
+  --btn-bg: #{$dark-btn-bg};
+  --btn-border: #{$dark-btn-bg};
+
+  --color-disabled: #{$dark-color-disabled};
+  --color-elements: #{$dark-color-disabled};
 
   --text-main: #{$dark-text-main};
   --text-secondary: #{$dark-text-secondary};
 
   --border-color: #{$dark-border};
-  --icon-color: #{$dark-icon};
+  --btn-hover-color: #{$dark-btn-hover};
 }
 
 // 3. Базові стилі

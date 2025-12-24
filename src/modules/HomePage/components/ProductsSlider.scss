@@ -11,24 +11,32 @@ $bg-hover: #fafbfc;
     display: none;
     width: 32px;
     height: 32px;
-    border: 1px solid $light-icon;
-    background: #fff;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.3s;
+    transition: all 0.3s;
     user-select: none;
+    color: var(--text-main);
     @include desktop {
       display: flex;
     }
     &:hover {
-      border-color: $text-primary;
+      border-color: var(--btn-hover-color);
+    }
+    &--dark {
+      &:hover {
+        background-color: var(--btn-hover-color);
+      }
     }
 
     &--disabled {
-      border: 1px solid $light-border;
+      border: 1px solid var(--border-color);
       cursor: not-allowed;
       pointer-events: none;
+      background-color: var(--bg-main);
+      color: var(--color-disabled);
     }
   }
 
@@ -42,7 +50,7 @@ $bg-hover: #fafbfc;
   &__title {
     font-size: 22px;
     font-weight: 800;
-    color: $text-primary;
+
     @include tablet {
       font-size: 32px;
     }

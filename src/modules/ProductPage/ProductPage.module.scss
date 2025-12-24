@@ -302,7 +302,7 @@
     cursor: pointer;
 
     &:hover {
-      border-color: $light-icon;
+      border-color: $light-btn-border;
     }
 
     &--active {
@@ -346,7 +346,7 @@
     font-weight: 500;
     color: $light-text-main;
     background: $light-bg-main;
-    border: 1px solid $light-icon;
+    border: 1px solid $light-btn-border;
     line-height: $body-line;
     cursor: pointer;
 

@@ -231,7 +231,7 @@ $tablet: 768px;
   &__quantityButton {
     width: 32px;
     height: 32px;
-    border: 1px solid $light-icon; // Ensure visible border
+    border: 1px solid $light-btn-border; // Ensure visible border
     display: flex;
     align-items: center;
     justify-content: center;

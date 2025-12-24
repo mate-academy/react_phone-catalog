@@ -2,11 +2,11 @@
 
 .product-card {
   flex: 0 0 272px;
-  border: 1px solid $light-border;
+  border: 1px solid var(--card-border);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: var(--card-bg);
   transition: box-shadow 0.3s;
 
   @include desktop {
@@ -37,7 +37,7 @@
   &__title {
     font-size: 14px;
     font-weight: 500;
-    color: $light-text-main;
+
     margin: 0 0 8px;
     line-height: 21px;
     height: 42px; /* Обмеження на 2 рядки */
@@ -49,20 +49,19 @@
     gap: 8px;
     align-items: center;
     margin-bottom: 8px;
-    border-bottom: 1px solid $light-border;
+    border-bottom: 1px solid var(--color-elements);
     padding-bottom: 8px;
   }
 
   &__price {
     font-size: 22px;
     font-weight: 800;
-    color: $light-text-main;
   }
 
   &__full-price {
     font-size: 22px;
     font-weight: 500;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
     text-decoration: line-through;
   }
 
@@ -77,10 +76,10 @@
     margin-bottom: 8px;
 
     .spec-label {
-      color: $light-text-secondary;
+      color: var(--text-secondary);
     }
     .spec-value {
-      color: $light-text-main;
+      color: var(--text-main);
       font-weight: 700;
     }
   }
@@ -121,7 +120,7 @@
     .btn-fav {
       width: 40px;
       height: 40px;
-      border: 1px solid $light-icon;
+      border: 1px solid $light-btn-border;
       background: #fff;
       display: flex;
       align-items: center;
