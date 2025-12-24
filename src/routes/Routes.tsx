@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from '../Layout';
-import { DetailsPageLazy, FavoritesPageLazy, HomePageLazy, ProductPageLazy } from './lazy';
+import { CartPageLazy, DetailsPageLazy, FavoritesPageLazy, HomePageLazy, ProductPageLazy } from './lazy';
 import { ProductName } from '../types/prodName';
 
 export const AllRoutes = () => {
@@ -36,7 +36,7 @@ export const AllRoutes = () => {
 
           <Route path="favorites" element={<FavoritesPageLazy />} />
 
-          {/* <Route path="cart" element={<CartPageLazy />} /> */}
+          <Route path="cart" element={<CartPageLazy />} />
 
           {/* <Route path="*" element={<NotFoundPageLazy />} /> */}
         </Route>

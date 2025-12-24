@@ -1,0 +1,41 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.back {
+  &__line {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  &__arrow {
+    display: block; 
+    height: 16px;
+    width: 16px;
+    background-image: url(../../assets/icons/arrow-right--default.svg);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+    transform: rotate(-180deg);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 16px;
+    
+    span {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1;
+      color: $gray-secondary;
+      transform: translateY(2px);
+
+      &:hover {
+        color: $gray-primary;
+      }
+    }
+  }
+}

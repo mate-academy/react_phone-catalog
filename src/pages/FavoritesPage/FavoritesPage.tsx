@@ -18,7 +18,7 @@ export const FavoritesPage = () => {
           <NaviLine category='favorites'/>
 
           <div className="fav__title-wrap">
-            <h1 className="fav__title">Favourites</h1>
+            <h1 className="fav__title">Favorites</h1>
             <span className="fav__desc">
               {favorites.length
                 ? `${favorites.length} items`

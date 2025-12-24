@@ -15,7 +15,7 @@ export const CartButton: React.FC<Props> = ({
   const { cart, addToCart } = useContext(GlobalContext);
 
     const isProductInCart = useMemo(() => {
-    return cart.some(cartItem => cartItem === productId);
+    return cart.some(cartItem => cartItem.id === productId);
   }, [cart, productId]);
 
   return (

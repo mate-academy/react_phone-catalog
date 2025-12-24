@@ -4,6 +4,7 @@
 .navi {
   &__line {
     display: flex;
+    gap: 8px;
     align-items: center;
     width: fit-content;
   }
@@ -36,11 +37,18 @@
     height: 16px;
 
     span {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 12px;
       line-height: 1;
       color: $gray-secondary;
       transform: translateY(2px); 
     }
+
+    &--bold {
+      span {
+        font-weight: 800;
+      }
+    }
+
   }
 }

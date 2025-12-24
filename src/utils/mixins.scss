@@ -85,3 +85,20 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin underline-after($width: 0) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: $width;
+    height: 1px;
+
+    background-color: $gray-primary;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+  }
+}

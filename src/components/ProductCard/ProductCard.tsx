@@ -1,13 +1,9 @@
-import { useContext, useMemo } from 'react';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
-import { GlobalContext } from '../../context/GlobalContext';
-import classNames from 'classnames';
 import { Price } from '../Price';
 import { CartButton } from '../CartButton';
 import { FavButton } from '../FavButton';
 import { Link } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
   product: Product;

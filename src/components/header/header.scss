@@ -89,29 +89,17 @@ $gap-header--tablet: 16px;
   }
 
   &__btn {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: -1px -1px 0 0 $gray-elements;
+    height: 64px;
 
     @include adaptiv-value(height, 48, 64, 1);
     @include adaptiv-value(width, 48, 64, 1);
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      height: 1px;
-      width: 0;
-
-      background-color: $gray-primary;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
+    @include underline-after;
 
     &:hover {
       cursor: pointer;
@@ -146,27 +134,18 @@ $gap-header--tablet: 16px;
       align-items: center;
       justify-content: center;
       z-index: 3;
+
+      // @include phone-max {
+      //   height: 48px;
+      //   width: 48px;
+      //   width: 100%;
+      // }
     }
 
     &--active {
       color: $gray-primary;
       
-      &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        height: 1px;
-        width: 100%;
-
-        background-color: $gray-primary;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-
-        @include phone-max {
-          height: 2px;
-        }
-      }
+      @include underline-after(100%);
     }
   }
 
@@ -256,7 +235,6 @@ $gap-header--tablet: 16px;
   }
 
   &__link {
-    position: relative;
     display: flex;
     height: 100%;
     text-decoration: none;
@@ -273,26 +251,10 @@ $gap-header--tablet: 16px;
       line-height: 30px;
       display: inline-block;
     }
+    @include underline-after;
     
     &:hover {
       color: $gray-primary;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      height: 1px;
-      width: 0;
-
-      background-color: $gray-primary;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-
-      @include phone-max {
-        height: 2px;
-      }
     }
 
     &:hover::after {
@@ -301,23 +263,8 @@ $gap-header--tablet: 16px;
 
     &--active {
       color: $gray-primary;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        height: 1px;
-        width: 100%;
 
-        background-color: $gray-primary;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-
-        @include phone-max {
-          height: 2px;
-        }
-      }
+      @include underline-after(100%);
     }
   }
 }

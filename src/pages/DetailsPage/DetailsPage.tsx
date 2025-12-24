@@ -14,6 +14,7 @@ import { getCssColor } from '../../utils/cssColor';
 import { GlobalContext } from '../../context/GlobalContext';
 import './DetailsPage.scss';
 import { Product } from '../../types/Product';
+import { ButtonBack } from '../../components/ButtonBack';
 
 type Option = 'color' | 'capacity';
 
@@ -165,7 +166,10 @@ export const DetailsPage = () => {
                 category={category}
                 productName={prodDetail.name}
               />
+              <ButtonBack />
             </div>
+
+
             <h1 className="details__title">{prodDetail.name}</h1>
           
             <div className="details__sections">

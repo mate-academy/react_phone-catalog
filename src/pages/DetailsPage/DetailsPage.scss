@@ -2,6 +2,13 @@
 @import '../../utils/mixins.scss';
 
 .details {
+  &__navi-line {
+    display: flex;
+    flex-direction: column;
+
+    @include adaptiv-value(gap, 24, 40, 1);
+  }
+
   &__title {
     font-weight: 800;
     font-size: 32px;

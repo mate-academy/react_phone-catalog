@@ -18,11 +18,11 @@ export const DetailsPageLazy = lazy(() =>
   })),
 );
 
-// export const LazyShoppingCartPage = lazy(() =>
-//   import('../pages/CartPage').then(({ CartPage }) => ({
-//     default: ShoppingCartPage,
-//   })),
-// );
+export const CartPageLazy = lazy(() =>
+  import('../pages/CartPage').then(({ CartPage }) => ({
+    default: CartPage,
+  })),
+);
 
 export const FavoritesPageLazy = lazy(() =>
   import('../pages/FavoritesPage').then(({ FavoritesPage }) => ({

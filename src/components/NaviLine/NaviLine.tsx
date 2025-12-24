@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import './NaviLine.scss';
+import classNames from 'classnames';
 
 type Props = {
   category: string;
   productName?: string;
+}
+
+const normalize = (str: string) => {
+  return str[0].toUpperCase() + str.slice(1);
 }
 
 export const NaviLine: React.FC<Props> = ({ category, productName }) => {
@@ -20,9 +25,12 @@ export const NaviLine: React.FC<Props> = ({ category, productName }) => {
           <>
             <Link
               to={`/${category}`}
-              className="navi__item"
+              className={classNames(
+                'navi__item',
+                { 'navi__item--bold': productName },
+              )}
             >
-              <span>{category}</span>
+              <span>{normalize(category)}</span>
             </Link>
             <span className="navi__arrow" />
             <div className="navi__item">
@@ -33,7 +41,7 @@ export const NaviLine: React.FC<Props> = ({ category, productName }) => {
           <span
             className="navi__item"
           >
-            <span>{category}</span>
+            <span>{normalize(category)}</span>
           </span>
         )
       }
