@@ -5,6 +5,7 @@ import styles from './ProductSpec.module.scss';
 
 type Props = {
   product: ProductDetails;
+  colors: string[];
   activeColor: string;
   setActiveColor: (color: string) => void;
   activeCapacity: string;
@@ -26,29 +27,20 @@ const COLOR_MAP: Record<string, string> = {
   spaceblack: '#0d0d0d',
 };
 
-const normalizeColor = (color: string) =>
-  color.replace(/\s|-/g, '').toLowerCase();
+const normalizeColor = (color: string) => color.replace(/\s|-/g, '').toLowerCase();
 
 export const ProductSpec: React.FC<Props> = ({
   product,
+  colors,
   activeColor,
   setActiveColor,
   activeCapacity,
   setActiveCapacity,
   showDiscount,
 }) => {
-  const getPriceForSelection = (capacity: string) => {
-    const option = product.capacityOptions?.find(
-      opt => opt.capacity === capacity.toLowerCase(),
-    );
-
-    return {
-      fullPrice: option?.priceRegular ?? product.priceRegular,
-      price: option?.priceDiscount ?? product.priceDiscount,
-    };
-  };
-
-  const { fullPrice, price } = getPriceForSelection(activeCapacity);
+  const capacityOption = product.capacityOptions?.find(opt => opt.capacity === activeCapacity.toLowerCase());
+  const fullPrice = capacityOption?.priceRegular ?? product.priceRegular;
+  const price = capacityOption?.priceDiscount ?? product.priceDiscount;
 
   const adaptedProduct: Product = {
     id: product.databaseId,
@@ -72,9 +64,8 @@ export const ProductSpec: React.FC<Props> = ({
         <p className={styles.spec_title}>Available colors</p>
 
         <div className={styles.spec_colors_container}>
-          {product.colorsAvailable.map(color => {
-            const isActive =
-              normalizeColor(color) === normalizeColor(activeColor);
+          {colors.map(color => {
+            const isActive = normalizeColor(color) === normalizeColor(activeColor);
             const displayColor = COLOR_MAP[normalizeColor(color)] || color;
 
             return (
@@ -83,10 +74,7 @@ export const ProductSpec: React.FC<Props> = ({
                 className={`${styles.spec_color} ${isActive ? styles['spec_color--active'] : ''}`}
                 onClick={() => setActiveColor(color)}
               >
-                <p
-                  className={styles.spec_item_color}
-                  style={{ backgroundColor: displayColor }}
-                />
+                <p className={styles.spec_item_color} style={{ backgroundColor: displayColor }} />
               </div>
             );
           })}
@@ -105,9 +93,7 @@ export const ProductSpec: React.FC<Props> = ({
             return (
               <div
                 key={capacity}
-                className={`${styles.spec_capacity_item_block} ${
-                  isActive ? styles['spec_capacity_item_block--active'] : ''
-                }`}
+                className={`${styles.spec_capacity_item_block} ${isActive ? styles['spec_capacity_item_block--active'] : ''}`}
                 onClick={() => setActiveCapacity(capacity)}
               >
                 <p className={styles.spec_capacity_item}>{capacity}</p>
@@ -117,9 +103,7 @@ export const ProductSpec: React.FC<Props> = ({
         </div>
       </div>
 
-      <div
-        className={`${styles.spec_divide_line} ${styles.spec_divide_line_last}`}
-      />
+      <div className={`${styles.spec_divide_line} ${styles.spec_divide_line_last}`} />
 
       <ProductCardShared product={adaptedProduct} showDiscount={showDiscount} />
     </div>

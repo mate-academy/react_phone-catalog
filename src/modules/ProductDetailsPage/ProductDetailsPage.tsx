@@ -15,10 +15,7 @@ import { RandomProducts } from '../shared/RandomProducts';
 const normalizeForUrlPart = (str: string) =>
   str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
 
-const getColorAndCapacityFromUrl = (
-  productId: string,
-  product: ProductDetails,
-) => {
+const getColorAndCapacityFromUrl = (productId: string, product: ProductDetails) => {
   const segments = productId.toLowerCase().split('-');
 
   const capacity =
@@ -40,19 +37,10 @@ const capitalizeWords = (str: string) =>
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
 
-const buildProductName = (
-  product: ProductDetails,
-  capacity: string,
-  color: string,
-) => {
+const buildProductName = (product: ProductDetails, capacity: string, color: string) => {
   let name = product.name;
-
   name = name.replace(new RegExp(product.capacity, 'i'), capacity);
-  name = name.replace(
-    new RegExp(product.color.replace(/\s+/g, '\\s+'), 'i'),
-    capitalizeWords(color),
-  );
-
+  name = name.replace(new RegExp(product.color.replace(/\s+/g, '\\s+'), 'i'), capitalizeWords(color));
   return name;
 };
 
@@ -65,6 +53,7 @@ export const ProductDetailsPage = () => {
   const [activeCapacity, setActiveCapacity] = useState('');
   const [images, setImages] = useState<string[]>([]);
   const [productName, setProductName] = useState('');
+  const [sortedColors, setSortedColors] = useState<string[]>([]);
 
   const pathSegments = location.pathname.split('/');
   const category = location.state?.category || pathSegments[1];
@@ -73,14 +62,8 @@ export const ProductDetailsPage = () => {
 
   const updateUrl = useCallback(
     (color: string, capacity: string) => {
-      if (!product) {
-        return;
-      }
-
-      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
-        capacity,
-      )}-${normalizeForUrlPart(color)}`;
-
+      if (!product) return;
+      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(capacity)}-${normalizeForUrlPart(color)}`;
       navigate(`/${category}/${newProductId}`, { replace: true });
     },
     [product, category, navigate],
@@ -88,9 +71,7 @@ export const ProductDetailsPage = () => {
 
   const handleColorChange = useCallback(
     (color: string) => {
-      if (!product) {
-        return;
-      }
+      if (!product) return;
 
       setActiveColor(color);
 
@@ -98,7 +79,6 @@ export const ProductDetailsPage = () => {
       const filteredImages = product.images.filter(img =>
         img.toLowerCase().includes(colorKey),
       );
-
       setImages(filteredImages.length ? filteredImages : product.images);
 
       setProductName(buildProductName(product, activeCapacity, color));
@@ -109,9 +89,7 @@ export const ProductDetailsPage = () => {
 
   const handleCapacityChange = useCallback(
     (capacity: string) => {
-      if (!product) {
-        return;
-      }
+      if (!product) return;
 
       setActiveCapacity(capacity);
       setProductName(buildProductName(product, capacity, activeColor));
@@ -121,12 +99,9 @@ export const ProductDetailsPage = () => {
   );
 
   useEffect(() => {
-    if (!product || !productId) {
-      return;
-    }
+    if (!product || !productId) return;
 
     const { capacity, color } = getColorAndCapacityFromUrl(productId, product);
-
     setActiveCapacity(capacity);
     setActiveColor(color);
 
@@ -134,32 +109,19 @@ export const ProductDetailsPage = () => {
     const filteredImages = product.images.filter(img =>
       img.toLowerCase().includes(colorKey),
     );
-
     setImages(filteredImages.length ? filteredImages : product.images);
+
     setProductName(buildProductName(product, capacity, color));
 
-    const preferredOrder = [
-      'silver',
-      'gold',
-      'space gray',
-      'midnight green',
-      'starlight',
-    ];
-
-    product.colorsAvailable.sort(
-      (a, b) =>
-        preferredOrder.indexOf(a.toLowerCase()) -
-        preferredOrder.indexOf(b.toLowerCase()),
+    const preferredOrder = ['silver', 'gold', 'space gray', 'midnight green', 'starlight'];
+    const sorted = [...product.colorsAvailable].sort(
+      (a, b) => preferredOrder.indexOf(a.toLowerCase()) - preferredOrder.indexOf(b.toLowerCase())
     );
+    setSortedColors(sorted);
   }, [product, productId]);
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (error || !product) {
-    return <NotFoundProduct />;
-  }
+  if (loading) return <Loader />;
+  if (error || !product) return <NotFoundProduct />;
 
   const showDiscount = location.state?.showDiscount ?? false;
 
@@ -174,6 +136,7 @@ export const ProductDetailsPage = () => {
 
         <ProductSpec
           product={product}
+          colors={sortedColors}
           activeColor={activeColor}
           setActiveColor={handleColorChange}
           activeCapacity={activeCapacity}
