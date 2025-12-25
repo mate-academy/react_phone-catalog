@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ProductSpec } from '../ProductSpec';
 import { ProductPhotos } from '../ProductPhotos';
@@ -69,7 +69,15 @@ export const ProductDetailsPage = () => {
   const pathSegments = location.pathname.split('/');
   const category = location.state?.category || pathSegments[1];
 
-  const { product, loading, error } = useProductDetails(productId, category);
+  const namespaceId = useMemo(() => {
+    if (!productId) {
+      return undefined;
+    }
+
+    return productId.split('-').slice(0, 3).join('-');
+  }, [productId]);
+
+  const { product, loading, error } = useProductDetails(namespaceId, category);
 
   const updateUrl = useCallback(
     (color: string, capacity: string) => {
@@ -101,7 +109,6 @@ export const ProductDetailsPage = () => {
 
       setImages(filteredImages.length ? filteredImages : product.images);
       setProductName(buildProductName(product, activeCapacity, color));
-
       updateUrl(color, activeCapacity);
     },
     [product, activeCapacity, updateUrl],

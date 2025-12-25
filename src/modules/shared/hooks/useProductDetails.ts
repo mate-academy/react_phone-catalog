@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ProductDetails } from '../../../types/ProductDetails';
 
 export const useProductDetails = (
-  productId: string | undefined,
+  namespaceId: string | undefined,
   category: 'phones' | 'tablets' | 'accessories' | undefined,
 ) => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
@@ -12,11 +12,8 @@ export const useProductDetails = (
 
   const cache = useRef<Map<string, ProductDetails>>(new Map());
 
-  const normalizeId = (str: string) =>
-    str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
-
   useEffect(() => {
-    if (!productId || !category) {
+    if (!namespaceId || !category) {
       setProduct(null);
       setLoading(false);
       setError(false);
@@ -25,7 +22,7 @@ export const useProductDetails = (
       return;
     }
 
-    const cacheKey = `${category}/${productId}`;
+    const cacheKey = `${category}/${namespaceId}`;
 
     if (cache.current.has(cacheKey)) {
       setProduct(cache.current.get(cacheKey)!);
@@ -51,11 +48,7 @@ export const useProductDetails = (
         const productsData: { id: number; itemId: string }[] =
           await productsRes.json();
 
-        const found = detailsData.find(
-          p =>
-            p.namespaceId === productId ||
-            normalizeId(p.id) === normalizeId(productId),
-        );
+        const found = detailsData.find(p => p.namespaceId === namespaceId);
 
         if (!found) {
           setProduct(null);
@@ -64,9 +57,7 @@ export const useProductDetails = (
           return;
         }
 
-        const matchedProduct = productsData.find(
-          p => normalizeId(p.itemId) === normalizeId(found.id),
-        );
+        const matchedProduct = productsData.find(p => p.itemId === found.id);
 
         const enrichedProduct: ProductDetails = {
           ...found,
@@ -76,7 +67,7 @@ export const useProductDetails = (
         cache.current.set(cacheKey, enrichedProduct);
         setProduct(enrichedProduct);
         setNotFound(false);
-      } catch (e) {
+      } catch {
         setError(true);
         setProduct(null);
       } finally {
@@ -85,7 +76,7 @@ export const useProductDetails = (
     };
 
     fetchData();
-  }, [productId, category]);
+  }, [namespaceId, category]);
 
   return { product, loading, error, notFound };
 };
