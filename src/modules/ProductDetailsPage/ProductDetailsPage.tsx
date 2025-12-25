@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ProductSpec } from '../ProductSpec';
 import { ProductPhotos } from '../ProductPhotos';
@@ -69,15 +69,7 @@ export const ProductDetailsPage = () => {
   const pathSegments = location.pathname.split('/');
   const category = location.state?.category || pathSegments[1];
 
-  const namespaceId = useMemo(() => {
-    if (!productId) {
-      return undefined;
-    }
-
-    return productId.split('-').slice(0, 3).join('-');
-  }, [productId]);
-
-  const { product, loading, error } = useProductDetails(namespaceId, category);
+  const { product, loading, error } = useProductDetails(productId, category);
 
   const updateUrl = useCallback(
     (color: string, capacity: string) => {
@@ -108,6 +100,7 @@ export const ProductDetailsPage = () => {
       );
 
       setImages(filteredImages.length ? filteredImages : product.images);
+
       setProductName(buildProductName(product, activeCapacity, color));
       updateUrl(color, activeCapacity);
     },
@@ -144,6 +137,20 @@ export const ProductDetailsPage = () => {
 
     setImages(filteredImages.length ? filteredImages : product.images);
     setProductName(buildProductName(product, capacity, color));
+
+    const preferredOrder = [
+      'silver',
+      'gold',
+      'space gray',
+      'midnight green',
+      'starlight',
+    ];
+
+    product.colorsAvailable.sort(
+      (a, b) =>
+        preferredOrder.indexOf(a.toLowerCase()) -
+        preferredOrder.indexOf(b.toLowerCase()),
+    );
   }, [product, productId]);
 
   if (loading) {

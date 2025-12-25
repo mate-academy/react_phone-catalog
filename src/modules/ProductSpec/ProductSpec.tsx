@@ -37,17 +37,26 @@ export const ProductSpec: React.FC<Props> = ({
   setActiveCapacity,
   showDiscount,
 }) => {
-  const capacityOption = product.capacityOptions?.find(
-    option => option.capacity === activeCapacity.toLowerCase(),
-  );
+  const getPriceForSelection = (capacity: string) => {
+    const option = product.capacityOptions?.find(
+      opt => opt.capacity === capacity.toLowerCase(),
+    );
+
+    return {
+      fullPrice: option?.priceRegular ?? product.priceRegular,
+      price: option?.priceDiscount ?? product.priceDiscount,
+    };
+  };
+
+  const { fullPrice, price } = getPriceForSelection(activeCapacity);
 
   const adaptedProduct: Product = {
     id: product.databaseId,
     itemId: product.id,
     name: product.name,
     category: product.category,
-    fullPrice: capacityOption?.priceRegular ?? product.priceRegular,
-    price: capacityOption?.priceDiscount ?? product.priceDiscount,
+    fullPrice,
+    price,
     screen: product.screen,
     capacity: activeCapacity.toLowerCase(),
     color: activeColor,
@@ -66,15 +75,12 @@ export const ProductSpec: React.FC<Props> = ({
           {product.colorsAvailable.map(color => {
             const isActive =
               normalizeColor(color) === normalizeColor(activeColor);
-
             const displayColor = COLOR_MAP[normalizeColor(color)] || color;
 
             return (
               <div
                 key={normalizeColor(color)}
-                className={`${styles.spec_color} ${
-                  isActive ? styles['spec_color--active'] : ''
-                }`}
+                className={`${styles.spec_color} ${isActive ? styles['spec_color--active'] : ''}`}
                 onClick={() => setActiveColor(color)}
               >
                 <p
