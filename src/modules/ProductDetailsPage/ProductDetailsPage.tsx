@@ -198,15 +198,15 @@ export const ProductDetailsPage = () => {
         <ProductPhotos images={images} />
         <ProductSpec
           product={product}
-          colors={product.colorsAvailable}
-          activeColor={product.colorsAvailable[activeColorIndex]}
-          setActiveColor={handleColorChange}
-          activeCapacity={product.capacityAvailable[activeCapacityIndex]}
-          setActiveCapacity={handleCapacitySelect}
           showDiscount={showDiscount}
+          activeIndex={activeColorIndex}
+          setActiveIndex={setActiveColorIndex}
+          onColorChange={handleColorChange}
+          handleCapacitySelect={handleCapacitySelect}
+          activeCapacityIndex={activeCapacityIndex}
+          setActiveCapacityIndex={setActiveCapacityIndex}
         />
       </div>
-
       <ProductDescription details={product} />
       <RandomProducts />
     </div>
