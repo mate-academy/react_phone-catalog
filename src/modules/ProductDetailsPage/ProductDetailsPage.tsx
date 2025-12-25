@@ -22,12 +22,12 @@ const getColorAndCapacityFromUrl = (
   const segments = productId.toLowerCase().split('-');
 
   const capacity =
-    product.capacityAvailable.find((cap: string) =>
+    product.capacityAvailable.find(cap =>
       segments.some(seg => seg.includes(cap.toLowerCase())),
     ) || product.capacityAvailable[0];
 
   const color =
-    product.colorsAvailable.find((c: string) =>
+    product.colorsAvailable.find(c =>
       segments.some(seg => seg.includes(c.toLowerCase().replace(/\s+/g, '-'))),
     ) || product.colorsAvailable[0];
 
@@ -37,26 +37,20 @@ const getColorAndCapacityFromUrl = (
 const capitalizeWords = (str: string) =>
   str
     .split(' ')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
 
 const buildProductName = (
   product: ProductDetails,
-  activeCapacityIndex: number,
-  activeColorIndex: number,
+  capacity: string,
+  color: string,
 ) => {
-  const currentCapacity =
-    product.capacityAvailable[activeCapacityIndex].toUpperCase();
-  const currentColor = capitalizeWords(
-    product.colorsAvailable[activeColorIndex],
-  );
-
   let name = product.name;
 
-  name = name.replace(new RegExp(product.capacity, 'i'), currentCapacity);
+  name = name.replace(new RegExp(product.capacity, 'i'), capacity);
   name = name.replace(
     new RegExp(product.color.replace(/\s+/g, '\\s+'), 'i'),
-    currentColor,
+    capitalizeWords(color),
   );
 
   return name;
@@ -67,8 +61,8 @@ export const ProductDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [activeColorIndex, setActiveColorIndex] = useState(0);
-  const [activeCapacityIndex, setActiveCapacityIndex] = useState(0);
+  const [activeColor, setActiveColor] = useState('');
+  const [activeCapacity, setActiveCapacity] = useState('');
   const [images, setImages] = useState<string[]>([]);
   const [productName, setProductName] = useState('');
 
@@ -77,69 +71,53 @@ export const ProductDetailsPage = () => {
 
   const { product, loading, error } = useProductDetails(productId, category);
 
+  const updateUrl = useCallback(
+    (color: string, capacity: string) => {
+      if (!product) {
+        return;
+      }
+
+      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
+        capacity,
+      )}-${normalizeForUrlPart(color)}`;
+
+      navigate(`/${category}/${newProductId}`, { replace: true });
+    },
+    [product, category, navigate],
+  );
+
   const handleColorChange = useCallback(
     (color: string) => {
       if (!product) {
         return;
       }
 
-      const colorIndex = product.colorsAvailable.findIndex(
-        c => c.toLowerCase() === color.toLowerCase(),
-      );
-
-      if (colorIndex < 0) {
-        return;
-      }
-
-      setActiveColorIndex(colorIndex);
+      setActiveColor(color);
 
       const colorKey = color.toLowerCase().replace(/\s+/g, '-');
-      const newImages = product.images.filter(img =>
+      const filteredImages = product.images.filter(img =>
         img.toLowerCase().includes(colorKey),
       );
 
-      setImages(newImages.length > 0 ? newImages : product.images);
+      setImages(filteredImages.length ? filteredImages : product.images);
+      setProductName(buildProductName(product, activeCapacity, color));
 
-      setProductName(
-        buildProductName(product, activeCapacityIndex, colorIndex),
-      );
-
-      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
-        product.capacityAvailable[activeCapacityIndex],
-      )}-${normalizeForUrlPart(color)}`;
-
-      navigate(`/${category}/${newProductId}`, { replace: true });
+      updateUrl(color, activeCapacity);
     },
-    [product, activeCapacityIndex, category, navigate],
+    [product, activeCapacity, updateUrl],
   );
 
-  const handleCapacitySelect = useCallback(
+  const handleCapacityChange = useCallback(
     (capacity: string) => {
       if (!product) {
         return;
       }
 
-      const capacityIndex = product.capacityAvailable.findIndex(
-        c => c === capacity,
-      );
-
-      if (capacityIndex < 0) {
-        return;
-      }
-
-      setActiveCapacityIndex(capacityIndex);
-
-      setProductName(
-        buildProductName(product, capacityIndex, activeColorIndex),
-      );
-
-      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
-        capacity,
-      )}-${normalizeForUrlPart(product.colorsAvailable[activeColorIndex])}`;
-
-      navigate(`/${category}/${newProductId}`, { replace: true });
+      setActiveCapacity(capacity);
+      setProductName(buildProductName(product, capacity, activeColor));
+      updateUrl(activeColor, capacity);
     },
-    [product, activeColorIndex, category, navigate],
+    [product, activeColor, updateUrl],
   );
 
   useEffect(() => {
@@ -147,35 +125,18 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    const { capacity: initialCapacity, color: initialColor } =
-      getColorAndCapacityFromUrl(productId, product);
+    const { capacity, color } = getColorAndCapacityFromUrl(productId, product);
 
-    const capacityIndex = product.capacityAvailable.findIndex(
-      c => c === initialCapacity,
-    );
-    const colorIndex = product.colorsAvailable.findIndex(
-      c => c.toLowerCase() === initialColor.toLowerCase(),
-    );
+    setActiveCapacity(capacity);
+    setActiveColor(color);
 
-    setActiveCapacityIndex(capacityIndex >= 0 ? capacityIndex : 0);
-    setActiveColorIndex(colorIndex >= 0 ? colorIndex : 0);
-
-    const colorKey = product.colorsAvailable[colorIndex >= 0 ? colorIndex : 0]
-      .toLowerCase()
-      .replace(/\s+/g, '-');
-    const newImages = product.images.filter(img =>
+    const colorKey = color.toLowerCase().replace(/\s+/g, '-');
+    const filteredImages = product.images.filter(img =>
       img.toLowerCase().includes(colorKey),
     );
 
-    setImages(newImages.length > 0 ? newImages : product.images);
-
-    setProductName(
-      buildProductName(
-        product,
-        capacityIndex >= 0 ? capacityIndex : 0,
-        colorIndex >= 0 ? colorIndex : 0,
-      ),
-    );
+    setImages(filteredImages.length ? filteredImages : product.images);
+    setProductName(buildProductName(product, capacity, color));
   }, [product, productId]);
 
   if (loading) {
@@ -196,17 +157,17 @@ export const ProductDetailsPage = () => {
 
       <div className={styles.productPage_spec}>
         <ProductPhotos images={images} />
+
         <ProductSpec
           product={product}
+          activeColor={activeColor}
+          setActiveColor={handleColorChange}
+          activeCapacity={activeCapacity}
+          setActiveCapacity={handleCapacityChange}
           showDiscount={showDiscount}
-          activeIndex={activeColorIndex}
-          setActiveIndex={setActiveColorIndex}
-          onColorChange={handleColorChange}
-          handleCapacitySelect={handleCapacitySelect}
-          activeCapacityIndex={activeCapacityIndex}
-          setActiveCapacityIndex={setActiveCapacityIndex}
         />
       </div>
+
       <ProductDescription details={product} />
       <RandomProducts />
     </div>
