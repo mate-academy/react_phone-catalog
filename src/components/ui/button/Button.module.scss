@@ -27,22 +27,33 @@
 
   // Основна кнопка (синя/чорна)
   &--primary {
-    background-color: $light-text-main; // Ваш колір з variables
+    background-color: var(--btn-main); // Ваш колір з variables
     color: #fff;
-    border-color: $light-text-main;
+    border-color: var(--btn-main);
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
     }
   }
 
+  &--dark {
+    &:hover {
+      box-shadow: none;
+      background-color: $dark-btn-main-hover;
+    }
+  }
+
   // Кнопка для стану "Added" (біла з рамкою)
   &--outline {
-    background-color: #fff;
+    background-color: var(--btn-bg);
     color: $color-green; // Зелений колір для "Added"
-    border-color: $light-border; // Сірий бордер
-
+    border-color: var(--color-disabled); // Сірий бордер
+    &--dark {
+      color: var(--text-main);
+      border-color: var(--btn-bg);
+    }
     &:hover {
+       background-color: var(--btn-bg);
       box-shadow: none;
       cursor: default;
     }

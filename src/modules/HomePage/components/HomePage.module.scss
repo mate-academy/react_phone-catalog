@@ -83,5 +83,5 @@
 }
 .categoryCount {
   @include type($body-size, $body-line, $body-track, $body-weight);
-  color: $light-text-secondary;
+  color: var(--text-secondary);
 }

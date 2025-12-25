@@ -117,34 +117,6 @@
       }
     }
 
-    .btn-fav {
-      width: 40px;
-      height: 40px;
-      border: 1px solid $light-btn-border;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: $light-text-main;
-      transition:
-        border-color 0.3s,
-        color 0.3s;
-      flex-shrink: 0;
-
-      @include desktop {
-        &:hover {
-          border-color: $light-text-main;
-          color: $light-text-main;
-        }
-      }
-      &--added {
-        border-color: $light-border;
-        svg {
-          fill: $color-red;
-          stroke: $color-red;
-        }
-      }
-    }
+  
   }
 }
