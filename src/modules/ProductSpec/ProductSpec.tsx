@@ -27,7 +27,8 @@ const COLOR_MAP: Record<string, string> = {
   spaceblack: '#0d0d0d',
 };
 
-const normalizeColor = (color: string) => color.replace(/\s|-/g, '').toLowerCase();
+const normalizeColor = (color: string) =>
+  color.replace(/\s|-/g, '').toLowerCase();
 
 export const ProductSpec: React.FC<Props> = ({
   product,
@@ -38,7 +39,9 @@ export const ProductSpec: React.FC<Props> = ({
   setActiveCapacity,
   showDiscount,
 }) => {
-  const capacityOption = product.capacityOptions?.find(opt => opt.capacity === activeCapacity.toLowerCase());
+  const capacityOption = product.capacityOptions?.find(
+    opt => opt.capacity === activeCapacity.toLowerCase(),
+  );
   const fullPrice = capacityOption?.priceRegular ?? product.priceRegular;
   const price = capacityOption?.priceDiscount ?? product.priceDiscount;
 
@@ -65,7 +68,8 @@ export const ProductSpec: React.FC<Props> = ({
 
         <div className={styles.spec_colors_container}>
           {colors.map(color => {
-            const isActive = normalizeColor(color) === normalizeColor(activeColor);
+            const isActive =
+              normalizeColor(color) === normalizeColor(activeColor);
             const displayColor = COLOR_MAP[normalizeColor(color)] || color;
 
             return (
@@ -74,7 +78,10 @@ export const ProductSpec: React.FC<Props> = ({
                 className={`${styles.spec_color} ${isActive ? styles['spec_color--active'] : ''}`}
                 onClick={() => setActiveColor(color)}
               >
-                <p className={styles.spec_item_color} style={{ backgroundColor: displayColor }} />
+                <p
+                  className={styles.spec_item_color}
+                  style={{ backgroundColor: displayColor }}
+                />
               </div>
             );
           })}
@@ -103,7 +110,9 @@ export const ProductSpec: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className={`${styles.spec_divide_line} ${styles.spec_divide_line_last}`} />
+      <div
+        className={`${styles.spec_divide_line} ${styles.spec_divide_line_last}`}
+      />
 
       <ProductCardShared product={adaptedProduct} showDiscount={showDiscount} />
     </div>
