@@ -12,17 +12,9 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { ProductDescription } from '../shared/ProductDescription';
 import { RandomProducts } from '../shared/RandomProducts';
 
-// Уніфікована нормалізація рядків для URL, порівнянь та фільтрації
-const normalizeStr = (str: string) =>
+const normalizeForUrlPart = (str: string) =>
   str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
 
-const capitalizeWords = (str: string) =>
-  str
-    .split(' ')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-    .join(' ');
-
-// Визначаємо колір та capacity з URL
 const getColorAndCapacityFromUrl = (
   productId: string,
   product: ProductDetails,
@@ -30,19 +22,24 @@ const getColorAndCapacityFromUrl = (
   const segments = productId.toLowerCase().split('-');
 
   const capacity =
-    product.capacityAvailable.find(cap =>
-      segments.some(seg => normalizeStr(seg).includes(normalizeStr(cap))),
+    product.capacityAvailable.find((cap: string) =>
+      segments.some(seg => seg.includes(cap.toLowerCase())),
     ) || product.capacityAvailable[0];
 
   const color =
-    product.colorsAvailable.find(c =>
-      segments.some(seg => normalizeStr(seg).includes(normalizeStr(c))),
+    product.colorsAvailable.find((c: string) =>
+      segments.some(seg => seg.includes(c.toLowerCase().replace(/\s+/g, '-'))),
     ) || product.colorsAvailable[0];
 
   return { capacity, color };
 };
 
-// Генеруємо назву продукту з урахуванням активного кольору та capacity
+const capitalizeWords = (str: string) =>
+  str
+    .split(' ')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
+
 const buildProductName = (
   product: ProductDetails,
   activeCapacityIndex: number,
@@ -87,27 +84,29 @@ export const ProductDetailsPage = () => {
       }
 
       const colorIndex = product.colorsAvailable.findIndex(
-        c => normalizeStr(c) === normalizeStr(color),
+        c => c.toLowerCase() === color.toLowerCase(),
       );
 
       if (colorIndex < 0) {
         return;
       }
 
-      const colorKey = normalizeStr(color);
-      const newImages = product.images.filter(img =>
-        normalizeStr(img).includes(colorKey),
-      ) || [product.images[0]];
-
       setActiveColorIndex(colorIndex);
-      setImages(newImages);
+
+      const colorKey = color.toLowerCase().replace(/\s+/g, '-');
+      const newImages = product.images.filter(img =>
+        img.toLowerCase().includes(colorKey),
+      );
+
+      setImages(newImages.length > 0 ? newImages : product.images);
+
       setProductName(
         buildProductName(product, activeCapacityIndex, colorIndex),
       );
 
-      const newProductId = `${product.namespaceId}-${normalizeStr(
+      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
         product.capacityAvailable[activeCapacityIndex],
-      )}-${colorKey}`;
+      )}-${normalizeForUrlPart(color)}`;
 
       navigate(`/${category}/${newProductId}`, { replace: true });
     },
@@ -121,7 +120,7 @@ export const ProductDetailsPage = () => {
       }
 
       const capacityIndex = product.capacityAvailable.findIndex(
-        c => normalizeStr(c) === normalizeStr(capacity),
+        c => c === capacity,
       );
 
       if (capacityIndex < 0) {
@@ -129,13 +128,14 @@ export const ProductDetailsPage = () => {
       }
 
       setActiveCapacityIndex(capacityIndex);
+
       setProductName(
         buildProductName(product, capacityIndex, activeColorIndex),
       );
 
-      const newProductId = `${product.namespaceId}-${normalizeStr(
+      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
         capacity,
-      )}-${normalizeStr(product.colorsAvailable[activeColorIndex])}`;
+      )}-${normalizeForUrlPart(product.colorsAvailable[activeColorIndex])}`;
 
       navigate(`/${category}/${newProductId}`, { replace: true });
     },
@@ -151,26 +151,30 @@ export const ProductDetailsPage = () => {
       getColorAndCapacityFromUrl(productId, product);
 
     const capacityIndex = product.capacityAvailable.findIndex(
-      c => normalizeStr(c) === normalizeStr(initialCapacity),
+      c => c === initialCapacity,
     );
     const colorIndex = product.colorsAvailable.findIndex(
-      c => normalizeStr(c) === normalizeStr(initialColor),
+      c => c.toLowerCase() === initialColor.toLowerCase(),
     );
 
-    const finalCapacityIndex = capacityIndex >= 0 ? capacityIndex : 0;
-    const finalColorIndex = colorIndex >= 0 ? colorIndex : 0;
+    setActiveCapacityIndex(capacityIndex >= 0 ? capacityIndex : 0);
+    setActiveColorIndex(colorIndex >= 0 ? colorIndex : 0);
 
-    setActiveCapacityIndex(finalCapacityIndex);
-    setActiveColorIndex(finalColorIndex);
-
-    const colorKey = normalizeStr(product.colorsAvailable[finalColorIndex]);
+    const colorKey = product.colorsAvailable[colorIndex >= 0 ? colorIndex : 0]
+      .toLowerCase()
+      .replace(/\s+/g, '-');
     const newImages = product.images.filter(img =>
-      normalizeStr(img).includes(colorKey),
-    ) || [product.images[0]];
+      img.toLowerCase().includes(colorKey),
+    );
 
-    setImages(newImages);
+    setImages(newImages.length > 0 ? newImages : product.images);
+
     setProductName(
-      buildProductName(product, finalCapacityIndex, finalColorIndex),
+      buildProductName(
+        product,
+        capacityIndex >= 0 ? capacityIndex : 0,
+        colorIndex >= 0 ? colorIndex : 0,
+      ),
     );
   }, [product, productId]);
 
@@ -203,7 +207,6 @@ export const ProductDetailsPage = () => {
           setActiveCapacityIndex={setActiveCapacityIndex}
         />
       </div>
-
       <ProductDescription details={product} />
       <RandomProducts />
     </div>
