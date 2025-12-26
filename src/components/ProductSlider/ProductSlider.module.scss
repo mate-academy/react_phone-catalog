@@ -1,5 +1,8 @@
 .product_slider {
   margin-block: 80px;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
 
   &__link {
     color: inherit;
@@ -62,8 +65,13 @@
   }
 
   &__container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 272px);
     gap: 16px;
+    // grid-auto-flow: column;
+    // grid-auto-columns: minmax(272px, 1fr);
+    overflow: hidden;
+    width: 100%;
     align-items: center;
     justify-content: center;
     transition: transform 0.4s ease;

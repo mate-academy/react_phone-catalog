@@ -1,5 +1,9 @@
 .footer {
   bottom: 0;
+  // position: fixed;
+  // width: 100%;
+  // background-color: $main-background-color;
+  // box-sizing: border-box;
   height: 96px;
   font-weight: 800;
   font-size: 12px;
@@ -51,6 +55,7 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
+
 
     &__text {
       display: inline-flex;

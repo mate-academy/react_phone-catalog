@@ -16,18 +16,19 @@ export interface Product {
   screen: string;
   capacity: string;
   ram: string;
+  category: string;
 }
 
 interface Props {
-  category: string;
+  title: string;
   products: Product[],
 }
 
-export const ProductSlider: React.FC<Props> = ({ category, products }) => {
+export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   const VISIBLE_COUNT = 4;
 
   const [startIndex, setStartIndex] = useState(0);
-  const maxIndex = products.length - VISIBLE_COUNT;
+  const maxIndex = products.length;
 
   const visibleProducts = products.slice(
     startIndex,
@@ -43,12 +44,12 @@ export const ProductSlider: React.FC<Props> = ({ category, products }) => {
   };
 
   const isLeftDisabled = startIndex === 0;
-  const isRightDisabled = startIndex === maxIndex;
+  const isRightDisabled = startIndex === maxIndex - VISIBLE_COUNT;
 
   return (
     <div className={styles.product_slider}>
       <div className={styles.product_slider__top_bar}>
-        <h3>You may also like</h3>
+        <h3>{title}</h3>
         <div className={styles.product_slider__top_bar__buttons}>
           <button
             onClick={handleLeftButton}
@@ -69,7 +70,7 @@ export const ProductSlider: React.FC<Props> = ({ category, products }) => {
             {isRightDisabled ? (
               <img src={Disabled_right} alt="Next products" className={styles.product_slider__top_bar__buttons__button__img} />
             ) : (
-                <img src={Active_right} alt="Next products" className={styles.product_slider__top_bar__buttons__button__img} />
+              <img src={Active_right} alt="Next products" className={styles.product_slider__top_bar__buttons__button__img} />
             )}
           </button>
         </div>
@@ -79,7 +80,7 @@ export const ProductSlider: React.FC<Props> = ({ category, products }) => {
         {visibleProducts.map(item => (
           <div key={item.id} className={styles.product_slider__item}>
             <div className={styles.product_slider__item__container}>
-              <Link to={`/${category}/${item.id}`} className={styles.product_slider__link}>
+              <Link to={`/${item.category}/${item.id}`} className={styles.product_slider__link}>
                 <img
                   src={item.image}
                   alt='Item Main Image'

@@ -6,8 +6,6 @@ const sortedByPrice = [...products]
   .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price))
   .splice(0, 11);
 
-const HOT_PRICES_TITLE = 'Hot prices';
-
 const formattedHotPrices: Product[] = sortedByPrice.map((item) => ({
   ...item,
   id: item.itemId,
@@ -16,7 +14,7 @@ const formattedHotPrices: Product[] = sortedByPrice.map((item) => ({
 export const HotPrices: React.FC = () => {
   return (
     <ProductSlider
-      title={HOT_PRICES_TITLE}
+      title="Hot prices"
       products={formattedHotPrices}
     />
   )

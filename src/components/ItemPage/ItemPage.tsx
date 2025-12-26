@@ -216,14 +216,18 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
                 <p className={styles.item_page__info__tech_specs__line__text}>Built in memory</p>
                 <p className={styles.item_page__info__tech_specs__line__value}>{item.capacity}</p>
               </div>
-              <div className={styles.item_page__info__tech_specs__line}>
-                <p className={styles.item_page__info__tech_specs__line__text}>Camera</p>
-                <p className={styles.item_page__info__tech_specs__line__value}>{item.camera}</p>
-              </div>
-              <div className={styles.item_page__info__tech_specs__line}>
-                <p className={styles.item_page__info__tech_specs__line__text}>Zoom</p>
-                <p className={styles.item_page__info__tech_specs__line__value}>{item.zoom}</p>
-              </div>
+              {item.camera && (
+                <div className={styles.item_page__info__tech_specs__line}>
+                  <p className={styles.item_page__info__tech_specs__line__text}>Camera</p>
+                  <p className={styles.item_page__info__tech_specs__line__value}>{item.camera}</p>
+                </div>
+              )}
+              {item.zoom && (
+                <div className={styles.item_page__info__tech_specs__line}>
+                  <p className={styles.item_page__info__tech_specs__line__text}>Zoom</p>
+                  <p className={styles.item_page__info__tech_specs__line__value}>{item.zoom}</p>
+                </div>
+              )}
               <div className={styles.item_page__info__tech_specs__line}>
                 <p className={styles.item_page__info__tech_specs__line__text}>Cell</p>
                 <p className={styles.item_page__info__tech_specs__line__value}>{item.cell.join(', ')}</p>
@@ -233,6 +237,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
         </div>
 
         <ProductSlider
+          title="You may also like"
           category={categoryName.toLowerCase()}
           products={formattedProducts}
         />
