@@ -1,7 +1,7 @@
 @use '@/styles/mixins.scss' as *;
 
 .footer {
-  box-shadow: 0 -1px 0 0 $light-border;
+  box-shadow: 0 -1px 0 0 var(--border-color);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -37,11 +37,11 @@
       $uppercase-track,
       $uppercase-weight
     );
-    color: $light-text-secondary;
+    color: var(--text-secondary);
     transition: color 0.3s;
 
     &:hover {
-      color: $light-text-main;
+      color: var(--text-main);
     }
   }
 
@@ -66,14 +66,21 @@
     padding: 0;
     cursor: pointer;
     align-self: center;
+    transition: all 0.3s ease;
 
-    @include tablet {
+    @include desktop {
       &:hover {
         .footer__backtoTopText {
-          color: $light-text-main;
+          color: var(--text-main);
         }
+        
         .footer__backtoTopIcon {
-          border-color: $light-text-main;
+          border-color: var(--btn-hover-color);
+          &--dark {
+            &:hover {
+              background-color: var(--btn-hover-color);
+            }
+          }
         }
       }
     }
@@ -87,19 +94,20 @@
       700,
       $font-mont-semibold
     );
-    color: $light-text-secondary;
+    color: var(--text-secondary);
     transition: color 0.3s;
   }
 
   &__backtoTopIcon {
-    background: #fff;
-    border: 1px solid $light-border;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
+    color: var(--text-main);
   }
 }

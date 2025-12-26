@@ -1,6 +1,5 @@
 import styles from './Navbar.module.scss';
 import { Link, NavLink } from 'react-router-dom';
-import Logo from '/img/Logo.svg';
 import { useTheme } from '@/context/ThemeContext';
 import burgerMenu from '/img/icons/burger-menu.svg';
 import { useCart } from '@/modules/CartFavContext/CartContext';
@@ -14,7 +13,7 @@ export const Navbar = () => {
   const { totalCount, totalFavoritesCount } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const handleMenuClick = () => {
     setIsMenuOpen(prev => !prev);
   };

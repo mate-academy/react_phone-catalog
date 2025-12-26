@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-
-// Import images to ensure bundler (Vite/Webpack) finds them correctly
-// Adjust path based on your folder structure
-import logoFooter from '/img/Logo1.svg';
-import iconUp from '../../../../../public/img/up-icon.svg';
+import LogoDark from '/img/LogoDark.svg';
+import LogoLight from '/img/LogoLight.svg';
+import { ArrowIcon } from '@/components/Icons/ArrowIcon';
+import { useTheme } from '@/context/ThemeContext';
+import classNames from 'classnames';
 
 export const Footer: React.FC = () => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+  const { theme } = useTheme();
 
   return (
     <footer className={styles.footer}>
       <Link to="/" className={styles.footer__logo} onClick={handleScrollTop}>
-        <img src={logoFooter} alt="Logo" />
+        <img src={theme === 'dark' ? LogoDark : LogoLight} alt="MyShop Logo" />
       </Link>
 
       <div className={styles.footer__links}>
@@ -41,8 +42,12 @@ export const Footer: React.FC = () => {
         aria-label="Scroll back to top" // Good for accessibility
       >
         <span className={styles.footer__backtoTopText}>Back to top</span>
-        <div className={styles.footer__backtoTopIcon}>
-          <img src={iconUp} alt="" />
+        <div
+          className={classNames(styles.footer__backtoTopIcon, {
+            [styles['footer__backtoTopIcon--dark']]: theme === 'dark',
+          })}
+        >
+          <ArrowIcon direction="up" />
         </div>
         {/* Empty alt because button has aria-label */}
       </button>
