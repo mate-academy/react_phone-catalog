@@ -29,12 +29,26 @@ h2 {
   line-height: 41px;
   letter-spacing: -1%;
   color:#0F0F11;
+  margin: auto;
+  width: 288px;
+  height: 82px;
 
-   @include on-desktop {
-    max-width: 1260px;
-    padding-inline: 120px;
-    margin-inline: auto;
+  @include on-tablet {
+  font-size: 48px;
+  line-height: 56px;
+  width: 592px;
+  height: 82px;
+  margin-top: auto;
+   // padding-left: 32px;
   }
+
+  @include on-desktop {
+    width: 1132px;
+    height: 56px;
+    margin-top: auto;
+    //padding-left: 32px;
+  }
+
 
 }
 

@@ -34,6 +34,11 @@ box-sizing: border-box;
     flex-direction: column;
     gap: 24px;
     text-align: center ;
-      box-sizing: border-box;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      flex-direction: row;
+       gap: 32px;
+    }
   }
 }

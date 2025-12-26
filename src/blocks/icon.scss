@@ -1,6 +1,4 @@
 .icon {
- // width: 48px;
-  //height: 48px;
   display: block;
   background-size: cover;
   background-position: center;
@@ -15,8 +13,6 @@
 
   &__background {
     border-left: 1px solid #E2E6E9;
-
-       //border-left: 1px solid red;
   }
 
   &--menu {
@@ -39,7 +35,7 @@
     height: 16px;
 
   }
-  
+
   &--close {
     background-image: url(/img/icons/icon-close-2x.png);
     width: 16px;

@@ -4,9 +4,15 @@
   border-bottom: 1px solid #E2E6E9;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
   width: 100%;
 
+  &__menu {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+  }
 
   &__icons {
     display: flex;

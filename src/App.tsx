@@ -8,58 +8,67 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
 import { isMobile } from 'react-device-detect';
+import { Menu } from './components/Menu/Menu';
 import './App.scss';
 
 const App = () => {
   return (
     <>
       <header className="header">
-        <div className="header__content">
-          <div className="top-bar">
+        <div className="top-bar">
+          <div className="top-bar__menu">
             <a href="#">
               <img
                 src="img/logo-2x.png"
                 alt="The Nice Gadgets Logo"
+                title="The Nice Gadgets Logo"
                 className="top-bar__logo"
               />
             </a>
+            {!isMobile && <Menu />}
+          </div>
 
-            <div className="top-bar__icons">
-              {!isMobile ? (
-                <>
-                  <div className="icon__background">
-                    <a href="#favourites" className="icon icon--favourites"></a>
-                  </div>
-                  <div className="icon__background">
-                    <a
-                      href="#shopping-bag-cart"
-                      className="icon icon--shopping-bag-cart"
-                    ></a>
-                  </div>
-                </>
-              ) : (
+          <div className="top-bar__icons">
+            {!isMobile ? (
+              <>
                 <div className="icon__background">
-                  <a href="#menu" className="icon icon--menu"></a>
+                  <a href="#favourites" className="icon icon--favourites"></a>
                 </div>
-              )}
-            </div>
+                <div className="icon__background">
+                  <a
+                    href="#shopping-bag-cart"
+                    className="icon icon--shopping-bag-cart"
+                  ></a>
+                </div>
+              </>
+            ) : (
+              <div className="icon__background">
+                <a href="#menu" className="icon icon--menu"></a>
+              </div>
+            )}
           </div>
         </div>
-
-        <div className="header__bottom">
-          <div className="header__up">
-            <p>
-              <h2 className="header__title">Welcome to Nice Gadgets store!</h2>
-            </p>
-          </div>
-
-          <div className="header__downn"></div>
-          <div className="header__dots">
-            <img
-              src="img/dots-2x.png"
-              alt="Dots Style"
-              className="header__dots"
-            />
+        <div className="header__content">
+          <div className="header__bottom">
+            <div className="header__up">
+              <p>
+                <h2 className="header__title">
+                  Welcome to Nice Gadgets store!
+                </h2>
+              </p>
+            </div>
+            <div className="header__down">
+              <div className="header__button header__button-slider-left"></div>
+              <div className="header__banner"></div>
+              <div className="header__button header__button-slider-right"></div>
+            </div>
+            <div className="header__dots">
+              <img
+                src="img/dots-2x.png"
+                alt="Dots Style"
+                className="header__dots"
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -81,30 +90,7 @@ const App = () => {
           </div>
 
           <div className="menu__bottom">
-            <nav className="nav menu__nav">
-              <ul className="nav__list">
-                <li className="nav__item">
-                  <a href="#" className="nav__link">
-                    Home
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="#phones" className="nav__link">
-                    Phones
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="#tablets" className="nav__link">
-                    tablets
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="#accessories" className="nav__link">
-                    accessories
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <Menu />
           </div>
         </div>
       </aside>
