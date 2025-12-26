@@ -19,11 +19,11 @@ export interface Product {
 }
 
 interface Props {
-  title: string;
+  category: string;
   products: Product[],
 }
 
-export const ProductSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductSlider: React.FC<Props> = ({ category, products }) => {
   const VISIBLE_COUNT = 4;
 
   const [startIndex, setStartIndex] = useState(0);
@@ -48,7 +48,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <div className={styles.product_slider}>
       <div className={styles.product_slider__top_bar}>
-        <h3>{title}</h3>
+        <h3>You may also like</h3>
         <div className={styles.product_slider__top_bar__buttons}>
           <button
             onClick={handleLeftButton}
@@ -79,7 +79,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         {visibleProducts.map(item => (
           <div key={item.id} className={styles.product_slider__item}>
             <div className={styles.product_slider__item__container}>
-              <Link to={`/phones/${item.id}`} className={styles.product_slider__link}>
+              <Link to={`/${category}/${item.id}`} className={styles.product_slider__link}>
                 <img
                   src={item.image}
                   alt='Item Main Image'
