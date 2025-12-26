@@ -4,6 +4,14 @@ import Logo from './icons/Logo.png';
 import Button from './icons/button.png';
 import { NavLink } from "react-router-dom";
 
+const handleScroll = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
+
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
@@ -31,10 +39,13 @@ export const Footer: React.FC = () => {
         </nav>
 
         <div className={styles.footer__button}>
-          <NavLink to="/" className={styles.footer__button__text}>
+          <button
+            className={styles.footer__button__text}
+            onClick={handleScroll}
+          >
             Back to top
             <img src={Button} alt="Back to top" className={styles.footer__button__img} />
-          </NavLink>
+          </button>
         </div>
       </div>
     </footer>

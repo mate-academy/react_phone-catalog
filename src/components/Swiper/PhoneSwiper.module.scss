@@ -45,7 +45,11 @@
     background-color: $main-button-color;
     border: none;
     height: 100%;
-    // z-index: 20;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $button-hover;
+    }
 
     &__arrow {
       align-items: center;

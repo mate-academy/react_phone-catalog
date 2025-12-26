@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import { MobilePhones } from './components/MobilePhones/MobilePhones';
 import { PhonePage } from './components/PhonePage/PhonePage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { Tablets } from './components/Tablets/Tablets';
 
 export const App = () => (
   <div className="App">
@@ -15,6 +16,7 @@ export const App = () => (
         <Routes>
           <Route path="/" element={<HomePage /> }/>
           <Route path="/phones" element={<MobilePhones />} />
+          <Route path="/tablets" element={<Tablets />} />
           <Route path="/phones/:phoneId" element={<PhonePage />} />
 
           <Route path="*" element={<NotFoundPage />} />
