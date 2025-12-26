@@ -1,0 +1,116 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.cartItem {
+  padding: $padding-mobile;
+  border: 1px solid $elements;
+  border-radius: 16px;
+  background-color: $white;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: $padding-tablet;
+  }
+
+  .top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+      margin-right: 24px;
+      margin-bottom: 0;
+    }
+
+    .deleteButton {
+      width: 16px;
+      height: 16px;
+      background: center no-repeat url('../../../../../public/img/icons/close-icon-grey.svg');
+
+      @include hover(background-image, url('../../../../../public/img/icons/close-icon-black.svg'));
+    }
+
+    .cartItemLink {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      @include on-tablet {
+        gap: 24px;
+      }
+
+      .cartItemImage {
+        width: 80px;
+        height: 80px;
+
+        @include hover(transform, scale(1.1));
+
+        img {
+          height: 100%;
+          margin: auto;
+        }
+      }
+
+      .productName {
+        font-size: 14px;
+        line-height: 21px;
+        color: $black;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    .itemQuantity {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+
+      .decrease,
+      .increase {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $icons;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @include hover(border-color, $black);
+      }
+
+      .decrease {
+        background-image: url('../../../../../public/img/icons/minus-icon-black.svg');
+
+        &.disabled {
+          cursor: not-allowed;
+          border-color: $elements;
+          background-image: url('../../../../../public/img/icons/minus-icon-grey.svg');
+        }
+      }
+
+      .increase {
+        background-image: url('../../../../../public/img/icons/plus-icon.svg');
+      }
+    }
+
+    .itemPrice {
+      font-size: 22px;
+      font-weight: 800;
+
+      @include on-tablet {
+        width: 80px;
+        text-align: right;
+      }
+    }
+  }
+}

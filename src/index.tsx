@@ -1,10 +1,7 @@
-import { createRoot } from 'react-dom/client';
-import { HashRouter as Router } from 'react-router-dom';
-import { App } from './App';
-import './fonts.scss';
+import ReactDom from 'react-dom/client';
+import { Root } from './Root';
+import './index.scss';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <Router>
-    <App />
-  </Router>,
-);
+const root = ReactDom.createRoot(document.getElementById('root') as HTMLElement);
+
+root.render(<Root />);
