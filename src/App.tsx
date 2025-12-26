@@ -8,6 +8,7 @@ import { MobilePhones } from './components/MobilePhones/MobilePhones';
 import { PhonePage } from './components/PhonePage/PhonePage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { Tablets } from './components/Tablets/Tablets';
+import { Accessories } from './components/Accessories/Accessories';
 
 export const App = () => (
   <div className="App">
@@ -17,6 +18,7 @@ export const App = () => (
           <Route path="/" element={<HomePage /> }/>
           <Route path="/phones" element={<MobilePhones />} />
           <Route path="/tablets" element={<Tablets />} />
+          <Route path="/accessories" element={<Accessories />} />
           <Route path="/phones/:phoneId" element={<PhonePage />} />
 
           <Route path="*" element={<NotFoundPage />} />
