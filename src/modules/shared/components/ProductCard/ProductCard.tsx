@@ -36,21 +36,21 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
     setIsSelected(curState => !curState);
   };
 
+  const productLink = `/product/${itemId}`;
+
   return (
     <article className={classNames(styles.productCard, className)}>
-      <div className={styles.productPreviewWrapper}>
+      <Link className={styles.productPreviewWrapper} to={productLink}>
         <img src={image} alt={name} />
-      </div>
+      </Link>
 
-      <h3 className={styles.productTitle}>
-        <Link
-          to={`/product/${itemId}`}
-          state={{ category }}
-          className={styles.productLink}
-        >
-          {name}
-        </Link>
-      </h3>
+      <Link
+        to={productLink}
+        state={{ category }}
+        className={styles.productLink}
+      >
+        <h3 className={styles.productTitle}>{name}</h3>
+      </Link>
 
       <div className={styles.productPrices}>
         <strong className={styles.productCurPrice}>

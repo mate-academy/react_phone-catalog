@@ -4,11 +4,12 @@
   display: block;
   gap: 24px;
 
-  @include transition(transform);
   @include flex-column;
 
   @include hover {
-    transform: scale(1.05);
+    .categoryPreview img {
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -24,6 +25,8 @@
     top: 20%;
     height: 100%;
     left: 30%;
+
+    @include transition(transform);
   }
 }
 
