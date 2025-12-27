@@ -12,55 +12,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { ProductDescription } from '../shared/ProductDescription';
 import { RandomProducts } from '../shared/RandomProducts';
 
-const normalizeForUrlPart = (str: string) =>
-  str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
-
-const getColorAndCapacityFromUrl = (
-  productId: string,
-  product: ProductDetails,
-) => {
-  const segments = productId.toLowerCase().split('-');
-
-  const capacity =
-    product.capacityAvailable.find((cap: string) =>
-      segments.some(seg => seg.includes(cap.toLowerCase())),
-    ) || product.capacityAvailable[0];
-
-  const color =
-    product.colorsAvailable.find((c: string) =>
-      segments.some(seg => seg.includes(c.toLowerCase().replace(/\s+/g, '-'))),
-    ) || product.colorsAvailable[0];
-
-  return { capacity, color };
-};
-
-const capitalizeWords = (str: string) =>
-  str
-    .split(' ')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-    .join(' ');
-
-const buildProductName = (
-  product: ProductDetails,
-  activeCapacityIndex: number,
-  activeColorIndex: number,
-) => {
-  const currentCapacity =
-    product.capacityAvailable[activeCapacityIndex].toUpperCase();
-  const currentColor = capitalizeWords(
-    product.colorsAvailable[activeColorIndex],
-  );
-
-  let name = product.name;
-
-  name = name.replace(new RegExp(product.capacity, 'i'), currentCapacity);
-  name = name.replace(
-    new RegExp(product.color.replace(/\s+/g, '\\s+'), 'i'),
-    currentColor,
-  );
-
-  return name;
-};
+const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, '-');
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -75,114 +27,150 @@ export const ProductDetailsPage = () => {
   const pathSegments = location.pathname.split('/');
   const category = location.state?.category || pathSegments[1];
 
-  const { product, loading, error } = useProductDetails(productId, category);
+  const {
+    product: fetchedProduct,
+    loading,
+    error,
+  } = useProductDetails(productId, category);
+
+  const getColorAndCapacityFromUrl = useCallback(
+    (id: string, productData: ProductDetails) => {
+      const normalizedId = id.toLowerCase();
+
+      const capacity =
+        productData.capacityAvailable.find(cap =>
+          normalizedId.includes(normalize(cap)),
+        ) || productData.capacityAvailable[0];
+
+      const color =
+        productData.colorsAvailable.find(clr =>
+          normalizedId.includes(normalize(clr)),
+        ) || productData.colorsAvailable[0];
+
+      return { capacity, color };
+    },
+    [],
+  );
+
+  const buildProductName = useCallback(
+    (
+      productData: ProductDetails,
+      capacityIndex: number,
+      colorIndex: number,
+    ) => {
+      const capacity =
+        productData.capacityAvailable[capacityIndex].toUpperCase();
+      const color = productData.colorsAvailable[colorIndex]
+        .split(' ')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(' ');
+
+      return `${productData.name} ${capacity} ${color}`;
+    },
+    [],
+  );
 
   const handleColorChange = useCallback(
-    (color: string) => {
-      if (!product) {
+    (selectedColor: string) => {
+      if (!fetchedProduct) {
         return;
       }
 
-      const colorIndex = product.colorsAvailable.findIndex(
-        c => c.toLowerCase() === color.toLowerCase(),
+      const colorIndex = fetchedProduct.colorsAvailable.findIndex(
+        c => c === selectedColor,
       );
 
-      if (colorIndex < 0) {
+      if (colorIndex === -1) {
         return;
       }
 
       setActiveColorIndex(colorIndex);
 
-      const colorKey = color.toLowerCase().replace(/\s+/g, '-');
-      const newImages = product.images.filter(img =>
+      const colorKey = normalize(selectedColor);
+      const filteredImages = fetchedProduct.images.filter(img =>
         img.toLowerCase().includes(colorKey),
       );
 
-      setImages(newImages.length > 0 ? newImages : product.images);
-
+      setImages(
+        filteredImages.length > 0 ? filteredImages : fetchedProduct.images,
+      );
       setProductName(
-        buildProductName(product, activeCapacityIndex, colorIndex),
+        buildProductName(fetchedProduct, activeCapacityIndex, colorIndex),
       );
 
-      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
-        product.capacityAvailable[activeCapacityIndex],
-      )}-${normalizeForUrlPart(color)}`;
+      const newProductId = `${fetchedProduct.namespaceId}-${normalize(fetchedProduct.capacityAvailable[activeCapacityIndex])}-${normalize(selectedColor)}`;
 
       navigate(`/${category}/${newProductId}`, { replace: true });
     },
-    [product, activeCapacityIndex, category, navigate],
+    [fetchedProduct, activeCapacityIndex, category, navigate, buildProductName],
   );
 
   const handleCapacitySelect = useCallback(
-    (capacity: string) => {
-      if (!product) {
+    (selectedCapacity: string) => {
+      if (!fetchedProduct) {
         return;
       }
 
-      const capacityIndex = product.capacityAvailable.findIndex(
-        c => c === capacity,
+      const capacityIndex = fetchedProduct.capacityAvailable.findIndex(
+        c => c === selectedCapacity,
       );
 
-      if (capacityIndex < 0) {
+      if (capacityIndex === -1) {
         return;
       }
 
       setActiveCapacityIndex(capacityIndex);
-
       setProductName(
-        buildProductName(product, capacityIndex, activeColorIndex),
+        buildProductName(fetchedProduct, capacityIndex, activeColorIndex),
       );
 
-      const newProductId = `${product.namespaceId}-${normalizeForUrlPart(
-        capacity,
-      )}-${normalizeForUrlPart(product.colorsAvailable[activeColorIndex])}`;
+      const newProductId = `${fetchedProduct.namespaceId}-${normalize(selectedCapacity)}-${normalize(fetchedProduct.colorsAvailable[activeColorIndex])}`;
 
       navigate(`/${category}/${newProductId}`, { replace: true });
     },
-    [product, activeColorIndex, category, navigate],
+    [fetchedProduct, activeColorIndex, category, navigate, buildProductName],
   );
 
   useEffect(() => {
-    if (!product || !productId) {
+    if (!fetchedProduct || !productId) {
       return;
     }
 
     const { capacity: initialCapacity, color: initialColor } =
-      getColorAndCapacityFromUrl(productId, product);
+      getColorAndCapacityFromUrl(productId, fetchedProduct);
 
-    const capacityIndex = product.capacityAvailable.findIndex(
+    const capacityIndex = fetchedProduct.capacityAvailable.findIndex(
       c => c === initialCapacity,
     );
-    const colorIndex = product.colorsAvailable.findIndex(
-      c => c.toLowerCase() === initialColor.toLowerCase(),
+    const colorIndex = fetchedProduct.colorsAvailable.findIndex(
+      c => c === initialColor,
     );
 
     setActiveCapacityIndex(capacityIndex >= 0 ? capacityIndex : 0);
     setActiveColorIndex(colorIndex >= 0 ? colorIndex : 0);
 
-    const colorKey = product.colorsAvailable[colorIndex >= 0 ? colorIndex : 0]
-      .toLowerCase()
-      .replace(/\s+/g, '-');
-    const newImages = product.images.filter(img =>
+    const colorKey = normalize(initialColor);
+    const filteredImages = fetchedProduct.images.filter(img =>
       img.toLowerCase().includes(colorKey),
     );
 
-    setImages(newImages.length > 0 ? newImages : product.images);
-
+    setImages(
+      filteredImages.length > 0 ? filteredImages : fetchedProduct.images,
+    );
     setProductName(
       buildProductName(
-        product,
+        fetchedProduct,
         capacityIndex >= 0 ? capacityIndex : 0,
         colorIndex >= 0 ? colorIndex : 0,
       ),
     );
-  }, [product, productId]);
+  }, [fetchedProduct, productId, getColorAndCapacityFromUrl, buildProductName]);
 
   if (loading) {
     return <Loader />;
   }
 
-  if (error || !product) {
+  if (error || !fetchedProduct) {
     return <NotFoundProduct />;
   }
 
@@ -197,17 +185,18 @@ export const ProductDetailsPage = () => {
       <div className={styles.productPage_spec}>
         <ProductPhotos images={images} />
         <ProductSpec
-          product={product}
+          product={fetchedProduct}
           showDiscount={showDiscount}
           activeIndex={activeColorIndex}
           setActiveIndex={setActiveColorIndex}
           onColorChange={handleColorChange}
-          handleCapacitySelect={handleCapacitySelect}
           activeCapacityIndex={activeCapacityIndex}
           setActiveCapacityIndex={setActiveCapacityIndex}
+          handleCapacitySelect={handleCapacitySelect}
         />
       </div>
-      <ProductDescription details={product} />
+
+      <ProductDescription details={fetchedProduct} />
       <RandomProducts />
     </div>
   );
