@@ -2,8 +2,6 @@ import { useSearchParams } from 'react-router-dom';
 import styles from './Pagination.module.scss';
 import React from 'react';
 
-
-
 type Props = {
   elementOnPage: number;
   total: number;
@@ -31,12 +29,6 @@ export const Pagination: React.FC<Props> = ({ elementOnPage, total }) => {
   if (pages.length === 1) {
     return null;
   }
-
-  
-  
-
-
-
 
   return (
     <ul className={styles.pagination}>

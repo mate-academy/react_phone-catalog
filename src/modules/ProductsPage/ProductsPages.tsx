@@ -45,7 +45,6 @@ export const ProductsPages = () => {
 
       case 'Cheapest':
         return [...selectedCategory].sort((prod1, prod2) => {
-          
           return prod1.price - prod2.price;
         });
 

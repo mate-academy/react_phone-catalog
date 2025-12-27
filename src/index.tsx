@@ -12,16 +12,9 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
     <FavoritesContextProvider>
       <ProductContextProvider>
         <Router>
-
-
-<ScrollToTop>
-
-   <App />
-
-</ScrollToTop>
-
-
-         
+          <ScrollToTop>
+            <App />
+          </ScrollToTop>
         </Router>
       </ProductContextProvider>
     </FavoritesContextProvider>

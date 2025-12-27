@@ -14,20 +14,38 @@ export const ProductSlider: React.FC<Props> = ({
   hasDiscount,
   title,
 }) => {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {
-    sliderRef.current.scrollBy({
-      left: -300,
-      behavior: 'smooth',
-    });
+    const el = sliderRef.current as HTMLElement | null;
+
+    if (!el) {
+      return;
+    }
+
+    const firstChild = el.firstElementChild as HTMLElement | null;
+    const gap = 16; // must match CSS gap
+    const step = firstChild
+      ? Math.round(firstChild.getBoundingClientRect().width + gap)
+      : 300;
+
+    el.scrollBy({ left: -step, behavior: 'smooth' });
   };
 
   const scrollRight = () => {
-    sliderRef.current.scrollBy({
-      left: 300,
-      behavior: 'smooth',
-    });
+    const el = sliderRef.current as HTMLElement | null;
+
+    if (!el) {
+      return;
+    }
+
+    const firstChild = el.firstElementChild as HTMLElement | null;
+    const gap = 16;
+    const step = firstChild
+      ? Math.round(firstChild.getBoundingClientRect().width + gap)
+      : 300;
+
+    el.scrollBy({ left: step, behavior: 'smooth' });
   };
 
   return (
