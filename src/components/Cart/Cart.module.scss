@@ -1,0 +1,33 @@
+.cart {
+  color: $main-text-color;
+  padding-inline: 152px;
+
+  &__back {
+    display: flex;
+    gap: 4px;
+    padding-top: 40px;
+    align-items: center;
+    cursor: pointer;
+    padding-bottom: 16px;
+
+    &__icon {
+      height: 16px;
+      width: 16px;
+    }
+
+    &__text {
+      margin: 0;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    padding-bottom: 32px;
+  }
+}

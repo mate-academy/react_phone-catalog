@@ -238,7 +238,6 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
 
         <ProductSlider
           title="You may also like"
-          category={categoryName.toLowerCase()}
           products={formattedProducts}
         />
       </div>

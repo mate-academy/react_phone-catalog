@@ -83,14 +83,39 @@
       justify-content: center;
       align-items: center;
       border-left: 1px solid $main-button-color;
+      position: relative;
 
       &:first-of-type {
         margin-right: 0;
       }
     }
 
+    &__wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
     &__img {
       width: 16px;
+    }
+
+    &__amount {
+      width: 14px;
+      height: 14px;
+      background-color: $red-amount-color;
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid $main-background-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: $main-text-color;
+      font-size: 9px;
+      font-weight: 400;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
     }
   }
 }

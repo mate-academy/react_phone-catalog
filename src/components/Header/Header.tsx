@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
             <NavLink to="/tablets" className={styles.header__nav__item}>
               TABLETS
             </NavLink>
-            
+
             <NavLink to="/accessories" className={styles.header__nav__item}>
               ACCESSORIES
             </NavLink>
@@ -39,21 +39,31 @@ export const Header: React.FC = () => {
         <div className={styles.header__container__right}>
           <div className={styles.header__icons__icon}>
             <NavLink to="/favorites">
-              <img
-                src={HeartIcon}
-                alt="Favorites"
-                className={styles.header__icons__img}
-              />
+              <div className={styles.header__icons__wrapper}>
+                <img
+                  src={HeartIcon}
+                  alt="Favorites"
+                  className={styles.header__icons__img}
+                />
+                <div className={styles.header__icons__amount}>
+                  4
+                </div>
+              </div>
             </NavLink>
           </div>
 
           <div className={styles.header__icons__icon}>
             <NavLink to="/cart">
-              <img
-                src={CartIcon}
-                alt="Cart"
-                className={styles.header__icons__img}
-              />
+              <div className={styles.header__icons__wrapper}>
+                <img
+                  src={CartIcon}
+                  alt="Cart"
+                  className={styles.header__icons__img}
+                />
+                <div className={styles.header__icons__amount}>
+                  12
+                </div>
+              </div>
             </NavLink>
           </div>
         </div>

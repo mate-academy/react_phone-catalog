@@ -11,6 +11,7 @@ import { Tablets } from './components/Tablets/Tablets';
 import { Accessories } from './components/Accessories/Accessories';
 import { TabletPage } from './components/TabletPage/TabletPage';
 import { AccessoryPage } from './components/AccessoryPage/AccessoryPage';
+import { Cart } from './components/Cart/Cart';
 
 export const App = () => (
   <div className="App">
@@ -21,6 +22,7 @@ export const App = () => (
           <Route path="/phones" element={<MobilePhones />} />
           <Route path="/tablets" element={<Tablets />} />
           <Route path="/accessories" element={<Accessories />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/phones/:itemId" element={<PhonePage />} />
           <Route path="/tablets/:itemId" element={<TabletPage />} />
           <Route path="/accessories/:itemId" element={<AccessoryPage />} />
