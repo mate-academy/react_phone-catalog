@@ -70,7 +70,7 @@ export const ProductSpec: React.FC<Props> = ({
       <div className={styles.spec_colors}>
         <p className={styles.spec_title}>Available colors</p>
         <div className={styles.spec_colors_container}>
-          {sortedColors.map(color => {
+          {sortedColors.map((color, index) => {
             const isActive =
               normalizeColor(color) === normalizeColor(activeColor);
 
@@ -83,8 +83,6 @@ export const ProductSpec: React.FC<Props> = ({
                   isActive ? styles['spec_color--active'] : ''
                 }`}
                 onClick={() => {
-                  const index = sortedColors.indexOf(color);
-
                   setActiveIndex(index);
                   onColorChange(color);
                 }}
