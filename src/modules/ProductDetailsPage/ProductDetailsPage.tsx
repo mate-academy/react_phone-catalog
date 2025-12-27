@@ -58,6 +58,8 @@ export const ProductDetailsPage = () => {
       capacityIndex: number,
       colorIndex: number,
     ) => {
+      let name = productData.name;
+
       const capacity =
         productData.capacityAvailable[capacityIndex].toUpperCase();
       const color = productData.colorsAvailable[colorIndex]
@@ -65,7 +67,15 @@ export const ProductDetailsPage = () => {
         .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
         .join(' ');
 
-      return `${productData.name} ${capacity} ${color}`;
+      if (!name.toLowerCase().includes(capacity.toLowerCase())) {
+        name += ` ${capacity}`;
+      }
+
+      if (!name.toLowerCase().includes(color.toLowerCase())) {
+        name += ` ${color}`;
+      }
+
+      return name;
     },
     [],
   );
