@@ -4,7 +4,9 @@ import styles from './AlsoLike.module.scss';
 
 export const AlsoLike = () => {
   const { products } = useProducts();
-  const dataInLocalStorage = JSON.parse(localStorage.getItem('recomendedProducts') || '[]');
+  const dataInLocalStorage = JSON.parse(
+    localStorage.getItem('recomendedProducts') || '[]',
+  );
 
   const recommendedProducts = dataInLocalStorage.map((elem: string) => {
     return products.products?.find(product => product.itemId === elem);
@@ -17,7 +19,6 @@ export const AlsoLike = () => {
           title={'You may also like'}
           data={recommendedProducts}
           hasDiscount={true}
-
         />
       )}
     </div>

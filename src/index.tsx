@@ -5,13 +5,23 @@ import { App } from './App';
 import { ProductContextProvider } from './modules/shared/Utills/ProductContext';
 import { FavoritesContextProvider } from './modules/shared/Utills/FavoritesContext';
 import { ShopingCartContextProvider } from './modules/shared/Utills/ShopingCartContext';
+import ScrollToTop from './modules/shared/componets/ScrollToTop/ScrollToTop';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <ShopingCartContextProvider>
     <FavoritesContextProvider>
       <ProductContextProvider>
         <Router>
-          <App />
+
+
+<ScrollToTop>
+
+   <App />
+
+</ScrollToTop>
+
+
+         
         </Router>
       </ProductContextProvider>
     </FavoritesContextProvider>

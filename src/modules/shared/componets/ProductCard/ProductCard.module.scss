@@ -6,13 +6,15 @@
 .product__card{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid $gray_elements;
   gap: 20px;
   transition: transform 0.3s ease;
   padding: 16px;
   text-decoration: none;
+  box-sizing: border-box;
+  width: 100%;
 
   @media(min-width: $mobile_width) {
     padding: 32px;
@@ -25,13 +27,21 @@
 
 
 .img__container {
-  width: 196px;
-  height: 208px;
+  width: 100%;
+  height: 130px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+
+
+  @media (min-width: $mobile_width) {
+    height: 196px;
+  }
+
+
+  
 
   &:hover{
     transform: scale(1.1);
@@ -39,8 +49,8 @@
 }
 
 .img {
- max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
 
