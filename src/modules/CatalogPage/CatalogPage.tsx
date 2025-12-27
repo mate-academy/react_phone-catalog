@@ -17,6 +17,7 @@ import { Category } from '@/types/Category';
 import { FC, useMemo } from 'react';
 import { CategoryUI } from '../shared/types/CategoryUI';
 import { PerPageOption } from '../shared/types/PerPageOption';
+import { Message } from '../shared/components/Message';
 
 interface Props {
   category: Category;
@@ -35,6 +36,7 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     data: products,
     loading,
     error,
+    handleFetch,
   } = useFetch<Product[]>(() => getProductsByCategory(productCategory.type), {
     initialValue: [],
     dependency: [category],
@@ -67,6 +69,9 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     [products, sort, pagination.startIndex, pagination.endIndex],
   );
 
+  const disabledFilters =
+    loading || Boolean(error) || preparedProducts.length === 0;
+
   return (
     <div className={classNames('container', styles.wrapper)}>
       <CatalogBreadcrumbs category={productCategory.type} />
@@ -82,18 +87,27 @@ export const CatalogPage: FC<Props> = ({ category }) => {
         </div>
 
         <Filters
-          isDisabled={loading || Boolean(error)}
+          isDisabled={disabledFilters}
           initialPerPage={perPage}
           initialSortOption={sort}
         />
       </section>
 
       <section>
-        <ProductsList
-          products={preparedProducts}
-          isLoading={loading}
-          itemsPerPage={PRODUCT_SKELETONS_COUNT}
-        />
+        {!error ? (
+          <ProductsList
+            products={preparedProducts}
+            isLoading={loading}
+            itemsPerPage={PRODUCT_SKELETONS_COUNT}
+          />
+        ) : (
+          <Message
+            message={error}
+            showRetry
+            onRetry={handleFetch}
+            className={styles.error}
+          />
+        )}
       </section>
 
       <Pagination {...pagination} />

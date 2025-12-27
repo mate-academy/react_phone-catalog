@@ -4,6 +4,7 @@ import { FC } from 'react';
 import styles from './ProductsList.module.scss';
 import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { ProductCardSkeleton } from '@/modules/shared/components/ProductCardSkeleton';
+import { Message } from '@/modules/shared/components/Message';
 
 interface Props {
   products: Product[];
@@ -16,20 +17,34 @@ export const ProductsList: FC<Props> = ({
   itemsPerPage,
   isLoading = false,
 }) => {
-  return (
-    <ul className={styles.products}>
-      {isLoading &&
-        Array.from({ length: itemsPerPage }).map((_, index) => (
+  if (isLoading) {
+    return (
+      <ul className={styles.products}>
+        {Array.from({ length: itemsPerPage }).map((_, index) => (
           <li className={styles.productCard} key={`product-${index}-loader`}>
             <ProductCardSkeleton />
           </li>
         ))}
-      {!isLoading &&
-        products.map(product => (
-          <li className={styles.productCard} key={product.id}>
-            <ProductCard product={product} />
-          </li>
-        ))}
+      </ul>
+    );
+  }
+
+  if (!isLoading && products.length === 0) {
+    return (
+      <Message
+        message="No available products"
+        imgPath="img/product-not-found.png"
+      />
+    );
+  }
+
+  return (
+    <ul className={styles.products}>
+      {products.map(product => (
+        <li className={styles.productCard} key={product.id}>
+          <ProductCard product={product} />
+        </li>
+      ))}
     </ul>
   );
 };

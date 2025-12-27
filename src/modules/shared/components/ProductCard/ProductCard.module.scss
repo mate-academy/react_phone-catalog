@@ -10,12 +10,6 @@
 
   @include transition(transform);
   @include flex-column;
-
-  @include hover {
-    .productPreviewWrapper img {
-      transform: scale($hover-scale);
-    }
-  }
 }
 
 .productPreviewWrapper {
@@ -30,6 +24,12 @@
     height: 100%;
 
     @include transition(transform);
+
+    @include hover {
+      & {
+        transform: scale($hover-scale);
+      }
+    }
   }
 
   @include on-tablet {

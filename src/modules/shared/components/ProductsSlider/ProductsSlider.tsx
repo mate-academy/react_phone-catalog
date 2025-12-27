@@ -12,6 +12,7 @@ import classNames from 'classnames';
 
 import useEmblaCarousel from 'embla-carousel-react';
 import { useSliderPrevNextBtns } from '../../hooks/useSliderPrevNextBtns';
+import { Message } from '../Message';
 
 interface Props {
   title: string;
@@ -37,6 +38,14 @@ export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
   });
   const { prevBtnDisabled, nextBtnDisabled, handleNext, handlePrev } =
     useSliderPrevNextBtns(sliderApi);
+
+  if (!isLoading && products.length === 0) {
+    return (
+      <div className="container">
+        <Message message="No available products" />
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(styles.wrapper, 'container')}>
