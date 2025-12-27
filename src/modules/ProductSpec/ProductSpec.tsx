@@ -41,6 +41,8 @@ export const ProductSpec: React.FC<Props> = ({
   setActiveCapacityIndex,
   showDiscount,
 }) => {
+  const colors = product.colorsAvailable;
+  const activeColor = colors[activeIndex];
   const selectedCapacity =
     product.capacityAvailable[activeCapacityIndex].toLowerCase();
   const capacityOption = product.capacityOptions?.find(
@@ -62,15 +64,13 @@ export const ProductSpec: React.FC<Props> = ({
     image: product.images[0],
     type: product.category,
   };
-  const sortedColors = [...product.colorsAvailable].sort();
-  const activeColor = sortedColors[activeIndex];
 
   return (
     <div className={styles.spec}>
       <div className={styles.spec_colors}>
         <p className={styles.spec_title}>Available colors</p>
         <div className={styles.spec_colors_container}>
-          {sortedColors.map((color, index) => {
+          {colors.map((color, index) => {
             const isActive =
               normalizeColor(color) === normalizeColor(activeColor);
 
