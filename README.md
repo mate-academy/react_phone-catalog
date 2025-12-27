@@ -52,3 +52,4 @@ https://mishadoloh.github.io/react_phone-catalog/
 1. **Clone the repository:**
 ```bash
 git clone https://github.com/Mishadoloh/react_phone-catalog.git
+

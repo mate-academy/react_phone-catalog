@@ -50,7 +50,7 @@ export const Welcome = () => {
             )}
             onClick={handlePrev}
           >
-            <img src="/img/buttons/swipe-button-left.svg" alt="Swipe left" />
+            <img src="./img/buttons/swipe-button-left.svg" alt="Swipe left" />
           </button>
 
           <Swiper
@@ -87,7 +87,7 @@ export const Welcome = () => {
             )}
             onClick={handleNext}
           >
-            <img src="/img/buttons/swipe-button-right.svg" alt="Swipe right" />
+            <img src="./img/buttons/swipe-button-right.svg" alt="Swipe right" />
           </button>
         </div>
 
