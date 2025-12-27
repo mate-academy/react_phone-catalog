@@ -2,30 +2,9 @@ import { Product } from '@/types/Product';
 import React, { FC, useMemo } from 'react';
 
 import styles from './Categories.module.scss';
-import { ROUTES } from '@/constants/routes';
-import { CategoryUI } from '../../types/CategoryUI';
+import { CategoryUI } from '../../../shared/types/CategoryUI';
 import { CategoryCard } from '../CategoryCard';
-
-const categories: CategoryUI[] = [
-  {
-    title: 'Mobile phones',
-    type: 'phones',
-    preview: 'img/category-phones.webp',
-    path: ROUTES.PHONES,
-  },
-  {
-    title: 'Tablets',
-    type: 'tablets',
-    preview: 'img/category-tablets.webp',
-    path: ROUTES.TABLETS,
-  },
-  {
-    title: 'Accessories',
-    type: 'accessories',
-    preview: 'img/category-accessories.webp',
-    path: ROUTES.ACCESSORIES,
-  },
-];
+import { categories } from '@/modules/shared/constants/categories';
 
 interface Props {
   products: Product[];
@@ -51,7 +30,7 @@ export const Categories: FC<Props> = React.memo(function Categories({
     return categories.map(category => {
       return {
         ...category,
-        count: countMap[category.type],
+        count: countMap[category.type] || 0,
       };
     });
   }, [products]);

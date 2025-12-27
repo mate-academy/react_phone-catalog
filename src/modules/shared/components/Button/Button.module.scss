@@ -1,20 +1,10 @@
 @use '@/styles/resources' as *;
 
-[data-theme='dark'] .button {
-  --primary-selected-bg: #323542;
-  --primary-selected-border: transparent;
-  --primary-selected-color: #ffffff;
-
-  --outline-selected-bg: var(--accent-color);
-  --outline-selected-border: transparent;
-}
-
 .button {
-  --primary-selected-bg: #ffffff;
+  --primary-selected-bg: #fff;
   --primary-selected-border: #e2e6e9;
   --primary-selected-color: var(--accent-color);
-
-  --outline-selected-bg: transparent;
+  --outline-selected-bg: var(--primary-color);
   --outline-selected-border: var(--primary-color);
 
   cursor: pointer;
@@ -23,12 +13,19 @@
     (border-color, color, background-color),
     $color-transition
   );
-
   @include flex-center;
 
   &:disabled {
     cursor: auto;
   }
+}
+
+[data-theme='dark'] .button {
+  --primary-selected-bg: #323542;
+  --primary-selected-border: transparent;
+  --primary-selected-color: #fff;
+  --outline-selected-bg: var(--accent-color);
+  --outline-selected-border: transparent;
 }
 
 .primary {
@@ -111,5 +108,16 @@
     svg {
       fill: $elements-color;
     }
+  }
+}
+
+.danger {
+  background-color: $red-color;
+  color: $white-color;
+  width: fit-content;
+  height: fit-content;
+
+  @include hover {
+    background-color: $secondary-red;
   }
 }

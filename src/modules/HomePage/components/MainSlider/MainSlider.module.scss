@@ -46,12 +46,14 @@
     height: 400px;
   }
 }
+
 .sliderDots {
   grid-column: 1 / -1;
   gap: 4px;
 
   @include flex-center;
 }
+
 .sliderDot {
   width: 14px;
   height: 4px;

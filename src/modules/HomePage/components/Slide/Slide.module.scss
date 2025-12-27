@@ -56,10 +56,7 @@ $order-btn-color: #0f1121;
     @include flex-column;
 
     &::before {
-      left: 0;
-      top: 16px;
-      bottom: 16px;
-      right: 0;
+      inset: 16px 0;
       content: '';
       position: absolute;
       background-color: $banner-content-color;

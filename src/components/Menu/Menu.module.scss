@@ -33,9 +33,9 @@
 .menuNavLink {
   display: block;
   color: $secondary-color;
+
   @include uppercase;
   @include transition(color, $color-transition);
-
   @include animated-underline;
   
   @include on-mobile {

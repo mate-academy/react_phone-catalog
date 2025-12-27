@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Button.module.scss';
 
-type ButtonVariant = 'primary' | 'outline';
+type ButtonVariant = 'primary' | 'outline' | 'danger';
 type ButtonSize = 'small' | 'large';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -41,6 +41,7 @@ export const Button: FC<Props> = ({
     {
       [styles.primary]: variant === 'primary',
       [styles.outline]: variant === 'outline',
+      [styles.danger]: variant === 'danger',
       [styles.onlyIcon]: isIconOnly,
       [styles.selected]: isSelected,
     },

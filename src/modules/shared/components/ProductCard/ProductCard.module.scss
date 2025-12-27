@@ -9,7 +9,6 @@
   position: relative;
 
   @include transition(transform);
-
   @include flex-column;
 
   @include hover {
@@ -48,10 +47,7 @@
 
   &::after {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     z-index: 1;
     content: '';
   }
@@ -70,7 +66,7 @@
   font-weight: 800;
   font-size: 22px;
   line-height: 31px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   color: $primary-color;
 }
 

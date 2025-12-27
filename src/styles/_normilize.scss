@@ -12,13 +12,15 @@ body {
   @include body-text;
 }
 
-button {
+button,
+input {
   background: none;
   border: 0;
   outline: none;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
   padding: 0;
 }

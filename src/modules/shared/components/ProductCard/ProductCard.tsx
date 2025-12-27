@@ -18,8 +18,17 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
   product,
   className,
 }) {
-  const { id, image, name, price, fullPrice, screen, capacity, ram, category } =
-    product;
+  const {
+    image,
+    name,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    category,
+    itemId,
+  } = product;
 
   const [isSelected, setIsSelected] = useState(false);
 
@@ -34,7 +43,11 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
       </div>
 
       <h3 className={styles.productTitle}>
-        <Link to="/" className={styles.productLink}>
+        <Link
+          to={`/product/${itemId}`}
+          state={{ category }}
+          className={styles.productLink}
+        >
           {name}
         </Link>
       </h3>

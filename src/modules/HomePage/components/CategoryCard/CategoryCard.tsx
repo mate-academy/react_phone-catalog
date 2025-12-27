@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CategoryUI } from '../../types/CategoryUI';
+import { CategoryUI } from '../../../shared/types/CategoryUI';
 
 import styles from './CategoryCard.module.scss';
 import classNames from 'classnames';

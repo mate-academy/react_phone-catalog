@@ -3,7 +3,6 @@
 @use './fonts';
 @use './normilize';
 @use 'typography';
-
 @use './container';
 
 body {
@@ -18,6 +17,7 @@ body {
 
 .App {
   min-height: 100vh;
+  min-width: 320px;
 
   @include flex-column;
 }

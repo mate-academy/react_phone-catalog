@@ -1,0 +1,22 @@
+@use '../../styles/resources' as *;
+
+.wrapper {
+  padding-block: 24px;
+  gap: 24px;
+
+  @include flex-column;
+}
+
+.mainPageText {
+  gap: 8px;
+
+  @include flex-column;
+}
+
+.title {
+  color: $primary-color;
+}
+
+.modelsCount {
+  color: $secondary-color;
+}

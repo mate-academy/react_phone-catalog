@@ -11,7 +11,9 @@ import { useMemo } from 'react';
 import { filterProducts } from '@/utils/filterProducts';
 
 export const HomePage = () => {
-  const { data: products, loading } = useFetch<Product[]>(getProducts, []);
+  const { data: products, loading } = useFetch<Product[]>(getProducts, {
+    initialValue: [],
+  });
 
   const newestProducts = useMemo(() => {
     return filterProducts(products, {

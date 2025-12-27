@@ -1,0 +1,31 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  gap: 16px;
+
+  @include flex-center;
+}
+
+.arrowBtn {
+  min-width: 32px;
+}
+
+.pages {
+  gap: 8px;
+  align-items: center;
+  overflow: auto;
+  display: flex;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.page {
+  display: inline-block;
+}
+
+.pageBtn {
+  width: 32px;
+  height: 32px;
+}

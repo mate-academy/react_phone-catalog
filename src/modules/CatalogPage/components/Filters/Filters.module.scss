@@ -1,0 +1,32 @@
+@use '@/styles/resources' as *;
+
+.filters {
+  margin-top: 32px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.sortFilter {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.perPageFilter {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.dropdown {
+  width: 100%;
+  max-width: inherit !important;
+}

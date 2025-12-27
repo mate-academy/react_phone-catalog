@@ -1,0 +1,27 @@
+@use '../../../../styles/resources' as *;
+
+.breadcrumbsList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbsItem {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: capitalize;
+
+  @include flex-center;
+}
+
+.breadcrumbsLink {
+  color: $primary-color;
+  text-transform: capitalize;
+}
+
+.splitter {
+  color: $icons-color;
+  margin-left: 8px;
+}
