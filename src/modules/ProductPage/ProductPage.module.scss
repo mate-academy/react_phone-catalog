@@ -1,0 +1,266 @@
+@use '../../utils/mixins.scss' as *;
+@use '../../utils/variables.scss' as *;
+
+.productPage {
+  @include content-padding-inline;
+  @include page-grid;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    grid-column: 1 / -1;
+    margin-block: 24px;
+    gap: 8px;
+    height: 16px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__topHomeIcon {
+    background-image: url(/img/icons/home-icon.svg);
+    height: 16px;
+    width: 16px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__topArrowIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__topText {
+    @include small-text;
+
+    font-weight: 600;
+    color: $secondary;
+    line-height: normal;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  &__modelsAmount {
+    @include body-text;
+
+    font-weight: 600;
+    color: $secondary;
+    grid-column: 1 / -1;
+    margin-top: 8px;
+  }
+
+  &__dropDownMenuContainer {
+    margin-top: 32px;
+    grid-column: 1 / -1;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__dropDownMenu {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+    position: relative;
+  }
+
+  &__sortMenu {
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__itemsMenu {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__dropDownMenuLabel {
+    @include small-text;
+
+    font-weight: 700;
+    color: $secondary;
+  }
+
+  &__dropDownMenuButton {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 12px;
+    align-items: center;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    border-radius: 8px;
+    margin-top: 4px;
+  }
+
+  &__dropDownMenuButton:hover {
+    border-color: $secondary;
+  }
+
+  &__dropDownMenuButtonText {
+    @include buttons;
+
+    font-weight: 400;
+    color: $primary;
+  }
+
+  &__dropDownMenuButtonIcon {
+    background-image: url(/img/icons/arrow-down-icon.svg);
+    height: 16px;
+    width: 16px;
+  }
+
+  &__dropDownMenuList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-top: 64px;
+    padding-inline: 0;
+    list-style: none;
+    position: absolute;
+    z-index: 1;
+
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  &__dropDownMenuList--is-active {
+    transform: translateY(0);
+    opacity: 1;
+    padding-block: 8px;
+    border: 1px solid $border-color;
+    pointer-events: auto;
+  }
+
+  &__dropDownMenuItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 0;
+    height: 32px;
+    background-color: #fff;
+    padding-left: 12px;
+
+    @include body-text;
+
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: none;
+  }
+
+  &__dropDownMenuItem:hover {
+    background-color: $main-page-color;
+    color: $primary;
+  }
+
+  &__productCards {
+    row-gap: 40px;
+    grid-column: 1 / -1;
+    margin-block: 24px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__dropDownMenuList:hover ~ &__productCards {
+    pointer-events: none;
+  }
+
+  &__productCardsError {
+    @include body-text;
+
+    grid-column: 1 / -1;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
+    gap: 16px;
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__paginationSwipeButton {
+    cursor: pointer;
+    background-image: url(/img/buttons/slider-button.svg);
+    height: 32px;
+    width: 32px;
+    background-color: $main-page-color;
+    border: 0;
+  }
+
+  &__paginationSwipeButton:hover {
+    background-image: url(/img/buttons/slider-button-hover.svg);
+  }
+
+  &__paginationSwipeButton:disabled {
+    cursor: not-allowed;
+    background-image: url(/img/buttons/slider-button-disabled.svg);
+  }
+
+  &__paginationSwipeButtonLeft {
+    transform: rotate(180deg);
+  }
+
+  &__paginationButtonsContainer {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__paginationButtonLink {
+    display: flex;
+    text-decoration: none;
+  }
+
+  &__paginationButton {
+    cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid $border-color;
+    background-color: $main-page-color;
+
+    @include body-text;
+
+    color: $primary;
+    font-weight: 600;
+  }
+
+  &__paginationButton:hover {
+    border: 1px solid $primary;
+  }
+
+  &__paginationButton--is-active {
+    background-color: $primary;
+    color: #fff;
+  }
+}

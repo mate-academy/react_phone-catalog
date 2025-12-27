@@ -1,315 +1,401 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getPhones } from '../../services/phones';
-import { getTablets } from '../../services/tablets';
-import { getAccessories } from '../../services/accessories';
-import { ProductDetailed } from '../../types/types';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
-import { ProductsSlider } from '../shared/components/ProductsSlider';
-import { Loader } from '../shared/components/Loader';
-import { Breadcrumbs } from '../shared/components/Breadcrumbs';
-import { AddToCartButton } from '../shared/components/AddToCartButton';
-import { FavouriteButton } from '../shared/components/FavouriteButton';
-import { useLoading } from '../../context/LoadingContext';
-import { BackButton } from '../shared/components/BackButton';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { FullProduct } from '../../types/FullProduct';
+import { ProductType } from '../../enums/ProductType';
+import phones from '../../../public/api/phones.json';
+import tablets from '../../../public/api/tablets.json';
+import accessories from '../../../public/api/accessories.json';
+import productsFromServer from '../../../public/api/products.json';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { SwiperRef } from 'swiper/react';
+import type SwiperCore from 'swiper';
+import 'swiper/css';
+import classNames from 'classnames';
+import '../../utils/colors.scss';
+import { ProductSlider } from '../Shared/ProductsSlider';
+import { useFavouritesButton } from '../../utils/handleFavouritesButton';
+import { Product } from '../../types/Product';
+import { handleBackButton } from '../../utils/handleBackButton';
+import { useAddToCartButton } from '../../utils/addToCart';
+import { Loader } from '../../components/Loader';
 
-const colorMap: { [key: string]: string } = {
-  'sierra blue': '#a3b4c6',
-  sierrablue: '#a3b4c6',
-  'sky blue': '#a3b4c6',
-  skyblue: '#a3b4c6',
-  midnight: '#003366',
-  'space gray': '#4a4a4a',
-  spacegray: '#4a4a4a',
-  'rose gold': '#b76e79',
-  rosegold: '#b76e79',
-  graphite: '#474747',
-  'midnight green': '#004d40',
-  midnightgreen: '#004d40',
-};
-
-export const ProductDetailsPage: React.FC = () => {
-  const { isLoading, setIsLoading } = useLoading();
-
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [categoryGoods, setCategoryGoods] = useState<ProductDetailed[]>();
-  const [product, setProduct] = useState<ProductDetailed>();
-  const [suggestedProducts, setSuggestedProducts] = useState<ProductDetailed[]>([]);
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedCapacity, setSelectedCapacity] = useState('');
-  const [mainImageIndex, setMainImageIndex] = useState(0);
-
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-
-  const category = pathname.split('/')[1];
-  const itemId = pathname.split('/')[2];
+export const ProductDetailsPage = () => {
+  const location = useLocation();
+  const { productId } = useParams();
+  const [currentImage, setCurrentImage] = useState<string | undefined>('');
+  const [isLoading, setIsLoading] = useState(false);
+  const swiperRef = useRef<SwiperRef | null>(null);
+  const { favourites, handleFavouritesButton } = useFavouritesButton();
+  const { cart, handleAddToCartButton } = useAddToCartButton();
 
   useEffect(() => {
     setIsLoading(true);
-    setIsDataLoaded(false);
 
-    const fetchCategoryGoods =
-      category === 'phones'
-        ? getPhones()
-        : category === 'tablets'
-          ? getTablets()
-          : category === 'accessories'
-            ? getAccessories()
-            : null;
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  }, []);
 
-    if (fetchCategoryGoods) {
-      fetchCategoryGoods
-        .then((goods: ProductDetailed[]) => {
-          setCategoryGoods(goods);
-          const item = goods.find(good => good.id === itemId);
-
-          setProduct(item);
-
-          if (item) {
-            setSelectedColor(item.color || '');
-            setSelectedCapacity(item.capacity || '');
-          }
-        })
-        .catch(() => {
-          throw new Error();
-        })
-        .finally(() => {
-          setTimeout(() => {
-            setIsLoading(false);
-            setIsDataLoaded(true);
-          }, 300);
-        });
-    }
-  }, [pathname, category, itemId, setIsLoading]);
-
-  const getSuggestedProducts = (goods: ProductDetailed[], currentProductId: string) => {
-    const suggested = goods.filter(good => good.id !== currentProductId);
-
-    return suggested.sort(() => Math.random() - 0.5).slice(0, 10);
-  };
-
-  useEffect(() => {
-    if (categoryGoods && itemId) {
-      const randomProducts = getSuggestedProducts(categoryGoods, itemId);
-
-      setSuggestedProducts(randomProducts);
-    }
-  }, [categoryGoods, itemId]);
-
-  const getNewProductId = (namespaceId: string, color: string, capacity: string) => {
-    const formattedColor = color.replace(/\s+/g, '-').toLowerCase();
-
-    return `${namespaceId}-${capacity.toLowerCase()}-${formattedColor}`;
-  };
-
-  const updateProduct = (color: string, capacity: string) => {
-    if (!product) {
-      return;
+  const products: FullProduct[] = useMemo(() => {
+    if (location.pathname.includes(ProductType.phones)) {
+      return [...phones];
+    } else if (location.pathname.includes(ProductType.tablets)) {
+      return [...tablets];
+    } else if (location.pathname.includes(ProductType.accessories)) {
+      return [...accessories];
     }
 
-    const formattedColor = color.replace(/\s+/g, '-').toLowerCase();
-    const newProductId = getNewProductId(product.namespaceId, formattedColor, capacity);
+    return [];
+  }, [location.pathname]);
 
-    const newProduct = categoryGoods?.find(good => good.id === newProductId);
+  const product: FullProduct | undefined = useMemo(() => {
+    return products.find(item => item.id === productId);
+  }, [products]);
 
-    if (newProduct) {
-      setProduct(newProduct);
-      setSelectedColor(color);
-      setSelectedCapacity(capacity);
+  const productFromServer = useMemo(() => {
+    return (
+      productsFromServer.find(item => item.itemId === product?.id) ||
+      ({} as Product)
+    );
+  }, [product]);
 
-      navigate(`/${category}/${newProductId}`, { replace: true });
+  const specs = useMemo(() => {
+    return [
+      { label: 'Screen', value: product?.screen },
+      { label: 'Resolution', value: product?.resolution },
+      { label: 'Processor', value: product?.processor },
+      { label: 'RAM', value: product?.ram },
+      { label: 'Built in memory', value: product?.capacity },
+      product?.camera ? { label: 'Camera', value: product?.camera } : null,
+      product?.zoom ? { label: 'Zoom', value: product?.zoom } : null,
+      { label: 'Cell', value: product?.cell.join(', ') },
+    ].filter((spec): spec is { label: string; value: string | undefined } =>
+      Boolean(spec),
+    );
+  }, [product]);
+
+  const suggestedProducts = useMemo(() => {
+    const randomIndexes: number[] = [];
+
+    for (let i = 0; i < 12; i++) {
+      randomIndexes.push(
+        Math.floor(Math.random() * productsFromServer.length) + 1,
+      );
     }
+
+    return productsFromServer.filter(item =>
+      randomIndexes.includes(productsFromServer.indexOf(item)),
+    );
+  }, [product]);
+
+  const handleSlideChange = (swiper: SwiperCore) => {
+    const activeIndex = swiper.realIndex;
+
+    setCurrentImage(product?.images[activeIndex]);
   };
 
-  const handleColorChange = (color: string) => {
-    updateProduct(color, selectedCapacity);
-  };
+  const handleImagePreview = (imageLink: string) => {
+    const targetIndex = product?.images.indexOf(imageLink);
 
-  const handleCapacityChange = (capacity: string) => {
-    updateProduct(selectedColor, capacity);
-  };
-
-  const getColorStyle = (color: string) => {
-    return colorMap[color.toLowerCase()] || color;
+    if (targetIndex !== null && targetIndex !== undefined) {
+      swiperRef.current?.swiper.slideTo(targetIndex);
+    }
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.breadCrumbsContainer}>
-        <Breadcrumbs />
-      </div>
-
-      <div className={styles.backButtonContainer}>
-        <BackButton />
-      </div>
-
+    <>
       {isLoading ? (
         <Loader />
       ) : (
-        <>
-          {isDataLoaded && !product ? (
-            <h1 className={styles.productNotFound}>Product was not found</h1>
-          ) : (
+        <div className={styles.productDetails}>
+          {product ? (
             <>
-              {product && (
-                <>
-                  <h1 className={styles.title}>{product?.name}</h1>
-                  <div className={styles.main}>
-                    <div className={styles.images}>
-                      <div className={styles.mainImgContainer}>
-                        <img src={`./${product.images[mainImageIndex]}`} alt="Main product image" />
-                      </div>
+              <section className={styles.productDetails__top}>
+                <div className={styles.productDetails__breadcrumbs}>
+                  <Link
+                    to={'/'}
+                    className={styles.productDetails__breadcrumbsHomeIcon}
+                  />
+                  <div
+                    className={styles.productDetails__breadcrumbsArrowIcon}
+                  />
+                  <Link
+                    to={`/${product.category}`}
+                    className={styles.productDetails__breadcrumbsCategory}
+                  >
+                    {product.category[0].toUpperCase() +
+                      product.category.slice(1)}
+                  </Link>
+                  <div
+                    className={styles.productDetails__breadcrumbsArrowIcon}
+                  />
+                  <span className={styles.productDetails__breadcrumbsName}>
+                    {product.name}
+                  </span>
+                </div>
+                <div className={styles.productDetails__back}>
+                  <button
+                    className={styles.productDetails__backArrow}
+                    onClick={handleBackButton}
+                  />
+                  <button
+                    className={styles.productDetails__backText}
+                    onClick={handleBackButton}
+                  >
+                    Back
+                  </button>
+                </div>
+                <h2 className={styles.productDetails__title}>{product.name}</h2>
+              </section>
 
-                      <div className={styles.imagePreview}>
-                        {product.images.map((img, i) => (
-                          <div
-                            className={`${styles.smallImage} ${mainImageIndex === i ? styles['smallImage--selected'] : ''}`}
-                            key={img}
-                            onClick={() => setMainImageIndex(i)}
-                          >
-                            <img src={`./${img}`} alt={`Product image ${i + 1}`} />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className={styles.details}>
-                      <div className={styles.colorsContainer}>
-                        <div className={styles.colorsTop}>
-                          <p className={styles.detailsText}>Available colors</p>
-                          <p className={styles.idText}>ID: 123455</p>
-                        </div>
-
-                        <div className={styles.colorOptions}>
-                          {product.colorsAvailable.map(color => (
-                            <div
-                              key={color}
-                              className={`${styles.colorOption} ${selectedColor === color ? styles['colorOption--selected'] : ''}`}
-                              style={{ backgroundColor: getColorStyle(color) }}
-                              onClick={() => handleColorChange(color)}
-                            >
-                              <div
-                                className={styles.insideCircle}
-                                style={{ backgroundColor: color }}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className={styles.capacityContainer}>
-                        <p className={styles.detailsText}>Select capacity</p>
-                        <div className={styles.capacityOptions}>
-                          {product.capacityAvailable.map(capacity => (
-                            <div
-                              key={capacity}
-                              className={`${styles.capacityOption} ${selectedCapacity === capacity ? styles['capacityOption--selected'] : ''}`}
-                              onClick={() => handleCapacityChange(capacity)}
-                            >
-                              {capacity}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className={styles.pricesContainer}>
-                        <p className={styles.price}>${product?.priceDiscount}</p>
-                        <p className={styles.fullPrice}>${product?.priceRegular}</p>
-                      </div>
-
-                      <div className={styles.actions}>
-                        <AddToCartButton product={product} />
-                        <FavouriteButton product={product} />
-                      </div>
-
-                      <div className={styles.description}>
-                        <div>
-                          <p className={styles.detailsText}>Screen</p>
-                          <p className={styles.value}>{product?.screen}</p>
-                        </div>
-                        <div>
-                          <p className={styles.detailsText}>Resolution</p>
-                          <p className={styles.value}>{product?.resolution}</p>
-                        </div>
-                        <div>
-                          <p className={styles.detailsText}>Processor</p>
-                          <p className={styles.value}>{product?.processor}</p>
-                        </div>
-                        <div>
-                          <p className={styles.detailsText}>RAM</p>
-                          <p className={styles.value}>{product?.ram}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={styles.info}>
-                    <div className={styles.about}>
-                      <h3 className={styles.infoTitle}>About</h3>
-
-                      {product?.description.map(item => (
-                        <p key={item.title} className={styles.aboutText}>
-                          {item.text[0]}
-                        </p>
-                      ))}
-                    </div>
-                    <div className={styles.techSpecs}>
-                      <h3 className={styles.infoTitle}>Tech specs</h3>
-
-                      <div className={styles.techContainer}>
-                        <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Screen</p>
-                          <p className={styles.value}>{product?.screen}</p>
-                        </div>
-                        <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Resolution</p>
-                          <p className={styles.value}>{product?.resolution}</p>
-                        </div>
-                        <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Processor</p>
-                          <p className={styles.value}>{product?.processor}</p>
-                        </div>
-                        <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>RAM</p>
-                          <p className={styles.value}>{product?.ram}</p>
-                        </div>
-                        <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Built in memory</p>
-                          <p className={styles.value}>{product?.capacity}</p>
-                        </div>
-                        {product.camera && (
-                          <>
-                            <div className={styles.techBlock}>
-                              <p className={styles.detailsText}>Camera</p>
-                              <p className={styles.value}>{product?.camera}</p>
-                            </div>
-                            <div className={styles.techBlock}>
-                              <p className={styles.detailsText}>Zoom</p>
-                              <p className={styles.value}>{product?.zoom}</p>
-                            </div>
-                          </>
+              <section className={styles.productDetails__card}>
+                <div className={styles.productDetails__cardContainer}>
+                  <div className={styles.productDetails__imagePreview}>
+                    {product.images.map(image => (
+                      <button
+                        key={image}
+                        onClick={() => handleImagePreview(image)}
+                        className={classNames(
+                          styles.productDetails__imageButton,
+                          {
+                            [styles['productDetails__imageButton--is-active']]:
+                              image === currentImage,
+                          },
                         )}
+                      >
+                        <img
+                          src={`${image}`}
+                          alt="product image"
+                          className={styles.productDetails__image}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                  <Swiper
+                    spaceBetween={16}
+                    slidesPerView={1}
+                    loop={true}
+                    speed={500}
+                    onSlideChange={handleSlideChange}
+                    className={styles.productDetails__swiper}
+                    ref={swiperRef}
+                  >
+                    {product.images.map(image => (
+                      <SwiperSlide key={image}>
+                        <img
+                          src={`${image}`}
+                          alt="product image"
+                          className={styles.productDetails__swiperImage}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
 
-                        <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Cell</p>
-                          <p className={styles.value}>{product?.cell.join(', ')}</p>
-                        </div>
-                      </div>
+                <div className={styles.productDetails__parameters}>
+                  <div className={styles.productDetails__colors}>
+                    <span className={styles.productDetails__colorsAvailable}>
+                      Available colors
+                    </span>
+                    <div className={styles.productDetails__colorsContainer}>
+                      {product.colorsAvailable.map(color => {
+                        const matchedProduct = products.find(
+                          item =>
+                            item.color === color &&
+                            item.namespaceId === product.namespaceId &&
+                            item.capacity === product.capacity,
+                        );
+                        const normalizedColor = color.split(' ').join('');
+
+                        return (
+                          <Link
+                            to={`/${product.category}/${matchedProduct ? matchedProduct.id : '#'}`}
+                            className={classNames(
+                              styles.productDetails__colorsContainerColor,
+                              normalizedColor,
+                              {
+                                [styles[
+                                  'productDetails__colorsContainer--is-active'
+                                ]]: color === product.color,
+                              },
+                            )}
+                            key={color}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
+                  <div className={styles.productDetails__divider} />
+                  <div className={styles.productDetails__capacity}>
+                    <span className={styles.productDetails__capacitySelect}>
+                      Select capacity
+                    </span>
+                    <div className={styles.productDetails__capacityContainer}>
+                      {product.capacityAvailable.map(capacity => {
+                        const matchedProduct = products.find(
+                          item =>
+                            item.capacity === capacity &&
+                            item.namespaceId === product.namespaceId &&
+                            item.color === product.color,
+                        );
 
-                  {categoryGoods && categoryGoods.length > 1 && (
-                    <div className={styles.sliderContainer}>
-                      <ProductsSlider title="You may also like" goods={suggestedProducts} />
+                        return (
+                          <Link
+                            to={`/${product.category}/${matchedProduct ? matchedProduct.id : '#'}`}
+                            className={classNames(
+                              styles.productDetails__capacityContainerValue,
+                              {
+                                [styles[
+                                  'productDetails__capacityContainer--is-active'
+                                ]]: capacity === product.capacity,
+                              },
+                            )}
+                            key={capacity}
+                          >
+                            {capacity}
+                          </Link>
+                        );
+                      })}
                     </div>
-                  )}
-                </>
-              )}
+                  </div>
+                  <div className={styles.productDetails__divider} />
+                  <div className={styles.productDetails__price}>
+                    <span className={styles.productDetails__priceRegular}>
+                      {`$${productFromServer.price}`}
+                    </span>
+                    <span className={styles.productDetails__priceDiscount}>
+                      {`$${productFromServer.fullPrice}`}
+                    </span>
+                  </div>
+                  <div className={styles.productDetails__buttons}>
+                    <button
+                      onClick={() => handleAddToCartButton(productFromServer)}
+                      className={classNames(
+                        styles.productDetails__addToCartButton,
+                        {
+                          [styles[
+                            'productDetails__addToCartButton--is-active'
+                          ]]: cart.some(
+                            prod => prod.id === productFromServer.id,
+                          ),
+                        },
+                      )}
+                    >
+                      {cart.some(prod => prod.id === productFromServer.id)
+                        ? 'Added to cart'
+                        : 'Add to cart'}
+                    </button>
+                    <button
+                      onClick={() => handleFavouritesButton(productFromServer)}
+                      className={classNames(
+                        styles.productDetails__addToFavouritesButton,
+                        {
+                          [styles[
+                            'productDetails__addToFavouritesButton--is-active'
+                          ]]: favourites.some(
+                            fav => fav.id === productFromServer.id,
+                          ),
+                        },
+                      )}
+                    />
+                  </div>
+                  <div className={styles.productDetails__specs}>
+                    {specs.slice(0, 4).map(({ label, value }) => (
+                      <div
+                        key={label}
+                        className={styles.productDetails__specsRow}
+                      >
+                        <span className={styles.productDetails__specsLabel}>
+                          {label}
+                        </span>
+                        <span className={styles.productDetails__specsValue}>
+                          {value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section className={styles.productDetails__about}>
+                <h3 className={styles.productDetails__aboutTitle}>About</h3>
+
+                <div className={styles.productDetails__divider} />
+
+                <div className={styles.productDetails__aboutDescription}>
+                  {product.description.map(section => (
+                    <div
+                      className={styles.productDetails__aboutDescriptionSection}
+                      key={section.title}
+                    >
+                      <h4
+                        className={
+                          styles.productDetails__aboutDescriptionSectionTitle
+                        }
+                      >
+                        {section.title}
+                      </h4>
+
+                      <span
+                        className={
+                          styles.productDetails__aboutDescriptionSectionText
+                        }
+                      >
+                        {section.text}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className={styles.productDetails__techSpecs}>
+                <h3 className={styles.productDetails__techSpecsTitle}>
+                  Tech specs
+                </h3>
+
+                <div className={styles.productDetails__divider} />
+
+                <div className={styles.productDetails__techSpecsContainer}>
+                  {specs.map(({ label, value }) => (
+                    <div
+                      key={label}
+                      className={styles.productDetails__techSpecsRow}
+                    >
+                      <span className={styles.productDetails__techSpecsLabel}>
+                        {label}
+                      </span>
+                      <span className={styles.productDetails__techSpecsValue}>
+                        {value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className={styles.productDetails__mayLike}>
+                <ProductSlider
+                  products={suggestedProducts}
+                  title={'You may also like'}
+                />
+              </section>
             </>
+          ) : (
+            <div className={styles.productDetails__error}>
+              <h2 className={styles.productDetails__errorText}>
+                Product was not found
+              </h2>
+
+              <img
+                src="./img/product-not-found.png"
+                alt="product not found"
+                className={styles.productDetails__errorImage}
+              />
+            </div>
           )}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };

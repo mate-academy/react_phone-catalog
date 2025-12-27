@@ -1,36 +1,31 @@
-import { useContext } from 'react';
-import classNames from 'classnames';
-import { ProductsList } from '../CategoryPage/components/ProductsList';
-import { FavouritesContext } from '../../context/FavouritesContext';
+import { Link } from 'react-router-dom';
 import styles from './FavouritesPage.module.scss';
-import { Breadcrumbs } from '../shared/components/Breadcrumbs';
-import { NoItemsMessage } from '../shared/components/NoItemsMessage';
+import { StateContext } from '../../Store/Store';
+import { useContext } from 'react';
+import { ProductCard } from '../Shared/ProductCard';
 
 export const FavouritesPage = () => {
-  const { favouriteItems, favouritesCount } = useContext(FavouritesContext);
+  const { favourites } = useContext(StateContext);
 
   return (
-    <div className={styles.page}>
-      <div className={styles.breadCrumbsContainer}>
-        <Breadcrumbs />
+    <div className={styles.favourites}>
+      <div className={styles.favourites__breadcrumbs}>
+        <Link to={'/'} className={styles.favourites__breadcrumbsHomeIcon} />
+        <div className={styles.favourites__breadcrumbsArrowIcon} />
+        <span className={styles.favourites__breadcrumbsText}>Favourites</span>
       </div>
 
-      <h1
-        className={classNames(styles.title, {
-          [styles['title--noItems']]: !favouritesCount,
-        })}
-      >
-        Favourites
-      </h1>
+      <h1 className={styles.favourites__title}>Favourites</h1>
 
-      {favouritesCount === 0 ? (
-        <NoItemsMessage message={'No favourite items found'} />
-      ) : (
-        <>
-          <p className={styles.itemsAmount}>{favouritesCount} items</p>
-          <ProductsList itemsPerPage={favouritesCount} items={favouriteItems} />
-        </>
-      )}
+      <span className={styles.favourites__itemsAmount}>
+        {`${favourites.length} items`}
+      </span>
+
+      <div className={styles.favourites__productCards}>
+        {favourites.map(product => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+      </div>
     </div>
   );
 };
