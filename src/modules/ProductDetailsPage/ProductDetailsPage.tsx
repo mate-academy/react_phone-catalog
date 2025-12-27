@@ -15,6 +15,13 @@ import { RandomProducts } from '../shared/RandomProducts';
 const normalizeForUrlPart = (str: string) =>
   str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
 
+const formatColor = (color: string) =>
+  color
+    .replace(/-/g, ' ')
+    .split(/\s+/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+
 const getColorAndCapacityFromUrl = (
   productId: string,
   product: ProductDetails,
@@ -22,13 +29,13 @@ const getColorAndCapacityFromUrl = (
   const segments = productId.toLowerCase().split('-');
 
   const capacity =
-    product.capacityAvailable.find((cap: string) =>
+    product.capacityAvailable.find(cap =>
       segments.some(seg => seg.includes(cap.toLowerCase())),
     ) || product.capacityAvailable[0];
 
   const color =
-    product.colorsAvailable.find((c: string) =>
-      segments.some(seg => seg.includes(c.toLowerCase().replace(/\s+/g, '-'))),
+    product.colorsAvailable.find(c =>
+      segments.some(seg => normalizeForUrlPart(c).includes(seg)),
     ) || product.colorsAvailable[0];
 
   return { capacity, color };
@@ -72,18 +79,10 @@ export const ProductDetailsPage = () => {
       const baseName = getBaseName(product.name, product.capacityAvailable);
       const formattedCapacity = formatCapacity(capacity);
 
-      return `${baseName} ${formattedCapacity} ${color}`
-        .split(' ')
-        .map(word =>
-          /\d+(GB|TB)/i.test(word)
-            ? word.toUpperCase()
-            : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-        )
-        .join(' ');
+      return `${baseName} ${formattedCapacity} ${formatColor(color)}`;
     },
     [product],
   );
-
   const updateColor = useCallback(
     (color: string) => {
       if (!product) {
