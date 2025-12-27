@@ -62,8 +62,7 @@ export const ProductSpec: React.FC<Props> = ({
     image: product.images[0],
     type: product.category,
   };
-
-  const sortedColors = product.colorsAvailable.sort();
+  const sortedColors = [...product.colorsAvailable].sort();
 
   return (
     <div className={styles.spec}>
