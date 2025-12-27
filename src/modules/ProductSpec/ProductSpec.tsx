@@ -63,6 +63,7 @@ export const ProductSpec: React.FC<Props> = ({
     type: product.category,
   };
   const sortedColors = [...product.colorsAvailable].sort();
+  const activeColor = sortedColors[activeIndex];
 
   return (
     <div className={styles.spec}>
@@ -71,14 +72,16 @@ export const ProductSpec: React.FC<Props> = ({
         <div className={styles.spec_colors_container}>
           {sortedColors.map(color => {
             const isActive =
-              normalizeColor(color) ===
-              normalizeColor(sortedColors[activeIndex]);
+              normalizeColor(color) === normalizeColor(activeColor);
+
             const displayColor = COLOR_MAP[normalizeColor(color)] || color;
 
             return (
               <div
-                className={`${styles.spec_color} ${isActive ? styles['spec_color--active'] : ''}`}
                 key={normalizeColor(color)}
+                className={`${styles.spec_color} ${
+                  isActive ? styles['spec_color--active'] : ''
+                }`}
                 onClick={() => {
                   const index = sortedColors.indexOf(color);
 
@@ -89,7 +92,7 @@ export const ProductSpec: React.FC<Props> = ({
                 <p
                   className={styles.spec_item_color}
                   style={{ backgroundColor: displayColor }}
-                ></p>
+                />
               </div>
             );
           })}
