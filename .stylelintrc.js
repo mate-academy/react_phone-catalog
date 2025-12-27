@@ -1,6 +1,6 @@
 module.exports = {
-  extends: "@mate-academy/stylelint-config",
+  extends: '@mate-academy/stylelint-config',
   rules: {
-    "no-empty-source": null
-  }
+    'no-empty-source': null,
+  },
 };
