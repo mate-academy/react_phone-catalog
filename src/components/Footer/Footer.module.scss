@@ -99,7 +99,7 @@
 
   &__backToTopButton {
     cursor: pointer;
-    background-image: url(/img/buttons/slider-button.svg);
+    background-image: url(./img/buttons/slider-button.svg);
     height: 32px;
     width: 32px;
     rotate: (-90deg);
@@ -108,6 +108,6 @@
   }
 
   &__backToTopButton:hover {
-    background-image: url(/img/buttons/slider-button-hover.svg);
+    background-image: url(./img/buttons/slider-button-hover.svg);
   }
 }

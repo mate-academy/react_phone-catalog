@@ -8,19 +8,19 @@ import accessories from '../../../../../public/api/accessories.json';
 const CATEGORIES = [
   {
     id: 'phones',
-    image: '/img/category-phones.webp',
+    image: './img/category-phones.webp',
     title: 'Mobile phones',
     modelsAmount: phones.length,
   },
   {
     id: 'tablets',
-    image: '/img/category-tablets.webp',
+    image: './img/category-tablets.webp',
     title: 'Tablets',
     modelsAmount: tablets.length,
   },
   {
     id: 'accessories',
-    image: '/img/category-accessories.webp',
+    image: './img/category-accessories.webp',
     title: 'Accessories',
     modelsAmount: accessories.length,
   },

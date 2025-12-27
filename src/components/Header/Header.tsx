@@ -48,7 +48,7 @@ export const Header = () => {
       <div className={styles.header__content}>
         <Link to={'/'} className={styles.header__logoLink}>
           <img
-            src="/img/header-logo.png"
+            src="./img/header-logo.png"
             alt="Logo"
             className={styles.header__logo}
           />
@@ -77,7 +77,7 @@ export const Header = () => {
               </div>
             )}
             <img
-              src="/img/icons/favourites-icon.svg"
+              src="./img/icons/favourites-icon.svg"
               alt="Favourites"
               className={styles.header__iconImage}
             />
@@ -93,7 +93,7 @@ export const Header = () => {
               </div>
             )}
             <img
-              src="/img/icons/cart-icon.svg"
+              src="./img/icons/cart-icon.svg"
               alt="Cart"
               className={styles.header__iconImage}
             />
@@ -109,12 +109,12 @@ export const Header = () => {
         >
           {isMenuVisible ? (
             <img
-              src="/img/icons/close-icon.svg"
+              src="./img/icons/close-icon.svg"
               className={styles.header__closeIcon}
             />
           ) : (
             <img
-              src="/img/icons/menu-icon.svg"
+              src="./img/icons/menu-icon.svg"
               className={styles.header__menuIcon}
             />
           )}

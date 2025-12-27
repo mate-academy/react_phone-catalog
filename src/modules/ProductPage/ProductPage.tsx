@@ -170,7 +170,7 @@ export const ProductPage = () => {
           <div className={styles.productPage__top}>
             <Link to={'/'} className={styles.productPage__topHomeIcon} />
             <img
-              src="/img/icons/arrow-right-icon.svg"
+              src="./img/icons/arrow-right-icon.svg"
               alt="arrow-right"
               className={styles.productPage__topArrowIcon}
             />

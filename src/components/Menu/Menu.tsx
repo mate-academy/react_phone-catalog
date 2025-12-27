@@ -53,7 +53,7 @@ export const Menu = () => {
               </div>
             )}
             <img
-              src="/img/icons/favourites-icon.svg"
+              src="./img/icons/favourites-icon.svg"
               alt="Favourites"
               className={styles.menu__iconImage}
             />
@@ -73,7 +73,7 @@ export const Menu = () => {
               </div>
             )}
             <img
-              src="/img/icons/cart-icon.svg"
+              src="./img/icons/cart-icon.svg"
               alt="Cart"
               className={styles.menu__iconImage}
             />

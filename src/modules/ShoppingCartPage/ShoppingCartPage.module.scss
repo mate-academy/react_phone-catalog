@@ -22,7 +22,7 @@
 
   &__backArrow {
     cursor: pointer;
-    background-image: url(/img/buttons/swipe-button-left.svg);
+    background-image: url(./img/buttons/swipe-button-left.svg);
     height: 16px;
     width: 16px;
     border: 0;
@@ -82,7 +82,7 @@
 
   &__cardTopDeleteButton {
     cursor: pointer;
-    background-image: url(/img/icons/close-icon-grey.svg);
+    background-image: url(./img/icons/close-icon-grey.svg);
     width: 16px;
     height: 16px;
     border: 0;
@@ -154,15 +154,15 @@
   }
 
   &__cardBottomCounterMinus--is-active {
-    background-image: url(/img/icons/minus-icon.svg);
+    background-image: url(./img/icons/minus-icon.svg);
   }
 
   &__cardBottomCounterMinus--disabled {
-    background-image: url(/img/icons/minus-grey-icon.svg);
+    background-image: url(./img/icons/minus-grey-icon.svg);
   }
 
   &__cardBottomCounterPlus {
-    background-image: url(/img/icons/plus-icon.svg);
+    background-image: url(./img/icons/plus-icon.svg);
     width: 16px;
     height: 16px;
   }
@@ -343,7 +343,7 @@
   }
 
   &__dialogCloseButton {
-    background-image: url(/img/icons/close-icon.svg);
+    background-image: url(./img/icons/close-icon.svg);
     width: 16px;
     height: 16px;
   }

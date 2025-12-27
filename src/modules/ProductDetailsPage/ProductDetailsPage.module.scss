@@ -30,7 +30,7 @@
   }
 
   &__breadcrumbsHomeIcon {
-    background-image: url(/img/icons/home-icon.svg);
+    background-image: url(./img/icons/home-icon.svg);
     height: 16px;
     min-width: 16px;
 
@@ -38,7 +38,7 @@
   }
 
   &__breadcrumbsArrowIcon {
-    background-image: url(/img/icons/arrow-right-icon.svg);
+    background-image: url(./img/icons/arrow-right-icon.svg);
     height: 16px;
     min-width: 16px;
   }
@@ -80,7 +80,7 @@
 
   &__backArrow {
     cursor: pointer;
-    background-image: url(/img/buttons/swipe-button-left.svg);
+    background-image: url(./img/buttons/swipe-button-left.svg);
     height: 16px;
     width: 16px;
     border: 0;
@@ -341,7 +341,7 @@
 
   &__addToFavouritesButton {
     cursor: pointer;
-    background-image: url(/img/buttons/favourites-button.svg);
+    background-image: url(./img/buttons/favourites-button.svg);
     height: 48px;
     width: 48px;
     background-color: $main-page-color;
@@ -351,15 +351,15 @@
   }
 
   &__addToFavouritesButton:hover {
-    background-image: url(/img/buttons/favourites-button-hover.svg);
+    background-image: url(./img/buttons/favourites-button-hover.svg);
   }
 
   &__addToFavouritesButton:hover.productDetails__addToFavouritesButton--is-active {
-    background-image: url(/img/buttons/favourites-button-selected.svg);
+    background-image: url(./img/buttons/favourites-button-selected.svg);
   }
 
   &__addToFavouritesButton--is-active {
-    background-image: url(/img/buttons/favourites-button-selected.svg);
+    background-image: url(./img/buttons/favourites-button-selected.svg);
   }
 
   &__specs, &__techSpecsContainer {

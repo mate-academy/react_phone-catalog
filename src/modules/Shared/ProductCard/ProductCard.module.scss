@@ -159,7 +159,7 @@
 
   &__addToFavourites {
     cursor: pointer;
-    background-image: url(/img/buttons/favourites-button.svg);
+    background-image: url(./img/buttons/favourites-button.svg);
     height: 40px;
     width: 40px;
     background-color: #fff;
@@ -167,15 +167,15 @@
   }
 
   &__addToFavourites:hover {
-    background-image: url(/img/buttons/favourites-button-hover.svg);
+    background-image: url(./img/buttons/favourites-button-hover.svg);
   }
 
   &__addToFavourites:hover.productCard__addToFavourites--is-active {
-    background-image: url(/img/buttons/favourites-button-selected.svg);
+    background-image: url(./img/buttons/favourites-button-selected.svg);
   }
 
   &__addToFavourites--is-active {
-    background-image: url(/img/buttons/favourites-button-selected.svg);
+    background-image: url(./img/buttons/favourites-button-selected.svg);
   }
 }
 

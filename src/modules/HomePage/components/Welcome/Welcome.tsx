@@ -71,7 +71,7 @@ export const Welcome = () => {
                   className={classNames(styles.welcome__bannerImageLink)}
                 >
                   <img
-                    src={`/img/banner-${product}.png`}
+                    src={`./img/banner-${product}.png`}
                     alt={product}
                     className={styles.welcome__bannerImage}
                   />

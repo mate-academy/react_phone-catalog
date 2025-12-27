@@ -11,28 +11,28 @@ export const Footer = () => {
       <div className={styles.footer__container}>
         <Link to={'/'} className={styles.footer__logoLink}>
           <img
-            src="/img/footer-logo.png"
+            src="./img/footer-logo.png"
             alt="Logo"
             className={styles.footer__logo}
           />
         </Link>
         <div className={styles.footer__linksContainer}>
           <Link
-            to="https://github.com/kovaden414"
+            to="https://github.com/Mishadoloh"
             target="_blank"
             className={styles.footer__link}
           >
             Github
           </Link>
           <Link
-            to="https://github.com/kovaden414"
+            to="https://github.com/Mishadoloh"
             target="_blank"
             className={styles.footer__link}
           >
             Contacts
           </Link>
           <Link
-            to="https://github.com/kovaden414"
+            to="https://github.com/Mishadoloh"
             target="_blank"
             className={styles.footer__link}
           >
