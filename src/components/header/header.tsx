@@ -70,7 +70,7 @@ export const Header = () => {
                   <NavLink
                     to={link.path}
                     className={getActiveLink('link')}
-                    onClick={() => setIsMenuActive(prev => !prev)}
+                    onClick={() => setIsMenuActive(false)}
                   >
                     {link.page}
                   </NavLink>
@@ -83,7 +83,7 @@ export const Header = () => {
             <NavLink 
               to={'/favorites'}
               className={getActiveLink('fav')}
-              onClick={() => setIsMenuActive(prev => !prev)}
+              onClick={() => setIsMenuActive(false)}
             >
               {!!favorites.length && (
                 <span className="header__value">{favorites.length}</span>
@@ -92,7 +92,7 @@ export const Header = () => {
             <NavLink 
               to={'/cart'}
               className={getActiveLink('cart')}
-              onClick={() => setIsMenuActive(prev => !prev)}
+              onClick={() => setIsMenuActive(false)}
             >
               {!!cart.length && (
                 <span className="header__value">{cart.length}</span>
