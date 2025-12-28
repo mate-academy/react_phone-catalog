@@ -30,8 +30,8 @@ export const FavoritesPageLazy = lazy(() =>
   })),
 );
 
-// export const LazyNotFoundPage = lazy(() =>
-//   import('../pages/NotFoundPage').then(({ NotFoundPage }) => ({
-//     default: NotFoundPage,
-//   })),
-// );
+export const NotFoundPageLazy = lazy(() =>
+  import('../pages/NotFoundPage').then(({ NotFoundPage }) => ({
+    default: NotFoundPage,
+  })),
+);

@@ -34,7 +34,7 @@ export const GlobalContext = createContext<GlobalContextType>({
   updateQuantity: () => {},
   favorites: [],
   setFavorites: () => {},
-  toggleFavorites: () => {},
+  toggleFavorites: () => { },
 });
 
 type Props = {

@@ -5,6 +5,7 @@ import cat from '../../../public/img/category-phones.webp';
 import cat1 from '../../../public/img/category-tablets.webp';
 import cat2 from '../../../public/img/category-accessories.webp';
 import './ShopByCategory.scss';
+import { Link } from 'react-router-dom';
 
 export const ShopByCategory = () => {
   const { allProducts } = useContext(GlobalContext);
@@ -22,21 +23,21 @@ export const ShopByCategory = () => {
       <div className="shop__content">
         <h2 className="shop__title">Shop by category</h2>
         <div className="shop__blocks">
-          <a href="#/" className="shop__block">
+          <Link to="/phones" className="shop__block">
             <div className="shop__block-pic shop__block-pic--1">
               <img src={cat} alt="block-img" className="shop__image" />
             </div>
             <span className="shop__block-title">Mobile phones</span>
             <span className="shop__block-desc">{`${phonesQuantity} Models`}</span>
-          </a>
-          <a href="#/" className="shop__block">
+          </Link>
+          <Link to="/tablets" className="shop__block">
             <div className="shop__block-pic shop__block-pic--2">
               <img src={cat1} alt="block-img" className="shop__image" />
             </div>
             <span className="shop__block-title">Tablets</span>
             <span className="shop__block-desc">{`${tabletsQuantity} Models`}</span>
-          </a>
-          <a href="#/" className="shop__block">
+          </Link>
+          <Link to="/accessories" className="shop__block">
             <div className="shop__block-pic shop__block-pic--3">
               <img
                 src={cat2}
@@ -46,7 +47,7 @@ export const ShopByCategory = () => {
             </div>
             <span className="shop__block-title">Accessories</span>
             <span className="shop__block-desc">{`${accessoriesQuantity} Models`}</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

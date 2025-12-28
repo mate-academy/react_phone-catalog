@@ -1,17 +1,18 @@
 import './CartPage.scss';
 import { ButtonBack } from "../../components/ButtonBack";
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
-import { Product } from '../../types/Product';
+import { CartItem } from '../../components/CartItem';
 import emptyCartImg from '../../assets/cart-is-empty.png';
-import classNames from 'classnames';
-
-const normalize = (str: string) => {
-  return str[0].toUpperCase() + str.slice(1);
-};
+import { ModalDialog } from '../../components/ModalDialog';
 
 export const CartPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { allProducts, cart } = useContext(GlobalContext);
+
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? 'hidden' : '';
+  }, [isModalOpen]);
 
   const cartProducts = useMemo(
     () => allProducts
@@ -22,8 +23,6 @@ export const CartPage = () => {
   const getQuantity = (id: string): number => {
     return cart.find(c => c.id === id)?.quantity ?? 0;
   };
-
-  // const quantity = getQuantity(product.itemId);
   
   const totalPrice = useMemo(
     () => cartProducts.reduce((sum, product) =>
@@ -67,65 +66,22 @@ export const CartPage = () => {
                       {`Total for ${cartProducts.length} items`}
                     </span>
                   </div>
-                  <span className="cart__check-btn">
+                  <button
+                    className="cart__check-btn"
+                    onClick={() => setIsModalOpen(true)}
+                  >
                     Checkout
-                  </span>
+                  </button>
+
                 </div>
               </div>
             )
           }
-        </div>
-      </div>
-    </div>
-  );
-}
 
-type Props = {
-  product: Product;
-  quantity: number,
-}
-
-export const CartItem: React.FC<Props> = ({ product, quantity }) => {
-  const { deleteFromCart, updateQuantity } = useContext(GlobalContext);
-
-  return (
-    <div className="cart-item">
-      <div className="cart-item__top">
-        <div
-          className="cart-item__delete"
-          onClick={() => deleteFromCart(product.itemId)}
-        />
-        <div className="cart-item__photo">
-          <img src={product.image} alt="cart-photo" />
-        </div>
-        <div className="cart-item__title">
-          {normalize(product.itemId)}
-        </div>
-      </div>
-
-      <div className="cart-item__bottom">
-        <div className="cart-item__btn-block">
-          <div
-            className={classNames(
-              'cart-item__btn',
-              'cart-item__btn--dec',
-              {'cart-item__btn--active': quantity > 1}
-            )}
-            onClick={() => {
-              if (quantity > 1) {
-                updateQuantity(product.itemId, quantity - 1);
-              }
-            }}
-          />
-          <span>{quantity}</span>
-          <div
-            className="cart-item__btn cart-item__btn--inc"
-            onClick={() => updateQuantity(product.itemId, quantity + 1)}
-          />
-        </div>
-
-        <div className="cart-item__price">
-          <span>{`$ ${product.price}`}</span>
+          {(<ModalDialog
+            isOpen={isModalOpen}
+            onClose={setIsModalOpen}
+          />)}
         </div>
       </div>
     </div>

@@ -32,7 +32,8 @@
       line-height: 1;
       color: $gray-secondary;
       transform: translateY(2px);
-
+      transition: all .3s ease;
+      
       &:hover {
         color: $gray-primary;
       }

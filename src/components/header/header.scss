@@ -1,13 +1,6 @@
 @import '../../utils/variables';
 @import '../../utils/mixins';
 
-$header-height--desktop: 64px;
-$header-height--tablet: 48px;
-$nav-gap--desktop: 64px;
-$nav-gap--tablet: 32px;
-$gap-header--desktop: 24px;
-$gap-header--tablet: 16px;
-
 .header {
   position: fixed;
   width: 100%;
@@ -28,16 +21,18 @@ $gap-header--tablet: 16px;
   &__body {
     position: relative;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
+    height: $header-height--phone;
     align-items: center;
     box-shadow: 0 1px 0 0 $gray-elements;
     z-index: 10;
 
     @include adaptiv-value(gap, 16, 24, 1);
-    @include adaptiv-value(height, 48, 64, 1);
-    @include phone-max {
-      justify-content: space-between;
-      height: 48px;
+    @include on-tablet {
+      justify-content: start;
+    }
+    @include on-desktop {
+      height: $header-height--desktop;
     }
   }
 
@@ -60,16 +55,22 @@ $gap-header--tablet: 16px;
     align-items: center;
     justify-content: space-between;
     transition: all .3s ease;
+    height: 100%;
     
     @include phone-max {
       flex-direction: column;
       position: fixed;
       padding-top: 30px;
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
       left: +100%;
-      top: 49px;
+      top: calc($header-height--phone + 1px);
       width: 100%;
-      height: calc(100vh - #{$header-height--tablet} - 1px);
+      height: calc(100dvh - #{$header-height--phone} - 1px);
       background-color: $gray-background;
+
+      @supports not (height: 100dvh) {
+        height: calc(100vh - #{$header-height--phone} - 1px);
+      }
     }
   }
 
@@ -82,9 +83,14 @@ $gap-header--tablet: 16px;
   &__buttons {
     display: flex;
     justify-content: space-between;
+    height: 64px;
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
 
-    @include phone-max {
-      width: 100%;
+    @include on-tablet {
+      width: auto;
+      height: 100%;
     }
   }
 
@@ -92,14 +98,18 @@ $gap-header--tablet: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    aspect-ratio: 1 / 1;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: -1px -1px 0 0 $gray-elements;
-    height: 64px;
+    box-shadow:
+      -1px -1px 0 0 $gray-elements,
+      -1px  1px 0 0 $gray-elements;
 
-    @include adaptiv-value(height, 48, 64, 1);
-    @include adaptiv-value(width, 48, 64, 1);
     @include underline-after;
+    @include on-tablet {
+      height: 100%;
+    }
 
     &:hover {
       cursor: pointer;
@@ -110,36 +120,36 @@ $gap-header--tablet: 16px;
     }
 
     &--fav {
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 1 / 1;
       position: relative;
       background-image: url(../../assets/icons/favorite-icon--default.svg);
     
-      @include phone-max {
-        height: 64px;
-        width: 100%;
+      @include on-tablet {
+        height: 100%;
       }
     }
   
     &--cart {
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 1 / 1;
       position: relative;
       background-image: url(../../assets/icons/shopping-bag-cart.svg);
     
-      @include phone-max {
-        height: 64px;
-        width: 100%;
+      @include on-tablet {
+        height: 100%;
       }
     }
 
     &--burger {
+      height: 100%;
+      aspect-ratio: 1 / 1;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 3;
-
-      // @include phone-max {
-      //   height: 48px;
-      //   width: 48px;
-      //   width: 100%;
-      // }
     }
 
     &--active {
@@ -172,6 +182,8 @@ $gap-header--tablet: 16px;
   }
 
   &__burger {
+    height: 100%;
+
     @include on-tablet {
       display: none;
     }
@@ -215,43 +227,49 @@ $gap-header--tablet: 16px;
 
   &__list {
     display: flex;
+    align-items: center;
     z-index: 2;
+    flex-direction: column;
+    gap: 24px;
 
     @include adaptiv-value(gap, 32, 64, 1);
-    @include phone-max {
-      flex-direction: column;
-      gap: 24px;
+    @include on-tablet {
+      flex-direction: row;
     }
 
     li {
       list-style: none;
+      text-align: center;
 
-      @include adaptiv-value(line-height, 48, 64, 1);
-      @include phone-max {
-        line-height: 15px;
-        text-align: center;
+      @include on-desktop {
+        line-height: $header-height--desktop;
       }
     }
   }
 
   &__link {
     display: flex;
+    align-items: center;
     height: 100%;
     text-decoration: none;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 16px;
     letter-spacing: .08em;
+    line-height: $header-height--phone;
     color: $gray-secondary;
     text-transform: uppercase;
     transition: all 0.3s ease;
 
-    @include adaptiv-value(line-height, 48, 64, 1);
-    @include phone-max {
-      font-size: 14px;
-      line-height: 30px;
+    @include underline-after;
+    @include on-tablet {
+      font-size: 12px;
       display: inline-block;
     }
-    @include underline-after;
+
+    @include on-desktop {
+      line-height: $header-height--desktop;
+    }
+
     
     &:hover {
       color: $gray-primary;

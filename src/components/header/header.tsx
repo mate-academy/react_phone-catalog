@@ -1,7 +1,7 @@
 import './Header.scss';
 
 import logo from '../../assets/icons/Logo.svg';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { GlobalContext } from '../../context/GlobalContext';
 import { Link, NavLink } from 'react-router-dom';
@@ -43,6 +43,14 @@ export const Header = () => {
   const { favorites, cart } = useContext(GlobalContext);
   const [isMenuActive, setIsMenuActive] = useState(false);
 
+  useEffect(() => {
+  if (isMenuActive) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}, [isMenuActive]);
+
   return (
     <div className="header">
       <div className="header__body">
@@ -62,6 +70,7 @@ export const Header = () => {
                   <NavLink
                     to={link.path}
                     className={getActiveLink('link')}
+                    onClick={() => setIsMenuActive(prev => !prev)}
                   >
                     {link.page}
                   </NavLink>
@@ -74,6 +83,7 @@ export const Header = () => {
             <NavLink 
               to={'/favorites'}
               className={getActiveLink('fav')}
+              onClick={() => setIsMenuActive(prev => !prev)}
             >
               {!!favorites.length && (
                 <span className="header__value">{favorites.length}</span>
@@ -82,6 +92,7 @@ export const Header = () => {
             <NavLink 
               to={'/cart'}
               className={getActiveLink('cart')}
+              onClick={() => setIsMenuActive(prev => !prev)}
             >
               {!!cart.length && (
                 <span className="header__value">{cart.length}</span>
@@ -93,10 +104,7 @@ export const Header = () => {
           className={classNames('header__burger', {
             'is-active': isMenuActive,
           })}
-          onClick={() => {
-            document.body.classList.toggle('lock');
-            setIsMenuActive(prev => !prev);
-          }}
+          onClick={() => setIsMenuActive(prev => !prev)}
         >
           <div className="header__btn header__btn--burger">
             <div className="header__burger-btn">

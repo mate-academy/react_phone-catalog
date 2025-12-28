@@ -9,7 +9,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Mont, sans-serif;
+  font-family: Mont, arial;
   font-weight: 400;
   background-color: $gray-white;
 }
@@ -34,7 +34,7 @@ p, ul, h1, h2 {
   &__main {
     flex: 1 0 auto;
 
-    @include adaptiv-value(padding-top, 58, 80, 1);
+    @include adaptiv-value(padding-top, 72, 88, 1);
   }
 
   &__footer {

@@ -1,11 +1,13 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from '../Layout';
-import { CartPageLazy, DetailsPageLazy, FavoritesPageLazy, HomePageLazy, ProductPageLazy } from './lazy';
+import { CartPageLazy, DetailsPageLazy, FavoritesPageLazy, HomePageLazy, NotFoundPageLazy, ProductPageLazy } from './lazy';
 import { ProductName } from '../types/prodName';
+import { ScrollToTop } from '../components/ScrollToTop/ScrollToTop';
 
 export const AllRoutes = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePageLazy />}/>
@@ -38,7 +40,7 @@ export const AllRoutes = () => {
 
           <Route path="cart" element={<CartPageLazy />} />
 
-          {/* <Route path="*" element={<NotFoundPageLazy />} /> */}
+          <Route path="*" element={<NotFoundPageLazy />} />
         </Route>
       </Routes>
     </Router>

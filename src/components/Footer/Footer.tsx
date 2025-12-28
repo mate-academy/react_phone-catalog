@@ -1,30 +1,40 @@
 import './Footer.scss';
 import logo from '../../assets/icons/Logo.svg';
 import { Button } from '../Button/Button';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
     <div className="footer">
       <div className="container">
         <div className="footer__body">
-          <a href="#" className="footer__logo">
+          <Link to="/#" className="footer__logo">
             <img src={logo} alt="logo" />
-          </a>
+          </Link>
           <ul className="footer__menu">
             <li>
-              <a href="#" className="footer__link">
+              <Link 
+                to="https://github.com/NikolayDek" 
+                className="footer__link"
+              >
                 Github
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="footer__link">
+              <Link 
+                to="https://nikolaydek.github.io/react_phone-catalog/" 
+                className="footer__link"
+              >
                 Contacts
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="footer__link">
+              <Link 
+                to="https://nikolaydek.github.io/react_phone-catalog/" 
+                className="footer__link"
+              >
                 Rights
-              </a>
+              </Link>
             </li>
           </ul>
           <div
