@@ -40,7 +40,7 @@ $desktop: 1024px;
     align-items: center;
     min-height: 400px;
     font-size: $h2-size;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
     text-align: center;
   }
 
@@ -49,7 +49,7 @@ $desktop: 1024px;
     flex-direction: column;
     gap: 16px;
     padding: 24px;
-    border: 1px solid $light-border;
+    border: 1px solid var(--color-elements);
 
     // Mobile: Full width
     width: 100%;
@@ -70,7 +70,7 @@ $desktop: 1024px;
       row-gap: 0px;
       align-items: center;
       padding-bottom: 16px;
-      border-bottom: 1px solid $light-border;
+      border-bottom: 1px solid var(--color-elements);
     }
 
     &Price {
@@ -83,13 +83,13 @@ $desktop: 1024px;
       font-size: $body-size;
       font-weight: 500;
       line-height: $body-line;
-      color: $light-text-secondary;
+      color: var(--text-secondary);
     }
 
     &Button {
       width: 100%;
       height: 48px;
-      background-color: $light-text-main;
+      background-color: var(--text-main);
       color: white;
       font-size: $button-size;
       font-weight: 700;
@@ -132,9 +132,9 @@ $tablet: 768px;
 
   gap: 16px; // Gap between elements
   padding: 16px;
-  border: 1px solid $light-border;
-  background-color: #fff;
-  align-items: center; // Vertically center items by default
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  align-items: center;
 
   // === DESKTOP LAYOUT (Reset to Flexbox) ===
   @media (min-width: 640px) {
@@ -159,6 +159,10 @@ $tablet: 768px;
     background: transparent;
     border: none;
     cursor: pointer;
+    color: var(--btn-border);
+    &:hover {
+      color: var(--text-main);
+    }
 
     @media (min-width: $tablet) {
       width: 16px; // Smaller on desktop per your original design
@@ -207,7 +211,7 @@ $tablet: 768px;
     font-size: $body-size;
     font-weight: 500;
     line-height: 1.4;
-    color: $light-text-main;
+    color: var(--text-main);
   }
 
   // 4. Quantity Block (Bottom Left)

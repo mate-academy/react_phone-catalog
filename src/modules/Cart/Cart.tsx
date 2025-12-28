@@ -8,6 +8,7 @@ import styles from './Cart.module.scss';
 import { Product } from '@/types';
 import { getProducts } from '@/api/api';
 import { Loader } from '../shared/components/Loader';
+import { Button } from '@/components/ui/button/Button';
 
 export type CartProduct = Product & { quantity: number };
 //TODO: add loader
@@ -77,12 +78,12 @@ export const Cart: React.FC = () => {
               className={styles.cartPage__checkoutBlockAmount}
             >{`Total for ${totalCount} items`}</span>
           </div>
-          <button
-            className={styles.cartPage__checkoutBlockButton}
+          <Button
+            // className={styles.cartPage__checkoutBlockButton}
             onClick={handleCheckout}
           >
             Checkout
-          </button>
+          </Button>
         </div>
       </div>
       {isModalOpen && (

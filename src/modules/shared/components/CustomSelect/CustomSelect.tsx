@@ -176,7 +176,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                     focused: isFocused,
                   })}
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent bubbling to control
+                    e.stopPropagation(); 
                     handleSelect(option.value);
                   }}
                   onMouseEnter={() => setFocusedIndex(index)}
