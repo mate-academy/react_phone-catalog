@@ -1,0 +1,64 @@
+// Related global rules in App.scss
+
+.aside {
+  position: fixed;
+  top: calc(space(5) + 1px);
+  left: -101%;
+  width: 100%;
+  height: calc(100vh - space(5) - 1px);
+
+  background-color: $bg;
+  z-index: 1000;
+
+  transition: left 0.3s ease-in-out;
+  border-right: 1px $secondary solid;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: space(3);
+    padding: calc($space-unit * 6) 0;
+  }
+
+  &__link {
+    min-height: calc($space-unit * 7);
+    width: min-content;
+  }
+}
+
+.control {
+  display: flex;
+  border-top: 1px $secondary solid;
+  gap: 1px;
+  background-color: $secondary;
+
+  &__button {
+    width: 100%;
+    height: space(6);
+    background-color: $bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  &__icon {
+    height: calc($space-unit * 5);
+    width: calc($space-unit * 5);
+    fill: $text;
+  }
+
+  &__button:hover &__icon {
+    fill: $accent;
+    
+    @include animation(scale(1.3));
+  }
+}
+
+
+

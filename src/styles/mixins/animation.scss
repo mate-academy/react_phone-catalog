@@ -1,0 +1,20 @@
+@mixin animation($animaiton) {
+  transition: transform 0.2s ease;
+  transform: $animaiton;
+}
+
+@mixin on-hover($scale: 1.1) {
+  &:hover {
+    @include animation(scale($scale));
+  }
+}
+
+
+*,
+*::before,
+*::after {
+  transition: background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    fill 0.2s ease;
+}

@@ -1,0 +1,81 @@
+.header {
+  background-color: $bg;
+  height: space(5);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px $secondary solid;
+
+  @include respond (mobile) {
+    gap: calc(space(4) / 2);
+  }
+
+  @include respond (desktop) {
+    height: space(6);
+    gap: calc(space(5) / 2);
+  }
+}
+
+.logo {
+  min-width: space(6);
+  min-height: $space-unit * 5.5; // 22px
+  padding: 0 space(3);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-image: url('/logo/logo-dark.svg');
+
+  @media (prefers-color-scheme: light) {
+    background-image: url('/logo/logo-light.svg');
+  }
+
+  @include respond(desktop) {
+    width: calc($space-unit * 20);
+    height: calc($space-unit * 7);
+    padding: 0 calc($space-unit * 5.5);
+  }
+
+  @include on-hover;
+}
+
+.control { // Related global rules in App.scss
+  margin-left: auto;
+
+  align-self: stretch;
+  display: flex;
+  height: 100%;
+  gap: calc($space-unit / 4);
+  padding: 0 calc($space-unit / 4);
+  background-color: $secondary;
+
+  &__button {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: $bg;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    height: calc($space-unit * 5);
+    width: calc($space-unit * 5);
+    fill: $text;
+  }
+
+  &__button:hover &__icon {
+    fill: $accent;
+    
+    @include animation(scale(1.3));
+  }
+}
+
+.response { // Related global rules in App.scss
+  display: none;
+
+  @include respond(tablet) {
+    display: flex;
+  }
+}

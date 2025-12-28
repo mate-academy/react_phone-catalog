@@ -1,0 +1,23 @@
+.menu {
+  display: none;
+  height: 100%;
+
+  @include respond(tablet) {
+    display: flex;
+    align-items: center;
+    gap: space(3);
+  }
+
+  @include respond(tablet) {
+    gap: space(4);
+  }
+
+  @include respond(desktop) {
+    gap: space(5);
+  }
+
+  @include respond(wide) {
+    gap: space(6);
+  }
+
+}

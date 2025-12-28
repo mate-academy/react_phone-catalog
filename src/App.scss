@@ -1,26 +1,130 @@
-/* Define variables for dark theme */
-body.dark {
-  --color-accent: #905BFF;
-  --color-secondary: #75767f;
-  --color-icons: #3a3d58;
-  --color-elements: #3b3e4a;
-  --color-hover: #323542;
-  --color-disabled: #0f1121;
-  --color-bg: #161827;
-  --color-white: #f1f2f9;
-  --color-green: #27ae60;
-  --color-red: #eb5757;
+:root {
+  --accent: #905BFF;
+  --secondary: #75767f;
+  --icons: #3a3d58;
+  --elements: #3b3e4a;
+  --hover: #323542;
+  --disabled: #0f1121;
+  --bg: #161827;
+  --white: #f1f2f9;
+  --green: #27ae60;
+  --red: #eb5757;
+  --text: #f1f2f9;
 }
 
-body.light {
-  --color-accent: #313237;
-  --color-secondary: #89939a;
-  --color-icons: #b4bdc3;
-  --color-elements: #e2e6e9;
-  --color-hover: #fafbfc;
-  --color-bg: #fafbfc;
-  --color-disabled: #fff;
-  --color-white: #fff;
-  --color-green: #27ae60;
-  --color-red: #eb5757;
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent: #4219d0;
+    --secondary: #89939a;
+    --icons: #b4bdc3;
+    --elements: #e2e6e9;
+    --hover: #fafbfc;
+    --bg: #fafbfc;
+    --disabled: #fff;
+    --white: #fff;
+    --green: #27ae60;
+    --red: #eb5757;
+    --text: #333;
+  }
+}
+
+@function color($name) {
+  @return var(--#{$name});
+}
+
+body {
+  margin: 0;
+  background-color: color(bg);
+  color: color(text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+button {
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+}
+
+/*
+  Purpose:
+    These rules are slightly nested on purpose to achieve a clever menu toggle
+    behavior without any JS magic, all while respecting the hashed class (.module)
+    structure as much as possible.
+
+  Related classes/files:
+    - .response in `Header.module.scss` — handles UI changes depending on screen size
+    - .control &__button in `Header.module.scss` — styles for the buttons
+    - `Aside.module.scss` — styles for the Aside component
+
+  Notes:
+    - When resizing from small to large screens and back, the checkbox state
+      preserves its previous value — no reset
+    - Pure CSS solution: no JS involved, just smart selectors and media queries
+*/
+
+/* stylelint-disable-next-line selector-max-id */
+#menu-checkbox {
+  position: absolute;
+  left: -9999px;
+
+  @include respond (tablet) {
+    display: none;
+  }
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#menu-checkbox:checked~aside[data-menu-aside] {
+  left: 0;
+
+  @include respond (tablet) {
+    display: none;
+  }
+}
+
+header .control label.open {
+  display: flex;
+
+  @include respond(tablet) {
+    display: none;
+  }
+}
+
+header .control label.close {
+  display: none;
+}
+
+.checkbox:checked~header .control label.open {
+  display: none;
+}
+
+.checkbox:checked~header .control label.close {
+  display: flex;
+
+  @include respond (tablet) {
+    display: none;
+  }
 }

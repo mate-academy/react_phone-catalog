@@ -1,0 +1,10 @@
+$mont-fonts: (
+  400: "Mont-Regular.otf",
+  500: "Mont-Medium.otf",
+  700: "Mont-SemiBold.otf"
+);
+
+@mixin mont($weight) {
+  font-family: Mont, sans-serif;
+  font-weight: $weight;
+}

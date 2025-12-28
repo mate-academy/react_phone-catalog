@@ -1,0 +1,39 @@
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: $text;
+  text-transform: uppercase;
+  height: 100%;
+  
+  @include mont(700);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+  }
+
+  &:hover {
+    color: $accent;
+
+    &::after {
+      background-color: $accent;
+    }
+  }
+
+  &.active {
+    color: $text;
+
+    &::after {
+      background-color: $text;
+    }
+  }
+}
