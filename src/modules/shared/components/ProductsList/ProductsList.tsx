@@ -10,12 +10,14 @@ interface Props {
   products: Product[];
   itemsPerPage: number;
   isLoading?: boolean;
+  emptyMessage?: string;
 }
 
 export const ProductsList: FC<Props> = ({
   products,
   itemsPerPage,
   isLoading = false,
+  emptyMessage = 'No available products',
 }) => {
   if (isLoading) {
     return (
@@ -31,10 +33,7 @@ export const ProductsList: FC<Props> = ({
 
   if (!isLoading && products.length === 0) {
     return (
-      <Message
-        message="No available products"
-        imgPath="img/product-not-found.png"
-      />
+      <Message message={emptyMessage} imgPath="img/product-not-found.png" />
     );
   }
 

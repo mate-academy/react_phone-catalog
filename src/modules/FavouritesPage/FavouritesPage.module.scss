@@ -1,0 +1,27 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  gap: 24px;
+  padding-block: 24px;
+
+  @include flex-column;
+}
+
+.title {
+  color: $primary-color;
+  margin-bottom: 8px;
+}
+
+.itemsCount {
+  color: $secondary-color;
+
+  @include body-text;
+}
+
+.products {
+  margin-top: 8px;
+
+  @include on-tablet {
+    margin-top: 16px;
+  }
+}

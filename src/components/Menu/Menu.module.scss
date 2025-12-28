@@ -37,7 +37,7 @@
   @include uppercase;
   @include transition(color, $color-transition);
   @include animated-underline;
-  
+
   @include on-mobile {
     line-height: 25px;
   }
@@ -88,6 +88,41 @@
       border-left: 0;
     }
   }
+}
+
+.actionLinkCount {
+  --border-color: #fff;
+
+  position: absolute;
+  top: 17px;
+  left: 50%;
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: $secondary-accent-color;
+  border-radius: 50%;
+  color: $white-color;
+  line-height: 14px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  font-size: 9px;
+  font-weight: 600;
+
+  @include on-tablet {
+    & {
+      top: 10px;
+    }
+  }
+
+  @include on-desktop {
+    & {
+      top: 18px;
+    }
+  }
+}
+
+[data-theme='dark'] .actionLinkCount {
+  --border-color: #0f1121;
 }
 
 .menuActionLinkActive {

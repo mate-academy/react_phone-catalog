@@ -4,7 +4,15 @@
   border-top: 1px solid $elements-color;
   padding-block: n-gap(2);
   background-color: $main-bg;
-  margin-top: 80px;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
 }
 
 .footerContent {

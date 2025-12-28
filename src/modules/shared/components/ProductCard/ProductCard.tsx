@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
@@ -8,6 +8,7 @@ import { Product } from '@/types/Product';
 
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Button } from '../Button';
+import { useFavourites } from '@/hooks/useFavourites';
 
 interface Props {
   product: Product;
@@ -19,6 +20,7 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
   className,
 }) {
   const {
+    id,
     image,
     name,
     price,
@@ -29,14 +31,11 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
     category,
     itemId,
   } = product;
-
-  const [isSelected, setIsSelected] = useState(false);
-
-  const toggleFavorites = () => {
-    setIsSelected(curState => !curState);
-  };
+  const { isFavourite, toggleFavourite } = useFavourites();
 
   const productLink = `/product/${itemId}`;
+
+  const isInFavourite = isFavourite(id);
 
   return (
     <article className={classNames(styles.productCard, className)}>
@@ -84,12 +83,12 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
           variant="outline"
           isIconOnly
           size="large"
-          isSelected={isSelected}
+          isSelected={isInFavourite}
           radius="50%"
-          onClick={toggleFavorites}
+          onClick={() => toggleFavourite(product)}
           className={styles.likeBtn}
         >
-          {isSelected ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
+          {isInFavourite ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
         </Button>
       </div>
     </article>
