@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: $light-bg-main;
+  background: var(--bg-main);
   border: none;
   font-size: $small-size;
   font-weight: 700;
   cursor: pointer;
-  color: $light-text-secondary;
+  color: var(--text-secondary);
 
   &:hover {
     color: $light-text-main;

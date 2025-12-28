@@ -1,62 +1,130 @@
-.customSelect {
+.select {
   position: relative;
+  // width: 100%; // Optional: let parent decide width
+  cursor: pointer;
+  outline: none; // We handle focus styles visually
   width: 50%;
   max-width: 200px;
-  cursor: pointer;
   &__label {
+    display: block;
     margin-bottom: 4px;
-    font-size: $small-size;
-    color: $light-text-secondary;
+    font-size: 12px; // or $small-size
+    color: var(--text-secondary);
   }
-  &__arrow {
-    flex-shrink: 0;
-    display: flex;
-  }
-  &__controls {
+
+  &__control {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border: 1px solid $light-btn-border;
-    background-color: $light-bg-main;
+    padding: 10px 12px;
+    border: 1px solid var(--btn-border);
+    background-color: var(--bg-main);
+    transition: all 0.2s ease;
     user-select: none;
-    &--open {
-      border-color: $light-text-main;
+
+    &:hover {
+      border-color: var(--text-secondary);
     }
-  }
-  &__placeholder {
-    color: $light-text-secondary;
-    font-size: $body-size;
-  }
-  &__currentLabel {
-    color: $light-text-main;
-    font-size: $body-size;
-    &--open {
-      border-color: $light-text-main;
+
+    &.open {
+      border-color: var(--text-main);
     }
   }
 
-  &__options {
+  &__value {
+    color: var(--text-main);
+    font-size: 14px; // or $body-size
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.placeholder {
+      color: var(--text-secondary);
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary); // Use currentColor in SVG to inherit this
+    transition: transform 0.2s ease;
+
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
-    right: 0;
-    background-color: $light-bg-main;
-    border: 1px solid $light-btn-border;
+    width: 100%;
     max-height: 200px;
     overflow-y: auto;
-    z-index: 10;
-    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-main);
+    border: 1px solid var(--btn-border);
+    z-index: 100; // Increased Z-index
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
-  &__option {
-    padding: 10px;
-    color: $light-text-secondary;
-    user-select: none;
-    font-size: $body-size;
 
-    &:hover {
+  &__option {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+
+    &:hover,
+    &.focused {
       background-color: var(--bg-secondary);
-      color: $light-text-main;
+      color: var(--text-main);
+    }
+
+    &.selected {
+      color: var(--text-main);
+      background-color: var(--btn-bg); // Or a specific active color
+      font-weight: 500;
+    }
+  }
+
+  &__empty {
+    padding: 10px;
+    color: var(--text-disabled);
+    text-align: center;
+    font-size: 14px;
+  }
+
+  // -- Disabled State --
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  // -- Dark Theme Overrides --
+  &[data-theme='dark'] {
+    .select__control {
+      background-color: var(--btn-bg); // Assuming you have card variables
+      border-color: transparent;
+
+      &.open {
+        border-color: var(--btn-main);
+      }
+    }
+
+    .select__menu {
+      background-color: var(--card-bg);
+      border-color: var(--card-border);
+    }
+
+    .select__option {
+      &:hover,
+      &.focused {
+        background-color: var(--btn-bg);
+      }
+      &.selected {
+        background-color: var(--btn-main);
+        color: #fff;
+      }
     }
   }
 }

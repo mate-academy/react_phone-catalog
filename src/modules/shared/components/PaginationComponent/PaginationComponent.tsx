@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import classNames from 'classnames/bind'; // Optional, but recommended
 import styles from './PaginationComponent.module.scss';
+import { ArrowIcon } from '@/components/Icons/ArrowIcon';
+import { useTheme } from '@/context/ThemeContext';
+
+// Helper for cleaner classes if you don't use a library
+const cx = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
 type PaginationComponentProps = {
   totalCount: number;
@@ -19,119 +25,82 @@ export const PaginationComponent: React.FC<PaginationComponentProps> = ({
   currentPage,
   onPageChange,
 }) => {
+  const { theme } = useTheme();
   const totalPages = Math.ceil(totalCount / perPage);
 
   const updatePage = (newPage: number) => {
-    if (newPage < 1 || newPage > totalPages || newPage === currentPage) {
-      return;
-    }
-
+    if (newPage < 1 || newPage > totalPages || newPage === currentPage) return;
     onPageChange(newPage);
   };
 
-  const handlePrev = () => updatePage(currentPage - 1);
-  const handleNext = () => updatePage(currentPage + 1);
-
-  const getPaginationGroup = (): PaginationItem[] => {
+  // Memoize logic so it doesn't recalculate on unrelated renders
+  const paginationItems = useMemo(() => {
     const siblingCount = 1;
-
-    const range = (start: number, end: number): PaginationItem[] => {
-      return Array.from({ length: end - start + 1 }, (_, idx) => ({
-        type: 'page',
+    const range = (start: number, end: number) =>
+      Array.from({ length: end - start + 1 }, (_, idx) => ({
+        type: 'page' as const,
         value: idx + start,
       }));
-    };
 
-    if (totalPages <= 7) {
-      return range(1, totalPages);
-    }
+    if (totalPages <= 7) return range(1, totalPages);
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
     const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
-
     const showLeftDots = leftSiblingIndex > 2;
     const showRightDots = rightSiblingIndex < totalPages - 2;
 
-    const leftDotsItem: PaginationItem = {
-      type: 'dots',
-      value: leftSiblingIndex - 1,
-    };
+    const firstPage = { type: 'page' as const, value: 1 };
+    const lastPage = { type: 'page' as const, value: totalPages };
+    const leftDots = { type: 'dots' as const, value: leftSiblingIndex - 1 };
+    const rightDots = { type: 'dots' as const, value: rightSiblingIndex + 1 };
 
-    const rightDotsItem: PaginationItem = {
-      type: 'dots',
-      value: rightSiblingIndex + 1,
-    };
-
-    const firstPageItem: PaginationItem = { type: 'page', value: 1 };
-    const lastPageItem: PaginationItem = { type: 'page', value: totalPages };
-
-    // Початок (без лівих крапок)
     if (!showLeftDots && showRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
-      const leftRange = range(1, leftItemCount);
-      const specificRightDots: PaginationItem = {
-        type: 'dots',
-        value: leftItemCount + 1,
-      };
-      return [...leftRange, specificRightDots, lastPageItem];
-    }
-
-    // Кінець (без правих крапок)
-    if (showLeftDots && !showRightDots) {
-      const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
-      const specificLeftDots: PaginationItem = {
-        type: 'dots',
-        value: totalPages - rightItemCount,
-      };
-      return [firstPageItem, specificLeftDots, ...rightRange];
-    }
-
-    // Посередині (і ліві, і праві крапки)
-    if (showLeftDots && showRightDots) {
-      const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [
-        firstPageItem,
-        leftDotsItem,
-        ...middleRange,
-        rightDotsItem,
-        lastPageItem,
+        ...range(1, leftItemCount),
+        { ...rightDots, value: leftItemCount + 1 },
+        lastPage,
       ];
     }
 
-    return range(1, totalPages);
-  };
+    if (showLeftDots && !showRightDots) {
+      const rightItemCount = 3 + 2 * siblingCount;
+      return [
+        firstPage,
+        { ...leftDots, value: totalPages - rightItemCount },
+        ...range(totalPages - rightItemCount + 1, totalPages),
+      ];
+    }
 
-  const paginationItems = getPaginationGroup();
+    return [
+      firstPage,
+      leftDots,
+      ...range(leftSiblingIndex, rightSiblingIndex),
+      rightDots,
+      lastPage,
+    ];
+  }, [totalCount, perPage, currentPage, totalPages]);
 
-  if (totalPages <= 1) {
-    return null; // пагінація не має сенсу — просто не рендеримо
-  }
+  if (totalPages <= 1) return null;
 
   return (
-    <div className={styles.paginationComponent}>
+    <div className={styles.pagination} data-theme={theme}>
       <button
-        className={styles.paginationComponent__button}
-        onClick={handlePrev}
+        className={styles.pagination__navBtn}
+        onClick={() => updatePage(currentPage - 1)}
         disabled={currentPage === 1}
+        aria-label="Previous Page"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M10.4717 3.52851C10.2114 3.26816 9.78927 3.26816 9.52892 3.52851L5.52892 7.52851C5.26857 7.78886 5.26857 8.21097 5.52892 8.47132L9.52892 12.4713C9.78927 12.7317 10.2114 12.7317 10.4717 12.4713C10.7321 12.211 10.7321 11.7889 10.4717 11.5285L6.94313 7.99992L10.4717 4.47132C10.7321 4.21097 10.7321 3.78886 10.4717 3.52851Z"
-            fill="#313237"
-          />
-        </svg>
+        <ArrowIcon direction="left" />
       </button>
 
-      <div className={styles.paginationComponent__pages}>
+      <div className={styles.pagination__list}>
         {paginationItems.map((item, index) => {
           if (item.type === 'dots') {
             return (
               <button
                 key={`dots-${index}`}
-                className={styles.paginationComponent__dots}
+                className={styles.pagination__dots}
                 onClick={() => updatePage(item.value)}
                 title={`Go to page ${item.value}`}
               >
@@ -140,15 +109,17 @@ export const PaginationComponent: React.FC<PaginationComponentProps> = ({
             );
           }
 
+          const isActive = item.value === currentPage;
+
           return (
             <button
               key={item.value}
-              className={
-                item.value === currentPage
-                  ? `${styles.paginationComponent__page} ${styles['paginationComponent__page--active']}`
-                  : styles.paginationComponent__page
-              }
+              className={cx(
+                styles.pagination__page,
+                isActive ? styles.active : '',
+              )}
               onClick={() => updatePage(item.value)}
+              aria-current={isActive ? 'page' : undefined}
             >
               {item.value}
             </button>
@@ -157,18 +128,12 @@ export const PaginationComponent: React.FC<PaginationComponentProps> = ({
       </div>
 
       <button
-        className={styles.paginationComponent__button}
-        onClick={handleNext}
+        className={styles.pagination__navBtn}
+        onClick={() => updatePage(currentPage + 1)}
         disabled={currentPage === totalPages}
+        aria-label="Next Page"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M5.52827 3.52851C5.78862 3.26816 6.21073 3.26816 6.47108 3.52851L10.4711 7.52851C10.7314 7.78886 10.7314 8.21097 10.4711 8.47132L6.47108 12.4713C6.21073 12.7317 5.78862 12.7317 5.52827 12.4713C5.26792 12.211 5.26792 11.7889 5.52827 11.5285L9.05687 7.99992L5.52827 4.47132C5.26792 4.21097 5.26792 3.78886 5.52827 3.52851Z"
-            fill="#313237"
-          />
-        </svg>
+        <ArrowIcon direction="right" />
       </button>
     </div>
   );

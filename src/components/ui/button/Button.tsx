@@ -22,7 +22,7 @@ export const Button: React.FC<Props> = ({
   ...rest // Всі інші пропси (onClick, type="submit" і т.д.)
 }) => {
   const { theme } = useTheme();
-  console.log(theme);
+
 
   const buttonClass = classNames(
     styles.button,

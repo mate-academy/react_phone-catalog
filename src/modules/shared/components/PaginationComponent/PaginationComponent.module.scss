@@ -1,65 +1,95 @@
-.paginationComponent {
+@import '@/styles/variables'; // Assuming you have this for $color-text-white
+
+.pagination {
   display: flex;
   justify-content: center;
-  // margin-top: 40px;
   margin-bottom: 80px;
-
   column-gap: 16px;
-  &__button {
+
+  // -- Shared Styles --
+
+  %base-button {
     width: 32px;
     height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $light-btn-border;
-    background-color: $light-bg-main;
-    color: $light-text-main;
+    border: 1px solid var(--btn-border);
+    background-color: var(--btn-bg);
+    color: var(--text-main);
     cursor: pointer;
+    transition: all 0.2s ease;
+
     &:hover {
-      border-color: $light-text-main;
+      border-color: var(--text-main);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        border-color: var(--btn-border);
+      }
     }
   }
-  &__pages {
+
+  // -- Elements --
+
+  &__navBtn {
+    @extend %base-button;
+  }
+
+  &__list {
     display: flex;
     column-gap: 8px;
   }
-  &__page {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $light-border;
-    background-color: $light-bg-main;
-    color: $light-text-main;
-    cursor: pointer;
-    &:hover {
-      border-color: $light-text-main;
-    }
 
-    &--active {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $light-bg-main;
-      border: 1px solid $light-border;
-      background-color: $light-text-main;
+  &__page {
+    @extend %base-button;
+    border-color: var(--color-disabled);
+    background-color: var(--bg-main);
+
+    &.active {
+      background-color: var(--text-main);
+      color: $color-text-white;
+      border-color: transparent;
     }
   }
-}
-.paginationComponent__dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid $light-border;
-  background-color: $light-bg-main;
-  width: 32px;
-  height: 32px;
-  color: $light-text-main;
-  cursor: pointer;
-  &:hover {
-    border-color: $light-text-main;
+
+  &__dots {
+    @extend %base-button;
+    border-color: var(--color-disabled);
+    background-color: var(--bg-main);
+
+    &:hover {
+      border-color: var(--btn-hover-color);
+    }
+  }
+
+  &[data-theme='dark'] {
+    .pagination__navBtn {
+      &:hover {
+        background-color: var(--btn-hover-color);
+        border-color: transparent;
+      }
+    }
+
+    .pagination__page,
+    .pagination__dots {
+      border-color: var(--card-border);
+      background-color: var(--card-bg);
+
+      &:hover {
+        background-color: var(--btn-bg);
+        border-color: transparent;
+      }
+
+      &.active {
+        background-color: var(--btn-main);
+        &:hover {
+          background-color: var(--btn-main-hover);
+        }
+      }
+    }
   }
 }
