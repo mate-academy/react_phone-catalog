@@ -233,20 +233,38 @@ $tablet: 768px;
   }
 
   &__quantityButton {
-    width: 32px;
-    height: 32px;
-    border: 1px solid $light-btn-border; // Ensure visible border
+    // Layout
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
-    color: $light-text-main;
+    user-select: none;
+    transition: all 0.3s;
+
+    // Color Styles (Reused)
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text-main);
+
+    &:hover {
+      border-color: var(--btn-hover-color);
+    }
 
     &:disabled {
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-main);
+      color: var(--color-disabled);
       cursor: not-allowed;
-      color: $light-border;
-      border-color: $light-border;
+      pointer-events: none;
+    }
+
+    &--dark {
+      &:hover {
+        background-color: var(--btn-hover-color);
+        border-color: transparent;
+      }
     }
   }
 
@@ -275,6 +293,6 @@ $tablet: 768px;
   &__positionPrice {
     font-size: 20px; // Make it bigger like the screenshot
     font-weight: 700;
-    color: $light-text-main;
+    color: var(--text-main);
   }
 }

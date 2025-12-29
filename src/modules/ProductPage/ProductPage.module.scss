@@ -51,9 +51,9 @@
     line-height: $h3-line;
     letter-spacing: $h3-track;
     font-weight: 800;
-    color: $light-text-main;
+    color: var(--text-main);
     padding-bottom: 16px;
-    border-bottom: 1px solid $light-border;
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__description-text {
@@ -73,7 +73,7 @@
     line-height: $h4-line;
     letter-spacing: $h4-track;
     font-weight: 700;
-    color: $light-text-main;
+    color: var(--text-main);
   }
 
   &__description-block-paragraph {
@@ -81,7 +81,7 @@
     line-height: $body-line;
     letter-spacing: $body-track;
     font-weight: 500;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__specs {
@@ -99,9 +99,9 @@
     line-height: $h3-line;
     letter-spacing: $h3-track;
     font-weight: 800;
-    color: $light-text-main;
+    color: var(--text-main);
     padding-bottom: 16px;
-    border-bottom: 1px solid $light-border;
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__specs-list {
@@ -120,7 +120,7 @@
     line-height: $body-line;
     letter-spacing: $body-track;
     font-weight: 500;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__specs-item-value {
@@ -128,7 +128,7 @@
     line-height: $body-line;
     letter-spacing: $body-track;
     font-weight: 500;
-    color: $light-text-main;
+    color: var(--text-main);
     /* Forces text to one line */
     white-space: nowrap;
     /* Hides the overflow */
@@ -153,15 +153,15 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: $light-bg-main;
+  background: var(--bg-main);
   border: none;
   font-size: $small-size;
   font-weight: 700;
   cursor: pointer;
-  color: $light-text-secondary;
+  color: var(--text-secondary);
 
   &:hover {
-    color: $light-text-main;
+    color: var(--text-main);
   }
 }
 
@@ -212,7 +212,7 @@
     aspect-ratio: 1 / 1;
     display: flex;
 
-    border: 1px solid $light-border;
+    border: 1px solid var(--border-color);
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -225,11 +225,11 @@
       width: fit-content;
     }
     &:hover {
-      border-color: $light-text-main;
+      border-color: var(--text-main);
     }
 
     &--active {
-      border-color: $light-text-main;
+      border-color: var(--text-main);
     }
   }
 
@@ -274,7 +274,7 @@
   &__color-label {
     font-size: $small-size;
     font-weight: 600;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__color-container {
@@ -282,7 +282,7 @@
     flex-direction: column;
     row-gap: $spacing-sm;
     padding-bottom: 24px;
-    border-bottom: 1px solid $light-border;
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__color-options {
@@ -297,19 +297,18 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $light-border;
-    background-color: $light-bg-main;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-main);
     cursor: pointer;
 
     &:hover {
-      border-color: $light-btn-border;
+      border-color: var(--btn-border);
     }
 
     &--active {
-      border-color: $light-text-main;
-
+      border-color: var(--text-main);
       &:hover {
-        border-color: $light-text-main;
+        border-color: var(--text-main);
       }
     }
   }
@@ -326,13 +325,13 @@
     flex-direction: column;
     row-gap: $spacing-sm;
     padding-bottom: 24px;
-    border-bottom: 1px solid $light-border;
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__capacity-label {
     font-size: $small-size;
     font-weight: 600;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__capacity-options {
@@ -344,20 +343,20 @@
     padding: 7px 8px 4px;
     font-size: $body-size;
     font-weight: 500;
-    color: $light-text-main;
-    background: $light-bg-main;
-    border: 1px solid $light-btn-border;
+    color: var(--text-main);
+    background: var(--bg-main);
+    border: 1px solid var(--btn-border);
     line-height: $body-line;
     cursor: pointer;
 
     &:hover {
-      border-color: $light-text-main;
+      border-color: var(--text-main);
     }
 
     &--active {
-      background-color: $light-text-main;
-      border-color: $light-text-main;
-      color: $light-bg-main;
+      background-color: var(--text-main);
+      border-color: var(--text-main);
+      color: var(--bg-main);
     }
   }
 
@@ -379,7 +378,7 @@
     letter-spacing: $h2-track;
     line-height: $h2-line;
     font-weight: 800;
-    color: $light-text-main;
+    color: var(--text-main);
   }
 
   &__price-regular {
@@ -387,14 +386,14 @@
     line-height: $h3-line;
     letter-spacing: $h3-track;
     font-weight: 500;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
 
     position: relative;
     display: inline-block;
     text-decoration: none;
 
     $line-height: 2px;
-    $line-color: $light-text-secondary;
+    $line-color: var(--text-secondary);
     $center-pos: 47%;
 
     &::before {
@@ -403,7 +402,7 @@
       left: 0;
       width: 100%;
       height: $line-height;
-      background-color: $light-text-secondary;
+      background-color: var(--text-secondary);
       z-index: 1;
       top: $center-pos;
       transform: translateY(-50%);
@@ -432,12 +431,12 @@
   }
 
   &__cart-button {
-    background-color: $light-text-main;
+    background-color: var(--text-main);
     flex: 1;
     height: 40px;
     border: none;
     cursor: pointer;
-    color: $color-text-white;
+    color: var(--color-text-white);
 
     @include type($button-size, $button-line, $button-track, $button-weight);
 
@@ -446,9 +445,9 @@
     }
 
     &--added {
-      color: $color-green;
+      color: var(--status-green);
       background-color: #fff;
-      border: 1px solid $light-border;
+      border: 1px solid var(--border-color);
       cursor: default;
 
       &:hover {
@@ -461,14 +460,14 @@
     background: none;
     width: 40px;
     height: 40px;
-    border: 1px solid $light-border;
+    border: 1px solid var(--btn-border);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-      border: 1px solid $light-text-main;
+      border: 1px solid var(--text-main);
     }
   }
 
@@ -486,12 +485,12 @@
   &__description-label {
     font-size: $small-size;
     font-weight: 600;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__description-value {
     font-size: $small-size;
     font-weight: 600;
-    color: $light-text-main;
+    color: var(--text-main);
   }
 }
