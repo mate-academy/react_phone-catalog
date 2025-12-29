@@ -8,6 +8,7 @@ import ActiveRight from '../../icons/arrows/Active_right.png';
 import FavoritesIcon from '../../icons/favorites_icon.png';
 
 import { NavLink, useSearchParams } from "react-router-dom";
+import { Buttons } from "../Buttons/Buttons";
 
 interface Product {
   id: string;
@@ -181,12 +182,13 @@ export const ProductsCategory: React.FC<Props> = ({ products, title, categoryNam
                   </div>
                 </NavLink>
 
-                <div className={styles.products_category__products__item__buttons}>
+                {/* <div className={styles.products_category__products__item__buttons}>
                   <button className={styles.products_category__products__item__buttons__cart}>Add to cart</button>
                   <button className={styles.products_category__products__item__buttons__fav}>
                     <img src={FavoritesIcon} alt='Add to favorites' className={styles.products_category__products__item__buttons__fav__icon} />
                   </button>
-                </div>
+                </div> */}
+                <Buttons productId={String(item.id)} />
               </div>
             </div>
           ))}

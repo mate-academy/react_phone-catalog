@@ -5,8 +5,13 @@ import Logo from './icons/Logo.png';
 import HeartIcon from './icons/heart-icon.png';
 import CartIcon from './icons/cart-icon.png';
 import BurgerMenu from './icons/burger-menu-icon.png';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
+import { useFavorites } from '../../context/FavoritesContext';
 
 export const Header: React.FC = () => {
+  const { cartItems } = useShoppingCart();
+  const { favItems } = useFavorites();
+
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -45,9 +50,11 @@ export const Header: React.FC = () => {
                   alt="Favorites"
                   className={styles.header__icons__img}
                 />
-                <div className={styles.header__icons__amount}>
-                  4
-                </div>
+                {favItems.length > 0 && (
+                  <div className={styles.header__icons__amount}>
+                    {favItems.length}
+                  </div>
+                )}
               </div>
             </NavLink>
           </div>
@@ -60,9 +67,11 @@ export const Header: React.FC = () => {
                   alt="Cart"
                   className={styles.header__icons__img}
                 />
-                <div className={styles.header__icons__amount}>
-                  12
-                </div>
+                {cartItems.length > 0 && (
+                  <div className={styles.header__icons__amount}>
+                    {cartItems.length}
+                  </div>
+                )}
               </div>
             </NavLink>
           </div>

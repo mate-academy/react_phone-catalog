@@ -110,8 +110,6 @@
         gap: 8px;
         padding-bottom: 24px;
         border-bottom: 1px solid $button-border-disabled;
-
-        &__option {}
       }
 
       &__capacity {
@@ -121,7 +119,6 @@
         &__buttons {
           display: flex;
           gap: 4px;
-
         }
       }
 
@@ -130,7 +127,7 @@
         gap: 8px;
         padding-top: 32px;
         align-items: center;
-        padding-bottom: 16px;
+        padding-bottom: 8px;
 
         &__main_price {
           font-weight: 800;
@@ -150,34 +147,34 @@
       }
 
       &__buttons {
-        display: flex;
-        gap: 8px;
+        // display: flex;
+        // gap: 8px;
         padding-bottom: 32px;
 
-        &__cart {
-          background-color: $purple-button-color;
-          color: $main-text-color;
-          border: none;
-          width: 263px;
-          height: 48px;
-          font-weight: 700;
-          font-size: 14px;
-          line-height: 21px;
-        }
+        // &__cart {
+        //   background-color: $purple-button-color;
+        //   color: $main-text-color;
+        //   border: none;
+        //   width: 263px;
+        //   height: 48px;
+        //   font-weight: 700;
+        //   font-size: 14px;
+        //   line-height: 21px;
+        // }
 
-        &__fav {
-          background-color: $main-button-color;
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 48px;
+        // &__fav {
+        //   background-color: $main-button-color;
+        //   border: none;
+        //   display: flex;
+        //   align-items: center;
+        //   justify-content: center;
+        //   width: 48px;
 
-          &__icon {
-            width: 16px;
-            height: 16px;
-          }
-        }
+        //   &__icon {
+        //     width: 16px;
+        //     height: 16px;
+        //   }
+        // }
       }
 
       &__description {

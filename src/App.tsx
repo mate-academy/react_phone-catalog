@@ -12,25 +12,31 @@ import { Accessories } from './components/Accessories/Accessories';
 import { TabletPage } from './components/TabletPage/TabletPage';
 import { AccessoryPage } from './components/AccessoryPage/AccessoryPage';
 import { Cart } from './components/Cart/Cart';
+import { ShoppingCartProvider } from './context/ShoppingCartContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 export const App = () => (
   <div className="App">
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage /> }/>
-          <Route path="/phones" element={<MobilePhones />} />
-          <Route path="/tablets" element={<Tablets />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/phones/:itemId" element={<PhonePage />} />
-          <Route path="/tablets/:itemId" element={<TabletPage />} />
-          <Route path="/accessories/:itemId" element={<AccessoryPage />} />
+    <FavoritesProvider>
+      <ShoppingCartProvider>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/phones" element={<MobilePhones />} />
+            <Route path="/tablets" element={<Tablets />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/phones/:itemId" element={<PhonePage />} />
+            <Route path="/tablets/:itemId" element={<TabletPage />} />
+            <Route path="/accessories/:itemId" element={<AccessoryPage />} />
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+      </ShoppingCartProvider>
+    </FavoritesProvider>
 
-      <Footer />
+    <Footer />
   </div>
 );

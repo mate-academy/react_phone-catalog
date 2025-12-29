@@ -7,6 +7,7 @@ import RightArrow from '../../icons/arrows/Disabled_right.png';
 import BackArrow from '../../icons/arrows/Active_left.png';
 import Favorites from '../../icons/favorites_icon.png';
 import { Product, ProductSlider } from '../ProductSlider/ProductSlider';
+import { Buttons } from '../Buttons/Buttons';
 
 export interface ProductDescription {
   title: string;
@@ -52,6 +53,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
     price: p.priceDiscount,
     fullPrice: p.priceRegular,
     image: p.images[0],
+    category: categoryName,
   }))
 
   if (!item) {
@@ -133,15 +135,17 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
             </div>
 
             <div className={styles.item_page__main_info__options__buttons}>
-              <button className={styles.item_page__main_info__options__buttons__cart}>Add to cart</button>
+              {/* <button className={styles.item_page__main_info__options__buttons__cart}>Add to cart</button>
               <button className={styles.item_page__main_info__options__buttons__fav}>
                 <img
                   src={Favorites}
                   alt="Add to favorites"
                   className={styles.item_page__main_info__options__buttons__fav__icon}
                 />
-              </button>
+              </button> */}
+              <Buttons productId={String(item.id)} />
             </div>
+
 
             <div className={styles.item_page__main_info__options__description}>
               <div className={styles.item_page__main_info__options__description__line}>

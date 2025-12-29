@@ -6,6 +6,7 @@ import Disabled_right from '../../icons/arrows/Disabled_right.png';
 import Active_left from '../../icons/arrows/Active_left.png';
 import Active_right from '../../icons/arrows/Active_right.png';
 import { Link } from 'react-router-dom';
+import { Buttons } from '../Buttons/Buttons';
 
 export interface Product {
   id: number | string;
@@ -105,12 +106,13 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
                 </div>
               </Link>
 
-              <div className={styles.product_slider__item__buttons}>
+              {/* <div className={styles.product_slider__item__buttons}>
                 <button className={styles.product_slider__item__buttons__cart}>Add to cart</button>
                 <button className={styles.product_slider__item__buttons__fav}>
                   <img src={FavoritesIcon} alt='Add to favorites' className={styles.product_slider__item__buttons__fav__icon} />
                 </button>
-              </div>
+              </div> */}
+              <Buttons productId={String(item.id)} />
             </div>
           </div>
         ))}
