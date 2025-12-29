@@ -37,19 +37,16 @@ h2 {
   font-size: 48px;
   line-height: 56px;
   width: 592px;
-  height: 82px;
+  height: 120px;
   margin-top: auto;
-   // padding-left: 32px;
   }
 
   @include on-desktop {
     width: 1132px;
     height: 56px;
     margin-top: auto;
-    //padding-left: 32px;
+    white-space: nowrap;
   }
-
-
 }
 
 h3 {
@@ -63,7 +60,7 @@ h3 {
   margin-top: 56px;
 }
 
-р4   {
+р4 {
   font-weight: 700;
   font-style: SemiBold;
   font-size: 20px;
@@ -80,7 +77,6 @@ h5 {
   line-height: 100%;
   letter-spacing: 0%;
   color: #0F0F11;
-
 }
    &:has(.page__menu:target) {
     overflow: hidden;
@@ -109,4 +105,3 @@ h5 {
     }
   }
 }
-

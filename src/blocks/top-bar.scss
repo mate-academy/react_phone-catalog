@@ -8,10 +8,18 @@
   width: 100%;
 
   &__menu {
-      height: 48px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      display: none ;
+      @include on-tablet {
+        height: 48px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        }
+
+      @include on-desktop {
+          gap: 64px;
+      }
   }
 
   &__icons {
@@ -34,9 +42,7 @@
   @include on-desktop {
       width: 96px;
       height: 48px;
-
   }
-
 
   }
 }

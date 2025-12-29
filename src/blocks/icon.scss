@@ -19,21 +19,36 @@
     background-image: url(/img/icons/icon-burger-menu-2x.png);
     width: 16px;
     height: 16px;
+    display: block;
+
+    @include on-tablet {
+        display: none;
+    }
 
   }
 
   &--shopping-bag-cart {
-    background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
+    display: none;
+
+    @include on-tablet {
+
+      display: block;
+      background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
       width: 16px;
       height: 16px;
+    }
 
     }
 
   &--favourites {
-    background-image: url(/img/icons/icon-favourites-2x.png);
-    width: 16px;
-    height: 16px;
+    display: none;
 
+    @include on-tablet {
+      display: block;
+      background-image: url(/img/icons/icon-favourites-2x.png);
+      width: 16px;
+      height: 16px;
+      }
   }
 
   &--close {

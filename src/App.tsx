@@ -7,7 +7,6 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
-import { isMobile } from 'react-device-detect';
 import { Menu } from './components/Menu/Menu';
 import './App.scss';
 
@@ -16,46 +15,42 @@ const App = () => {
     <>
       <header className="header">
         <div className="top-bar">
+          <a href="#">
+            <img
+              src="img/logo-2x.png"
+              alt="The Nice Gadgets Logo"
+              title="The Nice Gadgets Logo"
+              className="top-bar__logo"
+            />
+          </a>
           <div className="top-bar__menu">
-            <a href="#">
-              <img
-                src="img/logo-2x.png"
-                alt="The Nice Gadgets Logo"
-                title="The Nice Gadgets Logo"
-                className="top-bar__logo"
-              />
-            </a>
-            {!isMobile && <Menu />}
+            <Menu />
           </div>
 
           <div className="top-bar__icons">
-            {!isMobile ? (
-              <>
-                <div className="icon__background">
-                  <a href="#favourites" className="icon icon--favourites"></a>
-                </div>
-                <div className="icon__background">
-                  <a
-                    href="#shopping-bag-cart"
-                    className="icon icon--shopping-bag-cart"
-                  ></a>
-                </div>
-              </>
-            ) : (
-              <div className="icon__background">
-                <a href="#menu" className="icon icon--menu"></a>
-              </div>
-            )}
+            <div className="icon__background">
+              <a href="#favourites" className="icon icon--favourites"></a>
+            </div>
+            <div className="icon__background">
+              <a
+                href="#shopping-bag-cart"
+                className="icon icon--shopping-bag-cart"
+              ></a>
+            </div>
+
+            <div className="icon__background">
+              <a href="#menu" className="icon icon--menu"></a>
+            </div>
           </div>
         </div>
         <div className="header__content">
           <div className="header__bottom">
             <div className="header__up">
-              <p>
-                <h2 className="header__title">
+              <h2 className="header__title">
+                <span className="header__title-welcome">
                   Welcome to Nice Gadgets store!
-                </h2>
-              </p>
+                </span>
+              </h2>
             </div>
             <div className="header__down">
               <div className="header__button header__button-slider-left"></div>

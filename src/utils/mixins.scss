@@ -12,14 +12,14 @@
 }
 
 @mixin constent-padding-inline {
-  padding-inline: 0;
+  padding-inline: 16px;
 
   @include on-tablet {
     padding-inline: 24px;
   }
 
   @include on-desktop {
-    max-width: 1200px;
+    max-width: $max-width;
     padding-inline: 152px;
     margin-inline: auto;
   }
