@@ -30,4 +30,90 @@
     letter-spacing: -0.01em;
     padding-bottom: 32px;
   }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__container {
+      width: 752px;
+      background-color: $pagination-buttons-color;
+
+      &__inner {
+        padding-inline: 24px;
+        display: flex;
+        gap: 24px;
+        height: 128px;
+      }
+    }
+
+    &__remove {
+      background-color: $pagination-buttons-color;
+      border: none;
+      cursor: pointer;
+      justify-content: center;
+      align-self: center;
+
+      &__icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__info {
+      &__image {
+        width: 80px;
+        height: 80px;
+        justify-content: center;
+        align-self: center;
+      }
+
+      &__title {
+        margin: 0;
+        justify-self: start;
+        align-self: center;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        width: 336px;
+      }
+
+      &__buttons {
+        display: flex;
+        width: 96px;
+        justify-content: space-between;
+        align-items: center;
+
+        &__button {
+          width: 32px;
+          height: 32px;
+          border: none;
+          background-color: $main-button-color;
+
+          &:disabled {
+            background-color: $main-background-color;
+            border: 1px solid $main-button-color;
+          }
+
+          &__icon {
+            width: 16px;
+            height: 16px;
+            align-self: center;
+            justify-self: center;
+          }
+        }
+      }
+
+      &__price {
+        margin: 0;
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 1.4em;
+        align-self: center;
+        width: 80px;
+        text-align: right;
+      }
+    }
+  }
 }
