@@ -9,6 +9,7 @@ import { Product } from '@/types/Product';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Button } from '../Button';
 import { useFavourites } from '@/hooks/useFavourites';
+import { useCart } from '@/hooks/useCart';
 
 interface Props {
   product: Product;
@@ -32,10 +33,13 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
     itemId,
   } = product;
   const { isFavourite, toggleFavourite } = useFavourites();
+  const { toggleToCart, inCart } = useCart();
 
   const productLink = `/product/${itemId}`;
 
   const isInFavourite = isFavourite(id);
+
+  const isInCart = inCart(id);
 
   return (
     <article className={classNames(styles.productCard, className)}>
@@ -75,8 +79,13 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
         </div>
       </dl>
       <div className={styles.productActions}>
-        <Button variant="primary" className={styles.cartBtn}>
-          Add to cart
+        <Button
+          variant="primary"
+          className={styles.cartBtn}
+          isSelected={isInCart}
+          onClick={() => toggleToCart(product)}
+        >
+          {isInCart ? 'Added' : 'Add to cart'}
         </Button>
 
         <Button

@@ -8,32 +8,35 @@ import { FavouritesPage } from './modules/FavouritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ROUTES } from './constants/routes';
 import { FavouriteProvider } from './context/FavouritesContext';
+import { CartProvider } from './context/CartContext';
 
 export const Root = () => {
   return (
     <BrowserRouter>
       <FavouriteProvider>
-        <Routes>
-          <Route path={ROUTES.HOME} element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route
-              path={ROUTES.PHONES}
-              element={<CatalogPage category="phones" />}
-            />
-            <Route
-              path={ROUTES.TABLETS}
-              element={<CatalogPage category="tablets" />}
-            />
-            <Route
-              path={ROUTES.ACCESSORIES}
-              element={<CatalogPage category="accessories" />}
-            />
-            <Route path={ROUTES.PRODUCT_DETAILS} element={<ProductPage />} />
-            <Route path={ROUTES.CART} element={<CartPage />} />
-            <Route path={ROUTES.FAVORITES} element={<FavouritesPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route path={ROUTES.HOME} element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route
+                path={ROUTES.PHONES}
+                element={<CatalogPage category="phones" />}
+              />
+              <Route
+                path={ROUTES.TABLETS}
+                element={<CatalogPage category="tablets" />}
+              />
+              <Route
+                path={ROUTES.ACCESSORIES}
+                element={<CatalogPage category="accessories" />}
+              />
+              <Route path={ROUTES.PRODUCT_DETAILS} element={<ProductPage />} />
+              <Route path={ROUTES.CART} element={<CartPage />} />
+              <Route path={ROUTES.FAVORITES} element={<FavouritesPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </CartProvider>
       </FavouriteProvider>
     </BrowserRouter>
   );

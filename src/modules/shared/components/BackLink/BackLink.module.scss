@@ -1,0 +1,24 @@
+@use '@/styles/resources' as *;
+
+.link {
+  gap: 4px;
+  color: $primary-color;
+  justify-content: flex-start;
+  width: fit-content;
+  cursor: pointer;
+
+  @include flex-center;
+
+  @include hover {
+    .linkText {
+      color: $primary-color;
+    }
+  }
+}
+
+.linkText {
+  color: $secondary-color;
+
+  @include small-text;
+  @include transition(color, $color-transition);
+}

@@ -101,6 +101,7 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/indent': 'off',
     '@typescript-eslint/ban-types': [
       'error',
       {

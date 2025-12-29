@@ -1,0 +1,38 @@
+@use '../../styles/resources' as *;
+
+.wrapper {
+  padding-block: 24px;
+  gap: 24px;
+
+  @include page-grid;
+}
+
+.title {
+  grid-column: 1 / -1;
+  color: $primary-color;
+}
+
+.emptyMessage {
+  grid-column: 1 / -1;
+}
+
+.cartList {
+  gap: 32px;
+  position: relative;
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: span 16;
+  }
+}
+
+.summary {
+  grid-column: 1 / -1;
+  align-self: start;
+
+  @include on-desktop {
+    grid-column: span 8;
+    position: sticky;
+    top: calc(var(--header-height) + 16px);
+  }
+}

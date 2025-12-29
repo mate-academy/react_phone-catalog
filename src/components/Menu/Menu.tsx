@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { LuShoppingBag } from 'react-icons/lu';
 import { FaRegHeart } from 'react-icons/fa6';
 import { useFavourites } from '@/hooks/useFavourites';
+import { useCart } from '@/hooks/useCart';
 
 const navigationLinkStyles = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.menuNavLink, {
@@ -18,6 +19,7 @@ const actionLinkStyles = ({ isActive }: { isActive: boolean }) =>
 
 export const Menu = () => {
   const { favourites } = useFavourites();
+  const { cart } = useCart();
 
   return (
     <div className={styles.menu}>
@@ -55,6 +57,9 @@ export const Menu = () => {
         </NavLink>
         <NavLink to={ROUTES.CART} className={actionLinkStyles}>
           <LuShoppingBag size={16} />
+          {cart.items.length > 0 && (
+            <span className={styles.actionLinkCount}>{cart.items.length}</span>
+          )}
         </NavLink>
       </div>
     </div>
