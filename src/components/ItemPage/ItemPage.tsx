@@ -40,11 +40,31 @@ interface Props {
   items: Item[];
 }
 
+const COLOR_MAP: Record<string, string> = {
+  black: '#1f2020',
+  green: '#ade0d4',
+  yellow: '#ffe681',
+  white: '#f9f6f2',
+  purple: '#d1cdda',
+  red: '#ba0c2e',
+  gold: '#f9e5c9',
+  silver: '#ebebe3',
+  spacegray: '#535150',
+  midnightgreen: '#4e5851',
+  rosegold: '#fad7bd',
+};
+
 export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
   const navigate = useNavigate();
 
   const { itemId } = useParams<{ itemId: string }>();
   const item = items.find(i => i.id === itemId);
+
+  const modelVariants = items.filter(i => i.namespaceId === item?.namespaceId);
+
+  const availableColors = item?.colorsAvailable.filter(color =>
+    modelVariants.some(variant => variant.color === color)
+  );
 
   const handleOptionChange = (newColor?: string, newCapacity?: string) => {
     if (!item) {
@@ -147,14 +167,20 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
           <div className={styles.item_page__main_info__options}>
             <p className={styles.item_page__main_info__options__text}>Available colors</p>
             <div className={styles.item_page__main_info__options__colors}>
-              {item.colorsAvailable.map(color => (
-                <button
-                  key={color.indexOf(color)}
-                  className={styles.item_page__main_info__options__colors__option}
-                  onClick={() => handleOptionChange(color, item.capacity)}
+              {availableColors?.map(color => (
+                <div
+                  key={color}
+                  className={`${styles.item_page__main_info__options__colors__container} ${color === item.color ? styles['item_page__main_info__options__colors__container--active'] : ''
+                    }`}
                 >
-                  {color}
-                </button>
+                  <button
+                    type="button"
+                    className={styles.item_page__main_info__options__colors__option}
+                    style={{ backgroundColor: COLOR_MAP[color] || color }}
+                    onClick={() => handleOptionChange(color, item.capacity)}
+                    aria-label={color}
+                  />
+                </div>
               ))}
             </div>
 
@@ -164,7 +190,8 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
                 {item.capacityAvailable.map(capacity => (
                   <button
                     key={capacity.indexOf(capacity)}
-                    className={styles.item_page__main_info__options__capacity__options}
+                    className={`${styles.item_page__main_info__options__capacity__options} ${capacity === item.capacity ? styles['item_page__main_info__options__capacity__options--active'] : ''
+                      }`}
                     onClick={() => handleOptionChange(item.color, capacity)}
                   >
                     {capacity}

@@ -110,6 +110,34 @@
         gap: 8px;
         padding-bottom: 24px;
         border-bottom: 1px solid $button-border-disabled;
+
+        &__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+
+            &--active {
+              border-color: $main-text-color;
+            }
+          }
+
+          &__option {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            padding: 0;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
       }
 
       &__capacity {
@@ -118,7 +146,24 @@
 
         &__buttons {
           display: flex;
-          gap: 4px;
+          gap: 8px;
+        }
+
+        &__options {
+          height: 32px;
+          border: 1px solid $main-button-color;
+          background-color: $main-background-color;
+          color: $main-text-color;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 21px;
+          padding: 8px;
+          cursor: pointer;
+
+          &--active {
+            background-color: $main-text-color;
+            color: $main-background-color;
+          }
         }
       }
 
