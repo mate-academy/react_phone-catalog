@@ -3,29 +3,24 @@
   flex-direction: column;
   gap: 8px;
 
-
-
   &__image {
-    width: 368px;
-    height: 368px;
+   /* width: 368px;
+    height: 368px; */
+    width: 100%;
+    aspect-ratio: 1/1;
     overflow: hidden;
     margin-bottom: 24px;
     position: relative;
 
-        @media (max-width: 1199px) {
-    width: 187px;
-    height: 187px;
-  }
-
-     @media (max-width: 639px) {
-        width: 288px;
-    height: 288px;
-  }
-
        img {
         position: absolute;
-      width: auto;
-      display: block;
+        inset: 0;
+        margin: auto;
+        height: 120%;
+        width: auto;
+        object-fit: contain;
+
+     /* display: block; */
     }
   }
 
@@ -56,38 +51,56 @@
   }
 
   &--phones img {
-    top: 70px;
-    left: 100px;
-    height: 520px;
+    top: 190px;
+    left: 110px;
+    height: 350px;
 
      @media (max-width: 1199px) {
-    top: 30px;
-    left: 50px;
-    height: 220px;
+    top: 110px;
+    left: 80px;
+    height: 340px;
+  }
+
+  @media (max-width: 639px) {
+    top: 180px;
+    left: 180px;
+    height: 550px;
   }
   }
 
   &--tablets img {
-    top: 58px;
+    top: 180px;
     left: 100px;
-    height: 520px;
+    height: 350px;
 
     @media (max-width: 1199px) {
-    top: 23px;
-    left: 50px;
-    height: 220px;
+    top: 95px;
+    left: 80px;
+    height: 340px;
+  }
+
+    @media (max-width: 639px) {
+    top: 180px;
+    left: 180px;
+    height: 550px;
   }
   }
 
   &--accessories img {
     left: 120px;
     height: 300px;
-    top: 75px;
-    
+    top: 150px;
+
     @media (max-width: 1199px) {
-    top: 29px;
-    left: 50px;
-    height: 220px;
+    top: 110px;
+    left:80px;
+    height: 340px;
+  }
+  
+    @media (max-width: 639px) {
+    top: 180px;
+    left: 180px;
+    height: 550px;
   }
   }
 

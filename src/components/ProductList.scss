@@ -20,8 +20,10 @@
   width: 100%;
   grid-column: 1/-1;
   overflow: auto hidden;
-  padding-bottom: 8px;
+
+  /* padding-bottom: 8px; */
   scroll-behavior: smooth;
+  margin-top: 32px;
 
   /* Скрываем некрасивый скроллбар */
   &::-webkit-scrollbar {
@@ -41,6 +43,10 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     display: flex;
+
+     &::-webkit-scrollbar {
+    height: 0;
+  }
 
   /* ширина карточки */
   & > .product-list__item--slider {

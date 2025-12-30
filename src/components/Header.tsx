@@ -142,8 +142,6 @@ export const Header: React.FC = () => {
           </div>
         </nav>
 
-        <button onClick={toggleTheme}>🌙</button>
-
         {/* Icons + burger */}
         <div className="header__icons">
           <Link to="/favorites" className="icon">
@@ -170,6 +168,7 @@ export const Header: React.FC = () => {
             />
           </button>
         </div>
+        <button onClick={toggleTheme}>🌙</button>
       </div>
     </header>
   );

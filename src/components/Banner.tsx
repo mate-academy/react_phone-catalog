@@ -79,17 +79,16 @@ export const Banner: React.FC = () => {
         >
           <img src="/img/icons/right.svg" alt="Next" />
         </button>
-      </div>
-
-      <div className="banner__dots">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`banner__dot ${index === active ? 'active' : ''}`}
-            onClick={() => setActive(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+        <div className="banner__dots">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`banner__dot ${index === active ? 'active' : ''}`}
+              onClick={() => setActive(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

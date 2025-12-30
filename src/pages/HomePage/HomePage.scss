@@ -1,88 +1,62 @@
-.home__section{
-display: grid;
-max-width: 1136px;
-margin: 0 32px;
-  gap: 56px;
-  margin-bottom: 80px;
-   grid-column: 1 / -1;
-  font-family: Mont, sans-serif;
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
 
-   @media (max-width: 1199px) {
-margin: 0 24px;
+  @media (max-width: 1199px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    padding: 0 16px;
+  }
 }
+
+.home__title {
+  grid-column: 1/-1;
+  margin: 32px 0;
+  font-size: 48px;
+  line-height: 56px;
+  font-style: bold;
+  letter-spacing: -0.01em;
+  color: #313237;
+  font-weight: 800;
 
   @media (max-width: 640px) {
-margin: 0 16px;
+    font-size: 32px;
+    line-height: 41px;
+  }
 }
+
+.home__section{
+grid-column: 1/-1;
+max-width: 1136px;
+  margin-bottom: 64px;
+
+ /* gap: 56px;
+  font-family: Mont, sans-serif;
+   position: relative; */
+
+   @media (max-width: 1199px) {
+    /* grid-column: 1/-1;
+padding: 24px;
+max-width: 1135px; */
+}
+
+ /* @media (max-width: 640px) {
+margin: 0 16px;
+} */
 }
 
 .home__grid {
 display: flex;
 width: 100%;
 justify-content: space-between;
-
- /* grid-template-columns: repeat(24, 1fr);
-    column-gap: 16px;
-    width: 100%;
-
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(12, 1fr);
-  } */
-
- /* @media (max-width: 640px) {
-   display: flex;;
-
-  } */
 }
 
-/* .container {
-  display: grid;
-  grid-template-columns: repeat(24, 32px);
-  column-gap: 16px;
-  justify-content: center;
-  width: 100%;
-  max-width: 1136px;
-  margin: 0 auto;
-
-  @media (min-width: 640px) and (max-width: 1199px) {
-    grid-template-columns: repeat(12, 1fr);
-  }
-
-  @media (max-width: 639px) {
-    grid-template-columns: repeat(4, 1fr);
-
-  }
-} */
-
-.home__title {
-  font-size: 48px;
-  line-height: 56px;
-  font-style: bold;
-  letter-spacing: -0.01em;
-  color: #313237;
-  padding: 32px;
-  font-weight: 800;
-
-
-  @media (max-width: 640px) {
-    font-size: 32px;
-    line-height: 41px;
-     padding: 24px 16px;
-  }
-}
 
 .product-list__arrow {
- /* background: rgba(255, 255, 255, 0.8);
-  grid-column: 23 / 24; */
-
-  /* border: 1px solid #b4bdc3;
-  border-radius: 4px;
-  width: 32px;
-  height: 32px; */
-
   display: flex;
   margin-right: 0;
-
   flex-direction: row;
 
   cursor: pointer;
@@ -90,15 +64,6 @@ justify-content: space-between;
   gap: 16px;
   align-items: end;
   justify-content: end;
-
-  /* @media (min-width: 640px) and (max-width: 1199px) {
-    grid-column: 11/12;
-  }
-
-  @media (max-width: 640px) {
-   display: flex;
-   flex-direction: column;
-  } */
 
   img {
     width: 16px;
@@ -111,61 +76,47 @@ justify-content: space-between;
   }
 
   &-left {
-    /* grid-column: 23; */
-width: 32px;
+  width: 32px;
   height: 32px;
-
-    /* @media (max-width: 1199px) {
-      grid-column: 11;
-      height: 100%;
-      width: 100%;
-    }
-     @media (max-width: 640px) {
-      width: 32px;
-      height: 32px;
-     } */
-  }
-
-  &-right {
-    /* grid-column: 24;
-    height: 100%;
-    width: 100%; */
-
-    width: 32px;
-  height: 32px;
-
-
-  /*  @media (max-width: 1199px) {
-      grid-column: 12;
-    }
-
-@media (max-width: 640px) {
-      width: 32px;
-      height: 32px;
-     }
-  } */
-
+  
+  @media (max-width: 1199px) {
+   width: 24px;
+   height: 24px;
   }
 }
 
+  &-right {
+    width: 32px;
+  height: 32px;
+
+    @media (max-width: 1199px) {
+   width: 24px;
+   height: 24px;
+  }
+}
+}
+
 .category-grid {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  grid-column: 1 / -1;
+gap: 16px;
+
+  @media (max-width: 1199px) {
+grid-template-columns: repeat(3, 1fr);
+max-width: 100%;
+  }
+
 
 
   @media (max-width: 639px) {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
+grid-template-columns:  1fr;
 
- /* max-width: 607px; */
-
- width: 100%;
-    gap: 32px;
+  /* box-sizing: border-box;
+  flex-direction: column;
+  max-width: 100%; */
+  gap: 32px;
   }
-
 }
 
 .home__subtitle {
@@ -174,10 +125,7 @@ width: 32px;
   letter-spacing: -1%;
   color: #313237;
   font-weight: 800;
-
-  /* @media (min-width: 640px) and (max-width: 1199px) {
-    grid-column: 1 / span 10;
-  } */
+  margin-bottom: 24px;
 
   @media (max-width: 640px) {
     font-size: 22px;

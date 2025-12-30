@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import '../../styles/grid.scss';
 import './HomePage.scss';
 import { ProductList } from '../../components/ProductList';
 import { Banner } from '../../components/Banner';
@@ -85,97 +86,99 @@ export const HomePage: React.FC = () => {
   return (
     <main className="home">
       <div className="container">
-        <h1 className="home__title">Product Catalog</h1>
+        <div className="grid">
+          <h1 className="home__title">Product Catalog</h1>
 
-        {/* Banner */}
-        <Banner />
+          {/* Banner */}
+          <Banner />
 
-        {/* Brand new */}
-        <section className="home__section">
-          <div className="home__grid">
-            <h2 className="home__subtitle">Brand new models</h2>
-            <div className="product-list__arrow">
-              <button
-                className="product-list__arrow product-list__arrow-left"
-                onClick={() => handleScroll(trackRefNew, 'left')}
-              >
-                <img src="/img/icons/left.svg" alt="Prev" />
-              </button>
+          {/* Brand new */}
+          <section className="home__section">
+            <div className="home__grid">
+              <h2 className="home__subtitle">Brand new models</h2>
+              <div className="product-list__arrow">
+                <button
+                  className="product-list__arrow product-list__arrow-left"
+                  onClick={() => handleScroll(trackRefNew, 'left')}
+                >
+                  <img src="/img/icons/left.svg" alt="Prev" />
+                </button>
 
-              <button
-                className="product-list__arrow product-list__arrow-right"
-                onClick={() => handleScroll(trackRefNew, 'right')}
-              >
-                <img src="/img/icons/right.svg" alt="Next" />
-              </button>
+                <button
+                  className="product-list__arrow product-list__arrow-right"
+                  onClick={() => handleScroll(trackRefNew, 'right')}
+                >
+                  <img src="/img/icons/right.svg" alt="Next" />
+                </button>
+              </div>
             </div>
-          </div>
-          <ProductList
-            products={newProducts}
-            isLoading={loading}
-            mode="slider"
-            trackRef={trackRefNew}
-          />
-        </section>
-
-        {/* Categories */}
-        <section className="home__section">
-          <h2 className="home__subtitle">Shop by category</h2>
-
-          <div className="category-grid">
-            <CategoryCard
-              title="Mobile phones"
-              count={counts.phones}
-              image="/img/category-phones.webp"
-              bg="#6D6474"
-              mod="phones"
+            <ProductList
+              products={newProducts}
+              isLoading={loading}
+              mode="slider"
+              trackRef={trackRefNew}
             />
+          </section>
 
-            <CategoryCard
-              title="Tablets"
-              count={counts.tablets}
-              image="/img/category-tablets.webp"
-              bg="#8D8D92"
-              mod="tablets"
-            />
+          {/* Categories */}
+          <section className="home__section">
+            <h2 className="home__subtitle">Shop by category</h2>
 
-            <CategoryCard
-              title="Accessories"
-              count={counts.accessories}
-              image="/img/category-accessories.webp"
-              bg="#FFC0CB"
-              mod="accessories"
-            />
-          </div>
-        </section>
+            <div className="category-grid">
+              <CategoryCard
+                title="Mobile phones"
+                count={counts.phones}
+                image="/img/category-phones.webp"
+                bg="#6D6474"
+                mod="phones"
+              />
 
-        {/* Hot prices */}
-        <section className="home__section">
-          <div className="home__grid">
-            <h2 className="home__subtitle">Hot prices</h2>
-            <div className="product-list__arrow">
-              <button
-                className="product-list__arrow product-list__arrow-left"
-                onClick={() => handleScroll(trackRefHot, 'left')}
-              >
-                <img src="/img/icons/left.svg" alt="Prev" />
-              </button>
+              <CategoryCard
+                title="Tablets"
+                count={counts.tablets}
+                image="/img/category-tablets.webp"
+                bg="#8D8D92"
+                mod="tablets"
+              />
 
-              <button
-                className="product-list__arrow product-list__arrow-right"
-                onClick={() => handleScroll(trackRefHot, 'right')}
-              >
-                <img src="/img/icons/right.svg" alt="Next" />
-              </button>
+              <CategoryCard
+                title="Accessories"
+                count={counts.accessories}
+                image="/img/category-accessories.webp"
+                bg="#FFC0CB"
+                mod="accessories"
+              />
             </div>
-          </div>
-          <ProductList
-            products={hotProducts}
-            isLoading={loading}
-            mode="slider"
-            trackRef={trackRefHot}
-          />
-        </section>
+          </section>
+
+          {/* Hot prices */}
+          <section className="home__section">
+            <div className="home__grid">
+              <h2 className="home__subtitle">Hot prices</h2>
+              <div className="product-list__arrow">
+                <button
+                  className="product-list__arrow product-list__arrow-left"
+                  onClick={() => handleScroll(trackRefHot, 'left')}
+                >
+                  <img src="/img/icons/left.svg" alt="Prev" />
+                </button>
+
+                <button
+                  className="product-list__arrow product-list__arrow-right"
+                  onClick={() => handleScroll(trackRefHot, 'right')}
+                >
+                  <img src="/img/icons/right.svg" alt="Next" />
+                </button>
+              </div>
+            </div>
+            <ProductList
+              products={hotProducts}
+              isLoading={loading}
+              mode="slider"
+              trackRef={trackRefHot}
+            />
+          </section>
+        </div>
       </div>
     </main>
   );
