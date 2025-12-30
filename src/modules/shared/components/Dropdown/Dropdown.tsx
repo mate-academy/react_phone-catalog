@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Dropdown.module.scss';
 import { FaAngleDown } from 'react-icons/fa6';
 import classNames from 'classnames';
-import { useOutsideClick } from '../../hooks/useOutsideClick';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 export interface DropdownOption<T> {
   label: string;

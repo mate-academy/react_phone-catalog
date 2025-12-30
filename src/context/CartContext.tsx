@@ -14,6 +14,7 @@ export interface CartContextType {
   cart: Cart;
   changeProductCount: (product: Product, newCount: number) => void;
   removeFromCart: (productId: Product['id']) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -110,9 +111,23 @@ export const CartProvider: FC<Props> = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    setCart({
+      items: [],
+      total: 0,
+    });
+  };
+
   return (
     <CartContext.Provider
-      value={{ toggleToCart, inCart, cart, changeProductCount, removeFromCart }}
+      value={{
+        toggleToCart,
+        inCart,
+        cart,
+        changeProductCount,
+        removeFromCart,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

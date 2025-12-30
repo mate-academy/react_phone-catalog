@@ -1,0 +1,19 @@
+@use '@/styles/resources' as *;
+
+.modal {
+  gap: 16px;
+
+  @include flex-column;
+}
+
+.modalHeader {
+  color: $attention-color;
+
+  h2 {
+    color: $attention-color;
+  }
+}
+
+.message {
+  text-align: center;
+}
