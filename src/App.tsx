@@ -14,6 +14,7 @@ import { AccessoryPage } from './components/AccessoryPage/AccessoryPage';
 import { Cart } from './components/Cart/Cart';
 import { ShoppingCartProvider } from './context/ShoppingCartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { Favorites } from './components/Favorites/Favorites';
 
 export const App = () => (
   <div className="App">
@@ -27,6 +28,7 @@ export const App = () => (
             <Route path="/tablets" element={<Tablets />} />
             <Route path="/accessories" element={<Accessories />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/phones/:itemId" element={<PhonePage />} />
             <Route path="/tablets/:itemId" element={<TabletPage />} />
             <Route path="/accessories/:itemId" element={<AccessoryPage />} />

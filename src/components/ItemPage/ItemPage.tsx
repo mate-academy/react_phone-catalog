@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { NotFoundProduct } from '../NotFoundProduct/NotFoundProduct';
 import styles from './ItemPage.module.scss';
 import HomeIcon from '../../icons/home_icon.png';
 import RightArrow from '../../icons/arrows/Disabled_right.png';
 import BackArrow from '../../icons/arrows/Active_left.png';
-import Favorites from '../../icons/favorites_icon.png';
+// import Favorites from '../../icons/favorites_icon.png';
 import { Product, ProductSlider } from '../ProductSlider/ProductSlider';
 import { Buttons } from '../Buttons/Buttons';
 
@@ -16,6 +16,8 @@ export interface ProductDescription {
 
 export interface Item {
   id: string;
+  namespaceId: string;
+  color: string;
   name: string;
   images: string[];
   colorsAvailable: string[];
@@ -43,6 +45,45 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
 
   const { itemId } = useParams<{ itemId: string }>();
   const item = items.find(i => i.id === itemId);
+
+  const handleOptionChange = (newColor?: string, newCapacity?: string) => {
+    if (!item) {
+      return;
+    }
+
+    const colorToFind = newColor || item.color;
+    const capacityToFind = newCapacity || item.capacity;
+
+    const target = items.find(i =>
+      i.namespaceId === item.namespaceId &&
+      i.color === colorToFind &&
+      i.capacity === capacityToFind
+    );
+
+    if (target) {
+      navigate(`/${categoryName.toLowerCase()}/${target.id}`);
+    }
+  }
+
+  const [gallery, setGallery] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (item) {
+      setGallery(item.images);
+    }
+  }, [item]);
+
+  const handleImageSwap = (clickedIndex: number) => {
+    if (clickedIndex === 0) return;
+
+    const newGallery = [...gallery];
+    const temp = newGallery[0];
+    newGallery[0] = newGallery[clickedIndex];
+    newGallery[clickedIndex] = temp;
+
+    setGallery(newGallery);
+  };
+
   const youMayAlsoLike = items
     .filter(i => i.id !== itemId)
     .slice(0, 12);
@@ -80,14 +121,15 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
         <div className={styles.item_page__main_info}>
           <div className={styles.item_page__main_info__images}>
             <div className={styles.item_page__main_info__images__side}>
-              {item.images.map(img => (
+              {gallery.slice(1).map((img, index) => (
                 <div
-                  key={img.indexOf(img)}
+                  key={img}
                   className={styles.item_page__main_info__images__side__image}
+                  onClick={() => handleImageSwap(index + 1)}
                 >
                   <img
                     src={img}
-                    alt="Product photo"
+                    alt="Thumbnail"
                     className={styles.item_page__main_info__images__side__image__img}
                   />
                 </div>
@@ -95,7 +137,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
             </div>
             <div className={styles.item_page__main_info__images__main_image}>
               <img
-                src={item.images[0]}
+                src={gallery[0]}
                 alt="Main product photo"
                 className={styles.item_page__main_info__images__main_image__img}
               />
@@ -109,6 +151,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
                 <button
                   key={color.indexOf(color)}
                   className={styles.item_page__main_info__options__colors__option}
+                  onClick={() => handleOptionChange(color, item.capacity)}
                 >
                   {color}
                 </button>
@@ -122,6 +165,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
                   <button
                     key={capacity.indexOf(capacity)}
                     className={styles.item_page__main_info__options__capacity__options}
+                    onClick={() => handleOptionChange(item.color, capacity)}
                   >
                     {capacity}
                   </button>
@@ -135,14 +179,6 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
             </div>
 
             <div className={styles.item_page__main_info__options__buttons}>
-              {/* <button className={styles.item_page__main_info__options__buttons__cart}>Add to cart</button>
-              <button className={styles.item_page__main_info__options__buttons__fav}>
-                <img
-                  src={Favorites}
-                  alt="Add to favorites"
-                  className={styles.item_page__main_info__options__buttons__fav__icon}
-                />
-              </button> */}
               <Buttons productId={String(item.id)} />
             </div>
 

@@ -116,4 +116,53 @@
       }
     }
   }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__checkout {
+    min-width: 368px;
+    height: 206px;
+    border: 1px solid $main-button-color;
+
+    &__container {
+      padding: 24px;
+    }
+
+    &__price {
+      margin: 0;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      justify-self: center;
+    }
+
+    &__total {
+      margin: 0;
+      color: $secondary-text-color;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      padding-bottom: 25px;
+      width: 100%;
+      border-bottom: 1px solid $main-button-color;
+    }
+
+    &__button {
+      width: 100%;
+      height: 48px;
+      cursor: pointer;
+      border: none;
+      background-color: $purple-button-color;
+      color: $main-text-color;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      margin-top: 24px;
+    }
+  }
 }
