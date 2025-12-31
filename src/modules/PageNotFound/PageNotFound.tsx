@@ -8,26 +8,23 @@ export const PageNotFound = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        padding: '80px 20px',
-        gap: '24px',
+        padding: '60px 20px',
+        textAlign: 'center',
       }}
     >
-      <Title text="Page not found" level={1} />
-
-      <p>We are sorry, but the page you requested could not be found.</p>
-
+      <Title text="Page not found" />
       <Link
         to="/"
         style={{
-          padding: '12px 24px',
+          marginTop: '24px',
+          padding: '10px 20px',
           backgroundColor: '#313237',
           color: '#fff',
           textDecoration: 'none',
-          borderRadius: '8px',
+          borderRadius: '4px',
         }}
       >
-        Go to Home Page
+        Back to Home
       </Link>
     </div>
   );
