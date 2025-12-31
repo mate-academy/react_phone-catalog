@@ -13,7 +13,7 @@ export default defineConfig({
         @use "@/styles/mixins/respond.scss" as *;
         @use "@/styles/tockens/colors.scss" as *;
         @use "@/styles/mixins/animation.scss" as *;
-      `
+        `
 
       }
     }

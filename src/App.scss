@@ -1,4 +1,6 @@
 :root {
+  --accent-light: #b8aaff;
+  --accent-dark: #5c3dcc;
   --accent: #905BFF;
   --secondary: #75767f;
   --icons: #3a3d58;
@@ -14,6 +16,8 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+    --accent-light: #6548ff;
+    --accent-dark: #2e0f99;
     --accent: #4219d0;
     --secondary: #89939a;
     --icons: #b4bdc3;
@@ -89,11 +93,8 @@ button {
 /* stylelint-disable-next-line selector-max-id */
 #menu-checkbox {
   position: absolute;
-  left: -9999px;
-
-  @include respond (tablet) {
-    display: none;
-  }
+  width: 0;
+  height: 0;
 }
 
 /* stylelint-disable-next-line selector-max-id */
@@ -105,7 +106,7 @@ button {
   }
 }
 
-header .control label.open {
+header label.check-box-label {
   display: flex;
 
   @include respond(tablet) {
@@ -113,18 +114,36 @@ header .control label.open {
   }
 }
 
-header .control label.close {
-  display: none;
+.menuIcon line {
+  stroke: $text;
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.checkbox:checked~header .control label.open {
-  display: none;
+/* stylelint-disable selector-max-id */
+
+#menu-checkbox:checked~header .menuIcon .line1 {
+  transform: rotate(45deg) translate(4.17%, 20.8%) scaleX(1.2);
 }
 
-.checkbox:checked~header .control label.close {
-  display: flex;
+#menu-checkbox:checked~header .menuIcon .line2 {
+  opacity: 0;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease-in, opacity 0.1s ease-in;
+}
 
-  @include respond (tablet) {
-    display: none;
-  }
+#menu-checkbox:checked~header .menuIcon .line3 {
+  transform: rotate(-45deg) translate(4.17%, -20.8%) scaleX(1.2);
+}
+
+#menu-checkbox:checked~header .menuIcon {
+  transform: translateX(-5.4%);
+}
+
+/* stylelint-enable selector-max-id */
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

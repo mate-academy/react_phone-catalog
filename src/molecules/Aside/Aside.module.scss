@@ -55,7 +55,7 @@
 
   &__button:hover &__icon {
     fill: $accent;
-    
+
     @include animation(scale(1.3));
   }
 }

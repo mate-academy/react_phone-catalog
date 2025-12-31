@@ -1,1 +1,17 @@
-// not empty
+.layout {
+  text-transform: uppercase;
+
+  @include mont(700);
+}
+
+.outlet {
+  @include grid;
+}
+
+.checkbox {
+  display: none;
+}
+
+.borders{
+  border-block: calc($space-unit / 4) solid $secondary;
+}

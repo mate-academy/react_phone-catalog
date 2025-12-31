@@ -3,10 +3,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  color: $text;
-  text-transform: uppercase;
   height: 100%;
-  
+
   @include mont(700);
 
   &::after {
@@ -17,15 +15,20 @@
     width: 100%;
     height: 3px;
     background-color: transparent;
-    transition: background-color 0.3s ease;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   }
 
   &:hover {
-    color: $accent;
+    @include live-color-text;
 
     &::after {
-      background-color: $accent;
+      transform: scaleX(1);
+
+      @include live-color-bg;
     }
   }
 
@@ -34,6 +37,7 @@
 
     &::after {
       background-color: $text;
+      transform: scaleX(1);
     }
   }
 }

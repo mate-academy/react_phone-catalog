@@ -20,4 +20,19 @@
     gap: space(6);
   }
 
+  &__item {
+    height: 100%;
+  }
+}
+
+.nav {
+  @include respond (tablet) {
+    height: 100%;
+    grid-column: 1/-1;
+  }
+
+  @include respond (desktop) {
+    grid-column: unset;
+
+  }
 }

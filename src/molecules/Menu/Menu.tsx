@@ -3,12 +3,22 @@ import styles from './Menu.module.scss';
 
 const Menu = () => {
   return (
-    <div className={styles.menu}>
-      <Link to="/">Home</Link>
-      <Link to="/phones">Phones</Link>
-      <Link to="/tablets">Tablets</Link>
-      <Link to="/accessories">Accessories</Link>
-    </div>
+    <nav className={styles.nav} aria-label="Main navigation">
+      <ul className={styles.menu}>
+        <li className={styles.menu__item}>
+          <Link to="/">Home</Link>
+        </li>
+        <li className={styles.menu__item}>
+          <Link to="/phones">Phones</Link>
+        </li>
+        <li className={styles.menu__item}>
+          <Link to="/tablets">Tablets</Link>
+        </li>
+        <li className={styles.menu__item}>
+          <Link to="/accessories">Accessories</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

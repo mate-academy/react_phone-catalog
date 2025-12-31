@@ -24,3 +24,28 @@ $space: (
 @function space($step) {
   @return map-get($space, $step);
 }
+
+
+@mixin grid {
+  & {
+    display: grid;
+    max-width: 1440px;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: space(3);
+    padding-inline: space(3);
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include respond(desktop) {
+    grid-template-columns: repeat(24, 1fr);
+    padding-inline: calc($space-unit * 5.5);
+  }
+
+  @include respond(wide) {
+    padding-inline: 0;
+  }
+}
