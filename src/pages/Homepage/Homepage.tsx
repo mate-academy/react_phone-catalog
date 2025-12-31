@@ -9,7 +9,10 @@ import { ShopByCategory } from '../../components/ShopByCategory';
 import { ProductName } from '../../types/prodName';
 import { ErrorBlock } from '../../components/ErrorBlock';
 
-const getLatestProducts = (products: Product[], name: ProductName): Product[] => {
+const getLatestProducts = (
+  products: Product[],
+  name: ProductName,
+): Product[] => {
   return products
     .filter(product => product.category === name)
     .map(product => ({
