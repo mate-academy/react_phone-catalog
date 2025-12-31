@@ -59,6 +59,12 @@
 
 .menuActions {
   @include flex-between-center;
+
+  .searchBtn {
+    @include on-mobile {
+      display: none;
+    }
+  }
 }
 
 .menuActionLink {

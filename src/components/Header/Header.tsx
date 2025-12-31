@@ -5,6 +5,7 @@ import styles from './Header.module.scss';
 
 import { Logo } from '../Logo';
 import { Menu } from '../Menu';
+import { SearchButton } from '../SearchButton';
 
 interface Props {
   isActiveMenu?: boolean;
@@ -25,14 +26,17 @@ export const Header: FC<Props> = ({
         <Menu />
       </div>
 
-      <button
-        className={classNames(styles.headerMenuBtn, {
-          [styles.headerMenuBtnActive]: isActiveMenu,
-        })}
-        onClick={toggleMenu}
-      >
-        <span></span>
-      </button>
+      <div className={styles.btnsWrapper}>
+        <SearchButton />
+        <button
+          className={classNames(styles.headerMenuBtn, {
+            [styles.headerMenuBtnActive]: isActiveMenu,
+          })}
+          onClick={toggleMenu}
+        >
+          <span></span>
+        </button>
+      </div>
     </header>
   );
 };

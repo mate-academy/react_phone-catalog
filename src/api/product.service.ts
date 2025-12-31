@@ -11,3 +11,13 @@ export function getProductsByCategory(category: Category) {
     .get<Product[]>('products.json')
     .then(res => res.filter(item => item.category === category));
 }
+
+export function getProductsByQuery(query: string, quantity: number = 10) {
+  return client
+    .get<Product[]>('products.json')
+    .then(res =>
+      res
+        .filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
+        .slice(0, quantity),
+    );
+}

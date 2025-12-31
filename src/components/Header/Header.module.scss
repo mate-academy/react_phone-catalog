@@ -24,6 +24,14 @@
   }
 }
 
+.btnsWrapper {
+  display: flex;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
 .headerNavigation {
   display: none;
   flex: 1;
@@ -41,10 +49,6 @@
   border-left: 1px solid $elements-color;
 
   @include flex-center;
-
-  @include on-tablet {
-    display: none;
-  }
 
   &::before,
   &::after,
