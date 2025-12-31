@@ -14,6 +14,7 @@
   &__sections {
     display: flex;
     flex-direction: column;
+
     @include adaptiv-value(gap, 56, 80, 1);
   }
 }

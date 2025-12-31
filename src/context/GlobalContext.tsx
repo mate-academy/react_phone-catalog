@@ -90,8 +90,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const updateQuantity = useCallback(
     (id: string, newValue: number) => {
       setCart(prev =>
-        prev.map(cart =>
-          cart.id === id ? { ...cart, quantity: newValue } : cart,
+        prev.map(c =>
+          c.id === id ? { ...c, quantity: newValue } : c,
         ),
       );
     },
@@ -127,7 +127,17 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       toggleFavorites,
       productsError,
     }),
-    [allProducts, loadProducts, cart, favorites, loadProducts, productsError],
+    [
+      allProducts,
+      loadProducts,
+      cart,
+      addToCart,
+      updateQuantity,
+      favorites,
+      toggleFavorites,
+      loadProducts,
+      productsError
+    ],
   );
 
   return (

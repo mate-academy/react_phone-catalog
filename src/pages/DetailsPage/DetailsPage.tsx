@@ -87,7 +87,7 @@ export const DetailsPage = () => {
     }
 
     setProdDetail(currentProduct);
-  }, [productId, prodDetails]);
+  }, [productId, prodDetails, isLoading]);
 
   const getLink = useCallback(
     (option: Option, value: string) => {

@@ -9,28 +9,39 @@ import { ShopByCategory } from '../../components/ShopByCategory';
 import { ProductName } from '../../types/prodName';
 import { ErrorBlock } from '../../components/ErrorBlock';
 
+const getLatestProducts = (products: Product[], name: ProductName): Product[] => {
+  return products
+    .filter(product => product.category === name)
+    .map(product => ({
+      ...product,
+      category: name,
+    }))
+    .sort((p1, p2) => p2.price - p1.price)
+    .slice(0, 7);
+};
+
 export const Homepage = () => {
   const { allProducts, reloadProducts } = useContext(GlobalContext);
 
-  const getLatestProducts = (name: ProductName): Product[] => {
-    return allProducts
-      .filter(product => product.category === name)
-      .map(product => ({
-        ...product,
-        category: name,
-      }))
-      .sort((p1, p2) => p2.price - p1.price)
-      .slice(0, 7);
-  };
+  // const getLatestProducts = (name: ProductName): Product[] => {
+  //   return allProducts
+  //     .filter(product => product.category === name)
+  //     .map(product => ({
+  //       ...product,
+  //       category: name,
+  //     }))
+  //     .sort((p1, p2) => p2.price - p1.price)
+  //     .slice(0, 7);
+  // };
 
   const newPhones = useMemo(() => {
-    return getLatestProducts('phones' as ProductName);
+    return getLatestProducts(allProducts, 'phones' as ProductName);
   }, [allProducts]);
   const newTablets = useMemo(() => {
-    return getLatestProducts('tablets' as ProductName);
+    return getLatestProducts(allProducts, 'tablets' as ProductName);
   }, [allProducts]);
   const newAccessories = useMemo(() => {
-    return getLatestProducts('accessories' as ProductName);
+    return getLatestProducts(allProducts, 'accessories' as ProductName);
   }, [allProducts]);
 
   const latestProducts = [

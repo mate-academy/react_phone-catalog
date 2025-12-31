@@ -1,19 +1,14 @@
-import './ProductPage.scss';
-import { ProductName } from '../../types/prodName';
 import { useContext, useEffect, useMemo, useState } from 'react';
+import { ProductName } from '../../types/prodName';
 import { DropDown } from '../../components/Dropdown';
 import { GlobalContext } from '../../context/GlobalContext';
 import { SortType } from '../../types/SortType';
 import { ItemsOnPage } from '../../types/ItemsOnPageType';
-import { Product } from '../../types/Product';
-import { ProductCard } from '../../components/ProductCard';
 import { NaviLine } from '../../components/NaviLine';
-import { Button } from '../../components/Button';
 import { ProductsList } from '../../components/ProductsList';
-import { useLocation } from 'react-router-dom';
 import { ErrorBlock } from '../../components/ErrorBlock';
-import classNames from 'classnames';
 import { Pagination } from '../../components/Pagination';
+import './ProductPage.scss';
 
 type Props = {
   type: ProductName;
@@ -26,23 +21,9 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
   const { allProducts, productsError, reloadProducts } =
     useContext(GlobalContext);
 
-  const category = useLocation().pathname.slice(1);
-
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => product.category === type);
   }, [type, allProducts]);
-
-  // const productsSort = (sortBy: SortType): Product[] => {
-  //   switch (sortBy) {
-  //     case SortType.Newest:
-  //       return filteredProducts.sort((a, b) => b.year - a.year);
-  //     case SortType.Cheapest:
-  //       return filteredProducts.sort((a, b) => a.price - b.price);
-  //     default:
-  //       return filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-  //   }
-  // };
-  // const visibleProducts = productsSort(sortBy);
 
   const visibleProducts = useMemo(() => {
     const productsCopy = [...filteredProducts];
