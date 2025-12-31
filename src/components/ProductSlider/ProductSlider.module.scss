@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .product_slider {
   margin-block: 80px;
   max-width: 100%;
@@ -67,16 +69,26 @@
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 272px);
+    // grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    // grid-auto-flow: column;
-    // grid-auto-columns: minmax(272px, 1fr);
     overflow: hidden;
     width: 100%;
     align-items: center;
     justify-content: center;
     transition: transform 0.4s ease;
     will-change: transform;
+
+    @include for-desktop {
+      @include grid-column(4);
+    }
+
+    @include for-tablet {
+      @include grid-column(3);
+    }
+
+    @include for-mobile {
+      @include grid-column(1)
+    }
   }
 
   &__item {
@@ -94,6 +106,8 @@
       height: 196px;
       object-fit: contain;
       padding-bottom: 8px;
+
+      @include hover-scale
     }
 
     &__name {

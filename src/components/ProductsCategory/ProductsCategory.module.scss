@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .products_category {
   &__container {
     padding-inline: 152px;
@@ -86,7 +88,7 @@
         }
 
         &:focus {
-          border-color: $button-border-disabled;
+          border-color: $purple-button-color;
         }
       }
     }
@@ -122,6 +124,8 @@
         height: 196px;
         object-fit: contain;
         padding-bottom: 8px;
+
+        @include hover-scale;
       }
 
       &__name {

@@ -24,3 +24,7 @@
     transform: scale(1.1);
   }
 }
+
+@mixin grid-column($count) {
+  grid-template-columns: repeat($count, 1fr);
+}
