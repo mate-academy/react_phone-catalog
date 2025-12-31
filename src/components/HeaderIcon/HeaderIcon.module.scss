@@ -1,0 +1,64 @@
+@use '/src/style/mixins' as *;
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 #e2e6e9;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    & > div {
+      transform: scale(1.1);
+    }
+  }
+
+  &-content {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    box-sizing: border-box;
+    height: 14px;
+    width: 14px;
+    top: -6px;
+    right: -6px;
+    background-color: #eb5757;
+    border: 1px #ffffff solid;
+    border-radius: 100%;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 9px;
+  }
+
+  &--menu {
+    background-image: url(/icons/menu.png);
+  }
+
+  &--close {
+    background-image: url(/icons/close.png);
+  }
+
+  &--favourites {
+    background-image: url(/icons/favorites.png);
+  }
+
+  &--cart {
+    background-image: url(/icons/cart.png);
+  }
+
+  @include onDesktop {
+    & {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}

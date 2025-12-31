@@ -1,1 +1,30 @@
-// not empty
+@use './style/font-styles';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+html,
+body {
+  height: 100%;
+}
+html {
+  font-family: 'Mont';
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  overflow: auto;
+  font-weight: 600;
+}
+
+body {
+  box-sizing: border-box;
+}

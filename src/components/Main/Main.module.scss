@@ -1,0 +1,58 @@
+@use '/src/style/mixins' as *;
+
+.main {
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include inlinePadding;
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+
+  &--products,
+  &--favourites,
+  &--carts {
+    gap: 32px;
+  }
+
+  &--model,
+  &--favourites,
+  &--carts {
+    padding-bottom: 56px;
+  }
+
+  @include onTablet {
+    & {
+      gap: 64px;
+      padding-bottom: 64px;
+
+      &--products,
+      &--favourites {
+        gap: 40px;
+      }
+
+      &--carts {
+        gap: 32px;
+      }
+    }
+  }
+
+  @include onDesktop {
+    & {
+      gap: 80px;
+      padding-bottom: 80px;
+
+      &--products,
+      &--favourites {
+        gap: 40px;
+      }
+
+      &--carts {
+        gap: 32px;
+      }
+    }
+  }
+}

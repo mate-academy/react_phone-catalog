@@ -1,0 +1,20 @@
+@use '/src/style/mixins' as *;
+
+.grid {
+  display: grid;
+  row-gap: 40px;
+  column-gap: 16px;
+  grid-template-columns: 1fr;
+
+  @include onTablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

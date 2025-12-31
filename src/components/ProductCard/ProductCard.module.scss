@@ -1,0 +1,66 @@
+@use '/src/style/mixins' as *;
+
+.product {
+  width: 100%;
+  height: 440px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px #e2e6e9 solid;
+  padding: 32px;
+
+  &__link {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+    text-decoration: none;
+    min-height: 0;
+  }
+
+  &__image {
+    flex-grow: 1;
+    width: 100%;
+    object-fit: contain;
+    min-height: 0;
+  }
+
+  &__name {
+    color: #313237;
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
+  &__characteristic-block {
+  width: 100%;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__characteristic {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+}
+
+  @include onTablet {
+    height: 512px;
+  }
+
+  @include onDesktop {
+    height: 506px;
+  }
+}

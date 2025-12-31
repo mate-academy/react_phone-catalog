@@ -1,0 +1,50 @@
+@use '/src/style/mixins' as *;
+
+.title {
+  color: #313237;
+  margin: 0;
+
+  &--price-big,
+  &--1 {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &--1 {
+    @include onTablet {
+      & {
+        font-size: 48px;
+        line-height: 56px;
+      }
+    }
+  }
+
+  &--price-small,
+  &--2 {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &--2 {
+    @include onTablet {
+      & {
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
+  }
+
+  &--3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+  }
+
+  &--4 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+  }
+}

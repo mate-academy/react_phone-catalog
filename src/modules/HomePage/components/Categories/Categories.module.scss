@@ -1,0 +1,21 @@
+@use '/src/style/mixins' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    width: 100%;
+  }
+
+  @include onTablet {
+    &__list {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+  }
+}
