@@ -84,12 +84,14 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const addToCart = useCallback((productId: string) => {
     if (productId) {
       setCart(prev => {
-        const isProductInCart = prev.some(cartItem => cartItem.id === productId);
-        
+        const isProductInCart = prev.some(
+          cartItem => cartItem.id === productId,
+        );
+
         if (!isProductInCart) {
           return [...prev, { id: productId, quantity: 1 }];
         }
-        
+
         return prev;
       });
     }
@@ -110,8 +112,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       setCart(prev =>
         prev.map(c => (c.id === id ? { ...c, quantity: newValue } : c)),
       );
-    }, [setCart],
-  );
+    }, []);
 
   // const toggleFavorites = (productId: string) => {
   //   if (productId) {
@@ -131,7 +132,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     if (productId) {
       setFavorites(prev => {
         const isProductInFavorites = prev.some(fav => fav === productId);
-        
+
         if (!isProductInFavorites) {
           return [...prev, productId];
         } else {
