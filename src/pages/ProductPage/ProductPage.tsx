@@ -11,6 +11,9 @@ import { NaviLine } from '../../components/NaviLine';
 import { Button } from '../../components/Button';
 import { ProductsList } from '../../components/ProductsList';
 import { useLocation } from 'react-router-dom';
+import { ErrorBlock } from '../../components/ErrorBlock';
+import classNames from 'classnames';
+import { Pagination } from '../../components/Pagination';
 
 type Props = {
   type: ProductName;
@@ -20,7 +23,8 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
   const [sortBy, setSortBy] = useState<SortType>(SortType.Alphabetically);
   const [itemsOnPage, setItemsOnPage] = useState<ItemsOnPage>(ItemsOnPage.all);
   const [page, setPage] = useState(1);
-  const { allProducts } = useContext(GlobalContext);
+  const { allProducts, productsError, reloadProducts } =
+    useContext(GlobalContext);
 
   const category = useLocation().pathname.slice(1);
 
@@ -28,34 +32,49 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
     return allProducts.filter(product => product.category === type);
   }, [type, allProducts]);
 
-  const productsSort = (sortBy: SortType): Product[] => {
+  // const productsSort = (sortBy: SortType): Product[] => {
+  //   switch (sortBy) {
+  //     case SortType.Newest:
+  //       return filteredProducts.sort((a, b) => b.year - a.year);
+  //     case SortType.Cheapest:
+  //       return filteredProducts.sort((a, b) => a.price - b.price);
+  //     default:
+  //       return filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+  //   }
+  // };
+  // const visibleProducts = productsSort(sortBy);
+
+  const visibleProducts = useMemo(() => {
+    const productsCopy = [...filteredProducts];
+
     switch (sortBy) {
       case SortType.Newest:
-        return filteredProducts.sort((a, b) => b.year - a.year);
+        return productsCopy.sort((a, b) => b.year - a.year);
       case SortType.Cheapest:
-        return filteredProducts.sort((a, b) => a.price - b.price);
+        return productsCopy.sort((a, b) => a.price - b.price);
       default:
-        return filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+        return productsCopy.sort((a, b) => a.name.localeCompare(b.name));
     }
-  };
+  }, [filteredProducts, sortBy]);
 
   useEffect(() => {
     setPage(1);
-  }, [itemsOnPage, sortBy]);
+  }, [itemsOnPage, sortBy, type]);
 
-  const visibleProducts = productsSort(sortBy);
+  const itemsPerPage =
+    itemsOnPage === ItemsOnPage.all
+      ? visibleProducts.length
+      : Number(itemsOnPage);
 
-  const itemsPerPage = itemsOnPage === ItemsOnPage.all
-    ? visibleProducts.length
-    : Number(itemsOnPage);
-  
   const totalPages = Math.ceil(visibleProducts.length / itemsPerPage);
 
-  const currentProducts = visibleProducts.slice(
-    (page - 1) * itemsPerPage,
-    page * itemsPerPage,
-  ); 
-  
+  const currentProducts = useMemo(() => {
+    return visibleProducts.slice(
+      (page - 1) * itemsPerPage,
+      page * itemsPerPage,
+    );
+  }, [visibleProducts, page, itemsPerPage]);
+
   return (
     <div className="product-page">
       <div className="container">
@@ -64,119 +83,47 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
             <NaviLine category={type} />
           </div>
 
-          <h1 className="product-page__title">
-            {type === 'phones'
-              ? `Mobile ${type}`
-              : type[0].toUpperCase() + type.slice(1)}
-          </h1>
-          <span className="product-page__desc">{`${filteredProducts.length} models`}</span>
+          {!productsError ? (
+            <>
+              <h1 className="product-page__title">
+                {type === 'phones'
+                  ? `Mobile ${type}`
+                  : type[0].toUpperCase() + type.slice(1)}
+              </h1>
+              <span className="product-page__desc">{`${filteredProducts.length} models`}</span>
 
-          <div className="product-page__drop-block">
-            <DropDown<SortType>
-              options={Object.values(SortType)}
-              label='Sort by'
-              selected={sortBy}
-              onSelect={setSortBy}
-            />
-            <DropDown<ItemsOnPage>
-              options={Object.values(ItemsOnPage)}
-              label='Items on page'
-              selected={itemsOnPage}
-              onSelect={setItemsOnPage}
-            />
-          </div>
+              <div className="product-page__drop-block">
+                <DropDown<SortType>
+                  options={Object.values(SortType)}
+                  label="Sort by"
+                  selected={sortBy}
+                  onSelect={setSortBy}
+                />
+                <DropDown<ItemsOnPage>
+                  options={Object.values(ItemsOnPage)}
+                  label="Items on page"
+                  selected={itemsOnPage}
+                  onSelect={setItemsOnPage}
+                />
+              </div>
 
-          <ProductsList
-            products={currentProducts}
-          />
+              <ProductsList products={currentProducts} />
 
-          <div className="product-page__pagination">
-            {/* <Pagination
-              page={page}
-              totalPages={totalPages}
-              onChange={setPage}
-            /> */}
-          </div>
-
+              <div className="product-page__pagination">
+                {itemsOnPage !== ItemsOnPage.all && totalPages > 1 && (
+                  <Pagination
+                    page={page}
+                    totalPages={totalPages}
+                    onChange={setPage}
+                  />
+                )}
+              </div>
+            </>
+          ) : (
+            <ErrorBlock message={productsError} onReload={reloadProducts} />
+          )}
         </div>
       </div>
     </div>
   );
 };
-
-// type Props1 = {
-//   page: number;
-//   totalPages: number;
-//   onChange: (pageNum: number) => void;
-// }
-
-// export const Pagination: React.FC<Props1> = ({
-//   page,
-//   totalPages,
-//   onChange,
-// }) => {
-//   // const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-
-//   const createPageList = () => {
-//     const pages: (number | "...")[] = [];
-
-//     // Always show 1
-//     pages.push(1);
-
-//     // Left dots
-//     if (page > 4) {
-//       pages.push("...");
-//     }
-
-//     // Middle pages
-//     for (let p = page - 2; p <= page + 2; p++) {
-//       if (p > 1 && p < totalPages) {
-//         pages.push(p);
-//       }
-//     }
-
-//     // Right dots
-//     if (page < totalPages - 3) {
-//       pages.push("...");
-//     }
-
-//     // Always show last
-//     if (totalPages > 1) {
-//       pages.push(totalPages);
-//     }
-
-//     return pages;
-//   };
-
-//   const pages = createPageList();
-  
-//   return (
-//     <div className="pagination">
-//       <Button 
-//         className="button pag__btn--left"
-//         disabled={page === 1}
-//         currentPage={page}
-//         onChange={(newPage) => onChange(newPage)}
-//       />
-//       {pages.map((p, i) => (
-//         <Button 
-//           key={i}
-//           type="pagination"
-//           className={`
-//             button
-//             pag__btn
-//             ${p === page ? 'pag__btn--active' : ''}
-//           `}
-//           currentPage={p}
-//           onChange={onChange} 
-//         />
-//       ))}
-//       <Button
-//         className="button pag__btn--right"
-//         disabled={page === totalPages}
-//         currentPage={page}
-//         onChange={(newPage) => onChange(newPage)}
-//       />
-//     </div>
-//   )
-// }

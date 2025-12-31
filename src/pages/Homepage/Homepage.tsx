@@ -7,13 +7,12 @@ import { ProductsSwiper } from '../../components/ProductsSwiper/ProductsSwiper';
 import { GlobalContext } from '../../context/GlobalContext';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { ProductName } from '../../types/prodName';
+import { ErrorBlock } from '../../components/ErrorBlock';
 
 export const Homepage = () => {
-  const { allProducts } = useContext(GlobalContext);
+  const { allProducts, reloadProducts } = useContext(GlobalContext);
 
-  const getLatestProducts = (
-    name: ProductName,
-  ): Product[] => {
+  const getLatestProducts = (name: ProductName): Product[] => {
     return allProducts
       .filter(product => product.category === name)
       .map(product => ({
@@ -52,31 +51,38 @@ export const Homepage = () => {
   return (
     <div className="page">
       <div className="container">
-        <div className="page__content">
-          <h1 className="page__title">Welcome to Nice Gadgets store!</h1>
-          <div className="page__sections">
-            {latestProducts.length && (
-              <PicturesSlider latestProducts={latestProducts} />
-            )}
+        {allProducts.length !== 0 ? (
+          <div className="page__content">
+            <h1 className="page__title">Welcome to Nice Gadgets store!</h1>
+            <div className="page__sections">
+              {latestProducts.length && (
+                <PicturesSlider latestProducts={latestProducts} />
+              )}
 
-            {newProducts && (
-              <ProductsSwiper
-                products={newProducts}
-                title={'Brand new models'}
-              />
-            )}
+              {newProducts && (
+                <ProductsSwiper
+                  products={newProducts}
+                  title={'Brand new models'}
+                />
+              )}
 
-            <ShopByCategory />
+              <ShopByCategory />
 
-            {hotPriceProducts && (
-              <ProductsSwiper
-                products={hotPriceProducts}
-                discount={true}
-                title={'Hot prices'}
-              />
-            )}
+              {hotPriceProducts && (
+                <ProductsSwiper
+                  products={hotPriceProducts}
+                  discount={true}
+                  title={'Hot prices'}
+                />
+              )}
+            </div>
           </div>
-        </div>
+        ) : (
+          <ErrorBlock
+            message="Products are not available"
+            onReload={reloadProducts}
+          />
+        )}
       </div>
     </div>
   );

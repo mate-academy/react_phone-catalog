@@ -6,16 +6,16 @@ type Props = {
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
-  type?: 'button';
+  htmlType?: 'button' | 'submit' | 'reset';
   children?: ReactNode;
 };
 
 export const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ className, disabled, onClick, type = 'button', children }, ref) => {
+  ({ className, disabled, onClick, htmlType = 'button', children }, ref) => {
     return (
       <button
         ref={ref}
-        type={type}
+        type={htmlType}
         disabled={disabled}
         className={classNames('button', className)}
         onClick={onClick}
@@ -26,4 +26,4 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
   },
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
