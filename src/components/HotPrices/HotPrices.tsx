@@ -16,6 +16,7 @@ export const HotPrices: React.FC = () => {
     <ProductSlider
       title="Hot prices"
       products={formattedHotPrices}
+      visibleCount={4}
     />
   )
 }

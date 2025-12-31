@@ -18,6 +18,7 @@ export const BrandNewModels: React.FC = () => {
     <ProductSlider
       title="Brand new models"
       products={formattedNewModels}
+      visibleCount={4}
     />
   )
 }

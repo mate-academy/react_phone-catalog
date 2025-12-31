@@ -306,6 +306,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
         <ProductSlider
           title="You may also like"
           products={formattedProducts}
+          visibleCount={4}
         />
       </div>
     </div>

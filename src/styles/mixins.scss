@@ -1,0 +1,26 @@
+@mixin for-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (min-width: 640px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
+@mixin hover-scale {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

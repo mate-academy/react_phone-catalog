@@ -23,17 +23,18 @@ export interface Product {
 interface Props {
   title: string;
   products: Product[],
+  visibleCount: number,
 }
 
-export const ProductSlider: React.FC<Props> = ({ title, products }) => {
-  const VISIBLE_COUNT = 4;
+export const ProductSlider: React.FC<Props> = ({ title, products, visibleCount }) => {
+  // const VISIBLE_COUNT = 4;
 
   const [startIndex, setStartIndex] = useState(0);
   const maxIndex = products.length;
 
   const visibleProducts = products.slice(
     startIndex,
-    startIndex + VISIBLE_COUNT,
+    startIndex + visibleCount,
   );
 
   const handleLeftButton = () => {
@@ -45,7 +46,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   };
 
   const isLeftDisabled = startIndex === 0;
-  const isRightDisabled = startIndex === maxIndex - VISIBLE_COUNT;
+  const isRightDisabled = startIndex === maxIndex - visibleCount;
 
   return (
     <div className={styles.product_slider}>
