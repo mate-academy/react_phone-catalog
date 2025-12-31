@@ -2,6 +2,7 @@
 
 .model {
   --column: 1;
+
   display: grid;
   grid-template-columns: repeat(var(--column), 1fr);
   row-gap: 16px;
@@ -86,9 +87,10 @@
     line-height: 100%;
   }
 
-  @include onTablet {
+  @include on-tablet {
     & {
       --column: 12;
+
       column-gap: 16px;
 
       &__indicators {
@@ -118,9 +120,10 @@
     }
   }
 
-  @include onDesktop {
+  @include on-desktop {
     & {
       --column: 24;
+
       column-gap: 16px;
 
       &__indicators {

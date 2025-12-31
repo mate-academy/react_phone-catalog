@@ -16,7 +16,7 @@
     min-width: 0;
     padding-block: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       padding-block: 24px 40px;
     }
   }

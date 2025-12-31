@@ -47,7 +47,7 @@
     text-align: center;
   }
 
-  @include onTablet {
+  @include on-tablet {
     & {
       flex-direction: row;
       gap: 24px;

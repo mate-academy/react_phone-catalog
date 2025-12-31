@@ -34,7 +34,7 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     & {
       padding: 0;
 
@@ -50,7 +50,7 @@
     }
   }
 
-  @include onDesktop {
+  @include on-desktop {
     & {
       &__list {
         gap: 64px;
@@ -68,7 +68,7 @@
   color: #313237;
 }
 
-.is-active:after {
+.is-active::after {
   content: '';
   position: absolute;
   left: 0;

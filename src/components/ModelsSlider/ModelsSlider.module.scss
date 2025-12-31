@@ -35,7 +35,7 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     &__slider {
       grid-auto-columns: calc((100% / 12) * 5);
       margin-right: -24px;
@@ -43,7 +43,7 @@
     }
   }
 
-  @include onDesktop {
+  @include on-desktop {
     & {
       &__top {
         padding-inline: 0;

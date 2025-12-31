@@ -12,7 +12,7 @@
     width: 100%;
   }
 
-  @include onTablet {
+  @include on-tablet {
     &__list {
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;

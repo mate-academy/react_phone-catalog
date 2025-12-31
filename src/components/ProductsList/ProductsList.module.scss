@@ -10,11 +10,11 @@
     column-gap: 16px;
     grid-template-columns: repeat(4, 1fr);
 
-    @include onTablet {
+    @include on-tablet {
       grid-template-columns: repeat(12, 1fr);
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-template-columns: repeat(24, 1fr);
     }
   }
@@ -22,7 +22,7 @@
   &__control {
     grid-column: span 2;
 
-    @include onTablet {
+    @include on-tablet {
       & {
         &--short {
           grid-column: span 3;
@@ -40,7 +40,7 @@
     align-items: center;
     gap: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 40px;
     }
   }

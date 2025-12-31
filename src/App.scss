@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-#root {
+.root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,9 @@ html,
 body {
   height: 100%;
 }
+
 html {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
   color: #89939a;

@@ -43,24 +43,24 @@
   }
 
   &__characteristic-block {
-  width: 100%;
-  height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    width: 100%;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  &__characteristic {
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 100%;
+    &__characteristic {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 100%;
+    }
   }
-}
 
-  @include onTablet {
+  @include on-tablet {
     height: 512px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: 506px;
   }
 }

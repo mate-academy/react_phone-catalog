@@ -31,11 +31,11 @@
     top: -6px;
     right: -6px;
     background-color: #eb5757;
-    border: 1px #ffffff solid;
+    border: 1px #fff solid;
     border-radius: 100%;
     line-height: 14px;
     text-align: center;
-    color: #FFFFFF;
+    color: #fff;
     font-size: 9px;
   }
 
@@ -55,7 +55,7 @@
     background-image: url(/icons/cart.png);
   }
 
-  @include onDesktop {
+  @include on-desktop {
     & {
       width: 64px;
       height: 64px;

@@ -6,12 +6,12 @@
   gap: 24px;
   padding-top: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 32px;
     padding-top: 32px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     & {
       gap: 56px;
       padding-top: 56px;
@@ -79,7 +79,7 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     & {
       &__content {
         aspect-ratio: 26 / 10;

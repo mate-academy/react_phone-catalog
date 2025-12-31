@@ -4,7 +4,8 @@
   box-shadow: 0 -1px 0 #e2e6e9;
 
   &__content {
-    @include inlinePadding;
+    @include inline-padding;
+
     box-sizing: border-box;
     width: 100%;
     max-width: 1200px;
@@ -60,7 +61,7 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     &__content {
       flex-direction: row;
       & > * {
