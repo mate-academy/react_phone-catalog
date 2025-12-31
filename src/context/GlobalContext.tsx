@@ -66,41 +66,72 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     loadProducts();
   }, [loadProducts]);
 
-  const addToCart = (productId: string) => {
+  // const addToCart = (productId: string) => {
+  //   if (productId) {
+  //     const isProductInCart = cart.some(cartItem => cartItem.id === productId);
+
+  //     if (!isProductInCart) {
+  //       const newItem = {
+  //         id: productId,
+  //         quantity: 1,
+  //       };
+
+  //       setCart(prev => [...prev, newItem]);
+  //     }
+  //   }
+  // };
+
+  const addToCart = useCallback((productId: string) => {
     if (productId) {
-      const isProductInCart = cart.some(cartItem => cartItem.id === productId);
-
-      if (!isProductInCart) {
-        const newItem = {
-          id: productId,
-          quantity: 1,
-        };
-
-        setCart(prev => [...prev, newItem]);
-      }
+      setCart(prev => {
+        const isProductInCart = prev.some(cartItem => cartItem.id === productId);
+        
+        if (!isProductInCart) {
+          return [...prev, { id: productId, quantity: 1 }];
+        }
+        
+        return prev;
+      });
     }
-  };
+  }, []);
 
-  const deleteFromCart = (productId: string) => {
-    setCart(prev => {
-      return prev.filter(item => item.id !== productId);
-    });
-  };
+  // const deleteFromCart = (productId: string) => {
+  //   setCart(prev => {
+  //     return prev.filter(item => item.id !== productId);
+  //   });
+  // };
+
+  const deleteFromCart = useCallback((productId: string) => {
+    setCart(prev => prev.filter(item => item.id !== productId));
+  }, []);
 
   const updateQuantity = useCallback(
     (id: string, newValue: number) => {
       setCart(prev =>
         prev.map(c => (c.id === id ? { ...c, quantity: newValue } : c)),
       );
-    },
-    [setCart],
+    }, [setCart],
   );
 
-  const toggleFavorites = (productId: string) => {
-    if (productId) {
-      const isProductInFavorites = favorites.some(fav => fav === productId);
+  // const toggleFavorites = (productId: string) => {
+  //   if (productId) {
+  //     const isProductInFavorites = favorites.some(fav => fav === productId);
 
+  //     setFavorites(prev => {
+  //       if (!isProductInFavorites) {
+  //         return [...prev, productId];
+  //       } else {
+  //         return prev.filter(item => item !== productId);
+  //       }
+  //     });
+  //   }
+  // };
+
+  const toggleFavorites = useCallback((productId: string) => {
+    if (productId) {
       setFavorites(prev => {
+        const isProductInFavorites = prev.some(fav => fav === productId);
+        
         if (!isProductInFavorites) {
           return [...prev, productId];
         } else {
@@ -108,7 +139,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         }
       });
     }
-  };
+  }, []);
 
   const data = useMemo(
     () => ({
