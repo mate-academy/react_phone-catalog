@@ -62,7 +62,7 @@ export const Hero = () => {
 
   return (
     <section className={styles.hero}>
-      <Title text="Welcome to Nice Gadgets store!" />
+      <Title text="Product Catalog" />
       <div className={styles.slider}>
         <div className={styles.slider__top}>
           <div className={styles.slider__banner}>
