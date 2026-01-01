@@ -18,6 +18,7 @@ import { FC, useMemo } from 'react';
 import { CategoryUI } from '../shared/types/CategoryUI';
 import { PerPageOption } from '../shared/types/PerPageOption';
 import { Message } from '../shared/components/Message';
+import { Options } from '@/types/FetchOptions';
 
 interface Props {
   category: Category;
@@ -37,10 +38,13 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     loading,
     error,
     handleFetch,
-  } = useFetch<Product[]>(() => getProductsByCategory(productCategory.type), {
-    initialValue: [],
-    dependency: [category],
-  });
+  } = useFetch<Product[]>(
+    (options: Options) => getProductsByCategory(productCategory.type, options),
+    {
+      initialValue: [],
+      dependency: [category],
+    },
+  );
 
   const sort = (searchParams.get('sort') || 'newest') as SortOptions;
   const perPage = (searchParams.get('perPage') || 'all') as PerPageOption;

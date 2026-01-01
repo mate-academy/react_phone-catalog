@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Options as FetchOptions } from '../../../types/FetchOptions';
 
 interface Options<T> {
   initialValue: T;
@@ -6,35 +7,51 @@ interface Options<T> {
 }
 
 export function useFetch<T>(
-  callback: () => Promise<T>,
+  callback: (options: FetchOptions) => Promise<T>,
   { initialValue, dependency = [] }: Options<T>,
 ) {
   const [data, setData] = useState<T>(initialValue);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleFetch = async () => {
+  const handleFetch = async (options: FetchOptions = {}) => {
     try {
       setLoading(true);
       setError('');
 
-      const fetchedData = await callback();
+      const fetchedData = await callback(options);
+
+      if (options.signal?.aborted) return;
 
       setData(fetchedData);
-    } catch (e) {
+    } catch (e: any) {
+      if (e.name === 'AbortError') {
+        return;
+      }
+
       if (e instanceof Error) {
         setError(e.message);
       } else {
         setError('Something went wrong');
       }
     } finally {
-      setLoading(false);
+      if (!options.signal?.aborted) {
+        setLoading(false);
+      }
     }
   };
 
   //eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    handleFetch();
+    const controller = new AbortController();
+
+    handleFetch({
+      signal: controller.signal,
+    });
+
+    return () => {
+      controller.abort();
+    };
   }, dependency);
 
   return {
