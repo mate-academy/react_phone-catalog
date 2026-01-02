@@ -1,35 +1,49 @@
+@import '../../../utils/vars';
+@import '../../../utils/mixins';
+
 .pagination {
   display: flex;
   gap: 8px;
   align-items: center;
-}
 
-.pagination__page,
-.pagination__arrow {
+  margin-top: 40px;
+
+&__page,
+&__arrow {
   width: 32px;
   height: 32px;
-  border: 1px solid #e2e6ea;
+  border: 1px solid $elements-color;
   cursor: pointer;
 
-  color: #000;
-
-  background-color: #fff;
+  color: $primary-color;
 
   font-size: 14px;
+
+  &_img{
+    padding: 8px;
+  }
 }
 
-.pagination__page--active {
-  color: #fff;
-  border-color: #2b2b2b;
-  background-color: #2b2b2b;
+&__page_active {
+  font-family: Mont, serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  color: $background-color;
+  border-color: $primary-color;
+  background-color: $primary-color;
 }
 
-.pagination__arrow:disabled {
+&__arrow:disabled {
   cursor: default;
   opacity: 0.4;
 }
+}
 
-.pagination__page:hover:not(.pagination__page--active),
+.pagination__page:hover:not(.pagination__page_active),
 .pagination__arrow:hover:not(:disabled) {
-  background-color: #f5f5f5;
+  background-color: $background-color;
 }

@@ -44,35 +44,38 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <div className={styles.pagination}>
-      {/* PREV */}
       <button
         className={styles.pagination__arrow}
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        ‹
+        <img
+          src="../../../../public/img/icons/icon-chevron-arrow-left.png"
+          alt="button"
+          className={styles.pagination__arrow_img}
+        />
       </button>
-
-      {/* PAGES */}
       {pages.map(page => (
         <button
           key={page}
-          className={`pagination__page ${
-            page === currentPage ? 'pagination__page--active' : ''
+          className={`${styles.pagination__page} ${
+            page === currentPage ? styles.pagination__page_active : ''
           }`}
           onClick={() => onPageChange(page)}
         >
           {page}
         </button>
       ))}
-
-      {/* NEXT */}
       <button
         className={styles.pagination__arrow}
         disabled={currentPage === pagesNum}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        ›
+        <img
+          src="../../../../public/img/icons/icon-chevron-arrow-right.png"
+          alt="button"
+          className={styles.pagination__arrow_img}
+        />
       </button>
     </div>
   );

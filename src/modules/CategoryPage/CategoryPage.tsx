@@ -29,8 +29,6 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   title,
 }) => {
   const [countModels, setCountModels] = useState(0);
-  // const [sort, setSort] = useState('newest');
-  // const [perPage, setPerPage] = useState('16');
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = Number(searchParams.get('page')) || 1;
   const perPageParam = searchParams.get('perPage') || '16';
