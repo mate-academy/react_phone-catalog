@@ -12,13 +12,12 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { cartItems, addItem } = useCartContext();
-  /*const { setCartItems } = useCartContext();
-  const [isAdded, setIsAdded] = useState(false);*/
   const active = isFavorite(product.id);
 
   const isInCart = cartItems.some(item => item.id === product.itemId);
+  const BASE = import.meta.env.BASE_URL;
 
-  const imagePath = `/img/phones/${product.namespaceId}/${product.color}/00.webp`;
+  const imagePath = `${BASE}img/phones/${product.namespaceId}/${product.color}/00.webp`;
 
   /*const handleAddClick = () => {
     setCartItems(prev => [
@@ -40,7 +39,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="product-card" data-cy="product">
       <Link to={`/product/${product.itemId}`} className="product-card__image">
-        <img src={product.image || imagePath} alt={product.name} />
+        <img
+          src={product.image ? `${BASE}${product.image}` : imagePath}
+          alt={product.name}
+        />
       </Link>
       <div className="product-card__content">
         <Link to={`/product/${product.itemId}`} className="product-card__name">
@@ -96,7 +98,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             onClick={() => toggleFavorite(product)}
           >
             <img
-              src={active ? '/img/icons/red.svg' : '/img/icons/favourites.svg'}
+              src={
+                active
+                  ? `${BASE}img/icons/red.svg`
+                  : `${BASE}img/icons/favourites.svg`
+              }
               alt="Add to favorites"
             />
           </button>

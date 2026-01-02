@@ -6,6 +6,8 @@ import { Product } from '../../types/Product';
 
 import './TabletsPage.scss';
 
+const BASE = import.meta.env.BASE_URL;
+
 export const TabletsPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +25,7 @@ export const TabletsPage: React.FC = () => {
         : 'all';
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch(`${BASE}api/products.json`)
       .then(r => r.json())
       .then((data: Product[]) => {
         setAllProducts(data);
@@ -98,7 +100,7 @@ export const TabletsPage: React.FC = () => {
     <section className="tablets">
       <div className="container">
         <div className="tablets__breadcrumbs">
-          <img src="/img/icons/home.svg" alt="home" />
+          <img src={`${BASE}/img/icons/home.svg`} alt="home" />
           <span> / Tablets</span>
         </div>
 
@@ -138,10 +140,10 @@ export const TabletsPage: React.FC = () => {
           </div>
         </div>
 
-        {!loading && filtered.length === 0 ? (
+        {!loading && filtered.length === 0 && (
           <div className="products-empty">
             <img
-              src="/img/icons/search.svg"
+              src={`${BASE}img/icons/search.svg`}
               alt="Nothing found"
               className="products-empty__icon"
             />
@@ -149,15 +151,12 @@ export const TabletsPage: React.FC = () => {
               There are no tablets matching the query
             </p>
           </div>
-        ) : (
-          <ProductList products={filtered} />
         )}
 
-        {isEmpty ? (
-          <p className="tablets__empty">There are no tablets yet</p>
-        ) : (
+        {!isEmpty && (
           <ProductList products={visible} isLoading={loading} mode="grid" />
         )}
+        {isEmpty && <p className="tablets__empty">There are no tablets yet</p>}
 
         {!isEmpty && perPage !== 'all' && totalPages > 1 && (
           <Pagination

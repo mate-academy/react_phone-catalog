@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import './Banner.scss';
 
+const BASE = import.meta.env.BASE_URL;
+
 const slides = [
   {
     id: 1,
     title: 'Now available in our store! 👌',
     subtitle: 'Be the first!',
     button: 'Order now',
-    imageDesktop: '/img/banners/banner-desktop.png',
-    imageMobile: '/img/banners/banner-mobile.png',
+    imageDesktop: `${BASE}img/banners/banner-desktop.png`,
+    imageMobile: `${BASE}img/banners/banner-mobile.png`,
   },
   {
     id: 2,
     title: 'New arrivals every week ✨',
     subtitle: 'Check what’s trending now!',
     button: 'Shop now',
-    imageDesktop: '/img/banners/banner-desktop.png',
-    imageMobile: '/img/banners/banner-mobile.png',
+    imageDesktop: `${BASE}img/banners/banner-desktop.png`,
+    imageMobile: `${BASE}img/banners/banner-mobile.png`,
   },
   {
     id: 3,
     title: 'Exclusive deals for you 💥',
     subtitle: 'Limited time only!',
     button: 'See offers',
-    imageDesktop: '/img/banners/banner-desktop.png',
-    imageMobile: '/img/banners/banner-mobile.png',
+    imageDesktop: `${BASE}img/banners/banner-desktop.png`,
+    imageMobile: `${BASE}img/banners/banner-mobile.png`,
   },
 ];
 
@@ -52,7 +54,7 @@ export const Banner: React.FC = () => {
           onClick={prevSlide}
           aria-label="Previous slide"
         >
-          <img src="/img/icons/left.svg" alt="Previous" />
+          <img src={`${BASE}img/icons/left.svg`} alt="Previous" />
         </button>
 
         <div className="banner__content">
@@ -77,7 +79,7 @@ export const Banner: React.FC = () => {
           onClick={nextSlide}
           aria-label="Next slide"
         >
-          <img src="/img/icons/right.svg" alt="Next" />
+          <img src={`${BASE}img/icons/right.svg`} alt="Next" />
         </button>
         <div className="banner__dots">
           {slides.map((_, index) => (

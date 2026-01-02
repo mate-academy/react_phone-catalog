@@ -5,6 +5,8 @@ import { Pagination } from '../../components/Pagination';
 import { Product } from '../../types/Product';
 import '../TabletsPage/TabletsPage.scss';
 
+const BASE = import.meta.env.BASE_URL;
+
 export const AccessoriesPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +24,7 @@ export const AccessoriesPage: React.FC = () => {
         : 'all';
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch(`${BASE}api/products.json`)
       .then(r => r.json())
       .then((data: Product[]) => {
         setAllProducts(data);
@@ -97,7 +99,7 @@ export const AccessoriesPage: React.FC = () => {
     <section className="accessories">
       <div className="container">
         <div className="accessories__breadcrumbs">
-          <img src="/img/icons/home.svg" alt="home" />
+          <img src={`${BASE}img/icons/home.svg`} alt="home" />
           <span> / Accessories</span>
         </div>
 
@@ -137,27 +139,26 @@ export const AccessoriesPage: React.FC = () => {
           </div>
         </div>
 
-        {!loading && filtered.length === 0 ? (
+        {!loading && filtered.length === 0 && (
           <div className="products-empty">
             <img
-              src="/img/icons/search.svg"
+              src={`${BASE}img/icons/search.svg`}
               alt="Nothing found"
               className="products-empty__icon"
             />
             <p className="products-empty__text">
-              There are no tablets matching the query
+              There are no accessories matching the query
             </p>
           </div>
-        ) : (
-          <ProductList products={filtered} />
         )}
 
-        {isEmpty ? (
-          <p className="accessories__empty">There are no accessories yet</p>
-        ) : (
+        {!isEmpty && (
           <ProductList products={visible} isLoading={loading} mode="grid" />
         )}
 
+        {isEmpty && (
+          <p className="accessories__empty">There are no accessories yet</p>
+        )}
         {!isEmpty && perPage !== 'all' && totalPages > 1 && (
           <Pagination
             page={page}

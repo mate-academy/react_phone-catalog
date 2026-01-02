@@ -8,6 +8,8 @@ import { CategoryCard } from '../../components/CategoryCard';
 import { getCategoryCounts } from '../../utils/getCategoryCounts';
 import { Product } from '../../types/Product';
 
+const BASE = import.meta.env.BASE_URL;
+
 export const HomePage: React.FC = () => {
   const trackRefNew = useRef<HTMLDivElement>(null);
   const trackRefHot = useRef<HTMLDivElement>(null);
@@ -27,7 +29,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch('/api/products.json')
+    fetch(`${BASE}/api/products.json`)
       .then(res => res.json())
       .then((data: Product[]) => {
         setAllProducts(data);
@@ -101,17 +103,14 @@ export const HomePage: React.FC = () => {
                   className="product-list__arrow product-list__arrow-left"
                   onClick={() => handleScroll(trackRefNew, 'left')}
                 >
-                  <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/left.svg`}
-                    alt="Prev"
-                  />
+                  <img src={`${BASE}img/icons/left.svg`} alt="Prev" />
                 </button>
 
                 <button
                   className="product-list__arrow product-list__arrow-right"
                   onClick={() => handleScroll(trackRefNew, 'right')}
                 >
-                  <img src="/img/icons/right.svg" alt="Next" />
+                  <img src={`${BASE}img/icons/right.svg`} alt="Next" />
                 </button>
               </div>
             </div>
@@ -131,7 +130,7 @@ export const HomePage: React.FC = () => {
               <CategoryCard
                 title="Mobile phones"
                 count={counts.phones}
-                image="/img/category-phones.webp"
+                image={`${BASE}img/category-phones.webp`}
                 bg="#6D6474"
                 mod="phones"
               />
@@ -139,7 +138,7 @@ export const HomePage: React.FC = () => {
               <CategoryCard
                 title="Tablets"
                 count={counts.tablets}
-                image="/img/category-tablets.webp"
+                image={`${BASE}img/category-tablets.webp`}
                 bg="#8D8D92"
                 mod="tablets"
               />
@@ -147,7 +146,7 @@ export const HomePage: React.FC = () => {
               <CategoryCard
                 title="Accessories"
                 count={counts.accessories}
-                image="/img/category-accessories.webp"
+                image={`${BASE}img/category-accessories.webp`}
                 bg="#FFC0CB"
                 mod="accessories"
               />
@@ -163,14 +162,14 @@ export const HomePage: React.FC = () => {
                   className="product-list__arrow product-list__arrow-left"
                   onClick={() => handleScroll(trackRefHot, 'left')}
                 >
-                  <img src="/img/icons/left.svg" alt="Prev" />
+                  <img src={`${BASE}img/icons/left.svg`} alt="Prev" />
                 </button>
 
                 <button
                   className="product-list__arrow product-list__arrow-right"
                   onClick={() => handleScroll(trackRefHot, 'right')}
                 >
-                  <img src="/img/icons/right.svg" alt="Next" />
+                  <img src={`${BASE}img/icons/right.svg`} alt="Next" />
                 </button>
               </div>
             </div>
