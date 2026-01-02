@@ -51,9 +51,11 @@ export const ButtonWithIcon = ({
           />
         );
       case 'plus':
-        return <IconPlus />;
+        return <IconPlus style={{ color: disabled ? '#B4BDC3' : '#313237' }} />;
       case 'minus':
-        return <IconMinus />;
+        return (
+          <IconMinus style={{ color: disabled ? '#B4BDC3' : '#313237' }} />
+        );
       case 'number':
       case 'else':
         return <span>{value}</span>;
