@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import styles from './Pagination.module.scss';
 
 type Props = {
   total: number;
@@ -24,55 +24,56 @@ export const Pagination: React.FC<Props> = ({
   currentPage = 1,
   onPageChange,
 }) => {
+  const VISIBLE_PAGES = 4;
   const pagesNum = Math.ceil(total / perPage);
-  const pages = getNumbers(1, pagesNum);
+
+  if (pagesNum <= 1) {
+    return null;
+  }
+
+  let startPage = Math.max(1, currentPage - Math.floor(VISIBLE_PAGES / 2));
+
+  let endPage = startPage + VISIBLE_PAGES - 1;
+
+  if (endPage > pagesNum) {
+    endPage = pagesNum;
+    startPage = Math.max(1, endPage - VISIBLE_PAGES + 1);
+  }
+
+  const pages = getNumbers(startPage, endPage);
 
   return (
-    <ul className="pagination">
-      <li className={cn('page-item', { disabled: currentPage === 1 })}>
-        <a
-          data-cy="prevLink"
-          className="page-link"
-          href="#prev"
-          aria-disabled={currentPage === 1}
-          onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
-        >
-          «
-        </a>
-      </li>
+    <div className={styles.pagination}>
+      {/* PREV */}
+      <button
+        className={styles.pagination__arrow}
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      >
+        ‹
+      </button>
+
+      {/* PAGES */}
       {pages.map(page => (
-        <li
+        <button
           key={page}
-          className={cn('page-item', {
-            active: page === currentPage,
-          })}
+          className={`pagination__page ${
+            page === currentPage ? 'pagination__page--active' : ''
+          }`}
+          onClick={() => onPageChange(page)}
         >
-          <a
-            data-cy="pageLink"
-            className="page-link"
-            href={`#${page}`}
-            onClick={() => onPageChange(page)}
-          >
-            {page}
-          </a>
-        </li>
+          {page}
+        </button>
       ))}
 
-      <li
-        className={cn('page-item', { disabled: currentPage === pages.length })}
+      {/* NEXT */}
+      <button
+        className={styles.pagination__arrow}
+        disabled={currentPage === pagesNum}
+        onClick={() => onPageChange(currentPage + 1)}
       >
-        <a
-          data-cy="nextLink"
-          className="page-link"
-          href="#next"
-          aria-disabled={currentPage === pages.length}
-          onClick={() =>
-            currentPage < pages.length && onPageChange(currentPage + 1)
-          }
-        >
-          »
-        </a>
-      </li>
-    </ul>
+        ›
+      </button>
+    </div>
   );
 };

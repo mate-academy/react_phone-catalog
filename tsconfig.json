@@ -7,8 +7,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "models/*": ["src/models/*"],
       "services/*": ["src/services/*"],
-      "models/*": ["src/models/*"]
+      "shared/*": ["src/modules/shared/*"],
     },
     "sourceMap": false,
     "types": ["node", "cypress"]
