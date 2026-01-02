@@ -18,7 +18,7 @@ export const HomePage = () => {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    getProducts<Product[]>('/api/products.json')
+    getProducts<Product[]>('api/products.json')
       .then(productsFromServer => {
         setProducts(productsFromServer);
         setLoading(false);

@@ -26,7 +26,7 @@ export const FavItemsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProducts<Product[]>('/api/products.json').then(productsFromServer => {
+    getProducts<Product[]>('api/products.json').then(productsFromServer => {
       setProducts(productsFromServer);
     });
   }, []);

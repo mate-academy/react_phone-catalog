@@ -16,21 +16,21 @@ export const Categories = ({ products }: { products: Product[] }) => {
       <div className={styles.categories__list}>
         <ProductCategory
           title={'Mobile phones'}
-          image={'/img/image 6.png'}
+          image={'img/image 6.png'}
           count={phonesCount}
           backgroundColor={'#6D6474'}
           link="phones"
         />
         <ProductCategory
           title={'Tablets'}
-          image={'/img/image 5.png'}
+          image={'img/image 5.png'}
           count={tabletsCount}
           backgroundColor={'#8D8D92'}
           link="tablets"
         />
         <ProductCategory
           title={'Accessories'}
-          image={'/img/image 7.png'}
+          image={'img/image 7.png'}
           count={accessoriesCount}
           backgroundColor={'#973D5F'}
           link="accessories"

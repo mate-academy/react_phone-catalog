@@ -5,15 +5,15 @@ import { Title } from '../../../../components/Title';
 import { ButtonWithIcon } from '../../../../components/ButtonWithIcon';
 
 const desktopImages = [
-  '/img/banner-iphone14Pro-desktop.png',
-  '/img/banner-iPhone-desktop.jpg',
-  '/img/banner-iPhones-desktop.jpg',
+  'img/banner-iphone14Pro-desktop.png',
+  'img/banner-iPhone-desktop.jpg',
+  'img/banner-iPhones-desktop.jpg',
 ];
 
 const mobileImages = [
-  '/img/banner-iPhone14Pro.png',
-  '/img/banner-watch.jpg',
-  '/img/banner-headphones.png',
+  'img/banner-iPhone14Pro.png',
+  'img/banner-watch.jpg',
+  'img/banner-headphones.png',
 ];
 
 export const Hero = () => {

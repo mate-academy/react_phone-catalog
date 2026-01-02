@@ -25,7 +25,7 @@ export const ProductPage = ({
   const [reload, setReload] = useState(0);
 
   useEffect(() => {
-    getProducts<Product[]>('/api/products.json')
+    getProducts<Product[]>('api/products.json')
       .then(setProducts)
       .catch(() => setErrorMessage('Similar models not found'));
   }, []);
@@ -33,7 +33,7 @@ export const ProductPage = ({
   useEffect(() => {
     setLoading(true);
     setErrorMessage(null);
-    getProducts<Model[]>(`/api/${productCategory}.json`)
+    getProducts<Model[]>(`api/${productCategory}.json`)
       .then(modelsFromServer => {
         setModels(modelsFromServer);
       })

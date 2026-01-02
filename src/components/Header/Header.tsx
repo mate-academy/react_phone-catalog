@@ -3,6 +3,7 @@ import { HeaderIcon } from '../HeaderIcon';
 import style from './Header.module.scss';
 import { Menu } from '../Menu';
 import { NavigateLinks } from '../NavigateLinks';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [showNavigate, setShowNavigate] = useState(false);
@@ -26,9 +27,9 @@ export const Header = () => {
     <>
       <header className={style.header} ref={headerRef}>
         <div className={style.header__top}>
-          <a href="#" className={style.header__logo}>
-            <img src="/public/icons/logo.png" alt="Bose logo" />
-          </a>
+          <Link to="/" className={style.header__logo}>
+            <img src="icons/logo.png" alt="Nice Gadgets logo" />
+          </Link>
 
           {showNavigate && <NavigateLinks />}
 

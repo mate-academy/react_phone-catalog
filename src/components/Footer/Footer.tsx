@@ -13,7 +13,7 @@ export const Footer = () => {
         <div className={styles.footer__top}>
           <Link to="/" onClick={scrollToTop}>
             <img
-              src="/icons/logo.png"
+              src="icons/logo.png"
               alt="logo"
               className={styles.footer__image}
             />
