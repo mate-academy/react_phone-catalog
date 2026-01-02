@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .item_page {
   justify-self: center;
   align-self: center;
@@ -5,6 +7,14 @@
   &__container {
     padding-inline: 152px;
     color: $main-text-color;
+
+    @include for-tablet {
+        padding-inline: 32px;
+      }
+
+      @include for-mobile {
+        padding-inline: 24px;
+      }
   }
 
   &__path {
@@ -58,6 +68,15 @@
   &__main_info {
     display: flex;
     gap: 64px;
+
+    @include for-tablet {
+      width: 100%;
+    }
+
+    @include for-mobile {
+      flex-direction: column;
+      padding-inline: 16px;
+    }
 
     &__images {
       display: flex;

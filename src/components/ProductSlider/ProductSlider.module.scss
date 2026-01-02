@@ -5,7 +5,6 @@
   max-width: 100%;
   min-width: 0;
   width: 100%;
-  // align-self: center;
 
   &__link {
     color: inherit;
@@ -69,12 +68,11 @@
 
   &__container {
     display: grid;
-    // grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     overflow: hidden;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
     transition: transform 0.4s ease;
     will-change: transform;
 
@@ -165,41 +163,5 @@
         margin: 0;
       }
     }
-
-    // &__buttons {
-    //   display: flex;
-    //   gap: 8px;
-    //   padding-top: 8px;
-
-    //   button {
-    //     cursor: pointer;
-    //   }
-
-    //   &__cart {
-    //     background-color: $purple-button-color;
-    //     border: none;
-    //     color: $main-text-color;
-    //     font-weight: 700;
-    //     font-size: 14px;
-    //     line-height: 21px;
-    //     width: 160px;
-    //     height: 40px;
-    //   }
-
-    //   &__fav {
-    //     height: 40px;
-    //     width: 40px;
-    //     border: none;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     background-color: $main-button-color;
-
-    //     &__icon {
-    //       width: 16px;
-    //       height: 16px;
-    //     }
-    //   }
-    // }
   }
 }

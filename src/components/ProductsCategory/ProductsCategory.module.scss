@@ -5,9 +5,16 @@
     padding-inline: 152px;
     margin-top: 24px;
     margin-bottom: 80px;
-
     color: $main-text-color;
     text-decoration: none;
+
+    @include for-tablet {
+      padding-inline: 32px;
+    }
+
+    @include for-mobile {
+      padding-inline: 24px;
+    }
   }
 
   &__top_bar {
@@ -101,6 +108,7 @@
     row-gap: 40px;
     align-items: center;
     justify-content: center;
+    justify-items: center;
     transition: transform 0.4s ease;
     will-change: transform;
 

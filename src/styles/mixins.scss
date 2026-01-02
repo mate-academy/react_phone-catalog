@@ -16,6 +16,12 @@
   }
 }
 
+@mixin for-tablet-and-mobile {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
 @mixin hover-scale {
   transition: transform 0.3s ease;
   cursor: pointer;

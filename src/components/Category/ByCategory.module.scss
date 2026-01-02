@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .categories {
   color: $main-text-color;
   align-self: center;
@@ -15,6 +17,9 @@
     display: flex;
     gap: 16px;
 
+    @include for-tablet-and-mobile {
+      flex-direction: column;
+    }
   }
 
   &__item {
