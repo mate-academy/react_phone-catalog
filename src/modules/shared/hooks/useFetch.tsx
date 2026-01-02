@@ -21,7 +21,9 @@ export function useFetch<T>(
 
       const fetchedData = await callback(options);
 
-      if (options.signal?.aborted) return;
+      if (options.signal?.aborted) {
+        return;
+      }
 
       setData(fetchedData);
     } catch (e: any) {

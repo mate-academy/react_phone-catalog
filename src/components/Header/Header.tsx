@@ -10,11 +10,13 @@ import { SearchButton } from '../SearchButton';
 interface Props {
   isActiveMenu?: boolean;
   toggleMenu?: () => void;
+  onSearch?: () => void;
 }
 
 export const Header: FC<Props> = ({
   isActiveMenu = false,
   toggleMenu = () => {},
+  onSearch = () => {},
 }) => {
   return (
     <header className={styles.header}>
@@ -23,11 +25,11 @@ export const Header: FC<Props> = ({
       </div>
 
       <div className={styles.headerNavigation}>
-        <Menu />
+        <Menu onSearch={onSearch} />
       </div>
 
       <div className={styles.btnsWrapper}>
-        <SearchButton />
+        <SearchButton onClick={onSearch} />
         <button
           className={classNames(styles.headerMenuBtn, {
             [styles.headerMenuBtnActive]: isActiveMenu,

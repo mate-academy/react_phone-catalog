@@ -10,7 +10,9 @@ function wait(delay: number = 5000, options: Options = {}) {
         reject(new DOMException('Aborted', 'AbortError'));
       };
 
-      if (options.signal?.aborted) return onAbort();
+      if (options.signal?.aborted) {
+        return onAbort();
+      }
 
       options.signal.addEventListener('abort', onAbort, { once: true });
     }

@@ -1,11 +1,11 @@
 import styles from './ProductCardSkeleton.module.scss';
 
-import { Skeleton } from '../Skeleton/Skeleton';
+import { Skeleton } from '../../../../components/Skeleton/Skeleton';
 import { CiImageOn } from 'react-icons/ci';
 
 export const ProductCardSkeleton = () => {
   return (
-    <aside className={styles.skeleton}>
+    <article className={styles.skeleton}>
       <Skeleton className={styles.preview}>
         <CiImageOn size={64} />
       </Skeleton>
@@ -20,6 +20,6 @@ export const ProductCardSkeleton = () => {
       </div>
 
       <Skeleton className={styles.buttonsSkeleton}></Skeleton>
-    </aside>
+    </article>
   );
 };

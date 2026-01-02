@@ -4,7 +4,7 @@ import { CategoryUI } from '../../../shared/types/CategoryUI';
 import styles from './CategoryCard.module.scss';
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Skeleton } from '@/modules/shared/components/Skeleton/Skeleton';
+import { Skeleton } from '@/components/Skeleton/Skeleton';
 
 interface Props {
   category: CategoryUI;

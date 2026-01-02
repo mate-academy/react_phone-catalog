@@ -7,6 +7,7 @@ import { FaRegHeart } from 'react-icons/fa6';
 import { useFavourites } from '@/hooks/useFavourites';
 import { useCart } from '@/hooks/useCart';
 import { SearchButton } from '../SearchButton';
+import { FC } from 'react';
 
 const navigationLinkStyles = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.menuNavLink, {
@@ -18,7 +19,11 @@ const actionLinkStyles = ({ isActive }: { isActive: boolean }) =>
     [styles.menuActionLinkActive]: isActive,
   });
 
-export const Menu = () => {
+interface Props {
+  onSearch?: () => void;
+}
+
+export const Menu: FC<Props> = ({ onSearch = () => {} }) => {
   const { favourites } = useFavourites();
   const { cart } = useCart();
 
@@ -50,7 +55,7 @@ export const Menu = () => {
       </nav>
 
       <div className={styles.menuActions}>
-        <SearchButton className={styles.searchBtn} />
+        <SearchButton className={styles.searchBtn} onClick={onSearch} />
         <NavLink to={ROUTES.FAVORITES} className={actionLinkStyles}>
           <FaRegHeart size={16} />
           {favourites.length > 0 && (

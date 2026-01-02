@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 import { CatalogBreadcrumbs } from './components/CatalogBreadcrumbs';
 import { Filters } from './components/Filters';
 import { ProductsList } from '../shared/components/ProductsList';
-import { Skeleton } from '../shared/components/Skeleton/Skeleton';
+import { Skeleton } from '../../components/Skeleton/Skeleton';
 import { filterProducts, SortOptions } from '@/utils/filterProducts';
 import { Pagination } from '../shared/components/Pagination/Pagination';
 import { usePagination } from '../shared/hooks/usePagination';

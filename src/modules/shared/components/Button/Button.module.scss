@@ -34,7 +34,7 @@
   min-width: fit-content;
   min-height: fit-content;
 
-  @include transition(box-shadow, $color-transition);
+  @include transition((box-shadow, background-color, color), $color-transition);
 
   &.selected {
     background-color: var(--primary-selected-bg);
