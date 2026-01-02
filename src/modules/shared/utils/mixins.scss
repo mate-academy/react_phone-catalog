@@ -1,0 +1,92 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin link-underline($color) {
+  &::after {
+    height: 2px;
+    background-color: $color-primary;
+    width: 100%;
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transition: transform $effect-duration;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  @include on-tablet {
+    &::after {
+      height: 3px;
+    }
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+
+  &.active::after {
+    transform: scale(1);
+  }
+
+  &.active {
+    color: $color;
+  }
+
+  &:hover {
+    color: $color;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat((var(--columns), 1fr));
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
