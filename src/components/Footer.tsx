@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
       <div className="footer__container">
         {/* Логотип */}
         <div className="footer__logo">
-          <img src={`${BASE}/img/Logo.svg`} alt="Nice Gadgets" />
+          <img src={`${BASE}img/Logo.svg`} alt="Nice Gadgets" />
         </div>
 
         {/* Навигация */}
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
         >
           <span>Back to top</span>
           <div className="footer__arrow">
-            <img src={`${BASE}/img/icons/up.svg`} alt="Up" />
+            <img src={`${BASE}img/icons/up.svg`} alt="Up" />
           </div>
         </button>
       </div>

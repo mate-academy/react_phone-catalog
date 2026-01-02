@@ -100,7 +100,7 @@ export const TabletsPage: React.FC = () => {
     <section className="tablets">
       <div className="container">
         <div className="tablets__breadcrumbs">
-          <img src={`${BASE}/img/icons/home.svg`} alt="home" />
+          <img src={`${BASE}img/icons/home.svg`} alt="home" />
           <span> / Tablets</span>
         </div>
 
