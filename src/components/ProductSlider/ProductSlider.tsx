@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ProductSlider.module.scss';
-import FavoritesIcon from '../../icons/favorites_icon.png';
+// import FavoritesIcon from '../../icons/favorites_icon.png';
 import Disabled_left from '../../icons/arrows/Disabled_left.png';
 import Disabled_right from '../../icons/arrows/Disabled_right.png';
 import Active_left from '../../icons/arrows/Active_left.png';
@@ -23,10 +23,26 @@ export interface Product {
 interface Props {
   title: string;
   products: Product[],
-  visibleCount: number,
 }
 
-export const ProductSlider: React.FC<Props> = ({ title, products, visibleCount }) => {
+export const ProductSlider: React.FC<Props> = ({ title, products }) => {
+  const [cardsToShow, setCardsToShow] = useState(4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setCardsToShow(1);
+      } else if (window.innerWidth < 1200) {
+        setCardsToShow(3);
+      }  else {
+        setCardsToShow(4);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // const VISIBLE_COUNT = 4;
 
   const [startIndex, setStartIndex] = useState(0);
@@ -34,7 +50,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products, visibleCount }
 
   const visibleProducts = products.slice(
     startIndex,
-    startIndex + visibleCount,
+    startIndex + cardsToShow,
   );
 
   const handleLeftButton = () => {
@@ -46,7 +62,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products, visibleCount }
   };
 
   const isLeftDisabled = startIndex === 0;
-  const isRightDisabled = startIndex === maxIndex - visibleCount;
+  const isRightDisabled = startIndex === maxIndex - cardsToShow;
 
   return (
     <div className={styles.product_slider}>
