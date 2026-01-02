@@ -101,7 +101,10 @@ export const HomePage: React.FC = () => {
                   className="product-list__arrow product-list__arrow-left"
                   onClick={() => handleScroll(trackRefNew, 'left')}
                 >
-                  <img src="/img/icons/left.svg" alt="Prev" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}/img/icons/left.svg`}
+                    alt="Prev"
+                  />
                 </button>
 
                 <button
