@@ -1,11 +1,8 @@
 .productsList {
   display: grid;
   grid-template-columns: repeat(auto-fill, 272px);
-
   gap: 24px;
-
-  // row-gap: 40px;
-   gap: 40px 16px;
+  gap: 40px 16px;
   justify-content: center;
   justify-items: center;
 
