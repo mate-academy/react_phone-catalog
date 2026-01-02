@@ -6,20 +6,50 @@ import apiProducts from '../../../public/api/products.json';
 import React, { useEffect, useState } from 'react';
 import styles from './CategoryPage.module.scss';
 import { CustomSelect } from './CustomSelect';
+import { useSearchParams } from 'react-router-dom';
+import { SortValue } from 'models/sortvalue.model';
 
 enum Category {
   phones = 'phones',
   tablets = 'tablets',
   accessories = 'accessories',
 }
+const SORT_VALUES: SortValue[] = [
+  'newest',
+  'oldest',
+  'alpha-asc',
+  'alpha-desc',
+  'price-low-high',
+  'price-high-low',
+];
 
 export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   category,
   title,
 }) => {
   const [countModels, setCountModels] = useState(0);
-  const [sort, setSort] = useState('newest');
+  // const [sort, setSort] = useState('newest');
   const [perPage, setPerPage] = useState('16');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const paramSort = searchParams.get('sort');
+
+  const sort: SortValue = SORT_VALUES.includes(paramSort as SortValue)
+    ? (paramSort as SortValue)
+    : 'newest';
+
+  const setSort = (nextSort: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (nextSort === 'newest') {
+      params.delete('sort');
+    } else {
+      params.set('sort', nextSort);
+    }
+
+    setSearchParams(params);
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const getModelsCount = (category: string) => {
     if (category === Category.phones) {
@@ -41,6 +71,15 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   useEffect(() => {
     setCountModels(getModelsCount(category));
   }, [category]);
+
+  useEffect(() => {
+    if (paramSort && !SORT_VALUES.includes(paramSort as SortValue)) {
+      const params = new URLSearchParams(searchParams);
+
+      params.delete('sort');
+      setSearchParams(params, { replace: true });
+    }
+  }, [paramSort, searchParams, setSearchParams]);
 
   return (
     <>
@@ -64,8 +103,8 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
               options={[
                 { value: 'newest', label: 'Newest' },
                 { value: 'oldest', label: 'Oldest' },
-                { value: 'alpha-asc', label: 'Alphabetically, A-Z' },
-                { value: 'alpha-desc', label: 'Alphabetically, Z-A' },
+                { value: 'alpha-asc', label: 'A-Z, alphabet' },
+                { value: 'alpha-desc', label: 'Z-A, alphabet' },
                 { value: 'price-low-high', label: 'Price: Low to High' },
                 { value: 'price-high-low', label: 'Price: High to Low' },
               ]}
@@ -90,7 +129,7 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
             />
           </div>
         </div>
-        <ProductsList category={category} />
+        <ProductsList category={category} sort={sort} />
       </div>
       <Footer />
     </>

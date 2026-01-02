@@ -2,22 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductCard.module.scss';
 import { useNavigate } from 'react-router';
-const favoriteIcons = '/img/icons/';
+import { ProductType } from 'models/product.model';
 
-export type ProductType = {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
-};
+const favoriteIcons = '/img/icons/';
 
 type ProductCardProps = {
   product: ProductType;
@@ -40,17 +27,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   useEffect(() => {
     localStorage.setItem(CART_KEY, String(isAdded));
-  }, [isAdded]);
+  }, [isAdded, CART_KEY]);
 
   useEffect(() => {
     localStorage.setItem(FAV_KEY, String(isFavorite));
-  }, [isFavorite]);
+  }, [isFavorite, FAV_KEY]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: MouseEvent) => {
+    e.stopPropagation();
     setIsAdded(prev => !prev);
   };
 
-  const handleAddToFavorites = () => {
+  const handleAddToFavorites = (e: MouseEvent) => {
+    e.stopPropagation();
     setIsFavorite(prev => !prev);
   };
 

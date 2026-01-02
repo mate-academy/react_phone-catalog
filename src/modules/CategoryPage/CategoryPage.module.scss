@@ -1,75 +1,85 @@
 @import '../../utils/vars';
 @import '../../utils/mixins';
 
-.categoryPage{
+.categoryPage {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 100%;
   margin: 56px 0 80px;
 
-  &__title{
-    font-family: Mont;
+  &__title {
+    align-self: flex-start;
+
+    margin: 40px 5% 8px;
+
+    font-family: Mont, serif;
+    font-size: 48px;
     font-weight: 800;
     font-style: Bold;
-    font-size: 48px;
     line-height: 56px;
-    letter-spacing: -1%;
-    align-self: flex-start;
-    margin: 40px 5% 8px;
     color: $primary-color;
+    letter-spacing: -1%;
   }
 
-  &__countmodels__p{
-    font-family: Mont;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: $secondary-color;
+  &__countmodels__p {
     align-self: flex-start;
+
     margin: 0 5% 40px;
+
+    font-family: Mont, serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $secondary-color;
+    letter-spacing: 0%;
   }
   &__filteredmodel {
-    align-self: flex-start;
-    margin: 0 5% 24px;
     display: flex;
     gap: 16px;
+    align-self: flex-start;
+    margin: 0 5% 24px;
   }
+
   &__sort {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  &__label{
-    font-family: Mont;
-    font-weight: 700;
+  &__label {
+    font-family: Mont, serif;
     font-size: 12px;
+    font-weight: 700;
     line-height: 100%;
-    letter-spacing: 0%;
     color: $secondary-color;
+    letter-spacing: 0%;
   }
-  &__select{
-    border: 1px solid $icons-and-placeholders-color;
-    margin-top: 4px;
+  &__select {
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+
     width: 100%;
     height: 40px;
+    margin-top: 4px;
     padding: 0 12px;
-    background: #fff;
+    border: 1px solid $icons-and-placeholders-color;
+
     color: $secondary-color;
-    cursor: pointer;
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    display: inline-flex;
-    align-items: center;
+    background: #fff;
     &:hover {
       border-color: $secondary-color;
     }
-    &:focus{
+    &:focus {
+      border-color: $primary-color;
       outline: none;
       box-shadow: 0 0 0 3px $hover-and-background-color;
-      border-color: $primary-color;
     }
     option {
       color: $secondary-color;
@@ -77,86 +87,94 @@
     }
     option:checked,
     option:checked:hover {
-      background: $hover-and-background-color;
-      color: #fff;
       font-weight: 700;
+      color: #fff;
+      background: $hover-and-background-color;
     }
   }
-  &__option{
-    font-family: Mont;
-    font-weight: 500;
+  &__option {
+    font-family: Mont, serif;
     font-size: 10px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: $secondary-color;
-  }
-
-  .customSelect{
-    position: relative;
-    width: 100%;
-    margin-top: 4px;
-    font-family: Mont;
-  &__button{
-    width: 100%;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 12px;
-    border: 1px solid $icons-and-placeholders-color;
-    background: $background-color;
-    color: $secondary-color;
-    cursor: pointer;
-
-  &:focus{
-    outline: none;
-    border-color: $hover-and-background-color;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
-  }
-  }
-
-  &__arrow{
-    width: 0;
-    height: 0;
-    margin-left: 10px;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid $icons-and-placeholders-color;
-  }
-  &__list{
-    position: absolute;
-    left: 0;
-    top: calc(100% + 6px);
-    width: 100%;
-    border: 1px solid $icons-and-placeholders-color;
-    background: $background-color;
-    z-index: 20;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-    padding: 8px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: Mont;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-  }
-  &__item{
-    padding: 10px 12px;
-    font-size: 14px;
     line-height: 21px;
     color: $secondary-color;
-    cursor: pointer;
+    letter-spacing: 0%;
   }
-}
+
+  .customSelect {
+    position: relative;
+    width: 176px;
+    margin-top: 4px;
+    font-family: Mont, serif;
+    &__button {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid $icons-and-placeholders-color;
+
+      font-size: 14px;
+      color: $primary-color;
+
+      background: $background-color;
+
+      &:focus {
+        border-color: $hover-and-background-color;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    &__arrow {
+      width: 16px;
+    }
+
+    &__list {
+      position: absolute;
+      z-index: 20;
+      top: calc(100% + 6px);
+      left: 0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      width: 100%;
+      padding: 8px 0;
+      border: 1px solid $icons-and-placeholders-color;
+
+      font-family: Mont, serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      letter-spacing: 0%;
+
+      background: $background-color;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+    &__item {
+      cursor: pointer;
+
+      padding: 10px 12px;
+
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary-color;
+    }
+  }
   .customSelect__item:hover,
-  .is-highlighted{
+  .is-highlighted {
     background: $hover-and-background-color;
   }
-  .is-selected{
-    background: $hover-and-background-color;
-    color: $primary-color;
+  .is-selected {
+    width: 100%;
     font-weight: 700;
+    color: $primary-color;
+    background: $hover-and-background-color;
   }
 }

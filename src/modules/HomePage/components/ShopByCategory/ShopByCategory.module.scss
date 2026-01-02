@@ -9,30 +9,33 @@
 
   &__title {
     align-self: flex-start;
+
     font-family: Mont, sans-serif;
-    font-weight: 800;
     font-size: 32px;
+    font-weight: 800;
     line-height: 41px;
-    letter-spacing: -1%;
     color: $primary-color;
+    letter-spacing: -1%;
   }
   &__categories {
     display: flex;
-    justify-content: center;
     gap: 16px;
+    justify-content: center;
+
     width: 100%;
     margin-top: 24px;
   }
   &__category_card {
+    cursor: pointer;
+
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 4px;
-    cursor: pointer;
+    align-items: flex-start;
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 10px 10px 30px rgba(50, 6, 79, 0.305);
+      box-shadow: 10px 10px 30px rgba(50, 6, 79, 0.30);
       transition: transform 0.5s ease;
     }
 
@@ -42,22 +45,24 @@
     }
     &__title{
       margin-top: 20px;
-      font-family: 'Mont', sans-serif;
-      font-weight: 700;
+
+      font-family: Mont, sans-serif;
       font-size: 20px;
+      font-weight: 700;
       line-height: 26px;
-      letter-spacing: 0%;
       color: $primary-color;
+      letter-spacing: 0%;
     }
 
     &__p {
-      font-family: Mont, sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 21px;
-      letter-spacing: 0%;
-      color: $secondary-color;
       margin-bottom: 4px;
+
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $secondary-color;
+      letter-spacing: 0%;
     }
   }
 }

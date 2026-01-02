@@ -40,6 +40,8 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
     setIndex(prev => Math.max(prev - 1, 0));
   };
 
+  const result = title === 'Hot prices' ? hotPriceProducts : brandNewProducts;
+
   return (
     <>
       <div className={styles.productsslider__header}>
@@ -76,13 +78,9 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
             transform: `translateX(-${index * CARD_WIDTH}px)`,
           }}
         >
-          {title === 'Hot prices'
-            ? hotPriceProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))
-            : brandNewProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          {result.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))}
           <button
             className={styles.productsslider__loadmore}
             onClick={() => navigate('/phones')}

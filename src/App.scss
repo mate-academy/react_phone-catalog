@@ -1,15 +1,19 @@
 // not empty
 @import "tailwindcss";
 @import './utils/vars';
+
 .App {
-  text-align: center;
-  margin: 0;
-  background-color: $background-color;
-  height: 100vh;
-  min-width: 100vh;
   display: flex;
   flex-direction: column;
       justify-content: space-between;
-  font-family: 'Mont', sans-serif;
+
+  min-width: 100vh;
+  height: 100vh;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  text-align: center;
+
+  background-color: $background-color;
 }
 

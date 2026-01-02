@@ -1,5 +1,6 @@
 @import '../../../../utils/vars';
 @import '../../../../utils/mixins';
+
 .container{
   display: flex;
 
@@ -21,14 +22,16 @@
 }
 
 .slideContainer{
-  display: flex;
   position: relative;
+
+  display: flex;
   flex-direction: row;
-  object-fit: cover;
   justify-content: center;
 
+  object-fit: cover;
+
   @include on-phone {
-    margin: 0px;
+    margin: 0;
   }
 
   @include on-desktop {
@@ -39,9 +42,10 @@
 .slideImage{
   width: 1040px;
   height: 400px;
+  margin: 0 16px;
+
   object-fit: cover;
   object-position: top;
-  margin: 0px 16px;
 }
 
 .navButton{
@@ -52,8 +56,9 @@
 .navDots{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   gap: 10px;
+  justify-content: center;
+
   margin-top: 18px;
 }
 
@@ -68,17 +73,21 @@
 }
 
 .orderButton{
+  cursor: pointer;
+
   position: absolute;
-  background-color: transparent;
+    top: 80%;
+    right: 75%;
+      left: 10%;
+
+  padding: 10px 24px;
   border: 1px solid $background-color;
   border-radius: 35px;
-  color: $background-color;
+
   font-size: 16px;
-  padding: 10px 24px;
-  cursor: pointer;
-      left: 10%;
-    right: 75%;
-    top: 80%;
+  color: $background-color;
+
+  background-color: transparent;
 }
 
 .orderButton:hover{
@@ -100,6 +109,7 @@
     );
   animation:slidebg 2s linear infinite;
 }
+
 @keyframes slidebg {
   to {
     background-position:20vw;

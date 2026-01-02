@@ -1,10 +1,12 @@
 @import '../../../utils/vars';
 @import '../../../utils/mixins';
+
 header {
   width: 100%;
   background-color: $background-color;
-  box-shadow: 0px 1px 0px 0px $elements-color;
+  box-shadow: 0 1px 0 0 $elements-color;
 }
+
 .header {
   &__wrapper {
     display: flex;
@@ -13,33 +15,37 @@ header {
     @include on-tablet {
       height: 48px;
     }
+
     @include on-big-desktop {
       height: 64px;
     }
   }
   &__logo {
-    padding: 18px 24px;
     margin-right: 24px;
+    padding: 18px 24px;
 
     @include on-tablet {
-      padding: 13px 16px;
       margin-right: 16px;
+      padding: 13px 16px;
     }
+
     @include on-big-desktop {
-      padding: 18px 24px;
       margin-right: 24px;
+      padding: 18px 24px;
     }
 
     &__img {
-      height: 28px;
       width: 80px;
+      height: 28px;
+
       @include on-tablet {
-        height: 22px;
         width: 64px;
+        height: 22px;
       }
+
       @include on-big-desktop {
-        height: 28px;
         width: 80px;
+        height: 28px;
       }
     }
   }
@@ -50,6 +56,7 @@ header {
     @include on-tablet {
       gap: 32px;
     }
+
     @include on-big-desktop {
       gap: 64px;
     }
@@ -57,19 +64,21 @@ header {
     &__link {
       text-decoration: none;
       &__p{
-        font-family: 'Mont', sans-serif;
-        color: $secondary-color;
-        font-weight: 800;
-        font-size: 12px;
-        line-height: 11px;
         margin-block: 26.5px;
-        letter-spacing: 4%;
+
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 11px;
+        color: $secondary-color;
         text-transform: uppercase;
+        letter-spacing: 4%;
 
         @include on-tablet {
           margin-block: 18.5px;
           padding-bottom: 18.5px;
         }
+
         @include on-big-desktop {
           margin-block: 26.5px;
           padding-bottom: 26.5px;
@@ -78,6 +87,7 @@ header {
       &:hover {
         cursor: pointer;
       }
+
       // &:active {
       //   color: rgb(239, 3, 3);
       //   border-bottom: 3px solid rgb(239, 3, 3);
@@ -86,16 +96,18 @@ header {
 
   }
   &__but {
-    margin-left: auto;
     display: flex;
+    margin-left: auto;
 
     &__link {
       padding: 24px;
       border-top: none;
       border-right: none;
+
       @include on-tablet {
         padding: 16px;
       }
+
       @include on-big-desktop {
         padding: 24px;
       }
@@ -105,10 +117,11 @@ header {
         height: 16px;
       }
       &.active{
-        color: $primary-color;
-        padding-bottom: 26.5px;
         margin-bottom: 0;
+        padding-bottom: 26.5px;
         border-bottom: 3px solid $primary-color;
+        color: $primary-color;
+
         @include on-tablet {
           padding-bottom: 18.5px;
         }
@@ -119,13 +132,15 @@ header {
 
 .active {
   .header__nav__link__p {
-    color: $primary-color;
-    padding-bottom: 26.5px;
     margin-bottom: 0;
+    padding-bottom: 26.5px;
     border-bottom: 3px solid $primary-color;
+    color: $primary-color;
+
     @include on-tablet {
       padding-bottom: 18.5px;
     }
+
     @include on-big-desktop {
       padding-bottom: 26px;
     }

@@ -5,6 +5,11 @@
     "vite.config.mts"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "services/*": ["src/services/*"],
+      "models/*": ["src/models/*"]
+    },
     "sourceMap": false,
     "types": ["node", "cypress"]
   }

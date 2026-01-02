@@ -2,26 +2,26 @@
 @import '../../../utils/mixins';
 
 .productdetailspage {
-  width: 100%;
   display: flex;
+  width: 100%;
   padding-left: 5%;
-  &__backbutton{
+  &__backbutton {
     display: flex;
     align-items: flex-end;
 
-    &__icon{
+    &__icon {
       width: 16px;
       height: 16px;
       margin-right: 8px;
     }
 
-    &__text{
-      font-family: 'Mont';
-      font-weight: 700;
+    &__text {
+      font-family: Mont, serif;
       font-size: 12px;
+      font-weight: 700;
       line-height: 100%;
-      letter-spacing: 0%;
       color: $secondary-color;
+      letter-spacing: 0%;
     }
   }
 }

@@ -96,7 +96,11 @@ export const CustomSelect: React.FC<Props> = ({
         onClick={() => setOpen(s => !s)}
       >
         {options.find(o => o.value === value)?.label}
-        <span className={styles.customSelect__arrow} />
+        <img
+          src="../../../public/img/icons/icon-chevron-arrow-down.png"
+          alt=""
+          className={styles.customSelect__arrow}
+        />
       </button>
       {open && (
         <ul className={styles.customSelect__list} role="listbox" tabIndex={-1}>

@@ -60,7 +60,7 @@
     "start": "mate-scripts start -l",
     "build": "mate-scripts build",
     "test": "mate-scripts test -l",
-    "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
+    "style-format": "npx stylelint \"src/**/*.scss\" --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
     "lint-css": "mate-scripts lint -s",
     "format": "prettier --write './src/**/*.{ts,tsx}'",
