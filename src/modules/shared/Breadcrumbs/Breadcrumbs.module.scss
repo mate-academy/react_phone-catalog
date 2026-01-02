@@ -1,0 +1,27 @@
+@import '../../../utils/vars';
+@import '../../../utils/mixins';
+
+.breadcrumbs{
+  display: flex;
+  align-self: flex-start;
+  margin-left: 5%;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $secondary-color;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+  &__item{
+    &:hover{
+      color: $primary-color;;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+@import '../../../utils/vars';
+@import '../../../utils/mixins';
+footer {
+  width: 100%;
+  background-color: $background-color;
+  box-shadow: 0px 0px 0px 1px $elements-color;
+}
+.footer {
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    @include on-phone {
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include on-tablet {
+      height: 96px;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    @include on-tablet {
+      padding: 32px;
+    }
+
+    @include on-desktop {
+      padding: 32px 152px;
+      padding-right: 0px;
+    }
+
+    &__img {
+      height: 32px;
+      width: 89px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+
+    @include on-phone {
+      align-items: self-start;
+      flex-direction: column;
+    }
+
+    @include on-tablet {
+      gap: 107px;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    &__link {
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      color: $secondary-color;
+
+      &:hover {
+        cursor: pointer;
+      }
+      // &:active {
+      //   color: rgb(239, 3, 3);
+      //   border-bottom: 3px solid rgb(239, 3, 3);
+      // }
+    }
+
+  }
+  &__scroll_top{
+    display: flex;
+    align-items: center;
+    margin-right: 152px;
+    gap: 16px;
+    @include on-tablet {
+      margin-right: 32px;
+    }
+    &__p{
+      color: $secondary-color;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      text-align: right;
+      width: 70px;
+    }
+
+    &__btn {
+      width: 32px;
+      height: 32px;
+      opacity: 1;
+      border-width: 1px;
+      background-color: transparent;
+      border: 1px solid $icons-and-placeholders-color;
+      background-image: url('../public/img/icons/icon-chevron-arrow-black.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(270deg);
+          background-size: 6px;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $primary-color;
+      }
+      &:disabled{
+         background-image: url('../public/img/icons/icon-chevron-arrow-up.png');
+      background-repeat: no-repeat;
+      background-position: center;
+         border: 1px solid $icons-and-placeholders-color;
+        cursor: not-allowed;
+            background-size: 16px;
+            transform: rotate(0deg);
+      }
+    }
+  }
+}

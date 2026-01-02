@@ -1,0 +1,162 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.categoryPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 56px 0 80px;
+
+  &__title{
+    font-family: Mont;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    align-self: flex-start;
+    margin: 40px 5% 8px;
+    color: $primary-color;
+  }
+
+  &__countmodels__p{
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+    align-self: flex-start;
+    margin: 0 5% 40px;
+  }
+  &__filteredmodel {
+    align-self: flex-start;
+    margin: 0 5% 24px;
+    display: flex;
+    gap: 16px;
+  }
+  &__sort {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__label{
+    font-family: Mont;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+  &__select{
+    border: 1px solid $icons-and-placeholders-color;
+    margin-top: 4px;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    background: #fff;
+    color: $secondary-color;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    &:hover {
+      border-color: $secondary-color;
+    }
+    &:focus{
+      outline: none;
+      box-shadow: 0 0 0 3px $hover-and-background-color;
+      border-color: $primary-color;
+    }
+    option {
+      color: $secondary-color;
+      background: #fff;
+    }
+    option:checked,
+    option:checked:hover {
+      background: $hover-and-background-color;
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+  &__option{
+    font-family: Mont;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+
+  .customSelect{
+    position: relative;
+    width: 100%;
+    margin-top: 4px;
+    font-family: Mont;
+  &__button{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border: 1px solid $icons-and-placeholders-color;
+    background: $background-color;
+    color: $secondary-color;
+    cursor: pointer;
+
+  &:focus{
+    outline: none;
+    border-color: $hover-and-background-color;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+  }
+  }
+
+  &__arrow{
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid $icons-and-placeholders-color;
+  }
+  &__list{
+    position: absolute;
+    left: 0;
+    top: calc(100% + 6px);
+    width: 100%;
+    border: 1px solid $icons-and-placeholders-color;
+    background: $background-color;
+    z-index: 20;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: Mont;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+  &__item{
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+    cursor: pointer;
+  }
+}
+  .customSelect__item:hover,
+  .is-highlighted{
+    background: $hover-and-background-color;
+  }
+  .is-selected{
+    background: $hover-and-background-color;
+    color: $primary-color;
+    font-weight: 700;
+  }
+}

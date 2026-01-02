@@ -1,0 +1,27 @@
+@import '../../../utils/vars';
+@import '../../../utils/mixins';
+
+.productdetailspage {
+  width: 100%;
+  display: flex;
+  padding-left: 5%;
+  &__backbutton{
+    display: flex;
+    align-items: flex-end;
+
+    &__icon{
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+
+    &__text{
+      font-family: 'Mont';
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $secondary-color;
+    }
+  }
+}
