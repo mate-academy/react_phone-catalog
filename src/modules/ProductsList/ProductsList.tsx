@@ -2,14 +2,21 @@ import apiProducts from '../../../public/api/products.json';
 import styles from './ProductsList.module.scss';
 import React, { useMemo } from 'react';
 import { ProductCard } from '../shared/ProductCard/ProductCard';
-import { SortValue } from '../../models/sortvalue.model';
+import { SortValue } from 'models/sortvalue.model';
 
 type Props = {
   category: string;
   sort: SortValue;
+  page: number;
+  perPage: string;
 };
 
-export const ProductsList: React.FC<Props> = ({ category, sort }) => {
+export const ProductsList: React.FC<Props> = ({
+  category,
+  sort,
+  page,
+  perPage,
+}) => {
   const visibleProducts = useMemo(() => {
     const filtered = apiProducts.filter(
       product => product.category === category,
@@ -40,8 +47,16 @@ export const ProductsList: React.FC<Props> = ({ category, sort }) => {
       }
     });
 
-    return sorted;
-  }, [category, sort]);
+    if (perPage === 'all') {
+      return sorted;
+    }
+
+    const perPageNumber = Number(perPage);
+    const start = (page - 1) * perPageNumber;
+    const end = start + perPageNumber;
+
+    return sorted.slice(start, end);
+  }, [category, sort, page, perPage]);
 
   return (
     <>

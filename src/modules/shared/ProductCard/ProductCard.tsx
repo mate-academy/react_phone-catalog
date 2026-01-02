@@ -1,7 +1,7 @@
 // тут треба погратись з імпортами в цій структурі
 import React, { useEffect, useState } from 'react';
 import styles from './ProductCard.module.scss';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { ProductType } from 'models/product.model';
 
 const favoriteIcons = '/img/icons/';
@@ -33,12 +33,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     localStorage.setItem(FAV_KEY, String(isFavorite));
   }, [isFavorite, FAV_KEY]);
 
-  const handleAddToCart = (e: MouseEvent) => {
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsAdded(prev => !prev);
   };
 
-  const handleAddToFavorites = (e: MouseEvent) => {
+  const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsFavorite(prev => !prev);
   };

@@ -14,7 +14,7 @@
 
     margin: 40px 5% 8px;
 
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     font-size: 48px;
     font-weight: 800;
     font-style: Bold;
@@ -28,7 +28,7 @@
 
     margin: 0 5% 40px;
 
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -48,7 +48,7 @@
     align-items: flex-start;
   }
   &__label {
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 100%;
@@ -93,7 +93,7 @@
     }
   }
   &__option {
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     font-size: 10px;
     font-weight: 500;
     line-height: 21px;
@@ -105,7 +105,7 @@
     position: relative;
     width: 176px;
     margin-top: 4px;
-    font-family: Mont, serif;
+    font-family: Mont, sans-serif;
     &__button {
       cursor: pointer;
 
@@ -148,7 +148,7 @@
       padding: 8px 0;
       border: 1px solid $icons-and-placeholders-color;
 
-      font-family: Mont, serif;
+      font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;

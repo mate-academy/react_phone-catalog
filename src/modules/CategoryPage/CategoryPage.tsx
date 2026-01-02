@@ -8,6 +8,7 @@ import styles from './CategoryPage.module.scss';
 import { CustomSelect } from './CustomSelect';
 import { useSearchParams } from 'react-router-dom';
 import { SortValue } from 'models/sortvalue.model';
+import { Pagination } from '../shared/Pagination/Pagination';
 
 enum Category {
   phones = 'phones',
@@ -29,8 +30,38 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
 }) => {
   const [countModels, setCountModels] = useState(0);
   // const [sort, setSort] = useState('newest');
-  const [perPage, setPerPage] = useState('16');
+  // const [perPage, setPerPage] = useState('16');
   const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = Number(searchParams.get('page')) || 1;
+  const perPageParam = searchParams.get('perPage') || '16';
+
+  const page = pageParam < 1 ? 1 : pageParam;
+  const perPage = perPageParam;
+  const setPage = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (newPage === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(newPage));
+    }
+
+    setSearchParams(params);
+  };
+
+  const setPerPage = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === 'all') {
+      params.delete('perPage');
+      params.delete('page'); // page скидаємо
+    } else {
+      params.set('perPage', value);
+      params.delete('page');
+    }
+
+    setSearchParams(params);
+  };
 
   const paramSort = searchParams.get('sort');
 
@@ -129,7 +160,20 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
             />
           </div>
         </div>
-        <ProductsList category={category} sort={sort} />
+        <ProductsList
+          category={category}
+          sort={sort}
+          page={page}
+          perPage={perPage}
+        />
+        {perPage !== 'all' && countModels > Number(perPage) && (
+          <Pagination
+            total={countModels}
+            perPage={Number(perPage)}
+            currentPage={page}
+            onPageChange={setPage}
+          />
+        )}
       </div>
       <Footer />
     </>
