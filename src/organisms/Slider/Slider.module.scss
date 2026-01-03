@@ -1,0 +1,70 @@
+.slider {
+  padding-inline: 0;
+  display: grid;
+  grid-template-rows: 33fr 2fr;
+  row-gap: space(2);
+
+  &__insider {
+    grid-column: 1/-1;
+    background-color: aqua;
+
+    @include respond(tablet) {
+      grid-column: 2 / -2;
+      grid-row: 1 / 2;
+    }
+  }
+
+  @include respond (tablet) {
+    @include grid;
+  }
+}
+
+.button__left,
+.button__right {
+  display: none;
+  grid-row: 1 / 2;
+
+  @include respond(tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.button__left {
+  @include respond(tablet) {
+    grid-column: 1 / 2;
+
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.button__right {
+  @include respond(tablet) {
+    grid-column: -2 / -1;
+
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.pagination {
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: space(1);
+
+  &__block {
+    height: calc($space-unit * 6);
+    aspect-ratio: 1 / 1;
+    background-color: aqua;
+  }
+}

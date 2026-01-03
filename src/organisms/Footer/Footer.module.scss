@@ -81,19 +81,19 @@
   &__button {
     width: calc($space-unit * 8);
     aspect-ratio: 1 / 1;
-    background-color: $hover;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     .goUp:hover & {
-      background-color: $elements;
+      background-color: $bg;
+      border-color: $text;
     }
   }
 
   &__icon {
-    fill: $white;
+    fill: $text;
   }
 
   @include respond(tablet) {

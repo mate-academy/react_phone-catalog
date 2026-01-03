@@ -1,7 +1,7 @@
-import Header from '@/organisms/Header/Header';
 import styles from './Layout.module.scss';
 import Aside from '@/molecules/Aside';
 import Footer from '@/organisms/Footer';
+import Header from '@/organisms/Header';
 import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
@@ -16,9 +16,7 @@ const Layout = () => {
       <Header />
       <Aside />
       <div className={styles.borders}>
-        <div className={styles.outlet}>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
       <Footer />
     </div>

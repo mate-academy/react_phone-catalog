@@ -3,7 +3,8 @@ import FooterLinks from '@/molecules/FooterLinks';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 
-import ArrowUpIcon from '@/assets/icons/ArrowUp.svg?react';
+import Chevron from '@/assets/icons/chevron.svg?react';
+import Button from '@/atoms/Button';
 
 const Footer = () => {
   return (
@@ -19,7 +20,9 @@ const Footer = () => {
             Back to top
           </label>
           <Link id="goUp" to="/" className={styles.goUp__button}>
-            <ArrowUpIcon className={styles.goUp__icon} />
+            <Button id='goUp'>
+            <Chevron className={styles.goUp__icon} />
+            </Button>
           </Link>
         </div>
       </div>

@@ -1,0 +1,17 @@
+.button {
+  width: 100%;
+  height: 100%;
+
+  background-color: $hover;
+  border: calc($space-unit / 4) $elements solid;
+
+  svg {
+    fill: $text;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $bg;
+    border-color: $text;
+  }
+}
