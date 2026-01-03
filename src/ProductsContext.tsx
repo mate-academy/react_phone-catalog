@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode } from 'react';
-import { ProductType } from 'models/index';
+import { ProductType } from 'models/product.model';
 
 type ProductsContextType = {
   products: ProductType[];

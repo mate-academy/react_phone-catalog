@@ -7,22 +7,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './CategoryPage.module.scss';
 import { CustomSelect } from './CustomSelect';
 import { useSearchParams } from 'react-router-dom';
-import { SortValue } from 'models/sortvalue.model';
+import { SortValue, sortOptions, SORT_VALUES } from 'models/sortvalue.model';
 import { Pagination } from '../shared/Pagination/Pagination';
-
-enum Category {
-  phones = 'phones',
-  tablets = 'tablets',
-  accessories = 'accessories',
-}
-const SORT_VALUES: SortValue[] = [
-  'newest',
-  'oldest',
-  'alpha-asc',
-  'alpha-desc',
-  'price-low-high',
-  'price-high-low',
-];
 
 export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   category,
@@ -81,20 +67,11 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const getModelsCount = (category: string) => {
-    if (category === Category.phones) {
-      return apiProducts.filter(product => product.category === Category.phones)
-        .length;
-    } else if (category === Category.tablets) {
-      return apiProducts.filter(
-        product => product.category === Category.tablets,
-      ).length;
-    } else if (category === Category.accessories) {
-      return apiProducts.filter(
-        product => product.category === Category.accessories,
-      ).length;
-    } else {
-      return 0;
-    }
+    const filteredItems = apiProducts.filter(
+      product => product.category === category,
+    );
+
+    return filteredItems.length;
   };
 
   useEffect(() => {
@@ -119,7 +96,6 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
         <p className={styles.categoryPage__countmodels__p}>
           {countModels} models
         </p>
-        {/* {зробити СЕЛЕКТИ ХОВЕР ФОКУСИ ТА ЗАВДЯКИ ВІДЕО МЕЙТ ЗРОБИТИ СОРТУВАННЯ} */}
         <div className={styles.categoryPage__filteredmodel}>
           <div className={styles.categoryPage__sort}>
             <label htmlFor="sort" className={styles.categoryPage__label}>
@@ -129,14 +105,7 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
               id="sort"
               value={sort}
               onChange={setSort}
-              options={[
-                { value: 'newest', label: 'Newest' },
-                { value: 'oldest', label: 'Oldest' },
-                { value: 'alpha-asc', label: 'A-Z, alphabet' },
-                { value: 'alpha-desc', label: 'Z-A, alphabet' },
-                { value: 'price-low-high', label: 'Price: Low to High' },
-                { value: 'price-high-low', label: 'Price: High to Low' },
-              ]}
+              options={sortOptions}
               ariaLabel="Sort products"
             />
           </div>

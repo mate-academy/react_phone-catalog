@@ -1,6 +1,5 @@
 // not empty
-@import "tailwindcss";
-@import './utils/vars';
+@use './utils/vars' as *;
 
 .App {
   display: flex;

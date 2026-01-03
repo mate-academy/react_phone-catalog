@@ -1,7 +1,7 @@
-@import '../../../utils/vars';
-@import '../../../utils/mixins';
+@use '../../../utils/vars' as *;
+@use '../../../utils/mixins' as *;
 
-.breadcrumbs{
+.breadcrumbs {
   display: flex;
   align-self: flex-start;
   margin-left: 5%;
@@ -20,9 +20,9 @@
     width: 16px;
     height: 16px;
   }
-  &__item{
-    &:hover{
-      color: $primary-color;;
+  &__item {
+    &:hover {
+      color: $primary-color;
     }
   }
 }

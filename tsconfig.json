@@ -9,7 +9,7 @@
     "paths": {
       "models/*": ["src/models/*"],
       "services/*": ["src/services/*"],
-      "shared/*": ["src/modules/shared/*"],
+      "shared/*": ["src/modules/shared/*"]
     },
     "sourceMap": false,
     "types": ["node", "cypress"]

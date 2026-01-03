@@ -1,5 +1,5 @@
-@import '../../../utils/vars';
-@import '../../../utils/mixins';
+@use '../../../utils/vars' as *;
+@use '../../../utils/mixins' as *;
 
 header {
   width: 100%;
@@ -63,7 +63,7 @@ header {
 
     &__link {
       text-decoration: none;
-      &__p{
+      &__p {
         margin-block: 26.5px;
 
         font-family: Mont, sans-serif;
@@ -93,7 +93,6 @@ header {
       //   border-bottom: 3px solid rgb(239, 3, 3);
       // }
     }
-
   }
   &__but {
     display: flex;
@@ -116,7 +115,7 @@ header {
         width: 16px;
         height: 16px;
       }
-      &.active{
+      &.active {
         margin-bottom: 0;
         padding-bottom: 26.5px;
         border-bottom: 3px solid $primary-color;

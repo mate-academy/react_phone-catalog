@@ -1,7 +1,7 @@
-@import '../../../../utils/vars';
-@import '../../../../utils/mixins';
+@use '../../../../utils/vars' as *;
+@use '../../../../utils/mixins' as *;
 
-.shopbycategory{
+.shopbycategory {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -35,7 +35,7 @@
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 10px 10px 30px rgba(50, 6, 79, 0.30);
+      box-shadow: 10px 10px 30px rgba(50, 6, 79, 0.3);
       transition: transform 0.5s ease;
     }
 
@@ -43,7 +43,7 @@
       width: 368px;
       height: auto;
     }
-    &__title{
+    &__title {
       margin-top: 20px;
 
       font-family: Mont, sans-serif;

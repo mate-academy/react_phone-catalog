@@ -1,7 +1,7 @@
-@import '../../../../utils/vars';
-@import '../../../../utils/mixins';
+@use '../../../../utils/vars' as *;
+@use '../../../../utils/mixins' as *;
 
-.container{
+.container {
   display: flex;
 
   @include on-phone {
@@ -21,7 +21,7 @@
   }
 }
 
-.slideContainer{
+.slideContainer {
   position: relative;
 
   display: flex;
@@ -39,7 +39,7 @@
   }
 }
 
-.slideImage{
+.slideImage {
   width: 1040px;
   height: 400px;
   margin: 0 16px;
@@ -48,12 +48,12 @@
   object-position: top;
 }
 
-.navButton{
+.navButton {
   width: 32px;
   border: 1px solid $icons-and-placeholders-color;
 }
 
-.navDots{
+.navDots {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -65,20 +65,20 @@
 .navDot {
   width: 14px;
   height: 4px;
-  background-color: $icons-and-placeholders-color
+  background-color: $icons-and-placeholders-color;
 }
 
 .activeDot {
   background-color: $primary-color;
 }
 
-.orderButton{
+.orderButton {
   cursor: pointer;
 
   position: absolute;
-    top: 80%;
-    right: 75%;
-      left: 10%;
+  top: 80%;
+  right: 75%;
+  left: 10%;
 
   padding: 10px 24px;
   border: 1px solid $background-color;
@@ -90,29 +90,28 @@
   background-color: transparent;
 }
 
-.orderButton:hover{
-  background-image:     linear-gradient(
-      to right,
-      #E7484F,
-      #E7484F 16.65%,
-      #F68B1D 16.65%,
-      #F68B1D 33.3%,
-      #FCED00 33.3%,
-      #FCED00 49.95%,
-      #009E4F 49.95%,
-      #009E4F 66.6%,
-      #00AAC3 66.6%,
-      #00AAC3 83.25%,
-      #732982 83.25%,
-      #732982 100%,
-      #E7484F 100%
-    );
-  animation:slidebg 2s linear infinite;
+.orderButton:hover {
+  background-image: linear-gradient(
+    to right,
+    #e7484f,
+    #e7484f 16.65%,
+    #f68b1d 16.65%,
+    #f68b1d 33.3%,
+    #fced00 33.3%,
+    #fced00 49.95%,
+    #009e4f 49.95%,
+    #009e4f 66.6%,
+    #00aac3 66.6%,
+    #00aac3 83.25%,
+    #732982 83.25%,
+    #732982 100%,
+    #e7484f 100%
+  );
+  animation: slidebg 2s linear infinite;
 }
 
 @keyframes slidebg {
   to {
-    background-position:20vw;
+    background-position: 20vw;
   }
 }
-

@@ -1,5 +1,5 @@
-@import '../../../utils/vars';
-@import '../../../utils/mixins';
+@use '../../../utils/vars' as *;
+@use '../../../utils/mixins' as *;
 
 .pagination {
   display: flex;
@@ -8,39 +8,39 @@
 
   margin-top: 40px;
 
-&__page,
-&__arrow {
-  width: 32px;
-  height: 32px;
-  border: 1px solid $elements-color;
-  cursor: pointer;
+  &__page,
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-color;
+    cursor: pointer;
 
-  color: $primary-color;
+    color: $primary-color;
 
-  font-size: 14px;
+    font-size: 14px;
 
-  &_img{
-    padding: 8px;
+    &_img {
+      padding: 8px;
+    }
   }
-}
 
-&__page_active {
-  font-family: Mont, serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0%;
-  text-align: center;
+  &__page_active {
+    font-family: Mont, serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
 
-  color: $background-color;
-  border-color: $primary-color;
-  background-color: $primary-color;
-}
+    color: $background-color;
+    border-color: $primary-color;
+    background-color: $primary-color;
+  }
 
-&__arrow:disabled {
-  cursor: default;
-  opacity: 0.4;
-}
+  &__arrow:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
 }
 
 .pagination__page:hover:not(.pagination__page_active),

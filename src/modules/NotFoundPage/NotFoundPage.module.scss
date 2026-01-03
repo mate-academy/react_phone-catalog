@@ -1,5 +1,5 @@
-@import '../../utils/vars';
-@import '../../utils/mixins';
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
 
 .notfoundpage {
   display: flex;
