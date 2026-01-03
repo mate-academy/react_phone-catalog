@@ -8,8 +8,8 @@
   justify-content: space-between;
 
   max-width: 272px;
-  height: 506px;
-  padding: 24px;
+  max-height: 506px;
+  padding: 32px;
   border: 1px solid $elements-color;
 
   text-align: center;
@@ -26,17 +26,17 @@
 
     width: 208px;
     height: 196px;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
 
     object-fit: contain;
   }
 
   &__title {
-    margin-bottom: 8px;
+    margin: 16px 0 8px;
 
     font-family: Mont, sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 21px;
     color: $primary-color;
     text-align: left;
@@ -49,6 +49,8 @@
     align-items: center;
 
     &_full {
+      margin: 0;
+
       font-family: Mont, sans-serif;
       font-size: 22px;
       font-weight: 600;
@@ -59,6 +61,8 @@
     }
 
     &_disconout {
+      margin: 0;
+
       font-family: Mont, sans-serif;
       font-size: 22px;
       font-weight: 800;
@@ -121,13 +125,14 @@
       background-color: $primary-color;
 
       &_is-active {
+        border: 1px solid $icons-and-placeholders-color;
         color: $product-card-font-button-color;
         background-color: $background-color;
-        border: 1px solid $icons-and-placeholders-color;
       }
     }
 
     &_like {
+      height: 40px;
       padding: 12px;
       border: 1px solid $icons-and-placeholders-color;
       background-color: $background-color;

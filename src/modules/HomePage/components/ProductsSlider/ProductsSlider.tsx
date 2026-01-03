@@ -17,7 +17,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
-  const maxIndex = apiProducts.slice(0, 10).length - VISIBLE_CARDS;
+  const maxIndex = apiProducts.slice(0, 10).length - VISIBLE_CARDS + 1;
 
   const hotPriceProducts = [...apiProducts]
     .sort((a, b) => {

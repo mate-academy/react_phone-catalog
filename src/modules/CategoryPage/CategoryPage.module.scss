@@ -7,7 +7,7 @@
   align-items: center;
 
   width: 100%;
-  margin: 56px 0 80px;
+  margin: 24px 0 80px;
 
   &__title {
     align-self: flex-start;
@@ -100,8 +100,9 @@
     color: $secondary-color;
     letter-spacing: 0%;
   }
+}
 
-  .customSelect {
+.customSelect {
     position: relative;
     width: 176px;
     margin-top: 4px;
@@ -138,13 +139,13 @@
       position: absolute;
       z-index: 20;
       top: calc(100% + 6px);
-      left: 0;
 
       display: flex;
       flex-direction: column;
       align-items: flex-start;
 
       width: 100%;
+      margin: 0;
       padding: 8px 0;
       border: 1px solid $icons-and-placeholders-color;
 
@@ -153,6 +154,7 @@
       font-weight: 500;
       line-height: 21px;
       letter-spacing: 0%;
+      list-style: none;
 
       background: $background-color;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
@@ -160,21 +162,22 @@
     &__item {
       cursor: pointer;
 
-      padding: 10px 12px;
+      padding: 6px 12px;
 
       font-size: 14px;
       line-height: 21px;
       color: $secondary-color;
     }
   }
+
   .customSelect__item:hover,
   .is-highlighted {
     background: $hover-and-background-color;
   }
+
   .is-selected {
-    width: 100%;
+    width: -webkit-fill-available;
     font-weight: 700;
     color: $primary-color;
     background: $hover-and-background-color;
   }
-}
