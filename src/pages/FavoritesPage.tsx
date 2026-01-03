@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import accessoriesFromServer from '../../public/api/products.json';
 
 import '../components/Catalog/Catalog.scss';
-import { ProductType } from '../types/Product';
+import { ProductAllType, ProductType } from '../types/Product';
 import { Breadcrumbs } from '../components/Catalog/Breadcrumbs';
 import { ProductCard } from '../components/ProductCard';
 import { useProducts } from '../context/ProductsContext';
@@ -12,7 +12,7 @@ export const FavoritesPage = () => {
   const { productsAll } = useProducts();
   const { favoriteItems } = useCartFavorite();
 
-  const products: ProductType[] = useMemo(() => {
+  const products: ProductAllType[] = useMemo(() => {
     return productsAll
       .filter(product => product.category === 'accessories')
       .splice(0, 8);

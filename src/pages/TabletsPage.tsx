@@ -4,12 +4,12 @@ import '../components/Catalog/Catalog.scss';
 
 import { Catalog } from '../components/Catalog';
 import { useProducts } from '../context/ProductsContext';
-import { ProductType } from '../types/Product';
+import { ProductAllType, ProductType } from '../types/Product';
 
 export const TabletsPage = () => {
   const { productsAll } = useProducts();
 
-  const products: ProductType[] = useMemo(() => {
+  const products: ProductAllType[] = useMemo(() => {
     return productsAll.filter(product => product.category === 'tablets');
   }, []);
 

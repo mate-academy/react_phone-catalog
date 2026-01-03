@@ -1,46 +1,85 @@
-import React, { FC } from 'react';
+import React, { Dispatch, FC, SetStateAction, useState } from 'react';
 import { createContext, useContext } from 'react';
 
-import phones from '../../public/api/phones.json';
-import tablets from '../../public/api/tablets.json';
-import accessories from '../../public/api/accessories.json';
-import productsAll from '../../public/api/products.json';
-import { ProductType } from '../types/Product';
+import {
+  ProductAllType,
+  ProductType,
+  ProductTypeForAccessory,
+} from '../types/Product';
+import { nameProducts } from '../types/NameProducts';
 
 type Props = {
   children: React.ReactNode;
 };
 
-const ProductsContext = createContext({
-  phones: [] as typeof phones,
-  tablets: [] as typeof tablets,
-  accessories: [] as typeof accessories,
-  productsAll: [] as typeof productsAll,
-  findNessesaryItem: (category: string, itemId: string) => {},
-});
+type CombinedProductType =
+  | ProductType
+  | ProductTypeForAccessory
+  | ProductAllType;
 
-type ProductCategory = 'phones' | 'tablets' | 'accessories';
-
-const findNessesaryItem = (category: ProductCategory, itemId: string) => {
-  switch (category) {
-    case 'phones':
-      return phones.find(item => item.id === itemId)!;
-    case 'tablets':
-      return tablets.find(item => item.id === itemId)!;
-    case 'accessories':
-      return accessories.find(item => item.id === itemId)!;
-    default:
-      throw new Error('Unknown category');
-  }
+type ProductsContextType = {
+  phones: ProductType[];
+  tablets: ProductType[];
+  accessories: ProductTypeForAccessory[];
+  productsAll: ProductAllType[];
+  addToDB: (params: nameProducts, data: CombinedProductType[]) => void;
 };
 
+const ProductsContext = createContext<ProductsContextType>({
+  phones: [],
+  tablets: [],
+  accessories: [],
+  productsAll: [],
+  addToDB: () => {},
+});
+
+// type ProductCategory = 'phones' | 'tablets' | 'accessories';
+
 export const ProductsProvider: FC<Props> = ({ children }) => {
+  const [phones, setPhones] = useState<ProductType[]>([]);
+  const [tablets, setTablets] = useState<ProductType[]>([]);
+  const [accessories, setAccessories] = useState<ProductTypeForAccessory[]>([]);
+  const [productsAll, setProductsAll] = useState<ProductAllType[]>([]);
+
+  function addToDB(params: nameProducts, data: CombinedProductType[]) {
+    switch (params) {
+      case 'phones':
+        setPhones(data as ProductType[]);
+        return;
+      case 'tablets':
+        setTablets(data as ProductType[]);
+        return;
+      case 'accessories':
+        setAccessories(data as ProductTypeForAccessory[]);
+        return;
+      case 'allProducts':
+        setProductsAll(data as ProductAllType[]);
+        return;
+      default:
+        return;
+    }
+  }
+
+  function findNessesaryItem(category: nameProducts, itemId: string) {
+    switch (category) {
+      case 'phones':
+        return phones.find(item => item.id === itemId)!;
+      case 'tablets':
+        return tablets.find(item => item.id === itemId)!;
+      case 'accessories':
+        return accessories.find(item => item.id === itemId)!;
+      default:
+        return undefined;
+    }
+  }
+
   const value = {
     phones,
     tablets,
     accessories,
     productsAll,
-    findNessesaryItem: () => {},
+    addToDB,
+    findNessesaryItem,
   };
 
   return (

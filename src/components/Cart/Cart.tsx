@@ -9,6 +9,9 @@ import { ProductType } from '../../types/Product';
 export const Cart = () => {
   const { cartItems } = useCartFavorite();
 
+
+
+
   return (
     <section className="cart">
       <div className="container cart__container">

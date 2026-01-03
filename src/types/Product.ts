@@ -1,18 +1,3 @@
-// export interface Product {
-//   id: number;
-//   category: string;
-//   itemId: string;
-//   name: string;
-//   fullPrice: number;
-//   price: number;
-//   screen: string;
-//   capacity: string;
-//   color: string;
-//   ram: string;
-//   year: number;
-//   image: string;
-// }
-
 export interface ProductType {
   id: string;
   category: string;
@@ -37,6 +22,8 @@ export interface ProductType {
   zoom: string;
   cell: string[];
 }
+
+export type ProductTypeForAccessory = Omit<ProductType, 'camera' | 'zoom'>;
 
 export interface ProductAllType {
   id: number;
