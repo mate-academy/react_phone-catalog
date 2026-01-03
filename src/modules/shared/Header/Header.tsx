@@ -1,10 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './Header.module.scss';
-import iconCart from '../../../../public/img/icons/icon-shopping-bag-cart.png';
+import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
 // eslint-disable-next-line max-len
-import iconFavorite from '../../../../public/img/icons/icon-favourites-heart-like.png';
-import iconLogo from '../../../../public/img/icons/icon-logo.png';
+import iconFavorite from 'public/img/icons/icon-favourites-heart-like.png';
+import iconLogo from 'public/img/icons/icon-logo.png';
 import { Link, NavLink } from 'react-router-dom';
 
 export const Header: React.FC = () => {

@@ -8,6 +8,7 @@
     "baseUrl": ".",
     "paths": {
       "models/*": ["src/models/*"],
+      "public/*": ["public/*"],
       "services/*": ["src/services/*"],
       "shared/*": ["src/modules/shared/*"]
     },

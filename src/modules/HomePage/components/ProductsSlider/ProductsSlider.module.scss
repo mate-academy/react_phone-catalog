@@ -2,12 +2,10 @@
 @use '../../../../utils/mixins' as *;
 
 .productsslider {
+  position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
   justify-content: center;
-
+  
   width: 100%;
 
   &__header {
@@ -15,7 +13,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     margin-bottom: 28px;
   }
@@ -59,7 +56,6 @@
   &__track {
     display: flex;
     gap: 16px;
-    margin-left: 18%;
     transition: transform 0.3s ease;
   }
   &__loadmore {

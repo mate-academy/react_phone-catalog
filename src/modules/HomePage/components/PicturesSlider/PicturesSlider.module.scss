@@ -51,6 +51,7 @@
 .navButton {
   width: 32px;
   border: 1px solid $icons-and-placeholders-color;
+  background-color: $background-color;
 }
 
 .navDots {
@@ -60,15 +61,19 @@
   justify-content: center;
 
   margin-top: 18px;
+  
+  color: $primary-color;
 }
 
 .navDot {
   width: 14px;
   height: 4px;
-  background-color: $icons-and-placeholders-color;
+  border: 1px solid $elements-color;
+  background-color: $elements-color;
 }
 
 .activeDot {
+  border: 1px solid $primary-color;
   background-color: $primary-color;
 }
 
