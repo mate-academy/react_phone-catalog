@@ -1,0 +1,17 @@
+@use '/src/style/mixins' as *;
+
+.model-info {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-desktop {
+    & {
+      flex-direction: row;
+      gap: 64px;
+    }
+    & > * {
+      width: 50%;
+    }
+  }
+}

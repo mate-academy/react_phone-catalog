@@ -1,0 +1,13 @@
+.characteristic {
+  width: 100%;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__value {
+    font-size: 12px;
+    line-height: 100%;
+    font-weight: 500;
+  }
+}
