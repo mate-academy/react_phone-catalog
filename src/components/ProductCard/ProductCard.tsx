@@ -3,15 +3,21 @@ import React, { FC, useState } from 'react';
 import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
 
 import './ProductCard.scss';
-import { ProductAllType, ProductType } from '../../types/Product';
+import {
+  ProductAllType,
+  ProductType,
+  ProductTypeForAccessory,
+} from '../../types/Product';
 import classNames from 'classnames';
 import { ProductCardButtons } from './ProductCardButtons';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 import { useProducts } from '../../context/ProductsContext';
+import { NameProducts } from '../../types/NameProducts';
 
 type Props = {
-  product: ProductType;
+  product: ProductAllType;
 };
+type CategoryTypeWithoutAllprod = Exclude<NameProducts, 'allProducts'>;
 
 export const ProductCard: FC<Props> = ({ product }) => {
   const {
@@ -30,7 +36,10 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const { findNessesaryItem } = useProducts();
 
   const toogleAddToCart = () => {
-    const detailedProduct = findNessesaryItem(category, itemId);
+    const detailedProduct = findNessesaryItem(
+      category as CategoryTypeWithoutAllprod,
+      itemId,
+    ) as ProductType;
     if (detailedProduct !== undefined) {
       addToCart(detailedProduct);
     }

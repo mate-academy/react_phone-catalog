@@ -7,9 +7,9 @@ import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
 import productsAll from '../../public/api/products.json';
-import { nameProducts } from '../types/NameProducts';
+import { NameProducts } from '../types/NameProducts';
 
-const getProducts = async (param: nameProducts) => {
+const getProducts = async (param: NameProducts) => {
   return new Promise<
     ProductType[] | ProductTypeForAccessory[] | ProductAllType[]
   >((resolve, reject) => {

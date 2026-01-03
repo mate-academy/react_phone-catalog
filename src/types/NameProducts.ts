@@ -1,1 +1,1 @@
-export type nameProducts = 'phones' | 'tablets' | 'accessories' | 'allProducts';
+export type NameProducts = 'phones' | 'tablets' | 'accessories' | 'allProducts';

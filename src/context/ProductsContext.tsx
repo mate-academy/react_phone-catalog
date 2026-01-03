@@ -6,7 +6,7 @@ import {
   ProductType,
   ProductTypeForAccessory,
 } from '../types/Product';
-import { nameProducts } from '../types/NameProducts';
+import { NameProducts } from '../types/NameProducts';
 
 type Props = {
   children: React.ReactNode;
@@ -22,7 +22,11 @@ type ProductsContextType = {
   tablets: ProductType[];
   accessories: ProductTypeForAccessory[];
   productsAll: ProductAllType[];
-  addToDB: (params: nameProducts, data: CombinedProductType[]) => void;
+  addToDB: (params: NameProducts, data: CombinedProductType[]) => void;
+  findNessesaryItem: (
+    category: NameProducts,
+    itemId: string,
+  ) => CombinedProductType | undefined;
 };
 
 const ProductsContext = createContext<ProductsContextType>({
@@ -31,6 +35,7 @@ const ProductsContext = createContext<ProductsContextType>({
   accessories: [],
   productsAll: [],
   addToDB: () => {},
+  findNessesaryItem: () => undefined,
 });
 
 // type ProductCategory = 'phones' | 'tablets' | 'accessories';
@@ -41,7 +46,7 @@ export const ProductsProvider: FC<Props> = ({ children }) => {
   const [accessories, setAccessories] = useState<ProductTypeForAccessory[]>([]);
   const [productsAll, setProductsAll] = useState<ProductAllType[]>([]);
 
-  function addToDB(params: nameProducts, data: CombinedProductType[]) {
+  function addToDB(params: NameProducts, data: CombinedProductType[]) {
     switch (params) {
       case 'phones':
         setPhones(data as ProductType[]);
@@ -60,7 +65,7 @@ export const ProductsProvider: FC<Props> = ({ children }) => {
     }
   }
 
-  function findNessesaryItem(category: nameProducts, itemId: string) {
+  function findNessesaryItem(category: NameProducts, itemId: string) {
     switch (category) {
       case 'phones':
         return phones.find(item => item.id === itemId)!;
