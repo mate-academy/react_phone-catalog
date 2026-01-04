@@ -111,7 +111,10 @@ export const ProductsCategory: React.FC<Props> = ({ products, title, categoryNam
     <div className={styles.products_category__container}>
       <div className={styles.products_category__top_bar}>
         <div className={styles.products_category__top_bar__path}>
-          <img src={HomeIcon} alt="Home page" className={styles.products_category__top_bar__path__icon} />
+          <NavLink to="/">
+            <img src={HomeIcon} alt="Home page" className={styles.products_category__top_bar__path__icon} />
+          </NavLink>
+
           <img src={RightArrow} alt="Next" className={styles.products_category__top_bar__path__arrow} />
           <p className={styles.products_category__top_bar__path__text}>{categoryName}</p>
         </div>

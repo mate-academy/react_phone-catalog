@@ -1,20 +1,18 @@
 @import '../../styles/mixins.scss';
 
 .item_page {
-  justify-self: center;
-  align-self: center;
-
   &__container {
     padding-inline: 152px;
     color: $main-text-color;
+    margin: 0 auto;
 
     @include for-tablet {
-        padding-inline: 32px;
-      }
+      padding-inline: 32px;
+    }
 
-      @include for-mobile {
-        padding-inline: 24px;
-      }
+    @include for-mobile {
+      padding-inline: 24px;
+    }
   }
 
   &__path {
@@ -26,7 +24,17 @@
     font-weight: 700;
     font-size: 12px;
 
-    p {
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__link {
+      text-decoration: none;
+      color: $main-text-color;
+    }
+
+    &__text {
       margin: 0;
     }
 
@@ -46,7 +54,6 @@
     &__icon {
       width: 16px;
       height: 16px;
-      ;
     }
 
     &__text {
@@ -91,6 +98,13 @@
           width: 80px;
           height: 80px;
           overflow: hidden;
+          border: 1px solid $button-border-disabled;
+          cursor: pointer;
+          transition: border-color 0.3s ease;
+
+          &--active {
+            border-color: $main-text-color;
+          }
 
           &__img {
             width: 100%;
@@ -131,32 +145,32 @@
         border-bottom: 1px solid $button-border-disabled;
 
         &__container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: border-color 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          transition: border-color 0.2s;
 
-            &--active {
-              border-color: $main-text-color;
-            }
+          &--active {
+            border-color: $main-text-color;
           }
+        }
 
-          &__option {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            padding: 0;
+        &__option {
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          padding: 0;
 
-            &:hover {
-              transform: scale(1.1);
-            }
+          &:hover {
+            transform: scale(1.1);
           }
+        }
       }
 
       &__capacity {

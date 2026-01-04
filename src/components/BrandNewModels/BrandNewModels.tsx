@@ -6,7 +6,8 @@ import { Product, ProductSlider } from '../ProductSlider/ProductSlider';
 const sortedByYear = [...products]
   .filter(product => product.capacity === '256GB')
   .sort((a, b) => b.year - a.year)
-  .splice(0, 12);
+  .slice(0, 12)
+  .map(({ fullPrice, ...rest}) => rest);
 
 const formattedNewModels: Product[] = sortedByYear.map((item) => ({
   ...item,

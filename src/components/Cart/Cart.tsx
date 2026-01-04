@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState } from "react";
 import styles from './Cart.module.scss';
 import { useNavigate } from "react-router-dom";
 import BackArrow from '../../icons/arrows/Active_left.png'
@@ -19,6 +19,16 @@ export const Cart: React.FC = () => {
     const product = products.find(p => p.itemId === item.id);
     return acc + (product?.price || 0) * item.quantity;
   }, 0);
+
+  const [isCheckoutMessageVisible, setIsCheckoutMessageVisible] = useState(false);
+
+  const handleCheckout = () => {
+    setIsCheckoutMessageVisible(true);
+
+    setTimeout(() => {
+      setIsCheckoutMessageVisible(false)
+    }, 3000);
+  };
 
   return (
     <div className={styles.cart}>
@@ -95,7 +105,13 @@ export const Cart: React.FC = () => {
             <div className={styles.cart__checkout__container}>
               <p className={styles.cart__checkout__price}>${totalCost}</p>
               <p className={styles.cart__checkout__total}>Total for {totalItems} items</p>
-              <button className={styles.cart__checkout__button}>Checkout</button>
+              <button className={styles.cart__checkout__button} onClick={handleCheckout}>Checkout</button>
+
+              {isCheckoutMessageVisible && (
+                <div className={styles.cart__checkout__message}>
+                  <p>We are sorry, but this feature is not implemented yet.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

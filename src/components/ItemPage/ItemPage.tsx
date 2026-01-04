@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { NotFoundProduct } from '../NotFoundProduct/NotFoundProduct';
 import styles from './ItemPage.module.scss';
 import HomeIcon from '../../icons/home_icon.png';
@@ -54,7 +54,7 @@ const COLOR_MAP: Record<string, string> = {
   rosegold: '#fad7bd',
 };
 
-export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
+export const ItemPage: React.FC<Props> = ({ categoryName, items }) => {
   const navigate = useNavigate();
 
   const { itemId } = useParams<{ itemId: string }>();
@@ -85,23 +85,35 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
     }
   }
 
-  const [gallery, setGallery] = useState<string[]>([]);
+  // const [gallery, setGallery] = useState<string[]>([]);
+
+  // useEffect(() => {
+  //   if (item) {
+  //     setGallery(item.images);
+  //   }
+  // }, [item]);
+
+  // const handleImageSwap = (clickedIndex: number) => {
+  //   if (clickedIndex === 0) return;
+
+  //   const newGallery = [...gallery];
+  //   const temp = newGallery[0];
+  //   newGallery[0] = newGallery[clickedIndex];
+  //   newGallery[clickedIndex] = temp;
+
+  //   setGallery(newGallery);
+  // };
+
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const itemImages = item?.images || [];
 
   useEffect(() => {
-    if (item) {
-      setGallery(item.images);
-    }
-  }, [item]);
+    setSelectedImageIndex(0);
+  }, [itemId]);
 
-  const handleImageSwap = (clickedIndex: number) => {
-    if (clickedIndex === 0) return;
-
-    const newGallery = [...gallery];
-    const temp = newGallery[0];
-    newGallery[0] = newGallery[clickedIndex];
-    newGallery[clickedIndex] = temp;
-
-    setGallery(newGallery);
+  const handleImageSwap = (index: number) => {
+    setSelectedImageIndex(index);
   };
 
   const youMayAlsoLike = items
@@ -124,9 +136,15 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
     <div className={styles.item_page}>
       <div className={styles.item_page__container}>
         <div className={styles.item_page__path}>
-          <img src={HomeIcon} alt="Home page" className={styles.item_page__path__icon} />
+          <NavLink to="/">
+            <img src={HomeIcon} alt="Home page" className={styles.item_page__path__icon} />
+          </NavLink>
+
           <img src={RightArrow} alt="Next" className={styles.item_page__path__arrow} />
-          <p className={styles.item_page__path__text}>{categoryName}</p>
+          <NavLink to={`/${categoryName}`} className={styles.item_page__path__link}>
+            <p className={styles.item_page__path__text}>{categoryName}</p>
+          </NavLink>
+
           <img src={RightArrow} alt="Next" className={styles.item_page__path__arrow} />
           <p className={styles.item_page__path__name}>{item.name}</p>
         </div>
@@ -141,11 +159,14 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
         <div className={styles.item_page__main_info}>
           <div className={styles.item_page__main_info__images}>
             <div className={styles.item_page__main_info__images__side}>
-              {gallery.slice(1).map((img, index) => (
+              {itemImages.map((img, index) => (
                 <div
                   key={img}
-                  className={styles.item_page__main_info__images__side__image}
-                  onClick={() => handleImageSwap(index + 1)}
+                  className={`${styles.item_page__main_info__images__side__image} ${selectedImageIndex === index
+                    ? styles['item_page__main_info__images__side__image--active']
+                    : ''
+                    }`}
+                  onClick={() => handleImageSwap(index)}
                 >
                   <img
                     src={img}
@@ -157,7 +178,7 @@ export const ItemPage: React.FC<Props> = ({ categoryName, items}) => {
             </div>
             <div className={styles.item_page__main_info__images__main_image}>
               <img
-                src={gallery[0]}
+                src={itemImages[selectedImageIndex]}
                 alt="Main product photo"
                 className={styles.item_page__main_info__images__main_image__img}
               />

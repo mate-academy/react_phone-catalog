@@ -17,6 +17,8 @@ export const Header: React.FC = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -92,7 +94,7 @@ export const Header: React.FC = () => {
                   />
                   {cartItems.length > 0 && (
                     <div className={styles.header__icons__amount}>
-                      {cartItems.length}
+                      {totalItems}
                     </div>
                   )}
                 </div>

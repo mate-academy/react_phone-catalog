@@ -12,7 +12,7 @@ export interface Product {
   id: number | string;
   name: string;
   price: number;
-  fullPrice: number;
+  fullPrice?: number;
   image: string;
   screen: string;
   capacity: string;
@@ -34,7 +34,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         setCardsToShow(1);
       } else if (window.innerWidth < 1200) {
         setCardsToShow(3);
-      }  else {
+      } else {
         setCardsToShow(4);
       }
     };
@@ -46,23 +46,33 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   // const VISIBLE_COUNT = 4;
 
   const [startIndex, setStartIndex] = useState(0);
-  const maxIndex = products.length;
+  // const maxIndex = products.length;
 
-  const visibleProducts = products.slice(
-    startIndex,
-    startIndex + cardsToShow,
-  );
+  // const visibleProducts = products.slice(
+  //   startIndex,
+  //   startIndex + cardsToShow,
+  // );
 
   const handleLeftButton = () => {
     setStartIndex(prev => prev - 1);
   };
 
   const handleRightButton = () => {
-    setStartIndex(prev => prev + 1);
+    setStartIndex(prev => Math.min(prev + 1, maxStartIndex));
   };
 
   const isLeftDisabled = startIndex === 0;
-  const isRightDisabled = startIndex === maxIndex - cardsToShow;
+  const maxStartIndex = Math.max(0, products.length - cardsToShow);
+  const isRightDisabled = startIndex >= maxStartIndex;
+
+  useEffect(() => {
+    if (startIndex > maxStartIndex) {
+      setStartIndex(maxStartIndex);
+    }
+  }, [cardsToShow, maxStartIndex, startIndex]);
+
+  const step = 288;
+  const translateX = startIndex * step;
 
   return (
     <div className={styles.product_slider}>
@@ -94,45 +104,46 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         </div>
       </div>
 
-      <div className={styles.product_slider__container}>
-        {visibleProducts.map(item => (
-          <div key={item.id} className={styles.product_slider__item}>
-            <div className={styles.product_slider__item__container}>
-              <Link to={`/${item.category}/${item.id}`} className={styles.product_slider__link}>
-                <img
-                  src={item.image}
-                  alt='Item Main Image'
-                  className={styles.product_slider__item__img}
-                />
-                <p className={styles.product_slider__item__name}>{item.name}</p>
-                <div className={styles.product_slider__item__price__container}>
-                  <h4 className={styles.product_slider__item__price__container__main_price}>${item.price}</h4>
-                  <p className={styles.product_slider__item__price__container__full_price}>${item.fullPrice}</p>
-                </div>
-                <div className={styles.product_slider__item__description}>
-                  <p className={styles.product_slider__item__description__key}>Screen:</p>
-                  <p className={styles.product_slider__item__description__value}>{item.screen}</p>
-                </div>
-                <div className={styles.product_slider__item__description}>
-                  <p className={styles.product_slider__item__description__key}>Capacity:</p>
-                  <p className={styles.product_slider__item__description__value}>{item.capacity}</p>
-                </div>
-                <div className={styles.product_slider__item__description}>
-                  <p className={styles.product_slider__item__description__key}>RAM:</p>
-                  <p className={styles.product_slider__item__description__value}>{item.ram}</p>
-                </div>
-              </Link>
+      <div className={styles.product_slider__viewport}>
+        <div
+          className={styles.product_slider__container}
+          style={{ transform: `translateX(-${translateX}px)` }}
+        >
+          {products.map(item => (
+            <div key={item.id} className={styles.product_slider__item}>
+              <div className={styles.product_slider__item__container}>
+                <Link to={`/${item.category}/${item.id}`} className={styles.product_slider__link}>
+                  <img
+                    src={item.image}
+                    alt='Item Main Image'
+                    className={styles.product_slider__item__img}
+                  />
+                  <p className={styles.product_slider__item__name}>{item.name}</p>
+                  <div className={styles.product_slider__item__price__container}>
+                    <h4 className={styles.product_slider__item__price__container__main_price}>${item.price}</h4>
+                    {item.fullPrice && (
+                      <p className={styles.product_slider__item__price__container__full_price}>${item.fullPrice}</p>
+                    )}
+                  </div>
+                  <div className={styles.product_slider__item__description}>
+                    <p className={styles.product_slider__item__description__key}>Screen:</p>
+                    <p className={styles.product_slider__item__description__value}>{item.screen}</p>
+                  </div>
+                  <div className={styles.product_slider__item__description}>
+                    <p className={styles.product_slider__item__description__key}>Capacity:</p>
+                    <p className={styles.product_slider__item__description__value}>{item.capacity}</p>
+                  </div>
+                  <div className={styles.product_slider__item__description}>
+                    <p className={styles.product_slider__item__description__key}>RAM:</p>
+                    <p className={styles.product_slider__item__description__value}>{item.ram}</p>
+                  </div>
+                </Link>
 
-              {/* <div className={styles.product_slider__item__buttons}>
-                <button className={styles.product_slider__item__buttons__cart}>Add to cart</button>
-                <button className={styles.product_slider__item__buttons__fav}>
-                  <img src={FavoritesIcon} alt='Add to favorites' className={styles.product_slider__item__buttons__fav__icon} />
-                </button>
-              </div> */}
-              <Buttons productId={String(item.id)} />
+                <Buttons productId={String(item.id)} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )

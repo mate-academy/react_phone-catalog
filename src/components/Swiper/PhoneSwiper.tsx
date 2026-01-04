@@ -44,7 +44,9 @@ export const PhoneSwiper: React.FC = () => {
         <Swiper
           loop={true}
           navigation={navigationConfig}
-          pagination={true}
+          pagination={{
+            clickable: true
+          }}
           keyboard={true}
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className={styles.swiper__slide}
