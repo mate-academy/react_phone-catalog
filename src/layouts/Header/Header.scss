@@ -9,6 +9,7 @@
   &__content {
     @include container;
     @include flex-between;
+
     height: 100%;
 
     @include tablet-up {
@@ -28,6 +29,7 @@
     background: transparent;
     cursor: pointer;
     padding: 0;
+
     @include flex-center;
   }
 }

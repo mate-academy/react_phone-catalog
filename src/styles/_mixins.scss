@@ -167,6 +167,7 @@ $desktop-min: 1200px;
     @include grid-desktop;
   }
 }
+
 @mixin flex-center {
   display: flex;
   justify-content: center;

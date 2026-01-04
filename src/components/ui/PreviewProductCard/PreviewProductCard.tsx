@@ -38,7 +38,7 @@ export default function PreviewProductCard({ product }: Props) {
   return (
     <div className="PreviewProductCard">
       <div className="PreviewProductCard__img">
-        <img src={`/${product.image}`} alt={product.name} />
+        <img src={product.image} alt={product.name} />
       </div>
       <Link
         to={`/${product.category}/${product.itemId}`}

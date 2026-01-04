@@ -1,7 +1,9 @@
 @import '../../../styles/mixins';
-@import '../../../styles/_variables';
+@import '../../../styles/variables';
+
 .ProductsSlider {
   @include container;
+
   margin-block: 60px;
 
   &__row {

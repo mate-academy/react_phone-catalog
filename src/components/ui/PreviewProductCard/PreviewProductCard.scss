@@ -3,6 +3,7 @@
 
 .PreviewProductCard{
   max-width: 212px;
+
   @include tablet {
     max-width: 237px;
   }
@@ -18,6 +19,7 @@
       text-decoration: underline;
     }
   }
+
   border: 1px solid $color-gray-elements;
   padding: 32px;
   box-sizing: border-box;

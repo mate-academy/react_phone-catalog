@@ -3,6 +3,7 @@
 
 .DesktopMenu {
   @include container;
+
   @include mobile {
     display: none;
   }

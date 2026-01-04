@@ -69,7 +69,7 @@ export default function CartPage() {
                   </div>
 
                   <div className="CartPage__item-photo">
-                    <img src={`/${product.image}`} alt={product.name} />
+                    <img src={product.image} alt={product.name} />
                   </div>
 
                   <div className="CartPage__item-title">{product.name}</div>

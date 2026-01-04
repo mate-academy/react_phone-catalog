@@ -4,6 +4,13 @@
 .CartPage {
   @include container;
 
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include tablet-up {
+    padding-bottom: 80px;
+  }
+
   &__wrapper {
     @include desktop {
       display: flex;
@@ -11,15 +18,6 @@
       gap: 16px;
       align-items: flex-start;
     }
-  }
-
-  & {
-    padding-top: 24px;
-    padding-bottom: 56px;
-  }
-
-  @include tablet-up {
-    padding-bottom: 80px;
   }
 
   &__back {
@@ -64,10 +62,36 @@
   &__item {
     padding: 16px;
     border: 1px solid $color-gray-elements;
+    margin-bottom: 16px;
 
     @include tablet-up {
       display: flex;
       justify-content: space-between;
+    }
+
+    &-photo {
+      max-width: 80px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &-title {
+      color: $color-primary;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 600;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet-up {
+      gap: 24px;
     }
   }
 
@@ -126,35 +150,4 @@
       text-align: center;
     }
   }
-}
-
-.CartPage__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-   @include tablet-up {
-  gap: 24px;
-  }
-
-
-}
-
-.CartPage__item {
-  margin-bottom: 16px;
-
-  &-photo {
-    max-width: 80px;
-    img {
-      width: 100%;
-    }
-  }
-
-  &-title {
-    color: $color-primary;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 600;
-  }
-
-
 }

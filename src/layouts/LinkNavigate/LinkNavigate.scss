@@ -37,7 +37,7 @@
   }
 
   &__desktop::after {
-    bottom:0px;
+    bottom:0;
   }
   &__mobile:hover::after, &__desktop:hover::after {
     opacity: 1;

@@ -6,6 +6,7 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+
   @include text-buttons;
 
   &:disabled {
@@ -19,6 +20,7 @@
     border: 1px solid $color-gray-elements;
     background: $color-white;
     color: $color-black;
+
     @include flex-center;
 
     &:hover:not(:disabled) {
@@ -39,6 +41,7 @@
     background: $color-white;
     flex-shrink: 0;
     font-size: 14px;
+
     @include flex-center;
 
     .Icon {
@@ -57,7 +60,7 @@
     color: $color-white;
     border: none;
     &:hover:not(:disabled) {
-      box-shadow: 0px 3px 13px rgba(23, 32, 38, 0.4);
+      box-shadow: 0 3px 13px rgba(23, 32, 38, 0.4);
     }
   }
 

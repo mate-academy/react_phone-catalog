@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
     @include container;
 
     @include tablet-up {
@@ -64,6 +65,4 @@
       text-decoration: none;
     }
   }
-
-  .Footer__logo {}
 }

@@ -92,7 +92,7 @@ export default function CardPage() {
                     return (
                       <SwiperSlide key={productImagesSrc}>
                         <img
-                          src={`/${productImagesSrc}`}
+                          src={productImagesSrc}
                           alt={productDetails?.name}
                           className="CardPage__slider--img"
                         />
@@ -106,7 +106,7 @@ export default function CardPage() {
                     return (
                       <img
                         key={productImagesSrc}
-                        src={`/${productImagesSrc}`}
+                        src={productImagesSrc}
                         alt={productDetails.name}
                         className={classNames('CardPage__allphotos--item', {
                           active: activeIndex === index,

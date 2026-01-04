@@ -39,8 +39,7 @@
 
     @include tablet-up {
       grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-      column-gap: 8px;
-      row-gap: 40px;
+      gap: 40px 8px;
     }
 
     .PreviewProductCard {

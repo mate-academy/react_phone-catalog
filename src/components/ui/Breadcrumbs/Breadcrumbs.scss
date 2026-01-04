@@ -35,17 +35,16 @@
     min-width: 0;
 
     a.Breadcrumbs__productname {
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-  }
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
   }
 
-}
-
-.fill a {
-  color: $color-primary;
+  .fill a {
+    color: $color-primary;
+  }
 }
 
