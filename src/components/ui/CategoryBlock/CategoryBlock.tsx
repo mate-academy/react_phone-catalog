@@ -3,19 +3,19 @@ import './CategoryBlock.scss';
 const categoryItems = [
   {
     title: 'Mobile phones',
-    imgSrc: '/public/img/cat-phones.png',
+    imgSrc: 'img/cat-phones.png',
     countModels: 124,
     linkTo: '/phones',
   },
   {
     title: 'Tablets',
-    imgSrc: '/public/img/cat-tablets.png',
+    imgSrc: 'img/cat-tablets.png',
     countModels: 36,
     linkTo: '/tablets',
   },
   {
     title: 'Accessories',
-    imgSrc: '/public/img/cat-access.png',
+    imgSrc: 'img/cat-access.png',
     countModels: 34,
     linkTo: '/accessories',
   },

@@ -9,9 +9,9 @@ import { useState } from 'react';
 import ButtonSlider from '../ButtonSlider/ButtonSlider';
 
 const slides: string[] = [
-  '/public/img/banner.png',
-  '/public/img/banner-phones.png',
-  '/public/img/banner-accessories.png',
+  'img/banner.png',
+  'img/banner-phones.png',
+  'img/banner-accessories.png',
 ];
 
 export default function Slider() {
