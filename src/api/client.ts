@@ -1,6 +1,6 @@
 import { Category, Product, ProductDetails } from '../types';
 
-const URL_API = '/api';
+const URL_API = 'api';
 
 export const get = <T>(path: string): Promise<T> => {
   return fetch(URL_API + path, {

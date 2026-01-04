@@ -28,7 +28,7 @@ export default function Footer() {
     <div className="Footer">
       <div className="Footer__wrapper">
         <div className="Footer__logo">
-          <img src="/public/img/Logo.svg" alt="" />
+          <img src="img/Logo.svg" alt="" />
         </div>
         <nav className="Footer__nav">
           {NAV_LINKS_FOOTER.map(item => (
