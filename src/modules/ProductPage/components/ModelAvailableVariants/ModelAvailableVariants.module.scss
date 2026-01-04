@@ -23,6 +23,7 @@
     border: 2px #fff solid;
     outline: 1px #e2e6e9 solid;
     box-sizing: border-box;
+    cursor: pointer;
 
     &--active {
       outline: 1px #313237 solid;
@@ -41,6 +42,7 @@
     font-size: 14px;
     font-weight: 500;
     color: #313237;
+    cursor: pointer;
 
     &--active {
       background-color: #313237;

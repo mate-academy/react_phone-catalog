@@ -79,7 +79,10 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem('cart');
+  };
 
   return (
     <CartContext.Provider

@@ -75,3 +75,22 @@
     }
   }
 }
+
+.successPopup {
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  background-color: #e0ffe0;
+  color: #060;
+  border: 1px solid #0c0;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+
+  &__button {
+    color: #313237;
+    text-decoration: underline;
+  }
+}

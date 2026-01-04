@@ -7,6 +7,7 @@
   height: auto;
   transition: height 5s;
   margin-top: 4px;
+  cursor: pointer;
 
   &__trigger {
     all: unset;
@@ -46,6 +47,7 @@
 
     &:hover {
       color: #313237;
+      cursor: pointer;
     }
   }
 }
