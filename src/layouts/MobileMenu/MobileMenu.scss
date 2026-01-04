@@ -1,0 +1,84 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.mobileMenu {
+  position: fixed;
+  z-index: 2;
+  top: 49px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 49px);
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $color-white;
+  }
+
+  &__nav {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__action {
+    width: 50%;
+    border-top: 1px solid $color-gray-elements;
+
+    a {
+      display: flex;
+      @include flex-center;
+      width: 100%;
+      height: 64px;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: $color-primary;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__action:not(:first-child) {
+    border-left: 1px solid $color-gray-elements;
+  }
+}
+
+.menu-enter {
+  transform: translateX(-100%);
+}
+
+.menu-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-out;
+}
+
+.menu-exit {
+  transform: translateX(0);
+}
+
+.menu-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in;
+}

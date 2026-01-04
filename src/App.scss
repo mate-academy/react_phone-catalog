@@ -1,1 +1,10 @@
-// not empty
+@import './styles/fonts';
+@import './styles/variables';
+@import './styles/reset';
+@import './styles/mixins';
+@import 'normalize.css';
+
+body {
+  font-family: $font-family-main;
+}
+

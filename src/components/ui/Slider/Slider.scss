@@ -1,0 +1,86 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.Slider-wrapper {
+  @include tablet-up {
+    @include container;
+  }
+}
+
+.Slider__row {
+  display: flex;
+  align-items: stretch;
+
+  @include tablet-up {
+    gap: 16px;
+  }
+
+  .ButtonSlider {
+    display: none;
+
+    @include tablet-up {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.Slider {
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+
+  @include tablet-up {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__slide {
+    aspect-ratio: 1 / 1;
+
+    @include tablet-up {
+      aspect-ratio: 2.6 / 1;
+
+
+    }
+
+    &--first img {
+      object-position: 87%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @include tablet-up {
+        object-fit: contain;
+        object-position: 0;
+      }
+    }
+  }
+
+  button {
+    display: none;
+    @include tablet-up {
+      display: block;
+    }
+  }
+}
+
+.bullets {
+  justify-content: center;
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+
+  &__bullet {
+    width: 14px;
+    height: 4px;
+    background: $color-gray-elements;
+  }
+
+  &__bullet.active {
+    background-color: $color-primary;
+  }
+}

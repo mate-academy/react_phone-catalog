@@ -1,0 +1,46 @@
+@import '../../styles/variables';
+
+.Link {
+  font-size: $font-uppercase-size;
+  line-height: $font-uppercase-height;
+  letter-spacing: $font-uppercase-spacing;
+  font-weight: $font-uppercase-weight;
+  color: $color-secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s ease;
+  position: relative;
+  display: inline-block;
+
+  &__desktop {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &__mobile::after, &__desktop::after  {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    background-color: $color-primary;
+    width: 100%;
+    height: 2px;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all .3s ease;
+  }
+
+  &__desktop::after {
+    bottom:0px;
+  }
+  &__mobile:hover::after, &__desktop:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}

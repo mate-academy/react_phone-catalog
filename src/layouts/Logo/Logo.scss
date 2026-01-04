@@ -1,0 +1,13 @@
+@import '../../styles/mixins';
+
+.Logo {
+  @include desktop {
+    position: absolute;
+    top: 0;
+    left: 24px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

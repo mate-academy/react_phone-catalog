@@ -1,0 +1,180 @@
+// _mixins.scss
+
+// Typography Mixins - Desktop/Tablet
+@mixin h1-desktop {
+  font-size: $font-h1-size;
+  line-height: $font-h1-height;
+  letter-spacing: $font-h1-spacing;
+  font-weight: $font-h1-weight;
+}
+
+@mixin h2-desktop {
+  font-size: $font-h2-size;
+  line-height: $font-h2-height;
+  letter-spacing: $font-h2-spacing;
+  font-weight: $font-h2-weight;
+}
+
+@mixin h3-desktop {
+  font-size: $font-h3-size;
+  line-height: $font-h3-height;
+  letter-spacing: $font-h3-spacing;
+  font-weight: $font-h3-weight;
+}
+
+@mixin h4-desktop {
+  font-size: $font-h4-size;
+  line-height: $font-h4-height;
+  letter-spacing: $font-h4-spacing;
+  font-weight: $font-h4-weight;
+}
+
+@mixin text-uppercase {
+  font-size: $font-uppercase-size;
+  line-height: $font-uppercase-height;
+  letter-spacing: $font-uppercase-spacing;
+  font-weight: $font-uppercase-weight;
+  text-transform: uppercase;
+}
+
+@mixin text-buttons {
+  font-size: $font-buttons-size;
+  line-height: $font-buttons-height;
+  letter-spacing: $font-buttons-spacing;
+  font-weight: $font-buttons-weight;
+}
+
+@mixin text-body {
+  font-size: $font-body-size;
+  line-height: $font-body-height;
+  letter-spacing: $font-body-spacing;
+  font-weight: $font-body-weight;
+}
+
+@mixin text-small {
+  font-size: $font-small-size;
+  line-height: $font-small-height;
+  letter-spacing: $font-small-spacing;
+  font-weight: $font-small-weight;
+}
+
+// Typography Mixins - Mobile
+@mixin h1-mobile {
+  font-size: $font-h1-size-mobile;
+  line-height: $font-h1-height-mobile;
+  letter-spacing: $font-h1-spacing;
+  font-weight: $font-h1-weight;
+}
+
+@mixin h2-mobile {
+  font-size: $font-h2-size-mobile;
+  line-height: $font-h2-height-mobile;
+  letter-spacing: $font-h2-spacing;
+  font-weight: $font-h2-weight;
+}
+
+@mixin h3-mobile {
+  font-size: $font-h3-size-mobile;
+  line-height: $font-h3-height-mobile;
+  letter-spacing: $font-h3-spacing;
+  font-weight: $font-h3-weight;
+}
+
+@mixin h4-mobile {
+  font-size: $font-h4-size-mobile;
+  line-height: $font-h4-height-mobile;
+  letter-spacing: $font-h4-spacing;
+  font-weight: $font-h4-weight;
+}
+
+// Breakpoints
+$mobile-max: 639px;
+$tablet-min: 640px;
+$tablet-max: 1199px;
+$desktop-min: 1200px;
+
+// Media Query Mixins
+@mixin mobile {
+  @media (max-width: $mobile-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $tablet-min) {
+    @content;
+  }
+}
+
+
+@mixin container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include mobile {
+    padding: 0 16px;
+  }
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 32px;
+  }
+}
+
+// Grid System
+@mixin grid-desktop {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+}
+
+@mixin grid-tablet {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+@mixin grid-mobile {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+// Responsive Grid
+@mixin grid-responsive {
+  @include grid-mobile;
+
+  @include tablet {
+    @include grid-tablet;
+  }
+
+  @include desktop {
+    @include grid-desktop;
+  }
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

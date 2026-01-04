@@ -1,0 +1,75 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.Select {
+  position: relative;
+  padding-bottom: 24px;
+
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__currentValue {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary;
+    font-weight: 600;
+  }
+
+  &__trigger {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 136px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    border: 1px solid $color-gray-elements;
+
+    .Icon {
+      fill: $color-gray-elements;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+  }
+
+  &__dropdown.active {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: $color-white;
+    border: 1px solid $color-gray-elements;
+    width: 100%;
+    height: auto;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 ;
+  }
+
+  &__item {
+    padding: 10px;
+    border-bottom: 1px solid $color-gray-elements;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-gray-elements;
+    }
+  }
+
+  &__item.active {
+    background-color: $color-gray-elements;
+  }
+}

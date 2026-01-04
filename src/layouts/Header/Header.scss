@@ -1,0 +1,40 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.Header {
+  position: relative;
+  height: 48px;
+  border-bottom: 1px solid $color-gray-elements;
+
+  &__content {
+    @include container;
+    @include flex-between;
+    height: 100%;
+
+    @include tablet-up {
+      justify-content: start;
+      gap: 32px;
+    }
+  }
+
+  &__burger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid $color-gray-elements;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    @include flex-center;
+  }
+}
+
+.Header__burger,
+.mobileMenu {
+  @include tablet-up {
+    display: none;
+  }
+}

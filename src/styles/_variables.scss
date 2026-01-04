@@ -1,0 +1,71 @@
+$color-primary: #313237;
+$color-secondary: #89939A;
+$color-icons-and-placeholder: #B4BDC3;
+$color-gray-elements: #E2E6E9;
+$color-gray-bg: #FAFBFC;
+$color-white: #fff;
+$color-green: #27AE60;
+$color-red: #EB5757;
+$color-black: #000;
+
+// Font Family
+$font-family-main: 'Mont', sans-serif;
+
+// Font Weights
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Desktop/Tablet Typography
+$font-h1-size: 48px;
+$font-h1-height: 56px;
+$font-h1-spacing: -0.01em;
+$font-h1-weight: $font-weight-bold;
+
+$font-h2-size: 32px;
+$font-h2-height: 41px;
+$font-h2-spacing: -0.01em;
+$font-h2-weight: $font-weight-bold;
+
+$font-h3-size: 22px;
+$font-h3-height: 31px;
+$font-h3-spacing: 0;
+$font-h3-weight: $font-weight-bold;
+
+$font-h4-size: 20px;
+$font-h4-height: 26px;
+$font-h4-spacing: 0;
+$font-h4-weight: $font-weight-semibold;
+
+$font-uppercase-size: 12px;
+$font-uppercase-height: 11px;
+$font-uppercase-spacing: 0.04em;
+$font-uppercase-weight: $font-weight-bold;
+
+$font-buttons-size: 14px;
+$font-buttons-height: 21px;
+$font-buttons-spacing: 0;
+$font-buttons-weight: $font-weight-semibold;
+
+$font-body-size: 14px;
+$font-body-height: 21px;
+$font-body-spacing: 0;
+$font-body-weight: $font-weight-regular;
+
+$font-small-size: 12px;
+$font-small-height: 15px;
+$font-small-spacing: 0;
+$font-small-weight: $font-weight-semibold;
+
+// Mobile Typography
+$font-h1-size-mobile: 32px;
+$font-h1-height-mobile: 41px;
+
+$font-h2-size-mobile: 22px;
+$font-h2-height-mobile: 31px;
+
+$font-h3-size-mobile: 20px;
+$font-h3-height-mobile: 26px;
+
+$font-h4-size-mobile: 16px;
+$font-h4-height-mobile: 20px;

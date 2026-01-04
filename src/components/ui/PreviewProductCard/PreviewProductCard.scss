@@ -1,0 +1,95 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.PreviewProductCard{
+  max-width: 212px;
+  @include tablet {
+    max-width: 237px;
+  }
+
+  @include desktop {
+    max-width: 272px;
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  border: 1px solid $color-gray-elements;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  &__img img{
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 14px;
+    color: $color-primary;
+    line-height: 21px;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    padding: 8px 0;
+    border-bottom: 1px solid $color-gray-elements;
+    display: flex;
+    gap: 8px;
+
+    &--full {
+      color: $color-secondary;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+  }
+
+  &__specs {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__spec-name {
+    font-size: 12px;
+    line-height: 100%;
+    color: $color-secondary;
+    font-weight: 700;
+  }
+
+  &__spec-value {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: $color-primary;
+  }
+
+  &__btns {
+    padding-top: 16px;
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+
+    button {
+      font-size: 13px;
+    }
+  }
+}

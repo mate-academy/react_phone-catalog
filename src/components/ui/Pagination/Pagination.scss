@@ -1,0 +1,26 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+.Pagination {
+  padding-block: 24px 64px;
+  @include tablet-up {
+    padding-top: 40px;
+  }
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+  &__wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__pagesCount {
+    display: flex;
+    gap: 8px;
+  }
+  .button.active {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
