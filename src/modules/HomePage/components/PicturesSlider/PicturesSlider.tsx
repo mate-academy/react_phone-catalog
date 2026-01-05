@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
+import { useNavigate } from 'react-router';
 
 type Props = {
   slides: string[];
@@ -13,6 +14,7 @@ export const PictureSlider: React.FC<Props> = ({
   autoSlideInterval = 5000,
 }) => {
   const [curr, setCurr] = useState(0);
+  const navigate = useNavigate();
 
   const prev = () =>
     setCurr(currPrev => (currPrev === 0 ? slides.length - 1 : currPrev - 1));
@@ -35,7 +37,6 @@ export const PictureSlider: React.FC<Props> = ({
   }, [autoSlide, autoSlideInterval, slides.length]);
 
   return (
-    // КАРУСЕЛЬ СТВОРИТИ З КНОПКАМИ НА КОЖНОМУ СЛАЙДІ
     <div className={styles.container}>
       <div>
         {slides.length > 0 && (
@@ -47,7 +48,12 @@ export const PictureSlider: React.FC<Props> = ({
               >
                 &#10094;
               </button>
-              <button className={styles.orderButton}>ORDER NOW</button>
+              <button
+                className={styles.orderButton}
+                onClick={() => navigate('/cart')}
+              >
+                ORDER NOW
+              </button>
               <img
                 src={slides[curr]}
                 alt={`Slide ${curr + 1}`}
