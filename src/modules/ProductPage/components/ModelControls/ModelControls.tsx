@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ModelControls.module.scss';
 import { Price } from '../../../../components/Price';
 import { ButtonAddToCart } from '../../../../components/ButtonAddToCart';
 import { ModelAvailbleVariants } from '../ModelAvailableVariants';
 import { Model } from '../../../shared/types/Model';
 import { ModelCharact } from '../../../../components/ModelCharact';
+import { useLocation } from 'react-router-dom';
 
 export const ModelControls = ({
   model,
@@ -14,6 +15,8 @@ export const ModelControls = ({
   onVariantChange: (color: string, capacity: string) => void;
 }) => {
   const [current, setCurrent] = useState(0);
+  const [lastProductId, setLastProductId] = useState<string | null>(null);
+  const { pathname } = useLocation();
   let startX = 0;
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -39,6 +42,18 @@ export const ModelControls = ({
     'processor',
     'ram',
   ];
+
+  useEffect(() => {
+    const pathParts = pathname.split('/');
+    const fullSlug = pathParts[2] || '';
+
+    const productModelRoot = fullSlug.split('-').slice(0, -2).join('-');
+
+    if (productModelRoot !== lastProductId) {
+      setCurrent(0);
+      setLastProductId(productModelRoot);
+    }
+  }, [pathname, lastProductId]);
 
   return (
     <div className={styles.model}>

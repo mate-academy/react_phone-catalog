@@ -1,17 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export function useScrollToTop() {
+  const [lastProductId, setLastProductId] = useState<string | null>(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
     const pathParts = pathname.split('/');
-    const productId = pathParts[2];
+    const fullSlug = pathParts[2] || '';
 
-    if (!productId) {
+    const productModelRoot = fullSlug.split('-').slice(0, -2).join('-');
+
+    if (productModelRoot !== lastProductId) {
       window.scrollTo(0, 0);
-
-      return;
+      setLastProductId(productModelRoot);
     }
-  }, [pathname]);
+  }, [pathname, lastProductId]);
 }

@@ -26,10 +26,16 @@ export const Footer = () => {
           >
             Github
           </a>
-          <a className={styles.footer__link} href="#">
+          <a
+            className={styles.footer__link}
+            href="https://github.com/uuunemployed"
+          >
             Contacts
           </a>
-          <a className={styles.footer__link} href="#">
+          <a
+            className={styles.footer__link}
+            href="https://github.com/uuunemployed"
+          >
             rights
           </a>
         </div>
