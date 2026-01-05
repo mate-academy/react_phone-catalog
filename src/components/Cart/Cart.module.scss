@@ -82,6 +82,13 @@
         display: flex;
         gap: 24px;
         height: 128px;
+
+        &__link {
+          display: flex;
+          gap: 24px;
+          text-decoration: none;
+          color: $main-text-color;
+        }
       }
     }
 
@@ -104,6 +111,7 @@
         height: 80px;
         justify-content: center;
         align-self: center;
+        object-fit: contain;
       }
 
       &__title {
@@ -118,7 +126,7 @@
 
       &__buttons {
         display: flex;
-        width: 96px;
+        min-width: 96px;
         justify-content: space-between;
         align-items: center;
 
@@ -127,6 +135,7 @@
           height: 32px;
           border: none;
           background-color: $main-button-color;
+          cursor: pointer;
 
           &:disabled {
             background-color: $main-background-color;

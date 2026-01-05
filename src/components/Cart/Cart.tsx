@@ -50,7 +50,7 @@ export const Cart: React.FC = () => {
               const product = products.find(i => i.itemId === cartItem.id);
               const isOne = cartItem.quantity === 1;
               return (
-                <NavLink to={`/${cartItem.category || product?.category}/${cartItem.id}`}
+                <div
                   key={cartItem.id}
                   className={styles.cart__item__container}
                 >
@@ -62,12 +62,18 @@ export const Cart: React.FC = () => {
                       <img src={RemoveIcon} alt="Remove from cart" className={styles.cart__item__remove__icon} />
                     </button>
 
-                    <img
-                      className={styles.cart__item__info__image}
-                      src={product?.image}
-                      alt="Product image"
-                    />
-                    <p className={styles.cart__item__info__title}>{product?.name}</p>
+                    <NavLink
+                      to={`/${cartItem.category || product?.category}/${cartItem.id}`}
+                      className={styles.cart__item__container__inner__link}
+                    >
+                      <img
+                        className={styles.cart__item__info__image}
+                        src={product?.image}
+                        alt="Product image"
+                      />
+                      <p className={styles.cart__item__info__title}>{product?.name}</p>
+                    </NavLink>
+
                     <div className={styles.cart__item__info__buttons}>
                       <button
                         className={styles.cart__item__info__buttons__button}
@@ -95,7 +101,7 @@ export const Cart: React.FC = () => {
 
                     <p className={styles.cart__item__info__price}>${(product?.price || 0) * cartItem.quantity}</p>
                   </div>
-                </NavLink>
+                </div>
               )
             })}
 
