@@ -65,6 +65,14 @@ export default function Slider() {
             <div
               key={index}
               className={`bullets__bullet ${activeIndex === index ? 'active' : ''}`}
+              onClick={() => swiperInstance?.slideTo(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  swiperInstance?.slideTo(index);
+                }
+              }}
             ></div>
           );
         })}

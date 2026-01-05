@@ -7,10 +7,12 @@ import CartPage from './pages/CartPage/CartPage';
 import CardPage from './pages/CardPage/CardPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { Layout } from './layouts/Layout';
+import ScrollToTop from './components/ScrollToTop';
 
 export const App = () => {
   return (
     <Layout>
+      <ScrollToTop />
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />

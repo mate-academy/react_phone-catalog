@@ -37,37 +37,43 @@ export default function PreviewProductCard({ product }: Props) {
 
   return (
     <div className="PreviewProductCard">
-      <div className="PreviewProductCard__img">
-        <img src={product.image} alt={product.name} />
-      </div>
       <Link
         to={`/${product.category}/${product.itemId}`}
-        className="PreviewProductCard__link"
+        className="PreviewProductCard__content"
       >
+        <div className="PreviewProductCard__img">
+          <img src={product.image} alt={product.name} />
+        </div>
         <div className="PreviewProductCard__title">{product.name}</div>
+        <div className="PreviewProductCard__price">
+          ${price}
+          {price !== fullPrice && (
+            <span className="PreviewProductCard__price--full">
+              ${fullPrice}
+            </span>
+          )}
+        </div>
+        <div className="PreviewProductCard__specs">
+          <div className="PreviewProductCard__spec">
+            <span className="PreviewProductCard__spec-name">Screen</span>
+            <span className="PreviewProductCard__spec-value">
+              {product.screen}
+            </span>
+          </div>
+          <div className="PreviewProductCard__spec">
+            <span className="PreviewProductCard__spec-name">Capacity</span>
+            <span className="PreviewProductCard__spec-value">
+              {product.capacity}
+            </span>
+          </div>
+          <div className="PreviewProductCard__spec">
+            <span className="PreviewProductCard__spec-name">RAM</span>
+            <span className="PreviewProductCard__spec-value">
+              {product.ram}
+            </span>
+          </div>
+        </div>
       </Link>
-      <div className="PreviewProductCard__price">
-        ${price}{' '}
-        <span className="PreviewProductCard__price--full">${fullPrice}</span>
-      </div>
-      <div className="PreviewProductCard__specs">
-        <div className="PreviewProductCard__spec">
-          <span className="PreviewProductCard__spec-name">Screen</span>
-          <span className="PreviewProductCard__spec-value">
-            {product.screen}
-          </span>
-        </div>
-        <div className="PreviewProductCard__spec">
-          <span className="PreviewProductCard__spec-name">Capacity</span>
-          <span className="PreviewProductCard__spec-value">
-            {product.capacity}
-          </span>
-        </div>
-        <div className="PreviewProductCard__spec">
-          <span className="PreviewProductCard__spec-name">RAM</span>
-          <span className="PreviewProductCard__spec-value">{product.ram}</span>
-        </div>
-      </div>
 
       <div className="PreviewProductCard__btns">
         {isInCart ? (

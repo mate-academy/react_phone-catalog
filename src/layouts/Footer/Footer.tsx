@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './Footer.scss';
 import { Icon } from '../../components/ui/Icon/Icon';
 const scrollTop = () => {
@@ -10,15 +9,15 @@ const scrollTop = () => {
 
 const NAV_LINKS_FOOTER = [
   {
-    to: 'github.com',
+    to: 'https://github.com/KuzmenkoGit',
     text: 'Github',
   },
   {
-    to: 'github.com',
+    to: 'https://github.com/KuzmenkoGit',
     text: 'Contacts',
   },
   {
-    to: 'github.com',
+    to: 'https://github.com/KuzmenkoGit',
     text: 'Rights',
   },
 ];
@@ -32,9 +31,15 @@ export default function Footer() {
         </div>
         <nav className="Footer__nav">
           {NAV_LINKS_FOOTER.map(item => (
-            <Link className="Footer__nav--link" to={item.to} key={item.text}>
+            <a
+              className="Footer__nav--link"
+              href={item.to}
+              key={item.text}
+              target="_blank"
+              rel="noreferrer"
+            >
               {item.text}
-            </Link>
+            </a>
           ))}
         </nav>
         <div className="Footer__toTop" onClick={scrollTop}>

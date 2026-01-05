@@ -3,11 +3,14 @@ import { Icon } from '../../components/ui/Icon/Icon';
 import './CartPage.scss';
 import { Button } from '../../components/ui/Button/Button';
 import { useAppState, useDispatch } from '../../store/Store';
+import { useCart } from '../../hooks/useCart';
 
 export default function CartPage() {
   const navigate = useNavigate();
   const { cartItems, products } = useAppState();
   const dispatch = useDispatch();
+
+  const { totalCount } = useCart();
 
   // 1. Взять все cartItems
   // 2. Найти по каждому картайтемся продукт вернуть его цену
@@ -105,7 +108,7 @@ export default function CartPage() {
         <div className="CartPage__checkout">
           <div className="CartPage__checkout-fullprice">${totalCostCart}</div>
           <div className="CartPage__checkout-items">
-            Total for {cartItems.length} items
+            Total for {totalCount} items
           </div>
           <Button variant="primary">Checkout</Button>
         </div>

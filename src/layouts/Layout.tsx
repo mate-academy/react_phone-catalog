@@ -6,10 +6,10 @@ type Props = {
 };
 export function Layout({ children }: Props) {
   return (
-    <>
+    <div className="Layout">
       <Header />
-      {children}
+      <div className="Layout__content">{children}</div>
       <Footer />
-    </>
+    </div>
   );
 }

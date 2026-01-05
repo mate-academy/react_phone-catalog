@@ -7,13 +7,23 @@ import CategoryBlock from '../../components/ui/CategoryBlock/CategoryBlock';
 import { getProducts } from '../../api/client';
 
 export default function HomePage() {
-  const [brandNewModel, setBrandNewModel] = useState<Product[]>([]);
+  const [brandNewModels, setBrandNewModels] = useState<Product[]>([]);
+  const [hotPrices, setHotPrices] = useState<Product[]>([]);
 
   useEffect(() => {
     getProducts().then(data => {
-      const newModelsData = data.slice(-10);
+      const brandNew = data
+        .sort((a, b) => b.year - a.year || b.price - a.price)
+        .slice(0, 10)
+        .map(item => ({ ...item, fullPrice: item.price }));
 
-      setBrandNewModel(newModelsData);
+      setBrandNewModels(brandNew);
+
+      const hot = data
+        .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+        .slice(0, 10);
+
+      setHotPrices(hot);
     });
   }, []);
 
@@ -24,9 +34,9 @@ export default function HomePage() {
       </h1>
 
       <Slider />
-      <ProductsSlider title="Brand new models" products={brandNewModel} />
+      <ProductsSlider title="Brand new models" products={brandNewModels} />
       <CategoryBlock />
-      <ProductsSlider title="Hot prices" products={brandNewModel} />
+      <ProductsSlider title="Hot prices" products={hotPrices} />
     </div>
   );
 }
