@@ -23,7 +23,7 @@ export const App = () => {
 
   return (
     <div className="app" id="top" tabIndex={-1}>
-      <h1 className="visually-hidden">Phone Catalog</h1>
+      <h1>Phone Catalog</h1>
       <Header />
       <div className="main">
         <Routes>
