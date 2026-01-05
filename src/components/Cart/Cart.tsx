@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from './Cart.module.scss';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import BackArrow from '../../icons/arrows/Active_left.png'
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import RemoveIcon from '../../icons/remove_icon.png';
@@ -50,7 +50,7 @@ export const Cart: React.FC = () => {
               const product = products.find(i => i.itemId === cartItem.id);
               const isOne = cartItem.quantity === 1;
               return (
-                <div
+                <NavLink to={`/${cartItem.category || product?.category}/${cartItem.id}`}
                   key={cartItem.id}
                   className={styles.cart__item__container}
                 >
@@ -83,7 +83,7 @@ export const Cart: React.FC = () => {
                       <span className={styles.cart__item__info__buttons__quantity}>{cartItem.quantity}</span>
                       <button
                         className={styles.cart__item__info__buttons__button}
-                        onClick={() => increaseItemQuantity(cartItem.id)}
+                        onClick={() => increaseItemQuantity(cartItem.id, product?.category || '')}
                       >
                         <img
                           src={PlusIcon}
@@ -95,7 +95,7 @@ export const Cart: React.FC = () => {
 
                     <p className={styles.cart__item__info__price}>${(product?.price || 0) * cartItem.quantity}</p>
                   </div>
-                </div>
+                </NavLink>
               )
             })}
 

@@ -7,11 +7,12 @@ interface ShoppingCartProviderProps {
 interface CartItem {
   id: string;
   quantity: number;
+  category?: string;
 }
 
 interface ShoppingCartContext {
   getItemQuantity: (id: string) => number;
-  increaseItemQuantity: (id: string) => void;
+  increaseItemQuantity: (id: string, category: string) => void;
   decreaseItemQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
   cartItems: CartItem[];
@@ -41,10 +42,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return cartItems.find(item => item.id === id)?.quantity || 0;
   }
 
-  const increaseItemQuantity = (id: string) => {
+  const increaseItemQuantity = (id: string, category: string) => {
     setCartItems(currentItems => {
       if (currentItems.find(item => item.id === id) == null) {
-        return [...currentItems, { id, quantity: 1 }]
+        return [...currentItems, { id, quantity: 1, category }]
       } else {
         return currentItems.map(item => {
           if (item.id === id) {

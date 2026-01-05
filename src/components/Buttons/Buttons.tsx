@@ -7,9 +7,10 @@ import { useFavorites } from "../../context/FavoritesContext";
 
 interface ButtonsProps {
   productId: string;
+  category: string;
 }
 
-export const Buttons: React.FC<ButtonsProps> = ({ productId }) => {
+export const Buttons: React.FC<ButtonsProps> = ({ productId, category }) => {
   const { getItemQuantity, increaseItemQuantity } = useShoppingCart();
   const { toggleFavorite, favItems } = useFavorites();
 
@@ -20,7 +21,7 @@ export const Buttons: React.FC<ButtonsProps> = ({ productId }) => {
     <div className={styles.buttons}>
       <button
         className={isInCart ? styles.buttons__cart__added : styles.buttons__cart}
-        onClick={() => !isInCart && increaseItemQuantity(productId)}
+        onClick={() => !isInCart && increaseItemQuantity(productId, category)}
         disabled={isInCart}
       >
         {isInCart ? 'Added' : 'Add to cart'}
