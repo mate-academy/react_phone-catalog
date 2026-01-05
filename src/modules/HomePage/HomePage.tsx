@@ -13,8 +13,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={scss.home}>
-      <h1 className="visually-hidden">Product Catalog</h1>
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h2 className={scss.home__title}>Welcome to Nice Gadgets store!</h2>
       {isLoading ? (
         <Loader />
       ) : (

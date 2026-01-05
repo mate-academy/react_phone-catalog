@@ -15,9 +15,22 @@
     margin: 0 auto;
     padding: $padding-horizontal-large;
   }
+
+  &__title {
+    font-weight: 800;
+    font-style: bold;
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+    letter-spacing: -0.01rem;
+
+    @include for-tablets {
+      font-size: 4.8rem;
+      line-height: 5.6rem;
+    }
+  }
 }
 
-h1 {
+h2 {
   padding: $padding-vertical-medium;
 
   @include for-tablets {

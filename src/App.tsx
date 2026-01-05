@@ -23,6 +23,7 @@ export const App = () => {
 
   return (
     <div className="app" id="top" tabIndex={-1}>
+      <h1 className="visually-hidden">Product Catalog</h1>
       <Header />
       <div className="main">
         <Routes>
