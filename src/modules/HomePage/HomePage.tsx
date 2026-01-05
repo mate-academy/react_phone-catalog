@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import '../shared/styles/_base.scss';
 import { DataContext } from '../../context/ContextProvider';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
@@ -12,6 +13,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={scss.home}>
+      <h1 className="visually-hidden">Phone Catalog</h1>
       <h1>Welcome to Nice Gadgets store!</h1>
       {isLoading ? (
         <Loader />
