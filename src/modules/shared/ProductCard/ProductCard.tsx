@@ -1,5 +1,4 @@
-// тут треба погратись з імпортами в цій структурі
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { ProductType } from 'models/product.model';
@@ -11,8 +10,6 @@ type ProductCardProps = {
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  // const [isAdded, setIsAdded] = useState(false);
-  // const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
   const CART_KEY = `cart:${product.id}`;
   const FAV_KEY = `fav:${product.id}`;
@@ -25,22 +22,30 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return localStorage.getItem(FAV_KEY) === 'true';
   });
 
-  useEffect(() => {
-    localStorage.setItem(CART_KEY, String(isAdded));
-  }, [isAdded, CART_KEY]);
-
-  useEffect(() => {
-    localStorage.setItem(FAV_KEY, String(isFavorite));
-  }, [isFavorite, FAV_KEY]);
-
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const value = localStorage.getItem(CART_KEY);
+
     e.stopPropagation();
     setIsAdded(prev => !prev);
+
+    if (value === null) {
+      localStorage.setItem(CART_KEY, 'true');
+    } else {
+      localStorage.removeItem(CART_KEY);
+    }
   };
 
   const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const value = localStorage.getItem(FAV_KEY);
+
     e.stopPropagation();
     setIsFavorite(prev => !prev);
+
+    if (value === null) {
+      localStorage.setItem(FAV_KEY, 'true');
+    } else {
+      localStorage.removeItem(FAV_KEY);
+    }
   };
 
   return (

@@ -8,17 +8,21 @@
   &__backbutton {
     display: flex;
     align-items: flex-end;
+    border: 0;
+    background-color: $background-color;
 
     &__icon {
       width: 16px;
       height: 16px;
-      margin-right: 8px;
+      margin-right: 4px;
     }
 
     &__text {
+      margin: 0;
+
       font-family: Mont, sans-serif;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 100%;
       color: $secondary-color;
       letter-spacing: 0%;
