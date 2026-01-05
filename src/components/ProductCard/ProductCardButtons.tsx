@@ -1,18 +1,44 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
 import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
+import { ProductAllType } from '../../types/Product';
 
-export const ProductCardButtons = () => {
+type Props = {
+  product: ProductAllType;
+};
+
+export const ProductCardButtons: FC<Props> = ({ product }) => {
   const [isAddToCart, setIsAddToCart] = useState<boolean>(false);
   const [isAddToFavorite, setIsAddToFavorite] = useState<boolean>(false);
 
+  const { toggleFavorite, addToCart, cartItems, favoriteItems } =
+    useCartFavorite();
+
+  useEffect(() => {
+    const isInFavorite = favoriteItems.find(item => item.id === product.id);
+    setIsAddToFavorite(!!isInFavorite);
+
+    const isInCart = cartItems.find(item => item.id === product.id);
+    setIsAddToCart(!!isInCart);
+  }, [favoriteItems, cartItems]);
+
+  const handleAddToCard = () => {
+    setIsAddToCart(true);
+    addToCart(product);
+    console.log(cartItems);
+  };
+
+  const handleToggleFavorite = () => {
+    setIsAddToFavorite(prev => !prev);
+    toggleFavorite(product);
+  };
 
   return (
     <div className="card__buttons">
       <button
-        onClick={() => setIsAddToCart(prev => !prev)}
+        onClick={() => handleAddToCard()}
         className={classNames('card__add', {
           card__add_selected: isAddToCart,
         })}
@@ -21,7 +47,7 @@ export const ProductCardButtons = () => {
       </button>
       <button
         className="card__favorite card__favorite_selected"
-        onClick={() => setIsAddToFavorite(prev => !prev)}
+        onClick={() => handleToggleFavorite()}
       >
         {isAddToFavorite ? (
           <img src={vaforiteImgSelected} alt="" />

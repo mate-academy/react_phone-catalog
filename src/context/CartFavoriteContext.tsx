@@ -1,37 +1,59 @@
 import React, { FC } from 'react';
 import { createContext, useContext, useState } from 'react';
-import { ProductType } from '../types/Product';
-import { CartProduct } from '../types/CartProduct';
+import { ProductAllType } from '../types/Product';
 
 type Props = {
   children: React.ReactNode;
 };
 
 type CartFavoriteContextType = {
-  cartItems: ProductType[];
-  favoriteItems: ProductType[];
-  addToCart: (item: ProductType) => void;
-  toggleFavorite?: (item: ProductType) => void;
+  cartItems: ProductAllType[];
+  favoriteItems: ProductAllType[];
+  addToCart: (item: ProductAllType) => void;
+  toggleFavorite: (item: ProductAllType) => void;
   clearCart: () => void;
-  removeFromCart?: (productId: string) => void;
+  removeFromCart: (productId: string) => void;
+  updateCounterCart: (productId: string, count: number) => void;
 };
 
-const CartFavoriteContext = createContext<CartFavoriteContextType | undefined>(
-  undefined,
-);
+const CartFavoriteContext = createContext<CartFavoriteContextType>({
+  cartItems: [],
+  favoriteItems: [],
+  addToCart: () => {},
+  clearCart: () => {},
+  toggleFavorite: () => {},
+  removeFromCart: () => {},
+  updateCounterCart: () => {},
+});
 
 export const CartFavoriteProvider: FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<ProductType[]>([]);
-  const [favoriteItems, setFavoriteItems] = useState<ProductType[]>([]);
+  const [cartItems, setCartItems] = useState<ProductAllType[]>([]);
+  const [favoriteItems, setFavoriteItems] = useState<ProductAllType[]>([]);
 
   // ----- Cart
 
-  const addToCart = (product: ProductType): void => {
-    setCartItems(prev => [...prev, product]);
+  const addToCart = (product: ProductAllType): void => {
+    setCartItems(prev =>
+      prev.find(item => String(item.id) === String(product.id))
+        ? prev
+        : [...prev, { ...product, count: 1 }],
+    );
   };
 
   const removeFromCart = (productId: string) => {
-    setCartItems(prev => prev.filter(item => item.id! === productId));
+    setCartItems(prev =>
+      prev.filter(item => String(item.id) !== String(productId)),
+    );
+  };
+
+  const updateCounterCart = (productId: string, count: number) => {
+    setCartItems(prev =>
+      prev.map(item =>
+        String(item.id) === String(productId)
+          ? { ...item, count: count }
+          : item,
+      ),
+    );
   };
 
   const clearCart = () => {
@@ -40,11 +62,11 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
 
   // ----- Favorites
 
-  const toggleFavorite = (product: ProductType) => {
+  const toggleFavorite = (product: ProductAllType) => {
     setFavoriteItems(prev => {
-      const exists = prev.find(item => item.id === product.id);
+      const exists = prev.find(item => String(item.id) === String(product.id));
       if (exists) {
-        return prev.filter(item => item.id !== product.id);
+        return prev.filter(item => String(item.id) !== String(product.id));
       }
 
       return [...prev, product];
@@ -54,10 +76,11 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
   const value = {
     cartItems,
     favoriteItems,
-    addToCart: () => {},
-    removeFromCart: () => {},
-    clearCart: () => {},
-    toggleFavorite: () => {},
+    addToCart,
+    removeFromCart,
+    clearCart,
+    toggleFavorite,
+    updateCounterCart,
   };
 
   return (
@@ -71,5 +94,5 @@ export const useCartFavorite = () => {
   const context = useContext(CartFavoriteContext);
   if (!context)
     throw new Error('useCartFavorite must be used within CartFavoriteProvider');
-  return useContext(CartFavoriteContext) as CartFavoriteContextType;
+  return context as CartFavoriteContextType;
 };

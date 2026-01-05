@@ -1,16 +1,16 @@
 import './Cart.scss';
 import { Link } from 'react-router-dom';
 import { CartItem } from './CartItem';
-import { CartProduct } from '../../types/CartProduct';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 import emptyCart from '/img/unnown.jpg';
-import { ProductType } from '../../types/Product';
+import { ProductAllType } from '../../types/Product';
 
 export const Cart = () => {
   const { cartItems } = useCartFavorite();
 
-
-
+  const totalCost = cartItems.reduce((acc, prod) => {
+    return acc + prod.price * prod.count!;
+  }, 0);
 
   return (
     <section className="cart">
@@ -30,13 +30,16 @@ export const Cart = () => {
         ) : (
           <div className="cart__wrapper">
             <div className="cart__items">
-              {cartItems.map((item: ProductType, i: number) => (
+              {cartItems.map((item: ProductAllType, i: number) => (
                 <CartItem product={item} key={item.name + i} />
               ))}
             </div>
             <div className="cart__total">
-              <span className="cart__total-amount">$2997</span>
-              <span className="cart__total-text">Total for {12} items</span>
+              <span className="cart__total-amount">{totalCost}</span>
+              <span className="cart__total-text">
+                Total for {cartItems.length} item
+                {cartItems.length > 1 ? 's' : ''}
+              </span>
               <button className="cart__total-checkout" type="button">
                 Checkout
               </button>

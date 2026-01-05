@@ -1,49 +1,18 @@
-import React, { FC, useState } from 'react';
-
-import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
-
+import { FC } from 'react';
 import './ProductCard.scss';
-import {
-  ProductAllType,
-  ProductType,
-  ProductTypeForAccessory,
-} from '../../types/Product';
-import classNames from 'classnames';
+import { ProductAllType } from '../../types/Product';
 import { ProductCardButtons } from './ProductCardButtons';
-import { useCartFavorite } from '../../context/CartFavoriteContext';
 import { useProducts } from '../../context/ProductsContext';
 import { NameProducts } from '../../types/NameProducts';
 
 type Props = {
   product: ProductAllType;
 };
-type CategoryTypeWithoutAllprod = Exclude<NameProducts, 'allProducts'>;
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const {
-    category,
-    itemId,
-    image,
-    name,
-    price,
-    screen,
-    capacity,
-    ram,
-    fullPrice,
-  } = product;
+  const { image, name, price, screen, capacity, ram, fullPrice } = product;
 
-  const { toggleFavorite, addToCart } = useCartFavorite();
   const { findNessesaryItem } = useProducts();
-
-  const toogleAddToCart = () => {
-    const detailedProduct = findNessesaryItem(
-      category as CategoryTypeWithoutAllprod,
-      itemId,
-    ) as ProductType;
-    if (detailedProduct !== undefined) {
-      addToCart(detailedProduct);
-    }
-  };
 
   return (
     <div className="card">
@@ -51,7 +20,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         <img src={image} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">
-          <span className="card__price--sale">${price}</span>
+          <span className="card__price--sale">${price} </span>
           <span className="card__price--full">${fullPrice}</span>
         </div>
       </a>
@@ -70,7 +39,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
             <span className="card__param_value">{ram}</span>
           </div>
         </div>
-        <ProductCardButtons />
+        <ProductCardButtons product={product} />
       </div>
     </div>
   );

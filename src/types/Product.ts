@@ -38,4 +38,5 @@ export interface ProductAllType {
   ram: string;
   year: number;
   image: string;
+  count?: number;
 }

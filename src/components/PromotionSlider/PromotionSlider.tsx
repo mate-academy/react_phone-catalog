@@ -3,11 +3,11 @@ import React, { FC, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/Product';
+import { ProductAllType } from '../../types/Product';
 import './PromotionSlider.scss';
 
 type Props = {
-  products: Product[];
+  products: ProductAllType[];
   title: string;
 };
 

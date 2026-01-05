@@ -12,11 +12,11 @@ export const FavoritesPage = () => {
   const { productsAll } = useProducts();
   const { favoriteItems } = useCartFavorite();
 
-  const products: ProductAllType[] = useMemo(() => {
-    return productsAll
-      .filter(product => product.category === 'accessories')
-      .splice(0, 8);
-  }, []);
+  // const products: ProductAllType[] = useMemo(() => {
+  //   return productsAll
+  //     .filter(product => product.category === 'accessories')
+  //     .splice(0, 8);
+  // }, []);
 
   return (
     <section className="catalog">
@@ -27,7 +27,7 @@ export const FavoritesPage = () => {
         <div className="catalog__counter">95 models</div>
 
         <div className="catalog__wrapper">
-          {products.map(item => (
+          {favoriteItems.map(item => (
             <ProductCard key={item.id} product={item} />
           ))}
         </div>
