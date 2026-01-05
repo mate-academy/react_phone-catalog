@@ -19,9 +19,6 @@ export const ButtonFav: React.FC<Props> = ({
 
   const fav = favItems.find(item => item.productId === productId);
   const isFav = !!favItems.find(item => item.productId === productId);
-  const count = favItems.length;
-
-  const showBadge = !fav && count > 0;
 
   const toggleFav = (id: number) => {
     setFavItems((prev: Fav[]) => {
@@ -50,12 +47,6 @@ export const ButtonFav: React.FC<Props> = ({
           href={`/icons/icons.svg#${isFav ? 'filled-heart' : 'heart-icon'}`}
         ></use>
       </svg>
-
-      {showBadge && (
-        <span className={scss.buttonFav__counter} aria-hidden="true">
-          {count}
-        </span>
-      )}
     </button>
   );
 };

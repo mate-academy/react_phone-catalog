@@ -26,6 +26,7 @@ export const Categories = () => {
         name={'Accessories'}
         amount={accessories.length}
         background={'rgba(213, 60, 81, 1)'}
+        zoom={true}
       />
     </section>
   );

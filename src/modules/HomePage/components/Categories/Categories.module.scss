@@ -7,17 +7,13 @@
   @include for-tablets {
     display: grid;
     /* stylelint-disable declaration-block-no-redundant-longhand-properties */
-    grid-template-columns: repeat(3, 18.7rem);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas:
     "title title title"
     "phones tablets accessories";
 
     column-gap: 1.6rem;
-  }
-
-  @include for-desktops {
-    grid-template-columns: repeat(3, 36.8rem);
   }
 
   h2 {

@@ -22,29 +22,6 @@
     transition: border-color 500ms ease;
   }
 
-
-  &__counter {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    min-inline-size: 1.4rem;
-    inline-size: auto;
-    block-size: 1.4rem;
-    border-radius: 50%;
-    padding: 0 .3rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #ef4444;
-    color: #fff;
-    font-weight: 600;
-    font-size: .9rem;
-    line-height: 1;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: opacity .15s ease, transform .15s ease;
-  }
-
   &:hover {
     border-color: rgba(49, 50, 55, 1);
   }

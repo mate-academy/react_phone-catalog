@@ -20,16 +20,18 @@ export const Pictures: React.FC<Props> = ({ activeSlide }) => {
   return (
     <div className={scss.picture}>
       {slides.map((_, i) => {
+        const shouldLoad = Math.abs(i - activeSlide) <= 1;
+
         return (
           <picture key={i}>
-            <source srcSet={slides[i]} type="image/webp" />
+            <source srcSet={shouldLoad ? slides[i] : ''} type="image/webp" />
             <img
-              src={slides[i]}
+              srcSet={shouldLoad ? slides[i] : ''}
               alt={alt}
               className={classNames(scss.picture__img, {
                 [scss.picture__img_active]: activeSlide === i,
               })}
-              loading="lazy"
+              loading={shouldLoad ? 'eager' : 'lazy'}
               decoding="async"
             />
           </picture>

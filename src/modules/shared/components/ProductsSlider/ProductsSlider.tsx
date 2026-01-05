@@ -63,6 +63,25 @@ export const ProductsSlider: React.FC<Props> = ({ title, type }) => {
     return Array.from(groups.values()).flatMap(group => group.slice(0, 3));
   }, [products, type]);
 
+  const getCardsPerPage = () => {
+    if (typeof window === 'undefined') {
+      return 4;
+    }
+
+    if (window.innerWidth >= 1200) {
+      return 4;
+    }
+
+    if (window.innerWidth >= 640) {
+      return 2.5;
+    }
+
+    return 1.2;
+  };
+
+  const cardsPerPage = getCardsPerPage();
+  const buffer = 2;
+
   const prevSlide = useCallback(
     () =>
       setActiveSlide(prev =>
@@ -120,10 +139,18 @@ export const ProductsSlider: React.FC<Props> = ({ title, type }) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {sliderProducts.map(prod => {
+        {sliderProducts.map((prod, index) => {
+          const isVisible =
+            index >= activeSlide - buffer &&
+            index < activeSlide + cardsPerPage + buffer;
+
           return (
             <div className={scss.slider__productCard__container} key={prod.id}>
-              <ProductCard product={prod} hasDiscount={hasDiscount} />
+              {isVisible ? (
+                <ProductCard product={prod} hasDiscount={hasDiscount} />
+              ) : (
+                <div className={scss.slider__productCard__skeleton} />
+              )}
             </div>
           );
         })}

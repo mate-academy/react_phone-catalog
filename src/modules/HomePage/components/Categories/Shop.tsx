@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import scss from './Shop.module.scss';
 
 interface Props {
@@ -5,6 +6,7 @@ interface Props {
   name: string;
   amount: number;
   background: string;
+  zoom?: boolean;
 }
 
 export const Shop: React.FC<Props> = ({
@@ -12,6 +14,7 @@ export const Shop: React.FC<Props> = ({
   name,
   amount,
   background,
+  zoom,
 }) => {
   return (
     <a
@@ -26,7 +29,9 @@ export const Shop: React.FC<Props> = ({
         <img
           src={`/img/category-${category}.png`}
           alt=""
-          className={scss.shopLink__image}
+          className={classNames(scss.shopLink__image, {
+            [scss.shopLink__image_zoom]: zoom,
+          })}
         />
       </div>
       <div className={scss.shopLink__wrapper}>
