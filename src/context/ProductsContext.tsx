@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ProductType } from 'models/product.model';
+
+const FAVORITES_KEY = 'favorites';
+const CART_KEY = 'cart';
 
 type ProductsContextType = {
   products: ProductType[];
@@ -20,8 +23,17 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [products] = useState<ProductType[]>([]);
 
-  const [cart, setCart] = useState<ProductType[]>([]);
-  const [favorites, setFavorites] = useState<ProductType[]>([]);
+  const [cart, setCart] = useState<ProductType[]>(() => {
+    const saved = localStorage.getItem(CART_KEY);
+
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [favorites, setFavorites] = useState<ProductType[]>(() => {
+    const saved = localStorage.getItem(FAVORITES_KEY);
+
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const addToCart = (product: ProductType) => {
     setCart(prev => {
@@ -54,6 +66,11 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const removeFromFav = (productId: number) => {
     setFavorites(prev => prev.filter(item => item.id !== productId));
   };
+
+  useEffect(() => {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }, [favorites, cart]);
 
   return (
     <ProductsContext.Provider

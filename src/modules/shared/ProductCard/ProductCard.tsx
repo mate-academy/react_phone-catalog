@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { ProductType } from 'models/product.model';
+import { useProducts } from 'src/context/ProductsContext';
 
 const favoriteIcons = '/img/icons/';
 
@@ -10,6 +11,7 @@ type ProductCardProps = {
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { addToCart, removeFromCart, addToFav, removeFromFav } = useProducts();
   const navigate = useNavigate();
   const CART_KEY = `cart:${product.id}`;
   const FAV_KEY = `fav:${product.id}`;
@@ -30,8 +32,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     if (value === null) {
       localStorage.setItem(CART_KEY, 'true');
+      addToCart(product);
     } else {
       localStorage.removeItem(CART_KEY);
+      removeFromCart(product.id);
     }
   };
 
@@ -43,8 +47,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     if (value === null) {
       localStorage.setItem(FAV_KEY, 'true');
+      addToFav(product);
     } else {
       localStorage.removeItem(FAV_KEY);
+      removeFromFav(product.id);
     }
   };
 

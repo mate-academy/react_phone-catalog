@@ -7,39 +7,44 @@ import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CategoryPage } from './modules/CategoryPage';
 import { ProductDetailsPage } from './modules/CategoryPage/ProductDetailsPage';
+import { ProductsProvider } from './context/ProductsContext';
 
 export const App = () => {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
+    <ProductsProvider>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
 
-        <Route
-          path="/phones"
-          element={<CategoryPage category="phones" title="Mobile phones" />}
-        />
+          <Route
+            path="/phones"
+            element={<CategoryPage category="phones" title="Mobile phones" />}
+          />
 
-        <Route
-          path="/tablets"
-          element={<CategoryPage category="tablets" title="Tablets" />}
-        />
+          <Route
+            path="/tablets"
+            element={<CategoryPage category="tablets" title="Tablets" />}
+          />
 
-        <Route
-          path="/accessories"
-          element={<CategoryPage category="accessories" title="Accessories" />}
-        />
+          <Route
+            path="/accessories"
+            element={
+              <CategoryPage category="accessories" title="Accessories" />
+            }
+          />
 
-        <Route
-          path="/:category/product/:productId"
-          element={<ProductDetailsPage />}
-        />
+          <Route
+            path="/:category/product/:productId"
+            element={<ProductDetailsPage />}
+          />
 
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/cart" element={<CartPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/cart" element={<CartPage />} />
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </div>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+    </ProductsProvider>
   );
 };
