@@ -6,6 +6,10 @@
   height: 48px;
   border-bottom: 1px solid $color-gray-elements;
 
+  @include desktop {
+    height: 64px;
+  }
+
   &__content {
     @include container;
     @include flex-between;

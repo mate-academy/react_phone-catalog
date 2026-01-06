@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Icon } from '../../components/ui/Icon/Icon';
 import './CartPage.scss';
 import { Button } from '../../components/ui/Button/Button';
@@ -11,10 +11,6 @@ export default function CartPage() {
   const dispatch = useDispatch();
 
   const { totalCount } = useCart();
-
-  // 1. Взять все cartItems
-  // 2. Найти по каждому картайтемся продукт вернуть его цену
-  // 3. умножить цену на кол-во quantity, и все сплюсовать
 
   const totalCostCart = cartItems.reduce((sum, item) => {
     const product = products.find(p => p.itemId === item.id);
@@ -61,44 +57,49 @@ export default function CartPage() {
 
             return (
               <div className="CartPage__item" key={item.id}>
-                <div className="CartPage__row">
-                  <div className="CartPage__item-delete">
-                    <Button
-                      variant="icon"
-                      onClick={() => deleteItemFromCart(product.itemId)}
-                    >
-                      <Icon name="close" />
-                    </Button>
-                  </div>
-
-                  <div className="CartPage__item-photo">
-                    <img src={product.image} alt={product.name} />
-                  </div>
-
-                  <div className="CartPage__item-title">{product.name}</div>
+                <div className="CartPage__item-delete">
+                  <Button
+                    variant="icon"
+                    onClick={() => deleteItemFromCart(product.itemId)}
+                  >
+                    <Icon name="close" />
+                  </Button>
                 </div>
-                <div className="CartPage__row">
-                  <div className="CartPage__quantity-btns">
-                    <Button
-                      variant="square"
-                      disabled={item.quantity === 1}
-                      onClick={() => changeQuantity(item.id, item.quantity - 1)}
-                    >
-                      <Icon name="minus" />
-                    </Button>
-                    <div className="CartPage__quantity-number">
-                      {item.quantity}
-                    </div>
-                    <Button
-                      variant="square"
-                      onClick={() => changeQuantity(item.id, item.quantity + 1)}
-                    >
-                      <Icon name="plus" />
-                    </Button>
+
+                <Link
+                  to={`/${product.category}/${product.itemId}`}
+                  className="CartPage__item-photo"
+                >
+                  <img src={product.image} alt={product.name} />
+                </Link>
+
+                <Link
+                  to={`/${product.category}/${product.itemId}`}
+                  className="CartPage__item-title"
+                >
+                  {product.name}
+                </Link>
+
+                <div className="CartPage__quantity-btns">
+                  <Button
+                    variant="square"
+                    disabled={item.quantity === 1}
+                    onClick={() => changeQuantity(item.id, item.quantity - 1)}
+                  >
+                    <Icon name="minus" />
+                  </Button>
+                  <div className="CartPage__quantity-number">
+                    {item.quantity}
                   </div>
-                  <div className="CartPage__quantity-price">
-                    ${product.price * item.quantity}
-                  </div>
+                  <Button
+                    variant="square"
+                    onClick={() => changeQuantity(item.id, item.quantity + 1)}
+                  >
+                    <Icon name="plus" />
+                  </Button>
+                </div>
+                <div className="CartPage__quantity-price">
+                  ${product.price * item.quantity}
                 </div>
               </div>
             );

@@ -42,7 +42,12 @@
 
   &__action {
     width: 48px;
-    height: 48px;
+    height: 100%;
+
+    @include desktop {
+      width: 64px;
+    }
+
     display: flex;
     align-items: center;
     justify-content: center;
