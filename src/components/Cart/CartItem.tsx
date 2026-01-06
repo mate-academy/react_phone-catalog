@@ -1,9 +1,9 @@
-import React, { FC, useState } from 'react';
-import { CartProduct } from '../../types/CartProduct';
+import { FC, useState } from 'react';
+
 import close from '../../images/icons/close.svg';
 import minus from '../../images/icons/minus.svg';
 import plus from '../../images/icons/plus.svg';
-import fake from '../../images/img/fake.webp';
+
 import { ProductAllType } from '../../types/Product';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const CartItem: FC<Props> = ({ product }) => {
-  const { name, price, image, id } = product;
+  const { name, price, image } = product;
 
   const [quantity, setQuantity] = useState<number>(1);
 

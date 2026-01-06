@@ -1,7 +1,7 @@
-export interface ShopCatagory {
-  id: number;
-  linkTo: string;
+export interface ShopCatagoryType {
+  id: string;
   name: string;
   image: string;
-  countModels: number;
+  numbers: number;
 }
+
