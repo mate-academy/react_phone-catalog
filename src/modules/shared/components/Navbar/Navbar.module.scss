@@ -166,8 +166,8 @@
     height: 48px;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 1px 0 0 0 #e2e6e9;
-
+    box-shadow: inset 1px 0 0 0 var(--border-color);
+    color: var(--text-main);
     @include tablet {
       display: none;
     }

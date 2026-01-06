@@ -66,22 +66,15 @@
     padding: 0;
     cursor: pointer;
     align-self: center;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 
-    @include desktop {
-      &:hover {
-        .footer__backtoTopText {
-          color: var(--text-main);
-        }
-        
-        .footer__backtoTopIcon {
-          border-color: var(--btn-hover-color);
-          &--dark {
-            &:hover {
-              background-color: var(--btn-hover-color);
-            }
-          }
-        }
+    &:hover {
+      .footer__backtoTopText {
+        color: var(--text-main);
+      }
+
+      .footer__backtoTopIcon {
+        border-color: var(--text-main);
       }
     }
   }
@@ -95,18 +88,17 @@
       $font-mont-semibold
     );
     color: var(--text-secondary);
-    transition: color 0.3s;
+    transition: color 0.3s ease;
   }
 
   &__backtoTopIcon {
     background: var(--btn-bg);
     border: 1px solid var(--btn-border);
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     transition: all 0.3s ease;
     color: var(--text-main);
   }

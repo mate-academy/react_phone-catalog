@@ -7,7 +7,6 @@ import { getProductDetails, getProducts } from '@/api/api';
 import { specsConfig } from '../shared/components/utils/constants/constants';
 import ProductGallery from './ProductGallery';
 import { ProductConfigurator } from './ProductConfigurator';
-import { SliderComponent } from '../HomePage/components/SliderComponent';
 import { BackButton } from '../shared/components/BackButton/BackButton';
 import styles from './ProductPage.module.scss';
 import { recentlyViewedService } from '../shared/components/utils/RecentlyViewed/RecentlyViewed';
@@ -17,7 +16,7 @@ import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 
 export const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('');
