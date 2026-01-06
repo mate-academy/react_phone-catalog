@@ -5,8 +5,6 @@ import { useTheme } from '../context/ThemeContext';
 import { useCartContext } from '../context/CartContext';
 import './Header.scss';
 
-const BASE = import.meta.env.BASE_URL;
-
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favorites } = useFavorites();
@@ -58,7 +56,7 @@ export const Header: React.FC = () => {
       <div className="header__container">
         {/* Logo */}
         <Link to="/" className="header__logo">
-          <img src={`${BASE}img/Logo.svg`} alt="Nice Gadgets" />
+          <img src={`img/Logo.svg`} alt="Nice Gadgets" />
         </Link>
         {showSearch && (
           <div className="header__search-wrapper">
@@ -86,7 +84,7 @@ export const Header: React.FC = () => {
               >
                 <img
                   className="header__search-icon-img"
-                  src={`${BASE}img/icons/close.svg`}
+                  src={`img/icons/close.svg`}
                   alt="Clear"
                 />
               </button>
@@ -94,7 +92,7 @@ export const Header: React.FC = () => {
               <span className="header__search-icon">
                 <img
                   className="header__search-icon-img"
-                  src={`${BASE}img/icons/search.svg`}
+                  src={`img/icons/search.svg`}
                   alt="Search"
                 />
               </span>
@@ -131,7 +129,7 @@ export const Header: React.FC = () => {
               className="header__mobile-tab"
               onClick={() => setIsMenuOpen(false)}
             >
-              <img src={`${BASE}img/icons/favourites.svg`} alt="Favorites" />
+              <img src={`img/icons/favourites.svg`} alt="Favorites" />
             </Link>
 
             <Link
@@ -139,7 +137,7 @@ export const Header: React.FC = () => {
               className="header__mobile-tab"
               onClick={() => setIsMenuOpen(false)}
             >
-              <img src={`${BASE}img/icons/cart.svg`} alt="Cart" />
+              <img src={`img/icons/cart.svg`} alt="Cart" />
             </Link>
           </div>
         </nav>
@@ -147,14 +145,14 @@ export const Header: React.FC = () => {
         {/* Icons + burger */}
         <div className="header__icons">
           <Link to="/favorites" className="icon">
-            <img src={`${BASE}img/icons/favourites.svg`} alt="Favorites" />
+            <img src={`img/icons/favourites.svg`} alt="Favorites" />
             {favoritesCount > 0 && (
               <span className="icon__badge">{favoritesCount}</span>
             )}
           </Link>
 
           <Link to="/cart" className="icon">
-            <img src={`${BASE}img/icons/cart.svg`} alt="Cart" />
+            <img src={`img/icons/cart.svg`} alt="Cart" />
             {cartCount > 0 && <span className="icon__badge">{cartCount}</span>}
           </Link>
 
@@ -165,11 +163,7 @@ export const Header: React.FC = () => {
             aria-expanded={isMenuOpen}
           >
             <img
-              src={
-                isMenuOpen
-                  ? `${BASE}img/icons/close.svg`
-                  : `${BASE}img/icons/union.svg`
-              }
+              src={isMenuOpen ? `img/icons/close.svg` : `img/icons/union.svg`}
               alt="Menu"
             />
           </button>

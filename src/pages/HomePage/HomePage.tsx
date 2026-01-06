@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import '../../styles/grid.scss';
 import './HomePage.scss';
 import { ProductList } from '../../components/ProductList';
@@ -7,55 +6,47 @@ import { Banner } from '../../components/Banner';
 import { CategoryCard } from '../../components/CategoryCard';
 import { getCategoryCounts } from '../../utils/getCategoryCounts';
 import { Product } from '../../types/Product';
-
-const BASE = import.meta.env.BASE_URL;
-
 export const HomePage: React.FC = () => {
   const trackRefNew = useRef<HTMLDivElement>(null);
   const trackRefHot = useRef<HTMLDivElement>(null);
-
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
   const [counts, setCounts] = useState({
     phones: 0,
     tablets: 0,
     accessories: 0,
   });
-
   // -------------------------------
   // Load all products
   // -------------------------------
+
   useEffect(() => {
     setLoading(true);
-
-    fetch(`${BASE}/api/products.json`)
+    fetch(`api/products.json`)
       .then(res => res.json())
       .then((data: Product[]) => {
         setAllProducts(data);
         setLoading(false);
       });
   }, []);
-
   // -------------------------------
   // Category counts
   // -------------------------------
   useEffect(() => {
     getCategoryCounts().then(setCounts);
   }, []);
-
   // -------------------------------
   // NEW MODELS (сортуємо по year)
   // -------------------------------
-
   const phones = allProducts.filter(p => p.category === 'phones');
-
   const newProducts = [...phones]
-    .filter(p => ['13', '14'].some(model => p.itemId.includes(model)))
+    /*.filter(p => ['13', '14'].some(model => p.itemId.includes(model)))
     .map(p => ({
       ...p,
       price: p.fullPrice, // підміняємо на regular price
     }))
+    .slice(0, 10);*/
+    .sort((a, b) => b.year - a.year)
     .slice(0, 10);
 
   // -------------------------------
@@ -65,7 +56,6 @@ export const HomePage: React.FC = () => {
     .filter(p => p.price < p.fullPrice)
     .sort((a, b) => (a.price ?? a.fullPrice!) - (b.price ?? b.fullPrice!))
     .slice(0, 10);
-
   // -------------------------------
   // Slider scroll
   // -------------------------------
@@ -90,10 +80,8 @@ export const HomePage: React.FC = () => {
       <div className="container">
         <div className="grid">
           <h1 className="home__title">Product Catalog</h1>
-
           {/* Banner */}
           <Banner />
-
           {/* Brand new */}
           <section className="home__section">
             <div className="home__grid">
@@ -103,14 +91,14 @@ export const HomePage: React.FC = () => {
                   className="product-list__arrow product-list__arrow-left"
                   onClick={() => handleScroll(trackRefNew, 'left')}
                 >
-                  <img src={`${BASE}img/icons/left.svg`} alt="Prev" />
+                  <img src="img/icons/left.svg" alt="Prev" />
                 </button>
 
                 <button
                   className="product-list__arrow product-list__arrow-right"
                   onClick={() => handleScroll(trackRefNew, 'right')}
                 >
-                  <img src={`${BASE}img/icons/right.svg`} alt="Next" />
+                  <img src="img/icons/right.svg" alt="Next" />
                 </button>
               </div>
             </div>
@@ -121,38 +109,33 @@ export const HomePage: React.FC = () => {
               trackRef={trackRefNew}
             />
           </section>
-
           {/* Categories */}
           <section className="home__section">
             <h2 className="home__subtitle">Shop by category</h2>
-
             <div className="category-grid">
               <CategoryCard
                 title="Mobile phones"
                 count={counts.phones}
-                image={`${BASE}img/category-phones.webp`}
+                image="img/category-phones.webp"
                 bg="#6D6474"
                 mod="phones"
               />
-
               <CategoryCard
                 title="Tablets"
                 count={counts.tablets}
-                image={`${BASE}img/category-tablets.webp`}
+                image="img/category-tablets.webp"
                 bg="#8D8D92"
                 mod="tablets"
               />
-
               <CategoryCard
                 title="Accessories"
                 count={counts.accessories}
-                image={`${BASE}img/category-accessories.webp`}
+                image="img/category-accessories.webp"
                 bg="#FFC0CB"
                 mod="accessories"
               />
             </div>
           </section>
-
           {/* Hot prices */}
           <section className="home__section">
             <div className="home__grid">
@@ -162,14 +145,13 @@ export const HomePage: React.FC = () => {
                   className="product-list__arrow product-list__arrow-left"
                   onClick={() => handleScroll(trackRefHot, 'left')}
                 >
-                  <img src={`${BASE}img/icons/left.svg`} alt="Prev" />
+                  <img src="img/icons/left.svg" alt="Prev" />
                 </button>
-
                 <button
                   className="product-list__arrow product-list__arrow-right"
                   onClick={() => handleScroll(trackRefHot, 'right')}
                 >
-                  <img src={`${BASE}img/icons/right.svg`} alt="Next" />
+                  <img src="img/icons/right.svg" alt="Next" />
                 </button>
               </div>
             </div>

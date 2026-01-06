@@ -2,8 +2,6 @@ import React from 'react';
 import './Footer.scss';
 import { useLang } from '../context/LanguageContext';
 
-const BASE = import.meta.env.BASE_URL;
-
 export const Footer: React.FC = () => {
   const { lang, setLang } = useLang();
   const handleScrollToTop = () => {
@@ -15,7 +13,7 @@ export const Footer: React.FC = () => {
       <div className="footer__container">
         {/* Логотип */}
         <div className="footer__logo">
-          <img src={`${BASE}img/Logo.svg`} alt="Nice Gadgets" />
+          <img src={`img/Logo.svg`} alt="Nice Gadgets" />
         </div>
 
         {/* Навигация */}
@@ -45,7 +43,7 @@ export const Footer: React.FC = () => {
         >
           <span>Back to top</span>
           <div className="footer__arrow">
-            <img src={`${BASE}img/icons/up.svg`} alt="Up" />
+            <img src={`img/icons/up.svg`} alt="Up" />
           </div>
         </button>
       </div>

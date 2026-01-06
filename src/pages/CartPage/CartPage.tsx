@@ -5,8 +5,6 @@ import { CartItem } from '../../components/CartItem';
 import { useCartContext } from '../../context/CartContext';
 import './CartPage.scss';
 
-const BASE = import.meta.env.BASE_URL;
-
 export const CartPage: React.FC = () => {
   const { cartItems, total } = useCartContext();
   const navigate = useNavigate();
@@ -15,7 +13,7 @@ export const CartPage: React.FC = () => {
     <section className="cart-page">
       <div className="container">
         <button className="product-details__back" onClick={() => navigate(-1)}>
-          <img src={`${BASE}img/icons/left.svg`} alt="Back" />
+          <img src={`img/icons/left.svg`} alt="Back" />
           Back
         </button>
         <h1 className="cart-page__title">Cart</h1>

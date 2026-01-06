@@ -9,8 +9,6 @@ import { normalizeProduct } from '../utils/normalizeProduct';
 import { useCartContext } from '../context/CartContext';
 import { getSuggestedProducts } from '../utils/getSuggestedProducts';
 
-const BASE = import.meta.env.BASE_URL;
-
 /* ---------- Types ---------- */
 type ProductDetails = ReturnType<typeof normalizeProduct>;
 
@@ -61,7 +59,7 @@ export const ProductDetailsPage: React.FC = () => {
     setLoading(true);
     setError(false);
 
-    fetch(`${BASE}api/products.json`)
+    fetch(`api/products.json`)
       .then(r => r.json())
       .then((products: Product[]) => {
         const base = products.find(p => p.itemId === productId);
@@ -79,15 +77,15 @@ export const ProductDetailsPage: React.FC = () => {
         let detailsFile = '';
 
         if (base.category === 'phones') {
-          detailsFile = `${BASE}api/phones.json`;
+          detailsFile = `api/phones.json`;
         }
 
         if (base.category === 'tablets') {
-          detailsFile = `${BASE}api/tablets.json`;
+          detailsFile = `api/tablets.json`;
         }
 
         if (base.category === 'accessories') {
-          detailsFile = `${BASE}api/accessories.json`;
+          detailsFile = `api/accessories.json`;
         }
 
         return fetch(detailsFile)
@@ -156,7 +154,7 @@ export const ProductDetailsPage: React.FC = () => {
     addItem({
       id: product.id,
       name: product.name,
-      image: `${BASE}${product.images[0]}`,
+      image: `${product.images[0]}`,
       price: product.price || product.fullPrice,
       capacity: activeCapacity,
       color: activeColor,
@@ -226,14 +224,14 @@ export const ProductDetailsPage: React.FC = () => {
         <div className="breadcrumbs">
           <Link to="/" className="breadcrumbs__link">
             <img
-              src={`${BASE}img/icons/home.svg`}
+              src={`img/icons/home.svg`}
               alt="Home"
               className="breadcrumbs__home"
               onClick={() => navigate('/')}
             />
           </Link>
           <img
-            src={`${BASE}img/icons/right.svg`}
+            src={`img/icons/right.svg`}
             alt=">"
             className="breadcrumbs__sep"
           />
@@ -241,14 +239,14 @@ export const ProductDetailsPage: React.FC = () => {
             {categoryTitleMap[product.category]}
           </Link>
           <img
-            src={`${BASE}img/icons/right.svg`}
+            src={`img/icons/right.svg`}
             alt=">"
             className="breadcrumbs__sep"
           />
           <span className="breadcrumbs__current">{product.name}</span>
         </div>
         <button className="product-details__back" onClick={() => navigate(-1)}>
-          <img src={`${BASE}img/icons/left.svg`} alt="Back" />
+          <img src={`img/icons/left.svg`} alt="Back" />
           Back
         </button>
 
@@ -270,13 +268,13 @@ export const ProductDetailsPage: React.FC = () => {
                     }`}
                     onClick={() => setActiveImage(i)}
                   >
-                    <img src={`${BASE}${src}`} alt="" />
+                    <img src={`${src}`} alt="" />
                   </button>
                 ))}
               </div>
 
               <div className="pd-gallery__main">
-                <img src={`${BASE}${images[activeImage]}`} alt="" />
+                <img src={`${images[activeImage]}`} alt="" />
               </div>
             </div>
           </div>
@@ -352,8 +350,8 @@ export const ProductDetailsPage: React.FC = () => {
                 <img
                   src={
                     isInFavorites
-                      ? `${BASE}img/icons/red.svg`
-                      : `${BASE}img/icons/favourites.svg`
+                      ? `img/icons/red.svg`
+                      : `img/icons/favourites.svg`
                   }
                   alt="Add to favorites"
                 />
@@ -471,13 +469,13 @@ export const ProductDetailsPage: React.FC = () => {
                   className="product-list__arrow product-list__arrow-left"
                   onClick={() => handleScroll('left')}
                 >
-                  <img src={`${BASE}img/icons/left.svg`} alt="Prev" />
+                  <img src={`img/icons/left.svg`} alt="Prev" />
                 </button>
                 <button
                   className="product-list__arrow product-list__arrow-right"
                   onClick={() => handleScroll('right')}
                 >
-                  <img src={`${BASE}img/icons/right.svg`} alt="Next" />
+                  <img src={`img/icons/right.svg`} alt="Next" />
                 </button>
               </div>
             </div>

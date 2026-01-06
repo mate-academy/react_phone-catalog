@@ -54,6 +54,7 @@ justify-content: space-between;
 }
 
 
+
 .product-list__arrow {
   display: flex;
   margin-right: 0;
@@ -78,7 +79,7 @@ justify-content: space-between;
   &-left {
   width: 32px;
   height: 32px;
-  
+
   @media (max-width: 1199px) {
    width: 24px;
    height: 24px;

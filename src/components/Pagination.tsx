@@ -7,8 +7,6 @@ type Props = {
   onChange: (newPage: number) => void;
 };
 
-const BASE = import.meta.env.BASE_URL;
-
 export const Pagination: React.FC<Props> = ({ page, totalPages, onChange }) => {
   const makePages = () => {
     const pages: (number | 'dots')[] = [];
@@ -45,7 +43,7 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onChange }) => {
         disabled={page === 1}
         onClick={() => onChange(page - 1)}
       >
-        <img src={`${BASE}img/icons/left.svg`} alt="prev" />
+        <img src={`img/icons/left.svg`} alt="prev" />
       </button>
 
       {makePages().map((p, i) =>
@@ -69,7 +67,7 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onChange }) => {
         disabled={page === totalPages}
         onClick={() => onChange(page + 1)}
       >
-        <img src={`${BASE}img/icons/right.svg`} alt="prev" />
+        <img src={`img/icons/right.svg`} alt="prev" />
       </button>
     </div>
   );

@@ -19,9 +19,7 @@
 .product-list--slider {
   width: 100%;
   grid-column: 1/-1;
-  overflow: auto hidden;
-
-  /* padding-bottom: 8px; */
+  overflow: hidden;
   scroll-behavior: smooth;
   margin-top: 32px;
 

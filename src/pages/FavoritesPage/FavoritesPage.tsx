@@ -3,8 +3,6 @@ import { useFavorites } from '../../context/FavoritesContext';
 import { ProductCard } from '../../components/ProductCard';
 import '../FavoritesPage/Favorites.scss';
 
-const BASE = import.meta.env.BASE_URL;
-
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();
 
@@ -12,7 +10,7 @@ export const FavoritesPage: React.FC = () => {
     <section className="favorites-page">
       <div className="container">
         <div className="favorites-page__breadcrumbs">
-          <img src={`${BASE}img/icons/home.svg`} alt="home" />
+          <img src={`img/icons/home.svg`} alt="home" />
           <span> / Favourites</span>
         </div>
 

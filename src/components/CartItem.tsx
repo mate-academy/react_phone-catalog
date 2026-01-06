@@ -7,8 +7,6 @@ type Props = {
   item: CartItemType;
 };
 
-const BASE = import.meta.env.BASE_URL;
-
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { increase, decrease, remove } = useCartContext();
 
@@ -20,12 +18,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       </button>
 
       {/* IMAGE */}
-      <img
-        src={`${BASE}${item.image}`}
-        alt={item.name}
-        className="cart-item__image"
-      />
-
+      <img src={item.image} alt={item.name} className="cart-item__image" />
       {/* NAME */}
       <p className="cart-item__name">{item.name}</p>
 
@@ -36,14 +29,14 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             className="cart-item__btn cart-item__btn--minus"
             onClick={() => decrease(item.id)}
           >
-            <img src={`${BASE}img/icons/minus.svg`} alt="-" />
+            <img src={`img/icons/minus.svg`} alt="-" />
           </button>
           <span className="cart-item__count">{item.quantity}</span>
           <button
             className="cart-item__btn cart-item__btn--plus"
             onClick={() => increase(item.id)}
           >
-            <img src={`${BASE}img/icons/plus.svg`} alt="+" />
+            <img src={`img/icons/plus.svg`} alt="+" />
           </button>
         </div>
 

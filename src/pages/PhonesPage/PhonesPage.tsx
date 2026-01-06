@@ -5,8 +5,6 @@ import { Pagination } from '../../components/Pagination';
 import { Product } from '../../types/Product';
 import './PhonesPage.scss';
 
-const BASE = import.meta.env.BASE_URL;
-
 export const PhonesPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +23,7 @@ export const PhonesPage: React.FC = () => {
         : 'all';
 
   useEffect(() => {
-    fetch(`${BASE}api/products.json`)
+    fetch(`api/products.json`)
       .then(r => r.json())
       .then((data: Product[]) => {
         setAllProducts(data);
@@ -101,7 +99,7 @@ export const PhonesPage: React.FC = () => {
     <section className="phones">
       <div className="container">
         <div className="phones__breadcrumbs">
-          <img src={`${BASE}img/icons/home.svg`} alt="home" />
+          <img src={`img/icons/home.svg`} alt="home" />
           <span> / Phones</span>
         </div>
 
@@ -147,7 +145,7 @@ export const PhonesPage: React.FC = () => {
         {!loading && filtered.length === 0 && (
           <div className="products-empty">
             <img
-              src={`${BASE}img/icons/search.svg`}
+              src={`img/icons/search.svg`}
               alt="Nothing found"
               className="products-empty__icon"
             />
