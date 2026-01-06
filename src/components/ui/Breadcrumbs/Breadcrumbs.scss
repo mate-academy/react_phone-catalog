@@ -1,0 +1,50 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.Breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+
+  .Icon {
+    fill: $color-secondary;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  &__element a {
+    display: flex;
+    color: $color-secondary;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__element {
+    min-width: 0;
+
+    a.Breadcrumbs__productname {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+
+  .fill a {
+    color: $color-primary;
+  }
+}
+

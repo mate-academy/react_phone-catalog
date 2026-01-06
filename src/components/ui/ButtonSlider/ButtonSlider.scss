@@ -1,0 +1,29 @@
+@import '../../../styles/variables';
+
+.ButtonSlider {
+  background-color: transparent;
+  border: 1px solid $color-gray-elements;
+  cursor: pointer;
+
+  &--slider {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:disabled {
+      svg {
+        fill: $color-gray-elements;
+      }
+
+    }
+  }
+
+  &--banner {
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

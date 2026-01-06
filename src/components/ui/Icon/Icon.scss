@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+
+.Icon {
+  width: 16px;
+  height: 16px;
+}
+
+
+.icon-with-badge {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+
+  .badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: $color-red;
+    color: $color-white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-family-main;
+    font-size: 9px;
+    font-weight: $font-weight-semibold;
+    text-align: center;
+    border: 1px solid $color-white;
+  }
+}

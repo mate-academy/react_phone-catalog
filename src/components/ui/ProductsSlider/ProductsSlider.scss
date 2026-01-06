@@ -1,0 +1,38 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.ProductsSlider {
+  @include container;
+
+  margin-block: 60px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: $font-h2-size-mobile;
+    color: $color-primary;
+    line-height: 140%;
+    font-weight: 800;
+    width: 100%;
+
+    @include tablet-up {
+      font-size: $font-h2-size;
+      width: 100%;
+    }
+  }
+
+  .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+}

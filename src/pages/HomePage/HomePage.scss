@@ -1,0 +1,29 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.HomePage {
+
+  &__title {
+    @include container;
+
+    margin-block: 24px;
+
+    @include tablet {
+      margin-block: 32px;
+    }
+
+    @include desktop {
+      margin-block: 56px;
+    }
+
+    font-size: $font-h1-size-mobile;
+    line-height: $font-h1-height-mobile;
+    letter-spacing: $font-h1-spacing;
+    font-weight: $font-h1-weight;
+
+    @include tablet-up {
+      font-size: $font-h1-size;
+      line-height: $font-h1-height;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.CatalogPage {
+  @include container;
+
+  &__title {
+    margin-block: 0 8px;
+    font-size: $font-h1-size-mobile;
+    letter-spacing: $font-h1-spacing;
+    font-weight: $font-h1-weight;
+    line-height: $font-h1-height-mobile;
+
+    @include tablet-up {
+      font-size: $font-h1-size;
+      line-height: $font-h1-height;
+    }
+  }
+
+  &__models {
+    padding-bottom: 40px;
+    color: $color-secondary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__breadcrumbs {
+    padding-block: 25px;
+
+    @include tablet-up {
+      padding-block: 25px 40px;
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+
+    @include tablet-up {
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 40px 8px;
+    }
+
+    .PreviewProductCard {
+      max-width: 100%;
+    }
+
+    .PreviewProductCard__btns {
+      justify-content: space-between;
+
+      .button--primary {
+        width: 100%;
+      }
+    }
+
+    .PreviewProductCard__img {
+      margin-bottom: 24px;
+      max-height: 130px;
+      display: flex;
+      justify-content: center;
+
+      @include tablet-up {
+        max-height: 175px;
+      }
+
+      @include desktop {
+        max-height: 196px;
+      }
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+  }
+}
