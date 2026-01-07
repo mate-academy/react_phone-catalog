@@ -8,10 +8,13 @@ import 'swiper/css/pagination';
 import styles from './BannerSlider.module.scss';
 import { ArrowIcon } from '../../../../components/icons';
 import useLanguageStore from '../../../../stores/useLanguageStore';
+import iphone17Pro from '../../../../images/apple-iPad-Pro-13-4k.webp';
+import iPadPro13 from '../../../../images/apple-iPad-Pro-13-4k.webp';
+import watchUltra3 from '../../../../images/apple-watch-ultra-3-4k.webp';
 
 const slides = [
   {
-    image: 'src/images/iphone-17-pro-4k.webp',
+    image: iphone17Pro,
     // imageLarge: '/src/images/hero-iphone-17-pro-large-empty.png',
     alt: 'iPhone 14 Pro',
     titleKey: 'banner_iphone_title',
@@ -20,7 +23,7 @@ const slides = [
     link: '/phones/apple-iphone-17-pro-1tb-orange',
   },
   {
-    image: 'src/images/apple-iPad-Pro-13-4k.webp',
+    image: iPadPro13,
     // imageLarge: '/src/images/hero-apple-iPad-Pro-13-large-empty.png',
     alt: 'iPad 13 Pro',
     titleKey: 'banner_ipad_title',
@@ -29,7 +32,7 @@ const slides = [
     link: '/tablets/apple-ipad-pro-13-m4-2024-2tb-space-black',
   },
   {
-    image: 'src/images/apple-watch-ultra-3-4k.webp',
+    image: watchUltra3,
     // imageLarge: '/src/images/hero-apple-watch-ultra-3-large-empty.png',
     alt: 'apple watch',
     titleKey: 'banner_watch_title',

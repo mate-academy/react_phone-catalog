@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './Categories.module.scss';
 import { Link } from 'react-router-dom';
 import useLanguageStore from '../../../../stores/useLanguageStore';
+import categoryPhones from '../../../../images/category-phones.webp';
+import categoryTablets from '../../../../images/category-tablets.webp';
+import categoryAccessories from '../../../../images/category-accessories.webp';
 
 type Props = {
   totalPhones: number | undefined;
@@ -20,21 +23,21 @@ export const Categories: React.FC<Props> = ({
     {
       title: t('nav_phones'),
       models: `${totalPhones} ${t('category_models_count')}`,
-      image: 'src/images/category-phones.webp',
+      image: categoryPhones,
       link: '/phones',
       bgColor: '#6D6474',
     },
     {
       title: t('nav_tablets'),
       models: `${totalTablets} ${t('category_models_count')}`,
-      image: 'src/images/category-tablets.webp',
+      image: categoryTablets,
       link: '/tablets',
       bgColor: '#8D8D92',
     },
     {
       title: t('nav_accessories'),
       models: `${totalAccessories} ${t('category_models_count')}`,
-      image: 'src/images/category-accessories.webp',
+      image: categoryAccessories,
       link: '/accessories',
       bgColor: '#973D5F',
     },
