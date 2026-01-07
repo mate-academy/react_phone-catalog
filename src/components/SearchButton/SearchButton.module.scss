@@ -1,12 +1,8 @@
-@use '../../styles/resources' as *;
+@use '@/styles/resources' as *;
 
 .searchBtn {
-  width: $header-height;
-  aspect-ratio: 1 / 1;
-  position: relative;
-  border-left: 1px solid $elements-color;
   cursor: pointer;
   color: $primary-color;
 
-  @include flex-center;
+  @include header-square-btn;
 }

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Menu.module.scss';
-import { ROUTES } from '../../constants/routes';
+import { ROUTES } from '@/constants/routes';
 import classNames from 'classnames';
 import { LuShoppingBag } from 'react-icons/lu';
 import { FaRegHeart } from 'react-icons/fa6';

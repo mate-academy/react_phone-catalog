@@ -28,3 +28,22 @@ ol {
 a {
   text-decoration: none;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $radius;
+  background: $card-border-color;
+
+  @include transition(background-color, $color-transition);
+
+  @include hover {
+    background-color: $secondary-color;
+  }
+}

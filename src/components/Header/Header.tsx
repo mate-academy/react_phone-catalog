@@ -10,6 +10,7 @@ import { SearchButton } from '../SearchButton';
 interface Props {
   isActiveMenu?: boolean;
   toggleMenu?: () => void;
+  closeMenu?: () => void;
   onSearch?: () => void;
 }
 
@@ -17,7 +18,13 @@ export const Header: FC<Props> = ({
   isActiveMenu = false,
   toggleMenu = () => {},
   onSearch = () => {},
+  closeMenu = () => {},
 }) => {
+  const handleOpenSearchModal = () => {
+    closeMenu();
+    onSearch();
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
@@ -29,7 +36,7 @@ export const Header: FC<Props> = ({
       </div>
 
       <div className={styles.btnsWrapper}>
-        <SearchButton onClick={onSearch} />
+        <SearchButton onClick={handleOpenSearchModal} />
         <button
           className={classNames(styles.headerMenuBtn, {
             [styles.headerMenuBtnActive]: isActiveMenu,

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './Search.module.scss';
+import styles from './SearchInput.module.scss';
 import classNames from 'classnames';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   onChange: (value: string) => void;
 }
 
-export const Search: FC<Props> = ({
+export const SearchInput: FC<Props> = ({
   className,
   placeholder = 'Search something...',
   onChange,

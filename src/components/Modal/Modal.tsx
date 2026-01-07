@@ -13,14 +13,8 @@ interface Props {
 }
 
 interface ModalComponent extends FC<Props> {
-  Header: FC<{
-    title: string;
-    withIcon?: boolean;
-    icon?: ReactNode;
-    className?: string;
-  }>;
-  Body: FC<{ children: ReactNode }>;
-  Footer: FC<{
+  Body: FC<{ children: ReactNode; className?: string }>;
+  Actions: FC<{
     onCancel: () => void;
     onSubmit: () => void;
   }>;
@@ -49,32 +43,23 @@ export const Modal: ModalComponent = ({
   );
 };
 
-Modal.Header = function ModalHeader({ title, icon, withIcon, className }) {
-  return (
-    <div className={classNames(styles.header, className)}>
-      {withIcon && icon}
-      <h2 className={styles.title}>{title}</h2>
-    </div>
-  );
+Modal.Body = function ModalBody({ children, className }) {
+  return <div className={className}>{children}</div>;
 };
 
-Modal.Body = function ModalBody({ children }) {
-  return <div>{children}</div>;
-};
-
-Modal.Footer = function ModalFooter({ onCancel, onSubmit }) {
+Modal.Actions = function ModalActions({ onCancel, onSubmit }) {
   return (
-    <div className={styles.footer}>
+    <div className={styles.actions}>
       <Button
         variant="outline"
-        className={classNames(styles.footerBtn, styles.cancelBtn)}
+        className={classNames(styles.actionsBtn, styles.cancelBtn)}
         onClick={onCancel}
       >
         Cancel
       </Button>
       <Button
         variant="primary"
-        className={classNames(styles.footerBtn, styles.confirmBtn)}
+        className={classNames(styles.actionsBtn, styles.confirmBtn)}
         onClick={onSubmit}
       >
         Confirm

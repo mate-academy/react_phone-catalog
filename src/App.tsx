@@ -2,30 +2,45 @@ import { Outlet } from 'react-router-dom';
 import './styles/index.scss';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
-import { useSidebar } from './hooks/useSidebar';
 import { Footer } from './components/Footer';
-import { useModal } from './hooks/useModal';
-import { SearchModal } from './components/SearchModal';
+import { useDisclosure } from './hooks/useDisclosure';
+import { Search } from './modules/Search';
 
 export const App = () => {
-  const { isOpen, handleToggleSidebar } = useSidebar();
-  const { isOpen: isOpenSearchWindow, toggleModal, closeModal } = useModal();
+  const {
+    isOpen: isSidebarOpen,
+    toggle: toggleSidebar,
+    close: closeSidebar,
+  } = useDisclosure(false, {
+    closeOnLocationChange: true,
+    lockScroll: true,
+  });
+
+  const {
+    isOpen: isSearchOpen,
+    toggle: toggleSearch,
+    close: closeSearch,
+  } = useDisclosure(false, {
+    lockScroll: true,
+    closeOnLocationChange: true,
+  });
 
   return (
     <div className="App">
       <Header
-        isActiveMenu={isOpen}
-        toggleMenu={handleToggleSidebar}
-        onSearch={toggleModal}
+        isActiveMenu={isSidebarOpen}
+        toggleMenu={toggleSidebar}
+        onSearch={toggleSearch}
+        closeMenu={closeSidebar}
       />
-      <Sidebar isActive={isOpen} />
+      <Sidebar isActive={isSidebarOpen} />
       <main className="main">
         <Outlet />
       </main>
 
       <Footer />
 
-      <SearchModal isOpen={isOpenSearchWindow} onClose={closeModal} />
+      <Search isOpen={isSearchOpen} onClose={closeSearch} />
     </div>
   );
 };

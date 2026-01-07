@@ -4,24 +4,23 @@ import { FC } from 'react';
 import styles from './SearchList.module.scss';
 import { SearchItem } from '../SearchItem';
 import { SearchItemSkeleton } from '../SearchItemSkeleton/SearchItemSkeleton';
+import classNames from 'classnames';
 
 interface Props {
   products: Product[];
   isLoading?: boolean;
   itemsToLoad?: number;
+  className?: string;
 }
 
 export const SearchList: FC<Props> = ({
   products,
   isLoading,
   itemsToLoad = 10,
+  className,
 }) => {
-  if (!isLoading && products.length === 0) {
-    return <p className={styles.message}>No products found</p>;
-  }
-
   return (
-    <ul className={styles.list}>
+    <ul className={classNames(styles.list, className)}>
       {isLoading &&
         Array.from({ length: itemsToLoad }).map((_, index) => (
           <li key={`loading-search-item-${index}`}>

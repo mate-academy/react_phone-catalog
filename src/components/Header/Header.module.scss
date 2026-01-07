@@ -3,7 +3,7 @@
 .header {
   background-color: $main-bg;
   height: $header-height;
-  gap: $main-gap;
+  gap: 16px;
   position: sticky;
   top: 0;
   border-bottom: 1px solid $elements-color;
@@ -12,7 +12,7 @@
   @include flex-between-center;
 
   @include on-desktop {
-    gap: n-gap(1.5);
+    gap: 24px;
   }
 }
 
@@ -20,14 +20,14 @@
   padding-inline: $main-gap;
 
   @include on-desktop {
-    padding-inline: n-gap(1.5);
+    padding-inline: 24px;
   }
 }
 
 .btnsWrapper {
   display: flex;
 
-  @include on-tablet {
+  @include on-small-desktop {
     display: none;
   }
 }
@@ -36,19 +36,13 @@
   display: none;
   flex: 1;
 
-  @include on-tablet {
+  @include on-small-desktop {
     display: block;
   }
 }
 
 .headerMenuBtn {
-  display: block;
-  width: $header-height;
-  aspect-ratio: 1 / 1;
-  position: relative;
-  border-left: 1px solid $elements-color;
-
-  @include flex-center;
+  @include header-square-btn;
 
   &::before,
   &::after,

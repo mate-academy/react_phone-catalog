@@ -14,7 +14,7 @@
 
   @include transition((transform, opacity), $transition);
 
-  @include on-tablet {
+  @include on-small-desktop {
     display: none;
   }
 }

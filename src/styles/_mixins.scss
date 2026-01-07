@@ -147,3 +147,13 @@
   transition-duration: $duration;
   transition-timing-function: $easing;
 }
+
+@mixin header-square-btn {
+  width: $header-height;
+  aspect-ratio: 1 / 1;
+  display: block;
+  position: relative;
+  border-left: 1px solid $elements-color;
+
+  @include flex-center;
+}

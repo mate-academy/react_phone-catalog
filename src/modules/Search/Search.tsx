@@ -1,0 +1,83 @@
+import { useDebounce } from '@/hooks/useDebounce';
+import { FC, useState } from 'react';
+import { useFetch } from '../shared/hooks/useFetch';
+import { Product } from '@/types/Product';
+import { Options } from '@/types/FetchOptions';
+import { getProductsByQuery } from '@/api/product.service';
+import { Modal } from '@/components/Modal';
+
+import styles from './Search.module.scss';
+import { IoClose } from 'react-icons/io5';
+import { SearchInput } from './components/SearchInput';
+import { SearchList } from './components/SearchList';
+
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ITEMS_TO_SHOW = 10;
+
+export const Search: FC<Props> = ({ isOpen, onClose }) => {
+  const [query, setQuery] = useState('');
+  const debouncedQuery = useDebounce<string>(query, 1000);
+
+  const { data, loading } = useFetch<Product[]>(
+    (options: Options) => {
+      if (debouncedQuery === '') {
+        return Promise.resolve([]);
+      }
+
+      return getProductsByQuery(debouncedQuery, ITEMS_TO_SHOW, options);
+    },
+    {
+      initialValue: [],
+      dependency: [debouncedQuery],
+    },
+  );
+
+  const handleClose = () => {
+    setQuery('');
+    onClose();
+  };
+
+  return (
+    <Modal isOpen={isOpen} onClose={handleClose} className={styles.modal}>
+      <Modal.Body className={styles.modalContent}>
+        <div className={styles.searchBar}>
+          <SearchInput
+            className={styles.searchInput}
+            value={query}
+            onChange={setQuery}
+          />
+          <button className={styles.cancelBtn} onClick={handleClose}>
+            <IoClose size={16} />
+            <span>Cancel</span>
+          </button>
+        </div>
+        {debouncedQuery !== '' && (
+          <div className={styles.mainContent}>
+            {data.length === 0 && !loading ? (
+              <p className={styles.notFoundMessage}>No products founds</p>
+            ) : (
+              <SearchList
+                products={data}
+                isLoading={loading}
+                itemsToLoad={ITEMS_TO_SHOW}
+                className={styles.itemsList}
+              />
+            )}
+          </div>
+        )}
+
+        {/* {debouncedQuery !== '' && (
+          <div className={styles.foundedItems}>
+            {data.length === 0 && !loading && (
+              
+            )}
+          </div>
+        )} */}
+      </Modal.Body>
+    </Modal>
+  );
+};

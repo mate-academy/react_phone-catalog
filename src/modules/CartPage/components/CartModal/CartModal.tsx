@@ -29,18 +29,16 @@ export const CartModal: FC<Props> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} className={styles.modal}>
-      <Modal.Header
-        title="Attention"
-        className={styles.modalHeader}
-        icon={<BiError size={64} />}
-        withIcon
-      />
-      <Modal.Body>
+      <Modal.Body className={styles.body}>
+        <div className={styles.icon}>
+          <BiError size={64} />
+        </div>
+        <h2 className={styles.messageTitle}>Attention</h2>
         <p className={styles.message}>
           Checkout is not implemented yet. Do you want to clear the Cart?
         </p>
       </Modal.Body>
-      <Modal.Footer onSubmit={handleSubmit} onCancel={handleCancel} />
+      <Modal.Actions onSubmit={handleSubmit} onCancel={handleCancel} />
     </Modal>
   );
 };

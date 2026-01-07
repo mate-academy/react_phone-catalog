@@ -1,20 +1,27 @@
 @use '@/styles/resources' as *;
 
 .modal {
-  gap: 16px;
+  padding: 16px;
 
   @include flex-column;
 }
 
-.modalHeader {
-  color: $attention-color;
+.body {
+  align-items: center;
 
-  h2 {
-    color: $attention-color;
-  }
+  @include flex-column;
+}
+
+.icon {
+  color: $accent-color;
+}
+
+.messageTitle {
+  color: $accent-color;
 }
 
 .message {
-  text-align: center;
   color: $primary-color;
+  margin-top: 16px;
+  text-align: center;
 }

@@ -15,18 +15,14 @@ export const SearchItem: FC<Props> = ({ product }) => {
   const productLink = `/product/${itemId}`;
 
   return (
-    <article className={styles.card}>
-      <Link to={productLink} className={styles.imgWrapper}>
+    <Link to={productLink} className={styles.card}>
+      <div className={styles.imgWrapper}>
         <img src={image} alt={name} />
-      </Link>
-
-      <Link to={productLink} className={styles.titleWrapper}>
-        <h3 className={styles.title}>{name}</h3>
-      </Link>
-
+      </div>
+      <h3 className={styles.title}>{name}</h3>
       <p className={styles.price}>
         <strong>${productPrice}</strong>
       </p>
-    </article>
+    </Link>
   );
 };

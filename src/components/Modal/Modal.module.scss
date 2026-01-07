@@ -22,7 +22,10 @@
   transform: translate(-50%, -50%);
   background-color: $main-bg;
   border-radius: $radius;
-  padding: 16px;
+  overflow: hidden;
+  gap: 16px;
+
+  @include flex-column;
 
   @include on-small-desktop {
     min-width: 50%;
@@ -30,24 +33,13 @@
   }
 }
 
-.header {
-  align-items: center;
-  gap: 16px;
-
-  @include flex-column;
-}
-
-.title {
-  color: $primary-color;
-}
-
-.footer {
+.actions {
   gap: 16px;
 
   @include flex-center;
 }
 
-.footerBtn {
+.actionsBtn {
   padding: 8px 16px;
   border-radius: $radius;
 }

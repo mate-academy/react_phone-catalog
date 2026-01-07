@@ -5,10 +5,17 @@ import { CartList } from './components/CartList';
 import { useCart } from '@/hooks/useCart';
 import { Summary } from './components/Summary';
 import { Message } from '../shared/components/Message';
+import { CartModal } from './components/CartModal';
+import { useDisclosure } from '@/hooks/useDisclosure';
 
 export const CartPage = () => {
+  const { isOpen, close, toggle } = useDisclosure(false, {
+    lockScroll: true,
+  });
+
   const {
     cart: { items, total },
+    clearCart,
   } = useCart();
 
   return (
@@ -34,9 +41,12 @@ export const CartPage = () => {
             totalItems={items.length}
             totalPrice={total}
             className={styles.summary}
+            onCheckout={toggle}
           />
         </>
       )}
+
+      <CartModal isOpen={isOpen} closeModal={close} onSubmit={clearCart} />
     </div>
   );
 };

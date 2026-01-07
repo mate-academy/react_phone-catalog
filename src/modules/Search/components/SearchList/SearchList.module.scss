@@ -2,7 +2,6 @@
 
 .list {
   gap: 4px;
-  flex: 1;
 
   @include flex-column;
 }

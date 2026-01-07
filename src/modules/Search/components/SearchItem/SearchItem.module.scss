@@ -8,6 +8,12 @@
   padding: 8px;
 
   @include flex-between-center;
+
+  @include hover {
+    .title {
+      color: $accent-color;
+    }
+  }
 }
 
 .imgWrapper {
@@ -22,14 +28,11 @@
   }
 }
 
-.titleWrapper {
-  flex: 1;
-  display: block;
-}
-
 .title {
   color: $primary-color;
+  flex: 1;
 
+  @include transition(color, $color-transition);
   @include small-text;
 }
 
