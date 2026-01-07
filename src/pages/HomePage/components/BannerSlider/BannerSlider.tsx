@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import styles from './BannerSlider.module.scss';
 import { ArrowIcon } from '../../../../components/icons';
 import useLanguageStore from '../../../../stores/useLanguageStore';
-import iphone17Pro from '../../../../images/apple-iPad-Pro-13-4k.webp';
+import iphone17Pro from '../../../../images/iphone-17-pro-4k.webp';
 import iPadPro13 from '../../../../images/apple-iPad-Pro-13-4k.webp';
 import watchUltra3 from '../../../../images/apple-watch-ultra-3-4k.webp';
 
