@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { SortBy } from '../../types/Sort';
+import { useSearchParams } from 'react-router-dom';
 
 export const Dropdowns = () => {
-  const [sortBy, setSortBy] = useState<SortBy>(SortBy.Newest);
-  const [sortValue, setSortValue] = useState<number>(16);
+  const [searchParams, setSerachParams] = useSearchParams();
 
-  const getSortBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(e.target.value as SortBy);
-  };
+  const sortBy = searchParams.get('sortBy') || SortBy.Newest;
+  const sortPage = searchParams.get('sortPage') || '16';
 
-  const getSortValue = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortValue(+e.target.value);
+  const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (+e.target.value) {
+      const params = new URLSearchParams(searchParams);
+      params.set('sortPage', e.target.value);
+      setSerachParams(params);
+    } else {
+      const params = new URLSearchParams(searchParams);
+      params.set('sortBy', e.target.value);
+      setSerachParams(params);
+    }
   };
 
   return (
@@ -25,7 +32,7 @@ export const Dropdowns = () => {
         <select
           id="catalog__sortby"
           className="catalog__sortby select"
-          onChange={getSortBy}
+          onChange={handleChangeSort}
         >
           <option value="newest">Newest</option>
           <option value="name">Name</option>
@@ -39,7 +46,7 @@ export const Dropdowns = () => {
         <select
           id="catalog__items"
           className="catalog__items select"
-          onChange={getSortValue}
+          onChange={handleChangeSort}
         >
           <option value="16">16</option>
           <option value="24">24</option>
