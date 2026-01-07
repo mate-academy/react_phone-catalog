@@ -1,4 +1,4 @@
-import { Modal } from '@/components/Modal';
+import { Modal } from '@/modules/shared/components/Modal';
 
 import styles from './CartModal.module.scss';
 import { BiError } from 'react-icons/bi';

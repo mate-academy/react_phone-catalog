@@ -6,7 +6,7 @@ import { LuShoppingBag } from 'react-icons/lu';
 import { FaRegHeart } from 'react-icons/fa6';
 import { useFavourites } from '@/hooks/useFavourites';
 import { useCart } from '@/hooks/useCart';
-import { SearchButton } from '../SearchButton';
+import { SearchButton } from '../../modules/shared/components/SearchButton';
 import { FC } from 'react';
 
 const navigationLinkStyles = ({ isActive }: { isActive: boolean }) =>

@@ -1,6 +1,6 @@
 import styles from './ProductCardSkeleton.module.scss';
 
-import { Skeleton } from '../../../../components/Skeleton/Skeleton';
+import { Skeleton } from '../Skeleton/Skeleton';
 import { CiImageOn } from 'react-icons/ci';
 
 export const ProductCardSkeleton = () => {

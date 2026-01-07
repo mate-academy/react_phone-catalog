@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import './styles/index.scss';
-import { Header } from './components/Header';
-import { Sidebar } from './components/Sidebar';
-import { Footer } from './components/Footer';
+import { Header } from './widgets/Header';
+import { Sidebar } from './widgets/Sidebar';
+import { Footer } from './widgets/Footer';
 import { useDisclosure } from './hooks/useDisclosure';
 import { Search } from './modules/Search';
 

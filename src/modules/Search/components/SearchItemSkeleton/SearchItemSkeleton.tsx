@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/Skeleton/Skeleton';
+import { Skeleton } from '@/modules/shared/components/Skeleton/Skeleton';
 import styles from './SearchItemSkeleton.module.scss';
 
 export const SearchItemSkeleton = () => {

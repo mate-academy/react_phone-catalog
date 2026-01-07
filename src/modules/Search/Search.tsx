@@ -4,7 +4,7 @@ import { useFetch } from '../shared/hooks/useFetch';
 import { Product } from '@/types/Product';
 import { Options } from '@/types/FetchOptions';
 import { getProductsByQuery } from '@/api/product.service';
-import { Modal } from '@/components/Modal';
+import { Modal } from '@/modules/shared/components/Modal';
 
 import styles from './Search.module.scss';
 import { IoClose } from 'react-icons/io5';

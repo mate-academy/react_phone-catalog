@@ -5,7 +5,7 @@ import styles from './Header.module.scss';
 
 import { Logo } from '../Logo';
 import { Menu } from '../Menu';
-import { SearchButton } from '../SearchButton';
+import { SearchButton } from '../../modules/shared/components/SearchButton';
 
 interface Props {
   isActiveMenu?: boolean;
