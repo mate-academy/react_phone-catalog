@@ -1,5 +1,5 @@
-@import '../../utils/viriables';
-@import '../../utils/mixins';
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
 
 footer {
   height: 257px;
@@ -55,7 +55,6 @@ footer {
   position: relative;
   color: $color-secondary;
   text-transform: uppercase;
-  font-family: Mont, sans-serif;
   font-weight: bold;
   font-size: 12px;
   letter-spacing: 4%;
@@ -76,7 +75,6 @@ footer {
   text-decoration: none;
   display: flex;
   align-items: center;
-  font-family: Mont, sans-serif;
   font-weight: 600;
   color: $color-secondary;
   font-size: 12px;

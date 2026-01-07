@@ -1,27 +1,31 @@
-@import './modules/shared/utils/viriables';
-@import './modules/shared/utils/mixins';
-
+@import './modules/shared/styles/utils/viriables';
+@import './modules/shared/styles/utils/mixins';
+@import './modules/shared/styles/blocks/page';
+@import './modules/shared/styles/blocks/reset';
 
 @font-face {
   font-family: Mont;
-  src: local('Mont Regular'),
-       url('./fonts/Mont-Regular.otf') format('opentype');
+  src:
+    local('Mont Regular'),
+    url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: Mont;
-  src: local('Mont Bold'),
-       url('./fonts/Mont-Bold.otf') format('opentype');
+  src:
+    local('Mont Bold'),
+    url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: Mont;
-  src: local('Mont Semibold'),
-       url('./fonts/Mont-Semibold.otf') format('opentype');
+  src:
+    local('Mont Semibold'),
+    url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }

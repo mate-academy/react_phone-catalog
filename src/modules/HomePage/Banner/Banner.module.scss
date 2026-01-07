@@ -1,0 +1,69 @@
+@import '../../shared/styles/utils/viriables';
+@import '../../shared/styles/utils/mixins';
+
+.banner {
+  display: flex;
+  align-items: center;
+}
+
+.swiper {
+  width: 100%;
+  height: 320px;
+
+  @include on-tablet {
+    height: 189px;
+    margin: 0 19px;
+  }
+
+  @include on-desktop {
+    max-width: 1040px;
+    height: 400px;
+    justify-content: center;
+  }
+}
+
+.swiperCard {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.swiperCard1 {
+  background-image: url(/img/banners/banner-mobile.png);
+
+  @include on-tablet{
+      background-image: url(/img/banners/banner.png);
+  }
+}
+.swiperCard2 {
+  background-image: url(/img/banners/banner-phones.png);
+}
+.swiperCard3 {
+  background-image: url(/img/banners/banner-tablets.png);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.navButton {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    width: 32px;
+    height: 189px;
+    align-items: center;
+    background-color: $color-white;
+    border: 1px solid $color-hover-bg;
+    cursor: pointer;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}

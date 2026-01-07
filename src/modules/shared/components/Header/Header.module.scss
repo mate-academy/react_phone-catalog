@@ -1,10 +1,12 @@
-@import '../../utils/viriables';
-@import '../../utils/mixins';
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
 
 .header {
   height: 48px;
   border-bottom: 1px solid $color-icons;
   display: flex;
+  position: sticky;
+  top: 0;
 
   @include on-desktop {
     height: 64px;
@@ -43,7 +45,7 @@
 .navLinks {
   display: none;
   gap: 32px;
-  
+
   @include on-tablet {
     display: flex;
   }
@@ -60,7 +62,6 @@
   height: 48px;
   color: $color-secondary;
   text-transform: uppercase;
-  font-family: Mont, sans-serif;
   font-weight: bold;
   font-size: 12px;
   letter-spacing: 4%;

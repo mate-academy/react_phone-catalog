@@ -1,0 +1,26 @@
+@import '../shared/styles/utils/viriables';
+@import '../shared/styles/utils/mixins';
+
+.section {
+}
+
+.title{
+  display: none;
+}
+
+.sectionTitleText {
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: -1%;
+
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 32px;
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    padding-block: 64px;
+  }
+}
