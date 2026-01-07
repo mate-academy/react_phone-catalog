@@ -29,6 +29,14 @@ module.exports = {
     project: './tsconfig.json',
     sourceType: 'module',
   },
+  "parserOptions": {
+        "ecmaVersion": 12,
+        "project": "./tsconfig.json",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
   plugins: [
     'jsx-a11y',
     'import',

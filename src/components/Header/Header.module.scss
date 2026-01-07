@@ -1,0 +1,151 @@
+@import '../../style/main';
+
+.header {
+  display: flex;
+  gap: 24px;
+  box-shadow: 0 1px 0 0 $shadow-color;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: $header-height-desktop;
+  background-color: $header-footer-bg-color;
+  position: relative;
+  z-index: 3;
+
+  @include on-tablet {
+    height: $header-height-tablet-mobile;
+    gap: 16px;
+  }
+
+  &__logo {
+    margin: 18px 24px;
+
+    @include on-tablet {
+      margin: 13px 16px;
+    }
+
+    &__img {
+      height: 28px;
+      width: 80px;
+
+      @include on-tablet {
+      width: 64px;
+      height: 22px;
+    }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-color;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    line-height: 64px;
+
+    @include on-tablet {
+      line-height: 48px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    position: relative;
+    box-shadow: -1px 0 0 0 $shadow-color;
+    height: 16px;
+    width: 16px;
+    padding: 24px;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-tablet {
+      padding: 16px;
+    }
+
+    &__fav {
+      background-image: url(/img/header/favourites.svg);
+    }
+
+    &__cart {
+      background-image: url(/img/header/shopping-bag.svg);
+    }
+
+    &__fav,
+    &__cart {
+      display: flex;
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &__menu {
+      background-image: url(/img/header/menu.svg);
+      display: none;
+
+      @include on-mobile {
+        display: flex;
+      }
+    }
+  }
+}
+
+.link {
+  &--active {
+    color: $main-color;
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $main-color;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin action($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:active,
+  &:focus {
+    outline: none;
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-mobile() {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet() {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (max-width: $desktop-max-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 24;
+
+  display: grid;
+  column-gap: 16px;
+  column-width: 32px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+
+    column-gap: 16px;
+  }
+
+  @include on-mobile {
+    --columns: 4;
+    
+    column-gap: 16px;
+  }
+}

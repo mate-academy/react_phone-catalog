@@ -1,0 +1,18 @@
+@import '../../style/main';
+
+.main {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: calc(100vh - $header-height-desktop - $footer-height-desktop-tablet);
+
+  @include on-tablet {
+    min-height: calc(
+      100vh - $header-height-tablet-mobile - $footer-height-desktop-tablet
+    );
+  }
+
+  @include on-mobile {
+    min-height: calc(100vh - $header-height-tablet-mobile - $footer-height-mobile);
+  }
+}

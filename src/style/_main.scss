@@ -1,0 +1,23 @@
+@import './utils';
+@import './font';
+@import './typography';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $main-bg-color;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-mobile {
+    margin-inline: 16px;
+  }
+}
