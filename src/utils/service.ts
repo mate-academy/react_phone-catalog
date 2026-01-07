@@ -1,7 +1,7 @@
 import { Products } from '../types/products';
 
 export function getProducts(categories: string): Promise<Products[]> {
-  return fetch('../../../public/api/products.json')
+  return fetch('/react_phone-catalog/api/products.json')
     .then(response => {
       if (response.ok) {
         return response.json();
