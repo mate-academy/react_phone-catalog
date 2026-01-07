@@ -70,7 +70,11 @@ export const Header: React.FC = () => {
             }
           >
             <img className={styles.header__but__link__img} src={iconFavorite} />
-            <p>{favorites.length}</p>
+            {favorites.length > 0 && (
+              <span className={styles.header__but__link__img_p}>
+                {favorites.length}
+              </span>
+            )}
           </NavLink>
           <NavLink
             to="/cart"
@@ -79,7 +83,11 @@ export const Header: React.FC = () => {
             }
           >
             <img className={styles.header__but__link__img} src={iconCart} />
-            <p>{cart.length}</p>
+            {cart.length > 0 && (
+              <span className={styles.header__but__link__img_p}>
+                {cart.length}
+              </span>
+            )}
           </NavLink>
         </div>
       </div>

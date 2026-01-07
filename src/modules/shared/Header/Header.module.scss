@@ -99,6 +99,7 @@ header {
     margin-left: auto;
 
     &__link {
+      position: relative;
       padding: 24px;
       border-top: none;
       border-right: none;
@@ -112,8 +113,30 @@ header {
       }
 
       &__img {
+        position: relative;
         width: 16px;
         height: 16px;
+
+        &_p {
+          position: absolute;
+          top: 34%;
+          right: 28%;
+
+          padding-block: 1.5%;
+          padding-inline: 5%;
+          border: 1px solid $background-color;
+          border-radius: 15px;
+
+          font-family: Mont, serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 100%;
+          color: $background-color;
+          text-align: center;
+          letter-spacing: 0%;
+
+          background-color: $liked-and-count-color;
+        }
       }
       &.active {
         margin-bottom: 0;
