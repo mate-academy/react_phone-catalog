@@ -89,10 +89,6 @@
     @include flex-center;
   }
 
-  svg {
-    @include transition(transform);
-  }
-
   @include on-mobile {
     .menuActionLink:first-child {
       border-left: 0;
@@ -100,9 +96,7 @@
   }
 
   @include hover {
-    & svg {
-      transform: scale($hover-scale);
-    }
+    @include animated-underline-active;
   }
 }
 

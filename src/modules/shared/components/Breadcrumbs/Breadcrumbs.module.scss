@@ -1,4 +1,4 @@
-@use '../../../../styles/resources' as *;
+@use '@/styles/resources' as *;
 
 .breadcrumbsList {
   display: flex;
@@ -19,6 +19,12 @@
 .breadcrumbsLink {
   color: $primary-color;
   text-transform: capitalize;
+
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $accent-color;
+  }
 }
 
 .splitter {

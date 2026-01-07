@@ -5,6 +5,53 @@ import { useOutsideClick } from '@/hooks/useOutsideClick';
 import classNames from 'classnames';
 import { Button } from '@/modules/shared/components/Button';
 
+import { AnimatePresence, motion, Variants } from 'motion/react';
+
+const overlayVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: 'easeInOut',
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const modalVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.75,
+    x: '-50%',
+    y: '-40%',
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    x: '-50%',
+    y: '-50%',
+    transition: {
+      type: 'spring' as const,
+      damping: 20,
+      stiffness: 300,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.9,
+    transition: { duration: 0.2 },
+  },
+};
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
@@ -28,18 +75,36 @@ export const Modal: ModalComponent = ({
 }) => {
   const ref = useOutsideClick<HTMLDivElement>(onClose);
 
-  if (!isOpen) {
-    return null;
-  }
-
-  return createPortal(
-    <div className={styles.wrapper}>
-      <div className={styles.overlay}></div>
-      <div className={classNames(styles.modal, className)} ref={ref}>
-        {children}
-      </div>
-    </div>,
-    document.body,
+  return (
+    <AnimatePresence mode="wait">
+      {isOpen && (
+        <>
+          {createPortal(
+            <div className={styles.wrapper}>
+              <motion.div
+                className={styles.overlay}
+                key="overlay"
+                variants={overlayVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              ></motion.div>
+              <motion.div
+                className={classNames(styles.modal, className)}
+                ref={ref}
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {children}
+              </motion.div>
+            </div>,
+            document.body,
+          )}
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 
