@@ -16,6 +16,8 @@
   grid-column: 1 / span 2;
   color: $primary-color;
 
+  @include transition(color, $color-transition);
+  
   @include on-tablet {
     grid-column: 1 / span 10;
   }

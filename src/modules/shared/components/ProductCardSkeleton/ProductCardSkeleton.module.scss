@@ -7,6 +7,10 @@
   gap: 8px;
   background-color: $card-bg;
   justify-content: center;
+  transition:
+    transform $transition ease-in-out,
+    background-color $color-transition ease-in-out,
+    border-color $color-transition ease-in-out;
 
   @include flex-column;
 

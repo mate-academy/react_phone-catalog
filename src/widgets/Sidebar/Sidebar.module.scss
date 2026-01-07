@@ -11,8 +11,10 @@
   opacity: 0;
   padding-top: 24px;
   z-index: 1000;
-
-  @include transition((transform, opacity), $transition);
+  transition:
+    transform $transition ease-in-out,
+    opacity $color-transition ease-in-out,
+    background-color $color-transition ease-in-out;
 
   @include on-small-desktop {
     display: none;

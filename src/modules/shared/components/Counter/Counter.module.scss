@@ -10,4 +10,5 @@
   color: $primary-color;
 
   @include body-text;
+  @include transition(color, $color-transition);
 }

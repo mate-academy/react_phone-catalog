@@ -7,6 +7,7 @@
   width: fit-content;
   cursor: pointer;
 
+  @include transition(color, $color-transition);
   @include flex-center;
 
   @include hover {

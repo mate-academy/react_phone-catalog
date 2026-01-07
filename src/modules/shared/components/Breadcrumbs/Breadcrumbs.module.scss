@@ -13,6 +13,7 @@
   line-height: 1;
   text-transform: capitalize;
 
+  @include transition(color, $color-transition);
   @include flex-center;
 }
 
@@ -30,4 +31,6 @@
 .splitter {
   color: $icons-color;
   margin-left: 8px;
+
+  @include transition(color, $color-transition);
 }

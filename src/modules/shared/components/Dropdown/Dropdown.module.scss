@@ -7,6 +7,8 @@
   @include small-text;
 
   font-weight: 600;
+
+  @include transition(color, $color-transition);
 }
 
 .activeValueWrapper {
@@ -27,6 +29,7 @@
   cursor: pointer;
 
   @include button-text;
+  @include transition((color, border-color), $color-transition);
 
   &:focus {
     border-color: $primary-color;

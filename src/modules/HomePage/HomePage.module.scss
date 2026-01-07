@@ -18,6 +18,8 @@
   padding-block: 24px;
   color: $primary-color;
 
+  @include transition(color, $color-transition);
+
   @include on-tablet {
     padding-block: 32px;
   }

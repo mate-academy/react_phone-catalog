@@ -10,6 +10,8 @@
 .title {
   color: $primary-color;
   margin-bottom: 8px;
+
+  @include transition(color, $color-transition);
 }
 
 .itemsCount {

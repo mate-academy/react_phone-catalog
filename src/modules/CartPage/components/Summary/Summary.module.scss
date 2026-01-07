@@ -5,6 +5,8 @@
   border-radius: 16px;
   background-color: $card-bg;
   border: 1px solid $elements-color;
+
+  @include transition((background-color, border-color), $color-transition);
 }
 
 .topBar {
@@ -13,6 +15,8 @@
 
 .price {
   color: $primary-color;
+
+  @include transition(color, $color-transition);
 }
 
 .items {
@@ -21,6 +25,8 @@
   margin-bottom: 16px;
 
   border-bottom: 1px solid $elements-color;
+
+  @include transition(border-bottom-color, $color-transition);
 
   @include on-desktop {
     margin-bottom: 24px;

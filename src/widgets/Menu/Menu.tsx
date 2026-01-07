@@ -8,6 +8,7 @@ import { useFavourites } from '@/hooks/useFavourites';
 import { useCart } from '@/hooks/useCart';
 import { SearchButton } from '../../modules/shared/components/SearchButton';
 import { FC } from 'react';
+import { ThemeSwitcher } from '@/modules/shared/components/ThemeSwitcher';
 
 const navigationLinkStyles = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.menuNavLink, {
@@ -53,6 +54,10 @@ export const Menu: FC<Props> = ({ onSearch = () => {} }) => {
           </li>
         </ul>
       </nav>
+
+      <div className={styles.themeSwitcher}>
+        <ThemeSwitcher />
+      </div>
 
       <div className={styles.menuActions}>
         <SearchButton className={styles.searchBtn} onClick={onSearch} />

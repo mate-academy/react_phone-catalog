@@ -9,6 +9,7 @@
   justify-content: space-between;
 
   @include flex-column;
+  @include transition((background-color, border-color), $color-transition);
 
   @include on-tablet {
     gap: 24px;
@@ -77,4 +78,6 @@
   min-width: 80px;
   display: block;
   text-align: end;
+
+  @include transition(color, $color-transition);
 }

@@ -10,6 +10,8 @@
 .title {
   grid-column: 1 / -1;
   color: $primary-color;
+
+  @include transition(color, $color-transition);
 }
 
 .emptyMessage {

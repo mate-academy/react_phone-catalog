@@ -1,5 +1,5 @@
 import { useDebounce } from '@/hooks/useDebounce';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useFetch } from '../shared/hooks/useFetch';
 import { Product } from '@/types/Product';
 import { Options } from '@/types/FetchOptions';
@@ -36,13 +36,14 @@ export const Search: FC<Props> = ({ isOpen, onClose }) => {
     },
   );
 
-  const handleClose = () => {
-    setQuery('');
-    onClose();
-  };
+  useEffect(() => {
+    if (!isOpen) {
+      setQuery('');
+    }
+  }, [isOpen]);
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} className={styles.modal}>
+    <Modal isOpen={isOpen} onClose={onClose} className={styles.modal}>
       <Modal.Body className={styles.modalContent}>
         <div className={styles.searchBar}>
           <SearchInput
@@ -50,7 +51,7 @@ export const Search: FC<Props> = ({ isOpen, onClose }) => {
             value={query}
             onChange={setQuery}
           />
-          <button className={styles.cancelBtn} onClick={handleClose}>
+          <button className={styles.cancelBtn} onClick={onClose}>
             <IoClose size={16} />
             <span>Cancel</span>
           </button>
@@ -69,14 +70,6 @@ export const Search: FC<Props> = ({ isOpen, onClose }) => {
             )}
           </div>
         )}
-
-        {/* {debouncedQuery !== '' && (
-          <div className={styles.foundedItems}>
-            {data.length === 0 && !loading && (
-              
-            )}
-          </div>
-        )} */}
       </Modal.Body>
     </Modal>
   );

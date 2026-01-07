@@ -6,6 +6,8 @@
   background-color: $main-bg;
   margin-top: 56px;
 
+  @include transition((background-color, border-top-color), $color-transition);
+
   @include on-tablet {
     margin-top: 64px;
   }

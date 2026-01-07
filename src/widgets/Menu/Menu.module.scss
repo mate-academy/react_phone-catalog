@@ -2,6 +2,7 @@
 
 .menu {
   height: 100%;
+  gap: 16px;
 
   @include flex-column;
 
@@ -55,6 +56,10 @@
   @include animated-underline-active;
 }
 
+.themeSwitcher {
+  align-self: center;
+}
+
 .menuActions {
   @include flex-between-center;
 
@@ -78,6 +83,10 @@
   position: relative;
   color: $primary-color;
 
+  @include transition(
+    (border-top-color, border-left-color, color),
+    $color-transition
+  );
   @include animated-underline;
 
   @include on-small-desktop {
@@ -117,6 +126,8 @@
   border: 1px solid var(--border-color);
   font-size: 9px;
   font-weight: 600;
+
+  @include transition((border-color, background-color), $color-transition);
 
   @include on-small-desktop {
     & {

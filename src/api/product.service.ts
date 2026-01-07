@@ -25,7 +25,9 @@ export function getProductsByQuery(
     .get<Product[]>('products.json', options)
     .then(res =>
       res
-        .filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
+        .filter(item =>
+          item.name.toLowerCase().includes(query.trim().toLowerCase()),
+        )
         .slice(0, quantity),
     );
 }
