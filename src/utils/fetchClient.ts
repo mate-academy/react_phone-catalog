@@ -1,6 +1,6 @@
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = '/api/';
+const BASE_URL = '/react_phone-catalog/api/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
