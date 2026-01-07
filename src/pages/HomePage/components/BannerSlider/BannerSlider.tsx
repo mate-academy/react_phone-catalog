@@ -11,7 +11,7 @@ import useLanguageStore from '../../../../stores/useLanguageStore';
 
 const slides = [
   {
-    image: '/src/images/iphone-17-pro-4k.webp',
+    image: 'src/images/iphone-17-pro-4k.webp',
     // imageLarge: '/src/images/hero-iphone-17-pro-large-empty.png',
     alt: 'iPhone 14 Pro',
     titleKey: 'banner_iphone_title',
@@ -20,7 +20,7 @@ const slides = [
     link: '/phones/apple-iphone-17-pro-1tb-orange',
   },
   {
-    image: '/src/images/apple-iPad-Pro-13-4k.webp',
+    image: 'src/images/apple-iPad-Pro-13-4k.webp',
     // imageLarge: '/src/images/hero-apple-iPad-Pro-13-large-empty.png',
     alt: 'iPad 13 Pro',
     titleKey: 'banner_ipad_title',
@@ -29,7 +29,7 @@ const slides = [
     link: '/tablets/apple-ipad-pro-13-m4-2024-2tb-space-black',
   },
   {
-    image: '/src/images/apple-watch-ultra-3-4k.webp',
+    image: 'src/images/apple-watch-ultra-3-4k.webp',
     // imageLarge: '/src/images/hero-apple-watch-ultra-3-large-empty.png',
     alt: 'apple watch',
     titleKey: 'banner_watch_title',
@@ -59,17 +59,15 @@ const BannerSlider: React.FC = () => {
           <Swiper
             ref={swiperRef}
             modules={[Navigation, Pagination, Autoplay]}
-            preloadImages={true}
-            updateOnImagesReady={true}
             spaceBetween={0}
             slidesPerView={1}
             speed={700}
             className={styles.swiperWrapper}
             loop={true}
-            // autoplay={{
-            //   delay: 5000,
-            //   disableOnInteraction: false,
-            // }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
             pagination={{
               clickable: true,
               bulletClass: styles.customBullet,

@@ -62,7 +62,7 @@ const useProductDetailsStore = create<ProductDetailsState>()(
 
           // 2. Якщо в localStorage/кеші стору немає - завантажуємо
           if (!allDetailedItems) {
-            const categoryFilePath = `/api/${category}.json`;
+            const categoryFilePath = `api/${category}.json`;
 
             console.log(`Завантажую ${categoryFilePath}...`);
 

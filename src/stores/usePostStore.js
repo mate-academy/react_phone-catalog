@@ -10,7 +10,7 @@ const usePostStore = create(set => ({
     set({ isLoading: true, error: null }); // Встановлюємо стан завантаження та очищаємо помилки
 
     try {
-      const response = await fetch('/api/accessories.json');
+      const response = await fetch('api/accessories.json');
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

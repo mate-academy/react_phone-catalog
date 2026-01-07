@@ -16,7 +16,7 @@ const useProductStore = create<ProductState>(set => ({
   fetchProducts: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await fetch('/api/products.json'); // Завантажуємо всі продукти
+      const response = await fetch('api/products.json'); // Завантажуємо всі продукти
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

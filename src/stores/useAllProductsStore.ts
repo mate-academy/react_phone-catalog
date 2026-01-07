@@ -49,7 +49,7 @@ const useAllProductsStore = create<AllProductsState>()(
         set({ isLoading: true, error: null });
 
         try {
-          const filePath = `/api/products.json`; // Шлях до вашого products.json
+          const filePath = `api/products.json`; // Шлях до вашого products.json
 
           console.log(`Завантажую загальний список продуктів: ${filePath}...`);
           const response = await fetch(filePath);

@@ -8,10 +8,6 @@ import {
 import classNames from 'classnames';
 import styles from './Navbar.module.scss';
 import useCartStore from '../../stores/useCartStore';
-// import SearchInput from '../SearchInput/SearchInput';
-// import useLanguageStore, {
-//   SupportedLanguage,
-// } from '../../stores/useLanguageStore';
 import useFavoritesStore from '../../stores/useFavoritesStore';
 import LanguageSelect from '../LanguageSelect/LanguageSelect';
 import { Logo } from '../Logo';
@@ -88,16 +84,6 @@ export const Navbar: React.FC = () => {
     }
   };
 
-  // const handleLanguageChange = (
-  //   event: React.ChangeEvent<HTMLSelectElement>,
-  // ) => {
-  //   setLanguage(event.target.value as SupportedLanguage);
-  // };
-
-  // const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setTheme(event.target.value as Theme);
-  // };
-
   const handleCloseResetSerchInput = () => {
     setIsSearchOpen(false);
     resetSerchInput();
@@ -127,8 +113,6 @@ export const Navbar: React.FC = () => {
     const isCategoryPage = ['/phones', '/tablets', '/accessories'].some(path =>
       location.pathname.startsWith(path),
     );
-
-    // const prevCategory
 
     if (!isCategoryPage && searchQuery) {
       setSearchQuery(''); // Скидаємо локальний стан пошуку в навбарі
@@ -249,11 +233,6 @@ export const Navbar: React.FC = () => {
             {/* кнопка улюблене */}
             <NavLink to="/favourites" className={getIconButtonClass}>
               <span className={styles.icon__item}>
-                {/* <img
-                  className={styles.icon}
-                  src={heartIcon}
-                  alt="favourites heart"
-                /> */}
                 <HeartIcon />
               </span>
 

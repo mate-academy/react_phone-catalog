@@ -47,7 +47,7 @@ const SlidingSearchInput: React.FC<SlidingSearchInputProps> = ({
     // Встановлюємо таймер
     const handler = setTimeout(() => {
       handleSearchChange(localValue);
-    }, 1500);
+    }, 300);
 
     // Очищуємо таймер, якщо користувач ввів наступний символ до завершення 300мс
     return () => {

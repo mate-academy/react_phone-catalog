@@ -14,6 +14,7 @@ import { ProductDetailsSkeleton } from './components/Skeleton';
 import { mapDetailedToShortProduct } from '../../utils/productMappers';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import { ErrorNotification } from '../../components/ErrorNotification';
+import { translateDynamicValue } from '../../utils/constants';
 
 export const ProductDetailsPage: React.FC = () => {
   const { currentLanguage, descriptions, loadDescriptionTranslations, t } =
@@ -193,7 +194,9 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.product}>
         <Breadcrumbs product={product} />
 
-        <h2 className={styles['product-name']}>{product.name}</h2>
+        <h2 className={styles['product-name']}>
+          {translateDynamicValue(product.name, currentLanguage)}
+        </h2>
 
         <div className={styles['product-content']}>
           <div className={styles['product-image-gallery']}>

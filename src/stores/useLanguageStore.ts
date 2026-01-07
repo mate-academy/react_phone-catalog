@@ -54,7 +54,7 @@ const useLanguageStore = create<LanguageState>()(
         try {
           console.log(`Завантажую загальні переклади для мови: ${lang}`);
 
-          const response = await fetch(`/locales/${lang}/common.json`);
+          const response = await fetch(`locales/${lang}/common.json`);
 
           if (!response.ok) {
             throw new Error(
@@ -84,7 +84,7 @@ const useLanguageStore = create<LanguageState>()(
 
         try {
           console.log(`Завантажую переклади опису для мови: ${lang}`);
-          const response = await fetch(`/locales/${lang}/description.json`); // Шлях до вашого файлу перекладу
+          const response = await fetch(`locales/${lang}/description.json`); // Шлях до вашого файлу перекладу
 
           if (!response.ok) {
             throw new Error(

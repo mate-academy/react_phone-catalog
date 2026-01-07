@@ -9,27 +9,12 @@ import styles from './CustomSelect2.module.scss';
 import classNames from 'classnames';
 import { ArrowIcon } from '../icons';
 
-// Типизація для елементів селекта
-// interface SelectOption {
-//   value: string;
-//   label: React.ReactNode;
-// }
-
 export interface CustomSelectOption<T> {
   value: T;
   label: string;
   icon?: string;
   render?: () => React.ReactNode;
 }
-
-// Типизація для пропсів компонента
-// interface CustomSelectProps {
-//   options: SelectOption[];
-//   currentValue: string;
-//   placeholder?: string;
-//   description?: string; // Для елемента "Description"
-//   onChange: (value: string) => void;
-// }
 
 export interface CustomSelectProps<T> {
   options: CustomSelectOption<T>[];
@@ -53,19 +38,10 @@ const CustomSelect2 = <T,>({
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  // const selectedOption = useMemo(
-  //   () => options.find(o => o.value === currentValue),
-  //   [currentValue, options],
-  // );
-
-  // const currentOption = selectedOption?.label || placeholder;
-
   const currentOption = useMemo(
     () => options.find(opt => opt.value === currentValue),
     [options, currentValue],
   );
-
-  // const currentOption = options.find(opt => opt.value === currentValue);
 
   // Обробник вибору елемента
   const handleSelect = useCallback(
@@ -177,11 +153,6 @@ const CustomSelect2 = <T,>({
 
         <div className={styles.arrow}>
           <ArrowIcon direction="down" />
-          {/* <img
-            className={styles.arrow__img}
-            src="src/images/icons/arrow-down.svg"
-            alt="arrow down"
-          /> */}
         </div>
       </div>
 
