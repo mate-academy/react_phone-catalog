@@ -12,7 +12,6 @@ import image3 from './../images/shopcategory/image3.jpg';
 import { ShopCatagoryType } from '../types/ShopCategory';
 
 export const MainPage = () => {
-  const location = useLocation();
   const { productsAll, addToDB } = useProducts();
   const [shopCategoryInfo, setShopCategoryInfo] = useState<ShopCatagoryType[]>(
     [],
