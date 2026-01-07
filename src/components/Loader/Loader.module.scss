@@ -1,0 +1,28 @@
+/* src/components/Loader/Loader.module.scss */
+
+.Loader {
+  /* Kontener centrujący */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px; /* Odstęp góra/dół */
+  width: 100%;
+}
+
+.content {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #e2e6e9; /* Szare tło kółka */
+  border-top: 4px solid #313237; /* Ciemny element obracający się */
+  border-radius: 50%; /* Robi kółko z kwadratu */
+  animation: spin 1s linear infinite; /* Animacja obrotu */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

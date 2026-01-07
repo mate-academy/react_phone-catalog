@@ -1,0 +1,60 @@
+.galleryContainer {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+
+  /* Na telefonie - kolumna odwrócona (duże na górze) */
+  flex-direction: column-reverse;
+
+  @media (min-width: 640px) {
+    flex-direction: row; /* Na komputerze - miniaturki po lewej */
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+
+  @media (min-width: 640px) {
+    flex-direction: column; /* Pionowa lista miniaturek */
+  }
+}
+
+.thumbnailBox {
+  width: 50px; /* lub 80px */
+  height: 50px; /* lub 80px */
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+
+  &.active {
+    border-color: #313237; /* Zaznaczona miniaturka */
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.mainImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
+
+/* Dodaj styl dla aktywnego przycisku koszyka */
+.addToCart.added {
+  background-color: #fff;
+  color: #27ae60; /* Zielony tekst */
+  border: 1px solid #e2e6e9;
+}

@@ -1,0 +1,147 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  /* Figma używa 16px dla głównej karty */
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  /* Zamiast sztywnego 272px, używamy 100%, bo szerokość kontroluje wrapper w ProductList */
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #d7d7d7;
+  }
+}
+
+.imageLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+  /* Zdjęcie telefonu nie potrzebuje dużego zaokrąglenia, 8px wystarczy */
+  border-radius: 8px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.title {
+  font-size: 14px;
+  line-height: 21px; // Wysokość linii dla czytelności
+  color: #313237;
+  text-decoration: none;
+  margin-bottom: 8px;
+  height: 42px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Obcina tekst po 2 liniach
+  -webkit-box-orient: vertical;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.fullPrice {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #89939a;
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e6e9;
+  margin: 8px 0;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  color: #89939a;
+}
+
+.specValue {
+  color: #313237;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCartBtn {
+  flex-grow: 1;
+  height: 40px;
+  background-color: #313237;
+  color: #fff;
+  border: none;
+  border-radius: 8px; // Zaokrąglone przyciski
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #4a4b51;
+  }
+}
+
+.favoriteBtn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px; // Zaokrąglone przyciski
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #313237;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: #313237;
+  }
+}

@@ -1,1 +1,77 @@
-// not empty
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // ✅ To jest obowiązkowe, żeby nic nie latało na boki
+  width: 100%;
+}
+
+:global(.section) {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (min-width: 640px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+.homePage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  /* Tytuł nie ma marginesów ujemnych, więc nie "ucieka" poza ekran */
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.sliderWrapper {
+  position: relative;
+  /* 📱 MOBILE: Niwelujemy padding 16px z App.scss */
+  margin-left: -16px;
+  margin-right: -16px;
+  width: calc(100% + 32px); // 16px + 16px
+  margin-bottom: 32px;
+
+  @media (min-width: 640px) {
+    /* 📱 TABLET: Niwelujemy padding 32px z App.scss */
+    margin-left: -32px;
+    margin-right: -32px;
+    width: calc(100% + 64px);
+  }
+
+  @media (min-width: 1200px) {
+    /* 💻 DESKTOP: Tutaj zazwyczaj chcemy, żeby slider był w kontenerze */
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+}
+
+:global(.section) {
+  margin-bottom: 56px;
+  /* Sekcje produktów nie mają ujemnych marginesów, więc będą miały odstęp 16px */
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+}

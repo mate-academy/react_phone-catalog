@@ -1,0 +1,148 @@
+/* src/components/Header/Header.module.scss */
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+  display: flex;
+  justify-content: center;
+  z-index: 1000; // ✅ Jeden, wysoki z-index
+
+  @media (min-width: 640px) {
+    height: 96px;
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // ✅ Rozpycha logo i akcje na boki
+  height: 100%;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  img {
+    height: 28px;
+    width: auto;
+  }
+}
+
+// ✅ Kontener na linki (Home, Phones itp.)
+.nav {
+  display: none; // ❌ Ukryte na mobile
+
+  @media (min-width: 640px) {
+    display: flex; // ✅ Widoczne na desktopie
+    margin-left: 48px;
+    height: 100%;
+  }
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.navLink {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  color: #89939a;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+
+  &:hover, &.isActive {
+    color: #313237;
+  }
+
+  &.isActive {
+    border-bottom-color: #313237;
+  }
+}
+
+// ✅ Kontener na ikony i burgera
+.actions {
+  display: flex; // ✅ MUSI BYĆ FLEX NA MOBILE, żeby burger był widoczny
+  align-items: center;
+  height: 100%;
+}
+
+// ✅ Ikony serca i koszyka (tylko dla desktopu w headerze)
+.desktopIcons {
+  display: none; // ❌ Ukryte na mobile (są wtedy w wysuwanym menu)
+
+  @media (min-width: 640px) {
+    display: flex; // ✅ Widoczne na desktopie
+    height: 100%;
+  }
+}
+
+// ✅ PRZYCISK BURGERA
+.burgerBtn {
+  display: flex; // ✅ Widoczny na mobile
+  width: 64px;
+  height: 64px;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  border-left: 1px solid #e2e6e9;
+  cursor: pointer;
+  padding: 0;
+
+  @media (min-width: 640px) {
+    display: none; // ❌ Ukryty na desktopie
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// ✅ Style dla ikon serca/koszyka na desktopie
+.iconBtn {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #e2e6e9;
+  text-decoration: none;
+
+  @media (min-width: 640px) {
+    height: 96px;
+  }
+
+  &:last-child {
+    border-right: 1px solid #e2e6e9;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

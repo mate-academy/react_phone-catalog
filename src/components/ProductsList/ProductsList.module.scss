@@ -1,0 +1,28 @@
+/* src/components/ProductsList/ProductsList.module.scss */
+
+/* src/components/ProductsList/ProductsList.module.scss */
+
+.grid {
+  display: flex;
+  overflow-x: auto; // Pozwala na swajpowanie palcem
+  gap: 16px;
+
+  /* ✅ KLUCZ: Szerokość 100% bez żadnych ujemnych marginesów */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  /* Ukrywamy scrollbar, żeby nie psuł designu */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: visible; // Na desktopie nie chcemy przewijania
+    gap: 16px;
+  }
+}

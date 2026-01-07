@@ -1,0 +1,30 @@
+/* src/pages/HomePage/HomePage.module.scss */
+
+.section {
+  width: 100%;
+  margin-bottom: 56px;
+
+  /* ✅ Wymuszamy margines wewnętrzny bezpośrednio tutaj */
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (min-width: 640px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  /* Nagłówek teraz na pewno będzie miał 16px odstępu */
+}
