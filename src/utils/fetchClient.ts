@@ -1,6 +1,6 @@
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = './../public/api/';
+const BASE_URL = '/api/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
