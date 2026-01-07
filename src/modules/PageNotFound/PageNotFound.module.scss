@@ -1,0 +1,24 @@
+@use '../../constants/variables' as *;
+@use '../../constants/mixin' as *;
+
+.not-found {
+  @include min-height-page;
+
+  &__title {
+    padding: 10px;
+
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+  }
+
+  &__style {
+    height: 40vh;
+
+    background-image: url('../../../public/img/page-not-found.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

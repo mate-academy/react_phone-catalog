@@ -1,1 +1,25 @@
-// not empty
+@use './constants/variables' as *;
+@use './constants/mixin' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+  
+}
+
+
+a img {
+  transition: transform $effectDuration ease;
+}
+
+a:hover img {
+  transform: scale(1.1);
+}
+
+

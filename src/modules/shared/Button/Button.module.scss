@@ -1,0 +1,61 @@
+@use '../../../constants/mixin' as *;
+
+.buttons {
+  @include transform-theme;
+
+  min-height: 40px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  &__add {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    border-radius: var(--border-radius-button);
+
+    width: 100%;
+    border: none;
+    color: var(--color-button-text);
+    background-color: var(--color-button-bg);
+
+    &:hover {
+      background-color: var(--bg-button-hover);
+    }
+
+    &--active {
+      background-color: var(--color-button-bg-active);
+      color: var(--color-button-text-active);
+      border: 1px solid var(--color-button-border);
+
+      &:hover {
+        background-color: var(--bg-button-hover-active);
+      }
+    }
+  }
+
+  &__favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+
+    border-radius: var(--border-radius-button);
+    border: 1px solid var(--color-button-favorite-border);
+
+    background-color: var(--color-button-favorite-bg-active);
+
+    &--active {
+      background-color: var(--color-button-favorite-bg);
+    }
+
+    &:hover {
+      background-color: var(--color-button-favorite-bg);
+      border-color: var(--color-button-favorite-border-hover);
+    }
+  }
+}
