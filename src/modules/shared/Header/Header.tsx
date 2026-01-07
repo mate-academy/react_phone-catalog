@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
@@ -6,8 +6,16 @@ import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
 import iconFavorite from 'public/img/icons/icon-favourites-heart-like.png';
 import iconLogo from 'public/img/icons/icon-logo.png';
 import { Link, NavLink } from 'react-router-dom';
+import { useProducts } from 'src/context/ProductsContext';
 
 export const Header: React.FC = () => {
+  const { favorites, cart } = useProducts();
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites, cart]);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -62,6 +70,7 @@ export const Header: React.FC = () => {
             }
           >
             <img className={styles.header__but__link__img} src={iconFavorite} />
+            <p>{favorites.length}</p>
           </NavLink>
           <NavLink
             to="/cart"
@@ -70,6 +79,7 @@ export const Header: React.FC = () => {
             }
           >
             <img className={styles.header__but__link__img} src={iconCart} />
+            <p>{cart.length}</p>
           </NavLink>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProductCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { ProductType } from 'models/product.model';
@@ -11,48 +11,21 @@ type ProductCardProps = {
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, removeFromCart, addToFav, removeFromFav } = useProducts();
+  const { cart, favorites, toggleCart, toggleFav } = useProducts();
   const navigate = useNavigate();
-  const CART_KEY = `cart:${product.id}`;
-  const FAV_KEY = `fav:${product.id}`;
-
-  const [isAdded, setIsAdded] = useState(() => {
-    return localStorage.getItem(CART_KEY) === 'true';
-  });
-
-  const [isFavorite, setIsFavorite] = useState(() => {
-    return localStorage.getItem(FAV_KEY) === 'true';
-  });
 
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const value = localStorage.getItem(CART_KEY);
-
     e.stopPropagation();
-    setIsAdded(prev => !prev);
-
-    if (value === null) {
-      localStorage.setItem(CART_KEY, 'true');
-      addToCart(product);
-    } else {
-      localStorage.removeItem(CART_KEY);
-      removeFromCart(product.id);
-    }
+    toggleCart(product);
   };
 
   const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const value = localStorage.getItem(FAV_KEY);
-
     e.stopPropagation();
-    setIsFavorite(prev => !prev);
-
-    if (value === null) {
-      localStorage.setItem(FAV_KEY, 'true');
-      addToFav(product);
-    } else {
-      localStorage.removeItem(FAV_KEY);
-      removeFromFav(product.id);
-    }
+    toggleFav(product);
   };
+
+  const isAdded = cart.some(item => item.id === product.id);
+  const isFavorite = favorites.some(item => item.id === product.id);
 
   return (
     <>

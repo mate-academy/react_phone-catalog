@@ -9,11 +9,8 @@ type ProductsContextType = {
   cart: ProductType[];
   favorites: ProductType[];
 
-  addToCart: (product: ProductType) => void;
-  removeFromCart: (productId: number) => void;
-
-  addToFav: (product: ProductType) => void;
-  removeFromFav: (productId: number) => void;
+  toggleCart: (product: ProductType) => void;
+  toggleFav: (product: ProductType) => void;
 };
 
 const ProductsContext = createContext<ProductsContextType | null>(null);
@@ -26,45 +23,45 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cart, setCart] = useState<ProductType[]>(() => {
     const saved = localStorage.getItem(CART_KEY);
 
-    return saved ? JSON.parse(saved) : [];
+    try {
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      return [];
+    }
   });
 
   const [favorites, setFavorites] = useState<ProductType[]>(() => {
     const saved = localStorage.getItem(FAVORITES_KEY);
 
-    return saved ? JSON.parse(saved) : [];
+    try {
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      return [];
+    }
   });
 
-  const addToCart = (product: ProductType) => {
+  const toggleCart = (product: ProductType) => {
     setCart(prev => {
       const exists = prev.some(item => item.id === product.id);
 
       if (exists) {
-        return prev;
+        return prev.filter(item => item.id !== product.id);
       }
 
       return [...prev, product];
     });
   };
 
-  const removeFromCart = (productId: number) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
-  };
-
-  const addToFav = (product: ProductType) => {
+  const toggleFav = (product: ProductType) => {
     setFavorites(prev => {
       const exists = prev.some(item => item.id === product.id);
 
       if (exists) {
-        return prev;
+        return prev.filter(item => item.id !== product.id);
       }
 
       return [...prev, product];
     });
-  };
-
-  const removeFromFav = (productId: number) => {
-    setFavorites(prev => prev.filter(item => item.id !== productId));
   };
 
   useEffect(() => {
@@ -78,10 +75,8 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         products,
         cart,
         favorites,
-        addToCart,
-        removeFromCart,
-        addToFav,
-        removeFromFav,
+        toggleCart,
+        toggleFav,
       }}
     >
       {children}
