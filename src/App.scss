@@ -1,10 +1,6 @@
 @import './styles/utils';
-// @import 'swiper/css';
-// @import 'swiper/css/navigation';
-// @import 'swiper/css/pagination';
 @import './styles/themes';
 @import './styles/fonts';
-@import './styles/utils/';
 
 body {
   margin: 0;
@@ -25,22 +21,13 @@ iframe {
 }
 
 .section {
-  padding-top: 64px;
-  background-color: #FAFBFC;
+  padding-top: 48px;
+  background-color: var(--background-color);
   flex-grow: 1;
   padding-bottom: 64px;
 
   @include on-desktop {
+    padding-top: 64px;
     padding-bottom: 80px;
-  }
-}
-
-.container {
-  padding-inline: 16px;
-  max-width: 1136px;
-  margin: 0 auto;
-
-  @include on-tablet {
-    padding-inline: 24px;
   }
 }

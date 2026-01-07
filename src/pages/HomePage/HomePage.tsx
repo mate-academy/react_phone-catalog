@@ -5,7 +5,10 @@ import BannerSlider from './components/BannerSlider/BannerSlider';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import styles from './HomePage.module.scss';
 import useLanguageStore from '../../stores/useLanguageStore';
-import CustomBannerSlider from './components/CustomBannerSlider/CustomBannerSlider';
+import { ProductCardEmpty } from '../../components/ProductCardEmpty';
+import classNames from 'classnames';
+import { CategoriesEmpty } from './components/CategoriesEmpty';
+import { ErrorNotification } from '../../components/ErrorNotification';
 
 const HomePage: React.FC = () => {
   const {
@@ -51,40 +54,90 @@ const HomePage: React.FC = () => {
   }, [allProducts]);
 
   if (isLoading) {
-    return <p>Завантаження продуктів для головної сторінки...</p>;
+    return (
+      <div className={styles.loadingHomePage}>
+        {/* <p>Завантаження продуктів для головної сторінки...</p> */}
+        {/* Title */}
+        <div className={classNames(styles.homePage__title, styles.skeleton)} />
+
+        <div className={styles.homePageGrid}>
+          {/* BannerSlider */}
+          <div
+            className={styles.skeleton}
+            style={{ width: '100%', height: '405px' }}
+          />
+
+          <div>
+            {/* ProductSliderTitle */}
+            <div
+              className={styles.skeleton}
+              style={{ width: '200px', height: '41px', marginBottom: '24px' }}
+            />
+            <div className={styles.loading_grid}>
+              <ProductCardEmpty />
+              <ProductCardEmpty />
+              <ProductCardEmpty />
+              <ProductCardEmpty />
+            </div>
+          </div>
+
+          <CategoriesEmpty />
+
+          <div>
+            {/* ProductSliderTitle */}
+            <div
+              className={styles.skeleton}
+              style={{ width: '200px', height: '41px', marginBottom: '24px' }}
+            />
+
+            <div className={styles.loading_grid}>
+              <ProductCardEmpty />
+              <ProductCardEmpty />
+              <ProductCardEmpty />
+              <ProductCardEmpty />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <p style={{ color: 'red' }}>Помилка завантаження даних: {error}</p>;
+    return (
+      <div className={styles.container}>
+        <ErrorNotification message={error} onRetry={fetchAllProducts} />
+      </div>
+    );
   }
 
   return (
-    <div className={styles.homePage}>
-      <div className="container">
+    <>
+      <div className={styles.homePage}>
         <div className={styles.heroSection}>
-          <h1 className={styles.homePage__title}>{t('home_title')}</h1>
+          <h1 className={classNames(styles.homePage__title, styles.container)}>
+            {t('home_title')}
+          </h1>
 
           <BannerSlider />
-          {/* <CustomBannerSlider /> */}
         </div>
+
+        <ProductSlider
+          products={newestProducts}
+          title={t('newest_products_title')}
+        />
+
+        <Categories
+          totalPhones={phones?.length}
+          totalTablets={tablets?.length}
+          totalAccessories={accessories?.length}
+        />
+
+        <ProductSlider
+          products={hotPriceProducts}
+          title={t('hot_price_products_title')}
+        />
       </div>
-
-      <ProductSlider
-        products={newestProducts}
-        title={t('newest_products_title')}
-      />
-
-      <Categories
-        totalPhones={phones?.length}
-        totalTablets={tablets?.length}
-        totalAccessories={accessories?.length}
-      />
-
-      <ProductSlider
-        products={hotPriceProducts}
-        title={t('hot_price_products_title')}
-      />
-    </div>
+    </>
   );
 };
 

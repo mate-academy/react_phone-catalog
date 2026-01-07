@@ -1,0 +1,95 @@
+@import '../../styles/utils';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); // Затемнення фону
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--card-background);
+  border-radius: var(--card-radius);
+  width: 90%;
+  max-width: 400px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.closeButton {
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  color: var(--primary);
+  border: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    border-radius: var(--button-round-square-radius);
+    border: 1px solid var(--button-border-color-hover);
+    background-color: var(--button-bg-color-hover);
+  }
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  @extend %h3;
+
+  margin-bottom: 10px;
+}
+
+.message {
+  @extend %body_text;
+
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.button {
+  @extend %buttons_text;
+  width: 100%;
+  border-radius: var(--add-button-radius);
+  padding: 12px 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: var(--box-shadow);
+  }
+}
+
+.confirmButton {
+  background-color: var(--add-button-bg);
+  color: var(--add-button-text);
+  border: var(--button-border-color-default);
+}
+
+.cancelButton {
+  background-color: var(--add-button-bg-selected);
+  color: var(--add-button-text-selected);
+  border: 1px solid var(--button-border-color-default);
+}

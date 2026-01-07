@@ -1,5 +1,58 @@
 @import '../../styles/utils';
 
 .favorites {
+  @extend %container;
+  @extend %max_width;
+}
 
+
+.favorites_title {
+  @extend %h1;
+}
+
+.favourites__message_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.favourites__message_1 {
+  @extend %h4;
+}
+
+.favourites__message_2 {
+  @extend %body_text;
+
+  color: var(--secondary);
+  margin-top: 12px;
+}
+
+.favourites__message_img {
+  display: block;
+  object-fit: contain;
+  width: 50vw;
+  margin-top: 32px;
+
+  @include on-tablet {
+    width: 400px;
+  }
+}
+
+.favorites_total_products {
+  @extend %body_text;
+
+  color: var(--secondary);
+  margin-top: 8px;
+}
+
+.favorites_products {
+  @extend %product_grid;
+
+  margin-top: 40px;
+}
+
+.newest_products {
+  margin-top: 40px;
 }

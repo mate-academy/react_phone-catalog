@@ -1,21 +1,58 @@
-// %color-white {
-//   color: $c-white;
-// }
+%skeleton {
+  background-color: var(--elements);
+  border-radius: 4px;
 
-// %color-black {
-//   color: $c-black;
-// }
+  // Ефект блиску (shine)
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 40px 100%;
+  background-repeat: no-repeat;
+  background-position: left -40px top 0;
+  animation: shine 1s ease infinite;
+}
 
-// %color-gray {
-//   color: $c-gray;
-// }
+@keyframes shine {
+  to {
+    background-position: right -40px top 0;
+  }
+}
 
-// %color-main {
-//   color: $c-main;
-// }
+%hover_shadow {
+  @include hover(box-shadow, var(--box-shadow));
+  @include hover(border-color, var(--border-color));
+}
+
+%container {
+  padding-inline: 16px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+%max_width {
+  max-width: 1136px;
+}
+
+%product_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Адаптивна сітка */
+  column-gap: 16px;
+  row-gap: 40px;
+  margin-bottom: 40px;
+}
 
 %divider {
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid var(--elements);
 }
 
 %mont {
@@ -23,6 +60,7 @@
   font-optical-sizing: auto;
   font-weight: 700;
   margin: 0;
+  color: var(--primary);
 }
 
 %uppercase {
@@ -56,10 +94,10 @@
 %small_text {
   @extend %mont;
 
+  color: var(--secondary);
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  letter-spacing: 0%;
 }
 
 %h1 {
@@ -112,5 +150,36 @@
   @include on-tablet {
     font-size: 20px;
     line-height: 26px;
+  }
+}
+
+%underline {
+  // Базові стилі для контейнера
+  position: relative;
+
+  // Стилі для самої лінії
+  &::after {
+    // Основні стилі лінії: прихована, абсолютна, універсальна
+    background-color: var(--primary);
+    bottom: 0;
+    left: 0;
+    content: '';
+    display: block;
+    height: 3px;
+    position: absolute;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    width: 100%;
+    z-index: 10;
+  }
+
+  // Стилі лінії при наведенні на батьківський елемент
+  &:hover::after {
+    transform: scaleX(1); // Робимо лінію видимою
+  }
+
+  &.active::after,
+  &.-active::after {
+    transform: scaleX(1); // Лінія завжди видима в активному стані
   }
 }

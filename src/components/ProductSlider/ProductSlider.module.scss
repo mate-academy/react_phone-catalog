@@ -7,14 +7,15 @@ $border-color-disable: #E2E6E9;
 $light-gray: #f9f9f9;
 
 .sliderContainer {
-  max-width: 1162px;
-  margin: 0 auto;
+  display: block;
 }
 
 .header {
+  max-width: 1136px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-inline: auto;
   margin-bottom: 6px;
   padding-inline: 16px;
 
@@ -29,8 +30,6 @@ $light-gray: #f9f9f9;
 
 .title {
   @extend %h2;
-
-  color: #0F0F11;
 }
 
 .navigation {
@@ -39,9 +38,10 @@ $light-gray: #f9f9f9;
 }
 
 .navButton {
-  background: none;
-  border: 1px solid $border-color;
-  border-radius: 50%;
+  background: var(--button-bg-color-default);
+  border: 1px solid var(--button-border-color-default);
+  border-radius: var(--button-round-square-radius);
+  color: var(--primary);
   width: 32px;
   height: 32px;
   cursor: pointer;
@@ -49,22 +49,28 @@ $light-gray: #f9f9f9;
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 
   // Стиль для відключеного стану (прозорість)
   &.disabled {
     cursor: default;
-    border-color: $border-color-disable;
+    color: var(--icons);
+    pointer-events: none;
+    border-color: var(--elements);
+    background: none;
 
     // Скасовуємо ефект hover, коли кнопка відключена
     &:hover {
-      border-color: $border-color-disable;
+      border-color: var(--elements);
     }
   }
 
   // Стиль, коли кнопка не відключена
   &:not(.disabled):hover {
-    border-color: $border-color-hover;
+    background: var(--button-bg-color-hover);
+    border-color: var(--button-border-color-hove);
   }
 }
 
@@ -72,13 +78,19 @@ $light-gray: #f9f9f9;
   display: flex;
 }
 
-.swiperWrapper {
-  // Swiper встановлює свою ширину, ми лише забезпечуємо контекст
+/* Ізолюємо Swiper від flex-батьків */
+.swiperOuter {
+  display: block;
   width: 100%;
+  min-width: 0;
+  max-width: 1162px;
+  margin-inline: auto;
+}
+
+.swiperWrapper {
   padding-top: 18px;
   padding-bottom: 10px;
   padding-left: 16px;
-  max-width: 1136px;
 
   @include on-tablet {
     padding-left: 24px;

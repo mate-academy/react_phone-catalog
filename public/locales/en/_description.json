@@ -582,5 +582,82 @@
         ]
       }
     ]
+  },
+  {
+    "namespaceId": "apple-iphone-17-pro",
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-ultra-3",
+    "description": [
+      {
+        "title": "Know your body by heart.",
+        "text": [
+          "The more insights you have, the more empowered you are to take action. From the ECG app to the Vitals app and more, Apple Watch Ultra 3 provides a bigger picture of your health, so you can stay informed. And now Ultra 3 takes the next big step in heart health with a pioneering feature — hypertension notifications."
+        ]
+      },
+      {
+        "title": "Satellite communications. Up and running.",
+        "text": [
+          "Now when you’re off the grid without cellular or Wi‑Fi, Ultra 3 can help you stay connected using built‑in satellite communications. And if you need critical help, you can contact emergency services via satellite — right from your wrist."
+        ]
+      },
+      {
+        "title": "Workout media that tunes in to you.",
+        "text": [
+          "Let Apple Music choose the best playlist based on the workout you’re doing and the music you love. Or simply select a playlist or podcast that’s suggested for you."
+        ]
+      }
+    ]
   }
 ]

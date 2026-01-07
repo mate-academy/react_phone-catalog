@@ -86,7 +86,7 @@ const useAllProductsStore = create<AllProductsState>()(
     }),
     {
       name: 'all-products-and-categories-cache', // Нове ім'я кешу, щоб уникнути конфліктів
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => sessionStorage),
       // Зберігаємо всі відфільтровані списки та загальний
       partialize: state => ({
         allProducts: state.allProducts,

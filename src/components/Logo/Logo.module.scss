@@ -10,8 +10,13 @@
 
 .logo__img {
   display: flex;
-  width: 80px;
-  height: 28px;
+  width: 64px;
+  height: 22px;
 
-  @include hover(transform, scale(1.2));
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+
+  @include hover(transform, scale(1.15));
 }

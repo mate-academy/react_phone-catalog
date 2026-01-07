@@ -1,12 +1,13 @@
 import React from 'react';
-import CustomSelect from '../CustomSelect/CustomSelect';
 import useLanguageStore, {
   SupportedLanguage,
-} from '../../stores/useLanguageStore'; // Ваші стори
+} from '../../stores/useLanguageStore';
 import styles from './LanguageSelect.module.scss';
-import CustomSelect2 from '../CustomSelect2/CustomSelect2';
+import CustomSelect2, {
+  CustomSelectOption,
+} from '../CustomSelect2/CustomSelect2';
 
-const langOptions = [
+const langOptions: CustomSelectOption<SupportedLanguage>[] = [
   { value: 'uk', label: 'UA' },
   { value: 'en', label: 'EN' },
   { value: 'fr', label: 'FR' },
@@ -29,12 +30,6 @@ const LanguageSelect: React.FC = () => {
           onChange={handleLanguageChange}
         />
       </div>
-
-      {/* <CustomSelect
-        options={langOptions}
-        selectedValue={currentLanguage}
-        onSelectChange={handleLanguageChange}
-      /> */}
     </>
   );
 };

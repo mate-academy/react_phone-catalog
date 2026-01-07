@@ -1,7 +1,7 @@
 @import '../../../../styles/utils';
 
 .product-about {
-
+  display: block;
 }
 
 .product-about__title {
@@ -9,21 +9,22 @@
 }
 
 .product-about__divider {
-  width: 100%;
-  border-bottom: 1px solid #E2E6E9;
+  @extend %divider;
 
   margin-top: 16px;
-  // @include on-desktop {
-  //   margin-block: 24px;
-  // }
+  margin-bottom: 32px;
 }
 
 .product-about__description {
-  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .product-about__description-block {
-
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .product-about__description-block-title {
@@ -33,5 +34,5 @@
 .product-about__description-block-paragraph {
   @extend %body_text;
 
-  color: #89939A;
+  color: var(--secondary);
 }

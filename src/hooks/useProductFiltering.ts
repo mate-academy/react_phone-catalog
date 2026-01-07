@@ -37,27 +37,34 @@ export const useProductFiltering = (
 
   // Функції для оновлення URL-параметрів
   const updateSearchParams = (key: string, value: string | number | null) => {
-    setSearchParams(prevParams => {
-      const newParams = new URLSearchParams(prevParams);
+    setSearchParams(
+      prevParams => {
+        const newParams = new URLSearchParams(prevParams);
+        const prevValue = prevParams.get(key);
 
-      if (
-        value === null ||
-        value === '' ||
-        (key === 'page' && value === DEFAULT_PAGE) ||
-        (key === 'perPage' && value === DEFAULT_ITEMS_PER_PAGE)
-      ) {
-        newParams.delete(key);
-      } else {
-        newParams.set(key, String(value));
-      }
-      // При зміні сортування/фільтрів/пошуку - скидаємо сторінку на першу
+        const nextValue = value === null || value === '' ? null : String(value);
 
-      if (key !== 'page') {
-        newParams.delete('page');
-      }
+        // 1. Якщо значення не змінилося — нічого не робимо
+        if ((prevValue ?? null) === nextValue) {
+          return prevParams;
+        }
 
-      return newParams;
-    });
+        // 2. Встановлення / видалення ключа
+        if (nextValue === null) {
+          newParams.delete(key);
+        } else {
+          newParams.set(key, nextValue);
+        }
+
+        // 3. ❗️Скидаємо page ТІЛЬКИ якщо змінюється НЕ page
+        if (key !== 'page') {
+          newParams.delete('page');
+        }
+
+        return newParams;
+      },
+      { replace: true },
+    );
   };
 
   const setSortBy = (sortBy: string) => updateSearchParams('sortBy', sortBy);

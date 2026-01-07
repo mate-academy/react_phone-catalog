@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
+import { ArrowIcon } from '../../../../components/icons/ArrowIcon';
 
 interface PaginationProps {
   currentPage: number;
@@ -14,7 +15,7 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
-  onPageChange,
+  // onPageChange,
   generatePageUrl,
 }) => {
   if (totalPages <= 1) {
@@ -35,24 +36,16 @@ const Pagination: React.FC<PaginationProps> = ({
             styles['pagination__button--disabled'],
           )}
         >
-          <img
-            className={styles.pagination__button__img}
-            src="src/images/icons/arrow-left-gray.svg"
-            alt="arrow right"
-          />
+          <ArrowIcon direction="left" />
         </div>
       ) : (
         <NavLink
           to={generatePageUrl(currentPage - 1)}
-          onClick={() => onPageChange(currentPage - 1)}
+          // onClick={() => onPageChange(currentPage - 1)}
           className={styles.pagination__button}
           aria-disabled={isFirstPage}
         >
-          <img
-            className={styles.pagination__button__img}
-            src="src/images/icons/arrow-left-black.svg"
-            alt="arrow right"
-          />
+          <ArrowIcon direction="left" />
         </NavLink>
       )}
 
@@ -60,7 +53,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <NavLink
           key={page}
           to={generatePageUrl(page)}
-          onClick={() => onPageChange(page)}
+          // onClick={() => onPageChange(page)}
           className={classNames(styles.pagination__item, {
             [styles['pagination__item--active']]: page === currentPage,
           })}
@@ -76,24 +69,16 @@ const Pagination: React.FC<PaginationProps> = ({
             styles['pagination__button--disabled'],
           )}
         >
-          <img
-            className={styles.pagination__button__img}
-            src="src/images/icons/arrow-right-gray.svg"
-            alt="arrow right"
-          />
+          <ArrowIcon />
         </div>
       ) : (
         <NavLink
           to={generatePageUrl(currentPage + 1)}
-          onClick={() => onPageChange(currentPage + 1)}
+          // onClick={() => onPageChange(currentPage + 1)}
           className={styles.pagination__button}
           aria-disabled={isLastPage}
         >
-          <img
-            className={styles.pagination__button__img}
-            src="src/images/icons/arrow-right-black.svg"
-            alt="arrow right"
-          />
+          <ArrowIcon />
         </NavLink>
       )}
     </div>

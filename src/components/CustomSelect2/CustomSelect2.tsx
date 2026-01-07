@@ -1,41 +1,100 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import styles from './CustomSelect2.module.scss'; // Підключення стилів
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
+import styles from './CustomSelect2.module.scss';
 import classNames from 'classnames';
+import { ArrowIcon } from '../icons';
 
 // Типизація для елементів селекта
-interface SelectOption {
-  value: string;
+// interface SelectOption {
+//   value: string;
+//   label: React.ReactNode;
+// }
+
+export interface CustomSelectOption<T> {
+  value: T;
   label: string;
+  icon?: string;
+  render?: () => React.ReactNode;
 }
 
 // Типизація для пропсів компонента
-interface CustomSelectProps {
-  options: SelectOption[];
-  currentValue: string;
+// interface CustomSelectProps {
+//   options: SelectOption[];
+//   currentValue: string;
+//   placeholder?: string;
+//   description?: string; // Для елемента "Description"
+//   onChange: (value: string) => void;
+// }
+
+export interface CustomSelectProps<T> {
+  options: CustomSelectOption<T>[];
+  currentValue: T;
+  onChange: (value: T) => void;
+  description?: string;
   placeholder?: string;
-  description?: string; // Для елемента "Description"
-  onChange: (value: string) => void;
 }
 
-const CustomSelect2: React.FC<CustomSelectProps> = ({
+const CustomSelect2 = <T,>({
   options,
   currentValue,
   placeholder = 'Select...',
   description,
   onChange,
-}) => {
+}: CustomSelectProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [dropUp, setDropUp] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const selectedLabel =
-    options.find(opt => opt.value === currentValue)?.label || placeholder;
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // const selectedOption = useMemo(
+  //   () => options.find(o => o.value === currentValue),
+  //   [currentValue, options],
+  // );
+
+  // const currentOption = selectedOption?.label || placeholder;
+
+  const currentOption = useMemo(
+    () => options.find(opt => opt.value === currentValue),
+    [options, currentValue],
+  );
+
+  // const currentOption = options.find(opt => opt.value === currentValue);
 
   // Обробник вибору елемента
-  const handleSelect = (value: string) => {
-    setIsOpen(false);
-    onChange(value);
+  const handleSelect = useCallback(
+    (value: T) => {
+      setIsOpen(false);
+      onChange(value);
+    },
+    [onChange],
+  );
+
+  // auto-positioning
+  const checkPosition = () => {
+    const rect = containerRef.current?.getBoundingClientRect();
+
+    if (!rect) {
+      return;
+    }
+
+    const spaceBelow = window.innerHeight - rect.bottom;
+
+    setDropUp(spaceBelow < 200); // 200px для списку
   };
+
+  const open = useCallback(() => {
+    checkPosition();
+    setIsOpen(true);
+  }, []);
+
+  const close = () => setIsOpen(false);
 
   // Обробник кліку поза компонентом для закриття
   const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -43,7 +102,7 @@ const CustomSelect2: React.FC<CustomSelectProps> = ({
       containerRef.current &&
       !containerRef.current.contains(event.target as Node)
     ) {
-      setIsOpen(false);
+      close();
     }
   }, []);
 
@@ -59,7 +118,7 @@ const CustomSelect2: React.FC<CustomSelectProps> = ({
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'Escape') {
-        setIsOpen(false);
+        close();
 
         return;
       }
@@ -76,53 +135,69 @@ const CustomSelect2: React.FC<CustomSelectProps> = ({
         }
       } else if (event.key === 'Enter' || event.key === 'Space') {
         event.preventDefault();
-        setIsOpen(true);
+        open();
       }
     },
-    [isOpen, hoveredIndex, options],
+    [isOpen, hoveredIndex, options, handleSelect, open],
   );
 
   return (
     <div
-      className={classNames(styles['custom-select-wrapper'], {
-        [styles['with-description']]: description,
+      className={classNames(styles.wrapper, {
+        [styles.description]: description,
       })}
       ref={containerRef}
       onKeyDown={handleKeyDown}
       tabIndex={0} // Для фокусу клавіатурою
     >
       {/* Опис, якщо є */}
-      {description && (
-        <div className={styles['custom-select-description']}>{description}</div>
-      )}
+      {description && <div className={styles.description}>{description}</div>}
 
       {/* Головний елемент селекта */}
       <div
-        className={classNames(styles['custom-select-control'], {
+        className={classNames(styles.control, {
           [styles.focus]: isOpen,
         })}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => (isOpen ? close() : open())}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <div className={styles['custom-select-label']}>{selectedLabel}</div>
+        <div className={styles.label}>
+          {currentOption ? (
+            <>
+              {currentOption.render
+                ? currentOption.render()
+                : currentOption.label}
+            </>
+          ) : (
+            <span className={styles.placeholder}>{placeholder}</span>
+          )}
+          {/* {selectedLabel} */}
+        </div>
 
-        <div className={styles['custom-select-arrow']}>
-          <img
-            className={styles['custom-select-arrow__img']}
+        <div className={styles.arrow}>
+          <ArrowIcon direction="down" />
+          {/* <img
+            className={styles.arrow__img}
             src="src/images/icons/arrow-down.svg"
             alt="arrow down"
-          />
+          /> */}
         </div>
       </div>
 
       {/* Випадаючий список */}
       {isOpen && (
-        <ul className={styles['custom-select-options']} role="listbox">
+        <ul
+          className={classNames(styles.options, {
+            [styles.dropUp]: dropUp,
+          })}
+          ref={listRef}
+          role="listbox"
+        >
           {options.map((option, index) => (
             <li
-              key={option.value}
-              className={classNames(styles['custom-select-option'], {
+              key={String(option.value)}
+              className={classNames(styles.option, {
                 [styles.hover]: hoveredIndex === index,
               })}
               onClick={() => handleSelect(option.value)}
@@ -131,7 +206,7 @@ const CustomSelect2: React.FC<CustomSelectProps> = ({
               role="option"
               aria-selected={currentValue === option.value}
             >
-              {option.label}
+              {option.render ? option.render() : option.label}
             </li>
           ))}
         </ul>

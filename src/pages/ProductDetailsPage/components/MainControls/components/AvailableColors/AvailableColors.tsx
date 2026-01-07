@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line max-len
 import { AnyDetailedProduct } from '../../../../../../types/DetailedProductTypes';
-import {
-  formatUrlColor,
-  generateProductPageUrl,
-} from '../../../../../../utils/productUrlGenerators';
+// eslint-disable-next-line max-len
+import { generateProductPageUrl } from '../../../../../../utils/productUrlGenerators';
 import styles from './AvailableColors.module.scss';
 import classNames from 'classnames';
+import { getColorClassName } from '../../../../../../utils/cssUtils';
+import useLanguageStore from '../../../../../../stores/useLanguageStore';
 
 type Props = {
   product: AnyDetailedProduct;
@@ -20,10 +20,13 @@ export const AvailableColors: React.FC<Props> = ({ product }) => {
     colorsAvailable,
     capacity: currentCapacity,
   } = product;
+  const { t } = useLanguageStore();
 
   return (
     <div>
-      <h3 className={styles['available-colors__title']}>Available colors</h3>
+      <h3 className={styles['available-colors__title']}>
+        {t('available_colors')}
+      </h3>
 
       <div className={styles['available-colors__list']}>
         {colorsAvailable.map(colorOption => {
@@ -31,9 +34,11 @@ export const AvailableColors: React.FC<Props> = ({ product }) => {
           const url = generateProductPageUrl(
             category,
             namespaceId,
-            currentCapacity, // Ємність залишається поточною
-            colorOption, // Змінюється колір
+            currentCapacity,
+            colorOption,
           );
+
+          const colorClass = getColorClassName(colorOption);
 
           return (
             <NavLink
@@ -45,8 +50,10 @@ export const AvailableColors: React.FC<Props> = ({ product }) => {
               title={colorOption}
             >
               <div
-                className={styles['available-colors__item-circle']}
-                style={{ backgroundColor: formatUrlColor(colorOption) }} // Динамічний колір фону
+                className={classNames(
+                  styles['available-colors__item-circle'],
+                  styles[colorClass],
+                )}
               ></div>
             </NavLink>
           );

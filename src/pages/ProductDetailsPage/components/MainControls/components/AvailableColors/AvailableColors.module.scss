@@ -4,7 +4,7 @@
   @extend %small_text;
 
   font-weight: 600;
-  color: #89939A;
+  color: var(--secondary);
   margin-bottom: 8px;
 }
 
@@ -23,7 +23,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #E2E6E9;
+  border: 1px solid var(--elements);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   display: flex; /* Для центрування можливого дочірнього елемента */
@@ -37,47 +37,41 @@
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  border: 2px solid #FFFFFF;
+  border: 2px solid var(--white-black);
 }
 
 /* Стиль для активного (обраного) кольору */
 .available-colors__item--active {
-  border-color: #0F0F11;
+  border-color: var(--primary);
 }
 
 .available-colors__item:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
+  border-color: var(--primary);
 }
 
-
-
-/* product-colors */
-
-/* .product-colors {
-
-}
-
-.product-colors__title {
-
-}
-
-.product-colors__list {
-
-}
-
-.product-colors__item {
-
-}
-
-.product-colors__item--active {
-
-}
-
-.product-colors__item--black {
-
-}
-
-.product-colors__item--white {
-
-} */
+.color-black { background-color: #1C1B20; }
+.color-blue { background-color: #286585; }
+.color-blue-ocean { background-color: #6E7784; } //blue-ocean
+.color-coral { background-color: #FF6452; }
+.color-orange { background-color: #F7803A; } //orange
+.color-gold { background-color: #F2E4CD; }
+.color-graphite { background-color: #4C4A46; }
+.color-green { background-color: #A3D7C1; }
+.color-midnight { background-color: #19212A; }
+.color-midnightgreen { background-color: #3D483F; }
+.color-pink { background-color: #F9DCD6; }
+.color-purple { background-color: #B0A7DE; }
+.color-red { background-color: #E13636; }
+.color-rose-gold { background-color: #F4CCC5; }
+.color-rosegold { background-color: #EFC8C1; }
+.color-sierrablue { background-color: #95ACC4; }
+.color-silver { background-color: #DBDADD; }
+.color-sky-blue { background-color: #B6C9D7; }
+.color-deep-blue { background-color: #434D67; } //deep-blue
+.color-space-gray { background-color: #4B4D51; }
+.color-spaceblack { background-color: #3A3633; }
+.color-space-black { background-color: #2C292C; } //space-black
+.color-spacegray { background-color: #A09DA2; }
+.color-starlight { background-color: #F0E8E2; }
+.color-white { background-color: #F9F5F2; }
+.color-yellow { background-color: #FEFE32; }

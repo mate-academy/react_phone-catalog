@@ -6,6 +6,7 @@ import { generateProductPageUrl } from '../../../../../../utils/productUrlGenera
 import { NavLink } from 'react-router-dom';
 import styles from './SelectCapacity.module.scss';
 import classNames from 'classnames';
+import useLanguageStore from '../../../../../../stores/useLanguageStore';
 
 type Props = {
   product: AnyDetailedProduct;
@@ -19,10 +20,13 @@ export const SelectCapacity: React.FC<Props> = ({ product }) => {
     capacity: currentCapacity,
     capacityAvailable,
   } = product;
+  const { t } = useLanguageStore();
 
   return (
     <div>
-      <h3 className={styles['select-capacity__title']}>Select capacity</h3>
+      <h3 className={styles['select-capacity__title']}>
+        {t('select_capacity')}
+      </h3>
 
       <div className={styles['select-capacity__list']}>
         {capacityAvailable.map(capacityOption => {

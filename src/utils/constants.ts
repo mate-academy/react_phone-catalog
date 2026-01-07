@@ -1,18 +1,3 @@
-export const SORT_OPTIONS = [
-  { value: 'newest', label: 'Newest' },
-  { value: 'alphabetically', label: 'Alphabetically' },
-  { value: 'cheapest', label: 'Cheapest' },
-];
-
-export const ITEMS_PER_PAGE_OPTIONS = [
-  { value: '4', label: '4' },
-  { value: '8', label: '8' },
-  { value: '16', label: '16' },
-  { value: 'all', label: 'All' },
-];
-
-export const ITEMS_PER_PAGE_OPTIONS2 = ['4', '8', '16', 'all'];
-
 export const DEFAULT_SORT_BY = 'newest';
 export const DEFAULT_PAGE = 1;
 export const DEFAULT_ITEMS_PER_PAGE = '8';
@@ -31,7 +16,18 @@ const UNIT_TRANSLATIONS: { [key: string]: { [lang: string]: string } } = {
     de: 'Space Schwarz',
     fr: 'Noir sidéral',
   },
+  'Blue Ocean': {
+    uk: 'Блакитний океан',
+    de: 'Blauer Ozean',
+    fr: 'Océan bleu',
+  },
+  'Deep Blue': {
+    uk: 'Глибокий синій',
+    de: 'Tiefblau',
+    fr: 'Bleu profond',
+  },
   Silver: { uk: 'Сріблястий', de: 'Silber', fr: 'Argent' },
+  Orange: { uk: 'Помаранчевий', de: 'Orange', fr: 'Orange' },
   // ... додайте інші кольори та поширені терміни
 };
 

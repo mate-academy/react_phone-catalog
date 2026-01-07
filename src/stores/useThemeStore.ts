@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-export type Theme = 'light' | 'dark' | 'blue' | 'green' | 'red'; // Приклади тем
+export type Theme = 'orange' | 'dark' | 'blue' | 'purple' | 'black';
 
 interface ThemeState {
   currentTheme: Theme;
@@ -11,7 +11,7 @@ interface ThemeState {
 const useThemeStore = create<ThemeState>()(
   persist(
     set => ({
-      currentTheme: 'light', // Тема за замовчуванням
+      currentTheme: 'orange', // Тема за замовчуванням
       setTheme: theme => {
         set({ currentTheme: theme });
       },

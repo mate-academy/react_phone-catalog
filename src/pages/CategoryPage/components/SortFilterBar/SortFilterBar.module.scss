@@ -14,9 +14,17 @@
 }
 
 .sort-filter-bar__sort-by {
-  width: 187px;
+  width: 160px;
+
+  @include on-tablet {
+    width: 187px;
+  }
 }
 
 .sort-filter-bar__page {
-  width: 128px;
+  width: 122px;
+
+  @include on-tablet {
+    width: 128px;
+  }
 }

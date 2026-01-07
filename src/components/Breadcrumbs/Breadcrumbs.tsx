@@ -4,6 +4,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AnyDetailedProduct } from '../../types/DetailedProductTypes';
 import { BreadcrumbProduct } from '../../types/Product';
 import classNames from 'classnames';
+import useLanguageStore from '../../stores/useLanguageStore';
+import { ArrowIcon, HomeIcon } from '../icons';
 
 interface BreadcrumbsProps {
   product: AnyDetailedProduct | BreadcrumbProduct | null; // product може бути null поки завантажується
@@ -12,11 +14,7 @@ interface BreadcrumbsProps {
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Функція для капіталізації першої літери (наприклад, "phones" -> "Phones")
-  const capitalizeFirstLetter = (string: string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+  const { t } = useLanguageStore();
 
   const handleGoBack = () => {
     navigate(-1); // Повертається на одну сторінку назад в історії браузера
@@ -27,10 +25,12 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
   const isFavouritesPage = location.pathname.includes('/favourites');
   const isCartPage = location.pathname.includes('/cart');
 
-  // Визначення назви категорії для відображення
-  const categoryName = product?.category
-    ? capitalizeFirstLetter(product.category)
-    : '';
+  let categoryLinkText = '';
+
+  if (product?.category) {
+    // Назва категорії тут перекладається за ключем t('nav_phones')
+    categoryLinkText = t(`nav_${product.category}`);
+  }
 
   const productName = isDetailedProduct ? product.name : ''; // Тільки якщо це повний продукт
 
@@ -40,11 +40,20 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
       {(product || isFavouritesPage) && (
         <nav className={styles.breadcrumbs} aria-label="breadcrumb">
           <ol className={styles.breadcrumbs__list}>
+            {/* КРИХТА 1: HOME (статика) */}
             <li className={styles.breadcrumbs__item}>
-              <NavLink to="/" className={styles.breadcrumbs__link}>
-                <span className={styles['icon-home']}></span>
+              <NavLink
+                to="/"
+                className={classNames(
+                  styles.breadcrumbs__link,
+                  styles.breadcrumbs__link__main,
+                )}
+              >
+                <HomeIcon />
               </NavLink>
             </li>
+
+            {/* КРИХТА 2: КАТЕГОРІЯ АБО КАРТКА/ФАВОРИТИ (Динаміка) */}
             {product && (
               <>
                 <li
@@ -53,15 +62,17 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
                     styles.breadcrumbs__separator,
                   )}
                 >
-                  <span className={styles['icon-arrow-right']}></span>
+                  <ArrowIcon />
                 </li>
 
                 <li className={styles.breadcrumbs__item}>
                   <NavLink
                     to={`/${product.category}`}
-                    className={styles.breadcrumbs__link}
+                    className={classNames(styles.breadcrumbs__link, {
+                      [styles.breadcrumbs__link__main]: isDetailedProduct,
+                    })}
                   >
-                    {categoryName}
+                    {categoryLinkText}
                   </NavLink>
                 </li>
 
@@ -73,7 +84,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
                         styles.breadcrumbs__separator,
                       )}
                     >
-                      <span className={styles['icon-arrow-right']}></span>
+                      <ArrowIcon />
                     </li>
                     <li
                       className={classNames(
@@ -97,7 +108,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
                     styles.breadcrumbs__separator,
                   )}
                 >
-                  <span className={styles['icon-arrow-right']}></span>
+                  <ArrowIcon />
                 </li>
                 <li
                   className={classNames(
@@ -105,7 +116,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
                     styles.breadcrumbs__current,
                   )}
                 >
-                  {capitalizeFirstLetter('favourites')}
+                  {t('nav_favourites')}
                 </li>
               </>
             )}
@@ -118,10 +129,14 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
         <button
           onClick={handleGoBack}
           className={styles['back-button']}
-          aria-label="Go back"
+          aria-label={t('button_back')}
         >
-          <span className={styles['icon-arrow-left']}></span>
-          <span className={styles['back-button__label']}>Back</span>
+          <span className={styles['arrow-left']}>
+            <ArrowIcon direction="left" />
+          </span>
+          <span className={styles['back-button__label']}>
+            {t('button_back')}
+          </span>
         </button>
       )}
     </div>

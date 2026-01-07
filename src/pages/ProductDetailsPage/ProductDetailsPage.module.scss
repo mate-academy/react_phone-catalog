@@ -1,21 +1,25 @@
 @import '../../styles/utils';
 
 .product {
-  // @include page-grid;
+  @extend %container;
+  @extend %max_width;
 }
 
 .product-name {
   @extend %h2;
 
-  margin-bottom: 40px;
-  color: #0F0F11;
+  // color: #0F0F11;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
 }
 
 .product-content {
-  // display: grid;
-  // grid-template-columns: 1fr 1fr;
-  // column-gap: 64px;
   @include page-grid;
+
+  row-gap: 56px;
 
   @include on-tablet {
     row-gap: 64px;
@@ -24,20 +28,13 @@
   @include on-desktop {
     row-gap: 80px;
   }
-
-  // grid-template-areas:
-  //   "imageGallery options"
-  //   "about techSpecs";
 }
 
 .product-image-gallery {
-  // grid-area: imageGallery;
   grid-column: 1 / 5;
-  margin-bottom: 40px;
 
   @include on-tablet {
     grid-column: 1 / 8;
-    margin-bottom: 0;
   }
 
   @include on-desktop {
@@ -45,25 +42,54 @@
   }
 }
 
-.product-options {
-  // grid-area: options;
+.product-options-wrapper {
+  position: relative;
   grid-column: 1 / 5;
+
+  --columns: 4;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
     grid-column: 8 / 13;
+    --columns: 5;
   }
 
   @include on-desktop {
     grid-column: 14 / 25;
+    --columns: 11;
+  }
+}
+
+.product-options-id {
+  @extend %small_text;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--icons);
+}
+
+.product-options {
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 1 / 6;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 8;
   }
 }
 
 .product-about {
-  // grid-area: about;
   grid-column: 1 / 5;
+  margin-top: 16px;
 
   @include on-tablet {
     grid-column: 1 / 8;
+    margin-top: 0;
   }
 
   @include on-desktop {
@@ -72,14 +98,34 @@
 }
 
 .product-tech-specs {
-  // grid-area: techSpecs;
   grid-column: 1 / 5;
+  margin-top: 16px;
 
   @include on-tablet {
     grid-column: 8 / 13;
+    margin-top: 0;
   }
 
   @include on-desktop {
     grid-column: 14 / 25;
   }
+}
+
+.recomended-products-slider {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.error-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
 }

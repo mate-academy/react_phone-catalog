@@ -1,116 +1,122 @@
 @import '../../styles/utils';
 
-$color-border-default: #B4BDC3; // Сірий колір рамки (Default)
-$color-border-hover: #89939A;   // Темніший сірий (Hover)
-$color-border-focus: #0F0F11;   // Чоний (Focus)
-$color-background-hover-item: #FAFBFC; // Світло-сірий для Hover Item
+// $color-border-default: #b4bdc3; // Сірий колір рамки (Default)
+// $color-border-hover: #89939a; // Темніший сірий (Hover)
+// $color-border-focus: #0f0f11; // Чоний (Focus)
+// $color-background-hover-item: #fafbfc; // Світло-сірий для Hover Item
 
-.custom-select-wrapper {
-  @extend %mont;
-
+.wrapper {
   position: relative;
-  display: inline-block;
   width: 100%;
   outline: none;
+}
+
+.description {
+  @extend %small_text;
+
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--secondary);
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 12px;
+  border: 1px solid var(--select-border-default);
+  border-radius: var(--select-border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 40px;
   box-sizing: border-box;
 
-  // Стилі для опису, якщо він є
-  &.with-description {
-    .custom-select-description {
-      @extend %small_text;
-
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #89939A;
-    }
+  // Стан Hover
+  &:hover {
+    border-color: var(--select-border-hover);
   }
 
-  // Стилі для основного елемента селекта (кнопки)
-  .custom-select-control {
+  // Стан Focus/Open
+  &.focus {
+    border-color: var(--select-border-focus);
+  }
+
+  .label {
+    @extend %buttons_text;
+
+    flex-grow: 1;
+    text-align: left;
+    color: var(--primary);
+  }
+
+  .arrow {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 12px 9px 12px;
-    // background-color: #FAFBFC;
-    border: 1px solid $color-border-default;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 40px;
-    box-sizing: border-box;
+    justify-content: center;
+    color: var(--select-arrow-color);
+    transition: transform 0.3s ease;
+  }
 
-    // Стан Hover
-    &:hover {
-      border-color: $color-border-hover;
-    }
+  // .arrow__img {
+  //   display: flex;
+  // }
 
-    // Стан Focus/Open
-    &.focus {
-      border-color: $color-border-focus;
-    }
-
-    .custom-select-label {
-      @extend %buttons_text;
-
-      flex-grow: 1;
-      text-align: left;
-      color: #1f2937;
-    }
-
-    .custom-select-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .custom-select-arrow__img {
-      display: flex;
-    }
-
-    // Поворот стрілки, коли селект відкритий
-    &.focus .custom-select-arrow {
-      transform: rotate(180deg);
-    }
+  // Поворот стрілки, коли селект відкритий
+  &.focus .arrow {
+    transform: rotate(180deg);
   }
 }
 
 // Стилі для випадаючого списку
-.custom-select-options {
-  @extend %small_text;
+.options {
+  @extend %body_text;
 
   position: absolute;
-  top: 100%; // Розміщення під кнопкою
   left: 0;
   right: 0;
   margin-top: 4px;
-  background-color: white;
-  border: 1px solid #E2E6E9;
-  border-radius: 8px;
+  background-color: var(--select-options-bg-color);
+  border: 1px solid var(--select-options-border-color);
+  border-radius: var(--select-border-radius);
   box-shadow: 0px 2px 15px 0px #0000000D;
   list-style: none;
   padding: 8px 0;
-  z-index: 10; // Щоб був поверх інших елементів
+  z-index: 10;
   font-weight: 600;
+  animation: fadeIn 0.15s ease;
 
-  .custom-select-option {
-    padding: 6px 12px 5px 12px;
-    cursor: pointer;
-    color: #89939A;
-    transition: background-color 0.1s ease;
-    height: 21px;
-    line-height: 21px;
-
-    // Стан Hover Item
-    &:hover, &.hover {
-      border-radius: 8px;
-      background-color: $color-background-hover-item;
-      color: #0F0F11;
-    }
-
-    // Опціонально: стан Selected
-    &[aria-selected="true"] {
-      // Можна додати галочку або інший стиль для обраного елемента
-      font-weight: 600;
-    }
+  &.dropUp {
+    bottom: calc(100% + 4px);
+    margin-top: 0;
   }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px 5px 12px;
+  cursor: pointer;
+  color: var(--secondary);
+  transition: background-color 0.1s ease;
+  height: 21px;
+  line-height: 21px;
+
+  // Стан Hover Item
+  &:hover,
+  &.hover {
+    background-color: var(--select-background-hover-item);
+    color: var(--primary);
+    box-shadow: inset 0 0 4px 0 #c0d0ef66;
+  }
+
+  // Опціонально: стан Selected
+  // &[aria-selected='true'] {
+  //   // Можна додати галочку або інший стиль для обраного елемента
+  //   font-weight: 600;
+  // }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

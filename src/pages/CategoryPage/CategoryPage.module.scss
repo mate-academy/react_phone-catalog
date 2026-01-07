@@ -1,8 +1,8 @@
 @import '../../styles/utils';
 
 .category-page {
-  // max-width: 1200px;
-  margin: 0 auto;
+  @extend %container;
+  @extend %max_width;
 }
 
 .category-header {
@@ -19,13 +19,27 @@
 .category-header__title {
   @extend %h1;
 
-  color: #0F0F11;
+  // color: #0F0F11;
+
+  &.skeleton {
+    width: 250px;
+    height: 41px;
+
+    @include on-tablet {
+    height: 56px;
+  }
+  }
 }
 
 .category-header__total-products {
   @extend %body_text;
 
-  color: #89939A;
+  color: var(--secondary);
+
+  &.skeleton {
+    width: 90px;
+    height: 21px;
+  }
 }
 
 .category-controls {
@@ -37,9 +51,10 @@
   margin-bottom: 24px;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Адаптивна сітка */
-  gap: 20px;
-  margin-bottom: 40px;
+.category-products {
+  @extend %product_grid;
+}
+
+.skeleton {
+  @extend %skeleton;
 }

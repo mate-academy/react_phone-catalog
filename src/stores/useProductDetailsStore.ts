@@ -63,6 +63,7 @@ const useProductDetailsStore = create<ProductDetailsState>()(
           // 2. Якщо в localStorage/кеші стору немає - завантажуємо
           if (!allDetailedItems) {
             const categoryFilePath = `/api/${category}.json`;
+
             console.log(`Завантажую ${categoryFilePath}...`);
 
             const response = await fetch(categoryFilePath);
@@ -88,9 +89,9 @@ const useProductDetailsStore = create<ProductDetailsState>()(
           );
 
           if (!foundProduct) {
-            throw new Error(
-              `Product with itemId "${itemId}" not found in ${category} category.`,
-            );
+            set({ product: null, isLoading: false, error: null });
+
+            return;
           }
 
           set({ product: foundProduct, isLoading: false });
@@ -107,7 +108,7 @@ const useProductDetailsStore = create<ProductDetailsState>()(
     }),
     {
       name: 'product-details-cache', // Унікальне ім'я для кешу деталей
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => sessionStorage),
       // Не додаємо 'product', 'isLoading', 'error' в список полів для збереження,
       // або використовуємо partialize, щоб зберігати тільки cachedCategoryData
       partialize: state => ({ cachedCategoryData: state.cachedCategoryData }),

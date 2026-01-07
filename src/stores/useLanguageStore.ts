@@ -18,11 +18,11 @@ interface LanguageState {
   descriptions: {
     [lang: string]: { [namespaceId: string]: DescriptionBlock[] };
   };
-  translations: { [lang: string]: { [key: string]: string } }; // <-- Додано для загальних перекладів
+  translations: { [lang: string]: { [key: string]: string } };
   setLanguage: (lang: SupportedLanguage) => void;
   loadDescriptionTranslations: (lang: SupportedLanguage) => Promise<void>;
-  loadCommonTranslations: (lang: SupportedLanguage) => Promise<void>; // <-- Додано
-  t: (key: string) => string; // <-- Додано для зручності використання перекладів
+  loadCommonTranslations: (lang: SupportedLanguage) => Promise<void>;
+  t: (key: string) => string;
 }
 
 const useLanguageStore = create<LanguageState>()(
@@ -118,8 +118,8 @@ const useLanguageStore = create<LanguageState>()(
       storage: createJSONStorage(() => localStorage),
       partialize: state => ({
         currentLanguage: state.currentLanguage,
-        descriptions: state.descriptions,
-        translations: state.translations, // <-- Зберігаємо переклади в кеші
+        // descriptions: state.descriptions,
+        // translations: state.translations,
       }),
     },
   ),

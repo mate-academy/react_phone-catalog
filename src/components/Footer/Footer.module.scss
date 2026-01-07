@@ -1,8 +1,13 @@
 @import '../../styles/utils';
 
 .footer {
-  background-color: white;
-  box-shadow: 0px -1px 0px 0px #E2E6E9;
+  background-color: var(--background-color);
+  box-shadow: 0px -1px 0px 0px var(--elements);
+}
+
+.footer-wrapper {
+  @extend %container;
+  @extend %max_width;
 }
 
 .container {
@@ -13,9 +18,9 @@
   padding-block: 32px;
 
   @include on-tablet {
-    display: grid;
-    grid-template-columns: 150px 1fr 150px;
-    place-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -45,30 +50,17 @@
 
 .link {
   @extend %uppercase;
+  @extend %underline;
 
   position: relative;
   text-decoration: none;
-  color: #89939A;
+  color: var(--secondary);
 
-  @include hover(color, #0F0F11);
-}
+  &::after {
+    bottom: -7px;
+  }
 
-.underline::after {
-    content: "";
-    transform-origin: 0;
-    background-color: #0F0F11;
-    width: 100%;
-    height: 2px;
-    transition: transform .3s;
-    transform: scale(0);
-    transform-origin: center;
-    display: block;
-    position: absolute;
-    bottom: -4px;
-}
-
-.underline:hover::after {
-  transform: scale(1);
+  @include hover(color, var(--primary));
 }
 
 .button-back__wrapper {
@@ -82,11 +74,16 @@
 
 .button-back__label {
   @extend %small_text;
+  @extend %underline;
 
   position: relative;
-  color: #89939A;
+  color: var(--secondary);
 
-  @include hover(color, #0F0F11);
+  &::after {
+    bottom: -7px;
+  }
+
+  @include hover(color, var(--primary));
 }
 
 .button-back {
@@ -96,18 +93,15 @@
   height: 32px;
   width: 32px;
   box-sizing: border-box;
-  border-radius: 50%;
-  border: 1px solid #B4BDC3;
+  border-radius: var(--button-round-square-radius);
+  border: 1px solid var(--icons);
+  color: var(--primary);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 
-  @include hover(transform, scale(1.2));
-  @include hover(border-color, #0F0F11);
+  &:hover {
+    border-color: var(--button-border-color-hover);
+    background-color: var(--button-bg-color-hover);
+  }
 }
-
-// .button-back:hover {
-//   border-color: #0F0F11;
-// }
-
-.button-back__img {
-  display: flex;
-}
-

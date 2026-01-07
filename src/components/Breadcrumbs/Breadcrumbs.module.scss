@@ -7,7 +7,6 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
-  color: #0F0F11;
 }
 
 .breadcrumbs {
@@ -34,46 +33,30 @@
 
 .breadcrumbs__link {
   text-decoration: none;
-  color: #89939A; /* Колір посилань */
+  color: var(--secondary);
   display: flex;
   align-items: center;
-  gap: 5px; /* Відступ між іконкою та текстом */
+  gap: 5px;
+}
+
+.breadcrumbs__link__main {
+  color: var(--primary);
 }
 
 .breadcrumbs__link:hover {
   font-weight: 700;
-  color: #0F0F11;
+  color: var(--text-hover);
 }
 
 .breadcrumbs__separator {
   margin: 0 8px;
-  color: #bbb;
+  color: var(--icons);
 }
 
 .breadcrumbs__current {
-  color: #89939A; /* Колір поточної сторінки */
+  color: var(--secondary); /* Колір поточної сторінки */
 }
 
-/* Стилі для іконок (припускаємо, що ви їх реалізуєте) */
-.icon-home {
-  background-image: url('../../images/icons/home.svg');
-  width: 16px;
-  height: 16px;
-}
-
-.icon-arrow-right {
-  background-image: url('../../images/icons/arrow-right-gray.svg');
-  width: 16px;
-  height: 16px;
-}
-
-.icon-arrow-left {
-  background-image: url('../../images/icons/arrow-left-black.svg');
-  width: 16px;
-  height: 16px;
-}
-
-/* Якщо це Font Awesome, то це будуть класи типу <i className="fa-solid fa-house"></i> */
 
 .back-button {
   margin-top: 24px;
@@ -85,9 +68,9 @@
   border: none;
   background: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  color: #89939A;
-  text-decoration: none; /* Щоб виглядало як кнопка, а не посилання */
+  transition: color 0.3s ease;
+  color: var(--secondary);
+  text-decoration: none;
   margin-bottom: 24px;
 
   @include on-tablet {
@@ -96,15 +79,19 @@
   }
 }
 
-.back-button:hover {
-  color: #0F0F11;
-}
-
 .back-button__label {
   @extend %small_text;
 
   display: flex;
   align-items: center;
   padding-top: 2px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--text-hover);
+  }
 }
 
+.arrow-left {
+  color: var(--icons);
+}

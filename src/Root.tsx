@@ -1,7 +1,7 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import HomePage from './pages/HomePage/HomePage';
-import { NotFound } from './pages/NotFound';
+import { NotFound } from './pages/NotFound/NotFound';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import CartPage from './pages/CartPage/CartPage';
 // eslint-disable-next-line max-len

@@ -1,0 +1,42 @@
+@import '../../styles/utils';
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specs-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specs-name {
+  color: var(--secondary);
+}
+
+.specs-name--small { // Стиль для картки (менший)
+  @extend %small_text;
+}
+
+.specs-name--large { // Стиль для сторінки деталей (більший)
+  @extend %body_text;
+
+  font-weight: 500;
+}
+
+.specs-value {
+  text-align: right;
+  color: var(--primary);
+}
+
+.specs-value--small { // Стиль для картки (менший)
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.specs-value--large { // Стиль для сторінки деталей (більший)
+  @extend %body_text;
+}

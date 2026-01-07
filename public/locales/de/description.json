@@ -582,5 +582,82 @@
         ]
       }
     ]
+  },
+  {
+    "namespaceId": "apple-iphone-17-pro",
+    "description": [
+      {
+        "title": "Kameras",
+        "text": [
+          "Ein gewaltiger Zoom nach vorn. Das gesamte Kamerasystem des iPhone 17 Pro steckt voller Innovationen. Das Teleobjektiv verfügt über die nächste Generation unseres Tetraprismen-Designs und einen 56 Prozent größeren Sensor. Mit einer äquivalenten Brennweite von 200 mm und dem 8-fachen optischen Zoom ist es das leistungsstärkste iPhone-Teleobjektiv aller Zeiten – mit einem Gesamtzoom von 16-fach. So eröffnen sich Ihnen noch mehr kreative Möglichkeiten und Sie können Ihre Kompositionen um eine größere Reichweite erweitern."
+        ]
+      },
+      {
+        "title": "Pro-Video",
+        "text": [
+          "Noch professioneller und es bräuchte einen Agenten. Vom Heimvideo bis zur Hollywood-Produktion – das iPhone 17 Pro meistert jede Herausforderung. Mit mehr professionellen Videofunktionen als je zuvor – wie verbesserter Videostabilisierung, Spezifikationen in Kinoqualität und Kompatibilität mit branchenüblichen Workflows – bietet das iPhone 17 Pro leistungsstarke Filmwerkzeuge, wann und wo immer Sie sie brauchen."
+        ]
+      },
+      {
+        "title": "Leistung",
+        "text": [
+          "Neue Dimensionen der Leistung. Ob Sie mit aufwendigen Grafiken oder riesigen Mediendateien arbeiten – das iPhone 17 Pro bietet blitzschnelle Performance dank fortschrittlicher Kühltechnologie. Eine von Apple entwickelte, lasergeschweißte Dampfkammer leitet in Kombination mit dem Aluminium-Unibody-Gehäuse die Wärme effizient vom A19 Pro Chip ab und ermöglicht so eine noch höhere Dauerleistung. Dieser Durchbruch im Wärmemanagement ist der Schlüssel zum leistungsstärksten iPhone aller Zeiten."
+        ]
+      },
+      {
+        "title": "Alles in der Familie",
+        "text": [
+          "Alles, was Sie brauchen. Alles auf dem iPhone. Die neuesten iPhone-Modelle stecken voller fortschrittlicher Funktionen. Hilfreiche Apple Intelligence-Funktionen wie Visual Intelligence¹² und Schreibwerkzeuge erleichtern Ihnen den Alltag. Schnelle, sichere Verbindungen mit Wi-Fi 7,¹³, Bluetooth 6, 5G¹⁴ und eSIM¹⁵"
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "description": [
+      {
+        "title": "M5. Schöpfer. Beschleuniger.",
+        "text": [
+          "Der M5 Chip setzt neue Maßstäbe für das iPad Pro und bietet Leistung und Effizienz wie nie zuvor. Eine 10-Core-GPU der nächsten Generation mit leistungsstarken neuen neuronalen Beschleunigern beschleunigt KI-Aufgaben enorm – von der Token-Generierung großer Sprachmodelle (LLM) bis hin zu generativen Bildern. Die Multithreading-fähige CPU und der schnellere Speicher sorgen für bahnbrechende Geschwindigkeiten in Ihren Workflows."
+        ]
+      },
+      {
+        "title": "iPadOS und Apps. Ein Rundgang durch die Belegschaft.",
+        "text": [
+          "iPadOS 26 präsentiert ein atemberaubendes neues Design mit Liquid Glass und bahnbrechende Verbesserungen, die die Produktivität des iPad Pro auf ein neues Niveau heben. Ein neu gestaltetes, intuitives Fenstersystem bietet Ihnen mehr Leistung und Flexibilität als je zuvor. Nutzen Sie professionelle Apps, spielen Sie anspruchsvolle Spiele und realisieren Sie kreative Projekte jeder Größe mit einer intuitiven Touch-Bedienung.",
+          "Produktivität auf höchstem Niveau. Öffnen Sie mehrere Fenster gleichzeitig, passen Sie deren Größe und Anordnung nach Ihren Wünschen an und teilen Sie Ihren Bildschirm in Drittel oder Viertel."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Entwickelt für grenzenlose Kreativität.",
+        "text": [
+          "Der Apple Pencil setzt neue Maßstäbe für Zeichnen, Malen, Schreiben und Notizen – intuitiv, präzise und einfach magisch. Und das alles mit pixelgenauer Präzision, geringer Latenz, Neigungsempfindlichkeit und Handballenerkennung.",
+          "Und der Apple Pencil Pro bietet noch mehr Möglichkeiten, Ihre Ideen wie nie zuvor zum Leben zu erwecken."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-ultra-3",
+    "description": [
+      {
+        "title": "Kenne deinen Körper genau.",
+        "text": [
+          "Je mehr du weißt, desto besser kannst du handeln. Von der EKG-App bis zur Vitalwerte-App und mehr – die Apple Watch Ultra 3 bietet dir ein umfassenderes Bild deiner Gesundheit, damit du immer informiert bist. Und jetzt geht die Ultra 3 mit einer bahnbrechenden Funktion – Benachrichtigungen bei Bluthochdruck – den nächsten großen Schritt für deine Herzgesundheit."
+        ]
+      },
+      {
+        "title": "Satellitenkommunikation. Funktioniert einwandfrei.",
+        "text": [
+          "Wenn Sie sich abseits des Stromnetzes befinden und weder Mobilfunk noch WLAN verfügbar sind, hilft Ihnen die Ultra 3 dank integrierter Satellitenkommunikation, in Verbindung zu bleiben. Und im Notfall können Sie direkt von Ihrem Handgelenk aus per Satellit Notdienste kontaktieren."
+        ]
+      },
+      {
+        "title": "Trainingsmedien, die auf dich abgestimmt sind.",
+        "text": [
+          "Lass Apple Music die beste Playlist basierend auf deinem Workout und deinen Musikvorlieben auswählen. Oder wähle einfach eine der vorgeschlagenen Playlists oder Podcasts aus."
+        ]
+      }
+    ]
   }
 ]

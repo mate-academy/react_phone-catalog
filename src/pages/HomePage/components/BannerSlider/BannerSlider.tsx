@@ -1,112 +1,150 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from './BannerSlider.module.scss';
-
-// rightTitle: 'iPhone 14 Pro',
-// rightSubtitle: 'Pro. Beyond.',
+import { ArrowIcon } from '../../../../components/icons';
+import useLanguageStore from '../../../../stores/useLanguageStore';
 
 const slides = [
   {
-    title: 'Now available in our store! 👌',
-    subtitle: 'Be the first!',
-    btnText: 'ORDER NOW',
-    image: '/src/images/hero-iphone-17-pro.jpg',
-    rightTitle: '',
-    rightSubtitle: '',
+    image: '/src/images/iphone-17-pro-4k.webp',
+    // imageLarge: '/src/images/hero-iphone-17-pro-large-empty.png',
+    alt: 'iPhone 14 Pro',
+    titleKey: 'banner_iphone_title',
+    subtitleKey: 'banner_iphone_subtitle',
+    extraKey: 'banner_iphone_extra',
+    link: '/phones/apple-iphone-17-pro-1tb-orange',
   },
   {
-    title: 'The future is here 🚀',
-    subtitle: 'Discover iPad Pro 13',
-    btnText: 'SHOP NOW',
-    image: '/src/images/hero-apple-iPad-Pro-13.jpg',
-    rightTitle: 'iPad Pro',
-    rightSubtitle: 'Power meets portability.',
+    image: '/src/images/apple-iPad-Pro-13-4k.webp',
+    // imageLarge: '/src/images/hero-apple-iPad-Pro-13-large-empty.png',
+    alt: 'iPad 13 Pro',
+    titleKey: 'banner_ipad_title',
+    subtitleKey: 'banner_ipad_subtitle',
+    extraKey: 'banner_ipad_extra',
+    link: '/tablets/apple-ipad-pro-13-m4-2024-2tb-space-black',
   },
   {
-    title: 'The future is here 🚀',
-    subtitle: 'Discover apple watch ultra 3',
-    btnText: 'SHOP NOW',
-    image: '/src/images/hero-apple-watch-ultra-3.jpg',
-    rightTitle: 'iPad Pro',
-    rightSubtitle: 'Power meets portability.',
+    image: '/src/images/apple-watch-ultra-3-4k.webp',
+    // imageLarge: '/src/images/hero-apple-watch-ultra-3-large-empty.png',
+    alt: 'apple watch',
+    titleKey: 'banner_watch_title',
+    subtitleKey: 'banner_watch_subtitle',
+    extraKey: 'banner_watch_extra',
+    imageClass: styles.watchImage,
+    link: '/accessories/apple-watch-ultra-3-49mm-blue-ocean',
   },
 ];
 
 const BannerSlider: React.FC = () => {
+  const swiperRef = useRef<SwiperRef | null>(null);
+  const { t } = useLanguageStore();
+
   return (
-    <div className={styles.bannerSlider}>
-      <button className={`${styles.navBtn} ${styles.prevBtn}`}>
-        <img
-          className={styles.navBtnImg}
-          src="src/images/icons/arrow-left-black.svg"
-          alt="arrow right"
-        />
-      </button>
+    <div>
+      <div className={styles.bannerSlider}>
+        <button
+          className={`${styles.navBtn} ${styles.prevBtn}`}
+          aria-label="Previous"
+          onClick={() => swiperRef.current?.swiper.slidePrev()}
+        >
+          <ArrowIcon direction="left" />
+        </button>
 
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={16}
-        slidesPerView={1}
-        className={styles.swiperWrapper}
-        loop={true}
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
-        pagination={{
-          clickable: true,
-          bulletClass: styles.customBullet,
-          bulletActiveClass: styles.activeBullet,
-        }}
-        navigation={{
-          nextEl: `.${styles.nextBtn}`,
-          prevEl: `.${styles.prevBtn}`,
-        }}
-        // breakpoints={{
-        //   // коли ширина екрану >= 768px
-        //   640: {
-        //     spaceBetween: 16, // Зберігаємо 16px
-        //   },
-        //   // коли ширина екрану >= 1024px (для десктопу)
-        //   1024: {
-        //     spaceBetween: 16,
-        //   },
-        // }}
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index} className={styles.swiperSlide}>
-            <div className={styles.slide}>
-              <div className={styles.left}>
-                <h2>{slide.title}</h2>
-                <p>{slide.subtitle}</p>
-                <button>{slide.btnText}</button>
-              </div>
+        <div className={styles.swiperOuter}>
+          <Swiper
+            ref={swiperRef}
+            modules={[Navigation, Pagination, Autoplay]}
+            preloadImages={true}
+            updateOnImagesReady={true}
+            spaceBetween={0}
+            slidesPerView={1}
+            speed={700}
+            className={styles.swiperWrapper}
+            loop={true}
+            // autoplay={{
+            //   delay: 5000,
+            //   disableOnInteraction: false,
+            // }}
+            pagination={{
+              clickable: true,
+              bulletClass: styles.customBullet,
+              bulletActiveClass: styles.activeBullet,
+              el: `.${styles.customPagination}`,
+            }}
+          >
+            {slides.map((slide, index) => {
+              const isPriority = index === 0;
 
-              <div className={styles.right}>
-                <div className={styles.rightContent}>
-                  {slide.rightTitle && <h3>{slide.rightTitle}</h3>}
-                  {slide.rightSubtitle && <p>{slide.rightSubtitle}</p>}
-                </div>
-                <img src={slide.image} alt={slide.rightTitle} />
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+              return (
+                <SwiperSlide key={index} className={styles.swiperSlide}>
+                  <Link to={slide.link} className={styles.slide}>
+                    <div className={styles.slideLeft}>
+                      <div className={styles.textContainer}>
+                        <h2 className={styles.slideSubtitle}>
+                          {t(slide.subtitleKey)}
+                        </h2>
 
-      <button className={`${styles.navBtn} ${styles.nextBtn}`}>
-        <img
-          className={styles.navBtnImg}
-          src="src/images/icons/arrow-right-black.svg"
-          alt="arrow right"
-        />
-      </button>
+                        <span className={styles.slideExtra}>
+                          {t(slide.extraKey)}
+                        </span>
+                      </div>
+
+                      <span className={styles.linkButton}>
+                        {t('banner_order_now')}
+                      </span>
+                    </div>
+
+                    <div className={styles.slideRigth}>
+                      <h2
+                        className={`${styles.slideTitle} ${slide.imageClass || ''}`}
+                      >
+                        {t(slide.titleKey)}
+                      </h2>
+
+                      <img
+                        className={`${styles.slideImg} ${slide.imageClass || ''}`}
+                        src={slide.image}
+                        alt={slide.alt}
+                        loading={isPriority ? 'eager' : 'lazy'}
+                        fetchPriority={isPriority ? 'high' : 'low'}
+                      />
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+
+        <button
+          className={`${styles.navBtn} ${styles.nextBtn}`}
+          aria-label="Next"
+          onClick={() => swiperRef.current?.swiper.slideNext()}
+        >
+          <ArrowIcon />
+        </button>
+      </div>
+
+      <div className={styles.customPagination}></div>
     </div>
   );
 };
 
 export default BannerSlider;
+
+/* <picture className={styles.slidePicture}>
+  <source
+    media="(min-width:768px)"
+    srcSet={slide.imageLarge}
+  />
+  <img
+    className={styles.slideImg}
+    src={slide.image}
+    alt={slide.alt}
+  />
+</picture> */

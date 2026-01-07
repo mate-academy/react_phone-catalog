@@ -9,33 +9,12 @@
 }
 
 .tech-specs__divider {
-  width: 100%;
-  border-bottom: 1px solid #E2E6E9;
+  @extend %divider;
+
   margin-top: 16px;
-  margin-bottom: 25px;
-}
+  margin-bottom: 30px;
 
-.tech-specs__list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 0;
-}
-
-.tech-specs__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-
-  @extend %body_text;
-}
-
-.tech-specs__label {
-  font-weight: 500;
-  color: #89939A;
-}
-
-.tech-specs__value {
-  color: #0F0F11;
+  @include on-tablet {
+    margin-bottom: 25px;
+  }
 }

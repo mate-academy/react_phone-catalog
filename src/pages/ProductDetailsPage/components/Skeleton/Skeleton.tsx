@@ -1,30 +1,37 @@
 import React from 'react';
 import styles from '../../ProductDetailsPage.module.scss'; // Використовуємо стилі основної сторінки
 import skeletonStyles from './Skeleton.module.scss'; // Новий файл для ефекту анімації
+import classNames from 'classnames';
 
 export const ProductDetailsSkeleton: React.FC = () => {
   return (
     <div className={styles.product}>
-      {/* 1. Блок з хлібними крихтами (Опціонально: часто не показують) */}
-      <div
-        className={skeletonStyles.skeleton}
-        style={{ width: '30%', height: '14px', marginBottom: '24px' }}
-      />
-
       {/* 2. Заголовок */}
       <div
         className={skeletonStyles.skeleton}
-        style={{ width: '60%', height: '36px', marginBottom: '40px' }}
+        style={{
+          width: '60%',
+          height: '36px',
+          marginTop: '24px',
+          marginBottom: '40px',
+        }}
       />
 
       {/* 3. Основний контент (галерея, опції, опис, тех. характеристики) */}
       <div className={styles['product-content']}>
         {/* A. Галерея зображень */}
-        <div className={styles['product-image-gallery']}>
+        <div
+          className={classNames(
+            styles['product-image-gallery'],
+            skeletonStyles['product-gallery'],
+          )}
+        >
           {/* Контейнер для прев'ю (вертикальна смуга) */}
           <div
-            className={skeletonStyles.skeleton}
-            style={{ width: '100px', height: '400px', marginRight: '16px' }}
+            className={classNames(
+              skeletonStyles.skeleton,
+              skeletonStyles['product-gallery__thumbnails'],
+            )}
           />
           {/* Контейнер головного зображення */}
           <div
@@ -34,28 +41,30 @@ export const ProductDetailsSkeleton: React.FC = () => {
         </div>
 
         {/* B. Опції та ціна */}
-        <div className={styles['product-options']}>
-          {/* Смуги для кольорів/ємності */}
-          <div
-            className={skeletonStyles.skeleton}
-            style={{ width: '100%', height: '20px', marginBottom: '10px' }}
-          />
-          <div
-            className={skeletonStyles.skeleton}
-            style={{ width: '100%', height: '20px', marginBottom: '32px' }}
-          />
+        <div className={styles['product-options-wrapper']}>
+          <div className={styles['product-options']}>
+            {/* Смуги для кольорів/ємності */}
+            <div
+              className={skeletonStyles.skeleton}
+              style={{ width: '100%', height: '20px', marginBottom: '10px' }}
+            />
+            <div
+              className={skeletonStyles.skeleton}
+              style={{ width: '100%', height: '20px', marginBottom: '32px' }}
+            />
 
-          {/* Ціна */}
-          <div
-            className={skeletonStyles.skeleton}
-            style={{ width: '50%', height: '30px', marginBottom: '16px' }}
-          />
+            {/* Ціна */}
+            <div
+              className={skeletonStyles.skeleton}
+              style={{ width: '50%', height: '30px', marginBottom: '16px' }}
+            />
 
-          {/* Кнопки */}
-          <div
-            className={skeletonStyles.skeleton}
-            style={{ width: '80%', height: '44px', borderRadius: '4px' }}
-          />
+            {/* Кнопки */}
+            <div
+              className={skeletonStyles.skeleton}
+              style={{ width: '80%', height: '44px', borderRadius: '4px' }}
+            />
+          </div>
         </div>
 
         {/* C. Опис (About) */}
@@ -64,13 +73,16 @@ export const ProductDetailsSkeleton: React.FC = () => {
             className={skeletonStyles.skeleton}
             style={{ width: '40%', height: '24px', marginBottom: '16px' }}
           />
+
+          <div className={skeletonStyles.divider}></div>
+
           <div
             className={skeletonStyles.skeleton}
             style={{ width: '100%', height: '16px', marginBottom: '8px' }}
           />
           <div
             className={skeletonStyles.skeleton}
-            style={{ width: '90%', height: '16px', marginBottom: '8px' }}
+            style={{ width: '100%', height: '16px', marginBottom: '8px' }}
           />
           <div
             className={skeletonStyles.skeleton}
@@ -84,6 +96,9 @@ export const ProductDetailsSkeleton: React.FC = () => {
             className={skeletonStyles.skeleton}
             style={{ width: '50%', height: '24px', marginBottom: '16px' }}
           />
+
+          <div className={skeletonStyles.divider}></div>
+
           {/* Лінії для характеристик */}
           <div
             className={skeletonStyles.skeleton}

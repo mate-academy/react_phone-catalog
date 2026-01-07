@@ -1,16 +1,19 @@
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { Logo } from '../Logo';
+import useLanguageStore from '../../stores/useLanguageStore';
+import { ArrowIcon } from '../icons/ArrowIcon';
 
 const handleButtonClick = () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 };
 
 export const Footer = () => {
+  const { t } = useLanguageStore();
+
   return (
     <div className={styles.footer}>
-      <div className="container">
+      <div className={styles['footer-wrapper']}>
         <div className={styles.container}>
           <div>
             <Logo />
@@ -20,7 +23,7 @@ export const Footer = () => {
             <li className={styles['nav-item']}>
               <Link
                 to="https://github.com/VictorKomara"
-                className={classNames(styles.link, styles.underline)}
+                className={styles.link}
                 target="blank"
               >
                 GITHUB
@@ -29,19 +32,19 @@ export const Footer = () => {
             <li className={styles['nav-item']}>
               <Link
                 to="https://github.com/VictorKomara/react_phone-catalog"
-                className={classNames(styles.link, styles.underline)}
+                className={styles.link}
                 target="blank"
               >
-                CONTACTS
+                {t('footer_contacts')}
               </Link>
             </li>
             <li className={styles['nav-item']}>
               <Link
                 to="https://github.com/VictorKomara/react_phone-catalog"
-                className={classNames(styles.link, styles.underline)}
+                className={styles.link}
                 target="blank"
               >
-                RIGHTS
+                {t('footer_rights')}
               </Link>
             </li>
           </ul>
@@ -50,21 +53,12 @@ export const Footer = () => {
             className={styles['button-back__wrapper']}
             onClick={handleButtonClick}
           >
-            <p
-              className={classNames(
-                styles['button-back__label'],
-                styles.underline,
-              )}
-            >
-              Back to top
+            <p className={styles['button-back__label']}>
+              {t('footer_back_to_top')}
             </p>
 
             <div className={styles['button-back']} aria-label="Scroll to top">
-              <img
-                className={styles['button-back__img']}
-                src="src/images/icons/arrow-up.svg"
-                alt="arrow up"
-              />
+              <ArrowIcon direction="up" />
             </div>
           </div>
         </div>

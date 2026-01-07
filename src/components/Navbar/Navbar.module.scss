@@ -5,13 +5,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 48px;
   width: 100%;
-  gap: 24px;
-
-  box-shadow: 0px 1px 0px 0px #e2e6e9;
+  min-width: 320px;
+  gap: 12px;
+  box-shadow: 0px 1px 0px 0px var(--elements);
   z-index: 100;
-  background: white;
+  background: var(--background-color);
+
+  @include on-desktop {
+    height: 64px;
+  }
 
   &__burger {
     display: none;
@@ -19,38 +23,14 @@
     border: none;
     font-size: 28px;
     cursor: pointer;
-  }
-}
+    width: 48px;
+    height: 48px;
+    color: var(--primary);
 
-.mobileMenu {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: left 0.4s ease-in-out;
-  z-index: 9;
-
-  a {
-    margin: 20px 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: #555;
-    text-decoration: none;
-
-    &.active {
-      color: #000;
-      border-bottom: 2px solid #000;
+    @include on-desktop {
+      width: 48px;
+      height: 64px;
     }
-  }
-
-  &.open {
-    left: 0;
   }
 }
 
@@ -60,46 +40,120 @@
 
 .nav__list {
   display: flex;
-  gap: 64px;
+  gap: 24px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
 }
 
 .nav-item {
-  text-decoration: none;
-
   @extend %uppercase;
+  @extend %underline;
 
-  color: $c-secondary;
+  text-decoration: none;
+  height: 48px;
+  line-height: 48px;
+  color: var(--secondary);
+
+
+  @include on-desktop {
+    height: 64px;
+    line-height: 64px;
+  }
+
+  @include hover(color, var(--primary));
 }
 
 .nav-item-active {
-  color: $c-primary;
+  color: var(--primary);
+
+  &::after {
+    transform: scaleX(1);
+  }
 }
 
 .navbar-end {
   flex-grow: 1;
   display: flex;
-  justify-content: flex-end; /* Вирівнюємо вміст всередині navbar-end до правого краю */
+  justify-content: flex-end;
   align-items: center;
+}
+
+.navbarControls {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.select {
+  margin-right: 4px;
+
+  @include on-desktop {
+    margin-right: 12px;
+  }
 }
 
 .icon__button {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--elements);
+  margin-left: 1px;
+  color: var(--primary);
+
+  width: 48px;
+  height: 48px;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @extend %underline;
+}
+
+.icon-button-active {
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.search__button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @include hover(transform, scale(1.2));
 }
 
 .icon__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 64px;
-  height: 64px;
-  box-shadow: -1px 0px 0px 0px #e2e6e9;
-  // border-left: 1px solid #E2E6E9;
+  width: 100%;
+  height: 100%;
 }
 
-.icon {
+.icon {  //delete
   display: flex;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .has-border {
@@ -128,23 +182,30 @@
 .notification-badge {
   box-sizing: border-box;
   position: absolute; /* Абсолютне позиціонування */
-  top: 18px; /* Вирівнювання по верхньому краю */
-  right: 18px; /* Вирівнювання по правому краю */
-  background-color: $c-secondary-accent; /* Колір фону бейджа */
-  color: white; /* Колір тексту бейджа */
+  top: 10px; /* Вирівнювання по верхньому краю */
+  right: 10px; /* Вирівнювання по правому краю */
+  background-color: var(--heart-liked); /* Колір фону бейджа */
+  color: var(--heart-text-color); /* Колір тексту бейджа */
   border-radius: 50%; /* Кругла форма */
-  border: 1px solid #ffffff;
+  border: 1px solid var(--heart-border-color);
   width: 14px;
   height: 14px;
   font-weight: 700;
   font-size: 9px;
   text-align: center;
+
+  @include on-desktop {
+    top: 18px;
+    right: 18px;
+  }
 }
 
 /* Показуємо бургер тільки на маленьких екранах */
 @media (max-width: 768px) {
   .nav__burger {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .nav__list {
