@@ -4,7 +4,7 @@ import '../components/Catalog/Catalog.scss';
 
 import { Catalog } from '../components/Catalog';
 import { useProducts } from '../context/ProductsContext';
-import { ProductAllType, ProductType } from '../types/Product';
+import { ProductAllType } from '../types/Product';
 import { getProducts } from '../api/httpsRequest';
 
 export const TabletsPage = () => {
@@ -20,5 +20,5 @@ export const TabletsPage = () => {
     return productsAll.filter(product => product.category === 'tablets');
   }, [productsAll]);
 
-  return <Catalog products={products} />;
+  return <Catalog products={products} nameCategory={'tablets'} />;
 };

@@ -19,5 +19,5 @@ export const AccessoriesPage = () => {
     return productsAll.filter(product => product.category === 'accessories');
   }, [productsAll]);
 
-  return <Catalog products={products} />;
+  return <Catalog products={products} nameCategory="accessories" />;
 };
