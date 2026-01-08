@@ -39,15 +39,15 @@
 
   @include transition((box-shadow, background-color, color), $color-transition);
 
+  @include hover {
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.25);
+    background-color: var(--primary-hover-bg);
+  }
+
   &.selected {
     background-color: var(--primary-selected-bg);
     outline: 1px solid var(--primary-selected-border);
     color: var(--primary-selected-color);
-  }
-
-  @include hover {
-    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.25);
-    background-color: var(--primary-hover-bg);
   }
 }
 

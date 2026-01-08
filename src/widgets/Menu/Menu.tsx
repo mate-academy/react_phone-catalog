@@ -26,7 +26,7 @@ interface Props {
 
 export const Menu: FC<Props> = ({ onSearch = () => {} }) => {
   const { favourites } = useFavourites();
-  const { cart } = useCart();
+  const { cart, totalItems } = useCart();
 
   return (
     <div className={styles.menu}>
@@ -70,7 +70,7 @@ export const Menu: FC<Props> = ({ onSearch = () => {} }) => {
         <NavLink to={ROUTES.CART} className={actionLinkStyles}>
           <LuShoppingBag size={16} />
           {cart.items.length > 0 && (
-            <span className={styles.actionLinkCount}>{cart.items.length}</span>
+            <span className={styles.actionLinkCount}>{totalItems}</span>
           )}
         </NavLink>
       </div>

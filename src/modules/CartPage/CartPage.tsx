@@ -16,6 +16,7 @@ export const CartPage = () => {
   const {
     cart: { items, total },
     clearCart,
+    totalItems,
   } = useCart();
 
   return (
@@ -38,7 +39,7 @@ export const CartPage = () => {
             <CartList items={items} />
           </section>
           <Summary
-            totalItems={items.length}
+            totalItems={totalItems}
             totalPrice={total}
             className={styles.summary}
             onCheckout={toggle}

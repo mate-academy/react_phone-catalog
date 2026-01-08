@@ -15,6 +15,7 @@ export interface CartContextType {
   changeProductCount: (product: Product, newCount: number) => void;
   removeFromCart: (productId: Product['id']) => void;
   clearCart: () => void;
+  totalItems: number;
 }
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -118,6 +119,8 @@ export const CartProvider: FC<Props> = ({ children }) => {
     });
   };
 
+  const totalItems = cart.items.reduce((acc, curItem) => acc + curItem.count, 0);
+
   return (
     <CartContext.Provider
       value={{
@@ -127,6 +130,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
         changeProductCount,
         removeFromCart,
         clearCart,
+        totalItems
       }}
     >
       {children}
