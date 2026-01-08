@@ -55,22 +55,20 @@ export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
         <div className={styles.sliderBtns}>
           <Button
             variant="outline"
-            radius="50%"
-            isIconOnly
             onClick={handlePrev}
+            squareBtn
+            className={styles.arrowBtn}
             isDisabled={prevBtnDisabled || isLoading}
-          >
-            <FaAngleLeft size={16} />
-          </Button>
+            startIcon={<FaAngleLeft size={16} />}
+          />
           <Button
             variant="outline"
-            radius="50%"
-            isIconOnly
+            squareBtn
+            className={styles.arrowBtn}
             onClick={handleNext}
             isDisabled={nextBtnDisabled || isLoading}
-          >
-            <FaAngleRight size={16} />
-          </Button>
+            startIcon={<FaAngleRight size={16} />}
+          />
         </div>
       </div>
       <div className={styles.slider} ref={!isLoading ? sliderRef : null}>

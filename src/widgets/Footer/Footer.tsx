@@ -44,11 +44,10 @@ export const Footer = () => {
             <Button
               id="back-to-top"
               variant="outline"
-              isIconOnly
               className={styles.backToTopBtn}
-              radius="50%"
+              squareBtn
               onClick={handleScrollToTop}
-              size="large"
+              size="medium"
             >
               <FaAngleUp size={16} />
             </Button>

@@ -32,15 +32,14 @@ export const Counter: FC<Props> = ({
   return (
     <div className={styles.wrapper}>
       <Button
-        isIconOnly
+        startIcon={<HiOutlineMinusSm size={16} />}
         variant="outline"
         className={styles.countBtn}
         onClick={handlePrev}
-        radius="50%"
+        size="small"
+        squareBtn
         isDisabled={isPrevDisabled}
-      >
-        <HiOutlineMinusSm size={16} />
-      </Button>
+      />
       <input
         type="text"
         readOnly
@@ -49,15 +48,14 @@ export const Counter: FC<Props> = ({
         onChange={handleChange}
       />
       <Button
-        isIconOnly
         variant="outline"
         className={styles.countBtn}
         onClick={handleNext}
-        radius="50%"
+        squareBtn
+        size="small"
         isDisabled={isNextDisabled}
-      >
-        <HiOutlinePlusSm size={16} />
-      </Button>
+        startIcon={<HiOutlinePlusSm size={16} />}
+      />
     </div>
   );
 };

@@ -12,3 +12,7 @@
   @include body-text;
   @include transition(color, $color-transition);
 }
+
+.countBtn {
+  border-radius: 50%;
+}

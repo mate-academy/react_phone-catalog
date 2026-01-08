@@ -83,6 +83,7 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
           variant="primary"
           className={styles.cartBtn}
           isSelected={isInCart}
+          size="medium"
           onClick={() => toggleToCart(product)}
         >
           {isInCart ? 'Added' : 'Add to cart'}
@@ -90,15 +91,15 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
 
         <Button
           variant="outline"
-          isIconOnly
-          size="large"
+          size="medium"
           isSelected={isInFavourite}
-          radius="50%"
           onClick={() => toggleFavourite(product)}
           className={styles.likeBtn}
-        >
-          {isInFavourite ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
-        </Button>
+          squareBtn
+          startIcon={
+            isInFavourite ? <FaHeart size={16} /> : <FaRegHeart size={16} />
+          }
+        />
       </div>
     </article>
   );

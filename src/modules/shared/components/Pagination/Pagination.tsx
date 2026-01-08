@@ -34,14 +34,13 @@ export const Pagination: FC<Props> = ({
     <div className={classNames(styles.wrapper, 'container')}>
       <Button
         variant="outline"
-        radius="50%"
-        isIconOnly
         className={styles.arrowBtn}
         isDisabled={prevBtnDisabled}
         onClick={handlePrevPage}
-      >
-        <FaAngleLeft size={16} />
-      </Button>
+        size="small"
+        squareBtn
+        startIcon={<FaAngleLeft size={16} />}
+      />
 
       <ol className={styles.pages}>
         {visiblePages.map(page => (
@@ -49,7 +48,8 @@ export const Pagination: FC<Props> = ({
             <Button
               className={styles.pageBtn}
               variant="outline"
-              radius="50%"
+              size="small"
+              squareBtn
               isSelected={activePage === page}
               onClick={() => handleChangePage(page)}
             >
@@ -61,14 +61,13 @@ export const Pagination: FC<Props> = ({
 
       <Button
         variant="outline"
-        radius="50%"
-        isIconOnly
         className={styles.arrowBtn}
         isDisabled={nextBtnDisabled}
         onClick={handleNextPage}
-      >
-        <FaAngleRight size={16} />
-      </Button>
+        size="small"
+        squareBtn
+        startIcon={<FaAngleRight size={16} />}
+      />
     </div>
   );
 };

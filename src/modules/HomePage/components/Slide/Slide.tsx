@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styles from './Slide.module.scss';
 import { Button } from '@/modules/shared/components/Button';
-import { SlideUI } from '@/modules/HomePage/types/SlideUI';
+import { SlideUI } from '@/modules/shared/types/SlideUI';
 
 export const Slide: FC<SlideUI> = ({
   bannerPreviewPath,
@@ -12,19 +12,13 @@ export const Slide: FC<SlideUI> = ({
   productDescription,
   productTitle,
 }) => {
-  const navigate = useNavigate();
-
   return (
     <div className={styles.slide}>
       <Link to={url} className={styles.productLink} />
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <h2 className={styles.title}>{bannerTitle}</h2>
-          <Button
-            variant="outline"
-            className={styles.orderBtn}
-            onClick={() => navigate(url)}
-          >
+          <Button to={url} variant="outline" className={styles.orderBtn}>
             Order now
           </Button>
         </div>

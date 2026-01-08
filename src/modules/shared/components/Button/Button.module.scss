@@ -1,6 +1,7 @@
 @use '@/styles/resources' as *;
 
 .button {
+  --primary-hover-bg: #f86800;
   --primary-selected-bg: #fff;
   --primary-selected-border: #e2e6e9;
   --primary-selected-color: var(--accent-color);
@@ -8,6 +9,7 @@
   --outline-selected-border: var(--primary-color);
 
   cursor: pointer;
+  min-height: fit-content;
 
   @include transition(
     (border-color, color, background-color),
@@ -21,6 +23,7 @@
 }
 
 [data-theme='dark'] .button {
+  --primary-hover-bg: #a378ff;
   --primary-selected-bg: #323542;
   --primary-selected-border: transparent;
   --primary-selected-color: #fff;
@@ -44,14 +47,7 @@
 
   @include hover {
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.25);
-  }
-
-  &.small {
-    height: 40px;
-  }
-
-  &.large {
-    height: 48px;
+    background-color: var(--primary-hover-bg);
   }
 }
 
@@ -75,16 +71,6 @@
 .onlyIcon {
   svg {
     fill: $primary-color;
-  }
-
-  &.small {
-    width: 32px;
-    height: 32px;
-  }
-
-  &.large {
-    width: 40px;
-    height: 40px;
   }
 
   &.selected {
@@ -111,13 +97,43 @@
   }
 }
 
+.small {
+  height: 32px;
+}
+
+.medium {
+  height: 40px;
+}
+
+.large {
+  height: 48px;
+}
+
 .danger {
   background-color: $red-color;
   color: $white-color;
-  width: fit-content;
-  height: fit-content;
 
   @include hover {
     background-color: $secondary-red;
   }
+}
+
+.text {
+  color: $secondary-color;
+
+  @include small-text;
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.icon {
+  display: flex;
+}
+
+.squareBtn {
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }

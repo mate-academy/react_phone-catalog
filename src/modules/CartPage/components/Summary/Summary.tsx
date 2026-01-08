@@ -24,10 +24,9 @@ export const Summary: FC<Props> = ({
       </div>
       <Button
         variant="primary"
-        height="48px"
-        width="100%"
-        radius="8px"
+        className={styles.checkoutBtn}
         onClick={onCheckout}
+        size="large"
       >
         Checkout
       </Button>

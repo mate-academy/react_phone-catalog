@@ -28,9 +28,14 @@ export const Message: FC<Props> = ({
       )}
       <h2 className={styles.message}>{message}</h2>
       {showRetry && (
-        <Button variant="danger" onClick={onRetry} className={styles.retryBtn}>
-          <TbReload size={18} />
-          <span>Try again</span>
+        <Button
+          variant="danger"
+          onClick={onRetry}
+          className={styles.retryBtn}
+          startIcon={<TbReload size={18} />}
+          size="medium"
+        >
+          Try again
         </Button>
       )}
     </div>

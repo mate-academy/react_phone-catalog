@@ -21,6 +21,9 @@
   @include page-grid;
 
   .sliderArrowBtn {
+    border-radius: 48px;
+    height: 100%;
+
     @include on-mobile {
       display: none;
     }

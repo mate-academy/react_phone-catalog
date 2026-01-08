@@ -8,7 +8,7 @@ import { Button } from '@/modules/shared/components/Button';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import Autoplay from 'embla-carousel-autoplay';
 import { Slide } from '../Slide/Slide';
-import { SlideUI } from '../../types/SlideUI';
+import { SlideUI } from '../../../shared/types/SlideUI';
 
 const slides: (SlideUI & { id: string })[] = [
   {
@@ -52,13 +52,9 @@ export const MainSlider = () => {
           variant="outline"
           onClick={handlePrev}
           isDisabled={prevBtnDisabled}
-          isIconOnly
-          radius="48px"
-          height="100%"
+          startIcon={<FaAngleLeft size={16} />}
           className={classNames(styles.sliderArrowBtn, styles.sliderPrevBtn)}
-        >
-          <FaAngleLeft size={16} />
-        </Button>
+        />
 
         <div ref={sliderRef} className={styles.slider}>
           <div className={styles.slidesContainer}>
@@ -74,13 +70,9 @@ export const MainSlider = () => {
           variant="outline"
           onClick={handleNext}
           className={classNames(styles.sliderArrowBtn, styles.sliderNextBtn)}
-          radius="48px"
-          isIconOnly
-          height="100%"
           isDisabled={nextBtnDisabled}
-        >
-          <FaAngleRight size={16} />
-        </Button>
+          startIcon={<FaAngleRight size={16} />}
+        />
       </div>
 
       <div className={styles.sliderDots}>
