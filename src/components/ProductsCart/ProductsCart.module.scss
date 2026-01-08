@@ -13,7 +13,7 @@
   gap: 8px;
 
   border: 1px solid var(--product-border);
-  border-radius: 8px;
+  border-radius: var(--border-radius-cart);
 
   background-color: var(--bg-product);
 

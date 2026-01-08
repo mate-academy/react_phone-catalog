@@ -26,7 +26,7 @@ export const Header = () => {
   const menuStatus = searchParams.get('menu') === 'open';
 
   const favoritesCount = favoritesList.length;
-  const shopCount = shopList.length;
+  const shopCount = shopList.reduce((sum, { quantity }) => sum + quantity, 0);
 
   const menu = {
     close: theme === 'white' ? open : withOpen,

@@ -45,9 +45,10 @@ export const Button: React.FC<Props> = ({ productId }) => {
         className={cn(style.buttons__add, {
           [style['buttons__add--active']]: shopActive,
         })}
-        onClick={() =>
-          dispatchShop({ type: 'toggleProduct', payload: product })
-        }
+        onClick={() => {
+          dispatchShop({ type: 'toggleProduct', payload: product });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       >
         {shopActive ? 'Added to cart' : 'Add to cart'}
       </button>

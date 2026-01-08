@@ -67,7 +67,7 @@
 
     &--disabled {
       cursor: not-allowed;
-      background-image: url(../../../../../public/img/my-icon/no-back.svg);
+      background-image: url(../../../public/img/my-icon/no-back.svg);
       border-color: var(--color-border);
       background-color:var(--bg-page);
 
@@ -79,7 +79,7 @@
 
     &--next {
       &-white{
-        background-image: url(../../../../../public/img/my-icon/next.svg);
+        background-image: url(../../../public/img/my-icon/next.svg);
       }
       &-dark{
         background-image: url(../../../public/img/theme-dark/arrow-right.svg);
