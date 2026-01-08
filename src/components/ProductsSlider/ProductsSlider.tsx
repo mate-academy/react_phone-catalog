@@ -46,11 +46,13 @@ export const ProductsSlider = ({
   productList,
   modifier,
   sort,
+  scroll,
 }: {
   title: string;
   productList: Products[];
   modifier?: string;
   sort?: Sort;
+  scroll?: boolean;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(ThemeContext);
@@ -104,6 +106,7 @@ export const ProductsSlider = ({
             key={product.id}
             product={product}
             modifier={modifier}
+            scroll={scroll}
           />
         ))}
       </article>

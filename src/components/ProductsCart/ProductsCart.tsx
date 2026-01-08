@@ -12,9 +12,14 @@ import style from './ProductsCart.module.scss';
 type Props = {
   product: Products;
   modifier?: string;
+  scroll?: boolean;
 };
 
-export const ProductsCart: React.FC<Props> = ({ product, modifier }) => {
+export const ProductsCart: React.FC<Props> = ({
+  product,
+  modifier,
+  scroll,
+}) => {
   const { screen, capacity, ram } = product;
 
   const specs = [
@@ -54,7 +59,7 @@ export const ProductsCart: React.FC<Props> = ({ product, modifier }) => {
         ))}
       </div>
 
-      <Button productId={product.itemId} />
+      <Button productId={product.itemId} scroll={scroll} />
     </div>
   );
 };

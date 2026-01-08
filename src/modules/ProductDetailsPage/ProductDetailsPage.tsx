@@ -187,6 +187,7 @@ export const ProductDetailsPage = ({ type }: { type: string }) => {
         productList={productList}
         sort="random"
         modifier="product-cart"
+        scroll={true}
       />
     </div>
   );
