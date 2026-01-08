@@ -54,19 +54,21 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <>
       <Header />
-      <Breadcrumbs category={category || ''} productId={productId || ''} />
       <div className={styles.productdetailspage}>
-        <button
-          className={styles.productdetailspage__backbutton}
-          onClick={() => navigate(-1)}
-        >
-          <img
-            className={styles.productdetailspage__backbutton__icon}
-            src="/public/img/icons/icon-chevron-arrow-left.png"
-            alt=""
-          />
-          <p className={styles.productdetailspage__backbutton__text}>Back</p>
-        </button>
+        <Breadcrumbs category={category || ''} productId={productId || ''} />
+        <div className={styles.productdetailspage_container}>
+          <button
+            className={styles.productdetailspage__backbutton}
+            onClick={() => navigate(-1)}
+          >
+            <img
+              className={styles.productdetailspage__backbutton__icon}
+              src="/public/img/icons/icon-chevron-arrow-left.png"
+              alt=""
+            />
+            <p className={styles.productdetailspage__backbutton__text}>Back</p>
+          </button>
+        </div>
       </div>
       <Footer />
     </>

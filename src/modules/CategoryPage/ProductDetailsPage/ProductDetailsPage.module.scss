@@ -2,9 +2,10 @@
 @use '../../../utils/mixins' as *;
 
 .productdetailspage {
-  display: flex;
-  width: 100%;
-  padding-left: 5%;
+  @include page-grid;
+
+  margin-top: 24px;
+
   &__backbutton {
     display: flex;
     align-items: flex-end;

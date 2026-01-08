@@ -2,17 +2,19 @@
 @use '../../utils/mixins' as *;
 
 .categoryPage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include page-grid;
 
   width: 100%;
   margin: 24px 0 80px;
 
-  &__title {
-    align-self: flex-start;
+  &__section{
+    grid-column: 1/-1;
+    width: 100%;
+    margin-bottom: 24px;
+  }
 
-    margin: 40px 5% 8px;
+  &__title {
+    justify-self: flex-start;
 
     font-family: Mont, sans-serif;
     font-size: 48px;
@@ -24,9 +26,7 @@
   }
 
   &__countmodels__p {
-    align-self: flex-start;
-
-    margin: 0 5% 40px;
+    justify-self: flex-start;
 
     font-family: Mont, sans-serif;
     font-size: 14px;
@@ -39,7 +39,6 @@
     display: flex;
     gap: 16px;
     align-self: flex-start;
-    margin: 0 5% 24px;
   }
 
   &__sort {
