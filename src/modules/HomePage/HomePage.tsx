@@ -11,22 +11,26 @@ export const HomePage: React.FC = () => {
   const slidesImport = slides;
 
   return (
-    <div className={styles.homepage}>
+    <>
       <Header />
-      <div className={styles.homepage__content}>
+      <div className={styles.homepage}>
         <h1 className={styles.homepage__title}>
           Welcome to Nice Gadgets store!
         </h1>
-        <PictureSlider slides={slidesImport} />
-        <div className={styles.homepage_productsslider}>
+        <div className={styles.homepage__section}>
+          <PictureSlider slides={slidesImport} />
+        </div>
+        <div className={styles.homepage__section}>
           <ProductsSlider title="Brand new models" />
         </div>
-        <ShopByCategory />
-        <div className={styles.homepage_productsslider}>
+        <div className={styles.homepage__section}>
+          <ShopByCategory />
+        </div>
+        <div className={styles.homepage__section}>
           <ProductsSlider title="Hot prices" />
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };

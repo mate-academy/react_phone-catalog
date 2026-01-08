@@ -38,20 +38,22 @@
 }
 
 @mixin page-grid {
-  --columns: 2;
+  --columns: 4;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  column-gap: 20px;
+  column-gap: 16px;
+  justify-content: center;
 
   @include on-tablet {
-    --columns: 6;
-
-    column-gap: 30px;
+    --columns: 12;
   }
 
   @include on-desktop {
-    --columns: 12;
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
+    justify-items: start;
   }
 }
 

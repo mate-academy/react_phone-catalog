@@ -2,12 +2,12 @@
 @use '../../utils/mixins' as *;
 
 .homepage {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  @include page-grid;
 
   &__title {
-    margin: 0;
+    grid-column: 1 / -1;
+
+    margin: 56px 0;
 
     font-family: Mont, sans-serif;
     font-size: 32px;
@@ -21,26 +21,15 @@
       align-self: flex-start;
       font-size: 48px;
       line-height: 56px;
-
-      // margin-left: 5%;
     }
   }
-
-  &__content {
+  &__section{
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 80px;
-    align-items: center;
-
-    margin: 56px 0 80px;
-    margin-inline: 5%;
-  }
-
-  &_productsslider {
-    display: flex;
+    grid-column: 1 / -1;
     flex-direction: column;
     align-items: flex-start;
+
     width: 100%;
+    margin-bottom: 80px;
   }
 }
