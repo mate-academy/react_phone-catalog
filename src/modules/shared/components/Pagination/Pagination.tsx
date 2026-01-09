@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
+import { Page } from '@/types/Page';
 
 interface Props {
   activePage: number;
@@ -13,7 +14,7 @@ interface Props {
   nextBtnDisabled: boolean;
   prevBtnDisabled: boolean;
   totalPages: number;
-  visiblePages: number[];
+  visiblePages: Page[];
 }
 
 export const Pagination: FC<Props> = ({
@@ -43,18 +44,25 @@ export const Pagination: FC<Props> = ({
       />
 
       <ol className={styles.pages}>
-        {visiblePages.map(page => (
-          <li key={`page-${page}`} className={styles.page}>
-            <Button
-              className={styles.pageBtn}
-              variant="outline"
-              size="small"
-              squareBtn
-              isSelected={activePage === page}
-              onClick={() => handleChangePage(page)}
-            >
-              {page}
-            </Button>
+        {visiblePages.map((page, index) => (
+          <li
+            key={`${page === '...' ? `page-splitter-${index}` : `page-${page}`}`}
+            className={styles.page}
+          >
+            {page !== '...' ? (
+              <Button
+                className={styles.pageBtn}
+                variant="outline"
+                size="small"
+                squareBtn
+                isSelected={activePage === page}
+                onClick={() => handleChangePage(page)}
+              >
+                {page}
+              </Button>
+            ) : (
+              <span className={styles.pageSplitter}>{page}</span>
+            )}
           </li>
         ))}
       </ol>

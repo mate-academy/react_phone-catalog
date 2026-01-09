@@ -119,7 +119,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
     });
   };
 
-  const totalItems = cart.items.reduce((acc, curItem) => acc + curItem.count, 0);
+  const totalItems = cart.items.reduce(
+    (acc, curItem) => acc + curItem.count,
+    0,
+  );
 
   return (
     <CartContext.Provider
@@ -130,7 +133,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
         changeProductCount,
         removeFromCart,
         clearCart,
-        totalItems
+        totalItems,
       }}
     >
       {children}

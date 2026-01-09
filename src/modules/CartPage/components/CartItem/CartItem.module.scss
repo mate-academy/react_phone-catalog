@@ -29,6 +29,8 @@
   cursor: pointer;
   display: contents;
 
+  @include transition(color, $color-transition);
+
   @include hover {
     color: $primary-color;
   }

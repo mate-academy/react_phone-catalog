@@ -55,7 +55,6 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     {
       totalItems: products.length,
       itemsPerPage: normilizedPerPage,
-      pagesToViewCount: 4,
       scrollToTop: true,
     },
     [sort, perPage],
