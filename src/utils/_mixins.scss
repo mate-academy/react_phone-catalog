@@ -53,7 +53,7 @@
     --columns: 24;
 
     grid-template-columns: repeat(var(--columns), 32px);
-    justify-items: start;
+    justify-items: stretch;
   }
 }
 

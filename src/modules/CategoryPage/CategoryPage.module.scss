@@ -4,17 +4,17 @@
 .categoryPage {
   @include page-grid;
 
-  width: 100%;
   margin: 24px 0 80px;
 
   &__section{
     grid-column: 1/-1;
-    width: 100%;
     margin-bottom: 24px;
   }
 
   &__title {
     justify-self: flex-start;
+
+    margin: 0;
 
     font-family: Mont, sans-serif;
     font-size: 48px;
@@ -27,6 +27,8 @@
 
   &__countmodels__p {
     justify-self: flex-start;
+
+    margin: 8px 0 40px;
 
     font-family: Mont, sans-serif;
     font-size: 14px;
