@@ -37,6 +37,7 @@ export const HomePage = () => {
           title="Brand new models"
           productList={productList}
           sort="price"
+          discount={false}
         />
 
         <section className={style.shop}>

@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import cn from 'classnames';
 
 import { ProductsCart } from '../ProductsCart';
@@ -41,18 +41,20 @@ function getSuggestedProducts(productList: Products[], sort?: Sort) {
 const SLIDE_WIDTH = 100;
 const GAP = 16;
 
-export const ProductsSlider = ({
-  title,
-  productList,
-  modifier,
-  sort,
-  scroll,
-}: {
+type Props = {
   title: string;
   productList: Products[];
   modifier?: string;
   sort?: Sort;
-  scroll?: boolean;
+  discount?: boolean;
+};
+
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  productList,
+  modifier,
+  sort,
+  discount,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(ThemeContext);
@@ -106,7 +108,7 @@ export const ProductsSlider = ({
             key={product.id}
             product={product}
             modifier={modifier}
-            scroll={scroll}
+            discount={discount}
           />
         ))}
       </article>

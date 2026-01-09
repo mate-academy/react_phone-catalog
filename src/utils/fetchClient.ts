@@ -19,7 +19,7 @@ function productAll() {
 }
 
 function request(url: string, productID: string) {
-  return wait(2000)
+  return wait(500)
     .then(() => fetch(BASE_URL + url + '.json'))
     .then(response => {
       if (!response.ok) {

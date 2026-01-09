@@ -38,9 +38,10 @@ export const ProductDetailsPage = ({ type }: { type: string }) => {
 
   useEffect(() => {
     setNotFound(false);
-    setSkeleton(true);
 
     if (!productId) {
+      setSkeleton(true);
+
       return;
     }
 
@@ -73,7 +74,7 @@ export const ProductDetailsPage = ({ type }: { type: string }) => {
     let colorItem = newColor;
 
     if (colorItem) {
-      colorItem = colorItem.split(' ').join('-');
+      colorItem = colorItem.replace(' ', '-');
     }
 
     const capacity = (newCapacity || product.capacity)?.toLowerCase();
@@ -187,7 +188,6 @@ export const ProductDetailsPage = ({ type }: { type: string }) => {
         productList={productList}
         sort="random"
         modifier="product-cart"
-        scroll={true}
       />
     </div>
   );

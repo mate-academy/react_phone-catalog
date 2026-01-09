@@ -83,29 +83,5 @@
       right: -6px;
       top: -3px;
     }
-
-    &--menu {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding: 16px;
-      bottom: 0;
-      border-bottom: 2px solid transparent;
-
-      &:hover {
-        border-bottom: 2px solid var(--black-text);
-      }
-    }
-  }
-
-  &--menu {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    height: 64px;
-    width: 100%;
-    border-top: 1px solid var(--color-border-header);
-    bottom: 0;
   }
 }

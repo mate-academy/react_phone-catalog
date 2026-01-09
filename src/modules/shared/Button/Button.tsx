@@ -16,10 +16,9 @@ import { ThemeContext } from '../../../provider/ThemeContextProvider';
 
 type Props = {
   productId: string;
-  scroll?: boolean;
 };
 
-export const Button: React.FC<Props> = ({ productId, scroll = false }) => {
+export const Button: React.FC<Props> = ({ productId }) => {
   const { productList, favoritesList, shopList } = useContext(StateContext);
   const product = productList.find(
     item => item.itemId === productId,
@@ -40,20 +39,15 @@ export const Button: React.FC<Props> = ({ productId, scroll = false }) => {
       ? favorite
       : favoriteDark;
 
-  const addShop = (scrollToTop: boolean) => {
-    dispatchShop({ type: 'toggleProduct', payload: product });
-    if (scrollToTop) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className={style.buttons}>
       <button
         className={cn(style.buttons__add, {
           [style['buttons__add--active']]: shopActive,
         })}
-        onClick={() => addShop(scroll)}
+        onClick={() =>
+          dispatchShop({ type: 'toggleProduct', payload: product })
+        }
       >
         {shopActive ? 'Added to cart' : 'Add to cart'}
       </button>

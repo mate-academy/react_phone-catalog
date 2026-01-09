@@ -12,13 +12,13 @@ import style from './ProductsCart.module.scss';
 type Props = {
   product: Products;
   modifier?: string;
-  scroll?: boolean;
+  discount?: boolean;
 };
 
 export const ProductsCart: React.FC<Props> = ({
   product,
   modifier,
-  scroll,
+  discount,
 }) => {
   const { screen, capacity, ram } = product;
 
@@ -37,6 +37,7 @@ export const ProductsCart: React.FC<Props> = ({
       <Link
         className={style['products-cart__link']}
         to={`/${product.category}/${product.itemId}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <div
           className={cn(style['products-cart__images'], {
@@ -51,7 +52,11 @@ export const ProductsCart: React.FC<Props> = ({
         <p className={style['products-cart__name']}>{product.name}</p>
       </Link>
 
-      <Price fullPrice={product.fullPrice} newPrice={product.price} />
+      <Price
+        fullPrice={product.fullPrice}
+        newPrice={product.price}
+        discountPrice={discount}
+      />
 
       <div className={style['products-cart__info']}>
         {specs.map(spec => (
@@ -59,7 +64,7 @@ export const ProductsCart: React.FC<Props> = ({
         ))}
       </div>
 
-      <Button productId={product.itemId} scroll={scroll} />
+      <Button productId={product.itemId} />
     </div>
   );
 };

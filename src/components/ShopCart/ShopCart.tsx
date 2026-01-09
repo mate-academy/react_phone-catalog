@@ -18,7 +18,7 @@ export const Card: React.FC<Props> = ({ card }) => {
 
   return (
     <div className={style.card}>
-      <div className={style.card__info}>
+      <div className={style.card__container}>
         <button
           className={style.card__button}
           onClick={() => dispatchShop({ type: 'delete', payload: card })}
@@ -28,12 +28,12 @@ export const Card: React.FC<Props> = ({ card }) => {
 
         <Link
           to={`/${card.category}/${card.itemId}`}
-          className={style.card__images}
+          className={style.card__info}
         >
           <img className={style.card__photo} src={card.image} alt={card.name} />
-        </Link>
 
-        <h1 className={style.card__title}>{card.name}</h1>
+          <p className={style.card__title}>{card.name}</p>
+        </Link>
       </div>
       <div className={style.card__amount}>
         <div className={style.counter}>
