@@ -1,1 +1,100 @@
-// cartpage scss
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.cartpage{
+  @include page-grid;
+
+  margin-top: 40px;
+
+  &__backbutton {
+    display: flex;
+    grid-column: 1/-1;
+    align-items: flex-end;
+
+    border: 0;
+
+    background-color: $background-color;
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+    }
+
+    &__text {
+      margin: 0;
+
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 100%;
+      color: $secondary-color;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__noproducts {
+    grid-column: 1/-1;
+    &_p{
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+    &_img{
+      width: 45%;
+    }
+  }
+
+  &__list {
+    grid-column: 1/16;
+  }
+
+  &__summary {
+    grid-column: 17/-1;
+    height: max-content;
+    border: 1px solid $elements-color;
+
+    &_total{
+      &_amount {
+        margin: 23px 0 0;
+
+        font-family: Mont, sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        color: $primary-color;
+        letter-spacing: -1%;
+      }
+      &_p {
+        margin: 0 24px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(226, 230, 233, 1);
+
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $secondary-color;
+        text-align: center;
+        letter-spacing: 0%;
+      }
+    }
+
+    &_but{
+      width: -webkit-fill-available;
+      margin: 24px;
+      padding-block: 13.5px;
+
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      color: $background-color;
+      text-align: center;
+      letter-spacing: 0%;
+
+      background-color: $primary-color;
+    }
+  }
+}
