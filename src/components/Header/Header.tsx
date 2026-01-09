@@ -4,10 +4,11 @@ import { Link, NavLink } from 'react-router-dom';
 import React from 'react';
 
 type Props = {
+  isMenuOpen: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Header: React.FC<Props> = ({ setIsMenuOpen }) => {
+export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header className={header.header} id="top">
       <Link to="/" className={header.header__logo}>
@@ -93,7 +94,9 @@ export const Header: React.FC<Props> = ({ setIsMenuOpen }) => {
           </li>
           <li className={header.actions__item}>
             <button
-              className={cn(header.actions__link, header.actions__link__menu)}
+              className={cn(header.actions__link, header.actions__link__menu, {
+                [header['actions__link__menu--open']]: isMenuOpen,
+              })}
               onClick={() => setIsMenuOpen(prev => !prev)}
             ></button>
           </li>

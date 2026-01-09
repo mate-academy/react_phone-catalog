@@ -1,12 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import menu from './Menu.module.scss';
 import cn from 'classnames';
+import React from 'react';
 
-export const Menu = () => {
+type Props = {
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const Menu: React.FC<Props> = ({ setIsMenuOpen }) => {
   return (
     <aside className={menu.menu}>
       <div className="container">
-        <div className="menu__content">
+        <div className={menu.menu__content}>
           <nav className={cn(menu.menu__nav, menu.nav)}>
             <ul className={menu.nav__list}>
               <li className={menu.nav__item}>
@@ -17,6 +22,7 @@ export const Menu = () => {
                       [menu['link--active']]: isActive,
                     })
                   }
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   home
                 </NavLink>
@@ -29,6 +35,7 @@ export const Menu = () => {
                       [menu['link--active']]: isActive,
                     })
                   }
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   phones
                 </NavLink>
@@ -41,6 +48,7 @@ export const Menu = () => {
                       [menu['link--active']]: isActive,
                     })
                   }
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   tablets
                 </NavLink>
@@ -53,6 +61,7 @@ export const Menu = () => {
                       [menu['link--active']]: isActive,
                     })
                   }
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   accessories
                 </NavLink>
@@ -71,16 +80,18 @@ export const Menu = () => {
                   [menu['link--active']]: isActive,
                 })
               }
+              onClick={() => setIsMenuOpen(false)}
             ></NavLink>
           </li>
           <li className={menu.actions__item}>
             <NavLink
-              to="/"
+              to="cart"
               className={({ isActive }) =>
                 cn(menu.actions__link, menu.actions__link__cart, {
                   [menu['link--active']]: isActive,
                 })
               }
+              onClick={() => setIsMenuOpen(false)}
             ></NavLink>
           </li>
         </ul>

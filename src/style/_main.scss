@@ -9,9 +9,15 @@ body {
   background-color: $main-bg-color;
 }
 
-.container {
+.frame {
   margin: 0 auto;
   max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin-inline: 32px;
 
   @include on-tablet {
     margin-inline: 24px;

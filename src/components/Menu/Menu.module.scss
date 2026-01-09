@@ -1,19 +1,21 @@
 @import '../../style/main';
 
 .menu {
-  display: flex;
-  flex-direction: column;
   background-color: $header-footer-bg-color;
   margin: 0;
   padding: 0;
+
+  &__content {
+    height: calc(100vh - $header-height-tablet-mobile - $actions-height - 24px);
+  }
 }
 
 .nav {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: calc(100vh - $header-height-tablet-mobile - 64px);
   width: 100%;
+  margin-top: 24px;
 
   &__list {
     padding: 0;
@@ -37,7 +39,6 @@
     font-size: 12px;
     letter-spacing: 4%;
     text-transform: uppercase;
-    position: relative;
     display: flex;
     line-height: 27px;
   }
@@ -48,7 +49,7 @@
   padding: 0;
   border: 1px solid $shadow-color;
   box-sizing: border-box;
-  max-height: 64px;
+  height: $actions-height;
 
   &__list {
     display: grid;
@@ -65,11 +66,10 @@
 
   &__link {
     display: flex;
-    max-height: 64px;
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
-    height: 64px;
+    height: 62px;
     box-sizing: border-box;
     padding: 0;
     border: none;
@@ -88,6 +88,7 @@
 .link {
   &--active {
     color: $main-color;
+    position: relative;
 
     &::after {
       position: absolute;

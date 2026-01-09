@@ -10,7 +10,6 @@
   height: $header-height-desktop;
   background-color: $header-footer-bg-color;
   position: relative;
-  z-index: 3;
 
   @include on-tablet {
     height: $header-height-tablet-mobile;
@@ -29,9 +28,9 @@
       width: 80px;
 
       @include on-tablet {
-      width: 64px;
-      height: 22px;
-    }
+        width: 64px;
+        height: 22px;
+      }
     }
   }
 }
@@ -94,15 +93,15 @@
   &__link {
     position: relative;
     box-shadow: -1px 0 0 0 $shadow-color;
-    height: 16px;
-    width: 16px;
-    padding: 24px;
+    height: 64px;
+    width: 64px;
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
 
     @include on-tablet {
-      padding: 16px;
+      height: 48px;
+      width: 48px;
     }
 
     &__fav {
@@ -125,9 +124,18 @@
     &__menu {
       background-image: url(/img/header/menu.svg);
       display: none;
+      border: none;
+      margin: 0;
+      padding: 0;
+      background-color: inherit;
+      cursor: pointer;
 
       @include on-mobile {
         display: flex;
+      }
+
+      &--open {
+        background-image: url(/img/header/menu-close.svg);
       }
     }
   }

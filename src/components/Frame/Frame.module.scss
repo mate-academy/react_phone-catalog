@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   min-height: calc(100vh - $header-height-desktop - $footer-height-desktop-tablet);
+  background-color: $main-bg-color;
 
   @include on-tablet {
     min-height: calc(
