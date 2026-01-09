@@ -7,6 +7,8 @@ import { Summary } from './components/Summary';
 import { Message } from '../shared/components/Message';
 import { CartModal } from './components/CartModal';
 import { useDisclosure } from '@/hooks/useDisclosure';
+import { Button } from '../shared/components/Button';
+import { ROUTES } from '@/constants/routes';
 
 export const CartPage = () => {
   const { isOpen, close, toggle } = useDisclosure(false, {
@@ -26,11 +28,26 @@ export const CartPage = () => {
       <h1 className={styles.title}>Cart</h1>
 
       {items.length === 0 && (
-        <Message
-          message="Cart is empty"
-          className={styles.emptyMessage}
-          imgPath="img/cart-is-empty.png"
-        />
+        <Message className={styles.emptyMessage}>
+          <Message.Icon>
+            <img
+              src="img/cart-is-empty.png"
+              alt="cart is empty"
+              className={styles.emptyCartImg}
+            />
+          </Message.Icon>
+          <Message.Title>Cart is empty</Message.Title>
+          <Message.Actions>
+            <Button
+              variant="primary"
+              size="medium"
+              to={ROUTES.PHONES}
+              className={styles.shopBtn}
+            >
+              Go shopping
+            </Button>
+          </Message.Actions>
+        </Message>
       )}
 
       {items.length !== 0 && (

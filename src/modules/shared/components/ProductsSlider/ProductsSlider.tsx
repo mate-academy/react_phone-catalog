@@ -42,7 +42,9 @@ export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
   if (!isLoading && products.length === 0) {
     return (
       <div className="container">
-        <Message message="No available products" />
+        <Message>
+          <Message.Title>No available products</Message.Title>
+        </Message>
       </div>
     );
   }

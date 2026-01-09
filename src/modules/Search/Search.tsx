@@ -10,6 +10,7 @@ import styles from './Search.module.scss';
 import { IoClose } from 'react-icons/io5';
 import { SearchInput } from './components/SearchInput';
 import { SearchList } from './components/SearchList';
+import { Message } from '../shared/components/Message';
 
 interface Props {
   isOpen: boolean;
@@ -59,7 +60,11 @@ export const Search: FC<Props> = ({ isOpen, onClose }) => {
         {debouncedQuery !== '' && (
           <div className={styles.mainContent}>
             {data.length === 0 && !loading ? (
-              <p className={styles.notFoundMessage}>No products founds</p>
+              <Message>
+                <Message.Description className={styles.notFoundMessage}>
+                  No products founds
+                </Message.Description>
+              </Message>
             ) : (
               <SearchList
                 products={data}

@@ -33,7 +33,17 @@ export const ProductsList: FC<Props> = ({
 
   if (!isLoading && products.length === 0) {
     return (
-      <Message message={emptyMessage} imgPath="img/product-not-found.png" />
+      <Message>
+        <Message.Icon>
+          <img
+            src="img/product-not-found.png"
+            alt="No products"
+            className={styles.emptyMessageIcon}
+          />
+        </Message.Icon>
+        <Message.Title>{emptyMessage}</Message.Title>
+      </Message>
+      // <Message message={emptyMessage} imgPath="img/product-not-found.png" />
     );
   }
 

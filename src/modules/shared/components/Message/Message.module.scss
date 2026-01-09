@@ -1,33 +1,91 @@
 @use '@/styles/resources' as *;
 
-.wrapper {
-  gap: 24px;
+// .wrapper {
+//   gap: 24px;
+//   align-items: center;
+
+//   @include flex-column;
+// }
+
+// .imgWrapper {
+//   width: 100%;
+//   height: 100%;
+//   max-width: 300px;
+//   max-height: 300px;
+//   text-align: center;
+
+//   img {
+//     width: 100%;
+//     height: auto;
+//   }
+// }
+
+// .message {
+//   color: $primary-color;
+// }
+
+// .retryBtn {
+//   padding-inline: 32px;
+//   border-radius: $radius;
+//   gap: 8px;
+
+//   @include flex-center;
+// }
+
+.messageWrapper {
+  --icons-bg-color: #e2e6e9;
+
+  row-gap: 16px;
   align-items: center;
+  color: $primary-color;
 
   @include flex-column;
 }
 
-.imgWrapper {
-  width: 100%;
-  height: 100%;
-  max-width: 300px;
-  max-height: 300px;
-  text-align: center;
+[data-theme='dark'] .messageWrapper {
+  --icons-bg-color: #161827;
+}
 
-  img {
-    width: 100%;
-    height: auto;
+.iconWrapper {
+  width: 300px;
+  aspect-ratio: 1 / 1;
+  color: $icons-color;
+  position: relative;
+
+  @include flex-center;
+  @include transition(color, $color-transition);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--icons-bg-color);
+    border-radius: 50%;
+    mask-image: url('img/blot.png');
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    z-index: -1;
+
+    @include transition(background-color, $color-transition);
   }
 }
 
-.message {
+.title {
   color: $primary-color;
+  font-weight: 600;
+
+  @include transition(color, $color-transition);
 }
 
-.retryBtn {
-  padding-inline: 32px;
-  border-radius: $radius;
-  gap: 8px;
+.description {
+  color: $secondary-color;
+  font-size: 16px;
+
+  @include transition(color, $color-transition);
+}
+
+.actions {
+  gap: 16px;
 
   @include flex-center;
 }

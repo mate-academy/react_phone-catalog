@@ -17,8 +17,8 @@ import { Category } from '@/types/Category';
 import { FC, useMemo } from 'react';
 import { CategoryUI } from '../shared/types/CategoryUI';
 import { PerPageOption } from '../shared/types/PerPageOption';
-import { Message } from '../shared/components/Message';
 import { Options } from '@/types/FetchOptions';
+import { ErrorMessage } from './components/ErrorMessage';
 
 interface Props {
   category: Category;
@@ -104,12 +104,7 @@ export const CatalogPage: FC<Props> = ({ category }) => {
             itemsPerPage={PRODUCT_SKELETONS_COUNT}
           />
         ) : (
-          <Message
-            message={error}
-            showRetry
-            onRetry={handleFetch}
-            className={styles.error}
-          />
+          <ErrorMessage message={error} onRetry={handleFetch} />
         )}
       </section>
 

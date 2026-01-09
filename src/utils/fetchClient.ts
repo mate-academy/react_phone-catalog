@@ -28,7 +28,13 @@ function request<T>(url: string, options: Options = {}): Promise<T> {
         signal: options.signal,
       }),
     )
-    .then(res => res.json());
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Something went wrong!');
+      }
+
+      return res.json();
+    });
 }
 
 export const client = {

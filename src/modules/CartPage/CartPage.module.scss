@@ -38,3 +38,12 @@
     top: calc(var(--header-height) + 16px);
   }
 }
+
+.emptyCartImg {
+  width: 75%;
+}
+
+.shopBtn {
+  padding-inline: 16px;
+  border-radius: $radius;
+}

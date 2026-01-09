@@ -23,8 +23,6 @@
   color: $secondary-color;
 }
 
-.error {
-  background-color: $card-bg;
-  padding: 32px;
-  border-radius: $radius;
+.errorWrapper {
+  @include flex-center;
 }
