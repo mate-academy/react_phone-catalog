@@ -22,6 +22,11 @@ export const AvailableColors: React.FC<Props> = ({
     spacegray: '#6E6E73',
     skyblue: '#87CEEB',
     rosegold: '#B76E79',
+    spaceblack: '#1C1C1E',
+    graphite: '#3A3A3A',
+    sierrablue: '#9BB7D4',
+    midnight: '#0A0F2C',
+    starlight: '#f5f1e8',
   };
 
   const normalize = (color: string) => {

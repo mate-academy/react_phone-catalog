@@ -17,10 +17,6 @@
   @include on-desktop {
     padding-inline: 32px;
   }
-
-  @include on-desktop-xl {
-    // padding-inline: 152px;
-  }
 }
 
 @mixin min-height-page {

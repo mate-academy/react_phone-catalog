@@ -36,6 +36,13 @@
     color: var(--gray-text);
   }
 
+  &__button {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 10px;
+  }
+
   &__img {
     background-image: url(../../../../../public/img/product-not-found.png);
     background-size: contain;
