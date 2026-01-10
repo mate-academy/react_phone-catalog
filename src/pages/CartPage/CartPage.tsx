@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartItemType } from '../../types/CartItemType';
 import { CartItem } from '../../components/CartItem';
@@ -7,6 +7,7 @@ import './CartPage.scss';
 
 export const CartPage: React.FC = () => {
   const { cartItems, total } = useCartContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -36,10 +37,31 @@ export const CartPage: React.FC = () => {
 
             <div className="cart-summary__divider" />
 
-            <button className="cart-summary__button">Checkout</button>
+            <button
+              className="cart-summary__button"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Checkout
+            </button>
           </aside>
         </div>
       </div>
+      {isModalOpen && (
+        <div className="modal" onClick={() => setIsModalOpen(false)}>
+          <div className="modal__content" onClick={e => e.stopPropagation()}>
+            <button
+              className="modal__close"
+              onClick={() => setIsModalOpen(false)}
+            >
+              ×
+            </button>
+
+            <h2 className="modal__title">Order placed successfully 🎉</h2>
+
+            <p className="modal__text">Thank you for your purchase!</p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

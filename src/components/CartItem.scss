@@ -3,7 +3,7 @@
 
 
   display: grid;
-  grid-template-columns: 16px 66px 1fr 96px 80px;
+  grid-template-columns: 16px 80px 1fr 96px 80px;
   align-items: center;
   gap: 24px;
 
@@ -13,10 +13,10 @@
 
 
   @media (max-width: 639px) {
-  grid-template-columns: 16px 66px 1fr;
-  grid-template-areas:
-  "remove image name"
-  ".      second second";
+    grid-template-columns: 16px 66px 1fr auto;
+    grid-template-areas:
+      "remove image name name"
+      ".      counter counter price";
     row-gap: 16px;
   }
 }
@@ -54,9 +54,9 @@
    }
 }
 
-.cart-item__second-row {
+/* .cart-item__second-row {
    display: flex;
-  justify-content: space-between; // ⬅️ как в макете
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
@@ -71,7 +71,7 @@ grid-area: second;
   gap: 16px;
   max-width: 256px;
   }
-}
+} */
 
 .cart-item__counter {
   display: flex;
@@ -79,6 +79,11 @@ grid-area: second;
   gap: 8px;
   width: 96px;
   height: 32px;
+
+  @media (max-width: 639px) {
+    grid-area: counter;
+    margin-top: 8px;
+  }
 }
 
 .cart-item__btn {
@@ -120,20 +125,22 @@ grid-area: second;
 }
 
 .cart-item__price {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; // цена прижата вправо как в макете
+ /* display: flex; */
+
+  justify-content: flex-end;
   gap: 8px;
 
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
   text-align: right;
+  white-space: nowrap;
+
 
   @media (max-width: 639px) {
-     grid-area: price;
-     width: auto;
-     justify-content: flex-end;
-      text-align: right;
+    grid-area: price;
+    justify-self: end;
+    padding-right: 8px;
+    font-size: 16px;
 }
 }

@@ -1,14 +1,51 @@
 body[data-theme='light'] {
   --bg: #fff;
-  --text: #313237;
+  --bg-secondary: #fafbfc;
+  --card-bg: #fff;
+  --text-main: #313237;
+  --text-secondary: #89939a;
+  --border: #e2e6e9;
 }
 
 body[data-theme='dark'] {
   --bg: #0f172a;
-  --text: #e5e7eb;
+  --bg-secondary: #020617;
+  --card-bg: #111827;
+  --text-main: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border: #1f2933;
 }
+
+.home__title {
+  color: var(--text-main);
+}
+
+
 
 body {
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--text-main);
+}
+
+h1, h3 {
+  color: var(--text-main);
+}
+
+.section__title {
+  color: var(--text-main);
+  opacity: 0.9;
+}
+
+.product-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.section__subtitle {
+  color: var(--text-secondary);
+}
+
+button {
+  border-color: var(--border);
+  color: var(--text-main);
 }

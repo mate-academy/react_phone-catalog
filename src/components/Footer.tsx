@@ -3,7 +3,7 @@ import './Footer.scss';
 import { useLang } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
-  const { lang, setLang } = useLang();
+  const { lang, setLang, t } = useLang();
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -19,10 +19,10 @@ export const Footer: React.FC = () => {
         {/* Навигация */}
         <nav className="footer__nav">
           <a href="https://github.com" target="_blank" rel="noreferrer">
-            GITHUB
+            {t('github')}
           </a>
-          <a href="#contacts">CONTACTS</a>
-          <a href="#rights">RIGHTS</a>
+          <a href="#contacts">{t('contacts')}</a>
+          <a href="#rights">{t('rights')}</a>
         </nav>
 
         <div className="footer__lang">
@@ -39,9 +39,9 @@ export const Footer: React.FC = () => {
         <button
           className="footer__back-to-top"
           onClick={handleScrollToTop}
-          aria-label="Back to top"
+          aria-label={t('backToTop')}
         >
-          <span>Back to top</span>
+          <span>{t('backToTop')}</span>
           <div className="footer__arrow">
             <img src={`img/icons/up.svg`} alt="Up" />
           </div>

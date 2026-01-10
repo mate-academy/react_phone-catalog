@@ -40,14 +40,14 @@ export const HomePage: React.FC = () => {
   // -------------------------------
   const phones = allProducts.filter(p => p.category === 'phones');
   const newProducts = [...phones]
-    /*.filter(p => ['13', '14'].some(model => p.itemId.includes(model)))
+    .filter(p => ['13', '14'].some(model => p.itemId.includes(model)))
     .map(p => ({
       ...p,
       price: p.fullPrice, // підміняємо на regular price
     }))
-    .slice(0, 10);*/
-    .sort((a, b) => b.year - a.year)
     .slice(0, 10);
+  /* .sort((a, b) => b.year - a.year)
+    .slice(0, 10);*/
 
   // -------------------------------
   // HOT PRICES (сортуємо по ціні)
@@ -79,7 +79,7 @@ export const HomePage: React.FC = () => {
     <main className="home">
       <div className="container">
         <div className="grid">
-          <h1 className="home__title">Product Catalog</h1>
+          <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
           {/* Banner */}
           <Banner />
           {/* Brand new */}

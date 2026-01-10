@@ -18,10 +18,15 @@ export const CategoryCard: React.FC<Props> = ({
   mod,
 }) => {
   return (
-    <Link to={`/${mod}`} className="category-card">
+    <Link
+      to={`/${mod}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="category-card"
+    >
       <div className={`category-card category-card--${mod}`}>
         <div className="category-card__image" style={{ backgroundColor: bg }}>
-          <img src={`${image}`} alt={title} />
+          <img src={image} alt={title} />
         </div>
         <div className="category-card__info">
           <h3 className="category-card__title">{title}</h3>

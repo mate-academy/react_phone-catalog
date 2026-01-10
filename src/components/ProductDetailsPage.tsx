@@ -39,7 +39,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { cartItems, addItem, increase } = useCartContext();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
-  const [baseproduct, setBaseProduct] = useState<Product | null>(null);
+  const [baseProduct, setBaseProduct] = useState<Product | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -102,13 +102,47 @@ export const ProductDetailsPage: React.FC = () => {
             const normalized = normalizeProduct(details);
 
             setProduct(normalized);
-            setActiveCapacity(normalized.capacityAvailable[0]);
-            setActiveColor(normalized.colorsAvailable[0]);
+            setActiveColor(base.color ?? normalized.colorsAvailable[0]);
+            setActiveCapacity(base.capacity ?? normalized.capacityAvailable[0]);
+            setActiveImage(0);
           });
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, [productId]);
+
+  const getVariantId = (
+    color: string,
+    capacity: string,
+  ): string | undefined => {
+    if (!baseProduct) {
+      return undefined;
+    }
+
+    return allProducts.find(
+      p =>
+        p.namespaceId === baseProduct.namespaceId &&
+        p.category === baseProduct.category &&
+        p.color === color &&
+        p.capacity === capacity,
+    )?.itemId;
+  };
+
+  const handleColorChange = (color: string) => {
+    const newId = getVariantId(color, activeCapacity);
+
+    if (newId) {
+      navigate(`/product/${newId}`);
+    }
+  };
+
+  const handleCapacityChange = (capacity: string) => {
+    const newId = getVariantId(activeColor, capacity);
+
+    if (newId) {
+      navigate(`/product/${newId}`);
+    }
+  };
 
   /* ---------- Favorites ---------- */
   const isInFavorites = product ? favorites.includes(product.id) : false;
@@ -291,7 +325,7 @@ export const ProductDetailsPage: React.FC = () => {
                     className={`pd-color ${
                       activeColor === color ? 'pd-color--active' : ''
                     }`}
-                    onClick={() => setActiveColor(color)}
+                    onClick={() => handleColorChange(color)}
                   >
                     <span
                       className="pd-color__dot"
@@ -306,7 +340,7 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="pd-selector">
               <div className="pd-selector__header">
                 <span className="pd-selector__label">Select capacity</span>
-                <span className="pd-selector__id">ID: {baseproduct?.id}</span>
+                <span className="pd-selector__id">ID: {baseProduct?.id}</span>
               </div>
               <div className="pd-selector__row">
                 {capacityAvailable.map((cap: string) => (
@@ -315,7 +349,7 @@ export const ProductDetailsPage: React.FC = () => {
                     className={`pd-capacity ${
                       activeCapacity === cap ? 'pd-capacity--active' : ''
                     }`}
-                    onClick={() => setActiveCapacity(cap)}
+                    onClick={() => handleCapacityChange(cap)}
                   >
                     {cap}
                   </button>

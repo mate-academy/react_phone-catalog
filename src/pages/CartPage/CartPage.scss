@@ -40,9 +40,10 @@ padding-right: 16px;
   @media (max-width: 1199px) {
     grid-template-columns: 1fr;
   }
-  
+
   @media (max-width: 639px) {
     gap: 24px;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -140,3 +141,46 @@ padding-right: 16px;
   }
   }
 
+  .modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.modal__content {
+  position: relative;
+  width: 320px;
+  padding: 24px;
+
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal__title {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal__text {
+  font-size: 14px;
+  color: #555;
+}
