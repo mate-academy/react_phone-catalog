@@ -1,0 +1,166 @@
+.card {
+  display: flex;
+  width: 100%;
+  min-width: 200px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 18px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--color-border-strong);
+}
+
+.imageWrapper {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text);
+  text-decoration: none;
+  line-height: 1.4;
+  min-height: 46px;
+  text-align: start;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 800;
+  margin: 4px 0 8px;
+}
+
+.price {
+  font-size: 24px;
+  margin-right: auto;
+}
+
+.fullPrice {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 6px;
+  padding: 12px 12px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.value {
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.cartButton {
+  flex: 1.6;
+  padding: 12px 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-active);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cartButton:hover {
+  background: #151515;
+  border-color: #151515;
+}
+
+.added {
+  background: #fff;
+  color: var(--color-success);
+  cursor: default;
+}
+
+.favButton {
+  margin-left: 10px;
+
+  width: 60px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text);
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.favButton:hover {
+  color: var(--color-border-strong);
+}
+
+.favActive {
+  color: var(--color-error);
+  background: #fff;
+}
+
+.favActive i {
+  color: var(--color-error);
+}
+
+@media (max-width: 639px) {
+  .card {
+    max-width: 100%;
+    padding: 20px 16px;
+  }
+}
