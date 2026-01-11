@@ -4,4 +4,3 @@ export interface ShopCatagoryType {
   image: string;
   numbers: number;
 }
-

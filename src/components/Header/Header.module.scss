@@ -6,7 +6,7 @@
   background-color: var(--color-white);
   border-bottom: 1px solid var(--color-icons);
   width: 100%;
-  z-index: 3;
+  z-index: 999;
   transition: all 0.4s;
 
   &::before {

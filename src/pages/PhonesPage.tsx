@@ -9,8 +9,6 @@ import { getProducts } from '../api/httpsRequest';
 export const PhonesPage = () => {
   const { productsAll, addToDB } = useProducts();
 
-
-
   useEffect(() => {
     getProducts('allProducts').then(productsAll => {
       addToDB('allProducts', productsAll);
@@ -18,8 +16,8 @@ export const PhonesPage = () => {
   }, []);
 
   const products: ProductAllType[] = useMemo(() => {
-    return productsAll.filter(product => product.category === 'phones').sort();
+    return productsAll.filter(product => product.category === 'phones');
   }, [productsAll]);
 
-  return <Catalog products={products} />;
+  return <Catalog products={products} nameCategory={'phones'} />;
 };
