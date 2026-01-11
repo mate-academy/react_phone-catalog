@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import Cart from '/src/assets/icons/cart.svg?react';
 import Favourites from '/src/assets/icons/favourites.svg?react';
 

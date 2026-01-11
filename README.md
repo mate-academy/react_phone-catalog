@@ -32,9 +32,9 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
 3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
+4. The footer with the link to the GitHub repo and `BackButton to top` button.
   - The content should be limited to the same width as the page content;
-  - `Back to top` button should scroll to the top smoothly;
+  - `BackButton to top` button should scroll to the top smoothly;
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
 7. Scale all image links by 10% on hover.
@@ -51,10 +51,10 @@ Implement Home page at available at `/`.
   - The next buttons should show the first image after the last one;
   - Dashes at the bottom should allow choosing an exact picture.
 3. `ProductsSlider` for the `Hot prices` block:
-  - The products with a discount starting from the biggest absolute value;
-  - `<` and `>` buttons should scroll products.
+  - The productsApi with a discount starting from the biggest absolute value;
+  - `<` and `>` buttons should scroll productsApi.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
+5. Add Brand new block using ProductsSlider with productsApi that are the newest according to the year field.
 
 ## Product pages
 
@@ -62,14 +62,14 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
 1. Each page loads the data of the required `type`.
 2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
+3. Add `ProductsList` component showing all the `productsApi`.
 4. Implement a `Loader` to show it while waiting for the data from the server.
 5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
+6. If there are no productsApi available show the `There are no phones/tablets/accessories yet` message (choose required).
+7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort productsApi by `age`, `title`, or `price` (after discount).
   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
 8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-  - It should limit the products you show to the user;
+  - It should limit the productsApi you show to the user;
   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
   - Hide pagination elements if they do not make sense;
   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
@@ -85,9 +85,9 @@ Create `ProductDetailsPage` available at `/product/:productId`.
   - `About` section should contain a subheader with description;
   - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-  - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
+5. Implement `You may also like` block with productsApi chosen randomly:
+  - Create `getSuggestedProducts` method fetching the suggested productsApi.
+6. Add `BackButton` button working the same way as a Browser `BackButton` button.
 7. Add `Breadcrumbs` at the top with:
   - A Home page link;
   - A category page link (`Phones`, `Tablets`, `Accessories`);
@@ -103,7 +103,7 @@ Use React Context or Redux to store Items.
 1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
 2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
 3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
+4. Add a message `Your cart is empty` when there are no productsApi in the `Cart`.
 5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
 6. Total amount and quantity should be calculated automatically.
 7. Show the quantity at the `Cart` icon in the header.
@@ -115,7 +115,7 @@ Use React Context or Redux to store Items.
 
 ## Favorites page
 
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
+Create `Favorites` page with a `ProductsList` showing favorite productsApi at `/favorites`.
 
 1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
 2. The heart should be highlighted if the product is already added to the favorites.
@@ -139,5 +139,5 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 Show `input:search` in the header when a page contains a `ProductList` to search in.
 
 1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
+2. Show `There are no phones/tablets/accessories/productsApi matching the query` instead of `ProductList` when needed.
 3. Add `debounce` to the search field.

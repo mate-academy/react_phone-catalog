@@ -1,34 +1,31 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../types';
+import {
+  createEntityAdapter,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+import type { Product } from '../types';
 
-type FavouritesState = {
-  favourites: Product[];
-  loading: boolean;
-  error: string;
-};
+export const favouritesAdapter = createEntityAdapter<Product, string>({
+  selectId: product => product.itemId,
+});
 
-const initialState: FavouritesState = {
-  favourites: [],
-  loading: false,
-  error: '',
-};
-
-const accessoriesSlice = createSlice({
+const favouritesSlice = createSlice({
   name: 'favourites',
-  initialState,
+  initialState: favouritesAdapter.getInitialState(),
   reducers: {
-    /* eslint-disable no-param-reassign */
-    set: (state, action: PayloadAction<Product[]>) => {
-      state.favourites = action.payload;
+    addToFavourites: favouritesAdapter.addOne,
+    removeFromFavourites: favouritesAdapter.removeOne,
+    toggleFavourite: (state, action: PayloadAction<Product>) => {
+      const id = action.payload.itemId;
+
+      if (state.ids.includes(id)) {
+        favouritesAdapter.removeOne(state, id);
+      } else {
+        favouritesAdapter.addOne(state, action.payload);
+      }
     },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-    },
-    /* eslint-enable no-param-reassign */
   },
 });
 
-export const { reducer, actions } = accessoriesSlice;
+export const { actions: favouritesActions, reducer: favouritesReducer } =
+  favouritesSlice;

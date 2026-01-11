@@ -17,12 +17,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { productsApi } from '../services/productsApi';
 import { productDetailsApi } from '../services/productDetailsApi';
-import {
-  cartReducer,
-  favouritesReducer,
-  productDetailsReducer,
-  productsReducer,
-} from './reducers';
+import { cartReducer, favouritesReducer } from './reducers';
 
 const cartPersistConfig = {
   key: 'cart',
@@ -39,8 +34,6 @@ const favouritesPersistConfig = {
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
   [productDetailsApi.reducerPath]: productDetailsApi.reducer,
-  products: productsReducer,
-  productDetails: productDetailsReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
   favourites: persistReducer(favouritesPersistConfig, favouritesReducer),
 });

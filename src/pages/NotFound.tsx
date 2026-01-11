@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const NotFoundPage: FC = () => {
   return (
-    <section className="mx-auto flex max-w-min shrink-0 grow flex-col items-center justify-center gap-y-[24px]">
+    <section className="mx-auto flex max-w-min shrink-0 grow flex-col items-center justify-center gap-[24px]">
       <picture>
         <img
           src="/images/page-not-found.webp"

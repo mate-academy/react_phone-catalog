@@ -1,48 +1,37 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { productsApi } from '../services/productsApi';
+import type { RootState } from '../store';
 import { Category, Sort } from '../types';
 
-export const selectProducts = createSelector(
-  [productsApi.endpoints.getProducts.select()],
-  ({ data = [] }) => data,
+const selectProductsResult = productsApi.endpoints.getProducts.select();
+
+export const selectAllProducts = createSelector(
+  [selectProductsResult],
+  result => result.data ?? [],
 );
 
-export const selectProductsByCategory = (category: Category) =>
-  createSelector([selectProducts], products =>
-    products.filter(product => product.category === category),
-  );
+export const selectPreparedProducts = createSelector(
+  [
+    selectAllProducts,
+    (_state: RootState, category: Category | null) => category,
+    (_state: RootState, _category: Category | null, sortBy: Sort = Sort.Age) =>
+      sortBy,
+  ],
+  (products, category, sortBy) => {
+    const filteredProducts = category
+      ? products.filter(product => product.category === category)
+      : products;
 
-export const selectSortedProducts = (sortBy: Sort) =>
-  createSelector([selectProducts], products => {
-    return [...products].sort((a, b) => {
+    return [...filteredProducts].sort((a, b) => {
       switch (sortBy) {
         case Sort.Title:
           return a.name.localeCompare(b.name);
         case Sort.Price:
-          return b.fullPrice - b.price - a.fullPrice - a.price;
+          return a.price - b.price;
         case Sort.Age:
         default:
           return b.year - a.year;
       }
     });
-  });
-
-export const selectSortedProductsByCategory = (
-  category: Category,
-  sortBy: Sort,
-) =>
-  createSelector([selectProducts], products => {
-    return [...products]
-      .filter(product => product.category === category)
-      .sort((a, b) => {
-        switch (sortBy) {
-          case Sort.Title:
-            return a.name.localeCompare(b.name);
-          case Sort.Price:
-            return b.fullPrice - b.price - a.fullPrice - a.price;
-          case Sort.Age:
-          default:
-            return b.year - a.year;
-        }
-      });
-  });
+  },
+);

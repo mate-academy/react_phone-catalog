@@ -1,4 +1,9 @@
-import { HashRouter as Router, Navigate, Route, Routes } from 'react-router';
+import {
+  HashRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '../pages/Home';
 import { PhonesPage } from '../pages/Phones';
@@ -21,7 +26,7 @@ export const AppRouter: FC = () => {
           <Route path="phones" element={<PhonesPage />} />
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
-          <Route path="product/:productId" element={<ProductDetailsPage />} />
+          <Route path="product/:itemId" element={<ProductDetailsPage />} />
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="home" element={<Navigate to="/" replace />} />

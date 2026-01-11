@@ -1,23 +1,20 @@
-import { FC } from 'react';
-import cn from 'clsx';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import cn from 'clsx';
 import { DotButton, useDotButton } from './SliderDotButton';
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
 } from './SliderArrowButtons';
+import type { FC } from 'react';
 
-type PicturesSliderProps = {
+type Props = {
   pictures: string[];
   className?: string;
 };
 
-export const PicturesSlider: FC<PicturesSliderProps> = ({
-  pictures,
-  className,
-}) => {
+export const PicturesSlider: FC<Props> = ({ pictures, className }) => {
   const LOOP = true;
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: LOOP, align: 'start' },
@@ -40,7 +37,7 @@ export const PicturesSlider: FC<PicturesSliderProps> = ({
         <PrevButton
           disabled={prevBtnDisabled}
           onClick={onPrevButtonClick}
-          className="hidden sm:block"
+          className="hidden sm:block p-[8px] shadow-inner shadow-icons hover:shadow-primary disabled:shadow-elements transition"
         />
         <div ref={emblaRef} className="grow overflow-hidden sm:mx-[16px]">
           <ul className="grid grid-flow-col auto-cols-[100%]">
@@ -65,10 +62,10 @@ export const PicturesSlider: FC<PicturesSliderProps> = ({
         <NextButton
           disabled={nextBtnDisabled}
           onClick={onNextButtonClick}
-          className="hidden sm:block"
+          className="hidden sm:block p-[8px] shadow-inner shadow-icons hover:shadow-primary disabled:shadow-elements transition"
         />
       </div>
-      <div className="flex justify-center gap-x-[4px] mt-[8px]">
+      <div className="flex justify-center gap-[4px] mt-[8px]">
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}

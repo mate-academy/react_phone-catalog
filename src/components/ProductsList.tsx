@@ -10,7 +10,7 @@ type Props = {
 
 export const ProductsList: React.FC<Props> = ({ products, className }) => {
   return (
-    <ul className={cn('mt-[24px] pageGrid', className)}>
+    <ul className={cn('mt-6 pageGrid', className)}>
       {products.map(product => (
         <li
           key={product.id}

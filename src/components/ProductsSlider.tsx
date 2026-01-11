@@ -38,28 +38,28 @@ export const ProductsSlider: FC<ProductsCarouselProps> = ({
     <section className={cn('', className)}>
       <div className="flex items-center justify-between">
         <h2 className="text-h2 text-primary">{title}</h2>
-        <div className="flex gap-[16px]">
+        <div className="flex gap-4">
           <PrevButton
             disabled={prevBtnDisabled}
             onClick={onPrevButtonClick}
-            className="p-[8px] shadow-inner shadow-icons hover:shadow-primary disabled:shadow-elements transition"
+            className="p-2 shadow-inner shadow-icons hover:shadow-primary disabled:shadow-elements transition"
           />
           <NextButton
             disabled={nextBtnDisabled}
             onClick={onNextButtonClick}
-            className="p-[8px] shadow-inner shadow-icons hover:shadow-primary disabled:shadow-elements transition"
+            className="p-2 shadow-inner shadow-icons hover:shadow-primary disabled:shadow-elements transition"
           />
         </div>
       </div>
 
       <div
         ref={emblaRef}
-        className="overflow-hidden mr-[-16px] mt-[24px] sm:mr-[-24px] xl:mr-[0]"
+        className="overflow-hidden -mr-4 mt-6 sm:-mr-6 xl:mr-0"
       >
         <ul className="grid grid-flow-col auto-cols-[75%] sm:auto-cols-[41.072%] xl:auto-cols-[25.3527%]">
           {products.map(product => {
             return (
-              <li key={product.id} className="mr-[16px]">
+              <li key={product.id} className="mr-4">
                 <ProductCard product={product} />
               </li>
             );

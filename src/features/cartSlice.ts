@@ -1,34 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../types';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import type { Product } from '../types';
 
-type CartState = {
-  cart: Product[];
-  loading: boolean;
-  error: string;
-};
+export const cartAdapter = createEntityAdapter<Product, string>({
+  selectId: product => product.itemId,
+});
 
-const initialState: CartState = {
-  cart: [],
-  loading: false,
-  error: '',
-};
-
-const accessoriesSlice = createSlice({
+const cartSlice = createSlice({
   name: 'cart',
-  initialState,
+  initialState: cartAdapter.getInitialState(),
   reducers: {
-    /* eslint-disable no-param-reassign */
-    set: (state, action: PayloadAction<Product[]>) => {
-      state.cart = action.payload;
-    },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-    },
-    /* eslint-enable no-param-reassign */
+    addToCart: cartAdapter.addOne,
+    removeFromCart: cartAdapter.removeOne,
+    clearCart: cartAdapter.removeAll,
+    setCart: cartAdapter.setAll,
   },
 });
 
-export const { reducer, actions } = accessoriesSlice;
+export const { actions: cartActions, reducer: cartReducer } = cartSlice;

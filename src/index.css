@@ -60,43 +60,43 @@
 }
 
 @utility container {
-  @apply mx-auto w-full px-[16px] max-w-[1200px] sm:px-[24px] sm:max-w-[1200px] xl:px-[32px] xl:max-w-[1200px];
+  @apply mx-auto w-full px-4 max-w-300 sm:px-6 sm:max-w-300 xl:px-8 xl:max-w-300;
 }
 
 @utility pageGrid {
-  @apply grid grid-cols-4 gap-x-[16px] gap-y-[40px] sm:grid-cols-12 xl:grid-cols-24;
+  @apply grid grid-cols-4 gap-x-4 gap-y-10 sm:grid-cols-12 xl:grid-cols-24;
 }
 
 @utility text-h1 {
-  @apply font-bold text-[32px] leading-[41px] tracking-[-0.01em] sm:text-[48px] sm:leading-[56px];
+  @apply font-bold text-[32px] leading-10.25 tracking-[-0.01em] sm:text-[48px] sm:leading-14;
 }
 
 @utility text-h2 {
-  @apply font-bold text-[22px] leading-[31px] tracking-[0] sm:text-[32px] sm:leading-[41px] sm:tracking-[-0.01em];
+  @apply font-bold text-[22px] leading-7.75 tracking-[0] sm:text-[32px] sm:leading-10.25 sm:tracking-[-0.01em];
 }
 
 @utility text-h3 {
-  @apply font-semibold text-[20px] leading-[26px] tracking-[0] sm:font-bold sm:text-[22px] sm:leading-[31px];
+  @apply font-semibold text-[20px] leading-6.5 tracking-[0] sm:font-bold sm:text-[22px] sm:leading-7.75;
 }
 
 @utility text-h4 {
-  @apply font-semibold text-[16px] leading-[20px] tracking-[0] sm:text-[20px] sm:leading-[26px];
+  @apply font-semibold text-[16px] leading-5 tracking-[0] sm:text-[20px] sm:leading-6.5;
 }
 
 @utility text-uppercase {
-  @apply font-bold uppercase text-[12px] leading-[11px] tracking-[0.04em];
+  @apply font-bold uppercase text-[12px] leading-2.75 tracking-[0.04em];
 }
 
 @utility text-buttons {
-  @apply font-semibold text-[14px] leading-[21px];
+  @apply font-semibold text-[14px] leading-5.25;
 }
 
 @utility text-body {
-  @apply font-normal text-[14px] leading-[21px];
+  @apply font-normal text-[14px] leading-5.25;
 }
 
 @utility text-small {
-  @apply font-semibold text-[12px] leading-[15px];
+  @apply font-semibold text-[12px] leading-3.75;
 }
 
 @utility icon {

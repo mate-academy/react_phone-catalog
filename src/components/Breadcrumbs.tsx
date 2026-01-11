@@ -1,69 +1,64 @@
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
+import useReactRouterBreadcrumbs, {
+  BreadcrumbComponentType,
+  BreadcrumbsRoute,
+} from 'use-react-router-breadcrumbs';
 import cn from 'clsx';
 import Home from '/src/assets/icons/home.svg?react';
 import ArrowRight from '/src/assets/icons/arrow-right.svg?react';
-import { FC, Fragment } from 'react';
-import useReactRouterBreadcrumbs from 'use-react-router-breadcrumbs';
+import { FC } from 'react';
 
-type BreadcrumbsProps = {
+type CustomBreadcrumbsRoute = BreadcrumbsRoute & {
+  linkTo?: string;
+};
+
+const HomeBreadcrumb: BreadcrumbComponentType = () => (
+  <Home className="size-4 fill-primary" />
+);
+
+const defaultRoutes = [{ path: '/', breadcrumb: HomeBreadcrumb }];
+
+type Props = {
+  routes?: CustomBreadcrumbsRoute[];
   className?: string;
 };
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = ({ className }) => {
-  // const matches = useMatches();
-  const breadcrumbs = useReactRouterBreadcrumbs();
+export const Breadcrumbs: FC<Props> = ({ routes = [], className }) => {
+  const breadcrumbs = useReactRouterBreadcrumbs([...defaultRoutes, ...routes]);
 
   return (
-    <ul className={cn('flex items-center gap-[8px]', className)}>
-      {/*{matches*/}
-      {/*  .filter(match => match.handle && match.handle.breadcrumb)*/}
-      {/*  .map((match, i) => (*/}
-      {/*    <li key={i}>*/}
-      {/*      <NavLink*/}
-      {/*        to={match.pathname}*/}
-      {/*        className="flex text-small text-primary"*/}
-      {/*      >*/}
-      {/*        {match.handle.breadcrumb(match)}*/}
-      {/*      </NavLink>*/}
-      {/*    </li>*/}
-      {/*  ))}*/}
-      {breadcrumbs.map(({ breadcrumb, match, location }) => {
-        const isRoot = match.pathname === '/';
-        const isCurrent = match.pathname === location.pathname;
+    <nav className={cn('', className)}>
+      <ol className="flex items-center">
+        {breadcrumbs.map(({ breadcrumb, match, location }, index) => {
+          const isCurrent = match.pathname === location.pathname;
+          const customRoute = match.route as CustomBreadcrumbsRoute;
+          const targetPath = customRoute?.linkTo || match.pathname;
 
-        return (
-          <Fragment key={match.pathname}>
-            {isRoot ? (
-              <NavLink
-                key={match.pathname}
-                to={match.pathname}
-                className="flex text-small text-primary"
-              >
-                <Home
-                  key={match.pathname}
-                  className="size-[16px] fill-primary"
+          return (
+            <li key={match.pathname} className="flex items-center">
+              {index > 0 && (
+                <ArrowRight
+                  aria-hidden
+                  className="mx-2 size-4 fill-secondary"
                 />
-              </NavLink>
-            ) : (
-              <>
-                <ArrowRight className="size-[16px] fill-secondary" />
-                {isCurrent ? (
-                  <span className="flex text-small text-secondary">
-                    {breadcrumb}
-                  </span>
-                ) : (
-                  <NavLink
-                    to={match.pathname}
-                    className="flex text-small text-primary"
-                  >
-                    {breadcrumb}
-                  </NavLink>
-                )}
-              </>
-            )}
-          </Fragment>
-        );
-      })}
-    </ul>
+              )}
+
+              {isCurrent ? (
+                <span className="text-small text-secondary line-clamp-1">
+                  {breadcrumb}
+                </span>
+              ) : (
+                <NavLink
+                  to={targetPath}
+                  className="flex text-small text-primary"
+                >
+                  {breadcrumb}
+                </NavLink>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 };

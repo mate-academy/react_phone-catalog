@@ -1,9 +1,15 @@
-import { FC } from 'react';
-import { Link } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import cn from 'clsx';
+import { cartActions, favouritesActions } from '../store/actions';
+import { cartSelectors } from '../selectors/cartSelectors';
+import { favouritesSelectors } from '../selectors/favouritesSelectors';
+import { Button } from './Button';
 import Favourites from '/src/assets/icons/favourites.svg?react';
 import FavouritesFilled from '/src/assets/icons/favourites-filled.svg?react';
-import { Product } from '../types';
+import type { FC } from 'react';
+import type { Product } from '../types';
+import type { RootState } from '../store';
 
 type Props = {
   product: Product;
@@ -11,30 +17,52 @@ type Props = {
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = product;
+  const dispatch = useDispatch();
+  const { name, fullPrice, price, screen, capacity, ram, image, itemId } =
+    product;
+
+  const isInCart = useSelector((state: RootState) =>
+    cartSelectors.selectById(state, itemId),
+  );
+
+  const handleAddToCart = () => {
+    dispatch(cartActions.addToCart(product));
+  };
+
+  const isFavourite = useSelector((state: RootState) =>
+    favouritesSelectors.selectById(state, itemId),
+  );
+
+  const handleToggleFavourite = () => {
+    dispatch(favouritesActions.toggleFavourite(product));
+  };
 
   return (
-    <Link
-      to={`/product/${product.itemId}`}
-      className="flex h-full flex-col shadow-inner gap-y-[8px] p-[32px] shadow-elements"
-    >
-      <img
-        src={image}
-        alt={name}
-        className="mx-auto h-auto w-auto max-w-full grow object-cover max-h-[130px] sm:max-h-[196px]"
-      />
+    <div className="flex h-full flex-col gap-2 p-8 shadow-inner shadow-elements transition">
+      <Link to={`/product/${itemId}`} className="block">
+        <img
+          src={image}
+          alt={name}
+          className="mx-auto h-auto w-auto max-w-full grow object-cover max-h-32.5 sm:max-h-49"
+        />
+      </Link>
 
-      <div className="pt-[16px] text-body hover:underline">{name}</div>
+      <Link
+        to={`/product/${itemId}`}
+        className="pt-4 text-body hover:underline"
+      >
+        {name}
+      </Link>
 
-      <div className="flex items-center gap-[8px]">
+      <div className="flex items-center gap-2">
         <h3 className="text-h3 text-primary">${price}</h3>
 
         <span className="line-through text-secondary">${fullPrice}</span>
       </div>
 
-      <div className="h-[1px] bg-elements"></div>
+      <div className="h-px bg-elements"></div>
 
-      <div className="flex flex-col gap-[8px] py-[8px]">
+      <div className="flex flex-col gap-2 py-2">
         <div className="flex justify-between text-small">
           <span className="text-small text-secondary">Screen</span>
           <span className="text-primary">{screen}</span>
@@ -49,21 +77,24 @@ export const ProductCard: FC<Props> = ({ product }) => {
         </div>
       </div>
 
-      <div className="flex h-10 gap-[8px]">
-        <button
-          type="button"
+      <div className="flex grow items-end h-10 gap-2">
+        <Button
+          onClick={handleAddToCart}
           className={cn(
-            'flex justify-center items-center grow py-[10px] text-buttons transition',
+            'flex justify-center items-center grow py-2.5 text-buttons transition',
             {
-              'bg-primary text-white hover:shadow-[0_3px_13px_0] hover:shadow-hover-bs': true,
-              'bg-white text-green shadow-inner shadow-elements hover:shadow-primary': false,
+              'bg-primary text-white hover:shadow-[0_3px_13px_0] hover:shadow-hover-bs':
+                !isInCart,
+              'bg-white text-green shadow-inner shadow-elements hover:shadow-primary':
+                isInCart,
             },
           )}
         >
-          Add to cart
-        </button>
+          {isInCart ? 'Added to cart' : 'Add to cart'}
+        </Button>
 
-        <button
+        <Button
+          onClick={handleToggleFavourite}
           className={cn(
             'aspect-square p-3 shadow-inner transition hover:shadow-primary',
             {
@@ -72,13 +103,13 @@ export const ProductCard: FC<Props> = ({ product }) => {
             },
           )}
         >
-          {true ? (
-            <Favourites className="fill-primary" />
-          ) : (
+          {isFavourite ? (
             <FavouritesFilled className="fill-red" />
+          ) : (
+            <Favourites className="fill-primary" />
           )}
-        </button>
+        </Button>
       </div>
-    </Link>
+    </div>
   );
 };

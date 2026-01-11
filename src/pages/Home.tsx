@@ -1,20 +1,27 @@
 import { useSelector } from 'react-redux';
 import { useGetProductsQuery } from '../services/productsApi';
-import { selectSortedProducts } from '../selectors/productsSelectors';
+import { selectPreparedProducts } from '../selectors/productsSelectors';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { PicturesSlider } from '../components/PicturesSlider';
 import { Categories } from '../components/Categories';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Sort } from '../types';
+import type { RootState } from '../store';
 
 export const HomePage: FC = () => {
   useGetProductsQuery();
-  const brandNewProducts = useSelector(selectSortedProducts(Sort.Age));
-  const hotPricesProducts = useSelector(selectSortedProducts(Sort.Price));
+
+  const brandNewProducts = useSelector((state: RootState) =>
+    selectPreparedProducts(state, null, Sort.Age),
+  );
+
+  const hotPricesProducts = useSelector((state: RootState) =>
+    selectPreparedProducts(state, null, Sort.Price),
+  );
 
   return (
     <>
-      <h1 className="mt-[24px] text-h1 sm:mt-[32px] xl:mt-[56px]">
+      <h1 className="mt-6 text-h1 sm:mt-8 xl:mt-14">
         Welcome to Nice Gadgets store!
       </h1>
 
@@ -24,16 +31,16 @@ export const HomePage: FC = () => {
           '/images/banners/tablets.webp',
           '/images/banners/accessories.webp',
         ]}
-        className="mt-[24px] sm:mt-[32px] xl:mt-[56px]"
+        className="mt-6 sm:mt-8 xl:mt-14"
       />
 
       <ProductsSlider
         title="Brand new models"
         products={brandNewProducts}
-        className="mt-[56px] sm:mt-[64px] xl:mt-[80px]"
+        className="mt-14 sm:mt-16 xl:mt-20"
       />
 
-      <section className="mt-[56px] sm:mt-[64px] xl:mt-[80px]">
+      <section className="mt-14 sm:mt-16 xl:mt-20">
         <h2 className="text-h2 text-primary">Shop by category</h2>
 
         <Categories />
@@ -42,7 +49,7 @@ export const HomePage: FC = () => {
       <ProductsSlider
         title="Hot prices"
         products={hotPricesProducts}
-        className="mt-[56px] sm:mt-[64px] xl:mt-[80px]"
+        className="mt-14 sm:mt-16 xl:mt-20"
       />
     </>
   );

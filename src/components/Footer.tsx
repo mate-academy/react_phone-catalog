@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import cn from 'clsx';
 import Logo from '/src/assets/logo.svg?react';
 import ArrowUp from '/src/assets/icons/arrow-up.svg?react';

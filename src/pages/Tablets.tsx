@@ -1,22 +1,33 @@
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
-import { selectProductsByCategory } from '../selectors/productsSelectors';
+import { selectPreparedProducts } from '../selectors/productsSelectors';
 import { Catalog } from '../components/Catalog';
-// import { Breadcrumbs } from '../components/Breadcrumbs';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { FC } from 'react';
-import { Category } from '../types';
+import { Category, Sort } from '../types';
+import { RootState } from '../store';
 
 export const TabletsPage: FC = () => {
+  const [searchParams] = useSearchParams();
+
   useGetProductsQuery();
-  const tablets = useSelector(selectProductsByCategory(Category.Tablets));
+
+  const preparedTablets = useSelector((state: RootState) =>
+    selectPreparedProducts(
+      state,
+      Category.Tablets,
+      searchParams.get('sort') as Sort,
+    ),
+  );
 
   return (
     <div className="">
-      {/*<Breadcrumbs className="mt-[24px]" />*/}
+      <Breadcrumbs className="mt-6" />
 
-      <h1 className="mt-[24px] text-h1 sm:mt-[40px]">Tablets</h1>
+      <h1 className="mt-6 text-h1 sm:mt-10">Tablets</h1>
 
-      <Catalog products={tablets} />
+      <Catalog products={preparedTablets} />
     </div>
   );
 };
