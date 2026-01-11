@@ -52,7 +52,7 @@ export const Breadcrumbs: React.FC<{
               className={styles.breadcrumbs__link}
               onClick={() => navigate(-1)}
             >
-              {category}
+              {category || 'Favourites'}
             </span>
           </li>
           {productTitle && (
