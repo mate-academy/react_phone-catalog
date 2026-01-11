@@ -8,11 +8,29 @@ import { useNavigate } from 'react-router';
 import { ProductType } from 'models/product.model';
 
 export const CartPage: React.FC = () => {
-  const { cart, toggleCart } = useProducts();
+  const { cart, toggleCart, decreaseQuantity, increaseQuantity, clearCart } =
+    useProducts();
   const navigate = useNavigate();
+
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0,
+  );
+
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const removeProduct = (product: ProductType) => {
     toggleCart(product);
+  };
+
+  const handleCheckout = () => {
+    const isConfirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (isConfirmed) {
+      clearCart();
+    }
   };
 
   return (
@@ -46,33 +64,69 @@ export const CartPage: React.FC = () => {
           <>
             <div className={styles.cartpage__list}>
               {cart.map(product => (
-                <div key={product.id} className={styles.cartpage__list_product}>
+                <div
+                  key={product.product.id}
+                  className={styles.cartpage__list_product}
+                >
                   <img
                     src="/public/img/icons/icon-close.png"
                     alt="image"
                     className={styles.cartpage__closebut}
-                    onClick={() => removeProduct(product)}
+                    onClick={() => removeProduct(product.product)}
                   />
                   <img
-                    src={product.image}
+                    src={product.product.image}
                     alt="image"
                     className={styles.cartpage__list_product_img}
                   />
                   <h1 className={styles.cartpage__list_product_name}>
-                    {product.name}
+                    {product.product.name}
                   </h1>
+                  <div className={styles.cartpage__changequantity}>
+                    <button
+                      className={styles.cartpage__changequantity_but}
+                      disabled={product.quantity === 1}
+                      onClick={() => decreaseQuantity(product.product.id)}
+                    >
+                      <img
+                        src="/public/img/icons/icon-minus.png"
+                        alt="image minus"
+                        className={styles.cartpage__changequantity_but_img}
+                      />
+                    </button>
+                    <span className={styles.cartpage__changequantity_value}>
+                      {product.quantity}
+                    </span>
+                    <button
+                      className={styles.cartpage__changequantity_but}
+                      onClick={() => increaseQuantity(product.product.id)}
+                    >
+                      <img
+                        src="/public/img/icons/icon-plus.png"
+                        alt="image plus"
+                        className={styles.cartpage__changequantity_but_img}
+                      />
+                    </button>
+                  </div>
                   <h2 className={styles.cartpage__list_product_price}>
-                    ${product.price}
+                    ${product.product.price * product.quantity}
                   </h2>
                 </div>
               ))}
             </div>
             <div className={styles.cartpage__summary}>
-              <h1 className={styles.cartpage__summary_total_amount}>$ xckml</h1>
+              <h1 className={styles.cartpage__summary_total_amount}>
+                ${totalPrice}
+              </h1>
               <p className={styles.cartpage__summary_total_p}>
-                Total for {cart.length} items
+                Total for {totalQuantity} items
               </p>
-              <button className={styles.cartpage__summary_but}>Checkout</button>
+              <button
+                className={styles.cartpage__summary_but}
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
             </div>
           </>
         )}

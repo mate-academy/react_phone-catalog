@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     toggleFav(product);
   };
 
-  const isAdded = cart.some(item => item.id === product.id);
+  const isAdded = cart.some(item => item.product.id === product.id);
   const isFavorite = favorites.some(item => item.id === product.id);
 
   return (

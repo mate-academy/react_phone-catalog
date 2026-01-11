@@ -57,6 +57,15 @@
   }
 }
 
+@mixin item-grid {
+  --columns: 5;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 24px;
+  align-items: center;
+}
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
   &:hover {
