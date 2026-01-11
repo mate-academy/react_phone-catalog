@@ -1,4 +1,3 @@
-@use '../../../../constants/variables' as *;
 @use '../../../../constants/mixin' as *;
 
 .carousel {
@@ -20,7 +19,6 @@
 
   &__window {
     overflow: hidden;
-    position: relative;
     height: 100%;
     width: 100%;
   }
@@ -44,6 +42,7 @@
     height: 100%;
 
     object-fit: contain;
+    object-position: bottom;
 
     @include on-tablet {
       border-radius: 8px;
@@ -144,13 +143,14 @@
   }
 
   &__text {
-    color: $color-white;
+    color: var(--white-text-carousel);
     font-size: 12px;
   }
 
   &__button {
     text-transform: uppercase;
-    color: $color-white;
+    color: var(--white-text-carousel);
+
     border: 1px solid var(--gray-text);
 
     font-weight: 700;

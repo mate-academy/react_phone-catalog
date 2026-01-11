@@ -1,4 +1,3 @@
-@use '../../../../constants/variables' as *;
 @use '../../../../constants/mixin' as *;
 
 .capacityAvailable {
@@ -43,7 +42,7 @@
     color: var(--white-text);
     border-color: var(--border-capacity-active);
     background-color: var(--black-text);
-    
+
     &:hover {
       border-color: var(--border-capacity-active);
     }

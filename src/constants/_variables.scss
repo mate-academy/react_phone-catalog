@@ -19,9 +19,10 @@ $bg-button: #4f1fff;
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 $desktopXl-min-width: 1201px;
-$effectDuration: 0.5s;
+$duration: 0.5s;
 
 :root {
+  --effect-duration: #{$duration};
   --color-border-light: #{$gray-with-color};
   --color-border: #{$gray-color};
   --color-border-header: #{$gray-with-color};
@@ -52,7 +53,7 @@ $effectDuration: 0.5s;
   --bg-pagination-arrow: none;
   --bg-pagination-hover-active: #{$black-color};
   --bg-button-hover: #{$bg-button};
-  --bg-button-hover-active: #{gray-with-color};
+  --bg-button-hover-active: #{$gray-with-color};
   --bg-dropdown: #{$color-white};
   --bg-dropdown-hover: #{$bg-page};
   --bg-header: #{$color-white};
@@ -65,6 +66,7 @@ $effectDuration: 0.5s;
   --black-text: #{$black-color};
   --gray-text: #{$gray-text};
   --white-text: #{$color-white};
+  --white-text-carousel: #{$color-white};
   --back-text: #{$gray-text};
   --id-text: #{$gray-color};
   --active-nav: #{$black-color};

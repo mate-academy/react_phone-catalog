@@ -10,12 +10,12 @@
 
 body {
   scroll-behavior: smooth;
-  
+
 }
 
 
 a img {
-  transition: transform $effectDuration ease;
+  transition: transform var(--effect-duration) ease;
 }
 
 a:hover img {

@@ -2,9 +2,9 @@
 
 @mixin transform-theme {
   transition:
-    background-color $effectDuration ease,
-    border-color $effectDuration ease,
-    color $effectDuration ease;
+    background-color var(--effect-duration) ease,
+    border-color var(--effect-duration) ease,
+    color var(--effect-duration) ease;
 }
 
 @mixin padding-inline {

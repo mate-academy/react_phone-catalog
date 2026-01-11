@@ -1,13 +1,12 @@
 @use '../../../../constants/mixin' as *;
-@use '../../../../constants/variables' as *;
 
 .registration {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
+  width: 95%;
   height: 80%;
 
   padding: 10px;
