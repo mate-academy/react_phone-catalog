@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SortBy } from '../../types/Sort';
 import { useSearchParams } from 'react-router-dom';
 
 export const Dropdowns = () => {
   const [searchParams, setSerachParams] = useSearchParams();
 
-  const sortBy = searchParams.get('sortBy') || SortBy.Newest;
-  const sortPage = searchParams.get('sortPage') || '16';
+  // const sortBy = searchParams.get('sortBy') || SortBy.Newest;
+  // const sortPage = searchParams.get('sortPage') || '16';
+
+  useEffect(() => {
+
+  }, []);
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (+e.target.value) {
