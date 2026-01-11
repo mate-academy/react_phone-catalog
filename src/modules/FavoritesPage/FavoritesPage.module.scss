@@ -1,1 +1,50 @@
-// scss favorite
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.favpage {
+  @include page-grid;
+
+  margin: 24px 0 80px;
+
+  &__title {
+    grid-column: 1/6;
+
+    margin: 0;
+
+    font-family: Mont, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    font-style: Bold;
+    line-height: 56px;
+    color: $primary-color;
+    letter-spacing: -1%;
+  }
+
+  &__p {
+    grid-column: 1/-1;
+
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+  &__countmodel_p {
+    grid-column: 1/3;
+
+    margin: 8px 0 40px;
+
+    font-family: Mont,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $secondary-color;
+    text-align: left;
+    letter-spacing: 0%;
+  }
+  &__list{
+    display: grid;
+    grid-column: 1/-1;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 17px ;
+  }
+}
