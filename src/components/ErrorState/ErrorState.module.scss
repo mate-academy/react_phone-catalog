@@ -1,0 +1,23 @@
+@use '../../styles' as *;
+
+.errorState {
+  @include content-padding-inline;
+  @include center;
+
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 64px;
+
+  &__title {
+    @include h3-style;
+
+    color: $red;
+  }
+
+  &__button {
+    @include button-style;
+
+    max-width: 200px;
+    background: $red;
+  }
+}

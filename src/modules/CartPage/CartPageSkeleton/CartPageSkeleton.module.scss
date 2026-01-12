@@ -1,0 +1,135 @@
+@use '../../../styles/' as *;
+
+.cartPageSkeleton {
+  &__checkout {
+    @include page-grid;
+
+    row-gap: 32px;
+  }
+
+  &__itemsList {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__image,
+  &__name,
+  &__qty,
+  &__price,
+  &__totalPrice,
+  &__totalLabel,
+  &__checkoutBtn {
+    @include skeleton-animation;
+
+    border-radius: 4px;
+  }
+
+  &__item {
+    @include shadow-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    min-height: 128px;
+    border-radius: 4px;
+    flex-wrap: wrap;
+
+    @include on-tablet {
+      flex-wrap: nowrap;
+      padding: 0 24px;
+      gap: 24px;
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    flex: 1 1 45%;
+    height: 20px;
+  }
+
+  &__rightBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      width: auto;
+      gap: 40px;
+    }
+  }
+
+  &__qty {
+    width: 96px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  &__price {
+    width: 80px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  &__totalBlock {
+    @include shadow-box;
+
+    grid-column: 1 / -1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 8;
+      gap: 24px;
+      height: 206px;
+    }
+  }
+
+  &__totalAmount {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__totalPrice {
+    width: 120px;
+    height: 32px;
+  }
+
+  &__totalLabel {
+    align-self: flex-start;
+    width: 160px;
+    height: 16px;
+    margin-top: 24px;
+  }
+
+  &__line {
+    @include line-style;
+
+    width: 100%;
+    opacity: 0.5;
+  }
+
+  &__checkoutBtn {
+    width: 100%;
+    height: 48px;
+  }
+}

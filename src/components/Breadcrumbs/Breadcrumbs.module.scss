@@ -1,0 +1,103 @@
+@use '../../styles/' as *;
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  text-align: left;
+  margin: 24px 0 32px;
+
+  @include on-tablet {
+    gap: 40px;
+    margin: 24px 0 40px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 16px;
+    gap: 8px;
+  }
+
+  &__homeLink {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__iconNext {
+    height: 16px;
+    width: 16px;
+    opacity: 0.4;
+  }
+
+  &__breadcrumbLink,
+  &__breadcrumbCurrent {
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    display: inline-block;
+    vertical-align: middle;
+    
+    @include on-tablet {
+      max-width: 360px;
+    }
+  }
+
+  &__breadcrumbLink {
+    @include small-text-style;
+
+    text-decoration: none;
+    color: $primary;
+
+    @include hover-text;
+  }
+
+  &__breadcrumbCurrent {
+    @include small-text-style;
+  }
+
+  &__backButton {
+    @include small-text-style;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    @include hover-text;
+  }
+
+  &__backButtonIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__titleBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__title {
+    @include h1-style;
+  }
+
+  &__subtitle {
+    @include body-text-style;
+  }
+}
+
+h1.breadcrumbs__title {
+  @include h1-style;
+}

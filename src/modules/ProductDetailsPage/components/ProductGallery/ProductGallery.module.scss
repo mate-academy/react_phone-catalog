@@ -1,0 +1,101 @@
+@use '../../../../styles/' as *;
+
+.productGallery {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    @include section-style;
+
+    grid-column: 1 / span 7;
+    padding-right: 16px;
+  }
+  
+  @include on-desktop {
+    grid-column: 1 / span 12;
+    
+  }
+
+  &__thumbs {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    @include on-tablet {
+      grid-column: 1;
+      flex-direction: column;
+    }
+
+    @include on-desktop {
+      grid-column: span 2;
+      gap: 16px;
+    }
+  }
+
+  &__thumb, &__thumb--active {
+    @include shadow-box;
+
+    border: 1px solid $elements;
+    background: $white;
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: border 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  &__thumb--active {
+    border-color: $primary;
+  }
+
+  &__bigImgWrap {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      grid-column: 2 / span 6;
+      grid-row: auto;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / span 10;
+    }
+  }
+
+  &__bigImg {
+    max-height: 287px;
+    max-width: 100%;
+
+    @include on-desktop {
+      max-height: 464px;
+    }
+  }
+}

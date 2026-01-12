@@ -1,0 +1,295 @@
+@use '../../styles/' as *;
+
+.picturesSlider {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    @include center;
+
+    max-width: 1200px;
+  }
+
+  &__container {
+    height: 320px;
+    width: 100%;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 19px;
+      height: 190px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      @include button-icon-style;
+
+      height: 100%;
+    }
+  }
+
+  &__content {
+    padding: 0;
+    visibility: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #000;
+    align-items: center;
+    
+    @include on-tablet {
+      border-radius: 4px;
+      flex-direction: row;
+    }
+  }
+
+  &__left {
+    @include center;
+
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 6px;
+    
+    @include on-tablet {
+      height: calc(100% - 12px);
+      flex: 1 1 50%;
+      justify-content: flex-start;
+      border-radius: 25px;
+      align-items: flex-start;
+      background-color: #222;
+      padding: 24px;
+    }
+    
+    @include on-desktop {
+      height: calc(100% - 24px);
+      margin: 12px;
+      padding: 50px;
+    }
+  }
+
+  &__right {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+
+    @include on-tablet {
+      flex: 0 1 50%;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      padding-top: 16px;
+    }
+  }
+
+  &__leftTitle {
+    background: linear-gradient(
+      to top right,
+      #cf10b0 0%,
+      #4852e6 8%,
+      #dd72f3 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    padding-top: 24px;
+    background-clip: text;
+    color: transparent;
+    margin: 0;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    text-align: center;
+
+    @include on-tablet {
+      padding-top: 0;
+      font-size: 20px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+
+      text-align: left;
+    }
+
+    @include on-desktop {
+      font-size: 44px;
+      line-height: 46px;
+    }
+  }
+
+  &__leftTitleIconOk {
+    display: none;
+    margin-left: 4px;
+    vertical-align: middle;
+    
+    @include on-tablet {
+      display: inline-block;
+      margin-bottom: 4px;
+      width: 16px;
+      height: 16px;
+    }
+    
+    @include on-desktop {
+      margin-bottom: 8px;
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__leftText {
+    display: none;
+    
+    @include on-tablet {
+      color: $placeholders;
+      font-size: 7px;
+      margin: 0;
+      margin-top: 4px;
+      display: block;
+      flex: 1 1 auto;
+      text-align: left;
+    }
+
+    @include on-desktop {
+      font-size: 14px;
+      margin-top: 12px;
+    }
+  }
+
+  &__btn {
+    display: none;
+    width: 90px;
+    height: 26px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white;
+    background-color: transparent;
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      background-color: $elements;
+      border: 1px solid $primary;
+      color: $primary;
+      box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    @include on-tablet {
+      @include center;
+
+      display: flex;
+    }
+
+    @include on-desktop {
+      width: 200px;
+      font-size: 14px;
+      height: 62px;
+      border-radius: 50px;
+    }
+  }
+
+  &__rightTitle {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 24px;
+    color: $white;
+    margin: 0;
+    padding-top: 36px;
+    text-align: center;
+    text-shadow: $white-text-shadow;
+    
+    @include on-tablet {
+      padding-top: 26px;
+      padding-bottom: 0;
+      font-size: 16px;
+      line-height: 6px;
+    }
+
+    @include on-desktop {
+      font-size: 35px;
+      line-height: 40px;
+    }
+  }
+
+  &__rightText {
+    color: $secondary;
+    font-size: 12px;
+    
+    text-align: center;
+    
+    @include on-tablet {
+      margin: 8px 0;
+      padding-bottom: 8px;
+      font-size: 7px;
+    }
+
+    @include on-desktop {
+      font-size: 14px;
+      padding-bottom: 18px;
+    }
+  }
+
+  &__bannerImg {
+    max-width: 320px;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(80%);
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  
+    @include on-tablet {
+      max-width: 100%;
+      transform: translateY(70%);
+    }
+  }
+
+  &__dots {
+    grid-column: 1 / -1;
+    gap: 10px;
+    padding-top: 12px;
+
+    @include center;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background: $elements;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease 0s;
+
+    &:hover {
+      background: $primary;
+    }
+
+    &--active {
+      background: $primary;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@use '../../styles/' as *;
+
+.cartPage {
+  @include content-padding-inline;
+
+  &__checkout {
+    @include page-grid;
+
+    row-gap: 32px;
+  }
+
+  &__itemsList {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__totalBlock {
+    @include shadow-box;
+
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 8;
+      gap: 24px;
+      max-height: 206px;
+    }
+  }
+
+  &__totalAmount {
+     width: 100%;
+  }
+
+  &__totalPrice {
+    @include h2-style;
+    
+    text-align: center;
+    font-size: 32px;
+  }
+
+  &__totalLabel {
+    @include body-text-style;
+
+    margin-top: 8px;
+  }
+
+  &__line {
+    @include line-style;
+  }
+
+  &__checkoutBtn {
+    @include button-style;
+
+    height: 48px;
+  }
+
+  &__success {
+    @include center;
+
+    flex-direction: column;
+    text-align: center;
+    animation: fade-in 0.5s ease;
+  }
+
+  &__orderId {
+    @include body-text-style;
+
+    color: $secondary;
+    margin-bottom: 16px;
+  }
+
+  &__loaderWrapper {
+    @include center;
+
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__loaderText {
+    @include h2-style;
+
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

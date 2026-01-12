@@ -1,0 +1,42 @@
+@use '../../styles/' as *;
+
+.homePage {
+
+  &__titleContainer {
+    @include content-padding-inline;
+  }
+
+  &__title {
+    @include h1-style;
+    
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin: 32px 0;
+    }
+
+    @include on-desktop {
+      margin: 56px 0;
+    }
+  }
+
+  &__section {
+    @include section-style;
+  }
+
+  &__picturesSlider {
+    @include on-tablet {
+      @include content-padding-inline;
+    }
+  }
+
+  &__productsSlider {
+    @include on-desktop {
+      @include content-padding-inline;
+    }
+  }
+
+  &__categoryBlock{
+      @include content-padding-inline;
+  }
+}

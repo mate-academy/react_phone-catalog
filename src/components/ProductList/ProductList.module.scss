@@ -1,0 +1,23 @@
+@use '../../styles/' as *;
+
+.productList {
+  @include page-grid;
+
+  row-gap: 40px;
+
+  &__card {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

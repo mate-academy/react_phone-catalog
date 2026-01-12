@@ -1,0 +1,48 @@
+@use '../../styles/' as *;
+
+.categoryBlock {
+  &__title {
+    @include h2-style;
+
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    @include page-grid;
+
+    padding: 0;
+    margin: 0;
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__item {
+    margin: 0;
+    text-decoration: none;
+    
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: block;
+    border-radius: 6px;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__name {
+    @include h4-style;
+
+    padding-top: 24px;
+  }
+  
+  &__count {
+    @include body-text-style;
+  }
+}
