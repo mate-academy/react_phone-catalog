@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { SortBy } from '../../types/Sort';
 import { useSearchParams } from 'react-router-dom';
 

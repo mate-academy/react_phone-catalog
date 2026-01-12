@@ -8,6 +8,7 @@ import { ProductAllType, ProductType } from '../../types/Product';
 import { nameCategory } from '../../types/NameProducts';
 import { useSearchParams } from 'react-router-dom';
 import { SortBy } from '../../types/Sort';
+import { scrollToTop } from '../../utils/utils';
 
 type Props = {
   products: ProductAllType[];
@@ -23,7 +24,6 @@ export const Catalog: FC<Props> = ({
   nameCategory,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams('');
-  const [sortProducts, setSortProducts] = useState<ProductAllType[]>([]);
 
   useEffect(() => {
     console.log(searchParams.get('sortBy'));
@@ -38,10 +38,6 @@ export const Catalog: FC<Props> = ({
         return params;
       });
     }
-
-    setSortProducts(
-      sortBy(searchParams.get('sortBy') || SortBy.Newest, products),
-    );
   }, [searchParams]);
 
   function sortBy(searchParams: string, products: ProductAllType[]) {
@@ -85,6 +81,38 @@ export const Catalog: FC<Props> = ({
 
   const { name, quantity } = infoObject(nameCategory);
 
+  // Pagination logic can be added here in the future
+
+  const [perPage, setPerPage] = useState<number>(
+    +(searchParams.get('sortPage') || '16'),
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setPerPage(+(searchParams.get('sortPage') || '16'));
+  }, [searchParams, perPage]);
+
+  console.log(perPage);
+
+  const sortByName = searchParams.get('sortBy') || SortBy.Newest;
+
+  const filteredPage =
+    currentPage === 1
+      ? sortBy(sortByName, products.slice(0, perPage))
+      : sortBy(
+          sortByName,
+          products.slice(
+            perPage * currentPage - perPage,
+            perPage * currentPage,
+          ),
+        );
+
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+    scrollToTop();
+  };
+
   return (
     <section className="catalog">
       <div className="container catalog__container">
@@ -98,11 +126,18 @@ export const Catalog: FC<Props> = ({
         {dropdown && <Dropdowns />}
 
         <div className="catalog__wrapper">
-          {sortProducts.map(item => (
+          {filteredPage.map(item => (
             <ProductCard key={item.id} product={item} />
           ))}
         </div>
-        {pagination && <Pagination />}
+        {pagination && (
+          <Pagination
+            total={products.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={page => onPageChange(page)}
+          />
+        )}
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import logoIcon from './../../images/header/Logo.png';
 import arrowUp from './../../images/icons/arrow-up.svg';
+import { scrollToTop } from '../../utils/utils';
 
 const {
   footer,
@@ -18,10 +19,6 @@ const {
   footer__button,
   footer__image,
 } = styles;
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
 
 export const Footer = () => {
   return (
