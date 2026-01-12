@@ -28,19 +28,21 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: $color-white;
 }
 
 .swiperCard1 {
   background-image: url(/img/banners/banner-mobile.png);
 
-  @include on-tablet{
-      background-image: url(/img/banners/banner.png);
+  @include on-tablet {
+    background-image: url(/img/banners/banner.png);
   }
 }
+
 .swiperCard2 {
   background-image: url(/img/banners/banner-phones.png);
 }
+
 .swiperCard3 {
   background-image: url(/img/banners/banner-tablets.png);
 }
@@ -65,5 +67,42 @@
 
   @include on-desktop {
     height: 400px;
+  }
+}
+
+.pagination {
+  height: 24px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  z-index: 1;
+}
+
+.bullet {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  bottom: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 4px;
+    background-color: $color-icons;
+    transform: translate(-50%, -50%);
+    transition: transform $effect-duration ease;
+  }
+
+  &:hover::before {
+    background-color: $color-secondary;
+  }
+
+  &.bulletActive::before {
+    background-color: $color-primary;
   }
 }

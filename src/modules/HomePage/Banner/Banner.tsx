@@ -5,7 +5,6 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import './pagination.scss';
 import styles from './Banner.module.scss';
 
 export const Banner = () => {
@@ -34,9 +33,9 @@ export const Banner = () => {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{
             clickable: true,
-            el: '.pagination',
-            bulletClass: 'custom-bullet',
-            bulletActiveClass: 'custom-bullet-active',
+            el: `.${styles.pagination}`,
+            bulletClass: `${styles.bullet}`,
+            bulletActiveClass: `${styles.bulletActive}`,
           }}
           className={styles.swiper}
         >
@@ -63,7 +62,7 @@ export const Banner = () => {
         </button>
       </div>
 
-      <div className="pagination"></div>
+      <div className={styles.pagination}></div>
     </div>
   );
 };

@@ -1,0 +1,106 @@
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
+
+.card {
+  width: 272px;
+  height: 506px;
+  border: 1px solid $color-icons;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.productImgLink {
+  display: flex;
+  justify-content: center;
+
+  @include hover(transform, scale(1.1));
+}
+
+.productImg {
+  max-width: 208px;
+  height: 196px;
+}
+
+.productName {
+  height: 42px;
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  height: 31px;
+  margin: 8px 0;
+  border-bottom: 1px solid $color-icons;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0%;
+}
+
+.fullPrice {
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0%;
+  text-decoration: line-through;
+  color: $color-secondary;
+}
+
+.characteristics {
+  margin: 16px 0;
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.cName {
+  font-weight: 600;
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.cValue {
+  font-weight: 600;
+  font-size: 12px;
+  text-align: right;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonAdd {
+  width: 160px;
+  height: 40px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+}
+
+.buttonIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  border: 1px solid $color-icons;
+  background-color: $color-white;
+  position: relative;
+}
+
+.iconImg {
+  width: 16px;
+  height: 16px;
+}

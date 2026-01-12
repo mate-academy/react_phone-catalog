@@ -4,6 +4,8 @@
 .header {
   height: 48px;
   border-bottom: 1px solid $color-icons;
+  background-color: $color-white;
+  z-index: 100;
   display: flex;
   position: sticky;
   top: 0;
@@ -101,7 +103,7 @@
   height: 48px;
   width: 48px;
   box-sizing: border-box;
-  border-left: 0.1px solid $color-icons;
+  border-left: 1px solid $color-icons;
   position: relative;
 
   @include on-desktop {
