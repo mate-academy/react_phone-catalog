@@ -2,12 +2,14 @@
   background-color: #fff;
   box-shadow: 0 -1px 0 #e2e6e9;
   font-family: Mont, sans-serif;
+  height: 96px;
 
 
      @media (max-width: 640px) {
       padding: 32px 16px;
     box-shadow: none;
     border-top: 1px solid #e2e6e9;
+    height: auto;
      }
 
 
@@ -16,7 +18,7 @@
     align-items: center;
     justify-content: space-between;
     max-width: 1136px;
-    height: 96px;
+    height: 100%;
     margin: 0 auto;
     padding: 0 24px;
 

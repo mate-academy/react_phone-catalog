@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './ProductDetails.scss';
-
 import { ProductCard } from './ProductCard';
 import { Product } from '../types/Product';
 import { normalizeProduct } from '../utils/normalizeProduct';
@@ -11,13 +10,13 @@ import { getSuggestedProducts } from '../utils/getSuggestedProducts';
 
 /* ---------- Types ---------- */
 type ProductDetails = ReturnType<typeof normalizeProduct>;
-
 type DescriptionBlock = {
   title?: string;
   text?: string[];
 };
 
 const FAV_KEY = 'nice_gadgets_favorites';
+
 const loadFav = (): string[] =>
   JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
 
@@ -35,7 +34,6 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const trackRef = useRef<HTMLDivElement>(null);
-
   const { cartItems, addItem, increase } = useCartContext();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
@@ -43,11 +41,9 @@ export const ProductDetailsPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
   const [activeImage, setActiveImage] = useState(0);
   const [activeCapacity, setActiveCapacity] = useState('');
   const [activeColor, setActiveColor] = useState('');
-
   const [favorites, setFavorites] = useState<string[]>(loadFav());
 
   /* ---------- Load data ---------- */
@@ -58,7 +54,6 @@ export const ProductDetailsPage: React.FC = () => {
 
     setLoading(true);
     setError(false);
-
     fetch(`api/products.json`)
       .then(r => r.json())
       .then((products: Product[]) => {
@@ -71,7 +66,6 @@ export const ProductDetailsPage: React.FC = () => {
         }
 
         setBaseProduct(base);
-
         setAllProducts(products);
 
         let detailsFile = '';
@@ -129,17 +123,35 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const handleColorChange = (color: string) => {
+    if (!baseProduct) {
+      return;
+    }
+
+    // если клик по текущему цвету — ничего не делаем
+    if (color === baseProduct.color) {
+      return;
+    }
+
     const newId = getVariantId(color, activeCapacity);
 
-    if (newId) {
+    // защита от лишнего navigate
+    if (newId && newId !== productId) {
       navigate(`/product/${newId}`);
     }
   };
 
   const handleCapacityChange = (capacity: string) => {
+    if (!baseProduct) {
+      return;
+    }
+
+    if (capacity === baseProduct.capacity) {
+      return;
+    }
+
     const newId = getVariantId(activeColor, capacity);
 
-    if (newId) {
+    if (newId && newId !== productId) {
       navigate(`/product/${newId}`);
     }
   };
@@ -173,7 +185,6 @@ export const ProductDetailsPage: React.FC = () => {
         item.color === activeColor,
     );
   }, [cartItems, product, activeCapacity, activeColor]);
-
   const handleCart = () => {
     if (!product) {
       return;
@@ -283,9 +294,7 @@ export const ProductDetailsPage: React.FC = () => {
           <img src={`img/icons/left.svg`} alt="Back" />
           Back
         </button>
-
         <h1 className="product-details__title">{name}</h1>
-
         {/* ------- TOP GRID ------- */}
         <div className="product-details__top">
           {/* IMAGES */}
@@ -306,13 +315,11 @@ export const ProductDetailsPage: React.FC = () => {
                   </button>
                 ))}
               </div>
-
               <div className="pd-gallery__main">
                 <img src={`${images[activeImage]}`} alt="" />
               </div>
             </div>
           </div>
-
           {/* INFO COLUMN */}
           <div className="product-details__info">
             {/* COLORS */}

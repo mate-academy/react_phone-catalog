@@ -77,10 +77,12 @@ export const TabletsPage: React.FC = () => {
       next.delete('page');
     }
 
-    if (params.perPage && params.perPage !== 'all') {
-      next.set('perPage', String(params.perPage));
-    } else {
-      next.delete('perPage');
+    if ('perPage' in params) {
+      if (params.perPage === 'all') {
+        next.delete('perPage');
+      } else if (params.perPage) {
+        next.set('perPage', String(params.perPage));
+      }
     }
 
     setSearchParams(next);

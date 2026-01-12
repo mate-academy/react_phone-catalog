@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../../styles/grid.scss';
 import './HomePage.scss';
+import '../../styles/grid.scss';
 import { ProductList } from '../../components/ProductList';
 import { Banner } from '../../components/Banner';
 import { CategoryCard } from '../../components/CategoryCard';

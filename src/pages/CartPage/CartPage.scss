@@ -36,6 +36,8 @@ padding-right: 16px;
    grid-template-columns: 752px 368px;
    gap: 32px;
   align-items: start;
+  margin-bottom: 64px;
+
 
   @media (max-width: 1199px) {
     grid-template-columns: 1fr;

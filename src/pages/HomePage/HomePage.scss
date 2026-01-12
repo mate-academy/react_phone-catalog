@@ -1,3 +1,7 @@
+.grid {
+  justify-content: center;
+}
+
 .container {
   max-width: 1136px;
   margin: 0 auto;
@@ -8,6 +12,7 @@
 
   @media (max-width: 639px) {
     padding: 0 16px;
+
   }
 }
 

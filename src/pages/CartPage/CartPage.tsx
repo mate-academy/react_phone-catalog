@@ -10,6 +10,8 @@ export const CartPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <section className="cart-page">
       <div className="container">
@@ -32,7 +34,7 @@ export const CartPage: React.FC = () => {
             <div className="cart-summary__price">${total}</div>
 
             <div className="cart-summary__items">
-              Total for {cartItems.length} items
+              Total for {totalItems} items
             </div>
 
             <div className="cart-summary__divider" />
