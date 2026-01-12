@@ -33,7 +33,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         className={styles.productcard}
         onClick={() => navigate(`/${product.category}/product/${product.id}`)}
       >
-        <img className={styles.productcard__img} src={product.image} alt="" />
+        <img
+          className={styles.productcard__img}
+          src={'/' + product.image}
+          alt=""
+        />
         <h3 className={styles.productcard__title}>{product.name}</h3>
         <div className={styles.productcard__price}>
           <h2 className={styles.productcard__price_disconout}>
