@@ -53,7 +53,13 @@ export const Footer: React.FC = () => {
           <button
             onClick={scrollToTop}
             className={styles.footer__scroll_top__btn}
-          ></button>
+          >
+            <img
+              src="/public/img/icons/icon-chevron-arrow-right.png"
+              alt="image"
+              className={styles.footer__scroll_top__btn_img}
+            />
+          </button>
         </div>
       </div>
     </footer>
