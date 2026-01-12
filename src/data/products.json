@@ -1,0 +1,13 @@
+[
+  {
+    "id": "iphone-11",
+    "name": "Apple iPhone 11",
+    "category": "phones",
+    "priceDiscount": 1050,
+    "colorsAvailable": ["black", "green", "purple", "red", "white", "yellow"],
+    "capacityAvailable": ["64GB", "128GB", "256GB"],
+    "images": [
+      "https://via.placeholder.com/400x400?text=iPhone+11"
+    ]
+  }
+]

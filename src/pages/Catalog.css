@@ -1,0 +1,84 @@
+.catalog {
+  padding: 32px;
+}
+
+.catalog-title {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+
+.catalog-controls {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+
+.catalog-controls select {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #eaeaff;
+  padding: 6px 10px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.catalog-controls select option {
+  background: #0b0f1f;
+  color: #ffffff;
+}
+
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+
+.catalog-pagination {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+}
+
+
+.catalog-pagination button {
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+
+  color: #f3e8ff;
+  cursor: pointer;
+
+  text-shadow:
+    0 0 6px rgba(255, 200, 255, 0.6),
+    0 0 12px rgba(180, 120, 255, 0.4);
+
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.catalog-pagination button:hover {
+  color: #ff7ad9;
+  text-shadow:
+    0 0 10px rgba(255, 120, 220, 0.9),
+    0 0 18px rgba(255, 120, 220, 0.6);
+  transform: translateY(-1px);
+}
+
+
+.catalog-pagination button:disabled {
+  cursor: default;
+  color: #7cffc4;
+  text-shadow:
+    0 0 10px rgba(120, 255, 200, 0.9),
+    0 0 18px rgba(120, 255, 200, 0.6);
+}

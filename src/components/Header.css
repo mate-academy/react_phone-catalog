@@ -1,0 +1,50 @@
+.header {
+width: 100%;
+padding: 16px 32px;
+position: sticky;
+top: 0;
+z-index: 100;
+background: linear-gradient(
+180deg,
+rgba(10, 10, 20, 0.9),
+rgba(10, 10, 20, 0.6)
+);
+backdrop-filter: blur(10px);
+}
+
+.header-inner {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.logo {
+width: 0;
+height: 0;
+pointer-events: none;
+}
+
+
+.nav {
+display: flex;
+gap: 24px;
+}
+
+.nav a {
+text-decoration: none;
+font-size: 14px;
+letter-spacing: 0.5px;
+color: rgba(200, 220, 255, 0.7);
+transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nav a:hover {
+color: #bfe9ff;
+text-shadow: 0 0 6px rgba(120, 180, 255, 0.8);
+}
+
+.nav a.active {
+color: #e6f4ff;
+text-shadow: 0 0 8px rgba(160, 220, 255, 1);
+}

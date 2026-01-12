@@ -1,0 +1,145 @@
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', system-ui, sans-serif;
+  color: #eaeaff;
+
+  background: radial-gradient(
+    circle at top,
+    #1b1f3a 0%,
+    #0b0f1f 60%,
+    #05070f 100%
+  );
+}
+
+
+.header {
+  padding: 20px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  color: #f2f2ff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff;
+  text-shadow:
+    0 0 6px rgba(255, 200, 255, 0.8),
+    0 0 14px rgba(255, 150, 255, 0.6);
+}
+
+
+.home {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+
+.neon-logo {
+  font-size: 44px;
+  letter-spacing: 0.18em;
+  animation: neon-flicker 2.2s ease-out forwards;
+}
+
+@keyframes neon-flicker {
+  0% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  15% {
+    opacity: 1;
+    text-shadow: 0 0 12px #ffb7ff;
+  }
+  30% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 10px #ffb7ff,
+      0 0 24px rgba(255, 183, 255, 0.6);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: none;
+  }
+}
+
+.neon-text-btn {
+  background: none !important;
+  border: none !important;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+
+  color: #f3e8ff;
+  cursor: pointer;
+  user-select: none;
+
+  text-shadow:
+    0 0 6px rgba(255, 200, 255, 0.6),
+    0 0 12px rgba(180, 120, 255, 0.4);
+
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.neon-text-btn:hover {
+  color: #ff7ad9;
+  text-shadow:
+    0 0 10px rgba(255, 120, 220, 0.9),
+    0 0 18px rgba(255, 120, 220, 0.6);
+  transform: translateY(-1px);
+}
+
+.neon-text-btn {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.neon-text-btn:focus {
+  outline: none;
+}
+.hero-banner {
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+
+  background: transparent;
+
+  filter:
+    drop-shadow(0 0 16px rgba(255, 255, 255, 0.25))
+    drop-shadow(0 0 32px rgba(160, 120, 255, 0.25));
+
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.03) rotate(-1deg);
+  filter:
+    drop-shadow(0 0 26px rgba(255, 255, 255, 0.45))
+    drop-shadow(0 0 48px rgba(160, 120, 255, 0.45));
+}

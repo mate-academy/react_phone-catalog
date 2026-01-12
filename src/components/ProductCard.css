@@ -1,0 +1,163 @@
+
+.product-card {
+  width: 220px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(15, 18, 45, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(180, 150, 255, 0.25),
+    0 0 18px rgba(120, 90, 255, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.product-image {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+.product-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.product-category {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.product-price {
+  font-size: 15px;
+  color: #ffd6ff;
+}
+
+
+.product-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: auto;
+}
+
+
+.product-card button.neon-text-btn {
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  padding: 0;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+  user-select: none;
+
+  color: #f3e8ff;
+  text-shadow:
+    0 0 6px rgba(255, 200, 255, 0.6),
+    0 0 12px rgba(180, 120, 255, 0.4);
+
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.product-card button.neon-text-btn:hover {
+  color: #ff7ad9;
+  text-shadow:
+    0 0 10px rgba(255, 120, 220, 0.9),
+    0 0 18px rgba(255, 120, 220, 0.6);
+  transform: translateY(-1px);
+}
+
+
+.product-card button.neon-text-btn.active {
+  color: #7cffc4;
+  text-shadow:
+    0 0 10px rgba(120, 255, 200, 0.9),
+    0 0 18px rgba(120, 255, 200, 0.6);
+}
+
+
+.product-card button.neon-text-btn.heart.active {
+  color: #ff6bcb;
+  text-shadow:
+    0 0 10px rgba(255, 100, 200, 0.9),
+    0 0 18px rgba(255, 100, 200, 0.6);
+}
+
+
+.product-card button.neon-text-btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+  text-shadow: none;
+}
+
+.neon-text-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+
+.neon-text-btn.active {
+  color: #7cffc4;
+  text-shadow:
+    0 0 10px rgba(120, 255, 200, 0.9),
+    0 0 18px rgba(120, 255, 200, 0.6);
+}
+
+.product-card button.neon-text-btn {
+  box-shadow: none !important;
+}
+
+
+.product-card button.neon-text-btn.active {
+  color: #7cffc4 !important;
+
+  text-shadow:
+    0 0 10px rgba(120, 255, 200, 0.9),
+    0 0 18px rgba(120, 255, 200, 0.6) !important;
+}
+
+
+.product-card button.neon-text-btn.active:disabled {
+  opacity: 1 !important;
+  cursor: default;
+
+  text-shadow:
+    0 0 10px rgba(120, 255, 200, 0.9),
+    0 0 18px rgba(120, 255, 200, 0.6) !important;
+}
+
+
+.product-card button.neon-text-btn.heart.active {
+  color: #ff6bcb !important;
+
+  text-shadow:
+    0 0 10px rgba(255, 100, 200, 0.9),
+    0 0 18px rgba(255, 100, 200, 0.6) !important;
+}

@@ -1,0 +1,162 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Orbitron', system-ui, sans-serif;
+  background: radial-gradient(
+      1200px 600px at 20% 0%,
+      rgba(120, 90, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 800px at 80% 100%,
+      rgba(255, 90, 180, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #05060d 0%, #070a18 50%, #05060d 100%);
+  color: #e8e8ff;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* LINKS */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* NEON TEXT */
+.neon-text {
+  color: #f5f5ff;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.35),
+    0 0 12px rgba(180, 140, 255, 0.25);
+}
+
+/* ACTIVE CATEGORY (Phones / Tablets etc.) */
+.neon-active {
+  color: #ff9adf;
+  text-shadow:
+    0 0 6px rgba(255, 150, 220, 0.8),
+    0 0 14px rgba(255, 120, 200, 0.6);
+}
+
+/* TEXT BUTTONS (cart / favorite) */
+.neon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: #f0f0ff;
+  text-shadow: 0 0 6px rgba(180, 140, 255, 0.5);
+  transition: opacity 0.2s ease, text-shadow 0.2s ease;
+}
+
+.neon-btn:hover {
+  opacity: 0.85;
+  text-shadow:
+    0 0 8px rgba(255, 180, 240, 0.9),
+    0 0 16px rgba(255, 120, 200, 0.7);
+}
+
+/* PAGE CONTAINER */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+/* === PRODUCTS GRID === */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 32px;
+
+  align-items: stretch;
+  margin-top: 32px;
+}
+/* === FILTERS (selects) === */
+select {
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+select option {
+  background: #0b0f1e;
+  color: #ffffff;
+}
+
+/* === PAGINATION BUTTONS === */
+.pagination button {
+  background: transparent;
+  border: none;
+
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+
+  padding: 6px 10px;
+  transition: all 0.25s ease;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.pagination button:hover {
+  color: #ff9ad5;
+  text-shadow:
+    0 0 6px rgba(255, 154, 213, 0.8),
+    0 0 12px rgba(255, 154, 213, 0.6);
+}
+
+.pagination button:disabled {
+  color: #ff9ad5;
+  cursor: default;
+  text-shadow:
+    0 0 8px rgba(255, 154, 213, 1),
+    0 0 16px rgba(255, 154, 213, 0.8);
+}
+.home {
+  padding: 60px 40px;
+}
+
+/* ===== NEON TITLE ===== */
+.neon-title {
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #ffffff;
+
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.6),
+    0 0 12px rgba(255, 154, 213, 0.6),
+    0 0 20px rgba(255, 154, 213, 0.4);
+}
+
+/* ===== ONE-TIME FLICKER ===== */
+.neon-flicker {
+  animation: flicker 1.8s ease-out 1;
+}
+
+@keyframes flicker {
+  0%   { opacity: 0.2; }
+  20%  { opacity: 1; }
+  40%  { opacity: 0.5; }
+  60%  { opacity: 1; }
+  80%  { opacity: 0.7; }
+  100% { opacity: 1; }
+}
