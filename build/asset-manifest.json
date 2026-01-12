@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1f3066b9.css",
+    "main.js": "/static/js/main.48e85f62.js",
+    "static/js/488.9c94003b.chunk.js": "/static/js/488.9c94003b.chunk.js",
+    "static/media/neon-headphones.webp": "/static/media/neon-headphones.da0c4a320722a685baab.webp",
+    "index.html": "/index.html",
+    "main.1f3066b9.css.map": "/static/css/main.1f3066b9.css.map",
+    "main.48e85f62.js.map": "/static/js/main.48e85f62.js.map",
+    "488.9c94003b.chunk.js.map": "/static/js/488.9c94003b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f3066b9.css",
+    "static/js/main.48e85f62.js"
+  ]
+}
