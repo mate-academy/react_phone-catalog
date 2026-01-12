@@ -4,6 +4,7 @@
 .page {
   &__title {
     font-weight: 800;
+    color: var(--color-gray-primary);
 
     @include adaptiv-value(font-size, 32, 48, 2);
     @include adaptiv-value(line-height, 41, 56, 1);

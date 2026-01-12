@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   z-index: 2;
-  background-color: $gray-white;
+  background-color: var(--color-gray-white);
 
   &:before {
     content: '';
@@ -24,13 +24,9 @@
     justify-content: space-between;
     height: $header-height--phone;
     align-items: center;
-    box-shadow: 0 1px 0 0 $gray-elements;
+    box-shadow: 0 1px 0 0 var(--color-gray-elements);
     z-index: 10;
 
-    @include adaptiv-value(gap, 16, 24, 1);
-    @include on-tablet {
-      justify-content: start;
-    }
     @include on-desktop {
       height: $header-height--desktop;
     }
@@ -56,17 +52,19 @@
     justify-content: space-between;
     transition: all .3s ease;
     height: 100%;
-    
+
+    @include adaptiv-value(padding-left, 16, 24, 1);
     @include phone-max {
       flex-direction: column;
       position: fixed;
       padding-top: 30px;
+      padding-left: 0;
       padding-bottom: env(safe-area-inset-bottom);
       left: +100%;
       top: calc($header-height--phone + 1px);
       width: 100%;
       height: calc(100dvh - #{$header-height--phone} - 1px);
-      background-color: $gray-background;
+      background-color: var(--color-gray-background);
 
       @supports not (height: 100dvh) {
         height: calc(100vh - #{$header-height--phone} - 1px);
@@ -94,6 +92,40 @@
     }
   }
 
+  &__theme {
+    height: 100%;
+    aspect-ratio: 1.2 / 1;
+    margin-left: auto;
+    
+    @include on-tablet {
+      position: absolute;
+      right: 97px;
+    }
+
+    @include on-desktop {
+      right: 129px;
+    }
+
+    &-space {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      width: 35px;
+      padding-inline: 2px;
+      border-radius: 10px;
+      border: 2px solid var(--color-gray-secondary);
+      background-color: #f9f9f9;
+    }
+
+    &-shuttle {
+      height: 14px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 2px solid rgb(104, 102, 102);
+      background-color: #a3a2a2;
+    }
+  }
+
   &__btn {
     display: flex;
     align-items: center;
@@ -103,8 +135,8 @@
     background-repeat: no-repeat;
     background-position: center;
     box-shadow:
-      -1px -1px 0 0 $gray-elements,
-      -1px  1px 0 0 $gray-elements;
+      -1px -1px 0 0 var(--color-gray-elements),
+      -1px  1px 0 0 var(--color-gray-elements);
 
     @include underline-after;
     @include on-tablet {
@@ -143,6 +175,11 @@
       }
     }
 
+    &--theme {
+      height: 100%;
+      width: 100%;
+    }
+
     &--burger {
       height: 100%;
       aspect-ratio: 1 / 1;
@@ -153,30 +190,30 @@
     }
 
     &--active {
-      color: $gray-primary;
+      color: var(--color-gray-primary);
       
       @include underline-after(100%);
     }
   }
 
-  &__value {
+  &__quantity {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     height: 15px;
     width: 15px;
-    top: 22%;
+    top: 20%;
     right: 22%;
     font-size: 10px;
     line-height: 5px;
-    color: white;
-    border: 1px solid white;
+    color: var(--color-quantity);
+    border: 1px solid var(--color-gray-white);
     border-radius: 50%;
-    background-color: blue;
+    background-color: var(--color-secondary-accent);
 
     @include phone-max {
-      top: 22%;
+      top: 20%;
       right: 44%;
     }
   }
@@ -201,14 +238,14 @@
         width: 100%;
         height: 2px;
         top: 8px;
-        background-color: $gray-primary;
+        background-color: var(--color-gray-primary);
       }
 
       &::after,
       &::before {
         content: '';
         position: absolute;
-        background-color: $gray-primary;
+        background-color: var(--color-gray-primary);
         width: 100%;
         height: 2px;
         left: 0;
@@ -256,7 +293,7 @@
     font-size: 16px;
     letter-spacing: .08em;
     line-height: $header-height--phone;
-    color: $gray-secondary;
+    color: var(--color-gray-secondary);
     text-transform: uppercase;
     transition: all 0.3s ease;
 
@@ -272,7 +309,7 @@
 
     
     &:hover {
-      color: $gray-primary;
+      color: var(--color-gray-primary);
     }
 
     &:hover::after {
@@ -280,7 +317,7 @@
     }
 
     &--active {
-      color: $gray-primary;
+      color: var(--color-gray-primary);
 
       @include underline-after(100%);
     }
@@ -307,4 +344,31 @@ body.lock {
   opacity: 0;
 }
 
+.theme-dark {
+  .header__body {
+    box-shadow: 0 1px 0 0 var(--color-gray-icons-placeholders);
+  }
 
+  .header__btn {
+    box-shadow:
+      -1px -1px 0 0 var(--color-gray-icons-placeholders),
+      -1px  1px 0 0 var(--color-gray-icons-placeholders);
+  }
+
+  .header__theme-space {
+    background-color: #3d3d3d;
+    justify-content: end;
+  }
+
+  .header__theme-shuttle {
+    background-color: #a3a2a2;
+  }
+
+  .header__btn--fav {
+    background-image: url(../../assets/icons/favorite-icon-dark--default.svg);
+  }
+
+  .header__btn--cart {
+    background-image: url(../../assets/icons/shopping-bag-cart--dark.svg);
+  }
+}

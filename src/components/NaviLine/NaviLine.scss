@@ -40,7 +40,7 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 1;
-      color: $gray-secondary;
+      color: var(--color-gray-secondary);
       transform: translateY(2px); 
     }
 
@@ -49,6 +49,11 @@
         font-weight: 800;
       }
     }
+  }
+}
 
+.theme-dark {
+  .navi__icon {
+    background-image: url(../../assets/icons/home--dark.svg);
   }
 }

@@ -7,7 +7,7 @@
   justify-content: center;
   height: 50vh;
   gap: 20px;
-  color: $gray-primary;
+  color: var(--color-gray-primary);
 }
 
 .orbit-spinner {
@@ -29,21 +29,21 @@
   left: 0;
   top: 0;
   animation: orbit-rotate-one 1.2s linear infinite;
-  border-bottom: 3px solid $accent;
+  border-bottom: 3px solid var(--color-accent);
 }
 
 .orbit:nth-child(2) {
   right: 0;
   top: 0;
   animation: orbit-rotate-two 1.2s linear infinite;
-  border-right: 3px solid $gray-icons-placeholders;
+  border-right: 3px solid var(--color-gray-icons-placeholders);
 }
 
 .orbit:nth-child(3) {
   right: 0;
   bottom: 0;
   animation: orbit-rotate-three 1.2s linear infinite;
-  border-top: 3px solid $gray-icons-placeholders;
+  border-top: 3px solid var(--color-gray-icons-placeholders);
 }
 
 @keyframes orbit-rotate-one {

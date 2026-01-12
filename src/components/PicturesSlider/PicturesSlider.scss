@@ -21,8 +21,9 @@
     display: none;
     width: 32px;
     flex: 0 0 auto;
-    border: 1px solid $gray-icons-placeholders;
+    border: 1px solid var(--color-gray-icons-placeholders);
     border-radius: 48px;
+    background-color: var(--color-gray-background);
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.3s ease;
@@ -37,7 +38,7 @@
     }
 
     &:hover {
-      border: 1px solid $gray-secondary;
+      border: 1px solid var(--color-gray-secondary);
       cursor: pointer;
     }
 
@@ -51,7 +52,7 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 100%;
-    background-color: #000;
+    background-color: #262626;
     border-radius: 8px;
 
     @include on-tablet {
@@ -72,7 +73,7 @@
       flex: 1 1 45%;
       margin: 15px;
       padding: 20px;
-      background-color: #222;
+      background-color: #383838;
     }
   }
 
@@ -131,8 +132,6 @@
     font-weight: 800;
     font-size: 24px;
     line-height: 1;
-    
-    color: white;
     background-image: linear-gradient(90deg, #7c4af4 30%, #d862ff 50%, #7c4af4 70%);
     background-size: 400%;
     -webkit-text-fill-color: transparent;
@@ -147,7 +146,7 @@
 
   &__subtitle {
     display: none;
-    color: white;
+    color: #e8e8e8;
     font-size: 12px;
 
     @include adaptiv-value(margin-top, 5, 25, 1);
@@ -158,7 +157,7 @@
   }
 
   &__product-name {
-    color: white;
+    color: #e8e8e8;
 
     @include adaptiv-value(font-size, 10, 25, 1);
     @include adaptiv-value(margin-top, 0, 55, 1);
@@ -174,9 +173,9 @@
     height: fit-content;
     width: fit-content;
     
-    border: 1px solid #444;
+    border: 1px solid #e8e8e8;
     border-radius: 30px;
-    color: white;
+    color: #e8e8e8;
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -187,8 +186,7 @@
     @include adaptiv-value(font-size, 5, 15, 1);
 
     &:hover {
-      color: #e1e1e1;
-      border: 1px solid #5c5c5c;
+      border: 1px solid var(--color-gray-secondary);
     }
 
     @include on-tablet {
@@ -222,7 +220,7 @@
     border-radius: 50%;
     top: 10px;
     list-style: none;
-    background-color: $gray-secondary;
+    background-color: var(--color-gray-secondary);;
 
     transition: background-color 0.3s ease, 
                 transform 0.3s ease;
@@ -234,9 +232,19 @@
     }
 
     &--active {
-      background-color: black;
-      border: 1px solid black;
+      background-color: var(--color-gray-primary);
+      border: 1px solid var(--color-gray-primary);
       transform: scale(1.25);
     }
+  }
+}
+
+.theme-dark {
+  .pictures-slider__button--left {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
+  }
+
+  .pictures-slider__button--right {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
   }
 }

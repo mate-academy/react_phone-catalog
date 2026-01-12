@@ -6,7 +6,7 @@
   height: 32px;
   width: 32px;
   padding: 0;
-  border: 1px solid $gray-icons-placeholders;
+  border: 1px solid var(--color-gray-icons-placeholders);
   border-radius: 50%;
   background-color: inherit;
   background-repeat: no-repeat;
@@ -15,7 +15,7 @@
 
   &:hover {
     cursor: pointer;
-    border-color: $gray-primary;
+    border-color: var(--color-gray-primary);
   }
 
   &-prev {
@@ -23,15 +23,15 @@
     transform: rotate(180deg);
 
     &:hover {
-      border-color: $gray-primary;
+      border-color: var(--color-gray-primary);
     }
 
     &--disabled {
       background-image: url(../../assets/icons/arrow-right--disabled.svg);
-      border-color: $gray-elements;
+      border-color: var(--color-gray-elements);
       
       &:hover {
-        border-color: $gray-elements;
+        border-color: var(--color-gray-elements);
       }
     }
   }
@@ -40,16 +40,34 @@
     background-image: url(../../assets/icons/arrow-right--default.svg);
     
     &:hover {
-      border-color: $gray-primary;
+      border-color: var(--color-gray-primary);
     }
 
     &--disabled {
       background-image: url(../../assets/icons/arrow-right--disabled.svg);
-      border-color: $gray-elements;
+      border-color: var(--color-gray-elements);
     
       &:hover {
-        border-color: $gray-elements;
+        border-color: var(--color-gray-elements);
       }
     }
+  }
+}
+
+.theme-dark {
+  .button-prev {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
+  }
+
+  .button-prev--disabled {
+    background-image: url(../../assets/icons/arrow-right-dark--disabled.svg);
+  }
+
+  .button-next {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
+  }
+
+  .button-next--disabled {
+    background-image: url(../../assets/icons/arrow-right-dark--disabled.svg);
   }
 }

@@ -97,7 +97,7 @@
     width: $width;
     height: 1px;
 
-    background-color: $gray-primary;
+    background-color: var(--color-gray-primary);
     transform: translateX(-50%);
     transition: all 0.3s ease;
   }

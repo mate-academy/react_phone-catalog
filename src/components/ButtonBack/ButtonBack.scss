@@ -30,13 +30,19 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 1;
-      color: $gray-secondary;
+      color: var(--color-gray-secondary);
       transform: translateY(2px);
       transition: all .3s ease;
       
       &:hover {
-        color: $gray-primary;
+        color: var(--color-gray-primary);
       }
     }
+  }
+}
+
+.theme-dark {
+  .back__arrow {
+    background-image: url(../../assets/icons/arrow-right--disabled.svg);
   }
 }

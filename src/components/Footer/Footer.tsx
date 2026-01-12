@@ -1,21 +1,35 @@
 import './Footer.scss';
 import logo from '../../assets/icons/Logo.svg';
+import logo_dark from '../../assets/icons/Logo--dark.svg';
 import { Button } from '../Button/Button';
 import { Link } from 'react-router-dom';
+import { scrollToTop } from '../../utils/scrollToTop';
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalContext';
 
 export const Footer = () => {
+  const { theme } = useContext(GlobalContext);
+
   return (
     <div className="footer">
       <div className="container">
         <div className="footer__body">
-          <Link to="/#" className="footer__logo">
-            <img src={logo} alt="logo" />
+          <Link 
+            to="/"
+            className="footer__logo"
+            onClick={() => scrollToTop()}
+          >
+            <img 
+              src={theme === 'dark' ? logo_dark : logo} 
+              alt="logo"
+            />
           </Link>
           <ul className="footer__menu">
             <li>
               <Link 
-                to="https://github.com/NikolayDek" 
+                to="https://github.com/NikolayDek"
                 className="footer__link"
+                target="_blank"
               >
                 Github
               </Link>
@@ -24,6 +38,7 @@ export const Footer = () => {
               <Link 
                 to="https://nikolaydek.github.io/react_phone-catalog/" 
                 className="footer__link"
+                target="_blank"
               >
                 Contacts
               </Link>
@@ -32,6 +47,7 @@ export const Footer = () => {
               <Link 
                 to="https://nikolaydek.github.io/react_phone-catalog/" 
                 className="footer__link"
+                target="_blank"
               >
                 Rights
               </Link>
@@ -39,9 +55,7 @@ export const Footer = () => {
           </ul>
           <div
             className="footer__block"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            onClick={() => scrollToTop()}
           >
             <span className="footer__btn-title">Back to top</span>
             

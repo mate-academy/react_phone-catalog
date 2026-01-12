@@ -14,6 +14,7 @@
 
   &__title {
     font-weight: 800;
+    color: var(--color-gray-primary);
 
     @include adaptiv-value(font-size, 32, 48, 2);
     @include adaptiv-value(line-height, 41, 56, 1);
@@ -28,7 +29,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: $gray-secondary;
+    color: var(--color-gray-secondary);
   }
 
   &__message {
@@ -36,7 +37,7 @@
     text-align: center;
     font-weight: 500;
     font-size: 45px;
-    color: $gray-secondary;
+    color: var(--color-gray-secondary);
 
     @include adaptiv-value(font-size, 25, 45, 1);
   }

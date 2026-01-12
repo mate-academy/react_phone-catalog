@@ -9,17 +9,36 @@ import { ProductsList } from '../../components/ProductsList';
 import { ErrorBlock } from '../../components/ErrorBlock';
 import { Pagination } from '../../components/Pagination';
 import './ProductPage.scss';
+import { useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../../utils/getSearchWith';
 
 type Props = {
   type: ProductName;
 };
 
 export const ProductPage: React.FC<Props> = ({ type }) => {
-  const [sortBy, setSortBy] = useState<SortType>(SortType.Alphabetically);
-  const [itemsOnPage, setItemsOnPage] = useState<ItemsOnPage>(ItemsOnPage.all);
-  const [page, setPage] = useState(1);
   const { allProducts, productsError, reloadProducts } =
     useContext(GlobalContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const sortBy = useMemo<SortType>(() => {
+    const value = searchParams.get('sortBy');
+    return Object.values(SortType).includes(value as SortType)
+      ? (value as SortType)
+      : SortType.Alphabetically;
+  }, [searchParams]);
+
+  const itemsOnPage = useMemo<ItemsOnPage>(() => {
+    const value = searchParams.get('onPage');
+    return Object.values(ItemsOnPage).includes(value as ItemsOnPage)
+      ? (value as ItemsOnPage)
+      : ItemsOnPage.all;
+  }, [searchParams]);
+
+  const page = useMemo(() => {
+    const value = Number(searchParams.get('page'));
+    return Number.isFinite(value) && value > 0 ? value : 1;
+  }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => product.category === type);
@@ -38,9 +57,32 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
     }
   }, [filteredProducts, sortBy]);
 
-  useEffect(() => {
-    setPage(1);
-  }, [itemsOnPage, sortBy, type]);
+  const handleSortChange = (value: SortType) => {
+    const newParam =
+      value === SortType.Alphabetically
+        ? { sort: null }
+        : { sort: value.toLowerCase() };
+    
+    setSearchParams(getSearchWith(newParam, searchParams));
+  }
+
+  const handleItemsOnPage = (value: string) => {
+    const newParam =
+      value === ItemsOnPage.all
+        ? { onPage: null, page: null}
+        : { onPage: value, page: '1' };
+    
+    setSearchParams(getSearchWith(newParam, searchParams));
+  }
+
+  const handlePageChange = (page: number) => {
+    const newParam =
+      page === 1
+        ? { page: null}
+        : { page: String(page) };
+    
+    setSearchParams(getSearchWith(newParam, searchParams));
+  }
 
   const itemsPerPage =
     itemsOnPage === ItemsOnPage.all
@@ -78,13 +120,13 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
                   options={Object.values(SortType)}
                   label="Sort by"
                   selected={sortBy}
-                  onSelect={setSortBy}
+                  onSelect={handleSortChange}
                 />
                 <DropDown<ItemsOnPage>
                   options={Object.values(ItemsOnPage)}
                   label="Items on page"
                   selected={itemsOnPage}
-                  onSelect={setItemsOnPage}
+                  onSelect={handleItemsOnPage}
                 />
               </div>
 
@@ -95,7 +137,7 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
                   <Pagination
                     page={page}
                     totalPages={totalPages}
-                    onChange={setPage}
+                    onChange={handlePageChange}
                   />
                 )}
               </div>

@@ -13,20 +13,11 @@
   }
 
   &-slide {
-    // width: auto;
-    // flex-shrink: 0;
-
-    //=================
     width: 272px; 
     height: 506px;
-    
-    // flex-shrink: 0 обязателен, чтобы слайды не сплющивались
     flex-shrink: 0; 
-    
-    // Добавляем это, чтобы карточка внутри точно понимала границы
     display: flex;
     box-sizing: border-box;
-    //================
   }
 
   &__container {
@@ -46,7 +37,7 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 140%;
-    color: $gray-primary;
+    color: var(--color-gray-primary);
     @include adaptiv-value(font-size, 22, 32, 1);
     @include adaptiv-value(width, 136, 800, 1);
   }

@@ -10,6 +10,9 @@ import { ReactNode, useState } from 'react';
 import { Product } from '../types/Product';
 import { getAllProducts } from '../utils/api';
 import { Cart } from '../types/Cart';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { Theme } from '../types/Theme';
+import { useTheme } from '../hooks/useTheme';
 
 type GlobalContextType = {
   allProducts: Product[];
@@ -24,6 +27,8 @@ type GlobalContextType = {
   setFavorites: Dispatch<SetStateAction<string[]>>;
   toggleFavorites: (productId: string) => void;
   productsError: string;
+  theme: Theme;
+  toggleTheme: () => void;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
@@ -39,6 +44,8 @@ export const GlobalContext = createContext<GlobalContextType>({
   setFavorites: () => {},
   toggleFavorites: () => {},
   productsError: '',
+  theme: 'light',
+  toggleTheme: () => {},
 });
 
 type Props = {
@@ -48,8 +55,9 @@ type Props = {
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [productsError, setProductsError] = useState<string>('');
-  const [cart, setCart] = useState<Cart[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [cart, setCart] = useLocalStorage<Cart[]>('cart', []);
+  const [favorites, setFavorites] = useLocalStorage<string[]>('favorites', []);
+  const { theme, toggleTheme } = useTheme();
 
   const loadProducts = useCallback(async () => {
     try {
@@ -120,6 +128,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       setFavorites,
       toggleFavorites,
       productsError,
+      theme,
+      toggleTheme,
     }),
     [
       allProducts,
@@ -131,6 +141,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       favorites,
       toggleFavorites,
       productsError,
+      theme,
     ],
   );
 

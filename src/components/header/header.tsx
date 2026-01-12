@@ -1,7 +1,7 @@
 import './Header.scss';
-
 import logo from '../../assets/icons/Logo.svg';
-import { useContext, useEffect, useState } from 'react';
+import logo_dark from '../../assets/icons/Logo--dark.svg';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { GlobalContext } from '../../context/GlobalContext';
 import { Link, NavLink } from 'react-router-dom';
@@ -40,7 +40,7 @@ const navLinks = [
 ];
 
 export const Header = () => {
-  const { favorites, cart } = useContext(GlobalContext);
+  const { favorites, cart, theme, toggleTheme } = useContext(GlobalContext);
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   useEffect(() => {
@@ -49,13 +49,19 @@ export const Header = () => {
   } else {
     document.body.style.overflow = '';
   }
-}, [isMenuActive]);
+  }, [isMenuActive]);
+  
+  const itemsInCart = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.quantity, 0);;
+  }, [cart]);  
 
   return (
     <div className="header">
       <div className="header__body">
         <Link to="/" className="header__logo">
-          <img src={logo} alt="logo" />
+          <img
+            src={theme === 'dark' ? logo_dark : logo} alt="logo"
+          />
         </Link>
 
         <div
@@ -79,6 +85,7 @@ export const Header = () => {
             </ul>
           </nav>
 
+
           <div className="header__buttons">
             <NavLink 
               to={'/favorites'}
@@ -86,7 +93,7 @@ export const Header = () => {
               onClick={() => setIsMenuActive(false)}
             >
               {!!favorites.length && (
-                <span className="header__value">{favorites.length}</span>
+                <span className="header__quantity">{favorites.length}</span>
               )}
             </NavLink>
             <NavLink 
@@ -95,11 +102,23 @@ export const Header = () => {
               onClick={() => setIsMenuActive(false)}
             >
               {!!cart.length && (
-                <span className="header__value">{cart.length}</span>
+                <span className="header__quantity">{itemsInCart}</span>
               )}
             </NavLink>
           </div>
         </div>
+
+        <div
+          className="header__theme"
+          onClick={toggleTheme}
+        >
+          <div className="header__btn header__btn--theme">
+            <div className="header__theme-space">
+              <div className="header__theme-shuttle"></div>
+            </div>
+          </div>
+        </div>
+
         <div
           className={classNames('header__burger', {
             'is-active': isMenuActive,

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { Button } from '../Button';
 import './Pagination.scss';
+import { scrollToTop } from '../../utils/scrollToTop';
 
 type Props = {
   page: number;
@@ -44,7 +45,10 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onChange }) => {
           'is-active': page !== 1,
         })}
         disabled={page === 1}
-        onClick={() => onChange(page - 1)}
+        onClick={() => {
+          onChange(page - 1);
+          scrollToTop();
+        }}
       />
       {pages.map((p, i) => (
         <Button
@@ -54,7 +58,10 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onChange }) => {
             'pag__btn--dots': p === '...',
           })}
           disabled={p === '...'}
-          onClick={() => typeof p === 'number' && onChange(p)}
+          onClick={() => {
+            typeof p === 'number' && onChange(p);
+            scrollToTop();
+          }}
         >
           {p}
         </Button>
@@ -64,7 +71,10 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onChange }) => {
           'is-active': page !== totalPages,
         })}
         disabled={page === totalPages}
-        onClick={() => onChange(page + 1)}
+        onClick={() => {
+          onChange(page + 1);
+          scrollToTop();
+        }}
       />
     </div>
   );

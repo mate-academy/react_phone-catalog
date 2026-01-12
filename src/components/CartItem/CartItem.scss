@@ -8,8 +8,10 @@
   padding: 16px;
   height: 160px;
   width: 100%;
-  border: 1px solid $gray-elements;
+  background-color: var(--color-gray-white);
+  border: 1px solid var(--color-gray-elements);
   border-radius: 16px;
+  box-shadow: 0px 2px 16px 0px var(--color-gray-elements);
 
   @include on-tablet {
     height: 128px;
@@ -32,7 +34,7 @@
       display: flex;
       gap: 16px;
       align-items: center;
-      color: $gray-primary;
+      color: var(--color-gray-primary);
       text-decoration: none;
 
       @include on-tablet {
@@ -44,6 +46,7 @@
   &__bottom {
     display: flex;
     justify-content: space-between;
+    color: var(--color-gray-primary);
 
     @include on-tablet {
       gap: 24px;
@@ -110,7 +113,7 @@
     justify-content: center;
     height: 32px;
     width: 32px;
-    border: 1px solid $gray-elements;
+    border: 1px solid var(--color-gray-elements);
     border-radius: 50%;
     background-repeat: no-repeat;
     background-position: center;
@@ -122,16 +125,16 @@
 
     &--inc {
       cursor: pointer;
-      border-color: $gray-icons-placeholders;
+      border-color: var(--color-gray-icons-placeholders);
       background-image: url(../../assets/icons/plus--active.svg);
     
       &:hover {
-        border-color: $gray-secondary;
+        border-color: var(--color-gray-secondary);
       }
     }
 
     &--active {
-      border-color: $gray-icons-placeholders;
+      border-color: var(--color-gray-icons-placeholders);
       background-image: url(../../assets/icons/minus--active.svg);
     }
   }
@@ -148,16 +151,30 @@
       font-weight: 800;
       font-size: 25px;
       line-height: 1;
+      color: var(--color-gray-primary);
     }
   }
-
 }
 
 .cart-item__btn--dec.cart-item__btn--active {
-    border-color: $gray-icons-placeholders;
+    border-color: var(--color-gray-icons-placeholders);
     cursor: pointer;
 
     &:hover {
-      border-color: $gray-secondary;
+      border-color: var(--color-gray-secondary);
     }
+}
+
+.theme-dark {
+  .cart-item__btn--dec {
+    background-image: url(../../assets/icons/minus-dark--disabled.svg);
+  }
+
+  .cart-item__btn--inc {
+    background-image: url(../../assets/icons/plus-dark.svg);
+  }
+
+  .cart-item__btn--active {
+    background-image: url(../../assets/icons/minus-dark--default.svg);
+  }
 }

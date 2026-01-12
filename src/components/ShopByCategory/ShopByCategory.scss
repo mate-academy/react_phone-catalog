@@ -15,7 +15,7 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 140%;
-    color: $gray-primary;
+    color: var(--color-gray-primary);
     @include adaptiv-value(font-size, 22, 32, 1);
     @include adaptiv-value(width, 200, 800, 1);
   }
@@ -42,7 +42,7 @@
       font-size: 20px;
       font-weight: 700;
       line-height: 21px;
-      color: $gray-primary;
+      color: var(--color-gray-primary);
     }
 
     &-desc {
@@ -51,7 +51,7 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 140%;
-      color: $gray-secondary;
+      color: var( --color-gray-secondary);
     }
 
     &-pic {

@@ -7,8 +7,8 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: $gray-white;
-    background-color: $accent;
+    color: var(--color-gray-white);
+    background-color: var(--color-accent);
     border-radius: 8px;
     border: none;
     transition: all 0.3s ease;
@@ -19,9 +19,9 @@
     }
 
     &--selected {
-      background-color: $gray-white;
-      border: 1px solid $gray-elements;
-      color: $accent;
+      background-color: var(--color-gray-white);
+      border: 1px solid var(--color-gray-icons-placeholders);
+      color: var(--color-accent);
 
       &:hover {
         box-shadow: none;
@@ -31,4 +31,4 @@
     &--m {
       height: 48px;
     }
-  }
+}

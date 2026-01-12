@@ -8,6 +8,7 @@
     font-weight: 800;
     line-height: 140%;
     margin-bottom: 8px;
+    color: var(--color-gray-primary);
 
     &-block {
       &--s {
@@ -35,7 +36,7 @@
       padding-left: 8px;
       font-weight: 500;
       line-height: 100%;
-      color: $gray-secondary;
+      color: var(--color-gray-secondary);
       text-decoration: line-through;
     }
   }

@@ -28,6 +28,11 @@ export const CartPage = () => {
     () => cartProducts.reduce((sum, product) =>
       sum + product.price* getQuantity(product.itemId), 0),
     [cartProducts]);
+  
+  const totalItems = useMemo(
+    () => cart.reduce((sum, item) =>
+      sum + item.quantity, 0),
+    [cartProducts]);
 
   return (
     <div className="cart__page">
@@ -63,7 +68,7 @@ export const CartPage = () => {
                       {`$ ${totalPrice}`}
                     </span>
                     <span className="cart__check-title">
-                      {`Total for ${cartProducts.length} items`}
+                      {`Total for ${totalItems} items`}
                     </span>
                   </div>
                   <button
@@ -72,7 +77,6 @@ export const CartPage = () => {
                   >
                     Checkout
                   </button>
-
                 </div>
               </div>
             )
