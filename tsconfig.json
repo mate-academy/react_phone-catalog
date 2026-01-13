@@ -6,7 +6,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "allowJs": true,
+    "allowJs": false,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
