@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import { Layout } from './modules/shared/components/Layout';
 import { CategoryPage } from './modules/CategoryPage';
 import { HomePage } from './modules/HomePage';
@@ -11,7 +11,7 @@ import { CartProvider } from './modules/shared/context/CartContext';
 import { FavoritesProvider } from './modules/shared/context/FavoritesContext';
 import { ScrollToTop } from './utils';
 export const App = () => (
-  <BrowserRouter
+  <HashRouter
     future={{
       v7_startTransition: true,
       v7_relativeSplatPath: true,
@@ -35,5 +35,5 @@ export const App = () => (
         </Routes>
       </FavoritesProvider>
     </CartProvider>
-  </BrowserRouter>
+  </HashRouter>
 );

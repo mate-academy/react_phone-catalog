@@ -30,7 +30,9 @@ export const Header: React.FC = () => {
       >
         <img
           className={styles.header__icon}
-          src={isOpenMenu ? '/public/icons/Close.svg' : '/public/icons/Menu.svg'}
+          src={
+            isOpenMenu ? '/public/icons/Close.svg' : '/public/icons/Menu.svg'
+          }
           alt={isOpenMenu ? 'Close menu' : 'Open menu'}
           height={16}
         />
