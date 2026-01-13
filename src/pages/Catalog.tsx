@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useMemo } from 'react';
 import ProductCard from '../components/ProductCard';

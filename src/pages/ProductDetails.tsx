@@ -46,8 +46,8 @@ interface ProductDetailsProps {
 }
 
 interface RouteParams {
-  category?: string;
-  productId?: string;
+  category: string;
+  productId: string;
 }
 
 function ProductDetails({
@@ -56,7 +56,7 @@ function ProductDetails({
   addToCart,
   addToFavorites,
 }: ProductDetailsProps) {
-  const { category, productId } = useParams<RouteParams>();
+  const { category, productId } = useParams() as unknown as RouteParams;
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);

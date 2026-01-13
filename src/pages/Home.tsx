@@ -1,5 +1,4 @@
-
-
+import React from 'react';
 import './HomeBanner.css';
 import headphonesImg from '../assets/visuals/neon-headphones.webp';
 
