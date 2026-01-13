@@ -24,6 +24,7 @@ export const CartItem: FC<Props> = ({ product }) => {
     setQuantity(prev => prev + 1);
     updateCounterCart(String(product.id), quantity + 1);
   };
+
   const handleClickMinus = () => {
     setQuantity(prev => prev - 1);
     updateCounterCart(String(product.id), quantity - 1);

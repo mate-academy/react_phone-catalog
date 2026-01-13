@@ -10,10 +10,10 @@ export const AccessoriesPage = () => {
   const { productsAll, addToDB } = useProducts();
 
   useEffect(() => {
-    getProducts('allProducts').then(productsAll => {
-      addToDB('allProducts', productsAll);
+    getProducts('allProducts').then(products => {
+      addToDB('allProducts', products);
     });
-  }, []);
+  }, [productsAll, addToDB]);
 
   const products: ProductAllType[] = useMemo(() => {
     return productsAll.filter(product => product.category === 'accessories');
