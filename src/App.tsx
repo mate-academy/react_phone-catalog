@@ -27,9 +27,9 @@ export const App = () => {
       <Header />
       <div className="main">
         <Routes>
-          <Route path={`${import.meta.env.BASE_URL}/`} element={<HomePage />} />
+          <Route path={`${import.meta.env.BASE_URL}`} element={<HomePage />} />
           <Route
-            path="/home"
+            path={`${import.meta.env.BASE_URL}home`}
             element={<Navigate to={`${import.meta.env.BASE_URL}/`} replace />}
           />
           <Route
