@@ -42,7 +42,7 @@ function ProductCard({
         <div className="product-image">
           {imageSrc && (
             <img
-              src={`/${imageSrc}`}
+              src={`${process.env.PUBLIC_URL}/${imageSrc}`}
               alt={product.name}
             />
           )}

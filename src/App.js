@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Header from './components/Header';
@@ -86,14 +86,14 @@ return [...prev, product];
 });
 };
 
-const removeFromFavorites = (configId) => {
+const removeFromFavorites = (identifier) => {
 setFavorites(prev =>
-prev.filter(item => item.configId !== configId)
+prev.filter(item => (item.configId || item.id) !== identifier)
 );
 };
 
 return (
-<BrowserRouter>
+<>
 <Header />
 
 <Routes>
@@ -172,7 +172,7 @@ removeFromFavorites={removeFromFavorites}
 
 <Route path="*" element={<NotFoundPage />} />
 </Routes>
-</BrowserRouter>
+</>
 );
 }
 

@@ -58,7 +58,7 @@ if (!product || !selectedColor || !product.images?.length) return null;
 const baseImage = product.images[0];
 const basePath = baseImage.split(`/${product.color}/`)[0];
 
-return `/${basePath}/${selectedColor}/00.webp`;
+return `${process.env.PUBLIC_URL}/${basePath}/${selectedColor}/00.webp`;
 }, [product, selectedColor]);
 
 if (loading) return <div className="page">Loading...</div>;
