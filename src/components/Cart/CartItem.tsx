@@ -31,38 +31,42 @@ export const CartItem: FC<Props> = ({ product }) => {
 
   return (
     <div className="cart-item item-cart">
-      <button
-        className="item-cart__remove"
-        type="button"
-        onClick={() => removeFromCart(String(product.id))}
-      >
-        <img
-          className="item-cart__remove-image"
-          src={close}
-          alt="button-close"
-        />
-      </button>
-      <img src={image} alt="" className="item-cart__image" />
-      <div className="item-cart__name">{name}</div>
-      <div className="item-cart__counter">
+      <div className="item-cart__left-block">
         <button
-          className="item-cart__counter-btn"
+          className="item-cart__remove"
           type="button"
-          disabled={isDisabledMinus}
-          onClick={handleClickMinus}
+          onClick={() => removeFromCart(String(product.id))}
         >
-          <img src={minus} alt="minus" />
+          <img
+            className="item-cart__remove-image"
+            src={close}
+            alt="button-close"
+          />
         </button>
-        <span className="item-cart__counter-number">{quantity}</span>
-        <button
-          className="item-cart__counter-btn"
-          type="button"
-          onClick={handleClickPlus}
-        >
-          <img src={plus} alt="plus" />
-        </button>
+        <img src={image} alt="" className="item-cart__image" />
+        <div className="item-cart__name">{name}</div>
       </div>
-      <div className="item-cart__price">${price}</div>
+      <div className="item-cart__right-block">
+        <div className="item-cart__counter">
+          <button
+            className="item-cart__counter-btn"
+            type="button"
+            disabled={isDisabledMinus}
+            onClick={handleClickMinus}
+          >
+            <img src={minus} alt="minus" />
+          </button>
+          <span className="item-cart__counter-number">{quantity}</span>
+          <button
+            className="item-cart__counter-btn"
+            type="button"
+            onClick={handleClickPlus}
+          >
+            <img src={plus} alt="plus" />
+          </button>
+        </div>
+        <div className="item-cart__price">${price}</div>
+      </div>
     </div>
   );
 };

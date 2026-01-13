@@ -1,22 +1,11 @@
-import { useMemo } from 'react';
-import accessoriesFromServer from '../../public/api/products.json';
-
 import '../components/Catalog/Catalog.scss';
-import { ProductAllType, ProductType } from '../types/Product';
+
 import { Breadcrumbs } from '../components/Catalog/Breadcrumbs';
 import { ProductCard } from '../components/ProductCard';
-import { useProducts } from '../context/ProductsContext';
 import { useCartFavorite } from '../context/CartFavoriteContext';
 
 export const FavoritesPage = () => {
-  const { productsAll } = useProducts();
   const { favoriteItems } = useCartFavorite();
-
-  // const products: ProductAllType[] = useMemo(() => {
-  //   return productsAll
-  //     .filter(product => product.category === 'accessories')
-  //     .splice(0, 8);
-  // }, []);
 
   return (
     <section className="catalog">
@@ -24,7 +13,9 @@ export const FavoritesPage = () => {
         <Breadcrumbs />
 
         <h1 className="catalog__title">Favorite</h1>
-        <div className="catalog__counter">95 models</div>
+        <div className="catalog__counter">
+          {favoriteItems.length} model{favoriteItems.length === 1 ? '' : 's'}
+        </div>
 
         <div className="catalog__wrapper">
           {favoriteItems.map(item => (
