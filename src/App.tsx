@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Header from './components/Header';
@@ -53,7 +53,7 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  /* ================= LOAD PRODUCTS ================= */
+
   useEffect(() => {
     Promise.all([
       getPhones(),
@@ -68,7 +68,7 @@ function App() {
     });
   }, []);
 
-  /* ================= PERSIST CART & FAVORITES ================= */
+  
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
@@ -119,7 +119,7 @@ function App() {
   };
 
   return (
-    <>
+    <HashRouter>
       <Header />
 
       <Routes>
@@ -198,7 +198,7 @@ function App() {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </>
+    </HashRouter>
   );
 }
 
