@@ -36,10 +36,13 @@ export const ProductsList: FC<Props> = ({
     );
   }
 
-  if (error) return <ErrorMessage message={error} onRetry={onRefetch} />;
+  if (error) {
+    return <ErrorMessage message={error} onRetry={onRefetch} />;
+  }
 
-  if (!isLoading && products.length === 0)
+  if (!isLoading && products.length === 0) {
     return <EmptyMessage message={emptyMessage} />;
+  }
 
   return (
     <ul className={styles.products}>
