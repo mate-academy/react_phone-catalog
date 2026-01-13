@@ -8,12 +8,13 @@ import styles from './ErrorMessage.module.scss';
 
 interface Props {
   message: string;
+  className?: string;
   onRetry: () => void;
 }
 
-export const ErrorMessage: FC<Props> = ({ message, onRetry }) => {
+export const ErrorMessage: FC<Props> = ({ message, onRetry, className }) => {
   return (
-    <Message>
+    <Message className={className}>
       <Message.Icon>
         <MdOutlineErrorOutline size={80} />
       </Message.Icon>

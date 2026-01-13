@@ -4,13 +4,16 @@ import { FC } from 'react';
 import styles from './ProductsList.module.scss';
 import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { ProductCardSkeleton } from '@/modules/shared/components/ProductCardSkeleton';
-import { Message } from '@/modules/shared/components/Message';
+import { ErrorMessage } from '../ErrorMessage';
+import { EmptyMessage } from '../EmptyMessage';
 
 interface Props {
   products: Product[];
   itemsPerPage: number;
   isLoading?: boolean;
   emptyMessage?: string;
+  error?: string;
+  onRefetch?: () => void;
 }
 
 export const ProductsList: FC<Props> = ({
@@ -18,6 +21,8 @@ export const ProductsList: FC<Props> = ({
   itemsPerPage,
   isLoading = false,
   emptyMessage = 'No available products',
+  error,
+  onRefetch = () => {},
 }) => {
   if (isLoading) {
     return (
@@ -31,21 +36,10 @@ export const ProductsList: FC<Props> = ({
     );
   }
 
-  if (!isLoading && products.length === 0) {
-    return (
-      <Message>
-        <Message.Icon>
-          <img
-            src="img/product-not-found.png"
-            alt="No products"
-            className={styles.emptyMessageIcon}
-          />
-        </Message.Icon>
-        <Message.Title>{emptyMessage}</Message.Title>
-      </Message>
-      // <Message message={emptyMessage} imgPath="img/product-not-found.png" />
-    );
-  }
+  if (error) return <ErrorMessage message={error} onRetry={onRefetch} />;
+
+  if (!isLoading && products.length === 0)
+    return <EmptyMessage message={emptyMessage} />;
 
   return (
     <ul className={styles.products}>

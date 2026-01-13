@@ -17,8 +17,7 @@ import { Category } from '@/types/Category';
 import { FC, useMemo } from 'react';
 import { CategoryUI } from '../shared/types/CategoryUI';
 import { PerPageOption } from '../shared/types/PerPageOption';
-import { Options } from '@/types/FetchOptions';
-import { ErrorMessage } from './components/ErrorMessage';
+import { FetchOptions } from '@/types/FetchOptions';
 
 interface Props {
   category: Category;
@@ -39,7 +38,8 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     error,
     handleFetch,
   } = useFetch<Product[]>(
-    (options: Options) => getProductsByCategory(productCategory.type, options),
+    (options: FetchOptions) =>
+      getProductsByCategory(productCategory.type, options),
     {
       initialValue: [],
       dependency: [category],
@@ -97,15 +97,13 @@ export const CatalogPage: FC<Props> = ({ category }) => {
       </section>
 
       <section>
-        {!error ? (
-          <ProductsList
-            products={preparedProducts}
-            isLoading={loading}
-            itemsPerPage={PRODUCT_SKELETONS_COUNT}
-          />
-        ) : (
-          <ErrorMessage message={error} onRetry={handleFetch} />
-        )}
+        <ProductsList
+          products={preparedProducts}
+          isLoading={loading}
+          itemsPerPage={PRODUCT_SKELETONS_COUNT}
+          error={error}
+          onRefetch={handleFetch}
+        />
       </section>
 
       <Pagination {...pagination} />

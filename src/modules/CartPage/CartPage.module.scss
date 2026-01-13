@@ -14,7 +14,7 @@
   @include transition(color, $color-transition);
 }
 
-.emptyMessage {
+.message {
   grid-column: 1 / -1;
 }
 

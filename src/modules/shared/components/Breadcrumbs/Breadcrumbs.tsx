@@ -28,7 +28,7 @@ export const Breadcrumbs: FC<Props> = ({ paths }) => {
                   {item.label}
                 </Link>
               ) : (
-                <span>{item.label}</span>
+                <span className={styles.breadcrumbsText}>{item.label}</span>
               )}
 
               {!isLastItem ? (

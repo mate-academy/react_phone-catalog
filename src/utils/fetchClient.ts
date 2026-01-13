@@ -1,6 +1,6 @@
-import { Options } from '@/types/FetchOptions';
+import { FetchOptions } from '@/types/FetchOptions';
 
-function wait(delay: number = 5000, options: Options = {}) {
+function wait(delay: number = 200, options: FetchOptions = {}) {
   return new Promise((resolve, reject) => {
     const timerId = window.setTimeout(resolve, delay);
 
@@ -21,8 +21,8 @@ function wait(delay: number = 5000, options: Options = {}) {
 
 const BASE_URL = '/api';
 
-function request<T>(url: string, options: Options = {}): Promise<T> {
-  return wait(5000, options)
+function request<T>(url: string, options: FetchOptions = {}): Promise<T> {
+  return wait(200, options)
     .then(() =>
       fetch(`${BASE_URL}/${url}`, {
         signal: options.signal,
@@ -38,5 +38,5 @@ function request<T>(url: string, options: Options = {}): Promise<T> {
 }
 
 export const client = {
-  get: <T>(url: string, options: Options = {}) => request<T>(url, options),
+  get: <T>(url: string, options: FetchOptions = {}) => request<T>(url, options),
 };

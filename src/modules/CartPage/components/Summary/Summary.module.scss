@@ -10,7 +10,18 @@
 }
 
 .topBar {
-  text-align: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elements-color;
+  align-items: center;
+
+  @include transition(border-bottom-color, $color-transition);
+  @include flex-column;
+
+  @include on-desktop {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
 }
 
 .price {
@@ -21,20 +32,23 @@
 
 .items {
   color: $secondary-color;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-
-  border-bottom: 1px solid $elements-color;
-
-  @include transition(border-bottom-color, $color-transition);
-
-  @include on-desktop {
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-  }
 }
 
 .checkoutBtn {
   width: 100%;
   border-radius: $radius;
+}
+
+.priceSkeleton {
+  width: 100px;
+  height: 41px;
+}
+
+.totalItemsSkeleton {
+  width: 150px;
+  height: 21px;
+}
+
+.loaders {
+  gap: 8px;
 }

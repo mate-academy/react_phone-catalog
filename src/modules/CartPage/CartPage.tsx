@@ -9,6 +9,11 @@ import { CartModal } from './components/CartModal';
 import { useDisclosure } from '@/hooks/useDisclosure';
 import { Button } from '../shared/components/Button';
 import { ROUTES } from '@/constants/routes';
+import { useFetch } from '../shared/hooks/useFetch';
+import { Product } from '@/types/Product';
+import { FetchOptions } from '@/types/FetchOptions';
+import { getProductsByIds } from '@/api/product.service';
+import { ErrorMessage } from '../shared/components/ErrorMessage';
 
 export const CartPage = () => {
   const { isOpen, close, toggle } = useDisclosure(false, {
@@ -21,14 +26,48 @@ export const CartPage = () => {
     totalItems,
   } = useCart();
 
+  const productsIdsInCart = items.map(item => item.product.id);
+
+  const { data, loading, error, handleFetch } = useFetch<Product[]>(
+    (options: FetchOptions) => getProductsByIds(productsIdsInCart, options),
+    {
+      initialValue: [],
+      dependency: productsIdsInCart,
+    },
+  );
+
+  const productsCount = items.reduce(
+    (acc, curItem) => {
+      acc[curItem.product.id] = curItem.count;
+
+      return acc;
+    },
+    {} as Record<Product['id'], number>,
+  );
+
+  const preparedData = data.map(pr => ({
+    product: pr,
+    count: productsCount[pr.id],
+  }));
+
   return (
     <div className={classNames(styles.wrapper, 'container')}>
-      <BackLink />
+      <div>
+        <BackLink />
+      </div>
 
       <h1 className={styles.title}>Cart</h1>
 
+      {error && (
+        <ErrorMessage
+          message={error}
+          onRetry={handleFetch}
+          className={styles.message}
+        />
+      )}
+
       {items.length === 0 && (
-        <Message className={styles.emptyMessage}>
+        <Message className={styles.message}>
           <Message.Icon>
             <img
               src="img/cart-is-empty.png"
@@ -53,13 +92,18 @@ export const CartPage = () => {
       {items.length !== 0 && (
         <>
           <section className={styles.cartList}>
-            <CartList items={items} />
+            <CartList
+              items={preparedData}
+              isLoading={loading}
+              itemsPerLoading={items.length}
+            />
           </section>
           <Summary
             totalItems={totalItems}
             totalPrice={total}
             className={styles.summary}
             onCheckout={toggle}
+            isLoading={loading}
           />
         </>
       )}

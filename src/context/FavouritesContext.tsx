@@ -4,8 +4,8 @@ import { createContext, FC, ReactNode } from 'react';
 
 export interface FavouritesContextType {
   isFavourite: (productId: Product['id']) => boolean;
-  toggleFavourite: (product: Product) => void;
-  favourites: Product[];
+  toggleFavourite: (productId: Product['id']) => void;
+  favourites: Product['id'][];
 }
 
 export const FavouritesContext = createContext<FavouritesContextType | null>(
@@ -17,26 +17,24 @@ interface Props {
 }
 
 export const FavouriteProvider: FC<Props> = ({ children }) => {
-  const [favourites, setFavourites] = useLocalStorage<Product[]>(
+  const [favourites, setFavourites] = useLocalStorage<Product['id'][]>(
     'favourites',
     [],
   );
 
   const isFavourite = (productId: Product['id']) => {
-    return favourites.some(item => item.id === productId);
+    return favourites.some(id => id === productId);
   };
 
-  const toggleFavourite = (product: Product) => {
+  const toggleFavourite = (productId: Product['id']) => {
     setFavourites(curFavourites => {
-      const existProduct = curFavourites.findIndex(
-        prd => prd.id === product.id,
-      );
+      const existProduct = curFavourites.findIndex(id => id === productId);
 
       if (existProduct !== -1) {
-        return curFavourites.filter(item => item.id !== product.id);
+        return curFavourites.filter(id => id !== productId);
       }
 
-      return [...curFavourites, product];
+      return [...curFavourites, productId];
     });
   };
 

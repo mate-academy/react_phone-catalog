@@ -93,7 +93,7 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
           variant="outline"
           size="medium"
           isSelected={isInFavourite}
-          onClick={() => toggleFavourite(product)}
+          onClick={() => toggleFavourite(id)}
           className={styles.likeBtn}
           squareBtn
           startIcon={

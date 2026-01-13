@@ -58,7 +58,7 @@ export const Button: FC<Props> = ({
 
   const content = (
     <>
-      {startIcon && <span className={styles.icon}>{startIcon}</span>}
+      {startIcon}
       {children}
     </>
   );

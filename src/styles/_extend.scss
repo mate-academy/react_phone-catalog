@@ -15,3 +15,7 @@
 %button {
   @include button-text;
 }
+
+%heading-h2 {
+  @include heading-h2;
+}

@@ -49,6 +49,11 @@
     outline: 1px solid var(--primary-selected-border);
     color: var(--primary-selected-color);
   }
+
+  &:disabled {
+    background-color: $elements-color;
+    box-shadow: none;
+  }
 }
 
 .outline {
@@ -127,10 +132,6 @@
   @include hover {
     color: $primary-color;
   }
-}
-
-.icon {
-  display: flex;
 }
 
 .squareBtn {

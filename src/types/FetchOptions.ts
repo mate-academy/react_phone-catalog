@@ -1,3 +1,3 @@
-export interface Options {
+export interface FetchOptions {
   signal?: AbortSignal;
 }

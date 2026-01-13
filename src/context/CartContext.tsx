@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { CartItem } from '@/types/CartItem';
+import { CartItem, CartProduct } from '@/types/CartItem';
 import { Product } from '@/types/Product';
 import { createContext, FC, ReactNode } from 'react';
 
@@ -9,11 +9,11 @@ interface Cart {
 }
 
 export interface CartContextType {
-  toggleToCart: (product: Product) => void;
-  inCart: (productId: Product['id']) => boolean;
+  toggleToCart: (product: CartProduct) => void;
+  inCart: (productId: CartProduct['id']) => boolean;
   cart: Cart;
-  changeProductCount: (product: Product, newCount: number) => void;
-  removeFromCart: (productId: Product['id']) => void;
+  changeProductCount: (product: CartProduct, newCount: number) => void;
+  removeFromCart: (productId: CartProduct['id']) => void;
   clearCart: () => void;
   totalItems: number;
 }
@@ -38,7 +38,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
     }, 0);
   };
 
-  const toggleToCart = (product: Product) => {
+  const toggleToCart = (product: CartProduct) => {
     setCart(curCart => {
       const isInCart = curCart.items.some(
         item => item.product.id === product.id,
@@ -71,7 +71,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
     });
   };
 
-  const changeProductCount = (product: Product, newCount: number) => {
+  const changeProductCount = (product: CartProduct, newCount: number) => {
     if (newCount < 1) {
       return;
     }
