@@ -43,7 +43,7 @@ export const SortAndPerPage: React.FC<Props> = ({
           ))}
         </select>
         <div className={styles.sortControls__selectArrow}>
-          <img src="/icons/Chevron (Arrow Down).svg" alt="down" />
+          <img src="/public/icons/Chevron (Arrow Down).svg" alt="down" />
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@ export const SortAndPerPage: React.FC<Props> = ({
           ))}
         </select>
         <div className={styles.sortControls__selectArrow}>
-          <img src="/icons/Chevron (Arrow Down).svg" alt="down" />
+          <img src="/public/icons/Chevron (Arrow Down).svg" alt="down" />
         </div>
       </div>
     </div>

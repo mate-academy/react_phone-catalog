@@ -6,17 +6,17 @@ import classNames from 'classnames';
 const banners = [
   {
     title: 'iPhone 17 Series',
-    src: '/img/iPhone_17.png',
+    src: '/public/img/iPhone_17.png',
     alt: 'Banner phones',
   },
   {
     title: 'iPad Pro 2025',
-    src: '/img/banner-tablets.png',
+    src: '/public/img/banner-tablets.png',
     alt: 'Banner tablets',
   },
   {
     title: 'Accessories for your gadgets',
-    src: '/img/banner-accessories.png',
+    src: '/public/img/banner-accessories.png',
     alt: 'Banner accessories',
   },
 ];
@@ -50,14 +50,14 @@ export const PicturesSlider: React.FC = () => {
           onClick={prev}
           aria-label="Previous banner"
         >
-          <img src="/icons/Chevron (Arrow Left).svg" alt="left" />
+          <img src="public/icons/Chevron (Arrow Left).svg" alt="left" />
         </button>
         <div className={styles.picturesSlider__content}>
           <div className={styles.picturesSlider__left}>
             <h2 className={styles.picturesSlider__leftTitle}>
               Now available <br /> in our store!
               <img
-                src="/icons/hand-ok.svg"
+                src="public/icons/hand-ok.svg"
                 alt="left"
                 className={styles.picturesSlider__leftTitleIconOk}
               />
@@ -84,7 +84,7 @@ export const PicturesSlider: React.FC = () => {
           onClick={next}
           aria-label="Next banner"
         >
-          <img src="/icons/Chevron (Arrow Right).svg" alt="right" />
+          <img src="public/icons/Chevron (Arrow Right).svg" alt="right" />
         </button>
       </div>
       <div className={styles.picturesSlider__dots}>

@@ -22,7 +22,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         onClick={() => remove(id)}
         title="Remove"
       >
-        <img src="/icons/Close light.svg" alt="delete" />
+        <img src="/public/icons/Close light.svg" alt="delete" />
       </button>
       <img src={img} alt={product.name} className={styles.cartItem__image} />
       <h4 className={styles.cartItem__name}>{product.name}</h4>

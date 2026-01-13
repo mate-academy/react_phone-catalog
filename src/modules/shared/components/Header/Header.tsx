@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <Link to="/" className={styles.header__logo} onClick={handleMenuClose}>
         <img
-          src="/img/Logo.png"
+          src="/public/img/Logo.png"
           alt="Nice Gadgets"
           className={styles.header__logoImg}
         />
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
       >
         <img
           className={styles.header__icon}
-          src={isOpenMenu ? '/icons/Close.svg' : '/icons/Menu.svg'}
+          src={isOpenMenu ? '/public/icons/Close.svg' : '/public/icons/Menu.svg'}
           alt={isOpenMenu ? 'Close menu' : 'Open menu'}
           height={16}
         />

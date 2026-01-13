@@ -65,7 +65,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             onClick={handlePrev}
             disabled={isPrevDisabled}
           >
-            <img src="/icons/Chevron (Arrow Left).svg" alt="left" />
+            <img src="/public/icons/Chevron (Arrow Left).svg" alt="left" />
           </button>
 
           <button
@@ -74,7 +74,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             onClick={handleNext}
             disabled={isNextDisabled}
           >
-            <img src="/icons/Chevron (Arrow Right).svg" alt="right" />
+            <img src="/public/icons/Chevron (Arrow Right).svg" alt="right" />
           </button>
         </div>
       </div>

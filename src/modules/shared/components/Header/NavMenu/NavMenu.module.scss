@@ -94,7 +94,11 @@ $desktop-header-height: 64px;
 
     @include hover-text;
 
-    &_active {
+    &:hover {
+      box-shadow: inset 0 -2px 0 0 $secondary;
+    }
+
+    &--active {
       color: $primary;
       text-shadow: $black-text-shadow-small;
       box-shadow: inset 0 -2px 0 0 $primary;
@@ -149,19 +153,11 @@ $desktop-header-height: 64px;
       width: $desktop-header-height;
     }
 
-    &_img {
-      @include hover(transform, scale(1.3));
-    }
-
     &:hover {
-      box-shadow: inset 0 -2px 0 0 $primary;
-
-      @include on-tablet {
-        box-shadow: inset 0 -3px 0 0 $primary;
-      }
+      box-shadow: inset 0 -2px 0 0 $secondary;
     }
 
-    &_active {
+    &--active {
       box-shadow: inset 0 -2px 0 0 $primary;
 
       &:hover {
@@ -174,6 +170,10 @@ $desktop-header-height: 64px;
         box-shadow: inset 0 -3px 0 0 $primary;
       }
     }
+  }
+
+  &__iconImg {
+    @include hover(transform, scale(1.3));
   }
 
   &__count {

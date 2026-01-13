@@ -44,7 +44,7 @@ export const NavMenu: React.FC<Props> = ({
               onClick={handleMenuClose}
               className={({ isActive }) =>
                 classNames(styles.menu__link, {
-                  [styles.menu__link_active]: isActive,
+                  [styles['menu__link--active']]: isActive,
                 })
               }
               end={link.to === '/'}
@@ -60,16 +60,16 @@ export const NavMenu: React.FC<Props> = ({
           state={{ prevLocation: pathname, search: searchParam.toString() }}
           className={({ isActive }) =>
             classNames(styles.menu__icon, {
-              [styles.menu__icon_active]: isActive,
+              [styles['menu__icon--active']]: isActive,
             })
           }
           onClick={handleMenuClose}
         >
           <img
-            className={styles.menu__icon_img}
-            src="/icons/favourites-heart-like.svg"
+            className={styles.menu__iconImg}
+            src="/public/icons/favourites-heart-like.svg"
             alt="Favorites"
-            height={16}
+            // height={16}
           />
           {totalFavoriteItems > 0 && (
             <span className={styles.menu__count}>{totalFavoriteItems}</span>
@@ -81,16 +81,16 @@ export const NavMenu: React.FC<Props> = ({
           state={{ prevLocation: pathname, search: searchParam.toString() }}
           className={({ isActive }) =>
             classNames(styles.menu__icon, {
-              [styles.menu__icon_active]: isActive,
+              [styles['menu__icon--active']]: isActive,
             })
           }
           onClick={handleMenuClose}
         >
           <img
-            className={styles.menu__icon_img}
-            src="/icons/shopping-bag-cart.svg"
+            className={styles.menu__iconImg}
+            src="/public/icons/shopping-bag-cart.svg"
             alt="Cart"
-            height={16}
+            // height={16}
           />
           {totalCartItems > 0 && (
             <span className={styles.menu__count}>{totalCartItems}</span>

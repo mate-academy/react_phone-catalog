@@ -74,14 +74,14 @@
     @include hover-text;
   }
 
-  &__to-top-wrap {
+  &__toTopWrap {
     @include center;
 
     gap: 16px;
     grid-column: 2 / 4;
   }
 
-  &__to-top-text {
+  &__toTopText {
     @include small-text-style;
 
     letter-spacing: 0;
