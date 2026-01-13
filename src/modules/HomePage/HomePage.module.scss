@@ -1,0 +1,10 @@
+@use '../../styles/utils/variables' as vars;
+
+.homepage_title {
+  color: vars.$primary-text-color;
+  margin-bottom: 56px;
+
+  font-size: 48px;
+  line-height: 1.17;
+  letter-spacing: -0.5px;
+}
