@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  CI: true
+
 jobs:
   run_tests:
 
@@ -20,5 +23,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - run: npm test
