@@ -15,7 +15,9 @@ export const BackToTheTop = () => {
             focusable="false"
             className={scss.backToTheTop__icon}
           >
-            <use href="/icons/icons.svg#arrow"></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#arrow`}
+            ></use>
           </svg>
         </div>
       </a>

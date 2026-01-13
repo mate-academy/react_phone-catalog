@@ -27,7 +27,7 @@ export const ButtonArrow: React.FC<Props> = ({
         className={scss.button__icon}
         style={{ transform: direction === 'left' ? 'rotate(180deg)' : 'none' }}
       >
-        <use href="/icons/icons.svg#arrow"></use>
+        <use href={`${import.meta.env.BASE_URL}icons/icons.svg#arrow`}></use>
       </svg>
     </button>
   );

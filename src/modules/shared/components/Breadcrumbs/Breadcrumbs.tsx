@@ -15,13 +15,18 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
     <nav className={scss.breadcrumbs} aria-label="Navigation path">
       <ol className={scss.breadcrumbs__path}>
         <li>
-          <Link to="/" className={scss.breadcrumbs__link}>
+          <Link
+            to={`${import.meta.env.BASE_URL}`}
+            className={scss.breadcrumbs__link}
+          >
             <svg
               className={scss.breadcrumbs__icon}
               aria-hidden="true"
               focusable="false"
             >
-              <use href="/icons/icons.svg#home-icon"></use>
+              <use
+                href={`${import.meta.env.BASE_URL}icons/icons.svg#home-icon`}
+              ></use>
             </svg>
           </Link>
         </li>
@@ -31,7 +36,9 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
             aria-hidden="true"
             focusable="false"
           >
-            <use href="/icons/icons.svg#arrow"></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#arrow`}
+            ></use>
           </svg>
         </li>
         <li aria-current={productName ? false : 'page'}>
@@ -55,7 +62,9 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
                 aria-hidden="true"
                 focusable="false"
               >
-                <use href="/icons/icons.svg#arrow"></use>
+                <use
+                  href={`${import.meta.env.BASE_URL}icons/icons.svg#arrow`}
+                ></use>
               </svg>
             </li>
             <li aria-current="page">

@@ -23,7 +23,12 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, onClose }) => {
     >
       <ul className={scss.menu__list}>
         <li className={scss.menu__item}>
-          <NavLinkMenu to="/" type="text" label="Home" end={true} />
+          <NavLinkMenu
+            to={`${import.meta.env.BASE_URL}`}
+            type="text"
+            label="Home"
+            end={true}
+          />
         </li>
         <li className={scss.menu__item}>
           <NavLinkMenu to="/phones" type="text" label="Phones" />

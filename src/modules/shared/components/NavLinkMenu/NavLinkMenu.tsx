@@ -44,7 +44,9 @@ export const NavLinkMenu: React.FC<Props> = ({
       ) : (
         <>
           <svg className={scss.iconLink__icon}>
-            <use href={`/icons/icons.svg#${icon}`}></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#${icon}`}
+            ></use>
           </svg>
           {showFavBadge && (
             <span className={scss.iconLink__counter} aria-hidden="true">

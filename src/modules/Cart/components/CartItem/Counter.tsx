@@ -25,7 +25,7 @@ export const Counter: React.FC<Props> = ({ quantity, onQuantityChange }) => {
         disabled={quantity === 1}
       >
         <svg>
-          <use href="/icons/icons.svg#minus"></use>
+          <use href={`${import.meta.env.BASE_URL}icons/icons.svg#minus`}></use>
         </svg>
       </button>
       <span className={scss.counter__display}>{quantity}</span>
@@ -35,7 +35,7 @@ export const Counter: React.FC<Props> = ({ quantity, onQuantityChange }) => {
         onClick={handleIncrement}
       >
         <svg>
-          <use href="/icons/icons.svg#plus"></use>
+          <use href={`${import.meta.env.BASE_URL}icons/icons.svg#plus`}></use>
         </svg>
       </button>
     </article>

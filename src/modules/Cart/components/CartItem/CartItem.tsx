@@ -32,11 +32,13 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       <div className={scss.cartItem__firstRow}>
         <button type="button" onClick={handleRemoveItem}>
           <svg className={scss.cartItem__cross}>
-            <use href="/icons/icons.svg#close-icon"></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#close-icon`}
+            ></use>
           </svg>
         </button>
         <img
-          src={`/${item.image}`}
+          src={`${import.meta.env.BASE_URL}${item.image}`}
           className={scss.cartItem__image}
           alt={item.name}
         ></img>

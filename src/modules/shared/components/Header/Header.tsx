@@ -24,9 +24,11 @@ export const Header = () => {
   return (
     <header className={scss.header}>
       <div className={scss.header__container}>
-        <a href="/" aria-label="Link to main page">
+        <a href={`${import.meta.env.BASE_URL}`} aria-label="Link to main page">
           <svg className={scss.logoIcon}>
-            <use href="/icons/icons.svg#logo-icon"></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#logo-icon`}
+            ></use>
           </svg>
         </a>
         <button
@@ -37,7 +39,7 @@ export const Header = () => {
         >
           <svg className={scss.icon} aria-hidden={true} focusable={false}>
             <use
-              href={`/icons/icons.svg#${isMenuOpen ? 'close-icon' : 'burger-icon'}`}
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#${isMenuOpen ? 'close-icon' : 'burger-icon'}`}
             />
           </svg>
         </button>

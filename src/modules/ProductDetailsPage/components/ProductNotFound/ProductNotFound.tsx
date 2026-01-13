@@ -8,7 +8,7 @@ export const ProductNotFound = () => {
     <section className={scss.productNotFound}>
       <h2>Product was not found</h2>
       <img
-        src="/img/product-not-found.png"
+        src={`${import.meta.env.BASE_URL}img/product-not-found.png`}
         className={scss.productNotFound__image}
         alt="Product not found"
       ></img>

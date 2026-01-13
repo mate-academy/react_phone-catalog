@@ -24,7 +24,7 @@ export const Dashes: React.FC<Props> = ({
           >
             <svg aria-hidden focusable="false" className={scss.dashes__icon}>
               <use
-                href={`/icons/icons.svg#${activeSlide === i ? 'black-dash-icon' : 'gray-dash-icon'}`}
+                href={`${import.meta.env.BASE_URL}icons/icons.svg#${activeSlide === i ? 'black-dash-icon' : 'gray-dash-icon'}`}
               ></use>
             </svg>
           </button>

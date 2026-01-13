@@ -57,7 +57,9 @@ export const Modal: React.FC<Props> = ({ isOpen, onClose, children }) => {
       <div className={scss.modal__content} onClick={e => e.stopPropagation()}>
         <button className={scss.modal__close} onClick={onClose}>
           <svg className={scss.modal__closeIcon}>
-            <use href="/icons/icons.svg#close-icon"></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#close-icon`}
+            ></use>
           </svg>
         </button>
 

@@ -42,7 +42,7 @@ export const ProductGallery: React.FC<Props> = ({ item }) => {
   return (
     <section className={scss.productGallery} aria-label="Product gallery">
       <img
-        src={`/${images[currentImage]}`}
+        src={`${import.meta.env.BASE_URL}${images[currentImage]}`}
         className={scss.productGallery__image}
         alt={item.name}
         onTouchStart={handleTouchStart}
@@ -58,7 +58,7 @@ export const ProductGallery: React.FC<Props> = ({ item }) => {
                 onClick={() => handleImageChange(index)}
               >
                 <img
-                  src={`/${imageUrl}`}
+                  src={`${import.meta.env.BASE_URL}${imageUrl}`}
                   className={classNames(scss.productGallery__thumbnail, {
                     [scss.productGallery__thumbnail_active]:
                       index === currentImage,

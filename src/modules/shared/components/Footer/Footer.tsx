@@ -5,13 +5,15 @@ export const Footer = () => {
   return (
     <footer className={scss.footer}>
       <div className={scss.footer__container}>
-        <a href="/" aria-label="Go to home">
+        <a href={`${import.meta.env.BASE_URL}`} aria-label="Go to home">
           <svg
             className={scss.footer__logo}
             aria-hidden="true"
             focusable="false"
           >
-            <use href="/icons/icons.svg#logo-icon"></use>
+            <use
+              href={`${import.meta.env.BASE_URL}icons/icons.svg#logo-icon`}
+            ></use>
           </svg>
         </a>
         <nav aria-label="Footer">

@@ -156,7 +156,7 @@ export const Dropdowns: React.FC<Props> = ({
       >
         {currentSelectedOption?.label || 'Choose..'}
         <svg className={scss.dropdown__arrow}>
-          <use href={`/icons/icons.svg#arrow`}></use>
+          <use href={`${import.meta.env.BASE_URL}icons/icons.svg#arrow`}></use>
         </svg>
       </button>
 

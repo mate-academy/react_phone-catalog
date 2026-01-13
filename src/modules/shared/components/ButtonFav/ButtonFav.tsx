@@ -44,7 +44,7 @@ export const ButtonFav: React.FC<Props> = ({
         focusable="false"
       >
         <use
-          href={`/icons/icons.svg#${isFav ? 'filled-heart' : 'heart-icon'}`}
+          href={`${import.meta.env.BASE_URL}icons/icons.svg#${isFav ? 'filled-heart' : 'heart-icon'}`}
         ></use>
       </svg>
     </button>

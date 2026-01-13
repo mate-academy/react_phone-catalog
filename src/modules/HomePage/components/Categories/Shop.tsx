@@ -19,7 +19,7 @@ export const Shop: React.FC<Props> = ({
   return (
     <a
       className={scss.shopLink}
-      href={`/${category}`}
+      href={`${import.meta.env.BASE_URL}${category}`}
       style={{ gridArea: category }}
     >
       <div
@@ -27,7 +27,7 @@ export const Shop: React.FC<Props> = ({
         style={{ backgroundColor: background }}
       >
         <img
-          src={`/img/category-${category}.png`}
+          src={`${import.meta.env.BASE_URL}img/category-${category}.png`}
           alt=""
           className={classNames(scss.shopLink__image, {
             [scss.shopLink__image_zoom]: zoom,

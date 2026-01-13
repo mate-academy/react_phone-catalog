@@ -24,7 +24,7 @@ export const ProductCardComponent: React.FC<Props> = ({
         state={{ hasDiscount: hasDiscount }}
       >
         <img
-          src={`/${product.image}`}
+          src={`${import.meta.env.BASE_URL}${product.image}`}
           className={scss.productCard__image}
           alt={product.name}
           loading="lazy"

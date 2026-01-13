@@ -11,7 +11,7 @@ export const ButtonBack = () => {
       onClick={() => navigate(-1)}
     >
       <svg className={scss.buttonBack__icon}>
-        <use href="/icons/icons.svg#arrow"></use>
+        <use href={`${import.meta.env.BASE_URL}icons/icons.svg#arrow`}></use>
       </svg>
       <span className={scss.buttonBack__text}>Back</span>
     </button>
