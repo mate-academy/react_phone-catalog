@@ -33,7 +33,7 @@ export interface Product {
 }
 
 export async function getProductList(category?: Category): Promise<Product[]> {
-  const res = await fetch('/public/api/products.json');
+  const res = await fetch('./api/products.json');
   const all: Array<{
     id: number;
     itemId: string;
@@ -68,7 +68,7 @@ export async function getProductList(category?: Category): Promise<Product[]> {
 }
 
 export async function getProducts(category: Category): Promise<Product[]> {
-  const res = await fetch(`/public/api/${category}.json`);
+  const res = await fetch(`./api/${category}.json`);
 
   return res.json();
 }
