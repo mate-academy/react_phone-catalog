@@ -2,6 +2,7 @@
 
 .cartPage {
   @include content-padding-inline;
+  @include section-style;
 
   &__checkout {
     @include page-grid;
