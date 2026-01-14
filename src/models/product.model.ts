@@ -12,3 +12,19 @@ export type ProductType = {
   year: number;
   image: string;
 };
+
+export type ProductDetails = {
+  id: string; // <-- itemId
+  namespaceId: string;
+  capacityAvailable: string[];
+  colorsAvailable: string[];
+  images: string[];
+  description: {
+    title: string;
+    text: string[];
+  }[];
+  priceRegular: number;
+  priceDiscount: number;
+};
+
+export type FullProduct = ProductType & ProductDetails;

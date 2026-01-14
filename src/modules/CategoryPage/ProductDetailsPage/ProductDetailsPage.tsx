@@ -10,8 +10,9 @@ import apiPhones from '../../../../public/api/phones.json';
 import apiTablets from '../../../../public/api/tablets.json';
 import apiAccessories from '../../../../public/api/accessories.json';
 import classNames from 'classnames';
+import { FullProduct, ProductDetails } from 'models/product.model';
 
-const apiCategoryMap = {
+const apiCategoryMap: Record<string, ProductDetails[]> = {
   phones: apiPhones,
   tablets: apiTablets,
   accessories: apiAccessories,
@@ -24,42 +25,83 @@ export const ProductDetailsPage: React.FC = () => {
     productId: string;
   }>();
 
-  const findProductById = (productID: string) => {
+  // const findProductById = (productID: string) => {
+  //   const summary = apiProducts.find(
+  //     product => String(product.id) === productID,
+  //   );
+
+  //   if (!summary) {
+  //     return null;
+  //   }
+
+  //   const categoryProducts =
+  //     apiCategoryMap[summary.category as keyof typeof apiCategoryMap];
+
+  //   if (!categoryProducts) {
+  //     return summary;
+  //   }
+
+  //   const detailedProduct = categoryProducts.find(
+  //     item => item.id === summary.itemId,
+  //   );
+
+  //   return detailedProduct ? { ...detailedProduct } : summary;
+  // };
+
+  const findProductById = (id: string): FullProduct | null => {
+    // console.log('productId from params:', id);
+    // Find summary info in apiProducts (ProductType)
     const summary = apiProducts.find(
-      product => String(product.id) === productID,
+      product => String(product.id) === id || product.itemId === id,
     );
+
+    // console.log('summary found:', summary);
 
     if (!summary) {
       return null;
     }
 
-    const categoryProducts =
-      apiCategoryMap[summary.category as keyof typeof apiCategoryMap];
+    // Get the correct category data (array of ProductDetails)
+    const categoryProducts = apiCategoryMap[summary.category];
+
+    // console.log('categoryProducts:', categoryProducts);
 
     if (!categoryProducts) {
-      return summary;
+      return null;
     }
 
+    // Find detailed info by itemId
     const detailedProduct = categoryProducts.find(
-      item => item.id === summary.itemId,
+      item => item.id === String(summary.itemId),
     );
 
-    return detailedProduct ? { ...detailedProduct } : summary;
+    // console.log('detailedProduct:', detailedProduct);
+
+    if (!detailedProduct) {
+      return null;
+    }
+
+    // Merge summary and details
+    return { ...summary, ...detailedProduct } as FullProduct;
   };
 
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const product = productId ? findProductById(productId) : null;
 
-  const images = useMemo(() => {
+  const images: string[] = useMemo(() => {
     if (!product) {
       return [];
     }
 
-    if ('images' in product) {
-      return product.images;
+    if (Array.isArray((product as FullProduct).images)) {
+      return (product as FullProduct).images;
     }
 
-    return [product.image];
+    if ('image' in product && typeof product.image === 'string') {
+      return [product.image];
+    }
+
+    return [];
   }, [product]);
 
   useEffect(() => {
@@ -91,7 +133,7 @@ export const ProductDetailsPage: React.FC = () => {
         <h1 className={styles.productdetailspage__title}>{product.name}</h1>
         <div className={styles.productdetailspage__gallery}>
           <div className={styles.productdetailspage__gallery__thumbs}>
-            {images.map(image => (
+            {images.map((image: string) => (
               <button
                 key={image}
                 className={classNames(
@@ -120,11 +162,19 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
         <div className={styles.productdetailspage__info}>
           <p className={styles.productdetailspage__info_idnum}>
-            ID:{product.id}
+            ID:{product.namespaceId}
           </p>
-          <div
-            className={styles.productdetailspage__info_availablecolors}
-          ></div>
+          <div className={styles.productdetailspage__info_availablecolors}>
+            {product.colorsAvailable.map(color => {
+              return (
+                <button
+                  key={color}
+                  className={styles.productdetailspage__info_availablecolor}
+                  style={{ backgroundColor: color }}
+                ></button>
+              );
+            })}
+          </div>
           <div
             className={styles.productdetailspage__info_availablecapacities}
           ></div>
