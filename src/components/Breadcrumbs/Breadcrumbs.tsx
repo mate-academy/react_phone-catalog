@@ -39,7 +39,7 @@ export const Breadcrumbs: React.FC<Props> = ({
           {breadcrumbs?.map(bc => (
             <React.Fragment key={bc.name}>
               <img
-                src="public/icons/Chevron (Arrow Right).svg"
+                src="./icons/Chevron (Arrow Right).svg"
                 alt="next"
                 className={styles.breadcrumbs__iconNext}
               />
@@ -69,7 +69,7 @@ export const Breadcrumbs: React.FC<Props> = ({
           aria-label="Back"
         >
           <img
-            src="public/icons/Chevron (Arrow Left).svg"
+            src="./icons/Chevron (Arrow Left).svg"
             alt="Back"
             className={styles.breadcrumbs__backButtonIcon}
           />
