@@ -92,13 +92,54 @@
     }
   }
 
+  &__search {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-image: url(../../assets/icons/search.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow:
+      -1px -1px 0 0 var(--color-gray-elements),
+      -1px  1px 0 0 var(--color-gray-elements);
+
+    @include underline-after;
+
+    &:hover {
+      cursor: pointer;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+    
+    &-wrap {
+      height: 100%;
+      display: flex;
+      margin-left: auto;
+
+      @include on-tablet {
+        position: absolute;
+        right: 97px;
+      }
+      
+      @include on-desktop {
+        right: 129px;
+      }
+    }
+
+    &--active {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
   &__theme {
     height: 100%;
     aspect-ratio: 1.2 / 1;
-    margin-left: auto;
     
     @include on-tablet {
-      position: absolute;
       right: 97px;
     }
 
@@ -189,10 +230,8 @@
       z-index: 3;
     }
 
-    &--active {
-      color: var(--color-gray-primary);
-      
-      @include underline-after(100%);
+    &--active::after {
+      width: 100%;
     }
   }
 
@@ -365,10 +404,17 @@ body.lock {
   }
 
   .header__btn--fav {
-    background-image: url(../../assets/icons/favorite-icon-dark--default.svg);
+    background-image: url(../../assets/icons/favorite-icon-header-dark--default.svg);
   }
 
   .header__btn--cart {
     background-image: url(../../assets/icons/shopping-bag-cart--dark.svg);
+  }
+
+  .header__search {
+    background-image: url(../../assets/icons/search-dark.svg);
+    box-shadow:
+      -1px -1px 0 0 var(--color-gray-icons-placeholders),
+      -1px  1px 0 0 var(--color-gray-icons-placeholders);
   }
 }

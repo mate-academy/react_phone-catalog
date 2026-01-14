@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import './Dropdown.scss';
 import classNames from 'classnames';
-import { ItemsOnPage } from '../../types/ItemsOnPageType';
-import { SortType } from '../../types/SortType';
 
 type Props<T extends string> = {
-  options: T[],
-  label: string,
-  selected: T,
-  onSelect: (value: T) => void,
+  options: T[];
+  label: string;
+  selected: T;
+  onSelect: (value: T) => void;
 };
 
 export const DropDown = <T extends string>({
@@ -19,16 +17,21 @@ export const DropDown = <T extends string>({
 }: Props<T>) => {
   const [isActiveSelect, setIsActiveSelect] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
-  
+
   const isSortBySelect = label === 'Sort by';
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
         setIsActiveSelect(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
@@ -39,27 +42,23 @@ export const DropDown = <T extends string>({
 
   return (
     <div className="drop__item" ref={selectRef}>
-      <span className="drop__label">
-        {label}
-      </span>
+      <span className="drop__label">{label}</span>
       <div
         className={classNames(
           'drop__select',
           { 'drop__select--sort-by': isSortBySelect },
-          {'drop__select--active': isActiveSelect},
-          )}
-          onClick={() => setIsActiveSelect(!isActiveSelect)}
+          { 'drop__select--active': isActiveSelect },
+        )}
+        onClick={() => setIsActiveSelect(!isActiveSelect)}
       >
         <div className="drop__input">{selected}</div>
-        <div className="drop__icon"/>
+        <div className="drop__icon" />
       </div>
       {isActiveSelect && (
         <ul
-          className={classNames(
-            'drop__options',
-            {
-              'drop__options--sort-by': isSortBySelect
-            })}
+          className={classNames('drop__options', {
+            'drop__options--sort-by': isSortBySelect,
+          })}
         >
           {options.map(option => (
             <li
@@ -73,5 +72,5 @@ export const DropDown = <T extends string>({
         </ul>
       )}
     </div>
-  )
-}
+  );
+};

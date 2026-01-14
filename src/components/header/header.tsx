@@ -5,30 +5,26 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { GlobalContext } from '../../context/GlobalContext';
 import { Link, NavLink } from 'react-router-dom';
+import { SearchBar } from '../SearchBar';
 
 const getActiveLink =
   (type: 'link' | 'fav' | 'cart') =>
   ({ isActive }: { isActive: boolean }) => {
     switch (type) {
       case 'link':
-        return classNames(
-          'header__link',
-          { 'header__link--active': isActive }
-        );
+        return classNames('header__link', {
+          'header__link--active': isActive,
+        });
 
       case 'fav':
-        return classNames(
-          'header__btn',
-          'header__btn--fav',
-          { 'header__btn--active': isActive }
-        );
+        return classNames('header__btn', 'header__btn--fav', {
+            'header__btn--active': isActive,
+          });
 
       case 'cart':
-        return classNames(
-          'header__btn',
-          'header__btn--cart',
-          { 'header__btn--active': isActive }
-        );
+        return classNames('header__btn', 'header__btn--cart', {
+            'header__btn--active': isActive,
+          });
     }
   };
 
@@ -42,26 +38,25 @@ const navLinks = [
 export const Header = () => {
   const { favorites, cart, theme, toggleTheme } = useContext(GlobalContext);
   const [isMenuActive, setIsMenuActive] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
 
   useEffect(() => {
-  if (isMenuActive) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
+    if (isMenuActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }, [isMenuActive]);
-  
+
   const itemsInCart = useMemo(() => {
-    return cart.reduce((sum, item) => sum + item.quantity, 0);;
-  }, [cart]);  
+    return cart.reduce((sum, item) => sum + item.quantity, 0);
+  }, [cart]);
 
   return (
     <div className="header">
       <div className="header__body">
         <Link to="/" className="header__logo">
-          <img
-            src={theme === 'dark' ? logo_dark : logo} alt="logo"
-          />
+          <img src={theme === 'dark' ? logo_dark : logo} alt="logo" />
         </Link>
 
         <div
@@ -80,14 +75,13 @@ export const Header = () => {
                   >
                     {link.page}
                   </NavLink>
-              </li>
+                </li>
               ))}
             </ul>
           </nav>
 
-
           <div className="header__buttons">
-            <NavLink 
+            <NavLink
               to={'/favorites'}
               className={getActiveLink('fav')}
               onClick={() => setIsMenuActive(false)}
@@ -96,7 +90,7 @@ export const Header = () => {
                 <span className="header__quantity">{favorites.length}</span>
               )}
             </NavLink>
-            <NavLink 
+            <NavLink
               to={'/cart'}
               className={getActiveLink('cart')}
               onClick={() => setIsMenuActive(false)}
@@ -108,13 +102,19 @@ export const Header = () => {
           </div>
         </div>
 
-        <div
-          className="header__theme"
-          onClick={toggleTheme}
-        >
-          <div className="header__btn header__btn--theme">
-            <div className="header__theme-space">
-              <div className="header__theme-shuttle"></div>
+        <div className="header__search-wrap">
+          <div
+            className={classNames('header__search', {
+              'header__search--active': isSearchBarOpen,
+            })}
+            onClick={() => setIsSearchBarOpen(prev => !prev)}
+          />
+
+          <div className="header__theme" onClick={toggleTheme}>
+            <div className="header__btn header__btn--theme">
+              <div className="header__theme-space">
+                <div className="header__theme-shuttle"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -131,6 +131,13 @@ export const Header = () => {
             </div>
           </div>
         </div>
+
+        {isSearchBarOpen && (
+          <SearchBar
+            isSearchBarOpen={isSearchBarOpen}
+            onSearchBarOpen={setIsSearchBarOpen}
+          />
+        )}
       </div>
     </div>
   );

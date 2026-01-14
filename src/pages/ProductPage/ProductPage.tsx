@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo } from 'react';
 import { ProductName } from '../../types/prodName';
 import { DropDown } from '../../components/Dropdown';
 import { GlobalContext } from '../../context/GlobalContext';
@@ -20,9 +20,10 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
   const { allProducts, productsError, reloadProducts } =
     useContext(GlobalContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  
+
   const sortBy = useMemo<SortType>(() => {
     const value = searchParams.get('sortBy');
+
     return Object.values(SortType).includes(value as SortType)
       ? (value as SortType)
       : SortType.Alphabetically;
@@ -30,6 +31,7 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
 
   const itemsOnPage = useMemo<ItemsOnPage>(() => {
     const value = searchParams.get('onPage');
+
     return Object.values(ItemsOnPage).includes(value as ItemsOnPage)
       ? (value as ItemsOnPage)
       : ItemsOnPage.all;
@@ -37,6 +39,7 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
 
   const page = useMemo(() => {
     const value = Number(searchParams.get('page'));
+
     return Number.isFinite(value) && value > 0 ? value : 1;
   }, [searchParams]);
 
@@ -59,30 +62,25 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
 
   const handleSortChange = (value: SortType) => {
     const newParam =
-      value === SortType.Alphabetically
-        ? { sort: null }
-        : { sort: value.toLowerCase() };
-    
+      value === SortType.Alphabetically ? { sortBy: null } : { sortBy: value };
+
     setSearchParams(getSearchWith(newParam, searchParams));
-  }
+  };
 
   const handleItemsOnPage = (value: string) => {
     const newParam =
       value === ItemsOnPage.all
-        ? { onPage: null, page: null}
+        ? { onPage: null, page: null }
         : { onPage: value, page: '1' };
-    
-    setSearchParams(getSearchWith(newParam, searchParams));
-  }
 
-  const handlePageChange = (page: number) => {
-    const newParam =
-      page === 1
-        ? { page: null}
-        : { page: String(page) };
-    
     setSearchParams(getSearchWith(newParam, searchParams));
-  }
+  };
+
+  const handlePageChange = (p: number) => {
+    const newParam = p === 1 ? { page: null } : { page: String(page) };
+
+    setSearchParams(getSearchWith(newParam, searchParams));
+  };
 
   const itemsPerPage =
     itemsOnPage === ItemsOnPage.all
