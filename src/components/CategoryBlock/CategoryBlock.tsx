@@ -40,7 +40,7 @@ export const CategoryBlock: React.FC = () => {
         <Link to="/phones" className={styles.categoryBlock__item}>
           <img
             className={styles.categoryBlock__img}
-            src="/public/img/category-phones-1.png"
+            src="./img/category-phones-1.png"
             alt="category phones"
           />
           <h4 className={styles.categoryBlock__name}>Mobile phones</h4>
@@ -52,7 +52,7 @@ export const CategoryBlock: React.FC = () => {
         <Link to="/tablets" className={styles.categoryBlock__item}>
           <img
             className={styles.categoryBlock__img}
-            src="/public/img/category-tablets-2.png"
+            src="./img/category-tablets-2.png"
             alt="category tablets"
           />
           <h4 className={styles.categoryBlock__name}>Tablets</h4>
@@ -64,7 +64,7 @@ export const CategoryBlock: React.FC = () => {
         <Link to="/accessories" className={styles.categoryBlock__item}>
           <img
             className={styles.categoryBlock__img}
-            src="/public/img/category-accessories-1.png"
+            src="./img/category-accessories-1.png"
             alt="category accessories"
           />
           <h4 className={styles.categoryBlock__name}>Accessories</h4>

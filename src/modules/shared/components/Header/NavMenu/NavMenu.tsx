@@ -67,7 +67,7 @@ export const NavMenu: React.FC<Props> = ({
         >
           <img
             className={styles.menu__iconImg}
-            src="/public/icons/favourites-heart-like.svg"
+            src="./icons/favourites-heart-like.svg"
             alt="Favorites"
             // height={16}
           />
@@ -88,7 +88,7 @@ export const NavMenu: React.FC<Props> = ({
         >
           <img
             className={styles.menu__iconImg}
-            src="/public/icons/shopping-bag-cart.svg"
+            src="./icons/shopping-bag-cart.svg"
             alt="Cart"
             // height={16}
           />

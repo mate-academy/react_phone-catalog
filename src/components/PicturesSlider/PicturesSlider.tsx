@@ -6,17 +6,17 @@ import classNames from 'classnames';
 const banners = [
   {
     title: 'iPhone 17 Series',
-    src: '/public/img/iPhone_17.png',
+    src: './img/iPhone_17.png',
     alt: 'Banner phones',
   },
   {
     title: 'iPad Pro 2025',
-    src: '/public/img/banner-tablets.png',
+    src: './img/banner-tablets.png',
     alt: 'Banner tablets',
   },
   {
     title: 'Accessories for your gadgets',
-    src: '/public/img/banner-accessories.png',
+    src: './img/banner-accessories.png',
     alt: 'Banner accessories',
   },
 ];

@@ -9,7 +9,7 @@ interface Props {
 
 export const EmptyState: React.FC<Props> = ({
   message,
-  imageSrc = '/public/img/page-not-found.png',
+  imageSrc = './img/page-not-found.png',
   alt = 'Not Found',
 }) => (
   <section className={styles.emptyState}>

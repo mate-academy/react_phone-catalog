@@ -55,7 +55,7 @@ export const CartPage: React.FC = () => {
         <div className={styles.cartPage__success}>
           <EmptyState
             message="Thank you! Your order has been placed."
-            imageSrc="/public/img/success.png"
+            imageSrc="./img/success.png"
             alt="Success"
           />
           <p className={styles.cartPage__orderId}>
@@ -74,7 +74,7 @@ export const CartPage: React.FC = () => {
       ) : items.length === 0 ? (
         <EmptyState
           message="Your cart is empty"
-          imageSrc="/public/img/cart-is-empty.png"
+          imageSrc="./img/cart-is-empty.png"
           alt="Cart is empty"
         />
       ) : (

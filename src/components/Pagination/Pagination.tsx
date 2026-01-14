@@ -38,7 +38,7 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onPage }) => {
         disabled={page <= 1}
         aria-label="Previous"
       >
-        <img src="/public/icons/Chevron (Arrow Left).svg" alt="left" />
+        <img src="./icons/Chevron (Arrow Left).svg" alt="left" />
       </button>
       {pages.map((p, i) =>
         typeof p === 'number' ? (
@@ -66,7 +66,7 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, onPage }) => {
         disabled={page >= totalPages}
         aria-label="Next"
       >
-        <img src="/public/icons/Chevron (Arrow Right).svg" alt="left" />
+        <img src="./icons/Chevron (Arrow Right).svg" alt="left" />
       </button>
     </nav>
   );

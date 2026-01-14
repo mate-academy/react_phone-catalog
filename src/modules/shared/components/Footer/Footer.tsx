@@ -5,7 +5,7 @@ export const Footer: React.FC = () => (
   <footer className={styles.footer}>
     <div className={styles.footer__container}>
       <div className={styles.footer__logo}>
-        <img src="/public/icons/Logo.png" alt="Nice Gadgets Logo" height={28} />
+        <img src="./icons/Logo.png" alt="Nice Gadgets Logo" height={28} />
       </div>
       <nav className={styles.footer__nav}>
         <a
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => (
           aria-label="Back to top"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <img src="/public/icons/Chevron (Arrow Up).svg" alt="Up" />
+          <img src="./icons/Chevron (Arrow Up).svg" alt="Up" />
         </button>
       </div>
     </div>

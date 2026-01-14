@@ -43,7 +43,7 @@ export const FavoritesPage: React.FC = () => {
       ) : totalFavorites === 0 ? (
         <EmptyState
           message="No favourites yet"
-          imageSrc="/public/img/product-not-found.png"
+          imageSrc="./img/product-not-found.png"
           alt="No favorites"
         />
       ) : (
