@@ -22,14 +22,14 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
             }
             onClick={() => setSelectedImg(i)}
           >
-            <img src={`/${img}`} alt={`${name} view ${i}`} />
+            <img src={`./${img}`} alt={`${name} view ${i}`} />
           </button>
         ))}
       </div>
 
       <div className={styles.productGallery__bigImgWrap}>
         <img
-          src={`/${images[selectedImg]}`}
+          src={`./${images[selectedImg]}`}
           alt={name}
           className={styles.productGallery__bigImg}
         />
