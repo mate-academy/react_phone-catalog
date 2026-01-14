@@ -50,14 +50,14 @@ export const PicturesSlider: React.FC = () => {
           onClick={prev}
           aria-label="Previous banner"
         >
-          <img src="public/icons/Chevron (Arrow Left).svg" alt="left" />
+          <img src="./icons/Chevron (Arrow Left).svg" alt="left" />
         </button>
         <div className={styles.picturesSlider__content}>
           <div className={styles.picturesSlider__left}>
             <h2 className={styles.picturesSlider__leftTitle}>
               Now available <br /> in our store!
               <img
-                src="public/icons/hand-ok.svg"
+                src="./icons/hand-ok.svg"
                 alt="left"
                 className={styles.picturesSlider__leftTitleIconOk}
               />
@@ -84,7 +84,7 @@ export const PicturesSlider: React.FC = () => {
           onClick={next}
           aria-label="Next banner"
         >
-          <img src="public/icons/Chevron (Arrow Right).svg" alt="right" />
+          <img src="./icons/Chevron (Arrow Right).svg" alt="right" />
         </button>
       </div>
       <div className={styles.picturesSlider__dots}>

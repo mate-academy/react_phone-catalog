@@ -10,7 +10,13 @@ export const getProductImage = (product: Product): string => {
     return '';
   }
 
-  return imagePath.startsWith('http') || imagePath.startsWith('/')
-    ? imagePath
-    : `/${imagePath}`;
+  if (imagePath.startsWith('http')) {
+    return imagePath;
+  }
+
+  if (imagePath.startsWith('/')) {
+    return `./${imagePath.slice(1)}`;
+  }
+
+  return `./${imagePath}`;
 };
