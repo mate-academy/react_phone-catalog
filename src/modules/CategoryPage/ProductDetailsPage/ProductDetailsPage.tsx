@@ -110,8 +110,6 @@ export const ProductDetailsPage: React.FC = () => {
               </button>
             ))}
           </div>
-
-          {/* main image */}
           <div className={styles.productdetailspage__gallery__main}>
             <img
               src={`/${activeImage}`}
@@ -120,6 +118,19 @@ export const ProductDetailsPage: React.FC = () => {
             />
           </div>
         </div>
+        <div className={styles.productdetailspage__info}>
+          <p className={styles.productdetailspage__info_idnum}>
+            ID:{product.id}
+          </p>
+          <div
+            className={styles.productdetailspage__info_availablecolors}
+          ></div>
+          <div
+            className={styles.productdetailspage__info_availablecapacities}
+          ></div>
+          <div className={styles.productdetailspage__info_main}></div>
+        </div>
+
         <div className={styles.productdetailspage__alsolike}>
           <ProductsSlider title="You may also like" />
         </div>

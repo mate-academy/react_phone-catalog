@@ -77,6 +77,22 @@
       }
   }
 
+  &__info {
+    grid-column: 13/-1;
+
+    &_idnum {
+    grid-column: -2/-1;
+
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+    color: $icons-and-placeholders-color;
+  }
+  }
+
   &__alsolike {
     grid-column: 1/-1;
     margin: 80px 0;
