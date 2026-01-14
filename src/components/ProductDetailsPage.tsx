@@ -127,14 +127,12 @@ export const ProductDetailsPage: React.FC = () => {
       return;
     }
 
-    // если клик по текущему цвету — ничего не делаем
     if (color === baseProduct.color) {
       return;
     }
 
     const newId = getVariantId(color, activeCapacity);
 
-    // защита от лишнего navigate
     if (newId && newId !== productId) {
       navigate(`/product/${newId}`);
     }
