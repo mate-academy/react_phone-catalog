@@ -92,16 +92,19 @@ export const SearchBar: React.FC<Props> = ({
             />
           )}
         </div>
-        {query &&
-          filteredProducts.map(product => (
-            <div key={product.id} className="search__result">
-              <SearchItem
-                product={product}
-                queryKeys={queryKeys}
-                onSearchBarOpen={onSearchBarOpen}
-              />
-            </div>
-          ))}
+        {query && (
+          <div className="search__results-list">
+            {filteredProducts.map(product => (
+              <div key={product.id} className="search__result">
+                <SearchItem
+                  product={product}
+                  queryKeys={queryKeys}
+                  onSearchBarOpen={onSearchBarOpen}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
