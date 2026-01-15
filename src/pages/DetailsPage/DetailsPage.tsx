@@ -346,13 +346,21 @@ export const DetailsPage = () => {
                   ).map(el => (
                     <div key={el} className="details__specs-item">
                       {el === 'ram' ? (
-                        <span>{el.toUpperCase()}</span>
+                        <span className="details__specs-item-label">
+                          {el.toUpperCase()}
+                        </span>
                       ) : el === 'capacity' ? (
-                        <span>{'Built in memory'}</span>
+                        <span className="details__specs-item-label">
+                          {'Built in memory'}
+                        </span>
                       ) : (
-                        <span>{el[0].toUpperCase() + el.slice(1)}</span>
+                        <span className="details__specs-item-label">
+                          {el[0].toUpperCase() + el.slice(1)}
+                        </span>
                       )}
-                      <span>{formatter(prodDetail[el])}</span>
+                      <span className="details__specs-item-value">
+                        {formatter(prodDetail[el])}
+                      </span>
                     </div>
                   ))}
                 </div>

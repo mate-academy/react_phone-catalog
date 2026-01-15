@@ -1,5 +1,5 @@
-@import '../../utils/variables.scss';
-@import '../../utils/mixins.scss';
+@import '../../utils/variables';
+@import '../../utils/mixins';
 
 .price {
     flex: 0 0 auto;
@@ -9,6 +9,14 @@
     line-height: 140%;
     margin-bottom: 8px;
     color: var(--color-gray-primary);
+
+    &--old {
+      padding-left: 8px;
+      font-weight: 500;
+      line-height: 100%;
+      color: var(--color-gray-secondary);
+      text-decoration: line-through;
+    }
 
     &-block {
       &--s {
@@ -30,13 +38,5 @@
           font-size: 22px;
         }
       }
-    }
-
-    &--old {
-      padding-left: 8px;
-      font-weight: 500;
-      line-height: 100%;
-      color: var(--color-gray-secondary);
-      text-decoration: line-through;
     }
   }

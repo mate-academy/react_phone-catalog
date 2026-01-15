@@ -1,5 +1,5 @@
-@import '../../utils/variables.scss';
-@import '../../utils/mixins.scss';
+@import '../../utils/variables';
+@import '../../utils/mixins';
 
 .details {
   &__navi-line {
@@ -27,10 +27,10 @@
 
   &__top {
     --columns: 4;
+
     grid-template-rows: repeat(3, auto);
     align-items: start;
-    row-gap: 16px;
-    column-gap: 16px;
+    gap: 16px;
 
     @include page-grid;
 
@@ -375,19 +375,18 @@
     &-item {
       display: flex;
       justify-content: space-between;
-      
-      span {
+
+      &-label {
         font-weight: 500;
         font-size: 14px;
         color: var(--color-gray-secondary);
       }
-  
-      span:last-child {
+
+      &-value {
         font-weight: 600;
         color: var(--color-gray-primary);
       }
     }
-
   }
 }
 

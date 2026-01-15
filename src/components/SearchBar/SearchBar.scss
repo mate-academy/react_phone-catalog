@@ -45,13 +45,12 @@
 
   &__input {
     outline: none;
-    font-size: 16px;
     color: var(--color-gray-primary);
     height: 100%;
     width: 100%;
     border: none;
     padding-inline: 10px;
-    font-family: Mont;
+    font-family: Mont, Arial, sans-serif;
     font-size: 14px;
     background-color: var(--color-gray-white);
   }

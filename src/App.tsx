@@ -1,4 +1,3 @@
-import './App.scss';
 import { GlobalProvider } from './context/GlobalContext';
 import { AllRoutes } from './routes';
 

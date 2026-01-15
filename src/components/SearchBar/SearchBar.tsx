@@ -92,7 +92,7 @@ export const SearchBar: React.FC<Props> = ({
             />
           )}
         </div>
-        
+
         {query && (
           <div className="search__results-list">
             {filteredProducts.map(product => (
