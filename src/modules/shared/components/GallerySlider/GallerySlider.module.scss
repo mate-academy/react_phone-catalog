@@ -1,0 +1,94 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  gap: 16px;
+
+  @include flex-column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.slider {
+  background-color: $main-bg;
+  overflow: hidden;
+  border-radius: $radius;
+
+  @include transition(background-color, $color-transition);
+
+  @include on-tablet {
+    order: 1;
+  }
+}
+
+.sliderContainer {
+  display: flex;
+}
+
+.slide {
+  width: 100%;
+  max-height: 464px;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 16px;
+  cursor: pointer;
+
+  @include flex-center;
+
+  img {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.thumbnails {
+  gap: 8px;
+  overflow: auto;
+  display: flex;
+  flex-shrink: 0;
+
+  @include on-tablet {
+    flex-direction: column;
+    order: 0;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.thumbnail {
+  width: 50px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: $radius;
+  background-color: $main-bg;
+  border: 1px solid $elements-color;
+  padding: 5px;
+  cursor: pointer;
+
+  @include flex-center;
+  @include transition((border-color, background-color), $color-transition);
+
+  @include on-tablet {
+    width: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+  }
+
+  img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+  }
+}
+
+.activeThumbnail {
+  border-color: $primary-color;
+}

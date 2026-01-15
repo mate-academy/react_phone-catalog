@@ -50,7 +50,7 @@ export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
   }
 
   return (
-    <div className={classNames(styles.wrapper, 'container')}>
+    <div className={styles.wrapper}>
       <div className={classNames(styles.topBar)}>
         <h2 className={styles.title}>{title}</h2>
 

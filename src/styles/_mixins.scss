@@ -43,6 +43,30 @@
   }
 }
 
+@mixin heading-h3 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include on-mobile {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin heading-h4 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
 // FLEX
 @mixin flex-center {
   display: flex;

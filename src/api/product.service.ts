@@ -1,3 +1,4 @@
+import { getRandomValue } from '@/helpers/mathHelpers';
 import { Category } from '@/types/Category';
 import { FetchOptions } from '@/types/FetchOptions';
 import {
@@ -48,13 +49,13 @@ export async function getProductsByIds(
 export async function getProductById(
   id: Product['itemId'],
   options: FetchOptions = {},
-): Promise<ProductDetailsWithArticle | undefined> {
+): Promise<ProductDetailsWithArticle | null> {
   const products = await getProducts(options);
 
   const product = products.find(item => item.itemId === id);
 
   if (!product) {
-    return undefined;
+    return null;
   }
 
   const productsByCategory = await client.get<ProductDetails[]>(
@@ -71,5 +72,30 @@ export async function getProductById(
     };
   }
 
-  return;
+  return null;
+}
+
+export async function getRandomProducts(
+  exclude: number,
+  options: FetchOptions,
+  limit = 10,
+) {
+  const products = await getProducts(options);
+  const generatedIds = new Set();
+
+  generatedIds.add(exclude);
+  const result = [];
+
+  while (result.length < limit && generatedIds.size < products.length) {
+    const randomValue = getRandomValue(0, products.length - 1);
+
+    if (generatedIds.has(randomValue)) {
+      continue;
+    }
+
+    generatedIds.add(randomValue);
+    result.push(products[randomValue]);
+  }
+
+  return result;
 }

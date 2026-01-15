@@ -1,13 +1,7 @@
 @use '@/styles/resources' as *;
 
 .filters {
-  margin-top: 32px;
-
   @include page-grid;
-
-  @include on-tablet {
-    margin-top: 40px;
-  }
 }
 
 .sortFilter {

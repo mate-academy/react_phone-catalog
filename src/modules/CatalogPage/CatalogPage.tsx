@@ -79,16 +79,17 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     <div className={classNames('container', styles.wrapper)}>
       <CatalogBreadcrumbs category={productCategory.type} />
 
-      <section>
-        <div className={styles.mainPageText}>
-          <h1 className={styles.title}>{productCategory.title}</h1>
-          {loading ? (
-            <Skeleton height="21px" width="75px" />
-          ) : (
-            <span className={styles.modelsCount}>{products.length} models</span>
-          )}
-        </div>
+      <h1 className={styles.title}>{productCategory.title}</h1>
 
+      <div className={styles.counterWrapper}>
+        {loading ? (
+          <Skeleton height="21px" width="75px" />
+        ) : (
+          <span className={styles.modelsCount}>{products.length} models</span>
+        )}
+      </div>
+
+      <section className={styles.filters}>
         <Filters
           isDisabled={disabledFilters}
           initialPerPage={perPage}
@@ -96,7 +97,7 @@ export const CatalogPage: FC<Props> = ({ category }) => {
         />
       </section>
 
-      <section>
+      <section className={styles.products}>
         <ProductsList
           products={preparedProducts}
           isLoading={loading}

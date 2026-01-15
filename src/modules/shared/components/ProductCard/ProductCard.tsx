@@ -10,6 +10,8 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Button } from '../Button';
 import { useFavourites } from '@/hooks/useFavourites';
 import { useCart } from '@/hooks/useCart';
+import { SpecsList } from '../SpecsList';
+import { prepareProductSpecs } from '@/helpers/productHelpers';
 
 interface Props {
   product: Product;
@@ -41,10 +43,16 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
 
   const isInCart = inCart(id);
 
+  const specs = prepareProductSpecs({
+    screen,
+    [category === 'accessories' ? 'size' : 'capacity']: capacity,
+    RAM: ram,
+  });
+
   return (
     <article className={classNames(styles.productCard, className)}>
       <Link className={styles.productPreviewWrapper} to={productLink}>
-        <img src={image} alt={name} />
+        <img src={`/${image}`} alt={name} />
       </Link>
 
       <Link
@@ -62,22 +70,12 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
 
         {price && <span className={styles.productOldPrice}>${fullPrice}</span>}
       </div>
-      <dl className={styles.productSpecs}>
-        <div className={styles.productSpecRow}>
-          <dt className={styles.productSpecOption}>Screen</dt>
-          <dd className={styles.productSpecValue}>{screen}</dd>
-        </div>
-        <div className={styles.productSpecRow}>
-          <dt className={styles.productSpecOption}>
-            {category === 'accessories' ? 'Size' : 'Capacity'}
-          </dt>
-          <dd className={styles.productSpecValue}>{capacity}</dd>
-        </div>
-        <div className={styles.productSpecRow}>
-          <dt className={styles.productSpecOption}>RAM</dt>
-          <dd className={styles.productSpecValue}>{ram}</dd>
-        </div>
-      </dl>
+      <SpecsList
+        specs={specs}
+        className={styles.productSpecs}
+        optionClassname={styles.productSpecOption}
+        valueClassname={styles.productSpecValue}
+      />
       <div className={styles.productActions}>
         <Button
           variant="primary"

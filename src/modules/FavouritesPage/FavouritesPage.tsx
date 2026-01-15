@@ -33,10 +33,10 @@ export const FavouritesPage = () => {
     <div className={classNames(styles.wrapper, 'container')}>
       <FavouritesBreadcrumbs />
 
-      <section>
+      <div>
         <h1 className={styles.title}>Favourites</h1>
         <span className={styles.itemsCount}>{favourites.length} items</span>
-      </section>
+      </div>
 
       <section className={styles.products}>
         <ProductsList

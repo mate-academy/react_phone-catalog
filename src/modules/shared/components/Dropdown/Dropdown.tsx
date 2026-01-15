@@ -18,7 +18,7 @@ interface Props<T> {
   isDisabled?: boolean;
 }
 
-export function Dropdown<T extends string | number>({
+export function Dropdown<T>({
   options,
   label,
   className,
@@ -78,7 +78,7 @@ export function Dropdown<T extends string | number>({
           {options.map(option => (
             <li
               onClick={() => handleSelect(option.value)}
-              key={option.value}
+              key={option.label.toLowerCase()}
               className={classNames(styles.option, {
                 [styles.activeOption]: option.value === value,
               })}

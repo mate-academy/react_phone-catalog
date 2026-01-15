@@ -14,6 +14,7 @@ import { Product } from '@/types/Product';
 import { FetchOptions } from '@/types/FetchOptions';
 import { getProductsByIds } from '@/api/product.service';
 import { ErrorMessage } from '../shared/components/ErrorMessage';
+import { useMemo } from 'react';
 
 export const CartPage = () => {
   const { isOpen, close, toggle } = useDisclosure(false, {
@@ -26,13 +27,16 @@ export const CartPage = () => {
     totalItems,
   } = useCart();
 
-  const productsIdsInCart = items.map(item => item.product.id);
+  const productsIdsInCart = useMemo(
+    () => items.map(item => item.product.id),
+    [items],
+  );
 
   const { data, loading, error, handleFetch } = useFetch<Product[]>(
     (options: FetchOptions) => getProductsByIds(productsIdsInCart, options),
     {
       initialValue: [],
-      dependency: productsIdsInCart,
+      dependency: [productsIdsInCart],
     },
   );
 

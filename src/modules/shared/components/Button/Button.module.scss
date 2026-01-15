@@ -2,7 +2,7 @@
 
 .button {
   --primary-hover-bg: #f86800;
-  --primary-selected-bg: #fff;
+  --primary-selected-bg: transparent;
   --primary-selected-border: #e2e6e9;
   --primary-selected-color: var(--accent-color);
   --outline-selected-bg: var(--primary-color);
@@ -45,7 +45,7 @@
   }
 
   &.selected {
-    background-color: var(--primary-selected-bg);
+    background: var(--primary-selected-bg);
     outline: 1px solid var(--primary-selected-border);
     color: var(--primary-selected-color);
   }

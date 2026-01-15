@@ -6,7 +6,7 @@
 }
 
 .categories {
-  row-gap: n-gap(2);
+  row-gap: 32px;
 
   @include page-grid;
 }

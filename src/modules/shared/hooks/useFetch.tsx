@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Options as FetchOptions } from '../../../types/FetchOptions';
+import { FetchOptions } from '../../../types/FetchOptions';
 
 interface Options<T> {
   initialValue: T;

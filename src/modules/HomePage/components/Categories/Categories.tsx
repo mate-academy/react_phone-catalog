@@ -36,7 +36,7 @@ export const Categories: FC<Props> = React.memo(function Categories({
   }, [products]);
 
   return (
-    <div className="container">
+    <section>
       <h2 className={styles.title}>Shop by category</h2>
 
       <ul className={styles.categories}>
@@ -46,6 +46,6 @@ export const Categories: FC<Props> = React.memo(function Categories({
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 });

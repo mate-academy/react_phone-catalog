@@ -1,29 +1,39 @@
 @use '@/styles/resources' as *;
 
 .wrapper {
-  gap: 24px;
-  padding-block: 24px;
+  padding-block: 24px 56px;
 
-  @include flex-column;
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    margin-block: 24px 80px;
+  }
 }
 
 .title {
   color: $primary-color;
-  margin-bottom: 8px;
+  margin-top: 24px;
 
   @include transition(color, $color-transition);
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
 }
 
 .itemsCount {
+  margin-top: 8px;
   color: $secondary-color;
 
   @include body-text;
 }
 
 .products {
-  margin-top: 8px;
+  margin-top: 32px;
 
   @include on-tablet {
-    margin-top: 16px;
+    margin-top: 40px;
   }
 }

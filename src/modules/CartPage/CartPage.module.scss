@@ -1,10 +1,18 @@
 @use '@/styles/resources' as *;
 
 .wrapper {
-  padding-block: 24px;
+  padding-block: 24px 56px;
   gap: 24px;
 
   @include page-grid;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
 }
 
 .title {

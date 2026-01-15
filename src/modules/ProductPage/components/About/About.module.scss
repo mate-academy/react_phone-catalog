@@ -1,0 +1,39 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  grid-column: 1 / -1;
+  gap: 32px;
+
+  @include flex-column;
+
+  @include on-desktop {
+    grid-column: span 12;
+  }
+}
+
+.title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elements-color;
+  font-weight: 600 !important;
+  color: $primary-color;
+
+  @include transition((color, border-color), $color-transition);
+  @include heading-h3;
+}
+
+.content {
+  gap: 32px;
+
+  @include flex-column;
+}
+
+.subTitle {
+  color: $primary-color;
+
+  @include heading-h4;
+}
+
+.description {
+  margin-top: 16px;
+  color: $secondary-color;
+}

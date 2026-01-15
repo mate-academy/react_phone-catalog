@@ -2,7 +2,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { FC, useEffect, useState } from 'react';
 import { useFetch } from '../shared/hooks/useFetch';
 import { Product } from '@/types/Product';
-import { Options } from '@/types/FetchOptions';
+import { FetchOptions } from '@/types/FetchOptions';
 import { getProductsByQuery } from '@/api/product.service';
 import { Modal } from '@/modules/shared/components/Modal';
 
@@ -24,7 +24,7 @@ export const Search: FC<Props> = ({ isOpen, onClose }) => {
   const debouncedQuery = useDebounce<string>(query, 1000);
 
   const { data, loading } = useFetch<Product[]>(
-    (options: Options) => {
+    (options: FetchOptions) => {
       if (debouncedQuery === '') {
         return Promise.resolve([]);
       }

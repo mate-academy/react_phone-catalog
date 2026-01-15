@@ -14,8 +14,10 @@
   background-repeat: no-repeat;
   animation: shimmer 1.6s infinite linear;
   border-radius: $radius;
+  color: $icons-color;
 
   @include transition(background-color, $color-transition);
+  @include flex-center;
 }
 
 @keyframes shimmer {

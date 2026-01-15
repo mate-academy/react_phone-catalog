@@ -26,36 +26,36 @@ export const HomePage = () => {
   }, [products]);
 
   return (
-    <div className={styles.homeContent}>
-      <section>
-        <div className="container">
-          <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
-        </div>
+    <div className={styles.wrapper}>
+      <div>
+        <h1 className={classNames(styles.title, 'container')}>
+          Welcome to Nice Gadgets store!
+        </h1>
 
-        <div className={classNames(styles.sliderWrapper, 'container')}>
+        <section className={classNames(styles.sliderWrapper, 'container')}>
           <MainSlider />
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <section>
-        <ProductsSlider
-          products={newestProducts}
-          title="Brand new models"
-          isLoading={loading}
-        />
-      </section>
+      <div className={classNames(styles.content, 'container')}>
+        <section>
+          <ProductsSlider
+            products={newestProducts}
+            title="Brand new models"
+            isLoading={loading}
+          />
+        </section>
 
-      <section>
         <Categories products={products} isLoading={loading} />
-      </section>
 
-      <section>
-        <ProductsSlider
-          products={discountProducts}
-          title="Hot prices"
-          isLoading={loading}
-        />
-      </section>
+        <section>
+          <ProductsSlider
+            products={discountProducts}
+            title="Hot prices"
+            isLoading={loading}
+          />
+        </section>
+      </div>
     </div>
   );
 };

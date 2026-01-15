@@ -6,10 +6,10 @@ import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '@/utils/getSearchWith';
 import { PerPageOption } from '@/modules/shared/types/PerPageOption';
 
-const sortOptions: DropdownOption<string>[] = [
+const sortOptions: DropdownOption<string | null>[] = [
   {
     label: 'Newest',
-    value: 'newest',
+    value: null,
   },
   {
     label: 'Alphabetically',
@@ -20,10 +20,10 @@ const sortOptions: DropdownOption<string>[] = [
     value: 'cheapest',
   },
 ];
-const itemsPerPage: DropdownOption<string>[] = [
+const itemsPerPage: DropdownOption<string | null>[] = [
   {
     label: 'All',
-    value: 'all',
+    value: null,
   },
   {
     label: '4',

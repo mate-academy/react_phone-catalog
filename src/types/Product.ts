@@ -15,7 +15,7 @@ export interface Product {
   image: string;
 }
 
-interface ProductDescription {
+export interface ProductDescription {
   title: string;
   text: string[];
 }
@@ -39,6 +39,7 @@ export interface ProductDetails {
   camera: string;
   zoom: string;
   cell: string[];
+  processor: string;
 }
 
 export type ProductDetailsWithArticle = ProductDetails & {
