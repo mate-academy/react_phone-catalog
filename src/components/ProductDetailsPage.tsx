@@ -97,7 +97,9 @@ export const ProductDetailsPage: React.FC = () => {
 
             setProduct(normalized);
             setActiveColor(base.color ?? normalized.colorsAvailable[0]);
-            setActiveCapacity(base.capacity ?? normalized.capacityAvailable[0]);
+            setActiveCapacity(
+              base.capacity ?? normalized.capacityAvailable[0].toLowerCase(),
+            );
             setActiveImage(0);
           });
       })
@@ -105,53 +107,46 @@ export const ProductDetailsPage: React.FC = () => {
       .finally(() => setLoading(false));
   }, [productId]);
 
-  const getVariantId = (
-    color: string,
-    capacity: string,
-  ): string | undefined => {
-    if (!baseProduct) {
-      return undefined;
+  const buildProductUrl = (
+    currentId: string,
+    newColor?: string,
+    newCapacity?: string,
+  ) => {
+    const parts = currentId.split('-');
+
+    const colorIndex = parts.length - 1;
+    const capacityIndex = parts.length - 2;
+
+    if (newColor) {
+      parts[colorIndex] = newColor.toLowerCase();
     }
 
-    return allProducts.find(
-      p =>
-        p.namespaceId === baseProduct.namespaceId &&
-        p.category === baseProduct.category &&
-        p.color === color &&
-        p.capacity === capacity,
-    )?.itemId;
+    if (newCapacity) {
+      parts[capacityIndex] = newCapacity.toLowerCase();
+    }
+
+    return parts.join('-');
   };
 
   const handleColorChange = (color: string) => {
-    if (!baseProduct) {
+    if (!productId || color === activeColor) {
       return;
     }
 
-    if (color === baseProduct.color) {
-      return;
-    }
+    const newUrl = buildProductUrl(productId, color);
 
-    const newId = getVariantId(color, activeCapacity);
-
-    if (newId && newId !== productId) {
-      navigate(`/product/${newId}`);
-    }
+    navigate(`/product/${newUrl}`);
   };
 
   const handleCapacityChange = (capacity: string) => {
-    if (!baseProduct) {
+    if (!productId || capacity.toLowerCase() === activeCapacity.toLowerCase()) {
       return;
     }
 
-    if (capacity === baseProduct.capacity) {
-      return;
-    }
+    setActiveCapacity(capacity);
+    const newUrl = buildProductUrl(productId, undefined, capacity);
 
-    const newId = getVariantId(activeColor, capacity);
-
-    if (newId && newId !== productId) {
-      navigate(`/product/${newId}`);
-    }
+    navigate(`/product/${newUrl}`);
   };
 
   /* ---------- Favorites ---------- */
@@ -352,7 +347,9 @@ export const ProductDetailsPage: React.FC = () => {
                   <button
                     key={cap}
                     className={`pd-capacity ${
-                      activeCapacity === cap ? 'pd-capacity--active' : ''
+                      activeCapacity.toLowerCase() === cap.toLowerCase()
+                        ? 'pd-capacity--active'
+                        : ''
                     }`}
                     onClick={() => handleCapacityChange(cap)}
                   >
