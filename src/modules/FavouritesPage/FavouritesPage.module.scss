@@ -2,6 +2,10 @@
 
 .wrapper {
   padding-block: 24px 56px;
+  flex: 1;
+  width: 100%;
+
+  @include flex-column;
 
   @include on-tablet {
     padding-block: 24px 64px;
@@ -30,10 +34,17 @@
   @include body-text;
 }
 
-.products {
+.mainContent {
   margin-top: 32px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 
   @include on-tablet {
     margin-top: 40px;
   }
+}
+
+.messageWrapper {
+  @include flex-center;
 }

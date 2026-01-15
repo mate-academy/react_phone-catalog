@@ -1,7 +1,7 @@
 import { ProductDetailsWithArticle } from '@/types/Product';
 import { useFetch } from '../shared/hooks/useFetch';
 import { getProductById } from '@/api/product.service';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FetchOptions } from '@/types/FetchOptions';
 import { EmptyMessage } from '../shared/components/EmptyMessage';
 import { ErrorMessage } from '../shared/components/ErrorMessage';
@@ -13,13 +13,11 @@ import { BackLink } from '../shared/components/BackLink';
 import { Content } from './components/Content';
 import { Skeleton } from '../shared/components/Skeleton';
 import { ContentSkeleton } from './components/ContentSkeleton';
-import { useEffect } from 'react';
 
 export const ProductPage = () => {
   const { productId } = useParams<{
     productId: string;
   }>();
-  const location = useLocation();
 
   const {
     data: productData,
@@ -34,13 +32,6 @@ export const ProductPage = () => {
       dependency: [productId],
     },
   );
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant',
-    });
-  }, [location.pathname]);
 
   if (error) {
     return (

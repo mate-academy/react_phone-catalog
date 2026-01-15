@@ -10,10 +10,12 @@ import { ROUTES } from './constants/routes';
 import { FavouriteProvider } from './context/FavouritesContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { ScrollToTop } from './widgets/ScrollToTop';
 
 export const Root = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ThemeProvider>
         <FavouriteProvider>
           <CartProvider>

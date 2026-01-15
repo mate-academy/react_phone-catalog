@@ -15,6 +15,7 @@ interface Props {
   prevBtnDisabled: boolean;
   totalPages: number;
   visiblePages: Page[];
+  className?: string;
 }
 
 export const Pagination: FC<Props> = ({
@@ -26,13 +27,14 @@ export const Pagination: FC<Props> = ({
   prevBtnDisabled = false,
   totalPages,
   visiblePages,
+  className,
 }) => {
   if (!totalPages || totalPages <= 1) {
     return;
   }
 
   return (
-    <div className={classNames(styles.wrapper, 'container')}>
+    <div className={classNames(styles.wrapper, 'container', className)}>
       <Button
         variant="outline"
         className={styles.arrowBtn}

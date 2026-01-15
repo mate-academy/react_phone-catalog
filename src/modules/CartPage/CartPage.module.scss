@@ -3,8 +3,10 @@
 .wrapper {
   padding-block: 24px 56px;
   gap: 24px;
+  flex: 1;
+  width: 100%;
 
-  @include page-grid;
+  @include flex-column;
 
   @include on-tablet {
     padding-block: 24px 64px;
@@ -16,14 +18,15 @@
 }
 
 .title {
-  grid-column: 1 / -1;
   color: $primary-color;
 
   @include transition(color, $color-transition);
 }
 
-.message {
-  grid-column: 1 / -1;
+.mainContent {
+  gap: 24px;
+
+  @include page-grid;
 }
 
 .cartList {
@@ -45,6 +48,12 @@
     position: sticky;
     top: calc(var(--header-height) + 16px);
   }
+}
+
+.messageWrapper {
+  flex: 1;
+
+  @include flex-center;
 }
 
 .emptyCartImg {

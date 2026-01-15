@@ -63,38 +63,42 @@ export const CartPage = () => {
       <h1 className={styles.title}>Cart</h1>
 
       {error && (
-        <ErrorMessage
-          message={error}
-          onRetry={handleFetch}
-          className={styles.message}
-        />
+        <div className={styles.messageWrapper}>
+          <ErrorMessage
+            message={error}
+            onRetry={handleFetch}
+            className={styles.message}
+          />
+        </div>
       )}
 
-      {items.length === 0 && (
-        <Message className={styles.message}>
-          <Message.Icon>
-            <img
-              src="img/cart-is-empty.png"
-              alt="cart is empty"
-              className={styles.emptyCartImg}
-            />
-          </Message.Icon>
-          <Message.Title>Cart is empty</Message.Title>
-          <Message.Actions>
-            <Button
-              variant="primary"
-              size="medium"
-              to={ROUTES.PHONES}
-              className={styles.shopBtn}
-            >
-              Go shopping
-            </Button>
-          </Message.Actions>
-        </Message>
+      {!loading && items.length === 0 && (
+        <div className={styles.messageWrapper}>
+          <Message className={styles.message}>
+            <Message.Icon>
+              <img
+                src="img/cart-is-empty.png"
+                alt="cart is empty"
+                className={styles.emptyCartImg}
+              />
+            </Message.Icon>
+            <Message.Title>Cart is empty</Message.Title>
+            <Message.Actions>
+              <Button
+                variant="primary"
+                size="medium"
+                to={ROUTES.PHONES}
+                className={styles.shopBtn}
+              >
+                Go shopping
+              </Button>
+            </Message.Actions>
+          </Message>
+        </div>
       )}
 
-      {items.length !== 0 && (
-        <>
+      {!error && items.length !== 0 && (
+        <div className={styles.mainContent}>
           <section className={styles.cartList}>
             <CartList
               items={preparedData}
@@ -109,7 +113,7 @@ export const CartPage = () => {
             onCheckout={toggle}
             isLoading={loading}
           />
-        </>
+        </div>
       )}
 
       <CartModal isOpen={isOpen} closeModal={close} onSubmit={clearCart} />

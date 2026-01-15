@@ -15,9 +15,10 @@ import { Pagination } from '../shared/components/Pagination/Pagination';
 import { usePagination } from '../shared/hooks/usePagination';
 import { Category } from '@/types/Category';
 import { FC, useMemo } from 'react';
-import { CategoryUI } from '../shared/types/CategoryUI';
 import { PerPageOption } from '../shared/types/PerPageOption';
 import { FetchOptions } from '@/types/FetchOptions';
+import { ErrorMessage } from '../shared/components/ErrorMessage';
+import { EmptyMessage } from '../shared/components/EmptyMessage';
 
 interface Props {
   category: Category;
@@ -28,9 +29,7 @@ const PRODUCT_SKELETONS_COUNT = 16;
 export const CatalogPage: FC<Props> = ({ category }) => {
   const [searchParams] = useSearchParams();
 
-  const productCategory = categories.find(
-    cat => cat.type === category,
-  ) as CategoryUI;
+  const productCategory = categories.find(cat => cat.type === category);
 
   const {
     data: products,
@@ -38,8 +37,13 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     error,
     handleFetch,
   } = useFetch<Product[]>(
-    (options: FetchOptions) =>
-      getProductsByCategory(productCategory.type, options),
+    (options: FetchOptions) => {
+      if (!productCategory) {
+        return Promise.resolve([]);
+      }
+
+      return getProductsByCategory(productCategory.type, options);
+    },
     {
       initialValue: [],
       dependency: [category],
@@ -55,7 +59,6 @@ export const CatalogPage: FC<Props> = ({ category }) => {
     {
       totalItems: products.length,
       itemsPerPage: normilizedPerPage,
-      scrollToTop: true,
     },
     [sort, perPage],
   );
@@ -74,6 +77,10 @@ export const CatalogPage: FC<Props> = ({ category }) => {
 
   const disabledFilters =
     loading || Boolean(error) || preparedProducts.length === 0;
+
+  if (!productCategory) {
+    return null;
+  }
 
   return (
     <div className={classNames('container', styles.wrapper)}>
@@ -97,17 +104,39 @@ export const CatalogPage: FC<Props> = ({ category }) => {
         />
       </section>
 
-      <section className={styles.products}>
-        <ProductsList
-          products={preparedProducts}
-          isLoading={loading}
-          itemsPerPage={PRODUCT_SKELETONS_COUNT}
-          error={error}
-          onRefetch={handleFetch}
-        />
-      </section>
+      <section className={styles.mainContent}>
+        {error && (
+          <div className={styles.messageWrapper}>
+            <ErrorMessage message={error} onRetry={handleFetch} />
+          </div>
+        )}
 
-      <Pagination {...pagination} />
+        {!loading && !error && preparedProducts.length === 0 && (
+          <div className={styles.messageWrapper}>
+            <EmptyMessage
+              message={`No ${productCategory.title.toLowerCase()} available`}
+            />
+          </div>
+        )}
+
+        {loading && (
+          <ProductsList
+            isLoading
+            products={[]}
+            itemsPerPage={PRODUCT_SKELETONS_COUNT}
+          />
+        )}
+
+        {preparedProducts.length !== 0 && !loading && (
+          <div>
+            <ProductsList
+              products={preparedProducts}
+              itemsPerPage={PRODUCT_SKELETONS_COUNT}
+            />
+            <Pagination {...pagination} className={styles.pagination} />
+          </div>
+        )}
+      </section>
     </div>
   );
 };

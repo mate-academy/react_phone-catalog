@@ -27,6 +27,8 @@ body {
 .main {
   height: 100%;
   flex: 1;
+
+  @include flex-column;
 }
 
 .hidden {

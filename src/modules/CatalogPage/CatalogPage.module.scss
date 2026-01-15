@@ -2,6 +2,9 @@
 
 .wrapper {
   padding-block: 24px 56px;
+  flex: 1;
+
+  @include flex-column;
 
   @include on-tablet {
     padding-block: 24px 64px;
@@ -39,14 +42,21 @@
   }
 }
 
-.products {
-  margin-block: 24px;
-
-  @include on-tablet {
-    margin-block: 24px 40px;
-  }
+.mainContent {
+  margin-top: 24px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.errorWrapper {
+.messageWrapper {
   @include flex-center;
+}
+
+.pagination {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
 }

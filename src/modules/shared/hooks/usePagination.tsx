@@ -16,12 +16,10 @@ export const usePagination = (
     totalItems,
     itemsPerPage,
     siblingCount = 1,
-    scrollToTop = false,
   }: {
     totalItems: number;
     itemsPerPage: number;
     siblingCount?: number;
-    scrollToTop?: boolean;
   },
   resetDependency: unknown[] = [],
 ) => {
@@ -49,7 +47,7 @@ export const usePagination = (
 
       setSearchParams(getSearchWith({ page: pageValue }, searchParams));
     },
-    [scrollToTop, currentPage, searchParams, setSearchParams],
+    [currentPage, searchParams, setSearchParams],
   );
 
   const handleNextPage = useCallback(() => {
@@ -73,15 +71,6 @@ export const usePagination = (
       handleChangePage(null);
     }
   }, resetDependency);
-
-  useEffect(() => {
-    if (scrollToTop) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }
-  }, [currentPage, scrollToTop]);
 
   const visiblePages: Page[] = useMemo(() => {
     const totalPageNumbers = siblingCount * 2 + BOUNDARY_COUNT * 2 + 3;
