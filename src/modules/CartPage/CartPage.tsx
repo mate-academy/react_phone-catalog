@@ -36,7 +36,7 @@ export const CartPage = () => {
     (options: FetchOptions) => getProductsByIds(productsIdsInCart, options),
     {
       initialValue: [],
-      dependency: [productsIdsInCart],
+      dependency: [productsIdsInCart.join(',')],
     },
   );
 
