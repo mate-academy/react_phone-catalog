@@ -72,9 +72,9 @@ export const ProductsSlider: React.FC<Props> = ({
         }}
         onBeforeInit={swiper => {
           // eslint-disable-next-line no-param-reassign
-          (swiper.params.navigation).prevEl = prevRef.current;
+          swiper.params.navigation.prevEl = prevRef.current;
           // eslint-disable-next-line no-param-reassign
-          (swiper.params.navigation).nextEl = nextRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
         }}
       >
         {products.map(product => (

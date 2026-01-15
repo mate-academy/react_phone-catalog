@@ -4,9 +4,9 @@ import { Header } from './modules/shared/components/Header';
 import { Footer } from './modules/shared/components/Footer';
 
 export const App = () => (
-  <div className="App">
+  <div className="wrapper">
     <Header />
-    <main className="section">
+    <main className="main">
       <div className="container">
         <Outlet />
       </div>

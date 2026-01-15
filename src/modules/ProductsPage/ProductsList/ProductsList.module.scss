@@ -1,0 +1,11 @@
+@import '../../shared/styles/utils/viriables';
+@import '../../shared/styles/utils/mixins';
+
+.productsList {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}

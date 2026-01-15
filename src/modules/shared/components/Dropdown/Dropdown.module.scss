@@ -1,0 +1,74 @@
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
+
+.dropdown {
+  --dropdown-width: 176px;
+  
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.dropdownLabel {
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.dropdownControl {
+  width: var(--dropdown-width);
+  height: 40px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid $color-hover-bg;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $color-secondary;
+  }
+}
+
+.focus {
+  border: 1px solid $color-primary;
+}
+
+.dropdownMenuBlock {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  width: calc(var(--dropdown-width) + 24px);
+  left: 0;
+  top: 4px;
+  z-index: 10;
+  background-color: $color-white;
+  list-style-type: none;
+  padding: 8px 0;
+  border: 1px solid $color-icons;
+}
+
+.dropdownItem {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 12px;
+  color: $color-secondary;
+
+  &:hover {
+    background-color: $color-elements;
+    color: $color-primary;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.selected {
+  background-color: $color-elements;
+  color: $color-primary;
+}

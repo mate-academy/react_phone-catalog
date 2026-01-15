@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
+import { useEffect } from 'react';
 
 type Props = {
   isBurgerMenuOpen: boolean;
@@ -10,6 +11,16 @@ export const BurgerMenu: React.FC<Props> = ({ isBurgerMenuOpen, onClose }) => {
   const handleNavigate = () => {
     onClose();
   };
+
+  useEffect(() => {
+    if (isBurgerMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => document.body.classList.remove('no-scroll');
+  }, [isBurgerMenuOpen]);
 
   return (
     <div

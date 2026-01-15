@@ -3,10 +3,13 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
-  showDiscount: boolean;
+  showDiscount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showDiscount = false,
+}) => {
   return (
     <div className={styles.card}>
       <a href="#" className={styles.productImgLink}>
