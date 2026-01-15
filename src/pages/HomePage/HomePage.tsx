@@ -6,6 +6,7 @@ import { Banner } from '../../components/Banner';
 import { CategoryCard } from '../../components/CategoryCard';
 import { getCategoryCounts } from '../../utils/getCategoryCounts';
 import { Product } from '../../types/Product';
+
 export const HomePage: React.FC = () => {
   const trackRefNew = useRef<HTMLDivElement>(null);
   const trackRefHot = useRef<HTMLDivElement>(null);

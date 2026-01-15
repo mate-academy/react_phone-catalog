@@ -28,7 +28,7 @@
          pointer-events: none;
 
          transition: transform 0.3s ease;
-         
+
        /* display: block; */
     }
   }
@@ -121,7 +121,8 @@
   &__title {
     font-size: 20px;
     font-weight: 600;
-    color: #313237;
+    
+    /* color: #313237; */
     line-height: 100%;
   }
 

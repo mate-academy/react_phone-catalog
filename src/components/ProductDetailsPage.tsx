@@ -305,7 +305,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <button
                     key={src}
                     className={`pd-gallery__thumb ${
-                      i === activeImage ? 'pd-gallery__thumb--active' : ''
+                      i === activeImage ? `pd-gallery__thumb--active` : ''
                     }`}
                     onClick={() => setActiveImage(i)}
                   >

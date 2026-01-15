@@ -25,7 +25,8 @@
 
 .breadcrumbs__link {
   cursor: pointer;
-  color:  #313237;
+
+  /* color:  #313237; */
   text-transform: capitalize;
 
   &:hover {
@@ -65,7 +66,8 @@
     font-size: 32px;
     line-height: 41px;
     font-weight: 800;
-    color: #313237;
+
+   /* color: #313237; */
     letter-spacing: -1%;
 
 
@@ -147,7 +149,6 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -1%;
-    color: #313237;
   }
 
   &__price-old {
@@ -240,9 +241,6 @@
 
   }
 
-  &__spec-value {
-    color: #313237;
-  }
 
   /* ---- BOTTOM ---- */
 
@@ -294,7 +292,6 @@
     margin: 0 0 16px;
     font-size: 20px;
     font-weight: 800;
-    color: #313237;
   }
 
   &__text-block {
@@ -310,7 +307,7 @@
 font-weight: 800;
 font-size: 22px;
 line-height: 140%;
-color: #313237;
+
  }
 
  &__specs-title1{
@@ -318,14 +315,13 @@ color: #313237;
 font-weight: 700;
 font-size: 20px;
 line-height: 100%;
-color: #313237;
+
  }
 
   &__specs-list {
     display: grid;
     row-gap: 8px;
     font-size: 14px;
-    color: #313237;
 
     div {
       display: flex;
@@ -537,7 +533,7 @@ padding-bottom: 16px;
     min-width: 56px;
     height: 32px;
     padding: 0 8px;
-    color: #313237;
+
 
     border: 1px solid #e2e6e9;
     background: #fff;

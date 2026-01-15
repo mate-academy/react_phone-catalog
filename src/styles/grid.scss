@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
+  justify-content: center;
 
   @media (max-width: 1199px) {
     grid-template-columns: repeat(12, 1fr);
