@@ -1,4 +1,6 @@
 
+@use './vars' as *;
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -11,7 +13,7 @@
   }
 }
 
-@mixin constent-padding-inline {
+@mixin content-padding-inline {
   padding-inline: 16px;
 
   @include on-tablet {
@@ -26,12 +28,8 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition:
-    #{$property},
-    0.3s;
-  &:hover {
-    #{$property}: $toValue;
-  }
+  transition: #{ $property } 0.3s;
+  &:hover { #{ $property }: $toValue; }
 }
 
 @mixin page-grid {

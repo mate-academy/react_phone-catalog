@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './HomePage.module.scss';
 //import ProductsSlider from './components/ProductsSlider/index';
 //import PicturesSlider from './components/PicturesSlider/index';
 
@@ -51,6 +52,35 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <h1 className="visually-hidden">Product Catalog</h1>
+      <div className={styles.homePage}>
+        <div className={styles.homePage__content}>
+          <div className={styles.homePage__bottom}>
+            <div className={styles.homePage__up}>
+              <h2 className={styles.homePage__title}>
+                <span className={styles['homePage__title-welcome']}>
+                  Welcome to Nice Gadgets store!
+                </span>
+              </h2>
+            </div>
+            <div className={styles.homePage__down}>
+              <div
+                className={`${styles.homePage__button} ${styles['homePage__button-slider-left']}`}
+              ></div>
+              <div className={styles.homePage__banner}></div>
+              <div
+                className={`${styles.homePage__button} ${styles['homePage__button-slider-right']}`}
+              ></div>
+            </div>
+            <div className={styles.homePage__dots}>
+              <img
+                src="img/dots-2x.png"
+                alt="Dots Style"
+                className={styles.homePage__dots}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <h3>Brand new models</h3>
       <div className="product-catalog">
         {loading && <div>Loading...</div>}

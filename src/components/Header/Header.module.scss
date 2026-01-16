@@ -1,0 +1,134 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  z-index: 1;
+  background-color: $header-background-color;
+
+  width: 320px;
+  height: 48px;
+
+  @include on-tablet {
+    width: 640px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 1440px;
+    height: 6px;
+  }
+}
+
+.icon {
+  border: 1px solid red;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  margin: 16px;
+
+  box-sizing: border-box;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &__background {
+    border-left: 1px solid #E2E6E9;
+  }
+
+  &--menu {
+    background-image: url(/img/icons/icon-burger-menu-2x.png);
+    width: 16px;
+    height: 16px;
+    display: block;
+
+    @include on-tablet {
+        display: none;
+    }
+
+  }
+
+  &--shopping-bag-cart {
+    display: none;
+
+    @include on-tablet {
+
+      display: block;
+      background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
+      width: 16px;
+      height: 16px;
+    }
+
+    }
+
+  &--favourites {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      background-image: url(/img/icons/icon-favourites-2x.png);
+      width: 16px;
+      height: 16px;
+      }
+  }
+
+  &--close {
+    background-image: url(/img/icons/icon-close-2x.png);
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.topBar {
+  padding-block: 0;
+  border-bottom: 1px solid #E2E6E9;
+
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  &__menu {
+      display: none ;
+      @include on-tablet {
+        height: 48px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        }
+
+      @include on-desktop {
+          gap: 64px;
+      }
+  }
+
+  &__icons {
+    display: flex;
+    width: object-fit;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  &__logo-link {
+    display: flex;
+      border: 10px solid red;
+  }
+
+  &__logo {
+    width: 96px;
+    height: 48px;
+
+  @include on-desktop {
+      width: 96px;
+      height: 48px;
+  }
+
+  }
+}

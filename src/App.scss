@@ -1,9 +1,109 @@
+@use './utils/vars' as *;
+@import './utils/mixins.scss' ;
 
-@use 'utils/vars' as *;
-@import 'utils/mixins';
-@import 'blocks/header';
-@import 'blocks/page';
-@import 'blocks/top-bar';
-@import 'blocks/icon';
-@import 'blocks/menu';
-@import 'blocks/nav';
+.page {
+  font-family: Monte, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #0F0F11;
+
+  scroll-behavior: smooth;
+
+  h1.visually-hidden {
+    /* Contain the text content within a 1px box */
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+
+    /* Prevents words from running together for screen readers */
+    white-space: nowrap;
+    width: 1px;
+}
+
+h2 {
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color:#0F0F11;
+  margin: auto;
+  width: 288px;
+  height: 82px;
+
+  @include on-tablet {
+  font-size: 48px;
+  line-height: 56px;
+  width: 592px;
+  height: 120px;
+  margin-top: auto;
+  }
+
+  @include on-desktop {
+    width: 1132px;
+    height: 56px;
+    margin-top: auto;
+    white-space: nowrap;
+  }
+}
+
+h3 {
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: #0F0F11;
+
+  margin-top: 56px;
+}
+
+р4 {
+  font-weight: 700;
+  font-style: SemiBold;
+  font-size: 20px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #0F0F11;
+}
+
+h5 {
+  font-weight: 700;
+  font-style: SemiBold;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #0F0F11;
+}
+   &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translate(-100);
+
+    &:target {
+      opacity: 1;
+      transform: translate(0);
+      pointer-events: all;
+    }
+  }
+}

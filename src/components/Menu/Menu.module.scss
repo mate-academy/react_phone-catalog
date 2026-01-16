@@ -1,3 +1,6 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
 .menu {
   box-sizing: border-box;
   background-color: $menu-background-color;
@@ -10,11 +13,11 @@
 
   text-decoration: none;
   color: #89939A;
-  overflow: auto; /* to scroll the menu if needed */
+  overflow: auto;
   height: 100vh;
 
   &__top {
-    position: sticky; /* to keep cross always visible */
+    position: sticky;
     top: 0;
     z-index: 1;
     background-color: $menu-background-color;
@@ -24,6 +27,6 @@
     margin-top: 24px;
     margin-bottom: 24px;
   }
-
-
 }
+
+
