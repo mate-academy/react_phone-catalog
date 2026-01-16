@@ -8,12 +8,22 @@ import { getProductImage } from '../../utils/productHelper';
 
 interface Props {
   product: Product;
+  // Додав, щоб ігнорувати знижку для слайдера "Brand new models" як по Figma
+  isFullPrice?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, isFullPrice = false }) => {
   const img = getProductImage(product);
   const linkId = product.itemId || product.id;
-  const currentPrice = product.priceDiscount ?? product.price ?? 0;
+
+  // Логіка як по Figma для слайдера "Brand new models"
+  const currentPrice = isFullPrice
+    ? (product.priceRegular ?? product.fullPrice ?? 0)
+    : (product.priceDiscount ?? product.price ?? 0);
+
+  // Логіка як не по Figma для слайдера "Brand new models"
+  // const currentPrice = product.priceDiscount ?? product.price ?? 0;
+
   const oldPrice = product.priceRegular ?? product.fullPrice ?? 0;
   const hasDiscount = oldPrice > currentPrice;
 

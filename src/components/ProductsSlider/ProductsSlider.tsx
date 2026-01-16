@@ -6,9 +6,12 @@ import { ProductCard } from '../ProductCard';
 interface Props {
   title: string;
   products: Product[];
+
+  // І тепер тут додав, щоб ігнорувати знижку для слайдера "Brand new models" як по Figma
+  isFullPrice?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products, isFullPrice = false }) => {
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 
@@ -81,7 +84,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       <div className={styles.productsSlider__list} ref={sliderRef}>
         {products.map(product => (
           <div className={styles.productsSlider__cardWrap} key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard
+              product={product}
+              isFullPrice={isFullPrice}
+            />
           </div>
         ))}
       </div>

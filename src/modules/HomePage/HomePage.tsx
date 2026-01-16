@@ -44,7 +44,11 @@ export const HomePage: React.FC = () => {
       <section
         className={`${styles.homePage__section} ${styles.homePage__productsSlider}`}
       >
-        <ProductsSlider title="Brand new models" products={brandNew} />
+        <ProductsSlider
+          title="Brand new models"
+          products={brandNew}
+          isFullPrice={true}
+        />
       </section>
       <section
         className={`${styles.homePage__section} ${styles.homePage__categoryBlock}`}
