@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -13,7 +13,6 @@ import { ProductOptions } from './components/ProductOptions/ProductOptions';
 import { AddToCartBtn, FavoriteBtn } from '../../components/Buttons';
 import { TechSpecs } from '../../components/TechSpecs';
 
-import { delay } from '../../utils';
 import styles from './ProductDetailsPage.module.scss';
 import { ErrorState } from '../../components/ErrorState';
 
@@ -32,30 +31,37 @@ export const ProductDetailsPage: React.FC = () => {
   const [allVariants, setAllVariants] = useState<Product[]>([]);
   const [productNumericId, setProductNumericId] = useState<number>(0);
 
-  const load = async (id = productId) => {
-    setLoading(true);
-    setError(false);
+  const load = useCallback(
+    async (id = productId) => {
+      setLoading(true);
+      setError(false);
 
-    try {
-      const cat = category as Category;
-      const [fullInfo, shortInfo] = await Promise.all([
-        getProducts(cat),
-        getProductList(),
-        delay(800),
-      ]);
+      try {
+        const cat = category as Category;
 
-      if (!fullInfo || fullInfo.length === 0) {
-        setError(true);
+        const [fullInfo, shortInfo] = await Promise.all([
+          getProducts(cat),
+          getProductList(),
+        ]);
 
-        return;
-      }
+        if (!fullInfo || fullInfo.length === 0) {
+          setError(true);
 
-      const found = fullInfo.find(p => p.id === id || p.itemId === id) || null;
+          return;
+        }
 
-      setProduct(found);
-      setProductNumericId(Math.floor(100000 + Math.random() * 900000));
+        const found =
+          fullInfo.find(p => p.id === id || p.itemId === id) || null;
 
-      if (found) {
+        if (!found) {
+          setProduct(null);
+
+          return;
+        }
+
+        setProduct(found);
+        setProductNumericId(Math.floor(100000 + Math.random() * 900000));
+
         const variants = fullInfo.filter(
           p =>
             p.namespaceId === found.namespaceId &&
@@ -69,18 +75,18 @@ export const ProductDetailsPage: React.FC = () => {
           .sort(() => 0.5 - Math.random());
 
         setSuggested(shuffled.slice(0, 10));
+      } catch (err) {
+        setError(true);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [category, productId],
+  );
 
   useEffect(() => {
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productId]);
+  }, [load]);
 
   const handleColor = (c: string) => {
     if (!product) {

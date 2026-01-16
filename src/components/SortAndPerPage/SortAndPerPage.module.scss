@@ -7,9 +7,9 @@
 
   &__group {
     grid-column: span 2;
-    display: flex;
     flex-direction: column;
     gap: 4px;
+    display: flex;
 
     @include on-tablet {
       &:nth-child(1) {
@@ -34,17 +34,17 @@
   &__select {
     @include button-icon-style;
 
+    appearance: none;
     outline: none;
+    transition: border $effectDuration;
+    width: 100%;
     height: 40px;
     padding: 0 12px;
     color: $primary;
-    appearance: none;
-    transition: border $effectDuration;
-    width: 100%;
 
     &:focus {
-      outline: none;
       border-color: $primary;
+      outline: none;
     }
   }
 
@@ -53,9 +53,9 @@
     top: 50%;
     right: 12px;
     transform: translateY(-50%);
+    opacity: 0.6;
+    pointer-events: none;
     width: 16px;
     height: 16px;
-    pointer-events: none;
-    opacity: 0.6;
   }
 }

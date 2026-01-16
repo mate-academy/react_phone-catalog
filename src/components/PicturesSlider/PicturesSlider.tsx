@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
@@ -23,20 +23,15 @@ const banners = [
 
 export const PicturesSlider: React.FC = () => {
   const [active, setActive] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const bannersCount = banners.length;
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       setActive(prev => (prev + 1) % bannersCount);
     }, 5000);
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [bannersCount]);
+    return () => clearInterval(interval);
+  }, [active, bannersCount]);
 
   const goTo = (idx: number) => setActive(idx);
   const prev = () => setActive(a => (a - 1 + bannersCount) % bannersCount);

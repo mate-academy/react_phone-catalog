@@ -2,7 +2,7 @@ import React from 'react';
 import { Product } from '../../../../api/products';
 import styles from './ProductOptions.module.scss';
 import classNames from 'classnames';
-import { ColorMap } from '../../../../api/ColorMap';
+import { COLOR_MAP } from '../../../../api/ColorMap';
 
 interface Props {
   product: Product;
@@ -38,7 +38,7 @@ export const ProductOptions: React.FC<Props> = ({
               >
                 <span
                   className={styles.productOptions__colorInternal}
-                  style={{ background: ColorMap[c] || c }}
+                  style={{ background: COLOR_MAP[c] || c }}
                 />
                 <input
                   type="radio"

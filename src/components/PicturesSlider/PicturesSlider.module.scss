@@ -43,20 +43,19 @@
   }
 
   &__content {
-    padding: 0;
-    visibility: 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+    padding: 0;
     background-color: #000;
-    align-items: center;
     
     @include on-tablet {
-      border-radius: 4px;
       flex-direction: row;
+      border-radius: 4px;
     }
   }
 
@@ -85,13 +84,13 @@
   }
 
   &__right {
-    box-sizing: border-box;
     position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    display: flex;
     overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
     height: 100%;
 
     @include on-tablet {
@@ -161,13 +160,13 @@
     display: none;
     
     @include on-tablet {
-      color: $placeholders;
-      font-size: 7px;
+      flex: 1 1 auto;
+      display: block;
       margin: 0;
       margin-top: 4px;
-      display: block;
-      flex: 1 1 auto;
+      font-size: 7px;
       text-align: left;
+      color: $placeholders;
     }
 
     @include on-desktop {
@@ -178,49 +177,48 @@
 
   &__btn {
     display: none;
+    transition: all 0.3s ease 0s;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 90px;
     height: 26px;
-    border-radius: 25px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $white;
     background-color: transparent;
     font-size: 7px;
+    color: $white;
+    text-transform: uppercase;
+    text-decoration: none;
     letter-spacing: 0.1em;
-    box-sizing: border-box;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease 0s;
 
     &:hover {
-      background-color: $elements;
-      border: 1px solid $primary;
-      color: $primary;
       box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid $primary;
+      background-color: $elements;
+      color: $primary;
     }
 
     @include on-tablet {
       @include center;
-
-      display: flex;
     }
 
     @include on-desktop {
-      width: 200px;
-      font-size: 14px;
-      height: 62px;
       border-radius: 50px;
+      width: 200px;
+      height: 62px;
+      font-size: 14px;
     }
   }
 
   &__rightTitle {
+    z-index: 1;
+    margin: 0;
+    padding-top: 36px;
     font-size: 26px;
     font-weight: 600;
     line-height: 24px;
-    color: $white;
-    margin: 0;
-    padding-top: 36px;
     text-align: center;
     text-shadow: $white-text-shadow;
+    color: $white;
     
     @include on-tablet {
       padding-top: 26px;
@@ -236,11 +234,11 @@
   }
 
   &__rightText {
-    color: $secondary;
+    z-index: 1;
     font-size: 12px;
-    
     text-align: center;
-    
+    color: $secondary;
+
     @include on-tablet {
       margin: 8px 0;
       padding-bottom: 8px;
@@ -248,20 +246,20 @@
     }
 
     @include on-desktop {
-      font-size: 14px;
       padding-bottom: 18px;
+      font-size: 14px;
     }
   }
 
   &__bannerImg {
-    max-width: 320px;
     position: absolute;
     bottom: 50%;
     transform: translateY(80%);
     width: 100%;
+    max-width: 320px;
     height: auto;
     object-fit: contain;
-  
+
     @include on-tablet {
       max-width: 100%;
       transform: translateY(70%);
@@ -270,24 +268,22 @@
 
   &__dots {
     grid-column: 1 / -1;
-    gap: 10px;
-    padding-top: 12px;
 
     @include center;
+
+    gap: 10px;
+    padding-top: 12px;
   }
 
   &__dot {
+    transition: background-color 0.3s ease 0s;
+    border: none;
     width: 14px;
     height: 4px;
     background: $elements;
-    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease 0s;
 
-    &:hover {
-      background: $primary;
-    }
-
+    &:hover,
     &--active {
       background: $primary;
     }

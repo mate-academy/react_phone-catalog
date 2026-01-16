@@ -33,6 +33,10 @@ export const CategoryBlock: React.FC = () => {
     fetchCounts();
   }, []);
 
+  const phoneModels = `${counts.phones} model${counts.phones !== 1 ? 's' : ''}`;
+  const tabletModels = `${counts.tablets} model${counts.tablets !== 1 ? 's' : ''}`;
+  const accessoryModels = `${counts.accessories} model${counts.accessories !== 1 ? 's' : ''}`;
+
   return (
     <section className={styles.categoryBlock}>
       <h2 className={styles.categoryBlock__title}>Shop by category</h2>
@@ -44,9 +48,7 @@ export const CategoryBlock: React.FC = () => {
             alt="category phones"
           />
           <h4 className={styles.categoryBlock__name}>Mobile phones</h4>
-          <p className={styles.categoryBlock__count}>
-            {`${counts.phones} model${counts.phones !== 1 ? 's' : ''}`}
-          </p>
+          <p className={styles.categoryBlock__count}>{phoneModels}</p>
         </Link>
 
         <Link to="/tablets" className={styles.categoryBlock__item}>
@@ -56,9 +58,7 @@ export const CategoryBlock: React.FC = () => {
             alt="category tablets"
           />
           <h4 className={styles.categoryBlock__name}>Tablets</h4>
-          <p className={styles.categoryBlock__count}>
-            {`${counts.tablets} model${counts.tablets !== 1 ? 's' : ''}`}
-          </p>
+          <p className={styles.categoryBlock__count}>{tabletModels}</p>
         </Link>
 
         <Link to="/accessories" className={styles.categoryBlock__item}>
@@ -68,9 +68,7 @@ export const CategoryBlock: React.FC = () => {
             alt="category accessories"
           />
           <h4 className={styles.categoryBlock__name}>Accessories</h4>
-          <p className={styles.categoryBlock__count}>
-            {`${counts.accessories} model${counts.accessories !== 1 ? 's' : ''}`}
-          </p>
+          <p className={styles.categoryBlock__count}>{accessoryModels}</p>
         </Link>
       </div>
     </section>

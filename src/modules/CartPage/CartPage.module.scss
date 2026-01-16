@@ -22,17 +22,17 @@
     @include shadow-box;
 
     grid-column: 1 / -1;
-    box-sizing: border-box;
-    padding: 24px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 24px;
 
     @include on-desktop {
       grid-column: span 8;
-      gap: 24px;
       max-height: 206px;
+      gap: 24px;
     }
   }
 
@@ -43,8 +43,8 @@
   &__totalPrice {
     @include h2-style;
     
-    text-align: center;
     font-size: 32px;
+    text-align: center;
   }
 
   &__totalLabel {
@@ -67,24 +67,24 @@
     @include center;
 
     flex-direction: column;
-    text-align: center;
     animation: fade-in 0.5s ease;
+    text-align: center;
   }
 
   &__orderId {
     @include body-text-style;
 
-    color: $secondary;
     margin-bottom: 16px;
+    color: $secondary;
   }
 
   &__loaderWrapper {
     @include center;
 
-    height: 60vh;
-    display: flex;
     flex-direction: column;
     gap: 20px;
+    display: flex;
+    height: 60vh;
   }
 
   &__loaderText {

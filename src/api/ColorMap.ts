@@ -1,4 +1,4 @@
-export const ColorMap: Record<string, string> = {
+export const COLOR_MAP: Record<string, string> = {
   rosegold: 'lightpink',
   'rose gold': 'lightpink',
   spacegray: '#515151',

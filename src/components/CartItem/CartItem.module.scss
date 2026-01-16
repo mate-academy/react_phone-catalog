@@ -5,13 +5,13 @@
 
   grid-column: 1 / -1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   border-radius: 4px;
-  padding: 16px 16px 0;
   min-height: 128px;
-  flex-wrap: wrap;
+  padding: 16px 16px 0;
 
   @include on-tablet {
     flex-wrap: nowrap;

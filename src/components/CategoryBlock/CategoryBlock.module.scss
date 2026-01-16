@@ -27,11 +27,11 @@
   }
 
   &__img {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
     width: 100%;
     height: auto;
-    overflow: hidden;
-    display: block;
-    border-radius: 6px;
 
     @include hover(transform, scale(1.05));
   }

@@ -34,37 +34,9 @@ export interface Product {
 
 export async function getProductList(category?: Category): Promise<Product[]> {
   const res = await fetch('./api/products.json');
-  const all: Array<{
-    id: number;
-    itemId: string;
-    category: string;
-    name: string;
-    fullPrice: number;
-    price: number;
-    year: number;
-    image: string;
-    capacity: string;
-    color: string;
-    screen?: string;
-    ram?: string;
-  }> = await res.json();
+  const all: Product[] = await res.json();
 
-  return all
-    .filter(p => !category || p.category === category)
-    .map(p => ({
-      id: p.itemId,
-      itemId: p.itemId,
-      category: p.category,
-      name: p.name,
-      fullPrice: p.fullPrice,
-      price: p.price,
-      year: p.year,
-      image: p.image,
-      capacity: p.capacity,
-      color: p.color,
-      screen: p.screen,
-      ram: p.ram,
-    }));
+  return all.filter(p => !category || p.category === category);
 }
 
 export async function getProducts(category: Category): Promise<Product[]> {

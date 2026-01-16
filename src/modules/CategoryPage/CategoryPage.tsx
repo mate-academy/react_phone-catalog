@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { ProductList } from '../../components/ProductList';
 import { getProductList, Product } from '../../api/products';
 import { EmptyState } from '../../components/EmptyState';
@@ -9,7 +9,6 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { SortAndPerPage } from '../../components/SortAndPerPage';
 import { Category, CATEGORY_TITLES } from '../../types';
 import styles from './CategoryPage.module.scss';
-import { delay } from '../../utils';
 
 const SORT_OPTIONS = [
   { value: 'year', label: 'Newest' },
@@ -56,7 +55,7 @@ export const CategoryPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     setError(false);
 
@@ -68,10 +67,7 @@ export const CategoryPage: React.FC = () => {
     }
 
     try {
-      const [data] = await Promise.all([
-        getProductList(category as Category),
-        delay(800),
-      ]);
+      const data = await getProductList(category as Category);
 
       setProducts(data);
     } catch (err) {
@@ -79,12 +75,11 @@ export const CategoryPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category]);
 
   useEffect(() => {
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category]);
+  }, [load]);
 
   const sortProducts = (items: Product[], sortBy: string) => {
     switch (sortBy) {
@@ -118,6 +113,7 @@ export const CategoryPage: React.FC = () => {
   }, [products, query, sort]);
 
   const total = filtered.length;
+  const subtitleLabel = `${total} model${total !== 1 ? 's' : ''}`;
   const perPageNum = perPage === 'all' ? total : +perPage;
   const totalPages = perPageNum === 0 ? 1 : Math.ceil(total / perPageNum);
   const paginated =
@@ -166,7 +162,7 @@ export const CategoryPage: React.FC = () => {
         breadcrumbs={[{ name: title }]}
         // title="Mobile phones"
         title={title}
-        subtitle={`${total} model${total !== 1 ? 's' : ''}`}
+        subtitle={subtitleLabel}
       />
       <SortAndPerPage
         sortValue={sort}
