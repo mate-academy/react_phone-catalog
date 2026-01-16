@@ -1,8 +1,8 @@
-import Slider from "@/organisms/Slider";
+import Slider from '@/organisms/Slider';
 
 const Home = () => {
   return (
-    <div >
+    <div>
       <h1>Home</h1>
       <Slider />
     </div>

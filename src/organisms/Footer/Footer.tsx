@@ -20,8 +20,8 @@ const Footer = () => {
             Back to top
           </label>
           <Link id="goUp" to="/" className={styles.goUp__button}>
-            <Button id='goUp'>
-            <Chevron className={styles.goUp__icon} />
+            <Button id="goUp">
+              <Chevron className={styles.goUp__icon} />
             </Button>
           </Link>
         </div>
