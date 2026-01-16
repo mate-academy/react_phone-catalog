@@ -11,7 +11,11 @@ interface Props {
   isFullPrice?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ title, products, isFullPrice = false }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  isFullPrice = false,
+}) => {
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 
@@ -20,24 +24,25 @@ export const ProductsSlider: React.FC<Props> = ({ title, products, isFullPrice =
   useEffect(() => {
     const slider = sliderRef.current;
 
-    if (slider) {
-      const checkScrollButtons = () => {
-        setIsPrevDisabled(slider.scrollLeft === 0);
-        setIsNextDisabled(
-          slider.scrollLeft + slider.clientWidth >= slider.scrollWidth,
-        );
-      };
-
-      checkScrollButtons();
-      slider.addEventListener('scroll', checkScrollButtons);
-      window.addEventListener('resize', checkScrollButtons);
-
-      return () => {
-        slider.removeEventListener('scroll', checkScrollButtons);
-        window.removeEventListener('resize', checkScrollButtons);
-      };
+    if (!slider) {
+      return;
     }
-  }, []);
+
+    const checkScrollButtons = () => {
+      setIsPrevDisabled(slider.scrollLeft === 0);
+      setIsNextDisabled(
+        slider.scrollLeft + slider.clientWidth >= slider.scrollWidth,
+      );
+    };
+    checkScrollButtons();
+    slider.addEventListener('scroll', checkScrollButtons);
+    window.addEventListener('resize', checkScrollButtons);
+
+    return () => {
+      slider.removeEventListener('scroll', checkScrollButtons);
+      window.removeEventListener('resize', checkScrollButtons);
+    };
+  }, [products]);
 
   const handlePrev = () => {
     if (sliderRef.current) {
@@ -84,10 +89,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products, isFullPrice =
       <div className={styles.productsSlider__list} ref={sliderRef}>
         {products.map(product => (
           <div className={styles.productsSlider__cardWrap} key={product.id}>
-            <ProductCard
-              product={product}
-              isFullPrice={isFullPrice}
-            />
+            <ProductCard product={product} isFullPrice={isFullPrice} />
           </div>
         ))}
       </div>
