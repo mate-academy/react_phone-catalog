@@ -1,3 +1,9 @@
+@use '../../styles/utils/variables' as vars;
+
 .footer {
   height: 96px;
+
+  // box-shadow: 0px -1px 0px 0px vars.$main-gray;
+  border-top: 1px solid vars.$main-gray;
+  background-color: vars.$primary-white-color;
 }

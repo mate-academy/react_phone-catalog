@@ -1,17 +1,16 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 import { useContext } from 'react';
-import { CategoriesContext } from '../../components/CategoriesContext/CategoriesContext';
 import { useLocation } from 'react-router-dom';
+import { CategoriesContext } from '../../Context/CategoriesContext';
+import { ProductsContext } from '../../Context/ProductsContext';
 
 export const CatalogPage = () => {
   const { pathname } = useLocation();
-
-  console.log(pathname.slice(1));
-
   const categories = useContext(CategoriesContext);
+  const products = useContext(ProductsContext);
 
-  console.log(categories);
+  console.log(products);
   const pageTitle =
     categories.find(
       category => category.name.toLowerCase() === pathname.slice(1),

@@ -1,12 +1,20 @@
 import { Outlet } from 'react-router-dom';
-import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { categoriesArr, CategoriesContext } from './Context';
+import { ProductsProvider } from './Context/ProductsContext';
+import './App.scss';
 
 export const App = () => (
-  <div className="App">
-    <Header />
-    <Outlet />
-    <Footer />
-  </div>
+  <CategoriesContext.Provider value={categoriesArr}>
+    <ProductsProvider>
+      <div className="App">
+        <Header />
+        <div className="styled_container">
+          <Outlet />
+        </div>
+        <Footer />
+      </div>
+    </ProductsProvider>
+  </CategoriesContext.Provider>
 );

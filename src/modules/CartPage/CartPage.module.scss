@@ -1,1 +1,11 @@
 /* stylelint-disable no-empty-source */
+@use '../../styles/utils/variables.scss' as vars;
+
+.checkout_button {
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0;
+  background-color: vars.$accent-color;
+  color: vars.$primary-white-color;
+}

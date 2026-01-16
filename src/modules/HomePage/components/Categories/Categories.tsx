@@ -3,13 +3,11 @@
 
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { CategoriesContext } from '../../../../components/CategoriesContext/CategoriesContext';
+import { CategoriesContext } from '../../../../Context/CategoriesContext';
 import s from './Categories.module.scss';
 
 export const Categories = () => {
   const categories = useContext(CategoriesContext);
-
-  console.log('Categories render', categories);
 
   return (
     <div className={s.categories}>

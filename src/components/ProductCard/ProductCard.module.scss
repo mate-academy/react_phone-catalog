@@ -1,0 +1,41 @@
+@use '../../styles/utils/variables' as vars;
+
+.product_card {
+  width: 272px;
+  padding: 32px;
+  border-radius: 8px;
+  border: 1px solid vars.$main-gray;
+}
+
+.card_img {
+  width: max-content !important;
+  margin: auto !important;
+}
+
+.cart_button {
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0;
+  background-color: vars.$accent-color;
+  color: vars.$primary-white-color;
+
+  &__active {
+    background-color: vars.$primary-white-color;
+    color: vars.$accent-color;
+  }
+}
+
+.fav_button {
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  padding: 0;
+}
+
+.fav_icon {
+  width: 16px;
+  height: 16px;
+
+  // padding: 0;
+}

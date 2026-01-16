@@ -1,7 +1,13 @@
+@use '../src/styles/utils/variables.scss' as vars;
+
 iframe {
   display: none;
 }
 
 body {
   font-family: Mont, sans-serif;
+}
+
+.styled_container {
+  background-color: vars.$hover-and-background-color;
 }
