@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--bg-main);
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
 
@@ -37,7 +37,7 @@
     bottom: 0;
     height: 60px;
     width: 100%;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
   }
@@ -65,7 +65,7 @@
     font-size: $uppercase-size;
     line-height: $uppercase-line;
     letter-spacing: $uppercase-track;
-    color: $light-text-secondary;
+    color: var(--text-secondary);
     font-weight: 800;
     height: 100%;
 
@@ -76,23 +76,21 @@
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $light-text-main;
+      background-color: var(--text-main);
       transition: width 0.3s ease;
     }
     &--active {
-      color: $light-text-main;
+      color: var(--text-main);
       &::after {
         width: 100%; // full width when active
       }
     }
   }
 }
+
 .navbar {
   &__icons {
     display: flex;
-    // flex: 1;
-    // justify-content: flex-end;
-    // align-items: center;
   }
   &__iconImage--container {
     position: relative;
@@ -111,7 +109,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    border: 1px solid $light-bg-main;
+    border: 1px solid var(--bg-main);
   }
   &__icon {
     cursor: pointer;
@@ -122,22 +120,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 1px 0 0 0 #e2e6e9;
+    box-shadow: inset 1px 0 0 0 var(--border-color);
     position: relative;
 
     &::after {
       content: '';
       position: absolute;
-      // left: -1px;
       bottom: 0;
       left: 0;
       height: 3px;
       width: 0; // start hidden
-      background-color: $light-text-main;
+      background-color: var(--text-main);
       transition: width 0.3s ease;
     }
     &--active {
-      color: $light-text-main;
+      color: var(--text-main);
       &::after {
         width: 100%; // full width when active
       }

@@ -26,15 +26,35 @@
   }
 
   &__logo {
-    width: 128px;
-    height: 64px;
+    height: 100%;
+    width: 96px;
+    padding: 0 16px;
+
     display: flex;
-    padding: 0 24px;
+    align-items: center;
+    justify-content: flex-start;
+
+    flex-shrink: 0;
+
+    @include desktop {
+      width: 128px;
+      padding: 0 24px;
+    }
+
     img {
-      width: 100%;
-      height: 100%;
       display: block;
+      width: 100%;
+
+      height: 22px;
       object-fit: contain;
+
+      @include tablet {
+        height: 100%;
+      }
+
+      @include desktop {
+        // Desktop sizing
+      }
     }
   }
 
@@ -143,7 +163,6 @@
     &::after {
       content: '';
       position: absolute;
-      // left: -1px;
       bottom: 0;
       left: 0;
       height: 3px;
@@ -168,6 +187,7 @@
     align-items: center;
     box-shadow: inset 1px 0 0 0 var(--border-color);
     color: var(--text-main);
+
     @include tablet {
       display: none;
     }

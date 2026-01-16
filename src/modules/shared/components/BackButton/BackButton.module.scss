@@ -10,6 +10,6 @@
   color: var(--text-secondary);
 
   &:hover {
-    color: $light-text-main;
+    color: var(--text-main);
   }
 }
