@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 
@@ -12,10 +13,12 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   return (
     <div className={styles.card}>
-      <a href="#" className={styles.productImgLink}>
-        <img src={product.image} className={styles.productImg}></img>
-      </a>
-      <p className={styles.productName}>{product.name}</p>
+      <Link to={`/product/${product.itemId}`} className={styles.productImgLink}>
+        <div className={styles.productImgBlock}>
+          <img src={product.image} className={styles.productImg}></img>
+        </div>
+        <p className={styles.productName}>{product.name}</p>
+      </Link>
       <div className={styles.prices}>
         <p className={styles.price}>${product.price}</p>
         {showDiscount && (

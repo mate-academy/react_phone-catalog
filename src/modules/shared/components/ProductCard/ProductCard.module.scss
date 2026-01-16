@@ -13,7 +13,7 @@
   }
 }
 
-.productImgLink {
+.productImgBlock {
   display: flex;
   justify-content: center;
 
@@ -23,6 +23,11 @@
 .productImg {
   max-width: 208px;
   height: 196px;
+}
+
+.productImgLink{
+  text-decoration: none;
+  color: $color-primary;
 }
 
 .productName {

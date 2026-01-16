@@ -1,9 +1,4 @@
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { NotFoundPage } from '../NotFoundPage';
 import { useEffect, useState } from 'react';
@@ -13,6 +8,11 @@ import { Loader } from '../shared/components/Loader';
 import Dropdown from '../shared/components/Dropdown/Dropdown';
 import { Pagination } from '../shared/components/Pagination';
 import { getSearchWith } from '../shared/utils/searchHelper';
+import { checkResponse, wait } from '../shared/utils/apiHelper';
+import ErrorMessage from '../shared/components/ErrorMessage/ErrorMessage';
+import { STATUS, Status } from '../shared/utils/status';
+import { NotFoundError, ServerError } from '../shared/utils/errorTypes';
+import { NotFoundProduct } from '../NotFoundProduct';
 
 const VALID_TYPES = ['phones', 'tablets', 'accessories'] as const;
 
@@ -31,15 +31,9 @@ const perPageOptions = [
   { label: '16', value: '16' },
 ];
 
-function wait(delay: number) {
-  return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
-}
-
 export const ProductsPage = () => {
   const { type } = useParams<{ type?: string }>();
-  const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState<Status>(STATUS.IDLE);
   const [products, setProducts] = useState<Product[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -47,12 +41,6 @@ export const ProductsPage = () => {
   const sort = searchParams.get('sort') || 'age';
   const page = searchParams.get('page') || 1;
   const perPage = searchParams.get('perPage') || 'all';
-
-  const navigate = useNavigate();
-
-  const reloadCurrentRoute = () => {
-    navigate(0);
-  };
 
   function setSearchWith(params) {
     const search = getSearchWith(searchParams, params);
@@ -66,6 +54,7 @@ export const ProductsPage = () => {
 
   function handlePageChange(value: number) {
     setSearchWith({ page: value === 1 ? null : value });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function handlePerPageChange(value: string) {
@@ -77,80 +66,81 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     if (!VALID_TYPES.includes(type as Type)) {
+      setStatus(STATUS.NOT_FOUND_PAGE);
+
       return;
     }
 
-    setIsLoading(true);
+    const load = async () => {
+      try {
+        setStatus(STATUS.LOADING);
+        setErrorMessage('');
 
-    wait(100)
-      .then(() => fetch(`api/products.json`))
-      .then(res => res.json())
-      .then(data => {
-        const filteredProducts = data.filter(
+        await wait(500);
+
+        const productsRes = checkResponse(await fetch('api/products.json'));
+        const productsFromServer: Product[] = await productsRes.json();
+
+        const filteredProducts = productsFromServer.filter(
           product => product.category.toLowerCase() === type,
         );
 
-        if (filteredProducts.length) {
-          setProducts(filteredProducts);
-        } else {
-          setErrorMessage(`There are no ${type} yet`);
+        if (!filteredProducts.length) {
+          throw new NotFoundError('Product not found');
         }
-      })
-      .catch(() => {
-        setErrorMessage('Something went wrong');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+
+        setProducts(filteredProducts);
+        setStatus(STATUS.SUCCESS);
+      } catch (err) {
+        if (err instanceof NotFoundError) {
+          setStatus(STATUS.NOT_FOUND_PRODUCT);
+        } else if (err instanceof ServerError) {
+          setErrorMessage(`Server error (${err.status})`);
+          setStatus(STATUS.ERROR);
+        } else {
+          setErrorMessage('Something went wrong');
+          setStatus(STATUS.ERROR);
+        }
+      }
+    };
+
+    load();
   }, [type]);
 
-  if (!VALID_TYPES.includes(type as Type)) {
-    return <NotFoundPage />;
-  }
+  switch (status) {
+    case STATUS.LOADING:
+      return <Loader />;
 
-  return (
-    <div className={styles.section}>
-      <div className={styles.breadcrumbs}>
-        <Link to="/" className={styles.link}>
-          <img src="img/icons/home.png" alt="Home" className={styles.icon} />
-        </Link>
-        <img
-          src="img/icons/arrow-right.png"
-          alt="Breadcrumbs Separator"
-          className={styles.icon}
-        />
-        <p className={styles.breadcrumbText}>{type}</p>
-      </div>
+    case STATUS.NOT_FOUND_PAGE:
+      return <NotFoundPage />;
 
-      <h1 className={styles.sectionTitle}>{type} page</h1>
+    case STATUS.NOT_FOUND_PRODUCT:
+      return <NotFoundProduct />;
 
-      {isLoading ? (
-        <Loader />
-      ) : errorMessage ? (
-        <div className={styles.errorMessageBlock}>
-          <p className={styles.danger}>{errorMessage}</p>
-          <a onClick={reloadCurrentRoute} className={styles.iconLink}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={styles.iconLinkIcon}
-            >
-              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-              <path d="M3 3v5h5" />
-              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-              <path d="M16 16h5v5" />
-            </svg>
-          </a>
-        </div>
-      ) : (
-        <>
+    case STATUS.ERROR:
+      return <ErrorMessage errorMessage={errorMessage} />;
+
+    case STATUS.SUCCESS:
+      return (
+        <div className={styles.section}>
+          <div className={styles.breadcrumbs}>
+            <Link to="/" className={styles.link}>
+              <img
+                src="img/icons/home.png"
+                alt="Home"
+                className={styles.icon}
+              />
+            </Link>
+            <img
+              src="img/icons/arrow-right.png"
+              alt="Breadcrumbs Separator"
+              className={styles.icon}
+            />
+            <p className={styles.breadcrumbText}>{type}</p>
+          </div>
+
+          <h1 className={styles.sectionTitle}>{type} page</h1>
+
           <p className={styles.productsCount}>{products.length} models</p>
 
           <div className={styles.filters}>
@@ -178,8 +168,10 @@ export const ProductsPage = () => {
               onPageChange={handlePageChange}
             />
           )}
-        </>
-      )}
-    </div>
-  );
+        </div>
+      );
+
+    default:
+      return null;
+  }
 };
