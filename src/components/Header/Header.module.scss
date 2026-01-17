@@ -1,0 +1,145 @@
+$color-text: #313237;
+$color-muted: #89939a;
+$color-border: #e2e6e9;
+
+.header {
+  border-bottom: 1px solid $color-border;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 0 0 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 48px;
+
+  img {
+    display: block;
+    height: 24px;
+    width: auto;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  flex: 1;
+}
+
+.navLink {
+  position: relative;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $color-muted;
+  text-decoration: none;
+  line-height: 64px;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-text;
+  }
+}
+
+.isActive {
+  color: $color-text;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $color-text;
+    border-radius: 1px;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid $color-border;
+  margin-left: auto;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  border-left: 1px solid $color-border;
+
+  img {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border: none;
+  border-left: 1px solid $color-border;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 0 0 16px;
+  }
+
+  .nav {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    height: 56px;
+  }
+
+  .logo {
+    margin-right: 0;
+
+    img {
+      height: 20px;
+    }
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .actions {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+    width: 56px;
+    margin-left: auto;
+  }
+}
