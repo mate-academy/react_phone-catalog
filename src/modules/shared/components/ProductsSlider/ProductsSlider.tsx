@@ -18,12 +18,14 @@ interface Props {
   title: string;
   products: Product[];
   isLoading?: boolean;
+  withDiscounts?: boolean;
 }
 
 export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
   title,
   products,
   isLoading = false,
+  withDiscounts = true,
 }) {
   const [sliderRef, sliderApi] = useEmblaCarousel({
     skipSnaps: true,
@@ -84,7 +86,7 @@ export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
           {!isLoading &&
             products.map(product => (
               <li key={product.id} className={styles.slide}>
-                <ProductCard product={product} />
+                <ProductCard product={product} showDiscount={withDiscounts} />
               </li>
             ))}
         </ul>

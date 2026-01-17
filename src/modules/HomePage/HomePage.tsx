@@ -43,6 +43,7 @@ export const HomePage = () => {
             products={newestProducts}
             title="Brand new models"
             isLoading={loading}
+            withDiscounts={false}
           />
         </section>
 

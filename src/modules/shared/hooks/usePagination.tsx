@@ -1,6 +1,6 @@
 import { Page } from '@/types/Page';
 import { getSearchWith } from '@/utils/getSearchWith';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const BOUNDARY_COUNT = 1;
@@ -24,6 +24,8 @@ export const usePagination = (
   resetDependency: unknown[] = [],
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const isFirstRender = useRef(true);
 
   const totalPages = useMemo(
     () => Math.ceil(totalItems / itemsPerPage),
@@ -59,14 +61,24 @@ export const usePagination = (
   }, [currentPage]);
 
   useEffect(() => {
+    if (totalItems === 0) {
+      return;
+    }
+
     if (currentPage < 1) {
       handleChangePage(1);
-    } else if (currentPage > totalPages) {
+    } else if (currentPage > totalPages && totalPages > 0) {
       handleChangePage(totalPages);
     }
   }, [currentPage, totalPages]);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+
+      return;
+    }
+
     if (currentPage !== 1) {
       handleChangePage(null);
     }

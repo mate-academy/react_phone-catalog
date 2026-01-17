@@ -16,11 +16,13 @@ import { prepareProductSpecs } from '@/helpers/productHelpers';
 interface Props {
   product: Product;
   className?: string;
+  showDiscount?: boolean;
 }
 
 export const ProductCard: FC<Props> = React.memo(function ProductCard({
   product,
   className,
+  showDiscount = true,
 }) {
   const {
     id,
@@ -70,10 +72,12 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
 
       <div className={styles.productPrices}>
         <strong className={styles.productCurPrice}>
-          ${price ?? fullPrice}
+          ${price && !showDiscount ? fullPrice : price}
         </strong>
 
-        {price && <span className={styles.productOldPrice}>${fullPrice}</span>}
+        {price && showDiscount && (
+          <span className={styles.productOldPrice}>${fullPrice}</span>
+        )}
       </div>
       <SpecsList
         specs={specs}
