@@ -128,7 +128,7 @@ export const CatalogPage: FC<Props> = ({ category }) => {
         )}
 
         {preparedProducts.length !== 0 && !loading && (
-          <div>
+          <div className={styles.products}>
             <ProductsList
               products={preparedProducts}
               itemsPerPage={PRODUCT_SKELETONS_COUNT}

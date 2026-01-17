@@ -18,11 +18,11 @@ export const HomePage = () => {
   const newestProducts = useMemo(() => {
     return filterProducts(products, {
       yearRange: { from: 2020, to: 2025 },
-    }).slice(0, 10);
+    }).slice(0, 20);
   }, [products]);
 
   const discountProducts = useMemo(() => {
-    return filterProducts(products, { withDiscount: true }).slice(0, 10);
+    return filterProducts(products, { withDiscount: true }).slice(0, 20);
   }, [products]);
 
   return (

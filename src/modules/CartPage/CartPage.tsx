@@ -40,19 +40,21 @@ export const CartPage = () => {
     },
   );
 
-  const productsCount = items.reduce(
-    (acc, curItem) => {
-      acc[curItem.product.id] = curItem.count;
+  const preparedData = useMemo(() => {
+    const productsCount = items.reduce(
+      (acc, curItem) => {
+        acc[curItem.product.id] = curItem.count;
 
-      return acc;
-    },
-    {} as Record<Product['id'], number>,
-  );
+        return acc;
+      },
+      {} as Record<Product['id'], number>,
+    );
 
-  const preparedData = data.map(pr => ({
-    product: pr,
-    count: productsCount[pr.id],
-  }));
+    return data.map(pr => ({
+      product: pr,
+      count: productsCount[pr.id],
+    }));
+  }, [items, data]);
 
   return (
     <div className={classNames(styles.wrapper, 'container')}>
@@ -72,7 +74,7 @@ export const CartPage = () => {
         </div>
       )}
 
-      {!loading && items.length === 0 && (
+      {items.length === 0 && (
         <div className={styles.messageWrapper}>
           <Message className={styles.message}>
             <Message.Icon>

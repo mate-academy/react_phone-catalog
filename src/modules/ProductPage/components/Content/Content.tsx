@@ -1,5 +1,5 @@
 import { Product, ProductDetailsWithArticle } from '@/types/Product';
-import { FC } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import styles from './Content.module.scss';
 import { GallerySlider } from '../../../shared/components/GallerySlider';
@@ -17,7 +17,7 @@ interface Props {
 
 const PRODUCTS_SLIDES_COUNT = 10;
 
-export const Content: FC<Props> = ({ product }) => {
+export const Content: FC<Props> = memo(function Content({ product }) {
   const {
     article,
     name,
@@ -43,18 +43,30 @@ export const Content: FC<Props> = ({ product }) => {
     },
   );
 
-  const productSpecs = Object.fromEntries(
-    Object.entries({
-      screen,
-      resolution,
-      processor,
-      RAM: ram,
-      [category === 'accessories' ? 'size' : 'built in memory']: capacity,
-      camera,
-      zoom,
-      cell: cell.join(', '),
-    }).filter(([, value]) => value),
-  );
+  const productSpecs = useMemo(() => {
+    return Object.fromEntries(
+      Object.entries({
+        screen,
+        resolution,
+        processor,
+        RAM: ram,
+        [category === 'accessories' ? 'size' : 'built in memory']: capacity,
+        camera,
+        zoom,
+        cell: cell.join(', '),
+      }).filter(([, value]) => value),
+    );
+  }, [
+    screen,
+    resolution,
+    processor,
+    ram,
+    category,
+    capacity,
+    camera,
+    zoom,
+    cell,
+  ]);
 
   return (
     <>
@@ -81,4 +93,4 @@ export const Content: FC<Props> = ({ product }) => {
       </section>
     </>
   );
-};
+});

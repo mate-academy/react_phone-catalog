@@ -2,6 +2,7 @@
 
 .products {
   row-gap: 40px;
+  width: 100%;
 
   @include page-grid;
 }

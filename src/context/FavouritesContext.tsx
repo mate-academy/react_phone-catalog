@@ -1,6 +1,6 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product } from '@/types/Product';
-import { createContext, FC, ReactNode } from 'react';
+import { createContext, FC, ReactNode, useCallback } from 'react';
 
 export interface FavouritesContextType {
   isFavourite: (productId: Product['id']) => boolean;
@@ -22,11 +22,14 @@ export const FavouriteProvider: FC<Props> = ({ children }) => {
     [],
   );
 
-  const isFavourite = (productId: Product['id']) => {
-    return favourites.some(id => id === productId);
-  };
+  const isFavourite = useCallback(
+    (productId: Product['id']) => {
+      return favourites.some(id => id === productId);
+    },
+    [favourites],
+  );
 
-  const toggleFavourite = (productId: Product['id']) => {
+  const toggleFavourite = useCallback((productId: Product['id']) => {
     setFavourites(curFavourites => {
       const existProduct = curFavourites.findIndex(id => id === productId);
 
@@ -36,7 +39,7 @@ export const FavouriteProvider: FC<Props> = ({ children }) => {
 
       return [...curFavourites, productId];
     });
-  };
+  }, []);
 
   return (
     <FavouritesContext.Provider

@@ -1,5 +1,5 @@
 import { Product } from '@/types/Product';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import styles from './ProductsList.module.scss';
 import { ProductCard } from '@/modules/shared/components/ProductCard';
@@ -11,11 +11,11 @@ interface Props {
   isLoading?: boolean;
 }
 
-export const ProductsList: FC<Props> = ({
+export const ProductsList: FC<Props> = memo(function ProductList({
   products,
   itemsPerPage,
   isLoading = false,
-}) => {
+}) {
   if (isLoading) {
     return (
       <ul className={styles.products}>
@@ -41,4 +41,4 @@ export const ProductsList: FC<Props> = ({
       ))}
     </ul>
   );
-};
+});

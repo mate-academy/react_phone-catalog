@@ -39,7 +39,9 @@ export const ProductPage = () => {
         <div className={styles.backLinkWrapper}>
           <BackLink />
         </div>
-        <ErrorMessage message={error} onRetry={handleFetch} />
+        <div className={styles.messageWrapper}>
+          <ErrorMessage message={error} onRetry={handleFetch} />
+        </div>
       </div>
     );
   }
@@ -64,7 +66,9 @@ export const ProductPage = () => {
         <div className={styles.backLinkWrapper}>
           <BackLink />
         </div>
-        <EmptyMessage message="Product not found" />
+        <div className={styles.messageWrapper}>
+          <EmptyMessage message="Product not found" />
+        </div>
       </div>
     );
   }

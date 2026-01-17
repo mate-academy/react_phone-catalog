@@ -1,5 +1,5 @@
 import { Product } from '@/types/Product';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import styles from './CartItem.module.scss';
 import { Counter } from '@/modules/shared/components/Counter';
@@ -11,7 +11,7 @@ interface Props {
   count: number;
 }
 
-export const CartItem: FC<Props> = ({ product, count }) => {
+export const CartItem: FC<Props> = memo(function CartItem({ product, count }) {
   const { id, name, image, fullPrice, price, itemId } = product;
   const { changeProductCount: changeCount, removeFromCart } = useCart();
 
@@ -46,4 +46,4 @@ export const CartItem: FC<Props> = ({ product, count }) => {
       </div>
     </article>
   );
-};
+});

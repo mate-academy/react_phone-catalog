@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
@@ -34,6 +34,7 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
     category,
     itemId,
   } = product;
+
   const { isFavourite, toggleFavourite } = useFavourites();
   const { toggleToCart, inCart } = useCart();
 
@@ -43,11 +44,15 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
 
   const isInCart = inCart(id);
 
-  const specs = prepareProductSpecs({
-    screen,
-    [category === 'accessories' ? 'size' : 'capacity']: capacity,
-    RAM: ram,
-  });
+  const specs = useMemo(
+    () =>
+      prepareProductSpecs({
+        screen,
+        [category === 'accessories' ? 'size' : 'capacity']: capacity,
+        RAM: ram,
+      }),
+    [screen, category, capacity, ram, prepareProductSpecs],
+  );
 
   return (
     <article className={classNames(styles.productCard, className)}>
