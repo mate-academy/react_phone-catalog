@@ -1,0 +1,338 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.backBtn {
+  display: flex;
+  flex-direction: row;
+  column-gap: 4px;
+  align-items: center;
+  cursor: pointer;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/arrow-left-black.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter: invert(1);
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: $color-text-grey;
+    transition: color 0.3s;
+  }
+  // /* tablet */
+  // @include tablet {
+  //   & {
+  //     padding-top: 40px;
+  //   }
+  // }
+}
+
+.title {
+  margin: 0;
+  padding-top: 16px;
+  font-weight: 800;
+  font-style: bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  /* tablet */
+  @include tablet {
+    & {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+}
+
+.favoritesEmpty {
+  padding-top: 32px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0px;
+  color: $color-text-grey;
+  margin: 0px;
+  /* tablet */
+  @include tablet {
+    & {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}
+
+.name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0px;
+  margin: 0px;
+}
+.container {
+  padding-inline: 16px;
+
+  // /* tablet */
+  @include tablet {
+    & {
+      padding-inline: 24px;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      max-width: 1136px;
+      margin-inline: auto;
+      padding-inline: 32px;
+    }
+  }
+}
+
+.cartPage {
+  padding-top: 24px;
+  // /* tablet */
+  @include tablet {
+    & {
+      padding-top: 40px;
+    }
+  }
+}
+
+.content {
+  &__list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__cartItem {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $color-card-bg;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $color-button-grey;
+      border-image: initial;
+      border-radius: 16px;
+      padding: 16px;
+      gap: 16px;
+
+      // /* tablet */
+      @include tablet {
+        & {
+          flex-direction: row;
+          gap: 24px;
+          padding: 24px;
+        }
+      }
+
+      /* desktop*/
+      @include desktop {
+        & {
+          width: 752px;
+        }
+      }
+    }
+
+    &__cartItemTop {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      &__remove {
+        width: 16px;
+        height: 16px;
+        background-color: $color-card-bg;
+        cursor: pointer;
+        background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/remove.svg);
+        background-repeat: no-repeat;
+        background-size: 16px;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        background-position: center center;
+      }
+
+      &__imageContainer {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        &__im {
+          width: 66px;
+          height: 66px;
+          object-fit: contain;
+        }
+      }
+      // /* tablet */
+      @include tablet {
+        & {
+          gap: 24px;
+        }
+      }
+    }
+
+    &__cartItemBottom {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__quantityWrapper {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      &__qtyButton {
+        width: 32px;
+        height: 32px;
+        background-color: $color-text-primary;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-width: 1px;
+        border-style: solid;
+        border-color: $color-text-grey;
+        border-image: initial;
+        border-radius: 50%;
+        :disabled {
+          opacity: 0.5;
+          cursor: default;
+          border-color: $color-text-grey;
+        }
+      }
+
+      &__quantity {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0px;
+        margin: 0px;
+      }
+
+      &__price {
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0px;
+        margin: 0px;
+      }
+      // /* tablet */
+      @include tablet {
+        & {
+          justify-content: flex-end;
+          gap: 53px;
+        }
+      }
+    }
+  }
+
+  &__summary {
+    box-sizing: border-box;
+    margin-top: 32px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: $color-card-bg;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color-text-primary;
+    border-image: initial;
+    border-radius: 16px;
+    padding: 24px;
+    gap: 16px;
+
+    &__summaryInfo {
+      text-align: center;
+      &__totalPrice {
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        margin: 0px;
+      }
+
+      &__totalCount {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0px;
+        color: $color-text-primary;
+        margin: 0px;
+      }
+    }
+
+    &__divider {
+      width: 100%;
+      height: 1px;
+      background-color: $color-button-primary;
+    }
+
+    &__checkoutBtn {
+      box-sizing: border-box;
+      width: 240px;
+      height: 48px;
+      background-color: $color-button-primary;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0px;
+      text-align: center;
+      color: $color-text-primary;
+      cursor: pointer;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $color-button-primary;
+      border-image: initial;
+      border-radius: 48px;
+      transition: box-shadow 0.3s;
+
+      // /* tablet */
+      @include tablet {
+        & {
+          width: 544px;
+        }
+      }
+
+      /* desktop*/
+      @include desktop {
+        & {
+          width: 320px;
+        }
+      }
+    }
+    /* desktop*/
+    @include desktop {
+      & {
+        max-width: 368px;
+        gap: 24px;
+      }
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}

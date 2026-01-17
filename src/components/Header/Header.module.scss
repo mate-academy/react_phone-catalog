@@ -1,0 +1,279 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid color-text-primary;
+  height: 48px;
+  padding-left: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-card-bg;
+
+  /* tablet */
+  @include tablet {
+    & {
+      justify-content: start;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      height: 64px;
+      padding-left: 24px;
+    }
+  }
+}
+
+/* Logo */
+.logo img {
+  height: 24px;
+}
+
+/* Navigation */
+.nav {
+  display: block;
+  unicode-bidi: isolate;
+  height: 100%;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  height: 100%;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  padding: 0 0 0 32px;
+
+  /* tablet */
+  @include tablet {
+    & {
+      display: flex;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      gap: 64px;
+      padding-left: 48px;
+    }
+  }
+}
+
+.navListItem {
+  height: 100%;
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $color-text-grey;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: $color-text-primary;
+}
+
+/* Active underline */
+.navLink.active {
+  color: $color-text-primary;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+    background: $color-text-primary;
+  }
+}
+
+/* Icons */
+.icons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.iconLink {
+  display: block;
+  position: relative;
+  height: 100%;
+  text-decoration: none;
+  border-left: 1px solid $color-button-primary;
+  &:hover {
+    border-color: $color-text-primary;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  background-color: $color-button-primary;
+  color: $color-text-primary;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 1px solid $color-text-primary;
+  /* tablet */
+  @include tablet {
+    & {
+      display: flex;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      top: 18px;
+      right: 16px;
+      width: 14px;
+      height: 14px;
+      font-size: 10px;
+    }
+  }
+}
+
+.favIcon {
+  display: none;
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/favourites.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  cursor: pointer;
+  width: 48px;
+  height: 100%;
+  background-position: center center;
+
+  filter: invert(1);
+  /* tablet */
+  @include tablet {
+    & {
+      display: block;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      width: 64px;
+    }
+  }
+}
+
+.cartIcon {
+  display: none;
+  background-image: url('https://vnechepurenko2005.github.io/nicegadgets_store/icons/cart.svg');
+  background-repeat: no-repeat;
+  background-size: 16px;
+  cursor: pointer;
+  width: 48px;
+  height: 100%;
+  background-position: center center;
+  filter: invert(1);
+  border-left: 1px solid $color-text-primary;
+
+  /* tablet */
+  @include tablet {
+    & {
+      display: block;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      width: 64px;
+    }
+  }
+}
+/* mobile menu*/
+.menuIcon {
+  display: none;
+
+  @include mobile {
+    display: block;
+    width: 40px;
+    height: 64px;
+    // background: url('/icons/menu.svg') no-repeat center;
+    // border-left: 1px solid #2a2c3f;
+    cursor: pointer;
+  }
+}
+.menuBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.menu {
+  position: absolute;
+  top: 64px;
+  right: 0;
+
+  width: 260px;
+  height: calc(100vh - 64px);
+  background: #0f1121;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconClose {
+  width: 16px;
+  height: 16px;
+  background: url('/icons/close.svg') no-repeat center;
+  cursor: pointer;
+}
+
+.menuList {
+  list-style: none;
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.menuList a {
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menuFooter {
+  margin-top: auto;
+  display: flex;
+  gap: 16px;
+}

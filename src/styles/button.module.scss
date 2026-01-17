@@ -1,0 +1,86 @@
+@import '../styles/mixins.scss';
+@import '../styles/variables.scss';
+
+.cartButton {
+  box-sizing: border-box;
+  width: 120px;
+  height: 48px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $color-text-primary;
+  background-color: $color-button-primary;
+  border: none;
+  border-radius: 48px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+
+  &__added {
+    background-color: $color-button-grey;
+    // color: $color-button-grey;
+  }
+
+  &:hover {
+    border: 1px solid $color-text-primary;
+  }
+
+  &:active {
+    // border: 1 solid $color-text-primary;
+  }
+
+  /* tablet */
+  @include tablet {
+    & {
+      width: 140px;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      width: 160px;
+    }
+  }
+}
+
+/* Favourite */
+.favouriteButton {
+   all: unset;
+  box-sizing: border-box;
+    display: flex;
+  width: 40px;
+  height: 40px;
+  background: $color-button-grey;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s;
+
+  &:hover {
+    border-color: $color-button-primary;
+    background-color: #2a2c3f;
+  }
+
+  &:hover .favouriteIcon {
+    opacity: 1;
+  }
+}
+
+.favouriteIcon {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.favouriteButtonActive {
+  border-color: $color-button-grey;
+
+  background: $color-button-grey;
+}

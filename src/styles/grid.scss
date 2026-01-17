@@ -1,0 +1,63 @@
+@import './variables';
+@import './mixins';
+
+/* ====== CONTAINER ====== */
+.container {
+  margin: 0 auto;
+
+  @include desktop {
+    max-width: 1200px;
+    padding: 0;
+  }
+
+  @include tablet {
+    padding: 0 $padding-tablet;
+  }
+
+  @include mobile {
+    padding: 0 $padding-mobile;
+  }
+}
+
+/* ====== GRID ====== */
+.grid {
+  display: grid;
+  column-gap: $gutter;
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ====== COLUMN SPANS ====== */
+@for $i from 1 through 24 {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+}
+
+/* Tablet overrides */
+@include tablet {
+  @for $i from 1 through 12 {
+    .tablet-col-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+
+/* Mobile overrides */
+@include mobile {
+  @for $i from 1 through 4 {
+    .mobile-col-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}

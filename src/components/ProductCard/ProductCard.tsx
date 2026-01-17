@@ -1,87 +1,92 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
+import button from '../../styles/button.module.scss';
 import styles from './ProductCard.module.scss';
-import { useState } from 'react';
+import { Product } from '../../shared/interfaces/Product';
+import { useCart } from '../../context/CartContext';
+import { useFavourites } from '../../context/FavouritesContext';
 
 interface Props {
-  name: string;
-  image: string;
-  price: number;
-  screen: string;
-  capacity: string;
-  ram: string;
+  product: Product;
+  showOldPrice?: boolean;
 }
 
-export const ProductCard = ({
-  name,
-  image,
-  price,
-  screen,
-  capacity,
-  ram,
-}: Props) => {
-  const [isAdded, setIsAdded] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(false);
+export const ProductCard = ({ product, showOldPrice }: Props) => {
+  const { screen, capacity, ram } = product;
 
-  const handleToggleCart = () => {
-    setIsAdded(prev => !prev);
-  };
+  const { cart, addToCart, removeFromCart } = useCart();
+  const { toggleFavourite, isFavourite } = useFavourites();
+  const currentPrice = product.price;
+  const oldPrice = product.fullPrice;
 
-  const handleToggleFavourite = () => {
-    setIsFavourite(prev => !prev);
-  };
+  const isAdded = cart.some(p => p.product.id === product.id);
+  const favourite = isFavourite(product.id);
 
   return (
-    <article className={styles.card}>
-      <Link to="/product/123" className={styles.imageLink}>
-        <div className={styles.imageWrapper}>
-          <img src={`/${image}`} alt={name} className={styles.image} />
-        </div>
-      </Link>
+    <div className={styles.card}>
+      <div className={styles.top}>
+        <Link to={`/phones/${product.itemId}`} className={styles.imageLink}>
+          <img
+            src={`/${product.image}`}
+            alt={product.name}
+            className={styles.image}
+          />
+        </Link>
 
-      <h3 className={styles.title}>{name}</h3>
-      <p className={styles.price}>${price}</p>
+        <Link to={`/phones/${product.itemId}`} className={styles.title}>
+          {product.name}
+        </Link>
+      </div>
 
-      <div className={styles.specs}>
-        <div>
-          <span>Screen</span>
-          <span>{screen}</span>
+      <div className={styles.prices}>
+        <strong className={styles.price}>${currentPrice}</strong>
+
+        {showOldPrice && oldPrice && oldPrice > currentPrice && (
+          <span className={styles.oldPrice}>${oldPrice}</span>
+        )}
+      </div>
+
+      <div className={styles.details}>
+        <div className={styles.option}>
+          <p className={styles.optionTitle}>Screen</p>
+          <p className={styles.optionValue}>{screen}</p>
         </div>
-        <div>
-          <span>Capacity</span>
-          <span>{capacity}</span>
+
+        <div className={styles.option}>
+          <p className={styles.optionTitle}>Capacity</p>
+          <p className={styles.optionValue}>{capacity}</p>
         </div>
-        <div>
-          <span>RAM</span>
-          <span>{ram}</span>
+
+        <div className={styles.option}>
+          <p className={styles.optionTitle}>RAM</p>
+          <p className={styles.optionValue}>{ram}</p>
         </div>
       </div>
 
       <div className={styles.actions}>
         <button
           type="button"
-          className={`${styles.cartButton} ${
-            isAdded ? styles.cartButtonAdded : ''
+          className={`${button.cartButton} ${
+            isAdded ? button.cartButton__added : ''
           }`}
-          onClick={handleToggleCart}
+          onClick={() =>
+            isAdded ? removeFromCart(product.id) : addToCart(product)
+          }
         >
           {isAdded ? 'Added' : 'Add to cart'}
         </button>
 
         <button
           type="button"
-          className={`${styles.favouriteButton} ${
-            isFavourite ? styles.favouriteButtonActive : ''
-          }`}
-          aria-label="Add to favourites"
-          onClick={handleToggleFavourite}
+          className={button.favouriteButton}
+          onClick={() => toggleFavourite(product)}
         >
           <Icon
-            name={isFavourite ? 'heart-like' : 'heart'}
-            className={styles.favouriteIcon}
+            name={favourite ? 'heart-like' : 'heart'}
+            className={button.favouriteIcon}
           />
         </button>
       </div>
-    </article>
+    </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { Product } from '../../../../shared/interfaces/Product';
 import { ProductCard } from '../../../../components/ProductCard';
@@ -6,93 +6,100 @@ import { Icon } from '../../../../components/Icon/Icon';
 
 interface Props {
   type: 'new' | 'hot';
+  title: string;
 }
 
-const VISIBLE_COUNT = 4;
-
-export const ProductsSlider = ({ type }: Props) => {
+export const ProductsSlider = ({ type, title }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
+
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch('/api/products.json')
-      .then(res => res.json())
-      .then((data: Product[]) => {
-        setProducts(data);
-      });
-  }, []);
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to load products.json');
+        }
 
-  const preparedProducts = products
+        return res.json();
+      })
+      .then((data: Product[]) => {
+        const phones = data.filter(p => p.category === 'phones');
+
+        const discount = (p: Product) => (p.fullPrice ?? 0) - (p.price ?? 0);
+
+        const sorted =
+          type === 'new'
+            ? [...phones].sort((a, b) => b.year - a.year)
+            : [...phones].sort((a, b) => discount(b) - discount(a));
+
+        setProducts(sorted.slice(0, 16));
+      });
+  }, [type]);
+
+  const scrollNext = () => {
+    sliderRef.current?.scrollBy({
+      left: 288,
+      behavior: 'smooth',
+    });
+  };
+
+  const scrollPrev = () => {
+    sliderRef.current?.scrollBy({
+      left: -288,
+      behavior: 'smooth',
+    });
+  };
+
+  const preparedProducts = [...products]
     .filter(product => product.category === 'phones')
     .sort((a, b) => {
       if (type === 'new') {
         return b.year - a.year;
       }
 
-      const discountA = a.fullPrice - a.price;
-      const discountB = b.fullPrice - b.price;
-
-      return discountB - discountA;
+      return b.fullPrice - b.price - (a.fullPrice - a.price);
     });
 
-  const visibleProducts = preparedProducts.slice(
-    startIndex,
-    startIndex + VISIBLE_COUNT,
-  );
-
-  const handleNext = () => {
-    setStartIndex(prev =>
-      prev + VISIBLE_COUNT >= preparedProducts.length ? 0 : prev + 1,
+  if (!products.length) {
+    return (
+      <section className={styles.wrapper}>
+        <div className="container">
+          <div className={styles.loader}>Loading...</div>
+        </div>
+      </section>
     );
-  };
-
-  const handlePrev = () => {
-    setStartIndex(prev =>
-      prev === 0
-        ? Math.max(preparedProducts.length - VISIBLE_COUNT, 0)
-        : prev - 1,
-    );
-  };
-
-  if (!preparedProducts.length) {
-    return <div className={styles.loader}>Loading...</div>;
   }
 
   return (
-    <section className={styles.wrapper}>
+    <div className={styles.container}>
       <div className={styles.header}>
-        <h2 className={styles.title}>
-          {type === 'new' ? 'Brand new models' : 'Hot prices'}
-        </h2>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.controls}>
           <button
             type="button"
-            onClick={handlePrev}
+            onClick={scrollPrev}
             aria-label="Previous products"
           >
             <Icon name="arrow-left" className={styles.arrowIcon} />
           </button>
 
-          <button type="button" onClick={handleNext} aria-label="Next products">
+          <button type="button" onClick={scrollNext} aria-label="Next products">
             <Icon name="arrow-right" className={styles.arrowIcon} />
           </button>
         </div>
       </div>
 
-      <div className={styles.slider}>
-        {visibleProducts.map(product => (
+      <div className={styles.products} ref={sliderRef}>
+        {preparedProducts.map(product => (
           <ProductCard
             key={product.id}
-            name={product.name}
-            image={product.image}
-            price={product.price}
-            screen={product.screen}
-            capacity={product.capacity}
-            ram={product.ram}
+            product={product}
+            showOldPrice={type === 'hot'}
           />
         ))}
       </div>
-    </section>
+    </div>
   );
 };

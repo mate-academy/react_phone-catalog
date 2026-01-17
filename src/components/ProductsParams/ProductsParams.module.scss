@@ -1,0 +1,77 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.params {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-left: 0px;
+
+  /* tablet */
+  @include tablet {
+    & {
+      margin-top: 40px;
+    }
+  }
+
+  // /* desktop*/
+  // @include desktop {
+  //   & {
+  //     padding: 56px 48px 90px;
+  //   }
+  // }
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: $color-text-grey;
+  margin: 0px;
+}
+
+.select {
+  appearance: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0px;
+  color: var(--color);
+  margin-top: 4px;
+  width: 136px;
+  height: 40px;
+  background-color: $color-card-bg;
+  cursor: pointer;
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/arrow-down.svg);
+  background-repeat: no-repeat;
+  padding-inline: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-text-grey;
+  border-image: initial;
+  border-radius: 8px;
+  outline: none;
+  background-position: right 12px center;
+  transition: border-color 0.3s;
+
+  /* tablet */
+  @include tablet {
+    & {
+      width: 187px;
+    }
+  }
+
+  /* desktop*/
+  @include desktop {
+    & {
+      width: 176px;
+    }
+  }
+}

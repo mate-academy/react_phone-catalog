@@ -14,14 +14,14 @@ export const HomePage = () => {
 
       {/* Brand new */}
 
-      <ProductsSlider type="new" />
+      <ProductsSlider type="new" title="Brand new models" />
 
       {/* Categories */}
       <CategoriesBlock />
 
       {/* Hot prices */}
 
-      <ProductsSlider type="hot" />
+      <ProductsSlider type="hot" title="Hot prices" />
     </div>
   );
 };

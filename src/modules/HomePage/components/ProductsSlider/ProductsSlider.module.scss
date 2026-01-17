@@ -1,18 +1,36 @@
-.wrapper {
-  margin-top: 64px;
+@import '/src/styles/variables.scss';
+@import '/src/styles/mixins.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
+.products {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  // width: calc(50% + 50vw);
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    flex: 0 0 272px; // ширина картки
+  }
 }
 
 .controls {
@@ -30,7 +48,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s, border-color 0.3s;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
 }
 
 .controls button:hover {
@@ -43,11 +63,11 @@
   height: 16px;
 }
 
-.slider {
-  display: flex;
-  gap: 16px;
-  overflow: hidden;
-}
+// .slider {
+//   display: flex;
+//   gap: 16px;
+//   overflow: hidden;
+// }
 
 .loader {
   height: 280px;
@@ -65,6 +85,7 @@
 .controls button:hover .arrowIcon {
   opacity: 1;
 }
+
 /* tablet */
 @media (max-width: 1199px) {
   .slider {

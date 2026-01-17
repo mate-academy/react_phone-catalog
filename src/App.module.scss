@@ -1,0 +1,127 @@
+// not empty
+body {
+  display: block;
+  color: $color-text-primary;
+  margin: 8px;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  background-color: $color-card-bg;
+}
+.hidden {
+  display: none;
+}
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.appContent {
+  flex: 1 1 0%;
+}
+
+article {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+input[type='radio' i] {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+}
+
+main {
+  display: block;
+  unicode-bidi: isolate;
+}
+button {
+  appearance: auto;
+  text-rendering: auto;
+  color: buttontext;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: buttonface;
+  margin: 0em;
+  padding-block: 1px;
+  padding-inline: 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonborder;
+  border-image: initial;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+}
+
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+nav {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+li {
+  display: list-item;
+  unicode-bidi: isolate;
+}
+
+footer {
+  display: block;
+  unicode-bidi: isolate;
+}
