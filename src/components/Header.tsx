@@ -124,21 +124,24 @@ export const Header: React.FC = () => {
 
           {/* Mobile footer (inside burger menu) */}
           <div className="header__mobile-footer">
-            <Link
+            <NavLink
               to="/favorites"
-              className="header__mobile-tab"
-              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                `header__mobile-tab ${isActive ? 'active' : ''}`
+              }
             >
               <img src={`img/icons/favourites.svg`} alt="Favorites" />
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               to="/cart"
-              className="header__mobile-tab"
+              className={({ isActive }) =>
+                `header__mobile-tab ${isActive ? 'active' : ''}`
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               <img src={`img/icons/cart.svg`} alt="Cart" />
-            </Link>
+            </NavLink>
           </div>
         </nav>
 
