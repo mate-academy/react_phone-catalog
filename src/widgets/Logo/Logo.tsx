@@ -8,7 +8,7 @@ export const Logo = () => {
 
   return (
     <Link to="/" className={styles.logo}>
-      <img src={`/img/${theme}-logo.png`} alt="logo" />
+      <img src={`img/${theme}-logo.png`} alt="logo" />
     </Link>
   );
 };
