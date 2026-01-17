@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { createContext, useContext, useState } from 'react';
 import { ProductAllType } from '../types/Product';
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 
 type Props = {
   children: React.ReactNode;
@@ -27,23 +28,30 @@ const CartFavoriteContext = createContext<CartFavoriteContextType>({
 });
 
 export const CartFavoriteProvider: FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<ProductAllType[]>([]);
-  const [favoriteItems, setFavoriteItems] = useState<ProductAllType[]>([]);
+  const [cartItems, setCartItems] = useState<ProductAllType[]>(
+    getLocalStorage('cart') || [],
+  );
+  const [favoriteItems, setFavoriteItems] = useState<ProductAllType[]>(
+    getLocalStorage('favorite') || [],
+  );
 
   // ----- Cart
 
   const addToCart = (product: ProductAllType): void => {
     setCartItems(prev =>
       prev.find(item => String(item.id) === String(product.id))
-        ? prev
-        : [...prev, { ...product, count: 1 }],
+        ? (setLocalStorage('cart', prev), prev)
+        : (setLocalStorage('cart', [...prev, { ...product, count: 1 }]),
+          [...prev, { ...product, count: 1 }]),
     );
   };
 
   const removeFromCart = (productId: string) => {
-    setCartItems(prev =>
-      prev.filter(item => String(item.id) !== String(productId)),
-    );
+    setCartItems(prev => {
+      const data = prev.filter(item => String(item.id) !== String(productId));
+      setLocalStorage('cart', data);
+      return data;
+    });
   };
 
   const updateCounterCart = (productId: string, count: number) => {
@@ -57,6 +65,7 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
   };
 
   const clearCart = () => {
+    setLocalStorage('cart', []);
     setCartItems([]);
   };
 
@@ -66,9 +75,13 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
     setFavoriteItems(prev => {
       const exists = prev.find(item => String(item.id) === String(product.id));
       if (exists) {
-        return prev.filter(item => String(item.id) !== String(product.id));
+        const data = prev.filter(
+          item => String(item.id) !== String(product.id),
+        );
+        setLocalStorage('favorite', data);
+        return data;
       }
-
+      setLocalStorage('favorite', [...prev, product]);
       return [...prev, product];
     });
   };

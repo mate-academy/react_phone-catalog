@@ -5,12 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 export const Dropdowns = () => {
   const [searchParams, setSerachParams] = useSearchParams();
 
-  // const sortBy = searchParams.get('sortBy') || SortBy.Newest;
-  // const sortPage = searchParams.get('sortPage') || '16';
-
-  useEffect(() => {
-
-  }, []);
+  const sortBy = searchParams.get('sortBy') || SortBy.Newest;
+  const sortPage = searchParams.get('sortPage') || '16';
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (+e.target.value) {
@@ -37,6 +33,7 @@ export const Dropdowns = () => {
           id="catalog__sortby"
           className="catalog__sortby select"
           onChange={handleChangeSort}
+          value={sortBy}
         >
           <option value="newest">Newest</option>
           <option value="name">Name</option>
@@ -51,6 +48,7 @@ export const Dropdowns = () => {
           id="catalog__items"
           className="catalog__items select"
           onChange={handleChangeSort}
+          value={sortPage}
         >
           <option value="16">16</option>
           <option value="24">24</option>
