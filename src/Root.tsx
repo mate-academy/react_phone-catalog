@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, HashRouter as Router } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import { App } from './App';
 import { MainPage } from './pages/MainPage';
 import { PhonesPage } from './pages/PhonesPage';
@@ -14,10 +14,12 @@ export const Root = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<MainPage />} />
-          <Route path="phones" element={<PhonesPage />} />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path="phones/:id?" element={<CardItem />} />
+          </Route>
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
-          <Route path="phone" element={<CardItem />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="*" element={<MainPage />} />

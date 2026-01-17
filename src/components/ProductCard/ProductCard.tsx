@@ -4,7 +4,7 @@ import { ProductAllType } from '../../types/Product';
 import { ProductCardButtons } from './ProductCardButtons';
 import { useProducts } from '../../context/ProductsContext';
 import { NameProducts } from '../../types/NameProducts';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 type Props = {
   product: ProductAllType;
@@ -13,12 +13,13 @@ type Props = {
 export const ProductCard: FC<Props> = ({ product }) => {
   const { image, name, price, screen, capacity, ram, fullPrice, itemId } =
     product;
+  const local = useLocation();
 
   const { findNessesaryItem } = useProducts();
 
   return (
     <div className="card">
-      <Link to={`${itemId}`} className="card__link">
+      <Link to={`./${itemId}`} className="card__link">
         <img src={image} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">
