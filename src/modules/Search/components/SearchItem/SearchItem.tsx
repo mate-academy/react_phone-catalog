@@ -17,7 +17,7 @@ export const SearchItem: FC<Props> = ({ product }) => {
   return (
     <Link to={productLink} className={styles.card}>
       <div className={styles.imgWrapper}>
-        <img src={`/${image}`} alt={name} />
+        <img src={`${image}`} alt={name} />
       </div>
       <h3 className={styles.title}>{name}</h3>
       <p className={styles.price}>

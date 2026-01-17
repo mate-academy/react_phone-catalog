@@ -26,7 +26,7 @@ export const GallerySlider: FC<Props> = ({ images, className }) => {
 
             return (
               <div key={key} className={styles.slide}>
-                <img src={`/${item}`} alt={key} />
+                <img src={item} alt={key} />
               </div>
             );
           })}
@@ -41,10 +41,7 @@ export const GallerySlider: FC<Props> = ({ images, className }) => {
             onClick={() => onDotClick(index)}
             key={`product-img-thumbnail-${index}`}
           >
-            <img
-              src={`/${images[index]}`}
-              alt={`product-img-thumbnail-${index}`}
-            />
+            <img src={images[index]} alt={`product-img-thumbnail-${index}`} />
           </li>
         ))}
       </ul>

@@ -74,7 +74,7 @@ export const CartPage = () => {
         </div>
       )}
 
-      {items.length === 0 && (
+      {items.length === 0 && !error && (
         <div className={styles.messageWrapper}>
           <Message className={styles.message}>
             <Message.Icon>

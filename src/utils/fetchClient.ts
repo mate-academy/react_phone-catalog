@@ -19,7 +19,7 @@ function wait(delay: number = 200, options: FetchOptions = {}) {
   });
 }
 
-const BASE_URL = '/api';
+const BASE_URL = 'api';
 
 function request<T>(url: string, options: FetchOptions = {}): Promise<T> {
   return wait(200, options)

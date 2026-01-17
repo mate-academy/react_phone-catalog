@@ -57,7 +57,7 @@ export const ProductCard: FC<Props> = React.memo(function ProductCard({
   return (
     <article className={classNames(styles.productCard, className)}>
       <Link className={styles.productPreviewWrapper} to={productLink}>
-        <img src={`/${image}`} alt={name} />
+        <img src={image} alt={name} />
       </Link>
 
       <Link

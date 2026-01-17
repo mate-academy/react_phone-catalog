@@ -10,7 +10,7 @@ interface Props {
 
 export const EmptyMessage: FC<Props> = ({
   message,
-  imgPath = '/img/product-not-found.png',
+  imgPath = 'img/product-not-found.png',
 }) => {
   return (
     <Message>
