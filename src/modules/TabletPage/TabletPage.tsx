@@ -9,13 +9,13 @@ import {
   usePreparedProducts,
 } from '../../shared/hooks/usePreparedProducts';
 import { ProductsParams } from '../../components/ProductsParams/ProductsParams';
-import { Paginator } from '../../components/Paginator/paginator';
+import { Paginator } from '../../components/Paginator/Paginator';
 
 export const TabletPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then((data: Product[]) => {
         const onlyPhones = data.filter(p => p.category === 'tablets');

@@ -31,15 +31,22 @@ export const ProductPage = () => {
 
   useEffect(() => {
     const endpoints: Record<string, string> = {
-      phones: '/api/phones.json',
-      tablets: '/api/tablets.json',
-      accessories: '/api/accessories.json',
+      phones: 'api/phones.json',
+      tablets: 'api/tablets.json',
+      accessories: 'api/accessories.json',
     };
 
     fetch(endpoints[category])
       .then(res => res.json())
       .then(setProducts);
   }, [category]);
+
+  const productsData: Product[] = rawProducts.filter(
+    (p): p is Product =>
+      p.category === 'phones' ||
+      p.category === 'tablets' ||
+      p.category === 'accessories',
+  );
 
   if (!product) {
     return (
@@ -53,12 +60,6 @@ export const ProductPage = () => {
     );
   }
 
-  const productsData: Product[] = rawProducts.filter(
-    (p): p is Product =>
-      p.category === 'phones' ||
-      p.category === 'tablets' ||
-      p.category === 'accessories',
-  );
   const shortProduct: Product | null =
     productsData.find(p => p.itemId === product.id) ?? null;
 
