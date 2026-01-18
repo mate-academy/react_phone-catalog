@@ -21,7 +21,7 @@ export const ProductPage = () => {
   const { toggleFavourite, isFavourite } = useFavourites();
 
   const category = location.pathname.split('/')[1];
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activeImage, setActiveImage] = useState<string>('');
 
   useEffect(() => {
     if (product) {
@@ -112,7 +112,7 @@ export const ProductPage = () => {
             {/* MAIN IMAGE */}
             <div className={styles.top__gallery__mainImage}>
               <img
-                src={`/${activeImage}`}
+                src={activeImage}
                 alt={product.name}
                 className={styles.mainImageImg}
               />
@@ -135,7 +135,7 @@ export const ProductPage = () => {
                     onClick={() => setActiveImage(img)}
                   >
                     <img
-                      src={`/${img}`}
+                      src={img}
                       alt="thumbnail"
                       className={styles.top__gallery__thumbnails__thumb__image}
                     />

@@ -27,7 +27,7 @@ export const ProductCard = ({ product, showOldPrice }: Props) => {
       <div className={styles.top}>
         <Link to={`/phones/${product.itemId}`} className={styles.imageLink}>
           <img
-            src={`/${product.image}`}
+            src={product.image}
             alt={product.name}
             className={styles.image}
           />

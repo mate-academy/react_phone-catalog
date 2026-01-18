@@ -7,7 +7,6 @@ export const HomePage = () => {
   return (
     <div className={styles.home}>
       {/* SEO h1 – visually hidden */}
-      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
 
       {/* Hero slider */}
       <PicturesSlider />
