@@ -15,7 +15,7 @@ export const ProductsSlider = ({ type, title }: Props) => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to load products.json');
