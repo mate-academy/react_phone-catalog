@@ -1,10 +1,8 @@
-$color-text: #313237;
-$color-muted: #89939a;
-$color-border: #e2e6e9;
+@use '../../styles/typography' as *;
 
 .header {
-  border-bottom: 1px solid $color-border;
-  background-color: #fff;
+  border-bottom: 1px solid var(--color-elements);
+  background-color: var(--color-white);
 }
 
 .container {
@@ -35,23 +33,22 @@ $color-border: #e2e6e9;
 
 .navLink {
   position: relative;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: $color-muted;
+
+  @include text-uppercase;
+
+  color: var(--color-secondary);
   text-decoration: none;
   line-height: 64px;
   transition: color 0.2s ease;
 
   &:hover,
   &:focus-visible {
-    color: $color-text;
+    color: var(--color-primary);
   }
 }
 
 .isActive {
-  color: $color-text;
+  color: var(--color-primary);
 
   &::after {
     content: '';
@@ -60,7 +57,7 @@ $color-border: #e2e6e9;
     bottom: 0;
     height: 3px;
     width: 100%;
-    background-color: $color-text;
+    background-color: var(--color-primary);
     border-radius: 1px;
   }
 }
@@ -69,7 +66,7 @@ $color-border: #e2e6e9;
   display: flex;
   align-items: center;
   height: 100%;
-  border-right: 1px solid $color-border;
+  border-right: 1px solid var(--color-elements);
   margin-left: auto;
 }
 
@@ -79,7 +76,7 @@ $color-border: #e2e6e9;
   justify-content: center;
   width: 64px;
   height: 100%;
-  border-left: 1px solid $color-border;
+  border-left: 1px solid var(--color-elements);
 
   img {
     display: block;
@@ -95,7 +92,7 @@ $color-border: #e2e6e9;
   width: 48px;
   height: 100%;
   border: none;
-  border-left: 1px solid $color-border;
+  border-left: 1px solid var(--color-elements);
   background: transparent;
   padding: 0;
   cursor: pointer;
