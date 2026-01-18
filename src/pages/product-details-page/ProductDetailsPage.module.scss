@@ -1,0 +1,278 @@
+@import '../../styles/variables';
+
+.page {
+  width: 100%;
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-3xl;
+
+  @include mobile {
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-2xl;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include mobile {
+    padding: 0 $container-padding-mobile;
+  }
+
+  @include tablet {
+    padding: 0 $container-padding-tablet;
+  }
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+// Breadcrumb wrapper
+.breadcrumbWrapper {
+  margin-top: 65px;
+  margin-bottom: $spacing-lg;
+
+  @include mobile {
+    margin-top: 50px;
+    margin-bottom: $spacing-md;
+  }
+}
+
+// Back button wrapper
+.backButtonWrapper {
+  margin-bottom: $spacing-md;
+
+  @include mobile {
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.title {
+  @include h2;
+
+  margin: 0 0 $spacing-xl;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    @include h2-mobile;
+
+    margin: 0 0 $spacing-lg;
+  }
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-3xl;
+
+  @include mobile {
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+  }
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $spacing-lg;
+    align-items: start;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 560px 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+.optionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  width: 100%;
+
+  @include mobile {
+    gap: $spacing-md;
+  }
+
+  @include tablet {
+    width: 240px;
+    gap: $spacing-md;
+  }
+
+  @include desktop {
+    width: 320px;
+    gap: $spacing-lg;
+  }
+}
+
+// Price section
+.priceSection {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+.currentPrice {
+  @include h2;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+}
+
+.fullPrice {
+  @include h3;
+
+  text-decoration: line-through;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+// Short specs (below actions)
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  @include small-text;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+.specValue {
+  @include small-text;
+
+  text-align: right;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+}
+
+.productId {
+  @include small-text;
+
+  display: none;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+
+  @include desktop {
+    display: block;
+  }
+}
+
+.detailsSections {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-3xl;
+
+  @include mobile {
+    gap: $spacing-xl;
+    margin-bottom: $spacing-2xl;
+  }
+
+  @include tablet {
+    gap: $spacing-xl;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.suggestedSection {
+  margin-top: $spacing-3xl;
+
+  [data-theme='light'] & {
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    border-color: $elements-selected-dark;
+  }
+
+  @include mobile {
+    margin-top: $spacing-2xl;
+  }
+}
+
+.notFoundState {
+  min-height: calc(100vh - #{$header-height-desktop} - #{$footer-height});
+  padding: 20px 0;
+  animation: fade-in 0.3s ease-out;
+
+  &_container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+  }
+
+  @include mobile {
+    padding: 10px 0;
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height});
+  }
+}
+
+// Fade in animation
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

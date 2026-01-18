@@ -1,0 +1,272 @@
+@import '../../styles/variables';
+
+.cartItem {
+  display: grid;
+  grid-template-columns: auto 80px 1fr auto auto;
+  gap: $spacing-lg;
+  align-items: center;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  position: relative;
+
+  [data-theme="light"] & {
+    background: $surface-primary-light;
+    border: 1px solid $elements-border-light;
+  }
+
+  [data-theme="dark"] & {
+    background: $surface-secondary-dark;
+    border: 1px solid $elements-selected-dark;
+  }
+
+  @include mobile {
+    grid-template-columns: auto 64px 1fr;
+    grid-template-rows: auto auto;
+    gap: $spacing-md;
+    padding: $spacing-md;
+  }
+
+  @include tablet {
+    gap: $spacing-md;
+  }
+}
+
+// ============================================
+// REMOVE BUTTON
+// ============================================
+
+/* stylelint-disable no-descending-specificity */
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+
+    &:hover {
+      background: rgba($text-secondary-light, 0.1);
+      color: $text-primary-light;
+    }
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+
+    &:hover {
+      background: rgba($text-secondary-dark, 0.1);
+      color: $text-primary-dark;
+    }
+  }
+
+  @include mobile {
+    width: 24px;
+    height: 24px;
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+// ============================================
+// IMAGE
+// ============================================
+
+.imageContainer {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+
+  [data-theme="light"] & {
+    background: $white;
+  }
+
+  [data-theme="dark"] & {
+    background: $surface-primary-dark;
+  }
+
+  @include mobile {
+    width: 64px;
+    height: 64px;
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// ============================================
+// INFO
+// ============================================
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-width: 0;
+
+  @include mobile {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+.name {
+  @include body-text;
+
+  font-weight: $font-weight-semi-bold;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    font-size: $font-size-sm;
+    -webkit-line-clamp: 3;
+  }
+}
+
+// ============================================
+// QUANTITY CONTROLS
+// ============================================
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  @include mobile {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  [data-theme="light"] & {
+    background-color: transparent;
+    border-color: #B4BDC3;
+    color: $text-primary-light;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background: $surface-secondary-light;
+      border-color: $text-primary-light;
+    }
+  }
+
+  [data-theme="dark"] & {
+    background-color: #323542;
+    border-color: $elements-selected-dark;
+    color: $text-primary-dark;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background: $surface-primary-dark;
+      border-color: $text-primary-dark;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+.quantity {
+  @include body-text;
+
+  font-weight: $font-weight-semi-bold;
+  min-width: 32px;
+  text-align: center;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+}
+
+// ============================================
+// PRICE
+// ============================================
+
+.price {
+  @include h3;
+
+  font-weight: $font-weight-bold;
+  white-space: nowrap;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    font-size: $font-size-lg;
+  }
+}

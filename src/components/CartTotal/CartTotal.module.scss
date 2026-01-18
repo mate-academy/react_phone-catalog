@@ -1,0 +1,153 @@
+@import '../../styles/variables';
+
+.cartTotal {
+  padding: $spacing-xl;
+  border-radius: $border-radius-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  position: sticky;
+  top: calc(#{$header-height-desktop} + #{$spacing-2xl});
+
+  [data-theme="light"] & {
+    background: $surface-primary-light;
+    border: 1px solid $elements-border-light;
+  }
+
+  [data-theme="dark"] & {
+    background: $surface-secondary-dark;
+    border: 1px solid $elements-selected-dark;
+  }
+
+  @include mobile {
+    position: static;
+    padding: $spacing-lg;
+    gap: $spacing-lg;
+  }
+
+  @include tablet {
+    top: calc(#{$header-height-desktop} + #{$spacing-xl});
+  }
+}
+
+// ============================================
+// TOTAL SECTION
+// ============================================
+
+.totalSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  text-align: center;
+  border-bottom: 1px solid #E2E6E9;
+
+  [data-theme="dark"] & {
+    border-bottom: 1px solid #3B3E4A;
+  }
+}
+
+.totalAmount {
+  font-size: 48px;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    font-size: 40px;
+  }
+}
+
+.totalLabel {
+  @include body-text;
+
+  margin-bottom: $spacing-xl;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+// ============================================
+// CHECKOUT BUTTON
+// ============================================
+
+/* stylelint-disable no-descending-specificity */
+
+.checkoutButton {
+  @include buttons;
+
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: $border-radius-md;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  font-weight: $font-weight-semi-bold;
+
+  [data-theme="light"] & {
+    background: #313237;
+    color: $white;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: $shadow-button-hover;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  [data-theme="dark"] & {
+    background: $primary-accent-dark;
+    color: $white;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: 0 4px 16px rgba(144, 91, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  @include mobile {
+    padding: 14px 20px;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .checkoutButton {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

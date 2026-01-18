@@ -1,0 +1,340 @@
+@import '../../styles/variables';
+
+// ============================================
+// PAGE LAYOUT
+// ============================================
+
+.page {
+  min-height: calc(100vh - #{$header-height-desktop} - #{$footer-height});
+  padding: $spacing-xl 0;
+  animation: fade-in 0.3s ease-out;
+
+  [data-theme="light"] & {
+    background: $surface-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    background: $surface-primary-dark;
+  }
+
+  @include mobile {
+    padding: 15px 0;
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height});
+  }
+
+  @include tablet {
+    padding: 15px 0;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include mobile {
+    padding: 0 $container-padding-mobile;
+  }
+
+  @include tablet {
+    padding: 0 $container-padding-tablet;
+  }
+}
+
+// ============================================
+// HEADER
+// ============================================
+
+.title {
+  @include h1;
+
+  margin: 0 0 $spacing-xs;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-xs;
+  }
+}
+
+.modelsCount {
+  @include small-text;
+
+  margin: 0 0 $spacing-2xl;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// ============================================
+// FILTERS
+// ============================================
+
+.filters {
+  display: flex;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
+  }
+
+  @include tablet {
+    gap: $spacing-md;
+  }
+}
+
+// ============================================
+// PRODUCTS GRID
+// ============================================
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $grid-gap-desktop;
+  margin-bottom: $spacing-3xl;
+  justify-items: center;
+
+  > * {
+    height: 100%;
+    width: 100%;
+    max-width: 272px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
+    gap: $grid-gap-mobile;
+    margin-bottom: $spacing-2xl;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 272px));
+    gap: $grid-gap-tablet;
+    margin-bottom: $spacing-3xl;
+    justify-content: center;
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+      grid-template-columns: repeat(auto-fit, minmax(272px, 272px));
+      gap: $grid-gap-tablet;
+      justify-content: center;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      grid-template-columns: repeat(auto-fit, minmax(272px, 272px));
+      gap: $grid-gap-tablet;
+      justify-content: center;
+    }
+  }
+}
+
+// ============================================
+// LOADING STATE
+// ============================================
+
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: $spacing-3xl 0;
+
+  @include mobile {
+    min-height: 300px;
+    padding: $spacing-3xl 0;
+  }
+}
+
+// ============================================
+// ERROR STATE
+// ============================================
+
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: $spacing-3xl 0;
+  text-align: center;
+
+  @include mobile {
+    min-height: 300px;
+    padding: $spacing-3xl 0;
+  }
+}
+
+.errorTitle {
+  @include h2;
+
+  margin: 0 0 $spacing-md;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.errorMessage {
+  @include body-text;
+
+  margin: 0 0 $spacing-2xl;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.reloadButton {
+  @include buttons;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  min-width: 160px;
+  border-radius: $border-radius-md;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  [data-theme="light"] & {
+    background: $primary-accent;
+    color: $white;
+
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: $shadow-button-hover;
+      transform: translateY(-1px);
+    }
+  }
+
+  [data-theme="dark"] & {
+    background: $primary-accent-dark;
+    color: $white;
+
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: 0 4px 16px rgba(144, 91, 255, 0.3);
+      transform: translateY(-1px);
+    }
+  }
+
+  @include mobile {
+    padding: 10px 20px;
+    min-width: 140px;
+    font-size: $font-size-sm;
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+// ============================================
+// EMPTY STATE
+// ============================================
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: $spacing-3xl 0;
+
+  @include mobile {
+    min-height: 300px;
+    padding: $spacing-3xl 0;
+  }
+}
+
+.emptyMessage {
+  @include h2;
+
+  text-align: center;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+// ============================================
+// ANIMATION
+// ============================================
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
+
+  .reloadButton {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

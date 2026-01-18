@@ -1,0 +1,88 @@
+@import '../../styles/variables';
+
+.sortSelect {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-width: 136px;
+
+  @include mobile {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.label {
+  @include small-text;
+
+  font-weight: $font-weight-semi-bold;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.select {
+  @include body-text;
+
+  padding: 10px 12px;
+  border: 1px solid;
+  border-radius: $border-radius-sm;
+  background: transparent;
+  cursor: pointer;
+  transition: all $transition-base;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+
+  [data-theme="dark"] & {
+    border-color: $icon-color-dark;
+    color: $text-primary-dark;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4 6L8 10L12 6' stroke='%23F1F2F9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+
+    option {
+      background: $surface-secondary-dark;
+      color: $text-primary-dark;
+    }
+  }
+
+  [data-theme="light"] & {
+    border-color: $icon-default-light;
+    color: $text-primary-light;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4 6L8 10L12 6' stroke='%23313237' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  }
+
+  &:focus {
+    [data-theme="dark"] & {
+      outline: none;
+      border-color: $primary-accent-dark;
+    }
+
+    [data-theme="light"] &  {
+      outline: none;
+      border-color: $primary-accent;
+    }
+  }
+
+  &:hover {
+    [data-theme="dark"] & {
+      border-color: $text-secondary-dark;
+    }
+
+    [data-theme="light"] &  {
+       border-color: $text-secondary-light;
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+/* stylelint-enable no-descending-specificity */

@@ -1,0 +1,498 @@
+@import '../../styles/variables';
+
+.bannerSlider {
+  width: 100%;
+  margin-bottom: $spacing-3xl;
+  position: relative;
+
+  animation: slide-in 0.4s ease-out;
+
+  [data-theme="dark"] & {
+    background: #0F1121;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+}
+
+.bannerContainer {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  border-radius: $border-radius-md;
+  position: relative;
+
+  // Desktop/Tablet: 3:1 aspect ratio
+  aspect-ratio: 3 / 1;
+}
+
+.bannerTrack {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.banner {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.bannerTitle {
+  display: block;
+  line-height: $line-height-tight;
+}
+
+.bannerSubtitle {
+  display: block;
+  line-height: $line-height-normal;
+}
+
+.bannerButton {
+  display: block;
+  padding: 12px 24px;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-button-hover;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include mobile {
+    padding: 10px 20px;
+    font-size: $font-size-sm;
+  }
+
+  @include tablet {
+    padding: 10px 20px;
+    font-size: $font-size-sm;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.bannerContent {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  &--1 {
+    @extend %bannerContent !optional;
+
+    .bannerTitle {
+      @extend %bannerTitle !optional;
+
+      font-size: 50px;
+      width: 750px;
+      background: linear-gradient(90deg, hsl(189deg, 97%, 50%), #b8f709);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      margin-left: 40px;
+      margin-bottom: 0;
+
+      @include mobile {
+        font-size: 30px;
+        width: 300px;
+        margin-left: 30px;
+      }
+
+      @include tablet {
+        font-size: 36px;
+        width: 380px;
+        margin-left: 35px;
+      }
+    }
+
+    .bannerSubtitle {
+      @extend %bannerSubtitle !optional;
+
+      margin-left: 40px;
+      color: $white;
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 700;
+
+      @include mobile {
+        font-size: 18px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+      }
+
+      @include tablet {
+        font-size: 22px;
+        margin-bottom: 40px;
+      }
+    }
+
+    .bannerButton {
+      @extend %bannerButton !optional;
+
+      background: linear-gradient(90deg, hsl(288deg, 98%, 34%), #f50404);
+      margin-left: 40px;
+      color: $white;
+
+      @include mobile {
+        margin-left: 28px;
+      }
+
+      @include tablet {
+        margin-left: 32px;
+      }
+    }
+  }
+
+
+  &--2 {
+    @extend %bannerContent !optional;
+
+    flex-direction: column-reverse;
+    justify-content: end;
+    align-items: end;
+
+    .bannerTitle {
+      @extend %bannerTitle !optional;
+
+      font-size: 60px;
+      background: linear-gradient(90deg, hsl(175deg, 99%, 48%), #01f701);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      margin-right: 40px;
+
+      @include mobile {
+        font-size: 32px;
+        margin-bottom: 20px;
+        margin-right: 30px;
+      }
+
+      @include tablet {
+        font-size: 40px;
+        margin-bottom: 20px;
+        margin-right: 30px;
+      }
+    }
+
+    .bannerSubtitle {
+      @extend %bannerSubtitle !optional;
+
+      margin-right: 40px;
+      color: $white;
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 700;
+      margin-bottom: 0;
+
+      @include mobile {
+        font-size: 18px;
+        margin-right: 30px;
+        margin-bottom: 0;
+      }
+
+      @include tablet {
+        font-size: 20px;
+        margin-right: 30px;
+        margin-bottom: 0;
+      }
+    }
+
+    .bannerButton {
+      @extend %bannerButton !optional;
+
+      background: linear-gradient(90deg, hsl(109deg, 89%, 39%), #cbe101);
+      color: #fefefe;
+      font-weight: 900;
+      margin-right: 40px;
+      margin-bottom: 59px;
+
+      @include mobile {
+        margin-right: 28px;
+        margin-bottom: 40px;
+      }
+
+      @include tablet {
+        margin-right: 28px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &--3 {
+    @extend %bannerContent !optional;
+
+    align-items: end;
+
+
+    .bannerTitle {
+      @extend %bannerTitle !optional;
+
+      font-size: 54px;
+      width: 650px;
+      text-align: right;
+      background: linear-gradient(165deg, hwb(60deg 97% 2%) 0%, hwb(60deg 97% 2%) 55%, #f70 100%);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      margin-bottom: 0;
+      margin-right: 40px;
+
+      @include mobile {
+        text-align: right;
+        font-size: 34px;
+        width: 350px;
+        margin-right: 30px;
+      }
+
+      @include tablet {
+        text-align: right;
+        font-size: 40px;
+        width: 380px;
+        margin-right: 30px;
+      }
+    }
+
+    .bannerSubtitle {
+      @extend %bannerSubtitle !optional;
+
+      margin-right: 40px;
+      color: $white;
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 700;
+      margin-bottom: 70px;
+
+      @include mobile {
+        font-size: 18px;
+        margin-right: 30px;
+        margin-bottom: 50px;
+      }
+
+      @include tablet {
+        font-size: 22px;
+        margin-bottom: 60px;
+      }
+    }
+
+    .bannerButton {
+      @extend %bannerButton !optional;
+
+      background: linear-gradient(90deg, hsl(62deg, 96%, 42%), #f50404);
+      margin-right: 40px;
+      color: $white;
+
+      @include mobile {
+        margin-right: 28px;
+      }
+
+      @include tablet {
+        margin-right: 32px;
+      }
+    }
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+// Navigation buttons
+.navButton {
+  width: 32px;
+  height: 100%;
+  border-radius: $border-radius-sm;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-base;
+  flex-shrink: 0;
+
+  [data-theme="light"] & {
+    background: $surface-secondary-light;
+    border-color: #B4BDC3;
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    background: #323542;
+    border-color: #323542;
+    color: $text-primary-dark;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: var(--primary-text);
+    background: var(--elements-hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Progress dots
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  padding: $spacing-md 0;
+
+  [data-theme="dark"] & {
+    background: #0F1121;
+  }
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  border-radius: $border-radius-full;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  padding: 0;
+
+  [data-theme="light"] & {
+      background: $elements-border-light;
+    }
+
+  [data-theme="dark"] & {
+    background: #3B3E4A;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+
+    [data-theme="light"] & {
+      background: $text-secondary-light;
+    }
+
+    [data-theme="dark"] & {
+      background: $text-secondary-dark;
+    }
+  }
+
+  &.active {
+    width: 14px;
+    border-radius: $border-radius-sm;
+
+    [data-theme="light"] & {
+      background: $text-primary-light;
+    }
+
+    [data-theme="dark"] & {
+      background: $text-primary-dark;
+    }
+  }
+}
+
+// Animation
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Touch feedback (for mobile swipe)
+@media (hover: none) and (pointer: coarse) {
+  .bannerContainer {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+@include mobile {
+  .bannerSlider{
+    height: 352px;
+    margin-bottom: $spacing-xl;
+  }
+
+  .container {
+    height: 320px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .bannerContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .bannerTrack {
+    width: 100%;
+  }
+
+  .bannerImage {
+    right: 0;
+    object-fit: cover;
+  }
+
+  .navButton {
+   display: none;
+  }
+}
+
+@include tablet {
+  .bannerSlider {
+    height: 380px;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .container{
+    height: 350px;
+    padding: 0 $container-padding-tablet;
+  }
+}
+
+@include desktop {
+  .bannerSlider{
+    height: 432px;
+  }
+
+  .container{
+    height: 400px;
+  }
+}

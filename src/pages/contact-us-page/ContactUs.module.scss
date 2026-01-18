@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.page {
+  min-height: calc(100vh - #{$header-height-desktop} - #{$footer-height});
+  padding: $spacing-2xl 0;
+  animation: fadeIn 0.3s ease-out;
+
+  [data-theme="light"] & {
+    background: $surface-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    background: $surface-primary-dark;
+  }
+
+  @include mobile {
+    padding: $spacing-xl 0;
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height});
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include mobile {
+    padding: 0 $container-padding-mobile;
+  }
+
+  @include tablet {
+    padding: 0 $container-padding-tablet;
+  }
+}

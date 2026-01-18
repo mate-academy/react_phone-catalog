@@ -1,1 +1,236 @@
-// not empty
+@import './styles/variables';
+
+// ============================================
+// GLOBAL APP STYLES
+// ============================================
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+  }
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+  }
+}
+
+// Root element
+:root {
+  height: 100%;
+}
+
+// ============================================
+// APP CONTAINER
+// ============================================
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  // Light theme
+  [data-theme='light'] & {
+    background: $surface-secondary-light;
+    color: $text-primary-light;
+  }
+
+  // Dark theme
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+    color: $text-primary-dark;
+  }
+}
+
+// ============================================
+// MAIN CONTENT AREA
+// ============================================
+.main-content {
+  flex: 1; // Takes all available space between header and footer
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 16px 32px; // Header height (64px on desktop/tablet) // Space before footer
+
+  // Mobile: Smaller header
+  @include mobile {
+    padding-top: 56px; // Header height on mobile
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  // Tablet
+  @include tablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  // Desktop
+  @include desktop {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+// ============================================
+// SCROLLBAR STYLING (Optional)
+// ============================================
+
+// Custom scrollbar for webkit browsers
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+
+  [data-theme='light'] & {
+    background: $surface-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--elements-border);
+  border-radius: 4px;
+
+  [data-theme='light'] & {
+    background: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    background: $elements-selected-dark;
+  }
+
+  &:hover {
+    [data-theme='light'] & {
+      background: $elements-border-light;
+    }
+
+    [data-theme='dark'] & {
+      background: $elements-selected-dark;
+    }
+  }
+}
+
+// Firefox scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--elements-border) var(--surface-primary);
+}
+
+// ============================================
+// FOCUS VISIBLE (Accessibility)
+// ============================================
+*:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
+
+  [data-theme='light'] & {
+    outline-color: $primary-accent;
+  }
+
+  [data-theme='dark'] & {
+    outline-color: $primary-accent-dark;
+  }
+}
+
+// ============================================
+// SELECTION COLORS
+// ============================================
+::selection {
+  [data-theme='light'] & {
+    background: rgba($primary-accent, 0.2);
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    background: rgba($primary-accent-dark, 0.3);
+    color: $text-primary-dark;
+  }
+}
+
+// ============================================
+// RESPONSIVE UTILITIES
+// ============================================
+
+// Hide on mobile
+.hide-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+// Hide on tablet
+.hide-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+// Hide on desktop
+.hide-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+// Show only on mobile
+.show-mobile {
+  display: none !important;
+
+  @include mobile {
+    display: block !important;
+  }
+}
+
+// Show only on tablet
+.show-tablet {
+  display: none !important;
+
+  @include tablet {
+    display: block !important;
+  }
+}
+
+// Show only on desktop
+.show-desktop {
+  display: none !important;
+
+  @include desktop {
+    display: block !important;
+  }
+}
+
+// ============================================
+// CONTAINER UTILITY
+// ============================================
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 32px;
+  }
+}
