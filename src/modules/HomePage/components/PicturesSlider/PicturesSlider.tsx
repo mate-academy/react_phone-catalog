@@ -49,7 +49,7 @@ export const PicturesSlider = () => {
 
   return (
     <section className={styles.banner}>
-      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.container}>
         {/* Arrows */}
