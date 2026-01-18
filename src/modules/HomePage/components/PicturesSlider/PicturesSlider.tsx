@@ -8,7 +8,7 @@ const slides = [
     subtitle: 'Be the first!',
     productName: 'iPhone 14 Pro',
     productSlogan: 'Pro. Beyond.',
-    image: '../../../../../public/img/category-phones.webp',
+    image: 'img/category-phones.webp',
   },
   {
     id: 'ipad-pro',
@@ -16,7 +16,7 @@ const slides = [
     subtitle: 'Supercharged.',
     productName: 'iPad Pro',
     productSlogan: 'M1 Chip inside.',
-    image: '../../../../../public/img/category-tablets.png',
+    image: 'img/category-tablets.png',
   },
   {
     id: 'apple-watch',
@@ -24,7 +24,7 @@ const slides = [
     subtitle: 'Enhance your life.',
     productName: 'Apple Watch',
     productSlogan: 'S6 Chip inside.',
-    image: '../../../../../public/img/category-accessories.webp',
+    image: 'img/category-accessories.webp',
   },
 ];
 
@@ -49,7 +49,7 @@ export const PicturesSlider = () => {
 
   return (
     <section className={styles.banner}>
-      <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <div className={styles.container}>
         {/* Arrows */}
