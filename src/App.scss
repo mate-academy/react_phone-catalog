@@ -36,3 +36,22 @@ body {
   min-height: 100vh;
   background-color: #fff;
 }
+
+.section {
+  padding-top: 32px;
+
+  @media (max-width: 639px) {
+    padding-top: 24px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 1199px) {
+    max-width: 100%;
+    padding: 0;
+  }
+}
