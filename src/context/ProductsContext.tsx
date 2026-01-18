@@ -2,6 +2,7 @@ import React, { Dispatch, FC, SetStateAction, useState } from 'react';
 import { createContext, useContext } from 'react';
 
 import {
+  CombinedProductType,
   ProductAllType,
   ProductType,
   ProductTypeForAccessory,
@@ -12,11 +13,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-type CombinedProductType =
-  | ProductType
-  | ProductTypeForAccessory
-  | ProductAllType;
-
 type ProductsContextType = {
   phones: ProductType[];
   tablets: ProductType[];
@@ -26,7 +22,7 @@ type ProductsContextType = {
   findNessesaryItem: (
     category: NameProducts,
     itemId: string,
-  ) => CombinedProductType | undefined;
+  ) => ProductType | ProductTypeForAccessory | undefined;
 };
 
 const ProductsContext = createContext<ProductsContextType>({

@@ -5,84 +5,105 @@ import classNames from 'classnames';
 import './CardItem.scss';
 import allProducts from '../../../public/api/products.json';
 import { PromotionSlider } from '../PromotionSlider';
-import { Product } from '../../types/Product';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { ProductCardButtons } from '../ProductCard/ProductCardButtons';
+import { useProducts } from '../../context/ProductsContext';
+import { NameCategory, NameProducts } from '../../types/NameProducts';
 
 export const CardItem = () => {
-  const product = {
-    id: 'apple-iphone-7-plus-32gb-silver',
-    category: 'phones',
-    namespaceId: 'apple-iphone-7-plus',
-    name: 'Apple iPhone 7 Plus 32GB Silver',
-    capacityAvailable: ['32GB', '64GB'],
-    capacity: '32GB',
-    priceRegular: 540,
-    priceDiscount: 500,
-    colorsAvailable: ['black', 'mistyrose', 'gold', 'silver'],
-    color: 'silver',
-    images: [
-      'img/phones/apple-iphone-7-plus/silver/00.webp',
-      'img/phones/apple-iphone-7-plus/silver/01.webp',
-      'img/phones/apple-iphone-7-plus/silver/02.webp',
-      'img/phones/apple-iphone-7-plus/silver/03.webp',
-      'img/phones/apple-iphone-7-plus/silver/04.webp',
-    ],
-    description: [
-      {
-        title: 'And then there was Pro',
-        text: [
-          'A transformative triple-camera system that adds tons of capability without complexity.',
-          'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
-        ],
-      },
-      {
-        title: 'Camera',
-        text: [
-          'Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
-        ],
-      },
-      {
-        title:
-          'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
-        text: [
-          'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
-        ],
-      },
-    ],
-    screen: "5.5' IPS",
-    resolution: '1920x1080',
-    processor: 'Apple A10',
-    ram: '3GB',
-    camera: '12 Mp + 7 Mp',
-    zoom: 'Digital, 10x / Optical, 2x',
-    cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
-  };
+  // const product = {
+  //   id: 'apple-iphone-7-plus-32gb-silver',
+  //   category: 'phones',
+  //   namespaceId: 'apple-iphone-7-plus',
+  //   name: 'Apple iPhone 7 Plus 32GB Silver',
+  //   capacityAvailable: ['32GB', '64GB'],
+  //   capacity: '32GB',
+  //   priceRegular: 540,
+  //   priceDiscount: 500,
+  //   colorsAvailable: ['black', 'mistyrose', 'gold', 'silver'],
+  //   color: 'silver',
+  //   images: [
+  //     'img/phones/apple-iphone-7-plus/silver/00.webp',
+  //     'img/phones/apple-iphone-7-plus/silver/01.webp',
+  //     'img/phones/apple-iphone-7-plus/silver/02.webp',
+  //     'img/phones/apple-iphone-7-plus/silver/03.webp',
+  //     'img/phones/apple-iphone-7-plus/silver/04.webp',
+  //   ],
+  //   description: [
+  //     {
+  //       title: 'And then there was Pro',
+  //       text: [
+  //         'A transformative triple-camera system that adds tons of capability without complexity.',
+  //         'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
+  //       ],
+  //     },
+  //     {
+  //       title: 'Camera',
+  //       text: [
+  //         'Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
+  //       ],
+  //     },
+  //     {
+  //       title:
+  //         'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
+  //       text: [
+  //         'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
+  //       ],
+  //     },
+  //   ],
+  //   screen: "5.5' IPS",
+  //   resolution: '1920x1080',
+  //   processor: 'Apple A10',
+  //   ram: '3GB',
+  //   camera: '12 Mp + 7 Mp',
+  //   zoom: 'Digital, 10x / Optical, 2x',
+  //   cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
+  // };
+
+  const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+  const { findNessesaryItem } = useProducts();
+
+  console.log(id);
+
+  // Получаем категорию из пути (первый сегмент: phones, tablets, accessories)
+  const category = location.pathname.split('/')[1];
+  const product = id
+    ? findNessesaryItem(category as NameCategory, id)
+    : undefined;
+
+  console.log(product);
+  console.log(category);
+  console.log(findNessesaryItem(category as NameCategory, id));
 
   const [activePhoto, setActivePhoto] = useState(
-    product.images[0] || unnownImg,
+    product?.images[0] || unnownImg,
   );
 
   const alsoLikeProducts = allProducts.slice(0, 5);
 
-  const productTech = [
-    { name: 'Screen', value: product.screen },
-    { name: 'Resolution', value: product.resolution },
-    { name: 'Processor', value: product.processor },
-    { name: 'RAM', value: product.ram },
-    { name: 'Camera', value: product.camera },
-    { name: 'Zoom', value: product.zoom },
-    { name: 'Cell', value: [...product.cell].join(', ') },
-  ];
+  // const productTech = [
+  //   { name: 'Screen', value: product.screen },
+  //   { name: 'Resolution', value: product.resolution },
+  //   { name: 'Processor', value: product.processor },
+  //   { name: 'RAM', value: product.ram },
+  //   { name: 'Camera', value: product.camera },
+  //   { name: 'Zoom', value: product.zoom },
+  //   { name: 'Cell', value: [...product.cell].join(', ') },
+  // ];
 
-  const chosenProduct =
-    allProducts.find(
-      (item: { itemId: string }) => item.itemId === product.id,
-    ) || product;
+  // const chosenProduct =
+  //   allProducts.find(
+  //     (item: { itemId: string }) => item.itemId === product.id,
+  //   ) || product;
 
-  const productId = useMemo(() => {
-    return Math.floor(Math.random() * 1000000);
-  }, []);
+  // const productId = useMemo(() => {
+  //   return Math.floor(Math.random() * 1000000);
+  // }, []);
+
+  if (!product) {
+    return <div>Товар не найден</div>;
+  }
 
   return (
     <section className="card-item">
@@ -185,9 +206,9 @@ export const CardItem = () => {
                     ${product.priceRegular}
                   </span>
                 </div>
-                <ProductCardButtons />
+                {/* <ProductCardButtons /> */}
               </div>
-
+              {/*
               <ul className="body-card__param param">
                 {productTech.map(
                   ({ name, value }, index) =>
@@ -199,7 +220,7 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
-              <span className="body-card__id">ID: {productId}</span>
+              <span className="body-card__id">ID: {productId}</span> */}
             </div>
           </div>
 
@@ -222,14 +243,14 @@ export const CardItem = () => {
             </div>
             <div className="descritption__tech">
               <h3 className="descritption__title h3 separator">Tech specs</h3>
-              <ul className="descritption__info param">
+              {/* <ul className="descritption__info param">
                 {productTech.map(({ name, value }) => (
                   <li className="param__descritption" key={name}>
                     <span className="param__name">{name}</span>
                     <span className="param__value">{value}</span>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>

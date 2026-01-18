@@ -40,3 +40,8 @@ export interface ProductAllType {
   image: string;
   count?: number;
 }
+
+export type CombinedProductType =
+  | ProductType
+  | ProductTypeForAccessory
+  | ProductAllType;

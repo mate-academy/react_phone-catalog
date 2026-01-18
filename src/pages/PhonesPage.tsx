@@ -19,5 +19,5 @@ export const PhonesPage = () => {
     return productsAll.filter(product => product.category === 'phones');
   }, [productsAll]);
 
-  return <Catalog products={products} nameCategory={'phones'} />;
+  return <Catalog products={products} NameCategory={'phones'} />;
 };

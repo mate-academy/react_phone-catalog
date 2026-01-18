@@ -50,6 +50,7 @@ export const Header = () => {
               home
             </NavLink>
             <NavLink
+              end
               to="/phones"
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
@@ -59,6 +60,7 @@ export const Header = () => {
               Phones
             </NavLink>
             <NavLink
+              end
               to="/tablets"
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
@@ -68,6 +70,7 @@ export const Header = () => {
               tablets
             </NavLink>
             <NavLink
+              end
               to="/accessories"
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`

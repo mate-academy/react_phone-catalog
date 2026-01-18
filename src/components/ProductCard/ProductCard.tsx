@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const { image, name, price, screen, capacity, ram, fullPrice, itemId } =
+  const { image, name, price, screen, capacity, ram, fullPrice, itemId, category } =
     product;
   const local = useLocation();
 
@@ -19,7 +19,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
   return (
     <div className="card">
-      <Link to={`./${itemId}`} className="card__link">
+      <Link to={`/${category}/${itemId}`} className="card__link">
         <img src={image} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">

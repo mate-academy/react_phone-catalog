@@ -20,5 +20,5 @@ export const TabletsPage = () => {
     return productsAll.filter(product => product.category === 'tablets');
   }, [productsAll]);
 
-  return <Catalog products={products} nameCategory={'tablets'} />;
+  return <Catalog products={products} NameCategory={'tablets'} />;
 };

@@ -5,7 +5,7 @@ import { Breadcrumbs } from './Breadcrumbs';
 import './Catalog.scss';
 import { Dropdowns } from './Dropdowns';
 import { ProductAllType, ProductType } from '../../types/Product';
-import { nameCategory } from '../../types/NameProducts';
+import { NameCategory } from '../../types/NameProducts';
 import { useSearchParams } from 'react-router-dom';
 import { SortBy } from '../../types/Sort';
 import { scrollToTop } from '../../utils/utils';
@@ -14,14 +14,14 @@ type Props = {
   products: ProductAllType[];
   dropdown?: boolean;
   pagination?: boolean;
-  nameCategory: nameCategory;
+  NameCategory: NameCategory;
 };
 
 export const Catalog: FC<Props> = ({
   products,
   dropdown = true,
   pagination = true,
-  nameCategory,
+  NameCategory,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams('');
 
@@ -53,13 +53,13 @@ export const Catalog: FC<Props> = ({
     }
   }
 
-  function infoObject(nameCategory: nameCategory): {
-    name: nameCategory;
+  function infoObject(NameCategory: NameCategory): {
+    name: NameCategory;
     quantity: number;
   } {
     let name = '';
 
-    switch (nameCategory) {
+    switch (NameCategory) {
       case 'phones':
         name = 'Mobile phones';
         break;
@@ -74,12 +74,12 @@ export const Catalog: FC<Props> = ({
     }
 
     return {
-      name: name as nameCategory,
+      name: name as NameCategory,
       quantity: products.length | 0,
     };
   }
 
-  const { name, quantity } = infoObject(nameCategory);
+  const { name, quantity } = infoObject(NameCategory);
 
   // Pagination logic can be added here in the future
 
