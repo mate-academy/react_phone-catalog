@@ -1,11 +1,10 @@
 import { Product } from '../types/Product';
 import { Item } from '../types/Item';
 import { CategoryType, SortOption } from '../types/Product';
-
 /**
  * API Configuration
  */
-export const API_BASE_URL = '/api';
+export const API_BASE_URL = '../../public/api';
 
 /**
  * API Endpoints
