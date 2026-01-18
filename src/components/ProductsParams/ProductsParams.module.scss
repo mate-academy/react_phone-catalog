@@ -1,12 +1,12 @@
-@import '../../styles/mixins.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .params {
   margin-top: 32px;
   display: flex;
   flex-direction: row;
   gap: 16px;
-  padding-left: 0px;
+  padding-left: 0;
 
   /* tablet */
   @include tablet {
@@ -32,9 +32,9 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: $color-text-grey;
-  margin: 0px;
+  margin: 0;
 }
 
 .select {
@@ -42,7 +42,7 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--color);
   margin-top: 4px;
   width: 136px;
@@ -68,7 +68,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       width: 176px;

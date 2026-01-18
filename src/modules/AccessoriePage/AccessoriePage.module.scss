@@ -1,5 +1,5 @@
-@import '../../styles/mixins.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .container {
   padding-inline: 16px;
@@ -11,7 +11,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       max-width: 1136px;
@@ -25,16 +25,16 @@
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 8px;
-  padding-left: 0px;
+  padding-left: 0;
 }
 
 .subtitle {
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: $color-text-grey;
-  margin: 8px 0px 0px 0px;
+  margin: 8px 0 0;
 }
 
 .list {

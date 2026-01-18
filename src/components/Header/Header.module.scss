@@ -20,7 +20,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       height: 64px;
@@ -58,7 +58,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       gap: 64px;
@@ -85,25 +85,14 @@
   letter-spacing: 4%;
   color: $color-text-grey;
   transition: color 0.3s;
+  &__active {
+    color: $color-text-primary;
+    border-bottom: 2px solid $color-text-primary;
+  }
 }
 
 .navLink:hover {
   color: $color-text-primary;
-}
-
-/* Active underline */
-.navLink.active {
-  color: $color-text-primary;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 2px;
-    background: $color-text-primary;
-  }
 }
 
 /* Icons */
@@ -140,6 +129,7 @@
   font-weight: 700;
   border-radius: 50%;
   border: 1px solid $color-text-primary;
+
   /* tablet */
   @include tablet {
     & {
@@ -147,7 +137,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       top: 18px;
@@ -170,6 +160,7 @@
   background-position: center center;
 
   filter: invert(1);
+
   /* tablet */
   @include tablet {
     & {
@@ -177,7 +168,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       width: 64px;
@@ -204,76 +195,172 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       width: 64px;
     }
   }
 }
-/* mobile menu*/
-.menuIcon {
-  display: none;
 
-  @include mobile {
+/* mobile menu */
+.menuIcon {
+  all: unset;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid $color-button-primary;
+  &__burger {
+    width: 100%;
+    height: 100%;
     display: block;
-    width: 40px;
-    height: 64px;
-    // background: url('/icons/menu.svg') no-repeat center;
-    // border-left: 1px solid #2a2c3f;
+    background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/burger-menu.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
     cursor: pointer;
+    background-position: center center;
+
+    filter: invert(1);
+  }
+
+  /* tablet */
+  @include tablet {
+    & {
+      display: none;
+    }
   }
 }
+
 .menuBackdrop {
   position: fixed;
-  inset: 0;
-  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color-card-bg, 0.8);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  &__isActive {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .menu {
-  position: absolute;
-  top: 64px;
-  right: 0;
-
-  width: 260px;
-  height: calc(100vh - 64px);
-  background: #0f1121;
-  padding: 16px;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70vh;
+  background-color: $color-card-bg;
+  z-index: 100;
   display: flex;
   flex-direction: column;
+  transform: translate(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menuOpen {
+  transform: translate(0);
 }
 
 .menuHeader {
+  height: 48px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
+  padding-inline: 16px;
+  border-bottom: 1px solid $color-button-primary;
 }
 
 .iconClose {
+  all: unset;
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/menu-close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
   width: 16px;
   height: 16px;
-  background: url('/icons/close.svg') no-repeat center;
-  cursor: pointer;
+  filter: invert(1);
 }
 
 .menuList {
-  list-style: none;
-  margin-top: 32px;
-
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  gap: 16px;
 }
 
-.menuList a {
+.menuLink {
+  color: $color-text-grey;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
   text-transform: uppercase;
-  color: #fff;
   text-decoration: none;
+  transition: color 0.3s;
+  &__active {
+    color: $color-text-primary;
+    border-bottom: 2px solid $color-text-primary;
+  }
 }
 
 .menuFooter {
   margin-top: auto;
   display: flex;
-  gap: 16px;
+  width: 100%;
+  height: 64px;
+  border-top: 1px solid $color-button-primary;
+}
+
+.iconLinkBurger {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 0%;
+  text-decoration: none;
+  border-right: 1px solid $color-button-primary;
+}
+
+.favIconBurger {
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/favourites.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+}
+
+.cartIconBurger {
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/cart.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+}
+
+.counterBurger {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  background-color: $color-button-primary;
+  color: $color-text-primary;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 1px solid $color-text-primary;
 }

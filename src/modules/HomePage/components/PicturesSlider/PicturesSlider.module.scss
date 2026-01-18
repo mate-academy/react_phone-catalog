@@ -1,5 +1,5 @@
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .banner {
   margin-bottom: 56px;
@@ -12,6 +12,7 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -1%;
+
   /* tablet */
   @include tablet {
     & {
@@ -21,7 +22,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       margin-top: 56px;
@@ -52,7 +53,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       padding: 56px 48px 90px;
@@ -111,6 +112,7 @@
   background-size: 16px;
   background-position: center;
   filter: invert(1);
+
   /* tablet */
   @include tablet {
     & {
@@ -126,6 +128,7 @@
   background-size: 16px;
   background-position: center;
   filter: invert(1);
+
   /* tablet */
   @include tablet {
     & {
@@ -133,6 +136,7 @@
     }
   }
 }
+
 // #endregion
 
 .sliderWrapper {
@@ -148,8 +152,10 @@
 .sliderWindow {
   width: 100%;
   overflow: hidden;
+
   // background-color: #000;
   position: relative;
+
   // box-shadow:
   //   0 20px 25px -5px #0000001a,
   //   0 10px 10px -5px #0000000a;
@@ -163,7 +169,8 @@
       border-radius: 8px;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       height: 400px;
@@ -183,6 +190,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+
   /* tablet */
   @include tablet {
     & {
@@ -190,6 +198,7 @@
     }
   }
 }
+
 // #region ===== Text Field
 .textSection {
   width: 100%;
@@ -200,6 +209,7 @@
   justify-content: flex-start;
   padding-top: 40px;
   z-index: 10;
+
   /* tablet */
   @include tablet {
     & {
@@ -211,10 +221,12 @@
       border-radius: 8px;
       align-items: flex-start;
       text-align: left;
+
       // background-color: $color-card-bg;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       margin: 10px;
@@ -230,6 +242,7 @@
   font-weight: 700;
   text-align: center;
   line-height: 100%;
+
   /* tablet */
   @include tablet {
     & {
@@ -242,7 +255,8 @@
       max-width: 300px;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       font-size: 36px;
@@ -266,13 +280,15 @@
   color: $color-text-grey;
   font-size: 12px;
   font-weight: 500;
+
   /* tablet */
   @include tablet {
     & {
       display: block;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       font-size: 22px;
@@ -294,13 +310,15 @@
   cursor: pointer;
   transition: all 0.3s;
   margin-top: 30px;
+
   /* tablet */
   @include tablet {
     & {
       display: block;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       height: 40px;
@@ -312,9 +330,10 @@
   }
 }
 
-//#endregion
+// #endregion
 
 // #region ===== Photo Field
+
 .imageSection {
   width: 100%;
   height: 70%;
@@ -325,6 +344,7 @@
   position: relative;
   background-color: $color-card-bg;
   overflow: hidden;
+
   /* tablet */
   @include tablet {
     & {
@@ -339,6 +359,7 @@
   text-align: center;
   margin-top: 0;
   z-index: 10;
+
   /* tablet */
   @include tablet {
     & {
@@ -347,7 +368,8 @@
       width: 100%;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       top: 60px;
@@ -361,13 +383,15 @@
   font-weight: 700;
   letter-spacing: 0;
   margin: 0;
+
   /* tablet */
   @include tablet {
     & {
       font-size: 18px;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       font-size: 28px;
@@ -381,6 +405,7 @@
   margin-top: 4px;
   margin-bottom: 0;
   font-weight: 500;
+
   /* tablet */
   @include tablet {
     & {
@@ -388,7 +413,8 @@
       margin-top: 0;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       font-size: 18px;
@@ -403,6 +429,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
   /* tablet */
   @include tablet {
     & {
@@ -410,13 +437,15 @@
       height: 65%;
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       height: 70%;
     }
   }
 }
+
 .productImg {
   width: 85%;
   max-height: 95%;
@@ -424,6 +453,7 @@
   filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
   transform: translateY(10px);
   transition: transform 0.3s;
+
   /* tablet */
   @include tablet {
     & {
@@ -434,14 +464,17 @@
       transform: translateY(15px);
     }
   }
-  /* desktop*/
+
+  /* desktop */
   @include desktop {
     & {
       transform: translateY(30px);
     }
   }
 }
-//#endRegion
+
+// #endRegion
+
 /* pagination */
 .pagination {
   display: flex;

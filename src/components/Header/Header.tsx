@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
-import styles from './Header.module.scss';
 import { useState } from 'react';
+import styles from './Header.module.scss';
 import { Icon } from '../Icon';
 import { useCart } from '../../context/CartContext';
 import { useFavourites } from '../../context/FavouritesContext';
@@ -10,115 +10,189 @@ export const Header = () => {
   const { cart } = useCart();
   const { favourites } = useFavourites();
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className={styles.header}>
-      {/* Logo */}
-      <Link to="/" className={styles.logo}>
-        <Icon name="Logo" format="png" className={styles.logo} />
+      {/* LOGO */}
+      <Link to="/" className={styles.logo} onClick={closeMenu}>
+        <Icon name="Logo" format="png" className={styles.logoImage} />
       </Link>
-      {/* Navigation */}
+
+      {/* DESKTOP NAV */}
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navListItem}>
-            <NavLink to="/" className={styles.navLink}>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLink__active : ''}`
+              }
+            >
               Home
             </NavLink>
           </li>
-          <li className={styles.navListItem}>
-            <NavLink to="/phones" className={styles.navLink}>
+          <li>
+            <NavLink
+              to="/phones"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLink__active : ''}`
+              }
+            >
               Phones
             </NavLink>
           </li>
-          <li className={styles.navListItem}>
-            <NavLink to="/tablets" className={styles.navLink}>
+          <li>
+            <NavLink
+              to="/tablets"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLink__active : ''}`
+              }
+            >
               Tablets
             </NavLink>
           </li>
-          <li className={styles.navListItem}>
-            <NavLink to="/accessories" className={styles.navLink}>
+          <li>
+            <NavLink
+              to="/accessories"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLink__active : ''}`
+              }
+            >
               Accessories
             </NavLink>
           </li>
         </ul>
       </nav>
 
-      {/* Icons */}
+      {/* ICONS */}
       <div className={styles.icons}>
-        {/* <span className={styles.languageIcon} />
-
-        <span className={styles.themeIcon} /> */}
-
-        <Link to="/favourites" className={styles.iconLink}>
+        <Link to="/favourites" className={styles.iconLink} onClick={closeMenu}>
           <span className={styles.favIcon} />
           {favourites.length > 0 && (
             <span className={styles.counter}>{favourites.length}</span>
           )}
         </Link>
 
-        <Link to="/cart" className={styles.iconLink}>
+        <Link to="/cart" className={styles.iconLink} onClick={closeMenu}>
           <span className={styles.cartIcon} />
           {cart.length > 0 && (
             <span className={styles.counter}>{cart.length}</span>
           )}
         </Link>
 
-        {/* Burger */}
-        <span className={styles.menuIcon} onClick={() => setIsMenuOpen(true)} />
+        {/* BURGER */}
+        <button
+          type="button"
+          className={styles.menuIcon}
+          aria-label="Open menu"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen(true)}
+        >
+          <span className={styles.menuIcon__burger}></span>
+        </button>
       </div>
 
       {/* MOBILE MENU */}
-      {isMenuOpen && (
-        <div
-          className={styles.menuBackdrop}
-          onClick={() => setIsMenuOpen(false)}
+      <div
+        className={`${styles.menuBackdrop} ${isMenuOpen ? styles.menuBackdrop__isActive : ''}`}
+        onClick={closeMenu}
+      >
+        <nav
+          className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}
+          onClick={e => e.stopPropagation()}
+          aria-hidden={!isMenuOpen}
         >
-          <nav className={styles.menu} onClick={e => e.stopPropagation()}>
-            <div className={styles.menuHeader}>
-              <Link to="/" onClick={() => setIsMenuOpen(false)}>
-                <img src="/img/logo.png" alt="logo" />
-              </Link>
+          {/* MENU HEADER */}
+          <div className={styles.menuHeader}>
+            <Link to="/" onClick={closeMenu}>
+              <Icon name="Logo" format="png" className={styles.logoImage} />
+            </Link>
 
-              <span
-                className={styles.iconClose}
-                onClick={() => setIsMenuOpen(false)}
-              />
-            </div>
+            <button
+              type="button"
+              className={styles.iconClose}
+              aria-label="Close menu"
+              onClick={closeMenu}
+            />
+          </div>
 
-            <ul className={styles.menuList}>
-              <li>
-                <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/phones" onClick={() => setIsMenuOpen(false)}>
-                  Phones
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/tablets" onClick={() => setIsMenuOpen(false)}>
-                  Tablets
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/accessories" onClick={() => setIsMenuOpen(false)}>
-                  Accessories
-                </NavLink>
-              </li>
-            </ul>
+          {/* MENU LIST */}
+          <ul className={styles.menuList}>
+            <li>
+              <NavLink
+                to="/"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.menuLink} ${isActive ? styles.menuLink__active : ''}`
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/phones"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.menuLink} ${isActive ? styles.menuLink__active : ''}`
+                }
+              >
+                Phones
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/tablets"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.menuLink} ${isActive ? styles.menuLink__active : ''}`
+                }
+              >
+                Tablets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/accessories"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.menuLink} ${isActive ? styles.menuLink__active : ''}`
+                }
+              >
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
 
-            <div className={styles.menuFooter}>
-              <Link to="/favourites">
-                <span className={styles.favIcon} />
-              </Link>
+          {/* MENU FOOTER */}
+          <div className={styles.menuFooter}>
+            <Link
+              to="/favourites"
+              className={styles.iconLinkBurger}
+              onClick={closeMenu}
+            >
+              <span className={styles.favIconBurger} />
+              {favourites.length > 0 && (
+                <span className={styles.counterBurger}>
+                  {favourites.length}
+                </span>
+              )}
+            </Link>
 
-              <Link to="/cart">
-                <span className={styles.cartIcon} />
-              </Link>
-            </div>
-          </nav>
-        </div>
-      )}
+            <Link
+              to="/cart"
+              className={styles.iconLinkBurger}
+              onClick={closeMenu}
+            >
+              <span className={styles.cartIconBurger} />
+              {cart.length > 0 && (
+                <span className={styles.counterBurger}>{cart.length}</span>
+              )}
+            </Link>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 };

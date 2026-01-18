@@ -1,5 +1,5 @@
-@import '../../styles/mixins.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .paginator {
   display: flex;
@@ -15,6 +15,7 @@
     }
   }
 }
+
 .button {
   min-width: 32px;
   height: 32px;
@@ -23,7 +24,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   cursor: pointer;
   display: flex;
   align-items: center;

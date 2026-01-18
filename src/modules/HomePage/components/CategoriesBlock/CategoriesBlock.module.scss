@@ -1,5 +1,5 @@
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .categories {
   display: flex;
@@ -24,6 +24,7 @@
   font-size: 22px;
   line-height: 140%;
   letter-spacing: 0;
+
   /* tablet */
   @include tablet {
     font-size: 32px;
@@ -36,6 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   /* tablet */
   @include tablet {
     display: flex;
@@ -47,6 +49,7 @@
 
 .category {
   margin-bottom: 32px;
+
   /* tablet */
   @include tablet {
     margin: 0;

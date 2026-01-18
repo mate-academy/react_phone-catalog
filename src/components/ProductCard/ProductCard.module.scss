@@ -32,7 +32,7 @@
 
 .card:hover {
   border-color: #323542;
-  box-shadow: 0px 2px 16px 0px #0000001a;
+  box-shadow: 0 2px 16px 0 #0000001a;
 }
 
 .top {
@@ -112,6 +112,7 @@
   line-height: 140%;
   letter-spacing: 0;
 }
+
 .oldPrice {
   margin: 0;
   font-weight: 600;
@@ -121,6 +122,7 @@
   text-decoration: line-through;
   color: $color-text-grey;
 }
+
 .details {
   padding-top: 16px;
   display: flex;

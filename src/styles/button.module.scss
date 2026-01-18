@@ -1,5 +1,5 @@
-@import '../styles/mixins.scss';
-@import '../styles/variables.scss';
+@import '../styles/mixins';
+@import '../styles/variables';
 
 .cartButton {
   box-sizing: border-box;
@@ -19,6 +19,7 @@
 
   &__added {
     background-color: $color-button-grey;
+
     // color: $color-button-grey;
   }
 
@@ -37,7 +38,7 @@
     }
   }
 
-  /* desktop*/
+  /* desktop */
   @include desktop {
     & {
       width: 160px;
@@ -47,9 +48,9 @@
 
 /* Favourite */
 .favouriteButton {
-   all: unset;
+  all: unset;
   box-sizing: border-box;
-    display: flex;
+  display: flex;
   width: 40px;
   height: 40px;
   background: $color-button-grey;
@@ -67,9 +68,9 @@
     background-color: #2a2c3f;
   }
 
-  &:hover .favouriteIcon {
-    opacity: 1;
-  }
+  // &:hover .favouriteIcon {
+  //   opacity: 1;
+  // }
 }
 
 .favouriteIcon {
@@ -77,6 +78,9 @@
   height: 16px;
   opacity: 1;
   transition: opacity 0.3s;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .favouriteButtonActive {
