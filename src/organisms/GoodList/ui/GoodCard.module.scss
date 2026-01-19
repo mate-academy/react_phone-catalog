@@ -2,12 +2,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: space(1);
+  gap: space(3);
   background-color: $bg;
   box-sizing: border-box;
   border: calc($space-unit / 4) solid transparent;
   padding: space(4);
-
   scroll-snap-align: center;
 
   &:hover {
@@ -16,15 +15,32 @@
 
   &__img {
     width: 100%;
-    
     display: block;
   }
 
-    @include respond (tablet) {
-      grid-column: span 5;
-    }
+  @include respond (tablet) {
+    grid-column: span 5;
+  }
 
-    @include respond (desktop) {
-      grid-column: span 6;
+  @include respond (desktop) {
+    grid-column: span 6;
+  }
+
+  &__name {
+    font-size: medium;
+    font-weight: 400;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: space(2);
+
+    &__controls {
+      height: calc($space-unit * 10);
+      display: flex;
+      gap: space(2);
     }
+  }
 }
+
