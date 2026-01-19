@@ -3,14 +3,14 @@ import { Breadcrumbs } from '../../shared/Breadcrumbs';
 import { Footer } from '../../shared/Footer';
 import { Header } from '../../shared/Header';
 import styles from './ProductDetailsPage.module.scss';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ProductsSlider } from 'src/modules/HomePage/components/ProductsSlider';
 import apiProducts from '../../../../public/api/products.json';
 import apiPhones from '../../../../public/api/phones.json';
 import apiTablets from '../../../../public/api/tablets.json';
 import apiAccessories from '../../../../public/api/accessories.json';
 import classNames from 'classnames';
-import { FullProduct, ProductDetails } from 'models/product.model';
+import { FullProduct, ProductDetails, ProductType } from 'models/product.model';
 
 const apiCategoryMap: Record<string, ProductDetails[]> = {
   phones: apiPhones,
@@ -24,6 +24,7 @@ export const ProductDetailsPage: React.FC = () => {
     category: string;
     productId: string;
   }>();
+  const products: ProductType[] = apiProducts;
 
   // const findProductById = (productID: string) => {
   //   const summary = apiProducts.find(
@@ -85,8 +86,21 @@ export const ProductDetailsPage: React.FC = () => {
     return { ...summary, ...detailedProduct } as FullProduct;
   };
 
+  // const changeProduct = (id: string) => {
+  //   const newProduct = findProductById(id);
+
+  //   return newProduct;
+  // };
+
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const product = productId ? findProductById(productId) : null;
+  const baseId = product?.itemId?.split('-').slice(0, 4).join('-') || '';
+
+  //   // Діагностика
+  // console.log('product:', product);
+  // console.log('baseId:', baseId);
+  // console.log('products:', products);
+  // console.log('colorsAvailable:', product?.colorsAvailable);
 
   const images: string[] = useMemo(() => {
     if (!product) {
@@ -165,15 +179,51 @@ export const ProductDetailsPage: React.FC = () => {
             ID:{product.namespaceId}
           </p>
           <div className={styles.productdetailspage__info_availablecolors}>
-            {product.colorsAvailable.map(color => {
-              return (
-                <button
-                  key={color}
-                  className={styles.productdetailspage__info_availablecolor}
-                  style={{ backgroundColor: color }}
-                ></button>
-              );
-            })}
+            <p className={styles.productdetailspage__info_availablecolors_text}>
+              Available colors
+            </p>
+            <ul
+              className={styles.productdetailspage__info_availablecolors_list}
+            >
+              {product.colorsAvailable.map(color => {
+                const newProduct = products.find(
+                  p => p.itemId === `${baseId}-${color}`,
+                );
+
+                if (!newProduct) {
+                  return null;
+                }
+
+                return (
+                  <li
+                    key={color}
+                    className={styles.productdetailspage__info_availablecolor}
+                  >
+                    <Link
+                      to={`/${product.category}/product/${newProduct.id}`}
+                      className={classNames(
+                        // eslint-disable-next-line max-len
+                        styles.productdetailspage__info_availablecolor_colorLink,
+                        {
+                          // eslint-disable-next-line max-len
+                          [styles.productdetailspage__info_availablecolor_colorLink_active]:
+                            color === product.color,
+                        },
+                      )}
+                      aria-label={color}
+                    >
+                      <span
+                        className={styles.colorInner}
+                        style={{
+                          backgroundColor:
+                            color === 'midnight' ? 'midnightblue' : color,
+                        }}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           <div
             className={styles.productdetailspage__info_availablecapacities}
