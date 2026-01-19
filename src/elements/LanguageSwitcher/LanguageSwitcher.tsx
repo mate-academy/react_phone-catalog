@@ -11,7 +11,7 @@ export const LanguageSwitcher = () => {
     i18n.changeLanguage(lng);
   };
 
-  const isActive = (lng: 'en' | 'uk') => i18n.language === lng;
+  const isActive = (lng: 'en' | 'uk') => i18n.resolvedLanguage === lng;
 
   const mobileActiveButtonClass = (baseClass: string) => {
     return isActive(baseClass === 'en' ? 'en' : 'uk')

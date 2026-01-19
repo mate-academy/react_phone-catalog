@@ -234,6 +234,8 @@ i18n
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
     },
+    supportedLngs: ['en', 'uk'],
+    nonExplicitSupportedLngs: true,
   });
 
 export default i18n;

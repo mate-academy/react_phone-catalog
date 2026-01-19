@@ -8,7 +8,7 @@ import { DescriptionBlock } from '../../types/DescriptionBlock';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { Goods } from '../../types/Goods';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getRouteByCategory } from '../../services/product';
 import { findProductVariant } from './findProductVariant';
 import { useProductGallery } from '../../utils/hooks/UI/useProductGallery';
@@ -51,6 +51,8 @@ export const GoodLayout: React.FC<Props> = ({
   goods,
 }) => {
   const { t } = useTranslation();
+  const { state } = useLocation();
+
   const {
     activeImageIndex,
     galleryHeight,
@@ -71,6 +73,7 @@ export const GoodLayout: React.FC<Props> = ({
         onClick={() => setActiveImageIndex(0)}
         key={newColor}
         to={`${getRouteByCategory(category)}/${targetItemId}`}
+        state={state}
         className={({ isActive }) =>
           classNames(styles.goodLayout__color, {
             [styles['goodLayout__color--active']]: isActive,
@@ -93,6 +96,7 @@ export const GoodLayout: React.FC<Props> = ({
       <NavLink
         onClick={() => setActiveImageIndex(0)}
         key={newCapacity}
+        state={state}
         to={`${getRouteByCategory(category)}/${targetItemId}`}
         className={({ isActive }) =>
           classNames(
