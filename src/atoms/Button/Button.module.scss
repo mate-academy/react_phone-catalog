@@ -1,18 +1,11 @@
 .button {
   width: 100%;
   height: 100%;
-
   background-color: $hover;
-  border: calc($space-unit / 4) $elements solid;
+  border: calc($space-unit / 4) solid $elements;
 
   svg {
     fill: $text;
-  }
-
-  &:not(:disabled):hover {
-    cursor: pointer;
-    background-color: $bg;
-    border-color: $text;
   }
 
   &:disabled {
@@ -21,6 +14,14 @@
 
     svg {
       fill: $elements;
+    }
+  }
+
+  &:hover {
+    @if not disabled {
+      cursor: pointer;
+      background-color: $bg;
+      border-color: $text;
     }
   }
 }

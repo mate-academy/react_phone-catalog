@@ -10,16 +10,15 @@ type Props = {
 };
 
 export const GoodList: FC<Props> = ({ items }) => {
-
   const [page, setPage] = useState(0);
 
   const next = () => {
     setPage(page + 4);
-  }
+  };
 
   const prev = () => {
     setPage(page - 4);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -45,6 +44,5 @@ export const GoodList: FC<Props> = ({ items }) => {
         ))}
       </div>
     </div>
-
   );
 };
