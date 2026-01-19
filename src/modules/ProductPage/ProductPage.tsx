@@ -55,7 +55,7 @@ export const ProductPage: React.FC = () => {
 
         {hasProducts && (
           <>
-            <p>{modelAmount}</p>
+            <p className={styles.productPage__counter}>{modelAmount}</p>
             <ProductListMenu
               sortValue={selectedSort}
               itemsOnPageValue={selectedPerPage}
@@ -64,7 +64,7 @@ export const ProductPage: React.FC = () => {
               sortByOptions={sortOptions}
               itemsOnPageOptions={perPageOptions}
             />
-            <ProductList />
+            <ProductList pageProducts={pageProducts} />
             {+selectedPerPage.value > 0 && (
               <ProductPagination
                 total={total}
@@ -72,12 +72,6 @@ export const ProductPage: React.FC = () => {
                 currentPage={currentPage}
               />
             )}
-            {pageProducts.map(product => (
-              <p key={product.name}>
-                {String(product.id).padStart(3, '0')} --- {product.name} *{' '}
-                {product.year} * ${product.price}
-              </p>
-            ))}
           </>
         )}
       </div>

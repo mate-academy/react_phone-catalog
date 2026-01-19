@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
-import { Product } from '../../../types/ProductCatalogItem';
+import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
 import { CURRENCY_SYMBOL } from '../../constants';
 import Button from '../Button';
 import Icon from '../Icon';
 
 interface Props {
-  product: Product;
+  product: ProductCatalogItem;
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
@@ -35,8 +35,6 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           {CURRENCY_SYMBOL + product.fullPrice}
         </p>
       </div>
-
-      <div></div>
 
       <div className={styles.product__specs}>
         <p className={styles.product__specLine}>

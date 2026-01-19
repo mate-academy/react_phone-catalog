@@ -11,11 +11,10 @@
     }
   }
 
-  &__message {
-    margin-top: 24px;
+  &__counter {
+    margin-top: 8px;
+    color: $secondary-color;
 
-    @include on-tablet {
-      margin-top: 40px;
-    }
+    @extend %body-text;
   }
 }
