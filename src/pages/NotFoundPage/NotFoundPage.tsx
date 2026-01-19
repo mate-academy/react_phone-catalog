@@ -11,7 +11,7 @@ export const NotFoundPage = () => {
     <div className={styles.NotFoundPage}>
       <Plug
         label={t('pageNotFound.title')}
-        image="/img/page-not-found.png"
+        image="img/page-not-found.png"
         description={t('pageNotFound.description')}
         size="lg"
       >

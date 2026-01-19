@@ -51,7 +51,7 @@ export const HomePage = () => {
           <Link to={RoutePath.Phones} className={styles.categories__item}>
             <img
               className={styles.categories__image}
-              src="/img/category-phones.png"
+              src="img/category-phones.png"
               alt="phones"
             />
             <h4 className={styles.categories__title}>{t('phonesPage')}</h4>
@@ -65,7 +65,7 @@ export const HomePage = () => {
           <Link to={RoutePath.Tablets} className={styles.categories__item}>
             <img
               className={styles.categories__image}
-              src="/img/category-tablets.png"
+              src="img/category-tablets.png"
               alt="tablets"
             />
             <h4 className={styles.categories__title}>{t('tabletsPage')}</h4>

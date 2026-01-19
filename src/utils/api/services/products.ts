@@ -2,5 +2,5 @@ import { Product } from '../../../types/Product';
 import { client } from '../fetchClient';
 
 export const getProducts = () => {
-  return client.get<Product[]>(`api/products.json`);
+  return client.get<Product[]>(`/products.json`);
 };

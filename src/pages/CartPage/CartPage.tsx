@@ -69,7 +69,7 @@ export const CartPage = () => {
       {error && <p className={styles.error}>{t(`errors.${error}`)}</p>}
       {isPlugVisible && (
         <div className={styles.CartPage__plug}>
-          <Plug label={t('emptyCart')} image="/img/cart-is-empty.png" />
+          <Plug label={t('emptyCart')} image="img/cart-is-empty.png" />
         </div>
       )}
 

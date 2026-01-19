@@ -16,7 +16,7 @@ type Props = {
 
 export const Plug: React.FC<Props> = ({
   label,
-  image = '/img/product-not-found.png',
+  image = 'img/product-not-found.png',
   size = 'md',
   description,
   imageSize = 'md',
