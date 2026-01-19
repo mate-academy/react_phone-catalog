@@ -21,8 +21,12 @@ export const getPhoneSpecs = (phone: Phone): SpecsMap => ({
   cell: phone.cell,
 });
 
-export const getAccessorySpecs = (a: Accessory): SpecsMap => ({
-  cell: a.cell,
+export const getAccessorySpecs = (accessory: Accessory): SpecsMap => ({
+  screen: accessory.screen,
+  resolution: accessory.resolution,
+  processor: accessory.processor,
+  ram: accessory.ram,
+  cell: accessory.cell,
 });
 
 export const getTabletSpecs = (tablet: Tablet): SpecsMap => ({
