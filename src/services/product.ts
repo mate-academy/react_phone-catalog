@@ -23,11 +23,11 @@ export function getProductNameSpace(itemId: string) {
 
 export function getGoodSourceByRoute(pathname: string) {
   if (pathname.startsWith('/phones')) {
-    return '/phones.json';
+    return 'api/phones.json';
   }
 
   if (pathname.startsWith('/tablets')) {
-    return '/tablets.json';
+    return 'api/tablets.json';
   }
 
   return '/accessories.json';

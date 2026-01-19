@@ -7,6 +7,7 @@ import { useCategoryTotal } from './useCategoryTotal';
 import { Link } from 'react-router-dom';
 import { RoutePath } from '../../types/RoutePath';
 import { BannerSwiper } from '../../components/BannerSwiper';
+import { BASE_URL } from '../../constants/URL';
 
 export const HomePage = () => {
   const { t } = useTranslation();
@@ -51,7 +52,7 @@ export const HomePage = () => {
           <Link to={RoutePath.Phones} className={styles.categories__item}>
             <img
               className={styles.categories__image}
-              src="public\img\category-phones.png"
+              src={`${BASE_URL}img\category-phones.png`}
               alt="phones"
             />
             <h4 className={styles.categories__title}>{t('phonesPage')}</h4>
@@ -65,7 +66,7 @@ export const HomePage = () => {
           <Link to={RoutePath.Tablets} className={styles.categories__item}>
             <img
               className={styles.categories__image}
-              src="public\img\category-tablets.png"
+              src={`${BASE_URL}img\category-tablets.png`}
               alt="tablets"
             />
             <h4 className={styles.categories__title}>{t('tabletsPage')}</h4>
@@ -79,7 +80,7 @@ export const HomePage = () => {
           <Link to={RoutePath.Accessories} className={styles.categories__item}>
             <img
               className={styles.categories__image}
-              src="public\img\category-accessories.png"
+              src={`${BASE_URL}img\category-accessories.png`}
               alt="accessories"
             />
             <h4 className={styles.categories__title}>{t('accessoriesPage')}</h4>

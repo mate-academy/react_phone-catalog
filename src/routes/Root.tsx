@@ -12,7 +12,7 @@ import { CartPage } from '../pages/CartPage/CartPage';
 
 export const Root = () => {
   return (
-    <HashRouter>
+    <HashRouter basename="/react_phone-catalog">
       <Routes>
         <Route path={RoutePath.Home} element={<App />}>
           <Route index element={<HomePage />} />
