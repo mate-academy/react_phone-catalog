@@ -8,7 +8,6 @@
   border: calc($space-unit / 4) solid transparent;
   padding: space(4);
 
-  // 5. Align to the snap points
   scroll-snap-align: center;
 
   &:hover {
@@ -17,6 +16,7 @@
 
   &__img {
     width: 100%;
+    
     display: block;
   }
 

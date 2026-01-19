@@ -1,13 +1,59 @@
 .list {
-  @include grid;
+  grid-column: 1/-1;
+
   grid-auto-flow: column;
   overflow-x: auto;
+  gap: space(2);
 
   -ms-overflow-style: none;
   grid-template-rows: min-content;
-  gap: space(2);
+
+  @include grid;
 
   @include respond (tablet) {
     grid-auto-flow: unset;
+  }
+}
+
+.container {
+  grid-template-rows: auto 1fr;
+
+  @include grid;
+}
+
+
+.button__left,
+.button__right {
+  display: none;
+  aspect-ratio: 1/1;
+
+  @include respond(tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.button__left {
+  @include respond(tablet) {
+    grid-column: -3 / -2;
+    grid-row: 1;
+
+    svg {
+      transform: rotate(-90deg);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.button__right {
+  @include respond(tablet) {
+    grid-column: -2 / -1;
+    grid-row: 1;
+
+    svg {
+      transform: rotate(90deg);
+      transition: transform 0.3s ease;
+    }
   }
 }

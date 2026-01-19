@@ -1,3 +1,3 @@
-import { GoodList } from "./GoodLits";
+import { GoodList } from './GoodLits';
 
 export default GoodList;

@@ -9,9 +9,18 @@
     fill: $text;
   }
 
-  &:hover {
+  &:not(:disabled):hover {
     cursor: pointer;
     background-color: $bg;
     border-color: $text;
+  }
+
+  &:disabled {
+    background-color: $bg;
+    cursor: default;
+
+    svg {
+      fill: $elements;
+    }
   }
 }

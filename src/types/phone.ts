@@ -3,7 +3,6 @@ export interface Description {
   text: string[];
 }
 
-
 export type Phone = {
   id: string;
   category: string;
@@ -23,4 +22,4 @@ export type Phone = {
   camera: string;
   zoom: string;
   cell: string[];
-}
+};

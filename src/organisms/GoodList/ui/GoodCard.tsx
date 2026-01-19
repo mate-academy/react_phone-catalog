@@ -1,11 +1,11 @@
-import styles from './GoodCard.module.scss'
+import styles from './GoodCard.module.scss';
 
-import { Phone } from "@/types/phone";
-import { FC } from "react";
+import { Phone } from '@/types/phone';
+import { FC } from 'react';
 
 type Props = {
-  item: Phone
-}
+  item: Phone;
+};
 
 export const GoodCard: FC<Props> = ({ item }) => {
   return (
@@ -16,4 +16,4 @@ export const GoodCard: FC<Props> = ({ item }) => {
       {item.id}
     </div>
   );
-}
+};

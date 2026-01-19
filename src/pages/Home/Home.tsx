@@ -3,7 +3,6 @@ import GoodList from '@/organisms/GoodList';
 import Slider from '@/organisms/Slider';
 
 const Home = () => {
-
   const phones = usePhones();
 
   return (
