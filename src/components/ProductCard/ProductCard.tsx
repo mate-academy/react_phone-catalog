@@ -20,7 +20,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         aria-label={`Visit product:${product.name}`}
         to={`${getRouteByCategory(product.category)}/${product.itemId}`}
         state={{ pathname, search, preserveFromSearch: true }}
-        // onClick={scrollTop}
       >
         <header className={styles.card__header}>
           <img
