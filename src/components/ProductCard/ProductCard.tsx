@@ -2,24 +2,34 @@ import { FC } from 'react';
 import './ProductCard.scss';
 import { ProductAllType } from '../../types/Product';
 import { ProductCardButtons } from './ProductCardButtons';
-import { useProducts } from '../../context/ProductsContext';
-import { NameProducts } from '../../types/NameProducts';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { scrollToTop } from '../../utils/utils';
 
 type Props = {
   product: ProductAllType;
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const { image, name, price, screen, capacity, ram, fullPrice, itemId, category } =
-    product;
-  const local = useLocation();
-
-  const { findNessesaryItem } = useProducts();
+  const {
+    image,
+    name,
+    price,
+    screen,
+    capacity,
+    ram,
+    fullPrice,
+    itemId,
+    category,
+  } = product;
 
   return (
     <div className="card">
-      <Link to={`/${category}/${itemId}`} className="card__link">
+      <Link
+        to={`/${category}/${itemId}`}
+        state={product}
+        className="card__link"
+        onClick={() => scrollToTop()}
+      >
         <img src={image} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">

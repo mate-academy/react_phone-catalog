@@ -61,36 +61,31 @@ export const CardItem = () => {
   // };
 
   const { id } = useParams<{ id: string }>();
-  const location = useLocation();
+  const { pathname, state } = useLocation();
   const { findNessesaryItem } = useProducts();
 
-  console.log(id);
-
   // Получаем категорию из пути (первый сегмент: phones, tablets, accessories)
-  const category = location.pathname.split('/')[1];
+  const category = pathname.split('/')[1];
   const product = id
     ? findNessesaryItem(category as NameCategory, id)
     : undefined;
 
-  console.log(product);
-  console.log(category);
-  console.log(findNessesaryItem(category as NameCategory, id));
+  const alsoLikeProducts = allProducts.slice(0, 5);
 
+  console.log(product);
   const [activePhoto, setActivePhoto] = useState(
     product?.images[0] || unnownImg,
   );
 
-  const alsoLikeProducts = allProducts.slice(0, 5);
-
-  // const productTech = [
-  //   { name: 'Screen', value: product.screen },
-  //   { name: 'Resolution', value: product.resolution },
-  //   { name: 'Processor', value: product.processor },
-  //   { name: 'RAM', value: product.ram },
-  //   { name: 'Camera', value: product.camera },
-  //   { name: 'Zoom', value: product.zoom },
-  //   { name: 'Cell', value: [...product.cell].join(', ') },
-  // ];
+  const productTech = [
+    { name: 'Screen', value: product?.screen },
+    { name: 'Resolution', value: product?.resolution },
+    { name: 'Processor', value: product?.processor },
+    { name: 'RAM', value: product?.ram },
+    { name: 'Camera', value: id !== 'accesorries' ? product?.camera : '' },
+    { name: 'Zoom', value: product?.zoom },
+    { name: 'Cell', value: [...product.cell].join(', ') },
+  ];
 
   // const chosenProduct =
   //   allProducts.find(
@@ -133,7 +128,7 @@ export const CardItem = () => {
                         aria-label={`Показать фото ${product.name}`}
                       >
                         <img
-                          src={item}
+                          src={`../${item}`}
                           alt={product.name}
                           className="body-card__slider-photo"
                           loading="lazy"
@@ -147,7 +142,7 @@ export const CardItem = () => {
               </ul>
               <div className="body-card__main-photo">
                 <img
-                  src={activePhoto}
+                  src={`../${activePhoto}`}
                   alt={`${product.name} — главное фото`}
                   className="body-card__main-img"
                   loading="lazy"
@@ -182,7 +177,7 @@ export const CardItem = () => {
                   {product.capacityAvailable.map(capacity => (
                     <li
                       className="body-card__item body-card__item-block-capacity"
-                      // 'body-card__item-block-capacity--active' added conditionally
+                      //! 'body-card__item-block-capacity--active' added conditionally
                       key={capacity}
                     >
                       <span
@@ -206,9 +201,9 @@ export const CardItem = () => {
                     ${product.priceRegular}
                   </span>
                 </div>
-                {/* <ProductCardButtons /> */}
+                <ProductCardButtons product={state} />
               </div>
-              {/*
+
               <ul className="body-card__param param">
                 {productTech.map(
                   ({ name, value }, index) =>
@@ -220,7 +215,7 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
-              <span className="body-card__id">ID: {productId}</span> */}
+              <span className="body-card__id">ID: {productId}</span>
             </div>
           </div>
 
