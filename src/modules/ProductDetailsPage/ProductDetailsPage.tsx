@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Loader } from '../shared/components/Loader';
-import { checkResponse, wait } from '../shared/utils/apiHelper';
+import { checkResponse } from '../shared/utils/apiHelper';
 import { Product } from '../shared/types/Product';
 import { ProductDetails } from '../shared/types/ProductDetails';
 import ErrorMessage from '../shared/components/ErrorMessage/ErrorMessage';
@@ -17,6 +17,7 @@ export const ProductDetailsPage = () => {
 
   const [status, setStatus] = useState<Status>(STATUS.IDLE);
   const [errorMessage, setErrorMessage] = useState('');
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
   );
@@ -24,10 +25,7 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        setStatus(STATUS.LOADING);
         setErrorMessage('');
-
-        await wait(500);
 
         const productsRes = checkResponse(await fetch('api/products.json'));
         const products: Product[] = await productsRes.json();
@@ -49,7 +47,15 @@ export const ProductDetailsPage = () => {
           throw new NotFoundError('Product details not found');
         }
 
+        pDetails.productId = product.id;
+
+        const sProducts = products
+          .filter(p => p.category.toLowerCase() === pDetails.category)
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 10);
+
         setProductDetails(pDetails);
+        setSuggestedProducts(sProducts);
         setStatus(STATUS.SUCCESS);
       } catch (err) {
         if (err instanceof NotFoundError) {
@@ -78,7 +84,12 @@ export const ProductDetailsPage = () => {
       return <ErrorMessage errorMessage={errorMessage} />;
 
     case STATUS.SUCCESS:
-      return <ProductDetailsView productDetails={productDetails!} />;
+      return (
+        <ProductDetailsView
+          suggestedProducts={suggestedProducts}
+          productDetails={productDetails!}
+        />
+      );
 
     default:
       return null;

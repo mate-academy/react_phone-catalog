@@ -1,4 +1,4 @@
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { NotFoundPage } from '../NotFoundPage';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import ErrorMessage from '../shared/components/ErrorMessage/ErrorMessage';
 import { STATUS, Status } from '../shared/utils/status';
 import { NotFoundError, ServerError } from '../shared/utils/errorTypes';
 import { NotFoundProduct } from '../NotFoundProduct';
+import Breadcrumps from '../shared/components/Breadcrumps/Breadcrumps';
 
 const VALID_TYPES = ['phones', 'tablets', 'accessories'] as const;
 
@@ -76,7 +77,7 @@ export const ProductsPage = () => {
         setStatus(STATUS.LOADING);
         setErrorMessage('');
 
-        await wait(500);
+        await wait(100);
 
         const productsRes = checkResponse(await fetch('api/products.json'));
         const productsFromServer: Product[] = await productsRes.json();
@@ -123,21 +124,7 @@ export const ProductsPage = () => {
     case STATUS.SUCCESS:
       return (
         <div className={styles.section}>
-          <div className={styles.breadcrumbs}>
-            <Link to="/" className={styles.link}>
-              <img
-                src="img/icons/home.png"
-                alt="Home"
-                className={styles.icon}
-              />
-            </Link>
-            <img
-              src="img/icons/arrow-right.png"
-              alt="Breadcrumbs Separator"
-              className={styles.icon}
-            />
-            <p className={styles.breadcrumbText}>{type}</p>
-          </div>
+          <Breadcrumps type={type} />
 
           <h1 className={styles.sectionTitle}>{type} page</h1>
 

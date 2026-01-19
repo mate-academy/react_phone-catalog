@@ -1,2 +1,333 @@
 @import '../../shared/styles/utils/viriables';
 @import '../../shared/styles/utils/mixins';
+
+.sectionTitle {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.sectionTitle::first-letter {
+  text-transform: uppercase;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 12px;
+  color: $color-secondary;
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+}
+
+.text::first-letter {
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.backLink {
+  cursor: pointer;
+  display: flex;
+  margin-top: 2px;
+}
+
+.back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 40px;
+
+  .icon {
+    color: $color-primary;
+  }
+}
+
+.content {
+  position: relative;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 16px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 6fr 5fr;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 2fr 10fr 11fr;
+  }
+}
+
+.mainPhoto {
+  display: flex;
+  width: 288px;
+  height: 288px;
+  place-self: center;
+
+  @include on-tablet {
+    order: 2;
+    place-self: start;
+  }
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.mainPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.previews {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+
+  @include on-tablet {
+    order: 1;
+    flex-direction: column;
+    justify-content: start;
+  }
+}
+
+.previewPhoto {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.previewPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.characteristics {
+  margin: 16px 0;
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.cName {
+  font-weight: 600;
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.cValue {
+  font-weight: 600;
+  font-size: 12px;
+  text-align: right;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonAdd {
+  width: 160px;
+  height: 40px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+}
+
+.buttonIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  border: 1px solid $color-icons;
+  background-color: $color-white;
+  position: relative;
+}
+
+.iconImg {
+  width: 16px;
+  height: 16px;
+}
+
+.details {
+  @include on-tablet {
+    max-width: 320px;
+    order: 3;
+  }
+}
+
+.detailId {
+  position: absolute;
+  right: 0;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: right;
+  color: $color-hover-bg;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  height: 31px;
+  margin: 8px 0;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0%;
+}
+
+.fullPrice {
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0%;
+  text-decoration: line-through;
+  color: $color-secondary;
+}
+
+.colorBlock {
+  width: 32px;
+  height: 32px;
+  border-radius: 36px;
+  border: 1px solid $color-icons;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: 36px;
+  border: 2px solid $color-white;
+}
+
+.detail {
+  border-bottom: 1px solid $color-icons;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.detailTitle {
+  font-weight: 600;
+  font-size: 12px;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityLink {
+  padding: 0 8px;
+  height: 32px;
+  border: 1px solid $color-hover-bg;
+  text-decoration: none;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  color: $color-primary;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.active {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.aboutTitle {
+  font-weight: 800;
+  font-size: 22px;
+  padding-bottom: 16px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid $color-icons;
+}
+
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.about {
+  margin-bottom: 64px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include on-desktop {
+    grid-template-columns: 12fr 11fr;
+  }
+}
+
+.descTitle {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.descText {
+  font-weight: 600;
+  font-size: 14px;
+  color: $color-secondary;
+  margin-bottom: 16px;
+}
+
+.specName {
+  font-weight: 500;
+  font-size: 14px;
+  color: $color-secondary;
+}
+
+.specValue {
+  font-weight: 500;
+  font-size: 14px;
+  text-align: right;
+}

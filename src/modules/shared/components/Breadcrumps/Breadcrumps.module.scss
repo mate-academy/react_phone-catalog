@@ -1,0 +1,32 @@
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.text {
+  font-weight: 600;
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.text::first-letter {
+  text-transform: uppercase;
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  .text {
+    color: $color-primary;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
