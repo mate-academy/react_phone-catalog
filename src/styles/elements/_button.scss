@@ -1,0 +1,155 @@
+@use '../extends/index' as *;
+@use '../utils/mixins' as *;
+
+.button {
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+  padding-block: 0;
+  padding-inline: 0;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @extend %buttons;
+
+  transition: border-color 0.4s;
+
+  &--bigest {
+    height: 48px;
+  }
+
+  &--big {
+    height: 40px;
+  }
+
+  &--small {
+    height: 32px;
+  }
+
+  &--smallest {
+    height: 16px;
+  }
+
+  &--width100 {
+    width: 100%;
+  }
+
+  &--select {
+    padding-inline: 12px;
+    box-sizing: border-box;
+  }
+
+  &--filled {
+    background-color: var(--secondary-background);
+    color: var(--neutral);
+    &:hover {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    @include on-dark{
+      background-color: var(--accent);
+
+      &:hover {
+       background-color: #A378FF;
+      }
+    }
+  }
+
+  &--transparent {
+    aspect-ratio: auto;
+    border-radius: 20px;
+    color: var(--neutral);
+    border: 1px solid var(--secondary);
+    &:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+  }
+
+  &--cart {
+    border: 1px solid var(--elements);
+    background-color: var(--primary-background);
+    color: var(--green);
+
+    @include on-dark{
+      background-color: var(--surface2);
+      color: var(--neutral);
+      border: none;
+    }
+  }
+
+  &--icon {
+    border: 1px solid var(--icon);
+    color: var(--primary);
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    @include on-dark{
+      border: none;
+      background-color: var(--surface2);
+
+      &:hover {
+       background-color: var(--icon);
+      }
+    }
+  }
+
+  &--text {
+    border: 1px solid var(--elements);
+    color: var(--primary);
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    @include on-dark{
+      border: none;
+      background-color: var(--surface1);
+
+      &:hover {
+       background-color: var(--elements);
+      }
+    }
+  }
+
+  &--active {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    &:hover {
+      border-color: var(--primary);
+    }
+
+  }
+
+  &--pading {
+    padding: 8px;
+  }
+
+  &--padding40 {
+    padding-inline: 40px;
+  }
+
+  &--placeholder {
+    border: 1px solid var(--elements);
+    color: var(--elements);
+    &:hover {
+      border-color: var(--primary);
+    }
+    &:focus {
+      color: var(--primary);
+    }
+  }
+
+  &--disabled {
+    border: 1px solid var(--elements);
+    color: var(--elements);
+    cursor: not-allowed;
+  }
+
+  &--light-disabled {
+    cursor: auto;
+  }
+}

@@ -1,0 +1,112 @@
+@use './vars' as *;
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $effect-duration;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    column-gap: 16px;
+    --columns: 24;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin padding-block-section-bigger {
+  padding-block: 120px;
+
+  @include on-tablet {
+    padding-block: 148px;
+  }
+}
+
+@mixin padding-block-section-smaller {
+  padding-block: 72px;
+
+  @include on-tablet {
+    padding-block: 128px;
+  }
+}
+
+@mixin skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-bg) 25%,
+    var(--skeleton-highlight) 37%,
+    var(--skeleton-bg) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@mixin linearGradient {
+  background: linear-gradient(
+    75.28deg,
+    #891ce8 -22.43%,
+    #7560fa 35.22%,
+    #e963ff 100.1%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@mixin on-dark {
+  [data-theme='dark'] & {
+    @content;
+  }
+}

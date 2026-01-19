@@ -1,0 +1,105 @@
+$light-theme: (
+  'primary-background': #fff,
+  'secondary-background': #313237,
+
+  'primary': #313237,
+  'secondary': #89939a,
+  'icon': #b4bdc3,
+  'elements': #e2e6e9,
+  'hover-bg': #fafbfc,
+  'neutral': #fff,
+
+  'icon-burger': url('/assets/icons/light_theme/burger.svg'),
+  'icon-close': url('/assets/icons/light_theme/close.svg'),
+  'icon-close-light': url('/assets/icons/light_theme/close-light.svg'),
+  'icon-cart': url('/assets/icons/light_theme/cart.svg'),
+  'icon-home': url('/assets/icons/light_theme/home.svg'),
+  'icon-chevron-active':
+    url('/assets/icons/light_theme/chevron-arrow-active.svg'),
+  'icon-chevron-disabled':
+    url('/assets/icons/light_theme/chevron-arrow-disabled.svg'),
+  'icon-favorite': url('/assets/icons/light_theme/favourites-heart-like.svg'),
+  'icon-plus-active': url('/assets/icons/light_theme/plus-active.svg'),
+  // 'icon-plus-disabled': url('/assets/icons/light_theme/plus-active.svg'),
+  'icon-minus-active': url('/assets/icons/light_theme/minus-active.svg'),
+  'icon-minus-disabled': url('/assets/icons/light_theme/minus-disabled.svg'),
+);
+
+$dark-theme: (
+  'primary-background': #0f1121,
+  'secondary-background': #905bff,
+
+  'primary': #f1f2f9,
+  'secondary': #75767f,
+  'icon': #4a4d58,
+  'elements': #3b3e4a,
+  'hover-bg': #323542,
+  'neutral': #fff,
+
+  'icon-burger': url('/assets/icons/dark_theme/burger.svg'),
+  'icon-close': url('/assets/icons/dark_theme/close.svg'),
+  'icon-close-light': url('/assets/icons/dark_theme/close-light.svg'),
+  'icon-cart': url('/assets/icons/dark_theme/cart.svg'),
+  'icon-home': url('/assets/icons/dark_theme/home.svg'),
+  'icon-chevron-active':
+    url('/assets/icons/dark_theme/chevron-arrow-active.svg'),
+  'icon-chevron-disabled':
+    url('/assets/icons/dark_theme/chevron-arrow-disabled.svg'),
+  'icon-favorite': url('/assets/icons/dark_theme/favourites-heart-like.svg'),
+  'icon-plus-active': url('/assets/icons/dark_theme/plus-active.svg'),
+  // 'icon-plus-disabled': url('/assets/icons/dark_theme/plus-active.svg'),
+  'icon-minus-active': url('/assets/icons/dark_theme/minus-active.svg'),
+  'icon-minus-disabled': url('/assets/icons/dark_theme/minus-disabled.svg'),
+);
+
+@mixin theme-vars($map) {
+  --primary-background: #{map-get($map, 'primary-background')};
+  --secondary-background: #{map-get($map, 'secondary-background')};
+
+  --primary: #{map-get($map, 'primary')};
+  --secondary: #{map-get($map, 'secondary')};
+  --icon: #{map-get($map, 'icon')};
+  --elements: #{map-get($map, 'elements')};
+  --hover-bg: #{map-get($map, 'hover-bg')};
+  --neutral: #{map-get($map, 'neutral')};
+
+  --icon-burger: #{map-get($map, 'icon-burger')};
+  --icon-close: #{map-get($map, 'icon-close')};
+  --icon-close-light: #{map-get($map, 'icon-close-light')};
+  --icon-cart: #{map-get($map, 'icon-cart')};
+  --icon-home: #{map-get($map, 'icon-home')};
+
+  --icon-chevron-active: #{map-get($map, 'icon-chevron-active')};
+  --icon-chevron-disabled: #{map-get($map, 'icon-chevron-disabled')};
+  --icon-favorite: #{map-get($map, 'icon-favorite')};
+  --icon-plus-active: #{map-get($map, 'icon-plus-active')};
+  // --icon-plus-disabled: #{map-get($map, 'icon-plus-disabled')};
+  --icon-minus-active: #{map-get($map, 'icon-minus-active')};
+  --icon-minus-disabled: #{map-get($map, 'icon-minus-disabled')};
+}
+
+@mixin both-theme {
+  --second-text-color: #828282;
+  --primary-button-text: #fff;
+  --green: #27ae60;
+  --red: #eb5757;
+  --white: #fff;
+  --black: #000;
+  --accent: #905bff;
+
+  --icon-favorite-filled: url('/assets/icons/both_theme/favourites-filled-heart-like.svg');
+  --icon-light-theme: url('/assets/icons/both_theme/light-mode.png');
+  --icon-dark-theme: url('/assets/icons/both_theme/dark-mode.png');
+}
+
+:root {
+  @include both-theme();
+
+  @include theme-vars($light-theme);
+}
+
+[data-theme='dark'] {
+  @include theme-vars($dark-theme);
+  --surface1: #161827;
+  --surface2: #323542;
+}

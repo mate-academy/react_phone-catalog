@@ -1,0 +1,62 @@
+@use '../../styles/index' as *;
+
+.plug {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  text-align: center;
+  width: var(--plug-width);
+  box-sizing: border-box;
+
+  &__image {
+    width: var(--plug-image-size);
+    height: var(--plug-image-size);
+    object-fit: contain;
+  }
+
+  &__label {
+    @extend %h4;
+    text-align: center;
+  }
+
+  &__description {
+    @extend %body-text;
+    color: var(--secondary);
+    text-align: center;
+  }
+
+  &__actions {
+    width: 100%;
+  }
+
+  &--sm {
+    --plug-width: 150px;
+  }
+
+  &--md {
+    --plug-width: 250px;
+  }
+
+  &--lg {
+    --plug-width: 350px;
+  }
+
+  &--100width {
+    --plug-width: 100%;
+  }
+
+  &__image--sm {
+    --plug-image-size: 100px;
+  }
+
+  &__image--md {
+    --plug-image-size: 200px;
+  }
+
+  &__image--lg {
+    --plug-image-size: 300px;
+  }
+}

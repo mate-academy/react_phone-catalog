@@ -1,0 +1,30 @@
+@use '../../styles/index' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  box-shadow: 0 1px 0 0 var(--elements);
+  background-color: var(--primary-background);
+  display: flex;
+  justify-content: space-between;
+
+  @include on-tablet {
+    justify-content: start;
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    column-gap: 24px;
+  }
+
+  &__logo {
+    padding-block: 13px;
+    padding-inline: 16px;
+
+    @include on-desktop {
+      padding-block: 18px;
+      padding-inline: 24px;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@use '../../styles/index' as *;
+
+.CartPage {
+  &__section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    @include on-desktop {
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+  }
+  &__header-text {
+    @extend %h1;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    flex: 1;
+
+    row-gap: 32px;
+    padding-top: 32px;
+
+    @include on-desktop {
+      grid-template-columns: 1fr 368px;
+      column-gap: 24px;
+    }
+  }
+
+  &__list-block {
+    display: grid;
+    align-content: start;
+    row-gap: 16px;
+  }
+
+  &__checkout {
+    border: 1px solid var(--elements);
+    padding: 24px;
+
+    @include on-desktop {
+      position: sticky;
+      top: calc(var(--header-height) + 32px);
+    }
+  }
+  &__price {
+    @extend %h2;
+    text-align: center;
+  }
+  &__total-count {
+    @extend %body-text;
+    color: var(--secondary);
+    text-align: center;
+  }
+  &__seperator {
+    margin-block: 24px;
+    height: 1px;
+    background-color: var(--elements);
+  }
+
+  &__floating {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px;
+    background-color: var(--primary-background);
+    border-top: 1px solid var(--elements);
+    z-index: 10;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__plug {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

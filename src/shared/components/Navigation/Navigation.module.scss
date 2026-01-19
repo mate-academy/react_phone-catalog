@@ -1,9 +1,0 @@
-.navigation {
-  display: flex;
-  gap: 24px;
-
-  @include on-tablet {
-    flex-direction: column;
-    gap: 16px;
-  }
-}

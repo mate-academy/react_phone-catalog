@@ -1,0 +1,54 @@
+@use '../../styles/index' as *;
+
+.CategoriesPage {
+  &__section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 64px;
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__header-text {
+    @extend %h1;
+  }
+
+  &__models {
+    @extend %body-text;
+    color: var(--secondary);
+    margin-bottom: 32px;
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__select {
+    flex: 1 1 0;
+    min-width: 0;
+
+    @include on-tablet {
+      flex: 0 0 auto;
+      &--sort {
+        width: 176px;
+      }
+      &--perPage {
+        width: fit-content;
+      }
+    }
+  }
+
+  &__plug{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

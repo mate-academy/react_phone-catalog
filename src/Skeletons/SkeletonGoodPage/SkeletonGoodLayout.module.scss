@@ -1,0 +1,169 @@
+@use '../../styles/index' as *;
+
+.goodLayout {
+  padding-top: 16px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.main {
+  @include page-grid;
+  margin-bottom: 56px;
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 96px;
+  }
+}
+
+.additional {
+  @include page-grid;
+  // row-gap: 32px;
+}
+
+/* -------- skeleton base -------- */
+
+.skeleton {
+  @include skeleton;
+}
+
+/* -------- title -------- */
+
+.title {
+  height: 32px;
+  width: 60%;
+  margin-bottom: 32px;
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+/* -------- gallery -------- */
+
+.gallery {
+  margin-top: 16px;
+  grid-column: 1/-1;
+  display: flex;
+  column-gap: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+
+  @include on-tablet {
+    order: 1;
+    flex-direction: column;
+    row-gap: 8px;
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / span 2;
+  }
+}
+
+.galleryItem {
+  width: 50px;
+  height: 50px;
+
+  @include on-tablet {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+}
+
+/* -------- photo -------- */
+
+.photo {
+  grid-column: 1/-1;
+  aspect-ratio: 1/1;
+
+  @include on-tablet {
+    grid-column: 2 / span 6;
+  }
+
+  @include on-desktop {
+    grid-column: 3 / span 10;
+  }
+}
+
+/* -------- info -------- */
+
+.info {
+  grid-column: 1/-1;
+  margin-top: 40px;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+    order: 3;
+    margin: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / span 7;
+  }
+}
+
+.prices {
+  display: flex;
+  column-gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  height: 32px;
+  width: 120px;
+}
+
+.priceSmall {
+  height: 22px;
+  width: 80px;
+}
+
+.actions {
+  display: flex;
+  column-gap: 8px;
+  margin-bottom: 32px;
+}
+
+.button {
+  height: 40px;
+  width: 120px;
+  border-radius: 8px;
+}
+
+/* -------- specs -------- */
+
+.fastSpecs,
+.specRow {
+  display: grid;
+  row-gap: 8px;
+}
+
+.specRow {
+  height: 18px;
+  width: 100%;
+}
+
+/* -------- sections -------- */
+
+.sectionTitle {
+  height: 24px;
+  width: 160px;
+  margin-bottom: 16px;
+}
+
+.textLine {
+  height: 16px;
+  width: 100%;
+  margin-bottom: 8px;
+}

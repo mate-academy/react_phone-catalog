@@ -1,0 +1,75 @@
+@use '../../styles/index' as *;
+
+:root {
+  --skeleton-bg: #e2e2e2;
+  --skeleton-highlight: #f5f5f5;
+}
+
+.card {
+  padding: 32px;
+  border: 1px solid var(--elements);
+  display: grid;
+  gap: 16px;
+  background: var(--primary-background);
+}
+
+.header {
+  display: grid;
+  gap: 12px;
+}
+
+.image {
+  height: 196px;
+  width: 100%;
+  @include skeleton;
+}
+
+.title {
+  height: 20px;
+  width: 90%;
+  @include skeleton;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+}
+
+.price {
+  width: 80px;
+  height: 24px;
+  @include skeleton;
+}
+
+.separator {
+  height: 1px;
+  background: var(--elements);
+}
+
+.specs {
+  display: grid;
+  gap: 10px;
+}
+
+.specRow {
+  height: 14px;
+  width: 100%;
+  @include skeleton;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  flex: 1;
+  height: 40px;
+  @include skeleton;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  @include skeleton;
+}

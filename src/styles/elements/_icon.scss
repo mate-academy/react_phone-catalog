@@ -1,0 +1,87 @@
+@use '../utils' as *;
+
+.icon {
+  display: block;
+  width: 16px;
+  aspect-ratio: 1;
+  background-size: cover;
+
+  // @include hover(transform, scale(1.2));
+
+  &--burger {
+    background-image: var(--icon-burger);
+  }
+
+  &--close {
+    background-image: var(--icon-close);
+  }
+
+  &--close-light {
+    background-image: var(--icon-close-light);
+  }
+
+  &--favorite {
+    background-image: var(--icon-favorite);
+  }
+
+  &--favorite-filled {
+    background-image: var(--icon-favorite-filled);
+  }
+
+  &--cart {
+    background-image: var(--icon-cart);
+  }
+
+  &--home {
+    background-image: var(--icon-home);
+  }
+
+  &--chevron-active {
+    background-image: var(--icon-chevron-active);
+  }
+
+  &--chevron-disabled {
+    background-image: var(--icon-chevron-disabled);
+  }
+
+  &--plus-active {
+    background-image: var(--icon-plus-active);
+  }
+
+  &--light-theme{
+    background-image: var(--icon-light-theme);
+  }
+
+  &--dark-theme{
+    background-image: var(--icon-dark-theme);
+  }
+
+  // &--plus-disabled{
+
+  // }
+
+  &--minus-active {
+    background-image: var(--icon-minus-active);
+  }
+
+  &--minus-disabled {
+    background-image: var(--icon-minus-disabled);
+  }
+
+  &--rotate-180 {
+    rotate: -180deg;
+  }
+
+  &--rotate180 {
+    rotate: 180deg;
+  }
+
+  &--rotate90 {
+    rotate: 90deg;
+  }
+
+  &--rotate-90 {
+    rotate: -90deg;
+  }
+}
+

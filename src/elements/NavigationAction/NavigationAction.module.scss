@@ -1,0 +1,99 @@
+@use '../../styles/index' as *;
+
+.NavigationAction {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:not(.NavigationAction--menu):hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--secondary);
+  }
+
+
+  &--button-link {
+    padding-inline: 16px;
+    padding-block: 24px;
+    flex-grow: 1;
+    box-shadow: -1px 0 0 0 var(--elements);
+    justify-content: center;
+
+    @include on-tablet{
+      padding-block: 0;
+      flex-grow: 0;
+    }
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+  }
+
+  &--button {
+    padding-inline: 16px;
+    box-shadow: -1px 0 0 0 var(--elements);
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+  }
+
+  &--text {
+    padding-block: 8px;
+    @extend %uppercase;
+    font-weight: 800;
+    color: var(--secondary);
+
+    @include on-desktop {
+      padding-block: 0;
+    }
+  }
+
+  &--active::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+  }
+
+  &--active.NavigationAction--text {
+    color: var(--primary);
+  }
+
+  &--menu {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__iconWrapper {
+    position: relative;
+  }
+
+  &__badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background-color: var(--red);
+    @extend %small-text;
+    color: var(--white);
+    font-size: 9px;
+    top: -6px;
+    right: -6px;
+  }
+}

@@ -1,0 +1,22 @@
+@use '../../styles/index' as *;
+
+.specs {
+  display: grid;
+  row-gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 8px
+  }
+
+  &__label {
+    @extend %body-text;
+    color: var(--secondary);
+  }
+  &__value {
+    @extend %body-text;
+    text-align: end;
+  }
+}

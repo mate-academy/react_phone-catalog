@@ -1,0 +1,83 @@
+@use '../../styles/index' as *;
+
+.card {
+  padding: 32px;
+  border: 1px solid var(--elements);
+  display: grid;
+  gap: 8px;
+  background: var(--primary-background);
+
+  @include on-dark {
+    background: var(--surface1);
+  }
+
+  &:hover {
+    box-shadow: 0px 2px 15px 0px #0000001a;
+
+    transform: translateY(-2px);
+  }
+
+  &__header {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 196px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @extend %body-text;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-height: 44px;
+  }
+
+  &__price-wrapper {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__price {
+    @extend %h3;
+    font-size: 22px;
+    line-height: 31px;
+
+    &--old {
+      color: var(--secondary);
+      text-decoration: line-through;
+    }
+  }
+
+  &__seperator {
+    border: 1px solid var(--elements);
+  }
+
+  &__specs {
+    display: grid;
+    row-gap: 8px;
+  }
+
+  &__specs-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specs-option {
+    @extend %small-text;
+    color: var(--secondary);
+  }
+
+  &__specs-data {
+    @extend %small-text;
+  }
+
+  &__actions {
+    display: flex;
+    column-gap: 8px;
+  }
+}

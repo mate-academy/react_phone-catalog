@@ -1,0 +1,27 @@
+@use '../../styles/index' as *;
+
+.productSwiper {
+  :global(.swiper-wrapper) {
+    overflow: visible;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__controls {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__slide{
+    padding: 2px;
+  }
+}
