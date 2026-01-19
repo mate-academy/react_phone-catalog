@@ -7,7 +7,7 @@ import { useFavourites } from '../../context/FavouritesContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cart } = useCart();
+  const { cart, totalCount } = useCart();
   const { favourites } = useFavourites();
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -77,7 +77,7 @@ export const Header = () => {
         <Link to="/cart" className={styles.iconLink} onClick={closeMenu}>
           <span className={styles.cartIcon} />
           {cart.length > 0 && (
-            <span className={styles.counter}>{cart.length}</span>
+            <span className={styles.counter}>{totalCount}</span>
           )}
         </Link>
 
@@ -187,7 +187,7 @@ export const Header = () => {
             >
               <span className={styles.cartIconBurger} />
               {cart.length > 0 && (
-                <span className={styles.counterBurger}>{cart.length}</span>
+                <span className={styles.counterBurger}>{totalCount}</span>
               )}
             </Link>
           </div>

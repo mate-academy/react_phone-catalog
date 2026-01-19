@@ -10,6 +10,7 @@ import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
 import rawProducts from '../../../public/api/products.json';
 import { ProductsSlider } from '../HomePage/components/ProductsSlider';
+import { ScrollToTop } from '../../components/ScrolTop/ScrolTop';
 
 export const ProductPage = () => {
   const { itemId } = useParams<{ itemId: string }>();
@@ -450,6 +451,7 @@ export const ProductPage = () => {
           </div>
         </div>
         <div className={styles.slider}>
+          <ScrollToTop />
           <ProductsSlider type="new" title="You may also like" />
         </div>
       </div>

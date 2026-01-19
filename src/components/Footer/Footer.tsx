@@ -20,7 +20,12 @@ export const Footer = () => {
 
         {/* Contacts */}
         <div className={styles.contacts}>
-          <Link to="https://github.com/Bo-oV" className={styles.contactsLink}>
+          <Link
+            to="https://github.com/Bo-oV"
+            target="_blank"
+            className={styles.contactsLink}
+            rel="noopener noreferrer"
+          >
             Github
           </Link>
 

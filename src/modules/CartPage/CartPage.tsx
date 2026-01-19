@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 
@@ -49,6 +49,7 @@ export const CartPage = () => {
                   className={styles.content__list__cartItem}
                 >
                   {/* TOP */}
+
                   <div className={styles.content__list__cartItemTop}>
                     <button
                       type="button"
@@ -56,22 +57,30 @@ export const CartPage = () => {
                       aria-label="Remove item"
                       onClick={() => removeFromCart(item.product.id)}
                     />
-
-                    <div
-                      className={
-                        styles.content__list__cartItemTop__imageContainer
-                      }
+                    <Link
+                      to={`/${item.product.category}/${item.product.itemId}`}
+                      className={styles.imageLink}
                     >
-                      <img
-                        src={item.product.image}
-                        alt={item.product.name}
+                      <div
                         className={
-                          styles.content__list__cartItemTop__imageContainer__im
+                          styles.content__list__cartItemTop__imageContainer
                         }
-                      />
-                    </div>
-
-                    <p className={styles.name}>{item.product.name}</p>
+                      >
+                        <img
+                          src={item.product.image}
+                          alt={item.product.name}
+                          className={
+                            styles.content__list__cartItemTop__imageContainer__i
+                          }
+                        />
+                      </div>
+                    </Link>
+                    <Link
+                      to={`/${item.product.category}/${item.product.itemId}`}
+                      className={styles.nameLink}
+                    >
+                      <p className={styles.name}>{item.product.name}</p>
+                    </Link>
                   </div>
 
                   {/* BOTTOM */}
