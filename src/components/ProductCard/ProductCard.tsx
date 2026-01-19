@@ -4,7 +4,6 @@ import { getRouteByCategory } from '../../services/product';
 import styles from './ProductItem.module.scss';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { scrollTop } from '../../services/layouts';
 import { ProductActions } from '../ProductActions';
 
 type Props = {
@@ -21,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         aria-label={`Visit product:${product.name}`}
         to={`${getRouteByCategory(product.category)}/${product.itemId}`}
         state={{ pathname, search, preserveFromSearch: true }}
-        onClick={scrollTop}
+        // onClick={scrollTop}
       >
         <header className={styles.card__header}>
           <img

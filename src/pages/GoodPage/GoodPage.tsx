@@ -10,6 +10,8 @@ import styles from './GoodPage.module.scss';
 import { Loader } from '../../elements/Loader';
 import { useMathingProduct } from './useMathingProducts';
 import { ProductSwiper } from '../../components/ProductSwiper';
+import { useEffect } from 'react';
+import { scrollTop } from '../../services/layouts';
 
 export const GoodPage = () => {
   const { t } = useTranslation();
@@ -34,6 +36,10 @@ export const GoodPage = () => {
 
   const isPlugVisible = !isLoading && !selectedGood && !error;
   const isLayoutVisible = !isLoading && selectedGood && !error;
+
+  useEffect(() => {
+    scrollTop();
+  }, []);
 
   return (
     <section className={styles.goodPage}>

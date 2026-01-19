@@ -19,7 +19,7 @@ body {
     top: var(--header-height);
     left: 0;
     right: 0;
-    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
 
     background-color: #fff;
 
@@ -46,7 +46,7 @@ body {
   }
 
   &__main {
-    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
     display: flex;
     flex-direction: column;
   }

@@ -5,13 +5,21 @@ import { Logo } from '../../elements/Logo';
 import { Navigation } from '../../components/Navigation';
 import { NavigationAction } from '../../elements/NavigationAction';
 import { useBurgerMenu } from '../../utils/hooks/Context/useBurgerMenu';
+import { scrollTop } from '../../services/layouts';
 
 export const Header = () => {
-  const { isOpen: isMenuOpen, toggle } = useBurgerMenu();
+  const { isOpen: isMenuOpen, toggle, close } = useBurgerMenu();
 
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.header__logo}>
+      <Link
+        onClick={() => {
+          scrollTop();
+          close();
+        }}
+        to="/"
+        className={styles.header__logo}
+      >
         <Logo />
       </Link>
 
