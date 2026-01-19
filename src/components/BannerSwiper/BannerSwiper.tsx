@@ -138,7 +138,7 @@ export const BannerSwiper = () => {
                 </div>
                 <img
                   className={styles.bannerSwiper__slideImage}
-                  src="public\img\banner-iphone14.png"
+                  src="/img/banner-iphone14.png"
                   alt=""
                 />
               </div>
@@ -182,7 +182,7 @@ export const BannerSwiper = () => {
                 </div>
                 <img
                   className={styles.bannerSwiper__slideImage}
-                  src="public\img\banner-iphone14.png"
+                  src="/img/banner-iphone14.png"
                   alt=""
                 />
               </div>
@@ -226,7 +226,7 @@ export const BannerSwiper = () => {
                 </div>
                 <img
                   className={styles.bannerSwiper__slideImage}
-                  src="public\img\banner-iphone14.png"
+                  src="/img/banner-iphone14.png"
                   alt=""
                 />
               </div>

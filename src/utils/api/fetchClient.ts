@@ -1,7 +1,7 @@
-import { BASE_URL } from '../../constants/URL';
 import { ApiError } from '../../services/Errors';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+const BASE_URL = './api';
 
 function wait(delay: number) {
   return new Promise(resolve => {
