@@ -1,0 +1,13 @@
+.list {
+  @include grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+
+  -ms-overflow-style: none;
+  grid-template-rows: min-content;
+  gap: space(2);
+
+  @include respond (tablet) {
+    grid-auto-flow: unset;
+  }
+}

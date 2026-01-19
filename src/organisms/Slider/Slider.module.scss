@@ -10,7 +10,6 @@
     overflow: hidden;
     position: relative;
 
-
     img {
       position: absolute;
       top: 0;
@@ -35,12 +34,10 @@
     height: 100%;
     width: 50%;
 
-
     @include respond (desktop) {
       display: flex;
       align-items: center;
       justify-content: center;
-
     }
   }
 
@@ -50,7 +47,6 @@
 }
 
 .modal {
-
   height: 90%;
   width: 80%;
 

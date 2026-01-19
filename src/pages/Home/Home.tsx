@@ -1,10 +1,15 @@
+import { usePhones } from '@/hooks/usePhones';
+import GoodList from '@/organisms/GoodList';
 import Slider from '@/organisms/Slider';
 
 const Home = () => {
+
+  const phones = usePhones();
+
   return (
     <div>
-      <h1>Home</h1>
       <Slider />
+      <GoodList items={phones} />
     </div>
   );
 };

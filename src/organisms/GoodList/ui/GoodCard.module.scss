@@ -1,0 +1,30 @@
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+  background-color: $bg;
+  box-sizing: border-box;
+  border: calc($space-unit / 4) solid transparent;
+  padding: space(4);
+
+  // 5. Align to the snap points
+  scroll-snap-align: center;
+
+  &:hover {
+    border-color: $secondary;
+  }
+
+  &__img {
+    width: 100%;
+    display: block;
+  }
+
+    @include respond (tablet) {
+      grid-column: span 5;
+    }
+
+    @include respond (desktop) {
+      grid-column: span 6;
+    }
+}
