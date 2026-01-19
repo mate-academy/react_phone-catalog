@@ -4,7 +4,7 @@ import { CategoryType, SortOption } from '../types/Product';
 /**
  * API Configuration
  */
-export const API_BASE_URL = `${import.meta.env.BASE_URL}api`;
+export const API_BASE_URL = `${import.meta.env.BASE_URL}/api`;
 
 /**
  * API Endpoints
