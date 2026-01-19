@@ -64,11 +64,11 @@ export const ProductsProvider: FC<Props> = ({ children }) => {
   function findNessesaryItem(category: NameProducts, itemId: string) {
     switch (category) {
       case 'phones':
-        return phones.find(item => item.id === itemId)!;
+        return phones.find(item => item.id === itemId);
       case 'tablets':
-        return tablets.find(item => item.id === itemId)!;
+        return tablets.find(item => item.id === itemId);
       case 'accessories':
-        return accessories.find(item => item.id === itemId)!;
+        return accessories.find(item => item.id === itemId);
       default:
         return undefined;
     }

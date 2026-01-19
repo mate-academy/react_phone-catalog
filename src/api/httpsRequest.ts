@@ -9,7 +9,7 @@ import accessories from '../../public/api/accessories.json';
 import productsAll from '../../public/api/products.json';
 import { NameProducts } from '../types/NameProducts';
 
-const getProducts = async (param: NameProducts) => {
+export const getProducts = async (param: NameProducts) => {
   return new Promise<
     ProductType[] | ProductTypeForAccessory[] | ProductAllType[]
   >((resolve, reject) => {
@@ -33,5 +33,3 @@ const getProducts = async (param: NameProducts) => {
     }, 1000);
   });
 };
-
-export { getProducts };
