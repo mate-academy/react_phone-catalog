@@ -8,6 +8,8 @@ header {
 }
 
 .header {
+  display: flex;
+  justify-content: center;
   &__wrapper {
     display: flex;
     width: 100%;

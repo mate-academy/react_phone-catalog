@@ -18,16 +18,12 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
+      <div className={styles.header__logo}>
+        <Link to="/">
+          <img src={iconLogo} className={styles.header__logo__img} alt="logo" />
+        </Link>
+      </div>
       <div className={styles.header__wrapper}>
-        <div className={styles.header__logo}>
-          <Link to="/">
-            <img
-              src={iconLogo}
-              className={styles.header__logo__img}
-              alt="logo"
-            />
-          </Link>
-        </div>
         <div className={styles.header__nav}>
           <NavLink
             to="/"
