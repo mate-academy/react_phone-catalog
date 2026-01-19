@@ -86,15 +86,9 @@ export const ProductDetailsPage: React.FC = () => {
     return { ...summary, ...detailedProduct } as FullProduct;
   };
 
-  // const changeProduct = (id: string) => {
-  //   const newProduct = findProductById(id);
-
-  //   return newProduct;
-  // };
-
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const product = productId ? findProductById(productId) : null;
-  const baseId = product?.itemId?.split('-').slice(0, 4).join('-') || '';
+  const baseId = product?.itemId?.split('-').slice(0, 3).join('-') || '';
 
   //   // Діагностика
   // console.log('product:', product);
@@ -187,7 +181,9 @@ export const ProductDetailsPage: React.FC = () => {
             >
               {product.colorsAvailable.map(color => {
                 const newProduct = products.find(
-                  p => p.itemId === `${baseId}-${color}`,
+                  p =>
+                    p.itemId ===
+                    `${baseId}-${product.capacity.toLowerCase()}-${color}`,
                 );
 
                 if (!newProduct) {
@@ -213,7 +209,10 @@ export const ProductDetailsPage: React.FC = () => {
                       aria-label={color}
                     >
                       <span
-                        className={styles.colorInner}
+                        className={
+                          // eslint-disable-next-line max-len
+                          styles.productdetailspage__info_availablecolor_colorInner
+                        }
                         style={{
                           backgroundColor:
                             color === 'midnight' ? 'midnightblue' : color,
@@ -225,9 +224,57 @@ export const ProductDetailsPage: React.FC = () => {
               })}
             </ul>
           </div>
-          <div
-            className={styles.productdetailspage__info_availablecapacities}
-          ></div>
+          <div className={styles.productdetailspage__info_availablecapacities}>
+            <p
+              className={
+                styles.productdetailspage__info_availablecapacities_text
+              }
+            >
+              Select capacity
+            </p>
+            <ul
+              className={
+                styles.productdetailspage__info_availablecapacities_list
+              }
+            >
+              {product.capacityAvailable.map(capacity => {
+                const newProduct = products.find(
+                  p =>
+                    p.itemId ===
+                    `${baseId}-${capacity.toLowerCase()}-${product.color}`,
+                );
+
+                if (!newProduct) {
+                  return null;
+                }
+
+                return (
+                  <li
+                    key={capacity}
+                    className={
+                      styles.productdetailspage__info_availablecapacity
+                    }
+                  >
+                    <Link
+                      to={`/${product.category}/product/${newProduct.id}`}
+                      className={classNames(
+                        // eslint-disable-next-line max-len
+                        styles.productdetailspage__info_availablecapacity_colorLink,
+                        {
+                          // eslint-disable-next-line max-len
+                          [styles.productdetailspage__info_availablecapacity_colorLink_active]:
+                            capacity === product.capacity,
+                        },
+                      )}
+                      aria-label={capacity}
+                    >
+                      {capacity}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           <div className={styles.productdetailspage__info_main}></div>
         </div>
 
