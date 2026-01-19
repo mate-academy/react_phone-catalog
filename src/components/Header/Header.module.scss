@@ -7,23 +7,18 @@
   z-index: 1000;
   z-index: 1;
   background-color: $header-background-color;
-
-  width: 320px;
   height: 48px;
 
   @include on-tablet {
-    width: 640px;
     height: 48px;
   }
 
   @include on-desktop {
-    width: 1440px;
-    height: 6px;
+    height: 64px;
   }
 }
 
 .icon {
-  border: 1px solid red;
   display: block;
   background-size: cover;
   background-position: center;
@@ -47,7 +42,7 @@
     display: block;
 
     @include on-tablet {
-        display: none;
+      display: none;
     }
 
   }
@@ -88,7 +83,7 @@
   border-bottom: 1px solid #E2E6E9;
 
   display: flex;
-  justify-content: space-between;
+  justify-content:  space-between;
 
   width: 100%;
 
@@ -118,7 +113,6 @@
 
   &__logo-link {
     display: flex;
-      border: 10px solid red;
   }
 
   &__logo {

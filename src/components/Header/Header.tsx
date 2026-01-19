@@ -6,12 +6,16 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.topBar}>
         <a href="#">
-          <img
-            src="img/logo-2x.png"
-            alt="The Nice Gadgets Logo"
-            title="The Nice Gadgets Logo"
-            className="top-bar__logo"
-          />
+          <picture>
+            <source srcSet="img/logo-desktop.svg" media="(min-width: 1024px)" />
+            <source srcSet="img/logo-tablet.svg" media="(min-width: 576px)" />
+            <img
+              src="img/logo-mobile.svg"
+              alt="The Nice Gadgets Logo"
+              title="The Nice Gadgets Logo"
+              className={styles.topBar__logo}
+            />
+          </picture>
         </a>
         <div className={styles.topBar__menu}>
           <Menu />

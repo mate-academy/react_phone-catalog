@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: center;
 
-    margin: auto;
+    margin: auto 0;
 
     @include on-tablet {
       height: 176px;
@@ -34,13 +34,16 @@
   }
 
   &__title-welcome {
+    margin: auto 0;
     @include on-tablet {
       width: 500px;
       display: block;
     }
 
     @include on-desktop {
-      width: 100%;
+      width: 1040px;
+     // display: block;
+      margin: auto 0;
     }
   }
 
@@ -77,21 +80,21 @@
      }
 
      &__button-slider-left {
-        background-image: url('/img/buttons/button-slider-left-tablet-2x.png');
+        background-image: url('/img/buttons/button-slider-left-tablet.svg');
 
-        @include on-desktop {
-           background-image: url('/img/buttons/button-slider-left-desktop-2x.png');
-        }
+      @include on-desktop {
+        background-image: url('/img/buttons/button-slider-left-desktop.svg');
+      }
 
 
      }
 
       &__button-slider-right {
-        background-image: url('/img/buttons/button-slider-right-tablet-2x.png');
+        background-image: url('/img/buttons/button-slider-right-tablet.svg');
 
-        @include on-desktop {
-          background-image: url('/img/buttons/button-slider-right-desktop-2x.png');
-        }
+       @include on-desktop {
+         background-image: url('/img/buttons/button-slider-right-desktop.svg');
+       }
 
      }
 

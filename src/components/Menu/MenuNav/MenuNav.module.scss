@@ -4,7 +4,6 @@
 .nav {
   box-sizing: border-box;
 
-
   &__link {
     color: #89939A;
     text-decoration: none;
@@ -16,8 +15,6 @@
     text-transform: uppercase;
 
     padding-block: 8px;
-
-
 
     &:hover {
       border-bottom: 2px solid $active-menu-color;
