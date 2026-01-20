@@ -7,20 +7,39 @@ import React, { useEffect, useState } from 'react';
 import styles from './CategoryPage.module.scss';
 import { CustomSelect } from './CustomSelect';
 import { useSearchParams } from 'react-router-dom';
+
 import { SortValue, sortOptions, SORT_VALUES } from 'models/sortvalue.model';
 import { Pagination } from '../shared/Pagination/Pagination';
+import { useFilter } from 'src/context/FilterContext';
 
 export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   category,
   title,
 }) => {
+  const {
+    sort: contextSort,
+    perPage: contextPerPage,
+    page: contextPage,
+    setSort: setContextSort,
+    setPerPage: setContextPerPage,
+    setPage: setContextPage,
+  } = useFilter();
+
   const [countModels, setCountModels] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageParam = Number(searchParams.get('page')) || 1;
-  const perPageParam = searchParams.get('perPage') || '16';
 
-  const page = pageParam < 1 ? 1 : pageParam;
-  const perPage = perPageParam;
+  const paramSort = searchParams.get('sort');
+  const paramPerPage = searchParams.get('perPage');
+  const pageParam = Number(searchParams.get('page'));
+
+  const sort: SortValue =
+    paramSort && SORT_VALUES.includes(paramSort as SortValue)
+      ? (paramSort as SortValue)
+      : contextSort;
+
+  const perPage = paramPerPage || contextPerPage;
+  const page = pageParam && pageParam >= 1 ? pageParam : contextPage;
+
   const setPage = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
 
@@ -31,27 +50,25 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
     }
 
     setSearchParams(params);
+    setContextPage(newPage);
   };
 
   const setPerPage = (value: string) => {
     const params = new URLSearchParams(searchParams);
 
-    if (value === 'all') {
+    if (value === '16' && !params.has('perPage')) {
+      // do nothing if default
+    } else if (value === 'all') {
       params.delete('perPage');
-      params.delete('page'); // page скидаємо
     } else {
       params.set('perPage', value);
-      params.delete('page');
     }
 
+    params.delete('page');
     setSearchParams(params);
+    setContextPerPage(value);
+    setContextPage(1);
   };
-
-  const paramSort = searchParams.get('sort');
-
-  const sort: SortValue = SORT_VALUES.includes(paramSort as SortValue)
-    ? (paramSort as SortValue)
-    : 'newest';
 
   const setSort = (nextSort: string) => {
     const params = new URLSearchParams(searchParams);
@@ -63,6 +80,7 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
     }
 
     setSearchParams(params);
+    setContextSort(nextSort as SortValue);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -77,6 +95,27 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   useEffect(() => {
     setCountModels(getModelsCount(category));
   }, [category]);
+
+  useEffect(() => {
+    if (paramSort && SORT_VALUES.includes(paramSort as SortValue)) {
+      setContextSort(paramSort as SortValue);
+    }
+
+    if (paramPerPage) {
+      setContextPerPage(paramPerPage);
+    }
+
+    if (pageParam && pageParam >= 1) {
+      setContextPage(pageParam);
+    }
+  }, [
+    paramSort,
+    paramPerPage,
+    pageParam,
+    setContextSort,
+    setContextPerPage,
+    setContextPage,
+  ]);
 
   useEffect(() => {
     if (paramSort && !SORT_VALUES.includes(paramSort as SortValue)) {
