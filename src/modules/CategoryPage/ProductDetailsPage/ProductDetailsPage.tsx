@@ -18,6 +18,27 @@ const apiCategoryMap: Record<string, ProductDetails[]> = {
   accessories: apiAccessories,
 } as const;
 
+const COLOR_MAP: Record<string, string> = {
+  black: '#000000',
+  blue: '#4f5ca8',
+  coral: '#f16e4e',
+  white: '#f5f5f5',
+  gold: '#f5d7b2',
+  silver: '#e0e0e0',
+  spacegray: '#4b4b4b',
+  spaceblack: '#222020',
+  midnight: 'midnightblue',
+  midnightgreen: 'darkgreen',
+  sierrablue: '#9bb7d4',
+  starlight: '#f8f3e8',
+  green: '#576856',
+  yellow: '#f2d94e',
+  purple: '#b39ddb',
+  pink: '#db9dc3',
+  rosegold: '#dfaaaf',
+  red: '#c0392b',
+};
+
 export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const { category, productId } = useParams<{
@@ -88,9 +109,13 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const product = productId ? findProductById(productId) : null;
-  const baseId = product?.itemId?.split('-').slice(0, 3).join('-') || '';
+  const baseId =
+    product?.itemId
+      ?.split('-')
+      .slice(0, product?.itemId?.split('-').length - 2)
+      .join('-') || '';
 
-  //   // Діагностика
+  // Діагностика
   // console.log('product:', product);
   // console.log('baseId:', baseId);
   // console.log('products:', products);
@@ -129,7 +154,7 @@ export const ProductDetailsPage: React.FC = () => {
         <Breadcrumbs category={category || ''} productId={productId || ''} />
         <button
           className={styles.productdetailspage__backbutton}
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(`/${product.category}`)}
         >
           <img
             className={styles.productdetailspage__backbutton__icon}
@@ -214,8 +239,7 @@ export const ProductDetailsPage: React.FC = () => {
                           styles.productdetailspage__info_availablecolor_colorInner
                         }
                         style={{
-                          backgroundColor:
-                            color === 'midnight' ? 'midnightblue' : color,
+                          backgroundColor: COLOR_MAP[color] ?? '#ccc',
                         }}
                       />
                     </Link>
