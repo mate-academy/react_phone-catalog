@@ -5,7 +5,7 @@ interface Props {
   sortBy: SortBy;
   onSortChange: (value: SortBy) => void;
 
-  itemsPerPage: 'all' | number;
+  itemsPerPage: string | number;
   onItemsChange: (value: 'all' | number) => void;
 }
 

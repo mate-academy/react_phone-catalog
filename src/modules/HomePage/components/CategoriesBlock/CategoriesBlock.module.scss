@@ -42,7 +42,7 @@
   @include tablet {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    gap: 48px;
     justify-content: center;
   }
 }
@@ -71,8 +71,8 @@
   }
 
   @include desktop {
-    width: 368px;
-    height: 368px;
+    width: 320px;
+    height: 320px;
   }
 }
 
