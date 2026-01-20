@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -27,6 +27,20 @@ const slides = [
 export const HeroSlider = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (swiperInstance) {
+        if (activeIndex === slides.length - 1) {
+          swiperInstance.slideTo(0);
+        } else {
+          swiperInstance.slideNext();
+        }
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [activeIndex, swiperInstance]);
 
   const handlePrev = () => {
     swiperInstance?.slidePrev();
@@ -64,14 +78,16 @@ export const HeroSlider = () => {
             <SwiperSlide key={slide.id}>
               <div className={styles.slideContent}>
                 <div className={styles.slideLeft}>
-                  <h2 className={styles.slideTitle}>
-                    Now available in our store!
-                    <span className={styles.emoji}></span>
-                  </h2>
-                  <p className={styles.slideSubtitle}>Be the first!</p>
-                  <a href="#" className={styles.orderButton}>
-                    ORDER NOW
-                  </a>
+                  <div className={styles.textContent}>
+                    <h2 className={styles.slideTitle}>
+                      Now available in our store!
+                      <span className={styles.emoji}></span>
+                    </h2>
+                    <p className={styles.slideSubtitle}>Be the first!</p>
+                    <a href="#" className={styles.orderButton}>
+                      ORDER NOW
+                    </a>
+                  </div>
                 </div>
                 <div className={styles.slideRight}>
                   <img

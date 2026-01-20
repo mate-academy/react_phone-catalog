@@ -1,0 +1,9 @@
+@use '../../styles/colors';
+@use '../../styles/typography';
+
+.BrandNewModels {
+  .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+}

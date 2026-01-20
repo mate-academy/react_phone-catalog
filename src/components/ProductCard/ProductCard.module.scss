@@ -1,0 +1,125 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/typography' as typography;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  height: 200px;
+  width: 100%;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  @include typography.text-body;
+
+  color: var(--color-primary);
+  margin: 0 0 8px;
+  overflow: hidden;
+  height: 42px;
+}
+
+.price {
+  @include typography.text-h3;
+
+  color: var(--color-primary);
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-elements);
+  margin: 8px 0;
+  width: 100%;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+
+  @include typography.text-small;
+}
+
+.specName {
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+.specValue {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCart {
+  @include typography.text-buttons;
+
+  flex-grow: 1;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: var(--color-primary);
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.favorite {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-elements);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
