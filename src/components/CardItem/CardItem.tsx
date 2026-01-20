@@ -82,9 +82,9 @@ export const CardItem = () => {
     { name: 'Resolution', value: product?.resolution },
     { name: 'Processor', value: product?.processor },
     { name: 'RAM', value: product?.ram },
-    { name: 'Camera', value: id !== 'accesorries' ? product?.camera : '' },
-    { name: 'Zoom', value: product?.zoom },
-    { name: 'Cell', value: [...product.cell].join(', ') },
+    // { name: 'Camera', value: id !== 'accesorries' ? product?.camera : '' },
+    // { name: 'Zoom', value: product?.zoom },
+    // { name: 'Cell', value: [...product.cell].join(', ') },
   ];
 
   // const chosenProduct =
@@ -215,7 +215,7 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
-              <span className="body-card__id">ID: {productId}</span>
+              <span className="body-card__id">ID: {product.id}</span>
             </div>
           </div>
 
