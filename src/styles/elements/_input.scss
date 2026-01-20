@@ -1,0 +1,35 @@
+@use '../extends/index' as *;
+@use '../utils/mixins' as *;
+
+.input {
+  @extend %inputs;
+  padding: 0;
+  border: 1px solid var(--elements);
+  box-sizing: border-box;
+  padding-inline: 8px;
+  outline: none;
+
+  @include on-dark{
+    background-color: var(--surface2);
+  }
+
+  &--height40 {
+    height: 40px;
+  }
+
+  &--width150px {
+    width: 150px;
+  }
+
+  &--witdh100 {
+    width: 100%;
+  }
+
+  &:focus {
+    border-color: var(--primary);
+  }
+
+  &:hover {
+    border-color: var(--primary);
+  }
+}

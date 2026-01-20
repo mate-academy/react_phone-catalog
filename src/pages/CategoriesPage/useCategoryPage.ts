@@ -12,9 +12,16 @@ type Params = {
   page: number;
   perPage: PerPage;
   sort: Sort;
+  query: string;
 };
 
-export const useCategoryPage = ({ category, page, perPage, sort }: Params) => {
+export const useCategoryPage = ({
+  category,
+  page,
+  perPage,
+  sort,
+  query,
+}: Params) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,9 +36,17 @@ export const useCategoryPage = ({ category, page, perPage, sort }: Params) => {
 
     getCachedProducts(category)
       .then(({ items }) => {
-        const filtered = items.filter(product => product.category === category);
+        let result = items.filter(product => product.category === category);
 
-        const sorted = [...filtered].sort((a, b) => {
+        if (query.trim()) {
+          const normalizedQuery = query.trim().toLowerCase();
+
+          result = result.filter(product =>
+            product.name.toLowerCase().includes(normalizedQuery),
+          );
+        }
+
+        result.sort((a, b) => {
           switch (sort) {
             case 'alphabetically':
               return a.name.localeCompare(b.name);
@@ -42,15 +57,16 @@ export const useCategoryPage = ({ category, page, perPage, sort }: Params) => {
             case 'new':
               return b.year - a.year;
             default:
-              return a.year - b.year;
+              return 0;
           }
         });
 
-        const limit = perPage === 'all' ? sorted.length : Number(perPage);
+        setTotal(result.length);
+
+        const limit = perPage === 'all' ? result.length : Number(perPage);
         const start = (page - 1) * limit;
 
-        setProducts(sorted.slice(start, start + limit));
-        setTotal(filtered.length);
+        setProducts(result.slice(start, start + limit));
       })
       .catch(errorData => {
         if (errorData instanceof ApiError) {
@@ -62,7 +78,7 @@ export const useCategoryPage = ({ category, page, perPage, sort }: Params) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [category, page, perPage, sort, refetchIndex]);
+  }, [category, page, perPage, sort, query, refetchIndex]);
 
   return { products, total, isLoading, error, refetch };
 };

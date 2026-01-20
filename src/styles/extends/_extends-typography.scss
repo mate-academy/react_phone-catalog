@@ -96,3 +96,16 @@
   letter-spacing: 0%;
   color: var(--primary);
 }
+
+%inputs {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--primary);
+
+  &::placeholder {
+    color: var(--secondary);
+  }
+}

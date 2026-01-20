@@ -6,7 +6,7 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { useCallback, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Autoplay, Mousewheel, Pagination } from 'swiper/modules';
@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 
 const autoplayConfig = {
   delay: 5000,
-  disableOnInteraction: false,
+  // disableOnInteraction: true,
   // pauseOnMouseEnter: true,
 };
 
@@ -44,14 +44,6 @@ export const BannerSwiper = () => {
 
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
-  const [isNextDisabled, setIsNextDisabled] = useState(false);
-
-  const syncNavState = useCallback((swiper: SwiperType) => {
-    setIsPrevDisabled(swiper.isBeginning);
-    setIsNextDisabled(swiper.isEnd);
-  }, []);
-
   const { t } = useTranslation();
 
   return (
@@ -59,32 +51,19 @@ export const BannerSwiper = () => {
       <div className={styles.bannerSwiper__swiper}>
         <button
           ref={prevRef}
-          disabled={isPrevDisabled}
-          aria-disabled={isPrevDisabled}
           className={classNames(
-            'button button--pading',
+            'button button--pading button--icon',
             styles.bannerSwiper__prevButton,
-            isPrevDisabled ? 'button--disabled' : 'button--icon',
           )}
         >
           <span
-            className={classNames(
-              'icon icon--rotate180',
-              isPrevDisabled
-                ? 'icon--chevron-disabled'
-                : 'icon--chevron-active',
-            )}
+            className={classNames('icon icon--rotate180 icon--chevron-active')}
           />
         </button>
         <Swiper
           {...bannerSwiperConfig}
           onSwiper={swiper => {
             swiperRef.current = swiper;
-          }}
-          onSlideChange={swiper => {
-            if (!isMobile) {
-              syncNavState(swiper);
-            }
           }}
           navigation={
             isMobile
@@ -235,22 +214,9 @@ export const BannerSwiper = () => {
         </Swiper>
         <button
           ref={nextRef}
-          disabled={isNextDisabled}
-          aria-disabled={isNextDisabled}
-          className={classNames(
-            'button button--pading',
-            styles.bannerSwiper__nextButton,
-            isNextDisabled ? 'button--disabled' : 'button--icon',
-          )}
+          className={classNames('button button--pading button--icon')}
         >
-          <span
-            className={classNames(
-              'icon',
-              isNextDisabled
-                ? 'icon--chevron-disabled'
-                : 'icon--chevron-active',
-            )}
-          />
+          <span className={classNames('icon icon--chevron-active')} />
         </button>
       </div>
 

@@ -5,6 +5,7 @@
 
   &__label {
     @extend %small-text;
+    color: var(--secondary);
     margin-bottom: 4px;
   }
 

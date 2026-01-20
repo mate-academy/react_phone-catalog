@@ -45,6 +45,21 @@
     }
   }
 
+  &__inputWrapper{
+    width: 100%;
+    margin-top: 16px;
+
+    @include on-tablet{
+      width: 176px;
+    }
+  }
+
+  &__inputDescription{
+    @extend %small-text;
+    margin-bottom: 4px;
+    color: var(--secondary);
+  }
+
   &__plug{
     flex: 1;
     display: flex;

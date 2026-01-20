@@ -198,7 +198,7 @@
   justify-content: center;
 }
 
-:global(.swiper-pagination-bullet) {
+.bannerSwiper :global(.swiper-pagination-bullet) {
   cursor: pointer;
   box-sizing: border-box;
   // padding: 8px;
@@ -209,7 +209,7 @@
   margin: 0 4px;
 }
 
-:global(.swiper-pagination-bullet-active) {
+.bannerSwiper :global(.swiper-pagination-bullet-active) {
   display: block;
   width: 14px;
   height: 4px;

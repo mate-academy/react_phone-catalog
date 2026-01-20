@@ -63,6 +63,7 @@ const resources = {
       labels: {
         sortBy: 'Сортувати',
         itemsPerPage: 'Елементів на сторінці',
+        search: 'Пошук',
       },
 
       //GoodPage
@@ -170,6 +171,7 @@ const resources = {
       labels: {
         sortBy: 'Sort by',
         itemsPerPage: 'Items per page',
+        search: 'Search',
       },
 
       //GoodPage
