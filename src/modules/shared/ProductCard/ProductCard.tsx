@@ -68,15 +68,17 @@ const ProductCardView: React.FC<ProductCardViewProps> = memo(
         </div>
         <div className={styles.productcard__buttons}>
           <button
-            className={`${styles.productcard__buttons_cart} ${isAdded ? styles['productcard__buttons_cart_is-active'] : ''
-              }`}
+            className={`${styles.productcard__buttons_cart} ${
+              isAdded ? styles['productcard__buttons_cart_is-active'] : ''
+            }`}
             onClick={onAddToCart}
           >
             {isAdded ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
-            className={`${styles.productcard__buttons_like} ${isFavorite ? styles['productcard__buttons_like_is-active'] : ''
-              }`}
+            className={`${styles.productcard__buttons_like} ${
+              isFavorite ? styles['productcard__buttons_like_is-active'] : ''
+            }`}
             onClick={onAddToFavorites}
           >
             {isFavorite ? (
