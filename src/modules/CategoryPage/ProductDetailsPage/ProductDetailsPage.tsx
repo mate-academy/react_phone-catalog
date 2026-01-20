@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Breadcrumbs } from '../../shared/Breadcrumbs';
 import { Footer } from '../../shared/Footer';
 import { Header } from '../../shared/Header';
@@ -11,6 +11,8 @@ import apiTablets from '../../../../public/api/tablets.json';
 import apiAccessories from '../../../../public/api/accessories.json';
 import classNames from 'classnames';
 import { FullProduct, ProductDetails, ProductType } from 'models/product.model';
+import { useProducts } from 'src/context/ProductsContext';
+const favoriteIcons = '/img/icons/';
 
 const apiCategoryMap: Record<string, ProductDetails[]> = {
   phones: apiPhones,
@@ -127,7 +129,7 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     if (Array.isArray((product as FullProduct).images)) {
-      return (product as FullProduct).images;
+      return (product as FullProduct).images ?? [];
     }
 
     if ('image' in product && typeof product.image === 'string') {
@@ -142,6 +144,35 @@ export const ProductDetailsPage: React.FC = () => {
       setActiveImage(images[0]);
     }
   }, [images]);
+
+  const { cart, favorites, toggleCart, toggleFav } = useProducts();
+
+  const handleAddToCart = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      if (product) {
+        toggleCart(product);
+      }
+    },
+    [product, toggleCart],
+  );
+
+  const handleAddToFavorites = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      if (product) {
+        toggleFav(product);
+      }
+    },
+    [product, toggleFav],
+  );
+
+  const isAdded = product
+    ? cart.some(item => item.product.id === product.id)
+    : false;
+  const isFavorite = product
+    ? favorites.some(item => item.id === product.id)
+    : false;
 
   if (!product) {
     return <div>Product not found</div>;
@@ -164,6 +195,9 @@ export const ProductDetailsPage: React.FC = () => {
           <p className={styles.productdetailspage__backbutton__text}>Back</p>
         </button>
         <h1 className={styles.productdetailspage__title}>{product.name}</h1>
+        <p className={styles.productdetailspage__info_idnum}>
+          ID:{product.namespaceId}
+        </p>
         <div className={styles.productdetailspage__gallery}>
           <div className={styles.productdetailspage__gallery__thumbs}>
             {images.map((image: string) => (
@@ -194,9 +228,6 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
         <div className={styles.productdetailspage__info}>
-          <p className={styles.productdetailspage__info_idnum}>
-            ID:{product.namespaceId}
-          </p>
           <div className={styles.productdetailspage__info_availablecolors}>
             <p className={styles.productdetailspage__info_availablecolors_text}>
               Available colors
@@ -299,9 +330,92 @@ export const ProductDetailsPage: React.FC = () => {
               })}
             </ul>
           </div>
-          <div className={styles.productdetailspage__info_main}></div>
-        </div>
+          <div className={styles.productdetailspage__info_main}>
+            <div className={styles.productdetailspage__info__price}>
+              <h2 className={styles.productdetailspage__info__price_disconout}>
+                ${product.price}
+              </h2>
+              <h2 className={styles.productdetailspage__info__price_full}>
+                ${product.fullPrice}
+              </h2>
+            </div>
+            <div className={styles.productdetailspage__info__buttons}>
+              <button
+                className={`${styles.productdetailspage__info__buttons_cart} ${
+                  isAdded ? styles['productcard__buttons_cart_is-active'] : ''
+                }`}
+                onClick={handleAddToCart}
+              >
+                {isAdded ? 'Added to cart' : 'Add to cart'}
+              </button>
+              <button
+                className={`${styles.productdetailspage__info__buttons_like} ${
+                  isFavorite
+                    ? styles['productcard__buttons_like_is-active']
+                    : ''
+                }`}
+                onClick={handleAddToFavorites}
+              >
+                {isFavorite ? (
+                  <img
+                    src={
+                      favoriteIcons + 'icon-favourites-heart-like-filled.png'
+                    }
+                    alt=""
+                    className={
+                      styles.productdetailspage__info__buttons_like__img
+                    }
+                  />
+                ) : (
+                  <img
+                    src={favoriteIcons + 'icon-favourites-heart-like.png'}
+                    alt=""
+                    className={
+                      styles.productdetailspage__info__buttons_like__img
+                    }
+                  />
+                )}
+              </button>
+            </div>
+            <div className={styles.productdetailspage__info_tech}>
+              <div className={styles.productdetailspage__info_tech_row}>
+                <span className={styles.productdetailspage__info_tech_label}>
+                  Screen
+                </span>
+                <span className={styles.productdetailspage__info_tech_value}>
+                  {product.screen}
+                </span>
+              </div>
 
+              <div className={styles.productdetailspage__info_tech_row}>
+                <span className={styles.productdetailspage__info_tech_label}>
+                  Resolution
+                </span>
+                <span className={styles.productdetailspage__info_tech_value}>
+                  {product.resolution}
+                </span>
+              </div>
+
+              <div className={styles.productdetailspage__info_tech_row}>
+                <span className={styles.productdetailspage__info_tech_label}>
+                  Processor
+                </span>
+                <span className={styles.productdetailspage__info_tech_value}>
+                  {product.processor}
+                </span>
+              </div>
+
+              <div className={styles.productdetailspage__info_tech_row}>
+                <span className={styles.productdetailspage__info_tech_label}>
+                  RAM
+                </span>
+                <span className={styles.productdetailspage__info_tech_value}>
+                  {product.ram}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className={styles.productdetailspage__alsolike}>
           <ProductsSlider title="You may also like" />
         </div>
