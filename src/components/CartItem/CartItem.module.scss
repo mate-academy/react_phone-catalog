@@ -51,6 +51,10 @@
     }
   }
 
+  &__totalPrice{
+    @extend %small-text;
+  }
+
   &__name {
     @extend %body-text;
   }

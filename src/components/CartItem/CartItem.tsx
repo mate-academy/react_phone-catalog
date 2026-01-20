@@ -47,7 +47,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         >
           <span className={classNames('icon', classIconDecrease)} />
         </button>
-        <span>{product.count}</span>
+        <p className={styles.cartItem__totalPrice}>{product.count}</p>
         <button
           className="button button--icon button--small"
           onClick={() => increaseCount(product.id)}

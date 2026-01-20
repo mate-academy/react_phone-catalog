@@ -62,7 +62,7 @@ const resources = {
       },
       labels: {
         sortBy: 'Сортувати',
-        itemsPerPage: 'Елементів на сторінці',
+        itemsPerPage: 'Елементів за раз',
         search: 'Пошук',
       },
 

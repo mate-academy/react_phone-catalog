@@ -56,6 +56,9 @@ export const useCategoryPage = ({
               return b.price - a.price;
             case 'new':
               return b.year - a.year;
+            case 'old':
+              return a.year - b.year;
+
             default:
               return 0;
           }
