@@ -7,7 +7,7 @@ import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
 import productsAll from '../../public/api/products.json';
-import { NameProducts } from '../types/NameProducts';
+import { NameCategory, NameProducts } from '../types/NameProducts';
 
 export const getProducts = async (param: NameProducts) => {
   return new Promise<
@@ -32,4 +32,31 @@ export const getProducts = async (param: NameProducts) => {
       }
     }, 1000);
   });
+};
+
+export const getProduct = async (category: NameCategory, itemId: string) => {
+  return new Promise<ProductType | ProductTypeForAccessory>(
+    (resolve, reject) => {
+        switch (category) {
+          case 'phones': {
+            const product = phones.find(item => item.id === itemId);
+            product ? resolve(product) : reject('Product not found');
+            break;
+          }
+          case 'tablets': {
+            const product = tablets.find(item => item.id === itemId);
+            product ? resolve(product) : reject('Product not found');
+            break;
+          }
+          case 'accessories': {
+            const product = accessories.find(item => item.id === itemId);
+            product ? resolve(product) : reject('Product not found');
+            break;
+          }
+
+          default:
+            reject('Invalid category');
+        }
+    },
+  );
 };

@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { Breadcrumbs } from '../Catalog/Breadcrumbs';
 import unnownImg from './../../../public/img/unnown.jpg';
 import classNames from 'classnames';
@@ -9,6 +9,8 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { ProductCardButtons } from '../ProductCard/ProductCardButtons';
 import { useProducts } from '../../context/ProductsContext';
 import { NameCategory, NameProducts } from '../../types/NameProducts';
+import { getProduct } from '../../api/httpsRequest';
+import { ProductType, ProductTypeForAccessory } from '../../types/Product';
 
 export const CardItem = () => {
   // const product = {
@@ -63,16 +65,26 @@ export const CardItem = () => {
   const { id } = useParams<{ id: string }>();
   const { pathname, state } = useLocation();
   const { findNessesaryItem } = useProducts();
+  const [product, setProduct] = useState<
+    ProductType | ProductTypeForAccessory | undefined
+  >(undefined);
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const newProduct = await getProduct(category, id!);
+      console.log('newProduct', newProduct);
+      setProduct(newProduct);
+    };
+    fetchProduct();
+  }, [id]);
   // Получаем категорию из пути (первый сегмент: phones, tablets, accessories)
-  const category = pathname.split('/')[1];
-  const product = id
-    ? findNessesaryItem(category as NameCategory, id)
-    : undefined;
+  const category = state.category;
+
+  console.log('state', state);
+  console.log('product', product);
 
   const alsoLikeProducts = allProducts.slice(0, 5);
 
-  console.log(product);
   const [activePhoto, setActivePhoto] = useState(
     product?.images[0] || unnownImg,
   );
@@ -82,7 +94,11 @@ export const CardItem = () => {
     { name: 'Resolution', value: product?.resolution },
     { name: 'Processor', value: product?.processor },
     { name: 'RAM', value: product?.ram },
+<<<<<<< HEAD
     // { name: 'Camera', value: id !== 'accesorries' ? product?.camera : '' },
+=======
+    // { name: 'Camera', value: product?.camera },
+>>>>>>> e0cd76e11c556cd9e367331686193e5c244f0439
     // { name: 'Zoom', value: product?.zoom },
     // { name: 'Cell', value: [...product.cell].join(', ') },
   ];
@@ -215,7 +231,11 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
+<<<<<<< HEAD
               <span className="body-card__id">ID: {product.id}</span>
+=======
+              {/* <span className="body-card__id">ID: {productId}</span> */}
+>>>>>>> e0cd76e11c556cd9e367331686193e5c244f0439
             </div>
           </div>
 
