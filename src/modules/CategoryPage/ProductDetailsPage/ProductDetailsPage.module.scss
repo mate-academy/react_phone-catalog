@@ -9,10 +9,12 @@
   &__backbutton {
     display: flex;
     align-items: flex-end;
-    border: 0;
-    background-color: $background-color;
-    padding: 0;
+
     margin: 26px 0 16px;
+    padding: 0;
+    border: 0;
+
+    background-color: $background-color;
 
     &__icon {
       width: 16px;
@@ -33,26 +35,29 @@
   }
   &__title {
     grid-column: 1/-1;
-    text-align: left;
     margin: 0;
+    text-align: left;
   }
     &__gallery {
-      margin: 40px 0 80px;
-      grid-column: 1/13;
       display: grid;
+      grid-column: 1/13;
       grid-template-columns: 80px 1fr;
       gap: 16px;
+
+      margin: 40px 0 80px;
       &__thumbs {
         display: flex;
         flex-direction: column;
         gap: 16px;
       }
       &__thumb {
+        cursor: pointer;
+
         width: 80px;
         height: 80px;
         border: 1px solid $elements-color;
+
         background-color: $background-color;
-        cursor: pointer;
 
         &_img {
           width: 100%;
@@ -83,67 +88,73 @@
 
     &_idnum {
     grid-column: -4/-1;
+
     font-family: Mont, sans-serif;
-    font-weight: 700;
     font-size: 12px;
+    font-weight: 700;
     line-height: 100%;
-    letter-spacing: 0%;
-    text-align: right;
     color: $icons-and-placeholders-color;
+    text-align: right;
+    letter-spacing: 0%;
   }
   &_availablecolors{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    margin-bottom: 24px;
     padding-bottom: 24px;
     border-bottom: 1px solid $elements-color;
-    margin-bottom: 24px;
 
     &_list {
       display: flex;
       gap: 8px;
-      padding: 0;
+
       margin: 0;
+      padding: 0;
+
       list-style: none;
     }
     &_text {
-      font-family: Mont, sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 100%;
-      letter-spacing: 0%;
       margin: 0 0 8px;
+
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 100%;
       color: $secondary-color;
+      letter-spacing: 0%;
     }
   }
   &_availablecolor{
-    border-radius: 50%;
-
     cursor: pointer;
-    outline: none;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border-radius: 50%;
+
+    outline: none;
 
     &_active {
       border-color: $primary-color;
     }
 
     &_colorLink {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-
-  border: 2px solid #e2e6e9;
-  padding: 3px;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border: 2px solid #e2e6e9;
+  border-radius: 50%;
+
   text-decoration: none;
-  cursor: pointer;
 
   transition: border-color 0.2s;
 
@@ -163,46 +174,51 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    margin-bottom: 32px;
     padding-bottom: 24px;
     border-bottom: 1px solid $elements-color;
-    margin-bottom: 32px;
 
     &_list {
       display: flex;
       gap: 8px;
-      padding: 0;
+
       margin: 0;
+      padding: 0;
+
       list-style: none;
     }
 
     &_text{
       margin: 0 0 8px;
+
       font-family: Mont, sans-serif;
-      font-weight: 600;
       font-size: 12px;
+      font-weight: 600;
       line-height: 100%;
-      letter-spacing: 0%;
       color: $secondary-color;
+      letter-spacing: 0%;
     }
   }
 
   &_availablecapacity{
     &_colorLink {
-      text-decoration-line: none;
         margin: 0;
-        font-family: Mont, sans-serif;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 21px;
-        letter-spacing: 0%;
-        text-align: center;
-        color: $primary-color;
         padding: 4px 7px;
         border: 1px solid $icons-and-placeholders-color;
+
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $primary-color;
+        text-align: center;
+      text-decoration-line: none;
+        letter-spacing: 0%;
       &_active {
-        background-color: $primary-color;
         border: 1px solid $primary-color;
         color: $background-color;
+        background-color: $primary-color;
       }
     }
   }
@@ -228,8 +244,8 @@
       margin: 0;
 
       font-family: Mont, sans-serif;
-      font-weight: 800;
       font-size: 32px;
+      font-weight: 800;
       line-height: 41px;
       letter-spacing: -1%;
     }
@@ -247,9 +263,9 @@
 
     &_row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       height: 15px;
-      align-items: center;
     }
     &_label {
       font-family: Mont, sans-serif;
@@ -307,6 +323,58 @@
       }
     }
   }
+  }
+
+  &__extrainfo{
+    display: grid;
+    grid-column: 1/-1;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
+    justify-items: start;
+
+    &_title {
+      margin:0;
+      padding-bottom: 16px;
+            border-bottom: 1px solid $elements-color;
+
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+      color: $primary-color;
+      letter-spacing: 0%;
+    }
+
+    &_about {
+      text-align: justify;
+
+      &_text {
+        margin: 32px 0 0;
+        &_title {
+          margin: 0 0 16px;
+
+          font-family: Mont,sans-serif;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 100%;
+          color: $primary-color;
+          letter-spacing: 0%;
+        }
+
+        &_p {
+          margin: 0 0 32px;
+
+          font-family: Mont, sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 21px;
+          color: $secondary-color;
+          letter-spacing: 0%;
+        }
+      }
+    }
+
+    // &_techspecs {}
   }
 
   &__alsolike {

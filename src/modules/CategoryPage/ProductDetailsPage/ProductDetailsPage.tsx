@@ -416,6 +416,42 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className={styles.productdetailspage__extrainfo}>
+          <div className={styles.productdetailspage__extrainfo_about}>
+            <h1 className={styles.productdetailspage__extrainfo_title}>
+              About
+            </h1>
+            {product.description?.map((descSection, index) => (
+              <div
+                key={index}
+                className={styles.productdetailspage__extrainfo_about_text}
+              >
+                <h2
+                  className={
+                    styles.productdetailspage__extrainfo_about_text_title
+                  }
+                >
+                  {descSection.title}
+                </h2>
+                {descSection.text.map((paragraph, pIndex) => (
+                  <p
+                    key={pIndex}
+                    className={
+                      styles.productdetailspage__extrainfo_about_text_p
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className={styles.productdetailspage__extrainfo_techspecs}>
+            <h1 className={styles.productdetailspage__extrainfo_title}>
+              Tech specs
+            </h1>
+          </div>
+        </div>
         <div className={styles.productdetailspage__alsolike}>
           <ProductsSlider title="You may also like" />
         </div>
