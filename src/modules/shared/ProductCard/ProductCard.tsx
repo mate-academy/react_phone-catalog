@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import styles from './ProductCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { ProductType } from 'models/product.model';
@@ -10,29 +10,26 @@ type ProductCardProps = {
   product: ProductType;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { cart, favorites, toggleCart, toggleFav } = useProducts();
-  const navigate = useNavigate();
+type ProductCardViewProps = {
+  product: ProductType;
+  isAdded: boolean;
+  isFavorite: boolean;
+  onAddToCart: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onAddToFavorites: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onNavigate: () => void;
+};
 
-  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    toggleCart(product);
-  };
-
-  const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    toggleFav(product);
-  };
-
-  const isAdded = cart.some(item => item.product.id === product.id);
-  const isFavorite = favorites.some(item => item.id === product.id);
-
-  return (
-    <>
-      <div
-        className={styles.productcard}
-        onClick={() => navigate(`/${product.category}/product/${product.id}`)}
-      >
+const ProductCardView: React.FC<ProductCardViewProps> = memo(
+  ({
+    product,
+    isAdded,
+    isFavorite,
+    onAddToCart,
+    onAddToFavorites,
+    onNavigate,
+  }) => {
+    return (
+      <div className={styles.productcard} onClick={onNavigate}>
         <img
           className={styles.productcard__img}
           src={'/' + product.image}
@@ -71,16 +68,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className={styles.productcard__buttons}>
           <button
-            className={`${styles.productcard__buttons_cart} ${
-              isAdded ? styles['productcard__buttons_cart_is-active'] : ''
-            }`}
-            onClick={handleAddToCart}
+            className={`${styles.productcard__buttons_cart} ${isAdded ? styles['productcard__buttons_cart_is-active'] : ''
+              }`}
+            onClick={onAddToCart}
           >
             {isAdded ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
-            className={`${styles.productcard__buttons_like} ${isFavorite ? styles['productcard__buttons_like_is-active'] : ''}`}
-            onClick={handleAddToFavorites}
+            className={`${styles.productcard__buttons_like} ${isFavorite ? styles['productcard__buttons_like_is-active'] : ''
+              }`}
+            onClick={onAddToFavorites}
           >
             {isFavorite ? (
               <img
@@ -98,6 +95,47 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </button>
         </div>
       </div>
-    </>
+    );
+  },
+);
+
+ProductCardView.displayName = 'ProductCardView';
+
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { cart, favorites, toggleCart, toggleFav } = useProducts();
+  const navigate = useNavigate();
+
+  const handleAddToCart = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      toggleCart(product);
+    },
+    [product, toggleCart],
+  );
+
+  const handleAddToFavorites = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      toggleFav(product);
+    },
+    [product, toggleFav],
+  );
+
+  const handleNavigate = useCallback(() => {
+    navigate(`/${product.category}/product/${product.id}`);
+  }, [navigate, product.category, product.id]);
+
+  const isAdded = cart.some(item => item.product.id === product.id);
+  const isFavorite = favorites.some(item => item.id === product.id);
+
+  return (
+    <ProductCardView
+      product={product}
+      isAdded={isAdded}
+      isFavorite={isFavorite}
+      onAddToCart={handleAddToCart}
+      onAddToFavorites={handleAddToFavorites}
+      onNavigate={handleNavigate}
+    />
   );
 };

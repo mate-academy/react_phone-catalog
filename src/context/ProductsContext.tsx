@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { ProductType } from 'models/product.model';
 
 const FAVORITES_KEY = 'favorites';
@@ -48,7 +55,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   });
 
-  const toggleCart = (product: ProductType) => {
+  const toggleCart = useCallback((product: ProductType) => {
     setCart(prev => {
       const exists = prev.some(item => item.product.id === product.id);
 
@@ -64,9 +71,9 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         },
       ];
     });
-  };
+  }, []);
 
-  const toggleFav = (product: ProductType) => {
+  const toggleFav = useCallback((product: ProductType) => {
     setFavorites(prev => {
       const exists = prev.some(item => item.id === product.id);
 
@@ -76,9 +83,9 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
       return [...prev, product];
     });
-  };
+  }, []);
 
-  const increaseQuantity = (productId: number) => {
+  const increaseQuantity = useCallback((productId: number) => {
     setCart(prev =>
       prev.map(item =>
         item.product.id === productId
@@ -86,9 +93,9 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
           : item,
       ),
     );
-  };
+  }, []);
 
-  const decreaseQuantity = (productId: number) => {
+  const decreaseQuantity = useCallback((productId: number) => {
     setCart(prev =>
       prev.map(item =>
         item.product.id === productId && item.quantity > 1
@@ -96,28 +103,40 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
           : item,
       ),
     );
-  };
+  }, []);
 
-  const clearCart = () => setCart([]);
+  const clearCart = useCallback(() => setCart([]), []);
 
   useEffect(() => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }, [favorites, cart]);
 
+  const value = useMemo(
+    () => ({
+      products,
+      cart,
+      favorites,
+      toggleCart,
+      toggleFav,
+      increaseQuantity,
+      decreaseQuantity,
+      clearCart,
+    }),
+    [
+      products,
+      cart,
+      favorites,
+      toggleCart,
+      toggleFav,
+      increaseQuantity,
+      decreaseQuantity,
+      clearCart,
+    ],
+  );
+
   return (
-    <ProductsContext.Provider
-      value={{
-        products,
-        cart,
-        favorites,
-        toggleCart,
-        toggleFav,
-        increaseQuantity,
-        decreaseQuantity,
-        clearCart,
-      }}
-    >
+    <ProductsContext.Provider value={value}>
       {children}
     </ProductsContext.Provider>
   );
