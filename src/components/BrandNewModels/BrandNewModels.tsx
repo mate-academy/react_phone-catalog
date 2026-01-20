@@ -14,14 +14,27 @@ export const BrandNewModels = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   useEffect(() => {
-    fetch('/api/phones.json')
-      .then(res => res.json())
-      .then((data: Phone[]) => {
-        const newModels = data.filter(phone =>
-          phone.name.includes('iPhone 14'),
+    Promise.all([
+      fetch('/api/phones.json').then(res => res.json()),
+      fetch('/api/products.json').then(res => res.json()),
+    ])
+      .then(([phonesData, productsData]) => {
+        const productsYearMap = new Map(
+          productsData.map((product: { itemId: string; year: number }) => [
+            product.itemId,
+            product.year,
+          ]),
         );
 
-        setPhones(newModels);
+        const sortedPhones = phonesData
+          .map((phone: Phone) => ({
+            ...phone,
+            year: productsYearMap.get(phone.id) || 0,
+          }))
+          .sort((a: { year: number }, b: { year: number }) => b.year - a.year)
+          .map(({ year, ...phone }: Phone & { year: number }) => phone);
+
+        setPhones(sortedPhones.slice(0, 13));
       })
       .catch(() => {
         setPhones([]);
