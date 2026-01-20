@@ -1,5 +1,11 @@
 # React Product Catalog
 
+## Demo
+
+Live demo is available at:
+
+https://artemyakhno.github.io/react_phone-catalog/#/phones
+
 ## Project Description
 
 This project is a Single Page Application built with React for working with a product catalog. It implements a typical e-commerce flow: browsing products, filtering, sorting, and page navigation. The application focuses on predictable state management, clear component structure, and proper handling of UI edge cases.
