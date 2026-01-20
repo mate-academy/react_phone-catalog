@@ -18,13 +18,18 @@ export type ProductDetails = {
   namespaceId: string;
   capacityAvailable: string[];
   colorsAvailable: string[];
-  images: string[];
-  description: {
+  images?: string[];
+  description?: {
     title: string;
     text: string[];
   }[];
   priceRegular: number;
   priceDiscount: number;
+  resolution?: string;
+  processor?: string;
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
 };
 
 export type FullProduct = ProductType & ProductDetails;
