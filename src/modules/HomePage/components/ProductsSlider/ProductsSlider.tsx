@@ -1,19 +1,24 @@
 import { ProductCard } from '../../../shared/ProductCard';
 import apiProducts from '../../../../../public/api/products.json';
 import styles from './ProductsSlider.module.scss';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ProductType } from 'models/product.model';
 const imagesChevron = '/public/img/icons/';
 
 interface ProductsSliderProps {
   title?: string;
   products?: typeof apiProducts;
+  excludeId?: number;
 }
 
 const CARD_WIDTH = 272;
 const VISIBLE_CARDS = 4;
 
-export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
+export const ProductsSlider: React.FC<ProductsSliderProps> = ({
+  title,
+  excludeId,
+}) => {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -28,6 +33,20 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
     })
     .slice(0, 10);
 
+  const getSuggestedProducts = (
+    products: ProductType[],
+    limit: number,
+    excludeIdProduct?: number,
+  ): ProductType[] => {
+    const filteredProducts = excludeIdProduct
+      ? products.filter(p => p.id !== excludeIdProduct)
+      : products;
+
+    return [...filteredProducts]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, limit);
+  };
+
   const brandNewProducts = [...apiProducts]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
@@ -40,7 +59,21 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
     setIndex(prev => Math.max(prev - 1, 0));
   };
 
-  const result = title === 'Hot prices' ? hotPriceProducts : brandNewProducts;
+  const result = useMemo(() => {
+    switch (title) {
+      case 'Hot prices':
+        return hotPriceProducts;
+
+      case 'Brand new':
+        return brandNewProducts;
+
+      case 'You may also like':
+        return getSuggestedProducts(apiProducts, 10, excludeId ?? -1);
+
+      default:
+        return [];
+    }
+  }, [title, excludeId, brandNewProducts, hotPriceProducts]);
 
   return (
     <>
@@ -87,9 +120,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title }) => {
           >
             Load More
           </button>
-          {/* {apiProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))} */}
         </div>
       </div>
     </>

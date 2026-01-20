@@ -195,9 +195,6 @@ export const ProductDetailsPage: React.FC = () => {
           <p className={styles.productdetailspage__backbutton__text}>Back</p>
         </button>
         <h1 className={styles.productdetailspage__title}>{product.name}</h1>
-        <p className={styles.productdetailspage__info_idnum}>
-          ID:{product.namespaceId}
-        </p>
         <div className={styles.productdetailspage__gallery}>
           <div className={styles.productdetailspage__gallery__thumbs}>
             {images.map((image: string) => (
@@ -416,6 +413,9 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
+        <p className={styles.productdetailspage__info_idnum}>
+          ID:{product.namespaceId}
+        </p>
         <div className={styles.productdetailspage__extrainfo}>
           <div className={styles.productdetailspage__extrainfo_about}>
             <h1 className={styles.productdetailspage__extrainfo_title}>
@@ -446,14 +446,169 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className={styles.productdetailspage__extrainfo_techspecs}>
+          <div className={styles.productdetailspage__extrainfo__techspecs}>
             <h1 className={styles.productdetailspage__extrainfo_title}>
               Tech specs
             </h1>
+            <div
+              className={styles.productdetailspage__extrainfo__techspecs_text}
+            >
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Screen
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.screen}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Resolution
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.resolution}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Processor
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.processor}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  RAM
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.ram}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Built in memory
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.capacity}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Camera
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.camera}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Zoom
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.zoom}
+                </span>
+              </div>
+
+              <div
+                className={styles.productdetailspage__extrainfo__techspecs_row}
+              >
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_label
+                  }
+                >
+                  Cell
+                </span>
+                <span
+                  className={
+                    styles.productdetailspage__extrainfo__techspecs_value
+                  }
+                >
+                  {product.cell?.join(', ')}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles.productdetailspage__alsolike}>
-          <ProductsSlider title="You may also like" />
+          <ProductsSlider title="You may also like" excludeId={product.id} />
         </div>
       </div>
       <Footer />

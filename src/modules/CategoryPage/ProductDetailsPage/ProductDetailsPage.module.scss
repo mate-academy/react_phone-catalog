@@ -89,6 +89,8 @@
     &_idnum {
     grid-column: -4/-1;
 
+    margin: 40px 0 80px;
+
     font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
@@ -342,6 +344,7 @@
       font-weight: 800;
       line-height: 140%;
       color: $primary-color;
+          text-align: justify;
       letter-spacing: 0%;
     }
 
@@ -374,7 +377,43 @@
       }
     }
 
-    // &_techspecs {}
+    &__techspecs {
+      width: 100%;
+
+      &_text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+
+margin: 25px 0 0;
+      }
+
+        &_row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 21px;
+      }
+      &_label {
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $secondary-color;
+        text-align: right;
+        letter-spacing: 0%;
+      }
+      &_value {
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $primary-color;
+        text-align: right;
+        letter-spacing: 0%;
+      }
+    }
   }
 
   &__alsolike {
