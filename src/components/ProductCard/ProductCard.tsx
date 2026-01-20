@@ -9,9 +9,10 @@ import styles from './ProductCard.module.scss';
 
 export interface Props {
   product: Product;
+  showDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, showDiscount = true }) => {
   const { t } = useTranslation();
   const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
@@ -33,6 +34,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const productLink = `/product/${product.itemId}`;
   const productLinkState = { category: product.category };
 
+  // Determine if we should show the full price (crossed out)
+  const hasDiscount = product.fullPrice > product.price;
+  const shouldShowFullPrice = showDiscount && hasDiscount;
+
   return (
     <article className={styles.card}>
       <Link to={productLink} state={productLinkState} className={styles.imageLink}>
@@ -48,7 +53,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className={styles.prices}>
           <span className={styles.currentPrice}>${product.price}</span>
-          {product.fullPrice > product.price && <span className={styles.fullPrice}>${product.fullPrice}</span>}
+          {shouldShowFullPrice && <span className={styles.fullPrice}>${product.fullPrice}</span>}
         </div>
 
         <div className={styles.divider} />

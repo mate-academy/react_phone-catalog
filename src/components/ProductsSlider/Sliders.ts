@@ -27,7 +27,6 @@ const sortByNewest = (products: Product[]): Product[] => {
  */
 const sortByDiscount = (products: Product[]): Product[] => {
   return [...products]
-    .filter(product => product.fullPrice > product.price) // Only discounted products
     .sort((a, b) => {
       const discountA = a.fullPrice - a.price;
       const discountB = b.fullPrice - b.price;

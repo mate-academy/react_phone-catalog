@@ -158,6 +158,23 @@
 }
 
 // ============================================
+// RIGHT SECTION (Quantity + Price on same line)
+// ============================================
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: $spacing-sm;
+  }
+}
+
+// ============================================
 // QUANTITY CONTROLS
 // ============================================
 
@@ -250,6 +267,10 @@
 // ============================================
 
 .price {
+  flex-shrink: 0;
+  min-width: 100px;
+  text-align: right;
+  white-space: nowrap;
   @include h3;
 
   font-weight: $font-weight-bold;

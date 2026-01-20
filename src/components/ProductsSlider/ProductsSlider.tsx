@@ -11,9 +11,17 @@ interface Props {
   itemWidth?: number;
   gap?: number;
   showTitle?: boolean;
+  showDiscount?: boolean; // Whether to show discounted prices in cards
 }
 
-export const ProductsSlider: React.FC<Props> = ({ products, titleKey, itemWidth = 272, gap = 16, showTitle = true }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  products,
+  titleKey,
+  itemWidth = 272,
+  gap = 16,
+  showTitle = true,
+  showDiscount = true,
+}) => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -116,7 +124,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, titleKey, itemWidth 
                 marginRight: `${gap}px`,
               }}
             >
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={showDiscount} />
             </div>
           ))}
         </div>

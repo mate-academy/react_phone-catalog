@@ -111,17 +111,16 @@ export const BannerSlider: React.FC<Props> = ({ autoPlayInterval = 7000 }) => {
     }
   };
 
-  // Get content class name (base + modifier)
+  // Get content class name based on banner id
   const getContentClassName = (banner: Banner): string => {
-    // If addingClass is provided, construct className
-    if (banner.modifier) {
-      const className = `bannerContent${banner.modifier}`;
+    // Map banner id to specific class
+    const classMap: Record<string, string> = {
+      '1': styles.bannerContent1,
+      '2': styles.bannerContent2,
+      '3': styles.bannerContent3,
+    };
 
-      return styles[className] || styles.bannerContent;
-    }
-
-    // Default to base class
-    return styles.bannerContent;
+    return classMap[banner.id] || styles.bannerContent;
   };
 
   const handleButtonClick = (link?: string) => {

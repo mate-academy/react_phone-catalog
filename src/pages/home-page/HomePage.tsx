@@ -80,7 +80,7 @@ export const HomePage: React.FC = () => {
           <Loader />
         </div>
       ) : (
-        <ProductsSlider products={brandNewProducts} titleKey="brandNewModels" />
+        <ProductsSlider products={brandNewProducts} titleKey="brandNewModels" showDiscount={false} />
       )}
 
       {/* Shop by Category */}
@@ -92,7 +92,7 @@ export const HomePage: React.FC = () => {
           <Loader />
         </div>
       ) : (
-        <ProductsSlider products={hotPricesProducts} titleKey="hotPrices" />
+        <ProductsSlider products={hotPricesProducts} titleKey="hotPrices" showDiscount={true} />
       )}
     </div>
   );

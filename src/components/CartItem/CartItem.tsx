@@ -45,25 +45,59 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <h3 className={styles.name}>{item.product.name}</h3>
       </div>
 
-      {/* Quantity controls */}
-      <div className={styles.quantityControls}>
-        <button className={styles.quantityButton} onClick={handleDecrease} disabled={item.quantity <= 1} aria-label="Decrease quantity">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 8H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
+      {/* Right section: Quantity controls + Price on same line */}
+      <div className={styles.rightSection}>
+        {/* Quantity controls */}
+        <div className={styles.quantityControls}>
+          <button
+            className={styles.quantityButton}
+            onClick={handleDecrease}
+            disabled={item.quantity <= 1}
+            aria-label="Decrease quantity"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 8H13"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
 
-        <span className={styles.quantity}>{item.quantity}</span>
+          <span className={styles.quantity}>{item.quantity}</span>
 
-        <button className={styles.quantityButton} onClick={handleIncrease} aria-label="Increase quantity">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 3V13M3 8H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
-      </div>
+          <button
+            className={styles.quantityButton}
+            onClick={handleIncrease}
+            aria-label="Increase quantity"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 3V13M3 8H13"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
 
       {/* Price */}
       <div className={styles.price}>${itemTotal}</div>
+      </div>
     </div>
   );
 };
