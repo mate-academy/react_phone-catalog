@@ -155,17 +155,17 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 32px;
+    // height: 32px;
     transition: scale var(--transition-duration);
 
     &-block-color {
       border-radius: 50%;
-      border: 2px solid var(--color-elements);
+      border: 1px solid var(--color-elements);
     }
 
     &-block-capacity {
       padding: 6px 8px;
-      border: 2px solid var(--color-icons);
+      border: 2px solid var(--color-elements);
       color: var(--color-primary);
       cursor: pointer;
 
@@ -173,6 +173,8 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
         border: none;
         color: var(--color-white);
         background-color: var(--color-primary);
+
+
       }
     }
 
@@ -180,18 +182,24 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
       scale: 1.1;
     }
 
+    &-link {
+      padding: 2px;
+      border: 1px solid var(--color-white);
+    }
+
+
     &-color {
+      display: flex;
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      border: 2px solid var(--color-white);
+      //
 
       &--active {
-        scale: 1;
 
-        .body-card__item {
-          border: 2px solid var(--color-secondary);
-        }
+        scale: 1;
+        border-radius: 50%;
+        border: 2px solid var(--color-primary);
 
       }
 

@@ -1,8 +1,4 @@
-import {
-  ProductAllType,
-  ProductType,
-  ProductTypeForAccessory,
-} from '../types/Product';
+import { ProductAllType, ProductType } from '../types/Product';
 import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
@@ -10,9 +6,7 @@ import productsAll from '../../public/api/products.json';
 import { NameCategory, NameProducts } from '../types/NameProducts';
 
 export const getProducts = async (param: NameProducts) => {
-  return new Promise<
-    ProductType[] | ProductTypeForAccessory[] | ProductAllType[]
-  >((resolve, reject) => {
+  return new Promise<ProductType[] | ProductAllType[]>((resolve, reject) => {
     setTimeout(() => {
       switch (param) {
         case 'phones':
@@ -35,28 +29,26 @@ export const getProducts = async (param: NameProducts) => {
 };
 
 export const getProduct = async (category: NameCategory, itemId: string) => {
-  return new Promise<ProductType | ProductTypeForAccessory>(
-    (resolve, reject) => {
-        switch (category) {
-          case 'phones': {
-            const product = phones.find(item => item.id === itemId);
-            product ? resolve(product) : reject('Product not found');
-            break;
-          }
-          case 'tablets': {
-            const product = tablets.find(item => item.id === itemId);
-            product ? resolve(product) : reject('Product not found');
-            break;
-          }
-          case 'accessories': {
-            const product = accessories.find(item => item.id === itemId);
-            product ? resolve(product) : reject('Product not found');
-            break;
-          }
+  return new Promise<ProductType>((resolve, reject) => {
+    switch (category) {
+      case 'phones': {
+        const product = phones.find(item => item.id === itemId);
+        product ? resolve(product) : reject('Product not found');
+        break;
+      }
+      case 'tablets': {
+        const product = tablets.find(item => item.id === itemId);
+        product ? resolve(product) : reject('Product not found');
+        break;
+      }
+      case 'accessories': {
+        const product = accessories.find(item => item.id === itemId);
+        product ? resolve(product) : reject('Product not found');
+        break;
+      }
 
-          default:
-            reject('Invalid category');
-        }
-    },
-  );
+      default:
+        reject('Invalid category');
+    }
+  });
 };

@@ -18,12 +18,10 @@ export interface ProductType {
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
 }
-
-export type ProductTypeForAccessory = Omit<ProductType, 'camera' | 'zoom'>;
 
 export interface ProductAllType {
   id: number;
@@ -39,9 +37,9 @@ export interface ProductAllType {
   year: number;
   image: string;
   count?: number;
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
 }
 
-export type CombinedProductType =
-  | ProductType
-  | ProductTypeForAccessory
-  | ProductAllType;
+export type CombinedProductType = ProductType | ProductAllType;

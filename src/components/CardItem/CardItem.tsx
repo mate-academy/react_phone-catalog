@@ -1,121 +1,53 @@
-import React, { Fragment, useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../Catalog/Breadcrumbs';
 import unnownImg from './../../../public/img/unnown.jpg';
 import classNames from 'classnames';
 import './CardItem.scss';
-import allProducts from '../../../public/api/products.json';
 import { PromotionSlider } from '../PromotionSlider';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { ProductCardButtons } from '../ProductCard/ProductCardButtons';
-import { useProducts } from '../../context/ProductsContext';
-import { NameCategory, NameProducts } from '../../types/NameProducts';
-import { getProduct } from '../../api/httpsRequest';
-import { ProductType, ProductTypeForAccessory } from '../../types/Product';
+import { getProduct, getProducts } from '../../api/httpsRequest';
+import { ProductAllType, ProductType } from '../../types/Product';
 
 export const CardItem = () => {
-  // const product = {
-  //   id: 'apple-iphone-7-plus-32gb-silver',
-  //   category: 'phones',
-  //   namespaceId: 'apple-iphone-7-plus',
-  //   name: 'Apple iPhone 7 Plus 32GB Silver',
-  //   capacityAvailable: ['32GB', '64GB'],
-  //   capacity: '32GB',
-  //   priceRegular: 540,
-  //   priceDiscount: 500,
-  //   colorsAvailable: ['black', 'mistyrose', 'gold', 'silver'],
-  //   color: 'silver',
-  //   images: [
-  //     'img/phones/apple-iphone-7-plus/silver/00.webp',
-  //     'img/phones/apple-iphone-7-plus/silver/01.webp',
-  //     'img/phones/apple-iphone-7-plus/silver/02.webp',
-  //     'img/phones/apple-iphone-7-plus/silver/03.webp',
-  //     'img/phones/apple-iphone-7-plus/silver/04.webp',
-  //   ],
-  //   description: [
-  //     {
-  //       title: 'And then there was Pro',
-  //       text: [
-  //         'A transformative triple-camera system that adds tons of capability without complexity.',
-  //         'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
-  //       ],
-  //     },
-  //     {
-  //       title: 'Camera',
-  //       text: [
-  //         'Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
-  //       ],
-  //     },
-  //     {
-  //       title:
-  //         'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
-  //       text: [
-  //         'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
-  //       ],
-  //     },
-  //   ],
-  //   screen: "5.5' IPS",
-  //   resolution: '1920x1080',
-  //   processor: 'Apple A10',
-  //   ram: '3GB',
-  //   camera: '12 Mp + 7 Mp',
-  //   zoom: 'Digital, 10x / Optical, 2x',
-  //   cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
-  // };
-
   const { id } = useParams<{ id: string }>();
-  const { pathname, state } = useLocation();
-  const { findNessesaryItem } = useProducts();
-  const [product, setProduct] = useState<
-    ProductType | ProductTypeForAccessory | undefined
-  >(undefined);
+  const { state, pathname } = useLocation();
+
+  const [product, setProduct] = useState<ProductType>();
+  const [activePhoto, setActivePhoto] = useState<string>();
+  const [alsoLikeProducts, setAlsoLikeProducts] = useState<ProductAllType[]>(
+    [],
+  );
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const newProduct = await getProduct(category, id!);
+      const newProduct = await getProduct(state.category, id!);
       console.log('newProduct', newProduct);
       setProduct(newProduct);
+
+      const products = (await getProducts('allProducts')).slice(0, 10);
+      setAlsoLikeProducts(products as ProductAllType[]);
     };
     fetchProduct();
   }, [id]);
-  // Получаем категорию из пути (первый сегмент: phones, tablets, accessories)
-  const category = state.category;
 
-  console.log('state', state);
-  console.log('product', product);
-
-  const alsoLikeProducts = allProducts.slice(0, 5);
-
-  const [activePhoto, setActivePhoto] = useState(
-    product?.images[0] || unnownImg,
-  );
+  useEffect(() => {
+    setActivePhoto(product?.images[0] || unnownImg);
+  }, [product]);
 
   const productTech = [
     { name: 'Screen', value: product?.screen },
     { name: 'Resolution', value: product?.resolution },
     { name: 'Processor', value: product?.processor },
     { name: 'RAM', value: product?.ram },
-<<<<<<< HEAD
-    // { name: 'Camera', value: id !== 'accesorries' ? product?.camera : '' },
-=======
-    // { name: 'Camera', value: product?.camera },
->>>>>>> e0cd76e11c556cd9e367331686193e5c244f0439
-    // { name: 'Zoom', value: product?.zoom },
-    // { name: 'Cell', value: [...product.cell].join(', ') },
+    { name: 'Camera', value: product?.camera },
+    { name: 'Zoom', value: product?.zoom },
+    { name: 'Cell', value: [...(product?.cell || [])].join(', ') },
   ];
-
-  // const chosenProduct =
-  //   allProducts.find(
-  //     (item: { itemId: string }) => item.itemId === product.id,
-  //   ) || product;
-
-  // const productId = useMemo(() => {
-  //   return Math.floor(Math.random() * 1000000);
-  // }, []);
 
   if (!product) {
     return <div>Товар не найден</div>;
   }
-
   return (
     <section className="card-item">
       <div className="container card-item__container">
@@ -172,40 +104,60 @@ export const CardItem = () => {
               <div className="body-card__colors separator">
                 <div className="body-card__info-name">Available colors</div>
                 <ul className="body-card__items">
-                  {product.colorsAvailable.map(color => (
-                    <li
-                      className="body-card__item body-card__item-block-color"
-                      key={color}
-                    >
-                      <NavLink
-                        to={`./${color}`}
-                        className={({ isActive }) =>
-                          `body-card__item-color body-card__item-color--${color} ${isActive ? 'body-card__item-color--active' : ''}`
-                        }
-                      ></NavLink>
-                    </li>
-                  ))}
+                  {product.colorsAvailable.map(color => {
+                    const item = pathname.replace(product.color, color);
+                    return (
+                      <li
+                        className="body-card__item body-card__item-block-color"
+                        key={color}
+                      >
+                        <NavLink
+                          to={`${item}`}
+                          state={product}
+                          className={({ isActive }) =>
+                            `body-card__item-link ${isActive ? 'body-card__item-color--active' : ''}`
+                          }
+                        >
+                          <span
+                            className={`body-card__item-color body-card__item-color--${color}`}
+                          ></span>
+                        </NavLink>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="body-card__capacity separator">
                 <div className="body-card__info-name">Select capacity</div>
                 <ul className="body-card__items">
-                  {product.capacityAvailable.map(capacity => (
-                    <li
-                      className="body-card__item body-card__item-block-capacity"
-                      //! 'body-card__item-block-capacity--active' added conditionally
-                      key={capacity}
-                    >
-                      <span
+                  {product.capacityAvailable.map(capacity => {
+                    const link = pathname.replace(product.capacity, capacity);
+                    console.log('link', link);
+                    console.log('product.capacity', product.capacity);
+                    console.log('capacity', capacity);
+                    return (
+                      <li
                         className={classNames(
-                          'body-card__item-capacity',
-                          capacity,
+                          `body-card__item body-card__item-block-capacity`,
                         )}
+                        //  {
+                        //   'body-card__item-block-capacity--active':
+                        //     capacity === product.capacity,
+                        // },
+                        key={capacity}
                       >
-                        {capacity}
-                      </span>
-                    </li>
-                  ))}
+                        <NavLink
+                          to={`${link}`}
+                          state={product}
+                          className={({ isActive }) =>
+                            `body-card__item-capacity ${isActive ? 'body-card__item-block-capacity--active' : ''}`
+                          }
+                        >
+                          {capacity}
+                        </NavLink>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="body-card__price  card__price">
@@ -231,11 +183,7 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
-<<<<<<< HEAD
               <span className="body-card__id">ID: {product.id}</span>
-=======
-              {/* <span className="body-card__id">ID: {productId}</span> */}
->>>>>>> e0cd76e11c556cd9e367331686193e5c244f0439
             </div>
           </div>
 
@@ -258,14 +206,14 @@ export const CardItem = () => {
             </div>
             <div className="descritption__tech">
               <h3 className="descritption__title h3 separator">Tech specs</h3>
-              {/* <ul className="descritption__info param">
+              <ul className="descritption__info param">
                 {productTech.map(({ name, value }) => (
                   <li className="param__descritption" key={name}>
                     <span className="param__name">{name}</span>
                     <span className="param__value">{value}</span>
                   </li>
                 ))}
-              </ul> */}
+              </ul>
             </div>
           </div>
         </div>
