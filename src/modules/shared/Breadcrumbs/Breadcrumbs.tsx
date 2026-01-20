@@ -3,6 +3,7 @@ import styles from './Breadcrumbs.module.scss';
 import { useNavigate } from 'react-router-dom';
 import productsApi from '../../../../public/api/products.json';
 import { ProductType } from 'models/product.model';
+import classNames from 'classnames';
 
 export const Breadcrumbs: React.FC<{
   category: string;
@@ -23,6 +24,9 @@ export const Breadcrumbs: React.FC<{
 
     return product ? product.name : '';
   };
+
+  const capitalize = (value: string) =>
+    value.charAt(0).toUpperCase() + value.slice(1);
 
   useEffect(() => {
     setProductTitle(findProductTitle(productId));
@@ -49,10 +53,13 @@ export const Breadcrumbs: React.FC<{
           </li>
           <li className={styles.breadcrumbs__item}>
             <span
-              className={styles.breadcrumbs__link}
+              className={classNames(
+                styles.breadcrumbs__link,
+                productTitle && styles.breadcrumbs__link_active,
+              )}
               onClick={() => navigate(-1)}
             >
-              {category}
+              {capitalize(category)}
             </span>
           </li>
           {productTitle && (
