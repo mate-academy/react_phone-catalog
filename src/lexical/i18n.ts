@@ -34,6 +34,7 @@ const resources = {
 
       //ProductSpecs
       screen: 'Розширення',
+      resolution: 'Роздільна здатність',
       capacity: 'Ємкість',
       processor: 'Процесор',
       ram: 'RAM',
@@ -143,6 +144,7 @@ const resources = {
       screen: 'Screen',
       capacity: 'Capacity',
       processor: 'Processor',
+      resolution: 'Resolution',
       ram: 'RAM',
       camera: 'Camera',
       zoom: 'Zoom',

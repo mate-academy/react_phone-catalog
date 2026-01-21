@@ -9,7 +9,7 @@ export function useCartStorage() {
     error,
   } = useLocalStorage<CartProduct[]>(CART_KEY, []);
 
-  const addToCart = (product: Product) => {
+  const toggleToCart = (product: Product) => {
     setCart(prev => {
       const existing = prev.find(p => p.id === product.id);
 
@@ -17,7 +17,7 @@ export function useCartStorage() {
         return [...prev, { ...product, count: 1 }];
       }
 
-      return prev;
+      return prev.filter(el => product.id !== el.id);
     });
   };
 
@@ -44,7 +44,7 @@ export function useCartStorage() {
   return {
     cart,
     error: error?.code,
-    addToCart,
+    toggleToCart,
     removeFromCart,
     increaseCount,
     decreaseCount,

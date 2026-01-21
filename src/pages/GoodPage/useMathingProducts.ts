@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import { ProductCategory } from '../../types/ProductCategory';
 import { Product } from '../../types/Product';
 import { AppErrors } from '../../types/AppErrors';
 import { getCachedProducts } from '../../utils/hooks/API/getCachedProducts';
 import { ApiError } from '../../services/Errors';
+import { Goods } from '../../types/Goods';
 
 // type Params = {
 //   category: ProductCategory | null;
 // };
 
-export const useMathingProduct = (category: ProductCategory | null) => {
+export const useMathingProduct = (selectedProduct: Goods | null) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<AppErrors | null>(null);
 
   useEffect(() => {
-    if (!category) {
+    if (!selectedProduct) {
       setProducts([]);
 
       return;
@@ -24,11 +24,19 @@ export const useMathingProduct = (category: ProductCategory | null) => {
     setIsLoading(true);
     setError(null);
 
-    getCachedProducts(category)
+    getCachedProducts(selectedProduct.category)
       .then(({ items }) => {
-        const filtered = items.filter(product => product.category === category);
+        const filtered = items.filter(
+          product =>
+            product.category === selectedProduct.category &&
+            product.itemId !== selectedProduct.id,
+        );
 
-        setProducts(filtered);
+        const top20 = filtered.slice(0, 20);
+
+        const random10 = top20.sort(() => Math.random() - 0.5).slice(0, 10);
+
+        setProducts(random10);
       })
       .catch(errorData => {
         if (errorData instanceof ApiError) {
@@ -40,7 +48,7 @@ export const useMathingProduct = (category: ProductCategory | null) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [category]);
+  }, [selectedProduct]);
 
   return { products, isLoading, error };
 };

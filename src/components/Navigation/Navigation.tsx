@@ -31,7 +31,7 @@ export const Navigation: React.FC<Props> = ({ isMobile = false }) => {
 
   const badgeByRoute: Partial<Record<RoutePath, number>> = {
     [RoutePath.Favorites]: favorites.length,
-    [RoutePath.Cart]: cart.length,
+    [RoutePath.Cart]: cart.reduce((acc, el) => el.count + acc, 0),
   };
 
   const { close: onClose } = useBurgerMenu();

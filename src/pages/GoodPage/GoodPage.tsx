@@ -32,14 +32,14 @@ export const GoodPage = () => {
     products,
     isLoading: isMatchingLoading,
     error: mathingError,
-  } = useMathingProduct(selectedGood?.category ?? null);
+  } = useMathingProduct(selectedGood || null);
 
   const isPlugVisible = !isLoading && !selectedGood && !error;
   const isLayoutVisible = !isLoading && selectedGood && !error;
 
   useEffect(() => {
     scrollTop();
-  }, []);
+  }, [id]);
 
   return (
     <section className={styles.goodPage}>

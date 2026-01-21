@@ -1,10 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, matchPath, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { getRouteByCategory } from '../../services/product';
 import styles from './ProductItem.module.scss';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { ProductActions } from '../ProductActions';
+import { RoutePath } from '../../types/RoutePath';
 
 type Props = {
   product: Product;
@@ -12,14 +13,18 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
+
+  const isDiscoutVisible = matchPath(
+    { path: RoutePath.Home, end: true },
+    pathname,
+  );
 
   return (
     <article className={styles.card} aria-label={`Product:${product.name}`}>
       <Link
         aria-label={`Visit product:${product.name}`}
         to={`${getRouteByCategory(product.category)}/${product.itemId}`}
-        state={{ pathname, search, preserveFromSearch: true }}
       >
         <header className={styles.card__header}>
           <img
@@ -38,7 +43,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         >
           ${product.price}
         </div>
-        {product.fullPrice > product.price && (
+        {product.fullPrice > product.price && !isDiscoutVisible && (
           <div
             className={classNames(
               styles.card__price,

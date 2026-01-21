@@ -12,6 +12,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { getRouteByCategory } from '../../services/product';
 import { findProductVariant } from './findProductVariant';
 import { useProductGallery } from '../../utils/hooks/UI/useProductGallery';
+import { NavigationState } from '../../types/NavigationState';
 
 type Props = {
   itemId: string;
@@ -51,7 +52,8 @@ export const GoodLayout: React.FC<Props> = ({
   goods,
 }) => {
   const { t } = useTranslation();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as NavigationState | null;
 
   const {
     activeImageIndex,
@@ -60,6 +62,20 @@ export const GoodLayout: React.FC<Props> = ({
     photoRef,
     setActiveImageIndex,
   } = useProductGallery(images);
+
+  const buildNextState = (): NavigationState | null => {
+    if (!state) {
+      return null;
+    }
+
+    return {
+      ...state,
+      prev: {
+        pathname: location.pathname,
+        search: location.search,
+      },
+    };
+  };
 
   const generateColorNavs = (newColor: string) => {
     const targetItemId = findProductVariant(goods, newColor, capacity);
@@ -73,7 +89,7 @@ export const GoodLayout: React.FC<Props> = ({
         onClick={() => setActiveImageIndex(0)}
         key={newColor}
         to={`${getRouteByCategory(category)}/${targetItemId}`}
-        state={state}
+        state={buildNextState()}
         className={({ isActive }) =>
           classNames(styles.goodLayout__color, {
             [styles['goodLayout__color--active']]: isActive,

@@ -3,7 +3,7 @@ import { CartProduct } from '../../types/Product';
 import styles from './CartItem.module.scss';
 import { useCart } from '../../utils/hooks/Context/useCart';
 import { getRouteByCategory } from '../../services/product';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: CartProduct;
@@ -18,8 +18,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const { increaseCount, decreaseCount, removeFromCart } = useCart();
 
-  const { pathname } = useLocation();
-
   return (
     <article className={styles.cartItem}>
       <button onClick={() => removeFromCart(product.id)} className="button">
@@ -28,7 +26,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
       <Link
         to={`${getRouteByCategory(product.category)}/${product.itemId}`}
-        state={{ pathname }}
         className={styles['cartItem__image-wrapper']}
       >
         <img
@@ -56,7 +53,9 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         </button>
       </div>
 
-      <h3 className={styles.cartItem__price}>${product.price}</h3>
+      <h3 className={styles.cartItem__price}>
+        ${product.price * product.count}
+      </h3>
     </article>
   );
 };

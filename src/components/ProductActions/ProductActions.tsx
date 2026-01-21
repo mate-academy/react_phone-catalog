@@ -20,7 +20,7 @@ export const ProductActions: React.FC<Props> = ({
   size = 'big',
 }) => {
   const { t } = useTranslation();
-  const { cart, addToCart } = useCart();
+  const { cart, toggleToCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
   const { generalAction, error } = useProductAction({
     category,
@@ -35,12 +35,12 @@ export const ProductActions: React.FC<Props> = ({
   const isOnCart = cart.some(p => p.itemId === itemId);
   const isOnFavorite = favorites.some(p => p.itemId === itemId);
 
-  const handleAddToCart = async () => {
+  const handleToggleCart = async () => {
     try {
       setCartLoading(true);
       const product = await generalAction();
 
-      addToCart(product);
+      toggleToCart(product);
     } finally {
       setCartLoading(false);
     }
@@ -63,10 +63,10 @@ export const ProductActions: React.FC<Props> = ({
         className={classNames(
           'button button--width100',
           sizeClass,
-          isOnCart ? 'button--cart button--light-disabled' : 'button--filled',
+          isOnCart ? 'button--cart' : 'button--filled',
         )}
-        disabled={cartLoading || isOnCart}
-        onClick={handleAddToCart}
+        disabled={cartLoading}
+        onClick={handleToggleCart}
       >
         {cartLoading ? (
           <Loader size="small" />

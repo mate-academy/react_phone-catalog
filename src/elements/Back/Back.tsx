@@ -1,31 +1,26 @@
 /* eslint-disable max-len */
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Back.module.scss';
 import { useTranslation } from 'react-i18next';
-
-type BackParameters = {
-  pathname: string;
-  search?: string;
-};
+import classNames from 'classnames';
 
 export const Back = () => {
-  const { state } = useLocation();
+  const navigate = useNavigate();
+
   const { t } = useTranslation();
 
-  const linkParameter: BackParameters = { pathname: '/' };
-
-  if (state && state.pathname) {
-    linkParameter.pathname = state.pathname;
-  }
-
-  if (state && state.preserveFromSearch) {
-    linkParameter.search = state.search;
-  }
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   return (
-    <Link to={linkParameter} className={styles.back}>
+    <button onClick={handleBack} className={classNames('button', styles.back)}>
       <span className="icon icon--chevron-active icon--rotate-180" />
       <span className={styles.back__text}>{t('back')}</span>
-    </Link>
+    </button>
   );
 };
