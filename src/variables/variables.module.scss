@@ -1,0 +1,56 @@
+// colors
+$Primary-color: #313237;
+$Secondary-color: #89939a;
+$Icons-color: #e2e6e9;
+$HoverAndBG-color: #fafbfc;
+$White: #fff;
+$Green: #27ae60;
+$Red: #eb5757;
+
+// fonts
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.h1 {
+  font-family: 'Mont';
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  padding: 0;
+}
+
+// Container
+
+.container {
+  --columns: 24;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 32px);
+  justify-content: center;
+}
+
+// *
+
+body {
+  margin: 0;
+}

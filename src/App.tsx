@@ -1,7 +1,8 @@
 import './App.scss';
+import { HomePage } from './components/HomePage';
 
 export const App = () => (
   <div className="App">
-    <h1>Product Catalog</h1>
+    <HomePage />
   </div>
 );

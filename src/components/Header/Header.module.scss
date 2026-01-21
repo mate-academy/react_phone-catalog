@@ -1,0 +1,14 @@
+@import '../../variables/variables.module.scss';
+@import '../../icon/icon.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $Icons-color;
+
+  &__logo {
+    padding: 13px 16px;
+    margin-right: 16px;
+  }
+}

@@ -1,0 +1,16 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  padding: 16px;
+
+  display: block;
+  box-sizing: border-box;
+
+  background-repeat: no-repeat;
+  border-left: 1px solid $Icons-color;
+  background-position: center;
+
+  &__burger {
+    background-image: url(/img/Icons/Menu.svg);
+  }
+}
