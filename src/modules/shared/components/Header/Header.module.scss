@@ -1,0 +1,117 @@
+@use '../../../../styles/variables.scss' as *;
+
+.header {
+  background-color: $primary__background-color;
+  width: 100%;
+  border-bottom: 0.5px solid $secondary__text-color;
+}
+
+.header__container {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.logo {
+  flex: 0 0 auto;
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  height: 100%;
+}
+
+.menu__items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 64px;
+  height: 100%;
+}
+
+.menu__link {
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-family: $primary__font-family;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: $secondary__text-color;
+  font-weight: 700;
+  font-size: 12px;
+  transition: color 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -183%;
+    width: 100%;
+    height: 2px;
+    background-color: $primary__text-color;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    color: $primary__text-color;
+  }
+}
+
+.active {
+  color: $primary__text-color;
+}
+
+.active::before {
+  transform-origin: center;
+
+  transform: scaleX(1);
+}
+
+.header__actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.actions__wrapper {
+  padding: 24px;
+  border-left: 0.5px solid $secondary__text-color;
+}
+
+@media (max-width: 1199px) {
+  .header__container {
+    height: 48px;
+    gap: 16px;
+  }
+
+  .menu__items {
+    gap: 32px;
+  }
+
+  .logo {
+    padding: 0 16px;
+  }
+
+  .menu__link {
+    &::before {
+      bottom: -125%;
+    }
+  }
+
+  .actions__wrapper {
+    padding: 16px;
+  }
+}

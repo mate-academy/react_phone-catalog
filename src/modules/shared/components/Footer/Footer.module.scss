@@ -1,0 +1,62 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/global.scss' as *;
+
+.footer {
+  padding: 32px 0;
+  border-top: 2px solid $secondary__text-color;
+  margin-top: auto;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__items {
+  display: flex;
+  gap: 105px;
+}
+
+.footer__item a {
+  text-transform: uppercase;
+  color: $primary__text-color;
+  letter-spacing: 4%;
+  line-height: 11px;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $accent__color;
+  }
+}
+
+.footer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  color: $secondary__text-color;
+  font-weight: 700;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.btn__icon {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  background-color: $secondary__element-color;
+
+  color: $primary__text-color;
+  font-size: 14px;
+  font-weight: 500;
+
+  pointer-events: fill;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $accent__color;
+  }
+}

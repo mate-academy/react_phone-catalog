@@ -1,0 +1,28 @@
+@use './../../../../styles/global.scss' as *;
+@use './../../../../styles/variables.scss' as *;
+
+.path {
+  margin: 24px 0 40px 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pathName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pathArrow {
+  color: $secondary__text-color;
+}
+
+.pathLink {
+  color: $primary__text-color;
+}
+
+.active {
+  color: $secondary__text-color;
+  pointer-events: none;
+}

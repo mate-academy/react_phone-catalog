@@ -1,0 +1,51 @@
+@use './../../../../styles/global.scss' as *;
+@use './../../../../styles/variables.scss' as *;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $primary__text-color;
+  background-color: $secondary__element-color;
+}
+
+.pages__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  background-color: $secondary__background-color;
+  color: $primary__text-color;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $secondary__element-color;
+  }
+
+  &__active {
+    background-color: $accent__color;
+
+    &:hover {
+      background-color: $accent__color;
+    }
+  }
+}
