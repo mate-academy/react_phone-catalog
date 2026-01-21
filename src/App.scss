@@ -11,6 +11,7 @@
 
   scroll-behavior: smooth;
 
+
   h1.visually-hidden {
     /* Contain the text content within a 1px box */
     clip: rect(0 0 0 0);
@@ -80,35 +81,13 @@ h5 {
   letter-spacing: 0%;
   color: #0F0F11;
 }
-   &:has(.page__menu:target) {
-    overflow: hidden;
-  }
 
   &__body {
     margin: 0;
     min-width: 320px;
   }
 
-  &__menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    pointer-events: none;
-
-    opacity: 0;
-    transition: all 0.3s;
-    transform: translate(-100);
-
-    display: none;
-    @include on-tablet {
-      display: block;
-    }
-
-    &:target {
-      opacity: 1;
-      transform: translate(0);
-      pointer-events: all;
-    }
+  button {
+    border: none;
   }
 }

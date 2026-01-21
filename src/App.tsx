@@ -15,39 +15,6 @@ const App = () => {
   return (
     <>
       <Header />
-
-      <aside className="menu page__menu" id="menu">
-        <div className="menu__content">
-          <div className="topBar menu__top">
-            <a href="#">
-              <picture>
-                <source
-                  srcSet="img/logo-desktop.svg"
-                  media="(min-width: 1024px)"
-                />
-                <source
-                  srcSet="img/logo-tablet.svg"
-                  media="(min-width: 576px)"
-                />
-                <img
-                  src="img/logo-mobile.svg"
-                  alt="The Nice Gadgets Logo"
-                  title="The Nice Gadgets Logo"
-                  className="topBar__logo"
-                />
-              </picture>
-            </a>
-
-            <div className="topBar__icons">
-              <a href="#" className="icon icon--close"></a>
-            </div>
-          </div>
-
-          <div className="menu__bottom">
-            <Menu />
-          </div>
-        </div>
-      </aside>
       <main className="main">
         <div className="main__content">
           <Router>

@@ -12,21 +12,8 @@
   text-transform: uppercase;
 
   text-decoration: none;
-  color: #89939A;
+  color: $menu-color;
   overflow: auto;
-  height: 100vh;
-
-  &__top {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: $menu-background-color;
-}
-
-  &__nav {
-    margin-top: 24px;
-    margin-bottom: 24px;
-  }
 }
 
 
