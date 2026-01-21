@@ -2,9 +2,11 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useState } from 'react';
 import { BurgerMenu } from './BurgerMenu';
+import { useCart } from '../../hooks/useCart';
 
 export const Header = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const { totalQuantity } = useCart();
 
   return (
     <>
@@ -60,15 +62,34 @@ export const Header = () => {
           </div>
 
           <div className={styles.icons}>
-            <a href="#" className={styles.iconLink}>
-              <img src="/img/icons/heart.png" className={styles.iconImg}></img>
-            </a>
-            <a href="#" className={styles.iconLink}>
-              <img
-                src="/img/icons/shopping-cart.png"
-                className={styles.iconImg}
-              ></img>
-            </a>
+            <NavLink
+              to={'/favorites'}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.iconLink} ${styles.active}`
+                  : styles.iconLink
+              }
+            >
+              <img src="/img/icons/heart.png" className={styles.icon}></img>
+            </NavLink>
+            <NavLink
+              to={'/cart'}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.iconLink} ${styles.active}`
+                  : styles.iconLink
+              }
+            >
+              <div className={styles.cartBlock}>
+                <img
+                  src="/img/icons/shopping-cart.png"
+                  className={styles.icon}
+                ></img>
+                {totalQuantity !== 0 && (
+                  <span className={styles.totalQuantity}>{totalQuantity}</span>
+                )}
+              </div>
+            </NavLink>
           </div>
           <div className={styles.iconsMobile}>
             <a
@@ -82,7 +103,7 @@ export const Header = () => {
                     ? '/img/icons/close.png'
                     : '/img/icons/menu.png'
                 }
-                className={styles.iconImg}
+                className={styles.icon}
                 alt="Menu icon"
               ></img>
             </a>

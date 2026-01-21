@@ -47,7 +47,7 @@ export const ProductDetailsPage = () => {
           throw new NotFoundError('Product details not found');
         }
 
-        pDetails.productId = product.id;
+        pDetails.product = product;
 
         const sProducts = products
           .filter(p => p.category.toLowerCase() === pDetails.category)

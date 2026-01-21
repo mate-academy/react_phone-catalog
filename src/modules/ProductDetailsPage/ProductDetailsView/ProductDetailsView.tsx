@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { ColorKey, getColor } from '../../shared/utils/color';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { Product } from '../../shared/types/Product';
+import Button from '../../shared/components/Button/Button';
 
 type Props = {
   productDetails: ProductDetails;
@@ -73,7 +74,7 @@ export const ProductDetailsView: React.FC<Props> = ({
         </div>
         <div className={styles.details}>
           <div className={styles.detail}>
-            <p className={styles.detailId}>ID: {productDetails.productId}</p>
+            <p className={styles.detailId}>ID: {productDetails.product.id}</p>
             <p className={styles.detailTitle}>Available colors </p>
 
             <div className={styles.colors}>
@@ -128,7 +129,7 @@ export const ProductDetailsView: React.FC<Props> = ({
             <p className={styles.fullPrice}>${productDetails.priceDiscount}</p>
           </div>
           <div className={styles.buttons}>
-            <button className={styles.buttonAdd}>Add to cart</button>
+            <Button product={productDetails.product} />
             <button className={styles.buttonIcon}>
               <img src="/img/icons/heart.png" className={styles.iconImg}></img>
             </button>
@@ -198,18 +199,25 @@ export const ProductDetailsView: React.FC<Props> = ({
               <p className={styles.specValue}>{productDetails.capacity}</p>
             </div>
 
-            <div className={styles.characteristic}>
-              <p className={styles.specName}>Camera</p>
-              <p className={styles.specValue}>{productDetails.camera}</p>
-            </div>
+            {productDetails.camera && (
+              <div className={styles.characteristic}>
+                <p className={styles.specName}>Camera</p>
+                <p className={styles.specValue}>{productDetails.camera}</p>
+              </div>
+            )}
+
+            {productDetails.zoom && (
+              <div className={styles.characteristic}>
+                <p className={styles.specName}>Zoom</p>
+                <p className={styles.specValue}>{productDetails.zoom}</p>
+              </div>
+            )}
 
             <div className={styles.characteristic}>
-              <p className={styles.specName}>Zoom</p>
-              <p className={styles.specValue}>{productDetails.zoom}</p>
-            </div>
-            <div className={styles.characteristic}>
               <p className={styles.specName}>Cell</p>
-              <p className={styles.specValue}>{productDetails.cell}</p>
+              <p className={styles.specValue}>
+                {productDetails.cell.join(' ')}
+              </p>
             </div>
           </div>
         </div>

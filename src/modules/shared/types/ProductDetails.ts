@@ -1,4 +1,5 @@
 import { ColorKey } from '../utils/color';
+import { Product } from './Product';
 
 export interface ProductDetails {
   id: string;
@@ -20,7 +21,8 @@ export interface ProductDetails {
   ram: string;
   camera: string;
   zoom: string;
-  cell: [];
+  cell: string[];
+  product: Product;
 }
 
 export interface Description {

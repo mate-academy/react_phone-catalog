@@ -110,9 +110,38 @@
     height: 64px;
     width: 64px;
   }
+
+  @include link-underline($color-primary);
 }
 
-.iconImg {
+.icon {
   width: 16px;
   height: 16px;
+}
+
+.totalQuantity {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  font-weight: 700;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  background-color: $color-red;
+  border: 1px solid $color-white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+}
+
+.cartBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 28px;
+  height: 28px;
 }

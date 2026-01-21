@@ -1,0 +1,93 @@
+@import '../../shared/styles/utils/viriables';
+@import '../../shared/styles/utils/mixins';
+
+.product {
+  display: grid;
+  grid-template-columns: auto 64px 1fr auto;
+  grid-template-areas:
+    'close image name name'
+    'nav   nav   nav  price';
+  gap: 16px;
+
+  padding: 24px;
+  align-items: center;
+  border: 1px solid $color-icons;
+
+  @include on-tablet {
+    grid-template-columns: auto 80px 1fr auto auto;
+    grid-template-areas: 'close image name nav price';
+    gap: 24px;
+  }
+}
+
+.productImgBlock {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+
+  @include hover(transform, scale(1.1));
+}
+
+.productName {
+  grid-area: name;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.closeLink {
+  grid-area: close;
+  cursor: pointer;
+}
+
+.productImg {
+  max-height: 66px;
+}
+
+.navLink {
+  cursor: pointer;
+  color: $color-primary;
+  display: grid;
+  place-items: center;
+  border: 1px solid $color-icons;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  width: 32px;
+  height: 32px;
+
+  &:hover:not(.disabled) {
+    border: 1px solid $color-primary;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.nav {
+  display: flex;
+  grid-area: nav;
+  align-items: center;
+}
+
+.quantity {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.disabled {
+  border: 1px solid $color-icons;
+  color: $color-icons;
+}
+
+.price {
+  grid-area: price;
+  font-weight: 800;
+  font-size: 22px;
+  text-align: right;
+}

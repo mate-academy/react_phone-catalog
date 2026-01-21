@@ -25,7 +25,7 @@
   height: 196px;
 }
 
-.productImgLink{
+.productImgLink {
   text-decoration: none;
   color: $color-primary;
 }
@@ -87,15 +87,7 @@
   justify-content: space-between;
 }
 
-.buttonAdd {
-  width: 160px;
-  height: 40px;
-  background-color: $color-primary;
-  color: $color-white;
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
-}
+
 
 .buttonIcon {
   display: flex;
