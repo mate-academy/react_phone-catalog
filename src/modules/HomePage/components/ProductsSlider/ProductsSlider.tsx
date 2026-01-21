@@ -3,7 +3,6 @@ import apiProducts from '../../../../../public/api/products.json';
 import styles from './ProductsSlider.module.scss';
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { ProductType } from 'models/product.model';
 const imagesChevron = '/public/img/icons/';
 
 interface ProductsSliderProps {
@@ -33,19 +32,13 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     })
     .slice(0, 10);
 
-  const getSuggestedProducts = (
-    products: ProductType[],
-    limit: number,
-    excludeIdProduct?: number,
-  ): ProductType[] => {
-    const filteredProducts = excludeIdProduct
-      ? products.filter(p => p.id !== excludeIdProduct)
-      : products;
+  const getSuggestedProducts = useMemo(() => {
+    const filteredProducts = excludeId
+      ? apiProducts.filter(p => p.id !== excludeId)
+      : apiProducts;
 
-    return [...filteredProducts]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, limit);
-  };
+    return [...filteredProducts].sort(() => Math.random() - 0.5).slice(0, 10); // or whatever limit you want
+  }, [excludeId]);
 
   const brandNewProducts = [...apiProducts]
     .sort((a, b) => b.year - a.year)
@@ -68,12 +61,18 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         return brandNewProducts;
 
       case 'You may also like':
-        return getSuggestedProducts(apiProducts, 10, excludeId ?? -1);
+        return getSuggestedProducts;
 
       default:
         return [];
     }
-  }, [title, excludeId, brandNewProducts, hotPriceProducts]);
+  }, [
+    title,
+    excludeId,
+    brandNewProducts,
+    hotPriceProducts,
+    getSuggestedProducts,
+  ]);
 
   return (
     <>
