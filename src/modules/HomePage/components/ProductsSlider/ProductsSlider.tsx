@@ -64,7 +64,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       case 'Hot prices':
         return hotPriceProducts;
 
-      case 'Brand new':
+      case 'Brand new models':
         return brandNewProducts;
 
       case 'You may also like':
