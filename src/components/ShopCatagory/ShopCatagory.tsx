@@ -1,8 +1,4 @@
-import React, { FC, useMemo } from 'react';
-
-import phones from '../../../public/api/phones.json';
-import tablets from '../../../public/api/tablets.json';
-import accessories from '../../../public/api/accessories.json';
+import { FC } from 'react';
 
 import './ShopCatagory.scss';
 import { Category } from './Category';
@@ -13,8 +9,6 @@ type Props = {
 };
 
 export const ShopCatagory: FC<Props> = ({ shopCategoryInfo }) => {
-  console.log(shopCategoryInfo);
-
   return (
     <section className="shop-category">
       <div className="container">

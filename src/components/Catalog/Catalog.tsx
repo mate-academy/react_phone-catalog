@@ -26,7 +26,6 @@ export const Catalog: FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams('');
 
   useEffect(() => {
-    console.log(searchParams.get('sortBy'));
     if (
       searchParams.get('sortBy') === null ||
       searchParams.get('sortPage') === null
@@ -92,8 +91,6 @@ export const Catalog: FC<Props> = ({
     setCurrentPage(1);
     setPerPage(+(searchParams.get('sortPage') || '16'));
   }, [searchParams, perPage]);
-
-  console.log(perPage);
 
   const sortByName = searchParams.get('sortBy') || SortBy.Newest;
 

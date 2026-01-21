@@ -12,24 +12,27 @@ import { ProductAllType, ProductType } from '../../types/Product';
 export const CardItem = () => {
   const { id } = useParams<{ id: string }>();
   const { state, pathname } = useLocation();
-
+  const { itemId } = state;
   const [product, setProduct] = useState<ProductType>();
   const [activePhoto, setActivePhoto] = useState<string>();
   const [alsoLikeProducts, setAlsoLikeProducts] = useState<ProductAllType[]>(
     [],
   );
 
+  // console.log('id', id);
+  // console.log('state', state);
+  // console.log('product', product);
+
   useEffect(() => {
     const fetchProduct = async () => {
-      const newProduct = await getProduct(state.category, id!);
-      console.log('newProduct', newProduct);
+      const newProduct = await getProduct(state.product.category, id!);
       setProduct(newProduct);
 
       const products = (await getProducts('allProducts')).slice(0, 10);
       setAlsoLikeProducts(products as ProductAllType[]);
     };
     fetchProduct();
-  }, [id]);
+  }, [id, product]);
 
   useEffect(() => {
     setActivePhoto(product?.images[0] || unnownImg);
@@ -53,7 +56,7 @@ export const CardItem = () => {
       <div className="container card-item__container">
         <Breadcrumbs />
 
-        <h2 className="card-item__title h2">{product.id}</h2>
+        <h2 className="card-item__title h2">{product.name}</h2>
         <div className="card-item__body body-card">
           <div className="body-card__wrapper">
             <div className="body-card__images">
@@ -105,7 +108,11 @@ export const CardItem = () => {
                 <div className="body-card__info-name">Available colors</div>
                 <ul className="body-card__items">
                   {product.colorsAvailable.map(color => {
-                    const item = pathname.replace(product.color, color);
+                    const newColor = color.includes(' ')
+                      ? color.replace(' ', '-')
+                      : color;
+                    const item = pathname.replace(product.color, newColor);
+                    console.log(item);
                     return (
                       <li
                         className="body-card__item body-card__item-block-color"
@@ -113,13 +120,13 @@ export const CardItem = () => {
                       >
                         <NavLink
                           to={`${item}`}
-                          state={product}
+                          state={{ product, itemId }}
                           className={({ isActive }) =>
                             `body-card__item-link ${isActive ? 'body-card__item-color--active' : ''}`
                           }
                         >
                           <span
-                            className={`body-card__item-color body-card__item-color--${color}`}
+                            className={`body-card__item-color body-card__item-color--${newColor}`}
                           ></span>
                         </NavLink>
                       </li>
@@ -131,29 +138,21 @@ export const CardItem = () => {
                 <div className="body-card__info-name">Select capacity</div>
                 <ul className="body-card__items">
                   {product.capacityAvailable.map(capacity => {
-                    const link = pathname.replace(product.capacity, capacity);
-                    console.log('link', link);
-                    console.log('product.capacity', product.capacity);
-                    console.log('capacity', capacity);
+                    const link = pathname.replace(
+                      product.capacity.toLowerCase(),
+                      capacity.toLowerCase(),
+                    );
+
                     return (
-                      <li
-                        className={classNames(
-                          `body-card__item body-card__item-block-capacity`,
-                        )}
-                        //  {
-                        //   'body-card__item-block-capacity--active':
-                        //     capacity === product.capacity,
-                        // },
-                        key={capacity}
-                      >
+                      <li className={'body-card__item'} key={capacity}>
                         <NavLink
                           to={`${link}`}
-                          state={product}
+                          state={{ product, itemId }}
                           className={({ isActive }) =>
-                            `body-card__item-capacity ${isActive ? 'body-card__item-block-capacity--active' : ''}`
+                            `body-card__link ${isActive ? 'body-card__link--active' : ''}`
                           }
                         >
-                          {capacity}
+                          <span className="">{capacity}</span>
                         </NavLink>
                       </li>
                     );
@@ -183,7 +182,7 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
-              <span className="body-card__id">ID: {product.id}</span>
+              <span className="body-card__id">ID: {state.id}</span>
             </div>
           </div>
 

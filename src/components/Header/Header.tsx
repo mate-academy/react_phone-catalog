@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
@@ -8,6 +8,7 @@ import cartIcon from './../../images/icons/Shopping bag (Cart).svg';
 import burgerIcon from './../../images/icons/burger.svg';
 import closeIcon from './../../images/icons/close.svg';
 import logoIcon from './../../images/header/Logo.png';
+import { useCartFavorite } from '../../context/CartFavoriteContext';
 
 const {
   header,
@@ -27,6 +28,7 @@ const {
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const { favoriteItems, cartItems } = useCartFavorite();
 
   return (
     <header className={`${header} ${isActive ? header__active : ''}`}>
@@ -93,7 +95,7 @@ export const Header = () => {
                 alt="favorite-icon"
                 className={header__icon}
               />
-              {/* <span className={header__counter}>{12}</span> */}
+              <span className={header__counter}>{favoriteItems.length}</span>
             </NavLink>
             <NavLink
               to="/cart"
@@ -103,7 +105,7 @@ export const Header = () => {
               onClick={() => setIsActive(false)}
             >
               <img src={cartIcon} alt="cart-icon" className={header__icon} />
-              {/* <span className={header__counter}>{12}</span> */}
+              <span className={header__counter}>{cartItems.length}</span>
             </NavLink>
           </div>
           <button

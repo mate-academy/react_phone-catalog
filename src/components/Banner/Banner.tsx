@@ -28,10 +28,6 @@ export const Banner = () => {
           slidesPerView={1}
           spaceBetween={20}
           navigation
-          // navigation={{
-          //   nextEl: '.next-banner',
-          //   prevEl: '.prev-banner',
-          // }}
           pagination={{ clickable: true }}
         >
           {images.map((img, i) => (

@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import { FC, useRef } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -38,6 +38,7 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
           modules={[Navigation, A11y]}
           slidesPerView={4}
           spaceBetween={16}
+          autoHeight
           onBeforeInit={swiper => {
             swiper.params.navigation = {
               // @ts-ignore — Swiper types не всегда позволяют прямую запись, но это стандартный приём

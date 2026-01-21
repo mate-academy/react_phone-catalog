@@ -27,7 +27,6 @@ export const ProductCardButtons: FC<Props> = ({ product }) => {
   const handleAddToCard = () => {
     setIsAddToCart(true);
     addToCart(product);
-    console.log(cartItems);
   };
 
   const handleToggleFavorite = () => {

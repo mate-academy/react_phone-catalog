@@ -26,7 +26,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
     <div className="card">
       <Link
         to={`/${category}/${itemId}`}
-        state={product}
+        state={{ product, itemId }}
         className="card__link"
         onClick={() => scrollToTop()}
       >
