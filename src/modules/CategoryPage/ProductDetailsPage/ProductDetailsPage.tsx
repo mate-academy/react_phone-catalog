@@ -16,6 +16,7 @@ import {
   AvailableCapacities,
   AvailableColors,
 } from './AvailableColorsCapacity';
+import imgNotFoundProduct from '../../../../public/img/page-not-found.png';
 const favoriteIcons = '/img/icons/';
 
 const apiCategoryMap: Record<string, ProductDetails[]> = {
@@ -122,357 +123,392 @@ export const ProductDetailsPage: React.FC = () => {
     ? favorites.some(item => item.id === product.id)
     : false;
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
-
   return (
     <>
       <Header />
-      <div className={styles.productdetailspage}>
-        <Breadcrumbs category={category || ''} productId={productId || ''} />
-        <button
-          className={styles.productdetailspage__backbutton}
-          onClick={() => navigate(`/${product.category}`)}
-        >
-          <img
-            className={styles.productdetailspage__backbutton__icon}
-            src="/public/img/icons/icon-chevron-arrow-left.png"
-            alt=""
-          />
-          <p className={styles.productdetailspage__backbutton__text}>Back</p>
-        </button>
-        <h1 className={styles.productdetailspage__title}>{product.name}</h1>
-        <div className={styles.productdetailspage__gallery}>
-          <div className={styles.productdetailspage__gallery__thumbs}>
-            {images.map((image: string) => (
-              <button
-                key={image}
-                className={classNames(
-                  styles.productdetailspage__gallery__thumb,
-                  image === activeImage &&
-                    styles.productdetailspage__gallery__thumb_active,
-                )}
-                onClick={() => setActiveImage(image)}
-                type="button"
-              >
-                <img
-                  src={`/${image}`}
-                  alt={product.name}
-                  className={styles.productdetailspage__gallery__thumb_img}
-                />
-              </button>
-            ))}
-          </div>
-          <div className={styles.productdetailspage__gallery__main}>
+      {product ? (
+        <div className={styles.productdetailspage}>
+          <Breadcrumbs category={category || ''} productId={productId || ''} />
+          <button
+            className={styles.productdetailspage__backbutton}
+            onClick={() => navigate(`/${product.category}`)}
+          >
             <img
-              src={`/${activeImage}`}
-              alt={product.name}
-              className={styles.productdetailspage__gallery__main_img}
+              className={styles.productdetailspage__backbutton__icon}
+              src="/public/img/icons/icon-chevron-arrow-left.png"
+              alt=""
             />
-          </div>
-        </div>
-        <div className={styles.productdetailspage__info}>
-          <div className={styles.productdetailspage__info_availablecolors}>
-            <p className={styles.productdetailspage__info_availablecolors_text}>
-              Available colors
-            </p>
-            <AvailableColors product={product} />
-          </div>
-          <div className={styles.productdetailspage__info_availablecapacities}>
-            <p
-              className={
-                styles.productdetailspage__info_availablecapacities_text
-              }
-            >
-              Select capacity
-            </p>
-            <AvailableCapacities product={product} />
-          </div>
-          <div className={styles.productdetailspage__info_main}>
-            <div className={styles.productdetailspage__info__price}>
-              <h2 className={styles.productdetailspage__info__price_disconout}>
-                ${product.price}
-              </h2>
-              <h2 className={styles.productdetailspage__info__price_full}>
-                ${product.fullPrice}
-              </h2>
-            </div>
-            <div className={styles.productdetailspage__info__buttons}>
-              <button
-                className={`${styles.productdetailspage__info__buttons_cart} ${
-                  isAdded ? styles['productcard__buttons_cart_is-active'] : ''
-                }`}
-                onClick={handleAddToCart}
-              >
-                {isAdded ? 'Added to cart' : 'Add to cart'}
-              </button>
-              <button
-                className={`${styles.productdetailspage__info__buttons_like} ${
-                  isFavorite
-                    ? styles['productcard__buttons_like_is-active']
-                    : ''
-                }`}
-                onClick={handleAddToFavorites}
-              >
-                {isFavorite ? (
-                  <img
-                    src={
-                      favoriteIcons + 'icon-favourites-heart-like-filled.png'
-                    }
-                    alt=""
-                    className={
-                      styles.productdetailspage__info__buttons_like__img
-                    }
-                  />
-                ) : (
-                  <img
-                    src={favoriteIcons + 'icon-favourites-heart-like.png'}
-                    alt=""
-                    className={
-                      styles.productdetailspage__info__buttons_like__img
-                    }
-                  />
-                )}
-              </button>
-            </div>
-            <div className={styles.productdetailspage__info_tech}>
-              <div className={styles.productdetailspage__info_tech_row}>
-                <span className={styles.productdetailspage__info_tech_label}>
-                  Screen
-                </span>
-                <span className={styles.productdetailspage__info_tech_value}>
-                  {product.screen}
-                </span>
-              </div>
-
-              <div className={styles.productdetailspage__info_tech_row}>
-                <span className={styles.productdetailspage__info_tech_label}>
-                  Resolution
-                </span>
-                <span className={styles.productdetailspage__info_tech_value}>
-                  {product.resolution}
-                </span>
-              </div>
-
-              <div className={styles.productdetailspage__info_tech_row}>
-                <span className={styles.productdetailspage__info_tech_label}>
-                  Processor
-                </span>
-                <span className={styles.productdetailspage__info_tech_value}>
-                  {product.processor}
-                </span>
-              </div>
-
-              <div className={styles.productdetailspage__info_tech_row}>
-                <span className={styles.productdetailspage__info_tech_label}>
-                  RAM
-                </span>
-                <span className={styles.productdetailspage__info_tech_value}>
-                  {product.ram}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p className={styles.productdetailspage__info_idnum}>
-          ID:{product.namespaceId}
-        </p>
-        <div className={styles.productdetailspage__extrainfo}>
-          <div className={styles.productdetailspage__extrainfo_about}>
-            <h1 className={styles.productdetailspage__extrainfo_title}>
-              About
-            </h1>
-            {product.description?.map((descSection, index) => (
-              <div
-                key={index}
-                className={styles.productdetailspage__extrainfo_about_text}
-              >
-                <h2
-                  className={
-                    styles.productdetailspage__extrainfo_about_text_title
-                  }
+            <p className={styles.productdetailspage__backbutton__text}>Back</p>
+          </button>
+          <h1 className={styles.productdetailspage__title}>{product.name}</h1>
+          <div className={styles.productdetailspage__gallery}>
+            <div className={styles.productdetailspage__gallery__thumbs}>
+              {images.map((image: string) => (
+                <button
+                  key={image}
+                  className={classNames(
+                    styles.productdetailspage__gallery__thumb,
+                    image === activeImage &&
+                      styles.productdetailspage__gallery__thumb_active,
+                  )}
+                  onClick={() => setActiveImage(image)}
+                  type="button"
                 >
-                  {descSection.title}
+                  <img
+                    src={`/${image}`}
+                    alt={product.name}
+                    className={styles.productdetailspage__gallery__thumb_img}
+                  />
+                </button>
+              ))}
+            </div>
+            <div className={styles.productdetailspage__gallery__main}>
+              <img
+                src={`/${activeImage}`}
+                alt={product.name}
+                className={styles.productdetailspage__gallery__main_img}
+              />
+            </div>
+          </div>
+          <div className={styles.productdetailspage__info}>
+            <div className={styles.productdetailspage__info_availablecolors}>
+              <p
+                className={styles.productdetailspage__info_availablecolors_text}
+              >
+                Available colors
+              </p>
+              <AvailableColors product={product} />
+            </div>
+            <div
+              className={styles.productdetailspage__info_availablecapacities}
+            >
+              <p
+                className={
+                  styles.productdetailspage__info_availablecapacities_text
+                }
+              >
+                Select capacity
+              </p>
+              <AvailableCapacities product={product} />
+            </div>
+            <div className={styles.productdetailspage__info_main}>
+              <div className={styles.productdetailspage__info__price}>
+                <h2
+                  className={styles.productdetailspage__info__price_disconout}
+                >
+                  ${product.price}
                 </h2>
-                {descSection.text.map((paragraph, pIndex) => (
-                  <p
-                    key={pIndex}
+                <h2 className={styles.productdetailspage__info__price_full}>
+                  ${product.fullPrice}
+                </h2>
+              </div>
+              <div className={styles.productdetailspage__info__buttons}>
+                <button
+                  className={`${styles.productdetailspage__info__buttons_cart} ${
+                    isAdded ? styles['productcard__buttons_cart_is-active'] : ''
+                  }`}
+                  onClick={handleAddToCart}
+                >
+                  {isAdded ? 'Added to cart' : 'Add to cart'}
+                </button>
+                <button
+                  className={`${styles.productdetailspage__info__buttons_like} ${
+                    isFavorite
+                      ? styles['productcard__buttons_like_is-active']
+                      : ''
+                  }`}
+                  onClick={handleAddToFavorites}
+                >
+                  {isFavorite ? (
+                    <img
+                      src={
+                        favoriteIcons + 'icon-favourites-heart-like-filled.png'
+                      }
+                      alt=""
+                      className={
+                        styles.productdetailspage__info__buttons_like__img
+                      }
+                    />
+                  ) : (
+                    <img
+                      src={favoriteIcons + 'icon-favourites-heart-like.png'}
+                      alt=""
+                      className={
+                        styles.productdetailspage__info__buttons_like__img
+                      }
+                    />
+                  )}
+                </button>
+              </div>
+              <div className={styles.productdetailspage__info_tech}>
+                <div className={styles.productdetailspage__info_tech_row}>
+                  <span className={styles.productdetailspage__info_tech_label}>
+                    Screen
+                  </span>
+                  <span className={styles.productdetailspage__info_tech_value}>
+                    {product.screen}
+                  </span>
+                </div>
+
+                <div className={styles.productdetailspage__info_tech_row}>
+                  <span className={styles.productdetailspage__info_tech_label}>
+                    Resolution
+                  </span>
+                  <span className={styles.productdetailspage__info_tech_value}>
+                    {product.resolution}
+                  </span>
+                </div>
+
+                <div className={styles.productdetailspage__info_tech_row}>
+                  <span className={styles.productdetailspage__info_tech_label}>
+                    Processor
+                  </span>
+                  <span className={styles.productdetailspage__info_tech_value}>
+                    {product.processor}
+                  </span>
+                </div>
+
+                <div className={styles.productdetailspage__info_tech_row}>
+                  <span className={styles.productdetailspage__info_tech_label}>
+                    RAM
+                  </span>
+                  <span className={styles.productdetailspage__info_tech_value}>
+                    {product.ram}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className={styles.productdetailspage__info_idnum}>
+            ID:{product.namespaceId}
+          </p>
+          <div className={styles.productdetailspage__extrainfo}>
+            <div className={styles.productdetailspage__extrainfo_about}>
+              <h1 className={styles.productdetailspage__extrainfo_title}>
+                About
+              </h1>
+              {product.description?.map((descSection, index) => (
+                <div
+                  key={index}
+                  className={styles.productdetailspage__extrainfo_about_text}
+                >
+                  <h2
                     className={
-                      styles.productdetailspage__extrainfo_about_text_p
+                      styles.productdetailspage__extrainfo_about_text_title
                     }
                   >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            ))}
-          </div>
-          <div className={styles.productdetailspage__extrainfo__techspecs}>
-            <h1 className={styles.productdetailspage__extrainfo_title}>
-              Tech specs
-            </h1>
-            <div
-              className={styles.productdetailspage__extrainfo__techspecs_text}
-            >
+                    {descSection.title}
+                  </h2>
+                  {descSection.text.map((paragraph, pIndex) => (
+                    <p
+                      key={pIndex}
+                      className={
+                        styles.productdetailspage__extrainfo_about_text_p
+                      }
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div className={styles.productdetailspage__extrainfo__techspecs}>
+              <h1 className={styles.productdetailspage__extrainfo_title}>
+                Tech specs
+              </h1>
               <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
+                className={styles.productdetailspage__extrainfo__techspecs_text}
               >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Screen
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.screen}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Screen
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.screen}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Resolution
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.resolution}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Resolution
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.resolution}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Processor
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.processor}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Processor
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.processor}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  RAM
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.ram}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    RAM
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.ram}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Built in memory
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.capacity}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Built in memory
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.capacity}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Camera
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.camera}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Camera
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.camera}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Zoom
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.zoom}
-                </span>
-              </div>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Zoom
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.zoom}
+                  </span>
+                </div>
 
-              <div
-                className={styles.productdetailspage__extrainfo__techspecs_row}
-              >
-                <span
+                <div
                   className={
-                    styles.productdetailspage__extrainfo__techspecs_label
+                    styles.productdetailspage__extrainfo__techspecs_row
                   }
                 >
-                  Cell
-                </span>
-                <span
-                  className={
-                    styles.productdetailspage__extrainfo__techspecs_value
-                  }
-                >
-                  {product.cell?.join(', ')}
-                </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_label
+                    }
+                  >
+                    Cell
+                  </span>
+                  <span
+                    className={
+                      styles.productdetailspage__extrainfo__techspecs_value
+                    }
+                  >
+                    {product.cell?.join(', ')}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+          <div className={styles.productdetailspage__alsolike}>
+            <ProductsSlider title="You may also like" excludeId={product.id} />
+          </div>
         </div>
-        <div className={styles.productdetailspage__alsolike}>
-          <ProductsSlider title="You may also like" excludeId={product.id} />
+      ) : (
+        <div className={styles.notfoundproductpage}>
+          <h1 className={styles.notfoundproductpage__title}>
+            404 - Product Not Found
+          </h1>
+          <p className={styles.notfoundproductpage__text}>
+            Product by this id does not exist on server.
+          </p>
+          <img
+            className={styles.notfoundproductpage__image}
+            src={imgNotFoundProduct}
+            alt="Page Not Found"
+          />
         </div>
-      </div>
+      )}
+
       <Footer />
     </>
   );
