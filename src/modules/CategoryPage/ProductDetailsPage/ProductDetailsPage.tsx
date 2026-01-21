@@ -3,15 +3,19 @@ import { Breadcrumbs } from '../../shared/Breadcrumbs';
 import { Footer } from '../../shared/Footer';
 import { Header } from '../../shared/Header';
 import styles from './ProductDetailsPage.module.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ProductsSlider } from 'src/modules/HomePage/components/ProductsSlider';
 import apiProducts from '../../../../public/api/products.json';
 import apiPhones from '../../../../public/api/phones.json';
 import apiTablets from '../../../../public/api/tablets.json';
 import apiAccessories from '../../../../public/api/accessories.json';
 import classNames from 'classnames';
-import { FullProduct, ProductDetails, ProductType } from 'models/product.model';
+import { FullProduct, ProductDetails } from 'models/product.model';
 import { useProducts } from 'src/context/ProductsContext';
+import {
+  AvailableCapacities,
+  AvailableColors,
+} from './AvailableColorsCapacity';
 const favoriteIcons = '/img/icons/';
 
 const apiCategoryMap: Record<string, ProductDetails[]> = {
@@ -20,34 +24,13 @@ const apiCategoryMap: Record<string, ProductDetails[]> = {
   accessories: apiAccessories,
 } as const;
 
-const COLOR_MAP: Record<string, string> = {
-  black: '#000000',
-  blue: '#4f5ca8',
-  coral: '#f16e4e',
-  white: '#f5f5f5',
-  gold: '#f5d7b2',
-  silver: '#e0e0e0',
-  spacegray: '#4b4b4b',
-  spaceblack: '#222020',
-  midnight: 'midnightblue',
-  midnightgreen: 'darkgreen',
-  sierrablue: '#9bb7d4',
-  starlight: '#f8f3e8',
-  green: '#576856',
-  yellow: '#f2d94e',
-  purple: '#b39ddb',
-  pink: '#db9dc3',
-  rosegold: '#dfaaaf',
-  red: '#c0392b',
-};
-
 export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const { category, productId } = useParams<{
     category: string;
     productId: string;
   }>();
-  const products: ProductType[] = apiProducts;
+  // const products: ProductType[] = apiProducts;
 
   // const findProductById = (productID: string) => {
   //   const summary = apiProducts.find(
@@ -111,17 +94,20 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const product = productId ? findProductById(productId) : null;
-  const baseId =
-    product?.itemId
-      ?.split('-')
-      .slice(0, product?.itemId?.split('-').length - 2)
-      .join('-') || '';
+  // const baseId =
+  //   product?.itemId
+  //     ?.split('-')
+  //     .slice(0, product?.itemId?.split('-').length - 2)
+  //     .join('-') || '';
+  // const baseIdAccessories =
+  //   product?.itemId?.split('-').slice(0, 5).join('-') || '';
 
   // Діагностика
   // console.log('product:', product);
   // console.log('baseId:', baseId);
   // console.log('products:', products);
   // console.log('colorsAvailable:', product?.colorsAvailable);
+  // console.log(baseIdAccessories);
 
   const images: string[] = useMemo(() => {
     if (!product) {
@@ -229,14 +215,16 @@ export const ProductDetailsPage: React.FC = () => {
             <p className={styles.productdetailspage__info_availablecolors_text}>
               Available colors
             </p>
-            <ul
+            {/* <ul
               className={styles.productdetailspage__info_availablecolors_list}
             >
-              {product.colorsAvailable.map(color => {
+              {product.colorsAvailable.map((color: string) => {
                 const newProduct = products.find(
                   p =>
                     p.itemId ===
-                    `${baseId}-${product.capacity.toLowerCase()}-${color}`,
+                    `${product.namespaceId}-${product.capacity}-${color}`
+                      .replace(' ', '-')
+                      .toLowerCase(),
                 );
 
                 if (!newProduct) {
@@ -274,7 +262,8 @@ export const ProductDetailsPage: React.FC = () => {
                   </li>
                 );
               })}
-            </ul>
+            </ul> */}
+            <AvailableColors product={product} />
           </div>
           <div className={styles.productdetailspage__info_availablecapacities}>
             <p
@@ -284,7 +273,8 @@ export const ProductDetailsPage: React.FC = () => {
             >
               Select capacity
             </p>
-            <ul
+            <AvailableCapacities product={product} />
+            {/* <ul
               className={
                 styles.productdetailspage__info_availablecapacities_list
               }
@@ -293,7 +283,9 @@ export const ProductDetailsPage: React.FC = () => {
                 const newProduct = products.find(
                   p =>
                     p.itemId ===
-                    `${baseId}-${capacity.toLowerCase()}-${product.color}`,
+                    `${product.namespaceId}-${capacity}-${product.color}`
+                      .replace(' ', '-')
+                      .toLowerCase(),
                 );
 
                 if (!newProduct) {
@@ -325,7 +317,7 @@ export const ProductDetailsPage: React.FC = () => {
                   </li>
                 );
               })}
-            </ul>
+            </ul> */}
           </div>
           <div className={styles.productdetailspage__info_main}>
             <div className={styles.productdetailspage__info__price}>
