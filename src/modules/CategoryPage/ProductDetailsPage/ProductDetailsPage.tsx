@@ -30,30 +30,6 @@ export const ProductDetailsPage: React.FC = () => {
     category: string;
     productId: string;
   }>();
-  // const products: ProductType[] = apiProducts;
-
-  // const findProductById = (productID: string) => {
-  //   const summary = apiProducts.find(
-  //     product => String(product.id) === productID,
-  //   );
-
-  //   if (!summary) {
-  //     return null;
-  //   }
-
-  //   const categoryProducts =
-  //     apiCategoryMap[summary.category as keyof typeof apiCategoryMap];
-
-  //   if (!categoryProducts) {
-  //     return summary;
-  //   }
-
-  //   const detailedProduct = categoryProducts.find(
-  //     item => item.id === summary.itemId,
-  //   );
-
-  //   return detailedProduct ? { ...detailedProduct } : summary;
-  // };
 
   const findProductById = (id: string): FullProduct | null => {
     // console.log('productId from params:', id);
@@ -94,20 +70,6 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const product = productId ? findProductById(productId) : null;
-  // const baseId =
-  //   product?.itemId
-  //     ?.split('-')
-  //     .slice(0, product?.itemId?.split('-').length - 2)
-  //     .join('-') || '';
-  // const baseIdAccessories =
-  //   product?.itemId?.split('-').slice(0, 5).join('-') || '';
-
-  // Діагностика
-  // console.log('product:', product);
-  // console.log('baseId:', baseId);
-  // console.log('products:', products);
-  // console.log('colorsAvailable:', product?.colorsAvailable);
-  // console.log(baseIdAccessories);
 
   const images: string[] = useMemo(() => {
     if (!product) {
@@ -215,54 +177,6 @@ export const ProductDetailsPage: React.FC = () => {
             <p className={styles.productdetailspage__info_availablecolors_text}>
               Available colors
             </p>
-            {/* <ul
-              className={styles.productdetailspage__info_availablecolors_list}
-            >
-              {product.colorsAvailable.map((color: string) => {
-                const newProduct = products.find(
-                  p =>
-                    p.itemId ===
-                    `${product.namespaceId}-${product.capacity}-${color}`
-                      .replace(' ', '-')
-                      .toLowerCase(),
-                );
-
-                if (!newProduct) {
-                  return null;
-                }
-
-                return (
-                  <li
-                    key={color}
-                    className={styles.productdetailspage__info_availablecolor}
-                  >
-                    <Link
-                      to={`/${product.category}/product/${newProduct.id}`}
-                      className={classNames(
-                        // eslint-disable-next-line max-len
-                        styles.productdetailspage__info_availablecolor_colorLink,
-                        {
-                          // eslint-disable-next-line max-len
-                          [styles.productdetailspage__info_availablecolor_colorLink_active]:
-                            color === product.color,
-                        },
-                      )}
-                      aria-label={color}
-                    >
-                      <span
-                        className={
-                          // eslint-disable-next-line max-len
-                          styles.productdetailspage__info_availablecolor_colorInner
-                        }
-                        style={{
-                          backgroundColor: COLOR_MAP[color] ?? '#ccc',
-                        }}
-                      />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul> */}
             <AvailableColors product={product} />
           </div>
           <div className={styles.productdetailspage__info_availablecapacities}>
@@ -274,50 +188,6 @@ export const ProductDetailsPage: React.FC = () => {
               Select capacity
             </p>
             <AvailableCapacities product={product} />
-            {/* <ul
-              className={
-                styles.productdetailspage__info_availablecapacities_list
-              }
-            >
-              {product.capacityAvailable.map(capacity => {
-                const newProduct = products.find(
-                  p =>
-                    p.itemId ===
-                    `${product.namespaceId}-${capacity}-${product.color}`
-                      .replace(' ', '-')
-                      .toLowerCase(),
-                );
-
-                if (!newProduct) {
-                  return null;
-                }
-
-                return (
-                  <li
-                    key={capacity}
-                    className={
-                      styles.productdetailspage__info_availablecapacity
-                    }
-                  >
-                    <Link
-                      to={`/${product.category}/product/${newProduct.id}`}
-                      className={classNames(
-                        // eslint-disable-next-line max-len
-                        styles.productdetailspage__info_availablecapacity_colorLink,
-                        {
-                          // eslint-disable-next-line max-len
-                          [styles.productdetailspage__info_availablecapacity_colorLink_active]:
-                            capacity === product.capacity,
-                        },
-                      )}
-                      aria-label={capacity}
-                    >
-                      {capacity}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul> */}
           </div>
           <div className={styles.productdetailspage__info_main}>
             <div className={styles.productdetailspage__info__price}>

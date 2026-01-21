@@ -125,7 +125,3 @@ export const AvailableCapacities: React.FC<Props> = ({ product }) => {
     </ul>
   );
 };
-
-export const AvailableColorsCapacity: React.FC = () => {
-  return 1;
-};
