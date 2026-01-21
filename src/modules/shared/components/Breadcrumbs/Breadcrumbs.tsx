@@ -15,10 +15,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
     <nav className={scss.breadcrumbs} aria-label="Navigation path">
       <ol className={scss.breadcrumbs__path}>
         <li>
-          <Link
-            to={`${import.meta.env.BASE_URL}`}
-            className={scss.breadcrumbs__link}
-          >
+          <Link to={`/`} className={scss.breadcrumbs__link}>
             <svg
               className={scss.breadcrumbs__icon}
               aria-hidden="true"

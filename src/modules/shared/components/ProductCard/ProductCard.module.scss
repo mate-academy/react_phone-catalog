@@ -17,6 +17,9 @@
     display: block;
     margin-inline: auto;
 
+    object-fit: contain;
+    object-position: center;
+
   }
 
   &__name {
