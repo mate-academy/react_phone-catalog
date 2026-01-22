@@ -1,5 +1,6 @@
 @use '../../utils/vars.scss' as *;
 @import '../../utils/mixins.scss' ;
+@import '../Header/Header.module.scss';
 
 .mainMenu {
     position: fixed;
@@ -28,7 +29,6 @@
   background: rgba(0,0,0,0.5);
   z-index: 1000;
 }
-
 
 .menu {
   box-sizing: border-box;

@@ -19,6 +19,7 @@
 }
 
 .icon {
+  border: 1pxx solid blue;
   display: block;
   background-size: cover;
   background-position: center;
@@ -72,6 +73,7 @@
   }
 
   &--close {
+    border: 1px solid red;
     background-image: url(/img/icons/icon-close-2x.png);
     width: 16px;
     height: 16px;

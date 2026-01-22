@@ -13,14 +13,11 @@
 
 
   h1.visually-hidden {
-    /* Contain the text content within a 1px box */
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
     overflow: hidden;
     position: absolute;
-
-    /* Prevents words from running together for screen readers */
     white-space: nowrap;
     width: 1px;
 }
@@ -91,3 +88,4 @@ h5 {
     border: none;
   }
 }
+

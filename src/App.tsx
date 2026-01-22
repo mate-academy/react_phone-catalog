@@ -7,7 +7,6 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
-import Menu from './components/Menu/index';
 import Header from './components/Header';
 import './App.scss';
 

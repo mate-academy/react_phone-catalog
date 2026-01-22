@@ -7,10 +7,9 @@ type Props = {
 };
 
 export const MainMenu: React.FC<Props> = ({ isMenuOpen, onClose }) => {
-
   return (
     isMenuOpen && (
-      <div className={styles.backdrop} ref={parent}>
+      <div className={styles.backdrop}>
         <aside
           className={`${styles.menu} ${isMenuOpen ? styles['is-open'] : ''}`}
           id="main-menu"
@@ -36,11 +35,15 @@ export const MainMenu: React.FC<Props> = ({ isMenuOpen, onClose }) => {
                   />
                 </picture>
               </a>
-
-              <div className={styles.topBar__icons }>
-                <button type="button" onClick={onClose} aria-label="Close menu">
-                  …
-                </button>
+              <div className={styles.topBar__icons}>
+                <div className={styles.icon__background}>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    aria-label="Close menu"
+                    className={`${styles.icon} ${styles['icon--close']}`}
+                  ></button>
+                </div>
               </div>
             </div>
 
