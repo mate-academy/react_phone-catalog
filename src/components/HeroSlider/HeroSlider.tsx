@@ -85,7 +85,7 @@ export const HeroSlider = () => {
                     </h2>
                     <p className={styles.slideSubtitle}>Be the first!</p>
                     <a href="#" className={styles.orderButton}>
-                      ORDER NOW
+                      Order now
                     </a>
                   </div>
                 </div>

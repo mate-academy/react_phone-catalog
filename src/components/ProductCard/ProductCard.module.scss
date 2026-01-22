@@ -50,6 +50,12 @@
   gap: 8px;
 }
 
+.fullPrice {
+  color: #89939A;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .divider {
   height: 1px;
   background-color: var(--color-elements);

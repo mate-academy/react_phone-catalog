@@ -4,13 +4,22 @@ import { Phone } from '../../types/Phone';
 
 interface Props {
   phone: Phone;
+  showRegularPriceOnly?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, priceRegular, screen, capacity, ram, images } = phone;
+export const ProductCard: React.FC<Props> = ({
+  phone,
+  showRegularPriceOnly = false,
+}) => {
+  const { name, priceRegular, priceDiscount, screen, capacity, ram, images } =
+    phone;
 
   const imageUrl = `/${images[0]}`;
   const screenDisplay = screen.replace('(Super Retina XDR)', '').trim();
+  const showFullPrice =
+    !showRegularPriceOnly &&
+    priceDiscount !== 0 &&
+    priceDiscount !== priceRegular;
 
   return (
     <article className={styles.card}>
@@ -20,7 +29,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
       <h3 className={styles.title}>{name}</h3>
 
-      <div className={styles.price}>${priceRegular}</div>
+      <div className={styles.price}>
+        <span>
+          ${showRegularPriceOnly ? priceRegular : priceDiscount || priceRegular}
+        </span>
+        {showFullPrice && (
+          <span className={styles.fullPrice}>${priceRegular}</span>
+        )}
+      </div>
 
       <div className={styles.divider} />
 

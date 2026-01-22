@@ -4,35 +4,31 @@ import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import './BrandNewModels.scss';
-import styles from './BrandNewModels.module.scss';
+import './HotPricesSlider.scss';
+import styles from './HotPricesSlider.module.scss';
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
 
-export const BrandNewModels = () => {
+export const HotPricesSlider = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   useEffect(() => {
-    Promise.all([
-      fetch('/api/phones.json').then(res => res.json()),
-      fetch('/api/products.json').then(res => res.json()),
-    ])
-      .then(([phonesData, productsData]) => {
-        const productsYearMap = new Map(
-          productsData.map((product: { itemId: string; year: number }) => [
-            product.itemId,
-            product.year,
-          ]),
-        );
-
+    fetch('/api/phones.json')
+      .then(res => res.json())
+      .then((phonesData: Phone[]) => {
         const sortedPhones = phonesData
-          .map((phone: Phone) => ({
-            ...phone,
-            year: productsYearMap.get(phone.id) || 0,
-          }))
-          .sort((a: { year: number }, b: { year: number }) => b.year - a.year)
-          .map(({ year, ...phone }: Phone & { year: number }) => phone);
+          .map(phone => {
+            const discount =
+              phone.priceDiscount && phone.priceDiscount > 0
+                ? phone.priceRegular - phone.priceDiscount
+                : 0;
+
+            return { ...phone, discount };
+          })
+          .sort((a, b) => b.discount - a.discount)
+          .filter(phone => phone.discount > 0)
+          .map(({ discount, ...phone }) => phone);
 
         setPhones(sortedPhones.slice(0, 13));
       })
@@ -49,10 +45,14 @@ export const BrandNewModels = () => {
     swiperInstance?.slideNext();
   };
 
+  if (phones.length === 0) {
+    return null;
+  }
+
   return (
-    <section className={`${styles.section} BrandNewModels`}>
+    <section className={`${styles.section} HotPricesSlider`}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Brand new models</h2>
+        <h2 className={styles.title}>Hot prices</h2>
         <div className={styles.navigation}>
           <button
             type="button"

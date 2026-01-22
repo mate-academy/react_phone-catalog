@@ -1,8 +1,9 @@
 import './App.scss';
 import { Header } from './components/Header';
 import { HeroSlider } from './components/HeroSlider';
-import { BrandNewModels } from './components/BrandNewModels';
+import { NewProductsSlider } from './components/NewProductsSlider';
 import { Categories } from './components/Categories';
+import { HotPricesSlider } from './components/HotPricesSlider';
 
 export const App = () => (
   <div className="App">
@@ -10,8 +11,9 @@ export const App = () => (
     <main className="section">
       <div className="container">
         <HeroSlider />
-        <BrandNewModels />
+        <NewProductsSlider />
         <Categories />
+        <HotPricesSlider />
       </div>
     </main>
   </div>

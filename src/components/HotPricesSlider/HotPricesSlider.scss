@@ -1,9 +1,13 @@
 @use '../../styles/colors';
 @use '../../styles/typography';
 
-.BrandNewModels {
+.HotPricesSlider {
   .swiper-slide {
     height: auto;
     display: flex;
+
+    & > * {
+      width: 100%;
+    }
   }
 }
