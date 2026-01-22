@@ -99,7 +99,11 @@ export const Header: React.FC = () => {
         <NavLink
           to="/burgermenu"
           className={({ isActive }) =>
-            cn(styles.header__but__link, { [styles.active]: isActive })
+            cn(
+              styles.header__but__link,
+              { [styles.active]: isActive },
+              styles.header__but__phone,
+            )
           }
         >
           <img className={styles.header__but__link__img} src={iconBurger} />
