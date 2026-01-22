@@ -1,0 +1,54 @@
+@import '../../styles/utils';
+
+.favoritesPage {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-primary;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin: 0;
+}
+
+/* Styl dla pustej strony ulubionych (opcjonalnie) */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  gap: 24px;
+  text-align: center;
+
+  img {
+    max-width: 300px;
+    height: auto;
+  }
+
+  p {
+    color: $color-secondary;
+    font-size: 16px;
+  }
+}

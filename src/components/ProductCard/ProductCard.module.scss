@@ -1,13 +1,14 @@
+
+@import '../../styles/utils';
+
 .card {
   display: flex;
   flex-direction: column;
   padding: 32px;
-  background-color: #fff;
-  border: 1px solid #e2e6e9;
-  /* Figma używa 16px dla głównej karty */
+  background-color: $color-white;
+  border: 1px solid $color-border;
   border-radius: 16px;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  /* Zamiast sztywnego 272px, używamy 100%, bo szerokość kontroluje wrapper w ProductList */
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -15,7 +16,8 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-color: #d7d7d7;
+    // stylelint-disable-next-line scss/no-global-function-names
+    border-color: darken($color-border, 10%);
   }
 }
 
@@ -32,8 +34,6 @@
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s;
-  /* Zdjęcie telefonu nie potrzebuje dużego zaokrąglenia, 8px wystarczy */
-  border-radius: 8px;
 
   &:hover {
     transform: scale(1.05);
@@ -42,18 +42,18 @@
 
 .title {
   font-size: 14px;
-  line-height: 21px; // Wysokość linii dla czytelności
-  color: #313237;
+  line-height: 21px;
+  color: $color-primary;
   text-decoration: none;
   margin-bottom: 8px;
   height: 42px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; // Obcina tekst po 2 liniach
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
   &:hover {
-    color: #313237;
+    color: $color-primary;
   }
 }
 
@@ -67,19 +67,19 @@
 .price {
   font-size: 22px;
   font-weight: 800;
-  color: #313237;
+  color: $color-primary;
 }
 
 .fullPrice {
   font-size: 14px;
   text-decoration: line-through;
-  color: #89939a;
+  color: $color-secondary;
   font-weight: 500;
 }
 
 .divider {
   height: 1px;
-  background-color: #e2e6e9;
+  background-color: $color-border;
   margin: 8px 0;
 }
 
@@ -97,51 +97,79 @@
 }
 
 .specName {
-  color: #89939a;
+  color: $color-secondary;
 }
 
 .specValue {
-  color: #313237;
+  color: $color-primary;
   font-weight: 600;
 }
 
+/* --- Sekcja akcji (Przyciski) --- */
+
 .actions {
   display: flex;
+  justify-content: space-between;
   gap: 8px;
   margin-top: auto;
 }
 
 .addToCartBtn {
   flex-grow: 1;
-  height: 40px;
-  background-color: #313237;
-  color: #fff;
+  height: 48px; /* Twoja wysokość */
+  background-color: $color-accent; /* ✅ Fioletowy (Twoja zmienna) */
+  color: $color-white;
   border: none;
-  border-radius: 8px; // Zaokrąglone przyciski
+  border-radius: 32px; /* ✅ Twoje mocne zaokrąglenie */
   font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
 
   &:hover {
-    background-color: #4a4b51;
+    /* Rozjaśniamy fiolet przy najechaniu */
+    // stylelint-disable-next-line scss/no-global-function-names
+    background-color: lighten($color-accent, 5%);
+  }
+
+  /* Styl po dodaniu do koszyka */
+  &.added {
+    background-color: $color-white;
+    color: $color-green; /* Zielony tekst */
+    border: 1px solid $color-border;
+    cursor: default;
+
+    &:hover {
+      background-color: $color-white;
+    }
   }
 }
 
 .favoriteBtn {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #e2e6e9;
-  border-radius: 8px; // Zaokrąglone przyciski
-  background: #fff;
-  cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 20px;
-  color: #313237;
-  transition: border-color 0.3s;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1px solid $color-border;
+  border-radius: 32px; /* ✅ Też zaokrąglone, żeby pasowało do przycisku obok */
+  cursor: pointer;
+  transition: all 0.3s;
 
   &:hover {
-    border-color: #313237;
+    border-color: $color-primary;
+  }
+
+  /* Upewniamy się, że obrazek ma wymiary */
+  img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  &.isFav {
+    border-color: $color-border;
   }
 }

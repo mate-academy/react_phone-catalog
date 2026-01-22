@@ -1,28 +1,66 @@
-/* src/components/ProductsList/ProductsList.module.scss */
+@import '../../styles/utils';
 
-/* src/components/ProductsList/ProductsList.module.scss */
+/* Wspólne style dla kontenera */
+.container {
+  width: 100%;
+  box-sizing: border-box;
+}
 
+/* === WARIANT 1: GRID (Katalog) === */
 .grid {
   display: flex;
-  overflow-x: auto; // Pozwala na swajpowanie palcem
+  flex-direction: column;
   gap: 16px;
 
-  /* ✅ KLUCZ: Szerokość 100% bez żadnych ujemnych marginesów */
-  width: 100%;
-  margin: 0;
-  padding: 0;
-
-  /* Ukrywamy scrollbar, żeby nie psuł designu */
-  &::-webkit-scrollbar {
-    display: none;
+  /* Tablet: Siatka 2 kolumny */
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
+
+  /* Desktop: Siatka 4 kolumny */
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* === WARIANT 2: SLIDER (Polecane) === */
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px; /* Miejsce na cienie */
+
+  /* Ukrywanie scrollbara */
+  &::-webkit-scrollbar { display: none; }
+
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-  @media (min-width: 1200px) {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    overflow: visible; // Na desktopie nie chcemy przewijania
-    gap: 16px;
+  /* W sliderze elementy ZAWSZE są w rzędzie, nie łamiemy ich */
+  flex-wrap: nowrap;
+}
+
+/* Karta wewnątrz */
+.cardWrapper {
+  /* W sliderze karta musi mieć stałą szerokość, żeby się nie zgniatała */
+  .slider & {
+    width: 272px;
+    min-width: 272px; /* Ważne! */
+    flex-shrink: 0;
+  }
+
+  /* W gridzie na desktopie karta dopasowuje się do siatki */
+  .grid & {
+    width: 272px; /* Mobile */
+    margin: 0 auto;
+
+    @include on-tablet {
+      width: auto;
+      margin: 0;
+    }
   }
 }

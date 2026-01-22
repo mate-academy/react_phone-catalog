@@ -1,0 +1,159 @@
+/* src/components/CartItem/CartItem.module.scss */
+@import '../../styles/utils';
+
+.cartItem {
+  background-color: $color-white;
+  border: 1px solid $color-elements-bg;
+  border-radius: 16px;
+  padding: 16px;
+
+  /* --- MOBILE: GRID LAYOUT (< 640px) --- */
+  display: grid;
+  grid-template-areas:
+    "remove image name"
+    "counter counter price";
+
+  /* Kolumny Mobile: 32px (X) | 80px (FOTO) | Reszta (NAZWA) */
+  grid-template-columns: 32px 80px 1fr;
+
+  gap: 16px 12px;
+  align-items: center;
+
+  /* --- TABLET & DESKTOP: FLEX ROW (>= 640px) --- */
+
+  /* 👇 ZMIANA: Layout zmienia się na poziomy już od tabletu */
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 24px;
+    gap: 24px;
+  }
+}
+
+/* 1. Krzyżyk (Remove) */
+.removeWrapper {
+  grid-area: remove;
+  display: flex;
+  align-items: center;
+
+  /* Mobile: Centrowanie w kolumnie 32px */
+  width: 32px;
+  justify-content: center;
+
+  /* 👇 ZMIANA: Od tabletu resetujemy to do normalnego wyglądu */
+  @include on-tablet {
+    width: auto;
+    justify-content: flex-start;
+    margin-right: 0;
+  }
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.3s;
+
+  &:hover svg path {
+    stroke: $color-primary;
+  }
+}
+
+/* 2. Zdjęcie */
+.imageLink {
+  grid-area: image;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* 3. Nazwa */
+.nameLink {
+  grid-area: name;
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-primary;
+  text-decoration: none;
+  line-height: 1.4;
+
+  /* 👇 ZMIANA: Od tabletu nazwa zajmuje wolną przestrzeń */
+  @include on-tablet {
+    width: 300px;
+    flex-grow: 1;
+  }
+}
+
+/* 4. Licznik */
+.quantityWrapper {
+  grid-area: counter;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  justify-self: start;
+  margin-left: 0;
+}
+
+.quantityBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements-bg;
+  background-color: $color-white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  color: $color-primary;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+    border-color: $color-elements-bg;
+  }
+}
+
+.quantity {
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+  color: $color-primary;
+}
+
+/* 5. Cena */
+.price {
+  grid-area: price;
+  font-size: 20px;
+  font-weight: 800;
+  color: $color-primary;
+  text-align: right;
+
+  /* 👇 ZMIANA: Od tabletu ustalamy minimalną szerokość */
+  @include on-tablet {
+    min-width: 80px;
+  }
+}

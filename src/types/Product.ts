@@ -1,7 +1,7 @@
 export interface Product {
-  id: number;
+  year: number;
+  id: string;
   category: string;
-  phoneId: string;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -10,11 +10,19 @@ export interface Product {
   capacity: string;
   color: string;
   ram: string;
-  year: number;
   image: string;
+
+  // Pola szczegółowe (występują w plikach detali lub tabletach)
+  priceRegular?: number;
+  priceDiscount?: number;
+  images?: string[];
+  description?: { title: string; text: string[] }[];
   resolution?: string;
   processor?: string;
   camera?: string;
   zoom?: string;
   cell?: string[];
+  capacityAvailable?: string[];
+  colorsAvailable?: string[];
+  namespaceId?: string;
 }

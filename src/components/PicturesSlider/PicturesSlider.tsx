@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import cn from 'classnames';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  'img/banner-phones.png',
-  'img/banner-tablets.png',
-  'img/banner-accessories.png',
+  '/img/banner-phones.png',
+  '/img/banner-tablets.png',
+  '/img/banner-accessories.png',
 ];
 
 export const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Automatyczne przewijanie co 5 sekund (jak w wymaganiach)
+  // ✅ KROK 1: Definiujemy funkcje NA GÓRZE, żeby useEffect je "widział"
+  const handleNext = () => {
+    setCurrentSlide(prev => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide(prev => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  // ✅ KROK 2: Dopiero teraz używamy useEffect
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentSlide]);
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
-  const handlePrev = () => {
-    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+  }, [currentSlide]); // Resetujemy timer przy każdej zmianie slajdu
 
   return (
     <div className={styles.slider}>
       <div className={styles.buttonsWrapper}>
+        {/* Przycisk w LEWO */}
         <button className={styles.button} onClick={handlePrev}>
-          {/* Prosta strzałka w lewo */}
-          &lt;
+          <img src="/img/icons/arrow-left.svg" alt="Previous slide" />
         </button>
+
         <div className={styles.imageContainer}>
           <img
             src={images[currentSlide]}
@@ -41,19 +44,24 @@ export const PicturesSlider = () => {
             className={styles.image}
           />
         </div>
+
+        {/* Przycisk w PRAWO */}
         <button className={styles.button} onClick={handleNext}>
-          {/* Prosta strzałka w prawo */}
-          &gt;
+          <img src="/img/icons/arrow-right.svg" alt="Next slide" />
         </button>
       </div>
 
-      {/* Kropeczki na dole (Pagination) */}
+      {/* Pagination (Kropki) */}
       <div className={styles.dots}>
         {images.map((_, index) => (
-          <div
+          <button
             key={index}
-            className={`${styles.dot} ${index === currentSlide ? styles.active : ''}`}
+            type="button"
+            className={cn(styles.dot, {
+              [styles.active]: index === currentSlide,
+            })}
             onClick={() => setCurrentSlide(index)}
+            aria-label={`Select slide ${index + 1}`}
           />
         ))}
       </div>

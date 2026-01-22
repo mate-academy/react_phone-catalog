@@ -1,3 +1,26 @@
+@import './styles/utils';
+
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800; /* ExtraBold używany w nagłówkach */
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,73 +28,73 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; // ✅ To jest obowiązkowe, żeby nic nie latało na boki
+  overflow-x: hidden;
   width: 100%;
+  font-family: Mont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-:global(.section) {
+/* Główny Wrapper - Sticky Footer Setup */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Rozciąga stronę na cały ekran */
+}
+
+/* Main Section */
+.section {
+  flex-grow: 1; /* Wypycha footer na dół */
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0; /* Odstęp góra/dół dla treści głównej */
+
+  /* Na tablecie i desktopie większy odstęp od nagłówka */
+  @include on-tablet {
+    padding: 32px 0;
+  }
+
+  @include on-desktop {
+    padding: 40px 0;
+  }
+}
+
+/* --- KONTENER (GŁÓWNA SIATKA) --- */
+.container {
+  width: 100%;
+  margin: 0 auto; /* Centrowanie kontenera na środku ekranu */
+
+  /* 1. MOBILE (Domyślnie) */
   padding-left: 16px;
   padding-right: 16px;
 
+  /* 2. TABLET */
   @media (min-width: 640px) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-.homePage {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.title {
-  /* Tytuł nie ma marginesów ujemnych, więc nie "ucieka" poza ekran */
-  margin-top: 24px;
-  margin-bottom: 24px;
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.sliderWrapper {
-  position: relative;
-  /* 📱 MOBILE: Niwelujemy padding 16px z App.scss */
-  margin-left: -16px;
-  margin-right: -16px;
-  width: calc(100% + 32px); // 16px + 16px
-  margin-bottom: 32px;
-
-  @media (min-width: 640px) {
-    /* 📱 TABLET: Niwelujemy padding 32px z App.scss */
-    margin-left: -32px;
-    margin-right: -32px;
-    width: calc(100% + 64px);
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
+  /* 3. DESKTOP (1200px+) */
   @media (min-width: 1200px) {
-    /* 💻 DESKTOP: Tutaj zazwyczaj chcemy, żeby slider był w kontenerze */
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
+    max-width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
-:global(.section) {
-  margin-bottom: 56px;
-  /* Sekcje produktów nie mają ujemnych marginesów, więc będą miały odstęp 16px */
-}
+/* Dodatkowa klasa grid, jeśli jej używasz do produktów */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
 
-.sectionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px; /* W Figmie często jest 16px lub 24px */
+  }
 
-.sectionTitle {
-  font-size: 22px;
-  font-weight: 800;
-  margin: 0;
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr); /* 4 kolumny na desktopie */
+    gap: 24px;
+  }
 }

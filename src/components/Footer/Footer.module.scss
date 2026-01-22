@@ -1,42 +1,113 @@
+@import '../../styles/utils';
+
 .footer {
-  border-top: 1px solid #e2e6e9;
+  border-top: 1px solid $color-elements-bg;
+  background-color: $color-white;
+  width: 100%;
+
+  /* Blokujemy możliwość rozciągania stopki przez rodzica (App.tsx) */
+  margin-top: auto;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  /* --- 1. MOBILE --- */
   padding: 32px 0;
-  margin-top: auto; /* Dopycha stopkę do dołu, jeśli treści jest mało */
-  background-color: #fff;
-}
+  height: auto;
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-
-  /* Na desktopie wszystko w jednym rzędzie */
-  @media (min-width: 640px) {
-    flex-direction: row;
-    justify-content: space-between;
+  /* --- 2. TABLET / DESKTOP --- */
+  @include on-tablet {
+    padding: 0;
+    height: 96px; /* Sztywna wysokość */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-.logo img {
-  height: 30px;
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+
+  /* Desktopowe marginesy */
+  @include on-desktop {
+    padding: 0 24px;
+  }
+
+  /* Tablet/Desktop: Układ poziomy */
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Rozrzuca elementy: Logo | Linki | Top */
+    height: 100%;
+    gap: 0;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 .links {
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px; /* Mobile */
 
   a {
     text-decoration: none;
-    color: #89939a;
+    color: $color-secondary;
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
     transition: color 0.3s;
 
     &:hover {
-      color: #313237;
+      color: $color-primary;
     }
+  }
+
+  /* --- TABLET --- */
+  @include on-tablet {
+    flex-direction: row;
+    gap: 32px; /* Mniejszy odstęp na tabletach */
+  }
+
+  /* --- DESKTOP --- */
+  @include on-desktop {
+    gap: 112px;
+  }
+}
+
+/* 👇 PRZENIESIONE WYŻEJ, ABY UNIKNĄĆ BŁĘDU NO-DESCENDING-SPECIFICITY */
+.backText {
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: $color-white;
+  border: 1px solid $color-elements-bg; /* Ramka */
+  border-radius: 50%;
+  transition: border-color 0.3s, background-color 0.3s;
+
+  img {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -44,28 +115,20 @@
   display: flex;
   align-items: center;
   gap: 16px;
-}
-
-.backText {
-  color: #89939a;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.backBtn {
-  width: 32px;
-  height: 32px;
-  background-color: #313237; /* Ciemne tło */
-  border: none;
-  border-radius: 50%; /* Kółko */
-  color: #fff;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s;
+  align-self: center; /* Mobile: środek */
+
+  @include on-tablet {
+    align-self: auto;
+  }
 
   &:hover {
-    background-color: #4a4b51;
+    .backBtn {
+      border-color: $color-primary;
+      background-color: $color-white;
+    }
+    .backText {
+      color: $color-primary;
+    }
   }
 }

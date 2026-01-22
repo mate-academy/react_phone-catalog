@@ -1,24 +1,23 @@
-/* src/pages/HomePage/HomePage.module.scss */
+@import '../../styles/utils';
+
+.homePage {
+  width: 100%;
+}
+
+.title {
+  color: $color-primary;
+  margin: 24px 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.sliderWrapper {
+  margin-bottom: 56px;
+}
 
 .section {
-  width: 100%;
   margin-bottom: 56px;
-
-  /* ✅ Wymuszamy margines wewnętrzny bezpośrednio tutaj */
-  padding-left: 16px;
-  padding-right: 16px;
-
-  @media (min-width: 640px) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @media (min-width: 1200px) {
-    padding-left: 0;
-    padding-right: 0;
-    max-width: 1200px;
-    margin: 0 auto 80px;
-  }
 }
 
 .sectionHeader {
@@ -26,5 +25,81 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-  /* Nagłówek teraz na pewno będzie miał 16px odstępu */
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  color: $color-primary;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+/* --- PRZYCISKI NAWIGACJI (STRZAŁKI) --- */
+.arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  /* 👇 Ikona w środku */
+  .icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) opacity(1);
+    transition: all 0.3s;
+  }
+
+  /* Stan DISABLED (Zablokowany) */
+  &:disabled {
+    border-color: $color-border;
+    cursor: default;
+    background-color: $color-white;
+
+    .icon {
+      filter: none;
+      opacity: 0.3; /* Dodatkowo wyszarzamy */
+    }
+  }
+
+  /* Stan HOVER (dla aktywnych) */
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+/* --- WRAPPER PRODUKTÓW (Horyzontalny scroll) --- */
+.productsWrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin: 0 -16px; /* Negatywny margines na mobile */
+  padding: 0 16px;
+
+  /* Ukrywanie paska przewijania */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  /* Wymuszenie linii poziomej na liście produktów */
+  & > div {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 16px;
+    width: max-content;
+  }
 }

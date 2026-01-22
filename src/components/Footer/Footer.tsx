@@ -6,39 +6,39 @@ export const Footer = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Płynne przewijanie
+      behavior: 'smooth',
     });
   };
 
   return (
     <footer className={styles.footer}>
-      <div className="container">
-        <div className={styles.content}>
-          {/* 1. Logo */}
-          <Link to="/" className={styles.logo}>
-            <img src="/img/logo.svg" alt="Nice Gadgets logo" />
-          </Link>
+      <div className={styles.content}>
+        <Link to="/" className={styles.logo}>
+          <img src="/img/logo.svg" alt="Nice Gadgets logo" />
+        </Link>
 
-          {/* 2. Linki zewnętrzne */}
-          <div className={styles.links}>
-            <a
-              href="https://github.com/mate-academy"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Github
-            </a>
-            <a href="#">Contacts</a>
-            <a href="#">Rights</a>
-          </div>
+        <div className={styles.links}>
+          <a
+            href="https://github.com/mate-academy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.navLink}
+          >
+            Github
+          </a>
+          <a href="#" className={styles.navLink}>
+            Contacts
+          </a>
+          <a href="#" className={styles.navLink}>
+            Rights
+          </a>
+        </div>
 
-          {/* 3. Przycisk Back to Top */}
-          <div className={styles.backToTop}>
-            <span className={styles.backText}>Back to top</span>
-            <button className={styles.backBtn} onClick={handleScrollToTop}>
-              {/* Ikona strzałki w górę (możesz użyć SVG, tu prosty znak) */}^
-            </button>
-          </div>
+        <div className={styles.backToTop} onClick={handleScrollToTop}>
+          <span className={styles.backText}>Back to top</span>
+          <button className={styles.backBtn} aria-label="Scroll to top">
+            <img src="/img/icons/arrow-top.svg" alt="Up" />
+          </button>
         </div>
       </div>
     </footer>

@@ -1,175 +1,478 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
-import { Product } from '../../types/Product';
-import { Loader } from '../../components/Loader/Loader';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { useCart } from '../../context/CartContext'; // <--- Import koszyka
-import { useFav } from '../../context/FavContext'; // <--- Import ulubionych
+import { Product } from '../../types/Product';
+import { useCart } from '../../context/CartContext';
+import { useFav } from '../../context/FavContext';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const { addToCart, isInCart } = useCart();
+  const { toggleFav, isInFav } = useFav();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Stan do galerii zdjęć
-  const [selectedImage, setSelectedImage] = useState<string>('');
-
   const { productId } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
 
-  // Hooki z Contextu
-  const { addToCart, cartItems } = useCart();
-  const { addToFav, removeFromFav, favItems } = useFav();
+  const isAdded = product ? isInCart(product.id) : false;
+  const isFav = product ? isInFav(product.id) : false;
 
-  useEffect(() => {
-    setIsLoading(true);
+  const isTablets = location.pathname.includes('tablets');
+  const isAccessories = location.pathname.includes('accessories');
 
-    fetch('/api/products.json')
-      .then(res => res.json())
-      .then((products: Product[]) => {
-        // Szukamy po itemId (np. "apple-iphone-11")
-        const found = products.find(p => p.itemId === productId);
+  let categoryName = 'Phones';
+  let categoryPath = '/phones';
+  let categoryApiFile = 'phones.json';
+  let currentCategorySlug = 'phones';
 
-        if (found) {
-          setProduct(found);
-          setSelectedImage(found.image); // Ustawiamy główne zdjęcie na start
-
-          // Losowanie polecanych
-          const others = products
-            .filter(p => p.itemId !== found.itemId)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 4);
-
-          setSuggestedProducts(others);
-        } else {
-          // Opcjonalnie: navigate('/page-not-found');
-        }
-      })
-      .finally(() => setIsLoading(false));
-
-    window.scrollTo(0, 0);
-  }, [productId]);
-
-  if (isLoading) {
-    return <Loader />;
+  if (isTablets) {
+    categoryName = 'Tablets';
+    categoryPath = '/tablets';
+    categoryApiFile = 'tablets.json';
+    currentCategorySlug = 'tablets';
+  } else if (isAccessories) {
+    categoryName = 'Accessories';
+    categoryPath = '/accessories';
+    categoryApiFile = 'accessories.json';
+    currentCategorySlug = 'accessories';
   }
 
-  if (!product) {
-    return <div className="container">Product not found</div>;
-  }
+  const fixImage = (url: string) => {
+    if (!url) {
+      return '';
+    }
 
-  // Sprawdzamy czy produkt jest w koszyku/ulubionych
-  const isAdded = cartItems.some(item => item.id === product.id);
-  const isFav = favItems.some(item => item.id === product.id);
+    const path = url.startsWith('/') ? url : `/${url}`;
 
-  // Obsługa kliknięcia w serce
-  const handleFavClick = () => {
-    if (isFav) {
-      removeFromFav(product.id);
-    } else {
-      addToFav(product);
+    return path.replace('.jpg', '.webp');
+  };
+
+  const getNewId = (
+    namespaceId: string,
+    newColor: string,
+    newCapacity: string,
+  ) => {
+    const normColor = newColor.toLowerCase().replace(/ /g, '-');
+    const normCapacity = newCapacity
+      ? newCapacity.toLowerCase().replace(/ /g, '')
+      : '';
+
+    if (!normCapacity) {
+      return `${namespaceId}-${normColor}`;
+    }
+
+    return `${namespaceId}-${normCapacity}-${normColor}`;
+  };
+
+  const colorMap: Record<string, string> = {
+    black: '#1c1c1b',
+    gold: '#F9E5C9',
+    silver: '#e2e4e1',
+    red: '#a50011',
+    rosegold: '#e6c7c2',
+    spacegray: '#535150',
+    midnightgreen: '#4e5851',
+    white: '#f9f6ef',
+    purple: '#d1cdda',
+    green: '#aee1cd',
+    yellow: '#ffe681',
+    coral: '#ff7f50',
+    grey: '#808080',
+    skyblue: '#87CEEB',
+    graphite: '#41424C',
+    sierrablue: '#9BB5CE',
+    pink: '#fae7e8',
+    starlight: '#fbf7f4',
+    blue: '#215E7C',
+    midnight: '#191f28',
+    starlight_new: '#f0fcf0',
+  };
+
+  const getSuggestedProducts = (allProducts: Product[], currentId: string) => {
+    return allProducts
+      .filter(item => item.itemId !== currentId && item.id !== currentId)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 4);
+  };
+
+  const handleIconError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>,
+  ) => {
+    const target = e.currentTarget;
+
+    target.style.display = 'none';
+  };
+
+  // 👇 Funkcja sprawdzająca pozycję (używana w wielu miejscach)
+  const checkScroll = () => {
+    if (listRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = listRef.current;
+
+      // 1. Lewa strona
+      setCanScrollLeft(scrollLeft > 0);
+
+      // 2. Prawa strona (z tolerancją błędu 5px)
+      // Jeśli scrollLeft + szerokość widoczna jest blisko końca (mniej niż 5px różnicy), to uznajemy za koniec
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 5);
     }
   };
 
-  // Zbudujmy tablicę zdjęć (jeśli API nie zwraca tablicy, używamy tylko głównego)
-  // UWAGA: Sprawdź w types/Product.ts czy masz pole 'images'.
-  // Jeśli nie, na razie użyjemy tricku z jednym zdjęciem, ale profesjonalnie powinna być tablica.
-  const images = [product.image];
-  // Jeśli masz w JSON pole 'images': const images = product.images || [product.image];
+  const scrollLeft = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({ left: -288, behavior: 'smooth' });
+      // Sprawdź przyciski po zakończeniu animacji (np. za 500ms)
+      setTimeout(checkScroll, 500);
+    }
+  };
+
+  const scrollRight = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({ left: 288, behavior: 'smooth' });
+      setTimeout(checkScroll, 500);
+    }
+  };
+
+  // 👇 ULEPSZONY useEffect do obsługi scrolla
+  useEffect(() => {
+    const listElement = listRef.current;
+
+    const handleScroll = () => {
+      checkScroll();
+    };
+
+    if (listElement) {
+      // Dodajemy listener od razu
+      listElement.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+
+      // Wywołujemy sprawdzenie na starcie
+      checkScroll();
+
+      // Dodatkowe sprawdzenie po chwili (gdyby obrazki się doczytały i zmieniły szerokość)
+      setTimeout(checkScroll, 500);
+    }
+
+    return () => {
+      if (listElement) {
+        listElement.removeEventListener('scroll', handleScroll);
+      }
+
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [suggestedProducts]); // Reaguj na załadowanie produktów
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const listResponse = await fetch(`/api/${categoryApiFile}`);
+
+        if (!listResponse.ok) {
+          throw new Error('Source data not found');
+        }
+
+        const listData: Product[] = await listResponse.json();
+
+        setSuggestedProducts(getSuggestedProducts(listData, productId || ''));
+
+        let data: Product | null = null;
+
+        try {
+          const detailResponse = await fetch(`/api/products/${productId}.json`);
+          const contentType = detailResponse.headers.get('content-type');
+
+          if (detailResponse.ok && contentType?.includes('application/json')) {
+            const rawData = await detailResponse.json();
+
+            data = { ...rawData, category: currentCategorySlug };
+          }
+        } catch {}
+
+        if (!data) {
+          const foundItem = listData.find(
+            item => item.id === productId || item.itemId === productId,
+          );
+
+          if (!foundItem) {
+            throw new Error('Product not found on server');
+          }
+
+          data = foundItem;
+        }
+
+        setProduct(data);
+        if (data) {
+          const mainImg =
+            data.images && data.images.length > 0 ? data.images[0] : data.image;
+
+          if (mainImg) {
+            setSelectedImage(mainImg);
+          }
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Loading error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [productId, categoryApiFile, currentCategorySlug]);
+
+  if (loading) {
+    return <div className={styles.container}>Loading...</div>;
+  }
+
+  if (error || !product) {
+    return <div className={styles.container}>Error: {error}</div>;
+  }
+
+  const currentPrice = product.priceDiscount || product.price;
+  const oldPrice = product.priceRegular || product.fullPrice;
+  const showOldPrice = oldPrice && oldPrice !== currentPrice;
 
   return (
-    <div className={`container ${styles.container}`}>
-      <button onClick={() => navigate(-1)} className={styles.backButton}>
-        {'<'} Back
+    <div className={styles.container}>
+      <nav className={styles.nav}>
+        <Link to="/">
+          <img src="/img/icons/Home.svg" alt="Home" onError={handleIconError} />
+        </Link>
+        <span>&gt;</span>
+        <Link to={categoryPath}>{categoryName}</Link>
+        <span>&gt;</span>
+        <span className={styles.activeName}>{product.name}</span>
+      </nav>
+
+      <button onClick={() => navigate(-1)} className={styles.backBtn}>
+        <span>&lt;</span> Back
       </button>
 
       <h1 className={styles.title}>{product.name}</h1>
 
       <div className={styles.grid}>
-        {/* LEWA KOLUMNA: Galeria */}
         <div className={styles.galleryContainer}>
-          {/* Miniaturki (na razie jedna, ale gotowe pod więcej) */}
           <div className={styles.thumbnails}>
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className={cn(styles.thumbnailBox, {
-                  [styles.active]: selectedImage === img,
-                })}
-                onClick={() => setSelectedImage(img)}
-              >
-                <img src={`/${img}`} alt="Thumbnail" />
-              </div>
-            ))}
-          </div>
+            {product.images?.map((imgUrl, index) => {
+              const fixedUrl = fixImage(imgUrl);
+              const isActive = selectedImage === imgUrl;
 
-          {/* Duże zdjęcie */}
+              return (
+                <div
+                  key={index}
+                  className={`${styles.thumbnailBox} ${isActive ? styles.active : ''}`}
+                  onClick={() => setSelectedImage(imgUrl)}
+                >
+                  <img src={fixedUrl} alt="thumb" />
+                </div>
+              );
+            })}
+          </div>
           <div className={styles.mainImage}>
-            <img src={`/${selectedImage}`} alt={product.name} />
+            <img
+              src={selectedImage ? fixImage(selectedImage) : ''}
+              alt={product.name}
+            />
           </div>
         </div>
 
-        {/* PRAWA KOLUMNA: Szczegóły */}
         <div className={styles.detailsWrapper}>
-          <div className={styles.headerRow}>
-            <span className={styles.price}>${product.price}</span>
-            {product.fullPrice !== product.price && (
-              <span className={styles.fullPrice}>${product.fullPrice}</span>
+          <div className={styles.optionsBlock}>
+            <div className={styles.idText}>ID: 802390</div>
+
+            <div className={styles.optionLabel}>Available colors</div>
+            <div className={styles.colorsList}>
+              {product.colorsAvailable?.map((c, i) => {
+                const targetId = getNewId(
+                  product.namespaceId || product.itemId || '',
+                  c,
+                  product.capacity,
+                );
+                const isActive = c === product.color;
+
+                return (
+                  <Link
+                    key={i}
+                    to={`${categoryPath}/${targetId}`}
+                    title={c}
+                    className={`${styles.colorCircle} ${isActive ? styles.active : ''}`}
+                    style={{ backgroundColor: colorMap[c] || c }}
+                  />
+                );
+              })}
+            </div>
+
+            <div className={styles.optionLabel}>Select capacity</div>
+            <div className={styles.capacityList}>
+              {product.capacityAvailable?.map((cap, i) => {
+                const targetId = getNewId(
+                  product.namespaceId || product.itemId || '',
+                  product.color,
+                  cap,
+                );
+                const isActive = cap === product.capacity;
+
+                return (
+                  <Link
+                    key={i}
+                    to={`${categoryPath}/${targetId}`}
+                    className={`${styles.capacityBtn} ${isActive ? styles.active : ''}`}
+                  >
+                    {cap}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={styles.pricesBlock}>
+            <span className={styles.price}>${currentPrice}</span>
+            {showOldPrice && (
+              <span className={styles.fullPrice}>${oldPrice}</span>
             )}
           </div>
 
           <div className={styles.actions}>
-            {/* Przycisk Koszyka */}
             <button
-              className={cn(styles.addToCart, { [styles.added]: isAdded })}
               onClick={() => addToCart(product)}
+              className={`${styles.addToCart} ${isAdded ? styles.added : ''}`}
             >
-              {isAdded ? 'Added to cart' : 'Add to cart'}
+              {isAdded ? 'Added' : 'Add to cart'}
             </button>
-
-            {/* Przycisk Ulubionych */}
             <button
-              className={cn(styles.favoriteBtn, { [styles.isFav]: isFav })}
-              onClick={handleFavClick}
+              onClick={() => toggleFav(product)}
+              className={styles.favoriteBtn}
             >
-              {isFav ? '❤️' : '♡'}
+              <img
+                src={
+                  isFav ? '/img/icons/Heart Like.svg' : '/img/icons/Heart.svg'
+                }
+                alt="Fav"
+              />
             </button>
           </div>
 
-          <div className={styles.specs}>
-            <div>
-              <span>Screen</span> <span>{product.screen}</span>
+          <div className={styles.smallSpecs}>
+            <div className={styles.specRowSmall}>
+              <span className={styles.specName}>Screen</span>
+              <span className={styles.specValue}>{product.screen}</span>
             </div>
-            <div>
-              <span>Resolution</span> <span>{product.resolution}</span>
+            <div className={styles.specRowSmall}>
+              <span className={styles.specName}>Resolution</span>
+              <span className={styles.specValue}>{product.resolution}</span>
             </div>
-            <div>
-              <span>Processor</span> <span>{product.processor}</span>
+            <div className={styles.specRowSmall}>
+              <span className={styles.specName}>Processor</span>
+              <span className={styles.specValue}>{product.processor}</span>
             </div>
-            <div>
-              <span>RAM</span> <span>{product.ram}</span>
+            <div className={styles.specRowSmall}>
+              <span className={styles.specName}>RAM</span>
+              <span className={styles.specValue}>{product.ram}</span>
             </div>
-            <div>
-              <span>Camera</span> <span>{product.camera}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.descriptionSection}>
+        <div className={styles.about}>
+          <h2>About</h2>
+          {product.description?.map((descPart, index) => (
+            <div key={index}>
+              <h3>{descPart.title}</h3>
+              {Array.isArray(descPart.text) ? (
+                descPart.text.map((p, i) => <p key={i}>{p}</p>)
+              ) : (
+                <p>{descPart.text}</p>
+              )}
             </div>
-            <div>
-              <span>Zoom</span> <span>{product.zoom}</span>
+          ))}
+        </div>
+
+        <div className={styles.techSpecs}>
+          <h2>Tech specs</h2>
+          <div className={styles.specsList}>
+            <div className={styles.specRow}>
+              <span className={styles.specName}>Screen</span>
+              <span className={styles.specValue}>{product.screen}</span>
             </div>
-            {/* Jeśli masz pole 'cell' w typach */}
+            <div className={styles.specRow}>
+              <span className={styles.specName}>Resolution</span>
+              <span className={styles.specValue}>{product.resolution}</span>
+            </div>
+            <div className={styles.specRow}>
+              <span className={styles.specName}>Processor</span>
+              <span className={styles.specValue}>{product.processor}</span>
+            </div>
+            <div className={styles.specRow}>
+              <span className={styles.specName}>RAM</span>
+              <span className={styles.specValue}>{product.ram}</span>
+            </div>
+            {product.camera && (
+              <div className={styles.specRow}>
+                <span className={styles.specName}>Camera</span>
+                <span className={styles.specValue}>{product.camera}</span>
+              </div>
+            )}
+            {product.zoom && (
+              <div className={styles.specRow}>
+                <span className={styles.specName}>Zoom</span>
+                <span className={styles.specValue}>{product.zoom}</span>
+              </div>
+            )}
             {product.cell && (
-              <div>
-                <span>Cell</span> <span>{product.cell.join(', ')}</span>
+              <div className={styles.specRow}>
+                <span className={styles.specName}>Cell</span>
+                <span className={styles.specValue}>
+                  {product.cell?.join(', ')}
+                </span>
               </div>
             )}
           </div>
         </div>
       </div>
 
-      <div className={styles.recommended}>
-        <h3>You may also like</h3>
-        <ProductsList products={suggestedProducts} />
+      <div className={styles.suggestionsSection}>
+        <div className={styles.suggestionsHeader}>
+          <h2 className={styles.suggestionsTitle}>You may also like</h2>
+          <div className={styles.buttons}>
+            <button
+              onClick={scrollLeft}
+              className={cn(styles.navBtn, {
+                [styles.disabled]: !canScrollLeft,
+              })}
+              disabled={!canScrollLeft}
+            >
+              <img src="/img/icons/arrow-left.svg" alt="Prev" />
+            </button>
+
+            <button
+              onClick={scrollRight}
+              className={cn(styles.navBtn, {
+                [styles.disabled]: !canScrollRight,
+              })}
+              disabled={!canScrollRight}
+            >
+              <img src="/img/icons/arrow-right.svg" alt="Next" />
+            </button>
+          </div>
+        </div>
+
+        <ProductsList
+          products={suggestedProducts}
+          ref={listRef}
+          variant="slider"
+        />
       </div>
     </div>
   );

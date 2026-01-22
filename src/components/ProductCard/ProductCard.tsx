@@ -11,48 +11,64 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  // 1. Wyciągamy funkcje z Contextu
-  const { addToCart, cartItems } = useCart();
-  const { addToFav, removeFromFav, favItems } = useFav();
+  const { addToCart, isInCart } = useCart();
+  const { toggleFav, isInFav } = useFav();
 
-  // 2. Sprawdzamy statusy
-  const isAdded = cartItems.some(item => item.id === product.id);
-  const isFav = favItems.some(item => item.id === product.id);
+  const isAdded = isInCart(product.id);
+  const isFav = isInFav(product.id);
 
-  const { name, fullPrice, price, screen, capacity, ram, image, itemId } =
-    product;
+  const { name, screen, capacity, ram, image, itemId, category } = product;
 
-  // 3. Obsługa dodawania do koszyka
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    addToCart(product);
+  /* 👇 NAPRAWA: Sprawdzamy oba warianty nazw cen.
+     Dzięki temu karta zadziała zarówno dla danych z listy, jak i detali. */
+  const currentPrice = product.price || product.priceDiscount;
+  const oldPrice = product.fullPrice || product.priceRegular;
+
+  const mainImage = image || product.images?.[0] || '';
+
+  const fixedImage = (url: string) => {
+    if (!url) {
+      return '';
+    }
+
+    const path = url.startsWith('/') ? url : `/${url}`;
+
+    return path.replace('.jpg', '.webp');
   };
 
-  // 4. 👇 TEJ FUNKCJI BRAKOWAŁO - Obsługa Ulubionych
-  const handleFavClick = (e: React.MouseEvent) => {
-    e.preventDefault(); // Ważne: żeby nie wchodzić w link produktu po kliknięciu serca
+  const imageUrl = fixedImage(mainImage);
 
-    if (isFav) {
-      removeFromFav(product.id);
-    } else {
-      addToFav(product);
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!isAdded) {
+      addToCart(product);
     }
+  };
+
+  const handleFavClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    toggleFav(product);
   };
 
   return (
     <article className={styles.card}>
-      <Link to={`/phones/${itemId}`} className={styles.imageLink}>
-        <img src={`/${image}`} alt={name} className={styles.image} />
+      <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
+        <img
+          src={imageUrl}
+          alt={name}
+          className={styles.image}
+          loading="lazy"
+        />
       </Link>
 
-      <Link to={`/phones/${itemId}`} className={styles.title}>
+      <Link to={`/${category}/${itemId}`} className={styles.title}>
         {name}
       </Link>
 
       <div className={styles.prices}>
-        <span className={styles.price}>${price}</span>
-        {fullPrice !== price && (
-          <span className={styles.fullPrice}>${fullPrice}</span>
+        <span className={styles.price}>${currentPrice}</span>
+        {oldPrice && oldPrice !== currentPrice && (
+          <span className={styles.fullPrice}>${oldPrice}</span>
         )}
       </div>
 
@@ -75,17 +91,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.actions}>
         <button
-          className={cn(styles.addToCartBtn, { [styles.selected]: isAdded })}
+          type="button"
+          className={cn(styles.addToCartBtn, { [styles.added]: isAdded })}
           onClick={handleAddToCart}
+          disabled={isAdded}
         >
           {isAdded ? 'Added' : 'Add to cart'}
         </button>
 
         <button
+          type="button"
           className={cn(styles.favoriteBtn, { [styles.isFav]: isFav })}
-          onClick={handleFavClick} // Teraz to zadziała, bo funkcja istnieje wyżej
+          onClick={handleFavClick}
         >
-          {isFav ? '❤️' : '♡'}
+          <img
+            src={isFav ? '/img/icons/Heart Like.svg' : '/img/icons/Heart.svg'}
+            alt="Like"
+          />
         </button>
       </div>
     </article>

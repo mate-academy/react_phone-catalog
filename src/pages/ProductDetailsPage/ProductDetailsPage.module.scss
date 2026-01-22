@@ -1,35 +1,159 @@
+@import '../../styles/utils';
+
+.container {
+  padding-bottom: 56px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.nav {
+  padding: 24px 0;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  a {
+    color: $color-secondary;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  span {
+    color: $color-secondary;
+  }
+
+  .activeName {
+    color: $color-secondary;
+  }
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: $color-secondary;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 0;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.title {
+  margin: 0 0 32px;
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-primary;
+  letter-spacing: -0.01em;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+  }
+}
+
+/* --- GALERIA --- */
 .galleryContainer {
   flex: 1;
   display: flex;
+  flex-direction: column-reverse;
   gap: 16px;
 
-  /* Na telefonie - kolumna odwrócona (duże na górze) */
-  flex-direction: column-reverse;
+  @include on-tablet {
+    flex-direction: row;
+    max-width: 50%;
+  }
+}
 
-  @media (min-width: 640px) {
-    flex-direction: row; /* Na komputerze - miniaturki po lewej */
+.mainImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 450px;
+  }
+
+  @include on-tablet {
+    height: 450px;
   }
 }
 
 .thumbnails {
   display: flex;
   gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
 
-  @media (min-width: 640px) {
-    flex-direction: column; /* Pionowa lista miniaturek */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include on-tablet {
+    flex-direction: column;
+    overflow-x: visible;
+    padding-bottom: 0;
   }
 }
 
 .thumbnailBox {
-  width: 50px; /* lub 80px */
-  height: 50px; /* lub 80px */
-  border: 1px solid #e2e6e9;
-  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-elements-bg;
+  border-radius: 8px;
   padding: 4px;
-  border-radius: 4px;
+  background-color: $color-white;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.3s;
+
+  @include on-tablet {
+    width: 80px;
+    height: 80px;
+  }
 
   &.active {
-    border-color: #313237; /* Zaznaczona miniaturka */
+    border-color: $color-primary;
   }
 
   img {
@@ -39,22 +163,345 @@
   }
 }
 
-.mainImage {
+/* --- SIDEBAR (Detale produktu) --- */
+.detailsWrapper {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 320px;
+}
 
-  img {
-    max-width: 100%;
-    max-height: 400px;
-    object-fit: contain;
+.idText {
+  font-size: 12px;
+  color: $color-secondary;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.optionsBlock {
+  margin-bottom: 24px;
+  border-bottom: 1px solid $color-elements-bg;
+  padding-bottom: 24px;
+}
+
+.optionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.colorsList {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $color-elements-bg;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-elements-bg;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+
+  &.active {
+    border-color: $color-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid $color-primary;
+    }
   }
 }
 
-/* Dodaj styl dla aktywnego przycisku koszyka */
-.addToCart.added {
-  background-color: #fff;
-  color: #27ae60; /* Zielony tekst */
-  border: 1px solid #e2e6e9;
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityBtn {
+  height: 32px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-elements-bg;
+  background-color: $color-white;
+  color: $color-primary;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.active {
+    background-color: $color-primary;
+    color: $color-white;
+    border-color: $color-primary;
+  }
+
+  &:hover:not(.active) {
+    border-color: $color-primary;
+  }
+}
+
+/* CENA */
+.pricesBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  margin-top: 32px; /* Odstęp od kreski */
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-primary;
+}
+
+.fullPrice {
+  font-size: 22px;
+  text-decoration: line-through;
+  color: $color-secondary;
+  font-weight: 500;
+}
+
+/* AKCJE */
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  border: none;
+  background-color: $color-accent;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  &.added {
+    background-color: $color-white;
+    color: $color-green;
+    border: 1px solid $color-elements-bg;
+    box-shadow: none;
+  }
+}
+
+.favoriteBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  border: 1px solid $color-elements-bg;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.smallSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRowSmall {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+
+  .specName {
+    color: $color-secondary;
+    font-weight: 600;
+  }
+
+  .specValue {
+    color: $color-primary;
+    font-weight: 600;
+  }
+}
+
+/* --- DOLNA SEKCJA --- */
+.descriptionSection {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @include on-desktop {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.about {
+  flex: 1;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: $color-primary;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements-bg;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 16px;
+    color: $color-primary;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: $color-secondary;
+    margin-bottom: 12px;
+  }
+}
+
+.techSpecs {
+  flex: 1;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: $color-primary;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements-bg;
+  }
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  .specName {
+    font-size: 14px;
+    color: $color-secondary;
+  }
+
+  .specValue {
+    font-size: 14px;
+    color: $color-primary;
+    font-weight: 600;
+  }
+}
+
+/* ... (reszta pliku) ... */
+
+/* --- SUGGESTIONS (You may also like) --- */
+.suggestionsSection {
+  margin-top: 80px;
+}
+
+.suggestionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.suggestionsTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: $color-primary;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+
+  /* 1. Stan wyjściowy (nieaktywny/bazowy): Szara ramka */
+  border: 1px solid $color-elements-bg;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    transition: filter 0.3s; /* Płynna zmiana koloru strzałki */
+  }
+
+  /* 2. Stan AKTYWNY (gdy NIE ma klasy .disabled) */
+
+  /* zmieniamy ramkę i kolor ikony na czarny */
+  &:not(.disabled) {
+    cursor: pointer;
+    border-color: $color-primary; /* Czarna ramka */
+
+    img {
+      /* 👇 TO JEST ROZWIĄZANIE:
+         Wymusza, by obrazek stał się całkowicie czarny (#000000).
+         Działa niezależnie od tego, jaki kolor ma plik SVG. */
+      filter: brightness(0);
+    }
+
+    &:hover {
+      background-color: #fafbfc; /* Opcjonalne tło po najechaniu */
+    }
+  }
+
+  /* 3. Stan ZABLOKOWANY (disabled) */
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+
+    /* Ramka zostaje szara (jak w stanie wyjściowym) */
+    border-color: $color-elements-bg;
+
+    /* Ikona zostaje w swoim oryginalnym (szarym) kolorze + przezroczystość */
+    opacity: 0.5;
+  }
 }

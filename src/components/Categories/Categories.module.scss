@@ -1,3 +1,5 @@
+@import '../../styles/utils';
+
 .categories {
   margin-bottom: 80px;
 }
@@ -5,63 +7,69 @@
 .grid {
   display: flex;
   gap: 16px;
-  /* Na mobile Kategorie rzadko są w kolumnie, lepiej zostawić wrap */
-  flex-wrap: wrap;
-
-  @media (max-width: 640px) {
-    /* Opcjonalnie: zmiana na 1 kolumnę na bardzo małych ekranach */
-    // flex-direction: column;
-  }
+  flex-wrap: wrap; /* Pozwala kafelkom spadać niżej na małych ekranach */
 }
 
 .category {
   flex: 1;
-  min-width: 250px; // Trochę większe, żeby na tablecie były 2 w rzędzie
+  min-width: 250px; /* Minimalna szerokość, poniżej której kafelek spadnie niżej */
   text-decoration: none;
   transition: transform 0.3s;
 
-  &:hover {
-    .image { transform: scale(1.05); }
-    .categoryTitle { color: #000; }
+  /* Hover na całym kafelku powiększa zdjęcie i zmienia kolor tytułu */
+  @include hover {
+    .image {
+      transform: scale(1.05);
+    }
+    .categoryTitle {
+      color: $color-primary;
+    } /* Upewnia się, że jest czarny/aktywny */
   }
 }
 
 .imageWrapper {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1; /* Kwadrat */
   margin-bottom: 24px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 24px; // Mocne zaokrąglenie z Figmy
-
-  /* Domyślne tło, jeśli nie nadasz konkretnego */
-  background-color: #f1f2f3;
+  border-radius: 24px;
+  background-color: $color-bg; /* Domyślne tło */
+  transition: box-shadow 0.3s;
 }
 
-/* Możesz dodać te klasy w JSX: <div className={cn(styles.imageWrapper, styles.phonesBg)}> */
-.phonesBg { background-color: #6D6474; }
-.tabletsBg { background-color: #8D8D92; }
-.accessoriesBg { background-color: #973D5F; }
+.phonesBg {
+  background-color: #fcdbc1; /* Przykładowy kolor, sprawdź z Figmą (Twój: #6D6474 był bardzo ciemny) */
+}
+
+.tabletsBg {
+  background-color: #8d8d92;
+}
+
+.accessoriesBg {
+  background-color: #973d5f;
+}
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease-in-out;
 }
 
 .categoryTitle {
   font-size: 20px;
   font-weight: 700;
-  color: #313237;
-  margin: 0 0 4px 0;
+  color: $color-primary; /* Zmienna zamiast #313237 */
+  margin: 0 0 4px;
   transition: color 0.3s;
 }
 
 .count {
   font-size: 14px;
-  color: #89939a;
+  color: $color-secondary; /* Zmienna zamiast #89939a */
   margin: 0;
+  font-weight: 500;
 }

@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
 
-// Ten hook działa jak useState, ale zapisuje wszystko w pamięci przeglądarki
 export function useLocalStorage<T>(key: string, initialValue: T) {
-  // 1. Próbujemy odczytać zapisaną wartość przy starcie
   const [value, setValue] = useState<T>(() => {
     try {
       const item = localStorage.getItem(key);
 
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      console.error(error);
-
       return initialValue;
     }
   });
@@ -19,9 +15,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   useEffect(() => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   }, [key, value]);
 
   return [value, setValue] as const;

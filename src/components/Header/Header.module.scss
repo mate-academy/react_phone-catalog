@@ -1,148 +1,379 @@
-/* src/components/Header/Header.module.scss */
+/* 👇 TA LINIA NAPRAWIA PROBLEM RAZ NA ZAWSZE */
+/* stylelint-disable no-descending-specificity */
+
+@import '../../styles/utils';
 
 .header {
-  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  z-index: 100;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements-bg;
   height: 64px;
-  background-color: #fff;
-  border-bottom: 1px solid #e2e6e9;
-  display: flex;
-  justify-content: center;
-  z-index: 1000; // ✅ Jeden, wysoki z-index
-
-  @media (min-width: 640px) {
-    height: 96px;
-  }
-}
-
-.content {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between; // ✅ Rozpycha logo i akcje na boki
-  height: 100%;
-
-  @media (min-width: 640px) {
-    padding: 0 24px;
-  }
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  position: relative;
+  width: 100%;
 }
 
+/* --- LOGO --- */
 .logo {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  height: 100%;
+  padding-left: 16px;
 
   img {
     height: 28px;
     width: auto;
+    object-fit: contain;
+    transition: height 0.3s ease;
+  }
+
+  @include on-tablet {
+    img {
+      height: 36px;
+    }
+  }
+
+  @include on-desktop {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 0;
+    z-index: 10;
+
+    img {
+      height: 36px;
+    }
   }
 }
 
-// ✅ Kontener na linki (Home, Phones itp.)
+/* --- KONTENER GŁÓWNY --- */
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 24px;
+  }
+}
+
+/* --- NAWIGACJA (Menu) --- */
 .nav {
-  display: none; // ❌ Ukryte na mobile
+  display: none;
 
-  @media (min-width: 640px) {
-    display: flex; // ✅ Widoczne na desktopie
-    margin-left: 48px;
-    height: 100%;
+  @include on-tablet {
+    display: block;
+    margin-left: 0;
+  }
+
+  @media (min-width: 1200px) {
+     margin-left: 164px;
+  }
+
+  @media (min-width: 1386px) {
+    margin-left: 24px;
   }
 }
 
+/* --- ODSTĘPY MIĘDZY LINKAMI --- */
 .navList {
   display: flex;
-  gap: 32px;
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 100%;
+  gap: 32px;
+
+  @media (min-width: 1200px) {
+    gap: 64px;
+  }
 }
 
 .navLink {
+  position: relative;
+  text-decoration: none;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 800;
-  color: #89939a;
-  text-decoration: none;
-  height: 100%;
+  letter-spacing: 0.04em;
+  color: $color-secondary;
+  transition: color 0.3s;
+  height: 64px;
   display: flex;
   align-items: center;
-  border-bottom: 3px solid transparent;
-  transition: all 0.3s;
+  box-sizing: border-box;
 
-  &:hover, &.isActive {
-    color: #313237;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $color-primary;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &:hover {
+    color: $color-primary;
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
   }
 
   &.isActive {
-    border-bottom-color: #313237;
+    color: $color-primary;
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
   }
 }
 
-// ✅ Kontener na ikony i burgera
-.actions {
-  display: flex; // ✅ MUSI BYĆ FLEX NA MOBILE, żeby burger był widoczny
-  align-items: center;
-  height: 100%;
-}
+/* --- IKONY (PRAWA STRONA) --- */
+.icons {
+  display: none;
 
-// ✅ Ikony serca i koszyka (tylko dla desktopu w headerze)
-.desktopIcons {
-  display: none; // ❌ Ukryte na mobile (są wtedy w wysuwanym menu)
-
-  @media (min-width: 640px) {
-    display: flex; // ✅ Widoczne na desktopie
+  @include on-tablet {
+    display: flex;
+    align-items: center;
     height: 100%;
+    position: absolute;
+    right: 24px;
+    top: 0;
+    z-index: 10;
   }
 }
 
-// ✅ PRZYCISK BURGERA
-.burgerBtn {
-  display: flex; // ✅ Widoczny na mobile
-  width: 64px;
-  height: 64px;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  border: none;
-  border-left: 1px solid #e2e6e9;
-  cursor: pointer;
-  padding: 0;
-
-  @media (min-width: 640px) {
-    display: none; // ❌ Ukryty na desktopie
-  }
-
-  img {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-// ✅ Style dla ikon serca/koszyka na desktopie
-.iconBtn {
-  width: 64px;
-  height: 64px;
+.iconLink {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-left: 1px solid #e2e6e9;
-  text-decoration: none;
-
-  @media (min-width: 640px) {
-    height: 96px;
-  }
-
-  &:last-child {
-    border-right: 1px solid #e2e6e9;
-  }
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-left: 1px solid $color-elements-bg;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
 
   img {
     width: 16px;
     height: 16px;
+    transition: transform 0.2s;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $color-primary;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &:hover {
+    background-color: #fafbfc;
+
+    img {
+      transform: scale(1.1);
+    }
+
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  &.isActive {
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: $color-accent;
+  color: $color-white;
+  font-size: 9px;
+  font-weight: 700;
+  height: 14px;
+  min-width: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  border: 1px solid $color-white;
+}
+
+/* --- MOBILE --- */
+.menuButton {
+  width: 64px;
+  height: 64px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-left: 1px solid $color-elements-bg;
+  cursor: pointer;
+  padding: 0;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: #fafbfc;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 64px);
+  background-color: $color-white;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 24px;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+
+  a {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $color-secondary;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &.isActive {
+      color: $color-primary;
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.mobileIcons {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  border-top: 1px solid $color-elements-bg;
+}
+
+.mobileIconLink {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:not(:first-child) {
+    border-left: 1px solid $color-elements-bg;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $color-primary;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &:hover {
+    background-color: #fafbfc;
+
+    img {
+      transform: scale(1.1);
+    }
+
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  &.isActive {
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
   }
 }

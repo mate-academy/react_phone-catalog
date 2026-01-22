@@ -1,21 +1,110 @@
+@import '../../styles/utils';
+
 .phonesPage {
-  padding-bottom: 40px;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
 }
 
 .header {
-  margin-bottom: 24px;
+  margin-bottom: 32px; /* Odstęp między nagłówkiem a filtrami */
 }
 
-.breadcrumbs {
-  font-size: 12px;
-  color: #89939a;
-  margin-bottom: 24px; // Odstęp nad tytułem
-  margin-top: 24px;
+.title {
+  margin-top: 0;
+  margin-bottom: 8px; /* Mały odstęp do licznika */
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-primary;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 
 .modelsCount {
-  font-size: 14px;
-  color: #89939a;
-  margin: 0 0 24px 0;
+  color: $color-secondary; /* Szary kolor z Figmy */
   font-weight: 600;
+  font-size: 14px;
+  margin: 0; /* Reset marginesów */
+}
+
+/* --- FILTRY --- */
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+
+  /* Usunięto align-items: flex-end, żeby trzymały się góry */
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  margin-bottom: 4px; /* Odstęp od selecta */
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Stylowanie Selecta */
+.select {
+  height: 40px;
+  background-color: $color-white;
+  border: 1px solid $color-elements-bg;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-primary;
+  cursor: pointer;
+  min-width: 136px;
+  border-radius: 0;
+  appearance: none;
+
+  background-image: url('/img/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 32px;
+
+  &:hover {
+    border-color: $color-elements;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* Odstęp od dołu listy produktów */
+  width: 100%;
+}
+
+/* --- BRAK WYNIKÓW --- */
+
+/* Styl dla komunikatu "No phones found" */
+.noResults {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-primary;
+  margin-top: 40px;
+  text-align: center;
 }

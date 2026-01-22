@@ -1,94 +1,158 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import styles from './Header.module.scss';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import { Menu } from '../Menu/Menu';
+import styles from './Header.module.scss';
+import { useCart } from '../../context/CartContext';
+import { useFav } from '../../context/FavContext';
 
 export const Header = () => {
+  const { cartItems } = useCart();
+  const { favItems } = useFav();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
 
+  // Ta funkcja służy tylko do linków tekstowych (Home, Phones...)
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    cn(styles.navLink, { [styles.isActive]: isActive });
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-    document.body.style.overflow = 'visible';
-  }, [location]);
-
-  const handleToggleMenu = () => {
-    setIsMenuOpen(prev => {
-      const newState = !prev;
-
-      document.body.style.overflow = newState ? 'hidden' : 'visible';
-
-      return newState;
+    cn(styles.navLink, {
+      [styles.isActive]: isActive,
     });
-  };
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <>
-      <header className={styles.header}>
-        <div className={styles.content}>
-          <Link to="/" className={styles.logo}>
-            {/* ✅ Poprawna ścieżka do public/img/logo.svg */}
-            <img src="/img/logo.svg" alt="Nice Gadgets" />
-          </Link>
+    <header className={styles.header}>
+      {/* LOGO */}
+      <Link to="/" className={styles.logo} onClick={closeMenu}>
+        <img src="/img/logo.svg" alt="Nice Gadgets" />
+      </Link>
 
-          <nav className={styles.nav}>
-            <ul className={styles.navList}>
-              <li className={styles.navItem}>
-                <NavLink to="/" className={getLinkClass}>
-                  Home
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink to="/phones" className={getLinkClass}>
-                  Phones
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink to="/tablets" className={getLinkClass}>
-                  Tablets
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink to="/accessories" className={getLinkClass}>
-                  Accessories
-                </NavLink>
-              </li>
-            </ul>
+      <div className={styles.content}>
+        {/* DESKTOP NAV */}
+        <nav className={styles.nav}>
+          <ul className={styles.navList}>
+            <li className={styles.navItem}>
+              <NavLink to="/" end className={getLinkClass}>
+                Home
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink to="/phones" className={getLinkClass}>
+                Phones
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink to="/tablets" className={getLinkClass}>
+                Tablets
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink to="/accessories" className={getLinkClass}>
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        {/* DESKTOP ICONS */}
+        <div className={styles.icons}>
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) =>
+              cn(styles.iconLink, { [styles.isActive]: isActive })
+            }
+          >
+            <div className={styles.iconWrapper}>
+              <img src="/img/icons/Heart.svg" alt="Favourites" />
+              {favItems.length > 0 && (
+                <span className={styles.badge}>{favItems.length}</span>
+              )}
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              cn(styles.iconLink, { [styles.isActive]: isActive })
+            }
+          >
+            <div className={styles.iconWrapper}>
+              <img src="/img/icons/cart.svg" alt="Cart" />
+              {cartItems.length > 0 && (
+                <span className={styles.badge}>{cartItems.length}</span>
+              )}
+            </div>
+          </NavLink>
+        </div>
+
+        {/* BURGER BUTTON */}
+        <button
+          className={styles.menuButton}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <img
+            src={isMenuOpen ? '/img/icons/close.svg' : '/img/icons/menu.svg'}
+            alt="Menu"
+          />
+        </button>
+      </div>
+
+      {/* 👇 MENU MOBILNE */}
+      {isMenuOpen && (
+        <div className={styles.mobileMenu}>
+          {/* Linki tekstowe */}
+          <nav className={styles.mobileNav}>
+            <NavLink to="/" end className={getLinkClass} onClick={closeMenu}>
+              Home
+            </NavLink>
+            <NavLink to="/phones" className={getLinkClass} onClick={closeMenu}>
+              Phones
+            </NavLink>
+            <NavLink to="/tablets" className={getLinkClass} onClick={closeMenu}>
+              Tablets
+            </NavLink>
+            <NavLink
+              to="/accessories"
+              className={getLinkClass}
+              onClick={closeMenu}
+            >
+              Accessories
+            </NavLink>
           </nav>
 
-          <div className={styles.actions}>
-            <div className={styles.desktopIcons}>
-              <NavLink to="/favorites" className={styles.iconBtn}>
-                {/* ✅ Jeśli ikony są w public/img/icons/, dodaj /icons/ do ścieżki */}
-                <img src="/img/icons/favourites.svg" alt="Favorites" />
-              </NavLink>
-              <NavLink to="/cart" className={styles.iconBtn}>
-                <img src="/img/icons/cart.svg" alt="Cart" />
-              </NavLink>
-            </div>
-
-            <button
-              type="button"
-              className={styles.burgerBtn}
-              onClick={handleToggleMenu}
+          {/* 👇 ZMIANA TUTAJ: Ikony na dole (bez tekstu, nowa klasa) */}
+          <div className={styles.mobileIcons}>
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                cn(styles.mobileIconLink, { [styles.isActive]: isActive })
+              }
+              onClick={closeMenu}
             >
-              <img
-                src={
-                  /* ✅ USUNIĘTO "public" ze ścieżki - to był błąd */
-                  isMenuOpen ? '/img/icons/close.svg' : '/img/icons/menu.svg'
-                }
-                alt="Toggle menu"
-              />
-            </button>
+              <div className={styles.iconWrapper}>
+                <img src="/img/icons/Heart.svg" alt="Favourites" />
+                {favItems.length > 0 && (
+                  <span className={styles.badge}>{favItems.length}</span>
+                )}
+              </div>
+            </NavLink>
+
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                cn(styles.mobileIconLink, { [styles.isActive]: isActive })
+              }
+              onClick={closeMenu}
+            >
+              <div className={styles.iconWrapper}>
+                <img src="/img/icons/cart.svg" alt="Cart" />
+                {cartItems.length > 0 && (
+                  <span className={styles.badge}>{cartItems.length}</span>
+                )}
+              </div>
+            </NavLink>
           </div>
         </div>
-      </header>
-
-      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-    </>
+      )}
+    </header>
   );
 };

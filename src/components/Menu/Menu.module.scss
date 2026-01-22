@@ -1,14 +1,13 @@
-/* src/components/Menu/Menu.module.scss */
+@import '../../styles/utils';
 
 .menu {
   position: fixed;
-  top: 64px; // Wysokość Headera
+  top: 64px; /* Wysokość Headera */
   left: 0;
   width: 100vw;
   height: calc(100vh - 64px);
-  background-color: #fff;
+  background-color: $color-white; /* #fff */
 
-  // Bardzo wysoki z-index, żeby nic go nie przykryło
   z-index: 999;
 
   display: flex;
@@ -22,8 +21,8 @@
     transform: translateX(0);
   }
 
-  /* ⚠️ WAŻNE: Na komputerze menu musi być całkowicie ukryte */
-  @media (min-width: 640px) {
+  /* Ukrywamy na tablecie i desktopie */
+  @include on-tablet {
     display: none;
   }
 }
@@ -31,6 +30,9 @@
 .content {
   flex: 1;
   padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .list {
@@ -44,17 +46,36 @@
 }
 
 .link {
+  position: relative;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 16px;
-  color: #313237;
+  color: $color-secondary; /* Domyślnie szary (#89939a) */
+  transition: color 0.3s;
+
+  &.isActive {
+    color: $color-primary; /* Aktywny: Czarny (#313237) */
+
+    /* Opcjonalnie: Kropka pod aktywnym linkiem (jak w Figmie) */
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background-color: $color-primary;
+      border-radius: 50%;
+    }
+  }
 }
 
 .footer {
   display: flex;
   height: 64px;
-  border-top: 1px solid #e2e6e9;
+  border-top: 1px solid $color-border; /* #e2e6e9 */
   margin-top: auto;
 }
 
@@ -63,7 +84,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #e2e6e9;
-  &:last-child { border-right: none; }
-  img { width: 20px; height: 20px; }
+  border-right: 1px solid $color-border; /* #e2e6e9 */
+  transition: background-color 0.3s;
+
+  /* Reset stylów linku */
+  text-decoration: none;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+  }
+
+  /* Aktywny stan dla ikon w stopce menu */
+  &.isActive {
+    background-color: $color-bg; /* Lekko szare tło */
+    img {
+      transform: scale(1.1);
+    }
+  }
 }
