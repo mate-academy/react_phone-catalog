@@ -26,7 +26,6 @@ export const Header = () => {
     const handler = (e: KeyboardEvent) => {
       if ((e.key === 'Escape' || e.key === 'Esc') && isMenuOpen) {
         setIsMenuOpen(false);
-
       }
     };
 

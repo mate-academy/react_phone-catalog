@@ -4,7 +4,6 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 1000;
   z-index: 1;
   background-color: $header-background-color;
   height: 48px;
@@ -19,7 +18,7 @@
 }
 
 .icon {
-  border: 1pxx solid blue;
+  border: 1px solid blue;
   display: block;
   background-size: cover;
   background-position: center;
@@ -52,7 +51,6 @@
     display: none;
 
     @include on-tablet {
-
       display: block;
       background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
       width: 16px;
@@ -91,6 +89,7 @@
 
   &__menu {
       display: none ;
+
       @include on-tablet {
         height: 48px;
         width: 100%;

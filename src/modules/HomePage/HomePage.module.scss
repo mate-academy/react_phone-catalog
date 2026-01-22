@@ -1,8 +1,9 @@
-@import '../../utils/mixins.scss' ;
+@import '../../utils/mixins' ;
 
 .homePage {
   &__content {
      @include content-padding-inline;
+
       display: flex;
       flex-direction: column;
   }
@@ -35,6 +36,7 @@
 
   &__title-welcome {
     margin: auto 0;
+
     @include on-tablet {
       width: 500px;
       display: block;
@@ -42,6 +44,7 @@
 
     @include on-desktop {
       width: 1040px;
+
      // display: block;
       margin: auto 0;
     }

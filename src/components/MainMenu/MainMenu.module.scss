@@ -1,6 +1,6 @@
 @use '../../utils/vars.scss' as *;
-@import '../../utils/mixins.scss' ;
-@import '../Header/Header.module.scss';
+@import '../../utils/mixins' ;
+@import '../Header/Header.module';
 
 .mainMenu {
     position: fixed;
@@ -17,12 +17,14 @@
      transition: transform 0.3s ease, opacity 0.3s ease;
     visibility: hidden;
 }
+
 .is-open {
   opacity:1;
   transform: translateX(0);
   pointer-events: all;
   visibility: visible;
 }
+
 .backdrop {
   position: fixed;
   inset: 0;
