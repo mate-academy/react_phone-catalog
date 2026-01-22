@@ -6,11 +6,12 @@ import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
 import iconFavorite from 'public/img/icons/icon-favourites-heart-like.png';
 import iconLogo from 'public/img/icons/icon-logo.png';
 import iconBurger from 'public/img/icons/icon-menu.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useProducts } from 'src/context/ProductsContext';
 
 export const Header: React.FC = () => {
   const { favorites, cart } = useProducts();
+  const location = useLocation();
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -98,6 +99,7 @@ export const Header: React.FC = () => {
         </div>
         <NavLink
           to="/burgermenu"
+          state={{ from: location.pathname }}
           className={({ isActive }) =>
             cn(
               styles.header__but__link,

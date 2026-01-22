@@ -4,7 +4,7 @@ import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
 import iconFavorite from 'public/img/icons/icon-favourites-heart-like.png';
 import iconLogo from 'public/img/icons/icon-logo.png';
 import iconClose from 'public/img/icons/icon-close.png';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { useEffect } from 'react';
 import { useProducts } from 'src/context/ProductsContext';
@@ -12,11 +12,21 @@ import { useProducts } from 'src/context/ProductsContext';
 export const BurgerMenu: React.FC = () => {
   const { favorites, cart } = useProducts();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '';
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites, cart]);
+
+  const isLinkActive = (path: string) => {
+    if (path === '/') {
+      return from === '/';
+    }
+
+    return from.startsWith(path);
+  };
 
   return (
     <aside className={styles.menu} id="burgermenu">
@@ -44,11 +54,9 @@ export const BurgerMenu: React.FC = () => {
             <li className={styles.menu__nav__ul__li}>
               <NavLink
                 to="/"
-                className={({ isActive }) =>
-                  cn(styles.menu__nav__ul__li__link, {
-                    [styles.active]: isActive,
-                  })
-                }
+                className={cn(styles.menu__nav__ul__li__link, {
+                  [styles.active]: isLinkActive('/'),
+                })}
               >
                 Home
               </NavLink>
@@ -56,11 +64,9 @@ export const BurgerMenu: React.FC = () => {
             <li className={styles.menu__nav__ul__li}>
               <NavLink
                 to="/phones"
-                className={({ isActive }) =>
-                  cn(styles.menu__nav__ul__li__link, {
-                    [styles.active]: isActive,
-                  })
-                }
+                className={cn(styles.menu__nav__ul__li__link, {
+                  [styles.active]: isLinkActive('/phones'),
+                })}
               >
                 Phones
               </NavLink>
@@ -68,11 +74,9 @@ export const BurgerMenu: React.FC = () => {
             <li className={styles.menu__nav__ul__li}>
               <NavLink
                 to="/tablets"
-                className={({ isActive }) =>
-                  cn(styles.menu__nav__ul__li__link, {
-                    [styles.active]: isActive,
-                  })
-                }
+                className={cn(styles.menu__nav__ul__li__link, {
+                  [styles.active]: isLinkActive('/tablets'),
+                })}
               >
                 Tablets
               </NavLink>
@@ -80,11 +84,9 @@ export const BurgerMenu: React.FC = () => {
             <li className={styles.menu__nav__ul__li}>
               <NavLink
                 to="/accessories"
-                className={({ isActive }) =>
-                  cn(styles.menu__nav__ul__li__link, {
-                    [styles.active]: isActive,
-                  })
-                }
+                className={cn(styles.menu__nav__ul__li__link, {
+                  [styles.active]: isLinkActive('/accessories'),
+                })}
               >
                 Accessories
               </NavLink>
@@ -94,9 +96,9 @@ export const BurgerMenu: React.FC = () => {
         <div className={styles.menu__but}>
           <NavLink
             to="/favorites"
-            className={({ isActive }) =>
-              cn(styles.menu__but__link_bottom, { [styles.active]: isActive })
-            }
+            className={cn(styles.menu__but__link_bottom, {
+              [styles.active]: isLinkActive('/favorites'),
+            })}
           >
             <img
               className={styles.menu__but__link_bottom__img}
@@ -110,9 +112,9 @@ export const BurgerMenu: React.FC = () => {
           </NavLink>
           <NavLink
             to="/cart"
-            className={({ isActive }) =>
-              cn(styles.menu__but__link_bottom, { [styles.active]: isActive })
-            }
+            className={cn(styles.menu__but__link_bottom, {
+              [styles.active]: isLinkActive('/cart'),
+            })}
           >
             <img
               className={styles.menu__but__link_bottom__img}
