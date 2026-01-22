@@ -9,6 +9,7 @@ import { CategoryPage } from './modules/CategoryPage';
 import { ProductDetailsPage } from './modules/CategoryPage/ProductDetailsPage';
 import { ProductsProvider } from './context/ProductsContext';
 import { FilterProvider } from './context/FilterContext';
+import { BurgerMenu } from 'shared/Header/BurgerMenu';
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="/burgermenu" element={<BurgerMenu />} />
 
             <Route
               path="/phones"

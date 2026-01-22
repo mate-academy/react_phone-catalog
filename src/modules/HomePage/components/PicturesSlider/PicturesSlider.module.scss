@@ -40,12 +40,15 @@
 }
 
 .slideImage {
-  width: 1040px;
-  height: 400px;
-  margin: 0 16px;
-
+  width: 100%;
   object-fit: cover;
   object-position: top;
+
+  @include on-desktop {
+    width: 1040px;
+    height: 400px;
+    margin: 0 16px;
+  }
 }
 
 .navButton {
@@ -61,7 +64,7 @@
   justify-content: center;
 
   margin-top: 18px;
-  
+
   color: $primary-color;
 }
 
