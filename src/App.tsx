@@ -4,6 +4,7 @@ import { HeroSlider } from './components/HeroSlider';
 import { NewProductsSlider } from './components/NewProductsSlider';
 import { Categories } from './components/Categories';
 import { HotPricesSlider } from './components/HotPricesSlider';
+import { Footer } from './components/Footer';
 
 export const App = () => (
   <div className="App">
@@ -16,5 +17,6 @@ export const App = () => (
         <HotPricesSlider />
       </div>
     </main>
+    <Footer />
   </div>
 );
