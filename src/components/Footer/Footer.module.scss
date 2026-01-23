@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  align-items: flex-start;
+  align-items: flex-start; /* Logo i linki do lewej */
 
   @include on-tablet {
     flex-direction: row;
@@ -61,17 +61,14 @@
   }
 }
 
+/* --- ELEMENTY PODSTAWOWE --- */
 
 .backText {
   color: $color-secondary;
   font-size: 12px;
   font-weight: 600;
   transition: color 0.3s;
-  display: none;
-
-  @include on-tablet {
-    display: block;
-  }
+  display: block;
 }
 
 .backBtn {
@@ -98,13 +95,16 @@
   }
 }
 
+/* --- KONTENER BACK TO TOP --- */
 
 .backToTop {
   display: flex;
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  align-self: flex-start;
+
+  /* Na mobile: wyśrodkowanie */
+  align-self: center;
 
   @include on-tablet {
     align-self: auto;
