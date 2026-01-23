@@ -5,11 +5,14 @@ import {
   favoritesInitialState,
   favoritesReducer,
 } from './favorites/favorites.reducer';
+import { loadState } from '../utils/storage';
 
-export const initialState: GlobalState = {
+export const defaultState = {
   cart: cartInitialState,
   favorites: favoritesInitialState,
 };
+
+export const initialState = loadState() ?? defaultState;
 
 export function rootReducer(
   state: GlobalState,

@@ -12,7 +12,6 @@ import { checkResponse, wait } from '../shared/utils/apiHelper';
 import ErrorMessage from '../shared/components/ErrorMessage/ErrorMessage';
 import { STATUS, Status } from '../shared/utils/status';
 import { NotFoundError, ServerError } from '../shared/utils/errorTypes';
-import { NotFoundProduct } from '../NotFoundProduct';
 import Breadcrumps from '../shared/components/Breadcrumps/Breadcrumps';
 
 const VALID_TYPES = ['phones', 'tablets', 'accessories'] as const;
@@ -116,7 +115,7 @@ export const ProductsPage = () => {
       return <NotFoundPage />;
 
     case STATUS.NOT_FOUND_PRODUCT:
-      return <NotFoundProduct />;
+      return <NotFoundPage type="product" />;
 
     case STATUS.ERROR:
       return <ErrorMessage errorMessage={errorMessage} />;

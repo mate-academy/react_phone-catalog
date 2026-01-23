@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
-import Button from '../Button/Button';
+import { ButtonAddToCart } from '../ButtonAddToCart';
+import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
 
 type Props = {
   product: Product;
@@ -43,11 +44,9 @@ export const ProductCard: React.FC<Props> = ({
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button product={product} />
+        <ButtonAddToCart product={product} />
 
-        <button className={styles.buttonIcon}>
-          <img src="/img/icons/heart.png" className={styles.iconImg}></img>
-        </button>
+        <ButtonAddToFavorites product={product} />
       </div>
     </div>
   );

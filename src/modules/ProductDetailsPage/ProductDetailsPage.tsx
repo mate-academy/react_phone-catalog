@@ -5,7 +5,7 @@ import { checkResponse } from '../shared/utils/apiHelper';
 import { Product } from '../shared/types/Product';
 import { ProductDetails } from '../shared/types/ProductDetails';
 import ErrorMessage from '../shared/components/ErrorMessage/ErrorMessage';
-import { NotFoundProduct } from '../NotFoundProduct';
+import { NotFoundPage } from '../NotFoundPage';
 import { STATUS, Status } from '../shared/utils/status';
 import { NotFoundError, ServerError } from '../shared/utils/errorTypes';
 import { ProductDetailsView } from './ProductDetailsView/ProductDetailsView';
@@ -78,7 +78,7 @@ export const ProductDetailsPage = () => {
       return <Loader />;
 
     case STATUS.NOT_FOUND_PRODUCT:
-      return <NotFoundProduct />;
+      return <NotFoundPage type="product" />;
 
     case STATUS.ERROR:
       return <ErrorMessage errorMessage={errorMessage} />;

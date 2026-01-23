@@ -6,7 +6,9 @@ import { useEffect, useState } from 'react';
 import { ColorKey, getColor } from '../../shared/utils/color';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { Product } from '../../shared/types/Product';
-import Button from '../../shared/components/Button/Button';
+import { ButtonAddToCart } from '../../shared/components/ButtonAddToCart';
+// eslint-disable-next-line max-len
+import { ButtonAddToFavorites } from '../../shared/components/ButtonAddToFavorites';
 
 type Props = {
   productDetails: ProductDetails;
@@ -129,10 +131,9 @@ export const ProductDetailsView: React.FC<Props> = ({
             <p className={styles.fullPrice}>${productDetails.priceDiscount}</p>
           </div>
           <div className={styles.buttons}>
-            <Button product={productDetails.product} />
-            <button className={styles.buttonIcon}>
-              <img src="/img/icons/heart.png" className={styles.iconImg}></img>
-            </button>
+            <ButtonAddToCart product={productDetails.product} />
+
+            <ButtonAddToFavorites product={productDetails.product} />
           </div>
           <div className={styles.characteristics}>
             <div className={styles.characteristic}>

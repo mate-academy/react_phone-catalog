@@ -119,10 +119,10 @@
   height: 16px;
 }
 
-.totalQuantity {
+.counter {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 7px;
+  right: 7px;
 
   font-weight: 700;
   font-size: 9px;
@@ -135,13 +135,9 @@
   border-radius: 50%;
   width: 14px;
   height: 14px;
-}
 
-.cartBlock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 28px;
-  height: 28px;
+  @include on-desktop {
+    top: 14px;
+    right: 14px;
+  }
 }

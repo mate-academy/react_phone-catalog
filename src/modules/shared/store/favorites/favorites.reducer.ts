@@ -1,7 +1,5 @@
-import { Product } from '../../types/Product';
+import { FavoritesAction } from '../actions';
 import { FavoritesState } from './favorites.types';
-
-type FavoritesAction = { type: 'TOGGLE_FAVORITE'; payload: Product };
 
 export const favoritesInitialState: FavoritesState = {
   items: [],

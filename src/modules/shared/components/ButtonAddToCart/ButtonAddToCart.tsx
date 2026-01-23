@@ -1,15 +1,15 @@
 import { useCart } from '../../hooks/useCart';
 import { Product } from '../../types/Product';
-import styles from './Button.module.scss';
+import styles from './ButtonAddToCart.module.scss';
 
 type Props = {
   product: Product;
 };
 
-export default function Button({ product }: Props) {
+export const ButtonAddToCart = ({ product }: Props) => {
   const cart = useCart();
 
-  const isInCart = cart.items.find(item => item.id === product.id);
+  const isInCart = cart.items.some(item => item.id === product.id);
 
   return (
     <>
@@ -27,4 +27,4 @@ export default function Button({ product }: Props) {
       )}
     </>
   );
-}
+};

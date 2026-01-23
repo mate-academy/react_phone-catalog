@@ -14,6 +14,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage/CartPage';
 // eslint-disable-next-line max-len
 import { GlobalStateProvider } from './modules/shared/store/GlobalStateProvider';
+import { FavoritesPage } from './modules/FavoritesPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <GlobalStateProvider>
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
           </Route>
           <Route path="product/:productId" element={<ProductDetailsPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

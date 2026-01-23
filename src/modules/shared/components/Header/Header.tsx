@@ -3,10 +3,12 @@ import styles from './Header.module.scss';
 import { useState } from 'react';
 import { BurgerMenu } from './BurgerMenu';
 import { useCart } from '../../hooks/useCart';
+import { useFavorites } from '../../hooks/useFavorites';
 
 export const Header = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const { totalQuantity } = useCart();
+  const { totalQuantity: cartCount } = useCart();
+  const { count: favoriteCount } = useFavorites();
 
   return (
     <>
@@ -71,6 +73,9 @@ export const Header = () => {
               }
             >
               <img src="/img/icons/heart.png" className={styles.icon}></img>
+              {favoriteCount !== 0 && (
+                <span className={styles.counter}>{favoriteCount}</span>
+              )}
             </NavLink>
             <NavLink
               to={'/cart'}
@@ -80,15 +85,13 @@ export const Header = () => {
                   : styles.iconLink
               }
             >
-              <div className={styles.cartBlock}>
-                <img
-                  src="/img/icons/shopping-cart.png"
-                  className={styles.icon}
-                ></img>
-                {totalQuantity !== 0 && (
-                  <span className={styles.totalQuantity}>{totalQuantity}</span>
-                )}
-              </div>
+              <img
+                src="/img/icons/shopping-cart.png"
+                className={styles.icon}
+              ></img>
+              {cartCount !== 0 && (
+                <span className={styles.counter}>{cartCount}</span>
+              )}
             </NavLink>
           </div>
           <div className={styles.iconsMobile}>
