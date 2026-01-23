@@ -5,41 +5,19 @@
   background-color: $color-white;
   width: 100%;
   margin-top: auto;
-  flex-shrink: 0;
-  flex-grow: 0;
-
-  /* --- 1. MOBILE --- */
   padding: 32px 0;
-  height: auto;
-
-  @include on-tablet {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 
 .content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: flex-start;
 
-  @include on-desktop {
-    padding: 0 24px;
-  }
-
   @include on-tablet {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
     gap: 0;
   }
 }
@@ -47,35 +25,39 @@
 .logo {
   display: flex;
   align-items: center;
+
+  img {
+    height: 30px;
+    width: auto;
+  }
 }
 
 .links {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 16px;
-  a {
-    text-decoration: none;
-    color: $color-secondary;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    transition: color 0.3s;
 
-    &:hover {
-      color: $color-primary;
-    }
-  }
-
-  /* --- TABLET --- */
   @include on-tablet {
     flex-direction: row;
     gap: 32px;
   }
 
-
   @include on-desktop {
     gap: 112px;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
   }
 }
 
@@ -85,6 +67,11 @@
   font-size: 12px;
   font-weight: 600;
   transition: color 0.3s;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
 }
 
 .backBtn {
@@ -93,23 +80,31 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  background-color: $color-white;
+  background-color: transparent;
   border: 1px solid $color-elements-bg;
   border-radius: 50%;
-  transition: border-color 0.3s, background-color 0.3s;
+  transition: border-color 0.3s;
+  padding: 0;
+  cursor: pointer;
 
   img {
     width: 16px;
     height: 16px;
+    display: block;
+    transform: rotate(-90deg);
+    filter: brightness(0);
+    opacity: 0.4;
+    transition: opacity 0.3s;
   }
 }
+
 
 .backToTop {
   display: flex;
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  align-self: center;
+  align-self: flex-start;
 
   @include on-tablet {
     align-self: auto;
@@ -118,8 +113,9 @@
   &:hover {
     .backBtn {
       border-color: $color-primary;
-      background-color: $color-white;
+      img { opacity: 1; }
     }
+
     .backText {
       color: $color-primary;
     }
