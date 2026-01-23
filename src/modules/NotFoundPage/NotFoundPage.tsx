@@ -1,3 +1,4 @@
+import { asset } from '../shared/utils/asset';
 import styles from './NotFoundPage.module.scss';
 
 type Props = {
@@ -12,7 +13,7 @@ export const NotFoundPage: React.FC<Props> = ({ type = 'page' }) => {
       </div>
       <div className={styles.imgBlock}>
         <img
-          src={`img/${type}-not-found.png`}
+          src={asset(`img/${type}-not-found.png`)}
           alt="Page not found"
           className={styles.img}
         />

@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import { useEffect } from 'react';
+import { asset } from '../../../utils/asset';
 
 type Props = {
   isBurgerMenuOpen: boolean;
@@ -63,7 +64,10 @@ export const BurgerMenu: React.FC<Props> = ({ isBurgerMenuOpen, onClose }) => {
           className={styles.iconsLink}
           onClick={handleNavigate}
         >
-          <img src="/img/icons/heart.png" className={styles.iconImg}></img>
+          <img
+            src={asset('/img/icons/heart.png')}
+            className={styles.iconImg}
+          ></img>
         </Link>
         <Link
           to={{ pathname: '/cart' }}
@@ -71,7 +75,7 @@ export const BurgerMenu: React.FC<Props> = ({ isBurgerMenuOpen, onClose }) => {
           onClick={handleNavigate}
         >
           <img
-            src="/img/icons/shopping-cart.png"
+            src={asset('/img/icons/shopping-cart.png')}
             className={styles.iconImg}
           ></img>
         </Link>

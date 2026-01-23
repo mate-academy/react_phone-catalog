@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BurgerMenu } from './BurgerMenu';
 import { useCart } from '../../hooks/useCart';
 import { useFavorites } from '../../hooks/useFavorites';
+import { asset } from '../../utils/asset';
 
 export const Header = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ export const Header = () => {
             onClick={() => setIsBurgerMenuOpen(false)}
           >
             <img
-              src="/img/logo.png"
+              src={asset('/img/logo.png')}
               alt="Logo Nice Gadgets"
               className={styles.logo}
             />
@@ -72,7 +73,10 @@ export const Header = () => {
                   : styles.iconLink
               }
             >
-              <img src="/img/icons/heart.png" className={styles.icon}></img>
+              <img
+                src={asset('/img/icons/heart.png')}
+                className={styles.icon}
+              ></img>
               {favoriteCount !== 0 && (
                 <span className={styles.counter}>{favoriteCount}</span>
               )}
@@ -86,7 +90,7 @@ export const Header = () => {
               }
             >
               <img
-                src="/img/icons/shopping-cart.png"
+                src={asset('/img/icons/shopping-cart.png')}
                 className={styles.icon}
               ></img>
               {cartCount !== 0 && (
@@ -103,8 +107,8 @@ export const Header = () => {
               <img
                 src={
                   isBurgerMenuOpen
-                    ? '/img/icons/close.png'
-                    : '/img/icons/menu.png'
+                    ? asset('/img/icons/close.png')
+                    : asset('/img/icons/menu.png')
                 }
                 className={styles.icon}
                 alt="Menu icon"

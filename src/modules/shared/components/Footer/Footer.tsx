@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import { asset } from '../../utils/asset';
 
 export const Footer = () => {
   return (
@@ -13,7 +14,7 @@ export const Footer = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <img
-                src="/img/logo.png"
+                src={asset('/img/logo.png')}
                 alt="Logo Nice Gadgets"
                 className={styles.logo}
               />
@@ -37,7 +38,7 @@ export const Footer = () => {
               Back to top
               <div className={styles.backIconBlock}>
                 <img
-                  src="/img/icons/arrow-up.png"
+                  src={asset('/img/icons/arrow-up.png')}
                   className={styles.backIconImg}
                 ></img>
               </div>

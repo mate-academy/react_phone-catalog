@@ -2,6 +2,7 @@ import styles from './CartItem.module.scss';
 import { useCart } from '../../shared/hooks/useCart';
 import classNames from 'classnames';
 import { CartItem as Item } from '../../shared/store/cart/cart.types';
+import { asset } from '../../shared/utils/asset';
 
 type Props = {
   item: Item;
@@ -14,14 +15,17 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     <div key={item.product.id} className={styles.product}>
       <a className={styles.closeLink} onClick={() => remove(item.product.id)}>
         <img
-          src={'/img/icons/close.png'}
+          src={asset('/img/icons/close.png')}
           className={styles.icon}
           alt="Close icon"
         ></img>
       </a>
 
       <div className={styles.productImgBlock}>
-        <img src={item.product.image} className={styles.productImg}></img>
+        <img
+          src={asset(item.product.image)}
+          className={styles.productImg}
+        ></img>
       </div>
       <p className={styles.productName}> {item.product.name}</p>
 

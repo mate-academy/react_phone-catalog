@@ -6,6 +6,7 @@ import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from './Banner.module.scss';
+import { asset } from '../../shared/utils/asset';
 
 export const Banner = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
@@ -19,7 +20,7 @@ export const Banner = () => {
         >
           <img
             className={styles.icon}
-            src="/img/icons/arrow-left.png"
+            src={asset('/img/icons/arrow-left.png')}
             alt="Arrow Left"
           />
         </button>
@@ -56,7 +57,7 @@ export const Banner = () => {
         >
           <img
             className={styles.icon}
-            src="/img/icons/arrow-right.png"
+            src={asset('/img/icons/arrow-right.png')}
             alt="Arrow Right"
           />
         </button>

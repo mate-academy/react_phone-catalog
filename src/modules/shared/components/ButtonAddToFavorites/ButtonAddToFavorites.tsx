@@ -1,5 +1,6 @@
 import { useFavorites } from '../../hooks/useFavorites';
 import { Product } from '../../types/Product';
+import { asset } from '../../utils/asset';
 import styles from './ButtonAddToFavorites.module.scss';
 
 type Props = {
@@ -20,7 +21,9 @@ export const ButtonAddToFavorites = ({ product }: Props) => {
     >
       <img
         src={
-          isInFavorites ? '/img/icons/heart-filled.png' : '/img/icons/heart.png'
+          isInFavorites
+            ? asset('/img/icons/heart-filled.png')
+            : asset('/img/icons/heart.png')
         }
         alt={isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
         className={styles.icon}

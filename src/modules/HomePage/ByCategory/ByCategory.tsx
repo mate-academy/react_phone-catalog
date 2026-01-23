@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../shared/types/Product';
 import styles from './ByCategory.module.scss';
+import { asset } from '../../shared/utils/asset';
 
 type Props = {
   products: Product[];
@@ -31,7 +32,7 @@ export const ByCategory: React.FC<Props> = ({ products }) => {
             className={`${styles.categoryLink} ${styles.categoryLinkPhones}`}
           >
             <img
-              src="/img/category-phones.webp"
+              src={asset('/img/category-phones.webp')}
               alt="Mobile phones"
               className={styles.categoryImg}
             />
@@ -47,7 +48,7 @@ export const ByCategory: React.FC<Props> = ({ products }) => {
             className={`${styles.categoryLink} ${styles.categoryLinkTablets}`}
           >
             <img
-              src="/img/category-tablets.webp"
+              src={asset('/img/category-tablets.webp')}
               alt="Tablets"
               className={styles.categoryImg}
             />
@@ -63,7 +64,7 @@ export const ByCategory: React.FC<Props> = ({ products }) => {
             className={`${styles.categoryLink} ${styles.categoryLinkAccessories}`}
           >
             <img
-              src="/img/category-accessories.webp"
+              src={asset('/img/category-accessories.webp')}
               alt="Accessories"
               className={styles.categoryImg}
             />

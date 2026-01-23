@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Dropdown.module.scss';
+import { asset } from '../../utils/asset';
 
 type Option = {
   label: string;
@@ -56,7 +57,7 @@ export default function Dropdown({
       >
         {valueName}
         <img
-          src={`img/icons/${open ? 'arrow-up' : 'arrow-down'}.png`}
+          src={asset(`img/icons/${open ? 'arrow-up' : 'arrow-down'}.png`)}
           alt="Breadcrumbs Separator"
           className={styles.icon}
         />

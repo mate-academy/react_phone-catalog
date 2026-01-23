@@ -1,3 +1,4 @@
+import { asset } from '../../utils/asset';
 import styles from './Breadcrumps.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -10,10 +11,14 @@ export default function Breadcrumps({ type, name = '' }: Props) {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles.link}>
-        <img src="img/icons/home.png" alt="Home" className={styles.icon} />
+        <img
+          src={asset('img/icons/home.png')}
+          alt="Home"
+          className={styles.icon}
+        />
       </Link>
       <img
-        src="img/icons/arrow-right.png"
+        src={asset('img/icons/arrow-right.png')}
         alt="Breadcrumbs Separator"
         className={styles.icon}
       />
@@ -23,7 +28,7 @@ export default function Breadcrumps({ type, name = '' }: Props) {
             <p className={styles.text}>{type}</p>
           </Link>
           <img
-            src="img/icons/arrow-right.png"
+            src={asset('img/icons/arrow-right.png')}
             alt="Breadcrumbs Separator"
             className={styles.icon}
           />

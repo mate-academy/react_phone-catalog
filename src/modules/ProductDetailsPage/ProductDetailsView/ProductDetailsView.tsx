@@ -9,6 +9,7 @@ import { Product } from '../../shared/types/Product';
 import { ButtonAddToCart } from '../../shared/components/ButtonAddToCart';
 // eslint-disable-next-line max-len
 import { ButtonAddToFavorites } from '../../shared/components/ButtonAddToFavorites';
+import { asset } from '../../shared/utils/asset';
 
 type Props = {
   productDetails: ProductDetails;
@@ -57,7 +58,7 @@ export const ProductDetailsView: React.FC<Props> = ({
       <div className={styles.content}>
         <div className={styles.mainPhoto}>
           <img
-            src={mainPhoto}
+            src={asset(mainPhoto)}
             alt="Main Photo"
             className={styles.mainPhotoImg}
           />
@@ -66,7 +67,7 @@ export const ProductDetailsView: React.FC<Props> = ({
           {productDetails.images.map((url, i) => (
             <div key={i} className={styles.previewPhoto}>
               <img
-                src={url}
+                src={asset(url)}
                 alt="Preview Photo"
                 className={styles.previewPhotoImg}
                 onClick={() => setMainPhoto(url)}

@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import { ButtonAddToCart } from '../ButtonAddToCart';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
+import { asset } from '../../utils/asset';
 
 type Props = {
   product: Product;
@@ -17,7 +18,7 @@ export const ProductCard: React.FC<Props> = ({
     <div className={styles.card}>
       <Link to={`/product/${product.itemId}`} className={styles.productImgLink}>
         <div className={styles.productImgBlock}>
-          <img src={product.image} className={styles.productImg}></img>
+          <img src={asset(product.image)} className={styles.productImg}></img>
         </div>
         <p className={styles.productName}>{product.name}</p>
       </Link>
