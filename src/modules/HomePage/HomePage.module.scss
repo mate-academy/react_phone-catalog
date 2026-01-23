@@ -3,10 +3,12 @@
 
 .homepage {
   @include page-grid;
+
   padding-block: 0;
 
   &__title {
     grid-column: 1 / -1;
+    text-align: start;
 
       margin: 24px 0;
 
@@ -41,9 +43,11 @@
     @include on-phone{
       margin-bottom: 57px;
     }
+
     @include on-tablet{
       margin-bottom: 64px;
     }
+
     @include on-desktop{
       margin-bottom: 80px;
     }

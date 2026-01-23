@@ -19,7 +19,6 @@
 
   &__title {
     margin: 0;
-
     font-family: Mont, sans-serif;
     font-weight: 800;
     color: $primary-color;
@@ -29,6 +28,7 @@
       line-height: 140%;
       letter-spacing: 0%;
     }
+
     @include on-tablet{
       font-size: 32px;
       line-height: 41px;
