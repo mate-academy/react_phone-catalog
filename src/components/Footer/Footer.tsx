@@ -9,22 +9,39 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__content}>
+        <div className={styles.topBarMobile}>
+          <span>
+            <Logo />
+
+            <a href="https://github.com/" className={styles.footer__github}>
+              Github
+            </a>
+            <a href="/contacts" className={styles.footer__contacts}>
+              Contacts
+            </a>
+            <a href="/rights" className={styles.footer__rights}>
+              rights
+            </a>
+            <button className={styles.footer__backToTop} onClick={scrollTop}>
+              Back to top
+            </button>
+          </span>
+        </div>
         <div className={styles.topBar}>
           <Logo />
 
-                <a href="https://github.com/" className={styles.footer__github}>
-                  Github
-                </a>
-                <a href="/contacts" className={styles.footer__contacts}>
-                  Contacts
-                </a>
-                <a href="/rights" className={styles.footer__rights}>
-                  rights
-                </a>
-              <button className={styles.footer__backToTop} onClick={scrollTop}>
-                Back to top
-              </button>
-
+          <a href="https://github.com/" className={styles.footer__github}>
+            Github
+          </a>
+          <a href="/contacts" className={styles.footer__contacts}>
+            Contacts
+          </a>
+          <a href="/rights" className={styles.footer__rights}>
+            rights
+          </a>
+          <button className={styles.footer__backToTop} onClick={scrollTop}>
+            Back to top
+          </button>
         </div>
       </div>
     </footer>
