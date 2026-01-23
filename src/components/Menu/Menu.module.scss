@@ -2,14 +2,12 @@
 
 .menu {
   position: fixed;
-  top: 64px; /* Wysokość Headera */
+  top: 64px;
   left: 0;
   width: 100vw;
   height: calc(100vh - 64px);
-  background-color: $color-white; /* #fff */
-
+  background-color: $color-white;
   z-index: 999;
-
   display: flex;
   flex-direction: column;
 
@@ -51,13 +49,13 @@
   text-transform: uppercase;
   font-weight: 800;
   font-size: 16px;
-  color: $color-secondary; /* Domyślnie szary (#89939a) */
+  color: $color-secondary;
   transition: color 0.3s;
 
   &.isActive {
-    color: $color-primary; /* Aktywny: Czarny (#313237) */
+    color: $color-primary;
 
-    /* Opcjonalnie: Kropka pod aktywnym linkiem (jak w Figmie) */
+
     &::after {
       content: '';
       position: absolute;
@@ -75,7 +73,7 @@
 .footer {
   display: flex;
   height: 64px;
-  border-top: 1px solid $color-border; /* #e2e6e9 */
+  border-top: 1px solid $color-border;
   margin-top: auto;
 }
 
@@ -84,10 +82,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid $color-border; /* #e2e6e9 */
+  border-right: 1px solid $color-border;
   transition: background-color 0.3s;
-
-  /* Reset stylów linku */
   text-decoration: none;
 
   &:last-child {
@@ -102,7 +98,8 @@
 
   /* Aktywny stan dla ikon w stopce menu */
   &.isActive {
-    background-color: $color-bg; /* Lekko szare tło */
+    background-color: $color-bg;
+    
     img {
       transform: scale(1.1);
     }

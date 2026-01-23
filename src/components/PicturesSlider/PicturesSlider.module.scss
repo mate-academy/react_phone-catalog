@@ -4,12 +4,12 @@
   width: 100%;
   margin: 0;
   position: relative;
-  padding-bottom: 20px; /* Miejsce na cienie */
+  padding-bottom: 20px;
 }
 
 .buttonsWrapper {
   display: flex;
-  align-items: center; /* Centrowanie w pionie */
+  align-items: center;
   width: 100%;
   gap: 16px;
 }
@@ -17,26 +17,19 @@
 /* --- KONTENER ZDJĘCIA --- */
 .imageContainer {
   width: 100%;
-  height: 400px; /* Wysokość mobile */
+  height: 400px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* Na mobile brak zaokrągleń */
   border-radius: 0;
-
-  /* Domyślne tło, gdyby zdjęcie się nie wczytało */
   background-color: $color-bg;
 
   @include on-tablet {
     width: auto;
-    flex-grow: 1; /* Zajmuje całą wolną przestrzeń między guzikami */
-    height: 450px; /* Wyższe na desktopie */
+    flex-grow: 1;
+    height: 450px;
     border-radius: 16px;
-
-    /* Opcjonalny cień dla głębi */
-    // box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -49,21 +42,18 @@
 
 /* --- PRZYCISKI (STRZAŁKI) --- */
 .button {
-  display: none; /* Ukryte na mobile */
+  display: none;
 
   @include on-tablet {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* Wymiary przycisku - pigułka */
     width: 32px;
-    height: 100%; /* Rozciągamy na całą wysokość slidera */
+    height: 100%;
     min-height: 400px;
-
     background: transparent;
-    border: 1px solid $color-elements-bg; /* Było #e2e6e9 */
-    border-radius: 16px; /* Lekkie zaokrąglenie pasujące do zdjęcia */
+    border: 1px solid $color-elements-bg;
+    border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s;
     padding: 0;
@@ -101,7 +91,7 @@
 .dot {
   width: 14px;
   height: 4px;
-  background-color: $color-elements-bg; /* Nieaktywna - szara */
+  background-color: $color-elements-bg;
   border: none;
   cursor: pointer;
   transition: all 0.3s;
@@ -109,7 +99,7 @@
   padding: 0; /* Reset dla buttona */
 
   &.active {
-    background-color: $color-primary; /* Aktywna - czarna */
+    background-color: $color-primary;
     width: 24px;
   }
 

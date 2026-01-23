@@ -15,7 +15,7 @@
 
 .title {
   margin-top: 0;
-  margin-bottom: 8px; /* Mały odstęp do licznika */
+  margin-bottom: 8px;
   font-size: 32px;
   font-weight: 800;
   color: $color-primary;
@@ -29,10 +29,10 @@
 }
 
 .modelsCount {
-  color: $color-secondary; /* Szary kolor z Figmy */
+  color: $color-secondary;
   font-weight: 600;
   font-size: 14px;
-  margin: 0; /* Reset marginesów */
+  margin: 0;
 }
 
 /* --- FILTRY --- */
@@ -41,8 +41,6 @@
   gap: 16px;
   margin-bottom: 24px;
   flex-wrap: wrap;
-
-  /* Usunięto align-items: flex-end, żeby trzymały się góry */
 }
 
 .filterGroup {

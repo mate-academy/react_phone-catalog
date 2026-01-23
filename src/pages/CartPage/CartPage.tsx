@@ -1,4 +1,3 @@
-/* src/pages/CartPage/CartPage.tsx */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
@@ -6,7 +5,8 @@ import { CartItem } from '../../components/CartItem/CartItem';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const { cartItems } = useCart();
+  // Pobieramy funkcję clearCart z naszego Contextu
+  const { cartItems, clearCart } = useCart();
   const navigate = useNavigate();
 
   const totalAmount = cartItems.reduce(
@@ -18,6 +18,21 @@ export const CartPage = () => {
     (sum, item) => sum + (item.quantity || 1),
     0,
   );
+
+  // Funkcja obsługująca proces zamówienia
+  const handleCheckout = () => {
+    // 1. Pytamy użytkownika o potwierdzenie
+    const isConfirmed = window.confirm(
+      'Do you want to finalize your purchase?',
+    );
+
+    // 2. Jeśli kliknie "OK"
+    if (isConfirmed) {
+      clearCart(); // Czyścimy koszyk
+      alert('Thank you for your order! 🚀');
+      navigate('/'); // Przekierowujemy na stronę główną
+    }
+  };
 
   return (
     <div className={styles.cartPage}>
@@ -40,7 +55,6 @@ export const CartPage = () => {
             <p>Your cart is empty</p>
           </div>
         ) : (
-          /* GLÓWNY GRID: Lewa (Produkty) + Prawa (Suma) */
           <div className={styles.cartContainer}>
             <div className={styles.cartList}>
               {cartItems.map(item => (
@@ -48,7 +62,6 @@ export const CartPage = () => {
               ))}
             </div>
 
-            {/* BOX SUMY (Checkout) */}
             <div className={styles.checkoutBox}>
               <div className={styles.totalPrice}>
                 <h2>${totalAmount}</h2>
@@ -57,10 +70,9 @@ export const CartPage = () => {
                 </span>
               </div>
               <div className={styles.divider} />
-              <button
-                className={styles.checkoutBtn}
-                onClick={() => window.alert('Not implemented')}
-              >
+
+              {/* Podpięcie funkcji zamiast window.alert */}
+              <button className={styles.checkoutBtn} onClick={handleCheckout}>
                 Checkout
               </button>
             </div>

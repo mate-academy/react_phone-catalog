@@ -1,21 +1,18 @@
 @import '../../styles/utils';
 
 .breadcrumbs {
-  /* ✅ Usuwamy paddingi i marginesy kontenera, bo użyjemy klasy .container w JSX */
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 24px;
   margin-bottom: 24px;
 
-  /* Używamy mixina z utils (jeśli go masz) lub zwykłego media query */
   @include on-tablet {
     margin-top: 40px;
   }
 }
 
 .homeIcon {
-  /* 👇 ZMIANA: Dla SVG/IMG używamy wymiarów, nie font-size */
   display: flex;
   align-items: center;
   width: 16px;
@@ -28,12 +25,9 @@
 }
 
 .separator {
-  color: $color-secondary; /* Było #89939a */
   font-size: 14px;
-  display: flex; /* Żeby strzałka była równo */
   align-items: center;
 
-  /* Jeśli w separatorze też jest obrazek (Vector.svg) */
   img {
     width: 16px;
     height: 16px;
@@ -41,20 +35,18 @@
 }
 
 .link {
-  color: $color-primary; /* Było #313237 */
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
   transition: color 0.3s;
 
   &:hover {
-    /* Możesz użyć koloru tekstu lub lekko jaśniejszego czarnego */
     opacity: 0.7;
   }
 }
 
 .current {
-  color: $color-secondary; /* Było #89939a */
+  color: $color-secondary;
   font-size: 14px;
   font-weight: 600;
 }

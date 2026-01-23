@@ -4,8 +4,6 @@
   border-top: 1px solid $color-elements-bg;
   background-color: $color-white;
   width: 100%;
-
-  /* Blokujemy możliwość rozciągania stopki przez rodzica (App.tsx) */
   margin-top: auto;
   flex-shrink: 0;
   flex-grow: 0;
@@ -14,10 +12,8 @@
   padding: 32px 0;
   height: auto;
 
-  /* --- 2. TABLET / DESKTOP --- */
   @include on-tablet {
     padding: 0;
-    height: 96px; /* Sztywna wysokość */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,16 +31,14 @@
   gap: 32px;
   align-items: flex-start;
 
-  /* Desktopowe marginesy */
   @include on-desktop {
     padding: 0 24px;
   }
 
-  /* Tablet/Desktop: Układ poziomy */
   @include on-tablet {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; /* Rozrzuca elementy: Logo | Linki | Top */
+    justify-content: space-between;
     height: 100%;
     gap: 0;
   }
@@ -59,8 +53,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px; /* Mobile */
-
+  gap: 16px;
   a {
     text-decoration: none;
     color: $color-secondary;
@@ -77,16 +70,16 @@
   /* --- TABLET --- */
   @include on-tablet {
     flex-direction: row;
-    gap: 32px; /* Mniejszy odstęp na tabletach */
+    gap: 32px;
   }
 
-  /* --- DESKTOP --- */
+
   @include on-desktop {
     gap: 112px;
   }
 }
 
-/* 👇 PRZENIESIONE WYŻEJ, ABY UNIKNĄĆ BŁĘDU NO-DESCENDING-SPECIFICITY */
+
 .backText {
   color: $color-secondary;
   font-size: 12px;
@@ -101,7 +94,7 @@
   width: 32px;
   height: 32px;
   background-color: $color-white;
-  border: 1px solid $color-elements-bg; /* Ramka */
+  border: 1px solid $color-elements-bg;
   border-radius: 50%;
   transition: border-color 0.3s, background-color 0.3s;
 
@@ -116,7 +109,7 @@
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  align-self: center; /* Mobile: środek */
+  align-self: center;
 
   @include on-tablet {
     align-self: auto;

@@ -6,10 +6,10 @@ import cn from 'classnames';
 
 type Props = {
   products: Product[];
-  variant?: 'grid' | 'slider'; // Nowy prop
+  variant?: 'grid' | 'slider';
 };
 
-// 👇 ZMIANA: Używamy forwardRef, aby rodzic mógł sterować przewijaniem
+// ZMIANA: Używamy forwardRef, aby rodzic mógł sterować przewijaniem
 export const ProductsList = forwardRef<HTMLDivElement, Props>(
   ({ products, variant = 'grid' }, ref) => {
     return (

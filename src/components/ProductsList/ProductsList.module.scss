@@ -1,6 +1,5 @@
 @import '../../styles/utils';
 
-/* Wspólne style dla kontenera */
 .container {
   width: 100%;
   box-sizing: border-box;
@@ -26,19 +25,21 @@
   }
 }
 
-/* === WARIANT 2: SLIDER (Polecane) === */
+/* === WARIANT 2: SLIDER === */
 .slider {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 20px; /* Miejsce na cienie */
-
-  /* Ukrywanie scrollbara */
-  &::-webkit-scrollbar { display: none; }
-
+  padding-bottom: 20px;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  /* Ukrywanie scrollbara */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
 
   /* W sliderze elementy ZAWSZE są w rzędzie, nie łamiemy ich */
   flex-wrap: nowrap;

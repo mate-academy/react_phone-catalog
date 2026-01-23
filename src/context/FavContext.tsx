@@ -1,8 +1,6 @@
-/* src/context/FavContext.tsx */
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { Product } from '../types/Product';
 
-// Definiujemy, co nasz "mózg ulubionych" udostępnia aplikacji
 interface FavContextType {
   favItems: Product[];
   // Funkcja, która dodaje lub usuwa produkt (w zależności czy już tam jest)

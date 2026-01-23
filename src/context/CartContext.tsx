@@ -9,6 +9,7 @@ interface CartContextType {
   increaseQuantity: (productId: string | number) => void;
   decreaseQuantity: (productId: string | number) => void;
   isInCart: (productId: string | number) => boolean;
+  clearCart: () => void;
   totalCount: number;
 }
 
@@ -42,7 +43,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Dodawanie produktu (używane na stronach produktów)
+  // Dodawanie produktu
   const addToCart = (product: Product) => {
     setCartItems(currentItems => {
       const existingItem = currentItems.find(item => item.id === product.id);
@@ -59,14 +60,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  // Całkowite usuwanie z koszyka (przycisk X)
+  // Usuwanie
   const removeFromCart = (productId: string | number) => {
     setCartItems(currentItems =>
       currentItems.filter(item => item.id !== productId),
     );
   };
 
-  // Zwiększanie ilości (przycisk +)
+  // Zwiększanie
   const increaseQuantity = (productId: string | number) => {
     setCartItems(currentItems =>
       currentItems.map(item =>
@@ -75,12 +76,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  // Zmniejszanie ilości (przycisk -)
+  // Zmniejszanie
   const decreaseQuantity = (productId: string | number) => {
     setCartItems(currentItems =>
       currentItems.map(item => {
         if (item.id === productId) {
-          // Nie pozwalamy zejść poniżej 1 (usuwanie jest odrębnym przyciskiem)
           const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
 
           return { ...item, quantity: newQuantity };
@@ -89,6 +89,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         return item;
       }),
     );
+  };
+
+  // Czyszczenie koszyka
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   const isInCart = (productId: string | number) =>
@@ -105,6 +110,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         increaseQuantity,
         decreaseQuantity,
         isInCart,
+        clearCart, // Przekazanie funkcji
         totalCount,
       }}
     >

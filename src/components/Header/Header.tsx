@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import { useCart } from '../../context/CartContext';
@@ -8,10 +8,50 @@ import { useFav } from '../../context/FavContext';
 export const Header = () => {
   const { cartItems } = useCart();
   const { favItems } = useFav();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Ta funkcja służy tylko do linków tekstowych (Home, Phones...)
+  // --- 1. SEARCH LOGIC ---
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Sprawdzamy, czy jesteśmy na stronie, która powinna mieć wyszukiwarkę
+  const showSearch =
+    location.pathname === '/phones' ||
+    location.pathname === '/tablets' ||
+    location.pathname === '/accessories' ||
+    location.pathname === '/favourites';
+
+  const query = searchParams.get('query') || '';
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuery = event.target.value;
+    const newParams = new URLSearchParams(searchParams);
+
+    if (newQuery.length === 0) {
+      newParams.delete('query');
+    } else {
+      newParams.set('query', newQuery);
+    }
+
+    // Zawsze resetuj stronę do 1 przy zmianie wyszukiwania
+    newParams.set('page', '1');
+
+    setSearchParams(newParams);
+  };
+  // -----------------------
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(styles.navLink, {
       [styles.isActive]: isActive,
@@ -21,12 +61,12 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      {/* LOGO */}
-      <Link to="/" className={styles.logo} onClick={closeMenu}>
-        <img src="/img/logo.svg" alt="Nice Gadgets" />
-      </Link>
+      <div className={styles.leftSection}>
+        {/* LOGO */}
+        <Link to="/" className={styles.logo} onClick={closeMenu}>
+          <img src="/img/logo.svg" alt="Nice Gadgets" />
+        </Link>
 
-      <div className={styles.content}>
         {/* DESKTOP NAV */}
         <nav className={styles.nav}>
           <ul className={styles.navList}>
@@ -52,6 +92,38 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
+      </div>
+
+      <div className={styles.rightSection}>
+        {/*SEARCH INPUT (Tylko na wybranych stronach) */}
+        {showSearch && (
+          <div className={styles.searchWrapper}>
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder={`Search in ${location.pathname.slice(1)}...`}
+              value={query}
+              onChange={handleSearchChange}
+            />
+            <div className={styles.searchIcon}>
+              <img src="/img/icons/Search.svg" alt="Search" />
+            </div>
+            {/* Przycisk czyszczenia (opcjonalny, jeśli query nie jest puste) */}
+            {query && (
+              <button
+                className={styles.clearSearch}
+                onClick={() => {
+                  const newParams = new URLSearchParams(searchParams);
+
+                  newParams.delete('query');
+                  setSearchParams(newParams);
+                }}
+              >
+                <img src="/img/icons/close.svg" alt="Clear" />
+              </button>
+            )}
+          </div>
+        )}
 
         {/* DESKTOP ICONS */}
         <div className={styles.icons}>
@@ -96,10 +168,9 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* 👇 MENU MOBILNE */}
+      {/* MENU MOBILNE */}
       {isMenuOpen && (
         <div className={styles.mobileMenu}>
-          {/* Linki tekstowe */}
           <nav className={styles.mobileNav}>
             <NavLink to="/" end className={getLinkClass} onClick={closeMenu}>
               Home
@@ -119,7 +190,6 @@ export const Header = () => {
             </NavLink>
           </nav>
 
-          {/* 👇 ZMIANA TUTAJ: Ikony na dole (bez tekstu, nowa klasa) */}
           <div className={styles.mobileIcons}>
             <NavLink
               to="/favourites"

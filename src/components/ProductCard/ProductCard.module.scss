@@ -1,4 +1,4 @@
-
+@use "sass:color";
 @import '../../styles/utils';
 
 .card {
@@ -16,8 +16,7 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    // stylelint-disable-next-line scss/no-global-function-names
-    border-color: darken($color-border, 10%);
+    background-color: color.adjust($color-white, $lightness: -5%);
   }
 }
 
@@ -116,11 +115,11 @@
 
 .addToCartBtn {
   flex-grow: 1;
-  height: 48px; /* Twoja wysokość */
-  background-color: $color-accent; /* ✅ Fioletowy (Twoja zmienna) */
+  height: 48px;
+  background-color: $color-accent;
   color: $color-white;
   border: none;
-  border-radius: 32px; /* ✅ Twoje mocne zaokrąglenie */
+  border-radius: 32px;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
@@ -129,14 +128,13 @@
 
   &:hover {
     /* Rozjaśniamy fiolet przy najechaniu */
-    // stylelint-disable-next-line scss/no-global-function-names
-    background-color: lighten($color-accent, 5%);
+    border-color: color.adjust($color-primary, $lightness: 10%);
   }
 
   /* Styl po dodaniu do koszyka */
   &.added {
     background-color: $color-white;
-    color: $color-green; /* Zielony tekst */
+    color: $color-green;
     border: 1px solid $color-border;
     cursor: default;
 
@@ -154,7 +152,7 @@
   height: 48px;
   background: transparent;
   border: 1px solid $color-border;
-  border-radius: 32px; /* ✅ Też zaokrąglone, żeby pasowało do przycisku obok */
+  border-radius: 32px;
   cursor: pointer;
   transition: all 0.3s;
 
@@ -162,7 +160,6 @@
     border-color: $color-primary;
   }
 
-  /* Upewniamy się, że obrazek ma wymiary */
   img {
     width: 20px;
     height: 20px;

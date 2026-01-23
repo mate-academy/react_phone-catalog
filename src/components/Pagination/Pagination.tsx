@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Pagination.module.scss'; // Zakładam, że masz ten plik, lub usuń import i użyj className
+import styles from './Pagination.module.scss';
 
 type Props = {
   total: number;

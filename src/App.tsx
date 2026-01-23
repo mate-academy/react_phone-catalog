@@ -14,6 +14,9 @@ import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
+//  1. Importujemy komponent przewijania
+import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
+
 import { CartProvider } from './context/CartContext';
 import { FavProvider } from './context/FavContext';
 
@@ -21,6 +24,9 @@ export const App = () => (
   <CartProvider>
     <FavProvider>
       <HashRouter>
+        {/* 2. Wstawiamy go wewnątrz Routera, ale przed resztą aplikacji */}
+        <ScrollToTop />
+
         <div className="app-wrapper">
           <Header />
 

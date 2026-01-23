@@ -3,12 +3,11 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
-// 👇 Zmieniono na Angielski dla spójności z resztą sklepu
 const breadcrumbNameMap: { [key: string]: string } = {
   phones: 'Phones',
   tablets: 'Tablets',
   accessories: 'Accessories',
-  favorites: 'Favourites', // lub 'Favorites' zależnie od wersji
+  favorites: 'Favourites',
   cart: 'Cart',
 };
 
@@ -16,7 +15,6 @@ export const Breadcrumbs = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(x => x);
 
-  // Nie pokazujemy breadcrumbs na stronie głównej
   if (pathnames.length === 0) {
     return null;
   }

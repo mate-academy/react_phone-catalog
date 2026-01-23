@@ -428,8 +428,6 @@
   }
 }
 
-/* ... (reszta pliku) ... */
-
 /* --- SUGGESTIONS (You may also like) --- */
 .suggestionsSection {
   margin-top: 80px;
@@ -482,7 +480,7 @@
     border-color: $color-primary; /* Czarna ramka */
 
     img {
-      /* 👇 TO JEST ROZWIĄZANIE:
+      /* 
          Wymusza, by obrazek stał się całkowicie czarny (#000000).
          Działa niezależnie od tego, jaki kolor ma plik SVG. */
       filter: brightness(0);

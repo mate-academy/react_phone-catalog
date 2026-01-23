@@ -19,8 +19,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const { name, screen, capacity, ram, image, itemId, category } = product;
 
-  /* 👇 NAPRAWA: Sprawdzamy oba warianty nazw cen.
-     Dzięki temu karta zadziała zarówno dla danych z listy, jak i detali. */
   const currentPrice = product.price || product.priceDiscount;
   const oldPrice = product.fullPrice || product.priceRegular;
 

@@ -17,7 +17,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
 
   return (
     <div className={styles.cartItem} data-cy="cartItem">
-      {/* 1. Krzyżyk (SVG inline - zawsze zadziała) */}
+      {/* 1. Krzyżyk  */}
       <div className={styles.removeWrapper}>
         <button
           type="button"

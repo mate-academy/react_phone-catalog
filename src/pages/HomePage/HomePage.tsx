@@ -1,4 +1,3 @@
-/* src/pages/HomePage/HomePage.tsx */
 import React, { useState, useEffect, useRef } from 'react';
 import { PicturesSlider } from '../../components/PicturesSlider/PicturesSlider';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
@@ -7,7 +6,7 @@ import { Product } from '../../types/Product';
 import styles from './HomePage.module.scss';
 import cn from 'classnames';
 
-// 👇 ZMIANA: Pusty alt="", bo opis jest na przycisku (Button)
+// Pusty alt="", bo opis jest na przycisku (Button)
 const ArrowLeft = () => (
   <img src="/img/icons/arrow-left.svg" alt="" className={styles.icon} />
 );
@@ -121,7 +120,7 @@ export const HomePage = () => {
                 handleScroll(brandNewRef, 'left', setCanScrollBrand)
               }
               disabled={!canScrollBrand[0]}
-              // 👇 ZMIANA: Dodano title (dla błędu lintera) i aria-label (dla czytników)
+              // title (dla błędu lintera) i aria-label (dla czytników)
               aria-label="Previous products"
               title="Previous products"
             >
@@ -137,7 +136,7 @@ export const HomePage = () => {
                 handleScroll(brandNewRef, 'right', setCanScrollBrand)
               }
               disabled={!canScrollBrand[1]}
-              // 👇 ZMIANA: Dodano title i aria-label
+              // title i aria-label
               aria-label="Next products"
               title="Next products"
             >
@@ -174,7 +173,7 @@ export const HomePage = () => {
               })}
               onClick={() => handleScroll(hotPriceRef, 'left', setCanScrollHot)}
               disabled={!canScrollHot[0]}
-              // 👇 ZMIANA: Dodano title i aria-label
+              // title i aria-label
               aria-label="Previous products"
               title="Previous products"
             >
@@ -190,7 +189,7 @@ export const HomePage = () => {
                 handleScroll(hotPriceRef, 'right', setCanScrollHot)
               }
               disabled={!canScrollHot[1]}
-              // 👇 ZMIANA: Dodano title i aria-label
+              // title i aria-label
               aria-label="Next products"
               title="Next products"
             >

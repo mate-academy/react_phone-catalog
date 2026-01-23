@@ -1,25 +1,30 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Product } from '../../types/Product';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Loader } from '../../components/Loader/Loader';
-import { Pagination } from '../../components/Pagination/Pagination'; // 👈 Importujemy Paginację
+import { Pagination } from '../../components/Pagination/Pagination';
+import { Dropdown } from '../../components/Dropdown/Dropdown';
 import styles from './AccessoriesPage.module.scss';
 
 export const AccessoriesPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // --- STANY ---
-  const [sortType, setSortType] = useState('age');
-  const [perPage, setPerPage] = useState('16');
-  const [currentPage, setCurrentPage] = useState(1); // 👈 Stan obecnej strony
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortType = searchParams.get('sort') || 'age';
+  const perPage = searchParams.get('perPage') || '16';
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const query = searchParams.get('query') || '';
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('/api/products.json')
       .then(response => response.json())
       .then((data: Product[]) => {
-        // Filtrujemy tylko akcesoria
+        // Filtrujemy akcesoria
         const onlyAccessories = data.filter(
           product => product.category === 'accessories',
         );
@@ -32,16 +37,19 @@ export const AccessoriesPage = () => {
       });
   }, []);
 
-  // Resetujemy stronę na 1, gdy zmieniamy sortowanie lub ilość na stronie
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sortType, perPage]);
+  const filteredAndSortedProducts = useMemo(() => {
+    let result = [...products];
 
-  // --- LOGIKA ---
-  const visibleProducts = useMemo(() => {
-    const result = [...products];
+    // 1. Search
+    if (query) {
+      const normalizedQuery = query.toLowerCase().trim();
 
-    // 1. Sortowanie
+      result = result.filter(product =>
+        product.name.toLowerCase().includes(normalizedQuery),
+      );
+    }
+
+    // 2. Sort
     result.sort((a, b) => {
       switch (sortType) {
         case 'age':
@@ -55,21 +63,33 @@ export const AccessoriesPage = () => {
       }
     });
 
-    // 2. Paginacja
+    return result;
+  }, [products, sortType, query]);
+
+  const visibleProducts = useMemo(() => {
     if (perPage !== 'all') {
       const limit = Number(perPage);
       const startIndex = (currentPage - 1) * limit;
       const endIndex = startIndex + limit;
 
-      return result.slice(startIndex, endIndex);
+      return filteredAndSortedProducts.slice(startIndex, endIndex);
     }
 
-    return result;
-  }, [products, sortType, perPage, currentPage]);
+    return filteredAndSortedProducts;
+  }, [filteredAndSortedProducts, perPage, currentPage]);
 
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortType(event.target.value);
+  const handlePageChange = (page: number) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('page', page.toString());
+    setSearchParams(newParams);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // 👇 ZMIENNE POMOCNICZE
+  const totalItems = filteredAndSortedProducts.length;
+  const itemsPerPage = Number(perPage);
+  const shouldShowPagination = perPage !== 'all' && totalItems > itemsPerPage;
 
   return (
     <div className={styles.accessoriesPage}>
@@ -78,42 +98,46 @@ export const AccessoriesPage = () => {
 
         <header className={styles.header}>
           <h1 className={styles.title}>Accessories</h1>
-          <p className={styles.modelsCount}>{products.length} models</p>
+          <p className={styles.modelsCount}>{totalItems} models</p>
         </header>
 
         {!isLoading && (
           <div className={styles.filters}>
-            <div className={styles.filterGroup}>
-              <label className={styles.label}>
-                Sort by
-                <select
-                  value={sortType}
-                  onChange={handleSortChange}
-                  className={styles.select}
-                >
-                  <option value="age">Newest</option>
-                  <option value="title">Alphabetically</option>
-                  <option value="price">Cheapest</option>
-                </select>
-              </label>
-            </div>
+            <Dropdown
+              label="Sort by"
+              value={sortType}
+              onChange={newSort => {
+                const newParams = new URLSearchParams(searchParams);
 
-            <div className={styles.filterGroup}>
-              <label className={styles.label}>
-                Items on page
-                <select
-                  value={perPage}
-                  onChange={e => setPerPage(e.target.value)}
-                  className={styles.select}
-                >
-                  <option value="all">All</option>
-                  <option value="4">4</option>
-                  <option value="8">8</option>
-                  <option value="16">16</option>
-                  <option value="32">32</option>
-                </select>
-              </label>
-            </div>
+                newParams.set('sort', newSort);
+                newParams.set('page', '1');
+                setSearchParams(newParams);
+              }}
+              options={[
+                { value: 'age', label: 'Newest' },
+                { value: 'title', label: 'Alphabetically' },
+                { value: 'price', label: 'Cheapest' },
+              ]}
+            />
+
+            <Dropdown
+              label="Items on page"
+              value={perPage}
+              onChange={newPerPage => {
+                const newParams = new URLSearchParams(searchParams);
+
+                newParams.set('perPage', newPerPage);
+                newParams.set('page', '1');
+                setSearchParams(newParams);
+              }}
+              options={[
+                { value: '4', label: '4' },
+                { value: '8', label: '8' },
+                { value: '16', label: '16' },
+                { value: '32', label: '32' },
+                { value: 'all', label: 'All' },
+              ]}
+            />
           </div>
         )}
 
@@ -124,18 +148,23 @@ export const AccessoriesPage = () => {
             {visibleProducts.length > 0 ? (
               <ProductsList products={visibleProducts} />
             ) : (
-              <p className={styles.noResults}>No accessories found.</p>
+              <p className={styles.noResults}>
+                {query
+                  ? `No accessories matching "${query}" found.`
+                  : 'No accessories found.'}
+              </p>
             )}
 
-            {/* 👇 Komponent Paginacji */}
-            <div className={styles.paginationContainer}>
-              <Pagination
-                total={products.length}
-                perPage={perPage}
-                currentPage={currentPage}
-                onPageChange={setCurrentPage}
-              />
-            </div>
+            {shouldShowPagination && (
+              <div className={styles.paginationContainer}>
+                <Pagination
+                  total={totalItems}
+                  perPage={itemsPerPage}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                />
+              </div>
+            )}
           </>
         )}
       </div>

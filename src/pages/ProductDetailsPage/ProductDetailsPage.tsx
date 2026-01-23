@@ -5,6 +5,7 @@ import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext';
 import { useFav } from '../../context/FavContext';
+import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -114,16 +115,11 @@ export const ProductDetailsPage = () => {
     target.style.display = 'none';
   };
 
-  // 👇 Funkcja sprawdzająca pozycję (używana w wielu miejscach)
   const checkScroll = () => {
     if (listRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = listRef.current;
 
-      // 1. Lewa strona
       setCanScrollLeft(scrollLeft > 0);
-
-      // 2. Prawa strona (z tolerancją błędu 5px)
-      // Jeśli scrollLeft + szerokość widoczna jest blisko końca (mniej niż 5px różnicy), to uznajemy za koniec
       setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 5);
     }
   };
@@ -131,7 +127,6 @@ export const ProductDetailsPage = () => {
   const scrollLeft = () => {
     if (listRef.current) {
       listRef.current.scrollBy({ left: -288, behavior: 'smooth' });
-      // Sprawdź przyciski po zakończeniu animacji (np. za 500ms)
       setTimeout(checkScroll, 500);
     }
   };
@@ -143,23 +138,16 @@ export const ProductDetailsPage = () => {
     }
   };
 
-  // 👇 ULEPSZONY useEffect do obsługi scrolla
   useEffect(() => {
     const listElement = listRef.current;
-
     const handleScroll = () => {
       checkScroll();
     };
 
     if (listElement) {
-      // Dodajemy listener od razu
       listElement.addEventListener('scroll', handleScroll);
       window.addEventListener('resize', handleScroll);
-
-      // Wywołujemy sprawdzenie na starcie
       checkScroll();
-
-      // Dodatkowe sprawdzenie po chwili (gdyby obrazki się doczytały i zmieniły szerokość)
       setTimeout(checkScroll, 500);
     }
 
@@ -170,7 +158,7 @@ export const ProductDetailsPage = () => {
 
       window.removeEventListener('resize', handleScroll);
     };
-  }, [suggestedProducts]); // Reaguj na załadowanie produktów
+  }, [suggestedProducts]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -231,12 +219,40 @@ export const ProductDetailsPage = () => {
     fetchData();
   }, [productId, categoryApiFile, currentCategorySlug]);
 
+  const handleAddToCart = () => {
+    if (!product) {
+      return;
+    }
+
+    const cartProduct: Product = {
+      ...product,
+      image: product.images?.[0] || product.image || '',
+      price: product.priceDiscount || product.price || 0,
+    };
+
+    addToCart(cartProduct);
+  };
+
+  const handleToggleFav = () => {
+    if (!product) {
+      return;
+    }
+
+    const favProduct: Product = {
+      ...product,
+      image: product.images?.[0] || product.image || '',
+      price: product.priceDiscount || product.price || 0,
+    };
+
+    toggleFav(favProduct);
+  };
+
   if (loading) {
     return <div className={styles.container}>Loading...</div>;
   }
 
   if (error || !product) {
-    return <div className={styles.container}>Error: {error}</div>;
+    return <NotFoundPage />;
   }
 
   const currentPrice = product.priceDiscount || product.price;
@@ -289,7 +305,7 @@ export const ProductDetailsPage = () => {
 
         <div className={styles.detailsWrapper}>
           <div className={styles.optionsBlock}>
-            <div className={styles.idText}>ID: 802390</div>
+            <div className={styles.idText}>ID: {product.id}</div>
 
             <div className={styles.optionLabel}>Available colors</div>
             <div className={styles.colorsList}>
@@ -345,15 +361,12 @@ export const ProductDetailsPage = () => {
 
           <div className={styles.actions}>
             <button
-              onClick={() => addToCart(product)}
+              onClick={handleAddToCart}
               className={`${styles.addToCart} ${isAdded ? styles.added : ''}`}
             >
               {isAdded ? 'Added' : 'Add to cart'}
             </button>
-            <button
-              onClick={() => toggleFav(product)}
-              className={styles.favoriteBtn}
-            >
+            <button onClick={handleToggleFav} className={styles.favoriteBtn}>
               <img
                 src={
                   isFav ? '/img/icons/Heart Like.svg' : '/img/icons/Heart.svg'

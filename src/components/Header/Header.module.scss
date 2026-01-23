@@ -1,48 +1,54 @@
-/* 👇 TA LINIA NAPRAWIA PROBLEM RAZ NA ZAWSZE */
-/* stylelint-disable no-descending-specificity */
-
 @import '../../styles/utils';
 
 .header {
+  position: sticky;
   top: 0;
   z-index: 100;
   background-color: $color-white;
   border-bottom: 1px solid $color-elements-bg;
   height: 64px;
+  width: 100%;
+
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-  position: relative;
-  width: 100%;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
 }
 
-/* --- LOGO --- */
+/* --- LEWA STRONA --- */
+.leftSection {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .logo {
   display: flex;
   align-items: center;
   height: 100%;
-  padding-left: 16px;
+  margin-right: 16px;
 
   img {
     height: 28px;
     width: auto;
     object-fit: contain;
-    transition: height 0.3s ease;
   }
 
   @include on-tablet {
+    margin-right: 20px;
+
     img {
-      height: 36px;
+      height: 32px;
     }
   }
 
   @include on-desktop {
-    position: absolute;
-    left: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding-left: 0;
-    z-index: 10;
+    margin-right: 48px;
 
     img {
       height: 36px;
@@ -50,54 +56,24 @@
   }
 }
 
-/* --- KONTENER GŁÓWNY --- */
-.content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 16px;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-desktop {
-    padding: 0 24px;
-  }
-}
-
-/* --- NAWIGACJA (Menu) --- */
+/* --- NAWIGACJA (TEKSTOWA) --- */
 .nav {
   display: none;
 
   @include on-tablet {
     display: block;
-    margin-left: 0;
-  }
-
-  @media (min-width: 1200px) {
-     margin-left: 164px;
-  }
-
-  @media (min-width: 1386px) {
-    margin-left: 24px;
   }
 }
 
-/* --- ODSTĘPY MIĘDZY LINKAMI --- */
 .navList {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 32px;
+  gap: 16px;
 
-  @media (min-width: 1200px) {
-    gap: 64px;
+  @include on-desktop {
+    gap: 32px;
   }
 }
 
@@ -105,7 +81,7 @@
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.04em;
   color: $color-secondary;
@@ -113,7 +89,10 @@
   height: 64px;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
+
+  @include on-desktop {
+    font-size: 12px;
+  }
 
   &::after {
     content: '';
@@ -125,11 +104,14 @@
     background-color: $color-primary;
     opacity: 0;
     transform: scaleX(0);
-    transition: opacity 0.3s, transform 0.3s;
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
   }
 
   &:hover {
     color: $color-primary;
+
     &::after {
       opacity: 1;
       transform: scaleX(1);
@@ -138,6 +120,7 @@
 
   &.isActive {
     color: $color-primary;
+
     &::after {
       opacity: 1;
       transform: scaleX(1);
@@ -145,18 +128,99 @@
   }
 }
 
-/* --- IKONY (PRAWA STRONA) --- */
+/* --- PRAWA STRONA --- */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}
+
+/* --- WYSZUKIWARKA --- */
+.searchWrapper {
+  display: none;
+  position: relative;
+  height: 32px;
+  width: 160px;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    width: 240px;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 40px;
+
+  background-color: $color-white;
+  border: 1px solid $color-elements-bg;
+  border-radius: 4px;
+  font-size: 13px;
+  color: $color-primary;
+
+  &::placeholder {
+    color: $color-secondary;
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+  }
+}
+
+.clearSearch {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* --- IKONY (Heart, Cart) --- */
 .icons {
   display: none;
+  align-items: center;
+  height: 100%;
 
   @include on-tablet {
     display: flex;
-    align-items: center;
-    height: 100%;
-    position: absolute;
-    right: 24px;
-    top: 0;
-    z-index: 10;
   }
 }
 
@@ -165,11 +229,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
+  width: 48px;
   height: 64px;
+
   border-left: 1px solid $color-elements-bg;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
+
+  &:last-child {
+    border-right: 1px solid $color-elements-bg;
+  }
+
+  @include on-desktop {
+    width: 64px;
+  }
 
   img {
     width: 16px;
@@ -187,7 +259,9 @@
     background-color: $color-primary;
     opacity: 0;
     transform: scaleX(0);
-    transition: opacity 0.3s, transform 0.3s;
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
   }
 
   &:hover {
@@ -218,8 +292,8 @@
 
 .badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -6px;
+  right: -6px;
   background-color: $color-accent;
   color: $color-white;
   font-size: 9px;
@@ -234,11 +308,10 @@
   border: 1px solid $color-white;
 }
 
-/* --- MOBILE --- */
+/* --- MOBILE BURGER --- */
 .menuButton {
-  width: 64px;
+  width: 48px;
   height: 64px;
-  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,22 +319,19 @@
   border: none;
   border-left: 1px solid $color-elements-bg;
   cursor: pointer;
-  padding: 0;
-
-  img {
-    width: 16px;
-    height: 16px;
-  }
-
-  &:hover {
-    background-color: #fafbfc;
-  }
 
   @include on-tablet {
     display: none;
   }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  img {
+    width: 16px;
+    height: 16px;
+  }
 }
 
+/* --- MOBILE MENU --- */
 .mobileMenu {
   position: fixed;
   top: 64px;
@@ -291,30 +361,8 @@
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: $color-secondary;
     text-decoration: none;
-    position: relative;
-    padding-bottom: 4px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: $color-primary;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    &.isActive {
-      color: $color-primary;
-      &::after {
-        opacity: 1;
-      }
-    }
   }
 }
 
@@ -331,49 +379,11 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  text-decoration: none;
-  transition: background-color 0.3s;
+  border-right: 1px solid $color-elements-bg;
 
-  &:not(:first-child) {
-    border-left: 1px solid $color-elements-bg;
-  }
-
+  /* stylelint-disable-next-line no-descending-specificity */
   img {
     width: 24px;
     height: 24px;
-    object-fit: contain;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: $color-primary;
-    opacity: 0;
-    transform: scaleX(0);
-    transition: opacity 0.3s, transform 0.3s;
-  }
-
-  &:hover {
-    background-color: #fafbfc;
-
-    img {
-      transform: scale(1.1);
-    }
-
-    &::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
-
-  &.isActive {
-    &::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
   }
 }

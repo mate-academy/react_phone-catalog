@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 16px; /* Zwiększyłam padding, żeby strona "oddychała" */
+  padding: 80px 16px;
   text-align: center;
 
   /* Opcjonalnie: minimalna wysokość, żeby stopka nie skakała do góry na dużych ekranach */
@@ -15,7 +15,7 @@
 .title {
   font-size: 32px;
   font-weight: 800;
-  color: $color-primary; /* #313237 */
+  color: $color-primary;
   margin-bottom: 24px;
 }
 
@@ -26,14 +26,13 @@
   margin-bottom: 32px;
 }
 
-/* Stylizujemy przycisk podobnie jak na stronie Ulubionych (pusty stan) */
 .homeBtn {
   display: inline-block;
   padding: 12px 24px;
-  background-color: $color-primary; /* #313237 */
+  background-color: $color-primary;
   color: $color-white;
   text-decoration: none;
-  border-radius: 8px; /* Spójne z innymi przyciskami */
+  border-radius: 8px;
   font-weight: 700;
   font-size: 14px;
   transition: background-color 0.3s;
@@ -43,6 +42,6 @@
     background-color: lighten(
       $color-primary,
       10%
-    ); /* Lekkie rozjaśnienie przy najechaniu */
+    );
   }
 }
