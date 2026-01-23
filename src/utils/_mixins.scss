@@ -51,6 +51,7 @@
     --columns: 12;
 
     padding: 0;
+    padding-inline: 24px;
   }
 
   @include on-desktop {

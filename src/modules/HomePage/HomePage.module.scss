@@ -3,6 +3,7 @@
 
 .homepage {
   @include page-grid;
+  padding-block: 0;
 
   &__title {
     grid-column: 1 / -1;
@@ -36,6 +37,15 @@
     align-items: flex-start;
 
     width: 100%;
-    margin-bottom: 80px;
+
+    @include on-phone{
+      margin-bottom: 57px;
+    }
+    @include on-tablet{
+      margin-bottom: 64px;
+    }
+    @include on-desktop{
+      margin-bottom: 80px;
+    }
   }
 }

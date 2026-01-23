@@ -9,6 +9,7 @@ footer {
 
 .footer {
   @include page-grid;
+  padding: 0;
 
   &__wrapper {
     display: flex;
