@@ -8,7 +8,6 @@
 
   &__title {
     grid-column: 1 / -1;
-    text-align: start;
 
       margin: 24px 0;
 
@@ -18,6 +17,7 @@
     font-style: Bold;
       line-height: 41px;
     color: $primary-color;
+    text-align: start;
       letter-spacing: -1%;
 
     @include on-tablet {
