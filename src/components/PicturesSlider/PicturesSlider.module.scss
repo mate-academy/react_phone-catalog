@@ -48,6 +48,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* Zachowujemy Twój kształt (wysokie przyciski po bokach) */
     width: 32px;
     height: 100%;
     min-height: 400px;
@@ -58,23 +60,29 @@
     transition: all 0.3s;
     padding: 0;
 
-    /* Ikona w środku */
+    /* 👇 TUTAJ ZMIANA: Stylujemy ikonę w środku */
     img {
       width: 16px;
       height: 16px;
       display: block;
-      filter: grayscale(1);
-      opacity: 0.5;
+
+      /* 1. Wymuszamy, żeby ikona była CZARNA (niezależnie od pliku) */
+      filter: brightness(0);
+
+      /* 2. Domyślnie jest lekko przezroczysta (wygląda na szarą) */
+      opacity: 0.4;
+
       transition: all 0.3s;
     }
 
+    /* Stan: Najazd myszką na przycisk */
     &:hover {
-      border-color: $color-primary; /* Podświetlenie ramki */
+      border-color: $color-primary; /* Czarna ramka */
 
       img {
+        /* Ikona staje się w pełni czarna i wyraźna */
         opacity: 1;
-        filter: grayscale(0); /* Pełny kolor przy najechaniu */
-        transform: scale(1.2);
+        transform: scale(1.2); /* Lekkie powiększenie */
       }
     }
   }
@@ -96,7 +104,7 @@
   cursor: pointer;
   transition: all 0.3s;
   border-radius: 2px;
-  padding: 0; /* Reset dla buttona */
+  padding: 0;
 
   &.active {
     background-color: $color-primary;

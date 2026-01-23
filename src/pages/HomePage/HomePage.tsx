@@ -6,15 +6,6 @@ import { Product } from '../../types/Product';
 import styles from './HomePage.module.scss';
 import cn from 'classnames';
 
-// Pusty alt="", bo opis jest na przycisku (Button)
-const ArrowLeft = () => (
-  <img src="/img/icons/arrow-left.svg" alt="" className={styles.icon} />
-);
-
-const ArrowRight = () => (
-  <img src="/img/icons/arrow-right.svg" alt="" className={styles.icon} />
-);
-
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -120,11 +111,10 @@ export const HomePage = () => {
                 handleScroll(brandNewRef, 'left', setCanScrollBrand)
               }
               disabled={!canScrollBrand[0]}
-              // title (dla błędu lintera) i aria-label (dla czytników)
               aria-label="Previous products"
-              title="Previous products"
             >
-              <ArrowLeft />
+              {/* Div zamiast Img - klasa określa kształt */}
+              <div className={cn(styles.icon, styles.iconLeft)} />
             </button>
 
             <button
@@ -136,11 +126,9 @@ export const HomePage = () => {
                 handleScroll(brandNewRef, 'right', setCanScrollBrand)
               }
               disabled={!canScrollBrand[1]}
-              // title i aria-label
               aria-label="Next products"
-              title="Next products"
             >
-              <ArrowRight />
+              <div className={cn(styles.icon, styles.iconRight)} />
             </button>
           </div>
         </div>
@@ -173,11 +161,9 @@ export const HomePage = () => {
               })}
               onClick={() => handleScroll(hotPriceRef, 'left', setCanScrollHot)}
               disabled={!canScrollHot[0]}
-              // title i aria-label
               aria-label="Previous products"
-              title="Previous products"
             >
-              <ArrowLeft />
+              <div className={cn(styles.icon, styles.iconLeft)} />
             </button>
 
             <button
@@ -189,11 +175,9 @@ export const HomePage = () => {
                 handleScroll(hotPriceRef, 'right', setCanScrollHot)
               }
               disabled={!canScrollHot[1]}
-              // title i aria-label
               aria-label="Next products"
-              title="Next products"
             >
-              <ArrowRight />
+              <div className={cn(styles.icon, styles.iconRight)} />
             </button>
           </div>
         </div>

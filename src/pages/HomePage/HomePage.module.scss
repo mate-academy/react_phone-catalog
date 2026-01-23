@@ -39,12 +39,12 @@
   gap: 16px;
 }
 
-/* --- PRZYCISKI NAWIGACJI (STRZAŁKI) --- */
+/* --- PRZYCISKI NAWIGACJI --- */
 .arrow {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid $color-elements;
+  border: 1px solid #b4bdc3;
   background-color: $color-white;
 
   display: flex;
@@ -53,41 +53,64 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  /* 👇 Ikona w środku */
+  /* Domyślny kolor dla AKTYWNEJ strzałki (Czarny) */
   .icon {
     display: block;
     width: 16px;
     height: 16px;
-    filter: brightness(0) opacity(1);
-    transition: all 0.3s;
+    background-color: $color-primary; /* To farbuje ikonę na czarno */
+
+    /* Konfiguracja maski */
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    transition: background-color 0.3s;
   }
 
-  /* Stan DISABLED (Zablokowany) */
+  /* Ładujemy kształt lewej strzałki */
+  .iconLeft {
+    -webkit-mask-image: url('/img/icons/arrow-left.svg');
+    mask-image: url('/img/icons/arrow-left.svg');
+  }
+
+  /* Ładujemy kształt prawej strzałki */
+  .iconRight {
+    -webkit-mask-image: url('/img/icons/arrow-right.svg');
+    mask-image: url('/img/icons/arrow-right.svg');
+  }
+
+  /* Stan: HOVER (tylko gdy aktywny) */
+  &:hover:not(.disabled, :disabled) {
+    border-color: $color-primary;
+  }
+
+  /* === STAN ZABLOKOWANY === */
+  &.disabled,
   &:disabled {
-    border-color: $color-border;
+    border-color: #e2e6e9;
     cursor: default;
     background-color: $color-white;
+    pointer-events: none;
 
+    /* Tu zmieniamy kolor na SZARY */
     .icon {
-      filter: none;
-      opacity: 0.3;
+      /* Nadpisujemy kolor tła maski */
+      background-color: #b4bdc3 !important;
     }
-  }
-
-  /* Stan HOVER (dla aktywnych) */
-  &:hover:not(:disabled) {
-    border-color: $color-primary;
   }
 }
 
-/* --- WRAPPER PRODUKTÓW (Horyzontalny scroll) --- */
+/* --- WRAPPER PRODUKTÓW --- */
 .productsWrapper {
   overflow-x: auto;
   scroll-behavior: smooth;
-  margin: 0 -16px; /* Negatywny margines na mobile */
+  margin: 0 -16px;
   padding: 0 16px;
 
-  /* Ukrywanie paska przewijania */
   &::-webkit-scrollbar {
     display: none;
   }
@@ -95,10 +118,9 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-  /* Wymuszenie linii poziomej na liście produktów */
   & > div {
     display: flex !important;
-    flex-wrap: nowrap !important;
+    flex-flow: row nowrap !important;
     gap: 16px;
     width: max-content;
   }
