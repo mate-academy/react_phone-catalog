@@ -12,13 +12,13 @@ export default function Breadcrumps({ type, name = '' }: Props) {
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles.link}>
         <img
-          src={asset('img/icons/home.png')}
+          src={asset('/img/icons/home.png')}
           alt="Home"
           className={styles.icon}
         />
       </Link>
       <img
-        src={asset('img/icons/arrow-right.png')}
+        src={asset('/img/icons/arrow-right.png')}
         alt="Breadcrumbs Separator"
         className={styles.icon}
       />
@@ -28,7 +28,7 @@ export default function Breadcrumps({ type, name = '' }: Props) {
             <p className={styles.text}>{type}</p>
           </Link>
           <img
-            src={asset('img/icons/arrow-right.png')}
+            src={asset('/img/icons/arrow-right.png')}
             alt="Breadcrumbs Separator"
             className={styles.icon}
           />

@@ -23,7 +23,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
       <div className={styles.productImgBlock}>
         <img
-          src={asset(item.product.image)}
+          src={asset('/' + item.product.image)}
           className={styles.productImg}
         ></img>
       </div>

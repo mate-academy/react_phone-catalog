@@ -58,7 +58,7 @@ export const ProductDetailsView: React.FC<Props> = ({
       <div className={styles.content}>
         <div className={styles.mainPhoto}>
           <img
-            src={asset(mainPhoto)}
+            src={asset('/' + mainPhoto)}
             alt="Main Photo"
             className={styles.mainPhotoImg}
           />
@@ -67,7 +67,7 @@ export const ProductDetailsView: React.FC<Props> = ({
           {productDetails.images.map((url, i) => (
             <div key={i} className={styles.previewPhoto}>
               <img
-                src={asset(url)}
+                src={asset('/' + url)}
                 alt="Preview Photo"
                 className={styles.previewPhotoImg}
                 onClick={() => setMainPhoto(url)}

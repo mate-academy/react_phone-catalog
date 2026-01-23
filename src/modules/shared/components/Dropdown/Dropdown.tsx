@@ -57,7 +57,7 @@ export default function Dropdown({
       >
         {valueName}
         <img
-          src={asset(`img/icons/${open ? 'arrow-up' : 'arrow-down'}.png`)}
+          src={asset(`/img/icons/${open ? 'arrow-up' : 'arrow-down'}.png`)}
           alt="Breadcrumbs Separator"
           className={styles.icon}
         />
