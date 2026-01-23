@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './PicturesSlider.module.scss';
 import { useNavigate } from 'react-router';
 
@@ -15,6 +15,7 @@ export const PictureSlider: React.FC<Props> = ({
 }) => {
   const [curr, setCurr] = useState(0);
   const navigate = useNavigate();
+  const touchStart = useRef<number | null>(null);
 
   const prev = () =>
     setCurr(currPrev => (currPrev === 0 ? slides.length - 1 : currPrev - 1));
@@ -36,18 +37,47 @@ export const PictureSlider: React.FC<Props> = ({
     return () => clearInterval(slideInterval);
   }, [autoSlide, autoSlideInterval, slides.length]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart.current === null) {
+      return;
+    }
+
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart.current - touchEnd;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
+    }
+
+    touchStart.current = null;
+  };
+
   return (
     <div className={styles.container}>
-      <div>
-        {slides.length > 0 && (
-          <>
-            <div className={styles.slideContainer}>
-              <button
-                onClick={prev}
-                className={`${styles.navButton} ${styles.leftButton}`}
-              >
-                &#10094;
-              </button>
+      {slides.length > 0 && (
+        <>
+          <div
+            className={styles.slideContainer}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <button
+              onClick={prev}
+              className={`${styles.navButton} ${styles.leftButton}`}
+              aria-label="Previous slide"
+            >
+              &#10094;
+            </button>
+
+            <div className={styles.imageWrapper}>
               <button
                 className={styles.orderButton}
                 onClick={() => navigate('/cart')}
@@ -59,25 +89,28 @@ export const PictureSlider: React.FC<Props> = ({
                 alt={`Slide ${curr + 1}`}
                 className={styles.slideImage}
               />
+            </div>
+
+            <button
+              onClick={next}
+              className={`${styles.navButton} ${styles.rightButton}`}
+              aria-label="Next slide"
+            >
+              &#10095;
+            </button>
+          </div>
+          <div className={styles.navDots}>
+            {slides.map((_, index) => (
               <button
-                onClick={next}
-                className={`${styles.navButton} ${styles.rightButton}`}
-              >
-                &#10095;
-              </button>
-            </div>
-            <div className={styles.navDots}>
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  className={`${styles.navDot} ${curr === index ? styles.activeDot : ''}`}
-                  onClick={() => goToSlide(index)}
-                />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+                key={index}
+                className={`${styles.navDot} ${curr === index ? styles.activeDot : ''}`}
+                onClick={() => goToSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
