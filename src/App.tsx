@@ -8,6 +8,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
 import Header from './components/Header';
+import Footer from './components/Footer/index';
 import './App.scss';
 
 const App = () => {
@@ -33,7 +34,7 @@ const App = () => {
           </Router>
         </div>
       </main>
-      <footer className="footer"> footer & footer</footer>
+      <Footer />
     </>
   );
 };

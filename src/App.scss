@@ -60,7 +60,7 @@ h3 {
   margin-top: 56px;
 }
 
-р4 {
+h4 {
   font-weight: 700;
   font-style: SemiBold;
   font-size: 20px;
@@ -87,5 +87,15 @@ h5 {
   button {
     border: none;
   }
+
+  img {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform:  scale(1.1);
+    }
+  }
+
+
 }
 

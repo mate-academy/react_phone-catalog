@@ -18,7 +18,7 @@
 }
 
 .icon {
-  border: 1px solid blue;
+  cursor: pointer;
   display: block;
   background-size: cover;
   background-position: center;
@@ -71,7 +71,6 @@
   }
 
   &--close {
-    border: 1px solid red;
     background-image: url(/img/icons/icon-close-2x.png);
     width: 16px;
     height: 16px;
@@ -80,7 +79,7 @@
 
 .topBar {
   padding-block: 0;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid $header-border-color;
 
   display: flex;
   justify-content:  space-between;
@@ -126,4 +125,14 @@
   }
 
   }
+
+   button {
+    transition: transform 0.2s, color 0.15s;
+
+     &:hover {
+    transform: scale(1.2);
+   }
+   }
+
+
 }

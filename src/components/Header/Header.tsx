@@ -2,6 +2,7 @@ import Menu from '../Menu/index';
 import MainMenu from '../MainMenu/index';
 import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
+import Logo from '../Logo';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,23 +37,9 @@ export const Header = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} id="top">
         <div className={styles.topBar}>
-          <a href="#">
-            <picture>
-              <source
-                srcSet="img/logo-desktop.svg"
-                media="(min-width: 1024px)"
-              />
-              <source srcSet="img/logo-tablet.svg" media="(min-width: 576px)" />
-              <img
-                src="img/logo-mobile.svg"
-                alt="The Nice Gadgets Logo"
-                title="The Nice Gadgets Logo"
-                className={styles.topBar__logo}
-              />
-            </picture>
-          </a>
+          <Logo />
           <div className={styles.topBar__menu}>
             <Menu />
           </div>
