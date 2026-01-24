@@ -37,12 +37,12 @@ export const Select: React.FC<Props> = ({ data, onSelect }) => {
           {selectedOption}
           {isOpen ? (
             <img
-              src="/img/select/arrow-down.svg"
+              src="img/select/arrow-down.svg"
               className={select.select__arrow}
             />
           ) : (
             <img
-              src="/img/select/arrow-up.svg"
+              src="img/select/arrow-up.svg"
               alt="^"
               className={select.select__arrow}
             />

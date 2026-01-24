@@ -23,7 +23,7 @@
 
   &__logo {
     display: flex;
-    background-image: url('img/header/logo.svg');
+    background-image: url(/img/header/logo.svg);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -50,7 +50,7 @@
     height: 32px;
     line-height: 32px;
 
-    background-image: url('img/footer/slider-button-default.svg');
+    background-image: url(img/footer/slider-button-default.svg);
     background-size: 32px;
     background-position: right;
     background-repeat: no-repeat;

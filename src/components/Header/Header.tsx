@@ -51,7 +51,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
     <header className={header.header} id="top">
       <Link to="/" className={header.header__logo}>
         <img
-          src="/img/header/logo.svg"
+          src="img\header\logo.svg"
           alt=""
           className={header.header__logo__img}
         />

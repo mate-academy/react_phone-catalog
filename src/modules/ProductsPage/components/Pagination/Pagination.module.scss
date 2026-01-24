@@ -32,20 +32,20 @@
   }
 
   &__prev {
-    background-image: url('public/img/home/arrow-left.svg');
+    background-image: url(/img/home/arrow-left.svg);
 
     &--disabled {
       pointer-events: none;
-      background-image: url('public/img/home/arrow-left-disabled.svg');
+      background-image: url(/img/home/arrow-left-disabled.svg);
     }
   }
 
   &__next {
-    background-image: url('public/img/home/arrow-right.svg');
+    background-image: url(/img/home/arrow-right.svg);
 
     &--disabled {
       pointer-events: none;
-      background-image: url('public/img/home/arrow-right-disabled.svg');
+      background-image: url(/img/home/arrow-right-disabled.svg);
     }
   }
 

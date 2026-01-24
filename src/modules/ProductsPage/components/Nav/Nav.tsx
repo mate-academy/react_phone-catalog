@@ -19,7 +19,7 @@ export const Nav: React.FC<Props> = ({ product }) => {
 
         {['tablets', 'phones', 'accessories', 'favourites'].some(title =>
           pathname.includes(title),
-        ) && <img src="public\img\nav\arrow.svg" alt=">" />}
+        ) && <img src="img\nav\arrow.svg" alt=">" />}
 
         {product && pathname.includes('tablets') && (
           <li className={nav.nav__item}>
@@ -69,7 +69,7 @@ export const Nav: React.FC<Props> = ({ product }) => {
           </li>
         )}
 
-        {product && <img src="public\img\nav\arrow.svg" alt=">" />}
+        {product && <img src="img\nav\arrow.svg" alt=">" />}
         {product && (
           <li className={nav.nav__item}>
             <p className={nav.nav__span}>{product.name}</p>

@@ -111,11 +111,11 @@
     }
 
     &__fav {
-      background-image: url('img/header/favourites.svg');
+      background-image: url(/img/header/favourites.svg);
     }
 
     &__cart {
-      background-image: url('img/header/shopping-bag.svg');
+      background-image: url(/img/header/shopping-bag.svg);
     }
 
     &__fav,
@@ -128,7 +128,7 @@
     }
 
     &__menu {
-      background-image: url('img/header/menu.svg');
+      background-image: url(/img/header/menu.svg);
       display: none;
       border: none;
       margin: 0;
@@ -141,7 +141,7 @@
       }
 
       &--open {
-        background-image: url('img/header/menu-close.svg');
+        background-image: url(/img/header/menu-close.svg);
       }
     }
   }
@@ -199,7 +199,7 @@
   font-size: 14px;
   line-height: 1.2;
   color: $shadow-color;
-  background-image: url('img/header/search.svg');
+  background-image: url(/img/header/search.svg);
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: center;
@@ -249,12 +249,14 @@
     width: 16px;
     height: 16px;
     border: none;
-    background: url('/img/cart/remove.svg') no-repeat right center;
+    background: url(/img/cart/remove.svg) no-repeat right center;
     background-size: 16px;
     background-color: transparent;
     z-index: 210;
 
-    @include hover(background-image, url('/img/cart/remove-hover.svg'));
+    &:hover {
+      background-image: url(/img/cart/remove-hover.svg);
+    }
   }
 
   &__wrapper {

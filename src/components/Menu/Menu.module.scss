@@ -75,11 +75,11 @@
     border: none;
 
     &__fav {
-      background-image: url('img/header/favourites.svg');
+      background-image: url(/img/header/favourites.svg);
     }
 
     &__cart {
-      background-image: url('img/header/shopping-bag.svg');
+      background-image: url(/img/header/shopping-bag.svg);
       box-shadow: -1px 0 0 0 $shadow-color;
     }
   }
