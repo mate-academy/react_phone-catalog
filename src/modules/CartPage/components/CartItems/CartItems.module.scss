@@ -1,0 +1,120 @@
+@import '../../../../style/main';
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  height: 128px;
+  width: 752px;
+  border: 1px solid $shadow-color;
+  border-radius: 16px;
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-mobile {
+    min-height: 160px;
+  }
+
+  &__content {
+    margin: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-mobile {
+      flex-direction: column;
+      margin: 16px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-mobile {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__remove {
+    width: 16px;
+    height: 16px;
+    background-image: '/img/cart/remove.svg';
+    background-size: 16px;
+    border: none;
+    background-color: $header-footer-bg-color;
+    cursor: pointer;
+
+    @include hover(background-image, '/img/cart/remove-hover.svg')
+  }
+
+  &__img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    display: flex;
+    width: 100%;
+  }
+
+  &__count {
+    display: flex;
+    gap: 14px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $shadow-color;
+    border-radius: 48px;
+    background-color: $header-footer-bg-color;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: center;
+    cursor: pointer;
+
+    @include hover(border-color, $main-color);
+
+    &--minus {
+      background-image: url(/img/cart/minus.svg);
+    }
+
+    &--plus {
+      background-image: url(/img/cart/plus.svg);
+    }
+
+    &--disabled {
+      pointer-events: none;
+      background-image: url(/img/cart/minus-disabled.svg);
+    }
+  }
+
+  &__total {
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+  }
+}

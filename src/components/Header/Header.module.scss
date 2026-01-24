@@ -9,7 +9,9 @@
   box-sizing: border-box;
   height: $header-height-desktop;
   background-color: $header-footer-bg-color;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   @include on-tablet {
     height: $header-height-tablet-mobile;
@@ -81,6 +83,7 @@
   &__list {
     display: flex;
     list-style: none;
+    align-items: center;
     margin: 0;
     padding: 0;
   }
@@ -88,6 +91,7 @@
   &__item {
     margin: 0;
     padding: 0;
+    position: relative;
   }
 
   &__link {
@@ -98,6 +102,8 @@
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+    align-items: center;
+    justify-content: center;
 
     @include on-tablet {
       height: 48px;
@@ -155,5 +161,109 @@
       width: 100%;
       background-color: $main-color;
     }
+  }
+}
+
+.counter {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: $button-color;
+  border: 1px solid $header-footer-bg-color;
+  border-radius: 14px;
+  color: $header-footer-bg-color;
+
+  &__container {
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+}
+
+.search {
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  border: 1px solid $shadow-color;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.2;
+  color: $shadow-color;
+  background-image: url(../../../public/img/header/search.svg);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center;
+  outline: none;
+  transition:
+    width 0.3s ease,
+    background-position 0.3s ease,
+    box-shadow 0.2s,
+    border-color 0.2s;
+
+  // Focus state
+  &:focus {
+    width: 200px; // expanded width
+    background-position: 10px center; // icon inside input on left
+    border-color: $main-color;
+    box-shadow: 0 0 4px rgba($main-color, 0.3);
+    padding: 0 22px;
+    position: absolute;
+    right: 0; // keep right side fixed
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background-image: none;
+  }
+
+  &::placeholder {
+    color: $shadow-color;
+    font-weight: 400;
+
+    @include action(content, 'Search...');
+  }
+
+  @include on-tablet {
+    height: 32px;
+    font-size: 13px;
+  }
+
+  @include on-mobile {
+    height: 28px;
+    font-size: 12px;
+  }
+
+  &__clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: url('/img/cart/remove.svg') no-repeat right center;
+    background-size: 16px;
+    background-color: transparent;
+    z-index: 210;
+
+    @include hover(background-image, url('/img/cart/remove-hover.svg'));
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 8px;
   }
 }

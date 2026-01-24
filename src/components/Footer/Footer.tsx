@@ -3,10 +3,10 @@ import footer from './Footer.module.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import { ScrollToSectionContext } from '../../contexts/ScrollToSectionContext';
+import { ScrollToSectContext } from '../../contexts/ScrollToSectContext';
 
 export const Footer = () => {
-  const { scrollToSection } = React.useContext(ScrollToSectionContext);
+  const { scrollToSect } = React.useContext(ScrollToSectContext);
 
   return (
     <footer className={footer.footer}>
@@ -17,14 +17,17 @@ export const Footer = () => {
               <Link
                 to="/"
                 className={footer.footer__logo}
-                onClick={() => scrollToSection('top')}
+                onClick={() => scrollToSect('top')}
               ></Link>
             </div>
 
             <nav className={cn(footer.footer__nav, footer.nav)}>
               <ul className={footer.nav__list}>
                 <li className={footer.nav__item}>
-                  <Link to="/" className={footer.nav__link}>
+                  <Link
+                    to="https://github.com/PolianskyiDmytro/react_phone-catalog"
+                    className={footer.nav__link}
+                  >
                     Github
                   </Link>
                 </li>
@@ -43,7 +46,7 @@ export const Footer = () => {
             <button
               type="button"
               className={footer['footer__to-top']}
-              onClick={() => scrollToSection('top')}
+              onClick={() => scrollToSect('top')}
             >
               Back to top
             </button>

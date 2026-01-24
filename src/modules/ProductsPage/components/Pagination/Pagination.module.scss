@@ -1,0 +1,56 @@
+@import '../../../../style/main';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid $shadow-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    background-color: $header-footer-bg-color;
+    color: $main-color;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    @include hover(border-color, $main-color);
+
+    &--active {
+      border: none;
+      background-color: $main-color;
+      color: $header-footer-bg-color;
+    }
+  }
+
+  &__prev {
+    background-image: url('public/img/home/arrow-left.svg');
+
+    &--disabled {
+      pointer-events: none;
+      background-image: url('public/img/home/arrow-left-disabled.svg');
+    }
+  }
+
+  &__next {
+    background-image: url('public/img/home/arrow-right.svg');
+
+    &--disabled {
+      pointer-events: none;
+      background-image: url('public/img/home/arrow-right-disabled.svg');
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+}

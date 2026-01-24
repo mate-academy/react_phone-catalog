@@ -20,8 +20,14 @@
   }
 }
 
+@mixin on-ver-tablet() {
+  @media (max-width: $ver-tablet-max-width) {
+    @content;
+  }
+}
+
 @mixin on-tablet() {
-  @media (max-width: $tablet-max-width) {
+  @media (max-width: $hor-tablet-max-width) {
     @content;
   }
 }
@@ -37,18 +43,15 @@
 
   display: grid;
   column-gap: 16px;
-  column-width: 32px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
     --columns: 12;
 
-    column-gap: 16px;
+    column-width: 100%;
   }
 
   @include on-mobile {
     --columns: 4;
-    
-    column-gap: 16px;
   }
 }

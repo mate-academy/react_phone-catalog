@@ -1,0 +1,169 @@
+@import '../../style/main';
+
+.product {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-mobile {
+    margin-bottom: 56px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-mobile {
+      gap: 56px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__bottom {
+    @include page-grid;
+
+    row-gap: 64px;
+
+    @include on-mobile {
+      row-gap: 56px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    width: 46px;
+    height: 16px;
+    background-image: url(../../../public/img/home/arrow-left.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+
+    @include hover(color, $main-color);
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $main-color;
+  }
+
+  &__main {
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__line {
+    width: 100%;
+    max-width: 320px;
+    height: 1px;
+    background-color: $shadow-color;
+
+    @include on-mobile {
+      min-width: 100%;
+    }
+  }
+}
+
+.about {
+  grid-column: span 12;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-mobile {
+    grid-column: span 4;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+
+    @include on-mobile {
+      font-weight: 700;
+      font-style: SemiBold;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $shadow-color;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin: 0;
+    padding: 0;
+
+    @include on-mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+}
+

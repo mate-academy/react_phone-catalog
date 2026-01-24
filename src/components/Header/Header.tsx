@@ -1,7 +1,11 @@
 import cn from 'classnames';
 import header from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AddToFavContext } from '../../contexts/AddToFavContext';
+import { AddToCartContext } from '../../contexts/AddToCartContext';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 type Props = {
   isMenuOpen: boolean;
@@ -9,6 +13,40 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
+  const { fav } = useContext(AddToFavContext);
+  const { cart } = useContext(AddToCartContext);
+  const location = useLocation();
+  const showSearch =
+    location.pathname.startsWith('/phones') ||
+    location.pathname.startsWith('/tablets') ||
+    location.pathname.startsWith('/accessories') ||
+    location.pathname.startsWith('/favourites');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const [searchValue, setSearchValue] = useState(query);
+  const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    setSearchValue(query);
+  }, [query]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const params = new URLSearchParams(searchParams);
+
+      if (searchValue.trim()) {
+        params.set('query', searchValue);
+      } else {
+        params.delete('query');
+      }
+
+      setSearchParams(params);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [searchValue]);
+
   return (
     <header className={header.header} id="top">
       <Link to="/" className={header.header__logo}>
@@ -72,6 +110,29 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
       </nav>
       <div className={cn(header.header__actions, header.actions)}>
         <ul className={header.actions__list}>
+          {showSearch && (
+            <li className={header.actions__item}>
+              <div className={header.search__wrapper}>
+                <input
+                  type="text"
+                  placeholder={isFocused ? 'Search...' : ''}
+                  value={isFocused ? searchValue : ''}
+                  onChange={e => setSearchValue(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  className={header.search}
+                />
+                {searchValue && isFocused && (
+                  <button
+                    type="button"
+                    className={header.search__clear}
+                    onClick={() => setSearchValue('')}
+                  ></button>
+                )}
+              </div>
+            </li>
+          )}
+
           <li className={header.actions__item}>
             <NavLink
               to="favourites"
@@ -80,7 +141,13 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                   [header['link--active']]: isActive,
                 })
               }
-            ></NavLink>
+            >
+              {fav.length > 0 && (
+                <div className={header.counter__container}>
+                  <p className={header.counter}>{fav.length}</p>
+                </div>
+              )}
+            </NavLink>
           </li>
           <li className={header.actions__item}>
             <NavLink
@@ -90,7 +157,15 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                   [header['link--active']]: isActive,
                 })
               }
-            ></NavLink>
+            >
+              {cart.length > 0 && (
+                <div className={header.counter__container}>
+                  <p className={header.counter}>
+                    {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                  </p>
+                </div>
+              )}
+            </NavLink>
           </li>
           <li className={header.actions__item}>
             <button

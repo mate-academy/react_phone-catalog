@@ -1,10 +1,18 @@
 import React from 'react';
-import { ScrollToSectionProvider } from './ScrollToSectionContext';
+import { ScrollToSectProvider } from './ScrollToSectContext';
+import { AddToCartProvider } from './AddToCartContext';
+import { AddToFavProvider } from './AddToFavContext';
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const Providers: React.FC<Props> = ({ children }) => {
-  return <ScrollToSectionProvider>{children}</ScrollToSectionProvider>;
+  return (
+    <ScrollToSectProvider>
+      <AddToCartProvider>
+        <AddToFavProvider>{children}</AddToFavProvider>
+      </AddToCartProvider>
+    </ScrollToSectProvider>
+  );
 };
