@@ -1,10 +1,25 @@
 .productsList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 272px);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   gap: 40px 16px;
-  justify-content: center;
-  justify-items: center;
+  align-items: stretch;
+  justify-content: stretch;
 
   width: 100%;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 765px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 }

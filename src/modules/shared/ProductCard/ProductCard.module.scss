@@ -7,7 +7,9 @@
   align-items: flex-start;
   justify-content: space-between;
 
-  max-width: 272px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: -webkit-fill-available;
   max-height: 506px;
   padding: 32px;
   border: 1px solid $elements-color;
