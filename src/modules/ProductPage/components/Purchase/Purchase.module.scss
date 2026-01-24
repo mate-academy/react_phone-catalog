@@ -131,7 +131,7 @@
     &-fav {
       min-width: 48px;
       height: 48px;
-      background-image: url(../../../public/img/home/favourite.svg);
+      background-image: url('img/home/favourite.svg');
       background-size: 16px;
       background-repeat: no-repeat;
       background-position: center;
@@ -143,7 +143,7 @@
       cursor: pointer;
 
       &--active {
-        background-image: url(../../../public/img/home/favourite-picked.svg);
+        background-image: url('img/home/favourite-picked.svg');
       }
     }
   }

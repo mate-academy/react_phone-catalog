@@ -53,18 +53,18 @@
     }
 
     &__left {
-      background-image: url(/img/home/arrow-left.svg);
+      background-image: url('img/home/arrow-left.svg');
 
       &:disabled {
-        background-image: url(/img/home/arrow-left-disabled.svg);
+        background-image: url('img/home/arrow-left-disabled.svg');
       }
     }
 
     &__right {
-      background-image: url(/img/home/arrow-right.svg);
+      background-image: url('img/home/arrow-right.svg');
 
       &:disabled {
-        background-image: url(/img/home/arrow-right-disabled.svg);
+        background-image: url('img/home/arrow-right-disabled.svg');
       }
     }
   }

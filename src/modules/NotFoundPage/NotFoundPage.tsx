@@ -13,13 +13,13 @@ export const NotFoundPage: React.FC<Props> = ({ type }) => {
         <div className={style['not-found__container']}>
           {isProduct ? (
             <img
-              src="/img/product-not-found.png"
+              src="img/product-not-found.png"
               alt="Product not found"
               className={style['not-found__img']}
             />
           ) : (
             <img
-              src="/img/page-not-found.png"
+              src="img/page-not-found.png"
               alt="Page not found"
               className={style['not-found__img']}
             />

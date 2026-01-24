@@ -116,7 +116,7 @@
     }
 
     &-fav {
-      background-image: url(../../../public/img/home/favourite.svg);
+      background-image: url('img/home/favourite.svg');
       background-size: 16px;
       background-repeat: no-repeat;
       background-position: center;
@@ -130,7 +130,7 @@
       @include hover(border-color, $main-color);
 
       &--active {
-        background-image: url(../../../public/img/home/favourite-picked.svg);
+        background-image: url('img/home/favourite-picked.svg');
       }
     }
   }

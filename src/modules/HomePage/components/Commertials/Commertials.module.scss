@@ -41,11 +41,11 @@
     }
 
     &__left {
-      background-image: url(/img/home/arrow-left.svg);
+      background-image: url('img/home/arrow-left.svg');
     }
 
     &__right {
-      background-image: url(/img/home/arrow-right.svg);
+      background-image: url('img/home/arrow-right.svg');
     }
   }
 
@@ -78,26 +78,26 @@
     }
 
     &__1 {
-      background-image: url(/img/home/banner-1.png);
+      background-image: url('img/home/banner-1.png');
 
       @include on-mobile {
-        background-image: url(/img/home/banner-1-mobile.png);
+        background-image: url('img/home/banner-1-mobile.png');
       }
     }
 
     &__2 {
-      background-image: url(/img/home/banner-2.png);
+      background-image: url('img/home/banner-2.png');
 
       @include on-mobile {
-        background-image: url(/img/home/banner-2-mobile.png);
+        background-image: url('img/home/banner-2-mobile.png');
       }
     }
 
     &__3 {
-      background-image: url(/img/home/banner-3.png);
+      background-image: url('img/home/banner-3.png');
 
       @include on-mobile {
-        background-image: url(/img/home/banner-3-mobile.png);
+        background-image: url('img/home/banner-3-mobile.png');
       }
     }
   }

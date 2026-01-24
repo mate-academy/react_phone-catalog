@@ -33,7 +33,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
               )}
             >
               <img
-                src="\img\home\phones-category.png"
+                src="img\home\phones-category.png"
                 alt="phones"
                 className={cn(
                   categories.category__img,
@@ -55,7 +55,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
               )}
             >
               <img
-                src="\img\home\tablets-category.png"
+                src="img\home\tablets-category.png"
                 alt="tablets"
                 className={cn(
                   categories.category__img,
@@ -77,7 +77,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
               )}
             >
               <img
-                src="\img\home\accessories-category.png"
+                src="img\home\accessories-category.png"
                 alt="accessories"
                 className={cn(
                   categories.category__img,

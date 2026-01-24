@@ -52,13 +52,13 @@
   &__remove {
     width: 16px;
     height: 16px;
-    background-image: '/img/cart/remove.svg';
+    background-image: url('img/cart/remove.svg');
     background-size: 16px;
     border: none;
     background-color: $header-footer-bg-color;
     cursor: pointer;
 
-    @include hover(background-image, '/img/cart/remove-hover.svg')
+    @include hover(background-image, url('img/cart/remove-hover.svg'))
   }
 
   &__img {
@@ -96,16 +96,16 @@
     @include hover(border-color, $main-color);
 
     &--minus {
-      background-image: url(/img/cart/minus.svg);
+      background-image: url('img/cart/minus.svg');
     }
 
     &--plus {
-      background-image: url(/img/cart/plus.svg);
+      background-image: url('img/cart/plus.svg');
     }
 
     &--disabled {
       pointer-events: none;
-      background-image: url(/img/cart/minus-disabled.svg);
+      background-image: url('img/cart/minus-disabled.svg');
     }
   }
 
