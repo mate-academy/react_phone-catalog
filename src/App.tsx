@@ -4,6 +4,8 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 export const App = () => (
   <div className="App">
@@ -12,6 +14,8 @@ export const App = () => (
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/tablets" element={<TabletsPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </main>
