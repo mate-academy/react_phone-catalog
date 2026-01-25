@@ -1,28 +1,32 @@
+import { NavLink, Link } from 'react-router-dom';
+import classNames from 'classnames';
 import styles from './Header.module.scss';
 
 const navItems = [
-  { label: 'Home', href: '#', isActive: true },
-  { label: 'Phones', href: '#', isActive: false },
-  { label: 'Tablets', href: '#', isActive: false },
-  { label: 'Accessories', href: '#', isActive: false },
+  { label: 'Home', to: '/' },
+  { label: 'Phones', to: '/phones' },
+  { label: 'Tablets', to: '/tablets' },
+  { label: 'Accessories', to: '/accessories' },
 ];
 
 export const Header = () => (
   <header className={styles.header}>
     <div className={styles.container}>
-      <a className={styles.logo} href="#">
+      <Link className={styles.logo} to="/">
         <img src="/img/Logo.svg" alt="Nice Gadgets" />
-      </a>
+      </Link>
 
       <nav className={styles.nav}>
         {navItems.map(item => (
-          <a
+          <NavLink
             key={item.label}
-            href={item.href}
-            className={`${styles.navLink} ${item.isActive ? styles.isActive : ''}`}
+            to={item.to}
+            className={({ isActive }) =>
+              classNames(styles.navLink, { [styles.isActive]: isActive })
+            }
           >
             {item.label}
-          </a>
+          </NavLink>
         ))}
       </nav>
 

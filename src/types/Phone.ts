@@ -23,4 +23,5 @@ export interface Phone {
   camera: string;
   zoom: string;
   cell: string[];
+  year?: number;
 }

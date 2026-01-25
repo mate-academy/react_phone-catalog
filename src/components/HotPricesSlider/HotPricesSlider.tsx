@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
+import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './HotPricesSlider.scss';
@@ -14,9 +14,11 @@ export const HotPricesSlider = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   useEffect(() => {
-    fetch('/api/phones.json')
-      .then(res => res.json())
-      .then((phonesData: Phone[]) => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/phones.json');
+        const phonesData: Phone[] = await res.json();
+
         const sortedPhones = phonesData
           .map(phone => {
             const discount =
@@ -31,10 +33,12 @@ export const HotPricesSlider = () => {
           .map(({ discount, ...phone }) => phone);
 
         setPhones(sortedPhones.slice(0, 13));
-      })
-      .catch(() => {
+      } catch {
         setPhones([]);
-      });
+      }
+    };
+
+    load();
   }, []);
 
   const handlePrev = () => {

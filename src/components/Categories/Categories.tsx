@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Categories.module.scss';
-
-interface Product {
-  category: string;
-}
+import { Product } from '../../types/Product';
 
 export const Categories = () => {
   const [counts, setCounts] = useState({
@@ -13,9 +10,11 @@ export const Categories = () => {
   });
 
   useEffect(() => {
-    fetch('api/products.json')
-      .then(response => response.json())
-      .then((products: Product[]) => {
+    const load = async () => {
+      try {
+        const res = await fetch('api/products.json');
+        const products: Product[] = await res.json();
+
         const newCounts = {
           phones: 0,
           tablets: 0,
@@ -37,7 +36,16 @@ export const Categories = () => {
         });
 
         setCounts(newCounts);
-      });
+      } catch {
+        setCounts({
+          phones: 0,
+          tablets: 0,
+          accessories: 0,
+        });
+      }
+    };
+
+    load();
   }, []);
 
   return (

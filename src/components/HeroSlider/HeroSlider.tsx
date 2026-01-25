@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
+import { Swiper as SwiperType } from 'swiper';
 import classNames from 'classnames';
 
 import 'swiper/css';
