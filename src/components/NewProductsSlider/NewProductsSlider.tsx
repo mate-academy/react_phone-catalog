@@ -1,58 +1,15 @@
-import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './NewProductsSlider.scss';
 import styles from './NewProductsSlider.module.scss';
-import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
-import { ProductYear } from '../../types/ProductYear';
+import { useNewProductsSlider } from './hooks/useNewProductsSlider';
 
 export const NewProductsSlider = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
-
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const [phonesRes, productsRes] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/products.json'),
-        ]);
-
-        const phonesData: Phone[] = await phonesRes.json();
-        const productsData: ProductYear[] = await productsRes.json();
-
-        const productsYearMap = new Map(
-          productsData.map(product => [product.itemId, product.year]),
-        );
-
-        const sortedPhones = phonesData
-          .map((phone: Phone) => ({
-            ...phone,
-            year: productsYearMap.get(phone.id) || 0,
-          }))
-          .sort((a: { year: number }, b: { year: number }) => b.year - a.year)
-          .map(({ year, ...phone }: Phone & { year: number }) => phone);
-
-        setPhones(sortedPhones.slice(0, 13));
-      } catch {
-        setPhones([]);
-      }
-    };
-
-    load();
-  }, []);
-
-  const handlePrev = () => {
-    swiperInstance?.slidePrev();
-  };
-
-  const handleNext = () => {
-    swiperInstance?.slideNext();
-  };
+  const { phones, setSwiperInstance, handlePrev, handleNext } =
+    useNewProductsSlider();
 
   return (
     <section className={`${styles.section} NewProductsSlider`}>

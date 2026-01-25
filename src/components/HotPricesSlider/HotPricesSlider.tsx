@@ -1,53 +1,15 @@
-import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './HotPricesSlider.scss';
 import styles from './HotPricesSlider.module.scss';
-import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
+import { useHotPricesSlider } from './hooks/useHotPricesSlider';
 
 export const HotPricesSlider = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
-
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const res = await fetch('/api/phones.json');
-        const phonesData: Phone[] = await res.json();
-
-        const sortedPhones = phonesData
-          .map(phone => {
-            const discount =
-              phone.priceDiscount && phone.priceDiscount > 0
-                ? phone.priceRegular - phone.priceDiscount
-                : 0;
-
-            return { ...phone, discount };
-          })
-          .sort((a, b) => b.discount - a.discount)
-          .filter(phone => phone.discount > 0)
-          .map(({ discount, ...phone }) => phone);
-
-        setPhones(sortedPhones.slice(0, 13));
-      } catch {
-        setPhones([]);
-      }
-    };
-
-    load();
-  }, []);
-
-  const handlePrev = () => {
-    swiperInstance?.slidePrev();
-  };
-
-  const handleNext = () => {
-    swiperInstance?.slideNext();
-  };
+  const { phones, setSwiperInstance, handlePrev, handleNext } =
+    useHotPricesSlider();
 
   if (phones.length === 0) {
     return null;
