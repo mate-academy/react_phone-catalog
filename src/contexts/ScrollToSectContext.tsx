@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 interface ScrollToSectContextType {
   scrollToSect: (id: string) => void;
@@ -7,10 +7,9 @@ interface ScrollToSectContextType {
 export const ScrollToSectContext = React.createContext<ScrollToSectContextType>(
   {
     scrollToSect: (id: string) => {
-      document.getElementById(id)?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      const el = document.getElementById(id);
+
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
   },
 );
@@ -21,21 +20,13 @@ type Props = {
 
 export const ScrollToSectProvider: React.FC<Props> = ({ children }) => {
   const scrollToSect = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+    const el = document.getElementById(id);
+
+    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const value = useMemo(
-    () => ({
-      scrollToSect,
-    }),
-    [],
-  );
-
   return (
-    <ScrollToSectContext.Provider value={value}>
+    <ScrollToSectContext.Provider value={{ scrollToSect }}>
       {children}
     </ScrollToSectContext.Provider>
   );

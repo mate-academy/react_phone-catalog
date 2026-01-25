@@ -19,7 +19,7 @@ export const Frame = () => {
   }, []);
 
   return (
-    <>
+    <div id="top">
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       {isMenuOpen && isMobile ? (
@@ -34,6 +34,6 @@ export const Frame = () => {
           <Footer />
         </>
       )}
-    </>
+    </div>
   );
 };

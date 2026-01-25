@@ -10,9 +10,10 @@ import { CartProduct } from '../../../types/CartProduct';
 
 type Props = {
   product: Product;
+  isFullPrice: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, isFullPrice }) => {
   const { scrollToSect } = useContext(ScrollToSectContext);
   const { cart, setCart } = useContext(AddToCartContext);
   const { fav, setFav } = useContext(AddToFavContext);
@@ -68,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Link>
 
         <div className={card.card__prices}>
-          {product.price !== product.fullPrice ? (
+          {product.price !== product.fullPrice && isFullPrice === false ? (
             <>
               <p className={card.card__price}>${product.price}</p>
               <p className={cn(card.card__price, card['card__price--full'])}>

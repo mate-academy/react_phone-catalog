@@ -1,12 +1,12 @@
 import footer from './Footer.module.scss';
 
-import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { ScrollToSectContext } from '../../contexts/ScrollToSectContext';
 
 export const Footer = () => {
-  const { scrollToSect } = React.useContext(ScrollToSectContext);
+  const { scrollToSect } = useContext(ScrollToSectContext);
 
   return (
     <footer className={footer.footer}>
@@ -26,6 +26,7 @@ export const Footer = () => {
                 <li className={footer.nav__item}>
                   <Link
                     to="https://github.com/PolianskyiDmytro/react_phone-catalog"
+                    target="_blank"
                     className={footer.nav__link}
                   >
                     Github

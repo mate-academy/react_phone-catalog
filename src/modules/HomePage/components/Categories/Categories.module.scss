@@ -46,7 +46,7 @@
     width: 100%;
     border-radius: 8px;
 
-    @include hover(scale, 1.1);
+    @include hover(scale, 1.05);
   }
 
   &__details {

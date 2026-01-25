@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   }, [searchValue]);
 
   return (
-    <header className={header.header} id="top">
+    <header className={header.header}>
       <Link to="/" className={header.header__logo}>
         <img
           src="img\header\logo.svg"

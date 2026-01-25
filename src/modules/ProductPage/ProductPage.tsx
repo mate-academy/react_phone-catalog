@@ -51,7 +51,7 @@ export const ProductPage: React.FC<Props> = ({ products }) => {
     .filter((p): p is Product => Boolean(p));
 
   return (
-    <>
+    <div className={style.product__outer}>
       <div className={style.product} key={foundProduct.id}>
         <div className="container">
           <div className={style.product__content}>
@@ -92,6 +92,6 @@ export const ProductPage: React.FC<Props> = ({ products }) => {
         </div>
       </div>
       <ProductCards title="You may also like" products={alsoLike} />
-    </>
+    </div>
   );
 };

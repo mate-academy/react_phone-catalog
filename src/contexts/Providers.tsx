@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScrollToSectProvider } from './ScrollToSectContext';
 import { AddToCartProvider } from './AddToCartContext';
 import { AddToFavProvider } from './AddToFavContext';
+import { ScrollToSectProvider } from './ScrollToSectContext';
 
 type Props = {
   children: React.ReactNode;

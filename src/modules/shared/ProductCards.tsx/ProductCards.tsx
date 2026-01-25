@@ -23,6 +23,12 @@ export const ProductCards: React.FC<Props> = ({ title, products }) => {
     swiperRef.current &&
     activeIndex + slidesPerView >= swiperRef.current.slides.length;
 
+  let isFullPrice = false;
+
+  if (title === 'Brand new models') {
+    isFullPrice = true;
+  }
+
   return (
     <section className={cards.cards}>
       <div className="container">
@@ -66,7 +72,7 @@ export const ProductCards: React.FC<Props> = ({ title, products }) => {
             >
               {products.map(product => (
                 <SwiperSlide key={product.id}>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} isFullPrice={isFullPrice} />
                 </SwiperSlide>
               ))}
             </Swiper>
