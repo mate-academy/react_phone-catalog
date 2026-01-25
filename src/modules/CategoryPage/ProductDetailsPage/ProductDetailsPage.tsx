@@ -172,11 +172,18 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
           <div className={styles.productdetailspage__info}>
             <div className={styles.productdetailspage__info_availablecolors}>
-              <p
-                className={styles.productdetailspage__info_availablecolors_text}
-              >
-                Available colors
-              </p>
+              <div className={styles.productdetailspage__info_header}>
+                <p
+                  className={
+                    styles.productdetailspage__info_availablecolors_text
+                  }
+                >
+                  Available colors
+                </p>
+                <p className={styles.productdetailspage__info_idnum_s}>
+                  ID: {product.namespaceId}
+                </p>
+              </div>
               <AvailableColors product={product} />
             </div>
             <div
@@ -280,7 +287,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
           <p className={styles.productdetailspage__info_idnum}>
-            ID:{product.namespaceId}
+            ID: {product.namespaceId}
           </p>
           <div className={styles.productdetailspage__extrainfo}>
             <div className={styles.productdetailspage__extrainfo_about}>

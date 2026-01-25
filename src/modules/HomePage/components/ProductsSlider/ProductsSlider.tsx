@@ -66,13 +66,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       default:
         return [];
     }
-  }, [
-    title,
-    excludeId,
-    brandNewProducts,
-    hotPriceProducts,
-    getSuggestedProducts,
-  ]);
+  }, [title, brandNewProducts, hotPriceProducts, getSuggestedProducts]);
 
   return (
     <>
