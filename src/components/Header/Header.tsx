@@ -95,7 +95,9 @@ export const Header = () => {
                 alt="favorite-icon"
                 className={header__icon}
               />
-              <span className={header__counter}>{favoriteItems.length}</span>
+              {favoriteItems.length > 0 && (
+                <span className={header__counter}>{favoriteItems.length}</span>
+              )}
             </NavLink>
             <NavLink
               to="/cart"
@@ -105,7 +107,9 @@ export const Header = () => {
               onClick={() => setIsActive(false)}
             >
               <img src={cartIcon} alt="cart-icon" className={header__icon} />
-              <span className={header__counter}>{cartItems.length}</span>
+              {cartItems.length > 0 && (
+                <span className={header__counter}>{cartItems.length}</span>
+              )}
             </NavLink>
           </div>
           <button

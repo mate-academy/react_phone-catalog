@@ -8,13 +8,7 @@ import { ProductAllType } from '../types/Product';
 import { getProducts } from '../api/httpsRequest';
 
 export const TabletsPage = () => {
-  const { productsAll, addToDB } = useProducts();
-
-  useEffect(() => {
-    getProducts('allProducts').then(productsAll => {
-      addToDB('allProducts', productsAll);
-    });
-  }, []);
+  const { productsAll } = useProducts();
 
   const products: ProductAllType[] = useMemo(() => {
     return productsAll.filter(product => product.category === 'tablets');

@@ -12,43 +12,58 @@ import { ProductAllType, ProductType } from '../../types/Product';
 export const CardItem = () => {
   const { id } = useParams<{ id: string }>();
   const { state, pathname } = useLocation();
-  const { itemId } = state;
-  const [product, setProduct] = useState<ProductType>();
+  // const { itemId, product } = state;
+  const [singleProduct, setSingleProduct] = useState<ProductType>();
   const [activePhoto, setActivePhoto] = useState<string>();
   const [alsoLikeProducts, setAlsoLikeProducts] = useState<ProductAllType[]>(
     [],
   );
+  const [productFromDB, setProductFromDB] = useState<ProductAllType[]>([]);
 
-  // console.log('id', id);
-  // console.log('state', state);
-  // console.log('product', product);
+  const [activeProduct, setActiveProduct] = useState<ProductAllType | null>();
 
   useEffect(() => {
     const fetchProduct = async () => {
       const newProduct = await getProduct(state.product.category, id!);
-      setProduct(newProduct);
-
-      const products = (await getProducts('allProducts')).slice(0, 10);
-      setAlsoLikeProducts(products as ProductAllType[]);
+      setSingleProduct(newProduct);
+      alsoLikeProducts.length === 0 &&
+        setAlsoLikeProducts(
+          (await getProducts('allProducts')).slice(0, 10) as ProductAllType[],
+        );
     };
     fetchProduct();
-  }, [id, product]);
+  }, [id, singleProduct]);
 
   useEffect(() => {
-    setActivePhoto(product?.images[0] || unnownImg);
-  }, [product]);
+    setActivePhoto(singleProduct?.images[0] || unnownImg);
+  }, [singleProduct, state]);
+
+  useEffect(() => {
+    const fetchActiveProduct = async () => {
+      if (productFromDB.length === 0) {
+        const products = await getProducts('allProducts');
+
+        setProductFromDB(products as ProductAllType[]);
+      }
+      setActiveProduct(
+        (productFromDB as ProductAllType[]).find(item => item.itemId === id) ||
+          null,
+      );
+    };
+    fetchActiveProduct();
+  }, [id, activeProduct, singleProduct]);
 
   const productTech = [
-    { name: 'Screen', value: product?.screen },
-    { name: 'Resolution', value: product?.resolution },
-    { name: 'Processor', value: product?.processor },
-    { name: 'RAM', value: product?.ram },
-    { name: 'Camera', value: product?.camera },
-    { name: 'Zoom', value: product?.zoom },
-    { name: 'Cell', value: [...(product?.cell || [])].join(', ') },
+    { name: 'Screen', value: singleProduct?.screen },
+    { name: 'Resolution', value: singleProduct?.resolution },
+    { name: 'Processor', value: singleProduct?.processor },
+    { name: 'RAM', value: singleProduct?.ram },
+    { name: 'Camera', value: singleProduct?.camera },
+    { name: 'Zoom', value: singleProduct?.zoom },
+    { name: 'Cell', value: [...(singleProduct?.cell || [])].join(', ') },
   ];
 
-  if (!product) {
+  if (!singleProduct) {
     return <div>Товар не найден</div>;
   }
   return (
@@ -56,12 +71,12 @@ export const CardItem = () => {
       <div className="container card-item__container">
         <Breadcrumbs />
 
-        <h2 className="card-item__title h2">{product.name}</h2>
+        <h2 className="card-item__title h2">{singleProduct.name}</h2>
         <div className="card-item__body body-card">
           <div className="body-card__wrapper">
             <div className="body-card__images">
               <ul className="body-card__slider-photos">
-                {product.images.map(item => {
+                {singleProduct.images.map(item => {
                   const isActive = item === activePhoto;
                   return (
                     <li
@@ -76,11 +91,11 @@ export const CardItem = () => {
                         })}
                         onClick={() => setActivePhoto(item)}
                         aria-pressed={isActive}
-                        aria-label={`Показать фото ${product.name}`}
+                        aria-label={`Показать фото ${singleProduct.name}`}
                       >
                         <img
                           src={`../${item}`}
-                          alt={product.name}
+                          alt={singleProduct.name}
                           className="body-card__slider-photo"
                           loading="lazy"
                           width="80"
@@ -94,7 +109,7 @@ export const CardItem = () => {
               <div className="body-card__main-photo">
                 <img
                   src={`../${activePhoto}`}
-                  alt={`${product.name} — главное фото`}
+                  alt={`${singleProduct.name} — главное фото`}
                   className="body-card__main-img"
                   loading="lazy"
                   width="462"
@@ -107,12 +122,14 @@ export const CardItem = () => {
               <div className="body-card__colors separator">
                 <div className="body-card__info-name">Available colors</div>
                 <ul className="body-card__items">
-                  {product.colorsAvailable.map(color => {
-                    const newColor = color.includes(' ')
-                      ? color.replace(' ', '-')
-                      : color;
-                    const item = pathname.replace(product.color, newColor);
-                    console.log(item);
+                  {singleProduct.colorsAvailable.map(color => {
+                    const newColor =
+                      color === 'space gray' ? 'space-gray' : color;
+                    const item = pathname.replace(
+                      singleProduct.color,
+                      newColor,
+                    );
+
                     return (
                       <li
                         className="body-card__item body-card__item-block-color"
@@ -120,7 +137,7 @@ export const CardItem = () => {
                       >
                         <NavLink
                           to={`${item}`}
-                          state={{ product, itemId }}
+                          state={state}
                           className={({ isActive }) =>
                             `body-card__item-link ${isActive ? 'body-card__item-color--active' : ''}`
                           }
@@ -137,9 +154,9 @@ export const CardItem = () => {
               <div className="body-card__capacity separator">
                 <div className="body-card__info-name">Select capacity</div>
                 <ul className="body-card__items">
-                  {product.capacityAvailable.map(capacity => {
+                  {singleProduct.capacityAvailable.map(capacity => {
                     const link = pathname.replace(
-                      product.capacity.toLowerCase(),
+                      singleProduct.capacity.toLowerCase(),
                       capacity.toLowerCase(),
                     );
 
@@ -147,7 +164,7 @@ export const CardItem = () => {
                       <li className={'body-card__item'} key={capacity}>
                         <NavLink
                           to={`${link}`}
-                          state={{ product, itemId }}
+                          state={state}
                           className={({ isActive }) =>
                             `body-card__link ${isActive ? 'body-card__link--active' : ''}`
                           }
@@ -162,13 +179,15 @@ export const CardItem = () => {
               <div className="body-card__price  card__price">
                 <div className="card__price-block">
                   <span className="card__price--sale">
-                    ${product.priceDiscount}
+                    ${singleProduct.priceDiscount}
                   </span>
                   <span className="card__price--full">
-                    ${product.priceRegular}
+                    ${singleProduct.priceRegular}
                   </span>
                 </div>
-                <ProductCardButtons product={state} />
+                {activeProduct && (
+                  <ProductCardButtons product={activeProduct} />
+                )}
               </div>
 
               <ul className="body-card__param param">
@@ -182,7 +201,7 @@ export const CardItem = () => {
                     ),
                 )}
               </ul>
-              <span className="body-card__id">ID: {state.id}</span>
+              <span className="body-card__id">ID: {activeProduct?.id}</span>
             </div>
           </div>
 
@@ -190,7 +209,7 @@ export const CardItem = () => {
             <div className="descritption__main">
               <h3 className="descritption__title h3 separator">About</h3>
 
-              {product.description.map(({ text, title }) => (
+              {singleProduct.description.map(({ text, title }) => (
                 <div className="descritption__block" key={title}>
                   <h4 className="descritption__name h4">{title}</h4>
                   <div className="descritption__text">
@@ -206,12 +225,15 @@ export const CardItem = () => {
             <div className="descritption__tech">
               <h3 className="descritption__title h3 separator">Tech specs</h3>
               <ul className="descritption__info param">
-                {productTech.map(({ name, value }) => (
-                  <li className="param__descritption" key={name}>
-                    <span className="param__name">{name}</span>
-                    <span className="param__value">{value}</span>
-                  </li>
-                ))}
+                {productTech.map(
+                  ({ name, value }) =>
+                    value && (
+                      <li className="param__descritption" key={name}>
+                        <span className="param__name">{name}</span>
+                        <span className="param__value">{value}</span>
+                      </li>
+                    ),
+                )}
               </ul>
             </div>
           </div>
@@ -225,3 +247,41 @@ export const CardItem = () => {
     </section>
   );
 };
+
+/**
+ *
+ * Проблема, возможно, связана с тем, что вы используете newColor для замены singleProduct.color в pathname. Однако, newColor используется только для отображения цвета в компоненте, а не для обновления состояния.
+
+Вместо этого, вы должны обновить состояние color при изменении pathname. Вы можете сделать это, используя хук useEffect с зависимостью от pathname.
+
+Вот как это может выглядеть:
+
+tsx
+const [color, setColor] = useState<string>(singleProduct.color);
+
+useEffect(() => {
+  const newColor = pathname.split('/')[2];
+  setColor(newColor === 'space gray' ? 'space-gray' : newColor);
+}, [pathname]);
+
+// ...
+
+<NavLink
+  to={`${item}`}
+  state={state}
+  className={({ isActive }) =>
+    `body-card__item-link ${isActive ? 'body-card__item-color--active' : ''}`
+  }
+>
+  <span
+    className={`body-card__item-color body-card__item-color--${color}`}
+  ></span>
+</NavLink>
+Здесь мы добавляем хук useEffect, который обновляет состояние color при изменении pathname. Мы также обновляем состояние color на singleProduct.color при загрузке компонента.
+
+Затем, мы используем color вместо newColor в компоненте NavLink, чтобы отобразить правильный цвет.
+
+Попробуйте добавить этот код в ваш компонент CardItem и проверьте, помогает ли это.
+ *
+ *
+ */

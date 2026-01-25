@@ -22,7 +22,7 @@ export const ProductCardButtons: FC<Props> = ({ product }) => {
 
     const isInCart = cartItems.find(item => item.id === product.id);
     setIsAddToCart(!!isInCart);
-  }, [favoriteItems, cartItems]);
+  }, [favoriteItems, cartItems, product]);
 
   const handleAddToCard = () => {
     setIsAddToCart(true);
