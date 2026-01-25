@@ -10,10 +10,13 @@ import { CartProduct } from '../../../types/CartProduct';
 
 type Props = {
   product: Product;
-  isFullPrice: boolean;
+  isFullPrice?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, isFullPrice }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isFullPrice = false,
+}) => {
   const { scrollToSect } = useContext(ScrollToSectContext);
   const { cart, setCart } = useContext(AddToCartContext);
   const { fav, setFav } = useContext(AddToFavContext);

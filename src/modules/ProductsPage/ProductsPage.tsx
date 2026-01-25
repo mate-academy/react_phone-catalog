@@ -137,14 +137,14 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
               {title !== 'Favourites' &&
                 sortedProducts.slice(firstItem, lastItem).map(product => (
                   <div key={product.id} className={style.products__product}>
-                    <ProductCard product={product} />
+                    <ProductCard product={product} isFullPrice={false} />
                   </div>
                 ))}
 
               {title === 'Favourites' &&
                 products.slice(firstItem, lastItem).map(product => (
                   <div key={product.id} className={style.products__product}>
-                    <ProductCard product={product} />
+                    <ProductCard product={product} isFullPrice={false} />
                   </div>
                 ))}
             </div>

@@ -29,6 +29,30 @@ export const Purchase: React.FC<Props> = ({
   const [isPicked, setIsPicked] = useState(
     cart.some(item => item.itemId === product.id),
   );
+  const appleColors: { [name: string]: string } = {
+    black: '#000000', // classic black
+    green: '#4D7B6A', // midnight green
+    yellow: '#FFD950', // iPhone yellow
+    white: '#FFFFFF', // standard white
+    purple: '#BFACE3', // iPhone purple
+    red: '#FF3B30', // (PRODUCT)RED
+    spacegray: '#4B4B4B', // Space Gray
+    midnightgreen: '#4D7B6A', // Midnight Green
+    gold: '#F6E0C9', // iPhone gold
+    silver: '#C0C0C0', // silver finish
+    rosegold: '#B76E79', // rose gold
+    coral: '#FF7F50', // coral
+    midnight: '#1C1C1C', // dark midnight
+    spaceblack: '#000000', // space black
+    blue: '#0071E3', // iPhone blue
+    pink: '#FFC0CB', // pink
+    graphite: '#383838', // graphite
+    sierrablue: '#96AED1', // Sierra Blue
+    'rose gold': '#B76E79', // rose gold duplicate
+    'sky blue': '#87CEEB', // sky blue
+    starlight: '#F5F5F5', // starlight
+    'space gray': '#4B4B4B', // Space Gray duplicate
+  };
 
   const pickByColor = (color: string) => {
     const target = analogProducts.find(
@@ -90,7 +114,7 @@ export const Purchase: React.FC<Props> = ({
               >
                 <button
                   className={style.colors__link}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: appleColors[color] }}
                   onClick={() => pickByColor(color)}
                 />
               </li>
