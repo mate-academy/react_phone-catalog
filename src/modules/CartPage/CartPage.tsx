@@ -68,49 +68,53 @@ export const CartPage: React.FC = () => {
                   key={product.product.id}
                   className={styles.cartpage__list_product}
                 >
-                  <img
-                    src="/public/img/icons/icon-close.png"
-                    alt="image"
-                    className={styles.cartpage__closebut}
-                    onClick={() => removeProduct(product.product)}
-                  />
-                  <img
-                    src={product.product.image}
-                    alt="image"
-                    className={styles.cartpage__list_product_img}
-                  />
-                  <h1 className={styles.cartpage__list_product_name}>
-                    {product.product.name}
-                  </h1>
-                  <div className={styles.cartpage__changequantity}>
-                    <button
-                      className={styles.cartpage__changequantity_but}
-                      disabled={product.quantity === 1}
-                      onClick={() => decreaseQuantity(product.product.id)}
-                    >
-                      <img
-                        src="/public/img/icons/icon-minus.png"
-                        alt="image minus"
-                        className={styles.cartpage__changequantity_but_img}
-                      />
-                    </button>
-                    <span className={styles.cartpage__changequantity_value}>
-                      {product.quantity}
-                    </span>
-                    <button
-                      className={styles.cartpage__changequantity_but}
-                      onClick={() => increaseQuantity(product.product.id)}
-                    >
-                      <img
-                        src="/public/img/icons/icon-plus.png"
-                        alt="image plus"
-                        className={styles.cartpage__changequantity_but_img}
-                      />
-                    </button>
+                  <div className={styles.cartpage__section}>
+                    <img
+                      src="/public/img/icons/icon-close.png"
+                      alt="image"
+                      className={styles.cartpage__closebut}
+                      onClick={() => removeProduct(product.product)}
+                    />
+                    <img
+                      src={product.product.image}
+                      alt="image"
+                      className={styles.cartpage__list_product_img}
+                    />
+                    <h1 className={styles.cartpage__list_product_name}>
+                      {product.product.name}
+                    </h1>
                   </div>
-                  <h2 className={styles.cartpage__list_product_price}>
-                    ${product.product.price * product.quantity}
-                  </h2>
+                  <div className={styles.cartpage__section_2}>
+                    <div className={styles.cartpage__changequantity}>
+                      <button
+                        className={styles.cartpage__changequantity_but}
+                        disabled={product.quantity === 1}
+                        onClick={() => decreaseQuantity(product.product.id)}
+                      >
+                        <img
+                          src="/public/img/icons/icon-minus.png"
+                          alt="image minus"
+                          className={styles.cartpage__changequantity_but_img}
+                        />
+                      </button>
+                      <span className={styles.cartpage__changequantity_value}>
+                        {product.quantity}
+                      </span>
+                      <button
+                        className={styles.cartpage__changequantity_but}
+                        onClick={() => increaseQuantity(product.product.id)}
+                      >
+                        <img
+                          src="/public/img/icons/icon-plus.png"
+                          alt="image plus"
+                          className={styles.cartpage__changequantity_but_img}
+                        />
+                      </button>
+                    </div>
+                    <h2 className={styles.cartpage__list_product_price}>
+                      ${product.product.price * product.quantity}
+                    </h2>
+                  </div>
                 </div>
               ))}
             </div>

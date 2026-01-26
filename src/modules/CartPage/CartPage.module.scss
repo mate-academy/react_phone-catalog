@@ -1,21 +1,81 @@
 @use '../../utils/vars' as *;
 @use '../../utils/mixins' as *;
 
-.cartpage{
+.cartpage {
   @include page-grid;
 
-  margin-top: 40px;
+  @include on-phone {
+    padding: 24px 16px;
+  }
 
-  &__title{
-    margin: 16px 0 32px;
+  @include on-tablet {
+    margin: 40px 0 64px;
+  }
+
+  @include on-desktop {
+    margin: 40px 0 80px;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    grid-column: span 1;
+    width: 100%;
+    box-sizing: border-box;
+
+
+    @include on-phone {
+      gap: 15px;
+    }
+
+    @include on-tablet {
+      padding: 0;
+      gap: 24px;
+    }
+
+    &_2 {
+      display: flex;
+      align-items: center;
+      grid-column: span 1;
+      gap: 24px;
+
+      @include on-phone {
+        justify-content: space-between;
+        padding: 0;
+      }
+
+      @include on-tablet {
+        justify-content: flex-end;
+        padding: 0;
+      }
+    }
+  }
+
+  &__title {
+    grid-column: 1/-1;
 
     font-family: Mont, sans-serif;
-    font-size: 48px;
+
     font-weight: 800;
     font-style: Bold;
-    line-height: 56px;
+
     color: $primary-color;
     letter-spacing: -1%;
+    text-align: left;
+
+    @include on-phone {
+      margin: 24px 0 32px;
+      font-size: 32px;
+      line-height: 41px;
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    @include on-tablet {
+      margin: 16px 0 32px;
+      font-size: 48px;
+      line-height: 56px;
+    }
   }
 
   &__backbutton {
@@ -47,37 +107,60 @@
 
   &__noproducts {
     grid-column: 1/-1;
-    &_p{
+
+    &_p {
       font-family: Mont, sans-serif;
       font-size: 22px;
       font-weight: 800;
       line-height: 140%;
     }
-    &_img{
+
+    &_img {
       width: 35%;
     }
   }
 
-  &__closebut{
+  &__closebut {
     width: 16px;
     height: 16px;
     margin-inline: 24px;
+    cursor: pointer;
+
+    @include on-phone {
+      margin-inline: 0 16px;
+    }
   }
 
   &__list {
     display: grid;
-    grid-column: 1/16;
+
+    @include on-phone {
+      grid-column: 1/-1;
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      grid-column: 1/16;
+      margin-bottom: 0;
+    }
+
     row-gap: 16px;
-    margin-bottom: 80px;
 
-    &_product{
-      @include item-grid;
-
-      // display: flex;
-      // justify-content: space-around;
-      // align-items: center;
-      height: 128px;
+    &_product {
       border: 1px solid $elements-color;
+
+      @include on-phone {
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+      }
+
+      @include on-tablet {
+        @include item-grid;
+
+        height: 128px;
+      }
 
       &_img {
         width: 80px;
@@ -86,17 +169,31 @@
       }
 
       &_name {
-        width: max-content;
-
         font-family: Mont, sans-serif;
         font-size: 14px;
         font-weight: 600;
         line-height: 21px;
         color: $primary-color;
         letter-spacing: 0%;
+        text-align: left;
+
+        word-break: break-word;
+        min-width: 0;
+        flex: 1;
+
+        @include on-tablet {
+          width: max-content;
+        }
       }
+
       &_price {
-        margin-right: 24px;
+        @include on-phone {
+          margin: 0;
+        }
+
+        @include on-tablet{
+          margin-right: 24px;
+        }
 
         font-family: Mont, sans-serif;
         font-size: 22px;
@@ -110,11 +207,23 @@
   }
 
   &__summary {
-    grid-column: 17/-1;
+    @include on-phone {
+      grid-column: 1/-1;
+      margin-bottom: 32px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      grid-column: 17/-1;
+    }
+
     height: max-content;
     border: 1px solid $elements-color;
 
-    &_total{
+    &_total {
       &_amount {
         margin: 23px 0 0;
 
@@ -124,11 +233,17 @@
         line-height: 41px;
         color: $primary-color;
         letter-spacing: -1%;
+
+        @include on-tablet {
+          margin: 23px 0 0;
+        }
       }
+
       &_p {
         margin: 0 24px;
         padding-bottom: 25px;
         border-bottom: 1px solid $elements-color;
+        width: 100%;
 
         font-family: Mont, sans-serif;
         font-size: 14px;
@@ -137,10 +252,16 @@
         color: $secondary-color;
         text-align: center;
         letter-spacing: 0%;
+
+        @include on-tablet {
+          margin: 0 24px;
+          padding-bottom: 25px;
+          width: auto;
+        }
       }
     }
 
-    &_but{
+    &_but {
       width: -webkit-fill-available;
       margin: 24px;
       padding-block: 13.5px;
@@ -154,10 +275,17 @@
       letter-spacing: 0%;
 
       background-color: $primary-color;
+      border: none;
+      cursor: pointer;
+
+      @include on-tablet {
+        width: -webkit-fill-available;
+        margin: 24px;
+      }
     }
   }
 
-  &__changequantity{
+  &__changequantity {
     display: flex;
     column-gap: 14px;
     align-items: center;
@@ -167,15 +295,30 @@
       height: 32px;
       border: 1px solid $icons-and-placeholders-color;
       background-color: $background-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
 
       &:disabled {
         border: 1px solid $elements-color;
+        cursor: default;
       }
 
       &_img {
         width: 16px;
         height: 16px;
       }
+    }
+
+    &_value {
+      width: 32px;
+      text-align: center;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: $primary-color;
     }
   }
 }
