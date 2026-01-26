@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable max-len */
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Breadcrumbs } from '../../shared/Breadcrumbs';
 import { Footer } from '../../shared/Footer';
@@ -212,7 +214,8 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.productdetailspage__info__buttons}>
                 <button
                   className={`${styles.productdetailspage__info__buttons_cart} ${
-                    isAdded ? styles['productcard__buttons_cart_is-active'] : ''
+                    // eslint-disable-next-line max-len, prettier/prettier
+                    isAdded ? styles['productdetailspage__info__buttons_cart_is-active'] : ''
                   }`}
                   onClick={handleAddToCart}
                 >
@@ -221,7 +224,7 @@ export const ProductDetailsPage: React.FC = () => {
                 <button
                   className={`${styles.productdetailspage__info__buttons_like} ${
                     isFavorite
-                      ? styles['productcard__buttons_like_is-active']
+                      ? styles['productdetailspage__info__buttons_like_is-active']
                       : ''
                   }`}
                   onClick={handleAddToFavorites}
