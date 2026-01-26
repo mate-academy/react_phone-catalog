@@ -6,6 +6,11 @@
 
   margin-top: 24px;
 
+  @include on-phone{
+    margin: 0;
+    padding: 24px 16px 0;
+  }
+
   &__backbutton {
     display: flex;
     grid-column: 1 / -1;
@@ -44,17 +49,46 @@
 
   &__title {
     grid-column: 1/-1;
+
     margin: 0;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    color: $primary-color;
     text-align: left;
+
+    @include on-phone{
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+
+    @include on-tablet{
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
   }
 
   &__gallery {
-    display: grid;
+    grid-column: 1 / -1;
 
-    // display: flex;
+    @include on-phone{
+      display: flex;
+      flex-direction: column-reverse;
+      gap:16px;
+      margin: 32px 0 40px;
+    }
 
     @include on-tablet {
+      display: grid;
       grid-column: 1/8;
+      grid-template-columns: repeat(7, 1fr);
+      gap:16px;
+      align-items: start;
+
+      margin: 40px 0 64px;
     }
 
     @include on-desktop {
@@ -66,8 +100,12 @@
 
     &__thumbs {
       display: flex;
-      flex-direction: column;
+      grid-column: 1/2;
       gap: 16px;
+
+      @include on-tablet{
+        flex-direction: column;
+      }
     }
 
     &__thumb {
@@ -104,13 +142,14 @@
 
     &__main {
       display: flex;
+      grid-column: 2/-1;
       align-items: center;
       justify-content: center;
 
       &_img {
         @include on-phone {
           width: 282px;
-          height: 282px;
+          height: 100%;
         }
 
         @include on-desktop {
@@ -124,16 +163,19 @@
   }
 
   &__info {
+    @include on-phone{
+      grid-column: 1 / -1;
+      margin-bottom: 56px;
+    }
+
     @include on-tablet {
       grid-column: span 5;
-      margin: 40px 0 80px;
-
+      margin: 40px 0 64px;
     }
 
     @include on-desktop {
       grid-column: span 7;
       margin: 40px 0 80px;
-
     }
 
     &_header {
@@ -419,7 +461,15 @@
     display: grid;
     grid-column: 1/-1;
     grid-template-columns: repeat(2, 1fr);
+
+    @include on-phone {
+      gap: 24px;
+    }
+
+    @include on-tablet{
     gap: 64px;
+    }
+
     justify-items: start;
 
     &_title {
@@ -428,9 +478,20 @@
       border-bottom: 1px solid $elements-color;
 
       font-family: Mont, sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 140%;
+
+      @include on-phone{
+        font-size: 20px;
+        font-weight: 700;
+        font-style: SemiBold;
+        line-height: 100%;
+      }
+
+      @include on-tablet{
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 140%;
+      }
+
       color: $primary-color;
       text-align: justify;
       letter-spacing: 0%;
@@ -439,6 +500,14 @@
     &_about {
       text-align: justify;
 
+      @include on-phone{
+        grid-column: span 2;
+      }
+
+      @include on-desktop{
+        grid-column: span 1;
+      }
+
       &_text {
         margin: 32px 0 0;
 
@@ -446,11 +515,18 @@
           margin: 0 0 16px;
 
           font-family: Mont, sans-serif;
-          font-size: 20px;
           font-weight: 600;
           line-height: 100%;
           color: $primary-color;
           letter-spacing: 0%;
+
+          @include on-phone{
+            font-size: 16px;
+          }
+
+          @include on-tablet{
+            font-size: 20px;
+          }
         }
 
         &_p {
@@ -468,6 +544,15 @@
 
     &__techspecs {
       width: 100%;
+
+      @include on-phone{
+        grid-column: span 2;
+      }
+
+      @include on-desktop{
+        grid-column: span 1;
+      }
+
 
       &_text {
         display: flex;
@@ -509,7 +594,18 @@
 
   &__alsolike {
     grid-column: 1/-1;
-    margin: 80px 0;
+
+    @include on-phone {
+      margin: 56px 0;
+    }
+
+    @include on-tablet {
+      margin: 64px 0;
+    }
+
+    @include on-desktop{
+      margin: 80px 0;
+    }
   }
 }
 
