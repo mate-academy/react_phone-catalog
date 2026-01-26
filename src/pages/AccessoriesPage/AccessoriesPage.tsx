@@ -79,7 +79,7 @@ export const AccessoriesPage = () => {
         ) : accessories.length === 0 ? (
           <p className={styles.emptyMessage}>There are no accessories yet</p>
         ) : (
-          <div className={styles.grid}>
+          <div key={page} className={styles.grid}>
             {visibleAccessories.map(accessory => (
               <ProductCard key={accessory.id} phone={accessory} />
             ))}

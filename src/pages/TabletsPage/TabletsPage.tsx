@@ -79,7 +79,7 @@ export const TabletsPage = () => {
         ) : tablets.length === 0 ? (
           <p className={styles.emptyMessage}>There are no tablets yet</p>
         ) : (
-          <div className={styles.grid}>
+          <div key={page} className={styles.grid}>
             {visibleTablets.map(tablet => (
               <ProductCard key={tablet.id} phone={tablet} />
             ))}

@@ -74,6 +74,7 @@
 .specRow {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
 
   @include typography.text-small;
 }
@@ -81,11 +82,13 @@
 .specName {
   color: var(--color-secondary);
   font-weight: 500;
+  flex-shrink: 0;
 }
 
 .specValue {
   color: var(--color-primary);
   font-weight: 600;
+  text-align: right;
 }
 
 .actions {
