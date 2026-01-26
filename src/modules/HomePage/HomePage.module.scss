@@ -1,0 +1,30 @@
+.home-page {
+  font-family: 'Mont';
+}
+
+.swiper {
+  padding-bottom: 32px;
+
+  &__title {
+    margin: 24px 16px;
+  }
+
+  &__slide img {
+    width: 100%;
+    height: 320px;
+  }
+}
+
+:global(.swiper-pagination-bullet) {
+  width: 20px;
+  height: 4px;
+  background-color: #ccc;
+  border-radius: 2px;
+  opacity: 1;
+  margin: 6px;
+  transition: background-color 0.3s;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: #000;
+}

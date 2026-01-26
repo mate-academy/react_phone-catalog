@@ -1,0 +1,113 @@
+.tablets-page {
+  font-family: 'Mont';
+  padding: 24px 16px;
+
+  &__navi {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__logo {
+      height: 16px;
+      width: 16px;
+  }
+
+  &__arrow {
+      height: 10px;
+      width: 6px;
+  }
+
+  &__page {
+    margin: 0;
+    padding-top: 4px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    color: $main-grey;
+  }
+
+  &__title {
+    margin-top: 24px;
+  }
+
+  &__models {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $main-grey;
+    margin-top: 8px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__select {
+
+    &__title {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $main-grey;
+      margin-bottom: 4px;
+      margin-top: 32px;
+    }
+
+    &__field {
+      width: 136px;
+      height: 40px;
+      border-color: $icon-grey;
+    }
+
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phones {
+    margin-top: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+
+    &__left {
+      margin-right: 8px;
+      border: 1px solid $icon-grey;
+    }
+
+    &__right {
+      margin-left: 8px;
+      border: 1px solid $icon-grey;
+    }
+
+    &__button {
+      height: 32px;
+      width: 32px;
+      background-color: $main-white;
+    }
+
+    &__nbutton {
+      height: 32px;
+      width: 32px;
+      background-color: $main-white;
+      border: 1px solid $main-lightgrey;
+    }
+
+    &__active {
+      background-color: $main-black;
+      color:$main-white;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.product-details-page {
+  font-family: 'Mont';
+  padding: 24px 16px;
+
+  &__navi {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__logo {
+      height: 16px;
+      width: 16px;
+  }
+
+  &__arrow {
+      height: 10px;
+      width: 6px;
+  }
+
+  &__page {
+    margin: 0;
+    padding-top: 4px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    color: $main-grey;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+}
