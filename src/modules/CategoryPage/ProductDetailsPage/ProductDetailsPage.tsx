@@ -117,10 +117,10 @@ export const ProductDetailsPage: React.FC = () => {
   );
 
   const isAdded = product
-    ? cart.some(item => item.product.id === product.id)
+    ? cart.some(item => item.product.itemId === product.id)
     : false;
   const isFavorite = product
-    ? favorites.some(item => item.id === product.id)
+    ? favorites.some(item => item.itemId === product.id)
     : false;
 
   return (
