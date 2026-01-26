@@ -16,6 +16,13 @@
   }
 }
 
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
 .imageContainer {
   display: flex;
   justify-content: center;
@@ -23,12 +30,13 @@
   margin-bottom: 24px;
   height: 200px;
   width: 100%;
-}
+  text-decoration: none;
 
-.image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  &:hover {
+    .image {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .title {
@@ -38,6 +46,15 @@
   margin: 0 0 8px;
   overflow: hidden;
   height: 42px;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover .title {
+    color: var(--primary-color, #0a0a0a);
+  }
 }
 
 .price {

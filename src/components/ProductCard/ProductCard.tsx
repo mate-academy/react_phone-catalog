@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { Phone } from '../../types/Phone';
 
@@ -11,8 +12,16 @@ export const ProductCard: React.FC<Props> = ({
   phone,
   showRegularPriceOnly = false,
 }) => {
-  const { name, priceRegular, priceDiscount, screen, capacity, ram, images } =
-    phone;
+  const {
+    id,
+    name,
+    priceRegular,
+    priceDiscount,
+    screen,
+    capacity,
+    ram,
+    images,
+  } = phone;
 
   const imageUrl = `/${images[0]}`;
   const screenDisplay = screen.replace('(Super Retina XDR)', '').trim();
@@ -23,11 +32,13 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <article className={styles.card}>
-      <div className={styles.imageContainer}>
+      <Link to={`/product/${id}`} className={styles.imageContainer}>
         <img src={imageUrl} alt={name} className={styles.image} />
-      </div>
+      </Link>
 
-      <h3 className={styles.title}>{name}</h3>
+      <Link to={`/product/${id}`} className={styles.titleLink}>
+        <h3 className={styles.title}>{name}</h3>
+      </Link>
 
       <div className={styles.price}>
         <span>

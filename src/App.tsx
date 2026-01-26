@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const App = () => (
   <div className="App">
@@ -16,6 +17,7 @@ export const App = () => (
         <Route path="/phones" element={<PhonesPage />} />
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </main>

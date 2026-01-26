@@ -1,0 +1,434 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/typography' as typography;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    gap: 4px;
+  }
+}
+
+.breadcrumbLink {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.breadcrumbCurrent {
+  color: var(--color-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.title {
+  @include typography.text-h2;
+
+  color: var(--color-primary);
+  margin: 0 0 40px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--color-elements);
+  background: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: var(--color-secondary);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.thumbnailActive {
+  border-color: var(--color-primary);
+}
+
+.mainImage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 464px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.optionSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.optionLabel {
+  font-size: 12px;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.productId {
+  font-size: 12px;
+  color: var(--color-icons);
+  margin: 0;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.colorButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--color-elements);
+  }
+}
+
+.colorButtonActive {
+  &::before {
+    border-color: var(--color-primary);
+    border-width: 2px;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-elements);
+  margin: 24px 0;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.capacityButton {
+  padding: 8px 16px;
+  border: 1px solid var(--color-icons);
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.capacityButtonActive {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.pricing {
+  margin-bottom: 32px;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  @include typography.text-h2;
+
+  color: var(--color-primary);
+}
+
+.oldPrice {
+  @include typography.text-h3;
+
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToCart {
+  flex: 1;
+  padding: 16px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0a0a0a;
+  }
+}
+
+.favorite {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-icons);
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.specLabel {
+  color: var(--color-secondary);
+}
+
+.specValue {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.about,
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  @include typography.text-h3;
+
+  color: var(--color-primary);
+  margin: 0 0 16px;
+}
+
+.descriptionSection {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.descriptionTitle {
+  @include typography.text-h4;
+
+  color: var(--color-primary);
+  margin: 0 0 16px;
+}
+
+.descriptionText {
+  @include typography.text-body;
+
+  color: var(--color-secondary);
+  margin: 0 0 16px;
+  line-height: 1.5;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.techSpecsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techSpecRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.techSpecLabel {
+  color: var(--color-secondary);
+}
+
+.techSpecValue {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+
+  h1 {
+    @include typography.text-h2;
+
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
