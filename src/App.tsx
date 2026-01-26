@@ -11,47 +11,52 @@ import { ProductsProvider } from './context/ProductsContext';
 import { FilterProvider } from './context/FilterContext';
 import { BurgerMenu } from 'shared/Header/BurgerMenu';
 import { ScrollToTop } from 'services/ScrollToTop';
+import { ThemeProvider } from './theme/ThemeProvider';
 
 export const App = () => {
   return (
-    <ProductsProvider>
-      <FilterProvider>
-        <div className="App">
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route path="/burgermenu" element={<BurgerMenu />} />
+    <ThemeProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <div className="App">
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="/burgermenu" element={<BurgerMenu />} />
 
-            <Route
-              path="/phones"
-              element={<CategoryPage category="phones" title="Mobile phones" />}
-            />
+              <Route
+                path="/phones"
+                element={
+                  <CategoryPage category="phones" title="Mobile phones" />
+                }
+              />
 
-            <Route
-              path="/tablets"
-              element={<CategoryPage category="tablets" title="Tablets" />}
-            />
+              <Route
+                path="/tablets"
+                element={<CategoryPage category="tablets" title="Tablets" />}
+              />
 
-            <Route
-              path="/accessories"
-              element={
-                <CategoryPage category="accessories" title="Accessories" />
-              }
-            />
+              <Route
+                path="/accessories"
+                element={
+                  <CategoryPage category="accessories" title="Accessories" />
+                }
+              />
 
-            <Route
-              path="/:category/product/:productId"
-              element={<ProductDetailsPage />}
-            />
+              <Route
+                path="/:category/product/:productId"
+                element={<ProductDetailsPage />}
+              />
 
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/cart" element={<CartPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/cart" element={<CartPage />} />
 
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </div>
-      </FilterProvider>
-    </ProductsProvider>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+        </FilterProvider>
+      </ProductsProvider>
+    </ThemeProvider>
   );
 };

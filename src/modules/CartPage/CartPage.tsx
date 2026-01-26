@@ -43,7 +43,7 @@ export const CartPage: React.FC = () => {
         >
           <img
             className={styles.cartpage__backbutton__icon}
-            src="/public/img/icons/icon-chevron-arrow-left.png"
+            src="/img/icons/icon-chevron-arrow-left.png"
             alt=""
           />
           <p className={styles.cartpage__backbutton__text}>Back</p>
@@ -55,7 +55,7 @@ export const CartPage: React.FC = () => {
               No products in cart yet
             </p>
             <img
-              src="/public/img/cart-is-empty.png"
+              src="/img/cart-is-empty.png"
               alt="image"
               className={styles.cartpage__noproducts_img}
             />
@@ -70,7 +70,7 @@ export const CartPage: React.FC = () => {
                 >
                   <div className={styles.cartpage__section}>
                     <img
-                      src="/public/img/icons/icon-close.png"
+                      src="/img/icons/icon-close.png"
                       alt="image"
                       className={styles.cartpage__closebut}
                       onClick={() => removeProduct(product.product)}
@@ -89,10 +89,14 @@ export const CartPage: React.FC = () => {
                       <button
                         className={styles.cartpage__changequantity_but}
                         disabled={product.quantity === 1}
-                        onClick={() => decreaseQuantity(product.product.id)}
+                        onClick={() =>
+                          decreaseQuantity(
+                            product.product.itemId || product.product.id,
+                          )
+                        }
                       >
                         <img
-                          src="/public/img/icons/icon-minus.png"
+                          src="/img/icons/icon-minus.png"
                           alt="image minus"
                           className={styles.cartpage__changequantity_but_img}
                         />
@@ -102,10 +106,14 @@ export const CartPage: React.FC = () => {
                       </span>
                       <button
                         className={styles.cartpage__changequantity_but}
-                        onClick={() => increaseQuantity(product.product.id)}
+                        onClick={() =>
+                          increaseQuantity(
+                            product.product.itemId || product.product.id,
+                          )
+                        }
                       >
                         <img
-                          src="/public/img/icons/icon-plus.png"
+                          src="/img/icons/icon-plus.png"
                           alt="image plus"
                           className={styles.cartpage__changequantity_but_img}
                         />

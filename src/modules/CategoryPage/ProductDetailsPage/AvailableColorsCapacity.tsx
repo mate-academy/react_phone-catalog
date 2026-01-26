@@ -18,6 +18,7 @@ const COLOR_MAP: Record<string, string> = {
   midnightgreen: 'darkgreen',
   sierrablue: '#9bb7d4',
   starlight: '#f8f3e8',
+  graphite: '#575857',
   green: '#576856',
   yellow: '#f2d94e',
   purple: '#b39ddb',

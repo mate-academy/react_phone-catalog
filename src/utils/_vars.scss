@@ -2,12 +2,34 @@ $phone-min-width: 320px;
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 $big-desktop-min-width: 1201px;
-$primary-color: rgba(49, 50, 55, 1);
-$secondary-color: rgba(137, 147, 154, 1);
-$icons-and-placeholders-color: rgba(180, 189, 195, 1);
-$elements-color: rgba(226, 230, 233, 1);
-$hover-and-background-color: rgba(250, 251, 252, 1);
-$background-color: rgba(255, 255, 255, 1) ;
-$product-card-font-button-color: rgba(39, 174, 96, 1);
-$liked-and-count-color: rgba(235, 87, 87, 1);
 
+:root {
+  --primary-color: rgba(49, 50, 55, 1);
+  --secondary-color: rgba(137, 147, 154, 1);
+  --icons-and-placeholders-color: rgba(180, 189, 195, 1);
+  --elements-color: rgba(226, 230, 233, 1);
+  --hover-and-background-color: rgba(250, 251, 252, 1);
+  --background-color: rgba(255, 255, 255, 1);
+  --product-card-font-button-color: rgba(39, 174, 96, 1);
+  --liked-and-count-color: rgba(235, 87, 87, 1);
+}
+
+body.dark {
+  --background-color: rgba(15, 17, 33, 1);
+  --primary-color: rgba(241, 242, 249, 1);
+  --secondary-color: rgba(144, 91, 255, 1);
+  --icons-and-placeholders-color: rgba(74, 77, 88, 1);
+  --elements-color: rgba(59, 62, 74, 1);
+  --hover-and-background-color: rgba(117, 118, 127, 1);
+  --product-card-font-button-color: rgba(39, 174, 96, 1);
+  --liked-and-count-color: rgba(235, 87, 87, 1);
+}
+
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$icons-and-placeholders-color: var(--icons-and-placeholders-color);
+$elements-color: var(--elements-color);
+$hover-and-background-color: var(--hover-and-background-color);
+$background-color: var(--background-color);
+$product-card-font-button-color: var(--product-card-font-button-color);
+$liked-and-count-color: var(--liked-and-count-color);

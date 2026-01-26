@@ -18,7 +18,7 @@ import {
   AvailableCapacities,
   AvailableColors,
 } from './AvailableColorsCapacity';
-import imgNotFoundProduct from '../../../../public/img/page-not-found.png';
+
 const favoriteIcons = '/img/icons/';
 
 const apiCategoryMap: Record<string, ProductDetails[]> = {
@@ -144,7 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
           >
             <img
               className={styles.productdetailspage__backbutton__icon}
-              src="/public/img/icons/icon-chevron-arrow-left.png"
+              src="/img/icons/icon-chevron-arrow-left.png"
               alt=""
             />
             <p className={styles.productdetailspage__backbutton__text}>Back</p>
@@ -526,7 +526,7 @@ export const ProductDetailsPage: React.FC = () => {
           </p>
           <img
             className={styles.notfoundproductpage__image}
-            src={imgNotFoundProduct}
+            src="/img/page-not-found.png"
             alt="Page Not Found"
           />
         </div>

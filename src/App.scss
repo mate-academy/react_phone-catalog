@@ -1,18 +1,49 @@
-// not empty
 @use './utils/vars' as *;
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  color: $primary-color;
+  background-color: $background-color;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  color-scheme: dark;
+
+  // Make black icons pure white in dark mode
+  img[src*="icon-logo"],
+  img[src*="icon-menu"],
+  img[src*="icon-favourites-heart-like"],
+  img[src*="icon-shopping-bag-cart"],
+  img[src*="icon-home"],
+  img[src*="icon-search"],
+  img[src*="icon-chevron-arrow"],
+  img[src*="icon-light-theme"],
+  img[src*="icon-dark-theme"] {
+    filter: brightness(0) invert(1);
+  }
+
+  // Except filled ones if they should remain red
+  img[src*="filled"] {
+    filter: none;
+  }
+}
 
 .App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  // min-width: 100vh;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
 
   font-family: Mont, sans-serif;
+  color: $primary-color;
   text-align: center;
 
   background-color: $background-color;
 }
-

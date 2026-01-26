@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
@@ -6,8 +6,11 @@ import iconCart from 'public/img/icons/icon-shopping-bag-cart.png';
 import iconFavorite from 'public/img/icons/icon-favourites-heart-like.png';
 import iconLogo from 'public/img/icons/icon-logo.png';
 import iconBurger from 'public/img/icons/icon-menu.png';
+import iconLight from 'public/img/icons/icon-light-theme.png';
+import iconDark from 'public/img/icons/icon-dark-theme.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useProducts } from 'src/context/ProductsContext';
+import { ThemeContext } from 'src/theme/ThemeProvider';
 
 export const Header: React.FC = () => {
   const { favorites, cart } = useProducts();
@@ -17,6 +20,12 @@ export const Header: React.FC = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites, cart]);
+
+  const [theme, setTheme] = useContext(ThemeContext) || ['light', () => {}];
+
+  const changeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   return (
     <>
@@ -29,6 +38,13 @@ export const Header: React.FC = () => {
               alt="logo"
             />
           </Link>
+          <button className={styles.header__theme_but} onClick={changeTheme}>
+            <img
+              src={theme === 'light' ? iconDark : iconLight}
+              alt="theme toggle"
+              className={styles.header__theme_but__img}
+            />
+          </button>
         </div>
         <div className={styles.header__wrapper}>
           <div className={styles.header__nav}>

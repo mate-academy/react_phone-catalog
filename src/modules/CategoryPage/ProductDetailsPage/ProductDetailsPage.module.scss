@@ -6,7 +6,7 @@
 
   margin-top: 24px;
 
-  @include on-phone{
+  @include on-phone {
     margin: 0;
     padding: 24px 16px 0;
   }
@@ -58,13 +58,13 @@
     color: $primary-color;
     text-align: left;
 
-    @include on-phone{
+    @include on-phone {
       font-size: 22px;
       line-height: 140%;
       letter-spacing: 0%;
     }
 
-    @include on-tablet{
+    @include on-tablet {
       font-size: 32px;
       line-height: 41px;
       letter-spacing: -1%;
@@ -74,10 +74,10 @@
   &__gallery {
     grid-column: 1 / -1;
 
-    @include on-phone{
+    @include on-phone {
       display: flex;
       flex-direction: column-reverse;
-      gap:16px;
+      gap: 16px;
       margin: 32px 0 40px;
     }
 
@@ -85,7 +85,7 @@
       display: grid;
       grid-column: 1/8;
       grid-template-columns: repeat(7, 1fr);
-      gap:16px;
+      gap: 16px;
       align-items: start;
 
       margin: 40px 0 64px;
@@ -103,7 +103,7 @@
       grid-column: 1/2;
       gap: 16px;
 
-      @include on-tablet{
+      @include on-tablet {
         flex-direction: column;
       }
     }
@@ -163,7 +163,7 @@
   }
 
   &__info {
-    @include on-phone{
+    @include on-phone {
       grid-column: 1 / -1;
       margin-bottom: 56px;
     }
@@ -198,26 +198,26 @@
       text-align: right;
       letter-spacing: 0%;
 
-      @include on-desktop{
-        display:none;
+      @include on-desktop {
+        display: none;
       }
     }
 
-     &_idnum {
-      display:none;
+    &_idnum {
+      display: none;
       grid-column: -4/-1;
       margin: 40px 0 80px;
 
-      @include on-desktop{
-      display: block;
+      @include on-desktop {
+        display: block;
 
-      font-family: Mont, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 100%;
-      color: $icons-and-placeholders-color;
-      text-align: right;
-      letter-spacing: 0%;
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 100%;
+        color: $icons-and-placeholders-color;
+        text-align: right;
+        letter-spacing: 0%;
       }
     }
 
@@ -286,6 +286,10 @@
 
         &_active {
           border-color: $primary-color;
+
+          :global(body.dark) & {
+            border-color: $secondary-color;
+          }
         }
       }
 
@@ -346,6 +350,11 @@
           border: 1px solid $primary-color;
           color: $background-color;
           background-color: $primary-color;
+
+          :global(body.dark) & {
+            border-color: $secondary-color;
+            background-color: $secondary-color;
+          }
         }
       }
     }
@@ -418,43 +427,43 @@
     }
 
     &__buttons {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-    margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin-top: 16px;
 
-    &_cart {
-      flex: 1;
+      &_cart {
+        flex: 1;
 
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-      color: $background-color;
-      text-align: center;
-      letter-spacing: 0%;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        color: $background-color;
+        text-align: center;
+        letter-spacing: 0%;
 
-      background-color: $primary-color;
+        background-color: $primary-color;
 
-      &_is-active {
+        &_is-active {
+          border: 1px solid $icons-and-placeholders-color;
+          color: $product-card-font-button-color;
+          background-color: $background-color;
+        }
+      }
+
+      &_like {
+        height: 40px;
+        padding: 12px;
         border: 1px solid $icons-and-placeholders-color;
-        color: $product-card-font-button-color;
         background-color: $background-color;
+
+        &__img {
+          width: 16px;
+          height: 16px;
+        }
       }
     }
-
-    &_like {
-      height: 40px;
-      padding: 12px;
-      border: 1px solid $icons-and-placeholders-color;
-      background-color: $background-color;
-
-      &__img {
-        width: 16px;
-        height: 16px;
-      }
-    }
-  }
   }
 
   &__extrainfo {
@@ -466,8 +475,8 @@
       gap: 24px;
     }
 
-    @include on-tablet{
-    gap: 64px;
+    @include on-tablet {
+      gap: 64px;
     }
 
     justify-items: start;
@@ -479,14 +488,14 @@
 
       font-family: Mont, sans-serif;
 
-      @include on-phone{
+      @include on-phone {
         font-size: 20px;
         font-weight: 700;
         font-style: SemiBold;
         line-height: 100%;
       }
 
-      @include on-tablet{
+      @include on-tablet {
         font-size: 22px;
         font-weight: 800;
         line-height: 140%;
@@ -500,11 +509,11 @@
     &_about {
       text-align: justify;
 
-      @include on-phone{
+      @include on-phone {
         grid-column: span 2;
       }
 
-      @include on-desktop{
+      @include on-desktop {
         grid-column: span 1;
       }
 
@@ -520,11 +529,11 @@
           color: $primary-color;
           letter-spacing: 0%;
 
-          @include on-phone{
+          @include on-phone {
             font-size: 16px;
           }
 
-          @include on-tablet{
+          @include on-tablet {
             font-size: 20px;
           }
         }
@@ -545,11 +554,11 @@
     &__techspecs {
       width: 100%;
 
-      @include on-phone{
+      @include on-phone {
         grid-column: span 2;
       }
 
-      @include on-desktop{
+      @include on-desktop {
         grid-column: span 1;
       }
 
@@ -603,7 +612,7 @@
       margin: 64px 0;
     }
 
-    @include on-desktop{
+    @include on-desktop {
       margin: 80px 0;
     }
   }

@@ -18,6 +18,30 @@ header {
     justify-content: center;
   }
 
+  &__theme_but {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px;
+    border: none;
+
+    background: transparent;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &__img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   &__wrapper {
     @include on-phone {
       display: none;
@@ -35,6 +59,9 @@ header {
   }
 
   &__logo {
+    display: flex;
+    gap: 10px;
+
     @include on-phone {
       margin-right: 16px;
       padding: 10px 16px;
