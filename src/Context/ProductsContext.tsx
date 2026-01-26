@@ -1,10 +1,13 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 import Product from '../types/Product';
+import { CartItemType } from '../types/CartItem';
 
 type ProdContextType = {
   products: Product[];
-  cartProds: Product[];
+  cartProds: CartItemType[];
   addProdToCart: (product: Product) => void;
+  removeProdFromCart: (id: number) => void;
+  changeQuontityInCart: (id: number, action: string) => void;
   favourites: Product[];
   addProdToFavourites: (product: Product) => void;
   isProdInFavourites: (product: Product) => boolean;
@@ -22,6 +25,8 @@ export const ProductsContext = createContext<ProdContextType>({
   products: [],
   cartProds: [],
   addProdToCart: () => {},
+  removeProdFromCart: () => {},
+  changeQuontityInCart: () => {},
   favourites: [],
   addProdToFavourites: () => {},
   isProdInFavourites: () => false,
@@ -34,7 +39,7 @@ type Props = {
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [cartProds, setCartProds] = useState<Product[]>([]);
+  const [cartProds, setCartProds] = useState<CartItemType[]>([]);
   const [favourites, setFavouritesArr] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -81,8 +86,30 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
         return prevArr;
       }
 
-      return [...prevArr, product];
+      return [...prevArr, { ...product, quantity: 1 }];
     });
+  }
+
+  function removeProdFromCart(id: number) {
+    setCartProds(prevArr => prevArr.filter(item => item.id !== id));
+  }
+
+  function changeQuontityInCart(id: number, action: string) {
+    const updatedCart = cartProds.map(item => {
+      if (item.id === id) {
+        if (action === 'incr') {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+
+        if (action === 'decr' && item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+      }
+
+      return item;
+    });
+
+    setCartProds(updatedCart);
   }
 
   function addProdToFavourites(product: Product) {
@@ -109,6 +136,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       products,
       cartProds,
       addProdToCart,
+      removeProdFromCart,
+      changeQuontityInCart,
       favourites,
       addProdToFavourites,
       isProdInFavourites,

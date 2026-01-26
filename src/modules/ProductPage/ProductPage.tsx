@@ -1,0 +1,332 @@
+/* eslint-disable max-len */
+
+import { Fragment, useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import classNames from 'classnames';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHouse } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ProductsContext } from '../../Context/ProductsContext';
+import { ProductDetails } from '../../types/ProductDetails';
+import { GoodsSlider } from '../../components/GoodsSlider';
+
+import s from './ProductPage.module.scss';
+
+export const ProductPage = () => {
+  const {
+    products,
+    addProdToCart,
+    isProdInCart,
+    addProdToFavourites,
+    isProdInFavourites,
+  } = useContext(ProductsContext);
+  const { itemId } = useParams();
+  const navigate = useNavigate();
+  const [productDetails, setProductDetails] = useState<
+    ProductDetails | undefined
+  >(undefined);
+
+  const product = products.find(item => item.itemId === itemId);
+
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
+
+    fetch(`/api/${product?.category}.json`)
+      .then(response => response.json())
+      .then((data: ProductDetails[]) => {
+        const prod = data.find(i => i.id === itemId);
+
+        if (prod) {
+          setProductDetails(prod);
+        } else {
+          throw new Error('Error fetching data');
+        }
+      })
+      .catch(error => {
+        throw new Error('Error fetching data:', error);
+      });
+  }, [products, product, itemId]);
+
+  const imageRef = useRef<HTMLImageElement | null>(null);
+
+  // const randomProducts = products
+  //   .filter(item => item.itemId !== product?.itemId)
+  //   .sort(() => 0.5 - Math.random())
+  //   .slice(0, 8);
+
+  if (!product && products.length) {
+    return navigate('/not-found');
+  }
+
+  type TechSpecListType = {
+    title: string;
+    key: string;
+  };
+
+  const techSpecList: TechSpecListType[] = [
+    { title: 'Screen', key: 'screen' },
+    { title: 'Resolution', key: 'resolution' },
+    { title: 'Processor', key: 'processor' },
+    { title: 'RAM', key: 'ram' },
+    { title: 'Built in memory', key: 'capacity' },
+    { title: 'Camera', key: 'camera' },
+    { title: 'Zoom', key: 'zoom' },
+    { title: 'Cell', key: 'cell' },
+  ];
+
+  // const colors = [
+  //   { green: '' },
+  //   { 'space grey': '' },
+  //   { black: '' },
+  //   { yellow: '' },
+  //   { white: '' },
+  //   { purple: '' },
+  //   { red: '' },
+  // ];
+
+  function getSpec(key: string): string {
+    if (!productDetails) {
+      return '';
+    }
+
+    const field = productDetails[key as keyof ProductDetails];
+
+    switch (typeof field) {
+      case 'string':
+        return field;
+      case 'object':
+        return field.join(', ');
+      default:
+        return '';
+    }
+  }
+
+  const specs = techSpecList.map(spec => {
+    return { ...spec, key: getSpec(spec.key) };
+  });
+
+  function handleAddToCart() {
+    if (product) {
+      addProdToCart(product);
+    }
+  }
+
+  function handleAddToFavourites() {
+    if (product) {
+      addProdToFavourites(product);
+    }
+  }
+
+  function handleImageCkick(imSrc: string) {
+    if (imageRef.current) {
+      imageRef.current.src = `/${imSrc}`;
+    }
+  }
+
+  return (
+    <>
+      <nav
+        className="breadcrumb has-succeeds-separator"
+        aria-label="breadcrumbs"
+      >
+        <ul>
+          <li>
+            <a href="#">
+              <span className="icon">
+                <FontAwesomeIcon icon={faHouse} />
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">Documentation</a>
+          </li>
+          <li>
+            <a href="#">Components</a>
+          </li>
+          <li className="is-active">
+            <a href="#" aria-current="page">
+              Breadcrumb
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      {productDetails && product && (
+        <div className="container">
+          <p>{itemId}</p>
+          <h1 className="title is-3">{productDetails?.name}</h1>
+          <div className="fixed-grid">
+            <div className="grid is-gap-8">
+              <div className="cell">
+                <div className="columns">
+                  <div className="column is-narrow">
+                    {productDetails?.images.map((im, idx) => (
+                      <div className={`${s.small_img}`} key={idx}>
+                        <figure
+                          className={`image ${s.small_img__figure}`}
+                          onClick={() => handleImageCkick(im)}
+                        >
+                          <img src={`/${im}`} alt={`image-${im}`} />
+                        </figure>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="column">
+                    <div className={`${s.big_img}`}>
+                      <figure className={`image ${s.big_img__figure}`}>
+                        <img
+                          ref={imageRef}
+                          src={`/${productDetails?.images[0]}`}
+                          alt={`image`}
+                        />
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="cell">
+                <div className="columns">
+                  <div className="column ">
+                    <div className={`block ${s.bottom_bordered}`}>
+                      <p>Available colors</p>
+                      <div className="is-flex">
+                        {productDetails?.colorsAvailable.map((color, idx) => (
+                          <button
+                            className={classNames(
+                              `tag is-rounded mr-2 ${s.color_btn}`,
+                              {
+                                [`${s.is_active}`]:
+                                  productDetails?.color === color,
+                              },
+                            )}
+                            key={idx}
+                          >
+                            <span
+                              className={`${s.color_btn__inside}`}
+                              style={{
+                                backgroundColor: `${color}`,
+                              }}
+                            ></span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className={`block ${s.bottom_bordered}`}>
+                      <p>Select capacity</p>
+                      <div className="is-flex">
+                        {productDetails?.capacityAvailable.map((cap, idx) => (
+                          <button
+                            className={classNames('tag mr-2', {
+                              'is-dark': productDetails?.capacity === cap,
+                              [`${s.capacity_btn}`]:
+                                productDetails?.capacity !== cap,
+                            })}
+                            key={idx}
+                          >
+                            {cap}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="block">
+                      <b>$ {productDetails?.priceDiscount}</b>
+                      <del>$ {productDetails?.priceRegular}</del>
+                    </div>
+                    <div className="content is-flex">
+                      <button
+                        className={classNames('button mr-2', {
+                          [`${s.cart_button}`]: !isProdInCart(product),
+                          [`${s.cart_button__active}`]: isProdInCart(product),
+                        })}
+                        type="button"
+                        onClick={handleAddToCart}
+                      >
+                        {isProdInCart(product)
+                          ? 'Added to cart'
+                          : 'Add to cart'}
+                      </button>
+                      <button
+                        className={`button ${s.fav_button}`}
+                        type="button"
+                        onClick={handleAddToFavourites}
+                      >
+                        <span
+                          className={classNames('icon', {
+                            [`${s.blue_icon}`]: isProdInFavourites(product),
+                          })}
+                        >
+                          <FontAwesomeIcon
+                            icon={
+                              isProdInFavourites(product)
+                                ? faHeartSolid
+                                : faHeart
+                            }
+                          />
+                        </span>
+                      </button>
+                    </div>
+                    <ul className="list">
+                      <li className="is-flex is-justify-content-space-between">
+                        <span>Screen</span>
+                        <b>{productDetails?.screen}</b>
+                      </li>
+                      <li className="is-flex is-justify-content-space-between">
+                        <span>Resolution</span>
+                        <b>{productDetails?.resolution}</b>
+                      </li>
+                      <li className="is-flex is-justify-content-space-between">
+                        <span>Processor</span>
+                        <b>{productDetails?.processor}</b>
+                      </li>
+                      <li className="is-flex is-justify-content-space-between">
+                        <span>RAM</span>
+                        <b>{productDetails?.ram}</b>
+                      </li>
+                    </ul>
+                    {/* </div> */}
+                  </div>
+                  <div className="column is-one-third has-text-right">
+                    <span>ID: {product?.id}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="fixed-grid">
+            <div className="grid is-gap-8">
+              <div className="cell">
+                <h3 className={`title is-4 ${s.bordered_title}`}>About</h3>
+                {productDetails?.description.map((el, idx) => (
+                  <div key={idx} className="mb-5">
+                    <h4 className="title is-5">{el.title}</h4>
+                    <p>{el.text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="cell">
+                <h3 className={`title is-4 ${s.bordered_title}`}>Tech specs</h3>
+                <ul>
+                  {specs.map((el, idx) => (
+                    <Fragment key={idx}>
+                      {el.key !== '' && (
+                        <li className="is-flex is-justify-content-space-between">
+                          <span>{el.title}</span>
+                          <b>{el.key}</b>
+                        </li>
+                      )}
+                    </Fragment>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <h2 className="title is-3"> You may also like</h2>
+          <GoodsSlider collectionType={'alsoLike'} typePagin={'light'} />
+        </div>
+      )}
+    </>
+  );
+};

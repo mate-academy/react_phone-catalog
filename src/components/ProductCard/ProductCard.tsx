@@ -1,11 +1,12 @@
 import Product from '../../types/Product';
-import Favourites from '/img/icons/favourites_(Heart_Like).svg';
-import FavouritesFilled from '/img/icons/Favourites_Filled.svg';
-
 import s from './ProductCard.module.scss';
 import { useContext } from 'react';
 import { ProductsContext } from '../../Context/ProductsContext';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -18,6 +19,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     isProdInFavourites,
     isProdInCart,
   } = useContext(ProductsContext);
+
+  // const navigate = useNavigate();
 
   // const [isInFav, setIsInFav] = useState(
   //   favouritesArr.some(item => {
@@ -33,6 +36,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     addProdToFavourites(product);
   }
 
+  // function handleCardClick() {
+  //   navigate(`/product/${product.itemId}`);
+  //   // <Navigate to={`product/${product.itemId}`} />;
+  // }
+
   // function isInFavourites(): boolean {
   //   return favouritesArr.some(item => {
   //     item.id === product.id ? setIsInFav(true) : setIsInFav(false);
@@ -41,30 +49,65 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={`card ${s.product_card}`}>
-      <div className="card_image">
-        <figure className="image is-4by3">
-          <img className={s.card_img} src={product.image} alt={product.name} />
-        </figure>
+      <div className="card_image mb-2">
+        <Link to={`/product/${product.itemId}`}>
+          <figure className={`image ${s.img_figure}`}>
+            <img
+              className={s.card_img}
+              src={`/${product.image}`}
+              alt={product.name}
+            />
+          </figure>
+        </Link>
       </div>
-      <div className="card-content p-0">
-        <div className="media">
-          <div className="media-content">
-            <p className="title is-4">{product.name}</p>
-            <p className="subtitle is-6">${product.price}</p>
+      <div className="card-content px-0 py-1 is-flex-grow-1">
+        <div className="media mb-0">
+          <div className={`media-content block ${s.bottom_bordered}`}>
+            <Link to={`/product/${product.itemId}`}>
+              <p className={`${s.product_name}`}>{product.name}</p>
+            </Link>
+            <b className="is-size-5 has-text-weight-extrabold mr-2">
+              ${product.price}
+            </b>
+            <del
+              className={`is-size-5 has-text-weight-semibold ${s.product_gray}`}
+            >
+              ${product.fullPrice}
+            </del>
           </div>
         </div>
 
-        <div className="content">
-          <div className="media">
-            <div className="media-content">
-              <p className="title is-4">Screen {product.screen}</p>
-              <p className="subtitle is-6">Capacity {product.capacity}</p>
-              <p className="subtitle is-6">RAM {product.ram}</p>
-            </div>
-          </div>
+        <div className="content mb-4">
+          <ul className="list m-0">
+            <li className="is-flex is-justify-content-space-between mb-2">
+              <span
+                className={`is-size-7 has-text-weight-bold ${s.product_gray}`}
+              >
+                Screen
+              </span>
+              <b className="is-size-7">{product.screen}</b>
+            </li>
+            <li className="is-flex is-justify-content-space-between mt-0 mb-2">
+              <span
+                className={`is-size-7 has-text-weight-bold ${s.product_gray}`}
+              >
+                Capacity
+              </span>
+              <b className="is-size-7">{product.capacity}</b>
+            </li>
+            <li className="is-flex is-justify-content-space-between mt-0">
+              <span
+                className={`is-size-7 has-text-weight-bold ${s.product_gray}`}
+              >
+                RAM
+              </span>
+              <b className="is-size-7">{product.ram}</b>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="content is-flex is-justify-content-space-between ">
+
+      <div className="content is-flex is-justify-content-space-between mt-auto">
         <button
           className={classNames('button', {
             [`${s.cart_button}`]: !isProdInCart(product),
@@ -80,13 +123,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           type="button"
           onClick={handleAddToFavourites}
         >
-          <img
-            src={isProdInFavourites(product) ? FavouritesFilled : Favourites}
-            alt="Favourites"
-            width={16}
-            height={16}
-            className={s.fav_icon}
-          />
+          <span
+            className={classNames('icon', {
+              [`${s.blue_icon}`]: isProdInFavourites(product),
+            })}
+          >
+            <FontAwesomeIcon
+              icon={isProdInFavourites(product) ? faHeartSolid : faHeart}
+            />
+          </span>
         </button>
       </div>
     </div>

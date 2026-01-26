@@ -1,11 +1,30 @@
 /* stylelint-disable no-empty-source */
 @use '../../styles/utils/variables.scss' as vars;
 
+// .total_styled {
+//   border: 1px solid vars.$main-gray;
+//   border-radius: 16px;
+//   padding: 24px;
+// }
+
 .checkout_button {
-  width: 160px;
-  height: 40px;
+  margin-top: 24px;
+
+  width: 320px;
+  height: 48px;
   border-radius: 8px;
   padding: 0;
   background-color: vars.$accent-color;
   color: vars.$primary-white-color;
+}
+
+.box {
+  border: 1px solid vars.$main-gray;
+  border-radius: 16px;
+  padding: 24px;
+  background-color: transparent;
+
+  &__text {
+    font-size: 14px;
+  }
 }

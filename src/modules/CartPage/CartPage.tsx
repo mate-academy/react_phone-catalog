@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { ProductsContext } from '../../Context/ProductsContext';
 
-import s from './CartPage.module.scss';
 import { CartItem } from './components/CartItem';
+import s from './CartPage.module.scss';
 
 export const CartPage = () => {
   const { cartProds } = useContext(ProductsContext);
   const totalSumm = cartProds.reduce(
-    (sum, product) => sum + product.fullPrice,
+    (sum, product) => sum + product.fullPrice * product.quantity,
     0,
   );
 
@@ -30,15 +30,18 @@ export const CartPage = () => {
             <CartItem key={product.id} product={product} />
           ))}
         </div>
-        <div className="column is-one-third">
-          <p>$ {totalSumm}</p>
-          <p>
-            Total for {cartProds.length} item{cartProds.length === 1 ? '' : 's'}
-          </p>
-          <p>_____________________</p>
-          <button className={`${s.checkout_button}`} type="button">
-            Checkout
-          </button>
+        <div className="column is-narrow has-text-centered">
+          <div className={`box ${s.box}`}>
+            <p className="title is-3 mb-0">$ {totalSumm}</p>
+            <p className={`${s.box__text}`}>
+              Total for {cartProds.length} item
+              {cartProds.length === 1 ? '' : 's'}
+            </p>
+            <p>_____________________</p>
+            <button className={`${s.checkout_button}`} type="button">
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>

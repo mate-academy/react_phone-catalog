@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { CategoriesContext } from '../../Context/CategoriesContext';
-import Favourites from '/img/icons/favourites_(Heart_Like).svg';
 import Cart from '/img/icons/cart.svg';
 import { ProductsContext } from '../../Context/ProductsContext';
 import s from './Navbar.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+// import { faBucket } from '@fortawesome/free-solid-svg-icons';
 
 const navLinkActive = ({ isActive }: { isActive: boolean }) => {
   return classNames(`navbar-item is-uppercase ${s.link_style} `, {
@@ -46,28 +48,30 @@ export const Navbar = () => {
           ))}
         </div>
         <div className="navbar-end">
-          <div className="navbar-item">
-            {/* ${s.btn_style} */}
-            <div className="buttons">
-              <NavLink to="/favourites" className={navLinkActive}>
-                <img src={Favourites} alt="Favourites" width={16} height={16} />
-                <p>{favourites.length}</p>
-              </NavLink>
-              <NavLink to="/cart" className={navLinkActive}>
-                <img src={Cart} alt="Cart" width={15} height={16} />
-                <p>{cartProds.length}</p>
-              </NavLink>
-            </div>
+          <div className="buttons">
+            <NavLink to="/favourites" className={navLinkActive}>
+              <span
+                className="icon"
+                style={{ fontSize: '20px', color: 'black' }}
+              >
+                <FontAwesomeIcon icon={faHeart} />
+                <span className="badge">{favourites.length}</span>
+              </span>
+            </NavLink>
+            <NavLink to="/cart" className={navLinkActive}>
+              <img src={Cart} alt="Cart" width={15} height={16} />
+              <span className="badge">{cartProds.length}</span>
+            </NavLink>
           </div>
         </div>
-        {/* </div> */}
-        {/* <NavLink
+      </div>
+      {/* </div> */}
+      {/* <NavLink
             to={{ pathname: '/people', search: searchParams.toString() }}
             className={navLinkActive}
           >
             People
           </NavLink> */}
-      </div>
     </nav>
   );
 };

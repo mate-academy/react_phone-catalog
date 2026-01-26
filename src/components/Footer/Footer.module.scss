@@ -1,7 +1,14 @@
 @use '../../styles/utils/variables' as vars;
 
 .footer {
-  height: 96px;
+  position: relative;
+  clear: both;
+
+  // height: 96px;
+  // margin-top: -100px;
+  // left: 0;
+  // bottom: 0;
+  // width: 100%;
 
   // box-shadow: 0px -1px 0px 0px vars.$main-gray;
   border-top: 1px solid vars.$main-gray;

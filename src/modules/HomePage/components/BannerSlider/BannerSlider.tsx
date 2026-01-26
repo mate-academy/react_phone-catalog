@@ -7,7 +7,7 @@ import Rectangle from '/img/icons/Rectangle.svg';
 
 export const BannerSlider = () => {
   return (
-    <div className={`BannerSlider ${s.banner_slider}`}>
+    <div className={`${s.banner_slider}`}>
       <h2 className="is-hidden">Banner Slider</h2>
       {/* Banner slider content goes here */}
       <div className="is-flex">

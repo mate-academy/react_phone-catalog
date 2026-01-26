@@ -1,0 +1,35 @@
+// @import '../../styles/main.scss';
+@use '../../styles/utils/variables' as vars;
+@use '../../styles/utils/animation' as anim;
+
+.header_line {
+  border-bottom: 1px solid vars.$main-gray;
+}
+
+.header_style {
+  height: 64px;
+}
+
+.navbar_style {
+  background-color: transparent;
+  height: 100%;
+  color: vars.$secondary-gray;
+}
+
+.link_style {
+  height: 100%;
+  color: vars.$secondary-gray;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 0.92;
+  letter-spacing: 0.5px;
+
+  @include anim.smooth-transition(all);
+
+  &:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+    color: vars.$primary-text-color;
+    border-bottom: 3px solid vars.$primary-text-color;
+  }
+}

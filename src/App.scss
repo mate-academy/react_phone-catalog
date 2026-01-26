@@ -10,4 +10,34 @@ body {
 
 .styled_container {
   background-color: vars.$hover-and-background-color;
+
+  // height: 100%;
+}
+
+.main {
+  overflow: auto;
+  margin: 0;
+  padding-bottom: 80px;
+  min-height: calc(100vh - 140px);
+
+  // padding: 25px 25px 100px 25px;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: vars.$secondary-accent;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  position: relative;
 }

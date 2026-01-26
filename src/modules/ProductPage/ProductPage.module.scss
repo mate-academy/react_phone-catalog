@@ -1,0 +1,114 @@
+@use '/src/styles/utils/variables' as vars;
+
+.bottom_bordered {
+  border-bottom: 1px solid vars.$main-gray;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+}
+
+.bordered_title {
+  border-bottom: 1px solid vars.$main-gray;
+  padding-bottom: 16px;
+  margin-bottom: 32px !important;
+}
+
+.small_img {
+  padding: 7px;
+  margin-bottom: 16px;
+  width: 80px;
+  height: 80px;
+  border: 1px solid vars.$main-gray;
+
+  &__figure {
+    width: 66px;
+    height: 66px;
+
+    & > img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.big_img {
+  padding: 11px;
+  width: 100%;
+  height: 464px;
+  background-color: vars.$primary-white-color;
+
+  &__figure {
+    height: 442px;
+    width: 442px;
+
+    & > img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.color_btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid vars.$main-gray;
+  padding: 0;
+
+  &__inside {
+    width: 26px;
+    height: 26px;
+    display: block;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    border-color: vars.$icons-grey;
+  }
+}
+
+.is_active {
+  border-color: vars.$primary-text-color;
+}
+
+.capacity_btn {
+  background-color: transparent;
+  border: 1px solid vars.$icons-grey;
+  border-radius: 4px;
+
+  &:hover {
+    border-color: vars.$primary-text-color;
+  }
+}
+
+.cart_button {
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0;
+  background-color: vars.$accent-color;
+  color: vars.$primary-white-color;
+
+  &__active {
+    background-color: vars.$primary-white-color;
+    color: vars.$accent-color;
+  }
+}
+
+.fav_button {
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  padding: 0;
+}
+
+.fav_icon {
+  width: 16px;
+  height: 16px;
+
+  // padding: 0;
+}
+
+.blue_icon {
+  color: vars.$secondary-accent;
+}

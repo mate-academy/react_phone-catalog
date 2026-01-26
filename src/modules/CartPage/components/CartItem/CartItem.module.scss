@@ -1,0 +1,8 @@
+@use '../../../../styles/utils/variables' as vars;
+
+.cartItem {
+  background-color: vars.$primary-white-color;
+  border-radius: 16px;
+  border: 1px solid vars.$main-gray;
+  padding: 24px;
+}
