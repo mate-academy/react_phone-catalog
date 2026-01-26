@@ -23,23 +23,22 @@
     margin: 0;
 
     font-family: Mont, sans-serif;
-
     font-weight: 800;
     font-style: Bold;
     color: $primary-color;
-    letter-spacing: -1%;
     text-align: left;
+    letter-spacing: -1%;
 
     @include on-phone{
+      margin-top: 24px;
       font-size: 32px;
       line-height: 41px;
-      margin-top: 24px;
     }
 
     @include on-tablet{
+      margin-top: 40px;
       font-size: 48px;
       line-height: 56px;
-      margin-top: 40px;
     }
   }
 
@@ -58,6 +57,7 @@
     @include on-phone {
       margin: 8px 0 32px;
     }
+
     @include on-tablet{
       margin: 8px 0 40px;
     }
@@ -74,9 +74,8 @@
   &__list {
     display: grid;
     grid-column: 1/-1;
-    gap: 40px 16px;
-
     grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
     align-items: stretch;
     justify-content: stretch;
 

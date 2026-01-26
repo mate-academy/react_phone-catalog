@@ -18,10 +18,11 @@
 
   &__section {
     display: flex;
-    align-items: center;
     grid-column: span 1;
-    width: 100%;
+    align-items: center;
+
     box-sizing: border-box;
+    width: 100%;
 
 
     @include on-phone {
@@ -29,15 +30,15 @@
     }
 
     @include on-tablet {
-      padding: 0;
       gap: 24px;
+      padding: 0;
     }
 
     &_2 {
       display: flex;
-      align-items: center;
       grid-column: span 1;
       gap: 24px;
+      align-items: center;
 
       @include on-phone {
         justify-content: space-between;
@@ -55,18 +56,14 @@
     grid-column: 1/-1;
 
     font-family: Mont, sans-serif;
-
     font-weight: 800;
     font-style: Bold;
-
     color: $primary-color;
-    letter-spacing: -1%;
     text-align: left;
+    letter-spacing: -1%;
 
     @include on-phone {
       margin: 24px 0 32px;
-      font-size: 32px;
-      line-height: 41px;
       font-size: 32px;
       line-height: 41px;
     }
@@ -121,10 +118,10 @@
   }
 
   &__closebut {
+    cursor: pointer;
     width: 16px;
     height: 16px;
     margin-inline: 24px;
-    cursor: pointer;
 
     @include on-phone {
       margin-inline: 0 16px;
@@ -152,8 +149,8 @@
       @include on-phone {
         display: flex;
         flex-direction: column;
-        padding: 16px;
         gap: 16px;
+        padding: 16px;
       }
 
       @include on-tablet {
@@ -169,17 +166,18 @@
       }
 
       &_name {
+        flex: 1;
+
+        min-width: 0;
+
         font-family: Mont, sans-serif;
         font-size: 14px;
         font-weight: 600;
         line-height: 21px;
         color: $primary-color;
-        letter-spacing: 0%;
         text-align: left;
-
+        letter-spacing: 0%;
         word-break: break-word;
-        min-width: 0;
-        flex: 1;
 
         @include on-tablet {
           width: max-content;
@@ -208,12 +206,13 @@
 
   &__summary {
     @include on-phone {
-      grid-column: 1/-1;
-      margin-bottom: 32px;
-      padding: 24px;
       display: flex;
+      grid-column: 1/-1;
       flex-direction: column;
       align-items: center;
+
+      margin-bottom: 32px;
+      padding: 24px;
     }
 
     @include on-desktop {
@@ -240,10 +239,10 @@
       }
 
       &_p {
+        width: 100%;
         margin: 0 24px;
         padding-bottom: 25px;
         border-bottom: 1px solid $elements-color;
-        width: 100%;
 
         font-family: Mont, sans-serif;
         font-size: 14px;
@@ -254,17 +253,20 @@
         letter-spacing: 0%;
 
         @include on-tablet {
+          width: auto;
           margin: 0 24px;
           padding-bottom: 25px;
-          width: auto;
         }
       }
     }
 
     &_but {
+      cursor: pointer;
+
       width: -webkit-fill-available;
       margin: 24px;
       padding-block: 13.5px;
+      border: none;
 
       font-family: Mont, sans-serif;
       font-size: 14px;
@@ -275,8 +277,6 @@
       letter-spacing: 0%;
 
       background-color: $primary-color;
-      border: none;
-      cursor: pointer;
 
       @include on-tablet {
         width: -webkit-fill-available;
@@ -291,19 +291,22 @@
     align-items: center;
 
     &_but {
-      width: 32px;
-      height: 32px;
-      border: 1px solid $icons-and-placeholders-color;
-      background-color: $background-color;
+      cursor: pointer;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      width: 32px;
+      height: 32px;
       padding: 0;
-      cursor: pointer;
+      border: 1px solid $icons-and-placeholders-color;
+
+      background-color: $background-color;
 
       &:disabled {
-        border: 1px solid $elements-color;
         cursor: default;
+        border: 1px solid $elements-color;
       }
 
       &_img {
@@ -314,11 +317,12 @@
 
     &_value {
       width: 32px;
-      text-align: center;
+
       font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 600;
       color: $primary-color;
+      text-align: center;
     }
   }
 }
