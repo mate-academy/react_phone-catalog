@@ -2,6 +2,8 @@
 @use '../../../utils/mixins' as *;
 
 .productcard {
+  @include hover-scale-shadow;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -23,6 +25,8 @@
   }
 
   &__img {
+    @include hover-scale-shadow;
+    
     align-self: center;
 
     width: 208px;
