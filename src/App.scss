@@ -1,5 +1,4 @@
 // not empty
-body {
-    place-content: center;
-    background-color: #f0f0f0;
-}
+@import './style-components/Header.scss';
+@import './style-components/Body.scss';
+@import './style-components/Footer.scss';

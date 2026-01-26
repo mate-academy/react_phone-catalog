@@ -1,0 +1,9 @@
+header {
+    background-color: #ffff;
+    display: flex;
+
+    &_image {
+        width: 15px;
+        height: 10px;
+    }
+}

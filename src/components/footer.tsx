@@ -2,7 +2,7 @@ export const Footer = () => (
   <header className="header">
     <div>
       <h5>NICE</h5>
-      <img src="images/xoia.png" className="header__logo" alt="xoia" />
+      <img src="./src/images/xoia.png" className="header_image" alt="xoia" />
     </div>
     <h5>GADGETS</h5>
     <button className="Footer__button">GITHUB</button>

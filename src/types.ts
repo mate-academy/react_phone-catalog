@@ -1,5 +1,11 @@
-export interface Phone {
-  id: string;
+export type Phone = {
+  id: number;
   name: string;
-  // Add other properties as needed
-}
+  images: string;
+  priceRegular: number;
+  priceDiscount: number;
+};
+
+export type Props = {
+  phones: Phone[];
+};

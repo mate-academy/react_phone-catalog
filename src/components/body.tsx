@@ -1,8 +1,9 @@
-import { List } from './list';
+import { List } from './List';
 
-export const Body = ({ phones }) => (
+
+export const Body = ({ product }: { product: any }) => (
   <main className="body">
     <h1>Mobile phones</h1>
-    <List phones={phones} />
+    <List phones={ product } />
   </main>
 );
