@@ -10,12 +10,14 @@ import { ProductDetailsPage } from './modules/CategoryPage/ProductDetailsPage';
 import { ProductsProvider } from './context/ProductsContext';
 import { FilterProvider } from './context/FilterContext';
 import { BurgerMenu } from 'shared/Header/BurgerMenu';
+import { ScrollToTop } from 'services/ScrollToTop';
 
 export const App = () => {
   return (
     <ProductsProvider>
       <FilterProvider>
         <div className="App">
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
