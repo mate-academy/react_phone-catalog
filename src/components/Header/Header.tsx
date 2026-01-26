@@ -17,10 +17,11 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const { cart } = useContext(AddToCartContext);
   const location = useLocation();
   const showSearch =
-    location.pathname.startsWith('/phones') ||
-    location.pathname.startsWith('/tablets') ||
-    location.pathname.startsWith('/accessories') ||
-    location.pathname.startsWith('/favourites');
+    (location.pathname.startsWith('/phones') ||
+      location.pathname.startsWith('/tablets') ||
+      location.pathname.startsWith('/accessories') ||
+      location.pathname.startsWith('/favourites')) &&
+    !isMenuOpen;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
@@ -122,10 +123,11 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                   onBlur={() => setIsFocused(false)}
                   className={header.search}
                 />
-                {searchValue && isFocused && (
+                {searchValue && (
                   <button
                     type="button"
                     className={header.search__clear}
+                    onMouseDown={event => event.preventDefault()}
                     onClick={() => setSearchValue('')}
                   ></button>
                 )}

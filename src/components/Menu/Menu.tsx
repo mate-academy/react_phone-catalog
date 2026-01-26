@@ -1,13 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import menu from './Menu.module.scss';
 import cn from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AddToCartContext } from '../../contexts/AddToCartContext';
+import { AddToFavContext } from '../../contexts/AddToFavContext';
 
 type Props = {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const Menu: React.FC<Props> = ({ setIsMenuOpen }) => {
+  const { cart } = useContext(AddToCartContext);
+  const { fav } = useContext(AddToFavContext);
+
   return (
     <aside className={menu.menu}>
       <div className="container">
@@ -81,7 +86,13 @@ export const Menu: React.FC<Props> = ({ setIsMenuOpen }) => {
                 })
               }
               onClick={() => setIsMenuOpen(false)}
-            ></NavLink>
+            >
+              {fav.length > 0 && (
+                <div className={menu.counter__container}>
+                  <p className={menu.counter}>{fav.length}</p>
+                </div>
+              )}
+            </NavLink>
           </li>
           <li className={menu.actions__item}>
             <NavLink
@@ -92,7 +103,15 @@ export const Menu: React.FC<Props> = ({ setIsMenuOpen }) => {
                 })
               }
               onClick={() => setIsMenuOpen(false)}
-            ></NavLink>
+            >
+              {cart.length > 0 && (
+                <div className={menu.counter__container}>
+                  <p className={menu.counter}>
+                    {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                  </p>
+                </div>
+              )}
+            </NavLink>
           </li>
         </ul>
       </div>
