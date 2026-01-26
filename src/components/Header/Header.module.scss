@@ -1,67 +1,59 @@
 @import '../../styles/utils';
 
+// 1. GŁÓWNY PASEK (PEŁNA SZEROKOŚĆ)
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: $color-white;
-  border-bottom: 1px solid $color-elements-bg;
-  height: 64px;
+  border-bottom: 1px solid $color-border;
+  height: $header-height;
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+// 2. KONTENER WEWNĘTRZNY
+.content {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 
   @include on-tablet {
     padding: 0 24px;
   }
 }
 
-/* --- LEWA STRONA --- */
-.leftSection {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
+// 3. LOGO
 .logo {
   display: flex;
   align-items: center;
   height: 100%;
-  margin-right: 16px;
+  margin-right: 24px;
 
   img {
     height: 28px;
     width: auto;
-    object-fit: contain;
+    display: block; }
   }
 
-  @include on-tablet {
-    margin-right: 20px;
-
-    img {
-      height: 32px;
-    }
-  }
-
-  @include on-desktop {
-    margin-right: 48px;
-
-    img {
-      height: 36px;
-    }
-  }
-}
-
-/* --- NAWIGACJA (TEKSTOWA) --- */
+// 4. MENU DESKTOPOWE
 .nav {
   display: none;
 
   @include on-tablet {
-    display: block;
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: max(0px, calc((100% - #{$grid-width}) / 2 - 100px));
   }
 }
 
@@ -70,183 +62,100 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 16px;
+  height: 100%;
+  align-items: center;
+  gap: 32px;
 
   @include on-desktop {
-    gap: 32px;
+    gap: 64px;
   }
 }
 
-.navLink {
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: $color-secondary;
-  transition: color 0.3s;
-  height: 64px;
+.navItem {
+  height: 100%;
   display: flex;
   align-items: center;
+}
 
-  @include on-desktop {
-    font-size: 12px;
+// --- LINKI ---
+.navLink {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
+  font-family: $font-main;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  position: relative;
+  transition: color 0.3s;
+
+  @include hover {
+    color: $color-primary;
   }
 
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 3px;
     background-color: $color-primary;
     opacity: 0;
-    transform: scaleX(0);
-    transition:
-      opacity 0.3s,
-      transform 0.3s;
+    transition: opacity 0.3s;
   }
 
-  &:hover {
-    color: $color-primary;
+  &.isActive { color: $color-primary; }
+  &.isActive::after { opacity: 1; }
 
-    &::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
-
-  &.isActive {
-    color: $color-primary;
-
-    &::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
-}
-
-/* --- PRAWA STRONA --- */
-.rightSection {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 100%;
-
-  @include on-desktop {
-    gap: 24px;
-  }
-}
-
-/* --- WYSZUKIWARKA --- */
-.searchWrapper {
-  display: none;
-  position: relative;
-  height: 32px;
-  width: 160px;
-
+  // Desktop: Wysokość 100% -> Pasek na dnie
   @include on-tablet {
-    display: block;
-  }
-
-  @include on-desktop {
-    width: 240px;
-  }
-}
-
-.searchInput {
-  width: 100%;
-  height: 100%;
-  padding-left: 12px;
-  padding-right: 40px;
-
-  background-color: $color-white;
-  border: 1px solid $color-elements-bg;
-  border-radius: 4px;
-  font-size: 13px;
-  color: $color-primary;
-
-  &::placeholder {
-    color: $color-secondary;
-    opacity: 0.8;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $color-primary;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    &::after {
+      bottom: 0;
+    }
   }
 }
 
-.searchIcon {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 14px;
-    height: 14px;
-    opacity: 0.5;
-  }
-}
-
-.clearSearch {
-  position: absolute;
-  right: 28px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 10px;
-    height: 10px;
-  }
-}
-
-/* --- IKONY (Heart, Cart) --- */
+// 5. IKONY (PRAWA STRONA)
 .icons {
   display: none;
-  align-items: center;
-  height: 100%;
 
   @include on-tablet {
     display: flex;
+    height: 100%;
+    margin-left: auto;
+    border-left: 1px solid $color-border;
+    margin-right: 0;
+    padding: 0;
   }
 }
 
 .iconLink {
+  @include flex-center;
+
+  width: 64px;
+  height: 100%;
+  border-left: 1px solid $color-border;
+  box-sizing: border-box;
+  color: $color-primary;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 64px;
-
-  border-left: 1px solid $color-elements-bg;
   transition: background-color 0.3s;
+  border-right: 1px solid $color-border;
 
-  &:last-child {
-    border-right: 1px solid $color-elements-bg;
-  }
-
-  @include on-desktop {
-    width: 64px;
+  &:first-child {
+    border-left: none;
   }
 
   img {
     width: 16px;
     height: 16px;
-    transition: transform 0.2s;
+    display: block;
+  }
+
+  @include hover {
+    background-color: $color-bg;
   }
 
   &::after {
@@ -258,111 +167,78 @@
     height: 3px;
     background-color: $color-primary;
     opacity: 0;
-    transform: scaleX(0);
-    transition:
-      opacity 0.3s,
-      transform 0.3s;
+    transition: 0.3s;
   }
-
-  &:hover {
-    background-color: #fafbfc;
-
-    img {
-      transform: scale(1.1);
-    }
-
-    &::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
-
-  &.isActive {
-    &::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
+  &.isActive::after { opacity: 1; }
 }
 
 .iconWrapper {
-  position: relative;
-  display: flex;
+  @include flex-center;
+
+  width: 100%; height: 100%; position: relative;
 }
 
 .badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background-color: $color-accent;
+  @include flex-center;
+
+  position: absolute; top: 12px; right: 12px;
+  background-color: $color-red;
   color: $color-white;
-  font-size: 9px;
-  font-weight: 700;
-  height: 14px;
-  min-width: 14px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 3px;
+  width: 14px; height: 14px; font-size: 9px;
+  font-weight: 700;
   border: 1px solid $color-white;
 }
 
-/* --- MOBILE BURGER --- */
+// 6. BURGER (MOBILE)
 .menuButton {
-  width: 48px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  border-left: 1px solid $color-elements-bg;
+  @include flex-center;
+
+  width: 64px; height: 100%;
+  background: none; border: none; padding: 0; margin: 0;
+  border-left: 1px solid $color-border;
   cursor: pointer;
+  margin-left: auto;
 
-  @include on-tablet {
-    display: none;
-  }
-
-  /* stylelint-disable-next-line no-descending-specificity */
   img {
     width: 16px;
     height: 16px;
   }
+
+  @include on-tablet { display: none; }
 }
 
-/* --- MOBILE MENU --- */
+// 7. MENU MOBILNE (OVERLAY)
 .mobileMenu {
   position: fixed;
-  top: 64px;
+  top: $header-height;
   left: 0;
   width: 100%;
-  height: calc(100vh - 64px);
+  height: calc(100vh - #{$header-height});
   background-color: $color-white;
-  z-index: 99;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 24px;
-
-  @include on-tablet {
-    display: none;
-  }
 }
 
 .mobileNav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  padding-top: 48px;
   gap: 24px;
 
-  a {
+  .navLink {
+    display: block;
+    height: auto;
+    padding-bottom: 8px;
     font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: $color-secondary;
-    text-decoration: none;
+
+    &::after {
+      bottom: 0;
+      height: 2px;
+    }
   }
 }
 
@@ -370,20 +246,36 @@
   display: flex;
   width: 100%;
   height: 64px;
-  border-top: 1px solid $color-elements-bg;
+  border-top: 1px solid $color-border;
+  margin-top: auto;
 }
 
 .mobileIconLink {
   width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-right: 1px solid $color-elements-bg;
+  height: 100%;
 
-  /* stylelint-disable-next-line no-descending-specificity */
-  img {
-    width: 24px;
-    height: 24px;
+  @include flex-center;
+
+  border-left: 1px solid $color-border;
+  position: relative;
+  text-decoration: none;
+  color: $color-primary;
+
+  &:first-child {
+    border-left: none;
+    border-right: 1px solid $color-border;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $color-primary;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  &.isActive::after { opacity: 1; }
 }

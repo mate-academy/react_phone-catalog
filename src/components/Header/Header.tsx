@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import { useCart } from '../../context/CartContext';
@@ -9,144 +9,61 @@ export const Header = () => {
   const { cartItems } = useCart();
   const { favItems } = useFav();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // --- 1. SEARCH LOGIC ---
-  const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  // Sprawdzamy, czy jesteśmy na stronie, która powinna mieć wyszukiwarkę
-  const showSearch =
-    location.pathname === '/phones' ||
-    location.pathname === '/tablets' ||
-    location.pathname === '/accessories' ||
-    location.pathname === '/favourites';
-
-  const query = searchParams.get('query') || '';
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuery = event.target.value;
-    const newParams = new URLSearchParams(searchParams);
-
-    if (newQuery.length === 0) {
-      newParams.delete('query');
-    } else {
-      newParams.set('query', newQuery);
-    }
-
-    // Zawsze resetuj stronę do 1 przy zmianie wyszukiwania
-    newParams.set('page', '1');
-
-    setSearchParams(newParams);
-  };
-  // -----------------------
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
 
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isMenuOpen]);
 
+  // Klasy pomocnicze
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    cn(styles.navLink, {
-      [styles.isActive]: isActive,
-    });
+    cn(styles.navLink, { [styles.isActive]: isActive });
 
-  const closeMenu = () => setIsMenuOpen(false);
+  const getIconClass = ({ isActive }: { isActive: boolean }) =>
+    cn(styles.iconLink, { [styles.isActive]: isActive });
+
+  const getMobileIconClass = ({ isActive }: { isActive: boolean }) =>
+    cn(styles.mobileIconLink, { [styles.isActive]: isActive });
 
   return (
     <header className={styles.header}>
-      <div className={styles.leftSection}>
-        {/* LOGO */}
-        <Link to="/" className={styles.logo} onClick={closeMenu}>
+      <div className={styles.content}>
+        <Link to="/" className={styles.logo}>
           <img src="/img/logo.svg" alt="Nice Gadgets" />
         </Link>
 
         {/* DESKTOP NAV */}
         <nav className={styles.nav}>
           <ul className={styles.navList}>
-            <li className={styles.navItem}>
-              <NavLink to="/" end className={getLinkClass}>
-                Home
-              </NavLink>
-            </li>
-            <li className={styles.navItem}>
-              <NavLink to="/phones" className={getLinkClass}>
-                Phones
-              </NavLink>
-            </li>
-            <li className={styles.navItem}>
-              <NavLink to="/tablets" className={getLinkClass}>
-                Tablets
-              </NavLink>
-            </li>
-            <li className={styles.navItem}>
-              <NavLink to="/accessories" className={getLinkClass}>
-                Accessories
-              </NavLink>
-            </li>
+            {['/', '/phones', '/tablets', '/accessories'].map(path => (
+              <li className={styles.navItem} key={path}>
+                <NavLink to={path} className={getLinkClass}>
+                  {path === '/' ? 'Home' : path.slice(1)}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
-      </div>
-
-      <div className={styles.rightSection}>
-        {/*SEARCH INPUT (Tylko na wybranych stronach) */}
-        {showSearch && (
-          <div className={styles.searchWrapper}>
-            <input
-              type="text"
-              className={styles.searchInput}
-              placeholder={`Search in ${location.pathname.slice(1)}...`}
-              value={query}
-              onChange={handleSearchChange}
-            />
-            <div className={styles.searchIcon}>
-              <img src="/img/icons/Search.svg" alt="Search" />
-            </div>
-            {/* Przycisk czyszczenia (opcjonalny, jeśli query nie jest puste) */}
-            {query && (
-              <button
-                className={styles.clearSearch}
-                onClick={() => {
-                  const newParams = new URLSearchParams(searchParams);
-
-                  newParams.delete('query');
-                  setSearchParams(newParams);
-                }}
-              >
-                <img src="/img/icons/close.svg" alt="Clear" />
-              </button>
-            )}
-          </div>
-        )}
 
         {/* DESKTOP ICONS */}
         <div className={styles.icons}>
-          <NavLink
-            to="/favourites"
-            className={({ isActive }) =>
-              cn(styles.iconLink, { [styles.isActive]: isActive })
-            }
-          >
+          <NavLink to="/favourites" className={getIconClass}>
             <div className={styles.iconWrapper}>
-              <img src="/img/icons/Heart.svg" alt="Favourites" />
+              <img src="/img/icons/favourites.svg" alt="Fav" />
               {favItems.length > 0 && (
                 <span className={styles.badge}>{favItems.length}</span>
               )}
             </div>
           </NavLink>
-
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              cn(styles.iconLink, { [styles.isActive]: isActive })
-            }
-          >
+          <NavLink to="/cart" className={getIconClass}>
             <div className={styles.iconWrapper}>
               <img src="/img/icons/cart.svg" alt="Cart" />
               {cartItems.length > 0 && (
@@ -156,7 +73,7 @@ export const Header = () => {
           </NavLink>
         </div>
 
-        {/* BURGER BUTTON */}
+        {/* MOBILE BURGER */}
         <button
           className={styles.menuButton}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -168,51 +85,27 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* MENU MOBILNE */}
+      {/* MOBILE MENU OVERLAY */}
       {isMenuOpen && (
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav}>
-            <NavLink to="/" end className={getLinkClass} onClick={closeMenu}>
-              Home
-            </NavLink>
-            <NavLink to="/phones" className={getLinkClass} onClick={closeMenu}>
-              Phones
-            </NavLink>
-            <NavLink to="/tablets" className={getLinkClass} onClick={closeMenu}>
-              Tablets
-            </NavLink>
-            <NavLink
-              to="/accessories"
-              className={getLinkClass}
-              onClick={closeMenu}
-            >
-              Accessories
-            </NavLink>
+            {['/', '/phones', '/tablets', '/accessories'].map(path => (
+              <NavLink key={path} to={path} className={getLinkClass}>
+                {path === '/' ? 'Home' : path.slice(1)}
+              </NavLink>
+            ))}
           </nav>
 
           <div className={styles.mobileIcons}>
-            <NavLink
-              to="/favourites"
-              className={({ isActive }) =>
-                cn(styles.mobileIconLink, { [styles.isActive]: isActive })
-              }
-              onClick={closeMenu}
-            >
+            <NavLink to="/favourites" className={getMobileIconClass}>
               <div className={styles.iconWrapper}>
-                <img src="/img/icons/Heart.svg" alt="Favourites" />
+                <img src="/img/icons/favourites.svg" alt="Fav" />
                 {favItems.length > 0 && (
                   <span className={styles.badge}>{favItems.length}</span>
                 )}
               </div>
             </NavLink>
-
-            <NavLink
-              to="/cart"
-              className={({ isActive }) =>
-                cn(styles.mobileIconLink, { [styles.isActive]: isActive })
-              }
-              onClick={closeMenu}
-            >
+            <NavLink to="/cart" className={getMobileIconClass}>
               <div className={styles.iconWrapper}>
                 <img src="/img/icons/cart.svg" alt="Cart" />
                 {cartItems.length > 0 && (
