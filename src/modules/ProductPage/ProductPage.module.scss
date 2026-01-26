@@ -81,9 +81,13 @@
   }
 }
 
+.product_gray {
+  color: vars.$secondary-gray;
+}
+
 .cart_button {
-  width: 160px;
-  height: 40px;
+  width: 263px;
+  height: 48px;
   border-radius: 8px;
   padding: 0;
   background-color: vars.$accent-color;

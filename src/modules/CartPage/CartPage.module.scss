@@ -7,9 +7,13 @@
 //   padding: 24px;
 // }
 
-.checkout_button {
-  margin-top: 24px;
+.bottom_bordered {
+  border-bottom: 1px solid vars.$main-gray;
+  margin-bottom: 24px;
+  padding-bottom: 25px;
+}
 
+.checkout_button {
   width: 320px;
   height: 48px;
   border-radius: 8px;

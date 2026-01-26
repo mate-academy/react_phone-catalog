@@ -7,6 +7,7 @@ import { ProductsContext } from '../../Context/ProductsContext';
 import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from '../../components/Pagination';
 import classNames from 'classnames';
+import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const CatalogPage = () => {
   const { pathname } = useLocation();
@@ -31,6 +32,8 @@ export const CatalogPage = () => {
 
   return (
     <div className="container">
+      <Breadcrumb />
+
       <h1 className="title">{pageTitle}</h1>
       <p>
         {catalogProds.length} item{catalogProds.length === 1 ? '' : 's'}

@@ -4,7 +4,7 @@ import { Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHouse } from '@fortawesome/free-regular-svg-icons';
+// import { faHouse } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ProductsContext } from '../../Context/ProductsContext';
@@ -12,6 +12,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { GoodsSlider } from '../../components/GoodsSlider';
 
 import s from './ProductPage.module.scss';
+import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const ProductPage = () => {
   const {
@@ -128,34 +129,9 @@ export const ProductPage = () => {
 
   return (
     <>
-      <nav
-        className="breadcrumb has-succeeds-separator"
-        aria-label="breadcrumbs"
-      >
-        <ul>
-          <li>
-            <a href="#">
-              <span className="icon">
-                <FontAwesomeIcon icon={faHouse} />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">Documentation</a>
-          </li>
-          <li>
-            <a href="#">Components</a>
-          </li>
-          <li className="is-active">
-            <a href="#" aria-current="page">
-              Breadcrumb
-            </a>
-          </li>
-        </ul>
-      </nav>
-
       {productDetails && product && (
         <div className="container">
+          <Breadcrumb />
           <p>{itemId}</p>
           <h1 className="title is-3">{productDetails?.name}</h1>
           <div className="fixed-grid">
@@ -231,13 +207,19 @@ export const ProductPage = () => {
                         ))}
                       </div>
                     </div>
-                    <div className="block">
-                      <b>$ {productDetails?.priceDiscount}</b>
-                      <del>$ {productDetails?.priceRegular}</del>
+                    <div className="block mb-4">
+                      <b className="is-size-3 has-text-weight-extrabold mr-2">
+                        $ {productDetails?.priceDiscount}
+                      </b>
+                      <del
+                        className={`is-size-4 has-text-weight-semibold ${s.product_gray}`}
+                      >
+                        $ {productDetails?.priceRegular}
+                      </del>
                     </div>
-                    <div className="content is-flex">
+                    <div className="content mb-5 is-flex is-justify-content-space-between is-align-items-baseline">
                       <button
-                        className={classNames('button mr-2', {
+                        className={classNames('button', {
                           [`${s.cart_button}`]: !isProdInCart(product),
                           [`${s.cart_button__active}`]: isProdInCart(product),
                         })}
@@ -288,7 +270,7 @@ export const ProductPage = () => {
                     </ul>
                     {/* </div> */}
                   </div>
-                  <div className="column is-one-third has-text-right">
+                  <div className="column is-two-fifths has-text-right">
                     <span>ID: {product?.id}</span>
                   </div>
                 </div>
