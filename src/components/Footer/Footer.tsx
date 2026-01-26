@@ -5,7 +5,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles["footer__content"]}>
         <a href="#" className={styles["footer__logo-link"]}>
-          <img src="/img/Logo.png" alt="logo" className={styles["footer__logo"]} />
+          <img src="./img/Logo.png" alt="logo" className={styles["footer__logo"]} />
         </a>
         <ul className={styles["footer__menu"]}>
           <li className={styles["footer__item"]}>
@@ -37,7 +37,7 @@ export const Footer = () => {
       <div className={styles["footer__button"]}>
       <a href="#header" className={styles["footer__button-content"]}>
         <span className={styles["footer__button-text"]}>Back to top</span>
-        <img src="/img/Chevron-Arrow-Right.png" alt="icon" className={styles["footer__button-icon"]} />
+        <img src="./img/Chevron-Arrow-Right.png" alt="icon" className={styles["footer__button-icon"]} />
       </a>
       </div>
     </footer>

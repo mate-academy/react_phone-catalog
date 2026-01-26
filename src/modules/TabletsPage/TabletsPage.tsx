@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styles from "../TabletsPage/TabletsPage.module.scss";
 import { Product } from "../shared/types/Product";
 import { Loader } from "../../components/Loader/Loader.js";
-import { ProductsList } from "../../components/ProductsList.tsx";
+import { ProductsList } from "../../components/ProductsList";
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -23,7 +23,7 @@ export const TabletsPage: React.FC = () => {
 
 
       try {
-        const response = await fetch('/api/tablets.json');
+        const response = await fetch('./api/tablets.json');
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`)
 
         const data = await response.json();

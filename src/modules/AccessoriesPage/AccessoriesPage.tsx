@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../AccessoriesPage/AccessoriesPage.module.scss";
 import { NavLink } from "react-router-dom";
 import { Product } from "../shared/types/Product";
-import { ProductsList } from "../../components/ProductsList.tsx";
+import { ProductsList } from "../../components/ProductsList";
 import { Loader } from "../../components/Loader";
 
 export const AccessoriesPage: React.FC = () => {

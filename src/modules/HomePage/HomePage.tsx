@@ -31,9 +31,9 @@ export const HomePage = () => {
   useEffect(() => {
     const fetchAllProducts = async (): Promise<Product[]> => {
       const urls = [
-        '/api/phones.json',
-        '/api/accessories.json',
-        '/api/tablets.json'
+        './api/phones.json',
+        './api/accessories.json',
+        './api/tablets.json'
       ];
 
       const responses = await Promise.all(urls.map(url => fetch(url)));

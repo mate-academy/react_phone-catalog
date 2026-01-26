@@ -21,9 +21,9 @@ useEffect(() => {
     setError(null);
 
     try {
-      const phonesResponse = await fetch('/api/phones.json');
-      const tabletsResponse = await fetch('/api/tablets.json');
-      const accessoriesResponse = await fetch('/api/accessories.json');
+      const phonesResponse = await fetch('./api/phones.json');
+      const tabletsResponse = await fetch('./api/tablets.json');
+      const accessoriesResponse = await fetch('./api/accessories.json');
 
       if (!phonesResponse.ok || !tabletsResponse.ok || !accessoriesResponse.ok) {
         throw new Error('Fetch error')
