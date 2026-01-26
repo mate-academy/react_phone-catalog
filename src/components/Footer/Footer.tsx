@@ -33,12 +33,20 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li className={footer.nav__item}>
-                  <Link to="/phones" className={footer.nav__link}>
+                  <Link
+                    to="https://polianskyidmytro.github.io/PolianskyiDmytroCV/"
+                    target="_blank"
+                    className={footer.nav__link}
+                  >
                     Contacts
                   </Link>
                 </li>
                 <li className={footer.nav__item}>
-                  <Link to="/tablets" className={footer.nav__link}>
+                  <Link
+                    to="https://regulatoryinfo.apple.com/regulatorydata"
+                    target="_blank"
+                    className={footer.nav__link}
+                  >
                     rights
                   </Link>
                 </li>

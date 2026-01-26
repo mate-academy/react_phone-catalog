@@ -30,7 +30,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
   const query = searchParams.get('query') || '';
 
   const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(query),
+    product.name.toLowerCase().includes(query.toLowerCase()),
   );
   const prodsLength = filteredProducts.length;
 

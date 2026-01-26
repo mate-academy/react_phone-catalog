@@ -223,6 +223,7 @@
     transform: translateY(-50%);
     z-index: 200;
     background-image: none;
+    color: $main-color;
   }
 
   &::placeholder {
