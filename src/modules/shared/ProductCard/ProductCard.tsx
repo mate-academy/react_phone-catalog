@@ -127,8 +127,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     navigate(`/${product.category}/product/${product.id}`);
   }, [navigate, product.category, product.id]);
 
-  const isAdded = cart.some(item => item.product.id === product.id);
-  const isFavorite = favorites.some(item => item.id === product.id);
+  const productStandardId = product.itemId || String(product.id);
+  const isAdded = cart.some(
+    // eslint-disable-next-line max-len
+    item =>
+      (item.product.itemId || String(item.product.id)) === productStandardId,
+  );
+  const isFavorite = favorites.some(
+    item => (item.itemId || String(item.id)) === productStandardId,
+  );
 
   return (
     <ProductCardView

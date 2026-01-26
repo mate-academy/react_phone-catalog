@@ -118,11 +118,12 @@ export const ProductDetailsPage: React.FC = () => {
     [product, toggleFav],
   );
 
+  const productStandardId = product ? (product.itemId || String(product.id)) : '';
   const isAdded = product
-    ? cart.some(item => item.product.itemId === product.id)
+    ? cart.some(item => (item.product.itemId || String(item.product.id)) === productStandardId)
     : false;
   const isFavorite = product
-    ? favorites.some(item => item.itemId === product.id)
+    ? favorites.some(item => (item.itemId || String(item.id)) === productStandardId)
     : false;
 
   return (
@@ -151,7 +152,7 @@ export const ProductDetailsPage: React.FC = () => {
                   className={classNames(
                     styles.productdetailspage__gallery__thumb,
                     image === activeImage &&
-                      styles.productdetailspage__gallery__thumb_active,
+                    styles.productdetailspage__gallery__thumb_active,
                   )}
                   onClick={() => setActiveImage(image)}
                   type="button"
@@ -222,10 +223,9 @@ export const ProductDetailsPage: React.FC = () => {
                   {isAdded ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button
-                  className={`${styles.productdetailspage__info__buttons_like} ${
-                    isFavorite
-                      ? styles['productdetailspage__info__buttons_like_is-active']
-                      : ''
+                  className={`${styles.productdetailspage__info__buttons_like} ${isFavorite
+                    ? styles['productdetailspage__info__buttons_like_is-active']
+                    : ''
                   }`}
                   onClick={handleAddToFavorites}
                 >

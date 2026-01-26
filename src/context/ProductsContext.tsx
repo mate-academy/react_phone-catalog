@@ -23,8 +23,8 @@ type ProductsContextType = {
 
   toggleCart: (product: ProductType) => void;
   toggleFav: (product: ProductType) => void;
-  increaseQuantity: (productId: number) => void;
-  decreaseQuantity: (productId: number) => void;
+  increaseQuantity: (productId: number | string) => void;
+  decreaseQuantity: (productId: number | string) => void;
   clearCart: () => void;
 };
 
@@ -56,11 +56,17 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   const toggleCart = useCallback((product: ProductType) => {
+    const productStandardId = product.itemId || String(product.id);
+
     setCart(prev => {
-      const exists = prev.some(item => item.product.id === product.id);
+      const exists = prev.some(
+        item => (item.product.itemId || String(item.product.id)) === productStandardId,
+      );
 
       if (exists) {
-        return prev.filter(item => item.product.id !== product.id);
+        return prev.filter(
+          item => (item.product.itemId || String(item.product.id)) !== productStandardId,
+        );
       }
 
       return [
@@ -74,31 +80,42 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const toggleFav = useCallback((product: ProductType) => {
+    const productStandardId = product.itemId || String(product.id);
+
     setFavorites(prev => {
-      const exists = prev.some(item => item.id === product.id);
+      const exists = prev.some(
+        item => (item.itemId || String(item.id)) === productStandardId,
+      );
 
       if (exists) {
-        return prev.filter(item => item.id !== product.id);
+        return prev.filter(
+          item => (item.itemId || String(item.id)) !== productStandardId,
+        );
       }
 
       return [...prev, product];
     });
   }, []);
 
-  const increaseQuantity = useCallback((productId: number) => {
+  const increaseQuantity = useCallback((productId: number | string) => {
+    const idToCompare = String(productId);
+
     setCart(prev =>
       prev.map(item =>
-        item.product.id === productId
+        (item.product.itemId || String(item.product.id)) === idToCompare
           ? { ...item, quantity: item.quantity + 1 }
           : item,
       ),
     );
   }, []);
 
-  const decreaseQuantity = useCallback((productId: number) => {
+  const decreaseQuantity = useCallback((productId: number | string) => {
+    const idToCompare = String(productId);
+
     setCart(prev =>
       prev.map(item =>
-        item.product.id === productId && item.quantity > 1
+        (item.product.itemId || String(item.product.id)) === idToCompare &&
+          item.quantity > 1
           ? { ...item, quantity: item.quantity - 1 }
           : item,
       ),
