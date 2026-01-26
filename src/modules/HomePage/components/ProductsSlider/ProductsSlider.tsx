@@ -1,4 +1,5 @@
-import { ProductCard } from '../../../shared/ProductCard';
+/* eslint-disable prettier/prettier */
+import { ProductCard, SkeletonProductCard } from '../../../shared/ProductCard';
 import apiProducts from '../../../../../public/api/products.json';
 import styles from './ProductsSlider.module.scss';
 import { useMemo, useState, useEffect } from 'react';
@@ -10,6 +11,7 @@ interface ProductsSliderProps {
   title?: string;
   products?: typeof apiProducts;
   excludeId?: number;
+  isLoading?: boolean;
 }
 
 const CARD_WIDTH = 272;
@@ -18,6 +20,7 @@ const GAP = 16;
 export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   title,
   excludeId,
+  isLoading = false,
 }) => {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(4);
@@ -89,6 +92,18 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     setIndex(prev => Math.max(prev - 1, 0));
   };
 
+  const [isLocalLoading, setIsLocalLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLocalLoading(true);
+    const timer = setTimeout(() => setIsLocalLoading(false), 1000);
+
+    return () => clearTimeout(timer);
+  }, [title, excludeId]);
+
+  const skeletons = Array(visibleCards).fill(0);
+  const currentLoading = isLoading || isLocalLoading;
+
   return (
     <>
       <div className={styles.productsslider__header}>
@@ -97,7 +112,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           <button
             className={styles.productsslider__buttons_left}
             onClick={handlePrev}
-            disabled={index === 0}
+            disabled={index === 0 || currentLoading}
           >
             <img
               className={styles.productsslider__buttons_img}
@@ -108,7 +123,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           <button
             className={styles.productsslider__buttons_right}
             onClick={handleNext}
-            disabled={index >= maxIndex}
+            disabled={index >= maxIndex || currentLoading}
           >
             <img
               className={styles.productsslider__buttons_img}
@@ -125,15 +140,23 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             transform: `translateX(-${index * (CARD_WIDTH + GAP)}px)`,
           }}
         >
-          {result.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-          <button
-            className={styles.productsslider__loadmore}
-            onClick={() => navigate('/phones')}
-          >
-            Load More
-          </button>
+          {currentLoading
+            ? skeletons.map((_, i) => (
+              <div key={i} style={{ minWidth: CARD_WIDTH }}>
+                <SkeletonProductCard />
+              </div>
+            ))
+            : result.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          {!currentLoading && (
+            <button
+              className={styles.productsslider__loadmore}
+              onClick={() => navigate('/phones')}
+            >
+              Load More
+            </button>
+          )}
         </div>
       </div>
     </>

@@ -126,6 +126,15 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
     }
   }, [paramSort, searchParams, setSearchParams]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => clearTimeout(timer);
+  }, [category, page, sort, perPage]);
+
   return (
     <>
       <Header />
@@ -174,6 +183,7 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
             sort={sort}
             page={page}
             perPage={perPage}
+            isLoading={isLoading}
           />
           {perPage !== 'all' && countModels > Number(perPage) && (
             <Pagination

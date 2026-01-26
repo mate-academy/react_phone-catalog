@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import apiProducts from '../../../public/api/products.json';
 import styles from './ProductsList.module.scss';
 import React, { useMemo } from 'react';
-import { ProductCard } from '../shared/ProductCard/ProductCard';
+import { ProductCard, SkeletonProductCard } from '../shared/ProductCard';
 import { SortValue } from 'models/sortvalue.model';
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   sort: SortValue;
   page: number;
   perPage: string;
+  isLoading?: boolean;
 };
 
 export const ProductsList: React.FC<Props> = ({
@@ -16,6 +18,7 @@ export const ProductsList: React.FC<Props> = ({
   sort,
   page,
   perPage,
+  isLoading = false,
 }) => {
   const visibleProducts = useMemo(() => {
     const filtered = apiProducts.filter(
@@ -58,13 +61,15 @@ export const ProductsList: React.FC<Props> = ({
     return sorted.slice(start, end);
   }, [category, sort, page, perPage]);
 
+  const skeletons = Array(8).fill(0);
+
   return (
-    <>
-      <div className={styles.productsList}>
-        {visibleProducts.map(product => (
+    <div className={styles.productsList}>
+      {isLoading
+        ? skeletons.map((_, index) => <SkeletonProductCard key={index} />)
+        : visibleProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </div>
-    </>
+    </div>
   );
 };

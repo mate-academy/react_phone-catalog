@@ -71,10 +71,18 @@
   align-items: center;
 }
 
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin hover-scale-shadow(
+  $scale: 1.1,
+  $shadow: 0 10px 25px rgba(0, 0, 0, 0.15),
+  $transition: 0.3s ease
+) {
+  transition: transform $transition, box-shadow $transition;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale($scale);
+      box-shadow: $shadow;
+    }
   }
 }
 
