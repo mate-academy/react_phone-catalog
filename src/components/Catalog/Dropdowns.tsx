@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React from 'react';
 import { SortBy } from '../../types/Sort';
 import { useSearchParams } from 'react-router-dom';
 
@@ -11,10 +11,12 @@ export const Dropdowns = () => {
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (+e.target.value) {
       const params = new URLSearchParams(searchParams);
+
       params.set('sortPage', e.target.value);
       setSerachParams(params);
     } else {
       const params = new URLSearchParams(searchParams);
+
       params.set('sortBy', e.target.value);
       setSerachParams(params);
     }

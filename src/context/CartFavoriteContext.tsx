@@ -42,14 +42,16 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
       prev.find(item => String(item.id) === String(product.id))
         ? (setLocalStorage('cart', prev), prev)
         : (setLocalStorage('cart', [...prev, { ...product, count: 1 }]),
-          [...prev, { ...product, count: 1 }]),
+            [...prev, { ...product, count: 1 }]),
     );
   };
 
   const removeFromCart = (productId: string) => {
     setCartItems(prev => {
       const data = prev.filter(item => String(item.id) !== String(productId));
+
       setLocalStorage('cart', data);
+
       return data;
     });
   };
@@ -74,14 +76,19 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
   const toggleFavorite = (product: ProductAllType) => {
     setFavoriteItems(prev => {
       const exists = prev.find(item => String(item.id) === String(product.id));
+
       if (exists) {
         const data = prev.filter(
           item => String(item.id) !== String(product.id),
         );
+
         setLocalStorage('favorite', data);
+
         return data;
       }
+
       setLocalStorage('favorite', [...prev, product]);
+
       return [...prev, product];
     });
   };
@@ -105,7 +112,10 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
 
 export const useCartFavorite = () => {
   const context = useContext(CartFavoriteContext);
-  if (!context)
+
+  if (!context) {
     throw new Error('useCartFavorite must be used within CartFavoriteProvider');
+  }
+
   return context as CartFavoriteContextType;
 };

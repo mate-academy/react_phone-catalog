@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
@@ -9,6 +9,8 @@ import burgerIcon from './../../images/icons/burger.svg';
 import closeIcon from './../../images/icons/close.svg';
 import logoIcon from './../../images/header/Logo.png';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
+
+/* eslint-disable @typescript-eslint/naming-convention */
 
 const {
   header,
@@ -27,17 +29,17 @@ const {
 } = styles;
 
 export const Header = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActiveLink, setIsActiveLink] = useState(false);
   const { favoriteItems, cartItems } = useCartFavorite();
 
   return (
-    <header className={`${header} ${isActive ? header__active : ''}`}>
+    <header className={`${header} ${isActiveLink ? header__active : ''}`}>
       <div className={header__container}>
         <div className={header__wrapper}>
           <Link
             to="/"
             className={header__logo}
-            onClick={() => setIsActive(false)}
+            onClick={() => setIsActiveLink(false)}
           >
             <img src={logoIcon} alt="logo"></img>
           </Link>
@@ -47,7 +49,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsActiveLink(false)}
             >
               home
             </NavLink>
@@ -57,7 +59,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsActiveLink(false)}
             >
               Phones
             </NavLink>
@@ -67,7 +69,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsActiveLink(false)}
             >
               tablets
             </NavLink>
@@ -77,7 +79,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsActiveLink(false)}
             >
               accessories
             </NavLink>
@@ -88,7 +90,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__button} ${isActive ? active : ''}`
               }
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsActiveLink(false)}
             >
               <img
                 src={favoriteIcon}
@@ -104,7 +106,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__button} ${isActive ? active : ''}`
               }
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsActiveLink(false)}
             >
               <img src={cartIcon} alt="cart-icon" className={header__icon} />
               {cartItems.length > 0 && (
@@ -114,9 +116,9 @@ export const Header = () => {
           </div>
           <button
             className={header__burger}
-            onClick={() => setIsActive(!isActive)}
+            onClick={() => setIsActiveLink(!isActiveLink)}
           >
-            {isActive ? (
+            {isActiveLink ? (
               <img src={closeIcon} alt="burger-menu" />
             ) : (
               <img src={burgerIcon} alt="burger-menu" />

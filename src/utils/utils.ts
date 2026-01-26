@@ -8,7 +8,6 @@ export function getNumbers(from: number, to: number): number[] {
   return numbers;
 }
 
-
 export const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };

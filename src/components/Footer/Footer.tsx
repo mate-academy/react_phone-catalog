@@ -6,6 +6,7 @@ import logoIcon from './../../images/header/Logo.png';
 import arrowUp from './../../images/icons/arrow-up.svg';
 import { scrollToTop } from '../../utils/utils';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 const {
   footer,
   footer__wrapper,

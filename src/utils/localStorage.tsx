@@ -14,6 +14,7 @@ export function getLocalStorage(name: NameLocalStorage) {
       return [];
     }
   }
+
   return [];
 }
 

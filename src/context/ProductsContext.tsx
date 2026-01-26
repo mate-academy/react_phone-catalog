@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { createContext, useContext } from 'react';
 
 import {
@@ -45,15 +45,19 @@ export const ProductsProvider: FC<Props> = ({ children }) => {
     switch (params) {
       case 'phones':
         setPhones(data as ProductType[]);
+
         return;
       case 'tablets':
         setTablets(data as ProductType[]);
+
         return;
       case 'accessories':
         setAccessories(data as ProductType[]);
+
         return;
       case 'allProducts':
         setProductsAll(data as ProductAllType[]);
+
         return;
       default:
         return;

@@ -1,10 +1,9 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import '../components/Catalog/Catalog.scss';
 import { ProductAllType } from '../types/Product';
 import { Catalog } from '../components/Catalog';
 import { useProducts } from '../context/ProductsContext';
-import { getProducts } from '../api/httpsRequest';
 
 export const AccessoriesPage = () => {
   const { productsAll } = useProducts();
@@ -13,5 +12,5 @@ export const AccessoriesPage = () => {
     return productsAll.filter(product => product.category === 'accessories');
   }, [productsAll]);
 
-  return <Catalog products={products} NameCategory="accessories" />;
+  return <Catalog products={products} categoryName="accessories" />;
 };

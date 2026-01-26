@@ -8,6 +8,7 @@ type Props = {
 
 export const Category: FC<Props> = ({ category }) => {
   const { id, image, name, numbers } = category;
+
   return (
     <Link to={id} className="shop-category__block">
       <img src={image} alt="" className="shop-category__image" />

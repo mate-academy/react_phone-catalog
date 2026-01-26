@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
-import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
-import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
+import vaforiteImg from './../../images/icons/Favourites-like.svg';
+import vaforiteImgSelected from './../../images/icons/Favourites-like-2.svg';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 import { ProductAllType } from '../../types/Product';
 
@@ -18,9 +18,11 @@ export const ProductCardButtons: FC<Props> = ({ product }) => {
 
   useEffect(() => {
     const isInFavorite = favoriteItems.find(item => item.id === product.id);
+
     setIsAddToFavorite(!!isInFavorite);
 
     const isInCart = cartItems.find(item => item.id === product.id);
+
     setIsAddToCart(!!isInCart);
   }, [favoriteItems, cartItems, product]);
 

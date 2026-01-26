@@ -12,7 +12,6 @@ import { ProductAllType, ProductType } from '../../types/Product';
 export const CardItem = () => {
   const { id } = useParams<{ id: string }>();
   const { state, pathname } = useLocation();
-  // const { itemId, product } = state;
   const [singleProduct, setSingleProduct] = useState<ProductType>();
   const [activePhoto, setActivePhoto] = useState<string>();
   const [alsoLikeProducts, setAlsoLikeProducts] = useState<ProductAllType[]>(
@@ -25,12 +24,15 @@ export const CardItem = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       const newProduct = await getProduct(state.product.category, id!);
+
       setSingleProduct(newProduct);
+
       alsoLikeProducts.length === 0 &&
         setAlsoLikeProducts(
           (await getProducts('allProducts')).slice(0, 10) as ProductAllType[],
         );
     };
+
     fetchProduct();
   }, [id, singleProduct]);
 
@@ -45,11 +47,13 @@ export const CardItem = () => {
 
         setProductFromDB(products as ProductAllType[]);
       }
+
       setActiveProduct(
         (productFromDB as ProductAllType[]).find(item => item.itemId === id) ||
           null,
       );
     };
+
     fetchActiveProduct();
   }, [id, activeProduct, singleProduct]);
 
@@ -66,6 +70,7 @@ export const CardItem = () => {
   if (!singleProduct) {
     return <div>Товар не найден</div>;
   }
+
   return (
     <section className="card-item">
       <div className="container card-item__container">
@@ -78,6 +83,7 @@ export const CardItem = () => {
               <ul className="body-card__slider-photos">
                 {singleProduct.images.map(item => {
                   const isActive = item === activePhoto;
+
                   return (
                     <li
                       key={item}
@@ -126,7 +132,9 @@ export const CardItem = () => {
                     const newColor =
                       color === 'space gray' ? 'space-gray' : color;
                     const item = pathname.replace(
-                      singleProduct.color,
+                      singleProduct.color === 'space gray'
+                        ? 'space-gray'
+                        : singleProduct.color,
                       newColor,
                     );
 

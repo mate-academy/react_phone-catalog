@@ -4,7 +4,6 @@ import { CartItem } from './CartItem';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 import emptyCart from '/img/unnown.jpg';
 import { ProductAllType } from '../../types/Product';
-import { getLocalStorage } from '../../utils/localStorage';
 
 export const Cart = () => {
   const { cartItems } = useCartFavorite();

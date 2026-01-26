@@ -4,7 +4,7 @@ import { ProductCard } from '../ProductCard';
 import { Breadcrumbs } from './Breadcrumbs';
 import './Catalog.scss';
 import { Dropdowns } from './Dropdowns';
-import { ProductAllType, ProductType } from '../../types/Product';
+import { ProductAllType } from '../../types/Product';
 import { NameCategory } from '../../types/NameProducts';
 import { useSearchParams } from 'react-router-dom';
 import { SortBy } from '../../types/Sort';
@@ -14,51 +14,48 @@ type Props = {
   products: ProductAllType[];
   dropdown?: boolean;
   pagination?: boolean;
-  NameCategory: NameCategory;
+  categoryName: NameCategory;
 };
 
 export const Catalog: FC<Props> = ({
   products,
   dropdown = true,
   pagination = true,
-  NameCategory,
+  categoryName,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams('');
 
   useEffect(() => {
-    if (
-      searchParams.get('sortBy') === null ||
-      searchParams.get('sortPage') === null
-    ) {
-      setSearchParams(prev => {
-        const params = new URLSearchParams(prev);
-        params.set('sortBy', SortBy.Newest);
-        params.set('sortPage', '16');
-        return params;
-      });
-    }
-  }, [searchParams]);
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
 
-  function sortBy(searchParams: string, products: ProductAllType[]) {
-    switch (searchParams) {
+      params.set('sortBy', SortBy.Newest);
+      params.set('sortPage', '16');
+
+      return params;
+    });
+  });
+
+  function sortBy(parametrs: string, sortItems: ProductAllType[]) {
+    switch (parametrs) {
       case 'name':
-        return products.sort((a, b) => a.name.localeCompare(b.name));
+        return sortItems.sort((a, b) => a.name.localeCompare(b.name));
       case 'cheaper':
-        return products.sort((a, b) => a.price - b.price);
+        return sortItems.sort((a, b) => a.price - b.price);
       case 'newest':
-        return products.sort((a, b) => b.year - a.year);
+        return sortItems.sort((a, b) => b.year - a.year);
       default:
-        return products;
+        return sortItems;
     }
   }
 
-  function infoObject(NameCategory: NameCategory): {
+  function infoObject(categoryItem: NameCategory): {
     name: NameCategory;
     quantity: number;
   } {
     let name = '';
 
-    switch (NameCategory) {
+    switch (categoryItem) {
       case 'phones':
         name = 'Mobile phones';
         break;
@@ -78,7 +75,7 @@ export const Catalog: FC<Props> = ({
     };
   }
 
-  const { name, quantity } = infoObject(NameCategory);
+  const { name, quantity } = infoObject(categoryName);
 
   // Pagination logic can be added here in the future
 
@@ -93,6 +90,8 @@ export const Catalog: FC<Props> = ({
   }, [searchParams, perPage]);
 
   const sortByName = searchParams.get('sortBy') || SortBy.Newest;
+
+  /* eslint-disable @typescript-eslint/indent */
 
   const filteredPage =
     currentPage === 1

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Banner } from '../components/Banner';
 import { ShopCatagory } from '../components/ShopCatagory';
 import { PromotionSlider } from '../components/PromotionSlider';
@@ -7,16 +7,11 @@ import { useProducts } from '../context/ProductsContext';
 import image1 from './../images/shopcategory/image1.jpg';
 import image2 from './../images/shopcategory/image2.jpg';
 import image3 from './../images/shopcategory/image3.jpg';
-import { ShopCatagoryType } from '../types/ShopCategory';
 
 export const MainPage = () => {
   const { accessories, tablets, phones, productsAll } = useProducts();
-  const [shopCategoryInfo, setShopCategoryInfo] = useState<ShopCatagoryType[]>(
-    [],
-  );
-
-  useEffect(() => {
-    setShopCategoryInfo([
+  const shopCategoryInfo = useMemo(() => {
+    return [
       {
         id: 'phones',
         name: 'Mobile phones',
@@ -37,9 +32,8 @@ export const MainPage = () => {
         numbers: accessories.length,
         image: image3,
       },
-    ]),
-      [];
-  });
+    ];
+  }, [phones, tablets, accessories]);
 
   const getNewModels = useMemo(() => {
     return productsAll.filter(item => item.year > 2021 && item.id > 118);

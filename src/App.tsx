@@ -22,7 +22,7 @@ export const App = () => {
     getProducts('allProducts').then(productsAll => {
       addToDB('allProducts', productsAll);
     });
-  }, []);
+  }, [addToDB]);
 
   return (
     <div className="App">

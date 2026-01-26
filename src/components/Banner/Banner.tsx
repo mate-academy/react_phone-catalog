@@ -14,7 +14,7 @@ import bannerPhones from './../../images/img/banner-phones.png';
 import bannerTablets from './../../images/img/banner-tablets.png';
 
 const images = [bannerMain, bannerAccess, bannerPhones, bannerTablets];
-
+// eslint-disable @typescript-eslint/naming-convention
 const { banner, banner__title } = styles;
 
 export const Banner = () => {

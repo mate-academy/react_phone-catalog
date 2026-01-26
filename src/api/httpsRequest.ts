@@ -33,22 +33,24 @@ export const getProduct = async (category: NameCategory, itemId: string) => {
     switch (category) {
       case 'phones': {
         const product = phones.find(item => item.id === itemId);
-        product ? resolve(product) : reject('Product not found');
-        break;
+
+        return product ? resolve(product) : reject('Product not found');
       }
+
       case 'tablets': {
         const product = tablets.find(item => item.id === itemId);
-        product ? resolve(product) : reject('Product not found');
-        break;
+
+        return product ? resolve(product) : reject('Product not found');
       }
+
       case 'accessories': {
         const product = accessories.find(item => item.id === itemId);
-        product ? resolve(product) : reject('Product not found');
-        break;
+
+        return product ? resolve(product) : reject('Product not found');
       }
 
       default:
-        reject('Invalid category');
+        return reject('Invalid category');
     }
   });
 };
