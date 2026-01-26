@@ -60,12 +60,16 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setCart(prev => {
       const exists = prev.some(
-        item => (item.product.itemId || String(item.product.id)) === productStandardId,
+        item =>
+          (item.product.itemId || String(item.product.id)) ===
+          productStandardId,
       );
 
       if (exists) {
         return prev.filter(
-          item => (item.product.itemId || String(item.product.id)) !== productStandardId,
+          item =>
+            (item.product.itemId || String(item.product.id)) !==
+            productStandardId,
         );
       }
 
@@ -115,7 +119,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart(prev =>
       prev.map(item =>
         (item.product.itemId || String(item.product.id)) === idToCompare &&
-          item.quantity > 1
+        item.quantity > 1
           ? { ...item, quantity: item.quantity - 1 }
           : item,
       ),

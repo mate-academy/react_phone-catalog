@@ -118,12 +118,18 @@ export const ProductDetailsPage: React.FC = () => {
     [product, toggleFav],
   );
 
-  const productStandardId = product ? (product.itemId || String(product.id)) : '';
+  const productStandardId = product ? product.itemId || String(product.id) : '';
   const isAdded = product
-    ? cart.some(item => (item.product.itemId || String(item.product.id)) === productStandardId)
+    ? cart.some(
+      item =>
+        (item.product.itemId || String(item.product.id)) ===
+          productStandardId,
+    )
     : false;
   const isFavorite = product
-    ? favorites.some(item => (item.itemId || String(item.id)) === productStandardId)
+    ? favorites.some(
+      item => (item.itemId || String(item.id)) === productStandardId,
+    )
     : false;
 
   return (
@@ -152,7 +158,7 @@ export const ProductDetailsPage: React.FC = () => {
                   className={classNames(
                     styles.productdetailspage__gallery__thumb,
                     image === activeImage &&
-                    styles.productdetailspage__gallery__thumb_active,
+                      styles.productdetailspage__gallery__thumb_active,
                   )}
                   onClick={() => setActiveImage(image)}
                   type="button"
@@ -216,16 +222,23 @@ export const ProductDetailsPage: React.FC = () => {
                 <button
                   className={`${styles.productdetailspage__info__buttons_cart} ${
                     // eslint-disable-next-line max-len, prettier/prettier
-                    isAdded ? styles['productdetailspage__info__buttons_cart_is-active'] : ''
+                    isAdded
+                      ? styles[
+                        'productdetailspage__info__buttons_cart_is-active'
+                      ]
+                      : ''
                   }`}
                   onClick={handleAddToCart}
                 >
                   {isAdded ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button
-                  className={`${styles.productdetailspage__info__buttons_like} ${isFavorite
-                    ? styles['productdetailspage__info__buttons_like_is-active']
-                    : ''
+                  className={`${styles.productdetailspage__info__buttons_like} ${
+                    isFavorite
+                      ? styles[
+                        'productdetailspage__info__buttons_like_is-active'
+                      ]
+                      : ''
                   }`}
                   onClick={handleAddToFavorites}
                 >
