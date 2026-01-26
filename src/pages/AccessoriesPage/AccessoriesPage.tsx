@@ -76,6 +76,8 @@ export const AccessoriesPage = () => {
 
         {isLoading ? (
           <Loader />
+        ) : accessories.length === 0 ? (
+          <p className={styles.emptyMessage}>There are no accessories yet</p>
         ) : (
           <div className={styles.grid}>
             {visibleAccessories.map(accessory => (

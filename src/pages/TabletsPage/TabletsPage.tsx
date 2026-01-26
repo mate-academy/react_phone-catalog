@@ -76,6 +76,8 @@ export const TabletsPage = () => {
 
         {isLoading ? (
           <Loader />
+        ) : tablets.length === 0 ? (
+          <p className={styles.emptyMessage}>There are no tablets yet</p>
         ) : (
           <div className={styles.grid}>
             {visibleTablets.map(tablet => (

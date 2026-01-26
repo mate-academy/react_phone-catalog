@@ -130,6 +130,13 @@
   }
 }
 
+.emptyMessage {
+  @include text-body;
+
+  color: var(--color-error-text);
+  margin: 24px 0 0;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

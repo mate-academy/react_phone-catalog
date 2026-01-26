@@ -76,6 +76,8 @@ export const PhonesPage = () => {
 
         {isLoading ? (
           <Loader />
+        ) : phones.length === 0 ? (
+          <p className={styles.emptyMessage}>There are no phones yet</p>
         ) : (
           <div className={styles.grid}>
             {visiblePhones.map(phone => (
