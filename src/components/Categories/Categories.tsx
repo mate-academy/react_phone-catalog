@@ -1,8 +1,13 @@
 import styles from './Categories.module.scss';
+import { Loader } from '../Loader';
 import { useCategories } from './hooks/useCategories';
 
 export const Categories = () => {
-  const counts = useCategories();
+  const { counts, isLoading } = useCategories();
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <section className={styles.categories}>

@@ -43,11 +43,31 @@ export const HeroSlider = () => {
   }, [activeIndex, swiperInstance]);
 
   const handlePrev = () => {
-    swiperInstance?.slidePrev();
+    if (!swiperInstance) {
+      return;
+    }
+
+    if (activeIndex === 0) {
+      swiperInstance.slideTo(slides.length - 1);
+
+      return;
+    }
+
+    swiperInstance.slidePrev();
   };
 
   const handleNext = () => {
-    swiperInstance?.slideNext();
+    if (!swiperInstance) {
+      return;
+    }
+
+    if (activeIndex === slides.length - 1) {
+      swiperInstance.slideTo(0);
+
+      return;
+    }
+
+    swiperInstance.slideNext();
   };
 
   return (

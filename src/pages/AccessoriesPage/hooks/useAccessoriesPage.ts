@@ -4,6 +4,7 @@ import { Phone } from '../../../types/Phone';
 
 export const useAccessoriesPage = () => {
   const [accessories, setAccessories] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'age';
@@ -12,27 +13,35 @@ export const useAccessoriesPage = () => {
 
   useEffect(() => {
     const loadAccessories = async () => {
-      const accessoriesResponse = await fetch('/api/accessories.json');
-      const accessoriesData = await accessoriesResponse.json();
+      try {
+        setIsLoading(true);
 
-      const productsResponse = await fetch('/api/products.json');
-      const productsData = await productsResponse.json();
+        const accessoriesResponse = await fetch('/api/accessories.json');
+        const accessoriesData = await accessoriesResponse.json();
 
-      const accessoriesWithYear = accessoriesData.map((accessory: Phone) => {
-        const foundProduct = productsData.find(
-          (product: { itemId: string; year: number }) =>
-            product.itemId === accessory.id,
-        );
+        const productsResponse = await fetch('/api/products.json');
+        const productsData = await productsResponse.json();
 
-        const year = foundProduct ? foundProduct.year : 0;
+        const accessoriesWithYear = accessoriesData.map((accessory: Phone) => {
+          const foundProduct = productsData.find(
+            (product: { itemId: string; year: number }) =>
+              product.itemId === accessory.id,
+          );
 
-        return {
-          ...accessory,
-          year: year,
-        };
-      });
+          const year = foundProduct ? foundProduct.year : 0;
 
-      setAccessories(accessoriesWithYear);
+          return {
+            ...accessory,
+            year: year,
+          };
+        });
+
+        setAccessories(accessoriesWithYear);
+      } catch {
+        setAccessories([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     loadAccessories();
@@ -127,6 +136,7 @@ export const useAccessoriesPage = () => {
   return {
     accessories,
     visibleAccessories,
+    isLoading,
     sort,
     perPage,
     page,

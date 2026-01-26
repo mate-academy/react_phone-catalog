@@ -5,10 +5,12 @@ import { Phone } from '../../../types/Phone';
 export const useHotPricesSlider = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const load = async () => {
       try {
+        setIsLoading(true);
         const res = await fetch('/api/phones.json');
         const phonesData: Phone[] = await res.json();
 
@@ -28,6 +30,8 @@ export const useHotPricesSlider = () => {
         setPhones(sortedPhones.slice(0, 13));
       } catch {
         setPhones([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -35,15 +39,36 @@ export const useHotPricesSlider = () => {
   }, []);
 
   const handlePrev = () => {
-    swiperInstance?.slidePrev();
+    if (!swiperInstance) {
+      return;
+    }
+
+    if (swiperInstance.isBeginning) {
+      swiperInstance.slideTo(swiperInstance.slides.length - 1);
+
+      return;
+    }
+
+    swiperInstance.slidePrev();
   };
 
   const handleNext = () => {
-    swiperInstance?.slideNext();
+    if (!swiperInstance) {
+      return;
+    }
+
+    if (swiperInstance.isEnd) {
+      swiperInstance.slideTo(0);
+
+      return;
+    }
+
+    swiperInstance.slideNext();
   };
 
   return {
     phones,
+    isLoading,
     setSwiperInstance,
     handlePrev,
     handleNext,

@@ -5,11 +5,16 @@ import 'swiper/css/navigation';
 import './HotPricesSlider.scss';
 import styles from './HotPricesSlider.module.scss';
 import { ProductCard } from '../ProductCard';
+import { Loader } from '../Loader';
 import { useHotPricesSlider } from './hooks/useHotPricesSlider';
 
 export const HotPricesSlider = () => {
-  const { phones, setSwiperInstance, handlePrev, handleNext } =
+  const { phones, isLoading, setSwiperInstance, handlePrev, handleNext } =
     useHotPricesSlider();
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (phones.length === 0) {
     return null;

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ProductCard } from '../../components/ProductCard';
+import { Loader } from '../../components/Loader';
 import styles from './TabletsPage.module.scss';
 import { useTabletsPage } from './hooks/useTabletsPage';
 
@@ -7,6 +8,7 @@ export const TabletsPage = () => {
   const {
     tablets,
     visibleTablets,
+    isLoading,
     sort,
     perPage,
     page,
@@ -72,13 +74,17 @@ export const TabletsPage = () => {
           </div>
         </div>
 
-        <div className={styles.grid}>
-          {visibleTablets.map(tablet => (
-            <ProductCard key={tablet.id} phone={tablet} />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={styles.grid}>
+            {visibleTablets.map(tablet => (
+              <ProductCard key={tablet.id} phone={tablet} />
+            ))}
+          </div>
+        )}
 
-        {totalPages > 1 && (
+        {!isLoading && totalPages > 1 && (
           <div className={styles.pagination}>
             <button
               className={styles.pageBtn}

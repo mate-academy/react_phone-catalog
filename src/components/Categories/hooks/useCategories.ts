@@ -7,10 +7,12 @@ export const useCategories = () => {
     tablets: 0,
     accessories: 0,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const load = async () => {
       try {
+        setIsLoading(true);
         const res = await fetch('api/products.json');
         const products: Product[] = await res.json();
 
@@ -41,11 +43,16 @@ export const useCategories = () => {
           tablets: 0,
           accessories: 0,
         });
+      } finally {
+        setIsLoading(false);
       }
     };
 
     load();
   }, []);
 
-  return counts;
+  return {
+    counts,
+    isLoading,
+  };
 };

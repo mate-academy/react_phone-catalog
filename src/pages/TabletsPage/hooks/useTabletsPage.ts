@@ -4,6 +4,7 @@ import { Phone } from '../../../types/Phone';
 
 export const useTabletsPage = () => {
   const [tablets, setTablets] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'age';
@@ -12,27 +13,35 @@ export const useTabletsPage = () => {
 
   useEffect(() => {
     const loadTablets = async () => {
-      const tabletsResponse = await fetch('/api/tablets.json');
-      const tabletsData = await tabletsResponse.json();
+      try {
+        setIsLoading(true);
 
-      const productsResponse = await fetch('/api/products.json');
-      const productsData = await productsResponse.json();
+        const tabletsResponse = await fetch('/api/tablets.json');
+        const tabletsData = await tabletsResponse.json();
 
-      const tabletsWithYear = tabletsData.map((tablet: Phone) => {
-        const foundProduct = productsData.find(
-          (product: { itemId: string; year: number }) =>
-            product.itemId === tablet.id,
-        );
+        const productsResponse = await fetch('/api/products.json');
+        const productsData = await productsResponse.json();
 
-        const year = foundProduct ? foundProduct.year : 0;
+        const tabletsWithYear = tabletsData.map((tablet: Phone) => {
+          const foundProduct = productsData.find(
+            (product: { itemId: string; year: number }) =>
+              product.itemId === tablet.id,
+          );
 
-        return {
-          ...tablet,
-          year: year,
-        };
-      });
+          const year = foundProduct ? foundProduct.year : 0;
 
-      setTablets(tabletsWithYear);
+          return {
+            ...tablet,
+            year: year,
+          };
+        });
+
+        setTablets(tabletsWithYear);
+      } catch {
+        setTablets([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     loadTablets();
@@ -127,6 +136,7 @@ export const useTabletsPage = () => {
   return {
     tablets,
     visibleTablets,
+    isLoading,
     sort,
     perPage,
     page,

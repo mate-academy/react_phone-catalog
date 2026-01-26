@@ -4,6 +4,7 @@ import { Phone } from '../../../types/Phone';
 
 export const usePhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'age';
@@ -12,27 +13,35 @@ export const usePhonesPage = () => {
 
   useEffect(() => {
     const loadPhones = async () => {
-      const phonesResponse = await fetch('/api/phones.json');
-      const phonesData = await phonesResponse.json();
+      try {
+        setIsLoading(true);
 
-      const productsResponse = await fetch('/api/products.json');
-      const productsData = await productsResponse.json();
+        const phonesResponse = await fetch('/api/phones.json');
+        const phonesData = await phonesResponse.json();
 
-      const phonesWithYear = phonesData.map((phone: Phone) => {
-        const foundProduct = productsData.find(
-          (product: { itemId: string; year: number }) =>
-            product.itemId === phone.id,
-        );
+        const productsResponse = await fetch('/api/products.json');
+        const productsData = await productsResponse.json();
 
-        const year = foundProduct ? foundProduct.year : 0;
+        const phonesWithYear = phonesData.map((phone: Phone) => {
+          const foundProduct = productsData.find(
+            (product: { itemId: string; year: number }) =>
+              product.itemId === phone.id,
+          );
 
-        return {
-          ...phone,
-          year: year,
-        };
-      });
+          const year = foundProduct ? foundProduct.year : 0;
 
-      setPhones(phonesWithYear);
+          return {
+            ...phone,
+            year: year,
+          };
+        });
+
+        setPhones(phonesWithYear);
+      } catch {
+        setPhones([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     loadPhones();
@@ -127,6 +136,7 @@ export const usePhonesPage = () => {
   return {
     phones,
     visiblePhones,
+    isLoading,
     sort,
     perPage,
     page,

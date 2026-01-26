@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ProductCard } from '../../components/ProductCard';
+import { Loader } from '../../components/Loader';
 import styles from './AccessoriesPage.module.scss';
 import { useAccessoriesPage } from './hooks/useAccessoriesPage';
 
@@ -7,6 +8,7 @@ export const AccessoriesPage = () => {
   const {
     accessories,
     visibleAccessories,
+    isLoading,
     sort,
     perPage,
     page,
@@ -72,13 +74,17 @@ export const AccessoriesPage = () => {
           </div>
         </div>
 
-        <div className={styles.grid}>
-          {visibleAccessories.map(accessory => (
-            <ProductCard key={accessory.id} phone={accessory} />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={styles.grid}>
+            {visibleAccessories.map(accessory => (
+              <ProductCard key={accessory.id} phone={accessory} />
+            ))}
+          </div>
+        )}
 
-        {totalPages > 1 && (
+        {!isLoading && totalPages > 1 && (
           <div className={styles.pagination}>
             <button
               className={styles.pageBtn}
