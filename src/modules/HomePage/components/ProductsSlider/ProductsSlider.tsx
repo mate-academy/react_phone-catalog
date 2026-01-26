@@ -1,8 +1,9 @@
 import { ProductCard } from '../../../shared/ProductCard';
 import apiProducts from '../../../../../public/api/products.json';
 import styles from './ProductsSlider.module.scss';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+
 const imagesChevron = '/public/img/icons/';
 
 interface ProductsSliderProps {
@@ -12,16 +13,34 @@ interface ProductsSliderProps {
 }
 
 const CARD_WIDTH = 272;
-const VISIBLE_CARDS = 4;
+const GAP = 16;
 
 export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   title,
   excludeId,
 }) => {
   const [index, setIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(4);
   const navigate = useNavigate();
 
-  const maxIndex = apiProducts.slice(0, 10).length - VISIBLE_CARDS + 1;
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        setVisibleCards(1);
+      } else if (width < 1200) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(4);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
 
   const hotPriceProducts = [...apiProducts]
     .sort((a, b) => {
@@ -37,20 +56,12 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       ? apiProducts.filter(p => p.id !== excludeId)
       : apiProducts;
 
-    return [...filteredProducts].sort(() => Math.random() - 0.5).slice(0, 10); // or whatever limit you want
+    return [...filteredProducts].sort(() => Math.random() - 0.5).slice(0, 10);
   }, [excludeId]);
 
   const brandNewProducts = [...apiProducts]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
-
-  const handleNext = () => {
-    setIndex(prev => Math.min(prev + 1, maxIndex));
-  };
-
-  const handlePrev = () => {
-    setIndex(prev => Math.max(prev - 1, 0));
-  };
 
   const result = useMemo(() => {
     switch (title) {
@@ -67,6 +78,16 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         return [];
     }
   }, [title, brandNewProducts, hotPriceProducts, getSuggestedProducts]);
+
+  const maxIndex = Math.max(0, result.length + 1 - visibleCards);
+
+  const handleNext = () => {
+    setIndex(prev => Math.min(prev + 1, maxIndex));
+  };
+
+  const handlePrev = () => {
+    setIndex(prev => Math.max(prev - 1, 0));
+  };
 
   return (
     <>
@@ -101,7 +122,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         <div
           className={styles.productsslider__track}
           style={{
-            transform: `translateX(-${index * CARD_WIDTH}px)`,
+            transform: `translateX(-${index * (CARD_WIDTH + GAP)}px)`,
           }}
         >
           {result.map(product => (
