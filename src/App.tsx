@@ -4,13 +4,13 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 // import { ProductCard } from './components/ProductCard';
 // import product from '../public/api/products.json';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { AppRouter } from './router/AppRouter';
 
 export const App = () => {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
     <div className="app">
 
       <Header />
@@ -20,6 +20,6 @@ export const App = () => {
       <Footer />
 
     </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 };
