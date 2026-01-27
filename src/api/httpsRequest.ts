@@ -7,7 +7,7 @@ import { NameCategory, NameProducts } from '../types/NameProducts';
 
 export const getProducts = async (param: NameProducts) => {
   return new Promise<ProductType[] | ProductAllType[]>((resolve, reject) => {
-    setTimeout(() => {
+    // setTimeout(() => {
       switch (param) {
         case 'phones':
           resolve(phones);
@@ -24,7 +24,7 @@ export const getProducts = async (param: NameProducts) => {
         default:
           reject('Invalid category');
       }
-    }, 1000);
+    // }, 1000);
   });
 };
 

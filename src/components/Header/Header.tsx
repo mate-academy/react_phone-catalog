@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
-import favoriteIcon from './../../images/icons/Favourites (Heart Like).svg';
+import favoriteIcon from './../../images/icons/Favourites-like.svg';
 import cartIcon from './../../images/icons/Shopping bag (Cart).svg';
 import burgerIcon from './../../images/icons/burger.svg';
 import closeIcon from './../../images/icons/close.svg';

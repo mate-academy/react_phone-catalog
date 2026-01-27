@@ -26,15 +26,18 @@ export const Catalog: FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams('');
 
   useEffect(() => {
-    setSearchParams(prev => {
-      const params = new URLSearchParams(prev);
-
-      params.set('sortBy', SortBy.Newest);
-      params.set('sortPage', '16');
-
-      return params;
-    });
-  });
+    if (
+      searchParams.get('sortBy') === null ||
+      searchParams.get('sortPage') === null
+    ) {
+      setSearchParams(prev => {
+        const params = new URLSearchParams(prev);
+        params.set('sortBy', SortBy.Newest);
+        params.set('sortPage', '16');
+        return params;
+      });
+    }
+  }, [searchParams]);
 
   function sortBy(parametrs: string, sortItems: ProductAllType[]) {
     switch (parametrs) {

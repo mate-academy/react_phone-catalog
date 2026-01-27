@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-SemiBold.woff2') format('woff2'),
-    url('./fonts/Mont-SemiBold.woff') format('woff'),
-    url('./fonts/Mont-SemiBold.otf') format('otf');
+  src: url('/fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('/fonts/Mont-SemiBold.woff') format('woff'),
+    url('/fonts/Mont-SemiBold.otf') format('otf');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -10,9 +10,9 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Bold.woff2') format('woff2'),
-    url('./fonts/Mont-Bold.woff') format('woff'),
-    url('./fonts/Mont-Bold.otf') format('otf');
+  src: url('/fonts/Mont-Bold.woff2') format('woff2'),
+    url('/fonts/Mont-Bold.woff') format('woff'),
+    url('/fonts/Mont-Bold.otf') format('otf');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -20,9 +20,9 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Regular.woff2') format('woff2'),
-    url('./fonts/Mont-Regular.woff') format('woff'),
-    url('./fonts/Mont-Regular.otf') format('otf');
+  src: url('/fonts/Mont-Regular.woff2') format('woff2'),
+    url('/fonts/Mont-Regular.woff') format('woff'),
+    url('/fonts/Mont-Regular.otf') format('otf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
