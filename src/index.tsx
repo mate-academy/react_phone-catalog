@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <HashRouter basename="/react_phone-catalog">
+    <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>,
