@@ -1,3 +1,7 @@
+
+
+import '../style-components/Header.scss';
+
 export const Header = () => (
   <header className="header">
     <div>

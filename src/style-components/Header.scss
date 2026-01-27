@@ -1,9 +1,18 @@
-header {
-    background-color: #ffff;
+header{
+    background-color: #fffefe;
     display: flex;
-
-    &_image {
+ 
+    .header {
+    
+        &_image {
         width: 15px;
         height: 10px;
+        }
+        
+        &__button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
     }
 }
