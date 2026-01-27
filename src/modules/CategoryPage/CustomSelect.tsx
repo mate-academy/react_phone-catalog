@@ -80,6 +80,13 @@ export const CustomSelect: React.FC<Props> = ({
     }
   };
 
+  const chooseValue = (valueOpt: string) => {
+    onChange(valueOpt);
+    setOpen(false);
+
+    return;
+  };
+
   return (
     <div
       className={styles.customSelect}
@@ -113,8 +120,7 @@ export const CustomSelect: React.FC<Props> = ({
                 opt.value === value ? styles['is-selected'] : ''
               } ${highlighted === i ? styles['is-highlighted'] : ''}`}
               onClick={() => {
-                onChange(opt.value);
-                setOpen(false);
+                chooseValue(opt.value);
               }}
               onMouseEnter={() => setHighlighted(i)}
             >
