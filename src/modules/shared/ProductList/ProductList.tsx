@@ -1,6 +1,6 @@
 import styles from './ProductList.module.scss';
 import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
-import ProductCard from '../../shared/ProductCard';
+import ProductCard from '../ProductCard';
 
 interface Props {
   pageProducts: ProductCatalogItem[];

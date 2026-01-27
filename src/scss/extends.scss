@@ -43,14 +43,14 @@
 
 %h4 {
   font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
+  font-size: 16px;
+  line-height: 20px;
   letter-spacing: normal;
 
   @include on-tablet {
     font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
+    font-size: 20px;
+    line-height: 26px;
   }
 }
 
@@ -70,5 +70,12 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
+  letter-spacing: normal;
+}
+
+%icons-text {
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 9px;
   letter-spacing: normal;
 }

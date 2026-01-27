@@ -3,7 +3,7 @@ import styles from './Message.module.scss';
 import cn from 'classnames';
 import Button from '../Button';
 import { useTranslation } from 'react-i18next';
-import { ProductCatalogContext } from '../../../ProductContext';
+import { ProductCatalogContext } from '../../../ProductCatalogContext';
 
 export type MessageType = 'error' | 'emptyList';
 

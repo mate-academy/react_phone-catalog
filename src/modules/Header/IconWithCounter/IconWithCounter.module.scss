@@ -1,0 +1,42 @@
+@use './../../../scss/main.scss' as *;
+
+.counter {
+  position: relative;
+  display: none;
+  height: 100%;
+
+  @include on-tablet {
+    display: block;
+    width: 48px;
+  }
+
+  @include on-desktop {
+    display: block;
+    width: 64px;
+  }
+
+  &_number {
+    @extend %icons-text;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+
+    border: 1px solid $body-background-color;
+    border-radius: 50%;
+
+    color: $background-color;
+    background-color: $red-color;
+
+    @include on-desktop {
+      top: 18px;
+      right: 18px;
+    }
+  }
+}

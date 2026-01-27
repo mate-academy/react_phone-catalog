@@ -1,4 +1,4 @@
-type IconImageModifiers =
+export type IconImageModifiers =
   | 'favorites'
   | 'cart'
   | 'close'

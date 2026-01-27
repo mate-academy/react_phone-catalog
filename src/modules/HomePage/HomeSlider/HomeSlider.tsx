@@ -8,19 +8,19 @@ const slides = [
     id: 1,
     title: 'iPhone 14 Pro',
     description: 'Pro. Beyond',
-    img: 'img/assets/homepage/baner_iphone14.png',
+    img: 'img/assets/homepage/banner_iphone14.png',
   },
   {
     id: 2,
     title: 'iPhone 13 Pro',
     description: 'Pro. Beyond',
-    img: 'img/assets/homepage/baner_iphone13.png',
+    img: 'img/assets/homepage/banner_iphone13.png',
   },
   {
     id: 3,
     title: 'iPhone 12 Pro',
     description: 'Pro. Beyond',
-    img: 'img/assets/homepage/baner_iphone12.png',
+    img: 'img/assets/homepage/banner_iphone12.png',
   },
 ];
 

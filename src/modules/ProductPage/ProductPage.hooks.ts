@@ -40,24 +40,32 @@ function getValidParam(
 function useMenuParams() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (searchParams.toString() === '') {
-    const saveMenuParams = localStorage.getItem(PRODUCT_MENU_KEY) || '';
-    const loadParams = new URLSearchParams(saveMenuParams);
+  const storedParamsString = localStorage.getItem(PRODUCT_MENU_KEY) || '';
+  const isEmptyParams = searchParams.toString() === '';
 
-    setSearchParams(loadParams);
-  }
+  const loadedParams = isEmptyParams
+    ? new URLSearchParams(storedParamsString)
+    : searchParams;
 
   const sortParam = getValidParam(
     PRODUCT_LIST_MENU.sortBy,
-    searchParams.get(ProductPageSearchParams.sort) || '',
+    loadedParams.get(ProductPageSearchParams.sort) || '',
     DEFAULT_SORT,
   );
 
   const perPageParam = getValidParam(
     PRODUCT_LIST_MENU.perPage,
-    searchParams.get(ProductPageSearchParams.perPage) || '',
+    loadedParams.get(ProductPageSearchParams.perPage) || '',
     DEFAULT_ITEMS_ON_PAGE,
   );
+
+  useEffect(() => {
+    if (isEmptyParams && storedParamsString) {
+      if (localStorage.getItem(PRODUCT_MENU_KEY)) {
+        setSearchParams(storedParamsString, { replace: true });
+      }
+    }
+  }, [searchParams, setSearchParams]);
 
   const updateMenuParam = (key: MenuParamKey, value: string) => {
     setSearchParams(prevParams => {

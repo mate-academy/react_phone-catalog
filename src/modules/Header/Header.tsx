@@ -1,13 +1,16 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import Navigation from './Navigation/Navigation';
 import Icon from '../shared/Icon';
 import MobileMenu from './MobileMenu';
+import IconWithCounter from './IconWithCounter';
+import { StateContext } from '../../store';
 
 export const Header = () => {
   const location = useLocation();
   const [showMobile, setShowMobile] = useState(false);
+  const state = useContext(StateContext);
 
   const handleMobileMenuClick = () => {
     setShowMobile(!showMobile);
@@ -30,18 +33,21 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.nav}>
           <NavLink className={styles.nav__logo} to="/">
-            <img className={styles.nav__image} src="img/assets/logo.svg"></img>
+            <img className={styles.nav__image} src="/img/assets/logo.svg"></img>
           </NavLink>
           <Navigation />
           <div className={styles.nav__buttons}>
-            <Icon
+            <IconWithCounter
               href="favorites"
-              iconStyles={{ icon: 'type_tablet', image: 'favorites' }}
+              count={state.favorites.size}
+              image={'favorites'}
             />
-            <Icon
+            <IconWithCounter
               href="cart"
-              iconStyles={{ icon: 'type_tablet', image: 'cart' }}
+              count={state.cartTotalAmount}
+              image={'cart'}
             />
+
             <Icon
               onClick={handleMobileMenuClick}
               iconStyles={{

@@ -1,6 +1,7 @@
 @use './../../../scss/main.scss' as *;
 
 .breadcrumbs {
+  margin-top: 24px;
   height: 16px;
 
   &__list {
@@ -20,9 +21,5 @@
     font-weight: 600;
     line-height: 100%;
     text-transform: capitalize;
-  }
-
-  &_marginTop {
-    margin-top: 24px;
   }
 }

@@ -1,0 +1,36 @@
+@use './../../../scss/main.scss' as *;
+
+.productDetailBottom {
+  @include page-grid;
+
+  row-gap: 56px;
+  margin-top: 56px;
+
+  &__description {
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__specs {
+    grid-column: 1/-1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+
+    @include on-tablet {
+      gap: 41px;
+    }
+
+    @include on-desktop {
+      grid-column: -12/-1;
+    }
+  }
+
+  &__specsTitle {
+    @extend %h3;
+  }
+}

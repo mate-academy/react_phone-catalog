@@ -1,87 +1,41 @@
-import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
+
 import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
-import { CURRENCY_SYMBOL } from '../../constants';
-import Button from '../Button';
-import Icon from '../Icon';
+import { CATALOG_SPECS_LIST } from '../../constants';
+import { Link } from 'react-router-dom';
+import ProductSpecs from '../ProductSpecs';
+import PriceTag from '../PriceTag';
+import ProductActions from '../ProductActions';
 
 interface Props {
   product: ProductCatalogItem;
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-  const { t } = useTranslation();
-
-  const addToFavorites = (productId: number) => {
-    // eslint-disable-next-line no-console
-    console.log(productId);
-  };
-
   return (
     <div className={styles.product}>
-      <img
-        className={styles.product__image}
-        src={product.image}
-        alt={product.name}
-      />
-
-      <div className={styles.product__title}>{product.name}</div>
-
-      <div className={styles.product__prices}>
-        <p className={styles.product__price}>
-          {CURRENCY_SYMBOL + product.price}
-        </p>
-        <p className={styles.product__price + ' ' + styles.product__price_old}>
-          {CURRENCY_SYMBOL + product.fullPrice}
-        </p>
-      </div>
-
-      <div className={styles.product__specs}>
-        <p className={styles.product__specLine}>
-          <span className={styles.product__specText}>
-            {t('product-card.screen')}
-          </span>
-          <span
-            className={
-              styles.product__specText + ' ' + styles.product__specText_bold
-            }
-          >
-            {product.screen}
-          </span>
-        </p>
-        <p className={styles.product__specLine}>
-          <span className={styles.product__specText}>
-            {t('product-card.capacity')}
-          </span>
-          <span
-            className={
-              styles.product__specText + ' ' + styles.product__specText_bold
-            }
-          >
-            {product.capacity}
-          </span>
-        </p>
-        <p className={styles.product__specLine}>
-          <span className={styles.product__specText}>
-            {t('product-card.ram')}
-          </span>
-          <span
-            className={
-              styles.product__specText + ' ' + styles.product__specText_bold
-            }
-          >
-            {product.ram}
-          </span>
-        </p>
-      </div>
-
-      <div className={styles.product__buttons}>
-        <Button text={t('product-card.add_to_card')} />
-        <Icon
-          onClick={() => addToFavorites(product.id)}
-          iconStyles={{ icon: 'border', image: 'favorites' }}
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.product__link}
+      >
+        <img
+          className={styles.product__image}
+          src={'/' + product.image}
+          alt={product.name}
         />
-      </div>
+      </Link>
+
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.product__title}
+      >
+        {product.name}
+      </Link>
+
+      <PriceTag {...product} />
+
+      <ProductSpecs product={product} specsList={CATALOG_SPECS_LIST} />
+      <ProductActions productId={product.id} />
     </div>
   );
 };

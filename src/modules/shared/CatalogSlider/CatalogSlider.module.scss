@@ -6,7 +6,8 @@
   gap: 24px;
 
   &__top {
-    @include page-grid;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__title {

@@ -47,40 +47,41 @@
     box-sizing: border-box;
 
     &_favorites {
-      background: center center url('img/assets/icons/favorites.svg');
+      background: center center url('/img/assets/icons/favorites.svg');
 
       &_active {
-        background: center center url('img/assets/icons/favorites-selected.svg');
+        background: center center
+          url('/img/assets/icons/favorites-selected.svg');
       }
     }
 
     &_cart {
-      background: center center url('img/assets/icons/cart.svg');
+      background: center center url('/img/assets/icons/cart.svg');
     }
 
     &_close {
-      background: center center url('img/assets/icons/close.svg');
+      background: center center url('/img/assets/icons/close.svg');
     }
 
     &_home {
       background-color: $primary-color;
-      mask-image: url('img/assets/icons/home.svg');
+      mask-image: url('/img/assets/icons/home.svg');
       mask-position: center center;
     }
 
     &_menu {
-      background: center center url('img/assets/icons/menu.svg');
+      background: center center url('/img/assets/icons/menu.svg');
     }
 
     &_arrowLeft {
       background-color: $primary-color;
-      mask-image: url('img/assets/icons/arrow_left.svg');
+      mask-image: url('/img/assets/icons/arrow_left.svg');
       mask-position: center center;
     }
 
     &_arrowRight {
       background-color: $primary-color;
-      mask-image: url('img/assets/icons/arrow_right.svg');
+      mask-image: url('/img/assets/icons/arrow_right.svg');
       mask-position: center center;
     }
 

@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
 import { SLIDER_COUNT } from '../constants';
 import HomeSlider from './HomeSlider';
-import HomeCatalog from './HomeCatalog';
+import CatalogSlider from '../shared/CatalogSlider';
 import HomeCategories from './HomeCategories';
 import { useContext } from 'react';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
-import { ProductCatalogContext } from '../../ProductContext';
+import { ProductCatalogContext } from '../../ProductCatalogContext';
 import Message from '../shared/Message';
 
 export const HomePage = () => {
@@ -44,12 +44,12 @@ export const HomePage = () => {
 
         {loaded && (
           <>
-            <HomeCatalog
+            <CatalogSlider
               title={t('home.brand_new')}
               products={brandNewProducts}
             />
             <HomeCategories />
-            <HomeCatalog
+            <CatalogSlider
               title={t('home.hot_prices')}
               products={hotPricesProducts}
             />

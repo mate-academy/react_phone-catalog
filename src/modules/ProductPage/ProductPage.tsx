@@ -2,9 +2,9 @@ import styles from './ProductPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../shared/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
-import ProductList from './ProductList';
+import ProductList from '../shared/ProductList';
 import { useContext } from 'react';
-import { ProductCatalogContext } from '../../ProductContext';
+import { ProductCatalogContext } from '../../ProductCatalogContext';
 import ProductListMenu from './ProductListMenu';
 import ProductPagination from './ProductPagination';
 import { useMenuSelectors, useSelectedProduct } from './ProductPage.hooks';
@@ -45,7 +45,7 @@ export const ProductPage: React.FC = () => {
   return (
     <div className="container">
       <div>
-        <Breadcrumbs marginTop="marginTop" />
+        <Breadcrumbs />
         <h1 className={styles.productPage__title}>
           {t(`products_page.${title}`)}
         </h1>

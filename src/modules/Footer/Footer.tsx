@@ -52,7 +52,7 @@ export const Footer = () => {
         <div className={styles.footer__content}>
           <div className={styles.footer__left}>
             <NavLink className={styles.footer__logo} to="/">
-              <img src="img/assets/logo.svg" alt="logo"></img>
+              <img src="/img/assets/logo.svg" alt="logo"></img>
             </NavLink>
           </div>
           <div className={styles.footer__menu}>

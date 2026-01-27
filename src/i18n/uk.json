@@ -10,7 +10,8 @@
     "home": "Головна",
     "phones": "Телефони",
     "tablets": "Планшети",
-    "accessories": "Аксессуари"
+    "accessories": "Аксессуари",
+    "favorites": "Обране"
   },
 
   "home": {
@@ -28,9 +29,9 @@
     "phones": "Мобільні телефони",
     "tablets": "Планшети",
     "accessories": "Аксесуари",
-    "models": "{{count}} моделей",
     "models_one": "{{count}} модель",
     "models_few": "{{count}} моделі",
+    "models_many": "{{count}} моделей",
     "menu_sort": "Сортувати по",
     "menu_sort_values": {
       "age": "Найновіші",
@@ -45,7 +46,33 @@
     "screen": "Екран",
     "capacity": "Ємність",
     "ram": "ОЗП",
-    "add_to_card": "До кошика"
+    "resolution": "Роздільність",
+    "processor": "Процесор",
+    "add_to_cart": "До кошика"
+  },
+
+  "product-detail": {
+    "color_title": "Доступні кольори",
+    "capacity_title": "Виберіть місткість",
+    "tech_specs": "Технічні характеристики",
+    "about": "About",
+    "screen": "Екран",
+    "capacity": "Вбудована пам'ять",
+    "ram": "ОЗП",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Мережі",
+    "may_like": "Тобі можливо сподобається",
+    "back": "Назад"
+  },
+
+  "favorites": {
+    "title": "Обране",
+    "items_one": "{{count}} пристрій",
+    "items_few": "{{count}} пристрої",
+    "items_many": "{{count}} пристроїв"
   },
 
   "messages": {

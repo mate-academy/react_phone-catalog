@@ -1,17 +1,22 @@
 /* eslint-disable no-console */
 
-import styles from './HomeCatalog.module.scss';
+import styles from './CatalogSlider.module.scss';
 import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
-import ProductCard from '../../shared/ProductCard';
-import Icon from '../../shared/Icon';
+import ProductCard from '../ProductCard';
+import Icon from '../Icon';
 import { useEffect, useRef, useState } from 'react';
 
 interface Props {
   title: string;
   products: ProductCatalogItem[];
+  additionalStyles?: string;
 }
 
-const HomeCatalog: React.FC<Props> = ({ title, products }) => {
+const CatalogSlider: React.FC<Props> = ({
+  title,
+  products,
+  additionalStyles = '',
+}) => {
   const [leftButtonDisabled, setLeftButtonDisabled] = useState(true);
   const [rightButtonDisabled, setRightButtonDisabled] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -151,7 +156,7 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
   }, []);
 
   return (
-    <div className={styles.catalog}>
+    <div className={styles.catalog + ' ' + additionalStyles}>
       <div className={styles.catalog__top}>
         <h2 className={styles.catalog__title}>{title}</h2>
         <div className={styles.catalog__buttons}>
@@ -184,4 +189,4 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
   );
 };
 
-export default HomeCatalog;
+export default CatalogSlider;

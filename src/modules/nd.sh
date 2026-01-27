@@ -24,7 +24,9 @@
   touch "$newpath"/{index.ts,"$newdir".tsx,"$newdir".module.scss}
   echo "export { default } from './$newdir'" > "$newpath/index.ts"
   cat > "$newpath/$newdir.tsx" << EOF
-const $newdir = () => ()
+interface Props {}
+
+const $newdir:React.FC<Props> = () => ()
 export default $newdir
 EOF
 

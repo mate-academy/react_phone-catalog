@@ -3,25 +3,49 @@ import {
   ReactNode,
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { ProductCatalogItem } from './types/ProductCatalogItem';
 import { getProducts } from './api/products';
-import { HOME_CATEGORIES_LIST } from './modules/constants';
 import type { Categories } from './types/Categories';
+
+export type ProductDetailIdToProductId = Record<string, string>;
 
 interface ProductContextType {
   products: ProductCatalogItem[];
   categories: Categories;
+  productDetailIdToProductId: ProductDetailIdToProductId;
   loading: boolean;
   loaded: boolean;
   error: boolean;
   reloadProducts: () => void;
 }
 
+export interface ProductIdentifier {
+  category: string;
+  itemId?: string;
+  id?: string | number;
+}
+
+export function getProductDetailId({
+  category,
+  id,
+  itemId,
+}: ProductIdentifier): string {
+  const productId = itemId || (id ? String(id) : '');
+
+  if (!productId) {
+    return '';
+  }
+
+  return `${category}-${productId}`;
+}
+
 export const ProductCatalogContext = createContext<ProductContextType>({
   products: [],
   categories: {},
+  productDetailIdToProductId: {},
   loading: false,
   loaded: false,
   error: false,
@@ -34,7 +58,6 @@ export const ProductCatalogProvider = ({
   children: ReactNode;
 }) => {
   const [products, setProducts] = useState<ProductCatalogItem[]>([]);
-  const [categories, setCategories] = useState<Categories>({});
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -43,6 +66,30 @@ export const ProductCatalogProvider = ({
     setReloadTrigger(prev => prev + 1);
   }, []);
 
+  const categories: Categories = useMemo(
+    () =>
+      products.reduce<Categories>((acc, product) => {
+        const result = acc;
+
+        result[product.category] = (result[product.category] || 0) + 1;
+
+        return result;
+      }, {}),
+
+    [products],
+  );
+
+  const productDetailIdToProductId: ProductDetailIdToProductId = useMemo(
+    () =>
+      Object.fromEntries(
+        products.map(product => [
+          getProductDetailId(product),
+          String(product.id),
+        ]),
+      ),
+    [products],
+  );
+
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -50,14 +97,6 @@ export const ProductCatalogProvider = ({
     getProducts()
       .then(loadedProducts => {
         setProducts(loadedProducts);
-        const loadedCategories: Categories = {};
-        for (const categoryName of HOME_CATEGORIES_LIST) {
-          loadedCategories[categoryName] = loadedProducts.filter(
-            product => product.category === categoryName,
-          ).length;
-        }
-
-        setCategories(loadedCategories);
         setLoaded(true);
       })
       .catch(fetchError => {
@@ -70,7 +109,15 @@ export const ProductCatalogProvider = ({
 
   return (
     <ProductCatalogContext.Provider
-      value={{ products, categories, loading, loaded, error, reloadProducts }}
+      value={{
+        products,
+        categories,
+        productDetailIdToProductId,
+        loading,
+        loaded,
+        error,
+        reloadProducts,
+      }}
     >
       {children}
     </ProductCatalogContext.Provider>

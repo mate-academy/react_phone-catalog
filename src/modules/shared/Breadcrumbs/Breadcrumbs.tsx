@@ -4,10 +4,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
-  marginTop?: 'marginTop';
+  lastSegment?: string;
 }
 
-const Breadcrumbs: React.FC<Props> = ({ marginTop }) => {
+const Breadcrumbs: React.FC<Props> = ({ lastSegment }) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const pathSegments = pathname.split('/').filter(segment => segment !== '');
@@ -15,14 +15,7 @@ const Breadcrumbs: React.FC<Props> = ({ marginTop }) => {
   let currentPath = '';
 
   return (
-    <nav
-      className={
-        styles.breadcrumbs +
-        ' ' +
-        (marginTop ? styles.breadcrumbs_marginTop : '')
-      }
-      aria-label="breadcrumb"
-    >
+    <nav className={styles.breadcrumbs} aria-label="breadcrumb">
       <ol className={styles.breadcrumbs__list}>
         <li className={styles.breadcrumbs__item} key="home">
           <Icon href={'/'} iconStyles={{ image: 'home' }} />
@@ -40,7 +33,7 @@ const Breadcrumbs: React.FC<Props> = ({ marginTop }) => {
               <Icon iconStyles={{ image: ['arrowRight', 'disabled'] }} />{' '}
               {isLast ? (
                 <span className={styles.breadcrumbs__segment}>
-                  {t('bread_crumps.' + segment)}
+                  {lastSegment ? lastSegment : t('bread_crumps.' + segment)}
                 </span>
               ) : (
                 <Link className={styles.breadcrumbs__item} to={currentPath}>
