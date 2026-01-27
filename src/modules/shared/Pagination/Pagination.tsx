@@ -50,7 +50,7 @@ export const Pagination: React.FC<Props> = ({
         onClick={() => onPageChange(currentPage - 1)}
       >
         <img
-          src="../../../../public/img/icons/icon-chevron-arrow-left.png"
+          src="/react_phone-catalog/img/icons/icon-chevron-arrow-left.png"
           alt="button"
           className={styles.pagination__arrow_img}
         />
@@ -72,7 +72,7 @@ export const Pagination: React.FC<Props> = ({
         onClick={() => onPageChange(currentPage + 1)}
       >
         <img
-          src="../../../../public/img/icons/icon-chevron-arrow-right.png"
+          src="/react_phone-catalog/img/icons/icon-chevron-arrow-right.png"
           alt="button"
           className={styles.pagination__arrow_img}
         />

@@ -39,7 +39,7 @@ export const Breadcrumbs: React.FC<{
           <li className={styles.breadcrumbs__item}>
             <img
               className={styles.breadcrumbs__icon}
-              src="/public/img/icons/icon-home.png"
+              src="/react_phone-catalog/img/icons/icon-home.png"
               alt=""
               onClick={() => navigate('/')}
             />
@@ -47,7 +47,7 @@ export const Breadcrumbs: React.FC<{
           <li className={styles.breadcrumbs__item}>
             <img
               className={styles.breadcrumbs__icon}
-              src="/public/img/icons/icon-chevron-arrow-right.png"
+              src="/react_phone-catalog/img/icons/icon-chevron-arrow-right.png"
               alt=""
             />
           </li>
@@ -67,7 +67,8 @@ export const Breadcrumbs: React.FC<{
               <li className={styles.breadcrumbs__item}>
                 <img
                   className={styles.breadcrumbs__icon}
-                  src="/public/img/icons/icon-chevron-arrow-right.png"
+                  // eslint-disable-next-line max-len
+                  src="/react_phone-catalog/img/icons/icon-chevron-arrow-right.png"
                   alt=""
                 />
               </li>

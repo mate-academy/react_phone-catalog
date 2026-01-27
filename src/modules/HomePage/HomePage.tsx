@@ -14,9 +14,10 @@ export const HomePage: React.FC = () => {
     <>
       <Header />
       <div className={styles.homepage}>
-        <h1 className={styles.homepage__title}>
+        <h1 style={{ display: 'none' }}>Product Catalog</h1>
+        <h2 className={styles.homepage__title}>
           Welcome to Nice Gadgets store!
-        </h1>
+        </h2>
         <div className={styles.homepage__section}>
           <PictureSlider slides={slidesImport} />
         </div>

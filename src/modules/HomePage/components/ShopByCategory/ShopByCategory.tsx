@@ -31,14 +31,14 @@ export const ShopByCategory: React.FC = () => {
 
   return (
     <div className={styles.shopbycategory}>
-      <h1 className={styles.shopbycategory__title}>Shop by category</h1>
+      <h2 className={styles.shopbycategory__title}>Shop by category</h2>
       <div className={styles.shopbycategory__categories}>
         <div
           className={styles.shopbycategory__category_card}
           onClick={() => navigate('/phones')}
         >
           <img
-            src="../../../../../public/pictures/shop-by-category--phones.png"
+            src="/react_phone-catalog/pictures/shop-by-category--phones.png"
             alt="Phones"
             className={styles.shopbycategory__category_card__image}
           />
@@ -54,7 +54,7 @@ export const ShopByCategory: React.FC = () => {
           onClick={() => navigate('/tablets')}
         >
           <img
-            src="../../../../../public/pictures/shop-by-category--tablets.png"
+            src="/react_phone-catalog/pictures/shop-by-category--tablets.png"
             alt="Tablets"
             className={styles.shopbycategory__category_card__image}
           />
@@ -71,7 +71,7 @@ export const ShopByCategory: React.FC = () => {
         >
           <img
             // eslint-disable-next-line max-len
-            src="../../../../../public/pictures/shop-by-category--accessories.png"
+            src="/react_phone-catalog/pictures/shop-by-category--accessories.png"
             alt="Accessories"
             className={styles.shopbycategory__category_card__image}
           />

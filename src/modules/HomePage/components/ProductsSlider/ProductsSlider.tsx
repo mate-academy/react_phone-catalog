@@ -5,7 +5,7 @@ import styles from './ProductsSlider.module.scss';
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
-const imagesChevron = '/public/img/icons/';
+const imagesChevron = '/react_phone-catalog/img/icons/';
 
 interface ProductsSliderProps {
   title?: string;

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ProductType } from 'models/product.model';
 import { useProducts } from 'src/context/ProductsContext';
 
-const favoriteIcons = '/img/icons/';
+const favoriteIcons = '/react_phone-catalog/img/icons/';
 
 type ProductCardProps = {
   product: ProductType;
@@ -32,7 +32,7 @@ const ProductCardView: React.FC<ProductCardViewProps> = memo(
       <div className={styles.productcard} onClick={onNavigate}>
         <img
           className={styles.productcard__img}
-          src={'/' + product.image}
+          src={'/react_phone-catalog/' + product.image}
           alt=""
         />
         <h3 className={styles.productcard__title}>{product.name}</h3>

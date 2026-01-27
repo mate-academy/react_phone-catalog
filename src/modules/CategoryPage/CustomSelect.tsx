@@ -104,7 +104,7 @@ export const CustomSelect: React.FC<Props> = ({
       >
         {options.find(o => o.value === value)?.label}
         <img
-          src="../../../public/img/icons/icon-chevron-arrow-down.png"
+          src="/react_phone-catalog/img/icons/icon-chevron-arrow-down.png"
           alt=""
           className={styles.customSelect__arrow}
         />

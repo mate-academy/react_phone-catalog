@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
             className={styles.footer__scroll_top__btn}
           >
             <img
-              src="/public/img/icons/icon-chevron-arrow-right.png"
+              src="/react_phone-catalog/img/icons/icon-chevron-arrow-right.png"
               alt="image"
               className={styles.footer__scroll_top__btn_img}
             />

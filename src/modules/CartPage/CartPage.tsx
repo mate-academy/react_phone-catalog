@@ -43,7 +43,7 @@ export const CartPage: React.FC = () => {
         >
           <img
             className={styles.cartpage__backbutton__icon}
-            src="/img/icons/icon-chevron-arrow-left.png"
+            src="/react_phone-catalog/img/icons/icon-chevron-arrow-left.png"
             alt=""
           />
           <p className={styles.cartpage__backbutton__text}>Back</p>
@@ -55,7 +55,7 @@ export const CartPage: React.FC = () => {
               No products in cart yet
             </p>
             <img
-              src="/img/cart-is-empty.png"
+              src="/react_phone-catalog/img/cart-is-empty.png"
               alt="image"
               className={styles.cartpage__noproducts_img}
             />
@@ -70,13 +70,13 @@ export const CartPage: React.FC = () => {
                 >
                   <div className={styles.cartpage__section}>
                     <img
-                      src="/img/icons/icon-close.png"
+                      src="/react_phone-catalog/img/icons/icon-close.png"
                       alt="image"
                       className={styles.cartpage__closebut}
                       onClick={() => removeProduct(product.product)}
                     />
                     <img
-                      src={product.product.image}
+                      src={'/react_phone-catalog/' + product.product.image}
                       alt="image"
                       className={styles.cartpage__list_product_img}
                     />
@@ -96,7 +96,7 @@ export const CartPage: React.FC = () => {
                         }
                       >
                         <img
-                          src="/img/icons/icon-minus.png"
+                          src="/react_phone-catalog/img/icons/icon-minus.png"
                           alt="image minus"
                           className={styles.cartpage__changequantity_but_img}
                         />
@@ -113,7 +113,7 @@ export const CartPage: React.FC = () => {
                         }
                       >
                         <img
-                          src="/img/icons/icon-plus.png"
+                          src="/react_phone-catalog/img/icons/icon-plus.png"
                           alt="image plus"
                           className={styles.cartpage__changequantity_but_img}
                         />

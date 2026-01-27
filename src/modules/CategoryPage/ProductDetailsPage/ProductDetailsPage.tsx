@@ -19,7 +19,7 @@ import {
   AvailableColors,
 } from './AvailableColorsCapacity';
 
-const favoriteIcons = '/img/icons/';
+const favoriteIcons = '/react_phone-catalog/img/icons/';
 
 const apiCategoryMap: Record<string, ProductDetails[]> = {
   phones: apiPhones,
@@ -144,7 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
           >
             <img
               className={styles.productdetailspage__backbutton__icon}
-              src="/img/icons/icon-chevron-arrow-left.png"
+              src="/react_phone-catalog/img/icons/icon-chevron-arrow-left.png"
               alt=""
             />
             <p className={styles.productdetailspage__backbutton__text}>Back</p>
@@ -164,7 +164,7 @@ export const ProductDetailsPage: React.FC = () => {
                   type="button"
                 >
                   <img
-                    src={`/${image}`}
+                    src={`/react_phone-catalog/${image}`}
                     alt={product.name}
                     className={styles.productdetailspage__gallery__thumb_img}
                   />
@@ -173,7 +173,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
             <div className={styles.productdetailspage__gallery__main}>
               <img
-                src={`/${activeImage}`}
+                src={`/react_phone-catalog/${activeImage}`}
                 alt={product.name}
                 className={styles.productdetailspage__gallery__main_img}
               />
@@ -526,7 +526,7 @@ export const ProductDetailsPage: React.FC = () => {
           </p>
           <img
             className={styles.notfoundproductpage__image}
-            src="/img/page-not-found.png"
+            src="/react_phone-catalog/img/page-not-found.png"
             alt="Page Not Found"
           />
         </div>
