@@ -1,7 +1,3 @@
-
-
-import '../style-components/Header.scss';
-
 export const Header = () => (
   <header className="header">
     <div className='header_title'>
@@ -11,13 +7,17 @@ export const Header = () => (
       </div>
 
       <h5 className='header_title_second'>GADGETS</h5>
-      
     </div>
 
-    <button className="header__button">Home</button>
-    <button className="header__button">Phones</button>
-    <button className="header__button">Tablets</button>
-    <button className="header__button">Accessories</button>
+    <div className="header__nav">
+      <button className="header__button">Home</button>
+      <button className="header__button">Phones</button>
+      <button className="header__button">Tablets</button>
+      <button className="header__button">Accessories</button>
+    </div>
+
+    <div className="empty"></div>  
+
     <div className="header__side">
       <div className="header__side_like">
         <svg

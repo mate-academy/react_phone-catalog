@@ -1,16 +1,30 @@
+@import '../style-components/colors.scss';
+
 header{
-    background-color: #fff;
+    background-color: $white;
     display: flex;
-    justify-content: space-between;
- 
+    justify-content: left;
+
+    .empty{
+        margin: auto;
+    }
+
     .header {
-        
+
+        &__nav {
+            display: flex;
+            gap: 50px;
+            margin-top: 20px;
+        }
+
         &__button {
             background-color: transparent;
             border: none;
+            color: $icons;
             cursor: pointer;
-            :hover {
-                opacity: 0.7;
+
+            &:hover {
+                color: $primary;
             }
         }
 
@@ -19,7 +33,7 @@ header{
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 25px;
             font-weight: bold;
-            color: #333;
+            color: $primary;
 
             &_first {
                 display: flex;

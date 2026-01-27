@@ -1,9 +1,27 @@
-footer {
-    .footer {
-        background-color: #fff;
+@import '../style-components/colors.scss';
+
+Footer {
+    .Footer {
+        background-color: $white;
         padding: 20px;
         text-align: center;
         font-size: 14px;
         color: #6c757d;
+
+        &_image {
+            width: 10px;
+            height: 15px;
+            margin-top: 10px;
+        }
+
+        &__button__right {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            :hover {
+                opacity: 0.7;
+            }
+        }
     }
 }
