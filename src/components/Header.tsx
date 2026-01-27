@@ -4,17 +4,22 @@ import '../style-components/Header.scss';
 
 export const Header = () => (
   <header className="header">
-    <div>
-      <h5>NICE</h5>
-      <img src="./src/images/xoia.png" className="header_image" alt="xoia" />    
+    <div className='header_title'>
+      <div className='header_title_first'>
+        <h5>NICE</h5>
+        <img src="./src/images/xoia.png" className="header_title_image" alt="xoia" />    
+      </div>
+
+      <h5 className='header_title_second'>GADGETS</h5>
+      
     </div>
-    <h5>GADGETS</h5>
+
     <button className="header__button">Home</button>
     <button className="header__button">Phones</button>
     <button className="header__button">Tablets</button>
     <button className="header__button">Accessories</button>
     <div className="header__side">
-      <div className="header__like">
+      <div className="header__side_like">
         <svg
           width="16"
           height="14"
@@ -30,7 +35,7 @@ export const Header = () => (
           />
         </svg>
       </div>
-      <div className="header__cart">
+      <div className="header__side_cart">
         <svg
           width="14"
           height="15"

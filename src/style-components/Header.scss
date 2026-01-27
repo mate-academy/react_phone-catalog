@@ -1,18 +1,52 @@
 header{
-    background-color: #fffefe;
+    background-color: #ffffff;
     display: flex;
+    justify-content: space-between;
  
     .header {
-    
-        &_image {
-        width: 15px;
-        height: 10px;
-        }
         
         &__button {
             background-color: transparent;
             border: none;
             cursor: pointer;
+            :hover {
+                opacity: 0.7;
+            }
+        }
+
+        &_title {
+            align-items: center;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: #333;
+
+            &_first {
+                display: flex;
+                align-items: center;
+                height: 20px;
+            }
+
+            &_second {
+                margin: 0px;
+            }
+            
+            &_image {
+                width: 10px;
+                height: 15px;
+            }
+        }
+
+        &__side {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            
+            &_like, &_cart {
+                display: flex;
+                cursor: pointer;
+            }
+        
         }
     }
 }
