@@ -1,6 +1,7 @@
 @import '../../styles/utils';
 
-// 1. GŁÓWNY PASEK (PEŁNA SZEROKOŚĆ)
+
+// 1. GŁÓWNY PASEK
 .header {
   position: sticky;
   top: 0;
@@ -19,13 +20,14 @@
   height: 100%;
   max-width: none;
   margin: 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 16px;
+  padding-left: 16px;
 
   @include on-tablet {
-    padding: 0 24px;
+    padding-left: 24px;
   }
 }
 
@@ -39,10 +41,17 @@
   img {
     height: 28px;
     width: auto;
-    display: block; }
+    display: block;
+    transition: transform 0.3s ease;
   }
 
-// 4. MENU DESKTOPOWE
+  // Wymóg: Scale image links by 10% on hover
+  @include hover {
+    img { transform: scale(1.1); }
+  }
+}
+
+// 4. MENU
 .nav {
   display: none;
 
@@ -77,7 +86,6 @@
   align-items: center;
 }
 
-// --- LINKI ---
 .navLink {
   text-decoration: none;
   text-transform: uppercase;
@@ -89,9 +97,7 @@
   position: relative;
   transition: color 0.3s;
 
-  @include hover {
-    color: $color-primary;
-  }
+  @include hover { color: $color-primary; }
 
   &::after {
     content: '';
@@ -107,28 +113,69 @@
   &.isActive { color: $color-primary; }
   &.isActive::after { opacity: 1; }
 
-  // Desktop: Wysokość 100% -> Pasek na dnie
   @include on-tablet {
     display: flex;
     align-items: center;
     height: 100%;
-    &::after {
-      bottom: 0;
-    }
+    &::after { bottom: 0; }
   }
 }
 
-// 5. IKONY (PRAWA STRONA)
+// 5. WYSZUKIWARKA
+.search {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 24px;
+    height: 100%;
+  }
+}
+
+.searchInput {
+  height: 32px;
+  width: 180px;
+  padding-left: 12px;
+  padding-right: 32px;
+  border: 1px solid $color-border;
+  background-color: $color-white;
+  font-family: $font-main;
+  font-size: 12px;
+  color: $color-primary;
+  outline: none;
+  transition: border-color 0.3s;
+
+  &::placeholder { color: $color-elements; }
+  &:focus { border-color: $color-primary; }
+}
+
+.searchIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -28px;
+  pointer-events: none;
+  img { width: 14px; height: 14px; opacity: 05;
+  }
+}
+
+// 6. IKONY
 .icons {
   display: none;
 
   @include on-tablet {
     display: flex;
     height: 100%;
-    margin-left: auto;
     border-left: 1px solid $color-border;
     margin-right: 0;
     padding: 0;
+
+    &.pushRight {
+      margin-left: auto;
+    }
   }
 }
 
@@ -136,26 +183,29 @@
   @include flex-center;
 
   width: 64px;
+  min-width: 64px;
   height: 100%;
   border-left: 1px solid $color-border;
   box-sizing: border-box;
   color: $color-primary;
   position: relative;
   transition: background-color 0.3s;
-  border-right: 1px solid $color-border;
 
-  &:first-child {
-    border-left: none;
-  }
+  &:first-child { border-left: none; }
+
+  &:last-child { border-right: none; }
 
   img {
     width: 16px;
     height: 16px;
     display: block;
+    transition: transform 0.3s ease;
   }
 
+  // Wymóg: Scale 10% on hover
   @include hover {
     background-color: $color-bg;
+    img { transform: scale(1.1); }
   }
 
   &::after {
@@ -175,27 +225,37 @@
 .iconWrapper {
   @include flex-center;
 
-  width: 100%; height: 100%; position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .badge {
   @include flex-center;
 
-  position: absolute; top: 12px; right: 12px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
   background-color: $color-red;
   color: $color-white;
   border-radius: 50%;
-  width: 14px; height: 14px; font-size: 9px;
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
   font-weight: 700;
   border: 1px solid $color-white;
 }
 
-// 6. BURGER (MOBILE)
+// 7. MOBILE
 .menuButton {
   @include flex-center;
 
-  width: 64px; height: 100%;
-  background: none; border: none; padding: 0; margin: 0;
+  width: 64px;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
   border-left: 1px solid $color-border;
   cursor: pointer;
   margin-left: auto;
@@ -208,7 +268,6 @@
   @include on-tablet { display: none; }
 }
 
-// 7. MENU MOBILNE (OVERLAY)
 .mobileMenu {
   position: fixed;
   top: $header-height;
@@ -263,8 +322,7 @@
 
   &:first-child {
     border-left: none;
-    border-right: 1px solid $color-border;
-  }
+    border-right: 1px solid $color-border; }
 
   &::after {
     content: '';
@@ -277,5 +335,6 @@
     opacity: 0;
     transition: 0.3s;
   }
+
   &.isActive::after { opacity: 1; }
 }
