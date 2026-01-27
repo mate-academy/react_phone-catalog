@@ -1,0 +1,117 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/variables.scss';
+@import '/src/styles/fonts.scss';
+
+.cartItem {
+  width: 288px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid $elements-color;
+
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+
+  @include on-tablet {
+    width: 592px;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__firstRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__buttonDelete {
+    width: 16px;
+    height: 16px;
+
+    background-color: transparent;
+    background-image: url('../../../public/img/icons/icon-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.3;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    object-fit: contain;
+  }
+
+  &__name {
+    width: 128px;
+    @include font-body;
+    color: $primary-color;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
+  }
+
+  &__secondRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: center;
+      gap: 24px;
+    }
+  }
+
+  &__counter {
+    width: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    @include button-style;
+
+    &--decrease {
+      background-image: url('/img/icons/icon-minus.svg');
+
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+
+    &--increase {
+      background-image: url('../../../public/img/icons/icon-plus.svg');
+    }
+  }
+
+  &__itemQuantity {
+    @include font-body;
+    color: black;
+  }
+
+  &__totalPrice {
+    width: 80px;
+    display: flex;
+    justify-content: end;
+    @include font-h3;
+    color: $primary-color;
+  }
+}

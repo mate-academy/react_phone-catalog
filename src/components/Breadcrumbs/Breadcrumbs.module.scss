@@ -1,0 +1,44 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/variables.scss';
+@import '/src/styles/fonts.scss';
+
+.crumbs {
+  display: flex;
+  gap: 8px;
+  height: 16px;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__iconRight {
+    opacity: 0.3;
+    margin-right: 8px;
+  }
+
+  &__homeIcon {
+    display: block;
+    gap: 8px;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    @include font-small-text;
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__span {
+    @include font-small-text;
+    color: $secondary-color;
+  }
+}

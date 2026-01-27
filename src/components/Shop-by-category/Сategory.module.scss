@@ -1,0 +1,73 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/variables.scss';
+@import '/src/styles/fonts.scss';
+
+.category {
+  &__title {
+    width: 136px;
+    display: block;
+    @include font-h2-mobile;
+
+    @include on-tablet {
+      height: 41px;
+      width: 490px;
+      @include font-h2;
+    }
+  }
+
+  &__content {
+    @include page-grid;
+    margin-top: 24px;
+    row-gap: 32px;
+
+    @include on-tablet {
+      row-gap: 0px;
+    }
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    @include hover (transform, scale(1.1));
+
+  &--phones {
+    background-color: #6D6474;
+  }
+
+  &--tablets {
+    background-color: #8D8D92;
+  }
+
+  &--accessories {
+    background-color: #973D5F;
+  }
+  }
+
+  &__info {
+    margin-top: 24px;
+    width: 100%;
+
+    &__name {
+      width: 200px;
+      @include font-h4;
+    }
+
+    &__quantity {
+      @include font-body;
+    }
+  }
+}

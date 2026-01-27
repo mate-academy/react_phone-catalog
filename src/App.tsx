@@ -6,7 +6,9 @@ import { Footer } from './components/Footer/Footer';
 export const App = () => (
   <div className="App">
     <Header />
-    <Outlet />
+    <main className="main">
+      <Outlet />
+    </main>
     <Footer />
   </div>
 );

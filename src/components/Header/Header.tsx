@@ -2,9 +2,13 @@ import { useState } from 'react';
 import styles from './ Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu } from '../Menu/Menu';
+import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favoriteProducts } = useFavorites();
+  const { totalQuantity } = useCart();
 
   return (
     <>
@@ -81,25 +85,49 @@ export const Header = () => {
               className={styles.header__icon}
             />
           </button>
+
           <NavLink
             to="/favorites"
-            className={`${styles.header__button} ${styles['header__button--heart']}`}
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.header__button} ${styles['header__button--active']} ${styles['header__button--heart']}`
+                : `${styles.header__button} ${styles['header__button--heart']}`
+            }
           >
-            <img
-              src="/public/img/icons/icon-heart.svg"
-              alt="icon-heart"
-              className={styles.header__icon}
-            />
+            <div className={styles.header__iconWrapper}>
+              <img
+                src="/public/img/icons/icon-heart.svg"
+                alt="icon-heart"
+                className={styles.header__icon}
+              />
+
+              {favoriteProducts.length > 0 && (
+                <div className={styles.header__iconNumber}>
+                  {favoriteProducts.length}
+                </div>
+              )}
+            </div>
           </NavLink>
+
           <NavLink
             to="/cart"
-            className={`${styles.header__button} ${styles['header__button--bag']}`}
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.header__button} ${styles['header__button--active']} ${styles['header__button--bag']}`
+                : `${styles.header__button} ${styles['header__button--bag']}`
+            }
           >
-            <img
-              src="/public/img/icons/icon-shopping-bag.svg"
-              alt="icon-shopping-bag"
-              className={styles.header__icon}
-            />
+            <div className={styles.header__iconWrapper}>
+              <img
+                src="/public/img/icons/icon-shopping-bag.svg"
+                alt="icon-shopping-bag"
+                className={styles.header__icon}
+              />
+
+              {totalQuantity > 0 && (
+                <div className={styles.header__iconNumber}>{totalQuantity}</div>
+              )}
+            </div>
           </NavLink>
         </div>
       </header>

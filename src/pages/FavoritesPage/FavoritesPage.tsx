@@ -1,0 +1,32 @@
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { ProductsGrid } from '../../components/ProductsGrid/ProductsGrid';
+import { useFavorites } from '../../context/FavoritesContext';
+import styles from './FavoritesPage.module.scss';
+
+export const FavoritesPage = () => {
+  const { favoriteProducts } = useFavorites();
+
+  return (
+    <main className={`${styles.main} ${styles.container}`}>
+      <div className={styles.main__breadcrumbs}>
+        <Breadcrumbs />
+      </div>
+
+      <h1 className={styles.main__title}>Favorites</h1>
+
+      <span className={styles.main__count}>
+        {favoriteProducts.length} items
+      </span>
+
+      {favoriteProducts.length === 0 ? (
+        <p className={styles.main__errorTitle}>
+          There are no favorite products
+        </p>
+      ) : (
+        <div className={styles.main__productsGrid}>
+          <ProductsGrid products={favoriteProducts} />
+        </div>
+      )}
+    </main>
+  );
+};

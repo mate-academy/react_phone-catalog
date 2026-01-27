@@ -1,0 +1,44 @@
+@import '/src/styles/fonts.scss';
+@import '/src/styles/variables.scss';
+@import '/src/styles/mixins.scss';
+
+.main {
+  @include page-grid;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    @include font-h1-mobile;
+    margin: 0;
+    margin-top: 24px;
+
+    @include on-tablet {
+      @include font-h1;
+      margin-top: 40px;
+    }
+  }
+
+  &__count {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    @include font-body;
+    color: $secondary-color;
+  }
+
+  &__productsGrid {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+  }
+}
+

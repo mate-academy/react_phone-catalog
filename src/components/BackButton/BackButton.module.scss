@@ -1,0 +1,22 @@
+@import '/src/styles/fonts.scss';
+@import '/src/styles/variables.scss';
+
+.buttonBack {
+  width: 66px;
+  border: none;
+  background-color: $white-color;
+  @include font-small-text;
+  padding: 0;
+  padding-top: 2px;
+  color: $secondary-color;
+
+  background-image: url('../../../public/img/icons/icon-arrow-left.svg');
+  background-repeat: no-repeat;
+  background-position: left;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-color;
+  }
+}

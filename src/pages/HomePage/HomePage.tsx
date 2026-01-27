@@ -1,4 +1,7 @@
 import { Banner } from '../../components/Banner/Banner';
+import { HotPrices } from '../../components/HotPrices/HotPrices';
+import { NewModels } from '../../components/NewModels/NewModels';
+import { Category } from '../../components/Shop-by-category/Сategory';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
@@ -6,13 +9,21 @@ export const HomePage = () => {
     <main className={styles.main}>
       <h1 className={styles.main__title}>Welcome to Nice Gadgets store!</h1>
 
-      <Banner />
+      <section className={styles.main__banner}>
+        <Banner />
+      </section>
 
-      <section className={styles.brand__new}></section>
+      <section className={styles.main__newModels}>
+        <NewModels />
+      </section>
 
-      <section className={styles.categories}></section>
+      <section className={`${styles.main__category} ${styles.container}`}>
+        <Category />
+      </section>
 
-      <section className={styles.hot__prices}></section>
+      <section className={styles.main__hotPrices}>
+        <HotPrices />
+      </section>
     </main>
   );
 };
