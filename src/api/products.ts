@@ -9,7 +9,7 @@ function wait(delay: number) {
 
 export async function getProducts(): Promise<Product[]> {
   return wait(500)
-    .then(() => fetch(`${import.meta.env.BASE_URL}api/products.json`))
+    .then(() => fetch(`${import.meta.env.BASE_URL}/api/products.json`))
     .then(response => response.json());
 }
 
@@ -30,6 +30,8 @@ export async function getProductsByCategory(
   productCategory: ProductCategory,
 ): Promise<ProductDetails[]> {
   return wait(500)
-    .then(() => fetch(`${import.meta.env.BASE_URL}api/${productCategory}.json`))
+    .then(() =>
+      fetch(`${import.meta.env.BASE_URL}/api/${productCategory}.json`),
+    )
     .then(response => response.json());
 }
