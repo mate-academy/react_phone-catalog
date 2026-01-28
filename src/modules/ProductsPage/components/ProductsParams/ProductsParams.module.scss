@@ -1,4 +1,4 @@
-@import '../../../../styles/global.scss';
+@import '../../../../styles/global';
 
 .products_params {
   display: flex;
@@ -12,17 +12,20 @@
 
 .amount {
   @extend %body-text;
+
   color: var(--color-secondary);
   margin-top: -32px;
 }
 
 .params {
   @extend %grid;
+
   padding-inline: 0;
 }
 
 .param {
   @extend %small-text;
+  
   color: var(--color-secondary);
 
   &_box {

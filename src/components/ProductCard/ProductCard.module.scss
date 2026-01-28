@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .product_card {
   display: flex;
@@ -14,6 +14,13 @@
     width: 100%;
   }
 
+  &__image {
+    height: 196px;
+    width: 208px;
+    object-fit: contain;
+    margin: auto;
+  }
+
   &:hover {
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
     border: 1px solid var(--color-icons);
@@ -23,15 +30,9 @@
     }
   }
 
-  &__image {
-    height: 196px;
-    width: 208px;
-    object-fit: contain;
-    margin: auto;
-  }
-
   &__title {
     @extend %body-text;
+
     margin-top: 16px;
     height: 42px;
   }
@@ -48,6 +49,7 @@
 
   &__full_price {
     @extend %h3;
+
     font-family: var(--font-family-regular);
     text-decoration: line-through;
     color: var(--color-secondary);
@@ -75,6 +77,7 @@
     &__key,
     &__value {
       @extend %small-text;
+
       color: var(--color-secondary);
     }
 
@@ -99,7 +102,9 @@
   height: 100%;
   min-width: 160px;
   width: 100%;
+
   @extend %buttons-text;
+
   color: white;
   background-color: var(--color-secondary);
   border: none;

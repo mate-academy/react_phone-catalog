@@ -1,4 +1,4 @@
-@import '../../../../styles/global.scss';
+@import '../../../../styles/global';
 
 .shop_by_category {
   display: flex;
@@ -27,14 +27,6 @@ h2 {
   gap: 24px;
   width: 100%;
 
-  &:hover &_img {
-    transform: scale(1.02);
-  }
-
-  &:hover &_name {
-    font-family: var(--font-family-bold);
-  }
-
   &_img {
     width: 100%;
     aspect-ratio: 1/1;
@@ -44,8 +36,17 @@ h2 {
     @extend %h4;
   }
 
+  &:hover &_img {
+    transform: scale(1.02);
+  }
+
+  &:hover &_name {
+    font-family: var(--font-family-bold);
+  }
+
   &_description {
     @extend %body-text;
+
     color: var(--color-secondary);
     margin-top: -20px;
   }

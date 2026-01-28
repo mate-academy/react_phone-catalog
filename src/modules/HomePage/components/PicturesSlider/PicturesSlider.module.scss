@@ -1,4 +1,4 @@
-@import '/src/styles/global.scss';
+@import '/src/styles/global';
 
 .pictures_slider {
   display: flex;
@@ -106,6 +106,16 @@
   gap: 14px;
 }
 
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: var(--color-elements);
+}
+
+.active_dot {
+  background-color: var(--color-primary);
+}
+
 .dot_box {
   display: flex;
   height: 24px;
@@ -120,14 +130,4 @@
   &:hover .active_dot {
     background-color: var(--color-primary);
   }
-}
-
-.dot {
-  width: 14px;
-  height: 4px;
-  background-color: var(--color-elements);
-}
-
-.active_dot {
-  background-color: var(--color-primary);
 }

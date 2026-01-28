@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .add_to_cart_button {
   display: flex;
@@ -7,7 +7,9 @@
   height: 100%;
   min-width: 160px;
   width: 100%;
+
   @extend %buttons-text;
+
   color: white;
   background-color: var(--color-primary);
   border: none;

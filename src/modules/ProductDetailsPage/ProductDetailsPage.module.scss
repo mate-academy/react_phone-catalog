@@ -1,4 +1,4 @@
-@import './../../styles/global.scss';
+@import './../../styles/global';
 
 .product_details_page {
   display: flex;
@@ -7,6 +7,7 @@
 
 .product_box {
   @extend %grid;
+
   margin-top: 16px;
   row-gap: 40px;
   margin-bottom: 80px;
@@ -24,7 +25,9 @@
 
 .name {
   grid-column: 1/-1;
+
   @extend %h2;
+
   color: var(--color-primary);
 }
 
@@ -44,14 +47,6 @@
     grid-column: 1/-1;
     order: 2;
   }
-}
-
-.small_image:hover,
-.color:hover,
-.capacity:hover {
-  border: 1px solid var(--color-secondary);
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 }
 
 .small_image {
@@ -99,6 +94,7 @@
   .spec_key,
   .spec_value {
     @extend %small-text;
+
     color: var(--color-secondary);
   }
 
@@ -172,6 +168,7 @@
   width: 60px;
 
   @extend %body-text;
+
   color: var(--color-primary);
   border: 1px solid var(--color-icons);
 
@@ -184,8 +181,17 @@
   }
 }
 
+.small_image:hover,
+.color:hover,
+.capacity:hover {
+  border: 1px solid var(--color-secondary);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
 .price {
   @extend %h2;
+
   color: var(--color-primary);
 
   &_regular {
@@ -230,7 +236,9 @@
 .product_id {
   position: absolute;
   right: -190px;
+
   @extend %small-text;
+
   color: var(--color-icons);
   text-align: end;
   height: fit-content;
@@ -259,6 +267,7 @@
 
   &_title {
     @extend %h3;
+
     color: var(--color-primary);
     margin-bottom: -16px;
   }
@@ -271,11 +280,13 @@
 
   &_subtitle {
     @extend %h4;
+
     color: var(--color-primary);
   }
 
   &_text {
     @extend %body-text;
+
     color: var(--color-secondary);
   }
 }
@@ -299,6 +310,7 @@
 
   &_title {
     @extend %h3;
+
     color: var(--color-primary);
     margin-bottom: -16px;
   }
@@ -306,6 +318,7 @@
   .spec_key,
   .spec_value {
     @extend %body-text;
+
     color: var(--color-secondary);
   }
 

@@ -1,4 +1,22 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
+
+.slider {
+  border: 1px solid var(--color-icons);
+
+  &:disabled {
+    border: 1px solid var(--color-elements);
+    cursor: not-allowed;
+  }
+
+  .arrow_left {
+    transform: rotate(-180deg);
+    user-select: none;
+  }
+
+  .arrow_right {
+    user-select: none;
+  }
+}
 
 .pagination {
   display: flex;
@@ -24,6 +42,7 @@
     background-color: white;
 
     @extend %body-text;
+
     color: var(--color-primary);
   }
 
@@ -43,23 +62,5 @@
     background-color: var(--color-primary);
     color: white;
     border: none;
-  }
-
-  .slider {
-    border: 1px solid var(--color-icons);
-
-    &:disabled {
-      border: 1px solid var(--color-elements);
-      cursor: not-allowed;
-    }
-
-    .arrow_left {
-      transform: rotate(-180deg);
-      user-select: none;
-    }
-
-    .arrow_right {
-      user-select: none;
-    }
   }
 }

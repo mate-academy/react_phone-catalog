@@ -9,7 +9,7 @@ import { ProductsPage } from './modules/ProductsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { store } from './app/store';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
-import { ProductsParams } from './modules/ProductsPage/components/ProductsParams';
+import { ProductsParams } from './modules/ProductsPage/components';
 import { FavouritesList } from './modules/FavouritesPage';
 
 const Root = () => (

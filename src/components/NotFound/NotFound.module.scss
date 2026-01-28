@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .not_found {
   display: flex;
@@ -26,5 +26,6 @@
 
 .title {
   @extend %h3;
+  
   color: var(--color-secondary);
 }

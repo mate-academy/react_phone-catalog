@@ -1,18 +1,23 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .dropdown {
   width: 100%;
 }
 
-.dropdown_active {
-  .box {
-    border: 1px solid var(--color-primary) !important;
-  }
+.button {
+  display: flex;
+  padding-inline: 12px 15px !important;
+  width: 100%;
 
-  .arrow {
-    transform: rotate(-180deg);
+  @extend %buttons-text;
+
+  font-size: 14px !important;
+
+  &:hover {
+    background-color: white;
   }
 }
+
 .box {
   display: flex;
   border-radius: 0;
@@ -29,15 +34,17 @@
   }
 }
 
-.button {
-  display: flex;
-  padding-inline: 12px 15px !important;
-  width: 100%;
-  @extend %buttons-text;
-  font-size: 14px !important;
+.arrow {
+  color: var(--color-icons);
+}
 
-  &:hover {
-    background-color: white;
+.dropdown_active {
+  .box {
+    border: 1px solid var(--color-primary) !important;
+  }
+
+  .arrow {
+    transform: rotate(-180deg);
   }
 }
 
@@ -51,14 +58,11 @@
 
 .option {
   @extend %body-text;
+
   color: var(--color-secondary) !important;
   padding-inline: 12px !important;
 
   &_active {
     color: var(--color-primary) !important;
   }
-}
-
-.arrow {
-  color: var(--color-icons);
 }

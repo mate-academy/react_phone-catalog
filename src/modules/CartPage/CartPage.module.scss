@@ -1,7 +1,8 @@
-@import './../../styles/global.scss';
+@import './../../styles/global';
 
 .title {
   @extend %h1;
+
   margin-top: -16px;
 
   @include on-mobile {
@@ -23,6 +24,7 @@
 
 .cart_items {
   @extend %grid;
+
   padding: 0;
 
   @include on-tablet {
@@ -43,6 +45,7 @@
 
 .total_price {
   @extend %h2;
+
   color: var(--color-primary);
 
   @include on-mobile {
@@ -78,7 +81,9 @@
       align-items: center;
       height: 48px;
       width: 100%;
+
       @extend %buttons-text;
+
       color: white;
       background-color: var(--color-primary);
       border: none;
@@ -87,13 +92,14 @@
       transition: all var(--transition-duration);
 
       &:hover {
-        box-shadow: 0 3px 13px 0 rgba(97, 97, 97, 0.271);
+        box-shadow: 0 3px 13px 0 rgba(97, 97, 97, 0.27);
       }
     }
   }
 
   &_info {
     @extend %body-text;
+
     color: var(--color-secondary);
     margin-top: -24px;
 

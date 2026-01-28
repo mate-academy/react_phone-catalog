@@ -1,11 +1,10 @@
-@import './fonts.scss';
-@import './mixins.scss';
+@import './fonts';
+@import './mixins';
 
 :root {
   --font-family-bold: 'Mont-Bold', sans-serif;
   --font-family-semibold: 'Mont-SemiBold', sans-serif;
   --font-family-regular: 'Mont-Regular', sans-serif;
-
   --color-primary: #313237;
   --color-secondary: #89939a;
   --color-icons: #b4bdc3;
@@ -13,7 +12,6 @@
   --color-hover-bg: #fafbfc;
   --color-green: #27ae60;
   --color-red: #eb5757;
-
   --transition-duration: 0.3s;
   --product-card-width: 272px;
   --product-card-height: 506px;

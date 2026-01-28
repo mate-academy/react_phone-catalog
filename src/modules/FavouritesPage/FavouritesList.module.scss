@@ -1,4 +1,4 @@
-@import './../../styles/global.scss';
+@import './../../styles/global';
 
 .favourites_list {
   display: grid;
@@ -12,6 +12,7 @@
 
 .amount {
   @extend %body-text;
+  
   color: var(--color-secondary);
   margin-top: -32px;
 }

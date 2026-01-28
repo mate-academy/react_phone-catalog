@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .overlay {
   position: fixed;
@@ -22,6 +22,7 @@
 
 .title {
   @extend %h4;
+
   color: var(--color-primary);
 }
 
@@ -31,7 +32,9 @@
   align-items: center;
   height: 40px;
   width: 160px;
+
   @extend %buttons-text;
+  
   color: white;
   background-color: var(--color-primary);
   border: none;

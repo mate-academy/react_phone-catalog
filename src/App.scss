@@ -1,4 +1,4 @@
-@import '/src/styles/global.scss';
+@import '/src/styles/global';
 
 .app {
   display: flex;
@@ -24,7 +24,9 @@
 
 .container {
   margin-top: 64px;
+
   @extend %grid;
+  
   margin-bottom: 80px;
   min-height: 70vh;
 

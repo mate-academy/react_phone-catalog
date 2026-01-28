@@ -1,4 +1,4 @@
-@import '../../../../styles/global.scss';
+@import '../../../../styles/global';
 
 .products_slider {
   display: flex;
@@ -42,6 +42,17 @@
     }
   }
 
+  .arrow_left {
+    transform: rotate(-180deg);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .arrow_right {
+    cursor: pointer;
+    user-select: none;
+  }
+
   .button_disabled,
   .button_disabled:hover {
     border: 1px solid var(--color-elements);
@@ -76,18 +87,8 @@ h2 {
   }
 }
 
-.arrow_left {
-  transform: rotate(-180deg);
-  cursor: pointer;
-  user-select: none;
-}
-
-.arrow_right {
-  cursor: pointer;
-  user-select: none;
-}
-
 .list_empty_title {
   @extend %h3;
+
   color: var(--color-secondary);
 }

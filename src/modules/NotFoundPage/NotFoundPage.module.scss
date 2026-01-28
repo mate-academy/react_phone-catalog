@@ -1,7 +1,8 @@
-@import './../../styles/global.scss';
+@import './../../styles/global';
 
 .title {
   @extend %h1;
+  
   width: max-content;
   height: fit-content;
   margin: 0;

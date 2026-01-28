@@ -29,6 +29,7 @@ export const cartProductsSlice = createSlice({
     },
     clearCart(state) {
       state.items = [];
+      state.totalPrice = 0;
     },
     changeQuantity(
       state,

@@ -19,7 +19,9 @@ export const favouritesSlice = createSlice({
       state.items.push(payload);
     },
     removeProduct(state, { payload }: PayloadAction<{ id: string }>) {
-      state.items = state.items.filter(item => item.itemId !== payload.id);
+      return {
+        items: state.items.filter(item => item.itemId !== payload.id),
+      };
     },
   },
 });

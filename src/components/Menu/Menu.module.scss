@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .menu {
   display: none;
@@ -11,10 +11,7 @@
     overflow: hidden;
     z-index: 15;
     gap: 24px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: white;
 
     transform: translate(100%, 0);

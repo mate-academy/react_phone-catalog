@@ -1,7 +1,8 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .footer {
   @extend %grid;
+
   background-color: white;
   height: 96px;
   border-top: 1px solid var(--color-elements);
@@ -28,6 +29,7 @@
 
 .link {
   @extend %uppercase;
+
   color: var(--color-secondary);
   justify-self: center;
   height: min-content;
@@ -73,6 +75,7 @@
 
 .button_text {
   @extend %small-text;
+  
   color: var(--color-secondary);
   user-select: none;
 }

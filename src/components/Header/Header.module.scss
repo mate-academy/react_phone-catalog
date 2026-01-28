@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .header {
   position: fixed;
@@ -32,6 +32,21 @@
   }
 }
 
+.icon_cart,
+.icon_fav {
+  display: flex;
+  position: relative;
+  background-image: url('/img/cart.svg');
+  height: 16px;
+  user-select: none;
+  background-size: contain;
+  aspect-ratio: 1/1;
+}
+
+.icon_fav {
+  background-image: url('/img/favourites-heart.svg');
+}
+
 .button,
 .button_menu {
   display: flex;
@@ -41,7 +56,8 @@
   width: 64px;
   border-left: 1px solid var(--color-elements);
 
-  &:hover .icon_fav, &:hover .icon_cart {
+  &:hover .icon_fav,
+  &:hover .icon_cart {
     transform: scale(110%);
   }
 
@@ -71,20 +87,6 @@
   flex-direction: row;
   height: 100%;
   right: 0;
-}
-
-.icon_cart, .icon_fav {
-  display: flex;
-  position: relative;
-  background-image: url('/img/cart.svg');
-  height: 16px;
-  user-select: none;
-  background-size: contain;
-  aspect-ratio: 1/1;
-}
-
-.icon_fav {
-  background-image: url('/img/favourites-heart.svg');
 }
 
 .is_active {
