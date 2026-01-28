@@ -100,7 +100,7 @@ export const CardItem = () => {
                         aria-label={`Показать фото ${singleProduct.name}`}
                       >
                         <img
-                          src={`../${item}`}
+                          src={`./${item}`}
                           alt={singleProduct.name}
                           className="body-card__slider-photo"
                           loading="lazy"
@@ -114,7 +114,7 @@ export const CardItem = () => {
               </ul>
               <div className="body-card__main-photo">
                 <img
-                  src={`../${activePhoto}`}
+                  src={`./${activePhoto}`}
                   alt={`${singleProduct.name} — главное фото`}
                   className="body-card__main-img"
                   loading="lazy"

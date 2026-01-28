@@ -30,7 +30,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         className="card__link"
         onClick={() => scrollToTop()}
       >
-        <img src={`../${image}`} alt="" className="card__image" />
+        <img src={`./${image}`} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">
           <span className="card__price--sale">${price} </span>
