@@ -39,6 +39,10 @@ header {
     &__img {
       width: 20px;
       height: 20px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 
@@ -81,6 +85,10 @@ header {
     &__img {
       width: 64px;
       height: 22px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
 
       @include on-tablet {
         width: 64px;
@@ -167,6 +175,10 @@ header {
         position: relative;
         width: 16px;
         height: 16px;
+
+        :global(body.dark) & {
+          filter: brightness(0) invert(1);
+        }
 
         &_p {
           position: absolute;
