@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
 
-import { useContext } from 'react';
 import s from './GoodsSlider.module.scss';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductsContext } from '../../Context/ProductsContext';
-import Product from '../../types/Product';
+import { useContextSelector } from 'use-context-selector';
+import { Pagination } from '../Pagination';
+import { useMemo, useState } from 'react';
 // import { ReactComponent as Right } from '/img/icons/Stroke_right.svg';
 
 type Props = {
@@ -14,49 +15,49 @@ type Props = {
 };
 
 export const GoodsSlider: React.FC<Props> = ({ collectionType }) => {
-  const { products } = useContext(ProductsContext);
+  const products = useContextSelector(ProductsContext, ctx => ctx.products);
+  const [page, setPage] = useState(1);
 
-  let visibleProducts: Product[] = [];
-
-  // console.log(
-  //   [...products]
-  //     .sort((itemA, itemB) => itemB.year - itemA.year)
-  //     .filter((product, index, arr) => {
-  //       return !arr.slice(0, index).some(prev => {
-  //         const baseName = prev.itemId.split('-').slice(0, -2).join('-');
-  //         product.itemId.includes(baseName);
-  //       });
-  //     })
-  //     .sort(() => 0.5 - Math.random()),
-  // );
-
-  switch (collectionType) {
-    case 'alsoLike':
-      visibleProducts = [...products]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 4);
+  const sortedProducts = useMemo(() => {
+    switch (collectionType) {
+      case 'alsoLike':
+        return [...products].sort(() => Math.random() - 0.5);
       // .filter(item => item.itemId !== product?.itemId)
-      break;
-    case 'new':
-      visibleProducts = [...products]
-        .sort((itemA, itemB) => itemB.year - itemA.year)
-        // .filter(it => Math.max(it.year))
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 4);
-      break;
-    case 'hot':
-      visibleProducts = [...products]
-        .sort((itemA, itemB) => itemB.price - itemA.price)
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 4);
-      break;
+      case 'new':
+        return (
+          [...products]
+            .sort((itemA, itemB) => itemB.year - itemA.year)
+            // .filter(it => Math.max(it.year))
+            .sort(() => Math.random() - 0.5)
+        );
+      case 'hot':
+        return [...products]
+          .sort((itemA, itemB) => itemB.price - itemA.price)
+          .sort(() => Math.random() - 0.5);
 
-    default:
-      break;
+      default:
+        return [];
+    }
+  }, [products, collectionType]);
+
+  const totalPages = sortedProducts.length / 4;
+
+  function onChangePageClick(pageNum: number) {
+    setPage(pageNum);
   }
+
+  const visibleProducts = useMemo(() => {
+    return sortedProducts.slice((page - 1) * 4, page * 4);
+  }, [sortedProducts, page]);
 
   return (
     <div className={`${s.goods_slider}`}>
+      <Pagination
+        type={'light'}
+        pages={totalPages}
+        current={page}
+        onPageClick={onChangePageClick}
+      />
       <div className="columns">
         {visibleProducts.map(product => (
           <div className="column" key={product.id}>

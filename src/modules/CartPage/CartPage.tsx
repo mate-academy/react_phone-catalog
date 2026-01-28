@@ -1,12 +1,12 @@
-import { useContext } from 'react';
 import { ProductsContext } from '../../Context/ProductsContext';
 
 import { CartItem } from './components/CartItem';
 import s from './CartPage.module.scss';
 import { Breadcrumb } from '../../components/Breadcrumb';
+import { useContextSelector } from 'use-context-selector';
 
 export const CartPage = () => {
-  const { cartProds } = useContext(ProductsContext);
+  const cartProds = useContextSelector(ProductsContext, ctx => ctx.cartProds);
   const totalSumm = cartProds.reduce(
     (sum, product) => sum + product.fullPrice * product.quantity,
     0,

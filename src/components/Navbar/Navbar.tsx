@@ -7,6 +7,7 @@ import { ProductsContext } from '../../Context/ProductsContext';
 import s from './Navbar.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { useContextSelector } from 'use-context-selector';
 // import { faBucket } from '@fortawesome/free-solid-svg-icons';
 
 const navLinkActive = ({ isActive }: { isActive: boolean }) => {
@@ -18,7 +19,8 @@ const navLinkActive = ({ isActive }: { isActive: boolean }) => {
 export const Navbar = () => {
   // const [searchParams] = useSearchParams();
   const categories = useContext(CategoriesContext);
-  const { cartProds, favourites } = useContext(ProductsContext);
+  const cartProds = useContextSelector(ProductsContext, ctx => ctx.cartProds);
+  const favourites = useContextSelector(ProductsContext, ctx => ctx.favourites);
 
   return (
     <nav

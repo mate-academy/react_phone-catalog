@@ -1,6 +1,7 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Product from '../types/Product';
 import { CartItemType } from '../types/CartItem';
+import { createContext } from 'use-context-selector';
 
 type ProdContextType = {
   products: Product[];

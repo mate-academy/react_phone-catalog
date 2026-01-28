@@ -5,9 +5,11 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { CategoriesContext } from '../../Context';
+import { useContextSelector } from 'use-context-selector';
 
 export const Breadcrumb = () => {
-  const { products } = useContext(ProductsContext);
+  const products = useContextSelector(ProductsContext, ctx => ctx.products);
+
   const categories = useContext(CategoriesContext);
   const { pathname } = useLocation();
   const { itemId } = useParams();
@@ -37,31 +39,33 @@ export const Breadcrumb = () => {
 
   return (
     <>
-      <nav
-        className="breadcrumb has-succeeds-separator"
-        aria-label="breadcrumbs"
-      >
-        <ul>
-          <li>
-            <Link to="/">
-              <span className="icon">
-                <FontAwesomeIcon icon={faHouse} />
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link to={`/${pathToNameCategory.toLowerCase()}`}>
-              {pathToNameCategory}
-            </Link>
-          </li>
-
-          {product && (
+      {pathname.slice(1) !== 'cart' && (
+        <nav
+          className="breadcrumb has-succeeds-separator"
+          aria-label="breadcrumbs"
+        >
+          <ul>
             <li>
-              <a href="#">{product.name}</a>
+              <Link to="/">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faHouse} />
+                </span>
+              </Link>
             </li>
-          )}
-        </ul>
-      </nav>
+            <li>
+              <Link to={`/${pathToNameCategory.toLowerCase()}`}>
+                {pathToNameCategory}
+              </Link>
+            </li>
+
+            {product && (
+              <li>
+                <a href="#">{product.name}</a>
+              </li>
+            )}
+          </ul>
+        </nav>
+      )}
       {(product || pathname.slice(1) === 'cart') && (
         <nav
           className="breadcrumb has-succeeds-separator is-flex"

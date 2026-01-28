@@ -8,11 +8,12 @@ import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from '../../components/Pagination';
 import classNames from 'classnames';
 import { Breadcrumb } from '../../components/Breadcrumb';
+import { useContextSelector } from 'use-context-selector';
 
 export const CatalogPage = () => {
   const { pathname } = useLocation();
   const categories = useContext(CategoriesContext);
-  const { products } = useContext(ProductsContext);
+  const products = useContextSelector(ProductsContext, ctx => ctx.products);
   const [isActive, setIsActive] = useState(false);
 
   const [searchParams] = useSearchParams();

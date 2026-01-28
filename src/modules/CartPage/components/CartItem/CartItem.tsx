@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
-import { useContext } from 'react';
 
-// import Product from '../../../../types/Product';
 // import Minus from '/img/icons/Minus.svg';
 // import Plus from '/img/icons/Plus.svg';
 import { ProductsContext } from '../../../../Context/ProductsContext';
@@ -9,12 +7,19 @@ import { CartItemType } from '../../../../types/CartItem';
 import s from './CartItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { useContextSelector } from 'use-context-selector';
 
 type Props = { product: CartItemType };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { removeProdFromCart, changeQuontityInCart } =
-    useContext(ProductsContext);
+  const removeProdFromCart = useContextSelector(
+    ProductsContext,
+    ctx => ctx.removeProdFromCart,
+  );
+  const changeQuontityInCart = useContextSelector(
+    ProductsContext,
+    ctx => ctx.changeQuontityInCart,
+  );
 
   return (
     <div

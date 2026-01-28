@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { useContextSelector } from 'use-context-selector';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const FavouritesPage = () => {
-  const { favourites } = useContext(ProductsContext);
+  const favourites = useContextSelector(ProductsContext, ctx => ctx.favourites);
 
   return (
     <div className="container ">

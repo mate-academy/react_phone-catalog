@@ -93,7 +93,7 @@
   background-color: vars.$accent-color;
   color: vars.$primary-white-color;
 
-  &__active {
+  &.active {
     background-color: vars.$primary-white-color;
     color: vars.$accent-color;
   }

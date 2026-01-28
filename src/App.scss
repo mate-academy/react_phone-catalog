@@ -10,17 +10,12 @@ body {
 
 .styled_container {
   background-color: vars.$hover-and-background-color;
-
-  // height: 100%;
 }
 
 .main {
   overflow: auto;
   margin: 0;
-  padding-bottom: 80px;
   min-height: calc(100vh - 140px);
-
-  // padding: 25px 25px 100px 25px;
 }
 
 .badge {

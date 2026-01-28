@@ -1,5 +1,15 @@
 @use '../../styles/utils/variables' as vars;
 
+.home_container {
+  padding: 56px 0 40px;
+  max-width: 1136px;
+}
+
+.styled_section {
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
 .homepage_title {
   color: vars.$primary-text-color;
   margin-bottom: 56px;

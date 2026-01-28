@@ -1,24 +1,34 @@
 import Product from '../../types/Product';
 import s from './ProductCard.module.scss';
-import { useContext } from 'react';
 import { ProductsContext } from '../../Context/ProductsContext';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useContextSelector } from 'use-context-selector';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const {
-    addProdToCart,
-    addProdToFavourites,
-    isProdInFavourites,
-    isProdInCart,
-  } = useContext(ProductsContext);
+  const addProdToCart = useContextSelector(
+    ProductsContext,
+    ctx => ctx.addProdToCart,
+  );
+  const addProdToFavourites = useContextSelector(
+    ProductsContext,
+    ctx => ctx.addProdToFavourites,
+  );
+  const isProdInFavourites = useContextSelector(
+    ProductsContext,
+    ctx => ctx.isProdInFavourites,
+  );
+  const isProdInCart = useContextSelector(
+    ProductsContext,
+    ctx => ctx.isProdInCart,
+  );
 
   // const navigate = useNavigate();
 

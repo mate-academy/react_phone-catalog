@@ -5,29 +5,41 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CategoriesContext } from '../../../../Context/CategoriesContext';
 import s from './Categories.module.scss';
+import { ProductsContext } from '../../../../Context/ProductsContext';
+import { useContextSelector } from 'use-context-selector';
 
 export const Categories = () => {
   const categories = useContext(CategoriesContext);
+  const { products } = useContextSelector(ProductsContext, ctx => ctx);
+
+  console.log(products);
+
+  function totalItemsCheck(category: string) {
+    return products.filter(prod => prod.category === category).length;
+  }
 
   return (
     <div className={s.categories}>
       <h2 className="title">Shop by category</h2>
       {/* Categories content goes here */}
       <div className="categories_content is-flex">
-        {categories.map(category => (
-          <div key={category.name} className="Category_item has-text-centered">
+        {categories.map((category, idx) => (
+          <div key={category.name} className="category_item mr-4">
             <Link
-              className={'navbar-item is-flex-direction-column p-0'}
+              className={`is-flex is-flex-direction-column ${s.small_img}`}
               key={category.name}
               to={`/${category.name.toLowerCase()}`}
             >
-              <img
-                className={s.category_image}
-                src={`${category.src}`}
-                alt={category.name}
-              />
+              <figure
+                className={`image ${s.small_img__figure} ${s[`box_${idx}`]}`}
+              >
+                <img src={`${category.src}`} alt={category.name} />
+              </figure>
 
-              <p className="Category_title">{category.longName}</p>
+              <p className={`${s.category_title}`}>{category.longName}</p>
+              <span className={`${s.category_quantity}`}>
+                {totalItemsCheck(category.slug)} models
+              </span>
             </Link>
           </div>
         ))}

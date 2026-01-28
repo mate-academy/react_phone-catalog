@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 
-import { Fragment, useContext, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { useContextSelector } from 'use-context-selector';
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -10,18 +11,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { ProductDetails } from '../../types/ProductDetails';
 import { GoodsSlider } from '../../components/GoodsSlider';
-
-import s from './ProductPage.module.scss';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
+import s from './ProductPage.module.scss';
+
 export const ProductPage = () => {
-  const {
-    products,
-    addProdToCart,
-    isProdInCart,
-    addProdToFavourites,
-    isProdInFavourites,
-  } = useContext(ProductsContext);
+  const products = useContextSelector(ProductsContext, ctx => ctx.products);
+  const addProdToCart = useContextSelector(
+    ProductsContext,
+    ctx => ctx.addProdToCart,
+  );
+  const isProdInCart = useContextSelector(
+    ProductsContext,
+    ctx => ctx.isProdInCart,
+  );
+  const addProdToFavourites = useContextSelector(
+    ProductsContext,
+    ctx => ctx.addProdToFavourites,
+  );
+  const isProdInFavourites = useContextSelector(
+    ProductsContext,
+    ctx => ctx.isProdInFavourites,
+  );
+
   const { itemId } = useParams();
   const navigate = useNavigate();
   const [productDetails, setProductDetails] = useState<
@@ -132,7 +144,6 @@ export const ProductPage = () => {
       {productDetails && product && (
         <div className="container">
           <Breadcrumb />
-          <p>{itemId}</p>
           <h1 className="title is-3">{productDetails?.name}</h1>
           <div className="fixed-grid">
             <div className="grid is-gap-8">
@@ -219,10 +230,13 @@ export const ProductPage = () => {
                     </div>
                     <div className="content mb-5 is-flex is-justify-content-space-between is-align-items-baseline">
                       <button
-                        className={classNames('button', {
-                          [`${s.cart_button}`]: !isProdInCart(product),
-                          [`${s.cart_button__active}`]: isProdInCart(product),
-                        })}
+                        className={classNames(
+                          // 'button',
+                          `button ${s.cart_button}`,
+                          {
+                            [`${s.active}`]: isProdInCart(product),
+                          },
+                        )}
                         type="button"
                         onClick={handleAddToCart}
                       >
@@ -305,7 +319,9 @@ export const ProductPage = () => {
               </div>
             </div>
           </div>
-          <h2 className="title is-3"> You may also like</h2>
+          <h2 className="title is-3" style={{ position: 'absolute' }}>
+            You may also like
+          </h2>
           <GoodsSlider collectionType={'alsoLike'} typePagin={'light'} />
         </div>
       )}
