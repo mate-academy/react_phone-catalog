@@ -1,5 +1,12 @@
+@use '../../styles/mixins.scss' as *;
+
 .banner {
   padding-block: 56px 80px;
 
-
+  &Title {
+    font-size: rem(36);
+    line-height: 42px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
 }

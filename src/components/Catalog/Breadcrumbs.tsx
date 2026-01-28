@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import homeimage from '../../images/icons/home-image.svg';
 
@@ -12,7 +11,7 @@ export const Breadcrumbs = () => {
         <img src={homeimage} />
       </Link>
       {location.map((item, i) =>
-        i === location.length ? (
+        i < location.length - 1 ? (
           <Link to={`/${item}`} key={item} className="bradcrumbs__link">
             <span>&#62; {item}</span>
           </Link>

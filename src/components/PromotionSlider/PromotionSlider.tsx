@@ -40,8 +40,7 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
           spaceBetween={16}
           autoHeight
           onBeforeInit={swiper => {
-            /* eslint-disable-next-line
-            @typescript-eslint/ban-ts-comment */
+            /* eslint-disable  @typescript-eslint/ban-ts-comment */
             swiper.params.navigation = {
               /* @ts-ignore */
               ...swiper.params.navigation,

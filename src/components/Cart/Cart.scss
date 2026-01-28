@@ -98,22 +98,7 @@
     }
   }
 
-  &__empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 70%;
-    margin: 0 auto;
 
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: 400;
-
-    &-img {
-      object-fit: contain;
-    }
-  }
 }
 
 .item-cart {

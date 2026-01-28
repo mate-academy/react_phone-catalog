@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../Catalog/Breadcrumbs';
-import unnownImg from './../../../public/img/unnown.jpg';
+import unknownImg from './../../images/img/product-not-found.png';
 import classNames from 'classnames';
 import './CardItem.scss';
 import { PromotionSlider } from '../PromotionSlider';
@@ -8,6 +8,7 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { ProductCardButtons } from '../ProductCard/ProductCardButtons';
 import { getProduct, getProducts } from '../../api/httpsRequest';
 import { ProductAllType, ProductType } from '../../types/Product';
+import { Empty } from '../Empty';
 
 export const CardItem = () => {
   const { id } = useParams<{ id: string }>();
@@ -27,17 +28,18 @@ export const CardItem = () => {
 
       setSingleProduct(newProduct);
 
-      alsoLikeProducts.length === 0 &&
-        setAlsoLikeProducts(
-          (await getProducts('allProducts')).slice(0, 10) as ProductAllType[],
-        );
+      if (alsoLikeProducts.length === 0) {
+        const allProducts = await getProducts('allProducts');
+
+        setAlsoLikeProducts(allProducts.slice(0, 10) as ProductAllType[]);
+      }
     };
 
     fetchProduct();
-  }, [id, singleProduct]);
+  }, [id, singleProduct, pathname]);
 
   useEffect(() => {
-    setActivePhoto(singleProduct?.images[0] || unnownImg);
+    setActivePhoto(singleProduct?.images[0] || unknownImg);
   }, [singleProduct, state]);
 
   useEffect(() => {
@@ -68,7 +70,7 @@ export const CardItem = () => {
   ];
 
   if (!singleProduct) {
-    return <div>Товар не найден</div>;
+    return <Empty srcImage={unknownImg} />;
   }
 
   return (

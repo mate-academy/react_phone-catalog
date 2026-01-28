@@ -32,8 +32,10 @@ export const Catalog: FC<Props> = ({
     ) {
       setSearchParams(prev => {
         const params = new URLSearchParams(prev);
+
         params.set('sortBy', SortBy.Newest);
         params.set('sortPage', '16');
+
         return params;
       });
     }

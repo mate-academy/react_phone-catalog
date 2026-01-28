@@ -42,7 +42,7 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
       prev.find(item => String(item.id) === String(product.id))
         ? (setLocalStorage('cart', prev), prev)
         : (setLocalStorage('cart', [...prev, { ...product, count: 1 }]),
-            [...prev, { ...product, count: 1 }]),
+          [...prev, { ...product, count: 1 }]),
     );
   };
 

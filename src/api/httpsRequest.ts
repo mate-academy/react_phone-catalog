@@ -8,22 +8,22 @@ import { NameCategory, NameProducts } from '../types/NameProducts';
 export const getProducts = async (param: NameProducts) => {
   return new Promise<ProductType[] | ProductAllType[]>((resolve, reject) => {
     // setTimeout(() => {
-      switch (param) {
-        case 'phones':
-          resolve(phones);
-          break;
-        case 'tablets':
-          resolve(tablets);
-          break;
-        case 'accessories':
-          resolve(accessories);
-          break;
-        case 'allProducts':
-          resolve(productsAll);
-          break;
-        default:
-          reject('Invalid category');
-      }
+    switch (param) {
+      case 'phones':
+        resolve(phones);
+        break;
+      case 'tablets':
+        resolve(tablets);
+        break;
+      case 'accessories':
+        resolve(accessories);
+        break;
+      case 'allProducts':
+        resolve(productsAll);
+        break;
+      default:
+        reject('Invalid category');
+    }
     // }, 1000);
   });
 };

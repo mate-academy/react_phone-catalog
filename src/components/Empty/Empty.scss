@@ -1,0 +1,16 @@
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vh;
+  height: 70vh;
+  margin: 0 auto;
+
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+
+  &__img {
+    object-fit: contain;
+  }
+}

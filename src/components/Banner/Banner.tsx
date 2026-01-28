@@ -15,13 +15,13 @@ import bannerTablets from './../../images/img/banner-tablets.png';
 
 const images = [bannerMain, bannerAccess, bannerPhones, bannerTablets];
 // eslint-disable @typescript-eslint/naming-convention
-const { banner, banner__title } = styles;
+const { banner, bannerTitle } = styles;
 
 export const Banner = () => {
   return (
     <section className={banner}>
       <div className="container">
-        <h1 className={banner__title}>Welcome to Nice Gadgets store!</h1>
+        <h2 className={bannerTitle}>Welcome to Nice Gadgets store!</h2>
         <Swiper
           className="my-swiper"
           modules={[Navigation, Pagination, Scrollbar, A11y]}

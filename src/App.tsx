@@ -26,6 +26,9 @@ export const App = () => {
 
   return (
     <div className="App">
+      <h1 style={{ opacity: 0, visibility: 'hidden', height: 0 }}>
+        Product Catalog
+      </h1>
       <Header />
       <main className="main">
         <Outlet />

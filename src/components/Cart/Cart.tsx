@@ -2,8 +2,9 @@ import './Cart.scss';
 import { Link } from 'react-router-dom';
 import { CartItem } from './CartItem';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
-import emptyCart from '/img/unnown.jpg';
+import emptyCart from './../../images/img/cart-is-empty.png';
 import { ProductAllType } from '../../types/Product';
+import { Empty } from '../Empty';
 
 export const Cart = () => {
   const { cartItems } = useCartFavorite();
@@ -24,9 +25,7 @@ export const Cart = () => {
         <h1 className="cart__title">Cart</h1>
 
         {cartItems && cartItems.length === 0 ? (
-          <div className="cart__empty">
-            <img src={emptyCart} alt="emptyCard" className="cart__empty-img" />
-          </div>
+          <Empty srcImage={emptyCart} />
         ) : (
           <div className="cart__wrapper">
             <div className="cart__items">
