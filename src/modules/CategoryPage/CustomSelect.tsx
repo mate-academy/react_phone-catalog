@@ -9,6 +9,7 @@ interface Props {
   onChange: (value: string) => void;
   options: Option[];
   ariaLabel?: string;
+  width?: number;
 }
 
 export const CustomSelect: React.FC<Props> = ({
@@ -17,6 +18,7 @@ export const CustomSelect: React.FC<Props> = ({
   onChange,
   options,
   ariaLabel,
+  width,
 }) => {
   const [open, setOpen] = useState(false);
   const [highlighted, setHighlighted] = useState<number | null>(null);
@@ -93,6 +95,7 @@ export const CustomSelect: React.FC<Props> = ({
       id={id}
       ref={rootRef}
       onKeyDown={onKeyDown}
+      style={width ? { width: `${width}px` } : undefined}
     >
       <button
         type="button"

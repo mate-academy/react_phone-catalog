@@ -156,6 +156,7 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
                 onChange={setSort}
                 options={sortOptions}
                 ariaLabel="Sort products"
+                width={176}
               />
             </div>
             <div className={styles.categoryPage__sort}>
@@ -173,6 +174,7 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
                   { value: 'all', label: 'all' },
                 ]}
                 ariaLabel="Items on page"
+                width={128}
               />
             </div>
           </div>

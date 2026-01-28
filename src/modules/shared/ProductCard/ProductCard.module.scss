@@ -26,7 +26,7 @@
 
   &__img {
     @include hover-scale-shadow;
-    
+
     align-self: center;
 
     width: 208px;
@@ -117,6 +117,8 @@
     margin-top: 16px;
 
     &_cart {
+      cursor: pointer;
+
       flex: 1;
 
       font-family: Mont, sans-serif;
@@ -137,9 +139,12 @@
     }
 
     &_like {
+      cursor: pointer;
+
       height: 40px;
       padding: 12px;
       border: 1px solid $icons-and-placeholders-color;
+
       background-color: $background-color;
 
       &__img {

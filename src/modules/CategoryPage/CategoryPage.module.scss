@@ -132,9 +132,10 @@
 
 .customSelect {
     position: relative;
-    max-width: 176px;
+    display: inline-block;
     margin-top: 4px;
     font-family: Mont, sans-serif;
+
     &__button {
       cursor: pointer;
 
@@ -165,7 +166,7 @@
 
     &__list {
       position: absolute;
-      z-index: 20;
+      z-index: 10;
       top: calc(100% + 6px);
 
       display: flex;
@@ -204,8 +205,12 @@
   }
 
   .is-selected {
-    width: -webkit-fill-available;
+    box-sizing: border-box;
+    width: 100%;
+
     font-weight: 700;
     color: $primary-color;
+    text-align: left;
+
     background: $hover-and-background-color;
   }
