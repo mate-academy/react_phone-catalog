@@ -1,0 +1,35 @@
+import { shuffle } from 'lodash';
+import { Product } from '../types/Product';
+import { ProductCategory } from '../types/ProductCategory';
+import { ProductDetails } from '../types/ProductDetails';
+
+function wait(delay: number) {
+  return new Promise(resolve => setTimeout(resolve, delay));
+}
+
+export async function getProducts(): Promise<Product[]> {
+  return wait(500)
+    .then(() => fetch(`/api/products.json`))
+    .then(response => response.json());
+}
+
+export async function getSuggestedProducts(
+  category: ProductCategory,
+  currentProductId: string,
+): Promise<Product[]> {
+  const items = await getProducts();
+
+  return shuffle(
+    items
+      .filter(item => item.category === category)
+      .filter(item => item.itemId !== currentProductId),
+  );
+}
+
+export async function getProductsByCategory(
+  productCategory: ProductCategory,
+): Promise<ProductDetails[]> {
+  return wait(500)
+    .then(() => fetch(`/api/${productCategory}.json`))
+    .then(response => response.json());
+}

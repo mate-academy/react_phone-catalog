@@ -1,0 +1,30 @@
+@import '../../styles/global.scss';
+
+.not_found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-block: 40px 120px;
+
+  @include on-tablet {
+    margin-block: 20px 100px;
+  }
+
+  @include on-mobile {
+    margin-block: 10px 60px;
+  }
+}
+
+.img {
+  height: 150px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
+.title {
+  @extend %h3;
+  color: var(--color-secondary);
+}
