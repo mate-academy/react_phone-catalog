@@ -26,6 +26,7 @@ type ProductsContextType = {
   increaseQuantity: (productId: number | string) => void;
   decreaseQuantity: (productId: number | string) => void;
   clearCart: () => void;
+  totalCartQuantity: number;
 };
 
 const ProductsContext = createContext<ProductsContextType | null>(null);
@@ -133,6 +134,11 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }, [favorites, cart]);
 
+  const totalCartQuantity = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart],
+  );
+
   const value = useMemo(
     () => ({
       products,
@@ -143,6 +149,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
       increaseQuantity,
       decreaseQuantity,
       clearCart,
+      totalCartQuantity,
     }),
     [
       products,
@@ -153,6 +160,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
       increaseQuantity,
       decreaseQuantity,
       clearCart,
+      totalCartQuantity,
     ],
   );
 

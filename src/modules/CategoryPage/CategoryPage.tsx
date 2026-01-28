@@ -1,7 +1,5 @@
 import { ProductsList } from '../ProductsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
-import { Footer } from '../shared/Footer';
-import { Header } from '../shared/Header';
 import apiProducts from '../../../public/api/products.json';
 import React, { useEffect, useState } from 'react';
 import styles from './CategoryPage.module.scss';
@@ -136,68 +134,64 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
   }, [category, page, sort, perPage]);
 
   return (
-    <>
-      <Header />
-      <div className={styles.categoryPage}>
-        <div className={styles.categoryPage__section}>
-          <Breadcrumbs category={category} />
-          <h1 className={styles.categoryPage__title}>{title}</h1>
-          <p className={styles.categoryPage__countmodels__p}>
-            {countModels} models
-          </p>
-          <div className={styles.categoryPage__filteredmodel}>
-            <div className={styles.categoryPage__sort}>
-              <label htmlFor="sort" className={styles.categoryPage__label}>
-                Sort by
-              </label>
-              <CustomSelect
-                id="sort"
-                value={sort}
-                onChange={setSort}
-                options={sortOptions}
-                ariaLabel="Sort products"
-                width={176}
-              />
-            </div>
-            <div className={styles.categoryPage__sort}>
-              <label htmlFor="perPage" className={styles.categoryPage__label}>
-                Items on page
-              </label>
-              <CustomSelect
-                id="perPage"
-                value={perPage}
-                onChange={setPerPage}
-                options={[
-                  { value: '4', label: '4' },
-                  { value: '8', label: '8' },
-                  { value: '16', label: '16' },
-                  { value: 'all', label: 'all' },
-                ]}
-                ariaLabel="Items on page"
-                width={128}
-              />
-            </div>
+    <div className={styles.categoryPage}>
+      <div className={styles.categoryPage__section}>
+        <Breadcrumbs category={category} />
+        <h1 className={styles.categoryPage__title}>{title}</h1>
+        <p className={styles.categoryPage__countmodels__p}>
+          {countModels} models
+        </p>
+        <div className={styles.categoryPage__filteredmodel}>
+          <div className={styles.categoryPage__sort}>
+            <label htmlFor="sort" className={styles.categoryPage__label}>
+              Sort by
+            </label>
+            <CustomSelect
+              id="sort"
+              value={sort}
+              onChange={setSort}
+              options={sortOptions}
+              ariaLabel="Sort products"
+              width={176}
+            />
+          </div>
+          <div className={styles.categoryPage__sort}>
+            <label htmlFor="perPage" className={styles.categoryPage__label}>
+              Items on page
+            </label>
+            <CustomSelect
+              id="perPage"
+              value={perPage}
+              onChange={setPerPage}
+              options={[
+                { value: '4', label: '4' },
+                { value: '8', label: '8' },
+                { value: '16', label: '16' },
+                { value: 'all', label: 'all' },
+              ]}
+              ariaLabel="Items on page"
+              width={128}
+            />
           </div>
         </div>
-        <div className={styles.categoryPage__section}>
-          <ProductsList
-            category={category}
-            sort={sort}
-            page={page}
-            perPage={perPage}
-            isLoading={isLoading}
-          />
-          {perPage !== 'all' && countModels > Number(perPage) && (
-            <Pagination
-              total={countModels}
-              perPage={Number(perPage)}
-              currentPage={page}
-              onPageChange={setPage}
-            />
-          )}
-        </div>
       </div>
-      <Footer />
-    </>
+      <div className={styles.categoryPage__section}>
+        <ProductsList
+          category={category}
+          sort={sort}
+          page={page}
+          perPage={perPage}
+          isLoading={isLoading}
+        />
+        {perPage !== 'all' && countModels > Number(perPage) && (
+          <Pagination
+            total={countModels}
+            perPage={Number(perPage)}
+            currentPage={page}
+            onPageChange={setPage}
+          />
+        )}
+      </div>
+    </div>
   );
 };

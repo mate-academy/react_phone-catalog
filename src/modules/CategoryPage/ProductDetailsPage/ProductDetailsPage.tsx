@@ -2,8 +2,6 @@
 /* eslint-disable max-len */
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Breadcrumbs } from '../../shared/Breadcrumbs';
-import { Footer } from '../../shared/Footer';
-import { Header } from '../../shared/Header';
 import styles from './ProductDetailsPage.module.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ProductsSlider } from 'src/modules/HomePage/components/ProductsSlider';
@@ -35,13 +33,9 @@ export const ProductDetailsPage: React.FC = () => {
   }>();
 
   const findProductById = (id: string): FullProduct | null => {
-    // console.log('productId from params:', id);
-    // Find summary info in apiProducts (ProductType)
     const summary = apiProducts.find(
       product => String(product.id) === id || product.itemId === id,
     );
-
-    // console.log('summary found:', summary);
 
     if (!summary) {
       return null;
@@ -49,8 +43,6 @@ export const ProductDetailsPage: React.FC = () => {
 
     // Get the correct category data (array of ProductDetails)
     const categoryProducts = apiCategoryMap[summary.category];
-
-    // console.log('categoryProducts:', categoryProducts);
 
     if (!categoryProducts) {
       return null;
@@ -60,8 +52,6 @@ export const ProductDetailsPage: React.FC = () => {
     const detailedProduct = categoryProducts.find(
       item => item.id === String(summary.itemId),
     );
-
-    // console.log('detailedProduct:', detailedProduct);
 
     if (!detailedProduct) {
       return null;
@@ -133,8 +123,7 @@ export const ProductDetailsPage: React.FC = () => {
     : false;
 
   return (
-    <>
-      <Header />
+    <div className={styles.productdetailspage_container}>
       {product ? (
         <div className={styles.productdetailspage}>
           <Breadcrumbs category={category || ''} productId={productId || ''} />
@@ -529,8 +518,6 @@ export const ProductDetailsPage: React.FC = () => {
           />
         </div>
       )}
-
-      <Footer />
-    </>
+    </div>
   );
 };

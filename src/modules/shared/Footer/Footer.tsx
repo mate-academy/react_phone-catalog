@@ -35,6 +35,8 @@ export const Footer: React.FC = () => {
           <a
             href="https://github.com/luchali/react_phone-catalog"
             className={styles.footer__nav__link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             GITHUB
           </a>
@@ -44,6 +46,8 @@ export const Footer: React.FC = () => {
           <a
             href="https://github.com/luchali/react_phone-catalog"
             className={styles.footer__nav__link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             RIGHTS
           </a>

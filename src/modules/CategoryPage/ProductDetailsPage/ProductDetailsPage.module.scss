@@ -1,10 +1,15 @@
 @use '../../../utils/vars' as *;
 @use '../../../utils/mixins' as *;
 
+.productdetailspage_container {
+  display: flex;
+  flex: 1;
+}
+
 .productdetailspage {
   @include page-grid;
 
-  margin-top: 24px;
+  margin-bottom: 24px;
 
   @include on-phone {
     margin: 0;
@@ -12,6 +17,8 @@
   }
 
   &__backbutton {
+    cursor: pointer;
+
     display: flex;
     grid-column: 1 / -1;
     align-items: flex-end;
@@ -433,6 +440,8 @@
       margin-top: 16px;
 
       &_cart {
+        cursor: pointer;
+
         flex: 1;
 
         font-family: Mont, sans-serif;
@@ -453,9 +462,12 @@
       }
 
       &_like {
+        cursor: pointer;
+
         height: 40px;
         padding: 12px;
         border: 1px solid $icons-and-placeholders-color;
+
         background-color: $background-color;
 
         &__img {

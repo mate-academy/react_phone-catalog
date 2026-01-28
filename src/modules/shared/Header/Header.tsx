@@ -13,7 +13,7 @@ import { useProducts } from 'src/context/ProductsContext';
 import { ThemeContext } from 'src/theme/ThemeProvider';
 
 export const Header: React.FC = () => {
-  const { favorites, cart } = useProducts();
+  const { favorites, cart, totalCartQuantity } = useProducts();
   const location = useLocation();
 
   useEffect(() => {
@@ -105,9 +105,9 @@ export const Header: React.FC = () => {
               }
             >
               <img className={styles.header__but__link__img} src={iconCart} />
-              {cart.length > 0 && (
+              {totalCartQuantity > 0 && (
                 <span className={styles.header__but__link__img_p}>
-                  {cart.length}
+                  {totalCartQuantity}
                 </span>
               )}
             </NavLink>

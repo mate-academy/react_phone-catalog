@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useProducts } from 'src/context/ProductsContext';
 
 export const BurgerMenu: React.FC = () => {
-  const { favorites, cart } = useProducts();
+  const { favorites, cart, totalCartQuantity } = useProducts();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '';
@@ -120,9 +120,9 @@ export const BurgerMenu: React.FC = () => {
               className={styles.menu__but__link_bottom__img}
               src={iconCart}
             />
-            {cart.length > 0 && (
+            {totalCartQuantity > 0 && (
               <span className={styles.menu__but__link_bottom__img_p}>
-                {cart.length}
+                {totalCartQuantity}
               </span>
             )}
           </NavLink>
