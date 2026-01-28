@@ -56,7 +56,7 @@ The project can be used as a learning example, a portfolio project, or a base fo
    git clone <repo-url>
 
 2. Install dependencies:
-   npm install
+   npm i
 
 3. Run the project in development mode:
    npm run dev
