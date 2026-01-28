@@ -1,0 +1,18 @@
+@import '/src/styles/fonts.scss';
+@import '/src/styles/variables.scss';
+
+.page {
+  margin-top: 24px;
+  &__title {
+    display: block;
+    text-align: center;
+    @include font-h4;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 1200px;
+    display: block;
+    margin: 0 auto;
+  }
+};
