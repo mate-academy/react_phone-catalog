@@ -8,6 +8,10 @@
   line-height: 21px;
   letter-spacing: 0%;
   color: #0F0F11;
+  width: 100%;
+  display: block;
+  padding: 0px;
+  margin: 0px;
 
   scroll-behavior: smooth;
 
@@ -96,6 +100,17 @@ h5 {
     }
   }
 
+  .main {
 
+   &__content {
+     @include content-padding-inline;
+
+   }
+  }
+
+  .appContainer {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
 }
-

@@ -2,7 +2,6 @@
 @import '../Header/Header.module';
 
 .footer {
-  width: 100%;
   background-color: $footer-background-color;
 
   .topBarMobile {
@@ -12,6 +11,10 @@
         display: none;
     }
 
+    .logo {
+      margin-block: 32px;
+      border: 1px solid red;
+    }
 
   }
 
@@ -34,16 +37,16 @@
      @include content-padding-inline;
 
     border-top: 1px solid  $footer-border-color;
-    justify-content: center;
+    justify-content:left;
     width: 100%;
     height: 257px;
-
     display: flex;
     flex-direction: column;
 
 
     @include on-tablet {
       flex-direction: row;
+      justify-content: center;
       height: 96px;
     }
 
@@ -68,9 +71,13 @@
   &__contacts {
     height: 11px;
     text-transform: uppercase;
-    margin-right: 13.5px;
-    margin-block: auto;
     display: block;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+       margin-right: 13.5px;
+        margin-block: auto;
+    }
   }
 
   &__rights {

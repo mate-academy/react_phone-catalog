@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './MenuNav.module.scss';
 
 export const MenuNav: React.FC = () => {
@@ -6,24 +7,24 @@ export const MenuNav: React.FC = () => {
       <nav className={`${styles.nav} ${styles.menu__nav}`}>
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <a href="#" className={styles.nav__link}>
+            <Link to="/" className={styles.nav__link}>
               Home
-            </a>
+            </Link>
           </li>
           <li className={styles.nav__item}>
-            <a href="#phones" className={styles.nav__link}>
+            <Link to="/phones" className={styles.nav__link}>
               Phones
-            </a>
+            </Link>
           </li>
           <li className={styles.nav__item}>
-            <a href="#tablets" className={styles.nav__link}>
+            <Link to="/tablets" className={styles.nav__link}>
               tablets
-            </a>
+            </Link>
           </li>
           <li className={styles.nav__item}>
-            <a href="#accessories" className={styles.nav__link}>
+            <Link to="/accessories" className={styles.nav__link}>
               accessories
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

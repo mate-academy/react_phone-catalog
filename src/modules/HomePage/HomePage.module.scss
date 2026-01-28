@@ -2,8 +2,6 @@
 
 .homePage {
   &__content {
-     @include content-padding-inline;
-
       display: flex;
       flex-direction: column;
   }
@@ -113,7 +111,6 @@
     }
 
   &__banner {
-    border: 1px solid blue;
   background-image: url('../../img/header-bg.png');
   background-size: cover;
   background-position: top;

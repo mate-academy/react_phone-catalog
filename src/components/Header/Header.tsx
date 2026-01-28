@@ -3,6 +3,7 @@ import MainMenu from '../MainMenu/index';
 import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
 import Logo from '../Logo';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +38,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className={styles.header} id="top">
+      <header className={styles.header}>
         <div className={styles.topBar}>
           <Logo />
           <div className={styles.topBar__menu}>
@@ -46,26 +47,25 @@ export const Header = () => {
 
           <div className={styles.topBar__icons}>
             <div className={styles.icon__background}>
-              <a
-                href="#favourites"
+              <Link
+                to="/favourites"
                 className={`${styles.icon} ${styles['icon--favourites']}`}
-              ></a>
+              ></Link>
             </div>
             <div className={styles.icon__background}>
-              <a
-                href="#shopping-bag-cart"
+              <Link
+                to="/shopping-bag-cart"
                 className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
-              ></a>
-            </div>
-
-            <div className={styles.icon__background}>
-              <button
-                type="button"
-                onClick={() => setIsMenuOpen(prev => !prev)}
-                className={`${styles.icon} ${styles['icon--menu']}`}
-                aria-expanded={isMenuOpen}
-                aria-controls="main-menu"
-              ></button>
+              ></Link>
+              <div className={styles.icon__background}>
+                <button
+                  type="button"
+                  onClick={() => setIsMenuOpen(prev => !prev)}
+                  className={`${styles.icon} ${styles['icon--menu']}`}
+                  aria-expanded={isMenuOpen}
+                  aria-controls="main-menu"
+                ></button>
+              </div>
             </div>
           </div>
         </div>
