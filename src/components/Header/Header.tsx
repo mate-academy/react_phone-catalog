@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
-import favoriteIcon from './../../images/icons/Favourites-like.svg';
-import cartIcon from './../../images/icons/Shopping bag (Cart).svg';
-import burgerIcon from './../../images/icons/burger.svg';
-import closeIcon from './../../images/icons/close.svg';
-import logoIcon from './../../images/header/Logo.png';
+import favoriteIcon from '../../images/icons/Favourites-like.svg';
+import cartIcon from '../../images/icons/Shopping bag (Cart).svg';
+import burgerIcon from '../../images/icons/burger.svg';
+import closeIcon from '../../images/icons/close.svg';
+import logoIcon from '../../images/header/Logo.png';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -45,7 +45,7 @@ export const Header = () => {
           </Link>
           <nav className={header__menu}>
             <NavLink
-              to="/"
+              to=""
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
@@ -55,7 +55,7 @@ export const Header = () => {
             </NavLink>
             <NavLink
               end
-              to="/phones"
+              to="phones"
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
