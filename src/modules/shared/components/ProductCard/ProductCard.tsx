@@ -14,9 +14,17 @@ export const ProductCard: React.FC<Props> = ({
   product,
   showDiscount = false,
 }) => {
+  const onClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className={styles.card}>
-      <Link to={`/product/${product.itemId}`} className={styles.productImgLink}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.productImgLink}
+        onClick={onClick}
+      >
         <div className={styles.productImgBlock}>
           <img
             src={asset('/' + product.image)}

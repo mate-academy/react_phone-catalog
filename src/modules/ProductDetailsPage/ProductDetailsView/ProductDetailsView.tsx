@@ -65,7 +65,10 @@ export const ProductDetailsView: React.FC<Props> = ({
         </div>
         <div className={styles.previews}>
           {productDetails.images.map((url, i) => (
-            <div key={i} className={styles.previewPhoto}>
+            <div
+              key={i}
+              className={`${styles.previewPhoto} ${mainPhoto === url ? styles['previewPhoto--active'] : ''}`}
+            >
               <img
                 src={asset('/' + url)}
                 alt="Preview Photo"
@@ -93,7 +96,7 @@ export const ProductDetailsView: React.FC<Props> = ({
                   <Link
                     to={`/product/${newItemId}`}
                     key={color}
-                    className={styles.colorBlock}
+                    className={`${styles.colorBlock} ${color === productDetails.color ? styles['colorBlock--active'] : ''}`}
                   >
                     <div
                       className={styles.color}

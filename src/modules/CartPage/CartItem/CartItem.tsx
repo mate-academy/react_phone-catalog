@@ -3,6 +3,7 @@ import { useCart } from '../../shared/hooks/useCart';
 import classNames from 'classnames';
 import { CartItem as Item } from '../../shared/store/cart/cart.types';
 import { asset } from '../../shared/utils/asset';
+import { Link } from 'react-router-dom';
 
 type Props = {
   item: Item;
@@ -13,6 +14,10 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
   return (
     <div key={item.product.id} className={styles.product}>
+      <Link
+        to={`/product/${item.product.itemId}`}
+        className={styles.productLink}
+      />
       <a className={styles.closeLink} onClick={() => remove(item.product.id)}>
         <img
           src={asset('/img/icons/close.png')}

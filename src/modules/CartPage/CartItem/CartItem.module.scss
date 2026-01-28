@@ -1,7 +1,14 @@
 @import '../../shared/styles/utils/viriables';
 @import '../../shared/styles/utils/mixins';
 
+.productLink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .product {
+  position: relative;
   display: grid;
   grid-template-columns: auto 64px 1fr auto;
   grid-template-areas:
@@ -17,6 +24,10 @@
     grid-template-columns: auto 80px 1fr auto auto;
     grid-template-areas: 'close image name nav price';
     gap: 24px;
+  }
+
+  &:hover {
+    border: 1px solid $color-hover-bg;
   }
 }
 
@@ -39,6 +50,8 @@
 .closeLink {
   grid-area: close;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .productImg {
@@ -46,6 +59,8 @@
 }
 
 .navLink {
+  position: relative;
+  z-index: 2;
   cursor: pointer;
   color: $color-primary;
   display: grid;

@@ -117,7 +117,11 @@
   }
 
   &:hover {
-    border: 1px solid $color-primary;
+    border: 1px solid $color-hover-bg;
+  }
+
+  &--active {
+    border-color: $color-primary;
   }
 }
 
@@ -198,7 +202,11 @@
   border: 1px solid $color-icons;
 
   &:hover {
-    border: 1px solid $color-primary;
+    border: 1px solid $color-hover-bg;
+  }
+
+  &--active {
+    border-color: $color-primary;
   }
 }
 

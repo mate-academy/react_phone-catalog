@@ -14,9 +14,15 @@ export const FavoritesPage: React.FC = () => {
         <h2>Favourites</h2>
       </div>
 
-      <p className={styles.count}>{count} items</p>
+      {items.length ? (
+        <>
+          <p className={styles.count}>{count} items</p>
 
-      <ProductsList products={items} />
+          <ProductsList products={items} />
+        </>
+      ) : (
+        <p>Your have no favourites</p>
+      )}
     </div>
   );
 };
