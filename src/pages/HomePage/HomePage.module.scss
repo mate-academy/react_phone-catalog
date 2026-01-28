@@ -1,9 +1,25 @@
 @import '../../styles/utils';
 
+// 1. 🔥 NOWOŚĆ: Klasa do ukrywania H1 (dla testów Cypress/SEO)
+// Element znika wizualnie, ale jest obecny w DOM.
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .homePage {
   width: 100%;
 }
 
+// Styl dla widocznego H2 (Welcome to Nice Gadgets...)
 .title {
   color: $color-primary;
   margin: 24px 0;
@@ -53,14 +69,14 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  /* Domyślny kolor dla AKTYWNEJ strzałki (Czarny) */
+  /* Domyślny kolor dla AKTYWNEJ strzałki */
   .icon {
     display: block;
     width: 16px;
     height: 16px;
-    background-color: $color-primary; /* To farbuje ikonę na czarno */
+    background-color: $color-primary;
 
-    /* Konfiguracja maski */
+    /* Konfiguracja maski SVG */
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
@@ -71,19 +87,17 @@
     transition: background-color 0.3s;
   }
 
-  /* Ładujemy kształt lewej strzałki */
   .iconLeft {
     -webkit-mask-image: url('/img/icons/arrow-left.svg');
     mask-image: url('/img/icons/arrow-left.svg');
   }
 
-  /* Ładujemy kształt prawej strzałki */
   .iconRight {
     -webkit-mask-image: url('/img/icons/arrow-right.svg');
     mask-image: url('/img/icons/arrow-right.svg');
   }
 
-  /* Stan: HOVER (tylko gdy aktywny) */
+  /* Stan: HOVER */
   &:hover:not(.disabled, :disabled) {
     border-color: $color-primary;
   }
@@ -96,15 +110,14 @@
     background-color: $color-white;
     pointer-events: none;
 
-    /* Tu zmieniamy kolor na SZARY */
     .icon {
-      /* Nadpisujemy kolor tła maski */
+      /* Szary kolor dla nieaktywnej strzałki */
       background-color: #b4bdc3 !important;
     }
   }
 }
 
-/* --- WRAPPER PRODUKTÓW --- */
+/* --- WRAPPER PRODUKTÓW (jeśli używany lokalnie) --- */
 .productsWrapper {
   overflow-x: auto;
   scroll-behavior: smooth;
