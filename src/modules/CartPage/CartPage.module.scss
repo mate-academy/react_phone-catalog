@@ -10,6 +10,7 @@
 
   @include on-tablet {
     margin: 40px 0 64px;
+    padding: 0;
   }
 
   @include on-desktop {
@@ -113,7 +114,7 @@
     }
 
     &_img {
-      width: 35%;
+      width: 30%;
     }
   }
 

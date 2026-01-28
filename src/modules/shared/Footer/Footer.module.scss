@@ -39,14 +39,12 @@ footer {
   }
 
   &__logo {
-
     @include on-tablet {
       padding: 32px;
     }
 
     @include on-desktop {
-      padding: 32px 152px;
-      padding-right: 0;
+      padding: 0;
     }
 
     &__img {

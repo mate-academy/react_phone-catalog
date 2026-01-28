@@ -209,9 +209,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
             <div className={styles.productdetailspage__info_main}>
               <div className={styles.productdetailspage__info__price}>
-                <h2
-                  className={styles.productdetailspage__info__price_disconout}
-                >
+                <h2 className={styles.productdetailspage__info__price_discount}>
                   ${product.price}
                 </h2>
                 <h2 className={styles.productdetailspage__info__price_full}>

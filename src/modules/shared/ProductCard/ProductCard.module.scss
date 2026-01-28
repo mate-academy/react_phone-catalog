@@ -65,7 +65,7 @@
       letter-spacing: 0%;
     }
 
-    &_disconout {
+    &_discount {
       margin: 0;
 
       font-family: Mont, sans-serif;
@@ -92,6 +92,7 @@
       display: flex;
       justify-content: space-between;
     }
+
     &_label {
       font-family: Mont, sans-serif;
       font-size: 12px;
@@ -100,6 +101,7 @@
       color: $secondary-color;
       letter-spacing: 0%;
     }
+
     &_value {
       font-family: Mont, sans-serif;
       font-size: 12px;
@@ -110,6 +112,7 @@
       letter-spacing: 0%;
     }
   }
+
   &__buttons {
     display: flex;
     gap: 8px;

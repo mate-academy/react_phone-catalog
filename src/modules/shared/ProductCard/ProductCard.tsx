@@ -8,6 +8,7 @@ const favoriteIcons = '/react_phone-catalog/img/icons/';
 
 type ProductCardProps = {
   product: ProductType;
+  showDiscount?: boolean;
 };
 
 type ProductCardViewProps = {
@@ -17,6 +18,7 @@ type ProductCardViewProps = {
   onAddToCart: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onAddToFavorites: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onNavigate: () => void;
+  showDiscount?: boolean;
 };
 
 const ProductCardView: React.FC<ProductCardViewProps> = memo(
@@ -27,6 +29,7 @@ const ProductCardView: React.FC<ProductCardViewProps> = memo(
     onAddToCart,
     onAddToFavorites,
     onNavigate,
+    showDiscount,
   }) => {
     return (
       <div className={styles.productcard} onClick={onNavigate}>
@@ -37,12 +40,20 @@ const ProductCardView: React.FC<ProductCardViewProps> = memo(
         />
         <h3 className={styles.productcard__title}>{product.name}</h3>
         <div className={styles.productcard__price}>
-          <h2 className={styles.productcard__price_disconout}>
-            ${product.price}
-          </h2>
-          <h2 className={styles.productcard__price_full}>
-            ${product.fullPrice}
-          </h2>
+          {showDiscount && product.fullPrice !== product.price ? (
+            <>
+              <h2 className={styles.productcard__price_discount}>
+                ${product.price}
+              </h2>
+              <h2 className={styles.productcard__price_full}>
+                ${product.fullPrice}
+              </h2>
+            </>
+          ) : (
+            <h2 className={styles.productcard__price_discount}>
+              ${product.fullPrice}
+            </h2>
+          )}
         </div>
         <div className={styles.productcard__info}>
           <div className={styles.productcard__info_row}>
@@ -103,7 +114,10 @@ const ProductCardView: React.FC<ProductCardViewProps> = memo(
 
 ProductCardView.displayName = 'ProductCardView';
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  showDiscount = true,
+}) => {
   const { cart, favorites, toggleCart, toggleFav } = useProducts();
   const navigate = useNavigate();
 
@@ -145,6 +159,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       onAddToCart={handleAddToCart}
       onAddToFavorites={handleAddToFavorites}
       onNavigate={handleNavigate}
+      showDiscount={showDiscount}
     />
   );
 };

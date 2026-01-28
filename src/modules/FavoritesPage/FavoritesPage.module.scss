@@ -4,18 +4,31 @@
 .favpage {
   @include page-grid;
 
-  @include on-phone{
+  flex: 1;
+  padding: 0 24px;
+
+  @include on-phone {
     margin: 24px 0 56px;
   }
 
-  @include on-tablet{
+  @include on-tablet {
     margin: 24px 0 64px;
   }
 
-  @include on-desktop{
+  @include on-desktop {
     margin: 24px 0 80px;
   }
 
+  &__header {
+    grid-column: 1 / -1;
+  }
+
+  &__empty {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
   &__title {
     grid-column: 1/6;
@@ -29,13 +42,13 @@
     text-align: left;
     letter-spacing: -1%;
 
-    @include on-phone{
+    @include on-phone {
       margin-top: 24px;
       font-size: 32px;
       line-height: 41px;
     }
 
-    @include on-tablet{
+    @include on-tablet {
       margin-top: 40px;
       font-size: 48px;
       line-height: 56px;
@@ -58,11 +71,12 @@
       margin: 8px 0 32px;
     }
 
-    @include on-tablet{
+    @include on-tablet {
       margin: 8px 0 40px;
     }
 
-    font-family: Mont, sans-serif;
+    font-family: Mont,
+    sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;

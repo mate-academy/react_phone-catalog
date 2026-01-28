@@ -3,9 +3,15 @@
 
 .productsslider {
   position: relative;
+
   overflow: hidden;
   justify-content: center;
+
   width: 100%;
+
+  // We add padding to show borders/shadows and negative margin to compensate
+  margin: -8px;
+  padding: 8px;
 
   &__header {
     display: flex;

@@ -147,7 +147,12 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
               </div>
             ))
             : result.map(product => (
-              <ProductCard key={product.id} product={product} />
+              // eslint-disable-next-line max-len
+              <ProductCard
+                key={product.id}
+                product={product}
+                showDiscount={title !== 'Brand new models'}
+              />
             ))}
           {!currentLoading && (
             <button

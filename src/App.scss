@@ -15,6 +15,8 @@ body.dark {
   color-scheme: dark;
 
   // Make black icons pure white in dark mode
+  // We use both src*= and class*= because in production (GitHub Pages) 
+  // small images are often inlined as Data URLs, breaking src*= selectors.
   img[src*="icon-logo"],
   img[src*="icon-menu"],
   img[src*="icon-favourites-heart-like"],
@@ -23,12 +25,23 @@ body.dark {
   img[src*="icon-search"],
   img[src*="icon-chevron-arrow"],
   img[src*="icon-light-theme"],
-  img[src*="icon-dark-theme"] {
+  img[src*="icon-dark-theme"],
+  img[class*="header__but__link__img"],
+  img[class*="header__logo__img"],
+  img[class*="header__theme_but__img"],
+  img[class*="productcard__buttons_like__img"],
+  img[class*="footer__logo__img"],
+  img[class*="footer__scroll_top__btn_img"],
+  img[class*="menu__but__link__img"],
+  img[class*="menu__logo__img"],
+  img[class*="menu__but__link_bottom__img"],
+  img[class*="breadcrumbs__icon"] {
     filter: brightness(0) invert(1);
   }
 
   // Except filled ones if they should remain red
-  img[src*="filled"] {
+  img[src*="filled"],
+  img[class*="filled"] {
     filter: none;
   }
 }

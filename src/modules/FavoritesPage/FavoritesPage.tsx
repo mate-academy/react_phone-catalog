@@ -13,11 +13,15 @@ export const FavoritesPage: React.FC = () => {
     <>
       <Header />
       <div className={styles.favpage}>
-        <Breadcrumbs category={'Favourites'} productId={''} />
-        <h1 className={styles.favpage__title}>Favourites</h1>
+        <div className={styles.favpage__header}>
+          <Breadcrumbs category={'Favourites'} productId={''} />
+          <h1 className={styles.favpage__title}>Favourites</h1>
+        </div>
 
         {favorites.length === 0 ? (
-          <p className={styles.favpage__p}>No favorite products yet</p>
+          <div className={styles.favpage__empty}>
+            <p className={styles.favpage__p}>No favorite products yet</p>
+          </div>
         ) : (
           <>
             <p className={styles.favpage__countmodel_p}>
