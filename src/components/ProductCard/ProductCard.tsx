@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import styles from './ProductCardDiscount.module.scss';
+import styles from './ProductCard.module.scss';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
 
@@ -8,7 +8,7 @@ type Props = {
   product: Product;
 };
 
-export const ProductCardDiscount: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { addToCart, isInCart } = useCart();
 

@@ -7,7 +7,7 @@ export const FavoritesPage = () => {
   const { favoriteProducts } = useFavorites();
 
   return (
-    <main className={`${styles.main} ${styles.container}`}>
+    <div className={`${styles.main} ${styles.container}`}>
       <div className={styles.main__breadcrumbs}>
         <Breadcrumbs />
       </div>
@@ -27,6 +27,6 @@ export const FavoritesPage = () => {
           <ProductsGrid products={favoriteProducts} />
         </div>
       )}
-    </main>
+    </div>
   );
 };

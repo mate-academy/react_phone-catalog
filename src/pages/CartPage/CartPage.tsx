@@ -44,7 +44,7 @@ export const CartPage = () => {
   }, [cartItems, products]);
 
   return (
-    <main className={`${styles.main} ${styles.container}`}>
+    <div className={`${styles.main} ${styles.container}`}>
       {isLoading && <Loader />}
       {error && <p className={styles.main__errorTitle}>{error}</p>}
 
@@ -98,6 +98,6 @@ export const CartPage = () => {
             </div>
           </>
         ))}
-    </main>
+    </div>
   );
 };

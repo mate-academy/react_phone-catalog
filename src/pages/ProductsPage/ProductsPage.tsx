@@ -44,7 +44,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   );
 
   return (
-    <main className={`${styles.main} ${styles.container}`}>
+    <div className={`${styles.main} ${styles.container}`}>
       {loading && <Loader />}
 
       {error && (
@@ -89,6 +89,6 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
           )}
         </>
       )}
-    </main>
+    </div>
   );
 };

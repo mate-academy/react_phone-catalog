@@ -14,10 +14,7 @@
   }
 
   &__swiper {
-    height: 100vw;
-    width: 100vw;
     position: relative;
-    padding-bottom: 24px;
 
     @include on-tablet {
       width: 100%;
@@ -54,9 +51,6 @@
   &__button {
     display: none;
 
-    background-color: $white-color;
-    border: 1px solid #B4BDC3;
-
     @include on-tablet {
       position: absolute;
       display: flex;
@@ -66,6 +60,13 @@
       top: 0;
       width: 32px;
       height: 100%;
+      cursor: pointer;
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
     }
 
     &--prev {

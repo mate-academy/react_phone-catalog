@@ -6,7 +6,7 @@ import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <h1 className={styles.main__title}>Welcome to Nice Gadgets store!</h1>
 
       <section className={styles.main__banner}>
@@ -24,6 +24,6 @@ export const HomePage = () => {
       <section className={styles.main__hotPrices}>
         <HotPrices />
       </section>
-    </main>
+    </div>
   );
 };
