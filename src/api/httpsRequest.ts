@@ -1,8 +1,8 @@
 import { ProductAllType, ProductType } from '../types/Product';
-import phones from '../../public/api/phones.json';
-import tablets from '../../public/api/tablets.json';
-import accessories from '../../public/api/accessories.json';
-import productsAll from '../../public/api/products.json';
+import phones from '../api/phones.json';
+import tablets from '../api/tablets.json';
+import accessories from '../api/accessories.json';
+import productsAll from '../api/products.json';
 import { NameCategory, NameProducts } from '../types/NameProducts';
 
 export const getProducts = async (param: NameProducts) => {
