@@ -1,6 +1,12 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable max-len */
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+} from 'react';
 import { Breadcrumbs } from '../../shared/Breadcrumbs';
 import styles from './ProductDetailsPage.module.scss';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -122,6 +128,53 @@ export const ProductDetailsPage: React.FC = () => {
     )
     : false;
 
+  const touchStart = useRef<number | null>(null);
+
+  const handleNextImage = useCallback(() => {
+    if (!activeImage || images.length <= 1) {
+      return;
+    }
+
+    const currentIndex = images.indexOf(activeImage);
+    const nextIndex = (currentIndex + 1) % images.length;
+
+    setActiveImage(images[nextIndex]);
+  }, [activeImage, images]);
+
+  const handlePrevImage = useCallback(() => {
+    if (!activeImage || images.length <= 1) {
+      return;
+    }
+
+    const currentIndex = images.indexOf(activeImage);
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+
+    setActiveImage(images[prevIndex]);
+  }, [activeImage, images]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart.current === null) {
+      return;
+    }
+
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart.current - touchEnd;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNextImage();
+      } else {
+        handlePrevImage();
+      }
+    }
+
+    touchStart.current = null;
+  };
+
   return (
     <div className={styles.productdetailspage_container}>
       {product ? (
@@ -160,7 +213,11 @@ export const ProductDetailsPage: React.FC = () => {
                 </button>
               ))}
             </div>
-            <div className={styles.productdetailspage__gallery__main}>
+            <div
+              className={styles.productdetailspage__gallery__main}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={`/react_phone-catalog/${activeImage}`}
                 alt={product.name}
