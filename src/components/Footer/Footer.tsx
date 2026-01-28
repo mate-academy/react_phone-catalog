@@ -1,9 +1,9 @@
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 
-import logoIcon from './../../images/header/Logo.png';
+import logoIcon from './../../images/header/logo.svg';
 import arrowUp from './../../images/icons/arrow-up.svg';
-import { scrollToTop } from '../../utils/utils';
+import { scrollToTop } from './../../utils/utils';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const {

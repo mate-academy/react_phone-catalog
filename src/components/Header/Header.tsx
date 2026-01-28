@@ -7,7 +7,7 @@ import favoriteIcon from '../../images/icons/Favourites-like.svg';
 import cartIcon from '../../images/icons/Shopping bag (Cart).svg';
 import burgerIcon from '../../images/icons/burger.svg';
 import closeIcon from '../../images/icons/close.svg';
-import logoIcon from '../../images/header/Logo.png';
+import logoIcon from '../../images/header/logo.svg';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 
 /* eslint-disable @typescript-eslint/naming-convention */
