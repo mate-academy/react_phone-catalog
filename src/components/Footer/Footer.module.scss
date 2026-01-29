@@ -1,6 +1,6 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
-@import '../../styles/fonts.scss';
+@import '../../styles/fonts';
 
 .footer {
   --column: 4;
@@ -12,8 +12,7 @@
 
   display: grid;
   grid-template-columns: repeat(var(--column), 1fr);
-  row-gap: 32px;
-  column-gap: 16px;
+  gap: 32px 16px;
   flex-direction: column;
   align-items: center;
 
@@ -24,6 +23,7 @@
 
   @include on-tablet {
     --column: 12;
+
     flex-direction: row;
     justify-content: center;
 
@@ -33,6 +33,7 @@
 
   @include on-desktop {
     --column: 24;
+
     grid-template-columns: repeat(var(--column), 32px);
   }
 
@@ -74,8 +75,11 @@
 
   &__link {
     text-decoration: none;
+
     color: $secondary-color;
+
     @include font-uppercase;
+    
     line-height: 11px;
 
     &:hover {
@@ -102,7 +106,9 @@
 
     &__text {
       margin: 0;
+
       @include font-small-text;
+
       color: $secondary-color;
       font-weight: 700;
     }

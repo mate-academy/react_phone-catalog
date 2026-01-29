@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .card {
   min-width: 212px;
@@ -18,7 +18,7 @@
   border: 1px solid $elements-color;
 
   &:hover {
-    box-shadow: 0px 2px 16px 0px #0000001A;
+    box-shadow: 0 2px 16px 0 #0000001A;
   }
 
   @include on-tablet {
@@ -57,7 +57,9 @@
   &__title {
     box-sizing: border-box;
     padding-top: 16px;
+
     @include font-body;
+
     font-weight: 600;
     color: $primary-color;
     flex-shrink: 0;
@@ -74,7 +76,7 @@
 
     &__full {
       display: inline-block;
-      font-family: 'MontRegular', sans-serif;
+      font-family: MontRegular, sans-serif;
       font-weight: 600;
       font-size: 22px;
       line-height: 100%;
@@ -106,11 +108,13 @@
 
     &__name {
       @include font-small-text;
+
       color: $secondary-color;
     }
 
     &__value {
       @include font-small-text;
+
       color: $primary-color;
     }
   }
@@ -129,6 +133,7 @@
     flex-grow: 1;
 
     @include font-buttons;
+
     border: none;
     font-weight: 700;
 
@@ -138,7 +143,7 @@
       cursor: pointer;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px #17203166;
+        box-shadow: 0 3px 13px 0 #17203166;
       }
     }
 

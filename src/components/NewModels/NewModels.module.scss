@@ -1,6 +1,6 @@
-@import '/src/styles/mixins.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/fonts.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
 
 .swiper {
   &__slide {
@@ -31,11 +31,13 @@
     height: 62px;
     width: 136px;
     display: block;
+
     @include font-h2-mobile;
 
     @include on-tablet {
       height: 41px;
       width: 490px;
+
       @include font-h2;
     }
   }

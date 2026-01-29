@@ -1,6 +1,6 @@
-@import '/src/styles/mixins.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/fonts.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
 
 .techSpecs {
   display: flex;
@@ -25,6 +25,7 @@
     width: 100%;
 
     @include font-h3-mobile;
+
     color: $primary-color;
 
     @include on-tablet {
@@ -59,12 +60,15 @@
 
   &__itemTitle {
     text-transform: capitalize;
+
     @include font-body;
+
     color: $secondary-color;
   }
 
   &__itemText {
     @include font-body;
+
     color: $primary-color;
   }
 }

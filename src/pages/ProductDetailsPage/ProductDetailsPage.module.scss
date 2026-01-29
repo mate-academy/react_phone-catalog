@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .main {
   margin-bottom: 56px;
@@ -18,8 +18,9 @@
   &__errorTitle {
     display: block;
     text-align: center;
-    @include font-h4;
     color: $primary-color;
+
+    @include font-h4;
   }
 
   &__errorImg {
@@ -37,9 +38,6 @@
   &__breadcrumbs {
     width: 100%;
     height: 16px;
-
-    @include on-tablet {
-    }
   }
 
   &__buttonBack {
@@ -52,6 +50,7 @@
 
   &__title {
     margin-top: 16px;
+
     @include font-h2-mobile;
 
     @include on-tablet {
@@ -107,6 +106,7 @@
 
 .hero {
   @include page-grid;
+
   position: relative;
 
   &__bigSwiper {
@@ -158,15 +158,15 @@
       position: absolute;
       z-index: -1;
       right: 0;
+      color: $icons-color;
 
       @include font-small-text;
-      color: $icons-color;
     }
 
     &__menu {
       @include on-desktop{
-      grid-column: 14 / 21;
-    }
+        grid-column: 14 / 21;
+      }
     }
   }
 }

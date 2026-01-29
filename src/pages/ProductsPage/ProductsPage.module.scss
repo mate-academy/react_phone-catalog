@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .main {
   margin-top: 24px;
@@ -12,20 +12,23 @@
 
   &__title {
     @include font-h1-mobile;
+
     margin: 0;
     margin-top: 24px;
 
     @include on-tablet {
       @include font-h1;
+
       margin-top: 40px;
     }
   }
 
   &__errorTitle {
     margin: 0 auto;
-    @include font-body;
     color: $primary-color;
     display: block;
+
+    @include font-body;
   }
 
   &__reloadButton {
@@ -37,8 +40,9 @@
     border: 1px solid $icons-color;
     background-color: $white-color;
     color: $primary-color;
-    @include font-buttons;
     text-align: center;
+
+    @include font-buttons;
 
     &:hover {
       border-color: $primary-color;
@@ -47,8 +51,9 @@
 
   &__count {
     margin-top: 8px;
-    @include font-body;
     color: $secondary-color;
+
+    @include font-body;
   }
 
   &__content {

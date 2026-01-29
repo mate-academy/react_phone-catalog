@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .total {
   width: 288px;
@@ -27,12 +27,14 @@
   &__price {
     display: block;
     color: $primary-color;
+
     @include font-h2;
   }
 
   &__quantity {
     display: block;
     color: $secondary-color;
+
     @include font-body;
   }
 
@@ -54,13 +56,15 @@
 
     background-color: $primary-color;
     color: $white-color;
+
     @include font-buttons;
+
     border: 0;
 
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+      box-shadow: 0 3px 13px 0 #17203166;
     }
 
     @include on-desktop {

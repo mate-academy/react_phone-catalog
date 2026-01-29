@@ -1,6 +1,6 @@
-@import '/src/styles/mixins.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/fonts.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
 
 .crumbs {
   display: flex;
@@ -29,7 +29,9 @@
 
   &__link {
     text-decoration: none;
+
     @include font-small-text;
+
     color: $secondary-color;
 
     &:hover {
@@ -39,6 +41,7 @@
 
   &__span {
     @include font-small-text;
+
     color: $secondary-color;
   }
 }

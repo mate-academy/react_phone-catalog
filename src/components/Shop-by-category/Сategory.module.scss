@@ -1,27 +1,30 @@
-@import '/src/styles/mixins.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/fonts.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
 
 .category {
   &__title {
     width: 136px;
     display: block;
+
     @include font-h2-mobile;
 
     @include on-tablet {
       height: 41px;
       width: 490px;
+
       @include font-h2;
     }
   }
 
   &__content {
     @include page-grid;
+
     margin-top: 24px;
     row-gap: 32px;
 
     @include on-tablet {
-      row-gap: 0px;
+      row-gap: 0;
     }
   }
 
@@ -42,6 +45,7 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
+
     @include hover (transform, scale(1.1));
 
   &--phones {
@@ -63,6 +67,7 @@
 
     &__name {
       width: 200px;
+
       @include font-h4;
     }
 

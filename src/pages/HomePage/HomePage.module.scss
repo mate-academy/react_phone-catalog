@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .main {
   flex: 1;
@@ -21,7 +21,9 @@
 
   &__title {
     margin: 0;
+
     @include font-h1-mobile;
+
     color: $primary-color;
 
     position: absolute;

@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .pagination {
   grid-column: 1 / -1;
@@ -20,6 +20,7 @@
 
   &__item {
     @include font-body;
+
     width: 32px;
     height: 32px;
     display: flex;
@@ -43,11 +44,9 @@
 
   &__prev,
   &__next {
-
     display: block;
     width: 32px;
     height: 32px;
-    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -60,18 +59,20 @@
       display: block;
       text-indent: 0;
     }
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 
   &__prev {
-    background-image: url('/public/img/icons/icon-arrow-left.svg');
+    background-image: url('./img/icons/icon-arrow-left.svg');
+    &:not(.pagination__itemDisabled):hover {
+      border-color: $primary-color;
+    }
   }
 
   &__next {
-    background-image: url('/public/img/icons/icon-arrow-right.svg');
+    background-image: url('./img/icons/icon-arrow-right.svg');
+    &:not(.pagination__itemDisabled):hover {
+      border-color: $primary-color;
+    }
   }
 
   &__break {

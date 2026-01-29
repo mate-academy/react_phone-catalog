@@ -1,6 +1,6 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .main {
   margin-top: 24px;
@@ -19,6 +19,7 @@
     margin-bottom: 0;
 
     @include font-h1-mobile;
+
     color: $primary-color;
 
     @include on-tablet {
@@ -28,6 +29,7 @@
 
   &__errorTitle {
     @include font-body;
+
     color: $primary-color;
   }
 
@@ -35,6 +37,7 @@
     margin-top: 8px;
     height: 21px;
     color: $secondary-color;
+    
     @include font-body;
   }
 

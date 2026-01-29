@@ -1,19 +1,14 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .control {
   display: flex;
   flex-direction: column;
 
-  @include on-tablet {
-  }
-
-  @include on-desktop {
-  }
-
   &__title {
     @include font-small-text;
+
     color: $secondary-color;
 
     &__capacity {
@@ -64,9 +59,19 @@
     width: 100%;
     margin-top: 8px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 8px;
+
+    &__input {
+      display: none;
+    }
+
+    &__value {
+      @include font-body;
+
+      color: $primary-color;
+      padding-inline: 8px;
+    }
 
     &__capacity {
       box-sizing: border-box;
@@ -86,15 +91,6 @@
         }
     }
   }
-
-    &__input {
-      display: none;
-    }
-    &__value {
-      @include font-body;
-      color: $primary-color;
-      padding-inline: 8px;
-    }
   }
 
   &__price {
@@ -109,7 +105,7 @@
 
     &__full {
       display: inline-block;
-      font-family: 'MontRegular', sans-serif;
+      font-family: MontRegular, sans-serif;
       font-weight: 500;
       font-size: 22px;
       line-height: 100%;
@@ -141,6 +137,7 @@
     flex-grow: 1;
 
     @include font-buttons;
+
     border: none;
     font-weight: 700;
 
@@ -150,7 +147,7 @@
       cursor: pointer;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px #17203166;
+        box-shadow: 0 3px 13px 0 #17203166;
       }
     }
 
@@ -204,11 +201,13 @@
 
     &__name {
       @include font-small-text;
+
       color: $secondary-color;
     }
 
     &__value {
       @include font-small-text;
+
       color: $primary-color;
     }
   }

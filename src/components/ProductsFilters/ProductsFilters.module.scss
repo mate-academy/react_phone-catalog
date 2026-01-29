@@ -1,11 +1,12 @@
-@import '/src/styles/fonts.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/mixins.scss';
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 
 .filters {
   grid-column: 1 / -1;
 
   @include page-grid;
+
   margin-top: 32px;
 
   @include on-tablet {
@@ -34,18 +35,18 @@
 
   &__label {
     @include font-small-text;
+
     color: $secondary-color;
   }
 }
 
 :global {
-  .rs {
-  }
-
   .rs__control {
     min-height: 40px;
     border: 1px solid $icons-color;
+
     @include font-buttons;
+
     border-radius: 0 !important;
 
     &:hover {
@@ -83,12 +84,14 @@
   .rs__menu {
     margin-top: 4px !important;
     border-radius: 0 !important;
-    box-shadow: 0px 2px 15px 0px #0000000D;
+    box-shadow: 0 2px 15px 0 #0000000D;
   }
 
   .rs__option {
     padding: 6px 12px;
+
     @include font-body;
+
     color: $secondary-color !important;
     background-color: $white-color !important;
 

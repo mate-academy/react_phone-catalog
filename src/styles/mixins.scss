@@ -1,4 +1,4 @@
-@import '/src/styles/variables.scss';
+@import '/src/styles/variables';
 
 @mixin on-mobile {
   @media (min-width: $mobile-min-width) {
@@ -39,6 +39,7 @@
 
   @include on-desktop {
     --colums: 24;
+
     grid-template-columns: repeat(var(--colums), 32px);
   }
 }
@@ -74,12 +75,12 @@
 
     transition: all 0.2s ease;
 
-  &:hover:not(:disabled) {
-    border-color: $primary-color;
-  }
-
   &:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
   }
 }

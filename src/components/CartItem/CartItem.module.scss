@@ -1,6 +1,6 @@
-@import '/src/styles/mixins.scss';
-@import '/src/styles/variables.scss';
-@import '/src/styles/fonts.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
 
 .cartItem {
   width: 288px;
@@ -56,7 +56,9 @@
 
   &__name {
     width: 128px;
+
     @include font-body;
+
     color: $primary-color;
 
     @include on-tablet {
@@ -104,6 +106,7 @@
 
   &__itemQuantity {
     @include font-body;
+
     color: black;
   }
 
@@ -111,7 +114,9 @@
     width: 80px;
     display: flex;
     justify-content: end;
+
     @include font-h3;
+
     color: $primary-color;
   }
 }

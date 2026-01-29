@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './ Header.module.scss';
+import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu } from '../Menu/Menu';
 import { useFavorites } from '../../context/FavoritesContext';
