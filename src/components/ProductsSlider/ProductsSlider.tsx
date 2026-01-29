@@ -11,9 +11,14 @@ import 'swiper/css/navigation';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }: Props) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  showDiscount,
+}: Props) => {
   const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
 
@@ -57,7 +62,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }: Props) => {
                 key={p.id}
                 className={styles.slider__content__slider}
               >
-                <ProductCard product={p} />
+                <ProductCard product={p} showDiscount={showDiscount} />
               </SwiperSlide>
             ))}
           </Swiper>

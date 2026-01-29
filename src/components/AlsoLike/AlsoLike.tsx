@@ -25,5 +25,11 @@ export const AlsoLike = () => {
     });
   }, []);
 
-  return <ProductsSlider title="You may also like" products={products} />;
+  return (
+    <ProductsSlider
+      title="You may also like"
+      products={products}
+      showDiscount={true}
+    />
+  );
 };

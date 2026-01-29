@@ -25,5 +25,11 @@ export const HotPrices = () => {
     });
   }, []);
 
-  return <ProductsSlider title="Hot prices" products={products} />;
+  return (
+    <ProductsSlider
+      title="Hot prices"
+      products={products}
+      showDiscount={true}
+    />
+  );
 };

@@ -136,11 +136,11 @@
 
     border: none;
     font-weight: 700;
+    cursor: pointer;
 
     &--add {
       background-color: $primary-color;
       color: $white-color;
-      cursor: pointer;
 
       &:hover {
         box-shadow: 0 3px 13px 0 #17203166;

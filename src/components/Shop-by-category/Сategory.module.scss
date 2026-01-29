@@ -46,7 +46,7 @@
     object-fit: cover;
     display: block;
 
-    @include hover (transform, scale(1.1));
+    @include hover (transform, scale(1.05));
 
   &--phones {
     background-color: #6D6474;

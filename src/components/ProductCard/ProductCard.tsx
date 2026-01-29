@@ -6,9 +6,10 @@ import { useCart } from '../../context/CartContext';
 
 type Props = {
   product: Product;
+  showDiscount: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { addToCart, isInCart } = useCart();
 
@@ -23,8 +24,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={styles.card__title}>{product.name}</div>
       </NavLink>
       <div className={styles.card__prices}>
-        {product.fullPrice - product.price === 0 ? (
-          <div className={styles.card__prices__price}>${product.fullPrice}</div>
+        {product.fullPrice - product.price === 0 || !showDiscount ? (
+          <div className={styles.card__prices__price}>${product.price}</div>
         ) : (
           <>
             <div className={styles.card__prices__price}>${product.price}</div>
@@ -59,7 +60,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               : styles['card__addButton--add']
           }`}
           onClick={() => addToCart(product.itemId)}
-          disabled={isInCart(product.itemId)}
         >
           {isInCart(product.itemId) ? 'Added to cart' : 'Add to cart'}
         </button>

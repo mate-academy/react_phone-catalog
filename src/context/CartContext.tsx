@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { CartItem } from '../types/CartItem';
+import { CartItemType } from '../types/CartItem';
 
 type CartContextType = {
-  cartItems: CartItem[];
+  cartItems: CartItemType[];
 
   addToCart: (productId: string) => void;
   removeFromCart: (productId: string) => void;
@@ -21,7 +21,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
+  const [cartItems, setCartItems] = useLocalStorage<CartItemType[]>('cart', []);
 
   const addToCart = (productId: string) => {
     if (!productId) {
@@ -31,10 +31,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const exists = cartItems.some(item => item.productId === productId);
 
     if (exists) {
-      return;
+      setCartItems(cartItems.filter(item => item.productId !== productId));
+    } else {
+      setCartItems([...cartItems, { productId, quantity: 1 }]);
     }
-
-    setCartItems([...cartItems, { productId: productId, quantity: 1 }]);
   };
 
   const removeFromCart = (productId: string) => {
