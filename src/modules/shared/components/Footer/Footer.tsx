@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { asset } from '../../utils/asset';
 
@@ -22,15 +22,30 @@ export const Footer = () => {
           </div>
           <nav className={styles.nav}>
             <div className={styles.navLinks}>
-              <NavLink to="/" className={styles.navLink}>
+              <a
+                href="https://github.com/iryna-knyzh/react_phone-catalog"
+                className={styles.navLink}
+                target="_blank"
+                rel="noreferrer"
+              >
                 GitHub
-              </NavLink>
-              <NavLink to={{ pathname: '/phones' }} className={styles.navLink}>
+              </a>
+              <a
+                href="https://github.com/iryna-knyzh/react_phone-catalog"
+                className={styles.navLink}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Contacts
-              </NavLink>
-              <NavLink to={{ pathname: '/tablets' }} className={styles.navLink}>
+              </a>
+              <a
+                href="https://github.com/iryna-knyzh/react_phone-catalog"
+                className={styles.navLink}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Rights
-              </NavLink>
+              </a>
             </div>
           </nav>
           <div className={styles.back}>

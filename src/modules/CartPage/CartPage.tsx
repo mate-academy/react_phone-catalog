@@ -37,27 +37,33 @@ export const CartPage = () => {
       <h1 className={styles.sectionTitle}>Cart</h1>
 
       <div className={styles.content}>
-        <div className={styles.products}>
-          {items.length ? (
-            items.map(item => <CartItem key={item.id} item={item} />)
-          ) : (
-            <p>Your cart is empty</p>
-          )}
-        </div>
+        {items.length ? (
+          <>
+            <div className={styles.products}>
+              {items.map(item => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
 
-        <div className={styles.totalBlock}>
-          <div className={styles.totalDescription}>
-            <p className={styles.total}>${totalAmount.toFixed(2)}</p>
-            <p className={styles.totalText}>Total for ${totalQuantity} items</p>
-          </div>
+            <div className={styles.totalBlock}>
+              <div className={styles.totalDescription}>
+                <p className={styles.total}>${totalAmount.toFixed(2)}</p>
+                <p className={styles.totalText}>
+                  Total for ${totalQuantity} items
+                </p>
+              </div>
 
-          <button
-            className={styles.buttonCheckout}
-            onClick={() => setOpenModal(true)}
-          >
-            Checkout
-          </button>
-        </div>
+              <button
+                className={styles.buttonCheckout}
+                onClick={() => setOpenModal(true)}
+              >
+                Checkout
+              </button>
+            </div>
+          </>
+        ) : (
+          <p>Your cart is empty</p>
+        )}
       </div>
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
         <p>Checkout is not implemented yet.</p>
