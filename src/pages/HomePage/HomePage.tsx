@@ -90,10 +90,9 @@ export const HomePage = () => {
 
   return (
     <div className={styles.homePage}>
-      {/* 🔥 ZMIANA 1: Ukryty H1 dla testów Cypress */}
       <h1 className={styles.visuallyHidden}>Product Catalog</h1>
 
-      {/* 🔥 ZMIANA 2: Widoczny tytuł zmieniony na H2 (wygląda tak samo dzięki klasie .title) */}
+      {/* Widoczny tytuł zmieniony na H2 (wygląda tak samo dzięki klasie .title) */}
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.sliderWrapper}>
