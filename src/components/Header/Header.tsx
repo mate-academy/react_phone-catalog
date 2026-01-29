@@ -54,7 +54,7 @@ export const Header = () => {
             </div>
             <div className={styles.icon__background}>
               <Link
-                to="/shopping-bag-cart"
+                to="#shopping-bag-cart"
                 className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
               ></Link>
               <div className={styles.icon__background}>

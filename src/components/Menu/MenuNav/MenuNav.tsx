@@ -7,22 +7,22 @@ export const MenuNav: React.FC = () => {
       <nav className={`${styles.nav} ${styles.menu__nav}`}>
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <Link to="/" className={styles.nav__link}>
+            <Link to="/" className={styles.nav__link} reloadDocument>
               Home
             </Link>
           </li>
           <li className={styles.nav__item}>
-            <Link to="/phones" className={styles.nav__link}>
+            <Link to="/phones" className={styles.nav__link} reloadDocument>
               Phones
             </Link>
           </li>
           <li className={styles.nav__item}>
-            <Link to="/tablets" className={styles.nav__link}>
+            <Link to="/tablets" className={styles.nav__link} reloadDocument>
               tablets
             </Link>
           </li>
           <li className={styles.nav__item}>
-            <Link to="/accessories" className={styles.nav__link}>
+            <Link to="/accessories" className={styles.nav__link} reloadDocument>
               accessories
             </Link>
           </li>

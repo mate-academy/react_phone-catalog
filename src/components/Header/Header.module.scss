@@ -26,6 +26,7 @@
   background-position: center;
   object-fit: cover;
   margin: 16px;
+  width: object-fit;
 
   box-sizing: border-box;
 
@@ -80,13 +81,12 @@
 }
 
 .topBar {
-  padding-block: 0;
   border-bottom: 1px solid $header-border-color;
-
   display: flex;
   justify-content:  space-between;
 
   width: 100%;
+  height: 100%;
 
   &__menu {
       display: none ;
@@ -105,27 +105,13 @@
   }
 
   &__icons {
+      border: 1px solid red;;
     display: flex;
     width: object-fit;
     height: 48px;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-  }
-
-  &__logo-link {
-    display: flex;
-  }
-
-  &__logo {
-    width: 96px;
-    height: 48px;
-
-  @include on-desktop {
-      width: 96px;
-      height: 48px;
-  }
-
   }
 
    button {

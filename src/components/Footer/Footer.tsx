@@ -22,10 +22,18 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
               >
                 Github
               </a>
-              <Link to="/contacts" className={styles.footer__contacts}>
+              <Link
+                to="/contacts"
+                className={styles.footer__contacts}
+                reloadDocument
+              >
                 Contacts
               </Link>
-              <Link to="/rights" className={styles.footer__rights}>
+              <Link
+                to="/rights"
+                className={styles.footer__rights}
+                reloadDocument
+              >
                 rights
               </Link>
             </div>
@@ -49,10 +57,14 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
           >
             Github
           </a>
-          <Link to="/contacts" className={styles.footer__contacts}>
+          <Link
+            to="/contacts"
+            className={styles.footer__contacts}
+            reloadDocument
+          >
             Contacts
           </Link>
-          <Link to="/rights" className={styles.footer__rights}>
+          <Link to="/rights" className={styles.footer__rights} reloadDocument>
             rights
           </Link>
           <button

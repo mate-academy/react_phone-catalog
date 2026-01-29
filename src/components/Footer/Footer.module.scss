@@ -1,28 +1,27 @@
 @use '../../utils/vars' as *;
 @import '../Header/Header.module';
+@import './../Logo/Logo.module';
 
 .footer {
   background-color: $footer-background-color;
 
   .topBarMobile {
+    border: 1px solid red;
+    margin: 0;
+    padding: 0;
     display: block;
 
     @include on-tablet {
         display: none;
     }
 
-    .logo {
-      margin-block: 32px;
-      border: 1px solid red;
-    }
-
   }
+
 
 
   .topBar {
     border-bottom: 0;
     margin-block: auto;
-
     display: none;
 
      @include on-tablet {

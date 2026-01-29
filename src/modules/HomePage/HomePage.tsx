@@ -63,13 +63,43 @@ export const HomePage: React.FC = () => {
               </h2>
             </div>
             <div className={styles.homePage__down}>
-              <div
-                className={`${styles.homePage__button} ${styles['homePage__button-slider-left']}`}
-              ></div>
+              <div className={`${styles.homePage__button}`}>
+                <picture>
+                  <source
+                    srcSet="img/buttons/button-slider-left-desktop.svg"
+                    media="(min-width: 1024px)"
+                  />
+                  <source
+                    srcSet="img/buttons/button-slider-left-tablet.svg"
+                    media="(min-width: 576px)"
+                  />
+                  <img
+                    src="img/buttons/button-slider-left-tablet.svg"
+                    alt="The button slider left"
+                    title="The button slider left"
+                    className={`${styles['homePage__button-slider-left']}`}
+                  />
+                </picture>
+              </div>
               <div className={styles.homePage__banner}></div>
-              <div
-                className={`${styles.homePage__button} ${styles['homePage__button-slider-right']}`}
-              ></div>
+              <div className={styles.homePage__button}>
+                <picture>
+                  <source
+                    srcSet="img/buttons/button-slider-right-desktop.svg"
+                    media="(min-width: 1024px)"
+                  />
+                  <source
+                    srcSet="img/buttons/button-slider-right-tablet.svg"
+                    media="(min-width: 576px)"
+                  />
+                  <img
+                    src="img/buttons/button-slider-right-tablet.svg"
+                    alt="The button slider right"
+                    title="The button slider right"
+                    className={`${styles['homePage__button-slider-right']}`}
+                  />
+                </picture>
+              </div>
             </div>
             <div className={styles.homePage__dots}>
               <img

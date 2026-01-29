@@ -1,3 +1,4 @@
+@use '../../utils/vars' as *;
 @import '../../utils/mixins' ;
 
 .homePage {
@@ -43,7 +44,6 @@
     @include on-desktop {
       width: 1040px;
 
-     // display: block;
       margin: auto 0;
     }
   }
@@ -63,16 +63,17 @@
 
   }
 
-      @include on-tablet {
 
       &__button {
         width: 32px;
-        height: 189px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        object-fit: cover;
-        box-sizing: border-box;
+        height: 100%;
+
+        display: none;
+
+        @include on-tablet {
+          display: block;
+        }
+
 
         @include on-desktop {
           height: 400px;
@@ -81,22 +82,13 @@
      }
 
      &__button-slider-left {
-        background-image: url('/img/buttons/button-slider-left-tablet.svg');
 
-      @include on-desktop {
-        background-image: url('/img/buttons/button-slider-left-desktop.svg');
-      }
-
-
-     }
-
-      &__button-slider-right {
-        background-image: url('/img/buttons/button-slider-right-tablet.svg');
-
-       @include on-desktop {
-         background-image: url('/img/buttons/button-slider-right-desktop.svg');
-       }
-
+        @include on-tablet {
+            object-fit: cover;
+            display: block;
+            width: 32px;
+            height:100%;
+        }
      }
 
        &__down {
@@ -106,14 +98,13 @@
         align-items: center;
         margin: 0 auto;
         gap: 16px;
-
        }
-    }
 
   &__banner {
   background-image: url('../../img/header-bg.png');
-  background-size: cover;
-  background-position: top;
+  background-position: center;
+  background-size: contain;
+  background-color: $primary-color;
   background-repeat: no-repeat;
   width: 100%;
   height: 320px;
@@ -121,13 +112,13 @@
   @include on-tablet {
     background-image: url('/img/header-bg-tablet-2x.png');
 
-     width: 490px;
+     //width: 490px;
      height: 189px;
   }
 
   @include on-desktop {
     background-image: url('/img/header-bg-desktop-2x.png');
-     width: 1040px;
+    // width: 1040px;
      height: 400px;
   }
 }
