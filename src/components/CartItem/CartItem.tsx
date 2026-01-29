@@ -54,7 +54,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
       {/* 2. Zdjęcie */}
       <Link to={`/${productCategory}/${itemId}`} className={styles.imageLink}>
         <img
-          src={`${import.meta.env.BASE_URL}${image}`}
+          src={`${import.meta.env.BASE_URL}/${image}`}
           alt={name}
           className={styles.image}
         />

@@ -57,7 +57,7 @@ export const ProductDetailsPage = () => {
     const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
     const webpUrl = cleanUrl.replace('.jpg', '.webp');
 
-    return `${import.meta.env.BASE_URL}${webpUrl}`;
+    return `${import.meta.env.BASE_URL}/${webpUrl}`;
   };
 
   const getNewId = (
@@ -166,8 +166,9 @@ export const ProductDetailsPage = () => {
       try {
         setLoading(true);
         setError(null);
+
         const listResponse = await fetch(
-          `${import.meta.env.BASE_URL}api/${categoryApiFile}`,
+          `${import.meta.env.BASE_URL}/api/${categoryApiFile}`,
         );
 
         if (!listResponse.ok) {
@@ -182,7 +183,7 @@ export const ProductDetailsPage = () => {
 
         try {
           const detailResponse = await fetch(
-            `${import.meta.env.BASE_URL}api/products/${productId}.json`,
+            `${import.meta.env.BASE_URL}/api/products/${productId}.json`,
           );
           const contentType = detailResponse.headers.get('content-type');
 
