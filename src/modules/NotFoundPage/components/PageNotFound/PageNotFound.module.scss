@@ -1,0 +1,36 @@
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  @include on-tablet {
+    row-gap: 32px;
+  }
+
+  @include on-desktop {
+    row-gap: 56px;
+  }
+
+  &__photo {
+    object-fit: cover;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include mobile-h2;
+
+    @include on-tablet {
+      margin-top: 32px;
+
+      @include tablet-h2;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+}

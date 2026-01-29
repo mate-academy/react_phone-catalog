@@ -1,0 +1,124 @@
+.topBar {
+  grid-column: 1 / -1;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  width: 100%;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__icons {
+    display: flex;
+
+    height: 100%;
+  }
+
+  &__icon {
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: 48px;
+    color: $gray;
+
+    &:hover .icon {
+      transform: scale(1.2)
+    }
+
+    &--menu {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--favorites, &--cart {
+      visibility: hidden;
+      position: absolute;
+
+      @include on-tablet {
+        position: relative;
+        visibility: visible;
+      }
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    border: solid 1px $elements_color;
+  }
+
+  &__logo {
+    height: 48px;
+    aspect-ratio: 2 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include scale-effect('large');
+  }
+
+  &__items {
+    height: 100%;
+    list-style-type: none;
+
+    display: flex;
+    column-gap: 32px;
+    align-items: center;
+  }
+
+  &__item {
+    height: 100%;
+    visibility: hidden;
+    position: absolute;
+
+    @include on-tablet {
+      position: relative;
+      visibility: visible;
+    }
+
+    &::after {
+      // margin-top: 15.5px;
+      display: block;
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: $gray;
+      bottom: 0;
+
+      transform: scale(0);
+      transition: transform 300ms;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__link {
+    transition: transform 500ms;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $gray;
+
+    @include uppercase-font;
+  }
+
+  &__iconContainer {
+    position: relative;
+  }
+
+  border: solid 1px $elements_color;
+}
+
+

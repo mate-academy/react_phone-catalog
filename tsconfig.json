@@ -1,10 +1,16 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "src",
+    "src/types/global.d.ts",
+    "src/types/elementPart.d.ts",
+    "src/types/device.d.ts",
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "paths": {
+      "@modules": ["/scr/modules/*"]
+    }
   }
 }

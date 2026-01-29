@@ -1,0 +1,17 @@
+h1, h2, h3, h4 {
+  padding: none;
+  margin: none;
+}
+
+body, .header {
+  margin: 0;
+}
+
+.header {
+  z-index: 3;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+}

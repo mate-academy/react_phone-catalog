@@ -1,0 +1,28 @@
+.price {
+ &__container {
+    position: relative;
+
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+
+    &::after {
+      @include underline-creator;
+
+      bottom: -8px;
+    }
+  }
+
+  &__discount {
+    @include tablet-h2;
+  }
+
+  &__full {
+    font-weight: 500;
+    font-size: 22px;
+
+    position: relative;
+    text-decoration: line-through;
+    color: $lite-gray;
+  }
+}

@@ -1,0 +1,12 @@
+.icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+
+  &--favorited > * {
+    fill: $red;
+    color: $red;
+  }
+
+  @include scale-effect('large');
+}

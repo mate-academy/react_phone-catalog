@@ -1,0 +1,17 @@
+.badge {
+  position: absolute;
+  top: 10%;
+  right: 60%;
+  height: 15px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__red {
+    background-color: $red;
+  }
+}

@@ -1,0 +1,11 @@
+.select {
+  font-family: Montserrat, sans-serif;
+  color: $gray;
+
+  height: 40px;
+  width: 136px;
+
+  @include element-border;
+  @include buttons-font;
+}
+

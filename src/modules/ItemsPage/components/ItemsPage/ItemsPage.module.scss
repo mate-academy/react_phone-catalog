@@ -1,0 +1,51 @@
+.itemsPage {
+  &__path {
+    padding-top: 24px;
+  }
+
+  &__amountOfModels {
+    padding-top: 8px;
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: row;
+    padding-top: 32px;
+    column-gap: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__sortPart {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  &__sortTitle {
+    @include small-text;
+
+    color: $lite-gray;
+  }
+
+  &__bottom {
+    display: flex;
+    width: 100%;
+    place-content: center;
+    align-items: center;
+    column-gap: 16px;
+
+    padding-top: 24px;
+    padding-bottom: 64px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+}
