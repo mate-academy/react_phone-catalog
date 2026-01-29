@@ -40,6 +40,7 @@
   }
 }
 
+/* stylelint-disable */
 :global {
   .rs__control {
     min-height: 40px;
@@ -111,3 +112,4 @@
     color: $primary-color;
   }
 }
+/* stylelint-enable */
