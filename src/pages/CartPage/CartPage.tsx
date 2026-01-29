@@ -43,10 +43,29 @@ export const CartPage = () => {
     }, 0);
   }, [cartItems, products]);
 
+  if (isLoading) {
+    return (
+      <div className={`${styles.main} ${styles.container}`}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`${styles.main} ${styles.container}`}>
+        <p className={styles.main__errorTitle}>{error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={`${styles.main} ${styles.container}`}>
-      {isLoading && <Loader />}
-      {error && <p className={styles.main__errorTitle}>{error}</p>}
+      <div className={styles.main__backButton}>
+        <BackButton />
+      </div>
+
+      <h1 className={styles.main__title}>Cart</h1>
 
       {!isLoading &&
         !error &&
@@ -54,12 +73,6 @@ export const CartPage = () => {
           <p className={styles.main__errorTitle}>Your cart is empty</p>
         ) : (
           <>
-            <div className={styles.main__backButton}>
-              <BackButton />
-            </div>
-
-            <h1 className={styles.main__title}>Cart</h1>
-
             <div className={styles.main__content}>
               <div className={styles.main__itemsGrid}>
                 {cartItems.map(item => {

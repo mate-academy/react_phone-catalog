@@ -14,18 +14,19 @@ export const FavoritesPage = () => {
 
       <h1 className={styles.main__title}>Favorites</h1>
 
-      <span className={styles.main__count}>
-        {favoriteProducts.length} items
-      </span>
-
       {favoriteProducts.length === 0 ? (
         <p className={styles.main__errorTitle}>
           There are no favorite products
         </p>
       ) : (
-        <div className={styles.main__productsGrid}>
-          <ProductsGrid products={favoriteProducts} />
-        </div>
+        <>
+          <span className={styles.main__count}>
+            {favoriteProducts.length} items
+          </span>
+          <div className={styles.main__productsGrid}>
+            <ProductsGrid products={favoriteProducts} />
+          </div>
+        </>
       )}
     </div>
   );

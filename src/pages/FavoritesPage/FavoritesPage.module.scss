@@ -26,6 +26,11 @@
     }
   }
 
+  &__errorTitle {
+    @include font-body;
+    color: $primary-color;
+  }
+
   &__count {
     margin-top: 8px;
     height: 21px;

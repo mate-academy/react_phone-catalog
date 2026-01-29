@@ -103,12 +103,33 @@ export const ProductDetailsPage = () => {
     navigate(`/product/${newId}`);
   };
 
+  if (loading) {
+    return (
+      <div className={`${styles.main} ${styles.container}`}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`${styles.main} ${styles.container}`}>
+        <p className={styles.main__errorTitle}>{error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={`${styles.main} ${styles.container}`}>
-      {loading && <Loader />}
-      {error && <p className={styles.main__errorTitle}>{error}</p>}
       {!loading && !error && !productDetails && (
-        <p className={styles.main__errorTitle}>Product not found</p>
+        <>
+          <span className={styles.main__errorTitle}>Product not found</span>
+          <img
+            src="./img/product-not-found.png"
+            alt="Product not found"
+            className={styles.main__errorImg}
+          />
+        </>
       )}
 
       {!loading && !error && productDetails && productFromList && (

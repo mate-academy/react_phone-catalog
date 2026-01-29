@@ -3,8 +3,6 @@
 @import '/src/styles/mixins.scss';
 
 .main {
-  @include page-grid;
-
   margin-top: 24px;
   margin-bottom: 64px;
 
@@ -12,13 +10,7 @@
     margin-bottom: 80px;
   }
 
-  &__breadcrumbs {
-    display: flex;
-    grid-column: 1 / -1;
-  }
-
   &__title {
-    grid-column: 1 / -1;
     @include font-h1-mobile;
     margin: 0;
     margin-top: 24px;
@@ -29,11 +21,38 @@
     }
   }
 
+  &__errorTitle {
+    margin: 0 auto;
+    @include font-body;
+    color: $primary-color;
+    display: block;
+  }
+
+  &__reloadButton {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: 40px;
+    width: 70px;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    color: $primary-color;
+    @include font-buttons;
+    text-align: center;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
   &__count {
-    grid-column: 1 / -1;
     margin-top: 8px;
     @include font-body;
     color: $secondary-color;
+  }
+
+  &__content {
+    @include page-grid;
   }
 
   &__productsGrid {

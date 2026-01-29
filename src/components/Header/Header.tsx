@@ -16,7 +16,7 @@ export const Header = () => {
         <nav className={styles.header__nav}>
           <Link to="/" className={styles.header__logo}>
             <img
-              src="../public/img/logo.svg"
+              src="./img/logo.svg"
               alt="Nice Gadgets"
               className={styles.header__logo__img}
             />
@@ -80,7 +80,7 @@ export const Header = () => {
             onClick={() => setIsMenuOpen(true)}
           >
             <img
-              src="/public/img/icons/icon-burger-menu.svg"
+              src="./img/icons/icon-burger-menu.svg"
               alt="icon-menu"
               className={styles.header__icon}
             />
@@ -96,7 +96,7 @@ export const Header = () => {
           >
             <div className={styles.header__iconWrapper}>
               <img
-                src="/public/img/icons/icon-heart.svg"
+                src="./img/icons/icon-heart.svg"
                 alt="icon-heart"
                 className={styles.header__icon}
               />
@@ -119,7 +119,7 @@ export const Header = () => {
           >
             <div className={styles.header__iconWrapper}>
               <img
-                src="/public/img/icons/icon-shopping-bag.svg"
+                src="./img/icons/icon-shopping-bag.svg"
                 alt="icon-shopping-bag"
                 className={styles.header__icon}
               />

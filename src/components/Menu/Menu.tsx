@@ -7,7 +7,7 @@ export const Menu = ({ onClose }: { onClose: () => void }) => {
       <nav className={styles.menu__nav}>
         <Link to="/" className={styles.menu__nav__logo}>
           <img
-            src="../public/img/logo.svg"
+            src="./img/logo.svg"
             alt="Nice Gadgets"
             className={styles.menu__nav__logo__img}
             onClick={onClose}
@@ -16,7 +16,7 @@ export const Menu = ({ onClose }: { onClose: () => void }) => {
 
         <button className={`${styles.menu__nav__button}`} onClick={onClose}>
           <img
-            src="/public/img/icons/icon-close.svg"
+            src="./img/icons/icon-close.svg"
             alt="icon-close"
             className={styles.menu__nav__button__icon}
           />
@@ -92,7 +92,7 @@ export const Menu = ({ onClose }: { onClose: () => void }) => {
           onClick={onClose}
         >
           <img
-            src="/public/img/icons/icon-shopping-bag.svg"
+            src="./img/icons/icon-shopping-bag.svg"
             alt="icon-shopping-bag"
             className={styles.menu__button__icon}
           />

@@ -11,9 +11,9 @@ import { useEffect, useRef, useState } from 'react';
 
 export const Banner = () => {
   const images = [
-    `${import.meta.env.BASE_URL}img/banners/banner-phones.png`,
-    `${import.meta.env.BASE_URL}img/banners/banner-accessories.png`,
-    `${import.meta.env.BASE_URL}img/banners/banner-tablets.png`,
+    `./img/banners/banner-phones.png`,
+    `./img/banners/banner-accessories.png`,
+    `./img/banners/banner-tablets.png`,
   ];
 
   const prevRef = useRef<HTMLButtonElement | null>(null);
@@ -64,7 +64,7 @@ export const Banner = () => {
           aria-label="Previous slide"
           type="button"
         >
-          <img src="/public/img/icons/icon-arrow-left.svg" alt="Prev" />
+          <img src="./img/icons/icon-arrow-left.svg" alt="Prev" />
         </button>
 
         <button
@@ -73,10 +73,7 @@ export const Banner = () => {
           aria-label="Next slide"
           type="button"
         >
-          <img
-            src={`${import.meta.env.BASE_URL}img/icons/icon-arrow-right.svg`}
-            alt="Next"
-          />
+          <img src={`./img/icons/icon-arrow-right.svg`} alt="Next" />
         </button>
       </div>
 

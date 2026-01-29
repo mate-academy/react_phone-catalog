@@ -43,50 +43,57 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
     perPage === 'all' ? 'all' : Number(perPage),
   );
 
+  if (loading) {
+    return (
+      <div className={`${styles.main} ${styles.container}`}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`${styles.main} ${styles.container}`}>
+        <p className={styles.main__errorTitle}>{error}</p>
+        <button className={styles.main__reloadButton} onClick={reload}>
+          Reload
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className={`${styles.main} ${styles.container}`}>
-      {loading && <Loader />}
+      <Breadcrumbs />
 
-      {error && (
-        <>
-          <p className={styles.main__errorTitle}>{error}</p>
-          <button className={styles.main__reloadButton} onClick={reload}>
-            Reload
-          </button>
-        </>
-      )}
+      <h1 className={styles.main__title}>{titles[category]}</h1>
 
-      {!loading && !error && items.length === 0 && (
+      {!loading && !error && items.length === 0 ? (
         <p className={styles.main__errorTitle}>There are no {category}</p>
-      )}
-
-      {!loading && !error && (
+      ) : (
         <>
-          <div className={styles.main__breadcrumbs}>
-            <Breadcrumbs />
-          </div>
-
-          <h1 className={styles.main__title}>{titles[category]}</h1>
           <span className={styles.main__count}>{products.length} models</span>
 
-          <ProductsFilters
-            sort={sort}
-            perPage={perPage}
-            onSortChange={v => updateParam('sort', v)}
-            onPerPageChange={v => updateParam('perPage', v)}
-          />
-
-          <div className={styles.main__productsGrid}>
-            <ProductsGrid products={items} />
-          </div>
-
-          {totalPages > 1 && (
-            <Pagination
-              page={page}
-              totalPages={totalPages}
-              onChange={p => updateParam('page', String(p))}
+          <div className={styles.main__content}>
+            <ProductsFilters
+              sort={sort}
+              perPage={perPage}
+              onSortChange={v => updateParam('sort', v)}
+              onPerPageChange={v => updateParam('perPage', v)}
             />
-          )}
+
+            <div className={styles.main__productsGrid}>
+              <ProductsGrid products={items} />
+            </div>
+
+            {totalPages > 1 && (
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                onChange={p => updateParam('page', String(p))}
+              />
+            )}
+          </div>
         </>
       )}
     </div>

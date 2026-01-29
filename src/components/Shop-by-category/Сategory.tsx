@@ -30,7 +30,7 @@ export const Category = () => {
         <div className={styles.category__item}>
           <NavLink to="/phones" className={styles.category__link}>
             <img
-              src="/public/img/category-phones.png"
+              src="./img/category-phones.png"
               alt="icon-heart"
               className={`${styles.category__image} ${styles['category__image--phones']}`}
             />
@@ -47,7 +47,7 @@ export const Category = () => {
         <div className={styles.category__item}>
           <NavLink to="/tablets" className={styles.category__link}>
             <img
-              src="/public/img/category-tablets.png"
+              src="./img/category-tablets.png"
               alt="icon-heart"
               className={`${styles.category__image} ${styles['category__image--tablets']}`}
             />
@@ -63,7 +63,7 @@ export const Category = () => {
         <div className={styles.category__item}>
           <NavLink to="/accessories" className={styles.category__link}>
             <img
-              src="/public/img/category-accessories.png"
+              src="./img/category-accessories.png"
               alt="icon-heart"
               className={`${styles.category__image} ${styles['category__image--accessories']}`}
             />

@@ -53,7 +53,7 @@ export const Breadcrumbs = ({ product }: Props) => {
         <span key={crumb.to} className={styles.crumbs__item}>
           {index > 0 && (
             <img
-              src="../../../public/img/icons/icon-arrow-right.svg"
+              src="./img/icons/icon-arrow-right.svg"
               alt="Arrow-right"
               className={styles.crumbs__iconRight}
             />
@@ -63,7 +63,7 @@ export const Breadcrumbs = ({ product }: Props) => {
             <Link to={crumb.to} className={styles.crumbs__link}>
               {crumb.to === '/' ? (
                 <img
-                  src="../../../public/img/icons/icon-home.svg"
+                  src="./img/icons/icon-home.svg"
                   alt="Home"
                   className={styles.crumbs__homeIcon}
                 />

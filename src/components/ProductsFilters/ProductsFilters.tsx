@@ -30,7 +30,6 @@ export const ProductsFilters: React.FC<Props> = ({
 }) => {
   return (
     <form className={styles.filters}>
-      {/* SORT */}
       <div
         className={`${styles.filters__group} ${styles['filters__group--sort']}`}
       >
@@ -51,7 +50,6 @@ export const ProductsFilters: React.FC<Props> = ({
         />
       </div>
 
-      {/* PER PAGE */}
       <div
         className={`${styles.filters__group} ${styles['filters__group--per-page']}`}
       >
@@ -74,4 +72,3 @@ export const ProductsFilters: React.FC<Props> = ({
     </form>
   );
 };
-

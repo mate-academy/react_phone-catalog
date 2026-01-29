@@ -5,7 +5,7 @@ export const COLOR_MAP: Record<string, string> = {
   yellow: '#F9E79F',
   red: '#EB5757',
   blue: '#2D9CDB',
-  purple: '#9B51E0',
+  purple: '#cfb6e0',
   orange: '#F2994A',
   coral: '#e87a2b',
   pink: '#F8BBD0',
@@ -17,4 +17,6 @@ export const COLOR_MAP: Record<string, string> = {
   silver: '#DCDCDC',
   rosegold: '#FFC0CB',
   skyblue: '#F0F8FF',
+  sierrablue: '#b2d0eb',
+  graphite: '#45494d',
 };

@@ -75,8 +75,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <img
             src={
               isFavorite(product.itemId)
-                ? '/public/img/icons/icon-heart-filled.svg'
-                : '/public/img/icons/icon-heart.svg'
+                ? './img/icons/icon-heart-filled.svg'
+                : './img/icons/icon-heart.svg'
             }
             alt="icon-heart"
             className={styles.card__buttonFav__icon}

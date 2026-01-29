@@ -77,6 +77,10 @@
     color: $secondary-color;
     @include font-uppercase;
     line-height: 11px;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 
   &__back {

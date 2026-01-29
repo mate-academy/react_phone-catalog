@@ -119,8 +119,8 @@ export const ProductControl = ({
           <img
             src={
               active
-                ? '/public/img/icons/icon-heart-filled.svg'
-                : '/public/img/icons/icon-heart.svg'
+                ? './img/icons/icon-heart-filled.svg'
+                : './img/icons/icon-heart.svg'
             }
             alt="icon-heart"
             className={styles.control__buttonFav__icon}
