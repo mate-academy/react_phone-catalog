@@ -76,7 +76,10 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.content}>
         <Link to="/" className={styles.logo} onClick={closeMenu}>
-          <img src="img/logo.svg" alt="Nice Gadgets" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/logo.svg`}
+            alt="Nice Gadgets"
+          />
         </Link>
 
         <nav className={styles.nav}>
@@ -115,7 +118,10 @@ export const Header = () => {
               onChange={e => setSearchQuery(e.target.value)}
             />
             <div className={styles.searchIconWrapper}>
-              <img src="img/icons/search.svg" alt="Search" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/search.svg`}
+                alt="Search"
+              />
             </div>
           </div>
         )}
@@ -124,7 +130,10 @@ export const Header = () => {
         <div className={cn(styles.icons, { [styles.pushRight]: !showSearch })}>
           <NavLink to="/favourites" className={getIconClass}>
             <div className={styles.iconWrapper}>
-              <img src="img/icons/favourites.svg" alt="Favourites" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                alt="Favourites"
+              />
               {favItems.length > 0 && (
                 <span className={styles.badge}>{favItems.length}</span>
               )}
@@ -132,7 +141,10 @@ export const Header = () => {
           </NavLink>
           <NavLink to="/cart" className={getIconClass}>
             <div className={styles.iconWrapper}>
-              <img src="img/icons/cart.svg" alt="Cart" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/cart.svg`}
+                alt="Cart"
+              />
               {cartItems.length > 0 && (
                 <span className={styles.badge}>{cartItems.length}</span>
               )}
@@ -145,7 +157,11 @@ export const Header = () => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <img
-            src={isMenuOpen ? 'img/icons/close.svg' : 'img/icons/menu.svg'}
+            src={
+              isMenuOpen
+                ? `${import.meta.env.BASE_URL}img/icons/close.svg`
+                : `${import.meta.env.BASE_URL}img/icons/menu.svg`
+            }
             alt="Menu"
           />
         </button>
@@ -179,7 +195,10 @@ export const Header = () => {
               onClick={closeMenu}
             >
               <div className={styles.iconWrapper}>
-                <img src="img/icons/favourites.svg" alt="Favourites" />
+                <img
+                  src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                  alt="Favourites"
+                />
                 {favItems.length > 0 && (
                   <span className={styles.badge}>{favItems.length}</span>
                 )}
@@ -191,7 +210,10 @@ export const Header = () => {
               onClick={closeMenu}
             >
               <div className={styles.iconWrapper}>
-                <img src="img/icons/cart.svg" alt="Cart" />
+                <img
+                  src={`${import.meta.env.BASE_URL}img/icons/cart.svg`}
+                  alt="Cart"
+                />
                 {cartItems.length > 0 && (
                   <span className={styles.badge}>{cartItems.length}</span>
                 )}

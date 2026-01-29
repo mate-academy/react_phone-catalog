@@ -15,7 +15,10 @@ export const Footer = () => {
       <div className="container">
         <div className={styles.content}>
           <Link to="/" className={styles.logo}>
-            <img src="img/logo.svg" alt="Nice Gadgets logo" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/logo.svg`}
+              alt="Nice Gadgets logo"
+            />
           </Link>
 
           <div className={styles.links}>
@@ -43,7 +46,10 @@ export const Footer = () => {
           <div className={styles.backToTop} onClick={handleScrollToTop}>
             <span className={styles.backText}>Back to top</span>
             <button className={styles.backBtn} aria-label="Scroll to top">
-              <img src="img/icons/arrow-right.svg" alt="Up" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+                alt="Up"
+              />
             </button>
           </div>
         </div>
