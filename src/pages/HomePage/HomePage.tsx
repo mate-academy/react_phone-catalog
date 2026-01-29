@@ -3,6 +3,7 @@ import { PicturesSlider } from '../../components/PicturesSlider/PicturesSlider';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Categories } from '../../components/Categories/Categories';
 import { Product } from '../../types/Product';
+import { getProducts } from '../../api/products';
 import styles from './HomePage.module.scss';
 import cn from 'classnames';
 
@@ -16,10 +17,7 @@ export const HomePage = () => {
   const [canScrollHot, setCanScrollHot] = useState([false, true]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
-      .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(() => {});
+    getProducts().then(setProducts);
   }, []);
 
   const brandNewProducts = [...products]
@@ -92,14 +90,12 @@ export const HomePage = () => {
     <div className={styles.homePage}>
       <h1 className={styles.visuallyHidden}>Product Catalog</h1>
 
-      {/* Widoczny tytuł zmieniony na H2 (wygląda tak samo dzięki klasie .title) */}
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.sliderWrapper}>
         <PicturesSlider />
       </div>
 
-      {/* === SECTION 1: Brand New Models === */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Brand new models</h2>
@@ -142,7 +138,6 @@ export const HomePage = () => {
         />
       </section>
 
-      {/* === SECTION 2: Categories === */}
       <section className={styles.section}>
         <h2 className={styles.sectionTitle} style={{ marginBottom: '24px' }}>
           Shop by category
@@ -150,7 +145,6 @@ export const HomePage = () => {
         <Categories />
       </section>
 
-      {/* === SECTION 3: Hot Prices === */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Hot prices</h2>

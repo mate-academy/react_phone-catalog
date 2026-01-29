@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { getProducts } from '../../api/products';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Product } from '../../types/Product';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -22,10 +23,9 @@ export const AccessoriesPage = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
-      .then(response => response.json())
-      .then((data: Product[]) => {
-        // Filtrujemy akcesoria
+    getProducts() // Używamy getProducts
+      .then(data => {
+        //  Filtrujemy akcesoria
         const onlyAccessories = data.filter(
           product => product.category === 'accessories',
         );
@@ -41,7 +41,6 @@ export const AccessoriesPage = () => {
   const filteredAndSortedProducts = useMemo(() => {
     let result = [...products];
 
-    // 1. Search
     if (query) {
       const normalizedQuery = query.toLowerCase().trim();
 
@@ -50,7 +49,6 @@ export const AccessoriesPage = () => {
       );
     }
 
-    // 2. Sort
     result.sort((a, b) => {
       switch (sortType) {
         case 'age':
@@ -87,7 +85,6 @@ export const AccessoriesPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // 👇 ZMIENNE POMOCNICZE
   const totalItems = filteredAndSortedProducts.length;
   const itemsPerPage = Number(perPage);
   const shouldShowPagination = perPage !== 'all' && totalItems > itemsPerPage;

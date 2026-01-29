@@ -14,55 +14,50 @@ import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
-//  1. Importujemy komponent przewijania
 import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
-
 import { CartProvider } from './context/CartContext';
 import { FavProvider } from './context/FavContext';
 
-export const App = () => (
-  <CartProvider>
-    <FavProvider>
-      <HashRouter>
-        {/* 2. Wstawiamy go wewnątrz Routera, ale przed resztą aplikacji */}
-        <ScrollToTop />
+export const App = () => {
+  return (
+    <CartProvider>
+      <FavProvider>
+        <HashRouter>
+          <ScrollToTop />
+          <div className="app-wrapper">
+            <Header />
+            <main className="section">
+              <div className="container">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/phones" element={<PhonesPage />} />
+                  <Route path="/tablets" element={<TabletsPage />} />
+                  <Route path="/accessories" element={<AccessoriesPage />} />
 
-        <div className="app-wrapper">
-          <Header />
+                  <Route path="/cart" element={<CartPage />} />
+                  <Route path="/favourites" element={<FavouritesPage />} />
 
-          <main className="section">
-            <div className="container">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
+                  <Route
+                    path="/phones/:productId"
+                    element={<ProductDetailsPage />}
+                  />
+                  <Route
+                    path="/tablets/:productId"
+                    element={<ProductDetailsPage />}
+                  />
+                  <Route
+                    path="/accessories/:productId"
+                    element={<ProductDetailsPage />}
+                  />
 
-                <Route path="/phones" element={<PhonesPage />} />
-                <Route path="/tablets" element={<TabletsPage />} />
-                <Route path="/accessories" element={<AccessoriesPage />} />
-
-                <Route path="/cart" element={<CartPage />} />
-                <Route path="/favourites" element={<FavouritesPage />} />
-
-                <Route
-                  path="/phones/:productId"
-                  element={<ProductDetailsPage />}
-                />
-                <Route
-                  path="/tablets/:productId"
-                  element={<ProductDetailsPage />}
-                />
-                <Route
-                  path="/accessories/:productId"
-                  element={<ProductDetailsPage />}
-                />
-
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </div>
-          </main>
-
-          <Footer />
-        </div>
-      </HashRouter>
-    </FavProvider>
-  </CartProvider>
-);
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </div>
+            </main>
+            <Footer />
+          </div>
+        </HashRouter>
+      </FavProvider>
+    </CartProvider>
+  );
+};

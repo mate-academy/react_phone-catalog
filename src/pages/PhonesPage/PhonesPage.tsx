@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { getProducts } from '../../api/products';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Product } from '../../types/Product';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -23,22 +24,24 @@ export const PhonesPage = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
-      .then(response => response.json())
-      .then((data: Product[]) => {
+    // 👇 ZMIANA TUTAJ: Używamy funkcji getProducts zamiast ręcznego fetch
+    getProducts()
+      .then(data => {
         const onlyPhones = data.filter(
           product => product.category === 'phones',
         );
 
         setProducts(onlyPhones);
       })
-      .catch(() => {})
+      .catch(() => {
+        // Opcjonalnie: obsługa błędu, np. setErrorMessage
+      })
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
-  // --- LOGIKA FILTROWANIA I SORTOWANIA ---
+  // --- LOGIKA FILTROWANIA I SORTOWANIA (BEZ ZMIAN) ---
   const filteredAndSortedProducts = useMemo(() => {
     let result = [...products];
 
@@ -68,7 +71,7 @@ export const PhonesPage = () => {
     return result;
   }, [products, sortType, query]);
 
-  // --- PAGINACJA ---
+  // --- PAGINACJA (BEZ ZMIAN) ---
   const visibleProducts = useMemo(() => {
     if (perPage !== 'all') {
       const limit = Number(perPage);
