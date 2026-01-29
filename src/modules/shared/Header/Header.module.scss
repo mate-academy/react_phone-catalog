@@ -25,7 +25,6 @@ header {
     align-items: center;
     justify-content: center;
 
-    padding: 8px;
     border: none;
 
     background: transparent;
@@ -165,6 +164,7 @@ header {
 
       @include on-tablet {
         padding: 16px;
+        border-left: 1px solid $elements-color;
       }
 
       @include on-desktop {
@@ -209,7 +209,7 @@ header {
         color: $primary-color;
 
         @include on-tablet {
-          padding-bottom: 12.5px;
+          padding-bottom: 20.5px;
         }
 
         @include on-big-desktop {
@@ -250,6 +250,10 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
+
+    :global(body.dark) & {
+      filter: brightness(0) invert(1);
+    }
   }
 
 
@@ -262,6 +266,10 @@ header {
       width: 64px;
       height: 22px;
       padding: 10px 16px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 
@@ -284,6 +292,10 @@ header {
       &__img {
         width: 16px;
         height: 16px;
+
+        :global(body.dark) & {
+          filter: brightness(0) invert(1);
+        }
 
         &_p {
           position: absolute;
@@ -312,6 +324,10 @@ header {
       width: 16px;
       height: 16px;
       padding: 10px 16px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 

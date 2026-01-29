@@ -95,9 +95,9 @@ export const BurgerMenu: React.FC = () => {
         </nav>
         <div className={styles.menu__but}>
           <NavLink
-            to="/favorites"
+            to="/favourites"
             className={cn(styles.menu__but__link_bottom, {
-              [styles.active]: isLinkActive('/favorites'),
+              [styles.active]: isLinkActive('/favourites'),
             })}
           >
             <img

@@ -51,7 +51,11 @@ export const App = () => {
                   element={<ProductDetailsPage />}
                 />
 
-                <Route path="/favorites" element={<FavoritesPage />} />
+                <Route
+                  path="/favorites"
+                  element={<Navigate to="/favourites" replace />}
+                />
+                <Route path="/favourites" element={<FavoritesPage />} />
                 <Route path="/cart" element={<CartPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />

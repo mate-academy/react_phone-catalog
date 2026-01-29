@@ -293,7 +293,7 @@ export const ProductDetailsPage: React.FC = () => {
                       }
                       alt=""
                       className={
-                        styles.productdetailspage__info__buttons_like__img
+                        styles.productdetailspage__info__buttons_like__img_filled
                       }
                     />
                   ) : (

@@ -83,7 +83,7 @@ export const Header: React.FC = () => {
           </div>
           <div className={styles.header__but}>
             <NavLink
-              to="/favorites"
+              to="/favourites"
               className={({ isActive }) =>
                 cn(styles.header__but__link, { [styles.active]: isActive })
               }

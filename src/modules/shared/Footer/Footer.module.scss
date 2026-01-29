@@ -50,6 +50,10 @@ footer {
     &__img {
       width: 89px;
       height: 32px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 

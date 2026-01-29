@@ -57,7 +57,7 @@ export const Breadcrumbs: React.FC<{
                 styles.breadcrumbs__link,
                 productTitle && styles.breadcrumbs__link_active,
               )}
-              onClick={() => navigate(`/${category}`)}
+              onClick={() => navigate(`/${category.toLowerCase()}`)}
             >
               {capitalize(category)}
             </span>

@@ -2,7 +2,7 @@
 import { ProductCard, SkeletonProductCard } from '../../../shared/ProductCard';
 import apiProducts from '../../../../../public/api/products.json';
 import styles from './ProductsSlider.module.scss';
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 const imagesChevron = '/react_phone-catalog/img/icons/';
@@ -101,6 +101,31 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     return () => clearTimeout(timer);
   }, [title, excludeId]);
 
+  const touchStart = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart.current === null) {
+      return;
+    }
+
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart.current - touchEnd;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+
+    touchStart.current = null;
+  };
+
   const skeletons = Array(visibleCards).fill(0);
   const currentLoading = isLoading || isLocalLoading;
 
@@ -133,7 +158,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           </button>
         </div>
       </div>
-      <div className={styles.productsslider}>
+      <div
+        className={styles.productsslider}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className={styles.productsslider__track}
           style={{

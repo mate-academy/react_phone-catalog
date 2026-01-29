@@ -91,6 +91,10 @@
       width: 16px;
       height: 16px;
       margin-right: 4px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
     }
 
     &__text {
@@ -129,6 +133,10 @@
     width: 16px;
     height: 16px;
     margin-inline: 24px;
+
+    :global(body.dark) & {
+      filter: brightness(0) invert(1);
+    }
 
     @include on-phone {
       margin-inline: 0 16px;
@@ -327,6 +335,10 @@
       &_img {
         width: 16px;
         height: 16px;
+
+        :global(body.dark) & {
+          filter: brightness(0) invert(1);
+        }
       }
     }
 

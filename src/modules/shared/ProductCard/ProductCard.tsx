@@ -96,7 +96,7 @@ const ProductCardView: React.FC<ProductCardViewProps> = memo(
               <img
                 src={favoriteIcons + 'icon-favourites-heart-like-filled.png'}
                 alt=""
-                className={styles.productcard__buttons_like__img}
+                className={styles.productcard__buttons_like__img_filled}
               />
             ) : (
               <img

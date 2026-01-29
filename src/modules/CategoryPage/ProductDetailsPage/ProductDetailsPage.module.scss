@@ -12,10 +12,10 @@
   }
 
   &_container {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
 
   &__backbutton {
     cursor: pointer;
@@ -41,6 +41,10 @@
       width: 16px;
       height: 16px;
       margin-right: 4px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
     }
 
     &__text {
@@ -474,6 +478,15 @@
         &__img {
           width: 16px;
           height: 16px;
+
+          :global(body.dark) & {
+            filter: brightness(0) invert(1);
+          }
+
+          &_filled {
+            width: 16px;
+            height: 16px;
+          }
         }
       }
     }

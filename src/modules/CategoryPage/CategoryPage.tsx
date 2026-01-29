@@ -92,7 +92,8 @@ export const CategoryPage: React.FC<{ category: string; title: string }> = ({
 
   useEffect(() => {
     setCountModels(getModelsCount(category));
-  }, [category]);
+    setContextPage(1);
+  }, [category, setContextPage]);
 
   useEffect(() => {
     if (paramSort && SORT_VALUES.includes(paramSort as SortValue)) {
