@@ -1,0 +1,13 @@
+@import 'colors';
+
+ .home {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    
+        &_title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: $primary;
+        }
+ }

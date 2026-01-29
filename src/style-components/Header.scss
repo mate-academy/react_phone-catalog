@@ -1,6 +1,8 @@
-@import '../style-components/colors';
+@import 'colors';
 
-header{
+header {
+    width: 100%;
+    border: 1px solid $icons;
     background-color: $white;
     display: flex;
     justify-content: left;
@@ -29,6 +31,8 @@ header{
         }
 
         &_title {
+            margin-top: 10px;
+            margin-left: 10px;
             align-items: center;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 25px;
@@ -54,13 +58,19 @@ header{
         &__side {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
             
             &_like, &_cart {
+                align-items:center ;
                 display: flex;
                 cursor: pointer;
+                border: 1px solid $icons;
             }
         
         }
     }
+}
+
+svg {
+    fill: $primary;
+    margin: 20px;
 }
