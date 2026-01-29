@@ -7,6 +7,9 @@ import { ProductsContext } from '../../Context/ProductsContext';
 import { CategoriesContext } from '../../Context';
 import { useContextSelector } from 'use-context-selector';
 
+import s from './Breadcrumb.module.scss';
+import classNames from 'classnames';
+
 export const Breadcrumb = () => {
   const products = useContextSelector(ProductsContext, ctx => ctx.products);
 
@@ -22,9 +25,8 @@ export const Breadcrumb = () => {
   }
 
   const pathToCategory =
-    categories.find(
-      category => category.name.toLowerCase() === pathname.slice(1),
-    )?.name || capitalizeFirstLetterRegex(pathname.slice(1));
+    categories.find(category => category.slug === pathname.slice(1))?.name ||
+    capitalizeFirstLetterRegex(pathname.slice(1));
 
   const product = products.find(item => item.itemId === itemId);
 
@@ -32,35 +34,43 @@ export const Breadcrumb = () => {
     pathToNameCategory = pathToCategory;
   } else {
     pathToNameCategory =
-      categories.find(
-        category => category.name.toLowerCase() === product.category,
-      )?.name || 'Catalog';
+      categories.find(category => category.slug === product.category)?.name ||
+      'Catalog';
   }
 
   return (
     <>
       {pathname.slice(1) !== 'cart' && (
         <nav
-          className="breadcrumb has-succeeds-separator"
+          className={`breadcrumb has-succeeds-separator ${s.breadcrumb_style}`}
           aria-label="breadcrumbs"
         >
           <ul>
             <li>
               <Link to="/">
                 <span className="icon">
-                  <FontAwesomeIcon icon={faHouse} />
+                  <FontAwesomeIcon
+                    icon={faHouse}
+                    style={{ color: '#0F0F11' }}
+                  />
                 </span>
               </Link>
             </li>
-            <li>
+            <li
+              className={classNames({
+                [`is-active ${s.active}`]: !product,
+              })}
+            >
               <Link to={`/${pathToNameCategory.toLowerCase()}`}>
                 {pathToNameCategory}
               </Link>
             </li>
 
             {product && (
-              <li>
-                <a href="#">{product.name}</a>
+              <li className={`is-active ${s.active}`}>
+                <a href="#" aria-current="page">
+                  {product.name}
+                </a>
               </li>
             )}
           </ul>
@@ -68,11 +78,11 @@ export const Breadcrumb = () => {
       )}
       {(product || pathname.slice(1) === 'cart') && (
         <nav
-          className="breadcrumb has-succeeds-separator is-flex"
+          className={`breadcrumb is-flex ${s.breadcrumb_style}`}
           aria-label="breadcrumbs"
         >
-          <a onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faAngleLeft} />
+          <a className={`${s.back}`} onClick={() => navigate(-1)}>
+            <FontAwesomeIcon icon={faAngleLeft} style={{ color: '#0F0F11' }} />
             Back
           </a>
         </nav>

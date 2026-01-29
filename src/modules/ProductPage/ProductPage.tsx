@@ -65,11 +65,6 @@ export const ProductPage = () => {
 
   const imageRef = useRef<HTMLImageElement | null>(null);
 
-  // const randomProducts = products
-  //   .filter(item => item.itemId !== product?.itemId)
-  //   .sort(() => 0.5 - Math.random())
-  //   .slice(0, 8);
-
   if (!product && products.length) {
     return navigate('/not-found');
   }
@@ -139,10 +134,22 @@ export const ProductPage = () => {
     }
   }
 
+  function handleColorBtnClick(color: string) {
+    navigate(
+      `/product/${productDetails?.namespaceId}-${productDetails?.capacity.toLowerCase()}-${color}`,
+    );
+  }
+
+  function handleCapacityBtnClick(capacity: string) {
+    navigate(
+      `/product/${productDetails?.namespaceId}-${capacity.toLowerCase()}-${productDetails?.color}`,
+    );
+  }
+
   return (
     <>
       {productDetails && product && (
-        <div className="container">
+        <div className={`container ${s.product_container}`}>
           <Breadcrumb />
           <h1 className="title is-3">{productDetails?.name}</h1>
           <div className="fixed-grid">
@@ -190,12 +197,14 @@ export const ProductPage = () => {
                               },
                             )}
                             key={idx}
+                            onClick={() => handleColorBtnClick(color)}
                           >
                             <span
                               className={`${s.color_btn__inside}`}
                               style={{
                                 backgroundColor: `${color}`,
                               }}
+                              title={`${color}`}
                             ></span>
                           </button>
                         ))}
@@ -212,6 +221,7 @@ export const ProductPage = () => {
                                 productDetails?.capacity !== cap,
                             })}
                             key={idx}
+                            onClick={() => handleCapacityBtnClick(cap)}
                           >
                             {cap}
                           </button>

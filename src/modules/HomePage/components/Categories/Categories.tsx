@@ -12,8 +12,6 @@ export const Categories = () => {
   const categories = useContext(CategoriesContext);
   const { products } = useContextSelector(ProductsContext, ctx => ctx);
 
-  console.log(products);
-
   function totalItemsCheck(category: string) {
     return products.filter(prod => prod.category === category).length;
   }
@@ -21,7 +19,6 @@ export const Categories = () => {
   return (
     <div className={s.categories}>
       <h2 className="title">Shop by category</h2>
-      {/* Categories content goes here */}
       <div className="categories_content is-flex">
         {categories.map((category, idx) => (
           <div key={category.name} className="category_item mr-4">

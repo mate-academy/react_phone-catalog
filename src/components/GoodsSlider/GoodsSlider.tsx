@@ -60,7 +60,7 @@ export const GoodsSlider: React.FC<Props> = ({ collectionType }) => {
       />
       <div className="columns">
         {visibleProducts.map(product => (
-          <div className="column" key={product.id}>
+          <div className="column p-0" key={product.id}>
             <ProductCard product={product} />
           </div>
         ))}

@@ -8,7 +8,7 @@ export const HomePage = () => {
     <div className={`container ${s.home_container}`}>
       <div className="HomePage">
         <h1 className="is-hidden">Product Catalog</h1>
-        <h1 className={`title ${s.homepage_title}`}>
+        <h1 className={`title mb-0 ${s.homepage_title}`}>
           Welcome to Nice Gadgets store!
         </h1>
 
@@ -22,6 +22,7 @@ export const HomePage = () => {
           </h2>
           <GoodsSlider collectionType={'new'} />
         </div>
+
         <div className={`section px-0 ${s.styled_section}`}>
           <Categories />
         </div>

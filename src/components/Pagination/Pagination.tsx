@@ -10,14 +10,14 @@ type Props = {
   pages: number;
   current?: number;
   type: 'light' | 'full';
-  onPageClick: (page: number) => void;
+  onPageClick?: (page: number) => void;
 };
 
 export const Pagination: React.FC<Props> = ({
   pages,
   type,
   current,
-  onPageClick,
+  onPageClick = () => {},
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page =

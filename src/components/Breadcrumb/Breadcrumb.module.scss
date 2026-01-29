@@ -1,3 +1,26 @@
-.links {
+@use '../../styles/utils/variables' as vars;
+
+a {
   text-decoration: none;
+  color: inherit;
+}
+
+.breadcrumb_style a {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: vars.$gray-primary;
+
+  &:hover {
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+
+.breadcrumb_style a.back {
+  color: vars.$secondary-gray;
+}
+
+.breadcrumb_style li.active a {
+  color: vars.$secondary-gray;
 }

@@ -1,5 +1,12 @@
 @use '/src/styles/utils/variables' as vars;
 
+.product_container {
+  padding: 24px 0 80px;
+
+  //  max-width: 1136px;
+  width: 1136px;
+}
+
 .bottom_bordered {
   border-bottom: 1px solid vars.$main-gray;
   margin-bottom: 24px;

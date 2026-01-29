@@ -2,13 +2,15 @@
 /* eslint-disable no-console */
 import { useContext, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useContextSelector } from 'use-context-selector';
+import classNames from 'classnames';
 import { CategoriesContext } from '../../Context/CategoriesContext';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from '../../components/Pagination';
-import classNames from 'classnames';
 import { Breadcrumb } from '../../components/Breadcrumb';
-import { useContextSelector } from 'use-context-selector';
+
+import s from './CatalogPage.module.scss';
 
 export const CatalogPage = () => {
   const { pathname } = useLocation();
@@ -32,7 +34,7 @@ export const CatalogPage = () => {
   const pages = Math.ceil(catalogProds.length / prodsPerPage);
 
   return (
-    <div className="container">
+    <div className={`container ${s.catalog_container}`}>
       <Breadcrumb />
 
       <h1 className="title">{pageTitle}</h1>

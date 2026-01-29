@@ -2,7 +2,9 @@
 
 .home_container {
   padding: 56px 0 40px;
-  max-width: 1136px;
+
+  // max-width: 1136px;
+  width: 1136px;
 }
 
 .styled_section {
@@ -12,7 +14,7 @@
 
 .homepage_title {
   color: vars.$primary-text-color;
-  margin-bottom: 56px;
+  padding-bottom: 56px;
 
   font-size: 48px;
   line-height: 1.17;
