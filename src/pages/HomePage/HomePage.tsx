@@ -16,7 +16,7 @@ export const HomePage = () => {
   const [canScrollHot, setCanScrollHot] = useState([false, true]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(() => {});

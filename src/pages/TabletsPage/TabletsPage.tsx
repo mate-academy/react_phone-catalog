@@ -21,7 +21,7 @@ export const TabletsPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(response => response.json())
       .then((data: Product[]) => {
         // 👇 ZMIANA: Filtrujemy tablety

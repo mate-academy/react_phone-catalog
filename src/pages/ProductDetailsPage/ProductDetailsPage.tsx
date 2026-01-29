@@ -54,9 +54,10 @@ export const ProductDetailsPage = () => {
       return '';
     }
 
-    const path = url.startsWith('/') ? url : `/${url}`;
+    const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+    const webpUrl = cleanUrl.replace('.jpg', '.webp');
 
-    return path.replace('.jpg', '.webp');
+    return `${import.meta.env.BASE_URL}${webpUrl}`;
   };
 
   const getNewId = (
@@ -165,7 +166,9 @@ export const ProductDetailsPage = () => {
       try {
         setLoading(true);
         setError(null);
-        const listResponse = await fetch(`/api/${categoryApiFile}`);
+        const listResponse = await fetch(
+          `${import.meta.env.BASE_URL}api/${categoryApiFile}`,
+        );
 
         if (!listResponse.ok) {
           throw new Error('Source data not found');
@@ -178,7 +181,9 @@ export const ProductDetailsPage = () => {
         let data: Product | null = null;
 
         try {
-          const detailResponse = await fetch(`/api/products/${productId}.json`);
+          const detailResponse = await fetch(
+            `${import.meta.env.BASE_URL}api/products/${productId}.json`,
+          );
           const contentType = detailResponse.headers.get('content-type');
 
           if (detailResponse.ok && contentType?.includes('application/json')) {
@@ -263,7 +268,11 @@ export const ProductDetailsPage = () => {
     <div className={styles.container}>
       <nav className={styles.nav}>
         <Link to="/">
-          <img src="img/icons/Home.svg" alt="Home" onError={handleIconError} />
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/Home.svg`}
+            alt="Home"
+            onError={handleIconError}
+          />
         </Link>
         <span>&gt;</span>
         <Link to={categoryPath}>{categoryName}</Link>
@@ -369,7 +378,9 @@ export const ProductDetailsPage = () => {
             <button onClick={handleToggleFav} className={styles.favoriteBtn}>
               <img
                 src={
-                  isFav ? '/img/icons/Heart Like.svg' : '/img/icons/Heart.svg'
+                  isFav
+                    ? `${import.meta.env.BASE_URL}img/icons/Heart Like.svg`
+                    : `${import.meta.env.BASE_URL}img/icons/Heart.svg`
                 }
                 alt="Fav"
               />
@@ -466,7 +477,10 @@ export const ProductDetailsPage = () => {
               })}
               disabled={!canScrollLeft}
             >
-              <img src="img/icons/arrow-left.svg" alt="Prev" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/arrow-left.svg`}
+                alt="Prev"
+              />
             </button>
 
             <button
@@ -476,7 +490,10 @@ export const ProductDetailsPage = () => {
               })}
               disabled={!canScrollRight}
             >
-              <img src="img/icons/arrow-right.svg" alt="Next" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+                alt="Next"
+              />
             </button>
           </div>
         </div>

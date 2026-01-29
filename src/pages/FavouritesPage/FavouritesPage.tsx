@@ -1,56 +1,85 @@
-import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { useFav } from '../../context/FavContext';
-import styles from './FavouritesPage.module.scss';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+import { CartItem } from '../../components/CartItem/CartItem';
+import styles from './CartPage.module.scss';
 
-export const FavouritesPage = () => {
-  const { favItems } = useFav();
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+export const CartPage = () => {
+  // Pobieramy funkcję clearCart z naszego Contextu
+  const { cartItems, clearCart } = useCart();
+  const navigate = useNavigate();
 
-  // Logika filtrowania (Search)
-  const visibleItems = useMemo(() => {
-    let result = [...favItems];
+  const totalAmount = cartItems.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0,
+  );
 
-    if (query) {
-      const normalizedQuery = query.toLowerCase().trim();
+  const totalCount = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0,
+  );
 
-      result = result.filter(item =>
-        item.name.toLowerCase().includes(normalizedQuery),
-      );
+  // Funkcja obsługująca proces zamówienia
+  const handleCheckout = () => {
+    // 1. Pytamy użytkownika o potwierdzenie
+    const isConfirmed = window.confirm(
+      'Do you want to finalize your purchase?',
+    );
+
+    // 2. Jeśli kliknie "OK"
+    if (isConfirmed) {
+      clearCart(); // Czyścimy koszyk
+      alert('Thank you for your order! 🚀');
+      navigate('/'); // Przekierowujemy na stronę główną
     }
-
-    return result;
-  }, [favItems, query]);
+  };
 
   return (
-    <div className={styles.favouritesPage}>
+    <div className={styles.cartPage}>
       <div className="container">
-        <Breadcrumbs />
+        {/* Przycisk Wstecz */}
+        <button className={styles.backBtn} onClick={() => navigate(-1)}>
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-left.svg`}
+            alt="<"
+          />
+          Back
+        </button>
 
-        <header className={styles.header}>
-          <h1 className={styles.title}>Favourites</h1>
-          <p className={styles.count}>{visibleItems.length} items</p>
-        </header>
+        <h1 className={styles.title}>Cart</h1>
 
-        {/* 1. Sprawdzamy, czy w ogóle są jakieś ulubione */}
-        {favItems.length === 0 ? (
-          <div className={styles.empty}>
-            <p>You have no favorite items yet.</p>
+        {cartItems.length === 0 ? (
+          <div className={styles.emptyCart}>
+            <img
+              src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
+              alt="Empty"
+              className={styles.emptyImage}
+            />
+            <p>Your cart is empty</p>
           </div>
         ) : (
-          <>
-            {/* 2. Sprawdzamy, czy wyszukiwanie coś zwróciło */}
-            {visibleItems.length > 0 ? (
-              <ProductsList products={visibleItems} />
-            ) : (
-              <p className={styles.empty}>
-                No favorites matching &quot;{query}&quot; found.
-              </p>
-            )}
-          </>
+          <div className={styles.cartContainer}>
+            <div className={styles.cartList}>
+              {cartItems.map(item => (
+                <CartItem key={item.id} cartItem={item} />
+              ))}
+            </div>
+
+            <div className={styles.checkoutBox}>
+              <div className={styles.totalPrice}>
+                <h2>${totalAmount}</h2>
+                <span className={styles.totalLabel}>
+                  Total for {totalCount} items
+                </span>
+              </div>
+              <div className={styles.divider} />
+
+              {/* Podpięcie funkcji zamiast window.alert */}
+              <button className={styles.checkoutBtn} onClick={handleCheckout}>
+                Checkout
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>

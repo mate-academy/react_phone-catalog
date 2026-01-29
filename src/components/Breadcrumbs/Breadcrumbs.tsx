@@ -1,4 +1,3 @@
-/* src/components/Breadcrumbs/Breadcrumbs.tsx */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
@@ -24,7 +23,7 @@ export const Breadcrumbs = () => {
       <nav className={styles.breadcrumbs} aria-label="breadcrumb">
         <Link to="/" className={styles.homeLink}>
           <img
-            src="img/icons/Home.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/Home.svg`}
             alt="Home"
             className={styles.homeIcon}
           />
@@ -39,7 +38,10 @@ export const Breadcrumbs = () => {
           return (
             <React.Fragment key={to}>
               <span className={styles.separator}>
-                <img src="img/icons/arrow-right.svg" alt=">" />
+                <img
+                  src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+                  alt=">"
+                />
               </span>
 
               {last ? (

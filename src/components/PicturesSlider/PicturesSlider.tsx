@@ -3,15 +3,15 @@ import cn from 'classnames';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  `${import.meta.env.BASE_URL}img/banner-phones.png`,
+  `${import.meta.env.BASE_URL}img/banner-tablets.png`,
+  `${import.meta.env.BASE_URL}img/banner-accessories.png`,
 ];
 
 export const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // ✅ KROK 1: Definiujemy funkcje NA GÓRZE, żeby useEffect je "widział"
+  // KROK 1: Definiujemy funkcje NA GÓRZE, żeby useEffect je "widział"
   const handleNext = () => {
     setCurrentSlide(prev => (prev === images.length - 1 ? 0 : prev + 1));
   };
@@ -20,7 +20,7 @@ export const PicturesSlider = () => {
     setCurrentSlide(prev => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  // ✅ KROK 2: Dopiero teraz używamy useEffect
+  // KROK 2: Dopiero teraz używamy useEffect
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
@@ -34,7 +34,10 @@ export const PicturesSlider = () => {
       <div className={styles.buttonsWrapper}>
         {/* Przycisk w LEWO */}
         <button className={styles.button} onClick={handlePrev}>
-          <img src="img/icons/arrow-left.svg" alt="Previous slide" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-left.svg`}
+            alt="Previous slide"
+          />
         </button>
 
         <div className={styles.imageContainer}>
@@ -47,7 +50,10 @@ export const PicturesSlider = () => {
 
         {/* Przycisk w PRAWO */}
         <button className={styles.button} onClick={handleNext}>
-          <img src="img/icons/arrow-right.svg" alt="Next slide" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+            alt="Next slide"
+          />
         </button>
       </div>
 

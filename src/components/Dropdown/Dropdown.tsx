@@ -8,9 +8,9 @@ type Option = {
 };
 
 type Props = {
-  label: string; // Np. "Sort by"
-  value: string; // Aktualnie wybrana wartość
-  options: Option[]; // Lista opcji
+  label: string;
+  value: string;
+  options: Option[];
   onChange: (value: string) => void;
 };
 
@@ -23,7 +23,6 @@ export const Dropdown: React.FC<Props> = ({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Znajdź etykietę aktualnie wybranej opcji
   const selectedLabel = options.find(opt => opt.value === value)?.label;
 
   const handleSelect = (newValue: string) => {
@@ -31,7 +30,6 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(false);
   };
 
-  // Zamykanie menu po kliknięciu poza nie
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -54,7 +52,6 @@ export const Dropdown: React.FC<Props> = ({
       <span className={styles.label}>{label}</span>
 
       <div className={styles.dropdownWrapper}>
-        {/* Przycisk otwierający */}
         <button
           type="button"
           className={classNames(styles.trigger, { [styles.active]: isOpen })}
@@ -64,7 +61,6 @@ export const Dropdown: React.FC<Props> = ({
           <span className={classNames(styles.arrow, { [styles.up]: isOpen })} />
         </button>
 
-        {/* Lista opcji */}
         {isOpen && (
           <ul className={styles.menu}>
             {options.map(option => (
