@@ -3,16 +3,15 @@ import { Phone } from '../types/Phone';
 type ProductCategory = 'phones' | 'tablets' | 'accessories';
 
 const getRandomItems = <T>(items: T[], count: number): T[] => {
-  const limit = Math.min(count, items.length);
-  const result: T[] = [];
+  const randomItems = [...items];
 
-  while (result.length < limit) {
-    const index = Math.floor(Math.random() * items.length);
+  for (let i = randomItems.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
 
-    result.push(items[index]);
+    [randomItems[i], randomItems[j]] = [randomItems[j], randomItems[i]];
   }
 
-  return result;
+  return randomItems.slice(0, count);
 };
 
 export const getSuggestedProducts = async (

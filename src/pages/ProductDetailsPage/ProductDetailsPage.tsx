@@ -19,6 +19,10 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
+  // for swipe functionality on mobile
+  const [swipeStartX, setSwipeStartX] = useState<number | null>(null);
+  const [swipeEndX, setSwipeEndX] = useState<number | null>(null);
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -84,6 +88,31 @@ export const ProductDetailsPage: React.FC = () => {
     navigate(`/product/${newProductId}`);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setSwipeEndX(null);
+    setSwipeStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setSwipeEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!swipeStartX || !swipeEndX || !product) {
+      return;
+    }
+
+    const swipeDistance = swipeStartX - swipeEndX;
+
+    if (swipeDistance > 60 && selectedImage < product.images.length - 1) {
+      setSelectedImage(selectedImage + 1);
+    }
+
+    if (swipeDistance < -60 && selectedImage > 0) {
+      setSelectedImage(selectedImage - 1);
+    }
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -123,7 +152,12 @@ export const ProductDetailsPage: React.FC = () => {
       <h1 className={styles.title}>{product.name}</h1>
 
       <div className={styles.content}>
-        <div className={styles.gallery}>
+        <div
+          className={styles.gallery}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className={styles.thumbnails}>
             {product.images.map((image, index) => (
               <button
@@ -138,7 +172,11 @@ export const ProductDetailsPage: React.FC = () => {
             ))}
           </div>
           <div className={styles.mainImage}>
-            <img src={`/${product.images[selectedImage]}`} alt={product.name} />
+            <img
+              key={selectedImage}
+              src={`/${product.images[selectedImage]}`}
+              alt={product.name}
+            />
           </div>
         </div>
 

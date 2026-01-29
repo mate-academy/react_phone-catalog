@@ -144,6 +144,18 @@
   border-color: var(--color-primary);
 }
 
+
+@keyframes fade-in-image {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .mainImage {
   flex: 1;
   display: flex;
@@ -156,6 +168,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    animation: fade-in-image 0.4s ease-out;
   }
 }
 
