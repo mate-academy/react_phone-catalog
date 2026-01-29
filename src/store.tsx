@@ -6,6 +6,7 @@ type Action =
   | { type: 'addToCart'; payload: ProductId }
   | { type: 'deleteFromCart'; payload: ProductId }
   | { type: 'removeFromCart'; payload: ProductId }
+  | { type: 'clearCart' }
   | { type: 'toggleFavorite'; payload: number };
 
 interface State {
@@ -24,7 +25,7 @@ function calcTotal(cart: Map<number, number>): number {
   return result;
 }
 
-function reducer(state: State, action: Action) {
+function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'addToCart':
       const productIdToAdd = action.payload;
@@ -40,8 +41,8 @@ function reducer(state: State, action: Action) {
       const productIdToDelete = action.payload;
       const deletedLine = state.cart.get(productIdToDelete) || 0;
 
-      if (deletedLine > 2) {
-        state.cart.set(deletedLine, deletedLine - 1);
+      if (deletedLine > 1) {
+        state.cart.set(productIdToDelete, deletedLine - 1);
       } else {
         state.cart.delete(productIdToDelete);
       }
@@ -54,6 +55,9 @@ function reducer(state: State, action: Action) {
       state.cart.delete(removedId);
 
       return { ...state, cartTotalAmount: calcTotal(state.cart) };
+
+    case 'clearCart':
+      return { ...state, cart: new Map(), cartTotalAmount: 0 };
 
     case 'toggleFavorite':
       if (state.favorites.has(action.payload)) {
@@ -70,8 +74,11 @@ function reducer(state: State, action: Action) {
 }
 
 const initState: State = {
-  cart: new Map(),
-  cartTotalAmount: 0,
+  cart: new Map([
+    [77, 2],
+    [79, 1],
+  ]),
+  cartTotalAmount: 3,
   favorites: new Set(),
 };
 

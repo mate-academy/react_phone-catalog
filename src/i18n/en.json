@@ -73,6 +73,13 @@
     "items_one": "1 item"
   },
 
+  "cart": {
+    "title": "Cart",
+    "items": "Total for {{ count }} items",
+    "items_one": "Total for 1 item",
+    "checkout": "Checkout"
+  },
+
   "messages": {
     "phones": "phones",
     "tablets": "tablets",

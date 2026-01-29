@@ -15,7 +15,17 @@
     width: 64px;
   }
 
-  &_number {
+  &_linkActive {
+    &::after {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      content: '';
+      border-bottom: $border-color-hover solid 3px;
+    }
+  }
+
+  &__number {
     @extend %icons-text;
 
     position: absolute;
@@ -33,6 +43,8 @@
 
     color: $background-color;
     background-color: $red-color;
+
+    pointer-events: none;
 
     @include on-desktop {
       top: 18px;

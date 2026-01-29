@@ -1,4 +1,4 @@
-@use '../../../scss/mixins.scss' as *;
+@use '../../../scss/main.scss' as *;
 
 .nav {
   display: none;
@@ -37,14 +37,14 @@
   color: #89939a;
 
   &__active {
-    color: #313237;
+    color: $border-color-hover;
 
     &::after {
       position: absolute;
       bottom: 0;
       width: 100%;
       content: '';
-      border-bottom: #313237 solid 3px;
+      border-bottom: $border-color-hover solid 3px;
     }
   }
 

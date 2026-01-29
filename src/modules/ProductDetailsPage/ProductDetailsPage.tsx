@@ -1,10 +1,8 @@
 import styles from './ProductDetailsPage.module.scss';
 
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import Breadcrumbs from '../shared/Breadcrumbs';
-import Icon from '../shared/Icon';
 import { useSelectedProductDetail } from './ProductDetailPage.hooks';
 import ProductDetailMain from './ProductDetailMain';
 import ProductDetailBottom from './ProductDetailBottom';
@@ -13,6 +11,7 @@ import { SLIDER_COUNT } from '../constants';
 import { useContext } from 'react';
 import { ProductCatalogContext } from '../../ProductCatalogContext';
 import CatalogSlider from '../shared/CatalogSlider';
+import BackButton from '../shared/BackButton';
 
 function getSuggestedProducts(
   products: ProductCatalogItem[],
@@ -35,7 +34,6 @@ function getSuggestedProducts(
 
 export const ProductDetailsPage = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { products: catalogProducts } = useContext(ProductCatalogContext);
   const { productDetail, loading, error } = useSelectedProductDetail();
 
@@ -45,22 +43,12 @@ export const ProductDetailsPage = () => {
       {loading && <p>Loading</p>}
       {error && <p>error</p>}
       {productDetail && (
-        <div>
-          <a
-            href="#"
-            className={styles.productDetail__buttonBack}
-            onClick={e => {
-              e.preventDefault();
-              navigate(-1);
-            }}
-          >
-            <Icon iconStyles={{ image: ['arrowLeft'] }} />
-            <span>{t('product-detail.back')}</span>
-          </a>
+        <>
+          <BackButton />
           <h1 className={styles.productDetail__title}>{productDetail.name}</h1>
           <ProductDetailMain product={productDetail} />
           <ProductDetailBottom product={productDetail} />
-        </div>
+        </>
       )}
       {catalogProducts.length && (
         <CatalogSlider

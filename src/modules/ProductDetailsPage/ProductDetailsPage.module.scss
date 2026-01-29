@@ -1,28 +1,6 @@
 @use './../../scss/main.scss' as *;
 
 .productDetail {
-  &__buttonBack {
-    @extend %small-text;
-
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-
-    width: 66px;
-    height: 16px;
-    margin-top: 24px;
-    border: none;
-
-    color: $secondary-color;
-    font-weight: 700;
-
-    line-height: 100%;
-
-    @include on-tablet {
-      margin-top: 40px;
-    }
-  }
-
   &__title {
     margin-top: 16px;
 
