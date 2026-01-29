@@ -31,15 +31,15 @@ export const Header = () => (
       </nav>
 
       <div className={styles.actions}>
-        <a className={styles.action} href="#" aria-label="Favorites">
+        <a className={styles.action} href="#">
           <img src="/img/heart.svg" alt="Favorites" />
         </a>
-        <a className={styles.action} href="#" aria-label="Cart">
+        <a className={styles.action} href="#">
           <img src="/img/shopping_cart.svg" alt="Cart" />
         </a>
       </div>
 
-      <button className={styles.burger} type="button" aria-label="Menu">
+      <button className={styles.burger} type="button">
         <img src="/img/burger_menu.svg" alt="Menu" />
       </button>
     </div>

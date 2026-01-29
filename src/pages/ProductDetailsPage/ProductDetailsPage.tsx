@@ -5,6 +5,8 @@ import { Phone } from '../../types/Phone';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import { getProductColor } from '../../constants/colors';
+/* eslint-disable max-len */
+import { SuggestedProductsSlider } from '../../components/SuggestedProductsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -155,7 +157,6 @@ export const ProductDetailsPage: React.FC = () => {
                 }`}
                 onClick={() => handleColorChange(color)}
                 style={{ backgroundColor: getProductColor(color) }}
-                aria-label={color}
               />
             ))}
           </div>
@@ -194,7 +195,7 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div className={styles.actions}>
               <button className={styles.addToCart}>Add to cart</button>
-              <button className={styles.favorite} aria-label="Add to favorites">
+              <button className={styles.favorite}>
                 <img src="/img/heart.svg" alt="Favorite" />
               </button>
             </div>
@@ -284,6 +285,11 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <SuggestedProductsSlider
+        category={product.category as 'phones' | 'tablets' | 'accessories'}
+        excludeId={product.id}
+      />
     </div>
   );
 };

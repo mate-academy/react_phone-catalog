@@ -21,7 +21,6 @@ export const NewProductsSlider = () => {
             type="button"
             className={styles.navButton}
             onClick={handlePrev}
-            aria-label="Previous slide"
           >
             <img src="/img/arrow_left.svg" alt="Left" />
           </button>
@@ -29,7 +28,6 @@ export const NewProductsSlider = () => {
             type="button"
             className={styles.navButton}
             onClick={handleNext}
-            aria-label="Next slide"
           >
             <img src="/img/arrow_right.svg" alt="Right" />
           </button>

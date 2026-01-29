@@ -2,15 +2,22 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import './HotPricesSlider.scss';
-import styles from './HotPricesSlider.module.scss';
+import './SuggestedProductsSlider.scss';
+import styles from './SuggestedProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
-import { useHotPricesSlider } from './hooks/useHotPricesSlider';
+import { useSuggestedProductsSlider } from './hooks/useSuggestedProductsSlider';
 
-export const HotPricesSlider = () => {
+type ProductCategory = 'phones' | 'tablets' | 'accessories';
+
+type Props = {
+  category: ProductCategory;
+  excludeId?: string;
+};
+
+export const SuggestedProductsSlider = ({ category, excludeId }: Props) => {
   const { phones, isLoading, setSwiperInstance, handlePrev, handleNext } =
-    useHotPricesSlider();
+    useSuggestedProductsSlider(category, excludeId);
 
   if (isLoading) {
     return <Loader />;
@@ -21,9 +28,9 @@ export const HotPricesSlider = () => {
   }
 
   return (
-    <section className={`${styles.section} HotPricesSlider`}>
+    <section className={`${styles.section} SuggestedProductsSlider`}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Hot prices</h2>
+        <h2 className={styles.title}>You may also like</h2>
         <div className={styles.navigation}>
           <button
             type="button"

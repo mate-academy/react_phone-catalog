@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
 
         <div className={styles.backToTop} onClick={handleBackToTop}>
           <span>Back to top</span>
-          <button type="button" aria-label="Back to top">
+          <button type="button">
             <img src="/img/arrow_right.svg" alt="Back to top" />
           </button>
         </div>

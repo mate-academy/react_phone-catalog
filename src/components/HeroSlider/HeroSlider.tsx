@@ -80,7 +80,6 @@ export const HeroSlider = () => {
             type="button"
             className={styles.navButton}
             onClick={handlePrev}
-            aria-label="Previous slide"
           >
             <img src="/img/arrow_left.svg" alt="Arrow left" />
           </button>
@@ -126,7 +125,6 @@ export const HeroSlider = () => {
             type="button"
             className={styles.navButton}
             onClick={handleNext}
-            aria-label="Next slide"
           >
             <img src="/img/arrow_right.svg" alt="Arrow right" />
           </button>
@@ -142,7 +140,6 @@ export const HeroSlider = () => {
               [styles.isActive]: index === activeIndex,
             })}
             onClick={() => swiperInstance?.slideTo(index)}
-            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

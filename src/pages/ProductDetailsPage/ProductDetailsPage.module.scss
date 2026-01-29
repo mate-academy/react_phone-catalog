@@ -54,10 +54,12 @@
   display: flex;
   align-items: center;
   gap: 4px;
+
+  @include typography.text-small;
+
   background: none;
   border: none;
   color: var(--color-secondary);
-  font-size: 12px;
   cursor: pointer;
   padding: 0;
   margin-bottom: 16px;
@@ -224,14 +226,15 @@
 }
 
 .capacityButton {
+  @include typography.text-buttons;
+
   padding: 8px 16px;
   border: 1px solid var(--color-icons);
   background: none;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
   color: var(--color-primary);
   transition: all 0.3s;
+  font-weight: 500;
 
   &:hover {
     border-color: var(--color-primary);
@@ -275,14 +278,14 @@
 }
 
 .addToCart {
+  @include typography.text-buttons;
+
   flex: 1;
   padding: 16px;
   background-color: var(--color-primary);
   color: var(--color-white);
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
   transition: background-color 0.3s;
 
   &:hover {
@@ -292,7 +295,7 @@
 
 .favorite {
   width: 48px;
-  height: 48px;
+  height: 54px;
   border: 1px solid var(--color-icons);
   background: none;
   cursor: pointer;

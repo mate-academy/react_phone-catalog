@@ -70,11 +70,7 @@ export const ProductCard: React.FC<Props> = ({
         <button type="button" className={styles.addToCart}>
           Add to cart
         </button>
-        <button
-          type="button"
-          className={styles.favorite}
-          aria-label="Add to favorites"
-        >
+        <button type="button" className={styles.favorite}>
           <img src="/img/heart.svg" alt="Heart" />
         </button>
       </div>
