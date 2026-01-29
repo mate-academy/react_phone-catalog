@@ -97,6 +97,7 @@
   align-items: center;
 }
 
+/* stylelint-disable */
 :global(.swiper-pagination) {
   position: static !important;
   width: 80px;
@@ -119,3 +120,4 @@
   background-color: $primary-color;
   opacity: 1;
 }
+/* stylelint-enable */
