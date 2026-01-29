@@ -17,6 +17,7 @@ const COLOR_MAP: Record<string, string> = {
   midnight: 'midnightblue',
   midnightgreen: 'darkgreen',
   sierrablue: '#9bb7d4',
+  'sky blue': '#9bb7d4',
   starlight: '#f8f3e8',
   graphite: '#575857',
   green: '#576856',
@@ -24,6 +25,7 @@ const COLOR_MAP: Record<string, string> = {
   purple: '#b39ddb',
   pink: '#db9dc3',
   rosegold: '#dfaaaf',
+  'rose gold': '#dfaaaf',
   red: '#c0392b',
 };
 
