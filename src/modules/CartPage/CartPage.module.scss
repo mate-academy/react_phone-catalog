@@ -309,13 +309,19 @@
       width: 32px;
       height: 32px;
       padding: 0;
-      border: 1px solid $icons-and-placeholders-color;
+      border: 1px solid $elements-color;
 
       background-color: $background-color;
 
+      transition: border-color 0.3s;
+
       &:disabled {
         cursor: default;
-        border: 1px solid $elements-color;
+        opacity: 0.5;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: $primary-color;
       }
 
       &_img {
