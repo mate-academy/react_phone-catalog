@@ -91,7 +91,7 @@ export const ProductDetailsPage: React.FC = () => {
   if (error || !product) {
     return (
       <div className={styles.error}>
-        <h1>Product not found :(</h1>
+        <h1>Product was not found</h1>
         <Link to="/">Back to home</Link>
       </div>
     );

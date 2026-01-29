@@ -5,6 +5,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px;
+  overflow-x: hidden;
 }
 
 .breadcrumbs {
@@ -97,6 +98,7 @@
 .gallery {
   display: flex;
   gap: 16px;
+  min-width: 0;
 
   @media (max-width: 640px) {
     flex-direction: column-reverse;
@@ -107,9 +109,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
 
   @media (max-width: 640px) {
     flex-direction: row;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
   }
 }
@@ -145,6 +150,7 @@
   align-items: center;
   justify-content: center;
   max-height: 464px;
+  min-width: 0;
 
   img {
     max-width: 100%;
@@ -156,6 +162,7 @@
 .options {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .optionSection {
@@ -180,6 +187,8 @@
 .colors {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
+  max-width: 100%;
   margin-bottom: 24px;
 }
 
@@ -222,6 +231,8 @@
 .capacities {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
+  max-width: 100%;
   margin-bottom: 24px;
 }
 
@@ -274,6 +285,7 @@
 .actions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
   margin-bottom: 32px;
 }
 
@@ -281,6 +293,7 @@
   @include typography.text-buttons;
 
   flex: 1;
+  min-width: 0;
   padding: 16px;
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -323,17 +336,20 @@
 .specRow {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   font-size: 14px;
 }
 
 .specLabel {
   color: var(--color-secondary);
+  min-width: 0;
 }
 
 .specValue {
   color: var(--color-primary);
   font-weight: 600;
   text-align: right;
+  min-width: 0;
 }
 
 .details {
@@ -396,19 +412,21 @@
 .techSpecRow {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   padding: 8px 0;
   font-size: 14px;
 }
 
 .techSpecLabel {
   color: var(--color-secondary);
+  min-width: 0;
 }
 
 .techSpecValue {
   color: var(--color-primary);
   font-weight: 600;
   text-align: right;
-}
+  min-width: 0;}
 
 .error {
   display: flex;

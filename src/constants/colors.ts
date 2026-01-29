@@ -1,7 +1,7 @@
 export const PRODUCT_COLORS: { [key: string]: string } = {
   black: '#000000',
   white: '#F0F0F0',
-  gold: 'gold',
+  gold: '#EFD2B5',
   silver: 'silver',
   spacegray: '#5C5C5C',
   'space-gray': '#5C5C5C',
