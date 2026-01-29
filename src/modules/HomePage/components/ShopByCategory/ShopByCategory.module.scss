@@ -44,7 +44,7 @@
 
   }
   &__category_card {
-    @include hover-scale-shadow(1);
+    @include hover-scale-shadow(1.05);
 
     cursor: pointer;
     display: flex;

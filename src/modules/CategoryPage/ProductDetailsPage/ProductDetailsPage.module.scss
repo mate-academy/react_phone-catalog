@@ -1,11 +1,6 @@
 @use '../../../utils/vars' as *;
 @use '../../../utils/mixins' as *;
 
-.productdetailspage_container {
-  display: flex;
-  flex: 1;
-}
-
 .productdetailspage {
   @include page-grid;
 
@@ -15,6 +10,12 @@
     margin: 0;
     padding: 24px 16px 0;
   }
+
+  &_container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
 
   &__backbutton {
     cursor: pointer;
