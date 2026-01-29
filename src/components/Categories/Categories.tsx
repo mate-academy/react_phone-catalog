@@ -12,7 +12,7 @@ export const Categories = () => {
           <Link to="/phones" className={styles.category}>
             <div className={cn(styles.imageWrapper, styles.phonesBg)}>
               <img
-                src="/img/category-phones.png"
+                src="img/category-phones.png"
                 alt="Mobile phones"
                 className={styles.image}
               />
@@ -25,7 +25,7 @@ export const Categories = () => {
           <Link to="/tablets" className={styles.category}>
             <div className={cn(styles.imageWrapper, styles.tabletsBg)}>
               <img
-                src="/img/category-tablets.png"
+                src="img/category-tablets.png"
                 alt="Tablets"
                 className={styles.image}
               />
@@ -38,7 +38,7 @@ export const Categories = () => {
           <Link to="/accessories" className={styles.category}>
             <div className={cn(styles.imageWrapper, styles.accessoriesBg)}>
               <img
-                src="/img/category-accessories.png"
+                src="img/category-accessories.png"
                 alt="Accessories"
                 className={styles.image}
               />

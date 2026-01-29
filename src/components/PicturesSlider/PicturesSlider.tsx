@@ -34,7 +34,7 @@ export const PicturesSlider = () => {
       <div className={styles.buttonsWrapper}>
         {/* Przycisk w LEWO */}
         <button className={styles.button} onClick={handlePrev}>
-          <img src="/img/icons/arrow-left.svg" alt="Previous slide" />
+          <img src="img/icons/arrow-left.svg" alt="Previous slide" />
         </button>
 
         <div className={styles.imageContainer}>
@@ -47,7 +47,7 @@ export const PicturesSlider = () => {
 
         {/* Przycisk w PRAWO */}
         <button className={styles.button} onClick={handleNext}>
-          <img src="/img/icons/arrow-right.svg" alt="Next slide" />
+          <img src="img/icons/arrow-right.svg" alt="Next slide" />
         </button>
       </div>
 

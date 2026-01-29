@@ -263,7 +263,7 @@ export const ProductDetailsPage = () => {
     <div className={styles.container}>
       <nav className={styles.nav}>
         <Link to="/">
-          <img src="/img/icons/Home.svg" alt="Home" onError={handleIconError} />
+          <img src="img/icons/Home.svg" alt="Home" onError={handleIconError} />
         </Link>
         <span>&gt;</span>
         <Link to={categoryPath}>{categoryName}</Link>
@@ -466,7 +466,7 @@ export const ProductDetailsPage = () => {
               })}
               disabled={!canScrollLeft}
             >
-              <img src="/img/icons/arrow-left.svg" alt="Prev" />
+              <img src="img/icons/arrow-left.svg" alt="Prev" />
             </button>
 
             <button
@@ -476,7 +476,7 @@ export const ProductDetailsPage = () => {
               })}
               disabled={!canScrollRight}
             >
-              <img src="/img/icons/arrow-right.svg" alt="Next" />
+              <img src="img/icons/arrow-right.svg" alt="Next" />
             </button>
           </div>
         </div>

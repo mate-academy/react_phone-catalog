@@ -24,7 +24,7 @@ export const Breadcrumbs = () => {
       <nav className={styles.breadcrumbs} aria-label="breadcrumb">
         <Link to="/" className={styles.homeLink}>
           <img
-            src="/img/icons/Home.svg"
+            src="img/icons/Home.svg"
             alt="Home"
             className={styles.homeIcon}
           />
@@ -39,7 +39,7 @@ export const Breadcrumbs = () => {
           return (
             <React.Fragment key={to}>
               <span className={styles.separator}>
-                <img src="/img/icons/arrow-right.svg" alt=">" />
+                <img src="img/icons/arrow-right.svg" alt=">" />
               </span>
 
               {last ? (
