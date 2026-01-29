@@ -49,14 +49,14 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
       <div className={styles.footer}>
         <NavLink to="/favorites" className={getIconClass} onClick={onClose}>
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
             alt="Favorites"
           />
         </NavLink>
 
         <NavLink to="/cart" className={getIconClass} onClick={onClose}>
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/cart.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`}
             alt="Cart"
           />
         </NavLink>

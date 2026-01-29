@@ -16,7 +16,7 @@ export const Footer = () => {
         <div className={styles.content}>
           <Link to="/" className={styles.logo}>
             <img
-              src={`${import.meta.env.BASE_URL}img/logo.svg`}
+              src={`${import.meta.env.BASE_URL}/img/logo.svg`}
               alt="Nice Gadgets logo"
             />
           </Link>
@@ -47,7 +47,7 @@ export const Footer = () => {
             <span className={styles.backText}>Back to top</span>
             <button className={styles.backBtn} aria-label="Scroll to top">
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+                src={`${import.meta.env.BASE_URL}/img/icons/arrow-right.svg`}
                 alt="Up"
               />
             </button>

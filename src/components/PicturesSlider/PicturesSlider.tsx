@@ -3,9 +3,9 @@ import cn from 'classnames';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  `${import.meta.env.BASE_URL}img/banner-phones.png`,
-  `${import.meta.env.BASE_URL}img/banner-tablets.png`,
-  `${import.meta.env.BASE_URL}img/banner-accessories.png`,
+  `${import.meta.env.BASE_URL}/img/banner-phones.png`,
+  `${import.meta.env.BASE_URL}/img/banner-tablets.png`,
+  `${import.meta.env.BASE_URL}/img/banner-accessories.png`,
 ];
 
 export const PicturesSlider = () => {
@@ -35,7 +35,7 @@ export const PicturesSlider = () => {
         {/* Przycisk w LEWO */}
         <button className={styles.button} onClick={handlePrev}>
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/arrow-left.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/arrow-left.svg`}
             alt="Previous slide"
           />
         </button>
@@ -51,7 +51,7 @@ export const PicturesSlider = () => {
         {/* Przycisk w PRAWO */}
         <button className={styles.button} onClick={handleNext}>
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/arrow-right.svg`}
             alt="Next slide"
           />
         </button>

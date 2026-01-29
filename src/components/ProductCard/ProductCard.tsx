@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     const path = url.startsWith('/') ? url.slice(1) : url;
     const webpPath = path.replace('.jpg', '.webp');
 
-    return `${import.meta.env.BASE_URL}${webpPath}`;
+    return `${import.meta.env.BASE_URL}/${webpPath}`;
   };
 
   const imageUrl = fixedImage(mainImage);
@@ -106,8 +106,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <img
             src={
               isFav
-                ? `${import.meta.env.BASE_URL}img/icons/Heart Like.svg`
-                : `${import.meta.env.BASE_URL}img/icons/Heart.svg`
+                ? `${import.meta.env.BASE_URL}/img/icons/Heart Like.svg`
+                : `${import.meta.env.BASE_URL}/img/icons/Heart.svg`
             }
             alt="Like"
           />

@@ -77,7 +77,7 @@ export const Header = () => {
       <div className={styles.content}>
         <Link to="/" className={styles.logo} onClick={closeMenu}>
           <img
-            src={`${import.meta.env.BASE_URL}img/logo.svg`}
+            src={`${import.meta.env.BASE_URL}/img/logo.svg`}
             alt="Nice Gadgets"
           />
         </Link>
@@ -119,7 +119,7 @@ export const Header = () => {
             />
             <div className={styles.searchIconWrapper}>
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/search.svg`}
+                src={`${import.meta.env.BASE_URL}/img/icons/search.svg`}
                 alt="Search"
               />
             </div>
@@ -131,7 +131,7 @@ export const Header = () => {
           <NavLink to="/favourites" className={getIconClass}>
             <div className={styles.iconWrapper}>
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
                 alt="Favourites"
               />
               {favItems.length > 0 && (
@@ -142,7 +142,7 @@ export const Header = () => {
           <NavLink to="/cart" className={getIconClass}>
             <div className={styles.iconWrapper}>
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/cart.svg`}
+                src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`}
                 alt="Cart"
               />
               {cartItems.length > 0 && (
@@ -159,8 +159,8 @@ export const Header = () => {
           <img
             src={
               isMenuOpen
-                ? `${import.meta.env.BASE_URL}img/icons/close.svg`
-                : `${import.meta.env.BASE_URL}img/icons/menu.svg`
+                ? `${import.meta.env.BASE_URL}/img/icons/close.svg`
+                : `${import.meta.env.BASE_URL}/img/icons/menu.svg`
             }
             alt="Menu"
           />
@@ -196,7 +196,7 @@ export const Header = () => {
             >
               <div className={styles.iconWrapper}>
                 <img
-                  src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                  src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
                   alt="Favourites"
                 />
                 {favItems.length > 0 && (
@@ -211,7 +211,7 @@ export const Header = () => {
             >
               <div className={styles.iconWrapper}>
                 <img
-                  src={`${import.meta.env.BASE_URL}img/icons/cart.svg`}
+                  src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`}
                   alt="Cart"
                 />
                 {cartItems.length > 0 && (

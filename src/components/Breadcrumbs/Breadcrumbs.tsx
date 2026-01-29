@@ -23,7 +23,7 @@ export const Breadcrumbs = () => {
       <nav className={styles.breadcrumbs} aria-label="breadcrumb">
         <Link to="/" className={styles.homeLink}>
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/Home.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/Home.svg`}
             alt="Home"
             className={styles.homeIcon}
           />
@@ -39,7 +39,7 @@ export const Breadcrumbs = () => {
             <React.Fragment key={to}>
               <span className={styles.separator}>
                 <img
-                  src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+                  src={`${import.meta.env.BASE_URL}/img/icons/arrow-right.svg`}
                   alt=">"
                 />
               </span>

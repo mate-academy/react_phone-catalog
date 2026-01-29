@@ -40,7 +40,7 @@ export const CartPage = () => {
         {/* Przycisk Wstecz */}
         <button className={styles.backBtn} onClick={() => navigate(-1)}>
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/arrow-left.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/arrow-left.svg`}
             alt="<"
           />
           Back
@@ -51,7 +51,7 @@ export const CartPage = () => {
         {cartItems.length === 0 ? (
           <div className={styles.emptyCart}>
             <img
-              src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
+              src={`${import.meta.env.BASE_URL}/img/cart-is-empty.png`}
               alt="Empty"
               className={styles.emptyImage}
             />

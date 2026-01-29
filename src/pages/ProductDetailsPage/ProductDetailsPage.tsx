@@ -269,7 +269,7 @@ export const ProductDetailsPage = () => {
       <nav className={styles.nav}>
         <Link to="/">
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/Home.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/Home.svg`}
             alt="Home"
             onError={handleIconError}
           />
@@ -379,8 +379,8 @@ export const ProductDetailsPage = () => {
               <img
                 src={
                   isFav
-                    ? `${import.meta.env.BASE_URL}img/icons/Heart Like.svg`
-                    : `${import.meta.env.BASE_URL}img/icons/Heart.svg`
+                    ? `${import.meta.env.BASE_URL}/img/icons/Heart Like.svg`
+                    : `${import.meta.env.BASE_URL}/img/icons/Heart.svg`
                 }
                 alt="Fav"
               />
@@ -478,7 +478,7 @@ export const ProductDetailsPage = () => {
               disabled={!canScrollLeft}
             >
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/arrow-left.svg`}
+                src={`${import.meta.env.BASE_URL}/img/icons/arrow-left.svg`}
                 alt="Prev"
               />
             </button>
@@ -491,7 +491,7 @@ export const ProductDetailsPage = () => {
               disabled={!canScrollRight}
             >
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/arrow-right.svg`}
+                src={`${import.meta.env.BASE_URL}/img/icons/arrow-right.svg`}
                 alt="Next"
               />
             </button>
