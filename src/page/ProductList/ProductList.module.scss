@@ -79,13 +79,12 @@
 
 
 .grid {
-      display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column: 1 / -1;
-    column-gap: 16px;
-    align-items: start;
-    row-gap: 40px;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column: 1 / -1;
+  gap: 40px 16px;
+  align-items: start;
+  margin-bottom: 40px;
 }
 
 
@@ -106,13 +105,15 @@
   height: 40px;
   border: 1px solid #E2E6E9;
 }
+
 .btn:hover {
-   border: 1px solid #313237;
+  border: 1px solid #313237;
 }
 
 .arrowBtn {
   border: 1px solid #B4BDC3;
 }
+
 .arrowBtn:disabled {
   border: 1px solid #E2E6E9;
 }
@@ -130,7 +131,7 @@
 }
 
 @media (max-width: 650px) {
-    .grid {
+  .grid {
     grid-template-columns: 1fr;
     justify-content: center;
   }

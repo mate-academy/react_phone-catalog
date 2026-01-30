@@ -84,6 +84,7 @@
 
 .burger {
   display: none;
+
   /* скрываем бургер по умолчанию */
   background: none;
   border: none;
@@ -118,10 +119,7 @@
 
 .mobileMenu {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #fff;
   z-index: 999;
   display: flex;

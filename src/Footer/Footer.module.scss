@@ -78,8 +78,7 @@
   .nav {
     flex-direction: column;
     align-items: flex-start;
-    column-gap: 0;
-    row-gap: 12px;
+    gap: 12px;
   }
 
   .scroll {

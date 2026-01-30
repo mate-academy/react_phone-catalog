@@ -59,8 +59,9 @@ export const Header: React.FC = () => {
           <div className={styles.headerIcons}>
             <NavLink
               to="/favorites"
-              className={`${styles.headerIconSize} ${location.pathname === '/favorites' ? styles.iconActive : ''
-                }`}
+              className={`${styles.headerIconSize} ${
+                location.pathname === '/favorites' ? styles.iconActive : ''
+              }`}
             >
               <img src={likeDefault} alt="favorites" />
               {totalFavorites > 0 && (
@@ -70,8 +71,9 @@ export const Header: React.FC = () => {
 
             <NavLink
               to="/cart"
-              className={`${styles.headerIconSize} ${location.pathname === '/cart' ? styles.iconActive : ''
-                }`}
+              className={`${styles.headerIconSize} ${
+                location.pathname === '/cart' ? styles.iconActive : ''
+              }`}
             >
               <img src={shoppingBagIcon} alt="cart" />
               {totalCount > 0 && (

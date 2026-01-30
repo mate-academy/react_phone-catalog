@@ -23,15 +23,15 @@
   margin-bottom: 24px;
 }
 
-.cards > .card:nth-child(1) .images {
+.cards>.card:nth-child(1) .images {
   background-color: #6D6474;
 }
 
-.cards > .card:nth-child(2) .images {
+.cards>.card:nth-child(2) .images {
   background-color: #8D8D92;
 }
 
-.cards > .card:nth-child(3) .images {
+.cards>.card:nth-child(3) .images {
   background-color: #973D5F;
 }
 
@@ -60,8 +60,7 @@
 @media (max-width: 1024px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 12px;
-    row-gap: 24px;
+    gap: 12px 24px;
   }
 
   .img {
@@ -80,7 +79,7 @@
 
 @media (max-width: 768px) {
 
-  .cards > .card {
+  .cards>.card {
     width: 100%;
     margin-bottom: 24px;
   }
@@ -97,10 +96,17 @@
 
 @media (max-width: 630px) {
   .cards {
-    display: block; /* отключаем grid, чтобы карточки шли вниз */
-    width: 100%; /* растягиваем на всю ширину контейнера */
-    margin: 0; /* убираем внешние отступы */
-    padding: 0; /* убираем внутренние отступы */
+    display: block;
+
+    /* отключаем grid, чтобы карточки шли вниз */
+    width: 100%;
+
+    /* растягиваем на всю ширину контейнера */
+    margin: 0;
+
+    /* убираем внешние отступы */
+    padding: 0;
+
+    /* убираем внутренние отступы */
   }
 }
-

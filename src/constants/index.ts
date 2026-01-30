@@ -1,4 +1,4 @@
 export const ROUTING = {
   home: '/',
-  favorites: '/favorites'
-}
+  favorites: '/favorites',
+};

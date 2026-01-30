@@ -3,6 +3,7 @@
   justify-content: center;
   padding: 24px 0;
 }
+
 .spinner {
   width: 36px;
   height: 36px;
@@ -11,6 +12,9 @@
   border-top-color: #313237;
   animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
