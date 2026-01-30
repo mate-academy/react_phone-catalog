@@ -31,6 +31,7 @@ const App = () => {
         <main className="main">
           <div className="main__content">
             <Routes>
+              <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<PhonesPage />} />
               <Route path="/tablets" element={<TabletsPage />} />
