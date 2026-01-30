@@ -42,6 +42,9 @@ export const HomePage: React.FC = () => {
   };
 
   useEffect(() => {
+console.log('HomePage mounted');
+
+    console.log(window.location.pathname);
     const controller = new AbortController();
 
     void loadProducts(controller.signal);
