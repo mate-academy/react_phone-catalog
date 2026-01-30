@@ -1,0 +1,137 @@
+.title {
+  grid-column: 1 / -1;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  grid-row: 2;
+}
+
+.titleWrapper {
+  display: flex;
+  grid-column: 1 / 6;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 40px;
+  grid-row: 1;
+}
+
+.titleWrapper img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.pageName {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  color: #89939A;
+}
+
+.modelsCount {
+  grid-column: 1 / -1;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: #89939A;
+  margin-bottom: 8px;
+  grid-row: 3;
+}
+
+.sortRow {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+  gap: 16px;
+  grid-row: 4;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #333;
+  min-width: 150px;
+}
+
+.sortBy {
+  width: 176px;
+  height: 40px;
+  border: 1px solid #B4BDC3;
+}
+
+.sortItems {
+  width: 128px;
+  height: 40px;
+  border: 1px solid #B4BDC3;
+}
+
+.sortBy,
+.sortItems {
+  outline: none;
+}
+
+
+.grid {
+      display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column: 1 / -1;
+    column-gap: 16px;
+    align-items: start;
+    row-gap: 40px;
+    margin-bottom: 40px;
+}
+
+
+.buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 80px;
+}
+
+.arrow {
+  padding: 8px;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #E2E6E9;
+}
+.btn:hover {
+   border: 1px solid #313237;
+}
+
+.arrowBtn {
+  border: 1px solid #B4BDC3;
+}
+.arrowBtn:disabled {
+  border: 1px solid #E2E6E9;
+}
+
+.active {
+  background-color: #313237;
+  color: #fff;
+  border: 1px solid #313237;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+    .grid {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+}
