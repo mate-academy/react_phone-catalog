@@ -1,4 +1,10 @@
+@use '../../styles/typography' as typography;
+
 .notFoundPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
   padding: 40px 0;
 }
 
@@ -6,12 +12,34 @@
   max-width: 1136px;
   margin: 0 auto;
   padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .title {
+  @include typography.text-h2;
+
+  color: var(--color-primary);
   margin: 0 0 16px;
 }
 
 .homeLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
 }

@@ -4,6 +4,7 @@ import styles from './ProductDetailsPage.module.scss';
 import { Phone } from '../../types/Phone';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
+import { NotFoundPage } from '../NotFoundPage';
 import { getProductColor } from '../../constants/colors';
 /* eslint-disable max-len */
 import { SuggestedProductsSlider } from '../../components/SuggestedProductsSlider';
@@ -141,12 +142,7 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (error || !product) {
-    return (
-      <div className={styles.error}>
-        <h1>Product was not found</h1>
-        <Link to="/">Back to home</Link>
-      </div>
-    );
+    return <NotFoundPage title="Product was not found" />;
   }
 
   return (
