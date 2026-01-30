@@ -5,7 +5,6 @@ import { CatalogList } from '../CatalogList/CatalogList';
 import './Catalog.scss';
 import { useEffect } from 'react';
 import { ProductBase } from '../../../types/ProductBase';
-import { PhoneShort } from '../../../types/PhoneShort';
 
 export const Catalog = () => {
   const location = useLocation();
@@ -45,12 +44,11 @@ export const Catalog = () => {
       screen: product.screen,
       capacity: product.capacity,
       ram: product.ram,
+      color: product.color,
+      favouriteKey: `${product.category}-${product.itemId}`,
+      year: product.year,
     }));
-  const productsFull: PhoneShort[] = productsRaw.filter(
-    product => product.category === path,
-  );
-
-  const sortedProducts = [...productsFull].sort((a, b) => {
+  const sortedProducts = [...products].sort((a, b) => {
     switch (sortBy) {
       case 'newest':
         return b.year - a.year;

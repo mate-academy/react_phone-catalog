@@ -11,5 +11,6 @@ export interface ProductBase {
   fullPrice: number;
   itemId: string;
   favouriteKey: string;
-  color:string | undefined;
+  color: string | undefined;
+  year: number;
 }

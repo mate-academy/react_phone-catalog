@@ -27,4 +27,8 @@ export interface PhoneFull {
   camera: string;
   zoom: string;
   cell: string[];
+  itemId: number;
+  price: number;
+  fullPrice: number;
+  image: string;
 }

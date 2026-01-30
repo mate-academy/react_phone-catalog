@@ -2,11 +2,11 @@ import './HomePageHotPrices.scss';
 import rawProducts from '../../../../public/api/products.json';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { useState } from 'react';
-import { PhoneShort } from '../../../types/PhoneShort';
+import { ProductBase } from '../../../types/ProductBase';
 
-const products = rawProducts as PhoneShort[];
+const products = rawProducts as ProductBase[];
 
-const uniqueProducts: PhoneShort[] = [...products]
+const uniqueProducts: ProductBase[] = [...products]
   .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
   .slice(0, 12);
 

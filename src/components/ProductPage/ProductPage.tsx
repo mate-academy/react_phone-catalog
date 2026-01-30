@@ -11,7 +11,7 @@ import { mapToProductBase } from '../../utils/mapToProductBase';
 import { ProductBase } from '../../types/ProductBase';
 import { useFavourites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
-import { CartProduct } from '../../types/Cart';
+import { CartProduct } from '../../types/CartProduct';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -24,18 +24,17 @@ export const ProductPage = () => {
   const [selectedImg, setSelectedImg] = useState<string>('');
   const [sliderIndex, setSliderIndex] = useState(0);
 
-
   useEffect(() => {
     if (product?.images.length) {
       setSelectedImg(`${product.images[0]}`);
       setSliderIndex(0);
     }
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
 
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }, [product]);
 
   if (!product || !itemId) {
@@ -75,10 +74,9 @@ export const ProductPage = () => {
       navigate(`/${newProduct.category}/${newProduct.id}`);
     }
   };
+
   const { toggle, isFavourite } = useFavourites();
   const { addToCart, removeFromCart, isInCart } = useCart();
-
-
 
   const favouriteKey = `${product.id}-${product.capacity}-${product.color}`;
 
@@ -89,9 +87,9 @@ export const ProductPage = () => {
 
   const cartKey = `${product.id}-${product.capacity}-${product.color}`;
   const cartProduct: CartProduct = {
-    id: `${product.id}-${product.capacity}-${product.color}`, // cart id
-    itemId: product.itemId,                                   // ❗️
-    category: product.category,                               // ❗️
+    id: `${product.id}-${product.capacity}-${product.color}`,
+    itemId: product.itemId,
+    category: product.category,
     name: product.name,
     price: product.price,
     priceDiscount:
@@ -127,6 +125,7 @@ export const ProductPage = () => {
             <div className="productPage__thumbnails">
               {product.images.map((img, i) => {
                 const path = `${img}`;
+
                 return (
                   <img
                     key={i}
@@ -197,16 +196,14 @@ export const ProductPage = () => {
                 {isInCart(cartKey) ? 'Added to cart' : 'Add to cart'}
               </button>
 
-
               <button
-                className={`productPage__favourites-button ${isFavourite(favouriteKey) ? 'is-active' : ''
-                  }`}
+                className={`productPage__favourites-button ${
+                  isFavourite(favouriteKey) ? 'is-active' : ''
+                }`}
                 onClick={() => toggle(productBase)}
               >
                 <span className="icon icon--favourite" />
               </button>
-
-
             </div>
 
             <div className="productPage__shortSpecs">

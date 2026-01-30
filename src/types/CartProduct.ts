@@ -7,4 +7,5 @@ export interface CartProduct {
   category: string;
   capacity: string;
   color: string;
+  itemId: number;
 }
