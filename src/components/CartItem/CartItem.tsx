@@ -17,7 +17,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         ×
       </button>
 
-      <img src={item.image} alt={item.name} className={styles.image} />
+      <img
+        src={import.meta.env.BASE_URL + item.image}
+        alt={item.name}
+        className={styles.image}
+      />
 
       <p className={styles.name}>{item.name}</p>
 

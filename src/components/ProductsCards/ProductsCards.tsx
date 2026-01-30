@@ -131,7 +131,7 @@ export const ProductsCards: React.FC<ProductsCardsProps> = ({
           ram: r.ram,
           year: r.year,
           category: r.category,
-          imageSrc: r.image ? `/${r.image.replace(/^\/+/, '')}` : undefined,
+          imageSrc: r.image ? r.image.replace(/^\/+/, '') : undefined,
         }));
 
         setProducts(mapped);

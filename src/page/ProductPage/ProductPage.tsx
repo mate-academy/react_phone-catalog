@@ -212,12 +212,18 @@ export const ProductPage: React.FC = () => {
                   className={`${styles.thumbnail} ${img === activeImg ? styles.thumbnailActive : ''}`}
                   onClick={() => setActiveImg(img)}
                 >
-                  <img src={img} alt={product.name} />
+                  <img
+                    src={import.meta.env.BASE_URL + img}
+                    alt={product.name}
+                  />
                 </div>
               ))}
             </div>
             <div className={styles.preview}>
-              <img src={currentImage} alt={product.name} />
+              <img
+                src={import.meta.env.BASE_URL + currentImage}
+                alt={product.name}
+              />
             </div>
           </div>
 

@@ -30,7 +30,11 @@ export const CardFavorites: React.FC<CardFavoritesProps> = ({
   return (
     <article className={styles.card}>
       <a href={`/product/${itemId}`} className={styles.imgWrap}>
-        <img src={image} alt={name} className={styles.cardImg} />
+        <img
+          src={import.meta.env.BASE_URL + image}
+          alt={name}
+          className={styles.cardImg}
+        />
       </a>
 
       <h3 className={styles.cardName}>
