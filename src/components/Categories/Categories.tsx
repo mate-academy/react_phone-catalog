@@ -1,6 +1,7 @@
 import styles from './Categories.module.scss';
 import { Loader } from '../Loader';
 import { useCategories } from './hooks/useCategories';
+import { Link } from 'react-router-dom';
 
 export const Categories = () => {
   const { counts, isLoading } = useCategories();
@@ -34,13 +35,13 @@ export const Categories = () => {
             link: 'accessories',
           },
         ].map(({ title, amount, img, link }) => (
-          <article key={title} className={styles.card}>
+          <Link to={`/${link}`} key={title} className={styles.card}>
             <div className={`${styles.imageContainer} ${styles[link]}`}>
               <img src={img} alt={title} className={styles.image} />
             </div>
             <h4 className={styles.cardTitle}>{title}</h4>
             <p className={styles.modelsCount}>{amount} models</p>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

@@ -38,6 +38,8 @@
   display: flex;
   flex-direction: column;
   width: 368px;
+  text-decoration: none;
+  cursor: pointer;
 
   @media (max-width: 1199px) {
     width: calc((100% - 16px * 2) / 3);
