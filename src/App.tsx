@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -9,6 +9,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => (
   <FavoritesProvider>
@@ -22,7 +23,7 @@ export const App = () => (
           <Route path="/accessories" element={<AccessoriesPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/product/:productId" element={<ProductDetailsPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
