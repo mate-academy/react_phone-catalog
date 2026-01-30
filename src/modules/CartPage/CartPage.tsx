@@ -15,6 +15,8 @@ import Button from '../shared/Button';
 
 const CartPage = () => {
   const { t } = useTranslation();
+  // const items = useAppSelector(state => state.items);
+
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const { products } = useContext(ProductCatalogContext);

@@ -35,7 +35,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       <PriceTag {...product} />
 
       <ProductSpecs product={product} specsList={CATALOG_SPECS_LIST} />
-      <ProductActions productId={product.id} />
+      <ProductActions product={product} />
     </div>
   );
 };

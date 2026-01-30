@@ -48,7 +48,8 @@
     "ram": "ОЗП",
     "resolution": "Роздільність",
     "processor": "Процесор",
-    "add_to_cart": "До кошика"
+    "add_to_cart": "До кошика",
+    "item_added": "Товар додано"
   },
 
   "product-detail": {

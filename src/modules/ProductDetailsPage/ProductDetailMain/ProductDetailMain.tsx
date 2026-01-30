@@ -24,10 +24,12 @@ const ProductDetailMain: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const { productDetailIdToProductId } = useContext(ProductCatalogContext);
+  const { products, productDetailIdToProductId } = useContext(
+    ProductCatalogContext,
+  );
   const handleSliderClick = (newIndex: number) => setActiveSlide(newIndex);
   const productId =
-    productDetailIdToProductId[getProductDetailId(product)] || '';
+    productDetailIdToProductId[getProductDetailId(product)] || 0;
 
   return (
     <>
@@ -79,7 +81,7 @@ const ProductDetailMain: React.FC<Props> = ({ product }) => {
           />
 
           <ProductActions
-            productId={Number(productId)}
+            product={products[productId]}
             additionalStyles={styles.controls__productActions}
           />
 

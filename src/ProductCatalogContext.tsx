@@ -10,7 +10,7 @@ import { ProductCatalogItem } from './types/ProductCatalogItem';
 import { getProducts } from './api/products';
 import type { Categories } from './types/Categories';
 
-export type ProductDetailIdToProductId = Record<string, string>;
+export type ProductDetailIdToProductId = Record<string, number>;
 
 interface ProductContextType {
   products: ProductCatalogItem[];
@@ -82,10 +82,7 @@ export const ProductCatalogProvider = ({
   const productDetailIdToProductId: ProductDetailIdToProductId = useMemo(
     () =>
       Object.fromEntries(
-        products.map(product => [
-          getProductDetailId(product),
-          String(product.id),
-        ]),
+        products.map(product => [getProductDetailId(product), product.id]),
       ),
     [products],
   );

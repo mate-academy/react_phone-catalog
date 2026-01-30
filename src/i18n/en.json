@@ -47,7 +47,8 @@
     "ram": "RAM",
     "resolution": "Resolution",
     "processor": "Processor",
-    "add_to_cart": "Add to cart"
+    "add_to_cart": "Add to cart",
+    "item_added": "Item added"
   },
 
   "product-detail": {

@@ -5,19 +5,23 @@ import Footer from './modules/Footer';
 import { ProductCatalogProvider } from './ProductCatalogContext';
 import { ProductDetailProvider } from './ProductDetailContext';
 import { GlobalStateProvider } from './store';
+import { Provider } from 'react-redux';
+import store from './store/index';
 
 export const App = () => {
   return (
-    <GlobalStateProvider>
-      <ProductCatalogProvider>
-        <ProductDetailProvider>
-          <div className="App App__container">
-            <Header />
-            <Outlet />
-            <Footer />
-          </div>
-        </ProductDetailProvider>
-      </ProductCatalogProvider>
-    </GlobalStateProvider>
+    <Provider store={store}>
+      <GlobalStateProvider>
+        <ProductCatalogProvider>
+          <ProductDetailProvider>
+            <div className="App App__container">
+              <Header />
+              <Outlet />
+              <Footer />
+            </div>
+          </ProductDetailProvider>
+        </ProductCatalogProvider>
+      </GlobalStateProvider>
+    </Provider>
   );
 };

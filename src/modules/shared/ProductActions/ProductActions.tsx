@@ -1,26 +1,25 @@
 import styles from './ProductActions.module.scss';
-
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Button from '../Button';
 import Icon from '../Icon';
-import { useCallback, useContext } from 'react';
-import { DispatchContext, StateContext } from '../../../store';
-import React from 'react';
-
+import { useCallback } from 'react';
 interface InnerProps {
   isFavorite: boolean;
+  isItemAdded: boolean;
   onToggle: (productId: number) => void;
-  onAddToCart: (productId: number) => void;
-  productId: number;
+  onAddToCart: (product: ProductCatalogItem) => void;
+  product: ProductCatalogItem;
   additionalStyles: string;
 }
 
 const ProductActionsInner = React.memo(function ProductActionsInner({
   isFavorite,
+  isItemAdded,
   onToggle,
   onAddToCart,
-  productId,
+  product,
   additionalStyles,
 }: InnerProps) {
   const { t } = useTranslation();
@@ -28,11 +27,15 @@ const ProductActionsInner = React.memo(function ProductActionsInner({
   return (
     <div className={styles.buttons + ' ' + additionalStyles}>
       <Button
-        handleClick={() => onAddToCart(productId)}
-        text={t('product-card.add_to_cart')}
+        handleClick={() => onAddToCart(product)}
+        text={
+          isItemAdded
+            ? t('product-card.item_added')
+            : t('product-card.add_to_cart')
+        }
       />
       <Icon
-        onClick={() => onToggle(productId)}
+        onClick={() => onToggle(product.id)}
         iconStyles={{
           icon: 'border',
           image: isFavorite ? 'favorites_active' : 'favorites',
@@ -43,39 +46,38 @@ const ProductActionsInner = React.memo(function ProductActionsInner({
 });
 
 interface Props {
-  productId: number;
+  product: ProductCatalogItem;
   additionalStyles?: string;
 }
 
 const ProductActions: React.FC<Props> = ({
-  productId,
+  product,
   additionalStyles = '',
 }) => {
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
+  const favorites = useAppSelector(state => state.favorites);
+  const items = useAppSelector(state => state.items);
+  const dispatch = useAppDispatch();
 
-  const isFavorite = state.favorites.has(productId);
+  const isFavorite = !!favorites[product.id];
+  const isItemAdded = !!items[product.id];
 
   const toggle = useCallback(
-    (id: number) => {
-      dispatch({ type: 'toggleFavorite', payload: id });
-    },
-    [dispatch],
+    () => dispatch(favoritesActions.toggle(product)),
+    [dispatch, product],
   );
 
   const addToCart = useCallback(
-    (id: number) => {
-      dispatch({ type: 'addToCart', payload: id });
-    },
-    [dispatch],
+    () => isItemAdded || dispatch(itemsActions.add(product)),
+    [isItemAdded, dispatch, product],
   );
 
   return (
     <ProductActionsInner
       isFavorite={isFavorite}
+      isItemAdded={isItemAdded}
       onToggle={toggle}
       onAddToCart={addToCart}
-      productId={productId}
+      product={product}
       additionalStyles={additionalStyles}
     />
   );
