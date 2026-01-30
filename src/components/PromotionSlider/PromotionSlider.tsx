@@ -69,6 +69,8 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
           observer={true}
           observeParents={true}
         >
+          {products.length === 0 && <div>No products found</div>}
+
           {products.map(product => (
             <SwiperSlide key={product.id}>
               <ProductCard product={product} />

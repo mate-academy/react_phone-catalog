@@ -3,9 +3,11 @@ import { getProducts } from '../api/httpsRequest';
 const { addToDB } = useProducts();
 
 export const useGetPhones = async () => {
-  getProducts('phones').then(phones => {
-    addToDB('phones', phones);
-  });
+  setTimeout(() => {
+    getProducts('phones').then(phones => {
+      addToDB('phones', phones);
+    });
+  }, 2000);
 };
 
 export const useGetTablets = async () => {
@@ -21,7 +23,9 @@ export const useGetAccessories = async () => {
 };
 
 export const useGetAllProducts = async () => {
-  getProducts('allProducts').then(productsAll => {
-    addToDB('allProducts', productsAll);
-  });
+  setTimeout(() => {
+    getProducts('allProducts').then(productsAll => {
+      addToDB('allProducts', productsAll);
+    });
+  }, 2000);
 };

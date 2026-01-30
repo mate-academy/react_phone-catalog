@@ -9,6 +9,7 @@ import burgerIcon from '../../images/icons/burger.svg';
 import closeIcon from '../../images/icons/close.svg';
 import logoIcon from '../../images/header/logo.svg';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -83,6 +84,7 @@ export const Header = () => {
             >
               accessories
             </NavLink>
+            {/* <ThemeSwitcher /> */}
           </nav>
           <div className={header__buttons}>
             <NavLink
