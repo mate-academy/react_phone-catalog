@@ -1,9 +1,13 @@
+@use '../../styles/media.scss' as *;
+
 .catalog {
 
   padding-top: 24px;
-  padding-bottom: 80px;
+  padding-bottom: 64px;
 
-  &__container {}
+  @include tablet-above {
+    padding-bottom: 64px;
+  }
 
   &__title {
     margin-bottom: 8px;
@@ -14,6 +18,7 @@
     line-height: 1.5;
     color: var(--color-secondary);
     margin-bottom: 40px;
+
   }
 
   &__dropdowns {
@@ -152,15 +157,19 @@
 
 
 .bradcrumbs {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   display: flex;
   column-gap: 8px;
-
+  flex-wrap: wrap;
   color: var(--color-primary);
+
+  @include tablet-above {
+    margin-bottom: 40px;
+  }
 
   &__link {
 
-
+    display: flex;
 
     &--last {
       color: var(--color-secondary);

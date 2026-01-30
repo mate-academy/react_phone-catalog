@@ -51,7 +51,7 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
     display: flex;
     column-gap: 16px;
     flex: 0 0 50%;
-    align-items: center;
+    align-items: start;
   }
 
   &__info {
@@ -70,11 +70,6 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
       align-items: center;
       width: 80px;
 
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      width: 80px;
       padding: 0;
       margin: 0;
       list-style: none;
@@ -149,6 +144,8 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
   &__items {
     display: flex;
     column-gap: 8px;
+    height: 32px;
+    align-items: center;
   }
 
   &__link {
@@ -184,7 +181,7 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
 
     &-link {
       padding: 2px;
-      border: 1px solid var(--color-white);
+      // border: 1px solid var(--color-white);
     }
 
 
@@ -194,6 +191,10 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
       height: 26px;
       border-radius: 50%;
       //
+
+      background-color: #958487;
+
+
 
       &--active {
 
@@ -220,6 +221,14 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
       &--white {
         background-color: rgba(250, 250, 250, 0.8);
       }
+
+      &--rosegold {
+        background-color: #B76E79;
+      }
+
+
+
+
     }
   }
 
@@ -258,9 +267,9 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
 }
 
 .card__price {
-  padding-block: 32px;
+  // padding-block: 32px;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   row-gap: 16px;
 
   &-block {

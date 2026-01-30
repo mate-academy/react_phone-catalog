@@ -119,7 +119,7 @@ export const Catalog: FC<Props> = ({
       <div className="container catalog__container">
         <Breadcrumbs />
 
-        <h1 className="catalog__title">{name}</h1>
+        <h2 className="catalog__title">{name}</h2>
         <div className="catalog__counter">
           {quantity} model{quantity !== 1 ? 's' : ''}
         </div>

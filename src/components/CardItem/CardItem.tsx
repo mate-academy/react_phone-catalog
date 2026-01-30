@@ -9,6 +9,7 @@ import { ProductCardButtons } from '../ProductCard/ProductCardButtons';
 import { getProduct, getProducts } from '../../api/httpsRequest';
 import { ProductAllType, ProductType } from '../../types/Product';
 import { Empty } from '../Empty';
+import { ButtonBack } from '../ButtonBack';
 
 export const CardItem = () => {
   const { id } = useParams<{ id: string }>();
@@ -36,7 +37,7 @@ export const CardItem = () => {
     };
 
     fetchProduct();
-  }, [id, singleProduct, pathname]);
+  }, [id, singleProduct, pathname, alsoLikeProducts]);
 
   useEffect(() => {
     setActivePhoto(singleProduct?.images[0] || unknownImg);
@@ -77,6 +78,8 @@ export const CardItem = () => {
     <section className="card-item">
       <div className="container card-item__container">
         <Breadcrumbs />
+
+        <ButtonBack />
 
         <h2 className="card-item__title h2">{singleProduct.name}</h2>
         <div className="card-item__body body-card">

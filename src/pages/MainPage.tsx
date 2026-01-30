@@ -44,11 +44,11 @@ export const MainPage = () => {
   }, [productsAll]);
 
   return (
-    <>
+    <div className="main-wrapper">
       <Banner />
       <PromotionSlider products={getNewModels} title="Brand new models" />
       <ShopCatagory shopCategoryInfo={shopCategoryInfo} />
       <PromotionSlider products={getHotModels} title="Hot prices" />
-    </>
+    </div>
   );
 };

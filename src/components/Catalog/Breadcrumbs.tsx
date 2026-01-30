@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import homeimage from '../../images/icons/home-image.svg';
+import arrowRight from '../../images/icons/arrow-right.svg';
+import React, { Fragment } from 'react';
 
 export const Breadcrumbs = () => {
   const { pathname } = useLocation();
@@ -12,13 +14,19 @@ export const Breadcrumbs = () => {
       </Link>
       {location.map((item, i) =>
         i < location.length - 1 ? (
-          <Link to={`/${item}`} key={item} className="bradcrumbs__link">
-            <span>&#62; {item}</span>
-          </Link>
+          <Fragment key={item}>
+            <img src={arrowRight} alt="" />
+            <Link to={`/${item}`} className="bradcrumbs__link">
+              <span>{item}</span>
+            </Link>
+          </Fragment>
         ) : (
-          <span className="bradcrumbs__link bradcrumbs__link--last" key={item}>
-            &#62; {item}
-          </span>
+          <Fragment key={item}>
+            <img src={arrowRight} alt="" />
+            <span className="bradcrumbs__link bradcrumbs__link--last">
+              {item}
+            </span>
+          </Fragment>
         ),
       )}
     </div>

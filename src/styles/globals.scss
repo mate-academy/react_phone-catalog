@@ -27,17 +27,9 @@ body {
 .h1 {
   font-size: 32px;
   margin-top: 0;
-  margin-bottom: 24px;
-
-
-  @media (min-width: 640px) {
-    margin-bottom: 32px;
-    font-size: 48px;
-  }
-
-  @media (min-width: 1200px) {
-    margin-bottom: 56px;
-  }
+  height: var(--header-height);
+  opacity: 0;
+  visibility: 'hidden';
 
 }
 
@@ -66,11 +58,18 @@ body {
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  gap: 24px;
   min-height: 100vh;
 }
 
 .main {
-  padding-top: var(--header-height);
-  flex: 1 1 auto;
+
+  &-wrapper {
+
+    padding-block: 32px 64px;
+
+    @include tablet-above {
+      padding-block: 56px 80px;
+    }
+  }
+
 }

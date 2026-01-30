@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { createContext, useContext, useState } from 'react';
 import { ProductAllType } from '../types/Product';
 import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
@@ -35,22 +35,30 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
     getLocalStorage('favorite') || [],
   );
 
+  useEffect(() => {
+    setLocalStorage('cart', cartItems);
+  }, [cartItems]);
+
+  useEffect(() => {
+    setLocalStorage('favorite', favoriteItems);
+  }, [favoriteItems]);
+
   // ----- Cart
 
   const addToCart = (product: ProductAllType): void => {
     setCartItems(prev =>
       prev.find(item => String(item.id) === String(product.id))
-        ? (setLocalStorage('cart', prev), prev)
-        : (setLocalStorage('cart', [...prev, { ...product, count: 1 }]),
-          [...prev, { ...product, count: 1 }]),
+        ? prev
+        : [...prev, { ...product, count: 1 }],
     );
+    // ? (setLocalStorage('cart', prev), prev)
   };
 
   const removeFromCart = (productId: string) => {
     setCartItems(prev => {
       const data = prev.filter(item => String(item.id) !== String(productId));
 
-      setLocalStorage('cart', data);
+      // setLocalStorage('cart', data);
 
       return data;
     });
@@ -59,15 +67,13 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
   const updateCounterCart = (productId: string, count: number) => {
     setCartItems(prev =>
       prev.map(item =>
-        String(item.id) === String(productId)
-          ? { ...item, count: count }
-          : item,
+        String(item.id) === String(productId) ? { ...item, count } : item,
       ),
     );
   };
 
   const clearCart = () => {
-    setLocalStorage('cart', []);
+    // setLocalStorage('cart', []);
     setCartItems([]);
   };
 
@@ -82,12 +88,8 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
           item => String(item.id) !== String(product.id),
         );
 
-        setLocalStorage('favorite', data);
-
         return data;
       }
-
-      setLocalStorage('favorite', [...prev, product]);
 
       return [...prev, product];
     });

@@ -12,9 +12,9 @@ type Props = {
 };
 
 export const CartItem: FC<Props> = ({ product }) => {
-  const { name, price, image } = product;
+  const { name, price, image, count } = product;
 
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number>(count || 1);
 
   const { removeFromCart, updateCounterCart } = useCartFavorite();
 

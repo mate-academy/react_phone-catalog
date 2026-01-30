@@ -2,14 +2,15 @@
 
 .cart {
 
-  &__back {
-    padding-block: 16px;
+  padding-block: 24px 56px;
 
 
-    &-link {
-      display: flex;
-      column-gap: 10px;
-    }
+  @include tablet-above {
+    padding-block: 40px 64px;
+  }
+
+  @include desktop-above {
+    padding-block: 40px 80px;
   }
 
 

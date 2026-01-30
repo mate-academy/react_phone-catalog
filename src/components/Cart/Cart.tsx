@@ -1,28 +1,44 @@
 import './Cart.scss';
-import { Link } from 'react-router-dom';
 import { CartItem } from './CartItem';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 import emptyCart from './../../images/img/cart-is-empty.png';
 import { ProductAllType } from '../../types/Product';
 import { Empty } from '../Empty';
+import { ButtonBack } from '../ButtonBack';
+import { useEffect, useState } from 'react';
 
 export const Cart = () => {
   const { cartItems } = useCartFavorite();
+  const [totalCost, setTotalCost] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
-  const totalCost = cartItems.reduce((acc, prod) => {
-    return acc + prod.price * prod.count!;
-  }, 0);
+  // const totalCost = cartItems.reduce((acc, prod) => {
+  //   return acc + prod.price * prod.count!;
+  // }, 0);
+
+  // const totalItems = cartItems.reduce((acc, prod) => {
+  //   return acc + prod.count!;
+  // }, 0);
+
+  useEffect(() => {
+    setTotalCost(
+      cartItems.reduce((acc, prod) => {
+        return acc + prod.price * prod.count!;
+      }, 0),
+    );
+
+    setTotalItems(
+      cartItems.reduce((acc, prod) => {
+        return acc + prod.count!;
+      }, 0),
+    );
+  }, [cartItems]);
 
   return (
     <section className="cart">
       <div className="container cart__container">
-        <div className="cart__back">
-          <Link to="/" className="cart__back-link">
-            <span>&#60;</span>
-            <span>Back</span>
-          </Link>
-        </div>
-        <h1 className="cart__title">Cart</h1>
+        <ButtonBack />
+        <h2 className="cart__title">Cart</h2>
 
         {cartItems && cartItems.length === 0 ? (
           <Empty srcImage={emptyCart} />
@@ -34,9 +50,9 @@ export const Cart = () => {
               ))}
             </div>
             <div className="cart__total">
-              <span className="cart__total-amount">{totalCost}</span>
+              <span className="cart__total-amount">${totalCost}</span>
               <span className="cart__total-text">
-                Total for {cartItems.length} item
+                Total for {totalItems} item
                 {cartItems.length > 1 ? 's' : ''}
               </span>
               <button className="cart__total-checkout" type="button">
