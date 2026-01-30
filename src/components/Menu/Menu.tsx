@@ -77,7 +77,7 @@ export const Menu = ({ onClose }: { onClose: () => void }) => {
           onClick={onClose}
         >
           <img
-            src="/public/img/icons/icon-heart.svg"
+            src="./img/icons/icon-heart.svg"
             alt="icon-heart"
             className={styles.menu__button__icon}
           />

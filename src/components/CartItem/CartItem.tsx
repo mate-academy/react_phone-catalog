@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { CartItemType } from '../../types/CartItem';
 import { Product } from '../../types/Product';
 import styles from './CartItem.module.scss';
@@ -26,12 +27,18 @@ export const CartItem = ({
           className={styles.cartItem__buttonDelete}
           onClick={() => removeFromCart(item.productId)}
         ></button>
-        <img
-          src={product.image}
-          alt={product.itemId}
-          className={styles.cartItem__img}
-        />
-        <span className={styles.cartItem__name}>{product.name}</span>
+
+        <NavLink
+          to={`/product/${product.itemId}`}
+          className={styles.cartItem__link}
+        >
+          <img
+            src={product.image}
+            alt={product.itemId}
+            className={styles.cartItem__img}
+          />
+          <span className={styles.cartItem__name}>{product.name}</span>
+        </NavLink>
       </div>
 
       <div className={styles.cartItem__secondRow}>

@@ -4,6 +4,8 @@
 .banner {
   position: relative;
 
+  width: 100%;
+
   @include on-tablet {
     @include page-grid;
 
@@ -16,6 +18,9 @@
 
   &__swiper {
     position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: block;
 
     @include on-tablet {
       width: 100%;

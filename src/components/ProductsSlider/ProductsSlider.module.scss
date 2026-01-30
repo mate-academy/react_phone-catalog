@@ -30,6 +30,7 @@
   &__title {
     width: 136px;
     display: block;
+    margin: 0;
 
     @include font-h2-mobile;
 

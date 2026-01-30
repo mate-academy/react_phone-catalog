@@ -47,6 +47,20 @@
     cursor: pointer;
   }
 
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
   &__img {
     width: 80px;
     height: 80px;

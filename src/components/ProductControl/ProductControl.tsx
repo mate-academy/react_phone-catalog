@@ -104,7 +104,6 @@ export const ProductControl = ({
               : styles['control__addButton--add']
           }`}
           onClick={() => addToCart(product.itemId)}
-          disabled={isInCart(product.itemId)}
         >
           {isInCart(product.itemId) ? 'Added to cart' : 'Add to cart'}
         </button>

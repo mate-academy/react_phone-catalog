@@ -4,17 +4,18 @@
 
 .main {
   flex: 1;
-  display: grid;
-  row-gap: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
 
   padding-block: 64px;
 
   @include on-tablet {
-    row-gap: 64px;
+    gap: 64px;
   }
 
   @include on-desktop {
-    row-gap: 80px;
+    gap: 80px;
 
     padding-block: 80px;
   }
