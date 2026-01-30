@@ -2,36 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
 import { useSwipeable } from 'react-swipeable';
 import { Icon } from '../../../shared/components/Icon';
-import { createNumeratedArray } from '../../../../mocks/Functions/functions';
 import { allPosters } from '../../../../mocks/Data/posters';
-
-interface PicturesNavigatorProps {
-  activeIndex: number;
-}
-
-const PicturesSliderNavigator: React.FC<PicturesNavigatorProps> = ({
-  activeIndex,
-}) => {
-  const arr = createNumeratedArray(activeIndex + 1);
-
-  return (
-    <div className="picturesSlider__navigator">
-      {arr.map(i => {
-        return (
-          <div key={i} className="picturesSlider__rectangleContainer">
-            <div
-              key={i}
-              className={cn('picturesSlider__rectangle', {
-                'picturesSlider__rectangle--selected': i === activeIndex,
-                'picturesSlider__rectangle--unselected': i !== activeIndex,
-              })}
-            />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+import { PicturesSliderNavigator } from './PicturesSliderNavigator';
 
 export const PicturesSlider: React.FC = () => {
   const [imgIndex, setImgIndex] = useState(0);
@@ -108,7 +80,11 @@ export const PicturesSlider: React.FC = () => {
         <Icon iconSlug="ChevronLeft" />
       </button>
 
-      <PicturesSliderNavigator activeIndex={imgIndex} />
+      <PicturesSliderNavigator
+        amountOfItems={allPosters[0].length}
+        activeIndex={imgIndex}
+        onClick={setImgIndex}
+      />
     </section>
   );
 };
