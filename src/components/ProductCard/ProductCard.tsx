@@ -51,12 +51,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <article className={styles.card}>
       <Link to={`/product/${itemId}`} className={styles.imgWrap}>
-        <img
-          src={import.meta.env.BASE_URL + image}
-          alt={name}
-          className={styles.cardImg}
-          loading="lazy"
-        />
+        <img src={image} alt={name} className={styles.cardImg} loading="lazy" />
       </Link>
 
       <h3 className={styles.cardName}>
