@@ -1,9 +1,9 @@
-import table__poster__1 from '/img/table__poster__1.jpg';
-import table__poster__2 from '/img/table__poster__2.jpg';
-import table__poster__3 from '/img/table__poster__3.jpg';
-import mobile__poster__1 from '/img/mobile__poster__1.jpg';
-import mobile__poster__2 from '/img/mobile__poster__2.jpg';
-import mobile__poster__3 from '/img/mobile__poster__3.jpg';
+import table__poster__1 from '@public/img/table__poster__1.jpg';
+import table__poster__2 from '@public/img/table__poster__2.jpg';
+import table__poster__3 from '@public/img/table__poster__3.jpg';
+import mobile__poster__1 from '@public/img/mobile__poster__1.jpg';
+import mobile__poster__2 from '@public/img/mobile__poster__2.jpg';
+import mobile__poster__3 from '@public/img/mobile__poster__3.jpg';
 
 export const mobilePosters = [
   mobile__poster__1,

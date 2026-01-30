@@ -1,6 +1,6 @@
-import phonesBanner from '/img/banners/banner-phones.svg';
-import tabletsBanner from '/img/banners/banner-tablets.svg';
-import accsBanner from '/img/banners/banner-accessories.svg';
+import phonesBanner from '@public/img/banners/banner-phones.svg';
+import tabletsBanner from '@public/img/banners/banner-tablets.svg';
+import accsBanner from '@public/img/banners/banner-accessories.svg';
 
 export const banners: Banner[] = [
   {

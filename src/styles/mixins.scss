@@ -1,16 +1,16 @@
 @font-face {
   font-family: Monserrat-bold;
-  src: url('../../../public/fonts/Mont-Bold.otf')
+  src: url('@public/fonts/Mont-Bold.otf')
 }
 
 @font-face {
   font-family: Monserrat-semiBold;
-  src: url('../../../public/fonts/Mont-SemiBold.otf')
+  src: url('@public/fonts/Mont-SemiBold.otf')
 }
 
 @font-face {
   font-family: Monserrat-regular;
-  src: url('../../../public/fonts/Mont-Regular.otf')
+  src: url('@public/fonts/Mont-Regular.otf')
 }
 
 @mixin on-tablet {
