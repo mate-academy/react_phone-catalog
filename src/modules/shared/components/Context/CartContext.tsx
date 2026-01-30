@@ -29,9 +29,13 @@ const CartContext = createContext<CartContextProps>({
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
-    const res = JSON.parse(localStorage.getItem('cart') || '') as CartItem[];
+    const cartJson = localStorage.getItem('cart');
 
-    return res || emptyCart;
+    if (cartJson) {
+      return JSON.parse(cartJson) as CartItem[];
+    }
+
+    return emptyCart;
   });
 
   localStorage.setItem('cart', JSON.stringify(cart));

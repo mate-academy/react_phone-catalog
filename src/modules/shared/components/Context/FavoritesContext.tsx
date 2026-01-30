@@ -25,10 +25,13 @@ const FavoritesContext = createContext<FavoritesContextProps>({
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState(() => {
-    return (
-      (JSON.parse(localStorage.getItem('favorites') || '') as Product[]) ||
-      empty
-    );
+    const favoritesJson = localStorage.getItem('favorites');
+
+    if (favoritesJson) {
+      return JSON.parse(favoritesJson) as Product[];
+    }
+
+    return empty;
   });
 
   localStorage.setItem('favorites', JSON.stringify(favorites));

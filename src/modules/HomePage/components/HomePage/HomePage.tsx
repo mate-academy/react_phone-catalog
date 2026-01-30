@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
       <main className="home__main main container">
         <div className="main__welcome">
           <h1 className="main__title" id="pageTop">
-            Welcome to Nice Gadgets store!
+            Welcome to Nice Gadgets Store!
           </h1>
           <PicturesSlider />
         </div>
