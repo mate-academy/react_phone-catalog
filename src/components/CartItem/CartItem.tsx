@@ -1,6 +1,7 @@
 import styles from './CardItem.module.scss';
 import { CartItem as Item } from '../../types/CartItem';
 import { useCart } from '../../CartContext';
+import { getImageUrl } from '../../utils/getImgUrl';
 
 type Props = {
   item: Item;
@@ -18,7 +19,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       </button>
 
       <img
-        src={import.meta.env.BASE_URL + item.image}
+        src={getImageUrl(item.image)}
         alt={item.name}
         className={styles.image}
       />

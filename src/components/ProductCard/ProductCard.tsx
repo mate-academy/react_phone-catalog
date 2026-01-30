@@ -3,6 +3,7 @@ import like from './../../img/icons/like.svg';
 import likeFilled from './../../img/icons/Favourites Filled (Heart Like).svg';
 import { useCart } from '../../CartContext';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/getImgUrl';
 
 type ProductCardProps = {
   id: string;
@@ -52,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <article className={styles.card}>
       <Link to={`/product/${itemId}`} className={styles.imgWrap}>
         <img
-          src={import.meta.env.BASE_URL + image}
+          src={getImageUrl(image)}
           alt={name}
           className={styles.cardImg}
           loading="lazy"

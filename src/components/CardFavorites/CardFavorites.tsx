@@ -1,3 +1,4 @@
+import { getImageUrl } from '../../utils/getImgUrl';
 import styles from '../ProductsCards/ProductsCards.module.scss';
 import likeActive from './../../img/icons/Favourites Filled (Heart Like).svg';
 
@@ -30,11 +31,7 @@ export const CardFavorites: React.FC<CardFavoritesProps> = ({
   return (
     <article className={styles.card}>
       <a href={`/product/${itemId}`} className={styles.imgWrap}>
-        <img
-          src={import.meta.env.BASE_URL + image}
-          alt={name}
-          className={styles.cardImg}
-        />
+        <img src={getImageUrl(image)} alt={name} className={styles.cardImg} />
       </a>
 
       <h3 className={styles.cardName}>

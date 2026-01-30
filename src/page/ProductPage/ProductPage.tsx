@@ -12,6 +12,7 @@ import { useCart } from '../../CartContext';
 import phonesData from '../../../public/api/phones.json';
 import tabletsData from '../../../public/api/tablets.json';
 import accessoriesData from '../../../public/api/accessories.json';
+import { getImageUrl } from '../../utils/getImgUrl';
 
 type Phone = {
   id: string;
@@ -212,18 +213,12 @@ export const ProductPage: React.FC = () => {
                   className={`${styles.thumbnail} ${img === activeImg ? styles.thumbnailActive : ''}`}
                   onClick={() => setActiveImg(img)}
                 >
-                  <img
-                    src={import.meta.env.BASE_URL + img}
-                    alt={product.name}
-                  />
+                  <img src={getImageUrl(img)} alt={product.name} />
                 </div>
               ))}
             </div>
             <div className={styles.preview}>
-              <img
-                src={import.meta.env.BASE_URL + currentImage}
-                alt={product.name}
-              />
+              <img src={getImageUrl(currentImage)} alt={product.name} />
             </div>
           </div>
 
