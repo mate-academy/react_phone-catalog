@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path';
 
 export default defineConfig({
+  base: '/react_phone-catalog/', // Set base path for GitHub Pages
   plugins: [react()],
   resolve: {
     alias: {
