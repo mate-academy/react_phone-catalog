@@ -3,10 +3,19 @@
 @import './../Logo/Logo.module';
 
 .footer {
-  background-color: $footer-background-color;
+    background-color: $footer-background-color;
+    width: 100%;
+
+    &__logo {
+    width: 90px;
+    height: 32px;
+    padding: 0;
+    margin: 32px 0;
+    border: 1px solid red;
+
+  }
 
   .topBarMobile {
-    border: 1px solid red;
     margin: 0;
     padding: 0;
     display: block;
@@ -33,7 +42,7 @@
   }
 
   &__content {
-     @include content-padding-inline;
+    @include content-padding-inline;
 
     border-top: 1px solid  $footer-border-color;
     justify-content:left;
@@ -41,6 +50,8 @@
     height: 257px;
     display: flex;
     flex-direction: column;
+
+    border: 1px;
 
 
     @include on-tablet {
@@ -96,6 +107,6 @@
     text-transform: none;
   }
 
-
 }
+
 

@@ -104,7 +104,7 @@ h5 {
 
    &__content {
      @include content-padding-inline;
-
+     height: 100%;
    }
   }
 

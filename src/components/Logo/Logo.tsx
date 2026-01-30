@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import styles from './Logo.module.scss';
 
-export const Logo: React.FC = () => {
+type LogoProps = {
+  className?: string;
+};
+
+export const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
     <Link to="/" reloadDocument>
       <picture>
@@ -11,7 +15,7 @@ export const Logo: React.FC = () => {
           src="img/logo-mobile.svg"
           alt="The Nice Gadgets Logo"
           title="The Nice Gadgets Logo"
-          className={styles.topBar__logo}
+          className={`${styles.topBar__logo} ${className ?? ''}`}
         />
       </picture>
     </Link>

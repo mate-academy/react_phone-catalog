@@ -39,7 +39,7 @@
   }
 
   &--menu {
-    background-image: url(/img/icons/icon-burger-menu-2x.png);
+    background-image: url(/img/icons/icon-burger-menu.svg);
     width: 16px;
     height: 16px;
     display: block;
@@ -79,7 +79,6 @@
     height: 16px;
   }
 }
-
 .topBar {
   border-bottom: 1px solid $header-border-color;
   display: flex;

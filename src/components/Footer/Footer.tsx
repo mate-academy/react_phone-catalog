@@ -12,7 +12,7 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
       <div className={styles.footer__content}>
         <div className={styles.topBarMobile}>
           <div>
-            <Logo />
+            <Logo className={styles.footer__logo} />
             <div>
               <a
                 href="https://github.com/"
@@ -47,7 +47,7 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
           </div>
         </div>
         <div className={styles.topBar}>
-          <Logo />
+          <Logo className={styles.footer__logo} />
 
           <a
             href="https://github.com/"
