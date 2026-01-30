@@ -7,6 +7,7 @@ import { useCart } from '../../context/CartContext';
 import { useFav } from '../../context/FavContext';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import styles from './ProductDetailsPage.module.scss';
+import { colorMap } from '../../utils/constants';
 
 export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Product | null>(null);
@@ -77,30 +78,6 @@ export const ProductDetailsPage = () => {
     return `${namespaceId}-${normCapacity}-${normColor}`;
   };
 
-  const colorMap: Record<string, string> = {
-    black: '#1c1c1b',
-    gold: '#F9E5C9',
-    silver: '#e2e4e1',
-    red: '#a50011',
-    rosegold: '#e6c7c2',
-    spacegray: '#535150',
-    midnightgreen: '#4e5851',
-    white: '#f9f6ef',
-    purple: '#d1cdda',
-    green: '#aee1cd',
-    yellow: '#ffe681',
-    coral: '#ff7f50',
-    grey: '#808080',
-    skyblue: '#87CEEB',
-    graphite: '#41424C',
-    sierrablue: '#9BB5CE',
-    pink: '#fae7e8',
-    starlight: '#fbf7f4',
-    blue: '#215E7C',
-    midnight: '#191f28',
-    starlight_new: '#f0fcf0',
-  };
-
   const getSuggestedProducts = (allProducts: Product[], currentId: string) => {
     return allProducts
       .filter(item => item.itemId !== currentId && item.id !== currentId)
@@ -167,9 +144,10 @@ export const ProductDetailsPage = () => {
         setLoading(true);
         setError(null);
 
-        const listResponse = await fetch(
-          `${import.meta.env.BASE_URL}/api/${categoryApiFile}`,
-        );
+        const [listResponse, detailResponse] = await Promise.all([
+          fetch(`${import.meta.env.BASE_URL}/api/${categoryApiFile}`),
+          fetch(`${import.meta.env.BASE_URL}/api/products/${productId}.json`),
+        ]);
 
         if (!listResponse.ok) {
           throw new Error('Source data not found');
@@ -180,19 +158,13 @@ export const ProductDetailsPage = () => {
         setSuggestedProducts(getSuggestedProducts(listData, productId || ''));
 
         let data: Product | null = null;
+        const contentType = detailResponse.headers.get('content-type');
 
-        try {
-          const detailResponse = await fetch(
-            `${import.meta.env.BASE_URL}/api/products/${productId}.json`,
-          );
-          const contentType = detailResponse.headers.get('content-type');
+        if (detailResponse.ok && contentType?.includes('application/json')) {
+          const rawData = await detailResponse.json();
 
-          if (detailResponse.ok && contentType?.includes('application/json')) {
-            const rawData = await detailResponse.json();
-
-            data = { ...rawData, category: currentCategorySlug };
-          }
-        } catch {}
+          data = { ...rawData, category: currentCategorySlug };
+        }
 
         if (!data) {
           const foundItem = listData.find(
@@ -207,6 +179,7 @@ export const ProductDetailsPage = () => {
         }
 
         setProduct(data);
+
         if (data) {
           const mainImg =
             data.images && data.images.length > 0 ? data.images[0] : data.image;
@@ -267,6 +240,7 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.container}>
+      {/* Usunięto <div className="container"> */}
       <nav className={styles.nav}>
         <Link to="/">
           <img

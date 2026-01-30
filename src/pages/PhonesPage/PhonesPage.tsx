@@ -15,7 +15,6 @@ export const PhonesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // 1. Pobieranie parametrów z URL
   const sortType = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || '16';
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -24,7 +23,6 @@ export const PhonesPage = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    // 👇 ZMIANA TUTAJ: Używamy funkcji getProducts zamiast ręcznego fetch
     getProducts()
       .then(data => {
         const onlyPhones = data.filter(
@@ -33,19 +31,15 @@ export const PhonesPage = () => {
 
         setProducts(onlyPhones);
       })
-      .catch(() => {
-        // Opcjonalnie: obsługa błędu, np. setErrorMessage
-      })
+      .catch(() => {})
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
-  // --- LOGIKA FILTROWANIA I SORTOWANIA (BEZ ZMIAN) ---
   const filteredAndSortedProducts = useMemo(() => {
     let result = [...products];
 
-    // 1. Filtrowanie (Search)
     if (query) {
       const normalizedQuery = query.toLowerCase().trim();
 
@@ -54,7 +48,6 @@ export const PhonesPage = () => {
       );
     }
 
-    // 2. Sortowanie
     result.sort((a, b) => {
       switch (sortType) {
         case 'age':
@@ -71,7 +64,6 @@ export const PhonesPage = () => {
     return result;
   }, [products, sortType, query]);
 
-  // --- PAGINACJA (BEZ ZMIAN) ---
   const visibleProducts = useMemo(() => {
     if (perPage !== 'all') {
       const limit = Number(perPage);
@@ -98,81 +90,83 @@ export const PhonesPage = () => {
 
   return (
     <div className={styles.phonesPage}>
-      <div className="container">
-        <Breadcrumbs />
+      {/* ❌ TU BYŁ BŁĄD: <div className="container"> został usunięty */}
 
-        <header className={styles.header}>
-          <h1 className={styles.title}>Mobile Phones</h1>
-          <p className={styles.modelsCount}>{totalItems} models</p>
-        </header>
+      <Breadcrumbs />
 
-        {!isLoading && (
-          <div className={styles.filters}>
-            <Dropdown
-              label="Sort by"
-              value={sortType}
-              onChange={newSort => {
-                const newParams = new URLSearchParams(searchParams);
+      <header className={styles.header}>
+        <h1 className={styles.title}>Mobile Phones</h1>
+        <p className={styles.modelsCount}>{totalItems} models</p>
+      </header>
 
-                newParams.set('sort', newSort);
-                newParams.set('page', '1');
-                setSearchParams(newParams);
-              }}
-              options={[
-                { value: 'age', label: 'Newest' },
-                { value: 'title', label: 'Alphabetically' },
-                { value: 'price', label: 'Cheapest' },
-              ]}
-            />
+      {!isLoading && (
+        <div className={styles.filters}>
+          <Dropdown
+            label="Sort by"
+            value={sortType}
+            onChange={newSort => {
+              const newParams = new URLSearchParams(searchParams);
 
-            <Dropdown
-              label="Items on page"
-              value={perPage}
-              onChange={newPerPage => {
-                const newParams = new URLSearchParams(searchParams);
+              newParams.set('sort', newSort);
+              newParams.set('page', '1');
+              setSearchParams(newParams);
+            }}
+            options={[
+              { value: 'age', label: 'Newest' },
+              { value: 'title', label: 'Alphabetically' },
+              { value: 'price', label: 'Cheapest' },
+            ]}
+          />
 
-                newParams.set('perPage', newPerPage);
-                newParams.set('page', '1');
-                setSearchParams(newParams);
-              }}
-              options={[
-                { value: '4', label: '4' },
-                { value: '8', label: '8' },
-                { value: '16', label: '16' },
-                { value: '32', label: '32' },
-                { value: 'all', label: 'All' },
-              ]}
-            />
-          </div>
-        )}
+          <Dropdown
+            label="Items on page"
+            value={perPage}
+            onChange={newPerPage => {
+              const newParams = new URLSearchParams(searchParams);
 
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            {visibleProducts.length > 0 ? (
-              <ProductsList products={visibleProducts} />
-            ) : (
-              <p className={styles.noResults}>
-                {query
-                  ? `No phones matching "${query}" found.`
-                  : 'No phones found.'}
-              </p>
-            )}
+              newParams.set('perPage', newPerPage);
+              newParams.set('page', '1');
+              setSearchParams(newParams);
+            }}
+            options={[
+              { value: '4', label: '4' },
+              { value: '8', label: '8' },
+              { value: '16', label: '16' },
+              { value: '32', label: '32' },
+              { value: 'all', label: 'All' },
+            ]}
+          />
+        </div>
+      )}
 
-            {shouldShowPagination && (
-              <div className={styles.paginationContainer}>
-                <Pagination
-                  total={totalItems}
-                  perPage={itemsPerPage}
-                  currentPage={currentPage}
-                  onPageChange={handlePageChange}
-                />
-              </div>
-            )}
-          </>
-        )}
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {visibleProducts.length > 0 ? (
+            <ProductsList products={visibleProducts} />
+          ) : (
+            <p className={styles.noResults}>
+              {query
+                ? `No phones matching "${query}" found.`
+                : 'No phones found.'}
+            </p>
+          )}
+
+          {shouldShowPagination && (
+            <div className={styles.paginationContainer}>
+              <Pagination
+                total={totalItems}
+                perPage={itemsPerPage}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ❌ TU TEŻ BYŁO ZAMKNIĘCIE </div> kontenera - usunięte */}
     </div>
   );
 };

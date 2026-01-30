@@ -1,6 +1,5 @@
 @import '../../styles/utils';
 
-
 // 1. GŁÓWNY PASEK
 .header {
   position: sticky;
@@ -45,9 +44,10 @@
     transition: transform 0.3s ease;
   }
 
-  // Wymóg: Scale image links by 10% on hover
   @include hover {
-    img { transform: scale(1.1); }
+    img {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -97,7 +97,9 @@
   position: relative;
   transition: color 0.3s;
 
-  @include hover { color: $color-primary; }
+  @include hover {
+    color: $color-primary;
+  }
 
   &::after {
     content: '';
@@ -110,14 +112,20 @@
     transition: opacity 0.3s;
   }
 
-  &.isActive { color: $color-primary; }
-  &.isActive::after { opacity: 1; }
+  &.isActive {
+    color: $color-primary;
+  }
+  &.isActive::after {
+    opacity: 1;
+  }
 
   @include on-tablet {
     display: flex;
     align-items: center;
     height: 100%;
-    &::after { bottom: 0; }
+    &::after {
+      bottom: 0;
+    }
   }
 }
 
@@ -128,6 +136,7 @@
   @include on-tablet {
     display: flex;
     align-items: center;
+    position: relative;
     margin-left: auto;
     margin-right: 0;
     padding-right: 24px;
@@ -147,18 +156,30 @@
   color: $color-primary;
   outline: none;
   transition: border-color 0.3s;
+  line-height: 32px;
 
-  &::placeholder { color: $color-elements; }
-  &:focus { border-color: $color-primary; }
+  &::placeholder {
+    color: $color-elements;
+  }
+  &:focus {
+    border-color: $color-primary;
+  }
 }
 
 .searchIconWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -28px;
   pointer-events: none;
-  img { width: 14px; height: 14px; opacity: 05;
+  position: absolute;
+  right: 24px;
+  height: 32px;
+  width: 32px;
+
+  img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
   }
 }
 
@@ -191,9 +212,13 @@
   position: relative;
   transition: background-color 0.3s;
 
-  &:first-child { border-left: none; }
+  &:first-child {
+    border-left: none;
+  }
 
-  &:last-child { border-right: none; }
+  &:last-child {
+    border-right: none;
+  }
 
   img {
     width: 16px;
@@ -202,10 +227,11 @@
     transition: transform 0.3s ease;
   }
 
-  // Wymóg: Scale 10% on hover
   @include hover {
     background-color: $color-bg;
-    img { transform: scale(1.1); }
+    img {
+      transform: scale(1.1);
+    }
   }
 
   &::after {
@@ -219,7 +245,9 @@
     opacity: 0;
     transition: 0.3s;
   }
-  &.isActive::after { opacity: 1; }
+  &.isActive::after {
+    opacity: 1;
+  }
 }
 
 .iconWrapper {
@@ -265,7 +293,9 @@
     height: 16px;
   }
 
-  @include on-tablet { display: none; }
+  @include on-tablet {
+    display: none;
+  }
 }
 
 .mobileMenu {
@@ -322,7 +352,8 @@
 
   &:first-child {
     border-left: none;
-    border-right: 1px solid $color-border; }
+    border-right: 1px solid $color-border;
+  }
 
   &::after {
     content: '';
@@ -336,5 +367,7 @@
     transition: 0.3s;
   }
 
-  &.isActive::after { opacity: 1; }
+  &.isActive::after {
+    opacity: 1;
+  }
 }

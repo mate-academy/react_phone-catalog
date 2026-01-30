@@ -10,8 +10,8 @@ const images = [
 
 export const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  // KROK 1: Definiujemy funkcje NA GÓRZE, żeby useEffect je "widział"
   const handleNext = () => {
     setCurrentSlide(prev => (prev === images.length - 1 ? 0 : prev + 1));
   };
@@ -20,19 +20,50 @@ export const PicturesSlider = () => {
     setCurrentSlide(prev => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  // KROK 2: Dopiero teraz używamy useEffect
+  // Obsługa gestów (Swipe)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touchDown = e.touches[0].clientX;
+
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    // Przesunięcie o min. 5px uznajemy za swipe
+    if (diff > 5) {
+      handleNext();
+      setTouchPosition(null);
+    }
+
+    if (diff < -5) {
+      handlePrev();
+      setTouchPosition(null);
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentSlide]); // Resetujemy timer przy każdej zmianie slajdu
+  }, [currentSlide]);
 
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
       <div className={styles.buttonsWrapper}>
-        {/* Przycisk w LEWO */}
         <button className={styles.button} onClick={handlePrev}>
           <img
             src={`${import.meta.env.BASE_URL}/img/icons/arrow-left.svg`}
@@ -48,7 +79,6 @@ export const PicturesSlider = () => {
           />
         </div>
 
-        {/* Przycisk w PRAWO */}
         <button className={styles.button} onClick={handleNext}>
           <img
             src={`${import.meta.env.BASE_URL}/img/icons/arrow-right.svg`}
@@ -57,7 +87,6 @@ export const PicturesSlider = () => {
         </button>
       </div>
 
-      {/* Pagination (Kropki) */}
       <div className={styles.dots}>
         {images.map((_, index) => (
           <button

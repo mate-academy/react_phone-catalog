@@ -7,25 +7,25 @@
 
 /* === WARIANT 1: GRID (Katalog) === */
 .grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
 
-  /* Tablet: Siatka 2 kolumny */
+  // Mobile: startujemy od 1 kolumny, ale pozwalamy na 2 na większych telefonach
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: 16px;
+  justify-items: center; // Wyśrodkowanie kart w kolumnach
+
   @include on-tablet {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  /* Desktop: Siatka 4 kolumny */
   @include on-desktop {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
   }
 }
 
-/* === WARIANT 2: SLIDER === */
+/* === WARIANT 2: SLIDER ( np. Hot Prices) === */
 .slider {
   display: flex;
   gap: 16px;
@@ -35,33 +35,31 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-  /* Ukrywanie scrollbara */
   &::-webkit-scrollbar {
     display: none;
   }
 
-
-  /* W sliderze elementy ZAWSZE są w rzędzie, nie łamiemy ich */
   flex-wrap: nowrap;
 }
 
 /* Karta wewnątrz */
 .cardWrapper {
-  /* W sliderze karta musi mieć stałą szerokość, żeby się nie zgniatała */
+  /* Dla Slidera (Hot Prices / Brand New) - musi być sztywno */
   .slider & {
     width: 272px;
-    min-width: 272px; /* Ważne! */
+    min-width: 272px;
     flex-shrink: 0;
   }
 
-  /* W gridzie na desktopie karta dopasowuje się do siatki */
+  /* Dla Grida (Katalog telefonów/tabletów) - elastycznie */
   .grid & {
-    width: 272px; /* Mobile */
-    margin: 0 auto;
+    width: 100%;       // Zajmij całą szerokość kolumny siatki
+    max-width: 272px;  // Ale nie bądź szerszy niż 272px (żeby nie było gigantów)
+    margin: 0;         // Grid sam zarządza odstępami (gap)
 
     @include on-tablet {
       width: auto;
-      margin: 0;
+      max-width: none; // Na tablecie wracamy do standardu
     }
   }
 }

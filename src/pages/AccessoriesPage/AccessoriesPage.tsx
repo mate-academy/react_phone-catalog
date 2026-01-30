@@ -23,9 +23,8 @@ export const AccessoriesPage = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getProducts() // Używamy getProducts
+    getProducts()
       .then(data => {
-        //  Filtrujemy akcesoria
         const onlyAccessories = data.filter(
           product => product.category === 'accessories',
         );
@@ -91,81 +90,79 @@ export const AccessoriesPage = () => {
 
   return (
     <div className={styles.accessoriesPage}>
-      <div className="container">
-        <Breadcrumbs />
+      <Breadcrumbs />
 
-        <header className={styles.header}>
-          <h1 className={styles.title}>Accessories</h1>
-          <p className={styles.modelsCount}>{totalItems} models</p>
-        </header>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Accessories</h1>
+        <p className={styles.modelsCount}>{totalItems} models</p>
+      </header>
 
-        {!isLoading && (
-          <div className={styles.filters}>
-            <Dropdown
-              label="Sort by"
-              value={sortType}
-              onChange={newSort => {
-                const newParams = new URLSearchParams(searchParams);
+      {!isLoading && (
+        <div className={styles.filters}>
+          <Dropdown
+            label="Sort by"
+            value={sortType}
+            onChange={newSort => {
+              const newParams = new URLSearchParams(searchParams);
 
-                newParams.set('sort', newSort);
-                newParams.set('page', '1');
-                setSearchParams(newParams);
-              }}
-              options={[
-                { value: 'age', label: 'Newest' },
-                { value: 'title', label: 'Alphabetically' },
-                { value: 'price', label: 'Cheapest' },
-              ]}
-            />
+              newParams.set('sort', newSort);
+              newParams.set('page', '1');
+              setSearchParams(newParams);
+            }}
+            options={[
+              { value: 'age', label: 'Newest' },
+              { value: 'title', label: 'Alphabetically' },
+              { value: 'price', label: 'Cheapest' },
+            ]}
+          />
 
-            <Dropdown
-              label="Items on page"
-              value={perPage}
-              onChange={newPerPage => {
-                const newParams = new URLSearchParams(searchParams);
+          <Dropdown
+            label="Items on page"
+            value={perPage}
+            onChange={newPerPage => {
+              const newParams = new URLSearchParams(searchParams);
 
-                newParams.set('perPage', newPerPage);
-                newParams.set('page', '1');
-                setSearchParams(newParams);
-              }}
-              options={[
-                { value: '4', label: '4' },
-                { value: '8', label: '8' },
-                { value: '16', label: '16' },
-                { value: '32', label: '32' },
-                { value: 'all', label: 'All' },
-              ]}
-            />
-          </div>
-        )}
+              newParams.set('perPage', newPerPage);
+              newParams.set('page', '1');
+              setSearchParams(newParams);
+            }}
+            options={[
+              { value: '4', label: '4' },
+              { value: '8', label: '8' },
+              { value: '16', label: '16' },
+              { value: '32', label: '32' },
+              { value: 'all', label: 'All' },
+            ]}
+          />
+        </div>
+      )}
 
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            {visibleProducts.length > 0 ? (
-              <ProductsList products={visibleProducts} />
-            ) : (
-              <p className={styles.noResults}>
-                {query
-                  ? `No accessories matching "${query}" found.`
-                  : 'No accessories found.'}
-              </p>
-            )}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {visibleProducts.length > 0 ? (
+            <ProductsList products={visibleProducts} />
+          ) : (
+            <p className={styles.noResults}>
+              {query
+                ? `No accessories matching "${query}" found.`
+                : 'No accessories found.'}
+            </p>
+          )}
 
-            {shouldShowPagination && (
-              <div className={styles.paginationContainer}>
-                <Pagination
-                  total={totalItems}
-                  perPage={itemsPerPage}
-                  currentPage={currentPage}
-                  onPageChange={handlePageChange}
-                />
-              </div>
-            )}
-          </>
-        )}
-      </div>
+          {shouldShowPagination && (
+            <div className={styles.paginationContainer}>
+              <Pagination
+                total={totalItems}
+                perPage={itemsPerPage}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

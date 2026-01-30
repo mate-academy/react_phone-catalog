@@ -1,6 +1,5 @@
 @import './styles/utils';
 
-/* 👇 POPRAWKA: Ścieżki absolutne wskazujące na folder public/fonts */
 @font-face {
   font-family: Mont;
   src: url('/react_phone-catalog/fonts/Mont-Regular.otf') format('opentype');
@@ -49,15 +48,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 24px 0; /* Odstęp góra/dół dla treści głównej */
-
-  /* Na tablecie i desktopie większy odstęp od nagłówka */
-  @include on-tablet {
-    padding: 32px 0;
-  }
-
-  @include on-desktop {
-    padding: 40px 0;
-  }
 }
 
 /* --- KONTENER (GŁÓWNA SIATKA) --- */
@@ -97,4 +87,12 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
   }
+}
+.container .container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
