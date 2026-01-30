@@ -163,6 +163,15 @@
   justify-content: center;
   max-height: 464px;
   min-width: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: zoom-in;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 
   img {
     max-width: 100%;

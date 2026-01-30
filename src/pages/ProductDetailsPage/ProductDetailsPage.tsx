@@ -7,10 +7,18 @@ import { Loader } from '../../components/Loader';
 import { getProductColor } from '../../constants/colors';
 /* eslint-disable max-len */
 import { SuggestedProductsSlider } from '../../components/SuggestedProductsSlider';
+import { useFavorites } from '../../context/FavoritesContext';
+
+import Lightbox from 'yet-another-react-lightbox';
+import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+
+import 'yet-another-react-lightbox/styles.css';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const [product, setProduct] = useState<Phone | null>(null);
   const [productInfo, setProductInfo] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -18,6 +26,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   // for swipe functionality on mobile
   const [swipeStartX, setSwipeStartX] = useState<number | null>(null);
@@ -113,6 +122,20 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  const isFavorite = favorites.find(fav => fav.id === product?.id);
+
+  const handleFavoriteClick = () => {
+    if (!product) {
+      return;
+    }
+
+    if (isFavorite) {
+      removeFromFavorites(product);
+    } else {
+      addToFavorites(product);
+    }
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -171,14 +194,37 @@ export const ProductDetailsPage: React.FC = () => {
               </button>
             ))}
           </div>
-          <div className={styles.mainImage}>
+          <button
+            type="button"
+            className={styles.mainImage}
+            onClick={() => setIsLightboxOpen(true)}
+            aria-label="Open image gallery"
+          >
             <img
               key={selectedImage}
               src={`/${product.images[selectedImage]}`}
               alt={product.name}
             />
-          </div>
+          </button>
         </div>
+
+        <Lightbox
+          open={isLightboxOpen}
+          close={() => setIsLightboxOpen(false)}
+          index={selectedImage}
+          slides={product.images.map((image, index) => ({
+            src: `/${image}`,
+            alt: `${product.name} ${index + 1}`,
+          }))}
+          styles={{
+            container: { backgroundColor: 'rgba(0, 0, 0, 0.75)' },
+          }}
+          zoom={{ maxZoomPixelRatio: 2 }}
+          plugins={[Fullscreen, Zoom]}
+          on={{
+            view: ({ index }) => setSelectedImage(index),
+          }}
+        />
 
         <div className={styles.options}>
           <div className={styles.optionSection}>
@@ -233,8 +279,11 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div className={styles.actions}>
               <button className={styles.addToCart}>Add to cart</button>
-              <button className={styles.favorite}>
-                <img src="/img/heart.svg" alt="Favorite" />
+              <button className={styles.favorite} onClick={handleFavoriteClick}>
+                <img
+                  src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}
+                  alt="Favorite"
+                />
               </button>
             </div>
           </div>
