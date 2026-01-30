@@ -106,7 +106,9 @@ export const ProductsCards: React.FC<ProductsCardsProps> = ({
 
     const basePath = import.meta.env.BASE_URL || '/';
 
-    fetch(`${basePath}api/products.json`)
+    fetch(
+      `${basePath.endsWith('/') ? basePath : basePath + '/'}api/products.json`,
+    )
       .then(res => {
         if (!res.ok) {
           throw new Error(`Network ${res.status}`);
