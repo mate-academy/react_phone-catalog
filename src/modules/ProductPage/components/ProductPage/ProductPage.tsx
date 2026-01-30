@@ -9,7 +9,7 @@ import {
 // eslint-disable-next-line max-len
 import { useGadgets } from '@modules/shared/components/Context/GadgetsContext';
 import cn from 'classnames';
-import { Price } from '@modules/shared/components/Price/Price';
+import { Price } from '@modules/shared/components/Price/';
 // eslint-disable-next-line max-len
 import {
   Char,
@@ -105,13 +105,13 @@ export const ProductPage: React.FC = () => {
 
   const findProductInGadgets = useCallback(
     (gadgetElement: Gadget | null) => {
-      if (!gadgetElement) {
+      if (!gadgetElement || !products) {
         return null;
       }
 
       return (
         products[gadgetElement.category as keyof UltimateProducts].find(
-          elem => {
+          (elem: Product) => {
             if (
               elem.itemId === gadgetElement.id &&
               elem.capacity === gadgetElement.capacity
@@ -183,7 +183,7 @@ export const ProductPage: React.FC = () => {
 
               <div className="productPage__photoZone">
                 <img
-                  src={`/${activeGadget?.images[activePhoto]}`}
+                  src={`${import.meta.env.BASE_URL}/${activeGadget?.images[activePhoto]}`}
                   alt="product photo"
                   className="productPage__photo"
                 />
@@ -296,7 +296,7 @@ export const ProductPage: React.FC = () => {
           </h2>
 
           <img
-            src="/public/img/product-not-found.png"
+            src={`${import.meta.env.BASE_URL}/img/product-not-found.png`}
             alt="Product not found image"
             className="pageNotFound__photo"
           />

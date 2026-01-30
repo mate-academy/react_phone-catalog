@@ -53,7 +53,7 @@ export const ProductCart: React.FC<Props> = ({
         className="productCart__link"
       >
         <img
-          src={`/${product.image}`}
+          src={`${import.meta.env.BASE_URL}/${product.image}`}
           alt={product.name}
           className="productCart__photo"
         />

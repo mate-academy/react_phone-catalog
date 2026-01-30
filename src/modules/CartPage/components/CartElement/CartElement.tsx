@@ -64,7 +64,7 @@ export const CartElement: React.FC<Props> = ({ data }) => {
         <Icon iconSlug="X" />
       </button>
       <img
-        src={data.product.image}
+        src={`${import.meta.env.BASE_URL}/${data.product.image}`}
         alt={data.product.name}
         className="cartElement__photo"
         style={{ gridArea: 'box-2' }}
