@@ -1,18 +1,11 @@
 import { Props } from '../types';
+import { Card } from './card';
 
-export const List: React.FC<Props> = ({ phones }) => {
+export const List: React.FC<Props> = ({ products }) => {
   return (
     <div className="list">
-      {phones.map(phone => (
-        <div key={phone.id} className="phone-card">
-          <h2>{phone.name}</h2>
-          <p>Price: ${phone.priceRegular}</p>
-          <div className = "image">
-            { phone.images.map(image => (
-              <img src={ image } alt={phone.name} />
-            ))}
-          </div>
-        </div>
+      {products.map(product => (
+        <Card product={ product }/>
       ))}
     </div>
   );

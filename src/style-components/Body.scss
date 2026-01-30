@@ -3,9 +3,17 @@
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+
     .body {
-        
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        color: $primary;
+        color: $primary;    
+        margin-left: 70px;
     }
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 }
