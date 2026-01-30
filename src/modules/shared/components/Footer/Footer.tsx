@@ -1,12 +1,10 @@
 import React from 'react';
-// eslint-disable-next-line max-len
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { Logo } from '../SVGElements/Logo';
 import { Icon } from '../Icon';
-import { footerLinks } from '../../../../mocks/Data/links';
-import { scrollToTop } from '../../../../mocks/Functions/functions';
-
+import { footerLinks } from '@mocks/Data/links';
+import { scrollToTop } from '@mocks/Functions/functions';
 interface Props {
   additionalClass?: string;
 }

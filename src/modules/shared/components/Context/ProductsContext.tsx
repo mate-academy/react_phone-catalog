@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import productsJson from '../../../../../public/api/products.json';
+import productsJson from '@public/api/products.json';
 
 export interface UltimateProducts {
   phones: Product[];

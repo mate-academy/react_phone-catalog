@@ -1,33 +1,33 @@
 /* eslint-disable @typescript-eslint/indent */
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CurrentPath } from '../../../../modules/shared/components/CurrentPath';
+import { CurrentPath } from '@modules/shared/components/CurrentPath';
 import {
   UltimateProducts,
   useProducts,
-} from '../../../../modules/shared/components/Context/ProductsContext';
+} from '@modules/shared/components/Context/ProductsContext';
 // eslint-disable-next-line max-len
-import { useGadgets } from '../../../../modules/shared/components/Context/GadgetsContext';
+import { useGadgets } from '@modules/shared/components/Context/GadgetsContext';
 import cn from 'classnames';
-import { Price } from '../../../../modules/shared/components/Price/Price';
+import { Price } from '@modules/shared/components/Price/Price';
 // eslint-disable-next-line max-len
 import {
   Char,
   ShowCharacteristics,
-} from '../../../../modules/shared/components/ShowCharacteristics';
-import { BaseSlider } from '../../../HomePage/components/BaseSlider/BaseSlider';
-import { BackLink } from '../../../../modules/shared/components/BackLink';
+} from '@modules/shared/components/ShowCharacteristics';
+import { BaseSlider } from '@modules/HomePage/components/BaseSlider/';
+import { BackLink } from '@modules/shared/components/BackLink';
 // eslint-disable-next-line max-len
-import { useCart } from '../../../../modules/shared/components/Context/CartContext';
+import { useCart } from '@modules/shared/components/Context/';
 // eslint-disable-next-line max-len
-import { useFavorites } from '../../../../modules/shared/components/Context/FavoritesContext';
-import { sortItems } from '../../../ItemsPage/components/ItemsPage/ItemsPage';
-import { Loader } from '../../../shared/components/Loader';
+import { useFavorites } from '@modules/shared/components/Context/';
+import { sortItems } from '@modules/ItemsPage/components/ItemsPage/';
+import { Loader } from '@modules/shared/components/Loader';
 import { ColorsAvailable } from './ColorsAvailable';
 import { PhotoSlider } from './PhotoSlider';
 import { CapacityAvailable } from './CapacityAvailable';
 import { DescriptionUnifier } from './DescriptionUnifier';
-import { Icon } from '../../../shared/components/Icon';
+import { Icon } from '@modules/shared/components/Icon';
 
 export const ProductPage: React.FC = () => {
   // #region States

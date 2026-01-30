@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-// eslint-disable-next-line max-len
 import { Heart, Menu, ShoppingCart, X } from 'lucide-react';
 import { Logo } from '../SVGElements/Logo';
 import { useCart, useFavorites } from '../Context';
 import { useSidebar } from '../Context/SidebarContext';
 import { BagedIcon } from '../SVGElements/BagedIcon';
-import { headerLinks } from '../../../../mocks/Data/links';
+import { headerLinks } from '@mocks/Data/links';
 
 interface Props {
   additionalClass?: string;
@@ -24,7 +23,7 @@ export const TopBar: React.FC<Props> = ({ additionalClass = '' }) => {
         <Link
           to="/home"
           className="topBar__logo"
-          onClick={() => setShowStatus(false)}
+          onClick={() => setShowStatus?.(false)}
         >
           <Logo width={64} height={22} />
         </Link>
@@ -39,7 +38,7 @@ export const TopBar: React.FC<Props> = ({ additionalClass = '' }) => {
       </ul>
       <div className="topBar__icons">
         <button
-          onClick={() => setShowStatus((cur: boolean) => !cur)}
+          onClick={() => setShowStatus?.((cur: boolean) => !cur)}
           className={`topBar__icon topBar__icon--menu`}
         >
           {!showStatus ? <Menu size={16} /> : <X size={16} />}

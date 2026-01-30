@@ -1,4 +1,4 @@
-import { createNumeratedArray } from '../../../../mocks/Functions/functions';
+import { createNumeratedArray } from '@mocks/Functions/functions';
 
 interface UsePaginationProps {
   totalItems: Product[];

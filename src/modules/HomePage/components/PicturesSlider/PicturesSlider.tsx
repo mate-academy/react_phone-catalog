@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
 import { useSwipeable } from 'react-swipeable';
-import { Icon } from '../../../shared/components/Icon';
-import { allPosters } from '../../../../mocks/Data/posters';
+import { Icon } from '@modules/shared/components/Icon';
+import { allPosters } from '@mocks/Data/posters';
 import { PicturesSliderNavigator } from './PicturesSliderNavigator';
 
 export const PicturesSlider: React.FC = () => {

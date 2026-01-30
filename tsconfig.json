@@ -1,5 +1,6 @@
 {
   "extends": "@mate-academy/students-ts-config",
+  "baseUrl": ".",
   "include": [
     "src",
     "src/types/global.d.ts",
@@ -10,7 +11,9 @@
     "sourceMap": false,
     "types": ["node", "cypress"],
     "paths": {
-      "@modules": ["/scr/modules/*"]
+      "@modules/*": ["./src/modules/*"],
+      "@public/*": ["./public/*"],
+      "@mocks/*": ["./src/mocks/*"]
     }
   }
 }

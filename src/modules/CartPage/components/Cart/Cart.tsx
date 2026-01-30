@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 // eslint-disable-next-line max-len
-import { useCart } from '../../../../modules/shared/components/Context/CartContext';
+import { useCart } from '@modules/shared/components/Context/';
 // eslint-disable-next-line max-len
-import { ComponentTitle } from '../../../../modules/shared/components/ComponentTitle/ComponentTitle';
-import { CartElement } from '../CartElement/CartElement';
+import { ComponentTitle } from '@modules/shared/components/ComponentTitle/';
+import { CartElement } from '../CartElement/';
 // eslint-disable-next-line max-len
-import { BackLink } from '../../../../modules/shared/components/BackLink/BackLink';
-import { Modal } from '../../../shared/components/Modal';
-import { ModalHeader } from '../../../shared/components/Modal/ModalHeader';
-import { ModalFooter } from '../../../shared/components/Modal/ModalFooter';
-import { Icon } from '../../../shared/components/Icon';
+import { BackLink } from '../../../../modules/shared/components/BackLink/';
+import { Modal } from '@modules/shared/components/Modal';
+import { ModalHeader } from '@modules/shared/components/Modal/';
+import { ModalFooter } from '@modules/shared/components/Modal/';
+import { Icon } from '@modules/shared/components/Icon';
 
 export const Cart: React.FC = () => {
   const { cart, setCart } = useCart();

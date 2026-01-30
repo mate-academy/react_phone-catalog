@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   UltimateProducts,
   useProducts,
-} from '../../../../modules/shared/components/Context/ProductsContext';
-import { banners } from '../../../../mocks/Data/banners';
+} from '@modules/shared/components/Context/';
+import { banners } from '@mocks/Data/banners';
 
 export const Categories: React.FC = () => {
   const { products } = useProducts();

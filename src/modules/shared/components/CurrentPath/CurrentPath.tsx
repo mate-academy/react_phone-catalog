@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Icon } from '../Icon';
-import { capitalizePhase } from '../../../../mocks/Functions/functions';
+import { capitalizePhase } from '@mocks/Functions/functions';
 
 interface Props {
   title?: string;

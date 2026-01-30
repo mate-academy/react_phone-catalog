@@ -1,11 +1,8 @@
 import React from 'react';
-import { Price } from '../../../../modules/shared/components/Price/Price';
-import {
-  CartItem,
-  useCart,
-} from '../../../../modules/shared/components/Context/CartContext';
+import { Price } from '@modules/shared/components/Price/';
+import { CartItem, useCart } from '@modules/shared/components/Context/';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from '../../../shared/components/Icon';
+import { Icon } from '@modules/shared/components/Icon';
 
 interface Props {
   data: CartItem;

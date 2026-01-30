@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import React, {
   useCallback,
   useEffect,
@@ -7,17 +6,14 @@ import React, {
   useState,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// eslint-disable-next-line max-len
-import { CurrentPath } from '../../../../modules/shared/components/CurrentPath/';
-import { ProductList } from '../../../ProductPage/components/ProductsList/';
-// eslint-disable-next-line max-len
-import { ComponentTitle } from '../../../../modules/shared/components/ComponentTitle/';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { CurrentPath } from '@modules/shared/components/CurrentPath/';
+import { ProductList } from '@modules/ProductPage/components/ProductsList/';
+import { ComponentTitle } from '@modules/shared/components/ComponentTitle/';
 import { shuffle } from 'lodash';
-import { Select } from '../../../shared/components/Select';
-import { Pagination } from '../../../shared/components/Pagination';
-import { scrollToTop } from '../../../../mocks/Functions/functions';
-import { usePagination } from '../../../shared/components/Pagination/';
+import { Select } from '@modules/shared/components/Select';
+import { Pagination } from '@modules/shared/components/Pagination';
+import { scrollToTop } from '@mocks/Functions/functions';
+import { usePagination } from '@modules/shared/components/Pagination/';
 
 // #region Types
 interface Props {

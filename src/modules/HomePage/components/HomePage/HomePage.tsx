@@ -2,14 +2,8 @@ import React from 'react';
 import { PicturesSlider } from '../PicturesSlider/PicturesSlider';
 import { BaseSlider } from '../BaseSlider';
 import { Categories } from '../Categories';
-// eslint-disable-next-line max-len
-import { useProducts } from '../../../shared/components/Context/ProductsContext';
-import { sortItems } from '../../../ItemsPage/components/ItemsPage/ItemsPage';
-
-// TODO Static data into another foldre (mock data)
-//#region data
-
-// #endregion
+import { useProducts } from '@modules/shared/components/Context';
+import { sortItems } from '@modules/ItemsPage/components/ItemsPage/';
 
 export const HomePage: React.FC = () => {
   const { products } = useProducts();

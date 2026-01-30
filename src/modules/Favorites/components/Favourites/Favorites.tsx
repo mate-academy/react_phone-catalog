@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { useFavorites } from '../../../../modules/shared/components/Context/FavoritesContext';
-import { CurrentPath } from '../../../../modules/shared/components/CurrentPath/CurrentPath';
-import { ProductList } from '../../../ProductPage/components/ProductsList/ProductsList';
-import { ComponentTitle } from '../../../../modules/shared/components/ComponentTitle/ComponentTitle';
-import { Icon } from '../../../shared/components/Icon';
+import { useFavorites } from '@modules/shared/components/Context/';
+import { CurrentPath } from '@modules/shared/components/CurrentPath/';
+import { ProductList } from '@modules/ProductPage/components/ProductsList/';
+import { ComponentTitle } from '@modules/shared/components/ComponentTitle/';
+import { Icon } from '@modules/shared/components/Icon/';
 
 export const Favorites: React.FC = () => {
   const { favorites } = useFavorites();

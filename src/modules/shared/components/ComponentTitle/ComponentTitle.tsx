@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { capitalizePhase } from '../../../../mocks/Functions/functions';
+import { capitalizePhase } from '@mocks/Functions/functions';
 
 interface Props {
   rawTitle: string;

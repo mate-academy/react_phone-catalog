@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductCart } from '../../../shared/components/ProductCart';
+import { ProductCart } from '@modules/shared/components/ProductCart';
 import cn from 'classnames';
 
 interface Props {

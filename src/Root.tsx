@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { App } from './App';
 
 // eslint-disable-next-line max-len
-import { useProducts } from './modules/shared/components/Context/ProductsContext';
-import { PageNotFound } from './modules/NotFoundPage/components/PageNotFound';
+import { useProducts } from '@modules/shared/components/Context';
+import { PageNotFound } from '@modules/NotFoundPage/components/PageNotFound';
 import { lazy, Suspense } from 'react';
-import { Loader } from './modules/shared/components/Loader';
+import { Loader } from '@modules/shared/components/Loader';
 
 // #region Lazy imports
 const HomePage = lazy(() =>

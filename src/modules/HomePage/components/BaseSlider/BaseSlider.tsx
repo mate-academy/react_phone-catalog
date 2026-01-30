@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ProductCart } from '../../../shared/components/ProductCart';
+import { ProductCart } from '@modules/shared/components/ProductCart';
 import cn from 'classnames';
 import { debounce } from 'lodash';
-import { Icon } from '../../../shared/components/Icon';
+import { Icon } from '@modules/shared/components/Icon';
 
 interface Props {
   products: Product[];

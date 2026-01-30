@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { iPhoneColorMap } from '../../../../mocks/Data/colors';
+import { iPhoneColorMap } from '@mocks/Data/colors';
 
 interface ColorAvailableProps {
   gadget: Gadget;

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, Dispatch } from 'react';
-import phonesJson from '../../../../../public/api/phones.json';
-import accessoriesJson from '../../../../../public/api/accessories.json';
-import tabletsJson from '../../../../../public/api/tablets.json';
+import phonesJson from '@public/api/phones.json';
+import accessoriesJson from '@public/api/accessories.json';
+import tabletsJson from '@public/api/tablets.json';
 
 interface GadgetContextProps {
   gadgets: Gadget[];
