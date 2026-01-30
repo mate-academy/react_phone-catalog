@@ -31,9 +31,14 @@ export const Header = () => (
       </nav>
 
       <div className={styles.actions}>
-        <a className={styles.action} href="#">
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) =>
+            classNames(styles.action, { [styles.isActive]: isActive })
+          }
+        >
           <img src="/img/heart.svg" alt="Favorites" />
-        </a>
+        </NavLink>
         <a className={styles.action} href="#">
           <img src="/img/shopping_cart.svg" alt="Cart" />
         </a>

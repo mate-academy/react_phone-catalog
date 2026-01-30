@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { Phone } from '../../types/Phone';
+import { useFavorites } from '../../context/FavoritesContext';
 
 interface Props {
   phone: Phone;
@@ -12,6 +13,7 @@ export const ProductCard: React.FC<Props> = ({
   phone,
   showRegularPriceOnly = false,
 }) => {
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const {
     id,
     name,
@@ -22,6 +24,16 @@ export const ProductCard: React.FC<Props> = ({
     ram,
     images,
   } = phone;
+
+  const isFavorite = favorites.find(fav => fav.id === phone.id);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFromFavorites(phone);
+    } else {
+      addToFavorites(phone);
+    }
+  };
 
   const imageUrl = `/${images[0]}`;
   const screenDisplay = screen.replace('(Super Retina XDR)', '').trim();
@@ -70,8 +82,15 @@ export const ProductCard: React.FC<Props> = ({
         <button type="button" className={styles.addToCart}>
           Add to cart
         </button>
-        <button type="button" className={styles.favorite}>
-          <img src="/img/heart.svg" alt="Heart" />
+        <button
+          type="button"
+          className={styles.favorite}
+          onClick={handleFavoriteClick}
+        >
+          <img
+            src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}
+            alt="Heart"
+          />
         </button>
       </div>
     </article>
