@@ -5,6 +5,10 @@ import { useTranslation } from 'react-i18next';
 import Button from '../Button';
 import Icon from '../Icon';
 import { useCallback } from 'react';
+import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { favoritesActions } from '../../../store/index';
+import { itemsActions } from '../../../store/index';
 interface InnerProps {
   isFavorite: boolean;
   isItemAdded: boolean;
