@@ -20,7 +20,7 @@ export const PhotoSlider: React.FC<PhotoSliderProps> = ({
         className="productPage__button"
       >
         <img
-          src={`/react_phone-catalog/public/${photo}`}
+          src={`${import.meta.env.BASE_URL}/${photo}`}
           alt={`photo ${i}`}
           className={cn('productPage__sliderElem', {
             'productPage__sliderElem--active': activePhoto === i,
