@@ -11,6 +11,7 @@ interface Props {
   product: Product;
   prevPrice?: number;
   currentPrice: number;
+  discount?: boolean;
   additionalClass?: string;
   refObject?: React.LegacyRef<HTMLDivElement>;
 }
@@ -19,6 +20,7 @@ export const ProductCart: React.FC<Props> = ({
   product,
   prevPrice = null,
   currentPrice,
+  discount = true,
   additionalClass = '',
   refObject,
 }) => {
@@ -33,6 +35,10 @@ export const ProductCart: React.FC<Props> = ({
     { title: 'RAM', value: product.ram },
   ];
   const inCartButtonText = inCart ? 'In cart' : 'Add to cart';
+  const priceProps = {
+    fullPrice: discount ? prevPrice : null,
+    priceDiscount: currentPrice,
+  };
 
   useEffect(() => {
     setInCart(isInCart?.(product) || false);
@@ -59,7 +65,7 @@ export const ProductCart: React.FC<Props> = ({
         />
       </Link>
       <h4 className="productCart__title">{product.name}</h4>
-      <Price fullPrice={prevPrice} priceDiscount={currentPrice} />
+      <Price {...priceProps} />
       <ShowCharacteristics chars={charsToShow} />
       <div className="productCart__buttons">
         <button

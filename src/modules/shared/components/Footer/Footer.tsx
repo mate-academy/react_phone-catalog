@@ -19,7 +19,12 @@ export const Footer: React.FC<Props> = ({ additionalClass = '' }) => {
       </Link>
       <div className="footer__links">
         {footerLinks.map(link => (
-          <a key={link.title} href={link.link} className="footer__link">
+          <a
+            key={link.title}
+            href={link.link}
+            className="footer__link"
+            target="__blank"
+          >
             {link.title}
           </a>
         ))}

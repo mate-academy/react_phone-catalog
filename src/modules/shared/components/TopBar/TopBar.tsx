@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { Heart, Menu, ShoppingCart, X } from 'lucide-react';
@@ -16,6 +16,17 @@ export const TopBar: React.FC<Props> = ({ additionalClass = '' }) => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
   const { showStatus, setShowStatus } = useSidebar();
+  const [amountItemsInCart, setAmountItemsInCart] = useState(0);
+
+  useEffect(() => {
+    let res = 0;
+
+    if (cart) {
+      res = cart.reduce((prev, cur) => prev + cur.amount, 0);
+    }
+
+    setAmountItemsInCart(res);
+  }, [cart]);
 
   return (
     <nav className={cn('topBar', additionalClass)} id="top">
@@ -61,7 +72,7 @@ export const TopBar: React.FC<Props> = ({ additionalClass = '' }) => {
           className="topBar__icon topBar__icon--cart"
         >
           <BagedIcon
-            amountOfProducts={cart?.length || 0}
+            amountOfProducts={amountItemsInCart}
             classForBadge="badge badge__red"
           >
             <ShoppingCart size={16} className="icon" />

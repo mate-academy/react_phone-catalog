@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 40px;
-  justify-items: center;
+  justify-items: space-between;
 
   @include on-tablet {
     column-gap: 16px;

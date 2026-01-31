@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Price } from '@modules/shared/components/Price/';
 import { CartItem, useCart } from '@modules/shared/components/Context/';
 import { useNavigate } from 'react-router-dom';
@@ -28,6 +28,9 @@ const deleteItem = (
 export const CartElement: React.FC<Props> = ({ data }) => {
   const { cart, setCart } = useCart();
   const navigate = useNavigate();
+  const [totalPrice, setTotalPrice] = useState(
+    data.amount * data.product.price,
+  );
 
   const changingAmount = (elem: CartItem, operation: Operations) => {
     const item = cart?.find(e => e.product.itemId === elem.product.itemId);
@@ -53,6 +56,10 @@ export const CartElement: React.FC<Props> = ({ data }) => {
       setCart?.([...cart]);
     }
   };
+
+  useEffect(() => {
+    setTotalPrice(data.amount * data.product.price);
+  }, [data.amount, setTotalPrice, data.product.price]);
 
   return (
     <div className="cartElement">
@@ -103,7 +110,7 @@ export const CartElement: React.FC<Props> = ({ data }) => {
         style={{ gridArea: 'box-5' }}
       >
         <Price
-          priceDiscount={data.product.price}
+          priceDiscount={totalPrice}
           priceDiscountClass="cartElement__priceDiscount"
           additionalClass="cartElement__price"
         />

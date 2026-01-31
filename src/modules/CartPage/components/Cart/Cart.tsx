@@ -11,6 +11,8 @@ import { ModalHeader } from '@modules/shared/components/Modal/';
 import { ModalFooter } from '@modules/shared/components/Modal/';
 import { Icon } from '@modules/shared/components/Icon';
 
+import EmptyCartPhoto from '@public/img/cart-is-empty.png';
+
 export const Cart: React.FC = () => {
   const { cart, setCart } = useCart();
   const [modalStatus, setModalStatus] = useState(false);
@@ -99,7 +101,7 @@ export const Cart: React.FC = () => {
                 <h2 className="cart__emptyText">Your cart is empty</h2>
               </div>
               <img
-                src="/public/img/cart-is-empty.png"
+                src={EmptyCartPhoto}
                 alt="Cart is empty photo"
                 className="pageNotFound__photo"
               ></img>

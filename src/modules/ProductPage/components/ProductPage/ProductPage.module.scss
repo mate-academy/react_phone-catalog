@@ -1,6 +1,8 @@
 .productPage {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+
+  max-width: 1300px;
 
   &__content {
     box-sizing: border-box;

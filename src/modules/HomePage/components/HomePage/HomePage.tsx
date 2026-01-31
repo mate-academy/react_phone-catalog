@@ -20,6 +20,7 @@ export const HomePage: React.FC = () => {
         <BaseSlider
           products={sortItems(products.phones, 'newest')}
           title="Brand new phones"
+          discount={false}
         />
         <Categories />
         <BaseSlider

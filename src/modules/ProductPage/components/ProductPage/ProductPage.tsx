@@ -28,6 +28,7 @@ import { PhotoSlider } from './PhotoSlider';
 import { CapacityAvailable } from './CapacityAvailable';
 import { DescriptionUnifier } from './DescriptionUnifier';
 import { Icon } from '@modules/shared/components/Icon';
+import { scrollToTop } from '@mocks/Functions/functions';
 
 export const ProductPage: React.FC = () => {
   // #region States
@@ -156,6 +157,7 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     setInCart(isInCart?.(activeProduct) || false);
+    scrollToTop();
   }, [cart, activeProduct, isInCart]);
 
   useEffect(() => {

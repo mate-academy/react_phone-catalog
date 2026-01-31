@@ -10,7 +10,7 @@ interface Props {
   discount?: boolean;
 }
 
-export const BaseSlider: React.FC<Props> = ({ products, title }) => {
+export const BaseSlider: React.FC<Props> = ({ products, title, discount }) => {
   const slider = useRef<HTMLDivElement>(null);
   const [activeModel, setActiveModel] = useState(0);
   const cartElement = useRef<HTMLDivElement>(null);
@@ -91,6 +91,7 @@ export const BaseSlider: React.FC<Props> = ({ products, title }) => {
               currentPrice={phone.price}
               additionalClass="baseSlider__phone"
               refObject={cartElement}
+              discount={discount}
             />
           );
         })}

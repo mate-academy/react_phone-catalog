@@ -23,17 +23,21 @@
 
     &--right {
       @include on-tablet {
-        grid-column: 12 / 13;
+        grid-column: 11 / 12;
       }
 
       @include on-desktop {
-        grid-column: 24 / 25;
+        grid-column: 22 / 23;
       }
     }
 
     &--left {
       @include on-tablet {
-        grid-column: 1 / 2;
+        grid-column: 2 / 3;
+      }
+
+      @include on-desktop {
+        grid-column: 3 / 4;
       }
     }
   }
@@ -51,12 +55,12 @@
 
   &__photoContainer {
     @include on-tablet {
-      grid-column: 2 / 12;
+      grid-column: 3 / 11;
       aspect-ratio: 2.6 / 1;
     }
 
     @include on-desktop {
-      grid-column: 2 / 24;
+      grid-column: 4 / 22;
     }
 
     transition: translate 500ms;
