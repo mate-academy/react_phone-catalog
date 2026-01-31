@@ -1,0 +1,110 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.addAndFavourites {
+  &__container {
+    display: flex;
+    justify-content: center;
+
+    gap: 8px;
+  }
+}
+
+.addButton {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  min-width: 125px;
+
+  height: 40px;
+  border-radius: 48px;
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
+  cursor: pointer;
+
+  @include on-desktop {
+    min-width: 160px;
+  }
+
+  transition: transform $effect-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
+  }
+
+  &:active {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: var(--main);
+  }
+
+  &__added {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    max-width: 125px;
+    height: 40px;
+    border-radius: 48px;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    cursor: pointer;
+
+    @include on-desktop {
+      width: 160px;
+    }
+
+    transition: transform $effect-duration ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
+    &:active {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+    &--text-added {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      color: var(--primary);
+    }
+  }
+}
+
+.favouritesButton {
+  display: flex;
+
+  // box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hover);
+  background-color: var(--main);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  transition: transform $effect-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
+  }
+
+  &:active {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
+  }
+}
