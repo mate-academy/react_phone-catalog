@@ -109,6 +109,8 @@
 .price {
   @include typography.text-h3;
 
+  --text-h3-weight: var(--font-weight-extra-bold);
+
   color: var(--color-primary);
   justify-self: end;
 

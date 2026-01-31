@@ -1,5 +1,16 @@
 @use '../../styles/typography' as typography;
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .cartPage {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -67,6 +78,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  animation: fade-in 0.25s ease-out;
 }
 
 .summary {
@@ -78,6 +90,8 @@
 
 .totalPrice {
   @include typography.text-h2;
+
+  --text-h2-weight: var(--font-weight-extra-bold);
 
   color: var(--color-primary);
   margin-bottom: 4px;
