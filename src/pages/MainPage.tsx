@@ -46,7 +46,7 @@ export const MainPage = () => {
   return (
     <div className="main-wrapper">
       <Banner />
-      <PromotionSlider products={getNewModels} title="Brand new models" />
+      <PromotionSlider products={getNewModels} title="Brand new models" isFullPrice={false} />
       <ShopCatagory shopCategoryInfo={shopCategoryInfo} />
       <PromotionSlider products={getHotModels} title="Hot prices" />
     </div>

@@ -9,9 +9,14 @@ import './PromotionSlider.scss';
 type Props = {
   products: ProductAllType[];
   title: string;
+  isFullPrice?: boolean;
 };
 
-export const PromotionSlider: FC<Props> = ({ products, title }) => {
+export const PromotionSlider: FC<Props> = ({
+  products,
+  title,
+  isFullPrice = true,
+}) => {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
 
@@ -73,7 +78,7 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
 
           {products.map(product => (
             <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} isfullPrice={isFullPrice} />
             </SwiperSlide>
           ))}
         </Swiper>

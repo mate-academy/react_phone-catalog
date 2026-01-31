@@ -13,8 +13,13 @@ export const ProductCardButtons: FC<Props> = ({ product }) => {
   const [isAddToCart, setIsAddToCart] = useState<boolean>(false);
   const [isAddToFavorite, setIsAddToFavorite] = useState<boolean>(false);
 
-  const { toggleFavorite, addToCart, cartItems, favoriteItems } =
-    useCartFavorite();
+  const {
+    toggleFavorite,
+    addToCart,
+    removeFromCart,
+    cartItems,
+    favoriteItems,
+  } = useCartFavorite();
 
   useEffect(() => {
     const isInFavorite = favoriteItems.find(item => item.id === product.id);
@@ -27,8 +32,14 @@ export const ProductCardButtons: FC<Props> = ({ product }) => {
   }, [favoriteItems, cartItems, product]);
 
   const handleAddToCard = () => {
-    setIsAddToCart(true);
-    addToCart(product);
+    setIsAddToCart(prev => {
+      if (prev === false) {
+        addToCart(product);
+      } else {
+        removeFromCart(String(product.id));
+      }
+      return !prev;
+    });
   };
 
   const handleToggleFavorite = () => {

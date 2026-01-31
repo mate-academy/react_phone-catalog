@@ -7,9 +7,10 @@ import { scrollToTop } from '../../utils/utils';
 
 type Props = {
   product: ProductAllType;
+  isfullPrice?: boolean;
 };
 
-export const ProductCard: FC<Props> = ({ product }) => {
+export const ProductCard: FC<Props> = ({ product, isfullPrice = true }) => {
   const {
     image,
     name,
@@ -34,7 +35,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
         <div className="card__title">{name}</div>
         <div className="card__price">
           <span className="card__price--sale">${price} </span>
-          <span className="card__price--full">${fullPrice}</span>
+          {isfullPrice && (
+            <span className="card__price--full">${fullPrice}</span>
+          )}
         </div>
       </Link>
       <div className="card__block">

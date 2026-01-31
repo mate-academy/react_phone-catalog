@@ -33,6 +33,10 @@ export const Header = () => {
   const [isActiveLink, setIsActiveLink] = useState(false);
   const { favoriteItems, cartItems } = useCartFavorite();
 
+  const cartItemsProducts = cartItems.reduce((acc, prod) => {
+    return acc + (prod.count || 1);
+  }, 0);
+
   return (
     <header className={`${header} ${isActiveLink ? header__active : ''}`}>
       <div className={header__container}>
@@ -112,7 +116,7 @@ export const Header = () => {
             >
               <img src={cartIcon} alt="cart-icon" className={header__icon} />
               {cartItems.length > 0 && (
-                <span className={header__counter}>{cartItems.length}</span>
+                <span className={header__counter}>{cartItemsProducts}</span>
               )}
             </NavLink>
           </div>

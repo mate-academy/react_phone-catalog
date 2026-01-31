@@ -2,23 +2,22 @@ import './Cart.scss';
 import { CartItem } from './CartItem';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
 import emptyCart from './../../images/img/cart-is-empty.png';
+import thanks from './../../images/img/thanks.jpg';
 import { ProductAllType } from '../../types/Product';
 import { Empty } from '../Empty';
 import { ButtonBack } from '../ButtonBack';
 import { useEffect, useState } from 'react';
 
 export const Cart = () => {
-  const { cartItems } = useCartFavorite();
+  const { cartItems, clearCart } = useCartFavorite();
   const [totalCost, setTotalCost] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  const [isCheckout, setIsCheckout] = useState(false);
 
-  // const totalCost = cartItems.reduce((acc, prod) => {
-  //   return acc + prod.price * prod.count!;
-  // }, 0);
-
-  // const totalItems = cartItems.reduce((acc, prod) => {
-  //   return acc + prod.count!;
-  // }, 0);
+  const handleCheckout = () => {
+    clearCart();
+    setIsCheckout(true);
+  };
 
   useEffect(() => {
     setTotalCost(
@@ -41,7 +40,11 @@ export const Cart = () => {
         <h2 className="cart__title">Cart</h2>
 
         {cartItems && cartItems.length === 0 ? (
-          <Empty srcImage={emptyCart} />
+          isCheckout ? (
+            <Empty srcImage={thanks} />
+          ) : (
+            <Empty srcImage={emptyCart} />
+          )
         ) : (
           <div className="cart__wrapper">
             <div className="cart__items">
@@ -55,7 +58,11 @@ export const Cart = () => {
                 Total for {totalItems} item
                 {cartItems.length > 1 ? 's' : ''}
               </span>
-              <button className="cart__total-checkout" type="button">
+              <button
+                className="cart__total-checkout"
+                type="button"
+                onClick={handleCheckout}
+              >
                 Checkout
               </button>
             </div>

@@ -16,7 +16,10 @@ export const FavoritesPage = () => {
 
         <h1 className="catalog__title">Favorite</h1>
         <div className="catalog__counter">
-          {favoriteItems.length} model{favoriteItems.length === 1 ? '' : 's'}
+          {favoriteItems.length > 0 &&
+            favoriteItems.length +
+              ' model' +
+              (favoriteItems.length === 1 ? '' : 's')}
         </div>
         {favoriteItems.length === 0 ? (
           <Empty srcImage={emptyCart} />
