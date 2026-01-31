@@ -34,3 +34,11 @@ type Product = {
   year: number;
   image: string;
 };
+
+type Category = {
+  id: string;
+  title: string;
+  description: string;
+  path: string;
+  imageUrl: string;
+};

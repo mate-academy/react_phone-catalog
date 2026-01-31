@@ -1,0 +1,23 @@
+[
+  {
+    "id": "phones",
+    "title": "Mobile phones",
+    "description": "Explore our wide selection of mobile phones from top brands",
+    "path": "/phones",
+    "imageUrl": "img/banners/banner-phones.png"
+  },
+  {
+    "id": "tablets",
+    "title": "Tablets",
+    "description": "Discover powerful tablets for work and entertainment",
+    "path": "/tablets",
+    "imageUrl": "img/banners/banner-tablets.png"
+  },
+  {
+    "id": "accessories",
+    "title": "Accessories",
+    "description": "Find the perfect accessories for your devices",
+    "path": "/accessories",
+    "imageUrl": "img/banners/banner-accessories.png"
+  }
+]

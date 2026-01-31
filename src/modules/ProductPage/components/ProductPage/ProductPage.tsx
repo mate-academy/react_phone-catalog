@@ -21,7 +21,7 @@ import { BackLink } from '@modules/shared/components/BackLink';
 import { useCart } from '@modules/shared/components/Context/';
 // eslint-disable-next-line max-len
 import { useFavorites } from '@modules/shared/components/Context/';
-import { sortItems } from '@modules/ItemsPage/components/ItemsPage/';
+import { sortItems } from '@modules/CategoryPage/components/CategoryPage/';
 import { Loader } from '@modules/shared/components/Loader';
 import { ColorsAvailable } from './ColorsAvailable';
 import { PhotoSlider } from './PhotoSlider';

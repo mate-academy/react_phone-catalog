@@ -8,9 +8,9 @@ interface Props {
   additionalClass?: string;
 }
 
-export const ComponentTitle: React.FC<Props> = ({
+export const Title: React.FC<Props> = ({
   rawTitle,
-  amountOfitems = 0,
+  amountOfitems = '',
   additionalClass = '',
 }) => {
   const title =
@@ -19,7 +19,9 @@ export const ComponentTitle: React.FC<Props> = ({
   return (
     <div className={cn('top', additionalClass)}>
       <h1 className="top__title">{title}</h1>
-      {amountOfitems && <h4 className="top__amount">{amountOfitems} items</h4>}
+      {amountOfitems !== '' && (
+        <h4 className="top__amount">{amountOfitems} items</h4>
+      )}
     </div>
   );
 };

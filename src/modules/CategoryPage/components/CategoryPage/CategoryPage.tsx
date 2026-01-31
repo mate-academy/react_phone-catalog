@@ -8,15 +8,16 @@ import React, {
 import { useSearchParams } from 'react-router-dom';
 import { CurrentPath } from '@modules/shared/components/CurrentPath/';
 import { ProductList } from '@modules/ProductPage/components/ProductsList/';
-import { ComponentTitle } from '@modules/shared/components/ComponentTitle/';
 import { shuffle } from 'lodash';
 import { Select } from '@modules/shared/components/Select';
 import { Pagination } from '@modules/shared/components/Pagination';
 import { scrollToTop } from '@mocks/Functions/functions';
 import { usePagination } from '@modules/shared/components/Pagination/';
+import { Title } from '@modules/shared/components/Title';
 
 // #region Types
 interface Props {
+  category: Category;
   items: Product[];
 }
 
@@ -122,7 +123,7 @@ export function sortItems(items: Product[], sortBy: TypesOfSort) {
 }
 // #endregion
 
-// #region Types
+// #region Options
 const perPageOptions: OptionType[] = [
   { text: 'all', value: '' },
   { text: '4', value: '4' },
@@ -142,23 +143,30 @@ const sortByOptions: OptionType[] = [
 ];
 
 // #endregion
-export const ItemsPage: React.FC<Props> = ({ items }) => {
+
+export const CategoryPage: React.FC<Props> = ({ category, items }) => {
+  // Filter items by category
+  const categoryItems = useMemo(() => {
+    return items.filter(item => item.category === category.id);
+  }, [items, category.id]);
+
   // #region States
   const [searchParams, setSearchParams] = useSearchParams();
-  const [, setSortedItems] = useState(items);
-  const [activeItems, setActiveItems] = useState(items);
+  const [, setSortedItems] = useState(categoryItems);
+  const [activeItems, setActiveItems] = useState(categoryItems);
 
   const sortBy: TypesOfSort = (searchParams.get('sortBy') as TypesOfSort) || '';
-  const perPage = Number(searchParams.get('perPage')) || items.length;
+  const perPage = Number(searchParams.get('perPage')) || categoryItems.length;
   const page = Number(searchParams.get('page')) || 0;
 
-  const prevPerPage = useRef(items.length);
+  const prevPerPage = useRef(categoryItems.length);
 
   const { visiblePages, disabledStates } = usePagination({
-    totalItems: items,
+    totalItems: categoryItems,
     currentPage: page,
     itemsPerPage: perPage,
   });
+
   // #endregion
 
   // #region local functions
@@ -207,7 +215,7 @@ export const ItemsPage: React.FC<Props> = ({ items }) => {
   // #region UseEffects
   useEffect(() => {
     setSortedItems(() => {
-      const sorted = sortItems(items, sortBy);
+      const sorted = sortItems(categoryItems, sortBy);
 
       setActiveItems(() => {
         return sorted.slice(page * perPage, (page + 1) * perPage);
@@ -215,19 +223,19 @@ export const ItemsPage: React.FC<Props> = ({ items }) => {
 
       return sorted;
     });
-  }, [sortBy, items, page, perPage]);
+  }, [sortBy, categoryItems, page, perPage]);
 
   useEffect(() => {
     if (
       prevPerPage.current !== perPage &&
-      items.length !== prevPerPage.current
+      categoryItems.length !== prevPerPage.current
     ) {
       const targetPage =
         Math.round((prevPerPage.current / perPage) * page) || '';
 
       setSortingParam('page', targetPage.toString());
     }
-  }, [perPage, page, setSortingParam, items.length]);
+  }, [perPage, page, setSortingParam, categoryItems.length]);
 
   useEffect(() => {
     prevPerPage.current = perPage;
@@ -239,19 +247,19 @@ export const ItemsPage: React.FC<Props> = ({ items }) => {
   // #endregion
 
   return (
-    <div className="itemsPage">
-      <div className="container itemsPage__container">
-        <div className="itemsPage__top">
-          <CurrentPath additionalClass="itemsPage__path" />
+    <div className="categoryPage">
+      <div className="container categoryPage__container">
+        <div className="categoryPage__top">
+          <CurrentPath additionalClass="categoryPage__path" />
 
-          <ComponentTitle
-            rawTitle={items[0].category}
-            amountOfitems={items.length}
+          <Title
+            rawTitle={category.title}
+            amountOfitems={categoryItems.length}
           />
 
-          <div className="itemsPage__sort">
-            <div className="itemsPage__sortPart itemsPage__sortBy">
-              <span className="itemsPage__sortTitle">Sort by</span>
+          <div className="categoryPage__sort">
+            <div className="categoryPage__sortPart categoryPage__sortBy">
+              <span className="categoryPage__sortTitle">Sort by</span>
               <Select
                 param="sortBy"
                 options={sortByOptions}
@@ -259,8 +267,8 @@ export const ItemsPage: React.FC<Props> = ({ items }) => {
                 value={sortBy}
               />
             </div>
-            <div className="itemsPage__sortPart itemsPage__perPage">
-              <span className="itemsPage__sortTitle">Items on page</span>
+            <div className="categoryPage__sortPart categoryPage__perPage">
+              <span className="categoryPage__sortTitle">Items on page</span>
               <Select
                 param="perPage"
                 options={perPageOptions}
@@ -271,11 +279,11 @@ export const ItemsPage: React.FC<Props> = ({ items }) => {
           </div>
         </div>
 
-        <div className="itemsPage__main">
+        <div className="categoryPage__main">
           <ProductList productsToShow={activeItems} />
         </div>
 
-        <div className="itemsPage__bottom">
+        <div className="categoryPage__bottom">
           <Pagination
             visiblePages={visiblePages}
             currentPage={page}

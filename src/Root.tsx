@@ -6,6 +6,9 @@ import { useProducts } from '@modules/shared/components/Context';
 import { PageNotFound } from '@modules/NotFoundPage/components/PageNotFound';
 import { lazy, Suspense } from 'react';
 import { Loader } from '@modules/shared/components/Loader';
+import categoriesData from '@public/api/categories.json';
+
+const categories: Category[] = categoriesData;
 
 // #region Lazy imports
 const HomePage = lazy(() =>
@@ -13,10 +16,12 @@ const HomePage = lazy(() =>
     default: module.HomePage,
   })),
 );
-const ItemsPage = lazy(() =>
-  import('./modules/ItemsPage/components/ItemsPage/ItemsPage').then(module => ({
-    default: module.ItemsPage,
-  })),
+const CategoryPage = lazy(() =>
+  import('./modules/CategoryPage/components/CategoryPage/CategoryPage').then(
+    module => ({
+      default: module.CategoryPage,
+    }),
+  ),
 );
 const ProductPage = lazy(() =>
   import('./modules/ProductPage/components/ProductPage/ProductPage').then(
@@ -38,6 +43,13 @@ const Cart = lazy(() =>
 export const Root = ({}) => {
   const { products } = useProducts();
 
+  // Combine all products into a single array
+  const allProducts: Product[] = [
+    ...products.phones,
+    ...products.tablets,
+    ...products.accessories,
+  ];
+
   return (
     <Router>
       <Suspense fallback={<Loader className="page__loader" />}>
@@ -45,27 +57,17 @@ export const Root = ({}) => {
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />}></Route>
             <Route path="/home" element={<HomePage />}></Route>
-            <Route path="/phones">
-              <Route
-                index
-                element={<ItemsPage items={products.phones} />}
-              ></Route>
-              <Route path=":id" element={<ProductPage />}></Route>
-            </Route>
-            <Route path="/tablets">
-              <Route
-                index
-                element={<ItemsPage items={products.tablets} />}
-              ></Route>
-              <Route path=":id" element={<ProductPage />}></Route>
-            </Route>
-            <Route path="/accessories">
-              <Route
-                index
-                element={<ItemsPage items={products.accessories} />}
-              ></Route>
-              <Route path=":id" element={<ProductPage />}></Route>
-            </Route>
+            {categories.map(category => (
+              <Route key={category.id} path={category.path}>
+                <Route
+                  index
+                  element={
+                    <CategoryPage category={category} items={allProducts} />
+                  }
+                ></Route>
+                <Route path=":id" element={<ProductPage />}></Route>
+              </Route>
+            ))}
             <Route path="/favorites" element={<Favorites />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="*" element={<PageNotFound />}></Route>

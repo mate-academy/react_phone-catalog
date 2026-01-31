@@ -1,5 +1,5 @@
 import React from 'react';
-import { OptionType } from '@modules/ItemsPage/components/ItemsPage/ItemsPage';
+import { OptionType } from '@modules/CategoryPage/components/CategoryPage/';
 import cn from 'classnames';
 
 interface Props {

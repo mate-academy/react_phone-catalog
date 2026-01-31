@@ -3,7 +3,7 @@ import { PicturesSlider } from '../PicturesSlider/PicturesSlider';
 import { BaseSlider } from '../BaseSlider';
 import { Categories } from '../Categories';
 import { useProducts } from '@modules/shared/components/Context';
-import { sortItems } from '@modules/ItemsPage/components/ItemsPage/';
+import { sortItems } from '@modules/CategoryPage/components/CategoryPage/';
 
 export const HomePage: React.FC = () => {
   const { products } = useProducts();

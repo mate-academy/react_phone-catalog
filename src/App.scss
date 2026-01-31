@@ -14,14 +14,14 @@
 @import './modules/HomePage/components/BaseSlider/BaseSlider.module';
 @import './modules/HomePage/components/Categories/Categories.module';
 @import './modules/shared/components/Footer/Footer.module';
-@import './modules/ItemsPage/components/ItemsPage/ItemsPage.module';
+@import './modules/CategoryPage/components/CategoryPage/CategoryPage.module.scss';
 @import './modules/shared/components/CurrentPath/CurrentPath.module';
 @import './modules/ProductPage/components/ProductPage/ProductPage.module';
 @import './modules/shared/components/ShowCharacteristics/ShowCharacteristics.module';
 @import './modules/shared/components/Price/Price.module';
 @import './modules/Favorites/components/Favourites/Favorites.module';
 @import './modules/ProductPage/components/ProductsList/ProductList.module';
-@import './modules/shared/components/ComponentTitle/ComponentTitle.module';
+@import './modules/shared/components/Title/Title.module';
 @import './modules/CartPage/components/Cart/Cart.module';
 @import './modules/CartPage/components/CartElement/CartElement.module';
 @import './modules/shared/components/BackLink/BackLink.module';

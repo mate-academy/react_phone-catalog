@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 // eslint-disable-next-line max-len
 import { useCart } from '@modules/shared/components/Context/';
 // eslint-disable-next-line max-len
-import { ComponentTitle } from '@modules/shared/components/ComponentTitle/';
+import { Title } from '@modules/shared/components/Title/';
 import { CartElement } from '../CartElement/';
 // eslint-disable-next-line max-len
 import { BackLink } from '../../../../modules/shared/components/BackLink/';
@@ -66,7 +66,7 @@ export const Cart: React.FC = () => {
         )}
         <BackLink additionalClass="cart__backLink" />
 
-        <ComponentTitle rawTitle="Cart" additionalClass="cart__title" />
+        <Title rawTitle="Cart" additionalClass="cart__title" />
 
         <div className="cart__main">
           {cart?.length !== 0 ? (
