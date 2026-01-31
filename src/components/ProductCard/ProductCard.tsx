@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import styles from './ProductCard.module.scss';
 import { Phone } from '../../types/Phone';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 interface Props {
   phone: Phone;
@@ -14,6 +16,7 @@ export const ProductCard: React.FC<Props> = ({
   showRegularPriceOnly = false,
 }) => {
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+  const { cartItems, addToCart } = useCart();
   const {
     id,
     name,
@@ -26,12 +29,19 @@ export const ProductCard: React.FC<Props> = ({
   } = phone;
 
   const isFavorite = favorites.find(fav => fav.id === phone.id);
+  const isInCart = cartItems.some(item => item.phone.id === phone.id);
 
   const handleFavoriteClick = () => {
     if (isFavorite) {
       removeFromFavorites(phone);
     } else {
       addToFavorites(phone);
+    }
+  };
+
+  const handleAddToCartClick = () => {
+    if (!isInCart) {
+      addToCart(phone);
     }
   };
 
@@ -79,8 +89,15 @@ export const ProductCard: React.FC<Props> = ({
       </div>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.addToCart}>
-          Add to cart
+        <button
+          type="button"
+          className={classNames(styles.addToCart, {
+            [styles.addedToCart]: isInCart,
+          })}
+          onClick={handleAddToCartClick}
+          disabled={isInCart}
+        >
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           type="button"

@@ -10,23 +10,31 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { CartProvider } from './context/CartContext';
+import { CartPage } from './pages/CartPage';
 
 export const App = () => (
   <FavoritesProvider>
-    <div className="App">
-      <Header />
-      <main className="section">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<PhonesPage />} />
-          <Route path="/tablets" element={<TabletsPage />} />
-          <Route path="/accessories" element={<AccessoriesPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/product/:productId" element={<ProductDetailsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <CartProvider>
+      <div className="App">
+        <Header />
+        <main className="section">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/phones" element={<PhonesPage />} />
+            <Route path="/tablets" element={<TabletsPage />} />
+            <Route path="/accessories" element={<AccessoriesPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route
+              path="/product/:productId"
+              element={<ProductDetailsPage />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </CartProvider>
   </FavoritesProvider>
 );

@@ -1,6 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useFavorites } from '../../context';
+import { useCart } from '../../context';
 import styles from './Header.module.scss';
 
 const navItems = [
@@ -12,6 +13,7 @@ const navItems = [
 
 export const Header = () => {
   const { favorites } = useFavorites();
+  const { totalItems } = useCart();
 
   return (
     <header className={styles.header}>
@@ -46,9 +48,17 @@ export const Header = () => {
               <span className={styles.badge}>{favorites.length}</span>
             )}
           </NavLink>
-          <a className={styles.action} href="#">
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              classNames(styles.action, { [styles.isActive]: isActive })
+            }
+          >
             <img src="/img/shopping_cart.svg" alt="Cart" />
-          </a>
+            {totalItems > 0 && (
+              <span className={styles.badge}>{totalItems}</span>
+            )}
+          </NavLink>
         </div>
 
         <button className={styles.burger} type="button">

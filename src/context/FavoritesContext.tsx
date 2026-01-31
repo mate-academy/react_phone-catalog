@@ -1,11 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { Phone } from '../types/Phone';
+import { FavoritesContextType } from '../types/Favorites';
 
-interface FavoritesContextType {
-  favorites: Phone[];
-  addToFavorites: (phone: Phone) => void;
-  removeFromFavorites: (phone: Phone) => void;
-}
+export type { FavoritesContextType };
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(
   undefined,
