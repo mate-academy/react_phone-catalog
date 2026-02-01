@@ -17,12 +17,12 @@ export const MenuNav: React.FC = () => {
             </Link>
           </li>
           <li className={styles.nav__item}>
-            <Link to="/tablets" className={styles.nav__link} reloadDocument>
+            <a href="tablets" className={styles.nav__link}ççç>
               tablets
-            </Link>
+            </a>
           </li>
           <li className={styles.nav__item}>
-            <Link to="/accessories" className={styles.nav__link} reloadDocument>
+            <Link to="accessories" className={styles.nav__link} reloadDocument>
               accessories
             </Link>
           </li>
