@@ -1,4 +1,3 @@
-import { Navigate } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 
 import HomePage from './modules/HomePage/index';
