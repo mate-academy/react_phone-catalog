@@ -9,6 +9,7 @@ import { getProductColor } from '../../constants/colors';
 /* eslint-disable max-len */
 import { SuggestedProductsSlider } from '../../components/SuggestedProductsSlider';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 import Lightbox from 'yet-another-react-lightbox';
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
@@ -20,6 +21,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+  const { cartItems, addToCart } = useCart();
   const [product, setProduct] = useState<Phone | null>(null);
   const [productInfo, setProductInfo] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -124,6 +126,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const isFavorite = favorites.find(fav => fav.id === product?.id);
+  const isInCart = cartItems.some(item => item.phone.id === product?.id);
 
   const handleFavoriteClick = () => {
     if (!product) {
@@ -135,6 +138,14 @@ export const ProductDetailsPage: React.FC = () => {
     } else {
       addToFavorites(product);
     }
+  };
+
+  const handleAddToCartClick = () => {
+    if (!product || isInCart) {
+      return;
+    }
+
+    addToCart(product);
   };
 
   if (loading) {
@@ -274,7 +285,13 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className={styles.actions}>
-              <button className={styles.addToCart}>Add to cart</button>
+              <button
+                className={`${styles.addToCart} ${isInCart ? styles.addedToCart : ''}`}
+                onClick={handleAddToCartClick}
+                disabled={isInCart}
+              >
+                {isInCart ? 'Added to cart' : 'Add to cart'}
+              </button>
               <button className={styles.favorite} onClick={handleFavoriteClick}>
                 <img
                   src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}

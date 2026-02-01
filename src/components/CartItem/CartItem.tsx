@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CartItem.module.scss';
 import { Phone } from '../../types/Phone';
 
@@ -27,9 +28,13 @@ export const CartItem: React.FC<Props> = ({
         <img src="/img/close.svg" alt="Remove" />
       </button>
 
-      <img className={styles.image} src={imageUrl} alt={phone.name} />
+      <Link to={`/product/${phone.id}`} className={styles.imageLink}>
+        <img className={styles.image} src={imageUrl} alt={phone.name} />
+      </Link>
 
-      <div className={styles.title}>{phone.name}</div>
+      <Link to={`/product/${phone.id}`} className={styles.titleLink}>
+        <div className={styles.title}>{phone.name}</div>
+      </Link>
 
       <div className={styles.quantity}>
         <button

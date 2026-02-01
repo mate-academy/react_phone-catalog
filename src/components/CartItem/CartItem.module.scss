@@ -44,6 +44,11 @@
   object-fit: contain;
 }
 
+.imageLink {
+  display: block;
+  text-decoration: none;
+}
+
 .title {
   @include typography.text-body;
 
@@ -53,6 +58,14 @@
 
   @media (max-width: 639px) {
     max-width: 100%;
+  }
+}
+
+.titleLink {
+  text-decoration: none;
+
+  &:hover .title {
+    color: var(--color-secondary);
   }
 }
 

@@ -326,6 +326,20 @@
   &:hover {
     background-color: #0a0a0a;
   }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.addedToCart {
+  background-color: var(--color-white);
+  color: var(--color-green);
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    background-color: var(--color-white);
+  }
 }
 
 .favorite {
