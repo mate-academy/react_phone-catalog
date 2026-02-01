@@ -11,7 +11,7 @@ import { mapToProductBase } from '../../utils/mapToProductBase';
 import { ProductBase } from '../../types/ProductBase';
 import { useFavourites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
-import { CartProduct } from '../../types/CartProduct';
+import { CartProduct } from '../../context/CartContext';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -58,7 +58,8 @@ export const ProductPage = () => {
     );
 
     if (newProduct) {
-      navigate(`/${newProduct.category}/${newProduct.id}`);
+
+      navigate(`/${newProduct.category}/${newProduct.id}`, { replace: true });
     }
   };
 
@@ -71,7 +72,7 @@ export const ProductPage = () => {
     );
 
     if (newProduct) {
-      navigate(`/${newProduct.category}/${newProduct.id}`);
+      navigate(`/${newProduct.category}/${newProduct.id}`, { replace: true });
     }
   };
 
@@ -88,7 +89,7 @@ export const ProductPage = () => {
   const cartKey = `${product.id}-${product.capacity}-${product.color}`;
   const cartProduct: CartProduct = {
     id: `${product.id}-${product.capacity}-${product.color}`,
-    itemId: product.itemId,
+    itemId: String(product.itemId),
     category: product.category,
     name: product.name,
     price: product.price,

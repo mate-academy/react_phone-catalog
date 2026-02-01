@@ -7,5 +7,5 @@ export interface CartProduct {
   category: string;
   capacity: string;
   color: string;
-  itemId: number;
+  itemId: number | string;
 }

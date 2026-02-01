@@ -2,10 +2,14 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 export interface CartProduct {
   id: string;
+  itemId: string;
   name: string;
+  category: string;
   price: number;
   priceDiscount?: number;
   images: string[];
+  capacity: string;
+  color: string;
 }
 
 export interface CartItem {

@@ -34,7 +34,6 @@ export const FavouritesProvider = ({
     localStorage.setItem('favourites', JSON.stringify(items));
   }, [items]);
 
-  /** ✅ TOGGLE ПРАЦЮЄ ПО product.id */
   const toggle = (product: ProductBase) => {
     setItems(prev =>
       prev.some(p => p.favouriteKey === product.favouriteKey)

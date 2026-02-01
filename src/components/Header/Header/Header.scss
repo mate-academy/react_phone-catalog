@@ -1,22 +1,24 @@
 .header {
   width: 100%;
-  height: 40px;
   border-bottom: 0.5px solid #E2E6E9;
   position: sticky;
+  box-sizing: border-box;
   top: 0;
+  height: 64px;
   z-index: 100;
   background: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 0 32px;
 
   &__grid {
     display: flex;
-
+    align-items: center;
     gap: 24px;
     justify-content: space-between;
+    height: 100%;
+    width: 100%;
   }
-
 
   &__left {
     display: flex;
@@ -55,6 +57,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    padding: 0 4px;
     gap: 32px;
 
     @media (max-width: 639px) {
@@ -64,10 +67,11 @@
 
   &__section {
     position: relative;
-  padding-bottom: 12px;
+    padding-bottom: 12px;
     height: 100%;
     display: flex;
     align-items: center;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Mont-Bold';
     font-size: 12px;
@@ -78,12 +82,12 @@
     transition: color 0.3s;
 
     &::after {
-  content: '';
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0; // ❗ завжди внизу
-    height: 2px;
+bottom: -22px;
+    height: 3px;
     background-color: transparent;
     }
 
@@ -133,13 +137,13 @@
 
   &__iconLink {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 
     width: 48px;
-    height: 64px;
+    height: 100%;
 
-    padding-top: 18px;
+    padding-top: 0;
     text-decoration: none;
   }
 

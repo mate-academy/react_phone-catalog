@@ -16,10 +16,9 @@ export const ProductCard: React.FC<Props> = ({
   const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggle, isFavourite } = useFavourites();
 
-  const cartKey = product.favouriteKey;
-
+  const cartKey = String(product.itemId);
   const cartProduct = {
-    id: String(product.id),
+    id: cartKey,
     name: product.name,
     price: product.price,
     priceDiscount:
@@ -27,9 +26,12 @@ export const ProductCard: React.FC<Props> = ({
     images: [product.image],
     category: product.category,
     capacity: product.capacity,
-    color: product.color,
+    color: product.color ?? 'base',
+    itemId: product.itemId,
+
   };
   const favouriteKey = `${product.id}-${product.capacity ?? 'base'}-${product.color ?? 'base'}`;
+
 
   const productWithKey: ProductBase = {
     ...product,
@@ -79,7 +81,7 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className="card__actions" onClick={e => e.stopPropagation()}>
         <button
-          className={`card__add-to-cart-button ${isInCart(cartKey) ? 'added' : ''}`}
+          className={`card__add-to-cart-button ${isInCart(cartKey) ? 'added' : ''}`} // Використовуємо cartKey
           onClick={e => {
             e.stopPropagation();
 
