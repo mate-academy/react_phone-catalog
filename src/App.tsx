@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
 import HomePage from './modules/HomePage/index';
 import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
@@ -28,22 +30,20 @@ const App = () => {
         <Header />
         <main className="main">
           <div className="main__content">
-            <BrowserRouter basename="/react_phone-catalog">
-              <Routes>
-                <Route path="home" element={<Navigate to="/" replace />} />
-                <Route path="" element={<HomePage />} />
-                <Route path="/phones" element={<PhonesPage />} />
-                <Route path="/tablets" element={<TabletsPage />} />
-                <Route path="accessories" element={<AccessoriesPage />} />
-                <Route path="cart" element={<CartPage />} />
-                <Route path="favorites" element={<FavoritesPage />} />
-                <Route
-                  path="product/:productId"
-                  element={<ProductDetailsPage />}
-                />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </BrowserRouter>
+            <Routes>
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/phones" element={<PhonesPage />} />
+              <Route path="/tablets" element={<TabletsPage />} />
+              <Route path="/accessories" element={<AccessoriesPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route
+                path="/product/:productId"
+                element={<ProductDetailsPage />}
+              />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
           </div>
         </main>
         <Footer onBackToTop={onBackToTop} />
