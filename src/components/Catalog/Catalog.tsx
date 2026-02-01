@@ -24,22 +24,8 @@ export const Catalog: FC<Props> = ({
   categoryName,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams('');
-
-  useEffect(() => {
-    if (
-      searchParams.get('sortBy') === null ||
-      searchParams.get('sortPage') === null
-    ) {
-      setSearchParams(prev => {
-        const params = new URLSearchParams(prev);
-
-        params.set('sortBy', SortBy.Newest);
-        params.set('sortPage', '16');
-
-        return params;
-      });
-    }
-  }, [searchParams]);
+  const sortByParam = searchParams.get('sortBy');
+  const sortPageParam = searchParams.get('sortPage');
 
   function sortBy(parametrs: string, sortItems: ProductAllType[]) {
     switch (parametrs) {
@@ -87,14 +73,26 @@ export const Catalog: FC<Props> = ({
   const [perPage, setPerPage] = useState<number>(
     +(searchParams.get('sortPage') || '16'),
   );
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(
+    +(searchParams.get('currentPage') || 1),
+  );
+
+  const [sortByName, setSortByName] = useState(
+    searchParams.get('sortBy') || SortBy.Newest,
+  );
 
   useEffect(() => {
-    setCurrentPage(1);
+    setCurrentPage(+(searchParams.get('currentPage') || 1));
     setPerPage(+(searchParams.get('sortPage') || '16'));
-  }, [searchParams, perPage]);
-
-  const sortByName = searchParams.get('sortBy') || SortBy.Newest;
+    setSortByName(searchParams.get('sortBy') || SortBy.Newest);
+  }, [sortPageParam, sortByParam]);
+  useEffect(() => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+      params.set('currentPage', currentPage.toString());
+      return params;
+    });
+  }, [currentPage]);
 
   /* eslint-disable @typescript-eslint/indent */
 

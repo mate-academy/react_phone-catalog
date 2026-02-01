@@ -50,19 +50,4 @@ export const Pagination: FC<Props> = ({
     </ul>
   );
 
-  // return (
-  //   <ul className="catalog__pagination pagination">
-  //     <li className="pagination__item  pagination__left">
-  //       <a href="">&#60;</a>
-  //     </li>
-
-  //     <li className="pagination__item pagination__item_active">
-  //       <a href="">1</a>
-  //     </li>
-
-  //     <li className="pagination__item pagination__rigth">
-  //       <a href=""></a> &#62;
-  //     </li>
-  //   </ul>
-  // );
 };

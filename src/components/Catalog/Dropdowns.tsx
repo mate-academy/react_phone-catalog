@@ -13,10 +13,12 @@ export const Dropdowns = () => {
       const params = new URLSearchParams(searchParams);
 
       params.set('sortPage', e.target.value);
+      params.set('currentPage', '1');
       setSerachParams(params);
     } else {
       const params = new URLSearchParams(searchParams);
 
+      params.set('currentPage', '1');
       params.set('sortBy', e.target.value);
       setSerachParams(params);
     }
