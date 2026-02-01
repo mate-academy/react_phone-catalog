@@ -1,0 +1,115 @@
+@import '../../mixins';
+
+.main {
+  margin-top: 24px;
+  overflow-x: hidden;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  padding: 0 16px;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.slider {
+  width: 100%;
+  margin-top: 24px;
+
+  @include on-tablet {
+    box-sizing: border-box;
+    padding: 0 32px;
+    position: relative;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    padding: 56px 32px;
+  }
+
+  &Header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 19px;
+
+    @include on-desktop {
+      padding: 0 16px;
+    }
+  }
+
+  &Img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-tablet  {
+      height: clamp(
+        189px,
+        calc(189px + (400 - 189) * ((100vw - 640px) / (1200 - 640))),
+        400px
+      );
+    }
+  }
+
+  &Button {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      top: 0;
+      width: 32px;
+      background-color: white;
+      position: absolute;
+      border: 1px solid #b4bdc3;
+     height: clamp(
+      189px,
+      calc(189px + (400 - 189) * ((100vw - 640px) / (1200 - 640))),
+      400px
+     );
+    }
+
+    &Prev {
+      left: 0;
+    }
+
+    &Next {
+      right: 0;
+    }
+  }
+
+  &Pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding-top: 18px;
+
+    @include on-tablet {
+      gap: 12px;
+    }
+
+    &Btn {
+      width: 14px;
+      height: 4px;
+      border: none;
+      cursor: pointer;
+    }
+
+    &Active {
+      background-color: #313237;
+    }
+  }
+}

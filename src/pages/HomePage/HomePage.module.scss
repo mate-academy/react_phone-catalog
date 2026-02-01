@@ -1,0 +1,76 @@
+@use '../../mixins.scss' as *;
+
+.sect {
+  padding-bottom: 56px;
+}
+
+.title {
+  font-weight: 800;
+  line-height: 140%;
+  font-size: bold;
+  margin: 0;
+
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  margin: 0;
+  list-style: none;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.partImg {
+  width: 100%;
+  height: auto;
+  max-width: 368px;
+}
+
+.linkCategory {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  margin: 0;
+  padding-top: 24px;
+
+  &Text {
+    padding-top: 24px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    color: #313237;
+  }
+}
+
+.paragraph {
+  margin: 0;
+  padding-top: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.sectionFooter {
+  padding-bottom: 64px;
+}

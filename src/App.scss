@@ -1,1 +1,48 @@
-// not empty
+@import './mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url('./../public/fonts/Mont-Regular.otf');
+  font-weight: 400;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./../public/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./../public/fonts/Mont-Bold.otf');
+  font-weight: 800;
+  font-size: bold;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: Mont, sans-serif;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}

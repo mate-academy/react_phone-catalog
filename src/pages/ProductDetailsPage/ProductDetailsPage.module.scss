@@ -1,0 +1,215 @@
+@use '../../mixins.scss' as *;
+
+.section {
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 32px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+}
+
+.topNavDetails {
+  display: flex;
+  gap: 8px;
+  padding-top: 24px;
+  align-items: center;
+}
+
+.category {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: #313237;
+  text-decoration: none;
+}
+
+.nameNav {
+  margin: 0;
+  color: #89939a;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.bottomNav {
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+}
+
+.buttonNav {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #89939a;
+  cursor: pointer;
+}
+
+.headerDetails {
+  padding: 16px 0 32px;
+  margin: 0;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 22px;
+  line-height: 140%;
+  color: #313237;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.containers {
+  @include on-tablet {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+  }
+}
+
+.photoContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  @include on-tablet {
+    order: 2;
+  }
+}
+
+.mainPhoto {
+  min-width: 288px;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.imagesContainer {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    order: 1;
+    margin-top: 0;
+    flex-direction: column;
+  }
+}
+
+.imageButton {
+  padding: 2px;
+  background: #fff;
+
+  &Select {
+    border: 2px solid #000;
+  }
+
+  &:not(&Select) {
+    border: 1px solid #ddd;
+  }
+}
+
+.imagePhoto {
+  width: 52px;
+  height: 49px;
+  object-fit: contain;
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.detailsContainer {
+  order: 3;
+}
+
+.titleH {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  margin: 0;
+  color: #89939a;
+  padding-bottom: 8px;
+}
+
+.id {
+  display: none;
+
+  @include on-desktop {
+    display: block;
+    order: 4;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    margin: 0;
+    color: #b4bdc3;
+  }
+}
+
+.containerBlock {
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.sectionAbout {
+  padding-top: 56px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 80px;
+    flex: 1;
+  }
+}
+
+.titleHTwo {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #313237;
+
+  border-bottom: 1px solid #e2e6e9;
+  padding-bottom: 24px;
+
+  @include on-desktop {
+    padding-bottom: 16px;
+  }
+}
+
+.titleAbout {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #313237;
+  padding-top: 30px;
+}
+
+.aboutParagraph {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  padding-top: 16px;
+}
+
+.containerSlider {
+  padding: 0;
+}

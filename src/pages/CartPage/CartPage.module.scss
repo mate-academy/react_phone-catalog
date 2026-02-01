@@ -1,0 +1,300 @@
+@use '../../mixins.scss' as *;
+
+.emptyCart {
+  display: block;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.imgAside {
+  margin-top: 100px;
+  width: 320px;
+  height: 320px;
+}
+
+.cart {
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 41px;
+  color: #313237;
+}
+
+.section {
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 32px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+}
+
+.modalWindow {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.modalSection {
+  background: #c5b1da;
+  padding: 24px;
+  width: 500px;
+  text-align: center;
+}
+
+.titleModal {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #313237;
+}
+
+.textModal {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 21px;
+  color: #453c3e;
+}
+
+.buttonCheckout {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+
+  padding: 16px 0 24px;
+  border-top: 1px solid #e2e6e9;
+}
+
+.butYes {
+  flex: 1;
+  background: #8765d1;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-weight: 600;
+}
+
+.butCancel {
+  flex: 1;
+  background: #ddddec;
+  padding: 10px;
+  border: none;
+  font-weight: 600;
+}
+
+.topNavDetails {
+  display: flex;
+  gap: 8px;
+  padding-top: 24px;
+  align-items: center;
+}
+
+.nameNav {
+  font-weight: 500;
+  font-size: 14px;
+  color: #89939a;
+  margin: 0;
+}
+
+.forH {
+  margin: 0;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #313237;
+  padding: 24px 0 32px;
+
+  @include on-tablet {
+    padding-top: 40px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.cartPart {
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 80px;
+  }
+}
+
+.styleItem {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+
+  @include on-desktop {
+    width: 810px;
+  }
+}
+
+.liItem {
+  border: 1px solid #e2e6e9;
+  list-style: none;
+  box-shadow:  0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.itemBlock {
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.blockPartOne {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.blockPartTwo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 16px 16px;
+
+  @include on-tablet {
+    flex: 1;
+    padding: 24px 24px 24px 0 ;
+    justify-content: end;
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+.button {
+  all: unset;
+  height: 16px;
+  width: 16px;
+}
+
+.productImages {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paragraph {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+}
+
+.butPart {
+  display: flex;
+  align-items: center;
+}
+
+.buttons {
+  all: unset;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid #b4bdc3;
+}
+
+.quality {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 21px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  color: #000;
+}
+
+.priceOneProduct {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  color: #313237;
+  align-items: center;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 64px;
+
+  border: 1px solid #e2e6e9;
+  box-shadow:  0 2px 15px rgba(0, 0, 0, 0.1);
+
+  @include on-desktop {
+    margin-top: 0;
+    height: 206px;
+    width: 368px;
+  }
+}
+
+.firstPartBottom {
+  padding: 24px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totalParagraph {
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #313237;
+}
+
+.spanText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.secondPartBottom {
+  all: unset;
+  height: 48px;
+  width: 240px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #FFF;
+  background-color: #313237;
+  text-align: center;
+
+  @include on-tablet {
+    width: 544px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}

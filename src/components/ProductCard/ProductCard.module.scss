@@ -1,0 +1,145 @@
+@use '../../mixins.scss' as *;
+
+.card {
+  border: 1px solid #e2e6e9;
+  border-radius: 5px;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.link {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    height: 196px;
+  }
+}
+
+.wrapImg {
+  width: 80%;
+
+  object-fit: contain;
+  display: block;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  text-decoration: none;
+  color: #313237;
+  margin-top: 32px; // check again this line
+}
+
+.price {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 140%;
+  color: #313237;
+  display: flex;
+  padding: 8px 0;
+  align-items: center;
+
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.currentPrice {
+  margin: 0;
+  padding-right: 8px;
+}
+
+.oldPrice {
+  margin: 0;
+  text-decoration: line-through;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 140%;
+  color: #89939a;
+}
+
+.top {
+  padding: 8px 0;
+}
+
+.paragraph {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #89939a;
+  margin: 0;
+
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+.span {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: #313237;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  height: 40px;
+  margin-top: auto;
+}
+
+.leftBut {
+  all: unset;
+  width: 80%;
+  background-color: #313237;
+
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+
+  &Active {
+    background-color:  rgb(248, 243, 243);
+    color: #27ae60;
+    border: 1px solid #e2e6e9;
+
+    transition: background-color 0.9s ease;
+  }
+}
+
+.rightBut {
+  border: 1px solid #b4bdc3;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  margin: 0;
+
+  transition: background-color 0.9s ease;
+
+  &Active {
+    background-color: rgb(248, 243, 243);
+    color: #00080e;
+    border: 1px solid #e2e6e9;
+
+    transition: background-color 0.9s ease;
+  }
+}
+
+.link:hover .wrapImg {
+  transform: scale(1.1);
+}
