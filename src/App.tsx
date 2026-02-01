@@ -31,15 +31,15 @@ const App = () => {
         <main className="main">
           <div className="main__content">
             <Routes>
-              <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="/" element={<HomePage />} />
+              <Route path="home" element={<Navigate to="/" replace />} />
+              <Route path="" element={<HomePage />} />
               <Route path="phones" element={<PhonesPage />} />
-              <Route path="/tablets" element={<TabletsPage />} />
-              <Route path="/accessories" element={<AccessoriesPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="tablets" element={<TabletsPage />} />
+              <Route path="accessories" element={<AccessoriesPage />} />
+              <Route path="cart" element={<CartPage />} />
+              <Route path="favorites" element={<FavoritesPage />} />
               <Route
-                path="/product/:productId"
+                path="product/:productId"
                 element={<ProductDetailsPage />}
               />
               <Route path="*" element={<NotFoundPage />} />
