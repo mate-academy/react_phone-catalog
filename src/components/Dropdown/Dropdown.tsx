@@ -12,16 +12,25 @@ type Option = {
 
 type Params = Record<string, Option>;
 
+export type ResetParam = {
+  name: string;
+  defaultValue: string;
+};
+
+type AdditionalParam = ResetParam;
+
 type Props = {
-  searchParamNames: { main: string; additional?: string };
+  searchParamsConfig: { main: string; additional?: AdditionalParam };
   items: Params;
   defaultValue: Option;
+  resetParams?: ResetParam[];
 };
 
 export const Dropdown: React.FC<Props> = ({
   items,
   defaultValue,
-  searchParamNames,
+  searchParamsConfig: searchParamNames,
+  resetParams,
 }) => {
   const { search } = useLocation();
 
@@ -51,7 +60,7 @@ export const Dropdown: React.FC<Props> = ({
     document.addEventListener('mousedown', handleClick);
 
     return () => document.removeEventListener('mousedown', handleClick);
-  }, [expanded]);
+  }, []);
 
   const buildParams = (value: string) => {
     const params: Record<string, string> = {
@@ -60,12 +69,22 @@ export const Dropdown: React.FC<Props> = ({
 
     if (
       searchParamNames.additional &&
-      !searchParams.has(searchParamNames.additional)
+      !searchParams.has(searchParamNames.additional.name)
     ) {
-      params[searchParamNames.additional] = '1';
+      params[searchParamNames.additional.name] =
+        searchParamNames.additional.defaultValue;
+    }
+
+    if (resetParams?.length) {
+      resetParams.forEach(param => (params[param.name] = param.defaultValue));
     }
 
     return params;
+  };
+
+  const handleToggleDropdown = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpanded(prev => !prev);
   };
 
   return (
@@ -88,10 +107,7 @@ export const Dropdown: React.FC<Props> = ({
             }}
             aria-haspopup="true"
             aria-controls="dropdown-menu"
-            onClick={e => {
-              e.stopPropagation();
-              setExpanded(current => !current);
-            }}
+            onClick={handleToggleDropdown}
           >
             <span>{selectedItem?.title || 'Choose a sort param'}</span>
             <span className="icon is-small">

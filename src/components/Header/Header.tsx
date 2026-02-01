@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Navbar } from '../Navbar';
 import classNames from 'classnames';
 import styles from './Header.module.scss';
@@ -24,7 +24,9 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <img src={logo} className={styles.logo} alt="logo" />
+      <Link to="/">
+        <img src={logo} className={styles.logo} alt="logo" />
+      </Link>
 
       <Navbar />
 

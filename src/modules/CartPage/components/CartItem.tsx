@@ -12,14 +12,28 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
+  const { id, quantity, product } = item;
+
   const dispatch = useAppDispatch();
 
-  const handleProductRemove = (id: string, price: number) => {
-    dispatch(cartProductsSlice.actions.removeProduct({ id, price }));
+  const handleProductRemove = (productId: string, price: number) => {
+    dispatch(cartProductsSlice.actions.removeProduct({ id: productId, price }));
   };
 
   const handleQuantityChange = (delta: 1 | -1) => {
-    dispatch(cartProductsSlice.actions.changeQuantity({ id: item.id, delta }));
+    dispatch(cartProductsSlice.actions.changeQuantity({ id: id, delta }));
+  };
+
+  const handleRemoveClick = () => {
+    handleProductRemove(id, product.priceDiscount * quantity);
+  };
+
+  const handleIncreaseClick = () => {
+    handleQuantityChange(1);
+  };
+
+  const handleDecreaseClick = () => {
+    handleQuantityChange(-1);
   };
 
   return (
@@ -28,21 +42,16 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <img
           src={remove}
           alt="remove icon"
-          onClick={() =>
-            handleProductRemove(
-              item.id,
-              item.product.priceDiscount * item.quantity,
-            )
-          }
+          onClick={handleRemoveClick}
           className={styles.remove_icon}
         />
 
-        <Link to={`/${item.product.category}/${item.product.id}`}>
-          <img src={item.product.images[0]} className={styles.item_image} />
+        <Link to={`/${product.category}/${product.id}`}>
+          <img src={product.images[0]} className={styles.item_image} />
         </Link>
 
-        <Link to={`/${item.product.category}/${item.product.id}`}>
-          <p className={styles.item_name}>{item.product.name}</p>
+        <Link to={`/${product.category}/${product.id}`}>
+          <p className={styles.item_name}>{product.name}</p>
         </Link>
       </div>
 
@@ -50,24 +59,22 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className={styles.counter}>
           <button
             className={styles.counter_button}
-            onClick={() => handleQuantityChange(-1)}
+            onClick={handleDecreaseClick}
           >
             <img src={minus} alt="minus icon" style={{ userSelect: 'none' }} />
           </button>
 
-          <p className={styles.counter_text}>{item.quantity}</p>
+          <p className={styles.counter_text}>{quantity}</p>
 
           <button
             className={styles.counter_button}
-            onClick={() => handleQuantityChange(1)}
+            onClick={handleIncreaseClick}
           >
             <img src={plus} alt="plus icon" style={{ userSelect: 'none' }} />
           </button>
         </div>
 
-        <p className={styles.item_price}>
-          ${item.product.priceDiscount * item.quantity}
-        </p>
+        <p className={styles.item_price}>${product.priceDiscount * quantity}</p>
       </div>
     </div>
   );

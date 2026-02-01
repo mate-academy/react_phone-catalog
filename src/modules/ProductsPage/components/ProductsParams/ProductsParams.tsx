@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { Dropdown } from '../../../../components/Dropdown';
+import { Dropdown, ResetParam } from '../../../../components/Dropdown';
 import { Loader } from '../../../../components/Loader/Loader';
 import {
   PER_PAGE_PARAMS,
@@ -99,6 +99,16 @@ export const ProductsParams = () => {
     +perPageParam > 0 &&
     preparedProducts.length > 0;
 
+  const resetParams = useMemo(() => {
+    const params: ResetParam[] = [];
+
+    if (pageParam && +pageParam > 1) {
+      params.push({ name: 'page', defaultValue: '1' });
+    }
+
+    return params;
+  }, [pageParam]);
+
   return (
     <div className={styles.products_params}>
       <h2 className={styles.title}>
@@ -116,7 +126,8 @@ export const ProductsParams = () => {
           <Dropdown
             items={SORT_PARAMS}
             defaultValue={SORT_PARAMS.age}
-            searchParamNames={{ main: 'sort' }}
+            searchParamsConfig={{ main: 'sort' }}
+            resetParams={resetParams}
           />
         </div>
 
@@ -125,7 +136,10 @@ export const ProductsParams = () => {
           <Dropdown
             items={PER_PAGE_PARAMS}
             defaultValue={PER_PAGE_PARAMS.all}
-            searchParamNames={{ main: 'perPage', additional: 'page' }}
+            searchParamsConfig={{
+              main: 'perPage',
+              additional: { name: 'page', defaultValue: '1' },
+            }}
           />
         </div>
       </div>

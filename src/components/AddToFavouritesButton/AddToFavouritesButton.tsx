@@ -16,23 +16,19 @@ export const AddToFavouritesButton: React.FC<Props> = ({ product }) => {
 
   const isInFavourites = items.some(item => item.itemId === product.itemId);
 
-  const handleProductAdd = () => {
-    dispatch(favouritesSlice.actions.addProduct(product));
-  };
-
-  const handleProductRemove = (id: string) => {
-    dispatch(favouritesSlice.actions.removeProduct({ id }));
+  const handleToggleFavourite = () => {
+    if (isInFavourites) {
+      dispatch(favouritesSlice.actions.removeProduct({ id: product.itemId }));
+    } else {
+      dispatch(favouritesSlice.actions.addProduct(product));
+    }
   };
 
   return (
     <button
       type="button"
       className={styles.add_to_fav_button}
-      onClick={() =>
-        isInFavourites
-          ? handleProductRemove(product.itemId)
-          : handleProductAdd()
-      }
+      onClick={handleToggleFavourite}
     >
       {isInFavourites ? (
         <img src={filledHeart} alt="filled heart" className={styles.heart} />
