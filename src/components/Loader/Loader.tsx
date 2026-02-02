@@ -5,14 +5,9 @@ import styles from './Loader.module.scss';
 type Props = {
   className?: string;
   size?: number;
-  ariaLabel?: string;
 };
 
-export const Loader = ({
-  className,
-  size = 80,
-  ariaLabel = 'Loading',
-}: Props) => {
+export const Loader = ({ className, size = 80 }: Props) => {
   return (
     <div className={classNames(styles.loader, className)}>
       <Oval
@@ -22,7 +17,6 @@ export const Loader = ({
         secondaryColor="rgba(0, 0, 0, 0.2)"
         strokeWidth={4}
         strokeWidthSecondary={4}
-        ariaLabel={ariaLabel}
         visible
       />
     </div>

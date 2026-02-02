@@ -23,6 +23,7 @@ const ua = {
     favoritesAlt: 'Обране',
     cartAlt: 'Кошик',
     menuAlt: 'Меню',
+    language: 'Мова',
   },
   footer: {
     github: 'GitHub',

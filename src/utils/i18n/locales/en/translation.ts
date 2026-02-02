@@ -19,6 +19,7 @@ const en = {
     favoritesAlt: 'Favorites',
     cartAlt: 'Cart',
     menuAlt: 'Menu',
+    language: 'Language',
   },
   footer: {
     github: 'Github',

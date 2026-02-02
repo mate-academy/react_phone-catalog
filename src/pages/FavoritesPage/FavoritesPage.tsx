@@ -21,7 +21,9 @@ export const FavoritesPage = () => {
               alt={t('icons.arrowRightAlt')}
             />
           </span>
-          <span className={styles.currentCrumb}>{t('favoritesPage.crumb')}</span>
+          <span className={styles.currentCrumb}>
+            {t('favoritesPage.crumb')}
+          </span>
         </div>
 
         <h1 className={styles.title}>{t('favoritesPage.title')}</h1>

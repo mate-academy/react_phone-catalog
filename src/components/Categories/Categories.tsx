@@ -39,11 +39,7 @@ export const Categories = () => {
         ].map(({ titleKey, amount, img, link }) => (
           <Link to={`/${link}`} key={link} className={styles.card}>
             <div className={`${styles.imageContainer} ${styles[link]}`}>
-              <img
-                src={img}
-                alt={t(titleKey)}
-                className={styles.image}
-              />
+              <img src={img} alt={t(titleKey)} className={styles.image} />
             </div>
             <h4 className={styles.cardTitle}>{t(titleKey)}</h4>
             <p className={styles.modelsCount}>

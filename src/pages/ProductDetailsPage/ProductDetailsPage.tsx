@@ -217,7 +217,6 @@ export const ProductDetailsPage: React.FC = () => {
             type="button"
             className={styles.mainImage}
             onClick={() => setIsLightboxOpen(true)}
-            aria-label={t('product.openGallery')}
           >
             <img
               key={selectedImage}
@@ -317,7 +316,9 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.specs}>
             <div className={styles.specRow}>
-              <span className={styles.specLabel}>{t('product.specs.screen')}</span>
+              <span className={styles.specLabel}>
+                {t('product.specs.screen')}
+              </span>
               <span className={styles.specValue}>{product.screen}</span>
             </div>
             <div className={styles.specRow}>
@@ -363,7 +364,9 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.techSpecsList}>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>{t('product.specs.screen')}</span>
+              <span className={styles.techSpecLabel}>
+                {t('product.specs.screen')}
+              </span>
               <span className={styles.techSpecValue}>{product.screen}</span>
             </div>
             <div className={styles.techSpecRow}>
@@ -379,7 +382,9 @@ export const ProductDetailsPage: React.FC = () => {
               <span className={styles.techSpecValue}>{product.processor}</span>
             </div>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>{t('product.specs.ram')}</span>
+              <span className={styles.techSpecLabel}>
+                {t('product.specs.ram')}
+              </span>
               <span className={styles.techSpecValue}>{product.ram}</span>
             </div>
             <div className={styles.techSpecRow}>
@@ -405,7 +410,9 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             )}
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>{t('product.specs.cell')}</span>
+              <span className={styles.techSpecLabel}>
+                {t('product.specs.cell')}
+              </span>
               <span className={styles.techSpecValue}>
                 {product.cell.join(', ')}
               </span>
@@ -414,10 +421,7 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       </div>
 
-      <SuggestedProductsSlider
-        category={category}
-        excludeId={product.id}
-      />
+      <SuggestedProductsSlider category={category} excludeId={product.id} />
     </div>
   );
 };

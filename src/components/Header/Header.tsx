@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useFavorites } from '../../context';
 import { useCart } from '../../context';
+import { LanguageSelect } from '../LanguageSelect';
 import styles from './Header.module.scss';
 
 const navItems = [
@@ -13,9 +14,10 @@ const navItems = [
 ];
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { favorites } = useFavorites();
   const { totalItems } = useCart();
+  const language = i18n.language === 'en' ? 'en' : 'ua';
 
   return (
     <header className={styles.header}>
@@ -39,28 +41,35 @@ export const Header = () => {
         </nav>
 
         <div className={styles.actions}>
+          <div className={styles.language}>
+            <LanguageSelect
+              value={language}
+              onChange={next => i18n.changeLanguage(next)}
+            />
+          </div>
+
           <NavLink
             to="/favorites"
-              className={({ isActive }) =>
-                classNames(styles.action, { [styles.isActive]: isActive })
-              }
-            >
-              <img src="/img/heart.svg" alt={t('header.favoritesAlt')} />
-              {favorites.length > 0 && (
-                <span className={styles.badge}>{favorites.length}</span>
-              )}
-            </NavLink>
+            className={({ isActive }) =>
+              classNames(styles.action, { [styles.isActive]: isActive })
+            }
+          >
+            <img src="/img/heart.svg" alt={t('header.favoritesAlt')} />
+            {favorites.length > 0 && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
+          </NavLink>
           <NavLink
             to="/cart"
-              className={({ isActive }) =>
-                classNames(styles.action, { [styles.isActive]: isActive })
-              }
-            >
-              <img src="/img/shopping_cart.svg" alt={t('header.cartAlt')} />
-              {totalItems > 0 && (
-                <span className={styles.badge}>{totalItems}</span>
-              )}
-            </NavLink>
+            className={({ isActive }) =>
+              classNames(styles.action, { [styles.isActive]: isActive })
+            }
+          >
+            <img src="/img/shopping_cart.svg" alt={t('header.cartAlt')} />
+            {totalItems > 0 && (
+              <span className={styles.badge}>{totalItems}</span>
+            )}
+          </NavLink>
         </div>
 
         <button className={styles.burger} type="button">
