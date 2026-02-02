@@ -189,8 +189,8 @@ export const CardItem = () => {
                   })}
                 </ul>
               </div>
-              <div className="body-card__price  card__price">
-                <div className="card__price-block">
+              <div className="body-card__price  ">
+                <div className="card__price-block card__price">
                   <span className="card__price--sale">
                     ${singleProduct.priceDiscount}
                   </span>

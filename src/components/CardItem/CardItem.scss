@@ -249,7 +249,12 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
     row-gap: 8px;
   }
 
-
+  &__price {
+    padding-block: 32px;
+    row-gap: 16px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .separator {
@@ -267,10 +272,7 @@ $colors: 'yellow', 'white', 'starlight', 'spacegray', 'spaceblack', 'space-gray'
 }
 
 .card__price {
-  // padding-block: 32px;
-  display: flex;
-  // flex-direction: column;
-  row-gap: 16px;
+
 
   &-block {
     display: flex;
