@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Price } from '@modules/shared/components/Price/';
 import { CartItem, useCart } from '@modules/shared/components/Context/';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,11 @@ export const CartElement: React.FC<Props> = ({ data }) => {
   const navigate = useNavigate();
   const [totalPrice, setTotalPrice] = useState(
     data.amount * data.product.price,
+  );
+
+  const toProduct = useCallback(
+    () => navigate(`/${data.product.category}/${data.product.itemId}`),
+    [data.product.category, data.product.itemId, navigate],
   );
 
   const changingAmount = (elem: CartItem, operation: Operations) => {
@@ -75,13 +80,12 @@ export const CartElement: React.FC<Props> = ({ data }) => {
         alt={data.product.name}
         className="cartElement__photo"
         style={{ gridArea: 'box-2' }}
-        onClick={() =>
-          navigate(`/${data.product.category}/${data.product.itemId}`)
-        }
+        onClick={toProduct}
       />
       <h4
         className="cartElement__text cartElement__name"
         style={{ gridArea: 'box-3' }}
+        onClick={toProduct}
       >
         {data.product.name}
       </h4>

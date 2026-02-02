@@ -47,6 +47,7 @@
   }
 
   &__name {
+    cursor: pointer;
     width: 128px;
 
     @include on-tablet {
