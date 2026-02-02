@@ -48,7 +48,6 @@ export const Footer: React.FC = () => {
                 src="img/buttons/shopping_bag_button.svg"
                 alt="shopping bag button"
               />
-
               {cartCount > 0 && (
                 <span className={style.badge}>{cartCount}</span>
               )}
