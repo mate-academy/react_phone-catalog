@@ -18,18 +18,6 @@ export const FavoritesPage: React.FC = () => {
     </div>
   );
 
-  if (!favorites.length) {
-    return (
-      <section className={styles.favorites}>
-        <div className="container">
-          {breadcrumb}
-          <h2 className={styles.title}>Favorites</h2>
-          <p>No favorites yet.</p>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className={styles.favorites}>
       <div className="container">

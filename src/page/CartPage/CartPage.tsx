@@ -6,6 +6,7 @@ import arrowLeft from './../../img/icons/Chevron Arrow Left.svg';
 
 export const CartPage = () => {
   const { items, totalPrice } = useCart();
+  const totalCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div className="container">
@@ -25,7 +26,7 @@ export const CartPage = () => {
 
         <aside className={styles.summary}>
           <h2 className={styles.total}>${totalPrice}</h2>
-          <p className={styles.subtitle}>Total for {items.length} items</p>
+          <p className={styles.subtitle}>Total for {totalCount} items</p>
 
           <button className={styles.checkout}>Checkout</button>
         </aside>

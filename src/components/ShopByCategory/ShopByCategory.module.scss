@@ -23,6 +23,11 @@
   margin-bottom: 24px;
 }
 
+.images:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
 .cards>.card:nth-child(1) .images {
   background-color: #6D6474;
 }
@@ -39,6 +44,7 @@
   width: 368px;
   height: 368px;
 }
+
 
 .subTitle {
   font-weight: 600;

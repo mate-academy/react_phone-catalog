@@ -1,6 +1,6 @@
 .cartItem {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
   align-items: center;
   column-gap: 24px;
   border: 1px solid #E2E6E9;
@@ -15,6 +15,15 @@
   color: #999;
 }
 
+.productLink {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  color: inherit;
+}
+
 .image {
   width: 66px;
 }
@@ -22,6 +31,7 @@
 .name {
   font-size: 16px;
   font-weight: 600;
+  flex: 1;
 }
 
 .counter {

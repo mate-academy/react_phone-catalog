@@ -2,6 +2,7 @@ import styles from './CardItem.module.scss';
 import { CartItem as Item } from '../../types/CartItem';
 import { useCart } from '../../CartContext';
 import { getImageUrl } from '../../utils/getImgUrl';
+import { Link } from 'react-router-dom';
 
 type Props = {
   item: Item;
@@ -17,14 +18,15 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       <button className={styles.remove} onClick={() => removeFromCart(item.id)}>
         ×
       </button>
+      <Link to={`/product/${item.id}`} className={styles.productLink}>
+        <img
+          src={getImageUrl(item.image)}
+          alt={item.name}
+          className={styles.image}
+        />
 
-      <img
-        src={getImageUrl(item.image)}
-        alt={item.name}
-        className={styles.image}
-      />
-
-      <p className={styles.name}>{item.name}</p>
+        <p className={styles.name}>{item.name}</p>
+      </Link>
 
       <div className={styles.counter}>
         <button

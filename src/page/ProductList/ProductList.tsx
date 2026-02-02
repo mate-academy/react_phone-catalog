@@ -8,30 +8,39 @@ import arrowLeftDisabled from './../../img/icons/Chevron Arrow Left dis.svg';
 import arrowRight from './../../img/icons/Chevron Arrow Right.svg';
 import arrowRightDisabled from './../../img/icons/Chevron Arrow Right dis.svg';
 import homeImg from './../../img/icons/Home.svg';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 type Props = {
   category: Product['category'];
-  itemsPerPage?: number;
   title: string;
   pageName: string;
 };
 
 type SortType = 'newest' | 'alphabetical' | 'cheapest';
 
-export const ProductList: React.FC<Props> = ({
-  category,
-  title = '',
-  pageName = '',
-}) => {
+export const ProductList: React.FC<Props> = ({ category, title, pageName }) => {
   const items = products.filter(product => product.category === category);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<SortType>('newest');
-  const [itemsPerPageState, setItemsPerPageState] = useState<number | 'all'>(
-    16,
-  );
+
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const sortBy = (searchParams.get('sort') as SortType) || 'newest';
+
+  const itemsPerPageState =
+    searchParams.get('limit') === 'all'
+      ? 'all'
+      : Number(searchParams.get('limit')) || 16;
+
+  const updateParams = (params: Record<string, string>) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    Object.entries(params).forEach(([key, value]) => {
+      newParams.set(key, value);
+    });
+
+    setSearchParams(newParams);
+  };
 
   const sortedItems = [...items].sort((a, b) => {
     switch (sortBy) {
@@ -62,11 +71,15 @@ export const ProductList: React.FC<Props> = ({
   }, [currentPage]);
 
   const handleNext = () => {
-    setCurrentPage(prev => (prev < totalPages ? prev + 1 : prev));
+    if (currentPage < totalPages) {
+      updateParams({ page: String(currentPage + 1) });
+    }
   };
 
   const handlePrev = () => {
-    setCurrentPage(prev => (prev > 1 ? prev - 1 : prev));
+    if (currentPage > 1) {
+      updateParams({ page: String(currentPage - 1) });
+    }
   };
 
   const toggleFavorite = (itemId: string) => {
@@ -103,11 +116,13 @@ export const ProductList: React.FC<Props> = ({
             <h2>Sort by</h2>
             <select
               value={sortBy}
-              onChange={e => {
-                setSortBy(e.target.value as SortType);
-                setCurrentPage(1);
-              }}
               className={styles.sortBy}
+              onChange={e =>
+                updateParams({
+                  sort: e.target.value,
+                  page: '1',
+                })
+              }
             >
               <option value="newest">Newest</option>
               <option value="alphabetical">Alphabetically</option>
@@ -120,18 +135,17 @@ export const ProductList: React.FC<Props> = ({
             <select
               value={itemsPerPageState}
               className={styles.sortItems}
-              onChange={e => {
-                const value =
-                  e.target.value === 'all' ? 'all' : Number(e.target.value);
-
-                setItemsPerPageState(value);
-                setCurrentPage(1);
-              }}
+              onChange={e =>
+                updateParams({
+                  limit: e.target.value,
+                  page: '1',
+                })
+              }
             >
               <option value="all">All</option>
-              <option value={4}>4</option>
-              <option value={8}>8</option>
-              <option value={16}>16</option>
+              <option value="4">4</option>
+              <option value="8">8</option>
+              <option value="16">16</option>
             </select>
           </div>
         </div>
@@ -166,7 +180,6 @@ export const ProductList: React.FC<Props> = ({
               <img
                 src={currentPage === 1 ? arrowLeftDisabled : arrowLeft}
                 alt=""
-                className={styles.arrow}
               />
             </button>
 
@@ -177,7 +190,7 @@ export const ProductList: React.FC<Props> = ({
               return (
                 <button
                   key={page}
-                  onClick={() => setCurrentPage(page)}
+                  onClick={() => updateParams({ page: String(page) })}
                   className={`${styles.btn} ${isActive ? styles.active : ''}`}
                   disabled={isActive}
                 >
@@ -196,7 +209,6 @@ export const ProductList: React.FC<Props> = ({
                   currentPage === totalPages ? arrowRightDisabled : arrowRight
                 }
                 alt=""
-                className={styles.arrow}
               />
             </button>
           </div>
