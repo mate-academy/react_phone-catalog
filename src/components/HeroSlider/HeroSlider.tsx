@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -25,6 +26,7 @@ const slides = [
 ];
 
 export const HeroSlider = () => {
+  const { t } = useTranslation();
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -72,7 +74,7 @@ export const HeroSlider = () => {
 
   return (
     <div className={styles.sliderContainer}>
-      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.title}>{t('hero.title')}</h1>
 
       <div className={styles.sliderWrapper}>
         <div className={styles.navigation}>
@@ -81,7 +83,7 @@ export const HeroSlider = () => {
             className={styles.navButton}
             onClick={handlePrev}
           >
-            <img src="/img/arrow_left.svg" alt="Arrow left" />
+            <img src="/img/arrow_left.svg" alt={t('hero.prevAlt')} />
           </button>
         </div>
 
@@ -99,19 +101,21 @@ export const HeroSlider = () => {
                 <div className={styles.slideLeft}>
                   <div className={styles.textContent}>
                     <h2 className={styles.slideTitle}>
-                      Now available in our store!
+                      {t('hero.slideTitle')}
                       <span className={styles.emoji}></span>
                     </h2>
-                    <p className={styles.slideSubtitle}>Be the first!</p>
+                    <p className={styles.slideSubtitle}>
+                      {t('hero.slideSubtitle')}
+                    </p>
                     <a href="#" className={styles.orderButton}>
-                      Order now
+                      {t('hero.orderNow')}
                     </a>
                   </div>
                 </div>
                 <div className={styles.slideRight}>
                   <img
                     src={slide.image}
-                    alt="Product"
+                    alt={t('hero.productAlt')}
                     className={styles.slideImage}
                   />
                 </div>
@@ -126,7 +130,7 @@ export const HeroSlider = () => {
             className={styles.navButton}
             onClick={handleNext}
           >
-            <img src="/img/arrow_right.svg" alt="Arrow right" />
+            <img src="/img/arrow_right.svg" alt={t('hero.nextAlt')} />
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
 import { Phone } from '../../types/Phone';
 import { useFavorites } from '../../context/FavoritesContext';
@@ -15,6 +16,7 @@ export const ProductCard: React.FC<Props> = ({
   phone,
   showRegularPriceOnly = false,
 }) => {
+  const { t } = useTranslation();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const { cartItems, addToCart } = useCart();
   const {
@@ -75,15 +77,15 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={styles.specs}>
         <div className={styles.specRow}>
-          <span className={styles.specName}>Screen</span>
+          <span className={styles.specName}>{t('product.specs.screen')}</span>
           <span className={styles.specValue}>{screenDisplay}</span>
         </div>
         <div className={styles.specRow}>
-          <span className={styles.specName}>Capacity</span>
+          <span className={styles.specName}>{t('product.specs.capacity')}</span>
           <span className={styles.specValue}>{capacity}</span>
         </div>
         <div className={styles.specRow}>
-          <span className={styles.specName}>RAM</span>
+          <span className={styles.specName}>{t('product.specs.ram')}</span>
           <span className={styles.specValue}>{ram}</span>
         </div>
       </div>
@@ -97,7 +99,7 @@ export const ProductCard: React.FC<Props> = ({
           onClick={handleAddToCartClick}
           disabled={isInCart}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? t('common.addedToCart') : t('common.addToCart')}
         </button>
         <button
           type="button"
@@ -106,7 +108,7 @@ export const ProductCard: React.FC<Props> = ({
         >
           <img
             src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}
-            alt="Heart"
+            alt={t('icons.heartAlt')}
           />
         </button>
       </div>

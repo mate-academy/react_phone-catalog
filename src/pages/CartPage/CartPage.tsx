@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { CartItem } from '../../components/CartItem';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     cartItems,
@@ -27,14 +29,14 @@ export const CartPage = () => {
           onClick={() => navigate(-1)}
           className={styles.backButton}
         >
-          <img src="/img/arrow_left.svg" alt="Back" />
-          Back
+          <img src="/img/arrow_left.svg" alt={t('icons.backAlt')} />
+          {t('common.back')}
         </button>
 
-        <h1 className={styles.title}>Cart</h1>
+        <h1 className={styles.title}>{t('cartPage.title')}</h1>
 
         {cartItems.length === 0 ? (
-          <p className={styles.empty}>Your cart is empty</p>
+          <p className={styles.empty}>{t('cartPage.empty')}</p>
         ) : (
           <div className={styles.content}>
             <div className={styles.items}>
@@ -53,11 +55,11 @@ export const CartPage = () => {
             <div className={styles.summary}>
               <div className={styles.totalPrice}>${totalPrice}</div>
               <div className={styles.totalItems}>
-                Total for {totalItems} items
+                {t('cartPage.totalFor', { count: totalItems })}
               </div>
               <div className={styles.divider} />
               <button type="button" className={styles.checkout}>
-                Checkout
+                {t('cartPage.checkout')}
               </button>
             </div>
           </div>

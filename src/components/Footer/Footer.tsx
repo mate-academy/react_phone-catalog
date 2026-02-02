@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   const handleBackToTop = () => {
     window.scrollTo({
       top: 0,
@@ -13,7 +16,7 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <a href="/" className={styles.logo}>
-          <img src="/img/Logo.svg" alt="Nice Gadgets" />
+          <img src="/img/Logo.svg" alt={t('header.logoAlt')} />
         </a>
 
         <nav className={styles.nav}>
@@ -23,20 +26,20 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.link}
           >
-            Github
+            {t('footer.github')}
           </a>
           <a href="#" className={styles.link}>
-            Contacts
+            {t('footer.contacts')}
           </a>
           <a href="#" className={styles.link}>
-            Rights
+            {t('footer.rights')}
           </a>
         </nav>
 
         <div className={styles.backToTop} onClick={handleBackToTop}>
-          <span>Back to top</span>
+          <span>{t('footer.backToTop')}</span>
           <button type="button">
-            <img src="/img/arrow_right.svg" alt="Back to top" />
+            <img src="/img/arrow_right.svg" alt={t('footer.backToTop')} />
           </button>
         </div>
       </div>

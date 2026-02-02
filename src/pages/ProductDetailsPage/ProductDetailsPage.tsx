@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './ProductDetailsPage.module.scss';
 import { Phone } from '../../types/Phone';
 import { Product } from '../../types/Product';
@@ -18,6 +19,7 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/styles.css';
 
 export const ProductDetailsPage: React.FC = () => {
+  const { t } = useTranslation();
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
@@ -153,8 +155,10 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (error || !product) {
-    return <NotFoundPage title="Product was not found" />;
+    return <NotFoundPage title={t('product.notFound')} />;
   }
+
+  const category = product.category as 'phones' | 'tablets' | 'accessories';
 
   return (
     <div className={styles.container}>
@@ -162,21 +166,29 @@ export const ProductDetailsPage: React.FC = () => {
         <Link to="/" className={styles.breadcrumbLink}>
           <img
             src="/img/Home_breadcrumb.svg"
-            alt="Home"
+            alt={t('icons.homeAlt')}
             className={styles.homeIcon}
           />
         </Link>
-        <img src="/img/arrow_right_gray.svg" alt=">" className={styles.arrow} />
-        <Link to={`/${product.category}`} className={styles.breadcrumbLink}>
-          {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+        <img
+          src="/img/arrow_right_gray.svg"
+          alt={t('icons.arrowRightAlt')}
+          className={styles.arrow}
+        />
+        <Link to={`/${category}`} className={styles.breadcrumbLink}>
+          {t(`nav.${category}`)}
         </Link>
-        <img src="/img/arrow_right_gray.svg" alt=">" className={styles.arrow} />
+        <img
+          src="/img/arrow_right_gray.svg"
+          alt={t('icons.arrowRightAlt')}
+          className={styles.arrow}
+        />
         <span className={styles.breadcrumbCurrent}>{product.name}</span>
       </div>
 
       <button onClick={() => navigate(-1)} className={styles.backButton}>
-        <img src="/img/arrow_left.svg" alt="Back" />
-        Back
+        <img src="/img/arrow_left.svg" alt={t('icons.backAlt')} />
+        {t('common.back')}
       </button>
 
       <h1 className={styles.title}>{product.name}</h1>
@@ -205,7 +217,7 @@ export const ProductDetailsPage: React.FC = () => {
             type="button"
             className={styles.mainImage}
             onClick={() => setIsLightboxOpen(true)}
-            aria-label="Open image gallery"
+            aria-label={t('product.openGallery')}
           >
             <img
               key={selectedImage}
@@ -235,8 +247,10 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className={styles.options}>
           <div className={styles.optionSection}>
-            <p className={styles.optionLabel}>Available colors</p>
-            <p className={styles.productId}>ID: {productInfo?.id}</p>
+            <p className={styles.optionLabel}>{t('product.availableColors')}</p>
+            <p className={styles.productId}>
+              {t('product.id', { id: productInfo?.id })}
+            </p>
           </div>
 
           <div className={styles.colors}>
@@ -255,7 +269,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className={styles.divider} />
 
           <div className={styles.optionSection}>
-            <p className={styles.optionLabel}>Select capacity</p>
+            <p className={styles.optionLabel}>{t('product.selectCapacity')}</p>
           </div>
 
           <div className={styles.capacities}>
@@ -290,12 +304,12 @@ export const ProductDetailsPage: React.FC = () => {
                 onClick={handleAddToCartClick}
                 disabled={isInCart}
               >
-                {isInCart ? 'Added to cart' : 'Add to cart'}
+                {isInCart ? t('common.addedToCart') : t('common.addToCart')}
               </button>
               <button className={styles.favorite} onClick={handleFavoriteClick}>
                 <img
                   src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}
-                  alt="Favorite"
+                  alt={t('product.favoriteAlt')}
                 />
               </button>
             </div>
@@ -303,19 +317,23 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.specs}>
             <div className={styles.specRow}>
-              <span className={styles.specLabel}>Screen</span>
+              <span className={styles.specLabel}>{t('product.specs.screen')}</span>
               <span className={styles.specValue}>{product.screen}</span>
             </div>
             <div className={styles.specRow}>
-              <span className={styles.specLabel}>Resolution</span>
+              <span className={styles.specLabel}>
+                {t('product.specs.resolution')}
+              </span>
               <span className={styles.specValue}>{product.resolution}</span>
             </div>
             <div className={styles.specRow}>
-              <span className={styles.specLabel}>Processor</span>
+              <span className={styles.specLabel}>
+                {t('product.specs.processor')}
+              </span>
               <span className={styles.specValue}>{product.processor}</span>
             </div>
             <div className={styles.specRow}>
-              <span className={styles.specLabel}>RAM</span>
+              <span className={styles.specLabel}>{t('product.specs.ram')}</span>
               <span className={styles.specValue}>{product.ram}</span>
             </div>
           </div>
@@ -324,7 +342,7 @@ export const ProductDetailsPage: React.FC = () => {
 
       <div className={styles.details}>
         <div className={styles.about}>
-          <h2 className={styles.sectionTitle}>About</h2>
+          <h2 className={styles.sectionTitle}>{t('product.about')}</h2>
           <div className={styles.divider} />
 
           {product.description.map((section, index) => (
@@ -340,44 +358,54 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
 
         <div className={styles.techSpecs}>
-          <h2 className={styles.sectionTitle}>Tech specs</h2>
+          <h2 className={styles.sectionTitle}>{t('product.techSpecs')}</h2>
           <div className={styles.divider} />
 
           <div className={styles.techSpecsList}>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>Screen</span>
+              <span className={styles.techSpecLabel}>{t('product.specs.screen')}</span>
               <span className={styles.techSpecValue}>{product.screen}</span>
             </div>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>Resolution</span>
+              <span className={styles.techSpecLabel}>
+                {t('product.specs.resolution')}
+              </span>
               <span className={styles.techSpecValue}>{product.resolution}</span>
             </div>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>Processor</span>
+              <span className={styles.techSpecLabel}>
+                {t('product.specs.processor')}
+              </span>
               <span className={styles.techSpecValue}>{product.processor}</span>
             </div>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>RAM</span>
+              <span className={styles.techSpecLabel}>{t('product.specs.ram')}</span>
               <span className={styles.techSpecValue}>{product.ram}</span>
             </div>
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>Built in memory</span>
+              <span className={styles.techSpecLabel}>
+                {t('product.specs.builtInMemory')}
+              </span>
               <span className={styles.techSpecValue}>{product.capacity}</span>
             </div>
             {product.camera && (
               <div className={styles.techSpecRow}>
-                <span className={styles.techSpecLabel}>Camera</span>
+                <span className={styles.techSpecLabel}>
+                  {t('product.specs.camera')}
+                </span>
                 <span className={styles.techSpecValue}>{product.camera}</span>
               </div>
             )}
             {product.zoom && (
               <div className={styles.techSpecRow}>
-                <span className={styles.techSpecLabel}>Zoom</span>
+                <span className={styles.techSpecLabel}>
+                  {t('product.specs.zoom')}
+                </span>
                 <span className={styles.techSpecValue}>{product.zoom}</span>
               </div>
             )}
             <div className={styles.techSpecRow}>
-              <span className={styles.techSpecLabel}>Cell</span>
+              <span className={styles.techSpecLabel}>{t('product.specs.cell')}</span>
               <span className={styles.techSpecValue}>
                 {product.cell.join(', ')}
               </span>
@@ -387,7 +415,7 @@ export const ProductDetailsPage: React.FC = () => {
       </div>
 
       <SuggestedProductsSlider
-        category={product.category as 'phones' | 'tablets' | 'accessories'}
+        category={category}
         excludeId={product.id}
       />
     </div>

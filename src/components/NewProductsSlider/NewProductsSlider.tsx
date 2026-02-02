@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './NewProductsSlider.scss';
@@ -9,27 +10,28 @@ import { Loader } from '../Loader';
 import { useNewProductsSlider } from './hooks/useNewProductsSlider';
 
 export const NewProductsSlider = () => {
+  const { t } = useTranslation();
   const { phones, isLoading, setSwiperInstance, handlePrev, handleNext } =
     useNewProductsSlider();
 
   return (
     <section className={`${styles.section} NewProductsSlider`}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Brand new models</h2>
+        <h2 className={styles.title}>{t('sliders.newModels')}</h2>
         <div className={styles.navigation}>
           <button
             type="button"
             className={styles.navButton}
             onClick={handlePrev}
           >
-            <img src="/img/arrow_left.svg" alt="Left" />
+            <img src="/img/arrow_left.svg" alt={t('sliders.leftAlt')} />
           </button>
           <button
             type="button"
             className={styles.navButton}
             onClick={handleNext}
           >
-            <img src="/img/arrow_right.svg" alt="Right" />
+            <img src="/img/arrow_right.svg" alt={t('sliders.rightAlt')} />
           </button>
         </div>
       </div>

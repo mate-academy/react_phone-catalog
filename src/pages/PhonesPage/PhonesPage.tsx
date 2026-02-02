@@ -1,10 +1,12 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { ProductCard } from '../../components/ProductCard';
 import { Loader } from '../../components/Loader';
 import styles from './PhonesPage.module.scss';
 import { usePhonesPage } from './hooks/usePhonesPage';
 
 export const PhonesPage = () => {
+  const { t } = useTranslation();
   const {
     phones,
     visiblePhones,
@@ -24,21 +26,26 @@ export const PhonesPage = () => {
       <div className={styles.container}>
         <div className={styles.breadcrumbs}>
           <a href="/" className={styles.homeLink}>
-            <img src="/img/Home_breadcrumb.svg" alt="Home" />
+            <img src="/img/Home_breadcrumb.svg" alt={t('icons.homeAlt')} />
           </a>
           <span className={styles.arrow}>
-            <img src="/img/arrow_right_gray.svg" alt="arrow right" />
+            <img
+              src="/img/arrow_right_gray.svg"
+              alt={t('icons.arrowRightAlt')}
+            />
           </span>
-          <span className={styles.currentCrumb}>Phones</span>
+          <span className={styles.currentCrumb}>{t('nav.phones')}</span>
         </div>
 
-        <h1 className={styles.title}>Mobile phones</h1>
-        <p className={styles.modelsCount}>{phones.length} models</p>
+        <h1 className={styles.title}>{t('phonesPage.title')}</h1>
+        <p className={styles.modelsCount}>
+          {t('common.models', { count: phones.length })}
+        </p>
 
         <div className={styles.controls}>
           <div className={styles.controlGroup}>
             <label htmlFor="sort" className={styles.label}>
-              Sort by
+              {t('catalog.sortBy')}
             </label>
             <div className={styles.selectWrapper}>
               <select
@@ -47,16 +54,16 @@ export const PhonesPage = () => {
                 onChange={handleSortChange}
                 className={styles.select}
               >
-                <option value="age">Newest</option>
-                <option value="name">Alphabetically</option>
-                <option value="price">Cheapest</option>
+                <option value="age">{t('catalog.sort.age')}</option>
+                <option value="name">{t('catalog.sort.name')}</option>
+                <option value="price">{t('catalog.sort.price')}</option>
               </select>
             </div>
           </div>
 
           <div className={styles.controlGroup}>
             <label htmlFor="perPage" className={styles.label}>
-              Items on page
+              {t('catalog.itemsOnPage')}
             </label>
             <div className={styles.selectWrapper}>
               <select
@@ -68,7 +75,7 @@ export const PhonesPage = () => {
                 <option value="4">4</option>
                 <option value="8">8</option>
                 <option value="16">16</option>
-                <option value="all">All</option>
+                <option value="all">{t('catalog.perPageAll')}</option>
               </select>
             </div>
           </div>
@@ -77,7 +84,7 @@ export const PhonesPage = () => {
         {isLoading ? (
           <Loader />
         ) : phones.length === 0 ? (
-          <p className={styles.emptyMessage}>There are no phones yet</p>
+          <p className={styles.emptyMessage}>{t('catalog.empty.phones')}</p>
         ) : (
           <div key={page} className={styles.grid}>
             {visiblePhones.map(phone => (
