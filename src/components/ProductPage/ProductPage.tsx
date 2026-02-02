@@ -92,10 +92,9 @@ export const ProductPage = () => {
     itemId: String(product.itemId),
     category: product.category,
     name: product.name,
-    price: product.price,
-    priceDiscount:
-      product.fullPrice > product.price ? product.price : undefined,
-    images: [product.image],
+    price: product.priceDiscount || product.price,
+    priceDiscount: product.priceDiscount || undefined,
+    images: [product.images[0]],
     capacity: product.capacity,
     color: product.color,
   };

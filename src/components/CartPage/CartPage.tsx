@@ -42,12 +42,13 @@ export const CartPage = () => {
         <div className="cartPage__main">
           <div className="cartPage__items">
             {items.map(item => {
-              const product = item.product;
-
+              const { product } = item;
               const image = product.images[0];
-
-              const price = product.priceDiscount ?? product.price;
-
+              const currentPrice = Number(product.priceDiscount || product.price || 0);
+              const itemTotalPrice = currentPrice * item.quantity;
+              const imagePath = product.images && product.images.length > 0
+                ? product.images[0]
+                : 'img/default-product.png';
               return (
                 <div className="cartPage__item" key={item.id}>
                   <button
@@ -63,7 +64,7 @@ export const CartPage = () => {
                   >
                     {image && (
                       <div className="cartPage__itemImage">
-                        <img src={image} alt={product.name} />
+                        <img src={imagePath} alt={product.name} />
                       </div>
                     )}
 
@@ -89,7 +90,7 @@ export const CartPage = () => {
                   </div>
 
                   <div className="cartPage__itemPrice">
-                    ${price * item.quantity}
+                    ${itemTotalPrice}
                   </div>
                 </div>
               );
