@@ -60,6 +60,7 @@
   }
 
   &__photo {
+    cursor: pointer;
     height: 80px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
