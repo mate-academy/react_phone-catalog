@@ -25,6 +25,10 @@
   margin-bottom: 32px;
 }
 
+.thanks {
+  grid-column: 1 / -1;
+}
+
 .content {
   grid-column: 1 / 25;
   display: grid;
@@ -72,6 +76,32 @@
   letter-spacing: 0;
   cursor: pointer;
   background-color: #313237;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 @media (max-width: 1200px) {
