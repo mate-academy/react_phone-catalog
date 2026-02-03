@@ -83,6 +83,12 @@ const en = {
     totalFor_one: 'Total for {{count}} item',
     totalFor_other: 'Total for {{count}} items',
     checkout: 'Checkout',
+    checkoutModal: {
+      message:
+        'Checkout is not implemented yet. Do you want to clear the Cart?',
+      confirm: 'Confirm',
+      cancel: 'Cancel',
+    },
   },
   notFound: {
     title: 'Page not found',

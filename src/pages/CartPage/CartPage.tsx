@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Modal from 'react-modal';
 import { CartItem } from '../../components/CartItem';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
@@ -13,13 +15,28 @@ export const CartPage = () => {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
+    clearCart,
   } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalPrice = cartItems.reduce((sum, item) => {
     const price = item.phone.priceDiscount || item.phone.priceRegular;
 
     return sum + price * item.quantity;
   }, 0);
+
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleConfirm = () => {
+    clearCart();
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className={styles.cartPage}>
@@ -58,12 +75,47 @@ export const CartPage = () => {
                 {t('cartPage.totalFor', { count: totalItems })}
               </div>
               <div className={styles.divider} />
-              <button type="button" className={styles.checkout}>
+              <button
+                type="button"
+                className={styles.checkout}
+                onClick={handleCheckout}
+              >
                 {t('cartPage.checkout')}
               </button>
             </div>
           </div>
         )}
+
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={handleCancel}
+          contentLabel="Checkout Confirmation"
+          className={styles.modal}
+          overlayClassName={styles.overlay}
+          closeTimeoutMS={200}
+        >
+          <div className={styles.modalContent}>
+            <p className={styles.modalText}>
+              {t('cartPage.checkoutModal.message')}
+            </p>
+            <div className={styles.modalButtons}>
+              <button
+                type="button"
+                className={styles.confirmButton}
+                onClick={handleConfirm}
+              >
+                {t('cartPage.checkoutModal.confirm')}
+              </button>
+              <button
+                type="button"
+                className={styles.cancelButton}
+                onClick={handleCancel}
+              >
+                {t('cartPage.checkoutModal.cancel')}
+              </button>
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );

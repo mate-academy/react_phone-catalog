@@ -89,6 +89,12 @@ const ua = {
     totalFor_many: 'Разом за {{count}} товарів',
     totalFor_other: 'Разом за {{count}} товарів',
     checkout: 'Оформити замовлення',
+    checkoutModal: {
+      message:
+        'Оформлення замовлення ще не реалізовано. Бажаєте очистити кошик?',
+      confirm: 'Підтвердити',
+      cancel: 'Скасувати',
+    },
   },
   notFound: {
     title: 'Сторінку не знайдено',

@@ -12,4 +12,5 @@ export interface CartContextType {
   removeFromCart: (phoneId: string) => void;
   increaseQuantity: (phoneId: string) => void;
   decreaseQuantity: (phoneId: string) => void;
+  clearCart: () => void;
 }
