@@ -19,8 +19,8 @@ export const ProductPage = () => {
 
   const { itemId } = useParams<{ itemId: string }>();
 
-  const product = products.find(p => String(p.id) === itemId);
-
+  const product = products.find(p => p.id === itemId);
+  const commonId = String(itemId);
   const [selectedImg, setSelectedImg] = useState<string>('');
   const [sliderIndex, setSliderIndex] = useState(0);
 
@@ -40,7 +40,6 @@ export const ProductPage = () => {
   if (!product || !itemId) {
     return <NotFoundPage />;
   }
-
   const recommended = products.filter(p => p.id !== product.id).slice(0, 10);
   const visibleCount = 4;
   const maxIndex = Math.max(recommended.length - visibleCount, 0);
@@ -75,21 +74,19 @@ export const ProductPage = () => {
       navigate(`/${newProduct.category}/${newProduct.id}`, { replace: true });
     }
   };
-
+  const productForFav: ProductBase = {
+    ...mapToProductBase(product),
+    id: commonId,
+  };
   const { toggle, isFavourite } = useFavourites();
   const { addToCart, removeFromCart, isInCart } = useCart();
 
-  const favouriteKey = `${product.id}-${product.capacity}-${product.color}`;
 
-  const productBase: ProductBase = {
-    ...mapToProductBase(product),
-    favouriteKey,
-  };
-
-  const cartKey = `${product.id}-${product.capacity}-${product.color}`;
+  const isItemFavourite = isFavourite(commonId);
+  const cartKey = commonId;
   const cartProduct: CartProduct = {
-    id: `${product.id}-${product.capacity}-${product.color}`,
-    itemId: String(product.itemId),
+    id: commonId,
+    itemId: commonId,
     category: product.category,
     name: product.name,
     price: product.priceDiscount || product.price,
@@ -98,7 +95,6 @@ export const ProductPage = () => {
     capacity: product.capacity,
     color: product.color,
   };
-
   return (
     <div className="productPage" key={product.id}>
       <div className="container">
@@ -197,10 +193,9 @@ export const ProductPage = () => {
               </button>
 
               <button
-                className={`productPage__favourites-button ${
-                  isFavourite(favouriteKey) ? 'is-active' : ''
-                }`}
-                onClick={() => toggle(productBase)}
+                type="button"
+                className={`productPage__favourites-button ${isItemFavourite ? 'is-active' : ''}`}
+                onClick={() => toggle(productForFav)}
               >
                 <span className="icon icon--favourite" />
               </button>

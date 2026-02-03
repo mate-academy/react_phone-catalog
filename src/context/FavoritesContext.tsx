@@ -36,16 +36,16 @@ export const FavouritesProvider = ({
 
   const toggle = (product: ProductBase) => {
     setItems(prev =>
-      prev.some(p => p.favouriteKey === product.favouriteKey)
-        ? prev.filter(p => p.favouriteKey !== product.favouriteKey)
+      prev.some(p => String(p.id) === String(product.id))
+        ? prev.filter(p => String(p.id) !== String(product.id))
         : [...prev, product],
     );
   };
 
 
 
-  const isFavourite = (key: string) =>
-    items.some(p => p.favouriteKey === key);
+  const isFavourite = (id: string) =>
+    items.some(p => String(p.id) === String(id));
 
   return (
     <FavouritesContext.Provider

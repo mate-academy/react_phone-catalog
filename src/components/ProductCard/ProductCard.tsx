@@ -15,10 +15,9 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggle, isFavourite } = useFavourites();
-
-  const cartKey = String(product.itemId);
+  const commonId = String(product.itemId);
   const cartProduct = {
-    id: cartKey,
+    id: commonId,
     name: product.name,
     price: product.price,
     priceDiscount:
@@ -28,16 +27,13 @@ export const ProductCard: React.FC<Props> = ({
     capacity: product.capacity,
     color: product.color ?? 'base',
     itemId: product.itemId,
-
   };
-  const favouriteKey = `${product.id}-${product.capacity ?? 'base'}-${product.color ?? 'base'}`;
-
-
-  const productWithKey: ProductBase = {
+  const isItemInCart = isInCart(commonId);
+  const isItemFavourite = isFavourite(commonId);
+  const productForFav: ProductBase = {
     ...product,
-    favouriteKey,
+    id: String(product.itemId), // Тепер id буде рядком 'apple-iphone-11'
   };
-
   return (
     <div className="card">
       <Link
@@ -81,33 +77,33 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className="card__actions" onClick={e => e.stopPropagation()}>
         <button
-          className={`card__add-to-cart-button ${isInCart(cartKey) ? 'added' : ''}`} // Використовуємо cartKey
+          className={`card__add-to-cart-button ${isItemInCart ? 'added' : ''}`}
           onClick={e => {
             e.stopPropagation();
 
-            if (isInCart(cartKey)) {
-              removeFromCart(cartKey);
+            if (isItemInCart) {
+              removeFromCart(commonId);
             } else {
               addToCart(cartProduct);
             }
           }}
         >
-          {isInCart(cartKey) ? 'Added to cart' : 'Add to cart'}
+          {isItemInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <button
           className={`card__favourites-button ${
-            isFavourite(favouriteKey) ? 'is-active' : ''
+            isItemFavourite ? 'is-active' : ''
           }`}
           onClick={e => {
             e.stopPropagation();
-            toggle(productWithKey);
+            toggle(productForFav);
           }}
         >
           <span className="icon icon--favourite">
             <img
               src={
-                isFavourite(favouriteKey)
+                isItemFavourite
                   ? 'img/favourite_checked.png'
                   : 'img/favourite_default.png'
               }

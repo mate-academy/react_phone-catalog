@@ -1,5 +1,5 @@
 export interface ProductBase {
-  id: number;
+  id: number | string;
   category: string;
   name: string;
   price: number;
