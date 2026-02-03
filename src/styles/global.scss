@@ -1,0 +1,224 @@
+@import url('./mixin.scss');
+
+* {
+    color: $Primary;
+    box-sizing: border-box;
+    font-family: Mont;
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../fonts/Mont-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../fonts/Mont-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../fonts/Mont-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: Mont;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+    grid-column: 1 / -1;
+    @include make-grid-container;
+}
+
+h1,
+.text-h1 {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    font-family: Mont;
+
+    @include on_tablet {
+        font-size: 48px;
+        line-height: 56px;
+    }
+}
+
+h2,
+.text-h2 {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+    font-family: Mont;
+
+    @include on_tablet {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+    }
+}
+
+h3,
+.text-h3 {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+    font-family: Mont;
+
+    @include on_tablet {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 31px;
+    }
+}
+
+h4,
+.text-h4 {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+
+    @include on_tablet {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
+
+span {
+    display: block;
+}
+
+.text_uppercase {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.text_button {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    cursor: pointer;
+}
+
+.text_body {
+    font-family: Mont;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+}
+
+.text_small {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+}
+
+button {
+    background-color: $White;
+    border: 1px solid $Icons;
+    cursor: pointer;
+    font-family: Mont;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    &:hover {
+        border: 1px solid $Primary;
+    }
+}
+
+.black_button {
+    font-family: Mont;
+    background-color: $Primary;
+    color: $White;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    cursor: pointer;
+    border: none;
+}
+
+.content_grid {
+    @include make-grid-container;
+}
+
+.gray {
+    color: $Secondary;
+}
+
+.layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.full_width {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1136px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    & {
+        padding: 0 16px;
+    }
+
+    @include on_tablet {
+        padding: 0 24px;
+    }
+
+    @include on_desktop {
+        padding: 0;
+        margin: 0 auto;
+    }
+}
+
+a img,
+button img {
+    transition: transform 0.3s ease;
+}
+
+a:hover img,
+button:hover img {
+    transform: scale(1.1);
+}
+
+button,
+a,
+input,
+select {
+    transition: all 0.3s ease;
+}

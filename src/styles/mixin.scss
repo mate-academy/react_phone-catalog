@@ -1,0 +1,57 @@
+@mixin on_tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on_desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desltop {
+    --columns: 24;
+  }
+}
+
+$grid-columns: 24;
+$column-width: 32px;
+$gutter: 0 16px;
+$max-content-width: 1136px; 
+$tablet-columns: 12;
+$mobile-columns: 4;
+
+@mixin make-grid-container {
+  width: 100%;
+    
+  display: grid;
+  grid-template-columns: repeat($mobile-columns, 1fr);
+  gap: $gutter;
+
+  @include on_tablet {
+    grid-template-columns: repeat($tablet-columns, 1fr);
+    gap: $gutter;
+  }
+
+  @include on_desktop {
+    max-width: $max-content-width;
+    margin-left: auto;
+    margin-right: auto;
+
+    grid-template-columns: repeat($grid-columns, $column-width);
+    gap: $gutter;
+  }
+}

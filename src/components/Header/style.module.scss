@@ -1,0 +1,165 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.header {
+    height: 48px;
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    border-bottom: 1px solid $Elements;
+
+    @include on_desktop {
+        height: 64px;
+    }
+
+    @include on_tablet {
+        gap: 24px;
+    }
+
+    &_block {
+        display: flex;
+        align-items: center;
+
+        &:nth-child(2) {
+            display: none;
+
+            @include on_tablet {
+                display: flex;
+            }
+
+        }
+
+        &:nth-child(3) {
+            flex: 1 0 0;
+            text-align: right;
+        }
+    }
+
+    &_logo {
+        width: 96px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+
+        @include on_desktop {
+            width: 128px;
+        }
+
+        &>img {
+            height: 22px;
+            width: 64px;
+
+            @include on_desktop {
+                height: 28px;
+                width: 80px;
+            }
+        }
+    }
+
+    &_tabs {
+        display: flex;
+        justify-content: space-between;
+        gap: 32px;
+        height: 100%;
+
+        @include on_desktop {
+            gap: 64px;
+        }
+
+        &>div {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+
+            &>a {
+                color: $Secondary;
+            }
+        }
+    }
+
+    &_iconBlock {
+        margin-left: auto;
+        display: flex;
+
+        &_icon {
+            height: 48px;
+            width: 48px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid $Elements;
+
+            @include on_tablet {
+                display: flex;
+            }
+
+            @include on_desktop {
+                height: 64px;
+                width: 64px;
+            }
+
+            &:nth-child(3),
+            &:nth-child(4) {
+                display: flex;
+
+                @include on_tablet {
+                    display: none;
+                }
+            }
+
+            &>a {
+                height: 16px;
+                width: 16px;
+            }
+        }
+    }
+
+    &_active {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background-color: $Primary;
+        }
+
+        &>a {
+            color: $Primary !important;
+        }
+    }
+
+    &_cartLink {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 14px;
+        width: 14px;
+    }
+
+    &_cartBadge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background-color: $Red;
+        color: $White;
+        border-radius: 50%;
+        min-width: 14px;      
+        height: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 600;
+        font-family: inherit; 
+        line-height: 1; 
+        border: 2px solid $White;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+}

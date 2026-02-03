@@ -1,0 +1,299 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.welcome {
+    grid-column: 1 / -1;
+    padding: 16px 0;
+
+    @include on_tablet {
+      padding: 32px 0;
+    }
+
+    @include on_desktop {
+      padding: 56px 0;
+    }
+  }
+
+.modelCatalog {
+  margin: 56px 0;
+
+  @include on_tablet {
+    margin: 64px 0;
+  }
+
+  @include on_desktop {
+    margin: 80px 0;
+  }
+
+
+  &_label {
+    display: flex;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &_h3 {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+
+    }
+
+    &_buttons {
+      display: flex;
+      gap: 16px;
+      margin-left: 15px;
+
+      &_arrow {
+        height: 32px;
+        width: 32px;
+        padding: 8px;
+      }
+    }
+  }
+
+  &_carousel {
+    grid-column: 1 / -1;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    &_list {
+      display: flex;
+      gap: 16px;
+
+      &_card {
+        width: 212px;
+        height: 439px;
+
+        border: 1px solid $Elements;
+        padding: 32px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1 0 auto;
+
+        scroll-snap-align: start;
+
+        @include on_tablet {
+          width: 237px;
+          height: 512px;
+        }
+
+        @include on_desktop {
+          width: 272px;
+          height: 506px;
+        }
+
+        &_image {
+          width: 148px;
+          height: 129px;
+
+          @include on_tablet {
+            width: 173px;
+            height: 202px;
+          }
+
+          @include on_desktop {
+            width: 208px;
+            height: 198px;
+          }
+
+          &>img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        &_name {
+          padding-top: 16px;
+          height: 58px;
+          width: 148px;
+          color: $Primary;
+
+          @include on_tablet {
+            width: 173px;
+          }
+
+          @include on_desktop {
+            width: 208px;
+          }
+        }
+
+        &_price {
+          height: 31px;
+          width: 51px;
+
+          &>h3 {
+            font-weight: 800;
+            font-size: 22px;
+            line-height: 140%;
+          }
+        }
+
+        &_separator {
+          width: 100%;
+          border-bottom: 1px solid #E0E0E0;
+          height: 0.1px;
+          width: 148px;
+
+          @include on_tablet {
+            width: 173px;
+          }
+
+          @include on_desktop {
+            width: 208px;
+          }
+        }
+
+        &_chars {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          height: 77px;
+          width: 148px;
+          padding: 8px 0;
+
+          @include on_tablet {
+            width: 173px;
+          }
+
+          @include on_desktop {
+            width: 208px;
+          }
+
+          &_gray {
+            color: $Secondary;
+            font-size: 12px;
+          }
+
+          &_between {
+            display: flex;
+            justify-content: space-between;
+            height: 15px;
+
+            &>span {
+              font-weight: 700;
+            }
+          }
+        }
+
+        &_buttons {
+          display: flex;
+          justify-content: space-between;
+          width: 148px;
+          height: 40px;
+
+          @include on_tablet {
+            width: 173px;
+          }
+
+          @include on_desktop {
+            width: 208px;
+          }
+
+          &_add {
+            width: 100px;
+            height: 40px;
+            padding: 9.5px;
+
+            @include on_tablet {
+              width: 125px;
+            }
+
+            @include on_desktop {
+              width: 160px;
+            }
+
+            &:hover {
+              border: none;
+            }
+          }
+
+          &_fav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            border: 1px solid $Icons;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.category {
+
+  &_label {
+    grid-column: span 4;
+    margin-bottom: 24px;
+    margin-top: 56px;
+
+    @include on_tablet {
+      margin-top: 64px;
+      grid-column: span 12;
+    }
+
+    @include on_desktop {
+      margin-top: 80px;
+      grid-column: span 24;
+    }
+  }
+
+  &_card {
+    grid-column: span 4;
+    
+    &:not(:last-child) {
+      margin-bottom: 32px;
+
+      @include on_tablet {
+        margin-bottom: 0;
+      }
+    }
+
+    @include on_desktop {
+      grid-column: span 8;
+    }
+
+    &_image {
+      min-height: 288px;
+      min-width: 288px;
+      margin-bottom: 24px;
+
+      @include on-tablet {
+        min-height: 187px;
+        min-width: 187px;
+      }
+
+      &>img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &_name {
+      margin-bottom: 4px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    &_count {
+      color: $Secondary;
+    }
+  }
+}

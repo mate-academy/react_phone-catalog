@@ -1,0 +1,79 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.icons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 24px 0px;
+    width: 100%;
+    overflow: hidden;
+
+    &>a {
+        flex-shrink: 0;
+    }
+
+    @include on_tablet {
+        margin-bottom: 40px;
+    }
+
+    &>span {
+        color: $Secondary;
+        font-weight: 600;
+    }
+
+    &_label {
+        &>span {
+            margin-top: 8px;
+            color: $Secondary;
+            margin-bottom: 32px;
+        }
+    }
+
+    &_back {
+        display: flex;
+        margin-top: 24px;
+        gap: 4px;
+        align-items: center;
+        margin-bottom: 16px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+
+        &:hover {
+            border: none !important;
+        }
+
+        @include on_tablet {
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+
+        &>span {
+            color: $Secondary;
+
+            &:hover {
+                color: $Primary;
+            }
+        }
+    }
+}
+
+.homeLink {
+    height: 16px;
+    width: 16px;
+
+    &>a {
+        height: 16px;
+        width: 16px;
+    }
+}
+
+.currentPath {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 0 1 auto;
+}

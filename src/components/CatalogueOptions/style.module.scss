@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.options {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    &_select {
+        display: flex;
+        gap: 16px;
+
+        &>&_block:first-child>select {
+            @include on_tablet {
+                width: 187px;
+            }
+        }
+
+        &_block {
+            &_variants {
+                margin-top: 4px;
+                width: 136px;
+                height: 40px;
+                border: 1px solid $Icons;
+                padding: 10px;
+
+            }
+        }
+    }
+}
+

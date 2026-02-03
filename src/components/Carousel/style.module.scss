@@ -1,0 +1,87 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.modelCatalog {
+    margin-top: 56px;
+    grid-column: 1 / -1;
+
+    @include on_tablet {
+        margin-top: 64px;
+    }
+
+    @include on_desktop {
+        margin-top: 80px;
+    }
+
+
+    &_label {
+        display: flex;
+        justify-content: space-between;
+        grid-column: 1 / -1;
+        align-items: center;
+        margin-bottom: 24px;
+
+        &_buttons {
+            display: flex;
+            gap: 16px;
+            margin-left: 15px;
+
+            &_arrow {
+                height: 32px;
+                width: 32px;
+                padding: 0;
+                border: 1px solid $Icons;
+                background: $White;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                &:hover:not(.disabled) {
+                    border-color: $Primary;
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+
+                    &:hover {
+                        border: 1px solid $Icons;
+                    }
+                }
+
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+
+    &_carousel {
+        grid-column: 1 / -1;
+        overflow: auto hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        &_list {
+            display: flex;
+            gap: 16px;
+            width: fit-content;
+
+            &>* {
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+        }
+    }
+}
