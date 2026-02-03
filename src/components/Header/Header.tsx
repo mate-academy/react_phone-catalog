@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useFavorites } from '../../context';
 import { useCart } from '../../context';
 import { LanguageSelect } from '../LanguageSelect';
+import { Menu } from '../Menu';
 import styles from './Header.module.scss';
 
 const navItems = [
@@ -14,6 +16,7 @@ const navItems = [
 ];
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { favorites } = useFavorites();
   const { totalItems } = useCart();
@@ -72,10 +75,16 @@ export const Header = () => {
           </NavLink>
         </div>
 
-        <button className={styles.burger} type="button">
+        <button
+          className={styles.burger}
+          type="button"
+          onClick={() => setIsMenuOpen(true)}
+        >
           <img src="/img/burger_menu.svg" alt={t('header.menuAlt')} />
         </button>
       </div>
+
+      {isMenuOpen && <Menu onClose={() => setIsMenuOpen(false)} />}
     </header>
   );
 };

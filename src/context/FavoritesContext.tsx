@@ -8,8 +8,10 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
   undefined,
 );
 
-export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
+export const FavoritesProvider = ({
   children,
+}: {
+  children: React.ReactNode;
 }) => {
   const [favorites, setFavorites] = useState<Phone[]>([]);
 

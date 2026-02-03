@@ -12,13 +12,13 @@ type Props = {
   onDecrease: () => void;
 };
 
-export const CartItem: React.FC<Props> = ({
+export const CartItem = ({
   phone,
   quantity,
   onRemove,
   onIncrease,
   onDecrease,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const imageUrl = `/${phone.images[0]}`;
   const price = phone.priceDiscount || phone.priceRegular;

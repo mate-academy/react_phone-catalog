@@ -18,7 +18,7 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
 import 'yet-another-react-lightbox/styles.css';
 
-export const ProductDetailsPage: React.FC = () => {
+export const ProductDetailsPage = () => {
   const { t } = useTranslation();
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();

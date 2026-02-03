@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -12,10 +11,7 @@ interface Props {
   showRegularPriceOnly?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({
-  phone,
-  showRegularPriceOnly = false,
-}) => {
+export const ProductCard = ({ phone, showRegularPriceOnly = false }: Props) => {
   const { t } = useTranslation();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const { cartItems, addToCart } = useCart();

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Footer.module.scss';
 
-export const Footer: React.FC = () => {
+export const Footer = () => {
   const { t } = useTranslation();
 
   const handleBackToTop = () => {
