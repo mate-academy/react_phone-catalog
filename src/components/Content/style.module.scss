@@ -1,5 +1,5 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .welcome {
   grid-column: 1 / -1;
@@ -8,7 +8,6 @@
   @include on_tablet {
     padding: 32px 0;
 
-    font-family: Mont;
     font-weight: 800;
     font-style: Bold;
     font-size: 32px;
@@ -17,7 +16,6 @@
 
   @include on_desktop {
     padding: 56px 0;
-    font-family: Mont;
     font-weight: 800;
     font-style: Bold;
     font-size: 48px;
