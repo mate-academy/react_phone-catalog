@@ -22,6 +22,10 @@ const banners = [
 const BannerSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const handleNext = () => {
+    setCurrentIndex(prev => (prev + 1) % banners.length);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
@@ -29,10 +33,6 @@ const BannerSlider = () => {
 
     return () => clearInterval(interval);
   }, [currentIndex]);
-
-  const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % banners.length);
-  };
 
   const handlePrev = () => {
     setCurrentIndex(prev => (prev - 1 + banners.length) % banners.length);
