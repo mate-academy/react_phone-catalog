@@ -31,13 +31,13 @@ const App = () => {
           <div className="main__content">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/phones" element={<PhonesPage />} />
-              <Route path="/tablets" element={<TabletsPage />} />
-              <Route path="/accessories" element={<AccessoriesPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="phones" element={<PhonesPage />} />
+              <Route path="tablets" element={<TabletsPage />} />
+              <Route path="accessories" element={<AccessoriesPage />} />
+              <Route path="cart" element={<CartPage />} />
+              <Route path="favorites" element={<FavoritesPage />} />
               <Route
-                path="/product/:productId"
+                path="product/:productId"
                 element={<ProductDetailsPage />}
               />
               <Route path="*" element={<NotFoundPage />} />
