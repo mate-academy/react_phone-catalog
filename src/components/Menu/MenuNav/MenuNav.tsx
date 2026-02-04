@@ -12,17 +12,17 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
       >
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <a href="/" className={styles.nav__link}>
+            <a href="" className={styles.nav__link}>
               Home
             </a>
           </li>
           <li className={styles.nav__item}>
-            <a href="/phones" className={styles.nav__link}>
+            <a href="phones" className={styles.nav__link}>
               Phones
             </a>
           </li>
           <li className={styles.nav__item}>
-            <a href="/tablets" className={styles.nav__link}>
+            <a href="tablets" className={styles.nav__link}>
               tablets
             </a>
           </li>
