@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleMenuClick = () => {
+    setTimeout(() => setIsMenuOpen(false), 50);
+  };
+
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
@@ -42,7 +46,7 @@ export const Header = () => {
         <div className={styles.topBar}>
           <Logo />
           <div className={styles.topBar__menu}>
-            <Menu />
+            <Menu handleMenuClick={handleMenuClick} />
           </div>
 
           <div className={styles.topBar__icons}>
@@ -54,7 +58,7 @@ export const Header = () => {
             </div>
             <div className={styles.icon__background}>
               <Link
-                to="#shopping-bag-cart"
+                to="/shopping-bag-cart"
                 className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
               ></Link>
               <div className={styles.icon__background}>
@@ -71,7 +75,11 @@ export const Header = () => {
         </div>
       </header>
 
-      <MainMenu isMenuOpen={isMenuOpen} onClose={handleCloseMenu} />
+      <MainMenu
+        isMenuOpen={isMenuOpen}
+        onClose={handleCloseMenu}
+        handleMenuClick={handleMenuClick}
+      />
     </>
   );
 };

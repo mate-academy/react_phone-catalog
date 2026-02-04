@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 
 import HomePage from './modules/HomePage/index';
@@ -26,12 +26,13 @@ const App = () => {
   return (
     <>
       {' '}
+
       <div ref={containerRef} className="app-container">
         <Header />
+
         <main className="main">
           <div className="main__content">
             <Routes>
-              <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<PhonesPage />} />
               <Route path="/tablets" element={<TabletsPage />} />
