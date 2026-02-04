@@ -1,4 +1,4 @@
-const DELAY_MS = 150;
+const DELAY_MS = 250;
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductDetailsPage.module.scss';
 import { Phone } from '../../types/Phone';
@@ -24,6 +24,7 @@ export const ProductDetailsPage = () => {
   const { t } = useTranslation();
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const { cartItems, addToCart } = useCart();
   const [product, setProduct] = useState<Phone | null>(null);
@@ -34,15 +35,28 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isColorChanging, setIsColorChanging] = useState(false);
+  const isComponentMountedRef = useRef(true);
 
   // for swipe functionality on mobile
   const [swipeStartX, setSwipeStartX] = useState<number | null>(null);
   const [swipeEndX, setSwipeEndX] = useState<number | null>(null);
 
+  const isProductChange = location.state?.isVariantChange;
+
   useEffect(() => {
+    if (!isProductChange) {
+      window.scrollTo(0, 0);
+    }
+
     const fetchProduct = async () => {
       try {
-        setLoading(true);
+        if (isComponentMountedRef.current || !isProductChange) {
+          setLoading(true);
+        } else {
+          setIsColorChanging(true);
+        }
+
         setError(false);
 
         const productsResponse = await fetchWithDelay('/api/products.json');
@@ -52,6 +66,7 @@ export const ProductDetailsPage = () => {
         if (!productFromList) {
           setError(true);
           setLoading(false);
+          setIsColorChanging(false);
 
           return;
         }
@@ -67,6 +82,7 @@ export const ProductDetailsPage = () => {
           setProduct(detailedProduct);
           setSelectedColor(detailedProduct.color);
           setSelectedCapacity(detailedProduct.capacity);
+          setSelectedImage(0);
         } else {
           setError(true);
         }
@@ -74,13 +90,15 @@ export const ProductDetailsPage = () => {
         setError(true);
       } finally {
         setLoading(false);
+        setIsColorChanging(false);
+        isComponentMountedRef.current = false;
       }
     };
 
     if (productId) {
       fetchProduct();
     }
-  }, [productId]);
+  }, [productId, isProductChange]);
 
   const handleColorChange = (color: string) => {
     if (!product) {
@@ -89,7 +107,7 @@ export const ProductDetailsPage = () => {
 
     const newProductId = product.id.replace(`-${product.color}`, `-${color}`);
 
-    navigate(`/product/${newProductId}`);
+    navigate(`/product/${newProductId}`, { state: { isVariantChange: true } });
   };
 
   const handleCapacityChange = (capacity: string) => {
@@ -101,7 +119,7 @@ export const ProductDetailsPage = () => {
     const newCapacity = capacity.toLowerCase();
     const newProductId = product.id.replace(currentCapacity, newCapacity);
 
-    navigate(`/product/${newProductId}`);
+    navigate(`/product/${newProductId}`, { state: { isVariantChange: true } });
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -201,6 +219,10 @@ export const ProductDetailsPage = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          style={{
+            opacity: isColorChanging ? 0.5 : 1,
+            transition: 'opacity 0.2s',
+          }}
         >
           <div className={styles.thumbnails}>
             {product.images.map((image, index) => (
@@ -210,6 +232,7 @@ export const ProductDetailsPage = () => {
                   selectedImage === index ? styles.thumbnailActive : ''
                 }`}
                 onClick={() => setSelectedImage(index)}
+                disabled={isColorChanging}
               >
                 <img src={`/${image}`} alt={`${product.name} ${index + 1}`} />
               </button>
@@ -219,6 +242,7 @@ export const ProductDetailsPage = () => {
             type="button"
             className={styles.mainImage}
             onClick={() => setIsLightboxOpen(true)}
+            disabled={isColorChanging}
           >
             <img
               key={selectedImage}
