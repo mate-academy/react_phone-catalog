@@ -3,11 +3,12 @@ import styles from './Logo.module.scss';
 
 type LogoProps = {
   className?: string;
+  handleMenuClick?: () => void;
 };
 
-export const Logo: React.FC<LogoProps> = ({ className }) => {
+export const Logo: React.FC<LogoProps> = ({ className, handleMenuClick }) => {
   return (
-    <Link to="/">
+    <Link to="/" onClick={handleMenuClick}>
       <picture>
         <source srcSet="img/logo-desktop.svg" media="(min-width: 1024px)" />
         <source srcSet="img/logo-tablet.svg" media="(min-width: 576px)" />

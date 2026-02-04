@@ -21,7 +21,7 @@ export const MainMenu: React.FC<Props> = ({
     >
       <div className={styles.mainMenu__content}>
         <div className={`${styles.topBar} ${styles.mainMenu__top}`}>
-          <Logo />
+          <Logo handleMenuClick={handleMenuClick} />
           <div className={styles.topBar__icons}>
             <div className={styles.icon__background}>
               <button
