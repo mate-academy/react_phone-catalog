@@ -77,3 +77,25 @@
   width: 16px;
   height: 16px;
 }
+
+.iconBlock{
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+
+  font-weight: 700;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  background-color: $color-red;
+  border: 1px solid $color-white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+}

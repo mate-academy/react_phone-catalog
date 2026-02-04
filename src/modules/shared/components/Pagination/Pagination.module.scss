@@ -8,6 +8,10 @@
   display: flex;
   list-style: none;
   gap: 8px;
+
+   @media (max-width: 340px) {
+     gap: 2px;
+  }
 }
 
 .navLink{

@@ -49,7 +49,10 @@ export const Footer = () => {
             </div>
           </nav>
           <div className={styles.back}>
-            <a href="#" className={styles.backLink}>
+            <a
+              className={styles.backLink}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
               Back to top
               <div className={styles.backIconBlock}>
                 <img

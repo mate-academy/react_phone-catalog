@@ -2,6 +2,8 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import { useEffect } from 'react';
 import { asset } from '../../../utils/asset';
+import { useCart } from '../../../hooks/useCart';
+import { useFavorites } from '../../../hooks/useFavorites';
 
 type Props = {
   isBurgerMenuOpen: boolean;
@@ -9,6 +11,9 @@ type Props = {
 };
 
 export const BurgerMenu: React.FC<Props> = ({ isBurgerMenuOpen, onClose }) => {
+  const { totalQuantity: cartCount } = useCart();
+  const { count: favoriteCount } = useFavorites();
+
   const handleNavigate = () => {
     onClose();
   };
@@ -64,20 +69,30 @@ export const BurgerMenu: React.FC<Props> = ({ isBurgerMenuOpen, onClose }) => {
           className={styles.iconsLink}
           onClick={handleNavigate}
         >
-          <img
-            src={asset('/img/icons/heart.png')}
-            className={styles.iconImg}
-          ></img>
+          <div className={styles.iconBlock}>
+            <img
+              src={asset('/img/icons/heart.png')}
+              className={styles.iconImg}
+            ></img>
+            {favoriteCount !== 0 && (
+              <span className={styles.counter}>{favoriteCount}</span>
+            )}
+          </div>
         </Link>
         <Link
           to={{ pathname: '/cart' }}
           className={styles.iconsLink}
           onClick={handleNavigate}
         >
-          <img
-            src={asset('/img/icons/shopping-cart.png')}
-            className={styles.iconImg}
-          ></img>
+          <div className={styles.iconBlock}>
+            <img
+              src={asset('/img/icons/shopping-cart.png')}
+              className={styles.iconImg}
+            ></img>
+            {cartCount !== 0 && (
+              <span className={styles.counter}>{cartCount}</span>
+            )}
+          </div>
         </Link>
       </div>
     </div>

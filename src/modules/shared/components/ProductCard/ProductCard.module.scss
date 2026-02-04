@@ -2,11 +2,20 @@
 @import '../../styles/utils/mixins';
 
 .card {
-  width: 272px;
+  width: 100%;
   height: 506px;
   border: 1px solid $color-icons;
   padding: 32px;
   box-sizing: border-box;
+
+
+  @include on-tablet {
+    min-width: 288px;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+  }
 
   &:hover {
     box-shadow: 0 2px 16px 0 $color-hover-bg;

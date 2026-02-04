@@ -3,9 +3,21 @@
 
 .productsList {
   margin-top: 24px;
-  display: flex;
-  gap: 24px 16px;
-  flex-wrap: wrap;
-  justify-content: left;
   margin-bottom: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px 16px;
+  align-items: center;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+
+    max-width: 1136px;
+  }
 }
