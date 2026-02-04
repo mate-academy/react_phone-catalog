@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useCartStore } from '../../store/cartStore';
 import { useFavoritesStore } from '../../store/Favoritesstore';
-import Carousel from '../Сarousel/Carousel';
+import Carousel from '../Carousel/Carousel';
 import Loader from '../Loader/Loader';
 import styles from './style.module.scss';
 
