@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import icon from './../img/icons/Logo.svg';
 import likeDefault from './../img/icons/like.svg';
@@ -38,7 +38,9 @@ export const Header: React.FC = () => {
         <div className={styles.headerRow}>
           {/* Desktop navigation */}
           <ul className={styles.headerList}>
-            <img src={icon} alt="logo" className={styles.headerImg} />
+            <Link to="/">
+              <img src={icon} alt="logo" className={styles.headerImg} />
+            </Link>
             {links.map(l => (
               <li key={l.label}>
                 <NavLink

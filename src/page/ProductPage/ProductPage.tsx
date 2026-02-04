@@ -62,7 +62,7 @@ export const ProductPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
   const { favorites, addFavorite, removeFavorite } = useFavorites();
-  const { addToCart, items } = useCart();
+  const { addToCart, items, removeFromCart } = useCart();
 
   useEffect(() => {
     if (!product) {
@@ -111,15 +111,19 @@ export const ProductPage: React.FC = () => {
   };
 
   const handleAddToCart = () => {
-    const cartItem: CartItem = {
-      id: product.id,
-      name: product.name,
-      price: product.priceDiscount,
-      image: product.images[0] ?? '',
-      quantity: 1,
-    };
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      const cartItem: CartItem = {
+        id: product.id,
+        name: product.name,
+        price: product.priceDiscount,
+        image: product.images[0] ?? '',
+        quantity: 1,
+      };
 
-    addToCart(cartItem);
+      addToCart(cartItem);
+    }
   };
 
   const handleCapacityChange = (cap: string) => {
@@ -268,7 +272,7 @@ export const ProductPage: React.FC = () => {
               <button
                 className={`${styles.add} ${isInCart ? styles.added : ''}`}
                 onClick={handleAddToCart}
-                disabled={isInCart}
+                type="button"
               >
                 {isInCart ? 'Added' : 'Add to cart'}
               </button>
