@@ -15,7 +15,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
           <li className={styles.nav__item}>
             <Link to="/" className={styles.nav__link}>
               Home
-            </L>
+            </Link>
           </li>
           <li className={styles.nav__item}>
             <Link to="#phones" className={styles.nav__link}>
@@ -25,7 +25,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
           <li className={styles.nav__item}>
             <Link to="#tablets" className={styles.nav__link}>
               tablets
-            </>
+            </Link>
           </li>
           <li className={styles.nav__item}>
             <Link to="#accessories" className={styles.nav__link}>
