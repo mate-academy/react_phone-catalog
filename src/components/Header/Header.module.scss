@@ -134,6 +134,22 @@
   }
 }
 
+.mobileActions {
+  display: none;
+  align-items: center;
+  height: 100%;
+  margin-left: auto;
+}
+
+.mobileLanguage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 100%;
+  border-left: 1px solid var(--color-elements);
+}
+
 @media (max-width: 1199px) {
   .container {
     padding: 0 0 0 16px;
@@ -165,9 +181,13 @@
     display: none;
   }
 
+  .mobileActions {
+    display: flex;
+  }
+
   .burger {
     display: flex;
     width: 56px;
-    margin-left: auto;
+    margin-left: 0;
   }
 }

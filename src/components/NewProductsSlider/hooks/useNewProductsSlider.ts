@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { Phone } from '../../../types/Phone';
 import { ProductYear } from '../../../types/ProductYear';
+import { fetchWithDelay } from '../../../api/fetchWithDelay';
 
 export const useNewProductsSlider = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -13,8 +14,8 @@ export const useNewProductsSlider = () => {
       try {
         setIsLoading(true);
         const [phonesRes, productsRes] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/products.json'),
+          fetchWithDelay('/api/phones.json'),
+          fetchWithDelay('/api/products.json'),
         ]);
 
         const phonesData: Phone[] = await phonesRes.json();

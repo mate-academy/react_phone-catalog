@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { Phone } from '../../../types/Phone';
+import { fetchWithDelay } from '../../../api/fetchWithDelay';
 
 export const useHotPricesSlider = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -11,7 +12,7 @@ export const useHotPricesSlider = () => {
     const load = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch('/api/phones.json');
+        const res = await fetchWithDelay('/api/phones.json');
         const phonesData: Phone[] = await res.json();
 
         const sortedPhones = phonesData

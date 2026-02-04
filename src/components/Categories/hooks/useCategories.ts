@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../../../types/Product';
+import { fetchWithDelay } from '../../../api/fetchWithDelay';
 
 export const useCategories = () => {
   const [counts, setCounts] = useState({
@@ -13,7 +14,7 @@ export const useCategories = () => {
     const load = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch('api/products.json');
+        const res = await fetchWithDelay('api/products.json');
         const products: Product[] = await res.json();
 
         const newCounts = {

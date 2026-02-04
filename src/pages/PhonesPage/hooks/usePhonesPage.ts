@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Phone } from '../../../types/Phone';
+import { fetchWithDelay } from '../../../api/fetchWithDelay';
 
 export const usePhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -16,10 +17,10 @@ export const usePhonesPage = () => {
       try {
         setIsLoading(true);
 
-        const phonesResponse = await fetch('/api/phones.json');
+        const phonesResponse = await fetchWithDelay('/api/phones.json');
         const phonesData = await phonesResponse.json();
 
-        const productsResponse = await fetch('/api/products.json');
+        const productsResponse = await fetchWithDelay('/api/products.json');
         const productsData = await productsResponse.json();
 
         const phonesWithYear = phonesData.map((phone: Phone) => {

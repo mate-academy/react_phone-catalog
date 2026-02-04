@@ -11,6 +11,7 @@ import { getProductColor } from '../../constants/colors';
 import { SuggestedProductsSlider } from '../../components/SuggestedProductsSlider';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
+import { fetchWithDelay } from '../../api/fetchWithDelay';
 
 import Lightbox from 'yet-another-react-lightbox';
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
@@ -43,7 +44,7 @@ export const ProductDetailsPage = () => {
         setLoading(true);
         setError(false);
 
-        const productsResponse = await fetch('/api/products.json');
+        const productsResponse = await fetchWithDelay('/api/products.json');
         const allProducts: Product[] = await productsResponse.json();
         const productFromList = allProducts.find(p => p.itemId === productId);
 
@@ -57,7 +58,7 @@ export const ProductDetailsPage = () => {
         setProductInfo(productFromList);
 
         const category = productFromList.category;
-        const detailsResponse = await fetch(`/api/${category}.json`);
+        const detailsResponse = await fetchWithDelay(`/api/${category}.json`);
         const categoryProducts: Phone[] = await detailsResponse.json();
         const detailedProduct = categoryProducts.find(p => p.id === productId);
 

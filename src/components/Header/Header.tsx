@@ -75,13 +75,22 @@ export const Header = () => {
           </NavLink>
         </div>
 
-        <button
-          className={styles.burger}
-          type="button"
-          onClick={() => setIsMenuOpen(true)}
-        >
-          <img src="/img/burger_menu.svg" alt={t('header.menuAlt')} />
-        </button>
+        <div className={styles.mobileActions}>
+          <div className={styles.mobileLanguage}>
+            <LanguageSelect
+              value={language}
+              onChange={next => i18n.changeLanguage(next)}
+            />
+          </div>
+
+          <button
+            className={styles.burger}
+            type="button"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <img src="/img/burger_menu.svg" alt={t('header.menuAlt')} />
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && <Menu onClose={() => setIsMenuOpen(false)} />}

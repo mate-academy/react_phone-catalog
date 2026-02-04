@@ -1,4 +1,5 @@
 import { Phone } from '../types/Phone';
+import { fetchWithDelay } from './fetchWithDelay';
 
 type ProductCategory = 'phones' | 'tablets' | 'accessories';
 
@@ -19,7 +20,7 @@ export const getSuggestedProducts = async (
   excludeId?: string,
   count = 10,
 ): Promise<Phone[]> => {
-  const res = await fetch(`/api/${category}.json`);
+  const res = await fetchWithDelay(`/api/${category}.json`);
 
   if (!res.ok) {
     throw new Error(
