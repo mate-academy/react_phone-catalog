@@ -52,7 +52,11 @@ const Cart = () => {
   if (items.length === 0) {
     return (
       <div className={styles.cartEmpty}>
-        <img src="/img/cart-is-empty.png" alt="Cart is empty" className={styles.cartEmpty_cartImage}/>
+        <img
+          src="/img/cart-is-empty.png"
+          alt="Cart is empty"
+          className={styles.cartEmpty_cartImage}
+        />
         <h2>Your cart is empty</h2>
         <p>Add some products to get started!</p>
       </div>
