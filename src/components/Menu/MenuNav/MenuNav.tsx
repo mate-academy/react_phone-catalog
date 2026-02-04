@@ -1,30 +1,35 @@
-import { Link } from 'react-router-dom';
 import styles from './MenuNav.module.scss';
 
-export const MenuNav: React.FC = () => {
+type MenuNavProps = {
+  className?: string;
+};
+
+export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
   return (
-    <div className={styles.menu}>
-      <nav className={`${styles.nav} ${styles.menu__nav}`}>
+    <div className={`${styles.menu}`}>
+      <nav
+        className={`${styles.nav} ${styles.menu__nav} ${className ? className : ''}`}
+      >
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <Link to="" className={styles.nav__link} reloadDocument>
+            <a href="/" className={styles.nav__link}>
               Home
-            </Link>
+            </a>
           </li>
           <li className={styles.nav__item}>
-            <Link to="phones" className={styles.nav__link} reloadDocument>
+            <a href="/phones" className={styles.nav__link}>
               Phones
-            </Link>
+            </a>
           </li>
           <li className={styles.nav__item}>
-            <a href="tablets" className={styles.nav__link}ççç>
+            <a href="/tablets" className={styles.nav__link}>
               tablets
             </a>
           </li>
           <li className={styles.nav__item}>
-            <Link to="accessories" className={styles.nav__link} reloadDocument>
+            <a href="accessories" className={styles.nav__link}>
               accessories
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,9 @@
 import MenuNav from './MenuNav/index';
 
-export const Menu: React.FC = () => {
-  return <MenuNav />;
+type MenuProps = {
+  className?: string;
+};
+
+export const Menu: React.FC<MenuProps> = ({ className }) => {
+  return <MenuNav className={className} />;
 };

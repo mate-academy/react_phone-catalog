@@ -7,7 +7,7 @@ type LogoProps = {
 
 export const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
-    <Link to="/" reloadDocument>
+    <Link to="" reloadDocument>
       <picture>
         <source srcSet="img/logo-desktop.svg" media="(min-width: 1024px)" />
         <source srcSet="img/logo-tablet.svg" media="(min-width: 576px)" />

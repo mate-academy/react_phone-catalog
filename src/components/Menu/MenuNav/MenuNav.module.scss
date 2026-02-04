@@ -4,6 +4,14 @@
 .nav {
   box-sizing: border-box;
 
+  @include on-tablet {
+    padding-inline: 16px;
+  }
+
+  @include on-desktop {
+     padding-inline: 24px;
+  }
+
   &__link {
     color: #89939A;
     text-decoration: none;

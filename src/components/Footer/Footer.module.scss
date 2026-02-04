@@ -10,10 +10,24 @@
     width: 90px;
     height: 32px;
     padding: 0;
-    margin: 32px 0;
-    border: 1px solid red;
+    margin: 32px 103px 32px 0;
 
+    @include on-desktop {
+      margin: 32px 290px 32px 0;
+    }
   }
+
+  .link {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: #89939A;
+    background-color: $footer-background-color;
+
+     @include hover(transform, scale(1.2));
+  }
+
 
   .topBarMobile {
     margin: 0;
@@ -26,8 +40,6 @@
 
   }
 
-
-
   .topBar {
     border-bottom: 0;
     margin-block: auto;
@@ -37,22 +49,18 @@
         display: flex;
       }
 
-
-
   }
 
   &__content {
     @include content-padding-inline;
-
+  
     border-top: 1px solid  $footer-border-color;
     justify-content:left;
     width: 100%;
     height: 257px;
     display: flex;
     flex-direction: column;
-
     border: 1px;
-
 
     @include on-tablet {
       flex-direction: row;
@@ -63,17 +71,6 @@
     @include on-desktop {
         flex-direction: row;
     }
-  }
-
-  a, button {
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 4%;
-    color: #89939A;
-    background-color: $footer-background-color;
-
-     @include hover(color, $active-menu-color);
   }
 
   &__github,
@@ -88,6 +85,10 @@
        margin-right: 13.5px;
         margin-block: auto;
     }
+
+    @include on-desktop {
+        margin-right: 106px;
+    }
   }
 
   &__rights {
@@ -101,12 +102,38 @@
      @include on-desktop {
           margin-right: 260px;
      }
-  }
 
-  &__backToTop {
-    text-transform: none;
   }
 
 }
 
+  .footer__backToTop {
+      text-transform: none;
+     display: flex;
+
+      flex-direction: row;
+
+      height: object-fit;
+      align-items: center;
+      justify-content: center;
+      margin  : auto;
+      gap: 16px;
+  }
+
+   .icon {
+    @include hover(transform, scale(1.2));
+
+    &--button-slider-right {
+    background-image: url(/img/buttons/button-slider-right.png);
+    width: 32px;
+    height: 32px;
+    display: block;
+
+    @include on-tablet {
+      background-image: url(/img/buttons/button-slider-right-2x.png);
+    }
+
+  }
+
+  }
 

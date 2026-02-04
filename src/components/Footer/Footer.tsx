@@ -16,33 +16,34 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
             <div>
               <a
                 href="https://github.com/"
-                className={styles.footer__github}
+                className={`${styles.link} ${styles.footer__github}`}
                 target="_blank"
                 rel="noreferrer"
               >
                 Github
               </a>
               <Link
-                to="/contacts"
-                className={styles.footer__contacts}
-                reloadDocument
+                to="contacts"
+                className={`${styles.link} ${styles.footer__contacts}`}
               >
                 Contacts
               </Link>
               <Link
-                to="/rights"
-                className={styles.footer__rights}
-                reloadDocument
+                to="rights"
+                className={`${styles.link} ${styles.footer__rights}`}
               >
                 rights
               </Link>
             </div>
             <button
-              className={styles.footer__backToTop}
+              className={`${styles.link} ${styles.footer__backToTop}`}
               type="button"
               onClick={onBackToTop}
             >
-              Back to top
+              Back&nbsp;to&nbsp;top&nbsp;
+              <span
+                className={`${styles.icon}  ${styles['icon--button-slider-right']}`}
+              ></span>
             </button>
           </div>
         </div>
@@ -51,28 +52,33 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
 
           <a
             href="https://github.com/"
-            className={styles.footer__github}
+            className={`${styles.link} ${styles.footer__github}`}
             target="_blank"
             rel="noreferrer"
           >
             Github
           </a>
           <Link
-            to="/contacts"
-            className={styles.footer__contacts}
-            reloadDocument
+            to="contacts"
+            className={`${styles.link} ${styles.footer__contacts}`}
           >
             Contacts
           </Link>
-          <Link to="/rights" className={styles.footer__rights} reloadDocument>
+          <Link
+            to="rights"
+            className={`${styles.link} ${styles.footer__rights}`}
+          >
             rights
           </Link>
           <button
-            className={styles.footer__backToTop}
+            className={`${styles.link} ${styles.footer__backToTop}`}
             type="button"
             onClick={onBackToTop}
           >
-            Back to top
+            Back&nbsp;to&nbsp;top&nbsp;
+            <span
+              className={`${styles.icon}  ${styles['icon--button-slider-right']}`}
+            ></span>
           </button>
         </div>
       </div>

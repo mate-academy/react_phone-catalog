@@ -10,8 +10,8 @@
   color: #0F0F11;
   width: 100%;
   display: block;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 
   scroll-behavior: smooth;
 
@@ -95,22 +95,17 @@ h5 {
   img {
     transition: transform 0.2s ease;
 
-    &:hover {
-      transform:  scale(1.1);
-    }
+     @include hover(transform, scale(1.2));
   }
 
-  .main {
-
-   &__content {
+   .main__content {
      @include content-padding-inline;
-     height: 100%;
-   }
-  }
 
-  .appContainer {
-    height: 100vh;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+      height: 100%;
+   }
+
+   .app-container {
+      height: 100%;
+      overflow-y: auto;
   }
 }

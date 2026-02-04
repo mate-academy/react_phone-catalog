@@ -82,7 +82,6 @@
      }
 
      &__button-slider-left {
-
         @include on-tablet {
             object-fit: cover;
             display: block;
@@ -112,12 +111,12 @@
   @include on-tablet {
     background-image: url('/img/header-bg-tablet-2x.png');
 
-     //width: 490px;
      height: 189px;
   }
 
   @include on-desktop {
     background-image: url('/img/header-bg-desktop-2x.png');
+
     // width: 1040px;
      height: 400px;
   }

@@ -25,7 +25,7 @@ const App = () => {
   return (
     <>
       {' '}
-      <div ref={containerRef} className="appContainer">
+      <div ref={containerRef} className="app-container">
         <Header />
         <main className="main">
           <div className="main__content">
