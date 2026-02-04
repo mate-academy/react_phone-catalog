@@ -28,7 +28,7 @@ export const CartPage: React.FC = () => {
     return (
       <div className={style.emptyCart}>
         <img
-          src="/img/cart-is-empty.png"
+          src="img/cart-is-empty.png"
           alt="empty cart"
           className={style.imgAside}
         />

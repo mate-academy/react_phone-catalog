@@ -68,7 +68,7 @@ export const HomePage: React.FC = () => {
           <li>
             <Link to="/phones" className={style.linkCategory}>
               <img
-                src="/img/categories/categories_phones.svg"
+                src="img/categories/categories_phones.svg"
                 alt="category phones"
                 className={style.partImg}
               />
@@ -79,7 +79,7 @@ export const HomePage: React.FC = () => {
           <li>
             <Link to="/tablets" className={style.linkCategory}>
               <img
-                src="/img/categories/categories_tablet.svg"
+                src="img/categories/categories_tablet.svg"
                 alt="category tablets"
                 className={style.partImg}
               />
@@ -90,7 +90,7 @@ export const HomePage: React.FC = () => {
           <li>
             <Link to="/accessories" className={style.linkCategory}>
               <img
-                src="/img/categories/categories_accessories.svg"
+                src="img/categories/categories_accessories.svg"
                 alt="category accessories"
                 className={style.partImg}
               />

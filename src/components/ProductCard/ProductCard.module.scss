@@ -15,15 +15,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 32px;
-
+  
   @include on-tablet {
     height: 196px;
   }
 }
 
 .wrapImg {
-  width: 80%;
+  width: 60%;
 
   object-fit: contain;
   display: block;

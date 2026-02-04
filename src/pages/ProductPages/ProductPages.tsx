@@ -83,12 +83,12 @@ export const ProductsPages: React.FC<Props> = ({ category }) => {
       <div className={style.topNav}>
         <Link to="/">
           <img
-            src="/public/img/buttons/home_button.svg"
+            src="img/buttons/home_button.svg"
             alt="Link Home"
             className={style.imgHome}
           />
         </Link>
-        <img src="/public/img/arrows/arrow_right_gray.svg" alt="button right" />
+        <img src="img/arrows/arrow_right_gray.svg" alt="button right" />
         <p className={style.category}>
           {category[0].toUpperCase() + category.slice(1)}
         </p>

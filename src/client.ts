@@ -21,7 +21,7 @@ function request<T>(url: string): Promise<T> {
 
 export const client = {
   getProducts: (category: ProductCategory) =>
-    request<Product[]>(`/api/${category}.json`),
+    request<Product[]>(`api/${category}.json`),
 
   getProductDeatils: async (id: string) => {
     const categories: ProductCategory[] = [
@@ -45,7 +45,7 @@ export const client = {
   },
 
   getSuggestedProducts: async (category: ProductCategory, take = 10) => {
-    const all = await request<Product[]>(`/api/${category}.json`);
+    const all = await request<Product[]>(`api/${category}.json`);
 
     return all.sort(() => Math.random() - 0.5).slice(0, take);
   },

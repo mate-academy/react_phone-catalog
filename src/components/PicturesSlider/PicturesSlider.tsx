@@ -7,15 +7,15 @@ type Props = {
 
 export const PicturesSlider: React.FC<Props> = () => {
   const bannersMobile = [
-    '/img/slider/banner_mobile.png',
-    '/img/slider/banner_tablets.png',
-    '/img/slider/banner_accessories.jpg',
+    'img/slider/banner_mobile.png',
+    'img/slider/banner_tablets.png',
+    'img/slider/banner_accessories.jpg',
   ];
 
   const bannerTablet = [
-    '/img/slider/banner-phones.jpg',
-    '/img/slider/banner-tabletst.png',
-    '/img/banner-accessories.png',
+    'img/slider/banner-phones.jpg',
+    'img/slider/banner-tabletst.png',
+    'img/banner-accessories.png',
   ];
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);

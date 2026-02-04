@@ -37,9 +37,9 @@ export const FavoritesPage: React.FC = () => {
     <div className={style.section}>
       <div className={style.topNavDetails}>
         <Link to="/">
-          <img src="/public/img/buttons/home_button.svg" alt="Link Home" />
+          <img src="img/buttons/home_button.svg" alt="Link Home" />
         </Link>
-        <img src="/public/img/arrows/arrow_right_gray.svg" alt="button right" />
+        <img src="img/arrows/arrow_right_gray.svg" alt="button right" />
         <p className={style.nameNav}>Favorites</p>
       </div>
 
@@ -47,7 +47,7 @@ export const FavoritesPage: React.FC = () => {
         <h2 className={style.forH}>Favorites</h2>
         {favoriteProduct.length === 0 ? (
           <img
-            src="/img/product-not-found.png"
+            src="img/product-not-found.png"
             alt="No favories yet"
             className={style.emptyImg}
           />

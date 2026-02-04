@@ -43,7 +43,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 0 19px;
 
     @include on-desktop {
       padding: 0 16px;
@@ -53,10 +52,11 @@
   &Img {
     display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 3 / 3;
     object-fit: cover;
 
     @include on-tablet  {
+      aspect-ratio: auto;
       height: clamp(
         189px,
         calc(189px + (400 - 189) * ((100vw - 640px) / (1200 - 640))),
