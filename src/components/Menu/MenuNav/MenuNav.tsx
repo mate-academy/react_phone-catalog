@@ -17,7 +17,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
             </a>
           </li>
           <li className={styles.nav__item}>
-            <a href="phones" className={styles.nav__link}>
+            <a href="/phones" className={styles.nav__link}>
               Phones
             </a>
           </li>
