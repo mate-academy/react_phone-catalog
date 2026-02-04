@@ -1,51 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Product } from "../shared/types/Product";
 import { Loader } from "../../components/Loader";
 import styles from "./ProductsDetailsPage.module.scss";
+import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
+import { PHONE_API, ACCESSORIES_API, TABLETS_API } from "../shared/constants/constants";
+import { fetchUrl } from "../shared/FetchFunction/FetchFunction";
 
 export const ProductDetailsPage: React.FC = () => {
-const { itemId } = useParams<{ itemId: string}>();
+const { productId } = useParams();
+const navigate = useNavigate();
 
 const [product, setProduct] = useState<Product | null>(null);
 const [isLoading, setIsLoading] = useState<boolean>(true);
 const [error, setError] = useState<string | null>(null);
+const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+const [variants, setVariants] = useState<Product[]>([]);
+
+const apis = [PHONE_API, ACCESSORIES_API, TABLETS_API];
 
 useEffect(() => {
-  if (!itemId) {
-    return;
-  }
-
   const fetchCurrentProduct = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const phonesResponse = await fetch('./api/phones.json');
-      const tabletsResponse = await fetch('./api/tablets.json');
-      const accessoriesResponse = await fetch('./api/accessories.json');
+    for (const api of apis) {
+      const data = await fetchUrl(api);
+      const currentProduct = data.find((p: Product) => String(p.id) === productId);
 
-      if (!phonesResponse.ok || !tabletsResponse.ok || !accessoriesResponse.ok) {
-        throw new Error('Fetch error')
+      if (currentProduct) {
+        const spaceId = currentProduct.namespaceId;
+        const variants = data.filter((p: Product) => p.namespaceId === spaceId);
+
+        setProduct(currentProduct);
+        setVariants(variants);
+        break;
       }
-
-      const phones = await phonesResponse.json();
-      const tablets = await tabletsResponse.json();
-      const accessories = await accessoriesResponse.json();
-
-      const allProducts = [
-        ...phones,
-        ...tablets,
-        ...accessories
-      ];
-
-      const foundProduct = allProducts.find((p: any) => p.itemId === itemId);
-
-      if (!foundProduct) {
-        setProduct(null);
-      } else {
-        setProduct(foundProduct);
-      }
+    }
     } catch (e) {
       setError('Something went wrong');
     } finally {
@@ -54,23 +46,18 @@ useEffect(() => {
   };
 
   fetchCurrentProduct();
-}, [itemId])
-
-if (isLoading) {
-  return <Loader />;
-}
-
-if (error) {
-  return <div>{error}</div>;
-}
-
-if (!product) {
-  return <div>Product was not found</div>;
-}
+}, [productId])
 
   return (
-    <>
-      <div className={styles["product-details-page"]}>
+    <div className={styles["product-details-page"]}>
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <div>{error}</div>
+      ) : !product ? (
+        <NotFoundPage />
+      ) : (
+      <>
         <div className={styles["product-details-page__navi"]}>
           <NavLink to="/" className={styles["product-details-page__block"]}>
             <img src="/img/home.png" alt="logo" className={styles["product-details-page__logo"]}/>
@@ -78,9 +65,43 @@ if (!product) {
           <img src="/img/r-shevron.png" alt="logo" className={styles["product-details-page__arrow"]}/>
           <p className={styles["product-details-page__page"]}>{product.category}</p>
         </div>
-      <h1>{product.name}</h1>
-
-      </div>
-    </>
-  )
+        <div className={styles["product-details-page__content"]}>
+          <h1 className={styles["product-details-page__content__title"]}>{product.name}</h1>
+          <div className={styles["product-details-page__content__photo-block"]}>
+            <img src={product.images[selectedImageIndex]} alt="photo" className={styles["product-details-page__content__photo-block__photo"]} />
+          </div>
+          <div className={styles["product-details-page__content__photo-slider"]}>
+            {product.images.map((image, index) => (
+              <button
+                onClick={() => setSelectedImageIndex(index)}
+                key={index}
+                className={`${styles["product-details-page__content__photo-slider__button"]} ${index === selectedImageIndex ? styles["product-details-page__content__photo-slider__button--active"] : ""}`}
+              >
+                <img src={image} alt="photo" className={styles["product-details-page__content__photo-slider__photo"]} />
+              </button>
+            ))}
+          </div>
+          <div className={styles["product-details-page__content__colors"]}>
+            <div className={styles["product-details-page__content__colors__title"]}>
+              <p className={styles["product-details-page__content__colors__title__name"]}>Available colors</p>
+              <p className={styles["product-details-page__content__colors__title__name"]}>ID: {product.priceRegular}{product.priceDiscount}</p>
+            </div>
+            <div className={styles["product-details-page__content__colors__available"]}>
+              {variants.map((variant) => (
+                <button
+                  onClick={() => navigate(`/products/${variant.id}`)}
+                  key={variant.id}
+                  className={`${styles["product-details-page__content__colors__available__block"]}
+                    ${variant.id === product.id ? styles["product-details-page__content__colors__available__block--active"] : ""}`}
+                  style={{ backgroundColor: variant.color }}
+                >
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
+      )}
+    </div>
+  );
 }

@@ -4,6 +4,9 @@ import { Loader } from "../../components/Loader/Loader.js";
 import styles from "./PhonesPage.module.scss";
 import { NavLink } from "react-router-dom";
 import { Product } from "../shared/types/Product";
+import { PHONE_API } from "../shared/constants/constants.js";
+import { fetchUrl } from "../shared/FetchFunction/FetchFunction.js";
+
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -22,15 +25,14 @@ export const PhonesPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('./api/phones.json')
-      if (!response.ok) throw new Error(`HTTP error: ${response.status}`)
-      const data = await response.json()
+      const data = await fetchUrl(PHONE_API);
 
       const normalized = data.map((product: any) => ({
         ...product,
         image: product.images?.[0] || product.image,
         price: product.priceDiscount || product.price,
         fullPrice: product.priceRegular || product.fullPrice,
+        productId: product.id,
       }));
 
       setPhones(normalized);

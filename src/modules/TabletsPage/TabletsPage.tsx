@@ -4,6 +4,8 @@ import styles from "../TabletsPage/TabletsPage.module.scss";
 import { Product } from "../shared/types/Product";
 import { Loader } from "../../components/Loader/Loader.js";
 import { ProductsList } from "../../components/ProductsList";
+import { TABLETS_API } from "../shared/constants/constants";
+import { fetchUrl } from "../shared/FetchFunction/FetchFunction";
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -23,16 +25,14 @@ export const TabletsPage: React.FC = () => {
 
 
       try {
-        const response = await fetch('./api/tablets.json');
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`)
-
-        const data = await response.json();
+        const data = await fetchUrl(TABLETS_API);
 
         const normalized = data.map((product: any) => ({
           ...product,
           image: product.images?.[0] || product.image,
           price: product.priceDiscount || product.price,
           fullPrice: product.priceRegular || product.fullPrice,
+          productId: product.id,
         }));
 
         setTablets(normalized);

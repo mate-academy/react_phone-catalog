@@ -11,9 +11,10 @@ export interface Product {
   year: number;
   color: string;
   itemId: string;
-  colorsAvailable?: string[];
+  namespaceId: string;
+  colorsAvailable: string[];
   capacityAvailable?: string[];
-  images?: string[];
+  images: string[];
   description?: { title: string; text: string[] }[];
   priceRegular?: number;
   priceDiscount?: number;
@@ -21,4 +22,5 @@ export interface Product {
   camera?: string;
   zoom?: string;
   cell?: string[];
+  productId?: string;
 }

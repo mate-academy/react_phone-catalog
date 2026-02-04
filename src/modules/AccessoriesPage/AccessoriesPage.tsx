@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { Product } from "../shared/types/Product";
 import { ProductsList } from "../../components/ProductsList";
 import { Loader } from "../../components/Loader";
+import { ACCESSORIES_API } from "../shared/constants/constants";
+import { fetchUrl } from "../shared/FetchFunction/FetchFunction";
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
@@ -23,16 +25,14 @@ export const AccessoriesPage: React.FC = () => {
       setIsLoading(true);
 
       try {
-        const response = await fetch('./api/accessories.json');
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-
-        const data = await response.json();
+        const data = await fetchUrl(ACCESSORIES_API);
 
         const normalized = data.map((product: any) => ({
           ...product,
           image: product.images?.[0] || product.image,
           price: product.priceDiscount || product.price,
           fullPrice: product.priceRegular || product.fullPrice,
+          productId: product.id,
         }));
 
         setAccessories(normalized);

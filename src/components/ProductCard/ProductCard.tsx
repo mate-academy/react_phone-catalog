@@ -2,21 +2,8 @@ import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Product } from "../../modules/shared/types/Product";
 
-type Product = {
-  id: number,
-  category: string,
-  itemId: string,
-  name: string,
-  fullPrice: number,
-  price: number,
-  screen: string,
-  capacity: string,
-  color: string,
-  ram: string,
-  year: number,
-  image: string
-}
 
 interface ProductCardProps {
   product: Product;
@@ -40,7 +27,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, width = "212p
   <div className={styles.productCard} style={{ width }} >
     <div className={styles["productCard__content"]}>
       <div className={styles["productCard__imgblock"]}>
-       <Link to={`/product/${product.itemId}`}>
+       <Link to={`/product/${product.productId}`}>
           <img
           src={product.image}
           alt={product.name}
@@ -48,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, width = "212p
         />
        </Link>
       </div>
-      <Link to={`/product/${product.itemId}`} className={styles["productCard__nameLink"]}>
+      <Link to={`/product/${product.productId}`} className={styles["productCard__nameLink"]}>
         <div className={styles["productCard__nameblock"]}>
         <h3 className={styles["productCard__name"]}>
           {product.name}

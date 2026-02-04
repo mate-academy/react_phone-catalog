@@ -6,22 +6,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import styles from "./HomePage.module.scss";
 import { ShopByCategory } from "../../components/ShopByCategory";
-
-interface Product {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  price: number;
-  fullPrice: number;
-  image: string;
-  screen: string;
-  capacity: string;
-  ram: string;
-  year: number;
-  color: string;
-
-}
+import { Product } from "../shared/types/Product";
+import { PRODUCTS_API } from "../shared/constants/constants";
+import { fetchUrl } from "../shared/FetchFunction/FetchFunction";
 
 
 export const HomePage = () => {
@@ -29,42 +16,29 @@ export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAllProducts = async (): Promise<Product[]> => {
-      const urls = [
-        './api/phones.json',
-        './api/accessories.json',
-        './api/tablets.json'
-      ];
+    const fetchProducts = async () => {
+      setIsLoading(true);
 
-      const responses = await Promise.all(urls.map(url => fetch(url)));
-      const data = await Promise.all(responses.map(res => res.json()));
-      return data.flat();
-    };
-
-    const loadData = async () => {
       try {
-        const allProducts = await fetchAllProducts();
-        setProducts(allProducts);
-      } catch (error) {
-        console.error("Помилка завантаження:", error);
+        const data = await fetchUrl(PRODUCTS_API);
+
+        const normalized = data.map((p: any) => ({
+          ...p,
+          productId: p.itemId,
+        }));
+
+        setProducts(normalized)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
     };
 
-    loadData();
+    fetchProducts();
   }, []);
 
-  const phones = products.filter(p => p.category === 'phones');
+  const newModelsProducts = [...products].sort((a, b) => a.year - b.year);
 
-  const unifiedProducts = phones.map(product => ({
-  ...product,
-  image: (product as any).images?.[0] || product.image,
-  price: (product as any).priceDiscount || product.price,
-  fullPrice: (product as any).priceRegular || product.fullPrice,
-  }));
-
-  const hotPricesProducts = [...unifiedProducts]
+  const hotPricesProducts = [...products]
     .filter(p => p.fullPrice > p.price)
     .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
 
@@ -89,7 +63,7 @@ export const HomePage = () => {
       <SwiperSlide className={styles["swiper__slide"]}><img src="./img/slider-image3.jpg" alt="Photo 3"/></SwiperSlide>
       </Swiper>
 
-      <ProductsSlider title="Brand new models" products={unifiedProducts} hideFullPrice={true}/>
+      <ProductsSlider title="Brand new models" products={newModelsProducts} hideFullPrice={true}/>
 
       <ShopByCategory title={"Shop by category"} />
 
