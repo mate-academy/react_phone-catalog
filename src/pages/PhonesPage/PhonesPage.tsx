@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { ProductCard } from '../../components/ProductCard';
-import { Loader } from '../../components/Loader';
+import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
 import styles from './PhonesPage.module.scss';
 import { usePhonesPage } from './hooks/usePhonesPage';
 
@@ -20,6 +20,7 @@ export const PhonesPage = () => {
     handlePerPageChange,
     handlePageChange,
   } = usePhonesPage();
+  const skeletonCount = perPage === 'all' ? 16 : Number(perPage);
 
   return (
     <div className={styles.phonesPage}>
@@ -82,7 +83,11 @@ export const PhonesPage = () => {
         </div>
 
         {isLoading ? (
-          <Loader />
+          <div className={styles.grid}>
+            {Array.from({ length: skeletonCount }, (_, index) => (
+              <ProductCardSkeleton key={`phone-skeleton-${index}`} />
+            ))}
+          </div>
         ) : phones.length === 0 ? (
           <p className={styles.emptyMessage}>{t('catalog.empty.phones')}</p>
         ) : (

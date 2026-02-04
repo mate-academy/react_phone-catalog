@@ -14,7 +14,7 @@ const getInitialLanguage = (): Language => {
     return saved;
   }
 
-  return 'ua';
+  return 'en';
 };
 
 const resources = {

@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import styles from './ProductDetailsPage.module.scss';
 import { Phone } from '../../types/Phone';
 import { Product } from '../../types/Product';
-import { Loader } from '../../components/Loader';
+// eslint-disable-next-line max-len
+import { ProductDetailsSkeleton } from '../../components/ProductDetailsSkeleton';
 import { NotFoundPage } from '../NotFoundPage';
 import { getProductColor } from '../../constants/colors';
 /* eslint-disable max-len */
@@ -152,7 +153,7 @@ export const ProductDetailsPage = () => {
   };
 
   if (loading) {
-    return <Loader />;
+    return <ProductDetailsSkeleton />;
   }
 
   if (error || !product) {

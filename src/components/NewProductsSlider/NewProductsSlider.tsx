@@ -6,8 +6,10 @@ import 'swiper/css/navigation';
 import './NewProductsSlider.scss';
 import styles from './NewProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { Loader } from '../Loader';
+import { ProductCardSkeleton } from '../ProductCardSkeleton';
 import { useNewProductsSlider } from './hooks/useNewProductsSlider';
+
+const SKELETON_ITEMS = Array(4).fill(null);
 
 export const NewProductsSlider = () => {
   const { t } = useTranslation();
@@ -37,7 +39,11 @@ export const NewProductsSlider = () => {
       </div>
 
       {isLoading ? (
-        <Loader />
+        <div className={styles.skeletonRow}>
+          {SKELETON_ITEMS.map((_, index) => (
+            <ProductCardSkeleton key={`new-skeleton-${index}`} />
+          ))}
+        </div>
       ) : (
         <Swiper
           modules={[Navigation]}

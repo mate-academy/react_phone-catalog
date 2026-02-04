@@ -79,7 +79,7 @@ export const LanguageSelect = ({ value, onChange }: Props) => {
       </button>
 
       {isOpen && (
-        <div className={styles.menu} role="listbox">
+        <div className={styles.menu}>
           {LANGUAGES.map(language => {
             const isSelected = isLanguageSelected(language.value);
 
@@ -91,7 +91,6 @@ export const LanguageSelect = ({ value, onChange }: Props) => {
                   [styles.optionActive]: isSelected,
                 })}
                 onClick={() => handleSelectLanguage(language.value)}
-                role="option"
                 aria-selected={isSelected}
               >
                 <span

@@ -1,5 +1,5 @@
 import styles from './Categories.module.scss';
-import { Loader } from '../Loader';
+import { CategoriesSkeleton } from '../CategoriesSkeleton';
 import { useCategories } from './hooks/useCategories';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ export const Categories = () => {
   const { counts, isLoading } = useCategories();
 
   if (isLoading) {
-    return <Loader />;
+    return <CategoriesSkeleton />;
   }
 
   return (

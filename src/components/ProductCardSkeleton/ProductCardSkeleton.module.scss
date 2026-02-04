@@ -1,0 +1,84 @@
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  box-sizing: border-box;
+  height: 100%;
+  gap: 12px;
+}
+
+.block {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #ededed 25%, #f6f6f6 37%, #ededed 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+.image {
+  height: 200px;
+  border-radius: 8px;
+}
+
+.title {
+  height: 18px;
+  width: 80%;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  height: 22px;
+  width: 40%;
+}
+
+.fullPrice {
+  height: 18px;
+  width: 20%;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  height: 14px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.button {
+  height: 48px;
+  flex: 1;
+}
+
+.icon {
+  height: 48px;
+  width: 48px;
+}

@@ -6,8 +6,10 @@ import 'swiper/css/navigation';
 import './HotPricesSlider.scss';
 import styles from './HotPricesSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { Loader } from '../Loader';
+import { ProductCardSkeleton } from '../ProductCardSkeleton';
 import { useHotPricesSlider } from './hooks/useHotPricesSlider';
+
+const SKELETON_ITEMS = Array(4).fill(null);
 
 export const HotPricesSlider = () => {
   const { t } = useTranslation();
@@ -15,7 +17,26 @@ export const HotPricesSlider = () => {
     useHotPricesSlider();
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <section className={`${styles.section} HotPricesSlider`}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{t('sliders.hotPrices')}</h2>
+          <div className={styles.navigation}>
+            <button type="button" className={styles.navButton} disabled>
+              <img src="/img/arrow_left.svg" alt={t('sliders.leftAlt')} />
+            </button>
+            <button type="button" className={styles.navButton} disabled>
+              <img src="/img/arrow_right.svg" alt={t('sliders.rightAlt')} />
+            </button>
+          </div>
+        </div>
+        <div className={styles.skeletonRow}>
+          {SKELETON_ITEMS.map((_, index) => (
+            <ProductCardSkeleton key={`hot-skeleton-${index}`} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   if (phones.length === 0) {

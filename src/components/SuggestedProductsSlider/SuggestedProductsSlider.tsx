@@ -6,8 +6,10 @@ import 'swiper/css/navigation';
 import './SuggestedProductsSlider.scss';
 import styles from './SuggestedProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { Loader } from '../Loader';
+import { ProductCardSkeleton } from '../ProductCardSkeleton';
 import { useSuggestedProductsSlider } from './hooks/useSuggestedProductsSlider';
+
+const SKELETON_ITEMS = Array(4).fill(null);
 
 type ProductCategory = 'phones' | 'tablets' | 'accessories';
 
@@ -22,7 +24,26 @@ export const SuggestedProductsSlider = ({ category, excludeId }: Props) => {
     useSuggestedProductsSlider(category, excludeId);
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <section className={`${styles.section} SuggestedProductsSlider`}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{t('sliders.youMayAlsoLike')}</h2>
+          <div className={styles.navigation}>
+            <button type="button" className={styles.navButton} disabled>
+              <img src="/img/arrow_left.svg" alt={t('sliders.leftAlt')} />
+            </button>
+            <button type="button" className={styles.navButton} disabled>
+              <img src="/img/arrow_right.svg" alt={t('sliders.rightAlt')} />
+            </button>
+          </div>
+        </div>
+        <div className={styles.skeletonRow}>
+          {SKELETON_ITEMS.map((_, index) => (
+            <ProductCardSkeleton key={`suggested-skeleton-${index}`} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   if (phones.length === 0) {

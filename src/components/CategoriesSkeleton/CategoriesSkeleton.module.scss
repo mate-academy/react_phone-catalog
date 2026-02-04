@@ -1,0 +1,78 @@
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.categories {
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    margin-bottom: 64px;
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+    padding: 0 16px;
+  }
+}
+
+.block {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #ededed 25%, #f6f6f6 37%, #ededed 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+.title {
+  height: 28px;
+  width: 220px;
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 368px;
+
+  @media (max-width: 1199px) {
+    width: calc((100% - 16px * 2) / 3);
+  }
+
+  @media (max-width: 639px) {
+    width: 100%;
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+.cardTitle {
+  height: 20px;
+  width: 60%;
+  margin-bottom: 8px;
+}
+
+.modelsCount {
+  height: 14px;
+  width: 40%;
+}
