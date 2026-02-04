@@ -71,11 +71,29 @@
             flex-wrap: wrap;
             align-items: center;
             position: relative;
-
-            &>a {
-                color: $Secondary;
-            }
         }
+    }
+
+    &_active {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background-color: $Primary;
+        }
+
+        &>a {
+            color: $Primary !important;
+        }
+    }
+
+    &_tabs>div>a {
+        color: $Secondary;
     }
 
     &_iconBlock {
@@ -112,24 +130,6 @@
                 height: 16px;
                 width: 16px;
             }
-        }
-    }
-
-    &_active {
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 3px;
-            background-color: $Primary;
-        }
-
-        &>a {
-            color: $Primary !important;
         }
     }
 

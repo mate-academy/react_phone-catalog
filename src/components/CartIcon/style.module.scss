@@ -1,5 +1,12 @@
 @import '../../styles/variables.scss';
 
+
+.cartIcon {
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.3s ease;
+}
+
 .cartIconLink {
   text-decoration: none;
   color: inherit;
@@ -9,7 +16,7 @@
   width: 48px;
   height: 48px;
   position: relative;
-  
+
   &:hover {
     .cartIcon {
       opacity: 0.7;
@@ -26,18 +33,13 @@
   height: 100%;
 }
 
-.cartIcon {
-  width: 16px;
-  height: 16px;
-  transition: opacity 0.3s ease;
-}
 
 .cartBadge {
   position: absolute;
   top: 6px;
   right: 6px;
-  background-color: $Red;  
-  color: white;
+  background-color: $Red;
+  color: $White;
   border-radius: 50%;
   min-width: 16px;
   height: 16px;
@@ -48,6 +50,6 @@
   font-weight: 600;
   padding: 0 4px;
   line-height: 1;
-  border: 1.5px solid $White; 
+  border: 1.5px solid $White;
   box-sizing: border-box;
 }

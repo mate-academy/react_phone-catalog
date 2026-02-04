@@ -198,14 +198,18 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+            }
 
-                &:hover {
-                    border-color: $Primary;
-                }
+            &_btn:hover {
+                border-color: $Primary;
             }
 
             &_btnActive {
                 border-color: $Primary;
+
+                &:hover {
+                    border-color: $Primary;
+                }
             }
 
             &_circle {

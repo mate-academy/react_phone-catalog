@@ -192,9 +192,7 @@ button {
     overflow: hidden;
     box-sizing: border-box;
 
-    & {
-        padding: 0 16px;
-    }
+    padding: 0 16px;
 
     @include on_tablet {
         padding: 0 24px;
@@ -211,14 +209,15 @@ button img {
     transition: transform 0.3s ease;
 }
 
-a:hover img,
-button:hover img {
-    transform: scale(1.1);
-}
 
 button,
 a,
 input,
 select {
     transition: all 0.3s ease;
+}
+
+a:hover img,
+button:hover img {
+    transform: scale(1.1);
 }
