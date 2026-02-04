@@ -13,9 +13,9 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
       >
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <a href="" className={styles.nav__link}>
+            <Link to="/" className={styles.nav__link}>
               Home
-            </a>
+            </L>
           </li>
           <li className={styles.nav__item}>
             <Link to="#phones" className={styles.nav__link}>
@@ -23,14 +23,14 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
             </Link>
           </li>
           <li className={styles.nav__item}>
-            <a href="tablets" className={styles.nav__link}>
+            <Link to="#tablets" className={styles.nav__link}>
               tablets
-            </a>
+            </>
           </li>
           <li className={styles.nav__item}>
-            <a href="accessories" className={styles.nav__link}>
+            <Link to="#accessories" className={styles.nav__link}>
               accessories
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
