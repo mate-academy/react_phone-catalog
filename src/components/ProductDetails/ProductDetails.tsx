@@ -86,8 +86,6 @@ const ProductDetails = () => {
           setError(true);
         }
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('Error loading product:', err);
         setError(true);
       } finally {
         setLoading(false);

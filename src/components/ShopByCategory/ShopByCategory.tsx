@@ -32,7 +32,11 @@ const ShopByCategory = () => {
           accessories: accessoriesCount,
         });
       } catch (error) {
-        console.error('Failed to load category counts:', error);
+        setCounts({
+          phones: 0,
+          tablets: 0,
+          accessories: 0,
+        });
       } finally {
         setLoading(false);
       }
