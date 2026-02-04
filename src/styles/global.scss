@@ -51,7 +51,7 @@ h1,
     letter-spacing: -1%;
     font-family: Mont, sans-serif;
 
-    @include on_tablet {
+    @include on-tablet {
         font-size: 48px;
         line-height: 56px;
     }
@@ -65,7 +65,7 @@ h2,
     letter-spacing: 0;
     font-family: Mont, sans-serif;
 
-    @include on_tablet {
+    @include on-tablet {
         font-size: 32px;
         line-height: 41px;
         letter-spacing: -0.01em;
@@ -80,7 +80,7 @@ h3,
     line-height: 26px;
     letter-spacing: 0;
 
-    @include on_tablet {
+    @include on-tablet {
         font-weight: 700;
         font-size: 22px;
         line-height: 31px;
@@ -95,7 +95,7 @@ h4,
     line-height: 20px;
     letter-spacing: 0;
 
-    @include on_tablet {
+    @include on-tablet {
         font-size: 20px;
         line-height: 26px;
     }
@@ -209,11 +209,11 @@ button:hover img {
     box-sizing: border-box;
     padding: 0 16px;
 
-    @include on_tablet {
+    @include on-tablet {
         padding: 0 24px;
     }
 
-    @include on_desktop {
+    @include on-desktop {
         padding: 0;
         margin: 0 auto;
     }

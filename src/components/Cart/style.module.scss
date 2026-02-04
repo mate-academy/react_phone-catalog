@@ -7,7 +7,7 @@
   margin-top: 32px;
   gap: 32px;
 
-  @include on_desktop {
+  @include on-desktop {
     flex-direction: row;
     gap: 16px;
   }
@@ -18,7 +18,7 @@
     gap: 16px;
     width: 100%;
 
-    @include on_desktop {
+    @include on-desktop {
       max-width: 752px;
     }
   }
@@ -31,7 +31,7 @@
     flex-direction: column;
     gap: 16px;
 
-    @include on_tablet {
+    @include on-tablet {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -44,7 +44,7 @@
       gap: 16px;
       width: 100%;
 
-      @include on_tablet {
+      @include on-tablet {
         gap: 24px;
         flex: 1;
       }
@@ -94,7 +94,7 @@
       justify-content: space-between;
       width: 100%;
 
-      @include on_tablet {
+      @include on-tablet {
         width: auto;
         gap: 24px;
         justify-content: flex-end;
@@ -153,7 +153,7 @@
     gap: 16px;
     width: 100%;
 
-    @include on_desktop {
+    @include on-desktop {
       max-width: 368px;
       gap: 24px;
     }

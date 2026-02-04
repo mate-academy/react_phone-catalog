@@ -14,7 +14,7 @@
 
         grid-column: 1 / -1;
 
-        @include on_tablet {
+        @include on-tablet {
             padding-bottom: 0;
             height: clamp(189px, calc(189px + (400 - 189) * ((100vw - 640px) / (1200 - 640))), 400px);
             grid-column: 2 / 12;
@@ -23,7 +23,7 @@
             width: auto;
         }
 
-        @include on_desktop {
+        @include on-desktop {
             grid-column: 2 / 24;
         }
 
@@ -31,7 +31,7 @@
             display: block;
             height: 100%;
 
-            @include on_desktop {
+            @include on-desktop {
                 height: 400px;
             }
         }
@@ -44,12 +44,12 @@
             height: 100%;
             object-fit: cover;
 
-            @include on_tablet {
+            @include on-tablet {
                 position: static;
                 min-height: 189px;
             }
 
-            @include on_desktop {
+            @include on-desktop {
                 height: 400px;
             }
         }
@@ -59,33 +59,32 @@
     &_right {
         display: none;
 
-        @include on_tablet {
+        @include on-tablet {
             display: block;
         }
 
-        @include on_desktop {
+        @include on-desktop {
             display: block;
         }
 
     }
 
     &_left {
-        @include on_tablet {
+        @include on-tablet {
             grid-column: 1 / span 1;
         }
 
-        @include on_desktop {
+        @include on-desktop {
             grid-column: 1 / span 1;
         }
     }
 
     &_right {
-
-        @include on_tablet {
+        @include on-tablet {
          grid-column: 12 / span 1;
         }
 
-        @include on_desktop {
+        @include on-desktop {
             grid-column: 24 / span 1;
         }
     }

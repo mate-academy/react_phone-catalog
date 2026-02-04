@@ -5,11 +5,11 @@
     margin-top: 56px;
     grid-column: 1 / -1;
 
-    @include on_tablet {
+    @include on-tablet {
         margin-top: 64px;
     }
 
-    @include on_desktop {
+    @include on-desktop {
         margin-top: 80px;
     }
 
@@ -71,12 +71,12 @@
         margin-right: -16px;
         padding-right: 16px;
 
-        @include on_tablet {
+        @include on-tablet {
             margin-right: -24px;
             padding-right: 24px;
         }
 
-        @include on_desktop {
+        @include on-desktop {
             margin-right: 0;
             padding-right: 0;
         }

@@ -20,7 +20,7 @@ $header-height: 48px;
     transition: transform 0.4s ease-out;
 
 
-    @include on_tablet {
+    @include on-tablet {
         display: none;
     }
 

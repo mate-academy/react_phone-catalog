@@ -1,11 +1,11 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixin.scss';
+@import '../../styles/variables';
+@import '../../styles/mixin';
 
 .icons {
     display: flex;
     gap: 8px;
     align-items: center;
-    margin: 24px 0px;
+    margin: 24px 0;
     width: 100%;
     overflow: hidden;
 
@@ -13,7 +13,7 @@
         flex-shrink: 0;
     }
 
-    @include on_tablet {
+    @include on-tablet {
         margin-bottom: 40px;
     }
 
@@ -45,7 +45,7 @@
             border: none !important;
         }
 
-        @include on_tablet {
+        @include on-tablet {
             margin-top: 40px;
             margin-bottom: 16px;
         }

@@ -1,10 +1,10 @@
-@mixin on_tablet {
+@mixin on-tablet {
   @media (min-width: 640px) {
     @content;
   }
 }
 
-@mixin on_desktop {
+@mixin on-desktop {
   @media (min-width: 1200px) {
     @content;
   }
@@ -41,12 +41,12 @@ $mobile-columns: 4;
   grid-template-columns: repeat($mobile-columns, 1fr);
   gap: $gutter;
 
-  @include on_tablet {
+  @include on-tablet {
     grid-template-columns: repeat($tablet-columns, 1fr);
     gap: $gutter;
   }
 
-  @include on_desktop {
+  @include on-desktop {
     max-width: $max-content-width;
     margin-left: auto;
     margin-right: auto;

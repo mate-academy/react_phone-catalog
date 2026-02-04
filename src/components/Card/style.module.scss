@@ -1,5 +1,5 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .card {
     width: 212px;
@@ -15,13 +15,13 @@
 
     scroll-snap-align: start;
 
-    @include on_tablet {
+    @include on-tablet {
         flex: initial;
         width: 237px;
         height: 512px;
     }
 
-    @include on_desktop {
+    @include on-desktop {
         width: 272px;
         height: 506px;
     }
@@ -31,12 +31,12 @@
         height: 129px;
         margin: auto;
 
-        @include on_tablet {
+        @include on-tablet {
             width: 173px;
             height: 202px;
         }
 
-        @include on_desktop {
+        @include on-desktop {
             width: 208px;
             height: 198px;
         }
@@ -135,12 +135,12 @@
     height: 440px;
     width: 287px;
 
-    @include on_tablet {
+    @include on-tablet {
         width: 288px;
         height: 506px;
     }
 
-    @include on_desktop {
+    @include on-desktop {
         width: 272px;
         height: 506px;
     }

@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixin.scss';
+@import '../../styles/variables';
+@import '../../styles/mixin';
 
 .options {
     grid-column: 1 / -1;
@@ -10,7 +10,7 @@
         gap: 16px;
 
         &>&_block:first-child>select {
-            @include on_tablet {
+            @include on-tablet {
                 width: 187px;
             }
         }
