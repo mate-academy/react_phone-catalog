@@ -23,6 +23,7 @@ useEffect(() => {
   const fetchCurrentProduct = async () => {
     setIsLoading(true);
     setError(null);
+    setSelectedImageIndex(0);
 
     try {
     for (const api of apis) {
@@ -87,16 +88,26 @@ useEffect(() => {
               <p className={styles["product-details-page__content__colors__title__name"]}>ID: {product.priceRegular}{product.priceDiscount}</p>
             </div>
             <div className={styles["product-details-page__content__colors__available"]}>
-              {variants.map((variant) => (
-                <button
-                  onClick={() => navigate(`/products/${variant.id}`)}
-                  key={variant.id}
-                  className={`${styles["product-details-page__content__colors__available__block"]}
-                    ${variant.id === product.id ? styles["product-details-page__content__colors__available__block--active"] : ""}`}
-                  style={{ backgroundColor: variant.color }}
-                >
-                </button>
-              ))}
+              {variants.map((variant) => {
+                const isActive = variant.id === product.id;
+
+                return (
+                  <button
+                    key={variant.id}
+                    type="button"
+                    aria-label={`Select color ${variant.color}`}
+                    onClick={() => navigate(`/products/${variant.id}`)}
+                    className={`
+                      ${styles["product-details-page__content__colors__available__block"]}
+                      ${isActive
+                        ? styles["product-details-page__content__colors__available__block--active"]
+                        : ''
+                      }
+                    `}
+                    style={{ backgroundColor: variant.color }}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
