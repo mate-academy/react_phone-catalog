@@ -1,5 +1,5 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .pagination {
     grid-column: -1 / 1;
@@ -30,7 +30,7 @@
             }
 
             &:hover:not(:disabled) {
-                border-color: $Primary; 
+                border-color: $Primary;
             }
 
             &>img {
@@ -49,19 +49,19 @@
             line-height: 21px;
             letter-spacing: 0%;
             text-align: center;
-
-            & > button {
-                height: 32px;
-                width: 32px;
-                border: 1px solid $Elements;
-                cursor: pointer;
-                transition: all 0.3s ease; 
-
-                &:hover:not(.selected) {
-                    border-color: $Primary;
-                }
-            }
         }
+    }
+}
+
+.buttons {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $Elements;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(.selected) {
+        border-color: $Primary;
     }
 }
 
@@ -69,9 +69,9 @@
     background-color: $Primary;
     color: $White;
     border: none;
-    
+
     &:hover {
-        background-color: $Primary; 
+        background-color: $Primary;
     }
 }
 

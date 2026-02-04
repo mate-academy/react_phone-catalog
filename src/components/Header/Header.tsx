@@ -81,7 +81,7 @@ const Header = () => {
               className={`${styles.header_iconBlock_icon} ${isActive('/favorites') ? styles.header_active : ''}`}
             >
               <Link to="/favorites" className={styles.header_cartLink}>
-                <img src={iconPaths.heart} alt="favorites" />
+                <img src={iconPaths.heart} alt="favorites" className={styles.header_cartLink_img}/>
                 {favoritesItemsCount > 0 && (
                   <span className={styles.header_cartBadge}>
                     {favoritesItemsCount > 99 ? '99+' : favoritesItemsCount}

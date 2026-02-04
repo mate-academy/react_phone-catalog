@@ -225,6 +225,7 @@ const ProductDetails = () => {
             </div>
             <div className={styles.gallery_mainImage}>
               <img
+                className={styles.gallery_mainImage_image}
                 src={`/${product.images[selectedImage]}`}
                 alt={product.name}
               />
@@ -346,6 +347,7 @@ const ProductDetails = () => {
                   }
                 >
                   <img
+                    className={styles.image}
                     src={
                       isInFavorites
                         ? '/img/icons/Favourites_Filled_(Heart Like).svg'

@@ -1,9 +1,11 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .phone {
     grid-column: 1 / -1;
+
     @include make-grid-container;
+
     margin-top: 32px;
 
     @include on_tablet {
@@ -13,6 +15,7 @@
 
 .top {
     grid-column: 1 / -1;
+
     @include make-grid-container;
 }
 
@@ -87,7 +90,7 @@
         width: 288px;
         height: 288px;
 
-        img {
+        &_image {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -167,7 +170,6 @@
 
             &_btn,
             &_btnActive {
-                padding: 8px;
                 border: 1px solid $Icons;
                 background: $White;
                 font-size: 14px;
@@ -311,11 +313,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            &>img {
-                height: 16px;
-                width: 16px;
-            }
         }
     }
 }
@@ -371,7 +368,9 @@
 
 .bottom {
     grid-column: 1 / -1;
+
     @include make-grid-container;
+
     max-width: 288px;
     margin-top: 56px;
 
@@ -403,7 +402,6 @@
     }
 
     @include on_desktop {
-        margin-bottom: 80px;
         grid-column: 1 / 13;
         margin-bottom: 0;
     }
@@ -424,7 +422,7 @@
         font-size: 14px;
         line-height: 21px;
         color: $Secondary;
-        margin: 0 0 16px 0;
+        margin: 0 0 16px;
 
         &:last-child {
             margin-bottom: 0;
@@ -442,4 +440,9 @@
     width: 0;
     height: 0;
     pointer-events: none;
+}
+
+.image {
+    height: 16px;
+    width: 16px;
 }

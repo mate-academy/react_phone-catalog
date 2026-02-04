@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixin.scss';
+@import '../../styles/variables';
+@import '../../styles/mixin';
 
 .cart {
   display: flex;
@@ -164,10 +164,6 @@
       background-color: $Elements;
     }
 
-    &>button {
-      height: 48px;
-    }
-
     &_price {
       display: flex;
       flex-direction: column;
@@ -193,7 +189,7 @@
   padding: 40px 20px;
   text-align: center;
 
-  img {
+  &_cartImage {
     max-width: 300px;
     margin-bottom: 24px;
   }
@@ -229,4 +225,8 @@
 
 .cartLink {
   position: relative;
+}
+
+.checkout_button {
+  height: 48px;
 }

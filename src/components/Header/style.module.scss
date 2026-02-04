@@ -1,5 +1,5 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .header {
     height: 48px;
@@ -125,11 +125,6 @@
                     display: none;
                 }
             }
-
-            &>a {
-                height: 16px;
-                width: 16px;
-            }
         }
     }
 
@@ -140,6 +135,11 @@
         justify-content: center;
         height: 14px;
         width: 14px;
+
+        &_img {
+            height: 16px;
+            width: 16px;
+        }
     }
 
     &_cartBadge {
@@ -149,15 +149,15 @@
         background-color: $Red;
         color: $White;
         border-radius: 50%;
-        min-width: 14px;      
+        min-width: 14px;
         height: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 9px;
         font-weight: 600;
-        font-family: inherit; 
-        line-height: 1; 
+        font-family: inherit;
+        line-height: 1;
         border: 2px solid $White;
         box-sizing: border-box;
         z-index: 10;

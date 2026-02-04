@@ -1,34 +1,34 @@
-@import url('./mixin.scss');
+@import './mixin';
 
 * {
     color: $Primary;
     box-sizing: border-box;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
 }
 
 @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url('../fonts/Mont-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url('../fonts/Mont-SemiBold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url('../fonts/Mont-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
 }
 
 body {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
@@ -39,6 +39,7 @@ body {
 
 section {
     grid-column: 1 / -1;
+
     @include make-grid-container;
 }
 
@@ -48,7 +49,7 @@ h1,
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
 
     @include on_tablet {
         font-size: 48px;
@@ -62,7 +63,7 @@ h2,
     font-size: 22px;
     line-height: 31px;
     letter-spacing: 0;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
 
     @include on_tablet {
         font-size: 32px;
@@ -73,12 +74,11 @@ h2,
 
 h3,
 .text-h3 {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 20px;
     line-height: 26px;
     letter-spacing: 0;
-    font-family: Mont;
 
     @include on_tablet {
         font-weight: 700;
@@ -89,7 +89,7 @@ h3,
 
 h4,
 .text-h4 {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
@@ -106,7 +106,7 @@ span {
 }
 
 .text_uppercase {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 12px;
     line-height: 11px;
@@ -115,7 +115,7 @@ span {
 }
 
 .text_button {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -124,7 +124,7 @@ span {
 }
 
 .text_body {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
@@ -132,31 +132,47 @@ span {
 }
 
 .text_small {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0;
 }
 
+button,
+a,
+input,
+select {
+    transition: all 0.3s ease;
+}
+
+a img,
+button img {
+    transition: transform 0.3s ease;
+}
+
 button {
     background-color: $White;
     border: 1px solid $Icons;
     cursor: pointer;
-    font-family: Mont;
-
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0;
+}
 
-    &:hover {
-        border: 1px solid $Primary;
-    }
+button:hover {
+    border: 1px solid $Primary;
+}
+
+a:hover img,
+button:hover img {
+    transform: scale(1.1);
 }
 
 .black_button {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     background-color: $Primary;
     color: $White;
     font-weight: 700;
@@ -191,7 +207,6 @@ button {
     max-width: 1136px;
     overflow: hidden;
     box-sizing: border-box;
-
     padding: 0 16px;
 
     @include on_tablet {
@@ -202,22 +217,4 @@ button {
         padding: 0;
         margin: 0 auto;
     }
-}
-
-a img,
-button img {
-    transition: transform 0.3s ease;
-}
-
-
-button,
-a,
-input,
-select {
-    transition: all 0.3s ease;
-}
-
-a:hover img,
-button:hover img {
-    transform: scale(1.1);
 }
