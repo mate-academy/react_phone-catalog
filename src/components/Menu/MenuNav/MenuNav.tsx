@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './MenuNav.module.scss';
 
 type MenuNavProps = {
@@ -17,9 +18,9 @@ export const MenuNav: React.FC<MenuNavProps> = ({ className }) => {
             </a>
           </li>
           <li className={styles.nav__item}>
-            <a href="/phones" className={styles.nav__link}>
+            <Link to="phones" className={styles.nav__link}>
               Phones
-            </a>
+            </Link>
           </li>
           <li className={styles.nav__item}>
             <a href="tablets" className={styles.nav__link}>
