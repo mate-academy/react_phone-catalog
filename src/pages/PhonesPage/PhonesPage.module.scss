@@ -73,47 +73,6 @@
   margin-bottom: 24px;
 }
 
-.controlGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.label {
-  @include text-small;
-
-  color: var(--color-secondary);
-  font-weight: 700;
-}
-
-.selectWrapper {
-  position: relative;
-}
-
-.select {
-  @include text-body;
-
-  padding: 11px 36px 11px 12px;
-  border: 1px solid var(--color-elements);
-  border-radius: 0;
-  background-color: var(--color-white);
-  color: var(--color-primary);
-  min-width: 136px;
-  cursor: pointer;
-  appearance: none;
-  background-image: url('/img/arrow_down_gray.svg');
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-
-  &:focus {
-    outline: none;
-    border-color: var(--color-primary);
-  }
-
-  &:hover {
-    border-color: var(--color-icons);
-  }
-}
 
 @keyframes fade-in {
   from {

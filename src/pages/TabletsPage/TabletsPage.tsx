@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
+import { CustomSelect } from '../../components/CustomSelect';
 import styles from './TabletsPage.module.scss';
 import { useTabletsPage } from './hooks/useTabletsPage';
 
@@ -44,42 +45,30 @@ export const TabletsPage = () => {
         </p>
 
         <div className={styles.controls}>
-          <div className={styles.controlGroup}>
-            <label htmlFor="sort" className={styles.label}>
-              {t('catalog.sortBy')}
-            </label>
-            <div className={styles.selectWrapper}>
-              <select
-                id="sort"
-                value={sort}
-                onChange={handleSortChange}
-                className={styles.select}
-              >
-                <option value="age">{t('catalog.sort.age')}</option>
-                <option value="name">{t('catalog.sort.name')}</option>
-                <option value="price">{t('catalog.sort.price')}</option>
-              </select>
-            </div>
-          </div>
+          <CustomSelect
+            id="sort"
+            label={t('catalog.sortBy')}
+            value={sort}
+            onChange={handleSortChange}
+            options={[
+              { value: 'age', label: t('catalog.sort.age') },
+              { value: 'name', label: t('catalog.sort.name') },
+              { value: 'price', label: t('catalog.sort.price') },
+            ]}
+          />
 
-          <div className={styles.controlGroup}>
-            <label htmlFor="perPage" className={styles.label}>
-              {t('catalog.itemsOnPage')}
-            </label>
-            <div className={styles.selectWrapper}>
-              <select
-                id="perPage"
-                value={perPage}
-                onChange={handlePerPageChange}
-                className={styles.select}
-              >
-                <option value="4">4</option>
-                <option value="8">8</option>
-                <option value="16">16</option>
-                <option value="all">{t('catalog.perPageAll')}</option>
-              </select>
-            </div>
-          </div>
+          <CustomSelect
+            id="perPage"
+            label={t('catalog.itemsOnPage')}
+            value={perPage}
+            onChange={handlePerPageChange}
+            options={[
+              { value: '4', label: '4' },
+              { value: '8', label: '8' },
+              { value: '16', label: '16' },
+              { value: 'all', label: t('catalog.perPageAll') },
+            ]}
+          />
         </div>
 
         {isLoading ? (
