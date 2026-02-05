@@ -55,12 +55,11 @@ const cartSlice = createSlice({
     },
 
     removeItem: (state, action: PayloadAction<string>) => {
-      // eslint-disable-next-line no-param-reassign
-      state.items = state.items.filter(item => item.id !== action.payload);
+      const items = state.items.filter(item => item.id !== action.payload);
 
       localStorage.setItem(
         'cart-storage',
-        JSON.stringify({ state: { items: state.items } }),
+        JSON.stringify({ state: { items: items } }),
       );
     },
 
