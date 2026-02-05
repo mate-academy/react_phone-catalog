@@ -63,6 +63,12 @@
   margin: 0;
 }
 
+.emptyImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .content {
   display: grid;
   grid-template-columns: 1fr 368px;

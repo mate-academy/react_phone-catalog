@@ -53,7 +53,11 @@ export const CartPage = () => {
         <h1 className={styles.title}>{t('cartPage.title')}</h1>
 
         {cartItems.length === 0 ? (
-          <p className={styles.empty}>{t('cartPage.empty')}</p>
+          <img
+            className={styles.emptyImage}
+            src="/img/cart-is-empty.png"
+            alt={t('cartPage.empty')}
+          />
         ) : (
           <div className={styles.content}>
             <div className={styles.items}>

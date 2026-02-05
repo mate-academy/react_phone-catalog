@@ -14,7 +14,7 @@ interface Props {
 export const ProductCard = ({ phone, showRegularPriceOnly = false }: Props) => {
   const { t } = useTranslation();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
-  const { cartItems, addToCart } = useCart();
+  const { cartItems, addToCart, removeFromCart } = useCart();
   const {
     id,
     name,
@@ -38,9 +38,13 @@ export const ProductCard = ({ phone, showRegularPriceOnly = false }: Props) => {
   };
 
   const handleAddToCartClick = () => {
-    if (!isInCart) {
-      addToCart(phone);
+    if (isInCart) {
+      removeFromCart(phone.id);
+
+      return;
     }
+
+    addToCart(phone);
   };
 
   const imageUrl = `/${images[0]}`;
@@ -93,7 +97,6 @@ export const ProductCard = ({ phone, showRegularPriceOnly = false }: Props) => {
             [styles.addedToCart]: isInCart,
           })}
           onClick={handleAddToCartClick}
-          disabled={isInCart}
         >
           {isInCart ? t('common.addedToCart') : t('common.addToCart')}
         </button>

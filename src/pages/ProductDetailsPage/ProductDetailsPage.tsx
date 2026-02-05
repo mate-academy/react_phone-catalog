@@ -26,7 +26,7 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
-  const { cartItems, addToCart } = useCart();
+  const { cartItems, addToCart, removeFromCart } = useCart();
   const [product, setProduct] = useState<Phone | null>(null);
   const [productInfo, setProductInfo] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -163,7 +163,13 @@ export const ProductDetailsPage = () => {
   };
 
   const handleAddToCartClick = () => {
-    if (!product || isInCart) {
+    if (!product) {
+      return;
+    }
+
+    if (isInCart) {
+      removeFromCart(product.id);
+
       return;
     }
 
@@ -327,7 +333,6 @@ export const ProductDetailsPage = () => {
               <button
                 className={`${styles.addToCart} ${isInCart ? styles.addedToCart : ''}`}
                 onClick={handleAddToCartClick}
-                disabled={isInCart}
               >
                 {isInCart ? t('common.addedToCart') : t('common.addToCart')}
               </button>

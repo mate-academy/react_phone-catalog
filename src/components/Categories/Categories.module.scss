@@ -66,29 +66,41 @@
 
 .phones {
   background-color: #6D6474;
-
-  .image {
-    transform: scale(1.2) translate(10%, 15%);
-  }
 }
 
 .tablets {
   background-color: #8D8D92;
-
-  .image {
-    transform: scale(1.2) translate(5%, 10%);
-  }
 }
 
 .accessories {
   background-color: #973d5f;
+}
 
-  .image {
-    width: 182%;
-    height: 99%;
-    max-width: none;
-    transform: translate(6%, 9%);
-  }
+.phones .image {
+  transform: scale(1.2) translate(10%, 15%);
+}
+
+.tablets .image {
+  transform: scale(1.2) translate(5%, 10%);
+}
+
+.accessories .image {
+  width: 182%;
+  height: 99%;
+  max-width: none;
+  transform: translate(6%, 9%);
+}
+
+.card:hover .phones .image {
+  transform: scale(1.32) translate(10%, 15%);
+}
+
+.card:hover .tablets .image {
+  transform: scale(1.32) translate(5%, 10%);
+}
+
+.card:hover .accessories .image {
+  transform: scale(1.1) translate(6%, 9%);
 }
 
 .cardTitle {
