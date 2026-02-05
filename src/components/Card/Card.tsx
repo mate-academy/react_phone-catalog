@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useCartStore } from '../../store/cartStore';
-import { useFavoritesStore } from '../../store/Favoritesstore';
+import { useAppDispatch, useAppSelector } from '../../store';
+import {
+  addItem as addToCartAction,
+  selectCartItems,
+} from '../../store/slices/cartSlice';
+import {
+  addItem as addToFavoritesAction,
+  removeItem as removeFromFavoritesAction,
+  selectFavoritesItems,
+} from '../../store/slices/favoritesSlice';
 import styles from './style.module.scss';
 
 interface CardProps {
@@ -29,12 +37,9 @@ const Card: React.FC<CardProps> = ({
   product,
   showDiscount = false,
 }) => {
-  const addToCart = useCartStore(state => state.addItem);
-  const cartItems = useCartStore(state => state.items);
-
-  const addToFavorites = useFavoritesStore(state => state.addItem);
-  const removeFromFavorites = useFavoritesStore(state => state.removeItem);
-  const favoritesItems = useFavoritesStore(state => state.items);
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(selectCartItems);
+  const favoritesItems = useAppSelector(selectFavoritesItems);
 
   if (!product) {
     return null;
@@ -56,13 +61,15 @@ const Card: React.FC<CardProps> = ({
     e.stopPropagation();
 
     if (!isInCart) {
-      addToCart({
-        id: product.itemId,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        category: product.category,
-      });
+      dispatch(
+        addToCartAction({
+          id: product.itemId,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          category: product.category,
+        }),
+      );
     }
   };
 
@@ -71,19 +78,21 @@ const Card: React.FC<CardProps> = ({
     e.stopPropagation();
 
     if (isInFavorites) {
-      removeFromFavorites(product.itemId);
+      dispatch(removeFromFavoritesAction(product.itemId));
     } else {
-      addToFavorites({
-        id: product.itemId,
-        category: product.category,
-        name: product.name,
-        price: product.price,
-        fullPrice: product.fullPrice,
-        image: product.image,
-        screen: product.screen,
-        capacity: product.capacity,
-        ram: product.ram,
-      });
+      dispatch(
+        addToFavoritesAction({
+          id: product.itemId,
+          category: product.category,
+          name: product.name,
+          price: product.price,
+          fullPrice: product.fullPrice,
+          image: product.image,
+          screen: product.screen,
+          capacity: product.capacity,
+          ram: product.ram,
+        }),
+      );
     }
   };
 

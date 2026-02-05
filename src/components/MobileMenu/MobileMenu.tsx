@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './style.module.scss';
-import { useCartStore } from '../../store/cartStore';
-import { useFavoritesStore } from '../../store/Favoritesstore';
+import { useAppSelector } from '../../store';
+import { selectTotalItems } from '../../store/slices/cartSlice';
+import { selectTotalFavorites } from '../../store/slices/favoritesSlice';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -18,8 +19,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   toggleMenu,
 }) => {
   const location = useLocation();
-  const cartItemsCount = useCartStore(state => state.getTotalItems());
-  const favoritesItemsCount = useFavoritesStore(state => state.getTotalItems());
+  const cartItemsCount = useAppSelector(selectTotalItems);
+  const favoritesItemsCount = useAppSelector(selectTotalFavorites);
 
   const isActive = (path: string) => {
     if (path === '/') {

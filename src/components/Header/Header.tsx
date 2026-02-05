@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
-import { useCartStore } from '../../store/cartStore';
-import { useFavoritesStore } from '../../store/Favoritesstore';
+import { useAppSelector } from '../../store';
+import { selectTotalItems } from '../../store/slices/cartSlice';
+import { selectTotalFavorites } from '../../store/slices/favoritesSlice';
 
 const iconPaths = {
   menu: '../../public/img/icons/Menu.svg',
@@ -16,9 +17,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const cartItemsCount = useCartStore(state => state.getTotalItems());
-
-  const favoritesItemsCount = useFavoritesStore(state => state.getTotalItems());
+  const cartItemsCount = useAppSelector(selectTotalItems);
+  const favoritesItemsCount = useAppSelector(selectTotalFavorites);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';

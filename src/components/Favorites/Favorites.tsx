@@ -1,9 +1,10 @@
-import { useFavoritesStore } from '../../store/Favoritesstore';
+import { useAppSelector } from '../../store';
+import { selectFavoritesItems } from '../../store/slices/favoritesSlice';
 import Card from '../Card/Card';
 import styles from './style.module.scss';
 
 const Favorites = () => {
-  const items = useFavoritesStore(state => state.items);
+  const items = useAppSelector(selectFavoritesItems);
 
   if (items.length === 0) {
     return (

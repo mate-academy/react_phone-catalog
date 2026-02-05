@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useCartStore } from '../../store/cartStore';
+import { useAppSelector } from '../../store';
+import { selectTotalItems } from '../../store/slices/cartSlice';
 import styles from './style.module.scss';
 
 const CartIcon = () => {
-  const getTotalItems = useCartStore(state => state.getTotalItems);
-  const cartItemsCount = getTotalItems();
+  const cartItemsCount = useAppSelector(selectTotalItems);
 
   return (
     <Link to="/cart" className={styles.cartIconLink}>

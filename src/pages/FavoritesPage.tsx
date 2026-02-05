@@ -1,10 +1,11 @@
 import Favorites from '../components/Favorites/Favorites';
 import PathCategory from '../components/PathCategory/PathCategory';
-import { useFavoritesStore } from '../store/Favoritesstore';
+import { useAppSelector } from '../store';
+import { selectTotalFavorites } from '../store/slices/favoritesSlice';
 import Layout from './Layout';
 
 const FavoritesPage = () => {
-  const totalItems = useFavoritesStore(state => state.getTotalItems());
+  const totalItems = useAppSelector(selectTotalFavorites);
 
   return (
     <Layout>

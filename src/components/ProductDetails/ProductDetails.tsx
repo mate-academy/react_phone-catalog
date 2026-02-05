@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { useCartStore } from '../../store/cartStore';
-import { useFavoritesStore } from '../../store/Favoritesstore';
+import { useAppDispatch, useAppSelector } from '../../store';
+import {
+  addItem as addToCartAction,
+  selectCartItems,
+} from '../../store/slices/cartSlice';
+import {
+  addItem as addToFavoritesAction,
+  removeItem as removeFromFavoritesAction,
+  selectFavoritesItems,
+} from '../../store/slices/favoritesSlice';
 import Carousel from '../Carousel/Carousel';
 import Loader from '../Loader/Loader';
 import styles from './style.module.scss';
@@ -40,12 +48,9 @@ const ProductDetails = () => {
   const [error, setError] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
 
-  const addToCart = useCartStore(state => state.addItem);
-  const cartItems = useCartStore(state => state.items);
-
-  const addToFavorites = useFavoritesStore(state => state.addItem);
-  const removeFromFavorites = useFavoritesStore(state => state.removeItem);
-  const favoritesItems = useFavoritesStore(state => state.items);
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(selectCartItems);
+  const favoritesItems = useAppSelector(selectFavoritesItems);
 
   const isInCart = product
     ? cartItems.some(item => item.id === product.id)
@@ -131,13 +136,15 @@ const ProductDetails = () => {
       return;
     }
 
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.priceDiscount,
-      image: product.images[0],
-      category: product.category,
-    });
+    dispatch(
+      addToCartAction({
+        id: product.id,
+        name: product.name,
+        price: product.priceDiscount,
+        image: product.images[0],
+        category: product.category,
+      }),
+    );
   };
 
   const handleToggleFavorite = () => {
@@ -146,19 +153,21 @@ const ProductDetails = () => {
     }
 
     if (isInFavorites) {
-      removeFromFavorites(product.id);
+      dispatch(removeFromFavoritesAction(product.id));
     } else {
-      addToFavorites({
-        id: product.id,
-        category: product.category,
-        name: product.name,
-        price: product.priceDiscount,
-        fullPrice: product.priceRegular,
-        image: product.images[0],
-        screen: product.screen,
-        capacity: product.capacity,
-        ram: product.ram,
-      });
+      dispatch(
+        addToFavoritesAction({
+          id: product.id,
+          category: product.category,
+          name: product.name,
+          price: product.priceDiscount,
+          fullPrice: product.priceRegular,
+          image: product.images[0],
+          screen: product.screen,
+          capacity: product.capacity,
+          ram: product.ram,
+        }),
+      );
     }
   };
 

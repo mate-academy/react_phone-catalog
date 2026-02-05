@@ -1,17 +1,21 @@
-import { useCartStore } from '../../store/cartStore';
+import { useAppDispatch, useAppSelector } from '../../store';
+import {
+  removeItem,
+  updateQuantity,
+  clearCart,
+  selectCartItems,
+  selectTotalPrice,
+  selectTotalItems,
+} from '../../store/slices/cartSlice';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './style.module.scss';
 
 const Cart = () => {
-  const {
-    items,
-    removeItem,
-    updateQuantity,
-    getTotalPrice,
-    getTotalItems,
-    clearCart,
-  } = useCartStore();
+  const dispatch = useAppDispatch();
+  const items = useAppSelector(selectCartItems);
+  const totalPrice = useAppSelector(selectTotalPrice);
+  const totalItems = useAppSelector(selectTotalItems);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,12 +23,12 @@ const Cart = () => {
   }, []);
 
   const handleIncrease = (id: string, currentQuantity: number) => {
-    updateQuantity(id, currentQuantity + 1);
+    dispatch(updateQuantity({ id, quantity: currentQuantity + 1 }));
   };
 
   const handleDecrease = (id: string, currentQuantity: number) => {
     if (currentQuantity > 1) {
-      updateQuantity(id, currentQuantity - 1);
+      dispatch(updateQuantity({ id, quantity: currentQuantity - 1 }));
     }
   };
 
@@ -45,9 +49,6 @@ const Cart = () => {
   if (!mounted) {
     return null;
   }
-
-  const totalItems = getTotalItems();
-  const totalPrice = getTotalPrice();
 
   if (items.length === 0) {
     return (
@@ -122,7 +123,7 @@ const Cart = () => {
         </div>
         <hr />
         <button
-          className="black_button checkout_button"
+          className={`black_button ${styles.checkout_button}`}
           onClick={handleCheckout}
         >
           Checkout
