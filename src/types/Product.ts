@@ -4,6 +4,7 @@ export interface Product {
   priceRegular: number;
   priceDiscount: number;
   id: string;
+  itemId: string;
   category: ProductCategory;
   name: string;
   fullPrice: number;

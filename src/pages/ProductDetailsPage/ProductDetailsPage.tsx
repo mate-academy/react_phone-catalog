@@ -100,7 +100,7 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (error) {
-    return <p>Product was not found</p>;
+    return <p className={style.errorP}>Product was not found</p>;
   }
 
   if (!data) {
@@ -120,22 +120,22 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={style.topNavDetails}>
         <Link to="/">
           <img
-            src="/public/img/buttons/home_button.svg"
+            src="img/buttons/home_button.svg"
             alt="Link Home"
             className={style.imgHome}
           />
         </Link>
-        <img src="/public/img/arrows/arrow_right_gray.svg" alt="button right" />
-        <Link to={`/${data.category}`} className={style.category}>
+        <img src="img/arrows/arrow_right_gray.svg" alt="button right" />
+        <Link to={`${data.category}`} className={style.category}>
           {data.category}
         </Link>
-        <img src="/public/img/arrows/arrow_right_gray.svg" alt="button right" />
+        <img src="img/arrows/arrow_right_gray.svg" alt="button right" />
         <p className={style.nameNav}>{data.name}</p>
       </div>
 
       <div className={style.bottomNav}>
         <button onClick={back} className={style.buttonNav}>
-          <img src="/public/img/arrows/arrow_left.svg" alt="button left" />
+          <img src="img/arrows/arrow_left.svg" alt="button left" />
           Back
         </button>
       </div>

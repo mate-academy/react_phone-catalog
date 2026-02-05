@@ -13,8 +13,10 @@ export const ProductCard: React.FC<Props> = ({ product, priceMode }) => {
   const { but, has } = useLikeProducts();
   const { add, item } = useCard();
 
-  const productAdded = item.some(ind => ind.id === product.id);
-  const likePlus = has(product.id);
+  const realId = product.itemId || product.id;
+
+  const productAdded = item.some(ind => ind.id === realId);
+  const likePlus = has(realId);
 
   const imageSrc = product.image || product.images?.[0];
   const priceAll =
@@ -24,11 +26,11 @@ export const ProductCard: React.FC<Props> = ({ product, priceMode }) => {
 
   return (
     <article className={style.card}>
-      <Link to={`/product/${product.id}`} className={style.link}>
+      <Link to={`/product/${realId}`} className={style.link}>
         <img src={imageSrc} alt={product.name} className={style.wrapImg} />
       </Link>
 
-      <Link to={`/product/${product.id}`} className={style.title}>
+      <Link to={`/product/${realId}`} className={style.title}>
         {product.name}
       </Link>
 
@@ -65,16 +67,16 @@ export const ProductCard: React.FC<Props> = ({ product, priceMode }) => {
         <button
           aria-label="like product"
           className={`${style.rightBut} ${likePlus ? style.rightButActive : ''}`}
-          onClick={() => but(product.id)}
+          onClick={() => but(realId)}
         >
           {likePlus ? (
             <img
-              src="img/buttons/hover_heart_button.svg"
+              src="./img/buttons/hover_heart_button.svg"
               alt="button hover heart"
             />
           ) : (
             <img
-              src="img/buttons/empty_heart_button.svg"
+              src="./img/buttons/empty_heart_button.svg"
               alt="button empty heart"
             />
           )}

@@ -1,5 +1,17 @@
 @use '../../mixins.scss' as *;
 
+.errorP {
+  display: block;
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: #313237;
+  padding-top: 40px;
+}
+
 .section {
   padding: 0 16px;
 

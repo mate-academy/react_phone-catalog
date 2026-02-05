@@ -28,7 +28,7 @@ export const CartPage: React.FC = () => {
     return (
       <div className={style.emptyCart}>
         <img
-          src="img/cart-is-empty.png"
+          src="./img/cart-is-empty.png"
           alt="empty cart"
           className={style.imgAside}
         />
@@ -61,7 +61,7 @@ export const CartPage: React.FC = () => {
         </div>
       )}
       <div className={style.topNavDetails}>
-        <img src="/public/img/arrows/arrow_left.svg" alt="button left" />
+        <img src="./img/arrows/arrow_left.svg" alt="button left" />
         <p className={style.nameNav}>Back</p>
       </div>
 
@@ -75,7 +75,7 @@ export const CartPage: React.FC = () => {
                 <div className={style.blockPartOne}>
                   <button onClick={() => remove(i.id)} className={style.button}>
                     <img
-                      src="img/buttons/close_menu_silver.svg"
+                      src="./img/buttons/close_menu_silver.svg"
                       alt="close menu"
                     />
                   </button>
