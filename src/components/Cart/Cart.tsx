@@ -33,7 +33,7 @@ const Cart = () => {
   };
 
   const handleRemove = (id: string) => {
-    removeItem(id);
+    dispatch(removeItem(id));
   };
 
   const handleCheckout = () => {
@@ -42,7 +42,7 @@ const Cart = () => {
     );
 
     if (confirmed) {
-      clearCart();
+      dispatch(clearCart());
     }
   };
 

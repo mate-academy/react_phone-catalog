@@ -59,8 +59,10 @@ const cartSlice = createSlice({
 
       localStorage.setItem(
         'cart-storage',
-        JSON.stringify({ state: { items: items } }),
+        JSON.stringify({ state: { items } }),
       );
+
+      return { ...state, items };
     },
 
     updateQuantity: (
@@ -69,32 +71,33 @@ const cartSlice = createSlice({
     ) => {
       const { id, quantity } = action.payload;
 
-      if (quantity <= 0) {
-        // eslint-disable-next-line no-param-reassign
-        state.items = state.items.filter(item => item.id !== id);
-      } else {
-        const item = state.items.find(i => i.id === id);
+      let items;
 
-        if (item) {
-          // eslint-disable-next-line no-param-reassign
-          item.quantity = quantity;
-        }
+      if (quantity <= 0) {
+        items = state.items.filter(item => item.id !== id);
+      } else {
+        items = state.items.map(item =>
+          item.id === id ? { ...item, quantity } : item,
+        );
       }
 
       localStorage.setItem(
         'cart-storage',
-        JSON.stringify({ state: { items: state.items } }),
+        JSON.stringify({ state: { items } }),
       );
+
+      return { ...state, items };
     },
 
     clearCart: state => {
-      // eslint-disable-next-line no-param-reassign
-      state.items = [];
+      const items: CartItem[] = [];
 
       localStorage.setItem(
         'cart-storage',
-        JSON.stringify({ state: { items: [] } }),
+        JSON.stringify({ state: { items } }),
       );
+
+      return { ...state, items };
     },
   },
 });

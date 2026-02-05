@@ -54,24 +54,27 @@ const favoritesSlice = createSlice({
         );
       }
     },
+
     removeItem: (state, action: PayloadAction<string>) => {
-      // eslint-disable-next-line no-param-reassign
-      state.items = state.items.filter(item => item.id !== action.payload);
+      const items = state.items.filter(item => item.id !== action.payload);
 
       localStorage.setItem(
         'favorites-storage',
-        JSON.stringify({ state: { items: state.items } }),
+        JSON.stringify({ state: { items } }),
       );
+
+      return { ...state, items };
     },
 
     clearFavorites: state => {
-      // eslint-disable-next-line no-param-reassign
-      state.items = [];
+      const items: FavoriteItem[] = [];
 
       localStorage.setItem(
         'favorites-storage',
-        JSON.stringify({ state: { items: [] } }),
+        JSON.stringify({ state: { items } }),
       );
+
+      return { ...state, items };
     },
   },
 });
