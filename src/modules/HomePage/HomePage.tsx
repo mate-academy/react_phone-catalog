@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from './HomePage.module.scss';
 //import ProductsSlider from './components/ProductsSlider/index';
 import PicturesSlider from './components/PicturesSlider/index';
-
-interface Product {
-  id?: string | number;
-  name?: string;
-}
+import { Product } from './../../../public/api/types/Product';
 
 export const HomePage: React.FC = () => {
+  const THRESHOLD = 30;
   const [products, setProducts] = useState<Product[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [paused, setPaused] = useState<boolean>(false);
+
   const url = 'api/products.json';
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const startX = useRef<number | null>(null);
+  const startY = useRef<number | null>(null);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
   const lenOfProducts = products?.length ?? 0;
 
   useEffect(() => {
-    if (lenOfProducts > 0) {
+    if (lenOfProducts > 0 && !paused) {
       const id = setInterval(
         () => setCurrentIndex(i => (i + 1) % lenOfProducts),
         5000,
@@ -27,7 +28,9 @@ export const HomePage: React.FC = () => {
 
       return () => clearInterval(id);
     }
-  }, [lenOfProducts]);
+
+    return;
+  }, [lenOfProducts, paused]);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -39,15 +42,11 @@ export const HomePage: React.FC = () => {
       setError(null);
       const response = await fetch(url, { signal });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
       const data: Product[] = await response.json();
 
       setProducts(data);
     } catch (err) {
-      setError('Unknown error');
+      setError((err as Error)?.message ?? 'Unknown error');
     } finally {
       setLoading(false);
     }
@@ -60,6 +59,57 @@ export const HomePage: React.FC = () => {
 
     return () => controller.abort();
   }, []);
+
+  const handleNext = () => {
+    if (lenOfProducts > 0) {
+      const newIndex =
+        currentIndex === lenOfProducts - 1 ? 0 : currentIndex + 1;
+
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  const handlePrev = () => {
+    if (lenOfProducts > 0) {
+      const newIndex =
+        currentIndex === 0 ? lenOfProducts - 1 : currentIndex - 1;
+
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>): void => {
+    startX.current = e.touches[0].clientX;
+    startY.current = e.touches[0].clientY;
+    setPaused(true);
+
+     console.log('touchstart', e.touches[0].clientX, e.touches[0].clientY);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>): void => {
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+
+    if (startX.current == null || startY.current == null) {
+      return;
+    }
+
+    const dx = endX - startX.current;
+    const dy = endY - startY.current;
+
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESHOLD) {
+      if (dx < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+
+    startX.current = null;
+    startY.current = null;
+    setPaused(false);
+    console.log('touchend', e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+  };
 
   return (
     <>
@@ -76,7 +126,15 @@ export const HomePage: React.FC = () => {
             </div>
 
             {!loading && !error && Array.isArray(products) && (
-              <PicturesSlider products={products} currentIndex={currentIndex} />
+              <PicturesSlider
+                products={products}
+                currentIndex={currentIndex}
+                handlePrev={handlePrev}
+                handleNext={handleNext}
+                handleTouchStart={handleTouchStart}
+                handleTouchEnd={handleTouchEnd}
+                sliderRef={sliderRef}
+              />
             )}
 
             <div className={styles.homePage__dots}>

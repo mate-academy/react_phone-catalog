@@ -1,5 +1,6 @@
 @use '../../../../utils/vars.scss' as *;
 @import '../../../../utils/mixins' ;
+@import '../../../../components/Header/Header.module.scss';
 
 .picturesSlider {
   width: 100%;

@@ -2,7 +2,9 @@
 @import '../../utils/mixins';
 
 .header {
-  width: 100%;
+ // min-width: 100%;
+
+  box-sizing: border-box;
   display: block;
   position: sticky;
   top: 0;
@@ -83,7 +85,7 @@
   display: flex;
   justify-content:  space-between;
   background-color: $header-background-color;
-  width: 100%;
+  //width: 100%;
 
   &__menu {
       display: none ;
@@ -111,3 +113,14 @@
   }
 
 }
+
+.link {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: #89939A;
+    background-color: $footer-background-color;
+
+     @include hover(transform, scale(1.1));
+  }
