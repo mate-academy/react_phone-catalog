@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Phone } from '../../../types/Phone';
 import { fetchWithDelay } from '../../../api/fetchWithDelay';
+import {
+  DEFAULT_PER_PAGE,
+  DEFAULT_SORT,
+  getPaginationItems,
+} from '../constants/catalog';
 
 type CatalogResult = {
   items: Phone[];
@@ -22,8 +27,8 @@ export const useCatalogPage = (dataUrl: string): CatalogResult => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort') || 'age';
-  const perPage = searchParams.get('perPage') || '16';
+  const sort = searchParams.get('sort') || DEFAULT_SORT;
+  const perPage = searchParams.get('perPage') || DEFAULT_PER_PAGE;
   const page = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
@@ -123,23 +128,10 @@ export const useCatalogPage = (dataUrl: string): CatalogResult => {
     });
   };
 
-  const paginationItems = useMemo(() => {
-    const itemsList: number[] = [];
-    const maxVisible = 4;
-
-    let start = Math.max(1, page - Math.floor((maxVisible - 1) / 2));
-    const end = Math.min(totalPages, start + maxVisible - 1);
-
-    if (end - start + 1 < maxVisible) {
-      start = Math.max(1, end - maxVisible + 1);
-    }
-
-    for (let i = start; i <= end; i++) {
-      itemsList.push(i);
-    }
-
-    return itemsList;
-  }, [page, totalPages]);
+  const paginationItems = useMemo(
+    () => getPaginationItems(page, totalPages),
+    [page, totalPages],
+  );
 
   return {
     items,

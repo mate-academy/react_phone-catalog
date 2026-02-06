@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
 import { CustomSelect } from '../../components/CustomSelect';
+import { getSkeletonCount } from '../shared/constants/catalog';
 import styles from './AccessoriesPage.module.scss';
 import { useAccessoriesPage } from './hooks/useAccessoriesPage';
 
@@ -21,7 +22,7 @@ export const AccessoriesPage = () => {
     handlePerPageChange,
     handlePageChange,
   } = useAccessoriesPage();
-  const skeletonCount = perPage === 'all' ? 16 : Number(perPage);
+  const skeletonCount = getSkeletonCount(perPage);
 
   return (
     <div className={styles.accessoriesPage}>

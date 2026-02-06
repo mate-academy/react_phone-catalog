@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
 import { CustomSelect } from '../../components/CustomSelect';
+import { getSkeletonCount } from '../shared/constants/catalog';
 import styles from './PhonesPage.module.scss';
 import { usePhonesPage } from './hooks/usePhonesPage';
 
@@ -21,7 +22,7 @@ export const PhonesPage = () => {
     handlePerPageChange,
     handlePageChange,
   } = usePhonesPage();
-  const skeletonCount = perPage === 'all' ? 16 : Number(perPage);
+  const skeletonCount = getSkeletonCount(perPage);
 
   return (
     <div className={styles.phonesPage}>

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
 import { CustomSelect } from '../../components/CustomSelect';
+import { getSkeletonCount } from '../shared/constants/catalog';
 import styles from './TabletsPage.module.scss';
 import { useTabletsPage } from './hooks/useTabletsPage';
 
@@ -21,7 +22,7 @@ export const TabletsPage = () => {
     handlePerPageChange,
     handlePageChange,
   } = useTabletsPage();
-  const skeletonCount = perPage === 'all' ? 16 : Number(perPage);
+  const skeletonCount = getSkeletonCount(perPage);
 
   return (
     <div className={styles.tabletsPage}>
