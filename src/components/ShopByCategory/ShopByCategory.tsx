@@ -17,7 +17,7 @@ const ShopByCategory = () => {
   useEffect(() => {
     const fetchCategoryCounts = async () => {
       try {
-        const response = await fetch('/api/products.json');
+        const response = await fetch('./api/products.json');
         const data: Product[] = await response.json();
 
         const phonesCount = data.filter(p => p.category === 'phones').length;

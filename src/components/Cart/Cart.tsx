@@ -54,7 +54,7 @@ const Cart = () => {
     return (
       <div className={styles.cartEmpty}>
         <img
-          src="/img/cart-is-empty.png"
+          src="./img/cart-is-empty.png"
           alt="Cart is empty"
           className={styles.cartEmpty_cartImage}
         />
@@ -75,7 +75,7 @@ const Cart = () => {
                 onClick={() => handleRemove(item.id)}
                 aria-label="Remove item"
               >
-                <img src="/img/icons/XMark(gray).svg" alt="Remove" />
+                <img src="./img/icons/XMark(gray).svg" alt="Remove" />
               </button>
               <Link
                 to={`/${item.category}/${item.id}`}

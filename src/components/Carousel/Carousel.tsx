@@ -38,7 +38,7 @@ const Carousel = ({
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/products.json');
+        const response = await fetch('./api/products.json');
         const data: Product[] = await response.json();
 
         let filteredProducts: Product[] = [];
@@ -154,14 +154,14 @@ const Carousel = ({
             onClick={handleScrollLeft}
             aria-label="Scroll left"
           >
-            <img src="/img/icons/Arrow_Left.svg" alt="Previous" />
+            <img src="./img/icons/Arrow_Left.svg" alt="Previous" />
           </button>
           <button
             className={`${styles.modelCatalog_label_buttons_arrow} ${!canScrollRight ? styles.disabled : ''}`}
             onClick={handleScrollRight}
             aria-label="Scroll right"
           >
-            <img src="/img/icons/Arrow_Right.svg" alt="Next" />
+            <img src="./img/icons/Arrow_Right.svg" alt="Next" />
           </button>
         </div>
       </div>

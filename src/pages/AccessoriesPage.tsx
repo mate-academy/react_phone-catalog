@@ -10,6 +10,3 @@ const AccessoriesPage = () => {
 };
 
 export default AccessoriesPage;
-
-// Стили все в один ебана
-// Вынести статик говно

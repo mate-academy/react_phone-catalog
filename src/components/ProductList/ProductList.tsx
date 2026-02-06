@@ -49,7 +49,7 @@ const ProductList = () => {
       defaultParams.set('perPage', '16');
       setSearchParams(defaultParams, { replace: true });
     }
-  }, []);
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -59,7 +59,7 @@ const ProductList = () => {
 
         await new Promise(resolve => setTimeout(resolve, 1000));
 
-        const response = await fetch('/api/products.json');
+        const response = await fetch('./api/products.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch products');

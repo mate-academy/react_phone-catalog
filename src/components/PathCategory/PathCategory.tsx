@@ -93,7 +93,7 @@ const PathCategory = ({ totalProducts }: CatalogueOptionsProps) => {
 
       {showBackButton && (
         <button className={styles.icons_back} onClick={handleBack}>
-          <img src="/img/icons/Arrow_Left.svg" alt="Back" />
+          <img src="./img/icons/Arrow_Left.svg" alt="Back" />
           <span className="text_small">Back</span>
         </button>
       )}
