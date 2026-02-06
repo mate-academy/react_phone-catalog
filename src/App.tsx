@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import HomePage from './pages/HomePage';
 import AccessoriesPage from './pages/AccessoriesPage';
@@ -11,7 +11,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage';
 
 export const App = () => (
   <div className="App">
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
@@ -24,6 +24,6 @@ export const App = () => (
         <Route path="/tablets/:id" element={<ProductDetailsPage />} />
         <Route path="/accessories/:id" element={<ProductDetailsPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </div>
 );
