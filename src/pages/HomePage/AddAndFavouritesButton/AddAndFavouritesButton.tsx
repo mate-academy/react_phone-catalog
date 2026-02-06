@@ -36,8 +36,8 @@ export const AddAndFavouritesButton = ({ productId }: Props) => {
           <img
             src={
               theme === 'light'
-                ? import.meta.env.BASE_URL + 'img/icons/Favourites_icon.svg'
-                : import.meta.env.BASE_URL + 'img/icons/Favourites_dark.svg'
+                ? import.meta.env.BASE_URL + './img/icons/Favourites_icon.svg'
+                : import.meta.env.BASE_URL + './img/icons/Favourites_dark.svg'
             }
             alt="Favourites heart"
             className="icon"
@@ -47,9 +47,9 @@ export const AddAndFavouritesButton = ({ productId }: Props) => {
             src={
               theme === 'light'
                 ? import.meta.env.BASE_URL +
-                  'img/icons/Favourites-added_icon.svg'
+                  './img/icons/Favourites-added_icon.svg'
                 : import.meta.env.BASE_URL +
-                  'img/icons/Favourites-added_dark.svg'
+                  './img/icons/Favourites-added_dark.svg'
             }
             alt="Favourites heart fill"
             className="icon"

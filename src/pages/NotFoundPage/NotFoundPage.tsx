@@ -14,10 +14,10 @@ export const NotFoundPage: React.FC<Props> = ({ type }) => {
 
   if (type === 'product') {
     title = 'Product not found';
-    imgSrc = import.meta.env.BASE_URL + 'img/product-not-found.png';
+    imgSrc = import.meta.env.BASE_URL + './img/product-not-found.png';
   } else {
     title = 'Page not found';
-    imgSrc = import.meta.env.BASE_URL + 'img/page-not-found.png';
+    imgSrc = import.meta.env.BASE_URL + './img/page-not-found.png';
   }
 
   return (
@@ -31,8 +31,8 @@ export const NotFoundPage: React.FC<Props> = ({ type }) => {
             <img
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+                  ? import.meta.env.BASE_URL + './img/icons/Arrow-Left_icon.svg'
+                  : import.meta.env.BASE_URL + './img/icons/Arrow-Left_dark.svg'
               }
               alt="Back To Home Arrow"
               className="icon"

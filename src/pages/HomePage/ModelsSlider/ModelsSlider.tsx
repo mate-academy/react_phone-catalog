@@ -39,8 +39,8 @@ export const ModelsSlider: React.FC<Props> = ({
               className="icon"
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+                  ? import.meta.env.BASE_URL + './img/icons/Arrow-Left_icon.svg'
+                  : import.meta.env.BASE_URL + './img/icons/Arrow-Left_dark.svg'
               }
               alt="Arrow Left"
             />
@@ -53,8 +53,10 @@ export const ModelsSlider: React.FC<Props> = ({
               className="icon"
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
+                  ? import.meta.env.BASE_URL +
+                    './img/icons/Arrow-Right_icon.svg'
+                  : import.meta.env.BASE_URL +
+                    './img/icons/Arrow-Right_dark.svg'
               }
               alt="Arrow Right"
             />

@@ -103,8 +103,8 @@ export const CartPage = () => {
           <img
             src={
               theme === 'light'
-                ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+                ? import.meta.env.BASE_URL + './img/icons/Arrow-Left_icon.svg'
+                : import.meta.env.BASE_URL + './img/icons/Arrow-Left_dark.svg'
             }
             alt="Back Arrow"
             className="icon"
@@ -159,9 +159,9 @@ export const CartPage = () => {
                         src={
                           theme === 'light'
                             ? import.meta.env.BASE_URL +
-                              'img/icons/Close_icon.svg'
+                              './img/icons/Close_icon.svg'
                             : import.meta.env.BASE_URL +
-                              'img/icons/Close_dark.svg'
+                              './img/icons/Close_dark.svg'
                         }
                         alt="Delete item icon"
                         className="icon"
@@ -195,9 +195,9 @@ export const CartPage = () => {
                           src={
                             theme === 'light'
                               ? import.meta.env.BASE_URL +
-                                'img/icons/Minus_icon.svg'
+                                './img/icons/Minus_icon.svg'
                               : import.meta.env.BASE_URL +
-                                'img/icons/Minus_dark.svg'
+                                './img/icons/Minus_dark.svg'
                           }
                           alt="Minus icon"
                           className="icon"
@@ -216,9 +216,9 @@ export const CartPage = () => {
                           src={
                             theme === 'light'
                               ? import.meta.env.BASE_URL +
-                                'img/icons/Plus_icon.svg'
+                                './img/icons/Plus_icon.svg'
                               : import.meta.env.BASE_URL +
-                                'img/icons/Plus_dark.svg'
+                                './img/icons/Plus_dark.svg'
                           }
                           alt="Plus icon"
                           className="icon"
@@ -253,7 +253,7 @@ export const CartPage = () => {
         <div className="cart__empty">
           <h3 className="cart__empty--text">Your cart is empty</h3>
           <img
-            src={import.meta.env.BASE_URL + 'img/cart-is-empty.png'}
+            src={import.meta.env.BASE_URL + './img/cart-is-empty.png'}
             alt="Cart is empty"
             className="cart__empty--img"
           />
