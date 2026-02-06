@@ -1,0 +1,25 @@
+@use '../../../styles/utils/skeleton' as *;
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+
+  &__img {
+    height: 280px;
+    background: rgba(220, 220, 224, 0.5);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  &__text {
+    height: 95px;
+    background: rgba(220, 220, 224, 0.5);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  &__buttons {
+    height: 40px;
+    background: rgba(220, 220, 224, 0.5);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+}

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import './Dropdown.scss';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../../../components/context/ThemeContext';
 
@@ -18,13 +19,16 @@ export const Dropdown: React.FC<Props> = ({
 }) => {
   const [isOpenSort, setIsOpenSort] = useState(false);
   const [isOpenPerPage, setIsOpenPerPage] = useState(false);
+
   const { theme } = useTheme();
+
   const sortRef = useRef<HTMLDivElement>(null);
   const perPageRef = useRef<HTMLDivElement>(null);
+
   const sortToLabel = (value: string) => {
     switch (value) {
       case 'name':
-        return 'Allphabetical';
+        return 'Alphabetical';
       case 'price':
         return 'Cheapest';
       default:
@@ -45,8 +49,10 @@ export const Dropdown: React.FC<Props> = ({
 
   const [selectedSort, setSelectedSort] = useState(sortToLabel(sort));
   const [selectedPerPage, setSelectedPerPage] = useState(perPage.toString());
+
   const sortOptions = ['Newest', 'Alphabetical', 'Cheapest'];
   const perPageOptions = ['8', '16', '32'];
+
   const handleSortSelect = (label: string) => {
     setSelectedSort(label);
     setIsOpenSort(false);
@@ -83,6 +89,7 @@ export const Dropdown: React.FC<Props> = ({
 
   return (
     <div className="dropdown">
+      {/* Сортування */}
       <div className="dropdown__box dropdown__box--sort">
         <p className="dropdown__label">Sort by</p>
         <div className="dropdown__select" ref={sortRef}>
@@ -96,7 +103,7 @@ export const Dropdown: React.FC<Props> = ({
                 isOpenSort
                   ? theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
-                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_dark.svg'
                   : theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
                     : import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
@@ -124,6 +131,8 @@ export const Dropdown: React.FC<Props> = ({
           </ul>
         </div>
       </div>
+
+      {/* Кількість на сторінці */}
       <div className="dropdown__box dropdown__box--perpage">
         <p className="dropdown__label">Items on page</p>
         <div className="dropdown__select" ref={perPageRef}>
@@ -137,7 +146,7 @@ export const Dropdown: React.FC<Props> = ({
                 isOpenPerPage
                   ? theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
-                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_dark.svg'
                   : theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
                     : import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
@@ -147,7 +156,7 @@ export const Dropdown: React.FC<Props> = ({
             />
           </div>
           <ul
-            className={classNames('dropdonw__list', {
+            className={classNames('dropdown__list', {
               'dropdown__list--active': isOpenPerPage,
             })}
           >

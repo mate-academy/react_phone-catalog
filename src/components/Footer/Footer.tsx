@@ -13,8 +13,8 @@ export const Footer = () => {
             <img
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + 'img/icons/Logo__footer.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Logo__footer.svg'
+                  ? import.meta.env.BASE_URL + 'img/icons/Logo_footer.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Logo-footer_dark.svg'
               }
               alt="Logo icon"
               className="logo"
@@ -42,7 +42,7 @@ export const Footer = () => {
           <a
             href="https://github.com/tvoypervy/react_phone-catalog/tree/develop"
             className="link"
-            target="_black"
+            target="_blank"
             rel="noopener noreferrer"
           >
             Rights
@@ -64,7 +64,7 @@ export const Footer = () => {
                 src={
                   theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
-                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_dark.svg'
                 }
                 alt="Back to top icon"
                 className="icon"

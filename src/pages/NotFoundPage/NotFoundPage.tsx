@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { useTheme } from '../../components/context/ThemeContext';
 import React from 'react';
 import './NotFoundPage.scss';
+import { Link } from 'react-router-dom';
+import { useTheme } from '../../components/context/ThemeContext';
 
 type Props = {
   type: 'product' | 'page';
@@ -23,6 +23,7 @@ export const NotFoundPage: React.FC<Props> = ({ type }) => {
   return (
     <div className="productNotFound">
       <img src={imgSrc} alt={title} className="productNotFound__img" />
+
       <div className="productNotFound__box">
         <h2 className="productNotFound__title">{title}</h2>
         <div className="backToHome">
@@ -31,7 +32,7 @@ export const NotFoundPage: React.FC<Props> = ({ type }) => {
               src={
                 theme === 'light'
                   ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg' //Dark icon dont forget
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
               }
               alt="Back To Home Arrow"
               className="icon"

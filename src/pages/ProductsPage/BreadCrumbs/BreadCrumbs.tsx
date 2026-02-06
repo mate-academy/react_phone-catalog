@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import './BreadCrumbs.scss';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import './Breadcrumbs.scss';
+import React, { useEffect, useState } from 'react';
 import { useProductFilters } from '../../../hooks/useProductsFilters';
-import { useTheme } from '../../../components/context/ThemeContext';
 import { ProductUnionType } from '../../ProductInfoPage';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const { category, itemId } = useParams();
   const { getLastSearch } = useProductFilters();
   const { theme } = useTheme();
+
   const [modelName, setModelName] = useState('');
-  const pathName = location.pathname.replace('/', '');
+
+  const pathname = location.pathname.replace('/', '');
+
   const pageName = category
     ? category.charAt(0).toUpperCase() + category.slice(1)
-    : pathName
-      ? pathName.charAt(0).toUpperCase() + pathName.slice(1)
+    : pathname
+      ? pathname.charAt(0).toUpperCase() + pathname.slice(1)
       : '';
+
   const backSearch = location.state?.search || location.search || '';
   const searchToUse = backSearch !== '' ? backSearch : getLastSearch();
+
   const backPath = `/${category || ''}`;
   const backWithSearch = `${backPath}${searchToUse}`;
 
@@ -31,7 +36,7 @@ export const Breadcrumbs: React.FC = () => {
       .then(res => res.json())
       .then(data => {
         const found = data.find(
-          (product: ProductUnionType) => product.id == itemId,
+          (product: ProductUnionType) => product.id === itemId,
         );
 
         setModelName(found.name || '');
@@ -48,7 +53,7 @@ export const Breadcrumbs: React.FC = () => {
                 ? import.meta.env.BASE_URL +
                   'img/icons/Breadcrumbs-Home_icon.svg'
                 : import.meta.env.BASE_URL +
-                  'img/icons/Breadcrumbs-Home_icon.svg'
+                  'img/icons/Breadcrumbs-Home_dark.svg'
             }
             alt="Home icon"
             className="icon"
@@ -57,8 +62,9 @@ export const Breadcrumbs: React.FC = () => {
         <img
           src={
             theme === 'light'
-              ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
-              : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
+              ? import.meta.env.BASE_URL +
+                'img/icons/Breadcrumbs-Separator_icon.svg'
+              : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
           }
           alt="Breadcrumbs Separator"
           className="icon breadcrumbs__separator"
@@ -80,14 +86,18 @@ export const Breadcrumbs: React.FC = () => {
             <img
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
+                  ? import.meta.env.BASE_URL +
+                    'img/icons/Breadcrumbs-Separator_icon.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
               }
               alt="Breadcrumbs Separator"
               className="icon breadcrumbs__separator"
             />
-            {/* eslint-disable-next-line max-len */}
-            <span className="breadcrumbs__current breadcrumbs__current--proudct">
+
+            <span
+              className="breadcrumbs__current
+                breadcrumbs__current--product"
+            >
               {modelName}
             </span>
           </>
@@ -100,7 +110,7 @@ export const Breadcrumbs: React.FC = () => {
               src={
                 theme === 'light'
                   ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
               }
               alt="Back Arrow"
               className="icon"

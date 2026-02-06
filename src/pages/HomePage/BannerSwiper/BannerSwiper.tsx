@@ -6,29 +6,32 @@ import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './BannerSwiper.scss';
-import { SkeletBannerSwiper } from '../../../components/Skelet/SkeletBannerSwiper';
+import { SkeletonBannerSwiper } from '../../../components/Skeletons/SkeletonBannerSwiper/SkeletonBannerSwiper';
 import { useTheme } from '../../../components/context/ThemeContext';
-
 type Props = {
-  isSkelet?: boolean;
+  isSkeleton?: boolean;
 };
 
-export const BannerSwiper: React.FC<Props> = ({ isSkelet }) => {
+export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const { theme } = useTheme();
 
   const banner = [
-    import.meta.env.BASE_URL + 'img/banner/Banner-central.svg',
-    import.meta.env.BASE_URL + 'img/banner/Banner-central.svg',
-    import.meta.env.BASE_URL + 'img/banner/Banner-central.svg',
+    import.meta.env.BASE_URL + 'img/banner/Banner_apple-central-slide.png',
+    import.meta.env.BASE_URL + 'img/banner/Banner-first-slide.png',
+    import.meta.env.BASE_URL + 'img/banner/Banner-last-slide.png',
   ];
 
   return (
     <div className="banner">
       <div className="banner__slider">
         <div className="banner__slider--container">
+          {/* Стрілка вліво */}
+
           <button
-            className="button__arrow--arrowLeft swiper-buttons has-shadow-cursor"
+            className="button__arrow--arrowLeft
+              swiper-buttons
+              has-shadow-cursor"
             onClick={() => swiperRef.current?.slidePrev()}
           >
             <img
@@ -36,14 +39,15 @@ export const BannerSwiper: React.FC<Props> = ({ isSkelet }) => {
               src={
                 theme === 'light'
                   ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg' // PLS!!! add dark icon
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
               }
               alt="Arrow Left"
             />
           </button>
 
-          {isSkelet ? (
-            <SkeletBannerSwiper />
+          {/* Swiper */}
+          {isSkeleton ? (
+            <SkeletonBannerSwiper />
           ) : (
             <Swiper
               onSwiper={swiper => (swiperRef.current = swiper)}
@@ -54,7 +58,7 @@ export const BannerSwiper: React.FC<Props> = ({ isSkelet }) => {
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               pagination={{
                 clickable: true,
-                el: '.swiper-paginattion',
+                el: '.swiper-pagination',
                 bulletClass: 'custom-bullet',
                 bulletActiveClass: 'custom-bullet-active',
               }}
@@ -71,8 +75,11 @@ export const BannerSwiper: React.FC<Props> = ({ isSkelet }) => {
             </Swiper>
           )}
 
+          {/* Стрілка вправо */}
           <button
-            className="button__arrow--arrowRight swiper-buttons has-shadow-cursor"
+            className="button__arrow--arrowRight
+              swiper-buttons
+              has-shadow-cursor"
             onClick={() => swiperRef.current?.slideNext()}
           >
             <img
@@ -80,7 +87,7 @@ export const BannerSwiper: React.FC<Props> = ({ isSkelet }) => {
               src={
                 theme === 'light'
                   ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg' //PLS add dark icon
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
               }
               alt="Arrow Right"
             />

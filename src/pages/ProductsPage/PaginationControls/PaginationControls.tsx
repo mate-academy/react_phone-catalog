@@ -1,7 +1,7 @@
 import React from 'react';
 import './PaginationControls.scss';
-import { useTheme } from '../../../components/context/ThemeContext';
 import classNames from 'classnames';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 type Props = {
   totalItems: number;
@@ -33,10 +33,10 @@ export const PaginationControls: React.FC<Props> = ({
   if (totalPages <= 5 + siblingCount * 2) {
     pages = range(1, totalPages);
   } else {
-    const leftSiblig = Math.max(currentPage - siblingCount, 1);
+    const leftSibling = Math.max(currentPage - siblingCount, 1);
     const rightSibling = Math.min(currentPage + siblingCount, totalPages);
 
-    const showLeftDots = leftSiblig > 2;
+    const showLeftDots = leftSibling > 2;
     const showRightDots = rightSibling < totalPages - 1;
 
     if (!showLeftDots && showRightDots) {
@@ -51,7 +51,7 @@ export const PaginationControls: React.FC<Props> = ({
       pages = [
         1,
         'DOTS',
-        ...range(leftSiblig, rightSibling),
+        ...range(leftSibling, rightSibling),
         'DOTS',
         totalPages,
       ];
@@ -66,22 +66,20 @@ export const PaginationControls: React.FC<Props> = ({
         })}
         onClick={() => {
           onPageChange(Math.max(1, currentPage - 1));
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       >
         <img
           src={
             theme === 'light'
               ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-              : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
+              : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
           }
           alt="arrow left"
           className="icon"
         />
       </button>
+
       {pages.map((page, index) =>
         page === 'DOTS' ? (
           <span key={index} className="pagination__dots">
@@ -95,7 +93,7 @@ export const PaginationControls: React.FC<Props> = ({
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className={classNames('pagination__page', {
-              'pagitanion__page--active': page === currentPage,
+              'pagination__page--active': page === currentPage,
             })}
           >
             {page}
@@ -116,7 +114,7 @@ export const PaginationControls: React.FC<Props> = ({
           src={
             theme === 'light'
               ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
-              : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
+              : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
           }
           alt="arrow right"
           className="icon"

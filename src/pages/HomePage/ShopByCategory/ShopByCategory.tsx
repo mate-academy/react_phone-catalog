@@ -3,22 +3,22 @@
 import { Link } from 'react-router-dom';
 import './ShopByCategory.scss';
 import React from 'react';
-import { SkeletShopByCategory } from '../../../components/Skelet/SkeletShopByCategory';
+import { SkeletonShopByCategory } from '../../../components/Skeletons/SkeletonShopByCategory/SkeletonShopByCategory';
 
 type Props = {
   title: string;
   totalPhonesModels: number;
   totalTabletsModels: number;
-  totalAccessoiresModels: number;
-  isSkelet?: boolean;
+  totalAccessoriesModels: number;
+  isSkeleton?: boolean;
 };
 
 export const ShopByCategory: React.FC<Props> = ({
   title,
   totalPhonesModels,
   totalTabletsModels,
-  totalAccessoiresModels,
-  isSkelet,
+  totalAccessoriesModels,
+  isSkeleton,
 }) => {
   const categories = [
     {
@@ -36,9 +36,9 @@ export const ShopByCategory: React.FC<Props> = ({
       background: 'bg-tablets',
     },
     {
-      name: 'accessoires',
-      title: 'Accessoires',
-      count: totalAccessoiresModels,
+      name: 'accessories',
+      title: 'Accessories',
+      count: totalAccessoriesModels,
       image: import.meta.env.BASE_URL + 'img/category-accessories.webp',
       background: 'bg-accessories',
     },
@@ -50,9 +50,9 @@ export const ShopByCategory: React.FC<Props> = ({
         <h2 className="title">{title}</h2>
       </div>
       <div className="section__block">
-        {isSkelet
+        {isSkeleton
           ? Array.from({ length: categories.length }).map((_, index) => (
-              <SkeletShopByCategory key={index} />
+              <SkeletonShopByCategory key={index} />
             ))
           : categories.map(category => (
               <div className="section__block--link" key={category.name}>

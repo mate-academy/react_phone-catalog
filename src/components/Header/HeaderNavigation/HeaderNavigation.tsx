@@ -5,13 +5,13 @@ import React, { useContext } from 'react';
 import { useProductFilters } from '../../../hooks/useProductsFilters';
 import { useCurrentPath } from '../../context/PathContext';
 import classNames from 'classnames';
-import { CardAndFavouritesContext } from '../../context/CardAndFavouritesContext';
+import { CartAndFavouritesContext } from '../../context/CartAndFavouritesContext';
 import { useTheme } from '../../context/ThemeContext';
 
 export const HeaderNavigation: React.FC = () => {
   const { pathname, search } = useCurrentPath();
-  const context = useContext(CardAndFavouritesContext);
-  const { favourites, card } = context;
+  const context = useContext(CartAndFavouritesContext);
+  const { favourites, cart } = context;
   const { getLastSearch } = useProductFilters();
   const { theme } = useTheme();
 
@@ -19,11 +19,11 @@ export const HeaderNavigation: React.FC = () => {
     { title: 'HOME', path: '/' },
     { title: 'PHONES', path: '/phones' },
     { title: 'TABLETS', path: '/tablets' },
-    { title: 'ACCESSOIRES', path: '/accessoires' },
+    { title: 'ACCESSORIES', path: '/accessories' },
   ];
 
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const itemInFavourites = favourites.length;
-  const totalQuantity = card.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <nav className="header__navigation">
@@ -69,12 +69,12 @@ export const HeaderNavigation: React.FC = () => {
                 src={
                   theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Favourites_icon.svg'
-                    : import.meta.env.BASE_URL + 'img/icons/Favourites_icon.svg' // PLS!!! Add dark icon
+                    : import.meta.env.BASE_URL + 'img/icons/Favourites_dark.svg'
                 }
                 alt="Favourites icon"
               />
               {itemInFavourites > 0 && (
-                <div className="header__quantity-box">
+                <div className="header__quantity--box">
                   <div className="header__quantity">{itemInFavourites}</div>
                 </div>
               )}
@@ -83,12 +83,12 @@ export const HeaderNavigation: React.FC = () => {
           <div className="header__icon--container">
             <Link
               className={classNames('header__icon--link', {
-                'is-active': pathname === '/card',
+                'is-active': pathname === '/cart',
               })}
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              to="/card"
+              to="/cart"
             >
               <img
                 className="icon"
@@ -97,7 +97,7 @@ export const HeaderNavigation: React.FC = () => {
                     ? import.meta.env.BASE_URL +
                       'img/icons/Shopping-bag_icon.svg'
                     : import.meta.env.BASE_URL +
-                      'img/icons/Shopping-bag_icon.svg' //PLS!!! Add dark icon
+                      'img/icons/Shopping-bag_dark.svg'
                 }
                 alt="Shopping Bag icon"
               />

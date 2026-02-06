@@ -2,19 +2,19 @@
 /* eslint max-len: "off" */
 import React, { useEffect, useState } from 'react';
 import './ProductInfoPage.scss';
-import { Breadcrumbs } from '../ProductsPage/BreadCrumbs';
+import { Breadcrumbs } from '../ProductsPage/Breadcrumbs';
 import { ModelsSlider } from '../HomePage/ModelsSlider';
 import { ProductsType } from '../../types/ProductsType';
 import { PhonesType } from '../../types/PhonesType';
 import { TabletsType } from '../../types/TabletsType';
-import { AccessoiresType } from '../../types/AccessoiresType';
+import { AccessoriesType } from '../../types/AccessoriesType';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { AddAndFavButton } from '../HomePage/AddAndFavButton';
+import { AddAndFavouritesButton } from '../HomePage/AddAndFavouritesButton';
 import { useProductFilters } from '../../hooks/useProductsFilters';
 import classNames from 'classnames';
-import { SkeletProductInfoPage } from '../../components/Skelet/SkeletProductInfo';
+import { SkeletonProductInfoPage } from '../../components/Skeletons/SkeletonProductInfoPage/SkeletonProductInfoPage';
 
-export type ProductUnionType = PhonesType | TabletsType | AccessoiresType;
+export type ProductUnionType = PhonesType | TabletsType | AccessoriesType;
 
 export const ProductInfoPage: React.FC = () => {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ export const ProductInfoPage: React.FC = () => {
     category: string;
     itemId: string;
   }>();
+
   const [foundItem, setFoundItem] = useState<ProductUnionType | null>(null);
   const [foundProduct, setFoundProduct] = useState<ProductsType | null>(null);
   const [discountProducts, setDiscountProducts] = useState<ProductsType[]>([]);
@@ -128,7 +129,7 @@ export const ProductInfoPage: React.FC = () => {
   }, [itemId, navigate, category]);
 
   if (isInitialLoading) {
-    return <SkeletProductInfoPage />;
+    return <SkeletonProductInfoPage />;
   }
 
   if (!foundItem || !foundProduct) {
@@ -144,7 +145,7 @@ export const ProductInfoPage: React.FC = () => {
 
   const fullSpecs = [
     ...baseSpecs,
-    ...(foundItem.category === 'phones' || foundItem.category === 'tablets '
+    ...(foundItem.category === 'phones' || foundItem.category === 'tablets'
       ? [
           { name: 'Built in memory', value: foundItem.capacity },
           { name: 'Camera', value: foundItem.camera },
@@ -161,7 +162,7 @@ export const ProductInfoPage: React.FC = () => {
   const modelPhoto = foundItem.images;
 
   const selectedCapacity = foundItem.capacity.toLowerCase();
-  const selectedColor = foundItem.color.split('').join('-').toLowerCase();
+  const selectedColor = foundItem.color.split(' ').join('-').toLowerCase();
   const modelPrefix = foundItem.namespaceId;
 
   return (
@@ -196,154 +197,157 @@ export const ProductInfoPage: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            <div className="productInfo__controls">
-              <div className="productInfo__controls--text">
-                <p className="controls-text">Available colors</p>
-                <p className="controls-text">ID: {foundId}</p>
-              </div>
-              <div className="productInfo__colors">
-                {foundItem.colorsAvailable.map(color => {
-                  const normalizedColor = color
-                    .split(' ')
-                    .join('-')
-                    .toLowerCase();
-                  const displayName = getColorName(color);
-                  const newItemId = `${modelPrefix}-${selectedCapacity}-${normalizedColor}`;
-                  const newLink = `/${category}/${newItemId}${getLastSearch()}`;
-
-                  return (
-                    <Link
-                      key={newLink}
-                      to={newLink}
-                      className={classNames('productInfo__color', {
-                        'productInfo__color--active':
-                          selectedColor === normalizedColor,
-                      })}
-                      style={{
-                        background:
-                          colorMap[normalizedColor] || 'rgba(200,200,200,1',
-                      }}
-                      title={displayName}
-                    />
-                  );
-                })}
-              </div>
-              <div className="productInfoLine"></div>
-              <div className="productInfo__capacities">
-                <div className="capacity">
-                  <p className="capacity__text">Select capacity</p>
-                  <div className="capacity__item">
-                    {foundItem.capacityAvailable.map(capacity => {
-                      const normalizedCapacity = capacity.toLowerCase();
-                      const newItemId = `${modelPrefix}-${normalizedCapacity}-${selectedColor}`;
-                      const newLink = `/${category}/${newItemId}/${getLastSearch()}`;
-
-                      return (
-                        <Link
-                          key={newLink}
-                          to={newLink}
-                          className={classNames('productInfo__capacity', {
-                            'productInfo__capacity--active':
-                              selectedCapacity === normalizedCapacity,
-                          })}
-                        >
-                          <p className="productInfo__capacity--text">
-                            {capacity}
-                          </p>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              <div className="productInfoLine"></div>
-              <div className="productInfo__price">
-                {modelYear < 2021 ? (
-                  <>
-                    <div className="productInfo__priceCurrent">
-                      ${foundProduct.price}
-                    </div>
-                    <div className="productInfo__priceOld">
-                      ${foundProduct.fullPrice}
-                    </div>
-                  </>
-                ) : (
-                  <div className="productInfo__priceCurrent">
-                    ${foundProduct.fullPrice}
-                  </div>
-                )}
-              </div>
-
-              <div className="productInfo__addButton">
-                <AddAndFavButton productId={foundId} />
-              </div>
-              <div className="productInfo__specs">
-                {baseSpecs.map(({ name, value }) => (
-                  <div className="productInfo__spec" key={name}>
-                    <div className="productInfo__spec--name">{name}</div>
-                    <div className="productInfo__spec--value">{value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          <div className="productInfo__about">
-            <div className="about">
-              <div className="about__block">
-                <h3 className="productInfo__about--title">About</h3>
-                <div className="productInfoLine"></div>
+          <div className="productInfo__controls">
+            <div className="productInfo__controls--text">
+              <p className="controls-text">Available colors</p>
+              <p className="controls-text">ID: {foundId}</p>
+            </div>
+            <div className="productInfo__colors">
+              {foundItem.colorsAvailable.map(color => {
+                const normalizedColor = color
+                  .split(' ')
+                  .join('-')
+                  .toLowerCase();
 
-                {foundItem.description.map(
-                  ({ title, text }: { title: string; text: string[] }) => (
-                    <div key={title} className="productInfo__description">
-                      <h4 className="productInfo__description--title">
-                        {title}
-                      </h4>
-                      {text.map((paragraph, index) => (
-                        <p
-                          key={index}
-                          className="productInfo__description--text"
-                        >
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  ),
-                )}
-              </div>
+                const displayName = getColorName(color);
 
-              <div className="productInfo__techSpecs">
-                <h3 className="productInfo__techSpecs--title">Tech specs</h3>
-                <div className="productInfoLine"></div>
-                <div className="productInfo__specDetailed">
-                  {fullSpecs.map(({ name, value }) => {
+                const newItemId = `${modelPrefix}-${selectedCapacity}-${normalizedColor}`;
+                const newLink = `/${category}/${newItemId}${getLastSearch()}`;
+
+                return (
+                  <Link
+                    key={newLink}
+                    to={newLink}
+                    className={classNames('productInfo__color', {
+                      'productInfo__color--active':
+                        selectedColor === normalizedColor,
+                    })}
+                    style={{
+                      background:
+                        colorMap[normalizedColor] || 'rgba(200,200,200,1)',
+                    }}
+                    title={displayName}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="productInfoLine"></div>
+
+            <div className="productInfo__capacities">
+              <div className="capacity">
+                <p className="capacity__text">Select capacity</p>
+                <div className="capacity__item">
+                  {foundItem.capacityAvailable.map(capacity => {
+                    const normalizedCapacity = capacity.toLowerCase();
+                    const newItemId = `${modelPrefix}-${normalizedCapacity}-${selectedColor}`;
+                    const newLink = `/${category}/${newItemId}${getLastSearch()}`;
+
                     return (
-                      <div className="productInfo__specDetailedItem" key={name}>
-                        <p className="productInfo__specDetailedItem--name">
-                          {name}
+                      <Link
+                        key={newLink}
+                        to={newLink}
+                        className={classNames('productInfo__capacity', {
+                          'productInfo__capacity--active':
+                            selectedCapacity === normalizedCapacity,
+                        })}
+                      >
+                        <p className="productInfo__capacity--text">
+                          {capacity}
                         </p>
-                        <p className="productInfo__specDetailedItem--value">
-                          {value}
-                        </p>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>
               </div>
             </div>
+
+            <div className="productInfoLine"></div>
+
+            <div className="productInfo__price">
+              {modelYear < 2021 ? (
+                <>
+                  <div className="productInfo__priceCurrent">
+                    ${foundProduct.price}
+                  </div>
+                  <div className="productInfo__priceOld">
+                    ${foundProduct.fullPrice}
+                  </div>
+                </>
+              ) : (
+                <div className="productInfo__priceCurrent">
+                  ${foundProduct.fullPrice}
+                </div>
+              )}
+            </div>
+
+            <div className="productInfo__addButton">
+              <AddAndFavouritesButton productId={foundId} />
+            </div>
+
+            <div className="productInfo__specs">
+              {baseSpecs.map(({ name, value }) => (
+                <div className="productInfo__spec" key={name}>
+                  <div className="productInfo__spec--name">{name}</div>
+                  <div className="productInfo__spec--value">{value}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        <div className="productInfo__about">
+          <div className="about">
+            <div className="about__block">
+              <h3 className="productInfo__about--title">About</h3>
 
-        <ModelsSlider
-          title="You may also like"
-          products={discountProducts}
-          showDiscount={true}
-          isSkelet={isLoading}
-        />
+              <div className="productInfoLine"></div>
+
+              {foundItem.description.map(
+                ({ title, text }: { title: string; text: string[] }) => (
+                  <div key={title} className="productInfo__description">
+                    <h4 className="productInfo__description--title">{title}</h4>
+                    {text.map((paragraph, index) => (
+                      <p key={index} className="productInfo__description--text">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ),
+              )}
+            </div>
+
+            <div className="productInfo__techSpecs">
+              <h3 className="productInfo__techSpecs--title">Tech specs</h3>
+
+              <div className="productInfoLine"></div>
+
+              <div className="productInfo__specDetailed">
+                {fullSpecs.map(({ name, value }) => {
+                  return (
+                    <div className="productInfo__specDetailedItem" key={name}>
+                      <p className="productInfo__specDetailedItem--name">
+                        {name}
+                      </p>
+                      <p className="productInfo__specDetailedItem--value">
+                        {value}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <ModelsSlider
+        title="You may also like"
+        products={discountProducts}
+        showDiscount={true}
+        isSkeleton={isLoading}
+      />
     </>
   );
 };

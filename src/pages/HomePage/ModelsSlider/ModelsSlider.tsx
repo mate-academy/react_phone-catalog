@@ -5,22 +5,21 @@ import './ModelsSlider.scss';
 import { Navigation } from 'swiper/modules';
 import { ProductsType } from '../../../types/ProductsType';
 import React from 'react';
-import { ProductCard } from '../ProductCard';
-import { SkeletProductCard } from '../../../components/Skelet/SkeletProductCard';
+import { ProductCard } from '../ProductCard/ProductsCard';
+import { SkeletonProductCard } from '../../../components/Skeletons/SkeletonProductCard/SkeletonProductCard';
 import { useTheme } from '../../../components/context/ThemeContext';
 
 type Props = {
   title: string;
   products: ProductsType[];
   showDiscount?: boolean;
-  isSkelet?: boolean;
+  isSkeleton?: boolean;
 };
-
 export const ModelsSlider: React.FC<Props> = ({
   title,
   products,
   showDiscount,
-  isSkelet,
+  isSkeleton,
 }) => {
   const { theme } = useTheme();
   const id = title.toLowerCase().replace(/\s/g, '-');
@@ -33,27 +32,29 @@ export const ModelsSlider: React.FC<Props> = ({
         </div>
         <div className="slider__section--arrows">
           <button
-            className={`slider__buttonMini--arrowLeft arrow__arrowLeft--${id}`}
+            className={`slider__buttonMini--arrowLeft
+          arrow__arrowLeft--${id}`}
           >
             <img
               className="icon"
               src={
                 theme === 'light'
                   ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg' // PLS DONT FORHET ADD DARK ICON
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
               }
-              alt="Arrow left"
+              alt="Arrow Left"
             />
           </button>
           <button
-            className={`slider__buttonMini--arrowRight arrow__arrowRight--${id}`}
+            className={`slider__buttonMini--arrowRight
+            arrow__arrowRight--${id}`}
           >
             <img
               className="icon"
               src={
                 theme === 'light'
                   ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
-                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg' //u know, dark icon's
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
               }
               alt="Arrow Right"
             />
@@ -72,10 +73,10 @@ export const ModelsSlider: React.FC<Props> = ({
         }}
         className="swiper-section"
       >
-        {isSkelet
+        {isSkeleton
           ? Array.from({ length: 8 }).map((_, i) => (
               <SwiperSlide key={i}>
-                <SkeletProductCard />
+                <SkeletonProductCard />
               </SwiperSlide>
             ))
           : products.map(product => (

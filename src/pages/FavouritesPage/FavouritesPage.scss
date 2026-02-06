@@ -1,0 +1,62 @@
+@use '../../styles/utils/mixins' as *;
+
+.favourites {
+  margin-bottom: 56px;
+  background-color: var(--background);
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      padding: 0 24px;
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      max-width: 1136px;
+      margin: auto;
+    }
+    &--text {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary);
+
+      @include on-tablet {
+        font-size: 48px;
+      }
+    }
+    &--count {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--elements);
+    }
+  }
+  &__models {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 40px 16px;
+    align-items: center;
+
+    padding: 0 16px;
+
+    @include on-tablet {
+      display: grid;
+      margin: 0;
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+
+      max-width: 1136px;
+      padding: 32px;
+      margin: auto;
+    }
+  }
+}

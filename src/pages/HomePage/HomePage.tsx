@@ -1,4 +1,3 @@
-/* eslint max-len: "off" */
 import './HomePage.scss';
 import { BannerSwiper } from './BannerSwiper/BannerSwiper';
 import { ModelsSlider } from './ModelsSlider';
@@ -8,10 +7,11 @@ import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<ProductsType[]>([]);
-  const [discountProducts, setDiscountProducts] = useState<ProductsType[]>([]);
+  const [discountProducts, setDicsountProducts] = useState<ProductsType[]>([]);
   const [totalPhonesModels, setTotalPhonesModels] = useState(0);
   const [totalTabletsModels, setTotalTabletsModels] = useState(0);
-  const [totalAccessoiresModels, setTotalAccessoiresModels] = useState(0);
+  const [totalAccessoriesModels, setTotalAccessoriesModels] = useState(0);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -36,16 +36,16 @@ export const HomePage: React.FC = () => {
           tablet => tablet.category === 'tablets',
         ).length;
 
-        const allAccssoiresModels = data.filter(
+        const allAccssoriesModels = data.filter(
           accessory => accessory.category === 'accessories',
         ).length;
 
         setNewPhones(newModels);
-        setDiscountProducts(hotPrices);
+        setDicsountProducts(hotPrices);
 
         setTotalPhonesModels(allPhonesModels);
         setTotalTabletsModels(allTabletsModels);
-        setTotalAccessoiresModels(allAccssoiresModels);
+        setTotalAccessoriesModels(allAccssoriesModels);
 
         setIsLoading(false);
       });
@@ -58,28 +58,28 @@ export const HomePage: React.FC = () => {
         <div className="section__title">
           <h2 className="pageTitle">Welcome to Nice Gadgets store!</h2>
         </div>
-        <BannerSwiper isSkelet={isLoading} />
+        <BannerSwiper isSkeleton={isLoading} />
       </div>
 
       <ModelsSlider
-        title="Brand New Models"
+        title="Brands New Models"
         products={newPhones}
-        isSkelet={isLoading}
+        isSkeleton={isLoading}
       />
 
       <ShopByCategory
         title="Shop by category"
         totalPhonesModels={totalPhonesModels}
         totalTabletsModels={totalTabletsModels}
-        totalAccessoiresModels={totalAccessoiresModels}
-        isSkelet={isLoading}
+        totalAccessoriesModels={totalAccessoriesModels}
+        isSkeleton={isLoading}
       />
 
       <ModelsSlider
         title="Hot Prices"
         products={discountProducts}
         showDiscount={true}
-        isSkelet={isLoading}
+        isSkeleton={isLoading}
       />
     </>
   );

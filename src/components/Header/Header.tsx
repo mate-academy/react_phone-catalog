@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import './header.scss';
 import { HeaderNavigation } from './HeaderNavigation';
-import { BurgerNavigation } from './BurgerNavigation';
+import { BurgerNavigator } from './BurgerNavigator';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { ThemeSwitcher } from '../Theme/ThemeSwitcher';
 
 export const Header = () => {
-  const [isBurgerMenu, setIsBurgerMenu] = useState(false);
+  const [isBurgerMenu, setIsburgerMenu] = useState(false);
+
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export const Header = () => {
               className="header__link"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                setIsBurgerMenu(false);
+                setIsburgerMenu(false);
               }}
             >
               <img
@@ -32,9 +33,9 @@ export const Header = () => {
                 src={
                   theme === 'light'
                     ? import.meta.env.BASE_URL + 'img/icons/Logo.svg'
-                    : import.meta.env.BASE_URL + 'img/icons/Logo.svg' // PLS!!! Add dark icon
+                    : import.meta.env.BASE_URL + 'img/icons/Logo_dark.svg'
                 }
-                alt="Logo"
+                alt="Logo Nice Gadgets"
               />
             </Link>
           </div>
@@ -45,7 +46,7 @@ export const Header = () => {
             <div
               className="burger__menu"
               onClick={() => {
-                setIsBurgerMenu(prev => !prev);
+                setIsburgerMenu(prev => !prev);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
@@ -54,11 +55,14 @@ export const Header = () => {
                 src={
                   isBurgerMenu
                     ? theme === 'light'
-                      ? import.meta.env.BASE_URL + 'img/icons/Close_icon.svg'
-                      : import.meta.env.BASE_URL + 'img/icons/Close_icon.svg' // PLS!!! Add dark icon
+                      ? import.meta.env.BASE_URL +
+                        'img/icons/Menu-close_icon.svg'
+                      : import.meta.env.BASE_URL + 'img/icons/Close_dark.svg'
                     : theme === 'light'
-                      ? import.meta.env.BASE_URL + 'img/icons/Menu_icon.svg'
-                      : import.meta.env.BASE_URL + 'img/icons/Menu_icon.svg' // PLS!!! Add dark icon
+                      ? import.meta.env.BASE_URL +
+                        'img/icons/Burger-menu_icon.svg'
+                      : import.meta.env.BASE_URL +
+                        'img/icons/Burger-menu_dark.svg'
                 }
                 alt="Menu icon"
               />
@@ -68,9 +72,9 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <BurgerNavigation
+      <BurgerNavigator
         isBurgerMenu={isBurgerMenu}
-        onClose={() => setIsBurgerMenu(false)}
+        onClose={() => setIsburgerMenu(false)}
       />
     </>
   );

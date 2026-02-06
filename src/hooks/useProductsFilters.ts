@@ -1,4 +1,4 @@
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export const useProductFilters = () => {
@@ -25,10 +25,9 @@ export const useProductFilters = () => {
   }, [location.pathname, location.search, itemId]);
 
   const getLastSearch = () => sessionStorage.getItem(STORAGE_KEY_SEARCH) || '';
-  const getLastPath = () => sessionStorage.getItem(STORAGE_KEY_PATH) || '';
+  const getLastPath = () => sessionStorage.getItem(STORAGE_KEY_PATH) || '/';
 
   const getSortParam = () => searchParams.get('sort') || '';
-
   const getPerPage = () => parseInt(searchParams.get('perPage') || '16', 10);
   const getPage = () => parseInt(searchParams.get('page') || '1', 10);
 
@@ -71,7 +70,7 @@ export const useProductFilters = () => {
     setSort,
     setPerPage,
     setPage,
-    getLastPath,
     getLastSearch,
+    getLastPath,
   };
 };

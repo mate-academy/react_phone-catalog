@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint max-len: "off" */
 import './ProductsPage.scss';
+import { useEffect, useRef, useState } from 'react';
+import { ProductCard } from '../HomePage/ProductCard';
+import { Breadcrumbs } from './Breadcrumbs';
+import { ProductsType } from '../../types/ProductsType';
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { usePagination } from '../../hooks/usePagination';
-import { useEffect, useRef, useState } from 'react';
-import { ProductsType } from '../../types/ProductsType';
-import { Breadcrumbs } from './BreadCrumbs';
-import { Dropdown } from './DropDown';
-import { SkeletProductCard } from '../../components/Skelet/SkeletProductCard';
-import { ProductCard } from '../HomePage/ProductCard';
+import { Dropdown } from './Dropdown';
 import { PaginationControls } from './PaginationControls';
+import { SkeletonProductCard } from '../../components/Skeletons/SkeletonProductCard/SkeletonProductCard';
 
-const validCategories = ['phones', 'tablets', 'accessoires'];
+const validCategories = ['phones', 'tablets', 'accessories'];
 
 const categoryTitle: Record<string, string> = {
   phones: 'Mobile Phones',
   tablets: 'Tablets',
-  accessoires: 'Accessoires',
+  accessories: 'Accessories',
 };
 
 export const ProductsPage = () => {
@@ -25,8 +25,9 @@ export const ProductsPage = () => {
     usePagination();
   const [products, setProducts] = useState<ProductsType[]>([]);
   const [totalModels, setTotalModels] = useState(0);
-  const [searchParams, setSeacrhParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
+
   const prevCategoryRef = useRef(category);
 
   useEffect(() => {
@@ -34,10 +35,10 @@ export const ProductsPage = () => {
 
     if (prev !== category) {
       searchParams.set('page', '1');
-      setSeacrhParams(searchParams);
+      setSearchParams(searchParams);
       prevCategoryRef.current = category;
     }
-  }, [category, searchParams, setSeacrhParams]);
+  }, [category, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (!category || !validCategories.includes(category)) {
@@ -77,11 +78,11 @@ export const ProductsPage = () => {
   }
 
   return (
-    <div className="productPage">
+    <div className="productsPage">
       <Breadcrumbs />
       <div className="category">
         <h2 className="category__title">{categoryTitle[category]}</h2>
-        <p className="category__total">{totalModels}</p>
+        <p className="category__total">{totalModels} models</p>
       </div>
 
       <Dropdown
@@ -91,10 +92,10 @@ export const ProductsPage = () => {
         updateSort={updateSort}
       />
 
-      <div className="product__models">
+      <div className="products__models">
         {isLoading
           ? Array.from({ length: perPage }).map((_, index) => (
-              <SkeletProductCard key={index} />
+              <SkeletonProductCard key={index} />
             ))
           : products.map(product => (
               <ProductCard
