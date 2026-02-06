@@ -18,6 +18,21 @@ export const HomePage: React.FC = () => {
   const startY = useRef<number | null>(null);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const lenOfProducts = products?.length ?? 0;
+  const loadProducts = async (signal?: AbortSignal) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(url, { signal });
+
+      const data: Product[] = await response.json();
+
+      setProducts(data);
+    } catch (err) {
+      setError((err as Error)?.message ?? 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (lenOfProducts > 0 && !paused) {
@@ -35,22 +50,6 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     setCurrentIndex(0);
   }, [products?.length]);
-
-  const loadProducts = async (signal?: AbortSignal) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch(url, { signal });
-
-      const data: Product[] = await response.json();
-
-      setProducts(data);
-    } catch (err) {
-      setError((err as Error)?.message ?? 'Unknown error');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     const controller = new AbortController();
@@ -82,8 +81,6 @@ export const HomePage: React.FC = () => {
     startX.current = e.touches[0].clientX;
     startY.current = e.touches[0].clientY;
     setPaused(true);
-
-     console.log('touchstart', e.touches[0].clientX, e.touches[0].clientY);
   };
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>): void => {
@@ -99,16 +96,15 @@ export const HomePage: React.FC = () => {
 
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESHOLD) {
       if (dx < 0) {
-        handleNext();
-      } else {
         handlePrev();
+      } else {
+        handleNext();
       }
     }
 
-    startX.current = null;
-    startY.current = null;
+    //startX.current = null;
+    // startY.current = null;
     setPaused(false);
-    console.log('touchend', e.changedTouches[0].clientX, e.changedTouches[0].clientY);
   };
 
   return (
@@ -139,7 +135,7 @@ export const HomePage: React.FC = () => {
 
             <div className={styles.homePage__dots}>
               <img
-                src="/img/dots-2x.png"
+                src="img/dots-2x.png"
                 alt="Dots Style"
                 className={styles.homePage__dots}
               />

@@ -39,15 +39,15 @@ export const PicturesSlider: React.FC<PicturesSliderProps> = ({
         >
           <picture>
             <source
-              srcSet="/img/buttons/button-slider-left-desktop.svg"
+              srcSet="img/buttons/button-slider-left-desktop.svg"
               media="(min-width: 1024px)"
             />
             <source
-              srcSet="/img/buttons/button-slider-left-tablet.svg"
+              srcSet="img/buttons/button-slider-left-tablet.svg"
               media="(min-width: 576px)"
             />
             <img
-              src="/img/buttons/button-slider-left-tablet.svg"
+              src="img/buttons/button-slider-left-tablet.svg"
               alt="The button slider left"
               title="The button slider left"
               className={`${styles['picturesSlider__button-slider-left']}`}
@@ -78,15 +78,15 @@ export const PicturesSlider: React.FC<PicturesSliderProps> = ({
         >
           <picture>
             <source
-              srcSet="/img/buttons/button-slider-right-desktop.svg"
+              srcSet="img/buttons/button-slider-right-desktop.svg"
               media="(min-width: 1024px)"
             />
             <source
-              srcSet="/img/buttons/button-slider-right-tablet.svg"
+              srcSet="img/buttons/button-slider-right-tablet.svg"
               media="(min-width: 576px)"
             />
             <img
-              src="/img/buttons/button-slider-right-tablet.svg"
+              src="img/buttons/button-slider-right-tablet.svg"
               alt="The button slider right"
               title="The button slider right"
               className={`${styles['picturesSlider__button-slider-right']}`}
