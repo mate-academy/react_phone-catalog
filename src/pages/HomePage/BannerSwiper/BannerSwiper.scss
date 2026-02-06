@@ -1,109 +1,159 @@
 @use '../../../styles/utils/mixins' as *;
 @use '../../../styles/utils/variables' as *;
 
-.addAndFavourites {
-  &__container {
-    display: flex;
-    justify-content: center;
+.banner {
+  &__slider {
+    &--container {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin-bottom: 8px;
 
-    gap: 8px;
-  }
-}
+      @include on-tablet {
+        padding: 0 24px;
+      }
 
-.addButton {
-  display: flex;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  min-width: 125px;
-
-  height: 40px;
-  border-radius: 48px;
-  border: 1px solid var(--accent);
-  background-color: var(--accent);
-  cursor: pointer;
-
-  @include on-desktop {
-    min-width: 160px;
+      @include on-desktop {
+        padding: 0 32px;
+        justify-content: center;
+      }
+    }
   }
 
-  transition: transform $effect-duration ease;
+  &__swiper {
+    width: 100%;
+    height: 320px;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px var(--shadow);
-  }
-
-  &:active {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px var(--shadow);
-  }
-
-  &__text {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    color: var(--main);
-  }
-
-  &__added {
-    display: flex;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    max-width: 125px;
-    height: 40px;
-    border-radius: 48px;
-    border: 1px solid var(--border);
-    background-color: var(--background);
-    cursor: pointer;
+    @include on-tablet {
+      height: 189px;
+      margin: 0 19px;
+    }
 
     @include on-desktop {
-      width: 160px;
+      max-width: 1040px;
+      height: 400px;
+      justify-content: center;
+      margin: 0 16px;
     }
 
-    transition: transform $effect-duration ease;
+    &--card {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: black;
 
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px var(--shadow);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform $effect-duration ease;
+
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 18px var(--shadow);
+      }
+    }
+  }
+  .swiper-slide-active .banner__swiper--card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.button {
+  &__arrow {
+    &--arrowLeft {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        width: 32px;
+        height: 189px;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 48px;
+        background-color: var(--background);
+        cursor: pointer;
+        transition: transform $effect-duration ease;
+
+        &:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px var(--shadow);
+          border: 1px solid var(--border-hover);
+        }
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
     }
 
-    &:active {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px var(--shadow);
-    }
-    &--text-added {
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-      color: var(--primary);
+    &--arrowRight {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        width: 32px;
+        height: 189px;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 48px;
+        background-color: var(--background);
+        cursor: pointer;
+        transition: transform $effect-duration ease;
+
+        &:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px var(--shadow);
+          border: 1px solid var(--border-hover);
+        }
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
     }
   }
 }
 
-.favouritesButton {
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-hover);
-  background-color: var(--main);
-  cursor: pointer;
-  flex-shrink: 0;
+.pagination-container {
+  height: 24px;
 
-  transition: transform $effect-duration ease;
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 4px;
+    bottom: 0;
+    z-index: 1;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px var(--shadow);
-  }
+    .custom-bullet {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+      transition: transform $effect-duration ease;
 
-  &:active {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px var(--shadow);
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 14px;
+        height: 4px;
+        background-color: var(--border-hover);
+        transform: translate(-50%, -50%);
+        transition: transform $effect-duration ease;
+      }
+
+      &:hover::before {
+        background-color: var(--elements);
+      }
+
+      &.custom-bullet-active::before {
+        background-color: var(--primary);
+      }
+    }
   }
 }

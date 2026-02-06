@@ -42,6 +42,7 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
               alt="Arrow Left"
             />
           </button>
+
           {isSkeleton ? (
             <SkeletonBannerSwiper />
           ) : (
@@ -70,6 +71,7 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
               ))}
             </Swiper>
           )}
+
           <button
             className="button__arrow--arrowRight
               swiper-buttons
