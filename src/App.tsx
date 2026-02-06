@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 
-
 import HomePage from './modules/HomePage/index';
 import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
@@ -12,24 +11,16 @@ import { CartPage } from './modules/CartPage';
 import Header from './components/Header';
 import Footer from './components/Footer/index';
 import './App.scss';
-import { useRef } from 'react';
 
 const App = () => {
-  const containerRef = useRef<HTMLElement | null>(null);
-
   const onBackToTop = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
-      {' '}
-
-      <div ref={containerRef} className="app-container">
-        <Header />
-
+      <Header />
+      <div className="app-container">
         <main className="main">
           <div className="main__content">
             <Routes>
@@ -47,8 +38,8 @@ const App = () => {
             </Routes>
           </div>
         </main>
-        <Footer onBackToTop={onBackToTop} />
       </div>
+      <Footer onBackToTop={onBackToTop} />
     </>
   );
 };

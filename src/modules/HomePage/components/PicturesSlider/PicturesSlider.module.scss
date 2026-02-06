@@ -1,5 +1,101 @@
+@use '../../../../utils/vars.scss' as *;
+@import '../../../../utils/mixins' ;
+
+.picturesSlider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 16px;
+
+      &__button {
+        width: 32px;
+        height: 100%;
+
+        display: none;
+
+        @include on-tablet {
+          display: block;
+        }
+
+
+        @include on-desktop {
+          height: 400px;
+        }
+
+     }
+
+     &__button-slider-left {
+        @include on-tablet {
+            object-fit: cover;
+            display: block;
+            width: 32px;
+            height: 100%;
+        }
+     }
+
+    &__banner {
+   background-image: url('/img/header-bg.png');
+    background-position: center;
+    background-size: contain;
+    background-color: $primary-color;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 320px;
+
+    overflow: hidden;
+    position: relative;
+
+  @include on-tablet {
+    background-image: url('/img/header-bg-tablet-2x.png');
+
+
+     height: 189px;
+  }
+
+  @include on-desktop {
+    background-image: url('/img/header-bg-desktop-2x.png');
+
+    // width: 1040px;
+     height: 400px;
+  }
+  }
+
+  &__content  {
+    width: 100%;
+    height: 100%;
+
+    display: flex; align-items: center;
+    justify-content: flex-end;
+  }
+
+ &__productImage {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: auto;
+
+    @include on-tablet {
+      width: auto;
+    }
+  }
+
+}
+
 .picture {
-  width: 300px;
-  height: 200px;
-  border: 1px solid red;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: $primary-color;
+  width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+
+  //margin: auto ;
+
 }

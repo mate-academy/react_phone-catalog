@@ -20,7 +20,7 @@
   right: 0;
   z-index: 1001;
   transform: translateX(100%);
-  transition: transform 600ms;
+  transition: transform $effect-duration;
 
   &.open {
     transform: translateX(0);

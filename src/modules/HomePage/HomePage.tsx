@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 //import ProductsSlider from './components/ProductsSlider/index';
-//import PicturesSlider from './components/PicturesSlider/index';
+import PicturesSlider from './components/PicturesSlider/index';
 
 interface Product {
   id?: string | number;
   name?: string;
-  [key: string]: unknown;
 }
 
 export const HomePage: React.FC = () => {
@@ -14,6 +13,25 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const url = 'api/products.json';
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const lenOfProducts = products?.length ?? 0;
+
+  useEffect(() => {
+    if (lenOfProducts > 0) {
+      const id = setInterval(
+        () => setCurrentIndex(i => (i + 1) % lenOfProducts),
+        5000,
+      );
+
+      return () => clearInterval(id);
+    }
+  }, [lenOfProducts]);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [products?.length]);
 
   const loadProducts = async (signal?: AbortSignal) => {
     try {
@@ -23,12 +41,6 @@ export const HomePage: React.FC = () => {
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      if (signal?.aborted) {
-        setError('Unknown error');
-
-        return;
       }
 
       const data: Product[] = await response.json();
@@ -62,48 +74,14 @@ export const HomePage: React.FC = () => {
                 </span>
               </h2>
             </div>
-            <div className={styles.homePage__down}>
-              <div className={`${styles.homePage__button}`}>
-                <picture>
-                  <source
-                    srcSet="img/buttons/button-slider-left-desktop.svg"
-                    media="(min-width: 1024px)"
-                  />
-                  <source
-                    srcSet="img/buttons/button-slider-left-tablet.svg"
-                    media="(min-width: 576px)"
-                  />
-                  <img
-                    src="img/buttons/button-slider-left-tablet.svg"
-                    alt="The button slider left"
-                    title="The button slider left"
-                    className={`${styles['homePage__button-slider-left']}`}
-                  />
-                </picture>
-              </div>
-              <div className={styles.homePage__banner}></div>
-              <div className={styles.homePage__button}>
-                <picture>
-                  <source
-                    srcSet="img/buttons/button-slider-right-desktop.svg"
-                    media="(min-width: 1024px)"
-                  />
-                  <source
-                    srcSet="img/buttons/button-slider-right-tablet.svg"
-                    media="(min-width: 576px)"
-                  />
-                  <img
-                    src="img/buttons/button-slider-right-tablet.svg"
-                    alt="The button slider right"
-                    title="The button slider right"
-                    className={`${styles['homePage__button-slider-right']}`}
-                  />
-                </picture>
-              </div>
-            </div>
+
+            {!loading && !error && Array.isArray(products) && (
+              <PicturesSlider products={products} currentIndex={currentIndex} />
+            )}
+
             <div className={styles.homePage__dots}>
               <img
-                src="img/dots-2x.png"
+                src="/img/dots-2x.png"
                 alt="Dots Style"
                 className={styles.homePage__dots}
               />
@@ -116,12 +94,6 @@ export const HomePage: React.FC = () => {
         {loading && <div>Loading...</div>}
         {error && <div role="alert">Error: {error}</div>}
         {products && products.length === 0 && <div>No products found.</div>}
-        {!loading &&
-          !error &&
-          Array.isArray(products) &&
-          products.map((p, i) => (
-            <div key={p.id ?? i}>{p.name ?? JSON.stringify(p)}</div>
-          ))}
       </div>
     </>
   );
