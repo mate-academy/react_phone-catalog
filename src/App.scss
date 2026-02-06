@@ -3,8 +3,7 @@
 @use './styles/blocks/page' as *;
 @use './styles/blocks/icon' as *;
 @use './styles/utils/variables' as *;
-
-// @use './styles/blocks/reset' as *;
+@use './styles/blocks/reset' as *;
 @use './styles/utils/mixins' as *;
 
 @font-face {
@@ -35,5 +34,4 @@ body {
 
 .main {
   min-height: 100vh;
-
 }

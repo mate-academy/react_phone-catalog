@@ -2,7 +2,7 @@
 /* eslint max-len: "off" */
 import React, { useEffect, useState } from 'react';
 import './ProductInfoPage.scss';
-// import { Breadcrumbs } from '../ProductsPage/Breadcrumbs'; // need to add
+import { Breadcrumbs } from '../ProductsPage/BreadCrumbs';
 import { ModelsSlider } from '../HomePage/ModelsSlider';
 import { ProductsType } from '../../types/ProductsType';
 import { PhonesType } from '../../types/PhonesType';
@@ -168,7 +168,6 @@ export const ProductInfoPage: React.FC = () => {
     <>
       <div className="productInfo">
         <Breadcrumbs />
-        {/* need to add*/}
 
         <h2 className="productInfo__title">{modelName}</h2>
         <div className="gallery">

@@ -1,0 +1,67 @@
+@use '../../../styles/utils/variables' as *;
+
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  &__step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    margin-left: 8px;
+    margin-right: 8px;
+
+    transition:
+    transform $effect-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
+
+  }
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+  &__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-hover);
+    background-color: var(--background);
+    color: var(--primary);
+    &--active {
+      border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--main);
+    }
+  }
+
+  &__dots {
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--border-hover);
+    font-weight: bold;
+    user-select: none;
+  }
+}
