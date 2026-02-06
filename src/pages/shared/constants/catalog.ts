@@ -4,10 +4,7 @@ export const PAGINATION_WINDOW = 4;
 
 export const getPaginationItems = (page: number, totalPages: number) => {
   const items: number[] = [];
-  let start = Math.max(
-    1,
-    page - Math.floor((PAGINATION_WINDOW - 1) / 2),
-  );
+  let start = Math.max(1, page - Math.floor((PAGINATION_WINDOW - 1) / 2));
   const end = Math.min(totalPages, start + PAGINATION_WINDOW - 1);
 
   if (end - start + 1 < PAGINATION_WINDOW) {

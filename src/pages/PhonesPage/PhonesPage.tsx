@@ -5,6 +5,7 @@ import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
 import { CustomSelect } from '../../components/CustomSelect';
 import { getSkeletonCount } from '../shared/constants/catalog';
 import styles from './PhonesPage.module.scss';
+import { getPerPageOptions, getSortOptions } from './constants';
 import { usePhonesPage } from './hooks/usePhonesPage';
 
 export const PhonesPage = () => {
@@ -51,11 +52,7 @@ export const PhonesPage = () => {
             label={t('catalog.sortBy')}
             value={sort}
             onChange={handleSortChange}
-            options={[
-              { value: 'age', label: t('catalog.sort.age') },
-              { value: 'name', label: t('catalog.sort.name') },
-              { value: 'price', label: t('catalog.sort.price') },
-            ]}
+            options={getSortOptions(t)}
           />
 
           <CustomSelect
@@ -63,12 +60,7 @@ export const PhonesPage = () => {
             label={t('catalog.itemsOnPage')}
             value={perPage}
             onChange={handlePerPageChange}
-            options={[
-              { value: '4', label: '4' },
-              { value: '8', label: '8' },
-              { value: '16', label: '16' },
-              { value: 'all', label: t('catalog.perPageAll') },
-            ]}
+            options={getPerPageOptions(t)}
           />
         </div>
 
