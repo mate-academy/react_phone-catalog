@@ -102,13 +102,11 @@ export const Dropdown: React.FC<Props> = ({
               src={
                 isOpenSort
                   ? theme === 'light'
-                    ? import.meta.env.BASE_URL + './img/icons/Arrow-Up_icon.svg'
-                    : import.meta.env.BASE_URL + './img/icons/Arrow-Up_dark.svg'
+                    ? './img/icons/Arrow-Up_icon.svg'
+                    : './img/icons/Arrow-Up_dark.svg'
                   : theme === 'light'
-                    ? import.meta.env.BASE_URL +
-                      './img/icons/Arrow-Down_icon.svg'
-                    : import.meta.env.BASE_URL +
-                      './img/icons/Arrow-Down_icon.svg'
+                    ? './img/icons/Arrow-Down_icon.svg'
+                    : './img/icons/Arrow-Down_icon.svg'
               }
               alt="chevron"
               className="icon dropdown__icon"
@@ -147,13 +145,11 @@ export const Dropdown: React.FC<Props> = ({
               src={
                 isOpenPerPage
                   ? theme === 'light'
-                    ? import.meta.env.BASE_URL + './img/icons/Arrow-Up_icon.svg'
-                    : import.meta.env.BASE_URL + './img/icons/Arrow-Up_dark.svg'
+                    ? './img/icons/Arrow-Up_icon.svg'
+                    : './img/icons/Arrow-Up_dark.svg'
                   : theme === 'light'
-                    ? import.meta.env.BASE_URL +
-                      './img/icons/Arrow-Down_icon.svg'
-                    : import.meta.env.BASE_URL +
-                      './img/icons/Arrow-Down_icon.svg'
+                    ? './img/icons/Arrow-Down_icon.svg'
+                    : './img/icons/Arrow-Down_icon.svg'
               }
               alt="chevron"
               className="icon dropdown__icon"

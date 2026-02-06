@@ -17,9 +17,9 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
   const { theme } = useTheme();
 
   const banner = [
-    import.meta.env.BASE_URL + './img/banner-accessories.png',
-    import.meta.env.BASE_URL + './img/banner-phones.png',
-    import.meta.env.BASE_URL + './img/banner-tablets.png',
+    './img/banner-accessories.png',
+    './img/banner-phones.png',
+    './img/banner-tablets.png',
   ];
 
   return (
@@ -82,10 +82,8 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
               className="icon"
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL +
-                    './img/icons/Arrow-Right_icon.svg'
-                  : import.meta.env.BASE_URL +
-                    './img/icons/Arrow-Right_dark.svg'
+                  ? './img/icons/Arrow-Right_icon.svg'
+                  : './img/icons/Arrow-Right_dark.svg'
               }
               alt="Arrow Right"
             />

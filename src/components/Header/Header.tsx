@@ -32,8 +32,8 @@ export const Header = () => {
                 className="logo top-logo"
                 src={
                   theme === 'light'
-                    ? import.meta.env.BASE_URL + './img/icons/Logo.svg'
-                    : import.meta.env.BASE_URL + './img/icons/Logo_dark.svg'
+                    ? './img/icons/Logo.svg'
+                    : './img/icons/Logo_dark.svg'
                 }
                 alt="Logo Nice Gadgets"
               />
@@ -55,14 +55,11 @@ export const Header = () => {
                 src={
                   isBurgerMenu
                     ? theme === 'light'
-                      ? import.meta.env.BASE_URL +
-                        './img/icons/Menu-close_icon.svg'
-                      : import.meta.env.BASE_URL + './img/icons/Close_dark.svg'
+                      ? './img/icons/Menu-close_icon.svg'
+                      : './img/icons/Close_dark.svg'
                     : theme === 'light'
-                      ? import.meta.env.BASE_URL +
-                        './img/icons/Burger-menu_icon.svg'
-                      : import.meta.env.BASE_URL +
-                        './img/icons/Burger-menu_dark.svg'
+                      ? './img/icons/Burger-menu_icon.svg'
+                      : './img/icons/Burger-menu_dark.svg'
                 }
                 alt="Menu icon"
               />

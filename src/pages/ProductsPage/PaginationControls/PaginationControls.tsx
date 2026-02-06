@@ -72,8 +72,8 @@ export const PaginationControls: React.FC<Props> = ({
         <img
           src={
             theme === 'light'
-              ? import.meta.env.BASE_URL + './img/icons/Arrow-Left_icon.svg'
-              : import.meta.env.BASE_URL + './img/icons/Arrow-Left_dark.svg'
+              ? './img/icons/Arrow-Left_icon.svg'
+              : './img/icons/Arrow-Left_dark.svg'
           }
           alt="arrow left"
           className="icon"
@@ -113,8 +113,8 @@ export const PaginationControls: React.FC<Props> = ({
         <img
           src={
             theme === 'light'
-              ? import.meta.env.BASE_URL + './img/icons/Arrow-Right_icon.svg'
-              : import.meta.env.BASE_URL + './img/icons/Arrow-Right_dark.svg'
+              ? './img/icons/Arrow-Right_icon.svg'
+              : './img/icons/Arrow-Right_dark.svg'
           }
           alt="arrow right"
           className="icon"

@@ -95,10 +95,8 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
               <img
                 src={
                   theme === 'light'
-                    ? import.meta.env.BASE_URL +
-                      './img/icons/Favourites_icon.svg'
-                    : import.meta.env.BASE_URL +
-                      './img/icons/Favourites_dark.svg'
+                    ? './img/icons/Favourites_icon.svg'
+                    : './img/icons/Favourites_dark.svg'
                 }
                 alt="Favourites icon"
                 className="icon"
@@ -123,10 +121,8 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
               <img
                 src={
                   theme === 'light'
-                    ? import.meta.env.BASE_URL +
-                      './img/icons/Shopping-bag_icon.svg'
-                    : import.meta.env.BASE_URL +
-                      './img/icons/Shopping-bag_dark.svg'
+                    ? './img/icons/Shopping-bag_icon.svg'
+                    : './img/icons/Shopping-bag_dark.svg'
                 }
                 alt="Shopping Bag icon"
                 className="icon"

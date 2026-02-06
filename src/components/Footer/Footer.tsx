@@ -13,9 +13,8 @@ export const Footer = () => {
             <img
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + './img/icons/Logo_footer.svg'
-                  : import.meta.env.BASE_URL +
-                    './img/icons/Logo-footer_dark.svg'
+                  ? './img/icons/Logo_footer.svg'
+                  : './img/icons/Logo-footer_dark.svg'
               }
               alt="Logo icon"
               className="logo"
@@ -64,8 +63,8 @@ export const Footer = () => {
               <img
                 src={
                   theme === 'light'
-                    ? import.meta.env.BASE_URL + './img/icons/Arrow-Up_icon.svg'
-                    : import.meta.env.BASE_URL + './img/icons/Arrow-Up_dark.svg'
+                    ? './img/icons/Arrow-Up_icon.svg'
+                    : './img/icons/Arrow-Up_dark.svg'
                 }
                 alt="Back to top icon"
                 className="icon"

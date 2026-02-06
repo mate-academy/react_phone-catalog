@@ -32,7 +32,7 @@ export const Breadcrumbs: React.FC = () => {
       return;
     }
 
-    fetch(import.meta.env.BASE_URL + `/api/${category}.json`)
+    fetch(`/api/${category}.json`)
       .then(res => res.json())
       .then(data => {
         const found = data.find(
@@ -50,10 +50,8 @@ export const Breadcrumbs: React.FC = () => {
           <img
             src={
               theme === 'light'
-                ? import.meta.env.BASE_URL +
-                  './img/icons/Breadcrumbs-Home_icon.svg'
-                : import.meta.env.BASE_URL +
-                  './img/icons/Breadcrumbs-Home_dark.svg'
+                ? './img/icons/Breadcrumbs-Home_icon.svg'
+                : './img/icons/Breadcrumbs-Home_dark.svg'
             }
             alt="Home icon"
             className="icon"
@@ -62,9 +60,8 @@ export const Breadcrumbs: React.FC = () => {
         <img
           src={
             theme === 'light'
-              ? import.meta.env.BASE_URL +
-                './img/icons/Breadcrumbs-Separator_icon.svg'
-              : import.meta.env.BASE_URL + './img/icons/Arrow-Right_dark.svg'
+              ? './img/icons/Breadcrumbs-Separator_icon.svg'
+              : './img/icons/Arrow-Right_dark.svg'
           }
           alt="Breadcrumbs Separator"
           className="icon breadcrumbs__separator"
@@ -86,10 +83,8 @@ export const Breadcrumbs: React.FC = () => {
             <img
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL +
-                    './img/icons/Breadcrumbs-Separator_icon.svg'
-                  : import.meta.env.BASE_URL +
-                    './img/icons/Arrow-Right_dark.svg'
+                  ? './img/icons/Breadcrumbs-Separator_icon.svg'
+                  : './img/icons/Arrow-Right_dark.svg'
               }
               alt="Breadcrumbs Separator"
               className="icon breadcrumbs__separator"
@@ -110,8 +105,8 @@ export const Breadcrumbs: React.FC = () => {
             <img
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + './img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + './img/icons/Arrow-Left_dark.svg'
+                  ? './img/icons/Arrow-Left_icon.svg'
+                  : './img/icons/Arrow-Left_dark.svg'
               }
               alt="Back Arrow"
               className="icon"
