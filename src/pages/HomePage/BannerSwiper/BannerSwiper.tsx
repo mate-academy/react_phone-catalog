@@ -36,8 +36,8 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
               className="icon"
               src={
                 theme === 'light'
-                  ? import.meta.env.BASE_URL + './img/icons/Arrow-Left_icon.svg'
-                  : import.meta.env.BASE_URL + './img/icons/Arrow-Left_dark.svg'
+                  ? './img/icons/Arrow-Left_icon.svg'
+                  : './img/icons/Arrow-Left_dark.svg'
               }
               alt="Arrow Left"
             />
