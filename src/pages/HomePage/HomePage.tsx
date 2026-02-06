@@ -1,5 +1,5 @@
 import './HomePage.scss';
-import { BannerSwiper } from './BannerSwiper/BannerSwiper';
+import { BannerSwiper } from './BannerSwiper';
 import { ModelsSlider } from './ModelsSlider';
 import { useEffect, useState } from 'react';
 import { ProductsType } from '../../types/ProductsType';

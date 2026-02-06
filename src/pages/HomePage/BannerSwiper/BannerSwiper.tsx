@@ -17,17 +17,15 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
   const { theme } = useTheme();
 
   const banner = [
-    import.meta.env.BASE_URL + 'img/banner/Banner_apple-central-slide.png',
-    import.meta.env.BASE_URL + 'img/banner/Banner-first-slide.png',
-    import.meta.env.BASE_URL + 'img/banner/Banner-last-slide.png',
+    import.meta.env.BASE_URL + 'img/banner-accessories.png',
+    import.meta.env.BASE_URL + 'img/banner-phones.png',
+    import.meta.env.BASE_URL + 'img/banner-tablets.png',
   ];
 
   return (
     <div className="banner">
       <div className="banner__slider">
         <div className="banner__slider--container">
-          {/* Стрілка вліво */}
-
           <button
             className="button__arrow--arrowLeft
               swiper-buttons
@@ -44,8 +42,6 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
               alt="Arrow Left"
             />
           </button>
-
-          {/* Swiper */}
           {isSkeleton ? (
             <SkeletonBannerSwiper />
           ) : (
@@ -74,8 +70,6 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
               ))}
             </Swiper>
           )}
-
-          {/* Стрілка вправо */}
           <button
             className="button__arrow--arrowRight
               swiper-buttons
