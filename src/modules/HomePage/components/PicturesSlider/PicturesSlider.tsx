@@ -60,7 +60,7 @@ export const PicturesSlider: React.FC<PicturesSliderProps> = ({
           <div className={styles.picturesSlider__content}>
             <div className={styles.picture}>
               <img
-                src={`/${selectedProduct.image}`}
+                src={`${selectedProduct.image}`}
                 alt={selectedProduct.name ?? 'Product Image'}
                 title={selectedProduct.name ?? 'Product Image'}
                 className={styles.picturesSlider__productImage}
