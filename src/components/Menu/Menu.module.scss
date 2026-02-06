@@ -116,7 +116,7 @@
   bottom: 0;
   height: 2px;
   width: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
 }
 
 .badge {
@@ -130,7 +130,7 @@
   height: 20px;
   padding: 0 4px;
   background-color: var(--color-red);
-  color: var(--color-white);
+  color: var(--color-text-on-accent);
   border-radius: 50%;
   font-size: 10px;
   font-weight: 700;

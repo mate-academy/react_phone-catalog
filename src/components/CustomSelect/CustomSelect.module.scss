@@ -73,7 +73,7 @@
   text-align: left;
   padding: 8px 12px;
   font: inherit;
-  color: #89939a;
+  color: var(--color-secondary);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -81,11 +81,11 @@
 
 .option:hover,
 .option:focus-visible {
-  color: #313237;
-  background-color: #fafbfc;
+  color: var(--color-primary);
+  background-color: var(--color-hover-bg);
   outline: none;
 }
 
 .optionSelected {
-  color: #313237;
+  color: var(--color-primary);
 }

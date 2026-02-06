@@ -20,6 +20,8 @@ const en = {
     cartAlt: 'Cart',
     menuAlt: 'Menu',
     language: 'Language',
+    switchToDarkTheme: 'Switch to dark theme',
+    switchToLightTheme: 'Switch to light theme',
   },
   footer: {
     github: 'Github',

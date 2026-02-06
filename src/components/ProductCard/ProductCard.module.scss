@@ -7,13 +7,18 @@
   padding: 32px;
   background-color: var(--color-white);
   border: 1px solid var(--color-elements);
-  transition: box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   box-sizing: border-box;
 
   &:hover {
+    border-color: var(--color-elements);
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
   }
+}
+
+[data-theme='dark'] .card {
+  border-color: transparent;
 }
 
 .image {
@@ -53,7 +58,7 @@
   color: inherit;
 
   &:hover .title {
-    color: var(--primary-color, #0a0a0a);
+    color: var(--color-primary);
   }
 }
 
@@ -68,7 +73,7 @@
 }
 
 .fullPrice {
-  color: #89939A;
+  color: var(--color-secondary);
   text-decoration: line-through;
   font-weight: 500;
 }
@@ -119,8 +124,8 @@
 
   flex-grow: 1;
   height: 48px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -129,8 +134,7 @@
   justify-content: center;
 
   &:hover {
-    background-color: var(--color-primary);
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    background-color: var(--color-accent-hover);
   }
 
   &:disabled {
@@ -145,7 +149,7 @@
 
   &:hover {
     background-color: var(--color-white);
-    box-shadow: none;
+    box-shadow: 0 4px 14px rgb(39 174 96 / 28%);
   }
 }
 

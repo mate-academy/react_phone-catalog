@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useFavorites, useCart } from '../../context';
+import { useFavorites, useCart, useTheme } from '../../context';
 import styles from './Menu.module.scss';
 
 const navItems = [
@@ -20,6 +20,8 @@ export const Menu = ({ onClose }: Props) => {
   const { t } = useTranslation();
   const { favorites } = useFavorites();
   const { totalItems } = useCart();
+  const { theme } = useTheme();
+  const logoSrc = theme === 'dark' ? '/img/Logo_dark.svg' : '/img/Logo.svg';
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -33,7 +35,7 @@ export const Menu = ({ onClose }: Props) => {
     <div className={styles.menu}>
       <header className={styles.header}>
         <Link className={styles.logo} to="/" onClick={onClose}>
-          <img src="/img/Logo.svg" alt={t('header.logoAlt')} />
+          <img src={logoSrc} alt={t('header.logoAlt')} />
         </Link>
 
         <button className={styles.close} type="button" onClick={onClose}>

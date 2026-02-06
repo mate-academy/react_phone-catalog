@@ -130,6 +130,10 @@
 }
 
 .pageBtn {
+  --page-btn-hover-border: var(--color-primary);
+  --page-btn-hover-bg: transparent;
+  --page-btn-active-border: var(--color-primary);
+
   min-width: 28px;
   height: 28px;
   padding: 0 4px;
@@ -152,14 +156,21 @@
     opacity: 0.5;
   }
 
+  [data-theme='dark'] & {
+    --page-btn-hover-border: transparent;
+    --page-btn-hover-bg: #3b3e4a;
+    --page-btn-active-border: transparent;
+  }
+
   &:hover:not(:disabled) {
-    border-color: var(--color-primary);
+    border-color: var(--page-btn-hover-border);
+    background-color: var(--page-btn-hover-bg);
   }
 
   &.active {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary);
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+    border-color: var(--page-btn-active-border);
   }
 
   @media (min-width: 640px) {

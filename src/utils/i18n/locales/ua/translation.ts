@@ -24,6 +24,8 @@ const ua = {
     cartAlt: 'Кошик',
     menuAlt: 'Меню',
     language: 'Мова',
+    switchToDarkTheme: 'Увімкнути темну тему',
+    switchToLightTheme: 'Увімкнути світлу тему',
   },
   footer: {
     github: 'GitHub',

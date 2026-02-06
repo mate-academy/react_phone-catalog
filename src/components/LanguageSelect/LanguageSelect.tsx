@@ -65,8 +65,6 @@ export const LanguageSelect = ({ value, onChange }: Props) => {
         type="button"
         className={styles.trigger}
         onClick={handleToggleMenu}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
       >
         <span
           className={classNames(
@@ -74,7 +72,6 @@ export const LanguageSelect = ({ value, onChange }: Props) => {
             currentLanguage.flagClassName,
             styles.flag,
           )}
-          aria-hidden="true"
         />
       </button>
 
@@ -91,7 +88,6 @@ export const LanguageSelect = ({ value, onChange }: Props) => {
                   [styles.optionActive]: isSelected,
                 })}
                 onClick={() => handleSelectLanguage(language.value)}
-                aria-selected={isSelected}
               >
                 <span
                   className={classNames(
@@ -99,7 +95,6 @@ export const LanguageSelect = ({ value, onChange }: Props) => {
                     language.flagClassName,
                     styles.flag,
                   )}
-                  aria-hidden="true"
                 />
                 <span className={styles.optionLabel}>{language.label}</span>
               </button>

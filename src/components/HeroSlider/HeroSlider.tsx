@@ -83,7 +83,11 @@ export const HeroSlider = () => {
             className={styles.navButton}
             onClick={handlePrev}
           >
-            <img src="/img/arrow_left.svg" alt={t('hero.prevAlt')} />
+            <img
+              src="/img/arrow_left.svg"
+              alt={t('hero.prevAlt')}
+              data-no-dark-filter="true"
+            />
           </button>
         </div>
 
@@ -130,7 +134,11 @@ export const HeroSlider = () => {
             className={styles.navButton}
             onClick={handleNext}
           >
-            <img src="/img/arrow_right.svg" alt={t('hero.nextAlt')} />
+            <img
+              src="/img/arrow_right.svg"
+              alt={t('hero.nextAlt')}
+              data-no-dark-filter="true"
+            />
           </button>
         </div>
       </div>

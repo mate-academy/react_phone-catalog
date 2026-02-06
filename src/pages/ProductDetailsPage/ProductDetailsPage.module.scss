@@ -222,11 +222,7 @@
   cursor: pointer;
   padding: 0;
   position: relative;
-  transition: transform 0.3s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
+  transition: none;
 
   &::before {
     content: '';
@@ -234,6 +230,11 @@
     inset: -3px;
     border-radius: 50%;
     border: 1px solid var(--color-elements);
+    transition: border-color 0.3s;
+  }
+
+  &:hover:not(.colorButtonActive)::before {
+    border-color: #75767f;
   }
 }
 
@@ -275,9 +276,15 @@
 }
 
 .capacityButtonActive {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
   border-color: var(--color-primary);
+}
+
+[data-theme='dark'] .capacityButtonActive {
+  background-color: #f1f2f9;
+  color: #0f1121;
+  border-color: #f1f2f9;
 }
 
 .pricing {
@@ -317,14 +324,14 @@
   flex: 1;
   min-width: 0;
   padding: 16px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
 
   &:hover {
-    background-color: #0a0a0a;
+    background-color: var(--color-accent-hover);
   }
 
   &:disabled {
@@ -339,6 +346,7 @@
 
   &:hover {
     background-color: var(--color-white);
+    box-shadow: 0 4px 14px rgb(39 174 96 / 28%);
   }
 }
 

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useFavorites } from '../../context';
-import { useCart } from '../../context';
+import { useFavorites, useCart, useTheme } from '../../context';
 import { LanguageSelect } from '../LanguageSelect';
 import { Menu } from '../Menu';
+import { ThemeToggle } from '../ThemeToggle';
 import styles from './Header.module.scss';
 
 const navItems = [
@@ -20,13 +20,15 @@ export const Header = () => {
   const { t, i18n } = useTranslation();
   const { favorites } = useFavorites();
   const { totalItems } = useCart();
+  const { theme } = useTheme();
   const language = i18n.language === 'en' ? 'en' : 'ua';
+  const logoSrc = theme === 'dark' ? '/img/Logo_dark.svg' : '/img/Logo.svg';
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <Link className={styles.logo} to="/">
-          <img src="/img/Logo.svg" alt={t('header.logoAlt')} />
+          <img src={logoSrc} alt={t('header.logoAlt')} />
         </Link>
 
         <nav className={styles.nav}>
@@ -49,6 +51,9 @@ export const Header = () => {
               value={language}
               onChange={next => i18n.changeLanguage(next)}
             />
+          </div>
+          <div className={styles.theme}>
+            <ThemeToggle />
           </div>
 
           <NavLink
@@ -81,6 +86,9 @@ export const Header = () => {
               value={language}
               onChange={next => i18n.changeLanguage(next)}
             />
+          </div>
+          <div className={styles.mobileTheme}>
+            <ThemeToggle />
           </div>
 
           <button

@@ -1,9 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../context';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const logoSrc = theme === 'dark' ? '/img/Logo_dark.svg' : '/img/Logo.svg';
 
   const handleBackToTop = () => {
     window.scrollTo({
@@ -16,7 +19,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <a href="/" className={styles.logo}>
-          <img src="/img/Logo.svg" alt={t('header.logoAlt')} />
+          <img src={logoSrc} alt={t('header.logoAlt')} />
         </a>
 
         <nav className={styles.nav}>

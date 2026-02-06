@@ -38,6 +38,10 @@ $color-bg-slide: #000;
   }
 }
 
+[data-theme='dark'] .title {
+  color: #f1f2f9;
+}
+
 .sliderWrapper {
   display: flex;
   align-items: center;
@@ -78,6 +82,16 @@ $color-bg-slide: #000;
 
   &:hover {
     border-color: $color-accent;
+  }
+}
+
+[data-theme='dark'] .navButton {
+  background: #323542;
+  border-color: #323542;
+
+  img {
+    filter: brightness(0) saturate(100%) invert(94%) sepia(8%) saturate(174%)
+      hue-rotate(191deg) brightness(102%) contrast(95%);
   }
 }
 

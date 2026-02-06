@@ -122,13 +122,13 @@
   width: 100%;
   height: 48px;
   border: none;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-accent);
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
   }
 }
@@ -188,11 +188,11 @@
 }
 
 .confirmButton {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
 
   &:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-accent);
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
   }
 }
@@ -204,4 +204,10 @@
   &:hover {
     opacity: 0.8;
   }
+}
+
+[data-theme='dark'] .checkout:hover,
+[data-theme='dark'] .confirmButton:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: none;
 }

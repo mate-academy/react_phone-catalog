@@ -10,11 +10,21 @@ body {
   margin: 0;
   font-family: var(--font-family-primary);
   color: var(--color-primary);
+  background-color: var(--color-page-bg);
 }
 
 .App {
   min-height: 100vh;
-  background-color: var(--color-white);
+  background-color: var(--color-page-bg);
+}
+
+img[src$='.svg']:not(
+  [data-no-dark-filter='true'],
+  [src*='heart_active.svg'],
+  [src*='Logo.svg'],
+  [src*='Logo_dark.svg']
+) {
+  filter: var(--svg-icon-filter);
 }
 
 .section {
