@@ -54,7 +54,7 @@ const Cart = () => {
     return (
       <div className={styles.cartEmpty}>
         <img
-          src="./img/cart-is-empty.png"
+          src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
           alt="Cart is empty"
           className={styles.cartEmpty_cartImage}
         />
@@ -75,13 +75,19 @@ const Cart = () => {
                 onClick={() => handleRemove(item.id)}
                 aria-label="Remove item"
               >
-                <img src="./img/icons/XMark(gray).svg" alt="Remove" />
+                <img src={`${import.meta.env.BASE_URL}img/icons/XMark(gray).svg`} alt="Remove" />
               </button>
               <Link
                 to={`/${item.category}/${item.id}`}
                 className={styles.cart_Card_info_image}
               >
-                <img src={`/${item.image}`} alt={item.name} />
+                <img 
+                  src={item.image.startsWith('/') 
+                    ? `${import.meta.env.BASE_URL}${item.image.slice(1)}` 
+                    : `${import.meta.env.BASE_URL}${item.image}`
+                  } 
+                  alt={item.name} 
+                />
               </Link>
               <Link
                 to={`/${item.category}/${item.id}`}

@@ -74,7 +74,7 @@ const Pagination = ({
           aria-label="Previous page"
           className={styles.pagination_arrow}
         >
-          <img src="../../../public/img/icons/Arrow_Left.svg" alt="Previous" />
+          <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`} alt="Previous" />
         </button>
 
         <div className={styles.pagination_block_numbers}>
@@ -109,7 +109,7 @@ const Pagination = ({
           aria-label="Next page"
           className={styles.pagination_arrow}
         >
-          <img src="../../../public/img/icons/Arrow_Right.svg" alt="Next" />
+          <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right.svg`} alt="Next" />
         </button>
       </div>
     </div>

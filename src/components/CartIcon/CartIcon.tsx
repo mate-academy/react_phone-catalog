@@ -10,7 +10,7 @@ const CartIcon = () => {
     <Link to="/cart" className={styles.cartIconLink}>
       <div className={styles.cartIconWrapper}>
         <img
-          src="./img/icons/Shopping_bag_(Cart).svg"
+          src={`${import.meta.env.BASE_URL}img/icons/Shopping_bag_(Cart).svg`}
           alt="Cart"
           className={styles.cartIcon}
         />

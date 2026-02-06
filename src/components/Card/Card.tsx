@@ -46,8 +46,8 @@ const Card: React.FC<CardProps> = ({
   }
 
   const imagePath = product.image.startsWith('/')
-    ? product.image
-    : `/${product.image}`;
+    ? `${import.meta.env.BASE_URL}${product.image.slice(1)}`
+    : `${import.meta.env.BASE_URL}${product.image}`;
 
   const extraClass = extraClassName ? styles.catalogueCard : '';
   const cardClasses = `${styles.card} ${extraClass}`;
@@ -159,8 +159,8 @@ const Card: React.FC<CardProps> = ({
               <img
                 src={
                   isInFavorites
-                    ? '/img/icons/Favourites_Filled_(Heart Like).svg'
-                    : '/img/icons/Favourites_(Heart_Like).svg'
+                    ? `${import.meta.env.BASE_URL}img/icons/Favourites_Filled_(Heart Like).svg`
+                    : `${import.meta.env.BASE_URL}img/icons/Favourites_(Heart_Like).svg`
                 }
                 alt={
                   isInFavorites ? 'Remove from favorites' : 'Add to favorites'

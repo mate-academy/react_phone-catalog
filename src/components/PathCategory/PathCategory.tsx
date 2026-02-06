@@ -58,13 +58,13 @@ const PathCategory = ({ totalProducts }: CatalogueOptionsProps) => {
 
   const HomeIcon = (
     <Link to="/" className={styles.homeLink}>
-      <img src="./../..//public/img/icons/Home.svg" alt="Home" />
+      <img src={`${import.meta.env.BASE_URL}img/icons/Home.svg`} alt="Home" />
     </Link>
   );
 
   const Separator = (
     <img
-      src="./../..//public/img/icons/Arrow_Right(Gray).svg"
+      src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right(Gray).svg`}
       alt="Arrow_Right"
     />
   );
@@ -93,7 +93,7 @@ const PathCategory = ({ totalProducts }: CatalogueOptionsProps) => {
 
       {showBackButton && (
         <button className={styles.icons_back} onClick={handleBack}>
-          <img src="./img/icons/Arrow_Left.svg" alt="Back" />
+          <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`} alt="Back" />
           <span className="text_small">Back</span>
         </button>
       )}

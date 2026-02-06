@@ -17,7 +17,7 @@ const ShopByCategory = () => {
   useEffect(() => {
     const fetchCategoryCounts = async () => {
       try {
-        const response = await fetch('./api/products.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
         const data: Product[] = await response.json();
 
         const phonesCount = data.filter(p => p.category === 'phones').length;
@@ -49,19 +49,19 @@ const ShopByCategory = () => {
     {
       name: 'Mobile phones',
       count: counts.phones,
-      image: '/img/Phones.png',
+      image: `${import.meta.env.BASE_URL}img/Phones.png`,
       link: '/phones',
     },
     {
       name: 'Tablets',
       count: counts.tablets,
-      image: '/img/Tablets.png',
+      image: `${import.meta.env.BASE_URL}img/Tablets.png`,
       link: '/tablets',
     },
     {
       name: 'Accessories',
       count: counts.accessories,
-      image: '/img/Accessories.png',
+      image: `${import.meta.env.BASE_URL}img/Accessories.png`,
       link: '/accessories',
     },
   ];

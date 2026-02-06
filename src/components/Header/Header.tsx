@@ -7,10 +7,10 @@ import { selectTotalItems } from '../../store/slices/cartSlice';
 import { selectTotalFavorites } from '../../store/slices/favoritesSlice';
 
 const iconPaths = {
-  menu: '../../public/img/icons/Menu.svg',
-  close: '../../public/img/icons/XMark.svg',
-  heart: '../../public/img/icons/Favourites_(Heart_Like).svg',
-  cart: '../../public/img/icons/Shopping_bag_(Cart).svg',
+  menu: `${import.meta.env.BASE_URL}img/icons/Menu.svg`,
+  close: `${import.meta.env.BASE_URL}img/icons/XMark.svg`,
+  heart: `${import.meta.env.BASE_URL}img/icons/Favourites_(Heart_Like).svg`,
+  cart: `${import.meta.env.BASE_URL}img/icons/Shopping_bag_(Cart).svg`,
 };
 
 const Header = () => {
@@ -45,7 +45,7 @@ const Header = () => {
       <div className={styles.header}>
         <div className={styles.header_block}>
           <div className={styles.header_logo}>
-            <img src="../../../public/img/icons/Logo.svg" alt="Logo" />
+            <img src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`} alt="Logo" />
           </div>
         </div>
         <div className={styles.header_block}>

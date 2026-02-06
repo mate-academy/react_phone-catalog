@@ -74,7 +74,7 @@ const ProductDetails = () => {
         const pathParts = location.pathname.split('/');
         const category = pathParts[1];
 
-        const response = await fetch(`/api/${category}.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}api/${category}.json`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch');
@@ -221,7 +221,7 @@ const ProductDetails = () => {
               {product.images.map((image, index) => (
                 <img
                   key={index}
-                  src={`/${image}`}
+                  src={`${import.meta.env.BASE_URL}${image}`}
                   alt={`${product.name} view ${index + 1}`}
                   onClick={() => setSelectedImage(index)}
                   className={
@@ -233,7 +233,7 @@ const ProductDetails = () => {
             <div className={styles.gallery_mainImage}>
               <img
                 className={styles.gallery_mainImage_image}
-                src={`/${product.images[selectedImage]}`}
+                src={`${import.meta.env.BASE_URL}${product.images[selectedImage]}`}
                 alt={product.name}
               />
             </div>
@@ -357,8 +357,8 @@ const ProductDetails = () => {
                     className={styles.image}
                     src={
                       isInFavorites
-                        ? '/img/icons/Favourites_Filled_(Heart Like).svg'
-                        : '/img/icons/Favourites_(Heart_Like).svg'
+                        ? `${import.meta.env.BASE_URL}img/icons/Favourites_Filled_(Heart Like).svg`
+                        : `${import.meta.env.BASE_URL}img/icons/Favourites_(Heart_Like).svg`
                     }
                     alt={
                       isInFavorites

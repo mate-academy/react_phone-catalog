@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer_blocks}>
         <div className={styles.footer_blocks_image}>
-          <img src="../../../public/img/icons/Logo.svg" alt="Logo" />
+          <img src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`} alt="Logo" />
         </div>
         <nav className={`${styles.footer_blocks_info} text_uppercase`}>
           <a href="https://github.com/SeemsGood78/react_phone-catalog">
@@ -25,7 +25,7 @@ const Footer = () => {
           <span className="text_small">Back to top</span>
           <button onClick={scrollToTop}>
             <img
-              src="../../../public/img/icons/Arrow(top).svg"
+              src={`${import.meta.env.BASE_URL}img/icons/Arrow(top).svg`}
               alt="ArrowTop"
             />
           </button>

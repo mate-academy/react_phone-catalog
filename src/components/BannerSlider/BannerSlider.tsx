@@ -3,18 +3,18 @@ import styles from './style.module.scss';
 
 const banners = [
   {
-    desktop: '../../../public/img/banners/banner_nowAviable_1.png',
-    mobile: '../../../public/img/banners/mobileBanner_nowAviable_1.png',
+    desktop: `${import.meta.env.BASE_URL}img/banners/banner_nowAviable_1.png`,
+    mobile: `${import.meta.env.BASE_URL}img/banners/mobileBanner_nowAviable_1.png`,
     alt: 'Banner 1',
   },
   {
-    desktop: '../../../public/img/banners/banner_nowAviable_2.png',
-    mobile: '../../../public/img/banners/mobileBanner_nowAviable_2.png',
+    desktop: `${import.meta.env.BASE_URL}img/banners/banner_nowAviable_2.png`,
+    mobile: `${import.meta.env.BASE_URL}img/banners/mobileBanner_nowAviable_2.png`,
     alt: 'Banner 2',
   },
   {
-    desktop: '../../../public/img/banners/banner_nowAviable_3.png',
-    mobile: '../../../public/img/banners/mobileBanner_nowAviable_3.png',
+    desktop: `${import.meta.env.BASE_URL}img/banners/banner_nowAviable_3.png`,
+    mobile: `${import.meta.env.BASE_URL}img/banners/mobileBanner_nowAviable_3.png`,
     alt: 'Banner 3',
   },
 ];
@@ -49,7 +49,7 @@ const BannerSlider = () => {
         onClick={handlePrev}
         aria-label="Previous slide"
       >
-        <img src="../../../public/img/icons/Arrow_Left.svg" alt="Logo" />
+        <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`} alt="Previous" />
       </button>
 
       <div className={styles.slider_main}>
@@ -71,7 +71,7 @@ const BannerSlider = () => {
         aria-label="Next slide"
         className={styles.slider_right}
       >
-        <img src="../../../public/img/icons/Arrow_Right.svg" alt="Logo" />
+        <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right.svg`} alt="Next" />
       </button>
       <div className={styles.slider_menu}>
         {banners.map((_, index) => (

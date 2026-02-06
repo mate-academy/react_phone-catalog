@@ -10,8 +10,8 @@ interface MobileMenuProps {
 }
 
 const iconPaths = {
-  heart: '../../public/img/icons/Favourites_(Heart_Like).svg',
-  cart: '../../public/img/icons/Shopping_bag_(Cart).svg',
+  heart: `${import.meta.env.BASE_URL}img/icons/Favourites_(Heart_Like).svg`,
+  cart: `${import.meta.env.BASE_URL}img/icons/Shopping_bag_(Cart).svg`,
 };
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
