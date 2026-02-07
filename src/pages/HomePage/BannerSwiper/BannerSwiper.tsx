@@ -20,6 +20,8 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
     './img/banner-accessories.png',
     './img/banner-phones.png',
     './img/banner-tablets.png',
+    './img/banner-gato.png',
+    './img/banner-gato-2.png',
   ];
 
   return (
