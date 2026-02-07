@@ -26,14 +26,14 @@ export const NewProductsSlider = () => {
             className={styles.navButton}
             onClick={handlePrev}
           >
-            <img src="/img/arrow_left.svg" alt={t('sliders.leftAlt')} />
+            <img src="img/arrow_left.svg" alt={t('sliders.leftAlt')} />
           </button>
           <button
             type="button"
             className={styles.navButton}
             onClick={handleNext}
           >
-            <img src="/img/arrow_right.svg" alt={t('sliders.rightAlt')} />
+            <img src="img/arrow_right.svg" alt={t('sliders.rightAlt')} />
           </button>
         </div>
       </div>

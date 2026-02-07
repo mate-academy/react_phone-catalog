@@ -16,7 +16,7 @@ export const NotFoundPage = ({ title }: Props) => {
         <h1 className={styles.title}>{pageTitle}</h1>
         <Link to="/" className={styles.homeLink}>
           <img
-            src="/img/Home_breadcrumb.svg"
+            src="img/Home_breadcrumb.svg"
             alt={t('icons.homeAlt')}
             className={styles.homeIcon}
           />

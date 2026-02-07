@@ -14,8 +14,8 @@ export const useNewProductsSlider = () => {
       try {
         setIsLoading(true);
         const [phonesRes, productsRes] = await Promise.all([
-          fetchWithDelay('/api/phones.json'),
-          fetchWithDelay('/api/products.json'),
+          fetchWithDelay('api/phones.json'),
+          fetchWithDelay('api/products.json'),
         ]);
 
         const phonesData: Phone[] = await phonesRes.json();

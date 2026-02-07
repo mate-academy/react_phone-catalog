@@ -39,7 +39,7 @@ export const useCatalogPage = (dataUrl: string): CatalogResult => {
         const itemsResponse = await fetchWithDelay(dataUrl);
         const itemsData = await itemsResponse.json();
 
-        const productsResponse = await fetchWithDelay('/api/products.json');
+        const productsResponse = await fetchWithDelay('api/products.json');
         const productsData = await productsResponse.json();
 
         const itemsWithYear = itemsData.map((item: Phone) => {

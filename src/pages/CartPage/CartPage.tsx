@@ -46,7 +46,7 @@ export const CartPage = () => {
           onClick={() => navigate(-1)}
           className={styles.backButton}
         >
-          <img src="/img/arrow_left.svg" alt={t('icons.backAlt')} />
+          <img src="img/arrow_left.svg" alt={t('icons.backAlt')} />
           {t('common.back')}
         </button>
 
@@ -55,7 +55,7 @@ export const CartPage = () => {
         {cartItems.length === 0 ? (
           <img
             className={styles.emptyImage}
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt={t('cartPage.empty')}
           />
         ) : (

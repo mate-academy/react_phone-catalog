@@ -13,7 +13,7 @@ export const useAccessoriesPage = () => {
     handleSortChange,
     handlePerPageChange,
     handlePageChange,
-  } = useCatalogPage('/api/accessories.json');
+  } = useCatalogPage('api/accessories.json');
 
   return {
     accessories: items,

@@ -21,19 +21,19 @@ export const Categories = () => {
           {
             titleKey: 'categories.phonesTitle',
             amount: counts.phones,
-            img: '/img/category-phones.webp',
+            img: 'img/category-phones.webp',
             link: 'phones',
           },
           {
             titleKey: 'categories.tabletsTitle',
             amount: counts.tablets,
-            img: '/img/category-tablets.png',
+            img: 'img/category-tablets.png',
             link: 'tablets',
           },
           {
             titleKey: 'categories.accessoriesTitle',
             amount: counts.accessories,
-            img: '/img/category-accessories.png',
+            img: 'img/category-accessories.png',
             link: 'accessories',
           },
         ].map(({ titleKey, amount, img, link }) => (

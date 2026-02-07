@@ -13,7 +13,7 @@ export const useTabletsPage = () => {
     handleSortChange,
     handlePerPageChange,
     handlePageChange,
-  } = useCatalogPage('/api/tablets.json');
+  } = useCatalogPage('api/tablets.json');
 
   return {
     tablets: items,

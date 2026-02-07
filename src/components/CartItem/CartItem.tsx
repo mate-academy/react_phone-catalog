@@ -20,14 +20,14 @@ export const CartItem = ({
   onDecrease,
 }: Props) => {
   const { t } = useTranslation();
-  const imageUrl = `/${phone.images[0]}`;
+  const imageUrl = phone.images[0];
   const price = phone.priceDiscount || phone.priceRegular;
   const isMinusDisabled = quantity <= 1;
 
   return (
     <div className={styles.item}>
       <button type="button" className={styles.remove} onClick={onRemove}>
-        <img src="/img/close.svg" alt={t('icons.removeAlt')} />
+        <img src="img/close.svg" alt={t('icons.removeAlt')} />
       </button>
 
       <Link to={`/product/${phone.id}`} className={styles.imageLink}>
@@ -45,11 +45,11 @@ export const CartItem = ({
           onClick={onDecrease}
           disabled={isMinusDisabled}
         >
-          <img src="/img/minus.svg" alt={t('icons.minusAlt')} />
+          <img src="img/minus.svg" alt={t('icons.minusAlt')} />
         </button>
         <span className={styles.qtyValue}>{quantity}</span>
         <button type="button" className={styles.qtyButton} onClick={onIncrease}>
-          <img src="/img/plus.svg" alt={t('icons.plusAlt')} />
+          <img src="img/plus.svg" alt={t('icons.plusAlt')} />
         </button>
       </div>
 

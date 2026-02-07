@@ -6,7 +6,7 @@ import styles from './Footer.module.scss';
 export const Footer = () => {
   const { t } = useTranslation();
   const { theme } = useTheme();
-  const logoSrc = theme === 'dark' ? '/img/Logo_dark.svg' : '/img/Logo.svg';
+  const logoSrc = theme === 'dark' ? 'img/Logo_dark.svg' : 'img/Logo.svg';
 
   const handleBackToTop = () => {
     window.scrollTo({
@@ -42,7 +42,7 @@ export const Footer = () => {
         <div className={styles.backToTop} onClick={handleBackToTop}>
           <span>{t('footer.backToTop')}</span>
           <button type="button">
-            <img src="/img/arrow_right.svg" alt={t('footer.backToTop')} />
+            <img src="img/arrow_right.svg" alt={t('footer.backToTop')} />
           </button>
         </div>
       </div>

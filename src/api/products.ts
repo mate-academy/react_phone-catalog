@@ -20,7 +20,7 @@ export const getSuggestedProducts = async (
   excludeId?: string,
   count = 10,
 ): Promise<Phone[]> => {
-  const res = await fetchWithDelay(`/api/${category}.json`);
+  const res = await fetchWithDelay(`api/${category}.json`);
 
   if (!res.ok) {
     throw new Error(

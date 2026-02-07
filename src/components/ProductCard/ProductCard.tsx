@@ -47,7 +47,7 @@ export const ProductCard = ({ phone, showRegularPriceOnly = false }: Props) => {
     addToCart(phone);
   };
 
-  const imageUrl = `/${images[0]}`;
+  const imageUrl = images[0];
   const screenDisplay = screen.replace('(Super Retina XDR)', '').trim();
   const showFullPrice =
     !showRegularPriceOnly &&
@@ -106,7 +106,7 @@ export const ProductCard = ({ phone, showRegularPriceOnly = false }: Props) => {
           onClick={handleFavoriteClick}
         >
           <img
-            src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}
+            src={isFavorite ? 'img/heart_active.svg' : 'img/heart.svg'}
             alt={t('icons.heartAlt')}
           />
         </button>

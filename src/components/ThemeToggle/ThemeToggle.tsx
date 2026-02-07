@@ -7,7 +7,7 @@ export const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
   const isLightTheme = theme === 'light';
-  const iconSrc = isLightTheme ? '/img/dark_theme.svg' : '/img/light_theme.svg';
+  const iconSrc = isLightTheme ? 'img/dark_theme.svg' : 'img/light_theme.svg';
   const label = isLightTheme
     ? t('header.switchToDarkTheme')
     : t('header.switchToLightTheme');

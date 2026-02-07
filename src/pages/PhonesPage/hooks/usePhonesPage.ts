@@ -13,7 +13,7 @@ export const usePhonesPage = () => {
     handleSortChange,
     handlePerPageChange,
     handlePageChange,
-  } = useCatalogPage('/api/phones.json');
+  } = useCatalogPage('api/phones.json');
 
   return {
     phones: items,

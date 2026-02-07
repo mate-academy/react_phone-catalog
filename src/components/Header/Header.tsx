@@ -22,7 +22,7 @@ export const Header = () => {
   const { totalItems } = useCart();
   const { theme } = useTheme();
   const language = i18n.language === 'en' ? 'en' : 'ua';
-  const logoSrc = theme === 'dark' ? '/img/Logo_dark.svg' : '/img/Logo.svg';
+  const logoSrc = theme === 'dark' ? 'img/Logo_dark.svg' : 'img/Logo.svg';
 
   return (
     <header className={styles.header}>
@@ -62,7 +62,7 @@ export const Header = () => {
               classNames(styles.action, { [styles.isActive]: isActive })
             }
           >
-            <img src="/img/heart.svg" alt={t('header.favoritesAlt')} />
+            <img src="img/heart.svg" alt={t('header.favoritesAlt')} />
             {favorites.length > 0 && (
               <span className={styles.badge}>{favorites.length}</span>
             )}
@@ -73,7 +73,7 @@ export const Header = () => {
               classNames(styles.action, { [styles.isActive]: isActive })
             }
           >
-            <img src="/img/shopping_cart.svg" alt={t('header.cartAlt')} />
+            <img src="img/shopping_cart.svg" alt={t('header.cartAlt')} />
             {totalItems > 0 && (
               <span className={styles.badge}>{totalItems}</span>
             )}
@@ -96,7 +96,7 @@ export const Header = () => {
             type="button"
             onClick={() => setIsMenuOpen(true)}
           >
-            <img src="/img/burger_menu.svg" alt={t('header.menuAlt')} />
+            <img src="img/burger_menu.svg" alt={t('header.menuAlt')} />
           </button>
         </div>
       </div>

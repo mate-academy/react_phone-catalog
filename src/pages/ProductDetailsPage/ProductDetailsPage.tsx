@@ -59,7 +59,7 @@ export const ProductDetailsPage = () => {
 
         setError(false);
 
-        const productsResponse = await fetchWithDelay('/api/products.json');
+        const productsResponse = await fetchWithDelay('api/products.json');
         const allProducts: Product[] = await productsResponse.json();
         const productFromList = allProducts.find(p => p.itemId === productId);
 
@@ -74,7 +74,7 @@ export const ProductDetailsPage = () => {
         setProductInfo(productFromList);
 
         const category = productFromList.category;
-        const detailsResponse = await fetchWithDelay(`/api/${category}.json`);
+        const detailsResponse = await fetchWithDelay(`api/${category}.json`);
         const categoryProducts: Phone[] = await detailsResponse.json();
         const detailedProduct = categoryProducts.find(p => p.id === productId);
 
@@ -191,13 +191,13 @@ export const ProductDetailsPage = () => {
       <div className={styles.breadcrumbs}>
         <Link to="/" className={styles.breadcrumbLink}>
           <img
-            src="/img/Home_breadcrumb.svg"
+            src="img/Home_breadcrumb.svg"
             alt={t('icons.homeAlt')}
             className={styles.homeIcon}
           />
         </Link>
         <img
-          src="/img/arrow_right_gray.svg"
+          src="img/arrow_right_gray.svg"
           alt={t('icons.arrowRightAlt')}
           className={styles.arrow}
         />
@@ -205,7 +205,7 @@ export const ProductDetailsPage = () => {
           {t(`nav.${category}`)}
         </Link>
         <img
-          src="/img/arrow_right_gray.svg"
+          src="img/arrow_right_gray.svg"
           alt={t('icons.arrowRightAlt')}
           className={styles.arrow}
         />
@@ -213,7 +213,7 @@ export const ProductDetailsPage = () => {
       </div>
 
       <button onClick={() => navigate(-1)} className={styles.backButton}>
-        <img src="/img/arrow_left.svg" alt={t('icons.backAlt')} />
+        <img src="img/arrow_left.svg" alt={t('icons.backAlt')} />
         {t('common.back')}
       </button>
 
@@ -240,7 +240,7 @@ export const ProductDetailsPage = () => {
                 onClick={() => setSelectedImage(index)}
                 disabled={isColorChanging}
               >
-                <img src={`/${image}`} alt={`${product.name} ${index + 1}`} />
+                <img src={image} alt={`${product.name} ${index + 1}`} />
               </button>
             ))}
           </div>
@@ -252,7 +252,7 @@ export const ProductDetailsPage = () => {
           >
             <img
               key={selectedImage}
-              src={`/${product.images[selectedImage]}`}
+              src={product.images[selectedImage]}
               alt={product.name}
             />
           </button>
@@ -263,7 +263,7 @@ export const ProductDetailsPage = () => {
           close={() => setIsLightboxOpen(false)}
           index={selectedImage}
           slides={product.images.map((image, index) => ({
-            src: `/${image}`,
+            src: image,
             alt: `${product.name} ${index + 1}`,
           }))}
           styles={{
@@ -338,7 +338,7 @@ export const ProductDetailsPage = () => {
               </button>
               <button className={styles.favorite} onClick={handleFavoriteClick}>
                 <img
-                  src={isFavorite ? '/img/heart_active.svg' : '/img/heart.svg'}
+                  src={isFavorite ? 'img/heart_active.svg' : 'img/heart.svg'}
                   alt={t('product.favoriteAlt')}
                 />
               </button>

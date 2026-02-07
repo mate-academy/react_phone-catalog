@@ -12,7 +12,7 @@ export const useHotPricesSlider = () => {
     const load = async () => {
       try {
         setIsLoading(true);
-        const res = await fetchWithDelay('/api/phones.json');
+        const res = await fetchWithDelay('api/phones.json');
         const phonesData: Phone[] = await res.json();
 
         const sortedPhones = phonesData

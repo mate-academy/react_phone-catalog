@@ -13,15 +13,15 @@ import styles from './HeroSlider.module.scss';
 const slides = [
   {
     id: 1,
-    image: '/img/phones/apple-iphone-14-pro/spaceblack/01.webp',
+    image: 'img/phones/apple-iphone-14-pro/spaceblack/01.webp',
   },
   {
     id: 2,
-    image: '/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
+    image: 'img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
   },
   {
     id: 3,
-    image: '/img/accessories/apple-watch-series-6/space-gray/00.webp',
+    image: 'img/accessories/apple-watch-series-6/space-gray/00.webp',
   },
 ];
 
@@ -84,7 +84,7 @@ export const HeroSlider = () => {
             onClick={handlePrev}
           >
             <img
-              src="/img/arrow_left.svg"
+              src="img/arrow_left.svg"
               alt={t('hero.prevAlt')}
               data-no-dark-filter="true"
             />
@@ -135,7 +135,7 @@ export const HeroSlider = () => {
             onClick={handleNext}
           >
             <img
-              src="/img/arrow_right.svg"
+              src="img/arrow_right.svg"
               alt={t('hero.nextAlt')}
               data-no-dark-filter="true"
             />

@@ -21,7 +21,7 @@ export const Menu = ({ onClose }: Props) => {
   const { favorites } = useFavorites();
   const { totalItems } = useCart();
   const { theme } = useTheme();
-  const logoSrc = theme === 'dark' ? '/img/Logo_dark.svg' : '/img/Logo.svg';
+  const logoSrc = theme === 'dark' ? 'img/Logo_dark.svg' : 'img/Logo.svg';
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -39,7 +39,7 @@ export const Menu = ({ onClose }: Props) => {
         </Link>
 
         <button className={styles.close} type="button" onClick={onClose}>
-          <img src="/img/close_black.svg" alt="Close menu" />
+          <img src="img/close_black.svg" alt="Close menu" />
         </button>
       </header>
 
@@ -66,7 +66,7 @@ export const Menu = ({ onClose }: Props) => {
           }
           onClick={onClose}
         >
-          <img src="/img/heart.svg" alt={t('header.favoritesAlt')} />
+          <img src="img/heart.svg" alt={t('header.favoritesAlt')} />
           {favorites.length > 0 && (
             <span className={styles.badge}>{favorites.length}</span>
           )}
@@ -79,7 +79,7 @@ export const Menu = ({ onClose }: Props) => {
           }
           onClick={onClose}
         >
-          <img src="/img/shopping_cart.svg" alt={t('header.cartAlt')} />
+          <img src="img/shopping_cart.svg" alt={t('header.cartAlt')} />
           {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
         </NavLink>
       </div>

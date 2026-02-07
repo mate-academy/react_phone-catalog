@@ -30,11 +30,11 @@ export const AccessoriesPage = () => {
       <div className={styles.container}>
         <div className={styles.breadcrumbs}>
           <a href="/" className={styles.homeLink}>
-            <img src="/img/Home_breadcrumb.svg" alt={t('icons.homeAlt')} />
+            <img src="img/Home_breadcrumb.svg" alt={t('icons.homeAlt')} />
           </a>
           <span className={styles.arrow}>
             <img
-              src="/img/arrow_right_gray.svg"
+              src="img/arrow_right_gray.svg"
               alt={t('icons.arrowRightAlt')}
             />
           </span>
