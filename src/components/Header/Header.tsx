@@ -45,10 +45,12 @@ const Header = () => {
       <div className={styles.header}>
         <div className={styles.header_block}>
           <div className={styles.header_logo}>
-            <img
-              src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`}
-              alt="Logo"
-            />
+            <Link to="/">
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`}
+                alt="Logo"
+              />
+            </Link>
           </div>
         </div>
         <div className={styles.header_block}>
