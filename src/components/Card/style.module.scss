@@ -56,7 +56,7 @@
 
     &_price {
         display: flex;
-        align-items: center; 
+        align-items: center;
         gap: 8px;
         height: 31px;
 
@@ -115,8 +115,20 @@
 
             &:hover {
                 border: none;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             }
         }
+
+        &_added {
+            color: $Green;
+            background-color: $White;
+            border: 1px solid $Elements;
+
+            &:hover {
+                border: 1px solid $Elements;
+            }
+        }
+
 
         &_fav {
             padding: 0;

@@ -49,7 +49,10 @@ const BannerSlider = () => {
         onClick={handlePrev}
         aria-label="Previous slide"
       >
-        <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`} alt="Previous" />
+        <img
+          src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`}
+          alt="Previous"
+        />
       </button>
 
       <div className={styles.slider_main}>
@@ -71,7 +74,10 @@ const BannerSlider = () => {
         aria-label="Next slide"
         className={styles.slider_right}
       >
-        <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right.svg`} alt="Next" />
+        <img
+          src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right.svg`}
+          alt="Next"
+        />
       </button>
       <div className={styles.slider_menu}>
         {banners.map((_, index) => (

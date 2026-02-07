@@ -68,7 +68,11 @@
 .selected {
     background-color: $Primary;
     color: $White;
+    height: 32px;
+    width: 32px;
     border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
     &:hover {
         background-color: $Primary;

@@ -74,7 +74,10 @@ const Pagination = ({
           aria-label="Previous page"
           className={styles.pagination_arrow}
         >
-          <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`} alt="Previous" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/Arrow_Left.svg`}
+            alt="Previous"
+          />
         </button>
 
         <div className={styles.pagination_block_numbers}>
@@ -92,7 +95,7 @@ const Pagination = ({
                 key={pageNum}
                 onClick={() => onPageChange(pageNum as number)}
                 className={
-                  currentPage === pageNum ? styles.selected : styles.selected
+                  currentPage === pageNum ? styles.selected : styles.buttons
                 }
                 aria-label={`Page ${pageNum}`}
                 aria-current={currentPage === pageNum ? 'page' : undefined}
@@ -109,7 +112,10 @@ const Pagination = ({
           aria-label="Next page"
           className={styles.pagination_arrow}
         >
-          <img src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right.svg`} alt="Next" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/Arrow_Right.svg`}
+            alt="Next"
+          />
         </button>
       </div>
     </div>

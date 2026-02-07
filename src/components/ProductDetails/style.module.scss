@@ -168,6 +168,12 @@
             display: flex;
             gap: 8px;
 
+            &_btnActive {
+                background: $Primary;
+                color: $White;
+                border-color: $Primary;
+            }
+
             &_btn,
             &_btnActive {
                 border: 1px solid $Icons;
@@ -175,12 +181,11 @@
                 font-size: 14px;
                 font-weight: 600;
                 padding: 7px;
-            }
+                cursor: pointer;
 
-            &_btnActive {
-                background: $Primary;
-                color: $White;
-                border-color: $Primary;
+                &:hover {
+                    border: 1px solid $Primary;
+                }
             }
         }
 
