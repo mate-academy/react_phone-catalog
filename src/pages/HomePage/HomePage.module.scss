@@ -1,12 +1,20 @@
 @use '../../mixins.scss' as *;
 
 .sect {
-  padding-bottom: 56px;
+  padding: 56px 16px;
+
+  @include on-tablet {
+    padding: 0 24px 64px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 80px;
+  }
 }
 
 .title {
   font-weight: 800;
-  line-height: 140%;
+  font-size: 22px;
   font-size: bold;
   margin: 0;
 
@@ -72,5 +80,13 @@
 }
 
 .sectionFooter {
-  padding-bottom: 64px;
+  padding: 56px 16px 64px;
+
+  @include on-tablet {
+    padding: 64px 24px;
+  }
+
+  @include on-desktop {
+    padding: 80px 32px;
+  }
 }

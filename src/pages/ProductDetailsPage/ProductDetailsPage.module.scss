@@ -223,5 +223,13 @@
 }
 
 .containerSlider {
-  padding: 0;
+  padding: 56px 0;
+
+  @include on-tablet {
+    padding: 64px 0 ;
+  }
+
+  @include on-desktop {
+    padding: 80px 0;
+  }
 }

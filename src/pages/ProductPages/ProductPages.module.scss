@@ -75,7 +75,7 @@
 
 .customSelect {
   appearance: none;
-  background: url('../../../public/img/arrows/arrow_down.svg') no-repeat right 12px center;
+  background: url('/img/arrows/arrow_down.svg') no-repeat right 12px center;
   padding: 10px 12px;
   border: 1px solid #e2e6e9;
   font-size: 14px;
@@ -92,7 +92,6 @@
     outline: none;
     border-color: #313237;
     box-shadow: 0 0 4px rgba(180, 180, 180, 0.4);
-    background: url('../../../public/img/arrows/arrow_up.svg') no-repeat right 12px center;
   }
 
   option {
@@ -101,6 +100,10 @@
     line-height: 21px;
     color: #89939a;
   }
+}
+
+.customSelect:focus + .selectWrapper::after {
+  transform: translate(-50%) rotate(180deg);
 }
 
 .leftselect {

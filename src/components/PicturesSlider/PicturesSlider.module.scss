@@ -75,11 +75,12 @@
       background-color: white;
       position: absolute;
       border: 1px solid #b4bdc3;
-     height: clamp(
-      189px,
-      calc(189px + (400 - 189) * ((100vw - 640px) / (1200 - 640))),
-      400px
-     );
+      cursor: pointer;
+      height: clamp(
+        189px,
+        calc(189px + (400 - 189) * ((100vw - 640px) / (1200 - 640))),
+        400px
+      );
     }
 
     &Prev {

@@ -13,7 +13,7 @@ export const ProductCard: React.FC<Props> = ({ product, priceMode }) => {
   const { but, has } = useLikeProducts();
   const { add, item } = useCard();
 
-  const realId = product.itemId || product.id;
+  const realId = product.itemId || String(product.id);
 
   const productAdded = item.some(ind => ind.id === realId);
   const likePlus = has(realId);
@@ -23,6 +23,8 @@ export const ProductCard: React.FC<Props> = ({ product, priceMode }) => {
     priceMode === 'discount'
       ? product.price || product.priceDiscount
       : product.fullPrice || product.priceRegular;
+
+  const normalizedProduct = { ...product, id: realId };
 
   return (
     <article className={style.card}>
@@ -58,7 +60,7 @@ export const ProductCard: React.FC<Props> = ({ product, priceMode }) => {
       <div className={style.button}>
         <button
           className={`${style.leftBut} ${productAdded ? style.leftButActive : ''}`}
-          onClick={() => !productAdded && add(product)}
+          onClick={() => !productAdded && add(normalizedProduct)}
           disabled={productAdded}
         >
           {productAdded ? 'Added' : 'Add to cart'}

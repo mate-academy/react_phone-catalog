@@ -29,6 +29,10 @@
   line-height: 100%;
   margin: 0;
   color: #b4bdc3;
+
+  @include on-desktop {
+    display: none;
+  }
 }
 
 .colorWrapper {

@@ -10,15 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 56px 16px 24px;
-
-  @include on-tablet {
-    padding: 0 24px 24px;
-  }
-
-  @include on-desktop {
-    padding: 0 32px 24px;
-  }
+  padding-bottom: 24px;
 }
 
 .title {
@@ -32,6 +24,7 @@
   display: flex;
   flex-direction: row;
   gap: 16px;
+  cursor: pointer;
 
   &All {
     all: unset;
@@ -55,15 +48,6 @@
 
 .bottom {
   overflow: hidden;
-  padding: 0 16px;
-
-    @include on-tablet {
-      padding: 0 24px;
-    }
-
-    @include on-desktop {
-      padding: 0 32px;
-    }
 
   &Card {
     display: flex;

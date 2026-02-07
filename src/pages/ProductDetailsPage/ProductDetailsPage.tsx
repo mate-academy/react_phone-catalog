@@ -40,6 +40,8 @@ export const ProductDetailsPage: React.FC = () => {
     const newId = `${data.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
     const newProduct = await client.getProductDeatils(newId);
 
+    navigate(`/product/${newId}`, { replace: true });
+
     setColor(newColor);
     setData(newProduct);
     setCapacity(newCapacity);

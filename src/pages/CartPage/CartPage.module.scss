@@ -43,7 +43,7 @@
 }
 
 .modalSection {
-  background: #c5b1da;
+  background: #b4aebb;
   padding: 24px;
   width: 500px;
   text-align: center;
@@ -74,19 +74,21 @@
 
 .butYes {
   flex: 1;
-  background: #8765d1;
+  background: #3d3d3e;
   color: white;
   padding: 10px;
   border: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .butCancel {
   flex: 1;
-  background: #ddddec;
+  background: #c5c5ca;
   padding: 10px;
   border: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .topNavDetails {
