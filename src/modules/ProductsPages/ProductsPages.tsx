@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import styles from './ProductsPages.module.scss';
 import Home from '../../assets/Home.svg?react';

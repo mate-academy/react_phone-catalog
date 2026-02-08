@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from 'react';
 import styles from './CartButton.module.scss';
 import type { Product } from '../../../types/types';

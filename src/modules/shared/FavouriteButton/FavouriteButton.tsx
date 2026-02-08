@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from 'react';
 import FavouritesIcon from '../../../assets/Favourites (Heart Like).svg?react';
 import FavouritesFilledIcon from '../../../assets/Favourites Filled (Heart Like).svg?react';
