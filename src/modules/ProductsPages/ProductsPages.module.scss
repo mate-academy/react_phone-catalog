@@ -1,0 +1,138 @@
+@use '../../styles/' as *;
+
+.container {
+  @include grid-container;
+}
+
+.productsPages {
+  &__title {
+    @include grid-col;
+    @include font-desktop1;
+    margin-top: 40px;
+  }
+
+  &__breadcrums {
+    @include grid-col;
+    @include font-desktop-small;
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+
+    color: var(--secondary-color);
+  }
+
+  &__count {
+    @include grid-col;
+    @include font-desktop-small;
+    margin-top: 8px;
+    color: var(--secondary-color);
+  }
+
+  &__filters {
+    margin: 40px 0 24px !important;
+    @include grid-col;
+    @include grid-container;
+  }
+
+  &__sortBy {
+    @include grid-col(4, 4, 2);
+    @include font-desktop-small;
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+
+    select {
+      border: 1px solid var(--icons-color);
+      height: 40px;
+      @include font-desktop-buttons;
+      color: var(--primary-color);
+      background-color: var(--white-bg-color);
+    }
+  }
+
+  &__sortOn {
+    @include grid-col(3, 3, 2);
+    display: flex;
+    flex-direction: column;
+    @include font-desktop-small;
+    color: var(--secondary-color);
+
+    select {
+      border: 1px solid var(--icons-color);
+      height: 40px;
+    }
+  }
+
+  &__items {
+    @include grid-col;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(271px, 1fr));
+    grid-template-rows: auto;
+    gap: var(--gap);
+  }
+
+  &__noneItems {
+    @include grid-col;
+    display: flex;
+    @include font-desktop2;
+    justify-content: center;
+    margin-top: 80px;
+  }
+
+  &__pagination {
+    @include grid-col;
+    margin: 40px 0 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    &__none {
+      display: none;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    @include font-desktop-body;
+    color: var(--primary-color);
+    border: 1px solid var(--elements-color);
+    background-color: var(--white-bg-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__on {
+      color: var(--white-bg-color);
+      background-color: var(--primary-color);
+    }
+  }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  button {
+    padding: 24px;
+    @include font-desktop-buttons;
+    color: var(--white-bg-color);
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.loader {
+  @include font-desktop2;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

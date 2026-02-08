@@ -1,0 +1,184 @@
+@use './base' as *;
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin unpressedAndHover {
+  path {
+    fill: var(--icons-color);
+  }
+
+  &:hover path {
+    fill: var(--primary-color);
+  }
+}
+
+@mixin changeSVGColor($color: null) {
+  path {
+    fill: var($color);
+  }
+}
+
+@mixin animate($type: 'fade', $duration: 0.3s, $easing: ease-in-out) {
+  @if $type == 'fade' {
+    opacity: 0;
+    animation: fadeIn $duration $easing forwards;
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  } @else if $type == 'slide-left' {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideLeft $duration $easing forwards;
+
+    @keyframes slideLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  } @else if $type == 'slide-right' {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideRight $duration $easing forwards;
+
+    @keyframes slideRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  } @else if $type == 'scale' {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: scaleIn $duration $easing forwards;
+
+    @keyframes scaleIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  } @else if $type == 'color' {
+    transition:
+      fill $duration $easing,
+      background-color $duration $easing,
+      color $duration $easing;
+  }
+}
+
+// Font Size Variables
+@mixin font-desktop1 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-desktop2 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-desktop3 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0em;
+}
+
+@mixin font-desktop4 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0em;
+}
+
+@mixin font-desktop-upcase {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin font-desktop-buttons {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+@mixin font-desktop-body {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+@mixin font-desktop-small {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0em;
+}
+
+@mixin font-mobile1 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-mobile2 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0em;
+}
+
+@mixin font-mobile3 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0em;
+}
+
+@mixin font-mobile4 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
