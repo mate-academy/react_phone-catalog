@@ -1,4 +1,4 @@
-[DEMO LINK](https://Mariiaantoniv.github.io/react_phone-catalog/)
+- [DEMO LINK](https://Mariiaantoniv.github.io/react_phone-catalog/)
 
 # React Product Catalog
 
