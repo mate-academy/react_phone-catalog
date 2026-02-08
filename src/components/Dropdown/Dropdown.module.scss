@@ -64,5 +64,7 @@
 
   &_active {
     color: var(--color-primary) !important;
+    cursor: default;
+    pointer-events: none;
   }
 }

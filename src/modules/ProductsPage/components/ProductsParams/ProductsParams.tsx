@@ -1,5 +1,5 @@
-import { useEffect, useMemo } from 'react';
-import { Dropdown, ResetParam } from '../../../../components/Dropdown';
+import { useEffect, useMemo, useRef } from 'react';
+import { Dropdown } from '../../../../components/Dropdown';
 import { Loader } from '../../../../components/Loader/Loader';
 import {
   PER_PAGE_PARAMS,
@@ -18,6 +18,7 @@ import classNames from 'classnames';
 export const ProductsParams = () => {
   const { items, loaded } = useAppSelector(state => state.products);
   const { pathname } = useLocation();
+  const isFirstRender = useRef(true);
 
   const pathnameParts = pathname.split('/').filter(Boolean);
   const type = pathnameParts[pathnameParts.length - 1];
@@ -43,6 +44,25 @@ export const ProductsParams = () => {
   const sortParam = validatedParams.get('sort');
   const perPageParam = validatedParams.get('perPage');
   const pageParam = validatedParams.get('page');
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+
+      return;
+    }
+
+    if (pageParam && +pageParam > 1) {
+      setSearchParams(prev => {
+        const next = new URLSearchParams(prev);
+
+        next.set('page', '1');
+
+        return next;
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortParam]);
 
   const preparedProducts = useMemo(() => {
     let sorted = [...productsByType];
@@ -99,16 +119,6 @@ export const ProductsParams = () => {
     +perPageParam > 0 &&
     preparedProducts.length > 0;
 
-  const resetParams = useMemo(() => {
-    const params: ResetParam[] = [];
-
-    if (pageParam && +pageParam > 1) {
-      params.push({ name: 'page', defaultValue: '1' });
-    }
-
-    return params;
-  }, [pageParam]);
-
   return (
     <div className={styles.products_params}>
       <h2 className={styles.title}>
@@ -127,7 +137,6 @@ export const ProductsParams = () => {
             items={SORT_PARAMS}
             defaultValue={SORT_PARAMS.age}
             searchParamsConfig={{ main: 'sort' }}
-            resetParams={resetParams}
           />
         </div>
 

@@ -22,18 +22,19 @@ export const validateParams = (
 
     if (perPage === 'all') {
       newParams.delete('page');
+    } else {
+      if (productsLength > 0) {
+        const totalPages =
+          +perPage > 0 ? Math.ceil(productsLength / +perPage) : 0;
+
+        if (!page || +page < 1 || +page > totalPages) {
+          newParams.set('page', '1');
+        }
+      }
     }
   } else {
     if (page) {
       newParams.delete('page');
-    }
-  }
-
-  if (perPage && perPage !== 'all') {
-    const totalPages = +perPage > 0 ? Math.ceil(productsLength / +perPage) : 0;
-
-    if (!page || +page < 1 || +page > totalPages) {
-      newParams.set('page', '1');
     }
   }
 

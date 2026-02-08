@@ -12,25 +12,21 @@ type Option = {
 
 type Params = Record<string, Option>;
 
-export type ResetParam = {
+type AdditionalParam = {
   name: string;
   defaultValue: string;
 };
-
-type AdditionalParam = ResetParam;
 
 type Props = {
   searchParamsConfig: { main: string; additional?: AdditionalParam };
   items: Params;
   defaultValue: Option;
-  resetParams?: ResetParam[];
 };
 
 export const Dropdown: React.FC<Props> = ({
   items,
   defaultValue,
   searchParamsConfig: searchParamNames,
-  resetParams,
 }) => {
   const { search } = useLocation();
 
@@ -73,10 +69,6 @@ export const Dropdown: React.FC<Props> = ({
     ) {
       params[searchParamNames.additional.name] =
         searchParamNames.additional.defaultValue;
-    }
-
-    if (resetParams?.length) {
-      resetParams.forEach(param => (params[param.name] = param.defaultValue));
     }
 
     return params;
