@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import ArrowRight from '../../assets/Chevron (Arrow Right).svg?react';
 import ArrowLeft from '../../assets/Chevron (Arrow Left).svg?react';
 import Home from '../../assets/Home.svg?react';
