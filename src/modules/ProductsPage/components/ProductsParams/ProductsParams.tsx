@@ -62,7 +62,7 @@ export const ProductsParams = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortParam]);
+  }, [sortParam, perPageParam]);
 
   const preparedProducts = useMemo(() => {
     let sorted = [...productsByType];
