@@ -78,6 +78,7 @@
 
   @include on-mobile {
     display: flex;
+    cursor: pointer;
   }
 }
 

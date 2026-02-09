@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { ModalDialog } from '../../components/ModalDialog';
@@ -9,6 +9,9 @@ import { CartItem } from './components';
 export const CartPage = () => {
   const { items, totalPrice } = useAppSelector(state => state.cartProducts);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const totalNumberOfItems = useMemo(() => {
+    return items.reduce((sum, item) => sum + item.quantity, 0);
+  }, [items]);
 
   return (
     <div className={styles.cart_page}>
@@ -27,7 +30,8 @@ export const CartPage = () => {
             <div className={styles.total_price_box}>
               <p className={styles.total_price}>${totalPrice}</p>
               <p className={styles.total_price_info}>
-                Total for {items.length} {items.length > 1 ? 'items' : 'item'}
+                Total for {totalNumberOfItems}{' '}
+                {totalNumberOfItems > 1 ? 'items' : 'item'}
               </p>
               <div className={styles.divider} />
               <button
