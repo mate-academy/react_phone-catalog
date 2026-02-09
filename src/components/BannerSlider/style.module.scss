@@ -26,32 +26,37 @@
         @include on-desktop {
             grid-column: 2 / 24;
         }
+    }
 
-        &>picture {
-            display: block;
-            height: 100%;
+    &_track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
 
-            @include on-desktop {
-                height: 400px;
-            }
+    &_slide {
+        min-width: 100%;
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        display: block;
+    }
+
+    &_image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+
+        @include on-tablet {
+            min-height: 189px;
         }
 
-        &_content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-
-            @include on-tablet {
-                position: static;
-                min-height: 189px;
-            }
-
-            @include on-desktop {
-                height: 400px;
-            }
+        @include on-desktop {
+            height: 400px;
         }
     }
 

@@ -61,6 +61,17 @@
         &:hover {
           border: none;
         }
+
+        &>svg, path {
+          color: $Icons;
+          height: 16px;
+          width: 16px;
+          transition: 0.3s ease;
+
+          &:hover {
+            color: $Primary;
+          }
+        }
       }
 
       &_image {
@@ -152,10 +163,14 @@
     flex-direction: column;
     gap: 16px;
     width: 100%;
+    padding: 24px;
+    border: 1px solid $Elements;
+    height: 190px;
 
     @include on-desktop {
       max-width: 368px;
       gap: 24px;
+      height: 206px;
     }
 
     &>hr {

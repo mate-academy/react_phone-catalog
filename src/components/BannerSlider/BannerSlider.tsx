@@ -20,10 +20,22 @@ const banners = [
 ];
 
 const BannerSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); 
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % banners.length);
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev - 1);
+  };
+
+  const handleDashClick = (index: number) => {
+    setIsTransitioning(true);
+    setCurrentIndex(index + 1);
   };
 
   useEffect(() => {
@@ -32,14 +44,26 @@ const BannerSlider = () => {
     }, 5000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(banners.length);
+      }, 500);
+    } else if (currentIndex === banners.length + 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(1);
+      }, 500);
+    }
   }, [currentIndex]);
 
-  const handlePrev = () => {
-    setCurrentIndex(prev => (prev - 1 + banners.length) % banners.length);
-  };
-
-  const handleDashClick = (index: number) => {
-    setCurrentIndex(index);
+  const getRealIndex = () => {
+    if (currentIndex === 0) return banners.length - 1;
+    if (currentIndex === banners.length + 1) return 0;
+    return currentIndex - 1;
   };
 
   return (
@@ -56,17 +80,51 @@ const BannerSlider = () => {
       </button>
 
       <div className={styles.slider_main}>
-        <picture>
-          <source
-            srcSet={banners[currentIndex].desktop}
-            media="(min-width: 640px)"
-          />
-          <img
-            src={banners[currentIndex].mobile}
-            alt={banners[currentIndex].alt}
-            className={styles.slider_main_content}
-          />
-        </picture>
+        <div 
+          className={styles.slider_track}
+          style={{ 
+            transform: `translateX(-${currentIndex * 100}%)`,
+            transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
+          }}
+        >
+          <picture className={styles.slider_slide}>
+            <source
+              srcSet={banners[banners.length - 1].desktop}
+              media="(min-width: 640px)"
+            />
+            <img
+              src={banners[banners.length - 1].mobile}
+              alt={banners[banners.length - 1].alt}
+              className={styles.slider_image}
+            />
+          </picture>
+
+          {banners.map((banner, index) => (
+            <picture key={index} className={styles.slider_slide}>
+              <source
+                srcSet={banner.desktop}
+                media="(min-width: 640px)"
+              />
+              <img
+                src={banner.mobile}
+                alt={banner.alt}
+                className={styles.slider_image}
+              />
+            </picture>
+          ))}
+
+          <picture className={styles.slider_slide}>
+            <source
+              srcSet={banners[0].desktop}
+              media="(min-width: 640px)"
+            />
+            <img
+              src={banners[0].mobile}
+              alt={banners[0].alt}
+              className={styles.slider_image}
+            />
+          </picture>
+        </div>
       </div>
 
       <button
@@ -83,7 +141,7 @@ const BannerSlider = () => {
         {banners.map((_, index) => (
           <div key={index} className={styles.slider_menu_item}>
             <span
-              className={`${styles.slider_menu_item_dash} ${currentIndex === index ? styles.is_active : ''}`}
+              className={`${styles.slider_menu_item_dash} ${getRealIndex() === index ? styles.is_active : ''}`}
               onClick={() => handleDashClick(index)}
               role="button"
               tabIndex={0}

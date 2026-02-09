@@ -21,6 +21,8 @@
         gap: 32px;
         flex-direction: column;
         justify-content: center;
+        max-width: 1136px;
+        margin: auto;
 
         @include on-tablet {
             flex-direction: row;
@@ -39,9 +41,15 @@
         &_image {
             text-align: left;
 
-            &>img {
-                width: 89px;
-                height: 30px;
+            &>a,
+            img {
+                height: 22px;
+                width: 64px;
+
+                @include on-desktop {
+                    height: 32px;
+                    width: 89px;
+                }
             }
         }
 
@@ -75,6 +83,7 @@
 
             &>span {
                 color: $Secondary;
+                font-weight: 700;
             }
 
             &>button {
@@ -88,6 +97,7 @@
                 &>span {
                     color: $Primary;
                 }
+
                 &>button {
                     border-color: $Primary;
                 }

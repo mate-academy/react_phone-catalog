@@ -45,7 +45,8 @@
             width: 128px;
         }
 
-        &>a, img {
+        &>a,
+        img {
             height: 22px;
             width: 64px;
 
@@ -71,6 +72,10 @@
             flex-wrap: wrap;
             align-items: center;
             position: relative;
+
+            :hover {
+                color: $Primary;
+            }
         }
     }
 
@@ -83,7 +88,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            height: 3px;
+            height: 2px;
             background-color: $Primary;
         }
 
@@ -133,8 +138,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 14px;
-        width: 14px;
+        width: 100%;
+        height: 100%;
 
         &_img {
             height: 16px;
@@ -144,8 +149,8 @@
 
     &_cartBadge {
         position: absolute;
-        top: -6px;
-        right: -6px;
+        top: 9.5px;
+        right: 9.5px;
         background-color: $Red;
         color: $White;
         border-radius: 50%;
@@ -161,5 +166,10 @@
         border: 2px solid $White;
         box-sizing: border-box;
         z-index: 10;
+
+        @include on-desktop {
+            top: 18px;
+            right: 18px;
+        }
     }
 }

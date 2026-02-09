@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './style.module.scss';
 
 const Footer = () => {
@@ -12,17 +13,23 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer_blocks}>
         <div className={styles.footer_blocks_image}>
-          <img
-            src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`}
-            alt="Logo"
-          />
+          <Link to="/">
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`}
+              alt="Logo"
+            />
+          </Link>
         </div>
         <nav className={`${styles.footer_blocks_info} text_uppercase`}>
-          <a href="https://github.com/SeemsGood78/react_phone-catalog">
+          <a
+            href="https://github.com/SeemsGood78/react_phone-catalog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
           </a>
-          <a href="#contacts">Contacts</a>
-          <a href="#rights">rights</a>
+          <a href="#">Contacts</a>
+          <a href="#">rights</a>
         </nav>
         <div className={styles.footer_blocks_buttons}>
           <span className="text_small">Back to top</span>

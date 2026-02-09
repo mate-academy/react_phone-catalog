@@ -28,8 +28,8 @@ const PathCategory = ({ totalProducts }: CatalogueOptionsProps) => {
     ((pathSegments.length === 1 && !isCart && !isFavorites) || isFavorites) &&
     totalProducts !== undefined;
 
-  const showBackButton = isCart || isFavorites || isProductPage;
-  const showBreadcrumbs = !isCart && !isFavorites;
+  const showBackButton = isCart || isProductPage;
+  const showBreadcrumbs = !isCart;
 
   const breadcrumbs = pathSegments.map((segment, index) => {
     const to = '/' + pathSegments.slice(0, index + 1).join('/');
