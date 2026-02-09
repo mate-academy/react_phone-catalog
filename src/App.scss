@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
+  min-height: 100vh;
 
   &::before {
     content: '';
@@ -24,13 +24,11 @@
 }
 
 .container {
-  margin-top: 64px;
-  flex: 1;
-
   @extend %grid;
 
+  margin-top: 64px;
+  flex: 1;
   margin-bottom: 80px;
-  min-height: 70vh;
 
   & > * {
     grid-column: 1/-1;
@@ -39,11 +37,11 @@
   @include on-tablet {
     overflow-x: hidden;
     margin-top: 48px;
-    // margin-bottom: 64px;
+    margin-bottom: 64px;
   }
 
   @include on-mobile {
-    // margin-bottom: 56px;
+    margin-bottom: 56px;
     min-height: auto;
   }
 }
