@@ -1,4 +1,4 @@
-export const SLIDER_COUNT = 15;
+export const SLIDER_COUNT = 8;
 export const CURRENCY_SYMBOL = `$`;
 export const HOME_SLIDER_TIME = 5000;
 export const HOME_CATEGORIES_LIST = ['phones', 'tablets', 'accessories'];

@@ -45,22 +45,23 @@
     flex: 0 0 16px;
     border: none;
     box-sizing: border-box;
+    background-position: center center;
+    background-repeat: no-repeat;
 
     &_favorites {
-      background: center center url('/img/assets/icons/favorites.svg');
+      background-image: url('/img/assets/icons/favorites.svg');
 
       &_active {
-        background: center center
-          url('/img/assets/icons/favorites-selected.svg');
+        background-image: url('/img/assets/icons/favorites-selected.svg');
       }
     }
 
     &_cart {
-      background: center center url('/img/assets/icons/cart.svg');
+      background-image: url('/img/assets/icons/cart.svg');
     }
 
     &_close {
-      background: center center url('/img/assets/icons/close.svg');
+      background-image: url('/img/assets/icons/close.svg');
     }
 
     &_home {
@@ -70,7 +71,7 @@
     }
 
     &_menu {
-      background: center center url('/img/assets/icons/menu.svg');
+      background-image: url('/img/assets/icons/menu.svg');
     }
 
     &_arrowLeft {

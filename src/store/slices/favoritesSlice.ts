@@ -7,7 +7,7 @@ type ProductId = number;
 
 type NewType = ProductCatalogItem;
 
-type Favorites = Record<ProductId, NewType>;
+export type Favorites = Record<ProductId, NewType>;
 
 const initialState: Favorites = {};
 

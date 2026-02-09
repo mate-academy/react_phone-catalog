@@ -1,23 +1,17 @@
 import styles from './FavoritesPage.module.scss';
 import { useTranslation } from 'react-i18next';
 
-import { useContext } from 'react';
-import { StateContext } from '../../store';
-import { ProductCatalogContext } from '../../ProductCatalogContext';
-import { ProductCatalogItem } from '../../types/ProductCatalogItem';
 import Breadcrumbs from '../shared/Breadcrumbs';
 import ProductList from '../shared/ProductList';
+import { useAppSelector } from '../../store/hooks';
 
 const FavoritesPage = () => {
   const { t } = useTranslation();
-  const state = useContext(StateContext);
-  const { products } = useContext(ProductCatalogContext);
 
-  const favoriteProducts: ProductCatalogItem[] = state.favorites.size
-    ? products.filter(product => state.favorites.has(product.id))
-    : [];
+  const favorites = useAppSelector(state => state.favorites);
 
-  const count = favoriteProducts.length;
+  const favoriteProducts = Object.values(favorites);
+  const count = Object.keys(favorites).length;
 
   const itemsAmount = t('favorites.items', { count });
 

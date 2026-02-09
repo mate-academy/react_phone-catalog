@@ -20,7 +20,7 @@ export function useSelectedProductDetail() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
+      behavior: 'instant',
     });
   }, [pathname]);
 

@@ -5,32 +5,27 @@ import svgStringPlus from './../shared/assets/Icons/plus.svg?raw';
 import { useTranslation } from 'react-i18next';
 
 import BackButton from '../shared/BackButton';
-import { useContext } from 'react';
-import { DispatchContext, StateContext } from '../../store';
-import { ProductCatalogContext } from '../../ProductCatalogContext';
-import { ProductCatalogItem } from '../../types/ProductCatalogItem';
 import { Link } from 'react-router-dom';
 import { CURRENCY_SYMBOL } from '../constants';
 import Button from '../shared/Button';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { itemsActions } from '../../store/index';
+import {
+  selectCartItems,
+  selectTotalPrice,
+  selectTotalCount,
+} from '../../store/slices/itemsSlice';
 
 const CartPage = () => {
   const { t } = useTranslation();
-  // const items = useAppSelector(state => state.items);
 
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const { products } = useContext(ProductCatalogContext);
+  const items = useAppSelector(selectCartItems);
+  const totalPrice = useAppSelector(selectTotalPrice);
+  const totalCount = useAppSelector(selectTotalCount);
 
-  const cartProducts: ProductCatalogItem[] = state.cart.size
-    ? products.filter(product => state.cart.has(product.id))
-    : [];
+  const dispatch = useAppDispatch();
 
-  const totalPrice = cartProducts.reduce(
-    (acc, product) => acc + product.price * (state.cart.get(product.id) || 0),
-    0,
-  );
-  const totalAmount = state.cartTotalAmount;
-  const totalMessage = t('cart.items', { count: totalAmount });
+  const totalMessage = t('cart.items', { count: totalCount });
 
   return (
     <div className="container">
@@ -38,15 +33,15 @@ const CartPage = () => {
       <div className={styles.cart}>
         <h1 className={styles.cart__title}>{t(`cart.title`)}</h1>
 
-        {totalAmount !== 0 && (
+        {totalCount !== 0 && (
           <ul className={styles.cart__items}>
-            {cartProducts.map(product => (
-              <li key={product.id} className={styles.item}>
+            {items.map(({ id, product, quantity }) => (
+              <li key={id} className={styles.item}>
                 <div className={styles.item__firstRow}>
                   <button
                     className={styles.item__buttonClose}
                     onClick={() =>
-                      dispatch({ type: 'removeFromCart', payload: product.id })
+                      dispatch({ type: 'removeFromCart', payload: id })
                     }
                   ></button>
                   <Link
@@ -59,30 +54,26 @@ const CartPage = () => {
                       alt={product.name}
                     />
                   </Link>
-                  <p className={styles.item__productName}>{product.name}</p>
+                  <Link
+                    className={styles.item__productName}
+                    to={`/${product.category}/${product.itemId}`}
+                  >
+                    {product.name}
+                  </Link>
                 </div>
 
                 <div className={styles.item__secondRow}>
                   <div className={styles.itemAmount}>
                     <button
                       className={styles.itemAmount__button}
-                      disabled={state.cart.get(product.id) === 1}
-                      onClick={() =>
-                        dispatch({
-                          type: 'deleteFromCart',
-                          payload: product.id,
-                        })
-                      }
+                      disabled={quantity === 1}
+                      onClick={() => dispatch(itemsActions.remove(product))}
                       dangerouslySetInnerHTML={{ __html: svgStringMinus }}
                     ></button>
-                    <p className={styles.itemAmount__value}>
-                      {state.cart.get(product.id)}
-                    </p>
+                    <p className={styles.itemAmount__value}>{quantity}</p>
                     <button
                       className={styles.itemAmount__button}
-                      onClick={() =>
-                        dispatch({ type: 'addToCart', payload: product.id })
-                      }
+                      onClick={() => dispatch(itemsActions.add(product))}
                       dangerouslySetInnerHTML={{ __html: svgStringPlus }}
                     ></button>
                   </div>
@@ -94,7 +85,7 @@ const CartPage = () => {
             ))}
           </ul>
         )}
-        {totalAmount !== 0 && (
+        {totalCount !== 0 && (
           <div className={styles.cart__total}>
             <p className={styles.cart__totalPrice}>
               {CURRENCY_SYMBOL + totalPrice}
@@ -103,7 +94,7 @@ const CartPage = () => {
             <div className={styles.cart__totalDivider}></div>
             <Button
               text={t('cart.checkout')}
-              handleClick={() => dispatch({ type: 'clearCart' })}
+              handleClick={() => dispatch(itemsActions.clear())}
             />
           </div>
         )}

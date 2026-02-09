@@ -1,16 +1,16 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import Navigation from './Navigation/Navigation';
 import Icon from '../shared/Icon';
 import MobileMenu from './MobileMenu';
 import IconWithCounter from './IconWithCounter';
-import { StateContext } from '../../store';
+import { useAppSelector } from '../../store/hooks';
 
 export const Header = () => {
   const location = useLocation();
   const [showMobile, setShowMobile] = useState(false);
-  const state = useContext(StateContext);
+  const { items, favorites } = useAppSelector(state => state);
 
   const handleMobileMenuClick = () => {
     setShowMobile(!showMobile);
@@ -39,12 +39,12 @@ export const Header = () => {
           <div className={styles.nav__buttons}>
             <IconWithCounter
               href="favorites"
-              count={state.favorites.size}
+              count={Object.keys(favorites).length}
               image={'favorites'}
             />
             <IconWithCounter
               href="cart"
-              count={state.cartTotalAmount}
+              count={Object.keys(items).length}
               image={'cart'}
             />
 
