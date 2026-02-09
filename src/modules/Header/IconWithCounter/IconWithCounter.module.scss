@@ -2,7 +2,11 @@
 
 .counter {
   position: relative;
-  display: none;
+  display: flex;
+  justify-content: center;
+
+  flex-grow: 1;
+
   height: 100%;
 
   @include on-tablet {
@@ -29,8 +33,9 @@
     @extend %icons-text;
 
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-100%);
 
     display: flex;
     justify-content: center;
@@ -45,10 +50,5 @@
     background-color: $red-color;
 
     pointer-events: none;
-
-    @include on-desktop {
-      top: 18px;
-      right: 18px;
-    }
   }
 }

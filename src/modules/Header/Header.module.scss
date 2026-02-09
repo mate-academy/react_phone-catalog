@@ -52,5 +52,14 @@
     display: flex;
     justify-content: end;
     align-items: center;
+
+    &Links {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        height: 100%;
+      }
+    }
   }
 }

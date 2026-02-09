@@ -11,6 +11,8 @@ export const Header = () => {
   const location = useLocation();
   const [showMobile, setShowMobile] = useState(false);
   const { items, favorites } = useAppSelector(state => state);
+  const favoritesCount = Object.keys(favorites).length;
+  const itemsCount = Object.keys(items).length;
 
   const handleMobileMenuClick = () => {
     setShowMobile(!showMobile);
@@ -37,17 +39,14 @@ export const Header = () => {
           </NavLink>
           <Navigation />
           <div className={styles.nav__buttons}>
-            <IconWithCounter
-              href="favorites"
-              count={Object.keys(favorites).length}
-              image={'favorites'}
-            />
-            <IconWithCounter
-              href="cart"
-              count={Object.keys(items).length}
-              image={'cart'}
-            />
-
+            <div className={styles.nav__buttonsLinks}>
+              <IconWithCounter
+                href="favorites"
+                count={favoritesCount}
+                image={'favorites'}
+              />
+              <IconWithCounter href="cart" count={itemsCount} image={'cart'} />
+            </div>
             <Icon
               onClick={handleMobileMenuClick}
               iconStyles={{
@@ -57,7 +56,7 @@ export const Header = () => {
             />
           </div>
         </div>
-        {showMobile && <MobileMenu pathname={location.pathname} />}
+        {showMobile && <MobileMenu />}
       </header>
     </>
   );

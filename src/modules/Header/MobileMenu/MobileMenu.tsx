@@ -1,31 +1,24 @@
 import styles from './MobileMenu.module.scss';
 import cn from 'classnames';
 import Navigation from '../Navigation/Navigation';
-import Icon from '../../shared/Icon';
+import { useAppSelector } from '../../../store/hooks';
+import IconWithCounter from '../IconWithCounter';
 
-const MobileMenu: React.FC<{ pathname: string }> = ({ pathname }) => {
+const MobileMenu: React.FC = () => {
+  const { items, favorites } = useAppSelector(state => state);
+  const favoritesCount = Object.keys(favorites).length;
+  const itemsCount = Object.keys(items).length;
+
   return (
     <div className={styles.menu}>
       <Navigation modifier="mobileMenu" />
       <div className={cn(styles.buttons)}>
-        <Icon
+        <IconWithCounter
           href="favorites"
-          iconStyles={{
-            icon: pathname.startsWith('/favorites')
-              ? ['border_bottom', 'width_100']
-              : ['width_100'],
-            image: 'favorites',
-          }}
+          count={favoritesCount}
+          image={'favorites'}
         />
-        <Icon
-          href="cart"
-          iconStyles={{
-            icon: pathname.startsWith('/cart')
-              ? ['border_bottom', 'width_100']
-              : ['width_100'],
-            image: 'cart',
-          }}
-        />
+        <IconWithCounter href="cart" count={itemsCount} image={'cart'} />{' '}
       </div>
     </div>
   );
