@@ -27,8 +27,10 @@ const itemsSlice = createSlice({
       }
     },
 
-    remove: (state, { payload }: PayloadAction<ProductCatalogItem>) => {
-      const id = payload.id;
+    decrease: (
+      state,
+      { payload: { id } }: PayloadAction<ProductCatalogItem>,
+    ) => {
       const existingItem = state[id];
 
       if (existingItem && existingItem.quantity > 1) {
@@ -36,6 +38,10 @@ const itemsSlice = createSlice({
       } else {
         delete state[id];
       }
+    },
+
+    remove: (state, { payload: { id } }: PayloadAction<ProductCatalogItem>) => {
+      delete state[id];
     },
 
     clear: () => ({}),

@@ -40,9 +40,7 @@ const CartPage = () => {
                 <div className={styles.item__firstRow}>
                   <button
                     className={styles.item__buttonClose}
-                    onClick={() =>
-                      dispatch({ type: 'removeFromCart', payload: id })
-                    }
+                    onClick={() => dispatch(itemsActions.remove(product))}
                   ></button>
                   <Link
                     className={styles.item__photo}
@@ -67,7 +65,7 @@ const CartPage = () => {
                     <button
                       className={styles.itemAmount__button}
                       disabled={quantity === 1}
-                      onClick={() => dispatch(itemsActions.remove(product))}
+                      onClick={() => dispatch(itemsActions.decrease(product))}
                       dangerouslySetInnerHTML={{ __html: svgStringMinus }}
                     ></button>
                     <p className={styles.itemAmount__value}>{quantity}</p>
