@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardSkeleton } from '../../components/ProductCardSkeleton';
 import { CustomSelect } from '../../components/CustomSelect';
@@ -29,9 +30,9 @@ export const PhonesPage = () => {
     <div className={styles.phonesPage}>
       <div className={styles.container}>
         <div className={styles.breadcrumbs}>
-          <a href="/" className={styles.homeLink}>
+          <Link to="/" className={styles.homeLink}>
             <img src="img/Home_breadcrumb.svg" alt={t('icons.homeAlt')} />
-          </a>
+          </Link>
           <span className={styles.arrow}>
             <img
               src="img/arrow_right_gray.svg"

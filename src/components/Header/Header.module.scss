@@ -177,19 +177,7 @@
   }
 }
 
-@media (max-width: 639px) {
-  .container {
-    height: 56px;
-  }
-
-  .logo {
-    margin-right: 0;
-
-    img {
-      height: 20px;
-    }
-  }
-
+@media (max-width: 735px) {
   .nav {
     display: none;
   }
@@ -206,5 +194,19 @@
     display: flex;
     width: 56px;
     margin-left: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    height: 56px;
+  }
+
+  .logo {
+    margin-right: 0;
+
+    img {
+      height: 20px;
+    }
   }
 }
