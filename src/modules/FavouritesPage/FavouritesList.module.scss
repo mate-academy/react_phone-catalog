@@ -3,16 +3,17 @@
 .favourites_list {
   display: grid;
   flex-direction: column;
-  gap: 40px;
 }
 
 .title {
   @extend %h1;
+
+  margin-bottom: 8px;
 }
 
 .amount {
   @extend %body-text;
-  
+
   color: var(--color-secondary);
-  margin-top: -32px;
+  margin-bottom: 40px;
 }
