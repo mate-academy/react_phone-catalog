@@ -1,8 +1,12 @@
 import { Product } from '../types/Product';
 import { ProductItem } from '../types/ProductItem';
 
+const BASE_URL = 'https://yahohulia.github.io/react_phone-catalog/api';
+
 const request = async (url: string) => {
-  const response = await fetch(url);
+  const fullUrl = `${BASE_URL}${url}`;
+
+  const response = await fetch(fullUrl);
 
   if (!response.ok) {
     throw new Error(`Error loading ${url}`);
@@ -12,16 +16,16 @@ const request = async (url: string) => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const products = await request('./api/products.json');
+  const products = await request('/api/products.json');
 
   return products;
 };
 
 export const getAllProducts = async (): Promise<ProductItem[]> => {
   const [phones, tablets, accessories] = await Promise.all([
-    request('./api/phones.json'),
-    request('./api/tablets.json'),
-    request('./api/accessories.json'),
+    request('/api/phones.json'),
+    request('/api/tablets.json'),
+    request('/api/accessories.json'),
   ]);
 
   return [...phones, ...tablets, ...accessories];
