@@ -19,11 +19,18 @@ export const Slider = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
+    const setScrollbarWidth = () => {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-    return () => clearInterval(interval);
+      document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+    };
+
+    setScrollbarWidth();
+    window.addEventListener('resize', setScrollbarWidth);
+
+    return () => {
+      window.removeEventListener('resize', setScrollbarWidth);
+    };
   }, []);
 
   const prevSlide = () => {
@@ -43,7 +50,7 @@ export const Slider = () => {
         </div>
 
         <div className={styles.slider__images}>
-          <img key={currentSlide} src={banners[currentSlide]} alt="" />1
+          <img key={currentSlide} src={banners[currentSlide]} alt="" />
         </div>
 
         <div className={styles.slider__arrowRight} onClick={nextSlide}>

@@ -88,13 +88,13 @@
       display: inline-block;
       line-height: 0;
       position: relative;
+
     }
   }
 
   &__icon {
     padding: 24px;
     border-left: 1px solid #e2e6e9;
-    margin-left: 0;
 
     @include tablet {
       padding: 16px;
@@ -103,14 +103,14 @@
 
   &__counter {
     position: absolute;
+
+    top: 16px;
+    right: 12px;
+
     font-family: 'Mont', sans-serif;
     font-weight: 700;
     font-size: 9px;
-    line-height: 1;
     color: var(--white-bg-color);
-
-    top: 25%;
-    right: 25%;
 
     min-width: 14px;
     height: 14px;
@@ -121,7 +121,11 @@
     align-items: center;
     justify-content: center;
     padding: 0 2px;
-    box-sizing: border-box;
+
+    @include tablet {
+      top: 6px;
+      right: 6px;
+    }
   }
 
   &__burger {
@@ -131,20 +135,13 @@
     @include mobile {
       display: flex;
     }
-
-    a {
-      display: inline-block;
-      line-height: 0;
-    }
   }
 
   &__button {
     background: none;
     border: none;
     padding: 0;
-    margin: 0;
     cursor: pointer;
-    display: inline-block;
     line-height: 0;
   }
 }
@@ -156,12 +153,12 @@
   width: 100%;
   background-color: var(--white-bg-color);
   left: 0;
-  right: 0;
   bottom: 0;
+
   opacity: 0;
   visibility: hidden;
   transform: translateY(-100%);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease;
 
   &__open {
     opacity: 1;
@@ -171,6 +168,7 @@
 
   &__list {
     padding: 0;
+
     li {
       margin: 24px 0;
       display: flex;
@@ -180,16 +178,12 @@
         font-family: 'Mont', sans-serif;
         font-weight: 800;
         font-size: 12px;
-        line-height: 11px;
-        letter-spacing: 0.04em;
         text-transform: uppercase;
         color: var(--secondary-color);
         text-decoration: none;
         padding-bottom: 8px;
         border-bottom: 2px solid transparent;
-        transition:
-          color 0.3s ease-in-out,
-          border-color 0.3s ease-in-out;
+        transition: 0.3s;
 
         &:hover {
           color: var(--primary-color);
@@ -199,40 +193,49 @@
     }
   }
 
+  // Контейнер иконок (нижняя панель)
   &__icons {
     position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
     border-top: 1px solid #e2e6e9;
-    padding: 24px 0 0 0;
 
+    // вертикальная линия по центру
     &::after {
       content: '';
       position: absolute;
       left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      transform: translateX(-50%);
       height: 100%;
       width: 1px;
       background: #e2e6e9;
     }
   }
 
+  // КАЖДЫЙ блок = 50% ширины (как было раньше)
   &__container {
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 16px 0;
     border-bottom: 3px solid transparent;
-    padding-bottom: 24px;
-    transition:
-      color 0.3s ease-in-out,
-      border-color 0.3s ease-in-out;
+    transition: border-color 0.3s;
 
     &:hover {
-      color: var(--primary-color);
       border-bottom-color: #313237;
     }
+
+    a {
+      position: relative;
+      display: inline-block;
+      line-height: 0;
+    }
+  }
+
+  &__icon {
+    padding: 16px;
   }
 }

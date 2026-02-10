@@ -10,8 +10,8 @@
     align-items: center;
 
     @include mobile {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
+      width: calc(100vw - var(--scrollbar-width));
+      margin-left: calc(-50vw + 50% + var(--scrollbar-width) / 2);
       overflow: visible;
       height: auto;
     }
@@ -39,8 +39,8 @@
     height: 100%;
 
     @include mobile {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
+      width: calc(100vw - var(--scrollbar-width));
+      margin-left: calc(-50vw + 50% + var(--scrollbar-width) / 2);
       overflow: visible;
       height: auto;
     }
@@ -54,9 +54,8 @@
       @include animate('fade', 0.5s);
 
       @include mobile {
-        grid-column: 1 / -1;
-        width: 100vw;
-        height: 100vw;
+        width: calc(100vw - var(--scrollbar-width));
+        height: calc(100vw - var(--scrollbar-width));
       }
     }
   }

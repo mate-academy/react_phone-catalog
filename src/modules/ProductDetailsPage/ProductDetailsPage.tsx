@@ -96,35 +96,37 @@ export const ProductDetailsPage = () => {
 
         setCurrentProductsType(typeData);
         setProducts(allData);
-
-        const product = typeData.find((item: ProductFull) => item.id === id);
-
-        if (!product) {
-          setError('Товар не знайдено');
-          setIsLoading(false);
-          return;
-        }
-
-        setCurrentProduct(product);
-        setCurrenColor(product.color);
-        setCurrentCapacity(product.capacity);
-
-        const productShort = allData.find((item: Product) => item.itemId === product.id);
-        setCurrentProductShort(productShort);
-
-        // Получаем рекомендованные товары
-        const suggested = getSuggestedProducts(allData, product.id, 20);
-        setSuggestedProducts(suggested);
-      } catch (err) {
-        console.error('There was a problem with the fetch operation:', err);
-        setError('Щось пішло не так');
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchData();
-  }, [type, id]);
+  }, [type]);
+
+  useEffect(() => {
+    if (!currentProductsType.length || !products.length) return;
+
+    const product = currentProductsType.find(item => item.id === id);
+
+    if (!product) {
+      setError('Товар не знайдено');
+      return;
+    }
+
+    setCurrentProduct(product);
+    setCurrenColor(product.color);
+    setCurrentCapacity(product.capacity);
+
+    const short = products.find(item => item.itemId === product.id);
+    setCurrentProductShort(short);
+
+    setSuggestedProducts(prev => {
+      if (prev.length) return prev;
+
+      return getSuggestedProducts(products, product.id, 20);
+    });
+  }, [id, currentProductsType, products]);
 
   useEffect(() => {
     const model = currentProductsType.find(item => {
@@ -152,7 +154,7 @@ export const ProductDetailsPage = () => {
     if (findProduct && findProduct.id !== id) {
       navigate(`/${type}/${findProduct.id}`, { replace: true });
     }
-  }, [currentColor, currentCapacity, currentProductsType, currentProduct, id, navigate, type]);
+  }, [currentColor, currentCapacity]);
 
   if (isLoading) {
     return <div className={styles.loader}>Завантаження...</div>;
@@ -180,7 +182,7 @@ export const ProductDetailsPage = () => {
       </div>
       <div
         onClick={() => {
-          navigate(-1);
+          navigate(`/${type}`);
         }}
         className={styles.detailspage__back}
       >

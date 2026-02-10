@@ -5,6 +5,28 @@
   @include grid-col;
 }
 
+@include mobile {
+  .detailspage__breadcrums {
+    grid-row: 1;
+  }
+
+  .detailspage__back {
+    grid-row: 2;
+  }
+
+  .detailspage__name {
+    grid-row: 3;
+  }
+
+  .detailspage__mainImage {
+    grid-row: 4;
+  }
+
+  .detailspage__images {
+    grid-row: 5;
+  }
+}
+
 .detailspage {
   &__breadcrums {
     margin-top: 24px;
@@ -50,6 +72,11 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    margin-bottom: 40px;
+
+    @include mobile {
+      flex-direction: row;
+    }
   }
 
   &__image {
@@ -72,6 +99,8 @@
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: contain;
+
+    margin-bottom: 16px;
   }
 
   &__space {
@@ -168,6 +197,7 @@
   &__specs {
     display: flex;
     margin: 32px 0;
+    gap: 8px;
 
     flex-direction: column;
   }

@@ -4,7 +4,7 @@ import styles from './ProductsPages.module.scss';
 import Home from '../../assets/Home.svg?react';
 import ArrowRight from '../../assets/Chevron (Arrow Right).svg?react';
 import ArrowLeft from '../../assets/Chevron (Arrow Left).svg?react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Product } from '../../types/types';
 import { ProductCard } from '../shared/ProductCard';
 
@@ -12,6 +12,7 @@ export const ProductsPages = () => {
   type ProductType = 'phones' | 'tablets' | 'accessories';
   type SortBy = 'newest' | 'alphabetically' | 'cheapest';
   type OnPage = '4' | '8' | '16' | 'all';
+  const productsListRef = useRef<HTMLDivElement>(null);
 
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -45,7 +46,6 @@ export const ProductsPages = () => {
     accessories: 'Accessories',
   };
 
-  // Функция для обновления URL параметров
   const updateURLParams = (params: { sort?: SortBy; page?: number; perPage?: OnPage }) => {
     const newSearchParams = new URLSearchParams(searchParams);
 
@@ -73,7 +73,6 @@ export const ProductsPages = () => {
     setSearchParams(newSearchParams);
   };
 
-  // Загрузка данных
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -155,6 +154,10 @@ export const ProductsPages = () => {
     }
   }, [typedProducts, selctionSortBy, currentPage, selctionOnPage]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }, [currentPage]);
+
   if (isLoading) {
     return <div className={styles.loader}>Loading...</div>;
   }
@@ -226,7 +229,7 @@ export const ProductsPages = () => {
         </div>
       ) : (
         <>
-          <div className={styles.productsPages__items}>
+          <div className={styles.productsPages__items} ref={productsListRef}>
             {filteredProducts.map(product => {
               return (
                 <div key={product.id}>

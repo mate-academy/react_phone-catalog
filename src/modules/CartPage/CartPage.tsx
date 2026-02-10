@@ -52,7 +52,6 @@ export const CartPage = () => {
   const handleConfirmOrder = () => {
     clearCart();
     setIsModalOpen(false);
-    // Здесь мог бы быть редирект на страницу подтверждения заказа
   };
 
   const handleCancelOrder = () => {

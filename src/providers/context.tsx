@@ -32,7 +32,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [cart, setCart] = useState<Product[]>(getCart());
   const [favourites, setFavourites] = useState<Product[]>(getFavourites());
 
-  const cartCount = cart.length;
+  const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const favouritesCount = favourites.length;
 
   const clearCart = () => {
