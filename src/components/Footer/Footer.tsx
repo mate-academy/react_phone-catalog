@@ -26,9 +26,12 @@ export const Footer: React.FC = () => {
           >
             GitHub
           </a>
-          <NavLink className={styles.footer__link} to="/contacts">
+          <a
+            className={styles.footer__link}
+            href="mailto:yaroslavhohulia@gmail.com"
+          >
             Contacts
-          </NavLink>
+          </a>
           <NavLink className={styles.footer__link} to="/rights">
             Rights
           </NavLink>
