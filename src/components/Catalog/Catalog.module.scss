@@ -54,7 +54,12 @@
   }
 
   &__countOfModels {
+    @include text-body;
     grid-column: 1 / 25;
+
+    color: var(--secondary);
+
+    margin-top: 8px;
 
     @include on-tablet {
       grid-column: 1 / 13;
@@ -63,24 +68,21 @@
     @include on-mobile {
       grid-column: 1 / 5;
     }
-
-    @include text-body;
-
-    color: var(--secondary);
-
-    margin-top: 8px;
-    margin-bottom: 40px;
   }
 
   &__params {
     grid-column: 1 / 25;
 
+    margin-top: 40px;
+
     @include on-tablet {
       grid-column: 1 / 13;
     }
 
     @include on-mobile {
       grid-column: 1 / 5;
+
+      margin-top: 32px;
     }
 
     display: grid;

@@ -91,7 +91,7 @@ export const ProductDetailsPage: React.FC = () => {
       color: details?.color || '',
       ram: details?.ram || '',
       year: 2026,
-      image: details?.images?.[0] ? `/${details.images[0]}` : '',
+      image: details?.images?.[0] ? `./${details.images[0]}` : '',
     };
   };
 
