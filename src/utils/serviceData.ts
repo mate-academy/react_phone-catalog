@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { ProductItem } from '../types/ProductItem';
 
-const BASE_URL = 'https://yahohulia.github.io/react_phone-catalog/api';
+const BASE_URL = 'https://yahohulia.github.io/react_phone-catalog';
 
 const request = async (url: string) => {
   const fullUrl = `${BASE_URL}${url}`;
