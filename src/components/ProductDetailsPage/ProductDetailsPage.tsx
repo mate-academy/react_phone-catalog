@@ -293,7 +293,7 @@ export const ProductDetailsPage: React.FC = () => {
             onTouchEnd={onTouchEnd}
           >
             <img
-              src={`/${product.images[currentIndex]}`}
+              src={`./${product.images[currentIndex]}`}
               alt={`selected image of ${product.name}`}
             />
           </div>

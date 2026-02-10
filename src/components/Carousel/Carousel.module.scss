@@ -54,7 +54,7 @@
         width: 16px;
         height: 16px;
 
-        background-image: url('./img/icons/chevron-arrow-left--white.svg');
+        background-image: url('/img/icons/chevron-arrow-left--white.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -70,7 +70,7 @@
         cursor: not-allowed;
 
         &::before {
-          background-image: url('./img/icons/chevron-arrow-left.svg');
+          background-image: url('/img/icons/chevron-arrow-left.svg');
         }
       }
     }
@@ -90,7 +90,7 @@
         width: 16px;
         height: 16px;
 
-        background-image: url('./img/icons/chevron-arrow-right--white.svg');
+        background-image: url('/img/icons/chevron-arrow-right--white.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -105,7 +105,7 @@
         cursor: not-allowed;
 
         &::before {
-          background-image: url('./img/icons/chevron-arrow-right.svg');
+          background-image: url('/img/icons/chevron-arrow-right.svg');
         }
       }
     }
