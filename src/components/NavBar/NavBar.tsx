@@ -59,7 +59,7 @@ export const NavBar: React.FC = () => {
   return (
     <div className={styles.navigation}>
       <Link to="/" className={styles.navigation__logo}>
-        <img src="/img/Logo.svg" alt="logo: Nice Gadgets" />
+        <img src="./img/Logo.svg" alt="logo: Nice Gadgets" />
       </Link>
       <div className={styles.navigation__links}>
         <NavLink className={getLinkClass} to="/">
@@ -81,9 +81,9 @@ export const NavBar: React.FC = () => {
           onClick={toggleTheme}
         >
           {theme === 'dark' ? (
-            <img src="/img/icons/sun-icon.png" alt="Light mode" />
+            <img src="./img/icons/sun-icon.png" alt="Light mode" />
           ) : (
-            <img src="/img/icons/moon-icon.png" alt="Dark mode" />
+            <img src="./img/icons/moon-icon.png" alt="Dark mode" />
           )}
         </button>
         <div className={styles.navigation__desktopButtons}>
@@ -95,7 +95,7 @@ export const NavBar: React.FC = () => {
                 </div>
               )}
               <img
-                src="/img/icons/favourites(heart-like).svg"
+                src="./img/icons/favourites(heart-like).svg"
                 alt="Favourite icon"
               />
             </div>
@@ -107,16 +107,16 @@ export const NavBar: React.FC = () => {
                   {productsInCart}
                 </div>
               )}
-              <img src="/img/icons/shopping-bag(cart).svg" alt="Cart icon" />
+              <img src="./img/icons/shopping-bag(cart).svg" alt="Cart icon" />
             </div>
           </NavLink>
         </div>
 
         <button className={styles.navigation__burger} onClick={toggleMenu}>
           {isMenuOpen ? (
-            <img src="/img/icons/close.svg" alt="Close" />
+            <img src="./img/icons/close.svg" alt="Close" />
           ) : (
-            <img src="/img/icons/menu.svg" alt="Menu" />
+            <img src="./img/icons/menu.svg" alt="Menu" />
           )}
         </button>
       </div>
@@ -166,7 +166,7 @@ export const NavBar: React.FC = () => {
                 </div>
               )}
               <img
-                src="/img/icons/favourites(heart-like).svg"
+                src="./img/icons/favourites(heart-like).svg"
                 alt="Favourite icon"
               />
             </div>
@@ -182,7 +182,7 @@ export const NavBar: React.FC = () => {
                   {productsInCart}
                 </div>
               )}
-              <img src="/img/icons/shopping-bag(cart).svg" alt="Cart icon" />
+              <img src="./img/icons/shopping-bag(cart).svg" alt="Cart icon" />
             </div>
           </NavLink>
         </div>
