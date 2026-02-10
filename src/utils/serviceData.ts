@@ -12,7 +12,7 @@ const request = async (url: string) => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const products = await request('/api/products.json');
+  const products = await request('./api/products.json');
 
   return products;
 };
