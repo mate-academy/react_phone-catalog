@@ -42,7 +42,7 @@
 }
 
 .emptyImg {
-  width: 240px;
+  width: 200px;
   margin: 40px auto;
   display: block;
 
@@ -51,7 +51,7 @@
   }
 
   @include on-desktop {
-    width: 500px;
+    width: 400px;
   }
 }
 

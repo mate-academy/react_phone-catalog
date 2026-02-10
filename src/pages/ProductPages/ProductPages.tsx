@@ -49,7 +49,7 @@ export const ProductsPages: React.FC<Props> = ({ category }) => {
         break;
 
       case 'price':
-        list = [...list].sort((a, b) => a.price - b.price);
+        list = [...list].sort((a, b) => a.priceRegular - b.priceRegular);
         break;
 
       case 'age':
@@ -77,6 +77,16 @@ export const ProductsPages: React.FC<Props> = ({ category }) => {
 
   const title =
     categoryTitles[category] || category[0].toUpperCase() + category.slice(1);
+
+  if (loading) {
+    return (
+      <div className={style.section}>
+        <div className={style.skeletonHeader}></div>
+        <div className={style.skeletonFilters}></div>
+        <div className={style.skeletonList}></div>
+      </div>
+    );
+  }
 
   return (
     <div className={style.section}>
@@ -128,12 +138,15 @@ export const ProductsPages: React.FC<Props> = ({ category }) => {
         </div>
       </div>
 
-      {loading && <Loader />}
-
       {error && !loading && (
         <div>
-          <p>Something went wrong.</p>
-          <button onClick={() => window.location.reload()}>Reload</button>
+          <p className={style.paragError}>Something went wrong.</p>
+          <button
+            onClick={() => window.location.reload()}
+            className={style.buttornError}
+          >
+            Reload
+          </button>
         </div>
       )}
 

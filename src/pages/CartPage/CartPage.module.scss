@@ -193,6 +193,19 @@
   width: 16px;
 }
 
+.linkImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
 .productImages {
   width: 80px;
   height: 80px;

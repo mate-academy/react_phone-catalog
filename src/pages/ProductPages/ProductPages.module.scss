@@ -1,5 +1,39 @@
 @use '../../mixins.scss' as *;
 
+@keyframes pulse {
+  0% {
+    background-color: #e3e3e3;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e3e3e3;
+  }
+}
+
+.skeletonHeader,
+.skeletonFilters,
+.skeletonList {
+  background-color: #e3e3e3;
+  border-radius: 8px;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+.skeletonHeader {
+  height: 50px;
+  margin: 24px 0 20px;
+}
+
+.skeletonFilters {
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.skeletonList {
+  height: 400px;
+}
+
 .section {
   padding: 0 16px;
 
@@ -124,4 +158,29 @@
   @include on-desktop {
     width: 128px;
   }
+}
+
+.paragError {
+  display: block;
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: #313237;
+  padding-top: 40px;
+}
+
+.buttornError {
+  all: unset;
+  height: 48px;
+  width: 240px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #FFF;
+  background-color: #313237;
+  text-align: center;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './CartPage.module.scss';
 import { useCard } from '../../context/CardContext';
+import { Link } from 'react-router-dom';
 
 export const CartPage: React.FC = () => {
   const {
@@ -79,12 +80,17 @@ export const CartPage: React.FC = () => {
                       alt="close menu"
                     />
                   </button>
-                  <img
-                    src={i.product.images?.[0] || i.product.image}
-                    alt="product image"
-                    className={style.productImages}
-                  />
-                  <p className={style.paragraph}>{i.product.name}</p>
+                  <Link
+                    to={`/product/${i.product.id}`}
+                    className={style.linkImg}
+                  >
+                    <img
+                      src={i.product.images?.[0] || i.product.image}
+                      alt="product image"
+                      className={style.productImages}
+                    />
+                    <p className={style.paragraph}>{i.product.name}</p>
+                  </Link>
                 </div>
                 <div className={style.blockPartTwo}>
                   <div className={style.butPart}>

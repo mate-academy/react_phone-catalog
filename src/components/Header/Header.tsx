@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import style from './Header.module.scss';
 import { useLikeProducts } from '../../context/LikeCard';
 import { useCard } from '../../context/CardContext';
@@ -10,16 +10,17 @@ export const Header: React.FC = () => {
   const { item } = useCard();
 
   const isAsidePage = pathname === '/aside';
-  const cartCount = item.length;
+
+  const cartCount = item.reduce((acc, i) => acc + i.quality, 0);
 
   return (
     <header className={style.header}>
-      <div className={style.logoMobile}>
+      <Link to="/" className={style.logoMobile}>
         <img src="img/logo/logo_for_mobile.svg" alt="logo for mobile" />
-      </div>
-      <div className={style.logoDesktop}>
+      </Link>
+      <Link to="/" className={style.logoDesktop}>
         <img src="img/logo/logo_for_desktop.svg" alt="logo for mobile" />
-      </div>
+      </Link>
       {isAsidePage ? (
         <button className={style.close_menu} onClick={() => navigate(-1)}>
           <img src="img/buttons/close_menu.svg" alt="close menu" />

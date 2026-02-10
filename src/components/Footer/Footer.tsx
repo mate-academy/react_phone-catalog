@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
             </a>
             <a
               className={style.footerLink}
-              href="/"
+              href="#/"
               target="_blank"
               rel="noreferrer"
             >
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
             </a>
             <a
               className={style.footerLink}
-              href="/"
+              href="#/"
               target="_blank"
               rel="noreferrer"
             >
