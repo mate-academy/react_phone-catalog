@@ -1,4 +1,4 @@
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { AppProvider } from './context/AppContext';
 import { HomePage } from './components/HomePage';
@@ -15,25 +15,23 @@ export const Root = () => {
   return (
     <ThemeProvider>
       <AppProvider>
-        <HashRouter>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="/home" element={<Navigate to="/" replace />} />
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
 
-              <Route path=":category">
-                <Route index element={<Catalog />} />
-                <Route path=":productId" element={<ProductDetailsPage />} />
-              </Route>
-
-              <Route path="/favourites" element={<Favourites />} />
-
-              <Route path="/cart" element={<Cart />} />
-
-              <Route path="*" element={<NotFoundPage />} />
+            <Route path=":category">
+              <Route index element={<Catalog />} />
+              <Route path=":productId" element={<ProductDetailsPage />} />
             </Route>
-          </Routes>
-        </HashRouter>
+
+            <Route path="/favourites" element={<Favourites />} />
+
+            <Route path="/cart" element={<Cart />} />
+
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </AppProvider>
     </ThemeProvider>
   );
