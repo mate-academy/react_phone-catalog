@@ -1,7 +1,7 @@
 import { ProductItem } from './types/ProductItem';
 import { Product } from './types/Product';
 
-const BASE_URL = `${process.env.PUBLIC_URL}/api`;
+const BASE_URL = `${import.meta.env.BASE_URL}api`;
 
 function wait(delay: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, delay));
