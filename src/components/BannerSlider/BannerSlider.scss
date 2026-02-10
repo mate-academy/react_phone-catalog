@@ -1,0 +1,223 @@
+.slider {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  gap: 8px;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+  }
+  &__container {
+    @include grid-page;
+  }
+  &__prevBtn {
+    cursor: pointer;
+    display: none;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    background-image: '/public/img/esquerda.png';
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+  &__nextBtn {
+    cursor: pointer;
+    display: none;
+    justify-self: end;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    background-image: '/public/img/esquerda.png' no-repeat
+      center;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+  &__frame {
+    cursor: grab;
+    grid-column: 1/-1;
+    margin-inline: -16px;
+    display: flex;
+    height: 0;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+
+    @include on-tablet {
+      grid-column: 2/12;
+      margin-inline: 0;
+      padding-top: 38.4%;
+    }
+
+    @include on-desktop {
+      cursor: auto;
+      grid-column: 2/24;
+      margin-inline: 0;
+      padding-top: 38.4%;
+    }
+  }
+  &__item {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: black;
+    justify-content: center;
+    position: absolute;
+    transition: all $transition-duration;
+    &--activetSlide {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    &--lastSlide {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    &--nextSlide {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  &__overlay {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    margin: 10px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    @include on-tablet {
+      position: relative;
+      background-color: $c-primary;
+      border-radius: 10px;
+      align-items: flex-start;
+      top: 0;
+      left: 0;
+    }
+
+    @include on-desktop {
+      position: relative;
+      align-items: flex-start;
+      background-color: $c-primary;
+      border-radius: 10px;
+      top: 0;
+      left: 0;
+    }
+    &-title {
+      margin-left: 15px;
+      color: $c-white;
+      line-height: 1em;
+      text-align: center;
+
+      @include on-tablet {
+        text-align: left;
+        line-height: 1em;
+      }
+
+      @include on-desktop {
+        text-align: left;
+      }
+    }
+    &-subtitle {
+      margin-left: 15px;
+      font-family: Mont-semibold, sans-serif;
+      color: $c-elements;
+      display: none;
+
+      @include on-tablet {
+        display: block;
+        font-size: 1.3em;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+    &-button {
+      display: none;
+      margin-left: 15px;
+      text-transform: uppercase;
+      font-family: Mont-regular, sans-serif;
+      font-size: small;
+      border-radius: 20px;
+      width: 125px;
+      background-color: $c-primary;
+      border: 1px solid $c-elements;
+      color: $c-elements;
+      padding: 10px;
+
+      @include on-tablet {
+        display: inline;
+      }
+
+      @include on-desktop {
+        display: inline;
+      }
+    }
+  }
+  &__image {
+    object-fit: contain;
+    object-position: bottom;
+    width: 100%;
+
+    @include on-tablet {
+      object-fit: cover;
+      object-position: center;
+      width: 60%;
+    }
+
+    @include on-desktop {
+      object-fit: cover;
+      object-position: center;
+      width: 60%;
+    }
+  }
+}
+
+.dots {
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background: url('../../../public/img/Group\ 19.png');
+    &--active {
+      background: url('../../../public/img/Rectangle\ 23.png');
+    }
+  }
+}
