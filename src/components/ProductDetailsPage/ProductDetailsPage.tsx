@@ -278,7 +278,7 @@ export const ProductDetailsPage: React.FC = () => {
                   onClick={() => setCurrentIndex(index)}
                 >
                   <img
-                    src={`/${image}`}
+                    src={`./${image}`}
                     alt={`${product.name} image №${index + 1}`}
                   />
                 </div>
