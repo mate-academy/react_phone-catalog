@@ -44,10 +44,6 @@
       filter: var(--icon-filter);
       transition: filter 0.3s ease;
 
-      &:hover:not(:disabled) {
-        background-color: var(--icons);
-      }
-
       &:disabled {
         cursor: not-allowed;
         background-image: url('/img/icons/chevron-arrow-left.svg');
@@ -56,6 +52,10 @@
 
         filter: var(--icon-filter);
         transition: filter 0.3s ease;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: var(--icons);
       }
     }
 

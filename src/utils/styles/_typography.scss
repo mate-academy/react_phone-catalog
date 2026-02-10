@@ -1,51 +1,47 @@
 :root {
   @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url(/fonts/Mont-Regular.otf);
     font-weight: 400;
   }
 
   @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url(/fonts/Mont-Bold.otf);
     font-weight: 800;
   }
 
   @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url(/fonts/Mont-SemiBold.otf);
     font-weight: 600;
   }
 
-  & {
-    --font-primary: 'Mont', sans-serif;
+  --font-primary: 'Mont', sans-serif;
 
-    --fw-regular: 400;
-    --fw-semiBold: 600;
-    --fw-bold: 800;
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: 800;
 
-    --h1-size: 48px;
-    --h1-lh: 56px;
-    --h1-ls: -0.01em;
+  --h1-size: 48px;
+  --h1-lh: 56px;
+  --h1-ls: -0.01em;
 
-    --h2-size: 32px;
-    --h2-lh: 41px;
-    --h2-ls: -0.01em;
+  --h2-size: 32px;
+  --h2-lh: 41px;
+  --h2-ls: -0.01em;
+  --h3-size: 22px;
+  --h3-lh: 31px;
+  --h3-ls: 0;
 
-    --h3-size: 22px;
-    --h3-lh: 31px;
-    --h3-ls: 0;
+  --h4-size: 20px;
+  --h4-lh: 26px;
+  --h4-ls: 0;
 
-    --h4-size: 20px;
-    --h4-lh: 26px;
-    --h4-ls: 0;
-
-    --body-size: 14px;
-    --body-lh: 21px;
-
-    --btn-size: 14px;
-    --btn-lh: 21px;
-  }
+  --body-size: 14px;
+  --body-lh: 21px;
+  --btn-size: 14px;
+  --btn-lh: 21px;
 
   @media (max-width: 639px) {
     --h1-size: 32px;
@@ -57,7 +53,7 @@
 
     --h3-size: 20px;
     --h3-lh: 26px;
-    --h3-weight: var(--fw-semiBold);
+    --h3-weight: var(--fw-semi-bold);
 
     --h4-size: 16px;
     --h4-lh: 20px;
@@ -95,7 +91,7 @@
 
 @mixin text-h4 {
   @include font-base;
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-semi-bold);
   font-size: var(--h4-size);
   line-height: var(--h4-lh);
   letter-spacing: var(--h4-ls);
@@ -112,7 +108,7 @@
 
 @mixin text-button {
   @include font-base;
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-semi-bold);
   font-size: var(--btn-size);
   line-height: var(--btn-lh);
   letter-spacing: 0;
@@ -128,7 +124,7 @@
 
 @mixin text-small {
   @include font-base;
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-semi-bold);
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0;

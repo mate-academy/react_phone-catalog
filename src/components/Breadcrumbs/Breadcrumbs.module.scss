@@ -34,7 +34,9 @@
   }
 
   &__iconHome {
-    transition: opacity 0.3s ease;
+    transition:
+      opacity,
+      filter 0.3s ease;
 
     width: 16px;
     height: 16px;
@@ -44,7 +46,6 @@
     background-size: contain;
 
     filter: var(--icon-filter);
-    transition: filter 0.3s ease;
 
     &:hover {
       opacity: 0.5;

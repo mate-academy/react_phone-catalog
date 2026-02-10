@@ -15,6 +15,7 @@
 
   &__button {
     @include text-button;
+
     color: var(--white);
 
     margin-top: 80px;

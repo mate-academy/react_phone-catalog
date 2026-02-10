@@ -42,6 +42,7 @@
 
   &__title {
     @include text-body;
+
     color: var(--white);
   }
 
@@ -60,6 +61,7 @@
 
     &__regular {
       @include text-h3;
+
       color: var(--secondary);
 
       display: flex;

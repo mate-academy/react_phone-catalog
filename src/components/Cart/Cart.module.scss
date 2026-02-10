@@ -84,6 +84,7 @@
 
   &__title {
     @include text-h1;
+
     grid-column: 1 / 25;
     color: var(--white);
 
@@ -138,11 +139,13 @@
 
   &__price {
     @include text-h2;
+
     color: var(--white);
   }
 
   &__totalQuantity {
     @include text-body;
+
     color: var(--secondary);
     margin-bottom: 25px;
   }

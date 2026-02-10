@@ -2,7 +2,7 @@
 @import '/src/utils/styles/typography';
 @import '/src/utils/styles/mixins';
 
-@keyframes slideFade {
+@keyframes slide-fade {
   from {
     opacity: 0;
     transform: translateZ(100px) scale(1);
@@ -96,7 +96,7 @@
     width: 100%;
     height: 100%;
 
-    animation: slideFade 0.6s ease-in-out;
+    animation: slide-fade 0.6s ease-in-out;
 
     @include on-tablet {
       grid-column: 2 / 12;
@@ -130,13 +130,15 @@
 
         &__title {
           @include text-h1;
+
           color: #f1f2f9;
           margin: 0;
         }
 
         &__subtitle {
-          color: #7d7d7d;
           @include text-h4;
+
+          color: #7d7d7d;
           margin-top: 8px;
         }
       }
@@ -172,6 +174,7 @@
 
       &__text {
         @include text-h1;
+
         gap: 10px;
 
         @include on-tablet {
@@ -189,14 +192,17 @@
       }
 
       &__subtitle {
-        color: #7d7d7d;
-
         @include text-h4;
+
         margin-top: 5px;
         margin-bottom: 80px;
+
+        color: #7d7d7d;
       }
 
       &__button {
+        @include text-button;
+
         background-color: transparent;
         text-transform: uppercase;
         color: #f1f2f9;
@@ -206,8 +212,6 @@
         padding: 20px 40px;
         border-radius: 100px;
 
-        @include text-button;
-        text-transform: uppercase;
         letter-spacing: 0.5px;
 
         cursor: pointer;
@@ -268,6 +272,7 @@
 
     &__text {
       @include text-body;
+
       margin-bottom: 8px;
 
       display: flex;
@@ -286,6 +291,7 @@
 
       &__title {
         @include text-h1;
+
         color: #f1f2f9;
         margin-bottom: 8px;
         font-size: 32px;
@@ -293,6 +299,7 @@
 
       &__subtitle {
         @include text-body;
+
         color: var(--secondary);
       }
     }
@@ -304,7 +311,6 @@
       img {
         width: auto;
         height: 100%;
-        width: 100%;
         object-fit: contain;
         object-position: bottom center;
       }

@@ -16,6 +16,7 @@
 
   &__value {
     @include text-small;
+
     color: var(--white);
   }
 }

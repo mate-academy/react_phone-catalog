@@ -37,6 +37,7 @@
 
   &__title {
     @include text-h1;
+
     grid-column: 1 / 25;
 
     @include on-tablet {
@@ -64,6 +65,7 @@
     }
 
     @include text-body;
+
     color: var(--secondary);
 
     margin-top: 8px;
@@ -120,16 +122,18 @@
     }
 
     &__title {
-      color: var(--secondary);
       @include text-small;
+
+      color: var(--secondary);
     }
 
     &__select {
+      @include text-button;
+
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
 
-      @include text-button;
       color: var(--white);
 
       padding-inline: 12px;
@@ -140,14 +144,15 @@
       background-color: var(--surface2-bg);
       cursor: pointer;
       border: 2px solid transparent;
-      transition: border-color 0.3s ease;
+      transition:
+        border-color,
+        filter 0.3s ease;
 
       background-image: url('img/icons/chevron-arrow-down.svg');
       background-repeat: no-repeat;
       background-position: right 12px center;
 
       filter: var(--icon-filter);
-      transition: filter 0.3s ease;
 
       &:hover {
         border-color: var(--icons);

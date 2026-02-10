@@ -65,6 +65,7 @@
 
   &__title {
     @include text-body;
+
     color: var(--white);
   }
 
@@ -126,12 +127,14 @@
 
   &__quantity {
     @include text-body;
+
     color: var(--white);
     margin: 14px;
   }
 
   &__price {
     @include text-h3;
+
     color: var(--white);
     width: 80px;
     display: flex;

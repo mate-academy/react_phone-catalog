@@ -91,10 +91,11 @@
   }
 
   &__title {
+    @include text-h2;
+
     margin-top: 16px;
     grid-column: 1 / 25;
 
-    @include text-h2;
     color: var(--white);
 
     @include on-tablet {
@@ -222,9 +223,10 @@
   }
 
   &__info {
+    @include text-small;
+
     grid-column: 14 / 21;
     color: var(--secondary);
-    @include text-small;
 
     @include on-tablet {
       grid-column: 8 / 13;
@@ -312,6 +314,7 @@
 
   &__capacityItem {
     @include text-body;
+
     height: 32px;
     padding: 8px;
 
@@ -350,6 +353,7 @@
 
     &__regular {
       @include text-h3;
+
       color: var(--secondary);
 
       display: flex;
@@ -367,6 +371,7 @@
 
     &__addToCart {
       @include text-button;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -484,6 +489,7 @@
 
     &__text {
       @include text-h3;
+
       color: var(--white);
       padding-bottom: 16px;
       border-bottom: var(--surface-border);
@@ -496,12 +502,14 @@
 
     &__title {
       @include text-h4;
+
       color: var(--white);
       margin-top: 32px;
     }
 
     &__value {
       @include text-body;
+
       color: var(--secondary);
       margin-top: 16px;
     }
@@ -520,6 +528,7 @@
 
     &__title {
       @include text-h3;
+
       color: var(--white);
       padding-bottom: 16px;
       margin-bottom: 25px;
@@ -555,6 +564,7 @@
 
   &__title {
     @include text-h1;
+
     color: var(--white);
   }
 
@@ -577,6 +587,7 @@
 
   &__button {
     @include text-button;
+
     text-decoration: none;
     color: var(--white);
 
