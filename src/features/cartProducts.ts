@@ -20,12 +20,15 @@ export const cartProductsSlice = createSlice({
       state.items.push(payload);
       state.totalPrice += payload.product.priceDiscount;
     },
-    removeProduct(
-      state,
-      { payload }: PayloadAction<{ id: string; price: number }>,
-    ) {
-      state.items = state.items.filter(item => item.id !== payload.id);
-      state.totalPrice -= payload.price;
+    removeProduct(state, { payload }: PayloadAction<{ id: string }>) {
+      const item = state.items.find(i => i.id === payload.id);
+
+      if (!item) {
+        return;
+      }
+
+      state.items = state.items.filter(i => i !== item);
+      state.totalPrice -= item.quantity * item.product.priceDiscount;
     },
     clearCart(state) {
       state.items = [];

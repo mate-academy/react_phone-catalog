@@ -15,14 +15,22 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
 
   const isInCart = cart.items.some(item => item.id === product.id);
 
-  const handleProductAdd = () => {
-    dispatch(
-      cartProductsSlice.actions.addProduct({
-        id: product.id,
-        product: product,
-        quantity: 1,
-      }),
-    );
+  const handleToggleProduct = () => {
+    if (isInCart) {
+      dispatch(
+        cartProductsSlice.actions.removeProduct({
+          id: product.id,
+        }),
+      );
+    } else {
+      dispatch(
+        cartProductsSlice.actions.addProduct({
+          id: product.id,
+          product: product,
+          quantity: 1,
+        }),
+      );
+    }
   };
 
   return (
@@ -31,8 +39,7 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
       className={classNames(styles.add_to_cart_button, {
         [styles.added_to_cart_button]: isInCart,
       })}
-      onClick={handleProductAdd}
-      disabled={isInCart}
+      onClick={handleToggleProduct}
     >
       {isInCart ? 'Added to cart' : 'Add to cart'}
     </button>

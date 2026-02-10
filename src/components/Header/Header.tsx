@@ -7,11 +7,16 @@ import logo from '/img/logo.png';
 import menu from '/img/menu.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { menuModeSlice } from '../../features/menuMode';
+import { useMemo } from 'react';
 
 export const Header = () => {
   const cart = useAppSelector(state => state.cartProducts);
   const favourites = useAppSelector(state => state.favourites);
   const dispatch = useAppDispatch();
+
+  const totalNumberOfItems = useMemo(() => {
+    return cart.items.reduce((sum, item) => sum + item.quantity, 0);
+  }, [cart.items]);
 
   const handleMenuOpen = () => {
     dispatch(menuModeSlice.actions.setIsOpen());
@@ -44,7 +49,7 @@ export const Header = () => {
         <NavLink to="/cart" className={getLinkClass}>
           <div className={styles.icon_cart}>
             {cart.items.length > 0 && (
-              <div className={styles.items_quantity}>{cart.items.length}</div>
+              <div className={styles.items_quantity}>{totalNumberOfItems}</div>
             )}
           </div>
         </NavLink>

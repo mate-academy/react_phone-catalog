@@ -17,6 +17,8 @@ export const Footer = () => {
         <Link
           to="https://github.com/alyonashunevych/react_phone-catalog"
           className={styles.link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           GitHub
         </Link>
@@ -24,6 +26,8 @@ export const Footer = () => {
         <Link
           to="https://github.com/alyonashunevych/react_phone-catalog"
           className={styles.link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Contacts
         </Link>
@@ -31,6 +35,8 @@ export const Footer = () => {
         <Link
           to="https://github.com/alyonashunevych/react_phone-catalog"
           className={styles.link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Rights
         </Link>

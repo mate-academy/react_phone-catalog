@@ -9,6 +9,7 @@ import { CartItem } from './components';
 export const CartPage = () => {
   const { items, totalPrice } = useAppSelector(state => state.cartProducts);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const totalNumberOfItems = useMemo(() => {
     return items.reduce((sum, item) => sum + item.quantity, 0);
   }, [items]);

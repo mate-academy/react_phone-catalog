@@ -16,8 +16,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
   const dispatch = useAppDispatch();
 
-  const handleProductRemove = (productId: string, price: number) => {
-    dispatch(cartProductsSlice.actions.removeProduct({ id: productId, price }));
+  const handleProductRemove = (productId: string) => {
+    dispatch(cartProductsSlice.actions.removeProduct({ id: productId }));
   };
 
   const handleQuantityChange = (delta: 1 | -1) => {
@@ -25,7 +25,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   };
 
   const handleRemoveClick = () => {
-    handleProductRemove(id, product.priceDiscount * quantity);
+    handleProductRemove(id);
   };
 
   const handleIncreaseClick = () => {
