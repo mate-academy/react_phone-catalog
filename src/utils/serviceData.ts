@@ -19,9 +19,9 @@ export const getProducts = async (): Promise<Product[]> => {
 
 export const getAllProducts = async (): Promise<ProductItem[]> => {
   const [phones, tablets, accessories] = await Promise.all([
-    request('/api/phones.json'),
-    request('/api/tablets.json'),
-    request('/api/accessories.json'),
+    request('./api/phones.json'),
+    request('./api/tablets.json'),
+    request('./api/accessories.json'),
   ]);
 
   return [...phones, ...tablets, ...accessories];
