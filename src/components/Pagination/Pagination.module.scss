@@ -1,0 +1,102 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+  margin-bottom: 80px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    min-width: 32px;
+    height: 32px;
+    background-color: var(--surface-bg);
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+
+    transition: all 0.3s;
+
+    &:hover:not(:disabled) {
+      background-color: var(--elements);
+    }
+
+    &--active {
+      background-color: var(--accent);
+    }
+
+    &__leftArrow {
+      width: 32px;
+      height: 32px;
+      border: none;
+      cursor: pointer;
+
+      background-color: var(--surface2-bg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      background-image: url('/img/icons/chevron-arrow-left--white.svg');
+
+      filter: var(--icon-filter);
+      transition: filter 0.3s ease;
+
+      &:hover:not(:disabled) {
+        background-color: var(--icons);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-image: url('/img/icons/chevron-arrow-left.svg');
+        background-color: transparent;
+        border: var(--surface-border);
+
+        filter: var(--icon-filter);
+        transition: filter 0.3s ease;
+      }
+    }
+
+    &__rightArrow {
+      width: 32px;
+      height: 32px;
+      border: none;
+      cursor: pointer;
+
+      background-color: var(--surface2-bg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      background-image: url('/img/icons/chevron-arrow-right--white.svg');
+
+      filter: var(--icon-filter);
+      transition: filter 0.3s ease;
+
+      &:hover {
+        background-color: var(--icons);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-image: url('/img/icons/chevron-arrow-right.svg');
+        background-color: transparent;
+        border: var(--surface-border);
+
+        filter: var(--icon-filter);
+        transition: filter 0.3s ease;
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 16px;
+    padding-bottom: 6px;
+
+    color: var(--white);
+  }
+}

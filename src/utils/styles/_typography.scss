@@ -1,0 +1,135 @@
+:root {
+  @font-face {
+    font-family: 'Mont';
+    src: url(/fonts/Mont-Regular.otf);
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Mont';
+    src: url(/fonts/Mont-Bold.otf);
+    font-weight: 800;
+  }
+
+  @font-face {
+    font-family: 'Mont';
+    src: url(/fonts/Mont-SemiBold.otf);
+    font-weight: 600;
+  }
+
+  & {
+    --font-primary: 'Mont', sans-serif;
+
+    --fw-regular: 400;
+    --fw-semiBold: 600;
+    --fw-bold: 800;
+
+    --h1-size: 48px;
+    --h1-lh: 56px;
+    --h1-ls: -0.01em;
+
+    --h2-size: 32px;
+    --h2-lh: 41px;
+    --h2-ls: -0.01em;
+
+    --h3-size: 22px;
+    --h3-lh: 31px;
+    --h3-ls: 0;
+
+    --h4-size: 20px;
+    --h4-lh: 26px;
+    --h4-ls: 0;
+
+    --body-size: 14px;
+    --body-lh: 21px;
+
+    --btn-size: 14px;
+    --btn-lh: 21px;
+  }
+
+  @media (max-width: 639px) {
+    --h1-size: 32px;
+    --h1-lh: 41px;
+
+    --h2-size: 22px;
+    --h2-lh: 31px;
+    --h2-ls: 0;
+
+    --h3-size: 20px;
+    --h3-lh: 26px;
+    --h3-weight: var(--fw-semiBold);
+
+    --h4-size: 16px;
+    --h4-lh: 20px;
+  }
+}
+
+@mixin font-base {
+  font-family: var(--font-primary);
+  margin: 0;
+}
+
+@mixin text-h1 {
+  @include font-base;
+  font-weight: var(--fw-bold);
+  font-size: var(--h1-size);
+  line-height: var(--h1-lh);
+  letter-spacing: var(--h1-ls);
+}
+
+@mixin text-h2 {
+  @include font-base;
+  font-weight: var(--fw-bold);
+  font-size: var(--h2-size);
+  line-height: var(--h2-lh);
+  letter-spacing: var(--h2-ls);
+}
+
+@mixin text-h3 {
+  @include font-base;
+  font-weight: var(--fw-bold);
+  font-size: var(--h3-size);
+  line-height: var(--h3-lh);
+  letter-spacing: var(--h3-ls);
+}
+
+@mixin text-h4 {
+  @include font-base;
+  font-weight: var(--fw-semibold);
+  font-size: var(--h4-size);
+  line-height: var(--h4-lh);
+  letter-spacing: var(--h4-ls);
+}
+
+@mixin text-uppercase {
+  @include font-base;
+  font-weight: var(--fw-bold);
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin text-button {
+  @include font-base;
+  font-weight: var(--fw-semibold);
+  font-size: var(--btn-size);
+  line-height: var(--btn-lh);
+  letter-spacing: 0;
+}
+
+@mixin text-body {
+  @include font-base;
+  font-weight: var(--fw-regular);
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  letter-spacing: 0;
+}
+
+@mixin text-small {
+  @include font-base;
+  font-weight: var(--fw-semibold);
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

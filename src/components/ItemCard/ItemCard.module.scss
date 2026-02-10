@@ -1,0 +1,173 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+
+.itemCard {
+  grid-column: span 6;
+  width: 272px;
+  height: 506px;
+  background-color: var(--surface-bg);
+  color: var(--white);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 32px;
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(110%);
+  }
+
+  &__photo {
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    img {
+      object-fit: contain;
+
+      height: 196px;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    @include text-body;
+    color: var(--white);
+  }
+
+  &__price {
+    display: flex;
+    padding-bottom: 8px;
+
+    border-bottom: var(--surface-border);
+
+    &__discount {
+      @include text-h3;
+
+      display: flex;
+      align-items: center;
+    }
+
+    &__regular {
+      @include text-h3;
+      color: var(--secondary);
+
+      display: flex;
+      align-items: center;
+      text-decoration: line-through;
+
+      margin-left: 8px;
+    }
+  }
+
+  &__specifications {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    &__addToCart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--accent);
+      color: var(--white);
+      border: none;
+
+      box-sizing: border-box;
+
+      width: 160px;
+      height: 40px;
+
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+
+      cursor: pointer;
+
+      @include text-body;
+
+      &:hover {
+        background-color: #a378ff;
+      }
+
+      &--active {
+        background-color: var(--surface2-bg);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    &__addToFavorites {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 40px;
+      height: 40px;
+
+      background-color: var(--surface2-bg);
+      border: 1px solid transparent;
+      cursor: pointer;
+
+      position: relative;
+
+      transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 16px;
+        height: 16px;
+
+        background-image: url('/img/icons/favourites(heart-like).svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        filter: var(--icon-filter);
+        transition:
+          filter 0.3s ease,
+          background-image 0.3s ease;
+      }
+
+      &:hover {
+        background-color: var(--icons);
+      }
+
+      &--active {
+        background-color: transparent;
+        border: var(--black-border);
+
+        &::before {
+          background-image: url('/img/icons/favourites-filled(heart-like).svg');
+        }
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}

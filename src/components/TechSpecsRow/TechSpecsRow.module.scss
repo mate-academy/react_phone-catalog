@@ -1,0 +1,21 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+
+.techSpecs {
+  &__row {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__key {
+    @include text-small;
+
+    color: var(--secondary);
+  }
+
+  &__value {
+    @include text-small;
+    color: var(--white);
+  }
+}
