@@ -55,6 +55,7 @@
 
   &__countOfModels {
     @include text-body;
+    
     grid-column: 1 / 25;
 
     color: var(--secondary);
