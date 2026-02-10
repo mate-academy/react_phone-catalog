@@ -55,7 +55,7 @@
 
   &__countOfModels {
     @include text-body;
-    
+
     grid-column: 1 / 25;
 
     color: var(--secondary);
@@ -151,7 +151,7 @@
         border-color,
         filter 0.3s ease;
 
-      background-image: url('img/icons/chevron-arrow-down.svg');
+      background-image: url('/img/icons/chevron-arrow-down.svg');
       background-repeat: no-repeat;
       background-position: right 12px center;
 
