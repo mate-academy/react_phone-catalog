@@ -7,14 +7,14 @@ const banners = [
     id: 1,
     title: 'iPhone 14 Pro',
     subtitle: 'Pro. Beyond.',
-    img: '/img/iphone-14-pro-banner.jpg',
+    img: './img/iphone-14-pro-banner.jpg',
     link: '/phones/apple-iphone-14-pro-512gb-spaceblack',
   },
   {
     id: 2,
     title: 'iPad Pro 11',
     subtitle: 'Light. Bright.',
-    img: '/img/iPad-banner.webp',
+    img: './img/iPad-banner.webp',
     link: '/tablets/apple-ipad-pro-11-2021-1tb-spacegray',
   },
   {
@@ -96,7 +96,7 @@ export const SlideBanner = () => {
       <div className={styles.slideBanner__buttons} onClick={prevSlide}>
         <div className={styles.slideBanner__buttons__leftButton}>
           <img
-            src="/img/icons/chevron-arrow-left--white.svg"
+            src="./img/icons/chevron-arrow-left--white.svg"
             alt="previous banner"
           />
         </div>
@@ -121,7 +121,7 @@ export const SlideBanner = () => {
             </span>
             <img
               className={styles.slideBanner__banner__box__text__smile}
-              src="/img/icons/ok-smile.png"
+              src="./img/icons/ok-smile.png"
               alt="ok smile"
             />
           </div>
@@ -165,7 +165,7 @@ export const SlideBanner = () => {
       <div className={styles.slideBanner__buttons} onClick={nextSlide}>
         <div className={styles.slideBanner__buttons__rightButton}>
           <img
-            src="/img/icons/chevron-arrow-right--white.svg"
+            src="./img/icons/chevron-arrow-right--white.svg"
             alt="next banner"
           />
         </div>

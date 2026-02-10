@@ -8,7 +8,7 @@ export const NotFoundPage = () => {
         <span>Page not found</span>
       </div>
       <div className={styles.notFoundPage__image}>
-        <img src="/img/page-not-found.png" alt="Page not found" />
+        <img src="./img/page-not-found.png" alt="Page not found" />
       </div>
 
       <Link to="/" className={styles.notFoundPage__button}>

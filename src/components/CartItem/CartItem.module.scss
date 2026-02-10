@@ -47,7 +47,7 @@
     cursor: pointer;
     opacity: 0.5;
 
-    background-image: url('/img/icons/close.svg');
+    background-image: url('./img/icons/close.svg');
     background-repeat: no-repeat;
 
     filter: var(--icon-filter);
@@ -83,7 +83,7 @@
     background-position: center;
     cursor: pointer;
 
-    background-image: url('/img/icons/minus.svg');
+    background-image: url('./img/icons/minus.svg');
     background-repeat: no-repeat;
 
     filter: var(--icon-filter);
@@ -108,7 +108,7 @@
     background-position: center;
     cursor: pointer;
 
-    background-image: url('/img/icons/plus.svg');
+    background-image: url('./img/icons/plus.svg');
     background-repeat: no-repeat;
 
     filter: var(--icon-filter);

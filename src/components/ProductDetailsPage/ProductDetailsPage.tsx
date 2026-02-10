@@ -172,7 +172,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.productNotFound}>
         <h1 className={styles.productNotFound__title}>Product Not Found...</h1>
         <img
-          src="/img/product-not-found.png"
+          src="./img/product-not-found.png"
           alt="Product not Found"
           className={styles.productNotFound__image}
         />

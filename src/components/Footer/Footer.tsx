@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           className={styles.footer__logo}
           onClick={handleScrollToTop}
         >
-          <img src="/img/Logo.svg" alt="logo: Nice Gadgets" />
+          <img src="./img/Logo.svg" alt="logo: Nice Gadgets" />
         </Link>
         <div className={styles.footer__links}>
           <a
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
             onClick={handleScrollToTop}
           >
             <img
-              src="/img/icons/chevron-arrow-up--white.svg"
+              src="./img/icons/chevron-arrow-up--white.svg"
               alt="Back to top icon"
             />
           </div>

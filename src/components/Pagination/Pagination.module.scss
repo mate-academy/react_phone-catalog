@@ -39,14 +39,14 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px;
-      background-image: url('/img/icons/chevron-arrow-left--white.svg');
+      background-image: url('./img/icons/chevron-arrow-left--white.svg');
 
       filter: var(--icon-filter);
       transition: filter 0.3s ease;
 
       &:disabled {
         cursor: not-allowed;
-        background-image: url('/img/icons/chevron-arrow-left.svg');
+        background-image: url('./img/icons/chevron-arrow-left.svg');
         background-color: transparent;
         border: var(--surface-border);
 
@@ -69,7 +69,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px;
-      background-image: url('/img/icons/chevron-arrow-right--white.svg');
+      background-image: url('./img/icons/chevron-arrow-right--white.svg');
 
       filter: var(--icon-filter);
       transition: filter 0.3s ease;
@@ -80,7 +80,7 @@
 
       &:disabled {
         cursor: not-allowed;
-        background-image: url('/img/icons/chevron-arrow-right.svg');
+        background-image: url('./img/icons/chevron-arrow-right.svg');
         background-color: transparent;
         border: var(--surface-border);
 

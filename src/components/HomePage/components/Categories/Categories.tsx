@@ -12,7 +12,7 @@ export const Categories = () => {
       <div className={styles.categories__links}>
         <Link to="/phones" className={styles.categories__phones}>
           <div className={styles.categories__phones__image}>
-            <img src="/img/category-phones.webp" alt="phone categorie" />
+            <img src="./img/category-phones.webp" alt="phone categorie" />
           </div>
           <h2 className={styles.categories__title}>Mobile phones</h2>
           <h3 className={styles.categories__modelsLeft}>
@@ -21,7 +21,7 @@ export const Categories = () => {
         </Link>
         <Link to="/tablets" className={styles.categories__tablets}>
           <div className={styles.categories__tablets__image}>
-            <img src="/img/category-tablets.png" alt="tablets categorie" />
+            <img src="./img/category-tablets.png" alt="tablets categorie" />
           </div>
           <h2 className={styles.categories__title}>Tablets</h2>
           <h3 className={styles.categories__modelsLeft}>
@@ -31,7 +31,7 @@ export const Categories = () => {
         <Link to="/accessories" className={styles.categories__accessories}>
           <div className={styles.categories__accessories__image}>
             <img
-              src="/img/category-accessories.png"
+              src="./img/category-accessories.png"
               alt="accessories categorie"
             />
           </div>
