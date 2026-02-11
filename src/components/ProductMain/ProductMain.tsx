@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { colors } from '../../utils/colors';
 
@@ -15,6 +16,7 @@ import './ProductMain.scss';
 
 export const ProductDetailsMain: React.FC = () => {
   const { selectedProduct } = useContext(StatesContext);
+  const navigate = useNavigate();
 
   const [details, setDetails] = useState<ProductSpecs | null>(null);
 
@@ -39,7 +41,21 @@ export const ProductDetailsMain: React.FC = () => {
   const availableColors = details.colorsAvailable || [];
   const capacities = details.capacityAvailable || [];
 
-  // Converte ProductSpecs para Product
+  const changeProduct = (newColor?: string, newCapacity?: string) => {
+    const color = newColor || details.color;
+    const capacity = newCapacity || details.capacity;
+
+    // Pega tudo antes da capacidade e cor atuais
+    const parts = details.id.split('-');
+
+    // Remove os dois últimos pedaços (capacidade e cor)
+    const baseId = parts.slice(0, parts.length - 2).join('-');
+
+    const newId = `${baseId}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
+
+    navigate(`/${selectedProduct.categoryId}/${newId}`);
+  };
+
   const productForComponents: Product = {
     id: details.id,
     name: details.name,
@@ -74,6 +90,7 @@ export const ProductDetailsMain: React.FC = () => {
                         details.color?.toLowerCase(),
                     })}
                     key={i + colorName}
+                    onClick={() => changeProduct(colorName.toLowerCase())}
                   >
                     <div
                       className="productDetailsMain__colors-button"
@@ -104,6 +121,7 @@ export const ProductDetailsMain: React.FC = () => {
                     'productDetailsMain__capacity-button--selected':
                       c === details.capacity,
                   })}
+                  onClick={() => changeProduct(undefined, c)}
                 >
                   {c}
                 </button>
