@@ -1,0 +1,106 @@
+@import '../../shared/colors';
+@import '../../shared/mixins';
+
+.Footer {
+  background-color: #fff;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  margin-top: auto;
+
+  &__wrapper {
+    padding: 32px 16px;
+    display: flex;
+
+    flex-direction: column;
+
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      max-width: 1136px;
+      margin: 0 auto;
+    }
+  }
+
+  &__logoWrapper {
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 640px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__logo {
+    width: auto;
+    height: 32px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 378px;
+    }
+
+    &Link {
+      all: unset;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      color: $secondary;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  &__backBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &Text {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+      color: $secondary;
+    }
+
+    &Button {
+      width: 32px;
+      height: 32px;
+
+      cursor: pointer;
+      border: 1px solid $icons;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #fff;
+      background-image: url('img/buttons/arrow-up.svg');
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+    }
+  }
+}

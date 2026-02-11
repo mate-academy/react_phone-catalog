@@ -1,0 +1,68 @@
+@import '../../shared/colors';
+@import '../../shared/mixins';
+
+.Breadcrumbs {
+  @include responsive-grid;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+
+    font-size: 14px;
+    color: $secondary;
+  }
+
+  .Breadcrumbs__home {
+    height: 16px;
+    width: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__link {
+    all: unset;
+    cursor: pointer;
+    color: $secondary;
+    transition: color 0.2s;
+  }
+
+  &__linkActive {
+    color: $primary;
+  }
+
+  &__separator {
+    margin: 0 8px;
+    color: $secondary;
+  }
+
+  &__productId {
+    color: $secondary;
+  }
+
+  &__back {
+    all: unset;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    margin-bottom: 16px;
+
+    &Image {
+      width: 16px;
+      height: 16px;
+    }
+
+    &Text {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $secondary;
+    }
+  }
+}
