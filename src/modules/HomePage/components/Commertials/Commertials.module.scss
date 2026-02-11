@@ -1,0 +1,127 @@
+@import '../../../../style/main';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-inline: 32px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-mobile {
+    margin: 0;
+  }
+
+  &__top {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+
+    @include on-mobile {
+      gap: 0;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    border-radius: 48px;
+    border: 1px solid $button-border-color;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $main-bg-color;
+    cursor: pointer;
+
+    @include hover(border-color, $main-color);
+
+    @include on-mobile {
+      display: none;
+    }
+
+    &__left {
+      background-image: url(/img/home/arrow-left.svg);
+    }
+
+    &__right {
+      background-image: url(/img/home/arrow-right.svg);
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  &__swiper-slide {
+    width: 100%;
+  }
+
+  &__commertial {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    aspect-ratio: 490 / 189;
+    min-height: 189px;
+    max-height: 400px;
+    border-radius: 8px;
+
+    @include on-mobile {
+      aspect-ratio: 1 / 1;
+      min-height: 320px;
+      max-height: $mobile-max-width;
+      border-radius: 8px;
+    }
+
+    &__1 {
+      background-image: url(/img/home/banner-1.png);
+
+      @include on-mobile {
+        background-image: url(/img/home/banner-1-mobile.png);
+      }
+    }
+
+    &__2 {
+      background-image: url(/img/home/banner-2.png);
+
+      @include on-mobile {
+        background-image: url(/img/home/banner-2-mobile.png);
+      }
+    }
+
+    &__3 {
+      background-image: url(/img/home/banner-3.png);
+
+      @include on-mobile {
+        background-image: url(/img/home/banner-3-mobile.png);
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 9px;
+  }
+
+  &__bullet {
+    width: 14px;
+    height: 4px;
+    background-color: $shadow-color;
+    cursor: pointer;
+    border: none;
+
+    &--active {
+      background-color: $main-color;
+    }
+  }
+}

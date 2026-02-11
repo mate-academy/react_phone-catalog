@@ -1,0 +1,69 @@
+@import '../../../../style/main';
+
+.specs {
+  grid-column: 14 / -1;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-mobile {
+    grid-column: span 4;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    display: flex;
+    margin-bottom: 16px;
+
+    @include on-mobile {
+      font-weight: 700;
+      font-style: SemiBold;
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $shadow-color;
+    display: flex;
+    margin-bottom: 25px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__subtitle {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+
+  &__desc {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+}

@@ -1,0 +1,71 @@
+@import '../../../style/main';
+
+.cards {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin: 0;
+    padding: 0;
+
+    @include on-mobile {
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__slides {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slide {
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid $button-border-color;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $main-bg-color;
+    cursor: pointer;
+
+    @include hover(border-color, $main-color);
+
+    &:disabled {
+      cursor: default;
+
+      @include hover(border-color, $button-border-color);
+    }
+
+    &__left {
+      background-image: url(/img/home/arrow-left.svg);
+
+      &:disabled {
+        background-image: url(/img/home/arrow-left-disabled.svg);
+      }
+    }
+
+    &__right {
+      background-image: url(/img/home/arrow-right.svg);
+
+      &:disabled {
+        background-image: url(/img/home/arrow-right-disabled.svg);
+      }
+    }
+  }
+}

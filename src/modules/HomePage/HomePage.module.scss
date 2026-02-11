@@ -1,0 +1,56 @@
+@import '../../style/main';
+
+.home {
+  margin-block: 56px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    margin-block: 32px 64px;
+    gap: 32px;
+  }
+
+  @include on-mobile {
+    margin-block: 24px 56px;
+    gap: 24px;
+  }
+
+  &__sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    margin: 0;
+    padding: 0;
+
+    @include on-mobile {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-mobile {
+      gap: 56px;
+    }
+  }
+}

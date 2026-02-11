@@ -1,0 +1,28 @@
+@import '../../style/main';
+
+.not-found {
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+    height: calc(
+      100vh - $header-height-desktop - $footer-height-desktop-tablet
+    );
+
+    @include on-tablet {
+      height: calc(
+        100vh - $header-height-tablet-mobile - $footer-height-desktop-tablet
+      );
+    }
+
+    @include on-mobile {
+      height: calc(
+        100vh - $header-height-tablet-mobile - $footer-height-mobile
+      );
+    }
+  }
+}
