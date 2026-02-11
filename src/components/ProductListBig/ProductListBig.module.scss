@@ -1,0 +1,14 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.list {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+
+  &__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

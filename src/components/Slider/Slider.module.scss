@@ -1,0 +1,135 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop-wide {
+    padding-inline: calc((100vw - 1136px) / 2);
+  }
+
+  &__content {
+    width: 100%;
+    height: 100vw;
+
+    @include on-tablet {
+      height: auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(24, 32px);
+    }
+  }
+
+  &__carousel {
+    display: flex;
+    transition: all $duration $type;
+    width: 100%;
+  }
+
+  &__link {
+    height: 100vw;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    min-width: 320px;
+    min-height: 320px;
+    position: relative;
+
+    @include on-tablet {
+      grid-column: 2/-2;
+      height: auto;
+      min-width: 0;
+      min-height: 0;
+    }
+  }
+
+  &__image {
+    @include on-tablet {
+      grid-column: 2/-2;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    align-items: center;
+    padding-inline: 10px;
+    width: 80px;
+    height: 24px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border: 0;
+    background-color: $element-color;
+  }
+
+  &__dot--active {
+    background-color: $primary-color;
+    transition: all $duration $type;
+  }
+
+  &__arrow {
+    display: none;
+    width: 32px;
+    cursor: pointer;
+    background-color: $white-color;
+    border: 1px solid $icon-color;
+    transition: all $duration $type;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+      transform: scale(1.02);
+    }
+
+    &:active {
+      background-color: $primary-color;
+      transform: scale(0.98);
+    }
+
+    &:active > * {
+      filter: invert(1) brightness(10);
+    }
+  }
+
+  &__arrowIcon {
+    height: 100%;
+    max-width: 16px;
+    filter: brightness(0.1);
+    transition: all $duration $type;
+  }
+}
+
+.slider__arrow--left {
+  grid-column: 1/2;
+  justify-self: start;
+}
+
+.slider__arrow--right {
+  grid-column: -2/-1;
+  justify-self: end;
+}
