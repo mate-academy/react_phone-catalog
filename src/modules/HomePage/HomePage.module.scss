@@ -1,0 +1,67 @@
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/typography' as *;
+@use '../../styles/utils/colors' as *;
+@use '../../styles/utils/breakpoints' as *;
+
+.main {
+  padding: 24px 0 64px;
+  &__hidden {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include for-tablet {
+      gap: 64px;
+    }
+
+    @include for-laptop {
+      gap: 80px;
+    }
+  }
+
+  @include for-tablet {
+    padding-top:32px;
+  }
+
+  @include for-laptop {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 56px 0 80px;
+  }
+}
+
+.title {
+  @include h1-mobile;
+
+  padding: 0 16px;
+
+  &--padding {
+    padding-bottom: 24px;
+
+    @include for-tablet {
+      padding-bottom: 32px;
+    }
+
+    @include for-laptop {
+      padding-bottom: 56px;
+    }
+  }
+
+  @include for-tablet {
+    @include h1-desktop;
+
+    padding: 0 24px;
+  }
+
+  @include for-laptop {
+    @include h1-desktop;
+
+    padding: 0 32px;
+  }
+}

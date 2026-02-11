@@ -1,0 +1,91 @@
+@use '../../styles/utils/breakpoints' as *;
+@use '../../styles/utils/colors' as *;
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/typography' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-top: 1px solid $color-header-border;
+  padding: 32px 16px;
+
+  @include for-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+  }
+
+    @include for-laptop {
+    max-width: 1500px;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.logo {
+  position: relative;
+
+  &__img {
+    display: block;
+    width: 89px;
+    height: 32px;
+
+    @include for-laptop {
+      width: 80px;
+      height: 26px;
+    }
+  }
+
+  &__hand {
+    display: block;
+    width: 12px;
+    height: 16.7px;
+
+    position: absolute;
+    top: 0;
+    left: 44.7px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__link {
+    text-decoration: none;
+
+    @include uppercase;
+
+    text-transform: uppercase;
+    color: $color-link-navigation;
+
+    &:hover {
+      color: $color-hover-nav
+    }
+  }
+
+  @include for-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+  }
+
+  @include for-laptop {
+    gap: 106px;
+  }
+}
+
+.scrollBack {
+  @include flex-center-row;
+
+  gap: 16px;
+
+  &__paragraph {
+    @include small-text;
+
+    color: $color-link-navigation;
+  }
+}

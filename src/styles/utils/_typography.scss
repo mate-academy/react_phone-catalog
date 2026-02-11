@@ -1,0 +1,85 @@
+@mixin font-mont($weight, $size, $lineHight, $letterSpacing) {
+  font-family: Mont, sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lineHight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin h1-desktop {
+  @include font-mont(800, 48px, 56px, -0.01em);
+}
+
+@mixin h1-mobile {
+  @include font-mont(800, 32px, 41px, -0.01em);
+}
+
+@mixin h2-desktop {
+  @include font-mont(800, 32px, 41px, -0.01em);
+}
+
+@mixin h2-mobile {
+  @include font-mont(800, 22px, 31px, 0);
+}
+
+@mixin h3-desktop {
+  @include font-mont(800, 22px, 31px, 0);
+}
+
+@mixin h3-mobile {
+  @include font-mont(700, 20px, 26px, 0);
+}
+
+@mixin h4-desktop {
+  @include font-mont(700, 20px, 26px, 0);
+}
+
+@mixin h4-mobile {
+  @include font-mont(700, 16px, 20px, 0);
+}
+
+@mixin uppercase {
+  @include font-mont(800, 12px, 11px, 0.04em);
+
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  @include font-mont(700, 14px, 21px, 0);
+}
+
+@mixin body-text {
+  @include font-mont(600, 14px, 21px, 0);
+}
+
+@mixin small-text {
+  @include font-mont(700, 12px, 1em, 0);
+}
+
+@mixin price-old {
+  @include font-mont(600, 22px, 1em, 0);
+}
+
+@mixin button-slider {
+  @include font-mont(600, 10px, 0, 0);
+}
+
+@mixin breadcrumbs {
+  @include font-mont(600, 12px, 1, 0);
+}
+
+@mixin breadcrumbs-details {
+  @include font-mont(700, 12px, 1, 0);
+}
+
+@mixin small-text-details{
+  @include font-mont(600, 12px, 1, 0);
+}
+
+@mixin capacity {
+  @include font-mont(500, 14px, 21px, 0);
+}
+
+@mixin quantity {
+  @include font-mont(600, 9px, 1, 0)
+}

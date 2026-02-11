@@ -1,0 +1,123 @@
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/colors' as *;
+@use '../../../../styles/utils/typography' as *;
+
+.product {
+  @include body-text;
+
+  width: 100%;
+  padding: 16px;
+  border: 1px solid $color-header-border;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color-product);
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 23px;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include for-tablet {
+      gap: 24px;
+    }
+  }
+
+  @include for-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.text {
+  text-decoration: none;
+  color: var(--color-text);
+
+  @include body-text;
+}
+
+.buttonRemove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+
+  &__item {
+    cursor: pointer;
+  }
+}
+
+.image {
+  width: 66px;
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  box-sizing: content-box;
+
+  &__item {
+    width: 66px;
+    object-fit: contain;
+    height: 100%;
+  }
+}
+
+.productQuantity {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-select;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    background-color: var(--color-button);
+
+    &:hover {
+      border-color: $color-hover-nav;
+    }
+
+    &:disabled {
+      color: $color-header-border;
+      border-color: $color-header-border;
+    }
+  }
+
+  &__value {
+    @include body-text;
+
+    min-width: 23px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+}
+
+.price {
+  @include h3-desktop;
+
+  min-width: 90px;
+  text-align: right;
+  
+  @include for-tablet {
+    margin-left: 29px;
+  }
+}
