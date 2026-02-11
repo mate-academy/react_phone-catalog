@@ -1,0 +1,93 @@
+@use '../../../../styles/' as *;
+
+.footer {
+  background: $white;
+  border-top: 1px solid $elements;
+  width: 100%;
+  padding: 32px 0;
+  font-size: 12px;
+  color: $primary;
+
+  &__container {
+    @include content-padding-inline;
+    @include page-grid;
+
+    margin-inline: auto;
+    gap: 32px;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-height: 96px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      display: block;
+      height: 32px;
+      width: 90px;
+    }
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 3;
+    grid-row: 2;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+
+      @media (min-width: 800px) {
+        gap: 40px;
+      }
+
+      @media (min-width: 1000px) {
+        gap: 70px;
+      }
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    @include uppercase-style;
+    @include hover-text;
+  }
+
+  &__toTopWrap {
+    @include center;
+
+    gap: 16px;
+    grid-column: 2 / 4;
+  }
+
+  &__toTopText {
+    @include small-text-style;
+
+    letter-spacing: 0;
+  }
+
+  &__button {
+    @include button-icon-style;
+  }
+}

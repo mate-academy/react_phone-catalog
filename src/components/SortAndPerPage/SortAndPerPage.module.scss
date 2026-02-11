@@ -1,0 +1,61 @@
+@use '../../styles/' as *;
+
+.sortControls {
+  @include page-grid;
+
+  margin-bottom: 24px;
+
+  &__group {
+    grid-column: span 2;
+    flex-direction: column;
+    gap: 4px;
+    display: flex;
+
+    @include on-tablet {
+      &:nth-child(1) {
+        grid-column: span 4;
+      }
+
+      &:nth-child(2) {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__label {
+    @include small-text-style;
+  }
+
+  &__selectWrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__select {
+    @include button-icon-style;
+
+    appearance: none;
+    outline: none;
+    transition: border $effectDuration;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    color: $primary;
+
+    &:focus {
+      border-color: $primary;
+      outline: none;
+    }
+  }
+
+  &__selectArrow {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    pointer-events: none;
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,12 @@
+@use '../../../styles/' as *;
+
+.favoriteBtn {
+  @include button-icon-style;
+
+  width: 40px;
+  height: 40px;
+
+  &--active {
+    border-color: $elements;
+  }
+}

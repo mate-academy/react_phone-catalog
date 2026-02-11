@@ -1,0 +1,6 @@
+@use '../../styles/' as *;
+
+.categoryPage {
+  @include section-style;
+  @include content-padding-inline;
+}

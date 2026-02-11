@@ -1,0 +1,272 @@
+@use './variables.scss';
+
+@mixin on-mobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin section-style {
+    margin: 0;
+    padding-bottom: 56px ;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+    
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+@mixin h1-style {
+  margin: 0;
+  padding: 0;
+  color: $primary;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-shadow: $black-text-shadow;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2-style {
+  margin: 0;
+  padding: 0;
+  color: $primary;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  text-shadow: $black-text-shadow;
+  
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3-style {
+  margin: 0;
+  padding: 0;
+  color: $primary;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  text-shadow: $black-text-shadow-small;
+  
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin h4-style {
+  margin: 0;
+  padding: 0;
+  color: $primary;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  text-shadow: $black-text-shadow-small;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin uppercase-style {
+  margin: 0;
+  padding: 0;
+  color: $secondary;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin body-text-style {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  color: $secondary;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text-style {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  color: $secondary;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+}
+
+@mixin content-padding-inline {
+  max-width: 1200px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover-text {
+  transition: all $effectDuration;
+
+  &:hover {
+    text-shadow: $black-text-shadow-small;
+    color: $primary;
+  }
+}
+
+@mixin shadow-box {
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 6px 0 #31323733;
+  border-radius: 4px;
+
+  &:hover {
+    box-shadow: 0 3px 6px 0 #17203188;
+  }
+}
+
+@mixin button-icon-style {
+  @include shadow-box;
+  @include center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $placeholders;
+  background: $white;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    border-color: $elements;
+  }
+}
+
+@mixin button-style {
+  @include button-icon-style;
+  @include body-text-style;
+
+  background: $primary;
+  width: 100%;
+  height: 40px;
+  font-family: Mont, Arial, sans-serif;
+  font-weight: 700;
+  color: $white;
+}
+
+@mixin line-style {
+  width: 100%;
+  height: 1px;
+  background: $elements;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin fade-in($duration: 0.5s, $delay: 0s) {
+  animation: fade-in $duration ease forwards;
+  animation-delay: $delay;
+}
+
+@mixin skeleton-animation {
+  position: relative;
+  overflow: hidden;
+  background-color: $elements;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($white, 0.4) 50%,
+      transparent 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

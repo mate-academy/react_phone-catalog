@@ -1,0 +1,150 @@
+@use '../../../../styles/' as *;
+
+.productDetails {
+  @include section-style;
+  @include content-padding-inline;
+
+  margin-top: 70px;
+
+  &__pathSkeleton,
+  &__titleSkeleton,
+  &__thumb,
+  &__bigImg,
+  &__labelSkeleton,
+  &__priceSkeleton,
+  &__cartBtnSkeleton,
+  &__favBtnSkeleton,
+  &__specRow,
+  &__idSkeleton,
+  &__colorsSkeleton>div,
+  &__capacitiesSkeleton>div {
+    @include skeleton-animation;
+
+    border-radius: 4px;
+  }
+
+  &__pathSkeleton {
+    width: 200px;
+    height: 18px;
+    margin-bottom: 24px;
+  }
+
+  &__titleSkeleton {
+    width: 60%;
+    height: 40px;
+    margin-bottom: 32px;
+  }
+
+  &__mainGrid {
+    @include page-grid;
+
+    align-items: start;
+  }
+
+  &__gallerySkeleton {
+    display: flex;
+    gap: 16px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / span 7;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 12;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__thumb {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__bigImg {
+    flex: 1;
+    height: 450px;
+  }
+
+  &__infoBlock {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 8 / span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+    }
+  }
+
+  &__labelSkeleton {
+    width: 100px;
+    height: 15px;
+    margin-bottom: 12px;
+  }
+
+  &__colorsSkeleton {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    &>div {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+
+  &__capacitiesSkeleton {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    &>div {
+      width: 60px;
+      height: 40px;
+    }
+  }
+
+  &__line {
+    @include line-style;
+
+    margin-bottom: 24px;
+  }
+
+  &__priceSkeleton {
+    width: 150px;
+    height: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__cartBtnSkeleton {
+    flex: 1;
+    height: 48px;
+  }
+
+  &__favBtnSkeleton {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__specRow {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 12px;
+  }
+}

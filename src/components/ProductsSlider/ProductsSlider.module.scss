@@ -1,0 +1,60 @@
+@use '../../styles/' as *;
+
+.productsSlider {
+  &__header {
+    @include content-padding-inline;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__title {
+    @include h2-style;
+
+    font-size: 24px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include button-icon-style;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    overflow: auto visible;
+    scrollbar-width: none;
+
+    @include content-padding-inline;
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__cardWrap {
+    flex: 0 0 auto;
+    max-width: 212px;
+    width: calc((100vw - 16px - 16px) / 4 * 3 + 16px * 2);
+
+    @include on-tablet {
+      max-width: 236px;
+      width: calc((100vw - 24px - 24px - 16px) / 12 * 5 + 16px * 4);
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+      width: calc((100% - 3 * 16px) / 4);
+    }
+  }
+}
