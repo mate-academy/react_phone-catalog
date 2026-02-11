@@ -1,0 +1,67 @@
+import { useEffect, useState } from 'react';
+import styles from './TabletPage.module.scss';
+import { Product } from '../../shared/interfaces/Product';
+import { ProductCard } from '../../components/ProductCard';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { usePreparedProducts } from '../../shared/hooks/usePreparedProducts';
+import { ProductsParams } from '../../components/ProductsParams/ProductsParams';
+import { Paginator } from '../../components/Paginator/Paginator';
+import { useProductsSearchParams } from '../../shared/hooks/useProductsSearchP';
+
+export const TabletPage = () => {
+  const [phones, setPhones] = useState<Product[]>([]);
+  const { sortBy, itemsPerPage, page, setSort, setItems, setPage } =
+    useProductsSearchParams();
+
+  const visibleProducts = usePreparedProducts({
+    products: phones,
+    sortBy,
+    itemsPerPage,
+    page,
+  });
+
+  useEffect(() => {
+    fetch('api/products.json')
+      .then(res => res.json())
+      .then((data: Product[]) => {
+        const onlyPhones = data.filter(p => p.category === 'tablets');
+
+        setPhones(onlyPhones);
+      });
+  }, []);
+
+  const totalPages =
+    itemsPerPage === 'all' ? 1 : Math.ceil(phones.length / itemsPerPage);
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Tablets</h1>
+      <p className={styles.subtitle}>{phones.length} models</p>
+
+      <Breadcrumbs />
+
+      <ProductsParams
+        sortBy={sortBy}
+        onSortChange={setSort}
+        itemsPerPage={itemsPerPage}
+        onItemsChange={setItems}
+      />
+
+      <div className={styles.list}>
+        {visibleProducts.map(product => (
+          <div key={product.id} className={styles.cardWrapper}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </div>
+
+      {itemsPerPage !== 'all' && totalPages > 1 && (
+        <Paginator
+          currentPage={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
+      )}
+    </div>
+  );
+};

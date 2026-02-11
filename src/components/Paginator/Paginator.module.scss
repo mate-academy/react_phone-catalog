@@ -1,0 +1,71 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  gap: 16px;
+
+  /* tablet */
+  @include tablet {
+    & {
+      margin-top: 40px;
+    }
+  }
+}
+
+.button {
+  min-width: 32px;
+  height: 32px;
+  color: $color-card-bg;
+  background-color: $color-text-primary;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-text-primary;
+  border-image: initial;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.buttonLeft {
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center center;
+}
+
+.buttonRight {
+  background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/arrow-right-black.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center center;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.active {
+  background-color: $color-card-bg;
+  color: $color-text-primary;
+  border-color: $color-card-bg;
+}
+
+.dots {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  width: 16px;
+  padding-bottom: 6px;
+}

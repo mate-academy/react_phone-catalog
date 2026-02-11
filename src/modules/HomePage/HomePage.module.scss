@@ -1,0 +1,50 @@
+.home {
+  max-width: 1136px;
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+
+.section {
+  margin-top: 64px;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* visually hidden but accessible */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* tablet */
+@media (max-width: 1199px) {
+  .home {
+    padding: 16px;
+  }
+
+  .section {
+    margin-top: 48px;
+  }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .home {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}

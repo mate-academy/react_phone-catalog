@@ -1,0 +1,63 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.favoritesEmpty {
+  padding-top: 32px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: $color-text-grey;
+  margin: 0;
+
+  /* tablet */
+  @include tablet {
+    & {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}
+
+.container {
+  padding-inline: 16px;
+
+  // /* tablet */
+  @include tablet {
+    & {
+      padding-inline: 24px;
+    }
+  }
+
+  /* desktop */
+  @include desktop {
+    & {
+      max-width: 1136px;
+      margin-inline: auto;
+      padding-inline: 32px;
+    }
+  }
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $color-text-grey;
+  margin: 8px 0 0;
+}
+
+.slider {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 16px;
+}

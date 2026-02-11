@@ -1,0 +1,6 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(70%);
+  transition: filter 0.3s;
+}

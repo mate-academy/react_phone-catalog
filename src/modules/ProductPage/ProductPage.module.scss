@@ -1,0 +1,523 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.backBtn {
+  display: flex;
+  flex-direction: row;
+  column-gap: 4px;
+  align-items: center;
+  padding-top: 24px;
+  cursor: pointer;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/arrow-left-black.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter: invert(1);
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: $color-text-grey;
+    transition: color 0.3s;
+  }
+
+  /* tablet */
+  @include tablet {
+    & {
+      padding-top: 40px;
+    }
+  }
+
+  // /* desktop*/
+  // @include desktop {
+  //   & {
+  //     padding: 56px 48px 90px;
+  //   }
+  // }
+}
+
+.title {
+  margin: 0;
+  padding-top: 16px;
+  font-weight: 800;
+  font-style: bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  /* tablet */
+  @include tablet {
+    & {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+}
+
+.label {
+  margin: 0;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: $color-text-grey;
+}
+
+.top {
+  &__gallery {
+    padding: 32px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__mainImage {
+      width: 288px;
+      height: 288px;
+
+      /* desktop */
+      @include desktop {
+        & {
+          width: 464px;
+          height: 464px;
+        }
+      }
+    }
+
+    &__thumbnails {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      &__thumb {
+        all: unset;
+        box-sizing: border-box;
+
+        // border: 1px solid $color-text-primary;
+        border-radius: 4px;
+        width: 50px;
+        height: 50px;
+        background-color: $color-card-bg;
+        cursor: pointer;
+        &__image {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        &__active {
+          border: 1px solid $color-text-primary;
+        }
+
+        /* tablet */
+        @include tablet {
+          & {
+            width: 35px;
+            height: 35px;
+          }
+        }
+
+        /* desktop */
+        @include desktop {
+          & {
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+
+      /* tablet */
+      @include tablet {
+        & {
+          flex-direction: column;
+        }
+      }
+    }
+
+    /* tablet */
+    @include tablet {
+      & {
+        padding: 40px 0 0;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__options {
+    &__selector {
+      &__capacityList {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        &__raInput {
+          position: absolute;
+          opacity: 0;
+          pointer-events: none;
+        }
+        &__capacityBtn {
+          box-sizing: border-box;
+          width: 63px;
+          height: 32px;
+          background-color: $color-button-grey;
+          border-radius: 4px;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          position: relative;
+        }
+
+        &__active {
+          background-color: $color-button-primary;
+          color: $color-text-primary;
+        }
+      }
+      &__colorsList {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+      }
+
+      &__colorItem {
+        display: flex;
+        width: 32px;
+        height: 32px;
+      }
+
+      &__colorBtn {
+        box-sizing: border-box;
+        width: 32px;
+        height: 32px;
+        border: 1px solid $color-text-primary;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        &__active {
+          border: 2px solid $color-button-primary;
+        }
+      }
+
+      &__radioInput {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      padding-block: 24px;
+      border-bottom: 1px solid $color-text-primary;
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    &__priceBlock {
+      padding-top: 32px;
+      display: flex;
+      flex-direction: row;
+      column-gap: 8px;
+      align-items: center;
+
+      &__priceDiscount {
+        margin: 0;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+      }
+
+      &__priceRegular {
+        margin: 0;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 100%;
+        letter-spacing: 0;
+        text-decoration: line-through;
+        color: $color-text-grey;
+      }
+    }
+
+    &__actions {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: row;
+      column-gap: 8px;
+      &__addToCart {
+        box-sizing: border-box;
+        width: 231px;
+        height: 48px;
+        border: none;
+        border-radius: 48px;
+        background-color: $color-button-primary;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+        text-align: center;
+        color: $color-text-primary;
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+      }
+      &__favBtn {
+        box-sizing: border-box;
+        width: 48px;
+        height: 48px;
+        border: none;
+        border-radius: 50%;
+        background-color: $color-button-grey;
+        background-image: url(https://vnechepurenko2005.github.io/nicegadgets_store/icons/favourites.svg);
+        background-size: 16px;
+        filter: invert(1);
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        transition: border-color 0.3s;
+      }
+    }
+    &__specsShort {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      padding: 32px 0 56px;
+      &__specRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      &__name {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0;
+        color: $color-text-grey;
+        margin: 0;
+      }
+
+      &__value {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0;
+        margin: 0;
+      }
+
+      /* tablet */
+      @include tablet {
+        & {
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    /* tablet */
+    @include tablet {
+      & {
+        padding: 40px 0 64px;
+      }
+    }
+
+    /* desktop */
+    @include desktop {
+      & {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  /* tablet */
+  @include tablet {
+    & {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  /* desktop */
+  @include desktop {
+    & {
+      gap: 64px;
+    }
+  }
+}
+
+.bottom {
+  &__about {
+    padding-bottom: 56px;
+    &__sectionTitle {
+      margin: 0;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $color-text-primary;
+
+      // /* tablet */
+      @include tablet {
+        & {
+          font-weight: 800;
+          font-size: 22px;
+          line-height: 140%;
+        }
+      }
+    }
+
+    &__aboutSection {
+      padding-top: 32px;
+
+      &__aboutTitle {
+        margin: 0;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0;
+
+        // /* tablet */
+        @include tablet {
+          & {
+            font-size: 20px;
+          }
+        }
+      }
+
+      &__aboutDescription {
+        padding-top: 16px;
+      }
+
+      &__aboutText {
+        margin: 0;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+        color: $color-text-grey;
+
+        /* desktop */
+        @include desktop {
+          & {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    // /* tablet */
+    @include tablet {
+      & {
+        padding-bottom: 64px;
+      }
+    }
+
+    /* desktop */
+    @include desktop {
+      & {
+        padding-bottom: 0;
+        max-width: 560px;
+      }
+    }
+  }
+
+  &__techSpecs {
+    padding-bottom: 56px;
+
+    &__techSpecsList {
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+
+      &__techSpecRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      &__name {
+        margin: 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+        color: $color-text-grey;
+      }
+
+      &__value {
+        margin: 0;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+      }
+
+      // /* tablet */
+      @include tablet {
+        & {
+          padding-top: 25px;
+        }
+      }
+    }
+
+    // /* tablet */
+    @include tablet {
+      & {
+        padding-bottom: 64px;
+      }
+    }
+
+    /* desktop */
+    @include desktop {
+      & {
+        width: 512px;
+      }
+    }
+  }
+
+  // /* tablet */
+  // @include tablet {
+  //   & {
+  //     display: flex;
+  //     flex-direction: row;
+  //     gap: 16px;
+  //   }
+  // }
+
+  /* desktop */
+  @include desktop {
+    & {
+      padding-block: 80px;
+      display: flex;
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+}
+
+.mainImageImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slider {
+  max-width: 1136px;
+  margin-inline: auto;
+  padding-inline: 32px;
+}
