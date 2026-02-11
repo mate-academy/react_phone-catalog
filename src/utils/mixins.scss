@@ -1,0 +1,104 @@
+@import 'variables';
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (min-width: $phone-min-width) {
+    @content;
+  }
+}
+
+@mixin phone-max {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin adaptiv-value($property, $startSize, $maxSize, $type: 0) {
+  $addSize: $maxSize - $startSize;
+
+  // Только до $maxWidthContainer (растёт от 320 до $maxWidthContainer)
+
+  @if $type == 1 {
+    & {
+      #{$property}: #{$startSize}px;
+
+      @media (min-width: 320px) and (max-width: #{$maxWidthContainer}px) {
+        #{$property}: calc(#{$startSize}px + #{$addSize} * ((100vw - 320px) / (#{$maxWidthContainer} - 320)));
+      }
+
+      @media (min-width: #{$maxWidthContainer}px) {
+        #{$property}: #{$maxSize}px;
+      }
+    }
+  // Только до $maxWidth (растёт от $maxWidthContainer до $maxWidth)
+
+  } @else if $type == 2 {
+    & {
+      #{$property}: #{$startSize}px;
+
+      @media (min-width: #{$maxWidthContainer}px) and (max-width: #{$maxWidth}px) {
+        #{$property}: calc(
+          #{$startSize}px + #{$addSize} * ((100vw - #{$maxWidthContainer}px) / (#{$maxWidth} - #{$maxWidthContainer}))
+        );
+      }
+      
+      @media (min-width: #{$maxWidth}px) {
+        #{$property}: #{$maxSize}px;
+      }
+    }
+  // Всегда плавно от 320 до $maxWidth
+
+  } @else {
+    & {
+      #{$property}: calc(#{$startSize}px + #{$addSize} * ((100vw - 320px) / (#{$maxWidth} - 320)));
+    }
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  
+  @include on-tablet {
+    --columns: 12;
+  }
+  
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin underline-after($width: 0) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: $width;
+    height: 1px;
+
+    background-color: var(--color-gray-primary);
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+  }
+}

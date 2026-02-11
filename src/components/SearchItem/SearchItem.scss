@@ -1,0 +1,23 @@
+@import '../../utils/variables';
+
+.search-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    height: 45px;
+    box-sizing: border-box;
+    text-decoration: none;
+
+    &__image {
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    &__name {
+      font-size: 14px;
+      color: var(--color-gray-primary);
+    }
+  }

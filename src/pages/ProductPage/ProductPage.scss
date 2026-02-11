@@ -1,0 +1,46 @@
+@import '/src/utils/variables';
+@import '/src/utils/mixins';
+
+.product-page {
+  &__content {
+    width: 100%;
+  }
+
+  &__navi-line {
+    gap: 8px;
+
+    @include adaptiv-value(margin-bottom, 24, 40, 1);
+  }
+
+  &__title {
+    font-weight: 800;
+    color: var(--color-gray-primary);
+    
+    @include adaptiv-value(font-size, 32, 48, 2);
+    @include adaptiv-value(line-height, 41, 56, 1);
+  }
+
+  &__desc {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-gray-secondary);
+    
+    @include adaptiv-value(margin-bottom, 32, 40, 1);
+  }
+
+  &__drop-block {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  &__pagination {
+    display: flex;
+    justify-content: center;
+
+    @include adaptiv-value(margin-top, 24, 40, 1);
+  }
+}

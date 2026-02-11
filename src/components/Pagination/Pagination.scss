@@ -1,0 +1,51 @@
+@import '/src/utils/variables';
+@import '/src/utils/mixins';
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  overflow: scroll;
+}
+
+.pag {
+  &__btn{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    border-color: var( --color-gray-secondary);
+    color: var(--color-gray-primary);
+
+    &--left {
+      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      transform: rotate(180deg);
+      border-color: var(--color-gray-elements);
+    }
+
+    &--right {
+      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      border-color: var(--color-gray-elements);
+    }
+
+    &--active {
+      color: var(--color-gray-white);
+      background-color: var(--color-gray-primary);
+    }
+  }
+}
+
+.pag__btn--left.is-active,
+.pag__btn--right.is-active {
+  background-image: url(../../assets/icons/arrow-right--default.svg);
+  border-color: var(--color-gray-secondary);
+}
+
+.theme-dark {
+  .pag__btn--left {
+    background-image: url(../../assets/icons/arrow-right-dark--disabled.svg);
+  }
+
+  .pag__btn--left.is-active,
+  .pag__btn--right.is-active {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
+  }
+}

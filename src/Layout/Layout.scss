@@ -1,0 +1,53 @@
+@import '/src/utils/fonts/fonts';
+@import '/src/utils/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, arial, sans-serif;
+  font-weight: 400;
+  background-color: var(--color-gray-background);
+}
+
+p, ul, h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $maxWidthContainer + px;
+
+  @include adaptiv-value(padding-inline, 16, 32, 1);
+ }
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex: 1 0 auto;
+
+    @include adaptiv-value(padding-top, 72, 88, 1);
+  }
+
+  &__footer {
+    width: 100%;
+    background-color: var(--color-gray-white);
+    box-shadow: -1px -1px 0 0 var(--color-gray-elements);
+
+    @include adaptiv-value(margin-top, 64, 80, 1);
+  }
+}
+
+.theme-dark {
+  .layout__footer {
+    box-shadow: -1px -1px 0 0 var(--color-gray-icons-placeholders);
+  }
+}
