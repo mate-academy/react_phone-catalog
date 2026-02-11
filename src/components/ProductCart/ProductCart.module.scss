@@ -1,0 +1,236 @@
+/* stylelint-disable no-descending-specificity */
+
+.linkReset {
+  color: $white-color-text;
+  text-decoration: none;
+}
+
+.product {
+  box-sizing: border-box;
+  width: 100%;
+  height: 439px;
+  margin: auto;
+  padding: 32px;
+  border: 1px solid $element-color;
+  border-radius: 12px;
+
+  background-color: $background-light-color;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  &__img {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 148px;
+    height: 130px;
+    margin: 0 auto 16px;
+
+    background: $background-light-color;
+
+    @include on-tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include hover(transform, scale(1.08));
+  }
+
+  &__photo {
+    overflow: hidden;
+
+    width: 100%;
+    height: 108px;
+    margin: 0;
+
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 181px;
+    }
+  }
+
+  &__title {
+    margin: 24px 0 8px;
+    font-size: 14px;
+    font-weight: 10;
+    text-align: center;
+  }
+
+  &__priceBlock {
+    display: flex;
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $grey-color-icons;
+  }
+
+  &__price {
+    margin: 0;
+    padding-right: 8px;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    text-align: left;
+  }
+
+  &__fullPrice {
+    margin: 0;
+    font-size: 22px;
+    color: $grey-color-text;
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    display: flex;
+    grid-template-columns: 80px 1fr;
+    flex-direction: column;
+    gap: 8px;
+
+    margin: 16px 0 8px;
+
+    font-size: 12px;
+
+    &__dt {
+      float: left;
+
+      width: 35px;
+      margin: 0;
+
+      font-family: Mont-SemiBold, sans-serif;
+      color: $grey-color-text;
+    }
+
+    &__dd {
+      float: right;
+      font-family: Mont-Regular, sans-serif;
+      color: $white-color-text;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    flex: 1;
+
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+
+    font-family: Mont-Regular, sans-serif;
+    color: $white-color-text;
+
+    background-color: $button-color;
+
+
+    &:hover {
+      background-color: $hover-button-color;
+    }
+
+    &:disabled,
+    &--inCart {
+      cursor: not-allowed;
+      background-color: $dark-grey;
+
+      &:hover {
+        background-color: $dark-grey;
+      }
+    }
+  }
+
+  &__like__button {
+    cursor: pointer;
+
+    display: inline-grid;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+
+    background-color: $dark-grey;
+
+    &:hover {
+      background-color: $grey-color-icons;
+    }
+  }
+
+  &__butImg {
+    pointer-events: none;
+
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background: url('../img/heartIcons.svg') center / contain no-repeat;
+  }
+
+  &__like__button[aria-pressed='true'] &__butImg {
+    background-image: url('../img/icons/heartIconsActive.svg');
+  }
+
+  &__like__button[aria-pressed='true'] {
+    border: 1px solid $element-color;
+    background-color: $background-light-color;
+  }
+}
+
+.product--light {
+  border-color: $element-color;
+  background-color: $white-color-text;
+
+  .product {
+    &__img {
+      background: $white-color-text;
+    }
+
+    &__title,
+    &__specs__dd {
+      color: $background-light-color;
+    }
+
+    &__specs__dt {
+      color: $grey-color-text;
+    }
+
+    &__price {
+      color: $background-color;
+    }
+
+    &__button {
+      &:hover {
+        background-color: #4219D0;
+      }
+    }
+
+    &__like__button {
+      border: 1px solid $grey-color-icons;
+      background-color: $white-color-text;
+
+      &:hover {
+        border: 1.6px solid $background-color;
+      }
+    }
+
+    &__butImg {
+      background: url('../img/icons/favouritesLig.svg') center / contain no-repeat;
+    }
+
+    &__like__button[aria-pressed='true'] &__butImg {
+      background-image: url('../img/icons/heartIconsActive.svg');
+    }
+  }
+}

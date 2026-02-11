@@ -1,0 +1,83 @@
+.models {
+  &__breadcrumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 24px 0;
+
+    &__lastPage {
+      margin: 0;
+      color: $white-color-text;
+      text-decoration: none;
+    }
+
+    &__currentPage {
+      margin: 0;
+      color: $grey-color-text;
+    }
+  }
+
+  &__backbutton {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 24px 0 16px;
+
+    &__back {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+
+      color: $white-color-text;
+      text-decoration: none;
+
+      &:hover {
+        color: $hover-button-color;
+      }
+    }
+
+    &__button {
+      margin: 0;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      background: url('../img/icons/ArrowLeft.svg') center / contain no-repeat;
+      transition: background-image .2s;
+    }
+  }
+
+  :link,
+  :visited {
+    text-decoration: none;
+  }
+}
+
+.models--light {
+  .models {
+    &__breadcrumb__lastPage {
+      color: $background-color;
+    }
+
+    &__backbutton {
+      &__back {
+        color: $background-color;
+
+        &:hover {
+          color: $hover-button-color;
+        }
+      }
+
+      &__icon {
+        background: url('../img/icons/ArrowLLig.svg') center / contain no-repeat;
+      }
+    }
+  }
+}
+
+.models__backbutton__back:hover .models__backbutton__icon {
+  background-image: url('../img/icons/ArrowLeftHover.svg');
+}

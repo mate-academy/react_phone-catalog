@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: Mont-SemiBold, sans-serif;
+}
+
+.app {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  min-height: 100dvh;
+
+  color: $white-color-text;
+  background-color: $background-color;
+
+  transition: background-color 500ms ease, color 500ms ease;
+
+  &__section {
+    min-width: 0;
+  }
+
+  &__icon {
+    cursor: pointer;
+
+    width: 16px;
+    height: 16px;
+    margin: 16px;
+    border: none;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--burger {
+      background-image: url('../img/Menu.svg');
+    }
+
+    &--close {
+      background-image: url('../img/Close.svg');
+    }
+  }
+
+  &__notFound {
+    text-align: center;
+
+    &__title {
+      margin: 30px 0;
+      font-family: Mont-Regular, sans-serif;
+      font-size: 20px;
+    }
+
+    &__img {
+      width: 280px;
+      height: 280px;
+      object-fit: contain;
+
+      @include on-tablet {
+        width: 350px;
+        height: 350px;
+      }
+
+      @include on-desktop {
+        width: 400px;
+        height: 400px;
+      }
+    }
+  }
+}
+
+.app--light {
+  color: $background-color;
+  background-color: $white-color-text;
+}

@@ -1,0 +1,178 @@
+.footer {
+  position: relative;
+  width: 100%;
+  font-family: Mont-Regular, sans-serif;
+  transition: background-color 400ms ease, color 400ms ease;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    display: block;
+
+    height: 1px;
+    width: 100%;
+    margin: auto;
+
+    background-color: $dark-grey;
+  }
+
+  &__inner {
+    @include content-padding-in-line;
+
+    transition: background-color 500ms ease;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 96px;
+    }
+
+    @include on-desktop {
+      max-width: 1500px;
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    height: 32px;
+    margin: 32px 0;
+
+    @include on-tablet {
+      justify-self: start;
+    }
+  }
+
+  &__logoImg {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 192px;
+      margin: 0;
+    }
+
+    @include on-desktop {
+      justify-content: space-between;
+      width: 378px;
+    }
+  }
+
+  &__link {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    color: $white-color-text;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $button-color;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    width: fit-content;
+    margin: 32px auto;
+
+    @include on-tablet {
+      justify-self: end;
+      margin: 0;
+    }
+  }
+
+  &__buttonLabel {
+    cursor: pointer;
+
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    color: $grey-color-text;
+
+    &:hover {
+      color: $button-color;
+    }
+  }
+
+  &__up {
+    cursor: pointer;
+
+    display: inline-grid;
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    border: 1px solid $dark-grey;
+    border-radius: 8px;
+
+    background: $dark-grey;
+  }
+
+  &__butImg {
+    pointer-events: none;
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+}
+
+
+.footer--light {
+  .footer {
+    &__inner {
+      background-color: $white-color-text;
+    }
+
+    &__link {
+      color: $dark-grey;
+
+      &:hover {
+        color: $background-color;
+      }
+    }
+
+    &__buttonLabel {
+      &:hover {
+        color: $background-light-color;
+      }
+    }
+
+    &__up {
+      border: 1px solid $dark-grey;
+      background: $white-color-text;
+
+      &:hover {
+        border: 1.6px solid $background-light-color;
+      }
+    }
+  }
+}

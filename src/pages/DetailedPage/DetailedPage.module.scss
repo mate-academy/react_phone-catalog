@@ -1,0 +1,112 @@
+.detailPage {
+  @include content-padding-in-line;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  color: $white-color-text;
+}
+
+.goods {
+  @include content-padding-in-line;
+
+  font-family: Mont-Regular, sans-serif;
+  color: $white-color-text;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__products {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 56px;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    margin-top: 56px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+
+    overflow-wrap: break-word;
+    white-space: normal;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $grey-color-icons;
+    border-radius: 50px;
+
+    color: $white-color-text;
+    text-align: center;
+
+    background: $grey-color-icons;
+
+    &:disabled {
+      cursor: not-allowed;
+
+      border: 1px solid $grey-color-icons;
+
+      color: $grey-color-icons;
+
+      opacity: 0.8;
+      background: $background-color;
+    }
+
+    &--left, &--right {
+      font-size: 16px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    &--light {
+      .goods__button {
+        border: 1px solid $grey-color-text;
+        color: $background-color;
+        background: $white-color-text;
+
+        &:hover {
+          border: 1.6px solid $background-color;
+        }
+
+        &:disabled {
+          background: $grey-color-text;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
+  }
+}
