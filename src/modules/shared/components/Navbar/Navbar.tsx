@@ -1,0 +1,176 @@
+import { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+// eslint-disable-next-line import/extensions
+import { useTheme } from '@/context/ThemeContext';
+// eslint-disable-next-line import/extensions
+import { useCart } from '@/modules/CartFavContext/CartContext';
+import { links } from '../../../shared/components/utils/constants/constants';
+import Menu from '../Menu/Menu';
+import ThemeToggle from './ThemeIcon';
+import styles from './Navbar.module.scss';
+import LogoDark from '/img/LogoDark.svg';
+import LogoLight from '/img/LogoLight.svg';
+const NAV_ICONS = {
+  /* eslint-disable max-len */
+  heart:
+    'M9.296 0.332589C9.82592 0.113015 10.3939 0 10.9675 0C11.5411 0 12.1091 0.113015 12.6391 0.332589C13.169 0.552163 13.6504 0.873992 14.056 1.27969C14.4615 1.68515 14.7833 2.16654 15.0028 2.69636C15.2224 3.22628 15.3354 3.79427 15.3354 4.36788C15.3354 4.9415 15.2224 5.50949 15.0028 6.03941C14.7833 6.56928 14.4615 7.05071 14.0558 7.45619C14.0558 7.45623 14.0559 7.45615 14.0558 7.45619L8.1625 13.3495C7.88913 13.6229 7.44592 13.6229 7.17255 13.3495L1.27922 7.45619C0.460149 6.63712 0 5.52622 0 4.36788C0 3.20954 0.460149 2.09865 1.27922 1.27958C2.09829 0.460505 3.20919 0.000356495 4.36753 0.000356495C5.52587 0.000356495 6.63676 0.460505 7.45583 1.27958L7.66753 1.49127L7.8791 1.27969C7.87906 1.27973 7.87914 1.27965 7.8791 1.27969C8.28459 0.874047 8.76613 0.552142 9.296 0.332589ZM13.0658 2.26941C12.7903 1.99378 12.4632 1.77513 12.1031 1.62596C11.7431 1.47678 11.3572 1.4 10.9675 1.4C10.5778 1.4 10.1919 1.47678 9.83191 1.62596C9.47189 1.77513 9.14478 1.99378 8.86928 2.26941L8.1625 2.97619C7.88913 3.24956 7.44592 3.24956 7.17255 2.97619L6.46589 2.26953C5.90937 1.71301 5.15456 1.40036 4.36753 1.40036C3.58049 1.40036 2.82569 1.71301 2.26917 2.26953C1.71265 2.82604 1.4 3.58085 1.4 4.36788C1.4 5.15492 1.71265 5.90972 2.26917 6.46624L7.66753 11.8646L13.0659 6.46624C13.3415 6.19074 13.5603 5.86352 13.7095 5.5035C13.8586 5.14347 13.9354 4.75759 13.9354 4.36788C13.9354 3.97818 13.8586 3.59229 13.7095 3.23227C13.5603 2.87224 13.3414 2.54491 13.0658 2.26941Z',
+  cart: [
+    'M2.13333 0.266667C2.25924 0.0987961 2.45683 0 2.66667 0H10.6667C10.8765 0 11.0741 0.0987961 11.2 0.266667L13.2 2.93333C13.2865 3.04873 13.3333 3.18909 13.3333 3.33333V12.6667C13.3333 13.1971 13.1226 13.7058 12.7475 14.0809C12.3725 14.456 11.8638 14.6667 11.3333 14.6667H2C1.46957 14.6667 0.960859 14.456 0.585786 14.0809C0.210714 13.7058 0 13.1971 0 12.6667V3.33333C0 3.18909 0.0467852 3.04873 0.133333 2.93333L2.13333 0.266667ZM3 1.33333L1.33333 3.55556V12.6667C1.33333 12.8435 1.40357 13.013 1.5286 13.1381C1.65362 13.2631 1.82319 13.3333 2 13.3333H11.3333C11.5101 13.3333 11.6797 13.2631 11.8047 13.1381C11.9298 13.013 12 12.8435 12 12.6667V3.55555L10.3333 1.33333H3Z',
+    'M0 3.33338C0 2.96519 0.298477 2.66672 0.666667 2.66672H12.6667C13.0349 2.66672 13.3333 2.96519 13.3333 3.33338C13.3333 3.70157 13.0349 4.00005 12.6667 4.00005H0.666667C0.298477 4.00005 0 3.70157 0 3.33338Z',
+    'M4.00016 5.33334C4.36835 5.33334 4.66683 5.63182 4.66683 6.00001C4.66683 6.53044 4.87754 7.03915 5.25262 7.41422C5.62769 7.7893 6.1364 8.00001 6.66683 8.00001C7.19726 8.00001 7.70597 7.7893 8.08104 7.41422C8.45612 7.03915 8.66683 6.53044 8.66683 6.00001C8.66683 5.63182 8.96531 5.33334 9.3335 5.33334C9.70169 5.33334 10.0002 5.63182 10.0002 6.00001C10.0002 6.88407 9.64897 7.73191 9.02385 8.35703C8.39873 8.98215 7.55088 9.33334 6.66683 9.33334C5.78277 9.33334 4.93493 8.98215 4.30981 8.35703C3.68469 7.73191 3.3335 6.88407 3.3335 6.00001C3.3335 5.63182 3.63197 5.33334 4.00016 5.33334Z',
+  ],
+  burger: [
+    'M1 4.5C1 4.08579 1.39175 3.75 1.875 3.75H14.125C14.6082 3.75 15 4.08579 15 4.5C15 4.91421 14.6082 5.25 14.125 5.25H1.875C1.39175 5.25 1 4.91421 1 4.5Z',
+    'M1 8C1 7.58579 1.39175 7.25 1.875 7.25H14.125C14.6082 7.25 15 7.58579 15 8C15 8.41421 14.6082 8.75 14.125 8.75H1.875C1.39175 8.75 1 8.41421 1 8Z',
+    'M1.875 10.75C1.39175 10.75 1 11.0858 1 11.5C1 11.9142 1.39175 12.25 1.875 12.25H14.125C14.6082 12.25 15 11.9142 15 11.5C15 11.0858 14.6082 10.75 14.125 10.75H1.875Z',
+  ],
+  /* eslint-enable max-len */
+};
+export const Navbar = () => {
+  const { totalCount, totalFavoritesCount } = useCart();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { theme } = useTheme();
+  const handleMenuClick = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Блокуємо скрол
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Відновлюємо скрол (повертаємо дефолтне значення)
+      document.body.style.overflow = '';
+    }
+
+    // Функція очищення (cleanup), якщо компонент Navbar видалиться
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  return (
+    <>
+      <header className={styles.header}>
+        <nav className={styles.navbar}>
+          <Link
+            to="/"
+            className={styles.navbar__logo}
+            onClick={() => window.scrollTo({ top: 0 })}
+          >
+            <img
+              src={theme === 'dark' ? LogoDark : LogoLight}
+              alt="MyShop Logo"
+            />
+          </Link>
+          <ul className={styles.navbar__list}>
+            {links.map(({ path, label }) => (
+              <li key={path} className={styles.navbar__item}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navbar__link} ${styles['navbar__link--active']}`
+                      : styles.navbar__link
+                  }
+                  onClick={() => window.scrollTo({ top: 0 })}
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.navbar__icons}>
+            <ThemeToggle />
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.navbar__icon} ${styles['navbar__icon--active']}`
+                  : styles.navbar__icon
+              }
+            >
+              <div className={styles['navbar__iconImage--container']}>
+                <svg
+                  className={styles.navbar__iconImage}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="14"
+                  viewBox="0 0 16 14"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d={NAV_ICONS.heart}
+                    fill="currentColor"
+                  />
+                </svg>
+
+                {totalFavoritesCount > 0 && (
+                  <div className={styles.navbar__iconCount}>
+                    {totalFavoritesCount}
+                  </div>
+                )}
+              </div>
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.navbar__icon} ${styles['navbar__icon--active']}`
+                  : styles.navbar__icon
+              }
+            >
+              <div className={styles['navbar__iconImage--container']}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="15"
+                  viewBox="0 0 14 15"
+                  fill="none"
+                  className={styles.navbar__iconImage}
+                >
+                  {NAV_ICONS.cart.map((d, index) => (
+                    <path
+                      key={index}
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d={d}
+                      fill="currentColor"
+                    />
+                  ))}
+                </svg>
+
+                {totalCount > 0 && (
+                  <div className={styles.navbar__iconCount}>{totalCount}</div>
+                )}
+              </div>
+            </NavLink>
+          </div>
+          <div className={styles.navbar__burgerMenu} onClick={handleMenuClick}>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {NAV_ICONS.burger.map((d, index) => (
+                <path key={index} d={d} fill="currentColor" />
+              ))}
+            </svg>
+          </div>
+        </nav>
+      </header>
+      <Menu onClose={handleMenuClose} isMenuOpen={isMenuOpen} />
+    </>
+  );
+};
+
+// export default Navbar;

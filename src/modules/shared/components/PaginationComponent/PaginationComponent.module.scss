@@ -1,0 +1,95 @@
+@import '@/styles/variables'; // Assuming you have this for $color-text-white
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  column-gap: 16px;
+
+  // -- Shared Styles --
+
+  %base-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--btn-border);
+    background-color: var(--btn-bg);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--text-main);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        border-color: var(--btn-border);
+      }
+    }
+  }
+
+  // -- Elements --
+
+  &__navBtn {
+    @extend %base-button;
+  }
+
+  &__list {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__page {
+    @extend %base-button;
+    border-color: var(--color-disabled);
+    background-color: var(--bg-main);
+
+    &.active {
+      background-color: var(--text-main);
+      color: $color-text-white;
+      border-color: transparent;
+    }
+  }
+
+  &__dots {
+    @extend %base-button;
+    border-color: var(--color-disabled);
+    background-color: var(--bg-main);
+
+    &:hover {
+      border-color: var(--btn-hover-color);
+    }
+  }
+
+  &[data-theme='dark'] {
+    .pagination__navBtn {
+      &:hover {
+        background-color: var(--btn-hover-color);
+        border-color: transparent;
+      }
+    }
+
+    .pagination__page,
+    .pagination__dots {
+      border-color: var(--card-border);
+      background-color: var(--card-bg);
+
+      &:hover {
+        background-color: var(--btn-bg);
+        border-color: transparent;
+      }
+
+      &.active {
+        background-color: var(--btn-main);
+        &:hover {
+          background-color: var(--btn-main-hover);
+        }
+      }
+    }
+  }
+}

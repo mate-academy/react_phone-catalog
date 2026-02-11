@@ -1,0 +1,298 @@
+// Define Breakpoints (You can move these to a variables file)
+$tablet: 768px;
+$desktop: 1024px;
+@use '@/styles/mixins.scss' as *;
+
+.cartPage {
+  &__container {
+    position: relative;
+
+    &--loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+  }
+
+  &__loaderWrapper {
+    width: 100%;
+    min-height: calc(100vh - 168px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column; // Stack vertically by default (Mobile First)
+    gap: 16px;
+
+    @include desktop {
+      flex-direction: row; // Switch to side-by-side on Tablet
+      align-items: flex-start;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: $h2-size;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
+  &__checkoutBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid var(--color-elements);
+
+    // Mobile: Full width
+    width: 100%;
+
+    // Desktop: Fixed width or percentage
+    @media (min-width: $desktop) {
+    }
+    @include desktop {
+      flex: 0 0 320px; // Don't grow, don't shrink, fixed 320px
+      position: sticky; // Optional: Makes checkout stick while scrolling
+      top: 80px;
+    }
+
+    &PriceWrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 0px;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-elements);
+    }
+
+    &Price {
+      font-size: $h3-size;
+      font-weight: 800;
+      line-height: $h3-line;
+    }
+
+    &Amount {
+      font-size: $body-size;
+      font-weight: 500;
+      line-height: $body-line;
+      color: var(--text-secondary);
+    }
+
+    &Button {
+      width: 100%;
+      height: 48px;
+      background-color: var(--text-main);
+      color: white;
+      font-size: $button-size;
+      font-weight: 700;
+      line-height: $button-line;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+    }
+  }
+}
+
+.cartItemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%; // Ensure list takes full width
+}
+
+$tablet: 768px;
+
+.cartItem {
+  // === MOBILE LAYOUT (Based on Screenshot) ===
+  display: grid;
+  // Columns: [CloseBtn ~24px] [Image 80px] [Name takes rest]
+  grid-template-columns: 24px 80px 1fr;
+
+  // Rows: [Top part] [Bottom part]
+  grid-template-rows: auto auto;
+
+  // Map the HTML elements to the grid locations
+  grid-template-areas: 'del img name' // Top row
+    'qty qty price'; // Bottom row (Qty spans across del and img columns)
+
+  gap: 16px; // Gap between elements
+  padding: 16px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  align-items: center;
+
+  // === DESKTOP LAYOUT (Reset to Flexbox) ===
+  @media (min-width: 640px) {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-template-areas: none;
+    gap: 24px;
+    padding: 24px;
+    align-items: center;
+  }
+
+  // 1. Remove Button (Top Left)
+  &__removeButton {
+    grid-area: del; // Assign to 'del' area
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; // Center the X icon
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--btn-border);
+    &:hover {
+      color: var(--text-main);
+    }
+
+    @media (min-width: $tablet) {
+      width: 16px; // Smaller on desktop per your original design
+      order: 1; // 1st item on desktop
+    }
+
+    svg {
+      display: block; // Removes extra line-height space
+    }
+  }
+
+  // 2. Image (Top Center)
+  &__imageWrapper {
+    grid-area: img; // Assign to 'img' area
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: $tablet) {
+      order: 2; // 2nd item on desktop
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // 3. Name (Top Right)
+  &__nameWrapper {
+    grid-area: name; // Assign to 'name' area
+    align-self: flex-start; // Align text to the top of the cell
+
+    @media (min-width: $tablet) {
+      flex-grow: 1; // Take available space
+      order: 3;
+      display: flex;
+      align-self: center;
+    }
+  }
+
+  &__name {
+    font-size: $body-size;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-main);
+  }
+
+  // 4. Quantity Block (Bottom Left)
+  &__quantityBlock {
+    grid-area: qty; // Assign to 'qty' area
+    // 'qty' spans the first two columns ("qty qty"), so it sits under X and Image
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; // Align to the left
+    gap: 0; // Use internal margins or keep buttons touching
+    width: 96px; // Fixed width for the controls
+    margin-top: 8px; // Add space between image and buttons
+
+    @media (min-width: $tablet) {
+      order: 4;
+      margin-top: 0;
+    }
+  }
+
+  &__quantityButton {
+    // Layout
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s;
+
+    // Color Styles (Reused)
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text-main);
+
+    &:hover {
+      border-color: var(--btn-hover-color);
+    }
+
+    &:disabled {
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-main);
+      color: var(--color-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &--dark {
+      &:hover {
+        background-color: var(--btn-hover-color);
+        border-color: transparent;
+      }
+    }
+  }
+
+  &__quantity {
+    width: 32px; // Match button width for symmetry
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  // 5. Price (Bottom Right)
+  &__positionPriceWrapper {
+    display: flex;
+    justify-content: flex-end;
+    grid-area: price; // Assign to 'price' area
+    justify-self: end; // Push to the far right
+    align-self: flex-end; // Align to the bottom
+
+    @include tablet {
+      order: 5;
+      width: 80px; // Fixed width on desktop
+      align-self: center;
+    }
+  }
+
+  &__positionPrice {
+    font-size: 20px; // Make it bigger like the screenshot
+    font-weight: 700;
+    color: var(--text-main);
+  }
+}

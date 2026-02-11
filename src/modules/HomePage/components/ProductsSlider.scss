@@ -1,0 +1,105 @@
+@use '@/styles/mixins' as *;
+
+$text-primary: #313237;
+$text-secondary: #89939a;
+$accent-color: #313237;
+$border-color: #e2e6e9;
+$bg-hover: #fafbfc;
+
+.productsSlider {
+  &__button {
+    display: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    user-select: none;
+    color: var(--text-main);
+    @include desktop {
+      display: flex;
+    }
+    &:hover {
+      border-color: var(--btn-hover-color);
+    }
+    &--dark {
+      &:hover {
+        background-color: var(--btn-hover-color);
+      }
+    }
+
+    &--disabled {
+      border: 1px solid var(--border-color);
+      cursor: not-allowed;
+      pointer-events: none;
+      background-color: var(--bg-main);
+      color: var(--color-disabled);
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+
+    .nav-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $border-color;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: $text-primary;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px; /* Для скроллбара, якщо він видимий */
+    padding: 13px;
+    margin: -13px;
+
+    /* Приховуємо скроллбар для чистоти */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Стилі картки */
+
+/* Адаптивність */
+@media (max-width: 640px) {
+  .product-card {
+    flex: 0 0 212px; /* Вужчі картки на мобільному */
+  }
+}

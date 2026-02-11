@@ -1,0 +1,59 @@
+.notFoundPage {
+  margin-top: 25px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: $color-red;
+    margin-bottom: 32px;
+  }
+  &__message {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+  &__suggestion {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  &__homeLink {
+    margin-bottom: 40px;
+    width: 25%;
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: $light-text-main;
+      color: #fff;
+      border: none;
+
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+    }
+  }
+  &__sliderContainer {
+    width: 100%;
+    min-height: 592px;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+
+  .skeletonLoader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+  }
+}

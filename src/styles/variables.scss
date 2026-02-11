@@ -1,0 +1,100 @@
+// Sass font “aliases” pointing to the single 'Mont' family with weights
+$font-mont-regular: 'Mont', system-ui, sans-serif;
+$font-mont-semibold: 'Mont', system-ui, sans-serif; // use with font-weight: 600
+$font-mont-bold: 'Mont', system-ui, sans-serif; // use with font-weight: 700
+
+// Typography (desktop/tablet)
+$h1-size: 48px;
+$h1-line: 56px;
+$h1-track: -0.01em;
+$h1-weight: 700;
+$h2-size: 32px;
+$h2-line: 41px;
+$h2-track: -0.01em;
+$h2-weight: 700;
+$h3-size: 22px;
+$h3-line: 31px;
+$h3-track: 0;
+$h3-weight: 700;
+$h4-size: 20px;
+$h4-line: 26px;
+$h4-track: 0;
+$h4-weight: 600;
+$uppercase-size: 12px;
+$uppercase-line: 11px;
+$uppercase-track: 0.04em;
+$uppercase-weight: 700;
+$button-size: 14px;
+$button-line: 21px;
+$button-track: 0;
+$button-weight: 600;
+$body-size: 14px;
+$body-line: 21px;
+$body-track: 0;
+$body-weight: 400;
+$small-size: 12px;
+$small-line: 15px;
+$small-track: 0;
+$small-weight: 600;
+
+// Colors, layout, etc.
+
+$color-text-white: #fff;
+
+// --- LIGHT PALETTE (Твої старі кольори) ---
+$light-text-main: #313237; // light-text-main
+$light-text-secondary: #89939a; // light-text-secondary
+
+$light-border: #e2e6e9; // light-border
+$light-color-disabled: #e2e6e9; // light-disabled
+
+$light-btn-main: #313237; // light-text-main
+$light-btn-border: #b4bdc3; // light-btn-border
+$light-btn-bg: #fff; // light-btn-bg
+$light-btn-main-hover: rgba(23, 32, 49, 0.4);
+
+$light-bg-main: #ffffff; // light-bg-main
+$light-bg-select: #fafbfc; // light-bg-select
+
+// --- DARK PALETTE (Твої нові кольори) ---
+$dark-bg-main: #0f1121; // Black
+$dark-bg-card: #161827; // Surface 1
+$dark-border: #323542;
+
+$dark-btn-main: #905bff;
+$dark-btn-bg: #323542; // Button background
+$dark-btn-hover: #4a4d58; // Icons
+$dark-btn-main-hover: #a378ff;
+
+$dark-text-main: #f1f2f9; // White
+$dark-text-secondary: #75767f; // Secondary
+$dark-color-disabled: #3b3e4a; // Disabled elements
+$dark-accent: #e8e9ee; // Accent
+
+// --- SHARED (Спільні кольори) ---
+$color-green: #27ae60;
+$color-red: #eb5757;
+
+// --- TECHNICAL ---
+$container-width: 1136px;
+$loading-grey: #ededed;
+//spacing
+
+$spacing-sm: 8px;
+$spacing-md: 40px;
+$spacing-lg: 56px;
+
+// Handy mixin
+@mixin type($size, $line, $track, $weight, $family: $font-mont-regular) {
+  font-family: $family;
+  font-size: $size;
+  line-height: $line;
+  letter-spacing: $track;
+  font-weight: $weight;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
+}

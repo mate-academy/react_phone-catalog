@@ -1,0 +1,68 @@
+.favoritesPage {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 80px;
+  }
+
+  &__containerLoading {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+  }
+}
+.favorites {
+  &__container {
+    display: grid;
+    /* Це ключовий рядок для адаптиву */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    column-gap: 16px; /* Відступи між картками */
+    row-gap: 40px;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  &__empty {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 16px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+  &__imageWrapper {
+    max-width: 240px;
+    max-height: 240px;
+  }
+  &__button {
+    padding: 10px 20px;
+    background: $light-text-main;
+    color: $color-text-white;
+    border: none;
+    cursor: pointer;
+    font-size: $button-size;
+    height: 40px;
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    }
+  }
+}
+
+.loaderWrapper {
+  width: 100%;
+  min-height: calc(100vh - 168px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

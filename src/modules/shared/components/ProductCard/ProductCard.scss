@@ -1,0 +1,122 @@
+@use '@/styles/mixins.scss' as *;
+
+.product-card {
+  flex: 0 0 272px;
+  border: 1px solid var(--card-border);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  transition: box-shadow 0.3s;
+
+  @include desktop {
+    &:hover {
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    }
+    &:hover &__image-wrapper {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+      z-index: 9;
+    }
+  }
+
+  &__image-wrapper {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+
+    margin: 0 0 8px;
+    line-height: 21px;
+    height: 42px; /* Обмеження на 2 рядки */
+    overflow: hidden;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--color-elements);
+    padding-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    .spec-label {
+      color: var(--text-secondary);
+    }
+    .spec-value {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto; /* Притискає кнопки до низу */
+
+    .btn-add {
+      flex: 1;
+      height: 40px;
+      background: $light-text-main;
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+      @include desktop {
+        &:hover {
+          box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+        }
+      }
+
+      &--added {
+        color: $color-green;
+        background-color: #fff;
+        border: 1px solid $light-border;
+
+        &:hover {
+          box-shadow: none;
+          cursor: default;
+        }
+      }
+    }
+
+  
+  }
+}

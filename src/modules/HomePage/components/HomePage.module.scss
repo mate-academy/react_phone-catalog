@@ -1,0 +1,87 @@
+@use '@/styles/mixins' as *;
+
+// .PageTitle {
+//   margin-bottom: 56px;
+// }
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.categorySection {
+  width: 100%;
+  // Додаємо відступи з боків, щоб на мобільному контент не прилипав до країв
+  // padding: 0 16px;
+
+  @media tablet {
+    padding: 0; // На десктопі зазвичай відступи контролює загальний контейнер
+  }
+}
+.categoryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  flex: 1;
+}
+// .categoryImage {
+//   max-width: 368px;
+//   max-height: 368px;
+//   &:hover {
+//     transform: scale(1.05);
+//     transition: transform 0.3s ease-in-out;
+//     z-index: 10;
+//   }
+// }
+
+.categoryImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+
+  @include desktop {
+    max-width: 368px;
+    max-height: 368px;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+      z-index: 10;
+    }
+  }
+}
+.categoryInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.categoryTitle {
+  margin-bottom: 24px;
+}
+
+.categoryName {
+  @include type($h4-size, $h4-line, $h4-track, $h4-weight);
+}
+.categoryCount {
+  @include type($body-size, $body-line, $body-track, $body-weight);
+  color: var(--text-secondary);
+}

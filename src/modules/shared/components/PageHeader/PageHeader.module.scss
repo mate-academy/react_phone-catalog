@@ -1,0 +1,96 @@
+@use '@/styles/mixins' as *;
+
+.pageTitle {
+  // margin: 56px 0;
+  font-size: 22px;
+  @include tablet {
+    font-size: 32px;
+  }
+
+  &.pageTitleWithBreadcrumbs {
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+}
+.headerWrapper {
+  // Контейнер для хедера
+  // margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerWrapper--homePage {
+  margin: 24px 0;
+  @include tablet {
+    margin: 32px 0;
+  }
+}
+
+.headerWrapper--catalogPage {
+  margin-bottom: $spacing-sm;
+  margin-top: 25px;
+}
+
+.headerWrapper--productPage {
+  margin-top: 25px;
+  margin-bottom: $spacing-md;
+}
+.headerWrapper--favPage {
+  margin-top: 25px;
+  margin-bottom: $spacing-sm;
+}
+.headerWrapper--cartPage {
+  margin-top: 40px;
+  margin-bottom: 32px;
+}
+.breadcrumbsWrapper {
+  margin-bottom: $spacing-md;
+}
+.extraContentWrapper {
+  margin-bottom: 16px;
+}
+.breadcrumbsList {
+  display: flex;
+  align-items: center; // Центрує іконки та текст по вертикалі
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+// Іконки
+.icon {
+  display: block; // Прибирає зайві відступи SVG
+  color: var(--text-main);
+}
+
+.chevron {
+  display: block;
+  color: var(--text-secondary);
+  margin: 0 8px; // Відступи навколо стрілочки
+}
+
+// Посилання та текст
+.link {
+  font-size: $small-size;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  display: flex; // Важливо для центрування іконки Home всередині Link
+  align-items: center;
+  padding-top: 1px;
+  transition: color 0.2s ease;
+}
+
+.current {
+  font-size: $small-size;
+  font-weight: 700;
+  padding-top: 1px;
+  color: var(--text-secondary); // Активний елемент зазвичай темніший
+  cursor: default;
+  &:hover {
+    color: var(--text-main);
+  }
+}

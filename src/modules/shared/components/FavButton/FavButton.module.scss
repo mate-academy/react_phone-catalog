@@ -1,0 +1,36 @@
+@import '@/styles/mixins.scss';
+
+.btn-fav {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+
+  @include desktop {
+    &:hover {
+      border-color: var(--btn-hover-color);
+      color: var(--text-main);
+    }
+  }
+  &--added {
+    background-color: transparent;
+    border-color: var(--color-elements);
+
+    svg {
+      fill: var(--status-red);
+      stroke: var(--status-red);
+    }
+  }
+  &--dark {
+    &:hover {
+      background-color: var(--btn-hover-color);
+    }
+  }
+}
