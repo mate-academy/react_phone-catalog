@@ -1,0 +1,55 @@
+@use '@/styles/resources' as *;
+
+.category {
+  display: block;
+  gap: 24px;
+
+  @include flex-column;
+
+  @include hover {
+    .categoryPreview img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.categoryPreview {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius;
+
+  img {
+    position: absolute;
+    top: 20%;
+    height: 100%;
+    left: 30%;
+
+    @include transition(transform);
+  }
+}
+
+.category-phones-preview {
+  background-color: #6d6474;
+}
+
+.category-tablets-preview {
+  background-color: #8d8d92;
+}
+
+.category-accessories-preview {
+  background-color: #973d5f;
+}
+
+.categoryTitle {
+  margin-bottom: 4px;
+  font-size: 20px;
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.categoryCount {
+  color: $secondary-color;
+}

@@ -1,0 +1,26 @@
+@use '@/styles/resources' as *;
+
+.filters {
+  @include page-grid;
+}
+
+.sortFilter {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.perPageFilter {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.dropdown {
+  width: 100%;
+  max-width: inherit !important;
+}

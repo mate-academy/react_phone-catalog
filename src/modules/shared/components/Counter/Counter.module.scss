@@ -1,0 +1,18 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  @include flex-center;
+}
+
+.value {
+  max-width: 32px;
+  text-align: center;
+  color: $primary-color;
+
+  @include body-text;
+  @include transition(color, $color-transition);
+}
+
+.countBtn {
+  border-radius: 50%;
+}

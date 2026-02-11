@@ -1,0 +1,140 @@
+@use '@/styles/resources' as *;
+
+.button {
+  --primary-hover-bg: #f86800;
+  --primary-selected-bg: transparent;
+  --primary-selected-border: #e2e6e9;
+  --primary-selected-color: var(--accent-color);
+  --outline-selected-bg: var(--primary-color);
+  --outline-selected-border: var(--primary-color);
+
+  cursor: pointer;
+  min-height: fit-content;
+
+  @include transition(
+    (border-color, color, background-color),
+    $color-transition
+  );
+  @include flex-center;
+
+  &:disabled {
+    cursor: auto;
+  }
+}
+
+[data-theme='dark'] .button {
+  --primary-hover-bg: #a378ff;
+  --primary-selected-bg: #323542;
+  --primary-selected-border: transparent;
+  --primary-selected-color: #fff;
+  --outline-selected-bg: var(--accent-color);
+  --outline-selected-border: transparent;
+}
+
+.primary {
+  background-color: $accent-color;
+  color: $white-color;
+  min-width: fit-content;
+  min-height: fit-content;
+
+  @include transition((box-shadow, background-color, color), $color-transition);
+
+  @include hover {
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.25);
+    background-color: var(--primary-hover-bg);
+  }
+
+  &.selected {
+    background: var(--primary-selected-bg);
+    outline: 1px solid var(--primary-selected-border);
+    color: var(--primary-selected-color);
+  }
+
+  &:disabled {
+    background-color: $elements-color;
+    box-shadow: none;
+  }
+}
+
+.outline {
+  color: $primary-color;
+  border: 1px solid $elements-color;
+
+  @include body-text;
+
+  @include hover {
+    border-color: $primary-color;
+  }
+
+  &.selected {
+    background-color: var(--outline-selected-bg);
+    border-color: var(--outline-selected-border);
+    color: $white-color;
+  }
+}
+
+.onlyIcon {
+  svg {
+    fill: $primary-color;
+  }
+
+  &.selected {
+    background-color: transparent;
+    border-color: $elements-color;
+    color: $secondary-accent-color;
+
+    svg {
+      fill: $secondary-accent-color;
+    }
+  }
+
+  @include hover {
+    border-color: $primary-color;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+    color: $elements-color;
+
+    svg {
+      fill: $elements-color;
+    }
+  }
+}
+
+.small {
+  height: 32px;
+}
+
+.medium {
+  height: 40px;
+}
+
+.large {
+  height: 48px;
+}
+
+.danger {
+  background-color: $red-color;
+  color: $white-color;
+
+  @include hover {
+    background-color: $secondary-red;
+  }
+}
+
+.text {
+  color: $secondary-color;
+
+  @include small-text;
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.squareBtn {
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}

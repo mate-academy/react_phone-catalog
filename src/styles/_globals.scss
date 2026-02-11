@@ -1,0 +1,51 @@
+@use './mixins' as *;
+
+:root {
+  --header-height: 48px;
+  --page-hor-paddings: 16px;
+  --accent-color: #f86800;
+  --secondary-accent-color: #476df4;
+  --primary-color: #0f0f11;
+  --secondary-color: #89939a;
+  --icons-color: #b4bdc3;
+  --elements-color: #e2e6e9;
+  --main-bg-color: #fff;
+  --secondary-bg-color: #fafbfc;
+  --card-bg-color: #fff;
+  --card-border-color: #e2e6e9;
+  --skeleton-bg: #e2e5e7;
+  --skeleton-shimmer: #f2f4f5;
+}
+
+[data-theme='dark'] {
+  --accent-color: #905bff;
+  --secondary-accent-color: #eb5757;
+  --primary-color: #f1f2f9;
+  --secondary-color: #75767f;
+  --icons-color: #4a4d58;
+  --elements-color: #3b3e4a;
+  --main-bg-color: #0f1121;
+  --secondary-bg-color: #0f1121;
+  --card-bg-color: #161827;
+  --card-border-color: #161827;
+  --skeleton-bg: #222533;
+  --skeleton-shimmer: #2c3042;
+}
+
+@include on-tablet {
+  :root {
+    --page-hor-paddings: 24px;
+  }
+}
+
+@include on-desktop {
+  :root {
+    --header-height: 64px;
+  }
+}
+
+@include on-desktop {
+  :root {
+    --page-hor-paddings: 32px;
+  }
+}

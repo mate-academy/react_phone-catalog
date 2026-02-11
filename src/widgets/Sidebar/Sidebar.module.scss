@@ -1,0 +1,27 @@
+@use '@/styles/resources' as *;
+
+.sidebar {
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $main-bg;
+  transform: translateX(-100%);
+  opacity: 0;
+  padding-top: 24px;
+  z-index: 1000;
+  transition:
+    transform $transition ease-in-out,
+    opacity $color-transition ease-in-out,
+    background-color $color-transition ease-in-out;
+
+  @include on-small-desktop {
+    display: none;
+  }
+}
+
+.sidebarActive {
+  transform: translateX(0);
+  opacity: 1;
+}

@@ -1,0 +1,28 @@
+@use '@/styles/resources' as *;
+
+.search {
+  height: 40px;
+  border: 1px solid $elements-color;
+  border-radius: $radius;
+  padding-inline: 16px;
+  color: $primary-color;
+  width: 100%;
+  background-color: $main-bg;
+
+  @include body-text;
+  @include transition(border-color, $color-transition);
+
+  &::placeholder {
+    color: $icons-color;
+
+    @include small-text;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:focus {
+    border-color: $accent-color;
+  }
+}

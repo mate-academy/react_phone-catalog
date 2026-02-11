@@ -1,0 +1,199 @@
+@use './vars' as *;
+
+// TYPOGRAPHY
+@mixin body-text($size: 14px, $weight: 400) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text($size: 12px, $weight: 400) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin uppercase($size: 12px, $weight: 800) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text($size: 14px, $weight: 600) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin heading-h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin heading-h3 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include on-mobile {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin heading-h4 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+// FLEX
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// UNDERLINE
+@mixin animated-underline(
+  $color: $primary-color,
+  $height: 2px,
+  $height-tablet: 3px
+) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:
+      transform $transition ease-in-out,
+      background-color $color-transition ease-in-out;
+
+    @include on-tablet {
+      height: $height-tablet;
+    }
+  }
+}
+
+@mixin animated-underline-active {
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+// DEVICES SCREENS
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// GRID
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
+  }
+}
+
+// HOVER
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  &:active {
+    @content;
+  }
+}
+
+// TRANSITION
+@mixin transition(
+  $properties: all,
+  $duration: $transition,
+  $easing: ease-in-out
+) {
+  transition-property: $properties;
+  transition-duration: $duration;
+  transition-timing-function: $easing;
+}
+
+@mixin header-square-btn {
+  width: $header-height;
+  aspect-ratio: 1 / 1;
+  display: block;
+  position: relative;
+  border-left: 1px solid $elements-color;
+
+  @include flex-center;
+  @include transition((border-left, color), $color-transition);
+}

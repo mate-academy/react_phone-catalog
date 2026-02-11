@@ -1,0 +1,7 @@
+@use '@/styles/resources' as *;
+
+.list {
+  gap: 16px;
+
+  @include flex-column;
+}

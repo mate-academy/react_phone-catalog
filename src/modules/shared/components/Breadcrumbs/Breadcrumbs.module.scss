@@ -1,0 +1,51 @@
+@use '@/styles/resources' as *;
+
+.breadcrumbsList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbsItem {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: capitalize;
+  min-width: 0;
+  flex-shrink: 0;
+  max-width: fit-content;
+
+  @include transition(color, $color-transition);
+  @include flex-center;
+
+  &:last-child {
+    flex: 1;
+  }
+}
+
+.breadcrumbsLink {
+  color: $primary-color;
+  text-transform: capitalize;
+  white-space: nowrap;
+
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $accent-color;
+  }
+}
+
+.splitter {
+  color: $icons-color;
+  margin-left: 8px;
+
+  @include transition(color, $color-transition);
+}
+
+.breadcrumbsText {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
+}
