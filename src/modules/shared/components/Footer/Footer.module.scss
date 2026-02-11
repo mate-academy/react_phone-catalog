@@ -1,0 +1,51 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
+
+.footer {
+  grid-area: footer;
+  box-shadow: 0 -1px 0 0 $border-color;
+  padding: 3.2rem 1.6rem;
+
+  @include for-tablets {
+    padding: 3.2rem 2.4rem;
+  }
+
+  &__container {
+    @include for-tablets {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    height: 3.2rem;
+    width: 8.9rem;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    margin-top: 3.2rem;
+
+    @include for-tablets {
+      margin-top: 0;
+
+      flex-direction: row;
+      justify-content: center;
+
+    }
+  }
+
+  &__link {
+    font-weight: $font-weight-extra-bold;
+    font-size: 1.2rem;
+    line-height: 1.1rem;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $secondary-color;
+  }
+}

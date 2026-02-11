@@ -1,0 +1,54 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
+
+.about {
+  display: flex;
+  flex-direction: column;
+  margin: 5.6rem 0;
+
+  @include for-tablets {
+    grid-area: about;
+
+    margin: 6.4rem 0;
+  }
+
+  @include for-desktops {
+    margin: 8rem 0;
+  }
+
+  &__mainTitle {
+    font-weight: $font-weight-bold;
+    font-size: 2.0rem;
+    line-height: 100%;
+
+    padding-bottom: 1.6rem;
+    border-bottom: 0.2rem solid rgba(226, 230, 233, 1);
+
+    @include for-tablets {
+      font-size: $font-size-medium;
+      font-weight: $font-weight-extra-bold;
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: 1.6rem;
+    line-height: 100%;
+
+    color: $primary-color;
+
+    margin: 3.2rem 0 1.6rem;
+
+    @include for-tablets {
+      font-size: 2.0rem;
+    }
+  }
+
+  &__text {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+
+    color: $secondary-color;
+  }
+}

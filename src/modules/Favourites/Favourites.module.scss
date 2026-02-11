@@ -1,0 +1,66 @@
+@use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
+
+.favourites {
+  margin: $margin-horizontal-small;
+
+  @include for-desktops {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $padding-horizontal-large;
+  }
+
+  &__counter {
+    font-family: $font-family-primary;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+
+    color: $secondary-color;
+
+    margin-top: 0.8rem;
+  }
+
+  &__items {
+    margin: 3.2rem 0 5.6rem;
+
+    @include for-tablets {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(22.9rem, 1fr));
+      gap: 1.6rem;
+    }
+
+    @include for-desktops {
+      grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));
+    }
+  }
+
+  h1 {
+    font-family: $font-family-primary;
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-large;
+    line-height: $line-height-large;
+    letter-spacing: -1%;
+
+    padding: 2.4rem 0 0.8rem;
+
+    @include for-tablets {
+      font-size: $font-size-extra-large;
+      line-height: $line-height-extra-large;
+
+      padding: 4.0rem 0 0.8rem;
+    }
+  }
+}
+
+.emptyFav {
+  font-weight: $font-weight-extra-bold;
+  font-size: $font-size-medium;
+  line-height: $line-height-medium;
+
+  color: $primary-color;
+
+  margin-top: 0.8rem;
+}
+
+

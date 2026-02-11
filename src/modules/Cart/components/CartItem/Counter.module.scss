@@ -1,0 +1,38 @@
+.counter {
+  display: flex;
+
+  &__button {
+    width: 3.2rem;
+    height: 3.2rem;
+
+    font-size: 2.5rem;
+
+    border: 0.1rem solid rgba(180, 189, 195, 1);
+
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    &:disabled {
+      cursor: not-allowed;
+
+      svg {
+        fill: rgba(180, 189, 195, 1);
+      }
+    }
+  }
+
+  &__display {
+    width: 3.2rem;
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
+}

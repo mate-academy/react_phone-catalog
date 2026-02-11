@@ -1,0 +1,37 @@
+.productNotFound {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1.6rem;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__button {
+  height: 4rem;
+
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  letter-spacing: 0%;
+
+  margin-top: 2rem;
+
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(49, 50, 55, 1);
+
+  transition: box-shadow 250ms ease;
+
+  &:hover {
+    box-shadow: 0 0.3rem 1.3rem 0 rgba(23, 32, 49, 0.4);
+
+  }
+ }
+}

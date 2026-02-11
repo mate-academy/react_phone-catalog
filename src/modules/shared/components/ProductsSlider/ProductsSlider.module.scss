@@ -1,0 +1,70 @@
+@use './../../../shared/styles/constants' as *;
+@use '../../styles/mixins' as *;
+
+.slider {
+  margin: 5.6rem 0;
+
+  @include for-tablets {
+    margin: 6.4rem 0;
+
+    grid-area: slider;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+
+    &_buttons {
+      width: 8rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      > :first-child {
+        margin-right: 1.6rem;
+      }
+    }
+  }
+
+  &__productCard {
+    margin-top: 2.4rem;
+
+    display: flex;
+    gap: $mobile-product-card-gap;
+
+    transition: transform 0.3s ease;
+    will-change: transform;
+
+    transform: translateX(calc(var(--index) * ($mobile-product-card-gap + $mobile-product-card-width)));
+
+    @include for-tablets {
+      transform: translateX(calc(var(--index) * ($mobile-product-card-gap + $tablet-product-card-width)));
+    }
+
+    @include for-desktops {
+      width: calc($desktop-product-card-width * 4 + $mobile-product-card-gap * 3);
+
+      transform: translateX(calc(var(--index) * ($mobile-product-card-gap + $desktop-product-card-width)));
+    }
+
+    &__container {
+      width: $mobile-product-card-width;
+
+      flex-shrink: 0;
+
+      @include for-tablets {
+        width: $tablet-product-card-width;
+      }
+
+      @include for-desktops {
+        width: $desktop-product-card-width;
+      }
+    }
+
+    &__skeleton {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

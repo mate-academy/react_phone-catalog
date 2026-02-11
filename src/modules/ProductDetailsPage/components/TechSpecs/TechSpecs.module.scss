@@ -1,0 +1,40 @@
+@use '../../../shared/styles/mixins' as *;
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+
+  margin-top: 3.2rem;
+
+  gap: 0.8rem;
+
+  @include for-tablets {
+    grid-area: techs;
+  }
+
+  @include for-desktops {
+    align-self: flex-start;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 100%;
+  }
+
+  &__type {
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__value {
+    color: rgba(49, 50, 55, 1);
+  }
+}

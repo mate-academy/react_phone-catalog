@@ -1,0 +1,78 @@
+@use '../../../../../shared/styles/mixins' as *;
+@use '../../../../../shared/styles/constants' as *;
+
+.colorSelection {
+  @include for-desktops {
+    grid-area: color;
+  }
+
+  &__spanWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    font-weight: $font-weight-medium;
+    font-size: 1.2rem;
+    line-height: 100%;
+
+    color: $secondary-color;
+  }
+
+  &__id {
+    font-weight: $font-weight-bold;
+    font-size: 1.2rem;
+    line-height: 100%;
+    text-align: right;
+
+    color: $tertiary-color;
+  }
+
+  &__colorOptions {
+    display: flex;
+    gap: 0.9rem;
+    padding-top: 0.8rem;
+  }
+
+  &__colorOption {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__colorSwatch {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+
+    box-sizing: border-box;
+
+    border: 0.2rem solid $white;
+    box-shadow: 0 0 0 0.1rem #EBEBEB;
+    border-radius: 50%;
+
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &__colorOption:checked + .colorSelection__colorSwatch {
+    box-shadow: 0 0 0 0.1rem $primary-color;
+  }
+
+  &__colorOption:not(:checked) + .colorSelection__colorSwatch:hover {
+    box-shadow: 0 0 0 0.1rem $tertiary-color;
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

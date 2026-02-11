@@ -1,0 +1,6 @@
+@use '../../styles/constants' as *;
+
+.line {
+  width: 100%;
+  border: 0.05rem solid $border-color;
+}

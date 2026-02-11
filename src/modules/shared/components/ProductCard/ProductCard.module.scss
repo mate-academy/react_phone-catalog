@@ -1,0 +1,56 @@
+@use '../../styles/constants' as *;
+
+.productCard {
+  width: 100%;
+  height: 43.9rem;
+
+  padding: $padding-horizontal-large;
+
+  border: $border-primary;
+
+  &__image {
+    width: 14.8rem;
+    height: 12.9rem;
+
+    margin-top: 3.2rem;
+
+    display: block;
+    margin-inline: auto;
+
+    object-fit: contain;
+    object-position: center;
+
+  }
+
+  &__name {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    letter-spacing: 0%;
+    color: $black;
+
+    display: inline-block;
+    align-content: end;
+    height: 5.8rem;
+
+    margin-top: 0.8rem;
+  }
+
+  &__divider {
+    height: 0;
+    border: $border-primary;
+
+    margin-top: 0.8rem;
+  }
+
+  &__buttons {
+    display: flex;
+
+    margin-top: 0.8rem;
+    gap: 0.8rem;
+
+    & > :first-child {
+      flex: 1 1 0;
+    }
+  }
+}
