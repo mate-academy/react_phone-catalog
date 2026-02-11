@@ -1,0 +1,91 @@
+@import '../../../styles/main';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  transition: all $animation;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &_list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColor;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: #fff;
+    transition: all $animation;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $textMainColor;
+    }
+
+    &_arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px;
+      border: 1px solid $borderColorDark;
+      background-color: #fff;
+      transition: all $animation;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+
+      &:not(:disabled):hover {
+        border: 1px solid $textMainColor;
+      }
+    }
+
+    &_iconLeft,
+    &_iconRight {
+      height: 16px;
+      width: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all $animation;
+    }
+
+    &_iconLeft {
+      background-image: url('../../../assets/img/icons/arrow-left-icon.svg');
+    }
+
+    &_iconRight {
+      background-image: url('../../../assets/img/icons/arrow-right-icon.svg');
+    }
+  }
+
+  &_button_arrow:not(:disabled):hover .pagination_button_iconLeft {
+    transform: translateX(-3px);
+  }
+
+  &_button_arrow:not(:disabled):hover .pagination_button_iconRight {
+    transform: translateX(3px);
+  }
+
+  &_active {
+    border-color: $textMainColor;
+    color: #fff;
+    background-color: $textMainColor;
+    transition: all $animation;
+  }
+}
