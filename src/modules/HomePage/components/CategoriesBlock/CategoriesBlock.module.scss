@@ -1,0 +1,52 @@
+@use '../../../../styles/utils' as utils;
+
+.categories {
+  @include utils.page-grid;
+
+  margin-top: 24px;
+  row-gap: 32px;
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include utils.on-tablet {
+      grid-column: span 4;
+    }
+
+    @include utils.on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__img {
+    display: block;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+    }
+  }
+
+  &__details {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__name {
+    font-size: 20px;
+  }
+
+  &__description {
+    color: utils.$color-secondary;
+  }
+}

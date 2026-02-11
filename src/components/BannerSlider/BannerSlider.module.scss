@@ -1,0 +1,65 @@
+@use '../../styles/utils' as utils;
+
+.banner-slider {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+
+  @include utils.on-tablet {
+    @include utils.content-padding-inline;
+  }
+
+  &__block {
+    @include utils.page-grid;
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+
+    @include utils.on-tablet {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__slider-image {
+    display: block !important;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    @include utils.on-tablet {
+      aspect-ratio: 490 / 189;
+    }
+  }
+
+  &__arrow {
+    display: none !important;
+
+
+    @include utils.on-tablet {
+      display: flex !important;
+
+    }
+  }
+
+  &__buttons {
+    margin-top: 8px;
+    height: 24px;
+    gap: 4px;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: utils.$color-elements;
+    width: 24px;
+    height: 24px;
+
+    &--active {
+      color: inherit;
+    }
+  }
+}

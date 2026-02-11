@@ -1,0 +1,68 @@
+@use '../../styles/utils' as utils;
+
+.product-card {
+  box-sizing: border-box;
+  background-color: utils.$color-surface1;
+  padding: 32px;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+
+
+  &:hover {
+    border: 1px solid utils.$color-surface2;
+  }
+
+  &__img {
+    object-fit: contain;
+    aspect-ratio: 208 / 196;
+    width: 100%;
+
+    &__img-container {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    flex: 1;
+  }
+
+  &__price-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price-prev {
+    text-decoration: line-through;
+
+    font-weight: 600;
+    color: utils.$color-secondary;
+  }
+
+  &__line {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: utils.$color-elements;
+    height: 1px;
+    border: none;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding-block: 8px;
+    gap: 8px;
+
+    &-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-name {
+      color: utils.$color-secondary;
+    }
+  }
+}

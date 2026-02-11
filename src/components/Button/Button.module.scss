@@ -1,0 +1,108 @@
+@use '../../styles/utils' as utils;
+
+.button {
+  display: flex;
+  height: 100%;
+  background-color: utils.$color-surface2;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: utils.$color-icons;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &__disabled {
+    border: 1px solid utils.$color-elements;
+    background: none;
+    color: utils.$color-icons;
+    box-sizing: border-box;
+
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.ratio {
+  aspect-ratio: 1 / 1;
+}
+
+.heart {
+  &.selected {
+    color: utils.$color-red;
+  }
+}
+
+.primary {
+  background-color: utils.$color-accent;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+
+  &.selected {
+    background-color: utils.$color-surface2;
+
+    &:hover {
+      background-color: utils.$color-elements;
+    }
+  }
+}
+
+.page {
+  background-color: utils.$color-surface1;
+
+  &:hover {
+    background-color: utils.$color-elements;
+  }
+
+  &--dots {
+    border: none;
+  }
+
+  &.selected {
+    background-color: utils.$color-accent;
+  }
+}
+
+.circle {
+  background-color: currentColor;
+  outline: 1px solid utils.$color-elements;
+  border: 2px solid utils.$color-black;
+  border-radius: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    outline-color: utils.$color-icons;
+    background-color: currentColor;
+  }
+
+  &.selected {
+    outline-color: utils.$color-white;
+  }
+}
+
+.capacity {
+  padding-inline: 8px;
+  background-color: transparent;
+  border: 1px solid utils.$color-icons;
+
+  &:hover {
+    background-color: utils.$color-surface2;
+  }
+
+  &.selected {
+    background-color: utils.$color-white;
+    color: utils.$color-black;
+    border-color: transparent;
+
+    &:hover {
+      background-color: utils.$color-white;
+    }
+  }
+}

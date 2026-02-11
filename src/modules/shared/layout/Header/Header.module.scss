@@ -1,0 +1,22 @@
+@use '../../../../styles/utils.scss' as utils;
+
+.header {
+  // position: fixed;
+  display: flex;
+  width: 100%;
+
+  &__navigation {
+    display: none;
+
+    @include utils.on-tablet {
+      display: flex;
+      width: 100%;
+      align-items: stretch;
+      margin-left: 16px;
+    }
+
+    @include utils.on-desktop {
+      margin-left: 24px;
+    }
+  }
+}
