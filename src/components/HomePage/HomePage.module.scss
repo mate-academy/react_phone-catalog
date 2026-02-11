@@ -1,0 +1,233 @@
+@import '../../Mixins/mixins.scss';
+
+.HomePage {
+  margin: 0;
+  @include page-grid;
+  justify-self: center;
+}
+
+.h1 {
+  margin-top: 56px;
+  padding: 0;
+
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+
+  @include on-desktop {
+    grid-column: 1 / -1;
+  }
+
+  @include on-tablet {
+    margin-top: 32px;
+    grid-column: 1 / -1;
+  }
+
+  @include on-mobile {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.Banner {
+  @include on-desktop {
+    grid-column: 1 / -1;
+  }
+
+  @include on-bigTablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}
+
+.BrandNew {
+  @include on-desktop {
+    grid-column: 1 / -1;
+  }
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+
+  @include on-bigTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.HotPrices {
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+
+  @include on-bigTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  grid-column: 1 / -1;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.category > div {
+  flex: 1;
+  max-width: 100%;
+}
+
+.p {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #75767f;
+}
+
+.mobilePhones {
+  cursor: pointer;
+
+  &__text {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 4px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 45px;
+    left: 40px;
+
+    height: auto;
+    width: auto;
+
+    max-height: 130%;
+    max-width: none;
+
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
+}
+
+.tablets {
+  &__text {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 4px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 45px;
+    left: 40px;
+
+    height: auto;
+    width: auto;
+
+    max-height: 130%;
+    max-width: none;
+
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
+}
+
+.accessories {
+  &__text {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 4px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 45px;
+    left: 40px;
+
+    height: auto;
+    width: auto;
+
+    max-height: 130%;
+    max-width: none;
+
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
+}
+
+.backgroundPhones,
+.backgroundTablets,
+.backgroundAccessories {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  &:hover .mobilePhones__image,
+  &:hover .tablets__image,
+  &:hover .accessories__image {
+    transform: scale(1.08);
+  }
+}
+
+.backgroundPhones {
+  background-color: #6d6474;
+}
+
+.backgroundTablets {
+  background-color: #8d8d92;
+}
+
+.backgroundAccessories {
+  background-color: #d53c51;
+}

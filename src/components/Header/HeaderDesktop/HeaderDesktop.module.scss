@@ -1,0 +1,244 @@
+@import '../../../Mixins/mixins.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #323542;
+  z-index: 1000;
+  width: 100%;
+  background-color: #0f1121;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  @include on-bigTablet {
+    height: 48px;
+  }
+
+  @include on-tablet {
+    height: 48px;
+  }
+}
+
+.logo {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: block;
+  text-indent: -9999px;
+  margin-left: 24px;
+  margin-right: 48px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+
+  @include on-bigTablet {
+    width: 64px;
+    height: 28px;
+  }
+
+  @include on-tablet {
+    width: 64px;
+    height: 28px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+  margin: 0;
+
+  @include on-bigTablet {
+    gap: 32px;
+  }
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 0;
+    text-decoration: none;
+    color: var(--secondary-text);
+    transition: color 0.2s;
+    vertical-align: middle;
+
+    @include on-desktop {
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      padding: 22px 0;
+    }
+
+    @include on-bigTablet {
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      padding: 14px 0;
+    }
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      padding: 14px 0;
+    }
+
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: #aaa;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  span {
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.favorites {
+  background-image: url('/public/icons/Favourites-(Heart-Like\).svg');
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: none;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-size: 16px 16px;
+  border-left: 1px solid #323542;
+  transition: box-shadow 0.3s ease;
+
+  &__active {
+    box-shadow: inset 0 -4px 0 #fff;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-bigTablet {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.cart {
+  background-image: url('/public/icons/Shopping-bag-(Cart).svg');
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-size: 16px 16px;
+  border-left: 1px solid #323542;
+  transition: box-shadow 0.3s ease;
+
+  &__active {
+    box-shadow: inset 0 -4px 0 #fff;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-bigTablet {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.badge {
+  font-weight: 700;
+  font-size: 10px;
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  background-color: #eb5757;
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include on-bigTablet {
+    top: 8px;
+    right: 7px;
+  }
+
+  @include on-tablet {
+    top: 8px;
+    right: 7px;
+  }
+}
+
+.activeLink {
+  position: relative;
+  // padding: 8px 0;
+  color: white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+}
+
+.link {
+  position: relative;
+  padding: 8px 0;
+  text-decoration: none;
+  color: var(--secondary-text);
+  transition: color 0.2s;
+}
