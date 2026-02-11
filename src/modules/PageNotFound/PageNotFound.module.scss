@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+}
+
+.background {
+  @include on-tablet {
+    width: 650px;
+    height: 600px;
+  }
+
+  margin-top: 56px;
+  width: 350px;
+  height: 300px;
+}
+
+.text {
+  color: var(--card-specs-text);
+  margin-bottom: 56px;
+}

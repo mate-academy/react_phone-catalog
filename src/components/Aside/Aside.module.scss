@@ -1,0 +1,86 @@
+%aside-menu {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+  transform: translateX(-100%);
+  transition: all $transition-duration ease-in-out;
+  box-sizing: border-box;
+  pointer-events: none;
+  pointer-events: all;
+  margin-top: 48px;
+  width: 100%;
+  height: calc(100% - 48px);
+}
+
+.asideMenu {
+  @extend %aside-menu
+}
+
+.asideOpen {
+  @extend %aside-menu;
+
+  backdrop-filter: blur(40px);
+  transform: translateX(0);
+}
+
+.menuWrapper {
+  margin-top: 24px;
+  height: 100%;
+  padding-inline: 16px;
+}
+
+.navList {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+  list-style: none;
+}
+
+.navItem {
+  display: flex;
+  text-align: center;
+}
+
+.navLink {
+  @include underline-effect;
+  @include underline-hover;
+
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--card-specs-text);
+
+  &:hover {
+    color: var(--navbar-text-active);
+  }
+}
+
+.bottomButtons {
+  display: flex;
+  border-top: 1px solid;
+  border-color: var(--border-color);
+  height: 64px;
+  list-style: none;
+}
+
+.bottomItem {
+  @include underline-effect;
+  @include underline-hover;
+
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  display: flex;
+  border-right: 1px solid;
+  border-color: var(--border-color);
+}
+
+.bottomItem:last-child {
+  position: relative;
+  border-right: none;
+}

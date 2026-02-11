@@ -1,0 +1,33 @@
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+  padding-top: 32px;
+  padding-bottom: 56px;
+}
+
+.productSpecs {
+  @include page-grid;
+
+  position: relative;
+}
+
+.productTitile {
+  @include on-tablet {
+    font-size: 32px;
+  }
+
+  margin-top: 16px;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+}

@@ -1,0 +1,102 @@
+.wrapper {
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    @include page-grid;
+
+    margin-bottom: 80px;
+  }
+
+  flex-direction: column;
+  gap: 32px;
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 56px;
+}
+
+.pageTitile {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: var(--text-color);
+}
+
+.itemsWrapper {
+  @include on-desktop {
+    grid-column: 1 / 17;
+  }
+
+  gap: 16px;
+  display: grid;
+}
+
+.total {
+  @include on-desktop {
+    grid-column: 17 / 25;
+    height: 206px;
+  }
+
+  display: grid;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.textBlock {
+  display: grid;
+}
+
+.price {
+  justify-content: center;
+  display: flex;
+}
+
+.countItem {
+  justify-content: center;
+  display: flex;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--card-specs-text);
+}
+
+.textBlock::after {
+  @include on-desktop {
+    margin-block: 25px;
+  }
+
+  content: '';
+  flex: 1;
+  border: 1px solid var(--border-color);
+  margin-block: 16px;
+  height: 0;
+}
+
+.cartEmpty {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-block: 56px;
+}
+
+.textEmpty {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--card-specs-text);
+}
+
+.background {
+  @include on-tablet {
+    width: 550px;
+    height: 500px;
+  }
+
+  height: 300px;
+  width: 350px;
+}
+
+.buttonContainer {
+  display: inline-block;
+}
