@@ -9,6 +9,11 @@
   border-bottom: 1px solid #e2e6e9;
   z-index: 100;
 
+  .active {
+    color: var(--primary-color) ;
+    border-bottom-color: #313237 ;
+  }
+
   &__logo {
     height: 28px;
     margin: 18px 24px;
@@ -88,7 +93,6 @@
       display: inline-block;
       line-height: 0;
       position: relative;
-
     }
   }
 

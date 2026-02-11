@@ -33,16 +33,27 @@ export const Header = () => {
       <nav className={styles.header__nav}>
         <ul className={styles.header__list}>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? styles.active : '')} to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/phones">Phones</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? styles.active : '')} to="/phones">
+              Phones
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/tablets">Tablets</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? styles.active : '')} to="/tablets">
+              Tablets
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/accessories">Accessories</NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? styles.active : '')}
+              to="/accessories"
+            >
+              Accessories
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -68,22 +79,38 @@ export const Header = () => {
       <div className={`${styles.burgerMenu} ${isMenuOpen ? styles.burgerMenu__open : ''}`}>
         <ul className={styles.burgerMenu__list}>
           <li>
-            <NavLink to="/" onClick={closeMenu}>
+            <NavLink
+              className={({ isActive }) => (isActive ? styles.active : '')}
+              to="/"
+              onClick={closeMenu}
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/phones" onClick={closeMenu}>
+            <NavLink
+              className={({ isActive }) => (isActive ? styles.active : '')}
+              to="/phones"
+              onClick={closeMenu}
+            >
               Phones
             </NavLink>
           </li>
           <li>
-            <NavLink to="/tablets" onClick={closeMenu}>
+            <NavLink
+              className={({ isActive }) => (isActive ? styles.active : '')}
+              to="/tablets"
+              onClick={closeMenu}
+            >
               Tablets
             </NavLink>
           </li>
           <li>
-            <NavLink to="/accessories" onClick={closeMenu}>
+            <NavLink
+              className={({ isActive }) => (isActive ? styles.active : '')}
+              to="/accessories"
+              onClick={closeMenu}
+            >
               Accessories
             </NavLink>
           </li>

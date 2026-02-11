@@ -47,6 +47,7 @@
       @include font-desktop-buttons;
       color: var(--primary-color);
       background-color: var(--white-bg-color);
+      padding: 10px 12px;
     }
   }
 
@@ -60,6 +61,10 @@
     select {
       border: 1px solid var(--icons-color);
       height: 40px;
+      @include font-desktop-buttons;
+      color: var(--primary-color);
+      background-color: var(--white-bg-color);
+      padding: 10px 12px;
     }
   }
 

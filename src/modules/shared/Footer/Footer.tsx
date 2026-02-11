@@ -14,8 +14,8 @@ export const Footer = () => {
       <img className={styles.footer__logo} src={logo} alt="Logo" />
       <div className={styles.footer__links}>
         <a href="https://github.com/in7264/react_phone-catalog/tree/develop">Github</a>
-        <a>Contacts</a>
-        <a>rights</a>
+        <a href="https://github.com/in7264/react_phone-catalog/tree/develop">Contacts</a>
+        <a href="https://github.com/in7264/react_phone-catalog/tree/develop">rights</a>
       </div>
       <div className={styles.footer__backToTop} onClick={scrollToTop}>
         Back to top
