@@ -1,0 +1,56 @@
+.categories {
+  grid-column: 1 / -1;
+
+  @include grid-creator;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include mobile-h2;
+
+    @include on-tablet {
+      @include tablet-h2;
+    }
+  }
+}
+
+.category {
+  text-decoration: none;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  margin-top: 24px;
+
+  &__text {
+    margin-top: 24px;
+  }
+
+  &__title {
+    color: $gray;
+
+    @include tablet-h4;
+  }
+
+  &__amount {
+    color: $lite_gray;
+
+    @include body-text-font;
+  }
+
+  &__photo {
+    object-fit: contain;
+
+    border-radius: 10%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    @include scale-effect('light');
+  }
+}

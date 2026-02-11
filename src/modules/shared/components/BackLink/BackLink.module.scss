@@ -1,0 +1,17 @@
+.backLink {
+  display: flex;
+  height: 30px;
+  column-gap: 4px;
+  text-decoration: none;
+  color: $lite-gray;
+  align-items: center;
+
+
+  &__text {
+    display: inline;
+    height: min-content;
+    text-decoration: none;
+
+    @include small-text;
+  }
+}

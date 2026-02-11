@@ -1,1 +1,31 @@
-// not empty
+@import './styles/mixins';
+@import './styles/variables';
+@import './styles/button';
+@import './modules/shared/components/TopBar/TopBar.module';
+@import './modules/shared/components/Header/Header.module';
+@import './modules/shared/components/Select/Select.module';
+@import './modules/shared/components/SVGElements/SVGElements.module';
+@import './modules/shared/components/Pagination/Pagination.module';
+@import './modules/shared/components/Sidebar/Sidebar.module';
+@import './modules/HomePage/components/HomePage/HomePage.module';
+@import './modules/HomePage/components/PicturesSlider/PicturesSlider.module';
+@import './modules/shared/components/ProductCart/ProductCart.module';
+@import './modules/shared/components/Icon/Icon.module';
+@import './modules/HomePage/components/BaseSlider/BaseSlider.module';
+@import './modules/HomePage/components/Categories/Categories.module';
+@import './modules/shared/components/Footer/Footer.module';
+@import './modules/CategoryPage/components/CategoryPage/CategoryPage.module';
+@import './modules/shared/components/CurrentPath/CurrentPath.module';
+@import './modules/ProductPage/components/ProductPage/ProductPage.module';
+@import './modules/shared/components/ShowCharacteristics/ShowCharacteristics.module';
+@import './modules/shared/components/Price/Price.module';
+@import './modules/Favorites/components/Favourites/Favorites.module';
+@import './modules/ProductPage/components/ProductsList/ProductList.module';
+@import './modules/shared/components/Title/Title.module';
+@import './modules/CartPage/components/Cart/Cart.module';
+@import './modules/CartPage/components/CartElement/CartElement.module';
+@import './modules/shared/components/BackLink/BackLink.module';
+@import './modules/shared/components/Loader/Loader.module';
+@import './modules/shared/components/Modal/Modal.module';
+@import './modules/NotFoundPage/components/PageNotFound/PageNotFound.module'
+

@@ -1,0 +1,85 @@
+.cartElement {
+  box-sizing: border-box;
+
+  height: 160px;
+  row-gap: 16px;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(1fr, 6);
+  grid-auto-rows: fit-content;
+  grid-template-areas:
+    "box-1 box-1 box-2 box-2 box-3 box-3"
+    "box-4 box-4 box-4 box-5 box-5 box-5";
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(1fr, 5);
+    grid-template-areas: 'box-1 box-2 box-3 box-4 box-5';
+  }
+
+  @include element-border;
+
+  @include on-tablet {
+    height: 128px;
+  }
+
+  &__deleteButton {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    color: $lite-gray;
+  }
+
+  &__amountContainer {
+    width: 96px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+
+  &__text {
+    @include body-text-font;
+  }
+
+  &__name {
+    cursor: pointer;
+    width: 128px;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
+  }
+
+  &__photo {
+    cursor: pointer;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+
+    @include scale-effect('light');
+  }
+
+  &__priceDiscount {
+    @include tablet-h3;
+  }
+
+  &__priceContainer {
+    display: flex;
+    justify-content: right;
+  }
+
+  &__amount {
+    display: flex;
+  }
+}
+
+

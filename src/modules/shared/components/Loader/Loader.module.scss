@@ -1,0 +1,22 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  height: 100%;
+  display: flex;
+  place-self: center;
+  max-width: 50px;
+
+  animation: 1s infinite linear spin;
+}
+
+.page__loader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

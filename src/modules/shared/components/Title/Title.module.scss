@@ -1,0 +1,26 @@
+.top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    @include mobile-h1;
+
+    margin-top: 24px;
+
+    @include on-tablet {
+      @include tablet-h1;
+
+      margin-top: 16px;
+    }
+  }
+
+  &__amount {
+    @include body-text-font;
+
+    color: $lite-gray;
+
+    margin-top: 8px;
+  }
+
+}

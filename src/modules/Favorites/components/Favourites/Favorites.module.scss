@@ -1,0 +1,36 @@
+.favorites {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__path {
+    padding-top: 24px;
+  }
+
+  &__footer {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__empty {
+    display: flex;
+
+    margin-top: 20px;
+    column-gap: 20px;
+  }
+
+  &__emptyText {
+    @include mobile-h3;
+
+    @include on-tablet {
+      @include tablet-h3;
+    }
+  }
+}

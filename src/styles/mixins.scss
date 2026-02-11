@@ -1,0 +1,164 @@
+@font-face {
+  font-family: Monserrat-bold;
+  src: url('@public/fonts/Mont-Bold.otf')
+}
+
+@font-face {
+  font-family: Monserrat-semiBold;
+  src: url('@public/fonts/Mont-SemiBold.otf')
+}
+
+@font-face {
+  font-family: Monserrat-regular;
+  src: url('@public/fonts/Mont-Regular.otf')
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+@mixin grid-creator {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+  }
+}
+
+
+// typography
+
+@mixin mobile-h1 {
+  font-family: Monserrat-bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin tablet-h1 {
+  font-family: Monserrat-bold, sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin mobile-h2 {
+  font-family: Monserrat-bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin tablet-h2 {
+  font-family: Monserrat-bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin mobile-h3 {
+  font-family: Monserrat-semiBold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin tablet-h3 {
+  font-family: Monserrat-bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin mobile-h4 {
+  font-family: Monserrat-semiBold, sans-serif;
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@mixin tablet-h4 {
+  font-family: Monserrat-semiBold, sans-serif;
+  margin: 0;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin uppercase-font {
+  font-family: Monserrat-bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons-font {
+  font-family: Monserrat-semiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text-font {
+  font-family: Monserrat-regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: Monserrat-semiBold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin element-border {
+  border: solid 1px $elements_color;
+
+  &:hover:not(:disabled) {
+    border-color: $gray;
+  }
+}
+
+@mixin underline-creator {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: $elements_color;
+}
+
+@mixin scale-effect($power) {
+  transition: transform $lowSpeed;
+
+  &:hover {
+    @if $power == 'light' {
+      transform: scale(1.05);
+    }
+
+    @if $power == 'large' {
+      transform: scale(1.1)
+    }
+  }
+}

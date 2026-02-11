@@ -1,0 +1,27 @@
+.showChars {
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px 0;
+    padding: 8px 0;
+
+    list-style-type: none;
+
+    @include body-text-font;
+  }
+
+  &__characteristic {
+    color: $lite-gray;
+  }
+
+  &__characteristicValue {
+    @include body-text-font;
+
+    color: $gray;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}

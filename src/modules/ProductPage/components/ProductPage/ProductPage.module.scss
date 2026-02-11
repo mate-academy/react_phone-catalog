@@ -1,0 +1,361 @@
+.productPage {
+  padding: 0;
+  margin: 0 auto;
+
+  max-width: 1300px;
+
+  &__content {
+    box-sizing: border-box;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 56px 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      column-gap: 64px;
+    }
+  }
+
+  &__path {
+    padding-block: 24px;
+
+    @include on-tablet {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__h3 {
+    @include mobile-h3;
+  }
+
+  &__backLink {
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+  }
+
+  // #region photos
+
+  &__title {
+    @include mobile-h2;
+
+    grid-column: 1 / -1;
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      @include tablet-h2;
+    }
+  }
+
+  &__main {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      column-gap: 64px;
+    }
+  }
+
+  &__photoZone {
+    width: 100%;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include on-tablet {
+      grid-column: 1 / 2;
+      grid-template-columns: min-content auto;
+      column-gap: 16px;
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    grid-column: 1 / -1;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      grid-column: 2 / 3;
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, 35px);
+    grid-template-rows: 1fr;
+    column-gap: 8px;
+    justify-content: center;
+    padding-bottom: 40px;
+
+    @include on-tablet {
+      justify-content: left;
+      grid-area: 2 / 1 / 1 / 2;
+      grid-template-columns: auto;
+      grid-template-rows: repeat(5, 35px);
+      row-gap: 8px;
+    }
+
+    @include on-desktop {
+      row-gap: 16px;
+      grid-template-rows: repeat(5, 80px);
+    }
+  }
+
+  &__sliderElem {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+
+    @include element-border;
+
+    @include on-tablet {
+      width: auto;
+      height: 100%;
+    }
+
+    &--active {
+      border-color: $gray;
+    }
+  }
+
+  &__button {
+    background-color: white;
+    padding: 0;
+    border: 0;
+  }
+
+  // #endregion photos
+
+  // #region details
+  &__characteristics {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 3;
+    }
+  }
+
+  &__availableColors {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+    column-gap: 8px;
+    margin-bottom: 48px;
+
+    &::after {
+      @include underline-creator;
+
+      bottom: -24px;
+    }
+  }
+
+  &__color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    aspect-ratio: 1 / 1;
+    border-radius: 200%;
+    background-color: black;
+    border: solid 2px white;
+  }
+
+  &__smallTitle {
+    @include small-text;
+
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    color: $lite-gray;
+  }
+
+  &__colorContainer {
+    padding: 0;
+    height: 35px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    border-radius: 100%;
+
+    @include element-border;
+  }
+
+  // #region capacity
+  &__capacity {
+    position: relative;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 8px;
+    margin-bottom: 56px;
+
+    &::after {
+      @include underline-creator;
+
+      bottom: -24px;
+    }
+  }
+
+  &__capacityElem {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+
+    &--active {
+      border-color: $gray;
+      background-color: $gray;
+      color: white;
+    }
+
+    @include element-border;
+    @include body-text-font;
+  }
+
+  // #endregion capacity
+
+  // #region price
+
+  &__price {
+    margin-bottom: 16px;
+  }
+
+  &__priceButtons {
+    height: 48px;
+    margin-bottom: 32px;
+  }
+
+  &__priceButton {
+    height: 100%;
+  }
+
+  // #endregion price
+
+  // #endregion details
+
+  // #region about
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+  }
+
+  &__descriptionHeader {
+    @include mobile-h4;
+
+    margin-bottom: 16px;
+  }
+
+  &__descriptionText {
+    margin: 0;
+    white-space: pre-wrap;
+    display: block;
+
+    @include body-text-font;
+
+    color: $lite-gray;
+  }
+
+  &__aboutHeader {
+    position: relative;
+    margin-bottom: 48px;
+
+    @include mobile-h3;
+
+    @include on-tablet {
+      @include tablet-h3;
+    }
+
+    &::after {
+      @include underline-creator;
+
+      bottom: -16px;
+    }
+  }
+
+  // #endregion about
+
+  &__techSpecs {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 2 / 3;
+    }
+  }
+
+  // #region techSpecs
+  &__techSpecsHeader {
+    position: relative;
+    margin-bottom: 46px;
+
+    @include on-tablet {
+      margin-bottom: 41px;
+    }
+
+    &::after {
+      @include underline-creator;
+
+      bottom: -16px;
+    }
+  }
+
+  // #endregion
+  // #region mayLike
+
+  &__mayLike {
+    overflow-x: hidden;
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  // #endregion mayLike
+
+  &__footer {
+    grid-column: 1 / -1;
+  }
+
+  &__notFound {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 24px;
+
+    @include on-tablet {
+      row-gap: 32px;
+    }
+
+    @include on-desktop {
+      row-gap: 56px;
+    }
+  }
+
+  &__notFoundPhoto {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+

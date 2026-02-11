@@ -1,0 +1,43 @@
+.button {
+  box-sizing: border-box;
+  transition: all $highSpeed;
+  background-color: white;
+  height: 32px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $gray;
+  border: solid 1px $icons_color;
+
+  &--selected {
+    background-color: $gray;
+    color: white;
+  }
+
+  &--inverted {
+    width: 100%;
+    background-color: $gray;
+    color: white;
+
+    @include buttons-font;
+  }
+
+
+  &--addedToCart {
+    width: 100%;
+    background-color: white;
+    color: $green2;
+
+    @include buttons-font;
+  }
+
+  &:hover {
+    border-color: $gray;
+  }
+
+  &:disabled {
+    color: $icons_color;
+    border-color: $icons_color;
+  }
+}

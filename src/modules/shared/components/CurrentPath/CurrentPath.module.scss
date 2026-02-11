@@ -1,0 +1,32 @@
+.currentPath {
+  grid-column: 1 / -1;
+  display: flex;
+  column-gap: 8px;
+  align-content: center;
+  align-items: center;
+
+  &__title {
+    display: flex;
+    text-decoration: none;
+    color: $lite-gray;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__link {
+    height: 16px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    color: $lite-gray;
+
+    &--home {
+      color: black;
+    }
+  }
+
+}

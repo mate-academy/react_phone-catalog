@@ -1,0 +1,70 @@
+.baseSlider {
+  grid-column: 1 / -1;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @include on-desktop {
+    overflow: hidden;
+    margin-inline: none;
+  }
+
+  &__top {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    place-content: center space-between;
+    height: 62px;
+  }
+
+  &__title {
+    grid-column: 1 / 3;
+
+    @include mobile-h2;
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+
+      @include tablet-h2;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+  }
+
+  &__button {
+    height: 32px;
+
+    @include on-desktop {
+      &--right {
+        grid-column: 24 / 25;
+      }
+
+      &--left {
+        grid-column: 23 / 24;
+      }
+    }
+  }
+
+  &__phonesContainer {
+    display: flex;
+    column-gap: 16px;
+
+    transition: translate $lowSpeed;
+  }
+
+  &__phone {
+    max-width: 212px;
+
+    @include on-tablet {
+      max-width: 237px;
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+    }
+  }
+}

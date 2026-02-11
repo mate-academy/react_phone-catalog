@@ -1,0 +1,28 @@
+.productsToShow {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  justify-items: space-between;
+
+  @include on-tablet {
+    column-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+
+  &__product {
+    width: 100%;
+
+    @include on-tablet {
+      max-width: 287px;
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+    }
+  }
+}

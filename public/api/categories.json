@@ -1,0 +1,17 @@
+[
+  {
+    "id": "phones",
+    "title": "Mobile phones",
+    "path": "/phones"
+  },
+  {
+    "id": "tablets",
+    "title": "Tablets",
+    "path": "/tablets"
+  },
+  {
+    "id": "accessories",
+    "title": "Accessories",
+    "path": "/accessories"
+  }
+]
