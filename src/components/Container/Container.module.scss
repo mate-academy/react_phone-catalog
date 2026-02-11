@@ -1,0 +1,19 @@
+.container {
+  width: 288px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+
+}
+
+@media (min-width: 640px) {
+  .container {
+    width: 592px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1136px;
+  }
+}

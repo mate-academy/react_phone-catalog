@@ -1,0 +1,35 @@
+.search {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 12px 14px;
+  width: 260px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  height: 48px;
+}
+
+.search:focus-within {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 6px 18px rgba(17, 17, 17, 0.06);
+}
+
+.icon {
+  font-size: 14px;
+}
+
+.field {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.field::placeholder {
+  color: var(--color-muted);
+}

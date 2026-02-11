@@ -1,1 +1,80 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+}
+
+:root {
+  --color-text: #313237;
+  --color-muted: #89939a;
+  --color-border: #e2e6e9;
+  --color-border-strong: #b4bdc3;
+  --color-surface: #fff;
+  --color-surface-muted: #f8f8f8;
+  --color-hover: #fafbfc;
+  --color-active: #0f0f11;
+  --color-success: #27ae60;
+  --color-error: #eb5757;
+  --shadow: 0 8px 22px rgba(17, 17, 17, 0.08);
+  --padding-inline-sm: 16px;
+  --padding-inline-m: 24px;
+  --padding-inline-l: 32px;
+  --padding-inline-xl: 152px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, 'Segoe UI', sans-serif;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a img {
+  transition: transform 0.3s ease;
+}
+
+a:hover img {
+  transform: scale(1.1);
+}
+
+button {
+  font-family: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,203 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.back {
+  width: 80px;
+  height: 14px;
+}
+
+.header {
+  margin-top: 4px;
+}
+
+.title {
+  height: 32px;
+  width: min(420px, 80%);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 0.75fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mainImage {
+  width: 100%;
+  height: 360px;
+  border-radius: 16px;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  gap: 10px;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 360px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sectionTitle {
+  width: 140px;
+  height: 14px;
+}
+
+.optionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option {
+  width: 44px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.price {
+  width: 120px;
+  height: 28px;
+}
+
+.fullPrice {
+  width: 70px;
+  height: 16px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.cartButton {
+  flex: 1;
+  height: 44px;
+  border-radius: 8px;
+}
+
+.favButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.specRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specLabel {
+  width: 90px;
+  height: 12px;
+}
+
+.specValue {
+  width: 120px;
+  height: 12px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  gap: 40px;
+}
+
+.sectionHeading {
+  width: 140px;
+  height: 20px;
+  margin-bottom: 8px;
+}
+
+.line {
+  width: 100%;
+  height: 12px;
+}
+
+.lineShort {
+  width: 70%;
+  height: 12px;
+}
+
+.about,
+.tech {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .info {
+    max-width: none;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .title {
+    height: 26px;
+  }
+
+  .mainImage {
+    height: 280px;
+  }
+
+  .thumbs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,83 @@
+.card {
+  display: flex;
+  width: 100%;
+  min-width: 200px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 18px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.image {
+  height: 200px;
+  border-radius: 12px;
+}
+
+.title {
+  height: 18px;
+  width: 72%;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+
+.price {
+  height: 26px;
+  width: 92px;
+}
+
+.fullPrice {
+  height: 14px;
+  width: 64px;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  padding: 12px 12px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.metaLabel {
+  height: 12px;
+  width: 70px;
+}
+
+.metaValue {
+  height: 12px;
+  width: 80px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.cartButton {
+  flex: 1.6;
+  height: 40px;
+  border-radius: 0;
+}
+
+.favButton {
+  width: 60px;
+  height: 40px;
+  border-radius: 0;
+}

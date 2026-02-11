@@ -1,0 +1,23 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: var(--color-muted);
+  font-size: 14px;
+  gap: 12px;
+}
+
+.value {
+  color: var(--color-text);
+  text-align: right;
+}
+
+.label {
+  max-width: 50%;
+}

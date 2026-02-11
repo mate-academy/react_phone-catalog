@@ -1,0 +1,26 @@
+.state {
+  border: 1px dashed rgba(15, 23, 42, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  background: #f8fafc;
+}
+
+.emoji {
+  font-size: 28px;
+}
+
+.title {
+  margin: 0;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+}
+
+.description {
+  margin: 4px 0 0;
+  color: #475569;
+}
