@@ -9,10 +9,10 @@ import type { Product } from '../../../types/types';
 interface Props {
   pageTitle: string;
   products: Product[];
-  ShowDiscount: boolean;
+  ShowDiscount?: boolean;
 }
 
-export const Carousel = ({ pageTitle, products, ShowDiscount }: Props) => {
+export const Carousel = ({ pageTitle, products, ShowDiscount = true }: Props) => {
   const trackref = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
