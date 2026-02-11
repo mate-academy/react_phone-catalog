@@ -1,23 +1,29 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import styles from './HomePage.module.scss';
-//import ProductsSlider from './components/ProductsSlider/index';
+import ProductsSlider from './components/ProductsSlider/index';
 import PicturesSlider from './components/PicturesSlider/index';
 import { Product } from './../../../public/api/types/Product';
 
 export const HomePage: React.FC = () => {
   const THRESHOLD = 30;
   const [products, setProducts] = useState<Product[] | null>(null);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [paused, setPaused] = useState<boolean>(false);
 
   const url = 'api/products.json';
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const startX = useRef<number | null>(null);
-  const startY = useRef<number | null>(null);
-  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
+  const [currentProductIndex, setCurrentProductIndex] = useState(0);
+  const startPictureX = useRef<number | null>(null);
+  const startPictureY = useRef<number | null>(null);
+  const startProductX = useRef<number | null>(null);
+  const startProductY = useRef<number | null>(null);
+  const sliderPictureRef = useRef<HTMLDivElement | null>(null);
+  const sliderProductRef = useRef<HTMLDivElement | null>(null);
   const lenOfProducts = products?.length ?? 0;
+
   const loadProducts = async (signal?: AbortSignal) => {
     try {
       setLoading(true);
@@ -37,7 +43,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     if (lenOfProducts > 0 && !paused) {
       const id = setInterval(
-        () => setCurrentIndex(i => (i + 1) % lenOfProducts),
+        () => setCurrentPictureIndex(i => (i + 1) % lenOfProducts),
         5000,
       );
 
@@ -48,7 +54,7 @@ export const HomePage: React.FC = () => {
   }, [lenOfProducts, paused]);
 
   useEffect(() => {
-    setCurrentIndex(0);
+    setCurrentPictureIndex(0);
   }, [products?.length]);
 
   useEffect(() => {
@@ -59,51 +65,132 @@ export const HomePage: React.FC = () => {
     return () => controller.abort();
   }, []);
 
-  const handleNext = () => {
-    if (lenOfProducts > 0) {
-      const newIndex =
-        currentIndex === lenOfProducts - 1 ? 0 : currentIndex + 1;
+  const discount = p => Math.abs(+p.fullPrice - +p.price);
 
-      setCurrentIndex(newIndex);
+  const hotPrices = useMemo(() => {
+    if (!products) {
+      return [];
     }
-  };
 
-  const handlePrev = () => {
-    if (lenOfProducts > 0) {
-      const newIndex =
-        currentIndex === 0 ? lenOfProducts - 1 : currentIndex - 1;
+    return products
+      .slice()
+      .sort((product1, product2) => discount(product2) - discount(product1));
+  }, [products]);
 
-      setCurrentIndex(newIndex);
-    }
-  };
+  const lenOfHotPricesproducts = hotPrices?.length ?? 0;
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>): void => {
-    startX.current = e.touches[0].clientX;
-    startY.current = e.touches[0].clientY;
-    setPaused(true);
-  };
+  const wrapNext = (index: number, len: number) =>
+    len ? (index + 1) % len : 0;
 
-  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>): void => {
-    const endX = e.changedTouches[0].clientX;
-    const endY = e.changedTouches[0].clientY;
+  const wrapPrev = (index: number, len: number) =>
+    len ? (index === 0 ? len - 1 : index - 1) : 0;
 
-    if (startX.current == null || startY.current == null) {
+  const handleNextPicture = () => {
+    if (lenOfProducts === 0) {
       return;
     }
 
-    const dx = endX - startX.current;
-    const dy = endY - startY.current;
+    if (currentPictureIndex >= lenOfProducts - 1) {
+      return;
+    } // на кінці — нічого не робимо
+
+    setCurrentPictureIndex(i => i + 1);
+  };
+
+  const handlePrevPicture = () => {
+    if (lenOfProducts === 0) {
+      return;
+    }
+
+    if (currentPictureIndex <= 0) {
+      return;
+    }
+
+    setCurrentPictureIndex(i => i - 1);
+  };
+
+  const handleTouchStartPicture = (
+    e: React.TouchEvent<HTMLDivElement>,
+  ): void => {
+    startPictureX.current = e.touches[0].clientX;
+    startPictureY.current = e.touches[0].clientY;
+    setPaused(true);
+  };
+
+  const handleTouchEndPicture = (e: React.TouchEvent<HTMLDivElement>): void => {
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+
+    if (startPictureX.current == null || startPictureY.current == null) {
+      return;
+    }
+
+    const dx = endX - startPictureX.current;
+    const dy = endY - startPictureY.current;
 
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESHOLD) {
       if (dx < 0) {
-        handlePrev();
+        handlePrevPicture();
       } else {
-        handleNext();
+        handleNextPicture();
       }
     }
 
-    //startX.current = null;
-    // startY.current = null;
+    setPaused(false);
+  };
+
+  const handlePrevProduct = () => {
+    if (lenOfHotPricesproducts === 0) {
+      return;
+    }
+
+    if (currentProductIndex <= 0) {
+      return;
+    }
+
+    setCurrentProductIndex(i => i - 1);
+  };
+
+  const handleNextProduct = () => {
+    if (lenOfHotPricesproducts === 0) {
+      return;
+    }
+
+    if (currentProductIndex >= lenOfHotPricesproducts - 1) {
+      return;
+    }
+
+    setCurrentProductIndex(i => i + 1);
+  };
+
+  const handleTouchStartProduct = (
+    e: React.TouchEvent<HTMLDivElement>,
+  ): void => {
+    startProductX.current = e.touches[0].clientX;
+    startProductY.current = e.touches[0].clientY;
+
+    setPaused(true);
+  };
+
+  const handleTouchEndProduct = (e: React.TouchEvent<HTMLDivElement>): void => {
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+
+    if (startProductX.current == null || startProductY.current == null) {
+      return;
+    }
+
+    const dx = endX - startProductX.current;
+    const dy = endY - startProductY.current;
+
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESHOLD) {
+      if (dx < 0) {
+        handlePrevProduct();
+      } else {
+        handleNextProduct();
+      }
+    }
+
     setPaused(false);
   };
 
@@ -124,12 +211,12 @@ export const HomePage: React.FC = () => {
             {!loading && !error && Array.isArray(products) && (
               <PicturesSlider
                 products={products}
-                currentIndex={currentIndex}
-                handlePrev={handlePrev}
-                handleNext={handleNext}
-                handleTouchStart={handleTouchStart}
-                handleTouchEnd={handleTouchEnd}
-                sliderRef={sliderRef}
+                currentIndex={currentPictureIndex}
+                handlePrev={handlePrevPicture}
+                handleNext={handleNextPicture}
+                handleTouchStart={handleTouchStartPicture}
+                handleTouchEnd={handleTouchEndPicture}
+                sliderRef={sliderPictureRef}
               />
             )}
 
@@ -144,6 +231,18 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
       <h3>Brand new models</h3>
+      <h3>Hot prices</h3>
+      {!loading && !error && Array.isArray(products) && (
+        <ProductsSlider
+          products={hotPrices}
+          currentIndex={currentProductIndex}
+          handlePrev={handlePrevProduct}
+          handleNext={handleNextProduct}
+          handleTouchStart={handleTouchStartProduct}
+          handleTouchEnd={handleTouchEndProduct}
+          sliderRef={sliderProductRef}
+        />
+      )}
       <div className="product-catalog">
         {loading && <div>Loading...</div>}
         {error && <div role="alert">Error: {error}</div>}
