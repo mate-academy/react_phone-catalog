@@ -1,0 +1,101 @@
+@import '../../styles/utils';
+
+.sliderContainer {
+  display: block;
+}
+
+.header {
+  max-width: 1136px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+  margin-bottom: 6px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 13px;
+  }
+}
+
+.title {
+  @extend %h2;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  background: var(--button-bg-color-default);
+  border: 1px solid var(--button-border-color-default);
+  border-radius: var(--button-round-square-radius);
+  color: var(--primary);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+
+  // Стиль для відключеного стану (прозорість)
+  &.disabled {
+    cursor: default;
+    color: var(--icons);
+    pointer-events: none;
+    border-color: var(--elements);
+    background: none;
+
+    // Скасовуємо ефект hover, коли кнопка відключена
+    &:hover {
+      border-color: var(--elements);
+    }
+  }
+
+  // Стиль, коли кнопка не відключена
+  &:not(.disabled):hover {
+    background: var(--button-bg-color-hover);
+    border-color: var(--button-border-color-hove);
+  }
+}
+
+.navButtonImg {
+  display: flex;
+}
+
+/* Ізолюємо Swiper від flex-батьків */
+.swiperOuter {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 1162px;
+  margin-inline: auto;
+}
+
+.swiperWrapper {
+  padding-top: 18px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+
+.swiperSlide {
+  height: auto;
+}

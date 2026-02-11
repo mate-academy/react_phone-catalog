@@ -5831,5 +5831,464 @@
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-1tb-orange",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 1TB Orange",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 1581,
+    "priceDiscount": 1527,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "orange",
+    "images": [
+      "img/phones/apple-iphone-17-pro/orange/00.webp",
+      "img/phones/apple-iphone-17-pro/orange/01.webp",
+      "img/phones/apple-iphone-17-pro/orange/02.webp",
+      "img/phones/apple-iphone-17-pro/orange/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-1tb-deep-blue",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 1TB Deep Blue",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 1581,
+    "priceDiscount": 1527,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "deep-blue",
+    "images": [
+      "img/phones/apple-iphone-17-pro/deepblue/00.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/01.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/02.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-1tb-silver",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 1TB Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 1581,
+    "priceDiscount": 1527,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "silver",
+    "images": [
+      "img/phones/apple-iphone-17-pro/silver/00.webp",
+      "img/phones/apple-iphone-17-pro/silver/01.webp",
+      "img/phones/apple-iphone-17-pro/silver/02.webp",
+      "img/phones/apple-iphone-17-pro/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-512gb-orange",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 512GB Orange",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 1399,
+    "priceDiscount": 1345,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "orange",
+    "images": [
+      "img/phones/apple-iphone-17-pro/orange/00.webp",
+      "img/phones/apple-iphone-17-pro/orange/01.webp",
+      "img/phones/apple-iphone-17-pro/orange/02.webp",
+      "img/phones/apple-iphone-17-pro/orange/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-512gb-deep-blue",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 512GB Deep Blue",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 1399,
+    "priceDiscount": 1345,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "deep-blue",
+    "images": [
+      "img/phones/apple-iphone-17-pro/deepblue/00.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/01.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/02.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-512gb-silver",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 512GB Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 1399,
+    "priceDiscount": 1345,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "silver",
+    "images": [
+      "img/phones/apple-iphone-17-pro/silver/00.webp",
+      "img/phones/apple-iphone-17-pro/silver/01.webp",
+      "img/phones/apple-iphone-17-pro/silver/02.webp",
+      "img/phones/apple-iphone-17-pro/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-256gb-orange",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 256GB Orange",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1218,
+    "priceDiscount": 1163,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "orange",
+    "images": [
+      "img/phones/apple-iphone-17-pro/orange/00.webp",
+      "img/phones/apple-iphone-17-pro/orange/01.webp",
+      "img/phones/apple-iphone-17-pro/orange/02.webp",
+      "img/phones/apple-iphone-17-pro/orange/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-256gb-deep-blue",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 256GB Deep Blue",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1218,
+    "priceDiscount": 1163,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "deep-blue",
+    "images": [
+      "img/phones/apple-iphone-17-pro/deepblue/00.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/01.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/02.webp",
+      "img/phones/apple-iphone-17-pro/deepblue/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-17-pro-256gb-silver",
+    "category": "phones",
+    "namespaceId": "apple-iphone-17-pro",
+    "name": "Apple iPhone 17 Pro 256GB Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1218,
+    "priceDiscount": 1163,
+    "colorsAvailable": ["orange", "deep-blue", "silver"],
+    "color": "silver",
+    "images": [
+      "img/phones/apple-iphone-17-pro/silver/00.webp",
+      "img/phones/apple-iphone-17-pro/silver/01.webp",
+      "img/phones/apple-iphone-17-pro/silver/02.webp",
+      "img/phones/apple-iphone-17-pro/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Cameras",
+        "text": [
+          "A big zoom forward. Across the iPhone 17 Pro camera system, you’ll find innovation that goes to great lengths. The telephoto features the next generation of our tetraprism design and a 56 per cent larger sensor. With an equivalent 200mm focal length, the 8x optical-quality zoom makes this the longest iPhone Telephoto ever — offering 16x total optical zoom range. So you can explore an even wider range of creative choices and add a longer reach to your compositions."
+        ]
+      },
+      {
+        "title": "Pro video",
+        "text": [
+          "Any more pro and it would need an agent. From home movies to Hollywood productions, iPhone 17 Pro is up to any challenge. With more pro video features than ever — like enhanced video stabilisation, cinema-grade specs and compatibility with industry-standard workflows — iPhone 17 Pro puts powerful filmmaking tools within reach, wherever you need them."
+        ]
+      },
+      {
+        "title": "Performance",
+        "text": [
+          "New dimensions in power. Whether you're working with intensive graphics or massive media files, iPhone 17 Pro offers blazing-fast performance — with advanced cooling technology. An Apple-designed laser-welded vapour chamber works with the aluminium unibody structure to efficiently move heat away from the A19 Pro chip, allowing for even higher sustained performance. This breakthrough in thermal management is key to the most powerful iPhone ever created."
+        ]
+      },
+      {
+        "title": "All in the family",
+        "text": [
+          "All the must‑haves. All on iPhone. The latest iPhone models come packed with advanced capabilities. Helpful Apple Intelligence features such as visual intelligence12 and Writing Tools to make your everyday easier. Fast, secure connections with Wi‑Fi 7,13 Bluetooth 6, 5G14 and eSIM.15"
+        ]
+      }
+    ],
+    "screen": "6.3' OLED (Super Retina XDR)",
+    "resolution": "2622x1206",
+    "processor": "Apple A19 Pro",
+    "ram": "12GB",
+    "camera": "48Mp + 48Mp + 48MP",
+    "zoom": "Digital 40x, Optical 16x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   }
 ]

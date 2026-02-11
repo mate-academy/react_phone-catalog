@@ -1,0 +1,214 @@
+@import '../../styles/utils';
+
+.nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+  min-width: 320px;
+  gap: 12px;
+  box-shadow: 0px 1px 0px 0px var(--elements);
+  z-index: 100;
+  background: var(--background-color);
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    color: var(--primary);
+
+    @include on-desktop {
+      width: 48px;
+      height: 64px;
+    }
+  }
+}
+
+.nav__logo {
+  padding-inline: 24px;
+}
+
+.nav__list {
+  display: flex;
+  gap: 24px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.nav-item {
+  @extend %uppercase;
+  @extend %underline;
+
+  text-decoration: none;
+  height: 48px;
+  line-height: 48px;
+  color: var(--secondary);
+
+
+  @include on-desktop {
+    height: 64px;
+    line-height: 64px;
+  }
+
+  @include hover(color, var(--primary));
+}
+
+.nav-item-active {
+  color: var(--primary);
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.navbar-end {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbarControls {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.select {
+  margin-right: 4px;
+
+  @include on-desktop {
+    margin-right: 12px;
+  }
+}
+
+.icon__button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--elements);
+  margin-left: 1px;
+  color: var(--primary);
+
+  width: 48px;
+  height: 48px;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @extend %underline;
+}
+
+.icon-button-active {
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.search__button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @include hover(transform, scale(1.2));
+}
+
+.icon__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {  //delete
+  display: flex;
+  width: 16px;
+  height: 16px;
+}
+
+.has-border {
+  position: relative;
+  border: 1px solid #ccc; /* Базовий border */
+  border-radius: 5px; /* Заокруглення кутів */
+  padding: 0.5rem 0.75rem; /* Внутрішні відступи для іконки */
+  display: inline-flex; /* Для центрування іконки */
+  align-items: center; /* Вертикальне центрування */
+  justify-content: center; /* Горизонтальне центрування (якщо потрібно) */
+  width: 40px; /* Фіксована ширина кнопки */
+  height: 40px; /* Фіксована висота кнопки */
+  transition: border-color 0.3s ease; /* Плавна зміна кольору border при наведенні */
+}
+
+/* .has-border:hover { */
+/* border-color: #999; Зміна кольору border при наведенні */
+/* background-color: #f5f5f5; Додано легкий фон при наведенні */
+/* } */
+
+/* .has-border .icon { */
+/* font-size: 1.2rem; Розмір іконки */
+/* color: #333; Колір іконки */
+/* } */
+
+.notification-badge {
+  box-sizing: border-box;
+  position: absolute; /* Абсолютне позиціонування */
+  top: 10px; /* Вирівнювання по верхньому краю */
+  right: 10px; /* Вирівнювання по правому краю */
+  background-color: var(--heart-liked); /* Колір фону бейджа */
+  color: var(--heart-text-color); /* Колір тексту бейджа */
+  border-radius: 50%; /* Кругла форма */
+  border: 1px solid var(--heart-border-color);
+  width: 14px;
+  height: 14px;
+  font-weight: 700;
+  font-size: 9px;
+  text-align: center;
+
+  @include on-desktop {
+    top: 18px;
+    right: 18px;
+  }
+}
+
+/* Показуємо бургер тільки на маленьких екранах */
+@media (max-width: 768px) {
+  .nav__burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__list {
+    display: none;
+  }
+}

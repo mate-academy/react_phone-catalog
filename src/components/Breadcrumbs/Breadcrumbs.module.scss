@@ -1,0 +1,97 @@
+@import '../../styles/utils';
+
+.breadcrumbs-container {
+  @extend %mont;
+
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.breadcrumbs {
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs__link {
+  text-decoration: none;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.breadcrumbs__link__main {
+  color: var(--primary);
+}
+
+.breadcrumbs__link:hover {
+  font-weight: 700;
+  color: var(--text-hover);
+}
+
+.breadcrumbs__separator {
+  margin: 0 8px;
+  color: var(--icons);
+}
+
+.breadcrumbs__current {
+  color: var(--secondary); /* Колір поточної сторінки */
+}
+
+
+.back-button {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 15px;
+  height: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: var(--secondary);
+  text-decoration: none;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+.back-button__label {
+  @extend %small_text;
+
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--text-hover);
+  }
+}
+
+.arrow-left {
+  color: var(--icons);
+}

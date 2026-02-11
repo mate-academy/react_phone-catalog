@@ -1,0 +1,95 @@
+@import '../../../../styles/utils';
+
+.categories {
+  @extend %container;
+  @extend %max_width;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.categories_title {
+  @extend %h2;
+
+  // color: #0f0f11;
+  margin-bottom: 24px;
+}
+
+.categories_cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.card {
+  flex: 1 1 0;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--primary);
+  background: var(--background-color);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    .image_conteiner {
+      box-shadow: var(--box-shadow);
+    }
+
+    .image {
+      transform: scale(1.03);
+    }
+  }
+
+  .image_conteiner {
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    left: 24%;
+    top: 17%;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .description {
+    // background: #FAFBFC;
+
+    .card_title {
+      @extend %mont;
+
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 100%;
+      // color: #0f0f11;
+      margin-bottom: 4px;
+    }
+
+    .card_models {
+      @extend %body_text;
+
+      // color: #89939a;
+      color: var(--secondary);
+
+      @include on-desktop {
+        font-weight: 500;
+      }
+    }
+  }
+}

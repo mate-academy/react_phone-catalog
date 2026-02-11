@@ -1,0 +1,19 @@
+@import '../../../../styles/utils';
+
+.main-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.main-controls__options {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-prices-actions__wraper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

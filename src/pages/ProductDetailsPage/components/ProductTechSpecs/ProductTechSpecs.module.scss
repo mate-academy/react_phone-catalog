@@ -1,0 +1,20 @@
+@import '../../../../styles/utils';
+
+.tech-specs {
+
+}
+
+.tech-specs__title {
+  @extend %h3;
+}
+
+.tech-specs__divider {
+  @extend %divider;
+
+  margin-top: 16px;
+  margin-bottom: 30px;
+
+  @include on-tablet {
+    margin-bottom: 25px;
+  }
+}

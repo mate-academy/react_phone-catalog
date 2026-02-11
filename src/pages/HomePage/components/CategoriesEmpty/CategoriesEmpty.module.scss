@@ -1,0 +1,61 @@
+@import '../../../../styles/utils';
+
+.skeleton {
+  @extend %skeleton;
+}
+
+.categories {
+  @extend %container;
+  @extend %max_width;
+
+  width: 100%;
+}
+
+.categories_title {
+  @extend %skeleton;
+
+  width: 200px;
+  height: 31px;
+  margin-bottom: 24px;
+}
+
+.categories_cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.card {
+  flex: 1 1 0;
+  min-width: 0;
+
+  .image_conteiner {
+    @extend %skeleton;
+
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 24px;
+    border-radius: 8px;
+  }
+
+  .description {
+    .card_title {
+      @extend %skeleton;
+
+      width: 150px;
+      height: 20px;
+      margin-bottom: 4px;
+    }
+
+    .card_models {
+      @extend %skeleton;
+
+      width: 100px;
+      height: 21px;
+    }
+  }
+}

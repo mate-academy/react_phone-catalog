@@ -1,0 +1,94 @@
+@import '../../../../styles/utils';
+
+.product-gallery {
+  display: flex;
+  flex-direction: column; // Головний контейнер стає вертикальним
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.product-gallery__main-image-container {
+  flex-grow: 1; // Головне зображення займає весь залишок простору
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-gallery__main-image {
+  width: 100%;
+  // height: auto;
+  max-height: 288px; // Обмеження висоти для десктопу
+  object-fit: contain;
+
+  @include on-desktop {
+    max-height: 464px;
+  }
+}
+
+// === Десктопні стилі для прев'ю (вертикальна колонка) ===
+.product-gallery__thumbnails {
+  display: flex;
+  flex-direction: row; // Прев'ю розташовані горизонтально
+  gap: 8px;
+  order: 1;
+  justify-content: center;
+
+  width: 100%;
+  overflow-x: auto; // Дозволяємо горизонтальну прокрутку
+  overflow-y: hidden;
+
+  @include on-tablet {
+    order: 0;
+    justify-content: flex-start; // Прев'ю розташовані вертикально
+    flex-direction: column;
+    width: 35px; // Фіксована ширина для прев'ю
+    overflow-x: initial; // Відміняємо горизонтальну прокрутку
+    overflow-y: initial;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    width: 80px;
+  }
+}
+
+.product-gallery__thumbnail-item {
+  @extend %hover_shadow;
+
+  flex-shrink: 0;
+  width: 51px; // Фіксована ширина елемента прев'ю на мобільному
+  height: 49px;
+  box-sizing: border-box;
+
+  border: 1px solid var(--elements);
+  border-radius: var(--gallery-item-radius);
+  cursor: pointer;
+  padding: 5px;
+
+  @include on-tablet {
+    padding: 3px;
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    padding: 8px;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--card-radius);
+  }
+
+  &--active {
+    border-color: var(--primary); // Активний колір
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
