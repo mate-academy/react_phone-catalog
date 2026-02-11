@@ -1,0 +1,23 @@
+@import '../variables/variables.scss';
+
+.icon {
+  &--favorite {
+    background-image: url('../img/icons/heart-icon.svg');
+  }
+}
+
+.hide-icon {
+  transition: $animation-duration;
+
+  visibility: visible;
+  opacity: 1;
+  transform: scale(0);
+}
+
+.show-icon {
+  transition: $animation-duration;
+
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}

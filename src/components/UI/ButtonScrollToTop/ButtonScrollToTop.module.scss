@@ -1,0 +1,17 @@
+@import '../../../styles/variables/variables';
+
+.btn-scroll-top__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.btn-scroll-top {
+
+  &::before {
+    border-top: 1px solid $primary;
+    border-right: 1px solid $primary;
+  }
+}

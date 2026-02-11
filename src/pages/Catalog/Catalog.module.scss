@@ -1,0 +1,43 @@
+@use '../../styles/utils/mixins' as *;
+
+.catalog__products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 40px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.catalog__filters-wrapper {
+  margin: 12px 0;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  @include on-tablet {
+    width: 50%;
+    grid-template-columns: 3fr 2fr;
+  }
+
+  @include on-desktop {
+    width: 30%;
+  }
+}
+
+.catalog__pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 8px;
+}
