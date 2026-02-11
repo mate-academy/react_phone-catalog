@@ -1,0 +1,19 @@
+$transition-fast: 0.2s ease-in-out;
+$transition-normal: 0.3s ease-in-out;
+$transition-slow: 0.5s ease-in-out;
+
+.slide-in {
+  transform: translateX(100%);
+  transition: transform $transition-normal;
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity $transition-normal;
+  &.active {
+    opacity: 1;
+  }
+}

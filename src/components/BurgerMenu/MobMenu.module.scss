@@ -1,0 +1,121 @@
+
+.isActive {
+  color: $color-light;
+  border-bottom: 2px solid #313237;
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 51px 0 0;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: $color-main;
+  transform: translateX(-100%);
+  transition: transform 0.7s ease-in-out;
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+}
+
+.BurgerMenu_pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  margin-top: 24px;
+  margin-inline: 16px;
+}
+
+.BurgerMenu_link {
+  display: flex;
+  padding-block: 8px;
+
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $color-text;
+  text-decoration: none;
+
+  &:active,
+  :hover {
+    color: $color-light;
+    border-bottom: 2px solid $color-light;
+  }
+
+    &.isActive {
+    color: $color-light;
+    border-bottom: 2px solid $color-light;
+  }
+
+}
+
+.BurgerMenu_savedGoods {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $color-border;
+
+  margin-top: auto;
+}
+
+.BurgerMenu_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50%;
+  height: 64px;
+
+  &:first-child {
+    border-right: 1px solid $color-border;
+  }
+}
+
+.badge{
+  border-radius: 50%;
+  background-color: #EB5757;
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  color: $color-light;
+  font-size: 9px;
+  font-weight: 600;
+  text-align: center;
+  top: -4px;
+  left: 36px;
+  position: absolute;
+}
+
+.miniContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}

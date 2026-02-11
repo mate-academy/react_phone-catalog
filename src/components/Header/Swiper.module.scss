@@ -1,0 +1,109 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.swiper {
+  width: 100%;
+  position: relative;
+}
+
+.sliderTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+
+  aspect-ratio: 1 / 1;
+
+  @include respond-to(tablet) {
+    aspect-ratio: 490 / 189;
+  }
+
+  @include respond-to(desktop) {
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.paginationDot {
+  width: 14px;
+  height: 4px;
+  background: #3b3e4a;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+
+  &.paginationDotActive {
+    background: #f1f2f9;
+  }
+
+  &:hover {
+    background: #5d606e;
+  }
+}
+
+.navButton {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 100%;
+  background-color: #323542;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+
+  &.navButtonLeft {
+    left: 0;
+  }
+
+  &.navButtonRight {
+    right: 0;
+  }
+}
+
+.swiperContainer {
+  position: relative;
+
+  @include respond-to(tablet) {
+    padding: 0 40px;
+  }
+}
+
+.sliderContent {
+  overflow: hidden;
+}

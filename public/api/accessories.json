@@ -1,257 +1,5 @@
 [
   {
-    "id": "apple-watch-series-3-38mm-space-gray",
-    "category": "accessories",
-    "namespaceId": "apple-watch-series-3",
-    "name": "Apple Watch Series 3 38mm Space Gray",
-    "capacityAvailable": ["38mm", "42mm"],
-    "capacity": "38mm",
-    "priceRegular": 199,
-    "priceDiscount": 169,
-    "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "space gray",
-    "images": [
-      "img/accessories/apple-watch-series-3/space-gray/00.webp",
-      "img/accessories/apple-watch-series-3/space-gray/01.webp",
-      "img/accessories/apple-watch-series-3/space-gray/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Monitor your health",
-        "text": [
-          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
-        ]
-      },
-      {
-        "title": "Stay connected on the go",
-        "text": [
-          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
-        ]
-      },
-      {
-        "title": "Stream your favorite music",
-        "text": [
-          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
-        ]
-      }
-    ],
-    "screen": "1.3' OLED",
-    "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
-    "id": "apple-watch-series-3-42mm-space-gray",
-    "category": "accessories",
-    "namespaceId": "apple-watch-series-3",
-    "name": "Apple Watch Series 3 42mm Space Gray",
-    "capacityAvailable": ["38mm", "42mm"],
-    "capacity": "42mm",
-    "priceRegular": 250,
-    "priceDiscount": 219,
-    "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "space gray",
-    "images": [
-      "img/accessories/apple-watch-series-3/space-gray/00.webp",
-      "img/accessories/apple-watch-series-3/space-gray/01.webp",
-      "img/accessories/apple-watch-series-3/space-gray/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Monitor your health",
-        "text": [
-          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
-        ]
-      },
-      {
-        "title": "Stay connected on the go",
-        "text": [
-          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
-        ]
-      },
-      {
-        "title": "Stream your favorite music",
-        "text": [
-          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
-        ]
-      }
-    ],
-    "screen": "1.3' OLED",
-    "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
-    "id": "apple-watch-series-3-38mm-gold",
-    "category": "accessories",
-    "namespaceId": "apple-watch-series-3",
-    "name": "Apple Watch Series 3 38mm Gold",
-    "capacityAvailable": ["38mm", "42mm"],
-    "capacity": "38mm",
-    "priceRegular": 199,
-    "priceDiscount": 169,
-    "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "gold",
-    "images": [
-      "img/accessories/apple-watch-series-3/gold/00.webp",
-      "img/accessories/apple-watch-series-3/gold/01.webp",
-      "img/accessories/apple-watch-series-3/gold/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Monitor your health",
-        "text": [
-          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
-        ]
-      },
-      {
-        "title": "Stay connected on the go",
-        "text": [
-          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
-        ]
-      },
-      {
-        "title": "Stream your favorite music",
-        "text": [
-          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
-        ]
-      }
-    ],
-    "screen": "1.3' OLED",
-    "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
-    "id": "apple-watch-series-3-42mm-gold",
-    "category": "accessories",
-    "namespaceId": "apple-watch-series-3",
-    "name": "Apple Watch Series 3 42mm Gold",
-    "capacityAvailable": ["38mm", "42mm"],
-    "capacity": "42mm",
-    "priceRegular": 250,
-    "priceDiscount": 219,
-    "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "gold",
-    "images": [
-      "img/accessories/apple-watch-series-3/gold/00.webp",
-      "img/accessories/apple-watch-series-3/gold/01.webp",
-      "img/accessories/apple-watch-series-3/gold/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Monitor your health",
-        "text": [
-          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
-        ]
-      },
-      {
-        "title": "Stay connected on the go",
-        "text": [
-          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
-        ]
-      },
-      {
-        "title": "Stream your favorite music",
-        "text": [
-          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
-        ]
-      }
-    ],
-    "screen": "1.3' OLED",
-    "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
-    "id": "apple-watch-series-3-38mm-silver",
-    "category": "accessories",
-    "namespaceId": "apple-watch-series-3",
-    "name": "Apple Watch Series 3 38mm Silver",
-    "capacityAvailable": ["38mm", "42mm"],
-    "capacity": "38mm",
-    "priceRegular": 199,
-    "priceDiscount": 169,
-    "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "silver",
-    "images": [
-      "img/accessories/apple-watch-series-3/silver/00.webp",
-      "img/accessories/apple-watch-series-3/silver/01.webp",
-      "img/accessories/apple-watch-series-3/silver/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Monitor your health",
-        "text": [
-          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
-        ]
-      },
-      {
-        "title": "Stay connected on the go",
-        "text": [
-          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
-        ]
-      },
-      {
-        "title": "Stream your favorite music",
-        "text": [
-          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
-        ]
-      }
-    ],
-    "screen": "1.3' OLED",
-    "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
-    "id": "apple-watch-series-3-42mm-silver",
-    "category": "accessories",
-    "namespaceId": "apple-watch-series-3",
-    "name": "Apple Watch Series 3 42mm Silver",
-    "capacityAvailable": ["38mm", "42mm"],
-    "capacity": "42mm",
-    "priceRegular": 250,
-    "priceDiscount": 219,
-    "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "silver",
-    "images": [
-      "img/accessories/apple-watch-series-3/silver/00.webp",
-      "img/accessories/apple-watch-series-3/silver/01.webp",
-      "img/accessories/apple-watch-series-3/silver/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Monitor your health",
-        "text": [
-          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
-        ]
-      },
-      {
-        "title": "Stay connected on the go",
-        "text": [
-          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
-        ]
-      },
-      {
-        "title": "Stream your favorite music",
-        "text": [
-          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
-        ]
-      }
-    ],
-    "screen": "1.3' OLED",
-    "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
     "id": "apple-watch-series-6-40mm-space-gray",
     "category": "accessories",
     "namespaceId": "apple-watch-series-6",
@@ -668,6 +416,258 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+    {
+    "id": "apple-watch-se-40mm-silver",
+    "category": "accessories",
+    "namespaceId": "apple-watch-se",
+    "name": "Apple Watch SE 40mm Silver",
+    "capacityAvailable": ["40mm", "44mm"],
+    "capacity": "40mm",
+    "priceRegular": 279,
+    "priceDiscount": 249,
+    "colorsAvailable": ["silver", "gold", "space gray"],
+    "color": "silver",
+    "images": [
+      "img/accessories/apple-watch-se/silver/00.webp",
+      "img/accessories/apple-watch-se/silver/01.webp",
+      "img/accessories/apple-watch-se/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Retina display",
+        "text": [
+          "The Apple Watch SE features a Retina display that provides clear and vibrant visuals for easy readability."
+        ]
+      },
+      {
+        "title": "Family Setup",
+        "text": [
+          "With Family Setup, you can pair your Apple Watch SE with a family member's iPhone, so you can stay connected even without owning an iPhone yourself."
+        ]
+      },
+      {
+        "title": "Fitness tracking",
+        "text": [
+          "The Apple Watch SE offers comprehensive fitness tracking features, including activity tracking, heart rate monitoring, and built-in GPS for tracking your outdoor workouts."
+        ]
+      }
+    ],
+    "screen": "1.57' OLED",
+    "resolution": "324x394",
+    "processor": "Apple S5",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-se-44mm-silver",
+    "category": "accessories",
+    "namespaceId": "apple-watch-se",
+    "name": "Apple Watch SE 44mm Silver",
+    "capacityAvailable": ["40mm", "44mm"],
+    "capacity": "44mm",
+    "priceRegular": 309,
+    "priceDiscount": 279,
+    "colorsAvailable": ["silver", "gold", "space gray"],
+    "color": "silver",
+    "images": [
+      "img/accessories/apple-watch-se/silver/00.webp",
+      "img/accessories/apple-watch-se/silver/01.webp",
+      "img/accessories/apple-watch-se/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Retina display",
+        "text": [
+          "The Apple Watch SE features a Retina display that provides clear and vibrant visuals for easy readability."
+        ]
+      },
+      {
+        "title": "Family Setup",
+        "text": [
+          "With Family Setup, you can pair your Apple Watch SE with a family member's iPhone, so you can stay connected even without owning an iPhone yourself."
+        ]
+      },
+      {
+        "title": "Fitness tracking",
+        "text": [
+          "The Apple Watch SE offers comprehensive fitness tracking features, including activity tracking, heart rate monitoring, and built-in GPS for tracking your outdoor workouts."
+        ]
+      }
+    ],
+    "screen": "1.78' OLED",
+    "resolution": "368x448",
+    "processor": "Apple S5",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-se-40mm-gold",
+    "category": "accessories",
+    "namespaceId": "apple-watch-se",
+    "name": "Apple Watch SE 40mm Gold",
+    "capacityAvailable": ["40mm", "44mm"],
+    "capacity": "40mm",
+    "priceRegular": 279,
+    "priceDiscount": 259,
+    "colorsAvailable": ["silver", "space gray", "gold"],
+    "color": "gold",
+    "images": [
+      "img/accessories/apple-watch-se/gold/00.webp",
+      "img/accessories/apple-watch-se/gold/01.webp",
+      "img/accessories/apple-watch-se/gold/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Retina display",
+        "text": [
+          "The Apple Watch SE features a stunning Retina display that is always on, so you can easily see the time and important information without having to raise your wrist."
+        ]
+      },
+      {
+        "title": "Health and fitness tracking",
+        "text": [
+          "The Apple Watch SE has all the features you need to stay healthy and active, including heart rate monitoring, activity tracking, and sleep tracking. It also has built-in GPS so you can track your workouts and outdoor activities."
+        ]
+      },
+      {
+        "title": "Stay connected",
+        "text": [
+          "With cellular and Wi-Fi connectivity, you can stay connected wherever you go. You can make and receive calls, send texts, and stream music directly from your wrist."
+        ]
+      }
+    ],
+    "screen": "1.57' OLED",
+    "resolution": "324x394",
+    "processor": "Apple S5",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-se-44mm-gold",
+    "category": "accessories",
+    "namespaceId": "apple-watch-se",
+    "name": "Apple Watch SE 44mm Gold",
+    "capacityAvailable": ["40mm", "44mm"],
+    "capacity": "44mm",
+    "priceRegular": 309,
+    "priceDiscount": 289,
+    "colorsAvailable": ["space gray", "silver", "gold"],
+    "color": "gold",
+    "images": [
+      "img/accessories/apple-watch-se/gold/00.webp",
+      "img/accessories/apple-watch-se/gold/01.webp",
+      "img/accessories/apple-watch-se/gold/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Retina display",
+        "text": [
+          "The Apple Watch SE features a stunning Retina display that is always on, so you can easily see the time and important information without lifting your wrist."
+        ]
+      },
+      {
+        "title": "Track your daily activity",
+        "text": [
+          "The Apple Watch SE tracks your daily activity including workouts, steps taken, and calories burned. It also has a built-in GPS to track your runs, walks, and hikes."
+        ]
+      },
+      {
+        "title": "Stay connected",
+        "text": [
+          "The Apple Watch SE keeps you connected with the people and information you care about most. With cellular service, you can make and receive calls and texts, stream music, and use Siri, all without your iPhone."
+        ]
+      }
+    ],
+    "screen": "1.78' OLED",
+    "resolution": "368x448",
+    "processor": "Apple S5",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-se-40mm-space-gray",
+    "category": "accessories",
+    "namespaceId": "apple-watch-se",
+    "name": "Apple Watch SE 40mm Space Gray",
+    "capacityAvailable": ["40mm", "44mm"],
+    "capacity": "40mm",
+    "priceRegular": 279,
+    "priceDiscount": 259,
+    "colorsAvailable": ["silver", "space gray", "gold"],
+    "color": "space gray",
+    "images": [
+      "img/accessories/apple-watch-se/space-gray/00.webp",
+      "img/accessories/apple-watch-se/space-gray/01.webp",
+      "img/accessories/apple-watch-se/space-gray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Retina display",
+        "text": [
+          "The Apple Watch SE features a stunning Retina display that is always on, providing clear and vibrant visuals for easy readability."
+        ]
+      },
+      {
+        "title": "Fitness and health tracking",
+        "text": [
+          "The Apple Watch SE helps you stay active and monitors your health with features like heart rate monitoring, activity tracking, and built-in GPS for tracking your outdoor workouts."
+        ]
+      },
+      {
+        "title": "Stay connected",
+        "text": [
+          "With cellular and Wi-Fi connectivity, you can stay connected on the go. Make and receive calls, send messages, stream music, and access Siri right from your wrist."
+        ]
+      }
+    ],
+    "screen": "1.57' OLED",
+    "resolution": "324x394",
+    "processor": "Apple S5",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-se-44mm-space-gray",
+    "category": "accessories",
+    "namespaceId": "apple-watch-se",
+    "name": "Apple Watch SE 44mm Space Gray",
+    "capacityAvailable": ["40mm", "44mm"],
+    "capacity": "44mm",
+    "priceRegular": 309,
+    "priceDiscount": 289,
+    "colorsAvailable": ["silver", "space gray", "gold"],
+    "color": "space gray",
+    "images": [
+      "img/accessories/apple-watch-se/space-gray/00.webp",
+      "img/accessories/apple-watch-se/space-gray/01.webp",
+      "img/accessories/apple-watch-se/space-gray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Retina display",
+        "text": [
+          "The Apple Watch SE features a stunning Retina display that is always on, providing clear and vibrant visuals for easy readability."
+        ]
+      },
+      {
+        "title": "Fitness and health tracking",
+        "text": [
+          "The Apple Watch SE helps you stay active and monitors your health with features like heart rate monitoring, activity tracking, and built-in GPS for tracking your outdoor workouts."
+        ]
+      },
+      {
+        "title": "Stay connected",
+        "text": [
+          "With cellular and Wi-Fi connectivity, you can stay connected on the go. Make and receive calls, send messages, stream music, and access Siri right from your wrist."
+        ]
+      }
+    ],
+    "screen": "1.78' OLED",
+    "resolution": "368x448",
+    "processor": "Apple S5",
     "ram": "1GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
@@ -1175,256 +1175,257 @@
     "ram": "0.75GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
+
   {
-    "id": "apple-watch-se-40mm-silver",
+    "id": "apple-watch-series-3-38mm-space-gray",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
-    "name": "Apple Watch SE 40mm Silver",
-    "capacityAvailable": ["40mm", "44mm"],
-    "capacity": "40mm",
-    "priceRegular": 279,
-    "priceDiscount": 249,
-    "colorsAvailable": ["silver", "gold", "space gray"],
-    "color": "silver",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 38mm Space Gray",
+    "capacityAvailable": ["38mm", "42mm"],
+    "capacity": "38mm",
+    "priceRegular": 199,
+    "priceDiscount": 169,
+    "colorsAvailable": ["space gray", "silver", "gold"],
+    "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-se/silver/00.webp",
-      "img/accessories/apple-watch-se/silver/01.webp",
-      "img/accessories/apple-watch-se/silver/02.webp"
+      "img/accessories/apple-watch-series-3/space-gray/00.webp",
+      "img/accessories/apple-watch-series-3/space-gray/01.webp",
+      "img/accessories/apple-watch-series-3/space-gray/02.webp"
     ],
     "description": [
       {
-        "title": "Retina display",
+        "title": "Monitor your health",
         "text": [
-          "The Apple Watch SE features a Retina display that provides clear and vibrant visuals for easy readability."
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
         ]
       },
       {
-        "title": "Family Setup",
+        "title": "Stay connected on the go",
         "text": [
-          "With Family Setup, you can pair your Apple Watch SE with a family member's iPhone, so you can stay connected even without owning an iPhone yourself."
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
         ]
       },
       {
-        "title": "Fitness tracking",
+        "title": "Stream your favorite music",
         "text": [
-          "The Apple Watch SE offers comprehensive fitness tracking features, including activity tracking, heart rate monitoring, and built-in GPS for tracking your outdoor workouts."
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
         ]
       }
     ],
-    "screen": "1.57' OLED",
-    "resolution": "324x394",
-    "processor": "Apple S5",
-    "ram": "1GB",
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
-    "id": "apple-watch-se-44mm-silver",
+    "id": "apple-watch-series-3-42mm-space-gray",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
-    "name": "Apple Watch SE 44mm Silver",
-    "capacityAvailable": ["40mm", "44mm"],
-    "capacity": "44mm",
-    "priceRegular": 309,
-    "priceDiscount": 279,
-    "colorsAvailable": ["silver", "gold", "space gray"],
-    "color": "silver",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 42mm Space Gray",
+    "capacityAvailable": ["38mm", "42mm"],
+    "capacity": "42mm",
+    "priceRegular": 250,
+    "priceDiscount": 219,
+    "colorsAvailable": ["space gray", "silver", "gold"],
+    "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-se/silver/00.webp",
-      "img/accessories/apple-watch-se/silver/01.webp",
-      "img/accessories/apple-watch-se/silver/02.webp"
+      "img/accessories/apple-watch-series-3/space-gray/00.webp",
+      "img/accessories/apple-watch-series-3/space-gray/01.webp",
+      "img/accessories/apple-watch-series-3/space-gray/02.webp"
     ],
     "description": [
       {
-        "title": "Retina display",
+        "title": "Monitor your health",
         "text": [
-          "The Apple Watch SE features a Retina display that provides clear and vibrant visuals for easy readability."
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
         ]
       },
       {
-        "title": "Family Setup",
+        "title": "Stay connected on the go",
         "text": [
-          "With Family Setup, you can pair your Apple Watch SE with a family member's iPhone, so you can stay connected even without owning an iPhone yourself."
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
         ]
       },
       {
-        "title": "Fitness tracking",
+        "title": "Stream your favorite music",
         "text": [
-          "The Apple Watch SE offers comprehensive fitness tracking features, including activity tracking, heart rate monitoring, and built-in GPS for tracking your outdoor workouts."
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
         ]
       }
     ],
-    "screen": "1.78' OLED",
-    "resolution": "368x448",
-    "processor": "Apple S5",
-    "ram": "1GB",
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
-    "id": "apple-watch-se-40mm-gold",
+    "id": "apple-watch-series-3-38mm-gold",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
-    "name": "Apple Watch SE 40mm Gold",
-    "capacityAvailable": ["40mm", "44mm"],
-    "capacity": "40mm",
-    "priceRegular": 279,
-    "priceDiscount": 259,
-    "colorsAvailable": ["silver", "space gray", "gold"],
-    "color": "gold",
-    "images": [
-      "img/accessories/apple-watch-se/gold/00.webp",
-      "img/accessories/apple-watch-se/gold/01.webp",
-      "img/accessories/apple-watch-se/gold/02.webp"
-    ],
-    "description": [
-      {
-        "title": "Retina display",
-        "text": [
-          "The Apple Watch SE features a stunning Retina display that is always on, so you can easily see the time and important information without having to raise your wrist."
-        ]
-      },
-      {
-        "title": "Health and fitness tracking",
-        "text": [
-          "The Apple Watch SE has all the features you need to stay healthy and active, including heart rate monitoring, activity tracking, and sleep tracking. It also has built-in GPS so you can track your workouts and outdoor activities."
-        ]
-      },
-      {
-        "title": "Stay connected",
-        "text": [
-          "With cellular and Wi-Fi connectivity, you can stay connected wherever you go. You can make and receive calls, send texts, and stream music directly from your wrist."
-        ]
-      }
-    ],
-    "screen": "1.57' OLED",
-    "resolution": "324x394",
-    "processor": "Apple S5",
-    "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
-  },
-  {
-    "id": "apple-watch-se-44mm-gold",
-    "category": "accessories",
-    "namespaceId": "apple-watch-se",
-    "name": "Apple Watch SE 44mm Gold",
-    "capacityAvailable": ["40mm", "44mm"],
-    "capacity": "44mm",
-    "priceRegular": 309,
-    "priceDiscount": 289,
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 38mm Gold",
+    "capacityAvailable": ["38mm", "42mm"],
+    "capacity": "38mm",
+    "priceRegular": 199,
+    "priceDiscount": 169,
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-se/gold/00.webp",
-      "img/accessories/apple-watch-se/gold/01.webp",
-      "img/accessories/apple-watch-se/gold/02.webp"
+      "img/accessories/apple-watch-series-3/gold/00.webp",
+      "img/accessories/apple-watch-series-3/gold/01.webp",
+      "img/accessories/apple-watch-series-3/gold/02.webp"
     ],
     "description": [
       {
-        "title": "Retina display",
+        "title": "Monitor your health",
         "text": [
-          "The Apple Watch SE features a stunning Retina display that is always on, so you can easily see the time and important information without lifting your wrist."
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
         ]
       },
       {
-        "title": "Track your daily activity",
+        "title": "Stay connected on the go",
         "text": [
-          "The Apple Watch SE tracks your daily activity including workouts, steps taken, and calories burned. It also has a built-in GPS to track your runs, walks, and hikes."
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
         ]
       },
       {
-        "title": "Stay connected",
+        "title": "Stream your favorite music",
         "text": [
-          "The Apple Watch SE keeps you connected with the people and information you care about most. With cellular service, you can make and receive calls and texts, stream music, and use Siri, all without your iPhone."
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
         ]
       }
     ],
-    "screen": "1.78' OLED",
-    "resolution": "368x448",
-    "processor": "Apple S5",
-    "ram": "1GB",
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
-    "id": "apple-watch-se-40mm-space-gray",
+    "id": "apple-watch-series-3-42mm-gold",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
-    "name": "Apple Watch SE 40mm Space Gray",
-    "capacityAvailable": ["40mm", "44mm"],
-    "capacity": "40mm",
-    "priceRegular": 279,
-    "priceDiscount": 259,
-    "colorsAvailable": ["silver", "space gray", "gold"],
-    "color": "space gray",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 42mm Gold",
+    "capacityAvailable": ["38mm", "42mm"],
+    "capacity": "42mm",
+    "priceRegular": 250,
+    "priceDiscount": 219,
+    "colorsAvailable": ["space gray", "silver", "gold"],
+    "color": "gold",
     "images": [
-      "img/accessories/apple-watch-se/space-gray/00.webp",
-      "img/accessories/apple-watch-se/space-gray/01.webp",
-      "img/accessories/apple-watch-se/space-gray/02.webp"
+      "img/accessories/apple-watch-series-3/gold/00.webp",
+      "img/accessories/apple-watch-series-3/gold/01.webp",
+      "img/accessories/apple-watch-series-3/gold/02.webp"
     ],
     "description": [
       {
-        "title": "Retina display",
+        "title": "Monitor your health",
         "text": [
-          "The Apple Watch SE features a stunning Retina display that is always on, providing clear and vibrant visuals for easy readability."
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
         ]
       },
       {
-        "title": "Fitness and health tracking",
+        "title": "Stay connected on the go",
         "text": [
-          "The Apple Watch SE helps you stay active and monitors your health with features like heart rate monitoring, activity tracking, and built-in GPS for tracking your outdoor workouts."
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
         ]
       },
       {
-        "title": "Stay connected",
+        "title": "Stream your favorite music",
         "text": [
-          "With cellular and Wi-Fi connectivity, you can stay connected on the go. Make and receive calls, send messages, stream music, and access Siri right from your wrist."
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
         ]
       }
     ],
-    "screen": "1.57' OLED",
-    "resolution": "324x394",
-    "processor": "Apple S5",
-    "ram": "1GB",
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
-    "id": "apple-watch-se-44mm-space-gray",
+    "id": "apple-watch-series-3-38mm-silver",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
-    "name": "Apple Watch SE 44mm Space Gray",
-    "capacityAvailable": ["40mm", "44mm"],
-    "capacity": "44mm",
-    "priceRegular": 309,
-    "priceDiscount": 289,
-    "colorsAvailable": ["silver", "space gray", "gold"],
-    "color": "space gray",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 38mm Silver",
+    "capacityAvailable": ["38mm", "42mm"],
+    "capacity": "38mm",
+    "priceRegular": 199,
+    "priceDiscount": 169,
+    "colorsAvailable": ["space gray", "silver", "gold"],
+    "color": "silver",
     "images": [
-      "img/accessories/apple-watch-se/space-gray/00.webp",
-      "img/accessories/apple-watch-se/space-gray/01.webp",
-      "img/accessories/apple-watch-se/space-gray/02.webp"
+      "img/accessories/apple-watch-series-3/silver/00.webp",
+      "img/accessories/apple-watch-series-3/silver/01.webp",
+      "img/accessories/apple-watch-series-3/silver/02.webp"
     ],
     "description": [
       {
-        "title": "Retina display",
+        "title": "Monitor your health",
         "text": [
-          "The Apple Watch SE features a stunning Retina display that is always on, providing clear and vibrant visuals for easy readability."
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
         ]
       },
       {
-        "title": "Fitness and health tracking",
+        "title": "Stay connected on the go",
         "text": [
-          "The Apple Watch SE helps you stay active and monitors your health with features like heart rate monitoring, activity tracking, and built-in GPS for tracking your outdoor workouts."
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
         ]
       },
       {
-        "title": "Stay connected",
+        "title": "Stream your favorite music",
         "text": [
-          "With cellular and Wi-Fi connectivity, you can stay connected on the go. Make and receive calls, send messages, stream music, and access Siri right from your wrist."
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
         ]
       }
     ],
-    "screen": "1.78' OLED",
-    "resolution": "368x448",
-    "processor": "Apple S5",
-    "ram": "1GB",
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-series-3-42mm-silver",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 42mm Silver",
+    "capacityAvailable": ["38mm", "42mm"],
+    "capacity": "42mm",
+    "priceRegular": 250,
+    "priceDiscount": 219,
+    "colorsAvailable": ["space gray", "silver", "gold"],
+    "color": "silver",
+    "images": [
+      "img/accessories/apple-watch-series-3/silver/00.webp",
+      "img/accessories/apple-watch-series-3/silver/01.webp",
+      "img/accessories/apple-watch-series-3/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   }
 ]
