@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductDetailsPage.module.scss';
@@ -20,6 +20,118 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
 import 'yet-another-react-lightbox/styles.css';
 
+type ProductDetailsState = {
+  product: Phone | null;
+  productInfo: Product | null;
+  loading: boolean;
+  error: boolean;
+  selectedImage: number;
+  selectedColor: string;
+  selectedCapacity: string;
+  isLightboxOpen: boolean;
+  isColorChanging: boolean;
+  swipeStartX: number | null;
+  swipeEndX: number | null;
+};
+
+type ProductDetailsAction =
+  | { type: 'FETCH_START'; showLoader: boolean }
+  | { type: 'FETCH_SUCCESS'; product: Phone; productInfo: Product }
+  | { type: 'FETCH_ERROR' }
+  | { type: 'FETCH_FINISH' }
+  | { type: 'SET_SELECTED_IMAGE'; imageIndex: number }
+  | { type: 'OPEN_LIGHTBOX' }
+  | { type: 'CLOSE_LIGHTBOX' }
+  | { type: 'START_SWIPE'; startX: number }
+  | { type: 'MOVE_SWIPE'; endX: number };
+
+const initialState: ProductDetailsState = {
+  product: null,
+  productInfo: null,
+  loading: true,
+  error: false,
+  selectedImage: 0,
+  selectedColor: '',
+  selectedCapacity: '',
+  isLightboxOpen: false,
+  isColorChanging: false,
+  swipeStartX: null,
+  swipeEndX: null,
+};
+
+const productDetailsReducer = (
+  state: ProductDetailsState,
+  action: ProductDetailsAction,
+): ProductDetailsState => {
+  switch (action.type) {
+    case 'FETCH_START':
+      return {
+        ...state,
+        loading: action.showLoader ? true : state.loading,
+        isColorChanging: action.showLoader ? false : true,
+        error: false,
+      };
+
+    case 'FETCH_SUCCESS':
+      return {
+        ...state,
+        product: action.product,
+        productInfo: action.productInfo,
+        selectedColor: action.product.color,
+        selectedCapacity: action.product.capacity,
+        selectedImage: 0,
+        error: false,
+      };
+
+    case 'FETCH_ERROR':
+      return {
+        ...state,
+        error: true,
+      };
+
+    case 'FETCH_FINISH':
+      return {
+        ...state,
+        loading: false,
+        isColorChanging: false,
+      };
+
+    case 'SET_SELECTED_IMAGE':
+      return {
+        ...state,
+        selectedImage: action.imageIndex,
+      };
+
+    case 'OPEN_LIGHTBOX':
+      return {
+        ...state,
+        isLightboxOpen: true,
+      };
+
+    case 'CLOSE_LIGHTBOX':
+      return {
+        ...state,
+        isLightboxOpen: false,
+      };
+
+    case 'START_SWIPE':
+      return {
+        ...state,
+        swipeStartX: action.startX,
+        swipeEndX: null,
+      };
+
+    case 'MOVE_SWIPE':
+      return {
+        ...state,
+        swipeEndX: action.endX,
+      };
+
+    default:
+      return state;
+  }
+};
+
 export const ProductDetailsPage = () => {
   const { t } = useTranslation();
   const { productId } = useParams<{ productId: string }>();
@@ -27,20 +139,21 @@ export const ProductDetailsPage = () => {
   const location = useLocation();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const { cartItems, addToCart, removeFromCart } = useCart();
-  const [product, setProduct] = useState<Phone | null>(null);
-  const [productInfo, setProductInfo] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedCapacity, setSelectedCapacity] = useState('');
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [isColorChanging, setIsColorChanging] = useState(false);
+  const [state, dispatch] = useReducer(productDetailsReducer, initialState);
+  const {
+    product,
+    productInfo,
+    loading,
+    error,
+    selectedImage,
+    selectedColor,
+    selectedCapacity,
+    isLightboxOpen,
+    isColorChanging,
+    swipeStartX,
+    swipeEndX,
+  } = state;
   const isComponentMountedRef = useRef(true);
-
-  // for swipe functionality on mobile
-  const [swipeStartX, setSwipeStartX] = useState<number | null>(null);
-  const [swipeEndX, setSwipeEndX] = useState<number | null>(null);
 
   const isProductChange = location.state?.isVariantChange;
 
@@ -51,27 +164,20 @@ export const ProductDetailsPage = () => {
 
     const fetchProduct = async () => {
       try {
-        if (isComponentMountedRef.current || !isProductChange) {
-          setLoading(true);
-        } else {
-          setIsColorChanging(true);
-        }
-
-        setError(false);
+        dispatch({
+          type: 'FETCH_START',
+          showLoader: isComponentMountedRef.current || !isProductChange,
+        });
 
         const productsResponse = await fetchWithDelay('api/products.json');
         const allProducts: Product[] = await productsResponse.json();
         const productFromList = allProducts.find(p => p.itemId === productId);
 
         if (!productFromList) {
-          setError(true);
-          setLoading(false);
-          setIsColorChanging(false);
+          dispatch({ type: 'FETCH_ERROR' });
 
           return;
         }
-
-        setProductInfo(productFromList);
 
         const category = productFromList.category;
         const detailsResponse = await fetchWithDelay(`api/${category}.json`);
@@ -79,18 +185,18 @@ export const ProductDetailsPage = () => {
         const detailedProduct = categoryProducts.find(p => p.id === productId);
 
         if (detailedProduct) {
-          setProduct(detailedProduct);
-          setSelectedColor(detailedProduct.color);
-          setSelectedCapacity(detailedProduct.capacity);
-          setSelectedImage(0);
+          dispatch({
+            type: 'FETCH_SUCCESS',
+            product: detailedProduct,
+            productInfo: productFromList,
+          });
         } else {
-          setError(true);
+          dispatch({ type: 'FETCH_ERROR' });
         }
       } catch (err) {
-        setError(true);
+        dispatch({ type: 'FETCH_ERROR' });
       } finally {
-        setLoading(false);
-        setIsColorChanging(false);
+        dispatch({ type: 'FETCH_FINISH' });
         isComponentMountedRef.current = false;
       }
     };
@@ -123,12 +229,11 @@ export const ProductDetailsPage = () => {
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setSwipeEndX(null);
-    setSwipeStartX(e.touches[0].clientX);
+    dispatch({ type: 'START_SWIPE', startX: e.touches[0].clientX });
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setSwipeEndX(e.touches[0].clientX);
+    dispatch({ type: 'MOVE_SWIPE', endX: e.touches[0].clientX });
   };
 
   const handleTouchEnd = () => {
@@ -139,11 +244,11 @@ export const ProductDetailsPage = () => {
     const swipeDistance = swipeStartX - swipeEndX;
 
     if (swipeDistance > 60 && selectedImage < product.images.length - 1) {
-      setSelectedImage(selectedImage + 1);
+      dispatch({ type: 'SET_SELECTED_IMAGE', imageIndex: selectedImage + 1 });
     }
 
     if (swipeDistance < -60 && selectedImage > 0) {
-      setSelectedImage(selectedImage - 1);
+      dispatch({ type: 'SET_SELECTED_IMAGE', imageIndex: selectedImage - 1 });
     }
   };
 
@@ -237,7 +342,9 @@ export const ProductDetailsPage = () => {
                 className={`${styles.thumbnail} ${
                   selectedImage === index ? styles.thumbnailActive : ''
                 }`}
-                onClick={() => setSelectedImage(index)}
+                onClick={() =>
+                  dispatch({ type: 'SET_SELECTED_IMAGE', imageIndex: index })
+                }
                 disabled={isColorChanging}
               >
                 <img src={image} alt={`${product.name} ${index + 1}`} />
@@ -247,7 +354,7 @@ export const ProductDetailsPage = () => {
           <button
             type="button"
             className={styles.mainImage}
-            onClick={() => setIsLightboxOpen(true)}
+            onClick={() => dispatch({ type: 'OPEN_LIGHTBOX' })}
             disabled={isColorChanging}
           >
             <img
@@ -260,7 +367,7 @@ export const ProductDetailsPage = () => {
 
         <Lightbox
           open={isLightboxOpen}
-          close={() => setIsLightboxOpen(false)}
+          close={() => dispatch({ type: 'CLOSE_LIGHTBOX' })}
           index={selectedImage}
           slides={product.images.map((image, index) => ({
             src: image,
@@ -272,7 +379,8 @@ export const ProductDetailsPage = () => {
           zoom={{ maxZoomPixelRatio: 2 }}
           plugins={[Fullscreen, Zoom]}
           on={{
-            view: ({ index }) => setSelectedImage(index),
+            view: ({ index }) =>
+              dispatch({ type: 'SET_SELECTED_IMAGE', imageIndex: index }),
           }}
         />
 
