@@ -1,0 +1,57 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.container {
+  max-width: 1200px; /* Максимальная ширина для контента */
+  margin: 0 auto;
+  padding: 13px 16px;
+  min-height: 70vh; /* Высота контейнера на весь экран */
+}
+
+body {
+  font-family: Mont, sans-serif;
+  margin: 0; /* Шрифт для всего тела */
+}
+
+@media screen and (min-width: 640px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+}
