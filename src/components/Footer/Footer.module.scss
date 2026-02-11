@@ -1,0 +1,109 @@
+@use '../../mixins.scss' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+  border-top: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: auto;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content:  space-between;
+  }
+
+  &Links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &Link {
+    text-decoration: none;
+    color: #89939a;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 11px;
+    font-size: 12px;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  &ToTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    height: 32px;
+    justify-content: center;
+  }
+
+  &P {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #89939a;
+  }
+
+  &Button {
+    all: unset;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+  }
+}
+
+.icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.iconLeft,
+.iconRight {
+  position: relative;
+}
+
+.iconRightBag,
+.iconLeftHeart {
+  position: relative;
+  display: block;
+}
+
+.badge{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  min-width: 15px;
+  height: 15px;
+  padding: 0 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eb5757;
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 100%;
+
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #fff;
+}

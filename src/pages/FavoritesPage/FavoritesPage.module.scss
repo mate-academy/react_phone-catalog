@@ -1,0 +1,85 @@
+@use '../../mixins.scss' as *;
+
+.section {
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 32px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+}
+
+.topNavDetails {
+  display: flex;
+  gap: 8px;
+  padding-top: 24px;
+  align-items: center;
+}
+
+.nameNav {
+  font-weight: 500;
+  font-size: 14px;
+  color: #89939a;
+  margin: 0;
+}
+
+.forH {
+  margin: 0;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #313237;
+  padding-top: 24px;
+
+  @include on-tablet {
+    font-size: 48px;
+    padding-top: 40px;
+  }
+}
+
+.emptyImg {
+  width: 200px;
+  margin: 40px auto;
+  display: block;
+
+  @include on-tablet {
+    width: 300px;
+  }
+
+  @include on-desktop {
+    width: 400px;
+  }
+}
+
+.lengthItems {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  padding: 8px 0 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.productLength {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}

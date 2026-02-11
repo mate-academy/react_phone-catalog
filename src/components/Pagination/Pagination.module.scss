@@ -1,0 +1,67 @@
+@use '../../mixins.scss' as *;
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 24px 0 64px;
+  margin: 0;
+
+  @include on-tablet {
+    padding: 40px 0 64px;;
+  }
+
+  @include on-desktop {
+    padding: 40px 0 80px;
+  }
+}
+
+.block {
+  padding-right: 8px;
+}
+
+.blockL {
+  padding-left: 8px;
+}
+
+.ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid #e2e6e9;
+  line-height: 0;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+}
+
+.disabled {
+  cursor: auto;
+  opacity: 0.4;
+}
+
+.butLef {
+  padding-left: 8px;
+}
+
+.li {
+  font-weight: 400;
+  font-size: 14px;
+  color: #313237;
+  display: block;
+  height: 32px;
+  width: 32px;
+  border: 1px solid #e2e6e9;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #313237;
+  color: #FFF;
+}

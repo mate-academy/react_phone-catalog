@@ -1,0 +1,53 @@
+.capacity {
+  border-top: 1px solid #e2e6e9;
+  padding-top: 24px;
+}
+
+.titleH {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  margin: 0;
+  color: #89939a;
+  padding-bottom: 8px;
+}
+
+.wrapperCapacity {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.blockCpacity {
+  border: 1px solid #b4bdc3;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.blockCpacityActive {
+  background-color: #313237;
+}
+
+.capacityRadio {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  padding: 8px 7px 4px;
+}
+
+.capacityRadioActive {
+  color: #fff;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}

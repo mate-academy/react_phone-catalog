@@ -1,0 +1,30 @@
+@use '../../mixins.scss' as *;
+
+.main {
+  display: grid;
+  gap: 16px;
+  padding: 24px 0 0;
+  margin: 0;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+
+  @include on-tablet {
+    justify-items: start;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+  }
+}
+
+.items {
+  list-style: none;
+  box-shadow:  0 2px 15px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  width: 100%;
+
+  @include on-tablet {
+    justify-items: start;
+  }
+}
