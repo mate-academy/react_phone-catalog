@@ -1,0 +1,13 @@
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &--discount {
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: line-through;
+    line-height: 100%;
+    margin: 0;
+  }
+}

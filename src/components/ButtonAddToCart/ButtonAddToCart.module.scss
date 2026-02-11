@@ -1,0 +1,38 @@
+.controls-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  width: 100%;
+  &__add {
+    all: unset;
+    width: 100%;
+    cursor: pointer;
+    background-color: #313237;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+
+    &--active {
+      background-color: #fff;
+      color: #27ae60;
+      border: 1px solid #e2e6e9;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    }
+
+    &--no-hover:hover {
+      box-shadow: 0 0 0 #000;
+    }
+  }
+}
