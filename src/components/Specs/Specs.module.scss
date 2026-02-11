@@ -1,0 +1,42 @@
+@use '../../constants/mixin' as *;
+
+.specs {
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: 600;
+  font-size: 12px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  &__name {
+    color: var(--gray-text);
+
+    &--tech {
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    &--cart {
+      font-weight: 700;
+    }
+  }
+
+  &__value {
+    font-weight: 700;
+
+    text-align: right;
+
+    color: var(--black-text);
+
+    &--tech {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    &--cart {
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@use '../../../../constants/mixin' as *;
+
+.registration {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 95%;
+  height: 80%;
+
+  padding: 10px;
+
+  z-index: 1;
+
+  font-weight: 700;
+  font-size: 20px;
+
+  line-height: 100%;
+
+  background-color: var(--bg-page);
+
+  transform: translateY(-200px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.4s ease;
+
+
+    @include on-tablet{
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+    }
+
+  &--active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    color: var(--black-text);
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__button {
+    color: var(--color-button-text);
+    padding: 10px;
+    width: 100px;
+    border: 1px solid var(--color-button-border);
+    background-color: var(--color-button-bg);
+    border-radius: var(--border-radius-button);
+
+    &:hover {
+      background-color: var(--bg-button-hover);
+    }
+  }
+}

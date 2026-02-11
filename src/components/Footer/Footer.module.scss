@@ -1,0 +1,108 @@
+@use '../../constants/mixin' as *;
+
+.footer {
+  @include padding-inline;
+  @include page-grit;
+
+
+  background-color: var(--bg-header);
+
+  row-gap: 32px;
+  padding-block: 32px;
+
+  border-top: 1px solid var(--color-button-favorite-border-active);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__logo {
+    grid-column: 1 / -1;
+    display: flex;
+    text-decoration: none;
+    height: 32px;
+
+    @include on-tablet{
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__images {
+    width: 89px;
+  }
+
+  &__nav {
+    display: flex;
+    height: 100%;
+    gap: 16px;
+    flex-direction: column;
+    align-items: start;
+
+    @include on-tablet {
+      grid-column: 4/ 9;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include on-desktop{
+      grid-column: 9/ 17;
+    }
+  }
+
+  &__link {
+    color: var(--back-text);
+    text-transform: uppercase;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  &__buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column-start: 9;
+      justify-content: end;
+      width: auto;
+    }
+
+    @include on-desktop{
+      grid-column-start: 20;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid var(--color-button-favorite-border);
+    background-color: var(--color-button-favorite-bg);
+    border-radius: var(--border-radius-button);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-button-favorite-bg-hover);
+      border-color: var();
+    }
+  }
+
+  &__icon {
+    transform: rotate(90deg);
+  }
+
+  &__text {
+    color: var(--gray-text);
+  }
+}

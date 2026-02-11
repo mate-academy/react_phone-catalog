@@ -1,0 +1,80 @@
+@use '../../constants/mixin' as *;
+
+.breadcrumbs {
+  grid-column: 1/ -1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 100%;
+
+  &--details {
+    @include on-tablet {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__category {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--back-text);
+
+    &--details {
+      color: var(--black-text);
+    }
+
+    &--favorites {
+      color: var(--gray-text);
+    }
+  }
+
+  &__text {
+    font-weight: 600;
+
+    color: var(--gray-text);
+  }
+
+  &__name {
+    font-weight: 700;
+    color: var(--gray-text);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    line-height: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--back {
+      background-image: url(../../../public/img/my-icon/arrow-right.svg);
+
+      &-shop {
+        background-image: url(../../../public/img/my-icon/back.svg);
+      }
+      &-dark{
+        background-image: url(../../../public/img/theme-dark/right.svg);
+    }
+    }
+
+    &--home {
+      background-image: url(../../../public/img/my-icon/home.svg);
+
+      &-dark{
+        background-image: url(../../../public/img/theme-dark/home.svg);
+      }
+      &-shop {
+        display: none;
+      }
+
+    }
+  }
+}

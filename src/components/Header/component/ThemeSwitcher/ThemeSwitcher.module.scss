@@ -1,0 +1,59 @@
+@use '../../../../constants/mixin' as *;
+
+.switcher {
+  width: 60px;
+  background-color:var(--black-text);
+  border-radius: 20px;
+  padding: 5px;
+
+  &::after {
+    content: '';
+    position: relative;
+    display: block;
+
+    width: 50%;
+    padding-bottom: 50%;
+    border-radius: 50%;
+
+    background-color:var(--bg-page);
+
+    cursor: pointer;
+    transform: translateX(100%);
+    transition: 1000ms linear;
+
+  }
+
+  &--dark {
+      &::after {
+    content: '';
+    position: relative;
+    display: block;
+
+    width: 50%;
+    padding-bottom: 50%;
+    border-radius: 50%;
+
+    cursor: pointer;
+    transform: translateX(100%);
+    transition: 300ms linear;
+
+  }
+  }
+
+  &--white {
+      &::after {
+    content: '';
+    position: relative;
+    display: block;
+
+    width: 50%;
+    padding-bottom: 50%;
+    border-radius: 50%;
+
+    cursor: pointer;
+    transform: translateX(0);
+    transition: 300ms linear;
+
+  }
+  }
+}

@@ -1,0 +1,54 @@
+@use '../../../../constants/mixin' as *;
+
+.available-colors {
+  &__block {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+
+    color: var(--gray-text);
+
+    @include on-desktop {
+      position: relative;
+      width: 512px;
+    }
+  }
+
+  &__id {
+    font-weight: 700;
+    color: var(--id-tex);
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    border: 3px solid var(--white-text);
+    outline: 1px solid var(--color-border-light);
+
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    margin: 2px;
+    border-radius: 50%;
+
+    &:hover {
+      outline-color: var(--border-color-hover);
+    }
+
+    &--active {
+      outline-color: var(--black-text);
+      &:hover {
+        outline-color: var(--black-text);
+      }
+    }
+  }
+}

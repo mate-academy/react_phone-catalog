@@ -1,0 +1,175 @@
+@use '../../../../constants/mixin' as *;
+
+.carousel {
+  height: 320px;
+
+  display: flex;
+
+  position: relative;
+
+  @include on-tablet {
+    gap: 19px;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    height: 400px;
+  }
+
+  &__window {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 100%;
+    background-color: black;
+    border-radius: 8px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: bottom;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    padding-block: 18px 14px;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+
+      width: 32px;
+      z-index: 1;
+      border-radius: var(--border-radius-button);
+      background-color: var(--bg-button-slider);
+
+      border: 1px solid var(--color-border);
+    }
+
+    &--active {
+      background-color: var(--black-text);
+    }
+
+    &--prev {
+      order: -1;
+    }
+  }
+
+  &__anchors {
+    align-items: center;
+    width: 100%;
+    height: 24px;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    bottom: -25px;
+  }
+
+  &__anchor {
+    padding: 10px 5px;
+  }
+
+  &__img {
+    background-color: var(--color-border);
+    width: 14px;
+    height: 4px;
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--black-text);
+    }
+  }
+}
+
+.banner {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 253, 253, 0.2);
+    padding: 32px;
+    width: 50%;
+    height: 95%;
+    border-radius: 8px;
+    margin-left: 16px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+
+    background-image: linear-gradient(
+      to right,
+      rgba(32, 9, 167, 0),
+      rgb(166, 12, 212)
+    );
+    background-size: 200% 100%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+
+    animation: gradient-move 2s linear infinite;
+  }
+
+  &__text {
+    color: var(--white-text-carousel);
+    font-size: 12px;
+  }
+
+  &__button {
+    text-transform: uppercase;
+    color: var(--white-text-carousel);
+
+    border: 1px solid var(--gray-text);
+
+    font-weight: 700;
+    font-size: 14px;
+
+    text-align: center;
+
+    padding: 8px;
+    height: 40px;
+    width: 125px;
+    border-radius: 48px;
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
