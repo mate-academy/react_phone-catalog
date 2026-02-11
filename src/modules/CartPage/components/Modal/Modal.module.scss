@@ -1,0 +1,67 @@
+@import '../../../../styles/utils';
+
+.modal {
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 40px;
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  width: 80%;
+  max-width: 600px;
+  background-color: var(--bg-secondary);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: inherit;
+
+    @include transition;
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 0.6;
+    }
+
+    svg path {
+      fill: var(--icon-primary);
+    }
+  }
+
+  &__text {
+    color: var(--primary);
+    text-align: center;
+
+    @include h4-mobile;
+
+    @include on-tablet {
+      @include h4-tablet-desktop;
+    }
+  }
+
+  &__confirm {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    border: none;
+    color: var(--white);
+    border-radius: 8px;
+  }
+}

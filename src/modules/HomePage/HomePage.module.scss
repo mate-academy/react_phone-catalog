@@ -1,0 +1,52 @@
+@import '../../styles/utils';
+
+.home-page {
+  max-width: $desktop-width;
+  margin: 24px auto 64px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    margin-top: 56px;
+    margin-bottom: 80px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 56px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    @include h1-mobile;
+    @include page-padding-inline;
+
+    @include on-tablet {
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &__title-break {
+    @include on-desktop {
+      display: none;
+    }
+  }
+}

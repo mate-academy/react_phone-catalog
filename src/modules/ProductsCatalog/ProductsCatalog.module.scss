@@ -1,0 +1,73 @@
+@import '../../styles/utils';
+
+.products-catalog {
+  max-width: $desktop-width;
+  padding-top: 24px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 64px;
+
+  @include page-padding-inline;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    @include h1-mobile;
+
+    @include on-tablet {
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &__text {
+    color: var(--secondary);
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      margin: 0;
+    }
+  }
+
+  &__controllers {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__selectors-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      grid-template-columns: 187px 136px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 176px 128px;
+    }
+  }
+
+  &__no-found {
+    @include h2-mobile;
+
+    @include on-tablet {
+      @include h2-tablet-desktop;
+    }
+  }
+
+  &__pagination {
+    margin: 0 auto;
+  }
+}
