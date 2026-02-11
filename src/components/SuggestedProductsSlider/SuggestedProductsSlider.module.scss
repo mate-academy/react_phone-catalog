@@ -1,0 +1,83 @@
+@use '../../styles/colors';
+@use '../../styles/typography';
+
+.section {
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 639px) {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  @include typography.text-h2;
+
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  background: var(--color-white);
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--color-primary);
+
+  img {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.skeletonRow {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @media (max-width: 999px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: 799px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

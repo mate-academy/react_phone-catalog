@@ -1,0 +1,119 @@
+@use '../../styles/typography';
+@use '../../styles/colors';
+
+.categories {
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    margin-bottom: 64px;
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+    padding: 0 16px;
+  }
+}
+
+.title {
+  @include typography.text-h2;
+
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 368px;
+  text-decoration: none;
+  cursor: pointer;
+
+  @media (max-width: 1199px) {
+    width: calc((100% - 16px * 2) / 3);
+  }
+
+  @media (max-width: 639px) {
+    width: 100%;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.phones {
+  background-color: #6D6474;
+}
+
+.tablets {
+  background-color: #8D8D92;
+}
+
+.accessories {
+  background-color: #973d5f;
+}
+
+.phones .image {
+  transform: scale(1.2) translate(10%, 15%);
+}
+
+.tablets .image {
+  transform: scale(1.2) translate(5%, 10%);
+}
+
+.accessories .image {
+  width: 182%;
+  height: 99%;
+  max-width: none;
+  transform: translate(6%, 9%);
+}
+
+.card:hover .phones .image {
+  transform: scale(1.32) translate(10%, 15%);
+}
+
+.card:hover .tablets .image {
+  transform: scale(1.32) translate(5%, 10%);
+}
+
+.card:hover .accessories .image {
+  transform: scale(1.1) translate(6%, 9%);
+}
+
+.cardTitle {
+  @include typography.text-h4;
+
+  color: var(--color-primary);
+  margin: 0 0 4px;
+  font-weight: var(--text-category-weight);
+}
+
+.modelsCount {
+  @include typography.text-body;
+
+  color: var(--color-secondary);
+  margin: 0;
+}

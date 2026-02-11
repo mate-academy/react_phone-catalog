@@ -1,0 +1,131 @@
+const en = {
+  nav: {
+    home: 'Home',
+    phones: 'Phones',
+    tablets: 'Tablets',
+    accessories: 'Accessories',
+  },
+  common: {
+    back: 'Back',
+    addToCart: 'Add to cart',
+    addedToCart: 'Added to cart',
+    models_one: '{{count}} model',
+    models_other: '{{count}} models',
+    items_one: '{{count}} item',
+    items_other: '{{count}} items',
+  },
+  header: {
+    logoAlt: 'Nice Gadgets',
+    favoritesAlt: 'Favorites',
+    cartAlt: 'Cart',
+    menuAlt: 'Menu',
+    language: 'Language',
+    switchToDarkTheme: 'Switch to dark theme',
+    switchToLightTheme: 'Switch to light theme',
+  },
+  footer: {
+    github: 'Github',
+    contacts: 'Contacts',
+    rights: 'Rights',
+    backToTop: 'Back to top',
+  },
+  hero: {
+    title: 'Welcome to Nice Gadgets store!',
+    slideTitle: 'Now available in our store!',
+    slideSubtitle: 'Be the first!',
+    orderNow: 'Order now',
+    prevAlt: 'Arrow left',
+    nextAlt: 'Arrow right',
+    productAlt: 'Product',
+  },
+  sliders: {
+    newModels: 'Brand new models',
+    hotPrices: 'Hot prices',
+    youMayAlsoLike: 'You may also like',
+    leftAlt: 'Left',
+    rightAlt: 'Right',
+  },
+  categories: {
+    title: 'Shop by category',
+    phonesTitle: 'Mobile phones',
+    tabletsTitle: 'Tablets',
+    accessoriesTitle: 'Accessories',
+  },
+  catalog: {
+    sortBy: 'Sort by',
+    itemsOnPage: 'Items on page',
+    sort: {
+      age: 'Newest',
+      name: 'Alphabetically',
+      price: 'Cheapest',
+    },
+    perPageAll: 'All',
+    empty: {
+      phones: 'There are no phones yet',
+      tablets: 'There are no tablets yet',
+      accessories: 'There are no accessories yet',
+    },
+  },
+  phonesPage: {
+    title: 'Mobile phones',
+  },
+  tabletsPage: {
+    title: 'Tablets',
+  },
+  accessoriesPage: {
+    title: 'Accessories',
+  },
+  favoritesPage: {
+    crumb: 'Favourites',
+    title: 'Favorites',
+  },
+  cartPage: {
+    title: 'Cart',
+    empty: 'Your cart is empty',
+    totalFor_one: 'Total for {{count}} item',
+    totalFor_other: 'Total for {{count}} items',
+    checkout: 'Checkout',
+    checkoutModal: {
+      message:
+        'Checkout is not implemented yet. Do you want to clear the Cart?',
+      confirm: 'Confirm',
+      cancel: 'Cancel',
+    },
+  },
+  notFound: {
+    title: 'Page not found',
+    backToHome: 'Back to home',
+  },
+  product: {
+    availableColors: 'Available colors',
+    selectCapacity: 'Select capacity',
+    openGallery: 'Open image gallery',
+    notFound: 'Product was not found',
+    about: 'About',
+    techSpecs: 'Tech specs',
+    favoriteAlt: 'Favorite',
+    id: 'ID: {{id}}',
+    specs: {
+      screen: 'Screen',
+      capacity: 'Capacity',
+      ram: 'RAM',
+      resolution: 'Resolution',
+      processor: 'Processor',
+      builtInMemory: 'Built in memory',
+      camera: 'Camera',
+      zoom: 'Zoom',
+      cell: 'Cell',
+    },
+  },
+  icons: {
+    homeAlt: 'Home',
+    arrowRightAlt: 'Arrow right',
+    backAlt: 'Back',
+    heartAlt: 'Heart',
+    removeAlt: 'Remove',
+    minusAlt: 'Minus',
+    plusAlt: 'Plus',
+  },
+};
+
+export default en;

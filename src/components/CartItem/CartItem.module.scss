@@ -1,0 +1,134 @@
+@use '../../styles/typography' as typography;
+
+.item {
+  display: grid;
+  grid-template-columns: 24px 80px 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+
+  @media (max-width: 639px) {
+    grid-template-columns: 24px 80px 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 16px;
+  }
+}
+
+.remove {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.imageLink {
+  display: block;
+  text-decoration: none;
+}
+
+.title {
+  @include typography.text-body;
+
+  color: var(--color-primary);
+  font-weight: 500;
+  max-width: 360px;
+
+  @media (max-width: 639px) {
+    max-width: 100%;
+  }
+}
+
+.titleLink {
+  text-decoration: none;
+
+  &:hover .title {
+    color: var(--color-secondary);
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @media (max-width: 639px) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+}
+
+.qtyButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+
+    &:hover {
+      border-color: var(--color-elements);
+    }
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
+
+.qtyValue {
+  @include typography.text-body;
+
+  color: var(--color-primary);
+  min-width: 16px;
+  text-align: center;
+}
+
+.price {
+  @include typography.text-h3;
+
+  --text-h3-weight: var(--font-weight-extra-bold);
+
+  color: var(--color-primary);
+  justify-self: end;
+
+  @media (max-width: 639px) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+}

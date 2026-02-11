@@ -1,1 +1,79 @@
-// not empty
+@use './styles/fonts';
+@use './styles/colors';
+@use './styles/typography';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  color: var(--color-primary);
+  background-color: var(--color-page-bg);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-page-bg);
+}
+
+img[src$='.svg']:not(
+  [data-no-dark-filter='true'],
+  [src*='heart_active.svg'],
+  [src*='Logo.svg'],
+  [src*='Logo_dark.svg']
+) {
+  filter: var(--svg-icon-filter);
+}
+
+.section {
+  flex: 1;
+  padding-top: 32px;
+
+  @media (max-width: 639px) {
+    padding-top: 24px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 1199px) {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  transform: scale(0.9) translateY(-20px);
+  opacity: 0;
+  transition: all 200ms ease-out;
+}
+
+.ReactModal__Content--after-open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.ReactModal__Content--before-close {
+  transform: scale(0.9) translateY(-20px);
+  opacity: 0;
+}

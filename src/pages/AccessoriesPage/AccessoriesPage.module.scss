@@ -1,0 +1,184 @@
+@use '../../styles/colors' as *;
+@use '../../styles/typography' as *;
+
+.accessoriesPage {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @media (min-width: 640px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+
+  .homeLink {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .arrow {
+    display: flex;
+  }
+
+  .currentCrumb {
+    @include text-small;
+
+    color: var(--color-secondary);
+  }
+}
+
+.title {
+  @include text-h1;
+
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+
+.modelsCount {
+  @include text-body;
+
+  color: var(--color-secondary);
+  margin: 0 0 32px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+  animation: fade-in 0.25s ease-out;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.emptyMessage {
+  @include text-body;
+
+  color: var(--color-error-text);
+  margin: 24px 0 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+
+  @media (min-width: 640px) {
+    gap: 16px;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 4px;
+
+  @media (min-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.pageBtn {
+  --page-btn-hover-border: var(--color-primary);
+  --page-btn-hover-bg: transparent;
+  --page-btn-active-border: var(--color-primary);
+
+  min-width: 28px;
+  height: 28px;
+  padding: 0 4px;
+  border: 1px solid var(--color-elements);
+  background: transparent;
+
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  @include text-small;
+
+  &:disabled {
+    border-color: var(--color-elements);
+    color: var(--color-elements);
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  [data-theme='dark'] & {
+    --page-btn-hover-border: transparent;
+    --page-btn-hover-bg: #3b3e4a;
+    --page-btn-active-border: transparent;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--page-btn-hover-border);
+    background-color: var(--page-btn-hover-bg);
+  }
+
+  &.active {
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+    border-color: var(--page-btn-active-border);
+  }
+
+  @media (min-width: 640px) {
+    min-width: 32px;
+    height: 32px;
+
+    @include text-body;
+
+    padding: 0;
+  }
+}
