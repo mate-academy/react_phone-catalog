@@ -1,0 +1,60 @@
+.buttons {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  width: 100%;
+
+  button {
+    cursor: pointer;
+  }
+
+  &__cart {
+    background-color: $purple-button-color;
+    border: none;
+    color: $main-text-color;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+    height: 40px;
+
+    &:hover {
+      background-color: $purple-button-hover;
+    }
+
+    &__added {
+      width: 100%;
+      color: $main-text-color;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      background-color: $main-button-color;
+      border: none;
+    }
+  }
+
+  &__fav {
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $main-button-color;
+
+    &__added {
+      background-color: $main-background-color;
+      border: 1px solid $main-button-color;
+    }
+
+    &:hover {
+      background-color: $button-hover;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

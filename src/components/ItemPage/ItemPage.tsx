@@ -1,0 +1,334 @@
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NotFoundProduct } from '../NotFoundProduct/NotFoundProduct';
+import styles from './ItemPage.module.scss';
+import HomeIcon from '../../icons/home_icon.png';
+import RightArrow from '../../icons/arrows/Disabled_right.png';
+import BackArrow from '../../icons/arrows/Active_left.png';
+// import Favorites from '../../icons/favorites_icon.png';
+import { Product, ProductSlider } from '../ProductSlider/ProductSlider';
+import { Buttons } from '../Buttons/Buttons';
+
+export interface ProductDescription {
+  title: string;
+  text: string[];
+}
+
+export interface Item {
+  id: string;
+  namespaceId: string;
+  color: string;
+  name: string;
+  images: string[];
+  colorsAvailable: string[];
+  capacityAvailable: string[];
+  priceDiscount: number;
+  priceRegular: number;
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera?: string;
+  zoom?: string;
+  cell: string[];
+  capacity: string;
+  description: ProductDescription[];
+}
+
+interface Props {
+  categoryName: string;
+  items: Item[];
+}
+
+const COLOR_MAP: Record<string, string> = {
+  black: '#1f2020',
+  green: '#ade0d4',
+  yellow: '#ffe681',
+  white: '#f9f6f2',
+  purple: '#d1cdda',
+  red: '#ba0c2e',
+  gold: '#f9e5c9',
+  silver: '#ebebe3',
+  spacegray: '#535150',
+  midnightgreen: '#4e5851',
+  rosegold: '#fad7bd',
+};
+
+export const ItemPage: React.FC<Props> = ({ categoryName, items }) => {
+  const navigate = useNavigate();
+
+  const { itemId } = useParams<{ itemId: string }>();
+  const item = items.find(i => i.id === itemId);
+
+  const modelVariants = items.filter(i => i.namespaceId === item?.namespaceId);
+
+  const availableColors = item?.colorsAvailable.filter(color =>
+    modelVariants.some(variant => variant.color === color)
+  );
+
+  const handleOptionChange = (newColor?: string, newCapacity?: string) => {
+    if (!item) {
+      return;
+    }
+
+    const colorToFind = newColor || item.color;
+    const capacityToFind = newCapacity || item.capacity;
+
+    const target = items.find(i =>
+      i.namespaceId === item.namespaceId &&
+      i.color === colorToFind &&
+      i.capacity === capacityToFind
+    );
+
+    if (target) {
+      navigate(`/${categoryName.toLowerCase()}/${target.id}`);
+    }
+  }
+
+  // const [gallery, setGallery] = useState<string[]>([]);
+
+  // useEffect(() => {
+  //   if (item) {
+  //     setGallery(item.images);
+  //   }
+  // }, [item]);
+
+  // const handleImageSwap = (clickedIndex: number) => {
+  //   if (clickedIndex === 0) return;
+
+  //   const newGallery = [...gallery];
+  //   const temp = newGallery[0];
+  //   newGallery[0] = newGallery[clickedIndex];
+  //   newGallery[clickedIndex] = temp;
+
+  //   setGallery(newGallery);
+  // };
+
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const itemImages = item?.images || [];
+
+  useEffect(() => {
+    setSelectedImageIndex(0);
+  }, [itemId]);
+
+  const handleImageSwap = (index: number) => {
+    setSelectedImageIndex(index);
+  };
+
+  const youMayAlsoLike = items
+    .filter(i => i.id !== itemId)
+    .slice(0, 12);
+
+
+  const formattedProducts: Product[] = youMayAlsoLike.map((p) => ({
+    ...p,
+    price: p.priceDiscount,
+    fullPrice: p.priceRegular,
+    image: p.images[0],
+    category: categoryName,
+  }))
+
+  if (!item) {
+    return <NotFoundProduct />
+  }
+  return (
+    <div className={styles.item_page}>
+      <div className={styles.item_page__container}>
+        <div className={styles.item_page__path}>
+          <NavLink to="/">
+            <img src={HomeIcon} alt="Home page" className={styles.item_page__path__icon} />
+          </NavLink>
+
+          <img src={RightArrow} alt="Next" className={styles.item_page__path__arrow} />
+          <NavLink to={`/${categoryName}`} className={styles.item_page__path__link}>
+            <p className={styles.item_page__path__text}>{categoryName}</p>
+          </NavLink>
+
+          <img src={RightArrow} alt="Next" className={styles.item_page__path__arrow} />
+          <p className={styles.item_page__path__name}>{item.name}</p>
+        </div>
+
+        <div className={styles.item_page__back} onClick={() => navigate(-1)}>
+          <img src={BackArrow} alt="Back" className={styles.item_page__back__icon} />
+          <p className={styles.item_page__back__text}>Back</p>
+        </div>
+
+        <h2 className={styles.item_page__title}>{item.name}</h2>
+
+        <div className={styles.item_page__main_info}>
+          <div className={styles.item_page__main_info__images}>
+            <div className={styles.item_page__main_info__images__side}>
+              {itemImages.map((img, index) => (
+                <div
+                  key={img}
+                  className={`${styles.item_page__main_info__images__side__image} ${selectedImageIndex === index
+                    ? styles['item_page__main_info__images__side__image--active']
+                    : ''
+                    }`}
+                  onClick={() => handleImageSwap(index)}
+                >
+                  <img
+                    src={img}
+                    alt="Thumbnail"
+                    className={styles.item_page__main_info__images__side__image__img}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className={styles.item_page__main_info__images__main_image}>
+              <img
+                src={itemImages[selectedImageIndex]}
+                alt="Main product photo"
+                className={styles.item_page__main_info__images__main_image__img}
+              />
+            </div>
+          </div>
+
+          <div className={styles.item_page__main_info__options}>
+            <p className={styles.item_page__main_info__options__text}>Available colors</p>
+            <div className={styles.item_page__main_info__options__colors}>
+              {availableColors?.map(color => (
+                <div
+                  key={color}
+                  className={`${styles.item_page__main_info__options__colors__container} ${color === item.color ? styles['item_page__main_info__options__colors__container--active'] : ''
+                    }`}
+                >
+                  <button
+                    type="button"
+                    className={styles.item_page__main_info__options__colors__option}
+                    style={{ backgroundColor: COLOR_MAP[color] || color }}
+                    onClick={() => handleOptionChange(color, item.capacity)}
+                    aria-label={color}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.item_page__main_info__options__capacity}>
+              <p className={styles.item_page__main_info__options__text}>Select capacity</p>
+              <div className={styles.item_page__main_info__options__capacity__buttons}>
+                {item.capacityAvailable.map(capacity => (
+                  <button
+                    key={capacity.indexOf(capacity)}
+                    className={`${styles.item_page__main_info__options__capacity__options} ${capacity === item.capacity ? styles['item_page__main_info__options__capacity__options--active'] : ''
+                      }`}
+                    onClick={() => handleOptionChange(item.color, capacity)}
+                  >
+                    {capacity}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.item_page__main_info__options__price}>
+              <p className={styles.item_page__main_info__options__price__main_price}>${item.priceDiscount}</p>
+              <p className={styles.item_page__main_info__options__price__full_price}>${item.priceRegular}</p>
+            </div>
+
+            <div className={styles.item_page__main_info__options__buttons}>
+              <Buttons productId={String(item.id)} />
+            </div>
+
+
+            <div className={styles.item_page__main_info__options__description}>
+              <div className={styles.item_page__main_info__options__description__line}>
+                <p className={styles.item_page__main_info__options__description__line__text}>Screen</p>
+                <p className={styles.item_page__main_info__options__description__line__value}>{item.screen}</p>
+              </div>
+              <div className={styles.item_page__main_info__options__description__line}>
+                <p className={styles.item_page__main_info__options__description__line__text}>Resolution</p>
+                <p className={styles.item_page__main_info__options__description__line__value}>{item.resolution}</p>
+              </div>
+              <div className={styles.item_page__main_info__options__description__line}>
+                <p className={styles.item_page__main_info__options__description__line__text}>Processor</p>
+                <p className={styles.item_page__main_info__options__description__line__value}>{item.processor}</p>
+              </div>
+              <div className={styles.item_page__main_info__options__description__line}>
+                <p className={styles.item_page__main_info__options__description__line__text}>RAM</p>
+                <p className={styles.item_page__main_info__options__description__line__value}>{item.ram}</p>
+              </div>
+            </div>
+
+          </div>
+          <div className={styles.item_page__main_info__id}>
+            <p className={styles.item_page__main_info__id__text}>ID:</p>
+          </div>
+        </div>
+
+        <div className={styles.item_page__info}>
+          <div className={styles.item_page__info__about}>
+            <h2 className={styles.item_page__info__title}>About</h2>
+            <div className={styles.item_page__info__about__container}>
+              {item.description.map(p => (
+                <>
+                  <p
+                    key={p.title}
+                    className={styles.item_page__info__about__title}
+                  >
+                    {p.title}
+                  </p>
+                  {p.text.map(text => (
+                    <p
+                      key={text.indexOf(text)}
+                      className={styles.item_page__info__about__description}
+                    >
+                      {text}
+                    </p>
+                  ))}
+                </>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.item_page__info__tech_specs}>
+            <h2 className={styles.item_page__info__title}>Tech specs</h2>
+            <div className={styles.item_page__info__tech_specs__container}>
+              <div className={styles.item_page__info__tech_specs__line}>
+                <p className={styles.item_page__info__tech_specs__line__text}>Screen</p>
+                <p className={styles.item_page__info__tech_specs__line__value}>{item.screen}</p>
+              </div>
+              <div className={styles.item_page__info__tech_specs__line}>
+                <p className={styles.item_page__info__tech_specs__line__text}>Resolution</p>
+                <p className={styles.item_page__info__tech_specs__line__value}>{item.resolution}</p>
+              </div>
+              <div className={styles.item_page__info__tech_specs__line}>
+                <p className={styles.item_page__info__tech_specs__line__text}>Processor</p>
+                <p className={styles.item_page__info__tech_specs__line__value}>{item.processor}</p>
+              </div>
+              <div className={styles.item_page__info__tech_specs__line}>
+                <p className={styles.item_page__info__tech_specs__line__text}>RAM</p>
+                <p className={styles.item_page__info__tech_specs__line__value}>{item.ram}</p>
+              </div>
+              <div className={styles.item_page__info__tech_specs__line}>
+                <p className={styles.item_page__info__tech_specs__line__text}>Built in memory</p>
+                <p className={styles.item_page__info__tech_specs__line__value}>{item.capacity}</p>
+              </div>
+              {item.camera && (
+                <div className={styles.item_page__info__tech_specs__line}>
+                  <p className={styles.item_page__info__tech_specs__line__text}>Camera</p>
+                  <p className={styles.item_page__info__tech_specs__line__value}>{item.camera}</p>
+                </div>
+              )}
+              {item.zoom && (
+                <div className={styles.item_page__info__tech_specs__line}>
+                  <p className={styles.item_page__info__tech_specs__line__text}>Zoom</p>
+                  <p className={styles.item_page__info__tech_specs__line__value}>{item.zoom}</p>
+                </div>
+              )}
+              <div className={styles.item_page__info__tech_specs__line}>
+                <p className={styles.item_page__info__tech_specs__line__text}>Cell</p>
+                <p className={styles.item_page__info__tech_specs__line__value}>{item.cell.join(', ')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ProductSlider
+          title="You may also like"
+          products={formattedProducts}
+        />
+      </div>
+    </div>
+  );
+}
