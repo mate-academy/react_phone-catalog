@@ -1,0 +1,146 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.productCard {
+  background-color: $surface1-color;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px 32px;
+  margin: 0;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__imageWrapper {
+    position: relative;
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__image {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: $semi-bold;
+    line-height: 1.4;
+    color: $white;
+    text-wrap: balance;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 22px;
+  }
+
+  &__price {
+    font-weight: $super-bold;
+    line-height: 1.4;
+    color: $white;
+  }
+
+  &__fullPrice {
+    font-weight: $semi-bold;
+    line-height: 1.4;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+
+  &__divider {
+    height: 2px;
+    background-color: $elements-color;
+    opacity: 0.5;
+    margin: 8px 0;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 8px;
+    margin-bottom: 16px;
+
+    font-size: 12px;
+    font-weight: $semi-bold;
+  }
+
+  &__property {
+    color: $secondary-color;
+  }
+
+  &__value {
+    text-align: right;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    background-color: $accent-color;
+    border: none;
+    font-size: 14px;
+    font-weight: $semi-bold;
+    text-align: center;
+    flex: 1;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+
+    &_added {
+      background-color: $surface2-color;
+
+      &:hover {
+        background-color: $icons-hover-color;
+      }
+    }
+  }
+
+  &__favButton {
+    width: 40px;
+    height: 40px;
+    background-color: $surface2-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+
+    &_active {
+      background: transparent;
+      border: 2px solid $elements-color;
+    }
+  }
+}

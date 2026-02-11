@@ -1,0 +1,45 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: $secondary-color;
+
+  &__home {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__homeIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+    filter: invert(30%) sepia(5%) saturate(400%) hue-rotate(200deg) brightness(90%) contrast(90%);
+    transform: none !important;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: $white;
+  }
+
+  &__current {
+    font-weight: $bold;
+    color: $secondary-color;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+}

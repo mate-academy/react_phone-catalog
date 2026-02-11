@@ -1,0 +1,79 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+
+    background-color: $surface2-color;
+    transition: all 0.3s ease;
+
+    &:first-child {
+      margin-right: 16px;
+    }
+
+    &:last-child {
+      margin-left: 16px;
+    }
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__pageButton,
+  &__ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+
+    background-color: $surface1-color;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+
+    &:active {
+      background-color: $accent-color;
+    }
+  }
+
+  &__ellipsis {
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $surface1-color !important;
+    }
+  }
+
+  &__pageButtonActive {
+    background-color: $accent-color;
+    cursor: default;
+  }
+}

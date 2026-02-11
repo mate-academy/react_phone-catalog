@@ -1,0 +1,23 @@
+@import '../../../../../styles/mixins.scss';
+@import '../../../../../styles/variables.scss';
+
+.tabletsCard {
+  margin: 0;
+  padding: 0;
+
+  @include card-base;
+
+  &__imageContainer {
+    @include image-container;
+
+    background-color: #973d5f;
+  }
+
+  &__image {
+    @include position-and-crop-image;
+
+    margin-right: -30px;
+  }
+
+  @include categories-title-sizes;
+}

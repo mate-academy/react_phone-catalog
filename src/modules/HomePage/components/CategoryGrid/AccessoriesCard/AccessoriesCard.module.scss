@@ -1,0 +1,23 @@
+@import '../../../../../styles/mixins.scss';
+@import '../../../../../styles/variables.scss';
+
+.accessoriesCard {
+  margin: 0;
+  padding: 0;
+
+  @include card-base;
+
+  &__imageContainer {
+    @include image-container;
+
+    background-color: #8d8d92;
+  }
+
+  &__image {
+    @include position-and-crop-image;
+
+    margin-right: -15px;
+  }
+
+  @include categories-title-sizes;
+}

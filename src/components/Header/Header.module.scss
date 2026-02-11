@@ -1,0 +1,257 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.headerMain {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background-color: $primary-color;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 0;
+  border-bottom: $border;
+  height: 48px;
+
+  @include on-tablet {
+    padding: 24px;
+    padding-right: 0;
+    gap: 0;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+    height: 64px;
+    gap: 24px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 64px;
+    height: 25px;
+
+    @include on-desktop {
+      height: 30px;
+    }
+  }
+
+  .navBar {
+    flex-grow: 1;
+    display: flex;
+    gap: clamp(8px, 3vw, 32px);
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 800;
+    margin-left: clamp(16px, 4vw, 48px);
+
+    &__links {
+      color: $secondary-color;
+      line-height: 11px;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        bottom: -20px;
+        height: 2px;
+        width: 100%;
+        background-color: $white;
+
+        transform: scale(0);
+        transform-origin: left;
+        transition: all 0.3s ease;
+      }
+
+      @include on-desktop {
+        &::after {
+          bottom: -27px;
+        }
+      }
+
+      &:hover {
+        color: $white;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+
+      &:global(.active) {
+        color: $white;
+
+        &::after {
+          transform: scale(1);
+          transition: none;
+        }
+      }
+    }
+  }
+
+  .headerIcons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+
+    &__icon {
+      color: $white;
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .headerSearch {
+    position: relative;
+    width: auto;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    margin-left: 16px;
+    flex: 1;
+    max-width: 300px;
+    min-width: 115px;
+
+    &__input {
+      width: 100%;
+      min-width: 0;
+      padding: 8px 12px;
+      padding-right: 40px;
+      border: 1px solid $elements-color;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: $semi-bold;
+      color: $white;
+      background-color: $primary-color;
+
+      &:focus {
+        outline: none;
+        border-color: $accent-color;
+      }
+
+      &::placeholder {
+        color: #89939a;
+      }
+    }
+
+    &__clear {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 25%;
+      right: 12px;
+      cursor: pointer;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 12px;
+      top: 25%;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+  }
+
+  .headerSearch__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .button {
+    position: relative;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+    border: $border;
+    cursor: pointer;
+    padding: 8px;
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -2px;
+      left: 1px;
+      height: 2px;
+      width: 100%;
+      background-color: $white;
+
+      transform: scale(0);
+      transform-origin: left;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      color: $white;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &:global(.active) {
+      color: $white;
+
+      &::after {
+        transform: scale(1);
+        transition: none;
+      }
+    }
+
+    &:hover {
+      .headerIcons__icon {
+        transform: scale(1.1);
+      }
+    }
+
+    .badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: $red;
+      color: $white;
+      font-size: 10px;
+      font-weight: $semi-bold;
+      border-radius: 50%;
+      height: 14px;
+      min-width: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $primary-color;
+
+      @include on-desktop {
+        top: 15px;
+        right: 17px;
+      }
+    }
+  }
+
+  .burgerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: $border;
+  }
+}

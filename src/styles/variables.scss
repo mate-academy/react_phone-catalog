@@ -1,0 +1,32 @@
+//colors
+$primary-color: #0f1121;
+$secondary-color: #75767f;
+$surface1-color: #161827;
+$surface2-color: #323542;
+$elements-color: #3b3e4a;
+$icons-hover-color: #4a4d58;
+
+$white: #f1f2f9;
+$accent-color: #905bff;
+$accent-color-hover: #A378FF;
+$green: #27ae60;
+$red: #eb5757;
+
+//breakpoints
+$mobile-min-width: 320px;
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+$mobile-max-width: 639px;
+$tablet-max-width: 1199px;
+$desktop-max-width: 1440px;
+
+//fontWeight
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;
+$super-bold: 800;
+
+$border: 1px solid $surface2-color;
+$disabled-icon-filter: brightness(0) saturate(100%) invert(27%) sepia(8%) saturate(1089%) hue-rotate(201deg) brightness(93%) contrast(90%);
+

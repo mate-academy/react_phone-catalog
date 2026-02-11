@@ -1,0 +1,69 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.favorites {
+  margin: 16px 24px;
+  padding: 0;
+
+  > * + * {
+    margin-top: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__mainTitle {
+    font-size: 32px;
+    font-weight: $super-bold;
+    line-height: 41px;
+    color: $white;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: $regular;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+
+  &__empty {
+    margin: 0;
+    padding: 24px;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include on-tablet {
+      align-items: center;
+    }
+
+    @include on-desktop {
+      align-items: center;
+      max-width: $desktop-max-width;
+    }
+  }
+
+  &__emptyImage {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}

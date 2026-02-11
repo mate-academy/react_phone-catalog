@@ -1,0 +1,117 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.cartItem {
+  padding: 24px;
+  display: grid;
+  grid-template-areas:
+  "remove image name"
+  "quantity quantity price";
+  grid-template-columns: auto 80px 1fr;
+  gap: 16px;
+  align-items: center;
+  background-color: $surface1-color;
+
+  @include on-tablet {
+    grid-template-areas: "remove image name quantity price";
+    grid-template-columns: auto 80px 1fr;
+  }
+
+  &__removeButton {
+    grid-area: remove;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__removeIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__imageContainer {
+    grid-area: image;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__productInfo {
+    grid-area: name;
+    align-self: start;
+
+    @include on-tablet {
+      align-self: center;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: $regular;
+    color: $white;
+    margin: 0;
+  }
+
+  &__quantityControls {
+    grid-area: quantity;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__quantityButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background-color: $surface2-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: 2px solid $elements-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &__quantityControlIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__quantityControlIconDisabled {
+    filter: brightness(0.3);
+  }
+
+  &__quantity {
+    display: inline-block;
+    min-width: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: $semi-bold;
+  }
+
+  &__price {
+    grid-area: price;
+    font-size: 22px;
+    font-weight: $super-bold;
+    color: $white;
+    min-width: 60px;
+    text-align: right;
+  }
+}

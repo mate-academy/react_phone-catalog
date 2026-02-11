@@ -1,0 +1,16 @@
+export const ICON_PATHS = {
+  logo: './img/logos/logo.svg',
+  burger: './img/icons/svg/burger_menu.svg',
+  close: './img/icons/svg/close.svg',
+  heart: './img/icons/svg/heart.svg',
+  heartFilled: './img/icons/svg/heart_filled.svg',
+  cart: './img/icons/svg/cart.svg',
+  plus: './img/icons/svg/plus.svg',
+  minus: './img/icons/svg/minus.svg',
+  search: './img/icons/svg/search.svg',
+  home: './img/icons/svg/home.svg',
+  arrowUp: './img/icons/svg/arrow_up.svg',
+  arrowDown: './img/icons/svg/arrow_down.svg',
+  arrowLeft: './img/icons/svg/arrow_left.svg',
+  arrowRight: './img/icons/svg/arrow_right.svg',
+};

@@ -1,0 +1,142 @@
+@import './variables.scss';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin nav-link-hover-footer {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: $white;
+
+    transform: scale(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin title-positioning {
+  @include on-tablet {
+    justify-content: flex-start;
+
+    --margin-scale: 3vw;
+    --margin-max: 120px;
+
+    text-wrap: balance;
+    margin: 0 clamp(24px, var(--margin-scale), var(--margin-max));
+    padding: 0 auto;
+  }
+
+  @include on-desktop {
+    --margin-scale: 5vw;
+    --margin-max: 200px;
+
+    margin: 0 clamp(32px, var(--margin-scale), var(--margin-max));
+  }
+
+  @media (width >= 1440px) {
+    justify-content: flex-start;
+  }
+}
+
+@mixin position-and-crop-image(
+  $width: 90%,
+  $height: 80%,
+  $position-horizontal: right,
+  $position-vertical: bottom,
+  $object-position-x: 0%,
+  $object-position-y: top,
+) {
+  position: absolute;
+  #{$position-vertical}: 0;
+  #{$position-horizontal}: 0;
+  width: $width;
+  height: $height;
+  object-fit: cover;
+  object-position: $object-position-x $object-position-y;
+  display: block;
+}
+
+@mixin image-container {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+@mixin card-base {
+  &__card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@mixin categories-title-sizes {
+  &__content {
+    margin-top: 24px;
+  }
+
+  &__title {
+    font-weight: $bold;
+    font-size: 20px;
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 14px;
+    color: $secondary-color;
+  }
+}
+
+@mixin sections-margin-bottom {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}

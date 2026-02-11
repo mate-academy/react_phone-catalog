@@ -1,0 +1,170 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $primary-color;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.menu {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: $primary-color;
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+
+  &.slideIn {
+    transform: translateX(0);
+  }
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  border-bottom: $border;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  height: 25px;
+  width: 64px;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: $border;
+}
+
+.menuContent {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.navList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  gap: 0;
+
+  &__links {
+    display: inline-block;
+    width: fit-content;
+    padding: 16px 0;
+    text-decoration: none;
+    color: $secondary-color;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+    position: relative;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 8px;
+      height: 2px;
+      width: 100%;
+      background-color: $white;
+
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: $white;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.menuFooter {
+  display: flex;
+  border-top: $border;
+
+  .footerButton {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+
+    border-right: $border;
+    cursor: pointer;
+    padding: 8px;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      border-bottom: 4px solid $white;
+
+      .headerIcons__icon {
+        transform: scale(1.1);
+      }
+    }
+
+    .menuIcon {
+      position: relative;
+      display: inline-block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: $red;
+      color: $white;
+      font-size: 10px;
+      font-weight: $semi-bold;
+      border-radius: 50%;
+      height: 14px;
+      min-width: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $primary-color;
+    }
+  }
+}

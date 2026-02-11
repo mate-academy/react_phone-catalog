@@ -1,0 +1,32 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: $semi-bold;
+  text-decoration: none;
+  line-height: 1;
+  color: $white;
+
+  margin-top: 24px;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &:hover {
+    color: $accent-color;
+  }
+
+  &__backIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+  }
+}

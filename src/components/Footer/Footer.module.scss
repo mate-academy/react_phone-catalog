@@ -1,0 +1,114 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.footer {
+  color: $white;
+  background-color: $primary-color;
+  padding: 32px 16px;
+  border-top: $border;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+
+  &__logoContainer {
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      justify-content: flex-start;
+    }
+
+    .logo {
+      display: inline-block;
+
+      img {
+        max-height: 32px;
+      }
+    }
+  }
+
+  &__navList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .navLink {
+      color: $white;
+      text-decoration: none;
+
+      @include nav-link-hover-footer;
+    }
+  }
+
+  .backToTop {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 32px;
+
+    @include on-tablet {
+      justify-content: flex-end;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__link {
+      color: $secondary-color;
+      font-weight: $bold;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &__iconWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+      background-color: $surface2-color;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        background-color: $icons-hover-color
+      }
+    }
+
+    &__icon {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

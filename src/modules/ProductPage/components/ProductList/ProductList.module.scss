@@ -1,0 +1,19 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.productList {
+  @include page-grid;
+  row-gap: 40px;
+
+  > * {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

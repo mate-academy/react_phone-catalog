@@ -1,0 +1,142 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.cart {
+  margin: 16px 24px;
+  padding: 0;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: $super-bold;
+    line-height: 41px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-top: 16px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__gridContainer {
+    @include page-grid;
+    gap: 16px;
+  }
+
+  &__items {
+    margin-top: 16px;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__footer {
+    margin-top: 16px;
+    padding: 24px;
+    grid-column: 1 / -1;
+    border: 2px solid $elements-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-desktop {
+      grid-column: 17 / -1;
+      height: 50%;
+      min-height: 210px;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__totalPrice {
+    font-size: 32px;
+    font-weight: $super-bold;
+    text-align: center;
+    color: $white;
+  }
+
+  &__totalText {
+    font-size: 14px;
+    font-weight: $semi-bold;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__divider {
+    height: 3px;
+    width: 100%;
+    background-color: $elements-color;
+    opacity: 0.5;
+    margin: 8px 0;
+    flex-shrink: 0;
+  }
+
+  &__checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    height: 48px;
+    background-color: $accent-color;
+    color: $white;
+    width: 100%;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: $accent-color-hover;
+    }
+
+    @include on-desktop {
+      height: 48px;
+      min-height: 48px;
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+  }
+
+  &__empty {
+    margin: 0;
+    padding: 24px;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include on-tablet {
+      align-items: center;
+    }
+
+    @include on-desktop {
+      align-items: center;
+      max-width: $desktop-max-width;
+    }
+  }
+
+  &__emptyImage {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}

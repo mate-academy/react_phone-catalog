@@ -1,0 +1,112 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.imageGallery {
+  margin: 0;
+  padding: 0;
+
+  &__mainDisplay {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__imageWrapper {
+    order: 1;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    @include on-tablet {
+      order: 2;
+    }
+
+    @include on-desktop {
+      max-width: 500px;
+    }
+  }
+
+  &__mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: none !important;
+  }
+
+  &__thumbnails {
+    order: 2;
+    margin-top: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      order: 1;
+      margin-top: 0;
+      margin-right: 16px;
+      width: auto;
+    }
+  }
+
+  &__thumbnailsContainer {
+    display: flex;
+    gap: 8px;
+
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-direction: column;
+      overflow: visible;
+      scroll-snap-type: none;
+      justify-content: flex-start;
+    }
+  }
+
+  &__thumbnail {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid $elements-color;
+    overflow: hidden;
+    scroll-snap-align: start;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 56px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+    }
+
+    &:hover {
+      border-color: $icons-hover-color;
+    }
+  }
+
+  &__thumbnailActive {
+    border-color: $white;
+
+    &:hover {
+      border-color: $white;
+    }
+  }
+
+  &__thumbnailImage {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: contain;
+    transform: none !important;
+  }
+}

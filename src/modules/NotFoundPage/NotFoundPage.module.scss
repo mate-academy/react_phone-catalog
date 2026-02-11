@@ -1,0 +1,98 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.notFoundPage {
+  margin: 0;
+  padding: 0;
+  background-color: $surface1-color;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    text-align: center;
+    width: 100%;
+    max-width: $mobile-max-width;
+
+    @include on-tablet {
+      max-width: $tablet-max-width;
+    }
+
+    @include on-desktop {
+      max-width: $desktop-max-width;
+    }
+  }
+
+  &__imageContainer {
+    margin-bottom: 40px;
+  }
+
+  &__picture {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideUp 0.8s ease-in-out;
+  }
+
+  &__message {
+    font-weight: $super-bold;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  &__homeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: $semi-bold;
+    transition: all 0.3s ease;
+
+    height: 70px;
+    width: 80%;
+    background-color: $accent-color;
+
+    &:hover {
+      background-color: $accent-color-hover;
+    }
+  }
+
+  &__homeIcon {
+    height: 20px;
+    width: 20px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
