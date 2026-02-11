@@ -1,0 +1,62 @@
+@import '../../styles/main';
+
+.phone{
+  width: 100%;
+  padding: 25px 16px;
+  margin-bottom: 24px;
+
+  @include min-screen($tablet) {
+    padding-inline: 32px;
+    margin-bottom: 40px;
+  }
+
+  @include min-screen($largeDesktop) {
+    padding-inline: 152px;
+  }
+
+  &__header{
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include min-screen($tablet) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__header-back {    
+    height: 16px;
+    width: 16px;
+  }
+
+  &__header-home {
+    height: 100%;
+    width: 100%;
+    color: $textColor;
+  }
+
+  &__header-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__header-vector {
+    width: 6px;
+    height: 10px;
+    color: $arrowBorderColor;
+  }
+
+  &__header-title {
+    height: 15px;
+    color: $cardTextColor;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;   
+  }  
+}
