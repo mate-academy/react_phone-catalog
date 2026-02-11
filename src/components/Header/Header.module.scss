@@ -1,0 +1,46 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0 auto;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  background-color: var(--bg-color);
+  width: 100%;
+  border-bottom: solid 1px var(--border-color);
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.logo {
+  align-self: center;
+  padding-inline: 16px;
+  &_img {
+    height: 22px;
+    width: 64px;
+  }
+
+  @include on-desktop {
+    padding-inline: 18px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__list {
+    gap: 32px;
+  }
+}

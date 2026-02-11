@@ -1,0 +1,24 @@
+@import '../../../../styles/utils/utils';
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  & > * {
+    &:first-child {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+}
+
+.pageButton {
+  flex-grow: 0;
+  flex-shrink: 0;
+}

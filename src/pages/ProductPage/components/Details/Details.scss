@@ -1,0 +1,12 @@
+.details {
+  display: flex;
+  flex-direction: column;
+
+  &__price {
+    padding-block: 32px 16px;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+}

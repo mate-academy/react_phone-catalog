@@ -1,0 +1,62 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin content-pading-inline() {
+  box-sizing: border-box;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+}
+
+@mixin section-gap {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin page-grid {
+  --column-count: 4;
+  
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --column-count: 12;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --column-count: 24;
+
+    column-gap: 16px;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+

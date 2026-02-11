@@ -1,0 +1,41 @@
+@import '../../styles/utils/utils';
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+
+  &__bigFont {
+    font-size: 32px;
+  }
+
+  &__line {
+    font-size: 22px;
+    color: var(--grey-secondary);
+    z-index: 1;
+
+    position: relative;
+
+    &::after {
+      position: absolute;
+      height: 10%;
+      width: 100%;
+      bottom: 46%;
+      content: '';
+      display: block;
+      text-align: center;
+      filter: invert(25%);
+      mix-blend-mode: color-dodge;
+
+      background-color: var(--grey-secondary);
+    }
+
+
+    &__darkTheme::after {
+      mix-blend-mode: difference;
+    }
+  }
+}
+
+
