@@ -6,9 +6,10 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  ShowDiscount?: boolean;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, ShowDiscount = true }: Props) => {
   return (
     <div className={styles.productCard}>
       <Link to={`/${product.category}/${product.itemId}`}>
@@ -20,7 +21,7 @@ export const ProductCard = ({ product }: Props) => {
       </div>
       <div className={styles.productCard__prices}>
         <div className={styles.productCard__price}>${product.price}</div>
-        <div className={styles.productCard__fullPrice}>${product.fullPrice}</div>
+        {ShowDiscount && <div className={styles.productCard__fullPrice}>${product.fullPrice}</div>}
       </div>
       <div className={styles.productCard__divider}></div>
       <div className={styles.productCard__specs}>

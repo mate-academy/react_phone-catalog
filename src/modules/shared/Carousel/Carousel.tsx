@@ -9,9 +9,10 @@ import type { Product } from '../../../types/types';
 interface Props {
   pageTitle: string;
   products: Product[];
+  ShowDiscount: boolean;
 }
 
-export const Carousel = ({ pageTitle, products }: Props) => {
+export const Carousel = ({ pageTitle, products, ShowDiscount }: Props) => {
   const trackref = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -88,7 +89,7 @@ export const Carousel = ({ pageTitle, products }: Props) => {
         <div className={styles.carousel__track} ref={trackref}>
           {products.map(product => (
             <div className={styles.carousel__item} key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} ShowDiscount={ShowDiscount} />
             </div>
           ))}
         </div>

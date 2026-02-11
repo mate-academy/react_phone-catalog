@@ -106,7 +106,7 @@ export const ProductsPages = () => {
     setSelctionSortBy(sortParam);
     setCurrentPage(pageParam - 1);
     setSelctionOnPage(perPageParam);
-  }, []);
+  }, [searchParams]);
 
   // Фильтрация по типу товара
   useEffect(() => {
@@ -171,6 +171,18 @@ export const ProductsPages = () => {
     );
   }
 
+  const handleSortByChange = (newSort: SortBy) => {
+    setSelctionSortBy(newSort);
+    setCurrentPage(0);
+    updateURLParams({ sort: newSort, page: 0 });
+  };
+
+  const handlePerPageChange = (newSort: OnPage) => {
+    setSelctionOnPage(newSort);
+    setCurrentPage(0);
+    updateURLParams({ perPage: newSort, page: 0 });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.productsPages__breadcrums}>
@@ -188,10 +200,7 @@ export const ProductsPages = () => {
             name="Sort by"
             id=""
             onChange={e => {
-              const newSort = e.target.value as SortBy;
-              setSelctionSortBy(newSort);
-              setCurrentPage(0);
-              updateURLParams({ sort: newSort, page: 0 });
+              handleSortByChange(e.target.value as SortBy);
             }}
             value={selctionSortBy}
           >
@@ -206,10 +215,7 @@ export const ProductsPages = () => {
             name="Items on page"
             id=""
             onChange={e => {
-              const newPerPage = e.target.value as OnPage;
-              setSelctionOnPage(newPerPage);
-              setCurrentPage(0);
-              updateURLParams({ perPage: newPerPage, page: 0 });
+              handlePerPageChange(e.target.value as OnPage);
             }}
             value={selctionOnPage}
           >

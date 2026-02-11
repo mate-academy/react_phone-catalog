@@ -5,7 +5,7 @@ import ArrowLeft from '../../assets/Chevron (Arrow Left).svg?react';
 import Home from '../../assets/Home.svg?react';
 import type { Product, ProductFull } from '../../types/types';
 import styles from './ProductDetailsPage.module.scss';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { CartButton } from '../shared/CartButton';
 import { FavouriteButton } from '../shared/FavouriteButton';
 import { Carousel } from '../shared/Carousel';
@@ -63,18 +63,17 @@ export const ProductDetailsPage = () => {
     return colorMap[colorName.toLowerCase()] || '#CCCCCC';
   };
 
-  const getSuggestedProducts = (
-    products: Product[],
-    currentProductId: string,
-    count: number = 20,
-  ): Product[] => {
-    const otherProducts = products.filter(
-      product => product.itemId !== currentProductId && product.category === type,
-    );
+  const getSuggestedProducts = useCallback(
+    (products: Product[], currentProductId: string, count = 20): Product[] => {
+      const otherProducts = products.filter(
+        product => product.itemId !== currentProductId && product.category === type,
+      );
 
-    const shuffled = [...otherProducts].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-  };
+      const shuffled = [...otherProducts].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    },
+    [type],
+  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -126,7 +125,7 @@ export const ProductDetailsPage = () => {
 
       return getSuggestedProducts(products, product.id, 20);
     });
-  }, [id, currentProductsType, products]);
+  }, [id, currentProductsType, products, getSuggestedProducts]);
 
   useEffect(() => {
     const model = currentProductsType.find(item => {
@@ -140,7 +139,7 @@ export const ProductDetailsPage = () => {
       return item.itemId === model?.id;
     });
     setCurrentProductShort(modelforLocalStorage);
-  }, [currentProductsType, id]);
+  }, [currentProductsType, id, products]);
 
   useEffect(() => {
     const findProduct = currentProductsType.find(item => {
@@ -154,7 +153,15 @@ export const ProductDetailsPage = () => {
     if (findProduct && findProduct.id !== id) {
       navigate(`/${type}/${findProduct.id}`, { replace: true });
     }
-  }, [currentColor, currentCapacity]);
+  }, [
+    currentColor,
+    currentCapacity,
+    currentProductsType,
+    id,
+    currentProduct?.namespaceId,
+    navigate,
+    type,
+  ]);
 
   if (isLoading) {
     return <div className={styles.loader}>Завантаження...</div>;

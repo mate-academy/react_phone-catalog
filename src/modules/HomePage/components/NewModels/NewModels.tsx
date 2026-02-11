@@ -5,6 +5,8 @@ import { Carousel } from '../../../shared/Carousel';
 export const NewModels = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
+  const ShowDiscount = false;
+
   useEffect(() => {
     fetch('/api/products.json')
       .then(response => {
@@ -29,5 +31,5 @@ export const NewModels = () => {
       .slice(0, 20);
   }, [products]);
 
-  return <Carousel pageTitle={'Brand new models'} products={sortedProducts} />;
+  return <Carousel pageTitle={'Brand new models'} products={sortedProducts} ShowDiscount={ShowDiscount} />;
 };
