@@ -1,0 +1,35 @@
+@use '../../styles/' as *;
+
+.container {
+  @include grid-container;
+}
+
+.favourite {
+  &__title {
+    @include grid-col;
+    @include font-desktop1;
+    margin-top: 40px;
+  }
+
+  &__counter {
+    @include grid-col;
+    @include font-desktop-body;
+    color: var(--secondary-color);
+  }
+
+  &__items {
+    @include grid-col;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+    row-gap: 40px;
+    margin: 40px 0 80px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

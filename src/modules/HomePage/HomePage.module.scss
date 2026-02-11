@@ -1,0 +1,23 @@
+@use '../../styles' as *;
+
+.container {
+  @include grid-container;
+  
+
+  row-gap: 80px;
+  & > *:nth-child(2) {
+    margin-top: -80px;
+  }
+
+  margin-bottom: 80px;
+}
+
+.pageTitle {
+  @include font-desktop1;
+  @include grid-col;
+  margin: 56px 0;
+
+  &__hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,71 @@
+@use '../../../styles/' as *;
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 32px 0;
+  background-color: var(--footer-background);
+  height: 32px;
+  box-sizing: border-box;
+  border-top: 1px solid #e2e6e9;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 32px;
+    height: auto;
+  }
+
+  &__logo {
+    height: 32px;
+  }
+
+  &__links {
+    height: 32px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: row;
+    background-color: var(--footer-background);
+
+    @include mobile {
+      flex-direction: column;
+      gap: 16px;
+      height: auto;
+    }
+
+    a {
+      font-family: 'Mont', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+  }
+
+  &__backToTop {
+    height: 32px;
+    gap: 16px;
+    display: flex;
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: right;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+
+  &__backToTopIcon {
+    padding: 8px;
+    border: 1px solid #e2e6e9;
+    margin: 0;
+  }
+}

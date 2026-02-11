@@ -1,0 +1,246 @@
+@use '../../styles/' as *;
+
+.container {
+  @include grid-container;
+}
+
+.cart {
+  &__title {
+    @include grid-col;
+    @include font-desktop1;
+    margin-top: 16px;
+  }
+
+  &__secondTitle {
+    @include grid-col;
+    @include font-desktop1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 16px 0;
+    img {
+      width: 40%;
+    }
+  }
+
+  &__back {
+    @include grid-col;
+    display: flex;
+    align-items: center;
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: var(--secondary-color);
+    margin-top: 40px;
+    row-gap: 4px;
+    cursor: pointer;
+  }
+
+  &__items {
+    @include grid-col(16);
+  }
+
+  &__total {
+    @include grid-col(8);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border: 1px solid var(--elements-color);
+    margin-bottom: 16px;
+    padding: 24px;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__photoAndTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    @include mobile {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  &__quantityAndPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    @include mobile {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__close {
+    width: 16px;
+    @include unpressedAndHover;
+  }
+
+  &__image {
+    width: 80px;
+  }
+
+  &__name {
+    @include font-desktop-body;
+  }
+
+  &__quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__quantityBorder {
+    border: 1px solid var(--icons-color);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg path {
+      fill: var(--primary-color);
+    }
+  }
+
+  &__activeAndNotActive {
+    border: 1px solid var(--elements-color);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg path {
+      fill: var(--elements-color);
+    }
+  }
+
+  &__quantityNumber {
+    @include font-desktop-body;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__price {
+    @include font-desktop3;
+  }
+
+  &__total {
+    border: 1px solid var(--elements-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    height: min-content;
+  }
+
+  &__totalPrice {
+    @include font-desktop2;
+  }
+
+  &__totalCount {
+    @include font-desktop-body;
+    color: var(--secondary-color);
+  }
+
+  &__divider {
+    width: 100%;
+    border: 1px solid var(--elements-color);
+    margin: 24px 0;
+  }
+
+  &__button {
+    @include font-desktop-buttons;
+    width: 100%;
+    height: 48px;
+    color: var(--white-bg-color);
+    background-color: var(--primary-color);
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.modalContent {
+  text-align: center;
+}
+
+.modalTitle {
+  margin-bottom: 10px;
+  @include font-desktop2;
+  color: var(--primary-color);
+}
+
+.modalText {
+  margin-bottom: 20px;
+  @include font-desktop-body;
+  color: var(--secondary-color);
+}
+
+.modalButtons {
+  @include font-desktop-body;
+  display: flex;
+  gap: 10px;
+}
+
+.modalButtonConfirm {
+  flex: 1;
+  padding: 8px;
+  background: var(--primary-color);
+  color: var(--white-bg-color);
+  border: none;
+  border-radius: 3px;
+
+  &:hover {
+    border: 1px solid var(--elements-color);
+    background: var(--white-bg-color);
+    color: var(--primary-color);
+  }
+}
+
+.modalButtonCancel {
+  flex: 1;
+  padding: 8px;
+  background: var(--elements-color);
+  border: none;
+  border-radius: 3px;
+  border: 1px solid var(--elements-color);
+
+  &:hover {
+    background: var(--white-bg-color);
+  }
+}
