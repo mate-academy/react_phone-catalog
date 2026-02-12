@@ -1,0 +1,101 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.containerFirstPartPage {
+  width: 93px;
+  height: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-top: 20px;
+}
+
+.continerIconHome {
+  width: 16px;
+  height: 16px;
+  position: relative;
+
+  &_iconHome {
+    position: absolute;
+    top: -63px;
+    left: 0;
+    width: 13.33px;
+    height: 144.67px;
+    z-index: 1;
+  }
+
+  &_iconDoor {
+    position: absolute;
+    top: 8.5px;
+    left: 4.2px;
+    width: 5.33px;
+    height: 8px;
+    z-index: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.continerIconArrow {
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+
+  &_arrow {
+    width: 5.33px;
+    height: 9.33px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.textPhones {
+  margin-top: 17px;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.textTile {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #313237;
+  padding-left: 15px;
+}
+
+.textChangeModels {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939a;
+  padding-left: 15px;
+  margin-top: -20px;
+}
+
+@media (min-width: 639px) {
+  .containerFirstPartPage {
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+
+  .textTile {
+    font-size: 48px;
+    padding-left: 30px;
+  }
+
+  .textChangeModels {
+    padding-left: 30px;
+  }
+}

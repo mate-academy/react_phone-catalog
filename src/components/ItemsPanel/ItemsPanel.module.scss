@@ -1,0 +1,256 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+/* stylelint-disable no-duplicate-selectors */
+
+.itemsPanel {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  &__item {
+    width: 288px;
+    height: 160px;
+    border: 2px solid #e2e6e9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__info {
+    width: 256px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    margin-top: 5px;
+  }
+
+  &__remove {
+    width: 9.33px;
+    height: 9.33px;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600px;
+  }
+}
+
+.containerPriceButton {
+  width: 96px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 17px;
+}
+
+.containerPriceButton > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemsPanelQuantityButton {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #e2e6e9;
+  align-items: center;
+  justify-content: center;
+  color: #696969;
+  font-family: Mont, sans-serif;
+  text-align: center;
+}
+
+.changeItens {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600px;
+  margin-top: 8px;
+}
+
+.change {
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.itemsPanelItemFooter {
+  width: 256px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.itemsPanelItemPrice {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800px;
+}
+
+.containerItems1199 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemsPanelSummary {
+  width: 288px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #e2e6e9;
+  margin-top: 50px;
+  margin-bottom: 130px;
+}
+
+.itemsPanelSummaryTotal {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800px;
+}
+
+.itemsPanelSummaryCount {
+  font-family: Mont, sans-serif;
+  font-weight: 600px;
+  font-size: 14px;
+  color: #89939a;
+  margin-top: -20px;
+}
+
+.itemsPanelSummaryLine {
+  width: 240px;
+  height: 0;
+  border: 1px solid #e2e6e9;
+  margin-top: -10px;
+}
+
+.itemsPanelSummaryCheckout {
+  margin-top: 20px;
+  width: 240px;
+  height: 48px;
+  background-color: #313237;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.itemsPanelSummaryCheckout h2 {
+  font-family: Mont, sans-serif;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700px;
+  margin-top: 15px;
+}
+
+@media (min-width: 629px) {
+  .itemsPanel__item {
+    width: 592px;
+    height: 128px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .itemsPanel__info {
+    width: 292px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-left: 20px;
+  }
+
+  .containerPriceButton {
+    width: 196px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container3 {
+    margin-right: 30px;
+    margin-bottom: 25px;
+  }
+
+  .itemsPanelSummary {
+    width: 592px;
+    height: 190px;
+  }
+
+  .itemsPanelSummaryLine {
+    width: 544px;
+  }
+
+  .itemsPanelSummaryCheckout {
+    width: 544px;
+    height: 48px;
+  }
+
+  .itemsPanelItemFooter {
+    margin-top: -30px;
+    margin-right: 30px;
+  }
+}
+
+@media (min-width: 1199px) {
+  .itemsPanel {
+    width: 1140px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: calc(50% - 570px);
+  }
+
+  .itemsPanel__item {
+    width: 752px;
+    height: 128px;
+    margin-top: 5px;
+  }
+
+  .itemsPanelSummary {
+    width: 368px;
+    height: 206px;
+  }
+
+  .itemsPanelSummaryLine {
+    width: 321px;
+  }
+
+  .itemsPanelSummaryCheckout {
+    width: 320px;
+    height: 48px;
+  }
+
+  .itemsPanelSummary {
+    position: absolute;
+    top: 140px;
+    left: 1105px;
+  }
+
+  .itemsPanel__info {
+    width: 462px;
+  }
+}
+
+/* stylelint-enable no-duplicate-selectors */

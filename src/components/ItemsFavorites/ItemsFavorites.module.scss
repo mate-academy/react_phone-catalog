@@ -1,0 +1,101 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.favoritesSidebar {
+  margin-top: 55px;
+  position: fixed;
+  top: 0;
+  left: 110%;
+  width: 100%;
+  min-height: 90%; /* tamanho mínimo desejado */
+  height: 100%;
+  background: #fff;
+  color: rgb(68, 68, 68);
+  padding-top: 40px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto; /* permite scroll se ultrapassar a tela */
+  box-sizing: border-box;
+
+  &__open {
+    left: 0;
+  }
+
+  &__header {
+    margin-left: 30px;
+  }
+
+  &__back {
+    width: 66px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__backIcon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__backText {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939a;
+    margin-top: 30px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #313237;
+  }
+
+  &__changeItems {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939a;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 900;
+  }
+
+  &__list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px 0;
+    margin-left: 17%;
+  }
+
+  @media (min-width: 629px) {
+    &__list {
+      width: 596px;
+      grid-template-columns: 1fr 1fr;
+      margin-left: calc(50% - 298px);
+    }
+  }
+
+  @media (min-width: 1148px) {
+    &__list {
+      width: 1118px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      margin-left: calc(50% - 670px);
+    }
+  }
+}
