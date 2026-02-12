@@ -5,6 +5,18 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "baseUrl": "src",
+    "paths": {
+      "@pages/*": ["modules/pages/*"],
+      "@components/*": ["modules/components/*"],
+      "@context/*": ["Context/*"],
+      "@img/*": ["img/*"],
+      "@styles/*": ["styles/*"],
+      "@models/*": ["types/*"],
+      "@utils/*": ["types/*"],
+      "@hooks/*": ["types/*"],
+      "@api/*": ["api/*"]
+    }
   }
 }

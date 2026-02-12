@@ -1,0 +1,76 @@
+@import '../../../styles/mixins';
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  box-sizing: border-box;
+  padding-top: 24px;
+  padding-inline: 16px;
+  width: 100%;
+  min-height: calc(100vh - 298px);
+
+  @include on-tablet {
+    padding-inline: 24px;
+    min-height: calc(100vh - 145px);
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    padding-inline: 32px;
+    min-height: calc(100vh - 161px);
+  }
+}
+
+.product__details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    justify-content: space-between;
+  }
+}
+
+.product__details__title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  text-align: left;
+  color: var(--text-color);
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.product__specification {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  @include on-desktop {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.product__details__suggests {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 56px;
+}

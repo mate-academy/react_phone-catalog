@@ -1,0 +1,149 @@
+@import '../../../styles/mixins';
+
+.products-slider {
+  position: relative;
+  max-height: 439px;
+  width: 100%;
+
+  @include on-tablet {
+    max-height: 512px;
+  }
+
+  @include on-desktop {
+    max-height: 506px;
+  }
+}
+
+.swiper {
+  padding-inline: 0;
+  box-sizing: border-box;
+}
+
+.swiper-button-prev {
+  right: 64px;
+  left: unset;
+
+  &::before {
+    background-image: var(--button-background-image-arrow-left);
+  }
+
+  @include on-tablet {
+    right: 72px;
+  }
+
+  @include on-desktop {
+    right: 80px;
+  }
+}
+
+.swiper-button-next {
+  right: 16px;
+  left: unset;
+
+  &::before {
+    background-image: var(--button-background-image-arrow-right);
+  }
+
+  @include on-tablet {
+    right: 24px;
+  }
+
+  @include on-desktop {
+    right: 32px;
+  }
+}
+
+.products-slider__button-prev,
+.products-slider__button-next {
+  position: absolute;
+  top: -50px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  background-color: var(--button-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--button-border);
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease-in-out,
+    border 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--button-background-color-hover);
+    border: var(--button-border-hover);
+  }
+
+  &::after {
+    content: none;
+  }
+
+  &::before {
+    content: '';
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @include on-tablet {
+    top: -10%;
+  }
+}
+
+.products__arrow--prev::before {
+  background-image: var(--button-background-image-arrow-left);
+}
+
+.products__arrow--next {
+  background-image: var(--button-background-image-arrow-right);
+}
+
+.products__swiper {
+  overflow: hidden;
+  padding-inline: 0;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-right: 24px;
+  }
+
+  @include on-desktop {
+    padding-right: 0;
+  }
+}
+
+.products__slide {
+ width: 212px;
+
+   @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+}
+
+body:not(.light) .swiper-button-prev::before {
+  background-image: url('../../../img/icons/arrow-left-white.svg');
+}
+
+body.light .swiper-button-prev::before {
+  background-image: url('../../../img/icons/arrow-left-black.svg');
+}
+
+body:not(.light) .swiper-button-next::before {
+  background-image: url('../../../img/icons/arrow-right-white.svg');
+}
+
+body.light .swiper-button-next::before {
+  background-image: url('../../../img/icons/arrow-right-black.svg');
+}
+

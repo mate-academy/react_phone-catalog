@@ -1,0 +1,219 @@
+@import '../../../styles/mixins';
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+
+  @include on-desktop {
+    box-sizing: border-box;
+    width: 320px;
+  }
+}
+
+.panel__colors {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.panel__colors__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.panel__title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--second-text-color);
+}
+
+.panel__colors__id {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: right;
+  color: var(--panel-color-id);
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.panel__colors__id--desktop {
+  display: none;
+
+  @include on-desktop {
+    display: flex;
+    justify-content: flex-end;
+    width: 176px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--panel-color-id);
+  }
+}
+
+.panel__color {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.panel__color__item--outer {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 36px;
+  border: var(--panel-color-border);
+  position: relative;
+  transition: border-color 0.3s ease-in-out;
+
+  &:hover {
+    border-color: var(--panel-color-border-hover);
+  }
+}
+
+.panel__color__item--outer-active {
+  border-color: var(--panel-color-border-active);
+}
+
+.panel__color__item--iner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 36px;
+  border: var(--panel-color-border-iner);
+}
+
+.panel__capacity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+
+.panel__capacity__box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.panel__capacity__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 56px;
+  box-sizing: border-box;
+  border: 1px solid var(--panel-color-id);
+  background-color: var(--background-color);
+  text-decoration: none;
+  transition: border-color 0.3s ease-in-out;
+
+  &:hover {
+   border-color: var(--panel-color-border-hover);
+  }
+}
+
+.panel__capacity__item--active {
+  background-color: var(--panel-color-border-active);
+}
+
+.panel__capacity__text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.panel__capacity__text--active {
+  color: var(--background-color);
+}
+
+.panel__prices {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.panel__price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: var(--text-color);
+}
+
+.panel__price--regular {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: var(--second-text-color);
+}
+
+.panel__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-block: 32px 56px;
+}
+
+.panel__detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.panel__detail__title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--second-text-color);
+}
+
+.panel__detail__text{
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--text-color);
+}

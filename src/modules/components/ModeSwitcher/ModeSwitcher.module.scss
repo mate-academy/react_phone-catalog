@@ -1,0 +1,32 @@
+.mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 16px;
+  width: 36px;
+  background-color: var(--background-color);
+  border-radius: 20px;
+  border: var(--mode-border);
+  position: relative;
+}
+
+.mode__switcher {
+  position: absolute;
+  background-color: var(--mode-switcher-background-color);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.mode__switcher--dark {
+  transform: translateX(10px);
+}
+
+.mode__switcher--light {
+  transform: translateX(-12px);
+}
+
+.mode--tablet {
+  display: flex;
+}

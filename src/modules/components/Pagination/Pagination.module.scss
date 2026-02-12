@@ -1,0 +1,84 @@
+@import '../../../styles/mixins';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  gap: 16px;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.pagination__arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--button-background-color);
+  border: var(--button-border);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--button-background-color-hover);
+    border: var(--button-border-hover);
+  }
+}
+
+.pagination__arrow:disabled {
+  cursor: default;
+  opacity: 0.5;
+
+  &:hover {
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+  }
+}
+
+.pagination__image {
+  object-fit: contain;
+}
+
+.pagination__pages {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination__page {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pagination-item-background-color);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-color);
+  border: var(--button-border);
+  transition:
+    background-color 0.3s ease-in-out,
+    border 0.3S ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--pagination-item-background-color-hover);
+    border: var(--button-border-hover);
+  }
+}
+
+.pagination__page--active {
+  background-color: var(--pagination-item-background-color-active);
+  color: var(--pagination-text-color);
+
+  &:hover {
+    color: var(--pagination-text-color-active-hover);
+  }
+}

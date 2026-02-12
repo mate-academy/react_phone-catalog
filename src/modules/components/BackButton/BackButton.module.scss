@@ -1,0 +1,50 @@
+.back__button__image {
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  background-image: url('../../../img/icons/arrow-back-button-white.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.back__button__text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--text-color);
+  transition: color 0.3s ease-in-out;
+}
+
+body:not(.light) .back__button__image {
+  background-image: url('../../../img/icons/arrow-back-button-black.svg');
+}
+
+.back__button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background-color: var(--background-color);
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  &:hover {
+    .back__button__image {
+      background-image: url('../../../img/icons/arrow-back-button-purple.svg');
+    }
+    .back__button__text {
+      color: var(--bread-text-hover);
+    }
+  }
+}
+
+.back__button__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
