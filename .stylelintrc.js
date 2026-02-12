@@ -1,4 +1,6 @@
 module.exports = {
   extends: "@mate-academy/stylelint-config",
-  rules: {}
+  rules: {
+    "order/properties-order": null
+  }
 };

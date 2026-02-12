@@ -1,0 +1,99 @@
+@use '../../../styles/utils/skeleton' as *;
+@use '../../../styles/utils/mixins' as *;
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 16px;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      padding: 24px;
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+
+    &--info {
+      background: rgba(220, 220, 224, 0.5);
+      height: 80px;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    &--count {
+      background: rgba(220, 220, 224, 0.5);
+      height: 32px;
+      border-radius: 8px;
+
+      @include on-tablet {
+        height: 80px;
+        width: 33%;
+      }
+    }
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 8px;
+
+    @include on-desktop {
+      width: 100%;
+    }
+
+    &--text {
+      background: rgba(220, 220, 224, 0.5);
+      height: 62px;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    &--button {
+      background: rgba(220, 220, 224, 0.5);
+      height: 48px;
+      border-radius: 8px;
+      width: 100%;
+    }
+  }
+}
+
+.cart__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &--skeletonLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      width: 66%;
+    }
+  }
+
+  &--skeletonRight {
+    @include on-desktop {
+      width: 33%;
+    }
+  }
+}

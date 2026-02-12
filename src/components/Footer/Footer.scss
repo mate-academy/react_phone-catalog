@@ -1,0 +1,109 @@
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
+
+.footer {
+  display: flex;
+  box-sizing: border-box;
+  padding: 32px 16px;
+  background-color: var(--main);
+
+  @include on-tablet {
+    padding: 32px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      max-width: 1136px;
+      margin: auto;
+    }
+
+    &--contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 33%;
+
+      @include on-tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    &--backToTop {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.logo {
+  transition: transform $effect-duration ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.link {
+  display: flex;
+  text-decoration: none;
+  width: fit-content;
+  text-transform: uppercase;
+
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--elements);
+  transition: transform $effect-duration ease;
+  &:hover {
+    transform: scale(1.05);
+    color: var(--primary);
+  }
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--elements);
+    cursor: pointer;
+
+    transition: transform $effect-duration ease;
+    &:hover {
+      transform: scale(1.05);
+      color: var(--primary);
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background-color: var(--main);
+    cursor: pointer;
+    transition: transform $effect-duration ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px var(--shadow);
+      border: 1px solid var(--border-hover);
+    }
+  }
+}
