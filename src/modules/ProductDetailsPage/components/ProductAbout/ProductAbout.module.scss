@@ -1,0 +1,56 @@
+@import '../../../../assets/styles/main';
+
+.productInfo {
+  &__about {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: 1/-1;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    @include on-desktop-extra {
+      grid-column: span 12;
+    }
+  }
+
+  &__title {
+    margin-bottom: 16px;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    color: #313237;
+  }
+
+  &__line {
+    height: 1px;
+    margin-bottom: 32px;
+    border: none;
+    background-color: #e2e6e9;
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__articleTitle {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    color: #313237;
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

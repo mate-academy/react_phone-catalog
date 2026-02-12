@@ -1,0 +1,119 @@
+@import '../../../../assets/styles/main';
+
+.cart {
+  &__item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 16px;
+    border: 1px solid $color-elements;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+    }
+
+    @include on-desktop {
+      height: 128px;
+    }
+
+    @include on-desktop-extra {
+      height: 128px;
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__itemDeleteBtn {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__itemImage {
+    width: 80px;
+    height: 80px;
+    margin-left: 16px;
+
+    @include on-tablet {
+      margin-left: 24px;
+    }
+  }
+
+  &__itemDescription {
+    width: 128px;
+    height: 63px;
+    margin-left: 16px;
+
+    @include on-tablet {
+      width: 176px;
+      height: 42px;
+      margin-left: 24px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+      height: 21px;
+    }
+
+    @include on-desktop-extra {
+      width: 336px;
+      height: 21px;
+    }
+  }
+
+  &__toPay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__itemControl {
+    width: 96px;
+    height: 32px;
+  }
+
+  &__price {
+    width: 51px;
+    height: 31px;
+
+    @include on-tablet {
+      margin-left: 53px;
+    }
+  }
+}
+
+.cart__itemDeleteBtn,
+.cart__itemImage,
+.cart__itemDescription,
+.cart__itemControl,
+.cart__price {
+  border-radius: 5px;
+  
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+
+  animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
