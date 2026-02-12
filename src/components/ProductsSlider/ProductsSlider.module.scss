@@ -1,0 +1,31 @@
+@use '../../mixins/mixins' as *;
+
+.productSlider {
+  position: relative;
+
+  @include padding-inline;
+
+  overflow: hidden;
+
+  @include desktop {
+    padding-inline: 0;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.9s ease-in-out;
+  }
+
+  &__title {
+    @include sectionTitleStyle;
+
+    @include desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__head {
+    margin-bottom: 24px;
+  }
+}

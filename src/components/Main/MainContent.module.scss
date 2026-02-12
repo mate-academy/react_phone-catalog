@@ -1,0 +1,20 @@
+@use '../../mixins/mixins' as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  padding-top: 56px;
+  padding-bottom: 64px;
+
+  @include tablet {
+    gap: 64px;
+    padding-block: 64px;
+  }
+
+  @include desktop {
+    gap: 80px;
+    padding-block: 80px;
+  }
+}

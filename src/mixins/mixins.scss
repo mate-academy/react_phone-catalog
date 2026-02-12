@@ -1,0 +1,208 @@
+@mixin tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin sectionsPaddingBlock {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include tablet {
+    padding-block: 64px;
+  }
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+}
+
+@mixin omitFixedTopBar {
+  margin-top: 48px;
+
+  @include tablet {
+    margin-top: 57px;
+  }
+
+  @include desktop {
+    margin-top: 74px;
+  }
+}
+
+@mixin titleStyle {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin sectionTitleStyle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: -1%;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin maxWidth {
+  max-width: 1200px;
+}
+
+@mixin scaleOnHover {
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin swiperStypes {
+  :global(.swiper) {
+    height: 100%;
+  }
+
+  :global(.swiper-wrapper) {
+    @include padding-inline;
+
+    display: flex;
+    gap: 16px;
+  }
+
+  :global(.swiper-slide) {
+    width: max-content !important;
+
+    @include desktop {
+      width: 272px !important;
+    }
+  }
+
+  :global(.swiper-button-prev) {
+    z-index: 3 !important;
+    top: 20px !important;
+    right: 50px !important;
+    left: auto !important;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: var(--dark-gray);
+    box-shadow: none !important;
+
+    &::after {
+      content: url('../../public/img/icons/arrow-left.svg');
+      font-size: small !important;
+    }
+
+    &:disabled {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
+    }
+
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    @include tablet {
+      right: 64px !important;
+    }
+  }
+
+  :global(.swiper-button-next) {
+    z-index: 3 !important;
+    top: 20px !important;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: var(--dark-gray);
+
+    &::after {
+      content: url('../../../public/img/icons/arrow-right-white.svg');
+      font-size: small !important;
+    }
+
+    &:disabled {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
+    }
+
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    @include tablet {
+      right: 24px !important;
+    }
+  }
+}
+
+@mixin buttonOnHover {
+  filter: drop-shadow(0 3px 13px rgba(23, 32, 49, 0.4));
+}
+
+@mixin dropdownStyles {
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--dark-gray);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: var(--header-color);
+  background: var(--dark-gray);
+
+  &:hover {
+    border-color: var(--items-hover);
+    background-color: var(--dark-gray);
+  }
+
+  &:focus {
+    border-color: var(--purple-main);
+  }
+
+  &--lightTheme {
+    background-color: var(--app-background);
+    border: 1px solid var(--border-color);
+
+    &:hover {
+      background-color: var(--app-background);
+      border-color: var(--text-color);
+    }
+
+    &:focus {
+      border-color: var(--header-color);
+    }
+  }
+}

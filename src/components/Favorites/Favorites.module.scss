@@ -1,0 +1,65 @@
+@use '../../mixins/mixins' as *;
+
+.favorites{
+  flex: 1;
+
+  @include omitFixedTopBar;
+  @include padding-inline;
+  @include sectionsPaddingBlock;
+
+  @include tablet{
+    padding-top: 24px;
+  }
+
+  &__navigation{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include tablet{
+      margin-bottom: 40px;
+    }
+  }
+
+  &__linkHome{
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/home.svg');
+
+    &--lightTheme{
+      background-image: url('../../../public/img/icons/home-light.svg');
+    }
+  }
+
+  &__arrowRight{
+    display: block;
+
+    width: 16px;
+    height: 16px;
+    padding-top: 6px;
+
+    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
+
+    &--lightTheme{
+      background-image: url('../../../public/img/icons/arrow-right-lightTheme.svg');
+    }
+  }
+
+  &__linkFavs{
+    padding-top: 3px;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  &__title{
+    @include titleStyle;
+  }
+
+  &__quantity{
+    margin-top: 8px;
+    line-height: 21px;
+    color: var(--text-color);
+  }
+}

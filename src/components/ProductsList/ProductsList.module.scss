@@ -1,0 +1,36 @@
+@use '../../mixins/mixins' as *;
+
+.productsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  justify-items: center;
+
+  padding-block: 24px;
+
+  @include tablet {
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    gap: 40px 16px;
+    padding-bottom: 40px;
+  }
+
+  @include desktop{
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--favorites {
+    display: grid;
+    justify-items: center;
+    padding-top: 32px;
+    padding-bottom: 0;
+
+    @include tablet {
+      grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+      padding-top: 40px;
+    }
+
+    @include desktop{
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    }
+  }
+}

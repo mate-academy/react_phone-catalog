@@ -1,0 +1,172 @@
+@use '../../mixins/mixins' as *;
+
+.productControls {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+
+  &--details {
+    justify-content: start;
+  }
+
+  &__add {
+    cursor: pointer;
+
+    width: 100px;
+    height: 40px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: var(--header-color);
+
+    background-color: var(--purple-main);
+
+    @include tablet {
+      width: 125px;
+    }
+
+    @include desktop {
+      width: 160px;
+    }
+
+    &:hover {
+      background-color: var(--purple-light);
+    }
+
+    &--lightTheme {
+      color: var(--app-background);
+      background-color: var(--header-color);
+
+      &:hover {
+        @include buttonOnHover;
+        background-color: var(--header-color);
+      }
+    }
+
+    &--selected {
+      cursor:default;
+      background-color: var(--dark-gray);
+
+      &:hover {
+        background-color: var(--dark-gray);
+      }
+
+      &-lightTheme{
+        color: var(--main-green);
+        border: 1px solid var(--items-disabled);
+        background-color: var(--app-background);
+
+        &:hover {
+          background-color: var(--app-background);
+          filter: none;
+        }
+      }
+    }
+
+    &--wide {
+      width: 175px;
+
+      @include desktop {
+        width: 160px;
+      }
+    }
+
+    &--details {
+      width: 231px;
+      height: 48px;
+
+      @include tablet {
+        width: 180px;
+      }
+
+      @include desktop {
+        width: 263px;
+      }
+    }
+
+    &--youMayLike {
+      width: 100px;
+
+      @include tablet {
+        width: 125px;
+      }
+
+      @include desktop {
+        width: 160px;
+      }
+    }
+  }
+
+  &__favorites {
+    box-sizing: border-box;
+    cursor: pointer;
+
+    position: relative;
+
+    width: 40px;
+    height: 40px;
+    border: none;
+
+    background-color: var(--dark-gray);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 12px;
+      right: 12px;
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background-image: url('../../../public/img/icons/favorites.svg');
+    }
+
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    &--lightTheme{
+      border: 1px solid var(--border-color);
+      background-color: var(--app-background);
+
+      &:hover{
+        border-color: var(--header-color);
+        background-color: var(--app-background);
+      }
+
+      &::after{
+        right: 11px;
+        background-image: url('../../../public/img/icons/favorites-lightTheme.svg');
+      }
+    }
+
+    &--selected {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--card-background);
+
+      &::after {
+        background-image: url('../../../public/img/icons/favorites-selected.svg');
+      }
+
+      &-lightTheme{
+        background-color: var(--app-background);
+        border-color: var(--items-disabled);
+      }
+    }
+
+    &--details {
+      width: 48px;
+      height: 48px;
+
+      &::after {
+        top: 16px;
+        right: 16px;
+      }
+    }
+  }
+}

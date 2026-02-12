@@ -1,0 +1,98 @@
+@use '../../mixins/mixins' as *;
+
+.navigation {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+
+  &--aside {
+    @include omitFixedTopBar;
+
+    display: block;
+    padding-top: 24px;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    list-style: none;
+
+    @include desktop {
+      gap: 64px;
+    }
+
+    &--aside {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding-block: 18px;
+
+    @include desktop {
+      padding-block: 27px;
+    }
+
+    &--aside{
+      padding-block: 8px;
+
+      &:hover::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: var(--header-color);
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4%;
+
+    &:hover {
+      color: var(--header-color);
+    }
+
+    &--active{
+      color: var(--header-color);
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: var(--header-color);
+      }
+    }
+  }
+}

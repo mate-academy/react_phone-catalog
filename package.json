@@ -1,7 +1,8 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "./",
   "version": "0.1.0",
+  "private": true,
   "keywords": [],
   "author": "Mate Academy",
   "license": "GPL-3.0",
@@ -9,20 +10,29 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
+    "i18next": "^25.5.2",
+    "i18next-browser-languagedetector": "^8.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-i18next": "^15.7.3",
     "react-router-dom": "^6.25.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "sass-loader": "^16.0.5",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^2.1.1",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-transition-group": "^4.4.10",
+    "@types/testing-library__react": "^10.0.1",
     "@typescript-eslint/parser": "^7.16.0",
     "@vitejs/plugin-react": "^4.3.1",
     "cypress": "^13.13.0",
@@ -40,7 +50,7 @@
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "prettier": "^3.3.2",
-    "sass": "^1.77.8",
+    "sass": "^1.92.1",
     "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
@@ -79,5 +89,20 @@
       "_comment": "Add `cypressComponents: true` to enable component tests",
       "cypress": true
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.tsx": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

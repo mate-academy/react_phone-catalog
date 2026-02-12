@@ -1,0 +1,9 @@
+@use '../../mixins/mixins' as *;
+
+.youMayAlsoLike{
+  position: relative;
+
+  @include desktop{
+    @include padding-inline;
+  }
+}

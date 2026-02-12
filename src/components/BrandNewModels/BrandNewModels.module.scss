@@ -1,0 +1,9 @@
+@use '../../mixins/mixins' as *;
+
+.BrandNewModels{
+  position: relative;
+
+  @include desktop{
+    @include padding-inline;
+  }
+}
