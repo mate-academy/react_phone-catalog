@@ -1,0 +1,92 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.search {
+  &__container {
+    box-sizing: border-box;
+    border: 1px solid var.$elements;
+    cursor: pointer;
+
+    @include mixin.on-mobile {
+      display: none;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, false, space-between, false);
+      @include mixin.sizes(176px, 40px);
+
+      padding: 10px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.flex(flex, false, space-between, false);
+      @include mixin.sizes(176px, 40px);
+
+      padding: 10px;
+    }
+  }
+
+  &__container--dark {
+    background-color: var.$dark-surface-2;
+    border: 1px solid var.$dark-surface-1;
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      display: none;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, false, space-between, false);
+      @include mixin.sizes(176px, 40px);
+
+      padding: 10px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.flex(flex, false, space-between, false);
+      @include mixin.sizes(176px, 40px);
+
+      padding: 10px;
+    }
+  }
+
+  &__title {
+    @include mixin.on-mobile {
+      display: none;
+    }
+
+    @include mixin.on-tablet {
+      display: block;
+      color: var.$secondary-gray;
+      margin-bottom: 4px;
+
+      @include mixin.small-text-desktop-tablet;
+    }
+  }
+
+  &__input {
+    width: 140px;
+
+    &::placeholder {
+      color: var.$secondary-gray;
+
+      @include mixin.small-text-desktop-tablet;
+    }
+  }
+
+  &__button {
+    @include mixin.flex(flex, center, center, false);
+  }
+
+  &__img {
+    @include mixin.sizes(16px, 16px);
+
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+}

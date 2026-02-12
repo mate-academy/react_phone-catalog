@@ -1,0 +1,42 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.error {
+  width: 100%;
+
+  @include mixin.flex(flex, center, center, column);
+
+  flex-grow: 1;
+  gap: 16px;
+  overflow: auto;
+
+  &__text {
+    color: var.$red;
+    font-size: 24px;
+  }
+
+  &__text--fav {
+    color: var.$red;
+    font-size: 24px;
+
+    @include mixin.flex(flex, center, flex-start, column);
+  }
+
+  &__button {
+    width: 150px;
+    padding: 10px;
+    border: 2px solid var.$elements;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 2px solid var.$primary-gray;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    text-decoration: none;
+    color: var.$primary-gray;
+  }
+}

@@ -1,0 +1,117 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.category {
+  &__title {
+    color: var.$primary-gray;
+    text-align: left;
+
+    @include mixin.on-mobile {
+      margin-bottom: 32px;
+
+      @include mixin.h2-mobile;
+    }
+
+    @include mixin.on-tablet {
+      margin-bottom: 32px;
+
+      @include mixin.h2-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      margin-bottom: 40px;
+
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__title-dark {
+    color: var.$dark-white;
+    text-align: left;
+
+    @include mixin.on-mobile {
+      margin-bottom: 32px;
+
+      @include mixin.h2-mobile;
+    }
+
+    @include mixin.on-tablet {
+      margin-bottom: 32px;
+
+      @include mixin.h2-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      margin-bottom: 40px;
+
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__container {
+    @include mixin.grid;
+    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
+    @include mixin.responsive-property(margin-right, 20px, 24px, 32px);
+  }
+
+  &__link {
+    text-decoration: none;
+    margin-bottom: 20px;
+    grid-column: 1/-1;
+
+    @include mixin.on-tablet {
+      margin-bottom: 0;
+      grid-column: span 4;
+    }
+
+    @include mixin.on-desktop {
+      margin-bottom: 0;
+      grid-column: span 8;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+
+    &:hover {
+      border-radius: 15px;
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    @include mixin.h4-desktop-tablet;
+
+    color: var.$primary-gray;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__name-dark {
+    @include mixin.h4-desktop-tablet;
+
+    color: var.$dark-white;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__amount {
+    @include mixin.body-text-desktop-tablet;
+
+    color: var.$secondary-gray;
+  }
+
+  &__amount-dark {
+    @include mixin.body-text-desktop-tablet;
+
+    color: var.$dark-secondary-gray;
+  }
+}

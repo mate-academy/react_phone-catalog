@@ -1,1 +1,54 @@
-// not empty
+@use "./utils/mixins" as mixin;
+@use "./utils/variables" as var;
+@use "./utils/fonts" as *;
+@use "./utils/normalize.scss";
+
+.app {
+  height: 100vh;
+  width: 100%;
+  font-family: Mont, Arial, sans-serif;
+
+  &__header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var.$white;
+
+    &--dark {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var.$dark-black;
+    }
+  }
+
+  &__container {
+    @include mixin.flex(flex, false, false, column);
+
+    background-color: var.$white;
+
+    &--dark {
+      background-color: var.$dark-black;
+    }
+  }
+
+  &__main {
+    width: 100%;
+    flex: 1;
+    margin: 0;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  white-space: nowrap;
+}
