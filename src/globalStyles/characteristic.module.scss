@@ -1,0 +1,22 @@
+.characteristic {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__block {
+    color: $light-grey;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+}

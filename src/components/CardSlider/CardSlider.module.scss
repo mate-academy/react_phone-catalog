@@ -1,0 +1,60 @@
+.card-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__product-card {
+    width: 212px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__btn__block {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn__link {
+    @include grey-button;
+
+    height: 32px;
+    width: 32px;
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+  }
+
+  &__products::-webkit-scrollbar {
+    display: none;
+  }
+}

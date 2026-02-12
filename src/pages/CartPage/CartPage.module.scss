@@ -1,0 +1,118 @@
+.cart-page {
+  @include content-padding-inline;
+  @include page-grid;
+
+  padding-bottom: 56px;
+  grid-template-rows: 1fr auto;
+  row-gap: 32px;
+
+  &__top {
+    grid-row: 1;
+    grid-column: 1/-1;
+  }
+
+  &__back {
+    padding-block: 24px;
+    background-color: $background;
+    border: none;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+
+    @include on-tablet {
+      grid-row: 1;
+      grid-column: 1 /-1;
+    }
+
+    &:hover {
+      color: $purple;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-row: 2;
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: 1/17;
+    }
+  }
+
+  &__buy-info {
+    grid-row: 3;
+    grid-column: 1/-1;
+
+    height: fit-content;
+    width: 100%;
+    border: 1px solid $grey;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-row: 2;
+      grid-column: 17 / -1;
+
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__price {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+
+    &__items {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: $light-grey;
+    }
+
+    &__button {
+      @include add-to-cart-button;
+    
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      width: 100%;
+      height: 48px;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    margin: 0 auto;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
