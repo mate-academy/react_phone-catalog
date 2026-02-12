@@ -1,0 +1,37 @@
+.themeButton {
+  background-color: var(--main-background-color);
+
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  transition: all 300ms;
+  z-index: 50;
+
+  &Container {
+    display: flex;
+  }
+}
+
+.enterThemeButton {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.enterActiveThemeButton {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms ease-in;
+}
+
+.exitThemeButton {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.exitActiveThemeButton {
+  opacity: 0;
+  transform: translateX(50%);
+  transition: all 300ms ease-in;
+}

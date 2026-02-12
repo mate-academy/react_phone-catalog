@@ -1,0 +1,47 @@
+@import '../../styles/mixins';
+
+.sliderContainer {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include onDesctop {
+    overflow: visible;
+  }
+}
+
+.topElements {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 16px;
+  margin-left: auto;
+}
+
+.slider {
+  display: flex;
+  column-gap: 16px;
+
+  transition: transform 300ms;
+}
+
+.sliderElement {
+  flex: 0 0 75%;
+  align-self: stretch;
+
+  @include onTablet {
+    flex: 0 0 40%;
+  }
+
+  @include onLiteDesctop {
+    flex: 0 0 calc(25% - 12px);
+  }
+}

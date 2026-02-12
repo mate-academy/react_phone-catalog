@@ -1,0 +1,16 @@
+@import '../shared/styles/mixins';
+
+.mainContent {
+  display: grid;
+  row-gap: 56px;
+  background-color: var(--main-background-color);
+  transition: background-color 300ms;
+
+  @include onTablet {
+    row-gap: 64px;
+  }
+
+  @include onDesctop {
+    row-gap: 80px;
+  }
+}

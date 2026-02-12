@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin-top: 24px;
+}
+
+.currentPage {
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  cursor: default;
+}
+
+.link {
+  display: flex;
+}
+
+.info {
+  margin: 24px 0 32px;
+
+  @include onTablet {
+    margin: 40px 0;
+  }
+}
+
+.title {
+  margin: 0 0 8px ;
+}
+
+.counter {
+  color: var(--secondary-text-color);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.dropdowns {
+  @include pageGrid;
+}
+
+.sortDropdown {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 4;
+  }
+}
+
+.itemOnPageDropdown {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+}

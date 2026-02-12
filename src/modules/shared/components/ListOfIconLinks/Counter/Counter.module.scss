@@ -1,0 +1,19 @@
+.counter {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 14px;
+  aspect-ratio: 1 / 1;
+  border: 1px #fff solid;
+  border-radius: 50%;
+  background-color: #476DF4;
+  top: -7px;
+  right: -7px;
+
+  color: #fff ;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 10px;
+}

@@ -1,0 +1,87 @@
+@import '../../../shared/styles/mixins';
+
+$mobile-gap: 16px;
+$tablet-gap: 24px;
+
+.productItem {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: $mobile-gap;
+  padding: 16px;
+  background-color: var(--element-background-color);
+  border-radius: 16px;
+  border: 1px var(--border-color-default) solid;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: $tablet-gap;
+    padding: 24px;
+  }
+}
+
+.firstPart {
+  display: flex;
+  align-items: center;
+  gap: $mobile-gap;
+  flex: 2;
+
+  @include onTablet {
+    gap: $tablet-gap;
+  }
+}
+
+.secondPart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+
+  @include onTablet {
+    gap: $tablet-gap;
+  }
+}
+
+.productName {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.productPhoto {
+  object-fit: contain;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.removeButton {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: inherit;
+}
+
+.counterProductsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  position: relative;
+
+  & > span {
+    position: absolute;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  min-width: 80px;
+}

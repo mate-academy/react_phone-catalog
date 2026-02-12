@@ -1,0 +1,20 @@
+@import '../../styles/mixins';
+
+.aside {
+  position: fixed;
+  padding-top: calc(var(--headerHeight));
+  inset: 0 0;
+  background-color: var(--sidebar-background-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.nav {
+  margin-top: 24px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+
+}

@@ -1,0 +1,25 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.toCartButton {
+  height: 100%;
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--button-text-color);
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 8px;
+
+  @include onDesctop {
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}
+
+.active {
+  background-color: inherit;
+  border: 1px var(--border-color-default) solid;
+  color: var(--button-color);
+}

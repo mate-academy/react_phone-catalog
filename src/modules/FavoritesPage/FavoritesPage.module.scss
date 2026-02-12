@@ -1,0 +1,33 @@
+@import '../shared/styles/variables';
+@import '../shared/styles/mixins';
+
+.rout {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.currentPage {
+  color: var(--secondary-text-color);
+  cursor: default;
+}
+
+.title {
+  margin: 24px 0 8px;
+
+  @include onTablet {
+    margin-top: 40px;
+  }
+}
+
+.countProducts {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--secondary-text-color);
+}
+
+.productList {
+  margin-top: 32px;
+}

@@ -1,0 +1,12 @@
+@import '../../../shared/styles/mixins';
+
+.section {
+  row-gap: 32px;
+  
+  @include pageGrid;
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+}

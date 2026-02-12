@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.pagesContainer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.buttonPage {
+  background-color: var(--pagination-element-background-color);
+  border-color: var(--border-color-default);
+  color: var(--main-text-color);
+}
+
+.activePage {
+  color: #fff;
+  background-color:var(--pagination-active-element-background-color);
+  border: 1px   var(--pagination-active-element-background-color) solid;
+}
+
+.dots {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}

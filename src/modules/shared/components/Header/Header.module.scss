@@ -1,0 +1,73 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  min-width: 320px;
+  height: var(--headerHeight);
+  z-index: 10;
+  background-color: var(--header-background-color);
+  box-shadow: 0 1px 0 0 var(--border-color-default);
+  transition: all 300ms;
+
+  justify-content: space-between;
+  align-items: center;
+
+  &Logo {
+    width: 64px;
+    height: 22px;
+    pointer-events: none;
+
+    @include onDesctop {
+      width: 80px;
+      height: 28px;
+    }
+
+    &Link {
+      display: flex;
+      padding: 13px 16px;
+      margin-right: 16px;
+
+      @include onDesctop {
+        padding: 18px 24px;
+        margin-right: 24px;
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  @include onTablet {
+    flex-grow: 1;
+  }
+}
+
+.burgerMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  aspect-ratio: 1 / 1;
+  box-shadow: -1px 0 0 0 var(--border-color-default);
+  border: none;
+  background-color: inherit;
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.closeButton {
+  display: flex;
+  cursor: pointer;
+
+  @include onDesctop {
+    width: 64px;
+  }
+}

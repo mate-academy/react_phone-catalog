@@ -1,0 +1,100 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  box-sizing: border-box;
+  position: fixed;
+  width: calc(100% - 32px);
+  max-width: 500px;
+  border-radius: 8px;
+  background-color: var(--main-background-color);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.clear {
+  color: var(--main-text-color);
+  position: relative;
+  border-radius: 8px;
+  flex: 1;
+  font-size: 14px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: #ff1a1a;
+    inset: 0 0;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  @include onDesctop {
+    &:hover {
+      color: white;
+      border: none;
+      background-color: #ff1a1a;
+
+      &::after {
+        filter: blur(15px);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.close {
+  position: relative;
+  border-radius: 8px;
+  flex: 1;
+  color: var(--main-text-color);
+  font-size: 14px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: #0f6;
+    inset: 0 0;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  @include onDesctop {
+    &:hover {
+      color: white;
+      border: none;
+      background-color: #28e272;
+
+      &::after {
+        filter: blur(15px);
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+
+.rout {
+  display: flex;
+  margin-top: 24px;
+  gap: 8px;
+  align-items: center;
+}
+
+.currentPage {
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  cursor: default;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  display: flex;
+}
+
+.link {
+  font-weight: 700;
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+
+  margin: 24px 0 0;
+
+  @include onTablet {
+    margin-top: 40px;
+  }
+}
+
+.title {
+  margin: 16px 0 32px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}

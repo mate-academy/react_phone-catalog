@@ -1,0 +1,105 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.productCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--element-background-color);
+  border: 1px solid var(--border-color-default);
+  border-radius: 8px;
+  gap: 8px;
+  height: 100%;
+  width: 100%;
+
+  transition: all 300ms;
+
+  @include onDesctop {
+    &:hover {
+      box-shadow: 0 2px 16px 0 #0000001a;
+      transform: scale(1.03);
+    }
+  }
+}
+
+.cardImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.productName {
+  padding: 0;
+  margin: 12px 0 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  min-height: 42px;
+  cursor: pointer;
+  color: var(--main-text-color)
+}
+
+.priceContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.discountPrice {
+  padding: 0;
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: var(--main-text-color)
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: var(--secondary-text-color);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  gap: 8px;
+  position: relative;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    color: var(--secondary-text-color);
+  }
+}
+
+.productData {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 15px;
+}
+
+.buttons {
+  height: 40px;
+  display: flex;
+  column-gap: 8px;
+  justify-content: space-between;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-color-default);
+}

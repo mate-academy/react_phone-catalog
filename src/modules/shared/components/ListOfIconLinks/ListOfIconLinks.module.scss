@@ -1,0 +1,67 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.headerList {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+  }
+}
+
+.saidebarList {
+  display: flex;
+  height: 64px;
+  border: 1px solid var(--border-color-default);
+}
+
+.navItem {
+  display: flex;
+  flex-grow: 1;
+}
+
+.iconLink {
+  position: relative;
+  display: flex;
+  min-width: 48px;
+  min-height: 48px;
+  box-shadow: -1px 0 0 0 var(--border-color-default);
+  flex-grow: 1;
+
+  justify-content: center;
+  align-items: center;
+
+  @include onDesctop {
+    min-width: 64px;
+    min-height: 64px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--main-text-color);
+    transform: scaleX(0);
+    transition: transform 300ms;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &Active {
+    color: var(--main-text-color);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.positionCounter {
+  display: flex;
+  position: relative;
+}

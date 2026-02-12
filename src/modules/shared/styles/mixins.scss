@@ -1,0 +1,33 @@
+@import './variables';
+
+@mixin onTablet {
+  @media (min-width: $tablet-size) {
+    @content
+  }
+};
+
+@mixin onDesctop {
+  @media (min-width: $desctop-size) {
+    @content
+  }
+};
+
+@mixin onLiteDesctop {
+  @media (min-width: $lite-desctop-size) {
+    @content
+  }
+};
+
+@mixin pageGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesctop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
