@@ -1,0 +1,441 @@
+@import '../../App.scss';
+
+.itemBody {
+  color: $color-primary-black;
+  padding: 24px 16px 56px;
+  @include font-small;
+
+  & a {
+    text-decoration: none;
+
+    &:visited {
+      color: $color-primary-black;
+    }
+
+    & svg {
+      color: $color-primary-black;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    padding: 24px 0 56px;
+    margin: 0 auto;
+  }
+}
+
+.stupid_info {
+  background-color: #83ff52;
+}
+
+.non-linkable-color {
+  color: white;
+  background-color: black;
+}
+
+.ipage__back-link {
+  color: $color-secondary-grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-transform: capitalize;
+
+  @media (min-width: 640px) {
+    margin-top: 16px;
+  }
+
+  & svg {
+    transform:  translateY(-0.5px) rotate(180deg);
+    color: $color-primary-black;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+
+  &.theme1 {
+    color: $theme-dark-white;
+
+    & svg {
+      color: $theme-dark-white;
+    }
+  }
+}
+
+.ipage__nin {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+}
+
+.ipage__mnav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  & svg {
+    color: $color-icons;
+    flex-shrink: 0;
+  }
+
+  &.theme1 {
+    & svg {
+      color: $theme-dark-icons;
+    }
+  }
+}
+
+.ipage__navcat.ipage__navcat {
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.ipage__hmicn {
+  &.theme1 {
+    & svg {
+      color: $theme-dark-white;
+    }
+  }
+}
+
+.ipage__mtitle {
+  @include font-h2-mob;
+
+  @media (min-width: $screen-tablet) {
+    @include font-h2;
+  }
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.ipage__rearrange-container {
+  @media (min-width: $screen-tablet) {
+    display: grid;
+    grid-template-columns: 35px auto 237px;
+    gap: 16px;
+  }
+
+    @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 80px 464px calc(320px + 64px - 16px);
+    gap: 16px;
+  }
+}
+
+.ipage__block1 {
+  @media (min-width: $screen-tablet) {
+    order: 2;
+  }
+}
+
+.ipage__block2 {
+  @media (min-width: $screen-tablet) {
+    order: 1;
+  }
+}
+
+.ipage__block3 {
+  @media (min-width: $screen-tablet) {
+    order: 3;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: calc(64px - 16px);
+  }
+}
+
+
+
+.ipage__imcon {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @media (min-width: $screen-tablet) {
+    order: 2;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.ipage__miniGal {
+  margin-top: 16px;
+  display: grid;
+  width: calc(100%);  // to Have Fun => calc(100% - 22px);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+
+  @media (min-width: $screen-tablet) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 16px;
+  }
+
+  & .ipage__mnGC {
+    width: 100%; // to Have Fun => remove this
+    height: 100%; // to Have Fun => remove this
+    aspect-ratio: 1 / 1;
+    border: 1px solid $color-elements;
+    transition: border-color 0.3s ease-in-out;
+
+    &.theme1 {
+      border-color: $theme-dark-elements;
+
+      &:hover {
+        border-color: $theme-dark-secondary;
+      }
+    }
+
+    &.currentImg {
+      border: 1px solid $color-primary-black;
+
+      &.theme1 {
+        border-color: $theme-dark-white;
+      }
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.ipage__avcolttl {
+  @include font-small;
+  color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+
+  &.avColors {
+    margin-top: 16px;
+  }
+}
+
+.ipage__color1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: 1px solid $color-elements;
+  outline-offset: 2px;
+  transition: outline-color 0.3s ease-in-out;
+
+  &.theme1 {
+    outline-color: $theme-dark-elements;
+
+    &:hover {
+      outline-color: $theme-dark-secondary;
+    }
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    &:hover {
+      outline-color: black;
+    }
+  }
+
+  &.non-linkable {
+    outline: 1px solid $color-primary-black;
+
+    &.theme1 {
+      outline-color: $theme-dark-white;
+    }
+  }
+}
+
+.ipage__avcolglry {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+
+  &.avcapglry {
+    gap: 8px;
+    height: 32px;
+    margin-top: 8px;
+
+    & .ipage__icap {
+      @include font-body;
+      height: 100%;
+      line-height: 32px;
+      padding: 0 8px;
+      border: 1px solid $color-icons;
+      color: $color-primary-black;
+      transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+      &.theme1 {
+        color: $theme-dark-white;
+        border-color: $theme-dark-icons;
+
+        &:hover {
+          background-color: $theme-dark-elements;
+        }
+      }
+
+      &.theme2, &.theme3, &.theme4 {
+        border-radius: 4px;
+
+        &:hover {
+          border-color: black;
+        }
+      }
+
+      &.non-linkable-color {
+        background-color: $color-primary-black;
+        border-color: $color-primary-black;
+        color: $color-white;
+
+        &.theme1 {
+          background-color: $theme-dark-white;
+          color: $theme-dark-black;
+          border-color: $theme-dark-white;
+        }
+      }
+    }
+  }
+}
+
+.ipage__dvdr {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: $color-elements;
+  margin: 27px auto 24px;
+
+  &.theme1 {
+    background-color: $theme-dark-elements;
+  }
+
+  &.dvdr2 {
+    margin: 24px auto 32px;
+  }
+}
+
+.ipage__pr-cont {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ipage__cur-pr {
+  @include font-h2;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.ipage__2cartbtn.ipage__2cartbtn {
+  &.theme1 {
+    background-color: $theme-dark-accent;
+
+    &.in-cart {
+      background-color: $theme-dark-surface2;
+    }
+  }
+}
+
+.ipage__old-pr {
+  text-decoration: line-through;
+  color: $color-secondary-grey;
+  @include font-h3;
+  font-family: 'montRegular';
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+}
+
+.ipage__specs {
+  margin-bottom: 56px;
+  border: none;
+}
+
+.ipage__mntitle {
+  @include font-h3-mob;
+  margin-bottom: 16px;
+
+  &.theme1 {
+    color: $theme-dark-white;
+    border-bottom-color: $theme-dark-elements;
+  }
+}
+
+.ipage__spcs-spc {
+  @include font-body;
+}
+
+.ipage__cells {
+  max-width: 70%;
+  text-align: end;
+}
+
+.ipage__techspec {
+  margin-bottom: 56px;
+
+  &.theme1 {
+    border-top-color: $theme-dark-elements;
+  }
+}
+
+.ipage_tecspecttl {
+  @media (min-width: $screen-tablet) {
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 0;
+  }
+}
+
+.ipage__abt {
+  border-bottom: 1px solid $color-elements;
+  padding-bottom: 16px;
+}
+
+.ipage__mcrttl {
+  @include font-h4-mob;
+  margin-bottom: 16px;
+  margin-top: 32px;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.ipage__mcrtxt {
+  @include font-body;
+  color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+}
+
+.ipage__btmcnt {
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    gap: 64px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "welcomeMessage": "Welcome to our application",
+  "languageSelector": "Choose your language",
+  "navigation": {
+    "logo":"LOGO",
+    "home": "HOME",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "about": "About",
+    "contact": "Contact",
+    "services": "Services",
+    "search_placeholder": "search",
+    "foundforKeyWord": "found for the keyword",
+    "searchRes": "Search results"
+  },
+  "theme": {
+    "title": "Select theme",
+    "theme0": "Original",
+    "theme1": "Original Dark",
+    "theme2": "Rounded Blue",
+    "theme3": "Rounded Purple",
+    "theme4": "Rounded Orange"
+  },
+  "home": {
+    "title": "Welcome to iSupply store!",
+    "subtitle": "Discover our features",
+    "description": "This is an example of a multilingual application using React, Redux, and i18next.",
+    "shop_by_cat": "Shop by category",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models": "models"
+  },
+  "footer": {
+    "copyright": "© 2025 Your Company. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contacts": "contacts",
+    "rights": "rights",
+    "back_to_top": "Back to top"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit"
+  },
+  "recommended": {
+    "brand_new_models": "Brand new models",
+    "hot_prices": "Hot prices",
+    "may_like": "You may also like"
+  },
+  "specs": {
+    "screen": "Screen",
+    "capacity":"Capacity",
+    "ram":"RAM",
+    "cpu": "Processor",
+    "select": "Select",
+    "colors": "Available colors",
+    "title": "Tech specs",
+    "resolution": "resolution",
+    "built_memory": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "about": "About"
+  },
+  "btn": {
+    "in_cart": "In cart",
+    "add_to_cart": "Add to cart",
+    "checkout": "checkout"
+  },
+  "favorites": {
+    "fav_title": "favorites",
+    "items": "items"
+  },
+  "cart": {
+    "cart": "cart",
+    "back": "back",
+    "total_for": "Total for"
+  },
+  "select": {
+    "sort": {
+      "title": "Sort by",
+      "relevance": "Relevance",
+      "price_low_high": "Price: Low to High",
+      "price_high_low": "Price: High to Low",
+      "discount_high_low": "Discount: High to Low",
+      "discount_low_high": "Discount: Low to High"
+    },
+    "perPage": {
+      "title": "Items on page"
+    }
+  }
+}

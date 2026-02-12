@@ -1,0 +1,98 @@
+{
+  "welcomeMessage": "Benvenuto nella nostra applicazione",
+  "languageSelector": "Scegli la tua lingua",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "Home",
+    "phones": "Smartphone",
+    "tablets": "Tablet",
+    "accessories": "Accessori",
+    "favorites": "Preferiti",
+    "cart": "Carrello",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "services": "Servizi",
+    "search_placeholder": "Cerca",
+    "foundforKeyWord": "trovato nei risultati di ricerca per",
+    "searchRes": "Risultati di ricerca"
+  },
+  "theme": {
+    "title": "Seleziona tema",
+    "theme0": "Originale",
+    "theme1": "Originale scuro",
+    "theme2": "Arrotondato blu",
+    "theme3": "Arrotondato viola",
+    "theme4": "Arrotondato arancione"
+  },
+  "home": {
+    "title": "Benvenuto nel negozio iSupply!",
+    "subtitle": "Scopri le nostre funzionalità",
+    "description": "Questo è un esempio di app multilingue con React, Redux e i18next.",
+    "shop_by_cat": "Acquista per categoria",
+    "phones": "Telefoni cellulari",
+    "tablets": "Tablet",
+    "accessories": "Accessori",
+    "models": "modelli"
+  },
+  "footer": {
+    "copyright": "© 2025 La tua azienda. Tutti i diritti riservati.",
+    "privacyPolicy": "Informativa sulla privacy",
+    "termsOfService": "Termini di servizio",
+    "contacts": "contatti",
+    "rights": "informazioni legali",
+    "back_to_top": "Torna su"
+  },
+  "form": {
+    "name": "Nome",
+    "email": "Email",
+    "message": "Messaggio",
+    "submit": "Invia"
+  },
+  "recommended": {
+    "brand_new_models": "Ultimi modelli",
+    "hot_prices": "Offerte speciali",
+    "may_like": "Potrebbe piacerti anche"
+  },
+  "specs": {
+    "screen": "Schermo",
+    "capacity": "Memoria",
+    "ram": "RAM",
+    "cpu": "Processore",
+    "select": "Seleziona",
+    "colors": "Colori disponibili",
+    "title": "Specifiche tecniche",
+    "resolution": "Risoluzione",
+    "built_memory": "Memoria interna",
+    "camera": "Fotocamera",
+    "zoom": "Zoom fotocamera",
+    "cell": "Standard di rete",
+    "about": "Informazioni sul prodotto"
+  },
+  "btn": {
+    "in_cart": "Nel carrello",
+    "add_to_cart": "Aggiungi al carrello",
+    "checkout": "Procedi all'acquisto"
+  },
+  "favorites": {
+    "fav_title": "Preferiti",
+    "items": "articoli"
+  },
+  "cart": {
+    "cart": "carrello",
+    "back": "indietro",
+    "total_for": "Totale per"
+  },
+  "select": {
+    "sort": {
+      "title": "Ordina per",
+      "relevance": "Rilevanza",
+      "price_low_high": "Prezzo: dal più basso al più alto",
+      "price_high_low": "Prezzo: dal più alto al più basso",
+      "discount_high_low": "Sconto: dal più alto al più basso",
+      "discount_low_high": "Sconto: dal più basso al più alto"
+    },
+    "perPage": {
+      "title": "Articoli per pagina"
+    }
+  }
+}

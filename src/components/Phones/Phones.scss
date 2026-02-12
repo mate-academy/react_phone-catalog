@@ -1,0 +1,15 @@
+@import '../../App.scss';
+
+.phones_page {
+  &.theme0 {
+    background-color: $color-white;
+  }
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    background-color: #ffffff00;
+  }
+}

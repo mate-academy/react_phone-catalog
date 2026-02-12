@@ -1,0 +1,182 @@
+@import '../../App.scss';
+
+.nav-footer-container {
+  margin: 0 auto 0;
+  width: 100%;
+  border-top: 1px solid $color-elements;
+  display: flex;
+  justify-content: center;
+  background-color: $color-white;
+
+  @media (min-width: 1200px) {
+    margin-top: 80px;
+  }
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+    border-color: $theme-dark-elements;
+  }
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 96px;
+  padding: 0 32px;
+
+  max-width: 1136px;
+
+  @media (max-width: 639px) {
+    height: auto;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 32px;
+    padding: 32px 0;
+
+
+  }
+
+  & * {
+    @include font-uppercase;
+    text-decoration: none;
+    color: $color-secondary-grey;
+
+    &:visited {
+      color: $color-secondary-grey;
+    }
+  }
+}
+
+.footer-logo {
+  @media (max-width: 639px) {
+    margin: 0 auto 0 0;
+  }
+}
+
+.footer-links-wrapper {
+  display: flex;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto 0 0;
+  }
+
+  @media (min-width: 640px) {
+      display: flex;
+      gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 106px;
+  }
+
+  & * {
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $color-primary-black;
+    }
+  }
+}
+
+.Footer-item {
+  @include font-uppercase;
+
+  &.theme1 {
+    color: $theme-dark-white;
+
+    &:hover {
+      color: $theme-dark-accent;
+    }
+  }
+}
+
+.totop {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  text-transform: initial;
+  @include font-small;
+  transition: color 0.3s ease-in-out;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+
+    &:hover {
+      color: $theme-dark-accent;
+
+      & button {
+        background-color: $theme-dark-accent;
+        border-color: $theme-dark-accent;
+      }
+    }
+  }
+
+  &:hover {
+    color: $color-primary-black;
+
+    & button {
+      background-color: #ffffff00;
+      border-color: black;
+    }
+  }
+}
+
+.rec__arrow__footer {
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff00;
+  border: 1px solid $color-icons;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+
+  margin-left: 16px;
+
+  &.theme1 {
+    background-color: $theme-dark-elements;
+
+    &:hover {
+      background-color: $theme-dark-accent;
+    }
+  }
+
+  &.theme0, &.theme2, &.theme3, &.theme4 {
+    &:hover {
+      background-color: #ffffff00;
+      border-color: black;
+    }
+  }
+
+  &:hover {
+    border-color: $color-primary-black;
+  }
+}
+
+.footer-svg {
+    display: flex;
+    justify-self: center;
+    height: 60%;
+    color: black;
+    stroke: black;
+    transform: rotate(-90deg);
+    cursor: pointer;
+
+    &.theme1 {
+      color: $theme-dark-white;
+      stroke: $theme-dark-white;
+    }
+}

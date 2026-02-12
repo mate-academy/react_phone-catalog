@@ -1,0 +1,98 @@
+{
+  "welcomeMessage": "Bienvenido a nuestra aplicación",
+  "languageSelector": "Elige tu idioma",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "Inicio",
+    "phones": "Smartphones",
+    "tablets": "Tabletas",
+    "accessories": "Accesorios",
+    "favorites": "Favoritos",
+    "cart": "Carrito",
+    "about": "Sobre nosotros",
+    "contact": "Contacto",
+    "services": "Servicios",
+    "search_placeholder": "Buscar",
+    "foundforKeyWord": "encontrado en los resultados de búsqueda para",
+    "searchRes": "Resultados de búsqueda"
+  },
+  "theme": {
+    "title": "Seleccionar tema",
+    "theme0": "Original",
+    "theme1": "Original oscuro",
+    "theme2": "Redondeado azul",
+    "theme3": "Redondeado púrpura",
+    "theme4": "Redondeado naranja"
+  },
+  "home": {
+    "title": "¡Bienvenido a la tienda iSupply!",
+    "subtitle": "Descubre nuestras funciones",
+    "description": "Este es un ejemplo de una aplicación multilingüe con React, Redux e i18next.",
+    "shop_by_cat": "Compra por categoría",
+    "phones": "Teléfonos móviles",
+    "tablets": "Tabletas",
+    "accessories": "Accesorios",
+    "models": "modelos"
+  },
+  "footer": {
+    "copyright": "© 2025 Tu empresa. Todos los derechos reservados.",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
+    "contacts": "contactos",
+    "rights": "información legal",
+    "back_to_top": "Ir arriba"
+  },
+  "form": {
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "submit": "Enviar"
+  },
+  "recommended": {
+    "brand_new_models": "Modelos más nuevos",
+    "hot_prices": "Ofertas calientes",
+    "may_like": "También te puede gustar"
+  },
+  "specs": {
+    "screen": "Pantalla",
+    "capacity": "Memoria",
+    "ram": "RAM",
+    "cpu": "Procesador",
+    "select": "Seleccionar",
+    "colors": "Colores disponibles",
+    "title": "Especificaciones técnicas",
+    "resolution": "Resolución",
+    "built_memory": "Memoria interna",
+    "camera": "Cámara",
+    "zoom": "Zoom de cámara",
+    "cell": "Estándares de red",
+    "about": "Sobre el producto"
+  },
+  "btn": {
+    "in_cart": "En el carrito",
+    "add_to_cart": "Agregar al carrito",
+    "checkout": "Finalizar compra"
+  },
+  "favorites": {
+    "fav_title": "Favoritos",
+    "items": "artículos"
+  },
+  "cart": {
+    "cart": "carrito",
+    "back": "atrás",
+    "total_for": "Total por"
+  },
+  "select": {
+    "sort": {
+      "title": "Ordenar por",
+      "relevance": "Relevancia",
+      "price_low_high": "Precio: de menor a mayor",
+      "price_high_low": "Precio: de mayor a menor",
+      "discount_high_low": "Descuento: de mayor a menor",
+      "discount_low_high": "Descuento: de menor a mayor"
+    },
+    "perPage": {
+      "title": "Artículos por página"
+    }
+  }
+}

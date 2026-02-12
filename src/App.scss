@@ -1,1 +1,178 @@
-// not empty
+@font-face {
+  font-family: "montBold";
+  src: url("/fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: "montRegular";
+  src: url("/fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: "montSemibold";
+  src: url("/fonts/Mont-SemiBold.otf");
+}
+
+@mixin font-h1-mob {
+  font-family: "montBold";
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-h2-mob {
+  font-family: "montBold";
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin font-h3-mob {
+  font-family: "montSemibold";
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin font-h4-mob {
+  font-family: "montSemibold";
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@mixin font-h1 {
+  font-family: "montBold";
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-h2 {
+  font-family: "montBold";
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: 0;
+}
+
+@mixin font-h3 {
+  font-family: "montSemibold";
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin font-h4 {
+  font-family: "montSemibold";
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin font-uppercase {
+  font-family: "montBold";
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin font-buttons {
+  font-family: "montSemibold";
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin font-body {
+  font-family: "montRegular";
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin font-small {
+  font-family: "montSemibold";
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin hover-shadow {
+  box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+}
+
+$color-primary-black: #313237;
+$color-secondary-grey: #89939a;
+$color-icons: #B4BDC3;
+$color-elements: #E2E6E9;
+$color-hover-BG: #FAFBFC;
+$color-white: #FFFFFF;
+$color-green: #27AE60;
+$color-red: #EB5757;
+
+$theme-dark-black: #0F1121;
+$theme-dark-secondary: #75767F;
+$theme-dark-white: #F1F2F9;
+$theme-dark-surface2: #323542;
+$theme-dark-surface1: #161827;
+$theme-dark-elements: #3B3E4A;
+$theme-dark-icons: #4A4D58;
+$theme-dark-accent: #905BFF;
+$theme-dark-acc-hover: #A378FF;
+
+$theme-3-primary: #0F0F11;
+$theme-3-white: #FFFFFF;
+
+$theme-blue-accent: #216CFF;
+$theme-purple-accent: #4219D0;
+$theme-purple-secondary-accent: #F4BA47;
+$theme-orange-accent: #F86800;
+$theme-orange-secondary-accent: #476DF4;
+
+$color-heart-red: #EB5757;
+$color-heart-pink: #F447AF;
+
+$screen-tablet: 640px;
+
+body {
+  margin: 0;
+  background-color: $color-hover-BG;
+  scroll-behavior: smooth;
+  font-family: "montBold";
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  cursor: url('/img/icons/Cursor_Mouse_Mice2.png'), auto;
+}
+
+* {
+  box-sizing: border-box;
+
+}
+
+.custom_h1 {
+  @include font-h1-mob;
+  text-transform: capitalize;
+  margin: 24px 0 32px;
+  color: $color-primary-black;
+
+  @media (min-width: 640px) {
+    @include font-h1;
+  }
+}
+
+/* .main_lol { // remove this if short pages starting to look funny
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+} */
+
+.main_lol {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section {
+  flex: 1;
+}

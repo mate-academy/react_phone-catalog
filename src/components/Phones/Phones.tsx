@@ -1,0 +1,87 @@
+import { Link } from 'react-router-dom';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../../redux/cartSlice';
+import { addToFavorites, removeFromFavorites }
+  from '../../redux/favoritesSlice';
+import './Phones.scss';
+import productsJson from '../../../public/api/products.json'; // '../../_new/products.json';
+import { Accessory } from '../Accessories/Accessories';
+import { Tablet } from '../Tablets/Tablets';
+import { useAppSelector } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
+import { SearchResults } from '../SearchResults/SearchResults';
+import { homeIcon } from '../../../public/img/icons/svg_icons';
+
+export type Phone = {
+  id: string;
+  category: string;
+  phoneId: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+};
+
+export const useProductState = () => {
+  const cartItems = useAppSelector(state => state.cart.items);
+  const favoriteItems = useAppSelector(state => state.favorites.items);
+
+  return {
+    isInCart: (productId: string) => cartItems
+      .some((item: Phone | Tablet | Accessory) => item.id === productId),
+    isInFavorites: (productId: string) => favoriteItems
+      .some((item: Phone | Tablet | Accessory) => item.id === productId),
+  };
+};
+
+export const Phones: React.FC = () => {
+  const { t } = useTranslation();
+  const products = JSON.parse(JSON.stringify(productsJson)); // TS workaround
+  const dispatch = useDispatch();
+  const { isInCart, isInFavorites } = useProductState();
+
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string; }; }) => state.theme.current);
+
+  return (
+    <>
+      <div className={`phones_page ${currentTheme}`}>
+        <div className="acc-toplwrpr">
+          <div className="acc--nav-legend">
+            <Link
+              to={'/'}
+              className={`acc-homeIcon ${currentTheme}`}
+            >
+              {homeIcon}
+            </Link>
+
+            <svg
+              className='arrow-right'
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+
+            <div className="acc--link-legend">
+              {t('navigation.phones')}
+            </div>
+          </div>
+        </div>
+
+        <SearchResults itemsCategory="phones" />
+      </div>
+    </>
+  );
+};
