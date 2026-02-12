@@ -10,6 +10,11 @@ const Header: React.FC = () => (
       </Link>
       <nav className={styles.header__nav}>
         <Link to="/">Home</Link>
+        <Link to="/products/phones">Phones</Link>
+        <Link to="/products/tablets">Tablets</Link>
+        <Link to="/products/accessories">Accessories</Link>
+        <Link to="/favourites">Favourites</Link>
+        <Link to="/cart">Cart</Link>
       </nav>
     </div>
   </header>

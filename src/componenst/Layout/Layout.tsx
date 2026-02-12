@@ -1,14 +1,15 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Layout.module.scss';
 
-type Props = { children?: React.ReactNode };
-
-const Layout: React.FC<Props> = ({ children }) => (
+const Layout: React.FC = () => (
   <div className={styles.layout}>
     <Header />
-    <main className={styles.layout__content}>{children}</main>
+    <main className={styles.layout__content}>
+      <Outlet />
+    </main>
     <Footer />
   </div>
 );
