@@ -1,0 +1,111 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.banner {
+  // height: 352px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    height: 221px;
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+
+  &__container {
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+    }
+
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__button {
+    width: 32px;
+
+    border: 1px solid $secondary-color;
+
+    background-color: $white-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    @include hover(border, 1px solid $primary-color);
+  }
+
+  &__buttonLeft {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('#{$base-url}/img/icons/arrow.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+
+    transform: rotate(-90deg);
+  }
+
+  &__buttonRight {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('#{$base-url}/img/icons/arrow.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+
+    transform: rotate(90deg);
+  }
+
+  &__slider {
+    width: 80px;
+    height: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+  }
+
+  &__sliders {
+    width: 14px;
+    height: 4px;
+
+    cursor: pointer;
+
+    background: $elements-color;
+
+    transition: $effect-duration;
+  }
+
+  &__slidersActive {
+    background: $primary-color;
+  }
+}

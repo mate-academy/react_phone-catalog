@@ -1,0 +1,175 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.card {
+  min-width: 212px;
+  max-width: 288px;
+  height: 439px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 32px;
+
+  border: 1px solid rgba(226, 230, 233, 1);
+  color: $primary-color;
+
+  @include hover(box-shadow, 0 2px 15px 0 rgba(0, 0, 0, 0.1));
+
+  @include on-tablet {
+    min-width: 200px;
+    height: 512px;
+    max-width: 320px;
+
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+    height: 506px;
+
+    grid-column: span 6;
+  }
+
+  &__imageContainer {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 70%;
+    aspect-ratio: 1/1;
+
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 80%;
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__titleContainer {
+    padding-top: 16px;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+
+    margin-right: 8px;
+  }
+
+  &__fullPrice {
+    color: $secondary-color;
+
+    font-size: 22px;
+
+    text-decoration: line-through;
+  }
+
+  &__splitter {
+    border-top: 1px solid $elements-color;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 8px;
+
+    padding: 8px 0;
+  }
+
+  &__specContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specContainer p {
+    height: 15px;
+
+    font-family: Mont-Semi-Bold, sans-serif;
+    font-size: 12px;
+
+    margin: 0;
+  }
+
+  &__specContainer p:first-child {
+    color: $secondary-color;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addToCart {
+    width: calc(100% - 48px);
+    height: 40px;
+
+    background-color: $primary-color;
+    color: $white-color;
+
+    border: none;
+
+    cursor: pointer;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__addedToCart {
+    border: 1px solid $elements-color;
+
+    background-color: $white-color;
+    color: $green-color;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__addToFavourite {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    background-image: url('#{$base-url}/img/icons/heart-like.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
+  }
+
+  &__addedToFavourite {
+    background-image: url('#{$base-url}/img/icons/heart-like-active.png');
+
+    border-color: $elements-color;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .card {
+    grid-column: span 4;
+  }
+}

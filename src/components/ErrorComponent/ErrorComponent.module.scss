@@ -1,0 +1,56 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    width: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    background-color: $red-color;
+
+    padding: 20px;
+
+    @include on-desktop {
+      width: 700px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: $white-color;
+  }
+
+  &__button {
+    width: 176px;
+    height: 40px;
+
+    border: none;
+
+    background-color: $primary-color;
+    color: $white-color;
+    font-family: Mont-Semi-Bold, sans-serif;
+
+    transition: $effect-duration;
+
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &:active {
+      background-color: $white-color;
+      color: $green-color;
+      border: 1px solid $elements-color;
+    }
+  }
+}

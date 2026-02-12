@@ -1,0 +1,18 @@
+@import '../../utils/scss/mixin';
+
+.page {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__img {
+    width: 100%;
+
+    @include on-tablet {
+      width: 40%;
+    }
+  }
+}
