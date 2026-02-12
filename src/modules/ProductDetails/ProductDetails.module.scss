@@ -1,0 +1,181 @@
+// Define reusable variables for colors and spacing
+$primary-color: #0070f3;
+$hover-color: #005bb5;
+$spacing: 1rem;
+$text-gray: #888;
+
+// General styles
+.productDetails {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing;
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  margin-bottom: $spacing;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
+// Back button
+.backButton {
+  margin-bottom: $spacing;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: $primary-color;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+// Details container using flexbox
+.detailsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+// Image section
+.imageSection {
+  flex: 1 1 400px;
+
+  .mainImage img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .thumbnailGallery {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    .activeThumbnail {
+      border: 2px solid $primary-color;
+      opacity: 1;
+    }
+  }
+}
+
+// Suggested products section
+.suggested {
+  margin-top: 2rem;
+
+  h2 {
+    margin-bottom: $spacing;
+  }
+
+  .suggestedProducts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+h3 {
+  margin-bottom: 0.5rem;
+}
+
+.radioGroup label {
+  margin-right: 1rem;
+}
+
+// Info section
+.infoSection {
+  flex: 1 1 400px;
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .fullPrice {
+    text-decoration: line-through;
+    color: $text-gray;
+    margin-left: 0.5rem;
+  }
+
+  .options {
+    margin: $spacing 0;
+
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .radioGroup label {
+      margin-right: 1rem;
+
+      input {
+        margin-right: 0.3rem;
+      }
+    }
+  }
+}
+
+// About section (fixed specificity issue)
+.about {
+  margin-top: 2rem;
+
+  h2 {
+    margin-bottom: $spacing;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Error section
+.error {
+  text-align: center;
+
+  p {
+    color: red;
+    font-size: 1.2rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: $primary-color;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+// Radio Group global fix (moved up to resolve specificity)
