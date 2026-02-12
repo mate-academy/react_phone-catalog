@@ -1,0 +1,80 @@
+@import '../../styles/common';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #b4bdc3;
+    color: #313237;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      border 0.2s,
+      color 0.2s;
+    margin: 0;
+
+    &--main {
+      background: #fff;
+      border: 1px solid #e2e6e9;
+      color: #313237;
+    }
+
+    &.currentPage {
+      background: #313237;
+      color: #fff;
+      border: none;
+    }
+
+    &--prev,
+    &--next {
+      background: #fff no-repeat center/16px;
+      border: 1px solid #b4bdc3;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      cursor: pointer;
+      transition: border 0.2s;
+    }
+
+    &--prev {
+      background-image: url('/img/btn-prev.png');
+    }
+
+    &--next {
+      background-image: url('/img/btn-next.png');
+    }
+
+    &--prev:hover,
+    &--next:hover {
+      border: 1px solid #313237;
+    }
+
+    &--prev:disabled,
+    &--next:disabled {
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.last {
+  margin-right: 0;
+}

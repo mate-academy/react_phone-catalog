@@ -1,0 +1,260 @@
+@import '../../styles/common';
+
+.card {
+  width: 100%;
+  max-width: 288px;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid #E2E6E9;
+  background: #fff;
+
+ 
+
+  &__title {
+    font-size: 14px;
+    line-height: 21px;
+    
+    font-weight: 600;
+    color: #313237;
+    padding-bottom: 8px;
+    padding-top: 16px;
+    margin-top: 8px;
+   
+   
+  }
+
+  &__img {
+    width: 100%;
+    height: 196px;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      width: 173px;
+    }
+
+    @include on-desktop-small {
+      width: 208px;
+      height: 196px;
+    }
+  }
+
+  &__actions {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+
+    &--btn {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #313237;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__prices {
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+
+    &--price {
+      display: flex;
+      font-size: 22px;
+      line-height: 31px;
+      height: 31px;
+      gap: 8px;
+      font-weight: 700;
+      color: #313237;
+    }
+
+    &--fullprice {
+      display: flex;
+      font-size: 22px;
+      line-height: 31px;
+      height: 31px;
+      gap: 8px;
+      font-weight: 400;
+      color:  #89939A;
+      text-decoration: line-through;
+    }
+  }
+
+  .card__description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 8px;
+    margin-bottom: 8px;
+    
+
+    &--item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0;
+      font-family: Mont, sans-serif;
+    }
+
+    &__item--name {
+      color:  #89939A;
+      text-align: left;
+      flex: 1 1 50%;
+    }
+
+    &__item--value {
+      color: #313237;
+      text-align: right;
+      flex: 1 1 50%;
+    }
+  }
+
+  &__add,
+  &__added {
+    width: 100%;
+    height: 40px;
+    border-radius: 0;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border 0.3s ease;
+    cursor: pointer;
+  }
+
+  &__add {
+    background-color: #313237;
+    color: #fff;
+    border: none;
+
+    &:active {
+      background: #fff;
+      color: #313237;
+      border: 1px solid #313237;
+    }
+
+    &:disabled {
+      background: #E2E6E9;
+      color: #B4BDC3;
+      border: 1px solid #E2E6E9;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #313237;
+      color: #fff;
+      border: none;
+    }
+  }
+
+  &__added {
+    background-color: #fff;
+    color: #27AE60;
+    border: 1px solid #E2E6E9;
+
+    &:active {
+      border: 1px solid #27AE60;
+      color: #27AE60;
+      background: #fff;
+    }
+
+    &:disabled {
+      background: #E2E6E9;
+      color: #B4BDC3;
+      border: 1px solid #E2E6E9;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border: 1px solid #E2E6E9;
+      color: #27AE60;
+      background: #fff;
+    }
+  }
+
+  &__favourite {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #B4BDC3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+      background: #fff;
+
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    &.selected {
+      border: 1px solid #E2E6E9;
+      background: #fff;
+
+      img {
+        filter: invert(45%) sepia(85%) saturate(2526%) hue-rotate(325deg) brightness(105%) contrast(90%);
+      }
+    }
+
+    &:active {
+      background: #f5f5f5;
+      transform: scale(0.95);
+    }
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #E2E6E9;
+  display: block;
+}
+
+.favourite__added {
+  fill: #eb5757;
+}

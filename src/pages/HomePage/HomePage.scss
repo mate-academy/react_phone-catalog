@@ -1,0 +1,15 @@
+@import '../../styles/common';
+
+.homePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+  }
+}

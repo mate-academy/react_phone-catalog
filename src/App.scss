@@ -1,1 +1,51 @@
-// not empty
+@import './styles/variables';
+@import './pages/AccessoriesPage/Accessories.module';
+@import './pages/FavouritePage/FavouritePage.module';
+@import './pages/CartPage/CartPage.module';
+@import './pages/NotFoundPage/NotFoundPage.module';
+@import './pages/PhonesPage/PhonesPage.module';
+@import './pages/TabletsPage/TabletsPage.module';
+@import './styles/common';
+@import './components/Banner/Banner.module';
+@import './components/Card/Card.module';
+@import './components/CartPageItem/CartPageItem.module';
+@import './components/Footer/Footer.module';
+@import './components/GoBackBttn/GoBackBttn.module';
+@import './components/Header/Header.module';
+@import './components/HotPrices/HotPrices.module';
+@import './components/Loader/Loader.module';
+@import './components/MobileMenu/MobileMenu.module';
+@import './components/NewModels/NewModels.module';
+@import './components/Pagination/Pagination.module';
+@import './components/ProductDescription/ProductDescription.module';
+@import './components/RecommendedItems/RecommendedItems.module';
+@import './components/SelectionDropdown/SelectionDropdown.module';
+@import './components/ShopCategory/ShopCategory.module';
+
+iframe {
+  display: none;
+}
+
+body {
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

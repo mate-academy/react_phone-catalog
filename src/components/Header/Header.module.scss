@@ -1,0 +1,237 @@
+@import '../../styles/common';
+
+.header {
+  width: 100%;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e6e9;
+  z-index: 5;
+  opacity: 0.9;
+  box-sizing: border-box;
+  transform: translateZ(0);
+  will-change: transform;
+
+  @include page-grid;
+
+  &__logo {
+    width: 96px;
+    padding: 13px 16px;
+    grid-column: 1 / span 2;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+
+    @include on-desktop-small {
+      width: 128px;
+      padding: 18px 24px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--pict {
+      width: 80px;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      grid-column: 3 / span 7;
+    }
+
+    @include on-desktop-small {
+      grid-column: 3 / span 9;
+      padding-left: 10px;
+    }
+
+    &--link {
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #89939a;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      padding: 18.5px 0;
+      transition: color 0.5s ease-in-out;
+
+      @include on-desktop-small {
+        padding: 26.5px 0;
+      }
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+
+  &__user {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: end;
+      grid-column: 11 / span 2;
+    }
+
+    @include on-desktop-small {
+      grid-column: 23 / span 2;
+      min-width: max-content;
+    }
+
+    &--icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid #e2e6e9;
+      transition: box-shadow 0.5s ease;
+
+      // Мобільна версія (до 640px)
+      &::after {
+        content: attr(data-count);
+        position: absolute;
+        top: 6px;
+        right: 14px;
+        background-color: #eb5757;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 2;
+        border-width: 1px;
+      }
+
+      &[data-count]:not([data-count=''])::after {
+        visibility: visible;
+      }
+
+      // Планшети/десктопи
+      @include on-desktop-small {
+        &::after {
+          top: 10px;
+          right: 10px;
+          width: 22px;
+          height: 22px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-self: end;
+    border-left: 1px solid #e2e6e9;
+    grid-column: 4 / span 1;
+    min-width: max-content;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: transparent;
+      border: none;
+
+      @include on-desktop-small {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+}
+
+.icon,
+.icon-user,
+.icon-menu {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.header__user--icon,
+.icon-badge-wrapper {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include on-desktop-small {
+    width: 64px;
+    height: 64px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &::after {
+    content: attr(data-count);
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 14px;
+    height: 14px;
+    background: #eb5757;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-align: center;
+    z-index: 2;
+    pointer-events: none;
+    visibility: hidden;
+    padding: 0;
+  }
+
+  &[data-count]:not([data-count=''])::after {
+    visibility: visible;
+  }
+
+  @include on-desktop-small {
+    &::after {
+      width: 22px;
+      height: 22px;
+      font-size: 14px;
+      top: 10px;
+      right: 10px;
+    }
+  }
+}

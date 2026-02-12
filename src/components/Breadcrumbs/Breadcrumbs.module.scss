@@ -1,0 +1,31 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  height: 16px;
+  min-height: 0;
+  box-sizing: content-box;
+
+  &__home img,
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__route {
+    font-weight: 600;
+    line-height: 16px;
+    font-size: 12px;
+    color: #89939a;
+    cursor: default;
+    padding: 0;
+    margin: 0;
+    height: 16px;
+    display: flex;
+    align-items: center;
+  }
+}

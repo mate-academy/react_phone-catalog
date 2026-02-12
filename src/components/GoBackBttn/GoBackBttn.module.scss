@@ -1,0 +1,28 @@
+@import '../../styles/common';
+
+.goBackBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #89939a;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0;
+
+  &:hover {
+    color: #313237;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    line-height: 1;
+  }
+}

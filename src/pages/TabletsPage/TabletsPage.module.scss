@@ -1,0 +1,28 @@
+@import '../../styles/common';
+
+.tabletsPage {
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin: 0 0 8px;
+  }
+
+  &__amount {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #89939a;
+    margin: 0 0 32px;
+  }
+
+  &__list {
+    margin: 0;
+    &--card {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

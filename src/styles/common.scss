@@ -1,0 +1,106 @@
+@import './mixins';
+@import './variables';
+@import './fonts';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background-color: #fdfdfd;
+}
+
+main {
+  min-height: calc(100vh - 257px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 96px);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  padding: 0 $padding-phone;
+
+  @include on-tablet {
+    padding: 0 $padding-tablet;
+  }
+
+  @include on-desktop-small {
+    padding: 0 $padding-desktop-small;
+  }
+
+  @include on-desktop {
+    margin: auto;
+    padding: 0 $padding-desktop;
+    max-width: 1440px;
+  }
+}
+
+.is-active {
+  color: #313237 !important;
+  border-bottom: 2px solid #313237;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 56px;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding: 0 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 32px 80px;
+  }
+}
+
+
+
+

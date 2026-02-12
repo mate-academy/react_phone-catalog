@@ -1,0 +1,71 @@
+@import '../../styles/common';
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.hot-prices {
+  padding-left: $padding-phone;
+  margin-bottom: 57px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    padding-left: $padding-tablet;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    padding: 0 32px;
+    margin-bottom: 80px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+
+  &__header {
+    grid-column: -1 / 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &--buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    &--title {
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+      font-weight: 700;
+      color: #313237;
+      margin: 0;
+      box-sizing: border-box;
+      text-align: left;
+
+      @include on-tablet {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+    }
+  }
+
+  &__list {
+    &--card {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      background-color: #fff;
+    }
+  }
+
+  &__swiper {
+    grid-column: -1 / 1;
+  }
+}
