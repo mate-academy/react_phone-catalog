@@ -1,4 +1,38 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import {
+  Navigate,
+  Route,
+  HashRouter as Router,
+  Routes,
+} from 'react-router-dom';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+import { App } from './App';
+import { HomePage } from './modules/HomePage';
+import { NotFoundPage } from './modules/NotFoundPage';
+import { ProductsPage } from './modules/ProductsPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { CartPage } from './modules/CartPage/CartPage';
+// eslint-disable-next-line max-len
+import { GlobalStateProvider } from './modules/shared/store/GlobalStateProvider';
+import { FavoritesPage } from './modules/FavoritesPage';
+
+createRoot(document.getElementById('root') as HTMLDivElement).render(
+  <GlobalStateProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path=":type">
+            <Route index element={<ProductsPage />} />
+          </Route>
+          <Route path="product/:productId" element={<ProductDetailsPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </Router>
+  </GlobalStateProvider>,
+);
