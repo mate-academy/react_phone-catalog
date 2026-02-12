@@ -1,0 +1,78 @@
+@import "/src/utils/mixins";
+@import "/src/utils/utils";
+
+.footer {
+  flex-shrink: 0;
+  box-shadow: 0 -1px 0 0 $color-elements;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include page-margins;
+
+    padding: 32px 0;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__logo {
+    flex-grow: 1;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    @include upper-case;
+
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__up {
+    display: flex;
+    gap: 16px;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: flex-end;
+    }
+
+    &-hidden {
+      visibility: hidden;
+
+    }
+  }
+
+  &__button-text {
+    @include small-text;
+
+    color: $color-secondary;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
