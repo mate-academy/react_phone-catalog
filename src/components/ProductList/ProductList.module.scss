@@ -1,0 +1,19 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables.scss' as *;
+
+.product_list {
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  grid-column: 1/-1;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    margin-bottom: 40px;
+  }
+
+  @include on-full-screen {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+}

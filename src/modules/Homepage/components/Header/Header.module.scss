@@ -1,0 +1,115 @@
+$slide-button-size: 24px;
+
+@use '../../../../styles/mixins' as *;
+
+.container {
+  grid-column: 1/-1;
+
+  @include grid-layout;
+
+  &__title {
+    @include heading-h1;
+
+    grid-column: 1/-1;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-column: 1/10;
+      margin-bottom: 32px;
+    }
+
+    @include on-full-screen {
+      grid-column: 1/-1;
+      margin-bottom: 56px;
+    }
+  }
+}
+
+.slider_arrow {
+  @include on-tablet {
+    width: 32px;
+    height: 189px;
+    border: 1px solid var(--slider-button-border-color);
+    background-color: var(--slider-button-back-color);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  @include on-full-screen {
+    height: 400px;
+  }
+
+  &__left {
+    @include on-tablet {
+      justify-self: end;
+      grid-column: 1/2;
+      background-image: var(--arrow-left);
+    }
+  }
+
+  &__right {
+    @include on-tablet {
+      justify-self: start;
+      grid-column: -2/-1;
+      background-image: var(--arrow-right);
+    }
+  }
+}
+
+.sliderWrapper {
+  grid-column: 1/-1;
+  margin: 0 -16px;
+  overflow: hidden;
+
+  @include on-tablet {
+    grid-column: 2/-2;
+    margin: 0;
+  }
+}
+
+.sliderInner {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.image {
+  flex-shrink: 0;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-full-screen {
+    height: 400px;
+  }
+}
+
+.lowerButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+
+  &__button {
+    width: $slide-button-size;
+    height: $slide-button-size;
+    background-image: var(--button-under-slider);
+  }
+
+  &__button_active {
+    width: $slide-button-size;
+    height: $slide-button-size;
+    background-image: var(--button-under-slider-active);
+  }
+}
+
+.hidden_title {
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}

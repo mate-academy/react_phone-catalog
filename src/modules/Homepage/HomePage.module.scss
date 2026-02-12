@@ -1,0 +1,22 @@
+@use '../../styles/mixins' as *;
+
+.home_page {
+  @include grid-layout;
+  
+  justify-content: center;
+
+  padding: 24px 16px 64px;
+  row-gap: 56px;
+
+  @include on-tablet {
+    padding: 32px 24px 64px;
+
+    row-gap: 64px;
+  }
+
+  @include on-full-screen {
+    padding: 54px 0 80px;
+
+    row-gap: 80px;
+  }
+}

@@ -1,0 +1,123 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.footer {
+  @include grid-layout;
+
+  padding: 32px 16px;
+  row-gap: 32px;
+  border-top: 1px solid var(--elements);
+
+  @include on-tablet {
+    height: 96px;
+    padding: 32px;
+  }
+
+  @include on-full-screen {
+    justify-content: center;
+  }
+
+  &__logo {
+    grid-column: 1/-1;
+    width: 89px;
+    height: 32px;
+
+    @include on-tablet {
+      grid-column: 1/4;
+    }
+
+    @include on-full-screen {
+      grid-column: 1/7;
+    }
+  }
+
+  &__logo__img {
+    width: 89px;
+    height: 32px;
+    background-image: var(--logo);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/-1;
+    white-space: nowrap;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      grid-column: 4/9;
+    }
+
+    @include on-full-screen {
+      grid-column: 7/17;
+    }
+
+    &__item {
+      width: fit-content;
+      height: 27px;
+      color: var(--secondary-color);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 27px;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+
+      @include on-tablet {
+        height: 32px;
+        padding: 0 7px;
+        line-height: 32px;
+      }
+
+      @include on-full-screen {
+        padding: 0 54px;
+      }
+    }
+  }
+
+  &__back_to_top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    grid-column: 1/-1;
+    height: 32px;
+
+    @include on-tablet {
+      justify-content: end;
+      grid-column: 9/-1;
+    }
+
+    @include on-full-screen {
+      grid-column: 17/-1;
+    }
+
+    &__text {
+      height: 32px;
+      margin: 0;
+      color: var(--secondary-color);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 32px;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--icons);
+      background-image: url('../../../public/img/navigation/arrow-up.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        border: 1px solid var(--primary-color);
+      }
+    }
+  }
+}
