@@ -1,0 +1,86 @@
+@use '@/styles/index' as *;
+
+.title {
+  margin-bottom: 32px;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 800;
+  }
+}
+
+.cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desctop {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: space-between;
+
+    .product-list {
+      flex: 0.66;
+    }
+
+    .total-block {
+      flex: 0.33;
+      height: fit-content;
+    }
+
+  }
+
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .total-block {
+    border: 1px solid $elements;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+
+    .total {
+      font-size: 32px;
+      line-height: 41px;
+      font-weight: 800;
+      letter-spacing: -1%;
+      color: $primary;
+      margin: 0 auto;
+    }
+
+    .total-count {
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary;
+      margin: 0 auto;
+      border-bottom: 1px solid $elements;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 16px;
+    }
+
+    .checkout {
+      margin-top: 16px;
+      background-color: $primary;
+      color: $white;
+      border: none;
+      padding: 0 10px;
+      height: 48px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.4));
+    }
+  }
+}

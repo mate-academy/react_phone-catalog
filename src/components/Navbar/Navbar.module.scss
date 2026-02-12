@@ -1,0 +1,48 @@
+@use '@/styles/index' as *;
+
+.nav__wrapper {
+  display: none;
+  vertical-align: middle;
+
+  @include on-tablet {
+    margin-left: 16px;
+  }
+
+  @include on-desctop {
+    margin-left: 24px;
+  }
+
+  .navbar {
+    display: flex;
+    gap: 32px;
+
+    @include on-desctop {
+      gap: 64px;
+    }
+    a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      font-weight: 800;
+      color: $secondary;
+
+      &:hover {
+        color: $primary;
+      }
+
+      @include hover(transform, scale(1.03));
+    }
+    .is-active {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+    }
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+}

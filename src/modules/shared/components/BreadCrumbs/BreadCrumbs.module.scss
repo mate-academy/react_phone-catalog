@@ -1,0 +1,19 @@
+@use '@/styles/index' as *;
+
+.breadcrumbs {
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+  &-home,
+  &-arrow {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &-category {
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary;
+  }
+}

@@ -1,0 +1,100 @@
+@use '@/styles/index' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $white;
+  display: flex;
+  border-bottom: 1px solid $elements;
+  width: 100%;
+  height: 48px;
+
+  @include on-desctop {
+    height: 64px;
+  }
+
+  .icons {
+    margin-left: auto;
+    display: flex;
+
+
+    .icon__link {
+      display: none;
+      border: 1px solid transparent;
+      border-left: 1px solid $elements;
+      transition: border-color 0.3s ease-in-out;
+      position: relative;
+
+      .img-box {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon-counter {
+          position: absolute;
+          top: 7px;
+          right: 7px;
+          width: 14px;
+          height: 14px;
+          background-color: $red;
+          border: 1px solid $white;
+          border-radius: 50%;
+          color: $white;
+          font-size: 9px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 10;
+
+          @include on-desctop {
+            top: 15px;
+            right: 15px;
+          }
+        }
+      }
+
+      &.is-active {
+        border-bottom: 3px solid $primary;
+      }
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+
+      @include on-tablet {
+        width: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @include on-desctop {
+        width: 64px;
+      }
+    }
+
+
+    .fav__icon, .cart__icon {
+      width: 16px;
+      height: 16px;
+    }
+
+
+
+    .burger__wrapper {
+      border: none;
+      background-color: $white;
+      border-left: 1px solid $elements;
+      padding: 16px;
+    }
+
+    @include on-tablet {
+      .burger__wrapper {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@use '@/styles/index' as *;
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 24px;
+  font-family: Mont, sans-serif;
+
+  border: none;
+  background-color: transparent;
+  color: $secondary;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+
+  padding: 0;
+  margin-bottom: 16px;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: $primary;
+  }
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}

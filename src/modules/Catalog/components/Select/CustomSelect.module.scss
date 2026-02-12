@@ -1,0 +1,61 @@
+@use '@/styles/index' as *;
+
+.customSelect {
+  position: relative;
+  width: 100%;
+
+  .trigger {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid $icons;
+    background: white;
+    color: $primary;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $secondary;
+    }
+  }
+
+  &[data-open="true"] .trigger {
+    border-color: $primary;
+  }
+
+  .menu {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+
+    border: 1px solid $icons;
+    background: white;
+    border-radius: 4px;
+    padding: 4px 0;
+    z-index: 30;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+
+    li {
+      padding: 8px 12px;
+      color: $secondary;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.15s;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    .active {
+      color: $primary;
+    }
+  }
+}
