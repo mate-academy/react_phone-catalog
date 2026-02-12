@@ -1,0 +1,89 @@
+@import '../../../shared/Utills/variables';
+
+
+.image__slider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+
+
+
+  @media(min-width:$mobile_width) {
+    flex-direction: row-reverse;
+    
+    
+  }
+}
+
+.main__image__container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.main__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* сохраняет пропорции PNG */
+}
+
+
+
+.additional__image__container {
+  display: flex;
+  gap: 8px;
+  height: auto;
+  width: 100%;
+
+   @media(min-width:$mobile_width) {
+    flex-direction: column;
+    min-width: 34px;
+     max-width: 78px;     
+
+
+
+  }
+
+
+  @media(min-width:$desctop_width) {
+    gap:16px;
+    
+  }
+}
+
+.container {
+  border: 2px solid $gray_elements;
+  cursor: pointer;
+
+  max-width: 78px;         
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  
+
+   
+
+ 
+
+
+
+
+
+}
+
+
+.container__active {
+  border: 2px solid $gray_primary;
+  transition: all ease-in 3ms;
+}
+
+.additional__image {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+}

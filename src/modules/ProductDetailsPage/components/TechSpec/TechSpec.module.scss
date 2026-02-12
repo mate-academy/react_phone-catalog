@@ -1,0 +1,56 @@
+@import '../../../shared/Utills/variables';
+
+.tech__spec{
+ display: flex;
+ gap: 32px;
+ flex-direction: column;
+ width: 100%;
+
+  
+
+
+  
+
+
+
+  & > h3 {
+    color: $gray_primary;
+    
+  }
+
+
+
+
+
+}
+
+
+.tech__spec__container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+
+
+    & > :nth-child(1) {
+    color: $gray_secondary;
+  }
+
+}
+
+}
+
+.cell__container{
+  display: flex;
+  gap: 2px;
+}
+
+
+.polosa{
+  width: 100%;
+  height: 2px;
+  background-color: $gray_elements;
+}

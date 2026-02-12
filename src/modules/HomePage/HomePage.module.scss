@@ -1,0 +1,30 @@
+@import '../shared/Utills/variables';
+
+.homepage{
+  display: flex;
+  flex-direction: column;
+
+  gap: 56px;
+
+
+  @media(min-width :$mobile_width) {
+    gap: 64px;
+  }
+
+
+
+
+  @media(min-width :$desctop_width) {
+    gap: 80px;
+
+  }
+
+
+
+}
+
+.homepage__title{
+ color: $gray_primary;
+}
+
+

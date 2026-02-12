@@ -1,0 +1,113 @@
+
+@import '../../Utills/variables';
+
+
+
+.footer{
+  display: flex;
+  flex-direction: column;
+
+
+  padding: 32px 16px;
+  gap: 32px;
+  border-top: 2px solid $gray_elements;
+
+  @media(min-width :$mobile_width) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+
+
+  @media(min-width :$desctop_width) {
+    padding-inline: 152px;
+  }
+
+
+  &__link{
+    height: 32px;
+
+
+
+    &__img{
+      height: 100%;
+      width: 89px;
+    }
+  }
+
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+
+
+
+  @media(min-width :$mobile_width) {
+    flex-direction: row;
+    gap:60px;
+
+  }
+
+
+
+  @media(min-width :$desctop_width) {
+    flex-direction: row;
+    gap:120px;
+
+  }
+
+
+
+
+
+
+
+  &__link{
+    text-decoration: none;
+    color: $gray_secondary;
+    font-family: MontBold,sans-serif;
+font-size: 12px;
+line-height: 11px;
+letter-spacing: 0.04em;
+  }
+
+}
+
+
+.back_to_top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+
+.button_text{
+ color: $gray_secondary;
+}
+
+.icon {
+  box-sizing: border-box;
+  background-image: url('/img/imagess/Img_strilochka.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 9px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid $gray_elements;
+
+}
+
+
+
+

@@ -1,1 +1,141 @@
 // not empty
+
+/* App.scss */
+
+/* App.scss */
+
+
+
+// в index.js или index.tsx
+
+
+
+
+@import './modules/shared/Utills/variables';
+
+@font-face {
+  font-family: MontBold;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700; /* якщо це Bold */
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face{
+  font-family: MontSemiBold;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+
+}
+
+
+@font-face{
+  font-family: MontRegular;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+
+}
+
+/* Далі можна застосувати шрифт глобально */
+body {
+  font-family: MontRegular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+
+}
+
+html, body {
+  height: 100%;        /* занимает всю высоту экрана */
+  width: 100%;         /* занимает всю ширину */
+  margin: 0;
+  padding: 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+span{
+  font-family: MontSemiBold,sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+
+h1{
+  font-family: MontBold,sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @media (min-width: $mobile_width) {
+    font-size: 48px;
+    line-height: 56px;
+
+  }
+
+
+}
+
+
+
+h2{
+  font-family: MontBold,sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 31px;
+  margin: 0;
+
+
+  @media (min-width: $mobile_width) {
+    font-size: 32px;
+    line-height: 41px;
+
+  }
+
+
+}
+
+
+h3{
+  font-family: MontBold,sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+
+
+  @media (min-width: $mobile_width) {
+    font-family: MontBold,sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 31px;
+
+  }
+
+
+}
+
+
+h4 {
+  font-family: MontSemiBold,sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+
+  @media (min-width: $mobile_width) {
+    font-size: 20px;
+    line-height: 26px;
+
+  }
+
+}
+
+
+button{
+  font-family: MontSemiBold,sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
