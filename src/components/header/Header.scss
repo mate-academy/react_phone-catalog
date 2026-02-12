@@ -1,0 +1,289 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../../../public/fonts/Mont-SemiBold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.header {
+  background-color: #FFF;
+  height: 48px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid lightgrey;
+
+  display: flex;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__logo {
+    width: 96px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &__img {
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: #89939A;
+
+    cursor: pointer;
+
+    &--item {
+      position: relative;
+      text-decoration: none;
+      color: #89939A;
+
+      &-is-active {
+        color: #313237;
+
+        &::after {
+          content: '';
+          background-color: #313237;
+          width: 100%;
+          height: 4px;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__trinkets {
+    display: none;
+
+    &--heart {
+      position: relative;
+
+      &-quantity {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #EB5757;
+        border: 1px solid white;
+
+        position: absolute;
+        top: 17px;
+        right: 17px;
+
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Mont-Regular, sans-serif;
+        font-weight: 600;
+        font-size: 9px;
+
+        &-disabled {
+          display: none;
+        }
+      }
+    }
+
+    &--basket {
+      position: relative;
+
+      &-quantity {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #EB5757;
+        border: 1px solid white;
+
+        position: absolute;
+        top: 17px;
+        right: 17px;
+
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Mont-Regular, sans-serif;
+        font-weight: 600;
+        font-size: 9px;
+
+        &-disabled {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__burger {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-left: 1px solid lightgrey;
+  }
+}
+
+@media (min-width: 640px) {
+  .header {
+    &__nav {
+      width: 329px;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+
+      &--item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__trinkets {
+      display: flex;
+
+      &--heart {
+        width: 48px;
+        height: 48px;
+        background-image: url('/img/heart.png');
+        background-repeat: no-repeat;
+        background-position: center;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-left: 1px solid lightgrey;
+      }
+
+      &--basket {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-left: 1px solid lightgrey;
+      }
+    }
+
+    &__burger {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    height: 64px;
+
+    &__wrapper {
+      gap: 24px;
+    }
+
+    &__logo {
+      width: 128px;
+      height: 64px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__img {
+        width: 80px;
+        height: 28px;
+      }
+    }
+
+    &__nav {
+      width: 425px;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+
+      &--item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__trinkets {
+      display: flex;
+
+      &--heart {
+        width: 64px;
+        height: 64px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-left: 1px solid lightgrey;
+      }
+
+      &--basket {
+        width: 64px;
+        height: 64px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-left: 1px solid lightgrey;
+      }
+    }
+
+    &__burger {
+      display: none;
+    }
+  }
+}
+
+.heart-active {
+  background-image: url('/img/heart-red.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
