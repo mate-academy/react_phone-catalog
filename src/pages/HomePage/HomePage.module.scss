@@ -1,0 +1,70 @@
+@use '../../styles/index' as *;
+
+.homePage {
+  padding-top: 24px;
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+
+  @include on-tablet {
+    padding-top: 32px;
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+    row-gap: 80px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__sectionTitle {
+    @extend %h2;
+    margin-bottom: 24px;
+  }
+
+  .categories {
+    display: grid;
+    row-gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 16px;
+    }
+
+    &__item {
+      @include hover(transform, scale(1.02));
+    }
+
+    &__image {
+      width: 100%;
+      aspect-ratio: 1/1;
+      margin-bottom: 24px;
+
+      object-fit: cover;
+    }
+
+    &__title {
+      @extend %h4;
+      margin-bottom: 4px;
+    }
+
+    &__modelsCount {
+      @extend %body-text;
+      color: var(--secondary);
+    }
+  }
+}

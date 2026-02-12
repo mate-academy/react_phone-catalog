@@ -1,0 +1,78 @@
+@use '../../styles/index' as *;
+
+.select {
+  position: relative;
+
+  &__label {
+    @extend %small-text;
+    color: var(--secondary);
+    margin-bottom: 4px;
+  }
+
+  &__control {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+
+    margin-top: 4px;
+    padding: 8px 0;
+    list-style: none;
+
+    background: var(--primary-background);
+    border: 1px solid var(--elements);
+
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+    pointer-events: none;
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+
+    &--open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+  }
+
+  &__option {
+    padding: 8px 12px;
+    cursor: pointer;
+    @extend %body-text;
+    color: var(--secondary);
+
+    transition:
+      background-color 0.15s,
+      color 0.15s;
+
+    &:hover {
+      background-color: var(--hover-bg);
+      color: var(--primary);
+    }
+
+    &--selected {
+      background-color: var(--hover-bg);
+      color: var(--primary);
+    }
+
+    &--disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}

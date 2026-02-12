@@ -1,0 +1,56 @@
+@use '../../styles/index' as *;
+
+.navigation {
+  display: none;
+
+  &--menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include on-tablet {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    &--menu {
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+}
+
+.navagition-mobile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__links {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 24px;
+    border-bottom: 1px solid var(--elements);
+    padding-inline: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+}

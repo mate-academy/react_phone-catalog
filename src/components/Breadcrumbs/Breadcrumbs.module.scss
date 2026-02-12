@@ -1,0 +1,43 @@
+@use '../../styles/index' as *;
+
+.breadcrumb {
+  display: flex;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  align-items: center;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: var(--icon-chevron-disabled) center / contain no-repeat;
+    }
+
+    &:last-child {
+      .breadcrumb__text {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  &__text {
+    @extend %small-text;
+  }
+
+  &::-webkit-scrollbar {
+    height: 2px;
+  }
+}

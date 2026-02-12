@@ -1,0 +1,16 @@
+@use '../../styles/index' as *;
+
+.back {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  aspect-ratio: auto;
+  // align-items: start;
+  justify-content: start;
+  // padding-bottom: 16px;
+
+  &__text {
+    @extend %small-text;
+    color: var(--secondary);
+  }
+}

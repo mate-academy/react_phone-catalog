@@ -1,0 +1,15 @@
+@use '../utils' as *;
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  // min-width: 0;
+
+  @include padding-inline;
+
+
+  @include on-desktop {
+    max-width: $desktop-min-width;
+    margin-inline: auto;
+  }
+}

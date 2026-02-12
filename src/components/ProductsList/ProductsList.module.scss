@@ -1,0 +1,13 @@
+@use '../../styles/index' as *;
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(272px, 100%), 1fr));
+  row-gap: 40px;
+  column-gap: 16px;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}

@@ -1,0 +1,8 @@
+@use './mixins' as *;
+
+:root {
+  --header-height: 48px;
+  @include on-desktop {
+    --header-height: 64px;
+  }
+}

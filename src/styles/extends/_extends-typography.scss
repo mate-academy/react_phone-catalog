@@ -1,0 +1,111 @@
+@use '../utils' as *;
+
+%h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: var(--primary);
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0%;
+  color: var(--primary);
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: var(--primary);
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--primary);
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%uppercase {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+%buttons {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--primary);
+}
+
+%body-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--primary);
+}
+
+%small-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0%;
+  color: var(--primary);
+}
+
+%inputs {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--primary);
+
+  &::placeholder {
+    color: var(--secondary);
+  }
+}

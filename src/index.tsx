@@ -1,4 +1,10 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { Root } from './routes/Root';
+import './lexical/i18n';
+import { GlobalProvider } from './store/GlobalProvider';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <GlobalProvider>
+    <Root />
+  </GlobalProvider>,
+);

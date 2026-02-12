@@ -1,0 +1,23 @@
+@use '../../styles/index' as *;
+
+.goodPage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 56px;
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__plug {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

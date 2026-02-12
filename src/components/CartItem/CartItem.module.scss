@@ -1,0 +1,67 @@
+@use '../../styles/index' as *;
+
+.cartItem {
+  display: grid;
+  grid-template-columns: 16px 80px 1fr;
+  align-items: center;
+  grid-template-areas:
+    'remove image title'
+    'qty    .     price';
+  gap: 16px;
+
+  border: 1px solid var(--elements);
+  padding: 16px;
+  height: fit-content;
+
+  @include on-tablet {
+    grid-template-columns: 16px // remove
+      80px // image
+      1fr // title
+      auto // quantity
+      auto; // price
+
+    column-gap: 24px;
+    row-gap: 0;
+    padding: 24px;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+  }
+
+  &__price {
+    @extend %h3;
+    font-weight: 800;
+    line-height: 140%;
+    grid-area: price;
+    justify-self: end;
+
+    @include on-tablet {
+      grid-area: auto;
+    }
+  }
+
+  &__totalPrice{
+    @extend %small-text;
+  }
+
+  &__name {
+    @extend %body-text;
+  }
+
+  &__qty{
+    display: flex;
+    column-gap: 14px;
+    align-items: center;
+  }
+}

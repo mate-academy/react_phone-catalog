@@ -1,0 +1,218 @@
+@use '../../styles/index' as *;
+
+.bannerSwiper {
+  &__swiper {
+    @include on-tablet {
+      display: flex;
+      column-gap: 20px;
+    }
+  }
+
+  &__slide {
+    background-color: #000;
+    height: 100%;
+    display: flex;
+    flex: 1;
+  }
+
+  &__slideLeft {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      flex: 1;
+      padding: 24px;
+    }
+  }
+
+  &__slideContent {
+    background-color: #222222;
+    border-radius: 20px;
+    padding: 16px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+    @include on-desktop {
+      padding: 40px;
+    }
+  }
+
+  &__slideTitle {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    white-space: pre-line;
+    @include linearGradient;
+
+    margin-bottom: 12px;
+
+    @include on-desktop {
+      font-size: 40px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__slideDescription {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--secondary);
+
+    @include on-desktop {
+      font-size: 18px;
+    }
+  }
+
+  &__slideButton {
+    height: 32px;
+    padding-inline: 20px;
+
+    @include on-desktop {
+      height: 48px;
+      padding-inline: 40px;
+    }
+  }
+
+  &__slideRight {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-inline: 40px;
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      padding-top: 40px;
+      flex: 1;
+    }
+  }
+
+  &__imageTextWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  &__slideImage {
+    width: 100%;
+    height: 50%;
+
+    @include on-tablet {
+      height: 60%;
+    }
+
+    @include on-desktop {
+      height: 70%;
+    }
+    // align-self: flex-end;
+  }
+
+  &__imageDescription {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--secondary);
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__imageTitle {
+    @extend %h2;
+    text-align: center;
+    white-space: pre-line;
+    @include linearGradient;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__imageProductText {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--neutral);
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 4px;
+
+    @include on-tablet {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    @include on-desktop {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__prevButton,
+  &__nextButton {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      aspect-ratio: auto;
+    }
+  }
+}
+
+.bannerSwiper :global(.swiper) {
+  width: 100vw;
+  aspect-ratio: 1/1;
+  margin-left: -16px;
+  margin-right: -16px;
+
+  @include on-tablet {
+    width: 100%;
+    height: 189px;
+    aspect-ratio: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.bannerSwiper :global(.bannerSwiper__pagination) {
+  display: flex;
+  height: 24px;
+  margin-top: 4px;
+  column-gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerSwiper :global(.swiper-pagination-bullet) {
+  cursor: pointer;
+  box-sizing: border-box;
+  // padding: 8px;
+  display: block;
+  width: 14px;
+  height: 4px;
+  background-color: var(--elements);
+  margin: 0 4px;
+}
+
+.bannerSwiper :global(.swiper-pagination-bullet-active) {
+  display: block;
+  width: 14px;
+  height: 4px;
+  background-color: var(--primary);
+  margin: 0 4px;
+}

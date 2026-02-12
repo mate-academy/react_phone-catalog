@@ -1,0 +1,31 @@
+@use '../../styles/index' as *;
+
+.loader {
+  border-radius: 50%;
+  border: 3px solid var(--elements);
+  border-top-color: var(--primary);
+  animation: spin 0.9s linear infinite;
+
+  &--small {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+
+  &--medium {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--large {
+    width: 48px;
+    height: 48px;
+    border-width: 4px;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
