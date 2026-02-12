@@ -1,0 +1,17 @@
+@use '../../styles/index' as *;
+
+.go-back {
+  width: 66px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  color: $color-white;
+  font-size: 15px;
+  line-height: 15px;
+  transition: all .3s;
+
+  &:hover {
+    color: rgba(255,255,255,0.85);
+    cursor: pointer;
+  }
+}
