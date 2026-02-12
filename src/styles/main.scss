@@ -1,0 +1,115 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MontSemiBold;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MontBold;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $fontMont;
+  size: $font-size-md;
+  line-height: $line-height-21;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+  color: $primary;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  background-color: $hoverBg;
+  box-shadow: 0 -1px 0 0 $elements;
+  border-bottom: 1px solid $elements;
+  padding-bottom: 64px;
+
+  @include on-desktop {
+      padding-bottom: 80px;
+  }
+}
+
+h1 {
+  font-family: $fontMontBold;
+  font-size: $font-size-5xl;
+  line-height: $line-height-41;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: $font-size-6xl;
+    line-height: $line-height-56;
+  }
+}
+
+h2 {
+  font-family: $fontMontBold;
+  font-size: $font-size-3xl;
+  line-height: $line-height-31;
+  letter-spacing: 0;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    font-size: $font-size-5xl;
+    line-height: $line-height-41;
+  }
+}
+
+h3 {
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-2xl;
+  line-height: $line-height-26;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-family: $fontMontBold;
+    font-size: $font-size-3xl;
+    line-height: $line-height-31;
+  }
+}
+
+h4 {
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-lg;
+  line-height: $line-height-20;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: $font-size-2xl;
+    line-height: $line-height-26;
+  }
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+}

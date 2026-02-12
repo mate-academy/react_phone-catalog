@@ -1,0 +1,68 @@
+@use '../../../../styles/variables.scss' as *;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 9px 14px;
+  padding-left: 40px; // space for search icon
+  padding-right: 40px; // space for clear button
+
+  background: $white;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  outline: none;
+
+  &:hover {
+    border-color: $icons;
+  }
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.15);
+    outline: none;
+  }
+}
+
+.iconSearch {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 18px;
+  background: url("../../../../assets/images/icons/search.svg") no-repeat center/contain;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.clearBtn {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+
+  width: 20px;
+  height: 20px;
+
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.searching{
+  font-size: $font-size-sm;
+  position: absolute;
+  top: 9px;
+  left: 40px;
+}

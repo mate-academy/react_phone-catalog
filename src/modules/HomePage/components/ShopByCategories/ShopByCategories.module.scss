@@ -1,0 +1,42 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.homeCategories {
+  @include block-margin-bottom;
+}
+
+.homeCategoriesGrid {
+  @include page-grid;
+}
+
+.homeCategory {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.categoryLink {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-2xl;
+
+  .categoryGreyText {
+    color: $secondary;
+    font-family: $fontMont;
+    font-size: $font-size-md;
+    line-height: $line-height-21;
+  }
+}
+
+.categoryImage{
+  @include hover(transform, scale(1.08));
+}

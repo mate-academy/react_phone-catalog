@@ -1,0 +1,42 @@
+@use '../../../../styles/variables.scss' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-8;
+  margin: 40px 0 32px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: $gap-8;
+}
+
+.page,
+.active,
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: $white;
+  cursor: pointer;
+}
+
+.active {
+  background: $primary;
+  color: white;
+  border-color: black;
+}
+
+.dots {
+  padding: 6px 10px;
+  opacity: 0.7;
+}
+
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

@@ -1,0 +1,34 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: $gap-8;
+  font-size: $font-size-base;
+  font-family: $fontMontSemiBold;
+  margin: 24px 0;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.breadcrumbsItem {
+  display: flex;
+  align-items: center;
+  gap: $gap-8;
+}
+
+.breadcrumbsLink {
+  font-family: $fontMontBold;
+}
+
+.breadcrumbsSpan {
+  color: $secondary;
+}
+
+.breadcrumbsImg {
+  width: 16px;
+  height: 16px;
+}

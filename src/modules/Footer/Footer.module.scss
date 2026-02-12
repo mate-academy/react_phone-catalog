@@ -1,0 +1,78 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/shared.scss' as *;
+
+.footer {
+  width: 100%;
+  margin-top: auto;
+  align-items: center;
+  color: $secondary;
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-base;
+  padding-block: $gap-32;
+
+  @include page-grid;
+}
+
+.footerLogo {
+  grid-column: 1/-1;
+  justify-self: start;
+
+  @include on-tablet {
+    grid-column: 1 / span 4;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / span 8;
+  }
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-14;
+  justify-content: space-between;
+
+  grid-column: 1 / span 4;
+  justify-self: start;
+
+  @include on-tablet {
+    grid-column: 5 / span 4;
+    justify-self: stretch;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    grid-column: 9 / span 8;
+    justify-self: stretch;
+  }
+
+  a {
+    color: $secondary;
+    font-family: $fontMontBold;
+    line-height: $line-height-11;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+  }
+}
+
+.backTop {
+  cursor: pointer;
+
+  grid-column: 1/-1;
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-column: 10 / span 3;
+    justify-self: end;
+  }
+
+  @include on-desktop {
+    grid-column: 17 / span 8;
+    justify-self: end;
+  }
+}

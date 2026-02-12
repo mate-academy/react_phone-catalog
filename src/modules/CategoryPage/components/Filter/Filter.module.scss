@@ -1,0 +1,46 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.filterContainer {
+  font-family: $fontMont;
+  font-size: $font-size-base;
+  color: $secondary;
+
+  margin-bottom: 24px;
+  margin-top: 32px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.sortFilter {
+  grid-column: 1 / span 2;
+
+  @include on-tablet {
+    grid-column: 1 / span 4;
+  }
+}
+
+.itemsFilter {
+  grid-column: 3 / span 2;
+
+  @include on-tablet {
+    grid-column: 5 / span 3;
+  }
+}
+
+.label{
+  display: block;
+  margin-bottom: 4px;
+}
+
+.searchWrapper{
+  grid-column: 1 / span 4;
+
+  @include on-desktop{
+    display: none;
+  }
+}

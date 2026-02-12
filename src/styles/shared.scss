@@ -1,0 +1,65 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+.mobileVisible {
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.tabletVisible {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.upperText {
+  font-family: $fontMontBold;
+  size: $font-size-base;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.buttonText {
+  font-family: $fontMontSemiBold;
+  size: $font-size-md;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.smallText {
+  font-family: $fontMontSemiBold;
+  size: $font-size-base;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+.container {
+  margin: 0 auto;
+
+  @include content-padding-inline;
+}
+
+.sliderWrapper
+ {
+  margin: 0 auto;
+  padding-inline: 0;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+  }
+ }
+
+ .count{
+  color: $secondary;
+  font-size: $font-size-base;
+}
+

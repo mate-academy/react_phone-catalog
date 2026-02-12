@@ -1,0 +1,34 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/shared.scss' as *;
+
+.h1Title {
+  font-family: $fontMontBold;
+  font-size: $font-size-5xl;
+  line-height: $line-height-41;
+  letter-spacing: -0.01em;
+
+  margin: 24px 0;
+
+  @include on-tablet {
+    font-size: $font-size-6xl;
+    line-height: $line-height-56;
+  }
+}
+
+.h1Hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.paddingBlock {
+  padding-block: 56px;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 80px;
+  }
+}
