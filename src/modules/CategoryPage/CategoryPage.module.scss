@@ -1,0 +1,185 @@
+@use '../../assets/styles/variables' as *;
+
+.categoryPage {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.breadcrumbRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+ .breadcrumbLink {
+  font-size: 12px;
+  font-weight: 700;
+  color:  var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.breadcrumbCurrent {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1%;
+  color: var(--color-text);
+
+  @include tablet {
+    font-size: 48px;
+  }
+
+   @include desktop {
+    font-size: 48px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 24px;
+  }
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  width: fit-content;
+
+  select {
+    width: 136px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-elements);
+    border-radius: 8px;
+    background-color: var(--color-button);
+    font-size: 14px;
+    font-family: inherit;
+    color: #89939A;
+    cursor: pointer;
+
+    &:focus {
+      outline: 1px solid var(--color-text);
+    }
+  }
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+.item {
+  list-style: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+
+  @include tablet {
+    margin-top: 40px;
+  }
+
+  @include desktop {
+    margin-top: 40px;
+  }
+}
+
+.pageButton {
+  padding: 7px 12px 4px 12px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-button);
+  color: var(--color-text);
+  border-radius: 48px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  width: 32px;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+}
+
+.pageButtonActive {
+  @extend .pageButton;
+  background-color: var(--color-pagination);
+  color: $color-white;
+  pointer-events: none;
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+}
+
+.arrowButton {
+  @extend .pageButton;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,66 @@
+@use '../../assets/styles/variables' as *;
+
+.slider {
+  max-width: 1136px;
+  margin: 0 auto 80px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: 'Mont', sans-serif;
+  color: var(--color-text);
+  letter-spacing: -1px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-button);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.sliderContainer {
+  overflow: visible;
+}
+
+.swiper {
+  overflow: hidden;
+}
+
+.slide {
+  width: 272px !important;
+  flex-shrink: 0;
+  overflow: visible;
+}

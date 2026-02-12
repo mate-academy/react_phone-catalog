@@ -1,0 +1,115 @@
+@use '../../assets/styles/variables' as *;
+
+.card {
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  background-color: var( --color-background-card);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover .name {
+    color: $color-accent;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 196px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  height: 58px;
+  color: var(--color-text);
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.fullPrice {
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #89939A;
+  text-decoration: line-through;
+  line-height: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background-color: var(--color-secondary);
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-elements);
+  margin-bottom: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: 'Mont';
+    line-height: 1;
+  }
+
+  .key {
+    font-weight: 400;
+    color: var(--color-secondary);
+    text-align: left;
+  }
+
+  .value {
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: right;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}

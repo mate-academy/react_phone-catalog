@@ -1,1 +1,103 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Mont, system-ui, sans-serif;
+  font-size: 16px;
+}
+
+html, body {
+  font-size: 100%;
+  font-family: inherit;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body.light {
+  --color-background: #FAFBFC;
+  --color-text: #0F0F11;
+  --color-secondary: #75767F;
+  --color-elements: #E2E6E9;
+  --color-background-card: #FFFFFF;
+  --color-accent: #4219D0;
+  --color-button: #FFFFFF;
+  --color-font-button: #4219D0;
+  --color-pagination: #0F0F11;
+}
+
+body.dark {
+  --color-background: #0F0F11;
+  --color-text: #f1f2f9; //var(--color-text)
+  --color-secondary: #75767F;
+  --color-elements: #323542;
+  --color-background-card:#161827;
+  --color-accent:#323542;
+  --color-button: #323542;
+  --color-font-button:#FFFFFF;
+  --color-pagination: #4219D0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}

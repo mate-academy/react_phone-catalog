@@ -1,0 +1,91 @@
+@use '../../assets/styles/variables' as *;
+
+.pageContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-top: 24px;
+
+  @include tablet {
+    font-size: 48px;
+    margin-top: 40px;
+  }
+
+   @include desktop {
+    font-size: 48px;
+    margin-top: 40px;
+  }
+}
+
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  align-self: center;
+}
+
+.emptyImage {
+  width: 120px;
+
+  @include tablet {
+    width: 160px;
+  }
+
+  @include desktop {
+    width: 200px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 32px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.empty {
+  font-size: 16px;
+  color: $color-secondary;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 40px;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+.item {
+  list-style: none;
+}
