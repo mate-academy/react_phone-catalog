@@ -1,0 +1,72 @@
+[33m187f3f1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m Pag Finalizada
+[33m19fdd70[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Merge pull request #650 from mykhalenych/patch-4
+[33mb482dc8[m Update phones.json
+[33mf6927af[m Merge pull request #582 from mykhalenych/patch-3
+[33mb68de2f[m Update README.md
+[33mf064fa3[m Update test.yml
+[33ma312d38[m Merge pull request #470 from mate-academy/vite-infra
+[33m0bfddcb[m Merge pull request #478 from mykhalenych/patch-2
+[33m3d44a4e[m Update README.md
+[33m4e5a927[m add Vite
+[33m7df7356[m Merge pull request #454 from mykhalenych/patch-1
+[33mb6dc670[m Update README.md
+[33m81138fd[m add instructions for setup from scratch
+[33m6793215[m fix lock versions
+[33m779922a[m fix node14 deps
+[33m6f7d1e5[m hide old data
+[33mc8f7297[m Merge pull request #357 from mate-academy/feature/new-designs-and-data
+[33m8d9b164[m fix typos in Readme
+[33md7d48e9[m Update README.md
+[33m697fa5b[m Update README.md
+[33m7777ad5[m Update README.md
+[33m5fe25c8[m Update README.md
+[33m9502b3f[m Update README.md
+[33m5d41d48[m add improved banners
+[33m283c08e[m update designs and data structure, remove tests
+[33mfe983dd[m Merge pull request #336 from SerhiiKirik/update-prettier
+[33m0f2829e[m update few deps
+[33m03809d0[m add/prettier: add prettier, update readme, format code
+[33m384c3e6[m fix deps
+[33mbc9d98e[m Update package.json
+[33m9921a93[m Update package.json
+[33m850ea02[m Update README.md
+[33m3ade505[m Merge pull request #138 from mate-academy/revert-old-api-forlder-to-not-break-students-solutions
+[33m60d7ffb[m[33m ([m[1;31morigin/revert-old-api-forlder-to-not-break-students-solutions[m[33m)[m make old api folder root
+[33mef80dd0[m Merge pull request #136 from mate-academy/actualise-data-for-design
+[33ma67c388[m[33m ([m[1;31morigin/actualise-data-for-design[m[33m)[m rename path to products
+[33m7ca9839[m Actualise data according to design
+[33m6405ed7[m Merge pull request #100 from mate-academy/cypress_tests_added
+[33me242e7f[m[33m ([m[1;31morigin/cypress_tests_added[m[33m)[m Fixes after testing on other solutions
+[33md6b0529[m Fixes
+[33m4277260[m Cypress tests added
+[33m01240e5[m Merge pull request #97 from mate-academy/mate-scripts-update
+[33m18273b1[m Update and init
+[33md6dd4ae[m Merge pull request #95 from mate-academy/mate-scripts-update
+[33mfb61d1a[m Update and init
+[33m5d89c98[m Update index.tsx
+[33me327428[m Update and init
+[33ma84c892[m Update App.scss
+[33m6f955bf[m Update App.tsx
+[33mffc3b66[m Update scripts
+[33m9e82f54[m Update workflows
+[33m400b4d0[m Update scripts
+[33mbb37ec9[m Add cypress verify to postinstall
+[33m6215be7[m Downgrade
+[33m74cdb25[m Restore checklists, update package, fix tests
+[33ma0cfdd6[m Update workflows
+[33mfab3675[m Component tests and other improvements
+[33m01b42d4[m Component tests and other improvements
+[33m53d34c8[m Update repo. Added bulma and js config (#91)
+[33md2ea302[m Update repo. Added cypress (#90)
+[33mf6e6bb8[m Added a link to a working in a team instructions
+[33me7db2d0[m small data fix
+[33ma75aeb8[m Fonts were added
+[33m36a8ba1[m Unused files were removed
+[33m85f04af[m The description was updated
+[33m9bfed15[m New design was applied
+[33m3731c24[m Update package.json
+[33mb464540[m Typescript was added
+[33me0ab8c8[m Static files were added
+[33m60c9a19[m Workflow was updated
+[33m857ea38[m Advanced tasks were added
+[33m2e1ff25[m Initial commit

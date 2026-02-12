@@ -1,0 +1,46 @@
+/* TabletsList.module.scss */
+
+/* Container principal da lista */
+.tabletsListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mensagem de "sem tablets" */
+.noTablets {
+  font-size: 16px;
+  color: #888;
+  text-align: center;
+  margin-top: 32px;
+}
+
+/* Grade de tablets */
+.tabletsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+  .tabletsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .tabletsListContainer {
+    padding: 16px;
+  }
+}
