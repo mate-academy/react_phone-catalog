@@ -1,0 +1,420 @@
+@import '../../styles/main';
+
+.productDetailsCard {
+  margin-top: 16px;
+
+  &__contant {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @include on-tablet {
+      width: 100%;
+      height: 100%;
+
+      @include page-grid;
+    }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: var(--text-color);
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__blockPhoto {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 32px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-column: 1 / 8;
+      align-items: start;
+      width: 100%;
+      height: 100%;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__photo {
+    width: 288px;
+    height: 288px;
+    margin-inline: auto;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      margin-inline: 0;
+      grid-column: 2 / 8;
+      padding: 6.8px;
+    }
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+      grid-column: 3 / 13;
+      padding: 11px;
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      justify-content: center;
+
+      @include on-tablet {
+        grid-column: 3 / 7;
+        width: 273.39px;
+        height: 273.39px;
+      }
+
+      @include on-desktop {
+        grid-column: 4 / 12;
+        width: 442px;
+        height: 442px;
+      }
+    }
+
+    &-list {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 49px;
+      margin-top: 16px;
+      gap: 8px;
+
+      @include on-tablet {
+        grid-column: 1 / 2;
+        flex-direction: column;
+        width: 35px;
+        justify-content: start;
+        height: 100%;
+        margin-top: 0;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 3;
+        flex-direction: column;
+        width: 80px;
+      }
+    }
+
+    &-link {
+      display: flex;
+      height: 100%;
+      cursor: pointer;
+
+      @include on-desktop {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-item {
+      width: 51.2px;
+      height: 49px;
+      padding: 5px;
+      border: 1px solid var(--elements-color);
+
+      &:hover {
+        border-color: var(--text-color);
+      }
+
+      &-active {
+        border: 1px solid var(--text-color);
+        pointer-events: none;
+      }
+
+      @include on-tablet {
+        width: 35px;
+        height: 35px;
+      }
+
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+      }
+
+      &--img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__options {
+    @include on-tablet {
+      height: 100%;
+      grid-column: 8 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__about {
+    margin-top: 56px;
+    height: 100%;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+      margin-top: 80px;
+    }
+
+    &-top {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26.65px;
+      color: var(--text-color);
+    }
+
+    &-block {
+      margin-top: 16px;
+
+      &--title {
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20.45px;
+        color: var(--text-color);
+      }
+
+      &--text {
+        font-family: Mont, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: var(--secondary-color);
+        margin-top: 16px;
+      }
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--elements-color);
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+
+    &-filter {
+      width: 100%;
+      height: 1px;
+      background-color: var(--elements-color);
+      display: flex;
+      flex-direction: row;
+      margin-top: 24px;
+    }
+  }
+
+  &__priceBlock {
+    width: 288px;
+    height: 105px;
+    margin-top: 32px;
+
+    @include on-tablet {
+      // width: 237px;
+      width: 100%;
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--discountPrice {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      color: var(--text-color);
+    }
+
+    &--regularPrice {
+      font-family: Mont, sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28.12px;
+      color: var(--secondary-color);
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    gap: 8px;
+
+    @include on-desktop {
+      width: 100%;
+    }
+
+    &_cart {
+      background-color: var(--prod-card-btn);
+      color: $whiteColor;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      transition: transform 0.3s;
+
+      &-isActive {
+        background-color: var(--active-prod-card-btn);
+        color: var(--active-prod-card-btn-text);
+        border: 1px solid var(--active-prod-card-btn-border);
+      }
+    }
+
+    &_cart:hover {
+      transform: scale(1.05);
+    }
+
+    &_favourites {
+      flex-shrink: 0;
+      border: 1px solid var(--prod-card-fav-border);
+      border-style: none;
+      width: 48px;
+      height: 48px;
+      background-color: var(--prod-card-fav-bg);
+      cursor: pointer;
+
+      &-active {
+        border-color: var(--prod-card-fav-border-active);
+        background-color: var(--prod-card-fav-bg-active);
+      }
+    }
+
+    &_favourites:hover {
+      border-color: var(--prod-card-fav-border-hover);
+      background-color: var(--prod-card-fav-bg-hover);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_block {
+      display: flex;
+      justify-content: space-between;
+
+      &--name {
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15.34px;
+        color: var(--secondary-color);
+      }
+
+      &--value {
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15.34px;
+        color: var(--text-color);
+      }
+    }
+  }
+
+  &__techSpecs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 56px;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      justify-content: start;
+      margin-top: 80px;
+      grid-column: 14 / -1;
+    }
+
+    &-top {
+      display: flex;
+      justify-content: left;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26.65px;
+      color: var(--text-color);
+    }
+
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin-top: 30px;
+      gap: 8px;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &--title {
+        font-family: Mont, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: var(--secondary-color);
+      }
+
+      &--text {
+        font-family: Mont, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: var(--text-color);
+      }
+    }
+  }
+}

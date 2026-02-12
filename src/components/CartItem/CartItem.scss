@@ -1,0 +1,136 @@
+@import '../../styles/main';
+
+.cartItem {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid var(--cart-item-border);
+  background-color: var(--cart-item-bg);
+
+  @include on-tablet {
+    height: 128px;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__blockPhoto {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &--close {
+      cursor: pointer;
+    }
+
+    &--image {
+      width: 80px;
+      height: 80px;
+
+      @include on-tablet {
+        margin-left: 8px;
+        width: 66px;
+        height: 66px;
+      }
+
+      &_img {
+        width: 80px;
+        height: 80px;
+
+        @include on-tablet {
+          width: 66px;
+          height: 66px;
+        }
+      }
+    }
+
+    &--title {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--text-color);
+    }
+  }
+
+  &__blockInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    @include on-tablet {
+      margin-top: 0;
+      justify-content: center;
+    }
+
+    &--price {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 30.8px;
+      color: var(--text-color);
+
+      @include on-tablet {
+        width: 80px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--cart-item-btn-border);
+    background-color: var(--cart-item-btn-bg);
+    cursor: pointer;
+
+    &-left {
+      &-disabled {
+        border-color: var(--elements-color);
+        background-color: var(--bg-color);
+      }
+    }
+
+    &:hover {
+      border-color: var(--cart-item-btn-border-hover);
+      background-color: var(--cart-item-btn-bg-hover);
+    }
+  }
+
+  &__info {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    color: var(--text-color);
+  }
+}

@@ -1,0 +1,99 @@
+@import '../../styles/main';
+
+.categories {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: var(--text-color);
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__items {
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &_link {
+      height: 288px;
+      width: 100%;
+      cursor: pointer;
+
+      &-img {
+        height: 288px;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      &-img:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 24px;
+
+    &--title {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 25.56px;
+      color: var(--text-color);
+    }
+
+    &--text {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondaryColor;
+    }
+  }
+}
+
+.container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
