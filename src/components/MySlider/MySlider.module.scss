@@ -1,0 +1,83 @@
+@import '../../styles/variables';
+
+.container {
+  grid-column: 1/-1;
+}
+
+.sectionTitleAndButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sliderButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.customArrow {
+  height: 32px;
+  width: 32px;
+  background-color: $color-surface2;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+
+  &:disabled {
+    background-color: $color-black;
+    border: 1px solid $color-elements;
+    pointer-events: none;
+  }
+}
+
+.sectionTitle {
+  font-family: $font-bold;
+  line-height: 41px;
+  font-size: 32px;
+  margin: 0;
+
+  @media (max-width: $size-mobile) {
+    line-height: 140%;
+    font-size: 22px;
+    max-width: 50%;
+  }
+}
+
+.sliderContainer {
+  overflow: hidden;
+
+  @media (max-width: $size-tablet) {
+    margin-right: -24px;
+  }
+
+  @media (max-width: $size-mobile) {
+    margin-right: -16px;
+  }
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.slide {
+  min-width: 272px;
+
+  @media (max-width: $size-tablet) {
+    min-width: 237px;
+  }
+
+  @media (max-width: $size-mobile) {
+    min-width: 212px;
+  }
+}

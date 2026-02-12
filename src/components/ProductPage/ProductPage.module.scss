@@ -1,0 +1,110 @@
+@import '../../styles/variables';
+
+.page {
+  background-color: $color-black;
+  padding: 24px 32px 80px;
+  justify-items: center;
+  min-height: calc(100vh - 160px);
+
+  @media (max-width: $size-tablet) {
+    padding: 40px 24px 64px;
+    min-height: calc(100vh - 144px);
+  }
+
+  @media (max-width: $size-mobile) {
+    padding: 24px 16px 64px;
+    min-height: calc(100vh - 305px);
+  }
+}
+
+.pageContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1136px;
+
+  @media (max-width: $size-mobile) {
+    gap: 24px;
+  }
+}
+
+.pathHome {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &_title {
+    font-family: $font-semibold;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $color-secondary;
+  }
+}
+
+.pageInfo {
+  &_title {
+    color: $color-white;
+    font-family: $font-bold;
+    line-height: 56px;
+    font-size: 48px;
+    letter-spacing: -1%;
+    margin: 0;
+    margin-bottom: 8px;
+
+    @media (max-width: $size-mobile) {
+      line-height: 41px;
+      font-size: 32px;
+    }
+  }
+
+  &_counter {
+    font-family: $font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $color-secondary;
+  }
+}
+
+.dropdowns {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.dropdown {
+  margin: 0;
+  width: 187px;
+
+  @media (max-width: $size-mobile) {
+    flex: 1;
+    max-width: 187px;
+  }
+
+  &:last-child {
+    width: 136px;
+  }
+
+  &_label {
+    display: block;
+    font-family: $font-semibold;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+  margin-bottom: 40px;
+
+  @media (max-width: $size-mobile) {
+    margin-bottom: 24px;
+  }
+}
