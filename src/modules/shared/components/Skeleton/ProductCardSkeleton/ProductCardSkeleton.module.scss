@@ -1,0 +1,117 @@
+@use '../../../../../styles/mixins' as *;
+
+.card {
+  border: 1px solid #e2e6e9;
+  padding: 32px;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.imageWrapper {
+  margin-bottom: 8px;
+  height: 208px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.name {
+  height: 16px;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  width: 90%;
+  border-radius: 6px;
+}
+
+.name2 {
+  height: 16px;
+  margin-bottom: 8px;
+  width: 70%;
+  border-radius: 6px;
+}
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  width: 70px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.fullPrice {
+  width: 55px;
+  height: 16px;
+  border-radius: 6px;
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: 12px;
+  background-color: #e2e6e9;
+}
+
+.specs {
+  margin: 8px 0;
+  display: grid;
+  row-gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.specLeft {
+  width: 40%;
+  height: 14px;
+  border-radius: 6px;
+}
+
+.specRight {
+  width: 35%;
+  height: 14px;
+  border-radius: 6px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cartBtn {
+  height: 37px;
+  flex: 1;
+  border-radius: 6px;
+}
+
+.favBtn {
+  width: 40px;
+  height: 37px;
+  border-radius: 6px;
+}

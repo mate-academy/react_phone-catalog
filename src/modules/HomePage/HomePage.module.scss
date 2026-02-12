@@ -1,0 +1,134 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include page-grid;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.heroSection {
+  grid-column: 1 / -1;
+  display: grid;
+
+  @include on-tablet {
+    row-gap: 0;
+  }
+
+  @include on-desktop {
+    row-gap: 0;
+  }
+}
+
+.heroTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    padding-right: 100px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+.heroSliderPlaceholder {
+  height: 200px;
+  border-radius: 16px;
+  border: 1px dashed #b4bdc3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #89939a;
+  font-size: 14px;
+
+  @include on-tablet {
+    height: 260px;
+  }
+
+  @include on-desktop {
+    height: 320px;
+  }
+}
+
+.section {
+  grid-column: 1 / -1;
+  display: grid;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+
+  @include on-desktop {
+    font-size: 32px;
+  }
+}
+
+.sectionButton {
+  border: 1px solid #b4bdc3;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.sectionContent {
+  padding: 0;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+}

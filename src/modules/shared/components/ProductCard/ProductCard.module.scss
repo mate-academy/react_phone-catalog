@@ -1,0 +1,181 @@
+@use '../../../../styles/mixins' as *;
+
+.card {
+  border: 1px solid #e2e6e9;
+  padding: 32px;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 16px rgba(23, 32, 49, 0.12);
+    border-color: #b4bdc3;
+  }
+}
+
+.imageWrapper {
+  margin-bottom: 8px;
+  height: 208px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.1);
+}
+
+.name {
+  padding-top: 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  min-height: 58px;
+}
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #313237;
+}
+
+.fullPrice {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: 12px;
+  background-color: #e2e6e9;
+}
+
+.specs {
+  margin: 8px 0;
+  display: grid;
+  row-gap: 8px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.specTitle {
+  color: #89939a;
+}
+
+.specValue {
+  color: #313237;
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCartButton {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  background-color: #313237;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: #0f0f11;
+    box-shadow: 0 2px 8px rgba(23, 32, 49, 0.25);
+    transform: translateY(-1px);
+  }
+}
+
+.addToCartButtonInCart {
+  background-color: #b4bdc3;
+  box-shadow: none;
+  transform: none;
+}
+
+.addToCartButtonInCart:hover {
+  background-color: #9fa4a7;
+  box-shadow: none;
+  transform: none;
+}
+
+.favouriteButton {
+  width: 40px;
+  border: 1px solid #b4bdc3;
+  background-color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background-color: #fafbfc;
+    border-color: #313237;
+  }
+}
+
+.favIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}

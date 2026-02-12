@@ -1,0 +1,121 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #89939a;
+  padding: 0;
+  margin-bottom: 24px;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.backIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 41px;
+  margin: 0 0 32px;
+  color: #313237;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.empty {
+  color: #89939a;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 368px;
+  gap: 16px;
+  align-items: start;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary {
+  border: 1px solid #e2e6e9;
+  background: #fff;
+  padding: 24px;
+  text-align: center;
+}
+
+.total {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.subtext {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #89939a;
+  margin-bottom: 16px;
+
+  @include on-desktop {
+    font-weight: 500;
+    margin-bottom: 25px;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e6e9;
+  margin-bottom: 16px;
+
+  @include on-desktop {
+    margin-bottom: 24px;
+  }
+}
+
+.checkout {
+  width: 100%;
+  height: 48px;
+  border: none;
+  background: #313237;
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+    background-color: #0f0f11;
+  }
+}
+
+@media (max-width: 1199px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
