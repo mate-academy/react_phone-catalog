@@ -1,0 +1,114 @@
+@import '../../../App';
+@import '../../../utils/mixins';
+@import '../../../utils/vars';
+@import '../../../utils/fonts';
+
+.products {
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__length {
+    color: $color-text-gray;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__dropDownMenu {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+  margin-bottom: 24px;
+
+  &__title {
+    color: $color-text-gray;
+    margin-bottom: 4px;
+  }
+
+  &__button {
+    width: 136px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: $background-color;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: Mont, sans-serif;
+    color: $color-text;
+
+    @include on-tablet {
+      width: 128px;
+    }
+
+    &:hover {
+      border: 1px solid $color-text-gray;
+    }
+    &:focus {
+      border: 1px solid $color-accent-hover;
+    }
+
+    &--active {
+      border-color: $background-color;
+    }
+
+    &::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background-image: url('../../../icons/ArrowDown.png');
+      background-position: center;
+      position: absolute;
+      right: 12px;
+      color: $color-text-gray;
+     }
+    }
+
+    &--active::after {
+      background-image: url('../../../icons/ArrowUp.png');
+    }
+
+    &__content {
+      position: absolute;
+      margin-top: 4px;
+      left: 0;
+      width: 100%;
+      background-color: $primary-color;
+      border: 1px solid $color-accent;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+
+    li {
+      padding: 10px 12px;
+      cursor: pointer;
+      color: $color-text-gray;
+
+      &:hover {
+        background-color: $background-color;
+        color: $color-text;
+      }
+  }
+}
+
+

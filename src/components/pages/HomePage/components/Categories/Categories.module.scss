@@ -1,0 +1,62 @@
+@import '../../../../../App';
+@import '../../../../../utils/fonts';
+@import '../../../../../utils/mixins';
+@import '../../../../../utils/vars';
+
+.category {
+  @include pageGrid;
+
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+  margin-top: 24px;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+
+    // margin: 0 auto;
+    // width: 100%;
+  }
+
+  &__img {
+    width: 288px;
+    height: 288px;
+    background-color: #161827;
+    transition: $effectDuration;
+
+    &:hover {
+      scale: 0.9;
+      box-shadow: 0 4px 22px rgba(255, 255, 255, 0.2);
+      transform: scale(1.01);
+    }
+
+    @include on-tablet {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    color: $color-text;
+    margin-top: 24px;
+  }
+
+  &__title--models {
+    font-size: 14px;
+    color: $color-text-gray;
+  }
+}
+
+img {
+  height: 80%;
+  width: auto;
+  margin: 10% auto;
+}
