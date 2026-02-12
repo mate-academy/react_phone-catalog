@@ -1,0 +1,29 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.categories {
+  @include ContentPaddingInline();
+  @include Grid-column();
+
+  &__wrapper {
+    width: 100%;
+    grid-column: 1/-1;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column: 1/-1;
+    gap: 32px;
+
+    @include onTablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+}

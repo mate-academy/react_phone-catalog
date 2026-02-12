@@ -1,0 +1,28 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-slider {
+  @include Grid-column;
+  @include ContentPaddingInline;
+  row-gap: 24px;
+
+
+  @include onDesktop {
+    padding: 0;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__top {
+    grid-column: 1 / -1;
+
+    &__wrapper {
+      grid-column: 1 / -1;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

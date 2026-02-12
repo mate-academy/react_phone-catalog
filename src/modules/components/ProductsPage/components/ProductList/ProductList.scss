@@ -1,0 +1,20 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.products-list {
+  display: grid;
+  position: relative;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 287px);
+  justify-content: center;
+  row-gap: 40px;
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fill, 288px);
+    column-gap: 16px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(auto-fill, 272px);
+  }
+}

@@ -1,0 +1,98 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-card {
+  border: $standart-border solid $light-grey;
+  border-radius: $standart-radius;
+  background-color: $primary-light-bg;
+  user-select: none;
+  scroll-snap-align: start;
+  text-decoration: none;
+  height: 440px;
+
+  &:hover {
+    @include Hover;
+    box-shadow: 0px 2px 16px 0px $box-shadow;
+  }
+
+  @include onTablet {
+    height: 506px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 32px;
+    height: -webkit-fill-available;
+  }
+
+  &__container-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: -webkit-fill-available;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    height: 130px;
+
+    @include onTablet {
+      height: 196px;
+    }
+  }
+
+  &__image {
+    display: flex;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  &__title {
+    @include Font-demi-bold(14px, 21px);
+    text-decoration: none;
+  }
+
+  &__info {
+    @include Font-demi-bold(12px, 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: $gap;
+    }
+
+    &-property {
+      color: $light-grey-text;
+    }
+  }
+
+  &__separator {
+    border: 1px solid $light-grey;
+    margin: 0;
+  }
+
+  &__btns {
+    @include Btn-add-container;
+
+    &--add {
+      @include Font-bold(14px, 21px);
+      border-radius: 48px;
+      background-color: $button-primary-color;
+      color: white;
+      grid-column: 1 / 2;
+      display: flex;
+      height: -webkit-fill-available;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px #17203166;
+      }
+    }
+  }
+}

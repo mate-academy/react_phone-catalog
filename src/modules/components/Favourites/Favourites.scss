@@ -1,0 +1,26 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.favourites {
+  @include Grid-column;
+  @include ContentPaddingInline;
+
+  &__container {
+    grid-column: 1 / -1;
+  }
+
+  &__productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 287px);
+    grid-column: 1/-1;
+    justify-self: center;
+    justify-content: center;
+    row-gap: 40px;
+
+    @include onTablet {
+      grid-template-columns: repeat(auto-fill, 272px);
+      column-gap: 16px;
+      row-gap: 40px;
+      justify-self: auto;
+    }
+  }
+}

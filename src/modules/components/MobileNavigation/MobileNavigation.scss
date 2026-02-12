@@ -1,0 +1,64 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.nav-aside {
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  background-color: $primary-bg-color;
+  z-index: 10;
+  transform: translateX(-100%);
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.3s ease-in-out;
+
+  &--active {
+    transform: translateX(0);
+    pointer-events: all;
+    user-select: auto;
+  }
+
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    grid-column: 1/-1
+  }
+
+  &__link {
+    @include navLink();
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    color: $primary-text-color;
+
+    &--button {
+      display: flex;
+      padding-block: 24px;
+      justify-content: center;
+      border-top: 1px solid $light-grey;
+      box-shadow: 1px 1px 0px 0px $light-grey;
+
+      &-is-active {
+        border-bottom: 2px solid $primary-text-color;
+        background-color: rgba($primary-blue, $alpha: 0.2);
+        color: $primary-text-color;
+      }
+    }
+  }
+}

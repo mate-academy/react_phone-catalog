@@ -1,0 +1,102 @@
+{
+  "homePage": {
+    "title": "Nice Gadgets store!",
+    "homeCategoryTitle": "За категоріями"
+  },
+  "categoryItem": [
+    {
+      "title": "Телефони",
+      "category": "phones",
+      "details": "товарів"
+    },
+    {
+      "title": "Планшети",
+      "category": "tablets",
+      "details": "товарів"
+    },
+    {
+      "title": "Аксесуари",
+      "category": "accessories",
+      "details": "товарів"
+    }
+  ],
+  "sortTitle": [
+    {
+      "title": "Фільтрувати за",
+      "sort": "sortBy"
+    },
+    {
+      "title": "Товарів на сторінці",
+      "sort": "sortByAmount"
+    }
+  ],
+  "sortBy": [
+    { "label": "Датою", "sortKey": "year" },
+    { "label": "Алфавітом", "sortKey": "title" },
+    { "label": "Ціною", "sortKey": "price" }
+  ],
+  "sortByAmount": [
+    { "label": "4", "sortKey": "4" },
+    { "label": "8", "sortKey": "8" },
+    { "label": "16", "sortKey": "16" },
+    { "label": "всі товари", "sortKey": "all" }
+  ],
+  "notifMessage": {
+    "errorTitle": "Щось пішло не так",
+    "errorNotifTitle": "Щось пішло не так, не вдалося знайти деталі товару",
+    "alarmTitle": "Не вдалося знайти деталі товару",
+    "noProducts": "Немає продуктів в категорії",
+    "cartFilledNotif": "Кошик наповнений",
+    "cartEmptyNotif": "Кошик пустий",
+    "cartModalMessage": "Оформлення замовлення ще неможливе, але ми над цим працюємо.\nОчистити кошик?",
+    "notif": "Ууупс"
+  },
+  "footerNavItems": ["Github", "Contacts", "rights"],
+  "propDetailsTitle": {
+    "tech": "Характеристики",
+    "about": "Про товар",
+    "capacity": "Вбудована пам'ять",
+    "colors": "Колір"
+  },
+  "btnsTitle": {
+    "add": "До кошика",
+    "added": "Додано",
+    "footerBack": "На початок",
+    "back": "Назад",
+    "cartConfirmBtn": "Оформити",
+    "confirm": "Підтвердити",
+    "deny": "Відмінити",
+    "reload": "Перезавантажити",
+    "sliderBtn": "До товарів"
+  },
+  "navList": [
+    { "link": "home", "title": "Головна" },
+    { "link": "phones", "title": "Смартфони" },
+    { "link": "tablets", "title": "Планшети" },
+    { "link": "accessories", "title": "Аксесуари" },
+    { "link": "favourites", "title": "Збережені" },
+    { "link": "cart", "title": "Кошик" }
+  ],
+
+  "additionalText": {
+    "itemsInCart": "товарів у вашому кошику",
+    "cartProductAmount": "Всього за ${count} товарів",
+    "noCategoryMessage": "Зараз тут немає ${category}",
+    "productAmountCategory": "${count} товарів",
+    "searchPlaceholder": "Шукаю..."
+  },
+
+  "sliderTitle": {
+    "productsNew": "Новинки",
+    "goodPrices": "Акції",
+    "productDetailsSlider": "Також вас можуть зацікавити",
+    "sliderMain": [
+      "Вже у продажу в нашому магазині!",
+      "Онови техніку вже сьогодні",
+      "Розумні знижки на розумні гаджети",
+      "Заряди своє життя новими технологіями",
+      "Майбутнє — в один клік",
+      "Відкривай інновації"
+    ]
+  }
+}

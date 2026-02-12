@@ -1,0 +1,98 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.cart-item {
+  grid-column: 1/-1;
+  background-color: $primary-light-bg;
+  border: 1px solid $light-grey;
+  border-radius: 16px;
+  width: 288px;
+
+  @include onTablet {
+    width: 592px;
+  }
+
+  @include onDesktop {
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    gap: 16px;
+
+    @include onTablet {
+      margin: 24px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__product-info {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    &__name {
+      padding-block: 9px;
+    }
+
+    &__btn-close {
+      cursor: pointer;
+    }
+
+    &__icon {
+      color: $light-grey-text;
+      width: 16px;
+      height: 16px;
+    }
+
+    &__image {
+      display: flex;
+      width: 80px;
+      height: 80px;
+      padding: 7px;
+      justify-content: center;
+
+      &:first-child {
+        width: 100%;
+      }
+    }
+  }
+
+  &__btn-adjust-amount {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+
+    &__amount {
+      @include Font-demi-bold(14px, 21px);
+    }
+
+    &--minus:disabled .btn-circle {
+      border: 1px solid $light-grey;
+      pointer-events: none;
+    }
+
+    &--minus:disabled .btn-circle__image {
+      color: $light-grey;
+    }
+  }
+
+  &__price-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include onTablet {
+      gap: 24px;
+      align-items: center;
+    }
+
+    &__price {
+      @include Font-extra-bold(22px, 140%);
+      align-items: center;
+    }
+  }
+}

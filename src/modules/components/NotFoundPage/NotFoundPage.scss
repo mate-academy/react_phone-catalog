@@ -1,0 +1,31 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.not-found-page {
+  display: flex;
+  width: 100%;
+  justify-self: center;
+  margin-top: 50px;
+  justify-content: center;
+
+  @include onTablet {
+    margin-top: 55px;
+  }
+
+  @include onDesktop {
+    margin-top: 56px;
+  }
+
+  &__image {
+    display: flex;
+    width: 50%;
+    aspect-ratio: 1/1;
+
+    @include onTablet {
+      width: 30%;
+    }
+
+    @include onTablet {
+      width: 350px;
+    }
+  }
+}

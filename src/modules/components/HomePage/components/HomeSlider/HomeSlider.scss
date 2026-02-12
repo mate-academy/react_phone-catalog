@@ -1,0 +1,202 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.slider {
+  @include onTablet {
+    grid-column: 1/-1;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__arrow {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      border: 1px solid $mid-grey;
+      border-radius: 48px;
+
+      &__icon {
+        color: $primary-text-color;
+        padding-inline: 8px;
+        padding-block: 87px;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background-color: $primary-text-color;
+
+    @include onTablet {
+      margin-inline: 19px;
+      height: 220px;
+      background-color: $primary-text-color;
+      border-radius: 8px
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+
+    @include onTablet {
+      width: 60%;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-block: 10px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    &__container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+
+      flex-grow: 0;
+      flex-shrink: 0;
+      background-color: $primary-text-color;
+      transition: all ease-in-out 500ms;
+      user-select: none;
+      scroll-snap-align: center;
+      -webkit-user-drag: none;
+
+      @include onTablet {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    &__info-wrapper {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 40%;
+        border-radius: 8px;
+        background-color: #2b2b2b;
+        margin: 10px;
+      }
+    }
+
+    &__info-text {
+      display: none;
+
+      @include onTablet {
+        @include Font-bold(21px, 24px);
+        display: flex;
+        background: linear-gradient(to right, $primary-light-pink, $button-yellow-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 20px;
+        margin-inline: 10px;
+      }
+
+      @include onDesktop {
+        @include Font-bold(55px, 54px);
+        margin: 35px;
+        margin-inline: 25px;
+      }
+    }
+
+    &__btn {
+      @include btn-card;
+      @include Font-demi-bold(14px, 12px);
+      color: $light-grey;
+      background-color: transparent;
+      border: 1px solid $light-grey;
+      width: fit-content;
+      height: fit-content;
+      padding-inline: 25px;
+      padding-block: 15px;
+      margin-left: 10px;
+      margin-bottom: 20px;
+
+      @include onDesktop {
+        padding-inline: 30px;
+        padding-block: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+
+    @include onTablet {
+      grid-column: 1/-1;
+    }
+
+    &-button {
+      height: 24px;
+      width: 24px;
+      padding: 10px 5px;
+      border: none;
+      position: relative;
+      background-color: transparent;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 14px;
+        height: 4px;
+        background-color: $light-grey;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 2px;
+        transition: all 200ms ease;
+      }
+
+      &:hover::before {
+        content: '';
+        position: absolute;
+        width: 14px;
+        height: 4px;
+        background-color: $primary-text-color;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.4);
+        border-radius: 2px;
+      }
+
+      &--active::before {
+        background-color: $primary-text-color;
+      }
+    }
+  }
+}

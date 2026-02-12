@@ -1,0 +1,27 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-properties {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onDesktop {
+    width: -webkit-fill-available;
+  }
+
+  &__btn-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__price-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__btn-add {
+      @include Btn-add-container;
+    }
+  }
+}

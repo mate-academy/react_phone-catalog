@@ -1,0 +1,151 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.switcher {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+  @include onTablet {
+    position: absolute;
+    top: 70px;
+    right: 5px;
+  }
+
+  @include onDesktop {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+  }
+
+  &__theme {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    position: relative;
+    background-color: $primary-bg-color;
+    border: 1px solid $primary-text-color;
+    border-radius: 50px;
+    align-items: center;
+    align-self: center;
+    padding: 3px;
+
+    &--active-light .switcher__theme__indicator--move {
+      transform: translateX(calc(100% + 12px));
+    }
+
+    &--active-dark .switcher__theme__indicator--move {
+      transform: translateX(calc(100% - 16px));
+    }
+
+    &__indicator {
+      border-radius: 50px;
+      background-color: $light-grey-text;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      z-index: 2;
+      cursor: none;
+      pointer-events: none;
+      transform: translateX(0);
+      transition: all 350ms ease-in-out;
+
+    }
+
+    &__btn {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      color: $primary-text-color;
+    }
+  }
+
+  &__lang {
+    position: relative;
+    width: 38px;
+    align-content: center;
+
+    &__btn {
+      height: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid $primary-text-color;
+      border-radius: 5px;
+      justify-content: space-around;
+      padding-block: 3px;
+      display: flex;
+      flex-direction: row;
+      gap: 2px;
+      align-items: center;
+    }
+
+    &__value {
+      @include Font-medium(12px, 0px);
+      display: flex;
+      padding-left: 3px;
+
+      transform: scale(100%);
+      transition: all 350ms ease-in-out;
+    }
+
+    &__content {
+      background-color: $primary-bg-color;
+      position: absolute;
+      border: 1px solid $primary-text-color;
+      border-radius: 5px;
+      width: 100%;
+      margin-top: 3px;
+      z-index: 2;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(-20px);
+      transition: all 0.5s ease-in-out;
+      pointer-events: none;
+      user-select: none;
+      cursor: none;
+
+
+      &--active {
+        opacity: 1;
+        overflow: visible;
+        transform: translateY(0);
+        display: flex;
+        pointer-events: all;
+        user-select: auto;
+        cursor: auto;
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      &-item {
+        @include Font-medium(12px, 0px);
+        display: flex;
+        height: 20px;
+        width: 38px;
+        box-shadow: 0px 1px 0px 0px $primary-text-color;
+        justify-content: start;
+
+        &:last-of-type {
+          box-shadow: none;
+        }
+
+        &:hover .switcher__lang__value {
+          transform: scale(120%);
+        }
+      }
+    }
+
+    &__icon {
+      color: $primary-text-color;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

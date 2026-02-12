@@ -1,0 +1,82 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+@keyframes modalAppear {
+  0% {
+    transform: translateY(-200px);
+  }
+
+  100% {
+    transform: translateY(50px);
+  }
+}
+
+.cart-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.modal {
+  position: relative;
+  background-color: $primary-bg-color;
+  border-radius: 16px;
+  padding: 32px;
+  width: 60%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  @include Font-demi-bold(16px, 21px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  height: fit-content;
+
+  animation-name: modalAppear;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+
+  @include onTablet {
+    width: 400px;
+  }
+
+  &__title {
+    @include Font-demi-bold(16px, 21px);
+  }
+
+  &__body {
+    @include Font-demi-bold(14px, 21px);
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+
+  &__btn {
+    @include Font-bold(14px, 21px);
+    grid-column: span 1;
+    padding-block: 10px;
+    padding-inline: 5px;
+    border-radius: 8px;
+    background-color: $primary-blue;
+    color: white;
+  }
+}

@@ -1,0 +1,25 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.page-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+
+  &__list {
+    gap: 8px;
+  }
+}
+
+.page {
+  @include btn_circle();
+  display: flex;
+  width: 32px;
+  height: 32px;
+
+  &--active {
+    background-color: $primary-text-color;
+    border: 1px solid $primary-text-color;
+    color: white;
+  }
+}

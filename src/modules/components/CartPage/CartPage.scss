@@ -1,0 +1,151 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.cart {
+  @include ContentPaddingInline;
+  @include Grid-column;
+  justify-items: center;
+
+  &__empty {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 50%;
+    align-items: center;
+    margin-top: 100px;
+
+    &__title {
+      @include Font-demi-bold(14px, 21px);
+      display: flex;
+    }
+
+    &__image {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &__filled {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 50%;
+    align-items: center;
+    margin-top: 100px;
+    animation: 2s linear cartImgAppear;
+
+    &__title {
+      @include Font-demi-bold(14px, 21px);
+      display: flex;
+    }
+
+    &__image {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 32px;
+    align-items: center;
+    width: 100%;
+
+    &__product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      grid-column: 1 / -1;
+      justify-self: center;
+      transition: height 1s ease-in-out;
+
+      @include onTablet {
+        grid-column: 1 / -1;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 16;
+        justify-self: auto;
+      }
+    }
+
+    &__main {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      column-gap: 16px;
+      width: 100%;
+
+      @include onTablet {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(24, 1fr);
+        grid-column: 1 / 16;
+
+      }
+    }
+
+    &__header {
+      gap: 8px;
+      grid-column: 1/-1;
+      width: 100%;
+    }
+
+    &__product-list {
+      gap: 16px;
+    }
+
+    &__total-price {
+      grid-column: 1/-1;
+      background-color: white;
+      border: 1px solid $light-grey;
+      border-radius: 16px;
+      width: 288px;
+      height: fit-content;
+      justify-self: center;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include onTablet {
+        grid-column: 1/-1;
+        width: 592px;
+      }
+
+      @include onDesktop {
+        grid-column: 17/-1;
+        width: 100%;
+        justify-self: auto;
+      }
+
+      &__wrapper {
+        margin: 24px;
+      }
+
+      &__sum {
+        @include Font-extra-bold(32px, 41px);
+        text-align: center;
+      }
+
+      &__product-amount {
+        @include Font-demi-bold(14px, 21px);
+        color: $light-grey-text;
+        padding-bottom: 16px;
+        box-shadow: 0px 1px 0px 0px $light-grey;
+        text-align: center;
+      }
+
+      &__btn-confirm {
+        @include btn-card();
+        margin-top: 16px;
+        padding: 13px;
+      }
+    }
+  }
+}

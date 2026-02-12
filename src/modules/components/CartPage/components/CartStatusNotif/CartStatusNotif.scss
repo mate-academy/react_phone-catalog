@@ -1,0 +1,44 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+@keyframes cartImgAppear {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.image-notif {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 50%;
+  align-items: center;
+  margin-top: 100px;
+
+  @include onTablet {
+    width: 20%;
+  }
+
+  &--cart-is-filled {
+    animation: 2s linear cartImgAppear;
+  }
+
+  &--products-page {
+    margin-top: 50px;
+    justify-self: center;
+  }
+
+  &__title {
+    @include Font-demi-bold(14px, 21px);
+    display: flex;
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+  }
+}

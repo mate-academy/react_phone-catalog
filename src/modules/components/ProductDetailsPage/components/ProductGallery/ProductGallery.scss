@@ -1,0 +1,88 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-image {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+  align-items: center;
+  grid-column: 1 / -1;
+  justify-items: center;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    flex-direction: row;
+    align-items: start;
+    margin-bottom: 0px;
+    grid-column: 1 / 7;
+  }
+
+  @include onDesktop {
+    grid-column: 1 / 12;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__img {
+    display: flex;
+    width: 100%;
+    height: -webkit-fill-available;
+    object-fit: contain;
+  }
+
+  &__main {
+    display: flex;
+    grid-column: 1/-1;
+    height: 288px;
+
+    @include onTablet {
+      grid-column: 2/-1;
+      height: auto;
+      order: 2;
+      margin-inline: 42px;
+    }
+
+    @include onDesktop {
+      grid-column: 3 / -1;
+      height: 464px;
+      margin-inline: 0px;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    grid-column: 1/-1;
+    width: fit-content;
+
+    @include onTablet {
+      grid-column: span 1;
+      flex-direction: column;
+      order: 1;
+    }
+
+    @include onDesktop {
+      grid-column: span 2;
+      flex-direction: column;
+      order: 1;
+    }
+
+    &__item {
+      aspect-ratio: 1 / 1;
+      border: 1px solid $light-grey;
+      border-radius: 4px;
+      height: 50px;
+      width: 100%;
+
+      @include onTablet {
+        height: 100%;
+        width: 100%;
+      }
+
+      &--active {
+        border: 1px solid $primary-text-color;
+      }
+    }
+  }
+}

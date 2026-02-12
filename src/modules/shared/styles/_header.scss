@@ -1,0 +1,7 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+}

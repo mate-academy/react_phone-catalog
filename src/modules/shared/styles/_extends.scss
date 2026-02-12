@@ -1,0 +1,25 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+%font_h1 {
+  @include Font-bold(32px, 41px);
+  color: $primary-text-color;
+
+  @include onTablet {
+    @include Font-bold(48px, 56px);
+  }
+}
+
+%font_h2_categories {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: $primary-text-color;
+}
+
+%font_h3_categories {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $light-grey-text;
+}

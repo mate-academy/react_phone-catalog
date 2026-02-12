@@ -1,0 +1,166 @@
+@use './variables' as *;
+
+@mixin onTablet {
+  @media(min-width: $min-tablet-screen) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media(min-width: $min-desktop-screen) {
+    @content;
+  }
+}
+
+@mixin ContentPaddingInline {
+  padding-inline: 16px;
+
+  @include onTablet() {
+    padding-inline: 24px;
+  }
+}
+
+@mixin Hover {
+  transition: all 0.2s ease-in-out;
+}
+
+
+@mixin Grid-column() {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include onTablet() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+  }
+}
+
+@mixin Font-extra-bold ($fontSize, $lineHeight) {
+  font-weight: 800;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $primary-text-color;
+}
+
+@mixin Font-bold ($fontSize, $lineHeight) {
+  font-weight: 700;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $primary-text-color;
+}
+
+@mixin Font-demi-bold ($fontSize, $lineHeight) {
+  font-weight: 600;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $primary-text-color;
+}
+
+@mixin Font-medium ($fontSize, $lineHeight) {
+  font-weight: 500;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $primary-text-color;
+}
+
+@mixin btn_circle () {
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $mid-grey;
+  border-radius: 50%;
+  background-color: transparent;
+  margin: 0;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all $button-animation-speed ease-in-out;
+
+  &:hover {
+    border: 1px solid $primary-text-color;
+  }
+
+  &--active {
+    background-color: $primary-text-color;
+    border-color: $primary-text-color;
+  }
+
+  &--active .btn-circle__content {
+    color: $primary-bg-color;
+  }
+
+  &--disabled {
+    border-color: $light-grey;
+    cursor: none;
+    pointer-events: none;
+  }
+
+  &--disabled .btn-circle__image {
+    color: $light-grey;
+  }
+
+  &__image {
+    color: $primary-text-color;
+    transition: all $button-animation-speed ease-in-out;
+
+    &--select {
+      position: absolute;
+      color: $button-yellow-color;
+    }
+
+    &:disabled {
+      color: $light-grey;
+    }
+  }
+}
+
+@mixin Btn-add-container() {
+  display: grid;
+  gap: $gap;
+  cursor: pointer;
+  pointer-events: all;
+  justify-content: center;
+  align-items: center;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 48px;
+}
+
+@mixin btn-card() {
+  @include Font-bold(14px, 21px);
+  width: -webkit-fill-available;
+  display: flex;
+  cursor: pointer;
+  pointer-events: all;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50px;
+  background-color: $button-primary-color;
+  color: white;
+  grid-column: 1 / 2;
+  display: flex;
+  height: -webkit-fill-available;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px $box-shadow;
+  }
+}
+
+@mixin navLink() {
+  @include Font-extra-bold(12px, 11px);
+  color: $light-grey-text;
+  text-decoration: none;
+  justify-self: center;
+  display: flex;
+  padding-block: 8px;
+
+  &--active {
+    color: $primary-text-color;
+    border-bottom: 2px solid $primary-text-color;
+  }
+}

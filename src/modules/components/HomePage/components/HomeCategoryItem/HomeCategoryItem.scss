@@ -1,0 +1,66 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.category {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  text-decoration: none;
+
+  @include onTablet {
+    grid-column: span 4;
+  }
+
+  @include onDesktop {
+    grid-column: span 8;
+  }
+
+  @for $i from 1 through length($category-bg-color-list) {
+    &:nth-of-type(#{$i}) .category__image-wrapper {
+      background-color: nth($category-bg-color-list, $i);
+    }
+  }
+
+  &:nth-of-type(3) .category__image {
+    width: 190%;
+    bottom: 0px;
+    top: auto;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 288px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__image {
+    position: absolute;
+    left: 38px;
+    top: 31px;
+    width: inherit;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    text-str &>* {
+      margin: 0;
+      padding: 0;
+    }
+
+    &--name {
+      @extend %font_h2_categories;
+    }
+
+    &--quantity {
+      @extend %font_h3_categories;
+    }
+  }
+}

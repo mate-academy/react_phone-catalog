@@ -1,0 +1,89 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.productItem {
+  @include Grid-column();
+  @include ContentPaddingInline;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__body {
+    @include Grid-column;
+  }
+
+  &__info {
+    @include Grid-column;
+    row-gap: 56px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-top: 32px;
+
+    @include onTablet {
+      gap: 64px;
+      margin-top: 40px;
+    }
+
+    @include onDesktop {
+      gap: 80px;
+    }
+
+    &-wrapper {
+      grid-column: 1 / -1;
+      margin-top: 24px;
+
+      @include onTablet {}
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    position: relative;
+    width: -webkit-fill-available;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 7 / -1;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      grid-column: 13 / -1;
+      justify-content: space-between;
+    }
+  }
+
+  &__idName {
+    @include Font-demi-bold (12px, 100%);
+    color: $mid-grey;
+    position: absolute;
+    right: 0;
+
+    @include onDesktop {
+      position: static;
+      display: flex;
+      order: 2;
+      width: fit-content;
+    }
+  }
+}

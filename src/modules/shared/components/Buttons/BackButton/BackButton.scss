@@ -1,0 +1,26 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.back-button {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  text-decoration: none;
+  width: max-content;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 24px;
+  margin-bottom: 16px;
+
+  @include onTablet {
+    margin-top: 40px;
+  }
+
+  &__icon {
+    color: $primary-text-color;
+  }
+
+  &__text {
+    @include Font-demi-bold(12px, 100%);
+    color: $primary-text-color;
+  }
+}

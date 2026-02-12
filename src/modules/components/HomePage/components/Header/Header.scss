@@ -1,0 +1,49 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.header {
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+
+    @include onDesktop {
+      gap: 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      @include ContentPaddingInline;
+      @include Grid-column;
+    }
+
+    &-title {
+      @extend %font_h1;
+      padding-inline: 16px;
+      text-align: left;
+      margin-bottom: 24px;
+
+      @include onTablet {
+        grid-column: 1/-1;
+        margin-bottom: 32px;
+        padding-inline: 0px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 56px;
+      }
+    }
+
+    &-slider {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

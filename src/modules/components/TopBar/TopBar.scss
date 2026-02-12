@@ -1,0 +1,125 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.top-bar {
+  position: sticky;
+  height: fit-content;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px 0px $light-grey;
+  background-color: $primary-light-bg;
+
+  &__logo {
+    display: flex;
+    padding: 16px 13px;
+    width: 64px;
+    height: 22px;
+
+    @include onDesktop {
+      width: 80px;
+      height: 28px;
+      padding: 24px 18px;
+    }
+  }
+
+  &__nav-wrapper {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-left: 24px;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  &__nav-link {
+    @include navLink();
+    padding: 0;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+  }
+
+  &__nav {
+    display: block;
+    box-shadow: -1px 0px 0px 0px $light-grey;
+    align-content: center;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__button {
+    border: none;
+    padding: 0;
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 11;
+
+    &-is-active {
+      border-bottom: 2px solid $primary-text-color;
+      background-color: rgba($primary-blue, $alpha: 0.2);
+      color: $primary-text-color;
+    }
+
+    @include onTablet {
+      &:first-of-type {
+        box-shadow: 0px -1px 0px 1px $light-grey;
+      }
+    }
+
+    &__amount-indicator {
+      @include onTablet {
+        @include Font-demi-bold(9px, normal);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-radius: 50px;
+        background-color: $primary-blue;
+        color: #ffff;
+        border: 1px solid #ffff;
+        top: 10px;
+        right: 10px;
+      }
+
+      @include onDesktop {
+        top: 18px;
+        right: 18px;
+      }
+    }
+
+    &--icon {
+      width: 16px;
+      height: 16px;
+      padding: 16px;
+      align-self: center;
+      color: $primary-text-color;
+
+      @include onDesktop {
+        align-self: center;
+        padding: 24px;
+      }
+    }
+  }
+}

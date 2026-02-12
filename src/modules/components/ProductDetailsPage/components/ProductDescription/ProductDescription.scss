@@ -1,0 +1,28 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-about {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onDesktop {
+    grid-column: span 12;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      @include Font-bold(16px, 100%);
+      color: $primary-text-color;
+    }
+
+    &-text {
+      @include Font-demi-bold(14px, 21px);
+      color: $light-grey-text;
+    }
+  }
+}

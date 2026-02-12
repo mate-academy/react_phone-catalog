@@ -1,0 +1,26 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.slider-product-list {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(10, 212px);
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @include onTablet {
+    grid-template-columns: repeat(10, 237px);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(10, 272px);
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

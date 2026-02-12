@@ -1,0 +1,65 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.layout-sort {
+  @include Grid-column;
+  gap: 16px;
+
+  &__item {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__input {
+    grid-column: span 2;
+    position: relative;
+    background-color: transparent;
+
+    @include onTablet {
+      grid-column: span 4;
+      align-self: end;
+    }
+
+    @include onDesktop {
+      grid-column: 9 / 16;
+    }
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      color: $mid-grey;
+      top: 10px;
+
+      &--cancel {
+        right: 10px;
+      }
+    }
+
+    &-text {
+      @include Font-demi-bold(14px, 21px);
+      color: $primary-text-color;
+      padding-inline: 10px;
+      width: 100%;
+      border: 1px solid $mid-grey;
+      border-radius: 8px;
+      padding-block: 10px;
+      box-sizing: border-box;
+      box-shadow: inset 0 0 100px 100px $primary-bg-color;
+
+      &::placeholder {
+        @include Font-demi-bold(12px, 100%);
+        color: $mid-grey;
+      }
+
+      &:focus-visible {
+        box-shadow: 0 0 0 2px $primary-blue;
+        border: 1px solid transparent;
+        outline: none;
+        color: black;
+      }
+    }
+  }
+}

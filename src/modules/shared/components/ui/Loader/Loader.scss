@@ -1,0 +1,41 @@
+@use '@/modules/shared/styles/main.scss' as *;
+$initDelay: 0s;
+$delayStep: 0.2s;
+
+.loader {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 30px;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+  }
+
+  &__item {
+    @include Font-extra-bold(32px, 41px);
+    color: $primary-text-color;
+    animation: wave 2s ease-in-out infinite;
+  }
+}
+
+@for $index from 2 through 10 {
+  .loader__item:nth-of-type(#{$index}) {
+    animation-delay: $initDelay + ($delayStep * ($index - 1));
+  }
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}

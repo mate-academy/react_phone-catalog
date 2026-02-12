@@ -1,0 +1,101 @@
+{
+  "homePage": {
+    "title": "Welcome to Nice\nGadgets store!",
+    "homeCategoryTitle": "Shop by category"
+  },
+  "categoryItem": [
+    {
+      "title": "Mobile phones",
+      "category": "phones",
+      "details": "models"
+    },
+    {
+      "title": "Tablets",
+      "category": "tablets",
+      "details": "models"
+    },
+    {
+      "title": "Accessories",
+      "category": "accessories",
+      "details": "models"
+    }
+  ],
+  "sortTitle": [
+    {
+      "title": "Sort by",
+      "sort": "sortBy"
+    },
+    {
+      "title": "Items on page",
+      "sort": "sortByAmount"
+    }
+  ],
+  "sortBy": [
+    { "label": "Newest", "sortKey": "year" },
+    { "label": "Alphabetically", "sortKey": "title" },
+    { "label": "Cheapest", "sortKey": "price" }
+  ],
+  "sortByAmount": [
+    { "label": "4", "sortKey": "4" },
+    { "label": "8", "sortKey": "8" },
+    { "label": "16", "sortKey": "16" },
+    { "label": "all", "sortKey": "all" }
+  ],
+  "notifMessage": {
+    "errorTitle": "Something went wrong",
+    "errorNotifTitle": "Some error, couldn't find product details",
+    "alarmTitle": "Can't find selected product details",
+    "noProducts": "No products in that category",
+    "cartFilledNotif": "Cart is filled",
+    "cartEmptyNotif": "Cart is empty",
+    "cartModalMessage": "Checkout is not implemented yet.\nDo you want to clear the Cart?",
+    "notif": "Ooopps"
+  },
+  "footerNavItems": ["Github", "Contacts", "Rights"],
+
+  "propDetailsTitle": {
+    "tech": "Tech specs",
+    "about": "About",
+    "capacity": "Select capacity",
+    "colors": "Avalible colors"
+  },
+  "btnsTitle": {
+    "add": "Add to cart",
+    "added": "Added",
+    "footerBack": "Back to top",
+    "back": "Back",
+    "cartConfirmBtn": "Checkout",
+    "confirm": "Ok",
+    "deny": "Cancel",
+    "reload": "Reload",
+    "sliderBtn": "Order now"
+  },
+  "navList": [
+    { "link": "home", "title": "home" },
+    { "link": "phones", "title": "phones" },
+    { "link": "tablets", "title": "tablets" },
+    { "link": "accessories", "title": "accessories" },
+    { "link": "favourites", "title": "Favourites" },
+    { "link": "cart", "title": "Cart" }
+  ],
+  "additionalText": {
+    "itemsInCart": "items in your cart",
+    "cartProductAmount": "Total for ${count} items",
+    "noCategoryMessage": "There no ${category}",
+    "productAmountCategory": "${count} models",
+    "searchPlaceholder": "I'm searching..."
+  },
+  "sliderTitle": {
+    "productsNew": "Brand new models",
+    "goodPrices": "Hot prices",
+    "productDetailsSlider": "You may also like",
+    "sliderMain": [
+      "Now available in our store!",
+      "Upgrade Your Tech Today",
+      "Smart Deals on Smart Devices",
+      "Power Up Your Life",
+      "Future Starts Here",
+      "Discover Innovation"
+    ]
+  }
+}

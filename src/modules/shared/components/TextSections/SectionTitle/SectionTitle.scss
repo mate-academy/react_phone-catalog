@@ -1,0 +1,17 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.section-title {
+  margin: 0;
+  padding: 0;
+  @include Font-bold(22px, 140%);
+  color: $primary-text-color;
+  grid-column: 1/-1;
+
+  @include onTablet {
+    @include Font-bold(32px, 41px);
+  }
+
+  @include onDesktop {
+    @include Font-bold(48px, 56px);
+  }
+}

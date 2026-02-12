@@ -1,0 +1,91 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.dropdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__current-value {
+    @include Font-bold(14px, 21px);
+    padding-block: 10px;
+  }
+
+  &__title {
+    @include Font-bold(12px, 100%);
+    color: $light-grey-text;
+  }
+
+  &__content-wrapper {
+    border: 1px solid $mid-grey;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  &__content {
+    background-color: $primary-bg-color;
+    border: 1px solid $mid-grey;
+    border-radius: 8px;
+    position: absolute;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    z-index: 2;
+    width: -webkit-fill-available;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: all 0.5s ease-in-out;
+
+    display: none;
+    pointer-events: none;
+    user-select: none;
+    cursor: none;
+
+
+    &--active {
+      opacity: 1;
+      transform: translateY(0);
+      display: flex;
+      pointer-events: all;
+      user-select: auto;
+      cursor: auto;
+    }
+  }
+
+  &__trigger {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 12px;
+
+    &-icon {
+      color: $mid-grey;
+      width: 16px;
+      height: 16px;
+      order: 1;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 3px;
+
+  &__item {
+    @include Font-bold(14px, 21px);
+    display: flex;
+    justify-content: left;
+    padding: 10px;
+    color: $primary-text-color;
+    border-radius: 8px;
+    background-color: $light-grey;
+
+    &:hover {
+      background-color: $light-grey-text;
+    }
+  }
+}

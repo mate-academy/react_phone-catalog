@@ -1,0 +1,9 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-tech-specs {
+  grid-column: 1 / -1;
+
+  @include onDesktop {
+    grid-column: 14 / -1;
+  }
+}

@@ -1,0 +1,39 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.notification {
+  position: fixed;
+  z-index: 2;
+  top: 80px;
+  display: none;
+  width: 100%;
+
+  border-radius: 16px;
+  width: 95%;
+  opacity: 0;
+  transform: translateY(-200%);
+  transition: all 0.3s ease-in-out;
+
+  &--active {
+    transform: translateY(0);
+    opacity: 1;
+    display: flex;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &--successfully {
+    border: 1px solid $primary-blue;
+    background-color: $light-blue;
+  }
+
+  &--alarm {
+    border: 1px solid $primary-text-color;
+    background-color: $notif-bg-color;
+  }
+
+  &__title {
+    @include Font-demi-bold(14px, 21px);
+    color: white;
+    padding-inline: 10px;
+    padding-block: 20px;
+  }
+}

@@ -1,0 +1,45 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.btns-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $mid-grey;
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all $button-animation-speed ease-in-out;
+
+    &__image {
+      color: $primary-text-color;
+      width: 12px;
+      height: 12px;
+      transition: all $button-animation-speed ease-in-out;
+
+      &:disabled {
+        color: $light-grey;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $primary-text-color;
+
+      & .btns-slider__btn__image {
+        color: $primary-text-color;
+      }
+    }
+
+    &:disabled {
+      border-color: $light-grey;
+    }
+  }
+}

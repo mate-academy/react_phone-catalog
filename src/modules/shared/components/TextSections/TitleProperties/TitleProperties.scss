@@ -1,0 +1,8 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.title-properties {
+  @include Font-demi-bold(20px, 100%);
+  padding-bottom: 16px;
+  box-shadow: 0px 1px 0px 0px $light-grey;
+  color: $primary-text-color;
+}
