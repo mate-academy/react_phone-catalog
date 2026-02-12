@@ -1,0 +1,23 @@
+.header {
+  background: #f8f8f8;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 12px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-weight: 700;
+    color: #770b0b;
+    text-decoration: none;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 12px;
+  }
+}
+
