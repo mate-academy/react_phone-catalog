@@ -1,0 +1,196 @@
+@use '../../../styles/tokens.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.footer {
+  background: $bg;
+  box-shadow: 0 -1px 0 0 $line;
+  margin-top: 64px;
+
+  @include desktop {
+    margin-top: 80px;
+  }
+}
+
+.inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block: 32px;
+  padding-inline: 16px;
+
+  @include grid;
+
+  @include tablet {
+    align-items: center;
+    padding-inline: 32px;
+  }
+
+  @include desktop {
+    align-items: center;
+    padding-inline: 0;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    height: 32px;
+    display: block;
+  }
+}
+
+/* ---------- Ссылки ---------- */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+
+  a {
+    color: $muted;
+    text-decoration: none;
+    font-family: $font;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $text;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $focus;
+      outline-offset: 2px;
+      border-radius: $radius-sm;
+    }
+  }
+}
+
+/* ---------- Кнопка Back to top ---------- */
+.toTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: $muted;
+  font-family: $font;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  &:focus-visible {
+    outline: 2px solid $focus;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+.toTopLabel {
+  line-height: 1;
+}
+
+.iconSquare {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $line;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  line-height: 0;
+
+  svg {
+    stroke: $text;
+    display: block;
+  }
+}
+
+.toTop:hover .iconSquare {
+  /* stylelint-disable scss/no-global-function-names */
+  border-color: mix($line, $text, 20%);
+  transform: translateY(-1px);
+}
+
+/* ---------- Mobile ---------- */
+@include mobile {
+  .inner {
+    justify-items: stretch;
+  }
+
+  .logo {
+    grid-column: 1 / span 4;
+    justify-self: start;
+    margin-bottom: 32px;
+  }
+
+  .links {
+    grid-column: 1 / span 4;
+    justify-self: start;
+    align-items: flex-start;
+    text-align: left;
+    flex-flow: column nowrap;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .toTop {
+    grid-column: 1 / -1;
+    justify-self: center;
+    display: inline-flex;
+    width: auto;
+  }
+}
+
+/* ---------- Tablet ---------- */
+@include tablet {
+  .logo {
+    grid-column: 1 / span 4;
+    justify-self: start;
+  }
+
+  .links {
+    grid-column: 5 / span 4;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 16px;
+  }
+
+  .toTop {
+    grid-column: 9 / span 4;
+    justify-self: end;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@include desktop {
+  .logo {
+    grid-column: 1 / span 8;
+    justify-self: start;
+  }
+
+  .links {
+    grid-column: 9 / span 8;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 106px;
+  }
+
+  .toTop {
+    grid-column: 17 / span 8;
+    justify-self: end;
+  }
+}

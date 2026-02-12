@@ -1,12 +1,102 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone Catalog</title>
+
+  <!-- ✅ 1. базовый путь для GitHub Pages -->
+  <base href="/react_phone-catalog/" />
+
+  <!-- ✅ 2. патч для путей /img/, /api/, /fonts/, /data/ -->
+  <script>
+    (function () {
+      var BASE =
+        document.querySelector("base")?.getAttribute("href") ||
+        "/react_phone-catalog/";
+      var ABS = /^\/(img|images|fonts|data|api|assets)\//i;
+
+      function withBase(url) {
+        var stripped = url.replace(/^\//, "");
+        return new URL(stripped, new URL(BASE, window.location.origin)).toString();
+      }
+
+      // перехватываем fetch('/data/...') → '/react_phone-catalog/data/...'
+      var origFetch = window.fetch.bind(window);
+      window.fetch = function (input, init) {
+        if (typeof input === "string" && ABS.test(input))
+          return origFetch(withBase(input), init);
+        if (input instanceof Request && ABS.test(input.url)) {
+          var fixed = withBase(new URL(input.url).pathname);
+          return origFetch(new Request(fixed, input), init);
+        }
+        return origFetch(input, init);
+      };
+
+      // чиним src/href/srcset
+      function fix(el, attr) {
+        var val = el.getAttribute(attr);
+        if (!val) return;
+        if (attr === "srcset") {
+          var parts = val.split(",").map((s) => s.trim());
+          var patched = parts
+            .map((p) => {
+              var sp = p.split(/\s+/, 2);
+              var u = sp[0],
+                w = sp[1];
+              return ABS.test(u)
+                ? withBase(u) + (w ? " " + w : "")
+                : p;
+            })
+            .join(", ");
+          if (patched !== val) el.setAttribute(attr, patched);
+        } else if (ABS.test(val)) {
+          el.setAttribute(attr, withBase(val));
+        }
+      }
+
+      function fixAll(root) {
+        root.querySelectorAll('img[src^="/"]').forEach((e) => fix(e, "src"));
+        root.querySelectorAll('source[srcset^="/"]').forEach((e) =>
+          fix(e, "srcset")
+        );
+        root.querySelectorAll('link[href^="/"]').forEach((e) =>
+          fix(e, "href")
+        );
+        root.querySelectorAll(
+          'video[src^="/"],audio[src^="/"]'
+        ).forEach((e) => fix(e, "src"));
+      }
+
+      document.addEventListener("DOMContentLoaded", () => fixAll(document));
+      fixAll(document);
+
+      new MutationObserver((muts) => {
+        muts.forEach((m) => {
+          if (m.type === "childList")
+            m.addedNodes.forEach((n) => {
+              if (n instanceof Element) fixAll(n);
+            });
+          if (
+            m.type === "attributes" &&
+            ["src", "href", "srcset"].includes(m.attributeName)
+          )
+            fixAll(m.target);
+        });
+      }).observe(document.documentElement, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeFilter: ["src", "href", "srcset"],
+      });
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+
 </html>
