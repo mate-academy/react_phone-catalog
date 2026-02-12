@@ -1,0 +1,24 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.go-to-back {
+  &__container {
+    background-color: transparent;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: vars.$minor-color;
+    font-size: 14px;
+    font-weight: 600;
+    img {
+      transition: all 0.3s ease 0s;
+    }
+
+    &:hover > img {
+      transform: translateX(-2px);
+    }
+  }
+}
