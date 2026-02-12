@@ -1,0 +1,78 @@
+@use '../../styles/_colors.scss' as *;
+@use '../../styles/mixins' as *;
+
+.product-carousel {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    margin-bottom: 24px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    color: #f1f2f9;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    margin: 0;
+
+    @include respond-to('sm') {
+      font-size: 24px;
+    }
+  }
+
+  .carousel-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    button {
+      padding: 8px 8px 4px 8px;
+      border: 1px solid $elements;
+      background-color: $surface2;
+      transition: all 0.3s ease;
+
+      svg {
+        width: 20px;
+        height: 20px;
+
+        path {
+          fill: #f1f2f9;
+        }
+      }
+
+      &:hover svg path {
+        fill: $surface2;
+      }
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &-cards {
+    .slick-slider {
+      width: 100%;
+
+      .slick-track {
+        display: flex;
+      }
+
+      .slick-slide {
+        padding: 4px;
+
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

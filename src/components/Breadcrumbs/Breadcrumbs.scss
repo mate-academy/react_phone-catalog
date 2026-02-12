@@ -1,0 +1,38 @@
+@use '../../styles/colors' as *;
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    text-decoration: none;
+    color: $secondary;
+    align-items: center;
+  }
+
+  &__item {
+    a {
+      color: $white;
+      text-decoration: none;
+
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  &__current {
+    color: $secondary;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

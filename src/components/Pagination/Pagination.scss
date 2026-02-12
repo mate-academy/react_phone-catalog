@@ -1,0 +1,74 @@
+@use '../../styles/colors' as *;
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding-top: 40px;
+  gap: 10px;
+  padding-bottom: 80px;
+
+  &__arrow {
+    transition: all 0.3s ease;
+    border: 1px solid $elements;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: $surface2;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $elements;
+    }
+
+    &:active {
+      background-color: $accent;
+    }
+
+    &:disabled {
+      background: transparent;
+      cursor: auto;
+    }
+
+    &:disabled svg path {
+      fill: $elements;
+    }
+  }
+
+  &__page {
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 8px 12px 8px 12px;
+    background-color: $Surface1;
+
+    color: $white;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 21px;
+
+    &:hover {
+      background-color: $elements;
+    }
+
+		&:active {
+			background-color: $accent;
+		}
+
+    &-active {
+      border: none;
+      padding: 8px 12px 8px 12px;
+      background-color: $accent;
+
+      color: $white;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 200;
+      line-height: 21px;
+    }
+  }
+}

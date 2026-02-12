@@ -1,0 +1,24 @@
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+.section__hero {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 112px;
+
+  @include respond-to('lg') {
+    margin-bottom: 80px;
+  }
+
+  @include respond-to('md') {
+    margin-bottom: 64px;
+  }
+
+  @include respond-to('sm') {
+    margin-bottom: 56px;
+  }
+}
+
+.hot-prices {
+  margin-bottom: 80px;
+}

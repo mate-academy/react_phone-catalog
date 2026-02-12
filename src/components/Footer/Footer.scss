@@ -1,0 +1,98 @@
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  border-top: 1px solid $secondary;
+
+  &__wrapper {
+    margin: 32px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 33.75px;
+    margin-bottom: 33.75px;
+    @include respond-to(sm) {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  &__link {
+    display: flex;
+    gap: 106px;
+
+    @include respond-to(md) {
+      gap: 13.5px;
+    }
+    @include respond-to(sm) {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    &-item {
+      a {
+        transition: all 0.2s ease-in-out;
+
+        color: $white;
+        text-decoration: none;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 11px;
+        letter-spacing: 0.48px;
+        text-transform: uppercase;
+        background: transparent;
+
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+
+  &__button {
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    color: $secondary;
+    text-align: right;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    &:hover {
+      color: $white;
+    }
+    &:active {
+      transform: scale(0.95);
+
+      .footer__arrow {
+        background-color: $elements;
+      }
+    }
+
+    @include respond-to(sm) {
+      margin: 0 auto;
+    }
+  }
+
+  &__arrow {
+    padding: 8px;
+    background: $surface2;
+  }
+
+  &__logo {
+    @include respond-to(sm) {
+      margin-bottom: 32px;
+    }
+  }
+}

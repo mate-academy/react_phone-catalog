@@ -1,0 +1,50 @@
+@use '../../../styles/mixins' as *;
+
+.favourites {
+  margin-bottom: 80px;
+
+  @include respond-to('md') {
+    margin-bottom: 64px;
+  }
+
+  @include respond-to('sm') {
+    margin-bottom: 56px;
+  }
+
+  &-title {
+    color: var(--Gray-White, #f1f2f9);
+
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+  &-item {
+    color: var(--Gray-Secondary, #75767f);
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}
+
+.favourites-list-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 480px) {
+    margin-top: 30px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

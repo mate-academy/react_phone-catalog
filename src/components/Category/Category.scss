@@ -1,0 +1,177 @@
+@use '../../styles/colors' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+  margin-top: 80px;
+
+  @include respond-to('md') {
+     margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  @include respond-to('sm') {
+    margin-top: 58px;
+    margin-bottom: 58px;
+  }
+
+  &__title {
+    color: $white;
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    row-gap: 32px;
+
+    @include respond-to('md') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond-to('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-title {
+      margin-top: 24px;
+      color: $white;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &-description {
+      color: $secondary;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      background-color: #6d6474;
+      transition: background-color 0.3s ease;
+      border-radius: 3px;
+
+      img {
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        object-fit: contain;
+        background-repeat: no-repeat;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.shopByCategory__block--phones .shopByCategory__block-image {
+  background-color: #666269;
+
+  img {
+    top: 50px;
+    left: 150px;
+    width: 100%;
+    height: auto;
+
+    @include respond-to('md') {
+      left: 115px;
+    }
+  }
+
+  &:hover {
+    background-color: #666269c8;
+
+    img {
+      left: 110px;
+
+      @include respond-to('md') {
+        left: 75px;
+      }
+    }
+  }
+}
+
+.shopByCategory__block--tablets .shopByCategory__block-image {
+  background-color: #8d8d92;
+
+  img {
+    top: 50px;
+    left: 195px;
+
+    @include respond-to('md') {
+      left: 100px;
+    }
+    @include respond-to('sm') {
+      left: 240px;
+    }
+  }
+
+  &:hover {
+    background-color: #8d8d92ca;
+
+    img {
+      left: 80px;
+
+      @include respond-to('md') {
+        left: 50px;
+      }
+    }
+  }
+}
+
+.shopByCategory__block--accessories .shopByCategory__block-image {
+  background-color: #f7c8e0;
+
+  img {
+    top: 25px;
+    left: 170px;
+    width: 300px;
+
+    @include respond-to('md') {
+      left: 140px;
+      width: 220px;
+      top: 25px;
+    }
+    @include respond-to('sm') {
+      left: 350px;
+      width: 400px;
+      top: 75px;
+    }
+  }
+
+  &:hover {
+    background-color: #f8d9e9;
+
+    img {
+      left: 80px;
+
+      @include respond-to('md') {
+        left: 60px;
+      }
+      @include respond-to('sm') {
+        left: 120px;
+      }
+    }
+  }
+}
