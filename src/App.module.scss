@@ -1,0 +1,22 @@
+@import './utils/mediaQuery';
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+   
+    
+    &__main {
+        display: flex;
+        justify-content: center;
+        width:100%;
+        flex: 1;
+
+    }
+
+    &__title {
+        position: absolute;
+        visibility: hidden;
+        left: -100%;
+    }
+}

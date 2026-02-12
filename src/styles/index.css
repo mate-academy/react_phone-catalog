@@ -1,0 +1,37 @@
+@font-face {
+  font-family: Mont, sans-serif;
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont, sans-serif;
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont, sans-serif;
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, serif;
+  font-size: 14px;
+  font-weight: 600;
+  background: #0F1121;
+  color: #F1F2F9;
+}/*# sourceMappingURL=index.css.map */

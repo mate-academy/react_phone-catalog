@@ -1,0 +1,14 @@
+@import '../../../../utils/mixins';
+
+.backButton{
+    @include small-text;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #F1F2F9;
+    background-color: #0F1121;
+    border: none;
+    cursor: pointer;           
+}
+

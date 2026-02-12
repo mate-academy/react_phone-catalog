@@ -1,0 +1,24 @@
+.add-button {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #F1F2F9;
+  background-color: #905BFF;
+  height: 40px;
+  border: none;
+  flex-grow: 1;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: #A378FF;
+}
+.add-button--medium {
+  height: 48px;
+}
+.add-button--disabled {
+  background-color: #75767F;
+}
+.add-button--disabled:hover {
+  background-color: #75767F;
+}/*# sourceMappingURL=AddButton.module.css.map */

@@ -1,0 +1,21 @@
+@import '../../utils/mixins';
+
+.about{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &__title{
+        @include h4-title;
+
+        color: #F1F2F9;
+       
+    }
+
+    &__text{
+        @include body-text;
+
+        color:#75767F;
+        margin-top: 16px;
+    }
+}

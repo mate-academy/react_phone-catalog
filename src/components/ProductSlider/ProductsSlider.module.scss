@@ -1,0 +1,45 @@
+@import '../../utils/mixins';
+@import '../../utils/mediaQuery';
+
+.product-slider{
+    max-width:1136px;
+    height: 571px;
+
+
+    &__header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    &__title{
+        @include h2-title;
+
+        color: #F1F2F9;
+        margin: 0;
+
+        @include mobile{
+            @include h2-mobile;
+        }
+    }
+
+    &__navigation{
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+    }
+
+    &__prev, &__next{
+        width: 32px;
+        height: 32px;
+        background-color: #0F1121;
+        border: 1px #323542 solid;
+        padding: 0;
+
+        &:hover{
+            background-color: #323542;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+.error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1136px;
+  padding-top: 40px;
+}
+@media (max-width: 1199px) {
+  .error {
+    padding: 30px 24px;
+    width: 100;
+  }
+}
+@media (max-width: 639px) {
+  .error {
+    flex-direction: column;
+    padding: 20px 16px;
+  }
+}
+.error__info {
+  grid-column: 1/12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.error__title {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #75767F;
+}
+.error__subtitle {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #F1F2F9;
+}
+.error__btn {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 700;
+  letter-spacing: 0;
+  width: 200px;
+  height: 40px;
+  background-color: #0F1121;
+  border: 0.5px solid #F1F2F9;
+  border-radius: 30px;
+  color: #F1F2F9;
+}
+.error__btn:hover {
+  background-color: #323542;
+}
+@media (max-width: 1199px) {
+  .error__img {
+    width: 400px;
+    height: 400px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+@media (max-width: 639px) {
+  .error__img {
+    width: 250px;
+    height: 250px;
+  }
+}/*# sourceMappingURL=Error.module.css.map */

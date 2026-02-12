@@ -1,0 +1,28 @@
+@import '../../utils/mixins';
+@import '../../utils/mediaQuery';
+
+.empty{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @include mobile{
+        flex-direction: column;
+        
+    }
+
+    &__title{
+        @include h2-title;
+
+        color: #75767F;
+        text-align: center;
+    }
+
+    &__img{
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+    }
+    
+}
