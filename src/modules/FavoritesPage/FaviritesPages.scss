@@ -1,0 +1,94 @@
+@import '../mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Mont', 'sans-serif';
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@media screen and (min-width: 1199px) {
+  .favorites {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  @include contentPaddingInline;
+
+  &__nav-bar {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 24px;
+    gap: 8px;
+  }
+
+  &__back-home {
+    width: 16px;
+    height: 16px;
+    background-image: url('/public/img/Home.png');
+  }
+
+  &__arrow {
+      width: 16px;
+      height: 16px;
+      background-image: url('/img/arrow.png');
+
+    }
+
+  &__h2 {
+    font-size: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #89939a;
+  }
+
+  &__h3 {
+    font-size: 48px;
+    color: #313237;
+    font-weight: 800;
+    line-height: 56px;
+    font-family: 'Mont', 'sans-serif';
+    padding-top: 40px;
+  }
+
+  &__count-items {
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__empty {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+  }
+}

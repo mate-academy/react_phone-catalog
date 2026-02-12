@@ -1,0 +1,197 @@
+@import '../mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Mont', sans-serif;
+}
+
+.gargets {
+  @include contentPaddingInline;
+
+  &__back-to-home {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 24px;
+    gap: 8px;
+    align-content: flex-end;
+  }
+
+  &__home-img {
+    background-image: url(/public/img/Home.png);
+    width: 13.33px;
+    height: 14.67px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/arrow.png');
+  }
+
+  &__back-home-h2 {
+    font: 600 12px/12px 'Mont';
+    color: #89939a;
+  }
+
+  &__mobile-phones-h1 {
+    font: 800 48px/56px 'Mont';
+    letter-spacing: -1px;
+    color: #0f0f11;
+    padding-top: 40px;
+  }
+
+  &__count-models {
+    font: 600 14px/21px 'Mont';
+    color: #89939a;
+    padding-top: 8px;
+  }
+
+  &__position-sorting {
+    display: flex;
+    padding-top: 40px;
+    gap: 16px;
+  }
+
+  &__sort-by-h3,
+  &__items-on-page-h3 {
+    font: 700 12px/100% 'Mont';
+    padding-bottom: 4px;
+    color: #89939a;
+    font-weight: 700;
+  }
+
+  &__sort-by-choose-value,
+  &__items-on-page-choose-item {
+    height: 40px;
+    margin-top: 4px;
+    padding: 0 12px;
+    border: 1px solid #e2e6e9;
+    border-radius: 24px;
+    color: #89939a;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    padding: 8px 32px 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    background: url("data:image/svg+xml;utf8,<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M12.4715 5.52864C12.7318 5.78899 12.7318 6.2111 12.4715 6.47145L8.47149 10.4714C8.21114 10.7318 7.78903 10.7318 7.52868 10.4714L3.52868 6.47144C3.26833 6.2111 3.26833 5.78899 3.52868 5.52864C3.78903 5.26829 4.21114 5.26829 4.47149 5.52864L8.00008 9.05723L11.5287 5.52864C11.789 5.26829 12.2111 5.26829 12.4715 5.52864Z' fill='black'/></svg>")
+      no-repeat right 10px center;
+    background-size: 16px;
+  }
+
+  &__sort-by-choose-value {
+    width: 176px;
+  }
+
+  &__items-on-page-choose-item {
+    width: 128px;
+  }
+}
+
+.page-btn {
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 64px;
+  gap: 8px;
+
+  button {
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    background-color: transparent;
+    color: #0f0f11;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  .active {
+    background-color: #0f0f11;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .pagination .page-buttons .page-btn:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  .gargets {
+    max-width: 1136px;
+    margin-inline: auto;
+  }
+}
+
+.error {
+  padding: 200px 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.reload-button {
+  width: 100px;
+  background-color: #89939a;
+  cursor: pointer;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
