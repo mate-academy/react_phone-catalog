@@ -1,0 +1,21 @@
+@import '/src/utils/global';
+
+.bottom-action {
+  display: grid;
+  place-content: center;
+
+  height: inherit;
+  position: relative;
+  border-bottom: 2px solid $fon;
+  transition: all .3s;
+
+  &:hover {
+    border-bottom: 2px solid $white;
+  }
+
+  &--favourite {
+    border-right: 1px solid $gray;
+  }
+
+
+}

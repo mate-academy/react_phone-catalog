@@ -1,0 +1,52 @@
+@import './vars';
+@import './mixins';
+@import './fonts';
+
+.main {
+  &__title {
+    margin-top: 24px;
+
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      margin-top: 32px;
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+
+  &__content {
+    @include page-grid;
+
+  }
+}
+
+.empty {
+  // height: calc(100vh - 297px - 48px);
+  width: 100%;
+
+  @include on-tablet {
+    // height: calc(100vh - 167px - 48px);
+  }
+
+  @include on-desktop {
+    // height: calc(100vh - 183px - 64px);
+  }
+
+  &_img {
+    display: block;
+    position: relative;
+    left: 50%;
+    height: auto;
+    object-fit: scale-down;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 100%;
+  }
+}

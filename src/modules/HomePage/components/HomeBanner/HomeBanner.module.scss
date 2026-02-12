@@ -1,0 +1,104 @@
+@import '/src/utils/global';
+
+.banner {
+  position: relative;
+  padding-bottom: 22px;
+  grid-column: 1 / -1;
+
+  @include on-mobile {
+    width: calc(100% + $mobile-padding * 2);
+    left: -$mobile-padding;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 19px;
+    margin-top: 24px;
+    height: 320px;
+
+    @include on-tablet {
+      margin-top: 32px;
+      height: 189px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+      gap: 16px;
+      height: 400px;
+    }
+  }
+}
+
+.swiper {
+  display: flex;
+  width: calc(100% + $mobile-padding * 2);
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-pagination {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    &-bullet {
+      position: relative;
+      height: 4px;
+      width: 14px;
+      border-radius: 0;
+      z-index: 1000 !important;
+      opacity: 1;
+      background-color: #3b3e4a;
+
+      &-active {
+        background-color: $white;
+      }
+    }
+  }
+}
+
+.next, .prev {
+  position: relative;
+  align-self: stretch;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: translate(0);
+  margin-top: 0;
+  width: 32px;
+  background-color: $gray;
+  border: 1px solid transparent;
+  transition: all .3s;
+
+  &::after {
+    font-size: 16px;
+    font-weight: bold;
+    position: static;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &:hover {
+    border: 1px solid $white;
+  }
+}

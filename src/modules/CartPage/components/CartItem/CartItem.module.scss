@@ -1,0 +1,123 @@
+@import '/src/utils/global';
+
+.CartItem {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background-color: $dark-blue-gray;
+
+  @include on-mobile {
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &__close {
+    height: 16px;
+    width: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+
+      & svg {
+        stroke: $ligth-gray;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+
+      & p {
+        color: $ligth-gray;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    transition: all 0.3s;
+  }
+
+  &__img {
+    max-height: 80px;
+    max-width: 80px;
+  }
+
+  &__control {
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+    width: 100%;
+
+    @include on-mobile {
+      justify-content: space-between;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+
+    & button {
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      background-color: $gray;
+      border: 1px solid #3b3e4a;
+      transition: all 0.3s;
+
+      &:hover {
+        border-color: $white;
+        cursor: pointer;
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__conunt {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    width: 80px;
+  }
+}

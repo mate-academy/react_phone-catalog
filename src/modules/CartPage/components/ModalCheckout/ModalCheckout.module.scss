@@ -1,0 +1,75 @@
+@import '/src/utils/global';
+
+.overley {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10002;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__wrapper {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+.confirmation {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: fit-content;
+  padding: 24px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #3b3e4a;
+  background-color: $dark-blue-gray;
+
+  &__title {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 24px;
+    width: 80%;
+  }
+
+  &__text {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &__control {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+
+    & button {
+      height: 40px;
+      padding-inline: 12px;
+    }
+  }
+
+  &__clear {
+    border: none;
+    background-color: $accent;
+    transition: all 0.3s;
+    flex-grow: 3;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 5px 20px #905bffd1;
+    }
+  }
+
+  &__cancel {
+    background-color: transparent;
+    border: 1px solid #3b3e4a;
+    transition: all 0.3s;
+    flex-grow: 1;
+    &:hover {
+      cursor: pointer;
+      border-color: $white;
+    }
+  }
+}
