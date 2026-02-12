@@ -1,0 +1,110 @@
+@import '../../../../style/global';
+
+.title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  color: $light-color;
+  text-align: left;
+
+  padding-top: 24px;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    padding-top: 32px;
+  }
+
+  @include on-desctop {
+    padding-top: 56px;
+  }
+}
+
+.slider {
+  padding-top: 24px;
+
+  @include on-tablet {
+    @include padding-inline;
+
+    padding-top: 32px;
+  }
+
+  @include on-desctop {
+    padding-top: 56px;
+  }
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.sliderContainer {
+  display: flex;
+
+  gap: 16px;
+}
+
+.slide {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+
+  @include on-tablet {
+    width: 100%;
+    object-fit: fill;
+  }
+
+  @include on-desctop {
+    height: 400px;
+  }
+}
+
+.slideImg {
+  width: 100%;
+  text-align: center;
+  max-height: 400px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+
+  padding-bottom: 10px;
+}
+
+.paginationBullet {
+  width: 14px;
+  height: 4px;
+  background-color: $midle-gray-color;
+}
+
+.paginationBulletActive {
+  background-color: $light-color;
+}
+
+.navigationNext,
+.navigationPrev {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #323542;
+
+  padding-inline: 8px;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.active {
+  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
+    brightness(103%) contrast(103%);
+}
