@@ -1,0 +1,56 @@
+@use './../../style/main' as *;
+
+.scrolls {
+  display: flex;
+
+  & a:hover {
+    background-color: $icons;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center
+  }
+
+  &__back,
+  &__next {
+    @extend %scroll-button;
+
+    background-color: $surface-2;
+
+
+  }
+
+  &__page {
+    @extend %scroll-button;
+
+    color: $white;
+    text-decoration: none;
+
+    background-color: $surface-1;
+
+    &.active {
+      background-color: $accent;
+    }
+
+  }
+}
+
+%scroll-button {
+  height: 32px;
+  width: 32px;
+  display: grid;
+  place-items: center;
+
+  & img {
+    object-fit: contain;
+  }
+
+  a {
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+}

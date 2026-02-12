@@ -1,0 +1,23 @@
+@use './../../style/main' as *;
+
+.nav {
+  &__logo_wrapper{
+    width: 80px;
+    display: grid;
+    place-items: center;
+    position: relative;
+
+
+    @include on-desktop {
+      width: 128px;
+    }
+  }
+
+  &__logo {
+
+    &_ok {
+      position: absolute;
+      left: 50%;
+    }
+  }
+}

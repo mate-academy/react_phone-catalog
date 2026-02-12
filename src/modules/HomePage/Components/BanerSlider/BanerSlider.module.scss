@@ -1,0 +1,148 @@
+@use '../../../../style/main' as *;
+
+.slider {
+  height: 320px;
+
+  @include on-tablet {
+    height: auto;
+  }
+
+  @include page-grid;
+
+
+  &__title {
+    @extend %title-basic;
+
+    padding-left: 16px;
+
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      font-weight: 800;
+    }
+
+    @include on-tablet {
+      padding: 0;
+    }
+  }
+
+  &__prev {
+    display: none;
+    grid-column: 0 / 1;
+    background-color: $surface-2;
+    border: none;
+
+    &:hover {
+      background-color: $icons;
+    }
+
+    html[data-theme="light"] & {
+      border: 1px solid #B4BDC3;
+    }
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    & img {
+      height: 320px;
+      width: 100%;
+      object-position: right;
+      object-fit: cover;
+      animation: animation-img 0.5s ease-in-out;
+
+      @include on-tablet {
+        height: auto;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+
+  @keyframes animation-img {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  &__next {
+    display: none;
+    grid-column: -2/ -1;
+    background-color: $surface-2;
+    border: none;
+
+    &:hover {
+      background-color: $icons;
+    }
+
+    html[data-theme="light"] & {
+      border: 1px solid #B4BDC3;
+    }
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__dots {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_index {
+      width: 14px;
+      height: 4px;
+      background-color: #3B3E4A;
+      margin-left: 10px;
+      border: none;
+
+      &_active {
+        background-color: #F1F2F9;
+      }
+    }
+
+    &__wrapper {
+      width: 100%;
+      height: 24px;
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: block;
+}
