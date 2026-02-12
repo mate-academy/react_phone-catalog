@@ -1,0 +1,79 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.buttonsRight {
+  display: flex;
+  align-items: center;
+}
+
+.homePage {
+  width: $wight-48;
+  height: $wight-48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  border-left: $border-surface-2;
+
+  @include on-desktop {
+    width: $wight-64;
+    height: $wight-64;
+  }
+}
+
+.burgerMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.burgerMenuBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: $wight-64;
+  justify-content: space-between;
+  width: 100%;
+  border-top: $border-surface-2;
+
+}
+
+.buttonsRight a.active {
+  color: $color-white;
+  border-bottom: $wight-3 solid $color-white;
+  padding-bottom: $wight-4;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  height: $wight-28;
+  width: $wight-28;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container img {
+  height: $wight-16;
+  width: $wight-16;
+}
+
+.count {
+  position: absolute;
+  height: $wight-14;
+  width: $wight-14;
+  border-radius: 50%;
+  background-color: $color-red;
+  font-size: $wight-9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  top: 0;
+  right: 0;
+}

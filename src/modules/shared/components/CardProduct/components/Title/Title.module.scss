@@ -1,0 +1,8 @@
+@use '/src/vars' as *;
+
+.title {
+  font-size: $wight-14;
+  color: $color-white;
+  font-weight: normal;
+  cursor: pointer;
+}

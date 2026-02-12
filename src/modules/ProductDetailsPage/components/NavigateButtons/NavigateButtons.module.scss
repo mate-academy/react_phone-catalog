@@ -1,0 +1,13 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.navigateButtons {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-24;
+  padding: $wight-24-0-16;
+
+  @include on-tablet {
+    gap: $wight-40;
+  }
+}

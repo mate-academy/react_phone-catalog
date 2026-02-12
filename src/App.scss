@@ -1,1 +1,63 @@
-// not empty
+@use "./mixins.scss" as *;
+@use '/src/vars' as *;
+
+iframe {
+  display: none;
+}
+
+@font-face {
+  font-family: $font-family-mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: $font-weight-400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-family-mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: $font-weight-600;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: $font-family-mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: $font-weight-800;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: $color-black;
+  font-family: Mont, sans-serif;}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+[data-cy="app"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  @include content-padding-inline;
+  
+  flex: 1;
+}
+
+button {
+  cursor: pointer;
+}
+
+a img {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

@@ -1,0 +1,57 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.gridPrice {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1/17;
+  }
+
+  @include on-desktop {
+    grid-column: 17/-1;
+  }
+}
+
+.containerPrice {
+  display: flex;
+  flex-direction: column;
+  border: $border-color-elements;
+  padding: $wight-24;
+  gap: $wight-16;
+  width: 100%;
+}
+
+
+.containerTotalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: $wight-16;
+  border-bottom: $border-color-elements;
+
+  @include on-desktop {
+    padding-bottom: $wight-24;
+  }
+}
+
+.totalPrice {
+  font-size: $wight-32;
+  font-weight: $font-weight-800;
+  line-height: $wight-41;
+}
+
+.countItems {
+  font-size: $wight-14;
+  color: $secondary;
+  line-height: $wight-21;
+}
+
+.checkout {
+  height: $wight-48;
+  border: none;
+  background-color: $accent-hover;
+  color: $color-white;
+  font-size: $wight-14;
+  line-height: $wight-21;
+}

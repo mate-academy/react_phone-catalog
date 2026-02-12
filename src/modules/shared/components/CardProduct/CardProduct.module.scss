@@ -1,0 +1,53 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-24;
+  background-color: $surface-1;
+  padding: $wight-32;
+  position: relative;
+  min-width: $wight-212;
+  width: 100%;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 4px 0 $accent-hover;
+    transform: translateY(-1px);
+
+  }
+
+  * {
+    background-color: inherit;
+  }
+}
+
+.above {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: $wight-178;
+  cursor: pointer;
+}
+
+.above img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-8;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $color-elements;
+}

@@ -1,0 +1,19 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.contentAboutTech {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-32;
+
+  @include on-desktop {
+    width: $border-radius;
+  }
+}
+
+.titleAboutTech {
+  border-bottom: $border-color-elements;
+  padding-bottom: $wight-16;
+  font-size: $wight-20;
+  font-weight: $font-weight-400;
+}

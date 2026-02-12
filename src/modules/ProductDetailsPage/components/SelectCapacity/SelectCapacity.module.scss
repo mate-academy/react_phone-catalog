@@ -1,0 +1,36 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.selectCapacity {
+  padding: $wight-24-0;
+  display: flex;
+  flex-direction: column;
+  gap: $wight-8;
+  border-top: $border-color-elements;
+  border-bottom: $border-color-elements;
+}
+
+.titleAvailable {
+  display: flex;
+  justify-content: space-between;
+  color: $secondary;
+  font-size: $wight-12;
+}
+
+.capacityList {
+  display: flex;
+  gap: $wight-8;
+}
+
+.activeCapacity {
+  background-color: $color-white;
+  color: $color-black;
+}
+
+.capacity {
+  border: $border-icons;
+  font-size: $wight-14;
+  line-height: $wight-21;
+  padding: $wight-7-8;
+  cursor: pointer;
+}

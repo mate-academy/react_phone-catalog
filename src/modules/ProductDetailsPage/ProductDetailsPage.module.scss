@@ -1,0 +1,28 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.container {
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $wight-56;
+}
+
+.grigContainer {
+  @include page-grid;
+
+  align-items: start;
+
+  padding-top: $wight-32;
+
+  @include on-tablet {
+    padding-top: $wight-32;
+  }
+}
+
+.activeColor {
+  border-color: $color-white;
+}
+
+
+

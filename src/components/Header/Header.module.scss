@@ -1,0 +1,83 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $color-black;
+  border-bottom: $border-surface-2;
+}
+
+.logoWrapper {
+  padding: 0 $wight-16;
+  width: 96px;
+
+  @include on-desktop {
+    width: 128px;
+    padding: 0 $wight-24;
+  }
+}
+
+.logoWrapper img {
+  height: 100%;
+  width: 100%;
+}
+
+.navLinks {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.burgerMenu {
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.burgerMenu button {
+  width: $wight-48;
+  height: $wight-48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  border-left: $border-surface-2;
+
+  @include on-desktop {
+    width: $wight-64;
+    height: $wight-64;
+  }
+}
+
+.buttonsRight {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    gap: $wight-24;
+  }
+
+  @include on-desktop {
+    gap: $wight-48;
+  }
+}

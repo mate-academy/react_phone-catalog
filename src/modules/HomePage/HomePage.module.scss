@@ -1,0 +1,44 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $wight-64;
+
+  @include on-desktop {
+    padding-bottom: $wight-80;
+  }
+}
+
+.title {
+  color: $color-white;
+  font-size: $wight-48;
+  line-height: $wight-56;
+  margin: $wight-24-0;
+  overflow: hidden;
+
+  @include on-tablet {
+    margin: $wight-32-0;
+  }
+
+  @include on-desktop {
+    margin: $wight-56 0;
+  }
+}
+
+.elements {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-56;
+  align-items: center;
+
+  @include on-tablet {
+    gap: $wight-64;
+  }
+
+  @include on-desktop {
+    gap: $wight-80;
+  }
+}
+

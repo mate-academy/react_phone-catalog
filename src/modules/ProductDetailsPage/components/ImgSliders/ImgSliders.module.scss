@@ -1,0 +1,38 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.imgSliders {
+  display: flex;
+  gap: $wight-8;
+  padding-bottom: $wight-40;
+  justify-content: center;
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    flex-direction: column;
+  }
+
+  @include on-desktop {
+    grid-column: 1/3;
+  }
+}
+
+.imgBox {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: $wight-50;
+  width: $wight-50;
+  padding: $wight-4;
+  border: $border-color-elements;
+}
+
+.imgBox img {
+  height: 100%;
+}
+
+.activeImage {
+  border-color: $color-white;
+}
