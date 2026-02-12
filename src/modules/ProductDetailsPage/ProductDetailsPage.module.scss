@@ -1,0 +1,468 @@
+@use 'sass:color';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.product-details {
+
+  &__title {
+    @include h2;
+
+    margin-bottom: 32px;
+    color: $color-primary;
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    padding: 40px 16px;
+    background-image: url('/react_phone-catalog/img/product-not-found.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include on-tablet {
+      min-height: 600px;
+      padding: 60px 32px;
+    }
+
+    @include on-desktop {
+      min-height: 700px;
+    }
+  }
+
+  &__not-found-content {
+    text-align: center;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+  }
+
+  &__not-found-title {
+    @include h1;
+
+    color: $color-primary;
+    margin: 0;
+  }
+
+  &__not-found-button {
+    @include button-text;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust($color-primary, $lightness: -10%);
+    }
+  }
+
+  &__back {
+    margin-bottom: 24px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $color-secondary;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__section-options-title {
+    @include small-text;
+
+    color: $color-secondary;
+    margin-bottom: 8px;
+  }
+
+
+  &__content {
+    @include page-grid;
+
+  }
+
+  &__gallery {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      grid-column: span 7;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__main-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 16px;
+    order: -1;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      margin-bottom: 0;
+      order: 0;
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      flex-flow: column nowrap;
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  &__thumbnail-button {
+    width: 49px;
+    height: 49px;
+    min-width: 39px;
+    padding: 0;
+    border: 1px solid $color-elements;
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+  }
+
+  &__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 4px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+
+  &__thumbnail-button:hover &__thumbnail {
+    transform: scale(1.1);
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -5;
+    }
+  }
+
+  &__section {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 24px;
+  }
+
+  &__info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    @include small-text;
+
+    color: $color-secondary;
+  }
+
+  &__product-id {
+    @include small-text;
+
+    color: $color-secondary;
+  }
+
+  &__color-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-button {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-elements;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 2px; // робить біле коло всередині з рівним відступом
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    // Внутрішнє кольорове коло (заливка через модифікатор)
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px; // ще трохи менше для кольорового заповнення
+      border-radius: 50%;
+      background-color: transparent;
+      transition: background-color 0.2s ease;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+
+  }
+
+  &__capacity-button {
+    height: 32px;
+
+    @include uppercase;
+    @include body-text;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: 1px solid $color-elements;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      border-color: $color-primary;
+      background-color: $color-hover-bg;
+    }
+  }
+
+  &__capacity-button--active {
+    border-color: $color-primary;
+    background-color: $color-primary;
+    color: #fff;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__color-button--space-gray::after {
+    background-color: #535355;
+  }
+
+  &__color-button--silver::after {
+    background-color: #e2e3e4;
+  }
+
+  &__color-button--gold::after {
+    background-color: #fad7bd;
+  }
+
+  &__color-button--blue::after {
+    background-color: #276787;
+  }
+
+  &__color-button--red::after {
+    background-color: #ba0c2e;
+  }
+
+  &__color-button--midnight::after {
+    background-color: #101112;
+  }
+
+  &__color-button--yellow::after {
+    background-color: #f9e5c9;
+  }
+
+  &__color-button--purple::after {
+    background-color: #d1cdda;
+  }
+
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 24px;
+    padding-top: 24px;
+  }
+
+  &__capacity-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__pricing {
+    padding-top: 8px;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    @include h2;
+  }
+
+  &__price-old {
+    @include h3;
+
+    text-decoration: line-through;
+    color: $color-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__specs {
+    grid-column: 1 / -1;
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__section-title {
+    @include h3;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 32px;
+  }
+
+
+  &__about-item {
+    margin-bottom: 16px;
+  }
+
+  &__about-subtitle {
+    @include h4;
+
+    margin-bottom: 16px;
+  }
+
+  &__about-text {
+    @include body-text;
+
+    color: $color-secondary;
+  }
+
+  &__specs-info {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  &__specs-info-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specs-info-label {
+    @include body-text;
+
+    text-transform: capitalize;
+    color: $color-secondary;
+  }
+
+  &__specs-info-value {
+    @include body-text;
+
+    color: $color-primary;
+    max-width: 70%;
+  }
+
+}
