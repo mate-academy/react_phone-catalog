@@ -1,0 +1,30 @@
+.catalog {
+  gap: 16px;
+  padding: 16px;
+
+
+  &__header {
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+@media (min-width: 640px) {
+  .catalog {
+    padding: 32px;
+
+    &__container {
+      flex-direction: row;
+      padding: 16px 0;
+      justify-content: space-between;
+      height: auto;
+    }
+  }
+}

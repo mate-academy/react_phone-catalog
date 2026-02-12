@@ -1,0 +1,105 @@
+@use '../../../shared/utils/variables';
+
+.product {
+  box-sizing: border-box;
+  width: 288px;
+  padding: 16px;
+  border: 1px solid variables.$gray-medium-color;
+
+  &__primary {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__secondary {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__remove {
+    color: variables.$gray-medium-color;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+  }
+
+  &__button {
+    all: unset;
+    width: 32px;
+    height: 32px;
+    border: 1px solid variables.$gray-medium-color;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+      border: 1px solid variables.$black-color;
+    }
+
+  }
+
+  &__count {
+    font-family: Mont,
+    Arial,
+    Helvetica,
+    sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  &__price {
+    font-family: Mont,
+      Arial,
+      Helvetica,
+      sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    place-items: center;
+  }
+
+}
+
+@media (min-width: 640px) {
+  .product {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    max-width: 590px;
+    width: auto;
+
+    &__secondary {
+      gap: 32px;
+      align-items: center;
+    }
+  }
+}

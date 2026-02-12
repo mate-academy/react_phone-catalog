@@ -1,0 +1,17 @@
+@use '../../utils/variables' as *;
+
+button {
+  padding: 0;
+  background-color: $black-color;
+  height: 40px;
+  width: 100%;
+  color: $white-color;
+  border: none;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+  cursor: pointer;
+}

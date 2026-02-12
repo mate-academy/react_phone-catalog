@@ -1,0 +1,14 @@
+@use '../../../shared/utils/mixins';
+
+@media (min-width: 640px) {
+  .home {
+      box-sizing: border-box;
+      padding: 32px;
+
+      &__title {
+        padding: 16px;
+      }
+    }
+}
+
+

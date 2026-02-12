@@ -1,0 +1,226 @@
+@use '../../utils/variables' as *;
+
+.header {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  max-width: 100vw;
+  height: 48px;
+  align-items: center;
+  box-shadow: 0 1px 0 0 $gray-light-color;
+  position: sticky;
+  top: 0;
+  background-color: $white-color;
+  display: flex;
+  padding-left: 16px;
+  z-index: 1;
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    justify-self: left;
+  }
+
+  &__burger {
+    display: flex;
+  }
+
+  &__list  {
+    list-style: none;
+
+
+    &-link {
+      text-decoration: none;
+      color: $gray-color;
+      position: relative;
+      transition: all 0.4s;
+
+
+      &:hover,
+      :active {
+        color: $black-color;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            height: 3px;
+            background-color: $black-color;
+            pointer-events: none;
+          }
+      }
+    }
+  }
+
+
+  &__logo {
+    width: auto;
+    height: 20px;
+    display: block;
+    object-fit: contain;
+  }
+
+  &__links {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 32px;
+  }
+
+
+  &__button {
+    box-shadow: -1px 0 0 0 $gray-light-color;
+    height: 48px;
+    width: 48px;
+    justify-items: center;
+    align-content: center;
+    cursor: pointer;
+
+    &-image {
+      width: 14px;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__cart {
+    box-shadow: -1px 0 0 0 $gray-light-color;
+    height: 48px;
+    width: 48px;
+    justify-items: center;
+    align-content: center;
+
+    &-image {
+      width: 14px;
+      height: auto;
+      display: block;
+      position: relative;
+    }
+
+    &-counter {
+      position: absolute;
+      border: 1px solid $red-color;
+      background-color: $red-color;
+      color: $white-color;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      text-align: center;
+      justify-items: center;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+    }
+  }
+
+  &__fav {
+    box-shadow: -1px 0 0 0 $gray-light-color;
+    height: 48px;
+    width: 48px;
+    justify-items: center;
+    align-content: center;
+
+    &-image {
+      width: 14px;
+      height: auto;
+      display: block;
+      position: relative;
+    }
+
+      &-counter {
+        position: absolute;
+        border: 1px solid $red-color;
+        background-color: $red-color;
+        color: $white-color;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        text-align: center;
+        justify-items: center;
+        top: 10px;
+        right: 60px;
+        font-size: 10px;
+      }
+  }
+}
+
+
+@media (max-width: 639px) {
+  .header {
+
+    &__burger {
+      position: fixed;
+      background-color: $white-color;
+      top: calc(100vh - 100px);;
+      left: 0;
+      width: 100%;
+      padding: 32px 0 25px;
+      justify-content: center;
+      row-gap: 24px;
+      transform: translateX(0);
+      transition: all 0.4s;
+
+      &-active {
+        transform: translateX(100%);
+      }
+    }
+
+    &__fav {
+      height: 68px;
+      width: 100%;
+      border: 1px solid $gray-medium-color;
+
+      &-counter {
+        display: none;
+      }
+    }
+
+    &__cart {
+      height: 68px;
+      width: 100%;
+      border: 1px solid $gray-medium-color;
+
+      &-counter {
+          display: none;
+        }
+    }
+
+    &__nav {
+      background-color: $white-color;
+      position: fixed;
+      top: 48px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      padding: 32px 0 25px;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 24px;
+      transform: translateX(0);
+      transition: all 0.4s;
+
+      &-active {
+        transform: translateX(100%);
+      }
+    }
+
+    &__list {
+
+      &-link {
+        font-size: 12px;
+      }
+    }
+
+  }
+}
+
+@media (min-width: 640px) {
+  .header {
+
+    &__button {
+      display: none;
+    }
+  }
+}

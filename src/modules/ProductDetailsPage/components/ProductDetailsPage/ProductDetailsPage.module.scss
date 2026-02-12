@@ -1,0 +1,334 @@
+@use '../../../shared/utils/variables';
+
+.details {
+  padding: 24px 16px;
+  box-sizing: border-box;
+
+  &__back {
+    all: unset;
+    color: variables.$gray-medium-color;
+    text-align: center;
+    display: flex;
+    gap: 8px;
+    padding: 16px 0;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+      color: variables.$black-color;
+    }
+  }
+
+  &__title {
+    color: variables.$black-color
+  }
+
+  &__images {
+    display: flex;
+    height: 49px;
+    gap: 8px;
+    justify-content: space-around;
+    width: 100%;
+
+  }
+
+
+  &__picture {
+    display: block;
+    width: 40px;
+    aspect-ratio: 3 / 4;
+    padding: 4px;
+    border: 1px solid variables.$gray-light-color;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+      border: 1px solid variables.$black-color;
+      transform: scale(1.2)
+    }
+
+    &--active {
+      border: 1px solid variables.$black-color;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 288px;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+    padding: 16px;
+    justify-self: center;
+  }
+
+    &__favourites {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: variables.$white-color;
+      border: 1px solid variables.$gray-color;
+      justify-items: center;
+    }
+
+    &__heart {
+      color: variables.$black-color;
+      object-fit: contain;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+  &__colors {
+
+    &-text {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    &-available{
+      color: variables.$gray-color;
+    }
+
+    &-id{
+      color: variables.$gray-medium-color;
+    }
+
+    &-container{
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid variables.$gray-light-color;
+      padding-bottom: 24px;
+    }
+
+    &-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid variables.$gray-light-color;
+      outline: 2px solid variables.$white-color;
+      outline-offset: -3px;
+      transition: all 0.4s;
+      cursor: pointer;
+
+      &:hover {
+          border: 1px solid variables.$black-color;
+          transform: scale(1.1)
+        }
+
+      &--active {
+        border: 2px solid variables.$black-color;
+      }
+    }
+    }
+
+    &__capacity {
+
+
+      &-header {
+      color: variables.$gray-color;
+      }
+
+      &-container {
+        display: flex;
+        gap: 16px;
+        border-bottom: 1px solid variables.$gray-light-color;
+        padding-bottom: 40px;
+      }
+
+      &-memory {
+        border: 1px solid variables.$black-color;
+        width: 56px;
+        height: 38px;
+        align-content: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &:hover {
+          background-color: variables.$black-color;
+          color: variables.$white-color;
+        }
+
+        &--active{
+          background-color: variables.$black-color;
+          color: variables.$white-color;
+        }
+      }
+    }
+
+    &__price {
+      display: flex;
+      gap: 8px;
+      padding-top: 38px;
+
+
+      &-discount {
+        color: variables.$black-color;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+        margin: 0;
+      }
+
+      &-regular {
+        color:  variables.$gray-medium-color;
+        font-family: Mont,
+          Arial,
+          Helvetica,
+          sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-decoration: line-through;
+        margin: 0;
+        align-self: center;
+      }
+    }
+
+    &__buttons {
+      padding-top: 24px;
+      display: flex;
+      gap: 16px;
+
+    }
+
+    &__specification {
+      padding-top: 32px;
+
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+      }
+
+      &-name {
+        margin: 0;
+        color: variables.$gray-medium-color;
+        font-family: Mont,
+          Arial,
+          Helvetica,
+          sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &-details {
+        margin: 0;
+        font-family: Mont,
+          Arial,
+          Helvetica,
+          sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: right;
+      }
+    }
+
+    &__about {
+      padding-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+
+      &-header {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid variables.$gray-medium-color;
+        padding-bottom: 16px;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+      }
+
+      &-title {
+        margin: 0;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-style: SemiBold;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &-text {
+        margin: 0;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0%;
+          color: variables.$gray-medium-color;
+      }
+    }
+
+    &__tech {
+      padding: 40px 0;
+
+      &-header {
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        border-bottom: 1px solid variables.$gray-medium-color;
+        padding-bottom: 36px;
+      }
+    }
+  }
+
+
+@media (min-width: 640px) {
+  .details {
+    padding: 48px;
+
+    &__image {
+      display: block;
+      width: 440px;
+      aspect-ratio: 3 / 4;
+      object-fit: contain;
+      padding: 16px;
+      justify-self: center;
+      }
+
+    &__images {
+      flex-direction: column;
+      gap: 48px;
+      height: auto;
+      width: auto;
+      justify-content: center;
+    }
+
+    &__container {
+      padding: 32px;
+      display: flex;
+      justify-content: space-around;
+      gap: 32px;
+
+      &-primary {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}

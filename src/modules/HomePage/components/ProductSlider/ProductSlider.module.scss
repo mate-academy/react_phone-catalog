@@ -1,0 +1,54 @@
+@use '../../../shared/utils/variables' as *;
+
+.slider {
+  padding: 16px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+
+    & h1 {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+    border: 1px solid $gray-color;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+        transform: scale(1.2);
+      }
+
+    & img {
+      display: block;
+      justify-self: center;
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 12px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../utils/variables' as *;
+
+.drop-down {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+
+  &__label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $gray-color;
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url('./icons/ArrowDown.svg');
+    background-repeat: no-repeat;
+    background-position: 110px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid $gray-light-color;
+    background-color: $white-color;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    &__option {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      height: 40px;
+      padding: 12px 0;
+      color: red;
+      background-color: $white-color;
+      width: 136px;
+      transition: 0.4s;
+    }
+  }
+}

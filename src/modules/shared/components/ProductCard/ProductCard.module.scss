@@ -1,0 +1,137 @@
+@use '../../utils/variables' as *;
+
+
+
+.card {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  border: 1px solid $gray-light-color;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  justify-content: center;
+  width: 223px;
+  height: 378px;
+  gap: 8px;
+  place-self: center;
+
+  &__container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 341px;
+  }
+
+  &__image {
+      justify-self: center;
+      object-fit: contain;
+      max-width: auto;
+      height: 130px;
+      display: block;
+      transition: all 0.4s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+    }
+
+  &__title {
+      padding-top: 18px;
+      text-decoration: none;
+      color: $black-color;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+    }
+
+  &__price {
+    display: inline-flex;
+    gap: 8px;
+
+    &-current {
+      font-weight: 700;
+      font-size: 21.92px;
+      margin: 0;
+      color: $black-color;
+      padding-top: 8px;
+    }
+
+    &-before {
+      padding-top: 8px;
+      font-weight: 300;
+      font-size: 21.92px;
+      text-decoration: line-through;
+      margin: 0;
+      color: $gray-color;
+    }
+
+  }
+
+  &__divider {
+    background-color: $gray-light-color;
+    border-top: 0.5px solid $gray-light-color;
+  }
+
+
+
+  &__specifications {
+
+    &-item {
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &-title {
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0%;
+      color: $gray-color;
+    }
+
+    &-params {
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0%;
+      color: $black-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    width: 223px;
+  }
+
+  &__favourites {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: $white-color;
+      border: 1px solid $gray-color;
+      justify-items: center;
+    }
+
+  &__heart {
+    color: $black-color;
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 640px) {
+ .card {
+  width: 224px;
+  height: 440px;
+
+  &__image {
+    max-width: auto;
+    height: 194px;
+  }
+}
+}
