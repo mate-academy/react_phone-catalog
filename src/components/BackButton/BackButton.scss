@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: $mont-semi;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondary;
+  transition: color 0.3s;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('../../assets/img/icons/arrow-left.svg') center/contain no-repeat;
+  }
+
+  &:hover {
+    color: $primary;
+  }
+}
