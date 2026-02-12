@@ -1,0 +1,67 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.category {
+
+  &_label {
+    grid-column: span 4;
+    margin-bottom: 24px;
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+      grid-column: span 24;
+    }
+  }
+
+  &_card {
+    grid-column: span 4;
+    
+    &:not(:last-child) {
+      margin-bottom: 32px;
+
+      @include on-tablet {
+        margin-bottom: 0;
+      }
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &_image {
+      min-height: 288px;
+      min-width: 288px;
+      margin-bottom: 24px;
+
+      @include on-tablet {
+        min-height: 187px;
+        min-width: 187px;
+      }
+
+      &>img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    &_name {
+      margin-bottom: 4px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    &_count {
+      color: $Secondary;
+    }
+  }
+}
