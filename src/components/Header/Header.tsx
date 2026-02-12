@@ -34,10 +34,9 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
-  // 4. Logika wyszukiwarki (Debounce + URL Sync)
+  // 4. Logika wyszukiwarki
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Jeśli jesteśmy na nowej stronie, a pole jest puste -> nie robimy nic lub czyścimy
       if (searchQuery.trim() === '') {
         const newParams = new URLSearchParams(searchParams);
 
@@ -112,6 +111,7 @@ export const Header = () => {
           <div className={styles.search}>
             <input
               type="text"
+              name="query"
               placeholder="Search in store..."
               className={styles.searchInput}
               value={searchQuery}

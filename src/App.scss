@@ -2,21 +2,21 @@
 
 @font-face {
   font-family: Mont;
-  src: url('/react_phone-catalog/fonts/Mont-Regular.otf') format('opentype');
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: Mont;
-  src: url('/react_phone-catalog/fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: Mont;
-  src: url('/react_phone-catalog/fonts/Mont-Bold.otf') format('opentype');
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
 }
@@ -44,10 +44,10 @@ body {
 
 /* Main Section */
 .section {
-  flex-grow: 1; /* Wypycha footer na dół */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 24px 0; /* Odstęp góra/dół dla treści głównej */
+  padding: 24px 0;
 }
 
 /* --- KONTENER (GŁÓWNA SIATKA) --- */
@@ -88,6 +88,7 @@ body {
     gap: 24px;
   }
 }
+
 .container .container {
   padding-left: 0 !important;
   padding-right: 0 !important;

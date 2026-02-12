@@ -165,8 +165,6 @@ export const PhonesPage = () => {
           )}
         </>
       )}
-
-      {/* ❌ TU TEŻ BYŁO ZAMKNIĘCIE </div> kontenera - usunięte */}
     </div>
   );
 };

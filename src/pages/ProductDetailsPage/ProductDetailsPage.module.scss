@@ -472,22 +472,16 @@
     transition: filter 0.3s; /* Płynna zmiana koloru strzałki */
   }
 
-  /* 2. Stan AKTYWNY (gdy NIE ma klasy .disabled) */
-
-  /* zmieniamy ramkę i kolor ikony na czarny */
   &:not(.disabled) {
     cursor: pointer;
-    border-color: $color-primary; /* Czarna ramka */
+    border-color: $color-primary;
 
     img {
-      /* 
-         Wymusza, by obrazek stał się całkowicie czarny (#000000).
-         Działa niezależnie od tego, jaki kolor ma plik SVG. */
       filter: brightness(0);
     }
 
     &:hover {
-      background-color: #fafbfc; /* Opcjonalne tło po najechaniu */
+      background-color: #fafbfc;
     }
   }
 
@@ -495,11 +489,7 @@
   &.disabled {
     cursor: default;
     pointer-events: none;
-
-    /* Ramka zostaje szara (jak w stanie wyjściowym) */
     border-color: $color-elements-bg;
-
-    /* Ikona zostaje w swoim oryginalnym (szarym) kolorze + przezroczystość */
     opacity: 0.5;
   }
 }

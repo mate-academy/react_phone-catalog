@@ -1,7 +1,5 @@
 @import '../../styles/utils';
 
-// 1. 🔥 NOWOŚĆ: Klasa do ukrywania H1 (dla testów Cypress/SEO)
-// Element znika wizualnie, ale jest obecny w DOM.
 .visuallyHidden {
   position: absolute;
   width: 1px;
@@ -19,7 +17,6 @@
   width: 100%;
 }
 
-// Styl dla widocznego H2 (Welcome to Nice Gadgets...)
 .title {
   color: $color-primary;
   margin: 24px 0;
@@ -55,7 +52,7 @@
   gap: 16px;
 }
 
-/* --- PRZYCISKI NAWIGACJI --- */
+/* PRZYCISKI NAWIGACJI */
 .arrow {
   width: 32px;
   height: 32px;
@@ -69,7 +66,6 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  /* Domyślny kolor dla AKTYWNEJ strzałki */
   .icon {
     display: block;
     width: 16px;
@@ -111,13 +107,12 @@
     pointer-events: none;
 
     .icon {
-      /* Szary kolor dla nieaktywnej strzałki */
       background-color: #b4bdc3 !important;
     }
   }
 }
 
-/* --- WRAPPER PRODUKTÓW (jeśli używany lokalnie) --- */
+/* WRAPPER PRODUKTÓW */
 .productsWrapper {
   overflow-x: auto;
   scroll-behavior: smooth;

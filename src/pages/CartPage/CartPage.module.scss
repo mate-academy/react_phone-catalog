@@ -31,7 +31,6 @@
   color: $color-primary;
 }
 
-/* --- NAPRAWA UKŁADU (GRID) --- */
 .cartContainer {
   display: flex;
   flex-direction: column;
@@ -40,9 +39,8 @@
   @include on-desktop {
     display: grid;
 
-    /* Dwie kolumny: 1fr (reszta miejsca) i 320px (sztywna szerokość boxa) */
     grid-template-columns: 1fr 320px;
-    align-items: start; /* Ważne: Box nie rozciąga się na wysokość */
+    align-items: start;
     gap: 32px;
   }
 }

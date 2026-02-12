@@ -74,7 +74,6 @@ export const CartPage = () => {
               </div>
               <div className={styles.divider} />
 
-              {/* Podpięcie funkcji zamiast window.alert */}
               <button className={styles.checkoutBtn} onClick={handleCheckout}>
                 Checkout
               </button>

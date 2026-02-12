@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import '../../styles/utils';
 
 .container {
@@ -7,8 +8,6 @@
   justify-content: center;
   padding: 80px 16px;
   text-align: center;
-
-  /* Opcjonalnie: minimalna wysokość, żeby stopka nie skakała do góry na dużych ekranach */
   min-height: 50vh;
 }
 
@@ -38,10 +37,6 @@
   transition: background-color 0.3s;
 
   &:hover {
-    // stylelint-disable-next-line scss/no-global-function-names
-    background-color: lighten(
-      $color-primary,
-      10%
-    );
+    background-color: color.adjust($color-primary, $lightness: 10%);
   }
 }

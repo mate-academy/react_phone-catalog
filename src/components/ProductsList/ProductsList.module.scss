@@ -5,14 +5,11 @@
   box-sizing: border-box;
 }
 
-/* === WARIANT 1: GRID (Katalog) === */
 .grid {
   display: grid;
-
-  // Mobile: startujemy od 1 kolumny, ale pozwalamy na 2 na większych telefonach
   grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
   gap: 16px;
-  justify-items: center; // Wyśrodkowanie kart w kolumnach
+  justify-items: center;
 
   @include on-tablet {
     grid-template-columns: repeat(2, 1fr);
@@ -25,7 +22,6 @@
   }
 }
 
-/* === WARIANT 2: SLIDER ( np. Hot Prices) === */
 .slider {
   display: flex;
   gap: 16px;
@@ -44,22 +40,20 @@
 
 /* Karta wewnątrz */
 .cardWrapper {
-  /* Dla Slidera (Hot Prices / Brand New) - musi być sztywno */
   .slider & {
     width: 272px;
     min-width: 272px;
     flex-shrink: 0;
   }
 
-  /* Dla Grida (Katalog telefonów/tabletów) - elastycznie */
   .grid & {
-    width: 100%;       // Zajmij całą szerokość kolumny siatki
-    max-width: 272px;  // Ale nie bądź szerszy niż 272px (żeby nie było gigantów)
-    margin: 0;         // Grid sam zarządza odstępami (gap)
+    width: 100%;
+    max-width: 272px;
+    margin: 0;
 
     @include on-tablet {
       width: auto;
-      max-width: none; // Na tablecie wracamy do standardu
+      max-width: none;
     }
   }
 }

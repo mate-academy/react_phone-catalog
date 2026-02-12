@@ -2,14 +2,17 @@
 
 .tabletsPage {
   padding-bottom: 56px;
+  max-width: 100vw;
+  overflow-x: hidden;
 
   @include on-tablet {
     padding-bottom: 80px;
+    overflow-x: visible;
   }
 }
 
 .header {
-  margin-bottom: 32px; /* Odstęp między nagłówkiem a filtrami */
+  margin-bottom: 32px;
 }
 
 .title {
@@ -34,56 +37,41 @@
   margin: 0;
 }
 
-/* --- FILTRY --- */
+/* FILTRY */
 .filters {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
   margin-bottom: 24px;
-  flex-wrap: wrap;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+  }
 }
 
-.filterGroup {
-  display: flex;
-  flex-direction: column;
+@include on-tablet {
+  /* 1. Sort by -> 176px */
+  .filters > *:first-child {
+    width: 176px !important;
+    flex: 0 0 auto;
+  }
+
+  /* 2. Items on page -> 136px */
+  .filters > *:last-child {
+    width: 136px !important;
+    flex: 0 0 auto;
+  }
 }
 
 .label {
   font-size: 12px;
   font-weight: 700;
   color: $color-secondary;
-  margin-bottom: 4px; /* Odstęp od selecta */
-
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-/* Stylowanie Selecta */
-.select {
-  height: 40px;
-  background-color: $color-white;
-  border: 1px solid $color-elements-bg;
-  padding: 0 12px;
-  font-size: 14px;
-  font-weight: 600;
-  color: $color-primary;
-  cursor: pointer;
-  min-width: 136px;
-  border-radius: 0;
-  appearance: none;
-
-  background-image: url('/img/icons/arrow-down.svg');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
-  padding-right: 32px;
-
-  &:hover {
-    border-color: $color-elements;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $color-primary;
-  }
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

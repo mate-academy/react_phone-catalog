@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
 }
 
 .label {
@@ -15,17 +18,24 @@
 
 .dropdownWrapper {
   position: relative;
-  width: 176px;
+  width: 100% !important;
   height: 40px;
 }
 
 .trigger {
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+
+  gap: 8px;
+  padding: 0 10px;
+
+  @include on-tablet {
+    padding: 0 16px;
+  }
+
   background-color: $color-white;
   border: 1px solid #b4bdc3;
   border-radius: 8px;
@@ -36,6 +46,8 @@
   cursor: pointer;
   transition: border-color 0.3s;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
 
   &:hover {
     border-color: $color-primary;
@@ -46,6 +58,13 @@
   }
 }
 
+.trigger > *:not(.arrow) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
 .arrow {
   width: 16px;
   height: 16px;
@@ -53,6 +72,8 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: transform 0.3s;
+  flex-shrink: 0;
+  flex-grow: 0;
 
   &.up {
     transform: rotate(180deg);
@@ -64,7 +85,10 @@
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  width: 100%;
+
+  width: 100% !important;
+  min-width: 100%;
+
   background-color: $color-white;
   border: 1px solid $color-elements-bg;
   border-radius: 8px;
@@ -82,6 +106,10 @@
   color: $color-secondary;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     background-color: #fafbfc;

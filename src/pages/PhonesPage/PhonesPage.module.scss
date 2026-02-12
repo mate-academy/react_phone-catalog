@@ -2,6 +2,13 @@
 
 .phonesPage {
   padding-bottom: 64px;
+  max-width: 100vw;
+  overflow-x: hidden;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+    overflow-x: visible;
+  }
 }
 
 .header {
@@ -29,65 +36,43 @@
   color: $color-secondary;
 }
 
-/* --- FILTRY (NAPRAWA WYGLĄDU) --- */
+/* FILTRY */
 .filters {
-  display: flex;
-  gap: 16px; /* Odstęp między Sort by a Items on page */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
   margin-bottom: 24px;
-  flex-wrap: wrap; /* Na bardzo małych ekranach zawinie się */
+
+  @include on-tablet {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+  }
 }
 
-.filterGroup {
-  display: flex;
-  flex-direction: column; /* Etykieta nad selectem */
-  gap: 4px;
-  position: relative;
+
+@include on-tablet {
+
+  .filters > *:first-child {
+    width: 176px !important;
+    flex: 0 0 auto;
+  }
+
+  .filters > *:last-child {
+    width: 136px !important;
+    flex: 0 0 auto;
+  }
 }
 
 .label {
   font-size: 12px;
   font-weight: 700;
   color: $color-secondary;
-  margin-left: 2px;
-}
-
-/* Wrapper na select, żeby trzymał rozmiar */
-.selectWrapper {
-  position: relative;
-  width: 176px;
-  height: 40px;
-}
-
-.select {
-  appearance: none; /* Usuwa domyślny styl systemowy */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  width: 100%;
-  height: 100%;
-  padding: 0 12px;
-  background-color: $color-white;
-  border: 1px solid #b4bdc3;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  color: $color-primary;
-  cursor: pointer;
-  transition: border-color 0.3s;
-
-  background-image: url('/img/icons/arrow-down.svg');
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-
-  &:hover {
-    border-color: $color-primary;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $color-accent;
-  }
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .noResults {

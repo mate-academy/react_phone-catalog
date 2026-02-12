@@ -16,12 +16,12 @@
   img {
     width: 100%;
     height: 100%;
-    display: block; // Zapobiega przesunięciom linii bazowej
+    display: block;
   }
 }
 
 .separator {
-  display: flex; // pozwala na align-items
+  display: flex;
   align-items: center;
   font-size: 14px;
 

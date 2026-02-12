@@ -151,7 +151,6 @@
   padding-right: 32px;
   border: 1px solid $color-border;
   background-color: $color-white;
-  font-family: $font-main;
   font-size: 12px;
   color: $color-primary;
   outline: none;
@@ -159,6 +158,7 @@
   line-height: 32px;
 
   &::placeholder {
+    font-family: $font-main;
     color: $color-elements;
   }
   &:focus {
