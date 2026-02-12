@@ -1,0 +1,24 @@
+@import '../../styles/main';
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 32px 0;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+    color: $color-primary;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__image {
+    width: 50%;
+  }
+}

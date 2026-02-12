@@ -1,0 +1,55 @@
+@import '../../styles/main';
+
+.home-page {
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    letter-spacing: -1%;
+    color: $color-primary;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+
+    &--part {
+      display: block;
+
+      @include on-desktop {
+        display: inline;
+      }
+    }
+  }
+
+  &__picture-slider,
+  &__brands-new-models,
+  &__categories,
+  &__hot-prices {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}
