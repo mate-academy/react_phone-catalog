@@ -1,0 +1,460 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+body {
+  height: 100vh;
+}
+
+.no-product {
+  font-family: Mont, sans-serif;
+  height: 100vh;
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__image {
+    display: block;
+    margin: auto;
+
+    width: 250px;
+
+    @include on-tablet {
+      width: 450px;
+    }
+
+    @include on-big-screen {
+      width: 600px;
+    }
+  }
+}
+
+.product-page {
+  text-transform: capitalize;
+  margin-inline: 16px;
+  display: flex;
+  flex-direction: column;
+  font-family: Mont, sans-serif;
+  color: $Primary;
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__path-of-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 72px;
+    gap: 8px;
+
+    @include on-big-screen {
+      margin-top: 88px;
+    }
+  }
+
+  &__go-home {
+    background-image: url('./../img/home.svg');
+    display: block;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__direction {
+    background-image: url('./../img/chevron-arrow-right.svg');
+    background-position: center;
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__previous-page {
+    color: $Primary;
+  }
+
+  &__current-page {
+    text-decoration: none;
+    color: $Secondary;
+  }
+
+  &__return {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+
+    margin-top: 24px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__arrow {
+    cursor: pointer;
+    background-image: url('./../img/chevron-arrow_left.svg');
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__back {
+    cursor: pointer;
+    color: $Secondary;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__technical-specifications {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    @include on-big-screen {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include on-tablet {
+      grid-column: 1 / 7;
+      flex-direction: row;
+    }
+
+    @include on-big-screen {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__photos-list {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+
+    @include on-tablet {
+      margin-right: 16px;
+      margin-left: 0;
+      flex-direction: column;
+    }
+
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__image {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $Elements;
+    border-radius: 8px;
+
+    &--active {
+      cursor: auto;
+      border: 1px solid $Primary;
+      border-radius: 8px;
+    }
+  }
+
+  &__chosen-photo {
+    width: 288px;
+    height: 288px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+
+    @include on-tablet {
+      width: 287px;
+      height: 287px;
+
+      margin-left: 0;
+      margin-right: 16px;
+    }
+
+    @include on-big-screen {
+      width: 464px;
+      height: 464px;
+      margin-right: 64px;
+    }
+  }
+
+  &__tachnical-info {
+    grid-column: 7 / 13;
+
+    @include on-big-screen {
+      grid-column: 13 / 21;
+    }
+  }
+
+  &__colors {
+    color: $Secondary;
+  }
+
+  &__wrapper-colors {
+    display: flex;
+    gap: 9px;
+    margin-top: 9px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $Elements;
+  }
+
+  &__some-color-wrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $Elements;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-color: $Icons;
+    }
+
+    &--active {
+      border-color: $Primary;
+
+      &:hover {
+        border-color: $Primary;
+      }
+    }
+  }
+
+  &__some-color {
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+
+    &--active {
+      cursor: auto;
+    }
+  }
+
+  &__capacity {
+    color: $Secondary;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  &__memory-buttons {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $Elements;
+  }
+
+  &__capacity-button {
+    cursor: pointer;
+    background-color:$NoneBackground;
+    border-radius: 4px;
+    border: 1px solid $Icons;
+    width: 63px;
+    height: 32px;
+
+    &--active {
+      cursor: auto;
+      color: $White;
+      background-color: $Primary;
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+
+    &-discount {
+      color: $Primary;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    &-regular {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 100%;
+      text-decoration: line-through;
+    }
+  }
+
+  &__button-list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__button-add {
+    width: 100%;
+    background-color: $Accent;
+    border-radius: 8px;
+    border: none;
+    color: $White;
+    cursor: pointer;
+  }
+
+  &__button-added {
+    background-color: $White;
+    border: 1px solid $Elements;
+    color: $Accent;
+  }
+
+  &__button-favorites {
+    background-image: url('./../img/add-to-favourites.svg');
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color:$NoneBackground;
+    transition: transform ease-in-out $effectDuration;
+    margin: 0;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url('./../img/add-to-fovourites-hover.svg');
+    }
+
+    &--active {
+      background-image: url('./../img/add-to-fovourites-added.svg');
+
+      &:hover {
+        background-image: url('./../img/add-to-fovourites-added.svg');
+      }
+    }
+  }
+
+  &__tech-info {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    letter-spacing: 0;
+  }
+
+  &__tech-type {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--advanced {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 800;
+      color: $Secondary;
+    }
+  }
+
+  &__tech-meanings {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
+    color: $Primary;
+  }
+
+  &__tech-meaning {
+    display: flex;
+    flex-direction: row-reverse;
+
+    &--advanced {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 800;
+    }
+  }
+
+  &__text-data {
+    @include on-big-screen {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__block-about {
+    text-decoration: none;
+    margin-bottom: 56px;
+    grid-column: 1 / 13;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__about-title {
+    font-weight: 700;
+    font-style: SemiBold;
+    font-size: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $Elements;
+    margin-bottom: 32px;
+  }
+
+  &__describe-title {
+    margin-bottom: 16px;
+    color: $Primary;
+    font-size: 20px;
+  }
+
+  &__describe {
+    text-decoration: none;
+    margin-top: 32px;
+    color: $Secondary;
+  }
+
+  &__tech-specs {
+    grid-column: 13 / -1
+  }
+
+  &__tech-specs-title {
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $Elements;
+    font-size: 22px;
+
+    @include on-tablet {
+      margin-bottom: 25px;
+    }
+  }
+}

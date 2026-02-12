@@ -1,0 +1,60 @@
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import '../../styles/mixins.module';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  @include on-big-screen {
+    width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+    padding-top: 72px;
+
+    @include content-margin-inline;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    font-style: bold;
+    line-height: 56px;
+    letter-spacing: -0.32px;
+
+    @include on-big-screen {
+      margin: 0;
+      padding-top: 120px;
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+    margin: 0 auto;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__image {
+    width: 14px;
+    height: 4px;
+  }
+}

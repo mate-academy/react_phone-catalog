@@ -1,0 +1,56 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-wrapper {
+  width: 10%;
+  margin-right: 16px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+.list {
+  margin: 0 auto;
+  font-family: Mont, sans-serif;
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), 1fr);
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    width: 1136px;
+    margin: auto;
+  }
+
+  justify-content: center;
+  gap: 40px 16px;
+  
+  --column-count: 1;
+
+  @include on-tablet {
+    --column-count: 2;
+  }
+
+  @include on-middle-screen {
+    --column-count: 3;
+  }
+
+  @include on-big-screen {
+    --column-count: 4;
+  }
+}
