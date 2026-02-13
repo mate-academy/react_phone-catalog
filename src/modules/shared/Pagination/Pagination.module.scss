@@ -1,0 +1,25 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.pageButton,
+.prev,
+.next {
+  @include square-button;
+}
+
+.active {
+  background-color: var(--primary);
+  color: var(--main-bg);
+}

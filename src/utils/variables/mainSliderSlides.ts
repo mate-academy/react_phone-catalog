@@ -1,0 +1,32 @@
+export const slides = [
+  {
+    src: 'img/phones/apple-iphone-14-pro/gold/00.webp',
+    name: 'iPhone 14 Pro',
+    itemURL: '/phones/apple-iphone-14-pro-1tb-gold',
+    promoTitle: 'Discover the Future of Smartphones!',
+    promoSubtitle: 'Experience power and elegance in your hands.',
+    tagline: 'Pro. Beyond.',
+    promoButtonText: 'Buy now',
+    promoMobileButtonText: 'Buy now',
+  },
+  {
+    src: 'img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
+    name: 'iPad Pro',
+    itemURL: '/tablets/apple-ipad-pro-11-2021-128gb-spacegray',
+    promoTitle: 'Unleash Your Creativity!',
+    promoSubtitle: 'Perfect for work, play, and everything in between.',
+    tagline: 'Create. Innovate.',
+    promoButtonText: 'Get yours',
+    promoMobileButtonText: 'Get yours',
+  },
+  {
+    src: 'img/accessories/apple-watch-series-6/space-gray/00.webp',
+    name: 'Watch Series 6',
+    itemURL: '/accessories/apple-watch-series-6-40mm-space-gray',
+    promoTitle: 'Time Meets Technology',
+    promoSubtitle: 'Stay connected and healthy effortlessly.',
+    tagline: 'Time. Smarter.',
+    promoButtonText: 'Order today',
+    promoMobileButtonText: 'Order today',
+  },
+];

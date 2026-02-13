@@ -1,0 +1,24 @@
+@import './../../../../styles/variables';
+@import './../../../../styles/mixins';
+
+.menu {
+  width: 100%;
+  height: calc(100vh - $header-height-default);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  height: 100%;
+  width: 100%;
+  padding-top: 54px;
+
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+}

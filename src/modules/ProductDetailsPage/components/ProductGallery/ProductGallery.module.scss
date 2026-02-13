@@ -1,0 +1,66 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.gallery {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+    grid-column: 1 / 7;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.galleryMain {
+  flex: 1;
+  height: 30em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galleryImage {
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.galleryThumbnails {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: column;
+    gap: 16px;
+    justify-content: flex-start;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.galleryThumb {
+  padding: 0;
+  max-width: 80px;
+  max-height: 80px;
+  aspect-ratio: 1 / 1;
+
+  border: 1px solid var(--icons);
+}
+
+.active {
+  border: 1px solid var(--primary);
+}
+
+.galleryThumbImage {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
