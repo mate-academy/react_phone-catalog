@@ -1,0 +1,36 @@
+@import '../../utils';
+
+.category {
+  &__title {
+    @include title-of-blocks;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__description {
+    margin-top: 24px;
+  }
+
+  &__name {
+    font-family: $font-family;
+    font-size: 20px;
+    font-weight: $font-weight-medium;
+    color: $primary;
+  }
+
+  &__count {
+    @include body-text;
+  }
+}

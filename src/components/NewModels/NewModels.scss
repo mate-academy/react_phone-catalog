@@ -1,0 +1,8 @@
+@import '../../utils';
+@import '../../layout/container';
+
+.new-models {
+  &__title {
+    @include title-of-blocks;
+  }
+}
