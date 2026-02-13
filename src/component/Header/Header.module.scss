@@ -1,0 +1,98 @@
+@import './../style/index';
+
+a{
+text-decoration: none;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background-color: $background-color;
+  z-index: 1;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E2E6E9 ;
+    position: sticky;
+    z-index: 2;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      padding-right: 0;
+      gap: 24px;
+    }
+
+    @include on-big-desktop {
+      gap: 40px;
+    }
+  }
+
+  &__logoLink {
+    padding-left: 16px;
+
+    @include on-desktop {
+      padding-left: 24px;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    z-index: 2;
+    border-left: 1px solid $color-grey;
+    padding: 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    z-index: 10;
+
+    &:hover {
+      @include scale-on-hover;
+    }
+
+    @include on-desktop {
+      height: 28px;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+  }
+
+  &__navbar {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    @media(min-width: 750px) {
+      gap: 130px;
+    }
+
+    @media(min-width: 900px) {
+      gap: 300px;
+    }
+
+    @include on-desktop {
+      gap: 495px;
+    }
+
+    @include on-big-desktop {
+      gap: 711px;
+    }
+  }
+}
