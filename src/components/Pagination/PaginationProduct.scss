@@ -1,0 +1,50 @@
+@import '../../styles/common';
+
+.pagination {
+  &--btn-next {
+    margin-left: 8px;
+  }
+
+  &--btn-prev {
+    margin-right: 8px;
+  }
+
+  &--btn-prev,
+  &--btn-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $button-grey;
+    border: none;
+    cursor: pointer;
+
+    @include hover(background-color, $icon-grey);
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $grey-2;
+      opacity: 0.3;
+    }
+  }
+
+  &__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $grey-1;
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+}
+
+.is-active-page {
+  background-color: $button-purple;
+}
