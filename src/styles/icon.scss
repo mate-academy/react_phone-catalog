@@ -1,0 +1,20 @@
+@import './variables';
+
+.icon {
+  &-user {
+    fill: $main-white-color;
+    width: 16px;
+    height: 15px;
+
+    @include on-desktop-small {
+      width: 20px;
+      height: 19px;
+    }
+  }
+
+  &-menu {
+    fill: $main-white-color;
+    width: 14px;
+    height: 8.5px;
+  }
+}
