@@ -1,0 +1,39 @@
+.container {
+  grid-column: span 6;
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+}
+
+.next {
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #89939A;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.link {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F0F11;
+  text-decoration: none;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}

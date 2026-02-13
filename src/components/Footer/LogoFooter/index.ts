@@ -1,0 +1,1 @@
+export { LogoFooter } from './LogoFooter';
