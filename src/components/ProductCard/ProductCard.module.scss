@@ -1,0 +1,78 @@
+@use '../../styles/utils' as utils;
+
+.product-card {
+  border: 1px solid utils.$header-border;
+  box-sizing: border-box;
+  padding: 32px;
+  transition: border-color 0.3s;
+
+  &__img {
+    height: 100%;
+
+    @include utils.hover(transform, scale(1.05));
+  }
+
+  &__title {
+    color: utils.$primary;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 600;
+    padding-top: 16px;
+    overflow: hidden;
+    transition: color 0.3s;
+
+    &:hover {
+      color: utils.$secondary;
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    line-height: 31px;
+    margin-block: 8px;
+    font-weight: 800;
+
+    & span {
+      color: utils.$secondary;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    margin-bottom: 8px;
+  }
+
+  &:hover {
+    border-color: utils.$secondary;
+  }
+}
+
+.image-wrapper {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 148 / 129;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: 700;
+
+    &__title {
+      color: utils.$secondary;
+      line-height: 15px;
+      font-size: 12px;
+    }
+  }
+}

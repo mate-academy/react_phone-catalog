@@ -1,0 +1,285 @@
+@use './utils';
+
+html {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+.app-root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &--menu-burger {
+    background-image: url(../assets/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../assets/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--like, &--cart {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--like {
+    background-image: url(../assets/icons/icon-like.svg);
+  }
+
+  &--favourite {
+    background-image: url(../assets/icons/icon-favourite.svg);
+  }
+
+  &--cart {
+    background-image: url(../assets/icons/icon-cart.svg);
+  }
+
+  &--close {
+    background-image: url(../assets/icons/icon-close.svg);
+  }
+
+  &--arrow-up {
+    background-image: url(../assets/icons/icon-arrow-up.svg);
+  }
+
+  &--arrow-left {
+    background-image: url(../assets/icons/icon-arrow-left.svg);
+  }
+
+  &--arrow-right {
+    background-image: url(../assets/icons/icon-arrow-right.svg);
+  }
+
+  &--home {
+    background-image: url(../assets/icons/icon-home.svg);
+  }
+}
+
+.main {
+  padding-top: 48px;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+
+  @include utils.on-desktop {
+    padding-top: 64px;
+  }
+}
+
+.container {
+  @include utils.content-padding-inline;
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include utils.page-grid;
+
+  @include utils.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include utils.on-desktop {
+    margin-bottom: 86px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  margin-block: 24px;
+
+  @include utils.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.sub-title {
+  grid-column: 1 / -1;
+
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+
+  margin-bottom: 24px;
+
+  @include utils.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &--short {
+    grid-column: 1 / 3;
+
+    @include utils.on-tablet {
+      grid-column: span 10;
+    }
+
+    @include utils.on-desktop {
+      grid-column: span 12;
+    }
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid utils.$header-border;
+  width: 100%;
+}
+
+.button {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  flex-grow: 1;
+  height: 40px;
+  background-color: utils.$primary;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &--selected {
+    border: 1px solid utils.$header-border;
+    background-color: #fff;
+    color: utils.$green;
+  }
+}
+
+.circle-color {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid utils.$header-border;
+  padding: 2px;
+  box-sizing: border-box;
+  background-color: white;
+  position: relative;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: utils.$icons;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &--active {
+    border-color: utils.$primary;
+    pointer-events: none;
+  }
+
+  &--black {
+    background-color: utils.$primary;
+  }
+
+  &--green {
+    background-color: utils.$green;
+  }
+
+  &--yellow {
+    background-color: yellow;
+  }
+
+  &--purple {
+    background-color: purple;
+  }
+
+  &--rosegold {
+    background-color: utils.$rosegold;
+  }
+
+  &--red {
+    background-color: utils.$red;
+  }
+
+  &--silver {
+    background-color: utils.$header-border;
+  }
+
+  &--spacegray {
+    background-color: utils.$secondary;
+  }
+
+  &--gold {
+    background-color: utils.$gold;
+  }
+
+  &--midnight {
+    background-color: utils.$primary;
+  }
+
+  &--graphite {
+    background-color: #41424C;
+  }
+
+  &--sierrablue {
+    background-color: #BFDAF7;
+  }
+
+  &--midnightgreen {
+    background-color: utils.$midnightgreen;
+  }
+
+  &--skyblue {
+    background-color: utils.$blue;
+  }
+
+  &--blue {
+    background-color: #4169E1;
+  }
+
+  &--pink {
+    background-color: pink;
+  }
+
+  &--spaceblack {
+    background-color: #505150;
+  }
+
+  &--coral {
+    background-color: #F88379;
+  }
+
+  &--starlight {
+    background-color: #F8F9EC;
+  }
+}

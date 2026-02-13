@@ -1,0 +1,53 @@
+@use '../../styles/utils' as utils;
+
+.catalog {
+  &__breadcrumbs {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__filters {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    @include utils.page-grid;
+  }
+
+  &__product-list {
+    grid-column: 1 / -1;
+  }
+
+  &__amount {
+    grid-column: 1 / -1;
+    font-size: 14px;
+    line-height: 21px;
+    color: utils.$secondary;
+    margin-bottom: 32px;
+
+    @include utils.on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}
+
+.product-list {
+  row-gap: 40px;
+
+  @include utils.page-grid;
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include utils.on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

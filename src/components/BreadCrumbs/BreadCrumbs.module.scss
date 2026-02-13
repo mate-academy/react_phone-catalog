@@ -1,0 +1,34 @@
+@use '../../styles/utils' as utils;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 15px;
+
+  @include utils.on-tablet {
+    align-items: flex-end;
+    font-size: 16px;
+  }
+
+  &__item {
+    display: flex;
+
+    &--link {
+      transition: all .3s;
+
+      @include utils.hover(transform, scale(1.1));
+    }
+
+    &--last {
+      color: utils.$secondary;
+    }
+  }
+}
+
+.icon {
+  &__arrow {
+    cursor: default;
+  }
+}
