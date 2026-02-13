@@ -1,0 +1,22 @@
+.category {
+  width: 100%;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+  }
+}

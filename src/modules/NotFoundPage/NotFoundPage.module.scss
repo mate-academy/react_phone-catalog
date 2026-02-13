@@ -1,0 +1,38 @@
+.wrapper {
+  @include flex-center;
+
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px 0;
+  color: var(--color-white);
+  gap: 50px;
+
+  img {
+    width: 50%;
+    height: auto;
+
+    @include on-tablet {
+      width: 40%;
+    }
+
+    @include on-dekstop {
+      width: 30%;
+    }
+  }
+}
+
+.link {
+  color: var(--color-white);
+  background-color: #3f4570;
+  padding: 15px;
+  border-radius: 7px;
+
+  @include on-tablet {
+    padding: 15px 50px;
+  }
+
+  @include hover {
+    background-color: var(--color-surface-2);
+    color: var(--color-black);
+  }
+}

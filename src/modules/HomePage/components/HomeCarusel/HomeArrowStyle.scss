@@ -1,0 +1,63 @@
+@use '@GlobalStyle/media' as *;
+@use '@GlobalStyle/mixins' as *;
+
+.arrow__prev,
+.arrow__next {
+  @include on-tablet {
+    position: absolute;
+    background-color: var(--color-surface-2);
+    bottom: 33px;
+    height: 100%;
+    width: 32px;
+
+    @include flex-center;
+  }
+}
+
+.arrow__prev {
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+
+  @include hover {
+    background-color: var(--color-secondary);
+  }
+
+  @include on-tablet {
+    left: 0;
+    z-index: 1001;
+  }
+}
+
+.arrow__next {
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+
+  @include hover {
+    background-color: var(--color-secondary);
+  }
+
+  @include on-tablet {
+    right: 0;
+    z-index: 1001;
+  }
+}
+
+.arrow__left,
+.arrow__right {
+  @include on-tablet {
+    left: 0;
+
+    cursor: pointer;
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url('@Images/icons/Arrow-right.svg');
+  }
+}
+
+.arrow__left {
+  @include on-tablet {
+    background-image: url('@Images/icons/Arrow-left.svg');
+  }
+}

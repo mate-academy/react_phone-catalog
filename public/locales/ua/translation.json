@@ -1,0 +1,91 @@
+{
+  "main": {
+    "title": "Каталог продуктів"
+  },
+
+  "navbar": {
+    "home": "ГОЛОВНА",
+    "phones": "ТЕЛЕФОНИ",
+    "tablets": "ПЛАНШЕТИ",
+    "accessories": "АКСЕСУАРИ"
+  },
+
+  "carusel": {
+    "newModels": "Нові моделі",
+    "hotPrice": "Знижки",
+    "shopBy": "Категорії товарів",
+    "alsoLike": "Вам також може сподобатися"
+  },
+
+  "categoryDevice": {
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "favorites": "Улюбленні"
+  },
+
+  "product": {
+    "screen": "Екран",
+    "capacity": "Ємність",
+    "ram": "RAM",
+    "AvailableColor": "Доступні кольори",
+    "selectCapacity": "Виберіть ємність",
+    "capacityMM": "Виберіть Розмір",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "about": "Про телефон",
+    "techSpecs": "Технічні характеристики",
+    "builtInMemory": "Вбудована пам'ять"
+  },
+
+  "cart": {
+    "add": "Додати",
+    "added": "Додано"
+  },
+
+  "sortBy": {
+    "Chose": "Виберіть",
+    "Виберіть": "Виберіть",
+    "sortBy": "Сортувати За",
+    "itemsOnPage": "Товарів на сторінці",
+    "Newest": "Найновіші",
+    "Alphabetically": "За абеткою",
+    "Cheapest": "Найдешевші",
+    "All": "Всі",
+    "16": "16",
+    "8": "8",
+    "4": "4"
+  },
+
+  "page": {
+    "back": "Назад",
+    "Contacts": "Контакти",
+    "rights": "Права доступу",
+    "backTop": "Назад у Гору",
+    "quantity": "Товари",
+    "cart": "Кошик",
+    "checkout": "Оформити замовлення",
+    "totalItems": "Всього {{count}} товарів",
+    "isEmpty": "Пусто",
+    "BacktoHome": "Повернутися На Головну",
+    "selectedlanguage": "Виберіть Мову"
+  },
+
+  "checkoutError": {
+    "title": "Упс... щось пішло не так",
+    "text": "Функція оформлення замовлення ще не реалізована. Бажаєте очистити кошик?",
+    "confirmButtonText": "Так, очистити!",
+    "cancelButtonText": "Скасувати",
+
+    "success": {
+      "title": "Видалено!",
+      "text": "Ваш кошик було очищено."
+    }
+  },
+
+  "notifications": {
+    "addedToCart": "{{name}} додано до кошика!",
+    "removeToCart": "{{name}} видалено з кошика!",
+    "removedFromFavorites": "{{name}} видалено з вибраного!"
+  }
+}

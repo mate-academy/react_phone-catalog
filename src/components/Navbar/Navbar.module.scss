@@ -1,0 +1,243 @@
+.navbar {
+  transform: translateX(-100%);
+  opacity: 0;
+
+  position: fixed;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+
+  top: 49px;
+  right: 0;
+  left: 0;
+  height: calc(100vh - 49px);
+  z-index: 100;
+
+  background-color: var(--color-black);
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    transform: none;
+    opacity: 1;
+    align-items: center;
+    margin-right: auto;
+    position: static;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__list {
+    margin-top: 79px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    gap: 16px;
+
+    @include abs-center;
+
+    @include on-tablet {
+      margin-top: 0;
+      position: static;
+      translate: 0 0;
+      height: 100%;
+      justify-content: flex-start;
+      flex-direction: row;
+      gap: 40px;
+    }
+
+    @include on-dekstop {
+      gap: 63px;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-secondary);
+    font-weight: 800;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    padding: 12px 0;
+    cursor: pointer;
+
+    @include hover {
+      color: var(--color-white);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      translate: -50%;
+      width: 0;
+      height: 2px;
+
+      background-color: var(--color-white);
+      transition-duration: inherit;
+
+      @include on-dekstop {
+        bottom: -2px;
+      }
+    }
+
+    &--action {
+      &::after {
+        bottom: -1px;
+      }
+    }
+
+    @include on-dekstop {
+      padding: 26px 0;
+    }
+  }
+
+  &__active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.is--active {
+  color: var(--color-btn-card);
+
+  @include hover {
+    color: var(--color-white);
+  }
+
+  &::after {
+    width: 100%;
+
+    @include on-dekstop {
+      bottom: -2px;
+    }
+  }
+}
+
+.actions {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  border-top: var(--border);
+
+  a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    height: 64px;
+    width: 100%;
+
+    &:last-child {
+      border-left: var(--border);
+    }
+
+    &:hover {
+      @include hover {
+        background-color: var(--color-surface-2);
+      }
+    }
+
+    @include on-tablet {
+      @include square(48px);
+
+      &:first-child {
+        border-left: var(--border);
+      }
+    }
+  }
+
+  @include on-tablet {
+    position: static;
+    bottom: auto;
+    justify-content: flex-start;
+    width: auto;
+    border-top: none;
+  }
+
+  @include on-dekstop {
+    a {
+      @include square(64px);
+    }
+  }
+}
+
+.burger {
+  display: block;
+  z-index: 1001;
+  position: relative;
+  border-left: var(--border);
+
+  @include square(48px);
+
+  &::after,
+  &::before {
+    @include abs-center;
+
+    content: '';
+    width: 16px;
+    height: 2px;
+    background-color: var(--color-white);
+    border-radius: 1px;
+    transition:
+      transform 0.4s ease,
+      box-shadow 0.4s ease,
+      opacity 0.4s ease;
+  }
+
+  &::after {
+    box-shadow:
+      0 -6px var(--color-white),
+      0 6px var(--color-white);
+  }
+
+  &__active::after {
+    box-shadow: none;
+    transform: rotate(45deg);
+  }
+
+  &__active::before {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    @include hover {
+      background-color: var(--color-surface-2);
+    }
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.shopping {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  background-color: var(--color-red-icon);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 15px;
+
+  @include square(14px);
+}

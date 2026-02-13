@@ -1,0 +1,54 @@
+:root {
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface-2: #323542;
+  --color-surface-1: #161827;
+  --color-black: #0f1121;
+  --color-white: #f1f2f9;
+  --color-accent: #e8e9ee;
+  --color-red-icon: #eb5757;
+  --color-hover-btn: #3b3e4a;
+  --color-focus-dropdown: #905bff;
+  --color-pagination-active: #905bff;
+  --color-btn: #3b3e4a;
+  --color-btn-card: #905bff;
+  --color-btn-card-hover: #a378ff;
+  --color-gray-line: #3b3e4a;
+  --border: 1px solid #323542;
+  --border-dropdown: 1px solid #3b3e4a;
+  --container-width: 1136px;
+  --container-padding-x: 16px;
+  --transition-duration: 0.3s;
+  --section-padding-y: 80px;
+  --button-height: 40px;
+  --select-height: 40px;
+  --color-red: #f00;
+  --color-green: #0f0;
+
+  /* stylelint-disable-next-line scss/double-slash-comment-whitespace-inside */
+  //#region Color Device
+
+  --device-black: #000;
+  --device-white: #fff;
+  --device-purple: #800080;
+  --device-red: #ff3b30;
+  --device-midnight: #191970;
+  --device-blue: #007aff;
+  --device-pink: #ff91a4;
+  --device-graphite: #4b4b4b;
+  --device-gold: #d4af37;
+  --device-sierrablue: #9bb5ce;
+  --device-spaceblack: #0a0a0a;
+  --device-spacegray: #555;
+  --device-silver: #c0c0c0;
+  --device-rosegold: #b76e79;
+  --device-green: #34c759;
+  --device-skyblue: #87ceeb;
+  --device-starlight: #f5eadc;
+  --device-space-gray: #5a5a5a;
+  --device-yellow: #f7d560;
+
+  /* stylelint-disable-next-line scss/double-slash-comment-whitespace-inside */
+  //#endregion
+}

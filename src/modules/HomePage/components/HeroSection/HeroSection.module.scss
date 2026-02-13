@@ -1,0 +1,31 @@
+.title {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 9;
+  }
+
+  @include on-dekstop {
+    grid-column: span 21;
+  }
+}
+
+.container {
+  @include on-tablet {
+    @include page-grid;
+    @include content-padding-inline;
+  }
+
+  @include on-dekstop {
+    margin-top: 50px;
+
+    @include page-grid;
+    @include content-padding-inline;
+  }
+
+  @include large-dekstop {
+    max-width: 1200px;
+    margin: 56px auto;
+    padding-inline: 0;
+  }
+}

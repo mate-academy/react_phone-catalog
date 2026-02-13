@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.button {
+  position: relative;
+  padding: 9px 22px;
+  width: 100%;
+
+  @include hover {
+    background-color: var(--color-btn-card-hover);
+  }
+}
+
+.button span {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-white);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.favourit {
+  background-color: var(--color-surface-2);
+
+  @include square(40px);
+
+  @include hover {
+    background-color: var(--color-secondary);
+  }
+}
+
+.favourit__icon {
+  display: block;
+  padding: 12px;
+}
+
+.button__added {
+  background-color: #27ae60;
+
+  @include hover {
+    background-color: #27ae60;
+  }
+}
+
+.button__empty {
+  background-color: var(--color-btn-card);
+}

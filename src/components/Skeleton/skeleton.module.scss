@@ -1,0 +1,72 @@
+:root {
+  --loading-grey: #3b3e4a;
+}
+
+.card {
+  width: 100%;
+
+  background-color: var(--color-surface-1);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+}
+
+.image {
+  height: 200px;
+  width: 200px;
+  margin: 20px auto 0;
+}
+
+.image img {
+  display: block;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
+}
+
+.content {
+  padding: 2rem 1.8rem;
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+.loading .image,
+.loading .title,
+.loading .description {
+  background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 60%
+    )
+    var(--loading-grey);
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
+}
+
+.loading .title {
+  min-height: 1.6rem;
+  border-radius: 4px;
+  animation-delay: 0.05s;
+}
+
+.loading .description {
+  min-height: 4rem;
+  border-radius: 4px;
+  animation-delay: 0.06s;
+}

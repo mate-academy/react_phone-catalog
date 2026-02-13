@@ -1,0 +1,47 @@
+.main {
+  padding: 64px 0;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    padding: 80px 0;
+  }
+}
+
+.nav {
+  margin-bottom: 24px;
+}
+
+.link {
+  display: block;
+
+  @include square(16px);
+
+  & img {
+    width: 100%;
+    height: auto;
+  }
+
+  @include hover {
+    scale: 1.2;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+
+  &__img-arrow {
+    @include square(16px);
+  }
+
+  &__text {
+    color: var(--color-secondary);
+    font-weight: 700;
+    font-size: 12px;
+  }
+}

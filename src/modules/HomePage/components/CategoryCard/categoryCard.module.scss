@@ -1,0 +1,43 @@
+.category__link {
+  img {
+    width: 100%;
+    transition: transform 0.3s ease;
+
+    @include hover {
+      & :hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+
+.bottom {
+  margin-top: 20px;
+
+  span {
+    font-size: 14px;
+    color: var(--color-secondary);
+  }
+}
+
+.active {
+  transition: all 0.3s ease;
+
+  @include hover {
+    &:hover {
+      background-color: var(--color-surface-1);
+
+      transform: translateY(-5px);
+
+      box-shadow:
+        6px 5px 18px -4px rgb(68 23 73),
+        6px 9px 10px 0 rgb(68 23 73),
+        9px 15px 15px -5px rgb(68 23 73),
+        5px 10px 20px 0 rgb(68 23 73);
+    }
+  }
+}

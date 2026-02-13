@@ -1,0 +1,102 @@
+@use 'reset';
+@use './fonts';
+@forward 'variables';
+
+body {
+  background-color: var(--color-black);
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 21px;
+  height: 100%;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+.container {
+  width: 100%;
+
+  @include page-grid;
+  @include content-padding-inline;
+
+  @include large-dekstop {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 0;
+  }
+}
+
+.title {
+  color: var(--color-white);
+  font-size: 32px;
+  line-height: 41px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.title-section {
+  font-size: 22px;
+  color: var(--color-white);
+  font-weight: 800;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-size: 32px;
+    width: 100%;
+  }
+}
+
+.main {
+  padding-top: 80px;
+
+  @include on-tablet {
+    padding-top: 100px;
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.menu-open {
+  height: 100vh;
+  overflow-y: hidden;
+
+  @include on-tablet {
+    height: auto;
+    overflow-y: visible;
+  }
+}
+
+.menu-flags {
+  z-index: 1001;
+  width: 71px;
+
+  ul {
+    background: var(--color-black) !important;
+    border-color: var(--color-surface-2);
+  }
+
+  li {
+    transition: background-color var(--transition-duration) ease;
+
+    @include hover {
+      background-color: var(--color-surface-2);
+    }
+  }
+}
+
+.menu-flags-button {
+  @include hover {
+    background-color: var(--color-surface-2);
+  }
+}

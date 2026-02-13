@@ -1,0 +1,38 @@
+.arrows {
+  @include flex-center;
+
+  gap: 16px;
+}
+
+.arrow__next,
+.arrow__prev {
+  border: 1px solid var(--color-btn);
+  background-color: var(--color-surface-2);
+
+  @include flex-center;
+  @include square(31px);
+
+  span {
+    @include square(16px);
+  }
+
+  &:disabled {
+    background-color: inherit;
+  }
+}
+
+.arrow__next span {
+  background-image: url('@Images/icons/Arrow-right.svg');
+}
+
+.arrow__prev span {
+  background-image: url('@Images/icons/Arrow-left.svg');
+}
+
+.arrow__next:disabled span {
+  background-image: url('@Images/icons/Arrow-black-right.svg');
+}
+
+.arrow__prev:disabled span {
+  background-image: url('@Images/icons/Arrow-black-left.svg');
+}

@@ -1,4 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+import { Root } from './Root';
+import { CartProvider } from './context/ShoppingContex';
+import './i18n';
+
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <CartProvider>
+    <Root />
+  </CartProvider>,
+);

@@ -1,0 +1,79 @@
+@use './HomeArrowStyle.scss' as *;
+
+.main-container {
+  width: 100%;
+}
+
+.main-swiper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  overflow: hidden;
+  position: relative;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+.main-swiper :global(.swiper) {
+  width: 100%;
+  padding-bottom: 30px;
+
+  @include on-dekstop {
+    height: 400px;
+  }
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+.main-swiper :global(.swiper-slide) {
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+
+  @include on-tablet {
+    padding: 0 50px;
+  }
+}
+
+.img__slider {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: top;
+}
+
+.img__picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.img__slider-p {
+  width: 100%;
+  height: 100%;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+.main-swiper :global(.swiper-pagination) {
+  position: absolute;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+  bottom: 0 !important;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+.main-swiper :global(.swiper-pagination-bullet) {
+  width: 14px;
+  height: 4px;
+  border-radius: 0 !important;
+  background-color: var(--color-white);
+}

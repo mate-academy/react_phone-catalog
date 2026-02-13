@@ -1,7 +1,18 @@
-import './App.scss';
+import { Outlet } from 'react-router-dom';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+import './assets/styles/main.scss';
+import { Header } from '@Header';
+import { Footer } from '@GlobalComponents';
+import style from './app.module.scss';
+
+export const App = () => {
+  return (
+    <>
+      <div className={style.wrapper}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </>
+  );
+};

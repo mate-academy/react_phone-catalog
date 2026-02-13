@@ -1,0 +1,71 @@
+.dropdown {
+  min-width: 125px;
+  border: 1px solid transparent;
+  position: relative;
+  transition: background-color var(--transition-duration) ease;
+  cursor: pointer;
+
+  @include hover {
+    background-color: var(--color-icons);
+  }
+
+  &-btn {
+    padding: 12px;
+    font-size: 14px;
+    color: var(--color-white);
+    font-weight: 700;
+    background-color: var(--color-surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      transition: opacity var(--transition-duration) ease;
+    }
+
+    @include hover {
+      img {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &-content {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    border: var(--border-dropdown);
+    background-color: var(--color-black);
+    z-index: 1001;
+
+    &--active {
+      pointer-events: all;
+    }
+  }
+
+  &-item {
+    padding: 10px;
+    font-size: 14px;
+    color: var(--color-secondary);
+    transition: all var(--transition-duration) ease;
+
+    @include hover {
+      color: var(--color-white);
+      background-color: var(--color-surface-2);
+    }
+  }
+
+  &-active {
+    border: 1px solid var(--color-focus-dropdown);
+  }
+}
+
+.img {
+  width: 20px;
+  height: 20px;
+}
+
+.img-active {
+  rotate: calc(180deg);
+}

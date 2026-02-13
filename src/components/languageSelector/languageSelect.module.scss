@@ -1,0 +1,28 @@
+.selected {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  @include on-tablet {
+    top: 0;
+    left: auto;
+    right: 97px;
+  }
+
+  @include on-dekstop {
+    right: 127px;
+  }
+}
+
+.text {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--color-secondary);
+
+  @include on-tablet {
+    display: none;
+  }
+}

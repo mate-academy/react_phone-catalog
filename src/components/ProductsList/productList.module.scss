@@ -1,0 +1,52 @@
+.quantity {
+  display: block;
+  font-size: 14px;
+  color: var(--color-secondary);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.title {
+  text-transform: capitalize;
+}
+
+.drowdowns {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+
+  @include on-tablet {
+    width: 300px;
+  }
+
+  div {
+    width: 100%;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+}
+
+.wrapper {
+  margin-top: 24px;
+
+  grid-column: 1 / -1;
+}
+
+.items {
+  display: grid;
+  gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    column-gap: 16px;
+  }
+
+  @include on-dekstop {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}

@@ -1,10 +1,17 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "baseUrl": ".",
+    "paths": {
+      "@Header": ["src/components/Header"],
+      "@HomePage": ["src/modules/HomePage"],
+      "@Images/*": ["src/assets/images/*"],
+      "@GlobalStyle/*": ["src/assets/styles/*"],
+      "@GlobalComponents": ["src/components/"],
+      "@Fetch": ["src/services"]
+    }
   }
 }

@@ -1,0 +1,91 @@
+{
+  "main": {
+    "title": "Product Catalog"
+  },
+  "navbar": {
+    "home": "HOME",
+    "phones": "PHONES",
+    "tablets": "TABLETS",
+    "accessories": "ACCESSORIES"
+  },
+
+  "carusel": {
+    "newModels": "Brand new models",
+    "hotPrice": "Hot prices",
+    "shopBy": "Shop by category",
+    "alsoLike": "You may also like"
+  },
+
+  "categoryDevice": {
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites"
+  },
+
+  "product": {
+    "screen": "Screen",
+    "capacity": "Capacity",
+    "ram": "RAM",
+    "AvailableColor": "Available colors",
+    "selectCapacity": "Select capacity",
+    "capacityMM": "Select size",
+    "resolution": "Resolution",
+    "processor": "Процесор",
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "builtInMemory": "Built in memory"
+  },
+
+  "cart": {
+    "add": "Add to cart",
+    "added": "Added"
+  },
+
+  "sortBy": {
+    "Chose": "Chose One",
+    "Chose One": "Chose One",
+    "sortBy": "Sort By",
+    "itemsOnPage": "Items on page",
+    "Newest": "Newest",
+    "Alphabetically": "Alphabetically",
+    "Cheapest": "Cheapest",
+    "All": "All",
+    "16": "16",
+    "8": "8",
+    "4": "4"
+  },
+
+  "page": {
+    "back": "Back",
+    "Contacts": "Contacts",
+    "rights": "rights",
+    "backTop": "Back to top",
+    "quantity": "items",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "totalItems": "Total for {{count}} items",
+    "isEmpty": "is Empty",
+    "BacktoHome": "Back to Home",
+    "selectedlanguage": "Select language"
+  },
+
+  "checkoutError": {
+    "title": "Oops, something went wrong",
+    "text": "Checkout is not implemented yet. Do you want to clear the Cart?",
+    "confirmButtonText": "Yes, clear!",
+    "cancelButtonText": "Cancel",
+
+    "success": {
+      "title": "Deleted!",
+      "text": "Your cart has been cleared."
+    }
+  },
+
+  "notifications": {
+    "addedToCart": "{{name}} added to cart!",
+    "removeToCart": "{{name}} remove to cart!",
+    "addedToFavorites": "{{name}} added to favorites!",
+    "removedFromFavorites": "{{name}} removed from favorites!"
+  }
+}
