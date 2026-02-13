@@ -1,0 +1,53 @@
+@import '../../../../styles/global';
+
+.shop_by_category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+h2 {
+  @extend %h2;
+}
+
+.categories_box {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &_img {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  &_name {
+    @extend %h4;
+  }
+
+  &:hover &_img {
+    transform: scale(1.02);
+  }
+
+  &:hover &_name {
+    font-family: var(--font-family-bold);
+  }
+
+  &_description {
+    @extend %body-text;
+
+    color: var(--color-secondary);
+    margin-top: -20px;
+  }
+}

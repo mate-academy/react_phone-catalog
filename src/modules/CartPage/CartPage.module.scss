@@ -1,0 +1,110 @@
+@import './../../styles/global';
+
+.title {
+  @extend %h1;
+
+  margin-top: -16px;
+
+  @include on-mobile {
+    margin-top: -8px;
+  }
+}
+
+.cart_page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+  height: min-content;
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+}
+
+.cart_items {
+  @extend %grid;
+
+  padding: 0;
+
+  @include on-tablet {
+    row-gap: 32px;
+  }
+}
+
+.items {
+  grid-column: 1/17;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-column: 1/-1;
+  }
+}
+
+.total_price {
+  @extend %h2;
+
+  color: var(--color-primary);
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &_box {
+    grid-column: 17/-1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    height: min-content;
+    align-items: center;
+    width: 100%;
+    border: 1px solid var(--color-elements);
+
+    @include on-tablet {
+      grid-column: 1/-1;
+      gap: 16px;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: var(--color-elements);
+    }
+
+    .button_checkout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 100%;
+
+      @extend %buttons-text;
+
+      color: white;
+      background-color: var(--color-primary);
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      transition: all var(--transition-duration);
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(97, 97, 97, 0.27);
+      }
+    }
+  }
+
+  &_info {
+    @extend %body-text;
+
+    color: var(--color-secondary);
+    margin-top: -24px;
+
+    @include on-tablet {
+      margin-top: -16px;
+    }
+  }
+}

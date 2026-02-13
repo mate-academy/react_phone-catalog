@@ -1,0 +1,24 @@
+@import '../../../../styles/global';
+
+.products_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.error_message {
+  @extend %body-text;
+
+  color: var(--color-red);
+}
