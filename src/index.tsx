@@ -1,4 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { Root } from './Mixins/Root';
+import { MyProvider } from './Context/ProductContexts';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+const rootElement = document.getElementById('root') as HTMLElement;
+
+createRoot(rootElement).render(
+  <MyProvider>
+    <Root />
+  </MyProvider>,
+);
