@@ -1,0 +1,90 @@
+@import '../../../../assets/global';
+
+
+.leftSide {
+  @include on-tablet {
+    display: flex;
+    width: 50%;
+  }
+
+  @include on-desctop {
+    width: 464px;
+  }
+
+  @include on-large-desctop {
+    width: 50%;
+  }
+}
+
+.slider {
+  padding-top: 32px;
+
+  @include on-tablet {
+    order: 2;
+    width: 100%;
+    padding: 0;
+  }
+
+  @include on-desctop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.slide {
+  width: 100%;
+  text-align: center;
+}
+
+.slideImg {
+  height: 288px;
+  object-fit: contain;
+
+  @include on-desctop {
+    height: 464px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+
+  @include on-tablet {
+    order: 1;
+    flex-direction: column;
+    justify-content: start;
+
+    margin: 0;
+    width: 80px;
+  }
+}
+
+.paginationBullet {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $midle-gray-color;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desctop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.paginationBulletImg {
+  height: 100%;
+  display: flex;
+}
+
+.paginationBulletActive {
+  border: 1px solid $light-color;
+}
