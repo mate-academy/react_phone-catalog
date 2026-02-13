@@ -1,0 +1,59 @@
+@import '../../../utils/style/main';
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-3xl;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-lg;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+
+    @include mobile {
+      justify-content: space-between;
+    }
+  }
+
+  &__label {
+    @include font-mont($font-size-base, $font-weight-semibold);
+
+    color: $gray-secondary;
+    white-space: nowrap;
+  }
+
+  &__select {
+    padding: $spacing-sm $spacing-sm;
+    border: 1px solid $elements;
+    background: $elements;
+    color: $secondary;
+    min-width: 136px;
+
+    @include smooth-transition;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+
+  &__count {
+    margin-left: auto;
+
+    @include font-mont($font-size-sm);
+
+    color: $gray-secondary;
+
+    @include mobile {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+}

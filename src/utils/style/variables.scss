@@ -1,0 +1,88 @@
+// Colors
+$primary: #905bff;
+$secondary: #f1f2f9;
+$white: #fff;
+$surface1: #0f1121;
+$surface2: #161827;
+$elements: #3b3e4a;
+$icons: #4a4d58;
+$red: #eb5757;
+$green: #27ae60;
+
+// Additional colors
+$green-black: #5f7170;
+$black: #4c4c4c;
+$gold: #fcdbc1;
+$gray-primary: #313237;
+$gray-secondary: #89939a;
+$gray-elements: #75767f;
+$gray-border: #b4bdc3;
+$purple-hover: #a378ff;
+$background-hover: rgba(144, 91, 255, 0.1);
+
+// Typography
+$font-mont: 'Mont', sans-serif;
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// Font sizes
+$font-size-xs: 9px;
+$font-size-sm: 11px;
+$font-size-base: 12px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+$font-size-xl: 18px;
+$font-size-2xl: 20px;
+$font-size-3xl: 24px;
+$font-size-4xl: 32px;
+$font-size-5xl: 48px;
+$font-size-6xl: 120px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 20px;
+$spacing-2xl: 24px;
+$spacing-3xl: 32px;
+$spacing-4xl: 40px;
+$spacing-5xl: 56px;
+$spacing-6xl: 64px;
+$spacing-7xl: 80px;
+$spacing-8xl: 140px;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 640px;
+$tablet-lg: 768px;
+$desktop-sm: 880px;
+$desktop-md: 1024px;
+$desktop-lg: 1200px;
+$desktop-xl: 1440px;
+
+// Container
+$container-max-width: 1200px;
+$container-padding-mobile: 16px;
+$container-padding-tablet: 24px;
+$container-padding-desktop: 32px;
+
+// Header
+$header-height-mobile: 56px;
+$header-height-desktop: 64px;
+
+// Transitions
+$transition-fast: 0.2s;
+$transition-normal: 0.3s;
+$transition-slow: 0.5s;
+
+// Z-index
+$z-index-dropdown: 100;
+$z-index-sticky: 200;
+$z-index-header: 1000;
+$z-index-modal: 2000;

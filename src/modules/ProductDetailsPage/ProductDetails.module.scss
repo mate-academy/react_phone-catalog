@@ -1,0 +1,173 @@
+@import '../../utils/style/main';
+
+.productDetailsPage {
+  padding: $spacing-4xl 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: none;
+    border: none;
+    color: $secondary;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include font-mont($font-size-base, $font-weight-semibold);
+
+    margin-top: $spacing-2xl;
+    margin-bottom: $spacing-3xl;
+    padding: 0;
+
+    @include smooth-transition;
+
+    &:hover {
+      color: $primary;
+    }
+
+    img {
+      width: $spacing-lg;
+      height: $spacing-lg;
+      color: $secondary;
+    }
+  }
+
+  &__title {
+    @include font-mont($font-size-4xl, $font-weight-extra-bold);
+
+    color: $secondary;
+    margin-bottom: $spacing-3xl;
+
+    line-height: 1.3;
+  }
+
+  &__topSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-7xl;
+    align-items: center;
+
+    @include tablet {
+      gap: $spacing-4xl;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__bottomSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-7xl;
+    align-items: start;
+    padding: 120px 0 16px;
+
+    @include tablet {
+      gap: $spacing-4xl;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__not_found {
+    @include flex-column-center;
+
+    min-height: 400px;
+    text-align: center;
+    color: $gray-secondary;
+    font-size: $font-size-2xl;
+  }
+}
+
+// About
+
+.productAbout {
+  &__title {
+    @include font-mont($font-size-2xl, $font-weight-semibold);
+
+    padding: $spacing-lg 0;
+    border-bottom: 1px solid $elements;
+    color: $secondary;
+    letter-spacing: 0.04em;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__sectionTitle {
+    @include font-mont($font-size-xl, $font-weight-bold);
+
+    color: $secondary;
+    line-height: 1.4;
+  }
+
+  &__paragraph {
+    @include font-mont($font-size-md);
+
+    color: $gray-secondary;
+    line-height: 1.6;
+  }
+}
+
+// Tech Specs
+
+.productTechSpecs {
+  &__title {
+    @include font-mont($font-size-2xl, $font-weight-semibold);
+
+    padding: $spacing-lg 0;
+    border-bottom: 1px solid $elements;
+    color: $secondary;
+    letter-spacing: 0.04em;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__label {
+    @include font-mont($font-size-sm);
+
+    color: $gray-secondary;
+    flex: 1;
+  }
+
+  &__value {
+    @include font-mont($font-size-sm, $font-weight-semibold);
+
+    color: $secondary;
+    text-align: right;
+    flex: 1;
+  }
+}

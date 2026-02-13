@@ -1,0 +1,50 @@
+@import '../../utils/style/main';
+
+.homePage {
+  padding: $spacing-4xl 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  &__section {
+    margin-bottom: $spacing-7xl;
+  }
+}
+
+.homePage__title {
+  padding: 0 0 58px;
+  font-size: 48px;
+  font-weight: 600;
+
+  @media (max-width: 320px) {
+    font-size: 32px;
+    margin-top: -$spacing-lg;
+    padding: 0 0 24px;
+  }
+}
+
+.error {
+  text-align: center;
+  padding: $spacing-7xl $spacing-xl;
+
+  h2 {
+    font-size: $font-size-3xl;
+    color: $red;
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    color: $gray-secondary;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .button {
+    background: $primary;
+    color: $secondary;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

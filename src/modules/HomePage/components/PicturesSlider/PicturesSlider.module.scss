@@ -1,0 +1,251 @@
+@import '../../../../utils/style/main';
+
+.slider {
+  margin-bottom: $spacing-7xl;
+}
+
+.slider__mainLayout {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.swiperContainer {
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.slider__slide {
+  display: block;
+  aspect-ratio: 1040 / 400;
+  background-color: #000;
+  position: relative;
+}
+
+.slider__layout {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.slider__contentBox {
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-3xl;
+  background-color: #333333ac;
+  border-radius: 24px;
+}
+
+.slider__description {
+  @include font-mont($font-size-4xl, $font-weight-bold);
+
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+}
+
+.slider__gradientText {
+  background: linear-gradient(90deg, #905bff, #f1f2f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.slider__subtitle {
+  @include font-mont($font-size-md, $font-weight-regular);
+
+  color: $gray-secondary;
+  margin-bottom: $spacing-4xl;
+}
+
+.slider__ctaButton {
+  @include button-secondary;
+
+  background-color: #333333ac;
+  border: 1px solid $icons;
+  padding: $spacing-md $spacing-3xl;
+  width: fit-content;
+  border-radius: 20px;
+
+  &:hover {
+    border-color: $secondary;
+  }
+}
+
+.slider__imageArea {
+  flex-basis: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.slider__title {
+  @include font-mont($font-size-4xl, $font-weight-bold);
+
+  color: $white;
+  text-align: center;
+}
+
+.slider__imageSubtitle {
+  @include font-mont($font-size-md, $font-weight-regular);
+
+  color: $gray-secondary;
+  text-align: center;
+}
+
+.slider__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  align-self: center;
+}
+
+.slider__mobileDescription {
+  display: none;
+}
+
+.slider__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+
+  height: auto;
+  background-color: $elements;
+
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 10;
+
+  @include smooth-transition;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  img {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.slider__pagination {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-lg;
+}
+
+#{':global(.swiper-pagination-bullet)'} {
+  width: 16px;
+  height: 4px;
+  background: $elements;
+  opacity: 1;
+  border-radius: 0;
+
+  @include smooth-transition;
+
+  &:hover {
+    background: $icons;
+  }
+}
+
+#{':global(.swiper-pagination-bullet-active)'} {
+  background: $secondary;
+}
+
+// --- Responsiveness ---
+
+@media (max-width: $desktop-md) {
+  .slider__layout {
+    inset: 16px;
+    gap: 12px;
+  }
+
+  .slider__contentBox {
+    padding: $spacing-2xl;
+  }
+
+  .slider__description,
+  .slider__title {
+    font-size: $font-size-2xl;
+  }
+
+  .slider__subtitle,
+  .slider__imageSubtitle {
+    font-size: $font-size-sm;
+  }
+
+  .slider__ctaButton {
+    padding: $spacing-sm $spacing-2xl;
+  }
+}
+
+@media (max-width: #{$tablet - 1px}) {
+  .slider__slide {
+    aspect-ratio: 1 / 1;
+  }
+
+  @include mobile-range {
+    .slider {
+      margin-left: -$spacing-lg;
+      margin-right: -$spacing-lg;
+      width: calc(100% + #{$spacing-lg * 2});
+    }
+
+    .slider__slide {
+      border-radius: 0;
+    }
+  }
+
+  .slider__layout {
+    inset: 0;
+  }
+
+  .slider__contentBox {
+    display: none;
+  }
+
+  .slider__mobileDescription {
+    display: block;
+    text-align: center;
+
+    @include font-mont($font-size-3xl, $font-weight-bold);
+
+    line-height: 1.2;
+  }
+
+  .slider__imageArea {
+    flex-basis: 100%;
+    padding: $spacing-3xl $spacing-lg;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slider__title {
+    font-size: $font-size-3xl;
+  }
+
+  .slider__imageSubtitle {
+    font-size: $font-size-base;
+  }
+
+  .slider__image {
+    width: 85%;
+  }
+
+  .slider__button {
+    display: none;
+  }
+
+  .slider__mainLayout {
+    gap: 0;
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../../../utils/style/main';
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: $z-index-modal;
+
+  @include flex-center;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    position: relative;
+    background: $surface1;
+    border: 1px solid $elements;
+    padding: $spacing-4xl;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+
+  &__title {
+    @include font-mont($font-size-3xl, $font-weight-bold);
+
+    color: $secondary;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__message {
+    @include font-mont($font-size-lg);
+
+    color: $gray-secondary;
+    line-height: 1.5;
+    margin-bottom: $spacing-4xl;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-lg;
+  }
+
+  &__button_secondary {
+    @include button-secondary;
+
+    flex: 1;
+  }
+
+  &__button_primary {
+    @include button-primary;
+
+    flex: 1;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../utils/style/main';
+
+.loader {
+  @include flex-column-center;
+
+  padding: $spacing-4xl;
+
+  &__spinner {
+    @include loading-spinner($spacing-4xl, $gray-primary);
+  }
+
+  &__text {
+    margin-top: $spacing-lg;
+    color: $gray-secondary;
+    font-size: $spacing-lg;
+  }
+}

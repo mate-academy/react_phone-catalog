@@ -1,0 +1,91 @@
+@import '../../../../utils/style/main';
+
+.gallery {
+  display: flex;
+  gap: $spacing-lg;
+  align-items: center;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    max-width: 100%;
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    flex-shrink: 0;
+
+    @include mobile {
+      flex-direction: row;
+      overflow-x: auto;
+      flex-shrink: 1;
+      gap: $spacing-sm;
+    }
+  }
+
+  &__thumbnail {
+    width: 80px;
+    height: 80px;
+    border: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    @include smooth-transition;
+    @include flex-center;
+
+    &:hover {
+      border-color: $elements;
+    }
+
+    &_active {
+      border-color: $primary;
+      box-shadow: 0 2px 32px $primary;
+    }
+
+    @include mobile {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 442px;
+
+    @include mobile {
+      min-height: 288px;
+    }
+  }
+
+  &__mainImage {
+    max-width: 100%;
+    max-height: 464px;
+    object-fit: contain;
+  }
+
+  &__placeholder {
+    @include flex-center;
+
+    min-height: 400px;
+    color: $gray-secondary;
+    background: $surface2;
+  }
+
+  &__loading {
+    @include flex-center;
+
+    min-height: 400px;
+    color: $gray-secondary;
+  }
+}

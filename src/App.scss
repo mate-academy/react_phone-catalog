@@ -1,1 +1,74 @@
-// not empty
+@import './utils/style/main';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-mont;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.App {
+  min-height: 100vh;
+
+  @include flex-column;
+
+  background-color: $surface1;
+  color: $secondary;
+
+  &__main {
+    flex: 1;
+    padding-top: 0;
+
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+
+    @media (min-width: 768px) {
+      padding-left: $spacing-3xl;
+      padding-right: $spacing-3xl;
+    }
+
+    @media (min-width: 1200px) and (max-width: 1224px) {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+
+    @media (min-width: 1200px) {
+      padding-left: $spacing-6xl;
+      padding-right: $spacing-6xl;
+    }
+
+    @media (min-width: 1400px) {
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+
+    @media (min-width: 1600px) {
+      padding-left: 160px;
+      padding-right: 160px;
+    }
+
+    @media (min-width: 1920px) {
+      padding-left: 200px;
+      padding-right: 200px;
+    }
+  }
+}

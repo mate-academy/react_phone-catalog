@@ -1,0 +1,257 @@
+// Smooth transitions
+@mixin smooth-transition(
+  $properties: all,
+  $duration: $transition-normal,
+  $timing: ease
+) {
+  transition: $properties $duration $timing;
+}
+
+// Specific range mixin
+@mixin mobile-range($min: 320px, $max: 639px) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Typography mixins
+@mixin font-mont($size: $font-size-base, $weight: $font-weight-regular) {
+  font-family: $font-mont;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin text-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+  }
+}
+
+// Button mixins
+@mixin button-base {
+  @include font-mont($font-size-md, $font-weight-semibold);
+
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include smooth-transition;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+
+  background: $primary;
+  color: $secondary;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: $purple-hover;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+
+  background: $elements;
+  color: $secondary;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: $icons;
+  }
+}
+
+// Card mixins
+@mixin card-base {
+  background: $surface2;
+
+  @include smooth-transition;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Icon button mixin
+@mixin icon-button($size: 40px) {
+  width: $size;
+  height: $size;
+  border: 1px solid $gray-elements;
+  background: $elements;
+  cursor: pointer;
+
+  @include flex-center;
+  @include smooth-transition;
+
+  &:hover {
+    background: $icons;
+  }
+}
+
+// Responsive mixins
+@mixin mobile {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) and (max-width: #{$desktop-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-md) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $desktop-md) {
+    @content;
+  }
+}
+
+// Container mixin
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-mobile;
+  width: 100%;
+
+  @include tablet-up {
+    padding: 0 $container-padding-tablet;
+  }
+
+  @include desktop-up {
+    padding: 0 $container-padding-desktop;
+  }
+}
+
+// Visually hidden
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// Image hover effect
+@mixin image-hover-scale($scale: 1.1) {
+  @include smooth-transition(transform);
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Loading spinner
+@mixin loading-spinner($size: 40px, $color: $primary) {
+  width: $size;
+  height: $size;
+  border: 4px solid rgba($color, 0.1);
+  border-top: 4px solid $color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Scrollbar styles
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $surface2;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $elements;
+    border-radius: 4px;
+
+    &:hover {
+      background: $icons;
+    }
+  }
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $elements $surface2;
+}

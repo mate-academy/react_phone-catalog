@@ -1,0 +1,124 @@
+@import '../../../../utils/style/main';
+
+.footer {
+  border-top: 1px solid $elements;
+  padding: $spacing-3xl 0;
+  background: $surface1;
+
+  &__container {
+    margin: 0 auto;
+    padding: 0 clamp(16px, 8%, 140px);
+
+    @include flex-between;
+
+    width: 100%;
+
+    @media (max-width: #{$tablet - 1px}) {
+      @include flex-column;
+
+      align-items: flex-start;
+      gap: $spacing-2xl;
+      padding: 0 $spacing-2xl;
+    }
+
+    @media (max-width: #{$mobile - 1px}) {
+      padding: 0 $spacing-lg;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__logo {
+    @include flex-column;
+
+    align-items: flex-start;
+
+    @media (max-width: #{$tablet - 1px}) {
+      order: 1;
+      align-items: flex-start;
+    }
+  }
+
+  &__logoImage {
+    height: $spacing-3xl;
+    margin-bottom: $spacing-sm;
+
+    @include smooth-transition(transform);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: #{$tablet - 1px}) {
+      height: 28px;
+    }
+  }
+
+  &__logoText {
+    @include font-mont($spacing-xl, $font-weight-extra-bold);
+
+    color: $secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    @media (max-width: #{$tablet - 1px}) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__nav {
+    display: flex;
+
+    gap: 140px;
+
+    @media (min-width: $tablet) and (max-width: #{$desktop-lg - 1px}) {
+      gap: 13px;
+    }
+
+    @media (max-width: #{$tablet - 1px}) {
+      order: 2;
+
+      @include flex-column;
+
+      align-items: flex-start;
+      gap: $spacing-lg;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    color: $secondary;
+    text-decoration: none;
+    font-size: $spacing-lg;
+    font-weight: $font-weight-bold;
+
+    @include smooth-transition(transform);
+    @include smooth-transition(color);
+
+    text-transform: uppercase;
+
+    &:hover {
+      color: $primary;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: #{$tablet - 1px}) {
+      font-size: $font-size-md;
+      padding: $spacing-sm 0;
+    }
+  }
+
+  &__backToTopWrapper {
+    @include flex-center;
+
+    @media (max-width: #{$tablet - 1px}) {
+      order: 3;
+      width: 100%;
+    }
+  }
+
+  &__backToTopText {
+    color: $icons;
+    padding-right: 16px;
+    font-weight: $font-weight-bold;
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../utils/style/main';
+
+.phonesPage {
+  padding: $spacing-4xl 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  h1 {
+    @include font-mont($font-size-4xl, $font-weight-bold);
+
+    color: $secondary;
+    margin-bottom: 0 0 8px;
+    display: flex;
+  }
+
+  p {
+    color: $gray-secondary;
+    margin-bottom: $spacing-4xl;
+  }
+}
+
+.error {
+  @include flex-column-center;
+
+  min-height: 400px;
+  text-align: center;
+
+  h2 {
+    color: $red;
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    color: $gray-secondary;
+    margin-bottom: $spacing-2xl;
+  }
+
+  button {
+    @include button-primary;
+  }
+}

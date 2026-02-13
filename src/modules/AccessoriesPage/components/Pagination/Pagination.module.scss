@@ -1,0 +1,58 @@
+@import '../../../../utils/style/main';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-4xl;
+
+  &__button {
+    @include icon-button(32px);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    img {
+      width: $spacing-lg;
+      height: $spacing-lg;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__page {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    background: transparent;
+    color: $secondary;
+
+    @include font-mont($font-size-sm, $font-weight-semibold);
+
+    cursor: pointer;
+
+    @include smooth-transition;
+
+    &:hover:not(&_active) {
+      background: $elements;
+    }
+
+    &_active {
+      background: $primary;
+      border-color: $primary;
+      color: $white;
+    }
+  }
+
+  &__dots {
+    color: $gray-secondary;
+    padding: 0 $spacing-sm;
+  }
+}

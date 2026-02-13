@@ -1,0 +1,68 @@
+@import '../../../../utils/style/main';
+
+.breadcrumbs {
+  margin-bottom: $spacing-3xl;
+  display: flex;
+  gap: 5px;
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    background: none;
+    border: none;
+    color: $secondary;
+
+    @include font-mont($font-size-base, $font-weight-semibold);
+
+    cursor: pointer;
+    margin-bottom: $spacing-lg;
+
+    @include smooth-transition;
+
+    &:hover {
+      color: $primary;
+    }
+
+    img {
+      width: $spacing-xl;
+      height: $spacing-xl;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  &__link {
+    color: $secondary;
+    text-decoration: none;
+
+    img {
+      width: $spacing-xl;
+      height: $spacing-xl;
+    }
+
+    @include smooth-transition;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__separator {
+    color: $gray-secondary;
+
+    img {
+      width: $spacing-xl;
+      height: $spacing-xl;
+    }
+  }
+
+  &__current {
+    color: $gray-secondary;
+  }
+}

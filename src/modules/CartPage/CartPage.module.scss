@@ -1,0 +1,72 @@
+@import '../../utils/style/main';
+
+.cartPage {
+  padding: $spacing-4xl 0;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #f1f2f9;
+    margin-bottom: $spacing-3xl;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4xl;
+
+    @include desktop {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: $spacing-5xl;
+    }
+  }
+
+  &__items {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__summary {
+    border: 1px solid $elements;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    @include desktop {
+      flex: 1;
+      min-width: 340px;
+      align-self: flex-start;
+      margin-top: 0;
+    }
+  }
+
+  &__empty {
+    @include flex-column-center;
+
+    min-height: 400px;
+    text-align: center;
+  }
+
+  &__emptyImage {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: $spacing-2xl;
+    opacity: 0.6;
+  }
+
+  &__emptyText {
+    color: $gray-secondary;
+  }
+}

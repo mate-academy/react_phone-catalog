@@ -1,0 +1,113 @@
+@import '../../../../utils/style/main';
+
+.productsSlider {
+  margin-bottom: $spacing-7xl;
+  position: relative;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__title {
+    @include font-mont($font-size-4xl, $font-weight-bold);
+
+    color: $secondary;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: $spacing-lg;
+  }
+
+  &__navButton {
+    @include icon-button(32px);
+
+    transition: all $transition-normal ease;
+    border: none;
+
+    &:hover {
+      background: $icons;
+    }
+
+    &_disabled {
+      background: $surface1;
+      border: 1px solid $gray-border;
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &:hover {
+        background: $surface1;
+        border-color: $gray-border;
+      }
+    }
+
+    img {
+      width: $spacing-lg;
+      height: $spacing-lg;
+    }
+  }
+
+  &__container {
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    user-select: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: $spacing-lg;
+    width: 100%;
+    transition: transform $transition-slow cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    touch-action: pan-y;
+  }
+
+  &__slide {
+    flex: 0 0 calc(25% - #{$spacing-lg * 0.75});
+    width: calc(25% - #{$spacing-lg * 0.75});
+    min-width: 272px;
+    height: 506px;
+    transform-origin: center center;
+    transition:
+      transform $transition-normal ease,
+      opacity $transition-fast ease;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+
+    &:not(.active) {
+      transform: scale(0.95);
+    }
+
+    @include desktop {
+      &:nth-child(n + 5) {
+        display: block;
+      }
+
+      @media (min-width: 1200px) and (max-width: 1224px) {
+        flex: 0 0 calc(25% - 12px);
+        width: calc(25% - 12px);
+      }
+    }
+  }
+}
+
+@media (max-width: #{$tablet - 1px}) {
+  .productsSlider {
+    &__container {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}

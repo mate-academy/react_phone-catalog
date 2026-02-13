@@ -1,0 +1,24 @@
+@import '../../utils/style/main';
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: $spacing-4xl $spacing-lg;
+
+  @include tablet-up {
+    grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.empty {
+  @include flex-center;
+
+  min-height: 200px;
+  color: $gray-secondary;
+  font-size: $font-size-lg;
+}

@@ -1,0 +1,41 @@
+@import '../../utils/style/main';
+
+.search {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  color: $gray-secondary;
+  margin-bottom: $spacing-4xl;
+
+  &__input {
+    width: 100%;
+    padding: $spacing-md $spacing-4xl $spacing-md $spacing-lg;
+    border: 1px solid $elements;
+    background: transparent;
+    color: $secondary;
+    font-size: $font-size-md;
+
+    @include smooth-transition;
+
+    &::placeholder {
+      color: $gray-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: $spacing-lg;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $spacing-lg;
+    height: $spacing-lg;
+    pointer-events: none;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(200%)
+      hue-rotate(200deg) brightness(90%) contrast(90%);
+  }
+}

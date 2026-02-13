@@ -1,0 +1,151 @@
+@import '../../utils/style/main';
+
+.productCard {
+  @include card-base;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  box-sizing: border-box;
+  transition: all $transition-normal ease;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 2px 32px $primary;
+  }
+
+  &__link {
+    text-decoration: none;
+    padding: $spacing-3xl;
+    color: inherit;
+    display: block;
+  }
+
+  &__imageContainer {
+    position: relative;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+    height: 196px;
+
+    @include flex-center;
+  }
+
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+
+    @include smooth-transition(transform);
+
+    .productCard:hover & {
+      transform: scale(1.02);
+    }
+  }
+
+  &__info {
+    @include flex-column;
+
+    height: calc(100% - 212px);
+  }
+
+  &__title {
+    @include font-mont($font-size-md, $font-weight-medium);
+
+    line-height: 1.4;
+    margin-bottom: $spacing-sm;
+    color: $secondary;
+
+    height: 60px;
+    min-height: 60px;
+    flex-shrink: 0;
+
+    @include text-ellipsis(3);
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: $spacing-sm;
+    border-bottom: solid 2px #3b3e4a;
+  }
+
+  &__price {
+    @include font-mont($font-size-xl, $font-weight-bold);
+
+    color: $white;
+  }
+
+  &__fullPrice {
+    @include font-mont($font-size-xl);
+
+    padding: 0 $spacing-xl;
+    color: $icons;
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    margin-top: $spacing-sm;
+    margin-bottom: $spacing-sm;
+    flex: 1;
+  }
+
+  &__spec {
+    @include flex-between;
+
+    margin-bottom: $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__specName {
+    @include font-mont($font-size-base);
+
+    color: $gray-secondary;
+  }
+
+  &__specValue {
+    @include font-mont($font-size-base, $font-weight-medium);
+
+    color: $white;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__cartBtn {
+    flex: 1;
+
+    @include button-primary;
+
+    &_added {
+      background: $elements;
+
+      &:hover {
+        background: $purple-hover;
+      }
+    }
+  }
+
+  &__favoriteBtn {
+    @include icon-button;
+
+    border: none;
+
+    &_active {
+      border: 1px solid $icons;
+      background: transparent;
+    }
+  }
+
+  &__favoriteIcon {
+    width: $spacing-lg;
+    height: $spacing-lg;
+  }
+}

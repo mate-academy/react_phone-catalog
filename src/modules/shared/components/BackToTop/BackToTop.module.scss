@@ -1,0 +1,60 @@
+@import '../../../../utils/style/main';
+
+.backToTop {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #3b3e4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $surface2;
+    border-color: $elements;
+  }
+
+  &_visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__text {
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    width: $spacing-lg;
+    height: $spacing-lg;
+
+    @include flex-center;
+  }
+
+  &__arrowIcon {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+
+    @include smooth-transition(transform);
+  }
+
+  &:hover &__arrowIcon {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: $tablet-lg) {
+    padding: 6px $spacing-md;
+    font-size: $font-size-base;
+
+    &__arrow {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
