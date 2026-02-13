@@ -1,0 +1,154 @@
+@import '../../../styles/main';
+
+.burger-menu {
+  display: flex;
+  position: relative;
+  z-index: 300;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 330;
+  }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    transition: right 0.3s;
+    z-index: 310;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+
+    &--open {
+      right: 0;
+      z-index: 320;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 56px;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 24px;
+    color: var(--color-gray-secondary);
+    font-family: Mont-Bold, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 26px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.2s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: var(--color-gray-primary);
+      border-radius: 2px;
+      transition: height 0.3s;
+    }
+
+    &:hover,
+    &.active {
+      color: var(--color-gray-primary);
+    }
+
+    &:hover::after,
+    &.active::after {
+      height: 2px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-gray-elements);
+    z-index: 306;
+  }
+
+  &__icon {
+    flex: 1;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: -1px 0 0 0 var(--color-gray-elements);
+    background-color: var(--color-bg);
+    cursor: pointer;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: var(--color-gray-primary);
+      transition: height 0.3s;
+    }
+
+    &:hover::after {
+      height: 3px;
+    }
+
+    &:hover {
+      background-color: var(--color-hover);
+    }
+  }
+
+  &__icon-wrapper {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.04);
+    z-index: 305;
+  }
+}
