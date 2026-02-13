@@ -1,0 +1,97 @@
+@import '../../../styles/main';
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+
+ &__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 24px 16px;
+  padding: 0;
+
+  list-style-type: none;
+ }
+
+ &__item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 27px;
+ }
+
+ &__link {
+  @include text-uppercase;
+
+  color: $color-text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-text-main;
+  }
+
+  &--active {
+    color: $color-text-main;
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+
+      display: block;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: $color-text-main;
+    }
+  }
+ }
+
+  &__icons {
+    position:fixed;
+    bottom: 0;
+
+    display: flex;
+
+    width: 100%;
+    border-top: 1px solid $color-element;
+  }
+
+  &__icon {
+    position: relative;
+
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    height: 64px;
+
+    &:not(:last-child) {
+      border-right: 1px solid $color-element;
+    }
+
+    &--active::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+
+      display: block;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: $color-text-main;
+    }
+  }
+}

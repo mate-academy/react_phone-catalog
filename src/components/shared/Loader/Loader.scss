@@ -1,0 +1,57 @@
+@import '../../../styles/main';
+
+.loader {
+  --height: 24px;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  @include on-desktop {
+    --height: 40px;
+  }
+
+  &__logo {
+    height: var(--height);
+  }
+
+  &__spinner {
+      position: relative;
+
+      display: inline-block;
+
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      border: 3px solid $color-text-main;
+      border-radius: 50%;
+
+      animation: rotation 1s linear infinite;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, 50%);
+
+      box-sizing: border-box;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+
+      background: $color-accent;
+    }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

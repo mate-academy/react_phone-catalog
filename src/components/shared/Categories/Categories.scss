@@ -1,0 +1,56 @@
+@import '../../../styles/main';
+
+.categories {
+
+  &__title {
+    @include title-2;
+
+    margin: 0 0 24px;
+    color: $color-text-main;
+  }
+
+  &__container {
+    @include page-grid;
+
+    gap: 32px;
+  }
+}
+
+.category {
+  display: grid;
+  grid-column: 1 / -1;
+  text-decoration: none;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    transition: transform $animation-timing $animation-rule;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    @include title-4;
+
+    margin: 24px 0 0;
+    color: $color-text-main;
+  }
+
+  &__text {
+    @include text-normal;
+
+    margin: 4px 0 0;
+    color: $color-text-secondary;
+  }
+}

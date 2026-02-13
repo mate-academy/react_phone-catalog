@@ -1,0 +1,17 @@
+@import '../../../styles/main';
+
+.button-back {
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    color: $color-text-secondary;
+    letter-spacing: normal;
+  }
+}
