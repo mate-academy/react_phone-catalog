@@ -1,13 +1,71 @@
 @import 'colors';
 
- .home {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        text-align: center;
-        margin-top: 50px;
+.home {
+    width: 100%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
     
-        &_title {
-            font-size: 48px;
-            margin-bottom: 20px;
+    &_title {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: $primary;
+    }
+
+    &_products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+}
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+    gap: 20px;
+
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $icons;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $primary;
+    }
+
+    .slider_item {
+        flex: 0 0 auto;
+        width: 200px;
+        background-color: $white;
+        border: 1px solid $icons;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: left;
+
+        &_name {
+            font-size: 18px;
+            font-weight: bold;
             color: $primary;
+            margin-bottom: 5px;
         }
- }
+
+        &_price {
+            font-size: 16px;
+            color: $icons;
+        }
+    }
+
+    &_image {
+            width: 1040px;
+            height: 400px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+    }
+}
+

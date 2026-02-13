@@ -1,9 +1,10 @@
+import { Home } from './Home';
 import { List } from './List';
 
 
-export const Body = ({ product }: { product: any }) => (
+export const Body = ({ product, phones }: { product: any }) => (
   <main className="body">
-    <h1>Welcome to Nice Gadgets Store!</h1>
-    <List products={ product } />
+    <Home products={ product } phones={phones}/>
+  {/*  <List products={ product } />*/}
   </main>
 );
