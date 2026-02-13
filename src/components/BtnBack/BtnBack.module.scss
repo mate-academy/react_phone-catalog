@@ -1,0 +1,19 @@
+.text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #89939A;
+  display: inline-block;
+  margin-left: 8px;
+  margin-bottom: 15px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+:global(html.dark) .back > svg {
+  fill: #F1F2F9;
+}

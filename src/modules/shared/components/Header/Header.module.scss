@@ -1,0 +1,55 @@
+@import '../../../../modules/shared/styles/mixins';
+
+.header {
+  position: fixed;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding-left: 24px;
+  background-color: var(--background-color);
+  width: 100%;
+
+  border-bottom: 1px solid var(--head-border-color);
+
+  @include on-tablet{
+    height: 48px;
+    padding-left: 16px;
+  }
+}
+
+.logo {
+  margin-right: 48px;
+
+  @include on-tablet{
+    margin-right: 34px;
+  }
+}
+
+:global(html.dark) .logo {
+  content: url(../../../../assets/images/LogoDark.png);
+}
+
+@include on-phone {
+  .menu {
+    position: fixed;
+    height: 100vh;
+    top: 48px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 100;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(100%);
+
+    &Active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+
+
