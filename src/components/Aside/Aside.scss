@@ -1,0 +1,424 @@
+$timeAnimation: 0.3s ease;
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100%;
+  background-color: rgba(15, 17, 33, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: all $timeAnimation;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(59, 62, 74, 1);
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  &__logo {
+    transition: all $timeAnimation;
+    padding-left: 16px;
+    opacity: 0;
+    transform: translateX(-20px);
+
+    img {
+      width: 64px;
+      height: 20px;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+      filter: brightness(1.2);
+    }
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    transition: all $timeAnimation;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid rgba(59, 62, 74, 1);
+    border-right: 1px solid rgba(59, 62, 74, 1);
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+
+    &:hover {
+      background-color: rgba(235, 87, 87, 0.1);
+      transform: rotate(90deg) scale(1.1);
+    }
+  }
+
+  // Base svg styles - ordered by specificity (lowest to highest)
+  svg {
+    transition: all 0.3s ease;
+  }
+
+  &__close svg {
+    color: rgba(241, 242, 249, 1);
+    width: 9px;
+    height: 9px;
+    transition: all 0.3s ease;
+  }
+
+  &__like svg {
+    transition: all 0.3s ease;
+  }
+
+  &__shop svg {
+    transition: all 0.3s ease;
+  }
+
+  // Hover states - highest specificity last
+  &__close svg:hover {
+    transform: scale(1.2);
+    color: rgba(235, 87, 87, 1);
+  }
+
+  &__main {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__navs-link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(117, 118, 127, 1);
+    transition: all $timeAnimation;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+
+    &:hover {
+      transform: scale(1.1) translateY(-2px);
+      color: rgba(241, 242, 249, 1);
+      text-shadow: 0 0 10px rgba(241, 242, 249, 0.5);
+
+      &::after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 100%;
+        left: 0;
+        bottom: -8px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(241, 242, 249, 1),
+          transparent
+        );
+        animation: shimmer 0.5s ease-out;
+      }
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    border-top: 1px solid rgba(59, 62, 74, 1);
+    margin-top: auto;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  &__like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    border-right: 1px solid rgba(59, 62, 74, 1);
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(241, 242, 249, 0.05);
+      transform: translateY(-2px);
+
+      &::after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 100%;
+        left: 0;
+        bottom: 2px;
+        background-color: rgba(241, 242, 249, 1);
+        animation: expand-width 0.3s ease-out;
+      }
+
+      svg {
+        transform: scale(1.2);
+        color: rgba(235, 87, 87, 1);
+      }
+    }
+  }
+
+  &__like-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    width: 14px;
+    height: 14px;
+    background-color: rgba(235, 87, 87, 1);
+    color: rgba(241, 242, 249, 1);
+    border-radius: 50%;
+    top: 28%;
+    left: 50%;
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0 2px 8px rgba(235, 87, 87, 0.4);
+
+    @media (min-width: 640px) {
+      top: 22%;
+      left: 48%;
+    }
+
+    @media (min-width: 1200px) {
+      top: 28%;
+      left: 50%;
+    }
+  }
+
+  &__shop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(241, 242, 249, 0.05);
+      transform: translateY(-2px);
+
+      &::after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 100%;
+        left: 0;
+        bottom: 2px;
+        background-color: rgba(241, 242, 249, 1);
+        animation: expand-width 0.3s ease-out;
+      }
+
+      svg {
+        transform: scale(1.2);
+        color: rgba(144, 91, 255, 1);
+      }
+    }
+  }
+
+  &__shop-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    width: 14px;
+    height: 14px;
+    background-color: rgba(235, 87, 87, 1);
+    color: rgba(241, 242, 249, 1);
+    border-radius: 50%;
+    top: 28%;
+    left: 50%;
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0 2px 8px rgba(235, 87, 87, 0.4);
+
+    @media (min-width: 640px) {
+      top: 22%;
+      left: 48%;
+    }
+
+    @media (min-width: 1200px) {
+      top: 28%;
+      left: 50%;
+    }
+  }
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+
+    .menu__nav {
+      animation: slide-in-down 0.4s ease-out 0.1s both;
+    }
+
+    .menu__logo {
+      animation: fade-in-left 0.5s ease-out 0.3s both;
+    }
+
+    .menu__close {
+      animation: rotate-in 0.5s ease-out 0.2s both;
+    }
+
+    .menu__navs-link {
+      animation: fade-in-up 0.4s ease-out both;
+
+      &:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+      &:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      &:nth-child(5) {
+        animation-delay: 0.9s;
+      }
+    }
+
+    .menu__footer {
+      animation: slide-in-up 0.5s ease-out 1s both;
+    }
+
+    .menu__like-notification,
+    .menu__shop-notification {
+      animation:
+        bounceIn 0.6s ease-out 1.2s both,
+        pulse 2s ease-in-out 1.8s infinite;
+    }
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(235, 87, 87, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(235, 87, 87, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes expand-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
