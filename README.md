@@ -12,6 +12,10 @@ You may also implement color theme switching!
 
 ## If you work in a team
 
+958689
+
+
+
 Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
 ## Project Setup from scratch
@@ -141,3 +145,7 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
 2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
 3. Add `debounce` to the search field.
+
+## GitHub Link (https://github.com/Beliyandr/react_phone-catalog)
+
+## Demo (https://beliyandr.github.io/react_phone-catalog/)

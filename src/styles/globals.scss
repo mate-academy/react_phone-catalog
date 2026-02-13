@@ -1,0 +1,75 @@
+body {
+  font-family: var(--font-family-main);
+  font-size: var(--base-font-size);
+  font-weight: 600;
+  background-color: var(--color-hoverbg);
+  color: var(--color-primary);
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-width);
+  padding-inline: var(--container-padding-x);
+  margin: 0 auto;
+
+  @include tablet-above {
+    --container-padding-x: 24px;
+
+  }
+
+  @include desktop-above {
+    --container-padding-x: 32px;
+
+  }
+}
+
+
+.h1 {
+  font-size: 32px;
+  margin-top: 0;
+  height: var(--header-height);
+  opacity: 0;
+  visibility: 'hidden';
+
+}
+
+.h2 {
+  font-size: rem(32);
+  line-height: 1;
+  letter-spacing: -1px;
+
+}
+
+.h3 {
+  font-size: rem(28);
+  line-height: 1.2;
+
+}
+
+.h4 {
+  font-size: rem(24);
+  line-height: 1.25;
+}
+
+
+.button {}
+
+.App {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+
+  &-wrapper {
+
+    padding-block: 32px 64px;
+
+    @include tablet-above {
+      padding-block: 56px 80px;
+    }
+  }
+
+}
