@@ -9,7 +9,7 @@ const initialStates = {
   isMenuOpen: false,
   isReady: false,
   totalCartItems: 0,
-  selectedProduct: undefined as ProductSpecs | undefined,
+  selectedProduct: undefined as Product | undefined,
 };
 
 type Action =

@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import { colors } from '../../utils/colors';
 
@@ -7,31 +7,31 @@ import { ProductSpecs } from '../../types/ProductSpecs';
 import { Product } from '../../types/Product';
 import { getProductDetails } from '../../api/products';
 
-import { StatesContext } from '../../base/store/GlobalStateProvider';
 import { Line } from '../../base/Line/Line';
 import { Price } from '../../base/Price/Price';
 import { CardButtons } from '../../base/CardButton/CardButton';
 import { SpecsMini } from '../../base/SpecsMini/SpecsMini';
+
 import './ProductMain.scss';
 
 export const ProductDetailsMain: React.FC = () => {
-  const { selectedProduct } = useContext(StatesContext);
   const navigate = useNavigate();
+  const { category, productId } = useParams();
 
   const [details, setDetails] = useState<ProductSpecs | null>(null);
 
   useEffect(() => {
-    if (!selectedProduct) {
+    if (!productId) {
       return;
     }
 
-    getProductDetails(selectedProduct.id).then((data: ProductSpecs) => {
+    getProductDetails(productId, category).then((data: ProductSpecs) => {
       setDetails(data);
     });
-  }, [selectedProduct]);
+  }, [productId, category]);
 
-  if (!selectedProduct) {
-    return <div>No selected product</div>;
+  if (!productId) {
+    return <div>No product found</div>;
   }
 
   if (!details) {
@@ -45,21 +45,15 @@ export const ProductDetailsMain: React.FC = () => {
     const color = newColor || details.color;
     const capacity = newCapacity || details.capacity;
 
-    // Pega tudo antes da capacidade e cor atuais
-    const parts = details.id.split('-');
+    const newId = `${details.namespaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
 
-    // Remove os dois últimos pedaços (capacidade e cor)
-    const baseId = parts.slice(0, parts.length - 2).join('-');
-
-    const newId = `${baseId}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
-
-    navigate(`/${selectedProduct.categoryId}/${newId}`);
+    navigate(`/${category}/${newId}`);
   };
 
   const productForComponents: Product = {
     id: details.id,
     name: details.name,
-    categoryId: selectedProduct.categoryId || 'phones',
+    categoryId: details.category,
     fullPrice: details.priceRegular,
     price: details.priceDiscount,
     discountPrice: details.priceDiscount,
@@ -79,17 +73,16 @@ export const ProductDetailsMain: React.FC = () => {
             </span>
 
             <div className="productDetailsMain__colors-button-container">
-              {availableColors.map((colorName, i) => {
+              {availableColors.map(colorName => {
                 const colorHex = colors[colorName.toLowerCase()];
 
                 return (
                   <button
+                    key={colorName}
                     className={cn('productDetailsMain__colors-button-bg', {
                       'productDetailsMain__colors-button-bg--selected':
-                        colorName.toLowerCase() ===
-                        details.color?.toLowerCase(),
+                        colorName.toLowerCase() === details.color.toLowerCase(),
                     })}
-                    key={i + colorName}
                     onClick={() => changeProduct(colorName.toLowerCase())}
                   >
                     <div
@@ -114,16 +107,16 @@ export const ProductDetailsMain: React.FC = () => {
             </span>
 
             <div className="productDetailsMain__capacity-container">
-              {capacities.map((c, i) => (
+              {capacities.map(capacity => (
                 <button
-                  key={c + i}
+                  key={capacity}
                   className={cn('productDetailsMain__capacity-button', {
                     'productDetailsMain__capacity-button--selected':
-                      c === details.capacity,
+                      capacity === details.capacity,
                   })}
-                  onClick={() => changeProduct(undefined, c)}
+                  onClick={() => changeProduct(undefined, capacity)}
                 >
-                  {c}
+                  {capacity}
                 </button>
               ))}
             </div>

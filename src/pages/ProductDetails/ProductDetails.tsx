@@ -11,7 +11,7 @@ import {
 import {
   getCategories,
   getProductDetails,
-  getProducts,
+  getSuggestedProducts,
 } from '../../api/products';
 
 import { NavigationPath } from '../../components/Navigation/Navigation';
@@ -43,8 +43,8 @@ export const ProductDetailsPage = () => {
   }, [category]);
 
   useEffect(() => {
-    if (productId) {
-      getProductDetails(productId)
+    if (productId && category) {
+      getProductDetails(productId, category)
         .then(prod => {
           if (prod) {
             const productForContext = {
@@ -83,16 +83,12 @@ export const ProductDetailsPage = () => {
   }, [dispatch, productId, category]);
 
   useEffect(() => {
-    if (selectedProduct) {
-      getProducts().then(prods => {
-        const filtered = prods.filter(
-          p => p.categoryId === selectedProduct.categoryId,
-        );
-
-        setSuggested(filtered);
+    if (productId && category) {
+      getSuggestedProducts(productId, category, 12).then(prods => {
+        setSuggested(prods);
       });
     }
-  }, [selectedProduct]);
+  }, [productId, category]);
 
   if (categoryData && selectedProduct) {
     return (
@@ -116,7 +112,7 @@ export const ProductDetailsPage = () => {
           <ProductDetailsSpecs />
         </div>
 
-        {suggested && (
+        {suggested && suggested.length > 0 && (
           <div className="productDetails-page__suggested">
             <ProductSlider
               title="You may also like"
