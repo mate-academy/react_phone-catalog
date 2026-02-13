@@ -1,0 +1,43 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.container {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.contentSort {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.contentItems {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: rgba(137, 147, 154, 1);
+  letter-spacing: 0%;
+}

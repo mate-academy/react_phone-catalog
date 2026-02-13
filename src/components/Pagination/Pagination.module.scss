@@ -1,0 +1,99 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.pageList {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+/* Переносимо .pageLink сюди, щоб виправити specificity */
+.pageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(49, 50, 55, 1);
+  text-decoration: none;
+
+  transition: all 0.3s;
+}
+
+.pageItemNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(180, 189, 195, 1);
+
+  list-style: none;
+
+  &:hover {
+    border: 1px solid rgba(49, 50, 55, 1);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    border-color: rgba(226, 230, 233, 1);
+    opacity: 0.5;
+  }
+}
+
+.pageItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0;
+  list-style: none;
+
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid rgba(49, 50, 55, 1);
+  }
+
+  &.active {
+    border: none;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(49, 50, 55, 1);
+
+    .pageLink {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.iconArrow {
+  display: block;
+}

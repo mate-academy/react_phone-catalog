@@ -1,0 +1,43 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.navContent {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-left: 8px;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+  padding-top: 2px;
+
+  // background-color: red;
+}
+
+.navImg {
+  display: block;
+  width: auto;
+}
+
+.path {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: rgba(137, 147, 154, 1);
+  text-transform: capitalize;
+  letter-spacing: 0%;
+}
