@@ -1,0 +1,86 @@
+@import '/src/styles/variables';
+
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+    &:hover {
+      #{$property}: $toValue;
+    }
+}
+
+@mixin page-grid {
+  --colums: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 12;
+  }
+
+  @include on-desktop {
+    --colums: 24;
+
+    grid-template-columns: repeat(var(--colums), 32px);
+  }
+}
+
+.container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    padding-inline: 32px;
+    margin-inline: auto;
+  }
+}
+
+@mixin button-style {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+    transition: all 0.2s ease;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+  }
+}

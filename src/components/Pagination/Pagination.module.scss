@@ -1,0 +1,92 @@
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.pagination {
+  grid-column: 1 / -1;
+
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__item {
+    @include font-body;
+
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+    cursor: pointer;
+  }
+
+  &__itemActive {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &__itemDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &__prev,
+  &__next {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: 1px solid $icons-color;
+    background-size: 16px 16px;
+
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-indent: 0;
+    }
+  }
+
+  &__prev {
+    background-image: url('./img/icons/icon-arrow-left.svg');
+    &:not(.pagination__itemDisabled):hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__next {
+    background-image: url('./img/icons/icon-arrow-right.svg');
+    &:not(.pagination__itemDisabled):hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__break {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 4px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+}

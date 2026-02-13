@@ -1,0 +1,68 @@
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.main {
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @include font-h1-mobile;
+
+    margin: 0;
+    margin-top: 24px;
+
+    @include on-tablet {
+      @include font-h1;
+
+      margin-top: 40px;
+    }
+  }
+
+  &__errorTitle {
+    margin: 0 auto;
+    color: $primary-color;
+    display: block;
+
+    @include font-body;
+  }
+
+  &__reloadButton {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: 40px;
+    width: 70px;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    color: $primary-color;
+    text-align: center;
+
+    @include font-buttons;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__count {
+    margin-top: 8px;
+    color: $secondary-color;
+
+    @include font-body;
+  }
+
+  &__content {
+    @include page-grid;
+  }
+
+  &__productsGrid {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+  }
+}
+

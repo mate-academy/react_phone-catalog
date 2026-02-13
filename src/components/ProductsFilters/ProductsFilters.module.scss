@@ -1,0 +1,115 @@
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.filters {
+  grid-column: 1 / -1;
+
+  @include page-grid;
+
+  margin-top: 32px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    grid-column: span 2;
+
+    &--sort {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--per-page {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__label {
+    @include font-small-text;
+
+    color: $secondary-color;
+  }
+}
+
+/* stylelint-disable */
+:global {
+  .rs__control {
+    min-height: 40px;
+    border: 1px solid $icons-color;
+
+    @include font-buttons;
+
+    border-radius: 0 !important;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+  }
+
+  .rs__control--is-focused {
+    border-color: $primary-color !important;
+    box-shadow: none !important;
+  }
+
+  .rs__indicator-separator {
+    display: none;
+  }
+
+  .rs__dropdown-indicator {
+    svg {
+      display: none;
+    }
+
+    width: 40px;
+    height: 100%;
+    background-image: url('/public/img/icons/icon-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    transition: transform 0.3s;
+  }
+
+  .rs__control--is-focused .rs__dropdown-indicator {
+    transform: rotate(180deg);
+  }
+
+  .rs__menu {
+    margin-top: 4px !important;
+    border-radius: 0 !important;
+    box-shadow: 0 2px 15px 0 #0000000D;
+  }
+
+  .rs__option {
+    padding: 6px 12px;
+
+    @include font-body;
+
+    color: $secondary-color !important;
+    background-color: $white-color !important;
+
+    &:hover {
+      color: $primary-color !important;
+      background: $hover-color !important;
+    }
+  }
+
+  .rs__option--is-focused {
+    color: $primary-color;
+    background: #fafbfc;
+  }
+
+  .rs__option--is-selected {
+    background-color: black;
+    color: $primary-color;
+  }
+}
+/* stylelint-enable */
