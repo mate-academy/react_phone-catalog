@@ -1,0 +1,75 @@
+@use './../../styles/variables' as v;
+@use './../../styles/mixins' as mix;
+
+.footer {
+  margin-top: auto;
+  height: 96px;
+  max-width: 1136px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mix.respond-to(mobile) {
+    flex-direction: column;
+    align-items: start;
+    height: 257px;
+    gap: 32px;
+    padding: 32px 0;
+  }
+
+  &__line {
+    border: 0;
+    border-top: 1px solid  v.$colorElements;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 96px;
+
+    @include mix.respond-to(mobile) {
+      bottom: 257px;
+    }
+  }
+  
+  &__logo {
+    width: 80px;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+    @include mix.respond-to(mobile) {
+      flex-direction: column;
+      gap: 16px;
+      align-items: start;
+    }
+  }
+
+  &__linkText {
+    @include mix.uppperCaseText;
+    &:hover {
+      color: v.$colorSecondary;
+    }
+  }
+
+  &__toTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include mix.respond-to(mobile) {
+      align-self: center;
+    }
+  }
+
+  &__text {
+    @include mix.smallText;
+    color:  v.$colorSecondary;
+
+    &:hover {
+      color: v.$colorSecondary;
+    }
+  }
+}

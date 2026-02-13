@@ -1,0 +1,19 @@
+@use './../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.productSlider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: v.$colorWhite;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+}

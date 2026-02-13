@@ -1,0 +1,76 @@
+@use '../../styles/mixins' as mix;
+@use '../../styles/variables' as v;
+
+.productList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  &__grid {
+    --column-count: 4;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), minmax(229px, 288px));
+    gap: 40px;
+    column-gap: 16px;
+    justify-content: center;
+  
+    @media (max-width: 1199px){
+      --column-count: 3;
+    }
+  
+    @media (max-width: 775px){
+      --column-count: 2;
+    }
+  
+    @media (max-width: 500px){
+      --column-count: 1;
+
+      justify-content: center;
+    }
+  
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin-bottom: 80px;
+
+  & a {
+    cursor: pointer;
+
+    display: block;
+
+    @include mix.square(32px);
+    @include mix.bodyText;
+
+    line-height: 32px;
+    text-align: center;
+    color: v.$colorWhite;
+  }
+
+  &__page {
+    background-color: v.$colorSurface1;
+  }
+
+  &__active {
+    background-color: v.$colorAccent;
+  }
+
+  &__next,&__previous{
+    background-color: v.$colorSurface2;
+    background-image: url(./../../assets/images/icons/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 8px;
+  }
+  
+  &__next {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,22 @@
+@use '../../styles/mixins' as mix;
+
+.layout {
+  position: relative;
+
+  &__content {
+    min-height: 100vh;
+    padding: 0 24px;
+    margin: auto;
+    max-width: 1184px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    
+    @include mix.respond-to(mobile) {
+      padding: 0 16px;
+    }
+  }
+
+  
+}

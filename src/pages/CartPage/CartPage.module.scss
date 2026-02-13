@@ -1,0 +1,138 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.cartPage {
+  padding-top: 24px;
+  padding-bottom: 50px;
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-grow: 1.5;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__totalBox {
+    flex-grow: 1;
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    align-items: center;
+    border: 1px solid v.$colorElements;
+  }
+
+  &__totalText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__totalItems {
+    @include mix.bodyText;
+
+    color: v.$colorSecondary;
+  }
+
+  &__line {
+    border: 0;
+    width: 100%;
+    border-top: 1px solid  v.$colorElements;
+  }
+
+  &__button {
+    background-color: v.$colorAccent;
+    color: v.$colorWhite;
+    height: 48px;
+    width: 100%;
+    align-content: center;
+
+    &:hover {
+      background-color: #A378FF;
+      ;
+    }
+  }
+
+}
+
+.cardList {
+  background-color: v.$colorSurface1;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
+
+  &__cross {
+    display: block;
+
+    @include mix.square(16px);
+
+    background-image: url(./../../assets/images/icons/cross.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-image: url(./../../assets/images/icons/crossWhite.svg);
+    }
+  }
+
+  &__img {
+    @include mix.square(80px);
+  
+    object-fit: contain;
+  }
+
+  &__name {
+    @include mix.bodyText;
+  }
+
+  &__controller {
+    display: flex;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    @include mix.square(32px);
+  
+    line-height: 18px;
+    font-size: 18px;
+    color: v.$colorWhite;
+    padding: 8px;
+    text-align: center;
+    background-color: v.$colorSurface2;
+
+    &:hover {
+      background-color: v.$colorIcons;
+    }
+
+    &--disabled {
+      background-color: transparent;
+      border: 1px solid v.$colorElements;
+      color: v.$colorIcons;
+    }
+  }
+
+  &__count {
+    @include mix.square(32px);
+
+    display: block;
+
+    @include mix.bodyText;
+    
+    padding-top: 7px;
+    text-align: center;
+  }
+}
