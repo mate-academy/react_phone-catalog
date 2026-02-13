@@ -1,0 +1,19 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.logo {
+  font-size: 12px;
+  line-height: 0.9;
+  color: $second-perpule;
+  font-weight: 700;
+  img{
+    height: 12px;
+  }
+
+  @include on-desktop{
+    font-size: 14px;
+    img{
+      height: 14px;
+    }
+  }
+}
+

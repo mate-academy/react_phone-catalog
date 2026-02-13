@@ -1,0 +1,32 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+@use 'bulma/sass/form/select';
+
+.sort {
+  grid-column: span 2;
+  margin-bottom: 24px;
+
+  @include on-tablet{
+    grid-column: span 4;
+
+  }
+
+  span{
+    font-size: 12px;
+    line-height: 15px;
+    color: $icons-color;
+    font-weight: 400;
+    display: block;
+  }
+
+  .select {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+
+    &::after {
+      border-color: $secondary-color !important;
+    }
+  }
+}

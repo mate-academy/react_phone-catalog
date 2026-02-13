@@ -1,0 +1,30 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.list{
+  grid-column: 1 / -1;
+  margin-bottom: 24px;
+  row-gap: 40px;
+
+  @include page-grid;
+
+  @include on-tablet{
+    margin-bottom: 40px;
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop{
+      grid-column: span 6;
+    }
+  }
+}
+

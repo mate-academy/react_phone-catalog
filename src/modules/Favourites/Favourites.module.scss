@@ -1,0 +1,57 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.page{
+  padding-bottom: 64px;
+
+  @include page-grid;
+  @include inline-padding;
+
+  @include on-desktop{
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    grid-column: 1 / -1;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $icons-color;
+    margin-bottom: 32px;
+  }
+
+  &__catalog{
+    grid-column: 1 / -1;
+    row-gap: 16px;
+
+    @include page-grid;
+  }
+
+  &__card{
+    grid-column: span 4;
+
+    @media (min-width: 480px) {
+      grid-column: span 2;
+    }
+
+    @include on-tablet{
+      grid-column: span 6;
+    }
+
+    @media (min-width: 767px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop{
+      grid-column: span 6;
+    }
+  }
+}

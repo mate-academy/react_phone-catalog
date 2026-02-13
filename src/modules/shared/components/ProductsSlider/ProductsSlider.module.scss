@@ -1,0 +1,81 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.collection{
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 54px;
+
+  &__title{
+    @include inline-padding;
+    @include h2;
+  }
+
+  &__pagination{
+    flex: 0 0 80px;
+  }
+}
+
+.pagination{
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+
+  @include on-tablet{
+    padding-right: 24px;
+  }
+
+  &__next,
+  &__prev{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements-color;
+    color: $icons-color;
+
+    @include center;
+
+    &_active{
+      border-color: $icons-color;
+      color: $primary-color
+    }
+  }
+}
+
+.slider{
+  flex: 1 1 100%;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include inline-padding;
+
+  @include on-desktop{
+    margin-right: 17px;
+    padding-inline: 16px;
+    margin-inline: 20px;
+  }
+
+  &__container{
+    padding-block: 24px;
+
+  }
+
+  &__track{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 212px;
+    width: 100%;
+    gap: 16px;
+    transition: transform 0.5s ease;
+
+    @include on-tablet{
+      grid-auto-columns: 237px;
+    }
+
+    @include on-desktop{
+      grid-auto-columns: 270px;
+    }
+  }
+}
