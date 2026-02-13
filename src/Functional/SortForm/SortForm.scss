@@ -1,0 +1,71 @@
+@use '../../mixins.scss' as *;
+
+.sort-form {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-end;
+
+  margin-bottom: 24px;
+
+  @include on-phone {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__top {
+    @include on-phone {
+      display: block;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+
+    @include on-phone {
+      width: 100%;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  &__label {
+    min-height: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #89939a;
+  }
+
+  &__input,
+  &__select {
+    padding: 12px 16px;
+    border: 1px solid #b4bdc3;
+    border-radius: 8px;
+
+    font-size: 10px;
+    color: white;
+
+    background-color: #323542;
+    outline: none;
+
+    transition: border-color 0.2s;
+
+    @include on-tablet {
+      font-size: 16px;
+    }
+
+    @include on-desktop {
+      font-size: 16px;
+    }
+
+    &:focus {
+      border-color: #313237;
+    }
+  }
+}

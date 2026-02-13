@@ -1,0 +1,221 @@
+@use '../../mixins.scss' as *;
+
+.section {
+  position: relative;
+}
+
+.brand {
+@include on-tablet {
+  height: 577px;
+}
+
+@include on-desktop {
+height: 571px;
+}
+
+
+
+
+&__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+}
+
+&__title {
+  width: 150px;
+  height: 62px;
+  color: white;
+}
+
+&__nav {
+  display: flex;
+  gap: 10px;
+}
+
+&__nav-btn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+
+  font-size: 18px;
+  color: white;
+
+  background-color: #323542;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #75767F;
+  }
+}
+
+&__card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 212px;
+  padding: 8px;
+  border-radius: 10px;
+
+  text-align: center;
+
+  background-color: #2a2a3e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  @include on-tablet {
+    max-width: 272px;
+    padding: 20px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-decoration: none;
+  }
+}
+
+&__card-title,
+&__card-prices,
+&__card-specs {
+  flex-shrink: 0;
+}
+
+&__card-image {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+&__card-title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+&__card-prices {
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+  margin-bottom: 15px;
+}
+
+&__card-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+&__card-old-price {
+  font-size: 18px;
+  color: #888;
+  text-decoration: line-through;
+}
+
+&__card-spec {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+&__card-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+&__card-btn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+
+  font-size: 14px;
+  text-align: center;
+
+  transition: background-color 0.3s ease;
+}
+
+&__card-btn--add {
+  flex: 1;
+
+  padding: 0 16px;
+  border: 1px solid #905BFF;
+
+  color: white;
+  text-decoration: none;
+
+  background-color: #a855f7;
+
+  &:hover {
+    background-color: #9333ea;
+  }
+}
+
+&__card-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+&__card-btn--favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+
+  color: white;
+
+  background-color: #323542;
+
+  &:hover {
+    color: #a855f7;
+  }
+}
+
+&__card-spec-label {
+  color: #75767F;
+}
+
+&__card-spec-value {
+  color: white;
+}
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 32px;
+  height: 32px;
+}
