@@ -1,0 +1,36 @@
+@use '../../../../styles/utils/' as g;
+
+.error {
+  padding-block: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__title{
+    font-family: g.$font-semi;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing:  0;
+    text-align: center;
+
+    flex: 1 0 100%;
+  }
+
+
+  &__reload{
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
+
+    background-color: g.$icons-color;
+    border: none;
+    border-radius: 20px;
+
+    font-family: g.$font-semi;
+    font-size: 15px;
+    letter-spacing:  0;
+
+    cursor: pointer;
+  }
+}

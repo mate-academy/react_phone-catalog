@@ -1,0 +1,78 @@
+@use '../../../../styles/utils/' as g;
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    @include g.on-tablet {
+      width: auto;
+
+      display: flex;
+      gap: 16px;
+    }
+
+    &__item{
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      @include g.on-tablet{
+        flex: 0 0 auto;
+      }
+    }
+
+    &__sort{
+      outline: none;
+
+      @include g.on-tablet {
+        width: 187px;
+      }
+
+      @include g.on-desktop {
+        width: 176px;
+      }
+    }
+
+    &__count{
+
+      @include g.on-tablet {
+        width: 136px;
+      }
+
+      @include g.on-desktop {
+        width: 128px;
+      }
+    }
+
+    &__label{
+      font-family: g.$font-semi;
+      font-size: 12px;
+      color: g.$second-grey;
+    }
+
+    &__select{
+      cursor: pointer;
+
+      height: 40px;
+      padding: 10px 12px;
+      border: 1px solid g.$icons-color;
+
+      font-family: g.$font-semi;
+      font-size: 14px;
+      color: g.$main-grey;
+
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none; /* убирает дефолтную стрелку (Chrome, Safari, Edge) */
+
+ /* для Firefox */
+
+ /* для старых Safari */
+      outline: none;
+    }
+
+    &__option{
+      background-color: var(--hover-bg-color);
+    }
+}

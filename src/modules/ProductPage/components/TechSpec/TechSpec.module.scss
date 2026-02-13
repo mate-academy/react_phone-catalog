@@ -1,0 +1,39 @@
+@use '../../../../styles/utils/' as g;
+
+.specs {
+  &__title {
+    @include g.h3-title-product-details;
+  }
+
+  &__list {
+    margin-top: 30px;
+  }
+
+  &__item{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    font-family: g.$font-regular;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &--key{
+      color: g.$second-grey;
+      text-transform: capitalize;
+
+      &-upper {
+        text-transform: uppercase;
+      }
+    }
+
+    &--value{
+      color: g.$main-grey;
+    }
+  }
+}

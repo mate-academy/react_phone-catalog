@@ -1,0 +1,71 @@
+@use '../../styles/utils';
+
+.home {
+  &__title {
+    margin-bottom: 24px;
+
+    @include utils.h1-title;
+
+    @include utils.on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include utils.on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__slider {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+
+    width: calc(100% + utils.$mobile-main-inline-padding * 2);
+    margin-left: -(utils.$mobile-main-inline-padding);
+
+    @include utils.on-tablet {
+      width: 100%;
+      margin-inline: 0;
+    }
+  }
+
+  &__latest{
+    width: 100%;
+    margin-top: 56px;
+
+    @include utils.on-tablet{
+      margin-top: 64px;
+    }
+
+    @include utils.on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__categories{
+    width: 100%;
+    margin-top: 56px;
+
+    @include utils.on-tablet{
+      margin-top: 64px;
+    }
+
+    @include utils.on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__discount{
+    width: 100%;
+    margin-top: 56px;
+
+    @include utils.on-tablet{
+      margin-top: 64px;
+    }
+
+    @include utils.on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+}

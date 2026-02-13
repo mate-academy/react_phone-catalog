@@ -1,0 +1,32 @@
+@use '../../styles/utils/' as g;
+
+.button {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: start;
+
+  &__icon{
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text{
+    cursor: pointer;
+
+    align-content: center;
+
+    margin-top: 1.5px;
+
+    font-family: g.$font-semi;
+    font-size: 12px;
+    line-height: auto;
+    color: g.$second-grey;
+
+    transition: color g.$transition-duration linear;
+
+    &:hover {
+      color: g.$main-grey;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use '../../styles/utils/' as g;
+
+.catalog{
+  scroll-margin-top: g.$header-height-mobile;
+
+  @include g.on-tablet {
+    scroll-margin-top: g.$header-height-tablet;
+  }
+
+  @include g.on-desktop {
+    scroll-margin-top: g.$header-height-desktop;
+  }
+  &__header{
+    margin-top: 24px;
+
+    @include g.on-tablet{
+      margin-top: 40px;
+    }
+  }
+
+  &__title{
+    text-transform: capitalize;
+
+    @include g.h1-title;
+  }
+
+  &__caption{
+    margin-top: 8px;
+
+    font-family: g.$font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: g.$second-grey;
+  }
+
+  &__form {
+    margin-top: 32px;
+
+    @include g.on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__list{
+    margin-top: 24px;
+  }
+
+  &__pagination{
+    margin-top: 24px;
+
+    @include g.on-tablet{
+      margin-top: 40px;
+    }
+  }
+}

@@ -1,0 +1,136 @@
+@use '../../../../styles/utils/' as g;
+
+.item{
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border: 1px solid g.$elements-color;
+
+  @include g.on-tablet {
+    padding: 24px;
+  }
+
+
+  &__content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    @include g.on-tablet{
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__remove{
+    width: 16px;
+    height: 16px;
+    margin-right: 16px;
+    border: none;
+
+    color: g.$icons-color;
+
+    background-color: transparent;
+
+    transition: color g.$transition-duration linear;
+
+    &:hover{
+      color: g.$main-grey;
+    }
+
+    @include g.on-tablet{
+      margin-right: 24px;
+    }
+  }
+
+  &__inform{
+    display: flex;
+    flex: 1 1 calc(100% - 32px);
+    align-items: center;
+    margin-bottom: 16px;
+
+    @include g.on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__img{
+    width: 80px;
+    height: 80px;
+    margin-right: 16px;
+    object-fit: contain;
+
+    @include g.on-tablet{
+      width: 66px;
+      height: 66px;
+      margin-right: 24px;
+    }
+  }
+
+  &__name{
+    font-family: g.$font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: g.$main-grey;
+  }
+
+  &__count{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include g.on-tablet {
+      margin-left: 24px;
+    }
+
+    &--amount{
+      align-content: center;
+
+      width: 32px;
+      height: 32px;
+      border: none;
+
+      font-family: g.$font-regular;
+      font-size: 14px;
+      line-height: 14px;
+      color: black;
+      text-align: center;
+
+      outline: none;
+    }
+
+    &-button{
+      width: 32px;
+      height: 32px;
+      border: 1px solid g.$icons-color;
+
+      color: g.$icons-color;
+
+      background-color: transparent;
+
+      transition: color g.$transition-duration linear, border-color g.$transition-duration;
+
+      &:hover{
+        border-color: g.$main-grey;
+        color: g.$main-grey;
+      }
+    }
+  }
+
+  &__price{
+    margin-left: 16px;
+
+    font-family: g.$font-bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: g.$main-grey;
+    text-align: right;
+
+    width: 150px;
+    overflow: hidden;
+
+    @include g.on-tablet {
+      margin-left: 24px;
+    }
+  }
+}
