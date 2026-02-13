@@ -1,1 +1,11 @@
 // not empty
+@import './modules/shared/fonts';
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+
+.App {
+  font-family: Mont, sans-serif;
+  background-color: var(--background-color);
+  min-height: 100%;
+}

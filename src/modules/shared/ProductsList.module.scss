@@ -1,0 +1,24 @@
+@import '../shared/mixins';
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-block: 20px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 990px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

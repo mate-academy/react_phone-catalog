@@ -1,0 +1,147 @@
+@import '../shared/mixins';
+@import '../shared/variables';
+
+.collection {
+  padding: 33px;
+
+  &__header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__name {
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    color: $grey-color;
+
+    &:hover {
+      color: var(--button-hover);
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 600;
+    color: $grey-color;
+  }
+
+  &__selects {
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__selected {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: $grey-color;
+  }
+
+  &__query {
+    padding: 10px 40px;
+    border: 1px solid var(--standard-color);
+
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--hover-color);
+
+    background-color: var(--default-color);
+
+    &:hover {
+      border: 1px solid $grey-color;
+    }
+
+    &:focus {
+      border: 1px solid var(--hover-color);
+      outline: none;
+    }
+  }
+
+  &__search {
+    background-image: var(--search-icon);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--hover-color);
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+
+  &__prev,
+  &__next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+    border: 1px solid $grey-color;
+
+    background: none;
+
+    &:hover {
+      border: 1px solid var(--hover-color);
+    }
+  }
+
+  &__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--standard-color);
+
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--hover-color);
+
+    background: none;
+
+    &:hover {
+      border: 1px solid var(--hover-color);
+    }
+
+    &--active {
+      color: var(--background-color);
+      background-color: var(--hover-color);
+    }
+  }
+}

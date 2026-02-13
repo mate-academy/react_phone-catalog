@@ -1,0 +1,144 @@
+@import './variables';
+@import './mixins';
+
+.product {
+  @include mobile {
+    position: relative;
+    box-sizing: border-box;
+    height: 506px;
+    border: 1px solid var(--standard-color);
+    margin: 0;
+    padding: 20px;
+    background-color: var(--cart-background);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__top {
+    height: 60%;
+  }
+
+  &__bottom {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    max-width: 158px;
+    width: auto;
+    height: 196px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__buy {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  &__name {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--hover-color);
+    transition: all 0.3s ease;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--hover-color);
+    margin: 0;
+  }
+
+  &__discount {
+    font-size: 22px;
+    font-weight: 600;
+    color: $grey-color;
+    margin-left: 10px;
+    text-decoration: line-through;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__key {
+    color: $grey-color;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__value {
+    color: var(--hover-color);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  &__like {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add {
+    width: 160px;
+    height: 40px;
+    background-color: var(--button-color);
+    border: none;
+    color: var(--add-color);
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.1s ease;
+
+    &:hover {
+      background-color: var(--button-hover);
+      box-shadow: var(--box-shadow);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__added {
+    width: 160px;
+    height: 40px;
+    background-color: var(--default-color);
+    color: var(--added-color);
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid var(--standard-color);
+  }
+
+  &__heart {
+    background-color: var(--default-color);
+    display: flex;
+    border: 1px solid var(--standard-color);
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+
+
+    &:hover {
+      border: 1px solid var(--hover-color);
+      background-color: var(--icons-color);
+    }
+  }
+}
