@@ -1,0 +1,17 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.icon-left {
+  transform: rotate(180deg);
+}
+
+.icon-top {
+  transform: rotate(270deg);
+}
+
+.icon-down {
+  transform: rotate(90deg);
+}

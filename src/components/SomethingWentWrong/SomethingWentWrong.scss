@@ -1,0 +1,21 @@
+@import '../../styles/main';
+
+.something-went-wrong {
+  &__title {
+    margin-left: 5%;
+  }
+
+  width: 50%;
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    width: 100%;
+    gap: 20px;
+  }
+}

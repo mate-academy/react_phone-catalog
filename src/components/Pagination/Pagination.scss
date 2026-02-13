@@ -1,0 +1,28 @@
+@import '../../styles/main.scss';
+
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    &-dots {
+      color: var(--main-color);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+}

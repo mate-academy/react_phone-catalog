@@ -7,5 +7,18 @@
   "printWidth": 80,
   "semi": true,
   "bracketSpacing": true,
-  "bracketSameLine": false
+  "bracketSameLine": false,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "editor.fontSize": 15,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "boundary",
+  "editor.detectIndentation": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true
 }

@@ -1,0 +1,12 @@
+@import '../../styles/main.scss';
+
+.products-list {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  gap: 40px 16px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+}

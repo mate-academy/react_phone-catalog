@@ -1,0 +1,28 @@
+.item-specs {
+  padding-top: 16px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.item-price {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.item-buttons {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  gap: 8px;
+}
