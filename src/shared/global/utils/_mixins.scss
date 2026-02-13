@@ -1,0 +1,89 @@
+@use 'vars' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 24px;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+
+  @include on-desktop {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  row-gap: 32px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin navbar-item-after {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    background-color: $main-text-color;
+    width: 100%;
+    display: block;
+  }
+}
+
+@mixin aside-item-after {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    height: 2px;
+    background-color: $main-text-color;
+    width: 100%;
+    display: block;
+  }
+}

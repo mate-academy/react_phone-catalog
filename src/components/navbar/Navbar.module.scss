@@ -1,0 +1,94 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__footer {
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+
+    &_ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 32px;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+  }
+
+  &__items {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 28px;
+
+    @include on-tablet {
+      height: 100%;
+    }
+  }
+
+  &__itemlink {
+    @include uppercase;
+
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: $secondary-text-color;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 100%;
+
+    &:hover {
+      color: $main-text-color;
+    }
+
+    &_active {
+      color: $main-text-color;
+      @include navbar-item-after;
+    }
+  }
+}
+
+.open {
+  height: 0;
+}
