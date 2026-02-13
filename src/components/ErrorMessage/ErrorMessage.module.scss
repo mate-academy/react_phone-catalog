@@ -1,0 +1,56 @@
+@import '/src/styles/media';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.error__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+}
+
+.error__wrapper{
+    display: flex;
+    flex-direction:  column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 60%;
+    height: 150px;
+    border: 1px solid $red;
+
+    background-color: $white;
+
+    @include tablet {
+        width: 50%;
+        height: 200px;
+    }
+
+    @include desktop {
+        width: 40%;
+        height: 300px;
+    }
+
+    &__span{
+        @include bodyText-DT;
+
+        font-size: 36px;
+        color: $red;
+    }
+
+    &__button{
+        cursor: pointer;
+
+        width: 100px;
+        height: 50px;
+        border: none;
+
+        color: $white;
+        text-decoration: none;
+
+        background-color: $primary-color;
+    }
+}

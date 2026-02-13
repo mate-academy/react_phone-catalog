@@ -1,1 +1,15 @@
-// not empty
+@import '/src/styles/fonts';
+
+html{
+  font-family: Mont, sans-serif;
+}
+
+*{
+  font-family: Mont, sans-serif;
+}
+
+.app{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} 

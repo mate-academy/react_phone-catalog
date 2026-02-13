@@ -1,0 +1,56 @@
+@import 'src/styles/media';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
+.category__card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    text-decoration: none;
+}
+
+.category__card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 100%;
+    max-width: 320px;
+
+    @include desktop{
+        max-width: 368px;
+    }
+}
+
+.category__photo{
+    align-self: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+.category__img{
+    width: 100%;
+    max-width: 320px;
+    transition: 0.5s;
+
+    @include desktop{
+        max-width: 368px;
+    }
+
+}
+
+.category__title{
+    @include h4-MB;
+
+    font-size: 20px;
+    color: $primary-color;
+}
+
+.category__quantity{
+    @include bodyText-DT;
+
+    color: $secondary-color;
+}

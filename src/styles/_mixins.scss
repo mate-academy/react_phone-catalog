@@ -1,0 +1,92 @@
+@mixin font-main {
+  font-family: Mont, sans-serif;
+}
+
+@mixin h1-DT {
+    font-family: Mont, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 56px;
+}
+
+@mixin h2-DT {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 41px;
+}
+
+@mixin h3-DT {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 31px;
+}
+
+@mixin h4-DT {
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0;
+}
+
+@mixin uppercase-DT {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 11px;
+}
+
+@mixin buttons-DT {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+}
+
+@mixin bodyText-DT {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+@mixin smallText-DT {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+}
+
+@mixin h1-MB {
+    margin: 0;
+
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 41px;
+}
+
+@mixin h2-MB {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 31px;
+    letter-spacing: 0;
+}
+
+@mixin h3-MB {
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+}
+
+@mixin h4-MB {
+    font-family: Mont, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+}
