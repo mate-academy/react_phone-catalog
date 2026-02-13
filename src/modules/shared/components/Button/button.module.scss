@@ -1,0 +1,28 @@
+@use '../../index' as *;
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: inherit;
+  column-gap: 8px;
+
+  &__button {
+    @extend %buttom;
+    @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background: $button-bg-color;
+    color: $button-color;
+    cursor: pointer;
+
+    &--selected {
+      background-color: inherit;
+      color: $green;
+      border: 1px solid $elements;
+    }
+  }
+}

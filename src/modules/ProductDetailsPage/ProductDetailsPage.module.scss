@@ -1,0 +1,29 @@
+@use '../shared/index' as *;
+
+.detail-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+
+  &__card-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      row-gap: 40px;
+    }
+  }
+
+  &__title {
+    @extend %h2;
+  }
+}

@@ -1,0 +1,7 @@
+@use '../shared/index' as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}

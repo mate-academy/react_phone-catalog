@@ -1,0 +1,7 @@
+@use '../../../shared/index' as *;
+
+.search {
+  background: $main-bg-color;
+  color: $main-text-color;
+  border: 1px solid $select-border-color;
+}

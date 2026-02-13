@@ -1,0 +1,52 @@
+@use '../../../shared/index' as *;
+
+.features {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__select-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  &__title-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %small-text;
+
+    color: $icons;
+  }
+
+  &__colors-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__capacity {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__button-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+}

@@ -1,0 +1,16 @@
+@use '../../../shared/index' as *;
+
+.fav-list {
+  display: flex;
+  row-gap: 40px;
+
+  @include page-grid;
+
+  &__item {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

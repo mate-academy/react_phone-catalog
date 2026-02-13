@@ -1,0 +1,70 @@
+@use '../../../shared/index' as *;
+
+.detail-card {
+  row-gap: 56px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    row-gap: 64px
+  }
+
+  @include on-desktop {
+    row-gap: 80px
+  }
+
+  &__top {
+    grid-column: 1/-1;
+    row-gap: 40px;
+
+    @include page-grid;
+  }
+
+  &__gallery {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__features {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: 8/-1;
+    }
+
+    @include on-desktop {
+      grid-column: 14/21;
+    }
+  }
+
+  &__info {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__tech-list {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: 8/-1;
+    }
+
+    @include on-desktop {
+      grid-column: 14/-1;
+    }
+  }
+}

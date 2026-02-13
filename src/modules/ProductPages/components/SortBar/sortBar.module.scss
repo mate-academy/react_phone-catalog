@@ -1,0 +1,40 @@
+@use '../../../shared/index' as *;
+
+.sort-bar {
+  row-gap: 24px;
+
+  @include page-grid;
+
+  &__select-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    grid-column: span 2;
+
+    &--first {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--second {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__select-title {
+    @extend %small-text;
+
+    color: $text-color;
+  }
+
+  &__search-bar {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../../shared/index' as *;
+
+.info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__about-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__title {
+    @extend %h3;
+
+    color: $primery;
+  }
+
+  &__about-title {
+    @extend %h4;
+
+    color: $primery;
+  }
+
+  &__about-text {
+    @extend %body-text;
+
+    color: $secondary;
+  }
+}

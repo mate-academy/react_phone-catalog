@@ -1,0 +1,26 @@
+@use '../../../shared/index' as *;
+
+.product-list {
+  row-gap: 40px;
+
+  @include page-grid;
+
+  &__title {
+    @extend %h3;
+
+    grid-column: 1/-1;
+    text-align: center;
+  }
+
+  &__item {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: auto / span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

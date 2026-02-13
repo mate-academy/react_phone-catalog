@@ -1,0 +1,10 @@
+@use '../../../shared/index' as *;
+
+.brandModels {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %h2;
+  }
+}

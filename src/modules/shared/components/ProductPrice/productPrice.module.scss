@@ -1,0 +1,31 @@
+@use '../../../shared/index' as *;
+
+.price-content {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  width: fit-content;
+
+  &__price {
+    @extend %h2;
+
+    width: fit-content;
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    &--cancel {
+      @extend %body-text;
+
+      color: $secondary;
+      text-decoration: line-through;
+
+      @include on-tablet {
+        font-weight: 500;
+        font-size: 22px;
+      }
+    }
+  }
+}

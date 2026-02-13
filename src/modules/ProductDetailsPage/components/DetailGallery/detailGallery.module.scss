@@ -1,0 +1,57 @@
+@use '../../../shared/index' as *;
+
+.detail-gallery {
+  
+  /* stylelint-disable selector-pseudo-class-no-unknown */
+  :global {
+    .image-gallery-slide-wrapper {
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        margin-bottom: 0;
+      }
+    }
+
+    .image-gallery-slide {
+      height: fit-content;
+    }
+
+    .image-gallery-image {
+      aspect-ratio: 1/1;
+      max-height: 464px !important;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .image-gallery-thumbnails-container {
+      display: flex;
+      gap: 8px;
+
+      @include on-tablet {
+        flex-direction: column;
+      }
+
+      @include on-desktop {
+        gap: 16px;
+      }
+    }
+
+    .image-gallery-thumbnail {
+      cursor: pointer;
+      border: 1px solid $elements;
+      width: fit-content;
+      max-width: 80px;
+    }
+
+    .image-gallery-thumbnail.active {
+      border-color: $primery;
+    }
+
+    .image-gallery-thumbnail-image {
+      aspect-ratio: 1/1;
+      padding: 4px;
+      object-fit: contain;
+      box-sizing: border-box;
+    }
+  }
+}

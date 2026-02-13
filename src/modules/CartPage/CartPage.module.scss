@@ -1,0 +1,46 @@
+@use '../shared/index' as *;
+
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__content {
+    row-gap: 32px;
+  
+    @include page-grid;
+
+  }
+
+  &__cart-list {
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__text {
+    @extend %body-text;
+
+    color: $text-color;
+  }
+
+  &__checkout {
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+}

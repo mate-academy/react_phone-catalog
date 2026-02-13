@@ -1,0 +1,148 @@
+@use './vars' as *;
+
+@mixin on-mobile {
+  @media (min-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media (min-width: $large-desktop-width) {
+    @content;
+  }
+}
+
+@mixin layout-container() {
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-desktop {
+    margin: 0 32px;
+    max-width: 1200px;
+  }
+
+  @include on-large-desktop {
+    margin: 0 152px;
+    max-width: 1200px;
+  }
+}
+
+@mixin link-padding {
+  padding: 13px 16px;
+
+  @include on-tablet {
+    padding: 18px 24px;
+  }
+}
+
+@mixin link-bottom-line {
+  & {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+
+    background-color: $main-text-color;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s;
+  }
+}
+
+@mixin link-bottom-line-action($_action) {
+  @include link-bottom-line;
+
+  @if $_action == 'hover' {
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  } @else if $_action == 'active' {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin active($_property, $_toValue) {
+  &:active {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin margin-bottom {
+  margin-bottom: 120px;
+
+  @include on-tablet {
+    margin-bottom: 148px;
+  }
+}
+
+@mixin page-style {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__title-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__subtitle {
+    @extend %body-text;
+
+    color: $text-color;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+  --width-column: 1fr;
+
+  display: grid !important;
+  grid-template-columns: repeat(var(--columns), var(--width-column));
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "key": "slide-0",
+    "mobileImg": "img/banner-header.png",
+    "tabletImg": "img/banner-tb-header.png",
+    "desktopImg": "img/banner-dt-header.png",
+    "alt": "header img",
+    "to": "home"
+  },
+  {
+    "key": "slide-1",
+    "mobileImg": "img/banner-phones.png",
+    "alt": "phones img",
+    "to": "phones"
+  },
+  {
+    "key": "slide-2",
+    "img": "img/banner-tablets.png",
+    "mobileImg": "img/banner-tablets.png",
+    "alt": "tablets img",
+    "to": "tablets"
+  },
+  {
+    "key": "slide-3",
+    "mobileImg": "img/banner-accessories.png",
+    "alt": "accessories img",
+    "to": "accessories"
+  }
+]

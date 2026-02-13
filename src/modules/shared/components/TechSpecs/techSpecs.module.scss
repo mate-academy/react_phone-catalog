@@ -1,0 +1,18 @@
+@use '../../../shared/index' as *;
+
+.tech-spacs {
+  @extend %small-text;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__name {
+    color: $text-color;
+  }
+
+  &__value {
+    color: $main-text-color;
+  }
+}

@@ -1,0 +1,74 @@
+@use '../../index' as *;
+
+.nav {
+  position: absolute;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+
+  @include on-tablet {
+    position: relative;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &--menu {
+    position: relative;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 16px 32px;
+
+    @include on-desktop {
+      column-gap: 64px;
+    }
+
+    &--menu {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    display: flex;
+    width: fit-content;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: $text-color;
+
+    @include link-bottom-line-action('hover');
+
+    &--active {
+      color: $main-text-color;
+
+      @include link-bottom-line-action('active');
+    }
+
+    &--menu {
+      padding-inline: 0;
+
+      @include link-padding;
+
+      &--active {
+        color: $main-text-color;
+
+        @include link-bottom-line-action('active');
+      }
+    }
+  }
+}
