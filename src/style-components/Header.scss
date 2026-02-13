@@ -1,0 +1,75 @@
+@import 'colors';
+
+header {
+    width: 100%;
+    border: 1px solid $icons;
+    background-color: $white;
+    display: flex;
+    justify-content: left;
+
+    .empty{
+        margin: auto;
+    }
+
+    .header {
+
+        &__nav {
+            display: flex;
+            gap: 50px;
+            margin-left: 20px;
+        }
+
+        &__button {
+            background-color: transparent;
+            border: none;
+            color: $icons;
+            cursor: pointer;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+
+        &_title {
+            margin-top: 10px;
+            margin-left: 10px;
+            align-items: center;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: $primary;
+
+            &_first {
+                display: flex;
+                align-items: center;
+                height: 20px;
+            }
+
+            &_second {
+                margin: 0;
+            }
+            
+            &_image {
+                width: 10px;
+                height: 15px;
+            }
+        }
+
+        &__side {
+            display: flex;
+            
+            &_like, &_cart {
+                align-items:center ;
+                display: flex;
+                cursor: pointer;
+                border: 1px solid $icons;
+            }
+        
+        }
+    }
+}
+
+svg {
+    fill: $primary;
+    margin: 20px;
+}

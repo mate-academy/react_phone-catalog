@@ -1,0 +1,50 @@
+@import 'colors';
+
+.card{
+    width: 272px;
+    height: 506;
+    border: 1px solid $icons;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    background-color: $white;
+    &:hover{
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    &_image{
+        margin-bottom: 15px;
+        width: 208px;
+        height: auto;
+    }
+
+    &_description{
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: $primary;
+        margin-top: 10px;
+
+        p{
+            margin: 5px 0;
+        }
+    }
+
+    &_buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        &_add{
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            background-color: $primary;
+            color: $white;
+            padding: 10px 20px;
+            cursor: pointer;
+
+        }
+    }
+
+
+}
