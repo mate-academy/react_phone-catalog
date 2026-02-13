@@ -1,0 +1,143 @@
+.phone-list {
+  grid-column: span 24;
+  justify-items: center; /* выровнять карточки по центру контейнера */
+  grid-column: span 24;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+}
+
+
+.card {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primary);
+
+  width: 100%;
+  grid-column: span 6;
+  height: 506px;
+  border: 1px solid #E2E6E9;
+
+  &:hover {
+    box-shadow: 0px 2px 15px 0px #0000001A;
+  }
+
+
+  &__content {
+    margin: 32px;
+    display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  }
+
+  &__img {
+    margin-inline: auto;
+    height: 196px;
+    margin-bottom: 24px;
+    transition: transform 0.25s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__main-text {
+    width: 100%;
+    height: 35px;
+  }
+
+  &__price {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px var(--elements) solid;
+    padding: 8px 0;
+    margin-bottom: 8px;
+
+    &__discount {
+      font-weight: 800;
+      margin-right: 8px;
+      font-size: 22px;
+    }
+
+    &__regular {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 28px;
+      text-decoration-line: line-through;
+      color: var(--secondary);
+    }
+  }
+
+  &__specs {
+    margin-bottom: 16px;
+    width: 100%;
+    &__string {
+      margin-bottom: 8px;
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--secondary);
+
+      &__value {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+        color: var(--primary);
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &__add {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+    }
+
+    &__favorite {
+      position: absolute;
+      bottom: 32px;
+      right: 32px;
+    }
+  }
+}
+
+
+.page-selector {
+  display: flex;
+  grid-column: span 24;
+  width: 100%;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    border-radius: 100%;
+    border: 1px var(--elements) solid;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+
+    &:hover {
+      border: 1px var(--primary) solid;
+    }
+
+    &__active {
+      background-color: var(--primary);
+      color: white;
+    }
+  }
+}
