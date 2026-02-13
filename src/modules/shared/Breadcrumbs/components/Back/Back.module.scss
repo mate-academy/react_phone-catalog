@@ -1,0 +1,28 @@
+@import '../../../../../styles/vars';
+
+.back {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  position: relative;
+
+  &__button {
+    border: none;
+    background-color: $main-white;
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 13px;
+    color: $main-gray;
+    line-height: 100%;
+
+    margin-top: 1px;
+
+    transition: color $effect-duration;
+
+    &:hover {
+      color: $main-black;
+    }
+  }
+}

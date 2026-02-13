@@ -1,0 +1,48 @@
+@import '../../../../styles/vars';
+
+.counter {
+  width: 16px;
+  height: 16px;
+  position: relative;
+
+  &__ellipse {
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    z-index: 2;
+
+    background-color: $main-red;
+    border: 1px solid $main-white;
+    border-radius: 50%;
+
+    top: -6px;
+    left: 8px;
+
+    &__container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__number {
+        position: absolute;
+        color: $main-white;
+        font-weight: 600;
+        font-size: 9px;
+        line-height: 100%;
+        top: 3px;
+      }
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    transition: all $effect-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

@@ -1,0 +1,91 @@
+@import '/src/styles/vars';
+
+.breadcrumbs {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+
+  &__link {
+    width: 16px;
+    height: 16px;
+
+
+    &--back {
+      display: block;
+      font-size: 14px;
+      line-height: 100%;
+      color: $main-gray;
+      transition: color $effect-duration;
+
+      &:hover {
+        color: $main-black;
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__category {
+    display: block;
+    font-size: 14px;
+    line-height: 100%;
+    color: $main-gray;
+    transition: color $effect-duration;
+    cursor: pointer;
+
+    &--span {
+      cursor: default;
+
+      &--active {
+        color: $main-black;
+      }
+    }
+
+    &--name {
+
+      &--active {
+        cursor: default;
+      }
+
+    }
+
+    &--active {
+      color: $main-black;
+    }
+
+    &:hover {
+      color: $main-black;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: 14px;
+    line-height: 100%;
+    color: $main-gray;
+    transition: color $effect-duration;
+    cursor: default;
+
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      color: $main-black;
+    }
+  }
+
+  &__wrapper {
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 24px;
+  }
+}

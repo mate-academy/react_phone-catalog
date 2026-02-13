@@ -1,0 +1,73 @@
+@import '/src/styles/vars';
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+
+  &__add-to-cart {
+    flex-grow: 1;
+    height: 40px;
+    background-color: $main-black;
+    border: none;
+
+    font-family: Mont, sans-serif;
+    color: $main-white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    cursor: pointer;
+    transition: box-shadow $effect-duration ease;
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    &--active {
+      border: 1px solid $secondary-gray;
+      background-color: $main-white;
+      color: $main-green;
+    }
+  }
+
+  &__to-favourites {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $others-gray;
+    background-color: $main-white;
+    cursor: pointer;
+    position: relative;
+    transition: all $effect-duration;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      transform: translate(-50%, -50%);
+      background-image: url('/react_phone-catalog/img/icons/heart-like.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &:hover {
+      border: 1px solid $main-black;
+    }
+
+    &--active {
+      border: 1px solid $secondary-gray;
+
+      &::before {
+        background-image: url('/react_phone-catalog/img/icons/heart-like-active.svg');
+      }
+    }
+  }
+}
+
+

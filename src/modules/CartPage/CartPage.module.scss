@@ -1,0 +1,107 @@
+@import '/src/styles/mixins.module';
+@import '/src/styles/typography';
+
+.cart-page {
+  @include content-padding-inline;
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @extend %h2-style;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+
+  &__content {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__empty-cart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__image {
+      width: 50%;
+      align-self: center;
+    }
+  }
+
+  &__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    margin-top: 32px;
+    border: 1px solid $secondary-gray;
+
+    @include on-desktop {
+      grid-column: 17 / 25;
+      margin-top: 0;
+      height: 206px;
+    }
+
+    &__sum {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      align-self: center;
+    }
+
+    &__items {
+      @extend %quantity-style;
+
+      margin-top: 0;
+      align-self: center;
+    }
+
+    &__button {
+      height: 48px;
+      width: 100%;
+      background-color: $main-black;
+      border: none;
+      position: relative;
+
+      font-family: Mont, sans-serif;
+      color: $main-white;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      cursor: pointer;
+      transition: box-shadow $effect-duration;
+      margin-top: 32px;
+
+      &:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -16px;
+        left: 50%;;
+        width: 100%;
+        height: 1px;
+        background-color: $secondary-gray;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

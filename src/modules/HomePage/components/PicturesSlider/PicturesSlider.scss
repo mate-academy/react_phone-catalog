@@ -1,0 +1,117 @@
+@import '../../../../styles/mixins.module';
+
+.slider-wrapper {
+  margin-top: 24px;
+
+  @include on-tablet {
+    @include content-padding-inline;
+
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .swiper-slide {
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  .slider-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      max-width: 700px;
+    }
+
+    @include on-desktop {
+      max-width: 1040px;
+    }
+  }
+
+  .swiper-button-prev {
+    margin-left: -10px;
+    background-image: url('/react_phone-catalog/img/icons/arrows/arrow-left.svg');
+
+    @include on-big-screen {
+      grid-column: 1 / 3;
+    }
+  }
+
+  .swiper-button-next {
+    margin-right: -10px;
+    background-image: url('/react_phone-catalog/img/icons/arrows/arrow-right.svg');
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    transition: border $effect-duration;
+
+    @include on-tablet {
+      display: block;
+      width: 32px;
+      height: 100%;
+      border: 1px solid $others-gray;
+      background-color: #fff;
+      transform: translateY(-43%);
+
+      @include on-desktop {
+        transform: translateY(-178px);
+      }
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      border: 1px solid $main-black;
+    }
+  }
+}
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  margin-top: 8px;
+
+  @include on-big-screen {
+    grid-column: 12 / 15;
+  }
+
+  .swiper-pagination-bullet {
+    width: 14px;
+    height: 4px;
+    background-color: $main-gray;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border-radius: 0;
+  }
+}
+
+

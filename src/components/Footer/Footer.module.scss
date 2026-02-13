@@ -1,0 +1,141 @@
+@import '../../styles/mixins.module';
+
+.footer {
+  border-top: 1px solid $secondary-gray;
+  margin-top: 64px;
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    padding-inline: 16px;
+    padding-block: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+
+    @include on-big-screen {
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 89px;
+    height: 32px;
+    margin-top: 34px;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      transition: all $effect-duration;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $main-gray;
+    transition: color $effect-duration;
+
+    &:hover {
+      color: $main-black;
+    }
+  }
+}
+
+.arrow-top {
+  all: unset;
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $others-gray;
+  transition: border $effect-duration;
+}
+
+.button-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $main-gray;
+  transition: color $effect-duration;
+}
+
+.back-to-top-button-wpapper {
+  align-self: center;
+
+  &:hover {
+    .button-text {
+      color: $main-black;
+    }
+    .arrow-top {
+       border: 1px solid $main-black;
+    }
+  }
+}
+
+.back-to-top-button {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  align-self: center;
+}
+
+.arrow-top::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background-image: url('/react_phone-catalog/img/icons/arrows/arrow-top.svg');
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
