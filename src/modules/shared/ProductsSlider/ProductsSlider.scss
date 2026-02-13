@@ -1,0 +1,86 @@
+@import '/src/styles/main';
+
+.my-slider {
+  overflow: hidden;
+  margin-right: -16px;
+
+  @include onTablet {
+    margin-right: -24px;
+  }
+
+  @include onDesktop {
+    margin-right: 0;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-right: 16px;
+
+    @include onTablet {
+      padding-right: 24px;
+    }
+
+    @include onDesktop {
+      padding-right: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid transparent;
+    background-color: var(--surface2-color);
+
+    @include onHover {
+      background-color: var(--elements-color);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--bg-color);
+      border-color: var(--elements-color);
+    }
+
+    &--prev::after {
+      content: url(/src/img/icons/arrow-left.svg);
+      width: 16px;
+      height: 16px;
+    }
+
+    &--prev:disabled::after {
+      content: url(/src/img/icons/arrow-left-disabled.svg);
+    }
+
+    &--next::after {
+      content: url(/src/img/icons/arrow-right.svg);
+      width: 16px;
+      height: 16px;
+    }
+
+    &--next:disabled::after {
+      content: url(/src/img/icons/arrow-right-disabled.svg);
+    }
+  }
+}
+
+.my-slider .swiper-slide {
+  width: 212px;
+
+  @include onTablet {
+    width: 237px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+  }
+}

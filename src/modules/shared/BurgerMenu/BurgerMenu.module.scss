@@ -1,0 +1,172 @@
+@import '/src/styles/main';
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: all $transition-duration;
+}
+
+.menuOpen {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.menuTop {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.logoLink {
+  padding: 13px 16px;
+}
+
+.logoImg {
+  width: 64px;
+  height: 22px;
+}
+
+.buttonMenu {
+  padding: 16px;
+  border-left: 1px solid var(--elements-color);
+
+  @include onHover {
+    background-color: var(--elements-color);
+  }
+}
+
+.nav {
+  padding-top: 24px;
+  flex-grow: 1;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  align-items: center;
+}
+
+.navLink {
+  padding-bottom: 6px;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  color: var(--secondary-color);
+
+  @include onHover {
+    color: var(--text-color);
+    border-color: var(--text-color);
+  }
+}
+
+.menuBottom {
+  display: flex;
+  border-top: 1px solid var(--elements-color);
+}
+
+.iconLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 50%;
+  height: 64px;
+  border-bottom: 2px solid transparent;
+
+  @include onHover {
+    border-color: var(--text-color);
+    background-color: var(--elements-color);
+  }
+
+  &:first-child {
+    border-right: 1px solid var(--elements-color);
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.iconClose {
+  @extend .icon;
+
+  background-image: url(/src/img/icons/close.svg);
+}
+
+.iconCloseLight {
+  @extend .icon;
+
+  background-image: url(/src/img/icons/close-dark.svg);
+}
+
+.iconFavourite {
+  @extend .icon;
+
+  background-image: url(/src/img/icons/favourite.svg);
+}
+
+.iconFavouriteLight {
+  @extend .icon;
+
+  background-image: url(/src/img/icons/favourite-light-mode.svg);
+}
+
+.iconCart {
+  @extend .icon;
+
+  background-image: url(/src/img/icons/cart.svg);
+}
+
+.iconCartLight {
+  @extend .icon;
+
+  background-image: url(/src/img/icons/cart-light-theme.svg);
+}
+
+.itemsAmount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--bg-color);
+  border-radius: 50%;
+  background-color: $red;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+  text-align: center;
+}

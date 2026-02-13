@@ -1,0 +1,30 @@
+@import '/src/styles/main.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+}
+
+.text {
+  @include errorMessage;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  padding: 10px;
+  background-color: var(--accent-color);
+
+  @include onHover {
+    background-color: var(--btn-hover-color);
+  }
+
+  @include onDesktop {
+    width: 300px;
+  }
+}

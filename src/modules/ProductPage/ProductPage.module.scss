@@ -1,0 +1,157 @@
+@import '/src/styles/main';
+
+.container {
+  padding-block: 24px 64px;
+
+  @include onDesktop {
+    padding-bottom: 80px;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 24px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}
+
+.pageTitle {
+  margin-bottom: 8px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.productsAmount {
+  margin-bottom: 32px;
+  color: var(--secondary-color);
+}
+
+.dropdownsSearchWrapper {
+  @include onTablet {
+    display: flex;
+  }
+}
+
+.dropdowns {
+  @include grid;
+
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.dropdownSort {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 5;
+  }
+}
+
+.dropdownPerPage {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 5;
+  }
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--elements-color);
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
+  }
+
+  @include onTablet {
+    width: 40%;
+  }
+
+  @include onDesktop {
+    width: 25%;
+  }
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px 28px;
+  color: var(--text-color);
+
+  &::placeholder {
+    color: var(--secondary-color);
+    font-style: italic;
+  }
+}
+
+.searchClear {
+  position: absolute;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: url(/src/img/icons/close.svg) center/contain no-repeat;
+  cursor: pointer;
+  opacity: 0.6;
+
+  @include onHover {
+    opacity: 1;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  height: 16px;
+  background: url(/src/img/icons/search.svg) center/contain no-repeat;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.searchIconLight {
+  background-image: url(/src/img/icons/search-light-mode.svg);
+}
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorMessage {
+  @include errorMessage;
+}
+
+.reloadButton {
+  width: 175px;
+  height: 40px;
+  font-weight: 700;
+  background: var(--accent-color);
+  cursor: pointer;
+
+  @include onHover {
+    background: var(--btn-hover-color);
+  }
+
+  &:active {
+    background: var(--surface2-color);
+  }
+}
+
+.productList {
+  margin-bottom: 24px;
+}

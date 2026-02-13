@@ -1,0 +1,33 @@
+@import '/src/styles/main.scss';
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.loaderContent {
+  width: 80px;
+  height: 80px;
+  margin: 50px auto;
+  border: 6px solid var(--elements-color);
+  border-top: 6px solid var(--accent-color);
+  border-radius: 50%;
+  animation: load 1s cubic-bezier(0.19, 1.07, 0.84, -0.28) infinite;
+
+  @include onTablet {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

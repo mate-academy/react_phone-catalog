@@ -1,0 +1,88 @@
+@import '/src/styles/main';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  font-size: 12px;
+
+  @include onTablet {
+    column-gap: 16px;
+    font-size: 14px;
+  }
+}
+
+.iconLink {
+  padding: 8px;
+  border: 1px solid transparent;
+  background: var(--surface2-color);
+
+  @include onHover {
+    background: var(--icon-placeholder-color);
+  }
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: center / cover no-repeat;
+}
+
+.iconPrev {
+  background-image: url('/src/img/icons/arrow-left.svg');
+}
+
+.iconNext {
+  background-image: url('/src/img/icons/arrow-right.svg');
+}
+
+.iconLinkDisabled {
+  border-color: var(--elements-color);
+  background: var(--bg-color);
+  cursor: not-allowed;
+
+  @include onHover {
+    background: var(--bg-color);
+  }
+}
+
+.iconLinkDisabled .iconPrev {
+  background-image: url('/src/img/icons/arrow-left-disabled.svg');
+}
+
+.pagesNums {
+  display: flex;
+  column-gap: 5px;
+
+  @include onTablet {
+    column-gap: 8px;
+  }
+}
+
+.pageNumLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background: var(--surface1-color);
+
+  @include onHover {
+    background: var(--elements-color);
+  }
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.pageNumLinkActive {
+  background: var(--accent-color);
+
+  @include onHover {
+    background: var(--accent-color);
+  }
+}
