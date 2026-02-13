@@ -1,0 +1,23 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.hero {
+  @include on-tablet {
+    @include section-padding-inline;
+  }
+}
+
+.title {
+  @include section-padding-inline;
+
+  margin-block: 24px;
+
+  @include on-tablet {
+    margin-block: 32px;
+    padding: 0;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+  }
+}

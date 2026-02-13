@@ -1,0 +1,14 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.descriptionPair {
+  @include flex-center-between;
+}
+
+.techSpecs {
+  @include flex-column;
+
+  padding: 8px 0;
+
+  gap: 8px;
+}

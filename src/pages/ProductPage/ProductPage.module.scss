@@ -1,0 +1,11 @@
+@import '../../StylesBlocks/mixins';
+
+.productPage {
+  @include page;
+
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,20 @@
+@import '../StylesBlocks/mixins';
+@import '../StylesBlocks/variables';
+
+.page {
+  @include section-padding-inline;
+
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    margin-bottom: 80px;
+  }
+}
+

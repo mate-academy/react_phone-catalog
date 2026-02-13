@@ -1,0 +1,26 @@
+.logo {
+  display: block;
+
+  background-image: url(/img/icons/Logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &--header {
+    width: 64px;
+    height: 22px;
+
+    margin: 13px 16px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+
+      margin: 18px 24px;
+    }
+  }
+
+  &--footer {
+    width: 89px;
+    height: 32px;
+  }
+}

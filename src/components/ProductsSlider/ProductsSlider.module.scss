@@ -1,0 +1,39 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.productsSlider {
+  overflow-x: hidden;
+}
+
+.sliderTitle {
+  @include flex-center-between;
+
+  margin-bottom: 24px;
+
+  margin-right: 16px;
+
+  @include on-tablet {
+    margin-right: 24px;
+  }
+}
+
+.titleButtons {
+  @include flex-row-col-center;
+
+  gap: 16px;
+}
+
+.wrapper {
+  max-width: 1200px;
+
+  @include on-desktop {
+    overflow: hidden;
+  }
+}
+
+
+.item {
+  margin-right: 16px;
+
+  width: 100%;
+}
