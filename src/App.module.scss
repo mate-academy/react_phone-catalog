@@ -1,0 +1,14 @@
+@import './styles/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container_content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $button-navigate;
+  box-sizing: border-box;
+  min-height: 100vh;
+}

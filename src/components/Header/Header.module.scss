@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+
+.header {
+  display: flex;
+  height: var(--header-height);
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid $secondary-color;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1002;
+  touch-action: none;
+  overflow: hidden;
+
+  &__logo_container {
+    display: flex;
+    justify-content: center;
+    width: var(--header-icon-width);
+    margin: 0 10px;
+  }
+}
+
+.header_mb {
+  justify-content: space-between;
+}

@@ -1,0 +1,71 @@
+@import '../../styles/variables.scss';
+
+.container {
+  margin: $button-navigate;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: $gap-card;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: $button-navigate;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: $white-color;
+  border: 1px solid $secondary-color;
+  color: $primary-color;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba($primary-color, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.buttonActive {
+  background-color: $primary-color;
+  color: $white-color;
+  font-weight: bold;
+}
+
+@media (max-width: 1199px) {
+  .list {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 899px) {
+  .list {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (max-width: 639px) {
+  .list {
+    grid-template-columns: repeat(1, auto);
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../styles/variables.scss';
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  gap: $gap-card;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.carousel__container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: $gap-card;
+}
+
+.carousel__item {
+  flex: 0 0 calc(24%);
+  box-sizing: border-box;
+}
+
+.arrow {
+  cursor: pointer;
+  width: $button-navigate;
+  height: $button-navigate;
+  border: 1px solid $icons-color;
+  background-color: $white-color;
+  margin-right: $gap-card;
+  &:hover {
+    border-color: $primary-color;
+    img {
+      filter: $primary-color;
+    }
+  }
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

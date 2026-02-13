@@ -1,0 +1,131 @@
+@import '../../styles/variables.scss';
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  height: var(--header-height);
+  width: var(--header-height);
+  border-left: 1px solid $secondary-color;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &__line {
+    width: 23px;
+    height: 2px;
+    background-color: #000;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+
+    &_transform {
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+
+    &_hidden {
+      opacity: 0;
+    }
+  }
+}
+
+.content {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background-color: $white-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  touch-action: none;
+  overflow: hidden;
+  ul {
+    gap: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.none {
+  display: none;
+}
+
+.link {
+  @include uppercase-text;
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+.link_active {
+  color: $primary-color;
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background-color: $primary-color;
+    border-radius: 2px;
+  }
+}
+
+.nav__icons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $secondary-color;
+  height: var(--header-height);
+  width: var(--header-height);
+  position: relative;
+  width: 100%;
+  div {
+    width: $button-navigate;
+    height: $button-navigate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    span {
+      @include small-text;
+      text-align: center;
+      color: $white-color;
+      background-color: $red-color;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $navigate-icon;
+      height: $navigate-icon;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 2px solid $white-color;
+    }
+    img {
+      width: $navigate-icon;
+      height: $navigate-icon;
+    }
+  }
+}

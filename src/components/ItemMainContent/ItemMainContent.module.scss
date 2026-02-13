@@ -1,0 +1,105 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $elements-color;
+  margin: $navigate-icon 0;
+}
+
+.colorContainer {
+  p {
+    @include small-text;
+    color: $secondary-color;
+    margin-bottom: $gap-card;
+  }
+  ul {
+    display: flex;
+    gap: $gap-card;
+    list-style: none;
+  }
+}
+
+.color {
+  width: $button-navigate;
+  height: $button-navigate;
+  box-sizing: border-box;
+  border: 1px solid $secondary-color;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  button {
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: none;
+    width: 26px;
+    height: 26px;
+    opacity: 0.8;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.activeColor {
+  border-color: $primary-color;
+}
+
+.capacity {
+  height: $button-navigate;
+  padding: 0 $gap-card;
+  background-color: $white-color;
+  border: 1px solid $secondary-color;
+  color: $primary-color;
+  &:hover {
+    cursor: pointer;
+    box-shadow: $shadow;
+  }
+}
+
+.activeCapacity {
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+.price {
+  display: flex;
+  gap: $gap-card;
+  .discount {
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+}
+
+.characteristic {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: $gap-card;
+  margin: $gap-card 0;
+  p {
+    @include small-text;
+    color: $secondary-color;
+  }
+  h6 {
+    @include uppercase-text;
+    color: $primary-color;
+  }
+}
+
+@media (max-width: 639px){
+  .container{
+    width: 100%;
+  }
+}
+
