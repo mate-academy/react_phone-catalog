@@ -1,0 +1,18 @@
+@use '@shared/styles' as s;
+
+.catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, s.$c-card-width);
+  gap: 40px 16px;
+  place-items: center center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    justify-items: stretch;
+  }
+}

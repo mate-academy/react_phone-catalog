@@ -1,0 +1,18 @@
+@use '@shared/styles' as s;
+
+.capacity-btn {
+  height: 32px;
+  padding: 0 8px;
+
+  @include s.t-body-text;
+
+  @include s.m-btn-btn-reg;
+
+  &:hover {
+    @include s.m-btn-hover-reg;
+  }
+
+  &-is-active {
+    @include s.m-btn-btn-blc;
+  }
+}

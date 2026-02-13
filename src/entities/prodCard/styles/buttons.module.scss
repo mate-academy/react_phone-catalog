@@ -1,0 +1,39 @@
+@use '@shared/styles' as s;
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  column-gap: 8px;
+
+  width: 100%;
+  height: 40px;
+}
+
+.fav-button {
+  @include s.m-btn-btn-reg;
+
+  &:hover {
+    @include s.m-btn-hover-reg;
+  }
+}
+
+.cart-button {
+  @include s.m-btn-btn-blc;
+
+  height: 40px;
+
+  &:hover {
+    @include s.m-btn-hover-black;
+  }
+
+  &__active {
+    @include s.m-btn-btn-reg;
+
+    color: s.$c-green;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
+  }
+}
+

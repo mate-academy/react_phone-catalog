@@ -1,0 +1,36 @@
+@use '@shared/styles' as s;
+
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap';
+@import '@shared/styles/normalize';
+
+* {
+  font-family: Montserrat, sans-serif;
+  color: s.$c-grey-primary;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.App {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: s.$c-white;
+
+  & > header {
+    position: sticky;
+    z-index: s.$c-header;
+    top: 0;
+  }
+
+  & > footer {
+    margin-top: auto;
+  }
+}

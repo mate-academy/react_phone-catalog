@@ -1,0 +1,27 @@
+@use '@shared/styles/constants' as c;
+
+$MARGIN_SIDE_MOB: 16px;
+$MARGIN_SIDE_TAB: 24px;
+$MARGIN_SIDE_WIDE: auto;
+$MARGIN_TOP: 24px;
+$MARGIN_BOT_MOB: 56px;
+$MARGIN_BOT_TAB: 64px;
+$MARGIN_BOT_WIDE: 80px;
+$MAX_WIDTH: 1136px;
+
+@mixin page-layout {
+  z-index: c.$tiny;
+  box-sizing: border-box !important;
+  max-width: calc(100% - $MARGIN_SIDE_MOB * 2);
+  margin: $MARGIN_TOP $MARGIN_SIDE_MOB $MARGIN_BOT_MOB;
+
+  @media (min-width: c.$BREAKPOINT_TAB) {
+    max-width: calc(100% - $MARGIN_SIDE_TAB * 2);
+    margin: $MARGIN_TOP $MARGIN_SIDE_TAB $MARGIN_BOT_TAB;
+  }
+
+  @media (min-width: c.$BREAKPOINT_WIDE) {
+    width: $MAX_WIDTH;
+    margin: $MARGIN_TOP $MARGIN_SIDE_WIDE $MARGIN_BOT_WIDE;
+  }
+}

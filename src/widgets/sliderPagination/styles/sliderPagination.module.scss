@@ -1,0 +1,86 @@
+@use '@shared/styles' as s;
+
+.block-pagination {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.image-pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: start;
+
+  height: 100%;
+
+  background-color: #fff;
+
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+
+.pagination-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  border: none;
+
+  &-is-active {
+    > div {
+      background-color: s.$c-grey-primary !important;
+    }
+  }
+}
+
+.pagination-block {
+  display: block;
+  width: 14px;
+  height: 4px;
+  background-color: s.$c-elements;
+}
+
+.image-button {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  border: 1px solid s.$c-elements;
+
+  object-fit: fill;
+
+  &-is-active {
+    border: 1px solid s.$c-grey-primary;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.product-image {
+  display: block;
+  height: 100%;
+}
+

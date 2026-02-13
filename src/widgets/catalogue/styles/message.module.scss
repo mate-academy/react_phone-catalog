@@ -1,0 +1,32 @@
+@use '@shared/styles' as s;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+
+  width: 100%;
+  height: 100%;
+}
+
+.message {
+  display: flex;
+  width: 100%;
+  margin-bottom: 50px;
+
+
+  @include s.t-h4;
+}
+
+.reload {
+  display: flex;
+  margin-left: 100px;
+  padding: 20px 30px;
+
+  @include s.m-btn-btn-blc;
+
+  &:hover {
+    @include s.m-btn-hover-black;
+  }
+}

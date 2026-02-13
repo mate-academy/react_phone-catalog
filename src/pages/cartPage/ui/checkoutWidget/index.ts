@@ -1,0 +1,1 @@
+export { CheckoutWidget } from './CheckoutWidget';

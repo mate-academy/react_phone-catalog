@@ -1,0 +1,16 @@
+@use '@shared/styles' as s;
+
+.return-button {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  align-self: flex-start;
+
+  height: 16px;
+
+  color: s.$c-grey-secondary;
+
+  @include s.t-button-text
+}

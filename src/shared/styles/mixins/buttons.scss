@@ -1,0 +1,86 @@
+@use '@shared/styles/typography/bodyTexts.scss' as t;
+@use '@shared/styles/constants/' as c;
+
+$primary-grey-border: 1px solid c.$grey-primary;
+
+// #region Base
+@mixin button-base {
+  cursor: pointer;
+
+  position: relative;
+  z-index: c.$regular;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  @include t.button-text;
+
+  &:hover {
+    z-index: c.$attention;
+  }
+
+  &:active {
+    z-index: c.$focus;
+  }
+}
+
+// #endregion
+
+// #region Buttons
+@mixin btn-blc {
+  color: c.$white;
+  background-color: c.$grey-primary;
+  box-shadow: 0 3px 13px transparent;
+  transition: box-shadow 0.5s ease;
+
+  @include button-base;
+}
+
+@mixin btn-reg {
+  box-shadow: inset 0 0 0 1px c.$elements;
+  transition: box-shadow 0.3s ease;
+
+  @include button-base;
+}
+
+@mixin btn-menu {
+  border: 1px solid c.$icons;
+
+  @include button-base;
+}
+
+// #endregion
+
+// #region Hover
+@mixin hover-reg {
+  z-index: c.$focus;
+  box-shadow: inset 0 0 0 1px c.$grey-primary;
+  transition: box-shadow 0.3s ease;
+}
+
+@mixin hover-black {
+  box-shadow: 0 3px 13px #17203166;
+}
+
+// #endregion
+
+// #region Active
+@mixin active-green {
+  border: c.$elements;
+  color: c.$green;
+  background-color: c.$white;
+  box-shadow: none;
+}
+
+// #endregion
+
+@mixin disabled {
+  border-color: c.$elements;
+
+  > svg > path {
+    fill: c.$elements;
+  }
+}

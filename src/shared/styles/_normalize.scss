@@ -1,0 +1,36 @@
+@use '@shared/styles/constants' as c;
+
+body,
+a,
+ul,
+button,
+h1,
+main,
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  background-color: c.$white;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

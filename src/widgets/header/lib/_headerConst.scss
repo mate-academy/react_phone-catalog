@@ -1,0 +1,8 @@
+$logo-width-mob: 96px;
+$logo-width-wide: 128px;
+$button-size: 48px;
+$button-size-wide: 64px;
+$grid-mob-active: #{$button-size} calc(100vh - #{$button-size} - #{$button-size-wide}) #{$button-size-wide} / 1fr #{$button-size};
+$grid-mob-inactive: #{$button-size} 0 0 / 1fr #{$button-size};
+$grid-tab: 48px / #{$logo-width-mob} 1fr calc(#{$button-size} * 2);
+$grid-wide: 64px / #{$logo-width-wide} 1fr calc(#{$button-size-wide} * 2);

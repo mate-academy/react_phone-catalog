@@ -1,0 +1,22 @@
+@use '@shared/styles' as s;
+
+.container {
+  @include s.page-layout;
+
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.sorry {
+  @include s.t-h3;
+
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.h1 {
+  @include s.t-h1;
+
+  align-self: center;
+}

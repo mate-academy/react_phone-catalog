@@ -5,6 +5,17 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "baseUrl": ".",
+    "paths": {
+      "@app/*":       ["src/app/*"],
+      "@ui/*":        ["src/shared/ui/*"],
+      "@shared/*":    ["src/shared/*"],
+      "@entities/*":  ["src/entities/*"],
+      "@widgets/*":   ["src/widgets/*"],
+      "@features/*":  ["src/features/*"],
+      "@server/*":    ["src/serverMock/*"],
+      "@pages/*":     ["src/pages/*"],
+    }
   }
 }

@@ -1,0 +1,32 @@
+@use '@shared/styles' as s;
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  > * {
+    text-transform: capitalize;
+  }
+
+  :first-child {
+    padding: 10px 20px;
+
+    @include s.m-btn-btn-blc;
+
+    &:hover {
+      @include s.m-btn-hover-black;
+    }
+  }
+
+  :last-child {
+    padding: 10px 15px;
+
+    @include s.m-btn-btn-reg;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
+  }
+}

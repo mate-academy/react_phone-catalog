@@ -1,0 +1,30 @@
+@use '@shared/styles/constants' as c;
+
+@mixin small-text {
+  font-size: c.$xxsm;
+  font-weight: c.$s;
+  line-height: c.$lh-xs;
+  letter-spacing: c.$null;
+}
+
+@mixin uppercase {
+  font-size: c.$xxsm;
+  font-weight: c.$s-u;
+  line-height: c.$lh-xxs;
+  text-transform: uppercase;
+  letter-spacing: c.$pos;
+}
+
+@mixin button-text {
+  font-size: c.$xsm;
+  font-weight: c.$r;
+  line-height: c.$lh-m;
+  letter-spacing: c.$null;
+}
+
+@mixin body-text {
+  font-size: c.$xsm;
+  font-weight: c.$r;
+  line-height: c.$lh-xs;
+  letter-spacing: c.$null;
+}

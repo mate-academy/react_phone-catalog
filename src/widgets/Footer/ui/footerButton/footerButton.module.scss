@@ -1,0 +1,32 @@
+@use '@shared/styles' as s;
+
+.button {
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  > span {
+    @include s.t-small-text;
+
+    display: inline-block;
+    line-height: 32px;
+    color: s.$c-grey-secondary;
+  }
+
+  > button {
+    width: 32px;
+    height: 32px;
+
+    @include s.m-btn-btn-reg;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
+  }
+}

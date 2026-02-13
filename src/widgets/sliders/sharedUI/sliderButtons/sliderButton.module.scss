@@ -1,0 +1,19 @@
+@use '@shared/styles' as s;
+
+.button {
+  width: 100%;
+  height: 100%;
+
+  @include s.m-btn-btn-reg;
+
+  &:hover, &:focus {
+    @include s.m-btn-hover-reg;
+    
+    border-color: s.$c-icons;
+  }
+
+  &:disabled {
+
+    @include s.m-btn-disabled;
+  }
+}

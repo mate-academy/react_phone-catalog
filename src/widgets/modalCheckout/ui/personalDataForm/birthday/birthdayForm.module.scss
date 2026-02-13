@@ -1,0 +1,37 @@
+@use '@shared/styles' as s;
+@use '../../../styles' as l;
+
+.birthdate {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 10px;
+
+  > legend {
+    @include l.form-legend ;
+  }
+
+  .inner-container {
+    display: grid;
+    grid-template: repeat(3, 20px 40px) / 1fr;
+    align-items: center;
+    gap: 10px;
+
+    > label {
+      @include l.input-label;
+    }
+
+    > .select-wrapper {
+      @include l.modal-select;
+    }
+
+    @media(min-width: s.$c-BREAKPOINT_TAB) {
+      grid-template: 20px 40px / repeat(3, 1fr);
+
+      > label {
+        grid-row: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@use '@shared/styles' as s;
+
+.articleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    gap: 64px;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+  }
+}
+
+.article-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.heading {
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid s.$c-elements;
+  text-transform: capitalize;
+
+  @include s.t-h3;
+}

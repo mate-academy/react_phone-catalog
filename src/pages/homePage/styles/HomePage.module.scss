@@ -1,0 +1,77 @@
+@use '@shared/styles' as s;
+
+$GAP_MOB: 56px;
+$GAP_TAB: 64px;
+$GAP_WIDE: 80px;
+$GRID_SPACER: 24px;
+
+.container {
+  @include s.page-layout;
+
+  display: flex;
+  flex-direction: column;
+  gap: $GAP_MOB;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    gap: $GAP_TAB;
+    margin-top: 32px;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    gap: $GAP_WIDE;
+    margin-top: 56px;
+  }
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__text {
+    @include s.t-h1;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    gap: 32px;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    gap: 56px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  display: none;
+}
+
+.home-catalogue {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    gap: 80px;
+  }
+}
+
+.home-catalogue > :first-child [data-hide-price] {
+  display: none;
+}
+
+.categories {
+  display: grid;
+  grid-template-rows: 31px repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    grid-template: 41px 1fr / repeat(3, 1fr);
+    gap: 24px 16px;
+
+    &__title {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+  }
+}

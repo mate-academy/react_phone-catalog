@@ -1,0 +1,54 @@
+@use '@shared/styles' as s;
+
+.layout-container {
+  @include s.page-layout;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: s.$c-regular;
+}
+
+h1 {
+  @include s.t-h1;
+
+  color: s.$c-grey-primary;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.widgets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    display: grid;
+    grid-template: 56px 1fr / 1fr 368px;
+    gap: 32px 16px;
+
+    [data-checkout] {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    > ul {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+}
+
+.message {
+  @include s.t-h4;
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+}
+

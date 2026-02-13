@@ -1,0 +1,90 @@
+@use '@shared/styles' as s;
+
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 136px;
+}
+
+.title {
+  font-weight: 500;
+  color: s.$c-grey-secondary;
+
+  @include s.t-small-text;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 40px;
+  padding-left: 12px;
+  border: 1px solid s.$c-icons;
+
+  line-height: 40px;
+
+  &:hover {
+    border-color: s.$c-grey-secondary;
+  }
+
+  &:focus {
+    border-color: s.$c-grey-primary;
+  }
+
+  svg {
+    width: 16px !important;
+    margin: 12px;
+    > path {
+      fill: s.$c-icons;
+    }
+  }
+}
+
+.options {
+  pointer-events: all;
+  cursor: pointer;
+
+  position: absolute;
+  z-index: s.$c-attention;
+  top: calc(100% + 4px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 0;
+  border: 1px solid s.$c-elements;
+
+  color: s.$c-grey-secondary;
+
+  background-color: #fff;
+
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 32px;
+    padding-left: 12px;
+
+    color: s.$c-grey-secondary;
+
+    @include s.t-body-text;
+
+    &__active {
+      color: s.$c-grey-primary;
+      background-color: s.$c-hover-bg;
+    }
+  }
+}
+

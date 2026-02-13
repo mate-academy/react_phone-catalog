@@ -1,0 +1,14 @@
+@use '@shared/styles' as s;
+@use '../../styles' as l;
+
+.form-container {
+  @include l.form-column;
+}
+
+.heading {
+  @include l.form-legend;
+}
+
+.input-wrapper {
+  @include l.text-input;
+}

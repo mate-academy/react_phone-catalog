@@ -1,0 +1,51 @@
+@use '@shared/styles' as s;
+
+.product-slider {
+  scrollbar-width: none;
+
+  position: relative;
+
+  overflow-y: hidden;
+  display: grid;
+  grid-template: 1fr 49px / 1fr;
+  gap: 16px 0;
+
+  width: 100%;
+  height: 100%;
+
+  > :first-child {
+    min-width: 100%;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    grid-template: 1fr / 35px 1fr;
+    gap: 0 16px;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    grid-template: 1fr / 80px 1fr;
+
+  }
+}
+
+.viewport {
+  overflow: hidden;
+  display: block;
+  grid-area: 1 / 1 / 2 / 2;
+  touch-action: pan-y;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+}
+
+.track {
+  display: flex;
+  gap: var(--gap);
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
+  touch-action: none;
+  transition: var(--animation-speed) ease-in-out;
+}

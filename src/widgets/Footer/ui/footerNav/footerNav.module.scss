@@ -1,0 +1,46 @@
+@use '@shared/styles' as s;
+
+.container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media(min-width: s.$c-BREAKPOINT_TAB) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+  }
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  @include s.t-uppercase;
+
+  display: inline-block;
+  padding: 8px 16px;
+  color: s.$c-grey-secondary;
+
+  &:focus {
+    color: s.$c-grey-primary;
+  }
+
+}

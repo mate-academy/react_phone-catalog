@@ -1,0 +1,34 @@
+@use '@shared/styles' as s;
+
+.detailed-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8px;
+  width: 100%;
+
+  @include s.t-small-text;
+}
+
+.key {
+  color: s.$c-grey-secondary;
+}
+
+.value, .skeleton {
+  justify-self: end;
+}
+
+.value {
+  overflow: hidden;
+  color: s.$c-grey-primary;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skeleton {
+  width: var(--width);
+  height: 100%;
+  border-radius: 5px;
+  background-color: s.$c-elements;
+
+  @include s.e-shimmering-element;
+}

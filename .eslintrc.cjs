@@ -37,8 +37,18 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    // JS
     'semi': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js:  'never',
+        jsx: 'never',
+        ts:  'never',
+        tsx: 'never',
+        scss:'always',
+      },
+    ],
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
@@ -103,6 +113,22 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/resolver': {
+      typescript: {},
+      alias: {
+        map: [
+          ['@app', './src/app'],
+          ['@ui', './src/shared/ui'],
+          ['@shared', './src/shared'],
+          ['@entities', './src/entities'],
+          ['@widgets', './src/widgets'],
+          ['@features', './src/features'],
+          ['@server', './src/serverMock'],
+          ['@pages', './src/pages'],
+        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+      },
     },
   },
 };

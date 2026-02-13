@@ -1,0 +1,11 @@
+.figure {
+  display: flex;
+  flex: 0 0 100%;
+}
+
+.image {
+  display: block;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  object-fit: contain;
+}

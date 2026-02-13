@@ -1,0 +1,56 @@
+@use '@shared/styles' as s;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  @include s.page-layout;
+
+  > :nth-child(5) {
+    margin-top: 24px;
+  }
+}
+
+.navigation {
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    margin-bottom: 40px;
+  }
+}
+
+.pagination {
+  display: flex;
+}
+
+.h1 {
+  @include s.t-h1;
+
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.models {
+  @include s.t-body-text;
+
+  margin-bottom: 32px;
+  color: s.$c-grey-secondary;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    margin-bottom: 40px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+

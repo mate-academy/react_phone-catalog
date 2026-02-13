@@ -1,0 +1,9 @@
+@use '@shared/styles' as s;
+
+.line {
+  display: inline-block;
+  width: 100%;
+  height: 15px;
+
+  @include s.e-shimmering-element;
+}

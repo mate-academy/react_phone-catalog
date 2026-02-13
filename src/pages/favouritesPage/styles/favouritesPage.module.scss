@@ -1,0 +1,39 @@
+@use '@shared/styles' as s;
+
+.layout-container {
+  @include s.page-layout;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  display: flex;
+  margin-bottom: 24px;
+
+  @media(min-width: s.$c-BREAKPOINT_TAB) {
+    margin-bottom: 40px;
+  }
+}
+
+.catalogue {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin-bottom: 8px;
+
+  @include s.t-h1;
+}
+
+.length {
+  @include s.t-body-text;
+
+  margin-bottom: 32px;
+  color: s.$c-grey-secondary;
+
+  @media(min-width: s.$c-BREAKPOINT_TAB) {
+    margin-bottom: 40px;
+  }
+}

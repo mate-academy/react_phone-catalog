@@ -1,0 +1,51 @@
+@use '@shared/styles/constants' as c;
+
+@mixin h1 {
+  font-size: c.$xlg;
+  font-weight: c.$s-u;
+  line-height: c.$lh-xxl;
+  letter-spacing: c.$neg;
+
+  @media (min-width: c.$BREAKPOINT_TAB) {
+    font-size: c.$xxlg;
+    line-height: c.$lh-xxxl;
+  }
+}
+
+@mixin h2 {
+  font-size: c.$lg;
+  font-weight: c.$b;
+  line-height: c.$lh-xl;
+  letter-spacing: c.$null;
+
+  @media (min-width: c.$BREAKPOINT_TAB) {
+    font-size: c.$xlg;
+    line-height: c.$lh-xxl;
+    letter-spacing: c.$neg;
+  }
+}
+
+@mixin h3 {
+  font-size: c.$mid;
+  font-weight: c.$s-u;
+  line-height: c.$lh-l;
+  letter-spacing: c.$null;
+
+  @media (min-width: c.$BREAKPOINT_TAB) {
+    font-size: c.$lg;
+    font-weight: c.$b;
+    line-height: c.$lh-xl;
+  }
+}
+
+@mixin h4 {
+  font-size: c.$sm;
+  font-weight: c.$s-u;
+  line-height: c.$lh-s;
+  letter-spacing: c.$null;
+
+  @media (min-width: c.$BREAKPOINT_TAB) {
+    font-size: c.$mid;
+    line-height: c.$lh-l;
+  }
+}

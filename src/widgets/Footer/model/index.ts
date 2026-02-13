@@ -1,0 +1,1 @@
+export { links } from './linkProps';

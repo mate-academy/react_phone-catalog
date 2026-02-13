@@ -1,0 +1,18 @@
+@use '@shared/styles' as s;
+
+.modal-backdrop {
+  position: fixed;
+  display: grid;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  place-items: start center;
+  margin-top: 5px;
+
+  z-index: s.$c-focus;
+  overflow-y: hidden;
+}
+
+.modal-backdrop-hidden {
+  display: none;
+}

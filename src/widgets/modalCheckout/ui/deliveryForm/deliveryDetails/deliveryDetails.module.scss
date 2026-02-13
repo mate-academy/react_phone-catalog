@@ -1,0 +1,14 @@
+@use '@shared/styles' as s;
+@use '../../../styles/' as l;
+
+.input-wrapper {
+  @include l.text-input;
+}
+
+.select-wrapper {
+  @include l.modal-select;
+}
+
+.label {
+  @include l.input-label;
+}
