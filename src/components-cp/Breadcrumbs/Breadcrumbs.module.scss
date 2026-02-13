@@ -1,0 +1,146 @@
+@import '../../assets/fonts/variables';
+
+.breadcrumbWrapper {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: calc(24 * 32px + 23 * 16px);
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.breadcrumb {
+  display: flex;
+   flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+
+  min-width: 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+    line-height: 1;
+    text-decoration: none;
+
+    transition: transform 0.2s ease;
+
+    &:active,
+    &:focus {
+      height: auto;
+      outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .currentPage{
+    display: flex;
+    align-items: center;
+
+    height: 15px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-secondary);
+    letter-spacing: 0;
+    white-space: nowrap;
+
+    &.withExtra {
+      color: var(--color-white);
+    }
+    &.gray {
+      color: var(--color-secondary);
+    }
+  }
+
+  .extra {
+    align-items: center;
+
+    height: 15px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-secondary);
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+}
+
+
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .breadcrumbWrapper {
+     align-items: center;
+  justify-content: flex-start;
+     width: 640px;
+     margin: 0 24px;
+  }
+}
+
+
+
+
+
+
+@media (max-width: 639px) {
+  .breadcrumbWrapper {
+    width: 100%;
+    margin: 0 16px;
+    padding-bottom: 24px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    align-items: center;
+
+    min-width: 0;
+  }
+
+  .breadcrumb a,
+  .breadcrumb .arrow {
+    flex-shrink: 0;
+  }
+
+
+
+  .extra {
+    overflow: hidden;
+    display: block;
+
+    width: calc(100vw - 230px);
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-secondary);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,239 @@
+@import '../../assets/fonts/variables';
+
+.footer {
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 96px;
+  border-top: 1px solid var(--color-surface2);
+
+  color: var(--color-white);
+
+  background-color: var(--color-black);
+}
+
+.container {
+  display: grid;
+  align-items: center;
+
+  width: 100%;
+  height: 96px;
+  margin: 0 auto;
+
+  @include grid-24-mw($gap: 16px);
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+.logoContainer,
+.nav,
+.backToTop {
+  display: flex;
+  flex-basis: 33.33%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logoContainer {
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    width: 89px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+  justify-content: space-between;
+
+  a {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--color-icons);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+
+    transition:
+      transform 0.2s ease,
+      color 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+      color: var(--color-white);
+    }
+  }
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
+
+  .scrollButton {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: var(--color-surface2);
+
+    img {
+      transform: rotate(90deg);
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      background-color: var(--color-surface2);
+    }
+  }
+
+  span {
+
+    @include small-text-style;
+    
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-icons);
+    transition:
+      transform 0.2s ease,
+      color 0.3s;
+  }
+
+  &:hover span {
+    transform: scale(1.1);
+    color: var(--color-white);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .container {
+    display: grid;
+    align-items: center;
+
+    max-width: 100%;
+    height: 96px;
+    margin: 32px;
+  }
+
+  .footerInner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    width: 100%;
+  }
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .logoContainer img {
+    width: 89px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    align-items: center;
+    justify-content: space-between;
+
+    text-align: center;
+
+    a:nth-child(1) {
+      justify-self: start;
+    }
+    a:nth-child(2) {
+      justify-self: center;
+    }
+    a:nth-child(3) {
+      justify-self: end;
+    }
+  }
+
+  .backToTop {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 639px) {
+  .footer {
+    gap: 32px;
+    height: auto;
+  }
+
+  .footerInner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+
+    height: auto;
+    padding: 32px 16px;
+  }
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 32px;
+
+    img {
+      display: block;
+      width: auto;
+      height: 32px;
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .nav a {
+    display: block;
+    line-height: 11px;
+  }
+
+  .backToTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+  }
+}

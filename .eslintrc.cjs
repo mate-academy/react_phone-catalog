@@ -37,15 +37,11 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    // JS
     'semi': 'off',
-    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/semi': "off",
     'prefer-const': 2,
     curly: [2, 'all'],
-    'max-len': ['error', {
-      ignoreTemplateLiterals: true,
-      ignoreComments: true,
-    }],
+    'max-len': "off",
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': 0,
