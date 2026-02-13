@@ -1,0 +1,17 @@
+.productGrid {
+  grid-column: 1/-1;
+  row-gap: 40px;
+  width: 100%;
+
+  @include grid-page;
+  .card {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+
+}
+

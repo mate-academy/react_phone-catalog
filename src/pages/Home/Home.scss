@@ -1,0 +1,6 @@
+.home-page {
+  row-gap: 56px;
+
+  @include grid-page;
+  @include inline-padding;
+}

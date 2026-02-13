@@ -1,0 +1,44 @@
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  border: 1px solid $c-elements;
+  gap: 8px;
+  &__link {
+    text-decoration: none;
+    color: $c-primary;
+  }
+  &__image-wrapper {
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    position: relative;
+    transition: all $transition-duration;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+  &__product-name {
+    display: flex;
+    align-items: flex-end;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    padding-top: 16px;
+  }
+}
