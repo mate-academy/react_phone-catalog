@@ -1,0 +1,45 @@
+.list {
+  
+  @include content-padding-inline;
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+  }
+
+  &__content {
+    margin-bottom: 64px;
+
+    @include responsive-grid;
+  }
+
+  &__dropdowns {
+    grid-area: 2 / 1 / 2 / -1;
+
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-area: 2 / 1 / 2 / -1;
+    }
+  }
+
+  &__products {
+    grid-column: 1 / -1;
+    row-gap: 40px;
+
+    @include responsive-grid;
+  }
+
+  &__noProducts {
+    grid-column: 1 / -1;
+
+    margin-block: 40px;
+
+    @include apply-typography(h3);
+  }
+}
