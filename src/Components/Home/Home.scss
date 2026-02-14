@@ -1,0 +1,131 @@
+.home {
+  margin-top: 24px;
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__title {
+    width: 1040px + 96px;
+    justify-self: flex-start;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: #F1F2F9;
+  }
+
+  &__banner--box {
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    max-height: 400px;
+    margin-bottom: 16px;
+    max-width: 1040px + 96px; // 96 cus buttons are 32px*2 + gaps 16px * 2 = 96px
+  }
+
+  &__slider-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #323542;
+    flex: 0 0 32px;
+
+    &--right {
+      transform: scaleX(-1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #323542;
+      flex: 0 0 32px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.home-banner {
+  max-width: 1040px;
+  height: 400px;
+  width: 1040px;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (max-width: 1199px) {
+  .home {
+    margin-inline: 16px;
+
+    &__title {
+      text-align: center;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: Bold;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+
+    &__banner--box {
+      max-height: 350px;
+      margin-bottom: 16px;
+      max-width: 90vw;
+      gap: 8px;
+    }
+  }
+
+  .home-banner {
+    height: 100%;
+    width: 100%;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .home-banner {
+    width: 100vw;
+  }
+
+  .home__title {
+    font-size: 18px;
+  }
+}
+
+.home-banners__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.paginate-button {
+  width: 14px;
+  height: 4px;
+  opacity: 1;
+  background-color: #3B3E4A;
+}
+
+.active-pagination {
+  background-color: #fff;
+  color: #fff;
+}
+
+
