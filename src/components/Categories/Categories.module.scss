@@ -1,0 +1,136 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+.category_main_container {
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    height: 328px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    height: 508px;
+    margin-bottom: 80px;
+  }
+}
+
+.all_categories {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include width;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.category_card {
+  @include on-tablet {
+    width: 188px;
+    height: 262px;
+  }
+
+  @include on-desktop {
+    width: 368px;
+    height: 444px;
+  }
+}
+
+.category_card_link {
+  text-decoration: none;
+}
+
+.category_title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+
+  @include width;
+
+  height: 32px;
+  
+  color: var(--text-color-main);
+  line-height: 140%;
+  
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -.01em;
+  }
+}
+
+.category_image {
+  width: 288px;
+  height: 288px;
+  margin-bottom: 24px;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(.9);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  @include on-tablet {
+    width: 188px;
+    height: 188px;
+  }
+
+  @include on-desktop {
+    width: 368px;
+    height: 368px;
+  }
+}
+
+.category_info_container {
+  width: 188px;
+  height: 52px;
+}
+
+.category_name {
+  width: 188px;
+  height: 26px;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+
+  margin: 0 0 4px;
+
+  color: var(--text-color-main);
+  
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  @include on-desktop {
+    font-weight: 600;
+  }
+}
+
+.category_items_count {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  width: 188px;
+  height: 22px;
+
+  margin: 0;
+  color: var(--text-color-secondary);
+  line-height: 21px;
+
+  @include on-desktop {
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,28 @@
+@mixin flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+$button-border-default: #B4BDC3;
+$button-border-disabled: #E2E6E9;
+$main-background-white: #FFF;
+$main-dark-gray: #313237;
+$main-light-gray: #89939A;
+$dark-background-black: #0F1121;
+$dark-text-color-white: #F1F2F9;
+$dark-text-color-gray: #75767F;
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;

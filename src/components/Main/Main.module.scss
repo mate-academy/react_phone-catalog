@@ -1,0 +1,48 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+.main_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  @include padding-left;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    margin-bottom: 80px;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.loader_container {
+  width: 100vw;
+  @include flex-centered;
+}
