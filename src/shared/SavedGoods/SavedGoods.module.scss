@@ -1,0 +1,72 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.savedGoods {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #3b3e4a;
+  margin-top: auto;
+  
+  @include respond(tablet) {
+    flex: 1;
+    justify-content: end;
+  }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 64px;
+
+    @include respond(tablet) {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include respond(desktop) {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:active {
+      border-bottom: 2px solid #f1f2f9;
+    }
+  }
+  &_favorite {
+    border-right: 1px solid #3b3e4a;
+
+    @include respond(tablet) {
+      border-inline: 1px solid #3b3e4a;
+    }
+  }
+}
+
+.miniImage {
+  &_container {
+    position: relative;
+    display: inline-block;
+  }
+
+  &_image {
+    display: block;
+  }
+
+  &_badge {
+    position: absolute;
+    top: -6px;
+    left: 12px;
+    background-color: #eb5757;
+    color: white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #0f1121;
+    user-select: none;
+
+    font-weight: 700;
+    font-size: 9px;
+    text-align: center;
+  }
+}
+
