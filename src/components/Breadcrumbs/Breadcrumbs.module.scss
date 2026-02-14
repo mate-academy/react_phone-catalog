@@ -1,0 +1,23 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.breadcrumbs {
+  @include flex($direction: row, $items: center);
+
+  gap: 8px;
+  margin: 24px auto 40px;
+
+  &__text {
+    color: $regent-gray-color;
+  }
+
+  &__link {
+    color: $woodsmoke-color;
+
+    @include hover(color, $regent-gray-color);
+  }
+
+  @include on-mobile {
+    margin: 24px auto;
+  }
+}

@@ -1,0 +1,26 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.button {
+  flex-grow: 1;
+  background-color: $dodger-blue-color;
+  border-radius: $radius-medium;
+  color: $white-color;
+  text-align: center;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 700;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &__selected {
+    border: 1px solid $porcelain-color;
+    color: $dodger-blue-color;
+    background-color: $white-color;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
