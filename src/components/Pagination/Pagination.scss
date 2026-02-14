@@ -1,0 +1,101 @@
+@import '../../style/utils/variables';
+@import '../../style/utils/mixins';
+
+.pagination {
+  &__content {
+    overflow: hidden;
+    margin-block: 40px 80px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+
+    padding: 0;
+
+    text-align: center;
+    list-style: none;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    text-decoration: none;
+
+    &--active {
+      border: none;
+      background-color: $primary;
+    }
+  }
+
+  &__back-to-first {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    &--img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
+    }
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+
+    background-image: url(../../style/icons/Chevron-Arrow-Right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--left {
+      transform: rotate(180deg);
+
+      &--disabled {
+        border: 1px solid $elements;
+        background-image: url(../../style/icons/Chevron-Arrow-Right--disabled.svg);
+      }
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
+      background-image: url(../../style/icons/Chevron-Arrow-Right--disabled.svg);
+    }
+  }
+
+  &__numbers {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__number {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    &--active {
+      color: $white;
+    }
+  }
+
+  &__sidebutton {
+    display: block;
+  }
+}
