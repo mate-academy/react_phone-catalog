@@ -1,0 +1,243 @@
+@use './utils' as utils;
+
+html {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  scroll-behavior: smooth;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &--menu {
+    background-image: url(../assets/img/icons/menu-burger-icon.svg);
+  }
+
+  &--home {
+    background-image: url(../assets/img/icons/home.svg);
+  }
+
+  &--like {
+    background-image: url(../assets/img/icons/like.svg);
+  }
+
+  &--heart-red {
+    background-image: url(../assets/img/icons/heart-red.svg);
+  }
+
+  &--cart {
+    background-image: url(../assets/img/icons/cart.svg);
+  }
+
+  &--close {
+    background-image: url(../assets/img/icons/close.svg);
+  }
+
+  &--search {
+    background-image: url(../assets/img/icons/search.svg);
+  }
+
+  &--minus {
+    background-image: url(../assets/img/icons/minus.svg);
+  }
+
+  &--plus {
+    background-image: url(../assets/img/icons/plus.svg);
+  }
+
+  &--arrow {
+    background-image: url(../assets/img/icons/arrow-up.svg);
+    transition: transform 0.3s;
+
+    &--right {
+      transform: rotateZ(90deg);
+    }
+
+    &--left {
+      transform: rotateZ(-90deg);
+    }
+
+    &--down {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.circle-color {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid utils.$elements;
+  padding: 2px;
+  box-sizing: border-box;
+  background-color: white;
+  position: relative;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: utils.$icons;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &--active {
+    border-color: utils.$primary;
+    pointer-events: none;
+  }
+
+  &--black {
+    background-color: utils.$primary;
+  }
+
+  &--green {
+    background-color: utils.$green;
+  }
+
+  &--yellow {
+    background-color: yellow;
+  }
+
+  &--purple {
+    background-color: purple;
+  }
+
+  &--rosegold {
+    background-color: utils.$rosegold;
+  }
+
+  &--red {
+    background-color: utils.$red;
+  }
+
+  &--silver {
+    background-color: utils.$elements;
+  }
+
+  &--spacegray {
+    background-color: utils.$secondary;
+  }
+
+  &--gold {
+    background-color: utils.$gold;
+  }
+
+  &--midnightgreen {
+    background-color: utils.$midnightgreen;
+  }
+
+  &--skyblue {
+    background-color: utils.$blue;
+  }
+}
+
+.main {
+  padding-top: 48px;
+  box-sizing: border-box;
+  flex: 1;
+
+  @include utils.on-desktop {
+    padding-top: 64px;
+  }
+}
+
+.container {
+  max-width: utils.$desktop-min-width;
+  padding-inline: 16px;
+  margin: 0 auto;
+
+  @include utils.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include utils.on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include utils.page-grid;
+
+  @media (min-width: utils.$tablet-min-width) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: utils.$desktop-min-width) {
+    margin-bottom: 86px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  margin-block: 24px;
+
+  @include utils.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+
+  @include utils.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid utils.$elements;
+  width: 100%;
+}
+
+.button {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  flex-grow: 1;
+  height: 40px;
+  background-color: utils.$primary;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &--selected {
+    border: 1px solid utils.$elements;
+    background-color: #fff;
+    color: utils.$green;
+  }
+}
