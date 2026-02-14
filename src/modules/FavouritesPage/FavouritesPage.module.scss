@@ -1,0 +1,74 @@
+@import '../../shared/index';
+
+.page {
+  background-color: var(--page-color);
+  padding-inline: $padding-mobile;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $margin-bottom-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+    margin: 0 auto;
+    margin-bottom: $margin-bottom-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    padding-inline: $padding-desktop;
+    margin: 0 auto;
+    margin-bottom: $margin-bottom-desktop;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__error,
+  &__itemsAmount {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--secondary-color);
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    text-align: center;
+  }
+
+  &__image {
+    max-width: 320px;
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    padding-left: 8px;
+    margin-bottom: 40px;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+  }
+}

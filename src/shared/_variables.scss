@@ -1,0 +1,52 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$padding-mobile: 16px;
+$padding-tablet: 24px;
+$padding-desktop: 32px;
+$max-width: 1136px + ($padding-desktop * 2);
+$margin-bottom-mobile: 56px;
+$margin-bottom-tablet: 64px;
+$margin-bottom-desktop: 80px;
+$page-color: #FAFBFC;
+$primary-color: #0F0F11;
+$secondary-color: #89939A;
+$elements-color: #e2e6e9;
+$accent: #4219d0;
+$icons-color: #B4BDC3;
+$white-color: #FFF;
+
+// Default light theme variables
+:root {
+  --page-color: #FAFBFC;
+  --primary-color: #0F0F11;
+  --secondary-color: #89939A;
+  --elements-color: #e2e6e9;
+  --accent: #4219d0;
+  --icons-color: #B4BDC3;
+  --white-color: #FFF;
+  --button-color: #fff;
+}
+
+// Dark theme variables
+.dark {
+  --page-color: #181A1B;
+  --primary-color: #F3F3F3;
+  --secondary-color: #B4BDC3;
+  --elements-color: #23272A;
+  --accent: #8B5CF6;
+  --icons-color: #B4BDC3;
+  --white-color: #393d42;
+  --button-color: black;
+}
+
+// Light theme variables
+.light {
+  --page-color: #FAFBFC;
+  --primary-color: #0F0F11;
+  --secondary-color: #89939A;
+  --elements-color: #e2e6e9;
+  --accent: #4219d0;
+  --icons-color: #B4BDC3;
+  --white-color: #FFF;
+  --button-color: #fff;
+}

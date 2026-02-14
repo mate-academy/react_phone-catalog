@@ -1,0 +1,42 @@
+@import '../../shared/index';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 15px;
+    gap: 8px;
+  }
+
+  &__separator {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/arrow-right-grey.svg');
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background: center no-repeat url('/img/icons/icon-home.svg');
+  }
+
+  &__item {
+    font-weight: 600;
+    color: var(--primary-color);
+
+    &--active {
+      font-weight: 400;
+      color: var(--secondary-color);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

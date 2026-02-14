@@ -1,0 +1,99 @@
+@import './shared/index';
+@import './shared/mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--primary-color);
+}
+
+body {
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background-color: var(--page-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@include on-tablet {
+  h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: inherit;
+  letter-spacing: 0;
+  background-color: transparent;
+}
+
+img {
+  display: block;
+}
