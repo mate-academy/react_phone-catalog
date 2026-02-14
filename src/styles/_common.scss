@@ -1,0 +1,69 @@
+.is-active {
+  color: $primary-color;
+  position: relative;
+  transition: color $hover-duration;
+
+  &::after {
+    transition: background-color $hover-duration;
+
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $primary-color;
+
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.link {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $primary-color;
+    opacity: 0;
+    transition: opacity $hover-duration;
+
+    position: absolute;
+    bottom: 0;
+  }
+
+  &:hover {
+    color: $primary-color;
+    background-color: $hover-color;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.crossed-price {
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  color: $secondary-color;
+  font-size: 22px;
+  line-height: 28px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 2px;
+    background-color: $secondary-color;
+    mix-blend-mode: color-dodge;
+  }
+
+  &--dark.crossed-price::after {
+    mix-blend-mode: color-burn;
+  }
+}

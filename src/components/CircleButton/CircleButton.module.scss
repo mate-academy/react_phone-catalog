@@ -1,0 +1,10 @@
+@import '@styles/main';
+
+.btn {
+  @include circle-btn;
+
+  &--long {
+    height: 100%;
+    border-radius: 48px;
+  }
+}
