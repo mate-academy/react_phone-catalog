@@ -1,0 +1,89 @@
+@import '../../styles/index';
+
+.productCard {
+  @include flex;
+
+  flex-direction: column;
+  background-color: $white-color;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  border-radius: 8px;
+  border: 1px solid $elements-color;
+
+  @media (max-width: 1199px) {
+    width: 300px;
+  }
+
+  @media (max-width: 991px) {
+    width: 340px;
+  }
+
+  @media (max-width: 767px) {
+    width: 260px;
+  }
+
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+
+  &__slider {
+    width: 100%;
+
+    @media (max-width: 991px) {
+      padding: 28px;
+    }
+
+    @media (max-width: 575px) {
+      padding: 25px;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+    height: 196px;
+
+    @include hover((transform, scale(1.1)));
+  }
+
+  &__imgWrapper {
+    align-self: center;
+  }
+
+  &__text {
+    @include hover((color, $secondary-text-color));
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__information {
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    @include flex;
+
+    color: $secondary-text-color;
+  }
+
+  &__info:not(:first-child) {
+    padding-top: 8px;
+  }
+
+  &__techValue {
+    color: $main-text-color;
+  }
+
+  &__btns {
+    @include flex;
+
+    gap: 8px;
+  }
+
+  &__btn {
+    flex: 5;
+  }
+}
