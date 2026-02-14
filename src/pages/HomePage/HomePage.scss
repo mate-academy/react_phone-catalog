@@ -1,0 +1,21 @@
+@import '../../styles/main';
+
+.homePage {
+  &__title {
+    margin-block: 24px;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: $whiteColor;
+}
