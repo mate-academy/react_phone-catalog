@@ -1,0 +1,121 @@
+@import '../../styles/main';
+
+.favourites {
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  font-family: Mont, sans-serif;
+  color: $textMainColor;
+  padding-bottom: 56px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-bottom: 64px;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+    padding-bottom: 80px;
+  }
+
+  &_backContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 25px;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    &_img {
+      display: block;
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+    }
+
+    &_backText {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: $textSecondaryColor;
+
+      &::before {
+        content: '';
+        display: block;
+        height: 16px;
+        width: 16px;
+        margin-right: 8px;
+        background-repeat: no-repeat;
+        background-image: url('../../assets/img/icons/arrow-right-grey-icon.svg');
+        color: $textSecondaryColor;
+      }
+    }
+  }
+
+  &_title {
+    margin-bottom: 8px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_emptyImg {
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    max-width: 90%;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-width: 500px;
+    }
+
+    @include on-desktop {
+      max-width: 600px;
+    }
+  }
+
+  &_count {
+    font-size: 14px;
+    line-height: 21px;
+    color: $textSecondaryColor;
+    margin-bottom: 32px;
+  }
+
+  &_list {
+    display: grid;
+    gap: 16px;
+
+    grid-template-columns: 1fr;
+
+    @include on-tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  &_card {
+    width: 100%;
+  }
+
+  &_empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+}
