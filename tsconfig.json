@@ -4,7 +4,12 @@
     "src"
   ],
   "compilerOptions": {
+    "jsx": "react",
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }
