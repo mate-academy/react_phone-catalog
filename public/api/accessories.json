@@ -1178,7 +1178,7 @@
   {
     "id": "apple-watch-se-40mm-silver",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
+    "namespaceId": "apple-watch-series-1",
     "name": "Apple Watch SE 40mm Silver",
     "capacityAvailable": ["40mm", "44mm"],
     "capacity": "40mm",
@@ -1220,7 +1220,7 @@
   {
     "id": "apple-watch-se-44mm-silver",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
+    "namespaceId": "apple-watch-series-1",
     "name": "Apple Watch SE 44mm Silver",
     "capacityAvailable": ["40mm", "44mm"],
     "capacity": "44mm",
@@ -1262,7 +1262,7 @@
   {
     "id": "apple-watch-se-40mm-gold",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
+    "namespaceId": "apple-watch-series-1",
     "name": "Apple Watch SE 40mm Gold",
     "capacityAvailable": ["40mm", "44mm"],
     "capacity": "40mm",
@@ -1304,7 +1304,7 @@
   {
     "id": "apple-watch-se-44mm-gold",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
+    "namespaceId": "apple-watch-series-1",
     "name": "Apple Watch SE 44mm Gold",
     "capacityAvailable": ["40mm", "44mm"],
     "capacity": "44mm",
@@ -1346,7 +1346,7 @@
   {
     "id": "apple-watch-se-40mm-space-gray",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
+    "namespaceId": "apple-watch-series-1",
     "name": "Apple Watch SE 40mm Space Gray",
     "capacityAvailable": ["40mm", "44mm"],
     "capacity": "40mm",
@@ -1388,7 +1388,7 @@
   {
     "id": "apple-watch-se-44mm-space-gray",
     "category": "accessories",
-    "namespaceId": "apple-watch-se",
+    "namespaceId": "apple-watch-series-1",
     "name": "Apple Watch SE 44mm Space Gray",
     "capacityAvailable": ["40mm", "44mm"],
     "capacity": "44mm",

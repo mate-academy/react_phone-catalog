@@ -1,0 +1,12 @@
+@import '/src/App';
+
+.img {
+  display: block;
+  width: 288px;
+  margin-inline: auto;
+
+  @include on-desktop {
+    width: 100%;
+    grid-column: 8 / 17;
+  }
+}

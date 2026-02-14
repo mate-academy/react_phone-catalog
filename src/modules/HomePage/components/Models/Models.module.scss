@@ -1,0 +1,15 @@
+@import '../../../../App';
+
+.models {
+  margin-top: 56px;
+  position: relative;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    width: var(--container-width);
+  }
+}

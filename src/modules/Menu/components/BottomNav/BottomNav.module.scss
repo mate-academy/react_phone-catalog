@@ -1,0 +1,39 @@
+@import '../../../../App';
+
+.bottom-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+
+  .bottom-item {
+    box-sizing: border-box;
+    list-style: none;
+    width: 50%;
+    height: 64px;
+    border-top: $light-border-value;
+
+    @include flex-center-center;
+  }
+
+  .bottom-item:first-child {
+    border-right: $light-border-value;
+  }
+
+  .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+
+    svg {
+      width: inherit;
+    }
+  }
+
+  @include bottom-border-on-active;
+}

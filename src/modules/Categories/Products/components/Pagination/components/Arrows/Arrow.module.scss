@@ -1,0 +1,5 @@
+@import '../../../../../../../App';
+
+.arrow {
+  @include nav-elements($is-it-pagination: true);
+}

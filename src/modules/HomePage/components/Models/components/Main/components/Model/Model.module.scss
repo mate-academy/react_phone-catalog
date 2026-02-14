@@ -1,0 +1,11 @@
+@import '../../../../../../../../App';
+
+.product {
+  box-sizing: border-box;
+  outline: $light-border-value;
+  outline-offset: -1px;
+  height: var(--product-height);
+  padding: 32px;
+
+  @include product-flex-column;
+}

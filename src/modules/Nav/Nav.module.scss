@@ -1,0 +1,36 @@
+@import '../../App';
+
+.nav {
+  padding-top: 24px;
+
+  @include on-tablet {
+    margin: 0;
+    padding: 0;
+    margin-left: 16px;
+    font-family: Mont-Bold, sans-serif;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 156px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      width: 329px;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      width: 425px;
+    }
+  }
+}

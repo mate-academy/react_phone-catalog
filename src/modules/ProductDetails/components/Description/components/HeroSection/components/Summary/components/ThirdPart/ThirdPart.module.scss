@@ -1,0 +1,8 @@
+@import '/src/App';
+
+.third-part {
+  margin-top: 32px;
+
+  @include product-flex-column;
+  @include spec;
+}

@@ -1,0 +1,7 @@
+@import '../../../../../../App';
+
+.path {
+  @include on-desktop {
+    transition: fill $default-trans-dur;
+  }
+}

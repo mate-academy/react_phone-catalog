@@ -1,0 +1,10 @@
+@import '/src/App';
+
+.color :last-child {
+  stroke: $elements-color;
+  transition: stroke $default-trans-dur;
+}
+
+.color:hover :last-child {
+  stroke: $primary-color;
+}

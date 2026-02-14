@@ -1,0 +1,43 @@
+@import '../../../../App';
+
+.item {
+  // #region variables
+
+  --item-width-height: 48px;
+
+  @include on-desktop {
+    --item-width-height: 64px;
+  }
+
+  // #endregion variables
+
+  position: relative;
+  box-sizing: border-box;
+  width: var(--item-width-height);
+  height: var(--item-width-height);
+  border-bottom: $light-border-value;
+  border-left: $light-border-value;
+
+  @include on-desktop {
+    transition: all $default-trans-dur;
+  }
+
+  @include flex-center-center;
+
+  &:hover,
+  &:active {
+    border-bottom-color: $primary-color;
+    border-left-color: $primary-color;
+  }
+
+  &:first-child:hover ~ &:last-child,
+  &:first-child:active ~ &:last-child {
+    border-left-color: $primary-color;
+  }
+
+  svg {
+    width: inherit;
+  }
+}
+
+@include bottom-border-on-active;

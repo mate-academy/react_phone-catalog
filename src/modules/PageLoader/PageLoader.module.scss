@@ -1,0 +1,13 @@
+@import '/src/App';
+
+.background {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}

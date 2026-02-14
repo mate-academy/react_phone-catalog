@@ -1,0 +1,5 @@
+@import '../../../../../../../../utils/Mixins';
+
+.arrow {
+  @include nav-elements($is-it-pagination: false);
+}

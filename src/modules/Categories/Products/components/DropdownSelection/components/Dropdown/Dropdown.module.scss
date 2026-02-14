@@ -1,0 +1,47 @@
+@import '../../../../../../../App';
+
+.dropdown {
+  box-sizing: border-box;
+  position: absolute;
+  border: $light-border-value;
+  border-top: none;
+  width: 136px;
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: all $default-trans-dur;
+  z-index: 20;
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  &:focus {
+    border-color: red;
+  }
+
+  .dropdown-link {
+    background-color: #fff;
+    text-decoration: none;
+    color: $primary-color;
+    display: flex;
+    height: 40px;
+    transition: all $default-trans-dur;
+
+    @include on-desktop {
+      &:hover:not(.active) {
+        background-color: $elements-color;
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: $light-border-value;
+    }
+  }
+
+  .active {
+    background-color: $green-color;
+    color: #fff;
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../../../../../App';
+
+.slider-container {
+  @include on-tablet {
+    gap: 20px;
+  }
+}
+
+.slider {
+  // #region variables
+
+  --slider-width: 100vw;
+  --slider-height: fit-content;
+
+  @include on-tablet {
+    --slider-width: 490px;
+    --slider-height: 230px;
+  }
+
+  @include on-small-desktop {
+    --slider-width: 615px;
+    --slider-height: 288px;
+  }
+
+  @include on-desktop {
+    --slider-width: 936px;
+    --slider-height: 450px;
+  }
+
+  // #endregion
+
+  position: relative;
+  width: var(--slider-width);
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+
+  @include on-tablet {
+    height: var(--slider-height);
+  }
+
+  .img {
+    min-width: var(--slider-width);
+    height: var(--slider-height);
+    display: block;
+    transition: transform $default-trans-dur;
+
+    @include on-tablet {
+      height: var(--slider-height);
+    }
+  }
+}

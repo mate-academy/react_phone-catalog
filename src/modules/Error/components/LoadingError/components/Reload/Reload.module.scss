@@ -1,0 +1,46 @@
+@import '/src/App';
+
+$trans-dur: 500ms;
+
+.button {
+  cursor: pointer;
+  padding: 0;
+  height: 35px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  background-color: $primary-color;
+  transition: all $trans-dur;
+
+  @include on-desktop {
+    height: 45px;
+    width: 130px;
+
+    &:hover {
+      background-color: $border-grey-color;
+
+      svg {
+        transform: rotate(220deg);
+      }
+    }
+
+    &:active {
+      background-color: $secondary-color;
+
+      svg {
+        transform: rotate(290deg);
+      }
+    }
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+    transition: all $trans-dur;
+
+    @include on-desktop {
+      height: 25px;
+      width: 25px;
+    }
+  }
+}
