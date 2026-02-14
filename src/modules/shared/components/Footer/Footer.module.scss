@@ -1,0 +1,137 @@
+@use "@/styles/_media" as *;
+
+.footer {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--gray-elements);
+
+  &Logo {
+    grid-row: 1;
+    grid-column: span 4;
+    width: 89px;
+    height: 32px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transform-origin: center;
+    transition-duration: var(--transition-duration);
+
+    @include tablet {
+      grid-column: 1 / 5;
+    }
+
+    @include desktop {
+      grid-column: 1 / 9;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &List {
+    grid-row: 2;
+    grid-column: span 4;
+    margin: 32px 0 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+
+    @include tablet {
+      grid-row: 1;
+      grid-column: 5 / 9;
+      margin: 0;
+      flex-direction: row;
+      align-items: center;
+      gap: 13.5px;
+    }
+
+    @include desktop {
+      grid-column: 9 / 17;
+      gap: 100px;
+    }
+  }
+
+  &Link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 92%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gray-secondary);
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+      color: var(--gray-white);
+    }
+  }
+
+  &BackTop {
+    grid-row: 3;
+    grid-column: span 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    gap: 16px;
+    height: 32px;
+    padding: 0;
+
+    @include tablet {
+      grid-row: 1;
+      grid-column: 9 / 13;
+      justify-content: end;
+    }
+
+    @include desktop {
+      grid-column: 17 / 25;
+    }
+  }
+
+  &BackTopText {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 12px;
+    text-align: right;
+    color: var(--gray-secondary);
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+      color: var(--gray-white);
+    }
+  }
+
+  &BackTopIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: var(--gray-surface-2);
+    rotate: 90deg;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { CategoryContent } from './CategoryContent';

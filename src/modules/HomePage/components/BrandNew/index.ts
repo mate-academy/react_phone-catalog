@@ -1,0 +1,1 @@
+export { BrandNew } from './BrandNew';

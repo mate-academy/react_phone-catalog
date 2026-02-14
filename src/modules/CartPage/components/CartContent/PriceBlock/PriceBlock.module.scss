@@ -1,0 +1,64 @@
+@use "@/styles/_media" as *;
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--gray-elements);
+  padding: 24px;
+  gap: 16px;
+  max-height: 206px;
+
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: 17 / -1;
+  }
+
+  &Total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray-elements);
+    padding-bottom: 16px;
+
+    @include desktop {
+      padding-bottom: 25px;
+    }
+  }
+
+  &Price {
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  &Items {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    color: var(--gray-secondary);
+  }
+
+  &Checkout {
+    border: none;
+    background: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    color: var(--gray-white);
+    width: 100%;
+    height: 48px;
+
+    @include hover {
+      background: var(--main-btn-hover);
+    }
+  }
+}

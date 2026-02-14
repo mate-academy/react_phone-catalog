@@ -1,0 +1,1 @@
+export { DetailsControlsPanel } from './DetailsControlsPanel';

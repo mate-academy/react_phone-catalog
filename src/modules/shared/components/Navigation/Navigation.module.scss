@@ -1,0 +1,180 @@
+@use '@styles/media' as *;
+
+.navigation {
+  position: absolute;
+  top: 49px;
+  background-color: var(--gray-black);
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: min-height 0.3s ease, opacity 0.3s ease;
+
+  &[data-open='true'] {
+    opacity: 1;
+    min-height: calc(100dvh - 49px);
+    max-height: calc(100dvh - 49px);
+  }
+
+  @include tablet {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    background: unset;
+    min-height: unset;
+    max-height: unset;
+    overflow: unset;
+    opacity: unset;
+  }
+
+  @include desktop {
+    gap: 24px;
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+    margin-top: 24px;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 32px;
+      margin-top: 0;
+    }
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  &Item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 27px;
+
+    @include tablet {
+      height: 100%;
+    }
+  }
+
+  &Link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 92%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gray-secondary);
+    transition-duration: color 0.3s;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--gray-white);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition-duration: 0.2s;
+    }
+
+    &Active {
+      color: var(--gray-white);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    @include hover {
+      color: var(--gray-white);
+    }
+  }
+
+  &ButtonsRight {
+    display: flex;
+    width: 100%;
+
+    @include tablet {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &Button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 64px;
+    overflow: hidden;
+    box-shadow: -1px -1px var(--gray-surface-2);
+
+    &Count {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 40%;
+      top: 25%;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 50%;
+      background-color: #eb5757;
+      font-weight: 700;
+      font-size: 9px;
+      text-align: center;
+      color: var(--gray-white);
+      box-sizing: border-box;
+      z-index: 1;
+      pointer-events: none;
+
+      @include tablet {
+        top: 15%;
+        right: 15%;
+      }
+
+      @include desktop {
+        top: 25%;
+        right: 25%;
+      }
+    }
+
+    @include tablet {
+      width: 48px;
+      height: 48px;
+      box-shadow: -1px 0 0 0 var(--gray-surface-2);
+    }
+
+    @include desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include hover {
+      background-color: var(--gray-surface-1);
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@use "@/styles/_media" as *;
+
+.alsoLike {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+
+  &Top {
+    display: flex;
+    justify-content: space-between;
+
+    &ButtonsContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      :global {
+        .swiper-button-disabled {
+          border-color: var(--gray-white);
+          opacity: 0.2;
+          cursor: default;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+.alsoLikeBtnPrev,
+.alsoLikeBtnNext {
+  border: 1px solid var(--gray-elements);
+  background: var(--gray-surface-2);
+  width: 32px;
+  height: 32px;
+  transition: background-color var(--transition-duration) ease;
+  cursor: pointer;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include hover {
+    background-color: var(--gray-elements);
+  }
+}
+
+.alsoLikeBtnPrev {
+  background-image: url("/src/assets/icons/arrow-left.svg");
+}
+.alsoLikeBtnNext {
+  background-image: url("/src/assets/icons/arrow-right.svg");
+}

@@ -1,0 +1,126 @@
+@use "@/styles/_media" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 212px;
+  height: 439px;
+  padding: 32px;
+  gap: 8px;
+  background: var(--gray-surface-1);
+  grid-column: span 4;
+
+  @include tablet {
+    min-width: 237px;
+    height: 512px;
+    grid-column: span 6;
+  }
+
+  @media (min-width: 848px) {
+    min-width: 230px;
+    grid-column: span 4;
+  }
+
+  @include desktop {
+    height: 506px;
+    grid-column: span 6;
+  }
+
+  &Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Image {
+    width: 148px;
+    height: 129px;
+    object-fit: contain;
+    transition-duration: 0.3s;
+
+    @include tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include desktop {
+      width: 208px;
+      height: 196px;
+    }
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &Title {
+    display: flex;
+    align-items: end;
+    height: 58px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%;
+    text-wrap: auto;
+    color: var(--gray-white);
+
+    @include hover {
+      color: var(--gray-secondary);
+    }
+  }
+
+  &Price {
+    display: flex;
+    height: 31px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    gap: 8px;
+    color: var(--gray-white);
+  }
+
+  &FullPrice {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: var(--gray-secondary);
+  }
+
+  &Description {
+    display: flex;
+    flex-direction: column;
+    height: 77px;
+    gap: 8px;
+  }
+
+  &Info {
+    display: flex;
+    justify-content: space-between;
+    height: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &Feature {
+    color: var(--gray-secondary);
+  }
+
+  &Value {
+    color: var(--gray-white);
+  }
+
+  &Actions {
+    display: flex;
+    height: 40px;
+    gap: 8px;
+  }
+}
+
+.divider {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background: #3b3e4a;
+  margin: 0;
+}

@@ -1,0 +1,45 @@
+@use "@/styles/_media" as *;
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include desktop {
+    width: 320px;
+  }
+
+  &Title {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--gray-secondary);
+  }
+
+  &Options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &Option {
+    padding: 7px;
+    border: 1px solid var(--placeholders);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    background-color: transparent;
+    transition-duration: var(--transition-duration);
+
+    &[data-selected="true"] {
+      color: var(--gray-black) !important;
+      border-color: var(--gray-white) !important;
+      background-color: var(--gray-white);
+    }
+
+    @include hover {
+      color: var(--accent);
+      border-color: var(--gray-secondary);
+    }
+  }
+}

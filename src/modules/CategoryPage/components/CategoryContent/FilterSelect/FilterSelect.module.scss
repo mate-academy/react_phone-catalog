@@ -1,0 +1,98 @@
+@use "@/styles/_media" as *;
+
+.customSelect {
+  position: relative;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &[data-open="true"] {
+    .customSelectArrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &[data-focuse="true"] {
+    .customSelectControl {
+      border-color: var(--accent);
+    }
+  }
+
+  &Label {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--gray-secondary);
+  }
+
+  &Control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.3s;
+    background: var(--gray-surface-2);
+    padding: 10px 12px;
+    gap: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+
+    @include hover {
+      border-color: var(--placeholders);
+    }
+  }
+
+  &Value {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--gray-white);
+  }
+
+  &Arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  &Menu {
+    z-index: 10;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 2px 0 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--gray-surface-2);
+    border-image: initial;
+    background-color: var(--gray-surface-1);
+  }
+
+  &Option {
+    display: flex;
+    align-items: center;
+    color: var(--gray-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    padding: 6px 12px;
+
+    @include hover {
+      color: var(--gray-white);
+      background-color: var(--gray-surface-2);
+    }
+
+    &[data-selected="true"] {
+      color: var(--gray-white);
+      background-color: var(--accent);
+    }
+  }
+}
