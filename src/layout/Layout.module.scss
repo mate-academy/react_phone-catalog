@@ -1,0 +1,13 @@
+@use 'src/styles/mixins' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__section {
+    flex: 1;
+    width: 100%;
+  }
+}
+
