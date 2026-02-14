@@ -1,0 +1,52 @@
+@import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
+
+.breadcrumbs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 41px;
+
+  &__home {
+    margin-right: 16px;
+    background-image: url(/img/logo/home-logo.svg);
+    width: 16px;
+    height: 16px;
+  }
+  &--arrow {
+    width: 6px;
+    height: 18px;
+    color: #4A4D58;
+    margin-right: 16px;
+
+  }
+  &__name{
+    color: #4A4D58;
+    font-family: $mont-regular-font;
+    font-weight: 700;
+    font-size: 12px;
+    margin-right: 16px;
+  }
+
+  &__back {
+    display: flex;
+    margin-top: 24px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+
+    &__arrow {
+      margin-right: 10px;
+      color: $active-link-color;
+    }
+
+    &__text {
+      font-family: $mont-regular-font;
+      font-weight: 700;
+      font-size: 12px;
+      color: $active-link-color;
+    }
+  }
+}
