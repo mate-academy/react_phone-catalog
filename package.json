@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "./",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^2.1.1",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",
@@ -42,7 +42,7 @@
     "prettier": "^3.3.2",
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
-    "typescript": "^5.2.2",
+    "typescript": "5.2.2",
     "vite": "^5.3.1"
   },
   "scripts": {

@@ -1,1 +1,26 @@
-// not empty
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+
+@import './styles/fonts';
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Mont, sans-serif;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section {
+  // overflow-y: auto;
+  flex-grow: 1;
+}

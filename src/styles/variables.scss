@@ -1,0 +1,91 @@
+// sizes
+
+$header-height-mobile: 48px;
+$header-height-tablet: 64px;
+$footer-height: 96px; // мінімальна висота футера згідно з .footer { min-height: 96px; }
+
+
+// 🎨 Accent Colors
+$color-accent: #4219D0;
+$color-accent-secondary: #F4BA47;
+
+// 🌑 Base Colors
+$color-primary: #0F0F11;
+$color-secondary: #89939A;
+$color-icons: #B4BDC3;
+$color-elements: #E2E6E9;
+$color-hover-bg: #FAFBFC;
+$color-white: #FFF;
+
+// ✅ Status Colors
+$color-green: #27AE60;
+$color-red: #EB5757;
+
+// 🅰️ Font Family
+$font-primary: 'Mont', sans-serif;
+
+// 🧱 Font Weights
+$font-weight-bold: 800;
+$font-weight-semibold: 600;
+$font-weight-regular: 400;
+$h1-desktop: (
+  size: 48px,
+  letter-spacing: -0.01em,
+  weight: $font-weight-bold
+);
+$h2-desktop: (
+  size: 32px,
+  letter-spacing: -0.01em,
+  weight: $font-weight-bold
+);
+$h3-desktop: (
+  size: 22px,
+  letter-spacing: 0,
+  weight: $font-weight-bold
+);
+$h4-desktop: (
+  size: 20px,
+  letter-spacing: 0,
+  weight: $font-weight-semibold
+);
+$uppercase-desktop: (
+  size: 12px,
+  letter-spacing: 0.04em,
+  weight: $font-weight-bold,
+  transform: uppercase
+);
+$button-text: (
+  size: 14px,
+  letter-spacing: 0,
+  weight: $font-weight-semibold
+);
+$body-text: (
+  size: 14px,
+  letter-spacing: 0,
+  weight: $font-weight-regular
+);
+$small-text: (
+  size: 12px,
+  letter-spacing: 0,
+  weight: $font-weight-semibold
+);
+$h1-mobile: (
+  size: 32px,
+  letter-spacing: -0.01em,
+  weight: $font-weight-bold
+);
+$h2-mobile: (
+  size: 22px,
+  letter-spacing: 0,
+  weight: $font-weight-bold
+);
+$h3-mobile: (
+  size: 20px,
+  letter-spacing: 0,
+  weight: $font-weight-semibold
+);
+$h4-mobile: (
+  size: 16px,
+  letter-spacing: 0,
+  weight: $font-weight-semibold
+);

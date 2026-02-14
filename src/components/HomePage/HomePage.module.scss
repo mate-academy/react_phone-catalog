@@ -1,0 +1,46 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use "sass:map";
+
+iframe {
+  display: none;
+}
+
+.homePage {
+  margin: 0;
+
+  &__title {
+    margin: 0;
+    padding: 72px 16px 24px;
+
+    @include text-style($h1-mobile);
+
+    @include on-tablet {
+      @include text-style($h1-desktop);
+    }
+
+    @include on-tablet {
+      @include padding-inline-responsive;
+
+      padding-top: 80px;
+      padding-bottom: 32px;
+    }
+
+    @include on-desktop {
+      padding-top: 120px;
+      padding-bottom: 56px;
+    }
+  }
+
+  &__main {
+    padding-inline: 16px;
+
+    @include on-tablet {
+      @include padding-inline-tablet;
+    }
+
+    @include on-desktop {
+      @include padding-inline-responsive;
+    }
+  }
+}
