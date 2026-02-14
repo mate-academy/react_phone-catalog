@@ -1,0 +1,24 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+* {
+  transition-duration: $transition-duration;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  min-width: $page-min-width;
+  min-height: $page-min-height;
+  scroll-behavior: $scroll-behavior;
+}
+
+.app {
+  &__body {
+    min-height: calc(100vh - $footer-height-mobile);
+
+    @include on-tablet {
+      min-height: calc(100vh - $footer-height-desktop);
+    }
+  }
+}

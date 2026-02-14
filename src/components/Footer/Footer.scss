@@ -1,0 +1,63 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+@import '../../styles/link';
+@import '../../styles/icon';
+@import '../../styles/container';
+
+.footer {
+  display: flex;
+  box-shadow: 0 -1px 0 0 $shadow-color;
+
+  &__centerBlock {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 35px;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__rightBlock {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &--arrow-img {
+      width: 16px;
+      height: 16px;
+      background-image: url(../../images/imgs/arrow.svg);
+    }
+
+    &:hover {
+      .button {
+        border-color: $text-color;
+      }
+
+      .link {
+        color: $text-color;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding-block: 32px;
+    gap: 32px;
+
+    @include on-tablet {
+      justify-content: space-between;
+      flex-direction: row;
+      padding-inline: 32px;
+    }
+  }
+}

@@ -1,0 +1,168 @@
+@import '../styles/vars';
+@import '../styles/mixins';
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+
+  &__logo {
+    background-image: url(../images/imgs/logo.svg);
+    background-size: contain;
+    width: 64px;
+    height: 22px;
+    margin: 13px 16px;
+
+    &--nav {
+      margin: 13px 16px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+        margin: 18px 24px;
+      }
+    }
+
+    &--nav-menu {
+      width: 64px;
+      height: 22px;
+      margin: 13px 16px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+        margin: 18px 24px;
+      }
+    }
+
+    &--footer {
+      width: 89px;
+      height: 32px;
+      margin: 0;
+    }
+  }
+
+  &__menu,
+  &__close {
+    box-shadow: -1px 0 0 0 $shadow-color;
+    padding: 16px;
+    z-index: 1;
+    background-color: $bg-button-color;;
+    cursor: pointer;
+  }
+
+  &__menu {
+    background-image: url(../images/imgs/menu.svg);
+  }
+
+  &__close {
+    background-image: url(../images/imgs/closeImg.svg);
+  }
+
+  &__favourite-cart-Block {
+    position: relative;
+    padding: 16px;
+    width: 16px;
+    height: 16px;
+    background-color: $bg-button-color;
+    box-shadow: -1px 0 0 0 $shadow-color;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      box-sizing: initial;
+    }
+
+    &--menu {
+      width: 50%;
+      height: 64px;
+      border-top: 1px solid $shadow-color;
+      padding: 0;
+      display: grid;
+      place-items: center;
+
+      @include on-tablet {
+        display: block;
+        padding: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &::after,
+    &--active::after {
+      position: absolute;
+      transform: scale(0);
+      transition: transform $transition-duration;
+      height: 3px;
+      content: "";
+      background: $text-color;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &--active::after {
+      transform: scale(1);
+    }
+
+    @include on-desktop {
+      padding: 24px;
+    }
+  }
+
+  &__elipse {
+    position: absolute;
+    box-sizing: border-box;
+    transform: translate(35%, -135%);
+    display: grid;
+    place-items: center;
+    border: 1px solid $bg-button-color;
+    border-radius: 50%;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+    background: $elipse-color;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    color: $bg-button-color;
+
+    &--menu {
+      transform: translate(48%, -50%);
+
+      @include on-tablet {
+        transform: translate(35%, -135%);
+      }
+    }
+  }
+
+  &__favourite,
+  &__cart {
+    z-index: 1;
+    background-color: $bg-button-color;
+
+    @include hover(transform, scale(1.3));
+  }
+
+  &__favourite {
+    background-image: url(../images/imgs/favourite.svg);
+  }
+
+  &__cart {
+    background-image: url(../images/imgs/card.svg);
+  }
+
+  &__favourite-cart-Block:hover {
+    .icon__favourite,
+    .icon__cart {
+      transform: scale(1.3);
+    }
+  }
+
+  @include on-tablet {
+    &__close,
+    &__menu {
+      display: none;
+    }
+  }
+}

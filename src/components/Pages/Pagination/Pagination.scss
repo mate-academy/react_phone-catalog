@@ -1,0 +1,27 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 24px;
+  justify-content: center;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__pageBlock {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+    width: 192px;
+    margin: 0;
+    padding: 0;
+
+    &--fix {
+      width: auto;
+    }
+  }
+}

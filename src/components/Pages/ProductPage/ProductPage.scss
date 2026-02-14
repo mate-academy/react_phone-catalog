@@ -1,0 +1,41 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.productpage {
+  padding-block: calc(24px + $nav-height-mobile) 64px;
+  height: 100%;
+
+  @include on-desktop {
+    padding-block: calc(24px + $nav-height-desktop) 80px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__center {
+    display: flex;
+    gap: 16px;
+    margin-block: 32px 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__list {
+    @include page-grid;
+
+    gap: 40px 16px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+}
