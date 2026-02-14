@@ -1,0 +1,139 @@
+@use '../../styles/utils' as utils;
+
+.footer {
+  padding: 28px 0;
+  border-top: utils.$default-border;
+
+  @include utils.on-tablet {
+    padding: 32px 0;
+  }
+
+  &__content {
+    @extend %flex-column;
+
+    gap: 16px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+      gap: 32px;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 89px;
+    height: 32px;
+  }
+
+  &__nav {
+    justify-content: center;
+    width: 100%;
+
+    @include utils.on-tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    @extend %flex-column;
+
+    gap: 16px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @include utils.on-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 11px;
+    color: utils.$color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    transition:
+      color utils.$animation-duration,
+      text-decoration 0.2s;
+
+    &:hover {
+      color: #f9a953;
+      text-decoration: underline;
+    }
+  }
+
+  &__top {
+    @extend %flex-center;
+  }
+
+  &__topLink {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    border: none;
+
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-secondary;
+    text-decoration: none;
+    white-space: nowrap;
+
+    background: none;
+
+    transition: color utils.$animation-duration;
+
+    span {
+      @extend %flex-center;
+
+      align-items: center;
+
+      width: 32px;
+      height: 32px;
+
+      background-color: utils.$color-surface-2;
+
+      transition: background-color utils.$animation-duration;
+
+      &::after {
+        @extend %background-cover;
+
+        content: '';
+
+        display: block;
+
+        width: 16px;
+        height: 16px;
+
+        background-image: url('/img/icons/arrow-top.svg');
+      }
+    }
+
+    &:hover {
+      color: utils.$color-white;
+      span {
+        background-color: utils.$color-icons;
+      }
+    }
+  }
+}
