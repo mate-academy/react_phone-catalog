@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 212px;
+  height: 439px;
+  padding: 32px;
+  gap: 8px;
+  background-color: $main-bg-color;
+
+  box-sizing: border-box;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+
+  @include on-tablet {
+    min-width: 229px;
+    height: 512px;
+  }
+
+  @include on-tablet {
+    max-width: 272px;
+    height: 506px;
+  }
+}
+
+.photoNameContainer {
+  text-decoration: none;
+  color: $text-main-color;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  min-height: 0;
+}
+
+.devicePhoto {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.nameContainer {
+  flex-shrink: 0;
+  padding-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 42px;
+
+  .name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.price {
+  height: 31px;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.oldPrice {
+  font-weight: 600;
+  text-decoration: line-through;
+  color: $text-not-active-color;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0 8px;
+  gap: 8px;
+  border-top: 1px solid $border-color;
+}
+
+.screen,
+.capacity,
+.ram {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15px;
+}
+
+.specName {
+  font-weight: 700;
+  font-size: 12px;
+  color: $text-not-active-color;
+}
+
+.specValue {
+  font-weight: 700;
+  font-size: 12px;
+  color: $text-main-color;
+}

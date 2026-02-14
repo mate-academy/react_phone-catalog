@@ -1,0 +1,158 @@
+.burgerNavigation {
+  background-color: $main-bg-color;
+  width: 100%;
+  height: calc(100% - 48px);
+  position: fixed;
+  bottom: 0;
+
+  opacity: 0;
+  transform: translateY(-150%);
+  transition:
+    opacity 0.3s linear,
+    transform 0.5s ease;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.isOpen {
+  display: flex;
+  z-index: 8;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.burgerContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.burgerList {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  gap: 16px;
+}
+
+.burgerLink {
+  position: relative;
+  display: flex;
+  font-size: 12px;
+  font-weight: 800;
+  height: 27px;
+  align-items: center;
+  color: $text-not-active-color;
+  text-decoration: none;
+
+  transition: color 0.5s ease;
+}
+
+.burgerLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  transition: all 0.5s ease;
+}
+
+.burgerLink:hover {
+  color: $text-main-color;
+}
+
+.burgerLink:hover::after {
+  background-color: $text-not-active-color;
+}
+
+.isActive {
+  color: $text-main-color;
+}
+
+.isActive::after {
+  background-color: $text-main-color;
+}
+
+.burgerFooter {
+  display: flex;
+  height: 64px;
+  width: 100%;
+}
+
+.burgerIconContainer {
+  display: flex;
+  width: 50%;
+  position: relative;
+  border-top: 1px solid $border-color;
+}
+
+.burgerIconContainer:first-child {
+  border-right: 1px solid $border-color;
+}
+
+.burgerIconContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+  border-radius: 1px;
+}
+
+.burgerIconContainer:hover::after {
+  background-color: rgba(49, 50, 55, 1);
+}
+
+.burgerFooterLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.icon {
+  position: relative;
+}
+
+.quantityBox {
+  background-color: rgba(244, 71, 175, 1);
+  height: 14px;
+  width: 14px;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+
+  transform: translate(50%, -50%);
+}
+
+.quantity {
+  color: white;
+  font-size: 9px;
+}
+
+.activeIcon {
+  background: linear-gradient(
+    to top right,
+    $border-hover-color 30%,
+    $main-bg-color 75%
+  );
+}
+
+.activeIcon::after {
+  background-color: $text-main-color;
+}

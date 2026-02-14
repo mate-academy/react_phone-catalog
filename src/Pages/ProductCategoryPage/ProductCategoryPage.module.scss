@@ -1,0 +1,52 @@
+.categoryPage {
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px 0 0;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+
+  .titleModelsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 32px;
+
+    @include on-desktop {
+      padding-bottom: 40px;
+    }
+
+    .categoryTitle {
+      font-weight: 800;
+      font-size: 32px;
+
+      @include on-tablet {
+        font-size: 48px;
+      }
+    }
+
+    .mainText {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $text-not-active-color;
+    }
+  }
+
+  .categoryModels {
+    --column-count: auto-fill;
+
+    display: grid;
+
+    gap: 40px 16px;
+
+    grid-template-columns: repeat(var(--column-count), minmax(212px, 1fr));
+
+    @include on-tablet {
+      grid-template-columns: repeat(var(--column-count), minmax(229px, 1fr));
+    }
+  }
+}
