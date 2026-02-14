@@ -1,0 +1,19 @@
+.logo {
+  display: block;
+
+  @include hover(transform, scale(1.1));
+
+  &__header {
+    height: 22px;
+    margin: 13px 16px;
+
+    @include on-desktop {
+      height: 28px;
+      margin: 18px 24px;
+    }
+  }
+
+  &__footer {
+    height: 32px;
+  }
+}
