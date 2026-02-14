@@ -1,0 +1,89 @@
+.select {
+  display: flex;
+  gap: 16px;
+
+  &__name {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    line-height: 15.5px;
+    color: #89939a;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  &__options {
+    z-index: 1000;
+    position: absolute;
+    background-color: #fff;
+    margin-top: 4px;
+    border: 1px solid #e2e6e9;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+
+    &--sort {
+      width: 176px;
+    }
+
+    &--items {
+      width: 128px;
+    }
+
+    &--open {
+      max-height: 200px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &--closed {
+      border: none;
+    }
+  }
+
+  &__active {
+    height: 40px;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    border: 1px solid #b4bdc3;
+    padding: 10px 0 9px 12px;
+    cursor: pointer;
+    background: url('/src/images/icons/arrow-down.svg') no-repeat right 12px
+      center;
+    transition: background 0.5s ease;
+
+    &--sort {
+      width: 176px;
+    }
+
+    &--items {
+      width: 128px;
+    }
+
+    &--open {
+      background: url('/src/images/icons/arrow-up.svg') no-repeat right 12px
+      center;
+    }
+  }
+
+  &__option {
+    height: 40px;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 10px 0 9px 12px;
+    color: #89939a;
+
+    &:hover {
+      background-color: #fafbfc;
+      color: #313237;
+    }
+  }
+
+  &__menu {
+    margin-bottom: 24px;
+  }
+}

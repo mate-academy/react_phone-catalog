@@ -1,0 +1,92 @@
+@import '../../styles/utils/mixins';
+
+.categories {
+  &__block {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+
+  &__category {
+    width: 100%;
+    text-decoration: none;
+  }
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+
+    @include on-desktop {
+      width: 368px;
+    }
+
+    &--phones {
+      background-color: #6d6474;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    height: auto;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--phones {
+      top: 30%;
+      width: 90%;
+    }
+
+    &--tablets {
+      width: 120%;
+    }
+
+    &--accessories {
+      width: 190%;
+    }
+  }
+
+  &__name {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+    margin-bottom: 4px;
+  }
+
+  &__available {
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    display: block;
+    margin-bottom: 81px;
+  }
+}

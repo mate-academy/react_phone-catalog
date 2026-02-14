@@ -1,0 +1,109 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e6e9;
+  padding: 32px;
+  gap: 8px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #000;
+  }
+
+  &__image {
+    height: 196px;
+    object-fit: contain;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    margin-top: 16px;
+    font-family: Mont-Regular, sans-serif;
+    color: #313237;
+    font-size: 14px;
+    line-height: 21px;
+
+    height: 42px;
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+    padding-bottom: 16px;
+
+    &--old {
+      font-size: 22px;
+      color: #89939a;
+      text-decoration: line-through;
+    }
+  }
+
+  &__price-wrapper {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__spec {
+    padding-bottom: 8px;
+
+    &--names {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      color: #89939a;
+    }
+
+    &--values {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      text-align: right;
+      color: #313237;
+    }
+
+    &:first-child {
+      margin-top: 8px;
+    }
+  }
+
+  &__add-to {
+    display: flex;
+    height: 40px;
+
+    &--cart {
+      font-family: Mont-SemiBold, sans-serif;
+      width: 100%;
+      margin-right: 8px;
+      background-color: #313237;
+      color: #fff;
+      font-size: 14px;
+      line-height: 21px;
+      cursor: pointer;
+
+      &--active {
+        background-color: #fff;
+        color: #27ae60;
+        border: 1px solid #e2e6e9;
+      }
+    }
+
+    &--favourites {
+      padding: 0 12px;
+      background-color: #fff;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+    }
+  }
+}
