@@ -1,0 +1,89 @@
+@use '../../utils.scss' as *;
+
+.dropdowns {
+  display: flex;
+  gap: 16px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  &__trigger {
+    cursor: pointer;
+    background: none;
+    width: 136px;
+    height: 40px;
+    border: 1px solid $color-secondary;
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__sort {
+    color: $color-primary;
+  }
+
+  &__icon {
+    transition: transform $effectDuration;
+  }
+
+  &__content {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    top: 70px;
+    z-index: 1;
+    padding-block: 14px;
+    background-color: $color-hover-bg;
+    border: 1px solid $color-secondary;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform $effectDuration ease;
+  }
+
+  &__item {
+    color: $color-secondary;
+
+    &-container {
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: all $effectDuration ease;
+
+      &:hover {
+        background-color: $color-elements;
+      }
+
+      &:hover .dropdown__item {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.small-text {
+  color: $color-secondary;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.hide {
+  transform: scaleY(0);
+}
+
+.active-item {
+  color: $color-primary;
+}
+
+.active-item-container {
+  background-color: $color-elements;
+}

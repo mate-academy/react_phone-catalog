@@ -1,0 +1,98 @@
+@use '../../../../shared/utils.scss' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-inline: -16px;
+
+  @include on-tablet {
+    margin: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 19px;
+  }
+
+  &__button {
+    cursor: pointer;
+    display: none;
+
+    width: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 48px;
+    transition: border-color $effectDuration;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+
+    @include on-tablet {
+      aspect-ratio: 13 / 5;
+      border-radius: 8px;
+    }
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    transition: transform $effectDuration;
+    height: 100%;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+
+    width: 100%;
+    height: auto;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 9px;
+  }
+
+  &__rectangle {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+  }
+
+  &__rectangle-active {
+    background-color: $color-primary;
+  }
+}

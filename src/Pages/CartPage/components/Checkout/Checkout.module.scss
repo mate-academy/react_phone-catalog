@@ -1,0 +1,38 @@
+@use '../../../../shared/utils.scss' as *;
+
+.checkout {
+  z-index: 1000;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__inner {
+    max-width: 368px;
+    max-height: 206px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__button {
+    cursor: pointer;
+    flex: 1;
+    height: 48px;
+    background-color: $color-accent;
+    border-radius: 48px;
+  }
+}

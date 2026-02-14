@@ -1,0 +1,12 @@
+.image__container {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 500px;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}

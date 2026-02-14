@@ -1,0 +1,76 @@
+@use '../../../../shared/utils.scss' as *;
+
+.shopcategory {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    @include table-grid;
+  }
+
+  @include on-desktop {
+    @include desktop-grid;
+  }
+
+  &__title {
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__background {
+    width: 100%;
+    height: 288px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+
+    &:hover .category__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    max-height: 90%;
+    border-bottom-right-radius: 8px;
+    transition: transform $effectDuration ease;
+  }
+
+  &__info {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__models {
+    color: $color-secondary;
+  }
+}
+
