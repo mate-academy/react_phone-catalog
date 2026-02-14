@@ -1,0 +1,34 @@
+@import '/src/style/main';
+
+.ProductsFilter {
+  @include grid-layout;
+  
+  margin-block: 32px 24px;
+
+  @include on-tablet {
+    margin-block: 40px 24px;
+  }
+
+  &__filterBlock {
+    grid-column: span 2;
+
+    &_sort {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &_perPage {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__filterTitle {
+    @include small-text;
+    
+    color: $c-secondary;
+    margin-bottom: 4px;
+  }
+}

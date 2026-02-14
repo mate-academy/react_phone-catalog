@@ -1,0 +1,89 @@
+@import '/src/style/main';
+
+.Footer {
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+  width: 100%;
+
+  &_darkTheme {
+    box-shadow: 0 -1px 0 0 $c-surface2-dark;
+
+    &__link {
+      color: $c-secondary-dark;
+    }
+
+    &__backTop {
+      color: $c-secondary-dark;
+    }
+  }
+
+  &__content {
+    @include inline-padding-content;
+
+    width: 100%;
+    padding-block: 32px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    max-width: 89px;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-tablet {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+
+    color: $c-secondary;
+  }
+
+  &__backTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;
+
+    @include small-text;
+
+    color: $c-secondary;
+
+    &:hover > span {
+      animation: back-text-move $transition infinite alternate linear;
+    }
+  }
+}
+
+@keyframes back-text-move {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-4px);
+  }
+}

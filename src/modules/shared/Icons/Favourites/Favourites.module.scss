@@ -1,0 +1,32 @@
+@import '/src/style/main';
+
+.Favourites {
+  position: relative;
+
+  &_darkTheme path{
+    fill: $c-white-dark;
+  }
+
+  &__countItems {
+    position: absolute;
+    top: -25%;
+    right: -50%;
+
+    width: 14px;
+    height: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $c-red;
+    color: $c-white;
+
+    border-radius: 50%;
+    border: 1px solid $c-white;
+
+    font-size: 9px;
+    font-weight: 700;
+    text-align: center;
+  }
+}

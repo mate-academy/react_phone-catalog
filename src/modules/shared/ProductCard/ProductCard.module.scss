@@ -1,0 +1,88 @@
+@import '../../../style/main';
+
+.card {
+  cursor: pointer;
+
+  padding: 30px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  width: 100%;
+  height: 439px;
+  transition: all $transition;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &_darkTheme {
+    background-color: $c-surface1-dark;
+    border-color: $c-surface1-dark;
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    flex: 1 1 auto;
+    max-height: 30%;
+    min-height: 30%;
+
+    @include on-tablet {
+      max-height: 40%;
+      min-height: 40%;
+    }
+
+    @include on-desktop {
+      max-height: 44%;
+      min-height: 44%;
+    }
+
+    object-fit: contain;
+
+    margin-bottom: 24px;
+
+    transition: all $transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__mainInfo {
+    flex: 1 1 auto;
+    margin-bottom: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 8px;
+
+    border-bottom: 1px solid #e2e6e9;
+
+    &_darkTheme {
+      border-bottom-color: $c-elements-dark;
+    }
+  }
+
+  &__title {
+    @include body-text;
+    
+    color: inherit;
+  }
+
+  &__secondaryInfo {
+    margin-block: 16px;
+  }
+}

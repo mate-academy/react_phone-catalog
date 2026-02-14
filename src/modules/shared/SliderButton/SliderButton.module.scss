@@ -1,0 +1,45 @@
+@import '/src/style/main';
+
+.SliderButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $c-icons;
+  color: $c-icons;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all $transition;
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &:disabled {
+    border: 1px solid $c-icons;
+
+    & path {
+      fill: $c-icons;
+    }
+  }
+
+  &_darkTheme {
+    border-color: $c-surface2-dark;
+    color: $c-white-dark;
+    background-color: $c-surface2-dark;
+
+    &:hover {
+      background-color: $c-icons-dark;
+      border-color: $c-icons-dark;
+    }
+
+    &:disabled {
+      border-color: $c-elements-dark;
+      background-color: inherit;
+
+      & path {
+        fill: $c-elements-dark;
+      }
+    }
+  }
+}

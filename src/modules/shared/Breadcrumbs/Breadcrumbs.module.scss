@@ -1,0 +1,71 @@
+@import '/src/style/main';
+
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+
+    transition: all $transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+
+    text-transform: capitalize;
+    color: $c-primary;
+
+    &_darkTheme {
+      color: $c-white-dark;
+    }
+
+    &_text {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $c-primary;
+        border-radius: 1px;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: all $transition;
+      }
+
+      &_darkTheme {
+        &::after {
+          background-color: $c-white-dark;
+        }
+      }
+    }
+
+    &:hover > &_text::after {
+      transform: scaleX(1);
+      transition: all $transition;
+    }
+
+    &_disabled {
+      color: $c-secondary;
+
+      &_darkTheme {
+        color: $c-secondary-dark;
+      }
+    }
+  }
+}

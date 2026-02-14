@@ -1,0 +1,81 @@
+@import '/src/style/main';
+
+.LinkItem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  color: $c-secondary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $c-primary;
+    transform: scale(0);
+    transition: all $transition;
+  }
+
+  &:hover {
+    color: $c-primary;
+
+    &::after {
+      transform: scaleX(1);
+      transition: all $transition;
+    }
+  }
+
+  &_darkTheme {
+    color: $c-secondary-dark;
+
+    &::after {
+      background-color: $c-white-dark;
+    }
+
+    &:hover {
+      color: $c-white-dark;
+    }
+  }
+
+  &_active {
+    color: $c-primary;
+
+    &::after {
+      transform: scaleX(1);
+    }
+
+    &_darkTheme {
+      color: $c-white-dark;
+    }
+  }
+
+  &__link {
+    height: 100%;
+    min-height: 27px;
+
+    @include uppercase;
+  }
+
+  &__btn {
+    justify-content: center;
+    width: 50%;
+    height: 64px;
+
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    @include on-tablet {
+      width: 48px;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &_darkTheme {
+      box-shadow: -1px 0 0 0 $c-surface2-dark;
+    }
+  }
+}

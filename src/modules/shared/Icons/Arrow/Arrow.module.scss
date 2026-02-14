@@ -1,0 +1,31 @@
+@import '/src/style/main';
+
+.Arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_darkTheme path{
+    fill: $c-white-dark;
+  }
+
+  &_top {
+    transform: rotate(90deg);
+  }
+
+  &_right {
+    transform: rotate(180deg);
+  }
+
+  &_bottom {
+    transform: rotate(270deg);
+  }
+
+  &_secondary path{
+    fill: $c-secondary;
+
+    &_darkTheme path{
+      fill: $c-icons-dark;
+    }
+  }
+}

@@ -1,1 +1,27 @@
-// not empty
+@import './style/main';
+
+html {
+  font-family: $font-family, sans-serif;
+  color: $c-primary;
+  background-color: $c-white;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: $mobile-width;
+  background-color: $c-white;
+
+  &_darkTheme {
+    color: $c-white-dark;
+    background-color: $c-black-dark;
+  }
+
+  &__main {
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
+  }
+}

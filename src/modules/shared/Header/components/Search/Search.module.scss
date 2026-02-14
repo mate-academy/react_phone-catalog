@@ -1,0 +1,66 @@
+@import '/src/style/main';
+
+.Search {
+  display: flex;
+  height: 100%;
+  max-width: 170px;
+  overflow: hidden;
+  min-width: 115px;
+
+  flex: 0 1 auto;
+
+  &__field {
+    @include small-text;
+
+    color: $c-primary;
+    background-color: inherit;
+
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    min-width: 90px;
+    border: none;
+    outline: none;
+    border-left: 1px solid #e2e6e9;
+    padding-left: 34px;
+    background-position-x: 10px;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-image: url('/public/icons/Search.svg');
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none; /* Для Chrome, Safari */
+    }
+
+    &::-ms-clear {
+      display: none; /* Для Edge */
+    }
+
+    &::placeholder {
+      @include small-text;
+
+      color: $c-secondary;
+    }
+  }
+
+  &_darkTheme &__field {
+    color: $c-white-dark;
+    border-left-color: $c-surface2-dark;
+
+    &::placeholder {
+      color: $c-secondary-dark;
+    }
+  }
+  
+  &__clearBtn {
+    opacity: 0;
+    pointer-events: none;
+    padding-inline: 5px;
+
+    &_active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+@import '/src/style/main';
+
+.CartPage {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+
+  &__content {
+    @include inline-padding-content;
+    
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 24px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-top: 40px;
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+
+    &_withModal{
+      pointer-events: none;
+      opacity: .7;
+    }
+  }
+
+  &__imgEmpty{
+    flex: 1 1 auto;
+    background-image: url('/public/img/cart-is-empty.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__title {
+    @include h1;
+
+    margin-top: 24px;
+    margin-bottom: 32px;
+    color: inherit;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+
+  &__body{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop{
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total{
+    flex-basis: 32.4%;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 24px;
+    border: 1px solid $c-elements;
+
+    &_darkTheme{
+      border-color: $c-elements-dark;
+    }
+  }
+
+  &__totalCount{
+    text-align: center;
+    width: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $c-elements;
+    margin-bottom: 16px;
+    color: $c-secondary;
+
+    @include body-text;
+
+    @include on-desktop{
+      padding-bottom: 25px;
+      margin-bottom: 24px;
+    }
+
+    &_darkTheme {
+      border-bottom-color: $c-elements-dark;
+      color: $c-secondary-dark;
+    }
+  }
+
+  &__chekout{
+    width: 100%;
+    padding: 13.5px;
+
+    @include buttons;
+
+    background-color: $c-primary;
+    color: $c-white;
+    transition: all $transition;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &_darkTheme{
+      background-color: $c-accent-dark;
+      color: $c-white-dark;
+
+      &:hover {
+        background-color: #A378FF;
+      }
+    }
+  }
+}

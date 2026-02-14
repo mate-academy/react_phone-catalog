@@ -1,0 +1,18 @@
+@import '/src/style/main';
+
+.Pagination {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+
+  &__buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+}

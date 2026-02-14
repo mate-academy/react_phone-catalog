@@ -1,0 +1,35 @@
+@import '/src/style/main';
+
+.ThemeSwitch {
+  margin-inline: 5px;
+  cursor: pointer;
+  width: 40px;
+  min-width: 40px;
+  height: 20px;
+  background-color: $c-black-dark;
+  display: block;
+  border-radius: 10px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 50%;
+    height: 90%;
+    background-color: $c-white;
+    border-radius: 50%;
+    transition: all $transition;
+  }
+
+  &_darkTheme {
+    background-color: $c-white-dark;
+
+    &::after {
+      left: calc(100% - 2%);
+      transform: translateX(-100%);
+      background-color: $c-black-dark;
+    }
+  }
+}

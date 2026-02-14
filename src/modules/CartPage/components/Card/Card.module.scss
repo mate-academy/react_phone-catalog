@@ -1,0 +1,68 @@
+@import '/src/style/main';
+
+.Card {
+  width: 100%;
+  padding: 16px;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  border: 1px solid $c-elements;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-wrap: nowrap;
+  }
+
+  &_darkTheme{
+    background-color: $c-surface1-dark;
+    border-color: $c-surface1-dark;
+  }
+
+  &__removeBtn {
+    transition: all 1s;
+
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+
+  &__img {
+    max-height: 80px;
+
+    transition: all 1s;
+
+    &:hover{
+      transform: scale(1.3);
+    }
+  }
+
+  &__title {
+    flex-basis: 49%;
+    flex-grow: 1;
+
+    @include on-tablet {
+      flex-basis: auto;
+    }
+  }
+
+  &__countBlock {
+    flex-grow: 1;
+    min-width: 50%;
+
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      flex-grow: 0;
+      min-width: fit-content;
+    }
+  }
+
+  &__count {
+    width: 32px;
+    text-align: center;
+  }
+}

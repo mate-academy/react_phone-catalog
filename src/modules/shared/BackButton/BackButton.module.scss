@@ -1,0 +1,31 @@
+@import '/src/style/main';
+
+.BackButton {
+  @include small-text;
+
+  color: $c-secondary;
+  transition: all $transition;
+  display: flex;
+  align-items: end;
+  gap: 4px;
+
+  &:hover {
+    color: $c-primary;
+  }
+
+  &_darkTheme {
+    color: $c-white-dark;
+
+    &:hover {
+      color: $c-accent-dark;
+    }
+  }
+
+  &_darkTheme path {
+    transition: all $transition;
+  }
+  
+  &_darkTheme:hover path {
+    fill: $c-accent-dark;
+  }
+}
