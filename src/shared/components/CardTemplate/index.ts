@@ -1,0 +1,1 @@
+export { CardTemplate } from './CardTemplate';

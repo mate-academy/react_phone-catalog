@@ -1,0 +1,1 @@
+export { CardsSlider } from './CardsSlider';

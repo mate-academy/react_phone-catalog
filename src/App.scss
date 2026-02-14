@@ -1,1 +1,12 @@
 // not empty
+@import './shared/styles/main';
+@import './shared/styles/variables';
+@import './shared/styles/mixin';
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+}

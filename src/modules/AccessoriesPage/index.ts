@@ -1,0 +1,1 @@
+export { AccessoriesPage } from './AccessoriesPage';
