@@ -1,0 +1,145 @@
+@import '../../style-utils/variables';
+@import '../../helpers/sharedStyles';
+@import '../../style-utils/mixins';
+
+.header {
+  width: 100%;
+  padding-left: 24px;
+  background: $white-color;
+  box-shadow: 0 2px 4px $grey-third-color;
+  text-align: center;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--flex-start {
+      display: flex;
+      align-items: center;
+    }
+
+    &--flex-end {
+      display: flex;
+    }
+  }
+
+  &__logo {
+    @include logo;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__menu-hamburger {
+    justify-content: center;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__favorites {
+    background-image: url('../../Images/Icons/FavouritesHeartLike.svg');
+    @extend .header-icons;
+  }
+
+  &__shopping-cart {
+    background-image: url('../../Images/Icons/ShoppingCart.svg');
+    @extend .header-icons;
+  }
+
+  &__icon-count {
+    position: relative;
+    top: 0;
+    left: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 9px;
+    line-height: 1;
+    color: $white-color;
+    width: 14px;
+    height: 14px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: $red;
+
+    transform: translate(50%, -50%);
+  }
+}
+
+.nav {
+  &__list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $grey-light-color;
+    font-size: 12px;
+    line-height: 11px;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 27px 0;
+    margin-left: 64px;
+    position: relative;
+    transition: color 0.5s;
+
+    &--last {
+      margin-left: 0;
+    }
+
+    &:not(.nav__active)::after {
+      @extend .line;
+      transform: scaleX(0);
+    }
+
+    &:not(.nav__active):hover {
+      color: $grey-primery-color;
+
+      &::after {
+        @extend .line;
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__active {
+    color: $grey-primery-color;
+
+    &::after {
+      position: absolute;
+      border-radius: 8px;
+      height: 4px;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: $grey-primery-color;
+      content: '';
+    }
+  }
+}
