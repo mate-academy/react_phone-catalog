@@ -1,0 +1,235 @@
+@import '../variables';
+@import '../mixins';
+
+.phones {
+  flex-grow: 1;
+
+  &__adress {
+    display: flex;
+    gap: 8px;
+    justify-content: start;
+    height: 16px;
+    margin-top: 24px;
+    margin-inline: 16px;
+
+    @include addressMarginInline;
+
+    &__home-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      cursor: pointer;
+
+      @include hover(transform, scale(1.1));
+
+      &__image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__arrow-right-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+
+      &__image {
+        width: 5.33em;
+        height: 9.33px;
+        object-fit: contain;
+      }
+    }
+
+    &__page-adress {
+      width: fit-content;
+      font-size: 12px;
+      color: #89939a;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin: 24px 16px 8px;
+
+    @include phonesTitle;
+  }
+
+  &__quantity-of-phones {
+    font-size: 14px;
+    line-height: 21px;
+    margin-inline: 16px;
+    color: #89939a;
+
+    @include marginInline;
+  }
+
+  &__sort {
+    display: flex;
+    gap: 16px;
+    height: 59px;
+    margin-top: 32px;
+    margin-inline: 16px;
+
+    @include sortByItemsOnPage;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      height: 59px;
+      width: 100%;
+    }
+
+    &__name {
+      display: flex;
+      align-items: center;
+      height: 19px;
+      width: 100%;
+      font-weight: 700;
+      font-size: 12px;
+      color: #89939a;
+    }
+
+    &__select {
+      position: relative;
+      display: flex;
+      padding-inline: 12px;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      width: 100%;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      border: 1px solid;
+
+      &__vector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+
+        &__image {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+    &__dropdown {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      border: 1px solid #e2e6e9;
+      background: white;
+      z-index: 10;
+      list-style: none;
+
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        padding: 8px 12px;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+          background: #f5f5f5;
+        }
+      }
+    }
+  }
+
+  &__goods {
+    margin: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include goods;
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin: 24px 36px 64px;
+    height: 32px;
+
+    @include pagination;
+
+    &__button-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid;
+
+      &__image {
+        width: 16px;
+      }
+    }
+
+    &__button-numbers {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      overflow: hidden;
+    }
+
+    &__button-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      width: 32px;
+      height: 32px;
+
+      cursor: pointer;
+
+      &--active {
+        color: #ffffff;
+        background: #313237;
+      }
+    }
+
+    &__button-right {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid;
+
+      &__image {
+        width: 16px;
+      }
+    }
+
+    &__ellipsis {
+      cursor: default;
+    }
+  }
+}
+
+.sort-by {
+  @include sortBy;
+}
+
+.items-on-page {
+  @include itemsOnPage;
+}
