@@ -1,0 +1,57 @@
+@import '../../../styles/utils';
+
+.about {
+  @include tablet {
+    grid-column: 1/-1;
+  }
+
+  @include desktop {
+    grid-column: auto;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    position: relative;
+    margin-bottom: 48px;
+
+    @include tablet {
+      font-size: 22px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: $hover-color;
+      bottom: -16px;
+      left: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__subtitle {
+    color: $color-white;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 16px;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__text {
+    color: #89939A;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}

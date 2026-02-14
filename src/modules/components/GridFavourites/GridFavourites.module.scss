@@ -1,0 +1,23 @@
+@import '../../../styles/utils';
+
+.grid-favourites__list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+  }
+}
+
+.grid-favourites__item {
+  width: 100%;
+}
