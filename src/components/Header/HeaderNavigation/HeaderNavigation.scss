@@ -1,0 +1,148 @@
+@use '/src/styles/utils/mixins' as *;
+@use '/src/styles/utils/variables' as *;
+
+.header {
+  z-index: 9999;
+
+  &__navigation {
+    display: none;
+
+    @include on-tablet {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    &--item {
+      display: flex;
+      align-items: center;
+    }
+
+    &--link {
+      position: relative;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 4%;
+      box-sizing: border-box;
+      color: var(--primary);
+      text-decoration: none;
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: -16px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: transparent;
+        transition: transform $effect-duration ease;
+
+        @include on-desktop {
+          bottom: -24px;
+        }
+      }
+
+      &:hover {
+        transform-origin: left;
+        color: var(--primary);
+      }
+
+      &:hover::after {
+        background-color: var(--primary);
+      }
+
+      &.is-active {
+        color: var(--primary);
+
+        &::after {
+          background-color: var(--primary);
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+  &__icon {
+    &--container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 48px;
+      box-shadow: -1px 0 0 0 var(--border);
+
+      position: relative;
+
+      &:first-child {
+        border-right: 1px solid var(--border-hover);
+      }
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--border);
+        transition: transform $effect-duration ease;
+        border-radius: 1px;
+      }
+
+      &:hover::after {
+        background-color: var(--primary);
+      }
+
+      @include on-desktop {
+        width: 64px;
+      }
+    }
+
+    &--link {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+    }
+  }
+
+  &__quantity {
+    font-size: 9px;
+    color: var(--main);
+
+    &--box {
+      display: flex;
+      background-color: var(--accent-secondary);
+      height: 14px;
+      width: 14px;
+      border: 1px solid var(--main);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      transform: translate(50%, -50%);
+    }
+  }
+}

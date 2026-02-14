@@ -98,11 +98,29 @@ module.exports = {
         },
       },
     ],
+
+    // Fix for "Missing file extension" error
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
     react: {
       version: 'detect',
     },
+    // Adding resolver to help ESLint find files without extensions
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
   },
 };
