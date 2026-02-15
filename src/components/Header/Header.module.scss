@@ -1,0 +1,126 @@
+@import '../../styles/global';
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+  gap: 24px;
+  align-items: center;
+  border-bottom: 1px solid var(--color-elements);
+  z-index: 3;
+
+  @include on-tablet {
+    height: 48px;
+    gap: 16px;
+  }
+}
+
+.logo {
+  height: 28px;
+  width: 80px;
+  margin-inline: 24px;
+
+  @include on-tablet {
+    height: 22px;
+    width: 64px;
+    margin-inline: 16px;
+  }
+}
+
+.icon_cart,
+.icon_fav {
+  display: flex;
+  position: relative;
+  background-image: url('/img/cart.svg');
+  height: 16px;
+  user-select: none;
+  background-size: contain;
+  aspect-ratio: 1/1;
+}
+
+.icon_fav {
+  background-image: url('/img/favourites-heart.svg');
+}
+
+.button,
+.button_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+  border-left: 1px solid var(--color-elements);
+
+  &:hover .icon_fav,
+  &:hover .icon_cart {
+    transform: scale(110%);
+  }
+
+  @include on-tablet {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.button {
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.button_menu {
+  display: none;
+
+  @include on-mobile {
+    display: flex;
+    cursor: pointer;
+  }
+}
+
+.buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  right: 0;
+}
+
+.is_active {
+  position: relative;
+  color: var(--color-primary);
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 2.3px;
+    bottom: 1px;
+    width: 100%;
+    background-color: var(--color-primary);
+  }
+}
+
+.items_quantity {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  height: 13px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  border: 1px solid white;
+  background-color: var(--color-red);
+  justify-content: center;
+  align-items: center;
+
+  font-family: var(--font-family-semibold);
+  font-size: 9px;
+  color: white;
+  padding-top: 1px;
+  text-align: center;
+}

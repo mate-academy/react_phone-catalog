@@ -1,0 +1,118 @@
+@import '../../styles/global';
+
+.product_card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: white;
+  width: var(--product-card-width);
+  height: var(--product-card-height);
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  &__image {
+    height: 196px;
+    width: 208px;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-icons);
+
+    .product_card__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    @extend %body-text;
+
+    margin-top: 16px;
+    height: 42px;
+  }
+
+  &__price_box {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__price {
+    @extend %h3;
+  }
+
+  &__full_price {
+    @extend %h3;
+
+    font-family: var(--font-family-regular);
+    text-decoration: line-through;
+    color: var(--color-secondary);
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-elements);
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &__key,
+    &__value {
+      @extend %small-text;
+
+      color: var(--color-secondary);
+    }
+
+    &__value {
+      color: var(--color-primary);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+  }
+}
+
+.not_add_to_cart_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-width: 160px;
+  width: 100%;
+
+  @extend %buttons-text;
+
+  color: white;
+  background-color: var(--color-secondary);
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  transition: all var(--transition-duration);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}

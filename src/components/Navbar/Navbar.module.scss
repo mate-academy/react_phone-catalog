@@ -1,0 +1,58 @@
+@import '../../styles/global';
+
+.navbar {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  height: 100%;
+
+  &__item {
+    @extend %uppercase;
+
+    color: var(--color-secondary);
+    line-height: 63px;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+
+    @include on-tablet {
+      line-height: 47px;
+    }
+  }
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: fit-content;
+
+    & .navbar__item {
+      line-height: 27px;
+    }
+  }
+}
+
+.is_active {
+  position: relative;
+  color: var(--color-primary);
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 2px;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-primary);
+  }
+}

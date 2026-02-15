@@ -1,0 +1,37 @@
+@import './../../styles/global';
+
+.home_page {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+@include on-tablet {
+  gap: 64px;
+}
+
+@include on-mobile {
+  gap: 56px;
+}
+
+&__block {
+  display: flex;
+  flex-direction: column;
+  gap: 56px
+}
+}
+
+.title {
+  @extend %h1;
+
+  margin-bottom: -24px;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 32px;
+    margin-bottom: -32px;
+  }
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+}

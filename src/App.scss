@@ -1,1 +1,47 @@
-// not empty
+@import '/src/styles/global';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-duration) ease;
+    z-index: 5;
+  }
+
+  &:has(aside.open)::before {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.container {
+  @extend %grid;
+
+  margin-top: 64px;
+  flex: 1;
+  margin-bottom: 80px;
+
+  & > * {
+    grid-column: 1/-1;
+  }
+
+  @include on-tablet {
+    overflow-x: hidden;
+    margin-top: 48px;
+    margin-bottom: 64px;
+  }
+
+  @include on-mobile {
+    margin-bottom: 56px;
+    min-height: auto;
+  }
+}
