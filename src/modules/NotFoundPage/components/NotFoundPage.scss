@@ -1,0 +1,48 @@
+.not-found-page {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #E2E6E9;
+  }
+
+  &__code {
+    font-size: 200px;
+  }
+
+  &__text {
+    font-size: 80px;
+    margin-bottom: 40px;
+  }
+  &__link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+
+    color: white;
+    background-color: #216cff;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    margin-bottom: 100px;
+    animation: slide-up 1s ease-out;
+    
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}
+
+
+@keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

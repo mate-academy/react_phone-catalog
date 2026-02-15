@@ -1,1 +1,137 @@
-// not empty
+@import '/src/styles/media';
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: Mont, sans-serif;
+  scrollbar-width: thin;
+}
+
+[class*='__container'] {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include mobile {
+    padding-inline: 16px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.page__main {
+  margin-bottom: 80px;
+  margin-top: 121px;
+  flex-grow: 1;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include mobile {
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 64px;
+  }
+}
+
+.page__header {
+  position: fixed;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 41px;
+  letter-spacing: -1%;
+  margin-bottom: 24px;
+
+  @include mobile {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    max-width: 70%;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  margin-bottom: 8px;
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+img {
+  overflow: clip;
+}
+
+.error-message {
+  margin-bottom: 30px;
+}
+
+.button-back,
+.reload-button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  color: white;
+  background-color: #216cff;
+  padding: 8px 15px;
+  border-radius: 10px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.layout__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

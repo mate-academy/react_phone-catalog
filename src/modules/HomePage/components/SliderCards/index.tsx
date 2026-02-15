@@ -1,0 +1,1 @@
+export { SliderCards } from './SliderCards';
