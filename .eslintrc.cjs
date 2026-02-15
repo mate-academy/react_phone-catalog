@@ -92,14 +92,30 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/ban-types': ['error', {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
+      extendDefaults: true,
+      types: {
+        '{}': false,
+      },
+    },
+    ],
+    // Import
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+          'vite.config.ts',
+          'vite.config.mts',
+          'eslint.config.mts',
+          'cypress.config.ts',
+        ],
       },
     ],
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'vite.config.mts', 'eslint.config.mts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
     react: {
       version: 'detect',

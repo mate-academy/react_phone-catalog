@@ -1,0 +1,54 @@
+@use '../../../utils/vars' as *;
+@use '../../../utils/mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  grid-column: 1/-1;
+  align-self: flex-start;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 14px;
+    line-height: 20px;
+    color: $secondary-color;
+    text-align: left;
+    list-style: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    :global(body.dark) & {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+
+    font-family: Mont,sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  &__link_active {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $primary-color;
+    letter-spacing: 0%;
+  }
+}

@@ -1,0 +1,160 @@
+@use '../../../utils/vars' as *;
+@use '../../../utils/mixins' as *;
+
+footer {
+  width: 100%;
+  background-color: $background-color;
+  box-shadow: 0 0 0 1px $elements-color;
+}
+
+.footer {
+  @include page-grid;
+
+  padding: 0;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @include on-phone {
+      grid-column: 1/-1;
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      width: auto;
+      padding: 32px 16px;
+    }
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      height: 96px;
+      padding: 0;
+    }
+  }
+
+  &__logo {
+    @include on-tablet {
+      padding: 32px;
+    }
+
+    @include on-desktop {
+      padding: 0;
+    }
+
+    &__img {
+      width: 89px;
+      height: 32px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+
+    @include on-phone {
+      flex-direction: column;
+      gap: 16px;
+      align-items: self-start;
+
+    }
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 107px;
+      align-items: center;
+    }
+
+    &__link {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      color: $secondary-color;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 4%;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      // &:active {
+      //   color: rgb(239, 3, 3);
+      //   border-bottom: 3px solid rgb(239, 3, 3);
+      // }
+    }
+  }
+
+  &__scroll_top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-right: 152px;
+
+    @include on-tablet {
+      margin-right: 32px;
+    }
+
+    &__p {
+      width: 70px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 100%;
+      color: $secondary-color;
+      text-align: right;
+    }
+
+    &__btn {
+      transform: rotate(270deg);
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid $icons-and-placeholders-color;
+      border-width: 1px;
+
+      opacity: 1;
+      background-color: transparent;
+      background-image: url('/react_phone-catalog/img/icons/icon-chevron-arrow-black.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 6px;
+
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $primary-color;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+
+        transform: rotate(0deg);
+
+        border: 1px solid $icons-and-placeholders-color;
+
+        background-image: url('/react_phone-catalog/img/icons/icon-chevron-arrow-up.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 16px;
+      }
+
+      &_img {
+        height: 16px;
+      }
+    }
+  }
+}

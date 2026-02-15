@@ -1,0 +1,169 @@
+@use '../../../../utils/vars' as *;
+@use '../../../../utils/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.slideContainer {
+  position: relative;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  width: 100%;
+
+  @include on-desktop {
+    flex: none;
+    width: 1040px;
+  }
+}
+
+.slideImage {
+  display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+
+  @include on-tablet {
+    aspect-ratio: 1040 / 400;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.navButton {
+  display: none;
+
+  @include on-tablet {
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 189px;
+    border: 1px solid $elements-color;
+
+    font-size: 16px;
+    color: $primary-color;
+
+    background-color: $background-color;
+
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $elements-color;
+    }
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.orderButton {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 5;
+  bottom: 20px;
+  left: 20px;
+
+  padding: 10px 24px;
+  border: none;
+  border: 1px solid $background-color;
+  border-radius: 20px;
+
+  font-family: inherit;
+  font-weight: 700;
+  color: $background-color;
+  text-transform: uppercase;
+
+  background-color: $primary-color;
+
+  transition: opacity 0.3s;
+
+  @include on-tablet {
+    bottom: 56px;
+    left: 48px;
+    padding: 14px 32px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    opacity: 0.9;
+
+    // Keeping user's requested rich aesthetics/rainbow from before if they want,
+    // but the screenshot suggests a more minimal design.
+    // I'll stick to a slightly more premium feel.
+    background-image: linear-gradient(to right,
+        #e7484f,
+        #f68b1d,
+        #fced00,
+        #009e4f,
+        #00aac3,
+        #732982,
+        #e7484f);
+    background-size: 200% auto;
+    animation: slidebg 3s linear infinite;
+  }
+}
+
+.navDots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.navDot {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+
+  background-color: $elements-color;
+
+  transition: background-color 0.3s;
+
+  &.activeDot {
+    background-color: $primary-color;
+  }
+}
+
+@keyframes slidebg {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
