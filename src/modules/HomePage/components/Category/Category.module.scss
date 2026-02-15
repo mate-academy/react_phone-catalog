@@ -1,0 +1,20 @@
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/breakpoints' as *;
+
+.wrapper {
+  @include for-tablet {
+    display: flex;
+    padding: 0 16px;
+    gap: 16px;
+  }
+}
+
+.title {
+  @include h2-mobile;
+
+  padding: 0 16px 24px;
+
+  @include for-tablet {
+    @include h1-desktop
+  }
+}
