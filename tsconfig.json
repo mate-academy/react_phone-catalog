@@ -2,7 +2,7 @@
   "extends": "@mate-academy/students-ts-config",
   "include": [
     "src"
-  ],
+, "tsconfig.eslint.json"  ],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"]

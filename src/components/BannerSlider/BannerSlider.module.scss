@@ -1,0 +1,537 @@
+@import '../../styles/variables.scss';
+
+.bannerSlider {
+  width: 100%;
+  margin-bottom: $spacing-3xl;
+  position: relative;
+  animation: slide-in 0.4s ease-out;
+
+  [data-theme='dark'] & {
+    background: #0f1121;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+}
+
+.bannerContainer {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  border-radius: $border-radius-md;
+  position: relative;
+  aspect-ratio: 3 / 1;
+}
+
+.bannerTrack {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.banner {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+// ============================================
+// BASE BANNER CONTENT
+// ============================================
+
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+
+  @include mobile {
+    padding: 30px;
+  }
+
+  @include tablet {
+    padding: 35px;
+  }
+}
+
+.bannerTitle {
+  display: block;
+  line-height: $line-height-tight;
+  font-size: 48px;
+  font-weight: 700;
+  color: $white;
+  margin: 0 0 $spacing-sm;
+
+  @include mobile {
+    font-size: 28px;
+  }
+
+  @include tablet {
+    font-size: 36px;
+  }
+}
+
+.bannerSubtitle {
+  display: block;
+  line-height: $line-height-normal;
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  color: $white;
+  margin: 0 0 $spacing-lg;
+
+  @include mobile {
+    font-size: 18px;
+    margin-bottom: $spacing-md;
+  }
+
+  @include tablet {
+    font-size: 20px;
+  }
+}
+
+.bannerButton {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $white;
+  background: $primary-accent;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-button-hover;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include mobile {
+    padding: 10px 20px;
+    font-size: $font-size-sm;
+  }
+
+  @include tablet {
+    padding: 10px 20px;
+    font-size: $font-size-sm;
+  }
+}
+
+// ============================================
+// BANNER 1 - Phones (Left aligned)
+// ============================================
+
+.bannerContent1 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+
+  @include mobile {
+    padding: 30px;
+  }
+
+  @include tablet {
+    padding: 35px;
+  }
+
+  .bannerTitle {
+    font-size: 50px;
+    width: 750px;
+    max-width: 100%;
+    background: linear-gradient(90deg, hsl(189, 97%, 50%), #b8f709);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0;
+
+    @include mobile {
+      font-size: 30px;
+      width: 300px;
+    }
+
+    @include tablet {
+      font-size: 36px;
+      width: 380px;
+    }
+  }
+
+  .bannerSubtitle {
+    color: $white;
+    font-size: 24px;
+    margin-bottom: $spacing-lg;
+
+    @include mobile {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    @include tablet {
+      font-size: 22px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .bannerButton {
+    background: linear-gradient(90deg, hsl(288, 98%, 34%), #f50404);
+  }
+}
+
+// ============================================
+// BANNER 2 - Tablets (Right aligned, reversed)
+// ============================================
+
+.bannerContent2 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+
+  @include mobile {
+    padding: 30px;
+  }
+
+  @include tablet {
+    padding: 35px;
+  }
+
+  .bannerTitle {
+    font-size: 60px;
+    background: linear-gradient(90deg, hsl(175, 99%, 48%), #01f701);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    order: 2;
+
+    @include mobile {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    @include tablet {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .bannerSubtitle {
+    color: $white;
+    font-size: 24px;
+    margin-bottom: 0;
+    order: 3;
+
+    @include mobile {
+      font-size: 18px;
+    }
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  .bannerButton {
+    background: linear-gradient(90deg, hsl(109, 89%, 39%), #cbe101);
+    font-weight: 900;
+    margin-bottom: 20px;
+    order: 1;
+
+    @include mobile {
+      margin-bottom: 15px;
+    }
+
+    @include tablet {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// ============================================
+// BANNER 3 - Accessories (Right aligned)
+// ============================================
+
+.bannerContent3 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+
+  @include mobile {
+    padding: 30px;
+  }
+
+  @include tablet {
+    padding: 35px;
+  }
+
+  .bannerTitle {
+    font-size: 54px;
+    width: 650px;
+    max-width: 100%;
+    text-align: right;
+    background: linear-gradient(165deg, hwb(60 97% 2%) 0%, hwb(60 97% 2%) 55%, #f70 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0;
+
+    @include mobile {
+      font-size: 34px;
+      width: 350px;
+    }
+
+    @include tablet {
+      font-size: 40px;
+      width: 380px;
+    }
+  }
+
+  .bannerSubtitle {
+    color: $white;
+    font-size: 24px;
+    margin-bottom: 70px;
+
+    @include mobile {
+      font-size: 18px;
+      margin-bottom: 50px;
+    }
+
+    @include tablet {
+      font-size: 22px;
+      margin-bottom: 60px;
+    }
+  }
+
+  .bannerButton {
+    background: linear-gradient(90deg, hsl(62, 96%, 42%), #f50404);
+  }
+}
+
+// ============================================
+// NAVIGATION BUTTONS
+// ============================================
+
+.navButton {
+  width: 32px;
+  height: 100%;
+  border-radius: $border-radius-sm;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-base;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: var(--primary-text);
+    background: var(--elements-hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  [data-theme='light'] & {
+    background: $surface-secondary-light;
+    border-color: #b4bdc3;
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    background: #323542;
+    border-color: #323542;
+    color: $text-primary-dark;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// ============================================
+// PROGRESS DOTS
+// ============================================
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: $spacing-md 0;
+
+  [data-theme='dark'] & {
+    background: #0f1121;
+  }
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  border-radius: $border-radius-full;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  padding: 0;
+
+  &:hover {
+    transform: scale(1.2);
+
+    [data-theme='light'] & {
+      background: $text-secondary-light;
+    }
+
+    [data-theme='dark'] & {
+      background: $text-secondary-dark;
+    }
+  }
+
+  [data-theme='light'] & {
+    background: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    background: #3b3e4a;
+  }
+}
+
+.active {
+  width: 14px;
+  border-radius: $border-radius-sm;
+
+  [data-theme='light'] & {
+    background: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    background: $text-primary-dark;
+  }
+}
+
+// ============================================
+// ANIMATION
+// ============================================
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+// Touch feedback (for mobile swipe)
+@media (hover: none) and (pointer: coarse) {
+  .bannerContainer {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+@include mobile {
+  .bannerSlider {
+    height: 352px;
+    margin-bottom: $spacing-xl;
+  }
+
+  .container {
+    height: 320px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .bannerContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .bannerTrack {
+    width: 100%;
+  }
+
+  .bannerImage {
+    right: 0;
+    object-fit: cover;
+  }
+
+  .navButton {
+    display: none;
+  }
+}
+
+@include tablet {
+  .bannerSlider {
+    height: 380px;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .container {
+    height: 350px;
+    padding: 0 $container-padding-tablet;
+  }
+}
+
+@include desktop {
+  .bannerSlider {
+    height: 432px;
+  }
+
+  .container {
+    height: 400px;
+  }
+}

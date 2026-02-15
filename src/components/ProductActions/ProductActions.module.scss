@@ -1,0 +1,129 @@
+@import '../../styles/variables';
+
+.actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+/* stylelint-disable no-descending-specificity */
+.addButton {
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: $surface-secondary-light;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  [data-theme='light'] & {
+    background: $primary-accent;
+  }
+
+  [data-theme='dark'] & {
+    background: $primary-accent-dark;
+  }
+
+  &:disabled,
+  &.added {
+    border: 1px solid;
+    cursor: default;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    [data-theme='light'] & {
+      background: $white;
+      color: $green;
+      border-color: $elements-border-light;
+    }
+
+    [data-theme='dark'] & {
+      background: #3b3e4a;
+      color: $text-primary-dark;
+      border-color: #3b3e4a;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow: $shadow-button-hover;
+  }
+}
+
+.favoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border: 1px solid $elements-border-light;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+
+  [data-theme='dark'] & {
+    border-color: $elements-selected-dark;
+  }
+
+  &.favorited {
+    border-color: $elements-border-light;
+
+    [data-theme='dark'] & {
+      border-color: #3b3e4a;
+
+      &:hover {
+        border-color: $icon-hover-dark;
+      }
+    }
+  }
+
+  &:hover:not(.favorited) {
+    border-color: $icon-color-light;
+
+    [data-theme='dark'] & {
+      border-color: $icon-hover-dark;
+    }
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+.heartIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+
+  .favoriteButton.favorited & {
+    animation: heart-pulse 0.3s ease;
+  }
+}
+
+@keyframes heart-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,274 @@
+@import '../../styles/variables';
+
+/* stylelint-disable no-descending-specificity */
+
+// Base navigation styles
+.navigation {
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+  font-family: $font-family-base;
+  font-weight: $font-weight-extra-bold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all $transition-base;
+  cursor: pointer;
+  user-select: none;
+}
+
+// ============================================
+// HORIZONTAL VARIANT (Header Desktop)
+// ============================================
+.horizontal {
+  .list {
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    position: relative;
+
+    @include desktop {
+      height: 64px;
+    }
+  }
+
+  .link {
+    font-size: 12px;
+    line-height: 11px;
+    display: inline-block;
+
+    // Light theme
+    [data-theme='light'] & {
+      color: $text-secondary-light;
+    }
+
+    // Dark theme
+    [data-theme='dark'] & {
+      color: $text-secondary-dark;
+    }
+
+    // Bottom border on active
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: transparent;
+      transition: background $transition-base;
+    }
+
+    // Active state
+    &.active {
+      [data-theme='light'] & {
+        color: $text-primary-light;
+
+        &::after {
+          background: $text-primary-light;
+        }
+      }
+
+      [data-theme='dark'] & {
+        color: $text-primary-dark;
+
+        &::after {
+          background: $text-primary-dark;
+        }
+      }
+    }
+
+    // Hover state
+    &:hover:not(.active) {
+      [data-theme='light'] & {
+        color: $text-primary-light;
+      }
+
+      [data-theme='dark'] & {
+        color: $text-primary-dark;
+      }
+    }
+  }
+
+  // Hide on mobile/tablet
+  @include mobile {
+    display: none;
+  }
+}
+
+// ============================================
+// VERTICAL VARIANT (Burger Menu)
+// ============================================
+.vertical {
+  .list {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .link {
+    font-size: 12px;
+    line-height: 27px;
+    padding: 8px 0;
+    display: block;
+    width: 100%;
+    transition: all $transition-base;
+    position: relative;
+
+    [data-theme='light'] & {
+      color: $text-secondary-light;
+    }
+
+    [data-theme='dark'] & {
+      color: $text-secondary-dark;
+    }
+
+    &:hover{
+      [data-theme='light'] & {
+        color: $text-primary-light;
+      }
+
+      [data-theme='dark'] & {
+        color: $text-primary-dark;
+      }
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+
+        [data-theme='dark'] & {
+          background: $text-primary-dark;
+        }
+
+        [data-theme='light'] & {
+          background: $text-primary-light;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// FOOTER VARIANT
+// ============================================
+.footer {
+  .list {
+    // Desktop: horizontal
+    flex-direction: row;
+    gap: 14px;
+    align-items: flex-start;
+    justify-content: center;
+
+    // Mobile: vertical
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    @include desktop {
+      gap: 106px;
+    }
+  }
+
+  .link {
+    font-size: 12px;
+    line-height: 11px;
+    display: inline-block;
+    transition: all $transition-base;
+
+    // Light theme - footer is always light gray text
+    [data-theme='light'] & {
+      color: $text-secondary-light;
+    }
+
+    // Dark theme - footer is always light gray text
+    [data-theme='dark'] & {
+      color: $text-secondary-dark;
+    }
+
+    // Hover state - goes to primary color
+    &:hover {
+      [data-theme='light'] & {
+        color: $text-primary-light;
+      }
+
+      [data-theme='dark'] & {
+        color: $text-primary-dark;
+      }
+    }
+
+    // No active state styling in footer
+    &.active {
+      // Same as default
+      [data-theme='light'] & {
+        color: $text-secondary-light;
+      }
+
+      [data-theme='dark'] & {
+        color: $text-secondary-dark;
+      }
+
+      // Hover still works
+      &:hover {
+        [data-theme='light'] & {
+          color: $text-primary-light;
+        }
+
+        [data-theme='dark'] & {
+          color: $text-primary-dark;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+// Staggered fade-in for vertical menu
+.vertical .item {
+  animation: fade-in-slide 0.3s ease-out backwards;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+@keyframes fade-in-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
