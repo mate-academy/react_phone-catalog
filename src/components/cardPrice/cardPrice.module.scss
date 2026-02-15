@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.cardPrice {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  border-bottom: 1px solid #e2e6e9;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+
+  &--size {
+    font-size: 32px;
+    border: none;
+    margin-top: 32px;
+  }
+
+  &--border {
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}
+
+.cardFullPrice {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: #89939a;
+}

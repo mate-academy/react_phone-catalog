@@ -1,0 +1,189 @@
+@import '../../styles/main';
+
+.container {
+  @include on-tablet {
+    @include content-padding-inline;
+  }
+}
+
+.banner {
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.slider {
+  text-align: center;
+  color: white;
+
+  @include page-grid;
+}
+
+.slide {
+  background: #0f0f11;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  padding-top: 30px;
+  grid-column: 1 / -1;
+  max-width: 100%;
+  width: 100%;
+
+  @include on-tablet {
+    display: grid;
+    aspect-ratio: 400 / 189;
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 8px;
+    grid-column: 2 / -2;
+    padding: 0;
+  }
+
+  @include on-desktop {
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.slideImgBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.slideImg {
+  max-width: 100%;
+  object-fit: contain;
+  position: absolute;
+}
+
+.caption {
+  font-weight: 800;
+  font-size: 24px;
+  background: linear-gradient(90deg, #7f5af0, #ff7ce0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  line-height: 100%;
+
+  @include on-desktop {
+    font-size: 48px;
+  }
+}
+
+.captionImg {
+  height: 24px;
+
+  @include on-desktop {
+    height: 48px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  margin-top: 30px;
+
+  @include on-tablet {
+    font-size: 26px;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    font-size: 41px;
+  }
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 12px;
+
+  @include on-desktop {
+    font-size: 16px;
+  }
+}
+
+.dots {
+  grid-column: 2 / -2;
+}
+
+.dot {
+  height: 4px;
+  width: 14px;
+  margin: 0 4px;
+  background-color: #ccc;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #0f0f11;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background: #222;
+  padding: 30px;
+  margin: 8px;
+  border-radius: 14px;
+  justify-content: space-between;
+}
+
+.sliderButton {
+  display: block;
+  width: 200px;
+  border-radius: 24px;
+  border: 1px solid #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 12px;
+  padding: 12px;
+
+
+  @include on-desktop {
+    font-size: 16px;
+    padding: 16px;
+    width: 250px;
+    border-radius: 32px;
+  }
+
+  &:hover {
+    border-color: #e2e6e9;
+  }
+}
+
+.sliderTitleBlock {
+  @include on-tablet {
+    padding: 30px;
+  }
+}
+
+.captionBlock {
+  text-align: left;
+}
+
+.arrow {
+  border-radius: 24px;
+  border: 1px solid #b4bdc3;
+  background: transparent;
+  width: 32px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #0f0f11;
+  }
+  &--align {
+    justify-self: flex-end;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

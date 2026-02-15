@@ -1,0 +1,1 @@
+export { SectionSlider } from './sectionSlider';

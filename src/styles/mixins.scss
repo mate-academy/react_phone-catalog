@@ -1,0 +1,152 @@
+$large-phone-min-width: 475px;
+$tablet-min-width: 640px;
+$large-tablet-min-width: 768px;
+$desktop-min-width: 1200px;
+
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-large-tablet {
+  @media (min-width: $large-tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-large-mobile {
+  @media (min-width: $large-phone-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    box-sizing: content-box;
+    padding-inline: 32px;
+    margin-inline: auto;
+    max-width: 1136px;
+  }
+
+}
+
+@mixin page-grid {
+  display: grid;
+
+  --columns: 4;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    column-width: 32px;
+  }
+}
+
+@mixin button-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  border: 1px solid #b4bdc3;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &--width {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@mixin section-title {
+font-size: 22px;
+  line-height: 31px;
+  font-weight: 800;
+
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: .01em;
+
+  }
+
+  &--width {
+    width: 136px;
+
+    @include on-tablet {
+       width: auto;
+    }
+  }
+
+}
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  box-shadow: -1px 0 0 0 #E2E6E9;
+  position: relative;
+  cursor: pointer;
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #313237;
+  }
+
+  &--active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #313237;
+  }
+
+  @include on-tablet {
+    width: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+  }
+}

@@ -1,0 +1,68 @@
+@import '../../styles/main';
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-transform: uppercase;
+  padding: 0;
+
+  @include on-tablet {
+    flex-direction: row;
+    column-gap: 32px;
+  }
+
+  @include on-desktop {
+    column-gap: 64px;
+  }
+}
+
+.navLink {
+  display: flex;
+  height: inherit;
+  align-items: center;
+  text-decoration: none;
+  color: #89939a;
+  letter-spacing: 0.04em;
+  line-height: 11px;
+  font-size: 12px;
+  font-weight: 800;
+  position: relative;
+  transition: color 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #313237;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &--active {
+    color: #313237;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.navItem {
+  height: 27px;
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
