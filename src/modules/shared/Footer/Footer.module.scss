@@ -1,0 +1,128 @@
+@import '../../../styles/main';
+
+.footer {
+  margin-top: 64px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    border-top: 1px solid $textNotActiveColor;
+    padding: 32px 16px;
+
+
+    @include on-tablet {
+      height: 48px;
+    }
+  }
+
+  &__main_content {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    padding: 13px 16px 13px 0;
+
+    width: 96px;
+
+    @include hover(scale, 1.1);
+
+    @include on-tablet {
+      padding: 0;
+    }
+
+    @include on-desktop {
+      width: 128px;
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+
+    @include on-mobile {
+      height: 65px;
+    }
+
+
+    @include on-desktop {
+      height: 68px;
+    }
+
+    &_list{
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+      justify-content: left;
+      align-items: left;
+  
+      @include on-tablet {
+        flex: 1 1 auto;
+        min-width: 330px;
+        height: inherit;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      }
+  
+      @include on-desktop {
+        justify-content: space-between;
+        max-width: 425px;
+      }
+    }
+  
+    &_item {
+      height: inherit;
+      display: flex;
+      align-items: center;
+    }
+  
+    &_link {
+      height: inherit;
+      font-size: 12px;
+      font-weight: bold;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+
+      @include hover(color, $textNotActiveColor);
+    }
+  }
+
+  &__arrow_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #323542;
+    height: 32px;
+    width: 32px;
+
+    & img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

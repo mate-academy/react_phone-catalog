@@ -1,0 +1,217 @@
+@import '../../../styles/main';
+
+.cart {
+  padding-top: 24px;
+  padding-inline: 16px;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+
+ &__backButton {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    width: 66px;
+    padding-right: 16px;
+    cursor: pointer;
+    margin-bottom: 16px;
+
+    @include hover(scale, 1.05);
+
+    &_arrow {
+      background-image: url('../../../img/icons/icon-arrow-left.png');
+      width: 16px;
+      height: 16px;
+
+    }
+
+    &_text {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 100%;
+    }
+  }
+
+  &__imageContainer {
+    height: 300px;
+    width: 300px;
+    align-self: center;
+  }
+  
+  &__image {
+    height: inherit;
+    object-fit: cover;
+  }
+  &__products {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+
+  }
+
+  // &__product {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   height: 160px;
+  //   padding: 16px;
+  //   background-color: $mainNumberButtonColor;
+
+  //   @include on-tablet {
+  //     @include page-grid;
+  //     padding-inline: 24px;
+  //   }
+
+  //   @include on-tablet {
+  //     flex-direction: row;
+  //     padding: 16px;
+  //   }
+
+  //   &_info {
+  //     display: flex;
+  //     align-items: center;
+  //     column-gap: 16px;
+  //     justify-content: space-between;
+  //     min-width: 100%;
+
+  //     @include on-tablet {
+  //       grid-column: 1 / 8;
+  //       justify-content: space-around;
+  //     }
+  //   }
+  
+  //   &_image {
+  //     position: relative;
+  //     height: 80px;
+  //     width: 80px;
+  
+      
+  //     & img {
+  //       position: absolute;
+  //       top: 0;
+  //       left: 0;
+  //       height: 100%;
+  //       width: 100%;
+  //       // padding-bottom: 100%;
+  //       object-fit: contain;
+  //       object-position: center;
+  //     }
+  
+  //   }
+
+  //   &_title {
+  //     display: flex;
+  //     flex-wrap: wrap;
+  //     // min-width: 63px;
+  //     font-size: 14px;
+  //     font-weight: 600;
+  //   }
+  
+    
+  
+  //   &_iconClose {
+  //     height: 16px;
+  //   }
+  
+  //   &_purchaseOptions {
+  //     display: flex;
+  //     justify-content: space-between;
+  //     align-items: center;
+  //     width: 100%;
+
+  //     @include on-tablet {
+  //       grid-column: 8 / -1;
+  //       justify-content: space-around;
+  //     }
+  //   }
+  
+  //   &_amountContent {
+  //     display: flex;
+  //     justify-content: space-between;
+  //     align-items: center;
+  //     width: 96px;
+  //     height: 32px;
+  //   }
+
+  //   &_amountButton {
+  //     height: inherit;
+  //     width: 32px;
+  //     background-color: $mainNumberButtonColor;
+  //     color: $hoverIconButtonColor;
+  //     font-size: 16px;
+
+  //     &_active {
+  //       color: $textMainColor;
+  //       background-color: $mainIconButtonColor;
+  //     }
+  //   }
+
+  //   &_price {
+  //     font-size: 22px;
+  //     font-weight: 700;
+  //   }
+  // }
+
+  &__totalPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 16px;
+    padding: 24px;
+    border: 1px solid $mainGreyColor;
+
+    @include on-desktop {
+      box-sizing: border-box;
+      grid-column: 17 / -1;
+      row-gap: 24px;
+      height: 206px;
+    }
+
+    &_value {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+    }
+
+    &_amountItems {
+      font-size: 14px;
+      font-weight: 600;
+      color: #89939a;
+      line-height: 21px;
+    }
+
+    &_line {
+      height: 1px;
+      width: 100%;
+      background-color: $mainGreyColor;
+    }
+
+    &_button {
+      height: 48px;
+      width: 100%;
+      background-color: $mainPurpleButtonColor;
+      color: $textMainColor;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+
+      @include hover(background-color, $hoverPurpleButtonColor);
+    }
+  }
+}

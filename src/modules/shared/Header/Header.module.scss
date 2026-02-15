@@ -1,0 +1,146 @@
+@import '../../../styles/main';
+
+.header {
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $textNotActiveColor;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: inherit;
+    border-left: 1px solid $textNotActiveColor;
+
+    &_heart {
+      background-image: url('../../../img/icons/icon-heart.png');
+      background-repeat: no-repeat;
+      background-size: 20px;
+      background-position: center;
+
+      @include hover(background-size, 34%);
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &_cart {
+      background-image: url('../../../img/icons/icon-shopping-cart.png');
+      background-repeat: no-repeat;
+      background-size: 20px;
+      background-position: center;
+
+      @include hover(background-size, 34%);
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &_menu {
+      @include on-tablet {
+        display: none;
+      }
+
+      & img {
+        height: 25%;
+        object-fit: contain;
+        object-position: center;
+  
+        @include hover(scale, 1.1);
+      }
+    }
+  }
+
+  &__countIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    position: absolute;
+    top: 20%;
+    right: 28%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: $textMainColor;
+    background-color: #eb5757;
+  }
+}
+
+.navbar {
+  display: flex;
+  height: 48px;
+  
+  @include on-tablet {
+    column-gap: 32px;
+  }
+
+  @include on-desktop {
+    column-gap: 48px;
+    height: 68px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: 96px;
+    padding: 13px 16px;
+
+    @include hover(scale, 1.1);
+  }
+
+  &__list{
+    flex: 1 1 330px;
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: space-around;
+
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      min-width: 330px;
+    }
+
+    @include on-desktop {
+      justify-content: space-between;
+      max-width: 425px;
+    }
+  }
+
+  &__item {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    height: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: $textNotActiveColor;
+    text-transform: uppercase;
+  }
+}
+
+.activeHeaderLink {
+  color: $textMainColor;
+  border-bottom: 3px solid;
+}

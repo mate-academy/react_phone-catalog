@@ -1,0 +1,49 @@
+@import '../../../styles/main';
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 40px;
+  height: 400px;
+
+  &__outerCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100px;
+    background-color: $hoverPurpleButtonColor;
+    border-radius: 90%;
+    animation: 0.5s linear 0s infinite running slide-in;
+    animation-name: rotate1;
+
+    @keyframes rotate1 {
+      from {
+        transform: rotateZ(0deg);
+      }
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+  }
+
+  &__innerCircle {
+    height: 100px;
+    width: 50px;
+    border-radius: 90%;
+    background-color: $mainIconButtonColor;
+    animation: 0.5s linear 0s infinite running slide-in;
+    animation-name: rotate2;
+
+    @keyframes rotate2 {
+      from {
+        transform: rotateZ(0deg);
+      }
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+  }
+}
