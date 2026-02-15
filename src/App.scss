@@ -1,1 +1,35 @@
-// not empty
+@import './styles/utils';
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Mont, sans-serif;
+  background-color: $hover-bg;
+  color: $primary
+}
+
+body {
+  margin: 0 auto;
+  font-family: Mont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #FAFBFC;
+  color: #313237;
+}
+
+.container {
+  @include container;
+}
