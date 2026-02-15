@@ -1,0 +1,35 @@
+@use '@styles/mixins' as *;
+
+.characteristics {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+
+  padding-block: 8px;
+
+  @include small-text;
+
+  &--body-text {
+    @include body-text;
+  }
+
+  &--remove-padding {
+    padding-block: 0;
+  }
+
+  &__characteristic {
+    gap: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__key {
+    text-align: left;
+    color: var(--color-secondary);
+  }
+
+  &__value {
+    text-align: right;
+    color: var(--color-primary);
+  }
+}

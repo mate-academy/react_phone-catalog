@@ -1,0 +1,25 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+.products-page {
+  &__options {
+    @include page-grid;
+
+    & :first-child {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    & :last-child {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+}
