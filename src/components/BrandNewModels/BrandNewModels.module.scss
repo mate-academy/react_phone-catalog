@@ -1,0 +1,49 @@
+.brandNewModels {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  &__arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+
+    &-disabled {
+      cursor: not-allowed;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
+
+  &__main {
+    margin-top: 30px;
+  }
+
+  &__phones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
