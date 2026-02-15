@@ -1,0 +1,17 @@
+{
+    "ctl_phones": "Mobile phones",
+    "ctl_tablets": "Tablets",
+    "ctl_accessories": "Accessories",
+
+    "ctl_sortBy": "Sort By",
+    "ctl_itemsPage": "Items on Page",
+    "ctl_searchProduct": "Search Product",
+
+    "ctl_nawest": "Nawest",
+    "ctl_alphabet": "Alphabetically",
+    "ctl_chap": "Chapest",
+    "ctl_all": "All",
+    "ctl_enterName": "Enter Model Name",
+
+    "ctl__error": "There are no products matching your criteria"
+}

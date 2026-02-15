@@ -1,0 +1,50 @@
+@mixin set-size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin set-font($family, $size, $weight) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin set-button($size) {
+  @include set-size($size, $size);
+
+  border: 1px solid $color-element-white;
+  border-radius: 50%;
+   &:hover {
+    border-color: $color-element-black;
+   }
+}
+
+@mixin set-limit($max-width, $max-height) {
+  max-width: $max-width;
+  max-height: $max-height;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin on-pc {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin on-tablet{
+    @media (max-width: 1199px) {
+      @content;
+    }
+  }
+  
+@mixin on-phone{
+    @media (max-width: 639px) {
+      @content;
+    }
+  }
+  

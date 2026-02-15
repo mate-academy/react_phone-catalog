@@ -1,0 +1,197 @@
+@import '/src/shared/styles/index';
+@import 'src/App';
+
+$column-count: 24;
+$column-size: 32px;
+$element-gap: 16px;
+
+.card {
+  box-sizing: border-box;
+  padding-inline: 32px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat($column-count, $column-size);
+    grid-template-rows: auto auto;
+    gap: 40px $element-gap;
+
+
+    @include on-tablet {
+        grid-template-columns: repeat(12, 1fr);
+        row-gap: 40px;
+    }
+
+    @include on-phone {
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+  }
+
+  &__title {
+    @include set-font($font-mont, 32px, 800);
+
+    grid-column: 1 / -1;
+    margin: 0;
+    color: $color-element-black;
+  }
+
+  &__images {
+    @include flex-center;
+  
+    grid-column: 1 / 3;
+    gap: $element-gap;
+    align-self: start;
+    flex-direction: column;
+
+    @include on-tablet {
+        grid-column: 1 / 2;
+        max-width: 35px;
+        height: auto;
+        gap: 8px;
+    }
+
+    @include on-phone {
+        grid-column: 1 / -1;
+        grid-row: 3 / 3;
+        max-height: 100%;
+        justify-self: center;
+        width: 100%;
+        flex-direction: row;
+    }
+  }
+
+
+  &__imgBox {
+    @include flex-center;
+    @include set-limit(80px, 80px);
+
+    width: 100%;
+    border: 1px solid $color-white;
+
+    @include on-tablet {
+      max-width: 35px;
+    }
+
+    @include on-phone {
+      @include set-limit(50px, 50px);
+    }
+  }
+
+  &__miniImage {
+    @include set-limit(80px, 80px);
+
+    object-fit: contain; 
+
+    @include on-tablet {
+      max-width: 35px;
+    }
+
+    @include on-phone {
+      @include set-limit(50px, 50px);
+    }
+  }
+
+  &__image {
+    @include set-limit(442px, 442px);
+    @include set-size(100%, 100%);
+  
+    grid-column: 4 / 12;
+    object-fit: contain;
+    place-self: center;
+
+    @include on-tablet {
+       max-height: 287px;
+        align-self: start;
+        grid-column: 2 / 8;
+        max-width: 287px;
+    }
+
+    @include on-phone {
+        grid-column: 1 / -1;
+    }
+  }
+
+  &__info {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+  }
+
+  &__infoName {
+    @include set-font($font-mont, 22px, 800);
+
+    color: $color-element-black;
+  }
+
+  &__infoTitle {
+    @include set-font($font-mont, 20px, 700);
+
+    color: $color-element-black;
+  }
+
+  &__infoText {
+    @include set-font($font-mont, 14px, 500);
+
+    color: $color-grey;
+  }
+
+  &__tech {
+    grid-column: 15 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+  }
+
+  &__techTitle {
+    @include set-font($font-mont, 22px, 800);
+
+    color: $color-element-black;
+  }
+
+  &__techItem {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__techName {
+    @include set-font($font-mont, 14px, 500);
+
+    color: $color-grey;
+  }
+
+  &__techValue {
+    @include set-font($font-mont, 14px, 600);
+
+    color: $color-element-black;
+  }
+
+  &__carousel { 
+    grid-column: 1 / -1;
+
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+  }
+
+  &__backLink {
+    @include set-font($font-mont, 12px, 600);
+  
+    margin-top: 40px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: $color-element-black;
+  }
+}

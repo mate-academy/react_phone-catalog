@@ -1,0 +1,21 @@
+@import '/src/shared/styles/index';
+
+.accessories {
+  padding-inline: 32px;
+
+  @include on-tablet{
+    padding-inline: 24px;
+  }
+
+  @include on-phone{
+    padding-inline: 16px;
+  }
+
+  &__title {
+    @include set-font($font-mont, 48px, 800);
+  
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: $color-element-black;
+  }
+}
