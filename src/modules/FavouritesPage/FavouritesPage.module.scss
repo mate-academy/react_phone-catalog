@@ -1,0 +1,39 @@
+@import '../../styles/main';
+
+.favourites {
+  @include page-container;
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+
+  &__title {
+    @include font-set($mobile-h1);
+    
+    margin-bottom: 8px;
+
+      @include on-tablet {
+        @include font-set($tablet-h1);
+    }
+  }
+
+  &__countItems {
+    color: $secondary;
+
+    @include font-set($body-text);
+  }
+
+  &__cards {
+    margin-top: 32px;
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    gap: 40px 16px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}
