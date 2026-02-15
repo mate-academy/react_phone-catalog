@@ -10,7 +10,7 @@ function wait(delay: number) {
 export async function getProducts(): Promise<Product[]> {
   await wait(500);
 
-  const response = await fetch('/api/products.json');
+  const response = await fetch('./api/products.json');
 
   return response.json();
 }
@@ -33,7 +33,7 @@ export async function getProductsByCategory(
 ): Promise<ProductDetails[]> {
   await wait(500);
 
-  const response = await fetch(`/api/${productCategory}.json`);
+  const response = await fetch(`./api/${productCategory}.json`);
 
   return response.json();
 }
