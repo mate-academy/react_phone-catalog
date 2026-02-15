@@ -1,0 +1,15 @@
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__img {
+    max-width: 50%;
+    margin-bottom: 80px;
+
+    @media (max-width: 395px) {
+      max-width: 100%;
+      margin-bottom: 0;
+    }
+  }
+}

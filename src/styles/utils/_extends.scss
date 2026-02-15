@@ -1,0 +1,23 @@
+%mont-600 {
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 600;
+}
+
+%mont-700 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+}
+
+%mont-800 {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+}
+
+%btn {
+  background-color: $accent-color;
+  padding-inline: 9px;
+  width: 160px;
+  font-size: 14px;
+  line-height: 21px;
+  color: $main-color;
+}

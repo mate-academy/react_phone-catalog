@@ -1,0 +1,105 @@
+html,
+body {
+  height: 100%;
+}
+
+/* stylelint-disable selector-max-id */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @extend %mont-700;
+
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $main-color;
+  background-color: $background-color;
+}
+
+.container {
+  @include container;
+}
+
+.title {
+  @extend %mont-800;
+
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+
+  @include on-phone {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+}
+
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  position: relative;
+  box-sizing: border-box;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
+
+.slider-btn {
+  position: absolute;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: $btn-color;
+
+  @include hover(background-color, $hover-btn-color);
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
+
+.slick-disabled {
+  background-color: transparent !important;
+  border: 1px solid #3B3E4A;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.slick-slide {
+  padding-right: 16px;
+  width: 272px;
+
+  @include on-tablet {
+    max-width: 100%;
+  }
+}
+
+.slick-list {
+  margin-right: -16px;
+}
