@@ -1,0 +1,137 @@
+@use '../../styles/utils' as utils;
+
+.cart-item {
+  position: relative;
+
+  grid-column: 1 / -1;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 16px;
+  align-items: center;
+
+  padding: 16px;
+  border: 1px solid utils.$elements;
+
+  color: utils.$primary;
+
+  transition: border-color .3s;
+
+  @include utils.page-grid;
+
+  @include utils.on-tablet {
+    grid-template-rows: none;
+  }
+
+  &__close {
+    position: absolute;
+    top: 42px;
+    left: 16px;
+    transition: all .3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include utils.on-tablet {
+      position: static;
+    }
+  }
+
+  &__image {
+    position: relative;
+    left: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 66px;
+    height: 66px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @include utils.on-tablet {
+      position: static;
+    }
+  }
+
+  &__name {
+    grid-column: span 3;
+
+    @include utils.on-tablet {
+      grid-column: span 5;
+    }
+
+    @include utils.on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__counter {
+    grid-column: span 1;
+
+    @include utils.on-tablet {
+      grid-column: span 2 / -4;
+    }
+
+    @include utils.on-desktop {
+      grid-column: span 5 / -6;
+    }
+  }
+
+  &__price {
+    grid-column: span 2 / -1;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: end;
+
+    @include utils.on-tablet {
+      grid-column: span 3 / -1;
+    }
+
+    @include utils.on-desktop {
+      grid-column: span 5 / -1;
+    }
+  }
+
+  &:hover {
+    border-color: utils.$secondary;
+  }
+}
+
+.counter {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid utils.$icons;
+
+    font-family: Mont, sans-serif;
+
+    transition: all .3s;
+
+    &:hover {
+      border-color: utils.$primary;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: utils.$icons;
+    }
+  }
+}

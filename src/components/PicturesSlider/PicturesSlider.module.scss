@@ -1,0 +1,111 @@
+@use '../../styles/utils' as utils;
+
+.slider-container {
+  grid-column: 1 / -1;
+
+  @include utils.page-grid;
+
+  .slick-slider {
+    position: relative;
+    left: -16px;
+    grid-column: 1 / -1;
+    width: calc(100% + 32px);
+
+    @include utils.on-tablet {
+      position: static;
+      width: 100%;
+
+      @include utils.page-grid;
+    }
+
+    &__slide {
+      display: flex !important;
+    }
+  }
+
+  .slick-list {
+    grid-column: 2 / -2;
+  }
+
+  .slide-image {
+    aspect-ratio: 1;
+    width: 100%;
+    object-fit: cover;
+
+    @include utils.on-tablet {
+      aspect-ratio: 490 / 189;
+      object-position: center;
+    }
+  }
+
+  .custom-dots {
+    display: flex !important;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 8px;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 24px;
+      height: 24px;
+
+      .dot {
+        cursor: pointer;
+
+        overflow: hidden;
+
+        width: 14px;
+        height: 4px;
+
+        color: transparent;
+
+        background-color: utils.$elements;
+
+        &--active {
+          background-color: utils.$primary;
+        }
+      }
+    }
+  }
+}
+
+.arrow {
+  cursor: pointer;
+
+  position: relative;
+
+  display: none;
+
+  width: 100%;
+  height: 100%;
+  border: 1px solid utils.$elements;
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    background-color: utils.$hover;
+  }
+
+  @include utils.on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.prev {
+  left: 0;
+  grid-column: 1 / 2;
+}
+
+.next {
+  right: 0;
+  grid-column: -1 / -2;
+}

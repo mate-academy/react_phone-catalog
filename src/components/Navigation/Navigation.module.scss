@@ -1,0 +1,169 @@
+@use '../../styles/utils' as utils;
+
+.nav {
+  flex-grow: 1;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: 24px;
+
+    list-style: none;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+      gap: 32px;
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--favorite {
+      position: relative;
+      width: 50%;
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        display: block;
+
+        width: 0;
+        height: 2px;
+
+        background-color: utils.$primary;
+
+        transition: all 0.3s;
+      }
+
+      @include utils.on-tablet {
+        width: 48px;
+        border-left: 1px solid utils.$elements;
+      }
+
+      @include utils.on-desktop {
+        width: 64px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    height: 100%;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 22px;
+    color: utils.$secondary;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    transition: all 0.3s;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+
+      display: block;
+
+      width: 0;
+      height: 2px;
+
+      background-color: utils.$primary;
+
+      transition: all 0.3s;
+    }
+
+    &--favorite {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+
+
+    &--active {
+      position: relative;
+      color: utils.$primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @include utils.on-tablet {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: utils.$primary;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__favorites {
+    display: flex;
+
+    &::after,
+    &::before {
+      content: '';
+
+      position: absolute;
+      left: 50%;
+
+      display: block;
+
+      width: 1px;
+      height: 100%;
+
+      background-color: utils.$elements;
+
+      @include utils.on-tablet {
+        content: none;
+      }
+    }
+  }
+}
+
+.favorites {
+  position: relative;
+
+  &__count {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+
+    font-size: 9px;
+    color: #fff;
+    letter-spacing: 0;
+
+    background-color: utils.$red;
+  }
+}
