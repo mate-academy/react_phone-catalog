@@ -1,0 +1,33 @@
+@import '../../../../styles/main.scss';
+
+.filters {
+  display: grid;
+  grid-template-columns: 176px 128px;
+  column-gap: 16px;
+  margin-bottom: 24px;
+  height: 100%;
+
+  @include on-tablet {
+    grid-template-columns: 187px 136px;
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__filter {
+    margin-top: 40px;
+
+    @include on-mobile {
+      margin-top: 32px;
+    }
+  }
+
+  &__name {
+    @include small-text;
+
+    margin-top: 0;
+    margin-bottom: 4px;
+    color: var(--secondary-color);
+  }
+}

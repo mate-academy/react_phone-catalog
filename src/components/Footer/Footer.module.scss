@@ -1,0 +1,98 @@
+@import '../../styles/main.scss';
+
+.footer {
+  height: 96px;
+  width: 100%;
+  box-shadow: 0px 0px 0px 1px var(--shadow-color);
+
+  @include on-mobile {
+    height: auto;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    height: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    padding-inline: 32px;
+    margin-inline: auto;
+
+    @include on-mobile {
+      padding-inline: 16px;
+
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      row-gap: 32px;
+      justify-items: left;
+      padding-block: 32px;
+    }
+  }
+
+  &__logo {
+    justify-self: start;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+      margin: 0;
+      align-items: flex-start;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    @include uppercase;
+
+    color: var(--primary-footer-text-color);
+
+    &:hover {
+      @include hover-scale;
+
+      color: var(--secondary-footer-text-color);
+    }
+  }
+
+  &__elevator {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    @include on-mobile {
+      justify-self: center;
+    }
+  }
+
+  &__elevatorText {
+    color: var(--secondary-color);
+
+    @include small-text;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__btn {
+    justify-content: center;
+    display: flex;
+
+    @include btn;
+  }
+}

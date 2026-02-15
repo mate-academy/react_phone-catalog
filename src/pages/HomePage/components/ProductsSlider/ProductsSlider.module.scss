@@ -1,0 +1,63 @@
+@import '../../../../styles/main.scss';
+
+.slider {
+  overflow: hidden;
+
+  @include section;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    @include h2;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+    justify-content: right;
+    margin-right: 24px;
+
+    @include on-mobile {
+      margin-right: 16px;
+    }
+  }
+
+  &__btn {
+    @include btn;
+
+    display: flex;
+    justify-content: center;
+
+    &:disabled {
+      @include disabled-button;
+    }
+  }
+
+  &__wrapper {
+    @include on-mobile {
+      height: 440px;
+    }
+  }
+
+  &__products {
+    margin-top: 24px;
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    grid-auto-flow: column;
+    grid-auto-columns: 272px;
+
+    @include on-tablet {
+      grid-auto-columns: 237px;
+    }
+
+    @include on-mobile {
+      grid-auto-columns: 212px;
+    }
+  }
+}
