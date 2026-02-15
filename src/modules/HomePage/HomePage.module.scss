@@ -1,0 +1,16 @@
+@import '@/styles/main';
+
+.home_page {
+  &__heading {
+    grid-column: 1 / -1;
+    margin-block: 24px;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+}

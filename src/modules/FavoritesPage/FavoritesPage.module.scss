@@ -1,0 +1,28 @@
+@import '@/styles/main';
+
+.favorites_page {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    display: grid;
+    row-gap: 8px;
+  }
+
+  &__qty {
+    grid-column: 1 / -1;
+    color: $secondary-color;
+  }
+
+  &__products {
+    grid-column: 1 / -1;
+  }
+}

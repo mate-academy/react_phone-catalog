@@ -1,0 +1,24 @@
+@import '@/styles/main';
+
+.tech_specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    &--type {
+      color: $secondary-color;
+    }
+
+    &--value {
+      text-align: right;
+      line-height: 100%;
+    }
+  }
+}

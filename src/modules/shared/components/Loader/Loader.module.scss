@@ -1,0 +1,41 @@
+@import '@/styles/main';
+
+.loader {
+  &__wrapper {
+    grid-column: 1 / -1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($hover-bg-color, 0.8);
+  }
+
+  &__component {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid $primary-color;
+    border-radius: 50%;
+    border-right-color: $accent-color;
+    animation: l15 1s infinite linear;
+
+    &::before,
+    &::after {
+      content: '';
+      grid-area: 1/1;
+      margin: 2px;
+      border: inherit;
+      border-radius: 50%;
+      animation: l15 2s infinite;
+    }
+    &::after {
+      margin: 8px;
+      animation-duration: 3s;
+    }
+    @keyframes l15 {
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+  }
+}

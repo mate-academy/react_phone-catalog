@@ -1,0 +1,25 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.container {
+  grid-area: main;
+  display: grid;
+  justify-content: stretch;
+  align-content: start;
+
+  grid-template-columns: repeat(4, 1fr);
+  padding-inline: 16px;
+  row-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+}

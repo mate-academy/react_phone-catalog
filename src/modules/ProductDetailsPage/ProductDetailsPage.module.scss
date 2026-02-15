@@ -1,0 +1,328 @@
+@import '@/styles/main';
+
+.product_details {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  &__heading {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__interactive {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+      gap: 64px;
+    }
+  }
+
+  &__images {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+
+    position: relative;
+    height: auto;
+
+    @include on-tablet {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    @include on-desktop {
+      gap: 0; // resetting gap since it doesn't do much, especially if direction is reverse
+      justify-content: space-between;
+    }
+
+    &--wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 288px;
+
+      @include on-desktop {
+        max-width: 464px;
+        height: 464px;
+        flex-shrink: 0;
+      }
+    }
+
+    &--main {
+      aspect-ratio: 1 / 1;
+      max-width: 288px;
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+
+      @include on-desktop {
+        max-width: none;
+        max-height: 464px;
+      }
+
+      &__sliding-out {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &__push-left {
+        animation: push-left $transition-time ease-in-out;
+      }
+
+      &__push-right {
+        animation: push-right $transition-time ease-in-out;
+      }
+
+      &__changing {
+        animation: fade-in $transition-time ease-in-out;
+      }
+    }
+
+    &--all {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 8px;
+      height: 15vw;
+      max-height: 96px;
+      min-height: 48px;
+
+      @include on-tablet {
+        justify-content: flex-start;
+        flex-direction: column;
+        height: auto;
+        width: 15vw;
+        max-width: 48px;
+        min-width: 32px;
+      }
+
+      @include on-desktop {
+        gap: 16px;
+        width: auto;
+      }
+    }
+
+    &--single {
+      object-fit: contain;
+      border-radius: 4px;
+      border: 1px solid $elements-color;
+      cursor: pointer;
+
+      transition: border-color $transition-time;
+
+      &:hover {
+        border-color: $icons-color;
+        opacity: 0.8;
+      }
+
+      flex: 1;
+      aspect-ratio: 1 / 1;
+
+      @include on-tablet {
+        flex: 1;
+        width: 100%;
+      }
+
+      @include on-desktop {
+        box-sizing: border-box;
+        flex: none;
+        height: 80px;
+        width: 80px;
+        border-radius: 8px;
+      }
+
+      &__active {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+  }
+
+  &__id {
+    position: absolute;
+    text-align: right;
+    top: 0;
+    right: 0;
+    color: $icons-color;
+  }
+
+  &__select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--text {
+      color: $secondary-color;
+    }
+
+    &--options {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+
+  &__separator {
+    width: 100%;
+    margin-block: 24px;
+
+    @include on-tablet {
+      width: 60%;
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    &--main {
+      line-height: 140%;
+    }
+
+    &--discount {
+      color: $secondary-color;
+      text-decoration: line-through;
+      line-height: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+
+    @include on-tablet {
+      width: 60%;
+    }
+
+    > button:first-child {
+      height: 48px;
+    }
+
+    > button:last-child {
+      padding: 16px;
+    }
+  }
+
+  &__brief_specs {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding-block: 32px;
+    gap: 8px;
+
+    &--spec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--type {
+      color: $secondary-color;
+    }
+
+    &--value {
+      line-height: 100%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      margin-bottom: 80px;
+    }
+
+    &--section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}
+
+@keyframes push-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes push-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
