@@ -1,0 +1,72 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.colorsContainer {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(226, 230, 233, 1);
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 3px;
+
+  &:hover {
+    transform: scale(1.1);
+    border-color: rgba(180, 189, 195, 1);
+  }
+}
+
+.colorCircleActive {
+  border: 2px solid rgba(49, 50, 55, 1);
+}
+
+.availableColors, .availableCapacity {
+  color: rgba(137, 147, 154, 1);
+  font-size: 12px;
+  font-family: SmallFont, sans-serif;
+}
+
+.availableColors {
+  margin-top: 40px;
+}
+
+.availableCapacity{
+  margin-bottom: 16px;
+}
+
+.line {
+  width: 100%;
+  background-color: rgba(226, 230, 233, 1);
+  height: 1px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.capacityButton {
+  width: 63px;
+  height: 32px;
+  border: 1px solid rgba(180, 189, 195, 1);
+  padding: 5px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: rgba(49, 50, 55, 1);
+
+}
+
+
+.availableCapacityButtons {
+  margin-bottom: 40px;
+}
+
+.capacityButtonActive {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(49, 50, 55, 1);
+}

@@ -1,0 +1,18 @@
+.characters {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(137, 147, 154, 1);
+  font-family: SmallFont, sans-serif;
+  margin-bottom: 8px;
+}
+
+.span_caracters {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(49, 50, 55, 1);
+  font-family: SmallFont, sans-serif;
+}
