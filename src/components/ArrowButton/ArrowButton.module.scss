@@ -1,0 +1,83 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.arrowButton {
+  display: block;
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button);
+  border-radius: 48px;
+
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border-color: var(--color-button-border-hover);
+    background-color: var(--color-button-hover);
+  }
+
+  &--right {
+    background-image: url(../../img/icons/arrow_right_black.png);
+  }
+
+  &--right-dark {
+    background-image: url(../../img/icons/arrow_right_white.png);
+  }
+
+  &--left {
+    background-image: url(../../img/icons/arrow_left_black.png);
+  }
+
+  &--left-dark {
+    background-image: url(../../img/icons/arrow_left_white.png);
+  }
+
+  &--up {
+    background-image: url(../../img/icons/arrow_up_black.png);
+  }
+
+  &--up-dark {
+    background-image: url(../../img/icons/arrow_up_white.png);
+  }
+
+  &--down {
+    background-image: url(../../img/icons/arrow_down_grey.png);
+  }
+
+  &--wide {
+    height: 189px;
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &--right.arrowButton--disabled,
+  &--right-dark.arrowButton--disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
+    background-image: url(../../img/icons/arrow_right_grey.png);
+  }
+
+  &--left.arrowButton--disabled,
+  &--left-dark.arrowButton--disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
+    background-image: url(../../img/icons/arrow_left_grey.png);
+  }
+
+  &--up.arrowButton--disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
+    background-image: url(../../img/icons/arrow_up_grey.png);
+  }
+
+  &--down.arrowButton--disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
+    background-image: url(../../img/icons/arrow_down_grey.png);
+  }
+}
