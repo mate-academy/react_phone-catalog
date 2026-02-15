@@ -1,0 +1,25 @@
+@import '../../assets/fonts/variables';
+
+.backButton {
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  span {
+    height: 16px;
+
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-white);
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s;
+  }
+
+  &:hover span {
+    transform: scale(1.1);
+    color: var(--color-accent);
+  }
+}
