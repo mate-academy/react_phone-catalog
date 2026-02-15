@@ -1,0 +1,35 @@
+@import '../../mixins';
+
+.not-page {
+  @include contest-pading-inline;
+
+  box-sizing: border-box;
+  background-image: url('../../../img/page-not-found.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 250px 250px;
+  width: 100%;
+  height: 80vh;
+  padding-top: 24px;
+  filter: var(--photo);
+
+  @include on-tablet {
+    background-size: 500px 500px;
+  }
+}
+
+.title {
+  grid-column: -1 / 1;
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+  font-family: Mont-SemiBold, sans-serif;
+  padding-top: 40px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}

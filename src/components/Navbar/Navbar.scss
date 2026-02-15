@@ -1,0 +1,226 @@
+@import '../mixins';
+
+.top-bar {
+  border-bottom: 1px solid var(--border-color-nav-bar);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-width: 100vw;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  padding: 16px;
+  border-left: 1px solid var(--border-color-nav-bar);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  cursor: pointer;
+
+  @include on-desktop {
+    padding: 24px;
+  }
+
+  &--favorites {
+    background-image: var(--favourites);
+  }
+
+  &--cart {
+    background-image: var(--cart);
+  }
+
+  &--close {
+    background-image: var(--close);
+  }
+
+  &--menu {
+    background-image: var(--menu);
+  }
+
+  &__with-number {
+    position: relative;
+    display: inline-block;
+  }
+
+  &--text {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 10px 10px 0;
+    width: 14px;
+    height: 14px;
+    background-color: var(--background-color-value-icon);
+    border-radius: 50%;
+    border: 1px solid var(--background-color-nav-bar);
+    color: var(--background-color-nav-bar);
+    font-size: 9px;
+    font-weight: 600px;
+    line-height: 14px;
+    font-family: Monte, sans-serif;
+    justify-content: center;
+
+    @include on-desktop {
+      margin: 18px 18px 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 22px;
+    width: 64px;
+    margin: 13px 16px;
+    background-image: var(--logo);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+      margin: 18px 24px;
+    }
+  }
+}
+
+
+.nav {
+  background: var(--background-color-nav-bar);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 4%;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 800;
+    font-family: Mont-SemiBold, sans-serif;
+    color: var(--text-color-nav-link);
+    cursor: pointer;
+    position: relative;
+
+    &--hover{
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2.5px;
+        background-color: var(--text-color-nav-link-hover);
+        transition: width 0.3s ease;
+      }
+
+      &:hover{
+        color: var(--text-color-nav-link-hover);
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &__icon {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    &--active {
+      position: relative;
+      z-index: 10;
+      box-sizing: border-box;
+      color: var(--text-color-nav-active);
+      border-bottom: 3px solid var(--text-color-nav-active);
+      text-decoration: none;
+    }
+  }
+}
+
+.menu-block {
+  height: calc(100vh - 48px);
+}
+
+.change-lang {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+
+  &__button {
+    margin: 4px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--background-color-nav-bar);
+    color: var(--text-color-nav-link);
+    text-transform: uppercase;
+    letter-spacing: 4%;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 800;
+    font-family: Mont-SemiBold, sans-serif;
+
+    &:hover {
+      background-color: var(--text-color-nav-link-hover);
+      color: var(--text-color-nav-lang)
+    }
+
+    &--active {
+      background-color: var(--background-color-page);
+      color: var(--text-color-nav-link-hover);
+      cursor: default;
+
+      &:hover {
+        background-color: var(--background-color-page);
+        color: var(--text-color-nav-link-hover);
+      }
+    }
+
+
+  }
+}

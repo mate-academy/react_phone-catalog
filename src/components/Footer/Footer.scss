@@ -1,0 +1,112 @@
+@import '../mixins';
+
+.footer {
+  @include contest-pading-inline;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  height: 257px;
+  width: 100%;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 96px;
+    padding: 0 32px;
+  }
+
+  &__conteiner {
+    background-color: var( --background-color-nav-bar);
+  }
+
+  &__line {
+    border-top: 1px solid var(--border-color-nav-bar);
+  }
+
+  &__logo {
+    height: 32px;
+    width: 89px;
+    background-image: var(--logo);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include hover(transform, scale(1.05));
+
+    &__link {
+      cursor: pointer;
+
+      @include on-tablet {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 30%;
+      margin: 0;
+    }
+  }
+
+  &__text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    letter-spacing: 4%;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 800;
+    font-family: Mont-SemiBold, sans-serif;
+    color: var(--text-color-footer-link);
+    cursor: pointer;
+
+    &:hover{
+      color: var(--text-color-nav-link-hover);
+    }
+
+    &--link {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.back-top {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    height: 32px;
+    width: 32px;
+    background-image: var(--button-to-up);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--background-color-footer-back-top);
+    border-radius: var(--border-radius-footer);
+    &:hover {
+      background-color: var(--text-color-nav-link-hover);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    color: var(--text-color-footer-back-top);
+  }
+}

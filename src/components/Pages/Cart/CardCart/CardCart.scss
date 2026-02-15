@@ -1,0 +1,102 @@
+@import '../../../mixins';
+
+.cart__card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px;
+  gap: 16px;
+  border-radius: var(--border-radius-cart);
+  border: 1px solid var(--border-color-cart-button);
+  background: var(--background-color-cart-button);
+
+  @include on-tablet {
+    justify-content: space-between;
+    padding: 24px;
+    gap: 24px;
+    flex-direction: row;
+  }
+
+  &__title {
+    @include underline-hover($color: var(--background-color-button-add));
+
+    color: --text-color-cart-card-title;
+    cursor: pointer;
+  }
+
+  &__quantity {
+    color: var(--text-color-cart-card-title);
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__photo {
+    height: 80px;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__price {
+    @include on-tablet {
+      min-width: 80px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+
+.button__cart {
+
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+  }
+
+  &--plus {
+    background-image: var(--plus);
+  }
+
+  &--minus {
+    background-image: var(--minus-active);
+
+    &--no-active {
+      background-image: var(--minus);
+    }
+  }
+
+  &--delete {
+    cursor: pointer;
+    border: none;
+    height: 16px;
+    width: 16px;
+    background-color: var(--background-color-cart-button);
+    background-image: var(--delete);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: var(--close);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
