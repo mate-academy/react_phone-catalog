@@ -6,7 +6,7 @@ Live Demo → https://zrozik-cmd.github.io/react_phone-catalog
 
 ## Overview
 
-Fully functional e-commerce Single Page Application built with **React and TypeScript**.  
+Fully functional e-commerce Single Page Application built with **React and TypeScript**.
 The project simulates a real online store with product catalog, filtering, sorting, cart management, and favorites functionality.
 
 The application focuses on clean architecture, reusable components, and scalable state management.
@@ -59,10 +59,10 @@ The application focuses on clean architecture, reusable components, and scalable
 
 ## How to Run
 
-git clone 
-cd react_phone-catalog  
-npm install  
-npm start  
+git clone
+cd react_phone-catalog
+npm install
+npm start
 
-Open in browser:  
+Open in browser:
 http://localhost:3000
