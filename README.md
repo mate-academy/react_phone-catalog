@@ -37,7 +37,7 @@ The application focuses on clean architecture, reusable components, and scalable
 - TypeScript
 - React Router
 - SCSS (CSS Modules / BEM)
-- Context API / Redux (state management)
+- Redux (state management)
 - Fetch API / Axios
 - LocalStorage API
 
