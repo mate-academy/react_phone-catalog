@@ -1,0 +1,29 @@
+@import './../../styles/global';
+
+.button_box {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  gap: 4px;
+  align-items: center;
+}
+
+.button_text {
+  font-family: var(--font-family-semibold);
+  font-size: 12px;
+  color: var(--color-secondary);
+  margin: 0;
+  margin-top: 2px;
+  user-select: none;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.icon {
+  transform: rotate(-180deg);
+  user-select: none;
+}

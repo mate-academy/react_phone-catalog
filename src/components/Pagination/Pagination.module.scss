@@ -1,0 +1,66 @@
+@import '../../styles/global';
+
+.slider {
+  border: 1px solid var(--color-icons);
+
+  &:disabled {
+    border: 1px solid var(--color-elements);
+    cursor: not-allowed;
+  }
+
+  .arrow_left {
+    transform: rotate(-180deg);
+    user-select: none;
+  }
+
+  .arrow_right {
+    user-select: none;
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  gap: 16px;
+
+  &_buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &_button,
+  .slider,
+  .divider {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-elements);
+    background-color: white;
+
+    @extend %body-text;
+
+    color: var(--color-primary);
+  }
+
+  &_button,
+  .slider {
+    &:hover {
+      border: 1px solid var(--color-primary);
+    }
+  }
+
+  .divider {
+    border: none;
+    color: var(--color-secondary);
+  }
+
+  .is_active {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+  }
+}

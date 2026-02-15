@@ -1,0 +1,63 @@
+@import '../../styles/global';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal_dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #fff;
+  padding: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  @extend %h4;
+
+  color: var(--color-primary);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 160px;
+
+  @extend %buttons-text;
+
+  color: white;
+  background-color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  transition: all var(--transition-duration);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  @include on-mobile {
+    width: 100%;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @include on-mobile {
+    flex-direction: column;
+    width: 100%;
+  }
+}

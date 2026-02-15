@@ -1,0 +1,17 @@
+@import './../../styles/global';
+
+.title {
+  @extend %h1;
+
+  width: max-content;
+  height: fit-content;
+  margin: 0;
+}
+
+.not_found_page {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 25px;
+  grid-column: 1/25;
+}
