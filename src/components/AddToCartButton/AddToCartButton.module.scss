@@ -1,0 +1,33 @@
+@import '../../styles/global';
+
+.add_to_cart_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-width: 160px;
+  width: 100%;
+
+  @extend %buttons-text;
+
+  color: white;
+  background-color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  transition: all var(--transition-duration);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+.added_to_cart_button {
+  color: var(--color-green);
+  background-color: white;
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.2);
+  }
+}

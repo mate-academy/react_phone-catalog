@@ -1,0 +1,11 @@
+@import './../../styles/global';
+
+.products_page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-mobile {
+    gap: 24px;
+  }
+}
