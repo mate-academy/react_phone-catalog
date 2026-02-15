@@ -1,0 +1,39 @@
+@use "../../../../shared/mixins/mixins.scss" as *;
+@use "../../../../shared/variables/variables.scss" as *;
+
+.pagination {
+  @include flex-center;
+
+  margin-top: 40px;
+  gap: 16px;
+}
+
+.pagination__button {
+  @include icon-size(32px);
+  @include flex-center;
+
+  background-color: rgba(50, 53, 66, 1);
+}
+
+.pagination__button:disabled {
+  background-color: rgba(15, 17, 33, 1);
+  border: 1px solid rgba(59, 62, 74, 1);
+}
+
+.pagination__numbers {
+  @include flex-center;
+
+  gap: 8px;
+}
+
+.pagination__number {
+  @include icon-size(32px);
+  @include flex-center;
+
+  background-color: rgba(22, 24, 39, 1);
+  color: $white-color;
+}
+
+.active {
+  background-color: rgba(144, 91, 255, 1);
+}

@@ -1,0 +1,87 @@
+@use "../../shared/mixins/mixins" as *;
+@use "../../shared/variables/variables" as *;
+
+.Cart {
+  margin-top: 16px;
+}
+
+.Cart__title {
+  @include title-style;
+}
+
+.Cart__container {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @media (max-width: 1199px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.Cart__items {
+  flex: 1;
+}
+
+.Cart__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.list__item {
+  height: 128px;
+  padding: 24px;
+  background: rgba(22, 24, 39, 1);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  @media (max-width: 639px) {
+    height: 160px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.item__info {
+  display: flex;
+  align-items: center;
+}
+
+.item__deleteButton {
+  @include icon-size(16px);
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.item__image {
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+}
+
+.item__image img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+.item__name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $white-color;
+}
+
+

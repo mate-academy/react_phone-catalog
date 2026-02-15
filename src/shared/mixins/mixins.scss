@@ -1,0 +1,84 @@
+@use "../variables/variables" as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: inherit;
+  color: rgba(117, 118, 127, 1);
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@mixin header-button {
+  box-sizing: border-box;
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0 0 0 rgba(50, 53, 66, 1);
+
+  @include flex-center;
+
+  @media (max-width: 740px) {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@mixin big-button {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: center;
+  color: $white-color;
+  cursor: pointer;
+
+  background-color: rgba(144, 91, 255, 1);
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgba(163, 120, 255, 1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@mixin icon-size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin title-style {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  color: $white-color;
+}
+
+@mixin grey-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  color: $gray-color;
+}
+
+@mixin subtitle-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}

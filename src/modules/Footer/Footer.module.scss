@@ -1,0 +1,139 @@
+@use "../../shared/mixins/mixins" as *;
+
+.footer {
+  width: 100%;
+  background-color: #0f1121;
+  box-shadow: 0 0 0 1px rgba(50, 53, 66, 1);
+  margin-top: 80px;
+  padding: 32px 0;
+
+  @media (max-width: 800px) {
+    padding: 32px 16px;
+  }
+
+  @media (max-width: 639px) {
+    margin-top: 64px;
+  }
+}
+
+.footer__content {
+  max-width: 1136px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    margin: 0;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 960px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+  }
+}
+
+.footer__column {
+  flex: 1;
+
+  @include flex-center;
+
+  @media (max-width: 560px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  &__left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__right {
+    align-items: flex-end;
+    flex-direction: column;
+
+    @media (max-width: 560px) {
+      align-items: center;
+    }
+  }
+}
+
+.footer__logo img {
+  width: 89px;
+  height: 32px;
+}
+
+.footer__nav {
+  width: 100%;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+    margin: 32px 0;
+  }
+}
+
+.nav__item a {
+  color: #f1f2f9;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: #8d8f98;
+  }
+}
+
+.footer__button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 800px) {
+    gap: 8px;
+  }
+}
+
+.button__text {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  font-weight: 700;
+  color: rgba(137, 147, 154, 1);
+}
+
+.button__img {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(50, 53, 66, 1);
+
+  @include flex-center;
+}
+
+.button__img:hover {
+  background: rgba(74, 77, 88, 1);
+  transition: background-color 0.3s;
+}
