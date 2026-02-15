@@ -1,0 +1,50 @@
+@import './utils/variables';
+@import './utils/mixin';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+
+  font-weight: 800;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+
+  font-weight: 600;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+
+  font-weight: 700;
+
+  font-style: normal;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  font-family: Mont-Bold, sans-serif;
+  color: $main-text-color;
+}

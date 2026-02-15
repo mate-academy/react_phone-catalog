@@ -1,0 +1,111 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.burgerMenu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  top: $header-height-tablet;
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - $header-height-tablet);
+  z-index: 5;
+  background-color: $white-color;
+
+  @media (min-width: 641px) {
+    display: none;
+  }
+
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__menu-item {
+    font-weight: 800;
+    list-style-type: none;
+    position: relative;
+  }
+
+  &__link {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    color: $secondary-text-color;
+    text-decoration: inherit;
+    text-transform: uppercase;
+
+    &--active {
+      padding-bottom: 8px;
+      color: $main-text-color;
+      border-bottom: 3px solid $main-text-color;
+    }
+  }
+
+  &__sub-menu-links {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.sub-menu-links {
+  max-width: 640px;
+  width: 100%;
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    border: 1px solid rgba(226, 230, 233, 1);
+    position: relative;
+  }
+
+  &__sub-menu {
+    width: 100%;
+
+    &--active {
+      border-bottom: 2px solid $main-text-color;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    box-sizing: border-box;
+
+    &--like {
+      background-image: url(../../../public/img/icons/heart-like-icon-desctop.svg);
+    }
+
+    &--cart {
+      background-image: url(../../../public/img/icons/bag-cart-desctop.png);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 14px;
+    height: 14px;
+    background-color: $red-color;
+    color: $white-color;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $white-color;
+  }
+}

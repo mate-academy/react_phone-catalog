@@ -1,0 +1,28 @@
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #ffecec;
+  color: #d9534f;
+  text-align: center;
+  border: 1px solid #d9534f;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+
+  &__button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #c9302c;
+    }
+  }
+}

@@ -1,0 +1,191 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.header {
+  height: $header-height-desktop;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(226, 230, 233, 1);
+
+  font-family: Mont-Bold, sans-serif;
+  size: 12px;
+  color: $secondary-text-color;
+  background-color: $white-color;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  @include on-tablet {
+    height: $header-height-tablet;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__nav {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__logo {
+    padding: 18px 24px;
+
+    @include on-tablet {
+      padding: 13px 16px;
+    }
+
+    @include on-mobile {
+      padding: 14px 16px 13px;
+    }
+
+    &--icon {
+      width: 80px;
+      height: 28px;
+      display: block;
+
+      background-image: url(../../../public/img/logo/logo-nice-gadgets.svg);
+      background-size: cover;
+
+      @include on-tablet {
+        width: 64px;
+        height: 22px;
+      }
+
+      @include on-mobile {
+        width: 64px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &__sub-menu {
+    justify-self: end;
+    display: flex;
+
+    &--active {
+      padding-bottom: 18px;
+      color: $main-text-color;
+      border-bottom: 3px solid $main-text-color;
+
+      @include on-tablet {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 64px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  &__item {
+    text-transform: uppercase;
+    list-style-type: none;
+    position: relative;
+  }
+
+  &__link {
+    font-weight: bold;
+    color: inherit;
+    text-decoration: inherit;
+    padding: 18px 0;
+
+    @include on-tablet {
+      padding: 8px 0;
+    }
+
+    &--active {
+      padding-bottom: 18px;
+      color: $main-text-color;
+      border-bottom: 3px solid $main-text-color;
+
+      @include on-tablet {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.icons {
+  width: $header-height-desktop;
+  height: $header-height-desktop;
+  padding: 24px;
+
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  @include on-tablet {
+    width: $header-height-tablet;
+    height: $header-height-tablet;
+    padding: 16px;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &--burger-menu {
+    display: none;
+
+    @include on-mobile {
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  box-sizing: border-box;
+  position: relative;
+
+  &__badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 14px;
+    height: 14px;
+    background-color: $red-color;
+    color: $white-color;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $white-color;
+  }
+
+  &--like {
+    background-image: url(../../../public/img/icons/heart-like-icon-desctop.svg);
+  }
+
+  &--cart {
+    background-image: url(../../../public/img/icons/bag-cart-desctop.png);
+  }
+
+  &--burger-menu {
+    background-image: url(../../../public/img/icons/burger-menu.svg);
+  }
+
+  &--close {
+    background-image: url(../../../public/img/icons/close-icon.svg);
+  }
+}
