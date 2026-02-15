@@ -1,0 +1,63 @@
+@use '../../utils/index' as *;
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonAdd {
+  width: 75%;
+  height: 40px;
+  border-radius: 8px;
+  background-color: $accent;
+  border: none;
+  color: $white;
+  @include buttons-styles;
+
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $shadow;
+  }
+
+  @include responsive-settings-max($media-pc) {
+    width: 125px;
+  }
+
+  @include  responsive-settings-max($media-tablet) {
+    width: 100px;
+  }
+}
+
+.buttonFav {
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  background-color: transparent;
+  border: 1px solid $icons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+.buttonAdded {
+  width: 75%;
+  height: 40px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid $elements;
+  color: $accent;
+  @include buttons-styles;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

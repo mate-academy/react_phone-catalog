@@ -1,0 +1,62 @@
+@use '../../utils/index' as *;
+
+.marginContainer {
+  margin: 0 auto;
+  width: 1136px;
+  overflow: hidden;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.title {
+  @include h1-styles;
+
+  color: $primary;
+  margin-top: 56px;
+
+  @include  responsive-settings-max($media-pc) {
+    margin-top: 32px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 24px;
+    @include mobile-h1-styles;
+  }
+}
+
+.carousel {
+  margin: 56px auto 0;
+  width: 1136px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+    margin-top: 32px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin: 24px 0 0;
+    width: 100%;
+  }
+}
+
+.category {
+  @include h2-styles;
+}
+
+.categoryContainer {
+  margin-top: 80px;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 64px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 56px;
+  }
+}

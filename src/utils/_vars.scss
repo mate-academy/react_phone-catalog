@@ -1,0 +1,52 @@
+$accent: #216CFF;
+$secondary-accent: #F447AF;
+$primary: #0F0F11;
+$secondary: #89939A;
+$icons: #B4BDC3;
+$elements: #E2E6E9;
+$hover-BG: #FAFBFC;
+$white: #fff;
+$green: #27AE60;
+$red: #EB5757;
+$slider: #222;
+$black: #000;
+$button: #333;
+$shadow: #17203166;
+$f-main-font: Mont, 'Helvetica', 'Arial', sans-serif;
+$f-regular: 600;
+$f-semibold: 700;
+$f-bold: 800;
+$f-letter-spacing-small: -0.01em;
+$f-letter-spacing-regular: 0.04em;
+$media-tel: 320px;
+$media-tablet: 640px;
+$media-pc: 1200px;
+$grid-gap-regular: 16px;
+$grid-settings: (
+  0: (
+    columns: 4,
+    column-size: 1fr,
+    gap: $grid-gap-regular,
+  ),
+  $media-tablet: (
+    columns: 12,
+    column-size: 1fr,
+    gap: $grid-gap-regular,
+  ),
+  $media-pc: (
+    columns: 24,
+    column-size: 32px,
+    gap: $grid-gap-regular,
+  ),
+);
+$slider-quantity: 3;
+$slider-pc: 1040px;
+$slider-tablet: 490px;
+$slider-mobile: 320px;
+$duration: 0.4s ease;
+$duration-1: 0.3s;
+$duration-2: 0.5s;
+$duration-3: 1s;
+$delay-1: 0s;
+$delay-2: 0.2s;
+$delay-3: 0.5s;
