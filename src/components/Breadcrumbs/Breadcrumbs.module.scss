@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  height: 16px;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  @include small-text;
+  color: $text;
+  font-weight: 700;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .link {
+    color: $text;
+    text-decoration: none;
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  .current {
+    color: $secondary;
+  }
+}

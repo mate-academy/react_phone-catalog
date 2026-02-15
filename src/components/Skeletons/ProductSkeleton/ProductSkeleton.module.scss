@@ -1,0 +1,60 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  background-color: $secondaryBlack;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.image {
+  height: 175px;
+  background-color: $surface2;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.title {
+  height: 20px;
+  background-color: $surface2;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.price {
+  height: 24px;
+  width: 60%;
+  background-color: $surface2;
+  margin-bottom: 16px;
+}
+
+.descBlock {
+  height: 16px;
+  width: 100%;
+  background-color: $surface2;
+  margin-bottom: 8px;
+}
+
+.btns {
+  height: 40px;
+  width: 100%;
+  background-color: $surface2;
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

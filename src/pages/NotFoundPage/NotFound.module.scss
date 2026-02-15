@@ -1,0 +1,98 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+// MODIFIED CODE FROM CODEPEN.IO!!
+// https://codepen.io/aido179-1471800764/pen/jZJjpo
+
+.emptyIconContainer {
+  margin: 1em auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Dosis', sans-serif;
+  min-height: 70vh;
+}
+
+.animationContainer {
+  position: relative;
+  display: block;
+  text-align: center;
+  height: 200px;
+  width: 200px;
+  border-bottom: solid 2px $text;
+  overflow: hidden;
+}
+
+.bounce {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin-left: -20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: bounceAnim 1s cubic-bezier(.63,.09,.75,.46) infinite alternate,
+             spinAnim 3s linear infinite;
+}
+
+@keyframes bounceAnim {
+  0%, 10% { bottom: 50%; }
+  100% { bottom: 0%; }
+}
+
+@keyframes spinAnim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pebble1, .pebble2, .pebble3 {
+  position: absolute;
+  background-color: $text;
+  border-radius: 20px 20px 0 0;
+  animation: pebblesAnim linear infinite;
+}
+
+.pebble1 {
+  top: 95%;
+  width: 10px;
+  height: 10px;
+  animation-duration: 1s;
+}
+
+.pebble2 {
+  top: 97%;
+  width: 5px;
+  height: 5px;
+  animation-duration: 2s;
+}
+
+.pebble3 {
+  top: 98%;
+  width: 3px;
+  height: 3px;
+  animation-duration: 3s;
+}
+
+@keyframes pebblesAnim {
+  0% { right: -20%; }
+  100% { right: 110%; }
+}
+
+.btnBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  @include link;
+  @include button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 200px;
+}

@@ -1,0 +1,289 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+header {
+  overflow-x: hidden;
+}
+
+.header {
+  background-color: $black;
+  display: flex;
+  width: 100%;
+  height: 64px;
+  border-bottom: 1px solid $secondary;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+
+  a {
+    @include link;
+    @include uppercase;
+
+    &:hover {
+      color: $accent;
+    }
+
+    &:focus {
+      color: $secondary;
+      outline: none;
+    }
+
+    &:visited {
+      color: $secondary;
+    }
+
+    &:visited .link_active {
+      color: $text;
+    }
+  }
+
+  .logo {
+    max-width: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    margin-right: 24px;
+  }
+
+  &__nav {
+    justify-self: start;
+    flex: 1;
+    height: 64px;
+  }
+
+  &__links {
+    max-width: 425px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .link_active {
+      color: $text;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $text;
+        left: 0;
+      }
+
+      &:visited {
+        color: $text;
+      }
+    }
+  }
+
+  &__icons {
+    justify-self: end;
+    display: flex;
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border-left: 1px solid $secondary;
+
+      > :first-child {
+        position: relative;
+      }
+
+      @media (max-width: 640px) {
+        width: 48px;
+        height: 48px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+.amount {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -8px;
+  right: -8px;
+  color: $text;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+@include for-phone {
+  .header {
+    height: 48px;
+
+    .logo {
+      max-width: 96px;
+      padding: 16px 13px;
+      margin-right: 16px;
+    }
+
+    &__nav {
+      justify-self: start;
+      flex: 1;
+      height: 48px;
+    }
+
+    &__links {
+      max-width: 329px;
+
+      .link_active {
+        color: $text;
+      }
+    }
+
+    &__icons {
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        font-size: 16px;
+      }
+    }
+  }
+
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: auto;
+  cursor: pointer;
+
+  width: 48px;
+  height: 48px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border-left: 1px solid $secondary;
+
+  @media (max-width: 640px) {
+    width: 48px;
+    height: 48px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: $text;
+  }
+
+  @media (max-width: 639px) {
+    display: flex;
+  }
+}
+
+.header__nav,
+.header__icons {
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 48px);
+  background-color: $black;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  transform: translateX(100%);
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+
+  &.menuOpen {
+    transform: translateX(0);
+  }
+
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 16px;
+    padding: 0;
+
+    a {
+      text-decoration: none;
+      color: $secondary;
+      @include uppercase;
+
+      &:hover {
+        color: $accent;
+      }
+
+      &.link_active {
+        color: $text;
+      }
+    }
+  }
+
+  .mobileIcons {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid $secondary;
+    
+    justify-self: end;
+
+    .icon {
+      width: 100%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:nth-child(1) {
+        border-right: 1px solid $secondary;
+      }
+    }
+  }
+  transition: .3s;
+}
+
+.menuClose {
+  transform: translateX(100vw);
+
+  transition: .3s;
+}

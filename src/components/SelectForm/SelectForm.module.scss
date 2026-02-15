@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+
+.selectWrapper {
+  position: relative;
+  @include body-text;
+  color: $text;
+  font-weight: 700;
+  width: 176px;
+}
+
+.selectTrigger {
+  background-color: $surface2;
+  border: 1px solid;
+  border-color: $surface2;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectTrigger {
+
+}
+
+
+.selectTrigger:focus {
+  border-color: $accent;
+  box-shadow: 0 0 0 2px rgba(133, 121, 246, 0.3);
+}
+
+
+.icon {
+  transition: transform 0.2s ease;
+  font-size: 12px;
+  color: #c9c9c9;
+  transform: rotate(-90deg);
+
+  &.rotated {
+    transform: rotate(90deg);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $black;
+  border: 1px solid $elements;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.option {
+  padding: 6px 12px;
+  font-size: 14px;
+  color: $secondary;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: $surface2;
+  }
+
+  &.selected {
+    background-color: $surface2;
+    color: $text;
+  }
+}
+
+.label {
+  @include small-text;
+  color: $secondary;
+}
+
+

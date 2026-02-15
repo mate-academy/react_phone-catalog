@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+
+  @include for-phone {
+    flex-direction: column;
+    padding: 32px 0;
+    gap: 32px;
+    align-items: unset;
+    height: auto;
+  }
+
+  &__container {
+    border-top: 2px solid $secondary;
+    margin-top: 80px;
+
+    @include for-tablet {
+      margin-top: 64px;
+    }
+  }
+
+    &__nav {
+      @include uppercase;
+      display: flex;
+      gap: 106px;
+      color: $text;
+
+      @include for-tablet {
+        gap: 16px;
+      }
+  
+      @include for-phone {
+        align-self: start;
+        flex-direction: column;
+      }
+    }
+
+  &__toTopBtn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    @include small-text;
+    color: $secondary;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    button {
+      @include grey-button;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+      @include for-phone {
+        align-self: center
+      }
+  }
+
+  a {
+    @include link;
+  }
+}

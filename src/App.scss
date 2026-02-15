@@ -1,1 +1,29 @@
-// not empty
+@use './styles/variables' as *;
+@use './styles/mixins.scss' as *;
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: $black;
+  color: $text;
+  
+}
+
+.container {
+  width: 1136px;
+  margin: 0 auto;
+
+  @include for-tablet {
+    width: 592px;
+  }
+
+  @include for-phone {
+    width: 288px;
+  }
+}
+
+.noMobilePaddings {
+  @include for-phone {
+    width: 100%;
+  }
+}
