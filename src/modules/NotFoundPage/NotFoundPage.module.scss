@@ -1,0 +1,60 @@
+@import '../../styles/main';
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 32px auto 0;
+  padding: 16px;
+  border: solid 1px $elements;
+  width: 90%;
+  border-radius: 50px;
+
+  @include on-tablet {
+    padding: 24px;
+    width: 70%;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+    width: 50%;
+  }
+
+  &__title {
+    @include font-set($mobile-h1);
+
+    margin-bottom: 30px;
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+    }
+  }
+
+  &__button {
+    @include font-set($buttons);
+
+    background-color: $accent;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    width: 100%;
+
+    @include on-tablet {
+      width: 80%;
+    }
+
+    @include on-desktop {
+      width: 60%;
+    }
+  }
+}
