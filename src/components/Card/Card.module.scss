@@ -1,0 +1,121 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.card {
+  width: 212px;
+  box-sizing: border-box;
+  border: 1px solid var(--c-elements);
+
+  @include mix.hover(box-shadow, 0 3px 13px 0 var(--c-shadow-card));
+
+  @include mix.on-tablet {
+    width: 237px;
+  }
+
+  @include mix.on-desktop {
+    width: 272px;
+  }
+
+  &__container {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__link {
+    &__photo {
+      height: 129px;
+      object-fit: contain;
+
+      @include mix.hover(transform, scale(1.1));
+    }
+
+    &__photoLink {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+    &__nameLink {
+      display: block;
+      text-decoration: none;
+      color: var(--c-primary);
+      min-height: 62px;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    font-family: Mont-bolt, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30.8px;
+  }
+
+  &__price {
+    color: var(--c-primary);
+
+    &__discount {
+      color: var(--c-secondary);
+      font-weight: 500;
+      line-height: 28.12px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__separator {
+    height: 1px;
+    background-color: var(--c-elements);
+  }
+
+  &__list {
+    list-style: none;
+    font-family: Mont-semibold, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__name {
+      color: var(--c-secondary);
+    }
+
+    &__value {
+      color: var(--c-primary);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button__add {
+    width: 70%;
+    color: #fff;
+    background-color: var(--c-accent);
+    font-family: Mont-semibold, sans-serif;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+
+    @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
+
+    &.inCart {
+      background-color: var(--c-surface-2);
+      color: var(--c-green);
+      border: 1px solid var(--c-icons);
+      box-shadow: none;
+
+      @include mix.hover(border-color, var(--c-primary));
+    }
+  }
+}
