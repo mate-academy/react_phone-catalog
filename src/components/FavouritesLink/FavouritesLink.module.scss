@@ -1,0 +1,18 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+@import '../Header/Header.module.scss';
+
+.icon {
+
+  &--favourites {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      background-image: url(/img/icons/icon-favourites-2x.png);
+      width: 16px;
+      height: 16px;
+      }
+  }
+
+}

@@ -4,6 +4,7 @@ import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
 import Logo from '../Logo';
 import { Link } from 'react-router-dom';
+import FavouritesLink from '../FavouritesLink';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,10 +52,7 @@ export const Header = () => {
 
           <div className={styles.topBar__icons}>
             <div className={styles.icon__background}>
-              <Link
-                to="/favourites"
-                className={`${styles.icon} ${styles['icon--favourites']}`}
-              ></Link>
+              <FavouritesLink />
             </div>
             <div className={styles.icon__background}>
               <Link

@@ -62,16 +62,6 @@
 
     }
 
-  &--favourites {
-    display: none;
-
-    @include on-tablet {
-      display: block;
-      background-image: url(/img/icons/icon-favourites-2x.png);
-      width: 16px;
-      height: 16px;
-      }
-  }
 
   &--close {
     background-image: url(/img/icons/icon-close-2x.png);
@@ -119,7 +109,7 @@
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 4%;
-    color: #89939A;
+    color: $menu-color;
     background-color: $footer-background-color;
 
      @include hover(transform, scale(1.1));

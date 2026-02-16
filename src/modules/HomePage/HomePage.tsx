@@ -90,11 +90,7 @@ export const HomePage: React.FC = () => {
       return;
     }
 
-    if (currentPictureIndex >= lenOfProducts - 1) {
-      return;
-    } // на кінці — нічого не робимо
-
-    setCurrentPictureIndex(i => i + 1);
+    setCurrentPictureIndex(i => wrapNext(i, lenOfProducts));
   };
 
   const handlePrevPicture = () => {
@@ -102,11 +98,7 @@ export const HomePage: React.FC = () => {
       return;
     }
 
-    if (currentPictureIndex <= 0) {
-      return;
-    }
-
-    setCurrentPictureIndex(i => i - 1);
+    setCurrentPictureIndex(i => wrapPrev(i, lenOfProducts));
   };
 
   const handleTouchStartPicture = (
@@ -231,7 +223,6 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
       <h3>Brand new models</h3>
-      <h3>Hot prices</h3>
       {!loading && !error && Array.isArray(products) && (
         <ProductsSlider
           products={hotPrices}
@@ -241,7 +232,9 @@ export const HomePage: React.FC = () => {
           handleTouchStart={handleTouchStartProduct}
           handleTouchEnd={handleTouchEndProduct}
           sliderRef={sliderProductRef}
-        />
+        >
+          Hot prices
+        </ProductsSlider>
       )}
       <div className="product-catalog">
         {loading && <div>Loading...</div>}

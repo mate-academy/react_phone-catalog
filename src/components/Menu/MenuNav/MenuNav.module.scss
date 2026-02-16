@@ -13,7 +13,7 @@
   }
 
   &__link {
-    color: #89939A;
+    color: $menu-color;
     text-decoration: none;
     position: relative;
     font-weight: 800;
@@ -30,7 +30,7 @@
     }
 
     &:active {
-      color: #89939A;
+      color: $menu-color;
     }
   }
 
