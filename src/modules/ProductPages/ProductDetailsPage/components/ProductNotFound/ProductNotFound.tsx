@@ -8,7 +8,7 @@ export const ProductNotFound = () => {
     <div className="product-not-found">
       <div className="product-not-found__content">
         <img
-          src="../../public/img/page-not-found.png"
+          src="img/page-not-found.png"
           alt="Product not found"
           className="product-not-found__image"
         />
