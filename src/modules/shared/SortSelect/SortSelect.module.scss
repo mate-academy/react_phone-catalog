@@ -1,0 +1,58 @@
+@use '../../../styles/fonts.scss' as *;
+@use '../../../styles/variables.scss' as *;
+
+.filterBar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.filterBar__group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: Mont-SemiBold, sans-serif;
+}
+
+.filterBar__label {
+  font-size: 12px;
+  color: $gray-secondary;
+  line-height: 15px;
+}
+
+.filterBar__select {
+  height: 40px;
+  background-color: $gray-surface;
+  border: none;
+  color: $gray-white;
+  padding: 12px;
+  cursor: pointer;
+  outline: none;
+
+  appearance: none;
+  background-image: url('/icons/arrow-down-icon.png');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $gray-elements inset;
+  }
+}
+
+.filterBar_option {
+  background-color: $background;
+
+  &:hover {
+    background-color: $gray-surface;
+  }
+}
+
+.filterBar__select_left {
+  width: 176px;
+}
+
+.filterBar__select_right {
+  width: 136px;
+}

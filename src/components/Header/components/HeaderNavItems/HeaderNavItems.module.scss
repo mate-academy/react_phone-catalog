@@ -1,0 +1,50 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.navigation {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+
+  @include respond-to(tablet) {
+    height: 48px;
+  }
+
+
+}
+
+.navigation_item {
+  position: relative;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  color: $gray-secondary;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.activeLink {
+  color: $gray-white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -26px;
+    width: 100%;
+    height: 3px;
+    background-color: $gray-white;
+    transition: transform 0.6s ease;
+
+    @include respond-to(tablet) {
+      bottom: -18px;
+    }
+
+    @include respond-to(phone) {
+      bottom: -8px;
+    }
+  }
+}

@@ -1,0 +1,161 @@
+@use './variables.scss' as *;
+@use './fonts.scss' as *;
+
+@mixin respond-to($device) {
+  @if $device == phone {
+    @media (max-width: 639px) {
+      @content;
+    }
+  } @else if $device == tablet {
+    @media (min-width: 640px) and (max-width: 1199px) {
+      @content;
+    }
+  } @else if $device == desktop {
+    @media (min-width: 1200px) and (max-width: 1439px) {
+      @content;
+    }
+  } @else if $device == wide {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}
+
+@mixin margin-top-responsive {
+  margin-top: 105px;
+
+  @include respond-to(tablet) {
+    margin-top: 88px;
+  }
+
+  @include respond-to(phone) {
+    margin-top: 88px;
+  }
+
+}
+
+@mixin header-responsive {
+  margin-top: 40px;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 48px;
+  line-height: -0.01em;
+  line-height: 56px;
+  color: $gray-white;
+
+  @include respond-to(phone) {
+    margin-top: 24px;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin grid-for-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@mixin total-amount-of-products {
+  margin-top: 8px;
+  margin-bottom: 40px;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-secondary;
+}
+
+@mixin nav-responsive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 15px;
+  color: $gray-secondary;
+}
+
+@mixin error-messages {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to(phone) {
+    top: 35%;
+  }
+}
+
+@mixin pages {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-white;
+
+  &:hover {
+    color: $purple;
+  }
+}
+
+@mixin img {
+  width: 450px;
+  height: 400px;
+
+  @include respond-to(phone) {
+    width: 300px;
+    height: 250px;
+  }
+}
+
+@mixin header-h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $gray-white;
+}
+
+@mixin small-text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin grid-for-rows {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+@mixin body-text {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-white;
+}
+
+@mixin header-3 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  color: $gray-white;
+}
+
+@mixin header-4 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: $gray-white;
+}

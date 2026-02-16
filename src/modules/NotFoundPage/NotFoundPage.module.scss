@@ -1,0 +1,17 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.notFoundPage {
+  @include error-messages;
+}
+
+.notFoundPage_img {
+  @include img;
+}
+
+.notFoundPage_message {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  line-height: 21px;
+  color: $gray-white;
+}

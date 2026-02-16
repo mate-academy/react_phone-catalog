@@ -1,0 +1,25 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+.tablets_nav {
+  @include nav-responsive;
+}
+
+.tablets {
+  @include margin-top-responsive;
+
+  @include respond-to(phone) {
+    overflow: hidden;
+  }
+}
+
+.tablets_header {
+  margin-bottom: 0;
+
+  @include header-responsive;
+}
+
+.tablets_quantity {
+  @include total-amount-of-products;
+}

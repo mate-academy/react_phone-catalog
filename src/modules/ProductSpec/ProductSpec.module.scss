@@ -1,0 +1,99 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.spec {
+  width: 100%;
+
+  @include respond-to(desktop) {
+    width: 320px;
+  }
+
+  @include respond-to(wide) {
+    width: 320px;
+  }
+}
+
+.spec_colors_container {
+  @include grid-for-rows;
+}
+
+.spec_title {
+  color: $gray-secondary;
+
+  @include small-text;
+}
+
+.spec_colors {
+  margin-bottom: 24px;
+}
+
+.spec_color {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid $gray-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+
+  &:hover {
+    border-color: $gray-secondary;
+    transform: scale(1.1);
+  }
+
+  &--active {
+    border-color: $gray-white;
+  }
+}
+
+.spec_item_color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.spec_divide_line {
+  margin-top: 24px;
+  height: 2px;
+  background-color: $gray-elements;
+}
+
+.spec_divide_line_last {
+  margin-bottom: 32px;
+}
+
+.spec_capacity_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spec_capacity_item_block {
+  width: 56px;
+  height: 32px;
+  border: 1px solid $gray-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &--active {
+    background-color: $gray-white;
+  }
+}
+
+.spec_capacity_item {
+  @include body-text;
+
+  transition: transform 0.6s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.spec_capacity_item_block--active .spec_capacity_item {
+  color: $background;
+}
