@@ -1,0 +1,52 @@
+@import '../../main';
+
+.favorites {
+  &__breadcrumbs {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  &__block-items {
+    grid-column: 1 / -1;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}
+
+.count-models {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  line-height: 21px;
+  color: $-secondary;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.block-items {
+  row-gap: 40px;
+
+  @include page-grid;
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}
