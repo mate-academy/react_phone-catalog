@@ -1,0 +1,93 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.footer {
+  padding-block: 32px;
+  padding-inline: 152px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid $grey-element-color;
+  margin-top: 80px;
+
+  &_nav {
+    display: flex;
+    justify-content: center;
+    gap: 107px;
+  }
+
+  &_link {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &_btn {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &--text {
+      color: $gray-secondary-color;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    &--back-to-top {
+      border: none;
+      background-color: $grey-dark-color;
+      width: 32px;
+      height: 32px;
+
+      &:hover {
+        background-color: $grey-element-color;
+        cursor: pointer;
+      }
+      &:active {
+        background-color: $purple-color;
+      }
+    }
+
+    &--arrow-up {
+      height: 16px;
+      width: 16px;
+      align-items: center;
+    }
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+
+    &_nav {
+      gap: 13.5px;
+    }
+  }
+
+  @include on-tablet {
+    padding-inline: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    &_logo {
+      align-self: flex-start;
+    }
+
+    &_nav {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &_btn {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+  }
+}

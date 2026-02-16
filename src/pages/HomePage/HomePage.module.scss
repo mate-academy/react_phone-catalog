@@ -1,0 +1,48 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+
+  padding-block: 56px;
+}
+
+.title_h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+
+  padding-top: 80px;
+  padding-bottom: 24px;
+}
+
+@include on-tablet {
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+
+    padding-block: 24px ;
+  }
+
+  .title_h2 {
+    font-size: 22px;
+    line-height: 140%;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+@include on-desktop {
+  .title {
+    font-size: 48px;
+
+    padding-block: 32px ;
+  }
+
+  .title_h2 {
+    padding-top: 64px;
+  }
+}

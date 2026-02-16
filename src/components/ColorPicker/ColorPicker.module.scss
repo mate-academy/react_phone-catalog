@@ -1,0 +1,33 @@
+@import '../../style/variables';
+
+.color-picker {
+  display: flex;
+  gap: 8px;
+
+  &__circle-wrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $grey-element-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border 0.2s;
+
+    &:hover {
+      border-color: $gray-secondary-color;
+    }
+
+    &--selected {
+      border: 1px solid $text-color;
+    }
+
+    .color-picker__circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      filter: brightness(85%);
+    }
+  }
+}

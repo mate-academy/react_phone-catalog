@@ -1,0 +1,65 @@
+@import '../../style/variables';
+
+.productButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+
+  &Add {
+    padding-inline: 30px;
+    padding-block: 9.5px;
+    font-family: inherit;
+    background-color: #905BFF;
+    border: none;
+    width: 100%;
+    color: $text-color;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $purple-hover-color;
+    }
+  }
+
+  &Favourite {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background-color: $grey-dark-color;
+    border: none;
+    font-family: inherit;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #4A4D58;
+    }
+
+    &Active {
+      background-color: transparent;
+      border: 1px solid #3B3E4A;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &Icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
+
+.inCart {
+  background-color: $grey-dark-color;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+}

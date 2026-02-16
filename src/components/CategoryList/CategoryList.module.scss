@@ -1,0 +1,15 @@
+@import '../../style/mixins';
+
+.categoriesList {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: space-between;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+}
