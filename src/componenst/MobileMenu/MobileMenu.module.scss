@@ -1,0 +1,149 @@
+@import '../../styles/variables';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 48px);
+  background: #0f1121;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+
+  @media (min-width: $tablet-min) {
+    display: none;
+  }
+
+  &.menuOpen {
+    transform: translateY(48px);
+    pointer-events: auto;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 27px;
+      color: #75767f;
+      text-decoration: none;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+        height: 3px;
+        background: #f1f2f9;
+        transition:
+          left 0.3s ease,
+          right 0.3s ease;
+      }
+
+      &:hover {
+        color: #f1f2f9;
+      }
+
+      &.active {
+        color: #f1f2f9;
+
+        &::after {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    margin-top: auto;
+    width: 100%;
+    border-top: 1px solid #3b3e4a;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 64px;
+    position: relative;
+    transition: opacity 0.2s;
+
+    &:first-child {
+      border-right: 1px solid #3b3e4a;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      height: 3px;
+      background: #f1f2f9;
+      transition:
+        left 0.3s ease,
+        right 0.3s ease;
+    }
+
+    &.active {
+      &::after {
+        left: 0;
+        right: 0;
+      }
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    right: auto;
+    background: $color-red;
+    color: $color-text;
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    padding: 1px 3px;
+    border-radius: 50%;
+    min-width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 1.5px #0f1121;
+  }
+}

@@ -5,6 +5,8 @@
   background: #0f1121;
   border-bottom: 1px solid $color-border;
   height: 48px;
+  position: relative;
+  z-index: 200;
 
   @media (min-width: $desktop-min) {
     height: 64px;
@@ -46,9 +48,9 @@
       margin: 0 16px;
 
       @media (min-width: $desktop-min) {
-      height: 28px;
-      margin: 0 24px;
-    }
+        height: 28px;
+        margin: 0 24px;
+      }
     }
 
     &:hover {
@@ -61,6 +63,7 @@
     gap: 32px;
     align-items: stretch;
     height: 100%;
+    position: relative;
 
     @media (min-width: $tablet-min) {
       display: flex;
@@ -82,7 +85,6 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       transition: color 0.2s;
-      position: relative;
 
       &:hover {
         color: #f1f2f9;
@@ -90,18 +92,20 @@
 
       &.active {
         color: #f1f2f9;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: #f1f2f9;
-        }
       }
     }
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #f1f2f9;
+    transition:
+      transform 0.3s ease,
+      width 0.3s ease;
+    pointer-events: none;
   }
 
   &__actions {
@@ -131,6 +135,24 @@
       height: 16px;
     }
 
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #f1f2f9;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &.active {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
     &:hover {
       opacity: 0.8;
     }
@@ -138,8 +160,8 @@
 
   &__badge {
     position: absolute;
-    top: 25%;
-    right: 25%;
+    top: 9px;
+    right: 9px;
     background: $color-red;
     color: $color-text;
     font-family: Mont, sans-serif;
@@ -185,5 +207,3 @@
     }
   }
 }
-
-
