@@ -1,6 +1,6 @@
 import { NavMobile } from '../Header/components/NavMobile';
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { navigation } from './utils/navigation';
 import { getIcon } from './utils/handlesfunctions';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
@@ -61,9 +61,11 @@ export const Header = () => {
       })}
     >
       <section className="header-desktop">
-        <a href="/" className="header-desktop-logo-link">
+        <Link to={"/"} 
+              onClick={(e) => e.preventDefault()}
+            className="header-desktop-logo-link">
           <img src="img/shared/logo.svg" alt="" />
-        </a>
+        </Link>
         <div className="header-desktop-navigation-wrapper wrapper">
           <nav className="header-desktop-navigation grid">
             <ul
@@ -122,8 +124,8 @@ export const Header = () => {
             onShowSearch={setShowSearchMobile}
           />
           <div className="header-desktop-mobile-menu-wrap">
-            <a
-              href="#0"
+            <Link
+              to={"/"}
               className="header-desktop-mobile-menu-link"
               onClick={() => setIsOpen(isOpen === 0 ? 1 : 0)}
             >
@@ -132,7 +134,7 @@ export const Header = () => {
                 alt=""
                 className="header-desktop-mobile-menu-icon"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
