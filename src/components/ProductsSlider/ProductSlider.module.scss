@@ -1,0 +1,80 @@
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 0;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    align-items: flex-start;
+  }
+}
+
+.title {
+  width: 136px;
+
+  color: $color-primary;
+
+  @include h2-mobile;
+
+  @include on-tablet {
+    width: 100%;
+    margin-bottom: 24px;
+
+    @include h2;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  color: $color-primary;
+  background: transparent;
+  border: 1px solid;
+  border-color: #b4bdc3;
+  cursor: pointer;
+  transition:
+    color $hover-delay,
+    border-color $hover-delay;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    color: #b4bdc3;
+    border-color: #e2e6e9;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.cardsWrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  transform: none;
+  transition: transform $hover-delay;
+}

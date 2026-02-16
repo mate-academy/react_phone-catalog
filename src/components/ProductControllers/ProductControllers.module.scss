@@ -1,0 +1,49 @@
+@import '../../styles/utils';
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.addToCard {
+  color: $color-white;
+  text-align: center;
+
+  @include buttons;
+
+  width: 100%;
+  height: 40px;
+  background: $color-primary;
+  border: none;
+  box-shadow: none;
+  transition: box-shadow $hover-delay;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--active {
+    color: $color-green;
+    border: 1px solid $color-elements;
+    background: transparent;
+    pointer-events: none;
+  }
+}
+
+.favourite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid $color-icons-placeholders;
+  transition: border $hover-delay;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}

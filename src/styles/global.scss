@@ -1,0 +1,44 @@
+@import './styles/normalize.css';
+@import './styles/reset.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-regular;
+  font-size: 100%;
+  line-height: 1;
+  border: 0;
+  vertical-align: baseline;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill {
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 18px;
+  font-family: $font-regular;
+  font-size: 15px;
+  font-weight: 600;
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.01) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
