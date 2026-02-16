@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getApi } from '../../shared/api/api';
 import type { ProductPage } from '../../shared/types/ProductPage';
 import { PictureSlider } from '../../shared/components/PictureSlider';
@@ -14,8 +14,6 @@ export const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
   // const [isAnimating, setIsAnimating] = useState(false);
-  const touchStart = useRef<number | null>(null);
-  const touchEnd = useRef<number | null>(null);
   const images: string[] = [
     'img/home/slider/banner0.jpg',
     'img/home/slider/banner3.png',
@@ -62,13 +60,7 @@ export const HomePage = () => {
         <div className="top-content grid">
           <h1 className="top-content-title">Product Catalog</h1>
         </div>
-        <PictureSlider
-          imgs={images}
-          start={touchStart}
-          end={touchEnd}
-          // onAnimated={setIsAnimating}
-          ShowDotsImg={false}
-        />
+        <PictureSlider imgs={images} ShowDotsImg={false} />
         {loading && <LoaderCards />}
         {!loading && (
           <Cards

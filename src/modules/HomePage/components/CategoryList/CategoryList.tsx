@@ -11,7 +11,7 @@ export const CategoryList = ({ filtredCategory }: CategoryListType) => {
       ([name, count], index) => ({
         name,
         count,
-        image: `/img/home/category/category${index}.jpg`,
+        image: `img/home/category/category${index}.jpg`,
       }),
     );
 
