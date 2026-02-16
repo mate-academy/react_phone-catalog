@@ -1,0 +1,124 @@
+@import '../../style.scss';
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  background-color: #161827;
+  padding: 24px;
+  width: 100%;
+  gap: 24px;
+
+  @include onTablet() {
+    max-width: 592px;
+  }
+
+  @include onPhone() {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: space-between;
+  }
+
+  &__delete {
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__imgDelete {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+  }
+
+  &__name {
+    color: $gray-white-text;
+    font-size: 14px;
+    line-height: 21px;
+    @extend %mont-600;
+    max-width: 336px;
+    width: 100%;
+
+    @include onTablet() {
+      @include mont-400();
+    }
+
+    @include onPhone() {
+      max-width: 128px;
+      width: 100%;
+    }
+  }
+
+  &__price {
+    color: $gray-white-text;
+    font-size: 22px;
+    line-height: 140%;
+    @extend %mont-700;
+    max-width: 80px;
+    width: 100%;
+    text-align: right;
+
+    @include onTablet() {
+      @include mont-600();
+    }
+
+    @include onPhone() {
+      @include mont-400();
+    }
+  }
+
+  &__count {
+    color: $gray-white-text;
+    font-size: 14px;
+    line-height: 21px;
+    position: absolute;
+    @extend %mont-600;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include onTablet() {
+      @include mont-400();
+    }
+  }
+
+  &__counterBox {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    max-width: 96px;
+    width: 100%;
+    position: relative;
+  }
+
+  &__btn {
+    border: 1px solid transparent;
+    background-color: #323542;
+    cursor: pointer;
+    padding: 7px;
+    transition: background-color 0.3s ease-in-out;
+    @include flex-center();
+
+    & img {
+      width: 16px;
+      height: 16px;
+      object-fit: cover;
+    }
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &Disabled {
+      cursor: not-allowed;
+      border: 1px solid #3b3e4a;
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}

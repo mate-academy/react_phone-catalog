@@ -1,0 +1,71 @@
+@import '../../style.scss';
+
+.productImgsGallery {
+  display: flex;
+  align-items: center;
+  max-width: 490px;
+  width: 100%;
+  gap: 87px;
+
+  @include onTablet() {
+    align-items: flex-start;
+    gap: 60px;
+    max-width: 295px;
+  }
+
+  @include onPhone() {
+    flex-direction: column-reverse;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__small {
+    object-fit: contain;
+    max-width: 80px;
+    width: 100%;
+    height: 80px;
+    border: 1px solid rgba(59, 62, 74, 1);
+    padding: 8px;
+    cursor: pointer;
+    @include hoverOpacity();
+    
+    @include onTablet() {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include onPhone() {
+      width: 50px;
+      height: 50px;
+    }
+
+    &Active {
+      border: 1px solid $gray-white-text;
+    }
+  }
+
+  &__smallBlock {
+    flex-direction: column;
+    display: flex;
+    gap: 17px;
+    
+    @include onTablet() {
+      gap: 8px;
+    }
+
+    @include onPhone() {
+      flex-direction: row;
+    }
+  }
+
+  &__bigImg {
+    max-width: 320px;
+    width: 100%;
+    max-height: 442px;
+    object-fit: contain;
+
+    @include onTablet() {
+      max-width: 200px;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@import '/src/style.scss';
+
+.catalog {
+  padding-block: 88px 80px;
+
+  @include onTablet() {
+    padding-block: 72px 64px;
+  }
+
+  &__box {
+    margin-bottom: 40px;
+
+    @include onPhone() {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title {
+    color: $gray-white-text;
+    font-size: 48px;
+    @extend %mont-700;
+    line-height: 56px;
+    margin-bottom: 8px;
+
+    @include onTablet() {
+      @include mont-600();
+    }
+
+    @include onTablet() {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 41px;
+      @include mont-400();
+    }
+  }
+
+  &__modelsCount {
+    color: $gray-text;
+    font-size: 14px;
+    @extend %mont-600;
+    line-height: 21px;
+
+    @include onTablet() {
+      @include mont-400();
+    }
+  }
+
+  &__selectWrapper {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__wrapperList {
+    margin-bottom: 40px;
+  }
+
+  &__errorWrapper {
+    @include flex-center();
+    flex-direction: column;
+    position: absolute;
+    inset: 0;
+  }
+
+  &__error {
+    color: $gray-white-text;
+    @extend %mont-700;
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 30px;
+  }
+
+  &__errorItems {
+    color: $gray-white-text;
+    @extend %mont-700;
+    font-size: 20px;
+    line-height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+  }
+
+  &__reloadBtn {
+    color: $gray-white-text;
+    font-size: 14px;
+    @extend %mont-600;
+    line-height: 21px;
+    text-align: center;
+    cursor: pointer;
+    background-color: $btn-color;
+    padding: 9.5px 39.5px;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $btn-hover;
+    }
+  }
+}

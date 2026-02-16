@@ -1,0 +1,22 @@
+@import '/src/mixin/mixin.scss';
+@import '/src/styles/fonts.scss';
+@import '/src/styles/reset.scss';
+@import '/src/styles/vars.scss';
+
+body {
+  background-color: rgb(15, 17, 33);
+}
+
+.container {
+  max-width: 1201px;
+  margin-inline: auto;
+  padding: 0 32px;
+
+  @include onTablet() {
+   padding: 0 24px;
+  }
+
+  @include onPhone() {
+   padding: 0 16px;
+  }
+}
