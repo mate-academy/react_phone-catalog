@@ -9,7 +9,7 @@ export const PictureSlider = ({
   ShowDotsImg,
 }: Omit<Slider, 'start' | 'end'>) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const start = useRef<number | null>(null); 
+  const start = useRef<number | null>(null);
   const end = useRef<number | null>(null);
 
   useEffect(() => {
