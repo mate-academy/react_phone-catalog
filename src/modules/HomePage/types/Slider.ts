@@ -5,5 +5,5 @@ export type Slider = {
   onIdx?: (callback: (prev: number) => number) => void;
   start: React.MutableRefObject<number | null>;
   end: React.MutableRefObject<number | null>;
-  onAnimated: (value: boolean) => void;
+  onAnimated?: (value: boolean) => void;
 };

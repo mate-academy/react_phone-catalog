@@ -18,18 +18,9 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const { items, setItems, add, remove, exists } =
-    useStorageCollection<CartItem>('cart'); // <-- додали setItems
+    useStorageCollection<CartItem>('cart');
 
-  const addToCart = (product: ProductPage) => {
-    const existing = items.find(item => item.id === product.id);
-
-    if (existing) {
-      increaseQuantity(product.id);
-    } else {
-      add({ ...product, quantity: 1 });
-    }
-  };
-
+  // Définis increaseQuantity AVANT addToCart
   const increaseQuantity = (id: ProductPage['id']) => {
     setItems(prev =>
       prev.map(item =>
@@ -46,6 +37,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         )
         .filter(item => item.quantity > 0),
     );
+  };
+
+  const addToCart = (product: ProductPage) => {
+    const existing = items.find(item => item.id === product.id);
+
+    if (existing) {
+      increaseQuantity(product.id); // ✅ Maintenant elle est définie
+    } else {
+      add({ ...product, quantity: 1 });
+    }
   };
 
   const clearCart = () => {

@@ -1,6 +1,5 @@
 import { CategoryItem } from '../CategoryItem';
 import type { CategoryListType } from '../../types/CategoryListType';
-import './CategoryList.scss';
 import { useEffect, useState } from 'react';
 import { CategoryData } from '../../types/CategoryData';
 

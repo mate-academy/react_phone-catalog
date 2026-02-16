@@ -22,7 +22,7 @@
         }
         
         &-total p{
-            font-family: 'MontBold';
+            font-family: MontBold, sans-serif;
             font-size: 32px;
             line-height: 41px;
             letter-spacing: -1%;
@@ -33,7 +33,7 @@
         }
         
         &-total p span{
-            font-family: 'Mont';
+            font-family: Mont, sans-serif;
             font-weight: 600;
             font-size: 14px;
             line-height: 21px;
@@ -103,7 +103,7 @@
         }
 
         &-price{
-            font-family: 'MontBold';
+            font-family: MontBold, sans-serif;
             font-size: 22px;
             line-height: 140%;
         }
@@ -126,8 +126,7 @@
         grid-column: span 3;
         margin: 0 25px;
         position: absolute;
-        justify-self: center;
-        align-self: center;
+        place-self: center;
         z-index: 5;
         background-color: #fff;
         display: flex;
@@ -135,7 +134,7 @@
 
         &-content-text{
             text-align: center;
-            margin: 15px auto 15px;
+            margin: 15px auto;
             line-height: 30px;
 
         }
@@ -149,6 +148,7 @@
 
         &-confirm-btn{
             margin: 0 auto;
+            padding: 10px 0;
         }
     }
 }
@@ -185,8 +185,7 @@
         grid-column: span 10;
         margin: 0 25px;
         position: absolute;
-        justify-self: center;
-        align-self: center;
+        place-self: center;
         flex-direction: column;
     }
 }

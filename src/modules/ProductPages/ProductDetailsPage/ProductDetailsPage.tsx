@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useColorChange } from './hooks/useColorChange';
 import { getApi } from '../../../shared/api/api';
@@ -28,9 +28,8 @@ export const ProductDetailsPage = () => {
   const [errorSuggest, setErrorSuggest] = useState<string>('');
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
+  // const [isAnimating, setIsAnimating] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     if (!category || !slug) {
@@ -52,18 +51,17 @@ export const ProductDetailsPage = () => {
           setError('Product was not found');
         }
       })
-      .catch(err => {
+      .catch(() => {
         setError('Failed to load product');
-        console.error(err);
       })
       .finally(() => setLoading(false));
   }, [category, slug]);
 
   useEffect(() => {
     getApi<ProductPage[]>('/products.json')
-      .then(products => {
+      .then(data => {
         if (product) {
-          const found1 = products.filter(
+          const found1 = data.filter(
             item => item.category === product.category,
           );
           const suggestedItems = found1.sort(() => Math.random() - 0.5);
@@ -71,9 +69,8 @@ export const ProductDetailsPage = () => {
           setProductsItems(suggestedItems);
         }
       })
-      .catch(error => {
+      .catch(() => {
         setErrorSuggest('Failed to load products');
-        console.error('Failed to load suggestions:', error);
       });
   }, [product.category, product.id]);
   const handleColorChange = useColorChange(product, products, selectedCapacity);
@@ -127,7 +124,7 @@ export const ProductDetailsPage = () => {
           imgs={product.images}
           start={touchStart}
           end={touchEnd}
-          onAnimated={setIsAnimating}
+          // onAnimated={setIsAnimating}
           ShowDotsImg={true}
         />
         <MainControls

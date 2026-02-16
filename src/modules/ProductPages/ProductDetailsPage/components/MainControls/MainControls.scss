@@ -14,7 +14,7 @@
         & .card-middle{
             border-bottom: none;
             & .card-price{
-                font-family: 'MontBold';
+                font-family: MontBold, sans-serif;
                 font-size: 32px;
                 line-height: 41px;
             }
@@ -43,7 +43,7 @@
     }
     .selector{
             &-title{
-                font-family: 'Mont-SemiBold';
+                font-family: Mont-SemiBold, sans-serif;
                 font-size: 12px;
                 line-height: 100%;
                 letter-spacing: 0%;
@@ -65,7 +65,7 @@
         border: 1px solid#B4BDC3;
         border-radius: 4px;
         cursor: pointer;
-        font-family: Mont;
+        font-family: Mont, sans-serif;
         font-weight: 600;
         font-size: 14px;
         line-height: 21px;
@@ -87,11 +87,13 @@
         text-align: right;
     }
 }
+
 @media only screen and (min-width:640px){
     .main-controls{
         grid-column: span 5;
     }
 }
+
 @media only screen and (min-width:1200px){
     .selector{
         &-hidden-title{

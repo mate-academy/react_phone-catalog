@@ -99,19 +99,25 @@ export const MainControls = ({
                 'cart-added': isCart(favoriteId),
               })}
               onClick={() => {
-                isCart(favoriteId) ? '' : addToCart(cartProduct);
+                if (!isCart(favoriteId)) {
+                  addToCart(cartProduct);
+                }
               }}
             >
-              {isCart(favoriteId) ? 'Added to cart' : 'Add to cart'}
+              <span>
+                {isCart(favoriteId) ? 'Added to cart' : 'Add to cart'}
+              </span>
             </button>
             <button
               className={classNames('card-add-fav', {
                 'card-add-fav-added': isFavorite(favoriteId),
               })}
               onClick={() => {
-                isFavorite(favoriteId)
-                  ? removeFromFavorites(favoriteId)
-                  : addToFavorites(cartProduct);
+                if (isFavorite(favoriteId)) {
+                  removeFromFavorites(favoriteId);
+                } else {
+                  addToFavorites(cartProduct);
+                }
               }}
             >
               {isFavorite(favoriteId) ? (

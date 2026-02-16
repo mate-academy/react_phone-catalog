@@ -1,40 +1,44 @@
 @font-face {
-    font-family: 'Mont';
+    font-family: Mont;
     src: url('/fonts/Mont-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'MontBold';
+    font-family: MontBold;
     src: url('/fonts/Mont-Bold.otf') format('opentype');
     font-weight: 800;
     font-style: bold;
 }
 
 @font-face {
-    font-family: 'Mont-SemiBold';
+    font-family: Mont-SemiBold;
     src: url('/fonts/Mont-SemiBold.otf') format('opentype');
     font-weight: 600;
 }
+
 *{
     padding: 0;
     margin: 0;
 }
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Mont',sans-serif;
+    font-family: Mont,sans-serif;
 
 }
+
 a{
     text-decoration: none;
     color: #0F0F11;
 }
+
 h1{
-    font-family: 'MontBold', sans-serif;
+    font-family: MontBold, sans-serif;
     font-weight: 800;
     font-style: Bold;
     font-size: 48px;
@@ -44,7 +48,7 @@ h1{
 }
 
 button {
-    font-family: 'Mont-SemiBold';
+    font-family: Mont-SemiBold, sans-serif;
     background: none;
     border: 1px solid#B4BDC3;
     border-radius: 48px;
@@ -53,11 +57,12 @@ button {
     letter-spacing: 0;
 }
 
-#root{
+.root{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+
 .main{
     flex: 1;
 }
@@ -68,7 +73,7 @@ button {
 }
 
 h1, h2, h3{
-    font-family: 'MontBold';
+    font-family: MontBold, sans-serif;
     font-weight: 800;
     font-size: 48px;
     line-height: 56px;
@@ -86,10 +91,9 @@ h3{
 }
 
 h4{
-    font-family: 'Mont-SemiBold';
+    font-family: Mont-SemiBold, sans-serif;
     font-weight: 700;
     font-size: 20px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
 }
@@ -98,11 +102,13 @@ a:hover img {
     transform: scale(1.1);
     transition: transform 0.3s ease;
 }
+
 @media only screen and (min-width:320px) {
     .loader,.error{
         grid-column: span 4;
         color: red;
     }
+   
     .wrapper{
         min-width: 320px;
         max-width: 639px;
@@ -171,12 +177,11 @@ a:hover img {
             background: url('/img/home/next-disabled.png');
         }
     }
+    
     .disabled-btn-without-rotate {
         background: url('/img/home/next-disabled.png');
     }
-    // main{
-    //     padding-top: 47px;
-    // }
+
 }
 
 @media only screen and (min-width:640px) {
@@ -211,12 +216,10 @@ a:hover img {
     }
     .grid {
         grid-template-columns: repeat(24, 1fr);
-        padding: 0 0;
+        padding: 0;
         row-gap: 0;
     }
-    // .main{
-    //     padding-top: 65px;
-    // }
+
     .error{
         color: red;
     }

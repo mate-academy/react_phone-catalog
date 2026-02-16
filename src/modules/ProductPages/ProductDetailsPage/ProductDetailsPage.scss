@@ -43,7 +43,7 @@
             
             &-description {
                   & h4 {
-                     font-family: 'Mont-SemiBold';
+                     font-family: Mont-SemiBold, sans-serif;
                      font-weight: 700;
                      font-size: 16px;
                      line-height: 100%;
@@ -63,7 +63,7 @@
          }
             
          &-section-title{
-            font-family: 'Mont-SemiBold';
+            font-family: Mont-SemiBold, sans-serif;
             font-weight: 700;   
             font-size: 20px;
             border-bottom: 1px solid#E2E6E9;
@@ -97,10 +97,11 @@
          }
       }
    }
-   .suggestions .new-models {
+   .suggestions .new-smodels {
       padding: 0 ;
    }
 }
+
 @media only screen and (min-width: 640px) {
    .go-back, .suggestions{
       grid-column: span 12;

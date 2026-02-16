@@ -1,7 +1,7 @@
-import { Product } from '../../../shared/types/ProductPage';
+import { ProductPage } from '../../../shared/types/ProductPage';
 import { SetUrlParams } from './SetUrlParams';
 
-export type onNavignationLinksType = {
+export type OnNavignationLinksType = {
   hasUrl: boolean;
   hasItemsUrl: boolean;
   onStartItem: (value: number) => void;
@@ -10,6 +10,6 @@ export type onNavignationLinksType = {
   perPage: number | string;
   urlParams: URLSearchParams;
   onUrlParams: (value: URLSearchParams) => void;
-  items: Product[];
+  items: ProductPage[];
   urlParamsFunction: (params: SetUrlParams) => void;
 };

@@ -1,18 +1,18 @@
 import type { SetUrlParams } from '../types/SetUrlParams';
 import type { DeleteUrlParams } from '../types/DeleteUrlParams';
-import { onNavignationLinksType } from '../types/onNavignationLinksType';
-import { handleChangeItemsType } from '../types/handleChangeItemsType';
+import { OnNavignationLinksType } from '../types/onNavignationLinksType';
+import { HandleChangeItemsType } from '../types/handleChangeItemsType';
 import { PrevOrNextItemsType } from '../types/PrevOrNextItemsType';
 import { PaginationDigitLink } from '../types/PaginationDigitLink';
 import { TotalPagesCount } from '../types/TotalPagesCount';
 
-export const urlParams = ({
+export const urlParamsFunctionUpdate = ({
   update,
-  urlParams,
+  urlParams: urlParamsObj,
   currPage,
   onUrlParams,
 }: SetUrlParams) => {
-  const params = new URLSearchParams(urlParams.toString());
+  const params = new URLSearchParams(urlParamsObj.toString());
 
   params.set('page', currPage.toString());
 
@@ -26,10 +26,10 @@ export const urlParams = ({
 };
 
 export const deleteUrlParams = ({
-  urlParams,
+  urlParams: urlParamsObj,
   onUrlParams,
 }: DeleteUrlParams) => {
-  const params = new URLSearchParams(urlParams.toString());
+  const params = new URLSearchParams(urlParamsObj.toString());
 
   params.delete('perPage');
   params.delete('page');
@@ -57,11 +57,11 @@ export const onNavignationLinks = ({
   onEndItem,
   actuallyPage,
   perPage,
-  urlParams,
+  urlParams: urlParamsObj,
   onUrlParams,
   items,
   urlParamsFunction,
-}: onNavignationLinksType) => {
+}: OnNavignationLinksType) => {
   if (!hasUrl && !hasItemsUrl) {
     onStartItem(0);
     onEndItem(items.length);
@@ -74,14 +74,14 @@ export const onNavignationLinks = ({
 
     urlParamsFunction({
       update: perPage,
-      urlParams: urlParams,
+      urlParams: urlParamsObj,
       currPage: actuallyPage,
       onUrlParams: onUrlParams,
     });
 
     if (perPage === items.length) {
       deleteUrlParams({
-        urlParams: urlParams,
+        urlParams: urlParamsObj,
         onUrlParams: onUrlParams,
       });
     }
@@ -96,7 +96,7 @@ export const handleChangeItems = ({
   actuallyPage,
   urlParamsString,
   onUrlParamsString,
-}: handleChangeItemsType) => {
+}: HandleChangeItemsType) => {
   const value = event.target.value;
 
   if (value === 'all') {
@@ -106,7 +106,7 @@ export const handleChangeItems = ({
   }
 
   onCurrentPage(1);
-  urlParams({
+  urlParamsFunctionUpdate({
     update: value,
     urlParams: urlParamsString,
     currPage: actuallyPage,
@@ -127,7 +127,7 @@ export const PrevOrNextItems = ({
   onStartItem(prev => (isNext ? prev + updatePerPage : prev - updatePerPage));
   onEndItem(prev => (isNext ? prev + updatePerPage : prev - updatePerPage));
   onCurrentPage(prev => (isNext ? prev + 1 : prev - 1));
-  urlParams({
+  urlParamsFunctionUpdate({
     update: updatePerPage,
     urlParams: urlParamsString,
     currPage: actuallyPage,
@@ -152,7 +152,7 @@ export const paginationDigitLink = ({
   }
 
   onCurrentPage(currPage);
-  urlParams({
+  urlParamsFunctionUpdate({
     update: perPage,
     urlParams: urlParamsString,
     currPage: actuallyPage,

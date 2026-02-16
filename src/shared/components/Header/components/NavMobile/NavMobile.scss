@@ -1,95 +1,109 @@
-@media only screen and (min-width:320px){
-   .header{
-      &-nav-mobile{
-        grid-column: span 4;
-        width: 100%;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        display: none;
-         
-         &-isOpen{
-            height: 100vh;
-         } 
-         
-         &-list-navigation{
-            top: 0;
-            position: relative;
-            flex: 1;
-            
-            & li{
-               text-align: center;
-               padding-bottom: 16px;
-           
-               & a {
-                  font-family: Mont, sans-serif;
-                  font-weight: 800;
-                  font-size: 12px;
-                  line-height: 11px;
-                  letter-spacing: 4%;
-                  text-transform: uppercase;
-                  text-decoration: none;
-                  color: #89939A;
-                  padding: 8px 0;
-                  display: inline-block;
+@media only screen and (min-width: 320px) {
+  
+  .header-nav-mobile {
+    grid-column: span 4;
+    width: 100%;
+    flex: 1;
+    flex-direction: column;
+    display: none;
+  }
 
-                  &::after, &:hover::after{
-                     content: "";
-                     display: block;
-                     width: 100%;
-                     padding-top: 6px;
-                  }
+  .header-nav-mobile-isOpen {
+    height: 100vh;
+  }
 
-                  &.active-link, &:hover {
-                     color: #000;
-                     border-bottom: 3px solid;
-                     transition: color 0.3s ease;
-                     text-decoration: none;
-                  }
-               }
-            }
-           
-         }
-    }
-   }
+  .header-nav-mobile-list-navigation {
+    top: 0;
+    position: relative;
+    flex: 1;
+  }
 
-   .nav-mobile-visible{
-        z-index: 50;
-        margin-top: 24px;
-        display: flex;
-   }
+  .header-nav-mobile-list-navigation li {
+    text-align: center;
+    padding-bottom: 16px;
+  }
 
-   .footer-nav-mobile{
-      display: flex;
-      justify-content: center;
-      height: 64px;
-      border-top: 1px solid#e2e6e9;
-    
-      & a {
-         display: flex;
-         justify-content: center;
-         width: 50%;
+  .nav-mobile-visible {
+    z-index: 50;
+    margin-top: 24px;
+    display: flex;
+  }
 
-            &.active-link{
-               border-bottom: 1px solid#313237;
-            } 
+  .footer-nav-mobile {
+    display: flex;
+    justify-content: center;
+    height: 64px;
+    border-top: 1px solid #e2e6e9;
+  }
 
-            &:first-child {
-               border-right: 1px solid#E2E6E9;
-            }
+  .footer-nav-mobile a {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+  }
 
-            & img{
-               width:  16px;
-               height: 16px;
-               align-self: center;
-            }
-      }
+  .favorite-link {
+    border-right: 1px solid #E2E6E9;
+  }
 
-   } 
+  .footer-nav-mobile a img {
+    width: 16px;
+    height: 16px;
+    align-self: center;
+  }
+
+  .footer-nav-mobile a.active-link {
+    border-bottom: 1px solid #313237;
+  }
+
+  .header-nav-mobile-list-navigation li a {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #89939A;
+    padding: 8px 0;
+    display: inline-block;
+  }
+
+  .header-nav-mobile-list-navigation li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 6px;
+  }
+
+  .header-nav-mobile-list-navigation li a:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 6px;
+  }
+
+  .header-nav-mobile-list-navigation li a:hover {
+    color: #000;
+    border-bottom: 3px solid;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .header-nav-mobile-list-navigation li a.active-link {
+    color: #000;
+    border-bottom: 3px solid;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .search-visibility-state{
+    visibility: hidden;
+  }
 }
 
-@media only screen and (min-width:640px) {
-   .header-nav-mobile{
-      display: none;
-   }
+@media only screen and (min-width: 640px) {
+  .header-nav-mobile {
+    display: none;
+  }
 }

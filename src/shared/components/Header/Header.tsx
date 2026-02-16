@@ -1,11 +1,6 @@
 import { NavMobile } from '../Header/components/NavMobile';
 import { useEffect, useState } from 'react';
-import {
-  NavLink,
-  useLocation,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { navigation } from './utils/navigation';
 import { getIcon } from './utils/handlesfunctions';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
@@ -21,8 +16,7 @@ export const Header = () => {
   const [search, setSearch] = useState<string>('');
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false);
-  const [searchVisibilityState, setSearchVisibilityState] =
-    useState<boolean>(false);
+
   const { favorites } = useFavorites();
   const { cart } = useCart();
   const [debouncedSearch, setDebouncedSearch] = useState<string>('');

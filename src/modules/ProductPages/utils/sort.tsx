@@ -1,10 +1,10 @@
-import { Product } from '../../../shared/types/ProductPage';
+import { ProductPage } from '../../../shared/types/ProductPage';
 
-type sortItem = {
-  items: Product[];
+type SortItem = {
+  items: ProductPage[];
   sortField: string;
 };
-export const sortItems = ({ items, sortField }: sortItem) => {
+export const sortItems = ({ items, sortField }: SortItem) => {
   items.sort((a, b) => {
     if (sortField === 'title') {
       return a.name.localeCompare(b.name);

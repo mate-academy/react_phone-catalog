@@ -3,9 +3,11 @@
     row-gap: 25px;
     padding: 16px;
 }
+
 .NotFoundPage h1{
     padding: 25px 0;
 }
+
 .NotFoundImage{
  width: 100%;   
 }
@@ -14,19 +16,23 @@
     .NotFoundPage h1{
         font-size: 28px;
     }
+  
     .NotFoundImage, .NotFoundPage h1{
         grid-column: span 4;
     }
 }
+
 @media only screen and (min-width:640px){
     .NotFoundPage h1{
         font-size: 28px;
     }
+   
     .NotFoundImage, .NotFoundPage h1{
         grid-column: span 12;
         justify-content: center;
     }
 }
+
 @media only screen and (min-width:1200px){
     .NotFoundPage h1{
         font-size: 28px;

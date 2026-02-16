@@ -1,10 +1,10 @@
-import { Product } from '../../../shared/types/ProductPage';
+import { ProductPage } from '../../../shared/types/ProductPage';
 
-export type handleChangeItemsType = {
+export type HandleChangeItemsType = {
   event: React.ChangeEvent<HTMLSelectElement>;
   onPerPage: (value: number | string) => void;
   onCurrentPage: (value: number) => void;
-  items: Product[];
+  items: ProductPage[];
   actuallyPage: number;
   urlParamsString: URLSearchParams;
   onUrlParamsString: (value: URLSearchParams) => void;

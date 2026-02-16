@@ -4,18 +4,16 @@ import type { ProductPage } from '../../shared/types/ProductPage';
 import { PictureSlider } from '../../shared/components/PictureSlider';
 import { Cards } from './components/Cards';
 import { Category } from './components/Category';
-import { CatObj } from './types/CatObj';
 
 import './HomePage.scss';
 import { LoaderCards } from '../../shared/components/LoaderCards';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<ProductPage[]>([]);
-  const [categories, setCategories] = useState<CatObj[]>([]);
 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
-  const [isAnimating, setIsAnimating] = useState(false);
+  // const [isAnimating, setIsAnimating] = useState(false);
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const images: string[] = [
@@ -25,17 +23,13 @@ export const HomePage = () => {
   ];
 
   useEffect(() => {
-    getApi('/products.json')
-      .then(products => {
-        setProducts(products);
-        const category = [...new Set(products.map(item => item.category))];
-        const categoryObj = category.map(item => ({ label: item }));
-
-        setCategories(categoryObj);
+    getApi<ProductPage[]>('/products.json')
+      .then(data => {
+        setProducts(data);
       })
-      .catch(error => {
+      .catch(errorMSg => {
         setError('Something went wrong');
-        throw error;
+        throw errorMSg;
       })
       .finally(() => {
         setLoading(false);
@@ -50,13 +44,17 @@ export const HomePage = () => {
     });
   };
 
-  const categoryCount = products.reduce((acc, product) => {
-    const category: string = product.category;
+  const categoryCount = products.reduce(
+    (acc, product) => {
+      const category = product.category;
 
-    acc[category] = (acc[category] || 0) + 1;
-
-    return acc;
-  }, {});
+      return {
+        ...acc,
+        [category]: (acc[category] || 0) + 1,
+      };
+    },
+    {} as Record<string, number>,
+  );
 
   return (
     <>
@@ -68,7 +66,7 @@ export const HomePage = () => {
           imgs={images}
           start={touchStart}
           end={touchEnd}
-          onAnimated={setIsAnimating}
+          // onAnimated={setIsAnimating}
           ShowDotsImg={false}
         />
         {loading && <LoaderCards />}

@@ -1,20 +1,19 @@
 import classNames from 'classnames';
-import { urlParams } from '../../utils/pagination';
 
-type sortValueType = {
+type SortValueType = {
   id: number;
   value: number | string;
   label: string;
 };
 
 type ActionBtns = {
-  itemsValue: sortValueType[];
+  itemsValue: SortValueType[];
   label: string;
   value: string | number;
   onSortValue: (value: number | string) => void;
   isSort: boolean;
   onSort: (value: boolean) => void;
-  open: boolean;
+  open?: boolean;
   onOpen: (value: boolean) => void;
   urlStr?: URLSearchParams;
   onUrlStr?: (params: URLSearchParams) => void;
@@ -29,20 +28,22 @@ export const ActionBtn = ({
   onSortValue,
   isSort,
   onSort,
-  open,
   onOpen,
   urlStr,
   onUrlStr,
   btnLabel,
   onBtnLabel,
 }: ActionBtns) => {
-  const handleUrlParams = (value: number | string) => {
+  const handleUrlParams = (sortValue: number | string) => {
     if (urlStr) {
       const params = new URLSearchParams(urlStr?.toString());
 
-      typeof value === 'number'
-        ? params.set('sort', value.toString())
-        : params.set('sort', value);
+      if (typeof sortValue === 'number') {
+        params.set('sort', sortValue.toString());
+      } else {
+        params.set('sort', sortValue);
+      }
+
       onUrlStr?.(params);
     }
   };
@@ -63,26 +64,22 @@ export const ActionBtn = ({
         name="sort-product-select"
         // id="sort-product-select"
         className="select-hidden"
-        onChange={e => {
+        onChange={() => {
           onSortValue(value);
           handleUrlParams(value);
         }}
       >
         {itemsValue.map(item => (
-          <option key={item.id}
-            value={item.value}
-          >
+          <option key={item.id} value={item.value}>
             {item.label}
           </option>
-        ))
-        }
+        ))}
       </select>
       <span className="action-btn-label">{label}</span>
       <br />
       <button
         onClick={() => {
           handleStateList();
-        } 
         }}
         className={classNames('top-action-btn', {
           'btn-active': isSort,
@@ -109,7 +106,7 @@ export const ActionBtn = ({
 
       {isSort && (
         <ul className="sort-values-list">
-          {itemsValue.map((item, index) => (
+          {itemsValue.map(item => (
             <li key={item.id}>
               <button
                 onClick={() => {

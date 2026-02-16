@@ -1,12 +1,14 @@
 @media only screen and (min-width:320px){
     .category-block{
         grid-column: span 4;
+        overflow: hidden;
+        border-radius: 10px;
     }
     .category-block > a {
         display: block;
     }
     .category-bottom{
-        padding: 24px 0 0 0;
+        padding: 24px 0 0;
     }
     .category-img{
        width: 100%;
@@ -29,6 +31,7 @@
         color: #89939A;
     }
 }
+
 @media only screen and (min-width:1200px){
     .category-block{
         grid-column: span 8;

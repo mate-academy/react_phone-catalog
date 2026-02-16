@@ -45,6 +45,8 @@ module.exports = {
     'max-len': ['error', {
       ignoreTemplateLiterals: true,
       ignoreComments: true,
+      ignoreStrings: true,
+      ignorePattern: '^import |^export ', 
     }],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,

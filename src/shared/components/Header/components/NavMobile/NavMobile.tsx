@@ -1,5 +1,5 @@
 import './NavMobile.scss';
-import { menuXs } from '../../types/menuXS';
+import { MenuXs } from '../../types/menuXS';
 import { navigation } from '../../utils/navigation';
 
 import classNames from 'classnames';
@@ -8,7 +8,7 @@ import { useFavorites } from '../../../../context/Favorites/FavoritesContext';
 import { useCart } from '../../../../context/Cart/CartContext';
 import { getLinksClass } from '../../hooks/getLinks';
 
-export const NavMobile = ({ isVisible, onVisible }: menuXs) => {
+export const NavMobile = ({ isVisible, onVisible }: MenuXs) => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
 
@@ -36,7 +36,9 @@ export const NavMobile = ({ isVisible, onVisible }: menuXs) => {
       <footer className="footer-nav-mobile">
         <NavLink
           to={'/favorites'}
-          className={({ isActive }) => getLinksClass({ isActive })}
+          className={({ isActive }) =>
+            classNames(getLinksClass({ isActive }), 'favorite-link')
+          }
           onClick={() => {
             onVisible(0);
           }}

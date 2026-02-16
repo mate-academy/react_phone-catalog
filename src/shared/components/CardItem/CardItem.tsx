@@ -67,7 +67,9 @@ export const CardItem = ({
                 'cart-added': isCart(cardItem.id),
               })}
               onClick={() => {
-                isCart(cardItem.id) ? '' : addToCart(cardItem);
+                if (!isCart(cardItem.id)) {
+                  addToCart(cardItem);
+                }
               }}
             >
               {isCart(cardItem.id) ? 'Added to cart' : 'Add to cart'}
@@ -77,9 +79,11 @@ export const CardItem = ({
                 'card-add-fav-added': isFavorite(cardItem.id),
               })}
               onClick={() => {
-                isFavorite(cardItem.id)
-                  ? removeFromFavorites(cardItem.id)
-                  : addToFavorites(cardItem);
+                if (isFavorite(cardItem.id)) {
+                  removeFromFavorites(cardItem.id);
+                } else {
+                  addToFavorites(cardItem);
+                }
               }}
             >
               {isFavorite(cardItem.id) ? (

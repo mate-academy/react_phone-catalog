@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getApi } from '../../../shared/api/api';
 import { ProductPage } from '../../../shared/types/ProductPage';
 import { CardList } from '../../../shared/components/CardList';
@@ -7,16 +7,15 @@ import { LoaderCards } from '../../../shared/components/LoaderCards';
 import dataPerPage from './api/handleChangeValues.json';
 import dataSortValue from './api/selectSortValue.json';
 import classNames from 'classnames';
-import './Product.scss';
 import '../globals.scss';
 
 import {
-  urlParams,
   getTotalPages,
   onNavignationLinks,
   handleChangeItems,
   PrevOrNextItems,
   paginationDigitLink,
+  urlParamsFunctionUpdate,
 } from '../utils/pagination';
 import { ActionBtn } from '../components/ActionBtn';
 import { sortItems } from '../utils/sort';
@@ -36,8 +35,14 @@ export const Product = () => {
   const [isOpenSort, setIsOpenSort] = useState<boolean>(false);
   const [sortValue, setSortValue] = useState<number | string>('Newest');
   const [sortLabel, setSortLabel] = useState<string>('Newest');
-  const [currentPage,setCurrentPage] = useState<number>((Number(currentPageUrl) === null || Number(currentPageUrl)) === 0 ? 1 : Number(currentPageUrl)  );
-  const [itemsPerPage, setItemsParPage] = useState<number | string>(Number(itemsPePageUrl) || 'all');
+  const [currentPage, setCurrentPage] = useState<number>(
+    (Number(currentPageUrl) === null || Number(currentPageUrl)) === 0
+      ? 1
+      : Number(currentPageUrl),
+  );
+  const [itemsPerPage, setItemsParPage] = useState<number | string>(
+    Number(itemsPePageUrl) || 'all',
+  );
   const [startItem, setStartItem] = useState<number>(0);
   const [endItem, setEndItem] = useState<number>(16);
   const [error, setError] = useState<string>('');
@@ -45,23 +50,30 @@ export const Product = () => {
   const location = useLocation();
 
   const currentPath = location.pathname;
-  const prevPathRef = useRef(currentPath);
 
   let itemCategory: string = '';
 
   /* load all products */
-  if(currentPath === '/phones') {itemCategory = 'phones';}
-  if(currentPath === '/accessories') {itemCategory = 'accessories';}
-  if(currentPath === '/tablets') {itemCategory = 'tablets';}
+  if (currentPath === '/phones') {
+    itemCategory = 'phones';
+  }
+
+  if (currentPath === '/accessories') {
+    itemCategory = 'accessories';
+  }
+
+  if (currentPath === '/tablets') {
+    itemCategory = 'tablets';
+  }
 
   useEffect(() => {
     getApi<ProductPage[]>('/products.json')
       .then(products => {
         setPhonesItems(products);
       })
-      .catch(error => {
+      .catch(errorMsg => {
         setError('Something went worng');
-        throw new error;
+        throw new errorMsg();
       })
       .finally(() => {
         setLoading(false);
@@ -70,13 +82,17 @@ export const Product = () => {
   /* end of load all products */
 
   /* filter all phone's articles  */
-  let phonesItemsList = phonesItems.filter(item => item.category === `${itemCategory}`);
+  const phonesItemsList = phonesItems.filter(
+    item => item.category === `${itemCategory}`,
+  );
   /* end of  filter all phone's articles  */
-  let filteredItemsList :ProductPage[];
+  let filteredItemsList: ProductPage[];
 
-  if(query){
-    filteredItemsList = phonesItemsList.filter(item => item.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
-  }else{
+  if (query) {
+    filteredItemsList = phonesItemsList.filter(item =>
+      item.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+    );
+  } else {
     filteredItemsList = phonesItemsList;
   }
   // let filteredItemsList = phonesItems.filter(item => item.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
@@ -85,8 +101,9 @@ export const Product = () => {
 
   /* calculate of total pages for pagination  */
   const totalPages = useMemo(
-    () => getTotalPages({ items: filteredItemsList, cardsPerPage: itemsPerPage }),
-    [filteredItemsList.length, itemsPerPage]
+    () =>
+      getTotalPages({ items: filteredItemsList, cardsPerPage: itemsPerPage }),
+    [filteredItemsList.length, itemsPerPage],
   );
   const countLInk: number[] = totalPages;
   /* end of calculate of total pages for pagination  */
@@ -103,43 +120,49 @@ export const Product = () => {
       urlParams: searchParams,
       onUrlParams: setSearchParams,
       items: filteredItemsList,
-      urlParamsFunction: urlParams 
+      urlParamsFunction: urlParamsFunctionUpdate,
     });
     setSortLabel('Newest');
-    if(sort){
-      if(sort === 'price') {
-setSortLabel('Cheapest');  
-}
+    if (sort) {
+      if (sort === 'price') {
+        setSortLabel('Cheapest');
+      }
 
-      if(sort === 'title') {
-setSortLabel('Alphabetically');
-}
+      if (sort === 'title') {
+        setSortLabel('Alphabetically');
+      }
 
-      if(sort === 'price') {
-setSortLabel('Newest'); 
-}
+      if (sort === 'price') {
+        setSortLabel('Newest');
+      }
     }
 
     sortItems({
       items: filteredItemsList,
-      sortField: sort
+      sortField: sort,
     });
-    if (
-      !searchParams.has('perPage') &&
-              filteredItemsList.length > 0
-    ) {
+    if (!searchParams.has('perPage') && filteredItemsList.length > 0) {
       setItemsParPage(filteredItemsList.length);
     }
-  }, [currentPage,startItem,endItem, itemsPerPage,filteredItemsList.length, totalPages.length, searchParams, setSearchParams]);
+  }, [
+    currentPage,
+    startItem,
+    endItem,
+    itemsPerPage,
+    filteredItemsList.length,
+    totalPages.length,
+    searchParams,
+    setSearchParams,
+  ]);
   /* end of useEffect for all cchange parametres in real time */
   sortItems({
     items: filteredItemsList,
-    sortField: sort
+    sortField: sort,
   });
 
   /** calculate of last Page form array**/
-  /** reset filtres when page while page changing **/   
-  const lastPage = countLInk[countLInk.length-1];
+  /** reset filtres when page while page changing **/
+  const lastPage = countLInk[countLInk.length - 1];
   /** end of calculate of last Page form array* */
 
   /** calculation of pagination links slice**/
@@ -148,7 +171,8 @@ setSortLabel('Newest');
   /** end of calculation of pagination links slice**/
 
   /** Calculationg for select Change**/
-  const selectValue = itemsPerPage === filteredItemsList.length ? 'all' : itemsPerPage;
+  const selectValue =
+    itemsPerPage === filteredItemsList.length ? 'all' : itemsPerPage;
 
   /* action btns values */
   const handleChangeValues = dataPerPage;
@@ -163,7 +187,7 @@ setSortLabel('Newest');
       items: filteredItemsList,
       actuallyPage: currentPage,
       urlParamsString: searchParams,
-      onUrlParamsString: setSearchParams
+      onUrlParamsString: setSearchParams,
     });
   };
   /** End of calculationg for select Change**/
@@ -173,29 +197,33 @@ setSortLabel('Newest');
     <section className="items">
       <div className="wrapper">
         <div className="grid">
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <Link to={'/'}>
               <img src="/img/shared/Home.svg" alt="" />
-              <img src="/img/shared/next-breadcrumbs.svg" 
-                alt="" 
-                className='next-breadcrumbs' 
-              />  
+              <img
+                src="/img/shared/next-breadcrumbs.svg"
+                alt=""
+                className="next-breadcrumbs"
+              />
             </Link>
-            <Link to={`/${itemCategory}`}
-            >
+            <Link to={`/${itemCategory}`}>
               {itemCategory}
-              <img src="/img/shared/next-breadcrumbs.svg" 
-                alt="" 
-                className='next-breadcrumbs' />
+              <img
+                src="/img/shared/next-breadcrumbs.svg"
+                alt=""
+                className="next-breadcrumbs"
+              />
             </Link>
           </div>
-          <h1 className='products-title'>
+          <h1 className="products-title">
             {itemCategory}
-            <span className='items-length'>{filteredItemsList.length} models </span>
+            <span className="items-length">
+              {filteredItemsList.length} models{' '}
+            </span>
           </h1>
           <div className="actions-btns-wrapper">
-            <div className='sort-by'>
-              <ActionBtn 
+            <div className="sort-by">
+              <ActionBtn
                 itemsValue={selectSortValue}
                 label={'Sort by'}
                 value={sortValue}
@@ -208,16 +236,16 @@ setSortLabel('Newest');
                 onUrlStr={setSearchParams}
                 btnLabel={sortLabel}
                 onBtnLabel={setSortLabel}
-              />    
+              />
             </div>
             <div className="product-sort-by">
-              <ActionBtn 
+              <ActionBtn
                 itemsValue={handleChangeValues}
                 label={'Items on page'}
                 value={selectValue}
-                onSortValue={(item) => {
+                onSortValue={item => {
                   handleSelectChange({
-                    target: { value: item }
+                    target: { value: item },
                   } as React.ChangeEvent<HTMLSelectElement>);
                 }}
                 isSort={isOpen}
@@ -228,28 +256,44 @@ setSortLabel('Newest');
             </div>
           </div>
 
-          {loading && 
+          {loading && (
             <section className="loader">
-                  <LoaderCards />
-            </section>}
+              <LoaderCards />
+            </section>
+          )}
           {!loading && filteredItemsList.length > 0 ? (
             <CardList
-              productsList={filteredItemsList.slice(startItem,endItem)}
+              productsList={filteredItemsList.slice(startItem, endItem)}
               isFullPrice={true}
-            />  
+            />
           ) : !loading && phonesItemsList.length === 0 ? (
-            <p className='error'>There are no {itemCategory}</p>
+            <p className="error">There are no {itemCategory}</p>
           ) : !loading && query && filteredItemsList.length === 0 ? (
-            <p className='error'>There are no {itemCategory} matching the query</p>
+            <p className="error">
+              There are no {itemCategory} matching the query
+            </p>
           ) : null}
 
-          {error !== '' &&(
+          {error !== '' && (
             <>
-              <p className='error'>{error}</p>
-              <button onClick={() => window.location.reload()} className='reload-btn orange-btn'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+              <p className="error">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="reload-btn orange-btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-arrow-clockwise"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"
+                  />
+                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
                 </svg>
                 Reload
               </button>
@@ -257,10 +301,10 @@ setSortLabel('Newest');
           )}
           {currentPageUrlHas && (
             <section className="pagination-products">
-              <div className='pagination-wrapper'>
+              <div className="pagination-wrapper">
                 <button
                   className={classNames('prev-btn prev-btn-pagination', {
-                    'disabled-btn' : currentPage===1
+                    'disabled-btn': currentPage === 1,
                   })}
                   onClick={() => {
                     PrevOrNextItems({
@@ -271,23 +315,24 @@ setSortLabel('Newest');
                       onUrlParamsString: setSearchParams,
                       actuallyPage: currentPage,
                       updatePerPage: itemsPerPage,
-                      isNext: false
+                      isNext: false,
                     });
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  disabled={currentPage===1}
-                >
-                </button>  
-                <ul className='pagination'>
-                  {countLInk.slice(startDigit,endDigit).map((item, index) => (
-                    <li key={item}
-                      className={classNames('',{
-                        'active-li' : currentPage === item
+                  disabled={currentPage === 1}
+                ></button>
+                <ul className="pagination">
+                  {countLInk.slice(startDigit, endDigit).map(item => (
+                    <li
+                      key={item}
+                      className={classNames('', {
+                        'active-li': currentPage === item,
                       })}
                     >
-                      <Link 
+                      <Link
                         to={'#0'}
-                        onClick={(e)=> {
+                        className="pagination-links"
+                        onClick={e => {
                           e.preventDefault();
                           paginationDigitLink({
                             link: item,
@@ -296,8 +341,8 @@ setSortLabel('Newest');
                             urlParamsString: searchParams,
                             onUrlParamsString: setSearchParams,
                             actuallyPage: currentPage,
-                            updatePerPage: itemsPePageUrl ? +itemsPePageUrl : 16
-                          });
+                            updatePerPage: itemsPePageUrl
+                              ? +itemsPePageUrl
                               : 16,
                           });
                         }}
@@ -306,13 +351,13 @@ setSortLabel('Newest');
                       </Link>
                     </li>
                   ))}
-                </ul> 
+                </ul>
                 <button
                   // to={'#'}
                   className={classNames('next-btn next-btn-pagination', {
-                    'disabled-btn-without-rotate' : currentPage === lastPage
+                    'disabled-btn-without-rotate': currentPage === lastPage,
                   })}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault();
                     PrevOrNextItems({
                       onStartItem: setStartItem,
@@ -322,12 +367,12 @@ setSortLabel('Newest');
                       onUrlParamsString: setSearchParams,
                       actuallyPage: currentPage,
                       updatePerPage: itemsPerPage,
-                      isNext: true
+                      isNext: true,
                     });
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   disabled={currentPage === lastPage}
-                ></button>  
+                ></button>
               </div>
             </section>
           )}

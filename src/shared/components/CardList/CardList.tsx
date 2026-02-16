@@ -1,6 +1,5 @@
 import { ProductPage } from '../../types/ProductPage';
 import { CardItem } from '../CardItem';
-import './CardList.scss';
 
 export const CardList = ({
   productsList,

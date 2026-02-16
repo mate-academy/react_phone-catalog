@@ -1,6 +1,3 @@
-import './Items.scss';
-
 export const Items = () => {
-  return(
-    <h1>Items</h1>
-  );
+  return <h1>Items</h1>;
+};

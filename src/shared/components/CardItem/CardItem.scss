@@ -4,7 +4,7 @@
         border-radius: 8px;
 
             &:hover{
-                box-shadow: 0px 2px 15px 0px #0000001A;
+                box-shadow: 0 2px 15px 0 #0000001A;
             }
 
             &-img{
@@ -18,7 +18,7 @@
                 font-size: 14px;
                 line-height: 21px;
                 letter-spacing: 0%;
-                padding: 4px 0 8px 0;
+                padding: 4px 0 8px;
                 position: relative;
                 height: 63px;
             }
@@ -27,14 +27,14 @@
                 bottom: 0;
             }
             &-price{
-                font-family: 'MontBold';
+                font-family: MontBold, sans-serif;
                 font-size: 22px;
                 line-height: 140%;
                 letter-spacing: 0%;
                 margin-bottom: 8px;
             }
             &-full-price{
-                font-family: 'Mont';
+                font-family: Mont,sans-serif;
                 font-weight: 600;
                 font-size: 22px;
                 line-height: 100%;
@@ -53,7 +53,7 @@
                 flex-wrap: wrap;
                 
                 &-line{
-                    font-family: 'Mont';
+                    font-family: Mont, sans-serif;
                     font-weight: 700;
                     font-size: 12px;
                     width: 100%;
@@ -88,7 +88,7 @@
                 cursor: pointer;
 
                     &:hover{
-                        box-shadow: 0px 3px 13px 0px #17203166;
+                        box-shadow: 0 3px 13px 0 #17203166;
                     }
 
                     &-fav{

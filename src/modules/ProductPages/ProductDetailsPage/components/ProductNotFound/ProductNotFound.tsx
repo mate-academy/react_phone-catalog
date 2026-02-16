@@ -15,7 +15,8 @@ export const ProductNotFound = () => {
 
         <h1 className="product-not-found__title">Product not found</h1>
         <p className="product-not-found__message">
-          The product you are looking for doesn't exist or has been removed.
+          The product you are looking for doesn&apos;t exist or has been
+          removed.
         </p>
         <div className="product-not-found__actions">
           <Link to="/" className="product-not-found__button">

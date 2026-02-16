@@ -52,16 +52,17 @@
 
             &-right-side{
                 display: none;
-     
+                
+                &-cart-link, &-cart-link img{
+                    width: 16px;
+                    height: 16px;
+                }
               
                 .mobile-search &-cart-link{
                     display: flex;
                 }
 
-                &-cart-link, &-cart-link img{
-                    width: 16px;
-                    height: 16px;
-                }
+
                     
             }
 
@@ -82,17 +83,14 @@
         position: absolute;
         margin-top: -15px;
         margin-left: 10px;
-        justify-self: center;
-        align-self: center;
+        place-self: center;
         width: 14px;
         height: 14px;
         border-radius: 50px;
         background: #476DF4;
         border: 1px solid#fff;
-        text-align: center;
         font-weight: 700;
         font-size: 9px;
-        leading-trim: NONE;
         letter-spacing: 0%;
         line-height: 15px;
         text-align: center;
@@ -133,29 +131,6 @@
                 padding-right: 0;
                 margin: 0;
 
-                &-form{
-                    // display: flex;
-                    // align-items: center;
-                    // position: relative;
-                    // margin-right: 10px;
-                    // margin-left: 15px;
-                   
-                    // &-input{
-                    //     width: 100%;
-                    //     height: 50%;
-                    //     padding-left: 5px;
-                    //     border: 1px solid #E2E6E9;
-                    //     border-radius: 10px;
-                    //     color: #0F0F11;
-                    //     overflow: hidden;
-                    //     text-overflow: ellipsis;
-                    //     white-space: nowrap;
-                    //     display: inline-block;
-                    // }
-                    // &-input:focus{
-                    //     outline: 1px solid#0F0F11;
-                    // }
-                }
                 &-wrapper{
                     display: flex;
                     min-width: 0;
@@ -166,7 +141,7 @@
                     grid-column: span 9;
                 }
                 &-list li a {
-                    font-family: 'MontBold';
+                    font-family: MontBold, sans-serif;
                     font-size: 12px;
                     line-height: 11px;
                     letter-spacing: 4%;
@@ -231,7 +206,7 @@
                 }
 
                 &-list li a {
-                    font-family: 'MontBold';
+                    font-family: MontBold, sans-serif;
                     font-size: 12px;
                     line-height: 11px;
                     letter-spacing: 4%;
@@ -259,9 +234,11 @@
             
         }
 }
+
 @media only screen and (min-width:1440px){
     
     .header{
+     
         &-desktop{
             
             &-logo-link{

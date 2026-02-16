@@ -27,8 +27,7 @@
         grid-column: span 4;
         display: flex;
         gap: 16px;
-        overflow-x: auto;
-        overflow-y: hidden;
+        overflow: auto hidden;
         padding: 0;
         scroll-behavior: smooth;
             &::-webkit-scrollbar {
@@ -36,7 +35,7 @@
             }
     }
     .home-section-title{
-        font-family: 'MontBold', sans-serif;
+        font-family: MontBold, sans-serif;
         font-size: 22px;
         line-height: 140%;
         letter-spacing: 0%;

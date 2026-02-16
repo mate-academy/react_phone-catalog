@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react';
 import { ProductPage } from '../../types/ProductPage';
 import { useStorageCollection } from '../../hooks/useLocalStorage/useStorageCollection';
-import { ProductType } from '../../types/ProductType';
 
 type FavoritesContextType = {
   favorites: ProductPage[];
