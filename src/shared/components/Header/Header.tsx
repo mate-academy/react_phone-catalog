@@ -99,7 +99,7 @@ export const Header = () => {
           >
             <img
               src={
-                isHover ? '/img/header/fav-hover.svg' : '/img/header/fav.svg'
+                isHover ? 'img/header/fav-hover.svg' : 'img/header/fav.svg'
               }
               alt=""
             />
