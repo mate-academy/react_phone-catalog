@@ -62,8 +62,7 @@ export const Header = () => {
     >
       <section className="header-desktop">
         <Link
-          to={'https://zakandre.github.io/react_phone-catalog/'}
-          onClick={e => e.preventDefault()}
+          to={'#/'}
           className="header-desktop-logo-link"
         >
           <img src="img/shared/logo.svg" alt="" />
@@ -129,8 +128,10 @@ export const Header = () => {
             <Link
               to={'/'}
               className="header-desktop-mobile-menu-link"
-              onClick={() => setIsOpen(isOpen === 0 ? 1 : 0)}
-            >
+              onClick={(e) => { e.preventDefault();
+                                setIsOpen(isOpen === 0 ? 1 : 0);
+                      }}
+             >
               <img
                 src={`${getIcon({ isOpen })}`}
                 alt=""
