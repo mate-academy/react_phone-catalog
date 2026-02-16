@@ -17,6 +17,8 @@
       "img/phones/apple-iphone-11/black/03.webp",
       "img/phones/apple-iphone-11/black/04.webp"
     ],
+
+
     "description": [
       {
         "title": "And then there was Pro",
@@ -38,6 +40,9 @@
         ]
       }
     ],
+
+    "scree": "apple-iphone-xr-128gb-white",
+
     "screen": "6.1' IPS",
     "resolution": "1792x828",
     "processor": "Apple A13 Bionic",
@@ -5644,6 +5649,7 @@
     "zoom": "Digital 5x, Optical 2x",
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
+
   {
     "id": "apple-iphone-14-pro-128gb-gold",
     "category": "phones",

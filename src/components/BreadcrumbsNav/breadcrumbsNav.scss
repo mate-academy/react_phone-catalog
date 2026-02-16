@@ -1,0 +1,41 @@
+.breadcrumbsNav-block {
+  .breadcrumbs-navigation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 0;
+
+    @include on-tablet {
+      padding: 24px 0 40px;
+    }
+
+    .model-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  }
+
+  .breadcrumbs-link {
+    text-decoration: none;
+    color: $text-main-color;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .button-back-block {
+    display: flex;
+    padding-bottom: 16px;
+    gap: 4px;
+  }
+
+  .back-text {
+    color: $text-not-active-color;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $text-main-color;
+    }
+  }
+}

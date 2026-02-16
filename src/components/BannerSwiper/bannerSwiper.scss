@@ -1,0 +1,107 @@
+.slider-container {
+  display: flex;
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    padding-right: 24px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+}
+
+.swiper-buttons {
+  display: none;
+
+  background: linear-gradient(
+    to top right,
+    $border-hover-color 30%,
+    $main-bg-color 75%
+  );
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    width: 32px;
+    border-radius: 25px;
+    border: 1px solid $border-hover-color;
+    background-color: $page-body-bg-color;
+    transition: all 0.3s ease;
+  }
+
+  .icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background-color: $main-bg-color;
+
+    .icon {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.bannerSwiper {
+  width: 100%;
+  height: 320px;
+
+  @include on-tablet {
+    height: 189px;
+    margin: 0 19px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+    margin: 0 16px;
+  }
+
+  .card {
+    height: 100%;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+  }
+}
+
+.pagination-container {
+  height: 24px;
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 4px;
+    bottom: 0;
+    z-index: 1;
+
+    .custom-bullet {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 14px;
+        height: 4px;
+        background-color: $border-color;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+      }
+
+      &:hover::before {
+        background-color: $text-not-active-color;
+      }
+
+      &.custom-bullet-active::before {
+        background-color: $text-main-color;
+      }
+    }
+  }
+}

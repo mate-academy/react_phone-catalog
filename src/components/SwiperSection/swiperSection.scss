@@ -1,0 +1,80 @@
+.swiper-section-wrapper {
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 0px;
+  }
+
+  .section-title {
+    width: 50%;
+  }
+
+  .title-swiper-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      padding-right: 24px;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+    }
+  }
+
+  .swiperSection {
+    display: flex;
+
+    .swiper-slide {
+      width: 212px;
+      height: 439px;
+
+      @include on-tablet {
+        width: 237px;
+        height: 512px;
+      }
+
+      @include on-desktop {
+        width: 272px;
+        height: 506px;
+      }
+    }
+  }
+}
+
+.mini-swiper {
+  display: flex;
+  width: 80px;
+  height: 32px;
+  gap: 16px;
+
+  .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+
+    border-radius: 50%;
+    border: 1px solid $border-hover-color;
+    transition: all 0.3s ease;
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
+  }
+
+  .arrow--disabled {
+    opacity: 0.3;
+    cursor: auto;
+
+    img {
+      filter: grayscale(100%);
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+
+  .p-buttons {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: $main-bg-color;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+    }
+  }
+
+  .pagination-step-button {
+    border: 1px solid $border-hover-color;
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
+  }
+
+  .paginations-page-button {
+    border: 1px solid $border-color;
+  }
+
+  .pagination-step-button:disabled {
+    opacity: 0.5;
+  }
+
+  .is-active {
+    border-color: $border-hover-color;
+    color: $text-main-color;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.6);
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
+  }
+
+  .not-active {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
