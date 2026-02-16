@@ -26,7 +26,7 @@ export const CardItem = ({
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <img src={`/${cardItem.image}`} alt="" className="card-img" />
+            <img src={`${cardItem.image}`} alt="" className="card-img" />
           </Link>
           <div className="card-middle">
             <h6 className="card-name">
