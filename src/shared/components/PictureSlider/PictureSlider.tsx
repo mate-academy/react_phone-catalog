@@ -9,7 +9,7 @@ export const PictureSlider = ({
   ShowDotsImg,
 }: Omit<Slider, 'start' | 'end'>) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const start = useRef<number | null>(null); // ← Créées localement
+  const start = useRef<number | null>(null); 
   const end = useRef<number | null>(null);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export const PictureSlider = ({
           <img src="img/home/slider/prev.svg" alt="" />
         </button>
         <img
-          src={`/${imgs[currentIndex]}`}
+          src={`${imgs[currentIndex]}`}
           alt=""
           className={classNames('slider-main-content-images', {
             'main-product-img': ShowDotsImg,
