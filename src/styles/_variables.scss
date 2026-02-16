@@ -21,10 +21,21 @@ $desktop-column-width: 32px;
 // Adding padding: 1136px + 2 * 16px (optional side padding)
 $desktop-container-max: 1200px;
 
-// Colors (базові, можна розширити)
-$color-primary: #0071e3;
-$color-text: #1d1d1f;
-$color-text-secondary: #6e6e73;
-$color-border: #d2d2d7;
-$color-background: #fff;
-$color-surface: #f5f5f7;
+// Dark Theme Colors
+$color-background: #0f1121; // Black - main background
+$color-surface: #161827; // Surface 1 - elevated content
+$color-surface-2: #323542; // Surface 2 - more elevated
+$color-elements: #3b3e4a; // Elements
+$color-border: #3b3e4a; // Borders/dividers
+$color-icons: #4a4d58; // Icons
+$color-secondary: #75767f; // Secondary elements
+
+// Text colors
+$color-text: #f1f2f9; // White - primary text
+$color-text-secondary: #75767f; // Secondary text
+
+// Accent colors
+$color-primary: #e8e9ee; // Accent
+$color-green: #27ae60; // Green
+$color-red: #eb5757; // Red
+
