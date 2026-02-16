@@ -1,0 +1,16 @@
+.button {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: #161827;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #F1F2F9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--active {
+        background-color: #905BFF;
+    }
+}
