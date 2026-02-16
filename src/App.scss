@@ -1,1 +1,58 @@
-// not empty
+@import './utils/fonts';
+@import './utils/variables';
+@import './utils/mixins';
+@import './components/Header/Header.module';
+@import './components/Menu/Menu.module.scss';
+@import './components/Footer/Footer.module';
+@import './components/HomePage/HomePage.module.scss';
+@import './components/NotFoundPage/NotFoundPage.module.scss';
+@import './components/Loader/Loader.module.scss';
+@import './components/BannerSlider/BannerSlider.module.scss';
+@import './components/ErrorMessage/ErrorMessage.module.scss';
+@import './components/ProductSlider/ProductSlider.module.scss';
+@import './components/ProductSliderCard/ProductSliderCard.module.scss';
+@import './components/CartPage/CartPage.module.scss';
+@import './components/CartItem/CartItem.module.scss';
+@import './components/FavoritesPage/FavoritesPage.module.scss';
+@import './components/ProductCard/ProductCard.module.scss';
+@import './components/ProductsList/ProductsList.module.scss';
+@import './components/Pagination/Pagination.module.scss';
+@import './components/PhonesPage/PhonesPage.module.scss';
+@import './components/AccessoriesPage/AccessoriesPage.module.scss';
+@import './components/TabletsPage/TabletsPage.module.scss';
+@import './components/ProductDetailsPage/ProductDetailsPage.module.scss';
+
+
+
+:root {
+  --bg-color: #fafbfc;
+  --color: #0F0F11;
+  --card-bg: #fff
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+
+  background-color: var(--bg-color);
+  color: var(--color);
+  transition: background-color $effect-duration;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
