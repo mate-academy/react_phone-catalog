@@ -11,13 +11,13 @@ import { Category } from '../types/categories';
 export async function getProducts(category?: Category): Promise<Product[]> {
   if (category) {
     try {
-      return await fetchJSON<Product[]>(`/api/${category}.json`);
+      return await fetchJSON<Product[]>(`api/${category}.json`);
     } catch (err) {
       // fallback to master file
     }
   }
 
-  const all = await fetchJSON<Product[]>('/api/products.json');
+  const all = await fetchJSON<Product[]>('api/products.json');
 
   return category ? all.filter(p => p.category === category) : all;
 }
@@ -32,7 +32,7 @@ export async function getProductDetails(
   }
 
   try {
-    const list = await fetchJSON<Product[]>(`/api/${category}.json`);
+    const list = await fetchJSON<Product[]>(`api/${category}.json`);
     const found = list.find(
       p => p.id === idOrItemId || (p as any).itemId === idOrItemId,
     );

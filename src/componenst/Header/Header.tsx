@@ -65,7 +65,7 @@ const Header: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.header__wrapper}>
           <Link to="/" className={styles.header__logo}>
-            <img src="/icons/Logo.svg" alt="Gadget Catalog" />
+            <img src="icons/Logo.svg" alt="Gadget Catalog" />
           </Link>
           <div className={`container ${styles.header__inner}`}>
             <nav className={styles.header__nav} ref={navRef}>
@@ -109,7 +109,7 @@ const Header: React.FC = () => {
                 `${styles.header__action} ${isActive ? styles.active : ''}`
               }
             >
-              <img src="/icons/Favourites (Heart Like).svg" alt="Favourites" />
+              <img src="icons/Favourites (Heart Like).svg" alt="Favourites" />
               {favourites.length > 0 && (
                 <span className={styles.header__badge}>
                   {favourites.length}
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
                 `${styles.header__action} ${isActive ? styles.active : ''}`
               }
             >
-              <img src="/icons/Shopping bag (Cart).svg" alt="Cart" />
+              <img src="icons/Shopping bag (Cart).svg" alt="Cart" />
               {cart.length > 0 && (
                 <span className={styles.header__badge}>{cart.length}</span>
               )}
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
             onClick={toggleMenu}
           >
             <img
-              src={isMenuOpen ? '/icons/Close.svg' : '/icons/Menu.svg'}
+              src={isMenuOpen ? 'icons/Close.svg' : 'icons/Menu.svg'}
               alt={isMenuOpen ? 'Close' : 'Menu'}
             />
           </button>

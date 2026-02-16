@@ -56,7 +56,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           }
           onClick={onClose}
         >
-          <img src="/icons/Favourites (Heart Like).svg" alt="Favourites" />
+          <img src="icons/Favourites (Heart Like).svg" alt="Favourites" />
           {favouritesCount > 0 && (
             <span className={styles.menu__badge}>{favouritesCount}</span>
           )}
@@ -68,7 +68,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           }
           onClick={onClose}
         >
-          <img src="/icons/Shopping bag (Cart).svg" alt="Cart" />
+          <img src="icons/Shopping bag (Cart).svg" alt="Cart" />
           {cartCount > 0 && (
             <span className={styles.menu__badge}>{cartCount}</span>
           )}
