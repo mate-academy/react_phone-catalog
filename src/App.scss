@@ -1,1 +1,35 @@
-// not empty
+@import '../src/styles/fonts';
+@import '../src/styles/reset';
+@import '../src/styles/variables';
+
+.App {
+  font-family: Mont, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    padding-inline: 152px;
+    flex: 1;
+  }
+
+  @media (max-width: 1200px) {
+    &__content {
+      padding-inline: 32px;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    &__content {
+      padding-inline: 24px;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    &__content {
+      padding-inline: 16px;
+    }
+  }
+}

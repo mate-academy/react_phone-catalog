@@ -1,0 +1,42 @@
+@import '../src/styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+
+  &Home {
+    display: flex;
+    align-items: center;
+  }
+
+  &Item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &Arrow {
+    width: 16px;
+    height: 16px;
+    color: #4a4d58;
+  }
+
+  &Link {
+    text-decoration: none;
+    color: $text-color;
+    font-weight: 700;
+    font-size: 12px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $purple-accent-color;
+    }
+  }
+
+  &LinkActive {
+    color: $grey-secondary-color;
+    pointer-events: none;
+  }
+}
