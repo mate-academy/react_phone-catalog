@@ -1,0 +1,210 @@
+@media only screen and (min-width:320px){
+    .cart{
+        &-go-back{
+            margin-top: 24px;
+        }
+    }
+    .added-items{
+        grid-column: span 4;
+        display: flex;
+        flex-direction: column;
+        
+        &-total{
+            border: 1px solid#E2E6E9;
+            border-radius: 16px;
+            padding: 24px;
+            height: fit-content;
+
+            &-btn{
+                width: 100%;
+                margin-top: 16px;
+            }
+        }
+        
+        &-total p{
+            font-family: 'MontBold';
+            font-size: 32px;
+            line-height: 41px;
+            letter-spacing: -1%;
+            text-align: center;
+            color: #0F0F11;
+            border-bottom: 1px solid#E2E6E9;
+            padding-bottom: 16px;
+        }
+        
+        &-total p span{
+            font-family: 'Mont';
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            letter-spacing: 0%;
+            text-align: center;
+            color: #89939A;
+            display: block;
+        }
+    }
+    
+    .added-item{
+        border: 1px solid#E2E6E9;
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 16px;
+
+        &-left-info{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-self: center;
+        }
+
+        &-left-info h4{
+            width: 60%;
+            align-self: anchor-center;
+            text-align: left;
+        }
+
+        &-close{
+            background: none;
+            border: 0;
+            width: fit-content;
+                cursor: pointer;
+
+        }
+
+        &-image{
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .added-item-right {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+        
+        &-action-counter{
+            &-product_counter{
+                padding: 0 14px;
+            }
+             
+            &-btn{
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+
+                &:hover{
+                    border-color:#0F0F11;
+                }
+            }
+                
+            &-img {
+                vertical-align: middle;
+            }
+        }
+
+        &-price{
+            font-family: 'MontBold';
+            font-size: 22px;
+            line-height: 140%;
+        }
+    }
+   .modal-backgorund{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: 4;
+        background: rgba(0,0,0,.7);
+        left: 0;
+        top: 0;
+        cursor: pointer;
+    }
+    .modal-checkout{
+        height: fit-content;
+        border: 1px solid#E2E6E9;
+        border-radius: 16px;
+        padding: 24px;
+        grid-column: span 3;
+        margin: 0 25px;
+        position: absolute;
+        justify-self: center;
+        align-self: center;
+        z-index: 5;
+        background-color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+
+        &-content-text{
+            text-align: center;
+            margin: 15px auto 15px;
+            line-height: 30px;
+
+        }
+
+        &-close{
+            border: 0;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        &-confirm-btn{
+            margin: 0 auto;
+        }
+    }
+}
+
+@media only screen and (min-width:640px) {
+    .cart{
+        &-go-back{
+            margin-top: 40px;
+        }
+    }
+    .product-title{
+        font-size: 48px;
+    }
+    .added-items{
+        grid-column: span 12;
+    }
+    .added-item{
+        display: flex;
+        justify-content: space-between;
+        
+        &-left{
+            width: 45%;
+        }
+        &-left-info{
+            justify-content: space-around;
+        }
+    }
+
+    .added-item-right{
+         width: 45%;
+    }
+    .modal-checkout{
+        padding: 24px;
+        grid-column: span 10;
+        margin: 0 25px;
+        position: absolute;
+        justify-self: center;
+        align-self: center;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+        .added-items{
+            grid-column: span 24;
+            justify-content: space-between;
+            flex-direction: row;
+          
+            &-total{
+                width: 368px;
+            }
+        }
+        .added-item{
+            width: 752px;
+            margin-right: 16px;
+        }
+
+
+}

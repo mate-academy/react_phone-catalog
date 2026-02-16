@@ -1,0 +1,36 @@
+@media only screen and (min-width:320px){
+    .category-block{
+        grid-column: span 4;
+    }
+    .category-block > a {
+        display: block;
+    }
+    .category-bottom{
+        padding: 24px 0 0 0;
+    }
+    .category-img{
+       width: 100%;
+    }
+
+    .category-title{
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-transform: capitalize;
+        padding-bottom: 4px;
+    }
+
+    .category-count-text{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        color: #89939A;
+    }
+}
+@media only screen and (min-width:1200px){
+    .category-block{
+        grid-column: span 8;
+    }
+}

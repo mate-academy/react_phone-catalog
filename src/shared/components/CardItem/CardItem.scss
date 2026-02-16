@@ -1,0 +1,157 @@
+@media only screen and (min-width:320px){
+    .card{
+        border: 1px solid #E2E6E9;
+        border-radius: 8px;
+
+            &:hover{
+                box-shadow: 0px 2px 15px 0px #0000001A;
+            }
+
+            &-img{
+                height: 129px;
+                width: 148px;
+                object-fit: scale-down;
+                object-position: top center;
+            }
+            &-name{
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 21px;
+                letter-spacing: 0%;
+                padding: 4px 0 8px 0;
+                position: relative;
+                height: 63px;
+            }
+            &-name a{
+                position: absolute;
+                bottom: 0;
+            }
+            &-price{
+                font-family: 'MontBold';
+                font-size: 22px;
+                line-height: 140%;
+                letter-spacing: 0%;
+                margin-bottom: 8px;
+            }
+            &-full-price{
+                font-family: 'Mont';
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 100%;
+                letter-spacing: 0%;
+                text-decoration: line-through;
+                color: #89939A;
+                margin-left: 8px;
+            }
+            &-middle{
+                border-bottom: 1px solid#E2E6E9;
+                padding-bottom: 8px;
+            }
+            &-props{
+                display: flex;
+                margin-top: 16px;
+                flex-wrap: wrap;
+                
+                &-line{
+                    font-family: 'Mont';
+                    font-weight: 700;
+                    font-size: 12px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    color: #0F0F11;
+                    padding-bottom: 8px;
+                
+                    &-title{
+                        color: #89939A;
+                    }
+                }
+            }
+        
+            &-footer{
+                display: flex;
+                justify-content: space-between;
+                padding-top: 8px;
+            }
+            &-add{
+                flex: 1;
+                margin-right: 10px;
+                height: 40px;
+                border-radius: 8px;
+                background: #F86800;
+                border: 0;
+                color: #fff;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 21px;
+                letter-spacing: 0%;
+                cursor: pointer;
+
+                    &:hover{
+                        box-shadow: 0px 3px 13px 0px #17203166;
+                    }
+
+                    &-fav{
+                        background: none;
+                        border-radius: 48px;
+                        border: 1px solid#B4BDC3;
+                        width: 40px;
+                        height: 40px;
+                        cursor: pointer;
+                        
+                        &-added{
+                            border-color: #E2E6E9;
+                        }
+                        
+                        & img{
+                            vertical-align: middle;
+                        }
+                        &:hover{
+                            border-color: #0F0F11;
+                        }
+                    }
+            }
+           
+            &-content-wrapper{
+                padding: 32px;
+            }
+
+            &-img-link{
+                display: flex;
+                justify-content: center;
+            }
+    }
+    .cart-added{
+        background: #fff;
+        color: #F86800;
+        border: 1px solid#E2E6E9;
+    }
+}
+
+@media only screen and (min-width:640px){
+    .card-img {
+        height: 181px;
+        width: 173px;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .items .card-add {
+       width: 71%;
+    }
+}
+
+@media only screen and (min-width:1200px){
+    .card{
+        &-img {
+            height: 196px;
+            width: 207px;
+        }
+        &-content-wrapper{
+            padding-right: 31px;
+        }
+        &-add {
+            width: 160px;
+        }
+    }
+}
