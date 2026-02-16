@@ -21,11 +21,11 @@ export const PictureSlider = ({
   }, [imgs.length]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    start.current = e.targetTouches[0].clientX; 
+    start.current = e.targetTouches[0].clientX;
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    end.current = e.changedTouches[0].clientX; 
+    end.current = e.changedTouches[0].clientX;
     handleSwipe({
       start,
       end,
