@@ -1,3 +1,4 @@
+// tsconfig.json
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
@@ -5,6 +6,7 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "jsx": "react-jsx"
   }
 }
