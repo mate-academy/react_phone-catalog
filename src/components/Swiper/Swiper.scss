@@ -1,0 +1,132 @@
+@use '../../utils/core' as *;
+
+.main__slider {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    margin: 0 24px 64px;
+  }
+
+  @include on-desktop {
+    margin: 0 32px 80px;
+  }
+}
+
+.slider__image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include on-tablet {
+    width: 490px;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+.swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1 !important;
+  z-index: 2;
+}
+
+.swiper {
+  overflow: hidden;
+  width: 320px;
+  height: 320px;
+
+  @include on-tablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include on-desktop {
+    width: 1056px;
+    height: 400px;
+  }
+}
+
+.slider__wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.custom-prev,
+.custom-next {
+  display: none;
+  color: var(--color-text);
+  width: 32px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-surface-2);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-elements);
+    border: 1px solid var(--color-elements);
+  }
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  .swiper-pagination-bullet {
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-surface-2);
+    opacity: 0.7;
+    margin: 0 5px;
+    width: 24px;
+    height: 4px;
+    margin-top: 20px;
+    border-radius: 0;
+
+    &-active {
+      border: 1px solid var(--color-white);
+      background-color: var(--color-white);
+      opacity: 1;
+    }
+  }
+}
+
+html[data-theme='light'] {
+  .custom-prev,
+  .custom-next {
+    background-color: transparent;
+    border: 1px solid var(--color-elements);
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+  .swiper-pagination-bullet {
+    background-color: var(--color-elements);
+    border: 1px solid var(--color-elements);
+
+    &-active {
+      border: 1px solid var(--color-text);
+      background-color: var(--color-text);
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,126 @@
+@use '../../utils/core' as *;
+
+.footer {
+  padding-top: 64px;
+  border: none;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  @include on-desktop {
+    padding-top: 80px;
+  }
+
+  &__container {
+    height: 257px;
+    border-top: 1px solid var(--color-border-hf);
+
+    @include on-tablet {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    margin: 32px 0 32px 16px;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin: 32px 0 32px 24px;
+    }
+
+    @include on-desktop {
+      margin: 32px 0 32px 32px;
+    }
+  }
+
+  &__button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 32px;
+    gap: 16px;
+
+    @include on-tablet {
+      margin: 0 32px 0 0;
+      justify-content: space-between;
+    }
+  }
+
+  &__buttonsName {
+    color: var(--color-secondary);
+
+    @include text-small;
+  }
+
+  &__btn {
+    color: var(--color-white);
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-icon-active);
+    border: 1px solid var(--color-icon-active);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-icon-hover);
+      border: 1px solid var(--color-icon-hover);
+    }
+  }
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 32px 0 0 16px;
+
+  @include on-tablet {
+    margin: 0;
+    gap: 13px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    gap: 106px;
+  }
+}
+
+.footer-item {
+  @include text-uppercase;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  align-items: center;
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+html[data-theme='light'] {
+  .footer__btn {
+    border: 1px solid var(--color-border-hf);
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+
+  .footer-item {
+    color: var(--color-secondary);
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../utils/core' as *;
+
+.Dropdown-control {
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-surface-2);
+  width: 136px;
+  height: 40px;
+  color: var(--color-text);
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--color-icon-hover);
+  }
+
+  &:active {
+    border: 1px solid var(--color-accent-primary);
+  }
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.Dropdown-menu {
+  background-color: var(--color-header-footer);
+  border: 1px solid var(--color-surface-2);
+  width: 136px;
+  color: var(--color-text);
+
+  &:hover {
+    border: 1px solid var(--color-icon-hover);
+  }
+
+  &:active {
+    border: 1px solid var(--color-accent-primary);
+  }
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.Dropdown-option {
+  color: var(--color-secondary);
+}
+
+.Dropdown-option.is-selected {
+  background-color: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+html[data-theme='light'] {
+  .Dropdown-control {
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+
+  .Dropdown-menu {
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+}

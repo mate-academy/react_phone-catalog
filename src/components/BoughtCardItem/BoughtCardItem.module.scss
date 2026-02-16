@@ -1,0 +1,111 @@
+@use '../../utils/core' as *;
+
+.bought {
+  margin-bottom: 17px;
+
+  &__item {
+    display: block;
+    background-color: var(--color-cart);
+    align-items: center;
+    border: 1px solid var(--color-cart-border);
+    padding: 16px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 16px;
+
+    @include on-desktop {
+      padding-bottom: 0;
+    }
+  }
+
+  &__wrapper2 {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__price {
+    @include h3;
+
+    width: 80px;
+    height: 31px;
+    color: var(--color-text);
+  }
+
+  &__deleteIcon {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  &__title {
+    @include text-body;
+
+    color: var(--color-text);
+  }
+
+  &__num {
+    @include text-body;
+
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+  }
+
+  &__button {
+    display: flex;
+    width: 96px;
+    height: 32px;
+  }
+}
+
+.prevBtn {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-icons-disabled);
+  border: 1px solid var(--color-elements);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-icon-hover);
+  }
+}
+
+.nextBtn {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-icon-active);
+  border: 1px solid var(--color-elements);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-icon-hover);
+  }
+}
