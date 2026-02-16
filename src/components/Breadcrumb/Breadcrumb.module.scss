@@ -1,0 +1,33 @@
+.path {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.pageName {
+  margin: 2px 0 0;
+  text-transform: capitalize;
+}
+
+.firstItem {
+  color: var(--color-primary);
+}
+
+.lastItem {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow {
+  transform: rotate(90deg);
+}
+
+.home {
+  max-height: 16px;
+}

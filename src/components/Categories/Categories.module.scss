@@ -1,0 +1,77 @@
+.section {
+  grid-column: 1 / -1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  color: var(--color-primary);
+}
+
+.banner {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+
+  &Phones {
+    background-color: #6d6474;
+    background-image: url('/img/category-phones.webp');
+    background-position: 120px 80px;
+
+    @include on-tablet {
+      background-position: 38px 31.3px;
+      background-size: cover;
+    }
+  }
+
+  &Tablets {
+    background-color: #8d8d92;
+    background-image: url('/img/category-tablets.png');
+    background-position: 15.65px 17.22px;
+    background-size: 200%;
+  }
+
+  &Accessories {
+    background-color: #d53c51;
+    background-image: url('/img/category-accessories.png');
+    background-position: 38.5px 73px;
+    background-size: 190%;
+
+    @include on-tablet {
+      background-position: 20px 50px;
+      background-size: 190%;
+    }
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 #0000001a;
+  }
+}
+
+.counter {
+  color: var(--color-secondary);
+}

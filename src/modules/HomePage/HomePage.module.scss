@@ -1,0 +1,42 @@
+.main {
+  @include page-grid;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-tablet {
+    row-gap: 80px;
+  }
+}
+
+.homeTitle {
+  display: none;
+  color: var(--header-bg-color);
+}
+
+.header {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 32px;
+    padding-top: 8px;
+  }
+
+  @include on-desktop {
+    gap: 56px;
+    padding-top: 32px;
+  }
+}
+
+.title {
+  margin: 0;
+}

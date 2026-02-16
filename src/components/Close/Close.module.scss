@@ -1,0 +1,20 @@
+.close {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+
+  background-color: inherit;
+
+  stroke: var(--color-icons);
+
+  &:hover {
+    stroke: var(--color-primary);
+  }
+}

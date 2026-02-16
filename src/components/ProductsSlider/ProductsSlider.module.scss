@@ -1,0 +1,24 @@
+.section {
+  grid-column: 1/ -1;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  transition: transform 900ms ease-in-out;
+}
