@@ -1,5 +1,5 @@
 // eslint-disable-next-line operator-linebreak
-const API_URL = '../../../../public/api';
+const API_URL = 'api';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
