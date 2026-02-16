@@ -1,0 +1,77 @@
+$topbar-height-mobile: 48px;
+$topbar-height-desktop: 64px;
+$icons-size: 16px;
+$icons-margin-mobile: 16px;
+$icons-margin-desktop: 24px;
+$container-padding-mobile: 16px;
+$container-padding-tablet: 24px;
+$container-padding-desktop: 32px;
+$footer-height-mobile: 270px;
+$footer-height-tablet: 96px;
+$accent: #4219d0;
+$primary: #0f0f11;
+$secondary: #89939a;
+$icons: #b4bdc3;
+$elements: #e2e6e9;
+$hover-and-bg: #fafbfc;
+$white: #fff;
+$mobile-h1: (
+  font-size: 32px,
+  font-weight: 800,
+  line-height: 41px,
+  letter-spacing: -0.01em,
+);
+$tablet-h1: (
+  font-size: 48px,
+  font-weight: 800,
+  line-height: 56px,
+  letter-spacing: -0.01em,
+);
+$mobile-h2: (
+  font-size: 22px,
+  font-weight: 800,
+  line-height: 30.8px,
+);
+$tablet-h2: (
+  font-size: 32px,
+  font-weight: 800,
+  line-height: 41px,
+  letter-spacing: -0.01em,
+);
+$mobile-h3: (
+  font-size: 20px,
+  font-weight: 700,
+  line-height: 25.56px,
+);
+$tablet-h3: (
+  font-size: 22px,
+  font-weight: 800,
+  line-height: 30.8px,
+);
+$mobile-h4: (
+  font-size: 16px,
+  font-weight: 700,
+  line-height: 20.45px,
+);
+$tablet-h4: (
+  font-size: 20px,
+  font-weight: 700,
+  line-height: 25.56px,
+);
+$uppercase: (
+  text-transform: uppercase,
+  font-size: 12px,
+  font-weight: 800,
+  line-height: 11px,
+  letter-spacing: 0.04em,
+);
+$buttons: (
+  font-size: 14px,
+  font-weight: 700,
+  line-height: 21px,
+);
+$body-text: (
+  font-size: 14px,
+  font-weight: 600,
+  line-height: 21px,
+);
