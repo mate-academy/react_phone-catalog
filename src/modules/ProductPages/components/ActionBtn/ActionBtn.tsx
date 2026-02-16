@@ -89,7 +89,7 @@ export const ActionBtn = ({
 
         {!isSort && (
           <img
-            src="/img/shared/next-ordinary.svg"
+            src="img/shared/next-ordinary.svg"
             alt=""
             className="list-closed"
           />
@@ -97,7 +97,7 @@ export const ActionBtn = ({
 
         {isSort && (
           <img
-            src="/img/shared/next-ordinary.svg"
+            src="img/shared/next-ordinary.svg"
             alt=""
             className="list-open"
           />

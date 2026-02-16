@@ -89,9 +89,9 @@ export const ProductDetailsPage = () => {
       <div className="grid">
         <div className="breadcrumbs">
           <Link to={'/'}>
-            <img src="/img/shared/Home.svg" alt="" />
+            <img src="img/shared/Home.svg" alt="" />
             <img
-              src="/img/shared/next-breadcrumbs.svg"
+              src="img/shared/next-breadcrumbs.svg"
               alt=""
               className="next-breadcrumbs"
             />
@@ -99,7 +99,7 @@ export const ProductDetailsPage = () => {
           <Link to={`/${product.category}`} className="breadcrumbs-text">
             {product.category}
             <img
-              src="/img/shared/next-breadcrumbs.svg"
+              src="img/shared/next-breadcrumbs.svg"
               alt=""
               className="next-breadcrumbs"
             />
@@ -107,14 +107,14 @@ export const ProductDetailsPage = () => {
           <Link to={'#'}>
             {product.name}
             <img
-              src="/img/shared/next-breadcrumbs.svg"
+              src="img/shared/next-breadcrumbs.svg"
               alt=""
               className="next-breadcrumbs"
             />
           </Link>
         </div>
         <button onClick={() => navigate(-1)} className="go-back">
-          <img src="/img/chevron-right.svg" alt="" />
+          <img src="img/chevron-right.svg" alt="" />
           Back
         </button>
 

@@ -199,9 +199,9 @@ export const Product = () => {
         <div className="grid">
           <div className="breadcrumbs">
             <Link to={'/'}>
-              <img src="/img/shared/Home.svg" alt="" />
+              <img src="img/shared/Home.svg" alt="" />
               <img
-                src="/img/shared/next-breadcrumbs.svg"
+                src="img/shared/next-breadcrumbs.svg"
                 alt=""
                 className="next-breadcrumbs"
               />
@@ -209,7 +209,7 @@ export const Product = () => {
             <Link to={`/${itemCategory}`}>
               {itemCategory}
               <img
-                src="/img/shared/next-breadcrumbs.svg"
+                src="img/shared/next-breadcrumbs.svg"
                 alt=""
                 className="next-breadcrumbs"
               />

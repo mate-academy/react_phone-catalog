@@ -121,9 +121,9 @@ export const MainControls = ({
               }}
             >
               {isFavorite(favoriteId) ? (
-                <img src="/img/home/card/fav-hover.svg" alt="" />
+                <img src="img/home/card/fav-hover.svg" alt="" />
               ) : (
-                <img src="/img/home/card/fav.svg" alt="" />
+                <img src="img/home/card/fav.svg" alt="" />
               )}
             </button>
           </section>

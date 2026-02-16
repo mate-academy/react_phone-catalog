@@ -63,7 +63,7 @@ export const PictureSlider = ({
           onClick={handlePrevSlide}
           aria-label="Previous slide"
         >
-          <img src="/img/home/slider/prev.svg" alt="" />
+          <img src="img/home/slider/prev.svg" alt="" />
         </button>
         <img
           src={`/${imgs[currentIndex]}`}
@@ -77,7 +77,7 @@ export const PictureSlider = ({
           onClick={handleNextSlide}
           aria-label="Next slide"
         >
-          <img src="/img/home/slider/next.svg" alt="" />
+          <img src="img/home/slider/next.svg" alt="" />
         </button>
       </div>
 

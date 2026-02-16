@@ -30,9 +30,9 @@ export const Favorites = () => {
     <div className="favorites grid">
       <div className="breadcrumbs">
         <Link to={'/'}>
-          <img src="/img/shared/Home.svg" alt="" />
+          <img src="img/shared/Home.svg" alt="" />
           <img
-            src="/img/shared/next-breadcrumbs.svg"
+            src="img/shared/next-breadcrumbs.svg"
             alt=""
             className="next-breadcrumbs"
           />

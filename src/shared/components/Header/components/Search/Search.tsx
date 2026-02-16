@@ -71,7 +71,7 @@ export const Search = ({
           )}
           onClick={e => handleIconSearch(e)}
         >
-          <img src="/img/shared/search.svg" alt="" />
+          <img src="img/shared/search.svg" alt="" />
         </NavLink>
       </div>
     </>

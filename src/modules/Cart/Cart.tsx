@@ -25,7 +25,7 @@ export const Cart = () => {
   return (
     <section className="cart grid">
       <button onClick={() => navigate(-1)} className="go-back cart-go-back">
-        <img src="/img/chevron-right.svg" alt="" />
+        <img src="img/chevron-right.svg" alt="" />
         Back
       </button>
 
@@ -40,7 +40,7 @@ export const Cart = () => {
                     className="added-item-close"
                     onClick={() => removeFromCart(item.id)}
                   >
-                    <img src="/img/cart/Close.svg" alt="" />
+                    <img src="img/cart/Close.svg" alt="" />
                   </button>
                   <img
                     src={`${item.image}`}
@@ -58,7 +58,7 @@ export const Cart = () => {
                     onClick={() => decreaseQuantity(item.id)}
                   >
                     <img
-                      src="/img/cart/Minus.svg"
+                      src="img/cart/Minus.svg"
                       className="added-item-right-action-counter-img"
                       alt=""
                     />
@@ -71,7 +71,7 @@ export const Cart = () => {
                     onClick={() => increaseQuantity(item.id)}
                   >
                     <img
-                      src="/img/cart/Plus.svg"
+                      src="img/cart/Plus.svg"
                       className="added-item-right-action-counter-img"
                       alt=""
                     />
@@ -109,7 +109,7 @@ export const Cart = () => {
               className="modal-checkout-close"
               onClick={() => setIsOpen(false)}
             >
-              <img src="/img/cart/Close.svg" alt="" />
+              <img src="img/cart/Close.svg" alt="" />
             </button>
             <p className="modal-checkout-content-text">
               Checkout is not implemented yet. <br /> Do you want to clear the

@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="footer-section grid">
         <div className="left-section">
           <Link to={'#'}>
-            <img src="/img/shared/logo.svg" alt="" />
+            <img src="img/shared/logo.svg" alt="" />
           </Link>
         </div>
         <div className="middle-section">
@@ -20,7 +20,7 @@ export const Footer = () => {
         <div className="right-section">
           <a href={'#'} className="to-top-btn">
             Back to top
-            <img src="/img/shared/next.svg" alt="" className="next-top" />
+            <img src="img/shared/next.svg" alt="" className="next-top" />
           </a>
         </div>
       </div>

@@ -62,7 +62,7 @@ export const Header = () => {
     >
       <section className="header-desktop">
         <a href="/" className="header-desktop-logo-link">
-          <img src="/img/shared/logo.svg" alt="" />
+          <img src="img/shared/logo.svg" alt="" />
         </a>
         <div className="header-desktop-navigation-wrapper wrapper">
           <nav className="header-desktop-navigation grid">
@@ -108,7 +108,7 @@ export const Header = () => {
             )}
           </NavLink>
           <NavLink to={'/cart'} className="header-desktop-right-side-cart-link">
-            <img src="/img/header/cart.svg" alt="" />
+            <img src="img/header/cart.svg" alt="" />
             {cart.length > 0 && (
               <span className="notifications-counter">{cart.length}</span>
             )}

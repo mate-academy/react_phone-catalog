@@ -26,7 +26,7 @@ export const ProductNotFound = () => {
             onClick={() => navigate(-1)}
             className=" product-not-found__button product-not-found__button--secondary"
           >
-            <img src="/img/chevron-right.svg" alt="" />
+            <img src="img/chevron-right.svg" alt="" />
             Back
           </button>
         </div>

@@ -43,7 +43,7 @@ export const NavMobile = ({ isVisible, onVisible }: MenuXs) => {
             onVisible(0);
           }}
         >
-          <img src="/img/header/fav.svg" alt="" />
+          <img src="img/header/fav.svg" alt="" />
           {favorites.length > 0 && (
             <span className="notifications-counter">{favorites.length}</span>
           )}
@@ -55,7 +55,7 @@ export const NavMobile = ({ isVisible, onVisible }: MenuXs) => {
             onVisible(0);
           }}
         >
-          <img src="/img/header/cart.svg" alt="" />
+          <img src="img/header/cart.svg" alt="" />
           {cart.length > 0 && (
             <span className="notifications-counter">{cart.length}</span>
           )}
