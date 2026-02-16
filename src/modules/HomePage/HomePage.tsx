@@ -23,7 +23,7 @@ export const HomePage = () => {
   ];
 
   useEffect(() => {
-    getApi<ProductPage[]>('/products.json')
+    getApi<ProductPage[]>('/api/products.json')
       .then(data => {
         setProducts(data);
       })

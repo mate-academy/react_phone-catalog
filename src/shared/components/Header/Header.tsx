@@ -98,9 +98,7 @@ export const Header = () => {
             onMouseLeave={() => setIsHover(false)}
           >
             <img
-              src={
-                isHover ? 'img/header/fav-hover.svg' : 'img/header/fav.svg'
-              }
+              src={isHover ? 'img/header/fav-hover.svg' : 'img/header/fav.svg'}
               alt=""
             />
             {favorites.length > 0 && (
