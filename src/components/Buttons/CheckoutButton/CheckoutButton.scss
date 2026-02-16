@@ -1,0 +1,12 @@
+@import '../../../styles/utils/mixins';
+@import '../../../styles/utils/vars';
+
+.checkout-button {
+  width: 100%;
+  flex: 1 1 auto;
+  height: 40px;
+  background-color: $color_accent_primary;
+  color: #fff;
+
+  @include hover('box-shadow', 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+}

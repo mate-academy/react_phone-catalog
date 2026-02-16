@@ -1,0 +1,106 @@
+@import '../utils/vars';
+
+@mixin hover($_property, $_toValue) {
+  & {
+    transition: #{$_property} 0.3s;
+  }
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet-landscape {
+  @media (min-width: $tablet-landscape-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  & {
+    padding-inline: 16px;
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin page-grid {
+  --column: 4;
+
+  & {
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(var(--column), 1fr);
+  }
+
+  @include on-tablet {
+    --column: 12;
+  }
+
+  @include on-desktop {
+    --column: 24;
+
+    grid-template-columns: repeat(var(--column), 32px);
+    max-width: $desktop-width;
+  }
+}
+
+@mixin typography($font-weight, $font-size, $line-height, $letter-spacing) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin h1-desktop {
+  @include typography(800, 48px, 56px, -0.01em);
+}
+
+@mixin h2-desktop {
+  @include typography(800, 32px, 41px, -0.01em);
+}
+
+@mixin h3-desktop {
+  @include typography(800, 22px, 31px, 0);
+}
+
+@mixin h4-desktop {
+  @include typography(700, 20px, 26px, 0);
+}
+
+@mixin h1-mobile {
+  @include typography(800, 32px, 41px, -0.01em);
+}
+
+@mixin h2-mobile {
+  @include typography(800, 22px, 31px, 0);
+}
+
+@mixin h3-mobile {
+  @include typography(700, 20px, 26px, 0);
+}
+
+@mixin h4-mobile {
+  @include typography(700, 16px, 20px, 0);
+}
+
+@mixin uppercase {
+  @include typography(800, 12px, 11px, 0.04em);
+}
