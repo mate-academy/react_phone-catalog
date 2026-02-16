@@ -1,7 +1,16 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
 .footer {
-  padding: 12px 0;
+  padding: 24px 0;
   text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: $color-text-secondary;
+  border-top: 1px solid $color-border;
+  background: $color-surface;
+
+  &__inner {
+    @include container;
+  }
 }
+

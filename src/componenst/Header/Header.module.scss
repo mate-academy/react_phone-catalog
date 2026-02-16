@@ -1,9 +1,14 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
 .header {
-  background: #f8f8f8;
-  border-bottom: 1px solid #e6e6e6;
-  padding: 12px 0;
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+  padding: 16px 0;
 
   &__inner {
+    @include container;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,13 +16,33 @@
 
   &__logo {
     font-weight: 700;
-    color: #770b0b;
+    font-size: 20px;
+    color: $color-primary;
     text-decoration: none;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__nav {
     display: flex;
-    gap: 12px;
+    gap: 20px;
+    align-items: center;
+
+    a {
+      color: $color-text;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
   }
 }
+
 

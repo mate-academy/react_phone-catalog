@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+.productsPage {
+  @include container;
+
+  padding-top: 32px;
+  padding-bottom: 48px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 40px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__grid {
+    @include grid-container;
+
+    // Each product card spans:
+    // Mobile: 2 columns (2 cards per row from 4 columns)
+    // Tablet: 3 columns (4 cards per row from 12 columns)
+    // Desktop: 6 columns (4 cards per row from 24 columns)
+  }
+
+  &__card {
+    @include grid-span(2, 3, 6);
+  }
+
+  &__loading,
+  &__error,
+  &__empty {
+    @include grid-span(4, 12, 24);
+
+    text-align: center;
+    padding: 48px 20px;
+    color: $color-text-secondary;
+  }
+
+  &__error {
+    color: #d32f2f;
+  }
+}

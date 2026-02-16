@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 
 const Footer: React.FC = () => (
   <footer className={styles.footer}>
-    <div className="container">
+    <div className={styles.footer__inner}>
       © {new Date().getFullYear()} Gadget Catalog
     </div>
   </footer>

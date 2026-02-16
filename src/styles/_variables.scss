@@ -1,0 +1,30 @@
+// Breakpoints
+$mobile-min: 320px;
+$mobile-max: 639px;
+$tablet-min: 640px;
+$tablet-max: 1199px;
+$desktop-min: 1200px;
+
+// Grid system
+$mobile-columns: 4;
+$tablet-columns: 12;
+$desktop-columns: 24;
+$mobile-gap: 16px;
+$tablet-gap: 16px;
+$desktop-gap: 16px;
+$mobile-padding: 16px;
+$tablet-padding: 24px;
+$desktop-column-width: 32px;
+
+// Container max width for desktop (fixed)
+// 24 columns * 32px + 23 gaps * 16px = 768px + 368px = 1136px
+// Adding padding: 1136px + 2 * 16px (optional side padding)
+$desktop-container-max: 1200px;
+
+// Colors (базові, можна розширити)
+$color-primary: #0071e3;
+$color-text: #1d1d1f;
+$color-text-secondary: #6e6e73;
+$color-border: #d2d2d7;
+$color-background: #fff;
+$color-surface: #f5f5f7;

@@ -1,0 +1,57 @@
+@import './variables';
+
+// Grid container mixin
+@mixin grid-container {
+  display: grid;
+  width: 100%;
+  padding: 0 $mobile-padding;
+  margin: 0 auto;
+
+  // Mobile: 4 columns, stretched
+  grid-template-columns: repeat($mobile-columns, 1fr);
+  gap: $mobile-gap;
+
+  // Tablet: 12 columns, stretched
+  @media (min-width: $tablet-min) {
+    padding: 0 $tablet-padding;
+    grid-template-columns: repeat($tablet-columns, 1fr);
+    gap: $tablet-gap;
+  }
+
+  // Desktop: 24 columns, fixed width
+  @media (min-width: $desktop-min) {
+    max-width: $desktop-container-max;
+    grid-template-columns: repeat($desktop-columns, $desktop-column-width);
+    gap: $desktop-gap;
+    padding: 0 $tablet-padding;
+  }
+}
+
+// Utility: span columns
+@mixin grid-span($mobile: 4, $tablet: 12, $desktop: 24) {
+  grid-column: span $mobile;
+
+  @media (min-width: $tablet-min) {
+    grid-column: span $tablet;
+  }
+
+  @media (min-width: $desktop-min) {
+    grid-column: span $desktop;
+  }
+}
+
+// Full-width container (no grid, just max-width)
+@mixin container {
+  width: 100%;
+  max-width: $desktop-container-max;
+  margin: 0 auto;
+  padding: 0 $mobile-padding;
+
+  @media (min-width: $tablet-min) {
+    padding: 0 $tablet-padding;
+  }
+
+  @media (min-width: $desktop-min) {
+    padding: 0 $tablet-padding;
+  }
+}
