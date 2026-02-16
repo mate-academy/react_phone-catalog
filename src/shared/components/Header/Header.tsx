@@ -61,9 +61,11 @@ export const Header = () => {
       })}
     >
       <section className="header-desktop">
-        <Link to={"/"} 
-              onClick={(e) => e.preventDefault()}
-            className="header-desktop-logo-link">
+        <Link
+          to={'https://zakandre.github.io/react_phone-catalog/'}
+          onClick={e => e.preventDefault()}
+          className="header-desktop-logo-link"
+        >
           <img src="img/shared/logo.svg" alt="" />
         </Link>
         <div className="header-desktop-navigation-wrapper wrapper">
@@ -125,7 +127,7 @@ export const Header = () => {
           />
           <div className="header-desktop-mobile-menu-wrap">
             <Link
-              to={"/"}
+              to={'/'}
               className="header-desktop-mobile-menu-link"
               onClick={() => setIsOpen(isOpen === 0 ? 1 : 0)}
             >
