@@ -1,0 +1,21 @@
+@import '../../../../styles/global';
+
+.backButton {
+  display: flex;
+  align-items:  center;
+  gap: 4px;
+
+  @include small-text;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    transform: rotate(180deg);
+    color: $primary-color;
+
+  }
+}

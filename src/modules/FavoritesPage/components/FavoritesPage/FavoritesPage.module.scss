@@ -1,0 +1,32 @@
+@import '../../../../styles/global';
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  padding-block: 24px 56px;
+
+  @include on-tablet {
+    padding-block-end: 64px;
+  }
+
+  @include on-desktop {
+    padding-block-end: 80px;
+  }
+
+  &__title {
+    margin-block-end: 8px;
+
+  }
+
+  &__count {
+    margin-block-end: 32px;
+    color: $secondary-color;
+
+    @include body-text;
+
+    @include on-tablet {
+      margin-block-end: 40px;
+    }
+  }
+
+}

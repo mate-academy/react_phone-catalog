@@ -1,0 +1,26 @@
+@import '../../../../styles/global';
+
+.image {
+  display: block;
+  height: auto;
+  max-height: 48px;
+  content: url('/img/logo/logo-mobile.png');
+
+  @include on-tablet {
+    content: url('/img/logo/logo-desktop.png');
+  }
+
+  @include on-desktop {
+    max-height: 64px;
+    width: auto;
+  }
+
+  &--menu {
+    content: url('/img/logo/logo-menu.png');
+
+    @include on-tablet {
+      content: url('/img/logo/logo-desktop.png');
+    }
+  }
+
+}

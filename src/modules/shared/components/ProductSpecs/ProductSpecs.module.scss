@@ -1,0 +1,35 @@
+@import '../../../../styles/global';
+
+.product-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: $secondary-color;
+
+    @include small-text;
+
+    &--bodyText {
+      @include body-text;
+
+      font-weight: 500;
+    }
+  }
+
+  &__value {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15.34px;
+
+    &--bodyText {
+      @include body-text;
+    }
+  }
+}
