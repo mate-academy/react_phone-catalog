@@ -21,11 +21,11 @@ export const PictureSlider = ({
   }, [imgs.length]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    start.current = e.targetTouches[0].clientX; // ✅ Plus d'erreur
+    start.current = e.targetTouches[0].clientX; 
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    end.current = e.changedTouches[0].clientX; // ✅ Plus d'erreur
+    end.current = e.changedTouches[0].clientX; 
     handleSwipe({
       start,
       end,
@@ -98,7 +98,7 @@ export const PictureSlider = ({
             aria-label={`Go to slide ${index + 1}`}
           >
             {ShowDotsImg && (
-              <img src={`/${item}`} className="img-dots" alt={`${item}`} />
+              <img src={`${item}`} className="img-dots" alt={`${item}`} />
             )}
           </button>
         ))}
