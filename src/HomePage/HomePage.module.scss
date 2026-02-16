@@ -1,0 +1,163 @@
+.container {
+  max-width: 639px;
+}
+
+.slider {
+  position: relative;
+}
+
+.slider img {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.slider img:hover {
+  transform: scale(1.1);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dots span.active {
+  background-color: #333;
+}
+
+.header__paragraph {
+  text-align: left;
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  margin: 0 16px;
+}
+
+
+@media screen and (min-width: 640px){
+  .container {
+    max-width: 1199px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .header__paragraph {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    text-align: center;
+    padding: 32px 0;
+  }
+
+  .slider {
+    position: relative;
+  }
+
+  .slider img {
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .slider img:hover {
+    transform: scale(1.1);
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
+
+  .dots span {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dots span.active {
+    background-color: #333;
+  }
+
+
+}
+
+@media screen and (min-width: 1200px){
+  .container {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .slider {
+    position: relative;
+  }
+
+  .slider img {
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .slider img:hover {
+    transform: scale(1.1);
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
+
+  .dots span {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dots span.active {
+    background-color: #333;
+  }
+
+  .header__paragraph {
+    font-family: Mont;
+    font-size: 48px;
+    font-weight: 800;
+    color: #0f0f11;
+    margin-top: 56px;
+    margin-bottom: 56px;
+    white-space: nowrap;
+  }
+}
