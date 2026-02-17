@@ -1,0 +1,43 @@
+.hot {
+  grid-column: span 24;
+  width: 100%;
+  margin-top: 64px;
+  margin-bottom: 30px;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: 'Mont-Bold';
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(137, 147, 154, 0.4);
+    background: white;
+    cursor: pointer;
+  }
+
+  &__slider-window {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__slider-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease;
+  }
+}
