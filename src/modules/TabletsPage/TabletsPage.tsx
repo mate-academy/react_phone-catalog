@@ -93,7 +93,7 @@ export const TabletsPage: React.FC = () => {
           <p className={styles["tablets-page__page"]}>Tablets</p>
         </div>
         <h1 className={styles["tablets-page__title"]}>Tablets</h1>
-        <p className={styles["tablets-page__models"]}> models</p>
+        <p className={styles["tablets-page__models"]}>{tablets.length} models</p>
         <div className={styles["tablets-page__container"]}>
           <div className={styles["tablets-page__select"]}>
             <p className={styles["tablets-page__select__title"]}>Sort by</p>

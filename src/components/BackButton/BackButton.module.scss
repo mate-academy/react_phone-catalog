@@ -1,0 +1,28 @@
+.back-button {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  padding-left: 0;
+
+  &__block {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    background-color: $main-white;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 12px;
+    margin-right: 3px;
+  }
+
+  &__name {
+    margin: 0;
+    font-family: 'Mont';
+    font-weight: 700;
+    font-size: 12px;
+    color: $main-grey;
+  }
+
+}

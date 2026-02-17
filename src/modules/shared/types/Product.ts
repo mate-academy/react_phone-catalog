@@ -22,5 +22,6 @@ export interface Product {
   camera?: string;
   zoom?: string;
   cell?: string[];
-  productId?: string;
+  productId: string;
+  resolution?: string;
 }

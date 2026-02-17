@@ -35,7 +35,7 @@ export const Footer = () => {
         </ul>
       </div>
       <div className={styles["footer__button"]}>
-      <a href="#header" className={styles["footer__button-content"]}>
+      <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth'})} className={styles["footer__button-content"]}>
         <span className={styles["footer__button-text"]}>Back to top</span>
         <img src="./img/Chevron-Arrow-Right.png" alt="icon" className={styles["footer__button-icon"]} />
       </a>

@@ -6,9 +6,13 @@
     text-decoration: none;
     color: $main-black;
     font-weight: 700;
-    size: 20px;
+    font-size: 20px;
     line-height: 100%;
     letter-spacing: 0%;
+
+    &__name {
+      margin: 0;
+    }
   }
 
   &__qnt {

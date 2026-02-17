@@ -1,0 +1,11 @@
+.cart-page {
+  font-family: 'Mont';
+
+  margin: 0 16px;
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

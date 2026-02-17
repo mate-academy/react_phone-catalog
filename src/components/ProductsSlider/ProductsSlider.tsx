@@ -37,10 +37,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products, hideFullPrice
       <div className={styles["wrapper__head"]}>
         <h2 className={styles["wrapper__head__title"]}>{title}</h2>
         <div className={styles["nav-wrapper"]}>
-          <button ref={prevRef} className={`${styles["nav-button"]} ${styles.prev}`}>
+          <button ref={prevRef} className={`${styles["nav-button"]}`}>
             <img src="./img/Chevron(Arrow-Right).png" alt="arrow" className={`${styles["nav-button__icon"]} ${styles["nav-button--icon"]}`}/>
           </button>
-          <button ref={nextRef} className={`${styles["nav-button"]} ${styles.next}`}>
+          <button ref={nextRef} className={`${styles["nav-button"]}`}>
             <img src="./img/Chevron(Arrow-Right).png" alt="arrow" className={styles["nav-button__icon"]}/>
           </button>
         </div>

@@ -1,8 +1,10 @@
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from "../../modules/shared/types/Product";
+import { FavoritesContext } from '../../context/FavoritesContext';
+import { CartContext } from '../../context/CartContext';
 
 
 interface ProductCardProps {
@@ -12,16 +14,25 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, width = "212px", hideFullPrice }) => {
-  const [isSelected, setIsSelected] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const { cartItems, addToCart } = useContext(CartContext);
+
+  const { favorites, toggleFavorite } = useContext(FavoritesContext);
 
   function handleAddClick() {
-    setIsSelected(!isSelected);
+    addToCart(product);
   }
 
   function handleLikeClick() {
-    setIsLiked(!isLiked);
+    toggleFavorite(product);
   }
+
+  const isLiked = favorites.some(
+    favorite => favorite.productId === product.productId
+  )
+
+  const isInCart = cartItems.some((item) => {
+    return item.product.productId === product.productId
+  })
 
   return (
   <div className={styles.productCard} style={{ width }} >
@@ -80,10 +91,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, width = "212p
           onClick={handleAddClick}
           className={classNames(
             styles["productCard__buttons--add"],
-            isSelected && styles["productCard__buttons--add--selected"]
+            isInCart && styles["productCard__buttons--add--selected"]
             )}
         >
-          {isSelected ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           onClick={handleLikeClick}

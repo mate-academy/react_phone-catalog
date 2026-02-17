@@ -1,0 +1,64 @@
+.favorites-empty {
+    font-family: "Mont";
+    padding: 0;
+    margin: 24px 16px 8px 16px;
+    color: $main-black;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.favorites-page {
+  font-family: "Mont";
+
+  &__navi {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 16px;
+  }
+
+  &__logo {
+      height: 16px;
+      width: 16px;
+  }
+
+  &__arrow {
+      height: 10px;
+      width: 6px;
+  }
+
+  &__page {
+    margin: 0;
+    padding-top: 4px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    color: $main-grey;
+  }
+
+  &__title {
+    padding: 0;
+    margin: 24px 16px 8px 16px;
+    color: $main-black;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  &__quantity {
+    margin-left: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: $main-grey;
+  }
+
+  &__favorites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    gap: 40px;
+    margin-bottom: 56px;
+  }
+}

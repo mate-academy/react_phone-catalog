@@ -1,0 +1,101 @@
+.cart-item-card {
+  border: 1px solid $main-lightgrey;
+  padding: 16px;
+  font-family: 'Mont';
+
+  &__first {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &__block {
+      display: flex;
+      align-items: center;
+
+      &__button {
+        padding: 0;
+        height: 16px;
+        width: 16px;
+        border: none;
+        background-color: $main-white;
+
+        &__close {
+          color: $icon-grey;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__photo-block {
+      height: 80px;
+      width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+
+      &__photo {
+        width: 66px;
+        height: 66px;
+      }
+    }
+
+    &__name {
+      margin: 0;
+      font-weight: 600px;
+      font-size: 14px;
+    }
+  }
+
+  &__second {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;;
+
+    &__price {
+      margin: 0;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    &__quantity-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      &__button {
+        height: 32px;
+        width: 32px;
+        background-color: $main-white;
+        border: 1px solid $icon-grey;
+
+        &--disabled {
+          height: 32px;
+          width: 32px;
+          background-color: $main-white;
+          border: 1px solid $main-lightgrey;
+        }
+
+        &__minus {
+          color: $main-black;
+          cursor: pointer;
+
+          &--disabled {
+            color: $icon-grey;
+          }
+        }
+
+        &__plus {
+          color: $main-black;
+          cursor: pointer;
+        }
+      }
+
+      &__quantity {
+        margin: 0;
+        min-width: 22px;
+        text-align: center;
+      }
+    }
+  }
+}

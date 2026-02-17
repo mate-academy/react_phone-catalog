@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./BurgerMenu.module.scss";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface BurgerMenuProps {
   isOpen: boolean,
@@ -37,12 +37,16 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
           </ul>
         </div>
         <div className={styles["burgerMenu__block"]}>
-          <button className={styles["burgerMenu__block__button"]}>
-            <img src="./img/heart.png" alt="icon" className={styles["burgerMenu__block__icon"]}/>
-          </button>
-          <button className={styles["burgerMenu__block__button"]}>
-            <img src="./img/Shopping-bag.png" alt="icon" className={styles["burgerMenu__block__icon"]}/>
-          </button>
+          <Link to="/favorites" onClick={onClose}>
+            <button className={styles["burgerMenu__block__button"]}>
+              <img src="./img/heart.png" alt="icon" className={styles["burgerMenu__block__icon"]}/>
+            </button>
+          </Link>
+          <Link to="/cart" onClick={onClose}>
+            <button className={styles["burgerMenu__block__button"]}>
+              <img src="./img/Shopping-bag.png" alt="icon" className={styles["burgerMenu__block__icon"]}/>
+            </button>
+          </Link>
         </div>
       </div>
     </aside>

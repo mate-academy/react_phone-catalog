@@ -6,19 +6,23 @@ import { Footer } from './components/Footer';
 // import product from '../public/api/products.json';
 import { HashRouter } from 'react-router-dom';
 import { AppRouter } from './router/AppRouter';
+import { FavoritesProvider } from './context/FavoritesContext';
+import { CartProvider } from './context/CartContext';
 
 export const App = () => {
 
   return (
     <HashRouter>
     <div className="app">
-
-      <Header />
-      <main className="main-content">
-      <AppRouter />
-      </main>
-      <Footer />
-
+      <FavoritesProvider>
+      <CartProvider>
+        <Header />
+        <main className="main-content">
+          <AppRouter />
+        </main>
+        <Footer />
+       </CartProvider>
+      </FavoritesProvider>
     </div>
     </HashRouter>
   )
