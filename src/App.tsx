@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 
 import { Header } from './components/Header/Header';
@@ -15,49 +15,50 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPag
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
-import { CartProvider } from './context/CartContext';
-import { FavProvider } from './context/FavContext';
 
 export const App = () => {
   return (
-    <CartProvider>
-      <FavProvider>
-        <HashRouter>
-          <ScrollToTop />
-          <div className="app-wrapper">
-            <Header />
-            <main className="section">
-              <div className="container">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/phones" element={<PhonesPage />} />
-                  <Route path="/tablets" element={<TabletsPage />} />
-                  <Route path="/accessories" element={<AccessoriesPage />} />
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="app-wrapper">
+        <Header />
+        <main className="section">
+          <div className="container">
+            <Routes>
+              {/* Główna strona */}
+              <Route path="/" element={<HomePage />} />
 
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="/favourites" element={<FavouritesPage />} />
+              {/* Produkty */}
+              <Route path="/phones" element={<PhonesPage />} />
+              <Route path="/tablets" element={<TabletsPage />} />
+              <Route path="/accessories" element={<AccessoriesPage />} />
 
-                  <Route
-                    path="/phones/:productId"
-                    element={<ProductDetailsPage />}
-                  />
-                  <Route
-                    path="/tablets/:productId"
-                    element={<ProductDetailsPage />}
-                  />
-                  <Route
-                    path="/accessories/:productId"
-                    element={<ProductDetailsPage />}
-                  />
+              {/* Koszyk i Ulubione */}
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/favourites" element={<FavouritesPage />} />
 
-                  <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-              </div>
-            </main>
-            <Footer />
+              {/* Szczegóły produktu */}
+              <Route
+                path="/phones/:productId"
+                element={<ProductDetailsPage />}
+              />
+              <Route
+                path="/tablets/:productId"
+                element={<ProductDetailsPage />}
+              />
+              <Route
+                path="/accessories/:productId"
+                element={<ProductDetailsPage />}
+              />
+
+              {/* Strona błędu i przekierowanie z home */}
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
           </div>
-        </HashRouter>
-      </FavProvider>
-    </CartProvider>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 };
