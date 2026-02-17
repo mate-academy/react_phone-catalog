@@ -13,7 +13,7 @@ export const CardItem = ({
   isFullPrice: boolean;
 }) => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-  const { addToCart, isCart } = useCart();
+  const { addToCart, isCart, removeFromCart } = useCart();
 
   return (
     <>
@@ -69,6 +69,8 @@ export const CardItem = ({
               onClick={() => {
                 if (!isCart(cardItem.id)) {
                   addToCart(cardItem);
+                } else {
+                  removeFromCart(cardItem.id);
                 }
               }}
             >

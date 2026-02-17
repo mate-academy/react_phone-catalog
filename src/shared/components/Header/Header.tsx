@@ -53,6 +53,7 @@ export const Header = () => {
   const isCartPage = pathname === '/cart';
 
   const shouldShowSearch = !isHomePage && !isProductDetails && !isCartPage;
+  const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
   return (
     <header
@@ -108,7 +109,7 @@ export const Header = () => {
           <NavLink to={'/cart'} className="header-desktop-right-side-cart-link">
             <img src="img/header/cart.svg" alt="" />
             {cart.length > 0 && (
-              <span className="notifications-counter">{cart.length}</span>
+              <span className="notifications-counter">{totalItems} </span>
             )}
           </NavLink>
         </section>

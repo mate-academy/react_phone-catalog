@@ -20,7 +20,7 @@ export const MainControls = ({
   const [favoriteId, setFavoriteId] = useState<number>(0);
   const [cartProduct, setCartProduct] = useState<ProductPage>(0);
 
-  const { addToCart, isCart } = useCart();
+  const { addToCart, isCart, removeFromCart } = useCart();
 
   const getItemId = (
     itemId: string,
@@ -101,6 +101,8 @@ export const MainControls = ({
               onClick={() => {
                 if (!isCart(favoriteId)) {
                   addToCart(cartProduct);
+                } else {
+                  removeFromCart(cartProduct.id);
                 }
               }}
             >

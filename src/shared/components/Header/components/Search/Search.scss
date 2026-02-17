@@ -21,6 +21,7 @@
                             white-space: nowrap;
                             display: inline-block;
                             padding: 5px;
+                            background: #fff;
                         }
 
                         &-input:focus{
@@ -59,7 +60,10 @@
                                 padding: 0;
                             }
                         }
-                }
+                        &-input{
+                            padding-left: 9px;
+                        }    
+                    }
                 &-right-side{   
                     & .hide-search-icon{
                         display: none;

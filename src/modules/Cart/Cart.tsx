@@ -13,10 +13,13 @@ export const Cart = () => {
     clearCart,
   } = useCart();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const totalItemsPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   if (cart.length === 0) {
     return <p className="empty-page">Your cart is empty</p>;
@@ -47,7 +50,11 @@ export const Cart = () => {
                     className="added-item-image"
                     alt={`${item.name}`}
                   />
-                  <h4>{item.name}</h4>
+                  <h4>
+                    <a href={`#/${item.category}/${item.itemId}`}>
+                      {item.name}
+                    </a>
+                  </h4>
                 </div>
               </div>
 
@@ -88,7 +95,7 @@ export const Cart = () => {
           <p>
             {' '}
             ${totalItemsPrice}
-            <span>Total for {cart.length} items</span>
+            <span>Total for {totalItems} items</span>
           </p>
           <button
             className="added-items-total-btn card-add"
