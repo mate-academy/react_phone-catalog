@@ -97,9 +97,9 @@ const availableCapacity = Array.from(
       <>
         <div className={styles["product-details-page__navi"]}>
           <NavLink to="/" className={styles["product-details-page__block"]}>
-            <img src="/img/home.png" alt="logo" className={styles["product-details-page__logo"]}/>
+            <img src="./img/home.png" alt="logo" className={styles["product-details-page__logo"]}/>
           </NavLink>
-          <img src="/img/r-shevron.png" alt="logo" className={styles["product-details-page__arrow"]}/>
+          <img src="./img/r-shevron.png" alt="logo" className={styles["product-details-page__arrow"]}/>
           <p className={styles["product-details-page__page"]}>{product.category}</p>
         </div>
         <div>
