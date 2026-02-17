@@ -1,0 +1,8 @@
+{
+  "title": "Cart",
+  "emptyMessage": "Your cart is empty",
+  "totalLabel": "Total for {{count}} item",
+  "totalLabel_plural": "Total for {{count}} items",
+  "checkoutButton": "Checkout",
+  "orderConfirmed": "Order confirmed! Thank you for your purchase!"
+}

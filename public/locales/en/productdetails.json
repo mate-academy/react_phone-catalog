@@ -1,0 +1,18 @@
+{
+  "back": "Back",
+  "availableColors": "Available colors",
+  "selectCapacity": "Select capacity",
+  "youMayAlsoLike": "You may also like",
+  "about": "About",
+  "aboutFallback": "Detailed information about this product is not available at the moment.",
+  "productNotFound": "Product was not found",
+  "somethingWentWrong": "Something went wrong!",
+  "techSpecs": "Tech specs",
+  "screen": "Screen",
+  "resolution": "Resolution",
+  "processor": "Processor",
+  "builtInMemory": "Built in memory",
+  "camera": "Camera",
+  "zoom": "Zoom",
+  "cell": "Cell"
+}
