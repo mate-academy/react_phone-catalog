@@ -25,7 +25,9 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   sliderRef,
   children,
 }) => {
-  const visibleCount = 1;
+  const visibleOnTablet = 2;
+  const visibleOnDesktop = 4;
+  const visibleCount = 4;
   const visible =
     products && products.length
       ? Array.from({ length: visibleCount }, (_, i) => {
@@ -47,6 +49,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 
   return (
     <div className={styles.productsSlider} ref={sliderRef}>
+
       <div className={styles.productsSlider__title}>
         <h3>{children}</h3>
       </div>
@@ -69,11 +72,15 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         </div>
       </div>
 
-        <div className={styles.productsSlider__content}>
-          {visible.map(product => (
+      <div className={styles.productsSlider__content}>
+        <div className={styles.productsSlider__list}>
+          {visible.map((product, i) => (
             <div
               key={product?.id}
-              className={`${styles.product} ${currentProduct && product?.id === currentProduct.id ? styles.active : ''}`}
+              className={`${styles.product} ${currentProduct && product?.id === currentProduct.id ? styles.active : ''}
+                  ${i === 1 ? styles.mobile : ''}
+                  ${i > 1 && i <= visibleOnTablet ? styles.tablet : ''}
+                  ${i <= visibleOnDesktop ? styles.desktop : ''}`}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
@@ -122,7 +129,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
               </div>
             </div>
           ))}
-        
+        </div>
       </div>
     </div>
   );
