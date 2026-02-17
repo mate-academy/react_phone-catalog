@@ -17,7 +17,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
     >
       <div className={styles["burgerMenu__head"]}>
         <a href="#" className={styles["burgerMenu__logo-link"]}>
-          <img src="/img/Logo.png" alt="logo" className={styles["burgerMenu__logo"]} />
+          <img src="./img/Logo.png" alt="logo" className={styles["burgerMenu__logo"]} />
         </a>
         <button
           onClick={onClose}

@@ -106,20 +106,20 @@ export const PhonesPage: React.FC = () => {
             </select>
           </div>
           {visibleCount < phones.length && (
-          <div className={styles["phones-page__select"]}>
-            <p className={styles["phones-page__select__title"]}>Items on page</p>
-            <select
-              className={styles["phones-page__select__field"]}
-              value={visibleCount}
-              onChange={(e) => setVisibleCount(Number(e.target.value))}
-            >
-            <option value={14}>14</option>
-            <option value={18}>18</option>
-            <option value={22}>22</option>
-            <option value={phones.length}>All</option>
-            </select>
-          </div>
-        )}
+            <div className={styles["phones-page__select"]}>
+              <p className={styles["phones-page__select__title"]}>Items on page</p>
+              <select
+                className={styles["phones-page__select__field"]}
+                value={visibleCount}
+                onChange={(e) => setVisibleCount(Number(e.target.value))}
+              >
+              <option value={14}>14</option>
+              <option value={18}>18</option>
+              <option value={22}>22</option>
+              <option value={phones.length}>All</option>
+              </select>
+            </div>
+          )}
         </div>
         <div className={styles["phones-page__phones"]}>
           {isLoading ? (
@@ -127,7 +127,7 @@ export const PhonesPage: React.FC = () => {
           ) : error ? (
             <div className={styles["phones-page__error"]}>Error: {error}</div>
           ) : (
-             <ProductsList products={visiblePhones} />
+            <ProductsList products={visiblePhones} />
           )}
         </div>
         <div className={styles["phones-page__buttons"]}>

@@ -1,6 +1,12 @@
 .category {
   margin: 0 16px;
 
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__link {
     padding-top: 24px;
     text-decoration: none;
