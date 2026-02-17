@@ -1,0 +1,59 @@
+.cart-summary {
+  border: 1px solid $main-lightgrey;
+  padding: 24px;
+  font-family: 'Mont';
+  margin: 32px 0 56px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__total {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__sum {
+      margin: 0;
+      color: $main-black;
+      font-weight: 800;
+      font-size: 32px;
+    }
+
+    &__quantity {
+      margin: 0;
+      font-weight: 600;
+      font-size: 14px;
+      color: $main-grey;
+    }
+
+
+    &__checkout {
+      margin-top: 16px;
+      &__button {
+        width: 240px;
+        height: 48px;
+        padding: 0;
+        background-color: $main-black;
+        border: none;
+
+        &__text {
+          font-weight: 700;
+          font-size: 14px;
+          color: $main-white;
+          margin: 0;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-lightgrey;
+      margin-top: 16px;
+    }
+  }
+}

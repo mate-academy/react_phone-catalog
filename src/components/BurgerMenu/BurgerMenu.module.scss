@@ -1,0 +1,124 @@
+.burgerMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+
+    opacity: 0;
+    transition: transform $transition-time ease, opacity $transition-time ease;
+    transform: translateY(-100%);
+    pointer-events: none;
+    background-color: $main-white;
+
+    &Open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__head {
+    height: 48px;
+    border-bottom: 1px solid $main-lightgrey;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    padding: 13px 16px;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    padding: 0;
+  }
+
+  &__line {
+    height: 48px;
+    width: 1px;
+    background-color: $main-lightgrey;
+  }
+
+  &__close-logo {
+    width: 16px;
+    height: 16px;
+    padding: 13px 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+
+    &__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      gap: 16px;
+    }
+
+    &__link {
+      text-decoration: none;
+      font-family: 'Mont';
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      color: $main-grey;
+    }
+
+    &__link:hover {
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 2px solid $main-black;
+      color: $main-black;
+    }
+  }
+
+  &__block {
+
+    &__button {
+      width: 50%;
+      height: 64px;
+      background-color: $main-white;
+      border-radius: none;
+      border: 1px solid $main-lightgrey;
+    }
+
+    &__button:hover {
+      cursor: pointer;
+      border-bottom: 2px solid $main-black;
+    }
+
+    &__icon {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

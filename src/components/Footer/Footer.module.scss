@@ -1,0 +1,71 @@
+.footer {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-top: 1px solid $main-lightgrey;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: 'Mont';
+    line-height: 11px;
+    letter-spacing: 4%;
+    font-size: 12px;
+    font-weight: 700;
+    color: $main-grey;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__button {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+
+    &-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: none;
+      gap: 16px;
+      width: 160px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    &-text {
+      color: $main-grey;
+      font-family: 'Mont';
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      padding: 7px;
+      border: 1px solid $icon-grey;
+    }
+  }
+}
