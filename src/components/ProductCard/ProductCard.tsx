@@ -103,7 +103,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, width = "212p
             isLiked && styles["productCard__buttons--like--selected"]
             )}
         >
-            <img src={isLiked ? "/img/red-heart.png" : "/img/heart.png"} alt="like" className={styles["productCard__buttons__logo"]}/>
+            <img src={isLiked ? "./img/red-heart.png" : "./img/heart.png"} alt="like" className={styles["productCard__buttons__logo"]}/>
         </button>
       </div>
     </div>
