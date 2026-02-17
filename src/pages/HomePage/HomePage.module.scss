@@ -1,0 +1,135 @@
+@import '../../styles/utils';
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.homePage {
+  width: 100%;
+}
+
+.title {
+  color: $color-primary;
+  margin: 24px 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.sliderWrapper {
+  margin-bottom: 56px;
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  color: $color-primary;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+/* PRZYCISKI NAWIGACJI */
+.arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #b4bdc3;
+  background-color: $color-white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  .icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: $color-primary;
+
+    /* Konfiguracja maski SVG */
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    transition: background-color 0.3s;
+  }
+
+  .iconLeft {
+    -webkit-mask-image: url('/img/icons/arrow-left.svg');
+    mask-image: url('/img/icons/arrow-left.svg');
+  }
+
+  .iconRight {
+    -webkit-mask-image: url('/img/icons/arrow-right.svg');
+    mask-image: url('/img/icons/arrow-right.svg');
+  }
+
+  /* Stan: HOVER */
+  &:hover:not(.disabled, :disabled) {
+    border-color: $color-primary;
+  }
+
+  /* === STAN ZABLOKOWANY === */
+  &.disabled,
+  &:disabled {
+    border-color: #e2e6e9;
+    cursor: default;
+    background-color: $color-white;
+    pointer-events: none;
+
+    .icon {
+      background-color: #b4bdc3 !important;
+    }
+  }
+}
+
+/* WRAPPER PRODUKTÓW */
+.productsWrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin: 0 -16px;
+  padding: 0 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  & > div {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    gap: 16px;
+    width: max-content;
+  }
+}

@@ -1,0 +1,59 @@
+@import '../../styles/utils';
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: 16px;
+  justify-items: center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  flex-wrap: nowrap;
+}
+
+/* Karta wewnątrz */
+.cardWrapper {
+  .slider & {
+    width: 272px;
+    min-width: 272px;
+    flex-shrink: 0;
+  }
+
+  .grid & {
+    width: 100%;
+    max-width: 272px;
+    margin: 0;
+
+    @include on-tablet {
+      width: auto;
+      max-width: none;
+    }
+  }
+}

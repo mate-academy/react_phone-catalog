@@ -1,0 +1,89 @@
+@import '../../styles/utils';
+
+.phonesPage {
+  padding-bottom: 64px;
+  max-width: 100vw;
+  overflow-x: hidden;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+    overflow-x: visible;
+  }
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: $color-primary;
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.modelsCount {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+/* FILTRY */
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+
+@include on-tablet {
+
+  .filters > *:first-child {
+    width: 176px !important;
+    flex: 0 0 auto;
+  }
+
+  .filters > *:last-child {
+    width: 136px !important;
+    flex: 0 0 auto;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.noResults {
+  font-size: 18px;
+  color: $color-secondary;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.paginationContainer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
