@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phone Catalog</title>
+
+    <!-- железный favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png?v=3" />
+    <link rel="shortcut icon" href="/favicon.png?v=3" />
+
+    <style>
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #f7f9fb;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+        opacity: 0;
+        animation: siteFade 0.6s ease forwards;
+      }
+
+      #root { width: 100%; }
+
+      @keyframes siteFade {
+        to { opacity: 1; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+  </body>
+</html>
