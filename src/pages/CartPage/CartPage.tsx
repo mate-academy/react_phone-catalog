@@ -1,0 +1,69 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CartItemType } from '../../types/CartItemType';
+import { CartItem } from '../../components/CartItem';
+import { useCartContext } from '../../context/CartContext';
+import './CartPage.scss';
+
+export const CartPage: React.FC = () => {
+  const { cartItems, total } = useCartContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  return (
+    <section className="cart-page">
+      <div className="container">
+        <button className="product-details__back" onClick={() => navigate(-1)}>
+          <img src={`img/icons/left.svg`} alt="Back" />
+          Back
+        </button>
+        <h1 className="cart-page__title">Cart</h1>
+
+        <div className="cart-page__content">
+          <ul className="cart-page__list">
+            {cartItems.map((item: CartItemType) => (
+              <li key={item.id} className="cart-page__item">
+                <CartItem item={item} />
+              </li>
+            ))}
+          </ul>
+
+          <aside className="cart-summary">
+            <div className="cart-summary__price">${total}</div>
+
+            <div className="cart-summary__items">
+              Total for {totalItems} items
+            </div>
+
+            <div className="cart-summary__divider" />
+
+            <button
+              className="cart-summary__button"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Checkout
+            </button>
+          </aside>
+        </div>
+      </div>
+      {isModalOpen && (
+        <div className="modal" onClick={() => setIsModalOpen(false)}>
+          <div className="modal__content" onClick={e => e.stopPropagation()}>
+            <button
+              className="modal__close"
+              onClick={() => setIsModalOpen(false)}
+            >
+              ×
+            </button>
+
+            <h2 className="modal__title">Order placed successfully 🎉</h2>
+
+            <p className="modal__text">Thank you for your purchase!</p>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};

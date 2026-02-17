@@ -1,0 +1,135 @@
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+
+       img {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        height: 120%;
+        width: auto;
+        object-fit: contain;
+
+         pointer-events: none;
+
+         transition: transform 0.3s ease;
+
+       /* display: block; */
+    }
+  }
+
+   &--phones .category-card__image {
+    background: linear-gradient(
+      to bottom,
+      hsl(273deg, 27%, 8%),
+      hsl(274deg, 7%, 44%)
+    );
+  }
+
+
+  &--tablets .category-card__image {
+    background: linear-gradient(
+      to bottom,
+      hsl(0deg, 5%, 37%),
+      hsl(0deg, 0%, 60%)
+    );
+  }
+
+          &--phones img {
+    top: 190px;
+    left: 110px;
+    height: 350px;
+
+    @media (max-width: 1199px) {
+    top: 110px;
+    left: 80px;
+    height: 340px;
+  }
+
+  @media (max-width: 639px) {
+    top: 180px;
+    left: 180px;
+    height: 550px;
+  }
+  }
+
+   &--tablets img {
+    top: 180px;
+    left: 100px;
+    height: 350px;
+
+    @media (max-width: 1199px) {
+    top: 95px;
+    left: 80px;
+    height: 340px;
+  }
+
+    @media (max-width: 639px) {
+    top: 180px;
+    left: 180px;
+    height: 550px;
+  }
+  }
+
+  &--accessories img {
+    left: 120px;
+    height: 300px;
+    top: 150px;
+
+    @media (max-width: 1199px) {
+    top: 110px;
+    left:80px;
+    height: 340px;
+  }
+
+    @media (max-width: 639px) {
+    top: 180px;
+    left: 180px;
+    height: 550px;
+  }
+  }
+
+  &--accessories .category-card__image {
+    background: linear-gradient(
+      to bottom,
+      hsl(351deg, 35%, 29%),
+      hsl(351deg, 37%, 68%)
+    );
+  }
+
+ .category-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    
+    /* color: #313237; */
+    line-height: 100%;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #89939a;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

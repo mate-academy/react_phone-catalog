@@ -1,0 +1,51 @@
+body[data-theme='light'] {
+  --bg: #fff;
+  --bg-secondary: #fafbfc;
+  --card-bg: #fff;
+  --text-primary: #313237;
+  --text-secondary: #89939a;
+   --text-heading: #313237;
+  --border: #e2e6e9;
+}
+
+body[data-theme='dark'] {
+  --bg: #0f172a;
+  --bg-secondary: #020617;
+  --card-bg: #111827;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-heading: #f9fafb;
+  --border: #1f2933;
+}
+
+h1,
+h2,
+h3,
+.section__title,
+.home__title,
+.home__subtitle,
+.breadcrumbs__link,
+.phones__breadcrumbs {
+  opacity: 1;
+  color: var(--text-heading);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
+
+
+
+
+.product-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+
+button {
+  border-color: var(--border);
+  color: var(--text-main);
+}
