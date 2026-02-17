@@ -18,13 +18,11 @@
     align-items: center;
     height: 100%;
     aspect-ratio: 1/1;
+    border: 1px solid transparent;
     box-sizing: border-box;
 
     @extend %body-text;
-
-    &:hover {
-      border: 1px solid $primary-color;
-    }
+    @include hover(border-color, $primary-color);
 
     &_active {
       color: $body-background-color;

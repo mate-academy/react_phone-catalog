@@ -58,6 +58,10 @@
     }
   }
 
+  &__link {
+    @include hover(transform, scale($text-hover-transform));
+  }
+
   &__right {
     width: max-content;
     height: 32px;

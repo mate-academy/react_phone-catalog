@@ -95,6 +95,8 @@
     background-color: $icon-color;
     mask-image: url('/img/assets/icons/close.svg');
     mask-position: center center;
+
+    @include hover(background-color, $primary-color);
   }
 
   &__photo {
@@ -104,6 +106,8 @@
     padding: 7px;
     border: none;
     box-sizing: border-box;
+
+    @include hover(transform, scale($image-hover-transform));
   }
 
   &__image {
@@ -118,6 +122,8 @@
 
     color: $primary-color;
     font-weight: 600;
+
+    @include hover(transform, scale($text-hover-transform));
   }
 
   &__secondRow {

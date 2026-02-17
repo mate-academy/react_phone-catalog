@@ -34,9 +34,12 @@ const HomeCategories: React.FC = () => {
               />
             </NavLink>
             <div className={styles.categories__categoryBottom}>
-              <p className={styles.categories__categoryName}>
+              <NavLink
+                className={styles.categories__categoryName}
+                to={'/' + category}
+              >
                 {t('home.category_' + category)}
-              </p>
+              </NavLink>
 
               <p className={styles.categories__categoryDescription}>
                 {categories[category]} {t('home.models')}

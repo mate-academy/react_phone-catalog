@@ -1,68 +1,82 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { ProductDetailContext } from '../../ProductDetailContext';
 import { ProductDetail } from '../../types/ProductDetail';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { HOME_CATEGORIES_LIST } from '../constants';
+import {
+  getProductDetailId,
+  ProductCatalogContext,
+} from '../../ProductCatalogContext';
 
 export function useSelectedProductDetail() {
-  const { products, loading, loaded, error, reloadProducts } =
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const [category, itemId] = useMemo(() => {
+    const segments = pathname.split('/').filter(Boolean);
+
+    return [segments[0] || '', segments[1]];
+  }, [pathname]);
+
+  const { products, statuses, reloadProducts } =
     useContext(ProductDetailContext);
-  const [pageProducts, setProducts] = useState<ProductDetail[] | null>(null);
+
+  const status = statuses[category] ?? '';
+
+  const { loaded: loadedProductCatalog, productDetailIdToProductId } =
+    useContext(ProductCatalogContext);
+
   const [productDetail, setProductDetail] = useState<ProductDetail | null>(
     null,
   );
 
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const pathSegments = pathname.split('/').filter(segment => segment !== '');
-
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant',
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      });
     });
   }, [pathname]);
 
-  if (
-    pathSegments.length != 2 ||
-    !HOME_CATEGORIES_LIST.includes(pathSegments[0])
-  ) {
-    navigate('/404');
-  }
-
-  const category = pathSegments[0];
-  const itemId = pathSegments[1];
+  useEffect(() => {
+    if (
+      itemId &&
+      loadedProductCatalog &&
+      !productDetailIdToProductId[getProductDetailId({ category, itemId })]
+    ) {
+      navigate('/404');
+    }
+  }, [
+    navigate,
+    category,
+    loadedProductCatalog,
+    productDetailIdToProductId,
+    itemId,
+  ]);
 
   useEffect(() => {
-    if (loading) {
-      return;
+    if (!status) {
+      reloadProducts(category);
     }
+  }, [status, products, category, reloadProducts]);
 
-    if (loaded) {
-      const currentPageProducts = products[category];
+  useEffect(() => {
+    if (status === 'loaded' && products[category]) {
+      const foundProduct =
+        products[category].find(p => p.id === itemId) || null;
 
-      if (!currentPageProducts) {
-        reloadProducts(category);
+      setProductDetail(foundProduct);
+      if (!foundProduct) {
+        navigate('/404');
       }
-
-      setProducts(currentPageProducts);
     }
-  }, [products, category, loading, loaded, reloadProducts]);
+  }, [status, products, category, itemId, navigate]);
 
-  useEffect(() => {
-    if (!loaded || !pageProducts) {
-      setProductDetail(null);
-    } else {
-      setProductDetail(
-        pageProducts.find(product => product.id === itemId) || null,
-      );
-    }
-  }, [pageProducts, itemId, loaded]);
+  const loaded = !(!status || status === 'loading' || status === 'error');
 
   return {
     productDetail,
-    loading,
-    error,
+    loading: !status || status === 'loading',
+    error: status === 'error',
+    loaded,
   };
 }

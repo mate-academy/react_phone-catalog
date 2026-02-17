@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
 import styles from './Icon.module.scss';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { IconStyles } from '../../../types/IconStyles';
 import { getClassNames } from '../../../utils/classNames';
 
@@ -23,12 +24,11 @@ const Icon: React.FC<IconProps> = ({
 
   const imageStyles = getClassNames('icon__img_', iconStyles?.image, styles);
 
-  const iconClasses =
-    styles.icon +
-    ' ' +
-    getClassNames('icon_', iconStyles?.icon, styles) +
-    ' ' +
-    (className ?? '');
+  const iconClasses = cn(
+    styles.icon,
+    getClassNames('icon_', iconStyles?.icon, styles),
+    className ?? '',
+  );
 
   const imgElement = (
     <span className={`${styles.icon__img} ${imageStyles}`}></span>
@@ -36,7 +36,7 @@ const Icon: React.FC<IconProps> = ({
 
   if (isLink) {
     return (
-      <Link to={href} className={iconClasses}>
+      <Link to={href} className={cn(iconClasses, styles.icon__link)}>
         {imgElement}
       </Link>
     );

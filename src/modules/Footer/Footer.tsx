@@ -56,9 +56,15 @@ export const Footer = () => {
             </NavLink>
           </div>
           <div className={styles.footer__menu}>
-            <Link to="#">Github</Link>
-            <Link to="#">Contacts</Link>
-            <Link to="#">Rights</Link>
+            <Link className={styles.footer__link} to="#">
+              Github
+            </Link>
+            <Link className={styles.footer__link} to="#">
+              Contacts
+            </Link>
+            <Link className={styles.footer__link} to="#">
+              Rights
+            </Link>
             <Select
               value={language}
               options={langOptions}

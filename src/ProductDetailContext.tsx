@@ -10,20 +10,18 @@ import { getProductDetails } from './api/productDetail';
 import { ProductDetail } from './types/ProductDetail';
 
 type Products = Record<CategoryName, ProductDetail[]>;
+export type Status = 'loading' | 'loaded' | 'error';
+type Statuses = Record<CategoryName, Status>;
 
 interface ProductDetailContextType {
   products: Products;
-  loading: boolean;
-  loaded: boolean;
-  error: boolean;
+  statuses: Statuses;
   reloadProducts: (currentCategory: CategoryName) => void;
 }
 
 export const ProductDetailContext = createContext<ProductDetailContextType>({
   products: {},
-  loading: false,
-  loaded: false,
-  error: false,
+  statuses: {},
   reloadProducts: () => {},
 });
 
@@ -33,18 +31,14 @@ export const ProductDetailProvider = ({
   children: ReactNode;
 }) => {
   const [products, setProducts] = useState<Products>({});
+  const [statuses, setStatuses] = useState<Statuses>({});
   const [currentCategory, setCurrentCategory] = useState<CategoryName>('');
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(true);
-  const [error, setError] = useState(false);
   const [reloadTrigger, setReloadTrigger] = useState(0);
 
   const reloadProducts = useCallback((category: CategoryName) => {
-    setLoading(false);
-    setLoaded(false);
-    setError(false);
-    setCurrentCategory(category);
+    setStatuses(prevStatuses => ({ ...prevStatuses, category: 'loading' }));
     setReloadTrigger(prev => prev + 1);
+    setCurrentCategory(category);
   }, []);
 
   useEffect(() => {
@@ -52,27 +46,29 @@ export const ProductDetailProvider = ({
       return;
     }
 
-    setLoading(true);
-    setError(false);
-    setLoaded(false);
     getProductDetails(currentCategory)
       .then(loadedProductDetails => {
+        setStatuses(prevStatuses => ({
+          ...prevStatuses,
+          [currentCategory]: 'loaded',
+        }));
         setProducts(prevProducts => {
           return { ...prevProducts, [currentCategory]: loadedProductDetails };
         });
-        setLoaded(true);
       })
       .catch(fetchError => {
         // eslint-disable-next-line no-console
         console.error(fetchError);
-        setError(true);
-      })
-      .finally(() => setLoading(false));
-  }, [currentCategory, reloadTrigger]);
+        setProducts(prevProducts => {
+          return { ...prevProducts, [currentCategory]: [] };
+        });
+        setStatuses(prevStatuses => ({ ...prevStatuses, category: 'error' }));
+      });
+  }, [reloadTrigger, currentCategory]);
 
   return (
     <ProductDetailContext.Provider
-      value={{ products, loading, loaded, error, reloadProducts }}
+      value={{ products, statuses, reloadProducts }}
     >
       {children}
     </ProductDetailContext.Provider>

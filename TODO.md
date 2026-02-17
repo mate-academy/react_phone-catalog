@@ -1,5 +1,6 @@
 # TODO list
 
+- [*] Create Loader for ProductDetailPage
 - [ ] Test 'Page not found' page
 - [ ] All changes the hover effects should be smooth.
 - [ ] Scale all image links by 10% on hover.

@@ -23,6 +23,8 @@
     width: 100%;
     object-fit: contain;
     object-position: center;
+
+    @include hover(transform, scale($image_hover_transform));
   }
 
   &__title {
@@ -30,5 +32,7 @@
 
     margin-top: 16px;
     font-weight: 600;
+
+    @include hover(transform, scale($text_hover_transform));
   }
 }

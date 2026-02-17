@@ -11,11 +11,20 @@
   box-sizing: border-box;
   border: none;
 
+  &__link {
+    @include hover(transform, scale($image_hover_transform));
+  }
+
+  &__button {
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
   &_border {
     border: 1px solid $icon-color;
-    &:hover {
-      border-color: $primary-color;
-    }
+
+    @include hover(border-color, $primary-color);
   }
 
   &_border_bottom {

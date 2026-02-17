@@ -32,6 +32,8 @@
     display: block;
     aspect-ratio: 1 / 1;
     height: fit-content;
+
+    @include hover(transform, scale($image_hover_transform));
   }
 
   &__categoryImage {
@@ -64,6 +66,7 @@
 
   &__categoryName {
     @extend %h4;
+    @include hover(transform, scale($text_hover_transform));
   }
 
   &__categoryDescription {

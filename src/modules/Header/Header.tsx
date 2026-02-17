@@ -10,7 +10,8 @@ import { useAppSelector } from '../../store/hooks';
 export const Header = () => {
   const location = useLocation();
   const [showMobile, setShowMobile] = useState(false);
-  const { items, favorites } = useAppSelector(state => state);
+  const items = useAppSelector(state => state.items);
+  const favorites = useAppSelector(state => state.favorites);
   const favoritesCount = Object.keys(favorites).length;
   const itemsCount = Object.keys(items).length;
 
