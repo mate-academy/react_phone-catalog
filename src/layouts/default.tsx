@@ -1,6 +1,7 @@
-import { Footer } from "@/components/Footer/Footer";
-import { AppNavbar } from "@/components/navbar";
-import { Outlet } from "react-router-dom";
+import { Footer } from '@/components/Footer/Footer';
+import { AppNavbar } from '@/components/navbar';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 export default function DefaultLayout() {
   return (

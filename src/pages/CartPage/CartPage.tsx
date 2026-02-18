@@ -1,9 +1,10 @@
-import CartItemCard from "@/components/CartItemCard/CartItemCard";
-import { useCart } from "@/store/CartContext";
-import { useProducts } from "@/store/ProductsContext";
-import { Button } from "@heroui/react";
-import { useMemo, useState } from "react";
-import type { Product } from "@/types/Product";
+import CartItemCard from '@/components/CartItemCard/CartItemCard';
+import { useCart } from '@/store/CartContext';
+import { useProducts } from '@/store/ProductsContext';
+import { Button } from '@heroui/react';
+import { useMemo, useState } from 'react';
+import type { Product } from '@/types/Product';
+import React from 'react';
 
 export default function CartPage() {
   const { cartItems, clearCart } = useCart();
@@ -13,12 +14,13 @@ export default function CartPage() {
   const productsInCart = useMemo<Product[]>(() => {
     const cratItemsIds = Object.keys(cartItems);
 
-    return products.filter((product) => cratItemsIds.includes(product.itemId));
+    return products.filter(product => cratItemsIds.includes(product.itemId));
   }, [products, cartItems]);
 
   const total = useMemo(() => {
     return productsInCart.reduce<number>((acc, product) => {
       const quantity = cartItems[product.itemId] || 0;
+
       return acc + product.price * quantity;
     }, 0);
   }, [productsInCart, cartItems]);
@@ -26,7 +28,7 @@ export default function CartPage() {
   const totalItems = useMemo(() => {
     return (Object.values(cartItems) as number[]).reduce(
       (sum, qty) => sum + qty,
-      0
+      0,
     );
   }, [cartItems]);
 
@@ -48,7 +50,7 @@ export default function CartPage() {
         <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-4">
           <div className="flex-2/3 flex flex-col gap-5">
             {/* LEFT SIDE — CART ITEMS */}
-            {productsInCart.map((item) => (
+            {productsInCart.map(item => (
               <CartItemCard key={item.id} item={item} />
             ))}
           </div>

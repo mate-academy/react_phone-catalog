@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react';
 
 export type CartItem = Record<string, number>;
 
@@ -27,27 +27,30 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   // --- LOAD FROM LOCAL STORAGE ---
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("cart");
+      const saved = localStorage.getItem('cart');
+
       if (saved) {
         const parsed = JSON.parse(saved);
+
         setCartItems(parsed);
       }
     } catch (e) {
-      console.error("Failed to load cart", e);
+      console.error('Failed to load cart', e);
     }
+
     setIsLoaded(true);
   }, []);
 
   // --- SAVE TO LOCAL STORAGE ---
   useEffect(() => {
     if (isLoaded) {
-      localStorage.setItem("cart", JSON.stringify(cartItems));
+      localStorage.setItem('cart', JSON.stringify(cartItems));
     }
   }, [cartItems, isLoaded]);
 
   // ADD TO CART
   const addToCart = (id: string) => {
-    setCartItems((prev) => {
+    setCartItems(prev => {
       const currentQuantity = prev[id] || 0;
 
       return {
@@ -58,25 +61,29 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const removeFromCart = (id: string) => {
-    setCartItems((prev) => {
+    setCartItems(prev => {
       const updatedCart = { ...prev };
+
       delete updatedCart[id];
+
       return updatedCart;
     });
   };
 
   const increment = (id: string) => {
-    setCartItems((prev) => ({
+    setCartItems(prev => ({
       ...prev,
       [id]: (prev[id] || 0) + 1,
     }));
   };
 
   const decrement = (id: string) => {
-    setCartItems((prev) =>
+    setCartItems(prev =>
       prev[id] > 1
         ? { ...prev, [id]: prev[id] - 1 }
-        : Object.fromEntries(Object.entries(prev).filter(([key]) => key !== id))
+        : Object.fromEntries(
+            Object.entries(prev).filter(([key]) => key !== id),
+          ),
     );
   };
 
@@ -102,6 +109,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
 export const useCart = () => {
   const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used inside CartProvider");
+
+  if (!ctx) {
+    throw new Error('useCart must be used inside CartProvider');
+  }
+
   return ctx;
 };

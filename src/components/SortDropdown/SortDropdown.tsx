@@ -4,31 +4,33 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-} from "@heroui/react";
-import { useSearchParams } from "react-router-dom";
-import { CaretDownIcon } from "@phosphor-icons/react";
-import { useState } from "react";
+} from '@heroui/react';
+import { useSearchParams } from 'react-router-dom';
+import { CaretDownIcon } from '@phosphor-icons/react';
+import { useState } from 'react';
+import React from 'react';
 
 export default function SortDropdown() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSort = searchParams.get("sort") || "age";
+  const currentSort = searchParams.get('sort') || 'age';
 
   const handleChange = (value: string) => {
-    if (value === "age") {
-      searchParams.delete("sort");
+    if (value === 'age') {
+      searchParams.delete('sort');
     } else {
-      searchParams.set("sort", value);
+      searchParams.set('sort', value);
     }
+
     setSearchParams(searchParams);
   };
 
   const label =
-    currentSort === "age"
-      ? "Newest"
-      : currentSort === "alpha"
-        ? "Alphabetically"
-        : "Cheapest";
+    currentSort === 'age'
+      ? 'Newest'
+      : currentSort === 'alpha'
+        ? 'Alphabetically'
+        : 'Cheapest';
 
   return (
     <div className="flex flex-col gap-1">
@@ -44,7 +46,7 @@ export default function SortDropdown() {
                 size={13}
                 color="#B4BDC3"
                 className={`
-                    ${isOpen ? "rotate-180" : "rotate-0"}
+                    ${isOpen ? 'rotate-180' : 'rotate-0'}
                   `}
               />
             }
@@ -57,7 +59,7 @@ export default function SortDropdown() {
           aria-label="Sort options"
           selectionMode="single"
           selectedKeys={[currentSort]}
-          onSelectionChange={(keys) =>
+          onSelectionChange={keys =>
             handleChange(Array.from(keys)[0] as string)
           }
         >

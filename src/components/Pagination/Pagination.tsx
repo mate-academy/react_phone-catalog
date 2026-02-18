@@ -1,8 +1,9 @@
-import { Pagination } from "@heroui/react";
+import { Pagination } from '@heroui/react';
+import React from 'react';
 
 type Props = {
-  total: number;        // кількість сторінок
-  page: number;         // поточна сторінка
+  total: number; // кількість сторінок
+  page: number; // поточна сторінка
   onChange: (page: number) => void;
 };
 
@@ -23,7 +24,7 @@ export const ProductsPagination: React.FC<Props> = ({
         variant="bordered"
         onChange={onChange}
         classNames={{
-          item: "font-mont",
+          item: 'font-mont',
         }}
       />
     </div>

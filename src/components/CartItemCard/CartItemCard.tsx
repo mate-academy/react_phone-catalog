@@ -1,7 +1,8 @@
-import { useCart } from "@/store/CartContext";
-import { Product } from "@/types/Product";
-import { Card, CardBody, Image, Button } from "@heroui/react";
-import { MinusIcon, PlusIcon, XIcon } from "@phosphor-icons/react";
+import { useCart } from '@/store/CartContext';
+import { Product } from '@/types/Product';
+import { Card, CardBody, Image, Button } from '@heroui/react';
+import { MinusIcon, PlusIcon, XIcon } from '@phosphor-icons/react';
+import React from 'react';
 
 export default function CartItemCard({ item }: { item: Product }) {
   const { removeFromCart, increment, decrement, cartItems } = useCart();
@@ -60,9 +61,7 @@ export default function CartItemCard({ item }: { item: Product }) {
             </div>
 
             {/* Price */}
-            <p className="text-xl font-bold">
-              ${item.price}
-            </p>
+            <p className="text-xl font-bold">${item.price}</p>
           </div>
         </div>
       </CardBody>

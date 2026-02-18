@@ -1,16 +1,17 @@
-import { getProductDetails, TCategory } from "@/api/api";
-import { ProductDetails } from "@/types/ProductDetails";
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Button } from "@heroui/button";
-import { HeartStraightIcon } from "@phosphor-icons/react";
-import { useFavourites } from "@/store/FavouritesContext";
-import { Thumbnails } from "@/components/Thumbnails/Thumbnails";
-import { useCart } from "@/store/CartContext";
-import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
-import { MayLike } from "@/components/MayLike/MayLike";
-import { ProductsContext } from "@/store/ProductsContext";
-import { useLocation } from "react-router-dom";
+import { getProductDetails, TCategory } from '@/api/api';
+import { ProductDetails } from '@/types/ProductDetails';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Button } from '@heroui/button';
+import { HeartStraightIcon } from '@phosphor-icons/react';
+import { useFavourites } from '@/store/FavouritesContext';
+import { Thumbnails } from '@/components/Thumbnails/Thumbnails';
+import { useCart } from '@/store/CartContext';
+import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
+import { MayLike } from '@/components/MayLike/MayLike';
+import { ProductsContext } from '@/store/ProductsContext';
+import { useLocation } from 'react-router-dom';
+import React from 'react';
 
 export const ProductDetailsCard = () => {
   const { products } = useContext(ProductsContext);
@@ -19,14 +20,14 @@ export const ProductDetailsCard = () => {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [color, setColor] = useState<string | undefined>(product?.color);
   const [capacity, setCapacity] = useState<string | undefined>(
-    product?.capacity
+    product?.capacity,
   );
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, [location.pathname]);
 
@@ -38,7 +39,9 @@ export const ProductDetailsCard = () => {
   }>();
 
   const inCartProductCounts = useMemo(() => {
-    if (!product) return false;
+    if (!product) {
+      return false;
+    }
 
     return cartItems[product.id];
   }, [product?.id, cartItems]);
@@ -51,6 +54,7 @@ export const ProductDetailsCard = () => {
         setProduct(null);
         setNotFound(true);
         setIsLoading(false);
+
         return;
       }
 
@@ -81,18 +85,19 @@ export const ProductDetailsCard = () => {
   }, [productId, category]);
 
   const sortedProducts = useMemo(() => {
-    if (!product || products.length === 0) return [];
-  
+    if (!product || products.length === 0) {
+      return [];
+    }
+
     return products.filter(
-      (p) =>
-        p.category === category &&
-        p.itemId !== productId
+      p => p.category === category && p.itemId !== productId,
     );
   }, [products, productId, category, product]);
-  
 
   const onFavorite = useCallback(() => {
-    if (!productId) return;
+    if (!productId) {
+      return;
+    }
 
     toggleFavourite(productId);
   }, [productId]);
@@ -151,7 +156,7 @@ export const ProductDetailsCard = () => {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  {product.colorsAvailable.map((colorValue) => (
+                  {product.colorsAvailable.map(colorValue => (
                     <label key={colorValue} className="relative block">
                       <input
                         type="radio"
@@ -181,7 +186,7 @@ export const ProductDetailsCard = () => {
               <div className="pb-6 mb-10 border-b-2 border-gray-200">
                 <h3 className="text-sm text-gray-500 mb-2">Select capacity</h3>
                 <div className="flex gap-3">
-                  {product.capacityAvailable.map((cap) => (
+                  {product.capacityAvailable.map(cap => (
                     <div key={cap}>
                       <input
                         type="radio"
@@ -348,9 +353,7 @@ export const ProductDetailsCard = () => {
         </div>
       </div>
       <div className="mt-20">
-        {sortedProducts.length > 0 && (
-          <MayLike products={sortedProducts} />
-        )}
+        {sortedProducts.length > 0 && <MayLike products={sortedProducts} />}
       </div>
     </div>
   );

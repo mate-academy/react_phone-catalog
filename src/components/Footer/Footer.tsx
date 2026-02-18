@@ -1,10 +1,11 @@
-import { Button } from "@heroui/react";
-import { CaretUpIcon } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
+import { Button } from '@heroui/react';
+import { CaretUpIcon } from '@phosphor-icons/react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -24,7 +25,10 @@ export const Footer = () => {
 
         {/* RIGHT: Back to top */}
         <div className="flex justify-center items-center gap-3">
-          <button onClick={scrollToTop} className="text-[12px] text-[#89939A] font-semibold cursor-pointer">
+          <button
+            onClick={scrollToTop}
+            className="text-[12px] text-[#89939A] font-semibold cursor-pointer"
+          >
             Back to top
           </button>
           <div className="">

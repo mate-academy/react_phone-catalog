@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig } from '@/config/site';
 import {
   Navbar,
   NavbarBrand,
@@ -7,14 +7,15 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
   NavbarMenuItem,
-} from "@heroui/react";
-import { Link, useLocation } from "react-router-dom";
-import { HeartStraightIcon } from "@phosphor-icons/react";
-import { ShoppingBagOpenIcon } from "@phosphor-icons/react";
-import { useMemo, useState } from "react";
-import { Badge } from "@heroui/react";
-import { useCart } from "@/store/CartContext";
-import { useFavourites } from "@/store/FavouritesContext";
+} from '@heroui/react';
+import { Link, useLocation } from 'react-router-dom';
+import { HeartStraightIcon } from '@phosphor-icons/react';
+import { ShoppingBagOpenIcon } from '@phosphor-icons/react';
+import { useMemo, useState } from 'react';
+import { Badge } from '@heroui/react';
+import { useCart } from '@/store/CartContext';
+import { useFavourites } from '@/store/FavouritesContext';
+import React from 'react';
 
 export function AppNavbar() {
   const location = useLocation(); // дізнаємось, на якій сторінці зараз користувач
@@ -26,12 +27,12 @@ export function AppNavbar() {
 
   const totalQuantity = useMemo(
     () => Object.values(cartItems).reduce((a, b) => a + b, 0),
-    [cartItems]
+    [cartItems],
   );
 
   const totalQuantityFavourites = useMemo(
     () => favourites.length,
-    [favourites]
+    [favourites],
   );
 
   const handleCloseMenu = () => {
@@ -51,8 +52,8 @@ export function AppNavbar() {
       isBordered
       className="bg-white w-full"
       classNames={{
-        base: "w-full",
-        wrapper: "w-full max-w-none h-12 xl:h-16 pr-0",
+        base: 'w-full',
+        wrapper: 'w-full max-w-none h-12 xl:h-16 pr-0',
       }}
     >
       {/* Логотип */}
@@ -69,7 +70,7 @@ export function AppNavbar() {
 
         {/* Центральне меню для великих екранів */}
         <NavbarContent justify="start" className="hidden sm:flex gap-8">
-          {siteConfig.navItems.map((item) => (
+          {siteConfig.navItems.map(item => (
             <NavbarItem key={item.label} isActive={currentPath === item.href}>
               <Link
                 to={item.href}
@@ -77,7 +78,7 @@ export function AppNavbar() {
                 ${
                   currentPath === item.href
                     ? "text-gray-950 after:content-[''] after:absolute after:left-0 after:bottom-[-17px] xl:after:bottom-[-26px] after:h-[3px] after:w-full after:bg-gray-950"
-                    : "text-gray-600"
+                    : 'text-gray-600'
                 }`}
               >
                 {item.label}
@@ -89,13 +90,16 @@ export function AppNavbar() {
 
       {/* Іконки справа */}
       <NavbarContent justify="end" className="hidden sm:flex gap-0">
-        <NavbarItem isActive={currentPath === "/favourites"} className="border-x border-gray-300">
+        <NavbarItem
+          isActive={currentPath === '/favourites'}
+          className="border-x border-gray-300"
+        >
           <Link
             to="/favourites"
             className={`relative flex w-12 h-12 xl:w-16 xl:h-16 items-center justify-center ${
-              currentPath === "/favourites"
-                ? "after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950"
-                : ""
+              currentPath === '/favourites'
+                ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
+                : ''
             }`}
           >
             <Badge
@@ -110,13 +114,13 @@ export function AppNavbar() {
             </Badge>
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={currentPath === "/cart"}>
+        <NavbarItem isActive={currentPath === '/cart'}>
           <Link
             to="/cart"
             className={`relative flex w-12 h-12 xl:w-16 xl:h-16 items-center justify-center ${
-              currentPath === "/cart"
-                ? "after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950"
-                : ""
+              currentPath === '/cart'
+                ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
+                : ''
             }`}
           >
             <Badge
@@ -145,13 +149,13 @@ export function AppNavbar() {
         border-t border-gray-200
         h-[calc(100dvh-3rem)] min-h-[calc(100dvh-3rem)]
         transition-transform duration-250
-        ${isMenuOpen && !isClosing ? "animate-slideIn" : ""}
-        ${isClosing ? "animate-slideOut" : ""}
+        ${isMenuOpen && !isClosing ? 'animate-slideIn' : ''}
+        ${isClosing ? 'animate-slideOut' : ''}
           `}
       >
         <div className="flex min-h-full flex-1 flex-col justify-between">
           <div className="flex flex-col items-center gap-10 pt-10">
-            {siteConfig.navItems.map((item) => (
+            {siteConfig.navItems.map(item => (
               <NavbarMenuItem key={item.label}>
                 <Link
                   to={item.href}
@@ -161,8 +165,8 @@ export function AppNavbar() {
                 after:block after:h-[2px] after:rounded-full
                 ${
                   currentPath === item.href
-                    ? "text-gray-800 after:w-full after:bg-gray-950"
-                    : "text-gray-400 after:w-0 after:bg-transparent"
+                    ? 'text-gray-800 after:w-full after:bg-gray-950'
+                    : 'text-gray-400 after:w-0 after:bg-transparent'
                 }
               `}
                 >
@@ -173,16 +177,16 @@ export function AppNavbar() {
           </div>
           <div className="flex items-center justify-between">
             <NavbarMenuItem
-              isActive={currentPath === "/favourites"}
+              isActive={currentPath === '/favourites'}
               className="h-20 w-full flex flex-1 items-center justify-center border-t-3 border-r-3 border-gray-300"
             >
               <Link
                 to="/favourites"
                 onClick={handleCloseMenu}
                 className={`relative flex w-full h-full items-center justify-center ${
-                  currentPath === "/favourites"
-                    ? "after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950"
-                    : ""
+                  currentPath === '/favourites'
+                    ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
+                    : ''
                 }`}
               >
                 <Badge
@@ -199,16 +203,16 @@ export function AppNavbar() {
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem
-              isActive={currentPath === "/cart"}
+              isActive={currentPath === '/cart'}
               className="h-20 w-full flex flex-1 items-center justify-center border-t-3 border-gray-300"
             >
               <Link
                 to="/cart"
                 onClick={handleCloseMenu}
                 className={`relative flex w-full h-full items-center justify-center ${
-                  currentPath === "/cart"
-                    ? "after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950"
-                    : ""
+                  currentPath === '/cart'
+                    ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
+                    : ''
                 }`}
               >
                 <Badge

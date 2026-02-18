@@ -1,29 +1,30 @@
-import SortDropdown from "@/components/SortDropdown/SortDropdown";
+import SortDropdown from '@/components/SortDropdown/SortDropdown';
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
   Button,
-} from "@heroui/react";
-import { CaretDownIcon } from "@phosphor-icons/react";
-import { ProductsContext } from "@/store/ProductsContext";
+} from '@heroui/react';
+import { CaretDownIcon } from '@phosphor-icons/react';
+import { ProductsContext } from '@/store/ProductsContext';
 
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from 'react';
 
-import { Pagination } from "@heroui/react";
-import { useSearchParams } from "react-router-dom";
-import { ProductCard } from "@/components/ProductCard/ProductCard";
-import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
+import { Pagination } from '@heroui/react';
+import { useSearchParams } from 'react-router-dom';
+import { ProductCard } from '@/components/ProductCard/ProductCard';
+import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
+import React from 'react';
 
-const PER_PAGE_OPTIONS = ["4", "8", "16", "all"] as const;
+const PER_PAGE_OPTIONS = ['4', '8', '16', 'all'] as const;
 
 interface Props {
   title: string;
-  category: "phones" | "tablets" | "accessories";
+  category: 'phones' | 'tablets' | 'accessories';
 }
 
-type SortValue = "age" | "alpha" | "price";
+type SortValue = 'age' | 'alpha' | 'price';
 
 export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const { products } = useContext(ProductsContext);
@@ -31,37 +32,37 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const [params, setParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const sortBy = (searchParams.get("sort") as SortValue) || "age";
+  const sortBy = (searchParams.get('sort') as SortValue) || 'age';
 
   const sortedProducts = useMemo(() => {
-    const sorted = products.filter((product) => product.category === category);
+    const sorted = products.filter(product => product.category === category);
 
     switch (sortBy) {
-      case "price":
+      case 'price':
         return sorted.sort((a, b) => a.price - b.price);
-      case "alpha":
+      case 'alpha':
         return sorted.sort((a, b) => a.name.localeCompare(b.name));
-      case "age":
+      case 'age':
       default:
         return sorted.sort((a, b) => b.year - a.year);
     }
   }, [products, sortBy, category]);
 
   const modelsAmount = sortedProducts.length;
-  const pageParam = Number(params.get("page")) || 1;
-  const perPageParam = params.get("perPage") ?? "all";
+  const pageParam = Number(params.get('page')) || 1;
+  const perPageParam = params.get('perPage') ?? 'all';
 
   const page = Math.max(pageParam, 1);
   const perPage = PER_PAGE_OPTIONS.includes(perPageParam as any)
     ? perPageParam
-    : "all";
+    : 'all';
 
   // ---- derive paging ----
   const perPageNumber =
-    perPage === "all" ? sortedProducts.length : Number(perPage);
+    perPage === 'all' ? sortedProducts.length : Number(perPage);
 
   const totalPages =
-    perPage === "all"
+    perPage === 'all'
       ? 1
       : Math.max(1, Math.ceil(sortedProducts.length / perPageNumber));
 
@@ -70,7 +71,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const start = (currentPage - 1) * perPageNumber;
 
   const visibleProducts =
-    perPage === "all"
+    perPage === 'all'
       ? sortedProducts
       : sortedProducts.slice(start, start + perPageNumber);
 
@@ -80,15 +81,21 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
 
     if (next.perPage) {
       // reset page on perPage change
-      if (next.perPage !== "all") newParams.set("perPage", next.perPage);
-      else newParams.delete("perPage");
+      if (next.perPage !== 'all') {
+        newParams.set('perPage', next.perPage);
+      } else {
+        newParams.delete('perPage');
+      }
 
-      newParams.delete("page"); // reset to 1 by default
+      newParams.delete('page'); // reset to 1 by default
     }
 
     if (next.page !== undefined) {
-      if (next.page > 1) newParams.set("page", String(next.page));
-      else newParams.delete("page");
+      if (next.page > 1) {
+        newParams.set('page', String(next.page));
+      } else {
+        newParams.delete('page');
+      }
     }
 
     setParams(newParams, { replace: true });
@@ -102,7 +109,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
     updateParams({ perPage: value });
   };
 
-  const label = perPage === "4" ? "4" : perPage === "8" ? "8" : "16";
+  const label = perPage === '4' ? '4' : perPage === '8' ? '8' : '16';
 
   return (
     <div className="px-6 xl:px-[152px]">
@@ -131,7 +138,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
                     size={13}
                     color="#B4BDC3"
                     className={`
-                    ${isOpen ? "rotate-180" : "rotate-0"}
+                    ${isOpen ? 'rotate-180' : 'rotate-0'}
                   `}
                   />
                 }
@@ -144,7 +151,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
               aria-label="Sort options"
               selectionMode="single"
               selectedKeys={[perPage]}
-              onSelectionChange={(keys) =>
+              onSelectionChange={keys =>
                 handlePerPageChange(Array.from(keys)[0] as string)
               }
             >
@@ -158,7 +165,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
 
       <div className="flex flex-col py-6 gap-8">
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {visibleProducts.map((p) => (
+          {visibleProducts.map(p => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
@@ -175,7 +182,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
               variant="bordered"
               classNames={{
                 cursor:
-                  "bg-linear-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold",
+                  'bg-linear-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold',
               }}
               onChange={handlePageChange}
             />

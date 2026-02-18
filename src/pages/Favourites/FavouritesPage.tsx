@@ -1,16 +1,15 @@
-import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
-import { ProductCard } from "@/components/ProductCard/ProductCard";
-import { useFavourites } from "@/store/FavouritesContext";
-import { ProductsContext } from "@/store/ProductsContext";
-import { useContext } from "react";
+import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
+import { ProductCard } from '@/components/ProductCard/ProductCard';
+import { useFavourites } from '@/store/FavouritesContext';
+import { ProductsContext } from '@/store/ProductsContext';
+import React from 'react';
+import { useContext } from 'react';
 
 export const FavouritesPage: React.FC = () => {
   const { products } = useContext(ProductsContext);
   const { favourites } = useFavourites();
 
-  const favouriteProducts = products.filter((p) =>
-    favourites.includes(p.itemId)
-  );
+  const favouriteProducts = products.filter(p => favourites.includes(p.itemId));
   const modelsAmount = favouriteProducts.length;
 
   return (
@@ -27,7 +26,7 @@ export const FavouritesPage: React.FC = () => {
         </p>
       ) : (
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {favouriteProducts.map((product) => (
+          {favouriteProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

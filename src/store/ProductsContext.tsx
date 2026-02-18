@@ -1,6 +1,6 @@
-import { getProducts } from "@/api/api";
-import { Product } from "@/types/Product";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { getProducts } from '@/api/api';
+import { Product } from '@/types/Product';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 
 export const ProductsContext = React.createContext({
   products: [] as Product[],
@@ -34,10 +34,13 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     }),
     [products, isLoading, errorMessage],
   );
+
   return (
-    <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>
+    <ProductsContext.Provider value={value}>
+      {children}
+    </ProductsContext.Provider>
   );
-}
+};
 
 export function useProducts() {
   const products = useContext(ProductsContext);

@@ -1,26 +1,22 @@
 import React from 'react';
-import { Navigate, Route, Routes } from "react-router-dom";
-import { CatalogPage } from "./pages/CardsPage/CatalogPage";
-import HomePage from "./pages/HomePage/HomePage";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { CatalogPage } from './pages/CardsPage/CatalogPage';
+import HomePage from './pages/HomePage/HomePage';
 
-import DefaultLayout from "./layouts/default";
-import { ProductDetailsCard } from "./pages/ProductDetailsPage/ProductDetailsCard";
-import { FavouritesPage } from "./pages/Favourites/FavouritesPage";
-import CartPage from "./pages/CartPage/CartPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import DefaultLayout from './layouts/default';
+import { ProductDetailsCard } from './pages/ProductDetailsPage/ProductDetailsCard';
+import { FavouritesPage } from './pages/Favourites/FavouritesPage';
+import CartPage from './pages/CartPage/CartPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
-
-      <Routes>
+    <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route
-          path="/:category/:productId"
-          element={<ProductDetailsCard />}
-        />
+        <Route path="/:category/:productId" element={<ProductDetailsCard />} />
 
         <Route path="phones">
           <Route

@@ -1,8 +1,9 @@
-import { useRef } from "react";
-import { Product } from "@/types/Product";
-import { ProductCard } from "../ProductCard/ProductCard";
-import { Button } from "@heroui/button";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { useRef } from 'react';
+import { Product } from '@/types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { Button } from '@heroui/button';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import React from 'react';
 
 type Props = {
   products: Product[];
@@ -14,20 +15,25 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
   const sorted = [...products].sort((a, b) => {
     const discountA = (a.fullPrice ?? a.price) - a.price;
     const discountB = (b.fullPrice ?? b.price) - b.price;
+
     return discountB - discountA; // biggest discount first
   });
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction: 'left' | 'right') => {
     const container = listRef.current;
-    if (!container) return;
+
+    if (!container) {
+      return;
+    }
 
     const cardWidth = container.firstElementChild?.clientWidth ?? 320;
 
     container.scrollBy({
-      left: direction === "right" ? cardWidth : -cardWidth,
-      behavior: "smooth",
+      left: direction === 'right' ? cardWidth : -cardWidth,
+      behavior: 'smooth',
     });
   };
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between">
@@ -42,7 +48,7 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
             variant="bordered"
             radius="full"
             className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
-            onPress={() => scroll("left")}
+            onPress={() => scroll('left')}
           >
             <CaretLeftIcon size={12} color="#030303" />
           </Button>
@@ -51,7 +57,7 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
             variant="bordered"
             radius="full"
             className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
-            onPress={() => scroll("right")}
+            onPress={() => scroll('right')}
           >
             <CaretRightIcon size={12} color="#030303" />
           </Button>
@@ -63,7 +69,7 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
         ref={listRef}
         className="flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth hideScrollBar pb-4"
       >
-        {sorted.map((product) => (
+        {sorted.map(product => (
           <div key={product.id} className="">
             <ProductCard product={product} />
           </div>

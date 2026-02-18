@@ -1,13 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
-import { Button } from "@heroui/button";
-import "./PicturesSlider.scss";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { useState, useEffect, useCallback } from 'react';
+import { Button } from '@heroui/button';
+import './PicturesSlider';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import React from 'react';
 
 export const PicturesSlider = () => {
   const images = [
-    "/img/banner-2.png",
-    "/img/banner-3.jpeg",
-    "/img/banner-4.jpeg",
+    '/img/banner-2.png',
+    '/img/banner-3.jpeg',
+    '/img/banner-4.jpeg',
   ];
 
   const [current, setCurrent] = useState(0);
@@ -16,7 +17,9 @@ export const PicturesSlider = () => {
 
   const changeSlide = useCallback(
     (nextIndex: number) => {
-      if (nextIndex === current) return;
+      if (nextIndex === current) {
+        return;
+      }
 
       setIsVisible(false);
 
@@ -25,7 +28,7 @@ export const PicturesSlider = () => {
         setIsVisible(true);
       }, 300);
     },
-    [current]
+    [current],
   );
 
   const nextSlide = useCallback(() => {
@@ -38,17 +41,20 @@ export const PicturesSlider = () => {
 
   // Autoplay + pause on hover
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered) {
+      return;
+    }
 
     const timer = setInterval(nextSlide, 5000);
+
     return () => clearInterval(timer);
   }, [nextSlide, isHovered]);
 
   return (
-    <div className="flex flex-col sm:px-6 xl:px-[152px] gap-4">
-      <h1 className="font-extrabold text-[32px] sm:text-[48px] px-6 sm:px-0">
+    <div className="flex flex-col sm:px-6 xl:px-38 gap-4">
+      <h2 className="font-extrabold text-[32px] sm:text-[48px] px-6 sm:px-0">
         Welcome to Nice Gadgets store!
-      </h1>
+      </h2>
 
       <div className="flex flex-col items-center gap-4">
         <div className="flex w-full items-center sm:gap-4">
@@ -56,7 +62,7 @@ export const PicturesSlider = () => {
           <Button
             isIconOnly
             variant="bordered"
-            className="hidden sm:flex border-gray-300 w-[32px] sm:h-[189px] lg:h-[400px] rounded-full"
+            className="hidden sm:flex border-gray-300 w-8 sm:h-[189px] lg:h-100 rounded-full"
             onPress={prevSlide}
           >
             <CaretLeftIcon size={18} />
@@ -64,7 +70,7 @@ export const PicturesSlider = () => {
 
           {/* SLIDER */}
           <div
-            className="relative w-full h-[320px] sm:h-[189px] lg:h-[400px] overflow-hidden sm:rounded-lg"
+            className="relative w-full h-80 sm:h-[189px] lg:h-100 overflow-hidden sm:rounded-lg"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -76,7 +82,7 @@ export const PicturesSlider = () => {
                 w-full h-full
                 object-cover
                 transition-[opacity,transform] duration-700 ease-out
-                ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-[1.03]"}
+                ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.03]'}
               `}
             />
           </div>
@@ -85,7 +91,7 @@ export const PicturesSlider = () => {
           <Button
             isIconOnly
             variant="bordered"
-            className="hidden sm:flex border-gray-300 w-[32px] sm:h-[189px] lg:h-[400px] rounded-full"
+            className="hidden sm:flex border-gray-300 w-8 sm:h-[189px] lg:h-100 rounded-full"
             onPress={nextSlide}
           >
             <CaretRightIcon size={18} />
@@ -99,7 +105,7 @@ export const PicturesSlider = () => {
               key={index}
               onClick={() => changeSlide(index)}
               className={`h-1 w-[14px] transition-colors ${
-                index === current ? "bg-black" : "bg-gray-300"
+                index === current ? 'bg-black' : 'bg-gray-300'
               }`}
             />
           ))}

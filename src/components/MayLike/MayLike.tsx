@@ -1,8 +1,9 @@
-import { useMemo, useRef } from "react";
-import { Product } from "@/types/Product";
-import { ProductCard } from "../ProductCard/ProductCard";
-import { Button } from "@heroui/button";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { useMemo, useRef } from 'react';
+import { Product } from '@/types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { Button } from '@heroui/button';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import React from 'react';
 
 type Props = {
   products: Product[];
@@ -16,28 +17,34 @@ export const MayLike: React.FC<Props> = ({ products }) => {
 
     for (let i = result.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
+
       [result[i], result[j]] = [result[j], result[i]];
     }
 
     return result;
   }, [products]);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction: 'left' | 'right') => {
     const container = listRef.current;
-    if (!container) return;
+
+    if (!container) {
+      return;
+    }
 
     const cardWidth = container.firstElementChild?.clientWidth ?? 320;
 
     container.scrollBy({
-      left: direction === "right" ? cardWidth : -cardWidth,
-      behavior: "smooth",
+      left: direction === 'right' ? cardWidth : -cardWidth,
+      behavior: 'smooth',
     });
   };
 
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between">
-        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">You may also like</h2>
+        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">
+          You may also like
+        </h2>
 
         {/* Controls */}
         <div className="flex gap-2">
@@ -46,7 +53,7 @@ export const MayLike: React.FC<Props> = ({ products }) => {
             variant="bordered"
             radius="full"
             className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
-            onPress={() => scroll("left")}
+            onPress={() => scroll('left')}
           >
             <CaretLeftIcon size={12} color="#030303" />
           </Button>
@@ -55,7 +62,7 @@ export const MayLike: React.FC<Props> = ({ products }) => {
             variant="bordered"
             radius="full"
             className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
-            onPress={() => scroll("right")}
+            onPress={() => scroll('right')}
           >
             <CaretRightIcon size={12} color="#030303" />
           </Button>
@@ -67,7 +74,7 @@ export const MayLike: React.FC<Props> = ({ products }) => {
         ref={listRef}
         className="flex gap-6 overflow-x-auto scroll-smooth hideScrollBar"
       >
-        {randomized.map((product) => (
+        {randomized.map(product => (
           <div key={product.id}>
             <ProductCard product={product} />
           </div>

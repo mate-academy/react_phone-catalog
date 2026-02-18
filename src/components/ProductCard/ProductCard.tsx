@@ -1,10 +1,11 @@
-import { useFavourites } from "@/store/FavouritesContext";
-import { Product } from "@/types/Product";
-import { Card, Image, Button } from "@heroui/react";
-import { Link } from "react-router-dom";
-import { HeartIcon } from "@phosphor-icons/react";
-import { useCart } from "@/store/CartContext";
-import { useMemo } from "react";
+import { useFavourites } from '@/store/FavouritesContext';
+import { Product } from '@/types/Product';
+import { Card, Image, Button } from '@heroui/react';
+import { Link } from 'react-router-dom';
+import { HeartIcon } from '@phosphor-icons/react';
+import { useCart } from '@/store/CartContext';
+import { useMemo } from 'react';
+import React from 'react';
 
 type Props = {
   product: Product;
@@ -16,13 +17,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const fav = isFavourite(product.itemId);
 
   const inCartProductCounts = useMemo(() => {
-    if (!product) return false;
+    if (!product) {
+      return false;
+    }
 
     return cartItems[product.itemId];
   }, [product?.itemId, cartItems]);
 
   console.log(product.image);
-
 
   return (
     <Card

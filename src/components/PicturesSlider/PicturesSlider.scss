@@ -25,10 +25,13 @@
 }
 
 .slider__dot {
+  cursor: pointer;
+
   width: 14px;
   height: 4px;
+
   background-color: #bbb;
-  cursor: pointer;
+
   transition: background-color 0.3s;
 }
 
