@@ -1,1 +1,253 @@
-// not empty
+@font-face {
+    font-family: Mont;
+    src: url('/fonts/Mont-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: MontBold;
+    src: url('/fonts/Mont-Bold.otf') format('opentype');
+    font-weight: 800;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: Mont-SemiBold;
+    src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+    font-weight: 600;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: Mont,sans-serif;
+    background-color: #fafbfc;
+    color: #0F0F11;
+}
+
+a{
+    text-decoration: none;
+    color: #0F0F11;
+}
+
+h1{
+    font-family: MontBold, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+
+}
+
+button {
+    font-family: Mont-SemiBold, sans-serif;
+    background: none;
+    border: 1px solid#B4BDC3;
+    border-radius: 48px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+}
+
+.root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main{
+    flex: 1;
+}
+
+.empty-page{
+    text-align: center;
+    line-height: 150px;
+}
+
+h1, h2, h3{
+    font-family: MontBold, sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+h2{
+    font-size: 32px;
+    line-height: 56px;
+}
+
+h3{
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+h4{
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+a:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+@media only screen and (min-width:320px) {
+    .loader,.error{
+        grid-column: span 4;
+        color: red;
+    }
+   
+    .wrapper{
+        min-width: 320px;
+        max-width: 639px;
+        margin: 0 auto;
+    }
+    .reload-btn, .orange-btn {
+        height: 40px;
+        border-radius: 8px;
+        background: #F86800;
+        border: 0;
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .reload-btn {
+        grid-column: span 4;
+        display: flex;  
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        row-gap: 0;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+    h1, .breadcrumbs{
+        grid-column: span 4;
+    }
+    .prev-btn, .next-btn{
+        background: url('/img/home/next.svg');
+        background-size: cover;
+        border:0;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
+
+    .next-btn:hover{
+        background: url('/img/shared/next-hov.svg');
+    }
+    .prev-btn{
+        -webkit-transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+        -o-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+        margin-right: 16px;
+
+        &:hover{
+          background: url('/img/shared/next-hov.svg');
+        }
+    }
+    .disabled-btn {
+        background: url('/img/home/next-disabled.png');
+        -webkit-transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+        -o-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+        margin-right: 16px;
+
+        &:hover{
+            background: url('/img/home/next-disabled.png');
+        }
+    }
+    
+    .disabled-btn-without-rotate {
+        background: url('/img/home/next-disabled.png');
+    }
+
+}
+
+@media only screen and (min-width:640px) {
+    .loader,.error{
+        grid-column: span 12;
+    }
+    .wrapper{
+        min-width: 640px;
+        max-width: 1199px;
+    }
+    .grid {
+        grid-template-columns: repeat(12, 1fr);
+        padding: 0 24px;
+    }
+    h1, .breadcrumbs{
+        grid-column: span 12;
+    }
+    .reload-btn {
+        grid-column: span 5;
+    }
+
+}
+
+
+
+@media only screen and (min-width:1200px) {
+    .loader,.error{
+        grid-column: span 24;
+    }
+    .wrapper{
+        max-width: 1136px;
+    }
+    .grid {
+        grid-template-columns: repeat(24, 1fr);
+        padding: 0;
+        row-gap: 0;
+    }
+
+    .error{
+        color: red;
+    }
+    .reload-btn {
+        grid-column: span 6;
+    }
+    .sort-select {
+        padding: 10px 12px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        background: white;
+        font-size: 14px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+
+    .sort-select:hover,
+    .sort-select:focus {
+        border-color: #999;
+        outline: none;
+    }
+
+    .sort-select option {
+        padding: 8px;
+    }
+    
+    h1, .breadcrumbs{
+        grid-column: span 24;
+    }
+}

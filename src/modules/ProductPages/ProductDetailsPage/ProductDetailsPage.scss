@@ -1,0 +1,141 @@
+
+
+@media only screen and (min-width:320px) {
+   .suggestions{
+      grid-column: span 4;
+
+   }
+      .go-back{
+         grid-column: span 4;
+         font-weight: 700;
+         font-size: 12px;
+         line-height: 100%;
+         letter-spacing: 0%;
+         color: #89939A;
+         background-color: transparent;
+         border: none;
+         text-align: left;
+         vertical-align: middle;
+         margin-bottom: 16px;
+         cursor: pointer;
+
+         & img{
+            vertical-align: middle;
+            margin-top: -3px;
+         }
+         
+         &:hover{
+            color: #313237;
+         }
+
+   }
+    
+   .product-title{
+      margin-bottom: 32px;
+      font-style: Bold;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+   }
+   .details{
+         &-about{
+            grid-column: span 4;
+            
+            &-description {
+                  & h4 {
+                     font-family: Mont-SemiBold, sans-serif;
+                     font-weight: 700;
+                     font-size: 16px;
+                     line-height: 100%;
+                     letter-spacing: 0%;
+                     color: #0F0F11;
+                     padding-top: 32px;
+                     padding-bottom: 16px;
+                  }
+
+                  & p {
+                     font-size: 14px;
+                     line-height: 21px;
+                     letter-spacing: 0%;
+                     color: #89939A;
+                  }
+            }
+         }
+            
+         &-section-title{
+            font-family: Mont-SemiBold, sans-serif;
+            font-weight: 700;   
+            font-size: 20px;
+            border-bottom: 1px solid#E2E6E9;
+            padding-bottom: 16px;
+            margin-top: 56px;
+
+         }
+
+         &-caracteristiques{
+            grid-column: span 4;
+         }
+   }
+
+   .caracteristiques-wrapper{
+      padding-top: 14px;
+   }
+
+   .props-table-label{
+      &:last-child {
+         flex: 1;
+         min-width: 0;
+         max-width: 200px;
+
+         & p{
+            overflow-wrap: break-all;
+            margin: 0; 
+         
+            &:last-child{
+               word-spacing: 0.3rem;
+            }
+         }
+      }
+   }
+   .suggestions .new-smodels {
+      padding: 0 ;
+   }
+}
+
+@media only screen and (min-width: 640px) {
+   .go-back, .suggestions{
+      grid-column: span 12;
+   }
+   .details{
+         &-section-title{
+         margin-top: 0;
+         }
+   }
+   .details-page .product-title{
+      font-size: 32px;
+   }
+   .details-about, .details-caracteristiques{
+      grid-column: span 12;
+   }
+   .details-caracteristiques{
+      margin-top: 64px;
+   }
+ .caracteristiques-wrapper{
+    padding-top: 9px;
+ }
+}
+
+@media only screen and (min-width:1200px) {
+   .go-back, .suggestions{
+      grid-column: span 24;
+   }
+   .details-about, .details-caracteristiques{
+      margin-top: 80px;
+   }
+   .details-about{
+      grid-column: span 11;
+   }
+   .details-caracteristiques{
+      grid-column:  13/25;
+   }
+}
