@@ -17,8 +17,15 @@ interface SliderProps {
 }
 
 const base = import.meta.env.BASE_URL ?? '/';
-const resolveUrl = (path: string) =>
-  path.startsWith('http') ? path : `${base}${path.replace(/^\//, '')}`;
+const resolveUrl = (path: string) => {
+  if (path.startsWith('http')) {
+    return path;
+  }
+
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+
+  return `${base.endsWith('/') ? base : `${base}/`}${cleanPath}`;
+};
 
 const Slider: React.FC<SliderProps> = ({ slides }) => (
   <div className={styles.wrapper}>
