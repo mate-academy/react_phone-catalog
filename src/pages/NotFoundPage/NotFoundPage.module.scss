@@ -1,0 +1,44 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 24px;
+  min-height: 50vh; // Garante que ocupe uma boa parte da tela
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #0F0F11;
+  margin-bottom: 16px;
+}
+
+.message {
+  font-size: 16px;
+  color: #89939a;
+  margin-bottom: 32px;
+  max-width: 400px;
+}
+
+.homeButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #216CFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0c5aef;
+    color: #fff; // Garante que o texto permaneça branco no hover
+  }
+
+  // Adicionado para garantir que links visitados também tenham o texto branco
+  &:visited {
+    color: #fff;
+  }
+}

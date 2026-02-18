@@ -1,0 +1,55 @@
+.searchPage {
+  padding-bottom: 80px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+
+.searchBar {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  font-size: 16px;
+  border: 1px solid #B4BDC3;
+  border-radius: 8px;
+  outline: none;
+
+  &:focus {
+    border-color: #313237;
+  }
+}
+
+.clearButton {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #89939A;
+  cursor: pointer;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.resultsCount {
+  color: #89939A;
+  margin-bottom: 24px;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  gap: 40px 16px;
+}
