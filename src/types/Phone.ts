@@ -1,6 +1,6 @@
 import { Category } from './Category';
 
-export type Phone = {
+export interface Phone {
   id: string;
   category: Category.Phones;
   namespaceId: string;
@@ -23,4 +23,4 @@ export type Phone = {
   camera: string;
   zoom: string;
   cell: string[];
-};
+}

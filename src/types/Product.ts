@@ -1,6 +1,6 @@
 import { Category } from './Category';
 
-export type Product = {
+export interface Product {
   id: number;
   category: Category;
   itemId: string;
@@ -13,4 +13,4 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
-};
+}

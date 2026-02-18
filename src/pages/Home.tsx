@@ -1,56 +1,56 @@
 import { useSelector } from 'react-redux';
 import { useGetProductsQuery } from '../services/productsApi';
 import { selectPreparedProducts } from '../selectors/productsSelectors';
-import { ProductsSlider } from '../components/ProductsSlider';
-import { PicturesSlider } from '../components/PicturesSlider';
+import { ProductSlider } from '../components/Slider/Product';
+import { BannerSlider } from '../components/Slider/Banner';
 import { Categories } from '../components/Categories';
+import { BANNERS, CATEGORIES } from '../constants';
 import type { FC } from 'react';
-import { Sort } from '../types';
 import type { RootState } from '../store';
+import { Sort } from '../types';
 
 export const HomePage: FC = () => {
   useGetProductsQuery();
 
-  const brandNewProducts = useSelector((state: RootState) =>
-    selectPreparedProducts(state, null, Sort.Age),
+  const { visibleProducts: brandNewProducts } = useSelector(
+    (state: RootState) =>
+      selectPreparedProducts(state, null, Sort.Age, Infinity, 1),
   );
 
-  const hotPricesProducts = useSelector((state: RootState) =>
-    selectPreparedProducts(state, null, Sort.Price),
+  const { visibleProducts: hotPricesProducts } = useSelector(
+    (state: RootState) =>
+      selectPreparedProducts(state, null, Sort.Discount, Infinity, 1),
   );
 
   return (
-    <>
-      <h1 className="mt-6 text-h1 sm:mt-8 xl:mt-14">
+    <div className="">
+      <h1 className="sr-only">Product Catalog</h1>
+      <span className="text-h1 text-primary dark:text-d-white mt-6 inline-block sm:mt-8 xl:mt-14">
         Welcome to Nice Gadgets store!
-      </h1>
+      </span>
 
-      <PicturesSlider
-        pictures={[
-          '/images/banners/phones.webp',
-          '/images/banners/tablets.webp',
-          '/images/banners/accessories.webp',
-        ]}
-        className="mt-6 sm:mt-8 xl:mt-14"
+      <BannerSlider
+        banners={BANNERS}
+        className="-mx-(--container-px-xs) mt-6 sm:mx-0 sm:mt-8 xl:mt-14"
       />
 
-      <ProductsSlider
-        title="Brand new models"
-        products={brandNewProducts}
-        className="mt-14 sm:mt-16 xl:mt-20"
-      />
+      {brandNewProducts && brandNewProducts.length > 0 && (
+        <ProductSlider
+          title="Brand new models"
+          products={brandNewProducts}
+          className="mt-14 sm:mt-16 xl:mt-20"
+        />
+      )}
 
-      <section className="mt-14 sm:mt-16 xl:mt-20">
-        <h2 className="text-h2 text-primary">Shop by category</h2>
+      <Categories categories={CATEGORIES} className="mt-14 sm:mt-16 xl:mt-20" />
 
-        <Categories />
-      </section>
-
-      <ProductsSlider
-        title="Hot prices"
-        products={hotPricesProducts}
-        className="mt-14 sm:mt-16 xl:mt-20"
-      />
-    </>
+      {hotPricesProducts && hotPricesProducts.length > 0 && (
+        <ProductSlider
+          title="Hot prices"
+          products={hotPricesProducts}
+          className="mt-14 sm:mt-16 xl:mt-20"
+        />
+      )}
+    </div>
   );
 };

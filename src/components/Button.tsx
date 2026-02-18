@@ -1,15 +1,28 @@
 import cn from 'clsx';
-import type { ComponentPropsWithRef, FC } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
-type ButtonProps = ComponentPropsWithRef<'button'>;
+type ButtonOwnProps<E extends ElementType> = {
+  as?: E;
+  children?: ReactNode;
+};
 
-export const Button: FC<ButtonProps> = props => {
-  const { className, children, ...restProps } = props;
+/* eslint-disable @typescript-eslint/indent */
+type ButtonProps<E extends ElementType> = ButtonOwnProps<E> &
+  Omit<ComponentPropsWithoutRef<E>, keyof ButtonOwnProps<E>>;
+/* eslint-enable @typescript-eslint/indent */
+
+export const Button = <E extends ElementType = 'button'>({
+  as,
+  children,
+  className,
+  ...restProps
+}: ButtonProps<E>) => {
+  const Tag = as || 'button';
 
   return (
-    <button className={cn('', className)} {...restProps}>
+    <Tag className={cn('', className)} {...restProps}>
       {children}
-    </button>
+    </Tag>
   );
 };
 

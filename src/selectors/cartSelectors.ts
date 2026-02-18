@@ -1,20 +1,23 @@
+import { createSelector } from '@reduxjs/toolkit';
 import { cartAdapter } from '../features/cartSlice';
-import type { Product } from '../types';
 import type { RootState } from '../store';
-import type { EntityState } from '@reduxjs/toolkit';
 
-const selectors = cartAdapter.getSelectors();
+const selectors = cartAdapter.getSelectors((state: RootState) => state.cart);
 
 export const cartSelectors = {
-  selectAll: (state: RootState) =>
-    selectors.selectAll(state.cart as unknown as EntityState<Product, string>),
-  selectById: (state: RootState, id: string) =>
-    selectors.selectById(
-      state.cart as unknown as EntityState<Product, string>,
-      id,
+  selectAll: selectors.selectAll,
+  selectById: selectors.selectById,
+  selectIsInCart: createSelector(selectors.selectById, product => !!product),
+  selectTotalQuantity: createSelector(selectors.selectAll, products =>
+    products.reduce(
+      (totalQuantity, product) => totalQuantity + product.quantity,
+      0,
     ),
-  selectTotal: (state: RootState) =>
-    selectors.selectTotal(
-      state.cart as unknown as EntityState<Product, string>,
+  ),
+  selectTotalAmount: createSelector(selectors.selectAll, products =>
+    products.reduce(
+      (totalAmount, product) => totalAmount + product.price * product.quantity,
+      0,
     ),
+  ),
 };

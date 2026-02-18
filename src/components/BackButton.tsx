@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from './Button';
-import ArrowLeft from '/src/assets/icons/arrow-left.svg?react';
+import ArrowLeft from '/src/images/icons/arrow-left.svg?react';
 import { FC } from 'react';
 import cn from 'clsx';
 
@@ -14,10 +14,12 @@ export const BackButton: FC<Props> = ({ className }) => {
   return (
     <Button
       onClick={() => navigate(-1)}
-      className={cn('flex cursor-pointer items-center gap-1', className)}
+      className={cn('group flex items-center justify-center gap-1', className)}
     >
-      <ArrowLeft className="size-4 fill-primary" />
-      <span className="text-small text-secondary">Back</span>
+      <ArrowLeft className="fill-primary dark:fill-d-white dark:group-hover:fill-d-accent size-4" />
+      <span className="text-small text-secondary dark:text-d-white dark:group-hover:text-d-accent group-hover:text-primary transition">
+        Back
+      </span>
     </Button>
   );
 };

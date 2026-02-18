@@ -1,34 +1,52 @@
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'clsx';
-import { FC } from 'react';
-import { Product } from '../types';
+import { cartActions } from '../store/actions';
+import { cartSelectors } from '../selectors/cartSelectors';
+import { Button } from './Button';
+import type { FC } from 'react';
 
 type CheckoutProps = {
-  products: Product[];
   className: string;
 };
 
-export const Checkout: FC<CheckoutProps> = ({ products, className }) => {
-  const sum = products
-    .map(product => product.price)
-    .reduce((prev, curr) => prev + curr, 0);
+export const Checkout: FC<CheckoutProps> = ({ className }) => {
+  const dispatch = useDispatch();
+
+  const totalAmount = useSelector(cartSelectors.selectTotalAmount);
+  const totalQuantity = useSelector(cartSelectors.selectTotalQuantity);
+
+  const handleCheckout = () => {
+    const isConfirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (isConfirmed) {
+      dispatch(cartActions.clearCart());
+    }
+  };
 
   return (
     <div
       className={cn(
-        'flex flex-col gap-4 p-6 shadow-inner shadow-elements',
+        'shadow-elements dark:shadow-d-surface2 flex flex-col gap-6 p-6 shadow-inner',
         className,
       )}
     >
       <div className="">
-        <h2 className="text-center text-h2 text-primary">${sum}</h2>
-        <p className="text-center text-body text-secondary">
-          Total for {products.length} {products.length === 1 ? 'item' : 'items'}
+        <h2 className="text-h2 text-primary dark:text-d-white text-center">
+          ${totalAmount}
+        </h2>
+        <p className="text-body text-secondary dark:text-d-secondary text-center">
+          Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
         </p>
       </div>
-      <div className="my-[-0.5px]  border-[0.5px] border-elements"></div>
-      <button className="py-[13.5px] bg-primary text-buttons text-white">
+      <div className="border-elements dark:border-d-elements my-[-0.5px] border-[0.5px]"></div>
+      <Button
+        onClick={handleCheckout}
+        className="bg-primary dark:bg-d-accent dark:hover:bg-d-hover-bs hover:shadow-hover-bs text-buttons dark:text-d-white flex h-12 w-full flex-[1_1_auto] items-center justify-center text-white transition hover:shadow-[0_3px_13px_0]"
+      >
         Checkout
-      </button>
+      </Button>
     </div>
   );
 };

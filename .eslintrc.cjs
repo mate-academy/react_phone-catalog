@@ -35,6 +35,7 @@ module.exports = {
     'react-hooks',
     '@typescript-eslint',
     'prettier',
+    'react-refresh',
   ],
   rules: {
     // JS
@@ -115,6 +116,7 @@ module.exports = {
         },
       },
     ],
+    'react-refresh/only-export-components': 'error',
   },
   ignorePatterns: [
     'dist',

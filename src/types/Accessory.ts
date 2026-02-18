@@ -1,6 +1,6 @@
 import { Category } from './Category';
 
-export type Accessory = {
+export interface Accessory {
   id: string;
   category: Category.Accessories;
   namespaceId: string;
@@ -21,4 +21,4 @@ export type Accessory = {
   processor: string;
   ram: string;
   cell: string[];
-};
+}

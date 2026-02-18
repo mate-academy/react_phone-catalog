@@ -4,8 +4,8 @@ import useReactRouterBreadcrumbs, {
   BreadcrumbsRoute,
 } from 'use-react-router-breadcrumbs';
 import cn from 'clsx';
-import Home from '/src/assets/icons/home.svg?react';
-import ArrowRight from '/src/assets/icons/arrow-right.svg?react';
+import Home from '/src/images/icons/home.svg?react';
+import ArrowRight from '/src/images/icons/arrow-right.svg?react';
 import { FC } from 'react';
 
 type CustomBreadcrumbsRoute = BreadcrumbsRoute & {
@@ -13,7 +13,7 @@ type CustomBreadcrumbsRoute = BreadcrumbsRoute & {
 };
 
 const HomeBreadcrumb: BreadcrumbComponentType = () => (
-  <Home className="size-4 fill-primary" />
+  <Home className="fill-primary dark:fill-d-white size-4" />
 );
 
 const defaultRoutes = [{ path: '/', breadcrumb: HomeBreadcrumb }];
@@ -28,7 +28,7 @@ export const Breadcrumbs: FC<Props> = ({ routes = [], className }) => {
 
   return (
     <nav className={cn('', className)}>
-      <ol className="flex items-center">
+      <ul className="flex items-center">
         {breadcrumbs.map(({ breadcrumb, match, location }, index) => {
           const isCurrent = match.pathname === location.pathname;
           const customRoute = match.route as CustomBreadcrumbsRoute;
@@ -39,7 +39,7 @@ export const Breadcrumbs: FC<Props> = ({ routes = [], className }) => {
               {index > 0 && (
                 <ArrowRight
                   aria-hidden
-                  className="mx-2 size-4 fill-secondary"
+                  className="fill-secondary dark:fill-d-icons mx-2 size-4"
                 />
               )}
 
@@ -50,7 +50,7 @@ export const Breadcrumbs: FC<Props> = ({ routes = [], className }) => {
               ) : (
                 <NavLink
                   to={targetPath}
-                  className="flex text-small text-primary"
+                  className="text-small text-primary dark:text-d-secondary flex"
                 >
                   {breadcrumb}
                 </NavLink>
@@ -58,7 +58,7 @@ export const Breadcrumbs: FC<Props> = ({ routes = [], className }) => {
             </li>
           );
         })}
-      </ol>
+      </ul>
     </nav>
   );
 };

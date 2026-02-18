@@ -1,37 +1,37 @@
 import { useSelector } from 'react-redux';
-import { Breadcrumbs } from '../components/Breadcrumbs';
-import { ProductsList } from '../components/ProductsList';
-import { FC } from 'react';
 import { favouritesSelectors } from '../selectors/favouritesSelectors';
+import { ProductList } from '../components/Product/ProductList';
+import { FC } from 'react';
 
 export const FavouritesPage: FC = () => {
   const favouritesProducts = useSelector(favouritesSelectors.selectAll);
-  const isEmpty = favouritesProducts.length === 0;
+
+  if (!favouritesProducts || favouritesProducts.length < 1) {
+    return (
+      <div className="mt-6 flex flex-col items-center justify-center gap-6 sm:mt-8 xl:mt-14">
+        <img
+          src="/images/product-not-found.webp"
+          alt="Favourites is empty"
+          className="w-full max-w-1/2 sm:max-w-1/3"
+        />
+        <h2 className="text-h2 text-primary dark:text-d-white text-center">
+          Favourites is empty
+        </h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="">
-      <Breadcrumbs className="mt-6" />
-
-      <h1 className="mt-6 text-h1 sm:mt-10">Favourites</h1>
-      <p className="mt-2 text-body text-secondary">
+    <>
+      <h1 className="text-h1 text-primary dark:text-d-white mt-6 sm:mt-10">
+        Favourites
+      </h1>
+      <p className="text-body text-secondary dark:text-d-secondary mt-2">
         {favouritesProducts.length}{' '}
         {favouritesProducts.length === 1 ? 'item' : 'items'}
       </p>
 
-      {isEmpty ? (
-        <div className="flex flex-col items-center">
-          <img
-            src="/images/product-not-found.webp"
-            alt="Favourites is empty"
-            className="object-contain h-75"
-          />
-          <h2 className="text-h2 text-primary">Favourites is empty</h2>
-        </div>
-      ) : (
-        <div>
-          <ProductsList products={favouritesProducts} className="mt-6" />
-        </div>
-      )}
-    </div>
+      <ProductList products={favouritesProducts} className="mt-6" />
+    </>
   );
 };

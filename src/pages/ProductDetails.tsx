@@ -1,79 +1,49 @@
-import { FC, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { FC, Fragment, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import cn from 'clsx';
 import { useGetProductsQuery } from '../services/productsApi';
 import { useGetProductsByCategoryQuery } from '../services/productDetailsApi';
 import { selectAllProducts } from '../selectors/productsSelectors';
 import { selectProductDetailsById } from '../selectors/productDetailsSelectors';
+import { useCart } from '../hooks/useCart';
+import { useFavourites } from '../hooks/useFavourites';
+import { formatCell } from '../utils/formatCell';
+import { formatMemory } from '../utils/formatMemory';
+import { formatScreen } from '../utils/formatScreen';
+import { Button } from '../components/Button';
 import { BackButton } from '../components/BackButton';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { PhotoSlider } from '../components/PhotoSlider';
-import { ProductsSlider } from '../components/ProductsSlider';
-import Favourites from '/src/assets/icons/favourites.svg?react';
-import FavouritesFilled from '/src/assets/icons/favourites-filled.svg?react';
+import { PhotoSlider } from '../components/Slider/Photo';
+import { ProductSlider } from '../components/Slider/Product';
+import Favourites from '/src/images/icons/favourites.svg?react';
+import FavouritesFilled from '/src/images/icons/favourites-filled.svg?react';
 import type { RootState } from '../store';
-import { ProductDetails } from '../types';
-import { cartSelectors } from '../selectors/cartSelectors';
-import { cartActions } from '../features/cartSlice';
-import { favouritesSelectors } from '../selectors/favouritesSelectors';
-import { favouritesActions } from '../features/favouritesSlice';
-import { Button } from '../components/Button';
+import { Category, Product, ProductDetails } from '../types';
+import { useRandomProducts } from '../hooks/useRandomProducts';
+import { ColorSelector } from '../components/ColorSelector';
+import { CapacitySelector } from '../components/CapacitySelector';
 
-export const ProductDetailsPage: FC = () => {
-  const { itemId } = useParams<{ itemId: string }>();
-  const dispatch = useDispatch();
-  const { isLoading: isSummaryLoading } = useGetProductsQuery();
-  const allProducts = useSelector(selectAllProducts);
-  const randomProducts = [...allProducts].sort(() => Math.random() - 0.5);
+interface Props {
+  product: Product;
+  products: Product[];
+  productDetails: ProductDetails;
+}
 
-  const product = useMemo(
-    () => allProducts.find(p => p.itemId === itemId),
-    [allProducts, itemId],
-  );
-
-  const isInCart = useSelector(
-    (state: RootState) => itemId && cartSelectors.selectById(state, itemId),
-  );
-
-  const handleAddToCart = () => {
-    return product && dispatch(cartActions.addToCart(product));
-  };
-
-  const isFavourite = useSelector(
-    (state: RootState) =>
-      itemId && favouritesSelectors.selectById(state, itemId),
-  );
-
-  const handleToggleFavourite = () => {
-    return product && dispatch(favouritesActions.toggleFavourite(product));
-  };
-
-  const category = product?.category;
-
-  const { isLoading: isDetailsLoading } = useGetProductsByCategoryQuery(
-    category!,
-    { skip: !category },
-  );
-
-  const productDetails = useSelector((state: RootState) =>
-    category && itemId
-      ? selectProductDetailsById(state, category, itemId)
-      : null,
-  );
-
-  if (isSummaryLoading || isDetailsLoading) {
-    return <h1 className="text-h1">Loading...</h1>;
-  }
-
-  if (!itemId || !product || !productDetails) {
-    return <h1 className="text-h1">Product not found!</h1>;
-  }
+const ProductDetailsContent: FC<Props> = ({
+  product,
+  products,
+  productDetails,
+}) => {
+  const { isInCart, handleAddToCart } = useCart(product);
+  const { isInFavourites, handleToggleFavourite } = useFavourites(product);
 
   const {
+    id,
     name,
     namespaceId,
     description,
+    category,
     color,
     colorsAvailable,
     capacityAvailable,
@@ -88,13 +58,7 @@ export const ProductDetailsPage: FC = () => {
     images,
   } = productDetails;
 
-  const formatLink = ({
-    namespaceId: nam,
-    capacity: cap,
-    color: col,
-  }: Pick<ProductDetails, 'namespaceId' | 'capacity' | 'color'>) => {
-    return `/product/${nam}-${cap}-${col}`.toLowerCase();
-  };
+  const randomProducts = useRandomProducts(products, id, namespaceId);
 
   return (
     <div className="pb-14 sm:pb-16 xl:pb-20">
@@ -102,8 +66,7 @@ export const ProductDetailsPage: FC = () => {
         routes={[
           {
             path: '/product',
-            breadcrumb:
-              category && category[0].toUpperCase() + category.slice(1),
+            breadcrumb: category[0].toUpperCase() + category.slice(1),
             linkTo: `/${category}`,
           },
           { path: '/product/:itemId', breadcrumb: name },
@@ -113,96 +76,42 @@ export const ProductDetailsPage: FC = () => {
 
       <BackButton className="mt-10" />
 
-      <h1 className="mt-4 text-h1">{name}</h1>
+      <h1 className="text-h1 text-primary dark:text-d-white mt-4">{name}</h1>
 
       <div className="sm:pageGrid mt-8 sm:mt-10">
         <PhotoSlider images={images} className="sm:col-span-7 xl:col-span-12" />
 
         <div className="sm:col-span-5 sm:col-start-8 xl:col-span-7 xl:col-start-14">
-          <div className="flex flex-col pb-6 shadow-down shadow-elements">
-            <div className="text-small text-secondary">Available colors</div>
-            <ul className="flex gap-2 mt-2">
-              {colorsAvailable.map(value => (
-                <li key={value}>
-                  <NavLink
-                    to={formatLink({
-                      namespaceId,
-                      capacity,
-                      color: value,
-                    })}
-                    className={cn(
-                      'flex justify-center items-center size-8 rounded-full border-2 border-white shadow-inner shadow-elements',
-                      {
-                        'bg-[#fb1230]': value === 'red',
-                        'bg-[#ee7762]': value === 'coral',
-                        'bg-[#e6c7c2]': value === 'rosegold',
-                        'bg-[#fddcd7]': value === 'pink',
-                        'bg-[#ffeacf]': value === 'gold',
-                        'bg-[#fdea8c]': value === 'yellow',
-                        'bg-[#e1f8dc]': value === 'green',
-                        'bg-[#4e5850]': value === 'midnightgreen',
-                        'bg-[#6ba1c4]': value === 'skyblue',
-                        'bg-[#96badc]': value === 'sierrablue',
-                        'bg-[#276787]': value === 'blue',
-                        'bg-[#e5ddea]': value === 'purple',
-                        'bg-[#f0f0dc]': value === 'starlight',
-                        'bg-[#f9f6ef]': value === 'white',
-                        'bg-[#c0c0c0]': value === 'silver',
-                        'bg-[#696a6e]': value === 'graphite',
-                        'bg-[#535150]': value === 'spacegray',
-                        'bg-[#4b4845]': value === 'spaceblack',
-                        'bg-[#343b43]': value === 'midnight',
-                        'bg-[#201d24]': value === 'black',
-                        'shadow-primary': value === color,
-                      },
-                    )}
-                  ></NavLink>
-                </li>
-              ))}
-            </ul>
+          <ColorSelector
+            namespaceId={namespaceId}
+            capacity={capacity}
+            colorsAvailable={colorsAvailable}
+          />
+
+          <CapacitySelector
+            namespaceId={namespaceId}
+            capacityAvailable={capacityAvailable}
+            color={color}
+          />
+
+          <div className="mt-8 flex items-center gap-2">
+            <h2 className="text-h2 text-primary dark:text-d-white">
+              ${priceDiscount}
+            </h2>
+
+            <span className="text-secondary dark:text-d-secondary text-[22px] leading-none font-medium tracking-normal line-through">
+              ${priceRegular}
+            </span>
           </div>
 
-          <div className="flex flex-col mt-6 pb-6 shadow-down shadow-elements">
-            <div className="text-small text-secondary">Select capacity</div>
-            <ul className="flex gap-2 mt-2">
-              {capacityAvailable.map(value => (
-                <li key={value}>
-                  <NavLink
-                    to={formatLink({
-                      namespaceId,
-                      capacity: value,
-                      color,
-                    })}
-                    className={cn(
-                      'flex justify-center items-center h-8 px-2 shadow-inner shadow-icons',
-                      {
-                        'bg-primary shadow-primary text-white':
-                          capacity === value,
-                      },
-                    )}
-                  >
-                    {value}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex items-center gap-2 mt-8">
-            <h2 className="text-h3 text-primary">${priceDiscount}</h2>
-
-            <span className="line-through text-secondary">${priceRegular}</span>
-          </div>
-
-          <div className="flex h-10 gap-2">
+          <div className="mt-4 flex gap-2">
             <Button
               onClick={handleAddToCart}
               className={cn(
-                'flex justify-center items-center grow py-2.5 text-buttons transition',
-                {
-                  'bg-primary text-white hover:shadow-[0_3px_13px_0] hover:shadow-hover-bs': true,
-                  'bg-white text-green shadow-inner shadow-elements hover:shadow-primary': false,
-                },
+                'text-buttons flex h-12 w-full flex-[1_1_auto] items-center justify-center transition',
+                isInCart
+                  ? 'text-green dark:text-d-white shadow-elements dark:bg-d-surface2 dark:hover:bg-d-icons hover:shadow-primary bg-white shadow-inner dark:shadow-none'
+                  : 'bg-primary dark:bg-d-accent hover:shadow-hover-bs dark:hover:bg-d-hover-bs dark:text-d-white text-white hover:shadow-[0_3px_13px_0]',
               )}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
@@ -211,107 +120,170 @@ export const ProductDetailsPage: FC = () => {
             <Button
               onClick={handleToggleFavourite}
               className={cn(
-                'aspect-square p-3 shadow-inner transition hover:shadow-primary',
-                {
-                  'shadow-icons': true,
-                  'shadow-elements': false,
-                },
+                'hover:shadow-primary flex aspect-square size-12 flex-[0_0_auto] items-center justify-center p-4 shadow-inner transition',
+                isInFavourites
+                  ? 'shadow-elements dark:shadow-d-elements dark:hover:shadow-d-icons'
+                  : 'shadow-icons dark:bg-d-surface2 dark:hover:bg-d-icons dark:shadow-none',
               )}
             >
-              {isFavourite ? (
-                <FavouritesFilled className="fill-red" />
+              {isInFavourites ? (
+                <FavouritesFilled className="fill-red dark:fill-d-red" />
               ) : (
-                <Favourites className="fill-primary" />
+                <Favourites className="fill-primary dark:fill-d-white" />
               )}
             </Button>
           </div>
 
-          <table className="block mt-8">
+          <table className="mt-8 block">
             <tbody className="flex flex-col gap-2">
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Screen</td>
-                <td className="text-body text-primary">{screen}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Resolution</td>
-                <td className="text-body text-primary">{resolution}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Processor</td>
-                <td className="text-body text-primary">{processor}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">RAM</td>
-                <td className="text-body text-primary">{ram}</td>
-              </tr>
+              {[
+                { title: 'Screen', text: formatScreen(screen) },
+                { title: 'Resolution', text: resolution },
+                { title: 'Processor', text: processor },
+                { title: 'RAM', text: formatMemory(ram) },
+              ].map(({ title, text }) => (
+                <tr key={title} className="flex justify-between">
+                  <td className="text-body text-secondary dark:text-d-secondary">
+                    {title}
+                  </td>
+                  <td className="text-body text-primary dark:text-d-white">
+                    {text}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
-        <section className="sm:col-span-12 mt-14 sm:mt-16 xl:mt-20">
-          <h3 className="pb-4 text-h3 text-primary shadow-down shadow-elements">
+        <section className="mt-14 sm:col-span-12 sm:mt-16 xl:mt-20">
+          <h3 className="text-h3 text-primary dark:text-d-white shadow-bottom shadow-elements dark:shadow-d-elements pb-4">
             About
           </h3>
 
-          {description.map(part => (
-            <div key={part.title} className="mt-8">
-              <h4 className="text-primary">{part.title}</h4>
-              <p className="text-body text-secondary">{part.text}</p>
-            </div>
+          {description.map(({ title, text }) => (
+            <Fragment key={title}>
+              <h4 className="text-h4 text-primary dark:text-d-white mt-8">
+                {title}
+              </h4>
+              {text.map((p, i) => (
+                <p
+                  key={i}
+                  className="text-body text-secondary dark:text-d-secondary mt-4"
+                >
+                  {p}
+                </p>
+              ))}
+            </Fragment>
           ))}
         </section>
 
-        <section className="sm:col-span-12 xl:col-span-11 xl:col-start-14 mt-14 sm:mt-16 xl:mt-20">
-          <h3 className="pb-4 text-h3 text-primary shadow-down shadow-elements">
+        <section className="mt-14 sm:col-span-12 sm:mt-16 xl:col-span-11 xl:col-start-14 xl:mt-20">
+          <h3 className="text-h3 text-primary dark:text-d-white shadow-bottom shadow-elements dark:shadow-d-elements pb-4">
             Tech specs
           </h3>
 
-          <div className="w-full mt-4 shadow-down shadow-elements content-['']"></div>
+          <div className="shadow-bottom shadow-elements mt-4 w-full content-['']"></div>
 
-          <table className="block mt-6">
+          <table className="mt-6 block">
             <tbody className="flex flex-col gap-2">
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Screen</td>
-                <td className="text-body text-primary">{screen}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Resolution</td>
-                <td className="text-body text-primary">{resolution}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Processor</td>
-                <td className="text-body text-primary">{processor}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">RAM</td>
-                <td className="text-body text-primary">{ram}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Built in memory</td>
-                <td className="text-body text-primary">{capacity}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Camera</td>
-                <td className="text-body text-primary">{}</td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Zoom</td>
-                <td className="text-body text-primary"></td>
-              </tr>
-              <tr className="flex justify-between">
-                <td className="text-body text-secondary">Cell</td>
-                <td className="text-body text-primary">{cell}</td>
-              </tr>
+              {[
+                { title: 'Screen', text: formatScreen(screen) },
+                { title: 'Resolution', text: resolution },
+                { title: 'Processor', text: processor },
+                { title: 'RAM', text: formatMemory(ram) },
+                { title: 'Built in memory', text: formatMemory(capacity) },
+                { title: 'Camera', text: capacity },
+                { title: 'Zoom', text: capacity },
+                { title: 'Cell', text: formatCell(cell) },
+              ].map(({ title, text }) => (
+                <tr key={title} className="flex justify-between">
+                  <td className="text-body text-secondary dark:text-d-secondary">
+                    {title}
+                  </td>
+                  <td className="text-body text-primary dark:text-d-white">
+                    {text}
+                  </td>
+                </tr>
+              ))}
+
+              {(category === Category.Phones ||
+                category === Category.Tablets) && (
+                <>
+                  <tr className="flex justify-between">
+                    <td className="text-body text-secondary">Camera</td>
+                    <td className="text-body text-primary">
+                      {productDetails.camera}
+                    </td>
+                  </tr>
+                  <tr className="flex justify-between">
+                    <td className="text-body text-secondary">Zoom</td>
+                    <td className="text-body text-primary">
+                      {productDetails.zoom}
+                    </td>
+                  </tr>
+                </>
+              )}
             </tbody>
           </table>
         </section>
       </div>
 
-      <ProductsSlider
+      <ProductSlider
         title="You may also like"
         products={randomProducts}
         className="mt-14 sm:mt-16 xl:mt-20"
       />
     </div>
+  );
+};
+
+export const ProductDetailsPage: FC = () => {
+  const { itemId } = useParams();
+  const { isLoading: isLoadingProducts } = useGetProductsQuery();
+  const allProducts = useSelector(selectAllProducts);
+
+  const product = useMemo(
+    () => allProducts.find(p => p.itemId === itemId),
+    [allProducts, itemId],
+  );
+
+  const productCategory = product?.category;
+
+  const { isLoading: isLoadingProductDetails } = useGetProductsByCategoryQuery(
+    productCategory!,
+    { skip: !productCategory },
+  );
+
+  const productDetails = useSelector((state: RootState) =>
+    productCategory && itemId
+      ? selectProductDetailsById(state, productCategory, itemId)
+      : null,
+  );
+
+  if (isLoadingProducts || isLoadingProductDetails) {
+    return <h1 className="text-h1 text-primary">Loading...</h1>;
+  }
+
+  if (!itemId || !product || !productDetails) {
+    return (
+      <div className="mt-6 flex flex-col items-center justify-center gap-6 sm:mt-8 xl:mt-14">
+        <img
+          src="/images/product-not-found.webp"
+          alt="Page not found"
+          width={819}
+          height={787}
+          className="w-full max-w-1/2 sm:max-w-1/3"
+        />
+        <h1 className="text-h1 text-primary text-center">Product not found</h1>
+      </div>
+    );
+  }
+
+  return (
+    <ProductDetailsContent
+      product={product}
+      products={allProducts}
+      productDetails={productDetails}
+    />
   );
 };

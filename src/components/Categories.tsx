@@ -1,56 +1,73 @@
 import { Link } from 'react-router-dom';
+import { selectPreparedProducts } from '../selectors/productsSelectors';
+import cn from 'clsx';
+import { useGetProductsQuery } from '../services/productsApi';
+import { useSelector } from 'react-redux';
+import type { FC } from 'react';
+import type { RootState } from '../store';
+import { CategoriesType } from '../constants/categories';
+import { Category } from '../types';
 
-const categories = [
-  {
-    title: 'Phones',
-    href: '/phones',
-    image: {
-      src: '/images/categories/phones.webp',
-      alt: 'Phones category',
-      bg: '#6d6474',
-    },
-  },
-  {
-    title: 'Tablets',
-    href: '/tablets',
-    image: {
-      src: '/images/categories/tablets.webp',
-      alt: 'Tablets category',
-      bg: '#8d8d92',
-    },
-  },
-  {
-    title: 'Accessories',
-    href: '/accessories',
-    image: {
-      src: '/images/categories/accessories.webp',
-      alt: 'Accessories category',
-      bg: '#973d5f',
-    },
-  },
-];
+type Props = {
+  categories: CategoriesType;
+  className?: string;
+};
 
-export const Categories = () => {
+export const Categories: FC<Props> = ({ categories, className }) => {
+  useGetProductsQuery();
+
+  const phonesCount = useSelector((state: RootState) =>
+    selectPreparedProducts(state, Category.Phones),
+  ).length;
+
+  const tabletsCount = useSelector((state: RootState) =>
+    selectPreparedProducts(state, Category.Tablets),
+  ).length;
+
+  const accessoriesCount = useSelector((state: RootState) =>
+    selectPreparedProducts(state, Category.Accessories),
+  ).length;
+
+  const categoriesCounts = {
+    Phones: phonesCount,
+    Tablets: tabletsCount,
+    Accessories: accessoriesCount,
+  };
+
   return (
-    <ul className="pageGrid mt-[24px]">
-      {categories.map(({ title, href, image }) => (
-        <li key={title} className="col-span-4 group xl:col-span-8">
-          <Link to={href} className="flex flex-col">
-            <div
-              className={`relative overflow-hidden before:content-[""] before:block before:pb-[100%]`}
-              style={{ backgroundColor: image.bg }}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="absolute origin-bottom-right object-contain transition-transform top-[10%] left-[27%] size-full object-bottom-left group-hover:scale-105"
-              />
-            </div>
-            <h4 className="mt-[24px] text-h4 text-primary">{title}</h4>
-            <p className="mt-[4px] text-body text-secondary">models</p>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <section className={cn('', className)}>
+      <h2 className="text-h2 text-primary dark:text-d-white">
+        Shop by category
+      </h2>
+
+      <ul className="pageGrid mt-6">
+        {categories.map(({ title, href, image }) => {
+          const categoryCount = categoriesCounts[title];
+
+          return (
+            <li key={title} className="group col-span-4 xl:col-span-8">
+              <Link to={href} className="flex flex-col">
+                <div
+                  className={`relative overflow-hidden before:block before:pb-[100%] before:content-[""]`}
+                  style={{ backgroundColor: image.bg }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="absolute top-[10%] left-[27%] size-full origin-bottom-right object-contain object-bottom-left transition-transform group-hover:scale-105"
+                  />
+                </div>
+                <h4 className="text-h4 text-primary dark:text-d-white mt-6">
+                  {title}
+                </h4>
+                <p className="text-body text-secondary dark:text-d-secondary mt-1">
+                  {categoryCount} {categoryCount === 1 ? 'model' : 'models'}
+                </p>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 };
