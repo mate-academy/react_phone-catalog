@@ -261,7 +261,9 @@ export const ProductDetailsPage: FC = () => {
   );
 
   if (isLoadingProducts || isLoadingProductDetails) {
-    return <h1 className="text-h1 text-primary">Loading...</h1>;
+    return (
+      <h1 className="text-h1 text-primary dark:text-d-white">Loading...</h1>
+    );
   }
 
   if (!itemId || !product || !productDetails) {
@@ -274,7 +276,9 @@ export const ProductDetailsPage: FC = () => {
           height={787}
           className="w-full max-w-1/2 sm:max-w-1/3"
         />
-        <h1 className="text-h1 text-primary text-center">Product not found</h1>
+        <h1 className="text-h1 text-primary dark:text-d-white text-center">
+          Product not found
+        </h1>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Category, ProductDetails } from '../types';
 
 export const productDetailsApi = createApi({
   reducerPath: 'productDetailsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: './api/' }),
   endpoints: build => ({
     getProductsByCategory: build.query<ProductDetails[], Category>({
       query: category => `${category}.json`,
