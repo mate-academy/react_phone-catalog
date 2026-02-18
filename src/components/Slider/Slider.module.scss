@@ -1,0 +1,146 @@
+@import '../../mixins';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+.main {
+  margin-top: 72px;
+  overflow-x: hidden;
+
+  @include on-tablet {
+    margin-top: 80px;
+  }
+
+  @include on-desktop {
+    margin-top: 120px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  padding: 0 16px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #313237;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.slider {
+  width: 100%;
+  margin-top: 24px;
+
+  @include on-tablet {
+    box-sizing: border-box;
+    padding: 32px 24px 0;
+    position: relative;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    padding: 56px 32px;
+    margin-top: 0;
+  }
+
+  &_image {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      height: 189px;
+      box-sizing: border-box;
+      width: 80%;
+      margin: 0 auto;
+
+    }
+
+    @include on-desktop {
+      height: 400px;
+      width: 90%;
+    }
+  }
+
+  &_image img {
+    width: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+
+  &_button {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      top: 0;
+      width: 32px;
+      background-color: white;
+      position: absolute;
+      height: 189px;
+      border: 1px solid #B4BDC3;
+      margin-top: 32px;
+      z-index: 10;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      margin-top: 56px;
+    }
+
+    &_prev {
+      left: 24px;
+    }
+
+    &_next {
+      right: 24px;
+    }
+  }
+}
+
+.customPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 10px;
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    background: #E2E6E9;
+    opacity: 0.7;
+    margin: 0 6px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    background: #E2E6E9;
+    opacity: 0.7;
+    margin: 0 6px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background: #313237;
+    opacity: 1;
+  }
+}

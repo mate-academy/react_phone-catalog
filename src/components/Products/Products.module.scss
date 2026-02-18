@@ -1,0 +1,175 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
+@import '../../mixins';
+
+.main {
+  margin: 72px 16px 0;
+  font-family: Montserrat, sans-serif;
+
+  @include on-tablet {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+.home {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  @include on-tablet {
+    margin-left: 8px;
+  }
+
+  &_text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    color: #89939A;
+    margin: 0;
+    text-transform: capitalize;
+  }
+}
+
+.title {
+  margin: 24px 0 0;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  text-transform: capitalize;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 40px;
+  }
+
+  &_descript {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: #89939A;
+    margin: 8px 0 0;
+  }
+}
+
+.sorting {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  margin-top: 32px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &_title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #89939A;
+  }
+
+  &_block {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-top: 4px;
+    font-weight: 500;
+    min-width: 136px;
+    color: #313237;
+
+    @include on-tablet {
+      min-width: 180px;
+    }
+
+    @include on-desktop {
+      min-width: 170px;
+    }
+
+    /* прибираємо стандартну стрілку */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* додаємо кастомну стрілку через background */
+    background-image: url('img/arrow_down.svg'); // твоя кастомна стрілка
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+  }
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+.catalog {
+  margin: 24px 16px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    gap: 16px;
+    margin: 24px 24px 0;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pagination {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  &_one {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+    background-color: white;
+    color: #313237;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+
+    &:hover {
+      background-color: #f3f3f3;
+    }
+
+    &--active {
+      background-color: #313237;
+      color: white;
+      border-color: #313237;
+    }
+  }
+
+  span {
+    color: #89939A;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0 4px;
+  }
+}
