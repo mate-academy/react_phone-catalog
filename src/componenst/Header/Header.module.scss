@@ -128,11 +128,19 @@
 
     @media (min-width: $desktop-min) {
       height: 64px;
+      width: 64px;
     }
+
+
 
     img {
       width: 16px;
       height: 16px;
+
+      @media (min-width: $desktop-min) {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     &::after {
@@ -178,6 +186,12 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 0 1.5px #0f1121;
+
+    @media (min-width: $desktop-min) {
+      font-size: 11px;
+      top: 17px;
+      right: 15px;
+    }
   }
 
   &__burger {
