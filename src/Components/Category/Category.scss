@@ -1,0 +1,76 @@
+@import '../../utils/';
+
+.category {
+  &__title {
+    @include title-of-blocks;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 80px;
+
+    @media(max-width: $tablet){
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      margin-bottom: 56px;
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 20%;
+      left: 20%;
+
+      &-wrapper {
+        height: 368px;
+        width: 368px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: $tablet) {
+          height: 187px;
+          width: 187px;
+        }
+
+        @media (max-width: $mobile) {
+          height: 288px;
+          width: 100%;
+        }
+      }
+    }
+
+    &--description {
+      margin-top: 24px;
+    }
+
+    &--name {
+      font-family: $font-family;
+      font-size: 20px;
+      font-weight: $font-weight-regular;
+      text-decoration: none;
+      color: $color-primary;
+
+      @media(max-width: $mobile) {
+        font-size: 22px;
+      }
+    }
+
+    &--count {
+      @include body-text;
+
+      color: $color-secondary;
+      margin: 0;
+    }
+  }
+}

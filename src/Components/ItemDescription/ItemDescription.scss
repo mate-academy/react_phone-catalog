@@ -1,0 +1,33 @@
+@import '../../utils';
+
+.item-about{
+  width: 560px;
+  margin-bottom: 80px;
+
+  &__title{
+    @include title-in-item-block;
+
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  &__subtitle{
+    margin: 0;
+    font-family: $font-family;
+    font-weight: $font-weight-medium;
+    font-size: 20px;
+
+    margin-bottom: 16px;
+
+    color: $color-primary;
+  }
+
+  &__text{
+    margin: 0;
+    margin-bottom: 32px;
+
+    @include body-text;
+
+    color: $color-secondary;
+  }
+}

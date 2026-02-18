@@ -1,0 +1,46 @@
+@import '../../utils/';
+
+.item-tech {
+  width: 100%;
+  max-width: 571px;
+  margin-bottom: 8px;
+
+  @media (max-width: $tablet) {
+    max-width: none;
+  }
+
+  &__headline {
+    @include title-in-item-block;
+
+    margin: 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: 8px;
+    &--card {
+      padding: 0 32px;
+    }
+    &--page{
+      padding: 0;
+    }
+  }
+
+  &__name {
+    @include small-text;
+
+    font-weight: $font-weight-regular;
+    color: $color-secondary;
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    @include small-text;
+
+    font-weight: $font-weight-regular;
+    color: $color-primary;
+  }
+}

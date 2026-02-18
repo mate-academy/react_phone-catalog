@@ -1,0 +1,18 @@
+@import '../../utils/';
+
+.burger-menu {
+  display:none;
+  width: 48px;
+  height: 100%;
+  align-items: center;
+  justify-content:center;
+  padding: 0;
+  background: $color-white;
+  border: 0;
+  border-left: 1px solid $color-elements;
+  cursor: pointer;
+
+  @media (max-width: $mobile) {
+    display: flex;
+  }
+}

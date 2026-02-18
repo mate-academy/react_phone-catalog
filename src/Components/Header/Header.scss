@@ -1,0 +1,47 @@
+@import '../../utils/';
+
+.header {
+  position: fixed;
+  height: $header-height;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  background-color: $color-white;
+
+  @media (max-width: $mobile) {
+    height: $header-height-tablet;
+  }
+
+  &_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: $header-height;
+    border-bottom: 1px solid $color-elements;
+
+    @media (max-width: $mobile) {
+      height: $header-height-tablet;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: $tablet) {
+      gap: 16px;
+    }
+  }
+
+  &__shopping {
+    display: flex;
+    height: 100%;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+}
