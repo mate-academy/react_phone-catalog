@@ -1,0 +1,109 @@
+@import '../../../../styles/main';
+
+.banner {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 48px;
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__swiper {
+    @include on-tablet {
+      border-radius: 16px;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    margin-inline: -24px;
+
+    @include on-tablet {
+      margin-inline: 0;
+      aspect-ratio: 3 / 1;
+    }
+  }
+
+  &__sliderImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+
+    @include on-tablet {
+      max-width: calc(100% - 96px);
+    }
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 32px;
+  background: #fff;
+  border: 1px solid $icons-color;
+  border-radius: 16px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.prev {
+    left: 0;
+
+    img {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.next {
+    right: 0;
+  }
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

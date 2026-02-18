@@ -1,0 +1,139 @@
+@import '../../styles/main';
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+
+  /* Прихований стан */
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+
+  &.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    box-shadow: 0 1px 0 $elements-color;
+  }
+
+  .logo {
+    height: 22px;
+    margin-left: 16px;
+  }
+
+  .closeButton {
+    background: none;
+    border: none;
+    padding: 16px;
+    box-shadow: -1px 0 0 $elements-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+
+    li {
+      list-style: none;
+    }
+  }
+
+  .link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939a;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+
+    &.active {
+      color: #000;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #000;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    box-shadow: 0 -1px 0 $elements-color;
+    height: 64px;
+
+    &_link {
+      position: relative;
+      background: none;
+      border: none;
+      width: 50vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:last-child {
+        box-shadow: -1px 0 0 $elements-color;
+      }
+
+      &.active {
+        color: $primary-color;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    top: 25%;
+    right: 45%;
+    border: 2px solid $white;
+    border-radius: 50%;
+    font-size: 9px;
+    width: 16px;
+    height: 16px;
+    color: $white;
+    background-color: $accent-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,350 @@
+@import '../../styles/main';
+
+.productDetails {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .id {
+    color: #89939a;
+    font-size: 14px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 16px;
+
+    @include on-tablet {
+      gap: 10px;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  }
+
+  &__galleryList {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    @include on-tablet {
+      align-self: self-start;
+      flex-direction: column;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__thumbnail {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: $primary-color 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__mainImage {
+    display: flex;
+    justify-content: center;
+    width: 288px;
+    height: 288px;
+    cursor: pointer;
+
+    @include on-tablet {
+      order: 1;
+      align-self: self-start;
+    }
+
+    @include on-desktop {
+      height: 464px;
+      width: 464px;
+    }
+
+    & img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+
+      @include on-tablet {
+        width: inherit;
+      }
+    }
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      span {
+        display: block;
+        font-size: 14px;
+        color: #89939a;
+        margin-bottom: 8px;
+      }
+
+      .colorDots {
+        display: flex;
+        gap: 8px;
+
+        &__wrapper {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 1px solid $elements-color;
+          padding: 2px;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            border-color: $primary-color;
+            transform: scale(1.05);
+          }
+
+          &.active {
+            border-color: $primary-color;
+          }
+        }
+
+        &__dot {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      .capacityOptions {
+        display: flex;
+        gap: 8px;
+
+        button {
+          padding: 8px 16px;
+          border: 1px solid #e2e6e9;
+          background-color: #fff;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: all 0.2s;
+
+          &:hover {
+            border-color: #313237;
+          }
+
+          &.active {
+            color: $white;
+            background-color: $primary-color;
+          }
+        }
+      }
+    }
+
+    .purchase {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .priceBlock {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+
+        .price {
+          font-size: 32px;
+          font-weight: 700;
+        }
+
+        .oldPrice {
+          font-size: 20px;
+          color: #89939a;
+          text-decoration: line-through;
+        }
+      }
+    }
+
+    .shortSpecs {
+      list-style: none;
+      padding: 0;
+      border-top: 1px solid #e2e6e9;
+      margin-top: 16px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 14px;
+        color: #89939a;
+
+        span:last-child {
+          color: #313237;
+        }
+      }
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    .about {
+      flex: 1;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 24px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #313237;
+      }
+    }
+
+    .techSpecs {
+      flex: 1;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 0;
+          border-bottom: 1px solid #e2e6e9;
+          font-size: 14px;
+          color: #313237;
+
+          span:first-child {
+            color: #89939a;
+          }
+        }
+      }
+    }
+  }
+}
+
+.productCard {
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    height: 40px;
+  }
+
+  &__addToCart {
+    flex-grow: 1;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 48px;
+    background-color: $accent-color;
+    transition: all 0.3s;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
+      transform: scale(1.05);
+    }
+
+    &_active {
+      background-color: $white;
+      border: 1px solid $accent-color;
+      color: $accent-color;
+    }
+  }
+
+  &__addToFavorites {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
+    background-image: url('../../assets/icons/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $primary-color;
+      transform: scale(1.05);
+    }
+
+    &_active {
+      background-image: url('../../assets/icons/heart-yellow.svg');
+    }
+  }
+}

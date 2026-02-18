@@ -1,0 +1,51 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 8px;
+}
+
+.pageButton {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid $elements-color;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 48px;
+  transition: all 0.2s;
+
+  &:hover {
+    font-weight: bold;
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.active {
+  font-weight: bold;
+  background-color: $primary-color;
+  color: white;
+}
+
+.arrowButton {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.arrowIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
