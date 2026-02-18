@@ -1,3 +1,43 @@
+@import '../../styles/grid';
+@import '../../styles/variables';
+
 .homePage {
-  padding: 20px;
+  @include container;
+
+  &__banner {
+    padding: 24px 0;
+
+    @media (min-width: $tablet-min) {
+      padding: 32px 0;
+
+    }
+
+    @media (min-width: $desktop-min) {
+      padding: 56px 0;
+    }
+
+    &__text {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: Bold;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+
+      @media (min-width: $tablet-min) {
+        font-size: 48px;
+        line-height: 56px;
+      }
+    }
+  }
+}
+
+/* Slider takes full grid width on all breakpoints */
+.sliderRow {
+  grid-column: 1 / -1;
+
+  /* mobile: bleed past the homePage padding to full viewport width */
+  @media (max-width: calc($tablet-min - 1px)) {
+    margin-inline: (-$mobile-padding);
+  }
 }

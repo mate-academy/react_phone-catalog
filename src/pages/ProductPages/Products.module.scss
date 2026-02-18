@@ -46,11 +46,6 @@
 
     gap: 16px;
 
-    /* Optional: target the direct grid children (cards) for small internal padding
-       This keeps spacing consistent even if cards don't include their own outer margin */
-    & > .productsPage__card {
-      padding: 8px 6px;
-    }
   }
 
   /* = Shared state block (loading / empty / error) */

@@ -13,7 +13,7 @@
 
   // Tablet: 12 columns, stretched
   @media (min-width: $tablet-min) {
-    padding: 0 $tablet-padding;
+    padding: 0;
     grid-template-columns: repeat($tablet-columns, 1fr);
     gap: $tablet-gap;
   }
@@ -23,7 +23,7 @@
     max-width: $desktop-container-max;
     grid-template-columns: repeat($desktop-columns, $desktop-column-width);
     gap: $desktop-gap;
-    padding: 0 $tablet-padding;
+    padding: 0;
   }
 }
 
