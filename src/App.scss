@@ -22,6 +22,18 @@
   margin: 0;
 
 
+  section {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
   h1.visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -67,7 +79,13 @@ h3 {
   letter-spacing: 0%;
   color: #0F0F11;
 
-  margin-top: 56px;
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    white-space: nowrap;
+  }
+
 }
 
 h4 {

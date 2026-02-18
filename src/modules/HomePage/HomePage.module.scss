@@ -2,6 +2,8 @@
 @import '../../utils/mixins' ;
 
 .homePage {
+  @include page-grid;
+
   &__content {
       display: flex;
       flex-direction: column;
@@ -62,5 +64,122 @@
     }
 
   }
+    &__shopByCategory {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column: 1/-1;
+
+    gap: 24px 0px;
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+          grid-column: 1/-1;
+          gap: 32px 16px;
+    }
+
+     @include on-desktop {
+        grid-column: 1/-1;
+      }
+
+    }
+
+    &__categoryCard {
+      display: block;
+      height: 363px;
+      grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: auto;
+      height: 327px;
+    }
+
+    @include on-desktop {
+      height: 508px;
+    }
+  }
+
+  &__categoryImg {
+      display: block;
+      height: 288px;
+     background-color: transparent;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
+     box-sizing: border-box;
+
+      @include on-tablet {
+        height: 187px;
+    }
+
+    @include on-desktop {
+        height: 368px;
+    }
+  }
+
+  &__categoryImg--phones {
+      background-image: url(/img/category-phones-mobile-2x.png);
+
+      @include on-tablet {
+        background-image: url(/img/category-phones-tablet-2x.png);
+
+      }
+
+      @include on-desktop {
+        background-image: url(/img/category-phones-desktop-2x.png);
+
+      }
+  }
+
+  &__categoryImg--tablets {
+      background-image: url(/img/category-tablets-mobile-2x.png);
+
+       @include on-tablet {
+        background-image: url(/img/category-tablets-tablet-2x.png);
+
+      }
+
+       @include on-desktop {
+        background-image: url(/img/category-tablets-desktop-2x.png);
+
+      }
+  }
+
+  &__categoryImg--accessories {
+      background-image: url(/img/category-accessories-mobile-2x.png);
+
+       @include on-tablet {
+        background-image: url(/img/category-accessories-tablet-2x.png);
+
+      }
+
+      @include on-desktop {
+        background-image: url(/img/category-accessories-desktop-2x.png);
+
+      }
+  }
+
+
+  &__categoryTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $primary-color;
+    text-decoration: none;
+    padding-top: 24px;
+  }
+
+  &__categoryTotal {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+
+    padding-top: 4px;
+  }
 
 }
+ a {
+  text-decoration: none;
+}
+

@@ -49,7 +49,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 
   return (
     <div className={styles.productsSlider} ref={sliderRef}>
-
       <div className={styles.productsSlider__title}>
         <h3>{children}</h3>
       </div>
@@ -98,13 +97,14 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
                 >
                   {product?.name}
                 </Link>
-                <p className={styles.productsSlider__productPrice}>
-                  <a>${product?.price}&nbsp;</a>
-                </p>
-                <p className={styles.productsSlider__productFullPrice}>
-                  {`$${product?.fullPrice}`}
-                </p>
-
+                <div className={styles.productPriceRow}>
+                  <p className={styles.productsSlider__productPrice}>
+                    <a>${product?.price}&nbsp;</a>
+                  </p>
+                  <p className={styles.productsSlider__productFullPrice}>
+                    {`$${product?.fullPrice}`}
+                  </p>
+                </div>
                 <div className={styles.productsSlider__productInfoTable}>
                   <div className={styles.productFeature}>Screen</div>
                   <div className={styles.productValue}>{product?.screen}</div>

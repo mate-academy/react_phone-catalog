@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import styles from './HomePage.module.scss';
 import ProductsSlider from './components/ProductsSlider/index';
 import PicturesSlider from './components/PicturesSlider/index';
 import { Product } from './../../../public/api/types/Product';
+import { Link } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
   const THRESHOLD = 30;
@@ -23,7 +24,6 @@ export const HomePage: React.FC = () => {
   const sliderPictureRef = useRef<HTMLDivElement | null>(null);
   const sliderProductRef = useRef<HTMLDivElement | null>(null);
   const lenOfProducts = products?.length ?? 0;
-
   const loadProducts = async (signal?: AbortSignal) => {
     try {
       setLoading(true);
@@ -186,6 +186,22 @@ export const HomePage: React.FC = () => {
     setPaused(false);
   };
 
+  const TYPES = {
+    PHONE: 'phones',
+    TABLET: 'tablets',
+    ACCESSORY: 'accessories',
+  };
+  const productsCount = useCallback(
+    (type: string): number => {
+      if (!products) {
+        return 0;
+      }
+
+      return products.filter(p => p.category === type).length;
+    },
+    [products],
+  );
+
   return (
     <>
       <h1 className="visually-hidden">Product Catalog</h1>
@@ -222,20 +238,61 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-      <h3>Brand new models</h3>
-      {!loading && !error && Array.isArray(products) && (
-        <ProductsSlider
-          products={hotPrices}
-          currentIndex={currentProductIndex}
-          handlePrev={handlePrevProduct}
-          handleNext={handleNextProduct}
-          handleTouchStart={handleTouchStartProduct}
-          handleTouchEnd={handleTouchEndProduct}
-          sliderRef={sliderProductRef}
-        >
-          Hot prices
-        </ProductsSlider>
-      )}
+      <section id="brand-new-models" aria-label="Brand new models">
+        <h3>Brand new models</h3>
+      </section>
+
+      <section id="shop-by-category" aria-label="Shop by category">
+        <h3>Shop by category</h3>
+        {!loading && !error && Array.isArray(products) && (
+          <div className={styles.homePage__shopByCategory}>
+            <Link to="/phones" className={`${styles.homePage__categoryCard}`}>
+              <div
+                className={`${styles.homePage__categoryImg} ${styles['homePage__categoryImg--phones']}`}
+              ></div>
+              <div className={styles.homePage__categoryTitle}>
+                Mobile phones
+              </div>
+              <div className={styles.homePage__categoryTotal}>
+                {productsCount(TYPES.PHONE)} models
+              </div>
+            </Link>
+            <Link to="/tablets" className={styles.homePage__categoryCard}>
+              <div
+                className={`${styles.homePage__categoryImg} ${styles['homePage__categoryImg--tablets']}`}
+              ></div>
+              <div className={styles.homePage__categoryTitle}>Tablets</div>
+              <div className={styles.homePage__categoryTotal}>
+                {productsCount(TYPES.TABLET)} models
+              </div>
+            </Link>
+            <Link to="/accessories" className={styles.homePage__categoryCard}>
+              <div
+                className={`${styles.homePage__categoryImg} ${styles['homePage__categoryImg--accessories']}`}
+              ></div>
+              <div className={styles.homePage__categoryTitle}>Accessories</div>
+              <div className={styles.homePage__categoryTotal}>
+                {productsCount(TYPES.ACCESSORY)} models
+              </div>
+            </Link>
+          </div>
+        )}
+      </section>
+      <section id="hot-prices" aria-label="Hot prices">
+        {!loading && !error && Array.isArray(products) && (
+          <ProductsSlider
+            products={hotPrices}
+            currentIndex={currentProductIndex}
+            handlePrev={handlePrevProduct}
+            handleNext={handleNextProduct}
+            handleTouchStart={handleTouchStartProduct}
+            handleTouchEnd={handleTouchEndProduct}
+            sliderRef={sliderProductRef}
+          >
+            Hot prices
+          </ProductsSlider>
+        )}
+      </section>
       <div className="product-catalog">
         {loading && <div>Loading...</div>}
         {error && <div role="alert">Error: {error}</div>}
