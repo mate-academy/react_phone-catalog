@@ -1,0 +1,204 @@
+@import '../../styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #161827;
+  overflow: hidden;
+  padding: 32px;
+  color: $color-text;
+  transition:
+    box-shadow 200ms ease,
+    transform 200ms ease;
+
+  /* Media / image block */
+  .media {
+    display: block;
+    padding: 0;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+      transition: transform 200ms ease;
+      will-change: transform;
+    }
+
+    /* Scale image by 10% on hover (per README) */
+    &:hover img,
+    &:focus img {
+      transform: scale(1.03);
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  /* Content body */
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+
+    /* Title */
+    .title {
+      padding-top: 16px;
+      display: block;
+      color: #f1f2f9;
+      text-decoration: none;
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      cursor: pointer;
+    }
+
+    /* Price block */
+    .priceBlock {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .priceSingle {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+
+    .priceDiscount {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      color: #F1F2F9;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+
+    .priceRegular {
+      color: #75767F;
+      text-decoration: line-through;
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+
+    /* Divider line */
+    .divider {
+      height: 1px;
+      background: #3b3e4a;
+      margin: 12px 0;
+    }
+
+    /* Specs row */
+    .specs {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 12px;
+
+      .specItem {
+        display: flex;
+        justify-content: space-between;
+
+        .specLabel {
+          font-family: Mont, sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          color: #9aa0b2;
+        }
+
+        .specValue {
+          font-family: Mont, sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          color: #f1f2f9;
+          text-align: right;
+        }
+      }
+    }
+
+    /* Actions row */
+    .actionsRow {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      .heartButton {
+        background: #323542;
+        border: 1px solid #3b3e4a;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+
+        /* Hover states */
+        &:hover {
+          background: #4A4D58;
+        }
+      }
+
+      /* Active (favourited) state: use filled icon, subtly highlight background */
+      .heartButton[aria-pressed='true'] {
+        background: #161827;
+      }
+
+      .addButton {
+        height: 40px;
+        background: #905bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+
+        /* Hover states */
+        &:hover {
+          background: #a378ff;
+        }
+      }
+
+      /* Active (in cart) state */
+      .addButton[aria-pressed='true'] {
+        background: #323542;
+      }
+    }
+  }
+}
+
+/* Hover / focus shadow */
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 2px 15px 0 #0000001a;
+}

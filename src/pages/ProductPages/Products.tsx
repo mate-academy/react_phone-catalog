@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Category, isCategory } from '../../types/categories';
 import { getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
+import ProductCard from '../../componenst/ProductCard';
+import styles from './Products.module.scss';
 
 const Products: React.FC = () => {
   const params = useParams();
@@ -50,8 +52,10 @@ const Products: React.FC = () => {
   }, [category]);
 
   return (
-    <section className="products-page">
-      <h1>{category.charAt(0).toUpperCase() + category.slice(1)} page</h1>
+    <section className={styles.productsPage}>
+      <h1 className={styles.productsPage__title}>
+        {category.charAt(0).toUpperCase() + category.slice(1)} page
+      </h1>
 
       {loading && <p>Loading products…</p>}
 
@@ -69,26 +73,13 @@ const Products: React.FC = () => {
       )}
 
       {!loading && !error && items && items.length > 0 && (
-        <ul>
-          {items.map(p => {
-            const price =
-              (p as any).priceDiscount ??
-              (p as any).priceRegular ??
-              (p as any).price;
-
-            return (
-              <li key={p.id}>
-                <Link
-                  to={`/product/${category}/${p.id}`}
-                  state={{ product: p }}
-                >
-                  {p.name}
-                </Link>{' '}
-                — {price ?? '—'}
-              </li>
-            );
-          })}
-        </ul>
+        <div className={styles.productsPage__grid}>
+          {items.map(p => (
+            <div className={styles.productsPage__card} key={p.id}>
+              <ProductCard product={p} />
+            </div>
+          ))}
+        </div>
       )}
     </section>
   );
