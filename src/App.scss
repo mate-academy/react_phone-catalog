@@ -2,8 +2,6 @@
 @import './utils/mixins' ;
 
 .page {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
   height: 100%;
   scroll-behavior: smooth;
@@ -16,7 +14,7 @@
   line-height: 21px;
   letter-spacing: 0%;
   color: #0F0F11;
-  //width: 100%;
+
   display: block;
   padding: 0;
   margin: 0;
@@ -122,6 +120,7 @@ h5 {
 
    .main__content {
      @include content-padding-inline;
+
       min-height: 100vh;
       display: block;
    }

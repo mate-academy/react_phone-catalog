@@ -4,6 +4,7 @@
 
 .productsSlider {
    @include page-grid;
+
     min-width: 0;
     min-height: 0;
     box-sizing: border-box;
@@ -70,6 +71,7 @@
     grid-column: 1/4;
 
     gap: 0 16px;
+
     @include on-tablet {
           grid-template-columns: repeat(2,1fr);
           grid-column: 1/10;
@@ -98,6 +100,7 @@
         width: auto;
         grid-row: span 5;
       }
+
       @include on-desktop {
         grid-column: span 6;
         margin-block: 24px 80px;
@@ -121,7 +124,6 @@
     }
 
   &__productImage {
-    width: 100%;
     max-height: 100%;
     width: auto;
     height: auto;
@@ -149,7 +151,6 @@
     }
 
      &__productPrice {
-
       font-size: 22px;
       line-height: 140%;
       letter-spacing: 0%;
@@ -170,7 +171,7 @@
    &__productInfoTable {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px 0px;
+    gap: 8px 0;
     align-items: center;
     width: 100%;
     border-top: 1px solid $elements-color;
@@ -181,7 +182,7 @@
 .productPriceRow {
   display: flex;
   align-items: baseline;
-  gap: 0px
+  gap: 0
 }
 
  .productFeature {
@@ -225,7 +226,6 @@
   .icon {
     width: 32px;
     height: 32px;
-    display: block;
     padding: 0;
 
     background-color: transparent;
@@ -273,13 +273,11 @@
     justify-self: start;
 
      &.disabled, &[disabled] {
-
       background-image: url(/img/icons/icon-button-left-disabled-2x.png);
      }
   }
 
   &--button--right {
-
     background-image: url(/img/icons/icon-button-right-2x.png);
     justify-self: end;
 

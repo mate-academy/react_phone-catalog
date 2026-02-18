@@ -40,11 +40,13 @@
 
   @include on-tablet  {
     --columns: 12;
+
     column-gap: 24px;
   }
 
   @include on-desktop  {
      --columns: 24;
+
     column-gap: 16px;
   }
 

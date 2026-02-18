@@ -1,6 +1,6 @@
 @use '../../../../utils/vars.scss' as *;
 @import '../../../../utils/mixins' ;
-@import '../../../../components/Header/Header.module.scss';
+@import '../../../../components/Header/Header.module';
 
 .picturesSlider {
   width: 100%;
@@ -96,7 +96,5 @@
   @include on-tablet {
     width: 50%;
   }
-
-  //margin: auto ;
 
 }
