@@ -1,0 +1,40 @@
+
+.slider__image {
+  height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.slider__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.slider__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.slider__dot {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+
+  background-color: #bbb;
+
+  transition: background-color 0.3s;
+}
+
+.slider__dot.active {
+  background-color: #333;
+}
