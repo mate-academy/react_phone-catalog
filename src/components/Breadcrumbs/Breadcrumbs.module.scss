@@ -1,0 +1,67 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+
+.breadcrumbs {
+  @include text-small;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+
+  margin-top: 24px;
+
+  &__link {
+    transition: color 0.3s ease;
+
+    text-decoration: none;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+
+  &__text {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: default;
+  }
+
+  &__iconHome {
+    transition:
+      opacity,
+      filter 0.3s ease;
+
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/home.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    filter: var(--icon-filter);
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__iconArrow {
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/chevron-arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.5;
+
+    filter: var(--icon-filter);
+    transition: filter 0.3s ease;
+  }
+}

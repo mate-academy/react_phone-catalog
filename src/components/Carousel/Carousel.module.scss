@@ -1,0 +1,124 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+@import '/src/utils/styles/variables';
+@import '/src/utils/styles/mixins';
+
+.carousel {
+  grid-column: 1 / 25;
+  margin-bottom: 50px;
+
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+
+  overflow: hidden;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / 5;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    @include text-h2;
+
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: right;
+
+    &__leftArrow {
+      @include arrow-button-base;
+
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 16px;
+        height: 16px;
+
+        background-image: url('/img/icons/chevron-arrow-left--white.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        filter: var(--icon-filter);
+        transition: filter 0.3s ease;
+      }
+
+      &--disabled {
+        background-color: transparent;
+        border: var(--surface-border);
+
+        cursor: not-allowed;
+
+        &::before {
+          background-image: url('/img/icons/chevron-arrow-left.svg');
+        }
+      }
+    }
+
+    &__rightArrow {
+      @include arrow-button-base;
+
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 16px;
+        height: 16px;
+
+        background-image: url('/img/icons/chevron-arrow-right--white.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        filter: var(--icon-filter);
+        transition: filter 0.3s ease;
+      }
+
+      &--disabled {
+        border: var(--surface-border);
+        background-color: transparent;
+        cursor: not-allowed;
+
+        &::before {
+          background-image: url('/img/icons/chevron-arrow-right.svg');
+        }
+      }
+    }
+  }
+
+  &__phones {
+    position: relative;
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: 30px;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(
+      calc(-1 * var(--current-index) * (var(--item-width) + var(--gap)))
+    );
+  }
+}
