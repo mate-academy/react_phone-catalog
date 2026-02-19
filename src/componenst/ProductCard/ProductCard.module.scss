@@ -154,6 +154,12 @@
           letter-spacing: 0%;
           color: $color-text;
           text-align: right;
+
+          /* truncate long values (e.g. "6.5' OLED (Super Retina HD)") */
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 60%;
         }
       }
     }

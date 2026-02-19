@@ -2,11 +2,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
-import { getProductDetails } from '../../api/products';
+import { getProductDetails, getProducts } from '../../api/products';
 import { Product, DescriptionPart } from '../../types/Product';
 import { isCategory } from '../../types/categories';
 import { useCart } from '../../context/CartContext';
 import { useFavourites } from '../../context/FavouritesContext';
+import ProductCarousel from '../../componenst/ProductCarousel/ProductCarousel';
 import styles from './ProductDetails.module.scss';
 
 const base = import.meta.env.BASE_URL ?? '/';
@@ -36,6 +37,7 @@ const ProductDetails: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     if (!productId || !category) {
@@ -88,6 +90,39 @@ const ProductDetails: React.FC = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId, category]); // item не додаємо в залежності, щоб не було нескінченного циклу
+
+  // Завантажити рекомендовані товари для слайдера
+  useEffect(() => {
+    if (!category) {
+      return;
+    }
+
+    let mounted = true;
+
+    getProducts(category)
+      .then(products => {
+        if (!mounted) {
+          return;
+        }
+
+        // Отримати 6 випадкових товарів, окрім поточного
+        const recommended = products
+          .filter(p => p.id !== productId)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 6);
+
+        setRecommendedProducts(recommended);
+      })
+      .catch(() => {
+        // Якщо сталася помилка при завантаженні, просто не показувати слайдер
+        setRecommendedProducts([]);
+      });
+
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, productId]);
 
   if (loading) {
     return <div className={styles.loader}>Loading product…</div>;
@@ -156,12 +191,12 @@ const ProductDetails: React.FC = () => {
     yellow: '#fee786',
     purple: '#d3cfdc',
     pink: '#E91E63',
-    gold: '#FFD700',
+    gold: '#fddfc7',
     silver: '#C0C0C0',
-    spacegray: '#A0A0A0',
+    spacegray: '#2e3034',
     'space gray': '#A0A0A0',
     'rose gold': '#B76E79',
-    rosegold: '#B76E79',
+    rosegold: '#f2cac3',
     gray: '#808080',
     'midnight green': '#004225',
     midnightgreen: '#004225',
@@ -449,13 +484,12 @@ const ProductDetails: React.FC = () => {
       </div>
 
       {/* Блок 4: You May Also Like */}
-      <div className={styles.youMayAlsoLike}>
-        <h2 className={styles.youMayAlsoLike__title}>You may also like</h2>
-        <div className={styles.youMayAlsoLike__slider}>
-          {/* Плейсхолдер для слайдеру */}
-          <p>Slider with similar products will appear here</p>
-        </div>
-      </div>
+      {recommendedProducts.length > 0 && (
+        <ProductCarousel
+          title="You may also like"
+          products={recommendedProducts}
+        />
+      )}
     </div>
   );
 };
