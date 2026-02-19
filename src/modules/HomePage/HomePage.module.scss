@@ -106,6 +106,7 @@
      background-position: center;
      background-size: cover;
      box-sizing: border-box;
+     aspect-ratio: 1 / 1;  
 
       @include on-tablet {
         height: 187px;

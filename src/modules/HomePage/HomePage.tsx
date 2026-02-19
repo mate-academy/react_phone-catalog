@@ -5,10 +5,16 @@ import PicturesSlider from './components/PicturesSlider/index';
 import { Product } from './../../../public/api/types/Product';
 import { Link } from 'react-router-dom';
 
+const TYPES = {
+  PHONE: 'phones',
+  TABLET: 'tablets',
+  ACCESSORY: 'accessories',
+};
+
 export const HomePage: React.FC = () => {
   const THRESHOLD = 30;
-  const [products, setProducts] = useState<Product[] | null>(null);
 
+  const [products, setProducts] = useState<Product[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [paused, setPaused] = useState<boolean>(false);
@@ -17,12 +23,15 @@ export const HomePage: React.FC = () => {
 
   const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
+  const [currentNewProductIndex, setCurrentNewProductIndex] = useState(0);
+
   const startPictureX = useRef<number | null>(null);
   const startPictureY = useRef<number | null>(null);
-  const startProductX = useRef<number | null>(null);
-  const startProductY = useRef<number | null>(null);
+
   const sliderPictureRef = useRef<HTMLDivElement | null>(null);
-  const sliderProductRef = useRef<HTMLDivElement | null>(null);
+  const newestProducts = Array.isArray(products)
+    ? [...products].sort((a, b) => Number(b.year) - Number(a.year)).slice(0, 8)
+    : [];
   const lenOfProducts = products?.length ?? 0;
   const loadProducts = async (signal?: AbortSignal) => {
     try {
@@ -54,8 +63,12 @@ export const HomePage: React.FC = () => {
   }, [lenOfProducts, paused]);
 
   useEffect(() => {
-    setCurrentPictureIndex(0);
-  }, [products?.length]);
+    if (!loading && !error) {
+      setCurrentPictureIndex(0);
+      setCurrentNewProductIndex(0);
+      setCurrentProductIndex(0);
+    }
+  }, [products?.length, loading, error]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -155,42 +168,16 @@ export const HomePage: React.FC = () => {
     setCurrentProductIndex(i => i + 1);
   };
 
-  const handleTouchStartProduct = (
-    e: React.TouchEvent<HTMLDivElement>,
-  ): void => {
-    startProductX.current = e.touches[0].clientX;
-    startProductY.current = e.touches[0].clientY;
-
-    setPaused(true);
+  const handlePrevNewProduct = () => {
+    setCurrentNewProductIndex(i => Math.max(0, i - 1));
   };
 
-  const handleTouchEndProduct = (e: React.TouchEvent<HTMLDivElement>): void => {
-    const endX = e.changedTouches[0].clientX;
-    const endY = e.changedTouches[0].clientY;
-
-    if (startProductX.current == null || startProductY.current == null) {
-      return;
-    }
-
-    const dx = endX - startProductX.current;
-    const dy = endY - startProductY.current;
-
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESHOLD) {
-      if (dx < 0) {
-        handlePrevProduct();
-      } else {
-        handleNextProduct();
-      }
-    }
-
-    setPaused(false);
+  const handleNextNewProduct = () => {
+    setCurrentNewProductIndex(i =>
+      Math.min(i + 1, Math.max(0, newestProducts.length - 1)),
+    );
   };
 
-  const TYPES = {
-    PHONE: 'phones',
-    TABLET: 'tablets',
-    ACCESSORY: 'accessories',
-  };
   const productsCount = useCallback(
     (type: string): number => {
       if (!products) {
@@ -239,7 +226,16 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
       <section id="brand-new-models" aria-label="Brand new models">
-        <h3>Brand new models</h3>
+        {!loading && !error && Array.isArray(products) && (
+          <ProductsSlider
+            products={newestProducts}
+            currentIndex={currentNewProductIndex}
+            handlePrev={handlePrevNewProduct}
+            handleNext={handleNextNewProduct}
+          >
+            Brand new models
+          </ProductsSlider>
+        )}
       </section>
 
       <section id="shop-by-category" aria-label="Shop by category">
@@ -285,9 +281,6 @@ export const HomePage: React.FC = () => {
             currentIndex={currentProductIndex}
             handlePrev={handlePrevProduct}
             handleNext={handleNextProduct}
-            handleTouchStart={handleTouchStartProduct}
-            handleTouchEnd={handleTouchEndProduct}
-            sliderRef={sliderProductRef}
           >
             Hot prices
           </ProductsSlider>

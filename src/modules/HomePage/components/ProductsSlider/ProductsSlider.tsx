@@ -9,9 +9,6 @@ type ProductsSliderProps = {
   currentIndex: number;
   handlePrev: () => void;
   handleNext: () => void;
-  handleTouchStart: (e: React.TouchEvent<HTMLDivElement>) => void;
-  handleTouchEnd: (e: React.TouchEvent<HTMLDivElement>) => void;
-  sliderRef?: React.RefObject<HTMLDivElement>;
   children?: React.ReactNode;
 };
 
@@ -20,22 +17,22 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   currentIndex,
   handlePrev,
   handleNext,
-  handleTouchStart,
-  handleTouchEnd,
-  sliderRef,
   children,
 }) => {
   const visibleOnTablet = 2;
   const visibleOnDesktop = 4;
-  const visibleCount = 4;
-  const visible =
-    products && products.length
-      ? Array.from({ length: visibleCount }, (_, i) => {
-          const idx = currentIndex + i;
 
-        return idx < products.length ? products[idx] : null;
-        }).filter(Boolean)
-      : [];
+  const hasProducts = Array.isArray(products) && products.length > 0;
+  const safeIndex = Number.isInteger(currentIndex) ? currentIndex : 0;
+  const visibleCount = 4;
+  const notNull = <T,>(v: T | null | undefined): v is T => v != null;
+  const arrayFrom = Array.from({ length: visibleCount }, (_, i) => {
+    const idx: number = safeIndex + i;
+
+    return idx < products!.length ? products![idx] : null;
+  }).filter(notNull);
+  const visible: Product[] = hasProducts ? arrayFrom : [];
+
   const currentProduct =
     products &&
     products.length &&
@@ -48,7 +45,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   const isNextDisabled = !products || currentIndex >= products.length - 1;
 
   return (
-    <div className={styles.productsSlider} ref={sliderRef}>
+    <div className={styles.productsSlider}>
       <div className={styles.productsSlider__title}>
         <h3>{children}</h3>
       </div>
@@ -80,8 +77,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
                   ${i === 1 ? styles.mobile : ''}
                   ${i > 1 && i <= visibleOnTablet ? styles.tablet : ''}
                   ${i <= visibleOnDesktop ? styles.desktop : ''}`}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
             >
               <div className={styles.productsSlider__productInfo}>
                 <div className={styles.productsSlider__productImageContainer}>
