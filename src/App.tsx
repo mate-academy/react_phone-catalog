@@ -9,18 +9,20 @@ import { CartPage } from './modules/CartPage/components';
 import { FavoritesPage } from './modules/FavoritesPage/components';
 import { NotFoundPage } from './modules/NotFoundPage/components';
 
-export const App = () => (
-  <div className="App">
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/home" element={<Navigate to="/" replace />} />
-      <Route path="/phones" element={<PhonesPage />} />
-      <Route path="/tablets" element={<TabletsPage />} />
-      <Route path="/accessories" element={<AccessoriesPage />} />
-      <Route path="/:category/:productId" element={<ProductPage />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/favorites" element={<FavoritesPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/tablets" element={<TabletsPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/:category/:productId" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
+  );
+};

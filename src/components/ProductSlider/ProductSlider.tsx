@@ -1,22 +1,10 @@
 import styles from './ProductSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-
-interface Product {
-  id: number;
-  category: string;
-  itemId: string;
-  image: string;
-  name: string;
-  price: number;
-  fullPrice: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-}
+import { BaseProduct } from '../../types';
 
 interface Props {
   title: string;
-  products: Product[];
+  products: BaseProduct[];
 }
 
 export const ProductSlider = ({ title, products }: Props) => (
@@ -38,9 +26,9 @@ export const ProductSlider = ({ title, products }: Props) => (
     </div>
 
     <div className={styles.list}>
-      {products.map(product => (
+      {products.map((product: BaseProduct) => (
         <div key={product.id} className={styles.item}>
-          <ProductCard {...product} />
+          <ProductCard product={product} />
         </div>
       ))}
     </div>

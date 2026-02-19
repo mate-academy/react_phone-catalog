@@ -1,23 +1,11 @@
 import styles from './ProductsList.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
-
-interface Product {
-  id: number;
-  category: string;
-  itemId: string;
-  image: string;
-  name: string;
-  price: number;
-  fullPrice: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-}
+import { BaseProduct } from '../../types';
 
 interface Props {
   title: string;
-  products: Product[];
+  products: BaseProduct[];
   totalPages?: number;
   currentPage?: number;
 }
@@ -58,8 +46,8 @@ export const ProductsList = ({
     </div>
 
     <div className={styles.grid}>
-      {products.map(product => (
-        <ProductCard key={product.id} {...product} />
+      {products.map((product: BaseProduct) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
 
