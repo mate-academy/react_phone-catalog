@@ -21,6 +21,7 @@ const resolveUrl = (path: string) => {
 const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
   const prevPageFromStorage = sessionStorage.getItem('prevPage') || '/';
+  const productNameFromStorage = sessionStorage.getItem('productName') || '';
 
   // On cart page, show Back button instead of breadcrumbs
   if (pathname === '/cart') {
@@ -62,10 +63,12 @@ const Breadcrumbs: React.FC = () => {
     if (segments[0] === 'product' && segments.length >= 3) {
       const category =
         segments[1].charAt(0).toUpperCase() + segments[1].slice(1);
-      const productId = segments[2];
 
       crumbs.push({ label: category, path: `/products/${segments[1]}` });
-      crumbs.push({ label: productId, path: pathname });
+      crumbs.push({
+        label: productNameFromStorage || segments[2],
+        path: pathname,
+      });
     }
 
     // Handle /favourites

@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0;
   gap: 8px;
+  overflow: hidden;
 }
 
 .item {
@@ -19,6 +20,7 @@
   gap: 8px;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 
 .homeLink {
@@ -50,6 +52,14 @@
   font-size: 14px;
   font-family: Mont, sans-serif;
   transition: opacity 200ms ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+
+  @media (max-width: 480px) {
+    max-width: 120px;
+  }
 
   &:hover {
     opacity: 0.7;
@@ -67,6 +77,14 @@
   text-decoration: none;
   font-size: 14px;
   transition: color 200ms ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+
+  @media (max-width: 480px) {
+    max-width: 120px;
+  }
 
   &:hover {
     color: #905BFF;
@@ -76,6 +94,14 @@
 .current {
   color: #75767F;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+
+  @media (max-width: 480px) {
+    max-width: 120px;
+  }
 }
 
 .separator {
