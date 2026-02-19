@@ -1,0 +1,76 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.backdoor{
+  background-color: 	rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top:0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+ .modal{
+display: flex;
+justify-content: center;
+align-items:center ;
+  width: 500px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 48px;
+
+  &__cart{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  }
+
+    margin: 0;
+    padding: 0;
+  font-family: Mont, sans-serif;;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+
+@include mixin.on-tablet{
+font-size: 25px;
+}
+
+  &__change{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__button{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+margin-right: 20px;
+    border-radius: 48px;
+    color: aliceblue;
+    background-color: #4219D0;
+    height: 48px;
+    line-height: 48px;
+    width: 120px;
+    &--left{
+      background-color:#4219D0;
+    }
+
+    @include mixin.on-desktop{
+
+      &:hover{
+        background-color: red;
+      border: 1px solid black;}
+    }
+  }
+}

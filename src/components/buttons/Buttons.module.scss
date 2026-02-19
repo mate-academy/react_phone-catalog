@@ -1,0 +1,94 @@
+@use '../utils/mixin.module.scss' as mixin;
+
+.buttons{
+  cursor: pointer;
+margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixin.on-tablet{
+    justify-content: left;
+  }
+
+  @include mixin.on-desktop{
+  justify-content: left;
+}
+
+&__addCart{
+  width: 100%;
+
+  height: 48px;
+  border-radius: 48px;
+  margin-right: 8px;
+  background-color: #4219D0;
+  color: #E2E6E9;
+  font-family: Mont, sans-serif;;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  text-align: center;
+
+@include mixin.on-tablet{
+  min-width: 118px;
+  }
+
+  @include mixin.on-desktop{
+width: 263px;
+&:hover{
+    box-shadow: 0 3px 13px 0 #17203166;
+
+    }
+  }
+
+&--small{
+  height: 40px;
+  line-height: 40px;
+  width: 80%;
+}
+
+&--disabled{
+  background-color: #FFF;
+border: 1px solid #E2E6E9;
+  color: #4219D0;
+   pointer-events: none;
+    cursor: default;
+}
+}
+
+ &__heart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border:1px solid #B4BDC3;
+  border-radius: 100%;
+
+   &--small{
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+
+  }
+
+
+   @include mixin.on-desktop{
+    &:hover{
+      border-color: #0F0F11;
+    }
+  }
+
+}
+
+  &__favourite{
+  color:#0F0F11;
+  width: 16px;
+  height: 16px;
+
+  &--active{
+  color:#F4BA47;
+ }
+
+}}

@@ -1,0 +1,28 @@
+@use '../utils/mixin.module.scss' as mixin;
+
+.filter{
+  margin-bottom: 24px;
+ width: 100%;
+align-items: center;
+
+@include mixin.page-grid;
+
+
+  &__drop{
+ grid-column: span 2;
+
+ @include mixin.on-tablet{
+  grid-column: span 4;
+}
+  }
+
+&__pagination{
+grid-column:3/5;
+
+  @include mixin.on-tablet{
+  grid-column: 5/8;
+}
+}
+
+
+}

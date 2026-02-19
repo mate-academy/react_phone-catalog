@@ -1,0 +1,32 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.cart{
+  @include mixin.page-grid;
+
+  &__wrapper{
+  grid-column: 1/-1;
+
+  @include mixin.on-desktop{
+grid-column: 1/16;
+  }
+}
+
+&__checkout{
+  grid-column: 1/-1;
+
+  @include mixin.on-desktop{
+grid-column: 17/-1;
+  }
+}
+
+&__empty{
+  grid-column: 1/-1;
+  height:400px;
+ background-image: url('/img/cart-is-empty.png');
+ background-size: contain;
+ background-repeat:no-repeat;
+ background-position: center;
+
+}
+
+}

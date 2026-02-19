@@ -1,0 +1,70 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.container{
+ margin-bottom: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+@include mixin.on-tablet{
+  flex-direction: row-reverse;
+justify-content: left;
+}}
+
+ .image{
+  margin-bottom: 16px;
+height: 288px;
+width: 274px;
+   background-size:contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+@include mixin.on-desktop{
+width: 442px;
+height: 442px;
+}
+}
+
+.carousel{
+
+  &__list{
+    margin: 0;
+    padding: 0;
+list-style: none;
+     display: flex;
+    height: 49px;
+    justify-content: center;
+   gap:8px;
+
+    @include mixin.on-tablet{
+      flex-direction: column;
+
+    }
+
+    @include mixin.on-desktop{
+gap:16px
+    }
+  }
+
+&__items{
+    border: 1px solid #C4C4C4;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &--active{
+      border-color: #0F0F11;
+    }
+  }
+
+
+ &__image{
+   width: 40px;
+      height: 40px;
+      object-fit: contain;
+
+      @include mixin.on-desktop{
+        height: 80px;
+        width: 80px;
+      }
+ }
+}

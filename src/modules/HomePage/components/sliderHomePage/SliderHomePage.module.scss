@@ -1,0 +1,92 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+}
+
+.slider {
+box-sizing: border-box;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+flex-direction: column;
+
+@include mixin.on-tablet{
+  margin-left: 24px;
+margin-right: 24px;}
+
+&__box{
+display: flex;
+gap:19px;
+
+  width: 100%;
+  height: 320px;
+
+  @include mixin.on-tablet{
+  height: 189px;
+padding: 0 19px;
+}
+
+@include mixin.on-desktop{
+  height: 400px;
+}
+}
+
+}
+
+.slider__image{
+  margin: 0;
+  height: 100%;
+  width:100%;
+
+  background-size:cover;
+  background-position: center;
+background-repeat: no-repeat;
+
+@include mixin.on-tablet{
+   background-size:fill;
+}
+}
+
+.slider__button {
+  cursor: pointer;
+  display: none;
+padding: 0 6px;
+  height: 100%;
+border: 1px solid #B4BDC3;
+border-radius: 20px;
+  background-repeat: no-repeat;
+   background-size: 16px 16px;
+   background-position: center;
+
+&:hover{
+    border-color: #333;
+
+  }
+
+  @include mixin.on-tablet {
+    display: block;
+  }
+ }
+
+
+.slider__rectangle {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+cursor: pointer;
+
+  & span {
+    width: 24px;
+    height: 4px;
+    background-color: #ccc;
+    border-radius: 2px;
+  }
+
+  & .active {
+    background-color: #333;
+  }
+}

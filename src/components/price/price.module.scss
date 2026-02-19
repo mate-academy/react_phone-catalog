@@ -1,0 +1,24 @@
+.price{
+ margin-bottom: 16px;
+
+ &__fullprice{
+font-family: Mont, sans-serif;
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+margin-bottom: 8px;
+  }
+
+  &__discount{
+margin-left: 8px;
+font-family: Mont,sans-serif;
+font-weight: 600;
+font-size: 22px;
+line-height: 100%;
+letter-spacing: 0%;
+text-decoration: line-through;
+color:#89939A;
+
+  }
+}

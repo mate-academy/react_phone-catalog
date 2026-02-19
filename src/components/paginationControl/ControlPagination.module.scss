@@ -1,0 +1,70 @@
+@use '../utils/mixin.module.scss' as mixin;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+
+  &__flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+  }
+
+
+&__list{
+  display: flex;
+align-items: center;
+justify-content: center;
+gap:8px;
+&--left{
+  margin-right: 8px;
+}
+&--right{
+  margin-left: 8px;
+}
+}
+
+
+  &__link{
+    cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+color:#0F0F11;
+    border:1px solid #B4BDC3;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+
+  text-decoration: none;
+  &:hover{
+    border-color: #0F0F11;
+  }
+    &--active{
+  background-color: #0F0F11;
+  color: #B4BDC3;
+  border-radius: 100%;
+}
+ &--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+  }
+
+
+  &__text{
+  color:#0F0F11;
+
+  }
+
+}
+

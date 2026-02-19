@@ -1,0 +1,32 @@
+
+.reload{
+  margin-left: 20px;
+grid-column: 1/-1;
+  margin-bottom: 80px;
+
+&__title{
+  color: red;
+}
+&__button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    background-color: #4219D0;
+    width: 200px;
+    height: 48px;
+    border-radius: 48px;
+    color:#fff;
+  font-family: Mont ,sans-serif;;
+font-weight: 700;
+font-size: 14px;
+
+line-height: 21px;
+letter-spacing: 0%;
+text-align: center;
+&:hover{
+  background-color: #fff;
+  border:1px solid #4219D0;
+color: #4219D0;
+}
+
+}}

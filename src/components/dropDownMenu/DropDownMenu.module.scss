@@ -1,0 +1,81 @@
+
+  .dropDown {
+     min-width: 136px;
+    position: relative;
+
+    &__label{
+      text-wrap:none;
+      color:#89939A;
+     font-family: Mont, sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+    }
+
+ &__title{
+     border-radius: 8px;
+    border: 1px solid #B4BDC3;
+    min-height: 40px;
+    box-shadow: none;
+    cursor: pointer;
+color:#0F0F11;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-left: 12px;
+padding-right: 12px;
+
+    &:hover {
+      border-color:#0F0F11;
+    }}
+
+    &__select{
+font-family: Mont;
+font-weight: 700;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color:#0F0F11;
+
+    }
+
+&__list{
+  box-sizing: border-box;
+  background-color: white;
+    position: absolute;
+    width: 100%;
+  margin: 0;
+  padding: 0 12px;
+  justify-content: left;
+  border:1px solid #E2E6E9;
+  border-radius: 8px;
+color: #0F0F11;
+}
+  &__item {
+font-family: Mont, sans-serif;
+font-weight: 700;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+    list-style: none;
+    color: #89939A;
+    line-height: 21px;
+    height: 32px;
+
+   &--focused {
+      color: #0F0F11;
+    }
+  &:hover{
+    color: #0F0F11;
+  }}
+
+
+
+
+
+
+
+  }
+

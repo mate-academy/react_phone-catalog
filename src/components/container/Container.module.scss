@@ -1,0 +1,17 @@
+@use '../utils/mixin.module.scss' as mixin;
+
+.container{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  @include mixin.on-tablet{
+    padding: 0 24px;
+  }
+
+  @include mixin.on-desktop{
+    padding: 0 32px;
+  }
+}
