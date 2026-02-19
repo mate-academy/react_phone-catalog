@@ -1,18 +1,7 @@
 {
-<<<<<<< HEAD
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ]
-=======
-  "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
-  "compilerOptions": {
-    "sourceMap": false,
-    "types": ["node", "cypress"]
-  }
->>>>>>> upstream/master
 }
