@@ -66,7 +66,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({
           onSwiper={s => {
             swiperRef.current = s;
           }}
-          spaceBetween={16}
+          spaceBetween={0}
           slidesPerView="auto"
           className={styles.swiper}
         >

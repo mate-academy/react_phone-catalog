@@ -75,6 +75,11 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   touch-action: pan-y;
+
+  @media (min-width: $desktop-min) {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 /* ─── Swiper ─────────────────────────────────────────────────────────── */
@@ -88,20 +93,29 @@
   width: 212px !important;
   height: 100%;
 
-  /* first slide — indented from the left page edge */
+  /*
+   * Gap between slides via margin-left (not spaceBetween/margin-right).
+   * Swiper reads offsetLeft from the DOM, so it correctly accounts for
+   * these CSS margins when calculating snap positions.
+   * Result: every snapped slide has a consistent left indent (the gap value),
+   * because margin-left is included in the snap offset.
+   */
+  margin-left: $mobile-gap; /* 16px gap on all slides */
+
+  /* first slide — use page padding instead of the gap */
   &:first-child {
-    margin-left: $mobile-padding;
+    margin-left: $mobile-padding; /* 16px — same as gap on mobile */
 
     @media (min-width: $tablet-min) {
-      margin-left: $tablet-padding;
+      margin-left: $tablet-padding; /* 24px */
     }
 
     @media (min-width: $desktop-min) {
-      margin-left: $tablet-padding;
+      margin-left: $tablet-padding; /* 24px */
     }
   }
 
-  /* last slide — indented from the right page edge */
+  /* last slide — right page-edge padding */
   &:last-child {
     margin-right: $mobile-padding;
 
