@@ -1,0 +1,40 @@
+.breadcrumbs {
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--color-secondary);
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.separator {
+  font-size: 10px;
+  color: var(--color-icons);
+}
+
+.current {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--color-secondary);
+}

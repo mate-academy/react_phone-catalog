@@ -1,0 +1,30 @@
+.main {
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 56px;
+
+  @media (max-width: 1199px) {
+    padding: 24px 24px 56px;
+  }
+
+  @media (max-width: 639px) {
+    padding: 16px 16px 40px;
+  }
+}
+
+.heroTitle {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  margin-bottom: 32px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+    margin-bottom: 16px;
+  }
+}

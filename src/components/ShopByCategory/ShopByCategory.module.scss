@@ -1,0 +1,84 @@
+.section {
+  margin-bottom: 56px;
+
+  @media (max-width: 639px) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  margin-bottom: 24px;
+
+  @media (max-width: 639px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageWrap {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 368px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  @media (max-width: 1199px) {
+    height: 268px;
+  }
+
+  @media (max-width: 639px) {
+    height: 360px;
+  }
+}
+
+.image {
+  width: 75%;
+  height: 80%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.catName {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--color-primary);
+  transition: color 0.2s;
+
+  @media (max-width: 639px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.catCount {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--color-secondary);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+
+  &:hover .catName {
+    color: var(--color-secondary);
+  }
+}
