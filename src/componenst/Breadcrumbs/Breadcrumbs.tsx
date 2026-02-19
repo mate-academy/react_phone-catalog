@@ -22,7 +22,7 @@ const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
   const prevPageFromStorage = sessionStorage.getItem('prevPage') || '/';
 
-  // On cart page, show Back button
+  // On cart page, show Back button instead of breadcrumbs
   if (pathname === '/cart') {
     return (
       <nav className={styles.breadcrumbs}>
@@ -92,41 +92,64 @@ const Breadcrumbs: React.FC = () => {
     return null;
   }
 
-  return (
-    <nav className={styles.breadcrumbs}>
-      <ol className={styles.list}>
-        {breadcrumbs.map((item, index) => (
-          <li key={item.path} className={styles.item}>
-            {index === 0 ? (
-              // Home icon as first item
-              <Link to={item.path} className={styles.homeLink}>
-                <img
-                  src={resolveUrl('icons/Home.svg')}
-                  alt="Home"
-                  className={styles.homeIcon}
-                />
-              </Link>
-            ) : index === breadcrumbs.length - 1 ? (
-              // Current page (no link)
-              <span className={styles.current}>{item.label}</span>
-            ) : (
-              // Middle items (clickable links)
-              <Link to={item.path} className={styles.link}>
-                {item.label}
-              </Link>
-            )}
+  // Check if we're on ProductDetails page
+  const isProductDetails = pathname.startsWith('/product/');
 
-            {index < breadcrumbs.length - 1 && (
-              <img
-                src={resolveUrl('icons/Chevron (Arrow Right).svg')}
-                alt="separator"
-                className={styles.separator}
-              />
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
+  // Only show Back button if prevPage exists AND it's different from current pathname
+  // (to avoid showing Back after page reload or direct link access)
+  const hasValidPrevPage =
+    sessionStorage.getItem('prevPage') &&
+    sessionStorage.getItem('prevPage') !== pathname;
+
+  return (
+    <>
+      <nav className={styles.breadcrumbs}>
+        <ol className={styles.list}>
+          {breadcrumbs.map((item, index) => (
+            <li key={item.path} className={styles.item}>
+              {index === 0 ? (
+                // Home icon as first item
+                <Link to={item.path} className={styles.homeLink}>
+                  <img
+                    src={resolveUrl('icons/Home.svg')}
+                    alt="Home"
+                    className={styles.homeIcon}
+                  />
+                </Link>
+              ) : index === breadcrumbs.length - 1 ? (
+                // Current page (no link)
+                <span className={styles.current}>{item.label}</span>
+              ) : (
+                // Middle items (clickable links)
+                <Link to={item.path} className={styles.link}>
+                  {item.label}
+                </Link>
+              )}
+
+              {index < breadcrumbs.length - 1 && (
+                <img
+                  src={resolveUrl('icons/Chevron (Arrow Right).svg')}
+                  alt="separator"
+                  className={styles.separator}
+                />
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+      {isProductDetails && hasValidPrevPage && (
+        <div className={styles.backContainer}>
+          <Link to={prevPageFromStorage} className={styles.backButton}>
+            <img
+              src={resolveUrl('icons/Chevron (Arrow Right).svg')}
+              alt=""
+              className={styles.backArrow}
+            />
+            <span>Back</span>
+          </Link>
+        </div>
+      )}
+    </>
   );
 };
 
