@@ -10,6 +10,12 @@
     gap: 0;
     margin-bottom: 40px;
   }
+
+  @media (min-width: 990px) {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: stretch;
+  }
 }
 
 .slider {
@@ -88,7 +94,9 @@
   color: var(--color-white);
   font-size: 14px;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 
   &:hover {
     background: var(--color-white);
@@ -117,7 +125,7 @@
 
 .arrow {
   width: 32px;
-  height: 32px;
+  height: 100%;
   flex-shrink: 0;
   border: 1px solid var(--color-elements);
   display: flex;

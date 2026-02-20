@@ -17,7 +17,7 @@ export const Footer = () => {
           <ul className={styles.navList}>
             <li>
               <a
-                href="https://github.com"
+                href="https://github.com/SerhiyDmytruk/"
                 className={styles.navLink}
                 target="_blank"
                 rel="noreferrer"

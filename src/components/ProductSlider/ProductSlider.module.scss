@@ -1,5 +1,6 @@
 .slider {
   margin-bottom: 56px;
+  overflow: hidden;
 
   @media (max-width: 639px) {
     margin-bottom: 40px;

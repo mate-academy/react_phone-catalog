@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocalStorage } from '../hooks/storage';
+import { useLocalStorage } from '../hooks/use-storage';
 
 type AppContextValue = {
   cartIds: string[];
@@ -26,20 +26,24 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   );
 
   const addToCart = (cartId: string) => {
-    setCardIds([...cartIds, cartId]);
+    if (!cartIds.includes(cartId)) {
+      setCardIds([...cartIds, cartId]);
+    }
   };
 
   const deleteFromCart = (cartId: string) => {
-    setCardIds((prevValue: string[]) => prevValue.filter(id => id !== cartId));
+    const newArr = cartIds.filter(id => id !== cartId);
+
+    setCardIds(newArr);
   };
 
   const toggleWishlist = (wishId: string) => {
+    const newArr = wishlistIds.filter(id => id !== wishId);
+
     if (wishlistIds.includes(wishId)) {
-      setWishlistIds((prevValue: string[]) =>
-        prevValue.filter(id => id !== wishId),
-      );
+      setWishlistIds(newArr);
     } else {
-      return setWishlistIds([...wishlistIds, wishId]);
+      setWishlistIds([...wishlistIds, wishId]);
     }
   };
 

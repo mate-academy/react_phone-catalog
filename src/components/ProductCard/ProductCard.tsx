@@ -2,26 +2,35 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './ProductCard.module.scss';
 import { BaseProduct } from '../../types';
+import { useAppContext } from '../../modules/hooks/use-context';
 
 interface Props {
   product: BaseProduct;
-  isLiked?: boolean;
-  isInCart?: boolean;
 }
 
-export const ProductCard = ({
-  product,
-  isLiked = false,
-  isInCart = false,
-}: Props) => {
-  const { category, itemId, name, fullPrice, price, image } = product;
+export const ProductCard = ({ product }: Props) => {
+  const {
+    category,
+    itemId,
+    name,
+    fullPrice,
+    price,
+    image,
+    screen,
+    capacity,
+    ram,
+  } = product;
+  const { cartIds, addToCart, wishlistIds, toggleWishlist } = useAppContext();
 
-  const addToCartHandler = () => {
-    // setCardId([...cartId, value]);
+  const isLiked = wishlistIds.includes(itemId);
+  const isInCart = cartIds.includes(itemId);
+
+  const addToCartHandler = (cartId: string) => {
+    addToCart(cartId);
   };
 
-  const addToWishlistHandler = () => {
-    // setWishlistId([...wishlistId, value]);
+  const addToWishlistHandler = (wishlistId: string) => {
+    toggleWishlist(wishlistId);
   };
 
   return (
@@ -31,11 +40,8 @@ export const ProductCard = ({
       </Link>
 
       <div className={styles.body}>
-        <Link
-          to={`/${product.category}/${product.itemId}`}
-          className={styles.nameLink}
-        >
-          <p className={styles.name}>{product.name}</p>
+        <Link to={`/${category}/${itemId}`} className={styles.nameLink}>
+          <p className={styles.name}>{name}</p>
         </Link>
 
         <div className={styles.prices}>
@@ -50,15 +56,15 @@ export const ProductCard = ({
         <ul className={styles.specs}>
           <li className={styles.specRow}>
             <span className={styles.specLabel}>Screen</span>
-            <span className={styles.specValue}>{product.screen}</span>
+            <span className={styles.specValue}>{screen}</span>
           </li>
           <li className={styles.specRow}>
             <span className={styles.specLabel}>Capacity</span>
-            <span className={styles.specValue}>{product.capacity}</span>
+            <span className={styles.specValue}>{capacity}</span>
           </li>
           <li className={styles.specRow}>
             <span className={styles.specLabel}>RAM</span>
-            <span className={styles.specValue}>{product.ram}</span>
+            <span className={styles.specValue}>{ram}</span>
           </li>
         </ul>
 

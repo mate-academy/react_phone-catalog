@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import styles from './Banner.module.scss';
 
@@ -27,8 +27,19 @@ const SLIDES = [
 ];
 
 export const Banner = () => {
-  // TODO: add auto-scroll (every 5 seconds) with useEffect
   const [activeSlide, setActiveSlide] = useState(0);
+  const autoPlayInterval = 5000;
+  const autoplayRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (autoplayRef.current) {
+      window.clearInterval(autoplayRef.current);
+    }
+
+    autoplayRef.current = window.setInterval(() => {
+      setActiveSlide(prev => (prev === SLIDES.length - 1 ? 0 : prev + 1));
+    }, autoPlayInterval);
+  }, [autoPlayInterval]);
 
   const handlePrev = () =>
     setActiveSlide(prev => (prev === 0 ? SLIDES.length - 1 : prev - 1));
