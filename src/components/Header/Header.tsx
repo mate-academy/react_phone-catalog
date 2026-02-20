@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './Header.module.scss';
+import { useAppContext } from '../../modules/hooks/use-context';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
@@ -12,15 +13,15 @@ const NAV_LINKS = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { wishlistIds } = useAppContext();
+
+  const isLiked = wishlistIds;
 
   return (
     <>
       <header className={styles.header}>
         <NavLink to="/" className={styles.logo}>
-          <span>NICE</span>
-          <span className={styles.fire}>🔥</span>
-          <br />
-          <span>GADGETS</span>
+          <img src="./public/img/logo.svg" alt="Nice Gadget" />
         </NavLink>
 
         <nav className={styles.nav}>
@@ -47,12 +48,16 @@ export const Header = () => {
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              cn(styles.iconBtn, { [styles.iconBtnActive]: isActive })
+              cn(styles.iconBtn, {
+                [styles.iconBtnActive]: isActive,
+              })
             }
           >
             <span className={styles.iconWrap}>
               <i className="far fa-heart" />
-              {/* TODO: <span className={styles.badge}>2</span> */}
+              {isLiked && (
+                <span className={styles.badge}>{isLiked.length}</span>
+              )}
             </span>
           </NavLink>
 

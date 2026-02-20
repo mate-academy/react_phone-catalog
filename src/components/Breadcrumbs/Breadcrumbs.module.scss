@@ -6,13 +6,13 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .link {
@@ -29,6 +29,8 @@
 
 .separator {
   font-size: 10px;
+  width: 16px;
+  text-align: center;
   color: var(--color-icons);
 }
 
