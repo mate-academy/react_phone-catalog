@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
@@ -21,12 +22,18 @@ const ProductCard: React.FC<Props> = ({
     useFavourites();
 
   const img =
-    product.images && product.images.length
+    (product as any).image ??
+    (product.images && product.images.length
       ? product.images[0]
-      : 'img/phones/placeholder.png';
+      : 'img/phones/placeholder.png');
 
-  const priceRegular = product.priceRegular ?? product.price ?? 0;
-  const priceDiscount = product.priceDiscount ?? null;
+  const priceRegular =
+    (product as any).fullPrice ?? product.priceRegular ?? product.price ?? 0;
+  const priceDiscount =
+    (product as any).price !== undefined &&
+    (product as any).fullPrice !== undefined
+      ? (product as any).price
+      : (product.priceDiscount ?? null);
 
   const inCart = isInCart(product.id);
   const inFav = isInFavourites(product.id);
@@ -58,7 +65,7 @@ const ProductCard: React.FC<Props> = ({
     <article className={styles.card} data-id={product.id}>
       {/* 1. Image block */}
       <Link
-        to={`/product/${product.category}/${product.id}`}
+        to={`/product/${product.category}/${(product as any).itemId ?? product.id}`}
         className={styles.media}
       >
         <img src={img} alt={product.name} />
@@ -67,7 +74,7 @@ const ProductCard: React.FC<Props> = ({
       {/* 2. Title block */}
       <div className={styles.body}>
         <Link
-          to={`/product/${product.category}/${product.id}`}
+          to={`/product/${product.category}/${(product as any).itemId ?? product.id}`}
           className={styles.title}
         >
           {product.name}
