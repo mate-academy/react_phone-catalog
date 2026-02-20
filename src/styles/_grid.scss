@@ -4,7 +4,6 @@
 @mixin grid-container {
   display: grid;
   width: 100%;
-  padding: 0 $mobile-padding;
   margin: 0 auto;
   justify-content: center; /* center grid on mobile and tablet */
 
