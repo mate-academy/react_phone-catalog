@@ -1,0 +1,21 @@
+@use 'styles/utils' as u;
+
+.heroContainer {
+  margin-inline: 16px;
+
+  @include u.on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include u.on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+.firstContainer {
+  max-width: 1200px;
+  margin-bottom: 56px;
+  margin-inline: auto;
+}

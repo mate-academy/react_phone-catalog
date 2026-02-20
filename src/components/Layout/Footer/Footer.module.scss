@@ -1,0 +1,118 @@
+@use 'styles/utils' as u;
+
+.footerContainer {
+  border-top: 1px solid var(--elements);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: space-between;
+
+  margin: 0 auto;
+  padding-block: 32px;
+  padding-inline: 16px;
+
+  @include u.on-tablet {
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 32px;
+  }
+
+  @include u.on-desktop {
+    max-width: calc(1200px - 64px);
+  }
+
+  @include u.on-tablet {
+    & > *:nth-child(2) {
+      margin-left: 51px;
+    }
+  }
+
+  @include u.on-desktop {
+    & > *:nth-child(2) {
+      margin-left: 60px;
+    }
+  }
+}
+
+.footerLogo {
+  width: 89px;
+  height: 32px;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include u.on-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include u.on-desktop {
+    gap: 106px;
+  }
+}
+
+.footerLink {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  color: var(--text-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4%;
+
+  @include u.hover(color, var(--text-secondary));
+}
+
+.textBackToTop {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: color u.$effect-duration ease;
+}
+
+.btnBackToTop {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+  border: none;
+
+  background-color: var(--surface-2);
+
+  transition: background-color u.$effect-duration ease;
+}
+
+.btnBackToTopIcon {
+  rotate: -90deg;
+}
+
+.backToTop {
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    .textBackToTop {
+      color: var(--icons);
+    }
+
+    .btnBackToTop {
+      background-color: var(--icons);
+    }
+  }
+}

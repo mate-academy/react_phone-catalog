@@ -1,0 +1,63 @@
+@use './variables' as vars;
+
+@mixin hover($_property, $_toValue, $_timing-function: ease) {
+  transition: #{$_property} vars.$effect-duration $_timing-function;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+// for statis scss variables colors
+@mixin hover-path-fill($_toValue, $_timing-function: ease) {
+  path {
+    transition: fill vars.$effect-duration $_timing-function;
+  }
+
+  &:hover path {
+    fill: rgba($_toValue, 1);
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: vars.$tablet-default-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vars.$desktop-default-width) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: vars.$spacing-unit * 2;
+
+  @include on-tablet {
+    padding-inline: vars.$spacing-unit * 3;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+  --columns-gap: vars.$spacing-unit * 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: var(--columns-gap);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}

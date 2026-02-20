@@ -1,0 +1,59 @@
+@use 'styles/utils/' as u;
+
+.switcher {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  margin-inline: 10px;
+  border: 1px solid var(--elements);
+  border-radius: var(--btn-border-radius);
+
+  @include u.on-tablet {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.button {
+  cursor: pointer;
+
+  padding: 4px 6px;
+  border: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+
+  background-color: transparent;
+
+  transition: all 0.2s ease;
+
+  &:not(:last-child) {
+    border-right: 1px solid var(--elements);
+  }
+
+  &:hover {
+    background-color: var(--surface-2);
+  }
+
+  @media (min-width: 768px) {
+    padding: 6px;
+  }
+
+  @include u.on-desktop {
+    padding: 8px 12px;
+  }
+}
+
+.active {
+  color: var(--text-primary);
+  background-color: var(--accent);
+
+  &:hover {
+    background-color: var(--accent-light);
+  }
+}

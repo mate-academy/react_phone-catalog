@@ -1,0 +1,80 @@
+@use 'styles/utils' as u;
+
+.productButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.productCartBtn,
+.productFavoriteBtn {
+  cursor: pointer;
+  user-select: none;
+
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  font: inherit;
+  color: inherit;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  outline: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.productCartBtn {
+  width: 100%;
+  border-radius: var(--card-btn-border-radius);
+  background-color: var(--accent);
+
+  @include u.hover(background-color, var(--accent-light));
+}
+
+.productCartBtnActive {
+  background-color: var(--surface-2);
+
+  @include u.hover(background-color, var(--icons));
+}
+
+.productCartSpan {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: var(--text-primary);
+  letter-spacing: 0%;
+}
+
+.productFavoriteBtn {
+  border: 1px solid transparent;
+  border-radius: var(--card-btn-border-radius);
+  background-color: var(--surface-2);
+
+  @include u.hover(background-color, var(--icons));
+}
+
+.productFavoriteBtnActive {
+  border: 1px solid var(--elements);
+  background-color: transparent;
+
+  .productFavoriteIcon path {
+    fill: var(--red);
+  }
+}
+
+.productFavoriteIcon {
+  padding: 12px;
+}
+
+.productCartBtn:focus,
+.productFavoriteBtn:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
