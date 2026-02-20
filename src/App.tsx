@@ -1,9 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import HomePage from './modules/HomePage/index';
-import { PhonesPage } from './modules/PhonesPage';
-import { TabletsPage } from './modules/TabletsPage';
-import { AccessoriesPage } from './modules/AccessoriesPage';
+import ProductsPage from './modules/ProductsPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
@@ -25,11 +23,28 @@ const App = () => {
           <div className="main__content">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/phones" element={<PhonesPage />} />
-              <Route path="/tablets" element={<TabletsPage />} />
-              <Route path="/accessories" element={<AccessoriesPage />} />
+              <Route
+                path="/phones"
+                element={<ProductsPage category="phones" title="Phones page" />}
+              />
+              <Route
+                path="/tablets"
+                element={
+                  <ProductsPage category="tablets" title="Tablets page" />
+                }
+              />
+              <Route
+                path="/accessories"
+                element={
+                  <ProductsPage
+                    category="accessories"
+                    title="Accessories page"
+                  />
+                }
+              />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
+
               <Route
                 path="/product/:productId"
                 element={<ProductDetailsPage />}

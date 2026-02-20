@@ -1,14 +1,15 @@
 import styles from './ProductsSlider.module.scss';
 
 import { Product } from '../../../../../public/api/types/Product';
-import { Link } from 'react-router-dom';
-import FavouritesLink from '../../../../components/FavouritesLink/index';
+import ProductCard from '../../../../components/ProductCard/index';
 
 type ProductsSliderProps = {
   products: Product[] | null;
   currentIndex: number;
   handlePrev: () => void;
   handleNext: () => void;
+  handleAddToCart?: (product: Product) => void;
+  handleToggleFavorite?: (productId: string) => void;
   children?: React.ReactNode;
 };
 
@@ -17,10 +18,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   currentIndex,
   handlePrev,
   handleNext,
+  handleAddToCart,
+  handleToggleFavorite,
   children,
 }) => {
-  const visibleOnTablet = 2;
-  const visibleOnDesktop = 4;
+
 
   const hasProducts = Array.isArray(products) && products.length > 0;
   const safeIndex = Number.isInteger(currentIndex) ? currentIndex : 0;
@@ -33,13 +35,14 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   }).filter(notNull);
   const visible: Product[] = hasProducts ? arrayFrom : [];
 
-  const currentProduct =
+ /* const currentProduct =
     products &&
     products.length &&
     currentIndex >= 0 &&
     currentIndex < products.length
       ? products[currentIndex]
       : null;
+      */
 
   const isPrevDisabled = !products || currentIndex <= 0;
   const isNextDisabled = !products || currentIndex >= products.length - 1;
@@ -71,58 +74,14 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       <div className={styles.productsSlider__content}>
         <div className={styles.productsSlider__list}>
           {visible.map((product, i) => (
-            <div
+            <ProductCard
+              product={product}
+              index={i}
+              className={styles.productsSlider__productInfo}
+              handleAddToCart={handleAddToCart}
+              handleToggleFavorite={handleToggleFavorite}
               key={product?.id}
-              className={`${styles.product} ${currentProduct && product?.id === currentProduct.id ? styles.active : ''}
-                  ${i === 1 ? styles.mobile : ''}
-                  ${i > 1 && i <= visibleOnTablet ? styles.tablet : ''}
-                  ${i <= visibleOnDesktop ? styles.desktop : ''}`}
-            >
-              <div className={styles.productsSlider__productInfo}>
-                <div className={styles.productsSlider__productImageContainer}>
-                  <img
-                    src={product?.image}
-                    alt={product?.name ?? 'Product Image'}
-                    className={styles.productsSlider__productImage}
-                  />
-                </div>
-                <Link
-                  to={`/product/${product?.id}`}
-                  className={styles.productsSlider__productName}
-                >
-                  {product?.name}
-                </Link>
-                <div className={styles.productPriceRow}>
-                  <p className={styles.productsSlider__productPrice}>
-                    <a>${product?.price}&nbsp;</a>
-                  </p>
-                  <p className={styles.productsSlider__productFullPrice}>
-                    {`$${product?.fullPrice}`}
-                  </p>
-                </div>
-                <div className={styles.productsSlider__productInfoTable}>
-                  <div className={styles.productFeature}>Screen</div>
-                  <div className={styles.productValue}>{product?.screen}</div>
-                  <div className={styles.productFeature}>Capacity</div>
-                  <div className={styles.productValue}>{product?.capacity}</div>
-                  <div className={styles.productFeature}>RAM</div>
-                  <div className={styles.productValue}>{product?.ram}</div>
-                </div>
-
-                <div className={styles.productsSlider__bottom}>
-                  <button
-                    type="button"
-                    aria-label="Add to cart"
-                    className={`${styles.button} ${styles['button--add-to-card']}`}
-                  >
-                    Add to cart
-                  </button>
-                  <FavouritesLink
-                    className={`${styles.icon}  ${styles['icon--wide']} ${styles['icon--favourites']}`}
-                  />
-                </div>
-              </div>
-            </div>
+            />
           ))}
         </div>
       </div>

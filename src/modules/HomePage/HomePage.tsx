@@ -189,6 +189,14 @@ export const HomePage: React.FC = () => {
     [products],
   );
 
+  function handleToggleFavorite(productId: string): void {
+    throw new Error('Function not implemented.');
+  }
+
+  function handleAddToCart(product: Product): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <>
       <h1 className="visually-hidden">Product Catalog</h1>
@@ -232,6 +240,8 @@ export const HomePage: React.FC = () => {
             currentIndex={currentNewProductIndex}
             handlePrev={handlePrevNewProduct}
             handleNext={handleNextNewProduct}
+            handleAddToCart={handleAddToCart}
+            handleToggleFavorite={handleToggleFavorite}
           >
             Brand new models
           </ProductsSlider>
@@ -281,12 +291,14 @@ export const HomePage: React.FC = () => {
             currentIndex={currentProductIndex}
             handlePrev={handlePrevProduct}
             handleNext={handleNextProduct}
+            handleAddToCart={handleAddToCart}
+            handleToggleFavorite={handleToggleFavorite}
           >
             Hot prices
           </ProductsSlider>
         )}
       </section>
-      <div className="product-catalog">
+      <div className="product-?errors">
         {loading && <div>Loading...</div>}
         {error && <div role="alert">Error: {error}</div>}
         {products && products.length === 0 && <div>No products found.</div>}
