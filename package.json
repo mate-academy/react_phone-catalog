@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test": "echo \"No tests specified\"",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
