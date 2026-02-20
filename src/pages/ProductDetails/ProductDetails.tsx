@@ -131,8 +131,15 @@ const ProductDetails: React.FC = () => {
   if (error) {
     return (
       <div className={styles.error}>
-        <p>{error}</p>
-        <Link to="/">Back to home</Link>
+        <img
+          src="/react_phone-catalog/img/product-not-found.png"
+          alt="Product not found"
+          className={styles.error__image}
+        />
+        <p className={styles.error__message}>{error}</p>
+        <Link to="/" className={styles.error__link}>
+          Back to home
+        </Link>
       </div>
     );
   }

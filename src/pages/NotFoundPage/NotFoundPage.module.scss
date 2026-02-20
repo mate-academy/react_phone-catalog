@@ -1,0 +1,108 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+.notFoundPage {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 0;
+
+  @media (min-width: $tablet-min) {
+    min-height: 80vh;
+    padding: 60px 0;
+  }
+
+  @media (min-width: $desktop-min) {
+    min-height: 90vh;
+    padding: 80px 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+
+    @media (min-width: $tablet-min) {
+      gap: 32px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+
+    @media (min-width: $tablet-min) {
+      max-width: 420px;
+    }
+
+    @media (min-width: $desktop-min) {
+      max-width: 500px;
+    }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin: 0;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    @media (min-width: $desktop-min) {
+      font-size: 56px;
+      line-height: 65px;
+    }
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: $color-text-secondary;
+    margin: 0;
+    max-width: 400px;
+
+    @media (min-width: $tablet-min) {
+      font-size: 18px;
+      line-height: 27px;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: #905bff;
+    color: $color-text;
+    text-decoration: none;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #7d4fcf;
+    }
+
+    &:active {
+      background-color: #6a3fb8;
+    }
+  }
+}
