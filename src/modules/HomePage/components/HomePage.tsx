@@ -5,45 +5,38 @@ import { Banner } from '../../../components/Banner';
 import { ProductSlider } from '../../../components/ProductSlider';
 import { ShopByCategory } from '../../../components/ShopByCategory';
 
-import productsFromServer from '../../../../public/api/products.json';
+import { useProducts } from '../../hooks/use-products';
+import { Loader } from '../../../components/Loader';
 
-function sortedYearProduct(sortBy: string) {
-  return [...productsFromServer].sort((a, b) => {
-    const aVal = a[sortBy];
-    const bVal = b[sortBy];
+export const HomePage = () => {
+  const { products, loading, error } = useProducts();
 
-    if (typeof aVal === 'number' && typeof bVal === 'number') {
-      return bVal - aVal;
-    }
-  });
-}
+  if (loading) {
+    return <Loader />;
+  }
 
-function sortedDiscountProduct() {
-  return [...productsFromServer].sort((a, b) => {
-    const aVal = a.fullPrice - a.price;
-    const bVal = b.fullPrice - b.price;
+  if (error) {
+    return <div>{error}</div>;
+  }
 
-    if (typeof aVal === 'number' && typeof bVal === 'number') {
-      return bVal - aVal;
-    }
-  });
-}
+  const newModels = [...products].sort((a, b) => b.year - a.year);
+  const hotPrices = [...products].sort(
+    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
+  );
 
-const NEW_MODELS = sortedYearProduct('year');
-const HOT_PRICES = sortedDiscountProduct();
-
-export const HomePage = () => (
-  <>
-    <Header />
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <h1 className={styles.heroTitle}>Welcome to Nice Gadgets store!</h1>
-        <Banner />
-        <ProductSlider title="Brand new models" products={NEW_MODELS} />
-        <ShopByCategory />
-        <ProductSlider title="Hot prices" products={HOT_PRICES} />
-      </div>
-    </main>
-    <Footer />
-  </>
-);
+  return (
+    <>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <h1 className={styles.heroTitle}>Welcome to Nice Gadgets store!</h1>
+          <Banner />
+          <ProductSlider title="Brand new models" products={newModels} />
+          <ShopByCategory />
+          <ProductSlider title="Hot prices" products={hotPrices} />
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+};

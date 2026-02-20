@@ -3,19 +3,32 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductsList } from '../../../components/ProductsList';
-import productsFromServer from '../../../../public/api/products.json';
+import { useProducts } from '../../hooks/use-products';
+import { Loader } from '../../../components/Loader';
 
-const TABLETS = productsFromServer.filter(item => item.category === 'tablets');
+export const TabletsPage = () => {
+  const { products, loading, error } = useProducts();
 
-export const TabletsPage = () => (
-  <>
-    <Header />
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <Breadcrumbs items={[{ label: 'Tablets', to: '/tablets' }]} />
-        <ProductsList title="Tablets" products={TABLETS} />
-      </div>
-    </main>
-    <Footer />
-  </>
-);
+  const Tablets = [...products].filter(item => item.category === 'tablets');
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  return (
+    <>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <Breadcrumbs items={[{ label: 'Tablets', to: '/tablets' }]} />
+          <ProductsList title="Tablets" products={Tablets} />
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+};

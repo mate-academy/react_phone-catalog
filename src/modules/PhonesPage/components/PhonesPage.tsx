@@ -3,19 +3,32 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductsList } from '../../../components/ProductsList';
-import productsFromServer from '../../../../public/api/products.json';
+import { Loader } from '../../../components/Loader';
+import { useProducts } from '../../hooks/use-products';
 
-const PHONES = productsFromServer.filter(item => item.category === 'phones');
+export const PhonesPage = () => {
+  const { products, loading, error } = useProducts();
 
-export const PhonesPage = () => (
-  <>
-    <Header />
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <Breadcrumbs items={[{ label: 'Phones', to: '/phones' }]} />
-        <ProductsList title="Mobile phones" products={PHONES} />
-      </div>
-    </main>
-    <Footer />
-  </>
-);
+  const Phones = [...products].filter(item => item.category === 'phones');
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  return (
+    <>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <Breadcrumbs items={[{ label: 'Phones', to: '/phones' }]} />
+          <ProductsList title="Mobile phones" products={Phones} />
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+};
