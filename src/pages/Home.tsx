@@ -5,7 +5,7 @@ export const Home = () => {
   return (
     <>
      
-      {typeof window !== "undefined" && <MatrixRain key={Date.now()} />}
+      {typeof window !== "undefined" && <MatrixRain />}
 
       <div
   style={{

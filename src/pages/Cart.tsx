@@ -20,48 +20,51 @@ type CartView = {
 export const Cart = () => {
   const [items, setItems] = useState<CartView[]>([]);
 
-  const updateCart = async () => {
-    const cart = getCart();
-    const products = await loadProducts();
-
-    const resolved = cart
-      .map(item => {
-        const product = products.find(p => p.id === item.id);
-        if (!product) return null;
-
-        const baseImg = product.images[0];
-        const parts = baseImg.split('/');
-
-        if (parts.length >= 3) {
-          parts[parts.length - 2] = item.color;
-        }
-
-        return {
-          item,
-          product,
-          image: resolveImage(parts.join('/')),
-          price: getProductPrice(product, item.capacity),
-        };
-      })
-      .filter(Boolean) as CartView[];
-
-    setItems(resolved);
-  };
-
   useEffect(() => {
+    const updateCart = async () => {
+      const cart = getCart();
+      const products = await loadProducts();
+
+      const resolved: CartView[] = cart
+        .map(item => {
+          const product = products.find(p => p.id === item.id);
+          if (!product) return null;
+
+          const baseImg = product.images[0];
+          const parts = baseImg.split('/');
+
+          if (parts.length >= 3) {
+            parts[parts.length - 2] = item.color;
+          }
+
+          return {
+            item,
+            product,
+            image: resolveImage(parts.join('/')),
+            price: getProductPrice(product, item.capacity),
+          };
+        })
+        .filter((v): v is CartView => v !== null);
+
+      setItems(resolved);
+    };
+
     updateCart();
-    window.addEventListener('storage-update', updateCart);
-    return () => window.removeEventListener('storage-update', updateCart);
+
+    const handler = () => updateCart();
+    window.addEventListener('storage-update', handler);
+
+    return () => window.removeEventListener('storage-update', handler);
   }, []);
 
   const total = items.reduce(
     (sum, i) => sum + i.price * i.item.quantity,
-    0
+    0,
   );
 
   const totalCount = items.reduce(
     (sum, i) => sum + i.item.quantity,
-    0
+    0,
   );
 
   const increase = (item: CartItem) => {
@@ -142,10 +145,9 @@ export const Cart = () => {
                 Remove
               </button>
             </div>
-
-            <div style={{ textAlign: 'right', minWidth: 120 }}>
+<div style={{ textAlign: 'right', minWidth: 120 }}>
               <div style={{ fontSize: 14, color: '#8aa8b5' }}>
-{item.quantity} × ${price}
+                {item.quantity} × ${price}
               </div>
 
               <div style={{ fontSize: 20, marginTop: 6, fontWeight: 500 }}>

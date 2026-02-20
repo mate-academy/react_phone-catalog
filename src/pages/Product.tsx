@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 import type { Product } from '../types/Product';
 import { loadProducts } from '../data/products';
@@ -11,15 +11,13 @@ import { getProductPrice } from '../utils/price';
 import { resolveImage } from '../utils/image';
 
 export const ProductPage = () => {
-const params = useParams<{ id: string }>();
-const id = params.id;
+  const params = useParams<{ id: string }>();
+  const id = params.id;
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [color, setColor] = useState('');
   const [capacity, setCapacity] = useState('');
-
-  const [images, setImages] = useState<string[]>([]);
   const [imageIndex, setImageIndex] = useState(0);
 
   const [inCart, setInCart] = useState(false);
@@ -38,8 +36,6 @@ const id = params.id;
 
         setColor(colorFromUrl || found.colorsAvailable[0]);
         setCapacity(capFromUrl || found.capacityAvailable[0]);
-
-        setImages(found.images.map(resolveImage));
         setImageIndex(0);
       }
     });
@@ -58,8 +54,8 @@ const id = params.id;
     return () => window.removeEventListener('storage-update', update);
   }, [product, color, capacity]);
 
-  useEffect(() => {
-    if (!product) return;
+  const images = useMemo(() => {
+    if (!product) return [];
 
     const recolored = product.images.map(img => {
       const parts = img.split('/');
@@ -69,9 +65,8 @@ const id = params.id;
       return parts.join('/');
     });
 
-    setImages(recolored.map(resolveImage));
-    setImageIndex(0);
-  }, [color, product]);
+    return recolored.map(resolveImage);
+  }, [product, color]);
 
   useEffect(() => {
     if (!product) return;
@@ -94,7 +89,6 @@ const id = params.id;
 
   return (
     <div className="product-page" style={{ maxWidth: 1100, margin: '0 auto' }}>
-    
       <button onClick={() => navigate(-1)} className="hero-back">
         Back
       </button>
@@ -128,7 +122,6 @@ const id = params.id;
           />
         </div>
 
-      
         <div
           style={{
             display: 'flex',
@@ -145,11 +138,11 @@ const id = params.id;
               key={img}
               src={img}
               onClick={() => setImageIndex(i)}
-style={{
+              style={{
                 width: 70,
                 height: 70,
                 objectFit: 'contain',
-                cursor: 'pointer',
+cursor: 'pointer',
                 borderRadius: 12,
                 flexShrink: 0,
                 border:
@@ -169,7 +162,6 @@ style={{
 
         <div style={{ fontSize: 26, marginBottom: 30 }}>${price}</div>
 
-      
         <div style={{ marginBottom: 24, textAlign: 'center' }}>
           <div style={{ opacity: 0.6, marginBottom: 10 }}>Color</div>
 
@@ -210,7 +202,6 @@ style={{
           ))}
         </div>
 
-      
         <div style={{ display: 'flex', gap: 20 }}>
           <button
             disabled={inCart}
