@@ -9,7 +9,6 @@
 
     @media (min-width: $tablet-min) {
       padding: 32px 0;
-
     }
 
     @media (min-width: $desktop-min) {
@@ -35,9 +34,145 @@
 /* Slider takes full grid width on all breakpoints */
 .sliderRow {
   grid-column: 1 / -1;
+  padding-bottom: 56px;
+
+  @media (min-width: $tablet-min) {
+    padding-bottom: 64px;
+  }
+
+  @media (min-width: $desktop-min) {
+    padding-bottom: 80px;
+  }
 
   /* mobile: bleed past the homePage padding to full viewport width */
   @media (max-width: calc($tablet-min - 1px)) {
     margin-inline: (-$mobile-padding);
+  }
+}
+
+/* Categories Section */
+.categoriesSection {
+  grid-column: 1 / -1;
+  padding: 56px 0;
+
+  @media (min-width: $tablet-min) {
+    padding: 64px 0;
+  }
+
+  @media (min-width: $desktop-min) {
+    padding: 80px 0;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    margin-bottom: 24px;
+
+    @media (min-width: $tablet-min) {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
+
+  @media (min-width: $tablet-min) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    height: auto;
+  }
+}
+
+.categoryCard {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 200px;
+
+  @media (min-width: $tablet-min) {
+    min-height: 250px;
+  }
+
+  @media (min-width: $desktop-min) {
+    min-height: 280px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    text-align: start;
+    width: 100%;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    color: $color-text;
+    margin: 0;
+
+    @media (min-width: $tablet-min) {
+      font-size: 24px;
+      line-height: 31px;
+    }
+
+    @media (min-width: $desktop-min) {
+      font-size: 28px;
+      line-height: 35px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__count {
+    font-family: Mont, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: #75767f;
+    margin: 0;
+  }
+
+  &__image {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__imageWrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    aspect-ratio: 1;
   }
 }

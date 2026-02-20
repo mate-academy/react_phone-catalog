@@ -2,15 +2,126 @@
 @import '../../styles/grid';
 
 .footer {
-  padding: 24px 0;
-  text-align: center;
-  font-size: 14px;
-  color: $color-text-secondary;
-  border-top: 1px solid $color-border;
   background: $color-surface;
+  border-top: 1px solid $color-border;
+  height: 257px;
+  margin-top: 64px;
+
+  @media (min-width: $tablet-min) {
+    height: 94px;
+    margin-top: 80px;
+  }
 
   &__inner {
     @include container;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+
+    @media (min-width: $tablet-min) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    img {
+      height: 32px;
+      width: auto;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+
+    @media (min-width: $tablet-min) {
+      flex-direction: row;
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-decoration: none;
+    color: $color-text;
+    text-transform: uppercase;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-text;
+    }
+  }
+
+  &__backToTop {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 16px;
+
+    @media (min-width: $tablet-min) {
+      width: auto;
+    }
+
+    &__title {
+      font-family: Mont, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+      color: #75767f;
+    }
+  }
+
+  &__backButton {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #323542;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: $color-text-secondary;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    justify-content: center;
+
+    &:hover {
+      color: $color-text;
+    }
+  }
+
+  &__backIcon {
+    width: 10px;
+    height: 10px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
   }
 }
-
