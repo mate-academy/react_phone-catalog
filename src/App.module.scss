@@ -1,0 +1,14 @@
+@import '/src/styles/styles';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $hover-bg-color;
+
+  &__main {
+    flex-grow: 1;
+  }
+}
+
+

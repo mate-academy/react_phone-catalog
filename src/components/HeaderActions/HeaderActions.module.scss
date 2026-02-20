@@ -1,0 +1,100 @@
+@import '/src/styles/styles';
+
+.headerActions {
+  &__iconsList {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    box-sizing: border-box;
+    width: 100%;
+
+    @include tablet {
+      height: $header-height-mobile;
+    }
+
+    @include desktop {
+      height: $header-height-desktop;
+    }
+  }
+
+  &__iconsItem {
+    border-top: 1px solid $elements-color;
+    border-left: 1px solid $elements-color;
+    width: 100%;
+    height: 100%;
+
+    &:first-child {
+      border-left: none;
+
+      @include tablet {
+        border-left: 1px solid $elements-color;
+      }
+    }
+
+    @include tablet {
+      height: $header-height-mobile;
+      width: $header-height-mobile;
+      border-top: unset;
+    }
+
+    @include desktop {
+      height: $header-height-desktop;
+      width: $header-height-desktop;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @include hover(background-color, $hover-bg-color);
+
+    &::after {
+      @include nav-link-after-style;
+    }
+
+    &--active {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__iconImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__iconCount {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    background-color: #476DF4;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: flex;
+    font-size: 8px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    line-height: 100%;
+    top: 18px;
+    left: 50%;
+
+    @include tablet {
+      top: 9px;
+      left: 23px;
+    }
+
+    @include desktop {
+      top: 17px;
+      left: 30px;
+    }
+  }
+}

@@ -1,0 +1,133 @@
+@mixin tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (min-width: $small-desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin container {
+  padding-inline: 16px;
+  margin: 0 auto;
+
+  @include tablet {
+    padding-inline: 24px;
+    max-width: 1136px;
+  }
+}
+
+@mixin grid-markup {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include tablet {
+    --columns: 12;
+  }
+
+  @include desktop {
+    --columns: 24;
+  }
+}
+
+@mixin grid-markup-products {
+  --columns: 1;
+
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include tablet {
+    --columns: 2;
+  }
+
+   @include small-desktop {
+    --columns: 3;
+  }
+
+  @include desktop {
+    --columns: 4;
+  }
+}
+
+@mixin hover($property, $toValue, $element: false) {
+  @if $element {
+    #{$element} {
+      transition: #{$property} $effectDuration;
+    }
+    &:hover #{$element} {
+      #{$property}: $toValue;
+    }
+  } @else {
+    & {
+      transition: #{$property} $effectDuration ease;
+    }
+
+    &:hover {
+      #{$property}: $toValue;
+    }
+  }
+}
+
+@mixin menu-button-lines-style {
+  position: absolute;
+  display: block;
+  background-color: $primary-color;
+  height: 1.5px;
+  width: 100%;
+  transition: $effectDuration ease-in-out;
+  border-radius: 1px;
+}
+
+@mixin nav-link-after-style {
+  content: '';
+  background-color: $primary-color;
+  width: 100%;
+  height: 2px;
+  display: block;
+  position: absolute;
+  transition: transform $effectDuration;
+  transform: scale(0);
+  bottom: 0;
+
+  @include tablet {
+    height: 3px;
+  }
+}
+
+@mixin pagination-buttons-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: all $effectDuration;
+}
+
+@mixin header-button-mobile-style {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: $header-height-mobile;
+  width: $header-height-mobile;
+  border-left: 1px solid $elements-color;
+  display: flex;
+  box-sizing: border-box;
+  transition: border-color $effectDuration;
+
+  @include hover(background-color,$hover-bg-color);
+}
+

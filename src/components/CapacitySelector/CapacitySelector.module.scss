@@ -1,0 +1,28 @@
+@import '/src/styles/styles';
+
+.capacityLink{
+  @include text-body;
+
+  display: flex;
+  width: 56px;
+  height: 32px;
+  border: 1px solid $icons-color;
+  box-sizing: border-box;
+  border-radius: 4px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $effectDuration;
+
+  @include hover (border-color, $secondary-color);
+
+  &--active {
+    color: #fff;
+    background-color: $primary-color;
+    border-color: $primary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}

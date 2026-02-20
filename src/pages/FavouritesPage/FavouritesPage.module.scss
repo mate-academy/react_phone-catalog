@@ -1,0 +1,31 @@
+@import '/src/styles/styles';
+
+.favouritesPage {
+  &__container {
+    padding-top: 24px;
+    padding-bottom: 64px;
+
+    @include container;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__heading {
+    @include headline-1;
+
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include text-body;
+
+    color: $secondary-color;
+    margin-bottom: 32px;
+  }
+
+  &__noFavourites {
+    @include headline-3;
+  }
+}
