@@ -1,0 +1,10 @@
+import { Product, ProductDetail } from './../types/Product';
+import { client } from '../utils/fetchClient';
+
+export const getProducts = () => {
+  return client<Product[]>('products.json');
+};
+
+export const getProductDetails = (category: string, itemId: number) => {
+  return client<ProductDetail>(`/${category}/${itemId}.json`);
+};
