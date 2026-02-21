@@ -1,0 +1,43 @@
+// Breakpoints
+$mobile-min: 320px;
+$mobile-max: 639px;
+$tablet-min: 640px;
+$tablet-max: 1199px;
+$desktop-min: 1200px;
+
+// Grid system
+$mobile-columns: 4;
+$tablet-columns: 12;
+$desktop-columns: 24;
+$mobile-gap: 16px;
+$tablet-gap: 16px;
+$desktop-gap: 16px;
+$mobile-padding: 16px;
+$tablet-padding: 24px;
+$tablet-padding: 24px;
+$desktop-padding: 32px;
+$desktop-column-width: 32px;
+
+// Container max width for desktop (fixed)
+// 24 columns * 32px + 23 gaps * 16px = 768px + 368px = 1136px
+// Adding padding: 1136px + 2 * 16px (optional side padding)
+$desktop-container-max: 1200px;
+
+// Dark Theme Colors
+$color-background: #0f1121; // Black - main background
+$color-surface: #161827; // Surface 1 - elevated content
+$color-surface-2: #323542; // Surface 2 - more elevated
+$color-elements: #3b3e4a; // Elements
+$color-border: #3b3e4a; // Borders/dividers
+$color-icons: #4a4d58; // Icons
+$color-secondary: #75767f; // Secondary elements
+
+// Text colors
+$color-text: #f1f2f9; // White - primary text
+$color-text-secondary: #75767f; // Secondary text
+
+// Accent colors
+$color-primary: #e8e9ee; // Accent
+$color-green: #27ae60; // Green
+$color-red: #eb5757; // Red
+$color-accent: #e8e9ee; // Accent color (same as primary, but can be used for semantic clarity)

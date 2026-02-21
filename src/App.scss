@@ -1,1 +1,76 @@
-// not empty
+@import './styles/variables';
+@import './styles/grid';
+
+// Font faces
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+// Global reset & base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: Mont, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-text;
+  background-color: $color-background;
+  line-height: 1.5;
+}
+
+// Utility: container (full-width with max-width and padding)
+.container {
+  @include container;
+}
+
+// Utility: grid container
+.grid {
+  @include grid-container;
+}
+
+// Utility: visually hidden (accessible, not display:none)
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+

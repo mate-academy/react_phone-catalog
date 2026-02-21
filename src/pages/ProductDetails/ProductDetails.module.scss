@@ -1,0 +1,597 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include container;
+}
+
+/* Блок 1: Title */
+.titleBlock {
+  width: 100%;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 48px;
+    }
+
+    @media (min-width: $desktop-min) {
+      font-size: 56px;
+    }
+  }
+}
+
+/* Блок 2: Product Container */
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: $tablet-min) {
+    display: grid;
+
+    @include grid-container;
+
+    grid-template-rows: 1fr !important;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (min-width: $desktop-min) {
+    display: grid;
+
+    @include grid-container;
+
+    grid-template-rows: 1fr !important;
+    gap: 40px;
+    align-items: flex-start;
+  }
+}
+
+/* Блок 2.1: Main Image */
+.mainImageBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+
+  @media (min-width: $tablet-min) {
+    grid-column: 2 / 8;
+    grid-row: 1;
+  }
+
+  @media (min-width: $desktop-min) {
+    width: 100%;
+    grid-column: 3 / 13;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+  }
+}
+
+/* Блок 2.2: Thumbnails */
+.thumbnailsBlock {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+
+  @media (min-width: $tablet-min) {
+    grid-column: 1;
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  @media (min-width: $desktop-min) {
+    width: 100%;
+    grid-column: 1/3;
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    padding: 4px;
+    border: #75767f solid 1px;
+    transition: border-color 200ms ease;
+
+    &:hover {
+      border-color: $color-accent;
+    }
+
+    &--active {
+      border-color: $color-accent;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (min-width: $tablet-min) {
+      width: 35px;
+      height: 35px;
+    }
+
+    @media (min-width: $desktop-min) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+/* Блок 2.3: Product Info */
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: $tablet-min) {
+    grid-column: 8 / -1;
+  }
+
+  @media (min-width: $desktop-min) {
+    grid-column: 14 / 21;
+    flex: 1;
+    width: 100%;
+  }
+}
+
+/* Блок 2.3.1: Color Selection */
+.colorSelection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__label {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    color: #75767f;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  &__option {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 200ms ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    font-size: 0;
+    background: none;
+    outline: 2px solid #3b3e4a;
+    outline-offset: 3px;
+
+    &:hover {
+      transform: scale(1.1);
+      border-color: #000;
+    }
+
+    &--active {
+      outline: 2px solid $color-text;
+      outline-offset: 3px;
+    }
+  }
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: #3b3e4a;
+  margin: 20px 0;
+}
+
+/* Блок 2.3.2: Capacity Selection */
+.capacitySelection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__label {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    color: #75767f;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__option {
+    height: 32px;
+    background-color: transparent;
+    padding: 0 8px;
+    border: 2px solid #4a4d58;
+    cursor: pointer;
+    transition: all 200ms ease;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    font-weight: 400;
+    color: $color-text;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      border-color: $color-text;
+    }
+
+    &--active {
+      border-color: $color-text;
+      background-color: $color-text;
+      color: #0f1121;
+    }
+  }
+}
+
+/* Блок 2.3.3: Price */
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__discount {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &__regular {
+    position: relative;
+    isolation: isolate;
+    display: inline-block;
+    color: #75767f;
+    font-family: Mont, sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    /* pseudo-element draws the line and uses mix-blend to create knockout over the text */
+    &::after {
+      content: '';
+      position: absolute;
+      left: -5%;
+      top: 50%;
+      width: 110%;
+      height: 1px;
+      background-color: currentColor;
+      mix-blend-mode: difference;
+      pointer-events: none;
+    }
+  }
+}
+
+/* Блок 2.3.4: Action Buttons */
+.buttonsBlock {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+
+  &__cart {
+    height: 100%;
+    background: #905bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+
+    /* Hover states */
+    &:hover {
+      background: #a378ff;
+    }
+  }
+
+  &__cart[aria-pressed='true'] {
+    background: #323542;
+  }
+
+  &__favourite {
+    background: #323542;
+    border: 1px solid #3b3e4a;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Hover states */
+    &:hover {
+      background: #4a4d58;
+    }
+  }
+
+  &__favourite[aria-pressed='true'] {
+    background: #161827;
+  }
+}
+
+/* Блок 2.3.5: Mini Specs */
+.miniSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  justify-content: space-between;
+
+  .specItem {
+    display: flex;
+    justify-content: space-between;
+
+    .specLabel {
+      font-family: Mont, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #75767f;
+    }
+
+    .specValue {
+      font-family: Mont, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $color-text;
+      text-align: right;
+    }
+  }
+}
+
+/* Блок 3: Description */
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: $desktop-min) {
+    flex-direction: row;
+    gap: 60px;
+  }
+}
+
+/* Блок 4: You May Also Like */
+.aboutSection {
+  flex: 1;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 100%;
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3b3e4a;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 22px;
+    }
+  }
+
+  &__content {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+
+    h3 {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin: 16px 0;
+      color: $color-text;
+
+      @media (min-width: $tablet-min) {
+        font-size: 20px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0 0 12px;
+
+      &:last-child {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
+
+.techSpecsSection {
+  flex: 1;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3b3e4a;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 22px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .specItem {
+      display: flex;
+      justify-content: space-between;
+
+      .specLabel {
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #75767f;
+      }
+
+      .specValue {
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: $color-text;
+        text-align: right;
+      }
+    }
+  }
+}
+
+/* Helper classes */
+.loader {
+  padding: 48px 16px;
+  text-align: center;
+  font-size: 16px;
+  color: #75767f;
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+    transition: opacity 200ms ease;
+  }
+}
+
+.error {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 0;
+
+  @media (min-width: $tablet-min) {
+    min-height: 80vh;
+    padding: 60px 0;
+  }
+
+  @media (min-width: $desktop-min) {
+    min-height: 90vh;
+    padding: 80px 0;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 32px;
+
+    @media (min-width: $tablet-min) {
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: $desktop-min) {
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__message {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: $color-text-secondary;
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: #905bff;
+    color: $color-text;
+    text-decoration: none;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #7d4fcf;
+    }
+
+    &:active {
+      background-color: #6a3fb8;
+    }
+  }
+}

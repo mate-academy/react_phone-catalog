@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  &__content {
+    flex: 1 0 auto;
+
+    // Content pages will use grid inside
+  }
+}
+
+.breadcrumbsContainer {
+  @include container;
+}
+

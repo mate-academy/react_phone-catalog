@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+/* Cart page layout */
+.cartPage {
+  @include container;
+
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  /* = Title / header */
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 8px;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  /* = Item counter */
+  &__counter {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin: 0 0 24px;
+    color: #75767f;
+  }
+
+  /* = Cart items list */
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    @media (min-width: $desktop-min) {
+      grid-column: 1 / 17;
+      align-items: flex-start;
+    }
+  }
+
+  /* = Content wrapper (list + summary) */
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    @media (min-width: $desktop-min) {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      gap: $desktop-gap;
+      align-items: flex-start;
+    }
+  }
+}
