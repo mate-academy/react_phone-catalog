@@ -45,13 +45,16 @@ export const FavouritesProvider: React.FC<{ children: ReactNode }> = ({
   }, [favourites]);
 
   const addToFavourites = (product: Product) => {
+    const canonicalId = String(product.itemId ?? product.id);
+    const normalized = { ...product, id: canonicalId };
+
     setFavourites(prev => {
       // Prevent duplicates (normalize id to string to handle numeric ids from products.json)
-      if (prev.some(p => String(p.id) === String(product.id))) {
+      if (prev.some(p => String(p.id) === canonicalId)) {
         return prev;
       }
 
-      return [...prev, { ...product, id: String(product.id) }];
+      return [...prev, normalized];
     });
   };
 

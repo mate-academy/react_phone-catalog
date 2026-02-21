@@ -48,7 +48,7 @@ const CartCard: React.FC<Props> = ({
   const totalPrice = price * quantity;
 
   // products.json uses itemId for routing, phones.json uses id
-  const productSlug = (product as any).itemId ?? product.id;
+  const productSlug = product.itemId ?? product.id;
 
   const handleDecrease = () => {
     if (quantity > 1) {

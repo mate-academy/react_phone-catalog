@@ -43,13 +43,16 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   }, [cart]);
 
   const addToCart = (product: Product) => {
+    // Use itemId as canonical id (matches phones.json id format used in ProductDetails)
+    const canonicalId = String(product.itemId ?? product.id);
+    const normalized = { ...product, id: canonicalId };
+
     setCart(prev => {
-      // Prevent duplicates (normalize id to string to handle numeric ids from products.json)
-      if (prev.some(p => String(p.id) === String(product.id))) {
+      if (prev.some(p => String(p.id) === canonicalId)) {
         return prev;
       }
 
-      return [...prev, { ...product, id: String(product.id) }];
+      return [...prev, normalized];
     });
   };
 

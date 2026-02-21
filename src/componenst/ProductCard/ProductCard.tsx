@@ -35,12 +35,15 @@ const ProductCard: React.FC<Props> = ({
       ? (product as any).price
       : (product.priceDiscount ?? null);
 
-  const inCart = isInCart(product.id);
-  const inFav = isInFavourites(product.id);
+  // Use itemId as canonical id (matches phones.json id format used in ProductDetails)
+  const canonicalId = String(product.itemId ?? product.id);
+
+  const inCart = isInCart(canonicalId);
+  const inFav = isInFavourites(canonicalId);
 
   const handleAddToCart = () => {
     if (inCart) {
-      removeFromCart(product.id);
+      removeFromCart(canonicalId);
     } else {
       addToCart(product);
       if (onAddToCart) {
@@ -51,7 +54,7 @@ const ProductCard: React.FC<Props> = ({
 
   const handleToggleFavourite = () => {
     if (inFav) {
-      removeFromFavourites(product.id);
+      removeFromFavourites(canonicalId);
     } else {
       addToFavourites(product);
     }

@@ -2,6 +2,7 @@ import { Category } from './categories';
 
 export interface Product {
   id: string;
+  itemId?: string;
   category: Category;
   namespaceId?: string;
   name: string;
