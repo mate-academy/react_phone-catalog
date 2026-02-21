@@ -81,6 +81,7 @@ const HomePage: React.FC = () => {
 
   return (
     <section className={styles.homePage}>
+      <h1 className="visually-hidden">Product Catalog</h1>
       <div className={styles.homePage__banner}>
         <h2 className={styles.homePage__banner__text}>
           Welcome to Nice Gadgets store!
