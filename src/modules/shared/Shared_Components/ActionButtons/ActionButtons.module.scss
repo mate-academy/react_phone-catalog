@@ -1,0 +1,105 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  gap: 10px;
+
+  &__button-cart {
+    background-color: $primary-color;
+    color: $white;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    border: none;
+    height: 40px;
+    width: 100%;
+    transition: all $primary-transition-duration ease-in-out;
+
+    &--skeleton {
+      @include skeleton;
+      @include skeletonBoxShadow;
+      pointer-events: none;
+    }
+
+    &--is-in-cart {
+      background-color: $white;
+      border: 1px solid $elements-color;
+      color: $green-color;
+      transition: border $primary-transition-duration ease-in-out;
+      pointer-events: none;
+    }
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $primary-color;
+        color: $green-color;
+        background-color: $white;
+      }
+    }
+
+    &--is-Dark {
+      border: none;
+      background-color: $primary-dark-purple;
+
+      @include on-desktop {
+        &:hover {
+          border: none;
+          background-color: $secondary-purple;
+          color: $white;
+        }
+      }
+    }
+
+    &--is-Dark-Added {
+      background-color: $gray-surface-secondary;
+      color: $white;
+    }
+  }
+
+  &__button-favorites {
+    width: 45px;
+    background-color: $white;
+    background-image: url(/icons/favourites_heart_like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $icons-color;
+    transition: all $primary-transition-duration ease-in-out;
+
+    &--skeleton {
+      @include skeleton;
+      @include skeletonBoxShadow;
+      border: none;
+      pointer-events: none;
+    }
+
+    &--is-added {
+      background-image: url(/icons/favourites_filled_heart_like.svg);
+    }
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+        border-color: $primary-color;
+      }
+    }
+
+    &--is-Dark {
+      background-color: $gray-surface-secondary;
+      border: none;
+      background-image: url(/icons/Favourites-heart-like-white.svg);
+
+      @include on-desktop {
+        &:hover {
+          border: none;
+          background-color: $gray-elements-secondary;
+        }
+      }
+    }
+
+    &--is-Dark-Added {
+      background-image: url(/icons/favourites_filled_heart_like.svg);
+    }
+  }
+}
