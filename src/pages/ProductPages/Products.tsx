@@ -9,6 +9,7 @@ import { PaginationTop, PaginationBottom } from '../../componenst/Pagination';
 import styles from './Products.module.scss';
 
 type SortOption = 'name' | 'price' | 'price-desc' | 'newest';
+type PerPageOption = number | 'all';
 
 const VALID_SORT: SortOption[] = ['name', 'price', 'price-desc', 'newest'];
 
@@ -21,7 +22,7 @@ const Products: React.FC = () => {
 
   // Read initial values from URL
   const sortFromUrl = searchParams.get('sort');
-  const perPageFromUrl = Number(searchParams.get('perPage'));
+  const perPageStrFromUrl = searchParams.get('perPage');
   const pageFromUrl = Number(searchParams.get('page'));
 
   const [items, setItems] = useState<Product[] | null>(null);
@@ -33,17 +34,29 @@ const Products: React.FC = () => {
       ? (sortFromUrl as SortOption)
       : 'newest',
   );
-  const [perPage, setPerPage] = useState(
-    [4, 8, 12, 16].includes(perPageFromUrl) ? perPageFromUrl : 8,
+  const [perPage, setPerPage] = useState<PerPageOption>(
+    perPageStrFromUrl === 'all'
+      ? 'all'
+      : [4, 8, 12, 16].includes(Number(perPageStrFromUrl))
+        ? Number(perPageStrFromUrl)
+        : 'all',
   );
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
 
-  // Sync state → URL search params
+  // Sync state → URL search params (skip defaults: page=1, perPage=all)
   useEffect(() => {
-    setSearchParams(
-      { sort: sortBy, perPage: String(perPage), page: String(currentPage) },
-      { replace: true },
-    );
+    const urlParams: Record<string, string> = {};
+
+    urlParams.sort = sortBy;
+    if (perPage !== 'all') {
+      urlParams.perPage = String(perPage);
+    }
+
+    if (currentPage !== 1) {
+      urlParams.page = String(currentPage);
+    }
+
+    setSearchParams(urlParams, { replace: true });
   }, [sortBy, perPage, currentPage, setSearchParams]);
 
   // Fetch products
@@ -120,8 +133,9 @@ const Products: React.FC = () => {
     });
 
     const total = sorted.length;
-    const start = (currentPage - 1) * perPage;
-    const paginated = sorted.slice(start, start + perPage);
+    const start = perPage === 'all' ? 0 : (currentPage - 1) * perPage;
+    const paginated =
+      perPage === 'all' ? sorted : sorted.slice(start, start + perPage);
 
     return { sorted, paginated, total };
   }, [items, sortBy, perPage, currentPage]);
@@ -131,7 +145,7 @@ const Products: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const handlePerPageChange = (count: number) => {
+  const handlePerPageChange = (count: number | 'all') => {
     setPerPage(count);
     setCurrentPage(1);
   };

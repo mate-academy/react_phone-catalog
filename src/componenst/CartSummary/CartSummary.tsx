@@ -5,9 +5,10 @@ import { Product } from '../../types/Product';
 interface Props {
   products: Product[];
   quantities: Record<string, number>;
+  onCheckout: () => void;
 }
 
-const CartSummary: React.FC<Props> = ({ products, quantities }) => {
+const CartSummary: React.FC<Props> = ({ products, quantities, onCheckout }) => {
   const total = products.reduce((sum, product) => {
     const price =
       product.priceDiscount ?? product.priceRegular ?? product.price ?? 0;
@@ -32,7 +33,11 @@ const CartSummary: React.FC<Props> = ({ products, quantities }) => {
 
       <div className={styles.cartSummary__divider} />
 
-      <button type="button" className={styles.cartSummary__checkout}>
+      <button
+        type="button"
+        className={styles.cartSummary__checkout}
+        onClick={onCheckout}
+      >
         Checkout
       </button>
     </div>

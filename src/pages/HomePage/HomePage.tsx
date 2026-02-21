@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.scss';
@@ -50,9 +51,9 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const phoneProducts = await fetchJSON<Product[]>('api/phones.json');
+        const allProducts = await fetchJSON<Product[]>('api/products.json');
 
-        setProducts(phoneProducts);
+        setProducts(allProducts);
       } catch (error) {
       } finally {
         setLoading(false);
@@ -62,21 +63,22 @@ const HomePage: React.FC = () => {
     loadProducts();
   }, []);
 
-  // Filter data for different carousels
+  // Brand new: newest by year
   const iphones = useMemo(() => {
-    return products.filter(
-      p =>
-        p.name.toLowerCase().includes('iphone 14') &&
-        p.capacity?.toLowerCase().includes('128'),
-    );
+    return [...products]
+      .sort((a, b) => ((b as any).year ?? 0) - ((a as any).year ?? 0))
+      .slice(0, 8);
   }, [products]);
 
+  // Hot prices: biggest absolute discount (fullPrice - price)
   const bestPrices = useMemo(() => {
-    return products.filter(
-      p =>
-        p.name.toLowerCase().includes('iphone 11') &&
-        p.capacity?.toLowerCase().includes('128'),
-    );
+    const getDiscount = (p: Product) =>
+      ((p as any).fullPrice ?? 0) - ((p as any).price ?? 0);
+
+    return [...products]
+      .filter(p => getDiscount(p) > 0)
+      .sort((a, b) => getDiscount(b) - getDiscount(a))
+      .slice(0, 8);
   }, [products]);
 
   return (

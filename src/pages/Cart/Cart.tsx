@@ -7,7 +7,7 @@ import CartSummary from '../../componenst/CartSummary';
 import styles from './Cart.module.scss';
 
 const Cart: React.FC = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, clearCart } = useCart();
   const [quantities, setQuantities] = useState<Record<string, number>>(() => {
     const initialQuantities: Record<string, number> = {};
 
@@ -23,6 +23,17 @@ const Cart: React.FC = () => {
       ...prev,
       [productId]: newQuantity,
     }));
+  };
+
+  const handleCheckout = () => {
+    // eslint-disable-next-line no-alert
+    const confirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (confirmed) {
+      clearCart();
+    }
   };
 
   if (cart.length === 0) {
@@ -58,7 +69,11 @@ const Cart: React.FC = () => {
           ))}
         </div>
 
-        <CartSummary products={cart} quantities={quantities} />
+        <CartSummary
+          products={cart}
+          quantities={quantities}
+          onCheckout={handleCheckout}
+        />
       </div>
     </section>
   );

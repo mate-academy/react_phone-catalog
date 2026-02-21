@@ -18,13 +18,13 @@ const resolveUrl = (path: string) => {
 interface PaginationTopProps {
   sortBy: string;
   onSortChange: (sort: string) => void;
-  perPage: number;
-  onPerPageChange: (count: number) => void;
+  perPage: number | 'all';
+  onPerPageChange: (count: number | 'all') => void;
 }
 
 interface PaginationBottomProps {
   total: number;
-  perPage: number;
+  perPage: number | 'all';
   currentPage?: number;
   onPageChange: (page: number) => void;
 }
@@ -47,6 +47,7 @@ export const PaginationTop: React.FC<PaginationTopProps> = ({
     { value: 8, label: '8 items' },
     { value: 12, label: '12 items' },
     { value: 16, label: '16 items' },
+    { value: 'all', label: 'All' },
   ];
 
   return (
@@ -67,7 +68,9 @@ export const PaginationTop: React.FC<PaginationTopProps> = ({
           <Select
             value={perPage}
             options={perPageOptions}
-            onChange={value => onPerPageChange(Number(value))}
+            onChange={value =>
+              onPerPageChange(value === 'all' ? 'all' : Number(value))
+            }
             label="Items per page:"
           />
         </div>
@@ -82,12 +85,17 @@ export const PaginationBottom: React.FC<PaginationBottomProps> = ({
   currentPage = 1,
   onPageChange,
 }) => {
+  // When showing all items, pagination is not needed
+  if (perPage === 'all') {
+    return null;
+  }
+
   const pagesCount = Math.ceil(total / perPage);
 
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === pagesCount;
 
-  if (pagesCount === 0) {
+  if (pagesCount <= 1) {
     return null;
   }
 
