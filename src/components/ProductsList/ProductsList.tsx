@@ -2,7 +2,8 @@ import styles from './ProductsList.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
 import { BaseProduct } from '../../types';
-// import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ChangeEvent } from 'react';
 
 interface Props {
   title: string;
@@ -17,8 +18,33 @@ export const ProductsList = ({
   totalPages = 5,
   currentPage = 1,
 }: Props) => {
-  // const [sortBy, setSortBy] = useState();
-  // const [perPage, setPerPage] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortBy = searchParams.get('sortBy') || 'newest';
+  const perPage = searchParams.get('perPage') || 'all';
+
+  function handleQueryChange(
+    event: ChangeEvent<HTMLSelectElement>,
+    nameParam: string,
+  ) {
+    const params = new URLSearchParams(searchParams);
+
+    if (event.target.value === '') {
+      params.delete(nameParam);
+    } else {
+      params.set(nameParam, event.target.value);
+    }
+
+    setSearchParams(params);
+  }
+
+  const sortByHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    handleQueryChange(event, 'sortBy');
+  };
+
+  const perPageHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    handleQueryChange(event, 'perPage');
+  };
 
   return (
     <section className={styles.section}>
@@ -30,7 +56,14 @@ export const ProductsList = ({
           <label className={styles.filterLabel} htmlFor="sort-by">
             Sort by
           </label>
-          <select id="sort-by" className={styles.select}>
+          <select
+            id="sort-by"
+            className={styles.select}
+            value={sortBy}
+            onChange={event => {
+              sortByHandler(event);
+            }}
+          >
             <option value="newest">Newest</option>
             <option value="alphabetically">Alphabetically</option>
             <option value="cheapest">Cheapest</option>
@@ -41,7 +74,14 @@ export const ProductsList = ({
           <label className={styles.filterLabel} htmlFor="items-per-page">
             Items on page
           </label>
-          <select id="items-per-page" className={styles.select}>
+          <select
+            id="items-per-page"
+            className={styles.select}
+            value={perPage}
+            onChange={event => {
+              perPageHandler(event);
+            }}
+          >
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>

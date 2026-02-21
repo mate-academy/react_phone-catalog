@@ -5,13 +5,23 @@ import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductsList } from '../../../components/ProductsList';
 import { useProducts } from '../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
+import { useSearchParams } from 'react-router-dom';
+import { SortProducts } from '../../utils/SortProducts';
+import { PerPage } from '../../utils/PerPage';
 
 export const AccessoriesPage = () => {
   const { products, loading, error } = useProducts();
 
-  const Accessories = [...products].filter(
-    item => item.category === 'accessories',
+  const [searchParam] = useSearchParams();
+  const sortBy = searchParam.get('sortBy') || 'newest';
+  const perPage = searchParam.get('perPage') || 'all';
+
+  let Accessories = SortProducts(
+    [...products].filter(item => item.category === 'accessories'),
+    sortBy,
   );
+
+  Accessories = PerPage(Accessories, perPage);
 
   if (loading) {
     return <Loader />;

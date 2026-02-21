@@ -8,7 +8,6 @@ type UseProductsResult = {
 };
 
 export function useProducts(): UseProductsResult {
-  const controller = new AbortController();
   const url = new URL(
     'api/products.json',
     window.location.origin + import.meta.env.BASE_URL,
@@ -19,6 +18,8 @@ export function useProducts(): UseProductsResult {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     setLoading(true);
     setError(null);
 

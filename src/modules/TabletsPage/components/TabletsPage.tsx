@@ -5,11 +5,23 @@ import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductsList } from '../../../components/ProductsList';
 import { useProducts } from '../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
+import { SortProducts } from '../../utils/SortProducts';
+import { PerPage } from '../../utils/PerPage';
+import { useSearchParams } from 'react-router-dom';
 
 export const TabletsPage = () => {
   const { products, loading, error } = useProducts();
 
-  const Tablets = [...products].filter(item => item.category === 'tablets');
+  const [searchParam] = useSearchParams();
+  const sortBy = searchParam.get('sortBy') || 'newest';
+  const perPage = searchParam.get('perPage') || 'all';
+
+  let Tablets = SortProducts(
+    [...products].filter(item => item.category === 'tablets'),
+    sortBy,
+  );
+
+  Tablets = PerPage(Tablets, perPage);
 
   if (loading) {
     return <Loader />;

@@ -7,6 +7,7 @@ import { ShopByCategory } from '../../../components/ShopByCategory';
 
 import { useProducts } from '../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
+import { SortProducts } from '../../utils/SortProducts';
 
 export const HomePage = () => {
   const { products, loading, error } = useProducts();
@@ -19,10 +20,8 @@ export const HomePage = () => {
     return <div>{error}</div>;
   }
 
-  const newModels = [...products].sort((a, b) => b.year - a.year);
-  const hotPrices = [...products].sort(
-    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
-  );
+  const newModels = SortProducts([...products], 'newest');
+  const hotPrices = SortProducts([...products], 'discount');
 
   return (
     <>
