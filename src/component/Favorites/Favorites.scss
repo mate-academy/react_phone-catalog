@@ -1,0 +1,15 @@
+@use "../Main-css/Mixins" as mixin;
+
+.main__favorites {
+  grid-column: 1/-1;
+}
+
+.title__favorites {
+  color: #F1F2F9;
+  margin: 40px 0 8px;
+}
+
+.catalog__favorites {
+  margin-bottom: 41px;
+  @include mixin.grid-container;
+}

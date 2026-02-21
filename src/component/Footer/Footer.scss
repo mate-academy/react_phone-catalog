@@ -1,0 +1,88 @@
+@use '../Main-css/Mixins' as mixin;
+
+.footer {
+  border-top: 1px solid #3B3E4A;
+  height: 96px;
+
+  @include mixin.on-phone {
+    height: 320px;
+  }
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  width: 1136px;
+  margin: 0 auto;
+  @include mixin.on-tablet {
+    width: 560px;
+  }
+  @include mixin.on-phone {
+    width: 288px;
+    align-items: start;
+    margin: 32px auto;
+    height: 256px;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.footer__container-text {
+  display: flex;
+  gap: 107px;
+  @include mixin.on-tablet {
+    gap: 13.5px;
+  }
+  @include mixin.on-phone {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.send-top {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  @include mixin.on-phone {
+    margin: 0 auto;
+  }
+}
+
+.logo-container {
+  height: 32px;
+  width: 89px;
+}
+
+.logo {
+  width: 89px;
+  height: 32px;
+}
+
+.link {
+  text-decoration: none;
+  margin: 0;
+}
+
+.text__back-to-top {
+  @include mixin.text-default(12px, #75767F, 700, 100%);
+
+}
+
+.button__back-to-top {
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    background: #4A4D58;
+  }
+}
+
+.text {
+  margin: 0;
+  @include mixin.text-default(12px, #F1F2F9, 800, 11px);
+}

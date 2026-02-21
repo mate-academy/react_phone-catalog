@@ -1,0 +1,143 @@
+@use '../Main-css/Variables' as vars;
+@use '../Main-css/Mixins' as mixin;
+
+.content {
+  width: 208px;
+}
+
+.item-image {
+  margin-bottom: 8px;
+  width: vars.$image-size;
+  height: vars.$image-height;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  @include mixin.on-phone {
+    height: 130px;
+    width: 224px;
+  }
+
+}
+
+.card__text-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin: 0;
+  width: vars.$image-size;
+  height: 58px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.item {
+  padding: 0 0 8px;
+  color: vars.$color-text-main;
+  margin: 0;
+}
+
+.value-items {
+  display: flex;
+  border-bottom: 1px solid #3B3E4A;
+}
+
+.current__value,
+.value__discount {
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 800;
+}
+
+.value__discount {
+  margin-left: 8px;
+  color: vars.$color-text-secondary;
+  text-decoration: line-through;
+}
+
+.characteristic-value {
+  height: 15px;
+  margin: 8px 0;
+}
+
+.block-characteristic {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-name__characteristic {
+  @include mixin.text-default(12px, vars.$color-text-secondary);
+}
+
+.value {
+  @include mixin.text-default(12px);
+}
+
+.characteristic {
+  padding: 8px 0;
+}
+
+.buttons-in-card {
+  display: flex;
+  gap: 8px;
+}
+
+.button-add {
+  text-decoration: none;
+  width: 160px;
+  height: 40px;
+  border: none;
+  background-color: vars.$color-button;
+  color: white;
+  padding: 0;
+  box-shadow: none;
+
+  &:hover,
+  &:active {
+    background-color: vars.$color-button-hover;
+  }
+}
+
+.favorite-add {
+  background-color: vars.$color-background-dark;
+  border: none;
+  width: 40px;
+  height: 40px;
+  @include mixin.text-default(14px, #F1F2F9, 700, 21px);
+
+  &:hover,
+  &:active {
+    background-color: vars.$color-background-dark-hover;
+  }
+}
+
+.favorite-img {
+  background-image: url('public/imgForProject/icon/Favourites.png');
+  margin: auto;
+  height: 16px;
+  width: 16px;
+}
+
+.red-hurt {
+  height: 16px;
+  width: 16px;
+  background-image: url('public/imgForProject/icon/Favourites_field.svg');
+}
+
+
+.button-selected {
+  background-color: #323542;
+}
+
+.favorite-delete {
+  background-color: transparent;
+  border: 1px solid #3B3E4A;
+  width: 40px;
+  height: 40px;
+
+  &:hover,
+  &:active {
+    background-color: vars.$color-background-dark-hover;
+  }
+}
+
