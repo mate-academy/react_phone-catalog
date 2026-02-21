@@ -44,17 +44,17 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   const addToCart = (product: Product) => {
     setCart(prev => {
-      // Prevent duplicates
-      if (prev.some(p => p.id === product.id)) {
+      // Prevent duplicates (normalize id to string to handle numeric ids from products.json)
+      if (prev.some(p => String(p.id) === String(product.id))) {
         return prev;
       }
 
-      return [...prev, product];
+      return [...prev, { ...product, id: String(product.id) }];
     });
   };
 
   const removeFromCart = (productId: string) => {
-    setCart(prev => prev.filter(p => p.id !== productId));
+    setCart(prev => prev.filter(p => String(p.id) !== String(productId)));
   };
 
   const clearCart = () => {
@@ -62,7 +62,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const isInCart = (productId: string) => {
-    return cart.some(p => p.id === productId);
+    return cart.some(p => String(p.id) === String(productId));
   };
 
   return (

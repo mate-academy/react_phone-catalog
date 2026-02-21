@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CartCard.module.scss';
@@ -27,15 +28,27 @@ const CartCard: React.FC<Props> = ({
   onRemove,
   onQuantityChange,
 }) => {
+  // products.json uses `image` (singular), phones.json uses `images` (array)
   const img =
-    product.images && product.images.length
+    (product as any).image ??
+    (product.images && product.images.length
       ? product.images[0]
-      : 'img/phones/placeholder.png';
+      : 'img/phones/placeholder.png');
 
-  const priceRegular = product.priceRegular ?? product.price ?? 0;
-  const priceDiscount = product.priceDiscount ?? null;
+  // products.json: fullPrice = regular, price = discounted
+  // phones.json: priceRegular, priceDiscount
+  const priceRegular =
+    (product as any).fullPrice ?? product.priceRegular ?? product.price ?? 0;
+  const priceDiscount =
+    (product as any).fullPrice !== undefined &&
+    (product as any).price !== undefined
+      ? (product as any).price
+      : (product.priceDiscount ?? null);
   const price = priceDiscount ?? priceRegular;
   const totalPrice = price * quantity;
+
+  // products.json uses itemId for routing, phones.json uses id
+  const productSlug = (product as any).itemId ?? product.id;
 
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -61,14 +74,14 @@ const CartCard: React.FC<Props> = ({
         </button>
 
         <Link
-          to={`/product/${product.category}/${product.id}`}
+          to={`/product/${product.category}/${productSlug}`}
           className={styles.cartCard__media}
         >
-          <img src={img} alt={product.name} />
+          <img src={resolveUrl(img)} alt={product.name} />
         </Link>
 
         <Link
-          to={`/product/${product.category}/${product.id}`}
+          to={`/product/${product.category}/${productSlug}`}
           className={styles.cartCard__title}
         >
           {product.name}

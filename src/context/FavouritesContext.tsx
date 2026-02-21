@@ -46,17 +46,17 @@ export const FavouritesProvider: React.FC<{ children: ReactNode }> = ({
 
   const addToFavourites = (product: Product) => {
     setFavourites(prev => {
-      // Prevent duplicates
-      if (prev.some(p => p.id === product.id)) {
+      // Prevent duplicates (normalize id to string to handle numeric ids from products.json)
+      if (prev.some(p => String(p.id) === String(product.id))) {
         return prev;
       }
 
-      return [...prev, product];
+      return [...prev, { ...product, id: String(product.id) }];
     });
   };
 
   const removeFromFavourites = (productId: string) => {
-    setFavourites(prev => prev.filter(p => p.id !== productId));
+    setFavourites(prev => prev.filter(p => String(p.id) !== String(productId)));
   };
 
   const clearFavourites = () => {
@@ -64,7 +64,7 @@ export const FavouritesProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const isInFavourites = (productId: string) => {
-    return favourites.some(p => p.id === productId);
+    return favourites.some(p => String(p.id) === String(productId));
   };
 
   return (
