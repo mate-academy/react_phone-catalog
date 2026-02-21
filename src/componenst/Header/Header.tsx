@@ -6,7 +6,7 @@ import { useFavourites } from '../../context/FavouritesContext';
 import MobileMenu from '../MobileMenu';
 
 const Header: React.FC = () => {
-  const { cart } = useCart();
+  const { cart, totalQuantity } = useCart();
   const { favourites } = useFavourites();
   const location = useLocation();
   const navRef = useRef<HTMLElement>(null);
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
             >
               <img src="icons/Shopping bag (Cart).svg" alt="Cart" />
               {cart.length > 0 && (
-                <span className={styles.header__badge}>{cart.length}</span>
+                <span className={styles.header__badge}>{totalQuantity}</span>
               )}
             </NavLink>
           </div>
@@ -145,7 +145,7 @@ const Header: React.FC = () => {
         isOpen={isMenuOpen}
         onClose={closeMenu}
         favouritesCount={favourites.length}
-        cartCount={cart.length}
+        cartCount={totalQuantity}
       />
     </>
   );

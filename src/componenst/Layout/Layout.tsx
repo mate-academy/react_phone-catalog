@@ -9,6 +9,9 @@ const Layout: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Scroll to top on every route change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Store previous page before navigating to cart
     if (pathname !== '/cart') {
       sessionStorage.setItem('prevPage', pathname);

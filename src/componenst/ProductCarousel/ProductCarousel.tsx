@@ -21,11 +21,13 @@ const resolveUrl = (path: string) => {
 interface ProductCarouselProps {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 }
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({
   title,
   products,
+  showDiscount = true,
 }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -72,7 +74,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({
         >
           {products.map(product => (
             <SwiperSlide key={product.id} className={styles.slide}>
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={showDiscount} />
             </SwiperSlide>
           ))}
         </Swiper>

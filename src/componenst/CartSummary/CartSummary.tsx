@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from './CartSummary.module.scss';
 import { Product } from '../../types/Product';
+import { useCart } from '../../context/CartContext';
 
 interface Props {
   products: Product[];
-  quantities: Record<string, number>;
   onCheckout: () => void;
 }
 
-const CartSummary: React.FC<Props> = ({ products, quantities, onCheckout }) => {
+const CartSummary: React.FC<Props> = ({ products, onCheckout }) => {
+  const { quantities } = useCart();
+
   const total = products.reduce((sum, product) => {
     const price =
       product.priceDiscount ?? product.priceRegular ?? product.price ?? 0;

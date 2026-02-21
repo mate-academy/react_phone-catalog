@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import CartCard from '../../componenst/CartCard';
@@ -7,22 +7,11 @@ import CartSummary from '../../componenst/CartSummary';
 import styles from './Cart.module.scss';
 
 const Cart: React.FC = () => {
-  const { cart, removeFromCart, clearCart } = useCart();
-  const [quantities, setQuantities] = useState<Record<string, number>>(() => {
-    const initialQuantities: Record<string, number> = {};
-
-    cart.forEach(product => {
-      initialQuantities[product.id] = 1;
-    });
-
-    return initialQuantities;
-  });
+  const { cart, quantities, updateQuantity, removeFromCart, clearCart } =
+    useCart();
 
   const handleQuantityChange = (productId: string, newQuantity: number) => {
-    setQuantities(prev => ({
-      ...prev,
-      [productId]: newQuantity,
-    }));
+    updateQuantity(productId, newQuantity);
   };
 
   const handleCheckout = () => {
@@ -49,11 +38,6 @@ const Cart: React.FC = () => {
   return (
     <section className={styles.cartPage}>
       <h1 className={styles.cartPage__title}>Cart</h1>
-      {cart.length > 0 && (
-        <p className={styles.cartPage__counter}>
-          {cart.length} {cart.length === 1 ? 'item' : 'items'}
-        </p>
-      )}
       <div className={styles.cartPage__content}>
         <div className={styles.cartPage__list}>
           {cart.map(product => (
@@ -69,11 +53,7 @@ const Cart: React.FC = () => {
           ))}
         </div>
 
-        <CartSummary
-          products={cart}
-          quantities={quantities}
-          onCheckout={handleCheckout}
-        />
+        <CartSummary products={cart} onCheckout={handleCheckout} />
       </div>
     </section>
   );

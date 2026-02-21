@@ -10,12 +10,14 @@ interface Props {
   product: Product;
   onAddToCart?: (p: Product) => void;
   onToggleFavourite?: (p: Product) => void;
+  showDiscount?: boolean;
 }
 
 const ProductCard: React.FC<Props> = ({
   product,
   onAddToCart,
   onToggleFavourite,
+  showDiscount = true,
 }) => {
   const { addToCart, removeFromCart, isInCart } = useCart();
   const { addToFavourites, removeFromFavourites, isInFavourites } =
@@ -85,13 +87,15 @@ const ProductCard: React.FC<Props> = ({
 
         {/* 3. Price block */}
         <div className={styles.priceBlock}>
-          {priceDiscount ? (
+          {priceDiscount && showDiscount ? (
             <>
               <div className={styles.priceDiscount}>${priceDiscount}</div>
               <div className={styles.priceRegular}>${priceRegular}</div>
             </>
           ) : (
-            <div className={styles.priceSingle}>${priceRegular}</div>
+            <div className={styles.priceSingle}>
+              ${showDiscount ? priceDiscount || priceRegular : priceRegular}
+            </div>
           )}
         </div>
 

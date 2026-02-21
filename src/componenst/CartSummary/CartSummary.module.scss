@@ -27,10 +27,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    @media (min-width: $tablet-min) {
-      align-items: flex-start;
-    }
   }
 
   &__total {

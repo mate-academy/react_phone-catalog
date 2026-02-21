@@ -95,7 +95,11 @@ const HomePage: React.FC = () => {
 
       {/* Brand new models carousel */}
       {!loading && iphones.length > 0 && (
-        <ProductCarousel title="Brand new models" products={iphones} />
+        <ProductCarousel
+          title="Brand new models"
+          products={iphones}
+          showDiscount={false}
+        />
       )}
 
       {/* Categories block */}

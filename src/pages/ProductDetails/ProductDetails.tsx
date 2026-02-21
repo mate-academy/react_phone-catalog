@@ -38,6 +38,7 @@ const ProductDetails: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+  const [availableIds, setAvailableIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     if (!productId || !category) {
@@ -104,6 +105,9 @@ const ProductDetails: React.FC = () => {
         if (!mounted) {
           return;
         }
+
+        // Save all available product IDs for color/capacity validation
+        setAvailableIds(new Set(products.map(p => p.id)));
 
         // Отримати 6 випадкових товарів, окрім поточного
         const recommended = products
@@ -188,6 +192,21 @@ const ProductDetails: React.FC = () => {
       preventScrollReset: true,
     });
   };
+
+  // Filter out colors/capacities that don't have a real product in the API
+  const validColors = (colorsAvailable as string[]).filter(color => {
+    const id = getColorProductId(color);
+
+    return !id || availableIds.size === 0 || availableIds.has(id);
+  });
+
+  const validCapacities = (capacitiesAvailable as string[]).filter(
+    (cap: string) => {
+      const id = getCapacityProductId(cap);
+
+      return !id || availableIds.size === 0 || availableIds.has(id);
+    },
+  );
 
   const colorMap: { [key: string]: string } = {
     black: '#242625',
@@ -281,7 +300,7 @@ const ProductDetails: React.FC = () => {
           <div className={styles.colorSelection}>
             <div className={styles.colorSelection__label}>Available colors</div>
             <div className={styles.colorSelection__options}>
-              {colorsAvailable.map((color: string) => (
+              {validColors.map((color: string) => (
                 <button
                   key={color}
                   type="button"
@@ -309,7 +328,7 @@ const ProductDetails: React.FC = () => {
               Select capacity
             </div>
             <div className={styles.capacitySelection__options}>
-              {capacitiesAvailable.map((capacityValue: string) => (
+              {validCapacities.map((capacityValue: string) => (
                 <button
                   key={capacityValue}
                   type="button"

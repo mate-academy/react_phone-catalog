@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Category, isCategory } from '../../types/categories';
 import { fetchJSON } from '../../api/client';
@@ -42,6 +42,7 @@ const Products: React.FC = () => {
         : 'all',
   );
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
+  const isInitialMount = useRef(true);
 
   // Sync state → URL search params (skip defaults: page=1, perPage=all)
   useEffect(() => {
@@ -66,7 +67,13 @@ const Products: React.FC = () => {
     setLoading(true);
     setError(null);
     setItems(null);
-    setCurrentPage(1);
+
+    // Reset to page 1 only when category changes, not on initial load
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      setCurrentPage(1);
+    }
 
     fetchJSON<Product[]>('api/products.json')
       .then(all => {
