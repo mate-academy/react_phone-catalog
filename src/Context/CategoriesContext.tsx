@@ -4,19 +4,19 @@ export const categoriesArr = [
   {
     name: 'Phones',
     longName: 'Mobile phones',
-    src: '/img/category-phones.png',
+    src: './img/category-phones.png',
     slug: 'phones',
   },
   {
     name: 'Tablets',
     longName: 'Tablets',
-    src: '/img/category-tablets.png',
+    src: './img/category-tablets.png',
     slug: 'tablets',
   },
   {
     name: 'Accessories',
     longName: 'Accessories',
-    src: '/img/category-accessories.png',
+    src: './img/category-accessories.png',
     slug: 'accessories',
   },
 ];

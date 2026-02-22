@@ -34,7 +34,7 @@ export const CartPage = () => {
             Your cart is empty
           </h2>
           <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-            <img src="/img/cart-is-empty.png" alt={'cart is empty'} />
+            <img src="./img/cart-is-empty.png" alt={'cart is empty'} />
           </figure>
         </div>
       ) : (

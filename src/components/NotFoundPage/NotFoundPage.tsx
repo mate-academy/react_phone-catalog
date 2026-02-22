@@ -6,7 +6,7 @@ export const NotFoundPage = () => (
       Page not found
     </h2>
     <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-      <img src="/img/page-not-found.png" alt={'page not found'} />
+      <img src="./img/page-not-found.png" alt={'page not found'} />
     </figure>
   </div>
 );

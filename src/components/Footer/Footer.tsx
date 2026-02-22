@@ -17,7 +17,7 @@ export const Footer = () => {
         <div className="is-flex-tablet is-justify-content-space-between is-align-items-center">
           <div className={`is-flex ${s.footer__logo_wrap}`}>
             <a href="#">
-              <img src="/img/logo/logo.png" alt="Logo" />
+              <img src="./img/logo/logo.png" alt="Logo" />
             </a>
           </div>
 

@@ -177,7 +177,7 @@ export const ProductPage = () => {
             Product not found
           </h2>
           <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-            <img src="/img/product-not-found.png" alt={'product not found'} />
+            <img src="./product-not-found.png" alt={'product not found'} />
           </figure>
         </div>
       )}

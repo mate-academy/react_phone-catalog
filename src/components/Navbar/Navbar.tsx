@@ -77,7 +77,7 @@ export const Navbar = () => {
     >
       <div className="navbar-brand ml-5">
         <Link to="/" className={`${s.logo}`}>
-          <img src="/img/logo/logo.png" alt="Logo" />
+          <img src="./img/logo/logo.png" alt="Logo" />
         </Link>
         <a
           className={`navbar-burger is-hidden-tablet ${isActive ? 'is-active' : ''}`}
