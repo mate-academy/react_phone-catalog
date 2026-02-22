@@ -1,0 +1,77 @@
+@use '../../styles/vendors/swiper-vars' as *;
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.banner {
+  padding-top: 24px;
+  padding-bottom: $pagination-height + $pagination-offset;
+
+  @include respond-to(tablet) {
+    overflow: hidden;
+    padding-top: 32px;
+  }
+
+  @include respond-to(desktop) {
+    padding-top: 56px;
+  }
+}
+
+.bannerContainer {
+  position: relative;
+  margin-inline: page-padding(mobile) * -1;
+
+  @include respond-to(tablet) {
+    margin-inline: 0;
+  }
+}
+
+.swiperButtonPrevCustom {
+  left: 0;
+  background-image: url(/img/icons/arrow-left.svg);
+}
+
+.swiperButtonNextCustom {
+  right: 0;
+  background-image: url(/img/icons/arrow-right.svg);
+}
+
+.swiperButtonPrevCustom,
+.swiperButtonNextCustom {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: z(swiper-button);
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: none !important;
+
+  width: 32px;
+  height: 100%;
+  padding: 0;
+  border: 1px solid color(icons);
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+
+  transition: all $duration-default $easing-default;
+
+  @include respond-to(tablet) {
+    display: block !important;
+  }
+
+  &:hover {
+    border-color: color(primary);
+  }
+}
+
+.swiperHeight {
+  height: 600px;
+
+  @include respond-to(tablet) {
+    height: 400px;
+  }
+}

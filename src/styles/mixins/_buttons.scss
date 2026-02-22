@@ -1,0 +1,27 @@
+@use './typography' as *;
+@use '../vars/transitions' as *;
+@use '../utils/functions' as *;
+
+@mixin button {
+  @include button-text;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  color: color(white);
+
+  background-color: color(primary);
+  outline: none;
+
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+

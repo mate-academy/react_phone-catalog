@@ -1,0 +1,48 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.block {
+  grid-column: 1 / -1;
+
+  @include respond-to(tablet) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    align-items: start;
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+.title {
+  @include h2;
+
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  @include respond-to(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.containerNotFound {
+  display: grid;
+  grid-column: 1 / -1;
+  place-items: center;
+
+  width: 100%;
+  min-height: inherit;
+  padding-block: bottom-margin(mobile);
+
+  @include respond-to(tablet) {
+    padding-block: bottom-margin(tablet);
+  }
+
+  @include respond-to(desktop) {
+    padding-block: bottom-margin(desktop);
+  }
+}

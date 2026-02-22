@@ -1,0 +1,53 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.block {
+  grid-column: 1 / -1;
+}
+
+.topBlock {
+  margin-bottom: 32px;
+
+  @include respond-to(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  @include h1;
+}
+
+.amountModels {
+  @include body-text;
+
+  margin-top: 8px;
+  color: color(secondary);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  justify-items: start;
+
+  width: 100%;
+  padding-bottom: bottom-margin(mobile);
+
+  @media (min-width: 530px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(tablet) {
+    padding-bottom: bottom-margin(tablet);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: bottom-margin(desktop);
+  }
+}
