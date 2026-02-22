@@ -1,0 +1,194 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements;
+  height: 48px;
+  max-width: 1200px;
+  margin-inline: auto;
+  width: 100%;
+
+  @include on-tablet {
+    height: 64px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    gap: 32px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding-left: $content-padding-mobile;
+
+  @include on-tablet {
+    padding-left: $content-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-left: $content-padding-desktop;
+  }
+
+  &__img {
+    height: 22px;
+    transition: transform $transition-duration;
+
+    @include on-tablet {
+      height: 28px;
+    }
+  }
+
+  &:hover &__img {
+    transform: scale(1.1);
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 32px;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-secondary;
+  position: relative;
+  transition: color $transition-duration, transform $transition-duration;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.navLinkActive {
+  color: $color-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-primary;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  transition: transform $transition-duration;
+}
+
+.iconLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid $color-elements;
+  transition:
+    background-color $transition-duration,
+    transform $transition-duration;
+
+  @include on-tablet {
+    width: 64px;
+  }
+
+  &:hover {
+    background-color: $color-hover-bg;
+
+    .icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+.iconLinkActive {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-primary;
+  }
+}
+
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  color: $color-white;
+  background-color: $color-red;
+  border: 1px solid $color-white;
+  border-radius: 50%;
+
+  @include on-tablet {
+    top: 14px;
+    right: 14px;
+  }
+}

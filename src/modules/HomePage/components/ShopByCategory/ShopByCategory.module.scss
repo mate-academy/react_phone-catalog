@@ -1,0 +1,76 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  margin-bottom: 0;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  margin-bottom: 24px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.imageWrapper {
+  overflow: hidden;
+  margin-bottom: 24px;
+  background-color: $color-category-phones;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+
+  &Tablets {
+    background-color: $color-category-tablets;
+  }
+
+  &Accessories {
+    background-color: $color-category-accessories;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: $color-primary;
+  margin-bottom: 4px;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-secondary;
+}
+

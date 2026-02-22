@@ -1,0 +1,410 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include content-padding;
+
+  @include on-tablet {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+  order: 2;
+
+  @include on-tablet {
+    flex-direction: column;
+    order: 1;
+    gap: 16px;
+  }
+}
+
+.thumbnail {
+  width: 51px;
+  height: 49px;
+  border: 1px solid $color-elements;
+  padding: 4px;
+  cursor: pointer;
+  background-color: $color-white;
+  transition: border-color $transition-duration;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &Active {
+    border-color: $color-primary;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.mainImage {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+
+  @include on-tablet {
+    order: 2;
+    height: 400px;
+    flex: 1;
+  }
+
+  @include on-desktop {
+    height: 464px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform $transition-duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.main {
+  @include on-tablet {
+    flex: 1;
+  }
+
+  @include on-desktop {
+    max-width: 560px;
+  }
+}
+
+.sidebar {
+  @include on-tablet {
+    width: 320px;
+    flex-shrink: 0;
+  }
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $color-elements;
+  margin-bottom: 32px;
+}
+
+.options {
+  margin-bottom: 24px;
+}
+
+.optionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.colorOption {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid $color-elements;
+  padding: 2px;
+  cursor: pointer;
+  transition: border-color $transition-duration;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &Active {
+    border-color: $color-primary;
+  }
+}
+
+.colorCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.capacityOption {
+  display: block;
+  padding: 7px 8px;
+  border: 1px solid $color-icons;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-primary;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-duration;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &Active {
+    background-color: $color-primary;
+    color: $color-white;
+    border-color: $color-primary;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  border: none;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-white;
+  background-color: $color-primary;
+  cursor: pointer;
+  transition: background-color $transition-duration, box-shadow $transition-duration;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.addToCartAdded {
+  flex: 1;
+  height: 48px;
+  border: 1px solid $color-elements;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-green;
+  background-color: $color-white;
+  cursor: default;
+}
+
+.favButton {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  @include square-button;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-secondary;
+}
+
+.specValue {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: $color-primary;
+  text-align: right;
+}
+
+.about {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+}
+
+.aboutBlock {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.aboutTitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-secondary;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.techSpecs {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+}
+
+.techSpec {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid $color-elements;
+}
+
+.techSpecName {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-secondary;
+}
+
+.techSpecValue {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-primary;
+  text-align: right;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.notFoundImage {
+  width: 200px;
+  margin-bottom: 24px;
+}
+
+.notFoundTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: $color-secondary;
+}
+
+.suggested {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.id {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-icons;
+  text-align: right;
+  margin-bottom: 16px;
+}
+
