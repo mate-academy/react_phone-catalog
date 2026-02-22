@@ -2,48 +2,39 @@ import styles from './ProductsList.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
 import { BaseProduct } from '../../types';
-import { useSearchParams } from 'react-router-dom';
 import { ChangeEvent } from 'react';
 
 interface Props {
   title: string;
   products: BaseProduct[];
+  totalCount?: number;
+  sortBy?: 'newest' | 'alphabetically' | 'cheapest';
+  perPage?: '4' | '8' | '16' | 'all';
   totalPages?: number;
   currentPage?: number;
+  onSortChange?: (value: string) => void;
+  onPerPageChange?: (value: string) => void;
+  onPageChange?: (value: string) => void;
 }
 
 export const ProductsList = ({
   title,
   products,
+  totalCount = 0,
+  sortBy = 'newest',
+  perPage = 'all',
   totalPages = 5,
   currentPage = 1,
+  onSortChange,
+  onPerPageChange,
+  onPageChange,
 }: Props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const sortBy = searchParams.get('sortBy') || 'newest';
-  const perPage = searchParams.get('perPage') || 'all';
-
-  function handleQueryChange(
-    event: ChangeEvent<HTMLSelectElement>,
-    nameParam: string,
-  ) {
-    const params = new URLSearchParams(searchParams);
-
-    if (event.target.value === '') {
-      params.delete(nameParam);
-    } else {
-      params.set(nameParam, event.target.value);
-    }
-
-    setSearchParams(params);
-  }
-
   const sortByHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    handleQueryChange(event, 'sortBy');
+    onSortChange(event);
   };
 
   const perPageHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    handleQueryChange(event, 'perPage');
+    onPerPageChange(event);
   };
 
   return (
