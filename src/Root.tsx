@@ -15,7 +15,7 @@ import { ProductPage } from './modules/ProductPage';
 import ScrollToTop from './components/ScrollOnLoad/ScrollOnLoad';
 
 export const Root = () => (
-  <Router>
+  <Router basename={import.meta.env.BASE_URL}>
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
