@@ -1,6 +1,7 @@
 .idea
 .vscode
 dist
+build
 node_modules
 .DS_Store
 
