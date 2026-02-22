@@ -1,0 +1,71 @@
+@use '../../styles/utils/variables' as vars;
+
+.footer {
+  position: relative;
+  border-top: 1px solid vars.$main-gray;
+  background-color: vars.$primary-white-color;
+
+  &__container {
+    padding: 32px 16px;
+
+    @media screen and (min-width: vars.$tablet) {
+      padding: 10px 24px;
+    }
+
+    @media screen and (min-width: vars.$widescreen) {
+      padding: 10px 32px;
+    }
+  }
+
+  &__logo_wrap {
+    margin-right: 100px;
+  }
+
+  &__links {
+    flex-direction: column;
+    flex-grow: 1;
+    row-gap: 16px;
+    justify-content: space-between;
+
+    max-width: 380px;
+    margin: 32px 0;
+
+    @media screen and (min-width: vars.$tablet) {
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: vars.$secondary-gray;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+.footer__up_btn_wrap {
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    margin-left: 80px;
+  }
+}
+
+.up_btn__text {
+  padding-right: 16px;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: vars.$secondary-gray;
+}
+
+.up_btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

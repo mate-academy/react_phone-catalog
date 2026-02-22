@@ -1,0 +1,66 @@
+@use '../../../../styles/utils/variables' as vars;
+
+.cartItem {
+  padding: 16px;
+  border: 1px solid vars.$main-gray;
+  border-radius: 16px;
+  background-color: vars.$primary-white-color;
+
+  @media screen and (min-width: vars.$tablet) {
+    padding: 24px;
+  }
+}
+
+.cartItem__wrap {
+  display: flex;
+
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cartItem__wrap:not(:last-child) {
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    margin-bottom: 16px;
+  }
+}
+
+.delete_btn {
+  margin-right: 18px;
+}
+
+.quantity_wrap {
+  @media screen and (min-width: vars.$tablet) {
+    margin-right: 16px;
+  }
+}
+
+.change_q_btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid vars.$icons-grey;
+  border-radius: 50%;
+}
+
+.product_image {
+  margin: 8px;
+  margin-right: 16px;
+  object-fit: contain;
+
+  @media screen and (min-width: vars.$tablet) {
+    margin-right: 24px;
+  }
+}
+
+.product_name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.product_price {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+}

@@ -1,0 +1,20 @@
+@use '../../../../styles/utils/variables.scss' as vars;
+
+.banner_slider {
+  padding-bottom: 40px;
+}
+
+.banner_item > img {
+  height: 320px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+
+  @media screen and (min-width: vars.$tablet) {
+    height: 225px;
+  }
+
+  @media screen and (min-width: vars.$desktop) {
+    height: 432px;
+  }
+}

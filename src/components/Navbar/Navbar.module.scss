@@ -1,0 +1,155 @@
+@use '../../styles/utils/variables' as vars;
+@use '../../styles/utils/animation' as anim;
+
+.noScroll {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+}
+
+.navbar_style {
+  height: 100%;
+  color: vars.$secondary-gray;
+  background-color: transparent;
+}
+
+.navbar__menu {
+  &__start {
+    @media screen and (max-width: #{vars.$tablet - 1px}) {
+      flex-direction: column;
+      height: 80%;
+    }
+
+    @media screen and (min-width: vars.$desktop) {
+      gap: 24px;
+    }
+
+    @media screen and (min-width: vars.$widescreen) {
+      gap: 64px;
+    }
+  }
+
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+    padding: 24px 0 0;
+
+    text-align: center;
+  }
+}
+
+.logo {
+  margin: 16px 16px 0 0;
+
+  @media screen and (min-width: vars.$tablet) {
+    margin-right: 24px;
+  }
+
+  @media screen and (min-width: vars.$desktop) {
+    margin-right: 32px;
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    margin-right: 48px;
+  }
+}
+
+.link_style {
+  position: relative;
+
+  font-size: 12px;
+  font-weight: 800;
+  color: vars.$secondary-gray;
+  letter-spacing: 0.5px;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    height: 3px;
+
+    opacity: 0;
+    background-color: vars.$primary-text-color;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    color: vars.$primary-text-color;
+    background-color: transparent;
+
+    &::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  &__active {
+    transform: scale(1.1);
+    color: vars.$primary-text-color;
+    background-color: transparent;
+
+    &::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    height: 100%;
+  }
+
+  @include anim.smooth-transition(all);
+}
+
+.icons_wrap {
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    justify-content: space-around;
+    border-top: 1px solid vars.$main-gray;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    justify-content: flex-end !important;
+  }
+}
+
+.iconLink {
+  width: 50%;
+  padding: 24px 0;
+  &::after {
+    right: 3px;
+    left: 0;
+  }
+
+  &:first-child {
+    border-right: 1px solid vars.$main-gray;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    padding: 0 24px;
+    border-left: 1px solid vars.$main-gray;
+    &:first-child {
+      border-right: unset;
+    }
+  }
+}
+
+.badge_style {
+  width: 14px;
+  height: 14px;
+  border: 1px solid vars.$primary-white-color;
+}

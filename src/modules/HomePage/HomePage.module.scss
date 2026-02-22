@@ -1,0 +1,65 @@
+@use '../../styles/utils/variables' as vars;
+
+.styled_section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.absolute_wrapper {
+  position: relative;
+  padding-top: 60px;
+}
+
+.absolute_title {
+  position: absolute;
+  top: 14px;
+  left: 0;
+
+  @media screen and (min-width: vars.$tablet) {
+    top: 0;
+  }
+}
+
+.homepage_title {
+  padding-bottom: 24px;
+
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: vars.$primary-text-color;
+  letter-spacing: -1%;
+
+  @media screen and (min-width: vars.$tablet) {
+    padding-top: 8px;
+    padding-bottom: 32px;
+
+    font-size: 48px;
+    line-height: 1.17;
+    letter-spacing: -0.5px;
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    padding-top: 32px;
+    padding-bottom: 56px;
+  }
+}
+
+.home_titles {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  @media screen and (min-width: vars.$tablet) {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.mobile_title {
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    width: 136px;
+  }
+}
