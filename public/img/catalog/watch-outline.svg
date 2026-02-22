@@ -1,0 +1,10 @@
+<svg width="300" height="400" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- top strap -->
+  <rect x="115" y="0" width="70" height="80" rx="18" stroke="#b5e6ff" stroke-width="4"></rect>
+
+  <!-- watch body -->
+  <rect x="90" y="80" width="120" height="160" rx="28" stroke="#b5e6ff" stroke-width="4"></rect>
+
+  <!-- bottom strap -->
+  <rect x="115" y="240" width="70" height="80" rx="18" stroke="#b5e6ff" stroke-width="4"></rect>
+</svg>
