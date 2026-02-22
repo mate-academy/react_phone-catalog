@@ -8,9 +8,9 @@ export const HomePage = () => {
   return (
     <div className="HomePage">
       <h1 className="is-hidden">Product Catalog</h1>
-      <h1 className={`title mb-0 ${s.homepage_title}`}>
+      <h2 className={`title mb-0 ${s.homepage_title}`}>
         Welcome to Nice Gadgets store!
-      </h1>
+      </h2>
       {/* hero */}
       <BannerSlider />
 
