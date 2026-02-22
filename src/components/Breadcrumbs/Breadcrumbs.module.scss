@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-top: 24px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-secondary;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.current {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-secondary;
+}
+

@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+}
+
+.button {
+  @include square-button;
+
+  &Active {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+
+    @include square-button;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}
+
+.pageNumber {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
