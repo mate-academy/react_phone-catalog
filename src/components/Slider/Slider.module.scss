@@ -1,0 +1,99 @@
+.slider {
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 28px;
+    }
+  }
+
+  &_top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_title {
+    font-family: 'Mont-Bold', serif;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $gray-white;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &_controlls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &_controll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    transition: $t-300ms;
+    background-color: $gray-surface2;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+    }
+
+    &--disabled {
+      background-color: $theme-background;
+      border: 1px solid $gray-surface2;
+      cursor: auto;
+    }
+  }
+
+  &_img {
+    width: 16px;
+    height: 16px;
+
+    &--right {
+      transform: rotate(180deg);
+    }
+  }
+
+  &_content {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  &_product {
+    box-sizing: border-box;
+    min-width: 212px;
+    min-height: 439px;
+    color: white;
+
+    @include on-tablet {
+      min-width: 237px;
+    }
+
+    @include on-desktop {
+      min-width: 272px;
+    }
+  }
+}

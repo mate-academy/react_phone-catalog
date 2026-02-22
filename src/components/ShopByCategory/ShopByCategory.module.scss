@@ -1,0 +1,75 @@
+.shop-by {
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+
+  &_title-main {
+    font-family: 'Mont-Bold', serif;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $gray-white;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+
+  &_link {
+    text-decoration: none;
+  }
+
+  &_img {
+    width: 100%;
+    margin-bottom: 24px;
+    transition: $t-300ms;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &_title {
+    font-family: 'Mont-SemiBold', serif;
+    font-size: 20px;
+    line-height: 100%;
+    color: $gray-white;
+    letter-spacing: 0%;
+    text-decoration: none;
+    margin-bottom: 4px;
+    transition: $t-300ms;
+
+    &:hover {
+      color: $btn-purple;
+    }
+  }
+
+  &_text {
+    font-family: 'Mont-Regular', serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $gray-secondary;
+    text-decoration: none;
+  }
+}

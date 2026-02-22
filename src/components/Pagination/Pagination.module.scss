@@ -1,0 +1,64 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  margin-inline: 16px;
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+    margin-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: 32px;
+  }
+
+  &_center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &_btn {
+    width: 32px;
+    height: 32px;
+    outline: none;
+    border: none;
+    background-color: $gray-surface1;
+    color: $gray-white;
+    font-family: 'Mont-Regular', serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    cursor: pointer;
+    transition: $t-300ms;
+
+    &:hover {
+      scale: 1.2;
+    }
+
+    &--side {
+      background-color: $gray-surface2;
+      align-self: flex-start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--active {
+      background-color: $btn-purple;
+    }
+  }
+
+  &_icon {
+    width: 16px;
+    height: 16px;
+
+    &--right {
+      transform: rotate(180deg);
+    }
+  }
+}
