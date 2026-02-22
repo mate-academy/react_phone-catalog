@@ -39,6 +39,8 @@ export const useDotButton = (
 
     requestAnimationFrame(() => onInit(emblaApi));
     requestAnimationFrame(() => onSelect(emblaApi));
+    // onInit(emblaApi);
+    // onSelect(emblaApi);
 
     emblaApi.on('reinit', onInit).on('reinit', onSelect).on('select', onSelect);
   }, [emblaApi, onInit, onSelect]);

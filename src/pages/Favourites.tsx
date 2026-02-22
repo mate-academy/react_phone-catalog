@@ -10,7 +10,7 @@ export const FavouritesPage: FC = () => {
     return (
       <div className="mt-6 flex flex-col items-center justify-center gap-6 sm:mt-8 xl:mt-14">
         <img
-          src="/images/product-not-found.webp"
+          src="images/product-not-found.webp"
           alt="Favourites is empty"
           className="w-full max-w-1/2 sm:max-w-1/3"
         />

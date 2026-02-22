@@ -6,6 +6,7 @@ import { DropdownProvider } from '../providers/DropdownProvider';
 import { Dropdown } from '../components/Dropdown';
 import { ProductList } from '../components/Product/ProductList';
 import { Pagination } from '../components/Pagination/Pagination';
+import { Search } from '../components/Search';
 
 interface Props {
   category: Category;
@@ -50,7 +51,7 @@ export const ProductsPage: FC<Props> = ({ category, title }) => {
         {totalProducts} {totalProducts === 1 ? 'model' : 'models'}
       </p>
 
-      <div className="pageGrid mt-8 sm:mt-10">
+      <div className="pageGrid mt-8 gap-y-4 sm:mt-10">
         <DropdownProvider>
           <Dropdown
             description="Sort by"
@@ -71,6 +72,7 @@ export const ProductsPage: FC<Props> = ({ category, title }) => {
             className="col-span-2 sm:col-span-3"
           />
         </DropdownProvider>
+        <Search className="col-span-4 sm:-order-1 sm:col-span-5 xl:col-span-17" />
       </div>
 
       <ProductList products={visibleProducts} className="mt-6" />

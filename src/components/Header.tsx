@@ -11,6 +11,7 @@ import { FC, useContext } from 'react';
 import { MenuContext } from '../contexts/MenuContext';
 import { Button } from './Button';
 import { IconWithBadge } from './IconWithBadge';
+import { Toggle } from './Toggle';
 
 type Props = {
   className?: string;
@@ -55,6 +56,7 @@ export const Header: FC<Props> = ({ className }) => {
       </nav>
 
       <div className="hidden sm:flex sm:grow sm:justify-end">
+        <Toggle />
         <NavLink
           to="favourites"
           className={({ isActive }) =>

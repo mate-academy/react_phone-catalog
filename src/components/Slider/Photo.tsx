@@ -22,8 +22,8 @@ export const PhotoSlider: FC<Props> = ({ images }) => {
   );
 
   return (
-    // <div className={cn('', className)}>
     <>
+      {/*<div className={cn('', className)}>*/}
       <div
         className="overflow-hidden sm:col-span-6 sm:col-start-2 xl:col-span-10 xl:col-start-3"
         ref={emblaMainRef}
@@ -69,7 +69,7 @@ export const PhotoSlider: FC<Props> = ({ images }) => {
           ))}
         </div>
       </div>
+      {/*</div>*/}
     </>
-    // </div>
   );
 };

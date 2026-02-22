@@ -14,9 +14,8 @@ type Props = {
 };
 
 export const BannerSlider: FC<Props> = ({ banners, className }) => {
-  const LOOP = true;
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: LOOP, align: 'start' },
+    { loop: true, align: 'start' },
     [Autoplay({ delay: 5000 })],
   );
 
