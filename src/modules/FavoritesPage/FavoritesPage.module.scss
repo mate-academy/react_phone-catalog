@@ -1,0 +1,46 @@
+@import '../../assets/styles/main';
+
+.favorites {
+  min-height: calc(100vh - 64px - 96px);
+
+  &__container {
+    padding-block: 24px 56px;
+
+    @include on-tablet {
+      padding-block: 24px 64px;
+    }
+
+    @include on-desktop {
+      padding-block: 24px 80px;
+    }
+
+    @include on-desktop-extra {
+      padding-block: 24px 80px;
+    }
+
+    @include content-padding;
+  }
+
+  &__cardWrapper {
+    @include page-grid;
+  }
+
+  &__card {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+
+  &__cardTitleWrapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__cartTitle {
+    font-size: 32px;
+    text-align: balance;
+  }
+}

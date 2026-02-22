@@ -1,0 +1,92 @@
+@import '../../../assets/styles/main';
+
+.currentPage {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__homeLink {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__homeImg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-color: $color-white;
+  }
+
+  &__currentTitle {
+    margin-left: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+  }
+
+  &__currentTitleActive {
+    color: $color-primary;
+  }
+
+  &__backButtonWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+  }
+  &__backArrowImg {
+    width: 16px;
+    height: 16px;
+  }
+  &__backButton {
+    cursor: pointer;
+
+    margin-left: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+  }
+
+  &__productTitle {
+    margin-bottom: 8px;
+    color: $color-primary;
+  }
+
+  &__items {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}
