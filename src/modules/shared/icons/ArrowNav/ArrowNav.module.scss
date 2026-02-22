@@ -1,0 +1,29 @@
+@use '../../../../utils/mixins';
+
+.arrow {
+  cursor: pointer;
+  width: 100%;
+  min-width: 32px;
+  height: 100%;
+  border: 1px solid #B4BDC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+  @include mixins.hover(border, 1px solid #313237);
+
+  svg {
+    fill: #313237;
+  }
+
+  &:disabled {
+    border: 1px solid #E2E6E9;
+
+    @include mixins.hover(border, 1px solid #E2E6E9);
+
+    svg {
+      fill: #B4BDC3;
+    }
+  }
+}
