@@ -5,8 +5,8 @@
   $duration: vars.$animation-duration,
   $timing: vars.$animation-timing
 ) {
-  transition: #{$props} $duration $timing;
   will-change: transform, opacity;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  transition: #{$props} $duration $timing;
 }

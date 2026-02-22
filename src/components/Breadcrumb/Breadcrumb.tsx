@@ -45,13 +45,13 @@ export const Breadcrumb = () => {
           className={`breadcrumb has-succeeds-separator ${s.breadcrumb_style}`}
           aria-label="breadcrumbs"
         >
-          <ul>
+          <ul className="is-flex-wrap-nowrap">
             <li>
               <Link to="/">
-                <span className="icon">
+                <span className="icon mx-0">
                   <FontAwesomeIcon
                     icon={faHouse}
-                    style={{ color: '#0F0F11' }}
+                    style={{ color: '#0F0F11', width: '16px', height: '16px' }}
                   />
                 </span>
               </Link>
@@ -78,7 +78,7 @@ export const Breadcrumb = () => {
       )}
       {(product || pathname.slice(1) === 'cart') && (
         <nav
-          className={`breadcrumb is-flex ${s.breadcrumb_style}`}
+          className={`breadcrumb is-flex mb-4 ${s.breadcrumb_style__back}`}
           aria-label="breadcrumbs"
         >
           <a className={`${s.back}`} onClick={() => navigate(-1)}>

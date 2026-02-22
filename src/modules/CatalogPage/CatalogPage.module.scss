@@ -1,6 +1,10 @@
-.catalog_container {
-  padding: 24px 0 80px;
+@use '../../styles/utils/variables' as vars;
 
-  //  max-width: 1136px;
-  width: 1136px;
+.items_info {
+  margin-bottom: 40px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: vars.$secondary-gray;
 }

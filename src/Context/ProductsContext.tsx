@@ -13,13 +13,8 @@ type ProdContextType = {
   addProdToFavourites: (product: Product) => void;
   isProdInFavourites: (product: Product) => boolean;
   isProdInCart: (product: Product) => boolean;
-  // toggleCompleted: (id: number) => void;
-  // toggleAll: () => void;
-  // filter: Filter;
-  // setFilter: (filter: Filter) => void;
-  // deleteTodo: (id: number) => void;
-  // editTodo: (updatedTodo: Todo) => void;
-  // clearCompleted: () => void;
+  clearCart: () => void;
+  isLoading: boolean;
 };
 
 export const ProductsContext = createContext<ProdContextType>({
@@ -32,6 +27,8 @@ export const ProductsContext = createContext<ProdContextType>({
   addProdToFavourites: () => {},
   isProdInFavourites: () => false,
   isProdInCart: () => false,
+  clearCart: () => {},
+  isLoading: true,
 });
 
 type Props = {
@@ -42,6 +39,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartProds, setCartProds] = useState<CartItemType[]>([]);
   const [favourites, setFavouritesArr] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/products.json')
@@ -51,6 +49,9 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       })
       .catch(error => {
         throw new Error('Error fetching data:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -95,6 +96,10 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     setCartProds(prevArr => prevArr.filter(item => item.id !== id));
   }
 
+  function clearCart() {
+    setCartProds([]);
+  }
+
   function changeQuontityInCart(id: number, action: string) {
     const updatedCart = cartProds.map(item => {
       if (item.id === id) {
@@ -102,7 +107,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
           return { ...item, quantity: item.quantity + 1 };
         }
 
-        if (action === 'decr' && item.quantity > 1) {
+        if (action === 'decr') {
           return { ...item, quantity: item.quantity - 1 };
         }
       }
@@ -143,8 +148,10 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       addProdToFavourites,
       isProdInFavourites,
       isProdInCart,
+      clearCart,
+      isLoading,
     }),
-    [products, cartProds, favourites],
+    [products, cartProds, favourites, isLoading],
   );
 
   return (

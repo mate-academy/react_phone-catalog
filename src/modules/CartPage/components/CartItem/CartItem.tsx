@@ -1,13 +1,11 @@
-/* eslint-disable max-len */
-
-// import Minus from '/img/icons/Minus.svg';
-// import Plus from '/img/icons/Plus.svg';
 import { ProductsContext } from '../../../../Context/ProductsContext';
 import { CartItemType } from '../../../../types/CartItem';
-import s from './CartItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useContextSelector } from 'use-context-selector';
+import { Link } from 'react-router-dom';
+
+import s from './CartItem.module.scss';
 
 type Props = { product: CartItemType };
 
@@ -23,33 +21,54 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   return (
     <div
-      className={`column is-flex is-align-items-center is-justify-content-space-between mb-4 ${s.cartItem}`}
+      className={`is-flex-tablet is-align-items-center is-justify-content-space-between mb-4 ${s.cartItem}`}
       key={product.id}
     >
-      <button
-        type="button"
-        className="delete"
-        onClick={() => removeProdFromCart(product.id)}
-      ></button>
-      <img className="image is-64x64" src={product.image} alt={product.name} />
-      <p>{product.name}</p>
-      <div className="block">
+      <div className={s.cartItem__wrap}>
         <button
-          className=""
-          onClick={() => changeQuontityInCart(product.id, 'decr')}
+          type="button"
+          className={s.delete_btn}
+          onClick={() => removeProdFromCart(product.id)}
         >
-          <FontAwesomeIcon icon={faMinus} />
+          <FontAwesomeIcon
+            icon={faXmark}
+            style={{ color: 'b4bdc3', width: '16px' }}
+          />
         </button>
-        <span>{product.quantity}</span>
-        <button
-          className=""
-          onClick={() => changeQuontityInCart(product.id, 'incr')}
+        <Link
+          className="is-flex is-align-items-center is-justify-content-space-between"
+          to={`/product/${product.itemId}`}
         >
-          <FontAwesomeIcon icon={faPlus} />
-        </button>
+          <img
+            className={`${s.product_image} image is-64x64`}
+            src={product.image}
+            alt={product.name}
+          />
+          <p className={s.product_name}>{product.name}</p>
+        </Link>
       </div>
+      <div className={s.cartItem__wrap}>
+        <div className={` is-flex is-align-items-center ${s.quantity_wrap}`}>
+          <button
+            className={`${s.change_q_btn} mr-3 button`}
+            onClick={() => changeQuontityInCart(product.id, 'decr')}
+            disabled={product.quantity === 1}
+          >
+            <FontAwesomeIcon icon={faMinus} />
+          </button>
+          <span>{product.quantity}</span>
+          <button
+            className={`${s.change_q_btn} ml-3 button`}
+            onClick={() => changeQuontityInCart(product.id, 'incr')}
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        </div>
 
-      <p className="">${product.fullPrice * product.quantity}</p>
+        <p className={`${s.product_price}`}>
+          ${product.price * product.quantity}
+        </p>
+      </div>
     </div>
   );
 };

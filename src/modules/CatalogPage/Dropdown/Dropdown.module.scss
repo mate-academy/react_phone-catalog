@@ -1,0 +1,25 @@
+@use '../../../styles/utils/variables' as vars;
+
+.sort_title {
+  color: vars.$secondary-gray;
+}
+
+.dropdown_btn {
+  display: flex;
+  justify-content: space-between;
+
+  width: 136px;
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  &__text {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: vars.$gray-primary;
+  }
+
+  @media (min-width: vars.$tablet) {
+    width: 176px;
+  }
+}

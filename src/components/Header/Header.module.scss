@@ -1,4 +1,3 @@
-// @import '../../styles/main.scss';
 @use '../../styles/utils/variables' as vars;
 @use '../../styles/utils/animation' as anim;
 
@@ -11,25 +10,26 @@
 }
 
 .navbar_style {
-  background-color: transparent;
   height: 100%;
   color: vars.$secondary-gray;
+  background-color: transparent;
 }
 
 .link_style {
   height: 100%;
-  color: vars.$secondary-gray;
-  font-weight: 800;
+
   font-size: 12px;
+  font-weight: 800;
   line-height: 0.92;
+  color: vars.$secondary-gray;
   letter-spacing: 0.5px;
 
   @include anim.smooth-transition(all);
 
   &:hover {
-    background-color: transparent;
     transform: scale(1.1);
-    color: vars.$primary-text-color;
     border-bottom: 3px solid vars.$primary-text-color;
+    color: vars.$primary-text-color;
+    background-color: transparent;
   }
 }

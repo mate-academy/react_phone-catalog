@@ -5,7 +5,6 @@ export const Header = () => {
   return (
     <header className={`Header is-fixed-top  ${s.header_line}`}>
       <div className={`${s.header_style} `}>
-        {/* is-flex is-justify-content-space-between is-align-items-center */}
         <Navbar />
       </div>
     </header>

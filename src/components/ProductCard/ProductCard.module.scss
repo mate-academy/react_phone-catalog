@@ -1,36 +1,44 @@
 @use '../../styles/utils/variables' as vars;
 
 .product_card {
-  width: 272px;
-  padding: 32px;
-  border-radius: 8px;
-  border: 1px solid vars.$main-gray;
-
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+  max-width: 272px;
   height: 100%;
+  padding: 32px;
+  border: 1px solid vars.$main-gray;
+  border-radius: 8px;
 }
 
 .bottom_bordered {
-  border-bottom: 1px solid vars.$main-gray;
   margin-bottom: 16px;
   padding-bottom: 8px;
+  border-bottom: 1px solid vars.$main-gray;
 }
 
 .img_figure {
-  height: 196px;
-  width: 208px;
+  height: 108px;
 
   & > img {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: contain;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    height: 181px;
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    height: 196px;
   }
 }
 
 .product_name {
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 600;
   line-height: 21px;
   color: vars.$primary-text-color;
 }
@@ -42,29 +50,29 @@
 .cart_button {
   width: 160px;
   height: 40px;
-  border-radius: 8px;
   padding: 0;
-  background-color: vars.$accent-color;
+  border-radius: 8px;
+
   color: vars.$primary-white-color;
 
+  background-color: vars.$accent-color;
+
   &__active {
-    background-color: vars.$primary-white-color;
     color: vars.$accent-color;
+    background-color: vars.$primary-white-color;
   }
 }
 
 .fav_button {
   width: 40px;
   height: 40px;
-  border-radius: 48px;
   padding: 0;
+  border-radius: 48px;
 }
 
 .fav_icon {
   width: 16px;
   height: 16px;
-
-  // padding: 0;
 }
 
 .blue_icon {

@@ -1,10 +1,9 @@
-/* eslint-disable no-console */
-
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-// import s from './Pagination.module.scss';
+
+import s from './Pagination.module.scss';
 
 type Props = {
   pages: number;
@@ -25,27 +24,35 @@ export const Pagination: React.FC<Props> = ({
 
   function handlePageChange(pageNum: number) {
     if (type === 'light') {
-      console.log('light', pageNum);
       onPageClick(pageNum);
     } else {
-      setSearchParams(`?page=${pageNum}`);
+      const newPageNum = pageNum;
+
+      const params = new URLSearchParams(searchParams);
+
+      params.set('page', `${newPageNum}`);
+
+      if (!newPageNum) {
+        params.delete('perpage');
+      }
+
+      setSearchParams(params);
     }
   }
 
   return (
     <nav
       className={classNames(
-        'pagination is-rounded',
+        'pagination is-rounded mb-0',
         type === 'light'
-          ? 'is-justify-content-flex-end is-relative'
+          ? [`is-justify-content-flex-end is-relative ${s.relative_position}`]
           : 'is-justify-content-center',
       )}
       role="navigation"
       aria-label="pagination"
     >
       <button
-        className="pagination-previous p-0"
-        style={{ order: 1 }}
+        className={`pagination-previous p-0 ${s.pagination_light_theme} is-flex-grow-0`}
         disabled={page === 1}
         onClick={() => handlePageChange(page - 1)}
       >
@@ -55,8 +62,8 @@ export const Pagination: React.FC<Props> = ({
         <ul className="pagination-list is-flex-grow-0">
           <li>
             <button
-              className={classNames('pagination-link', {
-                'is-current': page === 1,
+              className={classNames(`pagination-link ${s.pag_link}`, {
+                [`is-current ${s.current}`]: page === 1,
               })}
               aria-label="Goto page 1"
               onClick={() => handlePageChange(1)}
@@ -70,15 +77,16 @@ export const Pagination: React.FC<Props> = ({
             </li>
           )}
           {[...Array(3)].map(
-            (x, i) =>
+            (_, i) =>
               page + i > 2 &&
               page + i < pages + 1 && (
                 <li key={i}>
                   <button
-                    className={classNames('pagination-link', {
-                      'is-current': page === page - 1 + i,
+                    className={classNames(`pagination-link ${s.pag_link}`, {
+                      [`is-current ${s.current}`]: page === page - 1 + i,
                     })}
                     aria-label="Goto page 45"
+                    onClick={() => handlePageChange(page - 1 + i)}
                   >
                     {page - 1 + i}
                   </button>
@@ -92,8 +100,8 @@ export const Pagination: React.FC<Props> = ({
           )}
           <li>
             <button
-              className={classNames('pagination-link', {
-                'is-current': page === pages,
+              className={classNames(`pagination-link ${s.pag_link}`, {
+                [`is-current ${s.current}`]: page === pages,
               })}
               aria-label={`Goto page ${pages}`}
               onClick={() => handlePageChange(pages)}
@@ -104,7 +112,7 @@ export const Pagination: React.FC<Props> = ({
         </ul>
       )}
       <button
-        className="pagination-next p-0"
+        className={`pagination-next p-0 is-flex-grow-0 ${s.pagination_light_theme_next}`}
         onClick={() => handlePageChange(page + 1)}
         disabled={page === pages}
       >

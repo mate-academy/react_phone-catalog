@@ -1,37 +1,20 @@
 @use '../../../../styles/utils/variables.scss' as vars;
 
-.banner_item {
-  height: 400px;
-  border-radius: 8px;
-}
-
 .banner_slider {
   padding-bottom: 40px;
-
-  &__button {
-    // position: absolute;
-    // top: 50%;
-    // transform: translateY(-50%);
-    // background-color: rgba(0, 0, 0, 0.5);
-    // border: none;
-    // color: #fff;
-    // padding: 12px;
-    // cursor: pointer;
-    // border-radius: 50%;
-
-    // &:hover {
-    //   background-color: rgba(0, 0, 0, 0.7);
-    // }
-
-    height: 400px;
-    width: 32px;
-    border-radius: 48px;
-    border: 1px solid vars.$icons-grey;
-  }
 }
 
-.stroke_icon {
-  width: 16px;
-  height: 16px;
-  fill: aqua;
+.banner_item > img {
+  height: 320px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+
+  @media screen and (min-width: vars.$tablet) {
+    height: 225px;
+  }
+
+  @media screen and (min-width: vars.$desktop) {
+    height: 432px;
+  }
 }

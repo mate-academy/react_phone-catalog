@@ -5,7 +5,6 @@ import { useContextSelector } from 'use-context-selector';
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-// import { faHouse } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ProductsContext } from '../../Context/ProductsContext';
@@ -14,6 +13,7 @@ import { GoodsSlider } from '../../components/GoodsSlider';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
 import s from './ProductPage.module.scss';
+import { Loader } from '../../components/Loader';
 
 export const ProductPage = () => {
   const products = useContextSelector(ProductsContext, ctx => ctx.products);
@@ -39,11 +39,15 @@ export const ProductPage = () => {
   const [productDetails, setProductDetails] = useState<
     ProductDetails | undefined
   >(undefined);
+  const [notFound, setNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const product = products.find(item => item.itemId === itemId);
 
   useEffect(() => {
     if (!product) {
+      setNotFound(true);
+
       return;
     }
 
@@ -54,20 +58,22 @@ export const ProductPage = () => {
 
         if (prod) {
           setProductDetails(prod);
+          setNotFound(false);
         } else {
           throw new Error('Error fetching data');
         }
       })
       .catch(error => {
+        setNotFound(true);
         throw new Error('Error fetching data:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setNotFound(false);
       });
   }, [products, product, itemId]);
 
   const imageRef = useRef<HTMLImageElement | null>(null);
-
-  if (!product && products.length) {
-    return navigate('/not-found');
-  }
 
   type TechSpecListType = {
     title: string;
@@ -85,15 +91,30 @@ export const ProductPage = () => {
     { title: 'Cell', key: 'cell' },
   ];
 
-  // const colors = [
-  //   { green: '' },
-  //   { 'space grey': '' },
-  //   { black: '' },
-  //   { yellow: '' },
-  //   { white: '' },
-  //   { purple: '' },
-  //   { red: '' },
-  // ];
+  const colors: { [key: string]: string }[] = [
+    { black: '#000000' },
+    { gold: '#FFD700' },
+    { yellow: '#FFFF00' },
+    { green: '#008000' },
+    { midnightgreen: '#006400' },
+    { silver: '#C0C0C0' },
+    { spacegray: '#696969' },
+    { 'space grey': '#696969' },
+    { red: '#FF0000' },
+    { white: '#FFFFFF' },
+    { coral: '#FF7F50' },
+    { rosegold: '#E7C8C8' },
+    { 'rose gold': '#E7C8C8' },
+    { midnight: '#191970' },
+    { spaceblack: '#2F2F2F' },
+    { blue: '#0000FF' },
+    { sierrablue: '#87CEEB' },
+    { graphite: '#2F4F4F' },
+    { purple: '#800080' },
+    { pink: '#FFC0CB' },
+    { 'sky blue': '#87CEEB' },
+    { starlight: '#F5F5DC' },
+  ];
 
   function getSpec(key: string): string {
     if (!productDetails) {
@@ -148,15 +169,31 @@ export const ProductPage = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
+
+      {notFound && !isLoading && (
+        <div className={`${s.big_img} ${s.not_found}`}>
+          <h2 className={`title mb-2 ${s.home_titles} has-text-centered`}>
+            Product not found
+          </h2>
+          <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
+            <img src="/img/product-not-found.png" alt={'product not found'} />
+          </figure>
+        </div>
+      )}
+
       {productDetails && product && (
-        <div className={`container ${s.product_container}`}>
+        <>
           <Breadcrumb />
-          <h1 className="title is-3">{productDetails?.name}</h1>
-          <div className="fixed-grid">
-            <div className="grid is-gap-8">
+          <h1 className="title is-3 is-size-4-mobile">
+            {productDetails?.name}
+          </h1>
+
+          <div className="fixed-grid has-1-cols-mobile has-2-cols-tablet">
+            <div className="grid is-gap-8 ">
               <div className="cell">
-                <div className="columns">
-                  <div className="column is-narrow">
+                <div className={`columns is-flex-mobile ${s.all_img_wrap}`}>
+                  <div className="column is-flex-mobile p-0 is-flex-grow-0">
                     {productDetails?.images.map((im, idx) => (
                       <div className={`${s.small_img}`} key={idx}>
                         <figure
@@ -168,7 +205,7 @@ export const ProductPage = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="column">
+                  <div className="column p-0 is-flex-grow-0">
                     <div className={`${s.big_img}`}>
                       <figure className={`image ${s.big_img__figure}`}>
                         <img
@@ -182,126 +219,119 @@ export const ProductPage = () => {
                 </div>
               </div>
               <div className="cell">
-                <div className="columns">
-                  <div className="column ">
-                    <div className={`block ${s.bottom_bordered}`}>
-                      <p>Available colors</p>
-                      <div className="is-flex">
-                        {productDetails?.colorsAvailable.map((color, idx) => (
-                          <button
-                            className={classNames(
-                              `tag is-rounded mr-2 ${s.color_btn}`,
-                              {
-                                [`${s.is_active}`]:
-                                  productDetails?.color === color,
-                              },
-                            )}
-                            key={idx}
-                            onClick={() => handleColorBtnClick(color)}
-                          >
-                            <span
-                              className={`${s.color_btn__inside}`}
-                              style={{
-                                backgroundColor: `${color}`,
-                              }}
-                              title={`${color}`}
-                            ></span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={`block ${s.bottom_bordered}`}>
-                      <p>Select capacity</p>
-                      <div className="is-flex">
-                        {productDetails?.capacityAvailable.map((cap, idx) => (
-                          <button
-                            className={classNames('tag mr-2', {
-                              'is-dark': productDetails?.capacity === cap,
-                              [`${s.capacity_btn}`]:
-                                productDetails?.capacity !== cap,
-                            })}
-                            key={idx}
-                            onClick={() => handleCapacityBtnClick(cap)}
-                          >
-                            {cap}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="block mb-4">
-                      <b className="is-size-3 has-text-weight-extrabold mr-2">
-                        $ {productDetails?.priceDiscount}
-                      </b>
-                      <del
-                        className={`is-size-4 has-text-weight-semibold ${s.product_gray}`}
-                      >
-                        $ {productDetails?.priceRegular}
-                      </del>
-                    </div>
-                    <div className="content mb-5 is-flex is-justify-content-space-between is-align-items-baseline">
-                      <button
-                        className={classNames(
-                          // 'button',
-                          `button ${s.cart_button}`,
-                          {
-                            [`${s.active}`]: isProdInCart(product),
-                          },
-                        )}
-                        type="button"
-                        onClick={handleAddToCart}
-                      >
-                        {isProdInCart(product)
-                          ? 'Added to cart'
-                          : 'Add to cart'}
-                      </button>
-                      <button
-                        className={`button ${s.fav_button}`}
-                        type="button"
-                        onClick={handleAddToFavourites}
-                      >
-                        <span
-                          className={classNames('icon', {
-                            [`${s.blue_icon}`]: isProdInFavourites(product),
-                          })}
-                        >
-                          <FontAwesomeIcon
-                            icon={
-                              isProdInFavourites(product)
-                                ? faHeartSolid
-                                : faHeart
-                            }
-                          />
-                        </span>
-                      </button>
-                    </div>
-                    <ul className="list">
-                      <li className="is-flex is-justify-content-space-between">
-                        <span>Screen</span>
-                        <b>{productDetails?.screen}</b>
-                      </li>
-                      <li className="is-flex is-justify-content-space-between">
-                        <span>Resolution</span>
-                        <b>{productDetails?.resolution}</b>
-                      </li>
-                      <li className="is-flex is-justify-content-space-between">
-                        <span>Processor</span>
-                        <b>{productDetails?.processor}</b>
-                      </li>
-                      <li className="is-flex is-justify-content-space-between">
-                        <span>RAM</span>
-                        <b>{productDetails?.ram}</b>
-                      </li>
-                    </ul>
-                    {/* </div> */}
-                  </div>
-                  <div className="column is-two-fifths has-text-right">
+                <div className={`${s.bottom_bordered}`}>
+                  <div className="is-flex is-justify-content-space-between">
+                    <p className="is-size-7">Available colors</p>
                     <span>ID: {product?.id}</span>
                   </div>
+
+                  <div className="is-flex">
+                    {productDetails?.colorsAvailable.map((color, idx) => (
+                      <button
+                        className={classNames(
+                          `tag is-rounded mr-2 ${s.color_btn}`,
+                          {
+                            [`${s.is_active}`]: productDetails?.color === color,
+                          },
+                        )}
+                        key={idx}
+                        onClick={() => handleColorBtnClick(color)}
+                      >
+                        <span
+                          className={`${s.color_btn__inside}`}
+                          style={{
+                            backgroundColor: `${colors.find(c => c[color])?.[color] || '#ffffff'}`,
+                          }}
+                          title={`${color}`}
+                        ></span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
+                <div className={`${s.bottom_bordered}`}>
+                  <p>Select capacity</p>
+                  <div className="is-flex">
+                    {productDetails?.capacityAvailable.map((cap, idx) => (
+                      <button
+                        className={classNames('tag mr-2', {
+                          'is-dark': productDetails?.capacity === cap,
+                          [`${s.capacity_btn}`]:
+                            productDetails?.capacity !== cap,
+                        })}
+                        key={idx}
+                        onClick={() => handleCapacityBtnClick(cap)}
+                      >
+                        {cap}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="block mb-4">
+                  <b className="is-size-3 has-text-weight-extrabold mr-2">
+                    $ {productDetails?.priceDiscount}
+                  </b>
+                  <del
+                    className={`is-size-4 has-text-weight-semibold ${s.product_gray}`}
+                  >
+                    $ {productDetails?.priceRegular}
+                  </del>
+                </div>
+                <div className="content mb-5 is-flex is-align-items-center">
+                  <button
+                    className={classNames(`button ${s.cart_button}`, {
+                      [`${s.active}`]: isProdInCart(product),
+                    })}
+                    type="button"
+                    onClick={handleAddToCart}
+                  >
+                    {isProdInCart(product) ? 'Added to cart' : 'Add to cart'}
+                  </button>
+                  <button
+                    className={`button ${s.fav_button}`}
+                    type="button"
+                    onClick={handleAddToFavourites}
+                  >
+                    <span
+                      className={classNames('icon', {
+                        [`${s.blue_icon}`]: isProdInFavourites(product),
+                      })}
+                    >
+                      <FontAwesomeIcon
+                        icon={
+                          isProdInFavourites(product) ? faHeartSolid : faHeart
+                        }
+                      />
+                    </span>
+                  </button>
+                </div>
+                <ul className="list">
+                  <li className="is-flex is-justify-content-space-between">
+                    <span className={`is-size-7 ${s.product_gray}`}>
+                      Screen
+                    </span>
+                    <b className="is-size-7">{productDetails?.screen}</b>
+                  </li>
+                  <li className="is-flex is-justify-content-space-between">
+                    <span className={`is-size-7 ${s.product_gray}`}>
+                      Resolution
+                    </span>
+                    <b className="is-size-7">{productDetails?.resolution}</b>
+                  </li>
+                  <li className="is-flex is-justify-content-space-between">
+                    <span className={`is-size-7 ${s.product_gray}`}>
+                      Processor
+                    </span>
+                    <b className="is-size-7">{productDetails?.processor}</b>
+                  </li>
+                  <li className="is-flex is-justify-content-space-between">
+                    <span className={`is-size-7 ${s.product_gray}`}>RAM</span>
+                    <b className="is-size-7">{productDetails?.ram}</b>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-          <div className="fixed-grid">
+          <div className="fixed-grid has-1-cols-mobile has-1-cols-tablet has-2-cols-widescreen">
             <div className="grid is-gap-8">
               <div className="cell">
                 <h3 className={`title is-4 ${s.bordered_title}`}>About</h3>
@@ -319,8 +349,8 @@ export const ProductPage = () => {
                     <Fragment key={idx}>
                       {el.key !== '' && (
                         <li className="is-flex is-justify-content-space-between">
-                          <span>{el.title}</span>
-                          <b>{el.key}</b>
+                          <span className={s.specs_text}>{el.title}</span>
+                          <b className={s.specs__info}>{el.key}</b>
                         </li>
                       )}
                     </Fragment>
@@ -329,12 +359,14 @@ export const ProductPage = () => {
               </div>
             </div>
           </div>
-          <h2 className="title is-3" style={{ position: 'absolute' }}>
-            You may also like
-          </h2>
-          <GoodsSlider collectionType={'alsoLike'} typePagin={'light'} />
-        </div>
+        </>
       )}
+      <div className={`${s.absolute_wrapper}`}>
+        <h2 className={`title mb-0 ${s.home_titles} ${s.absolute_title}`}>
+          You may also like
+        </h2>
+        <GoodsSlider collectionType={'alsoLike'} typePagin={'light'} />
+      </div>
     </>
   );
 };

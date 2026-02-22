@@ -3,16 +3,18 @@ import { ProductCard } from '../../components/ProductCard';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
+import s from './FavouritesPage.module.scss';
+
 export const FavouritesPage = () => {
   const favourites = useContextSelector(ProductsContext, ctx => ctx.favourites);
 
   return (
-    <div className="container ">
+    <>
       <Breadcrumb />
 
-      <h2 className="title  is-1">Favourites</h2>
-      <p className="mb-6">{favourites.length} items</p>
-      <div className="fixed-grid has-4-cols">
+      <h2 className="title is-size-3-mobile is-size-1 mb-2">Favourites</h2>
+      <p className={`${s.fav_items}`}>{favourites.length} items</p>
+      <div className="fixed-grid has-1-cols-mobile has-2-cols-tablet has-3-cols-desktop has-4-cols-widescreen favourites">
         <div className="grid">
           {favourites.map(product => (
             <div className="cell" key={product.id}>
@@ -21,6 +23,6 @@ export const FavouritesPage = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };

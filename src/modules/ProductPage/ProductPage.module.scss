@@ -1,71 +1,117 @@
 @use '/src/styles/utils/variables' as vars;
 
-.product_container {
-  padding: 24px 0 80px;
-
-  //  max-width: 1136px;
-  width: 1136px;
-}
-
 .bottom_bordered {
-  border-bottom: 1px solid vars.$main-gray;
   margin-bottom: 24px;
   padding-bottom: 24px;
+  border-bottom: 1px solid vars.$main-gray;
 }
 
 .bordered_title {
-  border-bottom: 1px solid vars.$main-gray;
-  padding-bottom: 16px;
   margin-bottom: 32px !important;
+  padding-bottom: 16px;
+  border-bottom: 1px solid vars.$main-gray;
+}
+
+.all_img_wrap {
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    justify-content: flex-start;
+  }
 }
 
 .small_img {
-  padding: 7px;
-  margin-bottom: 16px;
-  width: 80px;
-  height: 80px;
+  width: 51px;
+  height: 50px;
+  margin-right: 8px;
+  padding: 5px;
   border: 1px solid vars.$main-gray;
 
   &__figure {
-    width: 66px;
-    height: 66px;
+    width: 42px;
+    height: 40px;
 
     & > img {
-      height: 100%;
       width: 100%;
+      height: 100%;
       object-fit: contain;
     }
+
+    @media screen and (min-width: vars.$tablet) {
+      width: 28px;
+      height: 28px;
+    }
+
+    @media screen and (min-width: vars.$widescreen) {
+      width: 66px;
+      height: 66px;
+    }
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 8px;
+    padding: 4px;
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    padding: 7px;
   }
 }
 
 .big_img {
-  padding: 11px;
-  width: 100%;
-  height: 464px;
+  width: 288px;
+  height: 288px;
+  margin-bottom: 16px;
   background-color: vars.$primary-white-color;
 
   &__figure {
-    height: 442px;
-    width: 442px;
+    width: 287px;
+    height: 287px;
 
     & > img {
-      height: 100%;
       width: 100%;
+      height: 100%;
       object-fit: contain;
     }
+
+    @media screen and (min-width: vars.$widescreen) {
+      width: 442px;
+      height: 442px;
+    }
   }
+
+  @media screen and (min-width: vars.$widescreen) {
+    width: 464px;
+    height: 464px;
+    padding: 11px;
+  }
+}
+
+.not_found {
+  margin: 0 auto;
+  margin-bottom: 24px;
+  background-color: vars.$hover-and-background-color;
 }
 
 .color_btn {
   width: 32px;
   height: 32px;
-  border: 1px solid vars.$main-gray;
   padding: 0;
+  border: 1px solid vars.$main-gray;
 
   &__inside {
+    display: block;
     width: 26px;
     height: 26px;
-    display: block;
     border-radius: 50%;
   }
 
@@ -79,9 +125,9 @@
 }
 
 .capacity_btn {
-  background-color: transparent;
   border: 1px solid vars.$icons-grey;
   border-radius: 4px;
+  background-color: transparent;
 
   &:hover {
     border-color: vars.$primary-text-color;
@@ -93,33 +139,86 @@
 }
 
 .cart_button {
-  width: 263px;
+  width: 231px;
   height: 48px;
-  border-radius: 8px;
+  margin-right: 8px;
   padding: 0;
-  background-color: vars.$accent-color;
+  border-radius: 8px;
+
   color: vars.$primary-white-color;
 
+  background-color: vars.$accent-color;
+
   &.active {
-    background-color: vars.$primary-white-color;
     color: vars.$accent-color;
+    background-color: vars.$primary-white-color;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    width: 180px;
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    width: 263px;
   }
 }
 
 .fav_button {
   width: 40px;
   height: 40px;
-  border-radius: 48px;
   padding: 0;
+  border-radius: 48px;
 }
 
 .fav_icon {
   width: 16px;
   height: 16px;
-
-  // padding: 0;
 }
 
 .blue_icon {
   color: vars.$secondary-accent;
+}
+
+.specs_text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: vars.$secondary-gray;
+  letter-spacing: 0%;
+}
+
+.specs__info {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: right;
+}
+
+.absolute_wrapper {
+  position: relative;
+  padding-top: 60px;
+}
+
+.absolute_title {
+  position: absolute;
+  top: 14px;
+  left: 0;
+
+  @media screen and (min-width: vars.$tablet) {
+    top: 0;
+  }
+}
+
+.home_titles {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  @media screen and (min-width: vars.$tablet) {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
 }

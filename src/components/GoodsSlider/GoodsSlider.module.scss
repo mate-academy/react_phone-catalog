@@ -1,32 +1,10 @@
 @use '../../styles/utils/variables.scss' as vars;
 
-.goods_slider {
-  // margin-bottom: 80px;
-
-  &__button {
-    // position: absolute;
-    // top: 50%;
-    // transform: translateY(-50%);
-    // background-color: rgba(0, 0, 0, 0.5);
-    // border: none;
-    // color: #fff;
-    // padding: 12px;
-    // cursor: pointer;
-    // border-radius: 50%;
-
-    // &:hover {
-    //   background-color: rgba(0, 0, 0, 0.7);
-    // }
-
-    height: 400px;
-    width: 32px;
-    border-radius: 48px;
-    border: 1px solid vars.$icons-grey;
-  }
+.goods_slider__container {
+  gap: 16px;
+  justify-content: center;
 }
 
-.stroke_icon {
-  width: 16px;
-  height: 16px;
-  fill: aqua;
+.goods_slider__item {
+  max-width: fit-content;
 }

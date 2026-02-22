@@ -12,9 +12,11 @@ import { NotFoundPage } from './components/NotFoundPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CartPage } from './modules/CartPage/CartPage';
 import { ProductPage } from './modules/ProductPage';
+import ScrollToTop from './components/ScrollOnLoad/ScrollOnLoad';
 
 export const Root = () => (
   <Router>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />

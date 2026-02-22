@@ -1,12 +1,13 @@
-import Product from '../../types/Product';
-import s from './ProductCard.module.scss';
-import { ProductsContext } from '../../Context/ProductsContext';
+import { Link } from 'react-router-dom';
+import { useContextSelector } from 'use-context-selector';
 import classNames from 'classnames';
+import Product from '../../types/Product';
+import { ProductsContext } from '../../Context/ProductsContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { useContextSelector } from 'use-context-selector';
+
+import s from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
@@ -30,14 +31,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ctx => ctx.isProdInCart,
   );
 
-  // const navigate = useNavigate();
-
-  // const [isInFav, setIsInFav] = useState(
-  //   favouritesArr.some(item => {
-  //     item.id === product.id;
-  //   }),
-  // );
-
   function handleAddToCart() {
     addProdToCart(product);
   }
@@ -45,17 +38,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   function handleAddToFavourites() {
     addProdToFavourites(product);
   }
-
-  // function handleCardClick() {
-  //   navigate(`/product/${product.itemId}`);
-  //   // <Navigate to={`product/${product.itemId}`} />;
-  // }
-
-  // function isInFavourites(): boolean {
-  //   return favouritesArr.some(item => {
-  //     item.id === product.id ? setIsInFav(true) : setIsInFav(false);
-  //   });
-  // }
 
   return (
     <div className={`card ${s.product_card}`}>
@@ -117,9 +99,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
 
-      <div className="content is-flex is-justify-content-space-between mt-auto">
+      <div className="content is-flex is-justify-content-center mt-auto">
         <button
-          className={classNames('button', {
+          className={classNames('button mr-2', {
             [`${s.cart_button}`]: !isProdInCart(product),
             [`${s.cart_button__active}`]: isProdInCart(product),
           })}
