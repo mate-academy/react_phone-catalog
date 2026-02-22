@@ -34,7 +34,7 @@ export const CartPage: React.FC = () => {
       {cartItems.length === 0 ? (
         <div className={styles.empty}>
           <img
-            src="img/cart-is-empty.png"
+            src="/img/cart-is-empty.png"
             alt="Cart is empty"
             className={styles.emptyImage}
           />
@@ -51,7 +51,7 @@ export const CartPage: React.FC = () => {
                     className={styles.removeButton}
                     onClick={() => removeFromCart(item.id)}
                   >
-                    <img src="img/icons/close.svg" alt="Remove" />
+                    <img src="/img/icons/close.svg" alt="Remove" />
                   </button>
 
                   <img
@@ -76,7 +76,7 @@ export const CartPage: React.FC = () => {
                       disabled={item.quantity <= 1}
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                     >
-                      <img src="img/icons/minus.svg" alt="Decrease" />
+                      <img src="/img/icons/minus.svg" alt="Decrease" />
                     </button>
 
                     <span className={styles.quantityValue}>
@@ -88,7 +88,7 @@ export const CartPage: React.FC = () => {
                       className={styles.quantityButton}
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                     >
-                      <img src="img/icons/plus.svg" alt="Increase" />
+                      <img src="/img/icons/plus.svg" alt="Increase" />
                     </button>
                   </div>
 

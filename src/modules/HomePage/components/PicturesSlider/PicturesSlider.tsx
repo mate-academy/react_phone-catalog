@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  { src: 'img/banner-phones.png', alt: 'Phones Banner' },
-  { src: 'img/banner-tablets.png', alt: 'Tablets Banner' },
-  { src: 'img/banner-accessories.png', alt: 'Accessories Banner' },
+  { src: '/img/banner-phones.png', alt: 'Phones Banner' },
+  { src: '/img/banner-tablets.png', alt: 'Tablets Banner' },
+  { src: '/img/banner-accessories.png', alt: 'Accessories Banner' },
 ];
 
 export const PicturesSlider: React.FC = () => {
@@ -28,7 +28,7 @@ export const PicturesSlider: React.FC = () => {
     <div className={styles.slider}>
       <div className={styles.wrapper}>
         <button type="button" className={styles.button} onClick={goToPrev}>
-          <img src="img/icons/arrow-left.svg" alt="Previous" />
+          <img src="/img/icons/arrow-left.svg" alt="Previous" />
         </button>
 
         <div className={styles.imageContainer}>
@@ -45,7 +45,7 @@ export const PicturesSlider: React.FC = () => {
         </div>
 
         <button type="button" className={styles.button} onClick={goToNext}>
-          <img src="img/icons/arrow-right.svg" alt="Next" />
+          <img src="/img/icons/arrow-right.svg" alt="Next" />
         </button>
       </div>
 

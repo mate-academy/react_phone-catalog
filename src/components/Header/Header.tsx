@@ -24,11 +24,11 @@ export const Header: React.FC = () => {
   );
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} role="banner">
       <div className={styles.left}>
-        <NavLink to="/" className={styles.logo}>
+        <NavLink to="/" className={styles.logo} aria-label="Home">
           <img
-            src="img/logo.svg"
+            src="/img/logo.svg"
             alt="Phone Catalog"
             className={styles.logo__img}
           />
@@ -55,22 +55,34 @@ export const Header: React.FC = () => {
       <div className={styles.right}>
         <NavLink to="/favorites" className={getIconClass}>
           <img
-            src="img/icons/heart.svg"
+            src="/img/icons/heart.svg"
             alt="Favorites"
             className={styles.icon}
           />
           {favoritesCount > 0 && (
-            <span className={styles.badge}>{favoritesCount}</span>
+            <span
+              className={styles.badge}
+              aria-label={`${favoritesCount} favorites`}
+            >
+              {favoritesCount}
+            </span>
           )}
         </NavLink>
 
         <NavLink to="/cart" className={getIconClass}>
           <img
-            src="img/icons/cart.svg"
+            src="/img/icons/cart.svg"
             alt="Shopping Cart"
             className={styles.icon}
           />
-          {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
+          {totalItems > 0 && (
+            <span
+              className={styles.badge}
+              aria-label={`${totalItems} items in cart`}
+            >
+              {totalItems}
+            </span>
+          )}
         </NavLink>
       </div>
     </header>

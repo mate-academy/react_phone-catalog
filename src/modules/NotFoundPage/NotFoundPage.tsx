@@ -5,7 +5,7 @@ import styles from './NotFoundPage.module.scss';
 export const NotFoundPage: React.FC = () => (
   <div className={styles.page}>
     <img
-      src="img/page-not-found.png"
+      src="/img/page-not-found.png"
       alt="Page not found"
       className={styles.image}
     />

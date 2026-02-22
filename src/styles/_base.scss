@@ -1,3 +1,5 @@
+@use './variables' as *;
+
 @font-face {
   font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
@@ -39,8 +41,8 @@ body {
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #313237;
-  background-color: #fff;
+  color: $color-primary;
+  background-color: $color-white;
 }
 
 a {

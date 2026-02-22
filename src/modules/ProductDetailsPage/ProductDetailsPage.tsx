@@ -80,7 +80,7 @@ export const ProductDetailsPage: React.FC = () => {
         <BackButton />
         <div className={styles.notFound}>
           <img
-            src="img/product-not-found.png"
+            src="/img/product-not-found.png"
             alt="Product not found"
             className={styles.notFoundImage}
           />
@@ -213,8 +213,8 @@ export const ProductDetailsPage: React.FC = () => {
               <img
                 src={
                   favorited
-                    ? 'img/icons/heart-filled.svg'
-                    : 'img/icons/heart.svg'
+                    ? '/img/icons/heart-filled.svg'
+                    : '/img/icons/heart.svg'
                 }
                 alt="Favorites"
               />

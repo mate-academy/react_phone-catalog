@@ -1,16 +1,22 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
 .noResults {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 16px;
   text-align: center;
+
+  @include content-padding;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .title {
   font-size: 22px;
   font-weight: 700;
   line-height: 31px;
-  color: #89939a;
+  color: $color-secondary;
 }
-

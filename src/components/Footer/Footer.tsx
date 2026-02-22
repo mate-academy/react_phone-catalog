@@ -12,28 +12,28 @@ export const Footer: React.FC = () => {
       <div className={styles.content}>
         <Link to="/" className={styles.logo}>
           <img
-            src="img/logo.svg"
+            src="/img/logo.svg"
             alt="Phone Catalog"
             className={styles.logo__img}
           />
         </Link>
 
-        <div className={styles.links}>
+        <nav className={styles.links}>
           <a
-            href="https://github.com"
+            href="https://github.com/ht1204/react_phone-catalog"
             className={styles.link}
             target="_blank"
             rel="noopener noreferrer"
           >
             Github
           </a>
-          <a href="#" className={styles.link}>
+          <Link to="/" className={styles.link}>
             Contacts
-          </a>
-          <a href="#" className={styles.link}>
+          </Link>
+          <Link to="/" className={styles.link}>
             Rights
-          </a>
-        </div>
+          </Link>
+        </nav>
 
         <button
           type="button"
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
         >
           Back to top
           <span className={styles.backToTopIcon}>
-            <img src="img/icons/arrow-up.svg" alt="Back to top" />
+            <img src="/img/icons/arrow-up.svg" alt="" aria-hidden="true" />
           </span>
         </button>
       </div>

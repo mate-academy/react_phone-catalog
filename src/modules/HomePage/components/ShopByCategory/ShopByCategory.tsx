@@ -23,7 +23,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
         <Link to="/phones" className={styles.category}>
           <div className={styles.imageWrapper}>
             <img
-              src="img/category-phones.webp"
+              src="/img/category-phones.webp"
               alt="Phones"
               className={styles.image}
             />
@@ -35,7 +35,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
         <Link to="/tablets" className={styles.category}>
           <div className={cn(styles.imageWrapper, styles.imageWrapperTablets)}>
             <img
-              src="img/category-tablets.webp"
+              src="/img/category-tablets.webp"
               alt="Tablets"
               className={styles.image}
             />
@@ -49,7 +49,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
             className={cn(styles.imageWrapper, styles.imageWrapperAccessories)}
           >
             <img
-              src="img/category-accessories.webp"
+              src="/img/category-accessories.webp"
               alt="Accessories"
               className={styles.image}
             />

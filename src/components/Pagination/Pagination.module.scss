@@ -12,16 +12,27 @@
 .button {
   @include square-button;
 
-  &Active {
-    background-color: $color-primary;
+  transition:
+    background-color $transition-duration,
+    color $transition-duration,
+    border-color $transition-duration,
+    transform $transition-duration;
+}
+
+.buttonActive {
+  @include square-button;
+
+  background-color: $color-primary;
+  border-color: $color-primary;
+  color: $color-white;
+  transition:
+    background-color $transition-duration,
+    color $transition-duration,
+    border-color $transition-duration,
+    transform $transition-duration;
+
+  &:hover {
     border-color: $color-primary;
-    color: $color-white;
-
-    @include square-button;
-
-    &:hover {
-      border-color: $color-primary;
-    }
   }
 }
 
@@ -30,4 +41,3 @@
   font-weight: 600;
   line-height: 21px;
 }
-

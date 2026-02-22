@@ -27,10 +27,15 @@
 
   &__img {
     height: 22px;
+    transition: transform $transition-duration;
 
     @include on-tablet {
       height: 28px;
     }
+  }
+
+  &:hover &__img {
+    transform: scale(1.1);
   }
 }
 
@@ -57,10 +62,15 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: $color-secondary;
-  transition: color $transition-duration;
+  transition: color $transition-duration, transform $transition-duration;
 
   &:hover {
     color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 }
 
@@ -71,22 +81,31 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: $font-family;
+  font-family: $font-family, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
   color: $color-secondary;
-  transition: color $transition-duration;
+  transition: color $transition-duration, transform $transition-duration;
 
   &:hover {
     color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 }
 
 .backToTopIcon {
   width: 32px;
   height: 32px;
+  transition: transform $transition-duration;
 
   @include square-button;
-}
 
+  &:hover {
+    transform: scale(1.1);
+  }
+}

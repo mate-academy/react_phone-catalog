@@ -52,11 +52,11 @@ export const Search: React.FC = () => {
       />
       {inputValue ? (
         <button type="button" className={styles.icon} onClick={handleClear}>
-          <img src="img/icons/close.svg" alt="Clear" />
+          <img src="/img/icons/close.svg" alt="Clear" />
         </button>
       ) : (
         <span className={styles.icon}>
-          <img src="img/icons/search.svg" alt="Search" />
+          <img src="/img/icons/search.svg" alt="Search" />
         </span>
       )}
     </div>

@@ -33,18 +33,18 @@
 .imageWrapper {
   overflow: hidden;
   margin-bottom: 24px;
-  background-color: #fcdbc1;
+  background-color: $color-category-phones;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
 
   &Tablets {
-    background-color: #d1cfcf;
+    background-color: $color-category-tablets;
   }
 
   &Accessories {
-    background-color: #973d5f;
+    background-color: $color-category-accessories;
   }
 }
 

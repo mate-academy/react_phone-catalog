@@ -55,7 +55,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             onClick={handlePrev}
             disabled={offset === 0}
           >
-            <img src="img/icons/arrow-left.svg" alt="Previous" />
+            <img src="/img/icons/arrow-left.svg" alt="Previous" />
           </button>
           <button
             type="button"
@@ -63,7 +63,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             onClick={handleNext}
             disabled={offset >= maxOffset}
           >
-            <img src="img/icons/arrow-right.svg" alt="Next" />
+            <img src="/img/icons/arrow-right.svg" alt="Next" />
           </button>
         </div>
       </div>

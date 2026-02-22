@@ -31,7 +31,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        <img src="img/icons/arrow-left.svg" alt="Previous" />
+        <img src="/img/icons/arrow-left.svg" alt="Previous" />
       </button>
 
       {pages.map(page => (
@@ -54,7 +54,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        <img src="img/icons/arrow-right.svg" alt="Next" />
+        <img src="/img/icons/arrow-right.svg" alt="Next" />
       </button>
     </div>
   );

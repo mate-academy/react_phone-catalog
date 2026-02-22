@@ -11,6 +11,9 @@
   background-color: $color-white;
   border-bottom: 1px solid $color-elements;
   height: 48px;
+  max-width: 1200px;
+  margin-inline: auto;
+  width: 100%;
 
   @include on-tablet {
     height: 64px;
@@ -47,10 +50,15 @@
 
   &__img {
     height: 22px;
+    transition: transform $transition-duration;
 
     @include on-tablet {
       height: 28px;
     }
+  }
+
+  &:hover &__img {
+    transform: scale(1.1);
   }
 }
 
@@ -80,10 +88,15 @@
   letter-spacing: 0.04em;
   color: $color-secondary;
   position: relative;
-  transition: color $transition-duration;
+  transition: color $transition-duration, transform $transition-duration;
 
   &:hover {
     color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 }
 
@@ -107,6 +120,12 @@
   height: 100%;
 }
 
+.icon {
+  width: 16px;
+  height: 16px;
+  transition: transform $transition-duration;
+}
+
 .iconLink {
   position: relative;
   display: flex;
@@ -115,7 +134,9 @@
   width: 48px;
   height: 100%;
   border-left: 1px solid $color-elements;
-  transition: background-color $transition-duration;
+  transition:
+    background-color $transition-duration,
+    transform $transition-duration;
 
   @include on-tablet {
     width: 64px;
@@ -123,6 +144,15 @@
 
   &:hover {
     background-color: $color-hover-bg;
+
+    .icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
   }
 }
 
@@ -138,10 +168,6 @@
   }
 }
 
-.icon {
-  width: 16px;
-  height: 16px;
-}
 
 .badge {
   position: absolute;

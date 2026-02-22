@@ -8,15 +8,27 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: $font-family;
+  font-family: $font-family, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
   color: $color-secondary;
-  transition: color $transition-duration;
+  transition: color $transition-duration, transform $transition-duration;
+
+  img {
+    transition: transform $transition-duration;
+  }
 
   &:hover {
     color: $color-primary;
+
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 }
-
