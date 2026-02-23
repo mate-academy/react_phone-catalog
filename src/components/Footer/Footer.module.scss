@@ -81,6 +81,7 @@
     padding: 0;
     gap: 16px;
     height: auto;
+
     @include hover-image-scale;
 
     @include respond-to('tablet') {
