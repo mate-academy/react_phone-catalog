@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { routes } from '../../router/routes';
 import styles from './Footer.module.scss';
-import Logo from '../../../public/img/Logo.png';
-import Chevron from '../../../public/img/Chevron (Arrow Right).png';
+import Logo from '/img/Logo.png';
+import Chevron from '/img/Chevron.png';
 
 const Footer = () => {
   const scrollToTop = () => {

@@ -1,0 +1,267 @@
+@use '../../styles/_variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.itemCardShortDetail {
+  display: flex;
+  flex-direction: column;
+  margin: 0 16px;
+  gap: 10px;
+
+  &__line {
+    display: block;
+    height: 1px;
+    background-color: vars.$elements-color;
+    width: 100%;
+    margin: 24px 0;
+    min-width: 320px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include mixins.mobile {
+      margin: 0;
+      min-width: 0;
+    }
+
+    @include mixins.tablet {
+      margin: 20px 0;
+      min-width: 0;
+    }
+  }
+
+  &__title {
+    font-family: vars.$font-primary;
+    font-weight: 600;
+    font-size: 12px;
+    color: vars.$secondary-color;
+    letter-spacing: 0%;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__colorsBlock {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__idBlock {
+    margin: 0;
+    padding: 0;
+    color: vars.$secondary-color;
+
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+  }
+
+  &__color {
+    display: flex;
+    gap: 10px;
+
+    &_available {
+      width: 20px;
+      height: 20px;
+      border: 2px solid vars.$elements-color;
+      padding: 3px;
+
+      border-radius: 50%;
+
+      background-color: vars.$hover_bg-color;
+
+      &_active {
+        border: 2px solid vars.$primary-color;
+      }
+
+      &_link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid vars.$elements-color;
+
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__capasity {
+    &_list {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+      }
+
+      &_item {
+        background-color: #fff;
+        border: vars.$icons-color 1px solid;
+        padding: 7px 8px 4px;
+        cursor: pointer;
+
+        font-size: 14px;
+        font-family: vars.$font-primary;
+        color: vars.$primary-color;
+
+        &_active {
+          background-color: vars.$primary-color;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    margin: 32px 0;
+    gap: 16px;
+
+    &_list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &_value {
+      font-family: vars.$font-primary;
+      font-weight: 600;
+      font-size: 12px;
+      color: vars.$secondary-color;
+
+      margin: 0;
+
+      &_newPrice {
+        color: vars.$primary-color;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+      }
+
+      &_oldPrice {
+        text-decoration: line-through;
+        color: vars.$secondary-color;
+        font-size: 22px;
+        font-weight: 500;
+      }
+    }
+
+    &_buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+
+      margin: 0;
+      padding: 0;
+
+      @include mixins.mobile {
+      }
+
+      @include mixins.tablet {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    &_button {
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: #17203166 0px 4px 8px 0px;
+
+        @include mixins.mobile {
+          box-shadow: none;
+        }
+
+        @include mixins.tablet {
+          box-shadow: none;
+        }
+      }
+
+      &_add {
+        padding: 13.5px 91px;
+        background-color: vars.$primary-color;
+        color: #fff;
+        font-family: vars.$font-primary;
+        font-weight: 600;
+        font-size: 14px;
+
+        flex-wrap: wrap;
+
+        @include mixins.mobile {
+          width: 100%;
+          padding: 13.5px 0;
+        }
+      }
+
+      &_favorites {
+        padding: 16px;
+        align-items: center;
+        text-align: center;
+        background-color: #fff;
+        border: vars.$icons-color 1px solid;
+
+        & img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: fit-content;
+
+      margin: 0;
+      padding: 0;
+
+      font-family: vars.$font-primary;
+      font-weight: 600;
+      font-size: 12px;
+
+      &_title {
+        color: vars.$secondary-color;
+      }
+
+      &_value {
+        color: vars.$primary-color;
+      }
+
+      & p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}

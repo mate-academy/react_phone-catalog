@@ -1,0 +1,162 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 20px 0;
+
+  @include mixins.tablet {
+    gap: 4px;
+    padding: 16px 0;
+  }
+
+  @include mixins.mobile {
+    gap: 4px;
+    padding: 12px 0;
+  }
+
+  &_btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid vars.$icons-color;
+    border-radius: 6px;
+    background: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+
+    @include mixins.tablet {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+
+    @include mixins.mobile {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: vars.$primary-color;
+      background: vars.$hover_bg-color;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+  }
+
+  &_pages {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 0 4px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include mixins.tablet {
+      gap: 2px;
+    }
+  }
+
+  &_page {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid vars.$icons-color;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+
+    @include mixins.tablet {
+      min-width: 36px;
+      height: 36px;
+      padding: 0 8px;
+      font-size: 13px;
+    }
+
+    @include mixins.mobile {
+      min-width: 32px;
+      height: 32px;
+      padding: 0 6px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      border-color: vars.$primary-color;
+      background: vars.$hover_bg-color;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &_active {
+      background: vars.$primary-color;
+      color: white;
+      border-color: vars.$primary-color;
+
+      &:hover {
+        background: vars.$primary-color;
+        border-color: vars.$primary-color;
+      }
+    }
+  }
+
+  &_dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    color: vars.$secondary-color;
+    font-weight: 600;
+    user-select: none;
+
+    @include mixins.tablet {
+      min-width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+
+    @include mixins.mobile {
+      min-width: 24px;
+      height: 32px;
+      font-size: 12px;
+    }
+  }
+}
+
+.loading,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+
+  h1 {
+    font-size: 24px;
+    color: vars.$secondary-color;
+  }
+}

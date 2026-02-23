@@ -1,12 +1,12 @@
 export const routes = {
-  home: '/home',
+  home: '/',
 
   catalog: '/catalog/:category',
   phones: '/catalog/phones',
   tablets: '/catalog/tablets',
   accessories: '/catalog/accessories',
 
-  product: '/product/:id',
+  product: '/product/:category/:id',
 
   cart: '/cart',
   favorites: '/favorites',

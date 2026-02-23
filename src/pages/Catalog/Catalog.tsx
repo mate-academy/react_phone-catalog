@@ -1,24 +1,44 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useEffect, useMemo } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
+
 import styles from './Catalog.module.scss';
 import { ProductCardData, ProductCatalogAPI } from '../../types';
 import { mapCatalogProducts } from '../../utils/mappers';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
-import Home from '../../../public/img/Home.png';
-import Chevron from '../../../public/img/Chevron.png';
-import { routes } from '../../router/routes';
+import { Pagination } from '../../components/Pagination/Pagination';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import {
+  sortProducts,
+  paginateProducts,
+  generatePaginationPages,
+  SortType,
+} from '../../utils/catalogUtils';
+
+import ProductNotFound from '../../UI/photos/product-not-found.png';
 
 type CatalogParams = 'phones' | 'tablets' | 'accessories';
 
 const Catalog = () => {
+  /** ------------------- STATE ------------------- */
   const [products, setProducts] = useState<ProductCardData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(12);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
   const [sortBy, setSortBy] = useState<string>('def');
 
+  /** ------------------- ROUTER ------------------- */
   const params = useParams<{ category: CatalogParams }>();
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  const from = window.location.pathname;
+
+  /** ------------------- API INFO ------------------- */
   const getApiInfo = () => {
     switch (params.category) {
       case 'phones':
@@ -34,6 +54,7 @@ const Catalog = () => {
 
   const { title, url } = getApiInfo();
 
+  /** ------------------- FETCH PRODUCTS ------------------- */
   useEffect(() => {
     if (!url) {
       return;
@@ -49,107 +70,141 @@ const Catalog = () => {
         setIsLoading(false);
       })
       .catch(err => {
-        // eslint-disable-next-line no-console
-        console.error('Error loading products:', err);
+        setErrorMessage(err.message);
         setProducts([]);
         setIsLoading(false);
       });
   }, [url]);
 
-  const sortedProducts = useMemo(() => {
-    const sorted = [...products];
+  /** ------------------- READ URL PARAMS ------------------- */
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
 
-    switch (sortBy) {
-      case 'price-asc':
-        return sorted.sort((a, b) => a.price - b.price);
-      case 'price-desc':
-        return sorted.sort((a, b) => b.price - a.price);
-      case 'newest':
-        return sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
-      default:
-        return sorted;
+    const sortFromUrl = searchParams.get('sort');
+    const pageFromUrl = searchParams.get('page');
+    const perPageFromUrl = searchParams.get('perPage');
+
+    if (sortFromUrl) {
+      setSortBy(sortFromUrl);
     }
-  }, [products, sortBy]);
 
-  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+    if (pageFromUrl) {
+      setCurrentPage(Number(pageFromUrl));
+    }
+
+    if (perPageFromUrl) {
+      setItemsPerPage(
+        perPageFromUrl === 'all' ? 'all' : Number(perPageFromUrl),
+      );
+    }
+  }, [location.search]);
+
+  /** ------------------- GET QUERY PARAM ------------------- */
+  const searchQuery = useMemo(() => {
+    const paramsQuery = new URLSearchParams(location.search);
+
+    return (paramsQuery.get('query') || '').toLowerCase();
+  }, [location.search]);
+
+  /** ------------------- FILTER PRODUCTS ------------------- */
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery) {
+      return products;
+    }
+
+    return products.filter(product =>
+      product.name.toLowerCase().includes(searchQuery),
+    );
+  }, [products, searchQuery]);
+
+  /** ------------------- SORT PRODUCTS ------------------- */
+  const sortedProducts = useMemo(() => {
+    return sortProducts(filteredProducts, sortBy as SortType);
+  }, [filteredProducts, sortBy]);
+
+  /** ------------------- PAGINATION ------------------- */
+  const totalPages =
+    itemsPerPage === 'all'
+      ? 1
+      : Math.ceil(sortedProducts.length / itemsPerPage);
 
   const paginatedProducts = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    if (itemsPerPage === 'all') {
+      return sortedProducts;
+    }
 
-    return sortedProducts.slice(startIndex, endIndex);
+    return paginateProducts(sortedProducts, currentPage, itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
 
-  const getPaginationPages = () => {
-    const pages: (number | string)[] = [];
+  const paginationPages = useMemo(() => {
     const maxVisiblePages = window.innerWidth < 768 ? 5 : 7;
 
-    if (totalPages <= maxVisiblePages) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
+    return generatePaginationPages(totalPages, currentPage, maxVisiblePages);
+  }, [currentPage, totalPages]);
 
-    pages.push(1);
+  /** ------------------- UPDATE URL ------------------- */
+  const updateSearchParams = (paramsToUpdate: Record<string, string>) => {
+    const searchParams = new URLSearchParams(location.search);
 
-    if (currentPage > 3) {
-      pages.push('...');
-    }
+    Object.entries(paramsToUpdate).forEach(([key, value]) => {
+      if (
+        value === '1' ||
+        value === 'all' ||
+        value === '' ||
+        value === 'default'
+      ) {
+        searchParams.delete(key);
+      } else {
+        searchParams.set(key, value);
+      }
+    });
 
-    const startPage = Math.max(2, currentPage - 1);
-    const endPage = Math.min(totalPages - 1, currentPage + 1);
-
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-
-    if (currentPage < totalPages - 2) {
-      pages.push('...');
-    }
-
-    pages.push(totalPages);
-
-    return pages;
+    navigate(`${location.pathname}?${searchParams.toString()}`);
   };
 
-  const paginationPages = useMemo(
-    () => getPaginationPages(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [currentPage, totalPages],
-  );
-
-  // Скидання на першу сторінку при зміні налаштувань
+  /** ------------------- RESET PAGE ON SORT/ITEMS CHANGE ------------------- */
   useEffect(() => {
     setCurrentPage(1);
   }, [itemsPerPage, sortBy]);
 
+  /** ------------------- HANDLERS ------------------- */
   const handleItemsPerPageChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setItemsPerPage(Number(e.target.value));
+    const value = e.target.value === 'all' ? 'all' : Number(e.target.value);
+
+    setItemsPerPage(value);
+    setCurrentPage(1);
+
+    updateSearchParams({ perPage: String(value), page: '1' });
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(e.target.value);
+    const value = e.target.value;
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set('sort', value);
+    navigate(`${location.pathname}?${searchParams.toString()}`);
   };
 
   const handlePrevPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
+    const newPage = Math.max(currentPage - 1, 1);
+
+    setCurrentPage(newPage);
+    updateSearchParams({ page: String(newPage) });
   };
 
   const handleNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+    const newPage = Math.min(currentPage + 1, totalPages);
+
+    setCurrentPage(newPage);
+    updateSearchParams({ page: String(newPage) });
   };
 
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
+    updateSearchParams({ page: String(page) });
   };
-
-  if (isLoading) {
-    return (
-      <div className={styles.loading}>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
 
   if (!url) {
     return (
@@ -159,22 +214,17 @@ const Catalog = () => {
     );
   }
 
+  if (errorMessage) {
+    return (
+      <div className={styles.error}>
+        <h1>{errorMessage}</h1>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.catalog}>
-      <div className={styles.catalog__iconParams}>
-        <Link to={routes.home} className={styles.catalog__iconParams_icon}>
-          <img src={Home} alt="Home" />
-        </Link>
-
-        <span className={styles.catalog__iconParams_arrow}>
-          <img src={Chevron} alt="Chevron" />
-        </span>
-
-        <span className={styles.catalog__iconParams_icon}>
-          {params.category &&
-            params.category.charAt(0).toUpperCase() + params.category.slice(1)}
-        </span>
-      </div>
+      <Breadcrumbs category={params.category} from={from} />
 
       <h1 className={styles.catalog__title}>{title}</h1>
       <p className={styles.catalog__count}>{sortedProducts.length} models</p>
@@ -191,9 +241,9 @@ const Catalog = () => {
             onChange={handleSortChange}
           >
             <option value="def">Default</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="newest">Newest Arrivals</option>
+            <option value="age">Newest</option>
+            <option value="alphabet">Alphabetically</option>
+            <option value="price">Cheapest</option>
           </select>
         </div>
 
@@ -210,74 +260,52 @@ const Catalog = () => {
             value={itemsPerPage}
             onChange={handleItemsPerPageChange}
           >
-            <option value={12}>12</option>
-            <option value={24}>24</option>
-            <option value={36}>36</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="all">All</option>
           </select>
         </div>
       </div>
 
-      {paginatedProducts.length > 0 ? (
-        <div className={styles.catalog__grid}>
-          {paginatedProducts.map(product => (
-            <ProductCard key={product.id} product={product} hotPrice={true} />
-          ))}
-        </div>
-      ) : (
-        <p className={styles.catalog__empty}>No products found</p>
-      )}
+      <div className={styles.catalog__grid}>
+        {isLoading ? (
+          Array.from({ length: 25 }).map((_, index) => (
+            <div key={index} className={styles.catalog__card}>
+              <Skeleton variant="rectangular" width="100%" height={250} />
+              <Skeleton variant="text" width="80%" style={{ marginTop: 8 }} />
+              <Skeleton variant="text" width="60%" />
+            </div>
+          ))
+        ) : paginatedProducts.length > 0 ? (
+          paginatedProducts.map(product => (
+            <div key={product.id} className={styles.catalog__card}>
+              <ProductCard product={product} hotPrice={true} />
+            </div>
+          ))
+        ) : (
+          <div className={styles.catalog__empty}>
+            <img
+              src={ProductNotFound}
+              alt="Product not found"
+              className={styles.catalog__empty_img}
+            />
+            <p className={styles.catalog__empty_text}>
+              There are no products matching your search.
+            </p>
+          </div>
+        )}
+      </div>
 
       {totalPages > 1 && (
-        <div className={styles.catalog__pagination}>
-          <button
-            className={styles.catalog__pagination_btn}
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            aria-label="Previous page"
-          >
-            {'<'}
-          </button>
-
-          <div className={styles.catalog__pagination_pages}>
-            {paginationPages.map((page, index) => {
-              if (page === '...') {
-                return (
-                  <span
-                    key={`dots-${index}`}
-                    className={styles.catalog__pagination_dots}
-                  >
-                    ...
-                  </span>
-                );
-              }
-
-              return (
-                <button
-                  key={page}
-                  className={`${styles.catalog__pagination_page} ${
-                    currentPage === page
-                      ? styles.catalog__pagination_page_active
-                      : ''
-                  }`}
-                  onClick={() => handlePageClick(page as number)}
-                  aria-label={`Page ${page}`}
-                  aria-current={currentPage === page ? 'page' : undefined}
-                >
-                  {page}
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            className={styles.catalog__pagination_btn}
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            aria-label="Next page"
-          >
-            {'>'}
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          pages={paginationPages}
+          onPageClick={handlePageClick}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
+        />
       )}
     </div>
   );

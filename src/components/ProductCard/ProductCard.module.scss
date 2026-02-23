@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
 
 .card {
   width: 100%;
@@ -10,15 +10,15 @@
   padding: 32px;
   border: 1px solid #e2e6e9;
   text-decoration: none;
-  background-color: $white-color;
+  background-color: vars.$white-color;
   box-sizing: border-box;
 
-  @include tablet {
+  @include mixins.tablet {
     max-width: 100%;
     padding: 24px;
   }
 
-  @include mobile {
+  @include mixins.mobile {
     max-width: 100%;
     padding: 16px;
   }
@@ -28,20 +28,20 @@
     height: 196px;
     object-fit: contain;
 
-    @include tablet {
+    @include mixins.tablet {
       height: 180px;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       height: 160px;
     }
   }
 
   &__title {
     font-size: 14px;
-    font-style: $font-primary;
+    font-style: vars.$font-primary;
     font-weight: 600;
-    color: $primary-color;
+    color: vars.$primary-color;
     margin: 0;
     padding: 0;
     text-align: left;
@@ -49,10 +49,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
 
-    @include mobile {
+    @include mixins.mobile {
       font-size: 13px;
       height: auto;
       min-height: 42px;
@@ -64,27 +64,27 @@
     flex-direction: row;
     gap: 8px;
     font-size: 22px;
-    font-style: $font-primary;
+    font-style: vars.$font-primary;
     font-weight: 800;
-    color: $primary-color;
+    color: vars.$primary-color;
     margin: 0;
     padding: 0;
     text-align: left;
 
-    @include tablet {
+    @include mixins.tablet {
       font-size: 20px;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       font-size: 18px;
     }
 
     &_oldPrice {
       text-decoration: line-through;
-      color: $secondary-color;
+      color: vars.$secondary-color;
       font-weight: 600;
 
-      @include mobile {
+      @include mixins.mobile {
         font-size: 16px;
       }
     }
@@ -103,7 +103,7 @@
     flex-direction: column;
     gap: 8px;
 
-    @include mobile {
+    @include mixins.mobile {
       gap: 6px;
     }
   }
@@ -112,16 +112,16 @@
     display: flex;
     gap: 8px;
     justify-content: space-between;
-    color: $primary-color;
+    color: vars.$primary-color;
     font-weight: 700;
     font-size: 12px;
 
-    @include mobile {
+    @include mixins.mobile {
       font-size: 11px;
     }
 
     &_label {
-      color: $secondary-color;
+      color: vars.$secondary-color;
     }
   }
 
@@ -132,7 +132,7 @@
     height: 40px;
     margin-top: 8px;
 
-    @include mobile {
+    @include mixins.mobile {
       height: 36px;
     }
 
@@ -142,23 +142,23 @@
       justify-content: center;
       width: 100%;
       height: 40px;
-      background-color: $primary-color;
-      color: $white-color;
+      background-color: vars.$primary-color;
+      color: vars.$white-color;
       font-size: 14px;
       font-weight: 700;
-      font-family: $font-primary;
+      font-family: vars.$font-primary;
       text-decoration: none;
       border: none;
       transition: background-color 0.3s ease;
       cursor: pointer;
 
-      @include mobile {
+      @include mixins.mobile {
         height: 36px;
         font-size: 13px;
       }
 
       &:hover {
-        background-color: rgba($primary-color, 0.9);
+        background-color: rgba(vars.$primary-color, 0.9);
       }
 
       &:active {
@@ -175,19 +175,19 @@
       flex-shrink: 0;
       border: 1px solid #e2e6e9;
       text-decoration: none;
-      background-color: $white-color;
+      background-color: vars.$white-color;
       cursor: pointer;
       transition:
         border-color 0.3s ease,
         background-color 0.3s ease;
 
-      @include mobile {
+      @include mixins.mobile {
         width: 36px;
         height: 36px;
       }
 
       &:hover {
-        border-color: $primary-color;
+        border-color: vars.$primary-color;
         background-color: #fafbfc;
       }
 
@@ -200,7 +200,7 @@
         height: 16px;
         object-fit: contain;
 
-        @include mobile {
+        @include mixins.mobile {
           width: 14px;
           height: 14px;
         }

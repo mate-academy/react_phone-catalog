@@ -1,0 +1,63 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as *;
+
+.notFound {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: vars.$hover_bg-color;
+  font-family: vars.$font-primary;
+  padding: 24px;
+}
+
+.content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.image {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 32px;
+  opacity: 0.9;
+
+  @include mobile {
+    max-width: 240px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: vars.$primary-color;
+  margin-bottom: 12px;
+
+  @include mobile {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: vars.$secondary-color;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: vars.$primary-color;
+  color: vars.$white-color;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: vars.$primary-color;
+  }
+}

@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { routes } from '../../router/routes';
+import { useLocation } from 'react-router-dom';
+
+import FavoritesHurt from '../../UI/Buttons/Icons/FavouritesHurtAnactive.svg';
+import CartHurt from '../../UI/Buttons/Icons/CartHurt.svg';
+import { RootState } from '../../store/store';
+import { useSelector } from 'react-redux';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const toggleMenu = () => setIsOpen(prev => !prev);
+
+  const cart = useSelector((state: RootState) => state.cart.items);
+  const favorite = useSelector((state: RootState) => state.favorites.items);
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -19,6 +33,42 @@ const Header: React.FC = () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  const navItems = [
+    { label: 'HOME', path: routes.home },
+    { label: 'PHONES', path: routes.phones },
+    { label: 'TABLETS', path: routes.tablets },
+    { label: 'ACCESSORIES', path: routes.accessories },
+  ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setSearchValue(value);
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (value) {
+      params.set('query', value.toLowerCase());
+    } else {
+      params.delete('query');
+    }
+
+    navigate(
+      {
+        pathname: window.location.pathname,
+        search: value ? `?query=${value.toLowerCase()}` : '',
+      },
+      { replace: true },
+    );
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('query') || '';
+
+    setSearchValue(query);
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -35,54 +85,67 @@ const Header: React.FC = () => {
       {/* Desktop navigation */}
       <nav className={styles.header__nav_desktop}>
         <ul className={styles.header__nav_list}>
-          <li>
-            <NavLink
-              to={routes.home}
-              className={({ isActive }) => (isActive ? styles.active : '')}
-            >
-              HOME
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={routes.phones}
-              className={({ isActive }) => (isActive ? styles.active : '')}
-            >
-              PHONES
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={routes.tablets}
-              className={({ isActive }) => (isActive ? styles.active : '')}
-            >
-              TABLETS
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={routes.accessories}
-              className={({ isActive }) => (isActive ? styles.active : '')}
-            >
-              ACCESSORIES
-            </NavLink>
-          </li>
+          {navItems.map(item => (
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) => (isActive ? styles.active : '')}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
 
-      {/* Desktop cart */}
+      {/*Search Bar */}
+      {location.pathname.includes('catalog') ? (
+        <div className={styles.header__search_desktop}>
+          <input
+            type="search"
+            placeholder="Search"
+            value={searchValue}
+            className={styles.header__search_desktop_input}
+            onChange={e => handleChange(e)}
+          />
+        </div>
+      ) : null}
+
+      {/* Desktop cart & favorites */}
       <div className={styles.header__actions_desktop}>
-        <NavLink to={routes.favorites}>
-          <img src="../../../img/Favorites Hurt.png" alt="Favorites" />
+        <NavLink
+          to={routes.favorites}
+          className={({ isActive }) => (isActive ? styles.activeActions : '')}
+        >
+          <img
+            src={FavoritesHurt}
+            alt="Favorites"
+            className={styles.header__actions_desktop_img}
+          />
+          {favorite.length > 0 && (
+            <span className={styles.badge}>{favorite.length}</span>
+          )}
         </NavLink>
-        <NavLink to={routes.cart}>
-          <img src="../../../img/Shopping bag (Cart).png" alt="Cart" />
+        <NavLink
+          to={routes.cart}
+          className={({ isActive }) => (isActive ? styles.activeActions : '')}
+        >
+          <img
+            src={CartHurt}
+            alt="Cart"
+            className={styles.header__actions_desktop_img}
+          />
+          {cart.length > 0 && (
+            <span className={styles.badge}>{cart.length}</span>
+          )}
         </NavLink>
       </div>
 
       {/* Burger button */}
       <button
-        className={`${styles.header__burger} ${isOpen ? styles.header__burger_open : ''}`}
+        className={`${styles.header__burger} ${
+          isOpen ? styles.header__burger_open : ''
+        }`}
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
@@ -99,42 +162,17 @@ const Header: React.FC = () => {
       >
         <nav className={styles.header__nav_mobile}>
           <ul className={styles.header__nav_list_mobile}>
-            <li>
-              <NavLink
-                to={routes.home}
-                onClick={toggleMenu}
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                HOME
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={routes.phones}
-                onClick={toggleMenu}
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                PHONES
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={routes.tablets}
-                onClick={toggleMenu}
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                TABLETS
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={routes.accessories}
-                onClick={toggleMenu}
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                ACCESSORIES
-              </NavLink>
-            </li>
+            {navItems.map(item => (
+              <li key={item.path}>
+                <NavLink
+                  to={item.path}
+                  onClick={toggleMenu}
+                  className={({ isActive }) => (isActive ? styles.active : '')}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -145,14 +183,14 @@ const Header: React.FC = () => {
             onClick={toggleMenu}
             className={({ isActive }) => (isActive ? styles.activeActions : '')}
           >
-            <img src="../../../img/Favorites Hurt.png" alt="Favorites" />
+            <img src={FavoritesHurt} alt="Favorites" />
           </NavLink>
           <NavLink
             to="/cart"
             onClick={toggleMenu}
             className={({ isActive }) => (isActive ? styles.activeActions : '')}
           >
-            <img src="../../../img/Shopping bag (Cart).png" alt="Cart" />
+            <img src={CartHurt} alt="Cart" />
           </NavLink>
         </div>
       </div>

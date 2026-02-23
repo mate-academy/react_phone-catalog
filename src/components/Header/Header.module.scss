@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
 
 .header {
   display: flex;
@@ -10,9 +10,11 @@
   top: 0;
   background: #fff;
   box-shadow: 1px #e2e6e9;
-  border-bottom: 1px solid $secondary-color;
+  border-bottom: 1px solid vars.$secondary-color;
   padding: 0 16px;
   z-index: 100;
+
+  font-family: vars.$font-primary;
 
   &__logo {
     display: flex;
@@ -46,7 +48,7 @@
     span {
       display: block;
       height: 2px;
-      background: $primary-color;
+      background: vars.$primary-color;
       border-radius: 1px;
       transition: all 0.3s ease;
     }
@@ -79,7 +81,7 @@
 
       li a {
         text-decoration: none;
-        color: $secondary-color;
+        color: vars.$secondary-color;
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.04em;
@@ -95,14 +97,14 @@
           bottom: -1px;
           width: 100%;
           height: 3px;
-          background-color: $primary-color;
+          background-color: vars.$primary-color;
           transform: scaleX(0);
           transform-origin: center;
           transition: transform 0.3s ease;
         }
 
         &:hover {
-          color: $primary-color;
+          color: vars.$primary-color;
 
           &::after {
             transform: scaleX(1);
@@ -112,8 +114,36 @@
     }
   }
 
+  &__search_desktop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+
+    &_input {
+      width: 100%;
+      height: 40px;
+      border-radius: 6px;
+      border: 1px solid vars.$secondary-color;
+      padding: 0 16px;
+      color: vars.$secondary-color;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.3s ease;
+
+      &::placeholder {
+        color: vars.$secondary-color;
+      }
+
+      &:focus {
+        border: 1px solid vars.$primary-color;
+      }
+    }
+  }
+
   .active {
-    color: $primary-color !important;
+    color: vars.$primary-color !important;
 
     &::after {
       transform: scaleX(1) !important;
@@ -122,27 +152,41 @@
 
   &__actions_desktop {
     display: flex;
-    gap: 16px;
     margin-left: auto;
 
     a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-left: 1px solid #e2e6e9;
+      padding: 24px;
       transition: background-color 0.3s ease;
+      border-left: 1px solid vars.$secondary-color;
+      cursor: pointer;
 
-      img {
-        width: 16px;
-        height: 16px;
+      position: relative;
+      display: inline-block;
+
+      &_img {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
       }
     }
 
+    .badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #eb5757;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+    }
+
     .activeActions {
-      color: $primary-color !important;
-      border: 2px solid $primary-color;
+      color: vars.$primary-color !important;
+      border-bottom: 2px solid vars.$primary-color;
     }
   }
 
@@ -151,7 +195,7 @@
     position: fixed;
     inset: 55px 0 0;
     width: 100%;
-    background: $white-color;
+    background: vars.$white-color;
     z-index: 1001;
 
     opacity: 0;
@@ -183,7 +227,7 @@
 
       li a {
         text-decoration: none;
-        color: $secondary-color;
+        color: vars.$secondary-color;
         font-size: 22px;
         font-weight: 700;
         text-transform: uppercase;
@@ -206,7 +250,7 @@
     left: 0;
     width: 100%;
     display: flex;
-    background: $white-color;
+    background: vars.$white-color;
     justify-content: space-evenly;
 
     a {
@@ -230,7 +274,7 @@
     }
   }
 
-  @include mobile {
+  @include mixins.mobile {
     &__burger {
       display: flex;
     }

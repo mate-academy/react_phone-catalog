@@ -1,6 +1,16 @@
-import { Link } from 'react-router-dom';
+/* eslint-disable max-len */
+/* eslint-disable import/no-extraneous-dependencies */
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
 import type { ProductCardData } from '../../types/product.types';
+import type { RootState } from '../../store/store';
+import { addFavorite, removeFavorite } from '../../store/slices/favoritesSlice';
+
 import styles from './ProductCard.module.scss';
+import FavoritesHurt from '/img/FavoritesHurt.png';
+import FavoritesHurtActive from '../../UI/Buttons/Icons/FavoritesHurtActive.svg';
+import { addToCart } from '../../store/slices/cartSlice';
 
 type ProductCardProps = {
   product: ProductCardData;
@@ -11,11 +21,44 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   hotPrice = false,
 }) => {
-  // eslint-disable-next-line no-console
-  console.log(product);
+  const favorites = useSelector((state: RootState) => state.favorites.items);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleAddFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const favorite = { itemId: product.itemId, category: product.category };
+
+    if (favorites.find(item => item.itemId === product.itemId)) {
+      dispatch(removeFavorite(product.itemId));
+    } else {
+      dispatch(addFavorite(favorite));
+    }
+
+    e.stopPropagation();
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        itemId: product.itemId,
+        image: product.image,
+        category: product.category,
+        name: product.name,
+        price: product.fullPrice,
+        quantity: 1,
+      }),
+    );
+
+    navigate('/cart');
+  };
 
   return (
-    <Link to={`/product/${product.id}`} className={styles.card}>
+    <Link
+      to={`/product/${product.category}/${product.itemId}`}
+      className={styles.card}
+    >
       <img
         src={product.image}
         alt={product.name}
@@ -57,12 +100,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <button
           className={styles.card__btn_cart + ' ' + styles.card__btn_primary}
           type="button"
-          data-cy="add-to-cart"
           onClick={e => {
-            e.stopPropagation();
             e.preventDefault();
-            // eslint-disable-next-line no-console
-            console.log('Add to cart');
+            e.stopPropagation();
+            handleAddToCart();
           }}
         >
           Add to cart
@@ -73,17 +114,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           type="button"
           data-cy="favorite"
           onClick={e => {
-            e.stopPropagation();
-            e.preventDefault();
-            // eslint-disable-next-line no-console
-            console.log('Add to favorites');
+            handleAddFavorite(e);
           }}
         >
-          <img
-            src="/img/Favorites Hurt.png"
-            alt="favorite"
-            className={styles.card__btn_fav_img}
-          />
+          {favorites.some(item => item.itemId === product.itemId) ? (
+            <img
+              src={FavoritesHurtActive}
+              alt="favorite"
+              className={styles.card__btn_fav_img}
+            />
+          ) : (
+            <img
+              src={FavoritesHurt}
+              alt="favorite"
+              className={styles.card__btn_fav_img}
+            />
+          )}
         </button>
       </div>
     </Link>

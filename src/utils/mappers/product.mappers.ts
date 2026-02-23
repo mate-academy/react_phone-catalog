@@ -35,7 +35,7 @@ export const mapCatalogToCard = (
     capacity: product.capacity,
     color: product.color,
     ram: product.ram,
-    year: undefined,
+    year: 2000,
     image: formattedImage || '/img/placeholder.png',
   };
 };

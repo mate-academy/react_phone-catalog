@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
 
 .homePage {
   &__products {
@@ -10,11 +10,19 @@
     max-width: 1200px;
     width: 100%;
 
+    @include mixins.tablet {
+      margin: 64px 0 0 24px;
+    }
+
+    @include mixins.mobile {
+      margin: 56px 0 0 0;
+    }
+
     &_title {
       font-size: 32px;
-      font-family: $font-primary;
+      font-family: vars.$font-primary;
       font-weight: 800;
-      color: $primary-color;
+      color: vars.$primary-color;
     }
 
     &_header {
@@ -32,10 +40,11 @@
       &_button {
         width: 32px;
         height: 32px;
-        color: $primary-color;
+        color: vars.$primary-color;
         border: 1px solid #e2e6e9;
-        background-color: $white-color;
+        background-color: vars.$white-color;
         cursor: pointer;
+        transform: rotate(180);
 
         &_prev_disabled {
           opacity: 0.5;
@@ -50,16 +59,56 @@
 
   &__products_list {
     display: flex;
-    overflow-x: hidden;
     gap: 16px;
     flex-wrap: nowrap;
+
+    transition: transform 0.4s ease;
+
+    &_wrapper {
+      overflow: hidden;
+      width: 100%;
+
+      @include mixins.tablet {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      @include mixins.mobile {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    @include mixins.tablet {
+      scroll-snap-type: x mandatory;
+    }
+
+    @include mixins.mobile {
+      scroll-snap-type: x mandatory;
+    }
   }
 }
 
 .productSlide {
-  flex: 0 0 25%;
+  flex: 0 0 calc(100% / 4);
   box-sizing: border-box;
   animation: fade-in-slide 0.4s ease forwards;
+
+  @include mixins.tablet {
+    flex: 0 0 40%;
+    scroll-snap-align: start;
+  }
+
+  @include mixins.mobile {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+  }
+
+  &__card {
+    width: 100%;
+  }
 }
 
 @keyframes fade-in-slide {
@@ -70,11 +119,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@include mobile {
-  .productSlide {
-    flex: 0 0 50%;
   }
 }

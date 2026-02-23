@@ -1,0 +1,59 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    padding: 0 16px;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-family: vars.$font-primary;
+    font-weight: 800;
+    color: vars.$primary-color;
+    width: 100%;
+    text-align: left;
+
+    @include mixins.mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  &__card {
+    width: 100%;
+  }
+}

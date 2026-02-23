@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
 
 .homePage {
   display: flex;
@@ -13,27 +13,27 @@
   width: 100%;
   box-sizing: border-box;
 
-  @include tablet {
+  @include mixins.tablet {
     padding: 0 24px;
   }
 
-  @include mobile {
+  @include mixins.mobile {
     padding: 0 16px;
   }
 
   &__title {
     font-size: 48px;
-    font-family: $font-primary;
+    font-family: vars.$font-primary;
     font-weight: 800;
-    color: $primary-color;
+    color: vars.$primary-color;
     width: 100%;
     text-align: left;
 
-    @include tablet {
+    @include mixins.tablet {
       font-size: 40px;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       font-size: 32px;
     }
   }

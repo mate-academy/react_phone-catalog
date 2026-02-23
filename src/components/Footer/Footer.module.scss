@@ -1,17 +1,17 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
 
 .footer {
   width: 100%;
   margin-top: 64px;
-  border-top: 1px solid $icons-color;
-  background-color: $white-color;
+  border-top: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
 
-  @include tablet {
+  @include mixins.tablet {
     margin-top: 48px;
   }
 
-  @include mobile {
+  @include mixins.mobile {
     margin-top: 40px;
   }
 
@@ -20,11 +20,11 @@
     margin: 0 auto;
     padding: 0 16px;
 
-    @include tablet {
+    @include mixins.tablet {
       padding: 0 24px;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       padding: 0 16px;
     }
   }
@@ -36,14 +36,14 @@
     padding: 32px 0;
     gap: 24px;
 
-    @include tablet {
+    @include mixins.tablet {
       flex-direction: column;
       align-items: flex-start;
       padding: 24px 0;
       gap: 32px;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       flex-direction: column;
       align-items: flex-start;
       padding: 20px 0;
@@ -54,7 +54,7 @@
   &__logo {
     flex-shrink: 0;
 
-    @include mobile {
+    @include mixins.mobile {
       width: 100%;
     }
 
@@ -63,7 +63,7 @@
       width: auto;
       display: block;
 
-      @include mobile {
+      @include mixins.mobile {
         height: 28px;
       }
     }
@@ -79,12 +79,12 @@
     display: flex;
     justify-content: center;
 
-    @include tablet {
+    @include mixins.tablet {
       width: 100%;
       justify-content: flex-start;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       width: 100%;
       justify-content: flex-start;
     }
@@ -96,12 +96,12 @@
       margin: 0;
       padding: 0;
 
-      @include tablet {
+      @include mixins.tablet {
         flex-direction: column;
         gap: 16px;
       }
 
-      @include mobile {
+      @include mixins.mobile {
         flex-direction: column;
         gap: 16px;
         width: 100%;
@@ -111,16 +111,16 @@
     &_item {
       margin: 0;
 
-      @include mobile {
+      @include mixins.mobile {
         width: 100%;
       }
     }
 
     &_link {
       font-size: 12px;
-      font-family: $font-primary;
+      font-family: vars.$font-primary;
       font-weight: 800;
-      color: $secondary-color;
+      color: vars.$secondary-color;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -128,14 +128,14 @@
       display: block;
 
       &:hover {
-        color: $primary-color;
+        color: vars.$primary-color;
       }
 
       &:active {
-        color: $primary-color;
+        color: vars.$primary-color;
       }
 
-      @include mobile {
+      @include mixins.mobile {
         font-size: 12px;
         padding: 4px 0;
       }
@@ -152,25 +152,24 @@
     padding: 0;
     transition: all 0.3s ease;
 
-    @include tablet {
+    @include mixins.tablet {
       width: 100%;
       justify-content: space-between;
       padding-top: 16px;
-      border-top: 1px solid $icons-color;
+      border-top: 1px solid vars.$icons-color;
     }
 
-    @include mobile {
+    @include mixins.mobile {
       width: 100%;
       justify-content: center;
       padding-top: 16px;
-      border-top: 1px solid $icons-color;
     }
 
     &_text {
       font-size: 12px;
-      font-family: $font-primary;
+      font-family: vars.$font-primary;
       font-weight: 700;
-      color: $secondary-color;
+      color: vars.$secondary-color;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       transition: color 0.3s ease;
@@ -183,7 +182,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid $icons-color;
+      border: 1px solid vars.$icons-color;
       border-radius: 4px;
       background: white;
       transition: all 0.3s ease;
@@ -200,12 +199,12 @@
 
     &:hover {
       .footer__back_text {
-        color: $primary-color;
+        color: vars.$primary-color;
       }
 
       .footer__back_icon {
-        border-color: $primary-color;
-        background: $primary-color;
+        border-color: vars.$primary-color;
+        background: vars.$primary-color;
 
         img {
           filter: brightness(0) invert(1);
