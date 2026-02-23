@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { useState } from 'react';
 import styles from './ProductPage.module.scss';
-import { Header } from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductSlider } from '../../../components/ProductSlider';
 import { WishlistButton } from '../../../components/WishlistButton';
+import { useProducts } from '../../../hooks/use-products';
+import { Loader } from '../../../components/Loader';
 
 // TODO: fetch real product by useParams() category + productId
 const PRODUCT = {
@@ -123,6 +123,16 @@ const RELATED = [
 ];
 
 export const ProductPage = () => {
+  const { products, loading, error } = useProducts;
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   // TODO: replace with useParams and fetch
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(PRODUCT.colors[0].name);
@@ -132,154 +142,148 @@ export const ProductPage = () => {
 
   return (
     <>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles.container}>
-          <Breadcrumbs
-            items={[
-              { label: PRODUCT.categoryLabel, to: `/${PRODUCT.category}` },
-              { label: PRODUCT.name },
-            ]}
-          />
+      <Breadcrumbs
+        items={[
+          { label: PRODUCT.categoryLabel, to: `/${PRODUCT.category}` },
+          { label: PRODUCT.name },
+        ]}
+      />
 
-          <Link to={`/${PRODUCT.category}`} className={styles.back}>
-            <i className="fas fa-chevron-left" />
-            Back
-          </Link>
+      <Link to={`/${PRODUCT.category}`} className={styles.back}>
+        <i className="fas fa-chevron-left" />
+        Back
+      </Link>
 
-          <h1 className={styles.title}>{PRODUCT.name}</h1>
+      <h1 className={styles.title}>{PRODUCT.name}</h1>
 
-          <div className={styles.product}>
-            {/* Gallery */}
-            <div className={styles.gallery}>
-              <div className={styles.thumbnails}>
-                {PRODUCT.images.map((img, i) => (
-                  <button
-                    key={img}
-                    type="button"
-                    className={cn(styles.thumbnail, {
-                      [styles.thumbnailActive]: i === selectedImage,
-                    })}
-                    onClick={() => setSelectedImage(i)}
-                    aria-label={`View image ${i + 1}`}
-                  >
-                    <img src={img} alt={`${PRODUCT.name} view ${i + 1}`} />
-                  </button>
-                ))}
-              </div>
-
-              <div className={styles.mainImage}>
-                <img src={PRODUCT.images[selectedImage]} alt={PRODUCT.name} />
-              </div>
-            </div>
-
-            {/* Info panel */}
-            <div className={styles.info}>
-              <div className={styles.infoSection}>
-                <p className={styles.infoLabel}>Available colors</p>
-                <div className={styles.colors}>
-                  {PRODUCT.colors.map(color => (
-                    <button
-                      key={color.name}
-                      type="button"
-                      className={cn(styles.colorBtn, {
-                        [styles.colorBtnActive]: color.name === selectedColor,
-                      })}
-                      onClick={() => setSelectedColor(color.name)}
-                      aria-label={color.name}
-                    >
-                      <span
-                        className={styles.colorDot}
-                        style={{ backgroundColor: color.hex }}
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <hr className={styles.divider} />
-
-              <div className={styles.infoSection}>
-                <p className={styles.infoLabel}>Select capacity</p>
-                <div className={styles.capacities}>
-                  {PRODUCT.capacities.map(cap => (
-                    <button
-                      key={cap}
-                      type="button"
-                      className={cn(styles.capacityBtn, {
-                        [styles.capacityBtnActive]: cap === selectedCapacity,
-                      })}
-                      onClick={() => setSelectedCapacity(cap)}
-                    >
-                      {cap}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <hr className={styles.divider} />
-
-              <div className={styles.priceRow}>
-                <span className={styles.price}>${PRODUCT.price}</span>
-                <span className={styles.fullPrice}>${PRODUCT.fullPrice}</span>
-              </div>
-
-              <div className={styles.ctaRow}>
-                <button type="button" className={styles.addToCart}>
-                  Add to cart
-                </button>
-                <WishlistButton />
-              </div>
-
-              <ul className={styles.shortSpecs}>
-                {(
-                  [
-                    ['Screen', PRODUCT.screen],
-                    ['Resolution', PRODUCT.resolution],
-                    ['Processor', PRODUCT.processor],
-                    ['RAM', PRODUCT.ram],
-                  ] as [string, string][]
-                ).map(([label, value]) => (
-                  <li key={label} className={styles.shortSpecRow}>
-                    <span className={styles.shortSpecLabel}>{label}</span>
-                    <span className={styles.shortSpecValue}>{value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className={styles.product}>
+        {/* Gallery */}
+        <div className={styles.gallery}>
+          <div className={styles.thumbnails}>
+            {PRODUCT.images.map((img, i) => (
+              <button
+                key={img}
+                type="button"
+                className={cn(styles.thumbnail, {
+                  [styles.thumbnailActive]: i === selectedImage,
+                })}
+                onClick={() => setSelectedImage(i)}
+                aria-label={`View image ${i + 1}`}
+              >
+                <img src={img} alt={`${PRODUCT.name} view ${i + 1}`} />
+              </button>
+            ))}
           </div>
 
-          {/* About + Tech specs */}
-          <div className={styles.details}>
-            <div className={styles.about}>
-              <h2 className={styles.sectionTitle}>About</h2>
-              <hr className={styles.sectionDivider} />
-              {PRODUCT.about.map(section => (
-                <div key={section.title} className={styles.aboutSection}>
-                  <h3 className={styles.aboutTitle}>{section.title}</h3>
-                  <p className={styles.aboutText}>{section.text}</p>
-                </div>
+          <div className={styles.mainImage}>
+            <img src={PRODUCT.images[selectedImage]} alt={PRODUCT.name} />
+          </div>
+        </div>
+
+        {/* Info panel */}
+        <div className={styles.info}>
+          <div className={styles.infoSection}>
+            <p className={styles.infoLabel}>Available colors</p>
+            <div className={styles.colors}>
+              {PRODUCT.colors.map(color => (
+                <button
+                  key={color.name}
+                  type="button"
+                  className={cn(styles.colorBtn, {
+                    [styles.colorBtnActive]: color.name === selectedColor,
+                  })}
+                  onClick={() => setSelectedColor(color.name)}
+                  aria-label={color.name}
+                >
+                  <span
+                    className={styles.colorDot}
+                    style={{ backgroundColor: color.hex }}
+                  />
+                </button>
               ))}
             </div>
+          </div>
 
-            <div className={styles.techSpecs}>
-              <h2 className={styles.sectionTitle}>Tech specs</h2>
-              <hr className={styles.sectionDivider} />
-              <ul className={styles.specsList}>
-                {Object.entries(PRODUCT.techSpecs).map(([key, val]) => (
-                  <li key={key} className={styles.techSpecRow}>
-                    <span className={styles.techSpecLabel}>{key}</span>
-                    <span className={styles.techSpecValue}>{val}</span>
-                  </li>
-                ))}
-              </ul>
+          <hr className={styles.divider} />
+
+          <div className={styles.infoSection}>
+            <p className={styles.infoLabel}>Select capacity</p>
+            <div className={styles.capacities}>
+              {PRODUCT.capacities.map(cap => (
+                <button
+                  key={cap}
+                  type="button"
+                  className={cn(styles.capacityBtn, {
+                    [styles.capacityBtnActive]: cap === selectedCapacity,
+                  })}
+                  onClick={() => setSelectedCapacity(cap)}
+                >
+                  {cap}
+                </button>
+              ))}
             </div>
           </div>
 
-          <ProductSlider title="You may also like" products={RELATED} />
+          <hr className={styles.divider} />
+
+          <div className={styles.priceRow}>
+            <span className={styles.price}>${PRODUCT.price}</span>
+            <span className={styles.fullPrice}>${PRODUCT.fullPrice}</span>
+          </div>
+
+          <div className={styles.ctaRow}>
+            <button type="button" className={styles.addToCart}>
+              Add to cart
+            </button>
+            <WishlistButton />
+          </div>
+
+          <ul className={styles.shortSpecs}>
+            {(
+              [
+                ['Screen', PRODUCT.screen],
+                ['Resolution', PRODUCT.resolution],
+                ['Processor', PRODUCT.processor],
+                ['RAM', PRODUCT.ram],
+              ] as [string, string][]
+            ).map(([label, value]) => (
+              <li key={label} className={styles.shortSpecRow}>
+                <span className={styles.shortSpecLabel}>{label}</span>
+                <span className={styles.shortSpecValue}>{value}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </main>
-      <Footer />
+      </div>
+
+      {/* About + Tech specs */}
+      <div className={styles.details}>
+        <div className={styles.about}>
+          <h2 className={styles.sectionTitle}>About</h2>
+          <hr className={styles.sectionDivider} />
+          {PRODUCT.about.map(section => (
+            <div key={section.title} className={styles.aboutSection}>
+              <h3 className={styles.aboutTitle}>{section.title}</h3>
+              <p className={styles.aboutText}>{section.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.techSpecs}>
+          <h2 className={styles.sectionTitle}>Tech specs</h2>
+          <hr className={styles.sectionDivider} />
+          <ul className={styles.specsList}>
+            {Object.entries(PRODUCT.techSpecs).map(([key, val]) => (
+              <li key={key} className={styles.techSpecRow}>
+                <span className={styles.techSpecLabel}>{key}</span>
+                <span className={styles.techSpecValue}>{val}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <ProductSlider title="You may also like" products={RELATED} />
     </>
   );
 };

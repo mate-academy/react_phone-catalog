@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './CartPage.module.scss';
-import { Header } from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
+import { Loader } from '../../../components/Loader';
+import { useProducts } from '../../../hooks/use-products';
+import { useAppContext } from '../../../hooks/use-context';
 
 interface CartItem {
   id: number;
@@ -39,7 +40,9 @@ const INITIAL_CART: CartItem[] = [
 ];
 
 export const CartPage = () => {
-  // TODO: move to context
+  const { products, loading, error } = useProducts();
+  const { cartIds, addToCart, deleteFromCart } = useAppContext();
+
   const [cart, setCart] = useState<CartItem[]>(INITIAL_CART);
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -57,98 +60,100 @@ export const CartPage = () => {
         .filter(item => item.quantity > 0),
     );
 
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles.container}>
-          <Link to="/" className={styles.back}>
-            <i className="fas fa-chevron-left" />
-            Back
-          </Link>
+      <Link to="/" className={styles.back}>
+        <i className="fas fa-chevron-left" />
+        Back
+      </Link>
 
-          <h1 className={styles.title}>Cart</h1>
+      <h1 className={styles.title}>Cart</h1>
 
-          {cart.length === 0 ? (
-            <div className={styles.empty}>
-              <img
-                src="img/cart-is-empty.png"
-                alt="Cart is empty"
-                className={styles.emptyImage}
-              />
-              <p className={styles.emptyText}>Your cart is empty</p>
-            </div>
-          ) : (
-            <div className={styles.content}>
-              <div className={styles.items}>
-                {cart.map(item => (
-                  <div key={item.id} className={styles.item}>
+      {cart.length === 0 ? (
+        <div className={styles.empty}>
+          <img
+            src="img/cart-is-empty.png"
+            alt="Cart is empty"
+            className={styles.emptyImage}
+          />
+          <p className={styles.emptyText}>Your cart is empty</p>
+        </div>
+      ) : (
+        <div className={styles.content}>
+          <div className={styles.items}>
+            {cart.map(item => (
+              <div key={item.id} className={styles.item}>
+                <button
+                  type="button"
+                  className={styles.removeBtn}
+                  onClick={() => handleRemove(item.id)}
+                  aria-label="Remove from cart"
+                >
+                  <i className="fas fa-xmark" />
+                </button>
+
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className={styles.itemImage}
+                />
+
+                <p className={styles.itemName}>{item.name}</p>
+
+                <div className={styles.quantityRow}>
+                  <div className={styles.quantity}>
                     <button
                       type="button"
-                      className={styles.removeBtn}
-                      onClick={() => handleRemove(item.id)}
-                      aria-label="Remove from cart"
+                      className={cn(styles.quantityBtn, {
+                        [styles.quantityBtnDisabled]: item.quantity <= 1,
+                      })}
+                      onClick={() => handleQuantity(item.id, -1)}
+                      disabled={item.quantity <= 1}
+                      aria-label="Decrease quantity"
                     >
-                      <i className="fas fa-xmark" />
+                      <i className="fas fa-minus" />
                     </button>
-
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className={styles.itemImage}
-                    />
-
-                    <p className={styles.itemName}>{item.name}</p>
-
-                    <div className={styles.quantityRow}>
-                      <div className={styles.quantity}>
-                        <button
-                          type="button"
-                          className={cn(styles.quantityBtn, {
-                            [styles.quantityBtnDisabled]: item.quantity <= 1,
-                          })}
-                          onClick={() => handleQuantity(item.id, -1)}
-                          disabled={item.quantity <= 1}
-                          aria-label="Decrease quantity"
-                        >
-                          <i className="fas fa-minus" />
-                        </button>
-                        <span className={styles.quantityCount}>
-                          {item.quantity}
-                        </span>
-                        <button
-                          type="button"
-                          className={styles.quantityBtn}
-                          onClick={() => handleQuantity(item.id, 1)}
-                          aria-label="Increase quantity"
-                        >
-                          <i className="fas fa-plus" />
-                        </button>
-                      </div>
-
-                      <span className={styles.itemPrice}>
-                        ${item.price * item.quantity}
-                      </span>
-                    </div>
+                    <span className={styles.quantityCount}>
+                      {item.quantity}
+                    </span>
+                    <button
+                      type="button"
+                      className={styles.quantityBtn}
+                      onClick={() => handleQuantity(item.id, 1)}
+                      aria-label="Increase quantity"
+                    >
+                      <i className="fas fa-plus" />
+                    </button>
                   </div>
-                ))}
-              </div>
 
-              <div className={styles.summary}>
-                <p className={styles.totalPrice}>${total}</p>
-                <p className={styles.totalLabel}>
-                  Total for {totalCount} {totalCount === 1 ? 'item' : 'items'}
-                </p>
-                <hr className={styles.summaryDivider} />
-                <button type="button" className={styles.checkoutBtn}>
-                  Checkout
-                </button>
+                  <span className={styles.itemPrice}>
+                    ${item.price * item.quantity}
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
+            ))}
+          </div>
+
+          <div className={styles.summary}>
+            <p className={styles.totalPrice}>${total}</p>
+            <p className={styles.totalLabel}>
+              Total for {totalCount} {totalCount === 1 ? 'item' : 'items'}
+            </p>
+            <hr className={styles.summaryDivider} />
+            <button type="button" className={styles.checkoutBtn}>
+              Checkout
+            </button>
+          </div>
         </div>
-      </main>
-      <Footer />
+      )}
     </>
   );
 };

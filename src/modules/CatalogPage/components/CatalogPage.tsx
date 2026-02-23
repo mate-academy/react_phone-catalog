@@ -1,6 +1,3 @@
-import styles from './CatalogPage.module.scss';
-import { Header } from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductsList } from '../../../components/ProductsList';
 import { useProducts } from '../../../hooks/use-products';
@@ -71,24 +68,18 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
 
   return (
     <>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles.container}>
-          <Breadcrumbs items={[{ label: title, to: `/${category}` }]} />
-          <ProductsList
-            title={title}
-            products={Products}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            sortBy={sortBy}
-            perPage={perPage}
-            onSortChange={sortHandler}
-            onPerPageChange={perPageHandler}
-            onPageChange={pageHandler}
-          />
-        </div>
-      </main>
-      <Footer />
+      <Breadcrumbs items={[{ label: title, to: `/${category}` }]} />
+      <ProductsList
+        title={title}
+        products={Products}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        sortBy={sortBy}
+        perPage={perPage}
+        onSortChange={sortHandler}
+        onPerPageChange={perPageHandler}
+        onPageChange={pageHandler}
+      />
     </>
   );
 };

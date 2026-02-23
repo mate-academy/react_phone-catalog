@@ -1,4 +1,4 @@
-import { BaseProduct } from '../../types';
+import { BaseProduct } from '../types';
 
 export function PerPage(
   products: BaseProduct[],
