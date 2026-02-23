@@ -9,6 +9,21 @@
   display: flex;
   flex-direction: column;
 
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s linear,
+    visibility 0.4s;
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
   @include respond-to('tablet') {
     display: none;
   }

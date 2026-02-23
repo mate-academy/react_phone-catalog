@@ -59,6 +59,12 @@
     display: block;
     color: $lt-secondary;
     text-decoration: none;
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: $lt-primary;
+    }
   }
 
   &__backButton {
@@ -75,6 +81,7 @@
     padding: 0;
     gap: 16px;
     height: auto;
+    @include hover-image-scale;
 
     @include respond-to('tablet') {
       margin: 0;
@@ -85,6 +92,12 @@
     @include small-text;
 
     color: $lt-secondary;
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: $lt-primary;
+    }
   }
 
   &__backIcon {

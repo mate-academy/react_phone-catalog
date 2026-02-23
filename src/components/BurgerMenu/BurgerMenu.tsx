@@ -7,11 +7,16 @@ import styles from './BurgerMenu.module.scss';
 
 interface BurgerMenuProps {
   onClose: () => void;
+  isOpen: boolean;
 }
 
-export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose }) => {
+export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose, isOpen }) => {
   return (
-    <div className={styles.burger}>
+    <div
+      className={[styles.burger, isOpen ? styles['burger--open'] : ''].join(
+        ' ',
+      )}
+    >
       <div className={styles.burger__content}>
         <Nav
           className={styles.burger__nav}

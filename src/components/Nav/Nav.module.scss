@@ -30,10 +30,16 @@
     @include respond-to('desktop') {
       height: 64px;
     }
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
     &:global(.active) {
       color: $lt-primary;
       border-bottom: 3px solid $lt-primary;
+    }
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: $lt-primary;
     }
   }
 }

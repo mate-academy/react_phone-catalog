@@ -4,6 +4,9 @@
 
 .header {
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   &__top {
     display: flex;
@@ -35,6 +38,8 @@
     @include respond-to('desktop') {
       padding-left: 32px;
     }
+
+    @include hover-image-scale;
   }
 
   &__nav {
@@ -73,7 +78,7 @@
     @include respond-to('desktop') {
       width: 64px;
     }
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
     &:global(.active) {
       border-bottom: 3px solid $lt-primary;
     }

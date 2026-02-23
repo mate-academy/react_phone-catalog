@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
           </button>
         </div>
       </header>
-      {isMenuOpen && <BurgerMenu onClose={closeMenu} />}
+      <BurgerMenu isOpen={isMenuOpen} onClose={closeMenu} />
     </>
   );
 };
