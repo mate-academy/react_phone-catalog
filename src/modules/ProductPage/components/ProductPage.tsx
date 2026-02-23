@@ -1,76 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import cn from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ProductPage.module.scss';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductSlider } from '../../../components/ProductSlider';
 import { WishlistButton } from '../../../components/WishlistButton';
 import { useProducts } from '../../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
+import { useAppContext } from '../../../hooks/use-context';
+import { DetailedProduct } from '../../../types';
 
 // TODO: fetch real product by useParams() category + productId
-const PRODUCT = {
-  category: 'phones',
-  categoryLabel: 'Phones',
-  name: 'Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)',
-  images: [
-    'img/phones/apple-iphone-11-pro-max/gold/00.webp',
-    'img/phones/apple-iphone-11-pro-max/gold/01.webp',
-    'img/phones/apple-iphone-11-pro-max/gold/02.webp',
-    'img/phones/apple-iphone-11-pro-max/spacegray/00.webp',
-  ],
-  price: 799,
-  fullPrice: 1099,
-  colors: [
-    { name: 'gold', hex: '#C9A84C' },
-    { name: 'spacegray', hex: '#4A4A4A' },
-    { name: 'silver', hex: '#C0C0C0' },
-    { name: 'midnightgreen', hex: '#4B5F5A' },
-  ],
-  capacities: ['64 GB', '128 GB', '256 GB'],
-  screen: "6.5' OLED",
-  resolution: '2688 × 1242',
-  processor: 'Apple A13 Bionic',
-  ram: '4 GB',
-  about: [
-    {
-      title: 'And then there was Pro',
-      text: 'A transformative triple-camera system that adds tons of\
-       capability without any sacrifice. Night mode, Portrait mode,\
-        and next-generation Smart HDR. The most advanced chip ever \
-        in a smartphone.All of these features in the most durable \
-        smartphone glass ever, in two new colours.',
-    },
-    {
-      title: 'Camera',
-      text: "Meet the first triple-camera system to combine four optical\
-       image stabilisation systems in one iPhone. Capture up to four times\
-        more scene. Get beautiful images in drastically lower light. Shoot\
-         the highest-quality video in a smartphone — then edit with the same\
-          tools you love for photos. You've never shot with anything like it.",
-    },
-    {
-      title:
-        'Shoot it. Flip it. Zoom it. Crop it. Cut it. \
-        Light it. Tweak it. Love it.',
-      text: "iPhone 11 Pro lets you capture videos and photos \
-      with beautiful bokeh and Target Depth Control. Get more creative \
-      with powerful new editing tools in the Photos app. And at 4K 60 fps,\
-       it's the highest quality video in a smartphone.",
-    },
-  ],
-  techSpecs: {
-    Screen: "6.5' OLED",
-    Resolution: '2688 × 1242',
-    Processor: 'Apple A13 Bionic',
-    RAM: '4 GB',
-    'Built in memory': '64 GB',
-    Camera: '12 Mp + 12 Mp + 12 Mp (ToF)',
-    Zoom: 'Optical, 2x + Digital, 10x',
-    Cell: 'GSM, LTE, UMTS',
-  },
-};
-
 const RELATED = [
   {
     id: 1,
@@ -123,7 +63,50 @@ const RELATED = [
 ];
 
 export const ProductPage = () => {
-  const { products, loading, error } = useProducts;
+  const { cartIds, addToCart, wishlistIds, toggleWishlist } = useAppContext();
+  const { products, loading, error } = useProducts();
+  const { category, productId } = useParams();
+
+  const productUrl = new URL(
+    `api/${category}.json`,
+    window.location.origin + import.meta.env.BASE_URL,
+  ).toString();
+
+  const [detailProduct, setDetailProduct] = useState<DetailedProduct | null>(
+    null,
+  );
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(detailProduct?.color);
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    detailProduct?.capacity,
+  );
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(productUrl, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+
+        return res.json();
+      })
+      .then(data => {
+        const found = data.find(
+          (item: DetailedProduct) => item.id === productId,
+        );
+
+        setDetailProduct(found);
+        setSelectedColor(found.color);
+        setSelectedCapacity(found.capacity);
+      });
+
+    return () => controller.abort();
+  }, [productId]);
+
+  const isLiked = wishlistIds.includes(detailProduct?.id);
+  const isInCart = cartIds.includes(detailProduct?.id);
 
   if (loading) {
     return <Loader />;
@@ -133,75 +116,84 @@ export const ProductPage = () => {
     return <div>{error}</div>;
   }
 
-  // TODO: replace with useParams and fetch
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(PRODUCT.colors[0].name);
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    PRODUCT.capacities[0],
-  );
+  if (!detailProduct) {
+    return <div>Product was not found</div>;
+  }
 
   return (
     <>
       <Breadcrumbs
         items={[
-          { label: PRODUCT.categoryLabel, to: `/${PRODUCT.category}` },
-          { label: PRODUCT.name },
+          { label: detailProduct.category, to: `/${detailProduct.category}` },
+          { label: detailProduct.name },
         ]}
       />
 
-      <Link to={`/${PRODUCT.category}`} className={styles.back}>
+      <Link to={`/${detailProduct.category}`} className={styles.back}>
         <i className="fas fa-chevron-left" />
         Back
       </Link>
 
-      <h1 className={styles.title}>{PRODUCT.name}</h1>
+      <h1 className={styles.title}>{detailProduct.name}</h1>
 
       <div className={styles.product}>
         {/* Gallery */}
         <div className={styles.gallery}>
           <div className={styles.thumbnails}>
-            {PRODUCT.images.map((img, i) => (
-              <button
-                key={img}
-                type="button"
-                className={cn(styles.thumbnail, {
-                  [styles.thumbnailActive]: i === selectedImage,
-                })}
-                onClick={() => setSelectedImage(i)}
-                aria-label={`View image ${i + 1}`}
-              >
-                <img src={img} alt={`${PRODUCT.name} view ${i + 1}`} />
-              </button>
-            ))}
+            {detailProduct.images.map((img, i) => {
+              return (
+                <button
+                  key={img}
+                  type="button"
+                  className={cn(styles.thumbnail, {
+                    [styles.thumbnailActive]: i === selectedImage,
+                  })}
+                  onClick={() => setSelectedImage(i)}
+                  aria-label={`View image ${i + 1}`}
+                >
+                  <img src={img} alt={`${detailProduct.name} view ${i + 1}`} />
+                </button>
+              );
+            })}
           </div>
 
           <div className={styles.mainImage}>
-            <img src={PRODUCT.images[selectedImage]} alt={PRODUCT.name} />
+            <img
+              src={detailProduct.images[selectedImage]}
+              alt={detailProduct.name}
+            />
           </div>
         </div>
 
         {/* Info panel */}
         <div className={styles.info}>
           <div className={styles.infoSection}>
-            <p className={styles.infoLabel}>Available colors</p>
-            <div className={styles.colors}>
-              {PRODUCT.colors.map(color => (
-                <button
-                  key={color.name}
-                  type="button"
-                  className={cn(styles.colorBtn, {
-                    [styles.colorBtnActive]: color.name === selectedColor,
-                  })}
-                  onClick={() => setSelectedColor(color.name)}
-                  aria-label={color.name}
-                >
-                  <span
-                    className={styles.colorDot}
-                    style={{ backgroundColor: color.hex }}
-                  />
-                </button>
-              ))}
+            <div>
+              <p className={styles.infoLabel}>Available colors</p>
+              <div className={styles.colors}>
+                {detailProduct.colorsAvailable.map(color => (
+                  <button
+                    key={color}
+                    type="button"
+                    className={cn(styles.colorBtn, {
+                      [styles.colorBtnActive]: color === selectedColor,
+                    })}
+                    onClick={() => setSelectedColor(color)}
+                    aria-label={color}
+                  >
+                    <span
+                      className={styles.colorDot}
+                      style={{ backgroundColor: color }}
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
+
+            <p class={styles.productId}>
+              ID:
+              {products.find(item => item.itemId === detailProduct.id)?.id}
+            </p>
           </div>
 
           <hr className={styles.divider} />
@@ -209,49 +201,68 @@ export const ProductPage = () => {
           <div className={styles.infoSection}>
             <p className={styles.infoLabel}>Select capacity</p>
             <div className={styles.capacities}>
-              {PRODUCT.capacities.map(cap => (
-                <button
-                  key={cap}
-                  type="button"
-                  className={cn(styles.capacityBtn, {
-                    [styles.capacityBtnActive]: cap === selectedCapacity,
-                  })}
-                  onClick={() => setSelectedCapacity(cap)}
-                >
-                  {cap}
-                </button>
-              ))}
+              {detailProduct.capacityAvailable.map(cap => {
+                return (
+                  <button
+                    key={cap}
+                    type="button"
+                    className={cn(styles.capacityBtn, {
+                      [styles.capacityBtnActive]: cap === selectedCapacity,
+                    })}
+                    onClick={() => setSelectedCapacity(cap)}
+                  >
+                    {cap}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           <hr className={styles.divider} />
 
           <div className={styles.priceRow}>
-            <span className={styles.price}>${PRODUCT.price}</span>
-            <span className={styles.fullPrice}>${PRODUCT.fullPrice}</span>
+            <span className={styles.price}>${detailProduct.priceDiscount}</span>
+            <span className={styles.fullPrice}>
+              ${detailProduct.priceRegular}
+            </span>
           </div>
 
           <div className={styles.ctaRow}>
-            <button type="button" className={styles.addToCart}>
-              Add to cart
+            <button
+              type="button"
+              className={cn(styles.addToCart, {
+                [styles.addedToCart]: isInCart,
+              })}
+              onClick={() => {
+                addToCart(detailProduct.id);
+              }}
+            >
+              {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
-            <WishlistButton />
+            <WishlistButton
+              productId={detailProduct.id}
+              isLiked={isLiked}
+              toggleWishlist={toggleWishlist}
+            />
           </div>
 
           <ul className={styles.shortSpecs}>
             {(
               [
-                ['Screen', PRODUCT.screen],
-                ['Resolution', PRODUCT.resolution],
-                ['Processor', PRODUCT.processor],
-                ['RAM', PRODUCT.ram],
+                ['Screen', detailProduct.screen],
+                ['Resolution', detailProduct.resolution],
+                ['Processor', detailProduct.processor],
+                ['RAM', detailProduct.ram],
               ] as [string, string][]
-            ).map(([label, value]) => (
-              <li key={label} className={styles.shortSpecRow}>
-                <span className={styles.shortSpecLabel}>{label}</span>
-                <span className={styles.shortSpecValue}>{value}</span>
-              </li>
-            ))}
+            ).map(
+              ([label, value]) =>
+                value && (
+                  <li key={label} className={styles.shortSpecRow}>
+                    <span className={styles.shortSpecLabel}>{label}</span>
+                    <span className={styles.shortSpecValue}>{value}</span>
+                  </li>
+                ),
+            )}
           </ul>
         </div>
       </div>
@@ -261,7 +272,7 @@ export const ProductPage = () => {
         <div className={styles.about}>
           <h2 className={styles.sectionTitle}>About</h2>
           <hr className={styles.sectionDivider} />
-          {PRODUCT.about.map(section => (
+          {detailProduct.description.map(section => (
             <div key={section.title} className={styles.aboutSection}>
               <h3 className={styles.aboutTitle}>{section.title}</h3>
               <p className={styles.aboutText}>{section.text}</p>
@@ -273,12 +284,25 @@ export const ProductPage = () => {
           <h2 className={styles.sectionTitle}>Tech specs</h2>
           <hr className={styles.sectionDivider} />
           <ul className={styles.specsList}>
-            {Object.entries(PRODUCT.techSpecs).map(([key, val]) => (
-              <li key={key} className={styles.techSpecRow}>
-                <span className={styles.techSpecLabel}>{key}</span>
-                <span className={styles.techSpecValue}>{val}</span>
-              </li>
-            ))}
+            {(
+              [
+                ['Screen', detailProduct.screen],
+                ['Resolution', detailProduct.resolution],
+                ['Processor', detailProduct.processor],
+                ['RAM', detailProduct.ram],
+                ['Camera', detailProduct.camera],
+                ['Zoom', detailProduct.zoom],
+                ['Cell', detailProduct.cell],
+              ] as [string, string][]
+            ).map(
+              ([label, value]) =>
+                value && (
+                  <li key={label} className={styles.techSpecRow}>
+                    <span className={styles.techSpecLabel}>{label}</span>
+                    <span className={styles.techSpecValue}>{value}</span>
+                  </li>
+                ),
+            )}
           </ul>
         </div>
       </div>

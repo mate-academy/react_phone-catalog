@@ -126,7 +126,7 @@
 /* Info panel */
 .info {
   padding-left: 16px;
-  border-left: 1px solid var(--color-elements);
+    max-width: 320px;
 
   @media (max-width: 639px) {
     padding-left: 0;
@@ -136,6 +136,13 @@
 
 .infoSection {
   margin-bottom: 16px;
+
+  &:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
 }
 
 .infoLabel {
@@ -143,7 +150,6 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--color-secondary);
-  text-transform: uppercase;
   margin-bottom: 8px;
 }
 
@@ -171,6 +177,13 @@
 
 .colorBtnActive {
   outline-color: var(--color-primary);
+}
+
+.productId {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--color-icons);
 }
 
 .colorDot {
@@ -252,6 +265,18 @@
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+
+.addedToCart {
+  background: var(--color-white);
+  color: var(--color-green);
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    opacity: 1;
+    background: var(--color-hover);
   }
 }
 

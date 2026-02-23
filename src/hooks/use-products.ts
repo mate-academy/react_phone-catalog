@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BaseProduct } from '../../types';
+import { BaseProduct } from '../types';
 
 type UseProductsResult = {
   products: BaseProduct[];

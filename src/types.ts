@@ -25,12 +25,10 @@ export interface DetailedProduct {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: [
-    {
-      title: string;
-      text: string[];
-    },
-  ];
+  description: {
+    title: string;
+    text: string[];
+  }[];
   screen: string;
   resolution: string;
   processor: string;
