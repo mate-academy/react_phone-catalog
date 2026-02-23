@@ -7,34 +7,32 @@ import { ChangeEvent } from 'react';
 interface Props {
   title: string;
   products: BaseProduct[];
-  totalCount?: number;
-  sortBy?: 'newest' | 'alphabetically' | 'cheapest';
-  perPage?: '4' | '8' | '16' | 'all';
   totalPages?: number;
+  sortBy: 'newest' | 'alphabetically' | 'cheapest';
+  perPage: '4' | '8' | '16' | 'all';
   currentPage?: number;
   onSortChange?: (value: string) => void;
   onPerPageChange?: (value: string) => void;
-  onPageChange?: (value: string) => void;
+  onPageChange: (value: number) => void;
 }
 
 export const ProductsList = ({
   title,
   products,
-  totalCount = 0,
   sortBy = 'newest',
-  perPage = 'all',
-  totalPages = 5,
-  currentPage = 1,
   onSortChange,
   onPerPageChange,
+  totalPages = 0,
+  perPage = 'all',
+  currentPage = 1,
   onPageChange,
 }: Props) => {
   const sortByHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    onSortChange(event);
+    onSortChange?.(event.target.value);
   };
 
   const perPageHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    onPerPageChange(event);
+    onPerPageChange?.(event.target.value);
   };
 
   return (
@@ -87,7 +85,11 @@ export const ProductsList = ({
         ))}
       </div>
 
-      <Pagination totalPages={totalPages} currentPage={currentPage} />
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+      />
     </section>
   );
 };

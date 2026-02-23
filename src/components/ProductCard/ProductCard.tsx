@@ -36,7 +36,14 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <article className={styles.card}>
       <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
-        <img src={image} alt={name} className={styles.image} />
+        {image ? (
+          <img src={image} alt={name} className={styles.image} />
+        ) : (
+          <img
+            src="../public/img/product-not-found.png"
+            alt="Product not found"
+          />
+        )}
       </Link>
 
       <div className={styles.body}>

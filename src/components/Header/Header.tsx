@@ -13,9 +13,10 @@ const NAV_LINKS = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { wishlistIds } = useAppContext();
+  const { cartIds, wishlistIds } = useAppContext();
 
   const isLiked = wishlistIds;
+  const isInCart = cartIds;
 
   return (
     <>
@@ -55,8 +56,10 @@ export const Header = () => {
           >
             <span className={styles.iconWrap}>
               <i className="far fa-heart" />
-              {isLiked && (
+              {isLiked.length > 0 ? (
                 <span className={styles.badge}>{isLiked.length}</span>
+              ) : (
+                ''
               )}
             </span>
           </NavLink>
@@ -69,7 +72,11 @@ export const Header = () => {
           >
             <span className={styles.iconWrap}>
               <i className="fas fa-bag-shopping" />
-              {/* TODO: <span className={styles.badge}>3</span> */}
+              {isInCart.length > 0 ? (
+                <span className={styles.badge}>{isInCart.length}</span>
+              ) : (
+                ''
+              )}
             </span>
           </NavLink>
 

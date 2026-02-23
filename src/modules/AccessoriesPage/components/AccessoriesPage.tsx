@@ -13,42 +13,51 @@ export const AccessoriesPage = () => {
   const { products, loading, error } = useProducts();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortBy = searchParams.get('sortBy') || 'newest';
-  const perPage = searchParams.get('perPage') || 'all';
+  const sortBy = (searchParams.get('sortBy') || 'newest') as
+    | 'newest'
+    | 'alphabetically'
+    | 'cheapest';
+  const perPage = (searchParams.get('perPage') || 'all') as
+    | '4'
+    | '8'
+    | '16'
+    | 'all';
+  const currentPage = Number(searchParams.get('page') || '1');
+  const page = searchParams.get('page') || '1';
 
-  function handleQueryChange(
-    event: ChangeEvent<HTMLSelectElement>,
-    nameParam: string,
-  ) {
+  function handleQueryChange(value: string, nameParam: string) {
     const params = new URLSearchParams(searchParams);
 
-    if (event.target.value === '') {
+    if (value === '') {
       params.delete(nameParam);
     } else {
-      params.set(nameParam, event.target.value);
+      params.set(nameParam, value);
     }
 
     setSearchParams(params);
   }
 
-  const sortHandler = data => {
-    handleQueryChange(data, 'sortBy');
+  const sortHandler = (value: string) => {
+    handleQueryChange(value, 'sortBy');
   };
 
-  const perPageHandler = data => {
-    handleQueryChange(data, 'perPage');
+  const perPageHandler = (value: string) => {
+    handleQueryChange(value, 'perPage');
   };
 
-  const pageHandler = data => {
-    handleQueryChange(data, 'page');
+  const pageHandler = (value: number) => {
+    handleQueryChange(String(value), 'page');
   };
 
-  let Accessories = SortProducts(
+  const allAccessories = SortProducts(
     [...products].filter(item => item.category === 'accessories'),
     sortBy,
   );
 
-  Accessories = PerPage(Accessories, perPage);
+  const totalPages =
+    perPage === 'all' ? 1 : Math.ceil(allAccessories.length / Number(perPage));
+
+  const Accessories = PerPage(allAccessories, perPage, page);
 
   if (loading) {
     return <Loader />;
@@ -67,6 +76,8 @@ export const AccessoriesPage = () => {
           <ProductsList
             title="Accessories"
             products={Accessories}
+            totalPages={totalPages}
+            currentPage={currentPage}
             sortBy={sortBy}
             perPage={perPage}
             onSortChange={sortHandler}

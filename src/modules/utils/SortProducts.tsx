@@ -7,7 +7,7 @@ export function SortProducts(products: BaseProduct[], sortBy: string) {
     }
 
     if (sortBy === 'alphabetically') {
-      return b.name.localeCompare(a.name);
+      return a.name.localeCompare(b.name);
     }
 
     if (sortBy === 'discount') {
