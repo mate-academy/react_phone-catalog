@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+
+.header {
+  width: 100%;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    background-color: $lt-white;
+    border-bottom: 1px solid $lt-elements;
+
+    @include respond-to('desktop') {
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 64px;
+    height: 22px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+    text-decoration: none;
+
+    @include respond-to('desktop') {
+      padding-left: 32px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include respond-to('tablet') {
+      display: flex;
+      margin-right: auto;
+      padding-left: 16px;
+    }
+
+    @include respond-to('desktop') {
+      padding-left: 24px;
+    }
+  }
+
+  &__actions {
+    display: none;
+
+    @include respond-to('tablet') {
+      display: flex;
+      height: 100%;
+    }
+  }
+
+  &__iconLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 100%;
+
+    border-left: 1px solid $lt-elements;
+    box-sizing: border-box;
+
+    @include respond-to('desktop') {
+      width: 64px;
+    }
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    &:global(.active) {
+      border-bottom: 3px solid $lt-primary;
+    }
+  }
+
+  &__menu {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: transparent;
+    border: none;
+    border-left: 1px solid $lt-elements;
+    cursor: pointer;
+    padding: 0;
+
+    @include respond-to('tablet') {
+      display: none;
+    }
+  }
+}

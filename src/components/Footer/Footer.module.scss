@@ -1,0 +1,100 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+
+.footer {
+  width: 100%;
+  padding: 32px 16px;
+  border-top: 1px solid $lt-elements;
+
+  @include respond-to('tablet') {
+    padding-inline: 32px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include respond-to('tablet') {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+    display: block;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include respond-to('tablet') {
+      flex-direction: row;
+      align-items: center;
+      gap: 13.5px;
+    }
+
+    @include respond-to('desktop') {
+      gap: 107px;
+    }
+  }
+
+  &__link {
+    @include uppercase-label;
+
+    display: block;
+    color: $lt-secondary;
+    text-decoration: none;
+  }
+
+  &__backButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0;
+    gap: 16px;
+    height: auto;
+
+    @include respond-to('tablet') {
+      margin: 0;
+    }
+  }
+
+  &__backText {
+    @include small-text;
+
+    color: $lt-secondary;
+  }
+
+  &__backIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $lt-elements;
+    box-sizing: border-box;
+    padding: 8px;
+  }
+}

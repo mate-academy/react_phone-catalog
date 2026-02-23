@@ -1,1 +1,13 @@
-// not empty
+@import './styles/reset';
+@import './styles/fonts';
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/typography';
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 320px;
+}

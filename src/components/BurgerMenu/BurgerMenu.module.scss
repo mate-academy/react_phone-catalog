@@ -1,0 +1,60 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.burger {
+  position: fixed;
+  inset: 48px 0 0;
+  background-color: $lt-white;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to('tablet') {
+    display: none;
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  &__nav {
+    width: 100%;
+  }
+
+  &__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: auto;
+  }
+
+  &__link {
+    display: inline-block;
+    height: auto;
+    padding-bottom: 8px;
+  }
+
+  &__footer {
+    display: flex;
+    height: 64px;
+    border-top: 1px solid $lt-elements;
+    margin-top: auto;
+  }
+
+  &__action {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &:first-child {
+      border-right: 1px solid $lt-elements;
+    }
+  }
+}

@@ -4,7 +4,7 @@ $lt-secondary: #89939a; // Secondary text
 $lt-icons: #b4bdc3; // Icon color (Default)
 $lt-elements: #e2e6e9; // Borders, dividers
 $lt-hover-bg: #fafbfc; // Hover state and block background
-$lt-white: #ffffff; // Pure white (page background)
+$lt-white: #fff; // Pure white (page background)
 
 /* Highlights (common to both topics) */
 $cl-green: #27ae60; // Success
@@ -43,3 +43,8 @@ $dt-accent: #8970ef; // Purple accent (Primary Button in dark theme)
   --icon-color: #{$dt-icons};
   --accent: #{$dt-accent};
 }
+
+$breakpoints: (
+  "tablet": 640px,
+  "desktop": 1200px,
+);

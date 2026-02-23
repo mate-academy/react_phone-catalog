@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include respond-to('desktop') {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @include uppercase-label;
+
+    display: flex;
+    align-items: center;
+    height: 48px;
+    color: $lt-secondary;
+    text-decoration: none;
+    box-sizing: border-box;
+
+    @include respond-to('desktop') {
+      height: 64px;
+    }
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    &:global(.active) {
+      color: $lt-primary;
+      border-bottom: 3px solid $lt-primary;
+    }
+  }
+}
