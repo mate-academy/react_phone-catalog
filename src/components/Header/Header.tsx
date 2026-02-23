@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
 import styles from './Header.module.scss';
 import { routes } from '../../router/routes';
-import { useLocation } from 'react-router-dom';
+import { RootState } from '../../store/store';
 
 import FavoritesHurt from '../../UI/Buttons/Icons/FavouritesHurtAnactive.svg';
 import CartHurt from '../../UI/Buttons/Icons/CartHurt.svg';
-import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
+import Logo from '../../UI/photos/Logo.svg';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +77,7 @@ const Header: React.FC = () => {
       <div className={styles.header__logo}>
         <NavLink to={routes.home} className={styles.header__logo_link}>
           <img
-            src="../../../img/Logo.png"
+            src={Logo}
             alt="Nice Gadgets Logo"
             className={styles.header__logo_img}
           />

@@ -4,29 +4,32 @@
 .homePage {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: left;
   gap: 20px;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
-  max-width: 1200px;
-  width: 100%;
-  box-sizing: border-box;
+
+  text-align: left;
 
   @include mixins.tablet {
     padding: 0 24px;
   }
 
   @include mixins.mobile {
-    padding: 0 16px;
+    padding: 0;
   }
 
   &__title {
-    font-size: 48px;
+    width: 100%;
+
     font-family: vars.$font-primary;
+    font-size: 48px;
     font-weight: 800;
     color: vars.$primary-color;
-    width: 100%;
     text-align: left;
 
     @include mixins.tablet {
@@ -35,6 +38,10 @@
 
     @include mixins.mobile {
       font-size: 32px;
+    }
+
+    &_mobile {
+      display: none;
     }
   }
 }

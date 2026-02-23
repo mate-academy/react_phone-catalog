@@ -31,23 +31,24 @@
 
   &__top_section {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px 0;
     gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 32px 0;
 
     @include mixins.tablet {
       flex-direction: column;
+      gap: 32px;
       align-items: flex-start;
       padding: 24px 0;
-      gap: 32px;
     }
 
     @include mixins.mobile {
       flex-direction: column;
+      gap: 24px;
       align-items: flex-start;
       padding: 20px 0;
-      gap: 24px;
     }
   }
 
@@ -59,9 +60,9 @@
     }
 
     img {
-      height: 32px;
-      width: auto;
       display: block;
+      width: auto;
+      height: 32px;
 
       @include mixins.mobile {
         height: 28px;
@@ -75,26 +76,28 @@
   }
 
   &__nav {
-    flex: 1;
     display: flex;
+    flex: 1;
     justify-content: center;
 
     @include mixins.tablet {
-      width: 100%;
       justify-content: flex-start;
+      width: 100%;
     }
 
     @include mixins.mobile {
-      width: 100%;
       justify-content: flex-start;
+      width: 100%;
     }
 
     &_list {
       display: flex;
       gap: 24px;
-      list-style: none;
+
       margin: 0;
       padding: 0;
+
+      list-style: none;
 
       @include mixins.tablet {
         flex-direction: column;
@@ -117,15 +120,17 @@
     }
 
     &_link {
-      font-size: 12px;
+      display: block;
+
       font-family: vars.$font-primary;
+      font-size: 12px;
       font-weight: 800;
       color: vars.$secondary-color;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+
       transition: color 0.3s ease;
-      display: block;
 
       &:hover {
         color: vars.$primary-color;
@@ -136,63 +141,75 @@
       }
 
       @include mixins.mobile {
-        font-size: 12px;
         padding: 4px 0;
+        font-size: 12px;
       }
     }
   }
 
   &__back {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: none;
-    border: none;
     cursor: pointer;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
     padding: 0;
+    border: none;
+
+    background: none;
+
     transition: all 0.3s ease;
 
     @include mixins.tablet {
-      width: 100%;
       justify-content: space-between;
+      width: 100%;
       padding-top: 16px;
       border-top: 1px solid vars.$icons-color;
     }
 
     @include mixins.mobile {
-      width: 100%;
       justify-content: center;
+      width: 100%;
       padding-top: 16px;
     }
 
     &_text {
-      font-size: 12px;
+      margin: 0;
+
       font-family: vars.$font-primary;
+      font-size: 12px;
       font-weight: 700;
       color: vars.$secondary-color;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+
       transition: color 0.3s ease;
-      margin: 0;
     }
 
     &_icon {
-      width: 32px;
-      height: 32px;
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
+
+      width: 32px;
+      height: 32px;
       border: 1px solid vars.$icons-color;
       border-radius: 4px;
+
       background: white;
+
       transition: all 0.3s ease;
-      flex-shrink: 0;
 
       img {
+        transform: rotate(-90deg);
+
         width: 16px;
         height: 16px;
+
         object-fit: contain;
-        transform: rotate(-90deg);
+
         transition: filter 0.3s ease;
       }
     }

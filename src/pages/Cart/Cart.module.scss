@@ -2,15 +2,15 @@
 @use '../../styles/_mixins' as mixins;
 
 .cart {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  box-sizing: border-box;
-  min-height: 100vh;
-
   display: flex;
   flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 24px;
 
   @include mixins.mobile {
     padding: 0 16px;
@@ -18,21 +18,22 @@
 
   /* Back button */
   &__back {
+    cursor: pointer;
+
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
 
     margin: 40px 0 16px;
     padding: 0;
-
-    background: transparent;
     border: none;
-    cursor: pointer;
 
+    font-family: vars.$font-primary;
     font-size: 12px;
     font-weight: 700;
-    font-family: vars.$font-primary;
     color: vars.$secondary-color;
+
+    background: transparent;
 
     transition: color 0.3s ease;
 
@@ -49,9 +50,10 @@
   /* Title */
   &__title {
     margin: 0 0 32px;
+
+    font-family: vars.$font-primary;
     font-size: 48px;
     font-weight: 800;
-    font-family: vars.$font-primary;
     color: vars.$primary-color;
 
     @include mixins.mobile {
@@ -65,6 +67,7 @@
     grid-template-columns: minmax(0, 1fr) 320px;
     gap: 24px;
     align-items: start;
+
     width: 100%;
 
     @include mixins.tablet {
@@ -87,41 +90,43 @@
   /* PRODUCT CARD */
   &__item {
     display: flex;
+    gap: 24px;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+
     box-sizing: border-box;
     width: 100%;
     padding: 24px;
     border: 1px solid #e2e2e2;
+
     background-color: #fff;
 
     @include mixins.mobile {
-      gap: 12px;
-      padding: 16px;
       flex-direction: column;
+      gap: 12px;
       align-items: flex-start;
+      padding: 16px;
     }
   }
 
   /* ЛІВИЙ БЛОК */
   &__item_left {
     display: flex;
-    align-items: center;
-    gap: 16px;
     flex: 1;
+    gap: 16px;
+    align-items: center;
+
     min-width: 0;
   }
 
   /* ПРАВИЙ БЛОК */
   &__item_right {
     display: flex;
-    align-items: center;
     gap: 24px;
+    align-items: center;
 
     @include mixins.mobile {
       flex: 1;
-
       gap: 12px;
       justify-content: space-between;
       width: 100%; // На мобільних, явно на всю ширину
@@ -130,10 +135,10 @@
 
   /* Delete button */
   &__item_btn {
-    background: transparent;
-    border: none;
     cursor: pointer;
     padding: 0;
+    border: none;
+    background: transparent;
 
     img {
       width: 16px;
@@ -144,15 +149,15 @@
   /* Product details */
   &__item_detail {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
     flex: 1;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
 
     @include mixins.mobile {
       flex-direction: row;
-      align-items: flex-start;
       gap: 16px;
+      align-items: flex-start;
     }
   }
 
@@ -171,8 +176,9 @@
   &__item_info {
     display: grid;
     grid-template-columns: 1fr auto auto;
-    align-items: center;
     gap: 24px;
+    align-items: center;
+
     width: 100%;
 
     @include mixins.mobile {
@@ -183,13 +189,14 @@
   }
 
   &__item_info_title {
-    font-size: 14px;
-    font-weight: 600;
-    font-family: vars.$font-primary;
-    color: vars.$primary-color;
+    overflow: hidden;
+
     margin: 0;
 
-    overflow: hidden;
+    font-family: vars.$font-primary;
+    font-size: 14px;
+    font-weight: 600;
+    color: vars.$primary-color;
     text-overflow: ellipsis;
     white-space: nowrap;
 
@@ -202,20 +209,21 @@
   /* Quantity */
   &__item__quantity {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
 
     &_btn {
-      width: 32px;
-      height: 32px;
-
-      border: 1px solid vars.$elements-color;
-      background: white;
       cursor: pointer;
 
       display: flex;
       align-items: center;
       justify-content: center;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid vars.$elements-color;
+
+      background: white;
 
       transition: border 0.2s ease;
 
@@ -227,8 +235,8 @@
         opacity: 0.5;
 
         &:hover {
-          border-color: vars.$elements-color;
           cursor: default;
+          border-color: vars.$elements-color;
         }
       }
     }
@@ -236,67 +244,68 @@
 
   /* Price */
   &__item_info_price {
+    margin: 0;
+
+    font-family: vars.$font-primary;
     font-size: 18px;
     font-weight: 700;
-    font-family: vars.$font-primary;
     color: vars.$primary-color;
-    margin: 0;
   }
 
   /* RIGHT COLUMN (TOTAL) */
   &__total {
-    border: 1px solid #e2e2e2;
-    padding: 24px;
-
     display: flex;
     flex-direction: column;
+    gap: 16px;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+
+    height: fit-content;
+    padding: 24px;
+    border: 1px solid #e2e2e2;
 
     font-family: vars.$font-primary;
     color: vars.$primary-color;
 
-    height: fit-content;
-
     @include mixins.mobile {
       margin-top: 24px;
-
       padding: 16px;
     }
 
     &_price {
+      margin: 0;
       font-size: 32px;
       font-weight: 800;
-      margin: 0;
     }
 
     &_text {
-      color: vars.$secondary-color;
       margin: 0;
 
-      font-weight: 600;
       font-size: 14px;
+      font-weight: 600;
+      color: vars.$secondary-color;
       text-align: center;
     }
 
     &_line {
       display: block;
+      width: 100%;
       height: 1px;
       background-color: vars.$elements-color;
-      width: 100%;
     }
 
     &_btn {
+      cursor: pointer;
+
       width: 100%;
       height: 48px;
+      border: none;
+
+      font-weight: 600;
+      color: white;
 
       background: #313237;
-      color: white;
-      border: none;
-      font-weight: 600;
 
-      cursor: pointer;
       transition: background 0.3s ease;
 
       &:hover {

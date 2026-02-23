@@ -22,6 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   hotPrice = false,
 }) => {
   const favorites = useSelector((state: RootState) => state.favorites.items);
+  const cart = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -98,7 +99,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
       <div className={styles.card__btn}>
         <button
-          className={styles.card__btn_cart + ' ' + styles.card__btn_primary}
+          className={`
+            ${styles.card__btn_cart}
+            ${styles.card__btn_primary}
+            ${cart.find(item => item.itemId === product.itemId) ? styles.card__btn_cart_included : ''}
+          `}
           type="button"
           onClick={e => {
             e.preventDefault();
@@ -106,7 +111,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             handleAddToCart();
           }}
         >
-          Add to cart
+          {cart.find(item => item.itemId === product.itemId)
+            ? 'Added to cart'
+            : 'Add to cart'}
         </button>
 
         <button

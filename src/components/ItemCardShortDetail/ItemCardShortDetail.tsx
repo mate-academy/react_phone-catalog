@@ -31,6 +31,7 @@ const ItemCardShortDetail = ({
   ];
 
   const favorites = useSelector((state: RootState) => state.favorites.items);
+  const cart = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -210,14 +211,15 @@ const ItemCardShortDetail = ({
 
         <div className={styles.itemCardShortDetail__prices_buttons}>
           <button
-            className={
-              styles.itemCardShortDetail__prices_button +
-              ' ' +
-              styles.itemCardShortDetail__prices_button_add
-            }
+            className={`
+              ${styles.itemCardShortDetail__prices_button}
+              ${styles.itemCardShortDetail__prices_button_add}
+              ${cart.find(item => item.itemId === product.id) ? styles.itemCardShortDetail__prices_button_add_included : ''}`}
             onClick={() => handleAddToCart()}
           >
-            Add to cart
+            {cart.find(item => item.itemId === product.id)
+              ? 'Added to cart'
+              : 'Add to cart'}
           </button>
 
           <button

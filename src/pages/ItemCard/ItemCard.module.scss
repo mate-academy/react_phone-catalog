@@ -4,12 +4,14 @@
 .itemCard {
   display: flex;
   flex-direction: column;
-  text-align: left;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
-  max-width: 1200px;
-  width: 100%;
-  box-sizing: border-box;
+
+  text-align: left;
 
   @include mixins.tablet {
     padding: 0 24px;
@@ -20,20 +22,22 @@
   }
 
   &__back {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
     cursor: pointer;
 
-    font-family: vars.$font-primary;
-    font-weight: 700;
-    font-size: 12px;
-    color: vars.$secondary-color;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
 
-    text-decoration: none;
     width: fit-content;
-    margin: 40px 0 16px 0;
+    margin: 40px 0 16px;
+
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 700;
+    color: vars.$secondary-color;
+    text-decoration: none;
+
     transition: color 0.3s ease;
 
     &:hover {

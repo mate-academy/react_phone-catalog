@@ -4,76 +4,89 @@
 .itemCardShortDetail {
   display: flex;
   flex-direction: column;
-  margin: 0 16px;
   gap: 10px;
+  margin: 0 16px;
 
   &__line {
     display: block;
-    height: 1px;
-    background-color: vars.$elements-color;
+
     width: 100%;
-    margin: 24px 0;
     min-width: 320px;
+    height: 1px;
+    margin: 24px 0;
+
+    background-color: vars.$elements-color;
 
     &:last-of-type {
       margin-bottom: 0;
     }
 
     @include mixins.mobile {
-      margin: 0;
       min-width: 0;
+      margin: 0;
     }
 
     @include mixins.tablet {
-      margin: 20px 0;
       min-width: 0;
+      margin: 20px 0;
     }
   }
 
   &__title {
-    font-family: vars.$font-primary;
-    font-weight: 600;
-    font-size: 12px;
-    color: vars.$secondary-color;
-    letter-spacing: 0%;
     margin: 0;
     margin-bottom: 8px;
+
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 600;
+    color: vars.$secondary-color;
+    letter-spacing: 0%;
   }
 
   &__top {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 16px;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   &__colorsBlock {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    min-width: 0;
   }
 
   &__idBlock {
     margin: 0;
     padding: 0;
-    color: vars.$secondary-color;
 
     font-family: vars.$font-primary;
     font-size: 12px;
     font-weight: 700;
+    color: vars.$secondary-color;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 
-    white-space: nowrap;
+    @include mixins.mobile {
+      font-size: 10px;
+    }
+
+    @include mixins.tablet {
+      font-size: 12px;
+    }
   }
 
   &__color {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
 
     &_available {
       width: 20px;
       height: 20px;
-      border: 2px solid vars.$elements-color;
       padding: 3px;
-
+      border: 2px solid vars.$elements-color;
       border-radius: 50%;
 
       background-color: vars.$hover_bg-color;
@@ -83,14 +96,16 @@
       }
 
       &_link {
+        cursor: pointer;
+
         display: block;
+
         width: 100%;
         height: 100%;
-        text-decoration: none;
-        cursor: pointer;
         border: 2px solid vars.$elements-color;
-
         border-radius: 50%;
+
+        text-decoration: none;
       }
     }
   }
@@ -99,27 +114,31 @@
     &_list {
       display: flex;
       gap: 8px;
-      list-style: none;
+
       margin: 0;
       padding: 0;
+
+      list-style: none;
 
       li {
         display: inline-block;
       }
 
       &_item {
-        background-color: #fff;
-        border: vars.$icons-color 1px solid;
-        padding: 7px 8px 4px;
         cursor: pointer;
 
-        font-size: 14px;
+        padding: 7px 8px 4px;
+        border: vars.$icons-color 1px solid;
+
         font-family: vars.$font-primary;
+        font-size: 14px;
         color: vars.$primary-color;
 
+        background-color: #fff;
+
         &_active {
-          background-color: vars.$primary-color;
           color: #fff;
+          background-color: vars.$primary-color;
         }
       }
     }
@@ -128,58 +147,62 @@
   &__prices {
     display: flex;
     flex-direction: column;
-    margin: 32px 0;
     gap: 16px;
+    margin: 32px 0;
 
     &_list {
       display: flex;
       flex-direction: row;
+      gap: 8px;
       align-items: center;
       justify-content: flex-start;
-      gap: 8px;
-      list-style: none;
+
       margin: 0;
       padding: 0;
+
+      list-style: none;
     }
 
     &_value {
-      font-family: vars.$font-primary;
-      font-weight: 600;
-      font-size: 12px;
-      color: vars.$secondary-color;
-
       margin: 0;
 
+      font-family: vars.$font-primary;
+      font-size: 12px;
+      font-weight: 600;
+      color: vars.$secondary-color;
+
       &_newPrice {
-        color: vars.$primary-color;
         font-size: 32px;
         font-weight: 800;
         line-height: 41px;
+        color: vars.$primary-color;
       }
 
       &_oldPrice {
-        text-decoration: line-through;
-        color: vars.$secondary-color;
         font-size: 22px;
         font-weight: 500;
+        color: vars.$secondary-color;
+        text-decoration: line-through;
       }
     }
 
     &_buttons {
       display: flex;
       flex-direction: row;
+      gap: 8px;
       align-items: center;
       justify-content: flex-start;
-      gap: 8px;
 
       margin: 0;
       padding: 0;
 
       @include mixins.mobile {
+        flex-direction: row;
+        gap: 16px;
       }
 
       @include mixins.tablet {
-        flex-direction: column;
+        flex-direction: row;
         gap: 16px;
       }
     }
@@ -189,7 +212,7 @@
       transition: all 0.3s ease;
 
       &:hover {
-        box-shadow: #17203166 0px 4px 8px 0px;
+        box-shadow: #17203166 0 4px 8px 0;
 
         @include mixins.mobile {
           box-shadow: none;
@@ -201,27 +224,38 @@
       }
 
       &_add {
-        padding: 13.5px 91px;
-        background-color: vars.$primary-color;
-        color: #fff;
-        font-family: vars.$font-primary;
-        font-weight: 600;
-        font-size: 14px;
-
         flex-wrap: wrap;
+
+        padding: 13.5px 91px;
+
+        font-family: vars.$font-primary;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+
+        background-color: vars.$primary-color;
 
         @include mixins.mobile {
           width: 100%;
           padding: 13.5px 0;
         }
+
+        &_included {
+          border: 1px solid vars.$secondary-color;
+          color: vars.$green-color;
+          background-color: vars.$white-color;
+        }
       }
 
       &_favorites {
-        padding: 16px;
         align-items: center;
-        text-align: center;
-        background-color: #fff;
+
+        padding: 16px;
         border: vars.$icons-color 1px solid;
+
+        text-align: center;
+
+        background-color: #fff;
 
         & img {
           width: 16px;
@@ -241,14 +275,14 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      height: fit-content;
 
+      height: fit-content;
       margin: 0;
       padding: 0;
 
       font-family: vars.$font-primary;
-      font-weight: 600;
       font-size: 12px;
+      font-weight: 600;
 
       &_title {
         color: vars.$secondary-color;

@@ -6,21 +6,22 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 80px 0 0 24px;
-    max-width: 1200px;
+
     width: 100%;
+    max-width: 1200px;
+    margin: 80px 0 0 24px;
 
     @include mixins.tablet {
       margin: 64px 0 0 24px;
     }
 
     @include mixins.mobile {
-      margin: 56px 0 0 0;
+      margin: 56px 0 0;
     }
 
     &_title {
-      font-size: 32px;
       font-family: vars.$font-primary;
+      font-size: 32px;
       font-weight: 800;
       color: vars.$primary-color;
     }
@@ -30,21 +31,24 @@
       justify-content: space-between;
 
       &_btns {
-        display: flex;
-        align-items: center;
-
         cursor: pointer;
+        display: flex;
         gap: 24px;
+        align-items: center;
       }
 
       &_button {
+        cursor: pointer;
+
+        transform: rotate(180);
+
         width: 32px;
         height: 32px;
-        color: vars.$primary-color;
         border: 1px solid #e2e6e9;
+
+        color: vars.$primary-color;
+
         background-color: vars.$white-color;
-        cursor: pointer;
-        transform: rotate(180);
 
         &_prev_disabled {
           opacity: 0.5;
@@ -59,9 +63,8 @@
 
   &__products_list {
     display: flex;
-    gap: 16px;
     flex-wrap: nowrap;
-
+    gap: 16px;
     transition: transform 0.4s ease;
 
     &_wrapper {
@@ -69,14 +72,16 @@
       width: 100%;
 
       @include mixins.tablet {
-        overflow-x: auto;
         scroll-snap-type: x mandatory;
+        overflow-x: auto;
+
         -webkit-overflow-scrolling: touch;
       }
 
       @include mixins.mobile {
-        overflow-x: auto;
         scroll-snap-type: x mandatory;
+        overflow-x: auto;
+
         -webkit-overflow-scrolling: touch;
       }
     }
@@ -97,13 +102,13 @@
   animation: fade-in-slide 0.4s ease forwards;
 
   @include mixins.tablet {
-    flex: 0 0 40%;
     scroll-snap-align: start;
+    flex: 0 0 40%;
   }
 
   @include mixins.mobile {
-    flex: 0 0 80%;
     scroll-snap-align: start;
+    flex: 0 0 80%;
   }
 
   &__card {
@@ -113,11 +118,11 @@
 
 @keyframes fade-in-slide {
   from {
-    opacity: 0;
     transform: translateY(10px);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }

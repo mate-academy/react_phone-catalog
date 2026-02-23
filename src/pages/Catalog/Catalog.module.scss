@@ -4,11 +4,12 @@
 .catalog {
   display: flex;
   flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
-  max-width: 1200px;
-  width: 100%;
-  box-sizing: border-box;
 
   @include mixins.tablet {
     padding: 0 24px;
@@ -19,11 +20,12 @@
   }
 
   &__title {
-    font-size: 48px;
+    width: 100%;
+
     font-family: vars.$font-primary;
+    font-size: 48px;
     font-weight: 800;
     color: vars.$primary-color;
-    width: 100%;
     text-align: left;
 
     @include mixins.mobile {
@@ -32,20 +34,21 @@
   }
 
   &__count {
-    font-size: 14px;
-    font-family: vars.$font-primary;
-    font-weight: 600;
-    color: vars.$secondary-color;
     width: 100%;
-    text-align: left;
     margin: 0;
     padding: 0;
+
+    font-family: vars.$font-primary;
+    font-size: 14px;
+    font-weight: 600;
+    color: vars.$secondary-color;
+    text-align: left;
   }
 
   &__labels {
     display: flex;
-    align-items: center;
     gap: 16px;
+    align-items: center;
     margin: 40px 0 24px;
 
     @include mixins.mobile {
@@ -58,37 +61,42 @@
       flex-direction: column;
 
       @include mixins.mobile {
+        flex: 1;
         width: 100%;
         min-width: 0;
-        flex: 1;
       }
     }
 
     &_label {
-      font-family: vars.$font-primary;
-      color: vars.$secondary-color;
-      font-weight: 700;
-      font-size: 12px;
       margin-bottom: 10px;
+
+      font-family: vars.$font-primary;
+      font-size: 12px;
+      font-weight: 700;
+      color: vars.$secondary-color;
       white-space: nowrap;
     }
 
     &_select {
+      cursor: pointer;
+
+      width: 100%;
       padding: 10px 36px 10px 14px;
       border: 1px solid vars.$secondary-color;
       border-radius: 1px;
+
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+
+      appearance: none;
       background-color: white;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       background-size: 12px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #333;
-      cursor: pointer;
-      appearance: none;
+
       transition: all 0.2s;
-      width: 100%;
 
       &:hover {
         border-color: vars.$primary-color;
@@ -103,9 +111,10 @@
 
   &__grid {
     display: grid;
-    justify-items: center;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+    justify-items: center;
+
     margin-bottom: 40px;
 
     @include mixins.tablet {
@@ -123,7 +132,6 @@
 
   &__empty {
     grid-column: 1 / -1;
-
     margin: 60px 0;
     text-align: center;
 
@@ -140,8 +148,8 @@
 
     &_text {
       font-size: 1.2rem;
-      color: vars.$secondary-color;
       font-weight: 500;
+      color: vars.$secondary-color;
     }
   }
 

@@ -4,20 +4,21 @@
 
 .breadcrumbs {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   margin: 24px 0 0;
 
   &_link {
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: vars.$font-primary;
-    color: vars.$secondary-color;
-    font-weight: 600;
-    font-size: 12px;
 
-    cursor: pointer;
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 600;
+    color: vars.$secondary-color;
 
     @include mixins.tablet {
       font-size: 10px;

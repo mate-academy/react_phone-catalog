@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { routes } from '../../router/routes';
 import styles from './Footer.module.scss';
-import Logo from '/img/Logo.png';
+import Logo from '../../UI/photos/Logo.svg';
 import Chevron from '/img/Chevron.png';
 
 const Footer = () => {

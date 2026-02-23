@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {
-  const categorys = ['phones', 'accessories', 'tablets'];
+  const categorys = useMemo(() => {
+    return ['phones', 'tablets', 'accessories'];
+  }, []);
   const [productsCount, setProductsCount] = useState<{ [key: string]: number }>(
     {},
   );
@@ -15,7 +17,7 @@ export const ShopByCategory = () => {
           .then(data => [category, data.length] as [string, number]),
       ),
     ).then(results => setProductsCount(Object.fromEntries(results)));
-  }, []);
+  }, [categorys]);
 
   const categories = [
     {
@@ -63,9 +65,9 @@ export const ShopByCategory = () => {
             </div>
 
             <div className={styles.homePage__categoryProducts_item_info}>
-              <h1 className={styles.homePage__categoryProducts_item_info_title}>
+              <h2 className={styles.homePage__categoryProducts_item_info_title}>
                 {cat.title}
-              </h1>
+              </h2>
               <p
                 className={
                   styles.homePage__categoryProducts_item_info_description

@@ -19,8 +19,8 @@
   &__gallery_thumbs {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     flex-shrink: 0;
+    gap: 16px;
 
     @include mixins.tablet {
       flex-direction: row;
@@ -29,22 +29,25 @@
     }
 
     @include mixins.mobile {
-      flex-direction: row;
+      flex-flow: row wrap;
       justify-content: center;
-      flex-wrap: wrap;
       order: 2;
     }
   }
 
   &__gallery_thumb {
+    cursor: pointer;
+
+    flex-shrink: 0;
+
     width: 80px;
     height: 80px;
-    border: 1px solid vars.$icons-color;
     padding: 4px;
+    border: 1px solid vars.$icons-color;
+
     background-color: white;
-    cursor: pointer;
+
     transition: all 0.3s ease;
-    flex-shrink: 0;
 
     @include mixins.mobile {
       width: 60px;
@@ -61,51 +64,49 @@
     }
 
     &_img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      display: block;
     }
   }
 
   &__gallery_main {
+    display: flex;
     flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
 
     width: 464px;
     height: 464px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     background: white;
 
     @include mixins.tablet {
+      aspect-ratio: 1 / 1;
       width: 100%;
       max-width: 464px;
       height: auto;
-      aspect-ratio: 1 / 1;
     }
 
     @include mixins.mobile {
+      aspect-ratio: 1 / 1;
       width: 100%;
       max-width: 320px;
-      aspect-ratio: 1 / 1;
     }
 
     &_inner {
-      width: 100%;
-      height: 100%;
-
       display: flex;
       align-items: center;
       justify-content: center;
+
+      width: 100%;
+      height: 100%;
     }
 
     &_img {
       width: 100%;
       height: 100%;
-
       object-fit: contain;
     }
   }

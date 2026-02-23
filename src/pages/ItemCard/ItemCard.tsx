@@ -59,7 +59,7 @@ const ItemCard = () => {
         setIsLoading(false);
       })
       .catch(() => setIsLoading(false));
-  }, [apiRequest]);
+  }, [apiRequest, id]);
 
   useEffect(() => {
     const foundProduct = allProducts.find(item => item.id === id);

@@ -2,18 +2,21 @@
 @use '../../styles/mixins' as *;
 
 .notFound {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: vars.$hover_bg-color;
-  font-family: vars.$font-primary;
+
+  min-height: 100vh;
   padding: 24px;
+
+  font-family: vars.$font-primary;
+
+  background-color: vars.$hover_bg-color;
 }
 
 .content {
-  text-align: center;
   max-width: 500px;
+  text-align: center;
 }
 
 .image {
@@ -28,10 +31,10 @@
 }
 
 .title {
+  margin-bottom: 12px;
   font-size: 32px;
   font-weight: 700;
   color: vars.$primary-color;
-  margin-bottom: 12px;
 
   @include mobile {
     font-size: 24px;
@@ -39,22 +42,27 @@
 }
 
 .subtitle {
+  margin-bottom: 32px;
+
   font-size: 16px;
   font-weight: 400;
-  color: vars.$secondary-color;
-  margin-bottom: 32px;
   line-height: 1.5;
+  color: vars.$secondary-color;
 }
 
 .button {
   display: inline-block;
+
   padding: 12px 24px;
-  background-color: vars.$primary-color;
-  color: vars.$white-color;
-  font-weight: 600;
-  font-size: 14px;
-  text-decoration: none;
   border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: vars.$white-color;
+  text-decoration: none;
+
+  background-color: vars.$primary-color;
+
   transition: background-color 0.2s ease;
 
   &:hover {
