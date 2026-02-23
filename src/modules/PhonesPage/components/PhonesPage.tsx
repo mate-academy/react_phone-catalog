@@ -4,10 +4,10 @@ import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductsList } from '../../../components/ProductsList';
 import { Loader } from '../../../components/Loader';
-import { useProducts } from '../../hooks/use-products';
+import { useProducts } from '../../../hooks/use-products';
 import { useSearchParams } from 'react-router-dom';
-import { SortProducts } from '../../utils/SortProducts';
-import { PerPage } from '../../utils/PerPage';
+import { SortProducts } from '../../../utils/SortProducts';
+import { PerPage } from '../../../utils/PerPage';
 
 export const PhonesPage = () => {
   const { products, loading, error } = useProducts();

@@ -4,10 +4,9 @@ import { Footer } from '../../../components/Footer';
 import { Banner } from '../../../components/Banner';
 import { ProductSlider } from '../../../components/ProductSlider';
 import { ShopByCategory } from '../../../components/ShopByCategory';
-
-import { useProducts } from '../../hooks/use-products';
+import { useProducts } from '../../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
-import { SortProducts } from '../../utils/SortProducts';
+import { SortProducts } from '../../../utils/SortProducts';
 
 export const HomePage = () => {
   const { products, loading, error } = useProducts();

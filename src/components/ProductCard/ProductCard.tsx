@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './ProductCard.module.scss';
 import { BaseProduct } from '../../types';
-import { useAppContext } from '../../modules/hooks/use-context';
+import { useAppContext } from '../../hooks/use-context';
 
 interface Props {
   product: BaseProduct;

@@ -3,9 +3,9 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { ProductCard } from '../../../components/ProductCard';
-import { useProducts } from '../../hooks/use-products';
+import { useProducts } from '../../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
-import { useAppContext } from '../../hooks/use-context';
+import { useAppContext } from '../../../hooks/use-context';
 
 export const FavoritesPage = () => {
   const { products, loading, error } = useProducts();

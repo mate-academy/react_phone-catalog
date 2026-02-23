@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './Header.module.scss';
-import { useAppContext } from '../../modules/hooks/use-context';
+import { useAppContext } from '../../hooks/use-context';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
