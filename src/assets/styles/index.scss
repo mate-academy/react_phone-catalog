@@ -30,6 +30,16 @@ a.product-image-link:hover img {
   width: 100%;
 
   margin: 0 auto;
+
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
 }
 
 // ---------typography---------

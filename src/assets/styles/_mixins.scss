@@ -22,3 +22,27 @@ $bp-desktop: 1200px;
 
   text-transform: uppercase;
 }
+
+@mixin buttons-text {
+  font-weight: 700;
+  font-size: 14px;
+
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-weight: 600;
+  font-size: 14px;
+
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-weight: 700;
+  font-size: 12px;
+
+  line-height: 15px;
+  letter-spacing: 0;
+}
