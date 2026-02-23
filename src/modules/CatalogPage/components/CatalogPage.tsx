@@ -1,4 +1,4 @@
-import styles from './AccessoriesPage.module.scss';
+import styles from './CatalogPage.module.scss';
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
@@ -9,7 +9,9 @@ import { useSearchParams } from 'react-router-dom';
 import { SortProducts } from '../../../utils/SortProducts';
 import { PerPage } from '../../../utils/PerPage';
 
-export const AccessoriesPage = () => {
+type Props = { category: 'phones' | 'tablets' | 'accessories'; title: string };
+
+export const CatalogPage: React.FC<Props> = ({ category, title }) => {
   const { products, loading, error } = useProducts();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,15 +51,15 @@ export const AccessoriesPage = () => {
     handleQueryChange(String(value), 'page');
   };
 
-  const allAccessories = SortProducts(
-    [...products].filter(item => item.category === 'accessories'),
+  const allProducts = SortProducts(
+    [...products].filter(item => item.category === category),
     sortBy,
   );
 
   const totalPages =
-    perPage === 'all' ? 1 : Math.ceil(allAccessories.length / Number(perPage));
+    perPage === 'all' ? 1 : Math.ceil(allProducts.length / Number(perPage));
 
-  const Accessories = PerPage(allAccessories, perPage, page);
+  const Products = PerPage(allProducts, perPage, page);
 
   if (loading) {
     return <Loader />;
@@ -72,10 +74,10 @@ export const AccessoriesPage = () => {
       <Header />
       <main className={styles.main}>
         <div className={styles.container}>
-          <Breadcrumbs items={[{ label: 'Accessories', to: '/accessories' }]} />
+          <Breadcrumbs items={[{ label: title, to: `/${category}` }]} />
           <ProductsList
-            title="Accessories"
-            products={Accessories}
+            title={title}
+            products={Products}
             totalPages={totalPages}
             currentPage={currentPage}
             sortBy={sortBy}
