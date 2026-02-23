@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { CatalogPage } from './pages/CardsPage/CatalogPage';
 import HomePage from './pages/HomePage/HomePage';
 
@@ -10,6 +11,20 @@ import CartPage from './pages/CartPage/CartPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const scrollElement = document.scrollingElement || document.documentElement;
+
+    scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const main = document.querySelector('main');
+
+    if (main) {
+      main.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname]);
+
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
@@ -19,24 +34,15 @@ function App() {
         <Route path="/:category/:productId" element={<ProductDetailsCard />} />
 
         <Route path="phones">
-          <Route
-            index
-            element={<CatalogPage title="Mobile phones" category="phones" />}
-          />
+          <Route index element={<CatalogPage title="Mobile phones" category="phones" />} />
         </Route>
 
         <Route path="tablets">
-          <Route
-            index
-            element={<CatalogPage title="Tablets" category="tablets" />}
-          />
+          <Route index element={<CatalogPage title="Tablets" category="tablets" />} />
         </Route>
 
         <Route path="accessories">
-          <Route
-            index
-            element={<CatalogPage title="Accessories" category="accessories" />}
-          />
+          <Route index element={<CatalogPage title="Accessories" category="accessories" />} />
         </Route>
 
         <Route path="favourites">

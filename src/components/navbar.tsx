@@ -1,13 +1,5 @@
 import { siteConfig } from '@/config/site';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarMenuItem,
-} from '@heroui/react';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuToggle, NavbarMenuItem } from '@heroui/react';
 import { Link, useLocation } from 'react-router-dom';
 import { HeartStraightIcon } from '@phosphor-icons/react';
 import { ShoppingBagOpenIcon } from '@phosphor-icons/react';
@@ -25,15 +17,9 @@ export function AppNavbar() {
   const { cartItems } = useCart();
   const { favourites } = useFavourites();
 
-  const totalQuantity = useMemo(
-    () => Object.values(cartItems).reduce((a, b) => a + b, 0),
-    [cartItems],
-  );
+  const totalQuantity = useMemo(() => Object.values(cartItems).reduce((a, b) => a + b, 0), [cartItems]);
 
-  const totalQuantityFavourites = useMemo(
-    () => favourites.length,
-    [favourites],
-  );
+  const totalQuantityFavourites = useMemo(() => favourites.length, [favourites]);
 
   const handleCloseMenu = () => {
     setIsClosing(true);
@@ -60,11 +46,7 @@ export function AppNavbar() {
       <div className="flex gap-8">
         <NavbarBrand>
           <Link to="/">
-            <img
-              src="/img/logo.png"
-              alt="logo"
-              className="h-[22px] lg:w-[80px] lg:h-[28px]"
-            />
+            <img src="/img/logo.png" alt="logo" className="h-[22px] lg:w-[80px] lg:h-[28px]" />
           </Link>
         </NavbarBrand>
 
@@ -90,16 +72,11 @@ export function AppNavbar() {
 
       {/* Іконки справа */}
       <NavbarContent justify="end" className="hidden sm:flex gap-0">
-        <NavbarItem
-          isActive={currentPath === '/favourites'}
-          className="border-x border-gray-300"
-        >
+        <NavbarItem isActive={currentPath === '/favourites'} className="border-x border-gray-300">
           <Link
             to="/favourites"
             className={`relative flex w-12 h-12 xl:w-16 xl:h-16 items-center justify-center ${
-              currentPath === '/favourites'
-                ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
-                : ''
+              currentPath === '/favourites' ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950' : ''
             }`}
           >
             <Badge
@@ -118,19 +95,10 @@ export function AppNavbar() {
           <Link
             to="/cart"
             className={`relative flex w-12 h-12 xl:w-16 xl:h-16 items-center justify-center ${
-              currentPath === '/cart'
-                ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
-                : ''
+              currentPath === '/cart' ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950' : ''
             }`}
           >
-            <Badge
-              content={totalQuantity}
-              isInvisible={totalQuantity === 0}
-              color="primary"
-              shape="circle"
-              placement="top-right"
-              size="sm"
-            >
+            <Badge content={totalQuantity} isInvisible={totalQuantity === 0} color="primary" shape="circle" placement="top-right" size="sm">
               <div className="relative flex items-center justify-center">
                 <ShoppingBagOpenIcon size={18} />
               </div>
@@ -163,11 +131,7 @@ export function AppNavbar() {
                   className={`font-mont font-semibold 
                 relative block py-2
                 after:block after:h-[2px] after:rounded-full
-                ${
-                  currentPath === item.href
-                    ? 'text-gray-800 after:w-full after:bg-gray-950'
-                    : 'text-gray-400 after:w-0 after:bg-transparent'
-                }
+                ${currentPath === item.href ? 'text-gray-800 after:w-full after:bg-gray-950' : 'text-gray-400 after:w-0 after:bg-transparent'}
               `}
                 >
                   {item.label}
@@ -184,9 +148,7 @@ export function AppNavbar() {
                 to="/favourites"
                 onClick={handleCloseMenu}
                 className={`relative flex w-full h-full items-center justify-center ${
-                  currentPath === '/favourites'
-                    ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
-                    : ''
+                  currentPath === '/favourites' ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950' : ''
                 }`}
               >
                 <Badge
@@ -210,18 +172,10 @@ export function AppNavbar() {
                 to="/cart"
                 onClick={handleCloseMenu}
                 className={`relative flex w-full h-full items-center justify-center ${
-                  currentPath === '/cart'
-                    ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950'
-                    : ''
+                  currentPath === '/cart' ? 'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-950' : ''
                 }`}
               >
-                <Badge
-                  content={totalQuantity}
-                  isInvisible={totalQuantity === 0}
-                  color="primary"
-                  shape="circle"
-                  placement="top-right"
-                >
+                <Badge content={totalQuantity} isInvisible={totalQuantity === 0} color="primary" shape="circle" placement="top-right">
                   <div className="relative flex items-center justify-center">
                     <ShoppingBagOpenIcon size={28} />
                   </div>

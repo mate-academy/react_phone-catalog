@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type FavouritesContextType = {
   favourites: string[];
@@ -22,9 +16,7 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const toggleFavourite = (id: string) => {
-    setFavourites(prev =>
-      prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id],
-    );
+    setFavourites(prev => (prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]));
   };
 
   useEffect(() => {
@@ -33,13 +25,7 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
 
   const isFavourite = (id: string) => favourites.includes(id);
 
-  return (
-    <FavouritesContext.Provider
-      value={{ favourites, toggleFavourite, isFavourite }}
-    >
-      {children}
-    </FavouritesContext.Provider>
-  );
+  return <FavouritesContext.Provider value={{ favourites, toggleFavourite, isFavourite }}>{children}</FavouritesContext.Provider>;
 };
 
 export const useFavourites = () => {

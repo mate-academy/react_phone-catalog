@@ -3,6 +3,7 @@ import { Product } from '@/types/Product';
 import { Card, CardBody, Image, Button } from '@heroui/react';
 import { MinusIcon, PlusIcon, XIcon } from '@phosphor-icons/react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function CartItemCard({ item }: { item: Product }) {
   const { removeFromCart, increment, decrement, cartItems } = useCart();
@@ -13,23 +14,19 @@ export default function CartItemCard({ item }: { item: Product }) {
         <div className="w-full flex flex-col justify-between sm:flex-row h-[160px] sm:h-[128px] gap-6">
           <div className="flex items-center sm:flex-2/3 gap-4">
             {/* Remove Button */}
-            <button
-              onClick={() => removeFromCart(item.itemId)}
-              className="text-gray-400 hover:text-[#0F0F11]"
-            >
+            <button onClick={() => removeFromCart(item.itemId)} className="text-gray-400 hover:text-[#0F0F11]">
               <XIcon size={18} />
             </button>
 
             {/* Image */}
-            <Image
-              src={item.image}
-              alt={item.name}
-              className="h-[66px] w-[66px] rounded-lg object-contain"
-            />
-
+            <Link to={`/${item.category}/${item.itemId}`} className="block h-[66px] w-[66px]">
+              <Image src={item.image} alt={item.name} className="h-[66px] w-[66px] rounded-lg object-contain" />
+            </Link>
             {/* Product Info */}
-            <div className="">
-              <p className="text-sm">{item.name}</p>
+            <div>
+              <Link to={`/${item.category}/${item.itemId}`} className="block">
+                <p className="text-sm">{item.name}</p>
+              </Link>
             </div>
           </div>
 

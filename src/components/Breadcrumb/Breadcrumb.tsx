@@ -39,10 +39,7 @@ export const Breadcrumb = () => {
         const isLast = i === segments.length - 1;
 
         return (
-          <BreadcrumbItem
-            key={path}
-            className={isLast ? 'text-gray-800 font-medium' : 'text-gray-500'}
-          >
+          <BreadcrumbItem key={path} className={isLast ? 'text-gray-800 font-medium' : 'text-gray-500'}>
             {isLast ? (
               formatName(segment)
             ) : (

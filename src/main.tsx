@@ -11,7 +11,7 @@ import { CartProvider } from './store/CartContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Provider>
         <ProductsProvider>
           <FavouritesProvider>

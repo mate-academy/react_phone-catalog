@@ -7,11 +7,7 @@ type Props = {
   onChange: (page: number) => void;
 };
 
-export const ProductsPagination: React.FC<Props> = ({
-  total,
-  page,
-  onChange,
-}) => {
+export const ProductsPagination: React.FC<Props> = ({ total, page, onChange }) => {
   return (
     <div className="flex justify-center py-6">
       <Pagination

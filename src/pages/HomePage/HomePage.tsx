@@ -55,12 +55,10 @@ export default function HomePage() {
     <section className="flex flex-col justify-center gap-20">
       <h1 className="hidden">Product Catalog</h1>
       <PicturesSlider />
-      <div className="px-6 xl:px-[152px] flex flex-col gap-20">
+      <div className="px-6 xl:px-38 flex flex-col gap-20">
         <BrandNewModelsSlider products={phones} />
         <div className="flex flex-col gap-8">
-          <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">
-            Shop by category
-          </h2>
+          <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">Shop by category</h2>
           <div className="flex flex-col sm:flex-row justify-between gap-10 sm:gap-2">
             <Category data={getDataCategory(CategoryType.PHONES)} />
             <Category data={getDataCategory(CategoryType.TABLETS)} />

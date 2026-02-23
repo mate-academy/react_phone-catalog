@@ -42,9 +42,7 @@ export const MayLike: React.FC<Props> = ({ products }) => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between">
-        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">
-          You may also like
-        </h2>
+        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">You may also like</h2>
 
         {/* Controls */}
         <div className="flex gap-2">
@@ -70,10 +68,7 @@ export const MayLike: React.FC<Props> = ({ products }) => {
       </div>
 
       {/* Slider container */}
-      <div
-        ref={listRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth hideScrollBar"
-      >
+      <div ref={listRef} className="flex gap-6 overflow-x-auto scroll-smooth hideScrollBar">
         {randomized.map(product => (
           <div key={product.id}>
             <ProductCard product={product} />

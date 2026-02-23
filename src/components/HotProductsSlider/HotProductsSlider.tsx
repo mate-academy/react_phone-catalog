@@ -37,9 +37,7 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between">
-        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">
-          Hot prices
-        </h2>
+        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">Hot prices</h2>
 
         {/* Controls */}
         <div className="flex gap-2">
@@ -65,12 +63,9 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
       </div>
 
       {/* Slider container */}
-      <div
-        ref={listRef}
-        className="flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth hideScrollBar pb-4"
-      >
+      <div ref={listRef} className="flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth hideScrollBar pb-4">
         {sorted.map(product => (
-          <div key={product.id} className="">
+          <div key={product.id}>
             <ProductCard product={product} />
           </div>
         ))}

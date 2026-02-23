@@ -24,15 +24,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return cartItems[product.itemId];
   }, [product?.itemId, cartItems]);
 
-  console.log(product.image);
-
   return (
     <Card
       as="div"
       isPressable={false}
       key={product.id}
       shadow="sm"
-      className="h-auto min-h-[440px] sm:min-h-[504px] border-gray-600 rounded-small p-7 shadow-md hover:shadow-lg transition text-[#0F0F11]"
+      className="h-auto min-h-[440px] sm:min-h-[504px] min-w-[212px] sm:min-w-[237px] border-gray-600 rounded-small p-7 shadow-md hover:shadow-lg transition text-[#0F0F11]"
     >
       <div className="flex justify-center mb-6">
         <Link to={`/${product.category}/${product.itemId}`} className="block">
@@ -54,11 +52,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="flex items-center gap-3 pb-2 mb-4 text-[22px] border-b-1 border-gray-200">
         <span className="font-bold">${product.price}</span>
-        {product.fullPrice && (
-          <span className="text-[#89939A] leading-[21px] line-through">
-            ${product.fullPrice}
-          </span>
-        )}
+        {product.fullPrice && <span className="text-[#89939A] leading-[21px] line-through">${product.fullPrice}</span>}
       </div>
 
       {/* Specs */}
@@ -79,12 +73,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="flex items-center justify-between w-full gap-2">
         {inCartProductCounts ? (
-          <Button
-            variant="bordered"
-            radius="full"
-            disabled
-            className="h-10 w-[176px] sm:w-[118px] flex-1 bg-white text-[#4219d0]"
-          >
+          <Button variant="bordered" radius="full" disabled className="h-10 w-[176px] sm:w-[118px] flex-1 bg-white text-[#4219d0]">
             Added to cart
           </Button>
         ) : (
@@ -98,18 +87,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </Button>
         )}
 
-        <Button
-          isIconOnly
-          variant="bordered"
-          radius="full"
-          className="border-gray-300"
-          onPress={() => toggleFavourite(product.itemId)}
-        >
-          {fav ? (
-            <HeartIcon size={16} color="#f4ba47" weight="fill" />
-          ) : (
-            <HeartIcon size={16} weight="bold" />
-          )}
+        <Button isIconOnly variant="bordered" radius="full" className="border-gray-300" onPress={() => toggleFavourite(product.itemId)}>
+          {fav ? <HeartIcon size={16} color="#f4ba47" weight="fill" /> : <HeartIcon size={16} weight="bold" />}
         </Button>
       </div>
     </Card>

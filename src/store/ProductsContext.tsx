@@ -35,11 +35,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     [products, isLoading, errorMessage],
   );
 
-  return (
-    <ProductsContext.Provider value={value}>
-      {children}
-    </ProductsContext.Provider>
-  );
+  return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>;
 };
 
 export function useProducts() {

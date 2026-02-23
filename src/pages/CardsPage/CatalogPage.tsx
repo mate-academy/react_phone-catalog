@@ -1,11 +1,5 @@
 import SortDropdown from '@/components/SortDropdown/SortDropdown';
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from '@heroui/react';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@heroui/react';
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { ProductsContext } from '@/store/ProductsContext';
 
@@ -53,27 +47,18 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const perPageParam = params.get('perPage') ?? 'all';
 
   const page = Math.max(pageParam, 1);
-  const perPage = PER_PAGE_OPTIONS.includes(perPageParam as any)
-    ? perPageParam
-    : 'all';
+  const perPage = PER_PAGE_OPTIONS.includes(perPageParam as any) ? perPageParam : 'all';
 
   // ---- derive paging ----
-  const perPageNumber =
-    perPage === 'all' ? sortedProducts.length : Number(perPage);
+  const perPageNumber = perPage === 'all' ? sortedProducts.length : Number(perPage);
 
-  const totalPages =
-    perPage === 'all'
-      ? 1
-      : Math.max(1, Math.ceil(sortedProducts.length / perPageNumber));
+  const totalPages = perPage === 'all' ? 1 : Math.max(1, Math.ceil(sortedProducts.length / perPageNumber));
 
   const currentPage = Math.min(page, totalPages);
 
   const start = (currentPage - 1) * perPageNumber;
 
-  const visibleProducts =
-    perPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(start, start + perPageNumber);
+  const visibleProducts = perPage === 'all' ? sortedProducts : sortedProducts.slice(start, start + perPageNumber);
 
   // ---- helpers to sync URL ----
   const updateParams = (next: { page?: number; perPage?: string }) => {
@@ -109,14 +94,12 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
     updateParams({ perPage: value });
   };
 
-  const label = perPage === '4' ? '4' : perPage === '8' ? '8' : '16';
+  const label = perPage === '4' ? '4' : perPage === '8' ? '8' : perPage === '16' ? '16' : 'All';
 
   return (
     <div className="px-6 xl:px-[152px]">
       <Breadcrumb />
-      <h1 className="text-[32px] sm:text-5xl tracking-[-0.01em] font-bold mb-3">
-        {title}
-      </h1>
+      <h1 className="text-[32px] sm:text-5xl tracking-[-0.01em] font-bold mb-3">{title}</h1>
 
       <div className="flex flex-wrap justify-between items-center mb-10">
         <p className="text-gray-400 text-[14px]">{modelsAmount} models</p>
@@ -125,9 +108,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
       <div className="flex gap-5">
         <SortDropdown />
         <div className="flex flex-col gap-1">
-          <p className="text-[#89939A] font-semibold text-[10px]">
-            Items on page
-          </p>
+          <p className="text-[#89939A] font-semibold text-[10px]">Items on page</p>
           <Dropdown onOpenChange={setIsOpen}>
             <DropdownTrigger>
               <Button
@@ -151,9 +132,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
               aria-label="Sort options"
               selectionMode="single"
               selectedKeys={[perPage]}
-              onSelectionChange={keys =>
-                handlePerPageChange(Array.from(keys)[0] as string)
-              }
+              onSelectionChange={keys => handlePerPageChange(Array.from(keys)[0] as string)}
             >
               <DropdownItem key="4">4</DropdownItem>
               <DropdownItem key="8">8</DropdownItem>
@@ -181,8 +160,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
               radius="full"
               variant="bordered"
               classNames={{
-                cursor:
-                  'bg-linear-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold',
+                cursor: 'bg-linear-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold',
               }}
               onChange={handlePageChange}
             />

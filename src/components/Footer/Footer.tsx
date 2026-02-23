@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const scrollElement = document.scrollingElement || document.documentElement;
+
+    scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const main = document.querySelector('main');
+
+    if (main) {
+      main.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -25,20 +33,11 @@ export const Footer = () => {
 
         {/* RIGHT: Back to top */}
         <div className="flex justify-center items-center gap-3">
-          <button
-            onClick={scrollToTop}
-            className="text-[12px] text-[#89939A] font-semibold cursor-pointer"
-          >
+          <button onClick={scrollToTop} className="text-[12px] text-[#89939A] font-semibold cursor-pointer">
             Back to top
           </button>
           <div className="">
-            <Button
-              isIconOnly
-              variant="bordered"
-              radius="full"
-              onPress={scrollToTop}
-              className="w-8 h-8 min-w-8 min-h-8 p-0 border-gray-300"
-            >
+            <Button isIconOnly variant="bordered" radius="full" onPress={scrollToTop} className="w-8 h-8 min-w-8 min-h-8 p-0 border-gray-300">
               <CaretUpIcon size={12} weight="bold" />
             </Button>
           </div>

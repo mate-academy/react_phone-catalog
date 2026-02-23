@@ -19,9 +19,7 @@ export const Category: React.FC<Props> = ({ data }) => {
         </div>
       </Link>
       <div>
-        <h3 className="text-[20px] font-semibold text-[#0F0F11] mb-2">
-          {title}
-        </h3>
+        <h3 className="text-[20px] font-semibold text-[#0F0F11] mb-2">{title}</h3>
         <p className="text-[#89939A]">{amountItems} models</p>
       </div>
     </div>

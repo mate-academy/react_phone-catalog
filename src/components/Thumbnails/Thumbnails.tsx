@@ -12,12 +12,7 @@ export const Thumbnails: React.FC<Props> = ({ images }) => {
     <div className="flex flex-col sm:flex-row-reverse gap-4 lg:w-1/2 w-full">
       {/* Main image */}
       <div className="flex items-center justify-center flex-1 h-[288px] lg:h-[442px] overflow-hidden rounded-xl px-10">
-        <img
-          src={`/${activeImage}`}
-          alt="selected"
-          width="100%"
-          className="h-[288px] lg:h-[442px] object-contain rounded-xl"
-        />
+        <img src={`/${activeImage}`} alt="selected" width="100%" className="h-[288px] lg:h-[442px] object-contain rounded-xl" />
       </div>
       {/* Thumbnails */}
       <div className="flex flex-row sm:flex-col items-center sm:justify-start gap-2">

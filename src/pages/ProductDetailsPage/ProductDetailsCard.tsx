@@ -1,7 +1,7 @@
 import { getProductDetails, TCategory } from '@/api/api';
 import { ProductDetails } from '@/types/ProductDetails';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@heroui/button';
 import { HeartStraightIcon } from '@phosphor-icons/react';
 import { useFavourites } from '@/store/FavouritesContext';
@@ -19,10 +19,9 @@ export const ProductDetailsCard = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [notFound, setNotFound] = useState<boolean>(false);
   const [color, setColor] = useState<string | undefined>(product?.color);
-  const [capacity, setCapacity] = useState<string | undefined>(
-    product?.capacity,
-  );
+  const [capacity, setCapacity] = useState<string | undefined>(product?.capacity);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo({
@@ -47,6 +46,22 @@ export const ProductDetailsCard = () => {
   }, [product?.id, cartItems]);
 
   const fav = productId ? isFavourite(productId) : false;
+
+  const buildProductId = (namespaceId: string, capacityValue: string, colorValue: string) => {
+    return `${namespaceId}-${capacityValue.toLowerCase()}-${colorValue}`;
+  };
+
+  const goToVariant = (nextColor?: string, nextCapacity?: string) => {
+    if (!product || !category) {
+      return;
+    }
+
+    const capacityValue = nextCapacity ?? capacity ?? product.capacity;
+    const colorValue = nextColor ?? color ?? product.color;
+    const nextId = buildProductId(product.namespaceId, capacityValue, colorValue);
+
+    navigate(`/${category}/${nextId}`);
+  };
 
   useEffect(() => {
     const runApiCall = async () => {
@@ -89,9 +104,7 @@ export const ProductDetailsCard = () => {
       return [];
     }
 
-    return products.filter(
-      p => p.category === category && p.itemId !== productId,
-    );
+    return products.filter(p => p.category === category && p.itemId !== productId);
   }, [products, productId, category, product]);
 
   const onFavorite = useCallback(() => {
@@ -114,18 +127,10 @@ export const ProductDetailsCard = () => {
     return (
       <div className="px-6 xl:px-[152px] min-h-screen flex flex-col justify-center py-16">
         <div className="max-w-[360px] mb-6">
-          <img
-            src="/img/product-not-found.png"
-            alt="Product not found"
-            className="w-full h-auto"
-          />
+          <img src="/img/product-not-found.png" alt="Product not found" className="w-full h-auto" />
         </div>
-        <h1 className="text-2xl sm:text-4xl font-bold text-[#0F0F11] mb-4">
-          Product was not found
-        </h1>
-        <p className="text-[#89939A] mb-6">
-          The product you are looking for doesn&apos;t exist.
-        </p>
+        <h1 className="text-2xl sm:text-4xl font-bold text-[#0F0F11] mb-4">Product was not found</h1>
+        <p className="text-[#89939A] mb-6">The product you are looking for doesn&apos;t exist.</p>
         <Link
           to="/"
           className="inline-flex items-center justify-center h-10 px-4 rounded-full border border-gray-300 text-[#0F0F11] hover:border-gray-400"
@@ -148,9 +153,7 @@ export const ProductDetailsCard = () => {
               {/* COLORS */}
               <div className="pb-6 mb-6 border-b-2 border-gray-200">
                 <div className="flex justify-between">
-                  <h3 className="text-sm font-semibold text-[#89939A] mb-2">
-                    Available colors
-                  </h3>
+                  <h3 className="text-sm font-semibold text-[#89939A] mb-2">Available colors</h3>
                   <div className="flex xl:hidden">
                     <p className="text-[#B4BDC3] text-[12px]">ID:123456</p>
                   </div>
@@ -163,7 +166,10 @@ export const ProductDetailsCard = () => {
                         name="color"
                         value={colorValue}
                         checked={color === colorValue}
-                        onChange={() => setColor(colorValue)}
+                        onChange={() => {
+                          setColor(colorValue);
+                          goToVariant(colorValue, undefined);
+                        }}
                         className="peer hidden"
                       />
 
@@ -193,7 +199,10 @@ export const ProductDetailsCard = () => {
                         name="capacity"
                         value={cap}
                         checked={capacity === cap}
-                        onChange={() => setCapacity(cap)}
+                        onChange={() => {
+                          setCapacity(cap);
+                          goToVariant(undefined, cap);
+                        }}
                         className="peer hidden"
                       />
                       <div
@@ -204,7 +213,10 @@ export const ProductDetailsCard = () => {
                     peer-checked:bg-black
                     peer-checked:text-white
                   "
-                        onClick={() => setCapacity(cap)}
+                        onClick={() => {
+                          setCapacity(cap);
+                          goToVariant(undefined, cap);
+                        }}
                       >
                         {cap}
                       </div>
@@ -216,12 +228,8 @@ export const ProductDetailsCard = () => {
               {/* PRICE */}
               <div className="mb-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-[32px] font-bold">
-                    ${product.priceDiscount}
-                  </span>
-                  <span className="text-lg line-through text-gray-400">
-                    ${product.priceRegular}
-                  </span>
+                  <span className="text-[32px] font-bold">${product.priceDiscount}</span>
+                  <span className="text-lg line-through text-gray-400">${product.priceRegular}</span>
                 </div>
               </div>
 
@@ -247,22 +255,8 @@ export const ProductDetailsCard = () => {
                     Add to Card
                   </Button>
                 )}
-                <Button
-                  isIconOnly
-                  variant="bordered"
-                  radius="full"
-                  className="min-w-12 min-h-12 border-gray-300"
-                  onPress={onFavorite}
-                >
-                  {fav ? (
-                    <HeartStraightIcon
-                      size={18}
-                      color="#f4ba47"
-                      weight="fill"
-                    />
-                  ) : (
-                    <HeartStraightIcon size={18} weight="bold" />
-                  )}
+                <Button isIconOnly variant="bordered" radius="full" className="min-w-12 min-h-12 border-gray-300" onPress={onFavorite}>
+                  {fav ? <HeartStraightIcon size={18} color="#f4ba47" weight="fill" /> : <HeartStraightIcon size={18} weight="bold" />}
                 </Button>
               </div>
 
@@ -297,14 +291,10 @@ export const ProductDetailsCard = () => {
       <div className="flex flex-col lg:flex-row gap-16 mt-16 text-[#89939A] text-sm">
         {/* LEFT — ABOUT */}
         <div className="lg:w-1/2 w-full flex flex-col gap-6">
-          <h2 className="text-xl text-[#0F0F11] font-semibold pb-4 border-b-2 border-gray-200">
-            About
-          </h2>
+          <h2 className="text-xl text-[#0F0F11] font-semibold pb-4 border-b-2 border-gray-200">About</h2>
           {product.description.map((desc, i) => (
             <div key={i} className="flex flex-col gap-2">
-              <h3 className="text-[16px] text-[#0F0F11] font-semibold">
-                {desc.title}
-              </h3>
+              <h3 className="text-[16px] text-[#0F0F11] font-semibold">{desc.title}</h3>
               <p className="text-sm leading-[21px]">{desc.text}</p>
             </div>
           ))}
@@ -312,9 +302,7 @@ export const ProductDetailsCard = () => {
 
         {/* RIGHT — TECH SPECS */}
         <div className="lg:w-1/2 w-full flex flex-col gap-6">
-          <h2 className="text-xl text-[#0F0F11] font-semibold pb-4 border-b-2 border-gray-200">
-            Tech specs
-          </h2>
+          <h2 className="text-xl text-[#0F0F11] font-semibold pb-4 border-b-2 border-gray-200">Tech specs</h2>
 
           <div className="flex justify-between">
             <span>Screen</span>
@@ -352,9 +340,7 @@ export const ProductDetailsCard = () => {
           </div>
         </div>
       </div>
-      <div className="mt-20">
-        {sortedProducts.length > 0 && <MayLike products={sortedProducts} />}
-      </div>
+      <div className="mt-20">{sortedProducts.length > 0 && <MayLike products={sortedProducts} />}</div>
     </div>
   );
 };

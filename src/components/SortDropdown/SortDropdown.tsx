@@ -1,10 +1,4 @@
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from '@heroui/react';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@heroui/react';
 import { useSearchParams } from 'react-router-dom';
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
@@ -16,21 +10,19 @@ export default function SortDropdown() {
   const currentSort = searchParams.get('sort') || 'age';
 
   const handleChange = (value: string) => {
+    const nextParams = new URLSearchParams(searchParams);
+
     if (value === 'age') {
-      searchParams.delete('sort');
+      nextParams.delete('sort');
     } else {
-      searchParams.set('sort', value);
+      nextParams.set('sort', value);
     }
 
-    setSearchParams(searchParams);
+    nextParams.delete('page');
+    setSearchParams(nextParams);
   };
 
-  const label =
-    currentSort === 'age'
-      ? 'Newest'
-      : currentSort === 'alpha'
-        ? 'Alphabetically'
-        : 'Cheapest';
+  const label = currentSort === 'age' ? 'Newest' : currentSort === 'alpha' ? 'Alphabetically' : 'Cheapest';
 
   return (
     <div className="flex flex-col gap-1">
@@ -58,10 +50,17 @@ export default function SortDropdown() {
         <DropdownMenu
           aria-label="Sort options"
           selectionMode="single"
+          disallowEmptySelection
           selectedKeys={[currentSort]}
-          onSelectionChange={keys =>
-            handleChange(Array.from(keys)[0] as string)
-          }
+          onSelectionChange={keys => {
+            const [key] = Array.from(keys);
+
+            if (!key) {
+              return;
+            }
+
+            handleChange(key as string);
+          }}
         >
           <DropdownItem key="age">Newest</DropdownItem>
           <DropdownItem key="alpha">Alphabetically</DropdownItem>

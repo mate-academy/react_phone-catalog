@@ -21,9 +21,7 @@ export const FavouritesPage: React.FC = () => {
       </div>
 
       {favouriteProducts.length === 0 ? (
-        <p className="text-lg text-gray-500">
-          You haven't added any products to favorites yet.
-        </p>
+        <p className="text-lg text-gray-500">You haven't added any products to favorites yet.</p>
       ) : (
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {favouriteProducts.map(product => (

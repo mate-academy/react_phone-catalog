@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export type CartItem = Record<string, number>;
 
@@ -54,8 +54,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       const currentQuantity = prev[id] || 0;
 
       return {
-        ...prev,
         [id]: currentQuantity + 1,
+        ...prev,
       };
     });
   };
@@ -78,13 +78,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const decrement = (id: string) => {
-    setCartItems(prev =>
-      prev[id] > 1
-        ? { ...prev, [id]: prev[id] - 1 }
-        : Object.fromEntries(
-            Object.entries(prev).filter(([key]) => key !== id),
-          ),
-    );
+    setCartItems(prev => (prev[id] > 1 ? { ...prev, [id]: prev[id] - 1 } : Object.fromEntries(Object.entries(prev).filter(([key]) => key !== id))));
   };
 
   const clearCart = () => {
