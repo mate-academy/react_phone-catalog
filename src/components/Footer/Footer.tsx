@@ -33,16 +33,16 @@ export const Footer = () => {
             </ul>
           </nav>
           <div className={styles['footer__go-back']}>
-            <a className={styles['footer__go-back-link']} href="#body">
+            <button className={styles['footer__go-back-link']} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               Back to top
-            </a>
-            <a className={styles['footer__go-back-btn']} href="#body">
+            </button>
+            <button className={styles['footer__go-back-btn']} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <img
                 className="footer__go-back-img"
                 src="./img/icons/arrow-up.svg"
                 alt="Arrow Up"
               />
-            </a>
+            </button>
           </div>
         </div>
       </div>
