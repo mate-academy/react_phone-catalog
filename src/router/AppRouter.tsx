@@ -9,11 +9,19 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 export const AppRouter = () => (
   <Routes>
+    {/* Дефолтна сторінка (корінь '/') */}
     <Route path={routes.home} element={<HomePage />} />
+
+    {/* Каталог з параметром категорії */}
     <Route path={routes.catalog} element={<Catalog />} />
+
+    {/* Продукт з категорією і айді */}
     <Route path={routes.product} element={<ItemCard />} />
+
     <Route path={routes.favorites} element={<Favorites />} />
     <Route path={routes.cart} element={<Cart />} />
-    <Route path="*" element={<NotFoundPage />} />
+
+    {/* 404 сторінка для всіх інших шляхів */}
+    <Route path={routes.notFound} element={<NotFoundPage />} />
   </Routes>
 );
