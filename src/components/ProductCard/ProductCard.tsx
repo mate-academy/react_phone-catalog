@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div
-      className={`${styles.productCard} ${styles.product} ${className ?? ''}
+      className={`${styles.productCard} ${styles.productCard__product} ${className ?? ''}
                       ${index === 1 ? styles.mobile : ''}
                       ${index > 1 && index <= visibleOnTablet ? styles.tablet : ''}
                       ${index <= visibleOnDesktop ? styles.desktop : ''}`}

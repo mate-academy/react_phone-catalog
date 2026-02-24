@@ -3,15 +3,15 @@ import ProductCard from '../ProductCard/index';
 
 interface ProductsListProps {
   products?: any[];
-  onAddToCart?: (product: any) => void;
-  onToggleFavorite?: (productId: any)=> void;
+  handleAddToCart?: (product: any) => void;
+  handleToggleFavorite?: (productId: any) => void;
   emptyMessage?: string;
 }
 
 export const ProductsList = ({
-  products = [],
-  onAddToCart,
-  onToggleFavorite,
+  products,
+  handleAddToCart,
+  handleToggleFavorite,
   emptyMessage = 'There are no products yet',
 }: ProductsListProps) => {
   if (!Array.isArray(products) || products.length === 0) {
@@ -19,16 +19,26 @@ export const ProductsList = ({
   }
 
   return (
-    <ul className={styles.list}>
-      {products.map(product => (
-        <li key={product.id} className={styles.item}>
-          <ProductCard
-            product={product}
-            onAddToCart={onAddToCart}
-            onToggleFavorite={onToggleFavorite}
-          />
-        </li>
-      ))}
-    </ul>
+    <div className={styles.productsList}>
+      <div className={styles.productsList__title}></div>
+      <div className={styles.productsList__topBar}>
+        <div className={`${styles.productsList__icons} ${styles.icons}`}></div>
+      </div>
+
+      <div className={styles.productsList__content}>
+        <div className={styles.productsList__list}>
+          {products.map((product, i) => (
+            <ProductCard
+              product={product}
+              index={i}
+              className={styles.productsList__product}
+              handleAddToCart={handleAddToCart}
+              handleToggleFavorite={handleToggleFavorite}
+              key={product?.id}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };

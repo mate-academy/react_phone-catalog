@@ -85,6 +85,29 @@
   }
 
 
+
+ &__product {
+
+    display: none;
+
+    &.mobile {
+      display: block;
+    }
+
+  @include on-tablet {
+    &.tablet {
+      display: block;
+    }
+  }
+
+  @include on-desktop {
+    &.desktop {
+      display: block;
+    }
+  }
+}
+
+
   .icons {
     display: flex;
     justify-content: flex-end;
@@ -95,12 +118,13 @@
 
   }
 
+  
+.icon {
 
-  .icon {
     width: 32px;
     height: 32px;
     padding: 0;
-
+    border: 1px solid $icons-color;
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
@@ -113,45 +137,48 @@
     justify-content: center;
     cursor: pointer;
 
-    border: 1px solid $icons-color;
-
-
-    &:hover {
-       background-color: $hover-bg-color;
-       border-color: $primary-color;
-
-       @include hover(color, $hover-bg-color(1.1));
-    }
-
     &.disabled, &[disabled] {
-      pointer-events: none;
-      cursor: not-allowed;
-      background: $hover-bg-color;
-      border-color: $icons-color;
+    pointer-events: none;
+    cursor: not-allowed;
+    background: $hover-bg-color;
+    border-color: $icons-color;
+    transform: none;
+    box-shadow: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 
-      transform: none;
-      box-shadow: none;
+  }
+  &--button-left {
+
+
+    background-image: url('/img/icons/icon-button-left-2x.png');
+    &:hover {
+      background-color: $hover-bg-color;
+      border-color: $primary-color;
+      @include hover(color, $hover-bg-color(1.1));
+  }
+    &.disabled, &[disabled] {
+
+    background-image: url('/img/icons/icon-button-left-disabled-2x.png');
+  }
   }
 
-  &--button--left {
-    background-image: url(/img/icons/icon-button-left-2x.png);
-    justify-self: start;
-
-     &.disabled, &[disabled] {
-      background-image: url(/img/icons/icon-button-left-disabled-2x.png);
-     }
-  }
-
-  &--button--right {
+  &--button-right {
     background-image: url(/img/icons/icon-button-right-2x.png);
     justify-self: end;
-
-    &.disabled, &[disabled] {
-      background-image: url(/img/icons/icons/icon-button-right-disabled-2x.png);
-     }
+      &:hover {
+      background-color: $hover-bg-color;
+      border-color: $primary-color;
+      @include hover(color, $hover-bg-color(1.1));
   }
+    &.disabled, &[disabled] {
 
- }
+    background-image: url('/img/icons/icon-button-right-disabled-2x.png');
+  }
+  }
+}
 
 
 }
+

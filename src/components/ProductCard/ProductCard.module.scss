@@ -3,7 +3,7 @@
 
 
 .productCard {
-   @include page-grid;
+  // @include page-grid;
 
 
   &__productInfo {
@@ -95,7 +95,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px 0;
     align-items: center;
-    width: 100%;
+  //  width: 100%;
     border-top: 1px solid $elements-color;
     margin-block: 8px;
     padding-top: 16px;
@@ -186,7 +186,7 @@
   }
 
  }
- 
+
   .button {
     border-radius: 8px;
     display: inline-flex;
@@ -204,6 +204,9 @@
     &--add-to-card {
     width: 100px;
     height: 40px;
+    margin: 0;
+
+    padding: 0;
     background-color: $accent-color;
 
       @include on-tablet {
@@ -217,16 +220,17 @@
     }
 
     &--favourites {
+      margin: 0;
+      padding: 0;
       background-color: transparent;
     }
 
 }
-}
 
-.product {
+&__product {
   margin: 0;
   padding: 0;
-  display: none;
+//  display: none;
   box-sizing: border-box;
   min-width: 0;
 
@@ -246,5 +250,8 @@
     }
   }
 }
+
+}
+
 
 

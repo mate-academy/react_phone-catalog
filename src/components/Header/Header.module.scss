@@ -2,6 +2,7 @@
 @import '../../utils/mixins';
 
 .header {
+
  // min-width: 100%;
 
   box-sizing: border-box;
@@ -19,7 +20,54 @@
   @include on-desktop {
     height: 64px;
   }
+
+
+.topBar {
+  border-bottom: 1px solid $header-border-color;
+  display: flex;
+  justify-content:  space-between;
+  background-color: $header-background-color;
+
+  &__menu {
+      display: none ;
+
+      @include on-tablet {
+        height: 48px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        }
+
+      @include on-desktop {
+          gap: 64px;
+      }
+  }
+
+  &__icons {
+    display: flex;
+    width: object-fit;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
 }
+
+.link {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: $menu-color;
+    background-color: $footer-background-color;
+
+     @include hover(transform, scale(1.1));
+  }
+
+}
+
 
 .icon {
   cursor: pointer;
@@ -69,47 +117,3 @@
     height: 16px;
   }
 }
-
-.topBar {
-  border-bottom: 1px solid $header-border-color;
-  display: flex;
-  justify-content:  space-between;
-  background-color: $header-background-color;
-
-  &__menu {
-      display: none ;
-
-      @include on-tablet {
-        height: 48px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        }
-
-      @include on-desktop {
-          gap: 64px;
-      }
-  }
-
-  &__icons {
-    display: flex;
-    width: object-fit;
-    height: 48px;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-
-}
-
-.link {
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 4%;
-    color: $menu-color;
-    background-color: $footer-background-color;
-
-     @include hover(transform, scale(1.1));
-  }

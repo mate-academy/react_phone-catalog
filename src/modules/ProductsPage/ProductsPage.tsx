@@ -1,6 +1,8 @@
+import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import ProductsList from '../../components/ProductsList/index';
 import { Product } from '../../../public/api/types/Product';
+import Pagination from '../../components/Pagination/index';
 
 type ProductsPageProps = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -14,16 +16,36 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleAddToCart = (productId: string) => {
-    // TODO: Implement add to cart logic
-    console.log('Add to cart:', productId);
-  };
+  const filteredProducts = products.filter(
+    p => String(p.category).toLowerCase() === category,
+  );
+  const total = filteredProducts.length;
 
-  const handleToggleFavorite = (productId: string) => {
-    // TODO: Implement toggle favorite logic
-    console.log('Toggle favorite:', productId);
-  };
+  const rawPerPage = searchParams.get('perPage');
+  let perPage: number | 'all' = rawPerPage
+    ? rawPerPage === 'all'
+      ? 'all'
+      : Number(rawPerPage)
+    : 16;
+
+  if (perPage !== 'all' && ![4, 8, 16].includes(perPage)) {
+    perPage = 'all';
+  }
+
+  const effectivePerPage = perPage === 'all' ? total : perPage;
+  const totalPages =
+    effectivePerPage === 0
+      ? 1
+      : Math.max(1, Math.ceil(total / effectivePerPage));
+  const rawPage = searchParams.get('page');
+  const pageParsed = rawPage ? Math.max(1, Number(rawPage) || 1) : 1;
+  const normalizedPage = Math.min(pageParsed, totalPages);
+  const start =
+    perPage === 'all' ? 0 : (normalizedPage - 1) * (perPage as number);
+  const end = perPage === 'all' ? total : start + (perPage as number);
+  const visibleProducts = filteredProducts.slice(start, end);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -56,9 +78,38 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     return () => ctrl.abort();
   }, [category]);
 
-  const filteredProducts = products.filter(
-    p => String(p.category).toLowerCase() === category,
-  );
+  const handleAddToCart = (productId: string) => {
+    // TODO: Implement add to cart logic
+    console.log('Add to cart:', productId);
+  };
+
+  const handleToggleFavorite = (productId: string) => {
+    // TODO: Implement toggle favorite logic
+    console.log('Toggle favorite:', productId);
+  };
+
+  const handlePaginationChange = (
+    newPage: number,
+    newPerPage: number | 'all',
+  ) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (newPerPage === 'all') {
+      params.delete('perPage');
+      params.delete('page');
+    } else {
+      params.set('perPage', String(newPerPage));
+      params.delete('page');
+    }
+
+    if (newPage > 1) {
+      params.set('page', String(newPage));
+    } else {
+      params.delete('page');
+    }
+
+    setSearchParams(params);
+  };
 
   return (
     <>
@@ -66,11 +117,20 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         <section id={category} aria-label={title}>
           <h1>{title}</h1>
 
-          {!loading && !error && Array.isArray(products) && (
+          {!loading && !error && Array.isArray(visibleProducts) && (
             <ProductsList
-              products={filteredProducts}
-              onAddToCart={handleAddToCart}
-              onToggleFavorite={handleToggleFavorite}
+              products={visibleProducts}
+              handleAddToCart={handleAddToCart}
+              handleToggleFavorite={handleToggleFavorite}
+            />
+          )}
+
+          {total > 0 && effectivePerPage < total && (
+            <Pagination
+              total={total}
+              currentPage={normalizedPage}
+              perPage={perPage}
+              onChange={handlePaginationChange}
             />
           )}
         </section>

@@ -2,6 +2,8 @@ import styles from './ProductsSlider.module.scss';
 
 import { Product } from '../../../../../public/api/types/Product';
 import ProductCard from '../../../../components/ProductCard/index';
+import IconButtonLeft from '../../../../components/IconButtonLeft/index';
+import IconButtonRight from '../../../../components/IconButtonRight/index';
 
 type ProductsSliderProps = {
   products: Product[] | null;
@@ -22,8 +24,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   handleToggleFavorite,
   children,
 }) => {
-
-
   const hasProducts = Array.isArray(products) && products.length > 0;
   const safeIndex = Number.isInteger(currentIndex) ? currentIndex : 0;
   const visibleCount = 4;
@@ -35,15 +35,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   }).filter(notNull);
   const visible: Product[] = hasProducts ? arrayFrom : [];
 
- /* const currentProduct =
-    products &&
-    products.length &&
-    currentIndex >= 0 &&
-    currentIndex < products.length
-      ? products[currentIndex]
-      : null;
-      */
-
   const isPrevDisabled = !products || currentIndex <= 0;
   const isNextDisabled = !products || currentIndex >= products.length - 1;
 
@@ -54,19 +45,15 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       </div>
       <div className={styles.productsSlider__topBar}>
         <div className={`${styles.productsSlider__icons} ${styles.icons}`}>
-          <button
-            type="button"
-            onClick={handlePrev}
-            aria-label="Previous"
-            disabled={isPrevDisabled}
-            className={`${styles.icon} ${styles['icon--button--left']} ${isPrevDisabled ? styles.disabled : ''}`}
+          <IconButtonLeft
+            className={`${styles.icon} ${styles['icon--button-left']}`}
+            handleClick={handlePrev}
+            isDisabled={isPrevDisabled}
           />
-          <button
-            type="button"
-            onClick={handleNext}
-            aria-label="Next"
-            disabled={isNextDisabled}
-            className={`${styles.icon} ${styles['icon--button--right']} ${isNextDisabled ? styles.disabled : ''}`}
+          <IconButtonRight
+            className={`${styles.icon} ${styles['icon--button-right']}`}
+            handleClick={handleNext}
+            isDisabled={isNextDisabled}
           />
         </div>
       </div>
@@ -77,7 +64,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             <ProductCard
               product={product}
               index={i}
-              className={styles.productsSlider__productInfo}
+              className={styles.productsSlider__product}
               handleAddToCart={handleAddToCart}
               handleToggleFavorite={handleToggleFavorite}
               key={product?.id}

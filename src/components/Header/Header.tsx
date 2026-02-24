@@ -63,7 +63,7 @@ export const Header = () => {
                 <button
                   type="button"
                   onClick={() => setIsMenuOpen(prev => !prev)}
-                  className={`${styles.icon} ${styles['icon--menu']}`}
+                  className={`${styles.icon}  ${styles['icon--menu']}`}
                   aria-expanded={isMenuOpen}
                   aria-controls="main-menu"
                 ></button>
