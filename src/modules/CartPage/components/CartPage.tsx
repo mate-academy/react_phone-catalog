@@ -8,25 +8,37 @@ import { BaseProduct } from '../../../types';
 
 export const CartPage = () => {
   const { products, loading, error } = useProducts<BaseProduct>();
-  const { cartIds, cartItems, changeQty, deleteFromCart } = useAppContext();
+  const { cartItems, changeQty, deleteFromCart } = useAppContext();
 
-  const Cart = products.filter(item => cartIds.includes(item.itemId));
-
-  const getProductQty = (itemId: string) =>
-    cartItems.find(item => item.id === itemId)?.qty ?? 0;
-
-  const total = Cart.reduce(
-    (sum, item) => sum + item.price * getProductQty(item.itemId),
-    0,
-  );
-  const totalCount = cartItems.length;
-
-  const handleRemove = (itemId: string) => {
-    return deleteFromCart(itemId);
+  type CartEntry = {
+    cartItem: (typeof cartItems)[number];
+    product: BaseProduct;
   };
 
-  const handleQuantity = (itemId: string, delta: number) => {
-    changeQty(itemId, delta);
+  const cartEntries = cartItems
+    .map(item => ({
+      cartItem: item,
+      product: products.find(product => product.itemId === item.id),
+    }))
+    .filter((entry): entry is CartEntry => Boolean(entry.product));
+
+  const total = cartEntries.reduce(
+    (sum, entry) => sum + entry.product.price * entry.cartItem.qty,
+    0,
+  );
+  const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
+
+  const handleRemove = (itemId: string, color: string, capacity: string) => {
+    return deleteFromCart({ id: itemId, color, capacity });
+  };
+
+  const handleQuantity = (
+    itemId: string,
+    color: string,
+    capacity: string,
+    delta: number,
+  ) => {
+    changeQty({ id: itemId, color, capacity }, delta);
   };
 
   if (loading) {
@@ -46,7 +58,7 @@ export const CartPage = () => {
 
       <h1 className={styles.title}>Cart</h1>
 
-      {Cart.length === 0 ? (
+      {cartEntries.length === 0 ? (
         <div className={styles.empty}>
           <img
             src="../public/img/product-not-found.png"
@@ -59,28 +71,33 @@ export const CartPage = () => {
       ) : (
         <div className={styles.content}>
           <div className={styles.items}>
-            {Cart.map(item => (
-              <div key={item.id} className={styles.item}>
+            {cartEntries.map(({ cartItem, product }) => (
+              <div
+                key={`${cartItem.id}-${cartItem.color}-${cartItem.capacity}`}
+                className={styles.item}
+              >
                 <button
                   type="button"
                   className={styles.removeBtn}
-                  onClick={() => handleRemove(item.itemId)}
+                  onClick={() =>
+                    handleRemove(cartItem.id, cartItem.color, cartItem.capacity)
+                  }
                   aria-label="Remove from cart"
                 >
                   <i className="fas fa-xmark" />
                 </button>
 
                 <img
-                  src={item.image}
-                  alt={item.name}
+                  src={product.image}
+                  alt={product.name}
                   className={styles.itemImage}
                 />
 
                 <a
                   className={styles.itemName}
-                  href={`#/${item.category}/${item.itemId}`}
+                  href={`#/${product.category}/${product.itemId}`}
                 >
-                  {item.name}
+                  {product.name}
                 </a>
 
                 <div className={styles.quantityRow}>
@@ -88,22 +105,33 @@ export const CartPage = () => {
                     <button
                       type="button"
                       className={cn(styles.quantityBtn, {
-                        [styles.quantityBtnDisabled]:
-                          getProductQty(item.itemId) <= 1,
+                        [styles.quantityBtnDisabled]: cartItem.qty <= 1,
                       })}
-                      onClick={() => handleQuantity(item.itemId, -1)}
-                      disabled={getProductQty(item.itemId) <= 1}
+                      onClick={() =>
+                        handleQuantity(
+                          cartItem.id,
+                          cartItem.color,
+                          cartItem.capacity,
+                          -1,
+                        )
+                      }
+                      disabled={cartItem.qty <= 1}
                       aria-label="Decrease quantity"
                     >
                       <i className="fas fa-minus" />
                     </button>
-                    <span className={styles.quantityCount}>
-                      {getProductQty(item.itemId)}
-                    </span>
+                    <span className={styles.quantityCount}>{cartItem.qty}</span>
                     <button
                       type="button"
                       className={styles.quantityBtn}
-                      onClick={() => handleQuantity(item.itemId, 1)}
+                      onClick={() =>
+                        handleQuantity(
+                          cartItem.id,
+                          cartItem.color,
+                          cartItem.capacity,
+                          1,
+                        )
+                      }
                       aria-label="Increase quantity"
                     >
                       <i className="fas fa-plus" />
@@ -111,7 +139,7 @@ export const CartPage = () => {
                   </div>
 
                   <span className={styles.itemPrice}>
-                    ${item.price * getProductQty(item.itemId)}
+                    ${product.price * cartItem.qty}
                   </span>
                 </div>
               </div>

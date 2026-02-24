@@ -21,18 +21,10 @@ export const ProductCard = ({ product }: Props) => {
     capacity,
     ram,
   } = product;
-  const { cartIds, addToCart, wishlistIds, toggleWishlist } = useAppContext();
+  const { cartIds, wishlistIds, toggleWishlist } = useAppContext();
 
   const isLiked = wishlistIds.includes(itemId);
   const isInCart = cartIds.includes(itemId);
-
-  const addToCartHandler = (cartId: string) => {
-    addToCart(cartId);
-  };
-
-  // const addToWishlistHandler = (wishlistId: string) => {
-  //   toggleWishlist(wishlistId);
-  // };
 
   return (
     <article className={styles.card}>
@@ -77,31 +69,15 @@ export const ProductCard = ({ product }: Props) => {
         </ul>
 
         <div className={styles.actions}>
-          <button
-            type="button"
+          <Link
+            to={`/${category}/${itemId}`}
             className={cn(styles.addToCart, {
               [styles.addedToCart]: isInCart,
             })}
-            onClick={() => {
-              addToCartHandler(itemId);
-            }}
           >
             {isInCart ? 'Added to cart' : 'Add to cart'}
-          </button>
-          {/* <button
-            type="button"
-            className={cn(styles.wishlist, {
-              [styles.wishlistActive]: isLiked,
-            })}
-            aria-label={
-              isLiked ? 'Remove from favourites' : 'Add to favourites'
-            }
-            onClick={() => {
-              addToWishlistHandler(itemId);
-            }}
-          >
-            <i className={cn(isLiked ? 'fas' : 'far', 'fa-heart')} />
-          </button> */}
+          </Link>
+
           <WishlistButton
             productId={itemId}
             isLiked={isLiked}

@@ -8,79 +8,59 @@ import { WishlistButton } from '../../../components/WishlistButton';
 import { useProducts } from '../../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
 import { useAppContext } from '../../../hooks/use-context';
-import { DetailedProduct } from '../../../types';
-
-// TODO: fetch real product by useParams() category + productId
-const RELATED = [
-  {
-    id: 1,
-    category: 'phones',
-    itemId: 'apple-iphone-14-pro-128gb-gold',
-    image: 'img/phones/apple-iphone-14-pro/gold/00.webp',
-    name: 'Apple iPhone 14 Pro 128GB Gold (iMT9G2FS/A)',
-    price: 999,
-    fullPrice: 1199,
-    screen: "6.1' OLED",
-    capacity: '128 GB',
-    ram: '6 GB',
-  },
-  {
-    id: 2,
-    category: 'phones',
-    itemId: 'apple-iphone-11-pro-max-256gb-gold',
-    image: 'img/phones/apple-iphone-11-pro-max/gold/00.webp',
-    name: 'Apple iPhone 11 Pro Max 256GB Gold (iMT9G2FS/A)',
-    price: 799,
-    fullPrice: 1199,
-    screen: "6.5' OLED",
-    capacity: '256 GB',
-    ram: '4 GB',
-  },
-  {
-    id: 3,
-    category: 'phones',
-    itemId: 'apple-iphone-11-128gb-purple',
-    image: 'img/phones/apple-iphone-11/purple/00.webp',
-    name: 'Apple iPhone 11 128GB Purple',
-    price: 729,
-    fullPrice: 867,
-    screen: "6.2' IPS",
-    capacity: '128 GB',
-    ram: '4 GB',
-  },
-  {
-    id: 4,
-    category: 'phones',
-    itemId: 'apple-iphone-xs-256gb-silver',
-    image: 'img/phones/apple-iphone-xs/silver/00.webp',
-    name: 'Apple iPhone XS 256GB Silver (iMT9G2FS/A)',
-    price: 859,
-    fullPrice: 899,
-    screen: "5.8' OLED",
-    capacity: '256 GB',
-    ram: '4 GB',
-  },
-];
+import { BaseProduct, DetailedProduct } from '../../../types';
 
 export const ProductPage = () => {
-  const { cartIds, addToCart, wishlistIds, toggleWishlist } = useAppContext();
+  const { cartItems, addToCart, wishlistIds, toggleWishlist } = useAppContext();
   const { category, productId } = useParams();
-  const { products, loading, error } = useProducts<DetailedProduct>(category);
+  const {
+    products: detailedProducts,
+    loading,
+    error,
+  } = useProducts<DetailedProduct>(category);
 
-  const detailProduct = products.find(product => product.id === productId);
+  const { products: listProducts } = useProducts<BaseProduct>();
+
+  const detailProduct = detailedProducts.find(
+    product => product.id === productId,
+  );
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
-  const isLiked = wishlistIds.includes(detailProduct?.id);
-  const isInCart = cartIds.includes(detailProduct?.id);
+  const isLiked = detailProduct
+    ? wishlistIds.includes(detailProduct.id)
+    : false;
+
+  let isInCart = false;
+
+  if (detailProduct) {
+    isInCart = cartItems.some(
+      item =>
+        item.id === detailProduct.id &&
+        item.color === selectedColor &&
+        item.capacity === selectedCapacity,
+    );
+  }
 
   useEffect(() => {
     setSelectedImage(0);
-    setSelectedColor(detailProduct?.color);
-    setSelectedCapacity(detailProduct?.capacity);
+    setSelectedColor(detailProduct ? detailProduct.color : '');
+    setSelectedCapacity(detailProduct ? detailProduct.capacity : '');
   }, [detailProduct]);
+
+  const addToCartHandler = () => {
+    if (!detailProduct || !selectedColor || !selectedCapacity) {
+      return;
+    }
+
+    addToCart({
+      id: detailProduct.id,
+      color: selectedColor,
+      capacity: selectedCapacity,
+    });
+  };
 
   if (loading) {
     return <Loader />;
@@ -207,9 +187,7 @@ export const ProductPage = () => {
               className={cn(styles.addToCart, {
                 [styles.addedToCart]: isInCart,
               })}
-              onClick={() => {
-                addToCart(detailProduct.id);
-              }}
+              onClick={addToCartHandler}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
@@ -281,7 +259,7 @@ export const ProductPage = () => {
         </div>
       </div>
 
-      <ProductSlider title="You may also like" products={RELATED} />
+      <ProductSlider title="You may also like" products={listProducts} />
     </>
   );
 };

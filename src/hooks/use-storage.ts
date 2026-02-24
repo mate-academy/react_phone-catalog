@@ -14,8 +14,6 @@ export function useLocalStorage<T>(
     try {
       return JSON.parse(data);
     } catch (e) {
-      // console.error('Error localStorage', e);
-
       return startValue;
     }
   });

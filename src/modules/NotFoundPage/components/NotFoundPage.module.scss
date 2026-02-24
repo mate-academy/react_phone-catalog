@@ -1,27 +1,7 @@
-.main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-.container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 64px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-
-  @media (max-width: 639px) {
-    padding: 40px 16px;
-  }
-}
-
 .image {
-  width: 360px;
+  width: 560px;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 .title {
@@ -29,6 +9,7 @@
   font-weight: 700;
   line-height: 41px;
   color: var(--color-primary);
+  margin-bottom: 20px;
 
   @media (max-width: 639px) {
     font-size: 22px;
