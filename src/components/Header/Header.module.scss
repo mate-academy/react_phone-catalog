@@ -145,8 +145,7 @@
 
 .mobileMenu {
   position: fixed;
-  inset: 0;
-  top: 48px;
+  inset: 48px 0 0;
   background: var(--color-white);
   z-index: 99;
   display: flex;
