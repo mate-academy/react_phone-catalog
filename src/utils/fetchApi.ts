@@ -13,27 +13,28 @@
 
 export const getProductsByCategory = async (category: string) => {
   try {
-    const response = await fetch(
-      `/api/${category}.trasnformed.json`,
-    );
+    const response = await fetch(`/api/${category}.transformed.json`);
     const data = await response.json();
+
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      return error.message;
+      return [];
     }
   }
+
   return [];
 };
 
 export const getDisplayProducts = async () => {
   try {
-    const response = await fetch('../../public/api/products.json');
+    const response = await fetch('/api/products.json');
     const data = await response.json();
+
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      return error.message;
+      return [];
     }
   }
 };

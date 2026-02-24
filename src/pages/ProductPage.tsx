@@ -5,8 +5,9 @@ import { useContext, useEffect } from 'react';
 import { ProductContext } from '../context/ProductContext';
 import { useParams } from 'react-router-dom';
 import { Product } from '../types/itemTypes';
+import UrlTrail from '../components/ui/UrlTrail';
 
-const bgColors = {
+const bgColors: { [key: string]: string } = {
   black: 'bg-black',
   white: 'bg-white',
   red: 'bg-red-500',
@@ -28,16 +29,34 @@ const bgColors = {
 };
 
 const ProductPage: React.FC = () => {
-  const { displayProduct, handleGetItemByCategory ,products } = useContext(ProductContext);
+  const {
+    displayProduct,
+    handleGetItemByCategory,
+    handleDisplayImage,
+    handleGetItemByFeature,
+    displayImage,
+    products,
+  } = useContext(ProductContext);
 
   const { category, id } = useParams();
 
-  useEffect(() => {
-    handleGetItemByCategory(category!, id!)
-  },[displayProduct])
-
-
   const pageProduct = products.find(product => product.itemId === id);
+
+  const selectedColor = displayProduct?.color;
+
+  const selectedCapacity = displayProduct?.capacity;
+
+  useEffect(() => {
+    if (category && id) {
+      handleGetItemByCategory(category, id);
+    }
+  }, [category, handleGetItemByCategory, id]);
+
+  useEffect(() => {
+    if (displayProduct) {
+      handleDisplayImage(displayProduct.images[0]);
+    }
+  }, [displayProduct, handleDisplayImage]);
 
   if (!pageProduct) {
     return (
@@ -49,10 +68,13 @@ const ProductPage: React.FC = () => {
 
   const shuffle = (array: Product[]) => {
     const newArray = [...array];
+
     for (let i = newArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
+
       [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
+
     return newArray;
   };
 
@@ -66,43 +88,33 @@ const ProductPage: React.FC = () => {
   return (
     <main className="flex flex-col w-full px-4 sm:px-6 md:px-8 h-full gap-20">
       <div className="flex flex-col">
-        <div>{/* url trail */}</div>
+        <UrlTrail />
         <BackButton />
         <h1 className="sm:text-3xl text-[22px] mb-8 sm:mb-10 mt-4 font-bold">
           {displayProduct?.name}
         </h1>
         <div className="flex flex-col sm:flex-row">
           <div className="flex mb-10 sm:mb-0 sm:flex-col gap-2 sm:gap-4">
-            <img
-              className="size-20 border p-1 border-gray-300 object-contain"
-              src="../../public/img/phones/apple-iphone-11/black/00.webp"
-              alt=""
-            />
-            <img
-              className="size-20 object-contain"
-              src="../../public/img/phones/apple-iphone-11/black/01.webp"
-              alt=""
-            />
-            <img
-              className="size-20 object-contain"
-              src="../../public/img/phones/apple-iphone-11/black/02.webp"
-              alt=""
-            />
-            <img
-              className="size-20 object-contain"
-              src="../../public/img/phones/apple-iphone-11/black/03.webp"
-              alt=""
-            />
-            <img
-              className="size-20 object-contain"
-              src="../../public/img/phones/apple-iphone-11/black/04.webp"
-              alt=""
-            />
+            {displayProduct?.images.map((image, index) => {
+              return (
+                <img
+                  key={index}
+                  onClick={() => handleDisplayImage(image)}
+                  className="size-20 border p-1 border-gray-300 object-contain"
+                  src={`/${image}`}
+                  alt={image}
+                />
+              );
+            })}
           </div>
           <div className="order-first mb-4 sm:mb-0 sm:order-none">
             <img
               className="size-[464px] object-contain"
-              src="../../public/img/phones/apple-iphone-11/black/00.webp"
+              src={
+                !displayImage
+                  ? `/${displayProduct?.images[0]}`
+                  : `/${displayImage}`
+              }
               alt=""
             />
           </div>
@@ -110,87 +122,71 @@ const ProductPage: React.FC = () => {
             <fieldset className="flex flex-col">
               <legend>Available colors</legend>
               <div className="flex gap-2">
-                {/* input border changes with input check */}
-                <label
-                  className="border-2 has-[:checked]:border-black size-8 rounded-full "
-                  htmlFor="color"
-                >
-                  <input
-                    className="size-0"
-                    type="radio"
-                    name="color"
-                    id="color"
-                  />
-                </label>
-                <label className="border size-8 rounded-full " htmlFor="color">
-                  <input
-                    className="size-0"
-                    type="radio"
-                    name="color"
-                    id="color"
-                  />
-                </label>
-                <label className="border size-8 rounded-full " htmlFor="color">
-                  <input
-                    className="size-0"
-                    type="radio"
-                    name="color"
-                    id="color"
-                  />
-                </label>
+                {displayProduct?.colorsAvailable.map(color => (
+                  <label
+                    key={color}
+                    className={`border-2 has-[:checked]:border-black ${bgColors[color]} size-8 rounded-full`}
+                    onClick={() => {
+                      handleGetItemByFeature(
+                        displayProduct?.category,
+                        displayProduct?.namespaceId,
+                        color,
+                        selectedCapacity!,
+                      );
+                    }}
+                    htmlFor={color}
+                  >
+                    <input
+                      className="size-0"
+                      type="radio"
+                      checked={selectedColor === color}
+                      name="color"
+                      id={color}
+                    />
+                  </label>
+                ))}
               </div>
             </fieldset>
             <div className="card__line-separator"></div>
             <fieldset>
               <legend>Select capacity</legend>
               <div className="flex gap-2">
-                <label
-                  className="w-14 h-8 has-[:checked]:bg-black has-[:checked]:text-white flex justify-center items-center border border-gray-400 text-bold text-sm"
-                  htmlFor="size"
-                >
-                  64 GB
-                  <input
-                    className="size-0"
-                    type="radio"
-                    placeholder="64 GB"
-                    name="size"
-                    id="size"
-                  />
-                </label>
-                <label
-                  className="w-14 h-8 has-[:checked]:bg-black has-[:checked]:text-white flex justify-center items-center border border-gray-400 text-bold text-sm"
-                  htmlFor="size"
-                >
-                  256 GB
-                  <input
-                    className="size-0"
-                    type="radio"
-                    placeholder="64 GB"
-                    name="size"
-                    id="size"
-                  />
-                </label>
-                <label
-                  className="w-14 h-8 has-[:checked]:bg-black has-[:checked]:text-white flex justify-center items-center border border-gray-400 text-bold text-sm"
-                  htmlFor="size"
-                >
-                  512 GB
-                  <input
-                    className="size-0"
-                    type="radio"
-                    placeholder="64 GB"
-                    name="size"
-                    id="size"
-                  />
-                </label>
+                {displayProduct?.capacityAvailable.map(capacity => (
+                  <label
+                    key={capacity}
+                    className="w-16 h-8 has-[:checked]:bg-black 
+                    has-[:checked]:text-white flex justify-center 
+                    items-center border border-gray-400 text-bold text-sm"
+                    onClick={() => {
+                      handleGetItemByFeature(
+                        displayProduct?.category,
+                        displayProduct?.namespaceId,
+                        selectedColor!,
+                        capacity,
+                      );
+                    }}
+                    htmlFor={capacity}
+                  >
+                    {capacity}
+                    <input
+                      className="size-0"
+                      type="radio"
+                      checked={selectedCapacity === capacity}
+                      name="capacity"
+                      id={capacity}
+                    />
+                  </label>
+                ))}
               </div>
             </fieldset>
             <div className="card__line-separator"></div>
             <div className="flex flex-col gap-4">
-              <div className="flex border gap-2">
-                <h3 className="font-bold text-3xl">$799</h3>
+              <div className="flex gap-2">
+                <h3 className="font-bold text-3xl">
+                  ${displayProduct?.priceDiscount}
+                </h3>
                 <h3 className="text-[1.25rem] text-gray-400 font-bold">
-                  $1199
+                  ${displayProduct?.priceRegular}
                 </h3>
               </div>
               <ButtonBox product={pageProduct} />
@@ -203,55 +199,29 @@ const ProductPage: React.FC = () => {
                 <p>RAM</p>
               </div>
               <div className="flex flex-col gap-1 items-end">
-                <p>6.5" OLED</p>
-                <p>2688x1242</p>
-                <p>Apple A12 Bionic</p>
-                <p>3 GB</p>
+                <p>{displayProduct?.specs.screen}</p>
+                <p>{displayProduct?.specs.resolution}</p>
+                <p>{displayProduct?.specs.processor}</p>
+                <p>{displayProduct?.specs.ram}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-14 md:gap-16 md:flex-row justify-between">
+      <div
+        className="flex flex-col gap-14 md:gap-16 
+      md:flex-row justify-between"
+      >
         <div className="flex sm:w-[35rem] gap-5 flex-col">
           <h2 className="text-2xl font-bold">About</h2>
           <div className="card__line-separator"></div>
           <div className="flex gap-8 flex-col">
-            <div className="flex gap-4 flex-col">
-              <h3 className="text-xl">And then there was Pro</h3>
-              <p className="text-gray-400">
-                A transformative triple‑camera system that adds tons of
-                capability without complexity. An unprecedented leap in battery
-                life. And a mind‑blowing chip that doubles down on machine
-                learning and pushes the boundaries of what a smartphone can do.
-                Welcome to the first iPhone powerful enough to be called Pro.
-              </p>
-            </div>
-            <div className="flex gap-4 flex-col">
-              <h3 className="text-xl`">Camera</h3>
-              <p className="text-gray-400">
-                Meet the first triple‑camera system to combine cutting‑edge
-                technology with the legendary simplicity of iPhone. Capture up
-                to four times more scene. Get beautiful images in drastically
-                lower light. Shoot the highest‑quality video in a smartphone —
-                then edit with the same tools you love for photos. You’ve never
-                shot with anything like it.
-              </p>
-            </div>
-            <div className="flex gap-4 flex-col">
-              <h3 className="text-xl">
-                Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-                Love it.
-              </h3>
-              <p className="text-gray-400">
-                iPhone 11 Pro lets you capture videos that are beautifully true
-                to life, with greater detail and smoother motion. Epic
-                processing power means it can shoot 4K video with extended
-                dynamic range and cinematic video stabilization — all at 60 fps.
-                You get more creative control, too, with four times more scene
-                and powerful new editing tools to play with.
-              </p>
-            </div>
+            {displayProduct?.description.map((description, index) => (
+              <div key={index} className="flex gap-4 flex-col">
+                <h3 className="text-xl">{description.title}</h3>
+                <p className="text-gray-400">{description.text}</p>
+              </div>
+            ))}
           </div>
         </div>
         <div className="flex md:w-[32rem] gap-4 flex-col">
@@ -264,19 +234,19 @@ const ProductPage: React.FC = () => {
               <p>Processor</p>
               <p>RAM</p>
               <p>Built in memory</p>
-              <p>Camera</p>
-              <p>Zoom</p>
+              {displayProduct?.specs.camera && <p>Camera</p>}
+              {displayProduct?.specs.zoom && <p>Zoom</p>}
               <p>Cell</p>
             </div>
             <div className="flex flex-col gap-1 items-end">
-              <p>6.5" OLED</p>
-              <p>2688x1242</p>
-              <p>Apple A12 Bionic</p>
-              <p>3 GB</p>
-              <p>64 GB</p>
-              <p>12 Mp + 12 Mp + 12 Mp (Triple)</p>
-              <p>Optical, 2x</p>
-              <p>GSM, LTE, UMTS</p>
+              <p>{displayProduct?.specs.screen}</p>
+              <p>{displayProduct?.specs.resolution}</p>
+              <p>{displayProduct?.specs.processor}</p>
+              <p>{displayProduct?.specs.ram}</p>
+              <p>{displayProduct?.capacity}</p>
+              <p>{displayProduct?.specs.camera}</p>
+              <p>{displayProduct?.specs.zoom}</p>
+              <p>{displayProduct?.specs.cell.map(cell => `${cell} `)}</p>
             </div>
           </div>
         </div>

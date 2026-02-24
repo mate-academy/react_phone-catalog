@@ -10,16 +10,18 @@ const ButtonBox = ({ product }: { product: Product }) => {
 
   let favourite = false;
   let favouriteImg = 'Favourites (Heart Like).svg';
-  favourites.find(favourite => favourite.id === product.id)
+
+  favourites.find(fav => fav.id === product.id)
     ? (favourite = true)
     : (favourite = false);
 
-  const handleFavourite = () => {
-    if (!favourites.find(favourite => favourite.id === product.id)) {
+  const handleFavourite = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    if (!favourites.find(fav => fav.id === product.id)) {
       setFavourites(prevFavourites => [...prevFavourites, product]);
     } else {
       setFavourites(prevFavourites =>
-        prevFavourites.filter(favourite => favourite.id !== product.id),
+        prevFavourites.filter(fav => fav.id !== product.id),
       );
     }
   };
@@ -37,10 +39,12 @@ const ButtonBox = ({ product }: { product: Product }) => {
   return (
     <div className="flex gap-2 text-center ">
       <button
-        onClick={() => {
+        onClick={event => {
+          event.stopPropagation();
           if (isProductInCart) {
             return;
           }
+
           handleAddToCart(product);
         }}
         className={`flex h-10 w-full items-center ${isProductInCart ? 'bg-white border text-green-400' : 'text-white bg-gray-900'}   justify-center `}
@@ -49,12 +53,10 @@ const ButtonBox = ({ product }: { product: Product }) => {
       </button>
       <button
         onClick={handleFavourite}
-        className="size-10 border flex items-center justify-center border-gray-400"
+        className="size-10 border flex items-center 
+        justify-center border-gray-400"
       >
-        <img
-          src={`../../../public/img/icons/${favouriteImg}`}
-          alt="favourite button"
-        />
+        <img src={`/img/icons/${favouriteImg}`} alt="favourite button" />
       </button>
     </div>
   );

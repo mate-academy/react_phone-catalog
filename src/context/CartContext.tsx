@@ -27,22 +27,18 @@ export const CartContext = React.createContext<CartContextType>({
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = React.useState<CartRecord>(() => {
     const storedCart = localStorage.getItem('cart');
+
     return storedCart ? JSON.parse(storedCart) : {};
   });
 
-
-
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
-  },[cart])
-
-
-
-
+  }, [cart]);
 
   const handleAddToCart = (product: Product) => {
     setCart(prevCart => {
       const existingProduct = prevCart[product.id];
+
       if (existingProduct) {
         return {
           ...prevCart,
@@ -52,6 +48,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
           },
         };
       }
+
       return {
         ...prevCart,
         [product.id]: { product, quantity: 1 },
@@ -62,7 +59,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const handleDeleteProduct = (productId: number) => {
     setCart(prevCart => {
       const updatedCart = { ...prevCart };
+
       delete updatedCart[productId];
+
       return updatedCart;
     });
   };
@@ -70,6 +69,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const handleSubtractProduct = (productId: number) => {
     setCart(prevCart => {
       const existingProduct = prevCart[productId];
+
       if (existingProduct && existingProduct.quantity > 1) {
         return {
           ...prevCart,
@@ -79,14 +79,14 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
           },
         };
       }
+
       if (existingProduct && existingProduct.quantity === 1) {
         handleDeleteProduct(productId);
       }
+
       return prevCart;
     });
   };
-
-
 
   const ctxValue = {
     cart,

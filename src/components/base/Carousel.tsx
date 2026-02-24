@@ -1,17 +1,16 @@
-import { transform } from 'cypress/types/lodash';
 import React from 'react';
 
 const carouselArray = [
   {
-    src: '../../../public/img/banner-phones.png',
+    src: '/img/banner-phones.png',
     alt: 'phones',
   },
   {
-    src: '../../../public/img/banner-accessories.png',
+    src: '/img/banner-accessories.png',
     alt: 'accessories',
   },
   {
-    src: '../../../public/img/banner-tablets.png',
+    src: '/img/banner-tablets.png',
     alt: 'tablets',
   },
 ];
@@ -42,14 +41,15 @@ const Carousel = () => {
       <div className="flex flex-row">
         <button
           onClick={handlePrevious}
-          className="border text-base font-bold hidden justify-center items-center sm:flex lg:h-[400px] sm:h-auto w-8"
+          className="border text-base font-bold hidden justify-center 
+          items-center sm:flex lg:h-[400px] sm:h-auto w-8"
         >
-          <img
-            src="../../../public/img/icons/Vector (Stroke) left.svg"
-            alt="arrow left"
-          />
+          <img src="/img/icons/Vector (Stroke) left.svg" alt="arrow left" />
         </button>
-        <div className="flex overflow-clip items-center h-80 w-full sm:w-[31rem] lg:w-full lg:h-[400px] ">
+        <div
+          className="flex overflow-clip items-center h-80 w-full 
+        sm:w-[31rem] lg:w-full lg:h-[400px] "
+        >
           <div
             className="carousel-container flex min-w-full h-full items-center"
             style={handleStyle()}
@@ -57,7 +57,8 @@ const Carousel = () => {
             {carouselArray.map(item => (
               <div
                 key={item.alt}
-                className="carousel-item  flex min-w-full h-full items-center justify-center"
+                className="carousel-item  flex min-w-full h-full 
+                items-center justify-center"
               >
                 <img
                   className="w-full h-full object-cover bg-black "
@@ -70,12 +71,10 @@ const Carousel = () => {
         </div>
         <button
           onClick={handleNext}
-          className="border text-base font-bold hidden justify-center items-center sm:flex lg:h-[400px] sm:h-auto w-8"
+          className="border text-base font-bold hidden justify-center
+           items-center sm:flex lg:h-[400px] sm:h-auto w-8"
         >
-          <img
-            src="../../../public/img/icons/Vector (Stroke) right.svg"
-            alt="arrow right"
-          />
+          <img src="/img/icons/Vector (Stroke) right.svg" alt="arrow right" />
         </button>
       </div>
       <div>

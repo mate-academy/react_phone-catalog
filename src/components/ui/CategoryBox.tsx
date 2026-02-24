@@ -20,10 +20,17 @@ const CategoryBox: React.FC<Props> = ({
 }) => {
   return (
     <Link to={`/${categoryRoute}`}>
-      <div className=" justify-between  size-auto sm:min-w-52 sm:h-[262px] lg:w-[25rem] lg:h-[443px] gap-4  flex flex-col">
-        <div className={`size-80 hover:scale-[1.05] w-fit ${background}  overflow-hidden `}>
+      <div
+        className=" justify-between  size-auto sm:min-w-52
+       sm:h-[262px] lg:w-[25rem] lg:h-[443px] gap-4 
+        flex flex-col"
+      >
+        <div
+          className={`size-80 transition-all hover:scale-[1.05] w-fit ${background}  overflow-hidden `}
+        >
           <img
-            className="relative top-14 left-16 sm:top-10 sm:left-12 lg:top-20 lg:left-20"
+            className="relative top-14 left-16 sm:top-10 
+            sm:left-12 lg:top-20 lg:left-20"
             src={image}
             alt={alt}
           />

@@ -9,7 +9,7 @@ const boxes = [
     modelQuantity: 95,
     name: 'Mobile phones',
     background: 'bg-gray-700',
-    image: '../../public/img/category-phones.webp',
+    image: '/img/category-phones.webp',
     alt: 'phones category',
     categoryRoute: 'phones',
   },
@@ -17,7 +17,7 @@ const boxes = [
     modelQuantity: 24,
     name: 'Tablets',
     background: 'bg-[#8D8D92]',
-    image: '../../public/img/category-tablets.webp',
+    image: '/img/category-tablets.webp',
     alt: 'tablets category',
     categoryRoute: 'tablets',
   },
@@ -25,7 +25,7 @@ const boxes = [
     modelQuantity: 100,
     name: 'Accessories',
     background: 'bg-[#D53C51]',
-    image: '../../public/img/category-accessories.webp',
+    image: '/img/category-accessories.webp',
     alt: 'accessories category',
     categoryRoute: 'accessories',
   },
@@ -38,9 +38,7 @@ const HomePage = () => {
     (a, b) => b.price - a.price,
   );
 
-  const filteredProductsByYear = [...products].sort(
-    (a, b) => b.year - a.year,
-  );
+  const filteredProductsByYear = [...products].sort((a, b) => b.year - a.year);
 
   return (
     <main className="flex flex-col w-full h-full p-4 sm:p-6 md:p-8  gap-20">
@@ -51,7 +49,10 @@ const HomePage = () => {
         <Carousel />
       </div>
       <div className="felx items-center">
-        <ProductSlider title="Brand new models" filteredProducts={filteredProductsByYear}/>
+        <ProductSlider
+          title="Brand new models"
+          filteredProducts={filteredProductsByYear}
+        />
       </div>
       <div className="flex flex-col gap-6">
         <h2 className="text-3xl font-bold">Shop by category</h2>
@@ -62,7 +63,10 @@ const HomePage = () => {
         </div>
       </div>
       <div>
-        <ProductSlider title="Hot prices" filteredProducts={filteredProductsByPrice} />
+        <ProductSlider
+          title="Hot prices"
+          filteredProducts={filteredProductsByPrice}
+        />
       </div>
     </main>
   );
