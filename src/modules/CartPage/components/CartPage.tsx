@@ -61,7 +61,7 @@ export const CartPage = () => {
       {cartEntries.length === 0 ? (
         <div className={styles.empty}>
           <img
-            src="../public/img/product-not-found.png"
+            src="../public/img/cart-is-empty.png"
             alt="Cart is empty"
             className={styles.emptyImage}
           />
