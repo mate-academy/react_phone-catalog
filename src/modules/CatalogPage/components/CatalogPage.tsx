@@ -5,11 +5,12 @@ import { Loader } from '../../../components/Loader';
 import { useSearchParams } from 'react-router-dom';
 import { SortProducts } from '../../../utils/SortProducts';
 import { PerPage } from '../../../utils/PerPage';
+import { BaseProduct } from '../../../types';
 
 type Props = { category: 'phones' | 'tablets' | 'accessories'; title: string };
 
 export const CatalogPage: React.FC<Props> = ({ category, title }) => {
-  const { products, loading, error } = useProducts();
+  const { products, loading, error } = useProducts<BaseProduct>();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = (searchParams.get('sortBy') || 'newest') as

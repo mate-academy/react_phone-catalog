@@ -4,9 +4,10 @@ import styles from './CartPage.module.scss';
 import { Loader } from '../../../components/Loader';
 import { useProducts } from '../../../hooks/use-products';
 import { useAppContext } from '../../../hooks/use-context';
+import { BaseProduct } from '../../../types';
 
 export const CartPage = () => {
-  const { products, loading, error } = useProducts();
+  const { products, loading, error } = useProducts<BaseProduct>();
   const { cartIds, cartItems, changeQty, deleteFromCart } = useAppContext();
 
   const Cart = products.filter(item => cartIds.includes(item.itemId));
@@ -48,10 +49,11 @@ export const CartPage = () => {
       {Cart.length === 0 ? (
         <div className={styles.empty}>
           <img
-            src="img/cart-is-empty.png"
+            src="../public/img/product-not-found.png"
             alt="Cart is empty"
             className={styles.emptyImage}
           />
+
           <p className={styles.emptyText}>Your cart is empty</p>
         </div>
       ) : (
@@ -74,7 +76,12 @@ export const CartPage = () => {
                   className={styles.itemImage}
                 />
 
-                <p className={styles.itemName}>{item.name}</p>
+                <a
+                  className={styles.itemName}
+                  href={`#/${item.category}/${item.itemId}`}
+                >
+                  {item.name}
+                </a>
 
                 <div className={styles.quantityRow}>
                   <div className={styles.quantity}>

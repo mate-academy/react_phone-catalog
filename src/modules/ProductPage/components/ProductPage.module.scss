@@ -126,7 +126,6 @@
 /* Info panel */
 .info {
   padding-left: 16px;
-    max-width: 320px;
 
   @media (max-width: 639px) {
     padding-left: 0;
@@ -142,7 +141,6 @@
     justify-content: space-between;
     align-items: flex-start;
   }
-
 }
 
 .infoLabel {
@@ -184,6 +182,12 @@
   font-size: 12px;
   text-transform: uppercase;
   color: var(--color-icons);
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+  max-width: 150px;
+  text-align: right;
 }
 
 .colorDot {
@@ -197,6 +201,7 @@
   border: none;
   border-top: 1px solid var(--color-elements);
   margin: 16px 0;
+  max-width: 320px;
 }
 
 .capacities {
@@ -231,6 +236,7 @@
   align-items: baseline;
   gap: 8px;
   margin-bottom: 16px;
+  max-width: 320px;
 }
 
 .price {
@@ -252,6 +258,7 @@
   display: flex;
   gap: 8px;
   margin-bottom: 32px;
+  max-width: 320px;
 }
 
 .addToCart {
@@ -268,7 +275,6 @@
   }
 }
 
-
 .addedToCart {
   background: var(--color-white);
   color: var(--color-green);
@@ -284,6 +290,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 320px;
 }
 
 .shortSpecRow {

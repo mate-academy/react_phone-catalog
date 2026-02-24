@@ -34,16 +34,6 @@ export interface DetailedProduct {
   processor: string;
   ram: string;
   cell: string[];
+  camera?: string;
+  zoom?: string;
 }
-
-export interface Phone extends BaseProduct {
-  camera: string;
-  zoom: string;
-}
-
-export interface Tablet extends BaseProduct {
-  camera: string;
-  zoom: string;
-}
-
-export interface Accessory extends BaseProduct {}

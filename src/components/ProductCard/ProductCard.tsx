@@ -3,6 +3,7 @@ import cn from 'classnames';
 import styles from './ProductCard.module.scss';
 import { BaseProduct } from '../../types';
 import { useAppContext } from '../../hooks/use-context';
+import { WishlistButton } from '../WishlistButton';
 
 interface Props {
   product: BaseProduct;
@@ -29,9 +30,9 @@ export const ProductCard = ({ product }: Props) => {
     addToCart(cartId);
   };
 
-  const addToWishlistHandler = (wishlistId: string) => {
-    toggleWishlist(wishlistId);
-  };
+  // const addToWishlistHandler = (wishlistId: string) => {
+  //   toggleWishlist(wishlistId);
+  // };
 
   return (
     <article className={styles.card}>
@@ -87,7 +88,7 @@ export const ProductCard = ({ product }: Props) => {
           >
             {isInCart ? 'Added to cart' : 'Add to cart'}
           </button>
-          <button
+          {/* <button
             type="button"
             className={cn(styles.wishlist, {
               [styles.wishlistActive]: isLiked,
@@ -100,7 +101,12 @@ export const ProductCard = ({ product }: Props) => {
             }}
           >
             <i className={cn(isLiked ? 'fas' : 'far', 'fa-heart')} />
-          </button>
+          </button> */}
+          <WishlistButton
+            productId={itemId}
+            isLiked={isLiked}
+            toggleWishlist={toggleWishlist}
+          />
         </div>
       </div>
     </article>

@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
-import { BaseProduct } from '../types';
 
-type UseProductsResult = {
-  products: BaseProduct[];
+type UseProductsResult<T> = {
+  products: T[];
   loading: boolean;
   error: string | null;
 };
 
-export function useProducts(): UseProductsResult {
+export function useProducts<T>(filePath = 'products'): UseProductsResult<T> {
   const url = new URL(
-    'api/products.json',
+    `api/${filePath}.json`,
     window.location.origin + import.meta.env.BASE_URL,
   ).toString();
 
-  const [products, setProducts] = useState<BaseProduct[]>([]);
+  const [products, setProducts] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -44,7 +43,7 @@ export function useProducts(): UseProductsResult {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [url]);
 
   return {
     products,

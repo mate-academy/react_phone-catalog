@@ -38,7 +38,7 @@ export const Header = () => {
                     })
                   }
                 >
-                  {label}
+                  <span>{label}</span>
                 </NavLink>
               </li>
             ))}
@@ -107,7 +107,7 @@ export const Header = () => {
                     }
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {label}
+                    <span>{label}</span>
                   </NavLink>
                 </li>
               ))}
@@ -117,18 +117,36 @@ export const Header = () => {
           <div className={styles.mobileActions}>
             <NavLink
               to="/favorites"
-              className={styles.mobileIconBtn}
+              className={({ isActive }) =>
+                cn(styles.mobileIconBtn, {
+                  [styles.mobileIconBtnActive]: isActive,
+                })
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               <i className="far fa-heart" />
+              {isLiked.length > 0 ? (
+                <span className={styles.mobileBadge}>{isLiked.length}</span>
+              ) : (
+                ''
+              )}
             </NavLink>
 
             <NavLink
               to="/cart"
-              className={styles.mobileIconBtn}
+              className={({ isActive }) =>
+                cn(styles.mobileIconBtn, {
+                  [styles.mobileIconBtnActive]: isActive,
+                })
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               <i className="fas fa-bag-shopping" />
+              {isInCart.length > 0 ? (
+                <span className={styles.mobileBadge}>{isInCart.length}</span>
+              ) : (
+                ''
+              )}
             </NavLink>
           </div>
         </div>

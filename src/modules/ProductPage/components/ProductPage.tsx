@@ -64,49 +64,23 @@ const RELATED = [
 
 export const ProductPage = () => {
   const { cartIds, addToCart, wishlistIds, toggleWishlist } = useAppContext();
-  const { products, loading, error } = useProducts();
   const { category, productId } = useParams();
+  const { products, loading, error } = useProducts<DetailedProduct>(category);
 
-  const productUrl = new URL(
-    `api/${category}.json`,
-    window.location.origin + import.meta.env.BASE_URL,
-  ).toString();
+  const detailProduct = products.find(product => product.id === productId);
 
-  const [detailProduct, setDetailProduct] = useState<DetailedProduct | null>(
-    null,
-  );
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(detailProduct?.color);
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    detailProduct?.capacity,
-  );
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    fetch(productUrl, { signal: controller.signal })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
-
-        return res.json();
-      })
-      .then(data => {
-        const found = data.find(
-          (item: DetailedProduct) => item.id === productId,
-        );
-
-        setDetailProduct(found);
-        setSelectedColor(found.color);
-        setSelectedCapacity(found.capacity);
-      });
-
-    return () => controller.abort();
-  }, [productId]);
+  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedCapacity, setSelectedCapacity] = useState('');
 
   const isLiked = wishlistIds.includes(detailProduct?.id);
   const isInCart = cartIds.includes(detailProduct?.id);
+
+  useEffect(() => {
+    setSelectedImage(0);
+    setSelectedColor(detailProduct?.color);
+    setSelectedCapacity(detailProduct?.capacity);
+  }, [detailProduct]);
 
   if (loading) {
     return <Loader />;
@@ -190,9 +164,9 @@ export const ProductPage = () => {
               </div>
             </div>
 
-            <p class={styles.productId}>
+            <p className={styles.productId}>
               ID:
-              {products.find(item => item.itemId === detailProduct.id)?.id}
+              {productId}
             </p>
           </div>
 

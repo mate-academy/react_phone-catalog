@@ -57,8 +57,6 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-secondary);
-  border-bottom: 3px solid transparent;
   transition:
     color 0.2s,
     border-color 0.2s;
@@ -66,9 +64,14 @@
   &:hover {
     color: var(--color-primary);
   }
+
+  span {
+    color: var(--color-secondary);
+    border-bottom: 2px solid transparent;
+  }
 }
 
-.navLinkActive {
+.navLinkActive span {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
 }
@@ -171,8 +174,6 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-secondary);
-  border-bottom: 3px solid transparent;
   text-align: center;
   transition:
     color 0.2s,
@@ -181,9 +182,16 @@
   &:hover {
     color: var(--color-primary);
   }
+
+  span {
+    display: inline-block;
+    line-height: 30px;
+    color: var(--color-secondary);
+    border-bottom: 2px solid transparent;
+  }
 }
 
-.mobileNavLinkActive {
+.mobileNavLinkActive span {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
 }
@@ -201,8 +209,30 @@
   height: 64px;
   font-size: 20px;
   color: var(--color-primary);
+  position: relative;
+  border-bottom: 2px solid transparent;
 
   & + & {
     border-left: 1px solid var(--color-elements);
   }
+}
+
+.mobileIconBtnActive {
+  border-bottom-color: var(--color-primary);
+}
+
+.mobileBadge {
+  position: absolute;
+  top: 13px;
+  right: 38%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-red);
+  color: var(--color-white);
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

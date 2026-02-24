@@ -5,9 +5,10 @@ import { ShopByCategory } from '../../../components/ShopByCategory';
 import { useProducts } from '../../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
 import { SortProducts } from '../../../utils/SortProducts';
+import { BaseProduct } from '../../../types';
 
 export const HomePage = () => {
-  const { products, loading, error } = useProducts();
+  const { products, loading, error } = useProducts<BaseProduct>();
 
   if (loading) {
     return <Loader />;

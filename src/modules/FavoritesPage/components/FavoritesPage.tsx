@@ -4,9 +4,10 @@ import { ProductCard } from '../../../components/ProductCard';
 import { useProducts } from '../../../hooks/use-products';
 import { useAppContext } from '../../../hooks/use-context';
 import { Loader } from '../../../components/Loader';
+import { BaseProduct } from '../../../types';
 
 export const FavoritesPage = () => {
-  const { products, loading, error } = useProducts();
+  const { products, loading, error } = useProducts<BaseProduct>();
   const { wishlistIds } = useAppContext();
 
   const Favourites = products.filter(item => wishlistIds.includes(item.itemId));
