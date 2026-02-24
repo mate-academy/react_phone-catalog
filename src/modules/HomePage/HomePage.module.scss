@@ -1,1 +1,30 @@
-// empty
+@import '../../styles/variables';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.home {
+  &__container {
+    @include page-container;
+    @include page-grid;
+  }
+
+  &__title {
+    @include h1;
+  
+    max-width: 15ch;
+    padding-top: 24px;
+    grid-column: 1 / -1;
+
+    @include respond-to('tablet') {
+      grid-column: 1 / -8;
+      padding: 32px 0;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: 1 / -1;
+      padding: 56px 0;
+      max-width: none;
+    }
+  }
+}

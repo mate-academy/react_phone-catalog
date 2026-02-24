@@ -5,7 +5,7 @@ import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { useMenuCloseOnResize } from '../../hooks/useMenuCloseOnResize';
 import { Logo } from '../Logo';
 import { Nav } from '../Nav';
-import { Favourite } from '../ui/Favourite';
+import { FavouriteIcon } from '../ui/FavouriteIcon';
 import { CartIcon } from '../ui/CartIcon';
 import { BurgerMenu } from '../BurgerMenu';
 import { CloseIcon } from '../ui/CloseIcon';
@@ -31,7 +31,7 @@ export const Header: React.FC = () => {
           <Nav className={styles.header__nav} />
 
           <div className={styles.header__actions}>
-            <Favourite className={styles.header__iconLink} />
+            <FavouriteIcon className={styles.header__iconLink} />
             <CartIcon className={styles.header__iconLink} />
           </div>
 

@@ -35,3 +35,32 @@
     }
   }
 }
+
+@mixin page-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include respond-to('tablet') {
+    padding: 0 24px;
+  }
+
+  @include respond-to('desktop') {
+    max-width: 1136px;
+    padding: 0;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  gap: $grid-gap;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}

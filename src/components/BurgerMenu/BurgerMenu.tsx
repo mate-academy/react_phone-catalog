@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Nav } from '../Nav';
 import { CartIcon } from '../ui/CartIcon';
-import { Favourite } from '../ui/Favourite';
+import { FavouriteIcon } from '../ui/FavouriteIcon';
 import styles from './BurgerMenu.module.scss';
 
 interface BurgerMenuProps {
@@ -26,7 +26,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose, isOpen }) => {
         />
       </div>
       <div className={styles.burger__footer}>
-        <Favourite className={styles.burger__action} />
+        <FavouriteIcon className={styles.burger__action} />
         <CartIcon className={styles.burger__action} />
       </div>
     </div>
