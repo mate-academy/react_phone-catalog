@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
          text-sm uppercase justify-evenly"
         >
           <li>
-            <a href="">Github</a>
+            <a href="https://github.com/vexsmart">Github</a>
           </li>
           <li>
-            <a href="">Contacts</a>
+            <a href="https://www.linkedin.com/in/vitor-freitas-ribeiro/">Contacts</a>
           </li>
           <li>
             <a href="">Rights</a>
