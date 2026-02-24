@@ -15,6 +15,7 @@ export const App = () => {
       className="App max-w-[100vw] flex flex-col 
     justify-between min-h-screen font-mont"
     >
+      <h1 className='hidden'>Nice Gadgets</h1>
       <Header />
       <div
         className="flex flex-col pb-20  w-full 
