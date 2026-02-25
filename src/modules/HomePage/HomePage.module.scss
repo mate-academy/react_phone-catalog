@@ -1,0 +1,16 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/variables';
+
+.homePageTitle {
+  width: 100%;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 52px;
+  }
+}

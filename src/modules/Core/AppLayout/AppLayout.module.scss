@@ -1,3 +1,6 @@
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/variables';
+
 .app {
   display: flex;
   flex-direction: column;
@@ -9,5 +12,15 @@
   flex-grow: 1;
 
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
 }
