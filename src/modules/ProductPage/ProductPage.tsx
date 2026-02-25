@@ -9,6 +9,7 @@ import ProductListMenu from './ProductListMenu';
 import ProductPagination from './ProductPagination';
 import { useMenuSelectors, useSelectedProduct } from './ProductPage.hooks';
 import Messages from '../shared/Message';
+import InputSearch from './InputSearch';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -41,48 +42,56 @@ export const ProductPage: React.FC = () => {
 
   const isProductListEmpty = loaded && count === 0;
   const hasProducts = loaded && count > 0;
+  const handleSearchChange = (searchString: string) => {
+    /* eslint-disable no-console */
+    console.log(searchString);
+  };
 
   return (
-    <div className="container">
-      <div>
-        <Breadcrumbs />
-        <h1 className={styles.productPage__title}>
-          {t(`products_page.${title}`)}
-        </h1>
-        {loading && 'Loading'}
-        {error && <Messages type="error" />}
-        {isProductListEmpty && (
-          <Messages
-            type="emptyList"
-            text={t('messages.emptyList', {
-              category: t('messages.' + title),
-            })}
-          />
-        )}
+    <>
+      <div className="container">
+        <InputSearch handleSearchChange={handleSearchChange} />
 
-        {hasProducts && (
-          <>
-            <p className={styles.productPage__counter}>{modelAmount}</p>
-            <ProductListMenu
-              sortValue={selectedSort}
-              itemsOnPageValue={selectedPerPage}
-              handleSortChange={handleSortChange}
-              handleItemsOnPageChange={handleItemsOnPageChange}
-              sortByOptions={sortOptions}
-              itemsOnPageOptions={perPageOptions}
+        <div>
+          <Breadcrumbs />
+          <h1 className={styles.productPage__title}>
+            {t(`products_page.${title}`)}
+          </h1>
+          {loading && 'Loading'}
+          {error && <Messages type="error" />}
+          {isProductListEmpty && (
+            <Messages
+              type="emptyList"
+              text={t('messages.emptyList', {
+                category: t('messages.' + title),
+              })}
             />
-            <ProductList pageProducts={pageProducts} />
-            {+selectedPerPage.value > 0 && (
-              <ProductPagination
-                total={total}
-                perPage={Number(selectedPerPage.value)}
-                currentPage={currentPage}
+          )}
+
+          {hasProducts && (
+            <>
+              <p className={styles.productPage__counter}>{modelAmount}</p>
+              <ProductListMenu
+                sortValue={selectedSort}
+                itemsOnPageValue={selectedPerPage}
+                handleSortChange={handleSortChange}
+                handleItemsOnPageChange={handleItemsOnPageChange}
+                sortByOptions={sortOptions}
+                itemsOnPageOptions={perPageOptions}
               />
-            )}
-          </>
-        )}
+              <ProductList pageProducts={pageProducts} />
+              {+selectedPerPage.value > 0 && (
+                <ProductPagination
+                  total={total}
+                  perPage={Number(selectedPerPage.value)}
+                  currentPage={currentPage}
+                />
+              )}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,71 @@
+@use '../../../scss/main.scss' as *;
+
+$input-height: 15px;
+$icon-gap: 2px;
+
+.inputSearch {
+  position: sticky;
+  top: 48px;
+  width: 100%;
+  height: $input-height;
+  padding-block: 4 * $icon-gap;
+  box-sizing: content-box;
+
+  background-color: $body-background-color;
+
+  z-index: 100;
+
+  @include page-grid;
+
+  &__container {
+    position: relative;
+    grid-column: 1/-1;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      grid-column: span 6 / -1;
+    }
+  }
+
+  &__input {
+    @extend %small-text;
+
+    font-weight: 500;
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    padding-left: $input-height + $icon-gap;
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: 1px solid $icon-color;
+
+    background-color: $body-background-color;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &:focus {
+      border-color: $border-color-hover;
+    }
+
+    &::placeholder {
+      opacity: 0.3;
+      color: $primary-color;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: $icon-gap;
+    transform: translateY(-50%);
+    width: $input-height - $icon-gap;
+    height: $input-height - $icon-gap;
+    color: $icon-color;
+  }
+}
