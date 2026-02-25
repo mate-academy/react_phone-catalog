@@ -1,6 +1,3 @@
-.filter {
-}
-
 .content {
   display: flex;
   flex-direction: column;
@@ -13,12 +10,6 @@
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-}
-
-.title {
-}
-
-.text {
 }
 
 .wrapper {
@@ -51,9 +42,6 @@
   @media (min-width: 640px) {
     width: 176px;
   }
-}
-
-.option {
 }
 
 .small {

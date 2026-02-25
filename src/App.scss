@@ -50,7 +50,7 @@ body {
   --desc-line-2-width: 180px;
   --desc-line-3-width: 200px;
   --desc-line-2-position: var(--card-padding) 265px;
-  --desc-line-3-position: var(--card-padding) 288px; //
+  --desc-line-3-position: var(--card-padding) 288px;
   --footer-height: 40px;
   --footer-position: 0 calc(var(--card-height) - var(--footer-height));
   --footer-skeleton: linear-gradient(white var(--footer-height), transparent 0);
@@ -125,21 +125,6 @@ body {
     padding-bottom: 80px;
   }
 }
-
-//
-//.heading {
-//  display: flex;
-//  gap: 16px;
-//  justify-content: space-between;
-//  align-items: center;
-//  margin-bottom: 24px;
-//}
-
-//.heading__buttons {
-//  display: flex;
-//  gap: 16px;
-//  justify-content: end;
-//}
 
 .disabled {
   background-color: var(--color-black);
