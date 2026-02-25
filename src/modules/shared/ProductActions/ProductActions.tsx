@@ -27,17 +27,14 @@ const ProductActionsInner = React.memo(function ProductActionsInner({
   additionalStyles,
 }: InnerProps) {
   const { t } = useTranslation();
+  const text = isItemAdded
+    ? t('product-card.item_added')
+    : t('product-card.add_to_cart');
+  const handleClick = () => onAddToCart(product);
 
   return (
     <div className={styles.buttons + ' ' + additionalStyles}>
-      <Button
-        handleClick={() => onAddToCart(product)}
-        text={
-          isItemAdded
-            ? t('product-card.item_added')
-            : t('product-card.add_to_cart')
-        }
-      />
+      <Button handleClick={handleClick} text={text} isSelected={isItemAdded} />
       <Icon
         onClick={() => onToggle(product.id)}
         iconStyles={{

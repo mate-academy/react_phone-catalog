@@ -31,6 +31,8 @@ export const HomePage = () => {
     <div className="container">
       <div id="top"></div>
       <div className={styles.homePage}>
+        <h1 className={'visually-hidden'}>{t('home.title')}</h1>
+
         <div>
           <h2 className={styles.homePage__title}>
             {t('home.welcome_to_store')}

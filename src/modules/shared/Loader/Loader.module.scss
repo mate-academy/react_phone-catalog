@@ -1,4 +1,4 @@
-@import '../../../scss/main';
+@use '../../../scss/main.scss' as *;
 
 @keyframes spin {
   to {

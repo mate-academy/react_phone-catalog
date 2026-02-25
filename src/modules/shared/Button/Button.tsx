@@ -5,12 +5,21 @@ interface Props {
   text: string;
   handleClick?: () => void;
   messageStyles?: boolean;
+  isSelected?: boolean;
 }
 
-const Button: React.FC<Props> = ({ text, handleClick, messageStyles }) => {
+const Button: React.FC<Props> = ({
+  text,
+  handleClick,
+  messageStyles,
+  isSelected,
+}) => {
   return (
     <button
-      className={cn(styles.button, { [styles.button_message]: messageStyles })}
+      className={cn(styles.button, {
+        [styles.button_message]: messageStyles,
+        [styles.button_selected]: isSelected,
+      })}
       onClick={handleClick}
     >
       {text}

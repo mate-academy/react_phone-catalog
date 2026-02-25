@@ -1,23 +1,24 @@
-import { useContext } from 'react';
 import styles from './Message.module.scss';
+
+import { useContext } from 'react';
 import cn from 'classnames';
 import Button from '../Button';
 import { useTranslation } from 'react-i18next';
 import { ProductCatalogContext } from '../../../ProductCatalogContext';
 
-export type MessageType = 'error' | 'emptyList';
+export type MessageType = 'error' | 'emptyList' | 'emptyCart';
 
 interface Props {
   className?: string;
-  category?: string;
+  text?: string;
   type: MessageType;
 }
 
-const Message: React.FC<Props> = ({ className, type, category }) => {
+const Message: React.FC<Props> = ({ className, type, text }) => {
   const { t } = useTranslation();
   const { reloadProducts } = useContext(ProductCatalogContext);
   const errorMessage = type === 'error';
-  const emptyListMessage = type === 'emptyList';
+  const emptyListMessage = type === 'emptyList' || type === 'emptyCart';
 
   return (
     <p
@@ -37,11 +38,7 @@ const Message: React.FC<Props> = ({ className, type, category }) => {
           />
         </>
       )}
-      {emptyListMessage && (
-        <span>
-          {t('messages.emptyList', { category: t('messages.' + category) })}
-        </span>
-      )}
+      {emptyListMessage && <span>{text}</span>}
     </p>
   );
 };

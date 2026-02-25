@@ -3,7 +3,7 @@ import styles from './PropertiesMenu.module.scss';
 import cn from 'classnames';
 import { ProductDetail } from '../../../types/ProductDetail';
 import { APPLE_COLORS } from '../../constants';
-import { NavLink } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getClassNames } from '../../../utils/classNames';
 import { capitalizeFirstLetter } from '../../../utils/common';
 import React from 'react';
@@ -59,6 +59,9 @@ const PropertiesMenu: React.FC<Props> = ({
   propAvailable,
   additionalStyles = '',
 }) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   const linkClass = getClassNames(
     'properties__link',
     capitalizeFirstLetter(propType),
@@ -76,24 +79,33 @@ const PropertiesMenu: React.FC<Props> = ({
       <h4 className={styles.properties__title}>{propTitle}</h4>
       <menu className={styles.properties__menu}>
         {getOtherVariantsLinks(product, propType, propAvailable).map(
-          ({ propValue, link }: PropertyLink) => (
-            <li key={propValue}>
-              <NavLink
-                to={link}
-                className={({ isActive }) =>
-                  cn(linkClass, {
-                    [linkClassActive]: isActive,
-                  })
-                }
-                style={{
-                  backgroundColor: APPLE_COLORS[propValue] || propValue,
-                }}
-                title={propValue}
-              >
-                {propType !== 'color' && propValue}
-              </NavLink>
-            </li>
-          ),
+          ({ propValue, link }: PropertyLink) => {
+            const isChecked = pathname === link;
+
+            return (
+              <label key={propValue}>
+                <input
+                  className={styles.properties__input}
+                  type="radio"
+                  name={propType}
+                  value={APPLE_COLORS[propValue] || propValue}
+                  checked={isChecked}
+                  onChange={() => !isChecked && navigate(link)}
+                />
+                <span
+                  className={cn(linkClass, {
+                    [linkClassActive]: isChecked,
+                  })}
+                  style={{
+                    backgroundColor: APPLE_COLORS[propValue] || propValue,
+                  }}
+                  title={propValue}
+                >
+                  {propType !== 'color' && propValue}
+                </span>
+              </label>
+            );
+          },
         )}
       </menu>
     </div>

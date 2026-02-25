@@ -15,6 +15,7 @@
   },
 
   "home": {
+    "title": "Product Catalog",
     "welcome_to_store": "Welcome to Nice Gadgets store!",
     "brand_new": "Brand new models",
     "hot_prices": "Hot prices",
@@ -78,7 +79,8 @@
     "title": "Cart",
     "items": "Total for {{ count }} items",
     "items_one": "Total for 1 item",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "empty_cart": "Your cart is empty"
   },
 
   "messages": {
@@ -88,5 +90,10 @@
     "wrong": "Something went wrong!",
     "emptyList": "There are no {{category}} yet.",
     "reload": "Reload"
+  },
+
+  "dialog": {
+    "submit": "Submit",
+    "cancel": "Cancel"
   }
 }

@@ -6,6 +6,12 @@
   border: none;
   background-color: $primary-color;
   color: $body-background-color;
+  font-weight: 700;
+
+  &_selected {
+    background-color: transparent;
+    color: $selected-button-color;
+  }
 
   @extend %buttons;
 

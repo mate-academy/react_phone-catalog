@@ -20,6 +20,12 @@
     flex-wrap: wrap;
   }
 
+  &__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
   &__linkColor {
     display: block;
 
@@ -30,9 +36,11 @@
 
     border-radius: 50%;
     box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px $grey-color;
 
     &_active {
-      box-shadow: 0 0 0 1px $secondary-color;
+      box-shadow: 0 0 0 1px $primary-color;
 
       cursor: default;
       pointer-events: none;
@@ -49,6 +57,7 @@
     height: 32px;
     border: 1px solid $icon-color;
     box-sizing: border-box;
+    cursor: pointer;
 
     &_active {
       color: $body-background-color;

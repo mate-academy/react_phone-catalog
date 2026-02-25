@@ -51,7 +51,14 @@ export const ProductPage: React.FC = () => {
         </h1>
         {loading && 'Loading'}
         {error && <Messages type="error" />}
-        {isProductListEmpty && <Messages type="emptyList" category={title} />}
+        {isProductListEmpty && (
+          <Messages
+            type="emptyList"
+            text={t('messages.emptyList', {
+              category: t('messages.' + title),
+            })}
+          />
+        )}
 
         {hasProducts && (
           <>
