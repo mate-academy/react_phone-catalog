@@ -1,0 +1,62 @@
+@import '../../shared/styles/mixins/typography';
+@import '../../shared/styles/variables/colors';
+@import '../../shared/styles/variables/typography';
+@import '../../shared/styles/mixins/pageGrid';
+
+.page {
+  padding-top: 24px;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 320px;
+  position: relative;
+
+  @include page-grid;
+}
+
+
+.back {
+  grid-column: 1 / auto;
+  padding-bottom: 16px;
+  justify-self: start;
+
+}
+
+
+
+.title {
+  grid-column: 1 / -1;
+  justify-self: start;
+  color: $color-primary;
+  padding-bottom: 40px;
+
+  @include text-style($h2-size, $h2-line, $h2-weigth, $h2-leter);
+
+  @media (max-width: 639px) {
+    @include text-style(
+      $h2-size-mobile,
+      $h2-line-mobile,
+      $h2-weigth-mobile,
+      $h2-leter-mobile
+    );
+  }
+}
+
+.titleSkeleton {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  justify-self: start;
+  margin-bottom: 40px;
+  max-width: 100%;
+
+  @media (max-width: 639px) {
+    width: 100%;
+    height: 30px;
+  }
+}
+
+
+
+
+

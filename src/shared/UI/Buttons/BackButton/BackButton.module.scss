@@ -1,0 +1,17 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/variables/typography';
+@import '../../../styles/mixins/typography';
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $color-secondary;
+  transition: transform 0.3s ease;
+
+ @include text-style($smal-size, $smal-line, $smal-weigth);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

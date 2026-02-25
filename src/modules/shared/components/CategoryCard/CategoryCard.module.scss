@@ -1,0 +1,76 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: contain;
+  transition: transform 0.3s;
+
+  &__phones {
+    right: -15%;
+    bottom: -30%;
+  }
+
+  &__tablets {
+    right: -15%;
+    bottom: -22%;
+  }
+
+  &__accessories {
+    right: -50%;
+    bottom: -20%;
+    transform: scale(1.85);
+
+    --base-scale: 1.85;
+  }
+}
+
+.link {
+  --base-scale: 1;
+
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    .img {
+      transform: scale(calc(var(--base-scale) * 1.1));
+    }
+  }
+}
+
+
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  color: $color-primary;
+
+  @include text-style($h4-size, $h4-line, $h4-weigth);
+
+  @media (max-width: 639px) {
+    @include text-style($h4-size-mobile, $h4-line-mobile, $h4-weigth-mobile);
+  }
+}
+
+.count {
+  color: $color-secondary;
+
+  @include text-style($body-size, $body-line, $body-weigth);
+}

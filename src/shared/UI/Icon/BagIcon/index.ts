@@ -1,0 +1,1 @@
+export { BagIcon } from './BagIcon';

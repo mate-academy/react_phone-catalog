@@ -1,0 +1,19 @@
+.button {
+  height: 64px;
+  position: absolute;
+  right: 128px;
+
+  & * {
+    transition: 0.3s;
+  }
+
+  @media (max-width: 1199px) {
+    height: 48px;
+    width: 48px;
+    right: 96px;
+  }
+
+  @media (max-width: 639px) {
+    right: 48px;
+  }
+}

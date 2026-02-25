@@ -1,0 +1,27 @@
+@import '../../shared/styles/mixins/typography';
+@import '../../shared/styles/variables/colors';
+@import '../../shared/styles/variables/typography';
+@import '../../shared/styles/mixins/pageGrid';
+
+
+.page {
+  margin-top: 56px;
+  row-gap: 80px;
+
+  @include page-grid;
+
+
+
+
+  @media (max-width: 1199px) {
+    margin-top: 32px;
+    row-gap: 64px;
+  }
+
+  @media (max-width: 639px) {
+    margin-top: 24px;
+    row-gap: 56px;
+  }
+}
+
+

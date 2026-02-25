@@ -1,0 +1,9 @@
+@import '../../../../shared/styles/variables/colors';
+
+.counter {
+  color: $color-primary;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  justify-content: center;
+}

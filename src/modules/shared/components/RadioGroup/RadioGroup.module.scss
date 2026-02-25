@@ -1,0 +1,21 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+
+.radio__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: $color-secondary;
+
+  @include text-style($smal-size, $smal-line, $smal-weigth);
+}
+
+.container{
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,15 @@
+@import '../../shared/styles/mixins/typography';
+@import '../../shared/styles/variables/colors';
+@import '../../shared/styles/variables/typography';
+@import '../../shared/styles/mixins/pageGrid';
+
+.page {
+  margin-top: 40px;
+
+ @include page-grid;
+}
+
+
+
+
+

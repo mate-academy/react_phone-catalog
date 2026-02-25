@@ -1,0 +1,18 @@
+@import '../../../../shared/styles/mixins/typography';
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+
+
+.backButton {
+  grid-column: 1 / auto;
+  padding-bottom: 16px;
+  justify-self: start;
+}
+
+.title {
+  color: $color-primary;
+  grid-column: 1 / auto;
+  padding-bottom: 32px;
+
+  @include text-style ($h1-size, $h1-line, $h1-weigth, $h1-leter);
+}

@@ -1,0 +1,45 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-self: start;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home {
+  color: $color-primary;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.separator {
+  width: 8px;
+  height: 8px;
+  border: solid $color-secondary;
+  border-top: 1px;
+  border-left: 1px;
+
+  transform: rotate(-45deg);
+}
+
+.text {
+  color: $color-primary;
+  white-space: nowrap;
+
+  @include text-style($smal-size, $smal-line, $smal-weigth);
+}
+
+.last {
+  color: $color-secondary;
+}

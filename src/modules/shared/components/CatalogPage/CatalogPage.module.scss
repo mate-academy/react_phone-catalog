@@ -1,0 +1,27 @@
+
+@import '../../../../shared/styles/mixins/pageGrid';
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+
+.page {
+  row-gap: 40px;
+
+  padding-top: 24px;
+
+  @include page-grid;
+
+  @media (max-width: 1199px) {
+    padding-top: 24px;
+  }
+
+  @media (max-width: 639px) {
+    padding-top: 24px;
+
+  }
+}
+
+
+
+

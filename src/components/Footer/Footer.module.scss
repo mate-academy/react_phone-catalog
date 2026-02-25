@@ -1,0 +1,85 @@
+@import '../../shared/styles/variables/colors';
+@import '../../shared/styles/variables/typography';
+@import '../../shared/styles/mixins/typography';
+
+.footer {
+  background-color: $color-white;
+
+  width: 100%;
+  height: 96px;
+  margin-top: 80px;
+  box-shadow: 0 -1px 0 0 $color-white;
+
+  @media (max-width: 1199px) {
+    margin-top: 64px;
+  }
+
+  @media (max-width: 639px) {
+    height: 260px;
+  }
+
+  &__logo {
+    color: $color-primary;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @media (max-width: 639px) {
+      height: 260px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 32px 16px;
+    }
+  }
+}
+
+.nav {
+  width: 35%;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 639px) {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    color: $color-secondary;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+
+    @include text-style($uppercase-size, $uppercase-line, $uppercase-weigth);
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.backToTopBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 639px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.backToTopLable {
+  color: $color-secondary;
+
+  @include text-style($smal-size, $smal-line, $smal-weigth);
+}

@@ -1,0 +1,18 @@
+@import '../../styles/variables/colors';
+@import '../../styles/variables/typography';
+@import '../../styles/mixins/typography';
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.primaryButton {
+  width: 100%;
+  color: $color-primary;
+}
+
+.favoriteButton {
+  min-width: 40px;
+  min-height: 40px;
+}

@@ -1,0 +1,36 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/variables/typography';
+@import '../../../styles/mixins/typography';
+
+.button {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+
+  color: $color-white;
+  background-color: $color-accent;
+
+  @include text-style ($buttons-size, $body-line, $buttons-weigth);
+
+  border-radius: 48px;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $color-secondary;
+
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.active {
+  color: $color-accent;
+  background-color: $color-white;
+  border: 1px solid;
+  border-color: $color-elements;
+}

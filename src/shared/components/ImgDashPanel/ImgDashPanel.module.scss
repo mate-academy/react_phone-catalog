@@ -1,0 +1,54 @@
+@import '../../styles/variables/colors';
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 50%;
+  gap: 16px;
+
+  @media (max-width: 1199px) {
+    gap: 8px;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+  }
+}
+
+.block {
+  height: 80px;
+  width: 80px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+
+  @media (max-width: 1199px) {
+    height: 35px;
+    width: 35px;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: row;
+    height: 52px;
+    width: 52px;
+  }
+}
+
+.active {
+  border-color: $color-primary;
+}
+
+.img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}

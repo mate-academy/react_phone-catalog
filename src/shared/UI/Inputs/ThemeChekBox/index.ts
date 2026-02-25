@@ -1,0 +1,1 @@
+export { ThemeChekBox } from './ThemeSwitcher';

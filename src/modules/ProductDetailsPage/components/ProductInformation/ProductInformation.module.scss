@@ -1,0 +1,19 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.product__information {
+  display: flex;
+  gap: 65px;
+
+  @media (max-width: 1199px) {
+    flex-direction: column;
+  }
+
+    @media (max-width: 639px) {
+      gap: 32px;
+  }
+}
+
+
+
