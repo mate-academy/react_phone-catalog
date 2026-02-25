@@ -6,10 +6,11 @@ import { useAppContext } from '../../hooks/use-context';
 import { WishlistButton } from '../WishlistButton';
 
 interface Props {
+  variant?: string;
   product: BaseProduct;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ variant = '', product }: Props) => {
   const {
     category,
     itemId,
@@ -27,12 +28,13 @@ export const ProductCard = ({ product }: Props) => {
   const isInCart = cartIds.includes(itemId);
 
   return (
-    <article className={styles.card}>
+    <article className={`${variant ? styles.variant : ''} ${styles.card}`}>
       <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
         {image ? (
           <img src={image} alt={name} className={styles.image} />
         ) : (
           <img
+            className="not-scale"
             src="../public/img/product-not-found.png"
             alt="Product not found"
           />

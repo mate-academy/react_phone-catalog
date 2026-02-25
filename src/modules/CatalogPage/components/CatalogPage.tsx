@@ -42,6 +42,7 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
   };
 
   const perPageHandler = (value: string) => {
+    handleQueryChange('', 'page');
     handleQueryChange(value, 'perPage');
   };
 

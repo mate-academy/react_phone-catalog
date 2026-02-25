@@ -65,6 +65,12 @@
   text-decoration: line-through;
 }
 
+.card.variant {
+  .fullPrice {
+    display: none;
+  }
+}
+
 .divider {
   border: none;
   border-top: 1px solid var(--color-elements);

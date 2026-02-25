@@ -26,7 +26,8 @@
   white-space: nowrap;
   gap: 0 2px;
   color: var(--color-primary);
-  width: 90px;
+  max-width: 120px;
+  width: 100%;
 }
 
 .fire {
@@ -60,6 +61,10 @@
   transition:
     color 0.2s,
     border-color 0.2s;
+
+  @media (min-width: 1200px) {
+    line-height: 62px;
+  }
 
   &:hover {
     color: var(--color-primary);

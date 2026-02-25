@@ -13,10 +13,10 @@ const NAV_LINKS = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cartIds, wishlistIds } = useAppContext();
+  const { cartItems, wishlistIds } = useAppContext();
 
   const isLiked = wishlistIds;
-  const isInCart = cartIds;
+  const isInCart = cartItems;
 
   return (
     <>
@@ -73,7 +73,11 @@ export const Header = () => {
             <span className={styles.iconWrap}>
               <i className="fas fa-bag-shopping" />
               {isInCart.length > 0 ? (
-                <span className={styles.badge}>{isInCart.length}</span>
+                <span className={styles.badge}>
+                  {isInCart.reduce((acc, cur) => {
+                    return acc + cur.qty;
+                  }, 0)}
+                </span>
               ) : (
                 ''
               )}
@@ -143,7 +147,11 @@ export const Header = () => {
             >
               <i className="fas fa-bag-shopping" />
               {isInCart.length > 0 ? (
-                <span className={styles.mobileBadge}>{isInCart.length}</span>
+                <span className={styles.mobileBadge}>
+                  {isInCart.reduce((acc, cur) => {
+                    return acc + cur.qty;
+                  }, 0)}
+                </span>
               ) : (
                 ''
               )}

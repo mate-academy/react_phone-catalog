@@ -26,12 +26,12 @@ export const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#contacts" className={styles.navLink}>
+              <a href="/contacts" className={styles.navLink}>
                 Contacts
               </a>
             </li>
             <li>
-              <a href="#rights" className={styles.navLink}>
+              <a href="/rights" className={styles.navLink}>
                 Rights
               </a>
             </li>

@@ -217,3 +217,43 @@
   line-height: 31px;
   color: var(--color-secondary);
 }
+
+.dialog {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border: 1px solid var(--color-elements);
+  padding: 32px;
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.dialogClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+
+.dialogConfirm,
+.dialogCancel {
+  width: 150px;
+  height: 48px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

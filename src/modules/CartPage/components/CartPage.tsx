@@ -5,6 +5,7 @@ import { Loader } from '../../../components/Loader';
 import { useProducts } from '../../../hooks/use-products';
 import { useAppContext } from '../../../hooks/use-context';
 import { BaseProduct } from '../../../types';
+import { useRef } from 'react';
 
 export const CartPage = () => {
   const { products, loading, error } = useProducts<BaseProduct>();
@@ -40,6 +41,14 @@ export const CartPage = () => {
   ) => {
     changeQty({ id: itemId, color, capacity }, delta);
   };
+
+  const clearCartItems = () => {
+    cartItems.forEach(cartItem =>
+      handleRemove(cartItem.id, cartItem.color, cartItem.capacity),
+    );
+  };
+
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   if (loading) {
     return <Loader />;
@@ -152,9 +161,48 @@ export const CartPage = () => {
               Total for {totalCount} {totalCount === 1 ? 'item' : 'items'}
             </p>
             <hr className={styles.summaryDivider} />
-            <button type="button" className={styles.checkoutBtn}>
+            <button
+              type="button"
+              className={styles.checkoutBtn}
+              onClick={() => {
+                dialogRef.current?.showModal();
+              }}
+            >
               Checkout
             </button>
+
+            <dialog id="my-dialog" ref={dialogRef} className={styles.dialog}>
+              <button
+                onClick={() => {
+                  dialogRef.current?.close();
+                }}
+                className={styles.dialogClose}
+              >
+                <i className={cn('fas fa-xmark')} />
+              </button>
+
+              <p>
+                Checkout is not implemented yet. Do you want to clear the Cart?
+              </p>
+
+              <div className={styles.dialogActions}>
+                <button
+                  className={styles.dialogConfirm}
+                  onClick={clearCartItems}
+                >
+                  Confirm order
+                </button>
+
+                <button
+                  className={styles.dialogCancel}
+                  onClick={() => {
+                    dialogRef.current?.close();
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </dialog>
           </div>
         </div>
       )}

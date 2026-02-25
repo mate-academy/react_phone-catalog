@@ -6,10 +6,11 @@ import { useState } from 'react';
 interface Props {
   title: string;
   products: BaseProduct[];
+  variant?: string;
 }
 
-export const ProductSlider = ({ title, products }: Props) => {
-  const SLIDES = [...products].slice(0, 5);
+export const ProductSlider = ({ variant = '', title, products }: Props) => {
+  const SLIDES = [...products].slice(0, 15);
 
   const [position, setPosition] = useState(0);
   const gapCss = 16;
@@ -33,7 +34,7 @@ export const ProductSlider = ({ title, products }: Props) => {
   };
 
   return (
-    <section className={styles.slider}>
+    <section className={`${styles.slider}`}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.arrows}>
@@ -68,7 +69,7 @@ export const ProductSlider = ({ title, products }: Props) => {
       >
         {SLIDES.map((product: BaseProduct) => (
           <div key={product.id} className={styles.item}>
-            <ProductCard product={product} />
+            <ProductCard variant={variant} product={product} />
           </div>
         ))}
       </div>

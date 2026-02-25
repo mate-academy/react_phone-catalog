@@ -51,6 +51,11 @@
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: -11px 47px;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .catName {

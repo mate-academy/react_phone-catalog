@@ -5,6 +5,7 @@ import { useProducts } from '../../../hooks/use-products';
 import { useAppContext } from '../../../hooks/use-context';
 import { Loader } from '../../../components/Loader';
 import { BaseProduct } from '../../../types';
+import { Link } from 'react-router-dom';
 
 export const FavoritesPage = () => {
   const { products, loading, error } = useProducts<BaseProduct>();
@@ -35,10 +36,17 @@ export const FavoritesPage = () => {
           </div>
         </>
       ) : (
-        <img
-          src="../public/img/product-not-found.png"
-          alt="Product not found"
-        />
+        <>
+          <p className={styles.title}>No product in the wishlist</p>
+          <Link to="/" className={styles.link}>
+            Go to home page
+          </Link>
+          <img
+            className="not-scale"
+            src="/img/product-not-found.png"
+            alt="Product not found"
+          />
+        </>
       )}
     </>
   );

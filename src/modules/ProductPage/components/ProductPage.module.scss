@@ -219,6 +219,8 @@
   color: var(--color-primary);
   background: var(--color-white);
   transition: border-color 0.2s;
+  display: flex;
+  align-items: center;
 
   &:hover {
     border-color: var(--color-primary);

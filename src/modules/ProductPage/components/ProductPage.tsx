@@ -11,7 +11,8 @@ import { useAppContext } from '../../../hooks/use-context';
 import { BaseProduct, DetailedProduct } from '../../../types';
 
 export const ProductPage = () => {
-  const { cartItems, addToCart, wishlistIds, toggleWishlist } = useAppContext();
+  const { cartItems, addToCart, deleteFromCart, wishlistIds, toggleWishlist } =
+    useAppContext();
   const { category, productId } = useParams();
   const {
     products: detailedProducts,
@@ -62,6 +63,18 @@ export const ProductPage = () => {
     });
   };
 
+  const removeToCartHandler = () => {
+    if (!detailProduct || !selectedColor || !selectedCapacity) {
+      return;
+    }
+
+    return deleteFromCart({
+      id: detailProduct.id,
+      color: selectedColor,
+      capacity: selectedCapacity,
+    });
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -71,7 +84,19 @@ export const ProductPage = () => {
   }
 
   if (!detailProduct) {
-    return <div>Product was not found</div>;
+    return (
+      <>
+        <div className={styles.title}>Product was not found</div>
+        <Link to="/" className={styles.link}>
+          Go to home page
+        </Link>
+        <img
+          className="not-scale"
+          src="/img/product-not-found.png"
+          alt="Product not found"
+        />
+      </>
+    );
   }
 
   return (
@@ -126,20 +151,19 @@ export const ProductPage = () => {
               <p className={styles.infoLabel}>Available colors</p>
               <div className={styles.colors}>
                 {detailProduct.colorsAvailable.map(color => (
-                  <button
+                  <Link
                     key={color}
-                    type="button"
                     className={cn(styles.colorBtn, {
                       [styles.colorBtnActive]: color === selectedColor,
                     })}
-                    onClick={() => setSelectedColor(color)}
-                    aria-label={color}
+                    to={`/phones/${detailProduct.namespaceId}-${selectedCapacity.toLowerCase()}-${color}`}
+                    araia-label={color}
                   >
                     <span
                       className={styles.colorDot}
                       style={{ backgroundColor: color }}
                     />
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -157,16 +181,16 @@ export const ProductPage = () => {
             <div className={styles.capacities}>
               {detailProduct.capacityAvailable.map(cap => {
                 return (
-                  <button
+                  <Link
                     key={cap}
-                    type="button"
                     className={cn(styles.capacityBtn, {
                       [styles.capacityBtnActive]: cap === selectedCapacity,
                     })}
-                    onClick={() => setSelectedCapacity(cap)}
+                    to={`/phones/${detailProduct.namespaceId}-${cap.toLowerCase()}-${selectedColor}`}
+                    araia-label={cap}
                   >
                     {cap}
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -182,15 +206,26 @@ export const ProductPage = () => {
           </div>
 
           <div className={styles.ctaRow}>
-            <button
-              type="button"
-              className={cn(styles.addToCart, {
-                [styles.addedToCart]: isInCart,
-              })}
-              onClick={addToCartHandler}
-            >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
-            </button>
+            {isInCart ? (
+              <button
+                type="button"
+                className={cn(styles.addToCart, {
+                  [styles.addedToCart]: isInCart,
+                })}
+                onClick={removeToCartHandler}
+              >
+                Added to cart
+              </button>
+            ) : (
+              <button
+                type="button"
+                className={cn(styles.addToCart)}
+                onClick={addToCartHandler}
+              >
+                Add to cart
+              </button>
+            )}
+
             <WishlistButton
               productId={detailProduct.id}
               isLiked={isLiked}
