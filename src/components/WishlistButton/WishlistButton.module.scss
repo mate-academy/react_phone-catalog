@@ -13,6 +13,11 @@
   &:hover {
     border-color: var(--color-primary);
   }
+
+  &.large {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .btnActive {

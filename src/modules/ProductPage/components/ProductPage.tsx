@@ -156,7 +156,7 @@ export const ProductPage = () => {
                     className={cn(styles.colorBtn, {
                       [styles.colorBtnActive]: color === selectedColor,
                     })}
-                    to={`/phones/${detailProduct.namespaceId}-${selectedCapacity.toLowerCase()}-${color}`}
+                    to={`/${category}/${detailProduct.namespaceId}-${selectedCapacity.toLowerCase()}-${color}`}
                     araia-label={color}
                   >
                     <span
@@ -186,7 +186,7 @@ export const ProductPage = () => {
                     className={cn(styles.capacityBtn, {
                       [styles.capacityBtnActive]: cap === selectedCapacity,
                     })}
-                    to={`/phones/${detailProduct.namespaceId}-${cap.toLowerCase()}-${selectedColor}`}
+                    to={`/${category}/${detailProduct.namespaceId}-${cap.toLowerCase()}-${selectedColor}`}
                     araia-label={cap}
                   >
                     {cap}
@@ -230,6 +230,7 @@ export const ProductPage = () => {
               productId={detailProduct.id}
               isLiked={isLiked}
               toggleWishlist={toggleWishlist}
+              additionalClass="large"
             />
           </div>
 

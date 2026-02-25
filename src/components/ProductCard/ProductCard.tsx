@@ -27,6 +27,10 @@ export const ProductCard = ({ variant = '', product }: Props) => {
   const isLiked = wishlistIds.includes(itemId);
   const isInCart = cartIds.includes(itemId);
 
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <article className={`${variant ? styles.variant : ''} ${styles.card}`}>
       <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
@@ -76,6 +80,7 @@ export const ProductCard = ({ variant = '', product }: Props) => {
             className={cn(styles.addToCart, {
               [styles.addedToCart]: isInCart,
             })}
+            onClick={handleBackToTop}
           >
             {isInCart ? 'Added to cart' : 'Add to cart'}
           </Link>
