@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+
+import styles from './ProductCard.module.scss';
+import { Link } from 'react-router-dom';
+import { FavouriteIcon } from '../ui/FavouriteIcon';
+import { CatalogProduct } from '../../types/ProductTypes';
+import classNames from 'classnames';
+import { FavouriteIconSelected } from '../ui/FavouriteIconSelected';
+
+interface ProductCardProps {
+  product: CatalogProduct;
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+
+  const {
+    name,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    image,
+    category,
+    itemId,
+  } = product;
+  const productLink = `/${category}/${itemId}`;
+
+  const specs = [
+    { name: 'Screen', value: screen },
+    { name: 'Capacity', value: capacity },
+    { name: 'RAM', value: ram },
+  ];
+
+  return (
+    <article className={styles.productCard}>
+      <Link to={productLink} className={styles.productCard__imageLink}>
+        <img src={image} alt={name} className={styles.productCard__image} />
+      </Link>
+      <h3 className={styles.productCard__title}>
+        <Link to={productLink} className={styles.productCard__titleLink}>
+          {name}
+        </Link>
+      </h3>
+      <div className={styles.productCard__priceContainer}>
+        <span className={styles.productCard__price}>${price}</span>
+        {fullPrice !== price && (
+          <span className={styles.productCard__fullPrice}>${fullPrice}</span>
+        )}
+      </div>
+      <hr className={styles.productCard__divider} />
+      <div className={styles.productCard__specsContainer}>
+        {specs.map(spec => (
+          <div key={spec.name} className={styles.productCard__specs}>
+            <span className={styles.productCard__specsName}>{spec.name}</span>
+            <span className={styles.productCard__specsValue}>{spec.value}</span>
+          </div>
+        ))}
+      </div>
+      <div className={styles.productCard__actions}>
+        <button
+          type="button"
+          className={classNames(styles.productCard__actionAddButton, {
+            [styles['productCard__actionAddButton--active']]: isAdded,
+          })}
+          onClick={() => setIsAdded(!isAdded)}
+        >
+          {isAdded ? 'Added to cart' : 'Add to cart'}
+        </button>
+        <button
+          type="button"
+          className={styles.productCard__actionFavouriteIcon}
+          onClick={() => setIsFavourite(!isFavourite)}
+          aria-label={
+            isFavourite ? 'Remove from favorites' : 'Add to favorites'
+          }
+        >
+          {!isFavourite ? (
+            <FavouriteIcon className={styles.productCard__icon} />
+          ) : (
+            <FavouriteIconSelected className={styles.productCard__icon} />
+          )}
+        </button>
+      </div>
+    </article>
+  );
+};
