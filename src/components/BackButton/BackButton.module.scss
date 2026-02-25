@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-white);
+}
+
+.arrow {
+  transform: rotate(180deg);
+}

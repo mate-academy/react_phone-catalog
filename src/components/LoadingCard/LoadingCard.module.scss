@@ -1,0 +1,86 @@
+.card {
+  width: 100%;
+  min-width: 212px;
+  height: var(--card-height);
+
+  &:empty::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 10px 45px rgba(0, 0, 0, 0.1);
+
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(lightgrey, 0) 0,
+        rgba(lightgrey, 0.8) 50%,
+        rgba(lightgrey, 0) 100%
+      ),
+      //animation blur
+      var(--title-skeleton),
+      //title
+      var(--desc-line-skeleton),
+      //desc1
+      var(--desc-line-skeleton),
+      //desc2
+      var(--avatar-skeleton),
+      //avatar
+      var(--footer-skeleton),
+      //footer bar
+      var(--card-skeleton); //card
+
+    background-size:
+      var(--blur-size),
+      var(--title-width) var(--title-height),
+      var(--desc-line-1-width) var(--desc-line-height),
+      var(--desc-line-2-width) var(--desc-line-height),
+      var(--desc-line-3-width) var(--desc-line-height),
+      //
+      var(--avatar-size) var(--avatar-size),
+      100% var(--footer-height),
+      100% 100%;
+
+    background-position:
+      -150% 0,
+      //animation
+      var(--title-position),
+      //title
+      var(--desc-line-1-position),
+      //desc1
+      var(--desc-line-2-position),
+      //desc2
+      var(--desc-line-3-position),
+      //desc3
+      var(--avatar-position),
+      //avatar
+      var(--footer-position),
+      //footer bar
+      0 0; //card
+
+    background-repeat: no-repeat;
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  to {
+    background-position:
+      350% 0,
+      var(--title-position),
+      var(--desc-line-1-position),
+      var(--desc-line-2-position),
+      var(--desc-line-3-position),
+      var(--avatar-position),
+      var(--footer-position),
+      0 0;
+  }
+}
+
+.loaderBox {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}

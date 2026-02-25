@@ -1,0 +1,13 @@
+.heading {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+}

@@ -1,4 +1,4 @@
-# React Product Catalog
+# React Product CatalogPage
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
@@ -44,7 +44,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 
 Implement Home page at available at `/`.
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
+1. `<h1>Product CatalogPage</h1>` should be visually hidden.
 2. `PicturesSlider`:
    - Find your own images to personalize the App;
    - Change pictures automatically every 5 seconds;

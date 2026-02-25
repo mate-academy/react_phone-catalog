@@ -1,0 +1,28 @@
+.header {
+  border-bottom: 1px solid var(--color-surface-two);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  padding-inline: 16px;
+  padding-block: 13px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: 1px solid var(--color-surface-two);
+  width: 57px;
+  height: 57px;
+  background-color: transparent;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-surface-two);
+}

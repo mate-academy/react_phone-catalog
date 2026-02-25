@@ -1,0 +1,49 @@
+.pagination {
+  padding-top: 24px;
+  padding-bottom: 64px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button {
+}
+
+.icon {
+  width: 16px;
+}
+
+.iconLeft {
+  transform: rotate(180deg);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageNumber {
+  background-color: var(--color-surface-one);
+}
+
+.pageNumber:hover {
+  background-color: var(--color-elements);
+}
+
+.selected {
+  background-color: var(--color-accent);
+}
+
+//:global(.dark) .selected {
+//  background-color: red;
+//}

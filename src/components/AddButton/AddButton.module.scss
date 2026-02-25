@@ -1,0 +1,18 @@
+.addButton {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex-grow: 1;
+  border: none;
+  background-color: var(--color-accent);
+}
+
+.hover:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.addedToCards {
+  background-color: var(--color-surface-two);
+}
