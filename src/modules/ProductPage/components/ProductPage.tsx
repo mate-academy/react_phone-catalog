@@ -92,7 +92,7 @@ export const ProductPage = () => {
         </Link>
         <img
           className="not-scale"
-          src="/img/product-not-found.png"
+          src="img/product-not-found.png"
           alt="Product not found"
         />
       </>

@@ -39,7 +39,7 @@ export const ProductCard = ({ variant = '', product }: Props) => {
         ) : (
           <img
             className="not-scale"
-            src="/img/product-not-found.png"
+            src="simg/product-not-found.png"
             alt="Product not found"
           />
         )}
