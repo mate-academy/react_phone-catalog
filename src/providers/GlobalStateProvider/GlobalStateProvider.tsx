@@ -3,6 +3,7 @@ import { Product } from "../../types/types";
 import {
   getCartIds,
   getFavoritesIds,
+  getProducts,
   saveCartIds,
   saveFavoritesIds,
 } from "../../utils";
@@ -56,6 +57,7 @@ export function reducer(state: State, action: Action): State {
           { id: action.payload, count: found ? found.count + 1 : 1 },
         ],
       };
+
       saveCartIds(stateCopy.cartIds);
 
       return stateCopy;
@@ -66,8 +68,6 @@ export function reducer(state: State, action: Action): State {
         ...state,
         cartIds: state.cartIds.filter(obj => obj.id !== action.payload),
       };
-
-      console.log("remove");
 
       saveCartIds(stateCopy.cartIds);
 
@@ -102,6 +102,7 @@ export function reducer(state: State, action: Action): State {
 
       return stateCopy;
     }
+
     case "ADD_FAVORITE": {
       const stateCopy = {
         ...state,
@@ -112,6 +113,7 @@ export function reducer(state: State, action: Action): State {
 
       return stateCopy;
     }
+
     case "REMOVE_FAVORITE": {
       const stateCopy = {
         ...state,
@@ -129,16 +131,16 @@ export function reducer(state: State, action: Action): State {
 }
 
 const initialState: State = {
-  allProducts: [],
+  allProducts: getProducts(),
   cartIds: getCartIds(),
   favoriteIds: getFavoritesIds(),
   isLoading: false,
 };
 
 export const StateContext = React.createContext(initialState);
-export const DispatchContext = React.createContext((action: Action): void => {
-  console.log(action);
-});
+export const DispatchContext = React.createContext<(action: Action) => void>(
+  () => undefined,
+);
 
 export const GlobalStateProvider: React.FC<PropsWithChildren> = ({
   children,

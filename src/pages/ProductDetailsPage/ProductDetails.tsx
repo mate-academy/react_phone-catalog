@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./ProductDetails.module.scss";
 import { ProductSlider } from "../../components/Product";
 import { ProductActionButtons } from "../../components/ProductActionButtons";
-import {
-  DispatchContext,
-  StateContext,
-} from "../../providers/GlobalStateProvider";
+import { LoadingCard } from "../../components/LoadingCard";
+import { BackButton } from "../../components/BackButton";
+import { StateContext } from "../../providers/GlobalStateProvider";
 import { Category, ProductDetailsType } from "../../types/types";
-import { getAccessories, getPhones, getTablets, loadData } from "../../utils";
+import { getAccessories, getPhones, getTablets } from "../../utils";
 
 const productDetailsText = {
   about: "About",
@@ -58,15 +57,14 @@ const colorsMap: Record<string, string> = {
 
 const normalize = (value: string) => value.toLowerCase().replace(/\s|-/g, "");
 
-const getColorValue = (color: string) => colorsMap[color] || color;
+const getColorCode = (color: string) =>
+  colorsMap[color] || colorsMap[normalize(color)] || color;
 
 const specificationKeys = ["screen", "resolution", "processor", "ram"] as const;
 
 export const ProductDetails: React.FC = () => {
   const { allProducts, isLoading } = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
   const { productId } = useParams();
-  const navigate = useNavigate();
 
   const [product, setProduct] = useState<ProductDetailsType | null>(null);
   const [detailsList, setDetailsList] = useState<ProductDetailsType[]>([]);
@@ -79,22 +77,6 @@ export const ProductDetails: React.FC = () => {
     () => allProducts.find(item => item.id === numberId),
     [allProducts, numberId],
   );
-
-  useEffect(() => {
-    if (allProducts.length > 0) {
-      return;
-    }
-
-    dispatch({ type: "START_LOADING" });
-
-    loadData()
-      .then(data => {
-        dispatch({ type: "SAVE_DATA", payload: data });
-      })
-      .finally(() => {
-        dispatch({ type: "FINISH_LOADING" });
-      });
-  }, [allProducts.length, dispatch]);
 
   useEffect(() => {
     if (!currentProduct) {
@@ -144,11 +126,7 @@ export const ProductDetails: React.FC = () => {
   }
 
   if (isLoading || allProducts.length === 0 || isDetailsLoading) {
-    return (
-      <p className={classNames(styles.message, "text-body")}>
-        Loading product...
-      </p>
-    );
+    return <LoadingCard variant="details" />;
   }
 
   if (!currentProduct || !product) {
@@ -179,10 +157,6 @@ export const ProductDetails: React.FC = () => {
       item.id !== currentProduct.id,
   );
 
-  const goBack = () => {
-    navigate(-1);
-  };
-
   return (
     <main className={styles.page}>
       <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
@@ -194,7 +168,8 @@ export const ProductDetails: React.FC = () => {
           to={`/${currentProduct.category}`}
           className={classNames(styles.breadcrumbLink, "text-small")}
         >
-          {currentProduct.category}
+          {currentProduct.category[0].toUpperCase() +
+            currentProduct.category.slice(1)}
         </Link>
         <img src="/img/general/icons/arrow.svg" alt="Arrow" />
         <span className={classNames(styles.breadcrumbCurrent, "text-small")}>
@@ -202,19 +177,12 @@ export const ProductDetails: React.FC = () => {
         </span>
       </nav>
 
-      <button className={styles.backButton} type="button" onClick={goBack}>
-        <img
-          src="/img/general/icons/arrow.svg"
-          alt="Arrow"
-          className={styles.backIcon}
-        />
-        <span className="text-small">Back</span>
-      </button>
+      <BackButton />
 
       <h1 className={classNames(styles.title, "text-h2")}>{name}</h1>
 
       <section className={styles.hero}>
-        <div className={styles.gallery}>
+        <div className={styles.leftHalf}>
           <ul className={styles.thumbs}>
             {images.map((image, index) => (
               <li key={image}>
@@ -244,114 +212,130 @@ export const ProductDetails: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.purchase}>
-          <div className={styles.colorsBlock}>
-            <div className={styles.colorsHeader}>
-              <p className="text-small">Available colors</p>
-              <p className={classNames(styles.productId, "text-small")}>
-                ID: {product.id}
+        <div className={styles.rightHalf}>
+          <div className={styles.purchase}>
+            <div className={styles.colorsBlock}>
+              <div className={styles.colorsHeader}>
+                <p className="text-small">Available colors</p>
+                <p
+                  className={classNames(
+                    styles.productId,
+                    styles.productIdTablet,
+                    "text-small",
+                  )}
+                >
+                  ID: {currentProduct.id}
+                </p>
+              </div>
+
+              <ul className={styles.colorsList}>
+                {colorsAvailable.map(itemColor => {
+                  const variant = variantByOptions(itemColor, capacity);
+                  const mappedProduct = variant
+                    ? productByItemId(variant.id)
+                    : null;
+                  const isCurrent = normalize(itemColor) === normalize(color);
+
+                  return (
+                    <li
+                      key={itemColor}
+                      className={classNames(styles.colorItem, {
+                        [styles.colorItemActive]: isCurrent,
+                      })}
+                    >
+                      {variant && mappedProduct ? (
+                        <Link
+                          to={`/product/${mappedProduct.id}`}
+                          className={styles.colorButton}
+                          style={{ backgroundColor: getColorCode(itemColor) }}
+                          aria-label={itemColor}
+                        />
+                      ) : (
+                        <span
+                          className={classNames(
+                            styles.colorButton,
+                            styles.colorDisabled,
+                          )}
+                          style={{ backgroundColor: getColorCode(itemColor) }}
+                        />
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            <div className={styles.capacityBlock}>
+              <p className="text-small">Select capacity</p>
+              <ul className={styles.capacityList}>
+                {capacityAvailable.map(itemCapacity => {
+                  const variant = variantByOptions(color, itemCapacity);
+                  const mappedProduct = variant
+                    ? productByItemId(variant.id)
+                    : null;
+                  const isCurrent = itemCapacity === capacity;
+
+                  return (
+                    <li key={itemCapacity}>
+                      {variant && mappedProduct ? (
+                        <Link
+                          to={`/product/${mappedProduct.id}`}
+                          className={classNames(
+                            styles.capacityButton,
+                            "text-body",
+                            {
+                              [styles.capacityActive]: isCurrent,
+                            },
+                          )}
+                        >
+                          {itemCapacity}
+                        </Link>
+                      ) : (
+                        <span
+                          className={classNames(
+                            styles.capacityButton,
+                            styles.capacityDisabled,
+                            "text-body",
+                          )}
+                        >
+                          {itemCapacity}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            <div className={styles.priceWrap}>
+              <p className="text-h2">${product.priceDiscount}</p>
+              <p className={classNames(styles.regularPrice, "text-body")}>
+                ${product.priceRegular}
               </p>
             </div>
 
-            <ul className={styles.colorsList}>
-              {colorsAvailable.map(itemColor => {
-                const variant = variantByOptions(itemColor, capacity);
-                const mappedProduct = variant
-                  ? productByItemId(variant.id)
-                  : null;
-                const isCurrent = normalize(itemColor) === normalize(color);
+            <div className={styles.actions}>
+              <div className={styles.buttonRow}>
+                <ProductActionButtons id={currentProduct.id} />
+              </div>
 
-                return (
-                  <li
-                    key={itemColor}
-                    className={classNames(styles.colorItem, {
-                      [styles.colorItemActive]: isCurrent,
-                    })}
-                  >
-                    {variant && mappedProduct ? (
-                      <Link
-                        to={`/product/${mappedProduct.id}`}
-                        className={styles.colorButton}
-                        style={{ backgroundColor: getColorValue(itemColor) }}
-                        aria-label={itemColor}
-                      />
-                    ) : (
-                      <span
-                        className={classNames(
-                          styles.colorButton,
-                          styles.colorDisabled,
-                        )}
-                        style={{ backgroundColor: getColorValue(itemColor) }}
-                      />
-                    )}
+              <ul className={styles.shortSpecs}>
+                {specificationKeys.map(key => (
+                  <li key={key} className={styles.shortSpecsRow}>
+                    <span className="text-small">
+                      {productDetailsText[key]}
+                    </span>
+                    <span className="text-uppercase">{product[key]}</span>
                   </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className={styles.capacityBlock}>
-            <p className="text-small">Select capacity</p>
-            <ul className={styles.capacityList}>
-              {capacityAvailable.map(itemCapacity => {
-                const variant = variantByOptions(color, itemCapacity);
-                const mappedProduct = variant
-                  ? productByItemId(variant.id)
-                  : null;
-                const isCurrent = itemCapacity === capacity;
-
-                return (
-                  <li key={itemCapacity}>
-                    {variant && mappedProduct ? (
-                      <Link
-                        to={`/product/${mappedProduct.id}`}
-                        className={classNames(
-                          styles.capacityButton,
-                          "text-body",
-                          {
-                            [styles.capacityActive]: isCurrent,
-                          },
-                        )}
-                      >
-                        {itemCapacity}
-                      </Link>
-                    ) : (
-                      <span
-                        className={classNames(
-                          styles.capacityButton,
-                          styles.capacityDisabled,
-                          "text-body",
-                        )}
-                      >
-                        {itemCapacity}
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className={styles.priceWrap}>
-            <p className="text-h2">${product.priceDiscount}</p>
-            <p className={classNames(styles.regularPrice, "text-body")}>
-              ${product.priceRegular}
-            </p>
-          </div>
-
-          <div className={styles.actions}>
-            <div className={styles.buttonRow}>
-              <ProductActionButtons id={currentProduct.id} />
+                ))}
+              </ul>
             </div>
+          </div>
 
-            <ul className={styles.shortSpecs}>
-              {specificationKeys.map(key => (
-                <li key={key} className={styles.shortSpecsRow}>
-                  <span className="text-small">{productDetailsText[key]}</span>
-                  <span className="text-small">{product[key]}</span>
-                </li>
-              ))}
-            </ul>
+          <div className={styles.idColumn}>
+            <p className={classNames(styles.productId, "text-small")}>
+              ID: {currentProduct.id}
+            </p>
           </div>
         </div>
       </section>
@@ -384,43 +368,43 @@ export const ProductDetails: React.FC = () => {
           <ul className={styles.specsList}>
             <li className={styles.specsRow}>
               <span className="text-small">{productDetailsText.screen}</span>
-              <span className="text-small">{product.screen}</span>
+              <span className="text-uppercase">{product.screen}</span>
             </li>
             <li className={styles.specsRow}>
               <span className="text-small">
                 {productDetailsText.resolution}
               </span>
-              <span className="text-small">{product.resolution}</span>
+              <span className="text-uppercase">{product.resolution}</span>
             </li>
             <li className={styles.specsRow}>
               <span className="text-small">{productDetailsText.processor}</span>
-              <span className="text-small">{product.processor}</span>
+              <span className="text-uppercase">{product.processor}</span>
             </li>
             <li className={styles.specsRow}>
               <span className="text-small">{productDetailsText.ram}</span>
-              <span className="text-small">{product.ram}</span>
+              <span className="text-uppercase">{product.ram}</span>
             </li>
             <li className={styles.specsRow}>
               <span className="text-small">
                 {productDetailsText.builtInMemory}
               </span>
-              <span className="text-small">{product.capacity}</span>
+              <span className="text-uppercase">{product.capacity}</span>
             </li>
             {product.camera && (
               <li className={styles.specsRow}>
                 <span className="text-small">{productDetailsText.camera}</span>
-                <span className="text-small">{product.camera}</span>
+                <span className="text-uppercase">{product.camera}</span>
               </li>
             )}
             {product.zoom && (
               <li className={styles.specsRow}>
                 <span className="text-small">{productDetailsText.zoom}</span>
-                <span className="text-small">{product.zoom}</span>
+                <span className="text-uppercase">{product.zoom}</span>
               </li>
             )}
             <li className={styles.specsRow}>
               <span className="text-small">{productDetailsText.cell}</span>
-              <span className="text-small">{product.cell.join(", ")}</span>
+              <span className="text-uppercase">{product.cell.join(", ")}</span>
             </li>
           </ul>
         </article>

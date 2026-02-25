@@ -4,33 +4,20 @@ import accessoriesFromJson from "../../public/api/accessories.json";
 import tabletsFromJson from "../../public/api/tablets.json";
 import { Category, Product, ProductDetailsType, Sort } from "../types/types";
 
-export function wait(delay: number = 300): Promise<any> {
-  return new Promise(resolve => setTimeout(resolve, delay));
-}
 export function getProducts() {
   return productsFromJson;
 }
 
-export async function loadData(): Promise<Product[]> {
-  await wait();
-
-  return getProducts();
-}
-
 export async function getAccessories(): Promise<ProductDetailsType[]> {
-  await wait();
-
-  return accessoriesFromJson;
+  return Promise.resolve(accessoriesFromJson);
 }
+
 export async function getPhones(): Promise<ProductDetailsType[]> {
-  await wait();
-
-  return phonesFromJson;
+  return Promise.resolve(phonesFromJson);
 }
-export async function getTablets(): Promise<ProductDetailsType[]> {
-  await wait();
 
-  return tabletsFromJson;
+export async function getTablets(): Promise<ProductDetailsType[]> {
+  return Promise.resolve(tabletsFromJson);
 }
 
 type Keys = "cartIds" | "favoritesIds";
@@ -40,10 +27,13 @@ interface ProductId {
   count: number;
 }
 
-export function debounce(callback: Function, delay: number): Function {
+export function debounce<T extends unknown[]>(
+  callback: (...args: T) => void,
+  delay: number,
+): (...args: T) => void {
   let timerId = 0;
 
-  return (...arg: any) => {
+  return (...arg: T) => {
     window.clearTimeout(timerId);
 
     timerId = window.setTimeout(() => {
@@ -55,10 +45,11 @@ export function debounce(callback: Function, delay: number): Function {
 function getProductIds(key: Keys): Array<ProductId> | [] {
   try {
     const data = localStorage.getItem(key) || "[]";
+
     return JSON.parse(data);
-  } catch (error) {
-    console.error(error);
+  } catch (_error) {
     localStorage.removeItem(key);
+
     return [];
   }
 }
@@ -69,20 +60,23 @@ function saveProductIds(
 ) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.error(error);
+  } catch (_error) {
+    return;
   }
 }
 
 export function getCartIds() {
   return getProductIds("cartIds");
 }
+
 export function getFavoritesIds() {
   return getProductIds("favoritesIds");
 }
+
 export function saveCartIds(value: ProductId[]) {
   return saveProductIds("cartIds", value);
 }
+
 export function saveFavoritesIds(value: ProductId[]) {
   return saveProductIds("favoritesIds", value);
 }
@@ -101,6 +95,7 @@ export function filterAndSort({
   const filtered: Product[] = category
     ? products.filter(item => item.category === category)
     : products;
+
   switch (sort) {
     case Sort.Cheapest:
       return [...filtered].sort((a, b) => a.price - b.price);
@@ -133,6 +128,7 @@ export const getShortPagination = (
       for (let i = 1; i <= 6; i++) {
         pages.push(i);
       }
+
       pages.push(totalPages);
     } else if (currentPage + 3 >= totalPages) {
       pages.push(1);
@@ -144,6 +140,7 @@ export const getShortPagination = (
       for (let i = currentPage - 2; i <= currentPage + 2; i++) {
         pages.push(i);
       }
+
       pages.push(totalPages);
     }
   }

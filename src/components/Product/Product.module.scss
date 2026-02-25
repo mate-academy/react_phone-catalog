@@ -15,3 +15,14 @@
     padding-bottom: 80px;
   }
 }
+
+.slider {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  justify-content: start;
+
+  @media (min-width: 640px) {
+    justify-content: space-between;
+  }
+}

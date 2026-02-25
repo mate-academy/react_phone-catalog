@@ -4,59 +4,68 @@ import { getCount } from "../../utils";
 import { StateContext } from "../../providers/GlobalStateProvider";
 import styles from "./Menu.module.scss";
 import { HeaderMenu } from "../HeaderMenu/HeaderMenu";
+import { Link } from "react-router-dom";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
-const buttonStyles: React.CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexGrow: 1,
-};
+interface Props {
+  onClose: () => void;
+}
 
-const wrapperStyles: React.CSSProperties = {
-  display: "flex",
-  height: "100vh",
-  justifyContent: "center",
-  padding: "24px",
-};
-
-export const Menu: React.FC = () => {
+export const Menu: React.FC<Props> = ({ onClose }) => {
   const { favoriteIds, cartIds } = useContext(StateContext);
+  const { theme, language, toggleTheme, toggleLanguage, labels } =
+    useContext(AppSettingsContext);
 
   return (
     <div className={styles.menu}>
       <header className={styles.header}>
-        <a className={styles.logo} href="#">
+        <Link className={styles.logo} to="/" onClick={onClose}>
           <img
-            className="logo__image"
+            className={`${styles.logoImage} ${theme === "light" ? styles.logoImageLight : ""}`}
             alt="logo"
             src="/img/general/icons/Logo.svg"
           />
-        </a>
-        <button className={styles.button}>
+        </Link>
+        <button className={styles.button} onClick={onClose} type="button">
           <img
-            className="header__icon"
+            className={`${styles.closeIcon} ${theme === "light" ? styles.closeIconLight : ""}`}
             alt="close"
             src="/img/general/icons/close.svg"
           />
         </button>
       </header>
-      <HeaderMenu
-        wrapperStyles={wrapperStyles}
-        listStyles={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      />
+
+      <div className={styles.content}>
+        <div className={styles.controls}>
+          <button
+            className={styles.controlButton}
+            type="button"
+            onClick={toggleTheme}
+          >
+            {labels.theme}: {theme}
+          </button>
+          <button
+            className={styles.controlButton}
+            type="button"
+            onClick={toggleLanguage}
+          >
+            {labels.language}: {language.toUpperCase()}
+          </button>
+        </div>
+        <HeaderMenu mobile onNavigate={onClose} />
+      </div>
+
       <div className={styles.buttons}>
         <HeaderIconButton
           icon="heart"
-          buttonStyles={buttonStyles}
+          buttonClassName={styles.iconButton}
+          buttonStyles={{ display: "flex" }}
           count={getCount(favoriteIds)}
         />
         <HeaderIconButton
           icon="cart"
-          buttonStyles={buttonStyles}
+          buttonClassName={styles.iconButton}
+          buttonStyles={{ display: "flex" }}
           count={getCount(cartIds)}
         />
       </div>

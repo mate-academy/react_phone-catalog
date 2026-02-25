@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Footer.module.scss";
 import classNames from "classnames";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
 export const Footer: React.FC = () => {
+  const { theme } = useContext(AppSettingsContext);
+
   return (
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.content}>
           <a className={styles.logo} href="#">
             <img
-              className="logo__image"
+              className={classNames(
+                styles.logoImage,
+                theme === "light" && styles.logoImageLight,
+              )}
               alt="logo"
               src="/img/general/icons/logo-bottom.svg"
             />
@@ -48,7 +54,11 @@ export const Footer: React.FC = () => {
               <img
                 className={styles.icon}
                 alt="up-arrow"
-                src="/img/general/icons/arrow-white.svg"
+                src={
+                  theme === "light"
+                    ? "/img/general/icons/arrow.svg"
+                    : "/img/general/icons/arrow-white.svg"
+                }
               />
             </div>
           </a>

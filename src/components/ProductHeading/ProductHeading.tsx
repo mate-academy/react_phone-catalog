@@ -2,8 +2,9 @@ import React from "react";
 import { Swiper } from "swiper/types";
 import classNames from "classnames";
 import styles from "./ProductHeading.module.scss";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
-export interface btnControls {
+export interface BtnControls {
   allowLeft: boolean;
   allowRight: boolean;
 }
@@ -12,15 +13,12 @@ interface Props {
   swiperRef: React.RefObject<Swiper | null>;
   title: string;
   productsLength: number;
-  swiperButtonState: btnControls;
+  swiperButtonState: BtnControls;
 }
 
 const iconsPath = {
-  bannerMobile: "./img/banner_mobile.png",
-  bannerTablet: "/img/banner_tablet.png",
   arrowWhite: "/img/general/icons/arrow-white.svg",
   arrow: "/img/general/icons/arrow.svg",
-  heart: "/public/img/general/icons/heart.svg",
 };
 
 export const ProductHeading: React.FC<Props> = ({
@@ -28,10 +26,13 @@ export const ProductHeading: React.FC<Props> = ({
   title,
   swiperButtonState,
 }) => {
+  const { theme } = React.useContext(AppSettingsContext);
+
   const slideNext = () => {
     if (!swiperRef.current) {
       return;
     }
+
     swiperRef.current?.slideNext();
   };
 
@@ -39,6 +40,7 @@ export const ProductHeading: React.FC<Props> = ({
     if (!swiperRef.current) {
       return;
     }
+
     swiperRef.current?.slidePrev();
   };
 
@@ -48,19 +50,19 @@ export const ProductHeading: React.FC<Props> = ({
       <div className={styles.buttons}>
         <button
           onClick={slidePrev}
-          className={classNames("heading__left-button", "button", {
-            disabled: !swiperButtonState.allowLeft,
+          className={classNames(styles.button, {
+            [styles.buttonDisabled]: !swiperButtonState.allowLeft,
           })}
         >
           {swiperButtonState.allowLeft ? (
             <img
-              className="heading__icon-left"
+              className={styles.iconLeft}
               alt="arrow-left"
-              src={iconsPath.arrowWhite}
+              src={theme === "light" ? iconsPath.arrow : iconsPath.arrowWhite}
             />
           ) : (
             <img
-              className="heading__icon-left"
+              className={styles.iconLeft}
               alt="arrow-left"
               src={iconsPath.arrow}
             />
@@ -68,19 +70,19 @@ export const ProductHeading: React.FC<Props> = ({
         </button>
         <button
           onClick={slideNext}
-          className={classNames("heading__right-button", "button", {
-            disabled: !swiperButtonState.allowRight,
+          className={classNames(styles.button, {
+            [styles.buttonDisabled]: !swiperButtonState.allowRight,
           })}
         >
           {swiperButtonState.allowRight ? (
             <img
-              className="heading__icon-right"
+              className={styles.iconRight}
               alt="arrow-left"
-              src={iconsPath.arrowWhite}
+              src={theme === "light" ? iconsPath.arrow : iconsPath.arrowWhite}
             />
           ) : (
             <img
-              className="heading__icon-right"
+              className={styles.iconRight}
               alt="arrow-left"
               src={iconsPath.arrow}
             />

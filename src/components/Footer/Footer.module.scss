@@ -20,6 +20,14 @@
   width: 192px;
 }
 
+.logoImage {
+  display: block;
+}
+
+.logoImageLight {
+  filter: brightness(0) saturate(100%);
+}
+
 .navigation {
   display: flex;
   align-items: center;

@@ -24,10 +24,12 @@ export const Card: React.FC<Props> = ({
   image,
   capacity,
 }) => {
+  const imagePath = image.startsWith("/") ? image : `/${image}`;
+
   return (
     <li className={styles.item}>
       <Link to={`/product/${id}`}>
-        <img className={styles.image} alt={name} src={image} />
+        <img className={styles.image} alt={name} src={imagePath} />
       </Link>
 
       <div className={styles.wrapper}>

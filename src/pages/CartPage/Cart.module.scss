@@ -71,6 +71,19 @@
 .closeButton {
   align-self: center;
   background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.countButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--color-surface-two);
+  cursor: pointer;
 }
 
 .cardButtons {
@@ -135,6 +148,7 @@
   border: none;
   background-color: var(--color-accent);
   padding: 13.5px;
+  cursor: pointer;
 }
 
 .checkoutButton:hover {

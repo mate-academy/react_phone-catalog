@@ -24,8 +24,10 @@ export const LikeButton: React.FC<Props> = ({ id }) => {
   const addFavorite = () => {
     if (isFavoriteId) {
       dispatch({ type: "REMOVE_FAVORITE", payload: id });
+
       return;
     }
+
     dispatch({ type: "ADD_FAVORITE", payload: id });
   };
 

@@ -1,56 +1,68 @@
 import React from "react";
-import styles from "./BreadCrumbs.module.scss";
 import classNames from "classnames";
-import { useLocation, useSearchParams } from "react-router-dom";
-import { routes } from "../../Root";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./BreadCrumbs.module.scss";
+
+const formatSegment = (segment: string) => {
+  if (!segment) {
+    return "";
+  }
+
+  return segment[0].toUpperCase() + segment.slice(1);
+};
 
 export const BreadCrumbs: React.FC = () => {
   const { pathname } = useLocation();
-  const slicedPath = pathname.slice(1);
-  const CapitalizePath =
-    slicedPath.slice(0, 1).toUpperCase() + slicedPath.slice(1);
-  const [searchParams] = useSearchParams();
-  const productId = searchParams.get("productId");
+  const segments = pathname.split("/").filter(Boolean);
 
-  const breadcrumbs = [
-    {
-      href: routes.home,
-      children: <img src="/img/general/icons/home.svg" alt="home" />,
-    },
-    { href: slicedPath, children: CapitalizePath },
-  ];
+  if (segments.length === 0) {
+    return null;
+  }
+
+  const items = segments.map((segment, index) => {
+    const href = `/${segments.slice(0, index + 1).join("/")}`;
+
+    return {
+      href,
+      label: formatSegment(segment),
+      isLast: index === segments.length - 1,
+    };
+  });
 
   return (
-    <nav className={styles.breadcrumbs}>
+    <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
       <ul className={styles.list}>
-        {/*HOME ICON HTML*/}
-        {/*breadcrumps.map(el => <BreadCrumb el={el} />>)*/}
+        <li className={styles.item}>
+          <Link to="/" className={styles.home}>
+            <img src="/img/general/icons/home.svg" alt="home" />
+          </Link>
+        </li>
 
-        {/*{breadcrumbs.map((bc, index) => (*/}
-        {/*  <li key={bc.href} className={classNames(styles.link, "text-small")}>*/}
-        {/*    <a href={bc.href} className={classNames(styles.link, "text-small")}>*/}
-        {/*      {bc.children}*/}
-        {/*    </a>*/}
-        {/*    {breadcrumbs.length - 1 === index ? (*/}
-        {/*      ""*/}
-        {/*    ) : (*/}
-        {/*      <a href={bc.href} className={styles.link}>*/}
-        {/*        <img*/}
-        {/*          src="/img/general/icons/arrow.svg"*/}
-        {/*          alt="arrow"*/}
-        {/*          className={styles.arrow}*/}
-        {/*        />*/}
-        {/*      </a>*/}
-        {/*    )}*/}
-        {/*  </li>*/}
-        {/*))}*/}
+        {items.map(({ href, label, isLast }) => (
+          <li
+            key={href}
+            className={classNames(styles.item, {
+              [styles.itemCut]: isLast,
+            })}
+          >
+            <img
+              src="/img/general/icons/arrow.svg"
+              alt="arrow"
+              className={styles.arrow}
+            />
+
+            {isLast ? (
+              <span className={classNames(styles.whiteLink, "text-small")}>
+                {label}
+              </span>
+            ) : (
+              <Link className={classNames(styles.link, "text-small")} to={href}>
+                {label}
+              </Link>
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
   );
 };
-
-// component BreadCrumps(props)
-// const {breadcrumps} = props
-// render
-// static home html
-// breadcrumps.map(el => <BreadCrump el={el} />>)

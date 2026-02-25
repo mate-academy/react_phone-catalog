@@ -6,7 +6,7 @@ import { Card } from "../Card";
 import styles from "./Product.module.scss";
 import { ProductHeading } from "../ProductHeading";
 import { Product } from "../../types/types";
-import { btnControls } from "../ProductHeading/ProductHeading";
+import { BtnControls } from "../ProductHeading/ProductHeading";
 
 interface Props {
   title: string;
@@ -18,7 +18,7 @@ const numberOfDisplayedItems = 4;
 export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const [swiperButtonState, setSwiperButtonState] = useState<btnControls>({
+  const [swiperButtonState, setSwiperButtonState] = useState<BtnControls>({
     allowLeft: false,
     allowRight: false,
   });
@@ -41,7 +41,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
       <Swiper
         slidesPerView={numberOfDisplayedItems}
         spaceBetween={16}
-        className="product"
+        className={styles.slider}
         onSlideChange={handleButtons}
         onSwiper={swiper => {
           handleButtons(swiper);

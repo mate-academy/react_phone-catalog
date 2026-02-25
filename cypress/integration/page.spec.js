@@ -4,6 +4,6 @@ describe("App", () => {
   });
 
   it("should have h1", () => {
-    cy.get("h1").should("have.text", "Product CatalogPage");
+    cy.get("h1").should("have.text", "Product Catalog");
   });
 });

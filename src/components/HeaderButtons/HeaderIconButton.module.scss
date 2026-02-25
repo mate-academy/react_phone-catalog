@@ -2,6 +2,10 @@
   width: 16px;
 }
 
+.iconLight {
+  filter: brightness(0) saturate(100%);
+}
+
 .linkButton {
   position: absolute;
   top: 8px;

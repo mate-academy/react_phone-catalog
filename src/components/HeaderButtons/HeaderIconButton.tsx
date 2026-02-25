@@ -3,6 +3,7 @@ import styles from "./HeaderIconButton.module.scss";
 import { NavLink, NavLinkRenderProps } from "react-router-dom";
 import { routes } from "../../Root";
 import classNames from "classnames";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
 const iconToPath = {
   heart: "/img/general/icons/heart.svg",
@@ -12,6 +13,7 @@ const iconToPath = {
 type Props = {
   count: number;
   icon: "heart" | "cart";
+  buttonClassName?: string;
   buttonStyles?: React.CSSProperties;
   counterStyles?: React.CSSProperties;
   iconStyles?: React.CSSProperties;
@@ -20,14 +22,18 @@ type Props = {
 export const HeaderIconButton: React.FC<Props> = ({
   count,
   icon,
+  buttonClassName,
   buttonStyles,
   counterStyles,
   iconStyles,
 }) => {
+  const { theme } = React.useContext(AppSettingsContext);
   const displayCount = count > 99 ? "99+" : count;
 
   const getClassLink = ({ isActive }: NavLinkRenderProps) =>
-    classNames(styles.button, { [styles.underline]: isActive });
+    classNames(styles.button, buttonClassName, {
+      [styles.underline]: isActive,
+    });
 
   return (
     <NavLink
@@ -36,7 +42,9 @@ export const HeaderIconButton: React.FC<Props> = ({
       className={getClassLink}
     >
       <img
-        className={styles.icon}
+        className={classNames(styles.icon, {
+          [styles.iconLight]: theme === "light",
+        })}
         alt={icon}
         src={iconToPath[icon]}
         style={iconStyles}

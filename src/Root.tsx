@@ -15,6 +15,7 @@ import { FavouritesPage } from "./pages/FavouritesPage";
 import { CartPage } from "./pages/CartPage";
 // import { Menu } from "./components/Menu";
 import { ProductDetails } from "./pages/ProductDetailsPage";
+import { AppSettingsProvider } from "./providers/AppSettingsProvider";
 
 export const routes = {
   home: "/",
@@ -29,33 +30,35 @@ export const routes = {
 
 export const Root = () => (
   <Router>
-    <GlobalStateProvider>
-      <Routes>
-        {/*<Route path={routes.menu} element={<Menu />} />*/}
-        <Route path={routes.home} element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path={routes.phones}
-            element={<CatalogPage category={Category.Phones} />}
-          />
-          <Route
-            path={routes.tablets}
-            element={<CatalogPage category={Category.Tablets} />}
-          />
-          <Route
-            path={routes.accessories}
-            element={<CatalogPage category={Category.Accessories} />}
-          />
+    <AppSettingsProvider>
+      <GlobalStateProvider>
+        <Routes>
+          {/*<Route path={routes.menu} element={<Menu />} />*/}
+          <Route path={routes.home} element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path={routes.phones}
+              element={<CatalogPage category={Category.Phones} />}
+            />
+            <Route
+              path={routes.tablets}
+              element={<CatalogPage category={Category.Tablets} />}
+            />
+            <Route
+              path={routes.accessories}
+              element={<CatalogPage category={Category.Accessories} />}
+            />
 
-          <Route path={routes.product} element={<ProductDetails />}></Route>
+            <Route path={routes.product} element={<ProductDetails />}></Route>
 
-          <Route path={routes.favorites} element={<FavouritesPage />} />
-          <Route path={routes.cart} element={<CartPage />} />
+            <Route path={routes.favorites} element={<FavouritesPage />} />
+            <Route path={routes.cart} element={<CartPage />} />
 
-          <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </GlobalStateProvider>
+            <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </GlobalStateProvider>
+    </AppSettingsProvider>
   </Router>
 );

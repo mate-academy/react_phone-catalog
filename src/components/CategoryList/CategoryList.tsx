@@ -3,17 +3,21 @@ import React, { useContext, useMemo } from "react";
 import { StateContext } from "../../providers/GlobalStateProvider";
 import styles from "./Category.module.scss";
 import { Link } from "react-router-dom";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
 export const CategoryList: React.FC = () => {
   const { allProducts } = useContext(StateContext);
+  const { labels } = useContext(AppSettingsContext);
 
   const productsLengthByCategory = useMemo(() => {
     return allProducts.reduce(
       (acc, product) => {
         const category = product.category as Category;
-        acc[category] = (acc[category] || 0) + 1;
 
-        return acc;
+        return {
+          ...acc,
+          [category]: (acc[category] || 0) + 1,
+        };
       },
       {} as Record<Category, number>,
     );
@@ -28,7 +32,9 @@ export const CategoryList: React.FC = () => {
   return (
     <section className={styles.category}>
       <div className={styles.heading}>
-        <h2 className="heading__title title text-h2">Shop by category</h2>
+        <h2 className="heading__title title text-h2">
+          {labels.shopByCategory}
+        </h2>
       </div>
       <ul className={styles.categoryList}>
         {Object.values(Category).map(category => {
@@ -48,11 +54,13 @@ export const CategoryList: React.FC = () => {
               <div className="category__description">
                 <p className={`${styles.categoryName} text-h4`}>
                   {category === Category.Phones
-                    ? "Mobile Phones"
-                    : category[0].toUpperCase() + category.slice(1)}
+                    ? labels.mobilePhones
+                    : category === Category.Tablets
+                      ? labels.tablets
+                      : labels.accessories}
                 </p>
                 <p className="category__amount text-small">
-                  {`${productsLengthByCategory[category] ?? 0} models`}
+                  {labels.models(productsLengthByCategory[category] ?? 0)}
                 </p>
               </div>
             </li>

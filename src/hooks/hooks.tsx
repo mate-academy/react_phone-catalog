@@ -1,6 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 import { Sort } from "../types/types";
-import { useEffect } from "react";
 
 interface Pagination {
   currentPage: number;
@@ -25,6 +24,7 @@ export const usePagination = (
       } else {
         prev.set("page", String(newPage));
       }
+
       return prev;
     });
   };
@@ -49,6 +49,7 @@ export const usePerPage = (productLength: number) => {
       } else {
         prev.set("perPage", value);
       }
+
       return prev;
     });
   };
@@ -60,16 +61,6 @@ export const useSort = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortValue = searchParams.get("sort") || Sort.Newest;
-
-  useEffect(() => {
-    if (!sortValue) {
-      setSearchParams(prev => {
-        prev.set("sort", Sort.Newest);
-
-        return prev;
-      });
-    }
-  }, []);
 
   const setSort = (value: string) => {
     setSearchParams(prev => {

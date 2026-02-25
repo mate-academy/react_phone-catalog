@@ -1,6 +1,7 @@
 import React from "react";
 import { useSwiper } from "swiper/react";
 import styles from "./SliderButtons.module.scss";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
 interface Props {
   prevButtonStyles?: React.CSSProperties;
@@ -14,7 +15,9 @@ export const SliderButtons: React.FC<Props> = ({
   imageStyles,
   wrapperStyles,
 }) => {
+  const { theme } = React.useContext(AppSettingsContext);
   const iconsPath = {
+    arrow: "/img/general/icons/arrow.svg",
     arrowWhite: "/img/general/icons/arrow-white.svg",
   };
 
@@ -23,6 +26,7 @@ export const SliderButtons: React.FC<Props> = ({
   const prevSlide = () => {
     swiper.slidePrev();
   };
+
   const nextSlide = () => {
     swiper.slideNext();
   };
@@ -37,7 +41,7 @@ export const SliderButtons: React.FC<Props> = ({
         <img
           className={styles.prevIcon}
           alt="up-arrow"
-          src={iconsPath.arrowWhite}
+          src={theme === "light" ? iconsPath.arrow : iconsPath.arrowWhite}
           style={imageStyles}
         />
       </button>
@@ -49,7 +53,7 @@ export const SliderButtons: React.FC<Props> = ({
         <img
           className={styles.nextIcon}
           alt="up-arrow"
-          src={iconsPath.arrowWhite}
+          src={theme === "light" ? iconsPath.arrow : iconsPath.arrowWhite}
           style={imageStyles}
         />
       </button>

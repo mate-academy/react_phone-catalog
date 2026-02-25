@@ -3,75 +3,52 @@ import classNames from "classnames";
 import { routes } from "../../Root";
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
 interface Props {
-  listStyles?: React.CSSProperties;
-  itemStyles?: React.CSSProperties;
-  wrapperStyles?: React.CSSProperties;
+  mobile?: boolean;
+  onNavigate?: () => void;
 }
 
-export const HeaderMenu: React.FC<Props> = ({
-  listStyles,
-  itemStyles,
-  wrapperStyles,
-}) => {
+export const HeaderMenu: React.FC<Props> = ({ mobile = false, onNavigate }) => {
   const { pathname } = useLocation();
+  const { labels } = React.useContext(AppSettingsContext);
+
+  const navItems = [
+    { to: routes.home, label: labels.navHome },
+    { to: routes.phones, label: labels.navPhones },
+    { to: routes.tablets, label: labels.navTablets },
+    { to: routes.accessories, label: labels.navAccessories },
+  ];
 
   return (
-    <nav className={styles.navigation} style={wrapperStyles}>
-      <ul className={classNames(styles.list)} style={listStyles}>
-        <li
-          style={itemStyles}
-          className={classNames(styles.item, {
-            [styles.underline]: pathname === routes.home,
-          })}
-        >
-          <Link
-            to={routes.home}
-            className={classNames(styles.link, "text-uppercase")}
+    <nav
+      className={classNames(styles.navigation, {
+        [styles.navigationMobile]: mobile,
+      })}
+    >
+      <ul
+        className={classNames(styles.list, {
+          [styles.listMobile]: mobile,
+        })}
+      >
+        {navItems.map(({ to, label }) => (
+          <li
+            key={to}
+            className={classNames(styles.item, {
+              [styles.itemMobile]: mobile,
+              [styles.underline]: pathname === to,
+            })}
           >
-            Home
-          </Link>
-        </li>
-        <li
-          style={itemStyles}
-          className={classNames(styles.item, {
-            [styles.underline]: pathname === routes.phones,
-          })}
-        >
-          <Link
-            to={routes.phones}
-            className={classNames(styles.link, "text-uppercase")}
-          >
-            Phone
-          </Link>
-        </li>
-        <li
-          style={itemStyles}
-          className={classNames(styles.item, {
-            [styles.underline]: pathname === routes.tablets,
-          })}
-        >
-          <Link
-            to={routes.tablets}
-            className={classNames(styles.link, "text-uppercase")}
-          >
-            Tablets
-          </Link>
-        </li>
-        <li
-          style={itemStyles}
-          className={classNames(styles.item, {
-            [styles.underline]: pathname === routes.accessories,
-          })}
-        >
-          <Link
-            to={routes.accessories}
-            className={classNames(styles.link, "text-uppercase")}
-          >
-            Accessories
-          </Link>
-        </li>
+            <Link
+              to={to}
+              className={classNames(styles.link, "text-uppercase")}
+              onClick={onNavigate}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

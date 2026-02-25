@@ -2,11 +2,16 @@ import React from "react";
 import styles from "./NoProducts.module.scss";
 import classNames from "classnames";
 
-export const NoProducts: React.FC<{ text?: string }> = ({ text }) => {
+interface Props {
+  text?: string;
+  message?: string;
+}
+
+export const NoProducts: React.FC<Props> = ({ text, message }) => {
   return (
     <div className={classNames(styles.noProducts)}>
       <h1 className={classNames("text-h1")}>
-        There no {text || "products"} yet
+        {message || `There are no ${text || "products"} yet`}
       </h1>
     </div>
   );

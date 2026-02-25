@@ -1,29 +1,18 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { Slider } from "../../components/Slider";
 import { ProductSlider } from "../../components/Product";
 import { Sort } from "../../types/types";
-import { loadData, selectProductsByCategory } from "../../utils";
+import { selectProductsByCategory } from "../../utils";
 import { CategoryList } from "../../components/CategoryList";
-import {
-  DispatchContext,
-  StateContext,
-} from "../../providers/GlobalStateProvider";
+import { StateContext } from "../../providers/GlobalStateProvider";
 import styles from "./HomePage.module.scss";
 import classNames from "classnames";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 import { LoadingCard } from "../../components/LoadingCard";
 
 export const HomePage: React.FC = () => {
-  const { allProducts, isLoading } = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-
-  useEffect(() => {
-    dispatch({ type: "START_LOADING" });
-
-    loadData().then(data => {
-      dispatch({ type: "SAVE_DATA", payload: data });
-      dispatch({ type: "FINISH_LOADING" });
-    });
-  }, []);
+  const { allProducts } = useContext(StateContext);
+  const { labels } = useContext(AppSettingsContext);
 
   const newest = useMemo(
     () =>
@@ -45,17 +34,17 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h2 className={classNames(styles.title, "text-h1")}>
-        Welcome to Nice Gadgets store!
-      </h2>
+      <h2 className={classNames(styles.title, "text-h1")}>{labels.welcome}</h2>
       <Slider />
-      {isLoading ? (
+      {allProducts.length === 0 ? (
         <LoadingCard />
       ) : (
-        <ProductSlider products={newest} title={"Brand new models"} />
+        <>
+          <ProductSlider products={newest} title={labels.brandNewModels} />
+          <CategoryList />
+          <ProductSlider products={hotPrice} title={labels.hotPrices} />
+        </>
       )}
-      <CategoryList />
-      <ProductSlider products={hotPrice} title={"Hot prices"} />
     </>
   );
 };

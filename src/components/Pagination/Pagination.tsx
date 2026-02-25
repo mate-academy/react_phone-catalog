@@ -2,12 +2,12 @@ import React, { useMemo } from "react";
 import styles from "./Pagination.module.scss";
 import { getShortPagination } from "../../utils";
 import classNames from "classnames";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
 interface PaginationType {
   totalPages: number;
   currentPage: number;
   setPage: (p: number) => void;
-  setPerPage: (v: string) => void;
 }
 
 const FIRST_PAGE = 1;
@@ -16,15 +16,19 @@ export const Pagination: React.FC<PaginationType> = ({
   totalPages,
   currentPage,
   setPage,
-  setPerPage,
 }) => {
+  const { theme } = React.useContext(AppSettingsContext);
   const pages = useMemo(
     () => getShortPagination(currentPage, totalPages),
-    [currentPage, totalPages, setPage, setPerPage],
+    [currentPage, totalPages],
   );
 
   const isFirst = currentPage === FIRST_PAGE;
   const isLast = currentPage === totalPages;
+  const activeArrowIcon =
+    theme === "light"
+      ? "/img/general/icons/arrow.svg"
+      : "/img/general/icons/arrow-white.svg";
 
   return (
     <section className={styles.pagination}>
@@ -50,7 +54,7 @@ export const Pagination: React.FC<PaginationType> = ({
               />
             ) : (
               <img
-                src="/img/general/icons/arrow-white.svg"
+                src={activeArrowIcon}
                 alt="arrow left"
                 className={classNames(styles.icon, styles.iconLeft)}
               />
@@ -92,7 +96,7 @@ export const Pagination: React.FC<PaginationType> = ({
               />
             ) : (
               <img
-                src="/img/general/icons/arrow-white.svg"
+                src={activeArrowIcon}
                 alt="arrow left"
                 className={styles.icon}
               />

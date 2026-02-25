@@ -1,4 +1,5 @@
 import React, { useContext, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { BreadCrumbs } from "../../components/Breadcrumbs";
 import styles from "./CatalogPage.module.scss";
 
@@ -10,20 +11,35 @@ import { StateContext } from "../../providers/GlobalStateProvider";
 import { Category, Sort } from "../../types/types";
 import { filterAndSort } from "../../utils";
 import { NoProducts } from "../../components/NoProducts";
+import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { LoadingCard } from "../../components/LoadingCard";
 
 export const CatalogPage: React.FC<{ category: Category }> = ({ category }) => {
   const { allProducts } = useContext(StateContext);
+  const { labels } = useContext(AppSettingsContext);
   const { setSort, sortValue } = useSort();
+  const [searchParams] = useSearchParams();
+  const query = (searchParams.get("query") || "").trim().toLowerCase();
 
-  const currentProducts = useMemo(() => {
+  const categoryProducts = useMemo(() => {
     return filterAndSort({
       products: allProducts,
       category,
       sort: sortValue as Sort,
     });
-  }, [category, allProducts, sortValue, setSort]);
+  }, [category, allProducts, sortValue]);
 
-  const { perPage, setPerPage } = usePerPage(allProducts.length);
+  const currentProducts = useMemo(() => {
+    if (!query) {
+      return categoryProducts;
+    }
+
+    return categoryProducts.filter(product =>
+      product.name.toLowerCase().includes(query),
+    );
+  }, [categoryProducts, query]);
+
+  const { perPage, setPerPage } = usePerPage(currentProducts.length);
   const currentProductLength = currentProducts.length;
 
   const { currentPage, totalPages, setPage } = usePagination(
@@ -37,12 +53,16 @@ export const CatalogPage: React.FC<{ category: Category }> = ({ category }) => {
     const end = start + perPage;
 
     return currentProducts.slice(start, end);
-  }, [currentPage, perPage, totalPages, setPage, setPerPage]);
+  }, [currentPage, perPage, currentProducts]);
 
   return (
     <>
-      {currentProducts.length === 0 ? (
+      {allProducts.length === 0 ? (
+        <LoadingCard />
+      ) : categoryProducts.length === 0 ? (
         <NoProducts text={category} />
+      ) : query && currentProducts.length === 0 ? (
+        <NoProducts message={labels.searchNoMatchCategory(category)} />
       ) : (
         <main className="main">
           <BreadCrumbs />
@@ -50,6 +70,7 @@ export const CatalogPage: React.FC<{ category: Category }> = ({ category }) => {
             setPerPage={setPerPage}
             perPage={perPage}
             setSort={setSort}
+            sortValue={sortValue}
             count={currentProductLength}
           />
           <section className={styles.products}>
@@ -74,7 +95,6 @@ export const CatalogPage: React.FC<{ category: Category }> = ({ category }) => {
             totalPages={totalPages}
             setPage={setPage}
             currentPage={currentPage}
-            setPerPage={setPerPage}
           />
         </main>
       )}

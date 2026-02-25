@@ -1,15 +1,20 @@
 import React from "react";
-import styles from "./BackButton.module.scss";
 import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
+import styles from "./BackButton.module.scss";
 
 export const BackButton: React.FC = () => {
+  const navigate = useNavigate();
+
+  const onBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <a
-      className={classNames(
-        styles.button,
-        "details__back-button",
-        "text-small",
-      )}
+    <button
+      type="button"
+      onClick={onBack}
+      className={classNames(styles.button, "text-small")}
     >
       <img
         src="/img/general/icons/arrow.svg"
@@ -17,6 +22,6 @@ export const BackButton: React.FC = () => {
         className={styles.arrow}
       />
       Back
-    </a>
+    </button>
   );
 };

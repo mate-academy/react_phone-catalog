@@ -11,3 +11,37 @@
   gap: 16px;
   justify-content: end;
 }
+
+.button {
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  text-decoration: none;
+  background-color: var(--color-surface-two);
+  transition: background-color var(--time);
+}
+
+.button:hover {
+  background-color: var(--color-icons);
+}
+
+.buttonDisabled {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-elements);
+}
+
+.buttonDisabled:hover {
+  background-color: var(--color-black);
+}
+
+.iconLeft {
+  transform: rotate(180deg);
+}
+
+.iconRight {
+  display: block;
+}
