@@ -14,17 +14,19 @@ import { NavBar } from './components/NavBar';
 //pages
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { ProductsPage } from './pages/ProductsPage';
+import { CatalogPage } from './pages/CatalogPage';
+import { ProductPage } from './pages/ProductPage';
 import { Favourites } from './pages/Favourites';
 import { Cart } from './pages/Cart';
 
+//services
 import { FavouritesContext } from './services/FavouritesContext';
 import { CartContext } from './services/CartContext';
-import { ProductDetailed } from './types/product';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const [cart, setCart] = useState<string[]>([]);
-  const [favourites, setFavourites] = useState<ProductDetailed[]>([]);
+  const [favourites, setFavourites] = useState<string[]>([]);
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -38,25 +40,35 @@ export const App = () => {
         <FavouritesContext.Provider value={{ favourites, setFavourites }}>
           <NavBar />
 
-          <Routes>
-            <Route path="/home" element={<Navigate to="/" replace={true} />} />
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="/phones"
-              element={<ProductsPage productsType={'phones'} />}
-            />
-            <Route
-              path="/tablets"
-              element={<ProductsPage productsType={'tablets'} />}
-            />
-            <Route
-              path="/accessories"
-              element={<ProductsPage productsType={'accessories'} />}
-            />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/favourites" element={<Favourites />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <div className={styles.content}>
+            <Routes>
+              <Route
+                path="/home"
+                element={<Navigate to="/" replace={true} />}
+              />
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/phones"
+                element={<CatalogPage productsType={'phones'} />}
+              />
+              <Route path="/phones/:productId" element={<ProductPage />} />
+              <Route
+                path="/tablets"
+                element={<CatalogPage productsType={'tablets'} />}
+              />
+              <Route path="/tablets/:productId" element={<ProductPage />} />
+              <Route
+                path="/accessories"
+                element={<CatalogPage productsType={'accessories'} />}
+              />
+              <Route path="/accessories/:productId" element={<ProductPage />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/favourites" element={<Favourites />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+
+          <Footer />
         </FavouritesContext.Provider>
       </CartContext.Provider>
     </div>
