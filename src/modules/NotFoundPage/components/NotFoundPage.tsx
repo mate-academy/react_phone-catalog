@@ -4,7 +4,7 @@ import styles from './NotFoundPage.module.scss';
 export const NotFoundPage = () => (
   <>
     <img
-      src="img/page-not-found.png"
+      src="/img/page-not-found.png"
       alt="Page not found"
       className={`${styles.image} not-scale`}
     />

@@ -70,7 +70,7 @@ export const CartPage = () => {
       {cartEntries.length === 0 ? (
         <div className={styles.empty}>
           <img
-            src="img/cart-is-empty.png"
+            src="/img/cart-is-empty.png"
             alt="Cart is empty"
             className={`${styles.emptyImage} not-scale`}
           />
