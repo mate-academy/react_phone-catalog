@@ -86,8 +86,15 @@ product.name +
 ' ' +
 capacity +
 ' ' +
-color.replace('-', ' ');
+color.replace('-', ' ') +
+' | Phone Catalog';
 }, [color, capacity, product]);
+
+useEffect(() => {
+return () => {
+document.title = 'Phone Catalog';
+};
+}, []);
 
 if (!product) return <p>Loading...</p>;
 

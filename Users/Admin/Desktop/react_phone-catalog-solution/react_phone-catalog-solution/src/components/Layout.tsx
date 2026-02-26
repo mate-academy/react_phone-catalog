@@ -4,22 +4,15 @@ import Footer from "./Footer";
 
 const Layout = () => {
   return (
-    <>
+    <div className="layout-shell">
       <Header />
 
-      <main
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "20px",
-          minHeight: "80vh",
-        }}
-      >
+      <main className="layout-main">
         <Outlet />
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { resolveImage } from '../utils/image';
 import './Catalog.css';
 
 export const Catalog = () => {
+  useEffect(() => {
+    document.title = 'Catalog | Phone Catalog';
+  }, []);
+
   return (
     <div className="catalog-page">
       <h1 className="catalog-title">FULLSTACK PORTFOLIO PAGE</h1>

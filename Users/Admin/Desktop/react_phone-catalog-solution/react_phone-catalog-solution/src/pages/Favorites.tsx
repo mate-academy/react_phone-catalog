@@ -57,6 +57,10 @@ export const Favorites = () => {
     return () => window.removeEventListener('storage-update', update);
   }, []);
 
+  useEffect(() => {
+    document.title = 'Favorites | Phone Catalog';
+  }, []);
+
   return (
     <div style={{ maxWidth: 900, margin: '0 auto' }}>
       <Link to="/catalog" className="hero-back">

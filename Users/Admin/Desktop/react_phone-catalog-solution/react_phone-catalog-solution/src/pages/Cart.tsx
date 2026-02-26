@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getCart, removeFromCart, addToCart } from '../store/cart';
+import {
+  getCart,
+  removeFromCart,
+  addToCart,
+  decrementCartItem,
+} from '../store/cart';
 import type { CartItem } from '../store/cart';
 
 import { loadProducts } from '../data/products';
@@ -49,9 +54,18 @@ export const Cart = () => {
   };
 
   useEffect(() => {
+    const handler = () => updateCart();
+
     updateCart();
-    window.addEventListener('storage-update', updateCart);
-    return () => window.removeEventListener('storage-update', updateCart);
+    window.addEventListener('storage-update', handler);
+
+    return () => {
+      window.removeEventListener('storage-update', handler);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.title = 'Cart | Phone Catalog';
   }, []);
 
   const total = items.reduce(
@@ -69,24 +83,7 @@ export const Cart = () => {
   };
 
   const decrease = (item: CartItem) => {
-    if (item.quantity <= 1) {
-      removeFromCart(item.id, item.color, item.capacity);
-      return;
-    }
-
-    const cart = getCart().map(c => {
-      if (
-        c.id === item.id &&
-        c.color === item.color &&
-        c.capacity === item.capacity
-      ) {
-        return { ...c, quantity: c.quantity - 1 };
-      }
-      return c;
-    });
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event('storage-update'));
+    decrementCartItem(item.id, item.color, item.capacity);
   };
 
   return (

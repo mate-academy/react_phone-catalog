@@ -5,6 +5,56 @@
   padding: 80px 60px;
 }
 
+@media (max-width: 768px) {
+  .catalog-page {
+    min-height: auto;
+  }
+
+  .catalog-title {
+    margin-top: 20px;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+  }
+
+  .catalog-categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding: 28px 12px 20px;
+  }
+
+  .catalog-card {
+    height: 180px;
+    gap: 16px;
+  }
+
+  .catalog-card img {
+    width: 84px;
+  }
+
+  .catalog-card span {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-align: center;
+  }
+
+  .catalog-footer {
+    padding: 20px 0;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog-categories {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px 8px 14px;
+  }
+
+  .catalog-card {
+    height: 150px;
+  }
+}
+
 .catalog-card {
   position: relative;
   height: 220px;

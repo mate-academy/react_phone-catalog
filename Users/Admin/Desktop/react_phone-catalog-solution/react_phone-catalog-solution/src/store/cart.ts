@@ -50,6 +50,18 @@ export function removeFromCart(
   color: string,
   capacity: string
 ) {
+  const items = getAll().filter(
+    i => !(i.id === id && i.color === color && i.capacity === capacity)
+  );
+
+  commit(items);
+}
+
+export function decrementCartItem(
+  id: string,
+  color: string,
+  capacity: string
+) {
   const items = getAll()
     .map(i =>
       i.id === id && i.color === color && i.capacity === capacity

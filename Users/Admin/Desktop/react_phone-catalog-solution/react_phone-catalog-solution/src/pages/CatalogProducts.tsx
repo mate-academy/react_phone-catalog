@@ -19,6 +19,12 @@ export const CatalogProducts = () => {
     loadProducts().then(setProducts);
   }, []);
 
+  useEffect(() => {
+    const categoryTitle =
+      category.charAt(0).toUpperCase() + category.slice(1);
+    document.title = `${categoryTitle || 'Catalog'} | Phone Catalog`;
+  }, [category]);
+
   const updateParams = (params: any) => {
     setSearchParams({
       page: String(params.page ?? page),
@@ -53,7 +59,7 @@ export const CatalogProducts = () => {
   const totalPages = Math.ceil(sorted.length / perPage);
 
   return (
-    <div className="catalog">
+    <div className="catalog catalog--products">
       <button onClick={() => navigate(-1)} className="hero-back">
         Back
       </button>
@@ -100,7 +106,7 @@ export const CatalogProducts = () => {
       </div>
 
       {totalPages > 1 && (
-        <div className="pagination-center">
+        <div className="pagination-center pagination-bottom">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
             <button
               key={p}

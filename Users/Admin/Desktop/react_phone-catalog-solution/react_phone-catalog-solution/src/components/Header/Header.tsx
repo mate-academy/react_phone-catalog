@@ -14,7 +14,7 @@ const Header = () => {
       const fav = getFavorites();
 
       const cartTotal = cart.reduce(
-        (sum: number, item: any) => sum + item.quantity,
+        (sum: number, item) => sum + item.quantity,
         0
       );
 
@@ -62,12 +62,18 @@ const Header = () => {
             fontWeight: 600,
           }}
         >
-          <Link to="/favorites">
-            Favorites ({favCount})
+          <Link to="/favorites" style={{ position: "relative" }}>
+            Favorites
+            {favCount > 0 && (
+              <span style={{ marginLeft: 8 }}>({favCount})</span>
+            )}
           </Link>
 
-          <Link to="/cart">
-            Cart ({cartCount})
+          <Link to="/cart" style={{ position: "relative" }}>
+            Cart
+            {cartCount > 0 && (
+              <span style={{ marginLeft: 8 }}>({cartCount})</span>
+            )}
           </Link>
         </div>
       </nav>
