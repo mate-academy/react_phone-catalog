@@ -4,6 +4,7 @@ import styles from './ProductCard.module.scss';
 import { BaseProduct } from '../../types';
 import { useAppContext } from '../../hooks/use-context';
 import { WishlistButton } from '../WishlistButton';
+import { mediaPath } from '../../utils/PathImg';
 
 interface Props {
   variant?: string;
@@ -29,6 +30,10 @@ export const ProductCard = ({ variant = '', product }: Props) => {
   const isLiked = wishlistIds.includes(itemId);
   const isInCart = cartIds.includes(itemId);
 
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const addToCartHandler = () => {
     addToCart({
       id: itemId,
@@ -47,20 +52,28 @@ export const ProductCard = ({ variant = '', product }: Props) => {
 
   return (
     <article className={`${variant ? styles.variant : ''} ${styles.card}`}>
-      <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
+      <Link
+        to={`/${category}/${itemId}`}
+        className={styles.imageLink}
+        onClick={handleBackToTop}
+      >
         {image ? (
-          <img src={image} alt={name} className={styles.image} />
+          <img src={mediaPath(image)} alt={name} className={styles.image} />
         ) : (
           <img
             className="not-scale"
-            src="simg/product-not-found.png"
+            src="img/product-not-found.png"
             alt="Product not found"
           />
         )}
       </Link>
 
       <div className={styles.body}>
-        <Link to={`/${category}/${itemId}`} className={styles.nameLink}>
+        <Link
+          to={`/${category}/${itemId}`}
+          className={styles.nameLink}
+          onClick={handleBackToTop}
+        >
           <p className={styles.name}>{name}</p>
         </Link>
 

@@ -14,24 +14,24 @@ export const App = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/contacts" element={<Navigate to="/" replace />} />
-          <Route path="/rights" element={<Navigate to="/" replace />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="contacts" element={<Navigate to="/" replace />} />
+          <Route path="rights" element={<Navigate to="/" replace />} />
           <Route
-            path="/phones"
+            path="phones"
             element={<CatalogPage category="phones" title="Mobile phones" />}
           />
           <Route
-            path="/tablets"
+            path="tablets"
             element={<CatalogPage category="tablets" title="Tablets" />}
           />
           <Route
-            path="/accessories"
+            path="accessories"
             element={<CatalogPage category="accessories" title="Accessories" />}
           />
-          <Route path="/:category/:productId" element={<ProductPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path=":category/:productId" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

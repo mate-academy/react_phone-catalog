@@ -9,6 +9,7 @@ import { useProducts } from '../../../hooks/use-products';
 import { Loader } from '../../../components/Loader';
 import { useAppContext } from '../../../hooks/use-context';
 import { BaseProduct, DetailedProduct } from '../../../types';
+import { mediaPath } from '../../../utils/PathImg';
 
 export const ProductPage = () => {
   const { cartItems, addToCart, deleteFromCart, wishlistIds, toggleWishlist } =
@@ -130,7 +131,10 @@ export const ProductPage = () => {
                   onClick={() => setSelectedImage(i)}
                   aria-label={`View image ${i + 1}`}
                 >
-                  <img src={img} alt={`${detailProduct.name} view ${i + 1}`} />
+                  <img
+                    src={mediaPath(img)}
+                    alt={`${detailProduct.name} view ${i + 1}`}
+                  />
                 </button>
               );
             })}
@@ -138,7 +142,7 @@ export const ProductPage = () => {
 
           <div className={styles.mainImage}>
             <img
-              src={detailProduct.images[selectedImage]}
+              src={mediaPath(detailProduct.images[selectedImage])}
               alt={detailProduct.name}
             />
           </div>

@@ -6,7 +6,7 @@ import { AppProvider } from './utils/Context';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <AppProvider>
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <App />
     </Router>
   </AppProvider>,
