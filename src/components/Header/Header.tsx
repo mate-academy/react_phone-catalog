@@ -10,6 +10,7 @@ import { CartIcon } from '../ui/CartIcon';
 import { BurgerMenu } from '../BurgerMenu';
 import { CloseIcon } from '../ui/CloseIcon';
 import { MenuIcon } from '../ui/MenuIcon';
+import { ThemeToggler } from '../ui/ThemeToggler';
 import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
@@ -31,10 +32,11 @@ export const Header: React.FC = () => {
           <Nav className={styles.header__nav} />
 
           <div className={styles.header__actions}>
+            <ThemeToggler />
             <FavouriteIcon className={styles.header__iconLink} />
             <CartIcon className={styles.header__iconLink} />
           </div>
-
+          <ThemeToggler className={styles.header__themeToggleMobile} />
           <button
             className={styles.header__menu}
             onClick={toggleMenu}

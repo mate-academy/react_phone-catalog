@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     height: 48px;
-    color: $lt-secondary;
+    color: var(--text-secondary);
     text-decoration: none;
     box-sizing: border-box;
 
@@ -32,14 +32,14 @@
     }
     /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
     &:global(.active) {
-      color: $lt-primary;
-      border-bottom: 3px solid $lt-primary;
+      color: var(--text-main);
+      border-bottom: 3px solid solid var(--accent);
     }
 
     @include hover-transition(color);
 
     @include hover {
-      color: $lt-primary;
+      color: var(--text-main);
     }
   }
 }

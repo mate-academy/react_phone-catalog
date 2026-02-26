@@ -5,7 +5,8 @@
 .footer {
   width: 100%;
   padding: 32px 16px;
-  border-top: 1px solid $lt-elements;
+  border-top: 1px solid var(--border);
+  background-color: var(--page-bg);
 
   @include respond-to('tablet') {
     padding-inline: 32px;
@@ -57,13 +58,13 @@
     @include uppercase-label;
 
     display: block;
-    color: $lt-secondary;
+    color: var(--text-secondary);
     text-decoration: none;
 
     @include hover-transition(color);
 
     @include hover {
-      color: $lt-primary;
+      color: var(--text-main);
     }
   }
 
@@ -92,12 +93,12 @@
   &__backText {
     @include small-text;
 
-    color: $lt-secondary;
+    color: var(--text-secondary);
 
     @include hover-transition(color);
 
     @include hover {
-      color: $lt-primary;
+      color: var(--text-main);
     }
   }
 
@@ -107,7 +108,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $lt-elements;
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
   }
