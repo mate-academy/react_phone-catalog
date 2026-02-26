@@ -56,7 +56,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch('/api/products.json', { signal: ctrl.signal });
+        const res = await fetch('api/products.json', { signal: ctrl.signal });
 
         if (!res.ok) {
           throw new Error('Network response was not ok');
