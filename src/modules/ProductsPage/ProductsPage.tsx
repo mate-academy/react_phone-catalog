@@ -157,9 +157,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   );
 
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const v = e.target.value === 'all' ? 'all' : Number(e.target.value);
+    const raw = e.target.value;
+    const v = raw === 'all' ? 'all' : Number(raw);
 
-    onChange(1, v);
+    handlePaginationChange(1, v);
   };
 
   return (
