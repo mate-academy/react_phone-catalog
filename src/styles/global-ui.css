@@ -30,6 +30,8 @@ body {
 header{
   border-bottom:none !important;
   box-shadow:none !important;
+  position:relative;
+  z-index:20;
 }
 
 .header-burger{
@@ -37,6 +39,10 @@ header{
 }
 
 .header-mobile-menu{
+  display:none;
+}
+
+.header-mobile-backdrop{
   display:none;
 }
 
@@ -142,6 +148,12 @@ h1,h2,h3,h4{
   flex-direction:column;
 }
 
+.catalog--products .hero-back{
+  position:relative;
+  z-index:3;
+  margin-bottom:24px;
+}
+
 .you-may-like{
   margin-top:64px;
 }
@@ -155,6 +167,21 @@ h1,h2,h3,h4{
 .you-may-like__grid{
   margin-top:0;
   grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.you-may-like__track{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:4px 2px 8px;
+  scroll-snap-type:x proximity;
+}
+
+.you-may-like__track .product-card{
+  flex:0 0 min(260px, 78vw);
+  margin-top:0;
+  scroll-snap-align:start;
 }
 
 .pagination-bottom{
@@ -203,6 +230,12 @@ h1,h2,h3,h4{
 .catalog select:focus{
   color:#9fdcff;
   text-shadow:0 0 12px rgba(159,220,255,.8);
+}
+
+.catalog-filters{
+  position:relative;
+  z-index:2;
+  margin-top:8px;
 }
 
 .cart-item,
@@ -297,6 +330,7 @@ h1,h2,h3,h4{
     align-items:flex-start !important;
     gap:14px !important;
     margin-bottom:24px !important;
+    margin-top:10px !important;
   }
 
   .catalog--products select{
@@ -356,6 +390,14 @@ h1,h2,h3,h4{
   .you-may-like__grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:20px;
+  }
+
+  .you-may-like__track{
+    gap:14px;
+  }
+
+  .you-may-like__track .product-card{
+    flex:0 0 min(240px, 84vw);
   }
 
   .home-hero{
@@ -420,12 +462,17 @@ h1,h2,h3,h4{
     flex-direction:column;
     align-items:flex-start;
     gap:12px;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
     max-height:0;
     opacity:0;
     overflow:hidden;
     padding:0 16px;
     border-top:1px solid transparent;
     background:#fff;
+    z-index:31;
     transition:max-height .28s ease, opacity .2s ease, padding .2s ease, border-color .2s ease;
   }
 
@@ -439,6 +486,14 @@ h1,h2,h3,h4{
   .header-mobile-menu a{
     font-size:13px;
     letter-spacing:.14em;
+  }
+
+  .header-mobile-backdrop{
+    display:block;
+    position:fixed;
+    inset:0;
+    background:transparent;
+    z-index:30;
   }
 
   .header-nav{
@@ -481,8 +536,7 @@ h1,h2,h3,h4{
     font-size:30px !important;
   }
 
-  .you-may-like__grid{
-    grid-template-columns:minmax(0,1fr);
-    gap:16px;
+  .you-may-like__track .product-card{
+    flex-basis:min(220px, 88vw);
   }
 }

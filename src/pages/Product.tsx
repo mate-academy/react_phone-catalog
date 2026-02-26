@@ -268,7 +268,7 @@ onClick={() => toggleFavorite(product.id, color, capacity)}
 <section className="you-may-like">
 <h2 className="you-may-like__title">You may also like</h2>
 
-<div className="catalog-grid you-may-like__grid">
+<div className="you-may-like__track">
 {recommendations.map(item => (
 <ProductCard key={item.id} product={item} />
 ))}

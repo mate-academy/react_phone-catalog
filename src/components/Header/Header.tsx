@@ -104,6 +104,14 @@ const Header = () => {
         </button>
       </nav>
 
+      {isMenuOpen && (
+        <button
+          className="header-mobile-backdrop"
+          aria-label="Close mobile menu"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+
       <div className={`header-mobile-menu ${isMenuOpen ? "is-open" : ""}`}>
         <Link to="/" onClick={() => setIsMenuOpen(false)}>
           Home
