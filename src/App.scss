@@ -8,17 +8,13 @@ body {
   background: var(--color-black);
 }
 
-#root,
 .App {
   min-height: 100vh;
-}
-
-.App {
   display: flex;
   flex-direction: column;
 }
 
-.App > .container {
+.appContainer {
   flex: 1;
 }
 
