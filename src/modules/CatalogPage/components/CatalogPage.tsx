@@ -25,29 +25,30 @@ export const CatalogPage: React.FC<Props> = ({ category, title }) => {
   const currentPage = Number(searchParams.get('page') || '1');
   const page = searchParams.get('page') || '1';
 
-  function handleQueryChange(value: string, nameParam: string) {
+  function handleQueryChange(changes: Record<string, string | null>) {
     const params = new URLSearchParams(searchParams);
 
-    if (value === '') {
-      params.delete(nameParam);
-    } else {
-      params.set(nameParam, value);
-    }
+    Object.entries(changes).forEach(([key, value]) => {
+      if (value === null || value === '') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
 
     setSearchParams(params);
   }
 
   const sortHandler = (value: string) => {
-    handleQueryChange(value, 'sortBy');
+    handleQueryChange({ sortBy: value, page: null });
   };
 
   const perPageHandler = (value: string) => {
-    handleQueryChange('', 'page');
-    handleQueryChange(value, 'perPage');
+    handleQueryChange({ perPage: value, page: null });
   };
 
   const pageHandler = (value: number) => {
-    handleQueryChange(String(value), 'page');
+    handleQueryChange({ page: String(value) });
   };
 
   const allProducts = SortProducts(
