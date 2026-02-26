@@ -1,8 +1,10 @@
-import { useSearchParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import ProductsList from '../../components/ProductsList/index';
 import { Product } from '../../../public/api/types/Product';
 import Pagination from '../../components/Pagination/index';
+import { productsCount } from '../../utils/products';
+import { useSearchParams } from 'react-router-dom';
+import styles from './ProductsPage.module.scss';
 
 type ProductsPageProps = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -17,6 +19,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const sort: string = searchParams.get('sort') ?? 'age';
 
   const filteredProducts = products.filter(
     p => String(p.category).toLowerCase() === category,
@@ -45,7 +49,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const start =
     perPage === 'all' ? 0 : (normalizedPage - 1) * (perPage as number);
   const end = perPage === 'all' ? total : start + (perPage as number);
-  const visibleProducts = filteredProducts.slice(start, end);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -77,6 +80,31 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
     return () => ctrl.abort();
   }, [category]);
+
+  const sorted = useMemo(() => {
+    const copy = filteredProducts.slice();
+
+    if (sort === 'age') {
+      return copy.sort((a, b) => Number(b.year) - Number(a.year));
+    }
+
+    if (sort === 'title') {
+      return copy.sort((a, b) =>
+        String(a.title).localeCompare(String(b.title)),
+      );
+    }
+
+    if (sort === 'price') {
+      const effective = (p: Product) =>
+        Number(p.price) * (1 - (Number((p as any).discount) || 0) / 100);
+
+      return copy.sort((a, b) => effective(a) - effective(b));
+    }
+
+    return copy;
+  }, [filteredProducts, sort]);
+
+  const visibleProducts = sorted.slice(start, end);
 
   const handleAddToCart = (productId: string) => {
     // TODO: Implement add to cart logic
@@ -111,29 +139,95 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     setSearchParams(params);
   };
 
+  const handleSortChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const value = e.target.value;
+      const params = new URLSearchParams(searchParams);
+
+      if (value === 'age') {
+        params.delete('sort');
+      } else {
+        params.set('sort', value);
+      }
+
+      params.delete('page');
+      setSearchParams(params);
+    },
+    [searchParams, setSearchParams],
+  );
+
+  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const v = e.target.value === 'all' ? 'all' : Number(e.target.value);
+
+    onChange(1, v);
+  };
+
   return (
     <>
-      <div>
-        <section id={category} aria-label={title}>
-          <h1>{title}</h1>
+      <div className={styles.productPage}>
+        <div className={styles.productPage__content}>
+          <section id={category} aria-label={title}>
+            <h1>{title}</h1>
+            <p>{productsCount(products, category)} models</p>
+            {!loading && !error && Array.isArray(visibleProducts) && (
+              <>
+                <div className={styles.productPage__productsFilter}>
+                  <div
+                    className={`${styles.filterItem} ${styles['filterItem--sort-by']}`}
+                  >
+                    <label className={styles.label} htmlFor="sort">
+                      Sort by
+                    </label>
+                    <select
+                      value={sort}
+                      onChange={handleSortChange}
+                      className={`${styles.select}`}
+                      id="sort"
+                    >
+                      <option value="age">Newest</option>
+                      <option value="title">Alphabetically</option>
+                      <option value="price">Cheapest</option>
+                    </select>
+                  </div>
+                  <div
+                    className={`${styles.filterItem} ${styles['filterItem--items-on-page']}`}
+                  >
+                    <label className={styles.label} htmlFor="items-per-page">
+                      Items on page
+                    </label>
+                    <select
+                      id="items-per-page"
+                      aria-label="Items per page"
+                      value={String(perPage)}
+                      onChange={handlePerPageChange}
+                      className={`${styles.select}`}
+                    >
+                      <option value="4">4</option>
+                      <option value="8">8</option>
+                      <option value="16">16</option>
+                      <option value="all">All</option>
+                    </select>
+                  </div>
+                </div>
+                <ProductsList
+                  products={visibleProducts}
+                  handleAddToCart={handleAddToCart}
+                  handleToggleFavorite={handleToggleFavorite}
+                  emptyMessage={`There are no ${category} yet`}
+                />
+              </>
+            )}
 
-          {!loading && !error && Array.isArray(visibleProducts) && (
-            <ProductsList
-              products={visibleProducts}
-              handleAddToCart={handleAddToCart}
-              handleToggleFavorite={handleToggleFavorite}
-            />
-          )}
-
-          {total > 0 && effectivePerPage < total && (
-            <Pagination
-              total={total}
-              currentPage={normalizedPage}
-              perPage={perPage}
-              onChange={handlePaginationChange}
-            />
-          )}
-        </section>
+            {total > 0 && effectivePerPage < total && (
+              <Pagination
+                total={total}
+                currentPage={normalizedPage}
+                perPage={perPage}
+                onChange={handlePaginationChange}
+              />
+            )}
+          </section>
+        </div>
       </div>
       <div className="product-errors">
         {loading && <div>Loading...</div>}

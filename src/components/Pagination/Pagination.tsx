@@ -35,12 +35,6 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
-  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const v = e.target.value === 'all' ? 'all' : Number(e.target.value);
-
-    onChange(1, v);
-  };
-
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
   const getVisiblePages = () => {
     if (totalPages <= 7) {
@@ -68,18 +62,6 @@ export const Pagination: React.FC<Props> = ({
     <>
       <div className={styles.pagination}>
         <div className={styles.pagination__content}>
-          <select
-            aria-label="Items per page"
-            value={String(perPage)}
-            onChange={handlePerPageChange}
-            className={`${styles.select}`}
-          >
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value="all">All</option>
-          </select>
-
           <IconButtonLeft
             className={`${styles.icon} ${styles['icon--button-left']}`}
             handleClick={handlePrev}

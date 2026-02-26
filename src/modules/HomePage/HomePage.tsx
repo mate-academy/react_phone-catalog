@@ -4,6 +4,7 @@ import ProductsSlider from './components/ProductsSlider/index';
 import PicturesSlider from './components/PicturesSlider/index';
 import { Product } from './../../../public/api/types/Product';
 import { Link } from 'react-router-dom';
+import { productsCount } from '../../utils/products';
 
 const TYPES = {
   PHONE: 'phones',
@@ -178,24 +179,18 @@ export const HomePage: React.FC = () => {
     );
   };
 
-  const productsCount = useCallback(
-    (type: string): number => {
-      if (!products) {
-        return 0;
-      }
-
-      return products.filter(p => p.category === type).length;
-    },
+  const getProductsCount = useCallback(
+    (type: string): number => productsCount(products, type),
     [products],
   );
 
-  function handleToggleFavorite(productId: string): void {
+  const handleToggleFavorite = (productId: string): void => {
     throw new Error('Function not implemented.');
-  }
+  };
 
-  function handleAddToCart(product: Product): void {
+  const handleAddToCart = (product: Product): void => {
     throw new Error('Function not implemented.');
-  }
+  };
 
   return (
     <>
@@ -260,7 +255,7 @@ export const HomePage: React.FC = () => {
                 Mobile phones
               </div>
               <div className={styles.homePage__categoryTotal}>
-                {productsCount(TYPES.PHONE)} models
+                {getProductsCount(TYPES.PHONE)} models
               </div>
             </Link>
             <Link to="/tablets" className={styles.homePage__categoryCard}>
@@ -269,7 +264,7 @@ export const HomePage: React.FC = () => {
               ></div>
               <div className={styles.homePage__categoryTitle}>Tablets</div>
               <div className={styles.homePage__categoryTotal}>
-                {productsCount(TYPES.TABLET)} models
+                {getProductsCount(TYPES.TABLET)} models
               </div>
             </Link>
             <Link to="/accessories" className={styles.homePage__categoryCard}>
@@ -278,7 +273,7 @@ export const HomePage: React.FC = () => {
               ></div>
               <div className={styles.homePage__categoryTitle}>Accessories</div>
               <div className={styles.homePage__categoryTotal}>
-                {productsCount(TYPES.ACCESSORY)} models
+                {getProductsCount(TYPES.ACCESSORY)} models
               </div>
             </Link>
           </div>

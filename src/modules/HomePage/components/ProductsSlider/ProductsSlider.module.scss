@@ -32,8 +32,12 @@
   &__topBar {
      grid-column: 4;
      grid-row: 1;
-     height: 32px;
-     display: block;
+     height: 62px;
+     grid-column: 4;
+     display: flex;
+     align-items: center;
+     justify-self: center;
+      align-self: end;
 
       @include on-tablet {
         grid-column: 11/-1;
@@ -70,7 +74,7 @@
     grid-template-columns: repeat(1,1fr);
     grid-column: 1/4;
 
-    gap: 0 16px;
+    gap: 16px;
 
     @include on-tablet {
           grid-template-columns: repeat(2,1fr);
@@ -84,33 +88,9 @@
 
   }
 
-
-
- &__product {
-
-    display: none;
-
-    &.mobile {
-      display: block;
-    }
-
-  @include on-tablet {
-    &.tablet {
-      display: block;
-    }
-  }
-
-  @include on-desktop {
-    &.desktop {
-      display: block;
-    }
-  }
-}
-
-
   .icons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 32px;
 
@@ -118,7 +98,7 @@
 
   }
 
-  
+
 .icon {
 
     width: 32px;

@@ -22,7 +22,7 @@
 
   section {
     margin-top: 56px;
-
+    display: block;
     @include on-tablet {
       margin-top: 64px;
     }
@@ -30,6 +30,19 @@
     @include on-desktop {
       margin-top: 80px;
     }
+  }
+
+  h1 {
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    color: $primary-color;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
   }
 
   h1.visually-hidden {
@@ -120,6 +133,8 @@ h5 {
 
    .main__content {
      @include content-padding-inline;
+
+     background-color: #FAFBFC;
 
       min-height: 100vh;
       display: block;
