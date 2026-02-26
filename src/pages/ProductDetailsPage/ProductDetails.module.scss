@@ -65,12 +65,14 @@
 
   @media (min-width: 640px) {
     display: grid;
-    grid-template-columns: 35px minmax(0, 1fr);
+    grid-template-columns: 35px 1fr;
     align-items: start;
+    gap: 60px;
   }
 
   @media (min-width: 1199px) {
-    grid-template-columns: 66px minmax(0, 1fr);
+    grid-template-columns: 66px 1fr;
+    gap: 95px;
   }
 }
 
@@ -91,7 +93,7 @@
   }
 
   @media (min-width: 1199px) {
-    width: 66px;
+    width: 80px;
     gap: 16px;
   }
 }
@@ -138,8 +140,6 @@
 
   @media (min-width: 640px) {
     max-width: 464px;
-    padding-right: 50px;
-    padding-left: 50px;
   }
 }
 
@@ -199,7 +199,9 @@
 
   @media (min-width: 1199px) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) max-content;
+    //grid-template-columns: minmax(0, 1fr) max-content;
+    justify-items: end;
+    grid-template-columns: 1fr 0.5fr;
     align-items: start;
     column-gap: 16px;
   }
