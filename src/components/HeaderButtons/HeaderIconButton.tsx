@@ -4,10 +4,11 @@ import { NavLink, NavLinkRenderProps } from "react-router-dom";
 import { routes } from "../../Root";
 import classNames from "classnames";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 const iconToPath = {
-  heart: "/img/general/icons/heart.svg",
-  cart: "/img/general/icons/cart.svg",
+  heart: getAssetPath("img/general/icons/heart.svg"),
+  cart: getAssetPath("img/general/icons/cart.svg"),
 };
 
 type Props = {

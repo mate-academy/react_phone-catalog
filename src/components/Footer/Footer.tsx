@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styles from "./Footer.module.scss";
 import classNames from "classnames";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 export const Footer: React.FC = () => {
   const { theme } = useContext(AppSettingsContext);
@@ -17,7 +18,7 @@ export const Footer: React.FC = () => {
                 theme === "light" && styles.logoImageLight,
               )}
               alt="logo"
-              src="/img/general/icons/logo-bottom.svg"
+              src={getAssetPath("img/general/icons/logo-bottom.svg")}
             />
           </a>
           <nav className={styles.navigation}>
@@ -56,8 +57,8 @@ export const Footer: React.FC = () => {
                 alt="up-arrow"
                 src={
                   theme === "light"
-                    ? "/img/general/icons/arrow.svg"
-                    : "/img/general/icons/arrow-white.svg"
+                    ? getAssetPath("img/general/icons/arrow.svg")
+                    : getAssetPath("img/general/icons/arrow-white.svg")
                 }
               />
             </div>

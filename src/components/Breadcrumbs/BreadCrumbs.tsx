@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./BreadCrumbs.module.scss";
+import { getAssetPath } from "../../utils";
 
 const formatSegment = (segment: string) => {
   if (!segment) {
@@ -34,7 +35,7 @@ export const BreadCrumbs: React.FC = () => {
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link to="/" className={styles.home}>
-            <img src="/img/general/icons/home.svg" alt="home" />
+            <img src={getAssetPath("img/general/icons/home.svg")} alt="home" />
           </Link>
         </li>
 
@@ -46,7 +47,7 @@ export const BreadCrumbs: React.FC = () => {
             })}
           >
             <img
-              src="/img/general/icons/arrow.svg"
+              src={getAssetPath("img/general/icons/arrow.svg")}
               alt="arrow"
               className={styles.arrow}
             />

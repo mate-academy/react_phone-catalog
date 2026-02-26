@@ -37,6 +37,14 @@ export const Filter: React.FC<Props> = ({
     setSort(e.target.value);
   };
 
+  const sortOptions = [
+    { value: "newest", label: labels.newest },
+    { value: "alphabet", label: labels.alphabetically },
+    { value: "cheapest", label: labels.cheapest },
+  ];
+
+  const itemsPerPageOptions = ["4", "8", "16", "all"];
+
   return (
     <section className="filter">
       <div className={styles.content}>
@@ -55,15 +63,15 @@ export const Filter: React.FC<Props> = ({
               className={styles.dropdown}
               value={sortValue}
             >
-              <option value="newest" className={styles.option}>
-                {labels.newest}
-              </option>
-              <option value="alphabet" className={styles.option}>
-                {labels.alphabetically}
-              </option>
-              <option value="cheapest" className={styles.option}>
-                {labels.cheapest}
-              </option>
+              {sortOptions.map(option => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className={styles.option}
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
           </label>
 
@@ -75,18 +83,11 @@ export const Filter: React.FC<Props> = ({
               className={classNames(styles.dropdown, styles.small)}
               value={perPage > 16 || perPage < 4 ? "all" : perPage}
             >
-              <option value="4" className={styles.option}>
-                4
-              </option>
-              <option value="8" className={styles.option}>
-                8
-              </option>
-              <option value="16" className={styles.option}>
-                16
-              </option>
-              <option value="all" className={styles.option}>
-                all
-              </option>
+              {itemsPerPageOptions.map(option => (
+                <option key={option} value={option} className={styles.option}>
+                  {option}
+                </option>
+              ))}
             </select>
           </label>
         </div>

@@ -30,6 +30,11 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
     });
   };
 
+  const handleSwip = (swiper: SwiperType) => {
+    handleButtons(swiper);
+    swiperRef.current = swiper;
+  };
+
   return (
     <section className={styles.products}>
       <ProductHeading
@@ -43,10 +48,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         spaceBetween={16}
         className={styles.slider}
         onSlideChange={handleButtons}
-        onSwiper={swiper => {
-          handleButtons(swiper);
-          swiperRef.current = swiper;
-        }}
+        onSwiper={handleSwip}
       >
         {products.map(product => (
           <SwiperSlide key={product.name} className={styles.slide}>

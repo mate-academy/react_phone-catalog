@@ -4,23 +4,24 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { SliderButtons } from "../SliderButtons";
 import "swiper/css";
 import styles from "./Slider.module.scss";
+import { getAssetPath } from "../../utils";
 
 const slides = [
   {
-    imgMobile: "/img/banner_mobile.png",
-    imgDesktop: "/img/banner.png",
+    imgMobile: getAssetPath("img/banner_mobile.png"),
+    imgDesktop: getAssetPath("img/banner.png"),
   },
   {
-    imgMobile: "/img/banner_mobile.png",
-    imgDesktop: "/img/banner.png",
+    imgMobile: getAssetPath("img/banner_mobile.png"),
+    imgDesktop: getAssetPath("img/banner.png"),
   },
   {
-    imgMobile: "/img/banner_mobile.png",
-    imgDesktop: "/img/banner.png",
+    imgMobile: getAssetPath("img/banner_mobile.png"),
+    imgDesktop: getAssetPath("img/banner.png"),
   },
   {
-    imgMobile: "/img/banner_mobile.png",
-    imgDesktop: "/img/banner.png",
+    imgMobile: getAssetPath("img/banner_mobile.png"),
+    imgDesktop: getAssetPath("img/banner.png"),
   },
 ];
 

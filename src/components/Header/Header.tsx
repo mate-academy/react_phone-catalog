@@ -8,6 +8,7 @@ import { HeaderMenu } from "../HeaderMenu";
 import { Menu } from "../Menu";
 import { HeaderSearch } from "../HeaderSearch";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 export const Header: React.FC = () => {
   const { favoriteIds, cartIds } = useContext(StateContext);
@@ -62,7 +63,7 @@ export const Header: React.FC = () => {
               <img
                 className={`${styles.icon} ${theme === "light" ? styles.iconLight : ""}`}
                 alt="menu"
-                src="/img/general/icons/menu.svg"
+                src={getAssetPath("img/general/icons/menu.svg")}
               />
             </button>
           </div>

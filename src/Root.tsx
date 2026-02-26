@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -13,7 +13,6 @@ import { Category } from "./types/types";
 import { CatalogPage } from "./pages/CatalogPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 import { CartPage } from "./pages/CartPage";
-// import { Menu } from "./components/Menu";
 import { ProductDetails } from "./pages/ProductDetailsPage";
 import { AppSettingsProvider } from "./providers/AppSettingsProvider";
 
@@ -25,15 +24,13 @@ export const routes = {
   favorites: "/favorites",
   cart: "/cart",
   product: "/product/:productId",
-  // menu: "/menu",
 };
 
 export const Root = () => (
-  <Router>
+  <Router basename={import.meta.env.BASE_URL}>
     <AppSettingsProvider>
       <GlobalStateProvider>
         <Routes>
-          {/*<Route path={routes.menu} element={<Menu />} />*/}
           <Route path={routes.home} element={<App />}>
             <Route index element={<HomePage />} />
             <Route

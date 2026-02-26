@@ -3,6 +3,7 @@ import { Swiper } from "swiper/types";
 import classNames from "classnames";
 import styles from "./ProductHeading.module.scss";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 export interface BtnControls {
   allowLeft: boolean;
@@ -17,8 +18,8 @@ interface Props {
 }
 
 const iconsPath = {
-  arrowWhite: "/img/general/icons/arrow-white.svg",
-  arrow: "/img/general/icons/arrow.svg",
+  arrowWhite: getAssetPath("img/general/icons/arrow-white.svg"),
+  arrow: getAssetPath("img/general/icons/arrow.svg"),
 };
 
 export const ProductHeading: React.FC<Props> = ({

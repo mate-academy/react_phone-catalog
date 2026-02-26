@@ -8,13 +8,14 @@ import styles from "./Cart.module.scss";
 import classNames from "classnames";
 import { Modal } from "../../components/Modal";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 const iconPath = {
-  iconClose: "/img/general/icons/close.svg",
-  decrementIconDark: "/img/general/icons/minus-white.svg",
-  decrementIconLight: "/img/general/icons/minus.svg",
-  incrementIconDark: "/img/general/icons/close-white.svg",
-  incrementIconLight: "/img/general/icons/close.svg",
+  iconClose: getAssetPath("img/general/icons/close.svg"),
+  decrementIconDark: getAssetPath("img/general/icons/minus-white.svg"),
+  decrementIconLight: getAssetPath("img/general/icons/minus.svg"),
+  incrementIconDark: getAssetPath("img/general/icons/close-white.svg"),
+  incrementIconLight: getAssetPath("img/general/icons/close.svg"),
 };
 
 export const CartPage: React.FC = () => {
@@ -73,7 +74,7 @@ export const CartPage: React.FC = () => {
                     </button>
                     <img
                       className={styles.cardPicture}
-                      src={image.startsWith("/") ? image : `/${image}`}
+                      src={getAssetPath(image)}
                       alt="card image"
                     />
                   </div>

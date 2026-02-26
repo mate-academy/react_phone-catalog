@@ -2,6 +2,7 @@ import React from "react";
 import { useSwiper } from "swiper/react";
 import styles from "./SliderButtons.module.scss";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 interface Props {
   prevButtonStyles?: React.CSSProperties;
@@ -17,8 +18,8 @@ export const SliderButtons: React.FC<Props> = ({
 }) => {
   const { theme } = React.useContext(AppSettingsContext);
   const iconsPath = {
-    arrow: "/img/general/icons/arrow.svg",
-    arrowWhite: "/img/general/icons/arrow-white.svg",
+    arrow: getAssetPath("img/general/icons/arrow.svg"),
+    arrowWhite: getAssetPath("img/general/icons/arrow-white.svg"),
   };
 
   const swiper = useSwiper();

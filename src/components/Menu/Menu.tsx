@@ -6,6 +6,7 @@ import styles from "./Menu.module.scss";
 import { HeaderMenu } from "../HeaderMenu/HeaderMenu";
 import { Link } from "react-router-dom";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 interface Props {
   onClose: () => void;
@@ -23,14 +24,14 @@ export const Menu: React.FC<Props> = ({ onClose }) => {
           <img
             className={`${styles.logoImage} ${theme === "light" ? styles.logoImageLight : ""}`}
             alt="logo"
-            src="/img/general/icons/Logo.svg"
+            src={getAssetPath("img/general/icons/Logo.svg")}
           />
         </Link>
         <button className={styles.button} onClick={onClose} type="button">
           <img
             className={`${styles.closeIcon} ${theme === "light" ? styles.closeIconLight : ""}`}
             alt="close"
-            src="/img/general/icons/close.svg"
+            src={getAssetPath("img/general/icons/close.svg")}
           />
         </button>
       </header>

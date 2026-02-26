@@ -5,10 +5,11 @@ import {
   DispatchContext,
   StateContext,
 } from "../../providers/GlobalStateProvider";
+import { getAssetPath } from "../../utils";
 
 const iconsPath = {
-  heart: "/img/general/icons/heart.svg",
-  redHeart: "/img/general/icons/red-heart.svg",
+  heart: getAssetPath("img/general/icons/heart.svg"),
+  redHeart: getAssetPath("img/general/icons/red-heart.svg"),
 };
 
 interface Props {

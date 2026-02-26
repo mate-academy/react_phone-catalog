@@ -8,7 +8,12 @@ import { LoadingCard } from "../../components/LoadingCard";
 import { BackButton } from "../../components/BackButton";
 import { StateContext } from "../../providers/GlobalStateProvider";
 import { Category, ProductDetailsType } from "../../types/types";
-import { getAccessories, getPhones, getTablets } from "../../utils";
+import {
+  getAccessories,
+  getAssetPath,
+  getPhones,
+  getTablets,
+} from "../../utils";
 
 const productDetailsText = {
   about: "About",
@@ -161,9 +166,9 @@ export const ProductDetails: React.FC = () => {
     <main className={styles.page}>
       <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
         <Link to="/" className={styles.breadcrumbHome}>
-          <img src="/img/general/icons/home.svg" alt="Home" />
+          <img src={getAssetPath("img/general/icons/home.svg")} alt="Home" />
         </Link>
-        <img src="/img/general/icons/arrow.svg" alt="Arrow" />
+        <img src={getAssetPath("img/general/icons/arrow.svg")} alt="Arrow" />
         <Link
           to={`/${currentProduct.category}`}
           className={classNames(styles.breadcrumbLink, "text-small")}
@@ -171,7 +176,7 @@ export const ProductDetails: React.FC = () => {
           {currentProduct.category[0].toUpperCase() +
             currentProduct.category.slice(1)}
         </Link>
-        <img src="/img/general/icons/arrow.svg" alt="Arrow" />
+        <img src={getAssetPath("img/general/icons/arrow.svg")} alt="Arrow" />
         <span className={classNames(styles.breadcrumbCurrent, "text-small")}>
           {name}
         </span>
@@ -194,7 +199,7 @@ export const ProductDetails: React.FC = () => {
                   onClick={() => setSelectedImage(index)}
                 >
                   <img
-                    src={`/${image}`}
+                    src={getAssetPath(image)}
                     alt={`${name} view ${index + 1}`}
                     className={styles.thumbImage}
                   />
@@ -205,7 +210,7 @@ export const ProductDetails: React.FC = () => {
 
           <div className={styles.mainImageWrap}>
             <img
-              src={`/${images[selectedImage]}`}
+              src={getAssetPath(images[selectedImage])}
               alt={name}
               className={styles.mainImage}
             />

@@ -4,6 +4,7 @@ import { StateContext } from "../../providers/GlobalStateProvider";
 import styles from "./Category.module.scss";
 import { Link } from "react-router-dom";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
+import { getAssetPath } from "../../utils";
 
 export const CategoryList: React.FC = () => {
   const { allProducts } = useContext(StateContext);
@@ -46,7 +47,7 @@ export const CategoryList: React.FC = () => {
                 className={styles.categoryLink}
               >
                 <img
-                  src={`/img/category-${category}.webp`}
+                  src={getAssetPath(`img/category-${category}.webp`)}
                   alt={category}
                   className={styles.categoryImage}
                 />

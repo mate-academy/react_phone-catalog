@@ -4,6 +4,7 @@ import styles from "./Card.module.scss";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { ProductActionButtons } from "../ProductActionButtons";
+import { getAssetPath } from "../../utils";
 
 interface Props {
   id: number;
@@ -24,7 +25,7 @@ export const Card: React.FC<Props> = ({
   image,
   capacity,
 }) => {
-  const imagePath = image.startsWith("/") ? image : `/${image}`;
+  const imagePath = getAssetPath(image);
 
   return (
     <li className={styles.item}>

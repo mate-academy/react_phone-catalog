@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./Pagination.module.scss";
-import { getShortPagination } from "../../utils";
+import { getAssetPath, getShortPagination } from "../../utils";
 import classNames from "classnames";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 
@@ -27,8 +27,20 @@ export const Pagination: React.FC<PaginationType> = ({
   const isLast = currentPage === totalPages;
   const activeArrowIcon =
     theme === "light"
-      ? "/img/general/icons/arrow.svg"
-      : "/img/general/icons/arrow-white.svg";
+      ? getAssetPath("img/general/icons/arrow.svg")
+      : getAssetPath("img/general/icons/arrow-white.svg");
+
+  const handleBackTap = () => {
+    setPage(
+      Number(currentPage) - 1 < FIRST_PAGE ? FIRST_PAGE : currentPage - 1,
+    );
+  };
+
+  const handleForwardTap = () => {
+    setPage(
+      Number(currentPage) + 1 > totalPages ? totalPages : currentPage + 1,
+    );
+  };
 
   return (
     <section className={styles.pagination}>
@@ -38,24 +50,18 @@ export const Pagination: React.FC<PaginationType> = ({
             className={classNames(styles.button, "button", {
               disabled: isFirst,
             })}
-            onClick={() => {
-              setPage(
-                Number(currentPage) - 1 < FIRST_PAGE
-                  ? FIRST_PAGE
-                  : currentPage - 1,
-              );
-            }}
+            onClick={handleBackTap}
           >
             {isFirst ? (
               <img
-                src="/img/general/icons/arrow.svg"
-                alt="arrow left"
+                src={getAssetPath("img/general/icons/arrow.svg")}
+                alt="arrow"
                 className={classNames(styles.icon, styles.iconLeft)}
               />
             ) : (
               <img
                 src={activeArrowIcon}
-                alt="arrow left"
+                alt="arrow"
                 className={classNames(styles.icon, styles.iconLeft)}
               />
             )}
@@ -80,26 +86,16 @@ export const Pagination: React.FC<PaginationType> = ({
             className={classNames(styles.button, "button", {
               disabled: isLast,
             })}
-            onClick={() => {
-              setPage(
-                Number(currentPage) + 1 > totalPages
-                  ? totalPages
-                  : currentPage + 1,
-              );
-            }}
+            onClick={handleForwardTap}
           >
             {isLast ? (
               <img
-                src="/img/general/icons/arrow.svg"
-                alt="arrow left"
+                src={getAssetPath("img/general/icons/arrow.svg")}
+                alt="arrow"
                 className={styles.icon}
               />
             ) : (
-              <img
-                src={activeArrowIcon}
-                alt="arrow left"
-                className={styles.icon}
-              />
+              <img src={activeArrowIcon} alt="arrow" className={styles.icon} />
             )}
           </button>
         </nav>

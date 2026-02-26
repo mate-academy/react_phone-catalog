@@ -151,3 +151,9 @@ export const getShortPagination = (
 export function getCount(ids: Array<{ id: number; count: number }>) {
   return ids.reduce((total, cur) => cur.count + total, 0);
 }
+
+export function getAssetPath(path: string): string {
+  const normalized = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${import.meta.env.BASE_URL}${normalized}`;
+}
