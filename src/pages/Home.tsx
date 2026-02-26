@@ -1,11 +1,16 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MatrixRain } from "../components/MatrixRain";
 
 export const Home = () => {
+  useEffect(() => {
+    document.title = "Home | Phone Catalog";
+  }, []);
+
   return (
     <>
      
-      {typeof window !== "undefined" && <MatrixRain />}
+      {typeof window !== "undefined" && <MatrixRain key={Date.now()} />}
 
       <div
   style={{

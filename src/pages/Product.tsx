@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState, useMemo, useRef } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import type { Product } from '../types/Product';
 import { loadProducts } from '../data/products';
@@ -9,29 +9,23 @@ import { toggleFavorite, isFavorite } from '../store/favorites';
 
 import { getProductPrice } from '../utils/price';
 import { resolveImage } from '../utils/image';
-import { ProductCard } from '../components/ProductCard';
 
 export const ProductPage = () => {
-const params = useParams<{ id: string }>();
-const id = params.id;
+const { id } = useParams<{ id: string }>();
 const navigate = useNavigate();
 
 const [product, setProduct] = useState<Product | null>(null);
-const [allProducts, setAllProducts] = useState<Product[]>([]);
-
 const [color, setColor] = useState('');
 const [capacity, setCapacity] = useState('');
+
+const [images, setImages] = useState<string[]>([]);
 const [imageIndex, setImageIndex] = useState(0);
 
 const [inCart, setInCart] = useState(false);
 const [fav, setFav] = useState(false);
 
-const firstLoadRef = useRef(true);
-
 useEffect(() => {
 loadProducts().then(list => {
-setAllProducts(list);
-
 const found = list.find(p => id?.includes(p.id)) || null;
 setProduct(found);
 
@@ -43,12 +37,9 @@ const colorFromUrl = parts[parts.length - 1];
 
 setColor(colorFromUrl || found.colorsAvailable[0]);
 setCapacity(capFromUrl || found.capacityAvailable[0]);
-setImageIndex(0);
-}
 
-if (firstLoadRef.current) {
-window.scrollTo({ top: 0, behavior: 'smooth' });
-firstLoadRef.current = false;
+setImages(found.images.map(resolveImage));
+setImageIndex(0);
 }
 });
 }, [id]);
@@ -66,8 +57,8 @@ window.addEventListener('storage-update', update);
 return () => window.removeEventListener('storage-update', update);
 }, [product, color, capacity]);
 
-const images = useMemo(() => {
-if (!product) return [];
+useEffect(() => {
+if (!product) return;
 
 const recolored = product.images.map(img => {
 const parts = img.split('/');
@@ -77,8 +68,9 @@ parts[parts.length - 2] = color;
 return parts.join('/');
 });
 
-return recolored.map(resolveImage);
-}, [product, color]);
+setImages(recolored.map(resolveImage));
+setImageIndex(0);
+}, [color, product]);
 
 useEffect(() => {
 if (!product) return;
@@ -90,8 +82,19 @@ navigate(`/product/${newId}`, { replace: true });
 }
 
 document.title =
-product.name + ' ' + capacity + ' ' + color.replace('-', ' ');
-}, [color, capacity, product, id, navigate]);
+product.name +
+' ' +
+capacity +
+' ' +
+color.replace('-', ' ') +
+' | Phone Catalog';
+}, [color, capacity, product]);
+
+useEffect(() => {
+return () => {
+document.title = 'Phone Catalog';
+};
+}, []);
 
 if (!product) return <p>Loading...</p>;
 
@@ -99,15 +102,11 @@ const price = getProductPrice(product, capacity);
 const dynamicTitle =
 product.name + ' ' + capacity + ' ' + color.replace('-', ' ');
 
-const recommended = allProducts
-.filter(p => p.id !== product.id)
-.slice(0, 4);
-
 return (
 <div className="product-page" style={{ maxWidth: 1100, margin: '0 auto' }}>
-<button onClick={() => navigate(-1)} className="hero-back">
+<Link to="/catalog" className="hero-back">
 Back
-</button>
+</Link>
 
 <div
 style={{
@@ -117,6 +116,7 @@ alignItems: 'center',
 marginTop: 20,
 }}
 >
+
 <div
 style={{
 width: 340,
@@ -231,22 +231,6 @@ onClick={() => toggleFavorite(product.id, color, capacity)}
 >
 {fav ? '★ Added to favorites' : '☆ Add to favorites'}
 </button>
-</div>
-</div>
-
-<div style={{ marginTop: 80 }}>
-<h2 style={{ marginBottom: 30 }}>You may also like</h2>
-
-<div
-style={{
-display: 'grid',
-gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-gap: 30,
-}}
->
-{recommended.map(p => (
-<ProductCard key={p.id} product={p} />
-))}
 </div>
 </div>
 </div>

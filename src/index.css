@@ -116,3 +116,17 @@ a:hover,
   text-shadow: 0 0 12px rgba(159,220,255,0.9);
   transform: scale(1.15);
 }
+
+@media (max-width: 768px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}

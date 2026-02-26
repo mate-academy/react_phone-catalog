@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getCart, removeFromCart, addToCart } from '../store/cart';
+import {
+  getCart,
+  removeFromCart,
+  addToCart,
+  decrementCartItem,
+} from '../store/cart';
 import type { CartItem } from '../store/cart';
 
 import { loadProducts } from '../data/products';
@@ -20,51 +25,57 @@ type CartView = {
 export const Cart = () => {
   const [items, setItems] = useState<CartView[]>([]);
 
+  const updateCart = async () => {
+    const cart = getCart();
+    const products = await loadProducts();
+
+    const resolved = cart
+      .map(item => {
+        const product = products.find(p => p.id === item.id);
+        if (!product) return null;
+
+        const baseImg = product.images[0];
+        const parts = baseImg.split('/');
+
+        if (parts.length >= 3) {
+          parts[parts.length - 2] = item.color;
+        }
+
+        return {
+          item,
+          product,
+          image: resolveImage(parts.join('/')),
+          price: getProductPrice(product, item.capacity),
+        };
+      })
+      .filter(Boolean) as CartView[];
+
+    setItems(resolved);
+  };
+
   useEffect(() => {
-    const updateCart = async () => {
-      const cart = getCart();
-      const products = await loadProducts();
-
-      const resolved: CartView[] = cart
-        .map(item => {
-          const product = products.find(p => p.id === item.id);
-          if (!product) return null;
-
-          const baseImg = product.images[0];
-          const parts = baseImg.split('/');
-
-          if (parts.length >= 3) {
-            parts[parts.length - 2] = item.color;
-          }
-
-          return {
-            item,
-            product,
-            image: resolveImage(parts.join('/')),
-            price: getProductPrice(product, item.capacity),
-          };
-        })
-        .filter((v): v is CartView => v !== null);
-
-      setItems(resolved);
-    };
+    const handler = () => updateCart();
 
     updateCart();
-
-    const handler = () => updateCart();
     window.addEventListener('storage-update', handler);
 
-    return () => window.removeEventListener('storage-update', handler);
+    return () => {
+      window.removeEventListener('storage-update', handler);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.title = 'Cart | Phone Catalog';
   }, []);
 
   const total = items.reduce(
     (sum, i) => sum + i.price * i.item.quantity,
-    0,
+    0
   );
 
   const totalCount = items.reduce(
     (sum, i) => sum + i.item.quantity,
-    0,
+    0
   );
 
   const increase = (item: CartItem) => {
@@ -72,24 +83,7 @@ export const Cart = () => {
   };
 
   const decrease = (item: CartItem) => {
-    if (item.quantity <= 1) {
-      removeFromCart(item.id, item.color, item.capacity);
-      return;
-    }
-
-    const cart = getCart().map(c => {
-      if (
-        c.id === item.id &&
-        c.color === item.color &&
-        c.capacity === item.capacity
-      ) {
-        return { ...c, quantity: c.quantity - 1 };
-      }
-      return c;
-    });
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event('storage-update'));
+    decrementCartItem(item.id, item.color, item.capacity);
   };
 
   return (
@@ -145,9 +139,10 @@ export const Cart = () => {
                 Remove
               </button>
             </div>
-<div style={{ textAlign: 'right', minWidth: 120 }}>
+
+            <div style={{ textAlign: 'right', minWidth: 120 }}>
               <div style={{ fontSize: 14, color: '#8aa8b5' }}>
-                {item.quantity} × ${price}
+{item.quantity} × ${price}
               </div>
 
               <div style={{ fontSize: 20, marginTop: 6, fontWeight: 500 }}>
