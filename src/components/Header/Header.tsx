@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { useMenuCloseOnResize } from '../../hooks/useMenuCloseOnResize';
@@ -33,7 +33,9 @@ export const Header: React.FC = () => {
 
           <div className={styles.header__actions}>
             <ThemeToggler />
-            <FavouriteIcon className={styles.header__iconLink} />
+            <NavLink to="/favorites" className={styles.header__iconLink}>
+              <FavouriteIcon className={styles.header__icon} />
+            </NavLink>
             <CartIcon className={styles.header__iconLink} />
           </div>
           <ThemeToggler className={styles.header__themeToggleMobile} />

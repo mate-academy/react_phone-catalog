@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-export const ArrowLeftIcon: React.FC = () => (
+export const ArrowUpIcon: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
