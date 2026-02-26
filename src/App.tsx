@@ -15,6 +15,8 @@ export const App = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/contacts" element={<Navigate to="/" replace />} />
+          <Route path="/rights" element={<Navigate to="/" replace />} />
           <Route
             path="/phones"
             element={<CatalogPage category="phones" title="Mobile phones" />}

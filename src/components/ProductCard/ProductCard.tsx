@@ -19,16 +19,30 @@ export const ProductCard = ({ variant = '', product }: Props) => {
     price,
     image,
     screen,
+    color,
     capacity,
     ram,
   } = product;
-  const { cartIds, wishlistIds, toggleWishlist } = useAppContext();
+  const { cartIds, addToCart, deleteFromCart, wishlistIds, toggleWishlist } =
+    useAppContext();
 
   const isLiked = wishlistIds.includes(itemId);
   const isInCart = cartIds.includes(itemId);
 
-  const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const addToCartHandler = () => {
+    addToCart({
+      id: itemId,
+      color: color,
+      capacity: capacity,
+    });
+  };
+
+  const removeToCartHandler = () => {
+    return deleteFromCart({
+      id: itemId,
+      color: color,
+      capacity: capacity,
+    });
   };
 
   return (
@@ -75,15 +89,25 @@ export const ProductCard = ({ variant = '', product }: Props) => {
         </ul>
 
         <div className={styles.actions}>
-          <Link
-            to={`/${category}/${itemId}`}
-            className={cn(styles.addToCart, {
-              [styles.addedToCart]: isInCart,
-            })}
-            onClick={handleBackToTop}
-          >
-            {isInCart ? 'Added to cart' : 'Add to cart'}
-          </Link>
+          {isInCart ? (
+            <button
+              type="button"
+              className={cn(styles.addToCart, {
+                [styles.addedToCart]: isInCart,
+              })}
+              onClick={removeToCartHandler}
+            >
+              Added to cart
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={cn(styles.addToCart)}
+              onClick={addToCartHandler}
+            >
+              Add to cart
+            </button>
+          )}
 
           <WishlistButton
             productId={itemId}
