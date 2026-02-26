@@ -13,16 +13,18 @@ export const Home = () => {
       {typeof window !== "undefined" && <MatrixRain />}
 
       <div
-  style={{
-    textAlign: "center",
-    minHeight: "80vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  }}
->
+        className="home-hero"
+        style={{
+          textAlign: "center",
+          minHeight: "80vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <div
+          className="home-banner-wrap"
           style={{
             width: "100%",
             display: "flex",
@@ -32,6 +34,7 @@ export const Home = () => {
           <img
             src="/react_phone-catalog/img/ai-banner.png"
             alt="AI tech"
+            className="home-banner"
             style={{
               width: "520px",
               maxWidth: "90%",
@@ -40,8 +43,8 @@ export const Home = () => {
           />
         </div>
 
-        <div style={{ marginTop: "40px" }}>
-          <h1 style={{ fontSize: "48px", marginBottom: "10px" }}>
+        <div className="home-content" style={{ marginTop: "40px" }}>
+          <h1 className="home-title" style={{ fontSize: "48px", marginBottom: "10px" }}>
             Phone Catalog
           </h1>
 

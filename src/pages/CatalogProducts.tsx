@@ -78,12 +78,15 @@ export const CatalogProducts = () => {
         {category}
       </h1>
 
-      <div style={{
-        display: 'flex',
-        gap: 40,
-        marginBottom: 40,
-        alignItems: 'center'
-      }}>
+      <div
+        className="catalog-filters"
+        style={{
+          display: 'flex',
+          gap: 40,
+          marginBottom: 40,
+          alignItems: 'center',
+        }}
+      >
         <select
           value={sort}
           onChange={e => updateParams({ sort: e.target.value, page: 1 })}

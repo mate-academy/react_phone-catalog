@@ -7,6 +7,7 @@ import { getFavorites } from "../../store/favorites";
 const Header = () => {
   const [cartCount, setCartCount] = useState<number>(0);
   const [favCount, setFavCount] = useState<number>(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const update = () => {
@@ -27,6 +28,17 @@ const Header = () => {
     return () => window.removeEventListener("storage-update", update);
   }, []);
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   return (
     <header
       style={{
@@ -35,6 +47,7 @@ const Header = () => {
       }}
     >
       <nav
+        className="header-nav"
         style={{
           display: "flex",
           alignItems: "center",
@@ -43,6 +56,7 @@ const Header = () => {
         }}
       >
         <div
+          className="header-left"
           style={{
             display: "flex",
             gap: "40px",
@@ -55,6 +69,7 @@ const Header = () => {
         </div>
 
         <div
+          className="header-right"
           style={{
             display: "flex",
             gap: "30px",
@@ -76,7 +91,44 @@ const Header = () => {
             )}
           </Link>
         </div>
+
+        <button
+          className={`header-burger ${isMenuOpen ? "is-open" : ""}`}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen(prev => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </nav>
+
+      <div className={`header-mobile-menu ${isMenuOpen ? "is-open" : ""}`}>
+        <Link to="/" onClick={() => setIsMenuOpen(false)}>
+          Home
+        </Link>
+        <Link to="/catalog/phones" onClick={() => setIsMenuOpen(false)}>
+          Phones
+        </Link>
+        <Link to="/catalog/tablets" onClick={() => setIsMenuOpen(false)}>
+          Tablets
+        </Link>
+        <Link
+          to="/catalog/accessories"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Accessories
+        </Link>
+        <Link to="/favorites" onClick={() => setIsMenuOpen(false)}>
+          Favorites
+          {favCount > 0 && <span> ({favCount})</span>}
+        </Link>
+        <Link to="/cart" onClick={() => setIsMenuOpen(false)}>
+          Cart
+          {cartCount > 0 && <span> ({cartCount})</span>}
+        </Link>
+      </div>
     </header>
   );
 };

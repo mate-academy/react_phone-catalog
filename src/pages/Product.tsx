@@ -9,12 +9,14 @@ import { toggleFavorite, isFavorite } from '../store/favorites';
 
 import { getProductPrice } from '../utils/price';
 import { resolveImage } from '../utils/image';
+import { ProductCard } from '../components/ProductCard';
 
 export const ProductPage = () => {
 const { id } = useParams<{ id: string }>();
 const navigate = useNavigate();
 
 const [product, setProduct] = useState<Product | null>(null);
+const [allProducts, setAllProducts] = useState<Product[]>([]);
 const [color, setColor] = useState('');
 const [capacity, setCapacity] = useState('');
 
@@ -25,6 +27,7 @@ const [fav, setFav] = useState(false);
 
 useEffect(() => {
 loadProducts().then(list => {
+setAllProducts(list);
 const found = list.find(p => id?.includes(p.id)) || null;
 setProduct(found);
 
@@ -69,6 +72,25 @@ return resolveImage(parts.join('/'));
 });
 }, [color, product]);
 
+const recommendations = useMemo(() => {
+if (!product) return [];
+
+const shuffle = (items: Product[]) =>
+[...items].sort(() => Math.random() - 0.5);
+
+const sameCategory = allProducts.filter(
+p => p.id !== product.id && p.category === product.category
+);
+const otherProducts = allProducts.filter(
+p => p.id !== product.id && p.category !== product.category
+);
+
+return [
+...shuffle(sameCategory),
+...shuffle(otherProducts),
+].slice(0, 4);
+}, [allProducts, product]);
+
 useEffect(() => {
 if (!product) return;
 
@@ -100,12 +122,13 @@ const dynamicTitle =
 product.name + ' ' + capacity + ' ' + color.replace('-', ' ');
 
 return (
-<div className="product-page" style={{ maxWidth: 1100, margin: '0 auto' }}>
+<div className="product-page product-page--details" style={{ maxWidth: 1100, margin: '0 auto' }}>
 <Link to="/catalog" className="hero-back">
 Back
 </Link>
 
 <div
+className="product-page__content"
 style={{
 display: 'flex',
 flexDirection: 'column',
@@ -115,6 +138,7 @@ marginTop: 20,
 >
 
 <div
+className="product-page__image"
 style={{
 width: 340,
 height: 420,
@@ -136,6 +160,7 @@ objectFit: 'contain',
 </div>
 
 <div
+className="product-page__thumbs"
 style={{
 display: 'flex',
 gap: 12,
@@ -169,13 +194,18 @@ transition: '0.25s',
 ))}
 </div>
 
-<h1 style={{ fontSize: 30, marginBottom: 10, textAlign: 'center' }}>
+<h1
+className="product-page__title"
+style={{ fontSize: 30, marginBottom: 10, textAlign: 'center' }}
+>
 {dynamicTitle}
 </h1>
 
-<div style={{ fontSize: 26, marginBottom: 30 }}>${price}</div>
+<div className="product-page__price" style={{ fontSize: 26, marginBottom: 30 }}>
+${price}
+</div>
 
-<div style={{ marginBottom: 24, textAlign: 'center' }}>
+<div className="product-page__colors" style={{ marginBottom: 24, textAlign: 'center' }}>
 <div style={{ opacity: 0.6, marginBottom: 10 }}>Color</div>
 
 {product.colorsAvailable.map(c => (
@@ -198,7 +228,7 @@ transition: '0.25s',
 ))}
 </div>
 
-<div style={{ marginBottom: 30, textAlign: 'center' }}>
+<div className="product-page__capacities" style={{ marginBottom: 30, textAlign: 'center' }}>
 <div style={{ opacity: 0.6, marginBottom: 10 }}>Capacity</div>
 
 {product.capacityAvailable.map(c => (
@@ -218,7 +248,7 @@ transition: '0.25s',
 ))}
 </div>
 
-<div style={{ display: 'flex', gap: 20 }}>
+<div className="product-page__actions" style={{ display: 'flex', gap: 20 }}>
 <button
 disabled={inCart}
 onClick={() => addToCart(product.id, color, capacity)}
@@ -233,6 +263,18 @@ onClick={() => toggleFavorite(product.id, color, capacity)}
 </button>
 </div>
 </div>
+
+{recommendations.length > 0 && (
+<section className="you-may-like">
+<h2 className="you-may-like__title">You may also like</h2>
+
+<div className="catalog-grid you-may-like__grid">
+{recommendations.map(item => (
+<ProductCard key={item.id} product={item} />
+))}
+</div>
+</section>
+)}
 </div>
 );
 };

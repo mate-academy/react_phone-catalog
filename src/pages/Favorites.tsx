@@ -63,13 +63,19 @@ export const Favorites = () => {
 
   return (
     <div style={{ maxWidth: 900, margin: '0 auto' }}>
-      <Link to="/catalog" className="hero-back">
+      <Link
+        to="/catalog"
+        className="hero-back"
+        style={{ display: 'block', width: 'fit-content', margin: '0 auto 20px' }}
+      >
         Back
       </Link>
 
-      <h1 style={{ marginBottom: 30 }}>Favorites</h1>
+      <h1 style={{ marginBottom: 30, textAlign: 'center' }}>Favorites</h1>
 
-      {items.length === 0 && <p>No favorites yet</p>}
+      {items.length === 0 && (
+        <p style={{ textAlign: 'center' }}>No favorites yet</p>
+      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
         {items.map(({ item, product, image, price }) => (
