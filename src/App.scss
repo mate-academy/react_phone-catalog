@@ -8,6 +8,20 @@ body {
   background: var(--color-black);
 }
 
+#root,
+.App {
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.App > .container {
+  flex: 1;
+}
+
 * {
   scroll-behavior: smooth;
   transition: background-color var(--time);
@@ -76,6 +90,7 @@ body {
   margin-right: auto;
 
   @media (min-width: 1199px) {
+    max-width: 1136px;
     position: relative;
   }
 }
@@ -104,6 +119,10 @@ body {
   @media (min-width: 640px) {
     display: block;
   }
+}
+
+button {
+  cursor: pointer;
 }
 
 .invisible {
