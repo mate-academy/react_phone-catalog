@@ -199,10 +199,8 @@
 
   @media (min-width: 1199px) {
     display: grid;
-    //grid-template-columns: minmax(0, 1fr) max-content;
-    justify-items: end;
     grid-template-columns: 1fr 0.5fr;
-    align-items: start;
+    place-items: start end;
     column-gap: 16px;
   }
 }

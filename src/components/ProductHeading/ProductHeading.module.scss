@@ -19,7 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
   text-decoration: none;
   background-color: var(--color-surface-two);
   transition: background-color var(--time);

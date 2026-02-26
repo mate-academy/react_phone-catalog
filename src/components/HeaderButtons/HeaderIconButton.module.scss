@@ -32,6 +32,8 @@
   background-color: var(--color-black);
   border: none;
   border-left: 1px solid var(--color-surface-two);
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
 
   @media (min-width: 640px) {
     display: flex;

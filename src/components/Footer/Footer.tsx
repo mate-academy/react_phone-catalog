@@ -6,6 +6,11 @@ import { getAssetPath } from "../../utils";
 
 export const Footer: React.FC = () => {
   const { theme } = useContext(AppSettingsContext);
+  const contactsUrl =
+    "https://www.linkedin.com/in/radymyr-loboda-b4020417b/" +
+    "overlay/contact-info/";
+  const rightsUrl =
+    "https://github.com/Radymyr/react_phone-catalog/" + "blob/develop/LICENSE";
 
   return (
     <footer className={styles.footer}>
@@ -25,7 +30,7 @@ export const Footer: React.FC = () => {
             <ul className={styles.list}>
               <li className="footer__item">
                 <a
-                  href="#"
+                  href="https://github.com/Radymyr"
                   className={classNames(styles.link, " text-uppercase")}
                 >
                   Github
@@ -33,7 +38,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="footer__item">
                 <a
-                  href="#"
+                  href={contactsUrl}
                   className={classNames(styles.link, " text-uppercase")}
                 >
                   Contacts
@@ -41,7 +46,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="footer__item">
                 <a
-                  href="#"
+                  href={rightsUrl}
                   className={classNames(styles.link, " text-uppercase")}
                 >
                   rights

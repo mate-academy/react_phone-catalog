@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
   background-color: var(--color-icons);
 }
 
