@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import type { Product } from '../types/Product';
 import { loadProducts } from '../data/products';
@@ -18,7 +18,6 @@ const [product, setProduct] = useState<Product | null>(null);
 const [color, setColor] = useState('');
 const [capacity, setCapacity] = useState('');
 
-const [images, setImages] = useState<string[]>([]);
 const [imageIndex, setImageIndex] = useState(0);
 
 const [inCart, setInCart] = useState(false);
@@ -38,7 +37,6 @@ const colorFromUrl = parts[parts.length - 1];
 setColor(colorFromUrl || found.colorsAvailable[0]);
 setCapacity(capFromUrl || found.capacityAvailable[0]);
 
-setImages(found.images.map(resolveImage));
 setImageIndex(0);
 }
 });
@@ -57,19 +55,18 @@ window.addEventListener('storage-update', update);
 return () => window.removeEventListener('storage-update', update);
 }, [product, color, capacity]);
 
-useEffect(() => {
-if (!product) return;
+const images = useMemo(() => {
+if (!product) return [];
 
-const recolored = product.images.map(img => {
+return product.images.map(img => {
 const parts = img.split('/');
+
 if (parts.length >= 3) {
 parts[parts.length - 2] = color;
 }
-return parts.join('/');
-});
 
-setImages(recolored.map(resolveImage));
-setImageIndex(0);
+return resolveImage(parts.join('/'));
+});
 }, [color, product]);
 
 useEffect(() => {
@@ -88,7 +85,7 @@ capacity +
 ' ' +
 color.replace('-', ' ') +
 ' | Phone Catalog';
-}, [color, capacity, product]);
+}, [color, capacity, id, navigate, product]);
 
 useEffect(() => {
 return () => {
@@ -184,7 +181,10 @@ transition: '0.25s',
 {product.colorsAvailable.map(c => (
 <button
 key={c}
-onClick={() => setColor(c)}
+onClick={() => {
+setColor(c);
+setImageIndex(0);
+}}
 style={{
 margin: 6,
 fontWeight: c === color ? 700 : 300,

@@ -5,6 +5,12 @@ import { loadProducts } from '../data/products';
 import type { Product } from '../types/Product';
 import { ProductCard } from '../components/ProductCard';
 
+type UpdateParams = {
+  page?: number;
+  sort?: string;
+  perPage?: number | string;
+};
+
 export const CatalogProducts = () => {
   const { category = '' } = useParams();
   const navigate = useNavigate();
@@ -25,7 +31,7 @@ export const CatalogProducts = () => {
     document.title = `${categoryTitle || 'Catalog'} | Phone Catalog`;
   }, [category]);
 
-  const updateParams = (params: any) => {
+  const updateParams = (params: UpdateParams) => {
     setSearchParams({
       page: String(params.page ?? page),
       sort: params.sort ?? sort,

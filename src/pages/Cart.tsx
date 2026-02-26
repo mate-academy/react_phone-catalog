@@ -56,10 +56,13 @@ export const Cart = () => {
   useEffect(() => {
     const handler = () => updateCart();
 
-    updateCart();
+    const timeoutId = window.setTimeout(() => {
+      void updateCart();
+    }, 0);
     window.addEventListener('storage-update', handler);
 
     return () => {
+      window.clearTimeout(timeoutId);
       window.removeEventListener('storage-update', handler);
     };
   }, []);
