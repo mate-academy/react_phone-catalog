@@ -27,7 +27,7 @@ export const routes = {
 };
 
 export const Root = () => (
-  <Router basename={import.meta.env.BASE_URL}>
+  <Router>
     <AppSettingsProvider>
       <GlobalStateProvider>
         <Routes>
