@@ -4,6 +4,7 @@ import styles from './HomePage.module.scss';
 import { Hero } from './Hero';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory';
+import { HotPrices } from '../../components/HotPrices';
 
 export const HomePage: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const HomePage: React.FC = () => {
         <Hero />
         <ProductsSlider title="Brand new models" />
         <ShopByCategory />
+        <HotPrices title="Hot Prices" />
       </div>
     </main>
   );
