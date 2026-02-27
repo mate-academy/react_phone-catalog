@@ -16,7 +16,11 @@ export const AddButton: React.FC<Props> = ({ id }) => {
   const isCartId = cartIds.some(card => card.id === id);
 
   const addCard = () => {
-    dispatch({ type: "ADD_CARD", payload: id });
+    if (!isCartId) {
+      dispatch({ type: "ADD_CARD", payload: id });
+    } else if (isCartId) {
+      dispatch({ type: "REMOVE_ONE", payload: id });
+    }
   };
 
   return (
@@ -25,7 +29,6 @@ export const AddButton: React.FC<Props> = ({ id }) => {
         [styles.addedToCards]: isCartId,
         [styles.hover]: !isCartId,
       })}
-      disabled={isCartId}
       onClick={addCard}
     >
       {isCartId ? "Added" : "Add to cart"}

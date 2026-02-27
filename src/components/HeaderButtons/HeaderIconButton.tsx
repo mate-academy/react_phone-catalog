@@ -18,6 +18,7 @@ type Props = {
   buttonStyles?: React.CSSProperties;
   counterStyles?: React.CSSProperties;
   iconStyles?: React.CSSProperties;
+  onClick?: () => void;
 };
 
 export const HeaderIconButton: React.FC<Props> = ({
@@ -27,6 +28,7 @@ export const HeaderIconButton: React.FC<Props> = ({
   buttonStyles,
   counterStyles,
   iconStyles,
+  onClick,
 }) => {
   const { theme } = React.useContext(AppSettingsContext);
   const displayCount = count > 99 ? "99+" : count;
@@ -41,6 +43,7 @@ export const HeaderIconButton: React.FC<Props> = ({
       style={buttonStyles}
       to={icon === "heart" ? routes.favorites : routes.cart}
       className={getClassLink}
+      onClick={onClick}
     >
       <img
         className={classNames(styles.icon, {

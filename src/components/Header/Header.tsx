@@ -24,6 +24,20 @@ export const Header: React.FC = () => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <header className={styles.header}>
@@ -57,16 +71,38 @@ export const Header: React.FC = () => {
             <button
               className={styles.button}
               type="button"
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Open menu"
+              onClick={() => setIsMenuOpen(prev => !prev)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               <img
                 className={`${styles.icon} ${theme === "light" ? styles.iconLight : ""}`}
-                alt="menu"
-                src={getAssetPath("img/general/icons/menu.svg")}
+                alt={isMenuOpen ? "close menu" : "open menu"}
+                src={getAssetPath(
+                  isMenuOpen
+                    ? theme === "light"
+                      ? "img/general/icons/close.svg"
+                      : "img/general/icons/close-white.svg"
+                    : "img/general/icons/menu.svg",
+                )}
               />
             </button>
           </div>
+        </div>
+        <div className={styles.tabletControls}>
+          <button
+            className={styles.controlButton}
+            type="button"
+            onClick={toggleTheme}
+          >
+            {labels.theme}: {theme}
+          </button>
+          <button
+            className={styles.controlButton}
+            type="button"
+            onClick={toggleLanguage}
+          >
+            {labels.language}: {language.toUpperCase()}
+          </button>
         </div>
         <div className={styles.mobileSearch}>
           <HeaderSearch />

@@ -22,8 +22,12 @@
 .headerContent {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
   min-width: 0;
+
+  @media (min-width: 1199px) {
+    gap: 24px;
+  }
 }
 
 .buttons {
@@ -36,7 +40,7 @@
 .controls {
   display: none;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1199px) {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -44,10 +48,23 @@
   }
 }
 
+.tabletControls {
+  display: none;
+
+  @media (min-width: 640px) and (max-width: 1198px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-surface-two);
+  }
+}
+
 .desktopSearch {
   display: none;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1199px) {
     display: block;
     width: 280px;
   }

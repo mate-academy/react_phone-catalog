@@ -3,7 +3,7 @@ import { HeaderIconButton } from "../HeaderButtons";
 import { getCount } from "../../utils";
 import { StateContext } from "../../providers/GlobalStateProvider";
 import styles from "./Menu.module.scss";
-import { HeaderMenu } from "../HeaderMenu/HeaderMenu";
+import { HeaderMenu } from "../HeaderMenu";
 import { Link } from "react-router-dom";
 import { AppSettingsContext } from "../../providers/AppSettingsProvider";
 import { getAssetPath } from "../../utils";
@@ -61,12 +61,14 @@ export const Menu: React.FC<Props> = ({ onClose }) => {
           icon="heart"
           buttonClassName={styles.iconButton}
           buttonStyles={{ display: "flex" }}
+          onClick={onClose}
           count={getCount(favoriteIds)}
         />
         <HeaderIconButton
           icon="cart"
           buttonClassName={styles.iconButton}
           buttonStyles={{ display: "flex" }}
+          onClick={onClose}
           count={getCount(cartIds)}
         />
       </div>
