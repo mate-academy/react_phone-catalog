@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { FavouriteIcon } from '../ui/FavouriteIcon';
-import { CatalogProduct } from '../../types/ProductTypes';
+import { CatalogProducts } from '../../types/ProductTypes';
 import classNames from 'classnames';
 import { FavouriteIconSelected } from '../ui/FavouriteIconSelected';
 
 interface ProductCardProps {
-  product: CatalogProduct;
+  product: CatalogProducts;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
@@ -37,7 +37,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <article className={styles.productCard}>
       <Link to={productLink} className={styles.productCard__imageLink}>
-        <img src={image} alt={name} className={styles.productCard__image} />
+        <img
+          src={`/${image}`}
+          alt={name}
+          className={styles.productCard__image}
+        />
       </Link>
       <h3 className={styles.productCard__title}>
         <Link to={productLink} className={styles.productCard__titleLink}>

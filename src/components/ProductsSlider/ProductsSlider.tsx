@@ -4,33 +4,17 @@ import { ArrowLeftIcon } from '../ui/ArrowLeftIcon';
 
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
+import { CatalogProducts } from '../../types/ProductTypes';
 
 interface ProductSliderProps {
   title: string;
+  products: CatalogProducts[];
 }
 
-//---TEMP---//
-const sampleProduct = {
-  id: 1,
-  category: 'phones',
-  itemId: 'apple-iphone-14-128gb-blue',
-  name: 'Apple iPhone 14 128GB Blue',
-  fullPrice: 999,
-  price: 899,
-  screen: '6.1" OLED',
-  capacity: '128GB',
-  color: 'blue',
-  ram: '6GB',
-  year: 2022,
-  image: 'img/phones/apple-iphone-11/white/00.webp',
-};
-
-const mockProducts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
-  ...sampleProduct,
-  id,
-}));
-
-export const ProductsSlider: React.FC<ProductSliderProps> = ({ title }) => {
+export const ProductsSlider: React.FC<ProductSliderProps> = ({
+  title,
+  products,
+}) => {
   const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
   const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
 
@@ -107,7 +91,7 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({ title }) => {
         ref={listRef}
         onScroll={checkScrollPosition}
       >
-        {mockProducts.map(product => (
+        {products.map(product => (
           <div key={product.id} className={styles.slider__item}>
             <ProductCard product={product} />
           </div>
