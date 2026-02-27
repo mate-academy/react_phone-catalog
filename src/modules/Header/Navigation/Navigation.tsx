@@ -1,4 +1,4 @@
-import { NavLink, NavLinkRenderProps } from 'react-router-dom';
+import { NavLink, NavLinkRenderProps, useSearchParams } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,8 @@ interface NavigationProp {
 
 const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+
   const navClasses = styles.nav + ' ' + getClassNames('nav_', modifier, styles);
   const getLinkClasses = ({ isActive }: NavLinkRenderProps) =>
     cn(styles.item, {
@@ -24,13 +26,22 @@ const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
       <NavLink className={getLinkClasses} to="/" end>
         {t('nav.home')}
       </NavLink>
-      <NavLink className={getLinkClasses} to="/phones">
+      <NavLink
+        className={getLinkClasses}
+        to={{ pathname: '/phones', search: searchParams.toString() }}
+      >
         {t('nav.phones')}
       </NavLink>
-      <NavLink className={getLinkClasses} to="/tablets">
+      <NavLink
+        className={getLinkClasses}
+        to={{ pathname: '/tablets', search: searchParams.toString() }}
+      >
         {t('nav.tablets')}
       </NavLink>
-      <NavLink className={getLinkClasses} to="/accessories">
+      <NavLink
+        className={getLinkClasses}
+        to={{ pathname: '/accessories', search: searchParams.toString() }}
+      >
         {t('nav.accessories')}
       </NavLink>
     </nav>

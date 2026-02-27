@@ -40,7 +40,8 @@
       "price": "Найдешевші"
     },
     "menu_items": "Продуктів на сторінці",
-    "menu_items_values": { "all": "всі" }
+    "menu_items_values": { "all": "всі" },
+    "search": "Я шукаю ..."
   },
 
   "product-card": {
@@ -92,6 +93,7 @@
     "accessories": "Аксесуарів",
     "wrong": "Щось пошло не так!",
     "emptyList": "{{category}} поки що немає.",
+    "emptyQueryResult": "Немає {{category}}, що відповідають запиту.",
     "reload": "Перезавантажити"
   },
 

@@ -39,7 +39,8 @@
       "price": "Cheapest"
     },
     "menu_items": "Items on page",
-    "menu_items_values": { "all": "all" }
+    "menu_items_values": { "all": "all" },
+    "search": "I am searching ..."
   },
 
   "product-card": {
@@ -89,6 +90,7 @@
     "accessories": "accessories",
     "wrong": "Something went wrong!",
     "emptyList": "There are no {{category}} yet.",
+    "emptyQueryResult": "There are no {{category}} matching the query.",
     "reload": "Reload"
   },
 

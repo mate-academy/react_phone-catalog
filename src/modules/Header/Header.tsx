@@ -6,6 +6,7 @@ import Icon from '../shared/Icon';
 import MobileMenu from './MobileMenu';
 import IconWithCounter from './IconWithCounter';
 import { useAppSelector } from '../../store/hooks';
+import InputSearch from './InputSearch';
 
 export const Header = () => {
   const location = useLocation();
@@ -57,6 +58,8 @@ export const Header = () => {
             />
           </div>
         </div>
+        {showMobile || <InputSearch />}
+
         {showMobile && <MobileMenu />}
       </header>
     </>

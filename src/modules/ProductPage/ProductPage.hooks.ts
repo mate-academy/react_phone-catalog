@@ -14,6 +14,7 @@ import {
   PRODUCT_MENU_KEY,
 } from './ProductPage.constants';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
+import { DEBOUNCED_DELAY } from '../constants';
 
 type MenuParamKey =
   | ProductPageSearchParams.sort
@@ -65,7 +66,7 @@ function useMenuParams() {
         setSearchParams(storedParamsString, { replace: true });
       }
     }
-  }, [searchParams, setSearchParams]);
+  }, [isEmptyParams, storedParamsString, searchParams, setSearchParams]);
 
   const updateMenuParam = (key: MenuParamKey, value: string) => {
     setSearchParams(prevParams => {
@@ -170,6 +171,7 @@ interface UseSelectedProductOptions {
   selectedSort: SelectOption;
   selectedPerPage: SelectOption;
   currentPage: number;
+  searchQuery: string;
 }
 
 export function useSelectedProduct({
@@ -178,6 +180,7 @@ export function useSelectedProduct({
   selectedSort,
   selectedPerPage,
   currentPage,
+  searchQuery,
 }: UseSelectedProductOptions): {
   pageProducts: ProductCatalogItem[];
   total: number;
@@ -186,16 +189,31 @@ export function useSelectedProduct({
     [],
   );
 
+  const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
+
   const [sortedProducts, setSortedProduct] = useState<ProductCatalogItem[]>([]);
   const [paginatedProducts, setPaginatedProduct] = useState<
     ProductCatalogItem[]
   >([]);
 
   useEffect(() => {
-    setFilteredProduct(
-      products.filter(product => product.category === (title || '')),
+    const timerId = setTimeout(
+      () => setDebouncedQuery(searchQuery),
+      DEBOUNCED_DELAY,
     );
-  }, [products, title]);
+
+    return () => clearTimeout(timerId);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    setFilteredProduct(
+      products.filter(
+        product =>
+          product.category === (title || '') &&
+          product.name.includes(debouncedQuery),
+      ),
+    );
+  }, [products, title, debouncedQuery]);
 
   useEffect(() => {
     setSortedProduct(

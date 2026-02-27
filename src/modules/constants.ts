@@ -31,3 +31,5 @@ export const siteLanguages = {
   uk: 'UA',
   en: 'EN',
 };
+
+export const DEBOUNCED_DELAY = 600;

@@ -68,4 +68,30 @@ $icon-gap: 2px;
     height: $input-height - $icon-gap;
     color: $icon-color;
   }
+
+  &__close {
+    @extend %small-text;
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $input-height;
+    height: $input-height;
+    border: none;
+
+    color: $icon-color;
+
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      @include hover(transform, translateY(-50%) scale($text_hover_transform));
+      @include hover(color, $border-color-hover);
+    }
+  }
 }

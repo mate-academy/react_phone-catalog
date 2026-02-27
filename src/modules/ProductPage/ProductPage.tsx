@@ -9,7 +9,7 @@ import ProductListMenu from './ProductListMenu';
 import ProductPagination from './ProductPagination';
 import { useMenuSelectors, useSelectedProduct } from './ProductPage.hooks';
 import Messages from '../shared/Message';
-import InputSearch from './InputSearch';
+import { ProductPageSearchParams } from './ProductPage.types';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,10 +18,11 @@ export const ProductPage: React.FC = () => {
   );
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const currentPage = Number(searchParams.get('page')) || 1;
+  const currentPage =
+    Number(searchParams.get(ProductPageSearchParams.page)) || 1;
+  const searchQuery = searchParams.get(ProductPageSearchParams.query) || '';
+
   const title = location.pathname.split('/').at(-1) || '';
-  const count = title ? categories[title] : 0;
-  const modelAmount = t('products_page.models', { count });
 
   const {
     selectedSort,
@@ -38,20 +39,20 @@ export const ProductPage: React.FC = () => {
     selectedSort,
     selectedPerPage,
     currentPage,
+    searchQuery,
   });
 
+  const count = title ? total : 0;
+  const modelAmount = t('products_page.models', { count });
   const isProductListEmpty = loaded && count === 0;
   const hasProducts = loaded && count > 0;
-  const handleSearchChange = (searchString: string) => {
-    /* eslint-disable no-console */
-    console.log(searchString);
-  };
+  const messageText = categories[title]
+    ? t('messages.emptyQueryResult', { category: t('messages.' + title) })
+    : t('messages.emptyList', { category: t('messages.' + title) });
 
   return (
     <>
       <div className="container">
-        <InputSearch handleSearchChange={handleSearchChange} />
-
         <div>
           <Breadcrumbs />
           <h1 className={styles.productPage__title}>
@@ -60,12 +61,7 @@ export const ProductPage: React.FC = () => {
           {loading && 'Loading'}
           {error && <Messages type="error" />}
           {isProductListEmpty && (
-            <Messages
-              type="emptyList"
-              text={t('messages.emptyList', {
-                category: t('messages.' + title),
-              })}
-            />
+            <Messages type="emptyList" text={messageText} />
           )}
 
           {hasProducts && (
