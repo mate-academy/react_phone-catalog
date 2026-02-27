@@ -48,3 +48,11 @@ export type TabletType = DeviceWithCamera;
 export type WatchType = BaseProduct;
 
 export type Product = PhoneType | TabletType | WatchType;
+export interface Category {
+  name: string;
+  src: string;
+  alt: string;
+  link: string;
+  quantity: number;
+  type: 'phones' | 'tablets' | 'accessories';
+}

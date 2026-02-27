@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './HomePage.module.scss';
 import { Hero } from './Hero';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { ShopByCategory } from '../../components/ShopByCategory';
 
 export const HomePage: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ export const HomePage: React.FC = () => {
         <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
         <Hero />
         <ProductsSlider title="Brand new models" />
+        <ShopByCategory />
       </div>
     </main>
   );
