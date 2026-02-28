@@ -20,7 +20,9 @@ export const CategoryCard = ({
 }: Props) => (
   <div className={className}>
     <Link to={link}>
-      <div className={`${styles.category_image_wrapper} ${wrapperClassName ?? ''}`}>
+      <div
+        className={`${styles.category_image_wrapper} ${wrapperClassName ?? ''}`}
+      >
         <img className={styles.categories_icon} src={image} alt={title} />
       </div>
     </Link>

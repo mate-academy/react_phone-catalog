@@ -17,6 +17,7 @@ export const PictureSlider = () => {
 
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
+
     return () => clearInterval(timer);
   }, []);
 

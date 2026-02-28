@@ -199,6 +199,12 @@
   height: 288px;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
 
   @media (min-width: 640px) {
     width: 100%;
