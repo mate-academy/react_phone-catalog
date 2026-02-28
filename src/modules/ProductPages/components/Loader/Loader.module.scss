@@ -1,0 +1,12 @@
+@import '/src/utils/variables';
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 40px 0;
+  font-size: 18px;
+  color: var(--gray-secondary);
+  height: 100vh;
+}
