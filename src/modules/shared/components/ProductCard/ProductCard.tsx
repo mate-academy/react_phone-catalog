@@ -1,6 +1,10 @@
-import { FC } from 'react';
+import { FC, SetStateAction, useState } from 'react';
 import styles from './ProductCard.module.scss';
-import favourites from './../../../../../public/img/favourites.svg';
+import { Link } from 'react-router-dom';
+import { Favorite } from '../Favorite';
+import { AddToCart } from '../AddToCart';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { cartSlice } from '../../../../features/cart/cartSlice';
 
 type Props = {
   title: string;
@@ -10,7 +14,11 @@ type Props = {
   descRAM: string;
   img: string;
   currentPrice: number;
-  type: 'hot' | 'new';
+  type?: 'hot' | 'new';
+  productId?: string;
+  cart: boolean;
+  setCount: React.Dispatch<SetStateAction<number>>;
+  count: number;
 };
 
 export const ProductCard: FC<Props> = ({
@@ -22,44 +30,98 @@ export const ProductCard: FC<Props> = ({
   img,
   currentPrice,
   type,
+  productId,
+  cart,
 }) => {
+  const dispatch = useAppDispatch();
+
+  const productInCart = useAppSelector(state =>
+    state.cart.find(item => item.id === productId),
+  );
+
+  const count = productInCart ? productInCart.count : 1;
+  const price = productInCart ? productInCart.price : currentPrice;
+
   return (
-    <article className={styles.card}>
-      <div className={styles.card__content}>
-        <div className={styles.card__img}>
+    <article className={cart ? styles.card__cart : styles.card}>
+      <div className={cart ? styles.card__content__cart : styles.card__content}>
+        {cart && (
+          <button
+            onClick={() => {
+              dispatch(cartSlice.actions.removeProduct(productId));
+            }}
+            className={styles.delete__cart}
+          >
+            ✕
+          </button>
+        )}
+        <Link
+          to={`/product/${productId}`}
+          className={cart ? styles.card__img__cart : styles.card__img}
+        >
           <img src={img} alt="product image" />
-        </div>
-        <h4 className={styles.card__title}>{title}</h4>
-        {type === 'new' ? (
-          <p className={styles.card__price}>${fullPrice}</p>
-        ) : (
-          <div className={styles.prices}>
-            <p className={styles.card__price}>${currentPrice}</p>
-            <p className={styles.card__oldPrice}>${fullPrice}</p>
+        </Link>
+        <Link to={`/product/${productId}`}>
+          <h4 className={styles.card__title}>{title}</h4>
+        </Link>
+        {cart && (
+          <div className={styles.quantity}>
+            <div
+              onClick={() => {
+                if (count > 1) {
+                  dispatch(cartSlice.actions.minusCount(productId));
+                }
+              }}
+              className={count === 1 ? styles.minus__disabled : styles.minus}
+            >
+              -
+            </div>
+            <div className={styles.count}>{count}</div>
+            <div
+              onClick={() => {
+                dispatch(cartSlice.actions.plusCount(productId));
+              }}
+              className={styles.plus}
+            >
+              +
+            </div>
           </div>
         )}
 
-        <span className={styles.card__line}></span>
-        <div className={styles.card__desc}>
-          <div className={styles.desc}>
-            <h6 className={styles.desc__name}>Screen</h6>
-            <p className={styles.desc__text}>{descScreen}</p>
-          </div>
-          <div className={styles.desc}>
-            <h6 className={styles.desc__name}>Capacity</h6>
-            <p className={styles.desc__text}>{descCapacity}</p>
-          </div>
-          <div className={styles.desc}>
-            <h6 className={styles.desc__name}>RAM</h6>
-            <p className={styles.desc__text}>{descRAM}</p>
-          </div>
-        </div>
-        <div className={styles.card__actions}>
-          <button className={styles.cart}>Add to cart</button>
-          <button className={styles.card__favourites}>
-            <span className={styles.favourites__img}></span>
-          </button>
-        </div>
+        {cart && <p className={styles.card__price}>${Number(price) * count}</p>}
+        {!cart &&
+          (type === 'new' ? (
+            <p className={styles.card__price}>${fullPrice}</p>
+          ) : (
+            <div className={styles.prices}>
+              <p className={styles.card__price}>${currentPrice}</p>
+              <p className={styles.card__oldPrice}>${fullPrice}</p>
+            </div>
+          ))}
+
+        {!cart && (
+          <>
+            <span className={styles.card__line}></span>
+            <div className={styles.card__desc}>
+              <div className={styles.desc}>
+                <h6 className={styles.desc__name}>Screen</h6>
+                <p className={styles.desc__text}>{descScreen}</p>
+              </div>
+              <div className={styles.desc}>
+                <h6 className={styles.desc__name}>Capacity</h6>
+                <p className={styles.desc__text}>{descCapacity}</p>
+              </div>
+              <div className={styles.desc}>
+                <h6 className={styles.desc__name}>RAM</h6>
+                <p className={styles.desc__text}>{descRAM}</p>
+              </div>
+            </div>
+            <div className={styles.card__actions}>
+              <AddToCart productId={productId} />
+              <Favorite productId={productId} />
+            </div>
+          </>
+        )}
       </div>
     </article>
   );

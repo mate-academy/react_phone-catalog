@@ -1,54 +1,37 @@
 import styles from './CatalogOptions.module.scss';
 import './../../../../styles/global.scss';
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { SortName } from '../../../../types/SortName';
-import { ItemsPerPage } from '../../../../types/itemsPerPage';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as Select from '@radix-ui/react-select';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../../../../types/Product';
+import { ItemsPerPage } from './../../../../types/ItemsPerPage';
 
 type Props = {
   sort: SortName;
   itemsPerPage: ItemsPerPage;
-  setSort: Dispatch<SetStateAction<string>>;
-  setItemsPerPage: Dispatch<SetStateAction<ItemsPerPage>>;
   currentPage: number;
-  sortedProducts: Product[];
-  pages: number[];
-  isActivePage: number;
-  handlePerPage: (val: string | null) => void;
-  handleSort: (val: string | null) => void;
+  handlePerPage: (val: ItemsPerPage) => void;
+  handleSort: (val: SortName) => void;
 };
 
 export const CatalogOptions: FC<Props> = ({
   sort,
   itemsPerPage,
-  setSort,
-  setItemsPerPage,
-  currentPage,
-  sortedProducts,
-  isActivePage,
   handlePerPage,
   handleSort,
 }) => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isItemsOpen, setIsItemsOpen] = useState(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
-  const sortParam: string | null = searchParams.get('sort');
-  const perPageParam: string | null = searchParams.get('perPage');
+  const sortParam = searchParams.get('sort') as SortName | null;
+  // const perPageParam = searchParams.get('perPage') as ItemsPerPage | null;
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     sortParam !== null ? handleSort(sortParam) : handleSort(sort);
-
-    if (perPageParam !== null) {
-      handlePerPage(perPageParam);
-    } else {
-      handlePerPage(itemsPerPage);
-    }
   }, []);
 
   return (
@@ -58,7 +41,7 @@ export const CatalogOptions: FC<Props> = ({
         <div className={styles.sort__select}>
           <Select.Root
             value={sort}
-            onValueChange={value => {
+            onValueChange={(value: SortName) => {
               handleSort(value);
             }}
             onOpenChange={setIsSortOpen}

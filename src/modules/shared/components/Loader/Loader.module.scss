@@ -1,0 +1,25 @@
+.loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  margin-top: 100px;
+
+  animation: spin 0.5s linear infinite;
+  border: 4px solid gray;
+  border-top: 4px solid #905bff;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

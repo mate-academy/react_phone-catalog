@@ -1,0 +1,1 @@
+export { ProductMainDesc } from './ProductMainDesc';

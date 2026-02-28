@@ -115,3 +115,26 @@
     padding: 16px;
   }
 }
+
+.favorites {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: attr(data-count);
+    color: white;
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    background-color: #eb5757;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: -4px;
+
+    right: -4px;
+    z-index: 1000;
+  }
+}

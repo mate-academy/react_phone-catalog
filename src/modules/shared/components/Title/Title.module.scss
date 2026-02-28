@@ -11,6 +11,17 @@
   color: $primary__text-color;
 }
 
+.h1__title__small {
+  align-self: flex-start;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1%;
+  line-height: 41px;
+  margin-bottom: 40px;
+  margin-top: 16px;
+  color: $primary__text-color;
+}
+
 .text {
   color: $secondary__text-color;
   font-size: 14px;

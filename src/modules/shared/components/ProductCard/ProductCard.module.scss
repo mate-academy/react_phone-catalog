@@ -2,47 +2,49 @@
 
 .card {
   background-color: $secondary__background-color;
-  height: 506px;
+  border-radius: 8px;
+  overflow: hidden;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-
+    padding: 24px 32px;
     gap: 8px;
-    padding: 32px;
   }
 
   &__img {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     height: 196px;
-  }
-  &__img img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain !important;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain !important;
+    }
   }
 
   &__title {
     font-family: 'Mont', sans-serif;
     color: $primary__text-color;
+    width: 300px;
     font-size: 14px;
     line-height: 21px;
     font-weight: 600;
-
     margin-top: 16px;
   }
 
   &__price {
     color: $primary__text-color;
     font-size: 22px;
-    line-height: 140%;
     font-weight: 800;
+    width: 80px;
+    text-align: right;
+    flex-shrink: 0;
   }
 
   &__line {
@@ -57,26 +59,23 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  letter-spacing: normal;
-}
 
-.card__oldPrice {
-  color: $secondary__text-color;
-  font-size: 22px;
-  font-weight: 500;
-  position: relative;
-  letter-spacing: normal;
-}
+  .card__oldPrice {
+    color: $secondary__text-color;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
 
-.card__oldPrice::before {
-  position: absolute;
-  content: '';
-
-  width: 100%;
-  height: 2px;
-  background-color: $secondary__text-color;
-  top: 50%;
-  left: 0;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $secondary__text-color;
+      top: 50%;
+      left: 0;
+    }
+  }
 }
 
 .desc {
@@ -106,61 +105,87 @@
   height: 40px;
 }
 
-.cart {
-  height: 100%;
-  width: 160px;
-  background-color: $accent__color;
-  color: $primary__text-color;
-  font-size: 14px;
-  line-height: 21px;
-
-  transition: background-color 0.3s ease;
+.card__cart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
 }
 
-.cart:hover {
-  background-color: $accent__color-hover;
-}
-.cart:active {
-  background-color: $secondary__element-color;
-}
-
-.card__favourites {
-  background-color: $secondary__element-color;
-  padding: 12px;
-}
-
-.card__favourites {
-  position: relative;
-  width: 40px;
-  height: 40px;
-
-  background-color: $secondary__element-color;
-  // padding: 12px;
-
-  transition: background-color 0.3s ease;
+.card__content__cart {
+  height: 128px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 0 24px;
+  background-color: $secondary__background-color;
 }
 
-.card__favourites:hover {
-  background-color: $secondary__text-color;
-  padding: 12px;
+.delete__cart {
+  font-size: 16px;
+  color: $secondary__element-color;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-.card__favourites:active {
-  background-color: $secondary__element-color;
-  border: 1px solid $secondary__text-color;
+.card__img__cart {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .favourites__img {
-    content: url('./../../../../../public//img/favouritesActive.svg');
+  img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
   }
 }
 
-.favourites__img {
-  position: absolute;
-  content: url('./../../../../../public//img/favourites.svg');
+.quantity {
+  display: flex;
+  align-items: center;
+  flex: 0 0 120px;
+  justify-content: space-between;
 
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  .minus,
+  .plus,
+  .count {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .minus,
+  .plus {
+    border: 1px solid $secondary__element-color;
+    cursor: pointer;
+    background-color: $secondary__element-color;
+    color: $primary__text-color;
+  }
+
+  .minus__disabled {
+    border: 1px solid $secondary__element-color;
+    color: $secondary__element-color;
+    cursor: default;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .count {
+    color: $primary__text-color;
+    text-align: center;
+  }
+}
+
+.card__price {
+  flex: 0 0 80px;
+  text-align: right;
 }

@@ -1,12 +1,15 @@
 import styles from './Header.module.scss';
 import logo from './../../../../../public/img/logo.svg';
-import favourites from './../../../../../public/img/favourites.svg';
+import favorites from './../../../../../public/img/favourites.svg';
 import cart from './../../../../../public/img/cart.svg';
 import { navLinks } from './constants';
 import { Link, NavLink, NavLinkRenderProps } from 'react-router-dom';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
+  const favoritesIds = useSelector(state => state.favorites);
+
   const isActiveLink = ({ isActive }: NavLinkRenderProps): string => {
     return classNames(
       `${styles.menu__link}`,
@@ -35,8 +38,12 @@ export const Header = () => {
         </nav>
         <div className={styles.header__actions}>
           <span className={styles.actions__wrapper}>
-            <NavLink to="/favourites" className={styles.favourites}>
-              <img src={favourites} alt="favourites" />
+            <NavLink
+              data-count={favoritesIds.length}
+              to="/favorites"
+              className={favoritesIds.length > 0 ? styles.favorites : ''}
+            >
+              <img src={favorites} alt="favorites" />
             </NavLink>
           </span>
           <span className={styles.actions__wrapper}>

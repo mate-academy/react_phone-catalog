@@ -5,21 +5,38 @@
   margin: 24px 0 40px 0;
   display: flex;
   gap: 8px;
-  align-items: center;
 }
 
 .pathName {
   display: flex;
   align-items: center;
   gap: 8px;
+  text-transform: capitalize;
 }
 
 .pathArrow {
   color: $secondary__text-color;
 }
 
+.link {
+  color: $secondary__text-color;
+  pointer-events: none;
+}
+
 .pathLink {
   color: $primary__text-color;
+}
+
+.pathArrowBack {
+  color: $primary__text-color;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.linkBack {
+  color: $primary__text-color;
+  margin-bottom: 15px;
+  margin-top: 30px;
 }
 
 .active {

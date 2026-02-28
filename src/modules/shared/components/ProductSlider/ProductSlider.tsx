@@ -56,6 +56,7 @@ export const ProductSlider: FC<Props> = ({
                 descRAM={product.ram}
                 img={product.image}
                 type={type}
+                productId={product.itemId}
               />
             </SwiperSlide>
           );

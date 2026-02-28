@@ -3,7 +3,9 @@
 
 .pagination {
   display: flex;
+  align-self: center;
   gap: 16px;
+  padding: 0px 0 40px 0;
 }
 
 .arrow {
@@ -16,6 +18,17 @@
 
   color: $primary__text-color;
   background-color: $secondary__element-color;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $accent__color;
+  }
+  &:disabled {
+    pointer-events: none;
+    border: 1px solid $secondary__element-color;
+    background-color: $primary__background-color;
+  }
 }
 
 .pages__buttons {
