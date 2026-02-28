@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { Main } from './modules/HomePage/components/Main/Main';
-import { Phones } from './modules/ProductPages/components/Mobile phones';
+import { Phones } from './modules/ProductPages/components/Mobile';
 import { Tablets } from './modules/ProductPages/components/Tablets';
 import { Accessories } from './modules/ProductPages/components/Accessories';
 import { ProductDetails } from './modules/ProductDetails';
