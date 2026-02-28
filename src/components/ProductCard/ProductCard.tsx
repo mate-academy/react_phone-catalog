@@ -6,16 +6,19 @@ import { FavouriteIcon } from '../ui/FavouriteIcon';
 import { CatalogProducts } from '../../types/ProductTypes';
 import classNames from 'classnames';
 import { FavouriteIconSelected } from '../ui/FavouriteIconSelected';
+import { useCart } from '../../context/CartContext';
 
 interface ProductCardProps {
   product: CatalogProducts;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const [isAdded, setIsAdded] = useState<boolean>(false);
+  const { addToCart, isInCart } = useCart();
+
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
   const {
+    id,
     name,
     price,
     fullPrice,
@@ -26,6 +29,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     category,
     itemId,
   } = product;
+
+  const isAdded = isInCart(id);
+
+  const handleCartClick = () => {
+    if (!isAdded) {
+      addToCart(product);
+    }
+  };
+
   const productLink = `/${category}/${itemId}`;
 
   const specs = [
@@ -69,7 +81,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className={classNames(styles.productCard__actionAddButton, {
             [styles['productCard__actionAddButton--active']]: isAdded,
           })}
-          onClick={() => setIsAdded(!isAdded)}
+          onClick={handleCartClick}
         >
           {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>

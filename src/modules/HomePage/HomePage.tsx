@@ -42,16 +42,14 @@ export const HomePage: React.FC = () => {
   });
 
   return (
-    <main className={styles.home}>
-      <div className={styles.home__container}>
-        <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
-        <Hero />
-        {isloading && <p>Loading products...</p>}
-        {errorMessage && <p>{errorMessage}</p>}
-        <ProductsSlider title="Brand new models" products={brandNewProducts} />
-        <ShopByCategory />
-        <HotPrices title="Hot Prices" products={hotPricesProducts} />
-      </div>
-    </main>
+    <div className={styles.home__container}>
+      <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
+      <Hero />
+      {isloading && <p>Loading products...</p>}
+      {errorMessage && <p>{errorMessage}</p>}
+      <ProductsSlider title="Brand new models" products={brandNewProducts} />
+      <ShopByCategory />
+      <HotPrices title="Hot Prices" products={hotPricesProducts} />
+    </div>
   );
 };

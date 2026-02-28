@@ -7,21 +7,20 @@ import {
   useState,
   ReactNode,
 } from 'react';
+import { CatalogProducts } from '../types/ProductTypes'; // Імпортуємо твій реальний тип
 
-export interface BaseProduct {
-  id: string | number;
-}
-
-export interface CartItem extends BaseProduct {
+// Тепер CartItem бере всі поля з CatalogProducts і додає кількість
+export interface CartItem extends CatalogProducts {
   quantity: number;
 }
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (product: BaseProduct) => void;
-  removeFromCart: (product: BaseProduct['id']) => void;
-  updateQuantity: (product: BaseProduct['id'], quantity: number) => void;
-  isInCart: (productId: BaseProduct['id']) => boolean;
+  addToCart: (product: CatalogProducts) => void;
+  removeFromCart: (productId: CatalogProducts['id']) => void;
+  updateQuantity: (productId: CatalogProducts['id'], quantity: number) => void;
+  isInCart: (productId: CatalogProducts['id']) => boolean;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -54,7 +53,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = useCallback((product: BaseProduct) => {
+  const addToCart = useCallback((product: CatalogProducts) => {
     setCartItems(previousCartItems => {
       const isAlreadyInCart = previousCartItems.some(
         item => item.id === product.id,
@@ -68,14 +67,14 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     });
   }, []);
 
-  const removeFromCart = useCallback((productId: BaseProduct['id']) => {
+  const removeFromCart = useCallback((productId: CartItem['id']) => {
     setCartItems(previousCartItems =>
       previousCartItems.filter(item => item.id !== productId),
     );
   }, []);
 
   const updateQuantity = useCallback(
-    (productId: BaseProduct['id'], newQuantity: number) => {
+    (productId: CartItem['id'], newQuantity: number) => {
       if (newQuantity <= 0) {
         removeFromCart(productId);
 
@@ -92,11 +91,15 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   );
 
   const isInCart = useCallback(
-    (productId: BaseProduct['id']) => {
+    (productId: CartItem['id']) => {
       return cartItems.some(item => item.id === productId);
     },
     [cartItems],
   );
+
+  const clearCart = useCallback(() => {
+    setCartItems([]);
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -105,8 +108,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       removeFromCart,
       updateQuantity,
       isInCart,
+      clearCart,
     }),
-    [cartItems, addToCart, removeFromCart, updateQuantity, isInCart],
+    [cartItems, addToCart, removeFromCart, updateQuantity, isInCart, clearCart],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

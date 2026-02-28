@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.cart {
+  @include page-container;
+  @include page-grid;
+
+  padding-bottom: 64px;
+
+  @include respond-to('desktop') {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    @include h1;
+
+    margin: 24px 0 32px;
+    color: var(--text-main);
+    grid-column: 1 / -1;
+
+    @include respond-to('tablet') {
+      margin-top: 16px;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: span 4;
+
+    @include respond-to('tablet') {
+      grid-column: span 12;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: span 16;
+    }
+  }
+
+  &__summary {
+    grid-column: span 4;
+
+    @include respond-to('tablet') {
+      grid-column: span 12;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: span 8;
+    }
+  }
+}
