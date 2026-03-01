@@ -1,6 +1,6 @@
 import { Product } from '../types/Product';
 
-const BASE = import.meta.env.BASE_URL;
+const BASE = `${import.meta.env.BASE_URL}/`;
 
 export async function getProductById(id: string): Promise<Product | null> {
   const files = ['phones.json', 'tablets.json', 'accessories.json'];
