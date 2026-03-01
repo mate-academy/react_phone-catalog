@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
 
           <div className={styles.header__actions}>
             <ThemeToggler />
-            <NavLink to="/favorites" className={styles.header__iconLink}>
+            <NavLink to="/favourites" className={styles.header__iconLink}>
               <FavouriteIcon className={styles.header__icon} />
             </NavLink>
             <CartIcon className={styles.header__iconLink} />

@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-
-import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { FavouriteIcon } from '../ui/FavouriteIcon';
 import { CatalogProducts } from '../../types/ProductTypes';
-import classNames from 'classnames';
 import { FavouriteIconSelected } from '../ui/FavouriteIconSelected';
 import { useCart } from '../../context/CartContext';
+import { useFavourites } from '../../context/FavoritesContext';
+import styles from './ProductCard.module.scss';
+import classNames from 'classnames';
 
 interface ProductCardProps {
   product: CatalogProducts;
@@ -14,8 +13,13 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart, isInCart } = useCart();
+  const { toggleFavourite, isFavourite } = useFavourites();
 
-  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+  const handleFavouriteClick = () => {
+    toggleFavourite(product);
+  };
+
+  const isActiveFavourite = isFavourite(product.id);
 
   const {
     id,
@@ -88,12 +92,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <button
           type="button"
           className={styles.productCard__actionFavouriteIcon}
-          onClick={() => setIsFavourite(!isFavourite)}
+          onClick={handleFavouriteClick}
           aria-label={
-            isFavourite ? 'Remove from favorites' : 'Add to favorites'
+            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
           }
         >
-          {!isFavourite ? (
+          {!isActiveFavourite ? (
             <FavouriteIcon className={styles.productCard__icon} />
           ) : (
             <FavouriteIconSelected className={styles.productCard__icon} />

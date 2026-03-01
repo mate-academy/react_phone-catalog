@@ -7,15 +7,16 @@ import {
   useState,
   ReactNode,
 } from 'react';
-import { CatalogProducts } from '../types/ProductTypes'; // Імпортуємо твій реальний тип
+import { CatalogProducts } from '../types/ProductTypes';
 
-// Тепер CartItem бере всі поля з CatalogProducts і додає кількість
-export interface CartItem extends CatalogProducts {
+export interface CartItemInterface {
+  id: string | number;
   quantity: number;
+  product: CatalogProducts;
 }
 
 interface CartContextType {
-  cartItems: CartItem[];
+  cartItems: CartItemInterface[];
   addToCart: (product: CatalogProducts) => void;
   removeFromCart: (productId: CatalogProducts['id']) => void;
   updateQuantity: (productId: CatalogProducts['id'], quantity: number) => void;
@@ -32,7 +33,7 @@ interface CartProviderProps {
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+  const [cartItems, setCartItems] = useState<CartItemInterface[]>(() => {
     const savedcart = localStorage.getItem('cart');
 
     if (savedcart) {
@@ -63,18 +64,21 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return previousCartItems;
       }
 
-      return [...previousCartItems, { ...product, quantity: 1 }];
+      return [
+        ...previousCartItems,
+        { id: product.id, quantity: 1, product: product },
+      ];
     });
   }, []);
 
-  const removeFromCart = useCallback((productId: CartItem['id']) => {
+  const removeFromCart = useCallback((productId: CartItemInterface['id']) => {
     setCartItems(previousCartItems =>
       previousCartItems.filter(item => item.id !== productId),
     );
   }, []);
 
   const updateQuantity = useCallback(
-    (productId: CartItem['id'], newQuantity: number) => {
+    (productId: CartItemInterface['id'], newQuantity: number) => {
       if (newQuantity <= 0) {
         removeFromCart(productId);
 
@@ -91,7 +95,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   );
 
   const isInCart = useCallback(
-    (productId: CartItem['id']) => {
+    (productId: CartItemInterface['id']) => {
       return cartItems.some(item => item.id === productId);
     },
     [cartItems],
