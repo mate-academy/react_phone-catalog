@@ -1,13 +1,11 @@
 import { Product } from '../types/Product';
 
-const BASE = `${import.meta.env.BASE_URL}/`;
-
 export async function getProductById(id: string): Promise<Product | null> {
   const files = ['phones.json', 'tablets.json', 'accessories.json'];
 
   for (const file of files) {
     try {
-      const res = await fetch(`${BASE}api/${file}`);
+      const res = await fetch(`./api/${file}`);
       const data: Product[] = await res.json();
       const found = data.find(p => p.id === id);
 
@@ -25,7 +23,7 @@ export async function getProductById(id: string): Promise<Product | null> {
 export async function getProductsByCategory(
   category: string,
 ): Promise<Product[]> {
-  const res = await fetch(`${BASE}api/${category}.json`);
+  const res = await fetch(`./api/${category}.json`);
 
   return res.json();
 }
