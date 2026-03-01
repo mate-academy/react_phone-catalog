@@ -1,7 +1,7 @@
+import React from 'react';
 import './App.scss';
+import { AppRouter } from './router/AppRouter';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return <AppRouter />;
+};

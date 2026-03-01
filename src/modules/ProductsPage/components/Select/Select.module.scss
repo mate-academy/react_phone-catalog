@@ -1,0 +1,9 @@
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/colors' as *;
+
+.selectSection {
+  display: flex;
+  gap: 16px;
+  padding: 32px 0 24px;
+}

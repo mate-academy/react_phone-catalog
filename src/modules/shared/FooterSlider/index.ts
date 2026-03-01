@@ -1,0 +1,1 @@
+export { FooterSlider } from './FooterSlider';

@@ -1,0 +1,52 @@
+@use 'sass:map';
+@use './colors' as *;
+
+$light-theme: (
+  text: $color-hover-nav,
+  background: $color-white,
+  border: $color-header-border,
+  button: $color-transparent,
+  dashes: $color-header-border,
+  dashes_active: $color-black,
+  capacity_bg: $color-hover-nav,
+  capacity_color: $color-white,
+  message: $color-hover-nav,
+);
+$dark-theme: (
+  text: $color-white,
+  background: $color-dark-background,
+  border: $color-hover-menu,
+  button: $color-grey-white-button,
+  dashes: $color-dark-button,
+  dashes_active: $color-white,
+  capacity_bg: $color-white,
+  capacity_color: $color-hover-nav,
+  message: $color-black,
+  product: $color-dark-item,
+);
+
+@mixin theme {
+  body.light {
+    --color-text: #{map.get($light-theme, text)};
+    --color-bg: #{map.get($light-theme, background)};
+    --color-button: #{map.get($light-theme, button)};
+    --color-bg-dashes: #{map.get($light-theme, dashes)};
+    --color-bg-dashes-active: #{map.get($light-theme, dashes_active)};
+    --color-capacity-bg: #{map.get($light-theme, capacity_bg)};
+    --color-capacity: #{map.get($light-theme, capacity_color)};
+    --color-message: #{map.get($light-theme, message)};
+    --color-product: #{map.get($light-theme, product)};
+  }
+
+  body.dark {
+    --color-text: #{map.get($dark-theme, text)};
+    --color-bg: #{map.get($dark-theme, background)};
+    --color-button: #{map.get($dark-theme, button)};
+    --color-bg-dashes: #{map.get($dark-theme, dashes)};
+    --color-bg-dashes-active: #{map.get($dark-theme, dashes_active)};
+    --color-capacity-bg: #{map.get($dark-theme, capacity_bg)};
+    --color-capacity: #{map.get($dark-theme, capacity_color)};
+    --color-message: #{map.get($dark-theme, message)};
+    --color-product: #{map.get($dark-theme, product)};
+  }
+}

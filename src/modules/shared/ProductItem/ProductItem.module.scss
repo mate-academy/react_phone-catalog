@@ -1,0 +1,83 @@
+@use '../../../styles/utils/typography' as *;
+@use '../../../styles/utils/colors' as *;
+@use '../../../styles/utils/breakpoints' as *;
+
+.productSlider {
+  height: 506px;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  border: 1px solid $color-header-border;
+  border-radius: 8px;
+  background-color: var(--color-product);
+
+  &__image {
+    display: block;
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__title {
+    @include body-text;
+
+    text-decoration: none;
+    color: var(--color-text);
+    margin-top: 8px;
+    min-height: 42px;
+    align-self: flex-start;
+  }
+
+  &__verticalLine {
+    width: 100%;
+    height: 1px;
+    background-color: $color-header-border;
+  }
+
+  @include for-tablet {
+    max-width: 288px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 229px;
+  }
+
+  @include for-laptop {
+    max-width: 272px;
+    height: 506px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.productDescription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include small-text;
+
+  &__label {
+    color: $color-link-navigation;
+  }
+}
+
+.linkWrapper {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 208px;
+  height: 196px;
+}

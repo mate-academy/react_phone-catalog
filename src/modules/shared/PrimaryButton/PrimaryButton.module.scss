@@ -1,0 +1,30 @@
+@use '../../../styles/utils/colors' as *;
+@use '../../../styles/utils/typography' as *;
+@use '../../../styles/utils/breakpoints' as *;
+
+.primaryButton {
+  @include button-text;
+
+  color: $color-white;
+  border: none;
+  background-color: $color-primary-button;
+  border-radius: 8px;
+  outline: none;
+  flex-grow: 1;
+  cursor: pointer;
+
+  &--cardPage {
+    padding: 13.5px 0;
+  }
+
+  &--selected {
+    background-color: $color-white;
+    border: 1px solid $color-header-border;
+    color: $color-primary-button;
+    font-size: 13px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $color-hover-button;
+  }
+}
