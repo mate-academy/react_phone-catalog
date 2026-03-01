@@ -7,19 +7,16 @@ import {
   useState,
   ReactNode,
 } from 'react';
+import { CatalogProducts } from '../types/ProductTypes';
 
-export interface BaseProduct {
-  id: string | number;
-}
-
-interface FavouriteContextType {
-  favourites: BaseProduct[];
-  toggleFavourite: (product: BaseProduct) => void;
-  isFavourite: (productId: BaseProduct['id']) => boolean;
+interface FavouriteContextInterface {
+  favourites: CatalogProducts[];
+  toggleFavourite: (product: CatalogProducts) => void;
+  isFavourite: (productId: CatalogProducts['id']) => boolean;
 }
 
 export const FavouritesContext = createContext<
-  FavouriteContextType | undefined
+  FavouriteContextInterface | undefined
 >(undefined);
 
 interface FavouritesProviderProps {
@@ -27,7 +24,7 @@ interface FavouritesProviderProps {
 }
 
 export const FavouritesProvider = ({ children }: FavouritesProviderProps) => {
-  const [favourites, setFavourites] = useState<BaseProduct[]>(() => {
+  const [favourites, setFavourites] = useState<CatalogProducts[]>(() => {
     const savedFavourites = localStorage.getItem('favourites');
 
     if (savedFavourites) {
@@ -48,7 +45,7 @@ export const FavouritesProvider = ({ children }: FavouritesProviderProps) => {
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }, [favourites]);
 
-  const toggleFavourite = useCallback((product: BaseProduct) => {
+  const toggleFavourite = useCallback((product: CatalogProducts) => {
     setFavourites(previousFavourites => {
       const isAlreadyFavourite = previousFavourites.some(
         item => item.id === product.id,
@@ -63,7 +60,7 @@ export const FavouritesProvider = ({ children }: FavouritesProviderProps) => {
   }, []);
 
   const isFavourite = useCallback(
-    (productId: BaseProduct['id']) => {
+    (productId: CatalogProducts['id']) => {
       return favourites.some(item => item.id === productId);
     },
     [favourites],

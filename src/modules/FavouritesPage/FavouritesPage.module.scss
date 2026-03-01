@@ -1,0 +1,53 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.favourites {
+  @include page-container;
+
+  padding-top: 24px;
+
+  @include respond-to('tablet') {
+    padding-top: 40px;
+  }
+
+  &__title {
+    @include h1;
+
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    @include body-text;
+
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+
+    @include respond-to('tablet') {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__products {
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include respond-to('tablet') {
+      grid-column: span 6;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: span 6;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+  }
+}

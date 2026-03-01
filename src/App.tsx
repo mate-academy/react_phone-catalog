@@ -7,6 +7,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { CartPage } from './modules/CartPage';
 import { CartProvider } from './context/CartContext';
 import { FavouritesProvider } from './context/FavoritesContext';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 export const App = () => (
   <div className="App">
@@ -25,10 +26,7 @@ export const App = () => (
                   element={<div>Accessories</div>}
                 ></Route>
 
-                <Route
-                  path="favourites"
-                  element={<div>Favourites</div>}
-                ></Route>
+                <Route path="favourites" element={<FavouritesPage />}></Route>
                 <Route path="cart" element={<CartPage />}></Route>
                 <Route
                   path="product/:productId"
