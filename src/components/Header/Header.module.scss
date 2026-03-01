@@ -175,6 +175,10 @@
     text-decoration: none;
     position: relative;
 
+    &:first-child {
+      border-left: none;
+    }
+
     &--active {
       &::after {
         content: '';
@@ -200,6 +204,10 @@
     text-decoration: none;
     background-color: transparent;
     cursor: pointer;
+
+    &:first-child {
+      border-left: none;
+    }
   }
 
   &__img {

@@ -21,8 +21,12 @@ export const SearchInput = () => {
     }
   }, [debouncedValue, searchParams, setSearchParams]);
 
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputValue(e.target.value.trim());
+  // };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value.trim());
+    setInputValue(e.target.value);
   };
 
   const handleClick = () => {

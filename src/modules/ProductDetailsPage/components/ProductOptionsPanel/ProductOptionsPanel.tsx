@@ -66,7 +66,8 @@ export const ProductOptionsPanel = ({ item, variants }: OptionsProps) => {
                 <button
                   onClick={() => handleColor(tone)}
                   className={styles.palette__value}
-                  style={{ backgroundColor: colorMap[tone] }}
+                  // style={{ backgroundColor: colorMap[tone] }}
+                  style={{ backgroundColor: colorMap[tone.replace(' ', '')] }}
                   aria-label={`choose color ${tone}`}
                 ></button>
               </div>
