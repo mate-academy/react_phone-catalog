@@ -1,0 +1,75 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin content-padding {
+  padding-inline: $content-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $content-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $content-padding-desktop;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat($grid-mobile-columns, 1fr);
+  column-gap: $grid-gap;
+
+  @include on-tablet {
+    grid-template-columns: repeat($grid-tablet-columns, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($grid-desktop-columns, 1fr);
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-duration;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin square-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: border-color $transition-duration;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: $color-icons;
+    }
+  }
+}
+
