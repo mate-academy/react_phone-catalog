@@ -52,7 +52,7 @@ export const Cart: React.FC = () => {
             <div className={styles.empty__cart}>Your cart is empty</div>
             <img
               className={styles.empty__cart_img}
-              src="/img/cart-is-empty.png"
+              src="img/cart-is-empty.png"
               alt="cart-is-empty"
             />
           </>

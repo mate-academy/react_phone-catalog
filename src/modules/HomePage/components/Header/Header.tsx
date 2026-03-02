@@ -6,9 +6,9 @@ import { CartContext } from '../../../../CartContext';
 import { FavouritesContext } from '../../../../FavouritesContext';
 
 const images = [
-  '/img/banner-accessories.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
+  'img/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
 ];
 
 export const Header: React.FC = () => {
@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
         <div className={styles.header__top}>
           <Link to="#logo" className={styles.logo}>
             <img
-              src="/img/logo/logo.png"
+              src="img/logo/logo.png"
               className={styles.logo_img}
               alt="logo"
             />
@@ -221,7 +221,7 @@ export const Header: React.FC = () => {
                     onClick={prev}
                   >
                     <img
-                      src="/img/icons/slider_button_left.png"
+                      src="img/icons/slider_button_left.png"
                       alt="slider-left"
                     />
                   </button>
@@ -237,7 +237,7 @@ export const Header: React.FC = () => {
                     onClick={next}
                   >
                     <img
-                      src="/img/icons/slider_button_right.png"
+                      src="img/icons/slider_button_right.png"
                       alt="slider-right"
                     />
                   </button>
@@ -250,23 +250,23 @@ export const Header: React.FC = () => {
                       alt="switch"
                     />
                   ) : (
-                    <img src="/img/icons/banner_carousele.png" alt="switch" />
+                    <img src="img/icons/banner_carousele.png" alt="switch" />
                   )}
                   {indexOfImg === 1 ? (
                     <img
-                      src="/img/icons/banner_carousele_active.png"
+                      src="img/icons/banner_carousele_active.png"
                       alt="switch"
                     />
                   ) : (
-                    <img src="/img/icons/banner_carousele.png" alt="switch" />
+                    <img src="img/icons/banner_carousele.png" alt="switch" />
                   )}
                   {indexOfImg === 2 ? (
                     <img
-                      src="/img/icons/banner_carousele_active.png"
+                      src="img/icons/banner_carousele_active.png"
                       alt="switch"
                     />
                   ) : (
-                    <img src="/img/icons/banner_carousele.png" alt="switch" />
+                    <img src="img/icons/banner_carousele.png" alt="switch" />
                   )}
                 </div>
               </div>
@@ -282,7 +282,7 @@ export const Header: React.FC = () => {
         <div className={styles.menu__top}>
           <Link to="#logo" className={styles.logo}>
             <img
-              src="/img/logo/logo.png"
+              src="img/logo/logo.png"
               className={styles.logo_img}
               alt="logo"
             />

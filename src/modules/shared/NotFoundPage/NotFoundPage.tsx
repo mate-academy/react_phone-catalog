@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => (
       <div className={styles.breadcrumbs}>
         <Link to="/" className={styles.breadcrumbs__link}>
           <img
-            src="/img/icons/home.png"
+            src="img/icons/home.png"
             className={styles.breadcrumbs__icon}
             alt="Home"
           />
@@ -19,7 +19,7 @@ export const NotFoundPage: React.FC = () => (
 
         <h4 className={styles.breadcrumbs__current}>Back home</h4>
       </div>
-      <img className={styles.image} src="/img/page-not-found.png" alt="" />
+      <img className={styles.image} src="img/page-not-found.png" alt="" />
     </div>
   </div>
 );

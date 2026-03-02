@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { Main } from './modules/HomePage/components/Main/Main';
 import { Phones } from './modules/ProductPages/components/Mobile';
