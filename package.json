@@ -58,6 +58,11 @@
     "vite": "^7.3.1"
   },
   "lint-staged": {
-    "*": "npm run fix-style"
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{css,scss,json,md}": [
+      "prettier --write"
+    ]
   }
 }
