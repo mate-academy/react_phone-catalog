@@ -40,11 +40,12 @@
 
     @media (min-width: 640px) {
       height: 284px;
-      object-position: center;
+      object-position: center
     }
 
     @media (min-width: 1200px) {
       height: 400px;
+      object-position: center top;
     }
   }
 
