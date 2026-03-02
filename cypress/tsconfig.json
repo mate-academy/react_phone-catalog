@@ -1,6 +1,7 @@
 {
-  "extends": "@mate-academy/students-ts-config",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": false
-  }
+    "types": ["cypress", "node"]
+  },
+  "include": ["**/*.ts"]
 }

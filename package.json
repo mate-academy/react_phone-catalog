@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
