@@ -36,10 +36,11 @@
     min-width: 100%;
     object-fit: cover;
     height: 320px;
-    object-position: center;
+    object-position: center top;
 
     @media (min-width: 640px) {
       height: 284px;
+      object-position: center;
     }
 
     @media (min-width: 1200px) {

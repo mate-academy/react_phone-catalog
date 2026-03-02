@@ -134,7 +134,7 @@ export const ItemCard = () => {
   const isFav = product ? isFavourite(product.id) : false;
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Navigation />
 
       <div className={styles.container}>
@@ -149,7 +149,7 @@ export const ItemCard = () => {
           </div>
         )}
 
-        {!loading && product && (
+        {!loading && !notFound && product && (
           <>
             <Breadcrumbs
               category={CATEGORY_LABELS[product.category] || product.category}

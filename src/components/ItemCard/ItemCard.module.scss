@@ -1,4 +1,5 @@
 .container {
+  flex: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px 80px;
@@ -337,6 +338,12 @@
     background: #75767f;
     border-color: #75767f;
   }
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .not_found {
