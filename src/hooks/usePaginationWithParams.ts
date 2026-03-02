@@ -17,17 +17,27 @@ export const usePaginationWithParams = ({
   const navigate = useNavigate();
   const { items, sort, page } = useParams();
 
-  const itemsOnPage = items ? +items : defaultItems;
+  const itemsOnPage = items ? Number(items) : defaultItems;
   const sortBy = (sort as SortType) || defaultSort;
-  const currentPage = page ? +page : 1;
+  const currentPage = page ? Number(page) : 1;
 
   useEffect(() => {
-    if (!items || !sort || !page) {
-      navigate(`${basePath}/${defaultItems}/${defaultSort}/1`, {
-        replace: true,
-      });
-    }
-  }, []);
+  const hasAllParams = items && sort && page;
+
+  if (!hasAllParams) {
+    navigate(`${basePath}/${defaultItems}/${defaultSort}/1`, {
+      replace: true,
+    });
+  }
+}, [
+  basePath,
+  defaultItems,
+  defaultSort,
+  items,
+  navigate,
+  page,
+  sort,
+]);
 
   const changeSort = (value: SortType) => {
     navigate(`${basePath}/${itemsOnPage}/${value}/1`);
