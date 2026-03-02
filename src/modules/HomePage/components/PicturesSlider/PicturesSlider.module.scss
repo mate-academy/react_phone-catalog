@@ -16,6 +16,8 @@
   --swiper-pagination-bullet-horizontal-gap: 9px;
   --swiper-pagination-bottom: 0px;
 
+  user-select: none;
+
   @include on-tablet {
     display: flex;
     align-items: stretch;
@@ -49,6 +51,7 @@
 
   overflow: hidden;
 
+
   @include on-tablet {
     border-radius: 8px;
   }
@@ -79,6 +82,8 @@
     width: 32px;
     min-width: 32px;
     height: auto;
+
+    background-color: var(--color-white);
 
     border: 1px solid var(--color-icons);
     border-radius: 16px;

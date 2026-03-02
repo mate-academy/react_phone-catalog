@@ -1,14 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
 import cl from 'classnames';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { ArrowLeft } from '../../../../components/Icons/ArrowLeft';
-import { ArrowRight } from '../../../../components/Icons/ArrowRight';
+import { ArrowLeftIcon } from '../../../../components/Icons/ArrowLeftIcon';
+import { ArrowRightIcon } from '../../../../components/Icons/ArrowRightIcon';
 import styles from './PicturesSlider.module.scss';
 
 const slides = [
@@ -33,15 +32,17 @@ const slides = [
 ];
 
 export const PicturesSlider = () => {
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
-  const swiperRef = useRef<SwiperType>();
+  const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
 
   return (
     <div className={styles.picturesSliderWrapper}>
-      <div className={cl(styles.navButton, styles.navPrev)} ref={leftRef}>
-        <ArrowLeft />
-      </div>
+      <button
+        className={cl(styles.navButton, styles.navPrev)}
+        ref={node => setPrevEl(node)}
+      >
+        <ArrowLeftIcon />
+      </button>
 
       <div className={styles.swiperContainer}>
         <Swiper
@@ -51,12 +52,9 @@ export const PicturesSlider = () => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
           loop={true}
-          onBeforeInit={swiper => {
-            swiperRef.current = swiper;
-          }}
           navigation={{
-            prevEl: leftRef.current,
-            nextEl: rightRef.current,
+            prevEl,
+            nextEl,
           }}
         >
           {slides.map((slide, index) => (
@@ -75,9 +73,12 @@ export const PicturesSlider = () => {
         </Swiper>
       </div>
 
-      <div className={cl(styles.navButton, styles.navNext)} ref={rightRef}>
-        <ArrowRight />
-      </div>
+      <button
+        className={cl(styles.navButton, styles.navNext)}
+        ref={node => setNextEl(node)}
+      >
+        <ArrowRightIcon />
+      </button>
     </div>
   );
 };
