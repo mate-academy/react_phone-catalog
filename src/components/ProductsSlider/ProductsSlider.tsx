@@ -17,8 +17,8 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
-  const [prevEl, setPrevEl] = useState<HTMLDivElement | null>(null);
-  const [nextEl, setNextEl] = useState<HTMLDivElement | null>(null);
+  const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
 
   return (
     <div className={styles.sliderContent}>
@@ -26,13 +26,13 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.buttonsContainer}>
-          <div className={styles.topButton} ref={node => setPrevEl(node)}>
+          <button className={styles.topButton} ref={node => setPrevEl(node)}>
             <ArrowLeftIcon />
-          </div>
+          </button>
 
-          <div className={styles.topButton} ref={node => setNextEl(node)}>
+          <button className={styles.topButton} ref={node => setNextEl(node)}>
             <ArrowRightIcon />
-          </div>
+          </button>
         </div>
       </div>
 
