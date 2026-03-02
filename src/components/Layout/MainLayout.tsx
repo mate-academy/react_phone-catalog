@@ -15,17 +15,27 @@ export const MainLayout = () => {
     document.body.classList.add(state.theme);
   }, [state.theme]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [location.pathname, location.search]);
+
   const isProductPage =
     location.pathname === '/phones' ||
     location.pathname === '/tablets' ||
-    location.pathname === '/accessories';
+    location.pathname === '/accessories' ||
+    location.pathname === '/cart';
 
   return (
     <div className={styles.wrapper}>
       <Header showSearch={isProductPage} />
+
       <main className={styles.main}>
         <Outlet />
       </main>
+
       <Footer />
     </div>
   );

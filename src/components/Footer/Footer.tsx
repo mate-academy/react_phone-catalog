@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import { Link, NavLink } from 'react-router-dom';
-import { footerItems } from './constants';
+import { Link } from 'react-router-dom';
 import { Button } from '../Button';
 import { getAssetUrl } from '../../api/utilis';
 
@@ -27,26 +26,38 @@ export const Footer = () => {
           />
         </Link>
       </div>
+
       <ul className={styles.list}>
-        <li>
+        <li className={styles.list__item}>
           <a
             className={styles.list__link}
-            href="https://github.com/Vitaligna/"
+            href="https://github.com/Vitaligna"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
           >
             github
           </a>
         </li>
-        {footerItems.map(item => (
-          <li key={item} className={styles.list__item}>
-            <NavLink to={`/${item}`} className={styles.list__link}>
-              {item}
-            </NavLink>
-          </li>
-        ))}
+
+        <li className={styles.list__item}>
+          <Link className={styles.list__link} to="/phones">
+            phones
+          </Link>
+        </li>
+
+        <li className={styles.list__item}>
+          <Link className={styles.list__link} to="/tablets">
+            tablets
+          </Link>
+        </li>
+
+        <li className={styles.list__item}>
+          <Link className={styles.list__link} to="/accessories">
+            accessories
+          </Link>
+        </li>
       </ul>
+
       <div className={styles.scrollBack}>
         <p className={styles.scrollBack__paragraph}>Back to top</p>
         <Button onClick={handleBackToTop} rotation={270} />

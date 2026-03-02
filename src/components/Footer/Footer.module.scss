@@ -56,16 +56,36 @@
   gap: 16px;
 
   &__link {
+    position: relative;
     text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
 
-    @include uppercase;
-
-    text-transform: uppercase;
-    color: $color-link-navigation;
-
-    &:hover {
-      color: $color-hover-nav;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
     }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    // text-decoration: none;
+
+    // @include uppercase;
+
+    // text-transform: uppercase;
+    // color: $color-link-navigation;
+
+    // &:hover {
+    //   color: $color-hover-nav;
+    // }
   }
 
   @include for-tablet {
