@@ -10,7 +10,8 @@ type FooterProps = {
 };
 
 export const ProductsFooterItem = ({ item }: FooterProps) => {
-  const { cart, addToCart } = useCart();
+  // const { cart, addToCart } = useCart();
+  const { cart, addToCart, removeFromCart } = useCart();
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const productToBasket = () => ({
@@ -37,8 +38,18 @@ export const ProductsFooterItem = ({ item }: FooterProps) => {
     }
   };
 
+  // const handleClickBasket = () => {
+  //   if (!isInCart) {
+  //     const basketItem = productToBasket();
+
+  //     addToCart(basketItem);
+  //   }
+  // };
+
   const handleClickBasket = () => {
-    if (!isInCart) {
+    if (isInCart) {
+      removeFromCart(item.itemId);
+    } else {
       const basketItem = productToBasket();
 
       addToCart(basketItem);

@@ -24,6 +24,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
   const { state, dispatch } = useAppContext();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const { cart } = useCart();
   const { favourites } = useFavourites();
 

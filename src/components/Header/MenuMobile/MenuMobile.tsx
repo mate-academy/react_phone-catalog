@@ -6,6 +6,7 @@ import { navigationItems, navigationPaths } from '../constants/category';
 import { createPortal } from 'react-dom';
 import { useAppContext } from '../../../hooks/useAppContext';
 import { getAssetUrl } from '../../../api/utilis';
+import { useEffect } from 'react';
 import {
   themeIconBasket,
   themeIconClose,
@@ -21,6 +22,14 @@ type Props = {
 
 export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
   const { state, dispatch } = useAppContext();
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   const getNavLinkClassMobile = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.navigationMenu__item, {
