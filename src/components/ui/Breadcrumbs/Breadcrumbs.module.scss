@@ -1,0 +1,48 @@
+@use '@styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 24px;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      transition: filter 0.2s ease;
+      filter: $icon-filter;
+    }
+  }
+
+  &__separator {
+    color: $color-secondary;
+    font-size: 12px;
+  }
+
+  &__link {
+    color: $color-secondary;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  &__current {
+    color: $color-secondary;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

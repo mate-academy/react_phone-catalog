@@ -1,2 +1,4 @@
-/build
-/node_modules
+.env
+package.json
+package-lock.json
+index.html

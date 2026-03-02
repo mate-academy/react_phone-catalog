@@ -1,0 +1,40 @@
+@use '@styles/variables' as *;
+
+.product-features {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+
+  &::before {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: $color-border;
+    margin-bottom: 10px;
+  }
+
+  &--no-line::before {
+    display: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__value {
+    color: $color-light-1;
+    font-weight: 400;
+  }
+
+  &__name {
+    color: $color-secondary;
+  }
+}

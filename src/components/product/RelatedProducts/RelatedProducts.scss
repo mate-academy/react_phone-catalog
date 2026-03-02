@@ -1,0 +1,156 @@
+@use '@styles/variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+.AlsoLike {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: $color-white;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 28px;
+    }
+
+    @include on-desktop {
+      font-size: 32px;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  &__arrow-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-surface-2;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 5.33px;
+      height: 9.33px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-color: $color-icons;
+      mask-image: url('/src/assets/icons/vector-white.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      -webkit-mask-image: url('/src/assets/icons/vector-white.svg');
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+    }
+
+    &--left::after {
+      transform: rotate(180deg);
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $color-surface-2;
+      border-color: $color-icons;
+
+      &::after {
+        background-color: $color-white;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: $color-surface-2;
+      opacity: 0.5;
+
+      &::after {
+        background-color: $color-icons;
+      }
+    }
+  }
+
+  &__slider {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+    scroll-behavior: smooth;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin: 0 -24px;
+      padding: 0 24px 4px;
+    }
+
+    @include on-desktop {
+      margin: 0 -32px;
+      padding: 0 32px 4px;
+    }
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+
+    scrollbar-width: none;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+
+    & > * {
+      flex: 0 0 212px;
+
+      @include on-tablet {
+        flex: 0 0 237px;
+      }
+
+      @include on-desktop {
+        flex: 0 0 272px;
+      }
+    }
+  }
+}
