@@ -55,17 +55,6 @@
   flex-direction: column;
   gap: 16px;
 
-  &__link {
-    text-decoration: none;
-    color: $color-link-navigation;
-
-    @include uppercase;
-
-    &:hover {
-      color: var(--color-text);
-    }
-  }
-
   @include for-tablet {
     flex-direction: row;
     gap: 32px;
@@ -73,6 +62,20 @@
 
   @include for-laptop {
     gap: 106px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-link-navigation;
+
+    @include uppercase;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--color-text);
+    }
   }
 }
 
