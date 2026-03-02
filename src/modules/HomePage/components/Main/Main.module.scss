@@ -77,19 +77,19 @@
       }
 
       &--left {
-        background-image: url('/public/img/icons/slider_button_left.png');
+        background-image: url('/img/icons/slider_button_left.png');
         margin-right: 16px;
 
         &:disabled {
-        background-image: url('/public/img/icons/slider_button_left_dis.png');
+        background-image: url('/img/icons/slider_button_left_dis.png');
       }
       }
 
       &--right {
-        background-image: url('/public/img/icons/slider_button_right.png');
+        background-image: url('/img/icons/slider_button_right.png');
 
           &:disabled {
-        background-image: url('/public/img/icons/slider_button_right_disabled.png');
+        background-image: url('/img/icons/slider_button_right_disabled.png');
       }
       }
   }
@@ -260,7 +260,7 @@
     &__favourites {
       width: 40px;
       height: 40px;
-      background-image: url('/public/img/icons/favourites_default.png');
+      background-image: url('/img/icons/favourites_default.png');
       background-size: 16px 16px;
       background-repeat: no-repeat;
       background-position: center;
@@ -274,7 +274,7 @@
       }
 
       &--red {
-        background-image: url('/public/img/icons/favourites_red.png');
+        background-image: url('/img/icons/favourites_red.png');
         background-color: var(--color-bg);
         border: 1px solid var(--border);
 
@@ -399,19 +399,19 @@
     }
 
     &--phones {
-      background-image: url('/public/img/category-phones.webp');
+      background-image: url('/img/category-phones.webp');
       background-color: #6D6474;
     }
 
     &--tablets {
-      background-image: url('/public/img/category-tablets.png');
+      background-image: url('/img/category-tablets.png');
       background-color: var(--gray-secondary);
       background-position: top 10px left 10px;
       background-size: 150%;
     }
 
     &--accessories {
-      background-image: url('/public/img/category-accessories.png');
+      background-image: url('/img/category-accessories.png');
       background-color: #ac385e;
       background-position: top 40px left 30px bottom 0;
       background-size: 190%;

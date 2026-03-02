@@ -268,7 +268,7 @@ export const ProductDetails: React.FC = () => {
             <div className={styles.breadcrumbs}>
               <Link to="/" className={styles.breadcrumbs__link}>
                 <img
-                  src="../../../../public/img/icons/home.png"
+                  src="/public/img/icons/home.png"
                   className={styles.breadcrumbs__icon}
                   alt="Home"
                 />

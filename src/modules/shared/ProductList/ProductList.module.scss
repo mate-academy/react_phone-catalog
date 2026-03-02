@@ -159,7 +159,7 @@
     &__favourites {
       width: 40px;
       height: 40px;
-      background-image: url('/public/img/icons/favourites_default.png');
+      background-image: url('/img/icons/favourites_default.png');
       background-size: 16px 16px;
       background-repeat: no-repeat;
       background-position: center;
@@ -173,7 +173,7 @@
       }
 
       &--red {
-        background-image: url('/public/img/icons/favourites_red.png');
+        background-image: url('/img/icons/favourites_red.png');
         background-color: var(--color-bg);
         border: 1px solid var(--border);
 

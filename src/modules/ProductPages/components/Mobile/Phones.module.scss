@@ -77,7 +77,7 @@
   &__separator {
     width: 16px;
     height: 16px;
-    background-image: url('/public/img/icons/slider_button_right_disabled.png');
+    background-image: url('/img/icons/slider_button_right_disabled.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -148,14 +148,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-image: url('/public/img/icons/slider_button_down.png');
+    background-image: url('/img/icons/slider_button_down.png');
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px;
     transition: all 0.3s ease;
 
   &:hover {
-      background-image: url('/public/img/icons/slider_button_down_disabled.png');
+      background-image: url('/img/icons/slider_button_down_disabled.png');
       border: 1px solid var(--buttons-hover);
   }
 
@@ -173,7 +173,7 @@
   }
 
     &--open .dropdown__selected {
-  background-image: url('/public/img/icons/slider_button_top_gray.png');
+  background-image: url('/img/icons/slider_button_top_gray.png');
 }
 
 &__options {
@@ -289,20 +289,20 @@
     }
 
     &--prev {
-      background-image: url('/public/img/icons/slider_button_left.png');
+      background-image: url('/img/icons/slider_button_left.png');
 
       &:disabled {
-        background-image: url('/public/img/icons/slider_button_left_dis.png');
+        background-image: url('/img/icons/slider_button_left_dis.png');
         background-color: var(--color-bg);
         border: 1px solid var(--border);
       }
     }
 
     &--next {
-      background-image: url('/public/img/icons/slider_button_right.png');
+      background-image: url('/img/icons/slider_button_right.png');
 
       &:disabled {
-        background-image: url('/public/img/icons/slider_button_right_disabled.png');
+        background-image: url('/img/icons/slider_button_right_disabled.png');
         background-color: var(--color-bg);
         border: 1px solid var(--border);
       }

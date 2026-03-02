@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
       <div className={styles.footer__container}>
         <Link to="#logo" className={styles.footer__logo}>
           <img
-            src="../img/logo/logo.png"
+            src="/img/logo/logo.png"
             className={styles.footer__logo_img}
             alt="logo"
           />

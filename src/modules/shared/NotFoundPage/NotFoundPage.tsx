@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => (
       <div className={styles.breadcrumbs}>
         <Link to="/" className={styles.breadcrumbs__link}>
           <img
-            src="../../../../public/img/icons/home.png"
+            src="/img/icons/home.png"
             className={styles.breadcrumbs__icon}
             alt="Home"
           />

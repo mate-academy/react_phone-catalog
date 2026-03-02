@@ -52,7 +52,7 @@
   &__separator {
     width: 16px;
     height: 16px;
-    background-image: url('/public/img/icons/slider_button_right_disabled.png');
+    background-image: url('/img/icons/slider_button_right_disabled.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -88,7 +88,7 @@
 }
 
 .back__icon {
-  background-image: url('/public/img/icons/slider_button_left.png');
+  background-image: url('/img/icons/slider_button_left.png');
   width: 16px;
   height: 16px;
   background-size: cover;
@@ -123,7 +123,7 @@
     }
 
     .back__icon {
-      background-image: url('/public/img/icons/slider_button_left_violet.png');
+      background-image: url('/img/icons/slider_button_left_violet.png');
     }
   }
 }
@@ -383,7 +383,7 @@
     &__favourites {
       width: 48px;
       height: 48px;
-      background-image: url('/public/img/icons/favourites_default.png');
+      background-image: url('/img/icons/favourites_default.png');
       background-size: 16px 16px;
       background-repeat: no-repeat;
       background-position: center;
@@ -397,7 +397,7 @@
       }
 
       &--red {
-        background-image: url('/public/img/icons/favourites_red.png');
+        background-image: url('/img/icons/favourites_red.png');
         background-color: var(--color-bg);
         border: 1px solid var(--border);
 
@@ -551,19 +551,19 @@
       }
 
       &--left {
-        background-image: url('/public/img/icons/slider_button_left.png');
+        background-image: url('/img/icons/slider_button_left.png');
         margin-right: 16px;
 
         &:disabled {
-        background-image: url('/public/img/icons/slider_button_left_dis.png');
+        background-image: url('/img/icons/slider_button_left_dis.png');
       }
       }
 
       &--right {
-        background-image: url('/public/img/icons/slider_button_right.png');
+        background-image: url('/img/icons/slider_button_right.png');
 
           &:disabled {
-        background-image: url('/public/img/icons/slider_button_right_disabled.png');
+        background-image: url('/img/icons/slider_button_right_disabled.png');
       }
       }
   }
@@ -747,7 +747,7 @@
     &__favourites {
       width: 40px;
       height: 40px;
-      background-image: url('/public/img/icons/favourites_default.png');
+      background-image: url('/img/icons/favourites_default.png');
       background-size: 16px 16px;
       background-repeat: no-repeat;
       background-position: center;
@@ -761,7 +761,7 @@
       }
 
       &--red {
-        background-image: url('/public/img/icons/favourites_red.png');
+        background-image: url('/img/icons/favourites_red.png');
         background-color: var(--color-bg);
         border: 1px solid var(--border);
 
