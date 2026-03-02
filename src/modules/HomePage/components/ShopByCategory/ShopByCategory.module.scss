@@ -1,0 +1,33 @@
+@import '../../../../assets/styles/mixins';
+@import '../../../../assets/styles/variables';
+
+.section {
+  margin-top: 56px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    gap: 16px;
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
