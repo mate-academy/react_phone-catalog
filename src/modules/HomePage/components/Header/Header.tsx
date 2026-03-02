@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
   const { favItems } = favouritesContext;
 
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname.endsWith('/');
 
   const prev = () => {
     setIndexOfImg((i: number) => {
