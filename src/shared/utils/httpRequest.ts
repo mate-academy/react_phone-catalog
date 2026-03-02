@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.BASE_URL + 'api/';
+const BASE_URL = import.meta.env.BASE_URL + 'api';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
