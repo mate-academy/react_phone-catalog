@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import styles from './HomePage.module.scss';
 import { Hero } from './Hero';
@@ -10,7 +10,7 @@ import { getProducts } from '../../api/products';
 
 export const HomePage: React.FC = () => {
   const [products, setProducts] = useState<CatalogProducts[]>([]);
-  const [isloading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -30,22 +30,26 @@ export const HomePage: React.FC = () => {
     fetchProducts();
   }, []);
 
-  const brandNewProducts = [...products].sort(
-    (item1, item2) => item2.year - item1.year,
+  const brandNewProducts = useMemo(
+    () => [...products].sort((item1, item2) => item2.year - item1.year),
+    [products],
   );
 
-  const hotPricesProducts = [...products].sort((item1, item2) => {
-    const discount1 = item1.fullPrice - item1.price;
-    const discount2 = item2.fullPrice - item2.price;
-
-    return discount2 - discount1;
-  });
+  const hotPricesProducts = useMemo(
+    () =>
+      [...products].sort(
+        (item1, item2) =>
+          item2.fullPrice - item2.price - (item1.fullPrice - item1.price),
+      ),
+    [products],
+  );
 
   return (
     <div className={styles.home__container}>
-      <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.title__hidden}>Product Catalog</h1>
+      <h2 className={styles.home__title}>Welcome to Nice Gadgets store!</h2>
       <Hero />
-      {isloading && <p>Loading products...</p>}
+      {isLoading && <p>Loading products...</p>}
       {errorMessage && <p>{errorMessage}</p>}
       <ProductsSlider title="Brand new models" products={brandNewProducts} />
       <ShopByCategory />

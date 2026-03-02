@@ -10,6 +10,10 @@ const banners = [
   '/img/banner-accessories.png',
   '/img/banner-phones.png',
   '/img/banner-tablets.png',
+  '/img/banner-1.jpg',
+  '/img/banner-2.jpg',
+  '/img/banner-3.jpg',
+  '/img/banner-4.jpg',
 ];
 
 export const Hero: React.FC = () => {
@@ -29,7 +33,7 @@ export const Hero: React.FC = () => {
     const interval = setInterval(handleNextBanner, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, []);
 
   const swipeHandlers = useSwipe({
     onSwipedLeft: handleNextBanner,

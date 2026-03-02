@@ -29,7 +29,7 @@ export const App = () => (
                 <Route path="favourites" element={<FavouritesPage />}></Route>
                 <Route path="cart" element={<CartPage />}></Route>
                 <Route
-                  path="product/:productId"
+                  path="category/:productId"
                   element={<div>Деталі товару</div>}
                 />
 

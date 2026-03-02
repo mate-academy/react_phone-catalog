@@ -15,7 +15,7 @@
     @include respond-to('tablet') {
       flex-direction: row;
       align-items: center;
-      padding-inline: 24px;
+      padding: 24px;
     }
   }
 

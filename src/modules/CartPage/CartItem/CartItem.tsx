@@ -42,6 +42,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             type="button"
             className={styles.cart__buttonMinus}
             onClick={handleDecrease}
+            disabled={item.quantity === 1}
           >
             <MinusIcon />
           </button>

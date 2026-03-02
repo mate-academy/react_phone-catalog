@@ -30,6 +30,10 @@
     width: 100%;
     height: 320px;
     overflow: hidden;
+
+    @include respond-to('desktop') {
+      height: 400px;
+    }
   }
 
   &__track {
@@ -88,7 +92,7 @@
 
     &--active {
       background-color: var(--text-main);
-      width: 20px;
+      width: 14px;
     }
   }
 }

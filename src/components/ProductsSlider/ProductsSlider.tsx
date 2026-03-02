@@ -2,14 +2,17 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowRightIcon } from '../ui/ArrowRightIcon';
 import { ArrowLeftIcon } from '../ui/ArrowLeftIcon';
 
-import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { CatalogProducts } from '../../types/ProductTypes';
+import styles from './ProductsSlider.module.scss';
 
 interface ProductSliderProps {
   title: string;
   products: CatalogProducts[];
 }
+
+const MAX_VISIBLE_PRODUCTS = 12;
+const SCROLL_STEPS = { mobile: 228, tablet: 253, desktop: 288 };
 
 export const ProductsSlider: React.FC<ProductSliderProps> = ({
   title,
@@ -17,8 +20,9 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
 }) => {
   const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
   const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
-
   const listRef = useRef<HTMLDivElement>(null);
+
+  const visibleProducts = products.slice(0, MAX_VISIBLE_PRODUCTS);
 
   const checkScrollPosition = useCallback(() => {
     if (listRef.current) {
@@ -30,36 +34,41 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
   }, []);
 
   useEffect(() => {
-    checkScrollPosition();
+    const timer = setTimeout(checkScrollPosition, 50);
+
     window.addEventListener('resize', checkScrollPosition);
 
-    return () => window.removeEventListener('resize', checkScrollPosition);
-  }, [checkScrollPosition]);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, [checkScrollPosition, visibleProducts]);
 
-  const getScrollStep = () => {
-    const width = window.innerWidth;
-
-    if (width < 640) {
-      return 212 + 16;
+  const getScrollStep = useCallback(() => {
+    if (window.innerWidth < 640) {
+      return SCROLL_STEPS.mobile;
     }
 
-    if (width < 1200) {
-      return 237 + 16;
+    if (window.innerWidth < 1200) {
+      return SCROLL_STEPS.tablet;
     }
 
-    return 272 + 16;
-  };
+    return SCROLL_STEPS.desktop;
+  }, []);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (listRef.current) {
-      const scrollStep = getScrollStep();
+  const scroll = useCallback(
+    (direction: 'left' | 'right') => {
+      if (!listRef.current) {
+        return;
+      }
 
       listRef.current.scrollBy({
-        left: direction === 'left' ? -scrollStep : scrollStep,
+        left: direction === 'left' ? -getScrollStep() : getScrollStep(),
         behavior: 'smooth',
       });
-    }
-  };
+    },
+    [getScrollStep],
+  );
 
   return (
     <section className={styles.slider}>
@@ -91,7 +100,7 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
         ref={listRef}
         onScroll={checkScrollPosition}
       >
-        {products.map(product => (
+        {visibleProducts.map(product => (
           <div key={product.id} className={styles.slider__item}>
             <ProductCard product={product} />
           </div>

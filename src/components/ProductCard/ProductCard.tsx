@@ -86,6 +86,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             [styles['productCard__actionAddButton--active']]: isAdded,
           })}
           onClick={handleCartClick}
+          disabled={isAdded}
         >
           {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>

@@ -36,7 +36,9 @@ export const Header: React.FC = () => {
             <NavLink to="/favourites" className={styles.header__iconLink}>
               <FavouriteIcon className={styles.header__icon} />
             </NavLink>
-            <CartIcon className={styles.header__iconLink} />
+            <NavLink to="/cart" className={styles.header__iconLink}>
+              <CartIcon className={styles.header__icon} />
+            </NavLink>
           </div>
           <ThemeToggler className={styles.header__themeToggleMobile} />
           <button

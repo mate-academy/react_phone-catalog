@@ -20,6 +20,7 @@
   &__link {
     @include uppercase-label;
 
+    position: relative;
     display: flex;
     align-items: center;
     height: 48px;
@@ -30,10 +31,30 @@
     @include respond-to('desktop') {
       height: 64px;
     }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent);
+
+      transform: scaleX(0);
+
+      transform-origin: left;
+
+      @include hover-transition;
+    }
+
     /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
     &:global(.active) {
       color: var(--text-main);
-      border-bottom: 3px solid solid var(--accent);
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
 
     @include hover-transition(color);
