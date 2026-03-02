@@ -56,41 +56,19 @@
   gap: 16px;
 
   &__link {
-    position: relative;
     text-decoration: none;
-    color: inherit;
-    transition: color 0.3s;
+    color: $color-link-navigation;
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background-color: currentColor;
-      transition: width 0.3s ease;
+    @include uppercase;
+
+    &:hover {
+      color: var(--color-text);
     }
-
-    &:hover::after {
-      width: 100%;
-    }
-
-    // text-decoration: none;
-
-    // @include uppercase;
-
-    // text-transform: uppercase;
-    // color: $color-link-navigation;
-
-    // &:hover {
-    //   color: $color-hover-nav;
-    // }
   }
 
   @include for-tablet {
     flex-direction: row;
-    gap: 13.5px;
+    gap: 32px;
   }
 
   @include for-laptop {
