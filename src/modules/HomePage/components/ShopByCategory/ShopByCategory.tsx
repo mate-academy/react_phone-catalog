@@ -3,12 +3,22 @@ import { CategoryItem } from './components/CategoryItem';
 
 import styles from './ShopByCategory.module.scss';
 
-export const ShopByCategory = () => {
+type Props = {
+  phonesCount: number;
+  tabletsCount: number;
+  accessoriesCount: number;
+};
+
+export const ShopByCategory: React.FC<Props> = ({
+  phonesCount,
+  tabletsCount,
+  accessoriesCount,
+}) => {
   const categories = [
     {
       id: 1,
       categoryName: 'Mobile phones',
-      countOfModels: 95, //for ui
+      countOfModels: phonesCount,
       link: 'phones',
       image: 'img/category-phones.png',
       bgColor: '#6D6474',
@@ -16,7 +26,7 @@ export const ShopByCategory = () => {
     {
       id: 2,
       categoryName: 'Tablets',
-      countOfModels: 24, //for ui
+      countOfModels: tabletsCount,
       link: 'tablets',
       image: 'img/category-tablets.png',
       bgColor: '#8D8D92',
@@ -24,7 +34,7 @@ export const ShopByCategory = () => {
     {
       id: 3,
       categoryName: 'Accessories',
-      countOfModels: 100, //for ui
+      countOfModels: accessoriesCount,
       link: 'accessories',
       image: 'img/category-accessories.png',
       bgColor: '#973D5F',
