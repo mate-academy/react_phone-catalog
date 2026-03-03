@@ -5,7 +5,7 @@ import { Hero } from './Hero';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { HotPrices } from '../../components/HotPrices';
-import { CatalogProducts } from '../../types/ProductTypes';
+import { CatalogProducts } from '../../types/Types';
 import { getProducts } from '../../api/products';
 
 export const HomePage: React.FC = () => {

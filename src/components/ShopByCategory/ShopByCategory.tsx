@@ -2,33 +2,30 @@ import React from 'react';
 import styles from './ShopByCategory.module.scss';
 import { NavLink } from 'react-router-dom';
 
-import phonesCategory from '../../../public/img/category-phones.png';
-import tabletsCategory from '../../../public/img/category-tablets.png';
-import accessoriesCategory from '../../../public/img/category-accessories.png';
-import { Category } from '../../types/ProductTypes';
+import { Category, PathType } from '../../types/Types';
 
 const categories: Category[] = [
   {
     name: 'Mobile phones',
-    src: phonesCategory,
+    src: '/img/category-phones.png',
     alt: 'Phones category',
-    link: '/phones',
+    link: PathType.PHONES,
     quantity: 95,
     type: 'phones',
   },
   {
     name: 'Tablets',
-    src: tabletsCategory,
+    src: '/img/category-tablets.png',
     alt: 'Tablets category',
-    link: '/tablets',
+    link: PathType.TABLETS,
     quantity: 24,
     type: 'tablets',
   },
   {
     name: 'Accessories',
-    src: accessoriesCategory,
+    src: '/img/category-accessories.png',
     alt: 'Accessories category',
-    link: '/accessories',
+    link: PathType.ACCESSORIES,
     quantity: 100,
     type: 'accessories',
   },

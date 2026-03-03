@@ -8,6 +8,8 @@ import { CartPage } from './modules/CartPage';
 import { CartProvider } from './context/CartContext';
 import { FavouritesProvider } from './context/FavoritesContext';
 import { FavouritesPage } from './modules/FavouritesPage';
+import { CategoryPage } from './modules/PhonesPage';
+import { PathType } from './types/Types';
 
 export const App = () => (
   <div className="App">
@@ -16,21 +18,39 @@ export const App = () => (
         <FavouritesProvider>
           <HashRouter>
             <Routes>
-              <Route path="/" element={<Layout />}>
+              <Route path={PathType.HOME} element={<Layout />}>
                 <Route index element={<HomePage />} />
 
-                <Route path="phones" element={<div>Phones</div>}></Route>
-                <Route path="tablets" element={<div>Tablets</div>}></Route>
                 <Route
-                  path="accessories"
-                  element={<div>Accessories</div>}
+                  path={PathType.PHONES}
+                  element={
+                    <CategoryPage title={'Mobile phones'} category={'phones'} />
+                  }
+                ></Route>
+                <Route
+                  path={PathType.TABLETS}
+                  element={
+                    <CategoryPage title={'Tablets'} category={'tablets'} />
+                  }
+                ></Route>
+                <Route
+                  path={PathType.ACCESSORIES}
+                  element={
+                    <CategoryPage
+                      title={'Accessories'}
+                      category={'accessories'}
+                    />
+                  }
                 ></Route>
 
-                <Route path="favourites" element={<FavouritesPage />}></Route>
-                <Route path="cart" element={<CartPage />}></Route>
                 <Route
-                  path="category/:productId"
-                  element={<div>Деталі товару</div>}
+                  path={PathType.FAVOURITES}
+                  element={<FavouritesPage />}
+                ></Route>
+                <Route path={PathType.CART} element={<CartPage />}></Route>
+                <Route
+                  path={`:${PathType.CATEGORY}/:${PathType.PRODUCT_ID}`}
+                  element={<div>Page details</div>}
                 />
 
                 <Route path="*" element={<NotFoundPage />}></Route>

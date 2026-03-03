@@ -56,3 +56,28 @@ export interface Category {
   quantity: number;
   type: 'phones' | 'tablets' | 'accessories';
 }
+
+export enum SortType {
+  AGE = 'age',
+  TITLE = 'title',
+  PRICE = 'price',
+}
+
+export enum PerPageType {
+  ALL = 'all',
+  FOUR = '4',
+  EIGHT = '8',
+  SIXTEEN = '16',
+}
+
+export enum PathType {
+  HOME = '/',
+  PHONES = '/phones',
+  TABLETS = '/tablets',
+  ACCESSORIES = '/accessories',
+  FAVOURITES = '/favourites',
+  CART = '/cart',
+  PRODUCTS = '/products',
+  CATEGORY = 'category',
+  PRODUCT_ID = 'productId',
+}

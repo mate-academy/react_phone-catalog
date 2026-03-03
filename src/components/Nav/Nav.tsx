@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
+import { PathType } from '../../types/Types';
 
 interface NavProps {
   className?: string;
@@ -32,17 +33,29 @@ export const Nav: React.FC<NavProps> = ({
           </NavLink>
         </li>
         <li className={styles.nav__item}>
-          <NavLink to="/phones" className={getLinkClass} onClick={onClick}>
+          <NavLink
+            to={PathType.PHONES}
+            className={getLinkClass}
+            onClick={onClick}
+          >
             Phones
           </NavLink>
         </li>
         <li className={styles.nav__item}>
-          <NavLink to="/tablets" className={getLinkClass} onClick={onClick}>
+          <NavLink
+            to={PathType.TABLETS}
+            className={getLinkClass}
+            onClick={onClick}
+          >
             Tablets
           </NavLink>
         </li>
         <li className={styles.nav__item}>
-          <NavLink to="/accessories" className={getLinkClass} onClick={onClick}>
+          <NavLink
+            to={PathType.ACCESSORIES}
+            className={getLinkClass}
+            onClick={onClick}
+          >
             Accessories
           </NavLink>
         </li>

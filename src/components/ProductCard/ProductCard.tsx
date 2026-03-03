@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FavouriteIcon } from '../ui/FavouriteIcon';
-import { CatalogProducts } from '../../types/ProductTypes';
+import { CatalogProducts } from '../../types/Types';
 import { FavouriteIconSelected } from '../ui/FavouriteIconSelected';
 import { useCart } from '../../context/CartContext';
 import { useFavourites } from '../../context/FavoritesContext';
@@ -20,9 +20,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   const isActiveFavourite = isFavourite(product.id);
+  const isAdded = isInCart(product.id);
 
   const {
-    id,
     name,
     price,
     fullPrice,
@@ -33,8 +33,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     category,
     itemId,
   } = product;
-
-  const isAdded = isInCart(id);
 
   const handleCartClick = () => {
     if (!isAdded) {

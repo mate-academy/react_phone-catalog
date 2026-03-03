@@ -3,7 +3,7 @@ import { ArrowRightIcon } from '../ui/ArrowRightIcon';
 import { ArrowLeftIcon } from '../ui/ArrowLeftIcon';
 
 import { ProductCard } from '../ProductCard';
-import { CatalogProducts } from '../../types/ProductTypes';
+import { CatalogProducts } from '../../types/Types';
 import styles from './ProductsSlider.module.scss';
 
 interface ProductSliderProps {

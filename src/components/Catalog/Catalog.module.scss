@@ -1,0 +1,48 @@
+/* src/components/Catalog/Catalog.module.scss */
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.catalog {
+  @include page-container;
+  @include page-grid;
+
+  row-gap: 24px;
+
+  &__header,
+  &__controls,
+  &__list,
+  &__loader,
+  &__error,
+  &__pagination {
+    grid-column: 1 / -1;
+  }
+
+  &__header {
+    margin-bottom: 32px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__pagination,
+  &__loader,
+  &__error {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+
+    @include respond-to('desktop') {
+      margin-top: 40px;
+    }
+  }
+}

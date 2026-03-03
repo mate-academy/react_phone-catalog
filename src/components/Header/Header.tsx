@@ -12,6 +12,7 @@ import { CloseIcon } from '../ui/CloseIcon';
 import { MenuIcon } from '../ui/MenuIcon';
 import { ThemeToggler } from '../ui/ThemeToggler';
 import styles from './Header.module.scss';
+import { PathType } from '../../types/Types';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ export const Header: React.FC = () => {
     <>
       <header className={styles.header}>
         <div className={styles.header__top}>
-          <Link to="/" className={styles.header__link}>
+          <Link to={PathType.HOME} className={styles.header__link}>
             <Logo className={styles.header__logo} />
           </Link>
 
@@ -33,10 +34,13 @@ export const Header: React.FC = () => {
 
           <div className={styles.header__actions}>
             <ThemeToggler />
-            <NavLink to="/favourites" className={styles.header__iconLink}>
+            <NavLink
+              to={PathType.FAVOURITES}
+              className={styles.header__iconLink}
+            >
               <FavouriteIcon className={styles.header__icon} />
             </NavLink>
-            <NavLink to="/cart" className={styles.header__iconLink}>
+            <NavLink to={PathType.CART} className={styles.header__iconLink}>
               <CartIcon className={styles.header__icon} />
             </NavLink>
           </div>

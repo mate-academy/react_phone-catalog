@@ -7,7 +7,7 @@ import {
   useState,
   ReactNode,
 } from 'react';
-import { CatalogProducts } from '../types/ProductTypes';
+import { CatalogProducts } from '../types/Types';
 
 export interface CartItemInterface {
   id: string | number;

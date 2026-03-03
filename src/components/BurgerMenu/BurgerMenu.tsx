@@ -5,6 +5,7 @@ import { CartIcon } from '../ui/CartIcon';
 import { FavouriteIcon } from '../ui/FavouriteIcon';
 import { NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
+import { PathType } from '../../types/Types';
 
 interface BurgerMenuProps {
   onClose: () => void;
@@ -30,10 +31,14 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose, isOpen }) => {
         />
       </div>
       <div className={styles.burger__footer}>
-        <NavLink to="/favourites" className={getLinkClass} onClick={onClose}>
+        <NavLink
+          to={PathType.FAVOURITES}
+          className={getLinkClass}
+          onClick={onClose}
+        >
           <FavouriteIcon className={styles.icon} />
         </NavLink>
-        <NavLink to="/cart" className={getLinkClass} onClick={onClose}>
+        <NavLink to={PathType.CART} className={getLinkClass} onClick={onClose}>
           <CartIcon className={styles.icon} />
         </NavLink>
       </div>

@@ -1,18 +1,24 @@
-import { BaseProduct, CatalogProducts } from '../types/ProductTypes';
+import {
+  BaseProduct,
+  CatalogProducts,
+  PathType,
+  PhoneType,
+  TabletType,
+} from '../types/Types';
 import { getData } from './fetchClient';
 
 export const getProducts = () => {
-  return getData<CatalogProducts[]>('/products.json');
+  return getData<CatalogProducts[]>(`${PathType.PRODUCTS}.json`);
 };
 
 export const getPhones = () => {
-  return getData<BaseProduct[]>('/phones.json');
+  return getData<PhoneType[]>(`${PathType.PHONES}.json`);
 };
 
 export const getTablets = () => {
-  return getData<BaseProduct[]>('/tablets.json');
+  return getData<TabletType[]>(`${PathType.TABLETS}.json`);
 };
 
 export const getAccessories = () => {
-  return getData<BaseProduct[]>('/accessories.json');
+  return getData<BaseProduct[]>(`${PathType.ACCESSORIES}.json`);
 };

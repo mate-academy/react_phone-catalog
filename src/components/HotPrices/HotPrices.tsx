@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ProductsSlider } from '../ProductsSlider';
-import { CatalogProducts } from '../../types/ProductTypes';
+import { CatalogProducts } from '../../types/Types';
 
 interface HotPricesProps {
   title: string;
