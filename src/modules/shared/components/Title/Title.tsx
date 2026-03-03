@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 type Props = {
   title: string;
-  amountPage: number;
+  amountPage?: number;
 };
 
 export const Title: FC<Props> = ({ title, amountPage }) => {

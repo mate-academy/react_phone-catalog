@@ -25,3 +25,35 @@
   gap: 16px;
   width: 100%;
 }
+
+@media (max-width: 1199px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cart__wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 799px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cart__wrapper {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 499px) {
+  .products {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cart__wrapper {
+    justify-content: center;
+  }
+
+  .cart__wrapper {
+    padding-top: 0;
+  }
+}

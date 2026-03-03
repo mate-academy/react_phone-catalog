@@ -1,5 +1,5 @@
 import styles from './Path.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import home from './../../../../../public/img/icons/Home.svg';
 import { FC } from 'react';
 import classNames from 'classnames';
@@ -15,6 +15,8 @@ const isLinkActive = ({ isActive }: { isActive: boolean }) => {
 };
 
 export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       {!cart && (
@@ -43,9 +45,9 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
       {nameOfProduct && (
         <div className={styles.pathName}>
           <p className={styles.pathArrowBack}>❮</p>
-          <NavLink className={styles.linkBack} to={`/${pathName}`}>
+          <button className={styles.linkBack} onClick={() => navigate(-1)}>
             Back
-          </NavLink>
+          </button>
         </div>
       )}
     </>

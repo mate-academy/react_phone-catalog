@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { PageContainer } from '../shared/components/PageContainer';
 import { Path } from '../shared/components/Path';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Title } from '../shared/components/Title';
 import phones from '../../../public/api/phones.json';
@@ -54,16 +54,17 @@ export const ProductPage = () => {
     setLoading(false);
   }, [productId]);
 
+  const location = useLocation();
+
+  const from = location.state?.from || 'Home';
+
   return (
     <>
       {loading ? (
         <Loader />
       ) : currentProduct ? (
         <PageContainer>
-          <Path
-            pathName={currentProduct.category}
-            nameOfProduct={currentProduct.name}
-          />
+          <Path pathName={from} nameOfProduct={currentProduct.name} />
           <Title title={currentProduct.name} />
           <ProductMainDesc
             images={currentProduct.images}

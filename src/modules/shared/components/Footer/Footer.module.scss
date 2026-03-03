@@ -11,6 +11,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  flex-wrap: wrap;
 }
 
 .footer__items {
@@ -40,7 +42,7 @@
   color: $secondary__text-color;
   font-weight: 700;
   font-size: 12px;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .btn__icon {
@@ -58,5 +60,35 @@
 
   &:hover {
     background-color: $accent__color;
+  }
+}
+
+@media (max-width: 1199px) {
+  .footer__items {
+    gap: 54px;
+  }
+}
+
+@media (max-width: 639px) {
+  .footer {
+    margin-top: 20px;
+  }
+  .footer__items {
+    gap: 54px;
+  }
+
+  .footer__content {
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .footer__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .footer__btn {
+    align-self: center;
   }
 }

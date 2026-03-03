@@ -9,6 +9,7 @@
   line-height: 56px;
   margin-bottom: 8px;
   color: $primary__text-color;
+  margin-top: 20px;
 }
 
 .h1__title__small {
@@ -27,5 +28,16 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
+}
+
+@media (max-width: 639px) {
+  .h1__title {
+    font-size: 32px;
+  }
+  .h1__title__small {
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 32px;
+  }
 }

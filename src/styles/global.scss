@@ -20,6 +20,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  text-align: left;
 }
 
 html,
@@ -38,22 +40,27 @@ body,
 .main {
   flex: 1;
 }
-
-.container-full {
-}
-
 .container {
   display: flex;
   flex-direction: column;
-  height: '100%';
-  justify-content: flex-start;
+  width: 100%;
 
-  width: 1176px;
+  height: 100%;
+
+  max-width: 1176px;
   padding: 0 20px;
   margin: 0 auto;
+  text-align: left;
 }
 
-%h2title {
+@media (max-width: 559px) {
+  .container {
+    padding: 0 15px;
+    max-width: 100vw;
+  }
+}
+
+.h2title {
   font-size: $label__text-size;
   color: $primary__text-color;
   text-align: left;
@@ -76,4 +83,10 @@ body,
   clip-path: inset(50%);
   border: 0;
   white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .h2title {
+    font-size: 22px;
+  }
 }

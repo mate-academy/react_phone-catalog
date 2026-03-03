@@ -8,6 +8,7 @@ import { PageContainer } from '../shared/components/PageContainer';
 export const HomePage = () => {
   return (
     <PageContainer>
+      <h1 className="visuallyHidden">Product Catalog</h1>
       <Banner />
       <ProductSection title={'Brand new models'} type={'new'} />
       <CategorySection />

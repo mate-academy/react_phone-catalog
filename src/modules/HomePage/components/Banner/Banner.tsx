@@ -19,41 +19,43 @@ export const Banner = () => {
     <section className={styles.banner}>
       <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <div className={styles.banner__swiper}>
-        <Swiper
-          loop={true}
-          modules={[Navigation, Autoplay, Pagination]}
-          spaceBetween={50}
-          slidesPerView={1}
-          navigation={{
-            nextEl: `.${styles.next}`,
-            prevEl: `.${styles.prev}`,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-        >
-          <SwiperSlide>
-            <img src={banner01} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={banner02} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={banner03} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={banner04} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={banner05} alt="" />
-          </SwiperSlide>
-          <button className={styles.prev}>‹</button>
-          <button className={styles.next}>›</button>
-        </Swiper>
+        <div className={styles.fullWidthSwiper}>
+          <Swiper
+            loop={true}
+            modules={[Navigation, Autoplay, Pagination]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation={{
+              nextEl: `.${styles.next}`,
+              prevEl: `.${styles.prev}`,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+          >
+            <SwiperSlide>
+              <img src={banner01} alt="banner01" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={banner02} alt="banner02" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={banner03} alt="banner03" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={banner04} alt="banner04" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={banner05} alt="banner05" />
+            </SwiperSlide>
+            <button className={styles.prev}>‹</button>
+            <button className={styles.next}>›</button>
+          </Swiper>
+        </div>
       </div>
     </section>
   );

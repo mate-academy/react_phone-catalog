@@ -2,7 +2,7 @@
 @use './../../../../styles/variables.scss' as *;
 
 .path {
-  margin: 24px 0 40px 0;
+  margin: 24px 0 20px 0;
   display: flex;
   gap: 8px;
 }
@@ -37,9 +37,25 @@
   color: $primary__text-color;
   margin-bottom: 15px;
   margin-top: 30px;
+  font-size: 14px;
 }
 
 .active {
   color: $secondary__text-color;
   pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .path {
+    margin: 20px 0 0px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .linkBack {
+    margin-top: 30px;
+  }
+  .pathArrowBack {
+    margin-top: 30px;
+  }
 }

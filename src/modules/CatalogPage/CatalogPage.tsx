@@ -42,7 +42,10 @@ export const CatalogPage: FC<Props> = ({ pathName, title, products }) => {
             handleSort={handleSort}
           />
 
-          <CatalogProducts visibleProducts={visibleProducts} />
+          <CatalogProducts
+            visibleProducts={visibleProducts}
+            pathName={pathName}
+          />
 
           <CatalogPagination
             pages={pages}

@@ -1,8 +1,8 @@
 @use './../../../../styles/variables.scss' as *;
 
 .cart {
-  height: 100%;
-  width: 160px;
+  height: 40px;
+  width: 100%;
   background-color: $accent__color;
   color: $primary__text-color;
   font-size: 14px;
@@ -12,8 +12,8 @@
 }
 
 .cartAdded {
-  height: 100%;
-  width: 160px;
+  height: 40px;
+  width: 100%;
   background-color: $secondary__element-color;
   color: $primary__text-color;
   font-size: 14px;

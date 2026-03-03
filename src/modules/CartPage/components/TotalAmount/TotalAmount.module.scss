@@ -39,4 +39,16 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
+
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: $accent__color-hover;
+}
+
+@media (max-width: 1199px) {
+  .btn {
+    width: 100%;
+  }
 }

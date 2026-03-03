@@ -4,6 +4,8 @@
 .catalogOptions {
   display: flex;
   gap: 16px;
+
+  margin-top: 40px;
 }
 .title {
   margin-bottom: 4px;
@@ -79,5 +81,14 @@
   }
 
   &:hover {
+  }
+}
+
+@media (max-width: 639px) {
+  .trigger {
+    width: 135px;
+  }
+  .catalogOptions {
+    margin-top: 20px;
   }
 }

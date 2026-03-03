@@ -29,39 +29,41 @@ export const ProductSlider: FC<Props> = ({
 }) => {
   return (
     <div className={styles.product__slider}>
-      <Swiper
-        loop={false}
-        modules={[Navigation, Autoplay, Pagination]}
-        spaceBetween={16}
-        slidesPerView={4}
-        onSlideChange={swiper => {
-          seCurrentElIndex(swiper.realIndex);
-        }}
-        onBeforeInit={swiper => {
-          swiper.params.navigation!.prevEl = prevRef.current;
-          swiper.params.navigation!.nextEl = nextRef.current;
-        }}
-        navigation
-      >
-        {products.map(product => {
-          return (
-            <SwiperSlide key={product.id}>
-              <ProductCard
-                key={product.id}
-                title={product.name}
-                fullPrice={product.fullPrice}
-                currentPrice={product.price}
-                descScreen={product.screen}
-                descCapacity={product.capacity}
-                descRAM={product.ram}
-                img={product.image}
-                type={type}
-                productId={product.itemId}
-              />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      <div className={styles.slider__wrapper}>
+        <Swiper
+          loop={false}
+          modules={[Navigation, Autoplay, Pagination]}
+          spaceBetween={16}
+          slidesPerView="auto"
+          onSlideChange={swiper => {
+            seCurrentElIndex(swiper.realIndex);
+          }}
+          onBeforeInit={swiper => {
+            swiper.params.navigation!.prevEl = prevRef.current;
+            swiper.params.navigation!.nextEl = nextRef.current;
+          }}
+          navigation
+        >
+          {products.map(product => {
+            return (
+              <SwiperSlide key={product.id}>
+                <ProductCard
+                  key={product.id}
+                  title={product.name}
+                  fullPrice={product.fullPrice}
+                  currentPrice={product.price}
+                  descScreen={product.screen}
+                  descCapacity={product.capacity}
+                  descRAM={product.ram}
+                  img={product.image}
+                  type={type}
+                  productId={product.itemId}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </div>
   );
 };

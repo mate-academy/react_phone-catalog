@@ -3,19 +3,40 @@ import logo from './../../../../../public/img/logo.svg';
 import favorites from './../../../../../public/img/favourites.svg';
 import cart from './../../../../../public/img/cart.svg';
 import { navLinks } from './constants';
-import { Link, NavLink, NavLinkRenderProps } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  NavLinkRenderProps,
+  useLocation,
+} from 'react-router-dom';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../../app/hooks';
+import menuOpen from './../../../../../public/img/icons/menu.png';
+import menuClose from './../../../../../public/img/icons/delete.png';
+
+import { useEffect, useState } from 'react';
 
 export const Header = () => {
-  const favoritesIds = useSelector(state => state.favorites);
+  const location = useLocation();
 
-  const isActiveLink = ({ isActive }: NavLinkRenderProps): string => {
-    return classNames(
-      `${styles.menu__link}`,
-      `${isActive ? styles.active : ''}`,
-    );
-  };
+  const from = location.state?.from || 'Home';
+
+  const favoritesIds = useAppSelector(state => state.favorites);
+  const cartProducts = useAppSelector(state => state.cart);
+
+  const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (burgerMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [burgerMenu]);
 
   return (
     <header className={styles.header}>
@@ -25,15 +46,23 @@ export const Header = () => {
         </Link>
         <nav className={styles.menu}>
           <ul className={styles.menu__items}>
-            {navLinks.map(link => {
-              return (
-                <li key={link.id} className={styles.menu__item}>
-                  <NavLink to={link.href} className={isActiveLink}>
-                    {link.label}
-                  </NavLink>
-                </li>
-              );
-            })}
+            {navLinks.map(link => (
+              <li key={link.id} className={styles.menu__item}>
+                <NavLink
+                  to={link.href}
+                  className={({ isActive }) =>
+                    classNames(styles.menu__link, {
+                      [styles.active]:
+                        isActive ||
+                        (location.pathname.startsWith('/product') &&
+                          from === link.label),
+                    })
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className={styles.header__actions}>
@@ -41,17 +70,110 @@ export const Header = () => {
             <NavLink
               data-count={favoritesIds.length}
               to="/favorites"
-              className={favoritesIds.length > 0 ? styles.favorites : ''}
+              className={({ isActive }) =>
+                classNames(styles.actions__link, {
+                  [styles.active]: isActive,
+                  [styles.favorites]: favoritesIds.length > 0,
+                })
+              }
             >
               <img src={favorites} alt="favorites" />
             </NavLink>
           </span>
           <span className={styles.actions__wrapper}>
-            <NavLink to="/cart" className={styles.cart}>
+            <NavLink
+              data-count={cartProducts.length}
+              to="/cart"
+              className={({ isActive }) =>
+                classNames(styles.actions__link, {
+                  [styles.active]: isActive,
+                  [styles.favorites]: favoritesIds.length > 0,
+                })
+              }
+            >
               <img src={cart} alt="cart" />
             </NavLink>
           </span>
         </div>
+
+        <div className={styles.menu__burger}>
+          <img
+            onClick={() => setBurgerMenu(true)}
+            src={menuOpen}
+            alt="Open menu"
+          />
+        </div>
+
+        {burgerMenu && (
+          <div className={styles.burgerMenu}>
+            <div className={styles.burger__header}>
+              <Link to="/" className={styles.logo}>
+                <img src={logo} alt="logo" />
+              </Link>
+              <div className={styles.menu__burger}>
+                <img
+                  onClick={() => setBurgerMenu(false)}
+                  src={menuClose}
+                  alt="Close menu"
+                />
+              </div>
+            </div>
+            <nav className={styles.menu}>
+              <ul className={styles.menu__items}>
+                {navLinks.map(link => (
+                  <li key={link.id} className={styles.menu__item}>
+                    <NavLink
+                      to={link.href}
+                      onClick={() => setBurgerMenu(false)}
+                      className={({ isActive }) =>
+                        classNames(styles.menu__link, {
+                          [styles.active]:
+                            isActive ||
+                            (location.pathname.startsWith('/product') &&
+                              from === link.label),
+                        })
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className={styles.header__actions}>
+              <span className={`${styles.actions__wrapper} ${styles.withline}`}>
+                <NavLink
+                  data-count={favoritesIds.length}
+                  to="/favorites"
+                  onClick={() => setBurgerMenu(false)}
+                  className={({ isActive }) =>
+                    classNames(styles.actions__link, {
+                      [styles.active]: isActive,
+                      [styles.favorites]: favoritesIds.length > 0,
+                    })
+                  }
+                >
+                  <img src={favorites} alt="favorites" />
+                </NavLink>
+              </span>
+              <span className={styles.actions__wrapper}>
+                <NavLink
+                  data-count={cartProducts.length}
+                  to="/cart"
+                  onClick={() => setBurgerMenu(false)}
+                  className={({ isActive }) =>
+                    classNames(styles.actions__link, {
+                      [styles.active]: isActive,
+                      [styles.favorites]: favoritesIds.length > 0,
+                    })
+                  }
+                >
+                  <img src={cart} alt="cart" />
+                </NavLink>
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

@@ -79,3 +79,21 @@
   line-height: 21px;
   font-weight: 500;
 }
+
+@media (max-width: 899px) {
+  .product__info {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 639px) {
+  .desc {
+    gap: 20px;
+  }
+  .desc__text {
+    font-size: 12px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+}

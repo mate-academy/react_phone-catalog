@@ -1,5 +1,6 @@
 import styles from './CategorySection.module.scss';
 import { Category } from '../../../../types/Category';
+import './../../../../styles/global.scss';
 
 import { categories } from './constants';
 import { Link } from 'react-router-dom';
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom';
 export const CategorySection = () => {
   return (
     <section className={styles.category}>
-      <h2 className={styles.category__title}>Shop by category</h2>
+      <h2 className={`${styles.category__title} h2title`}>Shop by category</h2>
       <div className={styles.category__items}>
         {categories.map((category: Category) => {
           return (

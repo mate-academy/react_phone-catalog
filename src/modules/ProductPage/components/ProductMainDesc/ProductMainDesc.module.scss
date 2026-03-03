@@ -18,6 +18,10 @@
   gap: 16px;
 }
 
+.addToCart {
+  width: 100%;
+}
+
 .img {
   width: 80px;
   height: 80px;
@@ -186,7 +190,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-  width: 320px;
+  max-width: 320px;
+  gap: 20px;
 
   &__name {
     color: $secondary__text-color;
@@ -266,4 +271,47 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 899px) {
+  .content {
+    gap: 32px;
+    padding: 0 0 20px 0;
+  }
+  .main__image img {
+    width: 287px;
+    height: 287px;
+    object-fit: contain;
+  }
+
+  .img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .img img {
+    width: 33px;
+    height: 33px;
+  }
+
+  .main__desc {
+    gap: 16px;
+  }
+}
+
+.main__image {
+  touch-action: pan-y;
+}
+
+@media (max-width: 639px) {
+  .content {
+    flex-direction: column;
+  }
+  .gallery {
+    flex-direction: column-reverse;
+  }
+  .thumbnails {
+    flex-direction: row;
+    justify-content: center;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './ProductMainDesc.module.scss';
 import { Link } from 'react-router-dom';
 import { ProductFullInfo } from '../../../../types/ProductFullInfo';
@@ -90,6 +90,50 @@ export const ProductMainDesc: FC<Props> = ({
     setSelectedCapacity(currentProduct.capacity);
   }, [currentProduct]);
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const currentIndex = images.indexOf(selectedImage);
+
+  const showNextImage = () => {
+    const nextIndex = (currentIndex + 1) % images.length;
+
+    setSelectedImage(images[nextIndex]);
+  };
+
+  const showPrevImage = () => {
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+
+    setSelectedImage(images[prevIndex]);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) {
+      return;
+    }
+
+    const distance = touchStartX - touchEndX;
+
+    if (distance > 50) {
+      showNextImage();
+    }
+
+    if (distance < -50) {
+      showPrevImage();
+    }
+
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   return (
     <div className={styles.content}>
       <div className={styles.gallery}>
@@ -108,7 +152,12 @@ export const ProductMainDesc: FC<Props> = ({
             </div>
           ))}
         </div>
-        <div className={styles.main__image}>
+        <div
+          className={styles.main__image}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <img src={selectedImage} />
         </div>
       </div>
@@ -161,7 +210,9 @@ export const ProductMainDesc: FC<Props> = ({
         </div>
 
         <div className={styles.card__actions}>
-          <AddToCart productId={currentProduct.id} />
+          <div className={styles.addToCart}>
+            <AddToCart productId={currentProduct.id} />
+          </div>
           <Favorite productId={currentProduct.id} />
         </div>
 

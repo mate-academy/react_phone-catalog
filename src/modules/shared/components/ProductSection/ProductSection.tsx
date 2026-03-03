@@ -3,6 +3,7 @@ import styles from './ProductSection.module.scss';
 import products from './../../../../../public/api/products.json';
 import { ProductSlider } from '../ProductSlider';
 import classNames from 'classnames';
+import './../../../../styles/global.scss';
 
 type Props = {
   title: string;
@@ -33,7 +34,7 @@ export const ProductSection: FC<Props> = ({ title, type }) => {
   return (
     <section className={styles.product}>
       <div className={styles.product__header}>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className="h2title">{title}</h2>
 
         <div className={styles.nav__buttons}>
           <button

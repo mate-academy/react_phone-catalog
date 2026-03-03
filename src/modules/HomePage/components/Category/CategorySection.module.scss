@@ -12,7 +12,6 @@
   }
 
   &__title {
-    @extend %h2title;
     margin-bottom: 24px;
   }
 
@@ -68,6 +67,25 @@
     &__img {
       width: 187px;
       height: 187px;
+    }
+
+    &__img img {
+      top: 20px;
+      left: 45px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .category__items {
+    flex-direction: column;
+  }
+
+  .category {
+    padding: 20px 0;
+    &__img {
+      width: calc(100vw - 40px);
+      height: 250px;
     }
 
     &__img img {

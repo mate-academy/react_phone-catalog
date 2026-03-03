@@ -3,15 +3,12 @@ import './../../../../styles/global.scss';
 
 type Props = {
   children: React.ReactNode;
-  fullWidth?: boolean;
 };
 
-export const PageContainer: FC<Props> = ({ children, fullWidth }) => {
+export const PageContainer: FC<Props> = ({ children }) => {
   return (
     <div className="page">
-      <div className={fullWidth ? 'container-full' : 'container'}>
-        {children}
-      </div>
+      <div className="container">{children}</div>
     </div>
   );
 };

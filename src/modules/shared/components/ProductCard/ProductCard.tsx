@@ -1,4 +1,4 @@
-import { FC, SetStateAction, useState } from 'react';
+import { FC, SetStateAction } from 'react';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { Favorite } from '../Favorite';
@@ -17,8 +17,7 @@ type Props = {
   type?: 'hot' | 'new';
   productId?: string;
   cart: boolean;
-  setCount: React.Dispatch<SetStateAction<number>>;
-  count: number;
+  pathName: string;
 };
 
 export const ProductCard: FC<Props> = ({
@@ -32,6 +31,7 @@ export const ProductCard: FC<Props> = ({
   type,
   productId,
   cart,
+  pathName,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -57,12 +57,15 @@ export const ProductCard: FC<Props> = ({
         )}
         <Link
           to={`/product/${productId}`}
+          state={{ from: pathName }}
           className={cart ? styles.card__img__cart : styles.card__img}
         >
           <img src={img} alt="product image" />
         </Link>
         <Link to={`/product/${productId}`}>
-          <h4 className={styles.card__title}>{title}</h4>
+          <h4 className={cart ? styles.card__title__cart : styles.card__title}>
+            {title}
+          </h4>
         </Link>
         {cart && (
           <div className={styles.quantity}>
@@ -88,7 +91,11 @@ export const ProductCard: FC<Props> = ({
           </div>
         )}
 
-        {cart && <p className={styles.card__price}>${Number(price) * count}</p>}
+        {cart && (
+          <p className={cart ? styles.card__price__cart : styles.card__price}>
+            ${Number(price) * count}
+          </p>
+        )}
         {!cart &&
           (type === 'new' ? (
             <p className={styles.card__price}>${fullPrice}</p>
