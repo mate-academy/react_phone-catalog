@@ -9,26 +9,21 @@ import arrowRight from '../../items/arrow_right.png';
 import homeImage from '../../items/Home.png';
 import tabletsData from '../../../public/api/tablets.json';
 import { Select } from '../Select/Select';
+import { SortOption, SORT_OPTIONS } from '../../types/SortOption';
 
 const ITEMS_PER_PAGE = 16;
-
-type SortOption =
-  | 'Newest'
-  | 'Oldest'
-  | 'Price: Low to High'
-  | 'Price: High to Low';
 
 const sortTablets = (tablets: typeof tabletsData, sortBy: SortOption) => {
   const arr = [...tablets];
 
   switch (sortBy) {
-    case 'Price: Low to High':
+    case SortOption.PriceLow:
       return arr.sort((a, b) => a.priceDiscount - b.priceDiscount);
-    case 'Price: High to Low':
+    case SortOption.PriceHigh:
       return arr.sort((a, b) => b.priceDiscount - a.priceDiscount);
-    case 'Oldest':
+    case SortOption.Oldest:
       return arr.reverse();
-    case 'Newest':
+    case SortOption.Newest:
     default:
       return arr;
   }
@@ -36,7 +31,7 @@ const sortTablets = (tablets: typeof tabletsData, sortBy: SortOption) => {
 
 export const Tablet = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState<SortOption>('Newest');
+  const [sortBy, setSortBy] = useState<SortOption>(SortOption.Newest);
   const [itemsOnPage, setItemsOnPage] = useState('16');
 
   const perPage = Number(itemsOnPage) || ITEMS_PER_PAGE;
@@ -75,12 +70,7 @@ export const Tablet = () => {
           <div className={styles.filters}>
             <Select
               label="Sort by"
-              options={[
-                'Newest',
-                'Oldest',
-                'Price: Low to High',
-                'Price: High to Low',
-              ]}
+              options={SORT_OPTIONS}
               value={sortBy}
               onChange={handleSortChange}
             />

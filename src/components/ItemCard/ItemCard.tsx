@@ -129,9 +129,26 @@ export const ItemCard = () => {
   const VISIBLE = 4;
   const canPrev = sliderStart > 0;
   const canNext = sliderStart + VISIBLE < suggested.length;
-
-  // Чи поточний продукт в обраних
   const isFav = product ? isFavourite(product.id) : false;
+
+  const shortSpecs: [string, string][] = product
+    ? [
+        ['Screen', product.screen],
+        ['Resolution', product.resolution],
+        ['Processor', product.processor],
+        ['RAM', product.ram],
+      ]
+    : [];
+
+  const techSpecs: [string, string][] = product
+    ? [
+        ...shortSpecs,
+        ['Built in memory', product.capacity],
+        ['Camera', product.camera],
+        ['Zoom', product.zoom],
+        ['Cell', product.cell.join(', ')],
+      ]
+    : [];
 
   return (
     <div className={styles.wrapper}>
@@ -256,9 +273,9 @@ export const ItemCard = () => {
                 <div className={styles.action_btns}>
                   <button
                     type="button"
-                    className={`${styles.btn_cart} ${product && isInCart(product.id) ? styles.btn_cart_active : ''}`}
+                    className={`${styles.btn_cart} ${isInCart(product.id) ? styles.btn_cart_active : ''}`}
                     onClick={() => {
-                      if (product && !isInCart(product.id)) {
+                      if (!isInCart(product.id)) {
                         addToCart({
                           id: product.id,
                           image: product.images[0],
@@ -268,7 +285,7 @@ export const ItemCard = () => {
                       }
                     }}
                   >
-                    {product && isInCart(product.id) ? 'Added' : 'Add to cart'}
+                    {isInCart(product.id) ? 'Added' : 'Add to cart'}
                   </button>
                   <button
                     type="button"
@@ -287,14 +304,7 @@ export const ItemCard = () => {
                 </div>
 
                 <div className={styles.short_specs}>
-                  {(
-                    [
-                      ['Screen', product.screen],
-                      ['Resolution', product.resolution],
-                      ['Processor', product.processor],
-                      ['RAM', product.ram],
-                    ] as [string, string][]
-                  ).map(([label, value]) => (
+                  {shortSpecs.map(([label, value]) => (
                     <div key={label} className={styles.spec_row}>
                       <span className={styles.spec_label}>{label}</span>
                       <span className={styles.spec_value}>{value}</span>
@@ -304,7 +314,6 @@ export const ItemCard = () => {
               </div>
             </div>
 
-            {/* ABOUT + TECH SPECS */}
             <div className={styles.details_section}>
               <div className={styles.about}>
                 <h3 className={styles.section_title}>About</h3>
@@ -325,18 +334,7 @@ export const ItemCard = () => {
                 <h2 className={styles.section_title}>Tech specs</h2>
                 <div className={styles.section_divider} />
                 <div className={styles.specs_list}>
-                  {(
-                    [
-                      ['Screen', product.screen],
-                      ['Resolution', product.resolution],
-                      ['Processor', product.processor],
-                      ['RAM', product.ram],
-                      ['Built in memory', product.capacity],
-                      ['Camera', product.camera],
-                      ['Zoom', product.zoom],
-                      ['Cell', product.cell.join(', ')],
-                    ] as [string, string][]
-                  ).map(([label, value]) => (
+                  {techSpecs.map(([label, value]) => (
                     <div key={label} className={styles.spec_row}>
                       <span className={styles.spec_label}>{label}</span>
                       <span className={styles.spec_value}>{value}</span>
@@ -346,7 +344,6 @@ export const ItemCard = () => {
               </div>
             </div>
 
-            {/* YOU MAY ALSO LIKE */}
             {suggested.length > 0 && (
               <div className={styles.suggested_section}>
                 <div className={styles.suggested_header}>

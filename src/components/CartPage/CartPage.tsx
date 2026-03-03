@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
 import { Footer } from '../Footer/Footer';
 import { useCart } from '../../context/Cartcontext';
@@ -24,7 +24,6 @@ export const CartPage = () => {
     const confirmed = window.confirm(
       'Checkout is not implemented yet. Do you want to clear the Cart?',
     );
-
     if (confirmed) {
       clearCart();
     }
@@ -36,6 +35,7 @@ export const CartPage = () => {
       <main className={styles.page}>
         <div className={styles.container}>
           <div className={styles.inner}>
+
             <button
               className={styles.back_btn}
               onClick={() => navigate(-1)}
@@ -53,6 +53,7 @@ export const CartPage = () => {
               </div>
             ) : (
               <div className={styles.layout}>
+
                 {/* Cart items list */}
                 <ul className={styles.items_list}>
                   {cartItems.map(item => (
@@ -63,11 +64,7 @@ export const CartPage = () => {
                         aria-label="Remove item"
                         type="button"
                       >
-                        <img
-                          src={closeIcon}
-                          alt="remove"
-                          style={{ width: 16, height: 16 }}
-                        />
+                        <img src={closeIcon} alt="remove" style={{ width: 16, height: 16 }} />
                       </button>
 
                       <img
@@ -76,9 +73,12 @@ export const CartPage = () => {
                         alt={item.product.name}
                       />
 
-                      <span className={styles.item_name}>
+                      <Link
+                        to={`/product/${item.id}`}
+                        className={styles.item_name}
+                      >
                         {item.product.name}
-                      </span>
+                      </Link>
 
                       <div className={styles.quantity_controls}>
                         <button
@@ -88,11 +88,7 @@ export const CartPage = () => {
                           type="button"
                           aria-label="Decrease quantity"
                         >
-                          <img
-                            src={minusIcon}
-                            alt="-"
-                            style={{ width: 16, height: 16 }}
-                          />
+                          <img src={minusIcon} alt="-" style={{ width: 16, height: 16 }} />
                         </button>
                         <span className={styles.qty_value}>
                           {item.quantity}
@@ -103,11 +99,7 @@ export const CartPage = () => {
                           type="button"
                           aria-label="Increase quantity"
                         >
-                          <img
-                            src={plusIcon}
-                            alt="+"
-                            style={{ width: 16, height: 16 }}
-                          />
+                          <img src={plusIcon} alt="+" style={{ width: 16, height: 16 }} />
                         </button>
                       </div>
 
@@ -133,6 +125,7 @@ export const CartPage = () => {
                     Checkout
                   </button>
                 </div>
+
               </div>
             )}
           </div>

@@ -10,12 +10,14 @@ import { ItemCard } from './components/ItemCard/ItemCard';
 import { FavouritesPage } from './components/FavouritesPage/FavouritesPage';
 import { CartPage } from './components/CartPage/CartPage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 
 export const App = () => (
   <Router>
     <FavouritesProvider>
       <CartProvider>
         <div className="App">
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/phones" element={<Phone />} />
