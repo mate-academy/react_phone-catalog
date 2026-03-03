@@ -60,7 +60,7 @@ export const ProductCard: FC<Props> = ({
           state={{ from: pathName }}
           className={cart ? styles.card__img__cart : styles.card__img}
         >
-          <img src={img} alt="product image" />
+          <img loading="lazy" src={img} alt="product image" />
         </Link>
         <Link to={`/product/${productId}`}>
           <h4 className={cart ? styles.card__title__cart : styles.card__title}>

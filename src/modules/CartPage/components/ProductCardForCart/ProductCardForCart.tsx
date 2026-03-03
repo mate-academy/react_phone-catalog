@@ -40,7 +40,7 @@ export const ProductCardForCart: FC<Props> = ({
           </button>
 
           <Link to={`/product/${productId}`} className={styles.card__img__cart}>
-            <img src={img} alt="product image" />
+            <img loading="lazy" src={img} alt="product image" />
           </Link>
           <Link to={`/product/${productId}`}>
             <h4 className={styles.card__title__cart}>{title}</h4>

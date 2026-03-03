@@ -27,7 +27,10 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
 
           <div className={styles.pathName}>
             <p className={styles.pathArrow}>❯</p>
-            <NavLink className={isLinkActive} to={`/${pathName}`}>
+            <NavLink
+              className={isLinkActive}
+              to={pathName === 'Home' ? '/' : `/${pathName}`}
+            >
               {pathName}
             </NavLink>
           </div>

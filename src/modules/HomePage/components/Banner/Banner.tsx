@@ -38,19 +38,19 @@ export const Banner = () => {
             }}
           >
             <SwiperSlide>
-              <img src={banner01} alt="banner01" />
+              <img loading="lazy" src={banner01} alt="banner01" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={banner02} alt="banner02" />
+              <img loading="lazy" src={banner02} alt="banner02" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={banner03} alt="banner03" />
+              <img loading="lazy" src={banner03} alt="banner03" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={banner04} alt="banner04" />
+              <img loading="lazy" src={banner04} alt="banner04" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={banner05} alt="banner05" />
+              <img loading="lazy" src={banner05} alt="banner05" />
             </SwiperSlide>
             <button className={styles.prev}>‹</button>
             <button className={styles.next}>›</button>
