@@ -87,7 +87,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 classNames(styles.actions__link, {
                   [styles.active]: isActive,
-                  [styles.favorites]: favoritesIds.length > 0,
+                  [styles.cart]: cartProducts.length > 0,
                 })
               }
             >
