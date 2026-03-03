@@ -136,103 +136,6 @@
 
 
 
-  .icon {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-
-box-sizing: border-box;
-flex: 0 0 auto;
-
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
-    box-sizing: border-box;
-
-    border-radius: 50%;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    border: 1px solid $icons-color;
-
-
-    &:hover {
-       background-color: $hover-bg-color;
-       border-color: $primary-color;
-
-       @include hover(color, $hover-bg-color(1.1));
-    }
-
-    &.disabled, &[disabled] {
-      pointer-events: none;
-      cursor: not-allowed;
-      background: $hover-bg-color;
-      border-color: $icons-color;
-
-      transform: none;
-      box-shadow: none;
-  }
-
-   &--wide {
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      margin: 0;
-      background-size: 50%;
-    }
-
-  &--favourites{
-    background-image: url(/img/icons/icon-favourites-2x.png);
-  }
-
- }
-
-  .button {
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    text-align: center;
-    color: #FFFF;
-
-box-sizing: border-box;
-flex: 0 0 auto;
-
-
-    &--add-to-card {
-    width: 100px;
-    height: 40px;
-    margin: 0;
-
-    padding: 0;
-    background-color: $accent-color;
-
-      @include on-tablet {
-         width: 125px;
-      }
-
-      @include on-desktop {
-         width: 160px;
-      }
-
-    }
-
-    &--favourites {
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
-    }
-
-}
-
 &__product {
 
   margin: 0;
@@ -259,6 +162,5 @@ flex: 0 0 auto;
 }
 
 }
-
 
 

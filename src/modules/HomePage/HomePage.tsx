@@ -5,6 +5,7 @@ import PicturesSlider from './components/PicturesSlider/index';
 import { Product } from './../../../public/api/types/Product';
 import { Link } from 'react-router-dom';
 import { productsCount } from '../../utils/products';
+import { useProducts } from '../../hooks/useProducts';
 
 const TYPES = {
   PHONE: 'phones',
@@ -15,12 +16,8 @@ const TYPES = {
 export const HomePage: React.FC = () => {
   const THRESHOLD = 30;
 
-  const [products, setProducts] = useState<Product[] | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { products, loading, error } = useProducts();
   const [paused, setPaused] = useState<boolean>(false);
-
-  const url = 'api/products.json';
 
   const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
@@ -34,21 +31,6 @@ export const HomePage: React.FC = () => {
     ? [...products].sort((a, b) => Number(b.year) - Number(a.year)).slice(0, 8)
     : [];
   const lenOfProducts = products?.length ?? 0;
-  const loadProducts = async (signal?: AbortSignal) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch(url, { signal });
-
-      const data: Product[] = await response.json();
-
-      setProducts(data);
-    } catch (err) {
-      setError((err as Error)?.message ?? 'Unknown error');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     if (lenOfProducts > 0 && !paused) {
@@ -70,14 +52,6 @@ export const HomePage: React.FC = () => {
       setCurrentProductIndex(0);
     }
   }, [products?.length, loading, error]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    void loadProducts(controller.signal);
-
-    return () => controller.abort();
-  }, []);
 
   const discount = p => Math.abs(+p.fullPrice - +p.price);
 
@@ -228,7 +202,11 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-      <section id="brand-new-models" aria-label="Brand new models">
+      <section
+        id="brand-new-models"
+        aria-label="Brand new models"
+        className={styles.section}
+      >
         {!loading && !error && Array.isArray(products) && (
           <ProductsSlider
             products={newestProducts}
@@ -243,7 +221,11 @@ export const HomePage: React.FC = () => {
         )}
       </section>
 
-      <section id="shop-by-category" aria-label="Shop by category">
+      <section
+        id="shop-by-category"
+        aria-label="Shop by category"
+        className={styles.section}
+      >
         <h3>Shop by category</h3>
         {!loading && !error && Array.isArray(products) && (
           <div className={styles.homePage__shopByCategory}>

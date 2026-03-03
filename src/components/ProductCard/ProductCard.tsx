@@ -3,6 +3,9 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../../public/api/types/Product';
 import { Link } from 'react-router-dom';
 import FavouritesLink from '../FavouritesLink/index';
+import AddToCartButton from '../AddToCartButton';
+import Button from '../Button/index';
+import buttonStyles from '../Button/Button.module.scss';
 
 type ProductCardProps = {
   product: Product;
@@ -61,24 +64,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <div className={styles.productCard__bottom}>
-          <button
-            type="button"
-            aria-label="Add to cart"
-            className={`${styles.button} ${styles['button--add-to-card']}`}
-            onClick={() => handleAddToCart?.(product)}
-          >
-            Add to cart
-          </button>
-          <button
-            type="button"
-            aria-label="Add to Favourites"
-            className={`${styles['button--favourites']}`}
-            onClick={() => handleToggleFavorite?.(product.id)}
+          <AddToCartButton handleAddToCart={() => handleAddToCart?.(product)} />
+
+          <Button
+            className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
+            onClick={() => handleToggleFavorite?.(String(product?.id))}
           >
             <FavouritesLink
-              className={`${styles.icon}  ${styles['icon--wide']} ${styles['icon--favourites']}`}
+              className={`${styles['icon--large']} ${styles['icon--favourites']}`}
+              iconSize="lg"
             />
-          </button>
+          </Button>
         </div>
       </div>
     </div>

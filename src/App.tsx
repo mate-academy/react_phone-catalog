@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import HomePage from './modules/HomePage/index';
 import ProductsPage from './modules/ProductsPage';
-import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import ProductDetailsPage from './modules/ProductDetailsPage/index';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';

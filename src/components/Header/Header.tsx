@@ -52,7 +52,7 @@ export const Header = () => {
 
           <div className={styles.topBar__icons}>
             <div className={styles.icon__background}>
-              <FavouritesLink />
+              <FavouritesLink className={styles.header__favIcon} />
             </div>
             <div className={styles.icon__background}>
               <Link

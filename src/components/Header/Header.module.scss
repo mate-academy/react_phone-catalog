@@ -1,5 +1,6 @@
 @use '../../utils/vars' as *;
 @import '../../utils/mixins';
+@import '../Icon/Icon.module';
 
 .header {
   box-sizing: border-box;
@@ -16,6 +17,19 @@
 
   @include on-desktop {
     height: 64px;
+  }
+
+
+  &__favIcon {
+
+   display: none;
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
   }
 }
 
@@ -51,7 +65,6 @@
     justify-content: center;
     box-sizing: border-box;
   }
-
 }
 
 .link {
@@ -64,53 +77,3 @@
 
      @include hover(transform, scale(1.1));
   }
-
-
-.icon {
-  cursor: pointer;
-  display: block;
-  background-size: cover;
-  background-position: center;
-  object-fit: cover;
-  margin: 16px;
-  width: object-fit;
-
-  box-sizing: border-box;
-
-  @include hover(transform, scale(1.1));
-
-  &__background {
-    border-left: 1px solid #E2E6E9;
-  }
-
-  &--menu {
-    background-image: url(/img/icons/icon-burger-menu-2x.png);
-    width: 16px;
-    height: 16px;
-    display: block;
-
-    @include on-tablet {
-      display: none;
-    }
-
-  }
-
-  &--shopping-bag-cart {
-    display: none;
-
-    @include on-tablet {
-      display: block;
-      background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
-      width: 16px;
-      height: 16px;
-    }
-
-    }
-
-
-  &--close {
-    background-image: url(/img/icons/icon-close-2x.png);
-    width: 16px;
-    height: 16px;
-  }
-}

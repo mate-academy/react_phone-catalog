@@ -1,0 +1,23 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+  .button {
+
+    &--add-to-card {
+    width: 100px;
+    height: 40px;
+    margin: 0;
+
+    padding: 0;
+    background-color: $accent-color;
+
+      @include on-tablet {
+         width: 125px;
+      }
+
+      @include on-desktop {
+         width: 160px;
+      }
+
+    }
+  }

@@ -1,0 +1,102 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+.icon,
+.icon--large {
+  cursor: pointer;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  width: object-fit;
+  box-sizing: border-box;
+  @include hover(transform, scale(1.1));
+
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin: 16px;
+
+  &__background {
+    border-left: 1px solid #E2E6E9;
+  }
+
+  &--menu {
+    background-image: url(/img/icons/icon-burger-menu-2x.png);
+    width: 16px;
+    height: 16px;
+    display: block;
+
+    @include on-tablet {
+      display: none;
+    }
+
+  }
+
+  &--shopping-bag-cart {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
+      width: 16px;
+      height: 16px;
+    }
+
+    }
+
+
+  &--close {
+    background-image: url(/img/icons/icon-close-2x.png);
+    width: 16px;
+    height: 16px;
+  }
+}
+
+  .icon--large {
+    width: 40px;
+    height: 40px;
+
+    box-sizing: border-box;
+    flex: 0 0 auto;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    box-sizing: border-box;
+
+    border-radius: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border: 1px solid $icons-color;
+
+
+    &:hover {
+       background-color: $hover-bg-color;
+       border-color: $primary-color;
+
+       @include hover(color, $hover-bg-color(1.1));
+    }
+
+    &.disabled, &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+      background: $hover-bg-color;
+      border-color: $icons-color;
+
+      transform: none;
+      box-shadow: none;
+  }
+
+
+  &--favourites{
+    background-image: url(/img/icons/icon-favourites-2x.png);
+  }
+
+ }

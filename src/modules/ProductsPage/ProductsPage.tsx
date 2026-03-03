@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import ProductsList from '../../components/ProductsList/index';
 import { Product } from '../../../public/api/types/Product';
 import Pagination from '../../components/Pagination/index';
 import { productsCount } from '../../utils/products';
 import { useSearchParams } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
+import { useProducts } from '../../hooks/useProducts';
 
 type ProductsPageProps = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -15,17 +16,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   category,
   title,
 }) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const { products, loading, error } = useProducts();
   const sort: string = searchParams.get('sort') ?? 'age';
 
-  const filteredProducts = products.filter(
+  const filteredProducts = products?.filter(
     p => String(p.category).toLowerCase() === category,
   );
-  const total = filteredProducts.length;
+  const total = filteredProducts?.length ?? 0;
 
   const rawPerPage = searchParams.get('perPage');
   let perPage: number | 'all' = rawPerPage
@@ -49,37 +47,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const start =
     perPage === 'all' ? 0 : (normalizedPage - 1) * (perPage as number);
   const end = perPage === 'all' ? total : start + (perPage as number);
-
-  useEffect(() => {
-    const ctrl = new AbortController();
-    const load = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const res = await fetch('api/products.json', { signal: ctrl.signal });
-
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data = await res.json();
-
-        setProducts(data);
-      } catch (err) {
-        if ((err as DOMException).name === 'AbortError') {
-          return;
-        }
-
-        setError((err as Error).message || 'Something went wrong');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    load();
-
-    return () => ctrl.abort();
-  }, [category]);
 
   const sorted = useMemo(() => {
     const copy = filteredProducts.slice();
@@ -120,7 +87,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     newPage: number,
     newPerPage: number | 'all',
   ) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(
+      Object.fromEntries(searchParams.entries()),
+    );
 
     if (newPerPage === 'all') {
       params.delete('perPage');
@@ -167,7 +136,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     <>
       <div className={styles.productPage}>
         <div className={styles.productPage__content}>
-          <section id={category} aria-label={title}>
+          <section
+            id={category}
+            aria-label={title}
+            className={`${styles.section} ${styles['section--breadcrumbs']}`}
+          >
             <h1>{title}</h1>
             <p>{productsCount(products, category)} models</p>
             {!loading && !error && Array.isArray(visibleProducts) && (

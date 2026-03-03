@@ -1,0 +1,277 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
+.productDetailsPage {
+
+  &__content {
+    @include page-grid;
+    display: grid;
+    grid-column: 1/-1;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+  .label {
+    @include label;
+    margin-bottom: 8px;
+  }
+
+  .section--breadcrumbs {
+    margin-top: 16px;
+  }
+
+    &__title {
+    @include page-grid;
+
+  }
+
+  & h3 {
+    grid-column:  span 4;
+  }
+
+   &__productImageContainer {
+    width: 274px;
+    height: 274px;
+    grid-column: 2/3;
+    width: 100%;
+    max-width: 274px;
+    overflow: hidden;
+
+      @include on-tablet {
+        width: 173px;
+        height: 181;
+      }
+
+       @include on-desktop {
+        width: 173px;
+        height: 181;
+      }
+
+    }
+
+  &__productImage {
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+
+     @include on-tablet {
+        grid-column: 2;
+      }
+    }
+
+.slide {
+  display: flex;
+  flex: 0 0 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid #C4C4C4;
+  padding: 4px;
+
+& img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  }
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  margin-block: 16px 40px;
+  justify-content: space-between;
+
+}
+
+.active {
+  border-radius: 4px;
+  padding: 1px;
+  border: 1px solid $primary-color;
+  outline: 1px solid  $primary-color;
+}
+
+     &__productPrice {
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      font-weight: bold;
+      color: #0F0F11;
+      height: 22px;
+
+    }
+
+    &__productFullPrice {
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      color: $secondary-color;
+    }
+
+   &__productInfoTable {
+    display: grid;
+    @include page-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 0;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid $elements-color;
+    grid-column: span 4;
+    margin-top: 32px;
+    padding-top: 16px;
+  }
+
+.productPriceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+ .productFeature {
+    grid-column: 1 / 2;
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-color;
+    align-self: left;
+    white-space: nowrap;
+  }
+
+.productValue {
+  grid-column: 2 / 3;
+  font-weight: 700;
+  font-size: 12px;
+  color: $primary-color;
+  text-align: right;
+  align-self: center;
+}
+
+  &__bottom {
+  display: flex;
+  align-items: center;
+  align-items: flex-start ;
+  gap: 8px;
+  padding-top:  8px;
+  box-sizing: border-box;
+  padding-block: 8px;
+}
+&__id {
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.optionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid $elements-color;
+  justify-content: space-between;
+}
+.fieldset {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+.option {
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+
+  padding-right: 8px;
+  border-radius: 4px;
+  transition: background-color 150ms ease, transform $effect-duration ease;
+}
+
+.option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.optionText {
+  margin-left: 0px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 4px 8px;
+  border: 1px solid $icons-color;
+  color: $primary-color;
+}
+
+.option input:checked + .optionText {
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: $primary-color;
+
+  border: 1px solid $primary-color;
+}
+
+.colorOption {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  margin: 0;
+  border-radius: 50%;
+  display: inline-flex;
+ // align-items: center;
+ // justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.colorOption input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.colorCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06) inset;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.colorOption input:checked + .colorCircle {
+  transform: scale(0.9);
+   outline: 1px solid  $primary-color;
+   border: 1px solid $primary-color;
+}
+
+.section--about{
+  grid-column: span 4;
+}
+
+&__description {
+  border-top: 1px solid $elements-color;
+}
+
+&__descriptionText {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color:  #89939A;
+
+}
+}

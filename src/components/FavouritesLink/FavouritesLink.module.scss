@@ -1,18 +1,14 @@
 @use '../../utils/vars' as *;
 @import '../../utils/mixins';
-@import '../Header/Header.module';
+//@import '../Header/Header.module';
 
 .icon {
 
   &--favourites {
-    display: none;
-
-    @include on-tablet {
-      display: block;
+     // display: block;
       background-image: url(/img/icons/icon-favourites-2x.png);
       width: 16px;
       height: 16px;
-      }
   }
 
 }

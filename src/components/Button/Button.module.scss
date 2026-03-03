@@ -1,0 +1,23 @@
+  .button {
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #FFFF;
+    box-sizing: border-box;
+
+
+    &--favourites {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+    }
+
+}
+
