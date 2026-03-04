@@ -12,7 +12,7 @@ export const ShopByCategory = () => {
   useEffect(() => {
     Promise.all(
       categorys.map(category =>
-        fetch(`/public/api/${category}.json`)
+        fetch(`${import.meta.env.BASE_URL}api/${category}.json`)
           .then(res => res.json())
           .then(data => [category, data.length] as [string, number]),
       ),

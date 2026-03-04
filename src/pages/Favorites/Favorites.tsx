@@ -34,7 +34,7 @@ const Favorites = () => {
     const categoryFetches = Array.from(
       new Set(favorites.map(f => f.category)),
     ).map(category =>
-      fetch(`/public/api/${category}.json`)
+      fetch(`${import.meta.env.BASE_URL}api/${category}.json`)
         .then(res => {
           if (!res.ok) {
             throw new Error(`Failed to load ${category}.json`);

@@ -50,7 +50,7 @@ const ProductСarousel: React.FC<ProductCarouselProps> = ({
 
     setLoading(true);
 
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(res => res.json())
       .then((data: ProductCards) => {
         setProductsList(data);

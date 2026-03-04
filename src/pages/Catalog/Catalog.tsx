@@ -42,11 +42,20 @@ const Catalog = () => {
   const getApiInfo = () => {
     switch (params.category) {
       case 'phones':
-        return { title: 'Mobile Phones', url: '/api/phones.json' };
+        return {
+          title: 'Mobile Phones',
+          url: `${import.meta.env.BASE_URL}api/phones.json`,
+        };
       case 'tablets':
-        return { title: 'Tablets', url: '/api/tablets.json' };
+        return {
+          title: 'Tablets',
+          url: `${import.meta.env.BASE_URL}api/tablets.json`,
+        };
       case 'accessories':
-        return { title: 'Accessories', url: '/api/accessories.json' };
+        return {
+          title: 'Accessories',
+          url: `${import.meta.env.BASE_URL}api/accessories.json`,
+        };
       default:
         return { title: 'Catalog', url: '' };
     }

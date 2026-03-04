@@ -40,7 +40,7 @@ const ItemCard = () => {
       }
     })();
 
-  const apiRequest = `/api/${category}.json`;
+  const apiRequest = ` ${import.meta.env.BASE_URL}api/${category}.json`;
 
   useEffect(() => {
     window.scrollTo(0, 0);
