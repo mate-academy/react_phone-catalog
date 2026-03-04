@@ -246,7 +246,7 @@ export const Header: React.FC = () => {
                 <div className={styles.header__bottom_switches}>
                   {indexOfImg === 0 ? (
                     <img
-                      src="/img/icons/banner_carousele_active.png"
+                      src="img/icons/banner_carousele_active.png"
                       alt="switch"
                     />
                   ) : (
