@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import home from './../../../../../public/img/icons/Home.svg';
 import { FC } from 'react';
 import classNames from 'classnames';
+// eslint-disable-next-line max-len
+import arrowLeftWhite from './../../../../../public/img/icons/arrowLeftWhite.svg';
 
 type Props = {
   pathName: string;
@@ -26,7 +28,9 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
           </Link>
 
           <div className={styles.pathName}>
-            <p className={styles.pathArrow}>❯</p>
+            <p className={styles.pathArrow}>
+              <img src={arrowLeftWhite} alt="arrowLeftWhite" />
+            </p>
             <NavLink
               className={isLinkActive}
               to={pathName === 'Home' ? '/' : `/${pathName}`}
@@ -37,7 +41,7 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
 
           {nameOfProduct && (
             <div className={styles.pathName}>
-              <p className={styles.pathArrow}>❯</p>
+              <p className={styles.pathArrow}></p>
               <NavLink className={styles.link} to={`/${nameOfProduct}`}>
                 {nameOfProduct}
               </NavLink>
@@ -47,7 +51,9 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
       )}
       {nameOfProduct && (
         <div className={styles.pathName}>
-          <p className={styles.pathArrowBack}>❮</p>
+          <p className={styles.pathArrowBack}>
+            <img src={arrowLeftWhite} alt="arrowLeftWhite" />
+          </p>
           <button className={styles.linkBack} onClick={() => navigate(-1)}>
             Back
           </button>

@@ -6,6 +6,7 @@ import { SortName } from '../../../../types/SortName';
 import * as Select from '@radix-ui/react-select';
 import { useSearchParams } from 'react-router-dom';
 import { ItemsPerPage } from './../../../../types/ItemsPerPage';
+import arrowBottom from './../../../../../public/img/icons/arrowBottom.svg';
 
 type Props = {
   sort: SortName;
@@ -53,7 +54,7 @@ export const CatalogOptions: FC<Props> = ({
               <Select.Icon
                 className={`${styles.icon} ${isSortOpen ? styles.iconOpen : ''}`}
               >
-                ∨
+                <img src={arrowBottom} alt="arrowBottom" />
               </Select.Icon>
             </Select.Trigger>
 
@@ -99,7 +100,7 @@ export const CatalogOptions: FC<Props> = ({
               <Select.Icon
                 className={`${styles.icon} ${isItemsOpen ? styles.iconOpen : ''}`}
               >
-                ∨
+                <img src={arrowBottom} alt="arrowBottom" />
               </Select.Icon>
             </Select.Trigger>
 

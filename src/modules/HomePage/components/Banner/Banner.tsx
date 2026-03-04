@@ -4,6 +4,8 @@ import banner02 from './../../../../../public/img/banner02.webp';
 import banner03 from './../../../../../public/img/banner-accessories.png';
 import banner04 from './../../../../../public/img/banner-phones.png';
 import banner05 from './../../../../../public/img/banner-tablets.png';
+import arrowRight from './../../../../../public/img/icons/arrowRightWhite.svg';
+import arrowLeft from './../../../../../public/img/icons/arrowLeftWhite.svg';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
@@ -52,8 +54,12 @@ export const Banner = () => {
             <SwiperSlide>
               <img loading="lazy" src={banner05} alt="banner05" />
             </SwiperSlide>
-            <button className={styles.prev}>‹</button>
-            <button className={styles.next}>›</button>
+            <button className={styles.prev}>
+              <img src={arrowLeft} alt="arrowLeft" />
+            </button>
+            <button className={styles.next}>
+              <img src={arrowRight} alt="arrowRight" />
+            </button>
           </Swiper>
         </div>
       </div>

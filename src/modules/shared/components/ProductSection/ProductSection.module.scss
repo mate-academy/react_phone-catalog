@@ -2,7 +2,7 @@
 @use './../../../../styles/variables.scss' as *;
 
 .product {
-  padding: 40px 0 40px 0;
+  padding: 40px 0;
 }
 
 .product__header {
@@ -19,8 +19,9 @@
 
 .prev,
 .next {
-  display: block;
+  display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: 24px;
 
@@ -50,7 +51,7 @@
 @media (max-width: 639px) {
   .product {
     width: calc(100vw - 40px);
-    padding: 20px 0 20px 0;
+    padding: 20px 0;
   }
   .product__header {
     gap: 20px;

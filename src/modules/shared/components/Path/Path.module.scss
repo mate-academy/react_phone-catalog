@@ -2,7 +2,7 @@
 @use './../../../../styles/variables.scss' as *;
 
 .path {
-  margin: 24px 0 20px 0;
+  margin: 24px 0 20px;
   display: flex;
   gap: 8px;
 }
@@ -38,6 +38,11 @@
   margin-bottom: 15px;
   margin-top: 30px;
   font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.linkBack:hover {
+  color: $accent__color;
 }
 
 .active {
@@ -47,7 +52,7 @@
 
 @media (max-width: 639px) {
   .path {
-    margin: 20px 0 0px 0;
+    margin-top: 20px;
     overflow: hidden;
     white-space: nowrap;
   }

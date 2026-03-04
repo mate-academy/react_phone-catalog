@@ -4,6 +4,8 @@ import products from './../../../../../public/api/products.json';
 import { ProductSlider } from '../ProductSlider';
 import classNames from 'classnames';
 import './../../../../styles/global.scss';
+import arrowRight from './../../../../../public/img/icons/arrowRightWhite.svg';
+import arrowLeft from './../../../../../public/img/icons/arrowLeftWhite.svg';
 
 type Props = {
   title: string;
@@ -44,7 +46,7 @@ export const ProductSection: FC<Props> = ({ title, type }) => {
             })}
             aria-label="Prev"
           >
-            ‹
+            <img src={arrowLeft} alt="arrowLeft" />
           </button>
           <button
             ref={nextRef}
@@ -53,7 +55,7 @@ export const ProductSection: FC<Props> = ({ title, type }) => {
             })}
             aria-label="Next"
           >
-            ›
+            <img src={arrowRight} alt="arrowRight" />
           </button>
         </div>
       </div>

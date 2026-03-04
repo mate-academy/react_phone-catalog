@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss';
 import logo from './../../../../../public/img/logo.svg';
+import arrowTopWhite from './../../../../../public/img/icons/arrowTopWhite.svg';
 
 export const Footer = () => {
   return (
@@ -23,9 +24,6 @@ export const Footer = () => {
               <li className={styles.footer__item}>
                 <a href="#">Contacts</a>
               </li>
-              <li className={styles.footer__item}>
-                <a href="#">rights</a>
-              </li>
             </ul>
           </nav>
           <div className={styles.footer__btn}>
@@ -36,7 +34,7 @@ export const Footer = () => {
               }}
               className={styles.btn__icon}
             >
-              ˄
+              <img src={arrowTopWhite} alt="arrowTopWhite" />
             </button>
           </div>
         </div>

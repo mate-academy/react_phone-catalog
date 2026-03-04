@@ -1,5 +1,8 @@
+/* eslint-disable max-len */
 import { FC } from 'react';
 import styles from './CatalogPagination.module.scss';
+import arrowRightWhite from './../../../../../public/img/icons/arrowRightWhite.svg';
+import arrowLeftWhite from './../../../../../public/img/icons/arrowLeftWhite.svg';
 
 type Props = {
   pages: number[];
@@ -45,7 +48,7 @@ export const CatalogPagination: FC<Props> = ({
             }}
             className={styles.arrow}
           >
-            ‹
+            <img src={arrowLeftWhite} alt="arrowLeftWhite" />
           </button>
           <div className={styles.pages__buttons}>
             {visiblePages.map((page, index) => {
@@ -69,7 +72,7 @@ export const CatalogPagination: FC<Props> = ({
             }}
             className={styles.arrow}
           >
-            ›
+            <img src={arrowRightWhite} alt="arrowRightWhite" />
           </button>
         </div>
       )}
