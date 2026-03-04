@@ -74,7 +74,7 @@ export const ProductSlider = ({ title, products }: Props) => {
               className={styles.card_link}
             >
               <ProductCard
-                id={product.id}
+                id={product.itemId} // ← було product.id
                 image={product.image}
                 name={product.name}
                 price={product.price}
