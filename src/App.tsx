@@ -1,8 +1,15 @@
+import { Route, Routes } from 'react-router-dom';
 import './assets/styles/main.scss';
+import { Header } from './components/layout/Header';
+import { HomePage } from './modules/HomePage';
 
 export const App = () => (
   <div className="App">
-    <h1>Product Catalog</h1>
-    <p>Product Catalog</p>
+    <Header />
+    <div className="wrapper">
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+      </Routes>
+    </div>
   </div>
 );

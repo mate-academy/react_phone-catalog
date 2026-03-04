@@ -1,7 +1,14 @@
 @import "reset";
 @import "fonts";
-@import "vars";
 
 body {
   font-family: Mont, sans-serif;
+}
+
+.wrapper {
+  padding-top: 64px;
+
+  @media (max-width: 1024px) {
+    padding-top: 48px;
+  }
 }
