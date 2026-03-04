@@ -61,8 +61,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       className={styles.card}
     >
       <img
-        src={product.image}
-        alt={product.name}
+        src={`${import.meta.env.BASE_URL}${product.image}`}
+        alt={`${product.name}`}
         className={styles.card__img}
       />
 

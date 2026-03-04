@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import styles from './ShopByCategory.module.scss';
 
+import PhonesImg from '../../UI/Buttons/Icons/Phones.svg';
+import TabletsImg from '../../UI/Buttons/Icons/Tablets.svg';
+import AccessoriesImg from '../../UI/Buttons/Icons/Phones2.svg';
+
 export const ShopByCategory = () => {
   const categorys = useMemo(() => {
     return ['phones', 'tablets', 'accessories'];
@@ -24,21 +28,21 @@ export const ShopByCategory = () => {
       key: 'phones',
       title: 'Mobile phones',
       bgColor: '#6d6474',
-      imgSrc: '/src/UI/Buttons/Icons/Phones.svg',
+      imgSrc: PhonesImg,
       imgClass: 'homePage__categoryProducts_item_cover_img_phones',
     },
     {
       key: 'tablets',
       title: 'Tablets',
       bgColor: '#8d8d92',
-      imgSrc: '/src/UI/Buttons/Icons/Tablets.svg',
+      imgSrc: TabletsImg,
       imgClass: 'homePage__categoryProducts_item_cover_img_tablets',
     },
     {
       key: 'accessories',
       title: 'Accessories',
       bgColor: '#973d5f',
-      imgSrc: '/src/UI/Buttons/Icons/Phones2.svg',
+      imgSrc: AccessoriesImg,
       imgClass: 'homePage__categoryProducts_item_cover_img_accessories',
     },
   ];

@@ -18,9 +18,9 @@ const ItemCardGallery = ({ productImg }: { productImg: string[] }) => {
             onClick={() => setSelectedImage(index)}
           >
             <img
-              src={`/${image}`}
-              className={styles.itemCardImg__gallery_thumb_img}
+              src={`${import.meta.env.BASE_URL}${image}`}
               alt={`${image} view ${index + 1}`}
+              className={styles.itemCardImg__gallery_thumb_img}
             />
           </button>
         ))}
@@ -29,9 +29,9 @@ const ItemCardGallery = ({ productImg }: { productImg: string[] }) => {
       <div className={styles.itemCardImg__gallery_main}>
         <div className={styles.itemCardImg__gallery_main_inner}>
           <img
-            src={`/${productImg[selectedImage]}`}
+            src={`${import.meta.env.BASE_URL}${productImg[selectedImage]}`}
+            alt={`${productImg[selectedImage]} view ${selectedImage + 1}`}
             className={styles.itemCardImg__gallery_main_img}
-            alt=""
           />
         </div>
       </div>
