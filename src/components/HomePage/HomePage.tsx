@@ -47,6 +47,7 @@ export const HomePage = () => {
       <Navigation />
 
       <main className={styles.main}>
+        <h1 className={styles.visually_hidden}>Product Catalog</h1>
         <section>
           <PictureSlider />
         </section>
