@@ -268,7 +268,7 @@ export const ProductDetails: React.FC = () => {
             <div className={styles.breadcrumbs}>
               <Link to="/" className={styles.breadcrumbs__link}>
                 <img
-                  src="/img/icons/home.png"
+                  src="img/icons/home.png"
                   className={styles.breadcrumbs__icon}
                   alt="Home"
                 />
@@ -308,13 +308,13 @@ export const ProductDetails: React.FC = () => {
                   onTouchStart={handleTouchStart}
                   onTouchEnd={handleTouchEnd}
                 >
-                  <img src={`/${activeImage}`} alt={product.details.name} />
+                  <img src={`${activeImage}`} alt={product.details.name} />
                 </div>
                 <div className={styles.product__gallery_preview}>
                   {product.details.images.map(image => (
                     <img
                       key={image}
-                      src={`/${image}`}
+                      src={`${image}`}
                       alt={product.details.name}
                       className={image === activeImage ? styles.active : ''}
                       onClick={() => setActiveImage(image)}
@@ -621,7 +621,7 @@ export const ProductDetails: React.FC = () => {
                       <Link to={`/product/${suggestedProduct.itemId}`}>
                         <img
                           className={styles['product-card__image']}
-                          src={`/${suggestedProduct.image}`}
+                          src={`${suggestedProduct.image}`}
                           alt="model-image"
                         />
                       </Link>

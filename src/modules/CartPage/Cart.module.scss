@@ -5,6 +5,7 @@
   background-color: var(--color-bg);
     padding-inline: 16px;
     padding-top: 24px;
+    min-height: 100vh;
 
   @include on-tablet {
     padding-inline: 24px;
