@@ -1,1 +1,7 @@
-/* Main styles */
+@import "reset";
+@import "fonts";
+@import "vars";
+
+body {
+  font-family: Mont, sans-serif;
+}
