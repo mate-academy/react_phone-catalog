@@ -39,7 +39,7 @@
 }
 
 .imageWrapper {
-  height: 140px;
+  height: 196px;
 
   margin-bottom: 24px;
 
@@ -62,15 +62,13 @@
   height: 42px;
   width: 100%;
 
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   border-radius: 4px;
 }
 
 .prices {
   display: flex;
   gap: 8px;
-
-  margin-bottom: 8px;
 
   .currentPrice {
     @extend %shimmer;

@@ -26,7 +26,7 @@
   justify-content: center;
   align-items: center;
 
-  height: 140px;
+  height: 196px;
 
   margin-bottom: 24px;
 }
@@ -52,7 +52,7 @@
 .title {
   @include body-text;
 
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
   display: -webkit-box;
 
@@ -70,8 +70,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-
-  margin-bottom: 8px;
 }
 
 .currentPrice {
@@ -154,7 +152,7 @@
   transition: var(--transition-default);
 
   &:hover {
-    box-shadow: 0 4px 10px 0 var(--color-secondary);
+    box-shadow: 0 3px 13px 0 #17203166;
   }
 }
 

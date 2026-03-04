@@ -1,0 +1,157 @@
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import cl from 'classnames';
+
+import { Product } from '../../types/Product';
+import { HomeIcon } from '../../components/Icons/HomeIcon';
+import { ArrowRightIcon } from '../../components/Icons/ArrowRightIcon';
+import { Dropdown } from './components/DropDown';
+import { ProductsList } from './components/ProductsList';
+
+import styles from './CatalogPage.module.scss';
+
+type Props = {
+  categoryType: 'phones' | 'tablets' | 'accessories';
+  products: Product[];
+};
+
+const CATEGORY_NAMES: Record<string, string> = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
+const SORT_OPTIONS = ['age', 'price', 'title'];
+const PER_PAGE_OPTIONS = ['4', '8', '16', 'all'];
+
+export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sort = searchParams.get('sort') || 'newest';
+  const perPage = searchParams.get('perPage') || 'all';
+  const query = searchParams.get('query') || '';
+
+  const handleParamsChange = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    const isDefaultSort = key === 'sort' && value === 'age';
+    const isDefaultPerPage = key === 'perPage' && value === 'all';
+    const isDefaultPage = key === 'page' && value === '1';
+
+    if (isDefaultPage || isDefaultPerPage || isDefaultSort || !value) {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+
+    if (key !== 'page') {
+      params.delete('page');
+    }
+
+    setSearchParams(params);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [categoryType, sort, perPage]);
+
+  const visibleProducts = useMemo(() => {
+    let filtered = products.filter(
+      product => product.category === categoryType,
+    );
+
+    if (query) {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
+
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sort) {
+        case 'price':
+          return a.price - b.price;
+
+        case 'title':
+          return a.name.localeCompare(b.name);
+
+        case 'age':
+        default:
+          return b.year - a.year;
+      }
+    });
+
+    return sorted;
+  }, [products, categoryType, sort, query]);
+
+  const countOfModels = products.filter(
+    product => product.category === categoryType,
+  ).length;
+
+  const itemsPerPage =
+    perPage === 'all' ? visibleProducts.length : Number(perPage);
+
+  // const currentPage = Number(searchParams.get('page') || 1);
+
+  const productsToDisplay =
+    perPage === 'all'
+      ? visibleProducts
+      : visibleProducts.slice(0, itemsPerPage);
+
+  return (
+    <section className={cl('container', [styles.section])}>
+      <nav className={styles.nav} aria-label="Breadcrumb">
+        <Link to="/" className={styles.homeLink}>
+          <HomeIcon />
+        </Link>
+
+        <div className={styles.chevron}>
+          <ArrowRightIcon />
+        </div>
+
+        <p className={styles.catalogName}>{categoryType}</p>
+      </nav>
+
+      <h1 className={styles.title}>{CATEGORY_NAMES[categoryType]}</h1>
+
+      <p className={styles.count}>{countOfModels} models</p>
+      <div className={styles.contentFilters}>
+        <Dropdown
+          label="Sort by"
+          options={SORT_OPTIONS}
+          selectedValue={sort}
+          className={styles.sortDropdown}
+          onSelect={val => handleParamsChange('sort', val)}
+        />
+
+        <Dropdown
+          label="Items on page"
+          options={PER_PAGE_OPTIONS}
+          selectedValue={perPage}
+          className={styles.itemsDropdown}
+          onSelect={val => handleParamsChange('perPage', val)}
+        />
+
+        <div className={styles.searchGroup}>
+          <p className={styles.label}>Looking for something?</p>
+
+          <input
+            type="search"
+            placeholder="Type here"
+            className={styles.input}
+            value={query}
+            onChange={e => handleParamsChange('query', e.target.value)}
+          />
+        </div>
+      </div>
+
+      <ProductsList isLoading={isLoading} products={productsToDisplay} />
+    </section>
+  );
+};
