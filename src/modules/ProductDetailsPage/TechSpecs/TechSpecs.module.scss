@@ -1,0 +1,29 @@
+@import '../../../styles/variables';
+@import '../../../styles/typography';
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__specsName {
+    @include small-text;
+
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  &__specsValue {
+    @include small-text;
+
+    font-weight: 600;
+    color: var(--text-main);
+  }
+}

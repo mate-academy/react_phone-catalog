@@ -8,8 +8,9 @@ import { CartPage } from './modules/CartPage';
 import { CartProvider } from './context/CartContext';
 import { FavouritesProvider } from './context/FavoritesContext';
 import { FavouritesPage } from './modules/FavouritesPage';
-import { CategoryPage } from './modules/PhonesPage';
-import { PathType } from './types/Types';
+import { CategoryPage } from './modules/CategoryPage';
+import { CategoriesType, PathType } from './types/Types';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const App = () => (
   <div className="App">
@@ -24,13 +25,19 @@ export const App = () => (
                 <Route
                   path={PathType.PHONES}
                   element={
-                    <CategoryPage title={'Mobile phones'} category={'phones'} />
+                    <CategoryPage
+                      title={'Mobile phones'}
+                      category={CategoriesType.PHONES}
+                    />
                   }
                 ></Route>
                 <Route
                   path={PathType.TABLETS}
                   element={
-                    <CategoryPage title={'Tablets'} category={'tablets'} />
+                    <CategoryPage
+                      title={'Tablets'}
+                      category={CategoriesType.TABLETS}
+                    />
                   }
                 ></Route>
                 <Route
@@ -38,7 +45,7 @@ export const App = () => (
                   element={
                     <CategoryPage
                       title={'Accessories'}
-                      category={'accessories'}
+                      category={CategoriesType.ACCESSORIES}
                     />
                   }
                 ></Route>
@@ -50,7 +57,7 @@ export const App = () => (
                 <Route path={PathType.CART} element={<CartPage />}></Route>
                 <Route
                   path={`:${PathType.CATEGORY}/:${PathType.PRODUCT_ID}`}
-                  element={<div>Page details</div>}
+                  element={<ProductDetailsPage />}
                 />
 
                 <Route path="*" element={<NotFoundPage />}></Route>

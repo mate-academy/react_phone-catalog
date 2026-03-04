@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Catalog } from '../../components/Catalog';
-import { CatalogProducts } from '../../types/Types';
+import { CatalogProducts, CategoriesType } from '../../types/Types';
 import { getProducts } from '../../api/products';
 
 interface CategoryPageProps {
   title: string;
-  category: 'phones' | 'tablets' | 'accessories';
+  category: CategoriesType;
 }
 
 export const CategoryPage: React.FC<CategoryPageProps> = ({

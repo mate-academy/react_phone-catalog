@@ -1,0 +1,86 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.details {
+  @include page-container;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include respond-to('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include respond-to('desktop') {
+    padding-bottom: 80px;
+  }
+
+  &__back {
+    @include small-text;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-main);
+    }
+  }
+
+  &__title {
+    @include h2;
+
+    margin: 0 0 32px;
+    color: var(--text-main);
+
+    @include respond-to('tablet') {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 56px;
+
+    @include respond-to('tablet') {
+      display: grid;
+      grid-template-columns: minmax(0, 339px) 237px;
+      column-gap: 16px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+
+    @include respond-to('desktop') {
+      grid-template-columns: 560px 320px;
+      column-gap: 64px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include respond-to('tablet') {
+      width: 237px;
+    }
+
+    @include respond-to('desktop') {
+      width: 320px;
+    }
+  }
+}

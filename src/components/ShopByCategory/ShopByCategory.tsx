@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ShopByCategory.module.scss';
 import { NavLink } from 'react-router-dom';
 
-import { Category, PathType } from '../../types/Types';
+import { CategoriesType, Category, PathType } from '../../types/Types';
 
 const categories: Category[] = [
   {
@@ -11,7 +11,7 @@ const categories: Category[] = [
     alt: 'Phones category',
     link: PathType.PHONES,
     quantity: 95,
-    type: 'phones',
+    type: CategoriesType.PHONES,
   },
   {
     name: 'Tablets',
@@ -19,7 +19,7 @@ const categories: Category[] = [
     alt: 'Tablets category',
     link: PathType.TABLETS,
     quantity: 24,
-    type: 'tablets',
+    type: CategoriesType.TABLETS,
   },
   {
     name: 'Accessories',
@@ -27,7 +27,7 @@ const categories: Category[] = [
     alt: 'Accessories category',
     link: PathType.ACCESSORIES,
     quantity: 100,
-    type: 'accessories',
+    type: CategoriesType.ACCESSORIES,
   },
 ];
 

@@ -54,7 +54,7 @@ export interface Category {
   alt: string;
   link: string;
   quantity: number;
-  type: 'phones' | 'tablets' | 'accessories';
+  type: CategoriesType;
 }
 
 export enum SortType {
@@ -80,4 +80,10 @@ export enum PathType {
   PRODUCTS = '/products',
   CATEGORY = 'category',
   PRODUCT_ID = 'productId',
+}
+
+export enum CategoriesType {
+  PHONES = 'phones',
+  TABLETS = 'tablets',
+  ACCESSORIES = 'accessories',
 }

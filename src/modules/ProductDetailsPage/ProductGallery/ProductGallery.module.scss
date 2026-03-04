@@ -1,0 +1,85 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  width: 100%;
+
+  @include respond-to('tablet') {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__thumbnails {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+
+    @include respond-to('tablet') {
+      grid-template-columns: 1fr;
+      width: 35px;
+      flex-shrink: 0;
+    }
+
+    @include respond-to('desktop') {
+      width: 80px;
+      gap: 16px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 50 / 50;
+      object-fit: cover;
+      padding: 2px;
+
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      cursor: pointer;
+
+      @include hover-transition(border-color);
+
+      @include hover {
+        border-color: var(--icon-color);
+      }
+
+      @include respond-to('tablet') {
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+        padding: 2px;
+      }
+
+      @include respond-to('desktop') {
+        padding: 7px;
+      }
+    }
+  }
+
+  &__thumbnail--active {
+    border-color: var(--text-main) !important;
+  }
+
+  &__main {
+    display: block;
+    width: 100%;
+    max-width: 288px;
+    max-height: 288px;
+    margin: 0 auto;
+    object-fit: contain;
+
+    @include respond-to('tablet') {
+      max-width: 287px;
+      max-height: 287px;
+      margin: 0;
+    }
+
+    @include respond-to('desktop') {
+      max-width: 464px;
+      max-height: 464px;
+    }
+  }
+}

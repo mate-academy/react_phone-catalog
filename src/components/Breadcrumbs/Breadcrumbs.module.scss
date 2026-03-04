@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.nav {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__link {
+    @include small-text;
+
+    font-weight: 600;
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: capitalize;
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-secondary);
+    }
+  }
+
+  &__separator {
+    @include small-text;
+
+    color: var(--icon-color);
+  }
+
+  &__linkActive {
+    @include small-text;
+
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: default;
+  }
+}
