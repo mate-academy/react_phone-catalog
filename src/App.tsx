@@ -1,4 +1,4 @@
-import './App.scss';
+import './assets/styles/main.scss';
 
 export const App = () => (
   <div className="App">
