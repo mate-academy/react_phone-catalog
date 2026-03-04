@@ -14,7 +14,7 @@
   padding: 24px 16px;
 
   @media (min-width: 640px) {
-    padding: 24px 24px;
+    padding: 24px;
   }
 
   @media (min-width: 1200px) {
@@ -70,7 +70,7 @@
 }
 
 .title {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   margin: 0 0 8px;
   color: #f1f2f9;
   font-size: 32px;
@@ -196,18 +196,18 @@
       height: 16px;
     }
 
-    &:hover:not(:disabled) {
-      background-color: #2a2d3e;
-    }
-
     &:disabled {
       opacity: 0.4;
       cursor: default;
     }
+
+    &:hover:not(:disabled) {
+      background-color: #2a2d3e;
+    }
   }
 
   &__page {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     width: 32px;
     height: 32px;
     background-color: #161827;

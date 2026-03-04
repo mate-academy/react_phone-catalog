@@ -147,13 +147,13 @@
   }
 
   @media (min-width: 1200px) {
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     padding: 0 32px;
     gap: 16px;
       justify-content: center;
   }
 }
+
 .category_inner {
   @media (min-width: 1200px) {
     max-width: calc(3 * 368px + 6 * 16px); /* 3 картки + 2 gaps */

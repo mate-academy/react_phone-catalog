@@ -15,11 +15,14 @@
 .separator {
   color: #75767f;
   font-size: 12px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
 }
 
 .link {
   font-size: 12px;
-  color: #F1F2F9;
+  color: #f1f2f9;
   text-decoration: none;
 
   &:hover {
@@ -29,16 +32,10 @@
 
 .current {
   font-size: 12px;
-  color: #75767F;
+  color: #75767f;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 240px;
-}
-
-.separator {
-  width: 16px;
-  height: 16px;
-  opacity: 0.5;
 }

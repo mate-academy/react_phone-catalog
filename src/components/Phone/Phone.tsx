@@ -15,6 +15,7 @@ const ITEMS_PER_PAGE = 16;
 
 const getModelNumber = (id: string): number => {
   const match = id.match(/iphone-(\d+)/);
+
   return match ? parseInt(match[1]) : 0;
 };
 
@@ -23,9 +24,13 @@ const sortPhones = (phones: typeof phonesData, sortBy: SortOption) => {
 
   switch (sortBy) {
     case SortOption.Newest:
-      return arr.sort((a, b) => getModelNumber(b.namespaceId) - getModelNumber(a.namespaceId));
+      return arr.sort(
+        (a, b) => getModelNumber(b.namespaceId) - getModelNumber(a.namespaceId),
+      );
     case SortOption.Oldest:
-      return arr.sort((a, b) => getModelNumber(a.namespaceId) - getModelNumber(b.namespaceId));
+      return arr.sort(
+        (a, b) => getModelNumber(a.namespaceId) - getModelNumber(b.namespaceId),
+      );
     case SortOption.PriceLow:
       return arr.sort((a, b) => a.priceDiscount - b.priceDiscount);
     case SortOption.PriceHigh:

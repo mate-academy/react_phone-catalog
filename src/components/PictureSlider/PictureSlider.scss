@@ -99,14 +99,14 @@
     transition: all 0.3s ease;
 
     &--active {
-      background: #ffffff;
+      background: #fff;
       width: 32px;
     }
   }
 }
 
 .welcome {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;

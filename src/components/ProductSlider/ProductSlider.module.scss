@@ -25,7 +25,7 @@
   gap: 8px;
 }
 
-.btn_base {
+%btn-base {
   width: 32px;
   height: 32px;
   display: flex;
@@ -42,7 +42,8 @@
 }
 
 .btn_left {
-  @extend .btn_base;
+  @extend %btn-base;
+
   background-color: #0f1121;
   border: 1px solid #3b3d4a;
 
@@ -52,7 +53,8 @@
 }
 
 .btn_right {
-  @extend .btn_base;
+  @extend %btn-base;
+
   background-color: #323542;
   border: 1px solid #3b3d4a;
 
@@ -66,12 +68,11 @@
   gap: 16px;
   overflow: hidden;
 
-
   & > * {
     flex-shrink: 0;
-        min-width: 0;
-        max-width: 272px;
-          height: 506px;
+    min-width: 0;
+    max-width: 272px;
+    height: 506px;
   }
 
   @media (min-width: 1200px) {
