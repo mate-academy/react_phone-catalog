@@ -14,6 +14,7 @@ type Props = {
   capacity: string;
   ram: string;
   hasDiscount?: boolean;
+  onCartClick?: () => void;
 };
 
 export const ProductCard = ({
@@ -26,6 +27,7 @@ export const ProductCard = ({
   capacity,
   ram,
   hasDiscount = true,
+  onCartClick,
 }: Props) => {
   const { isFavourite, toggleFavourite } = useFavourites();
   const { isInCart, addToCart } = useCart();
@@ -54,6 +56,7 @@ export const ProductCard = ({
     e.stopPropagation();
     if (!inCart) {
       addToCart({ id: strId, image, name, price });
+      onCartClick?.(); // 👈 викликати колбек
     }
   };
 

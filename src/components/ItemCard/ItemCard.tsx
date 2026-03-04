@@ -131,25 +131,6 @@ export const ItemCard = () => {
   const canNext = sliderStart + VISIBLE < suggested.length;
   const isFav = product ? isFavourite(product.id) : false;
 
-  const shortSpecs: [string, string][] = product
-    ? [
-        ['Screen', product.screen],
-        ['Resolution', product.resolution],
-        ['Processor', product.processor],
-        ['RAM', product.ram],
-      ]
-    : [];
-
-  const techSpecs: [string, string][] = product
-    ? [
-        ...shortSpecs,
-        ['Built in memory', product.capacity],
-        ['Camera', product.camera],
-        ['Zoom', product.zoom],
-        ['Cell', product.cell.join(', ')],
-      ]
-    : [];
-
   return (
     <div className={styles.wrapper}>
       <Navigation />
@@ -166,7 +147,7 @@ export const ItemCard = () => {
           </div>
         )}
 
-        {!loading && !notFound && product && (
+        {!loading && product && (
           <>
             <Breadcrumbs
               category={CATEGORY_LABELS[product.category] || product.category}
@@ -193,7 +174,9 @@ export const ItemCard = () => {
                   <button
                     key={img}
                     type="button"
-                    className={`${styles.thumb} ${selectedImage === i ? styles.thumb_active : ''}`}
+                    className={`${styles.thumb} ${
+                      selectedImage === i ? styles.thumb_active : ''
+                    }`}
                     onClick={() => setSelectedImage(i)}
                   >
                     <img src={img} alt={`view ${i + 1}`} />
@@ -226,13 +209,17 @@ export const ItemCard = () => {
                       <button
                         key={color}
                         type="button"
-                        className={`${styles.color_btn} ${product.color === color ? styles.color_btn_active : ''}`}
+                        className={`${styles.color_btn} ${
+                          product.color === color ? styles.color_btn_active : ''
+                        }`}
                         onClick={() => handleColorChange(color)}
                         title={color}
                       >
                         <span
                           className={styles.color_inner}
-                          style={{ backgroundColor: COLOR_MAP[color] || color }}
+                          style={{
+                            backgroundColor: COLOR_MAP[color] || color,
+                          }}
                         />
                       </button>
                     ))}
@@ -248,7 +235,9 @@ export const ItemCard = () => {
                       <button
                         key={cap}
                         type="button"
-                        className={`${styles.cap_btn} ${product.capacity === cap ? styles.cap_btn_active : ''}`}
+                        className={`${styles.cap_btn} ${
+                          product.capacity === cap ? styles.cap_btn_active : ''
+                        }`}
                         onClick={() => handleCapacityChange(cap)}
                       >
                         {cap}
@@ -273,7 +262,9 @@ export const ItemCard = () => {
                 <div className={styles.action_btns}>
                   <button
                     type="button"
-                    className={`${styles.btn_cart} ${isInCart(product.id) ? styles.btn_cart_active : ''}`}
+                    className={`${styles.btn_cart} ${
+                      isInCart(product.id) ? styles.btn_cart_active : ''
+                    }`}
                     onClick={() => {
                       if (!isInCart(product.id)) {
                         addToCart({
@@ -282,6 +273,7 @@ export const ItemCard = () => {
                           name: product.name,
                           price: product.priceDiscount,
                         });
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                       }
                     }}
                   >
@@ -289,7 +281,9 @@ export const ItemCard = () => {
                   </button>
                   <button
                     type="button"
-                    className={`${styles.btn_fav} ${isFav ? styles.btn_fav_active : ''}`}
+                    className={`${styles.btn_fav} ${
+                      isFav ? styles.btn_fav_active : ''
+                    }`}
                     aria-label={
                       isFav ? 'Remove from favorites' : 'Add to favorites'
                     }
@@ -304,7 +298,14 @@ export const ItemCard = () => {
                 </div>
 
                 <div className={styles.short_specs}>
-                  {shortSpecs.map(([label, value]) => (
+                  {(
+                    [
+                      ['Screen', product.screen],
+                      ['Resolution', product.resolution],
+                      ['Processor', product.processor],
+                      ['RAM', product.ram],
+                    ] as [string, string][]
+                  ).map(([label, value]) => (
                     <div key={label} className={styles.spec_row}>
                       <span className={styles.spec_label}>{label}</span>
                       <span className={styles.spec_value}>{value}</span>
@@ -314,6 +315,7 @@ export const ItemCard = () => {
               </div>
             </div>
 
+            {/* ABOUT + TECH SPECS */}
             <div className={styles.details_section}>
               <div className={styles.about}>
                 <h3 className={styles.section_title}>About</h3>
@@ -334,7 +336,18 @@ export const ItemCard = () => {
                 <h2 className={styles.section_title}>Tech specs</h2>
                 <div className={styles.section_divider} />
                 <div className={styles.specs_list}>
-                  {techSpecs.map(([label, value]) => (
+                  {(
+                    [
+                      ['Screen', product.screen],
+                      ['Resolution', product.resolution],
+                      ['Processor', product.processor],
+                      ['RAM', product.ram],
+                      ['Built in memory', product.capacity],
+                      ['Camera', product.camera],
+                      ['Zoom', product.zoom],
+                      ['Cell', product.cell.join(', ')],
+                    ] as [string, string][]
+                  ).map(([label, value]) => (
                     <div key={label} className={styles.spec_row}>
                       <span className={styles.spec_label}>{label}</span>
                       <span className={styles.spec_value}>{value}</span>
@@ -344,6 +357,7 @@ export const ItemCard = () => {
               </div>
             </div>
 
+            {/* YOU MAY ALSO LIKE */}
             {suggested.length > 0 && (
               <div className={styles.suggested_section}>
                 <div className={styles.suggested_header}>
@@ -388,6 +402,9 @@ export const ItemCard = () => {
                           screen={p.screen}
                           capacity={p.capacity}
                           ram={p.ram}
+                          onCartClick={() =>
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                          } // 👈
                         />
                       </Link>
                     ))}
