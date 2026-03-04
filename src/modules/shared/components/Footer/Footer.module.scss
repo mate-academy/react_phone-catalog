@@ -73,9 +73,6 @@
   .footer {
     margin-top: 20px;
   }
-  .footer__items {
-    gap: 54px;
-  }
 
   .footer__content {
     flex-direction: column;
@@ -86,8 +83,9 @@
   .footer__items {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 54px;
   }
+
   .footer__btn {
     align-self: center;
   }

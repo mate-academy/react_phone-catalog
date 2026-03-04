@@ -3,7 +3,7 @@
 .content {
   display: flex;
   gap: 64px;
-  padding: 0 0 40px 0;
+  padding: 0 0 40px;
 }
 
 .gallery {
@@ -114,6 +114,11 @@
   gap: 10px;
 }
 
+.capacity {
+  padding: 0 8px;
+  color: $primary__text-color;
+}
+
 .capacity__frame {
   height: 32px;
 
@@ -144,11 +149,6 @@
       color: $secondary__background-color;
     }
   }
-}
-
-.capacity {
-  padding: 0 8px;
-  color: $primary__text-color;
 }
 
 .prices {
@@ -228,22 +228,28 @@
 .cart:hover {
   background-color: $accent__color-hover;
 }
+
 .cart:active {
   background-color: $secondary__element-color;
+}
+
+.favourites__img {
+  position: absolute;
+  content: url('./../../../../../public//img/favourites.svg');
+
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .card__favourites {
   background-color: $secondary__element-color;
   padding: 12px;
-}
-
-.card__favourites {
   position: relative;
   width: 40px;
   height: 40px;
-
-  background-color: $secondary__element-color;
-  // padding: 12px;
 
   transition: background-color 0.3s ease;
 }
@@ -262,21 +268,10 @@
   }
 }
 
-.favourites__img {
-  position: absolute;
-  content: url('./../../../../../public//img/favourites.svg');
-
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 @media (max-width: 899px) {
   .content {
     gap: 32px;
-    padding: 0 0 20px 0;
+    padding: 0 0 20px;
   }
   .main__image img {
     width: 287px;

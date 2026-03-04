@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 import styles from './Path.module.scss';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import home from './../../../../../public/img/icons/Home.svg';
 import { FC } from 'react';
 import classNames from 'classnames';
 // eslint-disable-next-line max-len
+import arrowRight from './../../../../../public/img/icons/arrowRight.svg';
 import arrowLeftWhite from './../../../../../public/img/icons/arrowLeftWhite.svg';
 
 type Props = {
@@ -29,7 +31,7 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
 
           <div className={styles.pathName}>
             <p className={styles.pathArrow}>
-              <img src={arrowLeftWhite} alt="arrowLeftWhite" />
+              <img src={arrowRight} alt="arrowRight" />
             </p>
             <NavLink
               className={isLinkActive}
@@ -41,7 +43,9 @@ export const Path: FC<Props> = ({ pathName, nameOfProduct, cart }) => {
 
           {nameOfProduct && (
             <div className={styles.pathName}>
-              <p className={styles.pathArrow}></p>
+              <p className={styles.pathArrow}>
+                <img src={arrowRight} alt="arrowRight" />
+              </p>
               <NavLink className={styles.link} to={`/${nameOfProduct}`}>
                 {nameOfProduct}
               </NavLink>

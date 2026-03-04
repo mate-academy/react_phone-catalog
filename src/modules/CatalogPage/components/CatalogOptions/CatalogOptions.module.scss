@@ -7,13 +7,12 @@
 
   margin-top: 40px;
 }
+
 .title {
   margin-bottom: 4px;
   color: $secondary__text-color;
 }
 
-.sort__select {
-}
 .trigger {
   width: 176px;
   display: flex;
@@ -78,9 +77,6 @@
   &[data-state='checked'] {
     background: $secondary__element-color;
     color: $primary__text-color;
-  }
-
-  &:hover {
   }
 }
 

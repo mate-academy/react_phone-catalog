@@ -22,7 +22,13 @@ export const Footer = () => {
                 </a>
               </li>
               <li className={styles.footer__item}>
-                <a href="#">Contacts</a>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/iryna-kohut-555b671bb"
+                >
+                  LinkedIn
+                </a>
               </li>
             </ul>
           </nav>
