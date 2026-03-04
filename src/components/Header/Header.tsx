@@ -48,19 +48,13 @@ const Header: React.FC = () => {
 
     setSearchValue(value);
 
-    const params = new URLSearchParams(window.location.search);
-
-    if (value) {
-      params.set('query', value.toLowerCase());
-    } else {
-      params.delete('query');
-    }
+    // Визначаємо категорію
+    const path = location.pathname.includes('catalog')
+      ? location.pathname // залишаємо поточний каталог
+      : routes.phones; // дефолтно на телефони
 
     navigate(
-      {
-        pathname: window.location.pathname,
-        search: value ? `?query=${value.toLowerCase()}` : '',
-      },
+      { pathname: path, search: value ? `?query=${value.toLowerCase()}` : '' },
       { replace: true },
     );
   };
