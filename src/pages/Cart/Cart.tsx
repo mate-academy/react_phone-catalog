@@ -50,7 +50,7 @@ const Cart = () => {
   };
 
   const handleTotalPrice = () => {
-    return products.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return carts.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
   if (isLoading) {
@@ -117,15 +117,14 @@ const Cart = () => {
                 </button>
 
                 <img
-                  src={product.image}
-                  alt={product.itemId}
+                  src={`${import.meta.env.BASE_URL}${product.image}`}
+                  alt={`${product.name}`}
                   className={styles.cart__item_img}
                 />
 
                 <p className={styles.cart__item_info_title}>{product.name}</p>
               </div>
 
-              {/* ПРАВИЙ БЛОК: кількість + ціна */}
               <div className={styles.cart__item_right}>
                 <div className={styles.cart__item__quantity}>
                   <button
@@ -161,7 +160,7 @@ const Cart = () => {
         <div className={styles.cart__total}>
           <p className={styles.cart__total_price}>${handleTotalPrice()}</p>
           <p className={styles.cart__total_text}>
-            Total for {products.length} items
+            Total for {carts.length} items
           </p>
 
           <span className={styles.cart__total_line}>{''}</span>

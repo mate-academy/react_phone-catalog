@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-extraneous-dependencies */
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import type { ProductCardData } from '../../types/product.types';
 import type { RootState } from '../../store/store';
@@ -10,7 +10,7 @@ import { addFavorite, removeFavorite } from '../../store/slices/favoritesSlice';
 import styles from './ProductCard.module.scss';
 import FavoritesHurt from '/img/FavoritesHurt.png';
 import FavoritesHurtActive from '../../UI/Buttons/Icons/FavoritesHurtActive.svg';
-import { addToCart } from '../../store/slices/cartSlice';
+import { addToCart, removeFromCart } from '../../store/slices/cartSlice';
 
 type ProductCardProps = {
   product: ProductCardData;
@@ -24,8 +24,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const favorites = useSelector((state: RootState) => state.favorites.items);
   const cart = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const handleAddFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -41,18 +39,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   const handleAddToCart = () => {
-    dispatch(
-      addToCart({
-        itemId: product.itemId,
-        image: product.image,
-        category: product.category,
-        name: product.name,
-        price: product.fullPrice,
-        quantity: 1,
-      }),
-    );
-
-    navigate('/cart');
+    if (cart.find(item => item.itemId === product.itemId)) {
+      dispatch(removeFromCart(product.itemId));
+    } else {
+      dispatch(
+        addToCart({
+          itemId: product.itemId,
+          image: product.image,
+          category: product.category,
+          name: product.name,
+          price: product.fullPrice,
+          quantity: 1,
+        }),
+      );
+    }
   };
 
   return (

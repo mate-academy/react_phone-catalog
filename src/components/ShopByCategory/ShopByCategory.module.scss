@@ -54,6 +54,12 @@
     display: flex;
     flex: 1 1 calc(33.33% - 14px);
     flex-direction: column;
+    transition: all 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
 
     @include mixins.tablet {
       flex: 1 1 calc(33.33% - 11px);

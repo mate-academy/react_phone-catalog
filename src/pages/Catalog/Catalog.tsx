@@ -21,24 +21,40 @@ import ProductNotFound from '../../UI/photos/product-not-found.png';
 type CatalogParams = 'phones' | 'tablets' | 'accessories';
 
 const Catalog = () => {
-  /** ------------------- STATE ------------------- */
+  /** ---------------- STATE ---------------- */
+
   const [products, setProducts] = useState<ProductCardData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(8);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  /** ---------------- ROUTER ---------------- */
 
-  const [sortBy, setSortBy] = useState<string>('def');
-
-  /** ------------------- ROUTER ------------------- */
   const params = useParams<{ category: CatalogParams }>();
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = window.location.pathname;
 
-  /** ------------------- API INFO ------------------- */
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search],
+  );
+
+  /** ---------------- URL PARAMS ---------------- */
+
+  const currentPage = Number(searchParams.get('page')) || 1;
+
+  const itemsPerPage: number | 'all' =
+    searchParams.get('perPage') === 'all'
+      ? 'all'
+      : Number(searchParams.get('perPage')) || 8;
+
+  const sortBy = (searchParams.get('sort') || 'def') as SortType;
+
+  const searchQuery = (searchParams.get('query') || '').toLowerCase();
+
+  /** ---------------- API INFO ---------------- */
+
   const getApiInfo = () => {
     switch (params.category) {
       case 'phones':
@@ -46,16 +62,19 @@ const Catalog = () => {
           title: 'Mobile Phones',
           url: `${import.meta.env.BASE_URL}api/phones.json`,
         };
+
       case 'tablets':
         return {
           title: 'Tablets',
           url: `${import.meta.env.BASE_URL}api/tablets.json`,
         };
+
       case 'accessories':
         return {
           title: 'Accessories',
           url: `${import.meta.env.BASE_URL}api/accessories.json`,
         };
+
       default:
         return { title: 'Catalog', url: '' };
     }
@@ -63,19 +82,19 @@ const Catalog = () => {
 
   const { title, url } = getApiInfo();
 
-  /** ------------------- FETCH PRODUCTS ------------------- */
+  /** ---------------- FETCH PRODUCTS ---------------- */
+
   useEffect(() => {
     if (!url) {
       return;
     }
 
     setIsLoading(true);
+
     fetch(url)
       .then(res => res.json())
       .then((data: ProductCatalogAPI[]) => {
-        const mappedProducts = mapCatalogProducts(data);
-
-        setProducts(mappedProducts);
+        setProducts(mapCatalogProducts(data));
         setIsLoading(false);
       })
       .catch(err => {
@@ -85,37 +104,8 @@ const Catalog = () => {
       });
   }, [url]);
 
-  /** ------------------- READ URL PARAMS ------------------- */
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
+  /** ---------------- FILTER ---------------- */
 
-    const sortFromUrl = searchParams.get('sort');
-    const pageFromUrl = searchParams.get('page');
-    const perPageFromUrl = searchParams.get('perPage');
-
-    if (sortFromUrl) {
-      setSortBy(sortFromUrl);
-    }
-
-    if (pageFromUrl) {
-      setCurrentPage(Number(pageFromUrl));
-    }
-
-    if (perPageFromUrl) {
-      setItemsPerPage(
-        perPageFromUrl === 'all' ? 'all' : Number(perPageFromUrl),
-      );
-    }
-  }, [location.search]);
-
-  /** ------------------- GET QUERY PARAM ------------------- */
-  const searchQuery = useMemo(() => {
-    const paramsQuery = new URLSearchParams(location.search);
-
-    return (paramsQuery.get('query') || '').toLowerCase();
-  }, [location.search]);
-
-  /** ------------------- FILTER PRODUCTS ------------------- */
   const filteredProducts = useMemo(() => {
     if (!searchQuery) {
       return products;
@@ -126,12 +116,14 @@ const Catalog = () => {
     );
   }, [products, searchQuery]);
 
-  /** ------------------- SORT PRODUCTS ------------------- */
+  /** ---------------- SORT ---------------- */
+
   const sortedProducts = useMemo(() => {
-    return sortProducts(filteredProducts, sortBy as SortType);
+    return sortProducts(filteredProducts, sortBy);
   }, [filteredProducts, sortBy]);
 
-  /** ------------------- PAGINATION ------------------- */
+  /** ---------------- PAGINATION ---------------- */
+
   const totalPages =
     itemsPerPage === 'all'
       ? 1
@@ -151,70 +143,65 @@ const Catalog = () => {
     return generatePaginationPages(totalPages, currentPage, maxVisiblePages);
   }, [currentPage, totalPages]);
 
-  /** ------------------- UPDATE URL ------------------- */
+  /** ---------------- UPDATE URL ---------------- */
+
   const updateSearchParams = (paramsToUpdate: Record<string, string>) => {
-    const searchParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams(location.search);
 
     Object.entries(paramsToUpdate).forEach(([key, value]) => {
-      if (
-        value === '1' ||
-        value === 'all' ||
-        value === '' ||
-        value === 'default'
-      ) {
-        searchParams.delete(key);
+      if (value === '' || value === '1' || value === 'def') {
+        urlParams.delete(key);
       } else {
-        searchParams.set(key, value);
+        urlParams.set(key, value);
       }
     });
 
-    navigate(`${location.pathname}?${searchParams.toString()}`);
+    navigate(`${location.pathname}?${urlParams.toString()}`);
   };
 
-  /** ------------------- RESET PAGE ON SORT/ITEMS CHANGE ------------------- */
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [itemsPerPage, sortBy]);
+  /** ---------------- HANDLERS ---------------- */
 
-  /** ------------------- HANDLERS ------------------- */
   const handleItemsPerPageChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    const value = e.target.value === 'all' ? 'all' : Number(e.target.value);
+    const value = e.target.value;
 
-    setItemsPerPage(value);
-    setCurrentPage(1);
-
-    updateSearchParams({ perPage: String(value), page: '1' });
+    updateSearchParams({
+      perPage: value,
+      page: '1',
+    });
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    const searchParams = new URLSearchParams(location.search);
-
-    searchParams.set('sort', value);
-    navigate(`${location.pathname}?${searchParams.toString()}`);
+    updateSearchParams({
+      sort: e.target.value,
+      page: '1',
+    });
   };
 
   const handlePrevPage = () => {
     const newPage = Math.max(currentPage - 1, 1);
 
-    setCurrentPage(newPage);
-    updateSearchParams({ page: String(newPage) });
+    updateSearchParams({
+      page: String(newPage),
+    });
   };
 
   const handleNextPage = () => {
     const newPage = Math.min(currentPage + 1, totalPages);
 
-    setCurrentPage(newPage);
-    updateSearchParams({ page: String(newPage) });
+    updateSearchParams({
+      page: String(newPage),
+    });
   };
 
   const handlePageClick = (page: number) => {
-    setCurrentPage(page);
-    updateSearchParams({ page: String(page) });
+    updateSearchParams({
+      page: String(page),
+    });
   };
 
+  /** ---------------- ERRORS ---------------- */
   if (!url) {
     return (
       <div className={styles.error}>

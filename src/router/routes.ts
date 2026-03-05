@@ -11,9 +11,9 @@ export const routes = {
   cart: '/cart',
   favorites: '/favorites',
 
-  github: '/github',
-  contacts: '/contacts',
-  rights: '/rights',
+  github: 'https://github.com/Vovanchu/react_phone-catalog',
+  contacts: '/#',
+  rights: '/#',
 
   notFound: '*',
 };
