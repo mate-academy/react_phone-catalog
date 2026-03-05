@@ -44,10 +44,10 @@ export const HomePage = () => {
 
   return (
     <div className={styles.page}>
+      <h1 className={styles.visually_hidden}>Product Catalog</h1>
       <Navigation />
 
       <main className={styles.main}>
-        <h1 className={styles.visually_hidden}>Product Catalog</h1>
         <section>
           <PictureSlider />
         </section>

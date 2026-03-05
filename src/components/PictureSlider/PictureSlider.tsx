@@ -23,7 +23,7 @@ export const PictureSlider = () => {
 
   return (
     <div className="slider">
-      <h1 className="welcome">Welcome to Nice Gadgets store!</h1>
+      <h2 className="welcome">Welcome to Nice Gadgets store!</h2>
       <div className="slider__content">
         {/* Кнопка Вліво - з'явиться тільки на 640px+ */}
         <button className="slider__btn slider__btn--left" onClick={prevSlide}>
