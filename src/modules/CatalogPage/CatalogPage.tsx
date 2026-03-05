@@ -40,6 +40,7 @@ export const CatalogPage: FC<Props> = ({ pathName, title, products }) => {
             currentPage={currentPage}
             handlePerPage={handlePerPage}
             handleSort={handleSort}
+            handlePage={handlePage}
           />
 
           <CatalogProducts

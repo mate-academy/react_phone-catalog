@@ -1,6 +1,6 @@
 import styles from './CatalogOptions.module.scss';
 import './../../../../styles/global.scss';
-import { FC, useEffect, useState } from 'react';
+import { FC, SetStateAction, useEffect, useState } from 'react';
 import { SortName } from '../../../../types/SortName';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as Select from '@radix-ui/react-select';
@@ -14,6 +14,7 @@ type Props = {
   currentPage: number;
   handlePerPage: (val: ItemsPerPage) => void;
   handleSort: (val: SortName) => void;
+  handlePage: (val: number) => void;
 };
 
 export const CatalogOptions: FC<Props> = ({
@@ -21,6 +22,7 @@ export const CatalogOptions: FC<Props> = ({
   itemsPerPage,
   handlePerPage,
   handleSort,
+  handlePage,
 }) => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isItemsOpen, setIsItemsOpen] = useState(false);
@@ -43,6 +45,7 @@ export const CatalogOptions: FC<Props> = ({
           <Select.Root
             value={sort}
             onValueChange={(value: SortName) => {
+              handlePage(1);
               handleSort(value);
             }}
             onOpenChange={setIsSortOpen}
@@ -89,6 +92,7 @@ export const CatalogOptions: FC<Props> = ({
           <Select.Root
             value={itemsPerPage}
             onValueChange={value => {
+              handlePage(1);
               handlePerPage(value);
             }}
             onOpenChange={setIsItemsOpen}

@@ -87,12 +87,11 @@
 }
 
 .actions__wrapper {
-  padding: 14px;
   border-left: 0.5px solid $secondary__text-color;
 }
 
 .actions__wrapper img {
-  padding: 10px;
+  padding: 24px;
 }
 
 @media (max-width: 1199px) {
@@ -125,9 +124,8 @@
     align-items: center;
     justify-content: center;
 
-    top: 4px;
-
-    right: 4px;
+    top: 20px;
+    right: 18px;
     z-index: 1000;
   }
 }
@@ -148,9 +146,8 @@
     align-items: center;
     justify-content: center;
 
-    top: 4px;
-
-    right: 4px;
+    top: 20px;
+    right: 18px;
     z-index: 1000;
   }
 }
@@ -162,8 +159,8 @@
   &::before {
     content: '';
     position: absolute;
-    left: -14px;
-    bottom: -14px;
+    left: 0px;
+    bottom: 0px;
     width: 64px;
     height: 2px;
     background-color: white;
@@ -200,10 +197,6 @@
   .menu__burger img {
     width: 16px;
     height: 16px;
-  }
-
-  .actions__wrapper {
-    padding: 16px;
   }
 
   .burgerMenu {

@@ -32,11 +32,13 @@ export const AddToCart: FC<Props> = ({ productId }) => {
       onClick={() => {
         if (!isAdded) {
           dispatch(cartSlice.actions.addProductToCart(productForCard));
+        } else {
+          dispatch(cartSlice.actions.removeProductFromCart(productForCard));
         }
       }}
       className={isAdded ? styles.cartAdded : styles.cart}
     >
-      {isAdded ? 'Added' : 'Add to cart'}
+      {isAdded ? 'Remove from cart' : 'Add to cart'}
     </button>
   );
 };

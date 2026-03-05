@@ -11,6 +11,10 @@ type Props = {
 export const TotalAmount: FC<Props> = ({ products }) => {
   const dispatch = useAppDispatch();
 
+  const cartProducts = useAppSelector(state => state.cart);
+
+  const count = cartProducts.reduce((accum, curr) => accum + curr.count, 0);
+
   const totalAmount = useAppSelector(state =>
     state.cart.reduce((sum, item) => sum + item.price * item.count, 0),
   );
@@ -29,9 +33,7 @@ export const TotalAmount: FC<Props> = ({ products }) => {
     <div className={styles.total__amount}>
       <div className={styles.main__desc}>
         <h2 className={styles.price}>{`$${totalAmount}`}</h2>
-        <div
-          className={styles.desc}
-        >{`total for ${products.length} items`}</div>
+        <div className={styles.desc}>{`total for ${count} items`}</div>
       </div>
       <div className={styles.line}> </div>
       <button onClick={handleCheckout} className={styles.btn}>

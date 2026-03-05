@@ -24,6 +24,10 @@ export const cartSlice = createSlice({
         state.push(action.payload);
       }
     },
+    removeProductFromCart: (state, action) => {
+      return state.filter(product => product.id !== action.payload.id);
+    },
+
     removeProduct: (state, action) => {
       return state.filter(product => product.id !== action.payload);
     },

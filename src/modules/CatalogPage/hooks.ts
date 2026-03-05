@@ -38,7 +38,7 @@ export const useCatalog = (products: Product[]) => {
 
   const handlePage = (value: number) => {
     setCurrentPage(value);
-    if (Number(value) !== 1) {
+    if (Number(value)) {
       searchParams.set('page', String(value));
     }
 

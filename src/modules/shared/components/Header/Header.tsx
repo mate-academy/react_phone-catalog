@@ -23,6 +23,7 @@ export const Header = () => {
 
   const favoritesIds = useAppSelector(state => state.favorites);
   const cartProducts = useAppSelector(state => state.cart);
+  const count = cartProducts.reduce((accum, curr) => accum + curr.count, 0);
 
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
@@ -82,7 +83,7 @@ export const Header = () => {
           </span>
           <span className={styles.actions__wrapper}>
             <NavLink
-              data-count={cartProducts.length}
+              data-count={count}
               to="/cart"
               className={({ isActive }) =>
                 classNames(styles.actions__link, {
