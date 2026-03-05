@@ -11,7 +11,7 @@
   gap: 24px;
   align-items: center;
 
-  padding: 0 16px;
+  padding: 0 0 0 16px;
   border-bottom: 1px solid vars.$secondary-color;
 
   font-family: vars.$font-primary;
@@ -177,12 +177,8 @@
     margin-left: auto;
 
     a {
-      cursor: pointer;
-
       position: relative;
-
       display: flex;
-      display: inline-block;
       align-items: center;
       justify-content: center;
 
@@ -190,23 +186,30 @@
       border-left: 1px solid vars.$secondary-color;
 
       transition: background-color 0.3s ease;
+    }
 
-      &_img {
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
-      }
+    &_img {
+      width: 24px;
+      height: 24px;
     }
 
     .badge {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 10px;
+      right: 10px;
 
-      padding: 2px 6px;
+      min-width: 10px;
+      height: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 4px;
       border-radius: 50%;
 
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 600;
       color: #fff;
 
       background: #eb5757;
@@ -214,7 +217,6 @@
 
     .activeActions {
       border-bottom: 2px solid vars.$primary-color;
-      color: vars.$primary-color !important;
     }
   }
 

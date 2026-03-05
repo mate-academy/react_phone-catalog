@@ -15,6 +15,7 @@ import {
   removeFromCart,
 } from '../../store/slices/cartSlice';
 import { Skeleton } from '@mui/material';
+import { selectCartTotal } from '../../store/selectors/selectCartTotal';
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -24,6 +25,8 @@ const Cart = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const carts = useSelector((state: RootState) => state.cart.items);
+
+  const total = useSelector(selectCartTotal);
 
   useEffect(() => {
     if (!carts.length) {
@@ -159,9 +162,7 @@ const Cart = () => {
 
         <div className={styles.cart__total}>
           <p className={styles.cart__total_price}>${handleTotalPrice()}</p>
-          <p className={styles.cart__total_text}>
-            Total for {carts.length} items
-          </p>
+          <p className={styles.cart__total_text}>Total for {total} items</p>
 
           <span className={styles.cart__total_line}>{''}</span>
 

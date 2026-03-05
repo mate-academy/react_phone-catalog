@@ -10,6 +10,7 @@ import { RootState } from '../../store/store';
 import FavoritesHurt from '../../UI/Buttons/Icons/FavouritesHurtAnactive.svg';
 import CartHurt from '../../UI/Buttons/Icons/CartHurt.svg';
 import Logo from '../../UI/photos/Logo.svg';
+import { selectCartTotal } from '../../store/selectors/selectCartTotal';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,8 @@ const Header: React.FC = () => {
 
   const cart = useSelector((state: RootState) => state.cart.items);
   const favorite = useSelector((state: RootState) => state.favorites.items);
+
+  const total = useSelector(selectCartTotal);
 
   const location = useLocation();
 
@@ -131,9 +134,7 @@ const Header: React.FC = () => {
             alt="Cart"
             className={styles.header__actions_desktop_img}
           />
-          {cart.length > 0 && (
-            <span className={styles.badge}>{cart.length}</span>
-          )}
+          {cart.length > 0 && <span className={styles.badge}>{total}</span>}
         </NavLink>
       </div>
 
