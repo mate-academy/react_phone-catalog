@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { CatalogProducts, Product } from '../../types/Types';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProductById, getProducts } from '../../api/products';
+import {
+  getProductById,
+  getProducts,
+  getSuggestedProducts,
+} from '../../api/products';
 import styles from './ProductDetailsPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
@@ -20,16 +24,14 @@ export const ProductDetailsPage: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<CatalogProducts[]>(
     [],
   );
-  const [, setCatalogProduct] = useState<CatalogProducts | null>(null);
 
-  const { category, productId } = useParams<{
-    category: string;
+  const { productId } = useParams<{
     productId: string;
   }>();
   const navigate = useNavigate();
 
   const fetchProducts = useCallback(async () => {
-    if (!productId || !category) {
+    if (!productId) {
       return;
     }
 
@@ -37,32 +39,32 @@ export const ProductDetailsPage: React.FC = () => {
     setErrorMessage('');
 
     try {
-      const [data, allProducts] = await Promise.all([
-        getProductById(category, productId),
-        getProducts(),
-      ]);
+      const allProducts = await getProducts();
+
+      const match = allProducts.find(prod => prod.itemId === productId);
+
+      if (!match) {
+        throw new Error('Product not found in catalog');
+      }
+
+      const data = await getProductById(match.category, productId);
 
       if (!data) {
         throw new Error('No product information found');
       }
 
-      const match = allProducts.find(prod => prod.itemId === productId);
-
-      setCatalogProduct(match ?? null);
       setProduct(data);
       setSelectedImage(data.images[0] || '');
 
-      const shuffledProducts = [...allProducts]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 12);
+      const suggested = await getSuggestedProducts();
 
-      setSuggestedProducts(shuffledProducts);
+      setSuggestedProducts(suggested);
     } catch (error) {
       setErrorMessage('Product was not found.');
     } finally {
       setIsLoading(false);
     }
-  }, [productId, category]);
+  }, [productId]);
 
   useEffect(() => {
     fetchProducts();
@@ -70,7 +72,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className={styles.details}>
-      <Breadcrumbs category={category} productName={product?.name} />
+      <Breadcrumbs category={product?.category} productName={product?.name} />
       <button onClick={() => navigate(-1)} className={styles.details__back}>
         <ArrowLeftIcon />
         Back

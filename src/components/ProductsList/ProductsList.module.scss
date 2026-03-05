@@ -20,10 +20,6 @@
     grid-column: span 6;
   }
 
-  @media (min-width: 76px) {
-    grid-column: span 4;
-  }
-
   @include respond-to('desktop') {
     grid-column: span 6;
   }

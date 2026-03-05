@@ -1,11 +1,8 @@
 import {
-  BaseProduct,
   CatalogProducts,
   CategoriesType,
   PathType,
-  PhoneType,
   Product,
-  TabletType,
 } from '../types/Types';
 import { getData } from './fetchClient';
 
@@ -13,16 +10,26 @@ export const getProducts = () => {
   return getData<CatalogProducts[]>(`${PathType.PRODUCTS}.json`);
 };
 
-export const getPhones = () => {
-  return getData<PhoneType[]>(`${PathType.PHONES}.json`);
+export const getPhones = async () => {
+  const products = await getProducts();
+
+  return products.filter(product => product.category === CategoriesType.PHONES);
 };
 
-export const getTablets = () => {
-  return getData<TabletType[]>(`${PathType.TABLETS}.json`);
+export const getTablets = async () => {
+  const products = await getProducts();
+
+  return products.filter(
+    product => product.category === CategoriesType.TABLETS,
+  );
 };
 
-export const getAccessories = () => {
-  return getData<BaseProduct[]>(`${PathType.ACCESSORIES}.json`);
+export const getAccessories = async () => {
+  const products = await getProducts();
+
+  return products.filter(
+    product => product.category === CategoriesType.ACCESSORIES,
+  );
 };
 
 export const getProductById = async (category: string, itemId: string) => {
@@ -39,7 +46,7 @@ export const getProductById = async (category: string, itemId: string) => {
       path = PathType.ACCESSORIES;
       break;
     default:
-      path = PathType.PHONES;
+      throw new Error('Unknown category');
   }
 
   const products = await getData<Product[]>(`${path}.json`);
@@ -51,4 +58,10 @@ export const getProductById = async (category: string, itemId: string) => {
   }
 
   return product;
+};
+
+export const getSuggestedProducts = async () => {
+  const products = await getProducts();
+
+  return [...products].sort(() => Math.random() - 0.5).slice(0, 12);
 };

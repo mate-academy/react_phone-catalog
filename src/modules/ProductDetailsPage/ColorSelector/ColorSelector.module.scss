@@ -25,7 +25,7 @@
     gap: 8px;
   }
 
-  &__button {
+  &__label {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -55,5 +55,13 @@
     @include respond-to('desktop') {
       min-width: 176px;
     }
+  }
+
+  &__radio {
+    @include radio-hidden;
+  }
+
+  &__visuallyHidden {
+    @include visually-hidden;
   }
 }

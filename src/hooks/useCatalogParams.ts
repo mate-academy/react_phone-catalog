@@ -8,6 +8,7 @@ export const useCatalogParams = () => {
   const sortParam = searchParams.get('sort');
   const pageParam = searchParams.get('page');
   const perPageParam = searchParams.get('perPage');
+  const queryParam = searchParams.get('query') || '';
 
   const sort =
     sortParam === SortType.AGE ||
@@ -28,13 +29,8 @@ export const useCatalogParams = () => {
       const newSort = event.target.value;
       const newParams = new URLSearchParams(searchParams);
 
-      if (newSort === SortType.AGE) {
-        newParams.delete('sort');
-      } else {
-        newParams.set('sort', newSort);
-      }
-
-      newParams.delete('page');
+      newParams.set('sort', newSort);
+      newParams.set('page', '1');
       setSearchParams(newParams);
     },
     [searchParams, setSearchParams],
@@ -44,13 +40,9 @@ export const useCatalogParams = () => {
     (newPerPage: string) => {
       const newParams = new URLSearchParams(searchParams);
 
-      if (newPerPage === PerPageType.ALL) {
-        newParams.delete('perPage');
-      } else {
-        newParams.set('perPage', newPerPage);
-        newParams.delete('page');
-        setSearchParams(newParams);
-      }
+      newParams.set('perPage', newPerPage);
+      newParams.set('page', '1');
+      setSearchParams(newParams);
     },
     [searchParams, setSearchParams],
   );
@@ -72,12 +64,31 @@ export const useCatalogParams = () => {
     [searchParams, setSearchParams, perPage],
   );
 
+  const handleQueryChange = useCallback(
+    (newQuery: string) => {
+      const newParams = new URLSearchParams(searchParams);
+
+      if (newQuery.trim()) {
+        newParams.set('query', newQuery);
+      } else {
+        newParams.delete('query');
+      }
+
+      newParams.set('page', '1');
+      setSearchParams(newParams);
+    },
+
+    [searchParams, setSearchParams],
+  );
+
   return {
     sort,
     page,
     perPage,
+    query: queryParam,
     handleSortChange,
     handlePerPageChange,
     handlePageChange,
+    handleQueryChange,
   };
 };

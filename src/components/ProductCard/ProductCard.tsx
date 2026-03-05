@@ -22,17 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isActiveFavourite = isFavourite(product.id);
   const isAdded = isInCart(product.id);
 
-  const {
-    name,
-    price,
-    fullPrice,
-    screen,
-    capacity,
-    ram,
-    image,
-    category,
-    itemId,
-  } = product;
+  const { name, price, fullPrice, screen, capacity, ram, image } = product;
 
   const handleCartClick = () => {
     if (!isAdded) {
@@ -40,7 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
   };
 
-  const productLink = `/${category}/${itemId}`;
+  const productLink = `/product/${product.itemId}`;
 
   const specs = [
     { name: 'Screen', value: screen },

@@ -56,7 +56,7 @@ export const App = () => (
                 ></Route>
                 <Route path={PathType.CART} element={<CartPage />}></Route>
                 <Route
-                  path={`:${PathType.CATEGORY}/:${PathType.PRODUCT_ID}`}
+                  path="/product/:productId"
                   element={<ProductDetailsPage />}
                 />
 

@@ -45,4 +45,8 @@
       margin-top: 40px;
     }
   }
+
+  &__empty {
+    grid-column: 1 / -1;
+  }
 }

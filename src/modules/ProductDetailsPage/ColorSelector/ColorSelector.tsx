@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../../../types/Types';
+import { PathType, Product } from '../../../types/Types';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './ColorSelector.module.scss';
 
@@ -9,7 +9,7 @@ interface ColorSelectorProps {
 
 export const ColorSelector: React.FC<ColorSelectorProps> = ({ product }) => {
   const navigate = useNavigate();
-  const { category } = useParams();
+  const {} = useParams();
 
   const handleColorChange = (newColor: string) => {
     const capacityFormatted = product.capacity
@@ -18,7 +18,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ product }) => {
     const colorFormatted = newColor.toLowerCase().replace(/\s+/g, '-');
     const newItemId = `${product.namespaceId}-${capacityFormatted}-${colorFormatted}`;
 
-    navigate(`/${category}/${newItemId}`);
+    navigate(`${PathType.PRODUCT}/${newItemId}`);
   };
 
   return (
@@ -31,16 +31,27 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ product }) => {
         <div className={styles.colorSelector__colors}>
           {product.colorsAvailable?.map(color => {
             return (
-              <button
+              <label
                 key={color}
-                className={`${styles.colorSelector__button} ${
+                className={`${styles.colorSelector__label} ${
                   color === product.color
-                    ? styles['colorSelector__button--active']
+                    ? styles['colorSelector__label--active']
                     : ''
                 }`}
                 style={{ backgroundColor: color }}
-                onClick={() => handleColorChange(color)}
-              ></button>
+              >
+                <span className={styles.colorSelector__visuallyHidden}>
+                  Color {color}
+                </span>
+                <input
+                  type="radio"
+                  name={`color-${product.id}`}
+                  value={color}
+                  checked={color === product.color}
+                  onChange={() => handleColorChange(color)}
+                  className={styles.colorSelector__radio}
+                />
+              </label>
             );
           })}
         </div>

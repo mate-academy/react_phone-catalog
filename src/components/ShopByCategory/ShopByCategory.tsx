@@ -3,35 +3,38 @@ import styles from './ShopByCategory.module.scss';
 import { NavLink } from 'react-router-dom';
 
 import { CategoriesType, Category, PathType } from '../../types/Types';
-
-const categories: Category[] = [
-  {
-    name: 'Mobile phones',
-    src: '/img/category-phones.png',
-    alt: 'Phones category',
-    link: PathType.PHONES,
-    quantity: 95,
-    type: CategoriesType.PHONES,
-  },
-  {
-    name: 'Tablets',
-    src: '/img/category-tablets.png',
-    alt: 'Tablets category',
-    link: PathType.TABLETS,
-    quantity: 24,
-    type: CategoriesType.TABLETS,
-  },
-  {
-    name: 'Accessories',
-    src: '/img/category-accessories.png',
-    alt: 'Accessories category',
-    link: PathType.ACCESSORIES,
-    quantity: 100,
-    type: CategoriesType.ACCESSORIES,
-  },
-];
+import { useCategoryCounts } from '../../hooks/useCategoryCounts';
 
 export const ShopByCategory: React.FC = () => {
+  const counts = useCategoryCounts();
+
+  const categories: Category[] = [
+    {
+      name: 'Mobile phones',
+      src: '/img/category-phones.png',
+      alt: 'Phones category',
+      link: PathType.PHONES,
+      quantity: counts[CategoriesType.PHONES],
+      type: CategoriesType.PHONES,
+    },
+    {
+      name: 'Tablets',
+      src: '/img/category-tablets.png',
+      alt: 'Tablets category',
+      link: PathType.TABLETS,
+      quantity: counts[CategoriesType.TABLETS],
+      type: CategoriesType.TABLETS,
+    },
+    {
+      name: 'Accessories',
+      src: '/img/category-accessories.png',
+      alt: 'Accessories category',
+      link: PathType.ACCESSORIES,
+      quantity: counts[CategoriesType.ACCESSORIES],
+      type: CategoriesType.ACCESSORIES,
+    },
+  ];
+
   return (
     <section className={styles.category}>
       <h2 className={styles.category__title}>Shop by category</h2>

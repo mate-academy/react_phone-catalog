@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ProductCard } from '../../components/ProductCard';
+import { ProductsList } from '../../components/ProductsList';
 import { useFavourites } from '../../context/FavoritesContext';
 import styles from './FavouritesPage.module.scss';
 
@@ -16,11 +16,7 @@ export const FavouritesPage: React.FC = () => {
 
       {favourites.length > 0 ? (
         <div className={styles.favourites__products}>
-          {favourites.map(product => (
-            <div key={product.id} className={styles.favourites__item}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+          <ProductsList products={favourites} />
         </div>
       ) : (
         <h2 className={styles.favourites__empty}>

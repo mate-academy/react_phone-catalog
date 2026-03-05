@@ -24,8 +24,12 @@
     gap: 8px;
   }
 
-  &__button {
+  &__label {
     @include body-text;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     min-width: 56px;
     height: 32px;
@@ -48,5 +52,13 @@
       border-color: var(--text-main);
       color: #fff;
     }
+  }
+
+  &__radio {
+    @include radio-hidden;
+  }
+
+  &__visuallyHidden {
+    @include visually-hidden;
   }
 }

@@ -13,6 +13,7 @@ import { MenuIcon } from '../ui/MenuIcon';
 import { ThemeToggler } from '../ui/ThemeToggler';
 import styles from './Header.module.scss';
 import { PathType } from '../../types/Types';
+import { Search } from '../Search';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ export const Header: React.FC = () => {
           </Link>
 
           <Nav className={styles.header__nav} />
-
+          <Search />
           <div className={styles.header__actions}>
             <ThemeToggler />
             <NavLink

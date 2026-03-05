@@ -6,29 +6,41 @@ import { ArrowRightIcon } from '../ui/ArrowRightIcon';
 import { HomeIcon } from '../ui/HomeIcon';
 
 interface BreadcrumbsProps {
-  category: string | undefined;
-  productName: string | undefined;
+  category?: string | undefined;
+  productName?: string | undefined;
 }
+
+const categoryLabels: Record<string, string> = {
+  phones: 'Phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   category,
   productName,
 }) => {
   return (
-    <nav className={styles.nav}>
-      <Link to="/" className={styles.nav__link}>
+    <div className={styles.breadcrumbs}>
+      <Link to="/" className={styles.breadcrumbs__home}>
         <HomeIcon />
       </Link>
-      <span className={styles.nav__separator}>
-        <ArrowRightIcon />
-      </span>
-      <Link to={`/${category}`} className={styles.nav__link}>
-        {category}
-      </Link>
-      <span className={styles.nav__separator}>
-        <ArrowRightIcon />
-      </span>
-      <span className={styles.nav__linkActive}>{productName}</span>
-    </nav>
+
+      {category && (
+        <>
+          <ArrowRightIcon />
+          <Link to={`/${category}`} className={styles.breadcrumbs__link}>
+            {categoryLabels[category] || category}
+          </Link>
+        </>
+      )}
+
+      {productName && (
+        <>
+          <ArrowRightIcon />
+          <span className={styles.breadcrumbs__current}>{productName}</span>
+        </>
+      )}
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Product } from '../../../types/Types';
-import { useNavigate, useParams } from 'react-router-dom';
+import { PathType, Product } from '../../../types/Types';
+import { useNavigate } from 'react-router-dom';
 import styles from './CapacitySelector.module.scss';
 
 interface CapacitySelectorProps {
@@ -11,14 +11,13 @@ export const CapacitySelector: React.FC<CapacitySelectorProps> = ({
   product,
 }) => {
   const navigate = useNavigate();
-  const { category } = useParams();
 
   const handleCapacityChange = (newCapacity: string) => {
     const capacityFormatted = newCapacity.toLowerCase();
     const colorFormatted = product.color.toLowerCase().replace(/\s+/g, '-');
     const newItemId = `${product.namespaceId}-${capacityFormatted}-${colorFormatted}`;
 
-    navigate(`/${category}/${newItemId}`);
+    navigate(`${PathType.PRODUCT}/${newItemId}`);
   };
 
   return (
@@ -31,17 +30,27 @@ export const CapacitySelector: React.FC<CapacitySelectorProps> = ({
         <div className={styles.capacitySelector__capacity}>
           {product.capacityAvailable.map(capacity => {
             return (
-              <button
+              <label
                 key={capacity}
-                className={`${styles.capacitySelector__button} ${
+                className={`${styles.capacitySelector__label} ${
                   capacity === product.capacity
-                    ? styles['capacitySelector__button--active']
+                    ? styles['capacitySelector__label--active']
                     : ''
                 }`}
-                onClick={() => handleCapacityChange(capacity)}
               >
+                <span className={styles.capacitySelector__visuallyHidden}>
+                  {capacity}
+                </span>
+                <input
+                  type="radio"
+                  name={`capacity-${product.id}`}
+                  value={capacity}
+                  checked={capacity === product.capacity}
+                  onChange={() => handleCapacityChange(capacity)}
+                  className={styles.capacitySelector__radio}
+                />
                 {capacity}
-              </button>
+              </label>
             );
           })}
         </div>
