@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+
+  &__select {
+    width: 136px;
+    height: 40px;
+    padding: 0 32px 0 12px;
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: $color-primary;
+    background-color: $color-hover-and-bg;
+    border: 1px solid $color-icons;
+    border-radius: 8px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('/img/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s;
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-focus-border);
+    }
+
+    // Style native options
+    option {
+      font-family: $font-family;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: $color-secondary;
+      background-color: $color-white;
+
+      &:checked {
+        color: $color-primary;
+        font-weight: 700;
+        background-color: $color-hover-and-bg;
+      }
+    }
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+}
