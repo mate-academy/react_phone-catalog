@@ -111,7 +111,12 @@ export const Phones: React.FC = () => {
     }
 
     setSearchParams(params);
-  }, [sortSelectedValue, currentPage, numberOfItemsSelectedValue]);
+  }, [
+    sortSelectedValue,
+    currentPage,
+    numberOfItemsSelectedValue,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     setCurrentPage(1);

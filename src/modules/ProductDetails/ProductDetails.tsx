@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styles from './ProductDetails.module.scss';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../../api/getProductById';
@@ -63,7 +69,7 @@ export const ProductDetails: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const fetchProductDetails = () => {
+  const fetchProductDetails = useCallback(() => {
     setIsLoading(true);
     setError(null);
     getProductById(productId)
@@ -78,11 +84,11 @@ export const ProductDetails: React.FC = () => {
       })
       .catch(() => setError('Something went wrong'))
       .finally(() => setIsLoading(false));
-  };
+  }, [productId]);
 
   useEffect(() => {
     fetchProductDetails();
-  }, [productId]);
+  }, [fetchProductDetails]);
 
   const suggestedProducts = useMemo(() => {
     if (!product) {

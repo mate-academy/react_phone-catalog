@@ -1,7 +1,7 @@
 import React from 'react';
 import { CartContext } from '../../CartContext';
 import styles from './Cart.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Cart: React.FC = () => {
   const cartContext = React.useContext(CartContext);
@@ -33,6 +33,16 @@ export const Cart: React.FC = () => {
     });
 
     return quantity;
+  };
+
+  const handleCheckout = () => {
+    const confirmed = window.confirm(
+      'Checkout is not implemented yet. ' + 'Do you want to clear the Cart?',
+    );
+
+    if (confirmed) {
+      clearCart();
+    }
   };
 
   return (
@@ -69,14 +79,24 @@ export const Cart: React.FC = () => {
                         onClick={() => deleteItem(item.id)}
                         className={styles['cart__close-button']}
                       />
-                      <img
-                        className={styles.cart__img}
-                        src={`${item.product.image}`}
-                        alt="product-image"
-                      />
-                      <h3 className={styles['cart__product-name']}>
-                        {item.product.name}
-                      </h3>
+                      <Link
+                        to={`/product/${item.id}`}
+                        className={styles.cart__link}
+                      >
+                        <img
+                          className={styles.cart__img}
+                          src={`${item.product.image}`}
+                          alt="product-image"
+                        />
+                      </Link>
+                      <Link
+                        to={`/product/${item.id}`}
+                        className={styles.cart__link}
+                      >
+                        <h3 className={styles['cart__product-name']}>
+                          {item.product.name}
+                        </h3>
+                      </Link>
                     </div>
                     <div className={styles.cart__sum}>
                       <div className={styles.cart__quantity}>
@@ -115,16 +135,7 @@ export const Cart: React.FC = () => {
 
                 <button
                   className={styles.cart__checkout}
-                  onClick={() => {
-                    const confirmed = window.confirm(
-                      'Checkout is not implemented yet. ' +
-                        'Do you want to clear the Cart?',
-                    );
-
-                    if (confirmed) {
-                      clearCart();
-                    }
-                  }}
+                  onClick={() => handleCheckout()}
                 >
                   Checkout
                 </button>

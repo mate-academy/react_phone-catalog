@@ -111,7 +111,12 @@ export const Accessories: React.FC = () => {
     }
 
     setSearchParams(params);
-  }, [sortSelectedValue, currentPage, numberOfItemsSelectedValue]);
+  }, [
+    sortSelectedValue,
+    currentPage,
+    numberOfItemsSelectedValue,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     setCurrentPage(1);
