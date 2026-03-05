@@ -1,0 +1,2 @@
+export const AUTOPLAY_INTERVAL_MS = 3000;
+export const TRANSITION_DURATION_MS = 700;

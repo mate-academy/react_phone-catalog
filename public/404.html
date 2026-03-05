@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nice Boook</title>
+    <script>
+      const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+      const redirectUrl =
+        window.location.origin +
+        '/books-catalog-frontend/?p=' +
+        encodeURIComponent(
+          path.replace('/books-catalog-frontend', '') + search,
+        ) +
+        hash;
+      window.location.replace(redirectUrl);
+    </script>
+  </head>
+</html>
