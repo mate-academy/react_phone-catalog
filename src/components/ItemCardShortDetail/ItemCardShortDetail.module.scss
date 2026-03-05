@@ -90,6 +90,11 @@
       border-radius: 50%;
 
       background-color: vars.$hover_bg-color;
+      transition: border 0.3s ease;
+
+      &:hover {
+        border: 1px solid vars.$primary-color;
+      }
 
       &_active {
         border: 2px solid vars.$primary-color;
@@ -135,6 +140,10 @@
         color: vars.$primary-color;
 
         background-color: #fff;
+
+        &:hover {
+          border: vars.$primary-color 1px solid;
+        }
 
         &_active {
           color: #fff;

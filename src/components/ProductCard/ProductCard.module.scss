@@ -16,6 +16,14 @@
 
   background-color: vars.$white-color;
 
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    scale: 1.02;
+    box-shadow: vars.$shadow;
+    border: 1px solid vars.$primary-color;
+  }
+
   @include mixins.tablet {
     max-width: 100%;
     padding: 24px;
