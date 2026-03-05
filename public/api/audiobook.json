@@ -1,0 +1,889 @@
+[
+  {
+    "id": "06c91b1a-6d03-44f7-8a4d-0c56638562db",
+    "type": "audiobook",
+    "namespaceId": "self-comes-to-mind",
+    "name": "Self Comes to Mind",
+    "slug": "self-comes-to-mind-en-audiobook",
+    "category": ["Psychology", "Self-care"],
+    "priceRegular": 25.0,
+    "priceDiscount": 21.88,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/self-comes-to-mind/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Antonio Damasio",
+    "publicationYear": 2010,
+    "publication": "Brilliance Audio",
+    "description": [
+      "Self Comes to Mind is a nuanced and original chronicle of the evolution of the human brain. It reveals how the brain's development of a self becomes a challenge to nature's indifference and opens the way for the appearance of culture, a radical break in the course of evolution.",
+      "Damasio views brain development through the lens of biological evolution - starting with the simplest organisms that exhibit elaborate life regulation devices but do not require brains. The arrival of neurons, possessed of the unique ability to transmit and receive messages, allows neurons to organize themselves in complex circuits and networks, networks that serve to represent events occurring in the body, influence the function of other cells, even their own function. In this framework, the distinction between body and brain is blurred - the neurons that make up the brain and eventually generate the mind are body cells and are perpetually connected to the body.",
+      "Neurons are the producers of mind states. And in the increasing complexity of the patterns in which neurons organize themselves is to be found at once the mystery and the clues to the myriad ways in which the brain operates.",
+      "The systems of neurons that govern life in the interior of a body - the process of homeostasis - are first assisted by reflex-like dispositions, and eventually by images, the basic ingredient of minds. But the flexibility and creativity of the human mind do not emerge from images alone. They require images to create a protagonist, a self capable of reflection. Once self comes to mind, the devices of reward and punishment, drives and motivations, and emotions can be controlled by an autobiographical self, capable of personal reflection and deliberation. The reflective self becomes a rebellious apprentice to nature's indifferent sorcerer. It uses expanded memory, language, and reasoning to create the very possibility of culture."
+    ],
+    "narrator": "Fred Stella",
+    "listeningLength": 41280000
+  },
+  {
+    "id": "ebafcea5-61e9-47bd-9d2f-5e99b90f1030",
+    "type": "audiobook",
+    "namespaceId": "self-comes-to-mind",
+    "category": ["Psychology"],
+    "name": "Почуття і знання. Шлях до свідомого розуму",
+    "slug": "self-comes-to-mind-uk-audiobook",
+    "priceRegular": 7.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/self-comes-to-mind/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Антоніо Дамасіо",
+    "publicationYear": 2024,
+    "publication": "Megogo",
+    "description": [
+      "Від одного з провідних неврологів світу — стисле, цікаве, захопливе дослідження явища свідомості та її зв’язку з реальним життям.",
+      "Протягом останніх десятиліть багато філософів та когнітивних психологів заявляли, що феномен свідомості дослідити неможливо, однак Антоніо Дамасіо переконаний, що останні відкриття в біології, нейробіології, психології та штучний інтелект дали нам необхідні інструменти для розв’язки цієї загадки.",
+      "У книзі «Почуття і знання» Дамасіо пояснює численні аспекти свідомості та пропонує свій аналіз і новий погляд на підсвідомість, інтуїцію, почуття та розум.",
+      "У 46-х коротких розділах Дамасіо допомагає нам зрозуміти взаємозв’язок між свідомістю та розумом. Чому бути свідомим — це не те саме, що бути притомним? Чому почуття грають ключову роль у нашому розвитку? Як усі процеси у мозку допомагають нам формувати свідомість.",
+      "Базуючись на досягненнях в галузі біології та соціальних наук, автор проводить цікаві паралелі між одразу кількома сферами знань і пояснює зв’язки між розумом і почуттями, свідомим і підсвідомим, тілом і нервовою системою.",
+      "Врешті, книжка відповість на питання, що природа розвинула сильніше в людині — розум чи почуття?",
+      "Чим хороша ця книжка:",
+      "Пояснить, де саме в нашому мозку утворюється свідомість, а де — почуття, та чим свідомість відрізняється від притомності;",
+      "Пояснює як працюють основні нейронні процеси, які відбуваються в нашому мозку щодня, зокрема, концентрування уваги, сенсорні відчуття, емоції та почуття, інтелект та накопичування знань тощо; Допоможе краще усвідомити своє місце у цьому світі."
+    ],
+    "narrator": "Андрій Заник",
+    "listeningLength": 10080000
+  },
+  {
+    "id": "5f4e3d2c-1b0a-9f8e-7d6c-5b4a3c2d1e0f",
+    "type": "audiobook",
+    "namespaceId": "it-didnt-start-with-you",
+    "name": "It Didn't Start with You",
+    "slug": "it-didnt-start-with-you-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 18.0,
+    "priceDiscount": 15.75,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/it-didnt-start-with-you/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Mark Wolynn",
+    "narrator": "Mark Wolynn",
+    "publicationYear": 2016,
+    "publication": "Penguin Audio",
+    "listeningLength": 29760000,
+    "description": [
+      "A groundbreaking approach to transforming traumatic legacies passed down in families over generations, by an acclaimed expert in the field.",
+      "Depression. Anxiety. Chronic Pain. Phobias. Obsessive thoughts. The evidence is compelling: the roots of these difficulties may not reside in our immediate life experiences or in chemical imbalances in our brains - but in the lives of our parents, grandparents, and even great-grandparents. The latest scientific research, now making headlines, supports what many have long intuited: that traumatic experience can be passed down through generations.",
+      "It Didn't Start with You builds on the work of leading experts in post-traumatic stress, including Mount Sinai School of Medicine neuroscientist Rachel Yehuda and psychiatrist Bessel van der Kolk, author of The Body Keeps the Score. Even if the person who suffered the original trauma has died or the story has been forgotten or silenced, memory and feelings can live on. These emotional legacies are often hidden, encoded in everything from gene expression to everyday language, and they play a far greater role in our emotional and physical health than has ever before been understood.",
+      "As a pioneer in the field of inherited family trauma, Mark Wolynn has worked with individuals and groups on a therapeutic level for over 20 years. It Didn't Start with You offers a pragmatic and prescriptive guide to his method, the Core Language Approach. Diagnostic self-inventories provide a way to uncover the fears and anxieties conveyed through everyday words, behaviors, and physical symptoms. Techniques for developing a genogram or extended family tree create a map of experiences going back through the generations. And visualization, active imagination, and direct dialogue create pathways to reconnection, integration, and reclaiming life and health. It Didn't Start With You is a transformative approach to resolving longstanding difficulties that, in many cases, traditional therapy, drugs, or other interventions have not had the capacity to touch."
+    ]
+  },
+  {
+    "id": "fedcba98-7654-3210-ffe0-dcba98765432",
+    "type": "audiobook",
+    "namespaceId": "it-didnt-start-with-you",
+    "name": "Це почалося не з тебе",
+    "slug": "it-didnt-start-with-you-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 6.49,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/it-didnt-start-with-you/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Марк Волінн",
+    "narrator": "Юрій Кудрявець",
+    "publicationYear": 2023,
+    "publication": "Vivat",
+    "listeningLength": 28380000,
+    "description": [
+      "Депресія, тривога, фобії — ви успадкували все це від попередніх поколінь! Родинні патерни, заховані, закодовані у поведінкових моделях, відіграють значну роль у нашому емоційному та фізичному здоров’ї. Вони пригнічують, ставлять хрест на самореалізації та перетворюють на пекло. Але є спосіб, як виявити родинні патерни через поведінку та фізичні симптоми. Розробляючи генограму, тобто розширюючи сімейне дерево, треба створити мапу травматичного досвіду, що передається від покоління до покоління. За допомогою візуалізацій та прямого діалогу можливо віднайти шляхи до інтеграції та відновлення психічного здоров’я. Так, це почалося не з вас. Але ви здужаєте це припинити й почати жити щасливим, спокійним і повноцінним життям.",
+      "Марк Волінн, дослідник успадкованої сімейної травми із 20-річним стажем, вилікував тисячі пацієнтів, що потерпали від депресії, тривожності, панічних розладів, нав’язливих думок тощо. Як лектор проводить семінари в лікарнях і навчальних центрах по всьому світі. Викладав у Піттсбурзькому університеті та Каліфорнійському інституті інтегральних досліджень. Дописувач Psychology Today, Psych Central та The New Yorker"
+    ]
+  },
+  {
+    "id": "09e0e4b6-40d2-4e44-8559-2e9f2626a603",
+    "type": "audiobook",
+    "namespaceId": "codependent-no-more",
+    "name": "Codependent No More",
+    "slug": "codependent-no-more-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 21.05,
+    "priceDiscount": 18.42,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/codependent-no-more/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Melody Beattie",
+    "narrator": "Melody Beattie",
+    "publicationYear": 2022,
+    "publication": "Spiegel & Grau by OrangeSky Audio",
+    "listeningLength": 31320000,
+    "description": [
+      "A cultural phenomenon that has helped heal millions of readers, this modern classic holds the key to understanding codependency and unlocking its hold on your life.",
+      "As heard on Glennon Doyle’s We Can Do Hard Things podcast.",
+      "Melody Beattie’s compassionate and insightful look into codependency—the concept of losing oneself in the name of helping another—has guided millions of readers toward the understanding that they are powerless to change anyone but themselves and that caring for the self is where healing begins.",
+      "Is someone else's problem your problem? If, like so many others, you've lost sight of your own life in the drama of tending to a loved one’s self-destructive behavior, you may be codependent––and you may find yourself in this book. With personal reflections, exercises, and instructive stories drawn from Beattie’s own life and the lives of those she’s counseled, Codependent No More helps you break old patterns and maintain healthy boundaries and offers a clear and achievable path to healing, hope, freedom, and happiness.",
+      "This revised edition includes an all-new chapter on trauma and anxiety—subjects Beattie has long felt necessary to address within the context of codependency—making it even more relevant today than it was when it first entered the national conversation over 35 years ago."
+    ]
+  },
+  {
+    "id": "0a7992b4-4247-47c0-a843-806264a13e46",
+    "type": "audiobook",
+    "namespaceId": "codependent-no-more",
+    "name": "Долаємо співзалежність",
+    "slug": "codependent-no-more-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 6.49,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/codependent-no-more/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Мелоді Бітті",
+    "narrator": "Людмила Чиркова",
+    "publicationYear": 2024,
+    "publication": "Vivat",
+    "listeningLength": 34260000,
+    "description": [
+      "Маєте проблеми із самооцінкою, знижений емоційний фон, понад усе боїтеся самотності? Почуваєтеся великими хрещеними матерями та батьками цього світу й задовольняєте, а чи й передбачаєте потреби інших, ігноруючи власні? Ваш діагноз — співзалежність. Від цієї психічної патології потерпають мільйони людей, і вона виявляється в токсичних стосунках: подружніх, з батьками, колегами, друзями. Досить жити чужим життям і намагатися врятувати всіх ціною свого добробуту, розмиваючи особисті кордони! Необтяжливі опитування допоможуть визначити ваші координати в химерному світі співзалежності, і ви не пройдете повз вихід із цього лабіринту.",
+      "Мелоді Бітті — авторка 15 перекладених 20 мовами бестселерів, найвідоміша особа в колах видужалих наркоманів. Колись Бітті пережила відречення, викрадення, сексуальне насильство, алкогольну залежність, розлучення, поховала сина. Жінка, яка хотіла померти, наразі співпрацює з найпопулярнішими видавництвами США. Читайте про неї на сторінках журналу People, дивіться — на «Шоу Опри Вінфрі»"
+    ]
+  },
+  {
+    "id": "ed801cb8-5bf7-4f55-8ffc-228062f384af",
+    "type": "audiobook",
+    "namespaceId": "what-happened-to-you",
+    "name": "What Happened to You?",
+    "slug": "what-happened-to-you-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 20.24,
+    "priceDiscount": 17.71,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/what-happened-to-you/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Oprah Winfrey & Bruce D. Perry",
+    "narrator": "Bruce D. Perry, Oprah Winfrey",
+    "publicationYear": 2021,
+    "publication": "Macmillan Audio",
+    "listeningLength": 30420000,
+    "description": [
+      "Have you ever wondered \"Why did I do that?\" or \"Why can't I just control my behavior?\" Others may judge our reactions and think, \"What's wrong with that person?\" When questioning our emotions, it's easy to place the blame on ourselves; holding ourselves and those around us to an impossible standard. It's time we started asking a different question.",
+      "Through deeply personal conversations, Oprah Winfrey and renowned brain and trauma expert Dr. Bruce Perry offer a groundbreaking and profound shift from asking “What’s wrong with you?” to “What happened to you?”",
+      "Here, Winfrey shares stories from her own past, understanding through experience the vulnerability that comes from facing trauma and adversity at a young age. In conversation throughout the audiobook, she and Dr. Perry focus on understanding people, behavior, and ourselves. It’s a subtle but profound shift in our approach to trauma, and it’s one that allows us to understand our pasts in order to clear a path to our future - opening the door to resilience and healing in a proven, powerful way."
+    ]
+  },
+  {
+    "id": "6e838018-12da-4a5c-ad8a-55a19904337d",
+    "type": "audiobook",
+    "namespaceId": "what-happened-to-you",
+    "name": "Що з тобою сталося?",
+    "slug": "what-happened-to-you-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 6.49,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/what-happened-to-you/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Опра Вінфрі, Брюс Д. Перрі",
+    "narrator": "Кирило Булкін, Соня Сотник",
+    "publicationYear": 2023,
+    "publication": "Vivat",
+    "listeningLength": 35580000,
+    "description": [
+      "Мати, яка казала: «Ліпше б я зробила аборт». Батько-пияк, що мав важку руку. Вагітна в чотирнадцять, як Опра Вінфрі… від ґвалтівника? Ви сушите голову: «Що зі мною не так?». Натомість поставте собі питання: «Що зі мною сталося?». Глибокий аналіз травм минулого, негативних патернів і спогадів — спільна робота Опри та психіатра Брюса Перрі. Це щира розмова, під час якої ви плакатимете: від болю, що поступово стихатиме, від жахливих спогадів, що стиратимуться з пам’яті, і від щасливого відчуття крил на злеті...",
+      "Брюс Д. Перрі — доктор медичних наук, дитячий психіатр, нейронауковець.",
+      "Опра Вінфрі — зірка американських медіа, титулована ведуча популярного ток-шоу, яка протягом 25 років обговорювала болючі теми з найскандальнішими селебриті. Опра, одна з найвпливовіших громадських діячок сьогодення, ніколи не приховувала, що в дитинстві зазнавала насильства."
+    ]
+  },
+  {
+    "id": "eecefa27-5d1c-47b6-a161-f6a4d17eb4c5",
+    "type": "audiobook",
+    "namespaceId": "trauma-and-recovery",
+    "name": "Trauma and Recovery: The Aftermath of Violence - from Domestic Abuse to Political Terror",
+    "slug": "trauma-and-recovery-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 25.19,
+    "priceDiscount": 22.04,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/trauma-and-recovery/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Judith L. Herman",
+    "narrator": "Alison Mathews, Xe Sands",
+    "publicationYear": 2019,
+    "publication": "Basic Books",
+    "listeningLength": 45000000,
+    "description": [
+      "Trauma and Recovery is the foundational text on understanding trauma survivors. By placing individual experience in a political frame, psychiatrist Judith L. Herman argues that psychological trauma is inseparable from its social and political context. Drawing on her own research on incest, as well as a vast literature on combat veterans and victims of political terror, she shows surprising parallels between private horrors like child abuse and public horrors like war.",
+      "This edition includes a new epilogue by the author assessing what has—and hasn’t—changed in understanding and treating trauma over the last three decades.",
+      "Hailed by the New York Times as “one of the most important psychiatry works to be published since Freud,” Trauma and Recovery is essential reading for anyone seeking to understand how we heal."
+    ]
+  },
+  {
+    "id": "ac4f8a5c-49e0-479b-86e4-ba5560fe9c04",
+    "type": "audiobook",
+    "namespaceId": "trauma-and-recovery",
+    "name": "Психологічна травма та шлях до видужання. Наслідки насильства - від знущань у сім'ї до політичного терору",
+    "slug": "trauma-and-recovery-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 4.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/trauma-and-recovery/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джудіт Л. Герман",
+    "narrator": "Наталія Романько",
+    "publicationYear": 2024,
+    "publication": "Megogo, Видавництво Старого Лева",
+    "listeningLength": 42720000,
+    "description": [
+      "Ця книга – плід двох десятиліть досліджень та клінічної роботи з жертвами сексуального насильства і насильства в сім’ї, а також з ветеранами бойових дій та жертвами політичного терору. В ній ідеться про відновлення зв’язків: між публічним та приватним просторами, між індивідом та громадою, між чоловіками та жінками. Книга стане незамінною для психологів, психотерапевтів, лікарів і тих, хто, зазнавши насильства, шукає шлях до видужання.",
+      "Видання здійснено за підтримки Відділу преси, освіти і культури Посольства США в Україні."
+    ]
+  },
+  {
+    "id": "c6906636-3451-4ed8-8692-bc5fafa93e92",
+    "type": "audiobook",
+    "namespaceId": "group-psychology-and-the-analysis-of-the-ego",
+    "name": "Group Psychology and the Analysis of the Ego",
+    "slug": "group-psychology-and-the-analysis-of-the-ego-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 9.95,
+    "priceDiscount": 8.71,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/group-psychology-and-the-analysis-of-the-ego/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Sigmund Freud",
+    "narrator": "Joe Gomez",
+    "publicationYear": 2019,
+    "publication": "MuseumAudiobooks.com",
+    "listeningLength": 8760000,
+    "description": [
+      "In this monograph, Freud describes the psychological mechanisms at work within mass movements. According to Freud, the individual in a mass movement acquires a sense of infinite power to act on impulses that would otherwise have been restrained in the individual.",
+      "This is accompanied by a loss of conscious personality so that the mass is controlled almost exclusively by the unconscious."
+    ]
+  },
+  {
+    "id": "230a9b9e-154a-46cb-9b40-2928fd79839d",
+    "type": "audiobook",
+    "namespaceId": "group-psychology-and-the-analysis-of-the-ego",
+    "name": "Психологія спільнот і аналіз людського Я",
+    "slug": "group-psychology-and-the-analysis-of-the-ego-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 0.89,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/group-psychology-and-the-analysis-of-the-ego/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Зигмунд Фройд",
+    "narrator": "Олександр Коваль",
+    "publicationYear": 2023,
+    "publication": "Мультимедійне видавництво Стрельбицького",
+    "listeningLength": 12243000,
+    "description": [
+      "«Психологія спільнот» і аналіз людського «Я» — одна з найвідоміших праць Зігмунда Фройда — вважається також одним з найпарадоксальніших його творів. Адже тут «батько психоаналізу» виступає не як психоаналітик, а швидше як класичний психолог, який досліджує не лише особистісні, а й соціальні аспекти розвитку внутрішнього світу людини й прихованих, глибинних мотивів формування його світовідчуття. \nПереклад Ярослава Мишанича."
+    ]
+  },
+  {
+    "id": "36b55c0f-3ca0-40a9-9ec3-db1ac13a0024",
+    "type": "audiobook",
+    "namespaceId": "the-voice-in-our-head-why-it-matters-and-how-to-harness-it",
+    "name": "The Voice in Our Head, Why It Matters, and How to Harness It",
+    "slug": "the-voice-in-our-head-why-it-matters-and-how-to-harness-it-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 15.75,
+    "priceDiscount": 13.78,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/the-voice-in-our-head-why-it-matters-and-how-to-harness-it/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Ethan Kross",
+    "narrator": "Ethan Kross",
+    "publicationYear": 2021,
+    "publication": "Random House Audio",
+    "listeningLength": 30600000,
+    "description": [
+      "Tell a stranger that you talk to yourself, and you’re likely to get written off as eccentric. But the truth is that we all have a voice in our head. When we talk to ourselves, we often hope to tap into our inner coach but find our inner critic instead. When we’re facing a tough task, our inner coach can buoy us up: Focus - you can do this. But, just as often, our inner critic sinks us entirely: I’m going to fail. They’ll all laugh at me. What’s the use?",
+      "In Chatter, acclaimed psychologist Ethan Kross explores the silent conversations we have with ourselves. Interweaving groundbreaking behavioral and brain research from his own lab with real-world case studies - from a pitcher who forgets how to pitch, to a Harvard undergrad negotiating her double life as a spy - Kross explains how these conversations shape our lives, work, and relationships. He warns that giving in to negative and disorienting self-talk - what he calls “chatter” - can tank our health, sink our moods, strain our social connections, and cause us to fold under pressure.",
+      "But the good news is that we’re already equipped with the tools we need to make our inner voice work in our favor. These tools are often hidden in plain sight - in the words we use to think about ourselves, the technologies we embrace, the diaries we keep in our drawers, the conversations we have with our loved ones, and the cultures we create in our schools and workplaces.",
+      "Brilliantly argued, expertly researched, and filled with compelling stories, Chatter gives us the power to change the most important conversation we have each day: the one we have with ourselves."
+    ]
+  },
+  {
+    "id": "18e8957e-b126-4824-9055-c40374b178e4",
+    "type": "audiobook",
+    "namespaceId": "the-voice-in-our-head-why-it-matters-and-how-to-harness-it",
+    "name": "Внутрішній голос. Як навчитися слухати себе",
+    "slug": "the-voice-in-our-head-why-it-matters-and-how-to-harness-it-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 5.49,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/the-voice-in-our-head-why-it-matters-and-how-to-harness-it/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Ітан Крос",
+    "narrator": "Юрій Вихованець",
+    "publicationYear": 2024,
+    "publication": "Megogo, Лабораторія",
+    "listeningLength": 22920000,
+    "description": [
+      "В давнину люди вважали свій внутрішній голос відголосом диявола. З ним боролись та намагались притлумити. Водночас хтось вважав його джерелом мудрості і намагався прислуховувався до нього.",
+      "Сьогодні, як і тисячі років тому, внутрішній голос — це невіддільна частина нашої свідомості. Однак ми настільки звикли до постійного діалогу із самими собою, що часто навіть не помічаємо його згубного впливу на наше ментальне здоров’я та самосвідомість.",
+      "Самокопання та самоприниження спричиняє невпевненість в собі, а нав’язливий голос в голові може навіть свідчити про певні психічні розлади.",
+      "І хоча нам здається, що керувати балаканиною в голові неможливо, автор цієї книжки таки доводить — її таки можна використати на свою користь."
+    ]
+  },
+  {
+    "id": "1ded18a2-6c98-4f0e-90ac-bd3d047b6dc1",
+    "type": "audiobook",
+    "namespaceId": "the-power-of-regret",
+    "name": "Сила жалю. Як погляд назад рухає нас уперед",
+    "category": ["Psychology"],
+    "slug": "the-power-of-regret-uk-audiobook",
+    "priceRegular": 5.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/the-power-of-regret/uk/00.webp"
+    ],
+    "langAvailable": ["uk"],
+    "lang": "uk",
+    "author": "Інна Бодак",
+    "narrator": "Матвій Николаєв",
+    "publicationYear": 2024,
+    "publication": "Megogo, Лабораторія",
+    "listeningLength": 23820000,
+    "description": [
+      "Усі ми про щось шкодуємо. Але це не погано чи добре. Це абсолютно нормальна частина людського буття. Та розуміння того, як працює жаль, може допомогти нам приймати кращі рішення, наповнитися енергією і додати своєму життю глибокого сенсу.",
+      "Опираючись на дослідження в галузі соціальної психології, неврології та біології, Деніел Пінк доводить, що неможливо ні про що не шкодувати. У книжці він використовує найбільшу статистичну вибірку ставлення американців до жалю, яку коли-небудь проводили, а також власне Всесвітнє дослідження жалю, у якому взяло участь 15 000 людей у 105 країнах.",
+      "Наповнена справжніми історіями людей, структурована і доступно написана, книжка «Сила жалю» змусить вас подивитися на жаль як на щось, що не просто додає нам людяності, але й робить кращими. Та найголовніше — показує, як оглядаючись назад, ми можемо рухатися вперед."
+    ]
+  },
+  {
+    "id": "122c5ea4-41d7-439b-adee-ddd4e2e5fadc",
+    "type": "audiobook",
+    "namespaceId": "emotional-inheritance",
+    "name": "Emotional Inheritance",
+    "slug": "emotional-inheritance-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 21.83,
+    "priceDiscount": 19.1,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/emotional-inheritance/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Galit Atlas",
+    "narrator": "Galit Atlas",
+    "publicationYear": 2022,
+    "publication": "Little, Brown & Company",
+    "listeningLength": 24380000,
+    "description": [
+      "The people we love and those who raised us live inside us; we experience their emotional pain, we dream their memories, and these things shape our lives in ways we don’t always recognize. Emotional Inheritance is about family secrets that keep us from living to our full potential, create gaps between what we want for ourselves and what we are able to have, and haunt us like ghosts.",
+      "In this transformative book, Galit Atlas entwines the stories of her patients, her own stories, and decades of research to help us identify the links between our life struggles and the “emotional inheritance” we all carry. For it is only by following the traces those ghosts leave that we can truly change our destiny."
+    ]
+  },
+  {
+    "id": "3c86468f-b847-42b1-87f3-cc2b240ae324",
+    "type": "audiobook",
+    "namespaceId": "emotional-inheritance",
+    "name": "Емоційний спадок. Як подолати травматичний досвід",
+    "slug": "emotional-inheritance-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 5.39,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/emotional-inheritance/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Галіт Атлас",
+    "narrator": "Віра Прокоп‘як",
+    "publicationYear": 2024,
+    "publication": "Megogo",
+    "listeningLength": 24420000,
+    "description": [
+      "Ми здобуваємо у спадок від своїх батьків не тільки біологічні гени, а й травми поколінь. Разом із сімейними таємницями й дитячими спогадами вони міцно вплітаються у наше життя і непомітно формують характери, вчинки й поведінку. То як жити, коли травми поколінь переслідують, мов примари? Як відпустити минуле і розпочати власний шлях?",
+      "Психотерапевтка Ґаліт Атлас поєднала власний досвід, історії своїх пацієнтів і основи психоаналізу, щоб продемонструвати, як наші сьогоднішні страхи й проблеми пов'язані з емоційним спадком батьків, бабусь і дідусів. Написана доступно і з глибоким співчуттям, ця книжка проникає у найпотаємніші закутки людської психології і допомагає віднайти шлях до зцілення.",
+      "«Емоційний спадок» надихає відкинути усі упередження та хвилювання й зануритися у власну сімейну історію. Адже тільки проживши наше минуле й залишивши старі травми позаду, ми зможемо впевнено і легко рухатися до майбутнього."
+    ]
+  },
+  {
+    "id": "edd67ce0-c5c0-4043-bb67-01141c271eb5",
+    "type": "audiobook",
+    "namespaceId": "the-unexpected-joy-of-being-single",
+    "name": "The Unexpected Joy of Being Single: Locating Happily-Single Serenity",
+    "slug": "the-unexpected-joy-of-being-single-en-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 24.19,
+    "priceDiscount": 21.17,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/the-unexpected-joy-of-being-single/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Catherine Gray",
+    "narrator": "Catherine Gray",
+    "publicationYear": 2018,
+    "publication": "Aster",
+    "listeningLength": 37740000,
+    "description": [
+      "Over half of Brits aged 25-44 are now single. It's become the norm to remain solo until much later in life, given the average marriage ages of 35 (women) and 38 (men). Many of us are choosing never to marry at all.",
+      "But society, films, song lyrics and our parents are adamant that a happy ending has to be couple-shaped. That we're incomplete without an 'other half'*, like a bisected panto pony. Cue: single sorrow. Dating like it's a job. Spending half our lives waiting for somebody-we-fancy to text us back. Feeling haunted by the terms 'spinster' or 'confirmed bachelor'.",
+      "Catherine Gray took a whole year off dating to find single satisfaction. She lifted the lid on the reasons behind the global single revolution, explored the bizarre ways cultures single-shame, detached from 'all the good ones are gone!' panic and debunked the myth that married people are much happier.",
+      "Let's start the reverse brainwash, in order to locate - and luxuriate in - single happiness. Are you in?"
+    ]
+  },
+  {
+    "id": "036b9c3d-a537-45bc-9b4a-23d653ba9d90",
+    "type": "audiobook",
+    "namespaceId": "the-unexpected-joy-of-being-single",
+    "name": "Неочікувана радість самотності",
+    "slug": "the-unexpected-joy-of-being-single-uk-audiobook",
+    "category": ["Psychology"],
+    "priceRegular": 3.49,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/the-unexpected-joy-of-being-single/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Кетрін Ґрей",
+    "narrator": "Запис здійснено в Студії \"Так Треба Продакшн\"",
+    "publicationYear": 2020,
+    "publication": "Yakaboo Publishing",
+    "listeningLength": 37200000,
+    "description": [
+      "Ми живемо в культурі, яка цінує переважно повноцінні парні стосунки, а самотніх таврує білими воронами, винятками, «не-як-усі-люди», нездатними знайти когось, хто б їх покохав. Утім, якщо бути без пари так жахливо, то чому понад половина нас вважають за ліпше залишатися самотніми?",
+      "Багато книжок із словом «самотній» у заголовку зосереджуються на одному: як покінчити із самотнім статусом і знайти партнера. Ця книжка не входить до «компанії» таких видань. Вона не є спробою розбити щасливі пари, чи назвати шлюб дешевою фікцією, чи стверджувати, що бути самотнім ліпше. Ця книжка про те, як прийняти самотність, знайти радість у ній та абстрагуватися від тиску громадської думки, яка вимагає парних стосунків.",
+      "Цю аудіокнигу озвучено із залученням коштів Гранту інституційної підтримки наданих \"Українським інститутом книги\"."
+    ]
+  },
+  {
+    "id": "c55d9811-afbe-4da7-ae13-c088934201da",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-1",
+    "name": "Гаррі Поттер і філософський камінь",
+    "slug": "harry-potter-1-uk-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 15.2,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-1/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Joanne K. Rowling",
+    "publicationYear": 2017,
+    "publication": "A‑ba‑ba‑ha‑la‑ma‑ha",
+    "description": [
+      "Гаррі Поттер — сирота й живе із Дурслями... Новий друг передає Поттеру листа-запрошення до школи магії Гоґвортс.",
+      "Проте скоро Гаррі розкриває страшну правду про смерть своїх батьків і загрозу, що нависла над чарівним світом. Разом із друзями він рішуче бореться зі злом."
+    ],
+    "narrator": "Yura Styslo",
+    "listeningLength": 8524800
+  },
+  {
+    "id": "fa90f840-1e9a-4d96-bf4a-fbc78b16d650",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-1",
+    "name": "Harry Potter and the Philosopher’s Stone",
+    "slug": "harry-potter-1-en-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 19.99,
+    "priceDiscount": 16.5,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-1/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Joanne K. Rowling",
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Audio",
+    "description": [
+      "Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive... On his eleventh birthday, Rubeus Hagrid bursts in with astonishing news: Harry is a wizard and has a place at Hogwarts School of Witchcraft and Wizardry.",
+      "In his first year, Harry befriends Ron and Hermione and uncovers the dark past behind his parents' death, while confronting a dark force threatening the magical world."
+    ],
+    "narrator": "Nika Okhten",
+    "listeningLength": 9360000
+  },
+  {
+    "id": "bfd2713a-15b6-45c0-aefb-72c6596047da",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-2",
+    "name": "Гаррі Поттер і таємна кімната",
+    "slug": "harry-potter-2-uk-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 14.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-2/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "publicationYear": 2002,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га Аудіо",
+    "description": [
+      "Гаррі повертається до Гоґвортсу, незважаючи на таємничу погрозу: хтось або щось відкрито Таємну кімнату та паралізує школярів.",
+      "Разом із Роном та Герміоною він розслідує жахливі напади, знаходить підказки від ельфа-домовика Добі та усвідомлює силу спадку Слизерина.",
+      "На їхньому шляху: привид, загадкова істота під замком і дослідження власного минулого Гаррі, усе це — у захопливому змаганні за порятунок Гоґвортсу."
+    ],
+    "narrator": "Lidia Tsymborovych",
+    "listeningLength": 9840000
+  },
+  {
+    "id": "c8b9468e-eaa3-4de4-8f3f-b3bd78ae3caa",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-2",
+    "name": "Harry Potter and the Chamber of Secrets",
+    "slug": "harry-potter-2-en-audiobook",
+    "category": [
+      "Fantasy",
+      "Children's literature",
+      "Young adult",
+      "Our product manager's favorite"
+    ],
+    "priceRegular": 22.5,
+    "priceDiscount": 18.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-2/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Audio",
+    "description": [
+      "Harry returns to Hogwarts despite dire warnings not to—and soon the school is plagued by mysterious attacks that leave students paralyzed. Strange voices echo through empty corridors, and chilling messages warn that the Chamber of Secrets has been opened.",
+      "With Ron and Hermione at his side, Harry races to uncover the identity of the Heir of Slytherin. Along the way, they encounter a cunning ghost, a sinister creature hidden beneath the school, and dark secrets tied to Harry’s own past. It’s a thrilling race against time as Hogwarts teeters on the brink of disaster."
+    ],
+    "narrator": "Yura Styslo",
+    "listeningLength": 10656000
+  },
+  {
+    "id": "36f84f77-6a1e-4e5f-86dc-d193bb8f8893",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-3",
+    "name": "Гаррі Поттер і в’язень Азкабану",
+    "slug": "harry-potter-3-uk-audiobook",
+    "category": [
+      "Fantasy",
+      "Children's literature",
+      "Young adult",
+      "Our product manager's favorite"
+    ],
+    "priceRegular": 18.9,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-3/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "publicationYear": 2017,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га Аудіо",
+    "description": [
+      "Гаррі проводить чергові літні канікули у дядька й тітки, тікає з дому та потрапляє на дивакуватий Лицарський автобус, що прямує до Алеї Діаґон.",
+      "Навколо ходять чутки про втечу Сіріуса Блека — небезпечного в’язня Азкабану, якого вважають пособником Волдеморта. Дементори охороняють Гоґвортс, висмоктуючи радість у дітей.",
+      "Гаррі, разом з Роном і Герміоною, розслідує темні загадки минулого, стикається із привидами та зрадою — іронічно, навіть не підозрюючи, який поворот чекає в кінці та які зв’язки сплітають його з Блеком."
+    ],
+    "narrator": "Anastasiia Zuieva",
+    "listeningLength": 10080000
+  },
+  {
+    "id": "3dd67f0d-1b92-4058-a7a0-6f379a586d87",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-3",
+    "name": "Harry Potter and the Prisoner of Azkaban",
+    "slug": "harry-potter-3-en-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 23.9,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-3/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "publicationYear": 2018,
+    "publication": "Bloomsbury Audio",
+    "description": [
+      "Harry’s third year at Hogwarts begins with a dramatic ride on the Knight Bus and news of the dangerous escaped prisoner, Sirius Black, believed to be seeking him.",
+      "Mysterious Dementors guard the school, draining happiness from students with their chilling presence. With Ron and Hermione's help, Harry uncovers hidden truths about his past, faces unexpected betrayal, and learns about powerful magic—including the Patronus Charm—as he races to protect Hogwarts from unfolding threats."
+    ],
+    "narrator": "Yura Styslo",
+    "listeningLength": 12480000
+  },
+  {
+    "id": "2cfc1b7b-5c53-4f65-962a-f92b8717fdd1",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-4",
+    "name": "Гаррі Поттер і Келих Вогню",
+    "slug": "harry-potter-4-uk-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 26.5,
+    "priceDiscount": 21.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-4/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "publicationYear": 2014,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га Аудіо",
+    "description": [
+      "Гаррі входить у четвертий рік навчання без усвідомлення, що потрапить до Тричаклунського турніру — надзвичайно небезпечного змагання між трьома школами магії.",
+      "Після жахливих видінь Чорної Мітки, Гаррі опиняється серед учасників турніру, проходить через поєдинок з огнедишним драконом, рятує Рона від водяників і долає лабіринт у компанії Седріка Діґорі.",
+      "Але справжня загроза — повернення Темного Лорда: у фіналі змагань оживає спадок Волдеморта, і Гаррі мусить вибрати між честю й виживанням, розкриваючи темну інтригу, що переслідує його з дитинства."
+    ],
+    "narrator": "Anastasiia Zuieva",
+    "listeningLength": 16380000
+  },
+  {
+    "id": "audiobook-uuid-hp4-en",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-4",
+    "name": "Harry Potter and the Goblet of Fire",
+    "slug": "harry-potter-4-en-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 28.99,
+    "priceDiscount": 24.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-4/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Audio",
+    "description": [
+      "Harry returns for his fourth year at Hogwarts unexpectedly chosen as a competitor in the dangerous Triwizard Tournament—an inter-school magical competition full of deadly challenges.",
+      "He faces a fire-breathing dragon, a rescue from the depths of the Black Lake, and a treacherous maze alongside Cedric Diggory. But the real threat emerges when Lord Voldemort returns to full power in a climactic confrontation, forcing Harry to confront betrayal, sacrifice, and the darkest implications of his destiny.",
+      "With Ron and Hermione by his side, Harry learns courage, resilience, and the painful cost of growing up in a world where innocence is shattered by real evil."
+    ],
+    "narrator": "Nika Okhten",
+    "listeningLength": 23040000
+  },
+  {
+    "id": "audiobook-uuid-hp5-uk",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-5",
+    "name": "Гаррі Поттер і Орден Фенікса",
+    "slug": "harry-potter-5-uk-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 29.5,
+    "priceDiscount": 24.5,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-5/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "publicationYear": 2014,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га Аудіо",
+    "description": [
+      "Гаррі повертається до Гоґвортсу у п’ятий рік навчання, стикаючись із найтемнішими випробуваннями — після атаки дементорів на Дадлі він викликає Патронус і опиняється під загрозою суду в Міністерстві магії.",
+      "У цей час таємна організація Орден Фенікса веде опір Волдеморту, а в школі царює сувора Інквізиторка Амбрідж, яка суворо обмежує свободу учнів і змушує Гаррі створити “Армію Дамблдора” для підготовки до протистояння з темною магією.",
+      "Сюжет загострюється: Орден бореться з тінями, таємниці ґрунтуватися у пророцтві, і Гаррі мусить обрати між всесильною владою та дружбою, зіштовхнувшись із величезною відповідальністю та жорстокими реаліями світу чарів."
+    ],
+    "narrator": "Lidia Tsymborovych",
+    "listeningLength": 28800000
+  },
+  {
+    "id": "audiobook-uuid-hp5-en",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-5",
+    "name": "Harry Potter and the Order of the Phoenix",
+    "slug": "harry-potter-5-en-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 29.99,
+    "priceDiscount": 25.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-5/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Audio",
+    "description": [
+      "In his fifth year at Hogwarts, Harry faces his darkest challenges yet: after a chilling Dementor attack on his cousin Dudley, he conjures a Patronus and lands in hot water with the Ministry of Magic.",
+      "Meanwhile, the secret Order of the Phoenix rallies to fight Voldemort’s rise, while Hogwarts is taken over by the tyrannical Professor Umbridge—prompting the formation of Dumbledore’s Army as Harry, Ron, and Hermione train students in defensive magic.",
+      "Tensions escalate as prophecy, politics, and personal loyalties collide. Harry must balance friendship and power, confront the harsh realities of authority, and prepare for the unavoidable return of true evil."
+    ],
+    "narrator": "Lidia Tsymborovych",
+    "listeningLength": 32400000
+  },
+  {
+    "id": "audiobook-uuid-hp6-en",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-6",
+    "name": "Harry Potter and the Half-Blood Prince",
+    "slug": "harry-potter-6-en-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 31.99,
+    "priceDiscount": 27.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-6/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Audio",
+    "description": [
+      "In his sixth year at Hogwarts, Harry discovers a mysterious potions textbook annotated by the enigmatic 'Half‑Blood Prince', which gives him an edge in Potions class and leads him deeper into magical secrets.",
+      "As Voldemort's power grows, Dumbledore and Harry investigate the Dark Lord's past, uncovering crucial memories and Horcrux revelations. Amid heartbreak and betrayal, they confront hidden dangers in the wizarding world.",
+      "This darker, emotionally charged installment explores love, death, trust, and redemption—culminating in a thrilling and tragic climax that changes the course of Harry’s journey."
+    ],
+    "narrator": "Anastasiia Zuieva",
+    "listeningLength": 28800000
+  },
+  {
+    "id": "bvdjfwe-uuid-hp6-uk-audio",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-6",
+    "name": "Гаррі Поттер і Напівкровний Принц (Аудіокнига)",
+    "slug": "harry-potter-6-uk-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 15.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-6/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "publicationYear": 2013,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "description": [
+      "Гаррі розпочинає шостий рік у Гоґвортсі під керівництвом Альбуса Дамблдора, досліджуючи темне минуле Волдеморта та користуючись незвичним підручником із закляттями, підписаним «Напівкровним Принцом».",
+      "Водночас Дамблдор і Гаррі збирають спогади про Волдеморта, відкривають доленосні Горкрукси та готуються до неминучого протистояння зі смертежерами.",
+      "Цей том стає глибоко емоційним: зрада, любов і жорстокі втрати, які формують героя, призводять до кульмінації, що назавжди змінює хід Гарріної історії."
+    ],
+    "narrator": "Anastasiia Zuieva",
+    "listeningLength": 7488000
+  },
+  {
+    "id": "eggrw-uuid-hp7-uk-audio",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-7",
+    "name": "Гаррі Поттер і Смертельні реліквії (Аудіокнига)",
+    "slug": "harry-potter-7-uk-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 17.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-7/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "publicationYear": 2021,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "description": [
+      "Гаррі, Рон і Герміона залишають Дурслів назавжди, щоб завершити пошуки та знищення Горкруксів — об'єктів, що утримують частини душі Волдеморта.",
+      "Перебуваючи втікачами, вони занурюються у темну історію магічної війни, розкривають таємниці Родини Поттерів і Смертельні реліквії — потужні й небезпечні артефакти.",
+      "Супротив стикається з зрадою, жертвою й неймовірним ризиком, поки вони готуються до остаточної війни з Волдемортом. Це кульмінаційна подорож за дружбу, долю і свободу всього магічного світу."
+    ],
+    "narrator": "Yura Styslo",
+    "listeningLength": 35000000
+  },
+  {
+    "id": "gwegh-uuid-hp7-en-audio",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-7",
+    "name": "Harry Potter and the Deathly Hallows (Audiobook)",
+    "slug": "harry-potter-7-en-audiobook",
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "priceRegular": 29.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-7/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "description": [
+      "In the final installment of the Harry Potter series, Harry, Ron and Hermione set out on their most dangerous mission yet: to track down and destroy the Horcruxes—the key to Voldemort's immortality.",
+      "Without the guidance of their professors or the protection of Hogwarts, the trio must rely on one another more than ever. Dark forces close in, alliances shift, and secrets long buried come to light.",
+      "As the wizarding world descends into war, the ultimate battle between good and evil approaches. Harry must face his destiny—and make the ultimate sacrifice to save those he loves."
+    ],
+    "narrator": "Nika Okhten",
+    "listeningLength": 35000000
+  },
+  {
+    "id": "htsvh-uuid-hp8-en-audio",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-8",
+    "name": "Harry Potter and the Cursed Child (Audiobook)",
+    "slug": "harry-potter-8-en-audiobook",
+    "category": ["Fantasy", "Drama", "Young adult"],
+    "priceRegular": 22.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-8/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling, Jack Thorne, John Tiffany",
+    "publicationYear": 2017,
+    "publication": "Arthur A. Levine Books / Scholastic",
+    "description": [
+      "Nineteen years after Voldemort’s defeat, Harry Potter is now a Ministry of Magic official and father of three. When his youngest son Albus is sorted into Slytherin, their relationship grows strained.",
+      "Albus befriends Scorpius Malfoy, and together they uncover a dangerous secret involving a time-turner that could change history. As past and present collide, both father and son learn that darkness sometimes comes from unexpected places.",
+      "This official play script explores legacy, friendship, choice, and the consequences of wielding magic—marking a powerful return to the wizarding world."
+    ],
+    "narrator": "Lidia Tsymborovych",
+    "listeningLength": 37800000
+  },
+  {
+    "id": "htjwfg-uuid-hp8-uk-audio",
+    "type": "audiobook",
+    "namespaceId": "harry-potter-8",
+    "name": "Гаррі Поттер і прокляте дитя (Аудіокнига)",
+    "slug": "harry-potter-8-uk-audiobook",
+    "category": ["Fantasy", "Drama", "Young adult"],
+    "priceRegular": 14.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/audiobook/harry-potter-8/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ, Джек Торн, Джон Тіффані",
+    "publicationYear": 2017,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "description": [
+      "Минає дев’ятнадцять років після поразки Волдеморта. Гаррі Поттер працює в Міністерстві магії та виховує трьох дітей.",
+      "Його молодший син Альбус потрапляє до Слизерина і відчуває тиск родинної спадщини. Його дружба зі Скорпіусом Мелфоєм стає початком подорожі, що веде до небезпечної магії часу.",
+      "Минаючи межі минулого і теперішнього, батько й син дізнаються, що тінь може впасти навіть на найсвітліше ім’я. Це офіційна п’єса-вистава про силу вибору, прощення і відповідальність за спадщину."
+    ],
+    "narrator": "Nika Okhten",
+    "listeningLength": 37800000
+  }
+]

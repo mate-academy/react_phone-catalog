@@ -1,0 +1,1470 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "type": "kindle",
+    "namespaceId": "1984",
+    "name": "1984",
+    "slug": "1984-en-kindle",
+    "priceRegular": 13.99,
+    "priceDiscount": null,
+    "images": ["https://ik.imagekit.io/ox4rssyih/img/kindle/1984/en/00.webp"],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "George Orwell",
+    "coverType": null,
+    "numberOfPages": 416,
+    "publicationYear": 2013,
+    "publication": "Mariner Books Classics",
+    "format": "3.1 MB",
+    "illustrations": false,
+    "category": ["Dystopian", "Political Fiction", "Classic"],
+    "description": [
+      "“Orwell saw, to his credit, that the act of falsifying reality is only secondarily a way of changing perceptions. It is, above all, a way of asserting power.”—The New Yorker",
+      "In 1984, London is a grim city in the totalitarian state of Oceania where Big Brother is always watching you and the Thought Police can practically read your mind. Winston Smith is a man in grave danger for the simple reason that his memory still functions. Drawn into a forbidden love affair, Winston finds the courage to join a secret revolutionary organization called The Brotherhood, dedicated to the destruction of the Party. Together with his beloved Julia, he hazards his life in a deadly match against the powers that be.",
+      "Lionel Trilling said of Orwell’s masterpiece, “1984 is a profound, terrifying, and wholly fascinating book. It is a fantasy of the political future, and like any such fantasy, serves its author as a magnifying device for an examination of the present.” Though the year 1984 now exists in the past, Orwell’s novel remains an urgent call for the individual willing to speak truth to power."
+    ]
+  },
+  {
+    "id": "b1c0d123-9ef1-4acb-b02a-123456789abc",
+    "type": "kindle",
+    "namespaceId": "1984",
+    "name": "1984",
+    "slug": "1984-uk-kindle",
+    "priceRegular": 2.7,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/1984/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/1984/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/1984/uk/02.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джордж Орвелл",
+    "coverType": null,
+    "numberOfPages": 318,
+    "publicationYear": 2021,
+    "publication": "Фоліо",
+    "format": "1.2 MB",
+    "illustrations": false,
+    "category": ["Dystopian", "Political Fiction", "Classic"],
+    "description": [
+      "Джордж Орвелл належить до найвпливовіших письменників Великої Британії середини та другої половини ХХ ст., а роман-антиутопію «1984» називають зразком жанру й довідником із важких часів. Його популярність останнім часом помітно зросла.",
+      "Двомислення, новомова, поліція думок, міністерство любові, що завдає болю, вганяє у відчай і знищує інакодумців, міністерство миру, яке розпалює війни, роботи-письменники, що продукують порнографічну літературу для відволікання мас… Орвелл відкрив нам очі на те, як функціонують тоталітарні режими.",
+      "Брехня стане правдою. Ця брехня кожен день змінює минуле… Безперервно заміщаючи будь-які факти, минуле може стати завтра зовсім іншим — і саме це буде правдою. Кожен ваш погляд, кожен подих і жест уже давно вивчено. У вас немає права на бажання й емоції… Роман бентежить, зворушує, змушує визнати його правдивість і замислитися.",
+      "Уперше книжку було опубліковано 8 червня 1949 року. Орвелл її написав на тлі руїн, серед голодних, утомлених і змучених війною людей. Однак сьогодні вона актуальна, як ніколи."
+    ]
+  },
+  {
+    "id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+    "type": "kindle",
+    "namespaceId": "the-little-prince",
+    "name": "The Little Prince",
+    "slug": "the-little-prince-en-kindle",
+    "priceRegular": 11.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-little-prince/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Antoine de Saint-Exupéry",
+    "coverType": null,
+    "numberOfPages": 96,
+    "publicationYear": 2000,
+    "publication": "Clarion Books",
+    "format": "60.5 MB",
+    "illustrations": true,
+    "category": ["Fantasy", "Translated works", "Children's and YA fiction"],
+    "description": [
+      "Few stories are as widely read and as universally cherished by children and adults alike as The Little Prince. Richard Howard's new translation of the beloved classic--published to commemorate the 100th anniversary of Antoine de Saint-Exupéry's birth--beautifully reflects Saint-Exupéry's unique and gifted style.",
+      "Howard has excelled in bringing the English text as close as possible to the French, in language, style, and most important, spirit.",
+      "The artwork in this new edition has been restored to match in detail and in color Saint-Exupéry's original artwork. Harcourt is proud to introduce the definitive English-language edition of The Little Prince. It will capture the hearts of readers of all ages."
+    ]
+  },
+  {
+    "id": "e8bb7e5d-b1a7-4d62-ba06-3dcb1a2c2f4f",
+    "type": "kindle",
+    "namespaceId": "the-little-prince",
+    "name": "Маленький принц",
+    "slug": "the-little-prince-uk-kindle",
+    "priceRegular": 0.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-little-prince/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-little-prince/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-little-prince/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-little-prince/uk/03.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-little-prince/uk/04.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Антуан де Сент‑Екзюпері",
+    "coverType": null,
+    "numberOfPages": 157,
+    "publicationYear": 2020,
+    "publication": "Фоліо",
+    "format": "55 MB",
+    "illustrations": true,
+    "category": ["Fantasy", "Translated works", "Children's and YA fiction"],
+    "description": [
+      "«Маленький Принц» (1943) — найвідоміший його твір — став підсумком життєвого досвіду письменника. Ця мудра і лю­дяна казка-притча просто і проникливо розповідає про найважливіше — про дружбу і любов, про красу і нетерпимість до зла. Читаючи її, почуваєшся дитиною і починаєш дивитися на навколишній світ зовсім іншими очима. «Усі ми родом з дитинства», — нагадує Антуан де Сент-Екзюпері, знайомлячи читачів з Маленьким Принцом — найзагадковішим і найзворушливішим героєм світової літератури."
+    ]
+  },
+  {
+    "id": "c3a7f1d4-9e2b-4f5d-a6b8-d4e147a9bf12",
+    "type": "kindle",
+    "namespaceId": "a-song-of-ice-and-fire",
+    "name": "A Song of Ice and Fire",
+    "slug": "a-song-of-ice-and-fire-en-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 8.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-song-of-ice-and-fire/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "George R. R. Martin",
+    "coverType": null,
+    "numberOfPages": 819,
+    "publicationYear": 2003,
+    "publication": "Random House Worlds",
+    "format": "8.9 MB",
+    "illustrations": false,
+    "category": ["Epic Fantasy", "High Fantasy", "Adventure"],
+    "description": [
+      "Here is the first book in the landmark series that has redefined imaginative fiction and become a modern masterpiece.",
+      "In a land where summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the frozen wastes to the North of Winterfell, sinister and supernatural forces are massing beyond the kingdom’s protective Wall. At the center of the conflict lie the Starks of Winterfell, a family as harsh and unyielding as the land they were born to. Sweeping from a land of brutal cold to a distant summertime kingdom of epicurean plenty, here is a tale of lords and ladies, soldiers and sorcerers, assassins and bastards, who come together in a time of grim omens. Amid plots and counterplots, tragedy and betrayal, victory and terror, the fate of the Starks, their allies, and their enemies hangs perilously in the balance, as each endeavors to win that deadliest of conflicts: the game of thrones."
+    ]
+  },
+  {
+    "id": "d4b8e2c5-1f3c-4a6f-b7c9-e5f258bac345",
+    "type": "kindle",
+    "namespaceId": "a-song-of-ice-and-fire",
+    "name": "Пісня льоду й полум'я",
+    "slug": "a-song-of-ice-and-fire-uk-kindle",
+    "priceRegular": 11.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-song-of-ice-and-fire/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джордж Р. Р. Мартін",
+    "coverType": null,
+    "numberOfPages": 800,
+    "publicationYear": 2024,
+    "publication": "КМ-БУКС",
+    "format": "6.0 MB",
+    "illustrations": false,
+    "category": ["Epic Fantasy", "High Fantasy", "Adventure"],
+    "description": [
+      "Перша книга циклу - \"Гра престолів\" - це захопливий світ Сімох Королівств, де літо й зима тривають по кілька років, з півночі наступають загадкові й моторошні вороги, а вельможні родини ведуть ненастанну війну за престол. Майже за три століття до подій першого роману Сім Королівств Вестеросу було з'єднано при династії Таргарієнів, які встановили владу завдяки повному контролю над драконами. Династія Таргарієнів правила триста років, доки громадянська війна та міжособистісні конфлікти не призвели до гибелі всіх драконів. Події \"Гри престолів\" розгортаються у мирні часи, але завжди будуть існувати ті, хто прагне захопити владу.",
+      "Джордж Мартін - американський письменник, автор світових бестселерів, зокрема всесвітньо відомої серії книг \"Пісня льоду й полум'я\", за мотивами якої триває вихід не менш популярного серіалу \"Гра престолів\". Прийнято вважати Мартіна сучасним майстром фантастики, а його романи вже перекладено багатьма мовами та регулярно отримають престижні нагороди і премії."
+    ]
+  },
+  {
+    "id": "e3f4a1b2-9d8c-4f5e-a123-4d5678ab9cde",
+    "type": "kindle",
+    "namespaceId": "the-picture-of-dorian-gray",
+    "name": "The Picture of Dorian Gray",
+    "slug": "the-picture-of-dorian-gray-en-kindle",
+    "priceRegular": 6.24,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-picture-of-dorian-gray/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Oscar Wilde",
+    "coverType": null,
+    "numberOfPages": 594,
+    "publicationYear": 2012,
+    "publication": "Bantam Classics",
+    "format": "2.4 MB",
+    "illustrations": false,
+    "category": ["Philosophical fiction", "Gothic fiction", "Classic"],
+    "description": [
+      "Flamboyant and controversial, Oscar Wilde was a dazzling personality, a master of wit, and a dramatic genius whose sparkling comedies contain some of the most brilliant dialogue ever written for the English stage. Here in one volume are his immensely popular novel, The Picture of Dorian Gray; his last literary work, “The Ballad of Reading Gaol,” a product of his own prison experience; and four complete plays: Lady Windermere’s Fan, his first dramatic success, An Ideal Husband, which pokes fun at conventional morality, The Importance of Being Earnest, his finest comedy, and Salomé, a portrait of uncontrollable love originally written in French and faithfully translated by Richard Ellmann.",
+      "Every selection appears in its entirety–a marvelous collection of outstanding works by the incomparable Oscar Wilde, who’s been aptly called “a lord of language” by Max Beerbohm."
+    ]
+  },
+  {
+    "id": "f4a5b2c3-1d2e-4f6a-b789-0d1c2b3a4e5f",
+    "type": "kindle",
+    "namespaceId": "the-picture-of-dorian-gray",
+    "name": "Портрет Доріана Грея",
+    "slug": "the-picture-of-dorian-gray-uk-kindle",
+    "priceRegular": 3.49,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-picture-of-dorian-gray/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-picture-of-dorian-gray/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-picture-of-dorian-gray/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-picture-of-dorian-gray/uk/03.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/the-picture-of-dorian-gray/uk/04.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Оскар Вайлд",
+    "coverType": null,
+    "numberOfPages": 288,
+    "publicationYear": 2023,
+    "publication": "BookChef",
+    "format": "1.1 MB",
+    "illustrations": false,
+    "category": ["Philosophical fiction", "Gothic fiction", "Classic"],
+    "description": [
+      "«Портрет Доріана Ґрея» — це вишукана історія вродливого маєтного одвічного парубка, який кохався в розкошах і красі, сповідуючи філософію гедонізму й живучи виключно заради насолод. Однак душевна рана і життєва драма не оминули цього самовпевненого красеня. Тож тікати від душевних мук і страждань він мусив у заміські маєтки з пишними наїдками, опіумні притони на околицях міста, сумнівні квартали з вуличними дівицями й гаяти життя в компанії самозакоханих денді, які намагалися в усьому наслідувати свого кумира — Доріана. Роман є одним із засадничих взірців декаданської прози fin de siècle поряд із текстами «Навпаки» Жоріса-Карла Гюїсманса, «Насолода» Габріеле д’Аннунціо, «Страждання князя Штерненгоха» Ладислава Кліма. Текст подано за машинописом 1891 року із означенням місць і розділів, які автор додав до остаточної редакції тексту, а також наведенням тих фрагментів, які він видалив або ж замінив."
+    ]
+  },
+  {
+    "id": "a9b8c7d6-e5f4-3a21-b0c9-8765fedc4321",
+    "type": "kindle",
+    "namespaceId": "city-of-girls",
+    "name": "City of Girls",
+    "slug": "city-of-girls-en-kindle",
+    "priceRegular": 20.0,
+    "priceDiscount": 9.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/https://ik.imagekit.io/ox4rssyih/img/kindle/city-of-girls/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Elizabeth Gilbert",
+    "coverType": null,
+    "numberOfPages": 480,
+    "publicationYear": 2019,
+    "publication": "Riverhead Books",
+    "format": "2.3 MB",
+    "illustrations": false,
+    "category": ["Historical Fiction", "Women's Fiction", "Coming‑of‑Age"],
+    "description": [
+      "\"Life is both fleeting and dangerous, and there is no point in denying yourself pleasure, or being anything other than what you are.\"",
+      "Beloved author Elizabeth Gilbert returns to fiction with a unique love story set in the New York City theater world during the 1940s. Told from the perspective of an older woman as she looks back on her youth with both pleasure and regret (but mostly pleasure), City of Girls explores themes of female sexuality and promiscuity, as well as the idiosyncrasies of true love.",
+      "In 1940, nineteen-year-old Vivian Morris has just been kicked out of Vassar College, owing to her lackluster freshman-year performance. Her affluent parents send her to Manhattan to live with her Aunt Peg, who owns a flamboyant, crumbling midtown theater called the Lily Playhouse. There Vivian is introduced to an entire cosmos of unconventional and charismatic characters, from the fun-chasing showgirls to a sexy male actor, a grand-dame actress, a lady-killer writer, and no-nonsense stage manager. But when Vivian makes a personal mistake that results in professional scandal, it turns her new world upside down in ways that it will take her years to fully understand. Ultimately, though, it leads her to a new understanding of the kind of life she craves - and the kind of freedom it takes to pursue it. It will also lead to the love of her life, a love that stands out from all the rest.",
+      "Now eighty-nine years old and telling her story at last, Vivian recalls how the events of those years altered the course of her life - and the gusto and autonomy with which she approached it. \"At some point in a woman's life, she just gets tired of being ashamed all the time,\" she muses. \"After that, she is free to become whoever she truly is.\" Written with a powerful wisdom about human desire and connection, City of Girls is a love story like no other."
+    ]
+  },
+  {
+    "id": "b8c7d6e5-f4a3-2b1c-0d9e-7654c3b2a1f0",
+    "type": "kindle",
+    "namespaceId": "city-of-girls",
+    "name": "Місто дівчат",
+    "slug": "city-of-girls-uk-kindle",
+    "priceRegular": 5.89,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/city-of-girls/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/city-of-girls/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/city-of-girls/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/city-of-girls/uk/03.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/city-of-girls/uk/04.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Елізабет Гілберт",
+    "coverType": null,
+    "numberOfPages": 536,
+    "publicationYear": 2019,
+    "publication": "Видавництво Старого Лева",
+    "format": "2.3 MB",
+    "illustrations": false,
+    "category": ["Historical Fiction", "Women's Fiction", "Coming‑of‑Age"],
+    "description": [
+      "«Місто дівчат» — новий бестселер Елізабет Ґілберт, яка підкорила світ романами «Їсти, молитися, кохати» та «Природа всіх речей».",
+      "Це інтригуючий роман про жіночу сексуальність і свободу, про відвагу бути собою і право жити так, як тобі хочеться. А ще — історія дуже незвичайного кохання, на яке наклала свою тінь війна, та справжньої дружби, яку нелегко знайти, зрозуміти та оцінити, особливо в такому непростому і мінливому місті, як Нью-Йорк. Роман «Місто дівчат» починається 1940 року, коли дев’ятнадцятилітню Вівіан Морріс виганяють з престижного коледжу. Батьки відправляють доньку на Мангеттен до тітки — власниці невеликого, проте дуже ексцентричного театру. Несподівано для себе Вівіан опиняється у справжньому вирі довоєнного богемного життя. Знайомства із зірками, незвичайні театральні постановки, нестримний секс, ріки алкоголю і відчуття цілковитої свободи спершу заворожують та спокушають, а потім вибивають землю з-під ніг. І це лише початок шляху Вівіан довжиною в життя, який необхідно пройти, щоб зрозуміти: ти не мусиш бути хорошою дівчинкою, щоб бути хорошою людиною."
+    ]
+  },
+  {
+    "id": "f9e8d7c6-b5a4-3b21-a0c9-7654fedc3210",
+    "type": "kindle",
+    "namespaceId": "anxious-people",
+    "name": "Anxious People",
+    "slug": "anxious-people-en-kindle",
+    "priceRegular": 18.0,
+    "priceDiscount": 14.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/anxious-people/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Fredrik Backman",
+    "coverType": null,
+    "numberOfPages": 349,
+    "publicationYear": 2020,
+    "publication": "Atria Books",
+    "format": "2.3 MB",
+    "illustrations": false,
+    "category": ["Contemporary Fiction", "Humor", "Mystery"],
+    "description": [
+      "An instant #1 New York Times bestseller, the new novel from the author of A Man Called Ove is a “quirky, big-hearted novel….Wry, wise, and often laugh-out-loud funny, it’s a wholly original story that delivers pure pleasure” (People).",
+      "Looking at real estate isn’t usually a life-or-death situation, but an apartment open house becomes just that when a failed bank robber bursts in and takes a group of strangers hostage. The captives include a recently retired couple who relentlessly hunt down fixer-uppers to avoid the painful truth that they can’t fix their own marriage. There’s a wealthy bank director who has been too busy to care about anyone else and a young couple who are about to have their first child but can’t seem to agree on anything. Add to the mix an eighty-seven-year-old woman who has lived long enough not to be afraid of someone waving a gun in her face, a flustered but still-ready-to-make-a-deal real estate agent, and a mystery man who has locked himself in the apartment’s only bathroom, and you’ve got the worst group of hostages in the world.",
+      "Each of them carries a lifetime of grievances, hurts, secrets, and passions that are ready to boil over. None of them is entirely who they appear to be. And all of them—the bank robber included—desperately crave some sort of rescue. As the authorities and the media surround the premises, these reluctant allies will reveal surprising truths about themselves and set in motion a chain of events so unexpected that even they can hardly explain what happens next."
+    ]
+  },
+  {
+    "id": "e8d7c6b5-a4f3-2b11-90c8-6543fedc2109",
+    "type": "kindle",
+    "namespaceId": "anxious-people",
+    "name": "Тривожні люди",
+    "slug": "anxious-people-uk-kindle",
+    "priceRegular": 11.25,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/anxious-people/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/anxious-people/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/anxious-people/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/anxious-people/uk/03.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Фредрік Бакман",
+    "coverType": null,
+    "numberOfPages": 360,
+    "publicationYear": 2021,
+    "publication": "Видавництво Анетти Антоненко",
+    "format": "4.5 MB",
+    "illustrations": false,
+    "category": ["Contemporary Fiction", "Humor", "Mystery"],
+    "description": [
+      "Роман всесвітньо відомого шведського письменника Фредріка Бакмана «Тривожні люди» очолив найвідоміші книжкові рейтинги і став світовим бестселером.",
+      "Це зворушлива комедія, а водночас психологічний роман про злочин, який ніколи не відбувся. Грабіжник-невдаха бере випадково в заручники вісьмох надзвичайно стурбованих незнайомців, які оглядають квартиру, виставлену на продаж. Під час перебування у цьому помешканні вони поступово починають відкриватися одне одному – і виявляється, у них чимало спільного.",
+      "Подружжя, яке щойно вийшло на пенсію, директорка банку, старенька пані, яка вже не боїться, коли на неї наставляють пістолет, молода пара, яка очікує дитину, агентка з нерухомості – усі вони розкривають одне одному свої найглибші таємниці.",
+      "Роман «Тривожні люди» – смішний, сповнений емпатії та мудрості. Це історія про силу дружби, прощення і надію – про речі, які рятують навіть у найнеспокійніші часи."
+    ]
+  },
+  {
+    "id": "c4d3e2f1-a0b9-4c8d-ba07-123456abcdef",
+    "type": "kindle",
+    "namespaceId": "a-little-life",
+    "name": "A Little Life",
+    "slug": "a-little-life-en-kindle",
+    "priceRegular": 18.0,
+    "priceDiscount": 11.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-little-life/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Hanya Yanagihara",
+    "coverType": null,
+    "numberOfPages": 833,
+    "publicationYear": 2015,
+    "publication": "Anchor",
+    "format": "1.6 MB",
+    "illustrations": false,
+    "category": ["Contemporary Fiction", "Literary Fiction", "Drama"],
+    "description": [
+      "A Little Life follows four college classmates—broke, adrift, and buoyed only by their friendship and ambition—as they move to New York in search of fame and fortune. While their relationships, which are tinged by addiction, success, and pride, deepen over the decades, the men are held together by their devotion to the brilliant, enigmatic Jude, a man scarred by an unspeakable childhood trauma. A hymn to brotherly bonds and a masterful depiction of love in the twenty-first century, Hanya Yanagihara’s stunning novel is about the families we are born into, and those that we make for ourselves."
+    ]
+  },
+  {
+    "id": "d5e4f3a2-b1c0-5d9e-cb18-abcdef654321",
+    "type": "kindle",
+    "namespaceId": "a-little-life",
+    "name": "Маленьке життя",
+    "slug": "a-little-life-uk-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-little-life/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-little-life/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-little-life/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-little-life/uk/03.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Ганя Янагіхара",
+    "coverType": null,
+    "numberOfPages": 880,
+    "publicationYear": 2017,
+    "publication": "КМ-БУКС",
+    "format": "1.6 MB",
+    "illustrations": false,
+    "category": ["Contemporary Fiction", "Literary Fiction", "Drama"],
+    "description": [
+      "Джуд — неймовірно талановитий успішний юрист. І жоден із його співробітників ніколи б не запідозрив, що життя цього чоловіка — пекло, з якого він не здатен виборсатися. Привиди дитинства шматують його душу, спричиняючи біль не лишень Джудові, а й усім, кого він любить. Трагічний та трансцендентальний гімн братерській любові, майстерне зображення розбитого серця, і темне дослідження тиранії пам’яті й меж людської витривалості."
+    ]
+  },
+  {
+    "id": "g1h2i3j4-k5l6-7m8n-9o0p-qrstuvwxyz01",
+    "type": "kindle",
+    "namespaceId": "a-good-girls-guide-to-murder",
+    "name": "A Good Girl's Guide to Murder",
+    "slug": "a-good-girls-guide-to-murder-en-kindle",
+    "priceRegular": 10.99,
+    "priceDiscount": 9.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-good-girls-guide-to-murder/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Holly Jackson",
+    "coverType": null,
+    "numberOfPages": 389,
+    "publicationYear": 2020,
+    "publication": "Delacorte Press",
+    "format": "13.5 MB",
+    "illustrations": false,
+    "category": ["Young Adult", "Mystery", "Crime"],
+    "description": [
+      "Everyone in Fairview knows the story.",
+      "Pretty and popular high school senior Andie Bell was murdered by her boyfriend, Sal Singh, who then killed himself. It was all anyone could talk about. And five years later, Pip sees how the tragedy still haunts her town.",
+      "But she can't shake the feeling that there was more to what happened that day. She knew Sal when she was a child, and he was always so kind to her. How could he possibly have been a killer?",
+      "Now a senior herself, Pip decides to reexamine the closed case for her final project, at first just to cast doubt on the original investigation. But soon she discovers a trail of dark secrets that might actually prove Sal innocent . . . and the line between past and present begins to blur. Someone in Fairview doesn't want Pip digging around for answers, and now her own life might be in danger."
+    ]
+  },
+  {
+    "id": "h2i3j4k5-l6m7-8n9o-0pqr-stuvwxyz2345",
+    "type": "kindle",
+    "namespaceId": "a-good-girls-guide-to-murder",
+    "name": "Посібник з убивства для хорошої дівчинки",
+    "slug": "a-good-girls-guide-to-murder-uk-kindle",
+    "priceRegular": 9.45,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-good-girls-guide-to-murder/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-good-girls-guide-to-murder/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-good-girls-guide-to-murder/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-good-girls-guide-to-murder/uk/03.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/a-good-girls-guide-to-murder/uk/04.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Голі Джексон",
+    "coverType": null,
+    "numberOfPages": 448,
+    "publicationYear": 2024,
+    "publication": "Readberry, Ранок",
+    "format": "1.2 MB",
+    "illustrations": false,
+    "category": ["Young Adult", "Mystery", "Crime"],
+    "description": [
+      "Під час розслідування Піппа викриває похмурі секрети та брехню у своїй, здавалося б, гармонійній спільноті. Чим більше вона наближається до істини, тим ризикованішим стає слідство. Важко зрозуміти, хто говорить правду, а хто — вигадку. Вбивця ж за будь-яку ціну хоче зберегти свою страшну таємницю, тож небезпека вже чатує на Піппу та її близьких.",
+      "«Посібник» є дебютною книгою Голлі Джексон. Він швидко став бестселером Sunday Times і NY Times, поклавши початок успішній трилогії. Forbes назвав його одним із десяти найкращих романів Young Adult усіх часів. Письменниця розповіла, що натхненням для її першого детективу став світ реальних злочинів, який їй розкрили подкасти й документальні фільми. Можливо, саме це й вплинуло на стиль Голлі — у книзі ви побачите різноманітні інтерактивні елементи, як-от інтерв’ю, файли справ і текстові повідомлення. Це дає читачам відчуття, що вони активно ведуть слідство разом із головною героїнею. Обкладинка нагадує дошку для розслідувань, а червоні ниточки натякають не тільки на знайдені зачіпки, а й небезпеку. Напруження врівноважують гумор та особисте життя персонажів.",
+      "У цій історії авторка досліджує теми правди, моралі, расизму, упередженості ЗМІ й те, як суспільна думка може визначати долі людей. Вона підкреслює, що навіть щось ідеальне на вигляд може мати гнітючі секрети. Це захоплива історія, яка сподобається поціновувачам таємничих вбивств, заплутаних розслідувань і атмосфери маленьких містечок."
+    ]
+  },
+  {
+    "id": "a123b456-c789-012d-ef34-567890abc123",
+    "type": "kindle",
+    "namespaceId": "fahrenheit-451",
+    "name": "Fahrenheit 451",
+    "slug": "fahrenheit-451-en-kindle",
+    "priceRegular": 17.0,
+    "priceDiscount": 12.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/fahrenheit-451/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Ray Bradbury",
+    "coverType": null,
+    "numberOfPages": 167,
+    "publicationYear": 2011,
+    "publication": "Simon & Schuster",
+    "format": "11.8 MB",
+    "illustrations": true,
+    "category": ["Dystopian", "Science Fiction", "Classic"],
+    "description": [
+      "Nearly seventy years after its original publication, Ray Bradbury’s internationally acclaimed novel Fahrenheit 451 stands as a classic of world literature set in a bleak, dystopian future. Today its message has grown more relevant than ever before.",
+      "Guy Montag is a fireman. His job is to destroy the most illegal of commodities, the printed book, along with the houses in which they are hidden. Montag never questions the destruction and ruin his actions produce, returning each day to his bland life and wife, Mildred, who spends all day with her television “family.” But when he meets an eccentric young neighbor, Clarisse, who introduces him to a past where people didn’t live in fear and to a present where one sees the world through the ideas in books instead of the mindless chatter of television, Montag begins to question everything he has ever known."
+    ]
+  },
+  {
+    "id": "b234c567-d890-123e-fa45-678901bcd234",
+    "type": "kindle",
+    "namespaceId": "fahrenheit-451",
+    "name": "451° за Фаренгейтом",
+    "slug": "fahrenheit-451-uk-kindle",
+    "priceRegular": 4.52,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/fahrenheit-451/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/fahrenheit-451/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/fahrenheit-451/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/fahrenheit-451/uk/03.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/fahrenheit-451/uk/04.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Рей Бредбері",
+    "coverType": null,
+    "numberOfPages": 208,
+    "publicationYear": 2024,
+    "publication": "Богдан",
+    "format": "0.8 MB",
+    "illustrations": false,
+    "category": ["Dystopian", "Science Fiction", "Classic"],
+    "description": [
+      "Що трапилося з нашим світом? Чому пожежники спалюють будинки, а не гасять пожежі? Чому люди не читають книг, не ходять пішки і майже не розмовляють одне з одним? Який вигляд матиме наша Земля та якими будуть люди, якщо заборонити їм читати книги? Зі сторінок одного з найкращих творів Рея Бредбері ви дізнаєтеся, чи зуміють люди майбутнього зберігати книги для наступних поколінь, хто повстане проти панівної системи і як зустріч із дівчиною Кларіс змінить життя пожежника Ґая Монтеґа…"
+    ]
+  },
+  {
+    "id": "k1l2m3n4-o5p6-7q8r-9s0t-uvwxyz123456",
+    "type": "kindle",
+    "namespaceId": "killers-of-the-flower-moon",
+    "name": "Killers of the Flower Moon",
+    "slug": "killers-of-the-flower-moon-en-kindle",
+    "priceRegular": 17.0,
+    "priceDiscount": 13.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/killers-of-the-flower-moon/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "David Grann",
+    "coverType": null,
+    "numberOfPages": 347,
+    "publicationYear": 2017,
+    "publication": "Vintage",
+    "format": "89.1 MB",
+    "illustrations": true,
+    "category": ["Nonfiction", "True Crime", "History"],
+    "description": [
+      "In the 1920s, the richest people per capita in the world were members of the Osage Nation in Oklahoma. After oil was discovered beneath their land, the Osage rode in chauffeured automobiles, built mansions, and sent their children to study in Europe.",
+      "Then, one by one, the Osage began to be killed off. The family of an Osage woman, Mollie Burkhart, became a prime target. One of her relatives was shot. Another was poisoned. And it was just the beginning, as more and more Osage were dying under mysterious circumstances, and many of those who dared to investigate the killings were themselves murdered.",
+      "As the death toll rose, the newly created FBI took up the case, and the young director, J. Edgar Hoover, turned to a former Texas Ranger named Tom White to try to unravel the mystery. White put together an undercover team, including a Native American agent who infiltrated the region, and together with the Osage began to expose one of the most chilling conspiracies in American history."
+    ]
+  },
+  {
+    "id": "l2m3n4o5-p6q7-8r9s-0tuv-wxyz234567",
+    "type": "kindle",
+    "namespaceId": "killers-of-the-flower-moon",
+    "name": "Вбивайте усвідомлено",
+    "slug": "killers-of-the-flower-moon-uk-kindle",
+    "priceRegular": 7.99,
+    "priceDiscount": null,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/killers-of-the-flower-moon/uk/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/killers-of-the-flower-moon/uk/01.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/killers-of-the-flower-moon/uk/02.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/killers-of-the-flower-moon/uk/03.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Карстен Дюсс",
+    "coverType": null,
+    "numberOfPages": 408,
+    "publicationYear": 2024,
+    "publication": "КМ-БУКС",
+    "format": "1.5 MB",
+    "illustrations": false,
+    "category": ["Nonfiction", "True Crime", "History"],
+    "description": [
+      "Бйорн Дімель — адвокат у кримінальних справах.",
+      "І не те щоб він святий, але його клієнти, безумовно, не святіші від нього; піклування про них забезпечило йому та його родині комфортне життя; однак є тут і негативний бік: це також призвело до краху в шлюбі між Бйорном та його дружиною.",
+      "Катаріна, дружина Бйорна, змусила його відвідати семінар з усвідомленості, щоб він став хорошим батьком та вони змогли відновити їхню родину. Інакше вона розлучиться з ним і забере від нього їхню спільну дитину.",
+      "Навчання дійсно приносить плоди, і Бйорн навіть може інтегрувати те, чого він навчився, у свою роботу: він просто вбиває свого клієнта ― за всіма правилами усвідомленості… І так само, за правилами, розв’язує супутні проблеми.",
+      "Дебютний роман Карстена Дюсса — це трилер у не зовсім традиційному розумінні. Це кримінальна історія, наповнена чорним гумором та сатирою, яку ви точно не залишите, не дочитавши до кінця."
+    ]
+  },
+  {
+    "id": "kindle-heaven-blessing-2-uk",
+    "type": "kindle",
+    "namespaceId": "heaven-blessing-2",
+    "name": "Благословення Небесного Урядника. Том 2",
+    "slug": "heaven-blessing-vol2-uk-kindle",
+    "priceRegular": 14.99,
+    "priceDiscount": 12.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/heaven-blessing-2/uk/00.webp"
+    ],
+    "langAvailable": ["uk", "en"],
+    "lang": "uk",
+    "author": "Mo Xiang Tong Xiu",
+    "coverType": null,
+    "numberOfPages": 400,
+    "publicationYear": 2025,
+    "publication": "BookChef",
+    "format": "3.2 MB",
+    "illustrations": true,
+    "category": [
+      "Fantasy",
+      "Epic Fantasy",
+      "Romantic Fantasy",
+      "Readers’ Choice May",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Сє Лянь думає, що події на перевалі Баньюе залишилися позаду, але він глибоко помиляється. Його кличуть назад на небеса, де він повинен постати перед самим Небесним Імператором, Цзюнь Ву. При дворі він знову стає вигнанцем. Коли генерал Пей намагається перекласти вину на нього, ситуація ускладнюється.",
+      "Завдяки заступництву Господаря Вітрів Сє Лянь отримує ще один шанс — але пов’язаний він із небезпечним дорученням у Місті Привидів. Там урядник знову зустрічає Саньлана, який виявляється не ким іншим, як могутнім Хва Ченом — Королем Привидів.",
+      "Ця частина розкриває глибші теми — від суспільного осуду до крихкості репутації. Роман порушує питання корупції, влади, любові й жертовності. Авторка виводить даньмей-фентезі на новий рівень, поєднуючи поезію, міфологію та моральний конфлікт. Пряме продовження першої частини, ця книга є обов'язковою для фанатів серії."
+    ]
+  },
+  {
+    "id": "kindle-heaven-blessing-2-en",
+    "type": "kindle",
+    "namespaceId": "heaven-blessing-2",
+    "name": "Heaven Official's Blessing. Vol. 2",
+    "slug": "heaven-blessing-vol2-en-kindle",
+    "priceRegular": 14.99,
+    "priceDiscount": 12.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/heaven-blessing-2/en/00.webp"
+    ],
+    "langAvailable": ["uk", "en"],
+    "lang": "en",
+    "author": "Mo Xiang Tong Xiu",
+    "coverType": null,
+    "numberOfPages": 400,
+    "publicationYear": 2025,
+    "publication": "BookChef",
+    "format": "3.1 MB",
+    "illustrations": true,
+    "category": [
+      "Fantasy",
+      "Epic Fantasy",
+      "Our product manager's favorite",
+      "Romantic Fantasy",
+      "Readers’ Choice May"
+    ],
+    "description": [
+      "Xie Lian thinks the events at Banyue Pass are behind him—but he’s wrong. Summoned back to the heavens, he must face the Heavenly Emperor Jun Wu. Once again an outcast, Xie Lian is blamed for a tragedy he didn’t cause. Only Wind Master’s intervention spares him.",
+      "Assigned to investigate the eerie Ghost City, Xie Lian unexpectedly reunites with San Lang, who is revealed to be Hua Cheng—Ghost King and one of the Four Calamities. Despite his fearsome reputation, Hua Cheng shows unwavering devotion to the prince.",
+      "This installment delves into themes of corruption, public perception, love, and sacrifice. It’s a lyrical and philosophical continuation of the danmei fantasy epic, filled with layered characters and mythological depth. A must-read sequel for fans of volume one."
+    ]
+  },
+  {
+    "id": "kindle-heaven-blessing-vol1-uk",
+    "type": "kindle",
+    "namespaceId": "heaven-blessing",
+    "name": "Благословення Небесного Урядника. Том 1",
+    "slug": "heaven-blessing-vol1-uk-kindle",
+    "priceRegular": 13.99,
+    "priceDiscount": 8.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/heaven-blessing/uk/00.webp"
+    ],
+    "langAvailable": ["uk", "en"],
+    "lang": "uk",
+    "author": "Mo Xiang Tong Xiu",
+    "coverType": null,
+    "numberOfPages": 352,
+    "publicationYear": 2025,
+    "publication": "BookChef",
+    "format": "3 MB",
+    "illustrations": true,
+    "category": [
+      "Fantasy",
+      "Sword and Sorcery",
+      "Top Sellers 2025",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Боги винагородили Сє Ляня, принца королівства Сяньле, прийнявши його у свій світ. Він став божественною суттю у сімнадцять років, усе життя тренуючись, аби досягти досконалості. Люди любили його за земного життя, проте тепер йому заборонено втручатися у справи смертних. Коли його королівство зазнає невдач, Сє Лянь порушує правило — і втрачає віру людей.",
+      "Через 800 років він знову підноситься як небесний урядник, очищаючи світ від злих духів. Там він зустрічає таємничого юнака Саньлана, що приховує похмурі таємниці. Попри попередження інших богів, Сє Лянь не може відвернутися — і вперше за довгий час почувається не самотнім.",
+      "Це повільна, чуттєва розповідь про стійкість, біль, прийняття й віру. Восьмитомна сага в жанрі даньмей натхнена китайським фольклором, де розкриваються глибокі теми через поетичну прозу та складні долі героїв."
+    ]
+  },
+  {
+    "id": "kindle-heaven-blessing-vol1-en",
+    "type": "kindle",
+    "namespaceId": "heaven-blessing",
+    "name": "Heaven Official's Blessing. Vol. 1",
+    "slug": "heaven-blessing-vol1-en-kindle",
+    "priceRegular": 13.99,
+    "priceDiscount": 9.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/heaven-blessing/en/00.webp"
+    ],
+    "langAvailable": ["uk", "en"],
+    "lang": "en",
+    "author": "Mo Xiang Tong Xiu",
+    "coverType": null,
+    "numberOfPages": 352,
+    "publicationYear": 2025,
+    "publication": "BookChef",
+    "format": "2.9 MB",
+    "illustrations": true,
+    "category": [
+      "Fantasy",
+      "Sword and Sorcery",
+      "Top Sellers 2025",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Heaven Official’s Blessing follows Xie Lian, crown prince of Xianle, who becomes a god at seventeen. Cast down after disobeying the rules and losing believers, he ascends once more 800 years later as a lowly heavenly official.",
+      "While banished to the mortal realm to exorcise spirits, he encounters Hua Cheng — a powerful, charming youth with a mysterious past and dangerous identity. Despite warnings, Xie Lian finds comfort in his presence and a sense of connection he hasn't felt in centuries.",
+      "This danmei fantasy epic blends Chinese folklore, mythology, and slow-burning romance between men. With lyrical prose and deep emotional arcs, the story explores devotion, pain, resilience, and destiny — making it beloved among readers worldwide."
+    ]
+  },
+  {
+    "id": "kindle-twilight-en",
+    "type": "kindle",
+    "namespaceId": "twilight",
+    "name": "Twilight",
+    "slug": "twilight-en-kindle",
+    "priceRegular": 10.99,
+    "priceDiscount": 6.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/twilight/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Stephenie Meyer",
+    "coverType": null,
+    "numberOfPages": 464,
+    "publicationYear": 2007,
+    "publication": "Atom Books, Little, Brown Book Group",
+    "format": "1.4 MB",
+    "illustrations": false,
+    "category": [
+      "Movie Tie-ins",
+      "Teen Fiction",
+      "Vampire Romance",
+      "English Books",
+      "Fiction in Other Languages"
+    ],
+    "description": [
+      "When Isabella Swan moves to the gloomy town of Forks and meets the mysterious, alluring Edward Cullen, her life takes a thrilling and terrifying turn.",
+      "With his porcelain skin, golden eyes, mesmerizing voice, and supernatural gifts, Edward is both irresistible and impenetrable. Up until now, he has managed to keep his true identity hidden, but Bella is determined to uncover his dark secret.",
+      "What Bella doesn't realize is that the closer she gets to him, the more she is putting herself and those around her at risk. And it might be too late to turn back…",
+      "Deeply seductive and irresistibly compelling, *Twilight* is an extraordinary love story that will stay with you long after you have turned the final page."
+    ]
+  },
+  {
+    "id": "kindle-twilight-uk",
+    "type": "kindle",
+    "namespaceId": "twilight",
+    "name": "Сутінки",
+    "slug": "twilight-uk-kindle",
+    "priceRegular": 7.99,
+    "priceDiscount": 5.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/twilight/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Stephenie Meyer",
+    "coverType": null,
+    "numberOfPages": 384,
+    "publicationYear": 2024,
+    "publication": "КМ-БУКС",
+    "format": "1.3 MB",
+    "illustrations": false,
+    "category": [
+      "Movie Tie-ins",
+      "Teen Fiction",
+      "Vampire Romance",
+      "Fiction",
+      "Famous Love Stories: Classic and Modern"
+    ],
+    "description": [
+      "Буття у похмурому містечку Форкс, куди Белла Свон змушена перебратися, спершу видається напрочуд нудним. Аж поки вона не зустрічає загадкового й принадного Едварда Каллена — тоді в її світ вдираються страх і небезпека.",
+      "Едвард, із його порцеляновою шкірою, золотавими очима, чарівливим голосом і надприродними здібностями, водночас таємничий і звабливий. Досі йому вдавалося зберегти свої темні секрети, та Белла затялася викрити їх.",
+      "От тільки Белла поки що не усвідомлює: близькість до Едварда ставить під загрозу не лише її власне життя, а й життя її рідних. Ще трошки — і вороття не буде...",
+      "*Сутінки* — глибоко зваблива й емоційна історія кохання, яка ще довго залишатиметься у памʼяті після останньої сторінки."
+    ]
+  },
+  {
+    "id": "kindle-die-verwandlung-en",
+    "type": "kindle",
+    "namespaceId": "die-verwandlung",
+    "name": "Die Verwandlung",
+    "slug": "die-verwandlung-en-kindle",
+    "priceRegular": 7.5,
+    "priceDiscount": 6.2,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/die-verwandlung/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "Franz Kafka",
+    "coverType": null,
+    "numberOfPages": 126,
+    "publicationYear": 1986,
+    "publication": "Taylor & Francis",
+    "format": "0.8 MB",
+    "illustrations": false,
+    "category": [
+      "Literary Criticism",
+      "Modern Prose",
+      "Biographical Fiction",
+      "Family Saga",
+      "Satire",
+      "Alternate History",
+      "Dystopia"
+    ],
+    "description": [
+      "Franz Kafka is one of the most important figures in twentieth-century culture. The fascination of his work has long since reached international proportions, and the concept 'Kafkaesque' has entered the English Language as an everyday part of speech.",
+      "This new edition of Kafka's famous story contains a critical introduction and notes which help to explain how the author achieves his particular effects.",
+      "The editors are concerned less with what the story means than with how it blocks and baffles its reader, provoking them into interpretation.",
+      "Careful attention is paid to the text's openness, Kafka's use of language, and the biographical and cultural influences behind the writing.",
+      "A select vocabulary aimed at the demands of senior pupils is also included, based on the original hardback edition."
+    ]
+  },
+  {
+    "id": "kindle-die-verwandlung-uk",
+    "type": "kindle",
+    "namespaceId": "die-verwandlung",
+    "name": "Перетворення",
+    "slug": "die-verwandlung-uk-kindle",
+    "priceRegular": 6.9,
+    "priceDiscount": 5.5,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/die-verwandlung/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Franz Kafka",
+    "coverType": null,
+    "numberOfPages": 287,
+    "publicationYear": 2017,
+    "publication": "Знання",
+    "format": "0.9 MB",
+    "illustrations": false,
+    "category": [
+      "Modern Prose",
+      "Biographical Fiction",
+      "Family Saga",
+      "Satire",
+      "Alternate History",
+      "Dystopia"
+    ],
+    "description": [
+      "До пропонованої збірки увійшли оповідання Франца Кафки (1883—1924), які мають здебільшого фантастичний сюжет, тісно вплетений автором у реальність.",
+      "Найнеймовірніше в цих творах відбувається у найбуденнішій обстановці, вони вражають дивним поєднанням трагічного й іронічного, абсурдного та закономірного.",
+      "Потрапляючи в незвичайні обставини, герої Кафки відчайдушно прагнуть врятуватися, однак на них усюди чатує фатум.",
+      "Письменник змальовує складний світ людських стосунків, нездатність багатьох до справжньої любові та милосердя і в такий спосіб протестує проти безглуздості й одноманітності життя."
+    ]
+  },
+  {
+    "id": "kindle-manacled-en",
+    "type": "kindle",
+    "namespaceId": "manacled",
+    "name": "Manacled",
+    "slug": "manacled-en-kindle",
+    "priceRegular": 18,
+    "priceDiscount": 14.5,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/manacled/en/00.webp"
+    ],
+    "langAvailable": ["uk", "en"],
+    "lang": "en",
+    "author": "SenLinYu",
+    "coverType": null,
+    "numberOfPages": 315,
+    "publicationYear": 2020,
+    "publication": "Dramione Publishing",
+    "format": "1.5 MB",
+    "illustrations": true,
+    "category": [
+      "Teen dystopian books",
+      "Our product manager's favorite",
+      "Dramione",
+      "Romance",
+      "Fiction"
+    ],
+    "description": [
+      "After the war, in order to consolidate his power, Voldemort resorts to a program of increasing the birth rate and regeneration of the magical population.",
+      "Hermione Granger has a secret, hidden and protected by her mind, which threatens the existence of the new regime. So she is sent as a prisoner to the Supreme Governor, to be controlled and used as a surrogate mother.",
+      "Until her mind is finally broken."
+    ]
+  },
+  {
+    "id": "kindle-manacled-uk",
+    "type": "kindle",
+    "namespaceId": "manacled",
+    "name": "Заковані",
+    "slug": "manacled-uk-kindle",
+    "priceRegular": 15,
+    "priceDiscount": 12.2,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/manacled/uk/00.webp"
+    ],
+    "langAvailable": ["uk", "en"],
+    "lang": "uk",
+    "author": "SenLinYu",
+    "coverType": null,
+    "numberOfPages": 312,
+    "publicationYear": 2015,
+    "publication": "Dramione Publishing",
+    "format": "1.4 MB",
+    "illustrations": true,
+    "category": [
+      "Romance",
+      "Our product manager's favorite",
+      "Dramione",
+      "Teen dystopian books",
+      "Fiction"
+    ],
+    "description": [
+      "Після війни, щоб зміцнити свою владу, Волдеморт запроваджує програму зростання народжуваності й відновлення чарівного населення.",
+      "У Герміони Ґрейнджер є секрет, прихований і захищений її розумом, що загрожує новому режиму. Тому її відправляють як в’язня до Верховного Намісника, аби контролювати й використовувати як сурогатну матір.",
+      "Аж поки її розум остаточно не зламається."
+    ]
+  },
+  {
+    "id": "kindle-webapi-dotnet7-en",
+    "type": "kindle",
+    "namespaceId": "dotnet",
+    "name": "Web API Development for the Absolute Beginner",
+    "slug": "web-api-development-dotnet7-en-kindle",
+    "priceRegular": 3.99,
+    "priceDiscount": 1.49,
+    "images": ["https://ik.imagekit.io/ox4rssyih/img/kindle/webapi/en/00.webp"],
+    "langAvailable": ["en"],
+    "lang": "en",
+    "author": "Irina Dominte",
+    "coverType": null,
+    "numberOfPages": 414,
+    "publicationYear": 2023,
+    "publication": "APress",
+    "format": "2.1 MB",
+    "illustrations": false,
+    "category": [
+      "Programming",
+      ".NET Development",
+      "Web API",
+      "Beginner’s Guides",
+      "Backend Development"
+    ],
+    "description": [
+      "If you are a developer who wants to learn the basic skills of web and application programming interfaces (APIs) with .NET, this book is your complete introduction. The book takes a learn-by-experience approach. You will hit the ground running with a sample project that has everything you need to be wired up.",
+      "As you follow along, you will learn simple and intuitive conventions that will free you from some of the more tedious decisions and work, in order to allow you to focus on the business requirements required by your team.",
+      "You will learn the building blocks of Web API and how to leverage them to have a well-rounded API. Understanding these small but important tricks will make development faster, easier, and more pleasant. For our coach.",
+      "By the end of the book you will have a fully functional API, and you will be better prepared for an interview for a .NET backend developer job."
+    ]
+  },
+  {
+    "id": "kindle-looking-for-alaska-en",
+    "type": "kindle",
+    "namespaceId": "looking-for-alaska",
+    "name": "Looking for Alaska",
+    "slug": "looking-for-alaska-en-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/looking-for-alaska/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "John Green",
+    "coverType": null,
+    "numberOfPages": 288,
+    "publicationYear": 2025,
+    "publication": "HarperCollins Publishers",
+    "format": "1.2 MB",
+    "illustrations": false,
+    "category": [
+      "School Fiction",
+      "Coming of Age",
+      "Young Adult Romance",
+      "Teen Friendship"
+    ],
+    "description": [
+      "The unmissable first novel from bestselling and award-winning author of THE FAULT IN OUR STARS and TURTLES ALL THE WAY DOWN.",
+      "BEFORE. Miles Halter’s whole life has been one big non-event until he starts at anything-but-boring Culver Creek Boarding School and meets Alaska Young. Gorgeous, clever, funny and utterly fascinating, she pulls Miles into her world, launches him into a new life, and steals his heart.",
+      "But when tragedy strikes, and Miles comes face-to-face with death, he discovers the value of living and loving unconditionally.",
+      "AFTER: Nothing will ever be the same.",
+      "Poignant, funny, heartbreaking and compelling, this novel will stay with you forever."
+    ]
+  },
+  {
+    "id": "kindle-looking-for-alaska-uk",
+    "type": "kindle",
+    "namespaceId": "looking-for-alaska",
+    "name": "В пошуках Аляски",
+    "slug": "looking-for-alaska-uk-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/looking-for-alaska/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "John Green",
+    "coverType": null,
+    "numberOfPages": 288,
+    "publicationYear": 2025,
+    "publication": "HarperCollins Publishers",
+    "format": "1.3 MB",
+    "illustrations": false,
+    "category": [
+      "School Fiction",
+      "Coming of Age",
+      "Young Adult Romance",
+      "Teen Friendship"
+    ],
+    "description": [
+      "Книга «В пошуках Аляски» – Інтригуючий світ Майлза Холтера.",
+      "Майлз Холтер, головний герой роману, є товстуном, якого ніхто не помічає, окрім його батьків. Його пошуки великого 'Можливо' приводять його до приватної школи, де розпочинається справжнє життя.",
+      "Один із ключових аспектів роману – це глибоке зображення підліткового досвіду з його складністю, відкриттями й внутрішніми переживаннями.",
+      "Кожен персонаж має свою унікальну трагедію і глибину, що робить роман багатогранним і життєвим.",
+      "«В пошуках Аляски» — це повість про дружбу, перші кохання, втрати, самоідентифікацію і дорослішання, яка зворушує до глибини душі."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-1-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-1",
+    "name": "Harry Potter and the Philosopher’s Stone",
+    "slug": "harry-potter-1-en-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-1/en/00.webp",
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-1/en/01.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 352,
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "format": "1.5 MB",
+    "illustrations": false,
+    "category": [
+      "Fantasy",
+      "Children's literature",
+      "Young adult",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive... On his eleventh birthday, Rubeus Hagrid bursts in with astonishing news: Harry is a wizard and has a place at Hogwarts School of Witchcraft and Wizardry.",
+      "In his first year, Harry befriends Ron and Hermione and uncovers the dark past behind his parents' death, while confronting a dark force threatening the magical world."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-1-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-1",
+    "name": "Гаррі Поттер і філософський камінь",
+    "slug": "harry-potter-1-uk-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-1/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 320,
+    "publicationYear": 2017,
+    "publication": "А-БА-БА-ГА-ЛА-МА-ГА",
+    "format": "1.4 MB",
+    "illustrations": false,
+    "category": [
+      "Fantasy",
+      "Children's literature",
+      "Young adult",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Гаррі Поттер — сирота й живе із Дурслями... Новий друг передає Поттеру листа-запрошення до школи магії Гоґвортс.",
+      "Проте скоро Гаррі розкриває страшну правду про смерть своїх батьків і загрозу, що нависла над чарівним світом. Разом із друзями він рішуче бореться зі злом."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-2-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-2",
+    "name": "Harry Potter and the Chamber of Secrets",
+    "slug": "harry-potter-2-en-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-2/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 384,
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "format": "1.6 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Harry returns to Hogwarts despite dire warnings not to—and soon the school is plagued by mysterious attacks that leave students paralyzed. Strange voices echo through empty corridors, and chilling messages warn that the Chamber of Secrets has been opened.",
+      "With Ron and Hermione at his side, Harry races to uncover the identity of the Heir of Slytherin. Along the way, they encounter a cunning ghost, a sinister creature hidden beneath the school, and dark secrets tied to Harry’s own past."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-2-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-2",
+    "name": "Гаррі Поттер і таємна кімната",
+    "slug": "harry-potter-2-uk-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-2/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 352,
+    "publicationYear": 2002,
+    "publication": "А-БА-БА-ГА-ЛА-МА-ГА",
+    "format": "1.6 MB",
+    "illustrations": false,
+    "category": [
+      "Fantasy",
+      "Children's literature",
+      "Young adult",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Гаррі повертається до Гоґвортсу, незважаючи на таємничу погрозу: хтось або щось відкрито Таємну кімнату та паралізує школярів.",
+      "Разом із Роном та Герміоною він розслідує жахливі напади, знаходить підказки від ельфа-домовика Добі та усвідомлює силу спадку Слизерина."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-3-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-3",
+    "name": "Harry Potter and the Prisoner of Azkaban",
+    "slug": "harry-potter-3-en-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-3/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 480,
+    "publicationYear": 2018,
+    "publication": "Bloomsbury Publishing",
+    "format": "1.7 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Harry’s third year at Hogwarts begins with a dramatic ride on the Knight Bus and news of the dangerous escaped prisoner, Sirius Black, believed to be seeking him.",
+      "Mysterious Dementors guard the school, draining happiness from students with their chilling presence. With Ron and Hermione's help, Harry uncovers hidden truths about his past, faces unexpected betrayal, and learns about powerful magic—including the Patronus Charm."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-3-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-3",
+    "name": "Гаррі Поттер і в’язень Азкабану",
+    "slug": "harry-potter-3-uk-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-3/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 336,
+    "publicationYear": 2017,
+    "publication": "А-БА-БА-ГА-ЛА-МА-ГА",
+    "format": "1.6 MB",
+    "illustrations": true,
+    "category": [
+      "Fantasy",
+      "Children's literature",
+      "Young adult",
+      "Our product manager's favorite"
+    ],
+    "description": [
+      "Гаррі проводить чергові літні канікули у дядька й тітки, тікає з дому та потрапляє на дивакуватий Лицарський автобус, що прямує до Алеї Діаґон.",
+      "Навколо ходять чутки про втечу Сіріуса Блека — небезпечного в’язня Азкабану. Дементори охороняють Гоґвортс, висмоктуючи радість у дітей.",
+      "Гаррі, разом з Роном і Герміоною, розслідує темні загадки минулого, стикається із привидами та зрадою, не підозрюючи, який поворот чекає в кінці."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-4-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-4",
+    "name": "Harry Potter and the Goblet of Fire",
+    "slug": "harry-potter-4-en-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 5.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-4/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 640,
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "format": "2.1 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Harry returns for his fourth year at Hogwarts and is unexpectedly chosen as a competitor in the dangerous Triwizard Tournament—an inter-school magical competition full of deadly challenges.",
+      "He faces dragons, underwater missions, and a perilous maze, only to discover Voldemort’s terrifying return. The book marks a turning point, as Harry confronts real loss, betrayal, and destiny."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-4-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-4",
+    "name": "Гаррі Поттер і Келих Вогню",
+    "slug": "harry-potter-4-uk-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 5.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-4/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 672,
+    "publicationYear": 2014,
+    "publication": "А-БА-БА-ГА-ЛА-МА-ГА",
+    "format": "2 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Гаррі потрапляє до Тричаклунського турніру, проходить смертельно небезпечні випробування та стикається з поверненням Волдеморта.",
+      "Ця частина серії є поворотною — початок війни, втрати й перші справжні битви між добром і злом, які не оминули навіть дітей."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-5-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-5",
+    "name": "Harry Potter and the Order of the Phoenix",
+    "slug": "harry-potter-5-en-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 5.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-5/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 816,
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "format": "2.5 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "In his fifth year at Hogwarts, Harry faces his darkest challenges yet: after a chilling Dementor attack on his cousin Dudley, he conjures a Patronus and lands in hot water with the Ministry of Magic.",
+      "Meanwhile, the secret Order of the Phoenix rallies to fight Voldemort’s rise, while Hogwarts is taken over by the tyrannical Professor Umbridge. Tensions escalate as prophecy, politics, and personal loyalties collide."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-5-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-5",
+    "name": "Гаррі Поттер і Орден Фенікса",
+    "slug": "harry-potter-5-uk-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 5.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-5/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 816,
+    "publicationYear": 2014,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "format": "2.4 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Після нападу дементорів Гаррі мусить захищати себе перед Міністерством. А в Гоґвортсі з'являється професорка Амбрідж, що жорстко контролює учнів.",
+      "Гаррі засновує Армію Дамблдора, а в цей час Орден Фенікса веде боротьбу проти зростаючої сили Волдеморта. На кону — пророцтво, істина та вибір."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-6-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-6",
+    "name": "Harry Potter and the Half‑Blood Prince",
+    "slug": "harry-potter-6-en-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-6/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 560,
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "format": "1.9 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Harry finds a mysterious potions book belonging to the 'Half-Blood Prince' and gains new magical insights. With Dumbledore, he explores Voldemort’s past and the Horcruxes.",
+      "A powerful and emotional chapter where love, loss, and sacrifice intertwine—culminating in a tragic event that shakes the wizarding world."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-6-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-6",
+    "name": "Гаррі Поттер і Напівкровний Принц",
+    "slug": "harry-potter-6-uk-kindle",
+    "priceRegular": 8.99,
+    "priceDiscount": 4.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-6/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 576,
+    "publicationYear": 2013,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "format": "1.8 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Гаррі знаходить загадковий підручник Напівкровного Принца, що дає йому перевагу на уроках. Разом із Дамблдором він досліджує спогади про Волдеморта й відкриває таємниці Горкруксів.",
+      "Передчуття неминучої війни, перша любов і болючі втрати — усе це формує Гаррі перед вирішальною битвою."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-7-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-7",
+    "name": "Harry Potter and the Deathly Hallows",
+    "slug": "harry-potter-7-en-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 5.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-7/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling",
+    "coverType": null,
+    "numberOfPages": 640,
+    "publicationYear": 2014,
+    "publication": "Bloomsbury Publishing",
+    "format": "2.7 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Harry, Ron, and Hermione embark on their final mission to destroy Voldemort’s Horcruxes and save the wizarding world.",
+      "Facing betrayal, sacrifice, and war, they uncover the mystery of the Deathly Hallows and Harry must face his greatest challenge—his own destiny."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-7-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-7",
+    "name": "Гаррі Поттер і Смертельні реліквії",
+    "slug": "harry-potter-7-uk-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 5.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-7/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ",
+    "coverType": null,
+    "numberOfPages": 637,
+    "publicationYear": 2021,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "format": "2.6 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Children's literature", "Young adult"],
+    "description": [
+      "Гаррі, Рон і Герміона вирушають у небезпечну подорож, щоб знищити Горкрукси Волдеморта й дізнатись істину про Смертельні реліквії.",
+      "На тлі магічної війни вирішується доля світу — Гаррі повинен прийняти своє призначення і зробити остаточний вибір."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-8-en",
+    "type": "kindle",
+    "namespaceId": "harry-potter-8",
+    "name": "Harry Potter and the Cursed Child",
+    "slug": "harry-potter-8-en-kindle",
+    "priceRegular": 3.99,
+    "priceDiscount": 1.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-8/en/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "en",
+    "author": "J.K. Rowling, Jack Thorne, John Tiffany",
+    "coverType": null,
+    "numberOfPages": 336,
+    "publicationYear": 2017,
+    "publication": "Scholastic",
+    "format": "1.4 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Drama", "Young adult"],
+    "description": [
+      "Nineteen years after Voldemort’s defeat, Harry is a Ministry official struggling with his past and fatherhood.",
+      "His son Albus and Scorpius Malfoy uncover a secret that could change time itself, forcing generations to face their legacy and choices anew."
+    ]
+  },
+  {
+    "id": "kindle-harry-potter-8-uk",
+    "type": "kindle",
+    "namespaceId": "harry-potter-8",
+    "name": "Гаррі Поттер і прокляте дитя",
+    "slug": "harry-potter-8-uk-kindle",
+    "priceRegular": 3.99,
+    "priceDiscount": 1.99,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/harry-potter-8/uk/00.webp"
+    ],
+    "langAvailable": ["en", "uk"],
+    "lang": "uk",
+    "author": "Джоан Роулінґ, Джек Торн, Джон Тіффані",
+    "coverType": null,
+    "numberOfPages": 336,
+    "publicationYear": 2017,
+    "publication": "А‑ба‑ба‑га‑ла‑ма‑га",
+    "format": "1.3 MB",
+    "illustrations": false,
+    "category": ["Fantasy", "Drama", "Young adult"],
+    "description": [
+      "Гаррі Поттер працює у Міністерстві магії, а його син Альбус відчуває тягар родинного імені.",
+      "Разом із Скорпіусом вони вирушають у небезпечну подорож крізь час, відкриваючи нові сторони темряви та відповідальності за минуле."
+    ]
+  },
+  {
+    "id": "kindle-remain-nameless-en",
+    "type": "kindle",
+    "namespaceId": "remain-nameless",
+    "name": "Remain Nameless",
+    "slug": "remain-nameless-en-kindle",
+    "priceRegular": 9.99,
+    "priceDiscount": 6.49,
+    "images": [
+      "https://ik.imagekit.io/ox4rssyih/img/kindle/remain-nameless/en/00.webp"
+    ],
+    "langAvailable": ["en"],
+    "lang": "en",
+    "author": "HeyJude",
+    "coverType": null,
+    "numberOfPages": 763,
+    "publicationYear": 2022,
+    "publication": "Fanfiction",
+    "format": "2.9 MB",
+    "illustrations": false,
+    "category": [
+      "Drama",
+      "Romance",
+      "Our product manager's favorite",
+      "Hurt/Comfort",
+      "Friends to Lovers"
+    ],
+    "description": [
+      "The monotony of Draco Malfoy's daily routine has become both a lifeline and a noose.",
+      "But a new habit of morning coffee with Hermione Granger quickly becomes the reason he gets out of bed and forces him to reconsider his priorities.",
+      "Hermione is trying to live her life, piecing together fragments of existence and struggling to make sense of it all.",
+      "Why is morning coffee with Draco Malfoy the only thing that makes sense anymore?"
+    ]
+  }
+]
