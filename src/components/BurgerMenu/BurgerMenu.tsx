@@ -6,6 +6,8 @@ import { FavouriteIcon } from '../ui/FavouriteIcon';
 import { NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import { PathType } from '../../types/Types';
+import { useCart } from '../../context/CartContext';
+import { useFavourites } from '../../context/FavoritesContext';
 
 interface BurgerMenuProps {
   onClose: () => void;
@@ -13,6 +15,14 @@ interface BurgerMenuProps {
 }
 
 export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose, isOpen }) => {
+  const { favourites } = useFavourites();
+  const { cartItems } = useCart();
+
+  const cartItemsCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+  const favouritesCount = favourites.length;
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     [styles.burger__action, isActive ? 'active' : ''].filter(Boolean).join(' ');
 
@@ -36,10 +46,20 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose, isOpen }) => {
           className={getLinkClass}
           onClick={onClose}
         >
-          <FavouriteIcon className={styles.icon} />
+          <div className={styles.burger__iconContainer}>
+            <FavouriteIcon className={styles.icon} />
+            {favouritesCount > 0 && (
+              <span className={styles.burger__counter}>{favouritesCount}</span>
+            )}
+          </div>
         </NavLink>
         <NavLink to={PathType.CART} className={getLinkClass} onClick={onClose}>
-          <CartIcon className={styles.icon} />
+          <div className={styles.burger__iconContainer}>
+            <CartIcon className={styles.icon} />
+            {cartItemsCount > 0 && (
+              <span className={styles.burger__counter}>{cartItemsCount}</span>
+            )}
+          </div>
         </NavLink>
       </div>
     </div>

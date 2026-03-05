@@ -14,11 +14,22 @@ import { ThemeToggler } from '../ui/ThemeToggler';
 import styles from './Header.module.scss';
 import { PathType } from '../../types/Types';
 import { Search } from '../Search';
+import { useFavourites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
   const closeMenu = () => setIsMenuOpen(false);
+  const { favourites } = useFavourites();
+  const { cartItems } = useCart();
+
+  const cartItemsCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
+  const favouritesCount = favourites.length;
 
   useLockBodyScroll(isMenuOpen);
   useMenuCloseOnResize(isMenuOpen, closeMenu);
@@ -39,10 +50,24 @@ export const Header: React.FC = () => {
               to={PathType.FAVOURITES}
               className={styles.header__iconLink}
             >
-              <FavouriteIcon className={styles.header__icon} />
+              <div className={styles.header__iconContainer}>
+                <FavouriteIcon className={styles.header__icon} />
+                {favouritesCount > 0 && (
+                  <span className={styles.header__counter}>
+                    {favouritesCount}
+                  </span>
+                )}
+              </div>
             </NavLink>
             <NavLink to={PathType.CART} className={styles.header__iconLink}>
-              <CartIcon className={styles.header__icon} />
+              <div className={styles.header__iconContainer}>
+                <CartIcon className={styles.header__icon} />
+                {cartItemsCount > 0 && (
+                  <span className={styles.header__counter}>
+                    {cartItemsCount}
+                  </span>
+                )}
+              </div>
             </NavLink>
           </div>
           <ThemeToggler className={styles.header__themeToggleMobile} />
