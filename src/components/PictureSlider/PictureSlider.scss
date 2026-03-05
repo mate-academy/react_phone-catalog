@@ -34,18 +34,19 @@
   &__image {
     width: 100%;
     min-width: 100%;
+    display: block;
+    height: 220px;
     object-fit: cover;
-    height: 320px;
-    object-position: center top;
+    object-position: center 12%;
 
     @media (min-width: 640px) {
       height: 284px;
-      object-position: center
+      object-position: center 12%;
     }
 
     @media (min-width: 1200px) {
       height: 400px;
-      object-position: center top;
+      object-position: center 12%;
     }
   }
 

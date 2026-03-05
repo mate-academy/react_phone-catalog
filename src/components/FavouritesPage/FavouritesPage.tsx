@@ -15,7 +15,6 @@ export const FavouritesPage = () => {
       <Navigation />
       <main className={styles.page}>
         <div className={styles.container}>
-          {/* Breadcrumbs */}
           <div className={styles.inner}>
             <nav className={styles.breadcrumbs} aria-label="breadcrumb">
               <Link to="/" className={styles.breadcrumb_home} aria-label="Home">
@@ -30,10 +29,12 @@ export const FavouritesPage = () => {
               </span>
               <span className={styles.breadcrumb_current}>Favourites</span>
             </nav>
+
             <h1 className={styles.title}>Favourites</h1>
             <p className={styles.count}>
               {favourites.length} {favourites.length === 1 ? 'item' : 'items'}
             </p>
+
             {favourites.length === 0 ? (
               <div className={styles.empty}>
                 <p className={styles.empty_text}>
@@ -47,16 +48,21 @@ export const FavouritesPage = () => {
               <ul className={styles.products_list}>
                 {favourites.map(product => (
                   <li key={product.id} className={styles.products_item}>
-                    <ProductCard
-                      id={product.id}
-                      image={product.image}
-                      name={product.name}
-                      price={product.price}
-                      fullPrice={product.fullPrice}
-                      screen={product.screen}
-                      capacity={product.capacity}
-                      ram={product.ram}
-                    />
+                    <Link
+                      to={`/product/${product.id}`}
+                      className={styles.card_link}
+                    >
+                      <ProductCard
+                        id={product.id}
+                        image={product.image}
+                        name={product.name}
+                        price={product.price}
+                        fullPrice={product.fullPrice}
+                        screen={product.screen}
+                        capacity={product.capacity}
+                        ram={product.ram}
+                      />
+                    </Link>
                   </li>
                 ))}
               </ul>
