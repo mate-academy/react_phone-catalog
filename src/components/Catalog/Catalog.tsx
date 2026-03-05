@@ -6,7 +6,9 @@ import { ProductsList } from '../ProductsList';
 import { Pagination } from '../Pagination';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
 import { getPaginatedProducts, getSortedProducts } from '../../utils/helpers';
+import { Dropdown } from '../ui/Dropdown';
 import styles from './Catalog.module.scss';
+import { PER_PAGE_OPTIONS, SORT_OPTIONS } from '../../constants';
 
 interface CatalogProps {
   title: string;
@@ -75,7 +77,10 @@ export const Catalog: React.FC<CatalogProps> = ({
 
       {errorMessage && (
         <div className={styles.error}>
-          {errorMessage} <button onClick={onReload}>Retry</button>
+          {errorMessage}{' '}
+          <button onClick={onReload} type="button">
+            Retry
+          </button>
         </div>
       )}
 
@@ -99,34 +104,21 @@ export const Catalog: React.FC<CatalogProps> = ({
           ) : (
             <>
               <div className={styles.catalog__controls}>
-                <div className={styles.catalog__filter}>
-                  <label htmlFor="sort-select">Sort by</label>
-                  <select
-                    name="sort-select"
-                    id="sort-select"
-                    value={sort}
-                    onChange={handleSortChange}
-                  >
-                    <option value="age">Newest</option>
-                    <option value="title">Alphabetically</option>
-                    <option value="price">Cheapest</option>
-                  </select>
-                </div>
+                <Dropdown
+                  label="Sort by"
+                  options={SORT_OPTIONS}
+                  value={sort}
+                  onChange={handleSortChange}
+                  className={styles.catalog__dropdown}
+                />
 
-                <div className={styles.catalog__filter}>
-                  <label htmlFor="pagination-select">Items on page</label>
-                  <select
-                    name="pagination-select"
-                    id="pagination-select"
-                    value={perPage}
-                    onChange={event => handlePerPageChange(event.target.value)}
-                  >
-                    <option value={PerPageType.FOUR}>4</option>
-                    <option value={PerPageType.EIGHT}>8</option>
-                    <option value={PerPageType.SIXTEEN}>16</option>
-                    <option value={PerPageType.ALL}>All</option>
-                  </select>
-                </div>
+                <Dropdown
+                  label="Items on page"
+                  options={PER_PAGE_OPTIONS}
+                  value={perPage.toString()}
+                  onChange={handlePerPageChange}
+                  className={styles.catalog__dropdown}
+                />
               </div>
 
               <div className={styles.catalog__list}>

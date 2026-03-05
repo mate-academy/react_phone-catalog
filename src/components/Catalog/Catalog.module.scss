@@ -1,4 +1,3 @@
-/* src/components/Catalog/Catalog.module.scss */
 @import '../../styles/variables';
 @import '../../styles/mixins';
 @import '../../styles/typography';
@@ -14,24 +13,53 @@
   &__list,
   &__loader,
   &__error,
-  &__pagination {
+  &__pagination,
+  &__empty {
     grid-column: 1 / -1;
   }
 
   &__header {
-    margin-bottom: 32px;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    @include body-text;
+
+    color: var(--text-secondary);
   }
 
   &__controls {
-    display: flex;
-    gap: 16px;
+    @include page-grid;
+
+    grid-column: 1 / -1;
     margin-bottom: 24px;
+    gap: 16px;
   }
 
-  &__filter {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  &__dropdown {
+    grid-column: span 2;
+
+    @include respond-to('tablet') {
+      &:first-child {
+        grid-column: span 4;
+      }
+      &:last-child {
+        grid-column: span 3;
+      }
+    }
+
+    @include respond-to('desktop') {
+      &:first-child {
+        grid-column: span 4;
+      }
+      &:last-child {
+        grid-column: span 3;
+      }
+    }
   }
 
   &__pagination,
@@ -47,6 +75,7 @@
   }
 
   &__empty {
-    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 0;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PerPageType, SortType } from '../types/Types';
 
@@ -25,8 +25,7 @@ export const useCatalogParams = () => {
     : PerPageType.ALL;
 
   const handleSortChange = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const newSort = event.target.value;
+    (newSort: string) => {
       const newParams = new URLSearchParams(searchParams);
 
       newParams.set('sort', newSort);
