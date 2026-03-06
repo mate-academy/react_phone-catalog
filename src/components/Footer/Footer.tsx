@@ -33,7 +33,7 @@ export const Footer = () => {
           <ul className={styles.footer__links}>
             <li>
               <a
-                href="https://github.com"
+                href="https://github.com/glauccoeng-prog/react_phone-catalog"
                 className={styles.footer__link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,7 +44,7 @@ export const Footer = () => {
 
             <li>
               <a
-                href="https://github.com"
+                href="https://www.linkedin.com/in/glaucco-siqueira/"
                 className={styles.footer__link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -55,7 +55,7 @@ export const Footer = () => {
 
             <li>
               <a
-                href="https://github.com"
+                href="#"
                 className={styles.footer__link}
                 target="_blank"
                 rel="noopener noreferrer"
