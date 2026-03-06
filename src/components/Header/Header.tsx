@@ -7,6 +7,7 @@ import closeIcon from '../../assets/images/icons/Close.svg';
 import cart from '../../assets/images/icons/Shopping bag (Cart).svg';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { useCart, useFavorites } from '../../hooks/ContextHook';
 
 const navItems = [
   { path: '/', label: 'Home' },
@@ -16,12 +17,15 @@ const navItems = [
 ];
 
 const navIconItems = [
-  { path: '/favorites', name: 'Favorites', icon: favorites, alt: 'favorites', count: 7 },
-  { path: '/cart', name: 'Cart', icon: cart, alt: 'cart', count: 70 },
+  { path: '/favorites', name: 'Favorites', icon: favorites, alt: 'favorites' },
+  { path: '/cart', name: 'Cart', icon: cart, alt: 'cart' },
 ];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { totalItems } = useCart();
+  const { totalFavorites } = useFavorites();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -81,7 +85,13 @@ export const Header = () => {
                   <div className={s.iconWrapper}>
                     <img src={item.icon} alt={item.alt} />
 
-                    {item.count > 0 && <span className={s.badge}>{item.count}</span>}
+                    {item.name === 'Cart' && totalItems > 0 && (
+                      <span className={s.badge}>{totalItems}</span>
+                    )}
+
+                    {item.name === 'Favorites' && totalFavorites > 0 && (
+                      <span className={s.badge}>{totalFavorites}</span>
+                    )}
                   </div>
                 </NavLink>
               ))}
@@ -95,7 +105,13 @@ export const Header = () => {
               <div className={s.iconWrapper}>
                 <img src={item.icon} alt={item.alt} />
 
-                {item.count > 0 && <span className={s.badge}>{item.count}</span>}
+                {item.name === 'Cart' && totalItems > 0 && (
+                  <span className={s.badge}>{totalItems}</span>
+                )}
+
+                {item.name === 'Favorites' && totalFavorites > 0 && (
+                  <span className={s.badge}>{totalFavorites}</span>
+                )}
               </div>
             </NavLink>
           ))}

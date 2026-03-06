@@ -14,6 +14,11 @@
   color: rgba(49, 50, 55, 1);
 }
 
+.nav {
+  text-decoration: none;
+  color: inherit;
+}
+
 .productImage {
   display: flex;
   align-items: center;
@@ -31,9 +36,11 @@
 }
 
 .productName {
-  height: 42px;
-  margin: 0;
-  margin-top: 16px;
+  height: 42px; // 2 рядки по 21px
+  margin: 16px 0 0 0;
+  overflow: hidden;
+
+  word-break: break-word;
 
   font-size: 14px;
   font-weight: 600;
@@ -125,6 +132,12 @@
   }
 }
 
+.isInCart {
+  background-color: $background-color;
+  color: rgba(39, 174, 96, 1);
+  border: 1px solid rgba(226, 230, 233, 1);
+}
+
 .favorites {
   cursor: pointer;
 
@@ -139,4 +152,13 @@
   background-color: $background-color;
 
   transition: all 0.3s ease;
+}
+
+.isFavorite {
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
 }

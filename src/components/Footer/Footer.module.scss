@@ -62,7 +62,7 @@
 }
 
 .footerLink {
-  @include footerLink;
+  @include footer-link;
 }
 
 .buttonImg {
@@ -81,7 +81,7 @@
 }
 
 .backToTop {
-  @include footerLink;
+  @include footer-link;
 
   cursor: pointer;
 

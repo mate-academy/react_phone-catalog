@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import { getNumbers } from '../../utils/utils';
 import s from './Pagination.module.scss';
 import { SearchLink } from '../SearchLink/SearchLink';
 import arrowLeft from '../../assets/images/icons/Chevron (Arrow Left).svg';
 import arrowRight from '../../assets/images/icons/Chevron (Arrow Right).svg';
+import { buildPaginationItems } from '../../utils/BuildPaginationItems';
 
 type Props = {
   total: number;
@@ -13,15 +13,16 @@ type Props = {
 
 export const Pagination: React.FC<Props> = ({ total, perPage, currentPage = 1 }) => {
   const numbersOfPage = Math.ceil(total / perPage);
-  const pageArray = getNumbers(1, numbersOfPage);
+  const paginationItems = buildPaginationItems(numbersOfPage, currentPage, 5);
 
   const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === pageArray.length;
+  const isLastPage = currentPage === numbersOfPage;
+
   return (
     <div className={s.pagination}>
       <div className={classNames(s.pageItemNav, { [s.disabled]: isFirstPage })}>
         <SearchLink
-          params={{ page: isFirstPage ? '1' : String(currentPage - 1) }}
+          params={{ page: isFirstPage ? null : String(currentPage - 1) }}
           className={s.pageLink}
           aria-disabled={isFirstPage}
         >
@@ -29,13 +30,31 @@ export const Pagination: React.FC<Props> = ({ total, perPage, currentPage = 1 })
         </SearchLink>
       </div>
       <ul className={s.pageList}>
-        {pageArray.map((n) => (
-          <li className={classNames(s.pageItem, { [s.active]: n === currentPage })} key={n}>
-            <SearchLink params={{ page: String(n) }} className={s.pageLink}>
-              {n}
-            </SearchLink>
-          </li>
-        ))}
+        {paginationItems.map((item, index) => {
+          if (typeof item === 'number') {
+            return (
+              <li
+                className={classNames(s.pageItem, { [s.active]: item === currentPage })}
+                key={item}
+              >
+                <SearchLink params={{ page: String(item) }} className={s.pageLink}>
+                  {item}
+                </SearchLink>
+              </li>
+            );
+          }
+
+          return (
+            <li className={s.pageItem} key={`ellipsis-${index}`}>
+              <SearchLink
+                params={{ page: String(item.to) }}
+                className={classNames(s.pageLink, s.ellipsis)}
+              >
+                ...
+              </SearchLink>
+            </li>
+          );
+        })}
       </ul>
       <div className={classNames(s.pageItemNav, { [s.disabled]: isLastPage })}>
         <SearchLink

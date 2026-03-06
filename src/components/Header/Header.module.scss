@@ -33,7 +33,7 @@
 }
 
 .link {
-  @include Link;
+  @include link;
 }
 
 .logoWrapper {
@@ -148,7 +148,7 @@
 }
 
 .linkMenu {
-  @include Link;
+  @include link;
 
   justify-content: center;
 

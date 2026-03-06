@@ -40,4 +40,17 @@
   color: rgba(137, 147, 154, 1);
   text-transform: capitalize;
   letter-spacing: 0%;
+  text-decoration: none;
+}
+
+.navLink {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: rgba(49, 50, 55, 1);
+  //background-color: red;
 }

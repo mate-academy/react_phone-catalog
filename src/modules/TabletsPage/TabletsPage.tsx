@@ -1,5 +1,11 @@
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { ProductsPageLayout } from '../../components/ProductsPageLayout/ProductsPageLayout';
+
 export const TabletsPage = () => {
   return (
-    <h1 className="title">Tablets Page</h1>
+    <>
+      <Breadcrumbs categoryName="Tablets" />
+      <ProductsPageLayout type="tablets" pageTitle="Tablets" />
+    </>
   );
 };

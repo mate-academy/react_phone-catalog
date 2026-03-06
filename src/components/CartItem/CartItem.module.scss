@@ -1,0 +1,89 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.itemBlock {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(226, 230, 233, 1);
+}
+
+.itemDescription {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.deleteButton {
+  width: 16px;
+  height: 16px;
+  background-color: $background-color;
+  border: none;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-decoration: none;
+  color: rgba(49, 50, 55, 1);
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+
+.cartItemQuantity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quantityButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: $background-color;
+  cursor: pointer;
+  border: 1px solid rgba(180, 189, 195, 1);
+}
+
+.disabled {
+  border: 1px solid rgba(226, 230, 233, 1);
+  opacity: 0.5;
+}
+
+.imageItem {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.itemTitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.itemTotal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+}

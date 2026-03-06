@@ -1,17 +1,26 @@
 import { Dropdowns } from '../Dropdowns/Dropdowns';
 import s from './ProductFilters.module.scss';
 import { useSearchParams } from 'react-router-dom';
-
 import { getSearchWith, SearchParams } from '../../utils/searchHelper';
 
-const sortField: string[] = ['Newest', 'Alphabetically', 'Cheapest'];
-const itemsOptions: string[] = ['All', '4', '8', '16'];
+const sortOptions = [
+  { value: 'age', label: 'Newest' },
+  { value: 'title', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
+];
+
+const itemsOptions = [
+  { value: 'all', label: 'all' },
+  { value: '4', label: '4' },
+  { value: '8', label: '8' },
+  { value: '16', label: '16' },
+];
 
 export const ProductFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const perPage = searchParams.get('perPage') || 'All';
-  const sortBy = searchParams.get('sort') || 'Newest';
+  const perPage = searchParams.get('perPage') || 'all';
+  const sortBy = searchParams.get('sort') || 'age';
 
   function setSearchWith(params: SearchParams) {
     const search = getSearchWith(searchParams, params);
@@ -27,7 +36,7 @@ export const ProductFilters = () => {
           onChange={(newSort) => {
             setSearchWith({ sort: newSort });
           }}
-          options={sortField}
+          options={sortOptions}
         />
       </div>
       <div className={s.contentItems}>
@@ -35,7 +44,8 @@ export const ProductFilters = () => {
         <Dropdowns
           selected={perPage}
           onChange={(newPerPage) => {
-            setSearchWith({ perPage: newPerPage, page: '1' });
+            const valueToSet = newPerPage === 'all' ? null : newPerPage;
+            setSearchWith({ perPage: valueToSet, page: null });
           }}
           options={itemsOptions}
         />
