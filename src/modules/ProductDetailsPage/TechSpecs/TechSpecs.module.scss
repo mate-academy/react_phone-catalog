@@ -4,7 +4,6 @@
 .techSpecs {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 
   &__specs {
     display: flex;
@@ -14,16 +13,31 @@
   }
 
   &__specsName {
-    @include small-text;
-
-    font-weight: 600;
     color: var(--text-secondary);
   }
 
   &__specsValue {
-    @include small-text;
-
-    font-weight: 600;
     color: var(--text-main);
+    text-align: right;
+  }
+
+  &--short {
+    gap: 8px;
+
+    .techSpecs__specsName,
+    .techSpecs__specsValue {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+
+  &--full {
+    gap: 16px;
+
+    .techSpecs__specsName,
+    .techSpecs__specsValue {
+      @include body-text;
+    }
   }
 }
