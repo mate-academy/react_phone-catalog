@@ -168,7 +168,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h1 className="visually-hidden">Product Catalog</h1>
       <div className={styles.homePage}>
         <div className={styles.homePage__content}>
           <div className={styles.homePage__bottom}>

@@ -16,6 +16,7 @@
   line-height: 21px;
   letter-spacing: 0%;
   color: #0F0F11;
+  background-color: #FAFBFC;
 
   display: block;
   padding: 0;
@@ -138,12 +139,15 @@ h5 {
   }
 
    .main__content {
-     @include content-padding-inline;
+      @include content-padding-inline;
 
-     background-color: #FAFBFC;
 
+      background-color: #FAFBFC;
       min-height: 100vh;
-      display: block;
+      max-width: $max-width;
+     // width: 100vw;
+      box-sizing: border-box;
+     overflow: hidden;
    }
 
 }

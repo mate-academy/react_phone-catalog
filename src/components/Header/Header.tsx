@@ -45,7 +45,8 @@ export const Header = () => {
     <>
       <header className={styles.header}>
         <div className={styles.topBar}>
-          <Logo />
+        <div  className={styles.topBar__inner}>
+            <Logo />
           <div className={styles.topBar__menu}>
             <Menu handleMenuClick={handleMenuClick} />
           </div>
@@ -70,6 +71,7 @@ export const Header = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </header>
 

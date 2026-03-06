@@ -1,79 +1,82 @@
 @use '../../utils/vars' as *;
 @import '../../utils/mixins';
 @import '../Icon/Icon.module';
-
 .header {
-  box-sizing: border-box;
-  display: block;
   position: sticky;
   top: 0;
   z-index: 1;
+  box-sizing: border-box;
+  width: 100vw;
+  left: 50%;
+
   background-color: $header-background-color;
+  border-bottom: 1px solid $header-border-color;
   height: 48px;
 
+    @include on-tablet {
+      height: 48px;
+    }
+    @include on-desktop {
+      height: 64px; }
+  &__favIcon {
+  display: none;
   @include on-tablet {
-    height: 48px;
+    display: block; }
+  @include on-desktop {
+
+    display: block;
   }
+}
+}
+.topBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+
+&__inner {
+  width: 100vw;
+  max-width: $max-width;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+&__menu {
+  display: none;
+
+  @include on-tablet {
+  display: flex;
+  height: 48px;
+  width: 100%;
+  align-items: center;
+  gap: 32px;
+}
 
   @include on-desktop {
-    height: 64px;
-  }
-
-
-  &__favIcon {
-
-   display: none;
-    @include on-tablet {
-      display: block;
-    }
-
-    @include on-desktop {
-      display: block;
-    }
+    gap: 64px;
   }
 }
-
-
-
-.topBar {
-  border-bottom: 1px solid $header-border-color;
+&__icons {
   display: flex;
-  justify-content:  space-between;
-  background-color: $header-background-color;
-
-  &__menu {
-      display: none ;
-
-      @include on-tablet {
-        height: 48px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        }
-
-      @include on-desktop {
-          gap: 64px;
-      }
-  }
-
-  &__icons {
-    display: flex;
-    width: object-fit;
-    height: 48px;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
-
+}
 .link {
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 4%;
-    color: $menu-color;
-    background-color: $footer-background-color;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $menu-color;
+  background-color: $footer-background-color;
 
-     @include hover(transform, scale(1.1));
-  }
+  @include hover(transform, scale(1.1));
+}

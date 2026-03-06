@@ -1,8 +1,10 @@
 @use '../../utils/vars' as *;
 @import '../../utils/mixins' ;
 
+
 .homePage {
   @include page-grid;
+
 
   &__content {
       display: flex;
@@ -106,7 +108,7 @@
      background-position: center;
      background-size: cover;
      box-sizing: border-box;
-     aspect-ratio: 1 / 1;  
+     aspect-ratio: 1 / 1;
 
       @include on-tablet {
         height: 187px;

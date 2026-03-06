@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import styles from './ProductDetailsPage.module.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useProduct } from '../../hooks/useProducts';
@@ -10,8 +11,16 @@ import { Product } from '../../../public/api/types/Product';
 import FavouritesLink from '../../components/FavouritesLink/index';
 import Button from '../../components/Button';
 import buttonStyles from '../../components/Button/Button.module.scss';
+import ProductsSlider from '../HomePage/components/ProductsSlider/index';
+
+type Types = {
+  productId: string;
+  category: string;
+  count?: number;
+};
 
 export const ProductDetailsPage = () => {
+  const URL = `api/products.json`;
   const { productId } = useParams();
   const [mainImage, setMainImage] = useState<string | null>(null);
   const { product, loading, error } = useProduct((productId as string) ?? '');
@@ -21,42 +30,85 @@ export const ProductDetailsPage = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-const [suggested, setSuggested] = useState<Product[]>([]);
-const [loadingSuggested, setLoadingSuggested] = useState(false);
-const [errorSuggested, setErrorSuggested] = useState<string | null>(null);
+  const [suggested, setSuggested] = useState<Product[]>([]);
+  const [loadingSuggested, setLoadingSuggested] = useState(false);
+  const [errorSuggested, setErrorSuggested] = useState<string | null>(null);
+  const [suggestedIndex, setSuggestedIndex] = useState(0);
 
   useEffect(() => {
     setActiveIndex(0);
   }, [productId]);
 
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
 
-useEffect(() => {
-  if (!product) return;
-  setMainImage(product.image ?? null);
-  setSelectedColor(Array.isArray(product.colorsAvailable) ? product.colorsAvailable[0] : null);
-  setSelectedCapacity(Array.isArray(product.capacityAvailable) ? product.capacityAvailable[0] : null);
-  loadSuggested();
-}, [product]);
+    async function getSuggestedProducts({
+      productId: id,
+      category,
+      count = 4,
+    }: Types) {
+      const res = await fetch(URL);
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch');
+      }
+
+      const all = await res.json();
+
+      const others = all.filter(
+        p =>
+          String(p.id) !== String(id) &&
+          p.image !== '' &&
+          p.category === String(category),
+      );
+
+      for (let i = others.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [others[i], others[j]] = [others[j], others[i]];
+      }
+
+      return others.slice(0, count);
+    }
+
+    const loadSuggested = async () => {
+      setLoadingSuggested(true);
+      setErrorSuggested(null);
+      try {
+        const items = await getSuggestedProducts({
+          productId: product.id,
+          category: product.category,
+          count: 4,
+        });
+
+        setSuggested(items);
+      } catch (err) {
+        setErrorSuggested('Failed to load suggested products');
+        setSuggested([]);
+      } finally {
+        setLoadingSuggested(false);
+      }
+    };
+
+    setMainImage(product.image ?? null);
+    setSelectedColor(
+      Array.isArray(product.colorsAvailable)
+        ? product.colorsAvailable[0]
+        : null,
+    );
+    setSelectedCapacity(
+      Array.isArray(product.capacityAvailable)
+        ? product.capacityAvailable[0]
+        : null,
+    );
+    loadSuggested();
+  }, [product]);
 
   if (!productId) {
     return <div>Product was not found</div>;
   }
-
-
-  const loadSuggested = async () => {
-  if (!product) return;
-    setLoadingSuggested(true);
-    setErrorSuggested(null);
-    try {
-    const items = await getSuggestedProducts({ productId: product.id, category: product.category, count: 4 });
-    setSuggested(items);
-    } catch (err) {
-    setErrorSuggested('Failed to load suggested products');
-    setSuggested([]);
-    } finally {
-    setLoadingSuggested(false);
-    }
-};
 
   const handleBack = () => {
     if (window.history.length > 1) {
@@ -102,21 +154,17 @@ useEffect(() => {
     setActiveIndex(index);
   };
 
+  const handleNext = () => {
+    setSuggestedIndex(prev => (prev + 1) % suggested.length);
+  };
 
-  async function getSuggestedProducts({ productId, category, count = 4 }) {
-  const res = await fetch(`api/${category}.json`);
-  const all = await res.json();
-  const others = all.filter(p => p.id !== productId);
+  const handlePrev = () => {
+    if (!suggested || suggested.length === 0) {
+      return;
+    }
 
-  for (let i = others.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [others[i], others[j]] = [others[j], others[i]];
-  }
-
-  return others.slice(0, count);
-}
-
-
+    setSuggestedIndex(prev => (prev - 1 + suggested.length) % suggested.length);
+  };
 
   return (
     <>
@@ -158,7 +206,8 @@ useEffect(() => {
                 <div className={styles.productDetailsPage__title}>
                   <h3>{product?.name}</h3>
                 </div>
-                <div className={styles.productDetailsPage__productInfo}>
+
+                <div className={styles.productDetailsPage__sliderWraper}>
                   <div
                     className={styles.productDetailsPage__productImageContainer}
                   >
@@ -170,63 +219,64 @@ useEffect(() => {
                   </div>
                   {Array.isArray(product.images) &&
                     product.images.length > 0 && (
-                      <div className={styles.carousel}>
-                        <div className={`${styles.slider}`}>
-                          {Array.isArray(product.images) &&
-                            product.images.map((img, i) => (
-                              <div
-                                key={i}
-                                className={`${styles.slide} ${i === activeIndex ? styles.active : ''}`}
-                                onClick={() => handleToggleImageClick(i, img)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={e => {
-                                  handleKeyDown(e, img);
-                                }}
-                              >
-                                <img
-                                  src={img}
-                                  alt={`Product ${product?.name} image ${i + 1}`}
-                                />
-                              </div>
-                            ))}
-                        </div>
+                    <div
+                        className={`${styles.slider} ${styles.productDetailsPage__slider}`}
+                      >
+                        {Array.isArray(product.images) &&
+                          product.images.map((img, i) => (
+                            <div
+                              key={i}
+                              className={`${styles.slide} ${i === activeIndex ? styles.active : ''}`}
+                              onClick={() => handleToggleImageClick(i, img)}
+                              role="button"
+                              tabIndex={0}
+                              onKeyDown={e => {
+                                handleKeyDown(e, img);
+                              }}
+                            >
+                              <img
+                                src={img}
+                                alt={`Product ${product?.name} image ${i + 1}`}
+                              />
+                            </div>
+                          ))}
                       </div>
                     )}
 
-                  <div
-                    className={styles.optionsRow}
-                    role="radiogroup"
-                    aria-label="Available colors"
-                  >
-                    <fieldset className={styles.fieldset}>
-                      <label className={styles.label}>Available colors</label>
-                      {product.colorsAvailable.map(color => (
-                        <label key={color} className={styles.colorOption}>
-                          <input
-                            type="radio"
-                            name="color"
-                            value={color}
-                            checked={selectedColor === color}
-                            onChange={() => setSelectedColor(color)}
-                          />
-                          <span
-                            className={styles.colorCircle}
-                            style={{ backgroundColor: color }}
-                            aria-hidden="true"
-                          />
-                        </label>
-                      ))}
-                    </fieldset>
-                    <p
-                      className={`${styles.label} ${styles.productDetailsPage__id}`}
+                  <div className={styles.productDetailsPage__productInfo}>
+                    <div
+                      className={styles.optionsRow}
+                      role="radiogroup"
+                      aria-label="Available colors"
                     >
-                      ID: {productId}
-                    </p>
-                  </div>
-                  <div className={styles.productDetailsPage__fieldsetTable}>
-                    {Array.isArray(product.colorsAvailable) &&
-                      product.colorsAvailable.length > 0 && (
+                      <fieldset className={styles.fieldset}>
+                        <label className={styles.label}>Available colors</label>
+                        {product.colorsAvailable.map(color => (
+                          <label key={color} className={styles.colorOption}>
+                            <input
+                              type="radio"
+                              name="color"
+                              value={color}
+                              checked={selectedColor === color}
+                              onChange={() => setSelectedColor(color)}
+                            />
+                            <span
+                              className={styles.colorCircle}
+                              style={{ backgroundColor: color }}
+                              aria-hidden="true"
+                            />
+                          </label>
+                        ))}
+                      </fieldset>
+                      <p
+                        className={`${styles.label} ${styles.productDetailsPage__id}`}
+                      >
+                        ID: {productId}
+                      </p>
+                    </div>
+                    <div className={styles.productDetailsPage__fieldsetTable}>
+                      {Array.isArray(product.colorsAvailable) &&
+                        product.colorsAvailable.length > 0 && (
                         <div
                           className={styles.optionsRow}
                           role="radiogroup"
@@ -234,7 +284,7 @@ useEffect(() => {
                         >
                           <fieldset className={styles.fieldset}>
                             <label className={styles.label}>
-                              Select capacity
+                                Select capacity
                             </label>
                             {product.capacityAvailable.map(cap => (
                               <label key={cap} className={styles.option}>
@@ -256,46 +306,53 @@ useEffect(() => {
                           </fieldset>
                         </div>
                       )}
-                  </div>
-                  <div className={styles.productPriceRow}>
-                    <p className={styles.productDetailsPage__productPrice}>
-                      <a>${product?.price}&nbsp;</a>
-                    </p>
-                    <p className={styles.productDetailsPage__productFullPrice}>
-                      {`$${product?.fullPrice}`}
-                    </p>
-                  </div>
-                  <div className={styles.productDetailsPage__bottom}>
-                    <AddToCartButton
-                      handleAddToCart={() => handleAddToCart?.(product)}
-                    />
-
-                    <Button
-                      className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
-                      onClick={() =>
-                        handleToggleFavorite?.(String(product?.id))
-                      }
-                    >
-                      <FavouritesLink
-                        className={`${styles['icon--large']} ${styles['icon--favourites']}`}
-                        iconSize="lg"
+                    </div>
+                    <div className={styles.productPriceRow}>
+                      <p className={styles.productDetailsPage__productPrice}>
+                        <a>${product?.price}&nbsp;</a>
+                      </p>
+                      <p
+                        className={styles.productDetailsPage__productFullPrice}
+                      >
+                        {`$${product?.fullPrice}`}
+                      </p>
+                    </div>
+                    <div className={styles.productDetailsPage__bottom}>
+                      <AddToCartButton
+                        handleAddToCart={() => handleAddToCart?.(product)}
                       />
-                    </Button>
-                  </div>
 
-                  <div className={styles.productDetailsPage__productInfoTable}>
-                    <div className={styles.productFeature}>Screen</div>
-                    <div className={styles.productValue}>{product?.screen}</div>
-                    <div className={styles.productFeature}>Resolution</div>
-                    <div className={styles.productValue}>
-                      {product?.resolution}
+                      <Button
+                        className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
+                        onClick={() =>
+                          handleToggleFavorite?.(String(product?.id))
+                        }
+                      >
+                        <FavouritesLink
+                          className={`${styles['icon--large']} ${styles['icon--favourites']}`}
+                          iconSize="lg"
+                        />
+                      </Button>
                     </div>
-                    <div className={styles.productFeature}>Processor</div>
-                    <div className={styles.productValue}>
-                      {product?.processor}
+
+                    <div
+                      className={`{${styles.productInfoTable} ${styles['productDetailsPage__productInfoTable--general']}`}
+                    >
+                      <div className={styles.productFeature}>Screen</div>
+                      <div className={styles.productValue}>
+                        {product?.screen}
+                      </div>
+                      <div className={styles.productFeature}>Resolution</div>
+                      <div className={styles.productValue}>
+                        {product?.resolution}
+                      </div>
+                      <div className={styles.productFeature}>Processor</div>
+                      <div className={styles.productValue}>
+                        {product?.processor}
+                      </div>
+                      <div className={styles.productFeature}>RAM</div>
+                      <div className={styles.productValue}>{product?.ram}</div>
                     </div>
-                    <div className={styles.productFeature}>RAM</div>
-                    <div className={styles.productValue}>{product?.ram}</div>
                   </div>
                 </div>
               </>
@@ -308,12 +365,13 @@ useEffect(() => {
                 aria-label="About product"
                 className={`${styles.section} ${styles['section--about']}`}
               >
-                <h4>About</h4>
+
                 <div
                   role="radiogroup"
                   aria-label="Product description"
                   className={styles.productDetailsPage__description}
                 >
+                    <h4>About</h4>
                   {Array.isArray(product.description) &&
                     product.description.map(
                       (desc: { title: string; text: string }) => (
@@ -330,44 +388,78 @@ useEffect(() => {
                       ),
                     )}
                 </div>
-              </section>
-            </>
-          )}
 
-          {product && (
-            <>
-              <section
-                id="tech-specs"
-                aria-label="Tech specs"
-                className={`${styles.section} ${styles['section--tech-specs']}`}
-              >
-                <h4>Tech specs</h4>
-                <div className={styles.productDetailsPage__productInfoTable}>
-                <div className={styles.productFeature}>Screen</div>
-                    <div className={styles.productValue}>{product?.screen}</div>
-                    <div className={styles.productFeature}>Resolution</div>
-                    <div className={styles.productValue}>
-                      {product?.resolution}
-                    </div>
-                    <div className={styles.productFeature}>Processor</div>
-                    <div className={styles.productValue}>
-                      {product?.processor}
-                    </div>
-                    <div className={styles.productFeature}>RAM</div>
-                    <div className={styles.productValue}>{product?.ram}</div>
+                    {product && (
+                <>
 
-                  <div className={styles.productFeature}>Built in memory</div>
-                  <div className={styles.productValue}>{product?.capacity}</div>
-                  <div className={styles.productFeature}>Camera</div>
-                  <div className={styles.productValue}>{product?.camera}</div>
-                  <div className={styles.productFeature}></div>
-                  <div className={styles.productValue}>{product?.screen}</div>
-                  <div className={styles.productFeature}>Zoom</div>
-                  <div className={styles.productValue}>{product?.zoom}</div>
-                  <div className={styles.productFeature}>Cell</div>
-                  <div className={styles.productValue}>{product?.cell}</div>
-                </div>
+
+                    <div
+                      className={`{${styles.productInfoTable} ${styles['productDetailsPage__productInfoTable--tech-specs']}`}
+                    >
+                       <h4>Tech specs</h4>
+                      <div className={styles.productFeature}>Screen</div>
+                      <div className={styles.productValue}>
+                        {product?.screen}
+                      </div>
+                      <div className={styles.productFeature}>Resolution</div>
+                      <div className={styles.productValue}>
+                        {product?.resolution}
+                      </div>
+                      <div className={styles.productFeature}>Processor</div>
+                      <div className={styles.productValue}>
+                        {product?.processor}
+                      </div>
+                      <div className={styles.productFeature}>RAM</div>
+                      <div className={styles.productValue}>{product?.ram}</div>
+
+                      <div className={styles.productFeature}>
+                        Built in memory
+                      </div>
+                      <div className={styles.productValue}>
+                        {product?.capacity}
+                      </div>
+                      <div className={styles.productFeature}>Camera</div>
+                      <div className={styles.productValue}>
+                        {product?.camera}
+                      </div>
+                      <div className={styles.productFeature}></div>
+                      <div className={styles.productValue}>
+                        {product?.screen}
+                      </div>
+                      <div className={styles.productFeature}>Zoom</div>
+                      <div className={styles.productValue}>{product?.zoom}</div>
+                      <div className={styles.productFeature}>Cell</div>
+                      <div className={styles.productValue}>{product?.cell}</div>
+                    </div>
+
+                </>
+              )}
               </section>
+
+
+
+              {!loadingSuggested &&
+                !errorSuggested &&
+                Array.isArray(suggested) && (
+                  <>
+                    <section
+                    id="suggested-products"
+                    aria-label="Suggeste Products"
+                    className={`${styles.section} ${styles['section--suggested']}`}
+                    >
+                    <ProductsSlider
+                      products={suggested}
+                      currentIndex={suggestedIndex}
+                      handlePrev={handlePrev}
+                      handleNext={handleNext}
+                      handleAddToCart={handleAddToCart}
+                      handleToggleFavorite={handleToggleFavorite}
+                    >
+                        You may also like
+                    </ProductsSlider>
+                  </section>
+                  </>
+                )}
             </>
           )}
         </div>

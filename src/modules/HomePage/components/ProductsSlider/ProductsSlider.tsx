@@ -44,7 +44,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         <h3>{children}</h3>
       </div>
       <div className={styles.productsSlider__topBar}>
-        <div className={`${styles.productsSlider__icons} ${styles.icons}`}>
+        <div className={`${styles.prodWctsSlider__icons} ${styles.icons}`}>
           <IconButtonLeft
             className={`${styles.icon} ${styles['icon--button-left']}`}
             handleClick={handlePrev}

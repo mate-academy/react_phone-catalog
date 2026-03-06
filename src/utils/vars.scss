@@ -1,6 +1,10 @@
 $tablet-min-width: 639px;
 $desktop-min-width: 1199px;
 $max-width: 1200px;
+$padding-inline-mobile: 16px;
+$padding-inline-tablet: 24px;
+$padding-inline-desktop: 152px;
+$max-width-no-padding: $padding-inline-tablet - $padding-inline-desktop;
 $effect-duration: 0.2s;
 $active-menu-color: #313237;
 $menu-background-color: #FFF;
