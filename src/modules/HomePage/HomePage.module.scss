@@ -96,9 +96,7 @@
     position: relative;
 
     @include on-desktop {
-      aspect-ratio: auto;
-      width: 368px;
-      height: 368px;
+      aspect-ratio: 1 / 1;
     }
 
     &--phones {
