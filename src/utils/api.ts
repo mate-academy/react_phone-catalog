@@ -20,18 +20,18 @@ async function request<T>(url: string): Promise<T> {
 }
 
 export const getProducts = () =>
-  request<import('../types/Product').Product[]>('/api/products.json');
+  request<import('../types/Product').Product[]>('api/products.json');
 export const getPhones = () =>
   request<import('../types/ProductDetails').ProductDetails[]>(
-    '/api/phones.json',
+    'api/phones.json',
   );
 export const getTablets = () =>
   request<import('../types/ProductDetails').ProductDetails[]>(
-    '/api/tablets.json',
+    'api/tablets.json',
   );
 export const getAccessories = () =>
   request<import('../types/ProductDetails').ProductDetails[]>(
-    '/api/accessories.json',
+    'api/accessories.json',
   );
 
 export const getProductDetails = async (

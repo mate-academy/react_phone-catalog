@@ -60,7 +60,7 @@ Este projeto é um catálogo de produtos da Apple com funcionalidades completas 
 
 ## 🌐 Demo
 
-**Produção:** [https://glauccoeng-prog.github.io/react-phone-catalog/](https://glauccoeng-prog.github.io/react-phone-catalog/)
+**Produção:** [https://glauccoeng-prog.github.io/react_phone-catalog/](https://glauccoeng-prog.github.io/react_phone-catalog/)
 
 ---
 
