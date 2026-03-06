@@ -1,12 +1,13 @@
-import './AppLayout.scss';
+import React from 'react';
+import styles from './AppLayout.module.scss';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Outlet } from 'react-router-dom';
 
-export const AppLayout = () => (
-  <div>
+export const AppLayout: React.FC = () => (
+  <div className={styles.layout}>
     <Header />
-    <main>
+    <main className={styles.main}>
       <Outlet />
     </main>
     <Footer />

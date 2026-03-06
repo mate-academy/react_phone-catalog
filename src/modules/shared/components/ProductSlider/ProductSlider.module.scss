@@ -1,0 +1,59 @@
+.sliderContainer {
+  margin-bottom: 80px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  .prevIcon {
+    transform: rotate(-90deg);
+    color: #313237;
+  }
+
+  .nextIcon {
+    transform: rotate(90deg);
+    color: #313237;
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  &:global(.swiper-button-disabled) {
+    opacity: 0.5;
+    cursor: default;
+    border-color: #E2E6E9;
+  }
+}
+
+.slide {
+  height: auto;
+  width: 272px;
+}

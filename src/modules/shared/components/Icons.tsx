@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import React from 'react';
 
 interface IconProps {

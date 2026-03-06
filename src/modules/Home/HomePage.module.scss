@@ -1,0 +1,31 @@
+.homePage {
+  padding-bottom: 80px;
+}
+
+.heroContainer, .contentContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section {
+  margin-top: 80px;
+
+  &:first-of-type {
+    margin-top: 32px;
+  }
+}
+
+.mainTitle {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  color: #313237;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}

@@ -51,14 +51,6 @@
   font-family: inherit;
   transition: color 0.3s;
 
-  &:hover {
-    color: #313237;
-
-    .backToTop__icon {
-      border-color: #313237;
-    }
-  }
-
   &__text {
     font-size: 12px;
     font-weight: 700;
@@ -74,5 +66,13 @@
     color: #313237;
     border: 1px solid #b4bdc3;
     transition: border-color 0.3s;
+  }
+
+  &:hover {
+    color: #313237;
+
+    .backToTop__icon {
+      border-color: #313237;
+    }
   }
 }
