@@ -1,0 +1,81 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ========================
+// Design tokens (Figma Original)
+// ========================
+// Original static values (for SCSS functions that can't use var())
+$color-primary-static: #313237;
+
+// Themed colors — reference CSS custom properties defined in _base.scss
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-icons: var(--color-icons);
+$color-elements: var(--color-elements);
+$color-hover-and-bg: var(--color-hover-and-bg);
+$color-white: var(--color-white);
+$color-green: var(--color-green);
+$color-red: var(--color-red);
+$color-accent: var(--color-accent);
+$color-surface: var(--color-surface);
+$color-button: var(--color-button);
+$color-button-text: var(--color-button-text);
+$color-button-shadow: var(--color-button-shadow);
+
+// Typography
+$font-family: Mont, Arial, sans-serif;
+
+// Breakpoints
+$tablet: 640px;
+$desktop: 1200px;
+
+// Grid
+$content-max-width: 1136px;
+
+// ========================
+// Mixins
+// ========================
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 48px;
+  }
+}
