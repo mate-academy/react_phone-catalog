@@ -20,8 +20,8 @@
 
   &:hover {
     scale: 1.02;
-    box-shadow: vars.$shadow;
     border: 1px solid vars.$primary-color;
+    box-shadow: vars.$shadow;
   }
 
   @include mixins.tablet {
@@ -58,9 +58,9 @@
     margin: 0;
     padding: 0;
 
+    font-family: vars.$font-primary;
     font-size: 14px;
     font-weight: 600;
-    font-style: vars.$font-primary;
     color: vars.$primary-color;
     text-align: left;
     text-overflow: ellipsis;

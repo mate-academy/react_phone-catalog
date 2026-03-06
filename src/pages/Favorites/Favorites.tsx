@@ -10,13 +10,15 @@ import type { ProductCatalogAPI } from '../../types/api.types';
 
 import { ProductCard } from '../../components/ProductCard';
 import { mapCatalogToCard } from '../../utils/mappers/product.mappers';
+import { useLocation } from 'react-router-dom';
 
 const Favorites = () => {
   const [products, setProducts] = useState<ProductCatalogAPI[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const from = window.location.pathname;
+  const location = useLocation();
+  const from = location.pathname;
   const favorites = useSelector((state: RootState) => state.favorites.items);
 
   useEffect(() => {

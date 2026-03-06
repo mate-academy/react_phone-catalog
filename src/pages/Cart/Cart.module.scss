@@ -116,6 +116,8 @@
     gap: 16px;
     align-items: center;
 
+    cursor: pointer;
+
     min-width: 0;
   }
 
@@ -211,6 +213,11 @@
     display: flex;
     gap: 8px;
     align-items: center;
+
+    p {
+      width: 24px; // фіксована ширина
+      text-align: center; // число по центру
+    }
 
     &_btn {
       cursor: pointer;

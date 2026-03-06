@@ -56,6 +56,13 @@ const Cart = () => {
     return carts.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
+  const handleToProduct = ({
+    itemId,
+    category,
+  }: Pick<CartItem, 'itemId' | 'category'>) => {
+    navigate(`/product/${category}/${itemId}`);
+  };
+
   if (isLoading) {
     return (
       <div className={styles.cart}>
@@ -118,14 +125,18 @@ const Cart = () => {
                 >
                   <img src={Delete} alt="Delete" />
                 </button>
+                <div
+                  className={styles.cart__item_detail}
+                  onClick={() => handleToProduct(product)}
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}${product.image}`}
+                    alt={`${product.name}`}
+                    className={styles.cart__item_img}
+                  />
 
-                <img
-                  src={`${import.meta.env.BASE_URL}${product.image}`}
-                  alt={`${product.name}`}
-                  className={styles.cart__item_img}
-                />
-
-                <p className={styles.cart__item_info_title}>{product.name}</p>
+                  <p className={styles.cart__item_info_title}>{product.name}</p>
+                </div>
               </div>
 
               <div className={styles.cart__item_right}>
