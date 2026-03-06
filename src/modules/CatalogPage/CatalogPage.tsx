@@ -7,6 +7,7 @@ import { HomeIcon } from '../../components/Icons/HomeIcon';
 import { ArrowRightIcon } from '../../components/Icons/ArrowRightIcon';
 import { Dropdown } from './components/DropDown';
 import { ProductsList } from './components/ProductsList';
+import { Pagination } from './components/Pagination';
 
 import styles from './CatalogPage.module.scss';
 
@@ -94,15 +95,22 @@ export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
     product => product.category === categoryType,
   ).length;
 
+  const currentPage = searchParams.get('page') || 1;
   const itemsPerPage =
     perPage === 'all' ? visibleProducts.length : Number(perPage);
 
-  // const currentPage = Number(searchParams.get('page') || 1);
+  const totalPages = Math.ceil(visibleProducts.length / itemsPerPage);
+
+  const rawPage = Number(searchParams.get('page')) || 1;
+  const page = Math.max(1, Math.min(rawPage, totalPages || 1));
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   const productsToDisplay =
     perPage === 'all'
       ? visibleProducts
-      : visibleProducts.slice(0, itemsPerPage);
+      : visibleProducts.slice(startIndex, endIndex);
 
   return (
     <section className={cl('container', [styles.section])}>
@@ -152,6 +160,13 @@ export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
       </div>
 
       <ProductsList isLoading={isLoading} products={productsToDisplay} />
+
+      <Pagination
+        totalPages={totalPages}
+        currentPage={Number(currentPage)}
+        onPageChange={p => handleParamsChange('page', String(p))}
+        perPage={perPage}
+      />
     </section>
   );
 };

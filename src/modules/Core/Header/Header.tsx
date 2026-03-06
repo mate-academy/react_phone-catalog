@@ -8,6 +8,7 @@ import { BurgerMenuIcon } from '../../../components/Icons/BurgerMenuIcon';
 import { CloseIcon } from '../../../components/Icons/CloseIcon';
 import { CartIcon } from '../../../components/Icons/CartIcon';
 import { FavouritesIcon } from '../../../components/Icons/FavouritesIcon/';
+import { scrollToTop } from '../../../utils/scrollToTop';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,22 +37,34 @@ export const Header = () => {
           <nav className={styles.desktopNav}>
             <ul className={styles.desktopNavList}>
               <li className={styles.navItem}>
-                <NavLink to="/" className={getLinkClass}>
+                <NavLink to="/" className={getLinkClass} onClick={scrollToTop}>
                   Home
                 </NavLink>
               </li>
               <li className={styles.navItem}>
-                <NavLink to="/phones" className={getLinkClass}>
+                <NavLink
+                  to="/phones"
+                  className={getLinkClass}
+                  onClick={scrollToTop}
+                >
                   Phones
                 </NavLink>
               </li>
               <li className={styles.navItem}>
-                <NavLink to="/tablets" className={getLinkClass}>
+                <NavLink
+                  to="/tablets"
+                  className={getLinkClass}
+                  onClick={scrollToTop}
+                >
                   Tablets
                 </NavLink>
               </li>
               <li className={styles.navItem}>
-                <NavLink to="/accessories" className={getLinkClass}>
+                <NavLink
+                  to="/accessories"
+                  className={getLinkClass}
+                  onClick={scrollToTop}
+                >
                   Accessories
                 </NavLink>
               </li>
@@ -59,10 +72,18 @@ export const Header = () => {
           </nav>
 
           <div className={styles.actions}>
-            <NavLink to="/favorites" className={styles.iconButton}>
+            <NavLink
+              to="/favourites"
+              className={styles.iconButton}
+              onClick={scrollToTop}
+            >
               <FavouritesIcon />
             </NavLink>
-            <NavLink to="/cart" className={styles.iconButton}>
+            <NavLink
+              to="/cart"
+              className={styles.iconButton}
+              onClick={scrollToTop}
+            >
               <CartIcon />
             </NavLink>
 
@@ -116,7 +137,7 @@ export const Header = () => {
         </nav>
 
         <div className={styles.bottomActions}>
-          <NavLink to="/favorites" className={getActionButtonClass}>
+          <NavLink to="/favourites" className={getActionButtonClass}>
             <FavouritesIcon />
           </NavLink>
           <NavLink to="/cart" className={getActionButtonClass}>

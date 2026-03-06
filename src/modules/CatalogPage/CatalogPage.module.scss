@@ -47,6 +47,8 @@
 .catalogName {
   @include small-text;
 
+  text-transform: capitalize;
+
   color: var(--color-secondary);
 }
 

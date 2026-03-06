@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { scrollToTop } from '../../../../../../utils/scrollToTop';
+
 import styles from './CategoryItem.module.scss';
 
 type Props = {
@@ -19,7 +21,7 @@ export const CategoryItem: React.FC<Props> = ({
   bgColor,
 }) => {
   return (
-    <Link to={`/${link}`} className={styles.item}>
+    <Link to={`/${link}`} className={styles.item} onClick={scrollToTop}>
       <div className={styles.imageBox} style={{ backgroundColor: bgColor }}>
         <img src={image} alt={categoryName} className={styles.image} />
       </div>

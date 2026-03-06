@@ -1,0 +1,79 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+.pagination {
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 350px) {
+    margin-top: 20px;
+
+    flex-wrap: wrap;
+  }
+}
+
+%button-base {
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--color-white);
+
+  border: 1px solid var(--color-icons);
+  border-radius: 50%;
+
+  color: var(--color-primary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.button {
+  @extend %button-base;
+}
+
+.listButtons {
+  @extend %button-base;
+  @include body-text;
+
+  border: 1px solid var(--color-elements);
+}
+
+.disabled {
+  border-color: var(--color-elements);
+
+  color: var(--color-icons);
+
+  pointer-events: none;
+}
+
+.active {
+  border-color: var(--color-primary);
+
+  background-color: var(--color-primary);
+
+  color: var(--color-white);
+}
+
+.dots {
+  @include body-text;
+}

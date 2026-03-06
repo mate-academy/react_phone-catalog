@@ -40,7 +40,7 @@ export const App = () => {
 
         <Route path="cart" element={<div>Cart Page</div>} />
 
-        <Route path="favourits" element={<div>Favourits Page</div>} />
+        <Route path="favourites" element={<div>Favourites Page</div>} />
 
         <Route path="*" element={<div>Page not Found</div>} />
       </Route>

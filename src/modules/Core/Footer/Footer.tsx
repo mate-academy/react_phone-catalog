@@ -4,16 +4,13 @@ import { Link } from 'react-router-dom';
 import { ArrowUpIcon } from '../../../components/Icons/ArrowUpIcon';
 import styles from './Footer.module.scss';
 import LOGO from '../../../assets/icons/logo/Logo.svg';
+import { scrollToTop } from '../../../utils/scrollToTop';
 
 export const Footer = () => {
-  const backToTopHandler = () => {
-    window.scroll({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <Link to="/" className={styles.logo}>
+        <Link to="/" className={styles.logo} onClick={scrollToTop}>
           <img src={LOGO} alt="Nice Gadjets logo" />
         </Link>
 
@@ -31,20 +28,28 @@ export const Footer = () => {
             </li>
 
             <li className={styles.navItem}>
-              <Link to="/contacts" className={styles.navLink}>
+              <Link
+                to="/contacts"
+                className={styles.navLink}
+                onClick={scrollToTop}
+              >
                 Contacts
               </Link>
             </li>
 
             <li className={styles.navItem}>
-              <Link to="/rights" className={styles.navLink}>
+              <Link
+                to="/rights"
+                className={styles.navLink}
+                onClick={scrollToTop}
+              >
                 Rights
               </Link>
             </li>
           </ul>
         </nav>
 
-        <div className={styles.backToTop} onClick={backToTopHandler}>
+        <div className={styles.backToTop} onClick={scrollToTop}>
           <span className={styles.backToTopText}>Back to top</span>
 
           <button className={styles.backToTopButton}>
