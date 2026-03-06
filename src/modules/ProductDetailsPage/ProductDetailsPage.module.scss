@@ -5,7 +5,7 @@
 .details {
   @include page-container;
 
-  padding-top: 24px;
+  margin-top: 24px;
   padding-bottom: 56px;
 
   @include respond-to('tablet') {
@@ -22,9 +22,10 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    margin-top: 24px;
-    margin-bottom: 16px;
+
+    margin: 24px 0 16px;
     padding: 0;
+    line-height: 1;
 
     border: none;
     background: transparent;

@@ -22,12 +22,9 @@ export const Search: React.FC = () => {
     }
   }, [debouncedQuery, handleQueryChange, query]);
 
-  const showSearch = [
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favorites',
-  ].includes(location.pathname);
+  const showSearch = ['/phones', '/tablets', '/accessories'].includes(
+    location.pathname,
+  );
 
   if (!showSearch) {
     return null;

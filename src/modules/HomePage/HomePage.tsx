@@ -31,7 +31,13 @@ export const HomePage: React.FC = () => {
   }, []);
 
   const brandNewProducts = useMemo(
-    () => [...products].sort((item1, item2) => item2.year - item1.year),
+    () =>
+      [...products]
+        .sort((item1, item2) => item2.year - item1.year)
+        .map(item => ({
+          ...item,
+          fullPrice: item.price,
+        })),
     [products],
   );
 

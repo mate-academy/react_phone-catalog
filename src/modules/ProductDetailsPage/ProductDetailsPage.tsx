@@ -191,7 +191,7 @@ export const ProductDetailsPage: React.FC = () => {
             </section>
 
             <div className={styles.details__specs}>
-              <h3 className={styles.details__specsTitle}>Specifications</h3>
+              <h3 className={styles.details__specsTitle}>Tech specs</h3>
               <div className={styles.details__specsDivider}></div>
               <div className={styles.details__specsInfo}>
                 <TechSpecs product={product} variant="full" />

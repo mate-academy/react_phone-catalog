@@ -37,3 +37,23 @@ export const getPaginatedProducts = (
 
   return products.slice(startIndex, endIndex);
 };
+
+export const getColorHex = (color: string): string => {
+  const normalizedColor = color.toLowerCase().replace(/[\s-]+/g, '');
+
+  const colorMap: Record<string, string> = {
+    midnight: '#343b43',
+    spacegray: '#5f5f5f',
+    starlight: '#faf7f2',
+    gold: '#d4c9b1',
+    silver: '#e2e4e1',
+    rosegold: '#b76e79',
+    graphite: '#4b4845',
+    sierrablue: '#a7c1d3',
+    pink: '#e5ddea',
+    purple: '#e5ddea',
+    spaceblack: '#4b4845',
+  };
+
+  return colorMap[normalizedColor] || color;
+};

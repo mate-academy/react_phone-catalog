@@ -5,11 +5,7 @@
 .favourites {
   @include page-container;
 
-  padding-top: 24px;
-
-  @include respond-to('tablet') {
-    padding-top: 40px;
-  }
+  margin-top: 24px;
 
   &__title {
     @include h1;

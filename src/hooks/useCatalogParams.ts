@@ -28,8 +28,13 @@ export const useCatalogParams = () => {
     (newSort: string) => {
       const newParams = new URLSearchParams(searchParams);
 
-      newParams.set('sort', newSort);
-      newParams.set('page', '1');
+      if (newSort === SortType.AGE) {
+        newParams.delete('sort');
+      } else {
+        newParams.set('sort', newSort);
+      }
+
+      newParams.delete('page');
       setSearchParams(newParams);
     },
     [searchParams, setSearchParams],
@@ -39,8 +44,13 @@ export const useCatalogParams = () => {
     (newPerPage: string) => {
       const newParams = new URLSearchParams(searchParams);
 
-      newParams.set('perPage', newPerPage);
-      newParams.set('page', '1');
+      if (newPerPage === PerPageType.ALL) {
+        newParams.delete('perPage');
+      } else {
+        newParams.set('perPage', newPerPage);
+      }
+
+      newParams.delete('page');
       setSearchParams(newParams);
     },
     [searchParams, setSearchParams],
@@ -52,15 +62,13 @@ export const useCatalogParams = () => {
 
       if (newPage === 1) {
         newParams.delete('page');
-      } else if (perPage === PerPageType.ALL) {
-        newParams.delete('perPage');
       } else {
         newParams.set('page', newPage.toString());
       }
 
       setSearchParams(newParams);
     },
-    [searchParams, setSearchParams, perPage],
+    [searchParams, setSearchParams],
   );
 
   const handleQueryChange = useCallback(
@@ -73,7 +81,7 @@ export const useCatalogParams = () => {
         newParams.delete('query');
       }
 
-      newParams.set('page', '1');
+      newParams.delete('page');
       setSearchParams(newParams);
     },
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { PathType, Product } from '../../../types/Types';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './ColorSelector.module.scss';
+import { getColorHex } from '../../../utils/helpers';
 
 interface ColorSelectorProps {
   product: Product;
@@ -38,7 +39,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ product }) => {
                     ? styles['colorSelector__label--active']
                     : ''
                 }`}
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: getColorHex(color) }}
               >
                 <span className={styles.colorSelector__visuallyHidden}>
                   Color {color}

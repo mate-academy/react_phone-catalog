@@ -7,8 +7,10 @@ import { Pagination } from '../Pagination';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
 import { getPaginatedProducts, getSortedProducts } from '../../utils/helpers';
 import { Dropdown } from '../ui/Dropdown';
-import styles from './Catalog.module.scss';
 import { PER_PAGE_OPTIONS, SORT_OPTIONS } from '../../constants';
+import { Breadcrumbs } from '../Breadcrumbs';
+import noProductsMatching from '../../../public/img/product-not-found.png';
+import styles from './Catalog.module.scss';
 
 interface CatalogProps {
   title: string;
@@ -16,6 +18,7 @@ interface CatalogProps {
   errorMessage: string;
   isLoading: boolean;
   onReload: () => void;
+  category?: string;
 }
 
 export const Catalog: React.FC<CatalogProps> = ({
@@ -24,6 +27,7 @@ export const Catalog: React.FC<CatalogProps> = ({
   isLoading,
   errorMessage,
   onReload,
+  category,
 }) => {
   const {
     sort,
@@ -71,6 +75,8 @@ export const Catalog: React.FC<CatalogProps> = ({
     }
   };
 
+  const noResultsMessage = `There are no ${title.toLowerCase()} matching ${query}`;
+
   return (
     <section className={styles.catalog}>
       {isLoading && <Loader />}
@@ -87,6 +93,7 @@ export const Catalog: React.FC<CatalogProps> = ({
       {!isLoading && !errorMessage && (
         <>
           <div className={styles.catalog__header}>
+            {category && <Breadcrumbs category={category} />}
             <h1 className={styles.catalog__title}>{title}</h1>
             <span className={styles.catalog__count}>
               {filteredProducts.length} models
@@ -98,8 +105,13 @@ export const Catalog: React.FC<CatalogProps> = ({
               <h2>{getEmptyStateMessage()}</h2>
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className={styles.catalog__empty}>
-              <h2>There are no products matching {query}</h2>
+            <div className={styles.catalog__emptyContent}>
+              <h2 className={styles.catalog__emptyText}>{noResultsMessage}</h2>
+              <img
+                src={noProductsMatching}
+                alt="No products matching"
+                className={styles.catalog__emptyImage}
+              />
             </div>
           ) : (
             <>

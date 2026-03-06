@@ -3,14 +3,19 @@
 @import '../../styles/typography';
 
 .breadcrumbs {
-  margin-top: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
+  grid-column: 1 / -1;
+
+  @include respond-to('desktop') {
+    margin-bottom: 40px;
+  }
 
   &__home {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 
     @include hover-transition(color);
 
@@ -30,6 +35,10 @@
 
     @include hover {
       color: var(--text-secondary);
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
     }
   }
 

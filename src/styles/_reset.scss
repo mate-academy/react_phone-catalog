@@ -9,16 +9,10 @@ h1,
 h2,
 h3,
 h4,
-h5,
-h6,
 p,
 ol,
 ul,
-li,
-figure,
-blockquote,
-dl,
-dd {
+li {
   margin: 0;
   padding: 0;
 }
@@ -59,5 +53,6 @@ a {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 }

@@ -1,1 +1,46 @@
-// empty
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.notFound {
+  &__emptyContent {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to('tablet') {
+      flex-direction: row;
+      justify-content: space-around;
+      text-align: left;
+    }
+  }
+
+  &__emptyText {
+    @include h2;
+
+    color: var(--text-main);
+  }
+
+  &__emptyImage {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+
+      @include hover-transition(color);
+
+      color: var(--text-secondary);
+    }
+  }
+}

@@ -14,6 +14,7 @@ const categoryLabels: Record<string, string> = {
   phones: 'Phones',
   tablets: 'Tablets',
   accessories: 'Accessories',
+  favorites: 'Favourites',
 };
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({

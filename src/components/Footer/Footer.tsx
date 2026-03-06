@@ -4,6 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { Logo } from '../Logo';
 import arrowUp from '../../assets/icons/back-to-top.svg';
 import styles from './Footer.module.scss';
+import {
+  CONTACTS_ORIGIN_REPO,
+  GIT_HUB_REPO,
+  RIGHTS_PATH,
+} from '../../constants';
 
 export const Footer: React.FC = () => {
   const handleBackToTop = () => {
@@ -19,7 +24,7 @@ export const Footer: React.FC = () => {
           <ul className={styles.footer__list}>
             <li className={styles.footer__item}>
               <a
-                href="/github"
+                href={GIT_HUB_REPO}
                 className={styles.footer__link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -28,12 +33,15 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li className={styles.footer__item}>
-              <NavLink to="/contacts" className={styles.footer__link}>
+              <NavLink
+                to={CONTACTS_ORIGIN_REPO}
+                className={styles.footer__link}
+              >
                 Contacts
               </NavLink>
             </li>
             <li className={styles.footer__item}>
-              <NavLink to="/rights" className={styles.footer__link}>
+              <NavLink to={RIGHTS_PATH} className={styles.footer__link}>
                 Rights
               </NavLink>
             </li>

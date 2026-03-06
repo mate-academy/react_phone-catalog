@@ -5,6 +5,8 @@ import { MinusIcon } from '../../../components/ui/MinusIcon';
 import { PlusIcon } from '../../../components/ui/PlusIcon';
 import { CloseIcon } from '../../../components/ui/CloseIcon';
 import { CartItemInterface, useCart } from '../../../context/CartContext';
+import { Link } from 'react-router-dom';
+import { PathType } from '../../../types/Types';
 
 interface CartItemProps {
   item: CartItemInterface;
@@ -18,6 +20,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const handleDecrease = () =>
     updateQuantity(item.product.id, item.quantity - 1);
   const handleRemove = () => removeFromCart(item.product.id);
+  const handleTotalPrice = () => item.product.price * item.quantity;
 
   return (
     <div className={styles.cart__item}>
@@ -29,12 +32,19 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
         >
           <CloseIcon />
         </button>
-        <img
-          src={item.product.image}
-          alt={item.product.name}
-          className={styles.cart__itemImage}
-        />
-        <span className={styles.cart__itemTitle}>{item.product.name}</span>
+        <Link to={`${PathType.PRODUCT}/${item.product.itemId}`}>
+          <img
+            src={item.product.image}
+            alt={item.product.name}
+            className={styles.cart__itemImage}
+          />
+        </Link>
+        <Link
+          to={`${PathType.PRODUCT}/${item.product.itemId}`}
+          className={styles.cart__itemTitle}
+        >
+          {item.product.name}
+        </Link>
       </div>
       <div className={styles.cart__actions}>
         <div className={styles.cart__quantityControl}>
@@ -55,7 +65,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             <PlusIcon />
           </button>
         </div>
-        <span className={styles.cart__price}>${item.product.price}</span>
+        <span className={styles.cart__price}>${handleTotalPrice()}</span>
       </div>
     </div>
   );

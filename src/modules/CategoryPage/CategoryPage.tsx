@@ -19,6 +19,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
 
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
+    setErrorMessage('');
     try {
       let data: CatalogProducts[] = [];
 
@@ -55,6 +56,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       errorMessage={errorMessage}
       isLoading={isLoading}
       onReload={fetchProducts}
+      category={category}
     />
   );
 };
