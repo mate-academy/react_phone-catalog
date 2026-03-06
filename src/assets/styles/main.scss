@@ -3,9 +3,38 @@
 
 body {
   font-family: Mont, sans-serif;
+
+  &.locked {
+    overflow: hidden;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: $white;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $main;
+  border-radius: 5px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 300vh;
 }
 
 .wrapper {
+  @extend %container;
+
+  flex-grow: 1;
   padding-top: 64px;
 
   @media (max-width: 1024px) {

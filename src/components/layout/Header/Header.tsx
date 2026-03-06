@@ -1,10 +1,18 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [showBurger, setShowBurger] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (showBurger) {
+      document.body.classList.add('locked');
+    } else {
+      document.body.classList.remove('locked');
+    }
+  }, [showBurger]);
 
   return (
     <header className={styles.header}>

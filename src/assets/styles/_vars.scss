@@ -8,3 +8,18 @@ $white: #fff;
 $green: #27ae60;
 $red: #eb5757;
 $transition: 0.2s ease-in;
+
+%container {
+  padding: 0 32px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
