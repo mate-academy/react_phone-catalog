@@ -111,11 +111,11 @@
 
   /* ЛІВИЙ БЛОК */
   &__item_left {
+    cursor: pointer;
+
     display: flex;
     flex: 1;
     gap: 16px;
-    cursor: pointer;
-
     align-items: center;
 
     min-width: 0;

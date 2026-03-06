@@ -178,6 +178,7 @@
 
     a {
       position: relative;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -198,13 +199,12 @@
       top: 10px;
       right: 10px;
 
-      min-width: 10px;
-      height: 10px;
-
       display: flex;
       align-items: center;
       justify-content: center;
 
+      min-width: 10px;
+      height: 10px;
       padding: 4px;
       border-radius: 50%;
 
