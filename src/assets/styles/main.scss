@@ -3,7 +3,7 @@
 
 body {
   font-family: Mont, sans-serif;
-
+  height: 300vh;
   &.locked {
     overflow: hidden;
   }
@@ -28,12 +28,9 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  height: 300vh;
 }
 
 .wrapper {
-  @extend %container;
-
   flex-grow: 1;
   padding-top: 64px;
 

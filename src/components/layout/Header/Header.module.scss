@@ -3,6 +3,7 @@
   height: 64px;
   width: 100%;
   position: fixed;
+  background: $white;
 
   @media (max-width: 1024px) {
     height: 48px;
@@ -63,6 +64,8 @@
   }
 
   &__link {
+    @extend %hover-transition;
+
     display: flex;
     align-items: center;
     font-size: 12px;
@@ -72,7 +75,6 @@
     text-transform: uppercase;
     color: $secondary;
     position: relative;
-    transition: $transition;
 
     &::after {
       content: "";
@@ -88,7 +90,6 @@
     }
 
     &:hover {
-      transition: $transition;
       color: $main;
 
       &::after {
@@ -225,6 +226,8 @@
     }
 
     &_link {
+      @extend %hover-transition;
+
       display: block;
       width: 100%;
       text-align: center;
@@ -235,7 +238,6 @@
       letter-spacing: 4%;
       text-transform: uppercase;
       color: $secondary;
-      transition: $transition;
 
       &:hover {
         color: $main;

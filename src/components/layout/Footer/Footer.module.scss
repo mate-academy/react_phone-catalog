@@ -45,22 +45,24 @@
   }
 
   &__link {
+    @extend %hover-transition;
+
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
     letter-spacing: 4%;
     text-transform: uppercase;
     color: $secondary;
-    transition: $transition;
 
     &:hover {
-      transition: $transition;
       color: $main;
     }
   }
 }
 
 .button {
+  @extend %hover-transition;
+
   font-size: 12px;
   font-weight: 500;
   line-height: 100%;
@@ -74,6 +76,8 @@
   }
 
   &__icon {
+    @extend %hover-transition;
+
     width: 32px;
     height: 32px;
     display: flex;
@@ -81,5 +85,14 @@
     justify-content: center;
     border: 1px solid $elements;
     margin-left: 16px;
+  }
+
+  &:hover {
+    color: $main;
+    & .button__icon {
+      @extend %hover-transition;
+
+      border-color: $main;
+    }
   }
 }

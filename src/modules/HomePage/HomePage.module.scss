@@ -1,1 +1,3 @@
-// styles
+.container {
+  @extend %container;
+}

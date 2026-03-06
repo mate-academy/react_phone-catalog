@@ -9,6 +9,14 @@ $green: #27ae60;
 $red: #eb5757;
 $transition: 0.2s ease-in;
 
+%hover-transition {
+  transition: $transition;
+
+  &:hover {
+    transition: $transition;
+  }
+}
+
 %container {
   padding: 0 32px;
   max-width: 1200px;
