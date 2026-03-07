@@ -3,23 +3,24 @@ import classNames from 'classnames';
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { CartIcon, HeartIcon } from '../Icons';
-import { CATEGORIES } from '../../constants/categories';
+import { Category } from '../../../../types/Category';
 
-interface NavLinkItem {
-  title: string;
-  navTitle?: string;
-  path: string;
+interface Props {
+  categories: Category[];
 }
 
-const NAV_LINKS: NavLinkItem[] = [
-  { title: 'Home', navTitle: 'Home', path: '/' },
-  ...CATEGORIES,
-];
-
-const getNavLinkClass = (isActive: boolean) =>
+const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.nav__link, { [styles.active]: isActive });
 
-export const Header: React.FC = () => {
+export const Header: React.FC<Props> = ({ categories }) => {
+  const navLinks = [
+    { title: 'Home', path: '/' },
+    ...categories.map(c => ({
+      title: c.navTitle || c.title,
+      path: c.path,
+    })),
+  ];
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -29,13 +30,9 @@ export const Header: React.FC = () => {
           </NavLink>
 
           <nav className={styles.nav}>
-            {NAV_LINKS.map(({ title, navTitle, path }) => (
-              <NavLink
-                key={path}
-                to={path}
-                className={state => getNavLinkClass(state.isActive)}
-              >
-                {navTitle || title}
+            {navLinks.map(({ title, path }) => (
+              <NavLink key={path} to={path} className={getNavLinkClass}>
+                {title}
               </NavLink>
             ))}
           </nav>

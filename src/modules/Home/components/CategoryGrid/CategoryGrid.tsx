@@ -1,12 +1,15 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import styles from './CategoryGrid.module.scss';
 import { CategoryCard } from '../CategoryCard';
-import { CATEGORIES } from '../../../shared/constants/categories';
+import { Category } from '../../../../types/Category';
 
 export const CategoryGrid: React.FC = () => {
+  const categories = useOutletContext<Category[]>();
+
   return (
     <div className={styles.categoryGrid}>
-      {CATEGORIES.map(({ id, title, path, img, count }) => {
+      {categories.map(({ id, title, path, img, count }) => {
         return (
           <CategoryCard
             key={id}

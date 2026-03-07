@@ -3,18 +3,30 @@ import styles from './HomePage.module.scss';
 import { BannerSlider } from './components/BannerSlider';
 import { ProductSlider } from '../shared/components/ProductSlider';
 import { CategoryGrid } from './components/CategoryGrid';
-import { getProducts } from '../shared/services/productService';
+import { getCategories, getProducts } from '../shared/services/productService';
 import { Product } from '../../types/Product';
+import { Category } from '../../types/Category';
 
 export const HomePage: React.FC = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getCategories().then(setCategories);
+  }, []);
 
   useEffect(() => {
     getProducts()
       .then(data => setProducts(data))
       .finally(() => setIsLoading(false));
   }, []);
+
+  const banners = categories.map(c => ({
+    img: c.banner,
+    link: c.path,
+    alt: c.bannerAlt,
+  }));
 
   const newModels = products.filter(p => p.year >= 2022);
 
@@ -27,7 +39,7 @@ export const HomePage: React.FC = () => {
       <div className={styles.heroContainer}>
         <section className={styles.section}>
           <h1 className={styles.mainTitle}>Welcome to Nice Gadgets store!</h1>
-          <BannerSlider />
+          <BannerSlider banners={banners} />
         </section>
       </div>
 

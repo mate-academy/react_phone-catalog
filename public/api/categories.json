@@ -1,0 +1,30 @@
+[
+  {
+    "id": "phones",
+    "title": "Mobile phones",
+    "navTitle": "Phones",
+    "img": "img/category-phones.webp",
+    "path": "/phones",
+    "count": 95,
+    "banner": "img/banner-phones.png",
+    "bannerAlt": "Newest phones"
+  },
+  {
+    "id": "tablets",
+    "title": "Tablets",
+    "img": "img/category-tablets.webp",
+    "path": "/tablets",
+    "count": 24,
+    "banner": "img/banner-tablets.png",
+    "bannerAlt": "Powerful tablets"
+  },
+  {
+    "id": "accessories",
+    "title": "Accessories",
+    "img": "img/category-accessories.webp",
+    "path": "/accessories",
+    "count": 100,
+    "banner": "img/banner-accessories.png",
+    "bannerAlt": "Cool accessories"
+  }
+]

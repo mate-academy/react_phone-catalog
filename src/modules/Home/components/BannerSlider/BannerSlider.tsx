@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './BannerSlider.module.scss';
 import { ArrowUpIcon } from '../../../shared/components/Icons';
 
-const BANNERS = [
-  { id: 1, img: '/img/banner-phones.png', link: '/phones' },
-  { id: 2, img: '/img/banner-tablets.png', link: '/tablets' },
-  { id: 3, img: '/img/banner-accessories.png', link: '/accessories' },
-];
+interface Props {
+  banners: { img: string; link: string; alt: string }[];
+}
 
-export const BannerSlider: React.FC = () => {
+export const BannerSlider: React.FC<Props> = ({ banners }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % BANNERS.length);
+    setCurrentIndex(prev => (prev + 1) % banners.length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex(prev => (prev - 1 + BANNERS.length) % BANNERS.length);
+    setCurrentIndex(prev => (prev - 1 + banners.length) % banners.length);
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNext, 5000);
+    if (banners.length === 0) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % banners.length);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [banners.length]);
 
   return (
     <div className={styles.slider}>
@@ -40,14 +45,14 @@ export const BannerSlider: React.FC = () => {
           className={styles.track}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {BANNERS.map(banner => (
-            <div key={banner.id} className={styles.slide}>
+          {banners.map(banner => (
+            <Link key={banner.img} to={banner.link} className={styles.slide}>
               <img
-                src={banner.img}
-                alt={`Banner ${banner.id}`}
+                src={`${import.meta.env.BASE_URL}${banner.img}`}
+                alt={banner.alt}
                 className={styles.image}
               />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -60,7 +65,7 @@ export const BannerSlider: React.FC = () => {
       </button>
 
       <div className={styles.dots}>
-        {BANNERS.map((_, index) => (
+        {banners.map((_, index) => (
           <button
             key={index}
             className={classNames(styles.dot, {

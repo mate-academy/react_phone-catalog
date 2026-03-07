@@ -5,4 +5,6 @@ export interface Category {
   img: string;
   path: string;
   count: number;
+  banner: string;
+  bannerAlt: string;
 }
