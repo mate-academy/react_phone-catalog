@@ -12,10 +12,7 @@ import { useFavourites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
 import { FavouriteIcon } from '../../components/ui/FavouriteIcon';
 import { useProductDetails } from '../../hooks/useProductDetails';
-// eslint-disable-next-line prettier/prettier
-import {
-  FavouriteIconSelected
-} from '../../components/ui/FavouriteIconSelected';
+import { HeartFillIcon } from '../../components/ui/HeartFillIcon';
 import classNames from 'classnames';
 import styles from './ProductDetailsPage.module.scss';
 
@@ -112,7 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
                     {!isActiveFavourite ? (
                       <FavouriteIcon className={styles.details__icon} />
                     ) : (
-                      <FavouriteIconSelected className={styles.details__icon} />
+                      <HeartFillIcon className={styles.details__icon} />
                     )}
                   </button>
                 </div>

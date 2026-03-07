@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FavouriteIcon } from '../ui/FavouriteIcon';
 import { CatalogProducts } from '../../types/Types';
-import { FavouriteIconSelected } from '../ui/FavouriteIconSelected';
+import { HeartFillIcon } from '../ui/HeartFillIcon';
 import { useCart } from '../../context/CartContext';
 import { useFavourites } from '../../context/FavoritesContext';
 import classNames from 'classnames';
@@ -86,7 +86,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {!isActiveFavourite ? (
             <FavouriteIcon className={styles.productCard__icon} />
           ) : (
-            <FavouriteIconSelected className={styles.productCard__icon} />
+            <HeartFillIcon className={styles.productCard__icon} />
           )}
         </button>
       </div>

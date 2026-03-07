@@ -1,1 +1,0 @@
-export { FavouriteIconSelected } from './FavouriteIconSelected';

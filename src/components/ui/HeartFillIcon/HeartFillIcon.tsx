@@ -1,13 +1,11 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-interface FavouriteIconProps {
+interface HeartFillIconProps {
   className: string;
 }
 
-export const FavouriteIconSelected: React.FC<FavouriteIconProps> = ({
-  className,
-}) => {
+export const HeartFillIcon: React.FC<HeartFillIconProps> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
