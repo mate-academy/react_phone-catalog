@@ -3,7 +3,7 @@ import { Category } from '../../../types/Category';
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const getProducts = async () => {
-  const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
+  const response = await fetch(`${import.meta.env.BASE_URL}/api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch products');
@@ -18,7 +18,7 @@ export const getProducts = async () => {
 
 export const getCategories = async (): Promise<Category[]> => {
   const response = await fetch(
-    `${import.meta.env.BASE_URL}api/categories.json`,
+    `${import.meta.env.BASE_URL}/api/categories.json`,
   );
 
   if (!response.ok) {
