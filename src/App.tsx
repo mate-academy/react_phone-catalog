@@ -8,11 +8,11 @@ export const App = () => {
   return (
     <div className="app">
       <Header />
-      <div className="wrapper">
+      <main className="wrapper">
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
         </Routes>
-      </div>
+      </main>
       <Footer />
     </div>
   );

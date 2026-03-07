@@ -1,0 +1,20 @@
+.button {
+  @extend %hover-transition;
+
+  width: 40px;
+  height: 40px;
+  background: $white;
+  border: 1px solid $icons;
+
+  &__active {
+    border-color: $elements;
+  }
+
+  &:hover {
+    border-color: $main;
+  }
+
+  &__icon {
+    transform: translateY(3px);
+  }
+}

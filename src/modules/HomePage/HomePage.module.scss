@@ -1,3 +1,21 @@
 .container {
   @extend %container;
 }
+
+.content {
+  @extend %container;
+
+  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    margin-top: 64px;
+  }
+
+  @media (max-width: 425px) {
+    margin-top: 56px;
+  }
+
+  & > section {
+    margin-bottom: 80px;
+  }
+}

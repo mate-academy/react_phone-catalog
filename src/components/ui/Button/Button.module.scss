@@ -1,0 +1,24 @@
+.button {
+  @extend %hover-transition;
+
+  width: 100%;
+  height: 40px;
+  background: $main;
+  border: 1px solid $main;
+
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  font-weight: 400;
+  color: $white;
+
+  &__active {
+    background: $white;
+    color: $green;
+    border-color: $elements;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}

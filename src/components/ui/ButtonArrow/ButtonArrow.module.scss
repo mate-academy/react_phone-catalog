@@ -1,0 +1,36 @@
+.button {
+  @extend %hover-transition;
+
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $elements;
+  background: $white;
+
+  &__disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: $main;
+    background: $hover;
+  }
+
+  &__icon {
+    &_up {
+      transform: rotate(0);
+    }
+    &_right {
+      transform: rotate(90deg);
+    }
+    &_down {
+      transform: rotate(180deg);
+    }
+    &_left {
+      transform: rotate(270deg);
+    }
+  }
+}

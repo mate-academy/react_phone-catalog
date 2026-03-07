@@ -1,4 +1,5 @@
 import { Preview } from '../../components/layout/Preview';
+import { ProductColection } from '../../components/layout/ProductColection';
 import { PageTitle } from '../../components/ui/PageTitle';
 import styles from './HomePage.module.scss';
 
@@ -11,7 +12,9 @@ export const HomePage = () => {
         <PageTitle>Welcome to Nice Gadgets store!</PageTitle>
       </div>
       <Preview images={images} />
-      <div className={styles.container}></div>
+      <div className={styles.content}>
+        <ProductColection />
+      </div>
     </>
   );
 };

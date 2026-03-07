@@ -1,0 +1,13 @@
+.section {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__arrows {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+}
