@@ -36,6 +36,7 @@
     align-items: center;
 
     cursor: pointer;
+
     @include hover-transition(color);
 
     @include hover {

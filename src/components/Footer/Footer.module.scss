@@ -59,6 +59,34 @@
     }
   }
 
+  &__backText {
+    color: var(--text-secondary);
+
+    @include small-text;
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-main);
+    }
+  }
+
+  &__backIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+    padding: 8px;
+
+    @include hover-transition(border-color);
+
+    &:hover {
+      border-color: var(--text-main);
+    }
+  }
+
   &__backButton {
     background: transparent;
     border: none;
@@ -85,34 +113,6 @@
       .footer__backText {
         color: var(--text-main);
       }
-    }
-  }
-
-  &__backText {
-    color: var(--text-secondary);
-
-    @include small-text;
-    @include hover-transition(color);
-
-    @include hover {
-      color: var(--text-main);
-    }
-  }
-
-  &__backIcon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    box-sizing: border-box;
-    padding: 8px;
-
-    @include hover-transition(border-color);
-
-    &:hover {
-      border-color: var(--text-main);
     }
   }
 }

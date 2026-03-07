@@ -28,7 +28,6 @@
     cursor: pointer;
 
     @include hover-transition(color);
-
     @include small-text;
 
     @include hover {
