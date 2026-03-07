@@ -10,7 +10,7 @@ export const ShopByCategory: React.FC = () => {
   const categories: Category[] = [
     {
       name: 'Mobile phones',
-      src: '/img/category-phones.png',
+      src: 'img/category-phones.png',
       alt: 'Phones category',
       link: PathType.PHONES,
       quantity: counts[CategoriesType.PHONES],
@@ -18,7 +18,7 @@ export const ShopByCategory: React.FC = () => {
     },
     {
       name: 'Tablets',
-      src: '/img/category-tablets.png',
+      src: 'img/category-tablets.png',
       alt: 'Tablets category',
       link: PathType.TABLETS,
       quantity: counts[CategoriesType.TABLETS],
@@ -26,7 +26,7 @@ export const ShopByCategory: React.FC = () => {
     },
     {
       name: 'Accessories',
-      src: '/img/category-accessories.png',
+      src: 'img/category-accessories.png',
       alt: 'Accessories category',
       link: PathType.ACCESSORIES,
       quantity: counts[CategoriesType.ACCESSORIES],
