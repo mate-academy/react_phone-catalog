@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+*,
+*::before, // обясни что это значит 
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-sm; // выбрала то что body text основной или на что орентироваться
+  color: $color-primary;
+  background-color: $color-bg;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
