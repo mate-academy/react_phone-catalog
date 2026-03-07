@@ -12,6 +12,7 @@ import { ProductCatalogAPI } from '../../types';
 import FavoritesHurt from '/img/FavoritesHurt.png';
 import FavoritesHurtActive from '../../UI/Buttons/Icons/FavoritesHurtActive.svg';
 import { addToCart } from '../../store/slices/cartSlice';
+import { getColor } from '../../hooks/useColorsMap';
 
 const ItemCardShortDetail = ({
   product,
@@ -65,7 +66,7 @@ const ItemCardShortDetail = ({
     setSelectedCapacity(capacity);
 
     // Використовуємо новий capacity
-    const capacitySlug = capacity.toLowerCase(); // залишаємо GB
+    const capacitySlug = capacity.toLowerCase();
 
     navigate(
       `/product/${product.category}/${product.namespaceId}-${capacitySlug}-${product.color}`,
@@ -148,7 +149,7 @@ const ItemCardShortDetail = ({
                 <button
                   onClick={() => handleColorChange(color)}
                   className={styles.itemCardShortDetail__color_available_link}
-                  style={{ background: color }}
+                  style={{ backgroundColor: getColor(color) }}
                 />
               </div>
             ))}

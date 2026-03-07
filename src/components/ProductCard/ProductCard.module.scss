@@ -19,7 +19,6 @@
   transition: all 0.3s ease-in;
 
   &:hover {
-    scale: 1.02;
     border: 1px solid vars.$primary-color;
     box-shadow: vars.$shadow;
   }
@@ -82,7 +81,7 @@
 
     font-size: 22px;
     font-weight: 800;
-    font-style: vars.$font-primary;
+    font-family: vars.$font-primary;
     color: vars.$primary-color;
     text-align: left;
 

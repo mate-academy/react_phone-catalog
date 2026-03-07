@@ -129,9 +129,6 @@ const ProductСarousel: React.FC<ProductCarouselProps> = ({
                 <div
                   key={`${product.id}-${idx}`}
                   className={styles.productSlide}
-                  style={{
-                    width: `${100 / (listSource.length / itemsPerPage)}%`,
-                  }}
                 >
                   <ProductCard product={product} hotPrice={hotPrice} />
                 </div>
