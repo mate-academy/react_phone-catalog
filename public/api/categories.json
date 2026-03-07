@@ -6,7 +6,7 @@
     "img": "img/category-phones.webp",
     "path": "/phones",
     "count": 95,
-    "banner": "img/banner-phones.png",
+    "banner": "/img/banner-phones.png",
     "bannerAlt": "Newest phones"
   },
   {
@@ -15,7 +15,7 @@
     "img": "img/category-tablets.webp",
     "path": "/tablets",
     "count": 24,
-    "banner": "img/banner-tablets.png",
+    "banner": "/img/banner-tablets.png",
     "bannerAlt": "Powerful tablets"
   },
   {
@@ -24,7 +24,7 @@
     "img": "img/category-accessories.webp",
     "path": "/accessories",
     "count": 100,
-    "banner": "img/banner-accessories.png",
+    "banner": "/img/banner-accessories.png",
     "bannerAlt": "Cool accessories"
   }
 ]
