@@ -11,7 +11,7 @@ import { ProductCatalogAPI } from '../../types';
 
 import FavoritesHurt from '/img/FavoritesHurt.png';
 import FavoritesHurtActive from '../../UI/Buttons/Icons/FavoritesHurtActive.svg';
-import { addToCart } from '../../store/slices/cartSlice';
+import { addToCart, removeFromCart } from '../../store/slices/cartSlice';
 import { getColor } from '../../hooks/useColorsMap';
 
 const ItemCardShortDetail = ({
@@ -97,18 +97,20 @@ const ItemCardShortDetail = ({
   }
 
   const handleAddToCart = () => {
-    dispatch(
-      addToCart({
-        itemId: product.id,
-        image: product.images[0],
-        category: product.category,
-        name: product.name,
-        price: product.priceRegular,
-        quantity: 1,
-      }),
-    );
-
-    navigate('/cart');
+    if (cart.find(item => item.itemId === product.id)) {
+      dispatch(removeFromCart(product.id));
+    } else {
+      dispatch(
+        addToCart({
+          itemId: product.id,
+          image: product.images[0],
+          category: product.category,
+          name: product.name,
+          price: product.priceRegular,
+          quantity: 1,
+        }),
+      );
+    }
   };
 
   const handleAddFavorite = (e: React.MouseEvent) => {
