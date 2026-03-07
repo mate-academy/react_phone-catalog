@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { CatalogProducts } from '../../types/Types';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsList.module.scss';

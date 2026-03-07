@@ -1,8 +1,8 @@
 import React from 'react';
 import { PathType, Product } from '../../../types/Types';
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from './ColorSelector.module.scss';
 import { getColorHex } from '../../../utils/helpers';
+import styles from './ColorSelector.module.scss';
 
 interface ColorSelectorProps {
   product: Product;
@@ -57,7 +57,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ product }) => {
           })}
         </div>
       </div>
-      <span className={styles.colorSelector__id}>{product.id}</span>
+      <span className={styles.colorSelector__id}>{product.namespaceId}</span>
     </div>
   );
 };

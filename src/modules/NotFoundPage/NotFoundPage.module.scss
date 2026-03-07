@@ -18,9 +18,9 @@
   }
 
   &__emptyText {
-    @include h2;
-
     color: var(--text-main);
+
+    @include h2;
   }
 
   &__emptyImage {
@@ -35,11 +35,10 @@
     justify-content: center;
     align-items: center;
 
-    &:hover {
-      cursor: pointer;
+    cursor: pointer;
+    @include hover-transition(color);
 
-      @include hover-transition(color);
-
+    @include hover {
       color: var(--text-secondary);
     }
   }

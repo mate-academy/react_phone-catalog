@@ -1,12 +1,11 @@
 import React from 'react';
-
-import styles from './CartItem.module.scss';
 import { MinusIcon } from '../../../components/ui/MinusIcon';
 import { PlusIcon } from '../../../components/ui/PlusIcon';
 import { CloseIcon } from '../../../components/ui/CloseIcon';
 import { CartItemInterface, useCart } from '../../../context/CartContext';
 import { Link } from 'react-router-dom';
 import { PathType } from '../../../types/Types';
+import styles from './CartItem.module.scss';
 
 interface CartItemProps {
   item: CartItemInterface;
@@ -17,9 +16,12 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
   const handleIncrease = () =>
     updateQuantity(item.product.id, item.quantity + 1);
+
   const handleDecrease = () =>
     updateQuantity(item.product.id, item.quantity - 1);
+
   const handleRemove = () => removeFromCart(item.product.id);
+
   const handleTotalPrice = () => item.product.price * item.quantity;
 
   return (

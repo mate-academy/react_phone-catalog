@@ -29,7 +29,7 @@ $dt-accent: #8970ef; // Purple accent (Primary Button in dark theme)
   --btn-bg: #{$lt-primary};
   --btn-text: #{$lt-white};
   --icon-color: #{$lt-icons};
-  --accent: #{$lt-primary}; // In a light theme, the accent is black.
+  --accent: #{$lt-primary};
 }
 
 [data-theme='dark'] {
@@ -38,16 +38,14 @@ $dt-accent: #8970ef; // Purple accent (Primary Button in dark theme)
   --text-main: #{$dt-white};
   --text-secondary: #{$dt-secondary};
   --border: #{$dt-elements};
-  --btn-bg: #{$dt-accent}; // In the dark theme, the buttons are purple.
+  --btn-bg: #{$dt-accent};
   --btn-text: #{$dt-white};
   --icon-color: #{$dt-icons};
   --accent: #{$dt-accent};
 }
 
 $breakpoints: (
-  "tablet": 640px,
-  "desktop": 1200px,
+  'tablet': 640px,
+  'tablet-md': 768px,
+  'desktop': 1200px,
 );
-
-/* --- GRID LAYOUT--- */
-$grid-gap: 16px;

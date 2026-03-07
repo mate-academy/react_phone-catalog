@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PathType } from '../../types/Types';
-import styles from './NotFoundPage.module.scss';
 import noFoundPageImage from '../../../public/img/page-not-found.png';
+import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage: React.FC = () => {
   return (

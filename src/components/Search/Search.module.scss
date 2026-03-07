@@ -6,8 +6,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 180px;
   max-width: 200px;
+  margin: 0 8px;
 
   &__input {
     @include body-text;
@@ -27,7 +28,8 @@
       text-transform: capitalize;
     }
 
-    &:focus {
+    &:focus,
+    &:hover {
       border-color: var(--text-main);
     }
   }
@@ -45,13 +47,12 @@
     cursor: pointer;
     color: var(--text-secondary);
 
-    @include hover-transition(color);
+    @include hover-transition(color, transform);
 
-    &:hover {
-      @include hover-image-scale;
-
+    @include hover {
       color: var(--text-main);
     }
 
+    @include hover-image-scale;
   }
 }

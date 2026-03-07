@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { useMenuCloseOnResize } from '../../hooks/useMenuCloseOnResize';
 import { Logo } from '../Logo';
@@ -11,11 +10,11 @@ import { BurgerMenu } from '../BurgerMenu';
 import { CloseIcon } from '../ui/CloseIcon';
 import { MenuIcon } from '../ui/MenuIcon';
 import { ThemeToggler } from '../ui/ThemeToggler';
-import styles from './Header.module.scss';
 import { PathType } from '../../types/Types';
 import { Search } from '../Search';
 import { useFavourites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
+import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +29,11 @@ export const Header: React.FC = () => {
   );
 
   const favouritesCount = favourites.length;
+
+  const getIconLinkClass = ({ isActive }: { isActive: boolean }) =>
+    [styles.header__iconLink, isActive ? styles.active : '']
+      .filter(Boolean)
+      .join(' ');
 
   useLockBodyScroll(isMenuOpen);
   useMenuCloseOnResize(isMenuOpen, closeMenu);
@@ -46,10 +50,7 @@ export const Header: React.FC = () => {
           <Search />
           <div className={styles.header__actions}>
             <ThemeToggler />
-            <NavLink
-              to={PathType.FAVOURITES}
-              className={styles.header__iconLink}
-            >
+            <NavLink to={PathType.FAVOURITES} className={getIconLinkClass}>
               <div className={styles.header__iconContainer}>
                 <FavouriteIcon className={styles.header__icon} />
                 {favouritesCount > 0 && (
@@ -59,7 +60,7 @@ export const Header: React.FC = () => {
                 )}
               </div>
             </NavLink>
-            <NavLink to={PathType.CART} className={styles.header__iconLink}>
+            <NavLink to={PathType.CART} className={getIconLinkClass}>
               <div className={styles.header__iconContainer}>
                 <CartIcon className={styles.header__icon} />
                 {cartItemsCount > 0 && (

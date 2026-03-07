@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { Logo } from '../Logo';
-import arrowUp from '../../assets/icons/back-to-top.svg';
+import { ArrowUpIcon } from '../ui/ArrowUpIcon';
 import styles from './Footer.module.scss';
 import {
   CONTACTS_ORIGIN_REPO,
@@ -54,12 +53,9 @@ export const Footer: React.FC = () => {
           aria-label="Back to top"
         >
           <span className={styles.footer__backText}>Back to top</span>
-          <img
-            src={arrowUp}
-            className={styles.footer__backIcon}
-            alt="top"
-            aria-hidden="true"
-          />
+          <div className={styles.footer__backIcon}>
+            <ArrowUpIcon />
+          </div>
         </button>
       </div>
     </footer>

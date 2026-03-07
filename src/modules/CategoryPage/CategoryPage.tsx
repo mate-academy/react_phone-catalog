@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
 import { Catalog } from '../../components/Catalog';
 import { CatalogProducts, CategoriesType } from '../../types/Types';
 import { getAccessories, getPhones, getTablets } from '../../api/products';

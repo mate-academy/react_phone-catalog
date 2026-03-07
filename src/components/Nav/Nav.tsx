@@ -1,8 +1,7 @@
 import React from 'react';
-
 import { NavLink } from 'react-router-dom';
-import styles from './Nav.module.scss';
 import { PathType } from '../../types/Types';
+import styles from './Nav.module.scss';
 
 interface NavProps {
   className?: string;
@@ -17,8 +16,8 @@ export const Nav: React.FC<NavProps> = ({
   linkClassName = '',
   onClick,
 }) => {
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    [styles.nav__link, linkClassName, isActive ? 'active' : '']
+  const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
+    [styles.nav__link, linkClassName, isActive ? styles.active : '']
       .filter(Boolean)
       .join(' ');
 
@@ -28,14 +27,18 @@ export const Nav: React.FC<NavProps> = ({
         className={[styles.nav__list, listClassName].filter(Boolean).join(' ')}
       >
         <li className={styles.nav__item}>
-          <NavLink to="/" className={getLinkClass} onClick={onClick}>
+          <NavLink
+            to={PathType.HOME}
+            className={getActiveLinkClass}
+            onClick={onClick}
+          >
             Home
           </NavLink>
         </li>
         <li className={styles.nav__item}>
           <NavLink
             to={PathType.PHONES}
-            className={getLinkClass}
+            className={getActiveLinkClass}
             onClick={onClick}
           >
             Phones
@@ -44,7 +47,7 @@ export const Nav: React.FC<NavProps> = ({
         <li className={styles.nav__item}>
           <NavLink
             to={PathType.TABLETS}
-            className={getLinkClass}
+            className={getActiveLinkClass}
             onClick={onClick}
           >
             Tablets
@@ -53,7 +56,7 @@ export const Nav: React.FC<NavProps> = ({
         <li className={styles.nav__item}>
           <NavLink
             to={PathType.ACCESSORIES}
-            className={getLinkClass}
+            className={getActiveLinkClass}
             onClick={onClick}
           >
             Accessories

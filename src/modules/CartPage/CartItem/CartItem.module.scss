@@ -64,7 +64,7 @@
     @include body-text;
     @include hover-transition(color);
 
-    &:hover {
+    @include hover {
       color: var(--text-secondary);
     }
   }

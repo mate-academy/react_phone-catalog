@@ -10,7 +10,6 @@
   &__list {
     display: flex;
     gap: 8px;
-    list-style: none;
     padding-bottom: 64px;
     margin: 0;
 
@@ -20,8 +19,6 @@
   }
 
   &__item {
-
-
     &:first-child {
       margin-right: 8px;
     }
@@ -50,8 +47,10 @@
         cursor: not-allowed;
       }
 
-      &:hover:not(:disabled) {
-        border-color: var(--accent);
+      @include hover {
+        &:not(:disabled) {
+          border-color: var(--accent);
+        }
       }
 
       &.isActive {

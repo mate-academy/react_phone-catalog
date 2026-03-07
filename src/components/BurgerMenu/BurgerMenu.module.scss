@@ -69,7 +69,7 @@
     align-items: center;
     box-sizing: border-box;
     height: 100%;
-    color: var(--accent);
+    color: var(--btn-text);
 
     &:first-child {
       border-right: 1px solid var(--border);
@@ -91,9 +91,8 @@
       @include hover-transition;
     }
 
-    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-    &:global(.active) {
-      color: var(--text-main);
+    &.active {
+      color: var(--btn-text);
 
       &::after {
         transform: scaleX(1);

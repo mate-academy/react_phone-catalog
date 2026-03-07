@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react';
-
 import { ProductsList } from '../../components/ProductsList';
 import { useFavourites } from '../../context/FavoritesContext';
-import styles from './FavouritesPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
+import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage: React.FC = () => {
   const { favourites } = useFavourites();

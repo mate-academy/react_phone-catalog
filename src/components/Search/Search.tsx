@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
 import { useLocation } from 'react-router-dom';
 import { useDebounce } from '../../hooks/useDebounce';
-import styles from './Search.module.scss';
 import { SearchIcon } from '../ui/SearchIcon';
 import { CloseIcon } from '../ui/CloseIcon';
+import styles from './Search.module.scss';
 
 export const Search: React.FC = () => {
   const { query, handleQueryChange } = useCatalogParams();

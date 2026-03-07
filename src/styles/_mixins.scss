@@ -8,12 +8,10 @@
   }
 }
 
-// Mixin for basic smooth transition (can be applied to buttons, links, etc.)
 @mixin hover-transition($property: all, $duration: 0.3s, $timing: ease-in-out) {
   transition: $property $duration $timing;
 }
 
-// Mixin to increase image links by 10% on hover
 @mixin hover-image-scale {
   @include hover-transition(transform);
 
@@ -26,8 +24,6 @@
   }
 }
 
-// It is also convenient to have a common mixin for hover effects on the desktop
-// so that hover does not work on mobile devices when tapped
 @mixin hover {
   @media (hover: hover) {
     &:hover {
@@ -53,7 +49,7 @@
 
 @mixin page-grid {
   display: grid;
-  gap: $grid-gap;
+  gap: 16px;
   grid-template-columns: repeat(4, 1fr);
 
   @include respond-to('tablet') {

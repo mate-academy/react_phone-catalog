@@ -12,6 +12,12 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import noProductsMatching from '../../../public/img/product-not-found.png';
 import styles from './Catalog.module.scss';
 
+const EMPTY_MESSAGES: Record<string, string> = {
+  'Mobile phones': 'There are no phones yet',
+  Tablets: 'There are no tablets yet',
+  Accessories: 'There are no accessories yet',
+};
+
 interface CatalogProps {
   title: string;
   products: CatalogProducts[];
@@ -62,19 +68,8 @@ export const Catalog: React.FC<CatalogProps> = ({
     return getPaginatedProducts(sortedProducts, page, perPage);
   }, [sort, page, perPage, filteredProducts]);
 
-  const getEmptyStateMessage = () => {
-    switch (title) {
-      case 'Mobile phones':
-        return 'There are no phones yet';
-      case 'Tablets':
-        return 'There are no tablets yet';
-      case 'Accessories':
-        return 'There are no accessories yet';
-      default:
-        return 'There are no products yet';
-    }
-  };
-
+  const emptyStateMessage =
+    EMPTY_MESSAGES[title] || 'There are no products yet';
   const noResultsMessage = `There are no ${title.toLowerCase()} matching ${query}`;
 
   return (
@@ -82,7 +77,7 @@ export const Catalog: React.FC<CatalogProps> = ({
       {isLoading && <Loader />}
 
       {errorMessage && (
-        <div className={styles.error}>
+        <div className={styles.catalog__error}>
           {errorMessage}{' '}
           <button onClick={onReload} type="button">
             Retry
@@ -102,7 +97,7 @@ export const Catalog: React.FC<CatalogProps> = ({
 
           {products.length === 0 ? (
             <div className={styles.catalog__empty}>
-              <h2>{getEmptyStateMessage()}</h2>
+              <h2>{emptyStateMessage}</h2>
             </div>
           ) : filteredProducts.length === 0 ? (
             <div className={styles.catalog__emptyContent}>

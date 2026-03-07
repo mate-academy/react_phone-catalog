@@ -3,12 +3,14 @@
 @import '../../styles/typography';
 
 .breadcrumbs {
+  margin-top: 24px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
   grid-column: 1 / -1;
 
-  @include respond-to('desktop') {
+  @include respond-to('tablet') {
     margin-bottom: 40px;
   }
 
@@ -16,6 +18,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    color: var(--text-main);
 
     @include hover-transition(color);
 
@@ -34,7 +37,7 @@
     @include hover-transition(color);
 
     @include hover {
-      color: var(--text-secondary);
+      color: var(--text-main);
     }
 
     &::first-letter {
@@ -45,14 +48,16 @@
   &__separator {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     color: var(--icon-color);
   }
 
+  &__link,
   &__current {
     @include small-text;
 
     font-weight: 600;
     color: var(--text-secondary);
-    cursor: default;
+    line-height: 1;
   }
 }

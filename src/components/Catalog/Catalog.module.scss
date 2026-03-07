@@ -3,11 +3,11 @@
 @import '../../styles/typography';
 
 .catalog {
-  @include page-container;
-  @include page-grid;
-
   margin-top: 24px;
   row-gap: 24px;
+
+  @include page-container;
+  @include page-grid;
 
   &__header,
   &__controls,
@@ -28,17 +28,17 @@
   }
 
   &__count {
-    @include body-text;
-
     color: var(--text-secondary);
+
+    @include body-text;
   }
 
   &__controls {
-    @include page-grid;
-
     grid-column: 1 / -1;
     margin-bottom: 24px;
     gap: 16px;
+
+    @include page-grid;
   }
 
   &__dropdown {
@@ -90,9 +90,9 @@
   }
 
   &__emptyText {
-    @include h2;
-
     color: var(--text-main);
+
+    @include h2;
   }
 
   &__emptyImage {
@@ -100,6 +100,5 @@
     max-width: 300px;
     height: auto;
     object-fit: contain;
-    align-items:end;
   }
 }

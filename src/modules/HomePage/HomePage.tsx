@@ -1,12 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
-
-import styles from './HomePage.module.scss';
 import { Hero } from './Hero';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { HotPrices } from '../../components/HotPrices';
 import { CatalogProducts } from '../../types/Types';
 import { getProducts } from '../../api/products';
+import styles from './HomePage.module.scss';
 
 export const HomePage: React.FC = () => {
   const [products, setProducts] = useState<CatalogProducts[]>([]);

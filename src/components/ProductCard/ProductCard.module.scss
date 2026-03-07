@@ -187,7 +187,7 @@
   &__icon {
     display: block;
     fill: none;
-    stroke: var(--icon-color);
+    color: var(--text-main);
 
     @include hover-image-scale;
   }

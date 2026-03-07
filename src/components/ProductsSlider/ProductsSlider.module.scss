@@ -24,14 +24,14 @@
   }
 
   &__title {
-    @include h2;
-
     color: var(--text-main);
+
+    @include h2;
   }
 
   &__buttons {
     display: flex;
-    gap: $grid-gap;
+    gap: 16px;
   }
 
   &__button {
@@ -60,7 +60,7 @@
 
   &__list {
     display: flex;
-    gap: $grid-gap;
+    gap: 16px;
     overflow: auto visible;
     scroll-behavior: smooth;
 

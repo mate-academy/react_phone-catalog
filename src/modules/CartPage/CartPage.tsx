@@ -1,12 +1,11 @@
 import React from 'react';
-
-import styles from './CartPage.module.scss';
 import { CartItem } from './CartItem';
 import { CartTotal } from './CartTotal';
 import { useCart } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon } from '../../components/ui/ArrowLeftIcon';
 import cartIsEmpty from '../../../public/img/cart-is-empty.png';
+import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
   const { cartItems } = useCart();

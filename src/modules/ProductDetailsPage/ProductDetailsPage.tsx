@@ -1,12 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { CatalogProducts, Product } from '../../types/Types';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  getProductById,
-  getProducts,
-  getSuggestedProducts,
-} from '../../api/products';
-import styles from './ProductDetailsPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductGallery } from './ProductGallery';
@@ -18,72 +11,32 @@ import { ArrowLeftIcon } from '../../components/ui/ArrowLeftIcon';
 import { useFavourites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
 import { FavouriteIcon } from '../../components/ui/FavouriteIcon';
+import { useProductDetails } from '../../hooks/useProductDetails';
 // eslint-disable-next-line prettier/prettier
 import {
   FavouriteIconSelected
 } from '../../components/ui/FavouriteIconSelected';
 import classNames from 'classnames';
+import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage: React.FC = () => {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [catalogProduct, setCatalogProduct] = useState<CatalogProducts | null>(
-    null,
-  );
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
-  const [selectedImage, setSelectedImage] = useState<string>('');
-  const [suggestedProducts, setSuggestedProducts] = useState<CatalogProducts[]>(
-    [],
-  );
-
   const { productId } = useParams<{
     productId: string;
   }>();
+
+  const {
+    product,
+    catalogProduct,
+    isLoading,
+    errorMessage,
+    selectedImage,
+    setSelectedImage,
+    suggestedProducts,
+  } = useProductDetails(productId);
+
   const navigate = useNavigate();
   const { addToCart, isInCart } = useCart();
   const { toggleFavourite, isFavourite } = useFavourites();
-
-  const fetchProducts = useCallback(async () => {
-    if (!productId) {
-      return;
-    }
-
-    setIsLoading(true);
-    setErrorMessage('');
-
-    try {
-      const allProducts = await getProducts();
-
-      const match = allProducts.find(prod => prod.itemId === productId);
-
-      if (!match) {
-        throw new Error('Product not found in catalog');
-      }
-
-      setCatalogProduct(match);
-
-      const data = await getProductById(match.category, productId);
-
-      if (!data) {
-        throw new Error('No product information found');
-      }
-
-      setProduct(data);
-      setSelectedImage(data.images[0] || '');
-
-      const suggested = await getSuggestedProducts();
-
-      setSuggestedProducts(suggested);
-    } catch (error) {
-      setErrorMessage('Product was not found.');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [productId]);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
 
   const isAdded = catalogProduct ? isInCart(catalogProduct.id) : false;
   const isActiveFavourite = catalogProduct

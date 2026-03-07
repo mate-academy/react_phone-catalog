@@ -3,25 +3,25 @@
 @import '../../styles/typography';
 
 .category {
-  @include page-container;
-
   margin-bottom: 56px;
+
+  @include page-container;
 
   @include respond-to('desktop') {
     margin-bottom: 80px;
   }
 
   &__title {
-    @include h2;
-
     color: var(--text-main);
     margin-bottom: 24px;
+
+    @include h2;
   }
 
   &__items {
-    @include page-grid;
-
     gap: 32px;
+
+    @include page-grid;
   }
 
   &__item {
@@ -57,10 +57,9 @@
 
   &__image {
     position: absolute;
+    object-fit: contain;
 
     @include hover-image-scale;
-
-    object-fit: contain;
   }
 
   &__imageLink--phones &__image {
@@ -91,16 +90,16 @@
   }
 
   &__name {
-    @include h4;
-
     color: var(--text-main);
     margin-bottom: 4px;
+
+    @include h4;
   }
 
   &__quantity {
-    @include body-text;
-
     color: var(--text-secondary);
     display: block;
+
+    @include body-text;
   }
 }

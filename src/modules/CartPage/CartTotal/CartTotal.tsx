@@ -1,7 +1,6 @@
 import React from 'react';
-
-import styles from './CartTotal.module.scss';
 import { useCart } from '../../../context/CartContext';
+import styles from './CartTotal.module.scss';
 
 export const CartTotal: React.FC = () => {
   const { cartItems, clearCart } = useCart();

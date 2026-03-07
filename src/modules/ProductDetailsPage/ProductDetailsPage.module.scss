@@ -3,10 +3,10 @@
 @import '../../styles/typography';
 
 .details {
-  @include page-container;
-
   margin-top: 24px;
   padding-bottom: 56px;
+
+  @include page-container;
 
   @include respond-to('tablet') {
     padding-bottom: 64px;
@@ -17,21 +17,18 @@
   }
 
   &__back {
-    @include small-text;
-
     display: inline-flex;
     align-items: center;
     gap: 4px;
-
     margin: 24px 0 16px;
     padding: 0;
     line-height: 1;
-
     border: none;
     background: transparent;
     color: var(--text-secondary);
     cursor: pointer;
 
+    @include small-text;
     @include hover-transition(color);
 
     @include hover {
@@ -40,9 +37,9 @@
   }
 
   &__title {
-    @include h2;
-
     color: var(--text-main);
+
+    @include h2;
 
     @include respond-to('tablet') {
       margin-bottom: 40px;
@@ -98,9 +95,9 @@
   }
 
   &__price {
-    @include h2;
-
     color: var(--text-main);
+
+    @include h2;
   }
 
   &__fullPrice {
@@ -120,7 +117,6 @@
   &__actionAddButton {
     flex: 1;
     height: 48px;
-
     background-color: var(--btn-bg);
     color: var(--btn-text);
     border: 1px solid var(--btn-bg);
@@ -151,7 +147,6 @@
     flex-shrink: 0;
     width: 48px;
     height: 48px;
-
     background: transparent;
     border: 1px solid var(--icon-color);
     cursor: pointer;
@@ -172,10 +167,10 @@
   }
 
   &__bottom {
-    @include page-grid;
-
     row-gap: 56px;
     margin-bottom: 56px;
+
+    @include page-grid;
 
     @include respond-to('desktop') {
       row-gap: 0;
@@ -186,7 +181,6 @@
   &__about {
     display: flex;
     flex-direction: column;
-
     grid-column: span 4;
 
     @include respond-to('tablet') {
@@ -199,10 +193,10 @@
   }
 
   &__aboutTitle {
-    @include h3;
-
     margin-bottom: 16px;
     color: var(--text-main);
+
+    @include h3;
   }
 
   &__aboutDivider {
@@ -224,9 +218,9 @@
   }
 
   &__articleTitle {
-    @include h4;
-
     color: var(--text-main);
+
+    @include h4;
   }
 
   &__articleText {
@@ -236,10 +230,9 @@
   }
 
   &__paragraph {
-    @include body-text;
-
-    margin: 0;
     color: var(--text-secondary);
+
+    @include body-text;
   }
 
   &__specs {
@@ -255,9 +248,9 @@
   }
 
   &__specsTitle {
-    @include h3;
-
     margin-bottom: 16px;
+
+    @include h3;
   }
 
   &__specsDivider {

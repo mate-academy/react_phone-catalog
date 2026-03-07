@@ -1,9 +1,8 @@
 import React from 'react';
-
-import styles from './Breadcrumbs.module.scss';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from '../ui/ArrowRightIcon';
 import { HomeIcon } from '../ui/HomeIcon';
+import styles from './Breadcrumbs.module.scss';
 
 interface BreadcrumbsProps {
   category?: string | undefined;
@@ -29,7 +28,9 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
       {category && (
         <>
-          <ArrowRightIcon />
+          <span className={styles.breadcrumbs__separator}>
+            <ArrowRightIcon />
+          </span>
           <Link to={`/${category}`} className={styles.breadcrumbs__link}>
             {categoryLabels[category] || category}
           </Link>
@@ -38,7 +39,9 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
       {productName && (
         <>
-          <ArrowRightIcon />
+          <span className={styles.breadcrumbs__separator}>
+            <ArrowRightIcon />
+          </span>
           <span className={styles.breadcrumbs__current}>{productName}</span>
         </>
       )}

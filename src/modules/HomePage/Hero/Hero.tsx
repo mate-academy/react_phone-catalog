@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
-import styles from './Hero.module.scss';
-import classNames from 'classnames';
 import { ArrowLeftIcon } from '../../../components/ui/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../../components/ui/ArrowRightIcon';
 import { useSwipe } from '../../../hooks/useSwipe';
+import classNames from 'classnames';
+import styles from './Hero.module.scss';
 
 const banners = [
   '/img/banner-accessories.png',

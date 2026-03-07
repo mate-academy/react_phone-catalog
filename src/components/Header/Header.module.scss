@@ -35,12 +35,13 @@
     height: 100%;
     padding: 0 16px;
     text-decoration: none;
+    flex-shrink: 0;
+
+    @include hover-image-scale;
 
     @include respond-to('desktop') {
       padding-left: 32px;
     }
-
-    @include hover-image-scale;
   }
 
   &__nav {
@@ -59,6 +60,7 @@
 
   &__actions {
     display: none;
+    flex-shrink: 0;
 
     @include respond-to('tablet') {
       display: flex;
@@ -91,14 +93,12 @@
       background-color: var(--accent);
 
       transform: scaleX(0);
-
       transform-origin: left;
 
       @include hover-transition;
     }
 
-    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-    &:global(.active) {
+    &.active {
       color: var(--text-main);
 
       &::after {
@@ -121,7 +121,7 @@
     background: transparent;
     border: none;
     border-left: 1px solid var(--border);
-    color: var(--accent);
+    color: var(--text-main);
     cursor: pointer;
     padding: 0;
 
@@ -135,7 +135,6 @@
     height: 100%;
     border-left: 1px solid var(--border);
     box-sizing: border-box;
-
     margin-left: auto;
 
     @include respond-to('desktop') {

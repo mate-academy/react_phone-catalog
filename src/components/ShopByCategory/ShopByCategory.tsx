@@ -1,9 +1,8 @@
 import React from 'react';
-import styles from './ShopByCategory.module.scss';
 import { NavLink } from 'react-router-dom';
-
 import { CategoriesType, Category, PathType } from '../../types/Types';
 import { useCategoryCounts } from '../../hooks/useCategoryCounts';
+import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory: React.FC = () => {
   const counts = useCategoryCounts();

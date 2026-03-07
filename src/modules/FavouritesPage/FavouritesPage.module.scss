@@ -3,22 +3,22 @@
 @import '../../styles/typography';
 
 .favourites {
-  @include page-container;
-
   margin-top: 24px;
 
-  &__title {
-    @include h1;
+  @include page-container;
 
+  &__title {
     color: var(--text-main);
     margin-bottom: 8px;
+
+    @include h1;
   }
 
   &__quantity {
-    @include body-text;
-
     color: var(--text-secondary);
     margin-bottom: 32px;
+
+    @include body-text;
 
     @include respond-to('tablet') {
       margin-bottom: 40px;

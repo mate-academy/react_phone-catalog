@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ArrowLeftIcon } from '../ui/ArrowLeftIcon';
 import { ArrowRightIcon } from '../ui/ArrowRightIcon';
 import styles from './Pagination.module.scss';
@@ -15,7 +14,20 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const getVisiblePages = () => {
+    const visibleRange = 4;
+    let start = Math.max(1, currentPage - Math.floor(visibleRange / 2));
+    let end = start + visibleRange - 1;
+
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(1, end - visibleRange + 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+  };
+
+  const pages = getVisiblePages();
 
   return (
     <nav className={styles.pagination} aria-label="Pagination">

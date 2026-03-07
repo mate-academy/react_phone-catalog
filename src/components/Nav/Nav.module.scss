@@ -8,9 +8,7 @@
     align-items: center;
     gap: 32px;
     height: 100%;
-    margin: 0;
     padding: 0;
-    list-style: none;
 
     @include respond-to('desktop') {
       gap: 64px;
@@ -19,6 +17,7 @@
 
   &__link {
     @include uppercase-label;
+    @include hover-transition(color);
 
     position: relative;
     display: flex;
@@ -42,22 +41,18 @@
       background-color: var(--accent);
 
       transform: scaleX(0);
-
       transform-origin: left;
 
       @include hover-transition;
     }
 
-    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-    &:global(.active) {
+    &.active {
       color: var(--text-main);
 
       &::after {
         transform: scaleX(1);
       }
     }
-
-    @include hover-transition(color);
 
     @include hover {
       color: var(--text-main);

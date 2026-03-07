@@ -2,7 +2,11 @@
 
 import React from 'react';
 
-export const CloseIcon: React.FC = () => {
+interface CloseIconProps {
+  className?: string;
+}
+
+export const CloseIcon: React.FC<CloseIconProps> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,6 +14,7 @@ export const CloseIcon: React.FC = () => {
       height="16"
       viewBox="0 0 16 16"
       fill="none"
+      className={className}
     >
       <path
         fillRule="evenodd"

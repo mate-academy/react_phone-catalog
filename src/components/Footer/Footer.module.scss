@@ -9,11 +9,11 @@
   background-color: var(--page-bg);
 
   &__content {
-    @include page-container;
-
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include page-container;
 
     @include respond-to('tablet') {
       flex-direction: row;
@@ -33,9 +33,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-    list-style: none;
     padding: 0;
-    margin: 0;
 
     @include respond-to('tablet') {
       flex-direction: row;
@@ -49,12 +47,11 @@
   }
 
   &__link {
-    @include uppercase-label;
-
     display: block;
     color: var(--text-secondary);
     text-decoration: none;
 
+    @include uppercase-label;
     @include hover-transition(color);
 
     @include hover {
@@ -77,18 +74,24 @@
     gap: 16px;
     height: auto;
 
-    @include hover-image-scale;
-
     @include respond-to('tablet') {
       margin: 0;
+    }
+
+    &:hover {
+      .footer__backIcon {
+        border-color: var(--text-main);
+      }
+      .footer__backText {
+        color: var(--text-main);
+      }
     }
   }
 
   &__backText {
-    @include small-text;
-
     color: var(--text-secondary);
 
+    @include small-text;
     @include hover-transition(color);
 
     @include hover {
@@ -105,5 +108,11 @@
     border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
+
+    @include hover-transition(border-color);
+
+    &:hover {
+      border-color: var(--text-main);
+    }
   }
 }

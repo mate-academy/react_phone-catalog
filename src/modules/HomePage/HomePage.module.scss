@@ -11,11 +11,11 @@
   }
 
   &__title {
-    @include h2;
-
     max-width: 15ch;
     padding-top: 24px;
     grid-column: 1 / -1;
+
+    @include h2;
 
     @include respond-to('tablet') {
       grid-column: 1 / -8;
