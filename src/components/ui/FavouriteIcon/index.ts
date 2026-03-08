@@ -1,0 +1,1 @@
+export { FavouriteIcon } from './FavouriteIcon';

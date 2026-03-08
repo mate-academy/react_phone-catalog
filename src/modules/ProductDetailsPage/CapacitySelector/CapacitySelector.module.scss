@@ -1,0 +1,64 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/typography';
+
+.capacitySelector {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__availableCapacity {
+    @include small-text;
+
+    color: var(--text-secondary);
+  }
+
+  &__capacity {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  &__label {
+    @include body-text;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 56px;
+    height: 32px;
+    padding: 0 8px;
+    white-space: nowrap;
+
+    background: transparent;
+    border: 1px solid var(--icon-color);
+    color: var(--text-main);
+    cursor: pointer;
+
+    @include hover-transition(border-color);
+
+    @include hover {
+      border-color: var(--text-main);
+    }
+
+    &--active {
+      background: var(--text-main);
+      border-color: var(--text-main);
+      color: var(--page-bg);
+    }
+  }
+
+  &__radio {
+    @include radio-hidden;
+  }
+
+  &__visuallyHidden {
+    @include visually-hidden;
+  }
+}

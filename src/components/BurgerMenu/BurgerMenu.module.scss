@@ -1,0 +1,122 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.burger {
+  position: fixed;
+  inset: 48px 0 0;
+  background-color: var(--page-bg);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s linear,
+    visibility 0.4s;
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include respond-to('tablet') {
+    display: none;
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  &__nav {
+    width: 100%;
+  }
+
+  &__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: auto;
+  }
+
+  &__link {
+    display: inline-block;
+    height: auto;
+    padding-bottom: 8px;
+  }
+
+  &__footer {
+    display: flex;
+    height: 64px;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+  }
+
+  &__action {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    color: var(--btn-text);
+
+    &:first-child {
+      border-right: 1px solid var(--border);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent);
+
+      transform: scaleX(0);
+
+      transform-origin: left;
+
+      @include hover-transition;
+    }
+
+    &.active {
+      color: var(--btn-text);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__iconContainer {
+    position: relative;
+  }
+
+  &__counter {
+    box-sizing: border-box;
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    width: 14px;
+    height: 14px;
+
+    background: $cl-red;
+    border-radius: 50%;
+
+    font-size: 9px;
+    text-align: center;
+    color: $lt-white;
+  }
+}

@@ -1,0 +1,132 @@
+@import '../../../styles/variables';
+@import '../../../styles/typography';
+@import '../../../styles/mixins';
+
+.cart {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+
+    @include respond-to('tablet') {
+      flex-direction: row;
+      align-items: center;
+      padding: 24px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    @include respond-to('tablet') {
+      gap: 24px;
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+  &__itemImage {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    @include hover-image-scale;
+  }
+
+  &__buttonDelete {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    color: var(--icon-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-main);
+    }
+  }
+
+  &__itemTitle {
+    color: var(--text-main);
+
+    @include body-text;
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-secondary);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__quantityControl {
+    display: flex;
+    align-items: center;
+  }
+
+  &__buttonMinus {
+    color: var(--icon-color);
+  }
+
+  &__buttonPlus {
+    color: var(--text-main);
+  }
+
+  &__buttonMinus,
+  &__buttonPlus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid var(--border);
+    cursor: pointer;
+
+    @include hover-transition(border-color);
+
+    @include hover {
+      border-color: var(--text-main);
+    }
+
+    &:disabled {
+      color: var(--border);
+      cursor: not-allowed;
+      border-color: var(--border);
+    }
+  }
+
+  &__quantity {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    color: var(--text-main);
+
+    @include body-text;
+  }
+
+  &__price {
+    color: var(--text-main);
+
+    width: 100px;
+    text-align: right;
+
+    @include h3;
+  }
+}

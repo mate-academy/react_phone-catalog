@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    padding: 0;
+
+    @include respond-to('desktop') {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @include uppercase-label;
+    @include hover-transition(color);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    box-sizing: border-box;
+
+    @include respond-to('desktop') {
+      height: 64px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent);
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      @include hover-transition;
+    }
+
+    &.active {
+      color: var(--text-main);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    @include hover {
+      color: var(--text-main);
+    }
+  }
+}

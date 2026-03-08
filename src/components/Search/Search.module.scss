@@ -1,0 +1,58 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 180px;
+  max-width: 200px;
+  margin: 0 8px;
+
+  &__input {
+    @include body-text;
+
+    width: 100%;
+    height: 40px;
+
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    outline: none;
+
+    @include hover-transition(border-color);
+
+    &::placeholder {
+      color: var(--text-secondary);
+      text-transform: capitalize;
+    }
+
+    &:focus,
+    &:hover {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+
+    @include hover-transition(color, transform);
+
+    @include hover {
+      color: var(--text-main);
+    }
+
+    @include hover-image-scale;
+  }
+}

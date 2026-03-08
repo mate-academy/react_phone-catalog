@@ -1,0 +1,94 @@
+@mixin font-mont {
+  font-family: Mont, sans-serif;
+}
+
+// H1 - Main page titles
+@mixin h1 {
+  @include font-mont;
+
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 1200px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+// H2 - Section headings (Models, Accessories)
+@mixin h2 {
+  @include font-mont;
+
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+// H3 - Product card names
+@mixin h3 {
+  @include font-mont;
+
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+// H4 - Smaller headings or highlighted parameters
+@mixin h4 {
+  @include font-mont;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+
+  @media (min-width: 1200px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+// Uppercase - For categories or labels (NEW)
+@mixin uppercase-label {
+  @include font-mont;
+
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+// Body Text - Characteristics, product description
+@mixin body-text {
+  @include font-mont;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+// Small Text - Signatures, footers, small details
+@mixin small-text {
+  @include font-mont;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+// Button Text
+@mixin button-text {
+  @include font-mont;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}

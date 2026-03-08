@@ -1,0 +1,81 @@
+@import '../styles/variables';
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin hover-transition($property: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+@mixin hover-image-scale {
+  @include hover-transition(transform);
+
+  @include respond-to('desktop') {
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin page-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include respond-to('tablet') {
+    padding: 0 24px;
+  }
+
+  @include respond-to('desktop') {
+    max-width: 1136px;
+    padding: 0;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin radio-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}

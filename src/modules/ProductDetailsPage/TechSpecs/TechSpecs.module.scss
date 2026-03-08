@@ -1,0 +1,43 @@
+@import '../../../styles/variables';
+@import '../../../styles/typography';
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__specsName {
+    color: var(--text-secondary);
+  }
+
+  &__specsValue {
+    color: var(--text-main);
+    text-align: right;
+  }
+
+  &--short {
+    gap: 8px;
+
+    .techSpecs__specsName,
+    .techSpecs__specsValue {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+
+  &--full {
+    gap: 16px;
+
+    .techSpecs__specsName,
+    .techSpecs__specsValue {
+      @include body-text;
+    }
+  }
+}

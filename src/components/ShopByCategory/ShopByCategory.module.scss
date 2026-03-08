@@ -1,0 +1,105 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.category {
+  margin-bottom: 56px;
+
+  @include page-container;
+
+  @include respond-to('desktop') {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    color: var(--text-main);
+    margin-bottom: 24px;
+
+    @include h2;
+  }
+
+  &__items {
+    gap: 32px;
+
+    @include page-grid;
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include respond-to('tablet') {
+      grid-column: span 4;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: span 8;
+    }
+  }
+
+  &__imageLink {
+    display: block;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    &--phones {
+      background-color: #6d6474;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    object-fit: contain;
+
+    @include hover-image-scale;
+  }
+
+  &__imageLink--phones &__image {
+    scale: 1.1;
+    top: 5%;
+    left: 13%;
+    width: 105%;
+    height: 124%;
+  }
+
+  &__imageLink--tablets &__image {
+    scale: 1.5;
+    left: 30%;
+    width: 150%;
+    height: 160%;
+  }
+
+  &__imageLink--accessories &__image {
+    scale: 2;
+    top: 20%;
+    left: 55%;
+    width: 95%;
+    height: 75%;
+  }
+
+  &__info {
+    margin-top: 24px;
+  }
+
+  &__name {
+    color: var(--text-main);
+    margin-bottom: 4px;
+
+    @include h4;
+  }
+
+  &__quantity {
+    color: var(--text-secondary);
+    display: block;
+
+    @include body-text;
+  }
+}

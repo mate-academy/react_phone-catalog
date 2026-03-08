@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.breadcrumbs {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  grid-column: 1 / -1;
+
+  @include respond-to('tablet') {
+    margin-bottom: 40px;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--text-main);
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--icon-color);
+    }
+  }
+
+  &__link {
+    @include small-text;
+
+    font-weight: 600;
+    color: var(--text-main);
+    text-decoration: none;
+
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-main);
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--icon-color);
+  }
+
+  &__link,
+  &__current {
+    @include small-text;
+
+    font-weight: 600;
+    color: var(--text-secondary);
+    line-height: 1;
+  }
+}

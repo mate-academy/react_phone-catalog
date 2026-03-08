@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.list {
+  gap: 16px;
+
+  row-gap: 40px;
+  padding: 0;
+  margin: 0;
+
+  @include page-grid;
+}
+
+.item {
+  grid-column: span 4;
+
+  @include respond-to('tablet') {
+    grid-column: span 6;
+  }
+
+  @include respond-to('tablet-md') {
+    grid-column: span 4;
+  }
+
+  @include respond-to('desktop') {
+    grid-column: span 6;
+  }
+}

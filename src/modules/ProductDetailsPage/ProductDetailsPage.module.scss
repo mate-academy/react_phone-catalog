@@ -1,0 +1,261 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.details {
+  margin-top: 24px;
+  padding-bottom: 56px;
+
+  @include page-container;
+
+  @include respond-to('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include respond-to('desktop') {
+    padding-bottom: 80px;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 24px 0 16px;
+    padding: 0;
+    line-height: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+
+    @include small-text;
+    @include hover-transition(color);
+
+    @include hover {
+      color: var(--text-main);
+    }
+  }
+
+  &__title {
+    color: var(--text-main);
+
+    @include h2;
+
+    @include respond-to('tablet') {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 56px;
+
+    @include respond-to('tablet') {
+      display: grid;
+      grid-template-columns: minmax(0, 339px) 237px;
+      column-gap: 16px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+
+    @include respond-to('desktop') {
+      grid-template-columns: 560px 320px;
+      column-gap: 64px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include respond-to('tablet') {
+      width: 237px;
+    }
+
+    @include respond-to('desktop') {
+      width: 320px;
+    }
+  }
+
+  &__purchase {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    color: var(--text-main);
+
+    @include h2;
+  }
+
+  &__fullPrice {
+    color: var(--text-secondary);
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__actionAddButton {
+    flex: 1;
+    height: 48px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-bg);
+    cursor: pointer;
+
+    @include button-text;
+    @include hover-transition(all);
+
+    &--active {
+      background-color: var(--page-bg);
+      color: $cl-green;
+      border-color: var(--border);
+      cursor: default;
+    }
+
+    &:not(&--active) {
+      @include hover {
+        filter: brightness(1.2);
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+    }
+  }
+
+  &__actionFavouriteIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: 1px solid var(--icon-color);
+    cursor: pointer;
+
+    @include hover-transition(all);
+
+    @include hover {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__icon {
+    display: block;
+    fill: none;
+    stroke: var(--icon-color);
+
+    @include hover-image-scale;
+  }
+
+  &__bottom {
+    row-gap: 56px;
+    margin-bottom: 56px;
+
+    @include page-grid;
+
+    @include respond-to('desktop') {
+      row-gap: 0;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 4;
+
+    @include respond-to('tablet') {
+      grid-column: span 12;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: span 12;
+    }
+  }
+
+  &__aboutTitle {
+    margin-bottom: 16px;
+    color: var(--text-main);
+
+    @include h3;
+  }
+
+  &__aboutDivider {
+    height: 1px;
+    margin-bottom: 32px;
+    background-color: var(--border);
+  }
+
+  &__aboutContent {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__articleTitle {
+    color: var(--text-main);
+
+    @include h4;
+  }
+
+  &__articleText {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__paragraph {
+    color: var(--text-secondary);
+
+    @include body-text;
+  }
+
+  &__specs {
+    grid-column: span 4;
+
+    @include respond-to('tablet') {
+      grid-column: span 12;
+    }
+
+    @include respond-to('desktop') {
+      grid-column: span 12;
+    }
+  }
+
+  &__specsTitle {
+    margin-bottom: 16px;
+
+    @include h3;
+  }
+
+  &__specsDivider {
+    height: 1px;
+    background-color: var(--border);
+    margin-bottom: 25px;
+  }
+}
