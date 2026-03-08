@@ -1,3 +1,9 @@
-export const AccessoriesPage = () => {
-  return <div>Accessories Page</div>;
-};
+import { ProductsPage } from '../shared/components/ProductsPage/ProductsPage';
+
+export const AccessoriesPage = () => (
+  <ProductsPage
+    category="accessories"
+    title="Accessories"
+    breadcrumbLabel="Accessories"
+  />
+);

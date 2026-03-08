@@ -28,6 +28,7 @@
   @media (min-width: $breakpoint-tablet) {
     max-width: none;
   }
+
   @media (min-width: $breakpoint-desktop) {
     font-size: $font-size-2xl;
   }
@@ -52,14 +53,15 @@
     height: 16px;
   }
 
-  &:hover:not(:disabled) {
-    border-color: $color-primary;
-  }
-
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
 }
 
 .listWrapper {

@@ -7,8 +7,10 @@ export const Layout = () => {
   return (
     <div className={styles.app}>
       <Header />
-      <main>
-        <Outlet />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

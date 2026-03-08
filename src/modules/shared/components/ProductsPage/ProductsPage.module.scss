@@ -1,0 +1,143 @@
+@use '../../../../styles/variables' as *;
+
+.page {
+  padding: $spacing-md 0;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  color: $color-primary;
+  margin-bottom: $spacing-xs;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: $color-secondary;
+  margin-bottom: $spacing-lg;
+}
+
+.filters {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.filterLabel {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.select {
+  height: 40px;
+  padding: 0 $spacing-sm;
+  border: 1px solid $color-elements;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-primary;
+  cursor: pointer;
+  transition: $transition;
+  background-color: $color-white;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+// Grid
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; // mobile — 1 column
+  gap: $spacing-md;
+  justify-items: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr); // tablet — 2 col
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(4, 1fr); // desktop — 4 col
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xl;
+}
+
+.pageBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  color: $color-primary;
+  transition: $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.pageBtnActive {
+  background-color: $color-primary;
+  color: $color-white;
+  border-color: $color-primary;
+}
+
+.loader {
+  padding: $spacing-xl;
+  text-align: center;
+}
+
+.error {
+  padding: $spacing-xl;
+  text-align: center;
+
+  button {
+    margin-top: $spacing-sm;
+    padding: $spacing-xs $spacing-md;
+    border: 1px solid $color-primary;
+    font-weight: 700;
+    transition: $transition;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}
+
+.empty {
+  text-align: center;
+  color: $color-secondary;
+  padding: $spacing-xl;
+}

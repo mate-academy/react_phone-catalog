@@ -7,9 +7,14 @@ import styles from './ProductCard.module.scss';
 type Props = {
   product: Product;
   showFullPriceOnly?: boolean;
+  fullWidth?: boolean;
 };
 
-export const ProductCard = ({ product, showFullPriceOnly = false }: Props) => {
+export const ProductCard = ({
+  product,
+  showFullPriceOnly = false,
+  fullWidth = false,
+}: Props) => {
   const { addToCart, cartItems } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
@@ -28,7 +33,7 @@ export const ProductCard = ({ product, showFullPriceOnly = false }: Props) => {
   };
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${fullWidth ? styles.cardFullWidth : ''}`}>
       {/* Image */}
       <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
         <img src={`/${image}`} alt={name} className={styles.image} />

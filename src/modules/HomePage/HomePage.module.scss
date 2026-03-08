@@ -1,19 +1,8 @@
 @use '../../styles/variables' as *;
 
 .homePage {
-  padding: 0 $container-padding-mobile;
+  padding: $spacing-md 0;
 
-  @media (min-width: $breakpoint-tablet) {
-    padding: 0 $container-padding-tablet;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: 0 $container-padding-desktop;
-  }
-
-  @media (min-width: $breakpoint-desktop-xl) {
-    padding: 0 $container-padding-desktop-xl;
-  }
 }
 
 .visuallyHidden {

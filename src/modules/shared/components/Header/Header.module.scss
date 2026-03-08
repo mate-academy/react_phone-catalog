@@ -21,9 +21,6 @@
     padding: 0 $container-padding-desktop;
   }
 
-  @media (min-width: $breakpoint-desktop-xl) {
-    padding: 0 $container-padding-desktop-xl;
-  }
 }
 
 .logo {
@@ -157,10 +154,7 @@
 /* Mobile Menu */
 .mobileMenu {
   position: fixed;
-  top: 48px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 48px 0 0;
   background-color: $color-white;
   z-index: 99;
   display: flex;

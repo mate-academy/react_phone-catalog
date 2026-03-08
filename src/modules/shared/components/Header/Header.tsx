@@ -118,18 +118,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Bureger-button menu*/}
-      <button
-        className={styles.burger}
-        onClick={handleMenuToggle}
-        aria-label="Toggle menu"
-      >
-        <img
-          src={isMenuOpen ? '/img/icons/close.svg' : '/img/icons/menu.svg'}
-          alt="menu"
-        />
-      </button>
-
       {/* Burger */}
       <button
         className={styles.burger}

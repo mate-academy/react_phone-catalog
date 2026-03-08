@@ -9,3 +9,19 @@
 .main {
   flex: 1;
 }
+
+.container {
+  padding: 0 $container-padding-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0 $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0 $container-padding-desktop;
+  }
+
+  @media (min-width: $breakpoint-desktop-xl) {
+    padding: 0 $container-padding-desktop-xl;
+  }
+}

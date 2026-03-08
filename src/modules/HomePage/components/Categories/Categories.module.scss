@@ -6,6 +6,7 @@
   @media (min-width: $breakpoint-tablet) {
     margin-top: $spacing-2xl;
   }
+
   @media (min-width: $breakpoint-desktop) {
     margin-top: $spacing-3xl;
   }
@@ -34,6 +35,14 @@
   }
 }
 
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: $transition;
+}
+
 .item {
   display: flex;
   flex-direction: column;
@@ -54,16 +63,6 @@
     background-color: $color-category-accessories;
   }
 }
-
-.imageWrapper {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-  overflow: hidden;
-  transition: $transition;
-
-}
-
 
 .image {
   width: 100%;

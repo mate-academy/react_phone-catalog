@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './ Categories.module.scss';
+import styles from './Categories.module.scss';
 
 export const Categories = () => {
   return (
