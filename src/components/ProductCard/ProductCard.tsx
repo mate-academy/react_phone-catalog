@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cl from 'classnames';
 
 import { Product } from '../../types/Product';
 import { FavouritesIcon } from '../Icons/FavouritesIcon';
+import { useFavourites } from '../../hooks/useFavourites';
 
 import styles from './ProductCard.module.scss';
 
@@ -11,6 +13,17 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { isFavourite, addToFavourites, removeFromFavourites } =
+    useFavourites();
+
+  const handleLike = (productId: number) => {
+    if (isFavourite(productId)) {
+      removeFromFavourites(productId);
+    } else {
+      addToFavourites(product);
+    }
+  };
+
   return (
     <article className={styles.card}>
       <Link
@@ -58,8 +71,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.actions}>
         <button className={styles.cartButton}>Add to cart</button>
 
-        <button className={styles.favouritesButton}>
-          <FavouritesIcon />
+        <button
+          className={cl(styles.favouritesButton, {
+            [styles.favouritesButtonActive]: isFavourite(product.id),
+          })}
+          onClick={() => handleLike(product.id)}
+        >
+          <FavouritesIcon isFilled={isFavourite(product.id)} />
         </button>
       </div>
     </article>

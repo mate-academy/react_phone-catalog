@@ -9,9 +9,9 @@ export const AppLayout = () => {
     <div className={styles.app}>
       <Header />
 
-      <div className={styles.content}>
+      <main className={styles.content}>
         <Outlet />
-      </div>
+      </main>
 
       <Footer />
     </div>

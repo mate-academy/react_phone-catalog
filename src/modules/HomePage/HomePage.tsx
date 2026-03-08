@@ -48,7 +48,7 @@ export const HomePage = () => {
   ).length;
 
   return (
-    <main className={styles.homePage}>
+    <section className={styles.homePage}>
       <div className="container">
         <h1 className={styles.homePageTitle}>Welcome to Nice Gadgets store!</h1>
       </div>
@@ -76,6 +76,6 @@ export const HomePage = () => {
           isLoading={isLoading}
         />
       </div>
-    </main>
+    </section>
   );
 };
