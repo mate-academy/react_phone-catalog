@@ -9,6 +9,10 @@
   &__content {
       display: flex;
       flex-direction: column;
+
+      border: 5px solid red;
+      max-width: $max-width;
+      box-sizing: border-box;
   }
 
   &__bottom {

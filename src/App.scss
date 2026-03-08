@@ -141,13 +141,12 @@ h5 {
    .main__content {
       @include content-padding-inline;
 
-
       background-color: #FAFBFC;
       min-height: 100vh;
       max-width: $max-width;
      // width: 100vw;
       box-sizing: border-box;
-     overflow: hidden;
+   //  overflow: hidden;
    }
 
 }

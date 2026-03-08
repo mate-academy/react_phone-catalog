@@ -1,3 +1,6 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
   .button {
     border-radius: 8px;
     display: inline-flex;
@@ -19,5 +22,10 @@
       background-color: transparent;
     }
 
-}
+    &--history-back {
+      font-size: 12px;
+      color: $secondary-color;
+      background-color: transparent;
+    }
+  }
 

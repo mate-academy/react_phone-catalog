@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/indent */
+import { useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
-import { Link, useParams } from 'react-router-dom';
+import buttonStyles from '../../components/Button/Button.module.scss';
 import { useProduct } from '../../hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
 import { KeyboardEvent, useState } from 'react';
 import { useEffect } from 'react';
-
 import AddToCartButton from '../../components/AddToCartButton';
 import { Product } from '../../../public/api/types/Product';
 import FavouritesLink from '../../components/FavouritesLink/index';
 import Button from '../../components/Button';
-import buttonStyles from '../../components/Button/Button.module.scss';
+import IconButtonLeft from '../../components/IconButtonLeft/index';
 import ProductsSlider from '../HomePage/components/ProductsSlider/index';
+import Breadcrumbs from '../../components/Breadcrumbs/index';
 
 type Types = {
   productId: string;
@@ -169,22 +169,22 @@ export const ProductDetailsPage = () => {
   return (
     <>
       <div className={styles.productDetailsPage}>
-        <div className={styles.productDetailsPage__topBar}>
-          <nav aria-label="Page navigation" className={styles.nav}>
-            <div className={styles.breadcrumbs}>
-              <Link to="/">Home</Link> / <Link to="/phones">Phones</Link> /{' '}
-              <span>{product?.name}</span>
-            </div>
-            <button
-              type="button"
-              onClick={handleBack}
-              aria-label="Back"
-              className={styles.backButton}
-            >
-              Back
-            </button>
-          </nav>
+        <div className={styles.productDetailsPage__breadcrumbs}>
+          <Breadcrumbs productName={product?.name} />
         </div>
+        <nav className={styles.productDetailsPage__nav}>
+          <Button
+            className={`${buttonStyles.button} ${buttonStyles['button--history-back']}`}
+            type="button"
+            aria-label="Back"
+          >
+            <IconButtonLeft
+              className={`${styles.icon} ${styles['icon--button-left']}`}
+              handleClick={handleBack}
+            />
+            Back
+          </Button>
+        </nav>
         <h1 className="visually-hidden">Product Details Page</h1>
         <div className={styles.productDetailsPage__content}>
           <section
@@ -220,9 +220,9 @@ export const ProductDetailsPage = () => {
                   {Array.isArray(product.images) &&
                     product.images.length > 0 && (
                     <div
-                        className={`${styles.slider} ${styles.productDetailsPage__slider}`}
-                      >
-                        {Array.isArray(product.images) &&
+                      className={`${styles.slider} ${styles.productDetailsPage__slider}`}
+                    >
+                      {Array.isArray(product.images) &&
                           product.images.map((img, i) => (
                             <div
                               key={i}
@@ -240,8 +240,8 @@ export const ProductDetailsPage = () => {
                               />
                             </div>
                           ))}
-                      </div>
-                    )}
+                    </div>
+                  )}
 
                   <div className={styles.productDetailsPage__productInfo}>
                     <div
@@ -365,13 +365,12 @@ export const ProductDetailsPage = () => {
                 aria-label="About product"
                 className={`${styles.section} ${styles['section--about']}`}
               >
-
                 <div
                   role="radiogroup"
                   aria-label="Product description"
                   className={styles.productDetailsPage__description}
                 >
-                    <h4>About</h4>
+                  <h4>About</h4>
                   {Array.isArray(product.description) &&
                     product.description.map(
                       (desc: { title: string; text: string }) => (
@@ -389,14 +388,12 @@ export const ProductDetailsPage = () => {
                     )}
                 </div>
 
-                    {product && (
-                <>
-
-
+                {product && (
+                  <>
                     <div
                       className={`{${styles.productInfoTable} ${styles['productDetailsPage__productInfoTable--tech-specs']}`}
                     >
-                       <h4>Tech specs</h4>
+                      <h4>Tech specs</h4>
                       <div className={styles.productFeature}>Screen</div>
                       <div className={styles.productValue}>
                         {product?.screen}
@@ -431,22 +428,19 @@ export const ProductDetailsPage = () => {
                       <div className={styles.productFeature}>Cell</div>
                       <div className={styles.productValue}>{product?.cell}</div>
                     </div>
-
-                </>
-              )}
+                  </>
+                )}
               </section>
-
-
 
               {!loadingSuggested &&
                 !errorSuggested &&
                 Array.isArray(suggested) && (
-                  <>
-                    <section
+                <>
+                  <section
                     id="suggested-products"
                     aria-label="Suggeste Products"
                     className={`${styles.section} ${styles['section--suggested']}`}
-                    >
+                  >
                     <ProductsSlider
                       products={suggested}
                       currentIndex={suggestedIndex}
@@ -458,8 +452,8 @@ export const ProductDetailsPage = () => {
                         You may also like
                     </ProductsSlider>
                   </section>
-                  </>
-                )}
+                </>
+              )}
             </>
           )}
         </div>

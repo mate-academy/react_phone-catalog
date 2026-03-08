@@ -12,13 +12,19 @@
   &__content {
     @include page-grid;
     grid-column: 1/-1;
-   // flex-direction: column;
- //    max-width: $max-width-no-padding;
-
   }
   .label {
     @include label;
     margin-bottom: 8px;
+  }
+
+  &__nav {
+     grid-column: 1/-1;
+  }
+
+   &__breadcrumbs {
+     grid-column: 1/-1;
+     margin-block: 24px;
   }
 
   .section--breadcrumbs {
@@ -199,8 +205,7 @@
     @include on-desktop {
       grid-column: 14 / -1;
       grid-row: 1;
-      border: 10px solid blue;
-     // width: auto;
+
     }
   }
 

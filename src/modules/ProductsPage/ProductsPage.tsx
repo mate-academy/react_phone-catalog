@@ -49,6 +49,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const end = perPage === 'all' ? total : start + (perPage as number);
 
   const sorted = useMemo(() => {
+    if (!filteredProducts) {
+      return;
+    }
+
     const copy = filteredProducts.slice();
 
     if (sort === 'age') {
@@ -71,7 +75,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     return copy;
   }, [filteredProducts, sort]);
 
-  const visibleProducts = sorted.slice(start, end);
+  const visibleProducts = sorted?.slice(start, end);
 
   const handleAddToCart = (productId: string) => {
     // TODO: Implement add to cart logic

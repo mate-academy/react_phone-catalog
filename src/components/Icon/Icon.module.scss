@@ -53,6 +53,19 @@
     width: 16px;
     height: 16px;
   }
+
+   &--home {
+    background-image: url(/img/icons/icon-home-2x.png);
+    width: 16px;
+    height: 16px;
+    margin-inline: 0px;
+  }
+
+    &--button-right {
+    background-image: url(/img/icons/icon-button-right-2x.png);
+    justify-self: end;
+    
+  }
 }
 
   .icon--large {
