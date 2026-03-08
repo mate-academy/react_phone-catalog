@@ -5,6 +5,7 @@ import { HomePage } from './modules/HomePage';
 import { CatalogPage } from './modules/CatalogPage';
 import { Product } from './types/Product';
 import { getProducts } from './api/products';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 export const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -40,7 +41,10 @@ export const App = () => {
 
         <Route path="cart" element={<div>Cart Page</div>} />
 
-        <Route path="favourites" element={<div>Favourites Page</div>} />
+        <Route
+          path="favourites"
+          element={<FavouritesPage favourites={products} />}
+        />
 
         <Route path="*" element={<div>Page not Found</div>} />
       </Route>

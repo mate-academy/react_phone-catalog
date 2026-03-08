@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import cl from 'classnames';
-import styles from './Header.module.scss';
 
 import LOGO from '../../../assets/icons/logo/Logo.svg';
 import { BurgerMenuIcon } from '../../../components/Icons/BurgerMenuIcon';
@@ -9,9 +8,13 @@ import { CloseIcon } from '../../../components/Icons/CloseIcon';
 import { CartIcon } from '../../../components/Icons/CartIcon';
 import { FavouritesIcon } from '../../../components/Icons/FavouritesIcon/';
 import { scrollToTop } from '../../../utils/scrollToTop';
+import { useFavourites } from '../../../hooks/useFavourites';
+
+import styles from './Header.module.scss';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favourites } = useFavourites();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -25,6 +28,25 @@ export const Header = () => {
     cl(styles.actionsButton, {
       [styles.isActive]: isActive,
     });
+
+  const handleMobileClick = () => {
+    scrollToTop();
+    closeMenu();
+  };
+
+  const favCount = favourites.length;
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -77,7 +99,9 @@ export const Header = () => {
               className={styles.iconButton}
               onClick={scrollToTop}
             >
-              <FavouritesIcon />
+              <FavouritesIcon isFilled={false} />
+
+              {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
             </NavLink>
             <NavLink
               to="/cart"
@@ -102,7 +126,11 @@ export const Header = () => {
         <nav className={styles.mobileNav}>
           <ul className={styles.mobileNavList}>
             <li className={styles.mobileNavItem}>
-              <NavLink to="/" className={getLinkClass} onClick={closeMenu}>
+              <NavLink
+                to="/"
+                className={getLinkClass}
+                onClick={handleMobileClick}
+              >
                 Home
               </NavLink>
             </li>
@@ -110,7 +138,7 @@ export const Header = () => {
               <NavLink
                 to="/phones"
                 className={getLinkClass}
-                onClick={closeMenu}
+                onClick={handleMobileClick}
               >
                 Phones
               </NavLink>
@@ -119,7 +147,7 @@ export const Header = () => {
               <NavLink
                 to="/tablets"
                 className={getLinkClass}
-                onClick={closeMenu}
+                onClick={handleMobileClick}
               >
                 Tablets
               </NavLink>
@@ -128,7 +156,7 @@ export const Header = () => {
               <NavLink
                 to="/accessories"
                 className={getLinkClass}
-                onClick={closeMenu}
+                onClick={handleMobileClick}
               >
                 Accessories
               </NavLink>
@@ -137,10 +165,22 @@ export const Header = () => {
         </nav>
 
         <div className={styles.bottomActions}>
-          <NavLink to="/favourites" className={getActionButtonClass}>
-            <FavouritesIcon />
+          <NavLink
+            to="/favourites"
+            className={getActionButtonClass}
+            onClick={handleMobileClick}
+          >
+            <div className={styles.iconWrapper}>
+              <FavouritesIcon isFilled={false} />
+
+              {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
+            </div>
           </NavLink>
-          <NavLink to="/cart" className={getActionButtonClass}>
+          <NavLink
+            to="/cart"
+            className={getActionButtonClass}
+            onClick={handleMobileClick}
+          >
             <CartIcon />
           </NavLink>
         </div>

@@ -4,9 +4,12 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
 import { App } from './App';
+import { FavouritesProvider } from './context/FavouritesContext';
 
 createRoot(document.getElementById('root')!).render(
-  <Router>
-    <App />
-  </Router>,
+  <FavouritesProvider>
+    <Router>
+      <App />
+    </Router>
+  </FavouritesProvider>,
 );

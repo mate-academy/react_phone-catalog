@@ -95,7 +95,7 @@
 }
 
 .mobileMenu {
-  position: absolute;
+  position: fixed;
 
   z-index: 99;
 
@@ -172,6 +172,8 @@
   display: flex;
   align-items: center;
   justify-content: end;
+
+  background-color: var(--color-white);
 }
 
 .bottomActions {
@@ -220,6 +222,8 @@
   display: none;
 
   @include on-tablet {
+    position: relative;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -251,5 +255,50 @@
 
   @include on-tablet {
     display: none;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+}
+
+.badge {
+  @include small-text;
+
+  font-size: 9px;
+
+  position: absolute;
+  top: -3px;
+  right: -3px;
+
+  min-width: 14px;
+  height: 14px;
+
+  padding: 0 2px;
+
+  background-color: var(--color-accent);
+  color: var(--color-white);
+
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    top: 11px;
+    right: 10px;
+  }
+
+  @include on-desktop {
+    top: 18px;
+    right: 18px;
   }
 }
