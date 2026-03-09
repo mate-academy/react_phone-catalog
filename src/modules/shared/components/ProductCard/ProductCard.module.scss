@@ -1,0 +1,162 @@
+@use "sass:color";
+@import '../../../../styles/utils';
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.card {
+  width: 100%;
+  height: 506px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  background-color: $white;
+  padding: 32px 0;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+
+    .image {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 208px;
+  height: 196px;
+  margin-bottom: 24px;
+
+  a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  width: 208px;
+  height: 58px;
+  font-size: 14px;
+  color: $primary;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 108px;
+  height: 31px;
+  gap: 8px;
+}
+
+.price {
+  color: $primary;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
+
+.fullPrice {
+  color: $secondary;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: line-through;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #E2E6E9;
+  margin: 8px 0;
+}
+
+.specs {
+  width: 208px;
+  height: 77px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.spec {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+
+  span:first-child {
+    color: $secondary;
+  }
+
+  span:last-child {
+    color:  #313237;
+  }
+}
+
+.actions {
+  width: 208px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.addToCart {
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $orange;
+  color: $white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: backgroundcolor 0.3s;
+
+  &:hover {
+    background-color: color.adjust($orange, $lightness: 5%);
+  }
+}
+
+.addToFavorite {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #B4BDC3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.3s background-color 0.3s;
+
+  &:hover {
+    border-color: $primary;
+  }
+}

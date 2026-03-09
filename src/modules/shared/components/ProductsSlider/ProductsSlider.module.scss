@@ -1,0 +1,76 @@
+@import '../../../../styles/utils';
+
+.slider {
+  margin-bottom: 80px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  &:hover:not(.disabled) {
+    border-color: $primary;
+  }
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.5;
+    border-color: #E2E6E9;
+  }
+}
+
+
+.frame {
+  overflow: hidden;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  transition: transform 1s ease;
+
+  > * {
+    flex-shrink: 0;
+    width: 272px;
+  }
+}
+
+.cardWrapper {
+  flex-shrink: 0;
+  width: 272px;
+}
