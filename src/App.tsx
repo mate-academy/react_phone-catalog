@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -47,7 +47,7 @@ export const App = () => (
     <CartProvider>
       <FavoritesProvider>
         <ToastProvider>
-          <BrowserRouter>
+          <HashRouter>
             <div className="app">
               <Header />
 
@@ -55,38 +55,9 @@ export const App = () => (
 
               <AppRoutes />
 
-              {/* <main className="main">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-
-                  <Route path="/phones" element={<PhonesPage />} />
-                  <Route
-                    path="/phones/:productId"
-                    element={<ProductDetailsPage />}
-                  />
-
-                  <Route path="/tablets" element={<TabletsPage />} />
-                  <Route
-                    path="/tablets/:productId"
-                    element={<ProductDetailsPage />}
-                  />
-
-                  <Route path="/accessories" element={<AccessoriesPage />} />
-                  <Route
-                    path="/accessories/:productId"
-                    element={<ProductDetailsPage />}
-                  />
-
-                  <Route path="/favorites" element={<FavoritesPage />} />
-                  <Route path="/cart" element={<CartPage />} />
-
-                  <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-              </main> */}
-
               <Footer />
             </div>
-          </BrowserRouter>
+          </HashRouter>
         </ToastProvider>
       </FavoritesProvider>
     </CartProvider>
