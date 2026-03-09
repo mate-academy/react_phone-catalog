@@ -1,0 +1,62 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  @include hover-scale;
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+
+    @include tablet {
+      font-weight: 600;
+    }
+  }
+
+  p {
+    color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%;
+
+    @include tablet {
+      font-weight: 500;
+    }
+  }
+}

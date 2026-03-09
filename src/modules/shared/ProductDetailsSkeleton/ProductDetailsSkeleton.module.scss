@@ -1,0 +1,111 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.back {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 32px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.item {
+  display: grid;
+  grid-template-areas:
+    'gallery'
+    'options'
+    'about'
+    'techSpecs';
+
+  @include tablet {
+    grid-template-areas:
+      'gallery options'
+      'about about'
+      'techSpecs techSpecs';
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+
+  @include desktop {
+    grid-template-areas:
+      'gallery options'
+      'about techSpecs';
+    grid-template-columns: 560px 1fr;
+  }
+}
+
+.gallery {
+  grid-area: gallery;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  @include tablet {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.options {
+  grid-area: options;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.capacity {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.about {
+  grid-area: about;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.techSpecs {
+  grid-area: techSpecs;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

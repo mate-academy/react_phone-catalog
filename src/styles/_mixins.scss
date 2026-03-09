@@ -1,0 +1,32 @@
+@use 'variables' as *;
+
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin hover-scale($scale: 1.1) {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+@mixin card-hover-effect($lift-distance: -8px, $shadow-intensity: 0.15) {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY($lift-distance);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, $shadow-intensity);
+  }
+}

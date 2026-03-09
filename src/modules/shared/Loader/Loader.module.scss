@@ -1,0 +1,19 @@
+@use '../../../styles/mixins' as *;
+
+.loader {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-block: 24px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 40px;
+    gap: 16px;
+    row-gap: 40px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

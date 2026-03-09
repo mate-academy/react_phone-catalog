@@ -1,0 +1,85 @@
+@use '../../../styles/mixins' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: var(--color-primary);
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 128%;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.viewport {
+  overflow: hidden;
+  margin: 0 -16px;
+  padding: 0 16px;
+
+  @include tablet {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: visible;
+}
+
+.card {
+  flex-shrink: 0;
+  width: 212px;
+
+  @include tablet {
+    width: 237px;
+  }
+
+  @include desktop {
+    width: calc((100% - (16px * 3)) / 4);
+  }
+}

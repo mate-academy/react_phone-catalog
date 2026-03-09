@@ -1,0 +1,38 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.title {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+
+  @include tablet {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 117%;
+  }
+
+  @include desktop {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include tablet {
+    gap: 64px;
+  }
+
+  @include desktop {
+    gap: 80px;
+  }
+}

@@ -1,0 +1,71 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: var(--icon-filter);
+  }
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.pageActive {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
