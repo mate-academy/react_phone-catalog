@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../../types';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -36,7 +37,7 @@ export const ProductCard = ({
     <div className={`${styles.card} ${fullWidth ? styles.cardFullWidth : ''}`}>
       {/* Image */}
       <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
-        <img src={`/${image}`} alt={name} className={styles.image} />
+        <img src={getImg(image)} alt={name} className={styles.image} />
       </Link>
 
       {/* Name */}
@@ -89,8 +90,8 @@ export const ProductCard = ({
           <img
             src={
               isLiked
-                ? '/img/icons/fav-heart-like-red.svg'
-                : '/img/icons/fav-heart-like.svg'
+                ? getImg('img/icons/fav-heart-like-red.svg')
+                : getImg('img/icons/fav-heart-like.svg')
             }
             alt="favorite"
           />
