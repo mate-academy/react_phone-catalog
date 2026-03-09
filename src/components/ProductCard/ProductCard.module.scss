@@ -1,0 +1,95 @@
+.card {
+  border: 1px solid #e2e6e9;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.imageWrap {
+  display: block;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.image:hover {
+  transform: scale(1.1);
+}
+
+.name {
+  color: #313237;
+  text-decoration: none;
+  min-height: 40px;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.prices span {
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.meta {
+  display: grid;
+  gap: 6px;
+  color: #89939a;
+  font-size: 12px;
+}
+
+.meta div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta b {
+  color: #313237;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 8px;
+}
+
+.cartBtn,
+.favBtn {
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  background: #313237;
+  color: #FFF;
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.added {
+  background-color: #FFF;
+  color: #27AE60;
+}
+
+.favBtnLike {
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  background: #FFF;
+  color: #FFF;
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: black;
+  }
+}
+
