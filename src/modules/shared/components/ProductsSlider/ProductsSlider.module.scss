@@ -22,7 +22,7 @@
 .title {
   font-size: $font-size-xl;
   font-weight: 800;
-  color: $color-primary;
+  color: var(--color-primary);
   max-width: 136px;
 
   @media (min-width: $breakpoint-tablet) {
@@ -45,7 +45,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid $color-elements;
+  border: 1px solid var(--color-elements);
   transition: $transition;
 
   img {
@@ -59,7 +59,7 @@
   }
 
   &:hover:not(:disabled) {
-    border-color: $color-primary;
+    border-color: var(--color-primary);
   }
 
 }

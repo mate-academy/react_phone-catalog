@@ -68,7 +68,7 @@
 
     width: 32px;
     flex-shrink: 0;
-    border: 1px solid $color-elements;
+    border: 1px solid var(--color-elements);
     transition: $transition;
 
     img {
@@ -77,12 +77,12 @@
     }
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--color-primary);
     }
 
     &:active {
-      border-color: $color-primary;
-      background-color: $color-elements;
+      border-color: var(--color-primary);
+      background-color: var(--color-elements);
     }
   }
 }
@@ -99,14 +99,14 @@
 .dot {
   width: 14px;
   height: 4px;
-  background-color: $color-elements;
+  background-color: var(--color-elements);
   transition: $transition;
 
   &:hover {
-    background-color: $color-secondary;
+    background-color: var(--color-secondary);
   }
 }
 
 .dotActive {
-  background-color: $color-primary;
+  background-color: var(--color-primary);
 }

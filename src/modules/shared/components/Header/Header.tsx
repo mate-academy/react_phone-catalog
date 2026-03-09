@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
+import { useTheme } from '../../../../context/ThemeContext';
 import styles from './Header.module.scss';
 
 const getNavLinkClass = (
@@ -14,6 +15,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalCount: cartCount } = useCart();
   const { totalCount: favCount } = useFavorites();
+  const { isDark, toggleTheme } = useTheme();
 
   const handleMenuToggle = () => setIsMenuOpen(prev => !prev);
   const handleMenuClose = () => setIsMenuOpen(false);
@@ -87,35 +89,42 @@ export const Header = () => {
       </div>
 
       <div className={styles.icons}>
-        <div className={styles.icons}>
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) =>
-              getNavLinkClass(isActive, styles.iconLink, styles.iconLinkActive)
-            }
-          >
-            <div className={styles.iconWrapper}>
-              <img src="/img/icons/fav-heart-like.svg" alt="favorite icon" />
-              {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
-            </div>
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              getNavLinkClass(isActive, styles.iconLink, styles.iconLinkActive)
-            }
-          >
-            <div className={styles.iconWrapper}>
-              <img
-                src="/img/icons/shopping-bag-cart.svg"
-                alt="shopping bag cart"
-              />
-              {cartCount > 0 && (
-                <span className={styles.badge}>{cartCount}</span>
-              )}
-            </div>
-          </NavLink>
-        </div>
+        {/* Button for swithing theme */}
+        <button
+          className={styles.themeToggle}
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          <img
+            src={isDark ? '/img/icons/sun.svg' : '/img/icons/moon.svg'}
+            alt="theme"
+          />
+        </button>
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) =>
+            getNavLinkClass(isActive, styles.iconLink, styles.iconLinkActive)
+          }
+        >
+          <div className={styles.iconWrapper}>
+            <img src="/img/icons/fav-heart-like.svg" alt="favorite icon" />
+            {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
+          </div>
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            getNavLinkClass(isActive, styles.iconLink, styles.iconLinkActive)
+          }
+        >
+          <div className={styles.iconWrapper}>
+            <img
+              src="/img/icons/shopping-bag-cart.svg"
+              alt="shopping bag cart"
+            />
+            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+          </div>
+        </NavLink>
       </div>
 
       {/* Burger */}

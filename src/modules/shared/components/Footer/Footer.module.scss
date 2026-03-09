@@ -1,7 +1,7 @@
 @use '../../../../styles/variables' as *;
 
 .footer {
-  border-top: 1px solid $color-elements;
+  border-top: 1px solid var(--color-elements);
   margin-top: auto;
 }
 
@@ -54,11 +54,11 @@
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: var(--color-secondary);
   transition: $transition;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -68,7 +68,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid $color-elements;
+  border: 1px solid var(--color-elements);
   transition: $transition;
 
   img {
@@ -86,14 +86,14 @@
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: var(--color-secondary);
   transition: $transition;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-primary);
 
     .backToTopIcon {
-      border-color: $color-primary;
+      border-color: var(--color-primary);
     }
   }
 }

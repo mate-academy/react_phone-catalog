@@ -16,7 +16,7 @@
 .title {
   font-size: $font-size-xl;
   font-weight: 800;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-bottom: $spacing-md;
 
   @media (min-width: $breakpoint-desktop) {
@@ -73,7 +73,7 @@
 .itemTitle {
   font-size: $font-size-lg;
   font-weight: 700;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-top: $spacing-md;
 
   @media (min-width: $breakpoint-tablet) {
@@ -84,7 +84,7 @@
 .itemCount {
   font-size: $font-size-sm;
   font-weight: 600;
-  color: $color-secondary;
+  color: var(--color-secondary);
   margin-top: $spacing-xs;
 
   @media (min-width: $breakpoint-tablet) {

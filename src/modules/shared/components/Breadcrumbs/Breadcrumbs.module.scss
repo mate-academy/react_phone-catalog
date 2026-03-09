@@ -37,18 +37,18 @@
 .link {
   font-size: $font-size-xs;
   font-weight: 600;
-  color: $color-primary;
+  color: var(--color-primary);
   transition: $transition;
 
   &:hover {
-    color: $color-secondary;
+    color: var(--color-secondary);
   }
 }
 
 .current {
   font-size: $font-size-xs;
   font-weight: 600;
-  color: $color-secondary;
+  color: var(--color-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

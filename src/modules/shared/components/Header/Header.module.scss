@@ -4,8 +4,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: $color-white;
-  border-bottom: 1px solid $color-elements;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-elements);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,7 +73,7 @@
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: var(--color-secondary);
   border-bottom: 3px solid transparent;
   transition: $transition;
 
@@ -82,13 +82,13 @@
   }
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-primary);
   }
 }
 
 .navLinkActive {
-  color: $color-primary;
-  border-bottom-color: $color-primary;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
 /* ─── Descktop icons ─── */
@@ -107,8 +107,8 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-left: 1px solid $color-elements;
-  color: $color-primary;
+  border-left: 1px solid var(--color-elements);
+  color: var(--color-primary);
   transition: $transition;
 
   @media (min-width: $breakpoint-desktop) {
@@ -122,12 +122,12 @@
   }
 
   &:hover {
-    background-color: $color-hover;
+    background-color: var(--color-hover);
   }
 }
 
 .iconLinkActive {
-  border-bottom: 3px solid $color-primary;
+  border-bottom: 3px solid var(--color-primary);
 }
 
 /* Burger Button */
@@ -137,7 +137,7 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-left: 1px solid $color-elements;
+  border-left: 1px solid var(--color-elements);
   margin-right: -$container-padding-mobile;
 
   img {
@@ -155,7 +155,7 @@
 .mobileMenu {
   position: fixed;
   inset: 48px 0 0;
-  background-color: $color-white;
+  background-color: var(--color-white);
   z-index: 99;
   display: flex;
   flex-direction: column;
@@ -181,24 +181,24 @@
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: var(--color-secondary);
   border-bottom: 2px solid transparent;
   transition: $transition;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-primary);
   }
 }
 
 .mobileNavLinkActive {
-  color: $color-primary;
-  border-bottom-color: $color-primary;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
 /* Icons-bottom-menu */
 .mobileIcons {
   display: flex;
-  border-top: 1px solid $color-elements;
+  border-top: 1px solid var(--color-elements);
 }
 
 .mobileIconLink {
@@ -207,7 +207,7 @@
   justify-content: center;
   width: 50%;
   height: 64px;
-  border-right: 1px solid $color-elements;
+  border-right: 1px solid var(--color-elements);
   transition: $transition;
 
   &:last-child {
@@ -220,12 +220,12 @@
   }
 
   &:hover {
-    background-color: $color-hover;
+    background-color: var(--color-hover);
   }
 }
 
 .mobileIconLinkActive {
-  border-bottom: 2px solid $color-primary;
+  border-bottom: 2px solid var(--color-primary);
 }
 
 .iconWrapper {
@@ -248,11 +248,37 @@
   height: 14px;
   padding: 0 3px;
   background-color: $color-red;
-  color: $color-white;
+  color: var(--color-white);
   font-size: 9px;
   font-weight: 700;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Button for Switching Theme */
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-left: 1px solid var(--color-elements);
+  transition: $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: var(--color-hover);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 64px;
+    height: 64px;
+  }
 }

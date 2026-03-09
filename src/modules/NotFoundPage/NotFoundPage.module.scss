@@ -23,7 +23,7 @@
 .title {
   font-size: $font-size-2xl;
   font-weight: 800;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-bottom: $spacing-md;
 
   @media (min-width: $breakpoint-desktop) {
@@ -33,7 +33,7 @@
 
 .text {
   font-size: $font-size-md;
-  color: $color-secondary;
+  color: var(--color-secondary);
   margin-bottom: $spacing-lg;
 }
 
@@ -42,8 +42,8 @@
   align-items: center;
   height: 48px;
   padding: 0 $spacing-lg;
-  background-color: $color-primary;
-  color: $color-white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   font-size: $font-size-sm;
   font-weight: 700;
   transition: $transition;

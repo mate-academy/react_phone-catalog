@@ -7,7 +7,7 @@
 .title {
   font-size: $font-size-2xl;
   font-weight: 800;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-bottom: $spacing-xs;
 
   @media (min-width: $breakpoint-desktop) {
@@ -17,7 +17,7 @@
 
 .count {
   font-size: $font-size-sm;
-  color: $color-secondary;
+  color: var(--color-secondary);
   margin-bottom: $spacing-lg;
 }
 
@@ -36,22 +36,22 @@
 .filterLabel {
   font-size: $font-size-xs;
   font-weight: 600;
-  color: $color-secondary;
+  color: var(--color-secondary);
 }
 
 .select {
   height: 40px;
   padding: 0 $spacing-sm;
-  border: 1px solid $color-elements;
+  border: 1px solid var(--color-elements);
   font-size: $font-size-sm;
   font-weight: 600;
-  color: $color-primary;
+  color: var(--color-primary);
   cursor: pointer;
   transition: $transition;
-  background-color: $color-white;
+  background-color: var(--color-white);
 
   &:hover {
-    border-color: $color-primary;
+    border-color: var(--color-primary);
   }
 }
 
@@ -86,10 +86,10 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid $color-elements;
+  border: 1px solid var(--color-elements);
   font-size: $font-size-sm;
   font-weight: 700;
-  color: $color-primary;
+  color: var(--color-primary);
   transition: $transition;
 
   img {
@@ -103,14 +103,14 @@
   }
 
   &:hover:not(:disabled) {
-    border-color: $color-primary;
+    border-color: var(--color-primary);
   }
 }
 
 .pageBtnActive {
-  background-color: $color-primary;
-  color: $color-white;
-  border-color: $color-primary;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
 }
 
 .loader {
@@ -125,19 +125,19 @@
   button {
     margin-top: $spacing-sm;
     padding: $spacing-xs $spacing-md;
-    border: 1px solid $color-primary;
+    border: 1px solid var(--color-primary);
     font-weight: 700;
     transition: $transition;
 
     &:hover {
-      background-color: $color-primary;
-      color: $color-white;
+      background-color: var(--color-primary);
+      color: var(--color-white);
     }
   }
 }
 
 .empty {
   text-align: center;
-  color: $color-secondary;
+  color: var(--color-secondary);
   padding: $spacing-xl;
 }

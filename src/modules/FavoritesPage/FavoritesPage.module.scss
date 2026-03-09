@@ -16,7 +16,7 @@
 .title {
   font-size: $font-size-2xl;
   font-weight: 800;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-bottom: $spacing-xs;
 
   @media (min-width: $breakpoint-desktop) {
@@ -26,13 +26,13 @@
 
 .count {
   font-size: $font-size-sm;
-  color: $color-secondary;
+  color: var(--color-secondary);
   margin-bottom: $spacing-lg;
 }
 
 .empty {
   text-align: center;
-  color: $color-secondary;
+  color: var(--color-secondary);
   padding: $spacing-xl;
   font-size: $font-size-lg;
 }
