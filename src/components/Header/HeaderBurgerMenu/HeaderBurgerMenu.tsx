@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import './BurgerNavigator.scss';
+import './HeaderBurgerMenu.scss';
 import React, { useContext, useEffect } from 'react';
 import { useCurrentPath } from '../../context/PathContext';
 // eslint-disable-next-line max-len

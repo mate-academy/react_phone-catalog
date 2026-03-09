@@ -1,0 +1,119 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.section {
+  background-color: var(--background);
+  &__block {
+    padding: 0 16px;
+
+    @include on-tablet {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      max-width: 1136px;
+      padding: 0;
+      margin: auto;
+    }
+    &--link {
+      display: flex;
+      flex-direction: column;
+
+      @include on-tablet {
+        flex: 1 1 calc(33.33% - 24px);
+      }
+    }
+  }
+}
+
+.category {
+  &__link {
+    display: flex;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+
+     transition:
+      transform $effect-duration ease;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+
+    &--img {
+      position: absolute;
+      width: 100%;
+      top: 20%;
+      left: 20%;
+
+      object-fit: contain;
+
+      transition: transform $effect-duration ease;
+
+      .category__link:hover & {
+        transform: translateY(-10px) scale(1.05);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__contents {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 4px;
+     transition: transform $effect-duration ease;
+
+    .category__link:hover + & {
+      transform: translateY(-5px);
+    }
+
+
+    &--title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+
+    }
+    &--count {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--elements);
+    }
+  }
+}
+
+.bg-phones {
+  background-color: rgb(71, 83, 136);
+}
+
+.bg-tablets {
+  background-color: rgb(222, 106, 106);
+}
+
+.bg-accessories {
+  background-color: rgb(128, 61, 108);
+}
+
+.bg-phones:hover {
+  background-color: rgb(61, 73, 116);
+}
+
+.bg-tablets:hover {
+  background-color: rgb(202, 86, 86);
+}
+
+.bg-accessories:hover {
+  background-color: rgb(108, 41, 88);
+}

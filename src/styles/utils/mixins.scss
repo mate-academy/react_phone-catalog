@@ -26,14 +26,14 @@
   grid-template-columns: repeat(var(--columns), 1fr);
 
 
-  @include on-tablet { // 640-1199px
+  @include on-tablet {   // tablet: 640-1199px
     --columns: 12;
 
     column-gap: 16px;
     padding: 0 24px;
   }
 
-  @include on-desktop { // 1200px+
+  @include on-desktop {  // desktop: 1200px+
     --columns: 24;
 
     column-gap: 16px;
