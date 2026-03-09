@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Product } from '../../../../types';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { getImg } from '../../../../utils/getImageUrl';
@@ -19,13 +19,26 @@ export const ProductsSlider = ({
   const mobileCardWidth = 212 + 16;
   const tabletCardWidth = 237 + 16;
   const desktopCardWidth = 272 + 16;
+  const visibleCount = 4;
+  const listWrapperRef = useRef<HTMLDivElement>(null);
 
   const handlePrev = () => {
     setStartIndex(prev => Math.max(prev - 1, 0));
   };
 
+  const getCardWidth = () => {
+    if (!listWrapperRef.current) {
+      return desktopCardWidth;
+    }
+
+    const containerWidth = listWrapperRef.current.offsetWidth;
+
+    // 4 cards + 3 gap (16px)
+    return (containerWidth - 3 * 16) / 4 + 16;
+  };
+
   const handleNext = () => {
-    setStartIndex(prev => Math.min(prev + 1, products.length - 1));
+    setStartIndex(prev => Math.min(prev + 1, products.length - visibleCount));
   };
 
   return (
@@ -46,7 +59,7 @@ export const ProductsSlider = ({
           <button
             className={styles.btn}
             onClick={handleNext}
-            disabled={startIndex >= products.length - 1}
+            disabled={startIndex >= products.length - visibleCount}
             aria-label="Next"
           >
             <img src={getImg('/img/icons/arrow-right.svg')} alt="Next" />
@@ -55,14 +68,14 @@ export const ProductsSlider = ({
       </div>
 
       {/* Products */}
-      <div className={styles.listWrapper}>
+      <div className={styles.listWrapper} ref={listWrapperRef}>
         <div
           className={styles.list}
           style={
             {
               '--mobile-offset': `${startIndex * mobileCardWidth}px`,
               '--tablet-offset': `${startIndex * tabletCardWidth}px`,
-              '--desktop-offset': `${startIndex * desktopCardWidth}px`,
+              '--desktop-offset': `${startIndex * getCardWidth()}px`,
             } as React.CSSProperties
           }
         >

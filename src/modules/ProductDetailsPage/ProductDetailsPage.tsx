@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 // eslint-disable-next-line max-len
 import { useProductDetails } from '../shared/components/hooks/useProductDetails';
 import { useProducts } from '../shared/components/hooks/useProducts';
@@ -18,6 +18,11 @@ export const ProductDetailsPage = () => {
 
   // which category from URL
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
   const category = pathname.split('/')[1];
 
   const { product, loading, error, notFound } = useProductDetails(
@@ -27,9 +32,6 @@ export const ProductDetailsPage = () => {
   const { products } = useProducts();
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedCapacity, setSelectedCapacity] = useState('');
-
   const { addToCart, cartItems } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
@@ -86,8 +88,24 @@ export const ProductDetailsPage = () => {
     image: product.images[0],
   };
 
-  const currentColor = selectedColor || product.color;
-  const currentCapacity = selectedCapacity || product.capacity;
+  const currentColor = product.color;
+  const currentCapacity = product.capacity;
+
+  const handleColorSelect = (color: string) => {
+    const capacity = currentCapacity.toLowerCase().replace(' ', '');
+    const colorFormatted = color.replace(' ', '-');
+    const newId = `${product.namespaceId}-${capacity}-${colorFormatted}`;
+
+    navigate(`/${category}/${newId}`);
+  };
+
+  const handleCapacitySelect = (cap: string) => {
+    const capacity = cap.toLowerCase().replace(' ', '');
+    const colorFormatted = currentColor.replace(' ', '-');
+    const newId = `${product.namespaceId}-${capacity}-${colorFormatted}`;
+
+    navigate(`/${category}/${newId}`);
+  };
 
   return (
     <div className={styles.page}>
@@ -147,7 +165,7 @@ export const ProductDetailsPage = () => {
                 <button
                   key={color}
                   className={`${styles.colorBtn} ${color === currentColor ? styles.colorBtnActive : ''}`}
-                  onClick={() => setSelectedColor(color)}
+                  onClick={() => handleColorSelect(color)}
                   style={{ backgroundColor: color }}
                   aria-label={color}
                 />
@@ -165,7 +183,7 @@ export const ProductDetailsPage = () => {
                 <button
                   key={cap}
                   className={`${styles.capacityBtn} ${cap === currentCapacity ? styles.capacityBtnActive : ''}`}
-                  onClick={() => setSelectedCapacity(cap)}
+                  onClick={() => handleCapacitySelect(cap)}
                 >
                   {cap}
                 </button>

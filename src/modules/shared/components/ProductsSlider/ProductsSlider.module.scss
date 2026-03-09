@@ -67,17 +67,16 @@
 .listWrapper {
   overflow: hidden;
   width: 100%;
-  margin-right: -$container-padding-mobile;
 
-  @media (min-width: $breakpoint-tablet) {
-    margin-right: -$container-padding-tablet;
-  }
+  // @media (min-width: $breakpoint-tablet) {
+  //   margin-right: -$container-padding-tablet;
+  // }
 
-  @media (min-width: $breakpoint-desktop) {
-    margin-right: 0;
-    width: 100%;
+  // @media (min-width: $breakpoint-desktop) {
+  //   margin-right: 0;
+  //   width: 100%;
 
-  }
+  // }
 }
 
 .list {
