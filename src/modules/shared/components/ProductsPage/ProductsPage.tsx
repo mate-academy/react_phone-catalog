@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { useSearchParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useProductsByCategory } from '../hooks/useProductsByCategory';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { getImg } from '../../../../utils/getImageUrl';
+import { Dropdown } from '../Dropdown/Dropdown';
 import styles from './ProductsPage.module.scss';
 
 type SortType = 'age' | 'name' | 'price';
@@ -18,6 +19,15 @@ type Props = {
 export const ProductsPage = ({ category, title, breadcrumbLabel }: Props) => {
   const { products, loading, error } = useProductsByCategory(category);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const sort = (searchParams.get('sort') || 'age') as SortType;
   const page = Number(searchParams.get('page') || '1');
@@ -38,9 +48,7 @@ export const ProductsPage = ({ category, title, breadcrumbLabel }: Props) => {
   }, [products, sort]);
 
   const totalPages =
-    perPage === 'all'
-      ? 1
-      : Math.ceil(sortedProducts.length / Number(perPage));
+    perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / Number(perPage));
 
   const visibleProducts =
     perPage === 'all'
@@ -100,6 +108,9 @@ export const ProductsPage = ({ category, title, breadcrumbLabel }: Props) => {
     );
   }
 
+  const sortWidth = windowWidth >= 1200 ? 176 : windowWidth >= 640 ? 187 : 100;
+  const perPageWidth = windowWidth >= 640 ? 136 : 100;
+
   return (
     <div className={styles.page}>
       <Breadcrumbs items={[{ label: breadcrumbLabel }]} />
@@ -108,52 +119,38 @@ export const ProductsPage = ({ category, title, breadcrumbLabel }: Props) => {
       <p className={styles.count}>{products.length} models</p>
 
       <div className={styles.filters}>
-        <div className={styles.filter}>
-          <label htmlFor="sort-select" className={styles.filterLabel}>
-            Sort by
-          </label>
-          <select
-            id="sort-select"
-            className={styles.select}
-            value={sort}
-            onChange={e => handleSort(e.target.value as SortType)}
-          >
-            <option value="age">Newest</option>
-            <option value="name">Alphabetically</option>
-            <option value="price">Cheapest</option>
-          </select>
-        </div>
+        <Dropdown
+          label="Sort by"
+          value={sort}
+          onChange={value => handleSort(value as SortType)}
+          options={[
+            { value: 'age', label: 'Newest' },
+            { value: 'name', label: 'Alphabetically' },
+            { value: 'price', label: 'Cheapest' },
+          ]}
+          width={sortWidth}
+        />
 
-        <div className={styles.filter}>
-          <label htmlFor="perPage-select" className={styles.filterLabel}>
-            Items on page
-          </label>
-          <select
-            id="perPage-select"
-            className={styles.select}
-            value={perPage}
-            onChange={e => handlePerPage(e.target.value)}
-          >
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value="all">All</option>
-          </select>
-        </div>
+        <Dropdown
+          label="Items on page"
+          value={perPage}
+          onChange={handlePerPage}
+          options={[
+            { value: '4', label: '4' },
+            { value: '8', label: '8' },
+            { value: '16', label: '16' },
+            { value: 'all', label: 'All' },
+          ]}
+          width={perPageWidth}
+        />
       </div>
 
       {visibleProducts.length === 0 ? (
-        <p className={styles.empty}>
-          There are no {category} yet
-        </p>
+        <p className={styles.empty}>There are no {category} yet</p>
       ) : (
         <div className={styles.grid}>
           {visibleProducts.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              fullWidth
-            />
+            <ProductCard key={product.id} product={product} fullWidth />
           ))}
         </div>
       )}

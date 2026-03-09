@@ -23,8 +23,14 @@
 
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: $spacing-md;
   margin-bottom: $spacing-lg;
+  align-items: flex-end;
+
+  & > * {
+    flex: 0 0 auto;
+  }
 }
 
 .filter {
