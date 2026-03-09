@@ -97,13 +97,13 @@
     height: 16px;
   }
 
-  &:hover:not(:disabled) {
-    border-color: $color-primary;
-  }
-
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
   }
 }
 

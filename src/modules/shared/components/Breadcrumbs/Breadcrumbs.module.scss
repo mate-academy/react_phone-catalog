@@ -49,4 +49,12 @@
   font-size: $font-size-xs;
   font-weight: 600;
   color: $color-secondary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 165px;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: none;
+  }
 }
