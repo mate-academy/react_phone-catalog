@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
+import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Preview.module.scss';
 
 type Props = {
@@ -132,7 +133,7 @@ export const Preview = ({ images }: Props) => {
           onClick={prevSlide}
         >
           <img
-            src="/icons/ArrowLeft.svg"
+            src={imageUrl('icons/ArrowLeft.svg')}
             alt=""
             className={styles.arrow__img}
           />
@@ -171,7 +172,7 @@ export const Preview = ({ images }: Props) => {
           onClick={nextSlide}
         >
           <img
-            src="/icons/ArrowRight.svg"
+            src={imageUrl('icons/ArrowRight.svg')}
             alt=""
             className={styles.arrow__img}
           />

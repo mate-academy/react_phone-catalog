@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -19,7 +20,11 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link to="/" className={styles.logo__link}>
-            <img src="/icons/Logo.svg" alt="" className={styles.logo__img} />
+            <img
+              src={imageUrl('icons/Logo.svg')}
+              alt=""
+              className={styles.logo__img}
+            />
           </Link>
         </div>
         <nav className={styles.nav}>
@@ -50,7 +55,7 @@ export const Header = () => {
           <div className={classNames(styles.block, styles.block__hidden)}>
             <Link to="/" className={styles.block__link}>
               <img
-                src="/icons/Favourites.svg"
+                src={imageUrl('icons/Favourites.svg')}
                 alt=""
                 className={styles.block__img}
               />
@@ -59,7 +64,7 @@ export const Header = () => {
           <div className={classNames(styles.block, styles.block__hidden)}>
             <Link to="/" className={styles.block__link}>
               <img
-                src="/icons/Shopping_Cart.svg"
+                src={imageUrl('icons/Shopping_Cart.svg')}
                 alt=""
                 className={styles.block__img}
               />
@@ -113,14 +118,14 @@ export const Header = () => {
         <div className={styles.menu__footer}>
           <Link to="/" className={styles.menu__link}>
             <img
-              src="/icons/Favourites.svg"
+              src={imageUrl('icons/Favourites.svg')}
               alt=""
               className={styles.menu__img}
             />
           </Link>
           <Link to="/" className={styles.menu__link}>
             <img
-              src="/icons/Shopping_Cart.svg"
+              src={imageUrl('icons/Shopping_Cart.svg')}
               alt=""
               className={styles.menu__img}
             />

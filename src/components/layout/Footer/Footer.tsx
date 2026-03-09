@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -13,7 +14,11 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          <img src="/icons/Logo.svg" alt="" className={styles.logo__img} />
+          <img
+            src={imageUrl('icons/Logo.svg')}
+            alt=""
+            className={styles.logo__img}
+          />
         </Link>
         <nav className={styles.menu}>
           <ul className={styles.list}>
@@ -38,7 +43,7 @@ export const Footer = () => {
           Back to top
           <div className={styles.button__icon}>
             <img
-              src="/icons/ArrowUp.svg"
+              src={imageUrl('icons/ArrowUp.svg')}
               alt=""
               className={styles.button__icon_pic}
             />
