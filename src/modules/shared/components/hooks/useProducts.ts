@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../../../../types';
 
+const BASE = import.meta.env.DEV ? '/' : '/react_phone-catalog/';
+
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
+    fetch(`${BASE}api/products.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch');
