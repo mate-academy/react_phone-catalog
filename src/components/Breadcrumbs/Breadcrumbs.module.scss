@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  align-items: center ;
+  gap: 8px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &--current {
+    min-width: 0;
+  }
+}
+
+.link {
+  font-size: $uppercase-fs;
+  font-weight: 600;
+  line-height: 100%;
+  text-transform: capitalize;
+  color: $color-primary;
+  cursor: pointer;
+
+  &--current {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $color-secondary;
+  }
+}

@@ -1,0 +1,62 @@
+.imageSelect {
+  @include for-tablet {
+    flex-direction: row-reverse;
+    grid-column: span 7;
+    gap: 16px;
+  }
+
+  @include for-desktop {
+    grid-column: span 12;
+  }
+
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  flex: 1;
+  margin: 0 0 16px;
+}
+
+.image {
+  @include for-tablet {
+    margin: 0;
+  }
+
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  transition: $transition;
+  border: 1px solid $color-elements;
+
+  &:hover {
+    transition: $transition;
+    border-color: $color-secondary;
+  }
+}
+
+.imageMain {
+  border: 0;
+}
+
+.imageSelected {
+  transition: $transition;
+  border: 1px solid $color-primary;
+}
+
+.selector {
+  @include for-tablet {
+    flex-direction: column;
+    width: 35px;
+  }
+
+  @include for-desktop {
+    width: 80px;
+  }
+
+  display: flex;
+  gap: 8px;
+  height: 49px;
+  margin: 0 0 40px;
+}

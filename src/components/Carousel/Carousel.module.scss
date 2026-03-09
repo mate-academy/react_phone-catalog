@@ -1,0 +1,75 @@
+.header {
+  @include for-tablet {
+    padding: 0;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 24px;
+}
+
+.title {
+  flex-shrink: 0;
+  font-family: $font-family;
+  font-size: $h2-fs-mobile;
+  font-weight: $h2-fw;
+  line-height: $h2-lh-mobile;
+
+  @include for-tablet {
+    font-size: $h2-fs;
+    line-height: $h2-lh;
+    letter-spacing: $h2-ls;
+  }
+}
+
+.products {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.swipe-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80px;
+
+  button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      transition: $transition;
+      border: 1px solid $color-primary;
+    }
+  }
+
+  .left-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+.window {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.loader {
+  width: 100%;
+}
+
+.items {
+  display: flex;
+  gap: 16px;
+  transition: $transition;
+}

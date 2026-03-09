@@ -1,0 +1,189 @@
+.page {
+  @include page-grid;
+
+  @include for-tablet {
+    padding: 0 24px;
+  }
+
+  @include for-desktop {
+    padding: 0 32px;
+  }
+
+  padding: 0 16px;
+
+  & > * {
+    @include fullsize-grid;
+  }
+}
+
+.loader {
+  @include for-desktop {
+    height: calc(100dvh - 65px);
+  }
+
+  height: calc(100dvh - 49px);
+}
+
+.breadcrumbs {
+  padding: 23px 0 0;
+  margin: 0 0 24px;
+}
+
+.backButton {
+  margin: 0 0 16px;
+}
+
+.title {
+  @include for-tablet {
+    margin: 0 0 40px;
+    font-size: $h2-fs;
+    line-height: $h2-lh;
+    letter-spacing: $h2-ls;
+  }
+
+  margin: 0 0 32px;
+  font-size: $h2-fs-mobile;
+  font-weight: $h2-fw;
+  line-height: $h2-lh-mobile;
+  color: $color-primary;
+}
+
+.header {
+  @include for-tablet {
+    margin: 0 0 64px;
+  }
+
+  @include for-desktop {
+    margin: 0 0 80px;
+  }
+
+  margin: 0 0 56px;
+}
+
+.about {
+  @include for-tablet {
+    margin: 0 0 64px;
+  }
+
+  @include for-desktop {
+    margin: 0 0 80px;
+    grid-column: 1 / 13;
+
+  }
+
+  margin: 0 0 56px;
+}
+
+.subtitle {
+  margin: 0 0 8px;
+  font-size: $st-fs;
+  font-weight: $st-fw;
+  line-height: $st-lh;
+  color: $color-secondary;
+}
+
+.divider {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 0 0 32px;
+  background-color: $color-elements;
+  border: 0;
+
+  &--specs {
+    @include for-tablet {
+      margin: 0 0 25px;
+    }
+
+    margin: 0 0 30px
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  font-size: $h2-fs;
+  font-weight: $h2-fw;
+  line-height: $h2-lh;
+  letter-spacing: -0.01em;
+}
+
+.priceOld {
+  font-size: $h3-fs;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: $color-secondary;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 32px;
+}
+
+.cartButton {
+  flex: 1;
+}
+
+.techSpecs {
+  @include for-tablet {
+    margin: 0 0 64px;
+  }
+
+  @include for-desktop {
+    margin: 0 0 109px;
+    grid-column: 14 / 25;
+  }
+
+  margin: 0 0 56px;
+}
+
+.sectionTitle {
+  @include for-tablet {
+    font-size: $h3-fs;
+    line-height: $h3-lh;
+  }
+
+  margin: 0 0 15px;
+  font-size: $h3-fs-mobile;
+  font-weight: $h3-fw;
+  line-height: $h3-lh-mobile;
+  color: $color-primary;
+}
+
+.carousel {
+  @include for-desktop {
+    margin: 0 0 81px;
+  }
+
+  @include for-tablet {
+    margin: 0 0 64px
+  }
+
+  margin: 0 0 56px;
+}
+
+.productCard {
+  @include for-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include for-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  width: 212px;
+  height: 439px;
+
+  &:hover {
+    box-shadow: none;
+    border: 1px solid $color-secondary;
+  }
+}
+
+

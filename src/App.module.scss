@@ -1,0 +1,11 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family;
+  color: $color-primary;
+}
+
+.content {
+  flex: 1;
+}
