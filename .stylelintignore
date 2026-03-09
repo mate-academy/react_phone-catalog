@@ -1,1 +1,5 @@
 /build
+*.tsx
+*.ts
+*.jsx
+*.js
