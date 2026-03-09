@@ -97,7 +97,11 @@ export const Header = () => {
           aria-label="Toggle theme"
         >
           <img
-            src={isDark ? '/img/icons/sun.svg' : '/img/icons/moon.svg'}
+            src={
+              isDark
+                ? getImg('/img/icons/sun.svg')
+                : getImg('/img/icons/moon.svg')
+            }
             alt="theme"
           />
         </button>
@@ -138,7 +142,11 @@ export const Header = () => {
         aria-label="Toggle menu"
       >
         <img
-          src={isMenuOpen ? '/img/icons/close.svg' : '/img/icons/menu.svg'}
+          src={
+            isMenuOpen
+              ? getImg('/img/icons/close.svg')
+              : getImg('/img/icons/menu.svg')
+          }
           alt="menu"
         />
       </button>

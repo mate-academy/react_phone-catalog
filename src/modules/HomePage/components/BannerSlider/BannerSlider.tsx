@@ -5,12 +5,16 @@ import styles from './BannerSlider.module.scss';
 const banners = [
   {
     id: 1,
-    src: '/img/banner-phones.png',
-    mobileSrc: '/img/banner-phones-mobile.png',
+    src: getImg('/img/banner-phones.png'),
+    mobileSrc: getImg('/img/banner-phones-mobile.png'),
     alt: 'Phones banner',
   },
-  { id: 2, src: '/img/banner-tablets.png', alt: 'Tablets banner' },
-  { id: 3, src: '/img/banner-accessories.png', alt: 'Accessories banner' },
+  { id: 2, src: getImg('/img/banner-tablets.png'), alt: 'Tablets banner' },
+  {
+    id: 3,
+    src: getImg('/img/banner-accessories.png'),
+    alt: 'Accessories banner',
+  },
 ];
 
 export const BannerSlider = () => {

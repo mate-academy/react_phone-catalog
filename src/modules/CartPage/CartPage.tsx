@@ -49,7 +49,7 @@ export const CartPage = () => {
                   </button>
 
                   <img
-                    src={`/${item.product.image}`}
+                    src={getImg(item.product.image)}
                     alt={item.product.name}
                     className={styles.itemImage}
                   />

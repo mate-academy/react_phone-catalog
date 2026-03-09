@@ -121,13 +121,16 @@ export const ProductDetailsPage = () => {
                 className={`${styles.thumbnail} ${index === selectedImage ? styles.thumbnailActive : ''}`}
                 onClick={() => setSelectedImage(index)}
               >
-                <img src={`/${img}`} alt={product.name} />
+                <img src={getImg(img)} alt={product.name} />
               </button>
             ))}
           </div>
 
           <div className={styles.mainImage}>
-            <img src={`/${product.images[selectedImage]}`} alt={product.name} />
+            <img
+              src={getImg(product.images[selectedImage])}
+              alt={product.name}
+            />
           </div>
         </div>
 
@@ -192,7 +195,9 @@ export const ProductDetailsPage = () => {
               onClick={() => productToAction && toggleFavorite(productToAction)}
             >
               <img
-                src={`/img/icons/fav-heart-like${isLiked ? '-red' : ''}.svg`}
+                src={getImg(
+                  `img/icons/fav-heart-like${isLiked ? '-red' : ''}.svg`,
+                )}
                 alt="favorite"
               />
             </button>
