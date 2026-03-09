@@ -19,7 +19,7 @@ export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const category = pathname.split('/')[1];
 
-  const { product, loading, error } = useProductDetails(
+  const { product, loading, error, notFound } = useProductDetails(
     category,
     productId || '',
   );
@@ -44,12 +44,30 @@ export const ProductDetailsPage = () => {
     return <div className={styles.loader}>Loading...</div>;
   }
 
-  if (error || !product) {
+  if (error) {
     return (
       <div className={styles.error}>
-        <p>Product was not found</p>
+        <p>Something went wrong</p>
+        <button onClick={() => window.location.reload()}>Reload</button>
       </div>
     );
+  }
+
+  if (notFound) {
+    return (
+      <div className={styles.notFound}>
+        <img
+          src="/img/product-not-found.png"
+          alt="Product not found"
+          className={styles.notFoundImage}
+        />
+        <p className={styles.notFoundText}>Product was not found</p>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return null;
   }
 
   const productToAction = {
@@ -180,22 +198,24 @@ export const ProductDetailsPage = () => {
           </div>
 
           {/* Short specs */}
-          <div className={styles.specs}>
-            <div className={styles.spec}>
-              <span className={styles.specName}>Screen</span>
-              <span className={styles.specValue}>{product.screen}</span>
-            </div>
-            <div className={styles.spec}>
-              <span className={styles.specName}>Resolution</span>
-              <span className={styles.specValue}>{product.resolution}</span>
-            </div>
-            <div className={styles.spec}>
-              <span className={styles.specName}>Processor</span>
-              <span className={styles.specValue}>{product.processor}</span>
-            </div>
-            <div className={styles.spec}>
-              <span className={styles.specName}>RAM</span>
-              <span className={styles.specValue}>{product.ram}</span>
+          <div className={styles.shortSpecs}>
+            <div className={styles.specs}>
+              <div className={styles.spec}>
+                <span className={styles.specName}>Screen</span>
+                <span className={styles.specValue}>{product.screen}</span>
+              </div>
+              <div className={styles.spec}>
+                <span className={styles.specName}>Resolution</span>
+                <span className={styles.specValue}>{product.resolution}</span>
+              </div>
+              <div className={styles.spec}>
+                <span className={styles.specName}>Processor</span>
+                <span className={styles.specValue}>{product.processor}</span>
+              </div>
+              <div className={styles.spec}>
+                <span className={styles.specName}>RAM</span>
+                <span className={styles.specValue}>{product.ram}</span>
+              </div>
             </div>
           </div>
         </div>

@@ -54,7 +54,7 @@
   }
 
   @media (min-width: $breakpoint-desktop) {
-    grid-template-columns: 560px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: $spacing-2xl;
   }
 }
@@ -113,8 +113,10 @@
   }
 
   @media (min-width: $breakpoint-desktop) {
-    width: 464px;
-    height: 464px;
+    width: 100%;
+    max-width: 464px;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 
   img {
@@ -126,11 +128,6 @@
 
 /* ─── Options ─── */
 
-.options {
-  @media (min-width: $breakpoint-desktop) {
-    max-width: 320px;
-  }
-}
 
 .optionGroup {
   margin-bottom: $spacing-sm;
@@ -289,6 +286,16 @@
 
 
 /* ─── Specs ─── */
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 320px;
+  }
+}
+
 .specs {
   display: flex;
   flex-direction: column;
@@ -298,10 +305,6 @@
 .spec {
   display: flex;
   justify-content: space-between;
-
-  @media (min-width: $breakpoint-desktop) {
-    max-width: 512px;
-  }
 }
 
 .specName {
@@ -317,6 +320,10 @@
   color: $color-primary;
   line-height: 1.5;
   text-align: right;
+
+  @media (min-width: $breakpoint-desktop) {
+    word-break: break-word;
+  }
 }
 
 
@@ -333,9 +340,8 @@
   }
 
   @media (min-width: $breakpoint-desktop) {
-    grid-template-columns: 560px 512px;
+    grid-template-columns: 1fr 1fr;
     gap: $spacing-2xl; // 64px
-    margin-bottom: $spacing-3xl;
   }
 }
 
@@ -347,7 +353,11 @@
 
 .techSpecs {
   @media (min-width: $breakpoint-desktop) {
-    max-width: 512px;
+    width: 100%;
+
+    .specs {
+      width: 100%;
+    }
   }
 }
 
@@ -373,4 +383,27 @@
   font-size: $font-size-sm;
   color: $color-secondary;
   line-height: 1.6;
+}
+
+/* ─── Product is Not Found ─── */
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl 0;
+  text-align: center;
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: $spacing-lg;
+}
+
+.notFoundText {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: $color-primary;
 }

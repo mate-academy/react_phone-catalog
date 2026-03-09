@@ -5,10 +5,12 @@ export const useProductDetails = (category: string, productId: string) => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     setError(false);
+    setNotFound(false);
 
     fetch(`/api/${category}.json`)
       .then(res => {
@@ -22,7 +24,7 @@ export const useProductDetails = (category: string, productId: string) => {
         const found = data.find(p => p.id === productId);
 
         if (!found) {
-          setError(true);
+          setNotFound(true);
         } else {
           setProduct(found);
         }
@@ -35,5 +37,5 @@ export const useProductDetails = (category: string, productId: string) => {
       });
   }, [category, productId]);
 
-  return { product, loading, error };
+  return { product, loading, error, notFound };
 };
