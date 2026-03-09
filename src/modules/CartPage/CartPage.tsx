@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { getImg } from '../../utils/getImageUrl';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
@@ -24,7 +25,7 @@ export const CartPage = () => {
   return (
     <div className={styles.page}>
       <button className={styles.back} onClick={() => navigate(-1)}>
-        <img src="/img/icons/arrow-left.svg" alt="back" />
+        <img src={getImg('/img/icons/arrow-left.svg')} alt="back" />
         <span>Back</span>
       </button>
 
@@ -44,7 +45,7 @@ export const CartPage = () => {
                     onClick={() => removeFromCart(item.id)}
                     aria-label="Remove"
                   >
-                    <img src="/img/icons/close.svg" alt="remove" />
+                    <img src={getImg('/img/icons/close.svg')} alt="remove" />
                   </button>
 
                   <img
@@ -63,7 +64,7 @@ export const CartPage = () => {
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       disabled={item.quantity === 1}
                     >
-                      <img src="/img/icons/minus.svg" alt="minus" />
+                      <img src={getImg('/img/icons/minus.svg')} alt="minus" />
                     </button>
                     <span className={styles.quantityValue}>
                       {item.quantity}
@@ -72,7 +73,7 @@ export const CartPage = () => {
                       className={styles.quantityBtn}
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                     >
-                      <img src="/img/icons/plus.svg" alt="plus" />
+                      <img src={getImg('/img/icons/plus.svg')} alt="plus" />
                     </button>
                   </div>
 

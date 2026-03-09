@@ -9,6 +9,7 @@ import { useFavorites } from '../../context/FavoritesContext';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs/Breadcrumbs';
 // eslint-disable-next-line max-len
 import { ProductsSlider } from '../shared/components/ProductsSlider/ProductsSlider';
+import { getImg } from '../../utils/getImageUrl';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -57,7 +58,7 @@ export const ProductDetailsPage = () => {
     return (
       <div className={styles.notFound}>
         <img
-          src="/img/product-not-found.png"
+          src={getImg('/img/product-not-found.png')}
           alt="Product not found"
           className={styles.notFoundImage}
         />
@@ -103,7 +104,7 @@ export const ProductDetailsPage = () => {
 
       {/* Back button */}
       <button className={styles.back} onClick={() => navigate(-1)}>
-        <img src="/img/icons/arrow-left.svg" alt="back" />
+        <img src={getImg('/img/icons/arrow-left.svg')} alt="back" />
         <span>Back</span>
       </button>
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './BannerSlider.module.scss';
 
 const banners = [
@@ -45,7 +46,7 @@ export const BannerSlider = () => {
           onClick={handlePrev}
           aria-label="Previous slide"
         >
-          <img src="/img/icons/arrow-left.svg" alt="Previous" />
+          <img src={getImg('/img/icons/arrow-left.svg')} alt="Previous" />
         </button>
 
         {/* images */}
@@ -79,7 +80,7 @@ export const BannerSlider = () => {
           onClick={handleNext}
           aria-label="Next slide"
         >
-          <img src="/img/icons/arrow-right.svg" alt="Next" />
+          <img src={getImg('/img/icons/arrow-right.svg')} alt="Next" />
         </button>
       </div>
 

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
 import { useTheme } from '../../../../context/ThemeContext';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './Header.module.scss';
 
 const getNavLinkClass = (
@@ -24,7 +25,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.left}>
         <NavLink to="/" className={styles.logo} onClick={handleMenuClose}>
-          <img src="/img/logo.svg" alt="Nice Gadgets" />
+          <img src={getImg('/img/logo.svg')} alt="Nice Gadgets" />
         </NavLink>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
@@ -107,7 +108,10 @@ export const Header = () => {
           }
         >
           <div className={styles.iconWrapper}>
-            <img src="/img/icons/fav-heart-like.svg" alt="favorite icon" />
+            <img
+              src={getImg('/img/icons/fav-heart-like.svg')}
+              alt="favorite icon"
+            />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </div>
         </NavLink>
@@ -119,7 +123,7 @@ export const Header = () => {
         >
           <div className={styles.iconWrapper}>
             <img
-              src="/img/icons/shopping-bag-cart.svg"
+              src={getImg('/img/icons/shopping-bag-cart.svg')}
               alt="shopping bag cart"
             />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
@@ -219,7 +223,10 @@ export const Header = () => {
               onClick={handleMenuClose}
             >
               <div className={styles.iconWrapper}>
-                <img src="/img/icons/fav-heart-like.svg" alt="favorites" />
+                <img
+                  src={getImg('/img/icons/fav-heart-like.svg')}
+                  alt="favorites"
+                />
                 {favCount > 0 && (
                   <span className={styles.badge}>{favCount}</span>
                 )}
@@ -238,7 +245,10 @@ export const Header = () => {
               onClick={handleMenuClose}
             >
               <div className={styles.iconWrapper}>
-                <img src="/img/icons/shopping-bag-cart.svg" alt="cart" />
+                <img
+                  src={getImg('/img/icons/shopping-bag-cart.svg')}
+                  alt="cart"
+                />
                 {cartCount > 0 && (
                   <span className={styles.badge}>{cartCount}</span>
                 )}

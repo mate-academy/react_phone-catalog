@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../../../../types';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './ProductsSlider.module.scss';
 
 type Props = {
@@ -40,7 +41,7 @@ export const ProductsSlider = ({
             disabled={startIndex === 0}
             aria-label="Previous"
           >
-            <img src="/img/icons/arrow-left.svg" alt="Previous" />
+            <img src={getImg('/img/icons/arrow-left.svg')} alt="Previous" />
           </button>
           <button
             className={styles.btn}
@@ -48,7 +49,7 @@ export const ProductsSlider = ({
             disabled={startIndex >= products.length - 1}
             aria-label="Next"
           >
-            <img src="/img/icons/arrow-right.svg" alt="Next" />
+            <img src={getImg('/img/icons/arrow-right.svg')} alt="Next" />
           </button>
         </div>
       </div>

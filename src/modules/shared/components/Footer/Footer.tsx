@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -10,7 +11,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-          <img src="/img/logo.svg" alt="Nice Gadgets" />
+          <img src={getImg('/img/logo.svg')} alt="Nice Gadgets" />
         </NavLink>
 
         <nav className={styles.nav}>
@@ -43,7 +44,7 @@ export const Footer = () => {
         <button className={styles.backToTop} onClick={handleScrollToTop}>
           <span>Back to top</span>
           <div className={styles.backToTopIcon}>
-            <img src="/img/icons/arrow-up.svg" alt="arrow up" />
+            <img src={getImg('/img/icons/arrow-up.svg')} alt="arrow up" />
           </div>
         </button>
       </div>

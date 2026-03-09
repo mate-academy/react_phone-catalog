@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useProductsByCategory } from '../hooks/useProductsByCategory';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './ProductsPage.module.scss';
 
 type SortType = 'age' | 'name' | 'price';
@@ -164,7 +165,7 @@ export const ProductsPage = ({ category, title, breadcrumbLabel }: Props) => {
             onClick={() => handlePage(page - 1)}
             disabled={page === 1}
           >
-            <img src="/img/icons/arrow-left.svg" alt="Previous" />
+            <img src={getImg('/img/icons/arrow-left.svg')} alt="Previous" />
           </button>
 
           {getVisiblePages().map(p => (
@@ -182,7 +183,7 @@ export const ProductsPage = ({ category, title, breadcrumbLabel }: Props) => {
             onClick={() => handlePage(page + 1)}
             disabled={page === totalPages}
           >
-            <img src="/img/icons/arrow-right.svg" alt="Next" />
+            <img src={getImg('/img/icons/arrow-right.svg')} alt="Next" />
           </button>
         </div>
       )}

@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import { getImg } from '../../utils/getImageUrl';
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage = () => {
   return (
     <div className={styles.page}>
       <img
-        src="/img/page-not-found.png"
+        src={getImg('/img/page-not-found.png')}
         alt="Page not found"
         className={styles.image}
       />

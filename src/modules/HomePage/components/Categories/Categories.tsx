@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getImg } from '../../../../utils/getImageUrl';
 import styles from './Categories.module.scss';
 
 export const Categories = () => {
@@ -10,7 +11,7 @@ export const Categories = () => {
         <Link to="/phones" className={styles.item}>
           <div className={styles.imageWrapper}>
             <img
-              src="/img/category-phones.png"
+              src={getImg('/img/category-phones.png')}
               alt="Phones"
               className={styles.image}
             />
@@ -22,7 +23,7 @@ export const Categories = () => {
         <Link to="/tablets" className={styles.item}>
           <div className={styles.imageWrapper}>
             <img
-              src="/img/category-tablets.png"
+              src={getImg('/img/category-tablets.png')}
               alt="Tablets"
               className={styles.image}
             />
@@ -34,7 +35,7 @@ export const Categories = () => {
         <Link to="/accessories" className={styles.item}>
           <div className={styles.imageWrapper}>
             <img
-              src="/img/category-accessories.png"
+              src={getImg('/img/category-accessories.png')}
               alt="Accessories"
               className={styles.image}
             />
