@@ -1,5 +1,5 @@
 import React from 'react';
-import './SkeletonproductInfoPage.scss';
+import './SkeletonProductInfoPage.scss';
 
 export const SkeletonProductInfoPage: React.FC = () => {
   return (
