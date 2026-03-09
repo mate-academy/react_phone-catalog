@@ -10,7 +10,7 @@ export const useProductsByCategory = (category: string) => {
     setLoading(true);
     setError(false);
 
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch');

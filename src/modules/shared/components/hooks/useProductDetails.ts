@@ -12,7 +12,7 @@ export const useProductDetails = (category: string, productId: string) => {
     setError(false);
     setNotFound(false);
 
-    fetch(`/api/${category}.json`)
+    fetch(`${import.meta.env.BASE_URL}api/${category}.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch');
