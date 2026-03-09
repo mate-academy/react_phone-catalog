@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
