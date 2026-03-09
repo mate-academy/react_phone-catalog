@@ -6,11 +6,14 @@
       const path = window.location.pathname;
       const search = window.location.search;
       const hash = window.location.hash;
+    
+      const cleanPath = path.replace('/react_phone-catalog', '') || '/';
+
       const redirectUrl =
         window.location.origin +
         '/react_phone-catalog/' +
         '?redirect=' +
-        encodeURIComponent(path + search + hash);
+        encodeURIComponent(cleanPath + search + hash);
 
       window.location.replace(redirectUrl);
     </script>
