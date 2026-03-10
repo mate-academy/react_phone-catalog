@@ -9,7 +9,6 @@
     grid-column: 1/-1;
     flex-direction: column;
     width: 100%;
-    min-width: 0;
     flex: 1 1 0%;
     min-width: 0;
   }
@@ -37,6 +36,7 @@
 
    &__productsFilter {
       margin-top: 32px;
+
        @include page-grid;
 
 }
@@ -66,6 +66,7 @@
 
  .filterItem--sort-by {
    grid-column:  span 2;
+
     @include on-tablet {
       grid-column:  1/5;
     }

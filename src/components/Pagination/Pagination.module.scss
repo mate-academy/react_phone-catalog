@@ -77,16 +77,14 @@
 
   }
   &--button-left {
-
-
     background-image: url('/img/icons/icon-button-left-2x.png');
     &:hover {
       background-color: $hover-bg-color;
       border-color: $primary-color;
+
       @include hover(color, $hover-bg-color(1.1));
   }
     &.disabled, &[disabled] {
-
     background-image: url('/img/icons/icon-button-left-disabled-2x.png');
   }
   }
@@ -97,10 +95,10 @@
       &:hover {
       background-color: $hover-bg-color;
       border-color: $primary-color;
+
       @include hover(color, $hover-bg-color(1.1));
   }
     &.disabled, &[disabled] {
-
     background-image: url('/img/icons/icon-button-right-disabled-2x.png');
   }
   }

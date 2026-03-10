@@ -30,14 +30,12 @@
     }
 
   &__topBar {
-     grid-column: 4;
      grid-row: 1;
      height: 62px;
      grid-column: 4;
      display: flex;
      align-items: center;
-     justify-self: center;
-      align-self: end;
+     place-self: end center;
 
       @include on-tablet {
         grid-column: 11/-1;
@@ -100,7 +98,6 @@
 
 
 .icon {
-
     width: 32px;
     height: 32px;
     padding: 0;
@@ -130,16 +127,14 @@
 
   }
   &--button-left {
-
-
     background-image: url('/img/icons/icon-button-left-2x.png');
     &:hover {
       background-color: $hover-bg-color;
       border-color: $primary-color;
+
       @include hover(color, $hover-bg-color(1.1));
   }
     &.disabled, &[disabled] {
-
     background-image: url('/img/icons/icon-button-left-disabled-2x.png');
   }
   }
@@ -150,10 +145,10 @@
       &:hover {
       background-color: $hover-bg-color;
       border-color: $primary-color;
+
       @include hover(color, $hover-bg-color(1.1));
   }
     &.disabled, &[disabled] {
-
     background-image: url('/img/icons/icon-button-right-disabled-2x.png');
   }
   }

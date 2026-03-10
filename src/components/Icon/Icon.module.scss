@@ -10,6 +10,7 @@
   object-fit: cover;
   width: object-fit;
   box-sizing: border-box;
+
   @include hover(transform, scale(1.1));
 
 }
@@ -58,21 +59,19 @@
     background-image: url(/img/icons/icon-home-2x.png);
     width: 16px;
     height: 16px;
-    margin-inline: 0px;
+    margin-inline: 0;
   }
 
     &--button-right {
     background-image: url(/img/icons/icon-button-right-2x.png);
     justify-self: end;
-    
+
   }
 }
 
   .icon--large {
     width: 40px;
     height: 40px;
-
-    box-sizing: border-box;
     flex: 0 0 auto;
 
     background-color: transparent;
@@ -113,3 +112,33 @@
   }
 
  }
+
+ .icon--absolute {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: var(--text-color);
+}
+
+.cart-badge {
+  position: absolute;
+  top: 4px;
+  right: -32px;
+  min-width: 10px;
+  height: 10px;
+  padding-block: 3px;
+  border-radius: 999px;
+  background-color: #476DF4;
+  color: #fff;
+  line-height: 10px;
+  text-align: center;
+  transform: translate(0, 0);
+  pointer-events: none;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 9px;
+}

@@ -6,6 +6,7 @@ import FavouritesLink from '../FavouritesLink/index';
 import AddToCartButton from '../AddToCartButton';
 import Button from '../Button/index';
 import buttonStyles from '../Button/Button.module.scss';
+import { useCart } from '../../context/CartContext';
 
 type ProductCardProps = {
   product: Product;
@@ -19,11 +20,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   index,
   className,
-  handleAddToCart,
+
   handleToggleFavorite,
 }) => {
   const visibleOnTablet = 2;
   const visibleOnDesktop = 4;
+  const { items, addToCart } = useCart();
+  const isInCart = items.some(i => i.product.id === product.id);
 
   return (
     <div
@@ -64,8 +67,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <div className={styles.productCard__bottom}>
-          <AddToCartButton handleAddToCart={() => handleAddToCart?.(product)} />
-
+          <AddToCartButton
+            onClick={() => addToCart(product)}
+            isInCart={isInCart}
+          />
           <Button
             className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
             onClick={() => handleToggleFavorite?.(String(product?.id))}

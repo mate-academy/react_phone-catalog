@@ -10,6 +10,7 @@
      &:hover {
         background-color: $hover-bg-color;
         border-color: $primary-color;
+
         @include hover(color, $hover-bg-color(1.1));
      }
 

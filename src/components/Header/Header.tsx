@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react';
 import Logo from '../Logo';
 import { Link } from 'react-router-dom';
 import FavouritesLink from '../FavouritesLink';
+import { useCart } from '../../context/CartContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { totalQuantity } = useCart();
 
   const handleMenuClick = () => {
     setTimeout(() => setIsMenuOpen(false), 50);
@@ -45,36 +47,42 @@ export const Header = () => {
     <>
       <header className={styles.header}>
         <div className={styles.topBar}>
-        <div  className={styles.topBar__inner}>
+          <div className={styles.topBar__inner}>
             <Logo />
-          <div className={styles.topBar__menu}>
-            <Menu handleMenuClick={handleMenuClick} />
-          </div>
-
-          <div className={styles.topBar__icons}>
-            <div className={styles.icon__background}>
-              <FavouritesLink className={styles.header__favIcon} />
+            <div className={styles.topBar__menu}>
+              <Menu handleMenuClick={handleMenuClick} />
             </div>
-            <div className={styles.icon__background}>
-              <Link
-                to="/shopping-bag-cart"
-                className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
-              ></Link>
+            <div className={styles.topBar__icons}>
+              <div className={styles.icon__background}>
+                <FavouritesLink className={styles.header__favIcon} />
+              </div>
+              <div className={styles.icon__background}>
+                <Link
+                  to="/cart"
+                  className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
+                >
+                  {totalQuantity > 0 && (
+                    <span
+                      className={`${styles['icon--absolute']} ${styles['cart-badge']}`}
+                    >
+                      {totalQuantity}
+                    </span>
+                  )}
+                </Link>
+              </div>
               <div className={styles.icon__background}>
                 <button
                   type="button"
                   onClick={() => setIsMenuOpen(prev => !prev)}
-                  className={`${styles.icon}  ${styles['icon--menu']}`}
+                  className={`${styles.icon} ${styles['icon--menu']}`}
                   aria-expanded={isMenuOpen}
                   aria-controls="main-menu"
-                ></button>
+                />
               </div>
             </div>
           </div>
         </div>
-        </div>
       </header>
-
       <MainMenu
         isMenuOpen={isMenuOpen}
         onClose={handleCloseMenu}

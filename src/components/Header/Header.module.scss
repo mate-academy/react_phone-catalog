@@ -1,6 +1,7 @@
 @use '../../utils/vars' as *;
 @import '../../utils/mixins';
 @import '../Icon/Icon.module';
+
 .header {
   position: sticky;
   top: 0;
@@ -16,18 +17,21 @@
     @include on-tablet {
       height: 48px;
     }
+
     @include on-desktop {
       height: 64px; }
   &__favIcon {
   display: none;
+
   @include on-tablet {
     display: block; }
-  @include on-desktop {
 
+  @include on-desktop {
     display: block;
   }
 }
 }
+
 .topBar {
   width: 100%;
   display: flex;
@@ -70,6 +74,7 @@
   box-sizing: border-box;
 }
 }
+
 .link {
   text-decoration: none;
   font-size: 12px;

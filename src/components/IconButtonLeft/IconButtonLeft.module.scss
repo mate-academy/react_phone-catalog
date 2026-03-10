@@ -3,12 +3,6 @@
 @import '../../utils/mixins';
 
 .icon {
-
-
-display: block;
-box-sizing: border-box;
-border-radius: 50%;
-
   width: 32px;
     height: 32px;
     padding: 0;
@@ -28,11 +22,11 @@ border-radius: 50%;
    
 
   &--button-left {
-
   background-image: url('/img/icons/icon-button-left-2x.png');
   &:hover {
   background-color: $hover-bg-color;
   border-color: $primary-color;
+
   @include hover(color, $hover-bg-color(1.1));
 
   &.disabled, &[disabled] {

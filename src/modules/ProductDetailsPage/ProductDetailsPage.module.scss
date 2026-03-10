@@ -2,8 +2,8 @@
 @import '../../utils/mixins' ;
 
 .productDetailsPage {
-
   @include page-grid;
+
   grid-column: 1/-1;
 
  // max-width: $max-width-no-padding;
@@ -11,10 +11,12 @@
 
   &__content {
     @include page-grid;
+
     grid-column: 1/-1;
   }
   .label {
     @include label;
+
     margin-bottom: 8px;
   }
 
@@ -44,7 +46,6 @@
    &__productImageContainer {
     min-width: 0;
     box-sizing: border-box;
-    width: 274px;
     height: 274px;
     grid-column: 2/3;
     width: 100%;
@@ -53,12 +54,11 @@
 
 
       @include on-tablet {
-        grid-row: 1;
-       // width: 100%;
        min-width: 273x;
         height: 273px;
           grid-column: 3 / 7;
           grid-row: 1;
+
         //  width: 100%;
 
       }
@@ -80,12 +80,15 @@
     margin: 0 auto;
     height: 100%;
     grid-column: span 4;
+
      @include on-tablet {
         grid-column: span 4;
       }
+
        @include on-tablet {
         grid-column: span 7;
       }
+
         @include on-desktop {
         grid-column: span 8;
       }
@@ -98,7 +101,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-sizing: border-box;
   border-radius: 4px;
   border: 1px solid #C4C4C4;
   padding: 4px;
@@ -133,14 +135,17 @@
 //  width: 100vw;
   min-width: 0;
   box-sizing: border-box;
+
   @include on-tablet {
     @include page-grid;
+
     grid-column: 1/-1;
     width: 100vw;
   }
 
   @include on-desktop {
      @include page-grid;
+
      grid-column: 1/-1;
       width: 100vw;
       max-width: $max-width-no-padding;
@@ -159,14 +164,16 @@
   justify-content: space-between;
 
    grid-column: 1/-1;
+
  @include on-tablet {
     flex-direction: column;
     gap: 8px;
 
     grid-column: 1/2;
     grid-row: 1;
-    height: 0px;
+    height: 0;
    }
+
    @include on-desktop {
       grid-column: 1/2;
    }
@@ -211,14 +218,17 @@
 
   &__productInfoTable--general {
      @include page-grid;
+
       white-space: nowrap;
        min-width: 0;
         padding: 0;
         margin-top: 32px;
-        gap: 8px 0px;
+        gap: 8px 0;
+
       @include on-tablet {
         grid-column: 8 / -1;
       }
+
      @include on-desktop {
           //grid-column: 11/23;
           grid-column: 11;
@@ -228,11 +238,12 @@
   }
   &__productInfoTable--tech-specs {
     @include page-grid;
+
 //grid-template-columns: repeat(2, 1fr);
 
 
         white-space: nowrap;
-        gap: 8px 0px;
+        gap: 8px 0;
      grid-column: 1 / -1;
 
      @include on-tablet {
@@ -242,17 +253,19 @@
 
      @include on-desktop {
         @include page-grid;
+
         //grid-template-columns: repeat(2, 1fr);
         grid-column: 11/23;
         grid-row: 2;
         height: 296px;
         white-space: nowrap;
-        gap: 8px 0px;
+        gap: 8px 0;
     }
   }
 
 .section--about {
    @include page-grid;
+
   grid-column: 1/-1;
 
   @include on-desktop {
@@ -293,13 +306,14 @@
 
 }
    .productInfoTable {
-
    @include page-grid;
+
     grid-template-columns: 1fr 1fr;
     gap: 8px 0;
     padding: 0;
     margin: 0;
     align-items: center;
+
     //width: 100%;
     border-top: 1px solid $elements-color;
     grid-column: span 4;
@@ -328,6 +342,7 @@
     color: $secondary-color;
     align-self: left;
     white-space: nowrap;
+
     //grid-template-columns: 2fr;
 
     //grid-template-columns: 1fr;
@@ -364,8 +379,7 @@
   padding-block: 8px;
 }
 &__id {
-  align-self: flex-start;
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
   margin: 0;
   padding: 0;
 }
@@ -380,8 +394,8 @@
   justify-content: space-between;
 }
 .fieldset {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   border: none;
 }
 .option {
@@ -403,7 +417,7 @@
 }
 
 .optionText {
-  margin-left: 0px;
+  margin-left: 0;
   font-size: 14px;
   font-weight: 600;
   border-radius: 4px;
@@ -414,7 +428,7 @@
 
 .option input:checked + .optionText {
   font-weight: 600;
-  color: #FFFFFF;
+  color: #FFF;
   background-color: $primary-color;
 
   border: 1px solid $primary-color;
@@ -423,10 +437,11 @@
 .colorOption {
   width: 30px;
   height: 30px;
-  padding: 0px;
+  padding: 0;
   margin: 0;
   border-radius: 50%;
   display: inline-flex;
+
  // align-items: center;
  // justify-content: center;
   cursor: pointer;

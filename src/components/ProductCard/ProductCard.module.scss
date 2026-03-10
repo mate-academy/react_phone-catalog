@@ -18,6 +18,7 @@
     border-radius: 8px;
     border: 1px solid $elements-color;
     background: #FFFF;
+
      @include on-tablet {
         width: auto;
         grid-row: span 5;
@@ -95,6 +96,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px 0;
     align-items: center;
+
   //  width: 100%;
     border-top: 1px solid $elements-color;
     margin-block: 8px;
@@ -137,7 +139,6 @@
 
 
 &__product {
-
   margin: 0;
   padding: 0;
   display: none;
