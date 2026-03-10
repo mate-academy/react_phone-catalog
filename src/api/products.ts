@@ -1,28 +1,30 @@
 import { Accessory, Phone, Product, Tablet } from '../types';
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch(`${BASE_URL}api/products.json`);
   const data = await response.json();
 
   return data;
 };
 
 export const getPhones = async (): Promise<Phone[]> => {
-  const response = await fetch('/api/phones.json');
+  const response = await fetch(`${BASE_URL}api/phones.json`);
   const data = await response.json();
 
   return data;
 };
 
 export const getTablets = async (): Promise<Tablet[]> => {
-  const response = await fetch('/api/tablets.json');
+  const response = await fetch(`${BASE_URL}api/tablets.json`);
   const data = await response.json();
 
   return data;
 };
 
 export const getAccessories = async (): Promise<Accessory[]> => {
-  const response = await fetch('/api/accessories.json');
+  const response = await fetch(`${BASE_URL}api/accessories.json`);
   const data = await response.json();
 
   return data;
@@ -54,7 +56,7 @@ export const getProductById = async (
 };
 
 export const getSuggestedProducts = async (): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch(`${BASE_URL}api/products.json`);
   const data: Product[] = await response.json();
   const shuffled = [...data].sort(() => Math.random() - 0.5);
 
