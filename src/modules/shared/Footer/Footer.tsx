@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <Link to="/" className={styles.logo}>
-          <img src="/img/logo.svg" alt="Nice Gadgets" />
+          <img src="img/logo.svg" alt="Nice Gadgets" />
         </Link>
 
         <div className={styles.links}>
@@ -32,11 +32,7 @@ export const Footer: React.FC = () => {
           className={styles.button}
         >
           Back to top
-          <img
-            src="/img/icons/arrow-up.svg"
-            alt="Up"
-            className={styles.arrow}
-          />
+          <img src="img/icons/arrow-up.svg" alt="Up" className={styles.arrow} />
         </button>
       </div>
     </footer>

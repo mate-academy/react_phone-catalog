@@ -24,11 +24,11 @@ export const SearchInput: React.FC<Props> = ({
     />
     {query ? (
       <button className={styles.searchClear} onClick={onClear}>
-        <img src="/img/icons/close.svg" alt="clear" />
+        <img src="img/icons/close.svg" alt="clear" />
       </button>
     ) : (
       <img
-        src="/img/icons/search.svg"
+        src="img/icons/search.svg"
         alt="search"
         className={styles.searchIcon}
       />

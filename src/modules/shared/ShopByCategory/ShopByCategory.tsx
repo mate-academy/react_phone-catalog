@@ -34,7 +34,7 @@ export const ShopByCategory = () => {
 
       <div className={styles.grid}>
         <Link to="/phones" className={styles.card}>
-          <img src="/img/phones-category.png" alt="Phones" />
+          <img src="img/phones-category.png" alt="Phones" />
           <h3>Mobile phones</h3>
           <p>
             {loading ? (
@@ -46,7 +46,7 @@ export const ShopByCategory = () => {
         </Link>
 
         <Link to="/tablets" className={styles.card}>
-          <img src="/img/tablets-category.png" alt="Tablets" />
+          <img src="img/tablets-category.png" alt="Tablets" />
           <h3>Tablets</h3>
           <p>
             {loading ? (
@@ -58,7 +58,7 @@ export const ShopByCategory = () => {
         </Link>
 
         <Link to="/accessories" className={styles.card}>
-          <img src="/img/accessories-category.png" alt="Accessories" />
+          <img src="img/accessories-category.png" alt="Accessories" />
           <h3>Accessories</h3>
           <p>
             {loading ? (

@@ -1,6 +1,9 @@
 import { Accessory, Phone, Product, Tablet } from '../types';
 
-const BASE_URL = import.meta.env.BASE_URL;
+// const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 export default async (): Promise<Product[]> => {
   const response = await fetch(`${BASE_URL}api/products.json`);

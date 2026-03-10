@@ -4,14 +4,14 @@ import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { useSwipe } from '../../../hooks/useSwipe';
 
 const imagesOnMobile = [
-  '/img/banner-mobile-1.png',
-  '/img/banner-mobile-2.png',
-  '/img/banner-mobile-3.png',
+  'img/banner-mobile-1.png',
+  'img/banner-mobile-2.png',
+  'img/banner-mobile-3.png',
 ];
 const imagesOnTablet = [
-  '/img/banner-tablet-1.png',
-  '/img/banner-tablet-2.png',
-  '/img/banner-tablet-3.png',
+  'img/banner-tablet-1.png',
+  'img/banner-tablet-2.png',
+  'img/banner-tablet-3.png',
 ];
 
 export const BannerSlider = () => {
@@ -78,7 +78,7 @@ export const BannerSlider = () => {
         onTouchEnd={handleTouchEnd}
       >
         <button className={styles.arrowLeft} onClick={prev}>
-          <img src="/img/icons/arrow-left.svg" alt="left" />
+          <img src="img/icons/arrow-left.svg" alt="left" />
         </button>
         <div className={styles.imageWrapper}>
           <div
@@ -99,7 +99,7 @@ export const BannerSlider = () => {
           </div>
         </div>
         <button className={styles.arrowRight} onClick={next}>
-          <img src="/img/icons/arrow-right.svg" alt="right" />
+          <img src="img/icons/arrow-right.svg" alt="right" />
         </button>
       </div>
       <div className={styles.dots}>

@@ -73,14 +73,14 @@ export const ProductsSlider: React.FC<Props> = ({
             disabled={index === 0 || loading}
             className={styles.btn}
           >
-            <img src="/img/icons/arrow-left.svg" alt="left" />
+            <img src="img/icons/arrow-left.svg" alt="left" />
           </button>
           <button
             onClick={next}
             disabled={index === maxIndex || loading}
             className={styles.btn}
           >
-            <img src="/img/icons/arrow-right.svg" alt="right" />
+            <img src="img/icons/arrow-right.svg" alt="right" />
           </button>
         </div>
       </div>

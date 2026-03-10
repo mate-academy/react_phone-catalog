@@ -22,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         className={styles.cardLink}
       >
         <div className={styles.imageWrapper}>
-          <img src={`/${product.image}`} alt="image" className={styles.image} />
+          <img src={`${product.image}`} alt="image" className={styles.image} />
         </div>
 
         <p className={styles.name}>{product.name}</p>
@@ -57,7 +57,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={
             isInCart(product.id) ? styles.btnAdded : styles.btnAddToCart
           }
-          // onClick={() => addToCart(product)}
           onClick={() => addToCart(product, () => showToast('Added to cart'))}
         >
           {isInCart(product.id) ? 'Added' : 'Add to cart'}
@@ -65,7 +64,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <button
           className={styles.btnFavorites}
-          // onClick={() => toggleFavorite(product)}
           onClick={() =>
             toggleFavorite(product, added =>
               showToast(
@@ -77,8 +75,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <img
             src={
               isFavorite(product.id)
-                ? '/img/icons/heart-filled.svg'
-                : '/img/icons/heart.svg'
+                ? 'img/icons/heart-filled.svg'
+                : 'img/icons/heart.svg'
             }
             alt="Favorites"
             className={styles.favorites}

@@ -20,7 +20,7 @@ export const Breadcrumbs: React.FC<Props> = ({ items }) => {
           {item.path ? (
             <Link to={item.path} className={styles.link}>
               {index === 0 ? (
-                <img src="/img/icons/home.svg" alt="Home" />
+                <img src="img/icons/home.svg" alt="Home" />
               ) : (
                 item.label
               )}

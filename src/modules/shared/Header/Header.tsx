@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.topBar}>
         <Link to="/" className={styles.logo}>
-          <img src="/img/logo.svg" alt="Nice Gadgets" />
+          <img src="img/logo.svg" alt="Nice Gadgets" />
         </Link>
 
         {/* Hide on mobile */}
@@ -93,7 +93,7 @@ export const Header: React.FC = () => {
           <button className={styles.iconLink} onClick={toggleTheme}>
             <img
               src={
-                theme === 'dark' ? '/img/icons/sun.svg' : '/img/icons/moon.svg'
+                theme === 'dark' ? 'img/icons/sun.svg' : 'img/icons/moon.svg'
               }
               alt="Toggle theme"
             />
@@ -104,7 +104,7 @@ export const Header: React.FC = () => {
               [styles.active]: isFavoritesActive,
             })}
           >
-            <img src="/img/icons/heart.svg" alt="Favorites" />
+            <img src="img/icons/heart.svg" alt="Favorites" />
             {favoritesCount > 0 && (
               <span className={styles.badge}>{favoritesCount}</span>
             )}
@@ -113,7 +113,7 @@ export const Header: React.FC = () => {
             to="/cart"
             className={cn(styles.iconLink, { [styles.active]: isCartActive })}
           >
-            <img src="/img/icons/cart.svg" alt="Cart" />
+            <img src="img/icons/cart.svg" alt="Cart" />
             {totalCount > 0 && (
               <span className={styles.badge}>{totalCount}</span>
             )}
@@ -125,7 +125,7 @@ export const Header: React.FC = () => {
           <button className={styles.iconLink} onClick={toggleTheme}>
             <img
               src={
-                theme === 'dark' ? '/img/icons/sun.svg' : '/img/icons/moon.svg'
+                theme === 'dark' ? 'img/icons/sun.svg' : 'img/icons/moon.svg'
               }
               alt="Toggle theme"
             />
@@ -133,12 +133,12 @@ export const Header: React.FC = () => {
 
           <button className={styles.burger} onClick={toggleMenu}>
             <img
-              src="/img/icons/menu.svg"
+              src="img/icons/menu.svg"
               className={isMenuOpen ? styles.hidden : ''}
               alt="Menu"
             />
             <img
-              src="/img/icons/close.svg"
+              src="img/icons/close.svg"
               className={isMenuOpen ? '' : styles.hidden}
               alt="Close"
             />
@@ -181,7 +181,7 @@ export const Header: React.FC = () => {
                 [styles.active]: isFavoritesActive,
               })}
             >
-              <img src="/img/icons/heart.svg" alt="Favorites" />
+              <img src="img/icons/heart.svg" alt="Favorites" />
               {favoritesCount > 0 && (
                 <span className={styles.badge}>{favoritesCount}</span>
               )}
@@ -190,7 +190,7 @@ export const Header: React.FC = () => {
               to="/cart"
               className={cn(styles.iconLink, { [styles.active]: isCartActive })}
             >
-              <img src="/img/icons/cart.svg" alt="Cart" />
+              <img src="img/icons/cart.svg" alt="Cart" />
               {totalCount > 0 && (
                 <span className={styles.badge}>{totalCount}</span>
               )}

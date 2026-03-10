@@ -157,7 +157,7 @@ export const ProductDetailsPage = () => {
       {!loading && error && <ErrorState onRetry={loadProduct} />}
       {!loading && !error && notFound && (
         <div className={styles.notFound}>
-          <img src="/img/page-not-found.png" alt="Not found" />
+          <img src="img/page-not-found.png" alt="Not found" />
           <p>Product was not found</p>
           <button onClick={() => navigate(-1)}>Go back</button>
         </div>
@@ -178,7 +178,7 @@ export const ProductDetailsPage = () => {
           />
 
           <button className={styles.btnBack} onClick={() => navigate(-1)}>
-            <img src="/img/icons/arrow-left.svg" alt="arrow-left" />
+            <img src="img/icons/arrow-left.svg" alt="arrow-left" />
             Back
           </button>
 
@@ -199,7 +199,7 @@ export const ProductDetailsPage = () => {
                     }
                     onClick={() => setActiveImage(index)}
                   >
-                    <img src={`/${image}`} alt={product.name} />
+                    <img src={`${image}`} alt={product.name} />
                   </button>
                 ))}
               </div>
@@ -210,7 +210,7 @@ export const ProductDetailsPage = () => {
                 onTouchEnd={handleTouchEnd}
               >
                 <img
-                  src={`/${product.images[activeImage]}`}
+                  src={`${product.images[activeImage]}`}
                   alt={product.name}
                 />
               </div>
@@ -311,8 +311,8 @@ export const ProductDetailsPage = () => {
                   <img
                     src={
                       isFavorite(productCart?.id || 0)
-                        ? '/img/icons/heart-filled.svg'
-                        : '/img/icons/heart.svg'
+                        ? 'img/icons/heart-filled.svg'
+                        : 'img/icons/heart.svg'
                     }
                     alt="Favorites"
                     className={styles.favorites}
