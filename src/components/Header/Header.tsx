@@ -34,7 +34,7 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={styles.left}>
           <NavLink to="/" className={styles.logo}>
-            <img src="img/logo/Logo.png" alt="SiteLogo.png" />
+            <img src="img/logo/Logo.svg" alt="SiteLogo.png" />
           </NavLink>
 
           <nav className={styles.nav}>
@@ -57,7 +57,7 @@ export const Header = () => {
           <div className={styles.icons}>
             <NavLink to="/favorites" className={getIconClass}>
               <div className={styles.iconWrapper}>
-                <img src="img/icons/Favorites.png" alt="Favorites" />
+                <img src="img/icons/Favorites.svg" alt="Favorites" />
                 {favorites.length > 0 && (
                   <span className={styles.iconBadge}>{favorites.length}</span>
                 )}
@@ -66,7 +66,7 @@ export const Header = () => {
             <NavLink to="/cart" className={getIconClass}>
               <div className={styles.iconWrapper}>
                 <img
-                  src="img/icons/Shoppingbag.png"
+                  src="img/icons/Shoppingbag.svg"
                   alt="ShoppingBagIcon.png"
                 />
                 {totalCount > 0 && (

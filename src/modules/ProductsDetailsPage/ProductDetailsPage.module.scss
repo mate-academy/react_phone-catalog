@@ -48,6 +48,7 @@
   @media (max-width: 640px) {
     flex-direction: column-reverse;
     height: auto;
+    align-items: center;
   }
 }
 
@@ -57,9 +58,10 @@
   gap: 16px;
 
   @media (max-width: 640px) {
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: center;
     margin-top: 16px;
+
   }
 }
 
@@ -96,6 +98,11 @@
     max-height: 100%;
     object-fit: contain;
   }
+
+  @media (max-width: 640px) {
+      width: 50%;
+      display: block;
+    }
 }
 
 .actions {

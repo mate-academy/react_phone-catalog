@@ -142,7 +142,17 @@
   &:hover {
     background-color: color.adjust($orange, $lightness: 5%);
   }
+
+
 }
+
+.added {
+    background-color: #8d3b01;
+
+    &:hover {
+      background-color: #8d3b01;
+    }
+  }
 
 .addToFavorite {
   width: 40px;
