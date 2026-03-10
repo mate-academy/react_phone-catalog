@@ -44,7 +44,10 @@ export const Footer = () => {
             className={styles.top}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            ↑
+            <img
+              src={getAssetUrl('img/Chevron%20(Arrow%20up).png')}
+              alt="Back to top"
+            />
           </button>
         </div>
       </div>

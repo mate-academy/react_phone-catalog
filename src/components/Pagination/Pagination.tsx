@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/asset';
 import styles from './Pagination.module.scss';
 
 type Props = {
@@ -100,8 +101,14 @@ export const Pagination = ({ total }: Props) => {
           type="button"
           onClick={() => setPage(page - 1)}
           disabled={page === 1}
+          className={styles.arrowBtn}
+          aria-label="Previous page"
         >
-          {'<'}
+          <img
+            src={getAssetUrl('img/Chevron%20(Arrow%20Right).png')}
+            alt=""
+            className={styles.arrowLeft}
+          />
         </button>
 
         {pages.map((item, index) =>
@@ -153,8 +160,14 @@ export const Pagination = ({ total }: Props) => {
           type="button"
           onClick={() => setPage(page + 1)}
           disabled={page === pagesCount}
+          className={styles.arrowBtn}
+          aria-label="Next page"
         >
-          {'>'}
+          <img
+            src={getAssetUrl('img/Chevron%20(Arrow%20Right).png')}
+            alt=""
+            className={styles.arrowRight}
+          />
         </button>
       </div>
     </div>

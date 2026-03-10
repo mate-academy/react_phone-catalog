@@ -24,7 +24,11 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-          <img src={getAssetUrl('img/Nice%20Gadgets.png')} alt="Nice Gadgets" />
+          <img
+            className={styles.logoImg}
+            src={getAssetUrl('img/Nice%20Gadgets.png')}
+            alt="Nice Gadgets"
+          />
         </NavLink>
 
         <nav className={styles.nav}>
