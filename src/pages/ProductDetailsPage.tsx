@@ -102,12 +102,7 @@ export const ProductDetailsPage = () => {
       <h1>{details.name}</h1>
 
       <div className={styles.detailsGrid}>
-        <div>
-          <img
-            src={getAssetUrl(details.images[imageIndex])}
-            alt={details.name}
-            className={styles.mainImage}
-          />
+        <div className={styles.detailsMedia}>
           <div className={styles.thumbGrid}>
             {details.images.map((image, index) => (
               <button
@@ -124,38 +119,49 @@ export const ProductDetailsPage = () => {
               </button>
             ))}
           </div>
+          <img
+            src={getAssetUrl(details.images[imageIndex])}
+            alt={details.name}
+            className={styles.mainImage}
+          />
         </div>
 
         <div>
-          <p>Available colors</p>
-          <div className={styles.options}>
-            {details.colorsAvailable.map(color => (
-              <Link
-                key={color}
-                to={`/product/${toVariantId(details.namespaceId, details.capacity, color)}`}
-                className={`${styles.colorOptionLink} ${color === details.color ? styles.colorOptionLinkActive : ''}`}
-                aria-label={color}
-                title={color}
-              >
-                <span
-                  className={styles.colorSwatch}
-                  style={{ backgroundColor: getPhoneColor(color) }}
-                />
-              </Link>
-            ))}
+          <div className={styles.sectionBlock}>
+            <p>Available colors</p>
+            <div className={styles.options}>
+              {details.colorsAvailable.map(color => (
+                <Link
+                  key={color}
+                  to={`/product/${toVariantId(details.namespaceId, details.capacity, color)}`}
+                  className={`${styles.colorOptionLink} ${color === details.color ? styles.colorOptionLinkActive : ''}`}
+                  aria-label={color}
+                  title={color}
+                >
+                  <span
+                    className={styles.colorSwatch}
+                    style={{ backgroundColor: getPhoneColor(color) }}
+                  />
+                </Link>
+              ))}
+            </div>
+            <hr className={styles.sectionDivider} />
           </div>
 
-          <p>Select capacity</p>
-          <div className={styles.options}>
-            {details.capacityAvailable.map(capacity => (
-              <Link
-                key={capacity}
-                to={`/product/${toVariantId(details.namespaceId, capacity, details.color)}`}
-                className={`${styles.optionLink} ${capacity === details.capacity ? styles.optionLinkActive : ''}`}
-              >
-                {capacity}
-              </Link>
-            ))}
+          <div className={styles.sectionBlock}>
+            <p>Select capacity</p>
+            <div className={styles.options}>
+              {details.capacityAvailable.map(capacity => (
+                <Link
+                  key={capacity}
+                  to={`/product/${toVariantId(details.namespaceId, capacity, details.color)}`}
+                  className={`${styles.optionLink} ${capacity === details.capacity ? styles.optionLinkActive : ''}`}
+                >
+                  {capacity}
+                </Link>
+              ))}
+            </div>
+            <hr className={styles.sectionDivider} />
           </div>
 
           <p className={styles.priceLine}>
@@ -187,30 +193,94 @@ export const ProductDetailsPage = () => {
           </div>
 
           <ul className={styles.specs}>
-            <li>Screen: {details.screen}</li>
-            <li>Resolution: {details.resolution}</li>
-            <li>Processor: {details.processor}</li>
-            <li>RAM: {details.ram}</li>
+            <li>
+              <span className={styles.statsSc}>Screen</span>
+              <span className={styles.specValue}>{details.screen}</span>
+            </li>
+            <li>
+              <span className={styles.statsSc}>Resolution</span>
+              <span className={styles.specValue}>{details.resolution}</span>
+            </li>
+            <li>
+              <span className={styles.statsSc}>Processor</span>
+              <span className={styles.specValue}>{details.processor}</span>
+            </li>
+            <li>
+              <span className={styles.statsSc}>RAM</span>
+              <span className={styles.specValue}>{details.ram}</span>
+            </li>
           </ul>
         </div>
       </div>
 
-      <section>
-        <h2>About</h2>
-        {details.description.map(block => (
-          <article key={block.title}>
-            <h3>{block.title}</h3>
-            {block.text.map(line => (
-              <p key={line}>{line}</p>
-            ))}
-          </article>
-        ))}
+      <section className={styles.detailsInfo}>
+        <div className={styles.aboutBlock}>
+          <h2 className={styles.TAbout}>About</h2>
+          <hr className={styles.aboutDivider} />
+          {details.description.map(block => (
+            <article key={block.title}>
+              <h3>{block.title}</h3>
+              {block.text.map(line => (
+                <p className={styles.LineP} key={line}>
+                  {line}
+                </p>
+              ))}
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.techSpecs}>
+          <h2>Tech specs</h2>
+          <ul className={styles.specsList}>
+            <li>
+              <span className={styles.specLabel}>Screen</span>
+              <span className={styles.specValue}>{details.screen}</span>
+            </li>
+            <li>
+              <span className={styles.specLabel}>Resolution</span>
+              <span className={styles.specValue}>{details.resolution}</span>
+            </li>
+            <li>
+              <span className={styles.specLabel}>Processor</span>
+              <span className={styles.specValue}>{details.processor}</span>
+            </li>
+            <li>
+              <span className={styles.specLabel}>RAM</span>
+              <span className={styles.specValue}>{details.ram}</span>
+            </li>
+            <li>
+              <span className={styles.specLabel}>Built in memory</span>
+              <span className={styles.specValue}>{details.capacity}</span>
+            </li>
+            {details.camera && (
+              <li>
+                <span className={styles.specLabel}>Camera</span>
+                <span className={styles.specValue}>{details.camera}</span>
+              </li>
+            )}
+            {details.zoom && (
+              <li>
+                <span className={styles.specLabel}>Zoom</span>
+                <span className={styles.specValue}>{details.zoom}</span>
+              </li>
+            )}
+            {details.cell?.length && (
+              <li>
+                <span className={styles.specLabel}>Cell</span>
+                <span className={styles.specValue}>
+                  {details.cell.join(', ')}
+                </span>
+              </li>
+            )}
+          </ul>
+        </div>
       </section>
 
       {suggestedState.data && suggestedState.data.length > 0 && (
         <ProductsSlider
           title="You may also like"
           products={suggestedState.data}
+          scrollOnCardClick
         />
       )}
     </div>

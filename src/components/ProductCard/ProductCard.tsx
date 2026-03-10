@@ -8,9 +8,15 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
+  scrollToTopOnClick?: boolean;
 };
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({
+  product,
+  showDiscount = true,
+  scrollToTopOnClick = false,
+}: Props) => {
   const { toggleCart, isInCart } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
 
@@ -19,20 +25,33 @@ export const ProductCard = ({ product }: Props) => {
   const productImage = product.image.startsWith('img/')
     ? getAssetUrl(product.image)
     : product.image;
+  const handleCardClick = () => {
+    if (scrollToTopOnClick) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <article className={styles.card}>
-      <Link to={`/product/${product.itemId}`} className={styles.imageWrap}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.imageWrap}
+        onClick={handleCardClick}
+      >
         <img src={productImage} alt={product.name} className={styles.image} />
       </Link>
 
-      <Link to={`/product/${product.itemId}`} className={styles.name}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.name}
+        onClick={handleCardClick}
+      >
         {product.name}
       </Link>
 
       <p className={styles.prices}>
-        <strong>${product.price}</strong>
-        <span>${product.fullPrice}</span>
+        <strong>${showDiscount ? product.price : product.fullPrice}</strong>
+        {showDiscount && <span>${product.fullPrice}</span>}
       </p>
 
       <div className={styles.meta}>

@@ -26,6 +26,21 @@ body {
   color: #313237;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+.appRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);

@@ -6,11 +6,13 @@ import { FavoritesProvider } from './contexts/FavoritesContext';
 import './App.scss';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <HashRouter>
-    <FavoritesProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </FavoritesProvider>
-  </HashRouter>,
+  <div className="appRoot">
+    <HashRouter>
+      <FavoritesProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </FavoritesProvider>
+    </HashRouter>
+  </div>,
 );

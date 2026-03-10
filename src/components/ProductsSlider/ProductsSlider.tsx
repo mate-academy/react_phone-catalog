@@ -7,11 +7,18 @@ import styles from './ProductsSlider.module.scss';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
+  scrollOnCardClick?: boolean;
 };
 
 const PAGE_SIZE = 4;
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  showDiscount = true,
+  scrollOnCardClick = false,
+}: Props) => {
   const [start, setStart] = useState(0);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
@@ -76,7 +83,12 @@ export const ProductsSlider = ({ title, products }: Props) => {
           >
             <div className={styles.grid}>
               {visible.map(product => (
-                <ProductCard key={product.itemId} product={product} />
+                <ProductCard
+                  key={product.itemId}
+                  product={product}
+                  showDiscount={showDiscount}
+                  scrollToTopOnClick={scrollOnCardClick}
+                />
               ))}
             </div>
           </CSSTransition>

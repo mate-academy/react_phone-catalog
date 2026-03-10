@@ -43,7 +43,11 @@ export const HomePage = () => {
 
       <PicturesSlider images={banners} />
 
-      <ProductsSlider title="Brand new models" products={newest} />
+      <ProductsSlider
+        title="Brand new models"
+        products={newest}
+        showDiscount={false}
+      />
 
       <section>
         <h2>Shop by category</h2>

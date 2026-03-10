@@ -1,6 +1,6 @@
 import { Category, Product, ProductDetails } from '../types';
 
-const API = '/api';
+const API = `${import.meta.env.BASE_URL}api`;
 
 async function getJson<T>(path: string): Promise<T> {
   const response = await fetch(path);

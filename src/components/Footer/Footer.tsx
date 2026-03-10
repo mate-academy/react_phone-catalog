@@ -23,12 +23,12 @@ export const Footer = () => {
           GitHub
         </a>
 
-        <a href="/contacts" className={styles.footerLink}>
+        <a href="mailto:contact@nicegadgets.com" className={styles.footerLink}>
           Contacts
         </a>
 
-        <a href="/contacts" className={styles.footerLink}>
-          Right
+        <a href="/" className={styles.footerLink}>
+          Rights
         </a>
 
         <div className={styles.backToTop}>
