@@ -4,6 +4,7 @@ import { Loader } from '../components/Loader';
 import { useCart } from '../contexts/CartContext';
 import { useAsync } from '../hooks/useAsync';
 import { getProducts } from '../services/api';
+import { getAssetUrl } from '../utils/asset';
 import styles from './pages.module.scss';
 
 export const CartPage = () => {
@@ -56,7 +57,14 @@ export const CartPage = () => {
                 x
               </button>
 
-              <img src={row.product?.image} alt={row.product?.name} />
+              <img
+                src={
+                  row.product?.image?.startsWith('img/')
+                    ? getAssetUrl(row.product.image)
+                    : row.product?.image
+                }
+                alt={row.product?.name}
+              />
 
               <Link className={styles.linkCard} to={`/product/${row.itemId}`}>
                 {row.product?.name}

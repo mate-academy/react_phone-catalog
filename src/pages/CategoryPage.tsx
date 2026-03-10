@@ -7,6 +7,7 @@ import { useAsync } from '../hooks/useAsync';
 import { getProductsByCategory } from '../services/api';
 import { Category, Product, SortBy } from '../types';
 import { CATEGORY_LABELS } from '../utils/constants';
+import { getAssetUrl } from '../utils/asset';
 import styles from './pages.module.scss';
 
 type Props = {
@@ -121,7 +122,7 @@ export const CategoryPage = ({ category }: Props) => {
             </select>
 
             <span className={styles.selectArrow} aria-hidden="true">
-              <img src="/img/Vector%20(Stroke).png" alt="Icon" />
+              <img src={getAssetUrl('img/Vector%20(Stroke).png')} alt="Icon" />
             </span>
           </div>
         </label>
@@ -158,7 +159,7 @@ export const CategoryPage = ({ category }: Props) => {
             </select>
 
             <span className={styles.selectArrow} aria-hidden="true">
-              <img src="/img/Vector%20(Stroke).png" alt="Icon" />
+              <img src={getAssetUrl('img/Vector%20(Stroke).png')} alt="Icon" />
             </span>
           </div>
         </label>

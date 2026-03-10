@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Product } from '../../types';
 import { useCart } from '../../contexts/CartContext';
 import { useFavorites } from '../../contexts/FavoritesContext';
+import { getAssetUrl } from '../../utils/asset';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -15,11 +16,14 @@ export const ProductCard = ({ product }: Props) => {
 
   const inCart = isInCart(product.itemId);
   const favorite = isFavorite(product.itemId);
+  const productImage = product.image.startsWith('img/')
+    ? getAssetUrl(product.image)
+    : product.image;
 
   return (
     <article className={styles.card}>
       <Link to={`/product/${product.itemId}`} className={styles.imageWrap}>
-        <img src={product.image} alt={product.name} className={styles.image} />
+        <img src={productImage} alt={product.name} className={styles.image} />
       </Link>
 
       <Link to={`/product/${product.itemId}`} className={styles.name}>
@@ -66,8 +70,8 @@ export const ProductCard = ({ product }: Props) => {
           <img
             src={
               favorite
-                ? '/img/Favourites%20Filled%20(Heart%20Like).png'
-                : '/img/Favourites%20(Heart%20Like).png'
+                ? getAssetUrl('img/Favourites%20Filled%20(Heart%20Like).png')
+                : getAssetUrl('img/Favourites%20(Heart%20Like).png')
             }
             alt="Favorites"
             className={styles.favIcon}

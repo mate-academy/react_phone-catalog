@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { useCart } from '../../contexts/CartContext';
 import { SearchInput } from '../SearchInput';
+import { getAssetUrl } from '../../utils/asset';
 import styles from './Header.module.scss';
 
 const getNavClass = ({ isActive }: { isActive: boolean }) =>
@@ -23,7 +24,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-          <img src="/img/Nice%20Gadgets.png" alt="Nice Gadgets" />
+          <img src={getAssetUrl('img/Nice%20Gadgets.png')} alt="Nice Gadgets" />
         </NavLink>
 
         <nav className={styles.nav}>
@@ -54,7 +55,7 @@ export const Header = () => {
           >
             <img
               className={styles.iconHeader}
-              src="\img\Favourites (Heart Like).png"
+              src={getAssetUrl('img/Favourites%20(Heart%20Like).png')}
               alt="Favorites"
             />
             <span>({ids.length})</span>
@@ -70,7 +71,7 @@ export const Header = () => {
           >
             <img
               className={styles.iconHeader}
-              src="/img/Group%2017.png"
+              src={getAssetUrl('img/Group%2017.png')}
               alt="Cart"
             />
             <span>({totalQuantity})</span>

@@ -5,11 +5,12 @@ import { Loader } from '../components/Loader';
 import { PicturesSlider } from '../components/PicturesSlider';
 import { ProductsSlider } from '../components/ProductsSlider';
 import styles from './pages.module.scss';
+import { getAssetUrl } from '../utils/asset';
 
 const banners = [
-  '/img/banner-tablets.png',
-  '/img/banner-phones.png',
-  '/img/banner-accessories.png',
+  getAssetUrl('img/banner-tablets.png'),
+  getAssetUrl('img/banner-phones.png'),
+  getAssetUrl('img/banner-accessories.png'),
 ];
 
 export const HomePage = () => {
@@ -48,17 +49,20 @@ export const HomePage = () => {
         <h2>Shop by category</h2>
         <div className={styles.categories}>
           <Link to="/phones" className={styles.categoryCard}>
-            <img src="/img/category-phones.png" alt="Phones" />
+            <img src={getAssetUrl('img/category-phones.png')} alt="Phones" />
             <h3>Mobile phones</h3>
             <p>{counts.phones} models</p>
           </Link>
           <Link to="/tablets" className={styles.categoryCard}>
-            <img src="/img/category-tablets.png" alt="Tablets" />
+            <img src={getAssetUrl('img/category-tablets.png')} alt="Tablets" />
             <h3>Tablets</h3>
             <p>{counts.tablets} models</p>
           </Link>
           <Link to="/accessories" className={styles.categoryCard}>
-            <img src="/img/category-accessories.png" alt="Accessories" />
+            <img
+              src={getAssetUrl('img/category-accessories.png')}
+              alt="Accessories"
+            />
             <h3>Accessories</h3>
             <p>{counts.accessories} models</p>
           </Link>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/asset';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -7,7 +8,7 @@ export const Footer = () => {
       <div className={styles.container}>
         <Link to="/" className={styles.brandLink}>
           <img
-            src="/img/Nice%20Gadgets.png"
+            src={getAssetUrl('img/Nice%20Gadgets.png')}
             alt="Nice Gadgets"
             className={styles.brandLogo}
           />

@@ -11,6 +11,7 @@ import {
   getProducts,
   getSuggestedProducts,
 } from '../services/api';
+import { getAssetUrl } from '../utils/asset';
 import styles from './pages.module.scss';
 
 function toVariantId(namespaceId: string, capacity: string, color: string) {
@@ -82,6 +83,9 @@ export const ProductDetailsPage = () => {
   const details = detailsState.data;
   const inCart = isInCart(base.itemId);
   const favorite = isFavorite(base.itemId);
+  const favoriteIcon = favorite
+    ? getAssetUrl('img/Favourites%20Filled%20(Heart%20Like).png')
+    : getAssetUrl('img/Favourites%20(Heart%20Like).png');
 
   return (
     <div className={styles.page}>
@@ -100,7 +104,7 @@ export const ProductDetailsPage = () => {
       <div className={styles.detailsGrid}>
         <div>
           <img
-            src={details.images[imageIndex]}
+            src={getAssetUrl(details.images[imageIndex])}
             alt={details.name}
             className={styles.mainImage}
           />
@@ -113,7 +117,7 @@ export const ProductDetailsPage = () => {
                 className={`${styles.thumbButton} ${index === imageIndex ? styles.thumbButtonActive : ''}`}
               >
                 <img
-                  src={image}
+                  src={getAssetUrl(image)}
                   alt={`${details.name} ${index + 1}`}
                   className={styles.thumbImage}
                 />
@@ -175,11 +179,7 @@ export const ProductDetailsPage = () => {
               aria-label="Toggle favorite"
             >
               <img
-                src={
-                  favorite
-                    ? '/img/Favourites%20Filled%20(Heart%20Like).png'
-                    : '/img/Favourites%20(Heart%20Like).png'
-                }
+                src={favoriteIcon}
                 alt="Favorites"
                 className={styles.detailsFavoriteIcon}
               />
