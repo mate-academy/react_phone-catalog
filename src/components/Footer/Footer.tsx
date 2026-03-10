@@ -32,12 +32,13 @@ export const Footer = () => {
         </a>
 
         <div className={styles.backToTop}>
-          <h1
+          <button
+            type="button"
             className={styles.footerLink}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Back To Up
-          </h1>
+          </button>
           <button
             type="button"
             className={styles.top}
