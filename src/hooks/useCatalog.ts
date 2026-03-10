@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../types';
-import { getProducts } from '../api/products';
+import getProducts from '../api/products';
 
 const getSortedProducts = (items: Product[], sort: string) => {
   switch (sort) {

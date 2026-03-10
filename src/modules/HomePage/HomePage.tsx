@@ -2,7 +2,7 @@ import styles from './HomePage.module.scss';
 import { Product } from '../../types';
 import { useEffect, useState } from 'react';
 import { ProductsSlider } from '../shared/ProductsSlider/ProductsSlider';
-import { getProducts } from '../../api/products';
+import getProducts from '../../api/products';
 import { ShopByCategory } from '../shared/ShopByCategory/ShopByCategory';
 import { BannerSlider } from '../shared/BannerSlider/BannerSlider';
 

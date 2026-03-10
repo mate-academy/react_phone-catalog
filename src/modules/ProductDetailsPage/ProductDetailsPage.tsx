@@ -2,9 +2,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { useCallback, useEffect, useState } from 'react';
 import { Accessory, Phone, Product, Tablet } from '../../types';
-import {
+import getProducts, {
   getProductById,
-  getProducts,
   getSuggestedProducts,
 } from '../../api/products';
 import { ErrorState } from '../shared/ErrorState/ErrorState';
@@ -290,7 +289,6 @@ export const ProductDetailsPage = () => {
                       ? styles.btnAdded
                       : styles.btnAddToCart
                   }
-                  // onClick={() => productCart && addToCart(productCart)}
                   onClick={() =>
                     productCart &&
                     addToCart(productCart, () => showToast('Added to cart'))
@@ -301,7 +299,6 @@ export const ProductDetailsPage = () => {
 
                 <button
                   className={styles.btnFavorites}
-                  // onClick={() => productCart && toggleFavorite(productCart)}
                   onClick={() =>
                     productCart &&
                     toggleFavorite(productCart, added =>
