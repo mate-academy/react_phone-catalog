@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
 import { useLocation } from 'react-router-dom';
 import { useDebounce } from '../../hooks/useDebounce';
 import { SearchIcon } from '../ui/SearchIcon';
 import { CloseIcon } from '../ui/CloseIcon';
+import { PathType } from '../../types/Types';
 import styles from './Search.module.scss';
+
+const SEARCHABLE_PATHS = [
+  PathType.PHONES,
+  PathType.TABLETS,
+  PathType.ACCESSORIES,
+  PathType.FAVOURITES,
+];
 
 export const Search: React.FC = () => {
   const { query, handleQueryChange } = useCatalogParams();
@@ -22,9 +30,17 @@ export const Search: React.FC = () => {
     }
   }, [debouncedQuery, handleQueryChange, query]);
 
-  const showSearch = ['/phones', '/tablets', '/accessories'].includes(
-    location.pathname,
-  );
+  const showSearch = SEARCHABLE_PATHS.includes(location.pathname as PathType);
+
+  const pageTitle = useMemo(() => {
+    const pathname = location.pathname.replace('/', '');
+
+    if (!pathname) {
+      return '';
+    }
+
+    return pathname.charAt(0).toUpperCase() + pathname.slice(1);
+  }, [location.pathname]);
 
   if (!showSearch) {
     return null;
@@ -35,19 +51,26 @@ export const Search: React.FC = () => {
       <input
         type="text"
         className={styles.search__input}
-        placeholder={`Search in ${location.pathname.replace('/', '')}...`}
+        placeholder={`Search in ${pageTitle}...`}
         value={localQuery}
         onChange={event => setLocalQuery(event.target.value)}
+        aria-label={`Search in ${pageTitle}`}
       />
       {localQuery ? (
         <button
+          type="button"
           className={styles.search__button}
           onClick={() => setLocalQuery('')}
+          aria-label="Clear search"
         >
           <CloseIcon />
         </button>
       ) : (
-        <button className={styles.search__button}>
+        <button
+          type="button"
+          className={styles.search__button}
+          aria-label="Search"
+        >
           <SearchIcon />
         </button>
       )}

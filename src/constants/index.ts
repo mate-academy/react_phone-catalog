@@ -13,11 +13,11 @@ export const PER_PAGE_OPTIONS = [
   { label: 'All', value: PerPageType.ALL },
 ];
 
-export const RIGHTS_PATH =
-  'https://github.com/Nazarii-Lesniak/react_phone-catalog/blob/master/LICENSE';
-
 export const GIT_HUB_REPO =
-  'https://github.com/Nazarii-Lesniak/react_phone-catalog/tree/develop';
+  'https://github.com/maximtsyrulnyk/react_phone-catalog';
 
 export const CONTACTS_ORIGIN_REPO =
-  'https://github.com/mate-academy/react_phone-catalog';
+  'https://github.com/maximtsyrulnyk/react_phone-catalog';
+
+export const RIGHTS_PATH =
+  'https://github.com/maximtsyrulnyk/react_phone-catalog';

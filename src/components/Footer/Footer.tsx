@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { ArrowUpIcon } from '../ui/ArrowUpIcon';
 import styles from './Footer.module.scss';
@@ -32,22 +31,30 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li className={styles.footer__item}>
-              <NavLink
-                to={CONTACTS_ORIGIN_REPO}
+              <a
+                href={CONTACTS_ORIGIN_REPO}
                 className={styles.footer__link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Contacts
-              </NavLink>
+              </a>
             </li>
             <li className={styles.footer__item}>
-              <NavLink to={RIGHTS_PATH} className={styles.footer__link}>
+              <a
+                href={RIGHTS_PATH}
+                className={styles.footer__link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Rights
-              </NavLink>
+              </a>
             </li>
           </ul>
         </nav>
 
         <button
+          type="button"
           className={styles.footer__backButton}
           onClick={handleBackToTop}
           aria-label="Back to top"
