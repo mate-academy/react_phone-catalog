@@ -45,7 +45,7 @@ export const CartItems: React.FC<CartItemsProps> = ({
           </button>
         </div>
         <p className={styles.productCard__productPrice}>
-          {(Number(product.price) * quantity).toFixed(2)}
+          ${(Number(product.price) * quantity).toFixed(2)}
         </p>
         <button
           type="button"
@@ -53,8 +53,6 @@ export const CartItems: React.FC<CartItemsProps> = ({
           aria-label="Remove from cart"
           className={`${iconStyles.icon} ${iconStyles['icon--close']} ${styles.productCard__removeIcon}`}
         ></button>
-
-
       </div>
     </>
   );

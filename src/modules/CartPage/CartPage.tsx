@@ -7,8 +7,15 @@ import HistoryBackButton from '../../components/HistoryBackButton/index';
 import Button from '../../components/Button/index';
 
 export const CartPage = () => {
-  const { items, increase, decrease, removeFromCart, clearCart, totalAmount, totalQuantity } =
-    useCart();
+  const {
+    items,
+    increase,
+    decrease,
+    removeFromCart,
+    clearCart,
+    totalAmount,
+    totalQuantity,
+  } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleCheckoutClick = () => setIsModalOpen(true);
   const handleConfirm = () => {
@@ -17,6 +24,7 @@ export const CartPage = () => {
   };
 
   const handleCancel = () => setIsModalOpen(false);
+  const checkoutIsDisabled = items.length === 0;
 
   return (
     <div className={styles.cartPage}>
@@ -46,18 +54,25 @@ export const CartPage = () => {
           ))
         )}
 
-        <div className={styles.cartPage__productInfo}>
-          <p className={styles.cartPage__productPrice}>
-            {Number(totalAmount).toFixed(2)}
-          </p>
-          <p>Total for {totalQuantity} items</p>
-          <Button
-            className={`${buttonStyles.button} ${styles.cartPage__checkout}`}
-            onClick={handleCheckoutClick}
-          >
-            Checkout
-          </Button>
-        </div>
+        {items.length > 0 && (
+          <div className={styles.cartPage__productInfo}>
+            <div className={styles.cartPage__summary}>
+              <p className={styles.cartPage__productPrice}>
+                ${Number(totalAmount).toFixed(2)}
+              </p>
+              <p className={styles.cartPage__totalQuantity}>
+                Total for {totalQuantity} items
+              </p>
+            </div>
+            <Button
+              className={`${buttonStyles.button} ${styles.cartPage__checkout}`}
+              onClick={handleCheckoutClick}
+              disabled={checkoutIsDisabled}
+            >
+              Checkout
+            </Button>
+          </div>
+        )}
         {isModalOpen && (
           <div className={styles.modalBackdrop}>
             <div className={styles.modal}>

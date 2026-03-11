@@ -4,8 +4,6 @@
 .cartPage {
   @include page-grid;
 
-  grid-column: 1/-1;
-
   &__nav {
     margin-block: 24px;
     grid-column: 1/-1;
@@ -13,8 +11,8 @@
 
   &__content {
     @include page-grid;
-
     grid-column: 1/-1;
+
   }
 
   &__title {
@@ -30,49 +28,77 @@
     margin-block: 16px ;
     border-radius: 8px;
     border: 1px solid $elements-color;
-    background: #FFFF;
+    background: #FFFFFF;
 
     @include page-grid;
     grid-column: 1/-1;
 
-    border: 1px solid red;
-     @include on-tablet {
-        width: auto;
+    @include on-tablet {
+        grid-column: 1/-1;
         grid-row: span 5;
       }
 
       @include on-desktop {
-        grid-column: span 6;
-        margin-block: 24px 80px;
+        grid-column: 17 / -1;
+        grid-row: 1;
+        margin: 0px;
       }
   }
 
   &__checkout {
     background-color: $accent-color;
     grid-column: 1/-1;
-    margin-inline: 40px;
+    margin: 16px 24px 24px 24px;
     padding-block: 13px;
+    @include on-tablet {
+      min-width: 544px;
+    }
+    @include on-desktop {
+      min-width: 320px;
+    }
   }
+
   &__productPrice {
   font-weight: 800;
   font-size: 32px;
   grid-column: 1/-1;
+  margin-block: auto;
+  place-items: center;
+  margin-bottom: 8px;
 }
-   &__list {
-    min-width: 0;
-    min-height: 0;
-    box-sizing: border-box;
+
+&__totalQuantity {
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary-color;
+  white-space: nowrap;
+  margin: 0 auto;
+  place-items: center;
+
+  display: block;
+  grid-column: 1/-1;
+  margin-bottom: 16px;
+}
+
+  &__summary {
     @include page-grid;
-    grid-column: 1/1;
+      align-content: center;
+      justify-items: center;
+      grid-column: 1 / -1;
+      border-bottom: 1px solid $icons-color ;
+    }
+
+   &__list {
+
+    @include page-grid;
+    grid-column: 1 / -1;
 
     @include on-tablet {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-column: 1/10;
+      grid-column: 1 / -1;
     }
 
      @include on-desktop {
-       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        grid-column: 1/-1;
+      grid-column: 1 / 16;
       }
     }
 

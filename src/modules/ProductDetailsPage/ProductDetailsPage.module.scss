@@ -6,9 +6,6 @@
 
   grid-column: 1/-1;
 
- // max-width: $max-width-no-padding;
-  //min-width: 0;
-
   &__content {
     @include page-grid;
 

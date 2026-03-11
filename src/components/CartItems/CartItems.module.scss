@@ -4,7 +4,6 @@
 .productCard {
    @include page-grid;
 
-
   &__productInfo {
     min-width: 288px;
     grid-column: 1/-1;
@@ -13,32 +12,41 @@
     margin-block: 16px ;
     border-radius: 8px;
     border: 1px solid $elements-color;
-    background: #FFFF;
+    background: #FFFFFF;
 
     @include page-grid;
     grid-column: 1/-1;
-     @include on-tablet {
-        width: auto;
-        grid-row: span 5;
+    grid-auto-rows: minmax(min-content, auto);
+
+    @include on-tablet {
+        min-width: 592px;
+        grid-column: 1/-1;
+        align-items: center;
       }
 
       @include on-desktop {
-        grid-column: span 6;
-        margin-block: 24px 80px;
+         align-items: center;
+         grid-column: 1 / 16;
+          margin-block: 0 16px ;
+          margin-right: 16px;
+          box-sizing: border-box;
       }
   }
 
   &__productImageContainer {
     height: 80px;
     grid-column: span 1;
-      @include on-tablet {
-        width: 173px;
-        height: 181;
+
+     @include on-tablet {
+        min-width: 80px;
+        grid-column: 2 / 3 ;
+        grid-row: 1;
       }
 
        @include on-desktop {
-        width: 173px;
-        height: 181;
+        min-width: 80px;
+        grid-column: 2 / 3 ;
+        grid-row: 1;
       }
 
     }
@@ -51,7 +59,7 @@
     display: block;
 
      @include on-tablet {
-        grid-column: 2;
+        grid-column: span 2;
       }
     }
 
@@ -61,17 +69,37 @@
     }
 
     &__productName {
-      grid-column: 3/-1;
+      grid-column: 4 / 6;
       grid-row: 1;
+
+      @include on-tablet {
+        grid-column: 4 / 6;
+        grid-row: 1;
+       }
+
+      @include on-desktop{
+        grid-column: 4 / 10;
+        grid-row: 1;
+       }
 
     }
 
     &__buttons {
        @include page-grid;
-        justify-content: center;
         align-content: center;
- justify-items: center;
-       grid-column: span 2;
+        justify-items: center;
+        grid-column: span 2;
+
+       @include on-tablet {
+        min-width: 96px;
+        height: 32px;
+        grid-column: 6 / 10;
+        grid-row: 1;
+       }
+        @include on-desktop {
+        grid-column: 10 / 12;
+        grid-row: 1;
+       }
     }
 
     &__quantity {
@@ -88,6 +116,17 @@
       height: 22px;
       grid-column: 4;
       grid-row: 2;
+      @include on-tablet {
+         grid-column: 13 / 14;
+          grid-row: 1;
+
+          width: fit-content;
+       }
+       @include on-desktop {
+         grid-column: 13 / 16;
+          grid-row: 1;
+          width: fit-content;
+       }
     }
 }
 
@@ -98,7 +137,7 @@
     &.disabled, &[disabled] {
       pointer-events: none;
       cursor: not-allowed;
-        background-color: $hover-bg-color;
+      background-color: $hover-bg-color;
       border-color: $icons-color;
       color: $icons-color;
       transform: none;
