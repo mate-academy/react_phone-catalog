@@ -27,7 +27,7 @@
   font-size: 14px;
   transition: all 0.2s ease-in-out;
 
-  &:hover:not(.disabled):not(.active) {
+  &:hover:not(.disabled, .active) {
     border-color: #313237;
   }
 

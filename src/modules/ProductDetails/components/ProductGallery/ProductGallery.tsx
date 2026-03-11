@@ -7,7 +7,7 @@ export const ProductGallery: React.FC<{ images: string[] }> = ({ images }) => {
   return (
     <div className={styles.gallery}>
       <img
-        src={import.meta.env.BASE_URL + mainImage}
+        src={import.meta.env.BASE_URL + '/' + mainImage}
         alt="Product"
         className={styles.mainImage}
       />
@@ -16,7 +16,7 @@ export const ProductGallery: React.FC<{ images: string[] }> = ({ images }) => {
         {images.map(image => (
           <img
             key={image}
-            src={import.meta.env.BASE_URL + image}
+            src={import.meta.env.BASE_URL + '/' + image}
             alt="Thumbnail"
             className={`${styles.thumbnail} ${
               image === mainImage ? styles.thumbnailActive : ''
