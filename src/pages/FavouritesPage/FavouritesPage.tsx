@@ -18,7 +18,7 @@ export const FavouritesPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('api/products.json')
+    fetch(import.meta.env.BASE_URL + 'api/products.json')
       .then(res => res.json())
       .then((data: ProductsType[]) => {
         setAllProducts(data);

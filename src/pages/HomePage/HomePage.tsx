@@ -15,7 +15,7 @@ export const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('api/products.json')
+    fetch(import.meta.env.BASE_URL + 'api/products.json')
       .then(res => res.json())
       .then((data: ProductsType[]) => {
         const newModels = data

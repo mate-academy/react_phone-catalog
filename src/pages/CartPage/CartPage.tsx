@@ -32,7 +32,7 @@ export const CartPage = () => {
   const [errors, setErrors] = useState({ name: '', contact: '' });
 
   useEffect(() => {
-    fetch('api/products.json')
+    fetch(import.meta.env.BASE_URL + 'api/products.json')
       .then(res => res.json())
       .then((data: ProductsType[]) => {
         setAllProducts(data);
