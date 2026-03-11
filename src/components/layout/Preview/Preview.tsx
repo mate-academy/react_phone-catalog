@@ -6,7 +6,7 @@ import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Preview.module.scss';
 
 export const Preview = () => {
-  const images = ['/img/Banner.png', '/img/Banner.png', '/img/Banner.png'];
+  const images = ['/img/banner-accessories.png', '/img/banner-phones.png', '/img/banner-tablets.png'];
   const autoTimer = useRef<NodeJS.Timeout | null>(null);
   const manualTimeout = useRef<NodeJS.Timeout | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -154,7 +154,7 @@ export const Preview = () => {
                 <div className={styles.slider__slide} key={index}>
                   <img
                     draggable="false"
-                    src={item}
+                    src={imageUrl(item)}
                     alt=""
                     className={styles.slider__img}
                   />
