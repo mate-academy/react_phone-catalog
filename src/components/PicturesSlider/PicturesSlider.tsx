@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import styles from './PicturesSlider.module.scss';
@@ -10,6 +10,7 @@ type Props = {
 export const PicturesSlider = ({ images }: Props) => {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -36,19 +37,49 @@ export const PicturesSlider = ({ images }: Props) => {
     };
   }
 
+  const handlePrev = () => {
+    setDirection('prev');
+    setIndex(value => (value - 1 + images.length) % images.length);
+  };
+
+  const handleNext = () => {
+    setDirection('next');
+    setIndex(value => (value + 1) % images.length);
+  };
+
+  const isAccessories = images[index].includes('banner-accessories');
+
   return (
     <section className={styles.slider}>
-      <button
-        type="button"
-        onClick={() => {
-          setDirection('prev');
-          setIndex(value => (value - 1 + images.length) % images.length);
-        }}
-      >
+      <button type="button" onClick={handlePrev}>
         {'<'}
       </button>
 
-      <div className={styles.viewport}>
+      <div
+        className={styles.viewport}
+        onTouchStart={event => {
+          touchStartX.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={event => {
+          const startX = touchStartX.current;
+          const endX = event.changedTouches[0]?.clientX ?? null;
+
+          touchStartX.current = null;
+
+          if (startX === null || endX === null || images.length < 2) {
+            return;
+          }
+
+          const deltaX = startX - endX;
+          const threshold = 40;
+
+          if (deltaX > threshold) {
+            handleNext();
+          } else if (deltaX < -threshold) {
+            handlePrev();
+          }
+        }}
+      >
         <SwitchTransition mode="out-in">
           <CSSTransition
             key={images[index]}
@@ -56,22 +87,29 @@ export const PicturesSlider = ({ images }: Props) => {
             classNames={transitionClassNames}
             unmountOnExit
           >
-            <img
-              src={images[index]}
-              alt="Catalog banner"
-              className={styles.image}
-            />
+            <picture
+              className={classNames(styles.image, {
+                [styles.imageWide]: isAccessories,
+              })}
+            >
+              <source
+                media="(max-width: 640px)"
+                srcSet={images[index].replace(
+                  'img/banner-tablets.png',
+                  'img/image%2016.png',
+                )}
+              />
+              <img
+                className={styles.imageImg}
+                src={images[index]}
+                alt="Catalog banner"
+              />
+            </picture>
           </CSSTransition>
         </SwitchTransition>
       </div>
 
-      <button
-        type="button"
-        onClick={() => {
-          setDirection('next');
-          setIndex(value => (value + 1) % images.length);
-        }}
-      >
+      <button type="button" onClick={handleNext}>
         {'>'}
       </button>
 
