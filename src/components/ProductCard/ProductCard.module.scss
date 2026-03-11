@@ -156,6 +156,22 @@
   }
 }
 
+.disabled {
+  flex: 1;
+
+  height: 40px;
+
+  background-color: var(--color-white);
+  color: var(--color-accent);
+
+  border: 1px solid var(--color-elements);
+  border-radius: 48px;
+
+  pointer-events: none;
+
+  @include buttons-text;
+}
+
 .favouritesButton {
   width: 40px;
   height: 40px;

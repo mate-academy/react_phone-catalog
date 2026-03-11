@@ -5,6 +5,7 @@ import cl from 'classnames';
 import { Product } from '../../types/Product';
 import { FavouritesIcon } from '../Icons/FavouritesIcon';
 import { useFavourites } from '../../hooks/useFavourites';
+import { useCart } from '../../hooks/useCart';
 
 import styles from './ProductCard.module.scss';
 
@@ -15,6 +16,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
+  const { isInCart, addToCart } = useCart();
 
   const handleLike = (productId: number) => {
     if (isFavourite(productId)) {
@@ -23,6 +25,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       addToFavourites(product);
     }
   };
+
+  const handleAddToCart = (productId: number) => {
+    if (isInCart(productId)) {
+      return;
+    } else {
+      addToCart(product);
+    }
+  };
+
+  const isAdded = isInCart(product.id);
 
   return (
     <article className={styles.card}>
@@ -69,7 +81,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={styles.actions}>
-        <button className={styles.cartButton}>Add to cart</button>
+        <button
+          className={cl(styles.cartButton, {
+            [styles.disabled]: isAdded,
+          })}
+          onClick={() => handleAddToCart(product.id)}
+          disabled={isAdded}
+        >
+          {isAdded ? 'Added to cart' : 'Add to cart'}
+        </button>
 
         <button
           className={cl(styles.favouritesButton, {

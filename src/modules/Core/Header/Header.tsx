@@ -2,25 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import cl from 'classnames';
 
-import LOGO from '../../../assets/icons/logo/Logo.svg';
 import { BurgerMenuIcon } from '../../../components/Icons/BurgerMenuIcon';
 import { CloseIcon } from '../../../components/Icons/CloseIcon';
 import { CartIcon } from '../../../components/Icons/CartIcon';
 import { FavouritesIcon } from '../../../components/Icons/FavouritesIcon/';
 import { scrollToTop } from '../../../utils/scrollToTop';
 import { useFavourites } from '../../../hooks/useFavourites';
+import { useCart } from '../../../hooks/useCart';
 
+import LOGO from '../../../assets/icons/logo/Logo.svg';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favourites } = useFavourites();
+  const { cartItems } = useCart();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     cl(styles.navLink, {
+      [styles.isActive]: isActive,
+    });
+
+  const getIconButtonClass = ({ isActive }: { isActive: boolean }) =>
+    cl(styles.iconButton, {
       [styles.isActive]: isActive,
     });
 
@@ -35,6 +42,10 @@ export const Header = () => {
   };
 
   const favCount = favourites.length;
+  const totalCartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -96,7 +107,7 @@ export const Header = () => {
           <div className={styles.actions}>
             <NavLink
               to="/favourites"
-              className={styles.iconButton}
+              className={getIconButtonClass}
               onClick={scrollToTop}
             >
               <FavouritesIcon isFilled={false} />
@@ -105,10 +116,14 @@ export const Header = () => {
             </NavLink>
             <NavLink
               to="/cart"
-              className={styles.iconButton}
+              className={getIconButtonClass}
               onClick={scrollToTop}
             >
               <CartIcon />
+
+              {totalCartCount > 0 && (
+                <span className={styles.badge}>{totalCartCount}</span>
+              )}
             </NavLink>
 
             <button className={styles.burgerButton} onClick={toggleMenu}>
@@ -181,7 +196,13 @@ export const Header = () => {
             className={getActionButtonClass}
             onClick={handleMobileClick}
           >
-            <CartIcon />
+            <div className={styles.iconWrapper}>
+              <CartIcon />
+
+              {totalCartCount > 0 && (
+                <span className={styles.badge}>{totalCartCount}</span>
+              )}
+            </div>
           </NavLink>
         </div>
       </aside>

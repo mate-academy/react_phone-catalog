@@ -5,11 +5,14 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { App } from './App';
 import { FavouritesProvider } from './context/FavouritesContext';
+import { CartProvider } from './context/CartContext';
 
 createRoot(document.getElementById('root')!).render(
-  <FavouritesProvider>
-    <Router>
-      <App />
-    </Router>
-  </FavouritesProvider>,
+  <CartProvider>
+    <FavouritesProvider>
+      <Router>
+        <App />
+      </Router>
+    </FavouritesProvider>
+  </CartProvider>,
 );

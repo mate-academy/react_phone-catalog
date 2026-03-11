@@ -6,6 +6,7 @@ import { CatalogPage } from './modules/CatalogPage';
 import { Product } from './types/Product';
 import { getProducts } from './api/products';
 import { FavouritesPage } from './modules/FavouritesPage';
+import { CartPage } from './modules/CartPage';
 
 export const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,12 +40,9 @@ export const App = () => {
           }
         />
 
-        <Route path="cart" element={<div>Cart Page</div>} />
+        <Route path="cart" element={<CartPage />} />
 
-        <Route
-          path="favourites"
-          element={<FavouritesPage favourites={products} />}
-        />
+        <Route path="favourites" element={<FavouritesPage />} />
 
         <Route path="*" element={<div>Page not Found</div>} />
       </Route>
