@@ -35,6 +35,7 @@ export const HeaderNavigation: React.FC = () => {
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
+                data-title={title}
                 className={classNames('header__list--link', {
                   'is-active':
                     path === '/' ? pathname === '/' : pathname.startsWith(path),

@@ -3,6 +3,7 @@
 
 .slider {
   background-color: var(--background);
+
   &__section {
     display: flex;
     box-sizing: border-box;
@@ -36,6 +37,7 @@
       justify-content: center;
     }
   }
+
   &__buttonMini {
     &--arrowLeft,
     &--arrowRight {
@@ -44,11 +46,9 @@
       align-items: center;
       height: 32px;
       width: 32px;
-
       border-radius: 50%;
       border: 1px solid var(--border);
       background-color: var(--main);
-
       cursor: pointer;
       transition: transform $effect-duration ease;
 
@@ -57,6 +57,19 @@
         box-shadow: 0 6px 18px var(--shadow);
         border: 1px solid var(--border-hover);
       }
+    }
+  }
+
+  &__swiper-container {
+    overflow: hidden;
+    margin-bottom: 64px;
+    max-width: 1136px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+
+    @include on-desktop {
+      margin-bottom: 80px;
     }
   }
 }
@@ -79,38 +92,27 @@
 .arrow--disabled {
   opacity: 0.3;
   cursor: auto;
+
   img {
     filter: grayscale(100%);
   }
 }
 
 .swiper-section {
-  display: flex;
-  justify-content: space-between;
   background-color: var(--background);
-
-  padding: 16px;
-
-  align-items: center;
-  margin-bottom: 64px;
+  padding: 16px 0;
 
   @include on-tablet {
-    padding: 24px;
+    padding: 24px 0;
   }
 
   @include on-desktop {
-    max-width: 1136px;
-    margin: auto;
-    padding: 0;
-    padding: 32px;
-    margin-bottom: 80px;
+    padding: 32px 0;
   }
 
   .swiper-slide {
     width: 212px;
-
-    transition:
-      transform $effect-duration ease;
+    transition: transform $effect-duration ease;
 
     @include on-tablet {
       width: 237px;

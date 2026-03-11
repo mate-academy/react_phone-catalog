@@ -31,16 +31,15 @@
     gap: 8px;
     border-radius: 8px;
     border: 1px solid var(--border);
-
     background-color: var(--main);
 
     transition:
-      transform $effect-duration ease;
+      border $effect-duration ease,
+      outline $effect-duration ease;
 
     &:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 18px var(--shadow);
-      border: 1px solid var(--border-hover);
+      border: 1px solid var(--accent);
+      outline: 3px solid rgba(128, 0, 255, 0.2);
     }
 
     @include on-tablet {
@@ -85,6 +84,7 @@
     justify-content: center;
     align-items: center;
     transition: transform $effect-duration ease;
+
     &:hover {
       transform: scale(1.05);
     }
@@ -95,6 +95,7 @@
     margin-top: 16px;
     height: 40px;
     transition: transform $effect-duration ease;
+
     &:hover {
       transform: scale(1.05);
     }

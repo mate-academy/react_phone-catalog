@@ -15,6 +15,7 @@ type Props = {
   showDiscount?: boolean;
   isSkeleton?: boolean;
 };
+
 export const ModelsSlider: React.FC<Props> = ({
   title,
   products,
@@ -32,8 +33,7 @@ export const ModelsSlider: React.FC<Props> = ({
         </div>
         <div className="slider__section--arrows">
           <button
-            className={`slider__buttonMini--arrowLeft
-          arrow__arrowLeft--${id}`}
+            className={`slider__buttonMini--arrowLeft arrow__arrowLeft--${id}`}
           >
             <img
               className="icon"
@@ -46,8 +46,7 @@ export const ModelsSlider: React.FC<Props> = ({
             />
           </button>
           <button
-            className={`slider__buttonMini--arrowRight
-            arrow__arrowRight--${id}`}
+            className={`slider__buttonMini--arrowRight arrow__arrowRight--${id}`}
           >
             <img
               className="icon"
@@ -62,29 +61,31 @@ export const ModelsSlider: React.FC<Props> = ({
         </div>
       </div>
 
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={16}
-        slidesPerView="auto"
-        navigation={{
-          prevEl: `.arrow__arrowLeft--${id}`,
-          nextEl: `.arrow__arrowRight--${id}`,
-          disabledClass: 'arrow--disabled',
-        }}
-        className="swiper-section"
-      >
-        {isSkeleton
-          ? Array.from({ length: 8 }).map((_, i) => (
-              <SwiperSlide key={i}>
-                <SkeletonProductCard />
-              </SwiperSlide>
-            ))
-          : products.map(product => (
-              <SwiperSlide key={product.id}>
-                <ProductCard product={product} showDiscount={showDiscount} />
-              </SwiperSlide>
-            ))}
-      </Swiper>
+      <div className="slider__swiper-container">
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={16}
+          slidesPerView="auto"
+          navigation={{
+            prevEl: `.arrow__arrowLeft--${id}`,
+            nextEl: `.arrow__arrowRight--${id}`,
+            disabledClass: 'arrow--disabled',
+          }}
+          className="swiper-section"
+        >
+          {isSkeleton
+            ? Array.from({ length: 8 }).map((_, i) => (
+                <SwiperSlide key={i}>
+                  <SkeletonProductCard />
+                </SwiperSlide>
+              ))
+            : products.map(product => (
+                <SwiperSlide key={product.id}>
+                  <ProductCard product={product} showDiscount={showDiscount} />
+                </SwiperSlide>
+              ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

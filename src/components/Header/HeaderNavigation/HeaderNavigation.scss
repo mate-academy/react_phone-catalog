@@ -37,11 +37,20 @@
     &--link {
       position: relative;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 600;
       letter-spacing: 4%;
       box-sizing: border-box;
       color: var(--primary);
       text-decoration: none;
+
+      &::before {
+        display: block;
+        content: attr(data-title);
+        font-weight: 800;
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+      }
 
       &::after {
         display: block;
@@ -52,7 +61,7 @@
         width: 100%;
         height: 2px;
         background-color: transparent;
-        transition: transform $effect-duration ease;
+        transition: background-color $effect-duration ease;
 
         @include on-desktop {
           bottom: -24px;
@@ -60,7 +69,7 @@
       }
 
       &:hover {
-        transform-origin: left;
+        font-weight: 800;
         color: var(--primary);
       }
 
@@ -69,6 +78,7 @@
       }
 
       &.is-active {
+        font-weight: 800;
         color: var(--primary);
 
         &::after {
@@ -81,6 +91,7 @@
   &__actions {
     display: flex;
   }
+
   &__icon {
     &--container {
       display: flex;
