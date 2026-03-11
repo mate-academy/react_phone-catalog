@@ -1,5 +1,6 @@
 import React from 'react';
-//import styles from './CartItems.module.scss';
+import styles from './CartItems.module.scss';
+import iconStyles from '../Icon/Icon.module.scss';
 import { Product } from '../../../public/api/types/Product';
 
 type CartItemsProps = {
@@ -17,17 +18,44 @@ export const CartItems: React.FC<CartItemsProps> = ({
   handleIncrease,
   handleRemoveFromCart,
 }) => {
+  const isDisabled = quantity === 1;
+
   return (
     <>
-      <img src={product.image} alt={product.title} />
-      <div>{product.title}</div>
-      <div>
-        <button onClick={handleDecrease}>-</button>
-        <span>{quantity}</span>
-        <button onClick={handleIncrease}>+</button>
+      <div className={styles.productCard__productInfo}>
+        <div className={styles.productCard__productImageContainer}>
+          <img
+            src={product?.image}
+            alt={product?.name ?? 'Product Image'}
+            className={styles.productCard__productImage}
+          />
+        </div>
+        <div className={styles.productCard__productName}>{product.name}</div>
+        <div className={styles.productCard__buttons}>
+          <button
+            className={`${styles.button} ${isDisabled ? styles.disabled : ''}`}
+            onClick={handleDecrease}
+            disabled={isDisabled}
+          >
+            <span className={`${iconStyles['icon--round']}`}>-</span>
+          </button>
+          <span className={styles.productCard__quantity}>{quantity}</span>
+          <button onClick={handleIncrease} className={styles.button}>
+            <span className={`${iconStyles['icon--round']}`}>+</span>
+          </button>
+        </div>
+        <p className={styles.productCard__productPrice}>
+          {(Number(product.price) * quantity).toFixed(2)}
+        </p>
+        <button
+          type="button"
+          onClick={handleRemoveFromCart}
+          aria-label="Remove from cart"
+          className={`${iconStyles.icon} ${iconStyles['icon--close']} ${styles.productCard__removeIcon}`}
+        ></button>
+
+
       </div>
-      <div>{(Number(product.price) * quantity).toFixed(2)}</div>
-      <button onClick={handleRemoveFromCart}>x</button>
     </>
   );
 };

@@ -1,4 +1,80 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
 .cartPage {
+  @include page-grid;
+
+  grid-column: 1/-1;
+
+  &__nav {
+    margin-block: 24px;
+    grid-column: 1/-1;
+  }
+
+  &__content {
+    @include page-grid;
+
+    grid-column: 1/-1;
+  }
+
+  &__title {
+    @include page-grid;
+    grid-column: 1/-1;
+  }
+
+  &__productInfo {
+    min-width: 288px;
+    grid-column: 1/-1;
+
+    padding: 32px;
+    margin-block: 16px ;
+    border-radius: 8px;
+    border: 1px solid $elements-color;
+    background: #FFFF;
+
+    @include page-grid;
+    grid-column: 1/-1;
+
+    border: 1px solid red;
+     @include on-tablet {
+        width: auto;
+        grid-row: span 5;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+        margin-block: 24px 80px;
+      }
+  }
+
+  &__checkout {
+    background-color: $accent-color;
+    grid-column: 1/-1;
+    margin-inline: 40px;
+    padding-block: 13px;
+  }
+  &__productPrice {
+  font-weight: 800;
+  font-size: 32px;
+  grid-column: 1/-1;
+}
+   &__list {
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
+    @include page-grid;
+    grid-column: 1/1;
+
+    @include on-tablet {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-column: 1/10;
+    }
+
+     @include on-desktop {
+       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-column: 1/-1;
+      }
+    }
 
   .modalBackdrop {
     position: fixed; inset: 0;
@@ -16,4 +92,3 @@
   }
 
 }
-

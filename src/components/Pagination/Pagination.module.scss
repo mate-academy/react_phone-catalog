@@ -47,24 +47,13 @@
 
     border: 1px solid $icons-color;
 
-
+color: $primary-color;
     &:hover {
-       background-color: $hover-bg-color;
-       border-color: $primary-color;
-
-       @include hover(color, $hover-bg-color(1.1));
+       background-color: $icons-color;
+       border: 1px solid $primary-color;
+      @include hover(color, primary-color(1.1));
     }
-}
-.button[aria-current="page"] {
-  background: $primary-color;
-  color: #fff;
-    border-color: $primary-color;
-}
-
-
- .icon {
-
-     &.disabled, &[disabled] {
+      &.disabled, &[disabled] {
     pointer-events: none;
     cursor: not-allowed;
     background: $hover-bg-color;
@@ -103,6 +92,9 @@
   }
   }
 }
-
 }
-
+.button[aria-current="page"] {
+  background: $primary-color;
+  color: #fff;
+    border-color: $primary-color;
+}

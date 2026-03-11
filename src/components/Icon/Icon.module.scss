@@ -19,6 +19,7 @@
   width: 16px;
   height: 16px;
   margin: 16px;
+  background-color: transparent;
 
   &__background {
     border-left: 1px solid #E2E6E9;
@@ -62,7 +63,7 @@
     margin-inline: 0;
   }
 
-    &--button-right {
+  &--button-right {
     background-image: url(/img/icons/icon-button-right-2x.png);
     justify-self: end;
 
@@ -142,3 +143,23 @@
   font-weight: 700;
   font-size: 9px;
 }
+
+.icon--round {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    font-size: 14px;
+
+    &:hover {
+        border-color: $primary-color;
+    }
+
+  }

@@ -1,0 +1,108 @@
+@use '../../utils/vars.scss' as *;
+@import '../../utils/mixins';
+
+.productCard {
+   @include page-grid;
+
+
+  &__productInfo {
+    min-width: 288px;
+    grid-column: 1/-1;
+
+    padding: 32px;
+    margin-block: 16px ;
+    border-radius: 8px;
+    border: 1px solid $elements-color;
+    background: #FFFF;
+
+    @include page-grid;
+    grid-column: 1/-1;
+     @include on-tablet {
+        width: auto;
+        grid-row: span 5;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+        margin-block: 24px 80px;
+      }
+  }
+
+  &__productImageContainer {
+    height: 80px;
+    grid-column: span 1;
+      @include on-tablet {
+        width: 173px;
+        height: 181;
+      }
+
+       @include on-desktop {
+        width: 173px;
+        height: 181;
+      }
+
+    }
+
+  &__productImage {
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+
+     @include on-tablet {
+        grid-column: 2;
+      }
+    }
+
+    &__removeIcon {
+       grid-column: 1;
+       grid-row: 1;
+    }
+
+    &__productName {
+      grid-column: 3/-1;
+      grid-row: 1;
+
+    }
+
+    &__buttons {
+       @include page-grid;
+        justify-content: center;
+        align-content: center;
+ justify-items: center;
+       grid-column: span 2;
+    }
+
+    &__quantity {
+      margin-block: auto;
+      place-items: center;
+    }
+
+    &__productPrice {
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      font-weight: bold;
+      color: #0F0F11;
+      height: 22px;
+      grid-column: 4;
+      grid-row: 2;
+    }
+}
+
+.button {
+  background-color: transparent;
+
+
+    &.disabled, &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+        background-color: $hover-bg-color;
+      border-color: $icons-color;
+      color: $icons-color;
+      transform: none;
+      box-shadow: none;
+
+  }
+}

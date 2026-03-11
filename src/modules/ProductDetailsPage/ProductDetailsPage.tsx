@@ -2,16 +2,16 @@ import { useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import buttonStyles from '../../components/Button/Button.module.scss';
 import { useProduct } from '../../hooks/useProducts';
-import { useNavigate } from 'react-router-dom';
 import { KeyboardEvent, useState } from 'react';
 import { useEffect } from 'react';
 import AddToCartButton from '../../components/AddToCartButton';
 import { Product } from '../../../public/api/types/Product';
 import FavouritesLink from '../../components/FavouritesLink/index';
 import Button from '../../components/Button';
-import IconButtonLeft from '../../components/IconButtonLeft/index';
+
 import ProductsSlider from '../HomePage/components/ProductsSlider/index';
 import Breadcrumbs from '../../components/Breadcrumbs/index';
+import HistoryBackButton from '../../components/HistoryBackButton';
 
 type Types = {
   productId: string;
@@ -25,7 +25,7 @@ export const ProductDetailsPage = () => {
   const [mainImage, setMainImage] = useState<string | null>(null);
   const { product, loading, error } = useProduct((productId as string) ?? '');
   const title = 'Product Details';
-  const navigate = useNavigate();
+
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -110,14 +110,6 @@ export const ProductDetailsPage = () => {
     return <div>Product was not found</div>;
   }
 
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
-  };
-
   const handleRetry = () => {
     window.location.reload();
   };
@@ -173,17 +165,7 @@ export const ProductDetailsPage = () => {
           <Breadcrumbs productName={product?.name} />
         </div>
         <nav className={styles.productDetailsPage__nav}>
-          <Button
-            className={`${buttonStyles.button} ${buttonStyles['button--history-back']}`}
-            type="button"
-            aria-label="Back"
-          >
-            <IconButtonLeft
-              className={`${styles.icon} ${styles['icon--button-left']}`}
-              handleClick={handleBack}
-            />
-            Back
-          </Button>
+          <HistoryBackButton />
         </nav>
         <h1 className="visually-hidden">Product Details Page</h1>
         <div className={styles.productDetailsPage__content}>

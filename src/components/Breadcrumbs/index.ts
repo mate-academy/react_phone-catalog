@@ -1,3 +1,3 @@
-import { Breadcrumbs } from './Breadcrumbs.tsx';
+import { Breadcrumbs } from './Breadcrumbs';
 import './Breadcrumbs.module.scss';
 export default Breadcrumbs;
