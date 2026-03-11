@@ -64,52 +64,9 @@
 }
 
 .specs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   margin-bottom: 16px;
 }
 
-.specRow {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.specLabel { color: #89939A; }
-
-.specValue { color: #313237; }
-
 .buttons {
-  display: flex;
-  gap: 8px;
   margin-top: auto;
-}
-
-.addToCart {
-  flex: 1;
-  height: 40px;
-  background-color: #313237;
-  color: #fff;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover { background-color: #000; }
-}
-
-.favorite {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #B4BDC3;
-  background: transparent;
-  cursor: pointer;
-  color: #313237;
-
-  &:hover { border-color: #313237; }
 }

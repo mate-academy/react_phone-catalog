@@ -5,7 +5,7 @@ import { CategoryCard } from '../CategoryCard';
 import { Category } from '../../../../types/Category';
 
 export const CategoryGrid: React.FC = () => {
-  const categories = useOutletContext<Category[]>();
+  const { categories } = useOutletContext<{ categories: Category[] }>();
 
   return (
     <div className={styles.categoryGrid}>

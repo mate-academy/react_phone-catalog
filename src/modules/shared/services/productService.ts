@@ -1,4 +1,6 @@
 import { Category } from '../../../types/Category';
+// import { Product } from '../../../types/Product';
+import { ProductDetails } from '../../../types/ProductDetails';
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -27,3 +29,37 @@ export const getCategories = async (): Promise<Category[]> => {
 
   return response.json();
 };
+
+export const getProductById = async (
+  productId: string,
+): Promise<ProductDetails | null> => {
+  const categories = ['phones', 'tablets', 'accessories'];
+
+  try {
+    for (const category of categories) {
+      const response = await fetch(`api/${category}.json`);
+
+      if (!response.ok) {
+        continue;
+      }
+
+      const products: ProductDetails[] = await response.json();
+      const found = products.find(p => p.id === productId);
+
+      if (found) {
+        return found;
+      }
+    }
+  } catch (error) {}
+
+  throw new Error('Product not found');
+};
+
+// export const getBaseProductById = async (
+//   productId: string,
+// ): Promise<Product | null> => {
+//   const response = await fetch('api/products.json');
+//   const products: Product[] = await response.json();
+
+//   return products.find(p => p.itemId === productId) || null;
+// };

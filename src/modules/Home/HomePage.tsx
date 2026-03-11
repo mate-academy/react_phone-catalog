@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './HomePage.module.scss';
 import { BannerSlider } from './components/BannerSlider';
 import { ProductSlider } from '../shared/components/ProductSlider';
 import { CategoryGrid } from './components/CategoryGrid';
-import { getCategories, getProducts } from '../shared/services/productService';
-import { Product } from '../../types/Product';
-import { Category } from '../../types/Category';
+import { useOutletContext } from 'react-router-dom';
+import { ContextProps } from '../../types/ContextProps';
 
 export const HomePage: React.FC = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getCategories().then(setCategories);
-  }, []);
-
-  useEffect(() => {
-    getProducts()
-      .then(data => setProducts(data))
-      .finally(() => setIsLoading(false));
-  }, []);
+  const { categories, products } = useOutletContext<ContextProps>();
 
   const banners = categories.map(c => ({
     img: c.banner,
@@ -44,7 +31,7 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className={styles.contentContainer}>
-        {isLoading ? (
+        {false ? (
           <h2>Loading products...</h2>
         ) : (
           <>

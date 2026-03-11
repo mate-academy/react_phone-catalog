@@ -1,15 +1,10 @@
+import React from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import { ArrowUpIcon } from '../Icons';
+import { scrollToTop } from '../../utils/scrollUtils';
 
-export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
+export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -37,7 +32,7 @@ export const Footer = () => {
         <button
           type="button"
           className={styles.backToTop}
-          onClick={scrollToTop}
+          onClick={() => scrollToTop()}
         >
           <span className={styles.backToTop__text}>Back to top</span>
           <span className={styles.backToTop__icon}>

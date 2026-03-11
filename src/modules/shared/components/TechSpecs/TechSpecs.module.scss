@@ -1,0 +1,50 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  color: #89939a;
+}
+
+.value {
+  color: #313237;
+}
+
+
+.card {
+  gap: 8px;
+
+  .item {
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+.short {
+  gap: 8px;
+
+  .item {
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.full {
+  gap: 8px;
+
+  .item {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+  }
+}

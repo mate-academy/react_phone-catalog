@@ -1,29 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
-import { HeartIcon } from '../Icons';
 import { Product } from '../../../../types/Product';
+import { TechSpecs } from '../TechSpecs';
+import { Link } from 'react-router-dom';
+import { ActionButtons } from '../ActionButtons';
 
 interface Props {
   product: Product;
   hasDiscount?: boolean;
 }
 
-const ProductSpec: React.FC<{ label: string; value: string }> = ({
-  label,
-  value,
-}) => (
-  <div className={styles.specRow}>
-    <span className={styles.specLabel}>{label}</span>
-    <span className={styles.specValue}>{value}</span>
-  </div>
-);
-
 export const ProductCard: React.FC<Props> = ({ product, hasDiscount }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image, id, category } =
-    product;
-
-  const productPath = `/${category}/${id}`;
+  const { name, fullPrice, price, image, itemId } = product;
+  const productPath = `/product/${itemId}`;
 
   return (
     <article className={styles.card}>
@@ -31,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product, hasDiscount }) => {
         <img src={image} alt={name} className={styles.image} />
       </Link>
 
-      <Link to={productPath} className={styles.titleLink}>
+      <Link to={`${productPath}`} className={styles.titleLink}>
         <h3 className={styles.title}>{name}</h3>
       </Link>
 
@@ -45,22 +34,11 @@ export const ProductCard: React.FC<Props> = ({ product, hasDiscount }) => {
       <div className={styles.divider} />
 
       <div className={styles.specs}>
-        <ProductSpec label="Screen" value={screen} />
-        <ProductSpec label="Capacity" value={capacity} />
-        <ProductSpec label="RAM" value={ram} />
+        <TechSpecs product={product} />
       </div>
 
       <div className={styles.buttons}>
-        <button type="button" className={styles.addToCart}>
-          Add to cart
-        </button>
-        <button
-          type="button"
-          className={styles.favorite}
-          aria-label="Add to favorite"
-        >
-          <HeartIcon />
-        </button>
+        <ActionButtons product={product} />
       </div>
     </article>
   );

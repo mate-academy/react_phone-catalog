@@ -1,0 +1,36 @@
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #313237;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e6e9;
+  letter-spacing: -0.01em;
+}
+
+.productDescription {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #313237;
+  margin-bottom: 16px;
+}
+
+.paragraph {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 16px;
+  font-weight: 500;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

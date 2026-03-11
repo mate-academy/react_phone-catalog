@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.link {
+  color: #313237;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.current {
+  color: #89939A;
+  cursor: default;
+}

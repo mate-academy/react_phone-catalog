@@ -9,3 +9,22 @@ body, html {
   padding: 0;
   font-family: Mont, sans-serif;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+
+  &--down {
+    transform: rotate(180deg);
+  }
+
+  &--left {
+    transform: rotate(-90deg);
+  }
+
+  &--right {
+    transform: rotate(90deg);
+  }
+}
