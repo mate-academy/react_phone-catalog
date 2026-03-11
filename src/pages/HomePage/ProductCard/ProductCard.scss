@@ -93,6 +93,7 @@
   &__name {
     display: flex;
     margin-top: 16px;
+    height: 40px;
     transition: transform $effect-duration ease;
     &:hover {
       transform: scale(1.05);
