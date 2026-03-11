@@ -10,6 +10,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .top {
@@ -45,6 +47,45 @@
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .links {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .links {
+    align-self: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .backToTop {
+    align-self: center;
+  }
 }
 
 .backToTop {

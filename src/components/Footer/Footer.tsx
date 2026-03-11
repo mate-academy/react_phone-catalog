@@ -14,22 +14,27 @@ export const Footer = () => {
           />
         </Link>
 
-        <a
-          href="https://github.com/maksymivivan2000-dotcom"
-          target="_blank"
-          rel="noreferrer"
-          className={styles.footerLink}
-        >
-          GitHub
-        </a>
+        <nav className={styles.links} aria-label="Footer navigation">
+          <a
+            href="https://github.com/maksymivivan2000-dotcom"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.footerLink}
+          >
+            GitHub
+          </a>
 
-        <a href="mailto:contact@nicegadgets.com" className={styles.footerLink}>
-          Contacts
-        </a>
+          <a
+            href="mailto:contact@nicegadgets.com"
+            className={styles.footerLink}
+          >
+            Contacts
+          </a>
 
-        <a href="/" className={styles.footerLink}>
-          Rights
-        </a>
+          <Link to="/rights" className={styles.footerLink}>
+            Rights
+          </Link>
+        </nav>
 
         <div className={styles.backToTop}>
           <button

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
@@ -62,6 +62,10 @@ export const ProductDetailsPage = () => {
     [productId],
   );
 
+  useEffect(() => {
+    setImageIndex(0);
+  }, [productId]);
+
   const base = useMemo(() => {
     const products = productsState.data || [];
 
@@ -81,6 +85,10 @@ export const ProductDetailsPage = () => {
   }
 
   const details = detailsState.data;
+  const safeImageIndex = Math.min(
+    imageIndex,
+    Math.max(details.images.length - 1, 0),
+  );
   const inCart = isInCart(base.itemId);
   const favorite = isFavorite(base.itemId);
   const favoriteIcon = favorite
@@ -120,7 +128,7 @@ export const ProductDetailsPage = () => {
             ))}
           </div>
           <img
-            src={getAssetUrl(details.images[imageIndex])}
+            src={getAssetUrl(details.images[safeImageIndex])}
             alt={details.name}
             className={styles.mainImage}
           />

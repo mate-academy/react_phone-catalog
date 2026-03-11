@@ -55,12 +55,12 @@ export const HomePage = () => {
           <Link to="/phones" className={styles.categoryCard}>
             <img src={getAssetUrl('img/category-phones.png')} alt="Phones" />
             <h3>Mobile phones</h3>
-            <p>{counts.phones} models</p>
+            {counts.phones > 0 && <p>{counts.phones} models</p>}
           </Link>
           <Link to="/tablets" className={styles.categoryCard}>
             <img src={getAssetUrl('img/category-tablets.png')} alt="Tablets" />
             <h3>Tablets</h3>
-            <p>{counts.tablets} models</p>
+            {counts.tablets > 0 && <p>{counts.tablets} models</p>}
           </Link>
           <Link to="/accessories" className={styles.categoryCard}>
             <img
@@ -68,7 +68,7 @@ export const HomePage = () => {
               alt="Accessories"
             />
             <h3>Accessories</h3>
-            <p>{counts.accessories} models</p>
+            {counts.accessories > 0 && <p>{counts.accessories} models</p>}
           </Link>
         </div>
       </section>
