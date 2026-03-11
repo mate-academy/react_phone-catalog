@@ -1,0 +1,120 @@
+@import '/src/utils/mixins';
+@import '/src/utils/variables';
+
+.favourites {
+   background-color: var(--color-bg);
+    padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    padding-top: 40px;
+  }
+
+    @include on-laptop {
+    padding-inline: 32px;
+  }
+
+  &__container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+  }
+
+    &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: var(--gray-white);
+    margin: 0;
+    padding-bottom: 8px;
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -1%;
+    }
+  }
+}
+
+.empty__favourites {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  font-size: 18px;
+  color: var(--gray-white);
+  height: 100vh;
+  padding-top: 40px;
+
+  @include on-tablet {
+    font-size: 22px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  height: 16px;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+
+  &__link {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/slider_button_right_disabled.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    flex-shrink: 0;
+  }
+
+  &__current {
+    display: flex;
+    align-items: center;
+    color: var(--gray-secondary);
+    font-weight: 700;
+    font-size: 12px;
+    height: 16px;
+    line-height: 100%;
+  }
+}
+
+.product_page {
+  &__amount {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--gray-secondary);
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      padding-bottom: 40px;
+    }
+
+  }
+}
+

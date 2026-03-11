@@ -1,1 +1,50 @@
-// not empty
+.html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: MyFont, sans-serif;
+}
+
+.page {
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+  }
+}
+
+@font-face {
+  font-family: MyFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MyFont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MyFont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.hidden {
+  display: none;
+}
