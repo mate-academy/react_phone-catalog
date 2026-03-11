@@ -1,4 +1,11 @@
 module.exports = {
   extends: "@mate-academy/stylelint-config",
-  rules: {}
+  rules: {
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: ["config"]
+      }
+    ]
+  }
 };

@@ -9,6 +9,7 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@heroui/button": "^2.2.31",
     "@heroui/react": "^2.8.9",
+    "@heroui/system": "^2.4.28",
     "@heroui/theme": "^2.4.26",
     "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/vite": "^4.1.18",
@@ -20,6 +21,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5",
+    "tailwind-variants": "^3.2.2",
     "vite-tsconfig-paths": "^6.1.1"
   },
   "devDependencies": {

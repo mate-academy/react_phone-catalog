@@ -7,14 +7,15 @@
 }
 
 .hideScrollBar {
-  -ms-overflow-style: none; /* IE & Edge */
   scrollbar-width: none;    /* Firefox */
+
+  -ms-overflow-style: none; /* IE & Edge */
 }
 
 html,
 body {
-  overflow-x: hidden;
   scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 html::-webkit-scrollbar,
