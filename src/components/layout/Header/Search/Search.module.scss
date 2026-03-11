@@ -1,0 +1,219 @@
+@use '@styles/variables' as *;
+@use '@styles/utils' as *;
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+  flex-shrink: 1;
+
+  @include on-desktop() {
+    width: 300px;
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    height: 32px;
+    width: 100%;
+    background-color: $color-surface-1;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    transition: all $transition-default;
+
+    &:focus-within {
+      border-color: $color-light-1;
+    }
+
+    @include on-desktop() {
+      height: 40px;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: $color-light-1;
+    width: 100%;
+    font-size: 16px;
+
+    &::placeholder {
+      color: $color-secondary;
+    }
+
+    @include on-desktop() {
+      font-size: 14px;
+    }
+  }
+
+  &__button {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    filter: $icon-filter;
+    transition: filter 0.2s ease;
+  }
+
+  &__dropdown {
+    position: fixed;
+    top: 64px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    background-color: $color-drobdown;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 1100;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+    padding: 8px;
+
+    @include on-tablet() {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: auto;
+      right: 0;
+      width: 50vw;
+      min-width: 300px;
+      max-height: 400px;
+    }
+
+    @include on-desktop() {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-height: 400px;
+      display: block;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-white;
+      border: 2px solid $color-surface-1;
+      border-radius: 10px;
+    }
+  }
+
+  &__empty {
+    padding: 24px;
+    text-align: center;
+    color: $search-empty;
+    font-size: 14px;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__item {
+    position: relative;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &--selected {
+      background-color: $search-item-hover;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 12px;
+      right: 12px;
+      height: 1px;
+      background-color: $search-divider;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    text-decoration: none;
+  }
+
+  &__img_wrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__item_img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: $search-img-blend;
+    filter: $search-img-filter;
+  }
+
+  &__item_info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__item_name {
+    color: $color-light-1;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__item_category {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  &__item_price {
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-white;
+    margin-left: 8px;
+  }
+}

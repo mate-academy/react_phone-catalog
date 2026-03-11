@@ -1,0 +1,70 @@
+@use '@styles/variables' as *;
+@use '@styles/utils' as *;
+
+.buttonBack {
+  margin-top: 24px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0%;
+  line-height: 100%;
+  font-size: 12px;
+
+  @include on-tablet() {
+    margin-top: 40px;
+  }
+
+  &Link {
+    text-decoration: none;
+    color: $color-light-1;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color $transition-default;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &::before {
+      content: '<';
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
+
+.buttonBack {
+  margin-top: 24px;
+
+  @include on-tablet() {
+    margin-top: 40px;
+  }
+
+  &Link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: $color-light-1;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0%;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color $transition-default;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &::before {
+      content: '<';
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}

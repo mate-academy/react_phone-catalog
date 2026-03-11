@@ -1,0 +1,41 @@
+@use '@styles/variables' as *;
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+  cursor: default;
+
+  &__label {
+    font-size: 13px;
+    color: $color-accent;
+    min-width: 38px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+
+  &__track {
+    flex: 1;
+    height: 16px;
+    background: $color-elements;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: $color-accent-hover;
+    width: 0;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+  }
+
+  &__pct {
+    font-size: 13px;
+    color: $color-secondary;
+    min-width: 28px;
+    text-align: right;
+  }
+}

@@ -40,10 +40,10 @@ export {};
 
 declare global {
   namespace Cypress {
-    interface Chainable<Subject> {
-      getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>;
-      byDataCy(name: string): Chainable<JQuery<HTMLElement>>;
-    }
+    interface Chainable {
+  getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>;
+  byDataCy(name: string): Chainable<JQuery<HTMLElement>>;
+  }
   }
 }
 

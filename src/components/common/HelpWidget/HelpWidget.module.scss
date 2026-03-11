@@ -1,0 +1,239 @@
+@use '@/styles/variables.scss' as *;
+
+.bubble {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  border: 3px solid $color-light-widget;
+  background: $bg-card-1;
+  color: $color-light-widget;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  svg {
+    stroke: currentColor;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  background: $color-light-bt;
+  color: $color-surface-2;
+
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.chat {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+
+  width: 360px;
+  height: 480px;
+
+  z-index: 9999;
+
+  background: $bg-surface;
+  border: 1px solid $color-elements;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.header {
+  padding: 16px;
+  background: $bg-card;
+  color: $color-light-1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 600;
+  border-bottom: 1px solid $color-elements;
+}
+
+.close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $color-light-1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    stroke: currentColor;
+  }
+}
+
+.body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  font-size: 14px;
+  line-height: 1.4;
+
+  animation: messageFade 0.25s ease;
+}
+
+@keyframes messageFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user {
+  align-self: flex-end;
+  background: $color-accent;
+  color: $btn-primary-text;
+}
+
+.bot {
+  align-self: flex-start;
+  background: $bg-card;
+  color: $color-light-1;
+  border: 1px solid $color-elements;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+
+  span {
+    width: 6px;
+    height: 6px;
+    background: $color-light-1;
+    border-radius: 50%;
+    animation: blink 1.4s infinite both;
+  }
+
+  span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+
+  border-top: 1px solid $color-elements;
+  background: $bg-card;
+}
+
+.footer input {
+  flex: 1;
+
+  border-radius: 20px;
+  border: 1px solid $color-elements;
+
+  background: $bg-surface;
+  color: $color-light-1;
+
+  padding: 8px 12px;
+  outline: none;
+
+  transition: border 0.2s;
+
+  &:focus {
+    border-color: $color-accent;
+  }
+}
+
+.footer input::placeholder {
+  color: $color-secondary;
+}
+
+.footer button {
+  border-radius: 50%;
+  border: none;
+
+  width: 36px;
+  height: 36px;
+
+  background: $color-accent;
+  color: $btn-primary-text;
+
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $color-accent-hover;
+  }
+}

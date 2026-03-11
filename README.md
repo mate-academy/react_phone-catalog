@@ -1,143 +1,349 @@
-# React Product Catalog
+<div align="center">
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+# 📱 Phone Catalog Frontend
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+### A modern online electronics store with an intuitive interface
 
-You may also implement color theme switching!
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://team-project-phone-catalog.github.io)
+[![React](https://img.shields.io/badge/React-18.3-61dafb.svg?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-646cff.svg?logo=vite)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/license-Educational-blue.svg)](LICENSE)
 
-## If you work in a team
+[🚀 Live Demo](https://team-project-phone-catalog.github.io) • [📖 Documentation](#-project-structure) • [🤝 Contribute](#-contributing)
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+![Project Preview](https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=Phone+Catalog+Preview)
 
-## Project Setup from scratch
+</div>
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+---
 
-## Data
+## 📋 About The Project
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+**Phone Catalog** is a **full-featured web application** for browsing and purchasing electronics. Built with **modern technologies**, it delivers exceptional performance and an outstanding user experience across all devices.
 
-## App
+> 💡 **Educational project** by a development team showcasing web development best practices
 
-1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
-2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+---
 
-## Home page
+## ✨ Key Features
 
-Implement Home page at available at `/`.
+<table>
+<tr>
+<td width="50%">
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
-2. `PicturesSlider`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
+### 🛍️ For Shoppers
 
-## Product pages
+- 📱 **Extensive catalog** of products
+- 🔍 **Smart search** with instant results
+- 🛒 **Shopping cart** with real-time updates
+- ❤️ **Favorites** to save products
+- 📊 **Sorting** by various parameters
+- 🎯 **Filtering** by categories
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+</td>
+<td width="50%">
 
-1. Each page loads the data of the required `type`.
-2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
-4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+### 💻 Technical Advantages
 
-## Product details page
+- ⚡ **Fast** thanks to Vite
+- 📱 **Responsive design** for all devices
+- 🎨 **Modern UI/UX** with smooth animations
+- ♿ **Accessibility** compliant
+- 🔒 **TypeScript** for code reliability
+- 🚀 **Auto-deploy** via GitHub Actions
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+</td>
+</tr>
+</table>
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain a subheader with description;
-   - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
-7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+---
 
-## Shopping Cart page
+## 🛠️ Technology Stack
 
-Create a Cart page with a list of `CartItem`s at `/cart`.
-Each item should have an `id`, `quantity`, and a `product`.
-Use React Context or Redux to store Items.
+### Frontend Technologies
 
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
-2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
-3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
-5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
-6. Total amount and quantity should be calculated automatically.
-7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+| Technology       | Version | Purpose     |
+| ---------------- | ------- | ----------- |
+| **React**        | `18.3`  | UI library  |
+| **TypeScript**   | `5.6`   | Type safety |
+| **Vite**         | `6.0`   | Build tool  |
+| **React Router** | `v7`    | Routing     |
+| **SCSS**         | Latest  | Styling     |
 
-## Favorites page
+### Development Tools
 
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
+```bash
+├── ESLint          # Code linting
+├── Prettier        # Code formatting
+├── Husky           # Git hooks
+├── lint-staged     # Pre-commit checks
+└── GitHub Actions  # CI/CD pipeline
+```
 
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
-2. The heart should be highlighted if the product is already added to the favorites.
-3. Use React Context or Redux to store the favorites.
-4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load.
+---
 
-## Other tasks
+## 🚀 Quick Start
 
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+### Prerequisites
 
-## (*) Advanced tasks
+> ⚠️ **Required:** Node.js v16.0 or higher
 
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
+### Installation
 
-### Search
+**1️⃣ Clone the repository**
 
-Show `input:search` in the header when a page contains a `ProductList` to search in.
+```bash
+git clone https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io.git
+cd team-project-phone-catalog.github.io
+```
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+**2️⃣ Install dependencies**
+
+```bash
+npm install
+```
+
+**3️⃣ Start the project**
+
+```bash
+npm run dev
+```
+
+**4️⃣ Open your browser**
+
+```
+http://localhost:5173
+```
+
+### 📝 Available Commands
+
+| Command           | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | 🔥 Start dev server with hot reload |
+| `npm run build`   | 📦 Build production bundle          |
+| `npm run preview` | 👀 Preview production build         |
+| `npm run lint`    | 🔍 Check code with ESLint           |
+| `npm run format`  | ✨ Format code with Prettier        |
+
+---
+
+## 📦 Project Structure
+
+```
+team-project-phone-catalog.github.io/
+│
+├── 📂 .github/
+│   └── workflows/           # ⚙️ GitHub Actions CI/CD
+│
+├── 📂 public/              # 🌍 Static files
+│   ├── api/                # 📊 JSON data
+│   │   ├── phones.json
+│   │   ├── tablets.json
+│   │   └── accessories.json
+│   └── img/                # 🖼️ Product images
+│       ├── phones/
+│       ├── tablets/
+│       └── accessories/
+│
+├── 📂 src/
+│   ├── 📂 components/      # ⚛️ React components
+│   │   ├── Header/         # 🎯 Site header
+│   │   ├── Footer/         # 📄 Footer
+│   │   ├── Cart/           # 🛒 Shopping cart
+│   │   ├── Catalog/        # 📚 Product catalog
+│   │   ├── ProductCard/    # 🎴 Product card
+│   │   └── ui/             # 🎨 UI components
+│   │
+│   ├── 📂 pages/           # 📄 Pages
+│   │   ├── HomePage.tsx
+│   │   ├── PhonesPage.tsx
+│   │   ├── TabletsPage.tsx
+│   │   ├── AccessoriesPage.tsx
+│   │   ├── ProductDetailsPage.tsx
+│   │   ├── CartPage.tsx
+│   │   ├── FavouritesPage.tsx
+│   │   └── NotFoundPage.tsx
+│   │
+│   ├── 📂 hooks/           # 🎣 Custom hooks
+│   ├── 📂 context/         # 🔄 Context providers
+│   ├── 📂 api/             # 🌐 API services
+│   ├── 📂 types/           # 📝 TypeScript types
+│   ├── 📂 utils/           # 🛠️ Utilities
+│   ├── 📂 constants/       # 📌 Constants
+│   ├── 📂 styles/          # 💅 Global styles
+│   │
+│   ├── App.tsx             # 🏠 Main component
+│   ├── main.tsx            # 🚪 Entry point
+│   └── index.css
+│
+├── 📄 package.json
+├── 📄 tsconfig.json
+├── 📄 vite.config.ts
+├── 📄 eslint.config.js
+└── 📄 README.md
+```
+
+---
+
+## 🎯 Features In Detail
+
+### 🛍️ Product Catalog
+
+<table>
+<tr>
+<td>
+
+**Product Categories:**
+
+- 📱 Phones
+- 📲 Tablets
+- 🎧 Accessories
+
+</td>
+<td>
+
+**Capabilities:**
+
+- 🔍 Search by name/brand
+- 🎚️ Filter by specifications
+- 📊 Sort (price, popularity, newest)
+
+</td>
+</tr>
+</table>
+
+### 🛒 Shopping Experience
+
+```typescript
+// Core cart functionality
+✅ Add products with quantity selection
+✅ Remove products
+✅ Real-time quantity updates
+✅ State persistence (localStorage)
+✅ Total price calculation
+✅ Checkout process
+```
+
+### 🎨 User Interface
+
+> **Modern design** focused on simplicity and usability
+
+- ✨ Smooth animations and transitions
+- 🎭 Loading states
+- ⚠️ Error handling
+- ♿ Accessibility (WCAG 2.1)
+- 📱 Mobile-first approach
+
+---
+
+## 🚀 Deployment
+
+### Automated CI/CD Pipeline
+
+```mermaid
+graph LR
+    A[Push to main] --> B[GitHub Actions]
+    B --> C[Build & Test]
+    C --> D[Deploy to GitHub Pages]
+    D --> E[Live Site ✅]
+```
+
+| Deploy Type    | Source        | URL                                                                                  |
+| -------------- | ------------- | ------------------------------------------------------------------------------------ |
+| **Production** | `main` branch | [team-project-phone-catalog.github.io](https://team-project-phone-catalog.github.io) |
+| **Preview**    | Pull Requests | Automatic preview URLs                                                               |
+
+**⏱️ Build time:** ~1-2 minutes  
+**🔄 Updates:** Automatic on push
+
+---
+
+## 📊 Project Statistics
+
+<div align="center">
+
+### Code Composition
+
+![TypeScript](https://img.shields.io/badge/TypeScript-51.7%25-3178c6?style=for-the-badge&logo=typescript)
+![SCSS](https://img.shields.io/badge/SCSS-44.6%25-CC6699?style=for-the-badge&logo=sass)
+![JavaScript](https://img.shields.io/badge/JavaScript-2.4%25-F7DF1E?style=for-the-badge&logo=javascript)
+![Other](https://img.shields.io/badge/Other-1.3%25-lightgrey?style=for-the-badge)
+
+</div>
+
+---
+
+## 🤝 Contributing
+
+We welcome your contributions! 🎉
+
+### How to contribute:
+
+1. **🍴 Fork** the project
+2. **🌿 Create** a branch (`git checkout -b feature/AmazingFeature`)
+3. **💾 Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **📤 Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **🎁 Open** a Pull Request
+
+### Contribution Guidelines:
+
+- ✅ Follow code style (ESLint + Prettier)
+- ✅ Write clear commit messages
+- ✅ Add comments to complex code
+- ✅ Test changes before PR
+
+---
+
+## 👥 Team
+
+<div align="center">
+
+### Developed by **Team-Project-Phone-catalog**
+
+👨‍💻 **3 contributors** worked on this project
+
+[View all contributors →](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io/graphs/contributors)
+
+</div>
+
+---
+
+## 🔗 Useful Links
+
+| Resource           | Link                                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| 🌐 **Live Demo**   | [team-project-phone-catalog.github.io](https://team-project-phone-catalog.github.io)                    |
+| 💻 **GitHub Repo** | [Repository](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io)        |
+| 📚 **Tech Stack**  | [TECH_STACK.md](./TECH_STACK.md)                                                                        |
+| ✅ **Task List**   | [TASK_CHECKLIST.md](./TASK_CHECKLIST.md)                                                                |
+| 🐛 **Issues**      | [Report Bug](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io/issues) |
+
+---
+
+## 📄 License
+
+This project was created for **educational purposes**.
+
+---
+
+## 📞 Contact
+
+Have questions or suggestions? We're always happy to hear from you! 💬
+
+- 🐛 [Report a bug](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io/issues/new)
+- 💡 [Request a feature](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io/issues/new)
+- 📧 [Create an Issue](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io/issues)
+
+---
+
+<div align="center">
+
+### ⭐ Don't forget to star the project if you like it!
+
+**Made with ❤️ by Team-Project-Phone-catalog**
+
+[![GitHub stars](https://img.shields.io/github/stars/Team-Project-Phone-catalog/team-project-phone-catalog.github.io?style=social)](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io)
+[![GitHub forks](https://img.shields.io/github/forks/Team-Project-Phone-catalog/team-project-phone-catalog.github.io?style=social)](https://github.com/Team-Project-Phone-catalog/team-project-phone-catalog.github.io/fork)
+
+</div>

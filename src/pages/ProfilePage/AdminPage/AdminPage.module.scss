@@ -1,0 +1,342 @@
+@use '@styles/utils' as *;
+@use '@styles/variables' as *;
+
+.profilePage {
+  min-height: 100vh;
+  background: $color-black;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px 56px;
+
+    @include on-tablet {
+      padding: 0 24px 64px;
+    }
+
+    @include on-desktop {
+      padding: 0 32px 80px;
+    }
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 32px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    color: $color-light-1;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-surface-1;
+  border: 1px solid #3b3e56;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+
+  &__label {
+    color: #75778b;
+    font-size: 14px;
+  }
+
+  &__value {
+    color: $color-light-1;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+
+.tableWrap {
+  background: $color-surface-1;
+  border: 1px solid #3b3e56;
+  border-radius: 16px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__th {
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 12px;
+    color: #75778b;
+    font-weight: 600;
+    border-bottom: 1px solid #3b3e56;
+    white-space: nowrap;
+  }
+
+  &__row {
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: #1a1c30;
+    }
+
+    & + & td {
+      border-top: 1px solid #23253a;
+    }
+  }
+
+  &__td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #c0c2d8;
+    white-space: nowrap;
+
+    &_id {
+      font-family: monospace;
+      font-size: 13px;
+      color: #75778b;
+    }
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+
+  &_admin {
+    background: rgba(91, 110, 245, 0.15);
+    color: #7c8bff;
+  }
+
+  &_user {
+    background: rgba(117, 119, 139, 0.12);
+    color: #75778b;
+  }
+}
+
+.badge_delivered {
+  background: rgba(52, 199, 89, 0.12);
+  color: #34c759;
+}
+
+.badge_processing {
+  background: rgba(255, 159, 10, 0.12);
+  color: #ff9f0a;
+}
+
+.badge_cancelled {
+  background: rgba(255, 69, 58, 0.12);
+  color: #ff453a;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+
+  &__btn {
+    background: rgba(117, 119, 139, 0.12);
+    color: #c0c2d8;
+    border: 1px solid #3b3e56;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    &:hover:not(:disabled) {
+      background: rgba(117, 119, 139, 0.25);
+      color: $color-light-1;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &_danger {
+      background: rgba(255, 69, 58, 0.08);
+      color: #ff453a;
+      border-color: rgba(255, 69, 58, 0.2);
+
+      &:hover:not(:disabled) {
+        background: rgba(255, 69, 58, 0.2);
+      }
+    }
+  }
+}
+
+.supportBlock {
+  background: $color-surface-1;
+  border: 1px solid #3b3e56;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 32px;
+
+  &__title {
+    color: $color-light-1;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__label {
+    color: #75778b;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__select {
+    background: $color-black;
+    border: 1px solid #3b3e56;
+    border-radius: 10px;
+    color: #c0c2d8;
+    font-size: 14px;
+    padding: 10px 14px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2375778b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+
+    &:focus {
+      border-color: #5b6ef5;
+    }
+
+    option {
+      background: $color-surface-1;
+      color: #c0c2d8;
+    }
+  }
+
+  &__textarea {
+    background: $color-black;
+    border: 1px solid #3b3e56;
+    border-radius: 10px;
+    color: #c0c2d8;
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.6;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: #3b3e56;
+    }
+
+    &:focus {
+      border-color: #5b6ef5;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  &__submit {
+    background: rgba(91, 110, 245, 0.15);
+    color: #7c8bff;
+    border: 1px solid rgba(91, 110, 245, 0.35);
+    border-radius: 8px;
+    padding: 8px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(91, 110, 245, 0.3);
+      color: $color-light-1;
+    }
+  }
+}
+
+.conversation {
+  background: $color-black;
+  border: 1px solid #3b3e56;
+  border-radius: 10px;
+  padding: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  &__msg {
+    padding: 10px 14px;
+    border-radius: 8px;
+    max-width: 80%;
+
+    &_user {
+      background: rgba(117, 119, 139, 0.12);
+      align-self: flex-start;
+    }
+
+    &_admin {
+      background: rgba(91, 110, 245, 0.12);
+      align-self: flex-end;
+    }
+  }
+
+  &__role {
+    font-size: 11px;
+    font-weight: 700;
+    color: #75778b;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: #c0c2d8;
+    margin: 0;
+  }
+
+  &__time {
+    font-size: 11px;
+    color: #3b3e56;
+    display: block;
+    margin-top: 4px;
+    text-align: right;
+  }
+}

@@ -1,0 +1,95 @@
+@use '@styles/variables' as *;
+
+.color-link {
+  --size: 32px;
+
+  display: flex;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: 1px solid $color-elements;
+  position: relative;
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+
+  &:not(&--active):hover {
+    transform: scale(1.05);
+    border-color: $color-icons;
+    box-shadow: 0 0 10px 2px rgba($color-elements, 0.6);
+  }
+
+  &--active {
+    border-color: $color-light-1;
+    pointer-events: none;
+    box-shadow: 0 0 0 2px rgba($color-light-1, 0.2);
+  }
+
+  &__circle {
+    --this-size: calc(var(--size) * 0.75);
+
+    position: absolute;
+    width: var(--this-size);
+    height: var(--this-size);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &.color-link--green {
+      background-color: #5f7170;
+    }
+    &.color-link--black {
+      background-color: #1b1b1d;
+    }
+    &.color-link--purple {
+      background-color: #e5ddea;
+    }
+    &.color-link--red {
+      background-color: #b00d23;
+    }
+    &.color-link--white {
+      background-color: #f0f0f0;
+    }
+    &.color-link--yellow {
+      background-color: #fcdbc1;
+    }
+    &.color-link--gold {
+      background-color: #d4c9b1;
+    }
+    &.color-link--midnightgreen {
+      background-color: #4e5850;
+    }
+    &.color-link--silver {
+      background-color: #e2e4e1;
+    }
+    &.color-link--spacegray {
+      background-color: #707070;
+    }
+    &.color-link--rosegold {
+      background-color: #b76e79;
+    }
+    &.color-link--coral {
+      background-color: #e4664f;
+    }
+    &.color-link--spaceblack {
+      background-color: #201d24;
+    }
+    &.color-link--midnight {
+      background-color: #171e27;
+    }
+    &.color-link--pink {
+      background-color: #fae0d8;
+    }
+    &.color-link--blue {
+      background-color: #215e7c;
+    }
+    &.color-link--sierrablue {
+      background-color: #9bb5ce;
+    }
+    &.color-link--graphite {
+      background-color: #4c4c4c;
+    }
+  }
+}

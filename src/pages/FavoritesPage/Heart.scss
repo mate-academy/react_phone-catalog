@@ -1,0 +1,36 @@
+@use '@styles/variables' as *;
+
+.heart-container {
+  position: relative;
+  width: 144px;
+  height: 144px;
+}
+
+.heart-container svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heart-base {
+  color: $color-light-1;
+}
+
+.heart-animated {
+  color: $color-red;
+
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+
+  animation: draw-infinite 30s linear forwards;
+}
+
+@keyframes draw-infinite {
+  0% {
+    stroke-dashoffset: 500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
