@@ -123,6 +123,17 @@
   flex: 1;
 }
 
+.btnRemove {
+  background-color: var(--color-white);
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+  font-weight: 700;
+  font-size: 14px;
+  height: 40px;
+  flex: 1;
+  transition: all 0.2s;
+}
+
 .btnFavorites {
   display: flex;
   justify-content: center;

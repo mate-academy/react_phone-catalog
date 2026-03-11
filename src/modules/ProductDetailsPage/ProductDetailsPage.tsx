@@ -17,7 +17,8 @@ import { ProductDetailsSkeleton } from '../shared/ProductDetailsSkeleton/Product
 import { useToast } from '../../context/ToastContext';
 
 export const ProductDetailsPage = () => {
-  const { addToCart, isInCart } = useCart();
+  const [isCartHovered, setIsCartHovered] = useState(false);
+  const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const [product, setProduct] = useState<Phone | Tablet | Accessory | null>(
@@ -296,15 +297,31 @@ export const ProductDetailsPage = () => {
                 <button
                   className={
                     isInCart(productCart?.id || 0)
-                      ? styles.btnAdded
+                      ? isCartHovered
+                        ? styles.btnRemove
+                        : styles.btnAdded
                       : styles.btnAddToCart
                   }
-                  onClick={() =>
-                    productCart &&
-                    addToCart(productCart, () => showToast('Added to cart'))
-                  }
+                  onMouseEnter={() => setIsCartHovered(true)}
+                  onMouseLeave={() => setIsCartHovered(false)}
+                  onClick={() => {
+                    if (isInCart(productCart?.id || 0)) {
+                      removeFromCart(productCart!.id);
+                      showToast('Removed from cart');
+                    } else {
+                      if (productCart) {
+                        addToCart(productCart, () =>
+                          showToast('Added to cart'),
+                        );
+                      }
+                    }
+                  }}
                 >
-                  {isInCart(productCart?.id || 0) ? 'Added' : 'Add to cart'}
+                  {isInCart(productCart?.id || 0)
+                    ? isCartHovered
+                      ? 'Remove from cart'
+                      : 'Added'
+                    : 'Add to cart'}
                 </button>
 
                 <button

@@ -16,7 +16,11 @@ export const HomePage = () => {
       try {
         await new Promise(resolve => setTimeout(resolve, 500));
         const all = await getProducts();
-        const newest = [...all].sort((a, b) => b.year - a.year).slice(0, 8);
+        const maxYear = Math.max(...all.map(p => p.year));
+        const newest = [...all]
+          .filter(p => p.year === maxYear)
+          .sort((a, b) => a.fullPrice - a.price - (b.fullPrice - b.price))
+          .slice(0, 8);
         const hottest = [...all]
           .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
           .slice(0, 8);

@@ -11,7 +11,8 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { addToCart, isInCart } = useCart();
+  const [isHovered, setIsHovered] = React.useState(false);
+  const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { showToast } = useToast();
 
@@ -55,11 +56,28 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.bottom}>
         <button
           className={
-            isInCart(product.id) ? styles.btnAdded : styles.btnAddToCart
+            isInCart(product.id)
+              ? isHovered
+                ? styles.btnRemove
+                : styles.btnAdded
+              : styles.btnAddToCart
           }
-          onClick={() => addToCart(product, () => showToast('Added to cart'))}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => {
+            if (isInCart(product.id)) {
+              removeFromCart(product.id);
+              showToast('Removed from cart');
+            } else {
+              addToCart(product, () => showToast('Added to cart'));
+            }
+          }}
         >
-          {isInCart(product.id) ? 'Added' : 'Add to cart'}
+          {isInCart(product.id)
+            ? isHovered
+              ? 'Remove from cart'
+              : 'Added'
+            : 'Add to cart'}
         </button>
 
         <button

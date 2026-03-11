@@ -76,7 +76,9 @@ export const CartPage = () => {
                   </button>
                 </div>
 
-                <p className={styles.price}>${item.product.price}</p>
+                <p className={styles.price}>
+                  ${item.product.price * item.quantity}
+                </p>
               </div>
             ))}
           </div>
