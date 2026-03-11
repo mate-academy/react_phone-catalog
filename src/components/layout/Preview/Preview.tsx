@@ -5,11 +5,8 @@ import { useState } from 'react';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Preview.module.scss';
 
-type Props = {
-  images: string[];
-};
-
-export const Preview = ({ images }: Props) => {
+export const Preview = () => {
+  const images = ['/img/Banner.png', '/img/Banner.png', '/img/Banner.png'];
   const autoTimer = useRef<NodeJS.Timeout | null>(null);
   const manualTimeout = useRef<NodeJS.Timeout | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);

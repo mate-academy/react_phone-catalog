@@ -11,3 +11,20 @@
     gap: 16px;
   }
 }
+
+.content {
+  overflow: hidden;
+}
+
+.slider {
+  transition: 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 272px;
+  flex-shrink: 0;
+}

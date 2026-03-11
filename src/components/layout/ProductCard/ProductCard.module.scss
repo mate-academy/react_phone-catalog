@@ -1,10 +1,22 @@
 .product {
+  width: 100%;
   max-width: 272px;
+  height: 100%;
+  flex: 1 0 auto;
   border: 1px solid $elements;
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  max-width: 160px;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .title {
+  margin-top: auto;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;

@@ -4,9 +4,14 @@ import styles from './ButtonArrow.module.scss';
 type Props = {
   direction: string;
   disabled?: boolean;
+  onClick: () => void;
 };
 
-export const ButtonArrow = ({ direction, disabled = false }: Props) => {
+export const ButtonArrow = ({
+  direction,
+  disabled = false,
+  onClick,
+}: Props) => {
   return (
     <button
       type="button"
@@ -14,6 +19,7 @@ export const ButtonArrow = ({ direction, disabled = false }: Props) => {
         [styles.button__disabled]: disabled,
       })}
       disabled={disabled}
+      onClick={onClick}
     >
       <img
         src="/icons/ArrowUp.svg"

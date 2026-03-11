@@ -1,33 +1,34 @@
+import { Product } from '../../../types/types';
 import { imageUrl } from '../../../utils/imageUrl';
 import { Button } from '../../ui/Button';
 import { ButtonLiked } from '../../ui/ButtonLiked';
 import styles from './ProductCard.module.scss';
 
-export const ProductCard = () => {
+type Props = {
+  product: Product;
+};
+
+export const ProductCard = ({ product }: Props) => {
   return (
     <div className={styles.product}>
-      <img
-        src={imageUrl('img/category-phones.png')}
-        alt=""
-        className={styles.img}
-      />
-      <h3 className={styles.title}>Apple iPhone 14 Pro 128GB Silver (MQ023)</h3>
+      <img src={imageUrl(product.image)} alt="" className={styles.img} />
+      <h3 className={styles.title}>{product.name}</h3>
       <div className={styles.group}>
-        <p className={styles.price}>$999</p>
-        <p className={styles.price__discount}>$999</p>
+        <p className={styles.price}>${product.price}</p>
+        <p className={styles.price__discount}>{product.fullPrice}</p>
       </div>
       <div className={styles.info}>
         <p className={styles.info__text}>
           Screen
-          <span className={styles.info__text_params}>6.1” OLED</span>
+          <span className={styles.info__text_params}>{product.screen}</span>
         </p>
         <p className={styles.info__text}>
-          Screen
-          <span className={styles.info__text_params}>6.1” OLED</span>
+          Capacity
+          <span className={styles.info__text_params}>{product.capacity}</span>
         </p>
         <p className={styles.info__text}>
-          Screen
-          <span className={styles.info__text_params}>6.1” OLED</span>
+          Ram
+          <span className={styles.info__text_params}>{product.ram}</span>
         </p>
       </div>
       <div className={styles.footer}>

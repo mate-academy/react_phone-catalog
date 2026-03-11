@@ -3,15 +3,18 @@ import './assets/styles/main.scss';
 import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 import { HomePage } from './modules/HomePage';
+import { ProductsProvider } from './store/ProductsProvider';
 
 export const App = () => {
   return (
     <div className="app">
       <Header />
       <main className="wrapper">
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-        </Routes>
+        <ProductsProvider>
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+          </Routes>
+        </ProductsProvider>
       </main>
       <Footer />
     </div>
