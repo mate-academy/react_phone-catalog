@@ -25,6 +25,8 @@ export const ProductDetailsPage = () => {
   const { addToCart, cart } = useCart();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (!productId) {
       return;
     }

@@ -26,8 +26,21 @@ export const Footer = () => {
             >
               Github
             </a>
-            <a href="#">Contacts</a>
-            <a href="#">Rights</a>
+            <a
+              href="https://github.com/maksymkolomiiets2-svg/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contacts
+            </a>
+
+            <a
+              href="https://github.com/maksymkolomiiets2-svg/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Rights
+            </a>
           </div>
 
           <div className={styles.backToTop}>
