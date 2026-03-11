@@ -1,11 +1,12 @@
+/* eslint-disable max-len */
 import { useCallback, useContext } from 'react';
-import { ProductsContext } from '@/store/ProductsContext';
-import { CategoryType } from '@/types/CategoryType';
-import { CategoryData } from '@/types/CategoryData';
-import { Category } from '@/components/Category/Category';
-import { HotProductsSlider } from '@/components/HotProductsSlider/HotProductsSlider';
-import { BrandNewModelsSlider } from '@/components/BrandNewModels/BrandNewModels';
-import { PicturesSlider } from '@/components/PicturesSlider/PicturesSlider';
+import { ProductsContext } from '../../store/ProductsContext';
+import { CategoryType } from '../../types/CategoryType';
+import { CategoryData } from '../../types/CategoryData';
+import { Category } from '../../components/Category/Category';
+import { HotProductsSlider } from '../../components/HotProductsSlider/HotProductsSlider';
+import { BrandNewModelsSlider } from '../../components/BrandNewModels/BrandNewModels';
+import { PicturesSlider } from '../../components/PicturesSlider/PicturesSlider';
 import React from 'react';
 
 export default function HomePage() {
@@ -59,7 +60,7 @@ export default function HomePage() {
         <BrandNewModelsSlider products={phones} />
         <div className="flex flex-col gap-8">
           <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">Shop by category</h2>
-          <div className="flex flex-col sm:flex-row justify-between gap-10 sm:gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 w-full gap-10 sm:gap-2">
             <Category data={getDataCategory(CategoryType.PHONES)} />
             <Category data={getDataCategory(CategoryType.TABLETS)} />
             <Category data={getDataCategory(CategoryType.ACCESSORIES)} />

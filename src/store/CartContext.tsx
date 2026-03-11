@@ -1,13 +1,9 @@
 'use client';
+/* eslint-disable max-len */
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export type CartItem = Record<string, number>;
-
-// const cardItems = {
-//   "iphone-16-pro": 2,
-//   "samsung-galaxy-s24": 1,
-// }
 
 interface CartContextType {
   cartItems: CartItem;
@@ -34,8 +30,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
         setCartItems(parsed);
       }
-    } catch (e) {
-      console.error('Failed to load cart', e);
+    } catch {
+      // Invalid or unavailable localStorage: keep default empty cart.
+      setCartItems({});
     }
 
     setIsLoaded(true);

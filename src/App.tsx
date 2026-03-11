@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';

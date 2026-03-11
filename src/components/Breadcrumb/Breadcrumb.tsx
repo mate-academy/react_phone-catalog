@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Breadcrumbs, BreadcrumbItem } from '@heroui/react';
 import { HouseIcon } from '@phosphor-icons/react';
 import React from 'react';

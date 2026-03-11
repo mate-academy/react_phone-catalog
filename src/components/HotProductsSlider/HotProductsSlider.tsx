@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import { useRef } from 'react';
-import { Product } from '@/types/Product';
+import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Button } from '@heroui/button';
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
@@ -45,7 +46,8 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
             isIconOnly
             variant="bordered"
             radius="full"
-            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
             onPress={() => scroll('left')}
           >
             <CaretLeftIcon size={12} color="#030303" />
@@ -54,7 +56,8 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
             isIconOnly
             variant="bordered"
             radius="full"
-            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
             onPress={() => scroll('right')}
           >
             <CaretRightIcon size={12} color="#030303" />
@@ -63,7 +66,11 @@ export const HotProductsSlider: React.FC<Props> = ({ products }) => {
       </div>
 
       {/* Slider container */}
-      <div ref={listRef} className="flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth hideScrollBar pb-4">
+      <div
+        ref={listRef}
+        className="flex gap-6 overflow-x-auto overflow-y-visible 
+        scroll-smooth hideScrollBar pb-4"
+      >
         {sorted.map(product => (
           <div key={product.id}>
             <ProductCard product={product} />

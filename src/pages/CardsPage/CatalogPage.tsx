@@ -1,14 +1,15 @@
-import SortDropdown from '@/components/SortDropdown/SortDropdown';
+/* eslint-disable max-len */
+import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@heroui/react';
 import { CaretDownIcon } from '@phosphor-icons/react';
-import { ProductsContext } from '@/store/ProductsContext';
+import { ProductsContext } from '../../store/ProductsContext';
 
 import { useContext, useMemo, useState } from 'react';
 
 import { Pagination } from '@heroui/react';
 import { useSearchParams } from 'react-router-dom';
-import { ProductCard } from '@/components/ProductCard/ProductCard';
-import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
+import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 import React from 'react';
 
 const PER_PAGE_OPTIONS = ['4', '8', '16', 'all'] as const;
@@ -19,6 +20,11 @@ interface Props {
 }
 
 type SortValue = 'age' | 'alpha' | 'price';
+type PerPageOption = (typeof PER_PAGE_OPTIONS)[number];
+
+const isPerPageOption = (value: string): value is PerPageOption => {
+  return PER_PAGE_OPTIONS.some(option => option === value);
+};
 
 export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const { products } = useContext(ProductsContext);
@@ -47,7 +53,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const perPageParam = params.get('perPage') ?? 'all';
 
   const page = Math.max(pageParam, 1);
-  const perPage = PER_PAGE_OPTIONS.includes(perPageParam as any) ? perPageParam : 'all';
+  const perPage = isPerPageOption(perPageParam) ? perPageParam : 'all';
 
   // ---- derive paging ----
   const perPageNumber = perPage === 'all' ? sortedProducts.length : Number(perPage);
@@ -97,9 +103,14 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const label = perPage === '4' ? '4' : perPage === '8' ? '8' : perPage === '16' ? '16' : 'All';
 
   return (
-    <div className="px-6 xl:px-[152px]">
+    <div className="px-6 xl:px-38">
       <Breadcrumb />
-      <h1 className="text-[32px] sm:text-5xl tracking-[-0.01em] font-bold mb-3">{title}</h1>
+      <h1
+        className="text-[32px] sm:text-5xl 
+        tracking-[-0.01em] font-bold mb-3"
+      >
+        {title}
+      </h1>
 
       <div className="flex flex-wrap justify-between items-center mb-10">
         <p className="text-gray-400 text-[14px]">{modelsAmount} models</p>
@@ -113,7 +124,8 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
             <DropdownTrigger>
               <Button
                 variant="bordered"
-                className="w-[136px] justify-between border-gray-200 hover:border-gray-950 rounded-small"
+                className="w-[136px] justify-between
+                border-gray-200 hover:border-gray-950 rounded-small"
                 endContent={
                   <CaretDownIcon
                     size={13}
@@ -143,7 +155,10 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
       </div>
 
       <div className="flex flex-col py-6 gap-8">
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div
+          className="grid gap-6 grid-cols-1 
+          sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+        >
           {visibleProducts.map(p => (
             <ProductCard key={p.id} product={p} />
           ))}
@@ -160,7 +175,16 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
               radius="full"
               variant="bordered"
               classNames={{
-                cursor: 'bg-linear-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold',
+                cursor: `
+                bg-linear-to-b
+                shadow-lg
+                from-default-500
+                to-default-800
+                dark:from-default-300
+                dark:to-default-100
+                text-white
+                font-bold
+                `,
               }}
               onChange={handlePageChange}
             />

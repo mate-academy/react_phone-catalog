@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { tv } from 'tailwind-variants';
 
 export const title = tv({

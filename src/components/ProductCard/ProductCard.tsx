@@ -1,11 +1,13 @@
-import { useFavourites } from '@/store/FavouritesContext';
-import { Product } from '@/types/Product';
+/* eslint-disable max-len */
+import { useFavourites } from '../../store/FavouritesContext';
+import { Product } from '../../types/Product';
 import { Card, Image, Button } from '@heroui/react';
 import { Link } from 'react-router-dom';
 import { HeartIcon } from '@phosphor-icons/react';
-import { useCart } from '@/store/CartContext';
+import { useCart } from '../../store/CartContext';
 import { useMemo } from 'react';
 import React from 'react';
+import { getImage } from '../../store/getImage';
 
 type Props = {
   product: Product;
@@ -22,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
 
     return cartItems[product.itemId];
-  }, [product?.itemId, cartItems]);
+  }, [product, cartItems]);
 
   return (
     <Card
@@ -30,7 +32,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       isPressable={false}
       key={product.id}
       shadow="sm"
-      className="h-auto min-h-[440px] sm:min-h-[504px] min-w-[212px] sm:min-w-[237px] border-gray-600 rounded-small p-7 shadow-md hover:shadow-lg transition text-[#0F0F11]"
+      className="h-auto min-h-110 sm:min-h-126 min-w-53 sm:min-w-[237px] 
+      border-gray-600 rounded-small p-7 
+      shadow-md hover:shadow-lg transition text-[#0F0F11]"
     >
       <div className="flex justify-center mb-6">
         <Link to={`/${product.category}/${product.itemId}`} className="block">
@@ -41,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             width="100%"
             alt={product.name}
             className="w-full object-contain h-32 sm:h-49"
-            src={`/${product.image}`}
+            src={getImage(product.image)}
           />
         </Link>
       </div>
@@ -50,7 +54,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <h3 className="text-sm mb-3">{product.name}</h3>
       </Link>
 
-      <div className="flex items-center gap-3 pb-2 mb-4 text-[22px] border-b-1 border-gray-200">
+      <div
+        className="flex items-center gap-3 pb-2 mb-4 
+        text-[22px] border-b-1 border-gray-200"
+      >
         <span className="font-bold">${product.price}</span>
         {product.fullPrice && <span className="text-[#89939A] leading-[21px] line-through">${product.fullPrice}</span>}
       </div>
@@ -73,14 +80,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="flex items-center justify-between w-full gap-2">
         {inCartProductCounts ? (
-          <Button variant="bordered" radius="full" disabled className="h-10 w-[176px] sm:w-[118px] flex-1 bg-white text-[#4219d0]">
+          <Button
+            variant="bordered"
+            radius="full"
+            disabled
+            className="h-10 w-44 sm:w-[118px] 
+            flex-1 bg-white text-[#4219d0]"
+          >
             Added to cart
           </Button>
         ) : (
           <Button
             variant="bordered"
             radius="full"
-            className="w-[176px] sm:w-[118px] flex-1 bg-[#4219d0] text-white"
+            className="w-[176px] sm:w-[118px] 
+            flex-1 bg-[#4219d0] text-white"
             onPress={() => addToCart(product.itemId)}
           >
             Add to Card

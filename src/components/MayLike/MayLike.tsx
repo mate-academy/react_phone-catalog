@@ -1,9 +1,9 @@
-import { useMemo, useRef } from 'react';
-import { Product } from '@/types/Product';
+/* eslint-disable max-len */ import { useMemo, useRef } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Button } from '@heroui/button';
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 import React from 'react';
+import { Product } from '../../types/Product';
 
 type Props = {
   products: Product[];
@@ -50,7 +50,8 @@ export const MayLike: React.FC<Props> = ({ products }) => {
             isIconOnly
             variant="bordered"
             radius="full"
-            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
             onPress={() => scroll('left')}
           >
             <CaretLeftIcon size={12} color="#030303" />
@@ -59,7 +60,8 @@ export const MayLike: React.FC<Props> = ({ products }) => {
             isIconOnly
             variant="bordered"
             radius="full"
-            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
             onPress={() => scroll('right')}
           >
             <CaretRightIcon size={12} color="#030303" />

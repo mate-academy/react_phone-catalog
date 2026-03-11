@@ -1,7 +1,8 @@
-import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
-import { ProductCard } from '@/components/ProductCard/ProductCard';
-import { useFavourites } from '@/store/FavouritesContext';
-import { ProductsContext } from '@/store/ProductsContext';
+/* eslint-disable max-len */
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { useFavourites } from '../../store/FavouritesContext';
+import { ProductsContext } from '../../store/ProductsContext';
 import React from 'react';
 import { useContext } from 'react';
 
@@ -21,9 +22,12 @@ export const FavouritesPage: React.FC = () => {
       </div>
 
       {favouriteProducts.length === 0 ? (
-        <p className="text-lg text-gray-500">You haven't added any products to favorites yet.</p>
+        <p className="text-lg text-gray-500">You haven&apos;t added any products to favorites yet.</p>
       ) : (
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div
+          className="grid gap-4 grid-cols-1 
+            sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
           {favouriteProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -1,13 +1,15 @@
-import { siteConfig } from '@/config/site';
+/* eslint-disable max-len */
+import { siteConfig } from '../config/site';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuToggle, NavbarMenuItem } from '@heroui/react';
 import { Link, useLocation } from 'react-router-dom';
 import { HeartStraightIcon } from '@phosphor-icons/react';
 import { ShoppingBagOpenIcon } from '@phosphor-icons/react';
 import { useMemo, useState } from 'react';
 import { Badge } from '@heroui/react';
-import { useCart } from '@/store/CartContext';
-import { useFavourites } from '@/store/FavouritesContext';
+import { useCart } from '../store/CartContext';
+import { useFavourites } from '../store/FavouritesContext';
 import React from 'react';
+import { getImage } from '../store/getImage';
 
 export function AppNavbar() {
   const location = useLocation(); // дізнаємось, на якій сторінці зараз користувач
@@ -46,7 +48,7 @@ export function AppNavbar() {
       <div className="flex gap-8">
         <NavbarBrand>
           <Link to="/">
-            <img src="/img/logo.png" alt="logo" className="h-[22px] lg:w-[80px] lg:h-[28px]" />
+            <img src={getImage('img/logo.png')} alt="logo" className="h-[22px] lg:w-[80px] lg:h-[28px]" />
           </Link>
         </NavbarBrand>
 
@@ -57,11 +59,7 @@ export function AppNavbar() {
               <Link
                 to={item.href}
                 className={`relative font-medium text-[12px] transition-colors duration-300 
-                ${
-                  currentPath === item.href
-                    ? "text-gray-950 after:content-[''] after:absolute after:left-0 after:bottom-[-17px] xl:after:bottom-[-26px] after:h-[3px] after:w-full after:bg-gray-950"
-                    : 'text-gray-600'
-                }`}
+                ${currentPath === item.href ? "text-gray-950 after:content-[''] after:absolute after:left-0 after:bottom-[-17px] xl:after:bottom-[-26px] after:h-[3px] after:w-full after:bg-gray-950" : 'text-gray-600'}`}
               >
                 {item.label}
               </Link>

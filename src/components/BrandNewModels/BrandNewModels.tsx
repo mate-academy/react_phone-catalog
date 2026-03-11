@@ -1,12 +1,14 @@
+/* eslint-disable max-len */
 import { useRef } from 'react';
-import { Product } from '@/types/Product';
+import { Product } from '../../types/Product';
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 import React from 'react';
-import { useFavourites } from '@/store/FavouritesContext';
+import { useFavourites } from '../../store/FavouritesContext';
 import { Card, Image, Button } from '@heroui/react';
 import { Link } from 'react-router-dom';
 import { HeartIcon } from '@phosphor-icons/react';
-import { useCart } from '@/store/CartContext';
+import { useCart } from '../../store/CartContext';
+import { getImage } from '../../store/getImage';
 
 type Props = {
   products: Product[];
@@ -45,7 +47,8 @@ export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
             isIconOnly
             variant="bordered"
             radius="full"
-            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
             onPress={() => scroll('left')}
           >
             <CaretLeftIcon size={12} color="#030303" />
@@ -54,7 +57,8 @@ export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
             isIconOnly
             variant="bordered"
             radius="full"
-            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 flex items-center justify-center"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
             onPress={() => scroll('right')}
           >
             <CaretRightIcon size={12} color="#030303" />
@@ -74,7 +78,8 @@ export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
               isPressable={false}
               key={product.id}
               shadow="sm"
-              className="min-h-[440px] sm:min-h-[504px] min-w-[212px] sm:min-w-[237px] lg:min-w-[272px] border-gray-600 rounded-small p-7 shadow-md hover:shadow-lg transition text-[#0F0F11]"
+              className="min-h-110 sm:min-h-126 min-w-53 sm:min-w-[237px] lg:min-w-68 
+              border-gray-600 rounded-small p-7 shadow-md hover:shadow-lg transition text-[#0F0F11]"
             >
               <div className="flex justify-center mb-6">
                 <Link to={`/${product.category}/${product.itemId}`} className="block">
@@ -85,7 +90,7 @@ export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
                     width="100%"
                     alt={product.name}
                     className="w-full object-contain h-32 sm:h-49"
-                    src={`/${product.image}`}
+                    src={getImage(product.image)}
                   />
                 </Link>
               </div>
@@ -94,7 +99,10 @@ export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
                 <h3 className="text-sm mb-3">{product.name}</h3>
               </Link>
 
-              <div className="flex items-center gap-3 pb-2 mb-4 text-[22px] border-b-1 border-gray-200">
+              <div
+                className="flex items-center gap-3 pb-2 mb-4 text-[22px] 
+                border-b-1 border-gray-200"
+              >
                 <span className="font-bold">${product.price}</span>
               </div>
 
@@ -116,14 +124,14 @@ export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
 
               <div className="flex items-center justify-between w-full gap-2">
                 {inCartProductCounts ? (
-                  <Button variant="bordered" radius="full" disabled className="h-10 w-[176px] sm:w-[118px] flex-1 bg-white text-[#4219d0]">
+                  <Button variant="bordered" radius="full" disabled className="h-10 w-44 sm:w-[118px] flex-1 bg-white text-[#4219d0]">
                     Added to cart
                   </Button>
                 ) : (
                   <Button
                     variant="bordered"
                     radius="full"
-                    className="w-[176px] sm:w-[118px] flex-1 bg-[#4219d0] text-white"
+                    className="w-44 sm:w-[118px] flex-1 bg-[#4219d0] text-white"
                     onPress={() => addToCart(product.itemId)}
                   >
                     Add to Card

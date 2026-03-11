@@ -1,10 +1,12 @@
-import { Product } from '@/types/Product';
-import { ProductDetails } from '@/types/ProductDetails';
+/* eslint-disable max-len */
+import { Product } from '../types/Product';
+import { ProductDetails } from '../types/ProductDetails';
 
 export type TCategory = 'tablets' | 'phones' | 'accesories';
 
 export async function getData<T>(path: string): Promise<T> {
-  const response = await fetch(`${window.location.origin}/${path}`);
+  const normalizedPath = path.replace(/^\/+/, '');
+  const response = await fetch(`${import.meta.env.BASE_URL}${normalizedPath}`);
 
   if (!response.ok) {
     throw new Error('Can`t get data from the server');

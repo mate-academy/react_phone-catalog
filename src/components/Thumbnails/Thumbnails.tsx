@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { useState } from 'react';
+import { getImage } from '../../store/getImage';
 
 type Props = {
   images: string[];
@@ -12,15 +14,14 @@ export const Thumbnails: React.FC<Props> = ({ images }) => {
     <div className="flex flex-col sm:flex-row-reverse gap-4 lg:w-1/2 w-full">
       {/* Main image */}
       <div className="flex items-center justify-center flex-1 h-[288px] lg:h-[442px] overflow-hidden rounded-xl px-10">
-        <img src={`/${activeImage}`} alt="selected" width="100%" className="h-[288px] lg:h-[442px] object-contain rounded-xl" />
+        <img src={getImage(activeImage)} alt="selected" width="100%" className="h-[288px] lg:h-[442px] object-contain rounded-xl" />
       </div>
       {/* Thumbnails */}
       <div className="flex flex-row sm:flex-col items-center sm:justify-start gap-2">
         {images.map(img => (
-          <div className="h-13 w-13">
+          <div key={img} className="h-13 w-13">
             <img
-              key={img}
-              src={`/${img}`}
+              src={getImage(img)}
               width="100%"
               alt="thumbnail"
               onClick={() => setActiveImage(img)}

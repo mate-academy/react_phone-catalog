@@ -1,6 +1,8 @@
-import { CategoryData } from '@/types/CategoryData';
+/* eslint-disable max-len */
+import { CategoryData } from '../../types/CategoryData';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getImage } from '../../store/getImage';
 
 interface Props {
   data: CategoryData;
@@ -9,13 +11,11 @@ interface Props {
 export const Category: React.FC<Props> = ({ data }) => {
   const { title, link, img, amountItems } = data;
 
-  console.log(link);
-
   return (
     <div className="flex flex-col gap-8">
       <Link to={`/${link}`}>
-        <div className="rounded-lg overflow-hidden">
-          <img className="object-cover h-full w-full" src={img} alt={title} />
+        <div className="rounded-lg overflow-hidden w-full">
+          <img className="object-cover h-full w-full" src={getImage(img)} alt={title} />
         </div>
       </Link>
       <div>

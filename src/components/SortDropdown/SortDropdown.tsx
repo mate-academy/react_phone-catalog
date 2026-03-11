@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@heroui/react';
 import { useSearchParams } from 'react-router-dom';
 import { CaretDownIcon } from '@phosphor-icons/react';
@@ -32,7 +33,8 @@ export default function SortDropdown() {
         <DropdownTrigger>
           <Button
             variant="bordered"
-            className="w-[136px] md:w-[176px] justify-between border-gray-200 hover:border-gray-950 rounded-small"
+            className="w-[136px] md:w-[176px] justify-between border-gray-200
+            hover:border-gray-950 rounded-small"
             endContent={
               <CaretDownIcon
                 size={13}

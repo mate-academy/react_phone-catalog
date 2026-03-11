@@ -1,5 +1,7 @@
-import { getProducts } from '@/api/api';
-import { Product } from '@/types/Product';
+/* eslint-disable max-len */
+
+import { getProducts } from '../api/api';
+import { Product } from '../types/Product';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 
 export const ProductsContext = React.createContext({

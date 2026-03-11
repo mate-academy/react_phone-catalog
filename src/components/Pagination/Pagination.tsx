@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Pagination } from '@heroui/react';
 import React from 'react';
 

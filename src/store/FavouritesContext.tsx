@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type FavouritesContextType = {
@@ -25,7 +26,17 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
 
   const isFavourite = (id: string) => favourites.includes(id);
 
-  return <FavouritesContext.Provider value={{ favourites, toggleFavourite, isFavourite }}>{children}</FavouritesContext.Provider>;
+  return (
+    <FavouritesContext.Provider
+      value={{
+        favourites,
+        toggleFavourite,
+        isFavourite,
+      }}
+    >
+      {children}
+    </FavouritesContext.Provider>
+  );
 };
 
 export const useFavourites = () => {

@@ -1,17 +1,20 @@
-import { getProductDetails, TCategory } from '@/api/api';
-import { ProductDetails } from '@/types/ProductDetails';
+/* eslint-disable max-len */
+
+import { ProductDetails } from '../../types/ProductDetails';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@heroui/button';
 import { HeartStraightIcon } from '@phosphor-icons/react';
-import { useFavourites } from '@/store/FavouritesContext';
-import { Thumbnails } from '@/components/Thumbnails/Thumbnails';
-import { useCart } from '@/store/CartContext';
-import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
-import { MayLike } from '@/components/MayLike/MayLike';
-import { ProductsContext } from '@/store/ProductsContext';
+import { useFavourites } from '../../store/FavouritesContext';
+import { Thumbnails } from '../../components/Thumbnails/Thumbnails';
+import { useCart } from '../../store/CartContext';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+import { MayLike } from '../../components/MayLike/MayLike';
+import { ProductsContext } from '../../store/ProductsContext';
 import { useLocation } from 'react-router-dom';
 import React from 'react';
+import { getImage } from '../../store/getImage';
+import { getProductDetails, TCategory } from '../../api/api';
 
 export const ProductDetailsCard = () => {
   const { products } = useContext(ProductsContext);
@@ -43,7 +46,7 @@ export const ProductDetailsCard = () => {
     }
 
     return cartItems[product.id];
-  }, [product?.id, cartItems]);
+  }, [product, cartItems]);
 
   const fav = productId ? isFavourite(productId) : false;
 
@@ -113,11 +116,11 @@ export const ProductDetailsCard = () => {
     }
 
     toggleFavourite(productId);
-  }, [productId]);
+  }, [productId, toggleFavourite]);
 
   if (isLoading) {
     return (
-      <div className="px-6 xl:px-[152px] py-16">
+      <div className="px-6 xl:px-38 py-16">
         <p className="text-[#89939A]">Loading...</p>
       </div>
     );
@@ -125,15 +128,19 @@ export const ProductDetailsCard = () => {
 
   if (!product || notFound) {
     return (
-      <div className="px-6 xl:px-[152px] min-h-screen flex flex-col justify-center py-16">
-        <div className="max-w-[360px] mb-6">
-          <img src="/img/product-not-found.png" alt="Product not found" className="w-full h-auto" />
+      <div
+        className="px-6 xl:px-38 min-h-screen 
+        flex flex-col justify-center py-16"
+      >
+        <div className="max-w-90 mb-6">
+          <img src={getImage('img/product-not-found.png')} alt="Product not found" className="w-full h-auto" />
         </div>
         <h1 className="text-2xl sm:text-4xl font-bold text-[#0F0F11] mb-4">Product was not found</h1>
         <p className="text-[#89939A] mb-6">The product you are looking for doesn&apos;t exist.</p>
         <Link
           to="/"
-          className="inline-flex items-center justify-center h-10 px-4 rounded-full border border-gray-300 text-[#0F0F11] hover:border-gray-400"
+          className="inline-flex items-center justify-center h-10 px-4 
+          rounded-full border border-gray-300 text-[#0F0F11] hover:border-gray-400"
         >
           Go to Home
         </Link>
@@ -142,7 +149,7 @@ export const ProductDetailsCard = () => {
   }
 
   return (
-    <div className="px-6 xl:px-[152px] bg-[#FAFBFC]">
+    <div className="px-6 xl:px-38 bg-[#FAFBFC]">
       <Breadcrumb />
       <h1 className="font-bold text-[22px] sm:text-[32px]">{product.name}</h1>
       <div className="flex flex-col sm:flex-row gap-12 mt-8">
@@ -161,6 +168,7 @@ export const ProductDetailsCard = () => {
                 <div className="flex gap-3">
                   {product.colorsAvailable.map(colorValue => (
                     <label key={colorValue} className="relative block">
+                      <span className="sr-only">{`Color ${colorValue}`}</span>
                       <input
                         type="radio"
                         name="color"
@@ -175,7 +183,8 @@ export const ProductDetailsCard = () => {
 
                       <span
                         className="
-                          block w-7 h-7 rounded-full cursor-pointer border-2 shadow-[inset_0_0_0_2px_#ffffff]
+                          block w-7 h-7 rounded-full cursor-pointer 
+                          border-2 shadow-[inset_0_0_0_2px_#ffffff]
                           border-gray-300
                           peer-checked:border-black
                           peer-checked:shadow-[inset_0_0_0_2px_#ffffff]
@@ -291,7 +300,12 @@ export const ProductDetailsCard = () => {
       <div className="flex flex-col lg:flex-row gap-16 mt-16 text-[#89939A] text-sm">
         {/* LEFT — ABOUT */}
         <div className="lg:w-1/2 w-full flex flex-col gap-6">
-          <h2 className="text-xl text-[#0F0F11] font-semibold pb-4 border-b-2 border-gray-200">About</h2>
+          <h2
+            className="text-xl text-[#0F0F11] font-semibold 
+            pb-4 border-b-2 border-gray-200"
+          >
+            About
+          </h2>
           {product.description.map((desc, i) => (
             <div key={i} className="flex flex-col gap-2">
               <h3 className="text-[16px] text-[#0F0F11] font-semibold">{desc.title}</h3>
