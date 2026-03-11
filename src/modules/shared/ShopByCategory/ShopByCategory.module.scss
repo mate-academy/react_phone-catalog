@@ -31,7 +31,9 @@
   text-decoration: none;
   color: inherit;
 
-  @include hover-scale;
+  @include tablet {
+    @include shop-by-category-scale;
+  }
 
   img {
     width: 100%;

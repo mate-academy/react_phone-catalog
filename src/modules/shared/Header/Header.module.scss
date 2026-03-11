@@ -15,8 +15,6 @@
   align-items: stretch;
   height: 48px;
   gap: 16px;
-  max-width: 1200px;
-  margin: 0 auto;
   padding-left: 16px;
   padding-right: 0;
 
@@ -28,7 +26,6 @@
   @include desktop {
     height: 64px;
     gap: 24px;
-    padding: 0 32px;
   }
 }
 
@@ -36,7 +33,7 @@
   display: flex;
   align-items: center;
 
-  @include hover-scale;
+  @include logo-scale;
 
   img {
     width: 64px;
@@ -79,8 +76,10 @@
     align-items: center;
     border-left: 1px solid var(--color-elements);
     padding: 0 16px;
+    margin-left: auto;
     flex: 1;
     min-width: 0;
+    max-width: 320px;
   }
 }
 
@@ -98,12 +97,16 @@
 
 .actions {
   display: none;
-  margin-left: auto;
-  border-right: 1px solid var(--color-elements);
 
   @include tablet {
     display: flex;
     align-items: stretch;
+  }
+}
+
+.actionsNoSearch {
+  @include tablet {
+    margin-left: auto;
   }
 }
 
@@ -209,6 +212,11 @@
   justify-content: center;
   border: 1px solid var(--color-white);
   z-index: 1;
+
+  @include desktop {
+    top: 18px;
+    right: 16px;
+  }
 
   .mobileActions & {
     top: 18px;

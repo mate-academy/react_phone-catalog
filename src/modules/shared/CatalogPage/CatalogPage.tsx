@@ -74,7 +74,7 @@ export const CatalogPage: React.FC<Props> = ({
       {!loading && error && <ErrorState onRetry={loadProducts} />}
 
       {!loading && !error && filteredProducts.length === 0 && (
-        <p>
+        <p className={styles.emptyMessage}>
           {query ? `There are no phones matching "${query}"` : emptyMessage}
         </p>
       )}
@@ -83,7 +83,7 @@ export const CatalogPage: React.FC<Props> = ({
         <>
           <ProductsList products={visibleProducts} />
 
-          {perPage !== 'all' && (
+          {perPage !== 'all' && filteredProducts.length > 0 && (
             <Pagination
               totalItems={filteredProducts.length}
               perPage={perPageNum}

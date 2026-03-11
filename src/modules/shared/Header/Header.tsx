@@ -89,7 +89,11 @@ export const Header: React.FC = () => {
         )}
 
         {/* Hide on mobile */}
-        <div className={styles.actions}>
+        <div
+          className={cn(styles.actions, {
+            [styles.actionsNoSearch]: !showSearch,
+          })}
+        >
           <button className={styles.iconLink} onClick={toggleTheme}>
             <img
               src={

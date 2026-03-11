@@ -55,12 +55,12 @@
 
 .viewport {
   overflow: hidden;
-  margin: 0 -16px;
-  padding: 0 16px;
+  margin: -12px -16px 0;
+  padding: 12px 16px 0;
 
   @include tablet {
-    margin: 0;
-    padding: 0;
+    margin: -12px 0 0;
+    padding: 12px 0 0;
   }
 }
 

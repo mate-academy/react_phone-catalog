@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Accessory, Phone, Product, Tablet } from '../../types';
 import getProducts, {
   getProductById,
@@ -104,14 +104,20 @@ export const ProductDetailsPage = () => {
     loadProduct();
   }, [loadProduct]);
 
+  const suggestedLoaded = useRef(false);
+
   useEffect(() => {
+    if (suggestedLoaded.current) {
+      return;
+    }
+
     const loadSuggested = async () => {
       try {
         setSuggestedLoading(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
         const data = await getSuggestedProducts();
 
         setSuggested(data);
+        suggestedLoaded.current = true;
       } catch {
         setError(true);
       } finally {
@@ -120,6 +126,10 @@ export const ProductDetailsPage = () => {
     };
 
     loadSuggested();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productId]);
 
   const handleColorChange = (color: string) => {
@@ -417,15 +427,16 @@ export const ProductDetailsPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      )}
 
-          {/* Suggested */}
-          <div className={styles.alsoLike}>
-            <ProductsSlider
-              title="You may also like"
-              products={suggested}
-              loading={suggestedLoading}
-            />
-          </div>
+      {!error && (suggested.length > 0 || suggestedLoading) && (
+        <div className={styles.alsoLike}>
+          <ProductsSlider
+            title="You may also like"
+            products={suggested}
+            loading={suggestedLoading}
+          />
         </div>
       )}
     </div>

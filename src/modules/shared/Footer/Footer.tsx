@@ -19,10 +19,20 @@ export const Footer: React.FC = () => {
           >
             Github
           </a>
-          <a href="#" target="_blank" rel="noreferrer" className={styles.link}>
+          <a
+            href="https://github.com/KazymyrYan"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.link}
+          >
             Contacts
           </a>
-          <a href="#" target="_blank" rel="noreferrer" className={styles.link}>
+          <a
+            href="https://github.com/KazymyrYan/react_phone-catalog/blob/develop/README.md"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.link}
+          >
             Rights
           </a>
         </div>
