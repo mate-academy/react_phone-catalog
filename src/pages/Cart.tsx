@@ -90,28 +90,37 @@ export const Cart = () => {
   };
 
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto' }}>
-      <Link
-        to="/catalog"
-        className="hero-back"
-        style={{ display: 'block', width: 'fit-content', margin: '0 auto 20px' }}
-      >
-        Back
-      </Link>
+    <div className="cart-page" style={{ maxWidth: 900, margin: '0 auto' }}>
+      <div className="cart-page__header">
+        <Link to="/catalog" className="hero-back">
+          Back
+        </Link>
 
-      <h1 style={{ marginBottom: 30, textAlign: 'center' }}>Cart</h1>
+        <h1 className="cart-page__title">Cart</h1>
+      </div>
 
       {items.length === 0 && (
-        <p style={{ textAlign: 'center' }}>Your cart is empty</p>
+        <div className="cart-empty">
+          <p className="cart-empty__message">Your cart is empty</p>
+          <Link to="/catalog" className="cart-empty__link">
+            Go to catalog
+          </Link>
+        </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div
+        className="cart-list"
+        style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
+      >
         {items.map(({ item, product, image, price }) => (
           <div
             key={`${item.id}-${item.color}-${item.capacity}`}
+            className="cart-item-card"
             style={{
               display: 'flex',
               alignItems: 'center',
+              flexWrap: 'wrap',
+              rowGap: 16,
               gap: 25,
               padding: 20,
               borderRadius: 18,
@@ -119,9 +128,13 @@ export const Cart = () => {
               background: '#fff',
             }}
           >
-            <img src={image} width={90} style={{ borderRadius: 12 }} />
+            <img
+              src={image}
+              width={90}
+              style={{ borderRadius: 12, flexShrink: 0 }}
+            />
 
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 220 }}>
               <h3 style={{ margin: 0 }}>
                 {product.name} {item.capacity} {item.color.replace('-', ' ')}
               </h3>
@@ -149,9 +162,16 @@ export const Cart = () => {
               </button>
             </div>
 
-            <div style={{ textAlign: 'right', minWidth: 120 }}>
+            <div
+              className="cart-item-card__price"
+              style={{
+                textAlign: 'right',
+                minWidth: 120,
+                marginLeft: 'auto',
+              }}
+            >
               <div style={{ fontSize: 14, color: '#8aa8b5' }}>
-{item.quantity} × ${price}
+                {item.quantity} × ${price}
               </div>
 
               <div style={{ fontSize: 20, marginTop: 6, fontWeight: 500 }}>
@@ -164,6 +184,7 @@ export const Cart = () => {
 
       {items.length > 0 && (
         <div
+          className="cart-total"
           style={{
             marginTop: 50,
             paddingTop: 25,

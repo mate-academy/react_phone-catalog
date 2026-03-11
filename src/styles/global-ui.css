@@ -4,6 +4,7 @@ body {
   color: #111;
   font-family: Inter, system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  display: block;
 }
 
 #root{
@@ -100,6 +101,35 @@ h1,h2,h3,h4{
   letter-spacing:.25em;
   color:#8aa8b5;
   transition:.3s;
+}
+
+.breadcrumbs{
+  margin-bottom:18px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#8aa8b5;
+}
+
+.breadcrumbs__list{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  padding:0;
+  margin:0;
+}
+
+.breadcrumbs__item{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.breadcrumbs__sep{
+  opacity:.45;
 }
 
 .hero-back:hover{
@@ -234,8 +264,42 @@ h1,h2,h3,h4{
 
 .catalog-filters{
   position:relative;
-  z-index:2;
+  z-index:10;
   margin-top:8px;
+}
+
+.cart-page__header,
+.favorites-page__header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  margin-bottom:30px;
+}
+
+.cart-page__title,
+.favorites-page__title{
+  margin:0;
+  text-align:center;
+}
+
+.cart-empty{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:12px;
+  padding:28px 0 18px;
+}
+
+.cart-empty__message{
+  margin:0;
+}
+
+.favorites-empty{
+  text-align:center;
+  margin:0 0 20px;
+  color:#8aa8b5;
 }
 
 .cart-item,
@@ -422,6 +486,42 @@ h1,h2,h3,h4{
 
   .header-left,
   .header-right{
+    gap:24px !important;
+    font-size:16px !important;
+  }
+
+  .header-nav{
+    padding:14px 16px !important;
+    gap:12px;
+  }
+
+  .catalog-page{
+    width:100%;
+    max-width:100%;
+  }
+
+  .catalog-categories{
+    width:100%;
+    max-width:100%;
+  }
+
+  .cart-page,
+  .favorites-page{
+    width:100%;
+    max-width:100%;
+  }
+
+  .cart-list,
+  .favorites-list{
+    width:100%;
+    max-width:100%;
+  }
+
+}
+
+@media (max-width: 640px){
+  .header-left,
+  .header-right{
     display:none !important;
   }
 
@@ -494,11 +594,6 @@ h1,h2,h3,h4{
     inset:0;
     background:transparent;
     z-index:30;
-  }
-
-  .header-nav{
-    padding:14px 16px !important;
-    gap:12px;
   }
 }
 

@@ -4,6 +4,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { loadProducts } from '../data/products';
 import type { Product } from '../types/Product';
 import { ProductCard } from '../components/ProductCard';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 type UpdateParams = {
   page?: number;
@@ -25,11 +26,13 @@ export const CatalogProducts = () => {
     loadProducts().then(setProducts);
   }, []);
 
+  const categoryTitle = category
+    ? category.charAt(0).toUpperCase() + category.slice(1)
+    : '';
+
   useEffect(() => {
-    const categoryTitle =
-      category.charAt(0).toUpperCase() + category.slice(1);
     document.title = `${categoryTitle || 'Catalog'} | Phone Catalog`;
-  }, [category]);
+  }, [categoryTitle]);
 
   const updateParams = (params: UpdateParams) => {
     setSearchParams({
@@ -66,6 +69,13 @@ export const CatalogProducts = () => {
 
   return (
     <div className="catalog catalog--products">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', to: '/' },
+          { label: categoryTitle || 'Catalog' },
+        ]}
+      />
+
       <button onClick={() => navigate(-1)} className="hero-back">
         Back
       </button>
@@ -75,13 +85,14 @@ export const CatalogProducts = () => {
         letterSpacing: '0.18em',
         marginBottom: 25,
       }}>
-        {category}
+        {categoryTitle || category}
       </h1>
 
       <div
         className="catalog-filters"
         style={{
           display: 'flex',
+          flexWrap: 'wrap',
           gap: 40,
           marginBottom: 40,
           alignItems: 'center',

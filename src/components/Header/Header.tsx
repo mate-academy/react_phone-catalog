@@ -30,7 +30,7 @@ const Header = () => {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 640) {
         setIsMenuOpen(false);
       }
     };
@@ -115,6 +115,9 @@ const Header = () => {
       <div className={`header-mobile-menu ${isMenuOpen ? "is-open" : ""}`}>
         <Link to="/" onClick={() => setIsMenuOpen(false)}>
           Home
+        </Link>
+        <Link to="/catalog" onClick={() => setIsMenuOpen(false)}>
+          Catalog
         </Link>
         <Link to="/catalog/phones" onClick={() => setIsMenuOpen(false)}>
           Phones

@@ -62,28 +62,32 @@ export const Favorites = () => {
   }, []);
 
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto' }}>
-      <Link
-        to="/catalog"
-        className="hero-back"
-        style={{ display: 'block', width: 'fit-content', margin: '0 auto 20px' }}
-      >
-        Back
-      </Link>
+    <div className="favorites-page" style={{ maxWidth: 900, margin: '0 auto' }}>
+      <div className="favorites-page__header">
+        <Link to="/catalog" className="hero-back">
+          Back
+        </Link>
 
-      <h1 style={{ marginBottom: 30, textAlign: 'center' }}>Favorites</h1>
+        <h1 className="favorites-page__title">Favorites</h1>
+      </div>
 
       {items.length === 0 && (
-        <p style={{ textAlign: 'center' }}>No favorites yet</p>
+        <p className="favorites-empty">No favorites yet</p>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div
+        className="favorites-list"
+        style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
+      >
         {items.map(({ item, product, image, price }) => (
           <div
             key={`${item.id}-${item.color}-${item.capacity}`}
+            className="favorite-item-card"
             style={{
               display: 'flex',
               alignItems: 'center',
+              flexWrap: 'wrap',
+              rowGap: 16,
               gap: 25,
               padding: 20,
               borderRadius: 18,
@@ -91,9 +95,13 @@ export const Favorites = () => {
               background: '#fff',
             }}
           >
-            <img src={image} width={90} style={{ borderRadius: 12 }} />
+            <img
+              src={image}
+              width={90}
+              style={{ borderRadius: 12, flexShrink: 0 }}
+            />
 
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 220 }}>
               <h3 style={{ margin: 0 }}>
                 {product.name} {item.capacity}{' '}
                 {item.color.replace('-', ' ')}
@@ -124,7 +132,14 @@ export const Favorites = () => {
               </button>
             </div>
 
-            <div style={{ fontSize: 20, fontWeight: 500 }}>
+            <div
+              className="favorite-item-card__price"
+              style={{
+                fontSize: 20,
+                fontWeight: 500,
+                marginLeft: 'auto',
+              }}
+            >
               ${price}
             </div>
           </div>

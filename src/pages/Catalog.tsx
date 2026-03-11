@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { resolveImage } from '../utils/image';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import './Catalog.css';
 
 export const Catalog = () => {
@@ -10,6 +11,13 @@ export const Catalog = () => {
 
   return (
     <div className="catalog-page">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Catalog' },
+        ]}
+      />
+
       <h1 className="catalog-title">FULLSTACK PORTFOLIO PAGE</h1>
 
       <div className="catalog-categories">

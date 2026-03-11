@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 
 import type { Product } from '../types/Product';
@@ -10,10 +10,10 @@ import { toggleFavorite, isFavorite } from '../store/favorites';
 import { getProductPrice } from '../utils/price';
 import { resolveImage } from '../utils/image';
 import { ProductCard } from '../components/ProductCard';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const ProductPage = () => {
 const { id } = useParams<{ id: string }>();
-const navigate = useNavigate();
 
 const [product, setProduct] = useState<Product | null>(null);
 const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -32,13 +32,8 @@ const found = list.find(p => id?.includes(p.id)) || null;
 setProduct(found);
 
 if (found) {
-const parts = id?.split('-') || [];
-
-const capFromUrl = parts[parts.length - 2];
-const colorFromUrl = parts[parts.length - 1];
-
-setColor(colorFromUrl || found.colorsAvailable[0]);
-setCapacity(capFromUrl || found.capacityAvailable[0]);
+setColor(found.color || found.colorsAvailable[0]);
+setCapacity(found.capacity || found.capacityAvailable[0]);
 
 setImageIndex(0);
 }
@@ -88,26 +83,14 @@ p => p.id !== product.id && p.category !== product.category
 return [
 ...shuffle(sameCategory),
 ...shuffle(otherProducts),
-].slice(0, 4);
+].slice(0, 8);
 }, [allProducts, product]);
 
 useEffect(() => {
 if (!product) return;
 
-const newId = `${product.id}-${capacity}-${color}`;
-
-if (id !== newId) {
-navigate(`/product/${newId}`, { replace: true });
-}
-
-document.title =
-product.name +
-' ' +
-capacity +
-' ' +
-color.replace('-', ' ') +
-' | Phone Catalog';
-}, [color, capacity, id, navigate, product]);
+document.title = `${product.name} | Phone Catalog`;
+}, [product]);
 
 useEffect(() => {
 return () => {
@@ -118,12 +101,21 @@ document.title = 'Phone Catalog';
 if (!product) return <p>Loading...</p>;
 
 const price = getProductPrice(product, capacity);
-const dynamicTitle =
-product.name + ' ' + capacity + ' ' + color.replace('-', ' ');
+const dynamicTitle = product.name;
+const categoryTitle =
+product.category.charAt(0).toUpperCase() + product.category.slice(1);
 
 return (
 <div className="product-page product-page--details" style={{ maxWidth: 1100, margin: '0 auto' }}>
-<Link to="/catalog" className="hero-back">
+<Breadcrumbs
+items={[
+{ label: 'Home', to: '/' },
+{ label: categoryTitle, to: `/catalog/${product.category}` },
+{ label: dynamicTitle },
+]}
+/>
+
+<Link to={`/catalog/${product.category}`} className="hero-back">
 Back
 </Link>
 
