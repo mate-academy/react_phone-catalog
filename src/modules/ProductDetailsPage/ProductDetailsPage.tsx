@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import classNames from 'classnames';
@@ -56,7 +57,7 @@ export const ProductDetailsPage = () => {
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
-  const { addToCart, isInCart } = useCart();
+  const { toggleCartItem, addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
@@ -225,7 +226,7 @@ export const ProductDetailsPage = () => {
               className={classNames(styles.details__addToCart, {
                 [styles['details__addToCart--active']]: inCart,
               })}
-              onClick={() => addToCart(product)}
+              onClick={() => toggleCartItem(product)}
             >
               {inCart ? 'Added to cart' : 'Add to cart'}
             </button>
