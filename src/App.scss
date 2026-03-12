@@ -1,50 +1,71 @@
-.html, body {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  font-family: MyFont, sans-serif;
-}
+@use 'styles/variables' as *;
+@use 'styles/base';
 
-.page {
-  &__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    pointer-events: none;
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-    &:target {
-    opacity: 1;
-    pointer-events: all;
-  }
+  &__main {
+    flex: 1;
+    padding-top: 24px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-top: 32px;
+      padding-bottom: 64px;
+    }
   }
 }
 
-@font-face {
-  font-family: MyFont;
-  src: url('/fonts/Mont-Regular.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: MyFont;
-  src: url('/fonts/Mont-Bold.otf') format('opentype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: MyFont;
-  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+// Page-level shared styles
+.page__title {
+  font-size: 32px;
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: $color-primary;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 
-.hidden {
-  display: none;
+.page__subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-secondary;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $color-primary;
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
 }
