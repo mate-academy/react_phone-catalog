@@ -122,3 +122,30 @@
 
   cursor: pointer;
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 60vh;
+}
+
+.empty {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+}
+
+.img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}

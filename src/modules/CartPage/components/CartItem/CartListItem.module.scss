@@ -103,6 +103,9 @@
 }
 
 .qtyButton {
+  position: relative;
+
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,6 +132,17 @@
     cursor: not-allowed;
     border-color: var(--color-icons);
   }
+}
+
+.quanIcon {
+  position: absolute;
+  top: 50;
+  right: 50;
+
+  width: 16px;
+  height: 16px;
+
+  color: var(--color-primary);
 }
 
 .quantity {

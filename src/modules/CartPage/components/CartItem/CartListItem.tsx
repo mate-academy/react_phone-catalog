@@ -3,6 +3,8 @@ import React from 'react';
 import { CartItem } from '../../../../types/Cart';
 import { CloseIcon } from '../../../../components/Icons/CloseIcon';
 import { useCart } from '../../../../hooks/useCart';
+import { MinusIcon } from '../../../../components/Icons/MinusIcon';
+import { PlusIcon } from '../../../../components/Icons/PlusIcon';
 
 import styles from './CartListItem.module.scss';
 
@@ -42,7 +44,9 @@ export const CartListItem: React.FC<Props> = ({ cartItem }) => {
             onClick={() => changeQuantity(product.id, -1)}
             disabled={quantity === 1}
           >
-            -
+            <span className={styles.quanIcon}>
+              <MinusIcon />
+            </span>
           </button>
 
           <span className={styles.quantity}>{quantity}</span>
@@ -51,7 +55,9 @@ export const CartListItem: React.FC<Props> = ({ cartItem }) => {
             className={styles.qtyButton}
             onClick={() => changeQuantity(product.id, 1)}
           >
-            +
+            <span className={styles.quanIcon}>
+              <PlusIcon />
+            </span>
           </button>
         </div>
 

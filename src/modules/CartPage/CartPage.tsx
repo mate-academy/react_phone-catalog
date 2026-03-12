@@ -6,6 +6,7 @@ import { useCart } from '../../hooks/useCart';
 import { ArrowLeftIcon } from '../../components/Icons/ArrowLeftIcon';
 import { CartList } from './components/CartList';
 
+import EMPTY from '/img/cart-is-empty.png';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
@@ -20,6 +21,18 @@ export const CartPage = () => {
     (total, item) => total + item.quantity,
     0,
   );
+
+  if (totalItems === 0) {
+    return (
+      <section className={cl('container', [styles.section])}>
+        <div className={styles.content}>
+          <h2 className={styles.empty}>Your cart is empty</h2>
+
+          <img src={EMPTY} alt="Empty cart photo" className={styles.img} />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={cl('container', [styles.section])}>

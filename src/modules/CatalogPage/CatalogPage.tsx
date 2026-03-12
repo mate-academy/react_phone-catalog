@@ -70,7 +70,7 @@ export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
 
     if (query) {
       filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(query.toLowerCase()),
+        p.name.toLowerCase().includes(query.toLowerCase().trim()),
       );
     }
 
