@@ -1,0 +1,41 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.separator {
+  color: var(--color-icons);
+  font-size: 16px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: var(--icon-filter);
+    flex-shrink: 0;
+  }
+}
+
+.current {
+  color: var(--color-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}

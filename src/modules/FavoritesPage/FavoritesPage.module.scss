@@ -1,0 +1,27 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.title {
+  margin-bottom: 8px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 128%;
+  color: var(--color-primary);
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 117%;
+  }
+}
+
+.count {
+  margin-bottom: 32px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--color-secondary);
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+}

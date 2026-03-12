@@ -1,0 +1,25 @@
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 0;
+}
+
+.message {
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+.button {
+  padding: 10px 24px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
