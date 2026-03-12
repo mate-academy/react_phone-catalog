@@ -24,7 +24,8 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addToFavorites = (product: Product) => {
     if (!isFavorite(product)) {
-      setFavorites([...favorites, product]);
+      // put newest favorites at the front so they appear at the top of the list
+      setFavorites([product, ...favorites]);
     }
   };
 

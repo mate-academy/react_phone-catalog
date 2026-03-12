@@ -7,9 +7,16 @@ import { ProductCard } from '../ProductCard/ProductCard';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
+  scrollOnCardClick?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  showDiscount = true,
+  scrollOnCardClick = false,
+}: Props) => {
   const [step, setStep] = useState(0);
   const itemWidth = 272;
   const gap = 16;
@@ -86,7 +93,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         >
           {products.map(product => (
             <div key={product.id} className={styles.cardWrapper}>
-              <ProductCard product={product} />
+              <ProductCard
+                product={product}
+                showDiscount={showDiscount}
+                scrollToTopOnClick={scrollOnCardClick}
+              />
             </div>
           ))}
         </div>

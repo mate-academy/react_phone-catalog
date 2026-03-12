@@ -25,7 +25,11 @@ export const ProductDetailsPage = () => {
   const { addToCart, cart } = useCart();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
 
     if (!productId) {
       return;
@@ -297,6 +301,7 @@ export const ProductDetailsPage = () => {
         <ProductsSlider
           title="You may also like"
           products={suggestedProducts}
+          scrollOnCardClick
         />
       </div>
     </div>

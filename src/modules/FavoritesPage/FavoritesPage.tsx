@@ -15,6 +15,7 @@ export const FavoritesPage = () => {
         <h2>You have no favorites yet</h2>
       ) : (
         <div className={styles.grid}>
+          {/* newest favorites appear first */}
           {favorites.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -8,10 +8,13 @@ import { Header } from '../src/components/Header/Header';
 import { ProductDetailsPage } from './modules/ProductsDetailsPage/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 import { Footer } from './components/Footer/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const App = () => {
   return (
     <div className="App">
+      <ScrollToTop />
+
       <Header />
 
       <div className="section">

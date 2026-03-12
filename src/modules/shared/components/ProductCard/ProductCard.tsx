@@ -17,6 +17,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const isFav = isFavorite(product);
   const isInCart = cart.some(item => item.id === product.id);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handleFavoriteClick = () => {
     if (isFav) {
       removeFromFavorites(product);
@@ -34,7 +41,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
-        <Link to={`/product/${product.itemId}`}>
+        <Link to={`/product/${product.itemId}`} onClick={handleScrollToTop}>
           <img
             src={product.image}
             alt={product.name}
@@ -44,7 +51,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={styles.info}>
-        <Link to={`/product/${product.itemId}`}>
+        <Link to={`/product/${product.itemId}`} onClick={handleScrollToTop}>
           <h3 className={styles.title}>{product.name}</h3>
         </Link>
 
