@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
@@ -18,15 +19,19 @@ export const ProductCard: React.FC<Props> = ({
   const hasDiscount = hasDiscountProp ?? fullPrice > price;
   const displayedPrice = hasDiscount ? price : fullPrice;
 
-  const { addToCart, isInCart } = useCart();
+  const { toggleCartItem, addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const inCart = isInCart(product.id);
   const favorited = isFavorite(product.id);
 
   const handleAddToCart = () => {
-    addToCart(product);
+    toggleCartItem(product);
   };
+
+  // const handleAddToCart = () => {
+  //   addToCart(product);
+  // };
 
   const handleToggleFav = () => {
     toggleFavorite(product);

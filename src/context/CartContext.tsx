@@ -81,6 +81,7 @@ interface CartContextType {
   isInCart: (productId: number) => boolean;
   totalItems: number;
   totalPrice: number;
+  toggleCartItem: (product: Product) => void;
 }
 
 const CartContext = createContext<CartContextType>({
@@ -93,6 +94,7 @@ const CartContext = createContext<CartContextType>({
   isInCart: () => false,
   totalItems: 0,
   totalPrice: 0,
+  toggleCartItem: () => {},
 });
 
 export const useCart = () => useContext(CartContext);
@@ -131,6 +133,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     0,
   );
 
+  const toggleCartItem = (product: Product) => {
+    const exists = items.find(i => i.product.id === product.id);
+
+    if (exists) {
+      dispatch({ type: 'REMOVE', productId: product.id });
+    } else {
+      dispatch({ type: 'ADD', product });
+    }
+  };
+
   const value: CartContextType = {
     items,
     addToCart,
@@ -141,6 +153,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     isInCart,
     totalItems,
     totalPrice,
+    toggleCartItem,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

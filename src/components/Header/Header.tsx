@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { NavLink, Link, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -143,7 +144,7 @@ export const Header = () => {
         </div>
 
         <div className={styles.header__right}>
-          {showSearch && (
+          {/* {showSearch && (
             <div className={styles.header__search}>
               <button
                 type="button"
@@ -177,7 +178,7 @@ export const Header = () => {
                 </button>
               )}
             </div>
-          )}
+          )} */}
 
           <div className={styles.header__themeToggle}>
             <ThemeToggle />
