@@ -17,10 +17,7 @@ export const HomePage = () => {
         await new Promise(resolve => setTimeout(resolve, 500));
         const all = await getProducts();
         const maxYear = Math.max(...all.map(p => p.year));
-        const newest = [...all]
-          .filter(p => p.year === maxYear)
-          .sort((a, b) => a.fullPrice - a.price - (b.fullPrice - b.price))
-          .slice(0, 8);
+        const newest = [...all].filter(p => p.year === maxYear).slice(0, 8);
         const hottest = [...all]
           .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
           .slice(0, 8);
@@ -50,6 +47,7 @@ export const HomePage = () => {
           title="Brand new models"
           products={newModels}
           loading={loading}
+          showFullPriceOnly
         />
 
         <ShopByCategory />

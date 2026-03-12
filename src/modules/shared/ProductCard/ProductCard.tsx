@@ -8,9 +8,13 @@ import { useToast } from '../../../context/ToastContext';
 
 type Props = {
   product: Product;
+  showFullPriceOnly?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showFullPriceOnly = false,
+}) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
@@ -29,8 +33,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <p className={styles.name}>{product.name}</p>
 
         <div className={styles.priceBlock}>
-          <p className={styles.price}>${product.price}</p>
-          <p className={styles.fullPrice}>${product.fullPrice}</p>
+          <p className={styles.price}>
+            ${showFullPriceOnly ? product.fullPrice : product.price}
+          </p>
+          {!showFullPriceOnly && (
+            <p className={styles.fullPrice}>${product.fullPrice}</p>
+          )}
         </div>
 
         <div className={styles.line}></div>

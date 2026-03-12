@@ -10,12 +10,14 @@ type Props = {
   title: string;
   products: Product[];
   loading?: boolean;
+  showFullPriceOnly?: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
   loading = false,
+  showFullPriceOnly = false,
 }) => {
   const [index, setIndex] = useState(0);
 
@@ -59,7 +61,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const renderProducts = () =>
     products.map(product => (
       <div key={product.id} className={styles.card}>
-        <ProductCard product={product} />
+        <ProductCard product={product} showFullPriceOnly={showFullPriceOnly} />
       </div>
     ));
 
