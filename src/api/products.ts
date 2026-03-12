@@ -5,6 +5,6 @@ export const getProducts = () => {
   return client<Product[]>('products.json');
 };
 
-export const getProductDetails = (category: string, itemId: number) => {
+export const getProductDetails = (category: string, itemId: string) => {
   return client<ProductDetail>(`/${category}/${itemId}.json`);
 };
