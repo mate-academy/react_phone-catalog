@@ -1,0 +1,40 @@
+@import '../../../style/vars';
+
+.slider {
+  &__container {
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+  }
+  &__viewport {
+    display: flex;
+    height: 100vw;
+    transition: all $transition;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__dots-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: var(--border);
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--text-main);
+    }
+  }
+}

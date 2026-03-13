@@ -1,0 +1,42 @@
+// LIGHT THEME
+$lt-primary: #0F0F11; // Main text
+$lt-secondary: #89939A; // Secondary text
+$lt-elements: #E2E6E9; // border
+$lt-purple: #4219D0; // bvutton/ button text
+$lt-main-bg: #FAFBFC; // background
+$lt-white: #fff; // card background
+
+// DARK THEME
+$dt-black: #0F0F11; // page backgroun
+$dt-elements: #3b3e4a; // border
+$dt-secondary: #75767F;
+$dt-card-bg: #161827;
+$dt-purple: #905BFF; // bvutton/ button text
+$dt-white: #f1f2f9; // Text and light accents
+
+
+$transition: 0.3s;
+$table-min-width: 640px;
+$desktop-min-width: 1200px;
+
+:root {
+  --page-bg: #{$lt-main-bg};
+  --card-bg: #{$lt-white};
+  --text-main: #{$lt-primary};
+  --text-secondary: #{$lt-secondary};
+  --border: #{$lt-elements};
+  --btn-bg: #{$lt-purple};
+  --btn-text: #{$lt-white};
+  --icon-color: #{$lt-primary};
+}
+
+[data-theme='dark'] {
+  --page-bg: #{$dt-black};
+  --card-bg: #{$dt-card-bg};
+  --text-main: #{$dt-white};
+  --text-secondary: #{$dt-secondary};
+  --border: #{$dt-elements};
+  --btn-bg: #{$dt-purple};
+  --btn-text: #{$dt-white};
+  --icon-color: #{$dt-white};
+}

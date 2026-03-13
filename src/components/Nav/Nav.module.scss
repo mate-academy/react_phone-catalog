@@ -1,0 +1,38 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    margin-right: auto;
+  }
+
+  &__list {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    height: 100%;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+
+    @include hover(color, var(--text-main));
+  }
+
+  &__linkIsActive {
+    color: var(--text-main);
+  }
+}

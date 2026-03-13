@@ -1,1 +1,13 @@
-// not empty
+@import './style/normalize';
+@import './style/mixins';
+@import './style/vars';
+@import './style/extends';
+
+html,
+body {
+  background-color: var(--page-bg);
+  color: var(--text-main);
+  transition:
+    color $transition ease,
+    background-color $transition ease;
+}

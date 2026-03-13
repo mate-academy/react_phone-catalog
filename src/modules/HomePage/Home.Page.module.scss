@@ -1,0 +1,8 @@
+@import '../../style/extends';
+
+.homePage {
+
+  &__title {
+    @extend %h1;
+  }
+}
