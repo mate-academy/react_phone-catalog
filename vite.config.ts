@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
+  base: '/react_phone-catalog/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -17,9 +18,8 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @use "sass:color";
-          @use "styles/variables.scss" as *;
-          @use "styles/mixins.scss" as *;
+          @import "styles/variables.scss";
+          @import "styles/mixins.scss";
         `,
       },
     },
