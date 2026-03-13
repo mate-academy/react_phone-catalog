@@ -33,7 +33,7 @@ export const ProductCard = ({ product }: Props) => {
       </div>
       <div className={styles.footer}>
         <Button maxWidth="160px">Add to cart</Button>
-        <ButtonLiked />
+        <ButtonLiked type="button" />
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import classNames from 'classnames';
+import { imageUrl } from '../../../utils/imageUrl';
 import styles from './ButtonLiked.module.scss';
 
 type Props = {
-  type?: 'button' | 'submit' | 'reset';
+  type: 'button' | 'submit' | 'reset';
   isActive?: boolean;
 };
 
@@ -17,11 +18,14 @@ export const ButtonLiked = (props: Props) => {
       })}
     >
       <img
-        src={
-          isActive ? '/icons/Favourites_filled.svg' : '/icons/Favourites.svg'
-        }
-        alt=""
-        className={styles.button__icon}
+        className={styles.icon}
+        src={imageUrl('icons/Favourites.svg')}
+        alt="favourites-icon"
+      />
+      <img
+        className={classNames([styles.icon, styles.icon__filled])}
+        src={imageUrl('icons/Favourites_filled.svg')}
+        alt="favourites-icon-filled"
       />
     </button>
   );

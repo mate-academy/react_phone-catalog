@@ -6,7 +6,11 @@ import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Preview.module.scss';
 
 export const Preview = () => {
-  const images = ['/img/banner-accessories.png', '/img/banner-phones.png', '/img/banner-tablets.png'];
+  const images = [
+    '/img/banner-accessories.png',
+    '/img/banner-phones.png',
+    '/img/banner-tablets.png',
+  ];
   const autoTimer = useRef<NodeJS.Timeout | null>(null);
   const manualTimeout = useRef<NodeJS.Timeout | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
