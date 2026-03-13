@@ -6,12 +6,12 @@ export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   let startX = 0;
   const pictures = [
-    '/img/banner-accessories.webp',
-    '/img/banner-phones.webp',
-    '/img/banner-tablets.webp',
-    '/img/banner-1.webp',
-    '/img/banner-2.webp',
-    '/img/banner-3.webp',
+    'img/banner-accessories.webp',
+    'img/banner-phones.webp',
+    'img/banner-tablets.webp',
+    'img/banner-1.webp',
+    'img/banner-2.webp',
+    'img/banner-3.webp',
   ];
 
   const nextBunner = useCallback(
