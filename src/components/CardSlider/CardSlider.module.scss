@@ -1,0 +1,73 @@
+
+.section {
+  margin: 40px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-light;
+  line-height: 140%;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  border: 1px solid #3b3e4a;
+  background-color: transparent;
+  border-radius: 0%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-text;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.arrowIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.sliderWrapper {
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  transition: scroll-behavior 0.3s ease-in-out;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.cardWrapper {
+  flex: 0 0 auto;
+  width: 250px;
+}
+

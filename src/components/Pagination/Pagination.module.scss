@@ -1,0 +1,86 @@
+
+
+.container {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 64px;
+
+    @include respond-to(tablet){
+      margin-top: 40px;
+  }
+
+  @include respond-to(desktop){
+      margin-bottom: 80px;
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.img {
+  width: 20px;
+  height: 20px;
+}
+
+.page_item {
+  list-style: none;
+
+}
+
+
+.page_link {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-card;
+  background-color: $color-card;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-light;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $color-lila;
+    color: $color-lila;
+  }
+}
+
+.active .page_link {
+  background-color: $color-lila;
+  border-color: $color-lila;
+  color: #fff;
+}
+
+.disabled .page_link {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.dots {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-text;
+  font-size: 14px;
+}
+
+.page_item:first-child {
+  margin-right: 12px;
+}
+
+.page_item:last-child {
+  margin-left: 12px;
+}

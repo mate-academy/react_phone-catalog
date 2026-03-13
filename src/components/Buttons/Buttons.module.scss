@@ -1,0 +1,155 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.buttons_left {
+  justify-content: flex-start;
+}
+
+.buttons_center {
+  justify-content: center;
+}
+
+.buttons_right {
+  justify-content: flex-end;
+}
+
+.buttons_small {
+  gap: 8px;
+}
+
+.buttons_medium {
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.button {
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.button_add {
+  border: 1px solid $color-lila;
+  background-color: $color-lila;
+  font-weight: 700;
+  color: $color-light;
+  flex-grow: 1;
+
+  &:disabled {
+    background-color: $color-card;
+    border-color: $color-text;
+    color: $color-text;
+    cursor: not-allowed;
+    opacity: 0.7;
+
+    &:hover {
+      background-color: $color-card;
+      border-color: $color-text;
+      transform: none;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($color-lila, $lightness: 10%);
+    border-color: color.adjust($color-lila, $lightness: 10%);
+  }
+}
+
+.button_add_small {
+  height: 40px;
+  width: 160px;
+  font-size: 14px;
+}
+
+.button_add_medium {
+  height: 48px;
+  width: 100%;
+  font-size: 14px;
+
+  @include respond-to(tablet) {
+    width: 180px;
+  }
+
+  @include respond-to(desktop) {
+    width: 263px;
+  }
+}
+
+.button_add_large {
+  height: 56px;
+  width: 180px;
+  font-size: 18px;
+
+  @include respond-to(tablet) {
+    width: 200px;
+  }
+
+  @include respond-to(desktop) {
+    width: 240px;
+  }
+}
+
+.img {
+  transition: filter 0.3s ease;
+}
+
+.button_fav {
+  background-color: $color-border;
+  border: 1px solid $color-border;
+
+  &:hover {
+    background-color: color.adjust($color-border, $lightness: 10%);
+    border-color: color.adjust($color-border, $lightness: 10%);
+  }
+}
+
+.button_fav_small {
+  width: 40px;
+  height: 40px;
+}
+
+.button_fav_medium {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.button_fav_large {
+  width: 56px;
+  height: 56px;
+}
+
+.button_fav_small .img {
+  width: 16px;
+  height: 16px;
+}
+
+.button_fav_medium .img {
+  width: 20px;
+  height: 20px;
+}
+
+.button_fav_large .img {
+  width: 24px;
+  height: 24px;
+}
+
+.button_fav_small:hover .img {
+  filter: brightness(0.9);
+}
+
+.button_fav_medium:hover .img {
+  filter: brightness(0.9);
+}
+
+.button_fav_large:hover .img {
+  filter: brightness(0.9);
+}

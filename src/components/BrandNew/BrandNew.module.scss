@@ -1,0 +1,8 @@
+.section {
+  padding: 56px 16px 24px;
+
+  @include respond-to(tablet) {
+    padding: 0;
+  }
+}
+
