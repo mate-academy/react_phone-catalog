@@ -26,6 +26,9 @@ const CardDetails: React.FC = () => {
   const { currentCategory } = useCategory();
   const [mainImage, setMainImage] = useState('');
 
+  const getImageUrl = (path: string) =>
+    `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
   const productSpecs = [
     { label: 'Screen', value: product?.screen },
     { label: 'Resolution', value: product?.resolution },
@@ -155,6 +158,7 @@ const CardDetails: React.FC = () => {
     }
 
     setProduct(newProduct);
+
     if (newProduct.images && newProduct.images.length > 0) {
       setMainImage(newProduct.images[0]);
     }
@@ -174,6 +178,7 @@ const CardDetails: React.FC = () => {
     }
 
     setProduct(newProduct);
+
     if (newProduct.images && newProduct.images.length > 0) {
       setMainImage(newProduct.images[0]);
     }
@@ -203,9 +208,11 @@ const CardDetails: React.FC = () => {
         category={currentCategory || 'null'}
         productName={product.name}
       />
+
       <button className={styles.backButton} onClick={() => navigate(-1)}>
         <img className={styles.backIcon} src={Arrow} alt="back" /> Back
       </button>
+
       <h2 className={styles.title}>{product.name}</h2>
 
       <div className={styles.main_content}>
@@ -220,7 +227,7 @@ const CardDetails: React.FC = () => {
                 onClick={() => setMainImage(image)}
               >
                 <img
-                  src={image}
+                  src={getImageUrl(image)}
                   alt={`${product.name} view ${index + 1}`}
                   className={styles.thumbnailImage}
                 />
@@ -232,7 +239,7 @@ const CardDetails: React.FC = () => {
         <div className={styles.center_column}>
           <div className={styles.main_image_wrapper}>
             <img
-              src={mainImage}
+              src={getImageUrl(mainImage)}
               alt={product.name}
               className={styles.mainImage}
             />
@@ -250,7 +257,7 @@ const CardDetails: React.FC = () => {
                   aria-label={`View ${product.name} image ${index + 1}`}
                 >
                   <img
-                    src={image}
+                    src={getImageUrl(image)}
                     alt={`${product.name} view ${index + 1}`}
                     className={styles.thumbnailImage}
                     loading="lazy"

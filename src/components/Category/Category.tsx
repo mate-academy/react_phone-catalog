@@ -1,23 +1,25 @@
 import { Link } from 'react-router-dom';
 import styles from './Category.module.scss';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const categoryInfo = [
   {
-    img: '/img/category-phone.png',
+    img: `${baseUrl}img/category-phone.png`,
     title: 'Mobile phones',
     quantity: '124',
     link: '/phones',
     customClass: styles.mobiles,
   },
   {
-    img: '/img/category-tablets.png',
+    img: `${baseUrl}img/category-tablets.png`,
     title: 'Tablets',
     quantity: '36',
     link: '/tablets',
     customClass: styles.tablets,
   },
   {
-    img: '/img/category-accessories.png',
+    img: `${baseUrl}img/category-accessories.png`,
     title: 'Accessories',
     quantity: '34',
     link: '/accessories',

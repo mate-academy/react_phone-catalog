@@ -5,7 +5,7 @@ const NotFound = () => {
     <div className={styles.container}>
       <img
         className={styles.img}
-        src="/img/page-not-found.png"
+        src={`${import.meta.env.BASE_URL}img/page-not-found.png`}
         alt="not found"
       />
     </div>

@@ -6,16 +6,18 @@ import LeftArrow from '../../assets/icons/arrow-left.svg';
 import RightArrow from '../../assets/icons/arrow-right.svg';
 import React from 'react';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const imagesIPhone = [
-  '/img/banner-mob.png',
-  '/img/banner-swiper.png',
-  '/img/iphones.png',
+  `${baseUrl}img/banner-mob.png`,
+  `${baseUrl}img/banner-swiper.png`,
+  `${baseUrl}img/iphones.png`,
 ];
 
 const imagesTablet = [
-  '/img/banner-desk.png',
-  '/img/banner-phones.png',
-  '/img/banner-swiper.png',
+  `${baseUrl}img/banner-desk.png`,
+  `${baseUrl}img/banner-phones.png`,
+  `${baseUrl}img/banner-swiper.png`,
 ];
 
 export const SliderSwiper: React.FC = () => {

@@ -14,9 +14,10 @@ const Cart = () => {
         <div className={styles.content}>
           <div className={styles.info}>
             <p className={styles.detail}>Your cart is empty</p>
+
             <img
               className={styles.img}
-              src="/img/cart-is-empty.png"
+              src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
               alt="Cart is empty"
             />
           </div>
@@ -28,6 +29,7 @@ const Cart = () => {
               <CartCard key={item.product.id} item={item} />
             ))}
           </div>
+
           <CartSummary />
         </div>
       )}

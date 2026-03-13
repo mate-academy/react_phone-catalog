@@ -1,4 +1,4 @@
-const baseUrl = '/api/';
+const baseUrl = `${import.meta.env.BASE_URL}api/`;
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
