@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './Category.module.scss';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 const categoryInfo = [
   {

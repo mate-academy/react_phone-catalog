@@ -1,11 +1,12 @@
-const baseUrl = `${import.meta.env.BASE_URL}api/`;
-
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+const withBase = (path: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}${path.replace(/^\/+/, '')}`;
 
 const loadDataFromApi = async (url: string) => {
   await delay(500);
 
-  const response = await fetch(`${baseUrl}${url}`);
+  const response = await fetch(withBase(`api/${url}`));
 
   if (!response.ok) {
     throw new Error('Failed to fetch');

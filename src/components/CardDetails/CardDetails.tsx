@@ -27,7 +27,7 @@ const CardDetails: React.FC = () => {
   const [mainImage, setMainImage] = useState('');
 
   const getImageUrl = (path: string) =>
-    `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+    `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}${path.replace(/^\/+/, '')}`;
 
   const productSpecs = [
     { label: 'Screen', value: product?.screen },

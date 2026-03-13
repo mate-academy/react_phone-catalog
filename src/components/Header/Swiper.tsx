@@ -6,7 +6,9 @@ import LeftArrow from '../../assets/icons/arrow-left.svg';
 import RightArrow from '../../assets/icons/arrow-right.svg';
 import React from 'react';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 const imagesIPhone = [
   `${baseUrl}img/banner-mob.png`,
