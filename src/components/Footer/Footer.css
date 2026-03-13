@@ -1,0 +1,29 @@
+.footer {
+margin-top: 120px;
+padding: 40px 0;
+display: flex;
+justify-content: center;
+gap: 40px;
+font-size: 14px;
+color: #8aa8b5;
+letter-spacing: 2px;
+}
+
+.footer-link,
+.footer-btn {
+text-decoration: none;
+background: none;
+border: none;
+cursor: pointer;
+color: #8aa8b5;
+font-size: 14px;
+letter-spacing: 2px;
+transition: 0.3s;
+}
+
+.footer-link:hover,
+.footer-btn:hover {
+color: #c8f1ff;
+text-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
+transform: scale(1.08);
+}
