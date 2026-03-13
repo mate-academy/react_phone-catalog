@@ -1,5 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { Product } from '../types/Product';
 import { loadProducts } from '../data/products';
@@ -13,59 +13,67 @@ import { ProductCard } from '../components/ProductCard';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const ProductPage = () => {
-const { id } = useParams<{ id: string }>();
+const { id: productId } = useParams<{ id: string }>();
+const navigate = useNavigate();
 
-const [product, setProduct] = useState<Product | null>(null);
 const [allProducts, setAllProducts] = useState<Product[]>([]);
-const [color, setColor] = useState('');
-const [capacity, setCapacity] = useState('');
+
+const product = useMemo(() => {
+if (!productId || allProducts.length === 0) return null;
+
+return (
+allProducts.find(p => p.id === productId) ||
+allProducts.find(p => productId.includes(p.id)) ||
+null
+);
+}, [allProducts, productId]);
+
+const color = product?.color ?? '';
+const capacity = product?.capacity ?? '';
+const namespaceId = product?.namespaceId;
+const variantId = product?.id;
 
 const [imageIndex, setImageIndex] = useState(0);
 
 const [inCart, setInCart] = useState(false);
 const [fav, setFav] = useState(false);
 
-useEffect(() => {
-window.scrollTo({ top: 0, behavior: 'smooth' });
-}, [id]);
+const lastNamespaceIdRef = useRef<string | null>(null);
 
 useEffect(() => {
 loadProducts().then(list => {
 setAllProducts(list);
-const found = list.find(p => id?.includes(p.id)) || null;
-setProduct(found);
-
-if (found) {
-const initialColor =
-found.color && found.colorsAvailable.includes(found.color)
-? found.color
-: found.colorsAvailable[0];
-
-const initialCapacity =
-found.capacity && found.capacityAvailable.includes(found.capacity)
-? found.capacity
-: found.capacityAvailable[0];
-
-setColor(initialColor);
-setCapacity(initialCapacity);
-
-setImageIndex(0);
-}
 });
-}, [id]);
+}, []);
 
 useEffect(() => {
-if (!product) return;
+if (!productId) return;
+
+const reset = () => setImageIndex(0);
+reset();
+}, [productId]);
+
+useEffect(() => {
+if (!namespaceId) return;
+
+if (lastNamespaceIdRef.current !== namespaceId) {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+lastNamespaceIdRef.current = namespaceId;
+}
+}, [namespaceId]);
+
+useEffect(() => {
+if (!variantId) return;
 
 const update = () => {
-setInCart(isInCart(product.id, color, capacity));
-setFav(isFavorite(product.id, color, capacity));
+setInCart(isInCart(variantId, color, capacity));
+setFav(isFavorite(variantId, color, capacity));
 };
 
 update();
 window.addEventListener('storage-update', update);
 return () => window.removeEventListener('storage-update', update);
-}, [product, color, capacity]);
+}, [variantId, color, capacity]);
 
 const images = useMemo(() => {
 if (!product) return [];
@@ -218,7 +226,17 @@ ${price}
 <button
 key={c}
 onClick={() => {
-setColor(c);
+const next = allProducts.find(
+p =>
+p.namespaceId === product.namespaceId &&
+p.capacity === capacity &&
+p.color === c
+);
+
+if (next && next.id !== product.id) {
+navigate(`/product/${next.id}`, { replace: true });
+}
+
 setImageIndex(0);
 }}
 style={{
@@ -240,7 +258,20 @@ transition: '0.25s',
 {product.capacityAvailable.map(c => (
 <button
 key={c}
-onClick={() => setCapacity(c)}
+onClick={() => {
+const next = allProducts.find(
+p =>
+p.namespaceId === product.namespaceId &&
+p.capacity === c &&
+p.color === color
+);
+
+if (next && next.id !== product.id) {
+navigate(`/product/${next.id}`, { replace: true });
+}
+
+setImageIndex(0);
+}}
 style={{
 margin: 6,
 fontWeight: c === capacity ? 800 : 300,
