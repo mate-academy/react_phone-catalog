@@ -20,6 +20,16 @@
   }
 }
 
+.title {
+  @extend %page-title;
+
+  padding: 56px 0;
+
+  @media (max-width: 768px) {
+    padding: 24px 0;
+  }
+}
+
 .category {
   &__content {
     display: flex;

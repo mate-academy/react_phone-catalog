@@ -1,0 +1,25 @@
+.toolbar {
+  padding: 24px 0;
+}
+
+.header {
+  margin: 40px 0;
+}
+
+.title {
+  @extend %page-title;
+
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: $secondary;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.inline {
+  display: flex;
+  gap: 20px;
+}

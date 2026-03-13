@@ -35,7 +35,7 @@ export const Header = () => {
               </Link>
             </li>
             <li className={styles.nav__item}>
-              <Link to="/" className={styles.nav__link}>
+              <Link to="/phones" className={styles.nav__link}>
                 Phones
               </Link>
             </li>

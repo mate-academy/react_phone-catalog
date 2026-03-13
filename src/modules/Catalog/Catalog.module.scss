@@ -1,0 +1,11 @@
+.container {
+  @extend %container;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 16px;
+}

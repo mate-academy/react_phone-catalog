@@ -1,0 +1,43 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+}
+
+.home {
+  width: 20px;
+  height: 20px;
+}
+
+.path {
+  color: $secondary;
+  font-size: 15px;
+  line-height: 100%;
+  font-weight: 600;
+}
+
+.arrow {
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 13px;
+  padding: 0 20px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 8px;
+    background: $secondary;
+  }
+
+  &::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}

@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Preview } from '../../components/layout/Preview';
 import { ProductColection } from '../../components/layout/ProductColection';
-import { PageTitle } from '../../components/ui/PageTitle';
 import { SectionTitle } from '../../components/ui/SectionTitle';
 import { ProductsContext } from '../../store/ProductsProvider';
 import { imageUrl } from '../../utils/imageUrl';
@@ -43,7 +42,7 @@ export const HomePage = () => {
   return (
     <>
       <div className={styles.container}>
-        <PageTitle>Welcome to Nice Gadgets store!</PageTitle>
+        <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       </div>
       <Preview />
       <div className={styles.content}>

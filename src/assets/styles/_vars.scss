@@ -31,3 +31,16 @@ $transition: 0.2s ease-in;
     padding: 0 16px;
   }
 }
+
+%page-title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  color: $main;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
