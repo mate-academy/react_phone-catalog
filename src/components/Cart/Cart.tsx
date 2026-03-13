@@ -17,7 +17,7 @@ const Cart = () => {
 
             <img
               className={styles.img}
-              src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
+              src={`${import.meta.env.BASE_URL}/img/cart-is-empty.png`}
               alt="Cart is empty"
             />
           </div>
