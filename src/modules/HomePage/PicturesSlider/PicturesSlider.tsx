@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import style from './PicturesSlider.module.scss';
 import classNames from 'classnames';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  let startX = 0;
+  const startXRef = useRef(0);
   const pictures = [
     'img/banner-accessories.webp',
     'img/banner-phones.webp',
@@ -25,15 +25,15 @@ export const PicturesSlider = () => {
     );
 
   const handleTouchStart = (event: React.TouchEvent) => {
-    startX = event.touches[0].clientX;
+    startXRef.current = event.touches[0].clientX;
   };
 
   const handleTouchEnd = (event: React.TouchEvent) => {
-    const endX = event.touches[0].clientX;
+    const endX = event.changedTouches[0].clientX;
 
-    if (startX - endX > 50) {
+    if (startXRef.current - endX > 50) {
       nextBunner();
-    } else if (endX - startX > 50) {
+    } else if (endX - startXRef.current > 50) {
       previosBunner();
     }
   };
