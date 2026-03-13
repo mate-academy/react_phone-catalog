@@ -128,16 +128,28 @@ export const Cart = () => {
               background: '#fff',
             }}
           >
-            <img
-              src={image}
-              width={90}
-              style={{ borderRadius: 12, flexShrink: 0 }}
-            />
+            <Link
+              to={`/product/${item.id}`}
+              style={{ borderRadius: 12, flexShrink: 0, lineHeight: 0 }}
+            >
+              <img
+                src={image}
+                width={90}
+                alt={`${product.name} ${item.capacity} ${item.color.replace('-', ' ')}`}
+                style={{ borderRadius: 12 }}
+              />
+            </Link>
 
             <div style={{ flex: 1, minWidth: 220 }}>
-              <h3 style={{ margin: 0 }}>
-                {product.name} {item.capacity} {item.color.replace('-', ' ')}
-              </h3>
+              <Link
+                to={`/product/${item.id}`}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                <h3 style={{ margin: 0 }}>
+                  {product.name} {item.capacity}{' '}
+                  {item.color.replace('-', ' ')}
+                </h3>
+              </Link>
 
               <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
                 <button onClick={() => decrease(item)}>-</button>

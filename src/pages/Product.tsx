@@ -26,14 +26,28 @@ const [inCart, setInCart] = useState(false);
 const [fav, setFav] = useState(false);
 
 useEffect(() => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}, [id]);
+
+useEffect(() => {
 loadProducts().then(list => {
 setAllProducts(list);
 const found = list.find(p => id?.includes(p.id)) || null;
 setProduct(found);
 
 if (found) {
-setColor(found.color || found.colorsAvailable[0]);
-setCapacity(found.capacity || found.capacityAvailable[0]);
+const initialColor =
+found.color && found.colorsAvailable.includes(found.color)
+? found.color
+: found.colorsAvailable[0];
+
+const initialCapacity =
+found.capacity && found.capacityAvailable.includes(found.capacity)
+? found.capacity
+: found.capacityAvailable[0];
+
+setColor(initialColor);
+setCapacity(initialCapacity);
 
 setImageIndex(0);
 }

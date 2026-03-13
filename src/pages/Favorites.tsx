@@ -95,17 +95,28 @@ export const Favorites = () => {
               background: '#fff',
             }}
           >
-            <img
-              src={image}
-              width={90}
-              style={{ borderRadius: 12, flexShrink: 0 }}
-            />
+            <Link
+              to={`/product/${item.id}`}
+              style={{ borderRadius: 12, flexShrink: 0, lineHeight: 0 }}
+            >
+              <img
+                src={image}
+                width={90}
+                alt={`${product.name} ${item.capacity} ${item.color.replace('-', ' ')}`}
+                style={{ borderRadius: 12 }}
+              />
+            </Link>
 
             <div style={{ flex: 1, minWidth: 220 }}>
-              <h3 style={{ margin: 0 }}>
-                {product.name} {item.capacity}{' '}
-                {item.color.replace('-', ' ')}
-              </h3>
+              <Link
+                to={`/product/${item.id}`}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                <h3 style={{ margin: 0 }}>
+                  {product.name} {item.capacity}{' '}
+                  {item.color.replace('-', ' ')}
+                </h3>
+              </Link>
 
               <p style={{ margin: '6px 0', color: '#8aa8b5' }}>
                 {item.capacity} • {item.color.replace('-', ' ')}
