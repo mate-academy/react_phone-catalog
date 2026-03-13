@@ -1,0 +1,19 @@
+.logo {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.image {
+  width: 80px;
+  height: auto;
+  display: block;
+
+  // :global([data-theme='dark']) & {
+  //   filter: brightness(0) invert(1);
+  // }
+}

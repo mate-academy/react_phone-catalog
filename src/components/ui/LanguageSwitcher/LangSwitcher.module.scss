@@ -1,0 +1,30 @@
+@use '../../../styles/mixins' as *;
+@use "../../../styles/variables" as *;
+
+.controlBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  height: 64px;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+
+  svg {
+    stroke: $color-primary;
+  }
+}
+
+.lang {
+  color:$color-primary;
+  width: 25px;
+  text-align: center;
+  display: inline-block;
+}

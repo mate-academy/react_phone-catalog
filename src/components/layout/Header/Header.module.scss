@@ -1,0 +1,113 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+  height: 64px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.logo {
+  padding: 0 24px;
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+  list-style: none;
+}
+
+.navItem {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navLink {
+  height: 100%;
+  color: $color-secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: $color-primary;
+    border-radius: 5px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &.active {
+    color: $color-primary;
+  }
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+  border-left: 1px solid #e2e6e9;
+}
+
+.actionBtn {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary;
+  border-right: 1px solid $border-color;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 14px;      // Регулюй під свій макет
+  right: 14px;
+
+  background-color: #EB5757; // Червоний колір Nice Gadgets
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid white; // Біла обводка, щоб бадж не зливався з іконкою
+}
+
+// Якщо у нас темна тема, обводку баджа краще зробити темною
+// :global([data-theme='dark']) .badge {
+//   border-color: #1a1a1a;
+// }

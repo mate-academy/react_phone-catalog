@@ -4,6 +4,10 @@
     "src"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "sourceMap": false,
     "types": ["node", "cypress"]
   }
