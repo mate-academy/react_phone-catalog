@@ -6,5 +6,7 @@ export const getProducts = () => {
 };
 
 export const getProductDetails = (category: string, itemId: string) => {
-  return client<ProductDetail>(`/${category}/${itemId}.json`);
+  return client<ProductDetail[]>(`${category}.json`).then(
+    items => items.find(item => item.id === itemId) || null,
+  );
 };

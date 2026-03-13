@@ -1,0 +1,209 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/variables';
+
+.section {
+  @include on-tablet {
+    margin-top: -8px;
+  }
+
+  @include on-desktop {
+    margin-top: -32px;
+  }
+
+  overflow-x: hidden;
+}
+
+.page {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  min-height: 60vh;
+}
+
+.img {
+  object-fit: cover;
+
+  max-width: 40%;
+  max-height: 40%;
+}
+
+.bigBack {
+  width: 180px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-accent);
+
+  color: var(--color-white);
+
+  border: none;
+  border-radius: 48px;
+
+  @include buttons-text;
+
+  cursor: pointer;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.breadcrumbs {
+  position: relative;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbLink {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+
+  color: var(--color-primary);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.breadcrumbArrow {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-icons);
+}
+
+.breadcrumbCurrent {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+
+  color: var(--color-secondary);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backButton {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+
+  margin-top: 24px;
+
+  background-color: var(--color-white);
+
+  border: none;
+
+  color: var(--color-secondary);
+
+  transition: var(--transition-default);
+
+  cursor: pointer;
+
+  @include small-text;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.backButtonIcon {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-primary);
+}
+
+.title {
+  margin-top: 16px;
+}
+
+.mainContent {
+  margin-top: 32px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  @include on-tablet {
+    margin-top: 40px;
+
+    gap: 17px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: flex-start;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.detailsContent {
+  margin-top: 56px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 64px;
+    align-items: flex-start;
+  }
+}
+
+.softLoading {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.sliderWrapper {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

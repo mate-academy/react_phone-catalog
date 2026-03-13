@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
+
+import { getProducts } from '../../api/products';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Product } from '../../types/Product';
 
 import styles from './HomePage.module.scss';
-import { getProducts } from '../../api/products';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [newProducts, setNewProducts] = useState<Product[]>([]);
-  const [hotPriceProducrs, setHotPriceProducts] = useState<Product[]>([]);
+  const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -72,7 +73,7 @@ export const HomePage = () => {
 
         <ProductsSlider
           title="Hot prices"
-          products={hotPriceProducrs}
+          products={hotPriceProducts}
           isLoading={isLoading}
         />
       </div>

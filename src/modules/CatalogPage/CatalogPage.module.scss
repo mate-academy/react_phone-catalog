@@ -12,7 +12,10 @@
 }
 
 .nav {
+  position: relative;
+
   display: flex;
+  justify-content: start;
   align-items: center;
   gap: 8px;
 
@@ -24,9 +27,14 @@
 }
 
 .homeLink {
-  display: flex;
-  align-items: center;
-  transition: opacity 0.3s;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+
+  color: var(--color-primary);
+
+  transition: var(--transition-default);
 
   &:hover {
     opacity: 0.7;

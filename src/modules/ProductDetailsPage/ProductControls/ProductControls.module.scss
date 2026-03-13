@@ -1,0 +1,290 @@
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/variables';
+
+.controls {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @include on-tablet {
+    margin-top: 0;
+  }
+}
+
+.colorsBlock {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.colorsHeader {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.colorsTitle {
+  @include small-text;
+
+  color: var(--color-secondary);
+}
+
+.productId {
+  @include small-text;
+
+  color: var(--color-icons);
+}
+
+.colorsList {
+  margin-top: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorCircleWrapper {
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--color-white);
+
+  border-radius: 50%;
+  border: 1px solid var(--color-elements);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    border-color: var(--color-secondary);
+  }
+}
+
+.colorActive {
+  border-color: var(--color-primary);
+}
+
+.colorCircle {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+}
+
+.line {
+  margin-top: 24px;
+
+  width: 100%;
+
+  border: 1px solid var(--color-elements);
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.capacityBlock {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.capacityTitle {
+  margin-top: 24px;
+
+  @include small-text;
+
+  color: var(--color-secondary);
+}
+
+.variantsCapacity {
+  margin-top: 8px;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.variant {
+  @include body-text;
+
+  color: var(--color-primary);
+
+  cursor: pointer;
+
+  width: 56px;
+  height: 32px;
+
+  background-color: var(--color-white);
+
+  border-radius: 4px;
+  border: 1px solid var(--color-icons);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.variantActive {
+  color: var(--color-white);
+
+  background-color: var(--color-primary);
+
+  border: none;
+}
+
+.priceBlock {
+  margin-top: 32px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceDiscount {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  color: var(--color-primary);
+}
+
+.priceRegular {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+
+  color: var(--color-secondary);
+}
+
+.actionButtons {
+  margin-top: 16px;
+
+  width: 100%;
+
+  display: flex;
+  gap: 8px;
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.cartButton {
+  @include buttons-text;
+
+  flex-grow: 1;
+
+  height: 48px;
+
+  background-color: var(--color-accent);
+
+  color: var(--color-white);
+
+  border: none;
+  border-radius: 48px;
+
+  cursor: pointer;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &Added {
+    background-color: var(--color-white);
+
+    color: var(--color-accent);
+
+    border: 1px solid var(--color-elements);
+
+    cursor: default;
+
+    pointer-events: none;
+  }
+}
+
+.favButton {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-white);
+
+  border: 1px solid var(--color-icons);
+  border-radius: 50%;
+
+  color: var(--color-primary);
+
+  cursor: pointer;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+  &.liked {
+    color: var(--color-secondary-accent);
+  }
+}
+
+.miniSpecs {
+  margin-top: 32px;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specName {
+  @include small-text;
+
+  color: var(--color-secondary);
+}
+
+.specValue {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: right;
+  word-wrap: break-word;
+
+  max-width: 60%;
+
+  color: var(--color-primary);
+}

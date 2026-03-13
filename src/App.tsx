@@ -60,7 +60,10 @@ export const App = () => {
 
         <Route path="favourites" element={<FavouritesPage />} />
 
-        <Route path=":category/:itemId" element={<ProductDetailsPage />} />
+        <Route
+          path=":category/:itemId"
+          element={<ProductDetailsPage products={products} />}
+        />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

@@ -14,12 +14,12 @@
 
   &::before {
     transform: rotateX(60deg) rotateY(45deg) rotateZ(45deg);
-    animation: 750ms rotateBefore infinite linear reverse;
+    animation: 750ms rotate-before infinite linear reverse;
   }
 
   &::after {
     transform: rotateX(240deg) rotateY(45deg) rotateZ(45deg);
-    animation: 750ms rotateAfter infinite linear;
+    animation: 750ms rotate-after infinite linear;
   }
 
   &::before,
