@@ -45,7 +45,7 @@ export const BrandNewModelsSlider: React.FC = () => {
           </div>
 
           <Swiper
-            onSlideChange={({ activeIndex: newIndex }) =>
+            onSlideChange={({ activeIndex: newIndex }: any) =>
               setActiveIndex(newIndex)
             }
             spaceBetween={16}

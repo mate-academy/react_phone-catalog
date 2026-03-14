@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../store/ProductsContext';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
@@ -23,6 +23,10 @@ export const ProductList: React.FC<ProductListProps> = ({
   };
 
   const perPage = +(searchParams.get('perPage') || PerPageOption.Sixteen);
+
+  useEffect(() => {
+    setPage(1);
+  }, [perPage]);
 
   const totalPages =
     perPage === PerPageOption.All

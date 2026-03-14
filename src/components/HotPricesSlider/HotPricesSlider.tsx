@@ -45,7 +45,7 @@ export const HotPricesSlider: React.FC = () => {
           </div>
 
           <Swiper
-            onSlideChange={({ activeIndex: newIndex }) => {
+            onSlideChange={({ activeIndex: newIndex }: any) => {
               setActiveIndex(newIndex);
             }}
             grabCursor={true}

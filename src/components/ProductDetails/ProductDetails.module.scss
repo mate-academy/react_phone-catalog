@@ -96,9 +96,6 @@
   text-align: right;
   color: $gray-icons;
 
-  @include on-phone {
-  }
-
   @include on-tablet {
     display: block;
   }
@@ -184,12 +181,9 @@
 .information {
   width: 100%;
 
-  @include on-phone {
-  }
-
   @include on-tablet {
     min-width: 237px;
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   @media screen and (min-width: 768px) {
@@ -382,9 +376,6 @@
 }
 
 .about {
-  @include on-phone {
-  }
-
   @include on-tablet {
     width: 100%;
   }
