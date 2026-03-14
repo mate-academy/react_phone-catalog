@@ -12,9 +12,11 @@ interface Props {
 }
 
 export const ActionButtons: React.FC<Props> = ({ product, size = 'small' }) => {
-  const { favorites, toggleFavorite } = useOutletContext<ContextProps>();
+  const { favorites, toggleFavorite, cart, addToCart } =
+    useOutletContext<ContextProps>();
   const targetId = 'itemId' in product ? product.itemId : product.id;
   const isFavorite = favorites.includes(targetId);
+  const isInCart = cart.some(item => item.id === targetId);
 
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -23,12 +25,13 @@ export const ActionButtons: React.FC<Props> = ({ product, size = 'small' }) => {
 
   const handleCartClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    addToCart(targetId);
   };
 
   return (
     <div className={`${styles.buttons} ${styles[size]}`}>
       <button className={styles.addToCart} onClick={handleCartClick}>
-        Add to cart
+        {isInCart ? 'Added to cart' : 'Add to cart'}
       </button>
 
       <button

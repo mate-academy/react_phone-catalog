@@ -1,0 +1,99 @@
+.page {
+  padding: 24px 16px 80px;
+
+  @media (min-width: 640px) {
+    padding: 32px 24px 80px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 24px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939a;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #313237;
+  margin: 0 0 32px;
+  letter-spacing: -0.01em;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: flex-start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 280px;
+    gap: 24px;
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkoutWrapper {
+  position: sticky;
+  top: 24px;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  text-align: center;
+
+  h2 {
+    color: #89939a;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .continueShopping {
+    padding: 16px 32px;
+    background-color: #313237;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #000;
+    }
+  }
+}

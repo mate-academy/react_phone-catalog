@@ -54,12 +54,3 @@ export const getProductById = async (
 
   throw new Error('Product not found');
 };
-
-// export const getBaseProductById = async (
-//   productId: string,
-// ): Promise<Product | null> => {
-//   const response = await fetch('api/products.json');
-//   const products: Product[] = await response.json();
-
-//   return products.find(p => p.itemId === productId) || null;
-// };
