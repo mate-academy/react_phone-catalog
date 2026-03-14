@@ -1,4 +1,7 @@
-$color-primary:#0F0F11;
-$color-secondary:#89939A;
-$border-color:#E2E6E9;
-$bg-color-hover:#FAFBFC;
+@use './theme' as *;
+
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$border-color: var(--border-color);
+$bg-color-body: var(--bg-color-body);
+$bg-color-hover: var(--bg-color-hover);

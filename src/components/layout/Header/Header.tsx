@@ -5,7 +5,7 @@ import { Logo } from '@/components/ui/Logo/Logo';
 import { ThemeToggler } from '@/components/ui/ThemeToggle';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useCartStore } from '@/store/cartStore';
+// import { useCartStore } from '@/store/cartStore';
 
 const NAV_ITEMS = [
   { key: 'nav.home', href: '/' },
@@ -16,7 +16,7 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   const { t } = useTranslation('common');
-  const cartCount = useCartStore(state => state.cartItems.length);
+  // const cartCount = useCartStore(state => state.cartItems.length);
   // const favCount = useFavoritesStore((state) => state.favorites.length);
 
   return (
@@ -63,7 +63,7 @@ export const Header = () => {
           aria-label="Cart"
         >
           <ShoppingBag size={16} strokeWidth={1.5} />
-          {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+          {/* {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>} */}
         </NavLink>
       </div>
     </header>
