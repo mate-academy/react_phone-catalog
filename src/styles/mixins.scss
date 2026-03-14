@@ -1,0 +1,28 @@
+@mixin menu-link {
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: rgba(137, 147, 154, 1);
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin grid-columns($columns, $column-width: 1fr, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, $column-width);
+  gap: $gap;
+}

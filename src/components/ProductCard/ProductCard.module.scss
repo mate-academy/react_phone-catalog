@@ -1,0 +1,118 @@
+@use '../../styles/mixins.scss';
+
+.card {
+  width: 212px;
+  flex: 0 0 212px;
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  @include mixins.on-tablet {
+    width: 237px;
+    flex: 0 0 237px;
+  }
+
+  @include mixins.on-desktop {
+    width: 272px;
+    flex: 0 0 272px;
+  }
+}
+
+.cardContent {
+  display: grid;
+  grid-template-rows: auto 42px auto 1fr auto;
+  height: 100%;
+  padding: 32px;
+}
+
+.imageLink {
+  display: flex;
+  margin-bottom: 24px;
+  aspect-ratio: 1 / 1;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.titleWrapper {
+  margin-bottom: 8px;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: rgba(49, 50, 55, 1);
+}
+
+.priceBlock {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(226, 230, 233, 1);
+}
+
+.price {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: rgba(49, 50, 55, 1);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+  margin-bottom: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(137, 147, 154, 1);
+}
+
+.specValue {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(49, 50, 55, 1);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-self: end;
+}
+
+.addToCart {
+  flex: 1;
+  height: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(49, 50, 55, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.favouriteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(180, 189, 195, 1);
+  background-color: transparent;
+  cursor: pointer;
+}

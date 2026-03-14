@@ -1,0 +1,69 @@
+@use '../../styles/mixins.scss';
+
+.mobileMenu {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 48px);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.mobileNav {
+  padding: 24px 16px 0;
+}
+
+.menuList {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menuItem {
+  display: flex;
+}
+
+.menuLink {
+  @include mixins.menu-link;
+  
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background-color: #313237;
+    opacity: 0;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.menuIcons{
+  display: flex;
+  margin-top: auto;
+}
+
+.menuIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 64px;
+  border-top: 1px solid #e2e6e9;
+  border-right: 1px solid #e2e6e9;
+}

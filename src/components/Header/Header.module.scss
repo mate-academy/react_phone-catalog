@@ -1,0 +1,140 @@
+@use '../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  background-color: #fff;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: #e2e6e9;
+  }
+
+  @include mixins.on-tablet {
+    gap: 16px;
+  }
+
+  @include mixins.on-desktop {
+    height: 64px;
+    gap: 24px;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  padding: 13px 16px;
+
+  @include mixins.on-desktop {
+    padding: 18px 24px;
+  }
+}
+
+.logoLink img {
+  display: block;
+}
+
+.nav {
+  height: 100%;
+  display: none;
+
+  @include mixins.on-tablet {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include mixins.on-desktop {
+    gap: 64px;
+  }
+}
+
+.navItem {
+  @include mixins.on-tablet {
+    height: 100%;
+  }
+}
+
+.actions {
+  display: none;
+
+  @include mixins.on-tablet {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+.actionsLink {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-left: 1px solid rgba(226, 230, 233, 1);
+
+  @include mixins.on-desktop {
+    padding: 24px;
+  }
+}
+
+.menuLink {
+  @include mixins.menu-link;
+
+  @include mixins.on-tablet {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background-color: #313237;
+      opacity: 0;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  @include mixins.on-desktop {
+    padding: 26px 0;
+  }
+}
+
+.menuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border: none;
+  border-left: 1px solid #e2e6e9;
+  background-color: transparent;
+  cursor: pointer;
+
+  @include mixins.on-tablet {
+    display: none;
+  }
+}

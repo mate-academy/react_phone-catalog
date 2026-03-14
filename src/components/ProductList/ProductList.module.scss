@@ -1,0 +1,8 @@
+@use '../../styles/mixins.scss';
+
+.sliderTrack {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}

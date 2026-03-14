@@ -1,1 +1,16 @@
-// not empty
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+.page-backgraund {
+    max-width: 1440px;
+    margin: 0 auto;
+}

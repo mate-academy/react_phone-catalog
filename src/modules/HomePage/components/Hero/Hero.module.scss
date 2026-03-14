@@ -1,0 +1,30 @@
+// @use '../../styles/mixins';
+// @use '../../components/Hero/Hero.module.scss';
+@use '../../../../styles/mixins.scss';
+
+.hero {
+    padding: 24px 16px;
+
+    @include mixins.on-tablet {
+        padding: 32px 24px;
+    }
+
+    @include mixins.on-desktop {
+        padding: 56px 32px;
+    }
+}
+
+.title {
+    margin: 0;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: rgba(49, 50, 55, 1);
+    grid-column: 1/-1;
+
+    @include mixins.on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+    }
+}

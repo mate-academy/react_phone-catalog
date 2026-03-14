@@ -1,0 +1,87 @@
+@use '../../styles/mixins.scss';
+
+.newModels {
+  padding-top: 56px;
+  padding-bottom: 56px;
+
+  @include mixins.on-tablet {
+    padding-block: 64px;
+  }
+
+  @include mixins.on-desktop {
+    padding-block: 80px;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 16px;
+  margin-bottom: 24px;
+
+  @include mixins.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: rgba(49, 50, 55, 1);
+
+  @include mixins.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.arrowLeft,
+.arrowRight {
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(226, 230, 233, 1);
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    border: 1px solid rgba(180, 189, 195, 1);
+  }
+}
+
+.sliderWrapper {
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 0;
+
+  @include mixins.on-tablet {
+    padding-left: 24px;
+    padding-right: 0;
+  }
+
+  @include mixins.on-desktop {
+    margin-inline: 32px;
+    padding: 0;
+  }
+}
