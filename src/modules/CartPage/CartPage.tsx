@@ -19,7 +19,7 @@ export const CartPage = () => {
   return (
     <div className={s.content}>
       <button className={s.backButton} onClick={() => navigate(-1)}>
-        <img className={s.backImg} src={arrow} alt="arrow" />
+        <img className={s.backImg} src={arrow} alt="arrow" aria-hidden="true" />
         <span className={s.backLabel}>Back</span>
       </button>
 
@@ -34,7 +34,9 @@ export const CartPage = () => {
 
           <div className={s.cartResult}>
             <h2 className={s.totalPrice}>${totalPrice}</h2>
-            <span className={s.itemCount}>Total for {totalItems} items</span>
+            <span className={s.itemCount}>
+              Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
+            </span>
             <button className={s.resultButton} onClick={handleCheckout}>
               Checkout
             </button>
@@ -42,7 +44,7 @@ export const CartPage = () => {
         </div>
       ) : (
         <div className={s.emptyState}>
-          <img src={emptyCartImg} alt="Cart is empty" className={s.emptyImg} />
+          <img src={emptyCartImg} alt="Empty shopping cart" className={s.emptyImg} />
           <h2>Your cart is empty!!!</h2>
         </div>
       )}

@@ -24,20 +24,22 @@
   width: 16px;
   height: 16px;
   padding-top: 2px;
-
-  // background-color: red;
 }
 
 .navImg {
   display: block;
-  width: auto;
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .path {
   font-size: 12px;
   font-weight: 600;
   line-height: 100%;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
   text-transform: capitalize;
   letter-spacing: 0%;
   text-decoration: none;
@@ -51,6 +53,10 @@
   line-height: 100%;
   letter-spacing: 0%;
 
-  color: rgba(49, 50, 55, 1);
-  //background-color: red;
+  color: $active-link-color;
+  transition: color $transition-duration $transition-timing;
+
+  &:hover {
+    color: $gray-main;
+  }
 }

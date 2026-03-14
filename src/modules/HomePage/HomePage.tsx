@@ -11,7 +11,7 @@ const categories = [
   {
     id: 1,
     title: 'Mobile phones',
-    imgUrl: '/img/category-phones.png',
+    imgUrl: './img/category-phones.png',
     categoryName: 'phones',
     link: '/phones',
     backgroundColor: 'rgba(109, 100, 116, 1)',
@@ -19,7 +19,7 @@ const categories = [
   {
     id: 2,
     title: 'Tablets',
-    imgUrl: '/img/category-tablets.png',
+    imgUrl: './img/category-tablets.png',
     categoryName: 'tablets',
     link: '/tablets',
     backgroundColor: '#F1F2F3',
@@ -27,7 +27,7 @@ const categories = [
   {
     id: 3,
     title: 'Accessories',
-    imgUrl: '/img/category-accessories.png',
+    imgUrl: './img/category-accessories.png',
     categoryName: 'accessories',
     link: '/accessories',
     backgroundColor: 'rgba(213, 60, 81, 1)',
@@ -84,9 +84,11 @@ export const HomePage = () => {
         <>
           <h1 className={s.visuallyHidden}>Product Catalog</h1>
           <h2 className={s.headerTitle}>Welcome to Nice Gadgets store!</h2>
+
           <div className={s.sliderGallery}>
             <MainSlider />
           </div>
+
           <div className={s.contentBlocks}>
             {newProducts.length > 0 && (
               <div className={s.newModels}>

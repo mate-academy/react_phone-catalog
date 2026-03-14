@@ -15,12 +15,14 @@
   height: 40px;
   margin-bottom: 4px;
   padding: 12px;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid $gray-secondary;
+  cursor: pointer;
+  transition: border-color $transition-duration $transition-timing;
 
   background-color: $background-color;
 
   &:hover {
-    border: 1px solid rgba(137, 147, 154, 1);
+    border: 1px solid $gray-main;
   }
 }
 
@@ -35,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  transition: transform $transition-duration $transition-timing;
 }
 
 .iconRotated {
@@ -53,16 +55,16 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid $gray-icons;
 
   list-style: none;
 
   visibility: hidden;
   opacity: 0;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  background-color: $background-color;
+  box-shadow: $shadow-default;
 
-  transition: all 0.3s ease;
+  transition: all $transition-duration $transition-timing;
 }
 
 .sortListOpen {
@@ -76,15 +78,19 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
   text-decoration: none;
   letter-spacing: 0%;
+  cursor: pointer;
+  transition:
+    color $transition-duration,
+    background-color $transition-duration;
 
   &:hover {
-    color: rgba(49, 50, 55, 1);
+    color: $active-link-color;
   }
 }
 
 .active {
-  color: rgba(49, 50, 55, 1);
+  color: $active-link-color;
 }

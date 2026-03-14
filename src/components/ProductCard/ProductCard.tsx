@@ -11,25 +11,17 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { cartItems, toggleCart } = useCart();
   const { favorites, toggleFavorites } = useFavorites();
 
-  const isInCart = cartItems.some((item) => item.id === product.id);
-  const isFavorite = favorites.some((item) => item.id === product.id);
-
-  const handleAddProduct = () => {
-    if (isInCart) {
-      removeFromCart(product.id);
-    } else {
-      addToCart(product);
-    }
-  };
+  const isInCart = cartItems.some((item) => item.product.itemId === product.itemId);
+  const isFavorite = favorites.some((item) => item.product.itemId === product.itemId);
 
   return (
     <article className={s.container}>
       <Link className={s.nav} to={`/product/${product.itemId}`}>
         <div className={s.productImage}>
-          <img className={s.image} src={product.image} alt={product.name} />
+          <img className={s.image} src={product.image} alt={`${product.name} view`} />
         </div>
 
         <h3 className={s.productName}>{product.name}</h3>
@@ -40,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <span className={s.price}>${product.fullPrice}</span>
       </div>
 
-      <div className={s.line}></div>
+      <div className={s.line} aria-hidden="true"></div>
 
       <div className={s.description}>
         <div className={s.descriptionItem}>
@@ -59,12 +51,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={s.productButton}>
         <button
+          type="button"
           className={classNames(s.selected, { [s.isInCart]: isInCart })}
-          onClick={handleAddProduct}
+          onClick={() => toggleCart(product)}
         >
           {!isInCart ? 'Add to cart' : 'Added'}
         </button>
         <button
+          type="button"
           className={classNames(s.favorites, { [s.isFavorite]: isFavorite })}
           onClick={() => toggleFavorites(product)}
         >

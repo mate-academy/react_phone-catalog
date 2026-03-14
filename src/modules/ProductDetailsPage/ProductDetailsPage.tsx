@@ -8,12 +8,18 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Loader } from '../../shared/components/Loader/Loader';
 import classNames from 'classnames';
 import icon from '../../assets/images/icons/Favourites (Heart Like).svg';
+import heart from '../../assets/images/icons/Heart.svg';
+import errorIcon from '../../../public/img/product-not-found.png';
 import { getColorHex } from '../../utils/ColorMap';
 import { ProductSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { useCart, useFavorites } from '../../hooks/ContextHook';
+import { normalizeProduct } from '../../utils/normalizeProduct';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const { cartItems, toggleCart } = useCart();
+  const { favorites, toggleFavorites } = useFavorites();
 
   const [product, setProduct] = useState<Product>();
   const [suggestedProducts, setSuggestedProducts] = useState<Products[]>([]);
@@ -56,11 +62,22 @@ export const ProductDetailsPage = () => {
     return `/product/${namespaceId}-${capacity.toLowerCase()}-${color.replace(/ /g, '-')}`;
   };
 
+  const isInCart = cartItems.some((item) => item.product.itemId === product?.id);
+  const isFavorite = favorites.some((v) => v.product.itemId === product?.id);
+
   return (
     <div className={s.container}>
       {loading && <Loader />}
 
-      {error && !loading && <div className={s.errorMessage}>{error}</div>}
+      {error && !loading && (
+        <div className={s.errorBlock}>
+          <span className={s.errorMessage}>{error}</span>
+          <img className={s.errorIcon} src={errorIcon} alt="error" />
+          <Link to="/" className={s.link}>
+            Back to Home Page
+          </Link>
+        </div>
+      )}
 
       {!loading && !error && product && (
         <div className={s.content}>
@@ -133,9 +150,19 @@ export const ProductDetailsPage = () => {
               </div>
 
               <div className={s.productButton}>
-                <button className={s.selected}>Add to cart</button>
-                <button className={s.favorites}>
-                  <img src={icon} alt="favorites" />
+                <button
+                  onClick={() => {
+                    toggleCart(normalizeProduct(product));
+                  }}
+                  className={classNames(s.selected, { [s.isInCart]: isInCart })}
+                >
+                  Add to cart
+                </button>
+                <button
+                  className={classNames(s.favorites, { [s.isFavorite]: isFavorite })}
+                  onClick={() => toggleFavorites(normalizeProduct(product))}
+                >
+                  <img src={isFavorite ? heart : icon} alt="favorites" />
                 </button>
               </div>
 

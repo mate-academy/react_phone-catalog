@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <footer className={s.footer}>
       <div className={s.footerContent}>
-        <Link to="/" className={s.logo}>
+        <Link to="/" className={s.logo} aria-label="Go to home page">
           <img src={logo} alt="logo" />
         </Link>
         <ul className={s.linkList}>

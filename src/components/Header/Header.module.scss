@@ -8,7 +8,7 @@
 
   display: flex;
 
-  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  border-bottom: 1px solid $gray-icons;
 
   background-color: $background-color;
 }
@@ -40,6 +40,11 @@
   display: flex;
   align-items: center;
   height: 100%;
+  transition: opacity $transition-duration;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .img {
@@ -72,9 +77,9 @@
   display: none;
 
   @include on-tablet {
+    margin-left: auto;
     display: flex;
     height: 100%;
-    margin-left: auto;
   }
 }
 
@@ -86,9 +91,9 @@
   width: 100%;
   height: 100%;
   border-bottom: 2px solid transparent;
-  border-left: 1px solid rgba(226, 230, 233, 1);
+  border-left: 1px solid $gray-icons;
 
-  transition: all 0.3s ease;
+  transition: all $transition-duration $transition-timing;
 
   &.isActive {
     border-bottom: 2px solid $active-link-color;
@@ -121,9 +126,10 @@
   height: 100%;
   margin-left: auto;
   border: none;
-  border-left: 1px solid rgba(226, 230, 233, 1);
+  border-left: 1px solid $gray-icons;
 
   background-color: $background-color;
+  transition: background-color $transition-duration;
 
   @include on-tablet {
     display: none;
@@ -142,7 +148,7 @@
   align-items: center;
 
   padding-top: 24px;
-  border-top: 1px solid rgba(226, 230, 233, 1);
+  border-top: 1px solid $gray-icons;
 
   background-color: $background-color;
 }
@@ -161,7 +167,7 @@
     display: inline-block;
     padding-bottom: 8px;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+    transition: all $transition-duration $transition-timing;
   }
 
   &.isActive {
@@ -182,7 +188,7 @@
   width: 100%;
   height: 64px;
   margin-top: auto;
-  border-top: 1px solid rgba(226, 230, 233, 1);
+  border-top: 1px solid $gray-icons;
 }
 
 .iconWrapper {

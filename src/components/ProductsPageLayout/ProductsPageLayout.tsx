@@ -7,6 +7,8 @@ import { Loader } from '../../shared/components/Loader/Loader';
 import { ProductFilters } from '../ProductFilters/ProductFilters';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { Pagination } from '../Pagination/Pagination';
+import { getSearchWith } from '../../utils/searchHelper';
+import { ReloadButton } from '../ReloadButton/ReloadButton';
 
 type AllProduct = 'phones' | 'tablets' | 'accessories';
 
@@ -20,7 +22,7 @@ export const ProductsPageLayout: React.FC<Props> = ({ type, pageTitle }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [reload, setReload] = useState(false);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setLoading(true);
@@ -31,16 +33,25 @@ export const ProductsPageLayout: React.FC<Props> = ({ type, pageTitle }) => {
       .finally(() => setLoading(false));
   }, [type, reload]);
 
-  const productsCount = products.length;
-
   const perPageParam = searchParams.get('perPage') || 'all';
   const currentPage = Number(searchParams.get('page')) || 1;
   const sortBy = searchParams.get('sort') || 'age';
+  const query = searchParams.get('query') || '';
 
-  const perPage = perPageParam === 'all' ? productsCount : Number(perPageParam);
+  const filterProducts = useMemo(() => {
+    const normalizeQuery = query.toLowerCase().trim();
+
+    return products.filter((product) => product.name.toLowerCase().includes(normalizeQuery));
+  }, [query, products]);
+
+  const visibleProductsCount = filterProducts.length;
+
+  const productsCount = products.length;
+
+  const perPage = perPageParam === 'all' ? visibleProductsCount : Number(perPageParam);
 
   const sortedProducts = useMemo(() => {
-    return [...products].sort((product1, product2) => {
+    return [...filterProducts].sort((product1, product2) => {
       switch (sortBy) {
         case 'age':
           return product2.year - product1.year;
@@ -54,12 +65,18 @@ export const ProductsPageLayout: React.FC<Props> = ({ type, pageTitle }) => {
           return 0;
       }
     });
-  }, [sortBy, products]);
+  }, [sortBy, filterProducts]);
 
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = currentPage * perPage;
 
   const visibleProducts = sortedProducts.slice(startIndex, endIndex);
+
+  const handleReset = () => {
+    setSearchParams((prevParams) => {
+      return getSearchWith(prevParams, { query: null });
+    });
+  };
 
   return (
     <div className={s.container}>
@@ -68,23 +85,30 @@ export const ProductsPageLayout: React.FC<Props> = ({ type, pageTitle }) => {
       {loading && <Loader />}
 
       {!loading && error && (
-        <div className={s.reload}>
-          <p>Something went wrong</p>
-          <button className={s.reloadButton} type="button" onClick={() => setReload(!reload)}>
-            Reload
-          </button>
-        </div>
+        <ReloadButton
+          title="Something went wrong"
+          onChange={() => setReload(!reload)}
+          buttonName="Reload"
+        />
       )}
 
       {!loading && !error && productsCount === 0 && <p>There are no {type} yet</p>}
 
-      {!loading && !error && productsCount > 0 && (
+      {!loading && !error && productsCount > 0 && visibleProductsCount === 0 && (
+        <ReloadButton
+          title={`There are no ${type} products matching the query`}
+          onChange={handleReset}
+          buttonName="Reset"
+        />
+      )}
+
+      {!loading && !error && productsCount > 0 && visibleProductsCount > 0 && (
         <>
-          <div className={s.counter}>{productsCount} models</div>
+          <div className={s.counter}>{query ? visibleProductsCount : productsCount} models</div>
           <ProductFilters />
           <ProductsList products={visibleProducts} />
-          {productsCount > perPage && (
-            <Pagination total={productsCount} currentPage={currentPage} perPage={perPage} />
+          {visibleProductsCount > perPage && (
+            <Pagination total={visibleProductsCount} currentPage={currentPage} perPage={perPage} />
           )}
         </>
       )}

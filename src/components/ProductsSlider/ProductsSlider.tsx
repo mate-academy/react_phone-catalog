@@ -24,11 +24,21 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
       <div className={s.sliderHeader}>
         <h2 className={s.sliderTitle}>{title}</h2>
         <div className={s.sliderButtons}>
-          <button type="button" ref={prevRef} className={classNames(s.sliderButton)}>
-            <img src={arrowLeft} alt="left" />
+          <button
+            type="button"
+            ref={prevRef}
+            className={classNames(s.sliderButton)}
+            aria-label="Previous slide"
+          >
+            <img src={arrowLeft} alt="left" aria-hidden="true" />
           </button>
-          <button type="button" ref={nextRef} className={classNames(s.sliderButton)}>
-            <img src={arrowRight} alt="right" />
+          <button
+            type="button"
+            ref={nextRef}
+            className={classNames(s.sliderButton)}
+            aria-label="Next slide"
+          >
+            <img src={arrowRight} alt="right" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -36,6 +46,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
       <Swiper
         modules={[Navigation]}
         spaceBetween={16}
+        grabCursor={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,

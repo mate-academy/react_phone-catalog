@@ -1,4 +1,4 @@
-@import '../../../utils/mixins.scss';
+@import '../../../utils/mixins';
 @import '../../../utils/variable';
 
 .sliderWrapper {
@@ -18,6 +18,7 @@
     height: 400px;
   }
 }
+
 .swiper {
   flex: 1;
   height: 100%;
@@ -25,25 +26,17 @@
 }
 
 .sliderLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 100%;
   height: 100%;
-}
-
-.sliderSection {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(49, 50, 55, 1);
+  background-color: #0000;
 }
 
 .imgSlider {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
 }
 
 .buttonPrev,
@@ -73,14 +66,14 @@
     display: block;
     width: 14px;
     height: 4px;
-    background-color: rgba(226, 230, 233, 1);
-    transition: background-color 0.3s;
+    background-color: $gray-icons;
+    transition: background-color $transition-duration;
   }
 }
 
 .bulletActive {
   &::before {
-    background-color: rgba(49, 50, 55, 1);
+    background-color: $active-link-color;
   }
 }
 
@@ -88,12 +81,13 @@
   display: none;
   flex-shrink: 0;
   width: 32px;
-  //height: auto;
+
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid $gray-secondary;
   background: transparent;
   cursor: pointer;
+  transition: all $transition-duration;
 
   @include on-tablet {
     display: flex;
@@ -101,5 +95,9 @@
 
   &:hover {
     background-color: #f1f2f3;
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 }

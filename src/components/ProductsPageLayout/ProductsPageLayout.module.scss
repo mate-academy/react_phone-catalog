@@ -25,31 +25,6 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-secondary;
   letter-spacing: 0%;
-}
-
-.reload {
-  margin: 40px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.reloadButton {
-  cursor: pointer;
-  padding: 12px 24px;
-  border: 1px solid rgba(180, 189, 195, 1);
-  background: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-
-  width: 100%;
-  max-width: 200px;
-
-  &:hover {
-    color: $background-color;
-    background-color: rgba(137, 147, 154, 1);
-  }
 }

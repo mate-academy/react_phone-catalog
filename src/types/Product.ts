@@ -1,16 +1,34 @@
-export interface Products {
+interface BaseProduct {
   id: string;
   category: string;
-  itemId: string;
   name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
   capacity: string;
   color: string;
   ram: string;
+  screen: string;
+}
+
+export interface Products extends BaseProduct {
+  itemId: string;
+  fullPrice: number;
+  price: number;
   year: number;
   image: string;
+}
+
+export interface Product extends BaseProduct {
+  namespaceId: string;
+  capacityAvailable: string[];
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  images: string[];
+  description: ProductDescription[];
+  resolution: string;
+  processor: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
 }
 
 export interface CartProduct {
@@ -24,26 +42,4 @@ export type FavoritesProduct = Omit<CartProduct, 'quantity'>;
 export interface ProductDescription {
   title: string;
   text: string[];
-}
-
-export interface Product {
-  id: string;
-  category: string;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: string[];
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
-  images: string[];
-  description: ProductDescription[];
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
 }

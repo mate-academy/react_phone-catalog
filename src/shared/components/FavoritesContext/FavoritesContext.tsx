@@ -28,18 +28,18 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
 
   const toggleFavorites = useCallback((product: Products) => {
     setFavorites((currentItems) => {
-      const isFavorite = currentItems.some((item) => item.id === product.id);
+      const isFavorite = currentItems.some((item) => item.product.itemId === product.itemId);
 
       if (!isFavorite) {
         const newItem = {
-          id: product.id,
+          id: product.itemId,
           product: product,
         };
 
         return [...currentItems, newItem];
       }
 
-      return currentItems.filter((item) => item.id !== product.id);
+      return currentItems.filter((item) => item.product.itemId !== product.itemId);
     });
   }, []);
 

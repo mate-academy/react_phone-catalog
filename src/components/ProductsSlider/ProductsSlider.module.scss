@@ -31,12 +31,12 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid $gray-icons;
   background-color: $background-color;
-  transition: opacity 0.3s;
+  transition: all $transition-duration $transition-timing;
 
   &:hover {
-    border: 1px solid rgba(49, 50, 55, 1);
+    border: 1px solid $active-link-color;
     cursor: pointer;
   }
 

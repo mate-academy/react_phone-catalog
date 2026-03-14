@@ -68,7 +68,7 @@ export const Header = () => {
         </div>
 
         <button className={s.menuButton} onClick={toggleMenu}>
-          <img src={isMenuOpen ? closeIcon : menuIcon} alt="menuIcon" />
+          <img src={isMenuOpen ? closeIcon : menuIcon} alt="menuIcon" aria-hidden="true" />
         </button>
 
         {isMenuOpen && (

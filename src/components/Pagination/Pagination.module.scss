@@ -21,7 +21,6 @@
   list-style: none;
 }
 
-/* Переносимо .pageLink сюди, щоб виправити specificity */
 .pageLink {
   display: flex;
   align-items: center;
@@ -32,10 +31,10 @@
 
   font-size: 14px;
   font-weight: 600;
-  color: rgba(49, 50, 55, 1);
+  color: $active-link-color;
   text-decoration: none;
 
-  transition: all 0.3s;
+  transition: color $transition-duration $transition-timing;
 }
 
 .pageItemNav {
@@ -45,17 +44,17 @@
 
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid $gray-secondary;
 
   list-style: none;
 
   &:hover {
-    border: 1px solid rgba(49, 50, 55, 1);
+    border: 1px solid $active-link-color;
   }
 
   &.disabled {
     pointer-events: none;
-    border-color: rgba(226, 230, 233, 1);
+    border-color: $gray-icons;
     opacity: 0.5;
   }
 }
@@ -67,7 +66,7 @@
 
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid $gray-icons;
 
   font-size: 14px;
   font-weight: 600;
@@ -79,17 +78,17 @@
   transition: all 0.3s;
 
   &:hover {
-    border: 1px solid rgba(49, 50, 55, 1);
+    border: 1px solid $active-link-color;
   }
 
   &.active {
     border: none;
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
-    background-color: rgba(49, 50, 55, 1);
+    background-color: $active-link-color;
 
     .pageLink {
-      color: rgba(255, 255, 255, 1);
+      color: $background-color;
     }
   }
 }

@@ -4,7 +4,7 @@
 .footer {
   margin-top: auto;
   padding: 32px 16px;
-  border-top: 1px solid rgba(226, 230, 233, 1);
+  border-top: 1px solid $gray-icons;
   background-color: $background-color;
 
   @include on-tablet {
@@ -38,6 +38,12 @@
 
 .logo {
   display: block;
+
+  transition: opacity $transition-duration;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .linkList {
@@ -75,7 +81,8 @@
 
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid $gray-secondary;
+  transition: color $transition-duration $transition-timing;
 
   background: none;
 }
@@ -110,4 +117,5 @@
   text-align: right;
   text-transform: none;
   letter-spacing: 0;
+  transition: color $transition-duration $transition-timing;
 }

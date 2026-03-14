@@ -12,19 +12,19 @@ import classNames from 'classnames';
 export const heroBanners = [
   {
     id: 1,
-    imageUrl: '/img/banner-phones.png',
+    imageUrl: './img/33.jpg',
     link: '/phones',
     alt: 'Discover new phones',
   },
   {
     id: 2,
-    imageUrl: '/img/banner-tablets.png',
+    imageUrl: './img/tablets-banner.png',
     link: '/tablets',
     alt: 'Explore our tablets',
   },
   {
     id: 3,
-    imageUrl: '/img/banner-accessories.png',
+    imageUrl: './img/watch.jpg',
     link: '/accessories',
     alt: 'Top accessories',
   },
@@ -53,15 +53,6 @@ export const MainSlider = () => {
             prevEl: `.${s.buttonPrev}`,
             nextEl: `.${s.buttonNext}`,
           }}
-          onBeforeInit={(swiper) => {
-            if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
-              swiper.params.navigation.prevEl = `.${s.buttonPrev}`;
-              swiper.params.navigation.nextEl = `.${s.buttonNext}`;
-            }
-            if (swiper.params.pagination && typeof swiper.params.pagination !== 'boolean') {
-              swiper.params.pagination.el = `.${s.paginationContainer}`;
-            }
-          }}
         >
           {heroBanners.map((banner) => (
             <SwiperSlide key={banner.id}>
@@ -71,7 +62,7 @@ export const MainSlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className={classNames(s.sliderButton, s.buttonNext)}>
+        <button type="button" className={classNames(s.sliderButton, s.buttonNext)}>
           <img src={arrowRight} alt="Next" />
         </button>
       </div>

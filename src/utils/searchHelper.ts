@@ -31,7 +31,7 @@ export function getSearchWith(
       // we delete the key to remove old values
       newParams.delete(key);
 
-      value.forEach(part => {
+      value.forEach((part) => {
         newParams.append(key, part);
       });
     } else {

@@ -3,7 +3,7 @@ import { ProductsPageLayout } from '../../components/ProductsPageLayout/Products
 
 export const PhonesPage = () => (
   <>
-    <Breadcrumbs categoryName='Phones' />
+    <Breadcrumbs categoryName="Phones" />
     <ProductsPageLayout type="phones" pageTitle="Mobile phones" />
   </>
 );

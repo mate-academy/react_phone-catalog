@@ -1,6 +1,66 @@
 @import '../../utils/mixins';
 @import '../../utils/variable';
 
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 24px;
+  margin: 24px 0 56px;
+
+  @include on-tablet {
+    margin: 40px 0 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.errorMessage {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.link {
+  margin-top: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #313237;
+  color: $background-color;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+
+  &:hover {
+    background-color: $gray-main;
+    border-color: $gray-main;
+    transform: translateY(-2px);
+  }
+}
+
+.errorIcon {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  object-fit: contain;
+}
+
 .backButton {
   display: flex;
   align-items: center;
@@ -9,11 +69,12 @@
   gap: 4px;
   background-color: $background-color;
   border: none;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
   cursor: pointer;
+  transition: color $transition-duration;
 
   &:hover {
-    color: rgba(49, 50, 55, 1);
+    color: $active-link-color;
   }
 
   @include on-tablet {
@@ -113,10 +174,14 @@
 .thumbImage {
   width: 52px;
   height: 50px;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid $gray-icons;
 
   &.active {
-    border: 1px solid rgba(49, 50, 55, 1);
+    border: 1px solid $active-link-color;
+  }
+
+  &:hover:not(.active) {
+    border-color: $gray-main;
   }
 }
 
@@ -163,12 +228,16 @@
   width: 32px;
   text-decoration: none;
   border-radius: 50%;
-  outline: 1px solid rgba(226, 230, 233, 1);
+  outline: 1px solid $gray-icons;
   outline-offset: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.2s;
 
   &.active {
-    outline: 1px solid rgba(49, 50, 55, 1);
+    outline-color: $active-link-color;
+  }
+
+  &:hover:not(.active) {
+    outline-color: $gray-secondary;
   }
 }
 
@@ -197,7 +266,7 @@
   padding: 0 8px;
   height: 32px;
   text-decoration: none;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid $gray-secondary;
 
   font-weight: 500;
   font-size: 14px;
@@ -205,12 +274,16 @@
   letter-spacing: 0%;
   text-align: center;
 
-  color: rgba(49, 50, 55, 1);
-  transition: all 0.3s ease;
+  color: $active-link-color;
+  transition: all $transition-duration $transition-timing;
 
   &.active {
-    background-color: rgba(49, 50, 55, 1);
-    color: rgba(255, 255, 255, 1);
+    background-color: $active-link-color;
+    color: $background-color;
+  }
+
+  &:hover:not(.active) {
+    border-color: $active-link-color;
   }
 }
 
@@ -234,7 +307,7 @@
   line-height: 100%;
   letter-spacing: 0%;
   text-decoration: line-through;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
 }
 
 .productButton {
@@ -254,16 +327,23 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
-  color: rgba(255, 255, 255, 1);
+  color: $background-color;
   text-align: center;
   letter-spacing: 0%;
 
-  background-color: rgba(49, 50, 55, 1);
+  background-color: $active-link-color;
 
-  transition: all 0.3s ease;
+  transition: all $transition-duration $transition-timing;
+
   &:hover {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   }
+}
+
+.isInCart {
+  background-color: $background-color;
+  color: rgba(39, 174, 96, 1);
+  border: 1px solid $gray-icons;
 }
 
 .favorites {
@@ -275,11 +355,21 @@
 
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid $gray-secondary;
 
   background-color: $background-color;
 
-  transition: all 0.3s ease;
+  transition: all $transition-duration $transition-timing;
+}
+
+.isFavorite {
+  border: 1px solid $gray-icons;
+
+  transition: all $transition-duration $transition-timing;
+
+  &:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .specsContainer {
@@ -298,11 +388,11 @@
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
-  color: rgba(49, 50, 55, 1);
+  color: $active-link-color;
 }
 
 .propLabel {
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
 }
 
 .prodDescript {
@@ -328,8 +418,8 @@
 }
 
 .sectionTitle {
-  padding: 0 0 16px 0;
-  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  padding: 0 0 16px;
+  border-bottom: 1px solid $gray-icons;
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
@@ -361,7 +451,7 @@
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
 }
 
 .techSpecsContainer {
@@ -392,7 +482,7 @@
 }
 
 .specName {
-  color: rgba(137, 147, 154, 1);
+  color: $gray-main;
 }
 
 .recommendedProducts {

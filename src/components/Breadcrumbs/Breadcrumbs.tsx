@@ -10,12 +10,12 @@ type Props = {
 
 export const Breadcrumbs: React.FC<Props> = ({ categoryName, productName }) => {
   return (
-    <div className={s.navContent}>
+    <nav className={s.navContent} aria-label="Breadcrumb">
       <Link to="/" className={s.navLink}>
         <img className={s.navImg} src={home} alt="home" />
       </Link>
 
-      <div className={s.arrow}>
+      <div className={s.arrow} aria-hidden="true">
         <img className={s.navImg} src={arrow} alt="arrow" />
       </div>
 
@@ -32,6 +32,6 @@ export const Breadcrumbs: React.FC<Props> = ({ categoryName, productName }) => {
           <span className={s.path}>{productName}</span>
         </>
       )}
-    </div>
+    </nav>
   );
 };

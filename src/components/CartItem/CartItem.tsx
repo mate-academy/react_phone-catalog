@@ -13,13 +13,13 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { updateQuantity, removeFromCart } = useCart();
-  const oneItem = item.quantity === 1;
+  const isMinQuantity = item.quantity === 1;
 
   return (
     <div className={s.itemBlock}>
       <div className={s.itemDescription}>
         <button className={s.deleteButton} onClick={() => removeFromCart(item.id)}>
-          <img src={close} alt="close" className={s.closeIcon} />
+          <img src={close} alt="close" className={s.closeIcon} aria-label="Remove from cart" />
         </button>
         <Link className={s.navItem} to={`/product/${item.product.itemId}`}>
           <div className={s.imageWrapper}>
@@ -28,19 +28,22 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <span className={s.itemTitle}>{item.product.name}</span>
         </Link>
       </div>
+
       <div className={s.itemTotal}>
         <div className={s.cartItemQuantity}>
           <button
-            className={classNames(s.quantityButton, { [s.disabled]: oneItem })}
+            className={classNames(s.quantityButton, { [s.disabled]: isMinQuantity })}
             onClick={() => updateQuantity(item.id, -1)}
-            disabled={oneItem}
+            disabled={isMinQuantity}
+            aria-label="Decrease quantity"
           >
             <img src={minus} alt="minus" />
           </button>
-          <span>{item.quantity}</span>
+          <span className={s.quantity}>{item.quantity}</span>
           <button
             className={classNames(s.quantityButton)}
             onClick={() => updateQuantity(item.id, 1)}
+            aria-label="Increase quantity"
           >
             <img src={plus} alt="plus" />
           </button>

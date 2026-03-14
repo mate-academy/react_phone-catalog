@@ -2,10 +2,10 @@
 @import '../../utils/variable';
 
 .content {
-  margin: 24px 0 56px 0;
+  margin: 24px 0 56px;
 
   @include on-tablet {
-    margin: 40px 0 64px 0;
+    margin: 40px 0 64px;
   }
 }
 
@@ -16,11 +16,12 @@
   gap: 4px;
   background-color: $background-color;
   border: none;
-  color: rgba(137, 147, 154, 1);
+  color: $gray-secondary;
   cursor: pointer;
+  transition: color $transition-duration $transition-timing;
 
   &:hover {
-    color: rgba(49, 50, 55, 1);
+    color: $active-link-color;
   }
 }
 
@@ -69,7 +70,7 @@
   justify-content: center;
   align-items: center;
   padding: 24px;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid $gray-icons;
 
   @include on-desktop {
     grid-column: 17/25;
@@ -93,22 +94,33 @@
   line-height: 21px;
   letter-spacing: 0%;
   text-align: center;
-  color: rgba(137, 147, 154, 1);
-  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  color: $gray-main;
+  border-bottom: 1px solid $gray-icons;
 }
 
 .resultButton {
   margin-top: 16px;
   width: 100%;
   height: 48px;
-  background-color: rgba(49, 50, 55, 1);
-  color: rgba(255, 255, 255, 1);
+  background-color: $active-link-color;
+  color: $background-color;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
   text-align: center;
   border: none;
+  cursor: pointer;
+  transition: all $transition-duration $transition-timing;
+
+  &:hover {
+    box-shadow: $shadow-default;
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .emptyImg {

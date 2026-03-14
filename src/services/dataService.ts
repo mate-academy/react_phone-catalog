@@ -1,7 +1,7 @@
 import { Product, Products } from '../types/Product';
 import { getData } from '../utils/httpClient';
 
-const BASE_URL = '/api';
+const BASE_URL = 'https://roma-ivashchenko.github.io/react_phone-catalog/api';
 export const getProducts = () => getData<Products[]>(BASE_URL + '/products.json');
 
 export const getProductByCategory = (category: string) =>
@@ -41,7 +41,7 @@ export const getNewProducts = () =>
     return [...products]
       .sort((a, b) => b.year - a.year)
       .filter((product) => {
-        const modelId = product.itemId.split('-').slice(0, -2).join('-');
+        const modelId = product.itemId.split('-').slice(0, -2).join('-'); // відрізаємо пам'ять і колір
 
         if (seenModels.has(modelId)) {
           return false; // Якщо таку модель вже бачили пропускаємо
