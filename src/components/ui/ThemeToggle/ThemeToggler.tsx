@@ -2,13 +2,13 @@ import { useThemeStore } from '@/store/themeStore';
 import { Sun, Moon } from 'lucide-react';
 import styles from './ThemeToggler.module.scss';
 
-export const ThemeToggler = () => {
+export const ThemeToggler = ({ className = '' }: { className?: string }) => {
   const { theme, toggleTheme } = useThemeStore();
 
   return (
     <button
       onClick={toggleTheme}
-      className={styles.controlBtn}
+      className={`${styles.controlBtn} ${className}`}
       title="Toggle Theme"
     >
       {theme === 'light' ? (

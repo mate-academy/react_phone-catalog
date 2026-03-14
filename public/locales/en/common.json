@@ -4,5 +4,15 @@
     "phones": "PHONES",
     "tablets": "TABLETS",
     "accessories": "ACCESSORIES"
+  },
+
+  "footer": {
+    "github": "GITHUB",
+    "contacts": "CONTACTS",
+    "rights": "RIGHTS"
+  },
+  
+  "btt": {
+    "back": "BACK TO TOP"
   }
 }

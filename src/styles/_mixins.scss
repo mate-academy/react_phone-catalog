@@ -1,1 +1,18 @@
-// not empty 
+@use './variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+// @include respond-to('tablet')
+// @include respond-to('mobile')
+// @include respond-to(900px)

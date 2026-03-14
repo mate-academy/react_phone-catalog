@@ -1,7 +1,14 @@
 @use './theme' as *;
 
+$breakpoints: (
+  'desktop': 1200px,
+  'tablet': 640px,
+  'mobile': 320px,
+);
+
 $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
 $border-color: var(--border-color);
+$border-icons: var(--border-icons);
 $bg-color-body: var(--bg-color-body);
 $bg-color-hover: var(--bg-color-hover);

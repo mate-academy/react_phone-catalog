@@ -4,5 +4,15 @@
     "phones": "ТЕЛЕФОНИ",
     "tablets": "ПЛАНШЕТИ",
     "accessories": "АКСЕСУАРИ"
+  },
+
+  "footer": {
+    "github": "GITHUB",
+    "contacts": "КОНТАКТИ",
+    "rights": "ПРАВА"
+  },
+
+  "btt": {
+    "back": "НАГОРУ"
   }
 }

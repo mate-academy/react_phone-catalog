@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { LangSwitcher } from '@/components/ui/LanguageSwitcher';
 import { Logo } from '@/components/ui/Logo/Logo';
 import { ThemeToggler } from '@/components/ui/ThemeToggle';
-import { Heart, ShoppingBag } from 'lucide-react';
+import { Heart, Menu, ShoppingBag } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { MobileMenu } from '@/components/layout/MobileMenu';
+import { useEffect, useState } from 'react';
 // import { useCartStore } from '@/store/cartStore';
 
-const NAV_ITEMS = [
+export const NAV_ITEMS = [
   { key: 'nav.home', href: '/' },
   { key: 'nav.phones', href: '/phones' },
   { key: 'nav.tablets', href: '/tablets' },
@@ -15,9 +17,14 @@ const NAV_ITEMS = [
 ];
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation('common');
   // const cartCount = useCartStore(state => state.cartItems.length);
   // const favCount = useFavoritesStore((state) => state.favorites.length);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
+  }, [isMenuOpen]);
 
   return (
     <header className={styles.header}>
@@ -65,7 +72,18 @@ export const Header = () => {
           <ShoppingBag size={16} strokeWidth={1.5} />
           {/* {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>} */}
         </NavLink>
+        <button
+          className={styles.burgerBtn}
+          onClick={() => setIsMenuOpen(true)}
+        >
+          <Menu size={24} strokeWidth={1.5} />
+        </button>
       </div>
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        navItems={NAV_ITEMS}
+      />
     </header>
   );
 };

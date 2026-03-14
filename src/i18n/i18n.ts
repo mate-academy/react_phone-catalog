@@ -9,6 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'uk',
+    keySeparator: '.',
     debug: true,
 
     interpolation: {
