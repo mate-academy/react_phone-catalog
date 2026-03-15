@@ -15,7 +15,10 @@ export const ItemsOnPage = () => {
   }
 
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchWith({ perPage: +e.target.value });
+    setSearchWith({
+      perPage: +e.target.value,
+      page: 1,
+    });
   };
 
   return (

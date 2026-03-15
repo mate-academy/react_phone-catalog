@@ -63,7 +63,12 @@ export const CartProd: React.FC<CartProductProps> = ({ product }) => {
           >
             <img src={product.image} alt={product.name} />
           </Link>
-          <h3 className={styles.cartItemName}>{product.name}</h3>
+          <Link
+            to={`/${product.category}/${product.itemId}`}
+            className={styles.cartItemName}
+          >
+            {product.name}
+          </Link>
         </div>
 
         <div className={styles.priceQuantityWrapper}>

@@ -12,7 +12,7 @@ const Cart: React.FC = () => {
   const navigate = useNavigate();
 
   const totalPrice = cart.reduce(
-    (total, item) => total + item.quantity * item.fullPrice,
+    (total, item) => total + item.quantity * item.price,
     0,
   );
 

@@ -6,7 +6,6 @@ import React, {
   useReducer,
 } from 'react';
 import { Product } from '../types/Product';
-import { PerPageOption, SortOrder } from '../types/Sort';
 import { getProducts } from '../api/products';
 import { CartProducts } from '../types/CartProduct';
 
@@ -19,19 +18,13 @@ type State = {
   errorMessage: string;
   cart: CartProducts[];
   favorites: Product[];
-  page: number;
-  perPage: PerPageOption;
   isLoading: boolean;
-  sortOrder: SortOrder;
 };
 
 type ProductsContextType = State & {
   setProducts: (payload: Product[]) => void;
   setErrorMessage: (payload: string) => void;
-  setPage: (payload: number) => void;
-  setPerPage: (payload: PerPageOption) => void;
   setLoading: (payload: boolean) => void;
-  setOrder: (payload: SortOrder) => void;
   SetAddToCart: (product: CartProducts) => void;
   SetRemoveFromCart: (id: string) => void;
   SetUpdateQuantity: (id: string, quantity: number) => void;
@@ -43,10 +36,7 @@ type ProductsContextType = State & {
 type Action =
   | { type: 'SET_PRODUCTS'; payload: Product[] }
   | { type: 'SET_ERROR_MESSAGE'; payload: string }
-  | { type: 'SET_PAGE'; payload: number }
-  | { type: 'SET_PER_PAGE'; payload: PerPageOption }
   | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'SET_ORDER'; payload: SortOrder }
   | { type: 'SET_ADD_TO_CART'; product: CartProducts }
   | { type: 'SET_REMOVE_FROM_CART'; id: string }
   | { type: 'SET_UPDATE_QUANTITY'; id: string; quantity: number }
@@ -59,16 +49,10 @@ export const ProductsContext = createContext<ProductsContextType>({
   products: [],
   favorites: [],
   errorMessage: '',
-  page: 1,
-  perPage: PerPageOption.Four,
   isLoading: false,
-  sortOrder: SortOrder.Newest,
   setProducts: () => {},
   setErrorMessage: () => {},
-  setPage: () => {},
-  setPerPage: () => {},
   setLoading: () => {},
-  setOrder: () => {},
   SetAddToCart: () => {},
   SetRemoveFromCart: () => {},
   SetUpdateQuantity: () => {},
@@ -82,24 +66,17 @@ const initialState: State = {
   favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
   products: [],
   errorMessage: '',
-  page: 1,
-  perPage: PerPageOption.Four,
   isLoading: false,
-  sortOrder: SortOrder.Newest,
 };
 
 const productsReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SET_PRODUCTS':
       return { ...state, products: action.payload };
-    case 'SET_ORDER':
-      return { ...state, sortOrder: action.payload };
+
     case 'SET_ERROR_MESSAGE':
       return { ...state, errorMessage: action.payload };
-    case 'SET_PAGE':
-      return { ...state, page: action.payload };
-    case 'SET_PER_PAGE':
-      return { ...state, perPage: action.payload };
+
     case 'SET_LOADING':
       return { ...state, isLoading: action.payload };
     case 'SET_CLEAR_CART': {
@@ -191,20 +168,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: 'SET_ERROR_MESSAGE', payload: newErrorMessage });
   };
 
-  const setPage = (newPage: number) => {
-    dispatch({ type: 'SET_PAGE', payload: newPage });
-  };
-
-  const setPerPage = (newPerPage: PerPageOption) => {
-    dispatch({ type: 'SET_PER_PAGE', payload: newPerPage });
-  };
-
   const setLoading = (newIsLoading: boolean) => {
     dispatch({ type: 'SET_LOADING', payload: newIsLoading });
-  };
-
-  const setOrder = (newSort: SortOrder) => {
-    dispatch({ type: 'SET_ORDER', payload: newSort });
   };
 
   const SetClearCart = () => {
@@ -244,10 +209,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       ...state,
       setProducts,
       setErrorMessage,
-      setPage,
-      setPerPage,
       setLoading,
-      setOrder,
       SetAddToCart,
       SetRemoveFromCart,
       SetUpdateQuantity,

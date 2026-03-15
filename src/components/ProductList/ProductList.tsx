@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import { ProductsContext } from '../../store/ProductsContext';
+import React, { useMemo } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
 import styles from './ProductList.module.scss';
@@ -9,40 +8,43 @@ import { Pagination } from '../UI/Pagination';
 
 interface ProductListProps {
   filteredProducts: Product[];
-  category: string;
 }
 
 export const ProductList: React.FC<ProductListProps> = ({
   filteredProducts,
 }) => {
-  const { page, setPage } = useContext(ProductsContext);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
-
+  const page = +(searchParams.get('page') || 1);
   const perPage = +(searchParams.get('perPage') || PerPageOption.Sixteen);
-
-  useEffect(() => {
-    setPage(1);
-  }, [perPage]);
 
   const totalPages =
     perPage === PerPageOption.All
       ? 1
       : Math.ceil(filteredProducts.length / perPage);
 
-  const visibleProducts =
-    perPage === PerPageOption.All
-      ? filteredProducts
-      : filteredProducts.slice((page - 1) * perPage, page * perPage);
+  const visibleProducts = useMemo(() => {
+    if (perPage === PerPageOption.All) {
+      return filteredProducts;
+    }
+
+    const start = (page - 1) * perPage;
+
+    return filteredProducts.slice(start, start + perPage);
+  }, [filteredProducts, page, perPage]);
+
+  const handlePageChange = (newPage: number) => {
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      page: newPage.toString(),
+    });
+  };
 
   return (
     <div className={styles.phonesContainer}>
       {visibleProducts.length > 0 ? (
         <div className={styles.phonesWrapper}>
-          {visibleProducts.map((product: Product) => (
+          {visibleProducts.map(product => (
             <ProductCard
               key={product.id}
               product={product}
