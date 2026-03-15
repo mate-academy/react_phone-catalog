@@ -1,15 +1,19 @@
 .content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   gap: 16px;
-  justify-content: center;
+  justify-content: start;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+}
 
-  @include respond-to(mobile) {
-    grid-template-columns: repeat(auto-fit, 272px);
+@include respond-to(tablet) {
+  .content {
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
   }
+}
 
-  @include respond-to(desktop) {
-    grid-template-columns: repeat(4, 272px);
+@include respond-to(desktop) {
+  .content {
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
   }
 }
 
@@ -63,11 +67,18 @@
   color: $color-light;
   font-size: 14px;
   font-weight: 700;
-  padding: 0 12px;
-  padding-right: 35px;
-  appearance: none;
 
+  padding: 0 12px;
+  padding-right: 36px;
+
+  appearance: none;
   cursor: pointer;
+
+  background-image: url('../../assets/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+
   transition: border-color 0.3s ease;
 
   &:hover {
@@ -78,18 +89,8 @@
     outline: none;
     border-color: $color-lila;
     box-shadow: 0 0 0 1px $color-lila;
-  }
 
-  option {
-    background-color: $color-card;
-    color: $color-light;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 12px;
-  }
-
-  @include respond-to(tablet) {
-    width: 187px;
+    background-image: url('../../assets/icons/arrow-up.svg');
   }
 }
 

@@ -148,8 +148,11 @@ const ProductsList: React.FC<Props> = ({ title, fetchProducts, text }) => {
             id="sort_type"
             className={styles.sort_select}
             value={sortType}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onChange={e => handleSortChange(e.target.value as any)}
+            onChange={e => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              handleSortChange(e.target.value as any);
+              e.target.blur();
+            }}
           >
             <option value="Newest">Newest</option>
             <option value="Alphabetically">Alphabetically</option>
@@ -170,6 +173,7 @@ const ProductsList: React.FC<Props> = ({ title, fetchProducts, text }) => {
               const newPerPage = value === 'all' ? 'all' : Number(value);
 
               handlePerPageChange(newPerPage);
+              e.target.blur();
             }}
           >
             <option value="4">4</option>
