@@ -1,0 +1,87 @@
+@use '../../../styles/mixins' as *;
+
+.wrapper {
+  margin: 0 -16px;
+
+  @include tablet {
+    margin: 0;
+  }
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.arrowLeft,
+.arrowRight {
+  display: none;
+  flex-shrink: 0;
+  width: 32px;
+  align-self: stretch;
+  border: 1px solid var(--color-elements);
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+  background: var(--color-bg);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  @include tablet {
+    display: flex;
+  }
+}
+
+.imageWrapper {
+  flex: 1;
+  overflow: hidden;
+}
+
+.imagesRow {
+  display: flex;
+  transition: transform 0.8s ease;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+
+  @include tablet {
+    height: 400px;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dot,
+.dotActive {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.dot {
+  background-color: var(--color-elements);
+}
+
+.dotActive {
+  background-color: var(--color-primary);
+}
