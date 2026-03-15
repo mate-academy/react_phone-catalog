@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export interface CartItem {
-  id: number;
+  id: string;
   quantity: number;
 }
 
@@ -16,33 +16,29 @@ export const useCart = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (productId: number) => {
+  const addToCart = (productId: string) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === productId);
 
       if (existing) {
-        return prev.map(item =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        );
+        return prev;
       }
 
       return [...prev, { id: productId, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (productId: number) => {
+  const removeFromCart = (productId: string) => {
     setCart(prev => prev.filter(item => item.id !== productId));
   };
 
-  const updateQuantity = (productId: number, delta: number) => {
+  const updateQuantity = (productId: string, delta: number) => {
     setCart(prev =>
       prev.map(item => {
         if (item.id === productId) {
           const newQty = item.quantity + delta;
 
-          return { ...item, quantity: Math.max(1, newQty) };
+          return { ...item, quantity: Math.max(1, Math.min(newQty, 99)) };
         }
 
         return item;
@@ -50,5 +46,7 @@ export const useCart = () => {
     );
   };
 
-  return { cart, addToCart, removeFromCart, updateQuantity };
+  const clearCart = () => setCart([]);
+
+  return { cart, addToCart, removeFromCart, updateQuantity, clearCart };
 };

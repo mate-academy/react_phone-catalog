@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './Pagination.module.scss';
 import { ArrowUpIcon } from '../Icons';
+import { usePagination } from './usePagination';
 
 interface Props {
   total: number;
@@ -14,50 +15,63 @@ export const Pagination: React.FC<Props> = ({
   current,
   onPageChange,
 }) => {
-  const pages = Array.from({ length: total }, (_, i) => i + 1);
+  const { pages, isHidden, isFirstPage, isLastPage, handlePrev, handleNext } =
+    usePagination(total, current, onPageChange);
+
+  if (isHidden) {
+    return null;
+  }
 
   return (
-    <ul className={styles.pagination}>
-      <li className={styles.item}>
-        <button
-          className={classNames(styles.button, styles.arrow, {
-            [styles.disabled]: current === 1,
-          })}
-          onClick={() => onPageChange(current - 1)}
-          disabled={current === 1}
-        >
-          <span className="icon icon--left">
-            <ArrowUpIcon />
-          </span>
-        </button>
-      </li>
-
-      {pages.map(page => (
-        <li key={page} className={styles.item}>
+    <nav className={styles.container} aria-label="Page navigation">
+      <ul className={styles.pagination}>
+        <li className={styles.item}>
           <button
-            className={classNames(styles.button, {
-              [styles.active]: page === current,
+            type="button"
+            className={classNames(styles.button, styles.arrow, {
+              [styles.disabled]: isFirstPage,
             })}
-            onClick={() => onPageChange(page)}
+            onClick={handlePrev}
+            disabled={isFirstPage}
+            aria-label="Previous page"
           >
-            {page}
+            <span className="icon icon--left">
+              <ArrowUpIcon />
+            </span>
           </button>
         </li>
-      ))}
 
-      <li className={styles.item}>
-        <button
-          className={classNames(styles.button, styles.arrow, {
-            [styles.disabled]: current === total,
-          })}
-          onClick={() => onPageChange(current + 1)}
-          disabled={current === total}
-        >
-          <span className="icon icon--right">
-            <ArrowUpIcon />
-          </span>
-        </button>
-      </li>
-    </ul>
+        {pages.map(page => (
+          <li key={page} className={styles.item}>
+            <button
+              type="button"
+              className={classNames(styles.button, {
+                [styles.active]: page === current,
+              })}
+              onClick={() => onPageChange(page)}
+              aria-current={page === current ? 'page' : undefined}
+            >
+              {page}
+            </button>
+          </li>
+        ))}
+
+        <li className={styles.item}>
+          <button
+            type="button"
+            className={classNames(styles.button, styles.arrow, {
+              [styles.disabled]: isLastPage,
+            })}
+            onClick={handleNext}
+            disabled={isLastPage}
+            aria-label="Next page"
+          >
+            <span className="icon icon--right">
+              <ArrowUpIcon />
+            </span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };

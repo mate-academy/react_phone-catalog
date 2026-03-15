@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './AppLayout.module.scss';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
@@ -17,23 +17,44 @@ export const AppLayout: React.FC<Props> = ({ categories, products }) => {
   const { favorites, toggleFavorite } = useFavorites();
   const { cart, addToCart, removeFromCart, updateQuantity } = useCart();
 
+  const favoritesCount = favorites.length;
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const contextValue = useMemo(
+    () => ({
+      categories,
+      products,
+      favorites,
+      toggleFavorite,
+      cart,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+    }),
+    [
+      categories,
+      products,
+      favorites,
+      toggleFavorite,
+      cart,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+    ],
+  );
+
   return (
     <div className={styles.layout}>
-      <Header categories={categories} />
+      <Header
+        categories={categories}
+        favoritesCount={favoritesCount}
+        cartCount={cartCount}
+      />
+
       <main className={styles.main}>
-        <Outlet
-          context={{
-            categories,
-            products,
-            favorites,
-            toggleFavorite,
-            cart,
-            addToCart,
-            removeFromCart,
-            updateQuantity,
-          }}
-        />
+        <Outlet context={contextValue} />
       </main>
+
       <Footer />
     </div>
   );

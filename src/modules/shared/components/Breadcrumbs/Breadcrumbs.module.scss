@@ -3,31 +3,49 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
-  font-size: 12px;
-  font-weight: 700;
+  padding-top: 24px;
 }
 
 .homeLink {
   display: flex;
   align-items: center;
+  color: #313237;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-.homeIcon {
-  width: 16px;
-  height: 16px;
+.separator {
+  display: flex;
+  align-items: center;
+  color: #B4BDC3;
+
+  :global(.icon) {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    display: flex;
+  }
 }
 
 .link {
-  color: #313237;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
   text-decoration: none;
   transition: color 0.2s;
 
   &:hover {
-    color: #000;
+    color: #313237;
   }
 }
 
 .current {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
   color: #89939A;
-  cursor: default;
 }

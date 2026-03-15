@@ -7,17 +7,24 @@ import { Category } from '../../../../types/Category';
 
 interface Props {
   categories: Category[];
+  favoritesCount: number;
+  cartCount: number;
 }
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.nav__link, { [styles.active]: isActive });
 
-export const Header: React.FC<Props> = ({ categories }) => {
+export const Header: React.FC<Props> = ({
+  categories,
+  favoritesCount,
+  cartCount,
+}) => {
   const navLinks = [
-    { title: 'Home', path: '/' },
+    { title: 'Home', path: '/', isEnd: true },
     ...categories.map(c => ({
       title: c.navTitle || c.title,
       path: c.path,
+      isEnd: false,
     })),
   ];
 
@@ -30,8 +37,13 @@ export const Header: React.FC<Props> = ({ categories }) => {
           </NavLink>
 
           <nav className={styles.nav}>
-            {navLinks.map(({ title, path }) => (
-              <NavLink key={path} to={path} className={getNavLinkClass}>
+            {navLinks.map(({ title, path, isEnd }) => (
+              <NavLink
+                key={path}
+                to={path}
+                end={isEnd}
+                className={getNavLinkClass}
+              >
                 {title}
               </NavLink>
             ))}
@@ -46,6 +58,9 @@ export const Header: React.FC<Props> = ({ categories }) => {
             }
           >
             <HeartIcon />
+            {favoritesCount > 0 && (
+              <span className={styles.badge}>{favoritesCount}</span>
+            )}
           </NavLink>
 
           <NavLink
@@ -55,6 +70,7 @@ export const Header: React.FC<Props> = ({ categories }) => {
             }
           >
             <CartIcon />
+            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </div>
       </div>

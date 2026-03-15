@@ -4,7 +4,6 @@ export interface Category {
   navTitle?: string;
   img: string;
   path: string;
-  count: number;
   banner: string;
   bannerAlt: string;
 }

@@ -2,24 +2,22 @@ import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import styles from './CategoryGrid.module.scss';
 import { CategoryCard } from '../CategoryCard';
-import { Category } from '../../../../types/Category';
+import { ContextProps } from '../../../../types/ContextProps';
 
 export const CategoryGrid: React.FC = () => {
-  const { categories } = useOutletContext<{ categories: Category[] }>();
+  const { categories } = useOutletContext<ContextProps>();
 
   return (
-    <div className={styles.categoryGrid}>
-      {categories.map(({ id, title, path, img, count }) => {
-        return (
-          <CategoryCard
-            key={id}
-            title={title}
-            img={img}
-            count={count}
-            path={path}
-          />
-        );
-      })}
-    </div>
+    <section className={styles.categoryGrid}>
+      {categories.map(({ id, title, path, img, count }) => (
+        <CategoryCard
+          key={id}
+          title={title}
+          img={img}
+          count={count}
+          path={path}
+        />
+      ))}
+    </section>
   );
 };

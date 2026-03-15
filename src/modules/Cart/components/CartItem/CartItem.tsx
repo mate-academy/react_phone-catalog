@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link, useOutletContext } from 'react-router-dom';
+import classNames from 'classnames';
 import styles from './CartItem.module.scss';
 import { ContextProps } from '../../../../types/ContextProps';
-import { useOutletContext } from 'react-router-dom';
 import { CartItemType } from '../../../../types/CartItem';
+import { ArrowUpIcon } from '../../../shared/components/Icons';
 
 interface Props {
   product: CartItemType;
@@ -11,45 +13,53 @@ interface Props {
 export const CartItem: React.FC<Props> = ({ product }) => {
   const { updateQuantity, removeFromCart } = useOutletContext<ContextProps>();
 
-  const actualPrice = product.price || product.fullPrice;
+  const { itemId, name, image, quantity, price, fullPrice } = product;
+
+  const actualPrice = price || fullPrice;
+  const itemTotalPrice = actualPrice * quantity;
 
   return (
     <div className={styles.cartItem}>
       <button
         className={styles.removeBtn}
-        onClick={() => removeFromCart(product.itemId)}
+        onClick={() => removeFromCart(itemId)}
+        aria-label="Remove from cart"
       >
-        x
+        <ArrowUpIcon />
       </button>
 
-      <div className={styles.imageBox}>
-        <img src={product.image} alt={product.name} />
-      </div>
+      <Link to={`/product/${itemId}`} className={styles.imageBox}>
+        <img src={image} alt={name} />
+      </Link>
 
-      <h3 className={styles.name}>{product.name}</h3>
+      <Link to={`/product/${itemId}`} className={styles.nameLink}>
+        <h3 className={styles.name}>{name}</h3>
+      </Link>
 
       <div className={styles.controls}>
         <button
-          onClick={() => updateQuantity(product.itemId, -1)}
-          disabled={product.quantity <= 1}
-          className={styles.controlBtn}
+          onClick={() => updateQuantity(itemId, -1)}
+          disabled={quantity <= 1}
+          className={classNames(styles.controlBtn, {
+            [styles.disabledBtn]: quantity <= 1,
+          })}
+          aria-label="Decrease quantity"
         >
-          -
+          <ArrowUpIcon />
         </button>
 
-        <span className={styles.quantity}>{product.quantity}</span>
+        <span className={styles.quantity}>{quantity}</span>
 
         <button
-          onClick={() => updateQuantity(product.itemId, 1)}
+          onClick={() => updateQuantity(itemId, 1)}
           className={styles.controlBtn}
+          aria-label="Increase quantity"
         >
-          +
+          <ArrowUpIcon />
         </button>
       </div>
 
-      <span className={styles.price}>
-        ${(actualPrice * product.quantity).toFixed(2)}
-      </span>
+      <span className={styles.price}>${itemTotalPrice}</span>
     </div>
   );
 };

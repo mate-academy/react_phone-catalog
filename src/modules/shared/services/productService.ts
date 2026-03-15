@@ -1,11 +1,13 @@
 import { Category } from '../../../types/Category';
-// import { Product } from '../../../types/Product';
+import { Product } from '../../../types/Product';
 import { ProductDetails } from '../../../types/ProductDetails';
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-export const getProducts = async () => {
-  const response = await fetch(`${import.meta.env.BASE_URL}/api/products.json`);
+const BASE_PATH = import.meta.env.BASE_URL;
+
+export const getProducts = async (): Promise<Product[]> => {
+  const response = await fetch(`${BASE_PATH}/api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch products');
@@ -19,9 +21,7 @@ export const getProducts = async () => {
 };
 
 export const getCategories = async (): Promise<Category[]> => {
-  const response = await fetch(
-    `${import.meta.env.BASE_URL}/api/categories.json`,
-  );
+  const response = await fetch(`${BASE_PATH}/api/categories.json`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch categories');
@@ -37,7 +37,7 @@ export const getProductById = async (
 
   try {
     for (const category of categories) {
-      const response = await fetch(`api/${category}.json`);
+      const response = await fetch(`${BASE_PATH}/api/${category}.json`);
 
       if (!response.ok) {
         continue;
@@ -50,7 +50,11 @@ export const getProductById = async (
         return found;
       }
     }
-  } catch (error) {}
 
-  throw new Error('Product not found');
+    return null;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('API Error:', error);
+    throw new Error('Network error or invalid JSON');
+  }
 };

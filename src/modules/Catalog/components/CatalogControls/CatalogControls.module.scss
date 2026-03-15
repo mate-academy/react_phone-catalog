@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.sortSelect {
+  min-width: 176px;
+}
+
+.perPageSelect {
+  min-width: 128px;
+}

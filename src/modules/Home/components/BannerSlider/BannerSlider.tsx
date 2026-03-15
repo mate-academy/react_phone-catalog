@@ -1,43 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './BannerSlider.module.scss';
 import { ArrowUpIcon } from '../../../shared/components/Icons';
+import { useBannerSlider } from './useBannerSlider';
 
 interface Props {
   banners: { img: string; link: string; alt: string }[];
 }
 
 export const BannerSlider: React.FC<Props> = ({ banners }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % banners.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex(prev => (prev - 1 + banners.length) % banners.length);
-  };
-
-  useEffect(() => {
-    if (banners.length === 0) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % banners.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [banners.length]);
+  const { currentIndex, setCurrentIndex, handleNext, handlePrev } =
+    useBannerSlider(banners.length);
 
   return (
     <div className={styles.slider}>
       <button
         className={classNames(styles.button, styles.buttonPrev)}
         onClick={handlePrev}
+        aria-label="Previous slide"
       >
-        <ArrowUpIcon className={styles.icon} />
+        <span className="icon icon--left">
+          <ArrowUpIcon className={styles.icon} />
+        </span>
       </button>
 
       <div className={styles.window}>
@@ -60,18 +45,22 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
       <button
         className={classNames(styles.button, styles.buttonNext)}
         onClick={handleNext}
+        aria-label="Next slide"
       >
-        <ArrowUpIcon className={styles.icon} />
+        <span className="icon icon--right">
+          <ArrowUpIcon className={styles.icon} />
+        </span>
       </button>
 
       <div className={styles.dots}>
-        {banners.map((_, index) => (
+        {banners.map((banner, index) => (
           <button
-            key={index}
+            key={banner.img}
             className={classNames(styles.dot, {
               [styles.dotActive]: index === currentIndex,
             })}
             onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

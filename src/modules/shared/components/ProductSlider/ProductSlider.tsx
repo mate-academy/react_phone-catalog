@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from './ProductSlider.module.scss';
 import { Product } from '../../../../types/Product';
+import { SectionTitle } from '../SectionTitle';
 
 interface Props {
   title: string;
@@ -23,7 +24,7 @@ export const ProductSlider: React.FC<Props> = ({
   return (
     <section className={styles.sliderContainer}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
+        <SectionTitle>{title}</SectionTitle>
         <div className={styles.navigation}>
           <button id="prev-btn" className={styles.navBtn}>
             <ArrowUpIcon className={styles.prevIcon} />

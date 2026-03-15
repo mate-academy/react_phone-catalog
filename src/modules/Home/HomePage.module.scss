@@ -1,25 +1,27 @@
 .homePage {
-  padding-bottom: 80px;
-}
-
-.section {
-  margin-top: 80px;
-
-  &:first-of-type {
-    margin-top: 32px;
-  }
+  padding: 32px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .mainTitle {
-  font-size: 48px;
-  font-weight: 800;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
   letter-spacing: -0.01em;
-  margin-bottom: 32px;
   color: #313237;
+  margin-bottom: 32px;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 
-.sectionTitle {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 24px;
+.section {
+  margin-bottom: 72px;
+
+  @media (max-width: 640px) {
+    margin-bottom: 56px;
+  }
 }

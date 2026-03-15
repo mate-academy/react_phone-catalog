@@ -28,3 +28,52 @@ body, html {
     transform: rotate(90deg);
   }
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-initial-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
+  gap: 24px;
+  background-color: #FAFBFB;
+}
+
+.error-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.reload-button {
+  padding: 12px 24px;
+  background-color: #313237;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -12,37 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 100vh;
 
   h2 {
     color: #89939a;
     font-weight: 700;
-  }
-}
-
-.backButton {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 24px 0;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  color: #89939a;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #313237;
-  }
-
-  .icon {
-    display: flex;
-    transform: rotate(-90deg);
   }
 }
 

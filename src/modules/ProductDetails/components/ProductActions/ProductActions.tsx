@@ -11,14 +11,19 @@ interface Props {
 }
 
 export const ProductActions: React.FC<Props> = ({ product, baseId }) => {
+  const { priceDiscount, priceRegular } = product;
+  const hasDiscount = priceDiscount < priceRegular;
+
   return (
     <div className={styles.container}>
       <div className={styles.mainContent}>
         <ProductConfig product={product} />
 
         <div className={styles.priceBlock}>
-          <span className={styles.priceDiscount}>${product.priceDiscount}</span>
-          <span className={styles.priceRegular}>${product.priceRegular}</span>
+          <span className={styles.priceDiscount}>${priceDiscount}</span>
+          {hasDiscount && (
+            <span className={styles.priceRegular}>${priceRegular}</span>
+          )}
         </div>
 
         <div className={styles.buttonsRow}>
@@ -26,9 +31,7 @@ export const ProductActions: React.FC<Props> = ({ product, baseId }) => {
         </div>
 
         <div className={styles.shortSpecs}>
-          <div className={styles.shortSpecs}>
-            <TechSpecs product={product} variant="short" />
-          </div>
+          <TechSpecs product={product} variant="short" />
         </div>
       </div>
 

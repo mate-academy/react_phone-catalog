@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 128px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  background: #fff;
+  border: 1px solid #E2E6E9;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  color: #313237;
+  transition: border-color 0.2s;
+
+  &:hover { border-color: #B4BDC3; }
+  &:focus { border-color: #313237; }
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  display: flex;
+  color: #89939A;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

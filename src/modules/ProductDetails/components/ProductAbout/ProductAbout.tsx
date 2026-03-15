@@ -7,11 +7,11 @@ interface Props {
 
 export const ProductAbout: React.FC<Props> = ({ description }) => {
   return (
-    <div className={styles.productAbout}>
+    <section className={styles.productAbout}>
       <h2 className={styles.title}>About</h2>
 
-      {description.map((desc, index) => (
-        <div key={index} className={styles.productDescription}>
+      {description.map(desc => (
+        <article key={desc.title} className={styles.productDescription}>
           <h3 className={styles.subtitle}>{desc.title}</h3>
 
           {desc.text.map((paragraph, idx) => (
@@ -19,8 +19,8 @@ export const ProductAbout: React.FC<Props> = ({ description }) => {
               {paragraph}
             </p>
           ))}
-        </div>
+        </article>
       ))}
-    </div>
+    </section>
   );
 };
