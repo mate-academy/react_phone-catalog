@@ -105,6 +105,8 @@
   height: 80px;
   object-fit: contain;
   flex-shrink: 0;
+  cursor: pointer;
+
 }
 
 .name {
@@ -114,6 +116,7 @@
   font-weight: 600;
   line-height: 150%;
   color: var(--color-primary);
+  cursor: pointer;
 }
 
 .quantityBlock {

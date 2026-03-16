@@ -32,7 +32,7 @@ export const CartPage = () => {
 
       <h1 className={styles.title}>Cart</h1>
 
-      {cartItems.length === 0 && <p>Cart is empty</p>}
+      {cartItems.length === 0 && <p>Your cart is empty</p>}
 
       {cartItems.length > 0 && (
         <div className={styles.page}>
@@ -50,9 +50,16 @@ export const CartPage = () => {
                   src={`${item.product.image}`}
                   alt=""
                   className={styles.image}
+                  onClick={() => navigate(`/${item.product.category}/${item.product.itemId}`)}
                 />
 
-                <p className={styles.name}>{item.product.name}</p>
+                <p
+                  className={styles.name}
+                  onClick={() => navigate(`/${item.product.category}/${item.product.itemId}`)}
+                  
+                >
+                  {item.product.name}
+                </p>
 
                 <div className={styles.quantityBlock}>
                   <button
