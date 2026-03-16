@@ -1,5 +1,5 @@
-import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard';
+import { Product } from '../../../../types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './ProductList.module.scss';
 
 type Props = {

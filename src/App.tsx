@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
-import { Main } from './components/Main';
-import { Header } from './components/Header';
+import { Main } from './modules/HomePage/components/Main/Main';
+import { Header } from './modules/shared/components/Header/Header';
 import { Product } from './types/Product';
 
 export const App = () => {

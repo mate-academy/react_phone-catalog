@@ -1,4 +1,4 @@
-@use '../../styles/mixins';
+@use '../../../../styles/mixins';
 
 .layoutGrid {
     @include mixins.grid-columns(4, 1fr, 16px);

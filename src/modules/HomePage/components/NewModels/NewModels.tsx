@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
-import { ProductList } from '../ProductList/ProductList';
+import { Product } from '../../../../types/Product';
+import { ProductList } from '../../../shared/components/ProductList/ProductList';
 import styles from './NewModels.module.scss';
 
 type Props = {

@@ -1,0 +1,76 @@
+@use '../../../../styles/mixins.scss';
+
+.shopByCategory {
+    padding-inline: 16px;
+
+    @include mixins.on-tablet {
+        padding-inline: 24px;
+    }
+
+    @include mixins.on-desktop {
+        padding-inline: 32px;
+    }
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 24px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: rgba(49, 50, 55, 1);
+
+    @include mixins.on-tablet {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+    }
+}
+
+.categoriesList {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include mixins.on-tablet {
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+.shopLink {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.image {
+    display: block;
+}
+
+.name {
+    margin: 0;
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(49, 50, 55, 1);
+
+    @include mixins.on-desktop {
+        font-weight: 600;
+    }
+}
+
+.modelsCount {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+
+    @include mixins.on-desktop {
+        font-weight: 500;
+    }
+}

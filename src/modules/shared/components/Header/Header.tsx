@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.scss';
-import { MobileMenu } from '../MobileMenu';
+import { MobileMenu } from '../MobileMenu/MobileMenu';
 
 type Props = {
   openMenu: boolean;

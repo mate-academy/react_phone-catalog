@@ -1,4 +1,4 @@
-import { Product } from '../../types/Product';
+import { Product } from '../../../../types/Product';
 import styles from './ProductCard.module.scss';
 
 type Props = {

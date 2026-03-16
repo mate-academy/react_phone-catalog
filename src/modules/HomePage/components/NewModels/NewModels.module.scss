@@ -1,15 +1,18 @@
-@use '../../styles/mixins.scss';
+@use '../../../../styles/mixins';
 
 .newModels {
-  padding-top: 56px;
-  padding-bottom: 56px;
+  // padding-top: 56px;
+  // padding-bottom: 56px;
+  margin-block: 56px;
 
   @include mixins.on-tablet {
-    padding-block: 64px;
+    // padding-block: 64px;
+    margin-block: 64px;
   }
 
   @include mixins.on-desktop {
-    padding-block: 80px;
+    // padding-block: 80px;
+    margin-block: 80px;
   }
 }
 

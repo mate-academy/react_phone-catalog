@@ -1,7 +1,5 @@
-// import styles from './Hero.module.scss';
 import styles from './Hero.module.scss';
-// import mainStyles from '../Main/Main.module.scss';
-import mainStyles from '../../../../components/Main/Main.module.scss';
+import mainStyles from '../Main/Main.module.scss';
 
 export const Hero = () => {
   return (
