@@ -11,8 +11,26 @@
     "contacts": "CONTACTS",
     "rights": "RIGHTS"
   },
-  
-  "btt": {
-    "back": "BACK TO TOP"
+
+  "btn": {
+    "back": "Back to top"
+  },
+
+  "banners": {
+    "iphone": {
+      "subtitle": "Now available in our store!"
+    },
+
+    "ipad": {
+      "subtitle": "Supercharged by M2"
+    },
+
+    "watch": {
+      "subtitle": "Smarter. Brighter. Mightier."
+    }
+  },
+
+  "home": {
+    "orderNow": "ORDER NOW"
   }
 }

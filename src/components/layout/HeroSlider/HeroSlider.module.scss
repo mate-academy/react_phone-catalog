@@ -1,0 +1,207 @@
+@use '../../../styles/variables' as *;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.mainControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 400px; // Фіксована висота для всієї секції
+}
+
+.sliderRelativeWrapper {
+  position: relative; // Це база для staticOverlay
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.viewport {
+  height: 100%;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.staticOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; // Поверх слайдів
+  pointer-events: none; // Пропускає кліки на слайдер
+  padding: 40px 60px;
+
+  display: flex;
+  align-items: flex-end; // Розташовуємо картку знизу
+  padding: 40px; // Має збігатися з відступами на слайді
+}
+
+.contentBox,
+.cta {
+  pointer-events: auto; // Повертає клікабельність кнопці
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  // height: 400px;
+  height: 100%;
+  position: relative; // База для абсолютних елементів
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; // Найнижчий шар
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Картинка заповнює все, не втрачаючи пропорцій
+    object-position: center;
+  }
+}
+
+.modelName {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  z-index: 2;
+  margin: 0;
+  color: #fff; // Або $color-primary
+  font-size: 48px;
+  text-align: right;
+  text-transform: uppercase;
+  max-width: 300px;
+}
+
+.contentBox {
+  position: relative;
+  height: 300px;
+  width: 450px;
+  z-index: 6;
+  background-color: #222;
+  border-radius: 20px;
+  padding: 40px; // Внутрішній простір навколо вмісту
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  // backdrop-filter: blur(20px);
+
+  pointer-events: auto; // Повертаємо клікабельність кнопці та тексту
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // Вирівнювання вмісту ліворуч
+  gap: 24px; // Проміжки між елементами
+
+  // Обмеження ширини, щоб відповідати скріну
+  // max-width: 450px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 36px; // Великий жирний шрифт
+  font-weight: 700;
+  line-height: 1.2;
+
+  // СТВОРЕННЯ ГРАДІЄНТУ НА ТЕКСТІ
+  // 1. Задаємо фон-градієнт. Підберіть кольори зі скріна: фіолетовий (#7a3ee0) -> рожевий (#d889ff)
+  background: linear-gradient(90deg, #7a3ee0 0%, #d889ff 100%);
+
+  // 2. Обрізаємо фон за текстом
+  background-clip: text;
+
+  // 3. Робимо сам текст прозорим, щоб показати градієнт
+  -webkit-text-fill-color: transparent;
+}
+
+.cta {
+  margin-top: auto;
+  display: inline-block;
+  background-color: $bg-accent; // Дуже темно-сірий/чорний фон
+  color: #f2f2f2; // Світло-сірий/білий текст
+
+  border-radius: 48px; // Повністю закруглені кути
+  padding: 14px 28px; // Простір всередині кнопки
+
+  text-transform: uppercase; // Великі літери
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+
+  width: fit-content; // Кнопка займає лише необхідне місце
+
+  transition: all 0.2s ease; // Плавний ефект наведення
+
+  &:hover {
+    background-color: #A378FF; // Світліший фон при наведенні
+  }
+}
+
+.navBtn {
+  background: $bg-color-body;
+  border: 1px solid $border-icons;
+  border-radius: 48px;
+  width: 32px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  svg {
+    stroke: $color-primary;
+  }
+
+  &:hover {
+    background: $bg-color-hover;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background: $border-color;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &Active {
+    background: $color-primary;
+  }
+}
+
+.imageWrapper {
+  flex: 1;
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}

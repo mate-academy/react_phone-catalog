@@ -5,10 +5,11 @@ $breakpoints: (
   'tablet': 640px,
   'mobile': 320px,
 );
-
 $color-primary: var(--color-primary);
+$color-primary-invert:var(--color-primary-invert);
 $color-secondary: var(--color-secondary);
 $border-color: var(--border-color);
 $border-icons: var(--border-icons);
 $bg-color-body: var(--bg-color-body);
 $bg-color-hover: var(--bg-color-hover);
+$bg-accent:#905BFF;

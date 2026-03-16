@@ -16,11 +16,15 @@
 
 .navList {
   display: flex;
-  gap: 32px;
+  gap: 64px;
   align-items: center;
   padding: 0;
   height: 100%;
   list-style: none;
+
+  @include respond-to('desktop') {
+    gap: 32px;
+  }
 }
 
 .navItem {
@@ -67,8 +71,14 @@
 .actions {
   margin-left: auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   border-left: 1px solid $border-color;
+
+  @include respond-to('tablet') {
+    border-left: none;
+  }
 }
 
 .actionBtn {
@@ -84,7 +94,7 @@
   transition: background-color 0.2s ease;
   text-decoration: none;
 
-     &::after {
+  &::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -105,12 +115,6 @@
 
   &:hover {
     background-color: $bg-color-hover;
-  }
-}
-
-.burgerBtn {
-  svg {
-    stroke: $color-primary;
   }
 }
 
@@ -138,23 +142,63 @@
 
 nav,
 .actions > *:not(.burgerBtn) {
-  @include respond-to('tablet') {
+  @include respond-to(800px) {
     display: none;
   }
 }
 
 .burgerBtn {
-  display: none; // на десктопі не бачимо
+  display: none;
 
-  @include respond-to('tablet') {
+  @include respond-to(800px) {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 64px;
     height: 64px;
-    border: none;
-    background: none;
     border-left: 1px solid $border-color;
-    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    z-index: 2000;
+    transition: background-color 0.2s ease;
+
+    &::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: $color-primary;
+    border-radius: 5px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
   }
+
+    &:hover {
+      background-color: $bg-color-hover;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.burgerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 24px;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: $color-primary;
+  border-radius: 2px;
 }

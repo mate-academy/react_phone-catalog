@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { LangSwitcher } from '@/components/ui/LanguageSwitcher';
 import { Logo } from '@/components/ui/Logo/Logo';
 import { ThemeToggler } from '@/components/ui/ThemeToggle';
-import { Heart, Menu, ShoppingBag } from 'lucide-react';
+import { Heart, ShoppingBag } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { MobileMenu } from '@/components/layout/MobileMenu';
 import { useEffect, useState } from 'react';
@@ -74,9 +75,27 @@ export const Header = () => {
         </NavLink>
         <button
           className={styles.burgerBtn}
-          onClick={() => setIsMenuOpen(true)}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          <Menu size={24} strokeWidth={1.5} />
+          <div className={styles.burgerBox}>
+            <motion.span
+              className={styles.line}
+              transition={{ duration: 0.4 }}
+              animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+            />
+            <motion.span
+              className={styles.line}
+              transition={{ duration: 0.2 }}
+              animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+            />
+            <motion.span
+              className={styles.line}
+              transition={{ duration: 0.4 }}
+              animate={
+                isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
+              }
+            />
+          </div>
         </button>
       </div>
       <MobileMenu

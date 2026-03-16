@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RouterLayout } from '@/components/layout/RouterLayout';
+import { HomePage } from '@/pages/HomePage';
 
-const HomePage = () => <div>Home Page</div>;
+// const HomePage = () => <div>Home Page</div>;
 const PhonesPage = () => <div>Phones Catalog</div>;
 const TabletsPage = () => <div>Tablets Catalog</div>;
 const AccessoriesPage = () => <div>Accessories Catalog</div>;

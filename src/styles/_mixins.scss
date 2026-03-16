@@ -5,14 +5,13 @@
     @media (max-width: map-get($breakpoints, $breakpoint)) {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     @media (max-width: $breakpoint) {
       @content;
     }
   }
 }
+
 // @include respond-to('tablet')
 // @include respond-to('mobile')
 // @include respond-to(900px)

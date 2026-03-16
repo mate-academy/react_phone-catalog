@@ -1,5 +1,6 @@
 :root {
   --color-primary: #0F0F11;
+  --color-primary-invert:#F1F2F9;
   --color-secondary: #89939A;
   --border-color: #E2E6E9;
   --border-icons:#B4BDC3;
@@ -9,6 +10,7 @@
 
 [data-theme='dark'] {
   --color-primary: #F1F2F9;
+  --color-primary-invert:#0F0F11;
   --color-secondary: #75767F;
   --border-color: #323542;
   --border-icons:#323542;

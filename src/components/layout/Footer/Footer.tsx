@@ -32,7 +32,7 @@ export const Footer = () => {
           </ul>
 
           <button className={styles.backToTop} onClick={scrollToTop}>
-            <span>{t('btt.back')}</span>
+            <span>{t('btn.back')}</span>
             <div className={styles.iconWrap}>
               <ChevronUp size={16} strokeWidth={2} />
             </div>

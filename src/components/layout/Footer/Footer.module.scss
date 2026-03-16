@@ -7,17 +7,39 @@
 }
 
 .inner {
-  height: 64px;
+  height: 96px;
   padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include respond-to(530px) {
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    padding: 32px 16px;
+    gap: 32px;
+  }
 }
 
 .linksList {
   display: flex;
   align-items: center;
   gap: 107px;
+
+  @include respond-to(800px) {
+    gap: 60px;
+  }
+
+  @include respond-to('tablet') {
+    gap: 14px;
+  }
+
+  @include respond-to(530px) {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
 }
 
 .link {
@@ -35,18 +57,17 @@
 }
 
 .backToTop {
+  align-self:center;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 16px;
   font-size: 12px;
   font-weight: 700;
-  text-transform: uppercase;
   color: $color-primary;
   transition: color 0.3s;
 
   span {
     color: $color-secondary;
-    margin-bottom: -3px;
 
     &:hover {
       color: $color-primary;
@@ -55,6 +76,7 @@
 }
 
 .iconWrap {
+  margin-top: -3px;
   width: 32px;
   height: 32px;
   border: 1px solid $border-icons;
@@ -63,8 +85,6 @@
   align-items: center;
   justify-content: center;
   transition: border-color 0.3s;
-
-
 
   &:hover {
     border-color: $color-primary;
