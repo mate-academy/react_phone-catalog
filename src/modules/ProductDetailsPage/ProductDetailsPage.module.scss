@@ -1,0 +1,595 @@
+.container {
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: 1290px) {
+    padding: 0 152px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainGrid {
+  display: grid;
+  width: 100%;
+  margin-top: 40px;
+
+  // 1. СТРУКТУРА ДЛЯ МОБІЛКИ (одна колонка)
+  grid-template-areas:
+    "gallery"
+    "actions"
+    "about"
+    "specs";
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  // 2. СТРУКТУРА ДЛЯ ПЛАНШЕТА (640px+)
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 237px; 
+    grid-template-areas:
+      "gallery actions"
+      "about   about"
+      "specs   specs";
+    column-gap: 32px;
+    row-gap: 64px;
+  }
+
+  // 3. СТРУКТУРА ДЛЯ ДЕСКТОПА (1200px+)
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 400px;
+    grid-template-areas:
+      "gallery actions"
+      "about   specs";
+    column-gap: 64px;
+  }
+}
+
+
+.gallery {
+  grid-area: gallery;
+}
+
+.productActions {
+  position: relative;
+  width: 100%;
+  padding-top: 0;
+}
+
+.about {
+  grid-area: about;
+  max-width: 560px;
+
+  @media (max-width: 1199px) {
+    max-width: 100%;
+  }
+}
+
+.techSpecs {
+  grid-area: specs;
+
+  @media (min-width: 1200px) {
+    padding-top: 0; // На десктопі Specs починаються зверху своєї клітинки
+  }
+}
+
+.gallery {
+  grid-area: gallery;
+}
+
+.productActions {
+  grid-area: actions;
+}
+
+.about {
+  grid-area: about;
+}
+
+.techSpecs {
+  grid-area: specs;
+}
+
+// --- ГАЛЕРЕЯ ---
+.gallery {
+  display: flex;
+  flex-direction: row; // Мініатюри в ряд на мобілці, але в стовпчик на десктопі
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @media (max-width: 639px) {
+    flex-direction: column-reverse; // Мініатюри під фото на мобілці
+  }
+
+  .thumbnails {
+    display: flex;
+    flex-direction: column; // Стовпчик
+    gap: 8px;
+
+    @media (max-width: 639px) {
+      flex-direction: row; // Ряд на мобільних
+      justify-content: center;
+    }
+
+    .thumbWrapper {
+      width: 80px;
+      height: 80px;
+      border: 1px solid #E2E6E9;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &.activeThumb {
+        border-color: #313237;
+      }
+
+      img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .mainImageWrapper {
+    //flex: 1;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 1200px) {
+      width: 464px;
+      height: 464px;
+    }
+
+    .mainImage {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+} 
+
+// --- (Actions) ---
+.productActions {
+  position: relative;
+    width: 100%;
+    padding-top: 0;
+
+  .productId {
+    position: absolute;
+      top: 0;
+      right: 0;
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #B4BDC3;
+      line-height: 15px;
+  }
+
+  .priceBlock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0;
+
+    .priceCurrent {
+      font-size: 32px;
+      font-weight: 800;
+      color: #313237;
+    }
+
+    .priceOld {
+      font-size: 22px;
+      text-decoration: line-through;
+      color: #89939A;
+    }
+  }
+}
+
+.selection,
+.capacity {
+  margin-bottom: 24px;
+
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939A;
+    margin-bottom: 8px;
+  }
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+
+  .colorCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #E2E6E9;
+    cursor: pointer;
+
+    &.activeColor {
+      border-color: #313237;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+
+  .capacityItem {
+    padding: 8px 12px;
+    border: 1px solid #B4BDC3;
+    text-decoration: none;
+    color: #313237;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &.activeCapacity {
+      background-color: #0F0F11;
+      color: #fff;
+      border-color: #0F0F11;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  width: 100%;
+  align-items: center;
+
+
+
+    .addToCart {
+        flex: 1;
+        height: 40px;
+        background-color: #4219D0;
+        color: #ffffff;
+        border: 1px solid transparent;
+        border-radius: 48px;
+        font-family: 'Mont', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.3s;
+        width: 231px;
+
+        @media (min-width: 640px) {
+            width: 180px;
+          }
+        
+          @media (min-width: 1200px) {
+            width: 263px;
+          }
+
+        &:hover {
+          background-color: #552cf0;
+          box-shadow: 0px 4px 12px rgba(66, 25, 208, 0.3);
+        }
+    
+        &.selected {
+          background-color: transparent;
+          color: #4219D0;
+          border: 1px solid #E2E6E9;
+          cursor: default;
+    
+          &:hover {
+            background-color: #FAFBFC;
+            border-color: #B4BDC3;
+          }
+        }
+      }
+
+
+  .favorite {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #B4BDC3;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50% !important;
+    flex-shrink: 0;
+    transition: all 0.2s ease-in-out;
+    padding: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}
+
+
+
+    .addToCart {
+  
+      height: 48px;
+  
+      background: #4219D0;
+  
+      border: none;
+  
+      border-radius: 48px;
+  
+      color: #FFFFFF;
+  
+      font-family: 'Mont', sans-serif;
+  
+      font-weight: 700;
+  
+      font-size: 14px;
+  
+      line-height: 21px;
+  
+      cursor: pointer;
+  
+      display: flex;
+  
+      align-items: center;
+  
+      justify-content: center;
+  
+      transition: background 0.3s;
+  
+      width: 231px; // Мобілка
+    }
+
+
+// --- (About) ---
+.about {
+  .subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    color: #313237;
+  }
+
+  .descriptionSection {
+    margin-bottom: 32px;
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: #313237;
+    }
+
+    p {
+      color: #89939A;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+// --- ТЕХНІЧНІ ХАРАКТЕРИСТИКИ (Tech Specs) ---
+.techSpecs {
+  @media (min-width: 640px) and (max-width: 1199px) {
+      margin-top: 64px;
+      width: 100%;
+    }
+  
+  .subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #313237;
+  }
+
+  .specRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+
+    span:first-child {
+      color: #89939A;
+    }
+
+    span:last-child {
+      font-weight: 600;
+      color: #313237;
+    }
+  }
+}
+
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 24px 0;
+  cursor: pointer;
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #89939A;
+  align-self: flex-start;
+
+  img {
+    width: 16px;
+    height: 16px;
+
+  }
+}
+
+
+.section {
+  width: 100%;
+  margin: 80px 0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 24px;
+    width: 100%;
+    max-width: 1136px;
+  }
+
+  &__title {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #0F0F11;
+
+    @media (max-width: 639px) {
+      font-size: 24px;
+    }
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.arrow_btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+  pointer-events: auto;
+
+  &:hover:not(:disabled) {
+    border-color: #313237;
+    background-color: #f0f0f0;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  @media (min-width: 1201px) {
+    width: 416px;
+  }
+
+
+  a,
+  span {
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  // Стиль для категорій (Phones, etc.)
+  a {
+    font-weight: 700;
+    color: #0F0F11;
+    transition: opacity 0.2s;
+    text-transform: capitalize;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  // Стиль для назви товару (останній елемент)
+  span {
+    font-weight: 600;
+    color: #89939A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; // Щоб довга назва не ламала верстку
+  }
+
+  // Іконки (Home та стрілочки)
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+
+  .arrowIcon {
+    filter: none;
+    width: 6px;
+    height: 10px;
+}
+}
+
+.product_list_container {
+  //width: 100%;
+  overflow: hidden;
+  position: relative;
+  //max-width: calc(272px * 4 + 16px * 3);
+}
+
+.product_list {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  transition: transform 0.5s ease-in-out;  
+  will-change: transform;
+}
+
+.card_home_custom {
+  flex: 0 0 272px;
+
+  @media (max-width: 1199px) and (min-width: 640px) {
+    flex: 0 0 237px;
+  }
+
+  @media (max-width: 639px) {
+    flex: 0 0 212px;
+  }
+}
+

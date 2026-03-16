@@ -1,0 +1,251 @@
+.breadcrumbs,
+h1,
+.modelsCount,
+.dropdowns,
+.productList,
+.paginationWrapper {
+  width: 100%;
+
+  margin-left: 0;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+  margin-bottom: 16px;
+
+  img {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    .homeIcon {
+      width: 13.33px;
+      height: 14.67px;
+    }
+  
+    .arrowIcon {
+      width: 5.33px;
+        height: 9.33px;
+        display: block;
+        transform: rotate(180deg);
+      filter: invert(85%) sepia(9%) saturate(160%) hue-rotate(162deg) brightness(88%) contrast(87%);
+    }
+
+    span:last-child {
+      font-family: 'Mont', sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+
+        line-height: 1;
+        display: flex;
+        align-items: center;
+      
+        color: #89939A;
+        text-transform: capitalize;
+
+        //margin-top: 1px;
+        padding-top: 2px;
+    }
+}
+
+h1 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em; // -1%
+  color: #0F0F11;
+  margin: 24px 0 8px;
+}
+
+.modelsCount {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939A;
+  margin-bottom: 32px;
+}
+
+.container {
+  width: 100%;
+    margin: 0 auto;
+    max-width: 1440px;
+    box-sizing: border-box;
+    padding-inline: 16px;
+    padding-top: 24px;
+  
+    @media (min-width: 640px) {
+      padding-inline: 24px;
+    }
+  
+    @media (min-width: 1200px) {
+      padding-inline: 32px;
+    }
+  
+    @media (min-width: 1268px) {
+      padding-inline: 152px;
+      max-width: 1440px;
+    }
+}
+
+.content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1136px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-width: 287px;
+  
+    // ПЛАНШЕТ (2 колонки)
+    @media (min-width: 640px) {
+      max-width: 590px; // (287 * 2) + 16 gap
+    }
+  
+    // ВЕЛИКИЙ ПЛАНШЕТ (3 колонки)
+    @media (min-width: 768px) {
+      max-width: 719px; // (229 * 3) + (16 * 2) gap
+    }
+  
+    // ДЕСКТОП (4 колонки)
+    @media (min-width: 1200px) {
+      max-width: 1136px; // (272 * 4) + (16 * 3) gap
+    }
+}
+
+// 2. БЛОК СОРТУВАННЯ
+.dropdowns {
+  display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    margin: 0 0 24px;
+    justify-content: flex-start;
+    
+  
+    @media (min-width: 640px) {
+        max-width: 590px;
+      }
+    
+      @media (min-width: 768px) {
+        max-width: 719px;
+      }
+    
+      @media (min-width: 1200px) {
+        max-width: 1136px;
+      }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: auto;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+      &:first-child select {
+        width: 187px;
+      }
+  
+      &:last-child select {
+        width: 136px;
+      }
+    }
+  
+    @media (min-width: 1200px) {
+      &:first-child select {
+        width: 176px;
+      }
+  
+      &:last-child select {
+        width: 128px;
+      }
+    }
+  
+    @media (max-width: 639px) {
+      &:first-child select {
+        width: 136px;
+      }
+  
+      &:last-child select {
+        width: 136px;
+      }
+    }
+
+  label {
+    font-family: 'Mont', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      color: #89939A;
+  }
+
+  select {
+    height: 40px;
+      border: 1px solid #B4BDC3;
+      border-radius: 8px;
+      padding: 0 12px;
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+
+      font-family: 'Mont', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        color: #0F0F11;
+    
+      &:hover {
+        border-color: #313237;
+      }
+  }
+}
+
+.card {
+  display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 287px;
+    height: 506px;
+    background: #ffffff;
+    border: 1px solid #E2E6E9;
+    border-radius: 8px;
+    padding: 32px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.productList {
+  display: grid !important;
+  column-gap: 16px;
+    row-gap: 40px;
+    margin: 0 auto 40px;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1136px;
+
+    grid-template-columns: minmax(0, 287px);
+  
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, minmax(0, 287px)); // 2 колонки
+      max-width: 590px;
+    }
+  
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, minmax(0, 229px)); // 3 колонки
+      max-width: 719px;
+    }
+  
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1136px;
+    }
+}
+

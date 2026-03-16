@@ -1,0 +1,76 @@
+
+.app.dark {
+  background: #0F1121;
+
+  .slider__arrow {
+    background: #323542;
+    border: none;
+    border-radius: 0;
+  }
+
+  .card {
+    background: #161827;
+    border: none;
+  }
+
+  .add_to_cart {
+    background: #905BFF;
+    border-radius: 0;
+
+    &:hover {
+      background: #A378FF;
+    }
+
+    &.active {
+      background: #323542;
+    }
+  }
+
+  .favorite {
+    background: #323542;
+    border-radius: 0;
+
+    &:hover {
+      background: #4A4D58;
+    }
+
+    &.active {
+      background: #3B3E4A;
+    }
+
+    svg {
+      color: #EB5757;
+    }
+  }
+
+  header {
+    background: #0F1121;
+  }
+
+  .header__link,
+  .footer__link {
+    color: #75767F;
+  }
+}
+
+.app.dark .badge {
+  background: #EB5757;
+}
+
+.app.dark .header {
+  background: #0F1121;
+  border-bottom: 1px solid #323542;
+}
+
+:global(.app.dark) .icon_btn img {
+  filter: brightness(0) invert(1);
+}
+
+.app.dark .theme-toggle {
+  color: #ffffff;
+  /* щоб іконка була білою */
+}
+
+.app.dark .switch_icon {
+  transform: translateX(24px);
+}
