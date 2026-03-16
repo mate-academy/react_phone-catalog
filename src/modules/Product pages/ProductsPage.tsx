@@ -20,7 +20,6 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Параметри з URL або значення за замовчуванням
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = Number(searchParams.get('page')) || 1;

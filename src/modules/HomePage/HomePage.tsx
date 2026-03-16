@@ -96,15 +96,15 @@ export const HomePage = () => {
   const brandNew = products.filter(product => product.year >= 2022).slice(0, 8);
   const hotPrices = products
     .filter(product => {
-      // Визначаємо повну ціну (стару)
+
       const regular = product.priceRegular || product.fullPrice || 0;
-      // Визначаємо ціну зі знижкою (поточну)
+
       const discount = product.priceDiscount || product.price || 0;
 
-      // Рахуємо різницю
+
       const diff = regular - discount;
 
-      // Показуємо товар у Hot Prices, якщо знижка більше 50
+    
       return diff > 50;
     })
     .slice(0, 8);
