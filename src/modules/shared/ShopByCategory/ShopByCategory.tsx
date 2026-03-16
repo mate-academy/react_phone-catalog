@@ -36,37 +36,43 @@ export const ShopByCategory = () => {
         <Link to="/phones" className={styles.card}>
           <img src="img/phones-category.png" alt="Phones" />
           <h3>Mobile phones</h3>
-          <p>
+          <span>
+            {' '}
+            {/* 👈 */}
             {loading ? (
               <Skeleton height="14px" width="60px" />
             ) : (
               `${phonesCount} ${phonesCount === 1 ? 'model' : 'models'}`
             )}
-          </p>
+          </span>
         </Link>
 
         <Link to="/tablets" className={styles.card}>
           <img src="img/tablets-category.png" alt="Tablets" />
           <h3>Tablets</h3>
-          <p>
+          <span>
+            {' '}
+            {/* 👈 */}
             {loading ? (
               <Skeleton height="14px" width="60px" />
             ) : (
               `${tabletsCount} ${tabletsCount === 1 ? 'model' : 'models'}`
             )}
-          </p>
+          </span>
         </Link>
 
         <Link to="/accessories" className={styles.card}>
           <img src="img/accessories-category.png" alt="Accessories" />
           <h3>Accessories</h3>
-          <p>
+          <span>
+            {' '}
+            {/* 👈 */}
             {loading ? (
               <Skeleton height="14px" width="60px" />
             ) : (
               `${accessoriesCount} ${accessoriesCount === 1 ? 'model' : 'models'}`
             )}
-          </p>
+          </span>
         </Link>
       </div>
     </div>

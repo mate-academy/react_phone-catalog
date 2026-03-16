@@ -37,16 +37,21 @@ export const Header: React.FC = () => {
   const showSearch = searchPages.includes(location.pathname);
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
+    setSearchParams(
+      prev => {
+        const params = new URLSearchParams(prev);
 
-    if (debouncedQuery) {
-      params.set('query', debouncedQuery);
-    } else {
-      params.delete('query');
-    }
+        if (debouncedQuery) {
+          params.set('query', debouncedQuery);
+        } else {
+          params.delete('query');
+        }
 
-    setSearchParams(params);
-  }, [debouncedQuery, searchParams, setSearchParams]);
+        return params;
+      },
+      { replace: true },
+    );
+  }, [debouncedQuery, setSearchParams]);
 
   useEffect(() => {
     setQuery('');

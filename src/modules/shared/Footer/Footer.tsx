@@ -2,10 +2,6 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 
-const RIGHTS_URL =
-  'https://serhiy23471.github.io/' +
-  'react_phone-catalog/blob/develop/LICENSE';
-
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
@@ -31,14 +27,14 @@ export const Footer: React.FC = () => {
           >
             Contacts
           </a>
-          <a
-            href={RIGHTS_URL}
-            target="_blank"
+          <Link
+            to="/rights"
+            // target="_blank"
             rel="noreferrer"
             className={styles.link}
           >
             Rights
-          </a>
+          </Link>
         </div>
 
         <button

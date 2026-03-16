@@ -15,6 +15,7 @@ import { CartPage } from './modules/CartPage/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { ScrollToTop } from './modules/shared/ScrollToTop/ScrollToTop';
 import { ToastProvider } from './context/ToastContext';
+import { RightsPage } from './page/RightsPage';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const AppRoutes = () => {
           />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/rights" element={<RightsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
