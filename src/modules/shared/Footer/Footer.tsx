@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const RIGHTS_URL =
   'https://serhiy23471.github.io/' +
-  'react_phone-catalog/blob/develop/README.md';
+  'react_phone-catalog/blob/develop/LICENSE';
 
 export const Footer: React.FC = () => {
   return (

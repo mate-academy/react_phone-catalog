@@ -50,13 +50,16 @@ export const CartPage = () => {
                   src={`${item.product.image}`}
                   alt=""
                   className={styles.image}
-                  onClick={() => navigate(`/${item.product.category}/${item.product.itemId}`)}
+                  onClick={() =>
+                    navigate(`/${item.product.category}/${item.product.itemId}`)
+                  }
                 />
 
                 <p
                   className={styles.name}
-                  onClick={() => navigate(`/${item.product.category}/${item.product.itemId}`)}
-                  
+                  onClick={() =>
+                    navigate(`/${item.product.category}/${item.product.itemId}`)
+                  }
                 >
                   {item.product.name}
                 </p>
