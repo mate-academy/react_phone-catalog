@@ -1,11 +1,14 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 64px;
-  background-color: #fff;
-  border-bottom: 1px solid #E2E6E9;
+  background-color: $c-white;
+  border-bottom: 1px solid $c-elements;
   z-index: 100;
 }
 
@@ -18,19 +21,33 @@
 }
 
 .nav {
-  display: flex;
-  align-items: stretch;
-  margin-right: auto;
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 64px);
+  background-color: $c-white;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  z-index: 99;
+  margin-right: 0;
+
+  &.menuOpen {
+    display: flex;
+  }
 
   &__link {
     display: flex;
     align-items: center;
     padding: 0 16px;
-    font-size: 12px;
+    height: 64px;
+    font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    color: #89939A;
+    color: $c-secondary;
     position: relative;
     transition: color 0.3s ease;
 
@@ -46,13 +63,29 @@
     }
 
     &:hover {
-      color: #313237;
-      &::after { background-color: #313237; }
+      color: $c-primary;
+      &::after { background-color: $c-primary; }
     }
 
     &.active {
-      color: #313237;
-      &::after { background-color: #313237; }
+      color: $c-primary;
+      &::after { background-color: $c-primary; }
+    }
+  }
+
+  @include on-tablet {
+    display: flex;
+    position: static;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    align-items: stretch;
+    padding-top: 0;
+    margin-right: auto;
+
+    &__link {
+      height: auto;
+      font-size: 12px;
     }
   }
 }
@@ -67,7 +100,7 @@
   &Text {
     font-size: 14px;
     font-weight: 800;
-    color: #313237;
+    color: $c-primary;
     text-transform: uppercase;
     letter-spacing: 3px;
     white-space: nowrap;
@@ -80,18 +113,32 @@
 }
 
 .actions {
-  display: flex;
-  align-items: stretch;
+  display: none;
+
+  &.menuOpen {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background-color: $c-white;
+    border-top: 1px solid $c-elements;
+    z-index: 99;
+  }
 
   &__link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    border-left: 1px solid #E2E6E9;
-    color: #313237;
+    flex: 1;
+    color: $c-primary;
     position: relative;
     transition: color 0.3s ease;
+
+    &:first-child {
+      border-right: 1px solid $c-elements;
+    }
 
     &::after {
       content: '';
@@ -105,82 +152,53 @@
     }
 
     &:hover {
-      color: #89939A;
+      color: $c-secondary;
     }
 
     &.active {
-      &::after { background-color: #313237; }
+      &::after { background-color: $c-primary; }
+    }
+  }
+
+  @include on-tablet {
+    display: flex;
+
+    &.menuOpen {
+      position: static;
+      width: auto;
+      height: auto;
+      border-top: none;
+    }
+
+    &__link {
+      flex: none;
+      width: 64px;
+      border-left: 1px solid $c-elements;
+
+      &:first-child {
+        border-right: none;
+      }
     }
   }
 }
 
 .menuToggle {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 64px;
   border: none;
-  border-left: 1px solid #E2E6E9;
+  border-left: 1px solid $c-elements;
   background-color: transparent;
-  color: #313237;
+  color: $c-primary;
   cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #89939A;
-  }
-}
-
-@media (max-width: 640px) {
-  .menuToggle {
-    display: flex;
+    color: $c-secondary;
   }
 
-  .nav {
+  @include on-tablet {
     display: none;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 64px);
-    background-color: #fff;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 32px;
-    z-index: 99;
-    margin-right: 0;
-    &.menuOpen {
-      display: flex;
-    }
-
-    &__link {
-      height: 64px;
-      font-size: 14px;
-    }
-  }
-
-  .actions {
-    display: none;
-
-    &.menuOpen {
-      display: flex;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 64px;
-      background-color: #fff;
-      border-top: 1px solid #E2E6E9;
-      z-index: 99;
-    }
-
-    &__link {
-      flex: 1;
-      border-left: none;
-
-      &:first-child {
-        border-right: 1px solid #E2E6E9;
-      }
-    }
   }
 }

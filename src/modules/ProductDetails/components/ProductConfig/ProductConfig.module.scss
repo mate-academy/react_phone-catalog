@@ -1,3 +1,5 @@
+@import 'src/styles/variables';
+
 .config {
   margin-bottom: 24px;
 }
@@ -9,7 +11,7 @@
 .label {
   font-size: 12px;
   font-weight: 700;
-  color: #89939a;
+  color: $c-secondary;
   margin-bottom: 8px;
 }
 
@@ -26,7 +28,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid transparent;
+  border: 1px solid $c-elements;
   transition: border-color 0.3s ease;
 
   span {
@@ -34,21 +36,21 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid $c-white;
   }
 
   &:hover {
-    border-color: #b4bdc3;
+    border-color: $c-icons;
   }
 
   &.activeColor {
-    border-color: #313237;
+    border-color: $c-primary;
   }
 }
 
 .divider {
   height: 1px;
-  background-color: #e2e6e9;
+  background-color: $c-elements;
   margin: 24px 0;
   border: none;
 }
@@ -66,20 +68,20 @@
   padding: 0 8px;
   min-width: 48px;
   height: 32px;
-  border: 1px solid #b4bdc3;
-  color: #313237;
+  border: 1px solid $c-icons;
+  color: $c-primary;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: #313237;
+    border-color: $c-primary;
   }
 
   &.activeCapacity {
-    background-color: #313237;
-    color: #fff;
-    border-color: #313237;
+    background-color: $c-primary;
+    color: $c-white;
+    border-color: $c-primary;
   }
 }

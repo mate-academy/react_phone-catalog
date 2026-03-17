@@ -1,12 +1,16 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .gallery {
   display: flex;
   gap: 16px;
+  flex-direction: column;
+  min-width: 0;
 
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-
-  @media (max-width: 640px) {
-    flex-direction: column;
+  @include on-tablet {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-start;
   }
 }
 
@@ -15,35 +19,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  aspect-ratio: 1 / 1;
+
+  min-width: 280px;
 
   .mainImage {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 }
 
 .thumbnails {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
+  overflow-x: auto;
 
-  @media (max-width: 640px) {
-    flex-direction: row;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+
+  @include on-tablet {
+    flex-direction: column;
+    overflow-x: visible;
+
+    width: 10%;
+    max-width: 80px;
+    min-width: 35px;
+    flex-shrink: 0;
+  }
+
+  @include on-desktop {
+    width: 80px;
   }
 }
 
 .thumbnailBtn {
-  width: 80px;
-  height: 80px;
+  width: clamp(35px, 20vw, 80px);
+  height: clamp(35px, 20vw, 80px);
+
+  flex-shrink: 0;
   padding: 0;
-  border: 1px solid #E2E6E9;
-  background: none;
+  border: 1px solid $c-elements;
+  background-color: $c-white;
   cursor: pointer;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease;
+
+  @include on-tablet {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  &:hover {
+    border-color: $c-secondary;
+  }
 
   &.thumbnailActive {
-    border-color: #313237;
+    border-color: $c-primary;
   }
 
   .thumbnailImg {

@@ -1,88 +1,94 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .cartItem {
   display: flex;
-  align-items: center;
-  padding: 24px;
-  border: 1px solid #E2E6E9;
-  background-color: #fff;
-  gap: 24px;
+  background-color: $c-white;
+  border: 1px solid $c-elements;
   transition: box-shadow 0.3s ease;
 
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  }
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
 
-  @media (max-width: 640px) {
-    flex-wrap: wrap;
-    position: relative;
-    padding: 16px;
-    gap: 16px;
+  @include on-tablet {
+    flex-wrap: nowrap;
+    padding: 24px;
+    gap: 24px;
   }
 }
 
 .removeBtn {
+  order: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 24px;
   height: 24px;
-  background: none;
-  border: none;
-  color: #B4BDC3;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 0;
+  color: $c-secondary;
   transition: color 0.2s ease;
 
   &:hover {
-    color: #313237;
-  }
-
-  @media (max-width: 640px) {
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    color: $c-primary;
   }
 }
 
 .imageBox {
-  width: 80px;
-  height: 80px;
+  order: 2;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  @include on-tablet {
+    width: 80px;
+    height: 80px;
+  }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 }
 
-.name {
+.nameLink {
+  order: 3;
   flex: 1;
-  font-size: 16px;
+  min-width: 0;
+}
+
+.name {
   font-weight: 600;
-  color: #313237;
+  color: $c-primary;
   margin: 0;
   line-height: 1.4;
+  font-size: 14px;
 
-  @media (max-width: 640px) {
-    flex-basis: calc(100% - 100px);
-    padding-right: 24px;
+  @include on-tablet {
+    font-size: 16px;
+  }
+}
+
+.footer {
+  order: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @include on-tablet {
+    width: auto;
+    flex: 1;
+    justify-content: flex-end;
+    gap: 24px;
   }
 }
 
 .controls {
   display: flex;
   align-items: center;
-  gap: 16px;
-
-  @media (max-width: 640px) {
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 8px;
-  }
+  gap: 12px;
 }
 
 .controlBtn {
@@ -91,10 +97,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  border: 1px solid #E2E6E9;
-  color: #313237;
-  font-size: 18px;
+  background-color: $c-white;
+  border: 1px solid $c-elements;
+  color: $c-primary;
   cursor: pointer;
   transition: all 0.2s ease;
 
@@ -104,27 +109,27 @@
   }
 
   &:hover:not(:disabled) {
-    border-color: #313237;
+    border-color: $c-primary;
   }
 }
 
 .quantity {
   font-size: 16px;
   font-weight: 600;
-  color: #313237;
-  width: 24px;
+  color: $c-primary;
+  width: 32px;
   text-align: center;
 }
 
 .price {
-  font-size: 22px;
   font-weight: 800;
-  color: #313237;
-  width: 120px;
+  color: $c-primary;
+  font-size: 20px;
   text-align: right;
-  flex-shrink: 0;
+  white-space: nowrap;
 
-  @media (max-width: 640px) {
-    width: auto;
+  @include on-tablet {
+    font-size: 22px;
+    width: 100px;
   }
 }

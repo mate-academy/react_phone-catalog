@@ -1,9 +1,14 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .container {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
-  @media (min-width: 1025px) {
+  @include on-desktop {
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 320px auto;
     gap: 32px;
   }
 }
@@ -16,17 +21,11 @@
 .productId {
   font-size: 12px;
   font-weight: 600;
-  color: #89939a;
+  color: $c-secondary;
 
   position: absolute;
   top: 0;
   right: 0;
-
-  @media (min-width: 1025px) {
-    position: static;
-    justify-self: end;
-    margin-top: 2px;
-  }
 }
 
 .priceBlock {
@@ -39,14 +38,14 @@
 .priceDiscount {
   font-size: 32px;
   font-weight: 800;
-  color: #313237;
+  color: $c-primary;
   letter-spacing: -0.01em;
 }
 
 .priceRegular {
   font-size: 22px;
   font-weight: 500;
-  color: #89939a;
+  color: $c-secondary;
   text-decoration: line-through;
 }
 

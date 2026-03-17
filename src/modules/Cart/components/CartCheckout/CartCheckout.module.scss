@@ -1,6 +1,8 @@
+@import '../../../../styles/variables';
+
 .cartCheckout {
-  border: 1px solid #E2E6E9;
-  background-color: #fff;
+  border: 1px solid $c-elements;
+  background-color: $c-white;
   padding: 24px;
 }
 
@@ -14,7 +16,7 @@
 .price {
   font-size: 32px;
   font-weight: 800;
-  color: #313237;
+  color: $c-primary;
   margin-bottom: 8px;
   letter-spacing: -0.01em;
 }
@@ -22,12 +24,12 @@
 .text {
   font-size: 14px;
   font-weight: 600;
-  color: #89939a;
+  color: $c-secondary;
 }
 
 .divider {
   height: 1px;
-  background-color: #E2E6E9;
+  background-color: $c-elements;
   margin-bottom: 24px;
   width: 100%;
 }
@@ -38,8 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #313237;
-  color: #fff;
+  background-color: $c-primary;
+  color: $c-white;
   border: none;
   font-family: inherit;
   font-size: 14px;
@@ -49,13 +51,12 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(23, 32, 49, 0.4);
   }
 
   &:disabled {
-    background-color: #E2E6E9;
-    color: #B4BDC3;
+    background-color: $c-elements;
+    color: $c-icons;
     cursor: not-allowed;
     box-shadow: none;
   }

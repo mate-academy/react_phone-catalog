@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .container {
-  max-width: 1200px;
+  max-width: $bp-desktop;
   margin: 0 auto;
   padding: 24px 16px;
 }
@@ -8,37 +10,11 @@
   margin-bottom: 8px;
   font-size: 32px;
   line-height: 41px;
-  color: #313237;
+  color: $c-primary;
 }
 
 .count {
   margin-bottom: 32px;
   font-weight: 600;
-  color: #89939A;
-}
-
-.controls {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-
-  @media (max-width: 640px) {
-    flex-direction: column;
-  }
-}
-
-.productsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px 16px;
-  margin-top: 32px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 16px;
-  }
+  color: $c-secondary;
 }

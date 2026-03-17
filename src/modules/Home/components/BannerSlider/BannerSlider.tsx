@@ -28,7 +28,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
         aria-label="Previous slide"
       >
         <span className="icon icon--left">
-          <ArrowUpIcon className={styles.icon} />
+          <ArrowUpIcon />
         </span>
       </button>
 
@@ -60,7 +60,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
         aria-label="Next slide"
       >
         <span className="icon icon--right">
-          <ArrowUpIcon className={styles.icon} />
+          <ArrowUpIcon />
         </span>
       </button>
 

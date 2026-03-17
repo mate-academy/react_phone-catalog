@@ -1,12 +1,18 @@
+@import '../../../../styles/variables';
+
 .categoryCard {
   display: block;
   text-decoration: none;
   cursor: pointer;
   color: inherit;
 
+  &:hover img {
+    transform: scale(1.05);
+  }
+
   &__imageWrapper {
     aspect-ratio: 1 / 1;
-    background-color: #F1F2F9;
+    background-color: $c-elements;
     border-radius: 0;
     overflow: hidden;
     margin-bottom: 16px;
@@ -17,21 +23,19 @@
       object-fit: scale-down;
       transition: transform 0.3s ease;
     }
-
-    &:hover img {
-      transform: scale(1.05);
-    }
   }
 
   &__title {
-    font-size: 20px;
     font-weight: 700;
     margin-bottom: 4px;
-    color: #313237;
+    color: $c-primary;
+
+    font-size: 20px;
   }
 
   &__count {
+    color: $c-secondary;
+
     font-size: 14px;
-    color: #89939A;
   }
 }

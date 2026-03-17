@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .container {
-  max-width: 1200px;
+  max-width: $bp-desktop;
   margin: 0 auto;
   padding: 24px 16px;
 }
@@ -8,13 +10,13 @@
   margin-bottom: 8px;
   font-size: 32px;
   line-height: 41px;
-  color: #313237;
+  color: $c-primary;
 }
 
 .count {
   margin-bottom: 32px;
   font-weight: 600;
-  color: #89939A;
+  color: $c-secondary;
 }
 
 .paginationWrapper {
@@ -26,5 +28,5 @@
 .noProducts {
   margin-top: 60px;
   text-align: center;
-  color: #89939A;
+  color: $c-secondary;
 }

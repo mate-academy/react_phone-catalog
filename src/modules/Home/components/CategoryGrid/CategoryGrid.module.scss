@@ -1,10 +1,12 @@
+@import '../../../../styles/mixins';
+
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }

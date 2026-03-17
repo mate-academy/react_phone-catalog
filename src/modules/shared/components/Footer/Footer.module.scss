@@ -1,22 +1,27 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .footer {
-  background-color: #fff;
-  border-top: 1px solid #e2e6e9;
+  background-color: $c-white;
+  border-top: 1px solid $c-elements;
   padding: 32px 0;
   margin-top: auto;
 }
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
 
-  @media (max-width: 640px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
   }
 }
 
@@ -28,7 +33,7 @@
   &__text {
     font-size: 14px;
     font-weight: 800;
-    color: #313237;
+    color: $c-primary;
     text-transform: uppercase;
     letter-spacing: 3px;
   }
@@ -36,11 +41,12 @@
 
 .nav {
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  gap: 16px;
 
-  @media (max-width: 640px) {
-    flex-direction: column;
-    gap: 16px;
+  @include on-tablet {
+    flex-direction: row;
+    gap: 32px;
   }
 
   &__link {
@@ -48,18 +54,20 @@
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
-    color: #89939a;
+    color: $c-secondary;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #313237;
+      color: $c-primary;
     }
   }
 }
 
 .backToTopWrapper {
-  @media (max-width: 640px) {
-    align-self: center;
+  align-self: center;
+
+  @include on-tablet {
+    align-self: auto;
   }
 }
 
@@ -67,7 +75,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  color: #89939a;
+  color: $c-secondary;
   background: none;
   border: none;
   padding: 0;
@@ -78,6 +86,7 @@
   &__text {
     font-size: 12px;
     font-weight: 700;
+    text-transform: uppercase;
     letter-spacing: 1px;
   }
 
@@ -87,16 +96,16 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    color: #313237;
-    border: 1px solid #b4bdc3;
+    color: $c-primary;
+    border: 1px solid $c-elements;
     transition: border-color 0.3s ease;
   }
 
   &:hover {
-    color: #313237;
+    color: $c-primary;
 
     .backToTop__icon {
-      border-color: #313237;
+      border-color: $c-primary;
     }
   }
 }

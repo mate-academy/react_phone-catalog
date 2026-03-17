@@ -1,0 +1,21 @@
+@import './variables';
+
+// --- Media Queries (Mobile First) ---
+
+@mixin on-tablet {
+  @media (min-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

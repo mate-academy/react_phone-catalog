@@ -1,3 +1,6 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .slider {
   position: relative;
   display: flex;
@@ -10,13 +13,14 @@
   flex: 1;
   overflow: hidden;
   border-radius: 0;
-  aspect-ratio: 1040 / 400;
-  max-height: 400px;
   height: 100%;
 
-  @media (max-width: 639px) {
-    aspect-ratio: 1 / 1;
-    max-height: none;
+  aspect-ratio: 1 / 1;
+  max-height: none;
+
+  @include on-tablet {
+    aspect-ratio: 1040 / 400;
+    max-height: 400px;
   }
 }
 
@@ -38,33 +42,30 @@
   pointer-events: none;
 }
 
-.icon {
-  color: #313237;
-}
-
 .button {
   width: 32px;
   max-height: 400px;
   min-height: 32px;
   height: auto;
-  background-color: #fff;
-  border: 1px solid #B4BDC3;
+  background-color: $c-white;
+  border: 1px solid $c-icons;
   cursor: pointer;
-  display: flex;
   align-self: stretch;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s;
 
+  display: none;
+
   &:hover {
-    border: 1px solid #313237;
+    border: 1px solid $c-primary;
   }
 
   &Prev .icon { transform: rotate(-90deg); }
   &Next .icon { transform: rotate(90deg); }
 
-  @media (max-width: 639px) {
-    display: none;
+  @include on-tablet {
+    display: flex;
   }
 }
 
@@ -80,12 +81,12 @@
 .dot {
   width: 14px;
   height: 4px;
-  background-color: #E2E6E9;
+  background-color: $c-elements;
   border: none;
   cursor: pointer;
   transition: all 0.3s;
 
   &Active {
-    background-color: #313237;
+    background-color: $c-primary;
   }
 }
