@@ -8,10 +8,10 @@ import styles from './HomePage.module.scss';
 import { useRef } from 'react';
 
 const images: string[] = [
-  'img/Banner.png',
-  'img/banner-phones.png',
-  'img/banner-tablets.png',
-  'img/banner-accessories.png',
+  `${process.env.PUBLIC_URL}/img/Banner.png`,
+  `${process.env.PUBLIC_URL}/img/banner-phones.png`,
+  `${process.env.PUBLIC_URL}/img/banner-tablets.png`,
+  `${process.env.PUBLIC_URL}/img/banner-accessories.png`,
 ];
 
 export const HomePage = () => {
@@ -90,8 +90,14 @@ export const HomePage = () => {
   }, []);
 
   const currentImages = isMobile
-    ? ['img/BannerMobile.svg', images[1], images[2], images[3]]
+    ? [
+        `${process.env.PUBLIC_URL}/img/BannerMobile.svg`,
+        images[1],
+        images[2],
+        images[3],
+      ]
     : images;
+
 
   const brandNew = products.filter(product => product.year >= 2022).slice(0, 8);
   const hotPrices = products
@@ -195,7 +201,10 @@ export const HomePage = () => {
             <div className={styles.categories__list}>
               <Link to="/phones" className={styles.category}>
                 <div className={styles.category__image_phones}>
-                  <img src="img/phones/Phones.png" alt="Phones" />
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/phones/Phones.png`}
+                    alt="Phones"
+                  />
                 </div>
                 <h4 className={styles.category__name}>Mobile phones</h4>
                 <p className={styles.category__count}>
@@ -204,7 +213,10 @@ export const HomePage = () => {
               </Link>
               <Link to="/tablets" className={styles.category}>
                 <div className={styles.category__image_tablets}>
-                  <img src="img/tablets/Tablets.png" alt="Tablets" />
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/tablets/Tablets.png`}
+                    alt="Tablets"
+                  />
                 </div>
                 <h4 className={styles.category__name}>Tablets</h4>
                 <p className={styles.category__count}>
@@ -214,7 +226,7 @@ export const HomePage = () => {
               <Link to="/accessories" className={styles.category}>
                 <div className={styles.category__image_accessories}>
                   <img
-                    src="img/accessories/Accessories.png"
+                    src={`${process.env.PUBLIC_URL}/img/accessories/Accessories.png`}
                     alt="Accessories"
                   />
                 </div>
