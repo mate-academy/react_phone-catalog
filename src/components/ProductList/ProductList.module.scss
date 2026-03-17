@@ -1,0 +1,29 @@
+.list {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0 auto;
+
+  display: grid;
+    column-gap: 16px !important;
+    justify-content: center;
+
+  // ПЛАНШЕТ (1000px - 1199px)
+  @media (min-width: 1000px) and (max-width: 1199px) {
+
+    grid-template-columns: 237px 237px 237px;
+    justify-content: center;
+  }
+
+  // ТОЧКА 1200px
+  @media (min-width: 1200px) and (max-width: 1200px) {
+    grid-template-columns: 272px 272px 272px 272px;
+    justify-content: center;
+  }
+}
+
+.list__item {
+  width: 100% !important;
+  min-width: 0 !important;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    padding: 24px 16px;
+
+    @media (min-width: 640px) {
+      padding: 24px 24px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 40px 32px;
+      max-width: 1200px;
+    }
+
+    @media (min-width: 1400px) {
+      padding: 40px 152px;
+      max-width: 1440px;
+    }
+}
+
+.title {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.count {
+  color: #89939A;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+    // до 639px 1 колонка
+    grid-template-columns: minmax(0, 288px);
+    gap: 16px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+  
+    // ПЛАНШЕТ (640px+)
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+        max-width: 592px;
+      gap: 32px 16px;
+    }
+  
+    // ВЕЛИКИЙ ПЛАНШЕТ (768px+): 3 колонки по 229px
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+        max-width: 719px;
+      gap: 40px 16px;
+    }
+  
+    // ДЕСКТОП (1200px+)
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+        max-width: 1136px;
+      gap: 40px 16px;
+      justify-content: center;
+    }
+}

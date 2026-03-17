@@ -1,0 +1,90 @@
+.paginationWrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+
+  @media (max-width: 639px) {
+    margin: 32px 0;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+  width: 100%;
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // ПАРАМЕТРИ КРУЖЕЧКА
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%; // Робимо круглим
+
+    border: 1px solid #E2E6E9;
+    background-color: #fff;
+    cursor: pointer;
+
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #0F0F11;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      border-color: #0F0F11;
+    }
+
+    &_active {
+      background-color: #0F0F11;
+      color: #fff;
+      border-color: #0F0F11;
+    }
+
+        &__item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          // Це гарантує, що кожна цифра займає однаковий простір
+          flex-shrink: 0;
+        }
+
+    &:disabled {
+      cursor: default;
+      background-color: #FAFBFC;
+      color: #B4BDC3;
+      border-color: #E2E6E9;
+    }
+  }
+}
+
+// Стилізація стрілочок (якщо хочеш гарні галочки замість < >)
+.arrow_left,
+.arrow_right {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-left: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: #0F0F11;
+}
+
+.arrow_left {
+  transform: rotate(45deg);
+  margin-left: 2px;
+}
+
+.arrow_right {
+  transform: rotate(-135deg);
+  margin-right: 2px;
+}

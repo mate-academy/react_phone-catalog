@@ -1,1 +1,52 @@
-// not empty
+a,
+button,
+.icon {
+  transition: all 0.3s ease;
+}
+
+
+.product-card__image-link {
+  display: block;
+  overflow: hidden;
+
+  img {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+html,
+body, #root {
+
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.section {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.container {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+
