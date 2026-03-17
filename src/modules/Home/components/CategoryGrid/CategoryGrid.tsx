@@ -9,14 +9,8 @@ export const CategoryGrid: React.FC = () => {
 
   return (
     <section className={styles.categoryGrid}>
-      {categories.map(({ id, title, path, img, count }) => (
-        <CategoryCard
-          key={id}
-          title={title}
-          img={img}
-          count={count}
-          path={path}
-        />
+      {categories.map(({ id, title, path, img }) => (
+        <CategoryCard key={id} title={title} img={img} path={path} />
       ))}
     </section>
   );

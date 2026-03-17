@@ -20,6 +20,7 @@
 .nav {
   display: flex;
   align-items: stretch;
+  margin-right: auto;
 
   &__link {
     display: flex;
@@ -31,7 +32,7 @@
     text-decoration: none;
     color: #89939A;
     position: relative;
-    transition: color #313237;
+    transition: color 0.3s ease;
 
     &::after {
       content: '';
@@ -41,7 +42,7 @@
       right: 16px;
       height: 3px;
       background-color: transparent;
-      transition: background-color #313237;
+      transition: background-color 0.3s ease;
     }
 
     &:hover {
@@ -73,6 +74,11 @@
   }
 }
 
+.rightBlock {
+  display: flex;
+  align-items: stretch;
+}
+
 .actions {
   display: flex;
   align-items: stretch;
@@ -85,7 +91,7 @@
     border-left: 1px solid #E2E6E9;
     color: #313237;
     position: relative;
-    transition: transform #E2E6E9;
+    transition: color 0.3s ease;
 
     &::after {
       content: '';
@@ -95,7 +101,7 @@
       right: 0;
       height: 3px;
       background-color: transparent;
-      transition: background-color #E2E6E9;
+      transition: background-color 0.3s ease;
     }
 
     &:hover {
@@ -108,6 +114,73 @@
   }
 }
 
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  border: none;
+  border-left: 1px solid #E2E6E9;
+  background-color: transparent;
+  color: #313237;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #89939A;
+  }
+}
+
 @media (max-width: 640px) {
-  .nav { display: none; }
+  .menuToggle {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+    z-index: 99;
+    margin-right: 0;
+    &.menuOpen {
+      display: flex;
+    }
+
+    &__link {
+      height: 64px;
+      font-size: 14px;
+    }
+  }
+
+  .actions {
+    display: none;
+
+    &.menuOpen {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: #fff;
+      border-top: 1px solid #E2E6E9;
+      z-index: 99;
+    }
+
+    &__link {
+      flex: 1;
+      border-left: none;
+
+      &:first-child {
+        border-right: 1px solid #E2E6E9;
+      }
+    }
+  }
 }

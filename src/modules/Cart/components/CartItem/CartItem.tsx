@@ -4,7 +4,11 @@ import classNames from 'classnames';
 import styles from './CartItem.module.scss';
 import { ContextProps } from '../../../../types/ContextProps';
 import { CartItemType } from '../../../../types/CartItem';
-import { ArrowUpIcon } from '../../../shared/components/Icons';
+import {
+  CloseIcon,
+  MinusIcon,
+  PlusIcon,
+} from '../../../shared/components/Icons';
 
 interface Props {
   product: CartItemType;
@@ -25,7 +29,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         onClick={() => removeFromCart(itemId)}
         aria-label="Remove from cart"
       >
-        <ArrowUpIcon />
+        <CloseIcon />
       </button>
 
       <Link to={`/product/${itemId}`} className={styles.imageBox}>
@@ -45,7 +49,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           })}
           aria-label="Decrease quantity"
         >
-          <ArrowUpIcon />
+          <MinusIcon />
         </button>
 
         <span className={styles.quantity}>{quantity}</span>
@@ -55,7 +59,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           className={styles.controlBtn}
           aria-label="Increase quantity"
         >
-          <ArrowUpIcon />
+          <PlusIcon />
         </button>
       </div>
 

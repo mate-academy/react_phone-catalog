@@ -2,4 +2,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }

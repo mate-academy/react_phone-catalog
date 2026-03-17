@@ -22,6 +22,7 @@
   align-items: center;
   color: #B4BDC3;
 
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.icon) {
     width: 16px;
     height: 16px;

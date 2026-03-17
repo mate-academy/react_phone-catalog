@@ -12,6 +12,12 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
 }
 
 .logo {
@@ -20,10 +26,11 @@
   text-decoration: none;
 
   &__text {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 800;
     color: #313237;
     text-transform: uppercase;
+    letter-spacing: 3px;
   }
 }
 
@@ -31,11 +38,28 @@
   display: flex;
   gap: 32px;
 
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+
   &__link {
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
+    text-decoration: none;
     color: #89939a;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+}
+
+.backToTopWrapper {
+  @media (max-width: 640px) {
+    align-self: center;
   }
 }
 
@@ -49,7 +73,7 @@
   padding: 0;
   cursor: pointer;
   font-family: inherit;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 
   &__text {
     font-size: 12px;
@@ -65,7 +89,7 @@
     height: 32px;
     color: #313237;
     border: 1px solid #b4bdc3;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease;
   }
 
   &:hover {

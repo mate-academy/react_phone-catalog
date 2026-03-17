@@ -10,8 +10,15 @@ interface Props {
 }
 
 export const BannerSlider: React.FC<Props> = ({ banners }) => {
-  const { currentIndex, setCurrentIndex, handleNext, handlePrev } =
-    useBannerSlider(banners.length);
+  const {
+    currentIndex,
+    setCurrentIndex,
+    handleNext,
+    handlePrev,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  } = useBannerSlider(banners.length);
 
   return (
     <div className={styles.slider}>
@@ -25,7 +32,12 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
         </span>
       </button>
 
-      <div className={styles.window}>
+      <div
+        className={styles.window}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className={styles.track}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -33,7 +45,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
           {banners.map(banner => (
             <Link key={banner.img} to={banner.link} className={styles.slide}>
               <img
-                src={`${import.meta.env.BASE_URL}${banner.img}`}
+                src={`${import.meta.env.BASE_URL}/${banner.img}`}
                 alt={banner.alt}
                 className={styles.image}
               />

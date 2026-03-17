@@ -2,10 +2,6 @@
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
-
-  @media (max-width: 640px) {
-    flex-direction: column;
-  }
 }
 
 .sortSelect {

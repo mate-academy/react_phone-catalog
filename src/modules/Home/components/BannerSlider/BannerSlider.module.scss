@@ -13,6 +13,11 @@
   aspect-ratio: 1040 / 400;
   max-height: 400px;
   height: 100%;
+
+  @media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+    max-height: none;
+  }
 }
 
 .track {
@@ -30,6 +35,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .icon {
@@ -50,13 +56,16 @@
   justify-content: center;
   transition: background-color 0.3s;
 
-
   &:hover {
     border: 1px solid #313237;
   }
 
   &Prev .icon { transform: rotate(-90deg); }
   &Next .icon { transform: rotate(90deg); }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
 }
 
 .dots {
