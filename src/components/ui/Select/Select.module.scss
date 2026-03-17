@@ -78,7 +78,8 @@
     color: $secondary;
     padding: 10px;
 
-    &:hover {
+    &:hover,
+    &_active {
       font-weight: 600;
       color: $main;
       background-color: $hover;

@@ -22,7 +22,9 @@
   flex-direction: column;
 
   &:hover {
-    border-color: $secondary;
+    // border-color: $secondary;
+    border-color: $white;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
 
     & .img {
       transform: scale(1.1);

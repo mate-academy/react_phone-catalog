@@ -1,48 +1,65 @@
 import classNames from 'classnames';
+import { useState } from 'react';
+import { Filter, FilterValue } from '../../../types/types';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Select.module.scss';
 
-type Filter = {
-  title: string;
-  list: string[] | number[];
-};
+export const Select = ({
+  options = [],
+  value,
+  onChange,
+  placeholder = 'Choose one',
+  title,
+}: Filter) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const selected = options.find(item => item.value === value);
 
-type Props = {
-  filter: Filter;
-};
+  const handleSelect = (eventValue: FilterValue) => {
+    onChange(eventValue);
 
-export const Select = ({ filter }: Props) => {
-  const isActive = false;
+    setIsOpen(false);
+  };
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>{filter.title}</p>
+      {title && <p className={styles.title}>{title}</p>}
       <div
         className={classNames(styles.select, {
-          [styles.select__active]: isActive,
+          [styles.select__active]: isOpen,
         })}
       >
-        <p className={styles.select__header}>
-          {filter.list[0]}
+        <div
+          className={styles.select__header}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {selected ? selected.label : placeholder}
           <img
             src={imageUrl('icons/ArrowDown.svg')}
             alt=""
             className={styles.select__icon}
           />
-        </p>
-        <ul
-          className={classNames(styles.list, {
-            [styles.list__active]: isActive,
-          })}
-        >
-          {filter.list.map((item, index) => {
-            return (
-              <li className={styles.list__item} key={index + '-' + item}>
-                {item}
-              </li>
-            );
-          })}
-        </ul>
+        </div>
+        {isOpen && (
+          <ul
+            className={classNames(styles.list, {
+              [styles.list__active]: isOpen,
+            })}
+          >
+            {options.map((item, index) => {
+              return (
+                <li
+                  className={classNames(styles.list__item, {
+                    [styles.list__item_active]: item.value === value,
+                  })}
+                  key={`${item.value}-${index}`}
+                  onClick={() => handleSelect(item.value)}
+                >
+                  {item.label}
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </div>
   );

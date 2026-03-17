@@ -33,6 +33,7 @@ html {
 .wrapper {
   flex-grow: 1;
   padding-top: 64px;
+  margin-bottom: 80px;
 
   @media (max-width: 1024px) {
     padding-top: 48px;
