@@ -5,7 +5,7 @@ import { ProductControls } from '../components/UI/ProductsContols';
 import { Category } from '../types/Category';
 import { useContext } from 'react';
 import { ProductsContext } from '../store/ProductsContext';
-import { useCategoryProducts } from '../utils/useFilteredProducts';
+import { useCategoryProducts } from '../hooks/useFilteredProducts';
 
 export const PhonesPage = () => {
   const { products } = useContext(ProductsContext);

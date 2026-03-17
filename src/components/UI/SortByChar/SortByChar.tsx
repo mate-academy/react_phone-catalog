@@ -10,6 +10,7 @@ export const SortByChar: React.FC = () => {
 
   const setSearchWith = (params: Record<string, string>) => {
     const search = getSearchWith(searchParams, params);
+
     setSearchParams(search);
   };
 

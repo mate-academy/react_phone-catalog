@@ -40,6 +40,10 @@ export const ProductList: React.FC<ProductListProps> = ({
     });
   };
 
+  const isRegularShow = visibleProducts.some(
+    product => product.fullPrice > product.price,
+  );
+
   return (
     <div className={styles.phonesContainer}>
       {visibleProducts.length > 0 ? (
@@ -50,6 +54,7 @@ export const ProductList: React.FC<ProductListProps> = ({
               product={product}
               imageWrapperSize="large"
               classNames="responsive"
+              showRegularPrice={isRegularShow}
             />
           ))}
         </div>

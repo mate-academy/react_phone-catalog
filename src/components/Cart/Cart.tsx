@@ -25,6 +25,7 @@ const Cart: React.FC = () => {
       SetClearCart();
     }
   };
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div className={styles.cart}>
@@ -56,7 +57,7 @@ const Cart: React.FC = () => {
           </ul>
           <div className={styles.checkout}>
             <h3> ${totalPrice}</h3>
-            <p className={styles.totalFor}>Total for {cart.length} items</p>
+            <p className={styles.totalFor}>Total for {totalItems} items</p>
 
             <Checkout onClear={handleCheckout} />
           </div>

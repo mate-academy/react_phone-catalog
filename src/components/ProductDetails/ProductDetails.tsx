@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Product, ProductSpecs } from '../../types/Product';
 import styles from './ProductDetails.module.scss';
 import icons from '../../assets/icons/icons.svg';
@@ -11,46 +11,30 @@ import { colorMapping } from '../../constants/colors';
 type Props = {
   productDetails: ProductSpecs;
   product: Product;
+  productVariants: ProductSpecs[];
 };
 
 export const ProductDetails: React.FC<Props> = ({
   productDetails,
+  productVariants,
   product,
 }) => {
-  const {
-    name,
-    images,
-    priceRegular,
-    priceDiscount,
-    screen,
-    colorsAvailable,
-    color,
-    capacityAvailable,
-    resolution,
-    processor,
-    description,
-    ram,
-    capacity,
-    camera,
-    zoom,
-    cell,
-  } = productDetails;
+  const [currentVariant, setCurrentVariant] =
+    useState<ProductSpecs>(productDetails);
+  const [displayedImageIndex, setDisplayedImageIndex] = useState<number>(0);
 
-  const { id } = product;
   const { favorites, SetRemoveFromFavorites, SetAddToFavorites } =
     useContext(ProductsContext);
-  const [displayedImageIndex, setDisplayedImageIndex] = useState<number>(0);
-  const [selectedColor, setSelectedColor] = useState<string>(color);
-  const [selectedCapacity, setSelectedCapacity] = useState<string>(capacity);
+
   const navigate = useNavigate();
 
-  const location = useLocation();
-
   useEffect(() => {
+    setCurrentVariant(productDetails);
+    setDisplayedImageIndex(0);
     window.scrollTo({ top: 0 });
-  }, [product, productDetails]);
+  }, [productDetails]);
 
-  const isFavorite = favorites.some(favorite => favorite.id === product.id);
+  const isFavorite = favorites.some(fav => fav.id === product.id);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
@@ -61,50 +45,63 @@ export const ProductDetails: React.FC<Props> = ({
   };
 
   const handleColorChange = (newColor: string) => {
-    setSelectedColor(newColor);
+    const matchedVariant = productVariants.find(
+      v =>
+        v.color.toLowerCase() === newColor.toLowerCase() &&
+        v.capacity.toLowerCase() === currentVariant.capacity.toLowerCase(),
+    );
 
-    const formattedColor = encodeURIComponent(newColor.toLowerCase().trim());
+    if (matchedVariant) {
+      setCurrentVariant(matchedVariant);
+      setDisplayedImageIndex(0);
 
-    const currentPath = location.pathname;
-
-    const parts = currentPath.split('/');
-
-    const productId = parts[parts.length - 1];
-
-    const idParts = productId.split('-');
-
-    idParts[idParts.length - 1] = formattedColor;
-
-    const newProductId = idParts.join('-');
-
-    parts[parts.length - 1] = newProductId;
-
-    const newPath = parts.join('/');
-
-    navigate(newPath);
+      navigate(`/${product.category}/${matchedVariant.id}`);
+    }
   };
 
   const handleCapacityChange = (newCapacity: string) => {
-    setSelectedCapacity(newCapacity);
+    const matchedVariant = productVariants.find(
+      v =>
+        v.capacity.toLowerCase() === newCapacity.toLowerCase() &&
+        v.color.toLowerCase() === currentVariant.color.toLowerCase(),
+    );
 
-    const currentPath = location.pathname;
-
-    const parts = currentPath.split('/');
-
-    const productId = parts[parts.length - 1];
-
-    const idParts = productId.split('-');
-
-    idParts[idParts.length - 2] = newCapacity.toLowerCase();
-
-    const newProductId = idParts.join('-');
-
-    parts[parts.length - 1] = newProductId;
-
-    const newPath = parts.join('/');
-
-    navigate(newPath);
+    if (matchedVariant) {
+      setCurrentVariant(matchedVariant);
+      setDisplayedImageIndex(0);
+      navigate(`/${product.category}/${matchedVariant.id}`);
+    }
   };
+
+  const {
+    name,
+    images,
+    priceRegular,
+    priceDiscount,
+    colorsAvailable,
+    capacityAvailable,
+    description,
+    color,
+    ...specs
+  } = currentVariant;
+
+  const specsList = [
+    { label: 'Screen', value: specs.screen },
+    { label: 'Resolution', value: specs.resolution },
+    { label: 'Processor', value: specs.processor },
+    { label: 'RAM', value: specs.ram },
+    { label: 'Built in memory', value: specs.capacity },
+    { label: 'Camera', value: specs.camera },
+    { label: 'Zoom', value: specs.zoom },
+    { label: 'Cell', value: specs.cell.join(', ') },
+  ];
+
+  const summaryList = [
+    { label: 'Screen', value: specs.screen },
+    { label: 'Resolution', value: specs.resolution },
+    { label: 'Processor', value: specs.processor },
+    { label: 'RAM', value: specs.ram },
+  ];
 
   return (
     <section className={styles.block}>
@@ -145,7 +142,7 @@ export const ProductDetails: React.FC<Props> = ({
 
           <div className={styles.information}>
             <div className={styles.selectors}>
-              {selectedColor && (
+              {colorsAvailable && colorsAvailable.length > 0 && (
                 <>
                   <div className={styles.idWrapper}>
                     <p className={styles.selectors__title}>Available colors</p>
@@ -156,23 +153,21 @@ export const ProductDetails: React.FC<Props> = ({
                       <div
                         key={col}
                         className={classNames(styles.wrapperColor, {
-                          [styles.active]: col === selectedColor,
+                          [styles.active]: col === color,
                         })}
                         onClick={() => handleColorChange(col)}
                       >
                         <div
                           className={styles.color}
-                          style={{
-                            backgroundColor: colorMapping[col] || col,
-                          }}
-                        ></div>
+                          style={{ backgroundColor: colorMapping[col] || col }}
+                        />
                       </div>
                     ))}
                   </div>
                 </>
               )}
 
-              {selectedCapacity && (
+              {capacityAvailable && capacityAvailable.length > 0 && (
                 <div className={styles.selectors}>
                   <p className={styles.selectors__title}>Select capacity</p>
                   <div className={styles.selectors__options}>
@@ -180,9 +175,7 @@ export const ProductDetails: React.FC<Props> = ({
                       <button
                         key={item}
                         className={classNames(styles.capacity, {
-                          [styles.active]:
-                            item.toLowerCase() ===
-                            selectedCapacity.toLowerCase(),
+                          [styles.active]: item === specs.capacity,
                         })}
                         onClick={() => handleCapacityChange(item)}
                       >
@@ -201,12 +194,11 @@ export const ProductDetails: React.FC<Props> = ({
 
             <div className={styles.productCardButtons}>
               <Button product={product} className={styles.customButton} />
-
               <button
                 className={styles.addToFavouriteBtn}
-                onClick={event => {
-                  event.preventDefault();
-                  event.stopPropagation();
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
                   handleToggleFavorite();
                 }}
               >
@@ -216,45 +208,35 @@ export const ProductDetails: React.FC<Props> = ({
                   })}
                 >
                   {!isFavorite ? (
-                    <use href={`${icons}#header-icon-header`}></use>
+                    <use href={`${icons}#header-icon-header`} />
                   ) : (
-                    <use href={`${icons}#heart-icon`}></use>
+                    <use href={`${icons}#heart-icon`} />
                   )}
                 </svg>
               </button>
             </div>
 
-            <div className={styles.specsWrapper}></div>
             <div className={styles.specs}>
               <ul className={styles.specsList}>
-                <li className={styles.specsList__itemSm}>
-                  <p className={styles.specsChar}>Screen</p>
-                  <p className={styles.specsProperty}>{screen}</p>
-                </li>
-                <li className={styles.specsList__itemSm}>
-                  <p className={styles.specsChar}>Resolution</p>
-                  <p className={styles.specsProperty}>{resolution}</p>
-                </li>
-                <li className={styles.specsList__itemSm}>
-                  <p className={styles.specsChar}>Processor</p>
-                  <p className={styles.specsProperty}>{processor}</p>
-                </li>
-                <li className={styles.specsList__itemSm}>
-                  <p className={styles.specsChar}>RAM</p>
-                  <p className={styles.specsProperty}>{ram}</p>
-                </li>
+                {summaryList.map(({ label, value }) => (
+                  <li key={label} className={styles.specsList__itemSm}>
+                    <p className={styles.specsChar}>{label}</p>
+                    <p className={styles.specsProperty}>{value}</p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
-          <div className={styles.id}>ID:{id}</div>
+
+          <div className={styles.id}>ID:{product.id}</div>
         </div>
 
         <div className={styles.specsWrapper}>
           <div className={styles.about}>
             <h3 className={styles.titleAbout}>About</h3>
             <ul className={styles.about__list}>
-              {description.map((item, index) => (
-                <li key={index} className={styles.about__item}>
+              {description.map((item, idx) => (
+                <li key={idx} className={styles.about__item}>
                   <h4>{item.title}</h4>
                   <p className={styles.description}>{item.text}</p>
                 </li>
@@ -265,38 +247,12 @@ export const ProductDetails: React.FC<Props> = ({
           <div className={styles.specs}>
             <h3 className={styles.titleAbout}>Tech specs</h3>
             <ul className={styles.specsList}>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Screen</p>
-                <p className={styles.mark}>{screen}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Resolution</p>
-                <p className={styles.mark}>{resolution}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Processor</p>
-                <p className={styles.mark}>{processor}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>RAM</p>
-                <p className={styles.mark}>{ram}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Built in memory</p>
-                <p className={styles.mark}>{capacity}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Camera</p>
-                <p className={styles.mark}>{camera}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Zoom</p>
-                <p className={styles.mark}>{zoom}</p>
-              </li>
-              <li className={styles.specsList__item}>
-                <p className={styles.property}>Cell</p>
-                <p className={styles.mark}>{cell.join(', ')}</p>
-              </li>
+              {specsList.map(({ label, value }) => (
+                <li key={label} className={styles.specsList__item}>
+                  <p className={styles.property}>{label}</p>
+                  <p className={styles.mark}>{value}</p>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

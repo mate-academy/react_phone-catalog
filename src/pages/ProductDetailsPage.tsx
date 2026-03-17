@@ -7,6 +7,8 @@ import { ProductDetails } from '../components/ProductDetails/ProductDetails';
 import { Loader } from '../components/Loader';
 import { Container } from '../components/Container';
 import { ProductsContext } from '../store/ProductsContext';
+import { RecommendedProducts } from '../components/RecomendedProducts';
+import { useRecommendedProducts } from '../hooks/useRecommendedProducts';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -16,6 +18,8 @@ export const ProductDetailsPage = () => {
   const [productsDetails, setProductsDetails] = useState<ProductSpecs[]>([]);
   const product = products.find(item => item.itemId === productId);
   const selectedProduct = productsDetails.find(item => item.id === productId);
+
+  const recommendedProducts = useRecommendedProducts(product);
 
   const { name } = selectedProduct || {};
 
@@ -27,7 +31,7 @@ export const ProductDetailsPage = () => {
     getCategoryProducts(category)
       .then(setProductsDetails)
       .finally(() => setIsLoading(false));
-  }, [category]);
+  }, [category, productId]);
 
   const showProductDetails = !isLoading && selectedProduct && product;
 
@@ -41,8 +45,14 @@ export const ProductDetailsPage = () => {
         <Breadcrumbs name={name} />
 
         {showProductDetails && (
-          <ProductDetails productDetails={selectedProduct} product={product} />
+          <ProductDetails
+            productDetails={selectedProduct}
+            product={product}
+            productVariants={productsDetails}
+          />
         )}
+
+        <RecommendedProducts recommendedProducts={recommendedProducts} />
       </Container>
     </>
   );

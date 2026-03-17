@@ -5,7 +5,7 @@ import { ProductsIntro } from '../components/ProductsIntro';
 import { ProductControls } from '../components/UI/ProductsContols';
 import { ProductsContext } from '../store/ProductsContext';
 import { Category } from '../types/Category';
-import { useCategoryProducts } from '../utils/useFilteredProducts';
+import { useCategoryProducts } from '../hooks/useFilteredProducts';
 
 export const AccessoriesPage = () => {
   const { products } = useContext(ProductsContext);
