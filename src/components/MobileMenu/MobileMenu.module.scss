@@ -1,0 +1,92 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  top: 64px;
+
+  background: white;
+  width: 100vw;
+  height: calc(100vh - 64px);
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+
+  z-index: 1000;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.box {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.text {
+  position: relative;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--color-primary);
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  margin-top: auto;
+}
+
+.boxAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 64px;
+  border: 1px solid var(--color-elements);
+}
+
+.icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cyrcle {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: white;
+}

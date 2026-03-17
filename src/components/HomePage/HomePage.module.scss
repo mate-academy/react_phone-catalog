@@ -1,0 +1,41 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.main {
+  @include container;
+  @include grid;
+}
+
+.title {
+  @include span(24);
+
+  margin-top: 56px;
+  margin-bottom: 56px;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+
+  color: var(--color-primary);
+
+  @include tablet {
+    @include span(8);
+  }
+
+  @include mobile {
+    @include span(4);
+
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.box {
+  @include container;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
