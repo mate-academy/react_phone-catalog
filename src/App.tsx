@@ -4,7 +4,7 @@ import HomePage from './modules/HomePage/index';
 import ProductsPage from './modules/ProductsPage';
 import ProductDetailsPage from './modules/ProductDetailsPage/index';
 import CartPage from './modules/CartPage/index';
-import { FavoritesPage } from './modules/FavoritesPage';
+import FavoritesPage from './modules/FavoritesPage/index';
 import { NotFoundPage } from './modules/NotFoundPage';
 import Header from './components/Header';
 import Footer from './components/Footer/index';

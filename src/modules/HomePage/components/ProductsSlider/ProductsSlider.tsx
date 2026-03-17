@@ -10,8 +10,6 @@ type ProductsSliderProps = {
   currentIndex: number;
   handlePrev: () => void;
   handleNext: () => void;
-  handleAddToCart?: (product: Product) => void;
-  handleToggleFavorite?: (productId: string) => void;
   children?: React.ReactNode;
 };
 
@@ -20,8 +18,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   currentIndex,
   handlePrev,
   handleNext,
-  handleAddToCart,
-  handleToggleFavorite,
   children,
 }) => {
   const hasProducts = Array.isArray(products) && products.length > 0;
@@ -65,8 +61,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
               product={product}
               index={i}
               className={styles.productsSlider__product}
-              handleAddToCart={handleAddToCart}
-              handleToggleFavorite={handleToggleFavorite}
               key={product?.id}
             />
           ))}

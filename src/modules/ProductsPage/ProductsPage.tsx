@@ -77,16 +77,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   const visibleProducts = sorted?.slice(start, end);
 
-  const handleAddToCart = (productId: string) => {
-    // TODO: Implement add to cart logic
-    console.log('Add to cart:', productId);
-  };
-
-  const handleToggleFavorite = (productId: string) => {
-    // TODO: Implement toggle favorite logic
-    console.log('Toggle favorite:', productId);
-  };
-
   const handlePaginationChange = (
     newPage: number,
     newPerPage: number | 'all',
@@ -189,8 +179,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 </div>
                 <ProductsList
                   products={visibleProducts}
-                  handleAddToCart={handleAddToCart}
-                  handleToggleFavorite={handleToggleFavorite}
                   emptyMessage={`There are no ${category} yet`}
                 />
               </>

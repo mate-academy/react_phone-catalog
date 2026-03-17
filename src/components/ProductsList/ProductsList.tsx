@@ -3,15 +3,11 @@ import ProductCard from '../ProductCard/index';
 
 interface ProductsListProps {
   products?: any[];
-  handleAddToCart?: (product: any) => void;
-  handleToggleFavorite?: (productId: any) => void;
   emptyMessage?: string;
 }
 
 export const ProductsList = ({
   products,
-  handleAddToCart,
-  handleToggleFavorite,
   emptyMessage = 'There are no products yet',
 }: ProductsListProps) => {
   if (!Array.isArray(products) || products.length === 0) {
@@ -32,8 +28,6 @@ export const ProductsList = ({
               product={product}
               index={i}
               className={styles.productsList__product}
-              handleAddToCart={handleAddToCart}
-              handleToggleFavorite={handleToggleFavorite}
               key={product?.id}
             />
           ))}

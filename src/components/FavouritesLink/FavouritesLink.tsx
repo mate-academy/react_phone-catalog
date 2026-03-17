@@ -16,7 +16,7 @@ export const FavouritesLink: React.FC<FavouritesLinkProps> = ({
 }: FavouritesLinkProps) => {
   return (
     <Link
-      to="favorites"
+      to=""
       className={`${
         iconSize === Size.large ? iconStyles['icon--large'] : iconStyles.icon
       }

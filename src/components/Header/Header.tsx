@@ -6,10 +6,12 @@ import Logo from '../Logo';
 import { Link } from 'react-router-dom';
 import FavouritesLink from '../FavouritesLink';
 import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalQuantity } = useCart();
+  const { favorites } = useFavorites();
 
   const handleMenuClick = () => {
     setTimeout(() => setIsMenuOpen(false), 50);
@@ -54,6 +56,9 @@ export const Header = () => {
             </div>
             <div className={styles.topBar__icons}>
               <div className={styles.icon__background}>
+                {favorites.length > 0 && (
+                  <span className="badge">{favorites.length}</span>
+                )}
                 <FavouritesLink className={styles.header__favIcon} />
               </div>
               <div className={styles.icon__background}>

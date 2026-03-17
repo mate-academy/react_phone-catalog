@@ -9,16 +9,18 @@ import {
 
 interface CartItem {
   id: string;
-  product: string;
+  product: any;
   quantity: number;
+
 }
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (product: string) => boolean;
+  addToCart: (product: any) => boolean;
   removeFromCart: (id: string) => void;
   increase: (id: string) => void;
   decrease: (id: string) => void;
+  clearCart: (id: string) => void;
   totalQuantity: number;
   totalAmount: number;
 }
@@ -34,11 +36,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
+
     localStorage.setItem('cart', JSON.stringify(items));
   }, [items]);
-  const addToCart = (product: { id: string }) => {
-    const exists = items.find(item => item.product.id === product.id);
 
+  const addToCart = (product) => {
+    const exists = items.find(item => item.product.id === product.id);
+console.log('addToCart');
+console.log(product.id);
     if (exists) {
       return false;
     }
@@ -82,8 +87,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     () => items.reduce((sum, it) => sum + it.quantity, 0),
     [items],
   );
-  const clearCart = () => setItems([]);
-
+  const clearCart = () => {
+    setItems([]);
+    localStorage.removeItem('cart');
+  };
 
   return (
     <CartContext.Provider

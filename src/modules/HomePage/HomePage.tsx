@@ -2,7 +2,6 @@ import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import styles from './HomePage.module.scss';
 import ProductsSlider from './components/ProductsSlider/index';
 import PicturesSlider from './components/PicturesSlider/index';
-import { Product } from './../../../public/api/types/Product';
 import { Link } from 'react-router-dom';
 import { productsCount } from '../../utils/products';
 import { useProducts } from '../../hooks/useProducts';
@@ -158,14 +157,6 @@ export const HomePage: React.FC = () => {
     [products],
   );
 
-  const handleToggleFavorite = (productId: string): void => {
-    throw new Error('Function not implemented.');
-  };
-
-  const handleAddToCart = (product: Product): void => {
-    throw new Error('Function not implemented.');
-  };
-
   return (
     <>
       <div className={styles.homePage}>
@@ -212,8 +203,6 @@ export const HomePage: React.FC = () => {
             currentIndex={currentNewProductIndex}
             handlePrev={handlePrevNewProduct}
             handleNext={handleNextNewProduct}
-            handleAddToCart={handleAddToCart}
-            handleToggleFavorite={handleToggleFavorite}
           >
             Brand new models
           </ProductsSlider>
@@ -267,8 +256,6 @@ export const HomePage: React.FC = () => {
             currentIndex={currentProductIndex}
             handlePrev={handlePrevProduct}
             handleNext={handleNextProduct}
-            handleAddToCart={handleAddToCart}
-            handleToggleFavorite={handleToggleFavorite}
           >
             Hot prices
           </ProductsSlider>

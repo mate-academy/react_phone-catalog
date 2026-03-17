@@ -7,76 +7,87 @@ import AddToCartButton from '../AddToCartButton';
 import Button from '../Button/index';
 import buttonStyles from '../Button/Button.module.scss';
 import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import clsx from 'clsx';
 
 type ProductCardProps = {
   product: Product;
   index: number;
   className?: string;
-  handleAddToCart?: (product: Product) => void;
-  handleToggleFavorite?: (productId: string) => void;
 };
-
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   index,
   className,
-
-  handleToggleFavorite,
 }) => {
   const visibleOnTablet = 2;
   const visibleOnDesktop = 4;
   const { items, addToCart } = useCart();
-  const isInCart = items.some(i => i.product.id === product.id);
+  const { toggleFavorite, isFavorite, favorites } = useFavorites();
+  //  const isInCart = items.find(i => String(i.product.id) === String(product.id));
+
+  const isInCart = items.find(item => item.product.id === product.id);
 
   return (
     <div
-      className={`${styles.productCard} ${styles.productCard__product} ${className ?? ''}
-                      ${index === 1 ? styles.mobile : ''}
-                      ${index > 1 && index <= visibleOnTablet ? styles.tablet : ''}
-                      ${index <= visibleOnDesktop ? styles.desktop : ''}`}
+      className={clsx(
+        styles.productCard,
+        styles.productCard__product,
+        className,
+        { [styles.mobile]: index === 1 },
+        { [styles.tablet]: index > 1 && index <= visibleOnTablet },
+        { [styles.desktop]: index <= visibleOnDesktop },
+      )}
     >
       <div className={styles.productCard__productInfo}>
         <div className={styles.productCard__productImageContainer}>
           <img
-            src={product?.image}
-            alt={product?.name ?? 'Product Image'}
+            src={product.image}
+            alt={product.name ?? 'Product Image'}
             className={styles.productCard__productImage}
           />
         </div>
         <Link
-          to={`/product/${product?.id}`}
+          to={`/product/${product.id}`}
           className={styles.productCard__productName}
         >
-          {product?.name}
+          {product.name}
         </Link>
         <div className={styles.productPriceRow}>
           <p className={styles.productCard__productPrice}>
-            <a>${product?.price}&nbsp;</a>
+            <span>${product.price}</span>
           </p>
           <p className={styles.productCard__productFullPrice}>
-            {`$${product?.fullPrice}`}
+            $ ${product.fullPrice ? product.fullPrice : null}
           </p>
         </div>
         <div className={styles.productCard__productInfoTable}>
           <div className={styles.productFeature}>Screen</div>
-          <div className={styles.productValue}>{product?.screen}</div>
+          <div className={styles.productValue}>{product.screen}</div>
           <div className={styles.productFeature}>Capacity</div>
-          <div className={styles.productValue}>{product?.capacity}</div>
+          <div className={styles.productValue}>{product.capacity}</div>
           <div className={styles.productFeature}>RAM</div>
-          <div className={styles.productValue}>{product?.ram}</div>
+          <div className={styles.productValue}>{product.ram}</div>
         </div>
-
         <div className={styles.productCard__bottom}>
           <AddToCartButton
             onClick={() => addToCart(product)}
             isInCart={isInCart}
           />
           <Button
-            className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
-            onClick={() => handleToggleFavorite?.(String(product?.id))}
+            className={clsx(
+              buttonStyles.button,
+              buttonStyles['button--favourites'],
+            )}
+            onClick={() => toggleFavorite(String(product.id))}
+            isActive={isFavorite(product.id)}
+        //    pressed={isFavorite(String(product.id))}
           >
             <FavouritesLink
-              className={`${styles['icon--large']} ${styles['icon--favourites']}`}
+              className={clsx(
+                styles['icon--large'],
+                styles['icon--favourites'],
+              )}
               iconSize="lg"
             />
           </Button>

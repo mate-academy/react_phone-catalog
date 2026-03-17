@@ -12,6 +12,8 @@ import Button from '../../components/Button';
 import ProductsSlider from '../HomePage/components/ProductsSlider/index';
 import Breadcrumbs from '../../components/Breadcrumbs/index';
 import HistoryBackButton from '../../components/HistoryBackButton';
+import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
 
 type Types = {
   productId: string;
@@ -34,6 +36,8 @@ export const ProductDetailsPage = () => {
   const [loadingSuggested, setLoadingSuggested] = useState(false);
   const [errorSuggested, setErrorSuggested] = useState<string | null>(null);
   const [suggestedIndex, setSuggestedIndex] = useState(0);
+  const { items, addToCart } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
     setActiveIndex(0);
@@ -113,27 +117,6 @@ export const ProductDetailsPage = () => {
   const handleRetry = () => {
     window.location.reload();
   };
-
-  function handleAddToCart(product: Product): void {
-    throw new Error('Function not implemented.');
-  }
-
-  function handleToggleFavorite(id: string | number | undefined): void {
-    if (!id) {
-      return;
-    }
-
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const index = favorites.indexOf(id);
-
-    if (index > -1) {
-      favorites.splice(index, 1);
-    } else {
-      favorites.push(id);
-    }
-
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>, image: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -301,17 +284,20 @@ export const ProductDetailsPage = () => {
                     </div>
                     <div className={styles.productDetailsPage__bottom}>
                       <AddToCartButton
-                        handleAddToCart={() => handleAddToCart?.(product)}
+                        onClick={() => addToCart(product)}
+                        isInCart={items.find(
+                          item => item.product.id === product.id,
+                        )}
                       />
 
                       <Button
                         className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
-                        onClick={() =>
-                          handleToggleFavorite?.(String(product?.id))
-                        }
+                        onClick={() => toggleFavorite(String(product.id))}
+                        pressed={isFavorite(String(product.id))}
+                        і
                       >
                         <FavouritesLink
-                          className={`${styles['icon--large']} ${styles['icon--favourites']}`}
+                          className={`${styles['icon--large']} ${styles['icon--favourites']} ${isFavorite(product.id) ? styles.active : ''}`}
                           iconSize="lg"
                         />
                       </Button>
@@ -428,8 +414,6 @@ export const ProductDetailsPage = () => {
                       currentIndex={suggestedIndex}
                       handlePrev={handlePrev}
                       handleNext={handleNext}
-                      handleAddToCart={handleAddToCart}
-                      handleToggleFavorite={handleToggleFavorite}
                     >
                         You may also like
                     </ProductsSlider>
