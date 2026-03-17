@@ -1,0 +1,43 @@
+@mixin font($weight, $size, $lineHeight, $letterSpacing: 0) {
+  font-family: Mont, sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+  margin: 0;
+}
+
+.text-h1 {
+  @include font(800, 48px, 56px, -0.01em);
+}
+
+.text-h2 {
+  @include font(800, 32px, 41px, -0.01em);
+}
+
+.text-h3 {
+  @include font(800, 22px, 31px);
+}
+
+.text-h4 {
+  @include font(700, 20px, 26px);
+}
+
+.text-uppercase {
+  @include font(700, 12px, 11px, 0.04em);
+
+  text-transform: uppercase;
+}
+
+.text-button {
+  @include font(600, 14px, 21px);
+}
+
+.text-body {
+  @include font(500, 14px, 21px);
+}
+
+.text-small {
+  @include font(600, 12px, 15px);
+}
+

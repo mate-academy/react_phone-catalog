@@ -1,0 +1,79 @@
+@import './vars';
+@import '../styles/colors';
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desctopmin {
+  @media (min-width: $desktopmin-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desctopmax {
+  @media (min-width: $desktopmax-min-width) {
+    @content;
+  }
+}
+
+
+@mixin content-padding-inline() {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desctopmin {
+    padding-inline: 32px;
+  }
+
+  @include on-desctopmax {
+    padding-inline: 152px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desctopmin {
+    --columns: 24;
+  }
+
+  // @include onDesctopmax {
+  //   --columns: 24;
+  // }
+}
+
+// @mixin cardsGrid($minWidth: 229px) {
+//   display: grid;
+//   gap: 40px;
+//   grid-template-columns: repeat(
+//     auto-fit,
+//     minmax($minWidth, 1fr)
+//   );
+// }
+
+

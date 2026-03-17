@@ -1,0 +1,117 @@
+.icon {
+  padding: 0;
+
+  &--home {
+    height: 22px;
+    width: 64px;
+
+    @include on-desctopmin {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &--menu {
+    height: 16px;
+    width: 16px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__favourites {
+    height: 16px;
+    width: 16px;
+    transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &--footer {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__carts {
+    height: 16px;
+    width: 16px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &--close {
+    height: 16px;
+    width: 16px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--footer {
+    margin: 0;
+    margin-bottom: 32px;
+    height: 32px;
+    width: 89px;
+
+    @include on-tablet {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &--to-top {
+    align-items: center;
+    height: 16px;
+    width: 16px;
+    margin: 8px;
+    margin: 0;
+    border: 1px solid color(gray-icons);
+
+    &:hover {
+      border: 1px solid color(gray-primary);
+    }
+  }
+
+  &--arrow {
+    height: 16px;
+    width: 16px;
+    margin: 0;
+  }
+
+  &--house {
+    height: 16px;
+    width: 16px;
+    margin: 0;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

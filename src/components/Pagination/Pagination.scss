@@ -1,0 +1,62 @@
+.pagination {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+
+  @include on-desctopmin {
+    padding-bottom: 80px;
+  }
+
+  &__numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  &__numbers .isSelected {
+    color: white;
+    background-color: color(gray-primary);
+  }
+
+  &--item {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: 1px solid color(gray-primary);
+    height: 32px;
+    width: 32px;
+
+    &--arrow {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      border: 1px solid color(gray-primary);
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  &--link {
+    color: color(gray-primary);
+  }
+
+  &--link .isSelected {
+    color: white;
+    background-color: color(gray-primary);
+  }
+}

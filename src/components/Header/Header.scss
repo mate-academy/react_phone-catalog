@@ -1,0 +1,97 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid color(gray-elements);
+
+  @include on-desctopmin {
+    height: 64px;
+  }
+}
+
+.left_container {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desctopmin {
+    gap: 24px;
+  }
+}
+
+.nav_container {
+  height: 100%;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.right_container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &_big {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  }
+
+  &__desctop {
+  display: none;
+
+  @include on-tablet {
+  height: 48px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  }
+  }
+}
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+
+  border: 2px solid white;
+
+  &--count {
+  min-width: 16px;
+  height: 16px;
+  font-size: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+}
