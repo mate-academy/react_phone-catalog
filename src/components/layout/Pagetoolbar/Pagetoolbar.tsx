@@ -9,6 +9,7 @@ type Props = {
   title: string;
   subtitle?: string;
   filters?: Filter[];
+  clearFilters?: () => void;
 };
 
 export const Pagetoolbar = ({
@@ -16,15 +17,8 @@ export const Pagetoolbar = ({
   title,
   subtitle,
   filters,
+  clearFilters,
 }: Props) => {
-  const clearFilters = () => {
-    filters?.forEach(filter => {
-      if (!filter.hasDefaultValue) {
-        filter.onChange(null);
-      }
-    });
-  };
-
   return (
     <div className={styles.toolbar}>
       {breadcrumbs && <Breadcrumbs />}
@@ -51,7 +45,7 @@ export const Pagetoolbar = ({
           {filters.some(
             item => item.value !== null && !item.hasDefaultValue,
           ) && (
-            <Button color="#D64545" onClick={clearFilters}>
+            <Button color="#D64545" onClick={() => clearFilters?.()}>
               Clear filters
             </Button>
           )}

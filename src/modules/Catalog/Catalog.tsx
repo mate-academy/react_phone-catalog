@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductCard } from '../../components/layout/ProductCard';
+import { Pagination } from '../../components/ui/Pagination';
 import {
   catalogTitles,
   itemsOnPageOptions,
@@ -19,6 +20,10 @@ export const Catalog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || null;
   const perPage = searchParams.get('perPage') || null;
+  const page = searchParams.get('page') || null;
+
+  const start = (Number(page) - 1) * Number(perPage);
+  const end = Math.min(start + Number(perPage), items.length);
 
   const handleSorting = (value: FilterValue, filter: FilterParams) => {
     const params = new URLSearchParams(searchParams);
@@ -30,6 +35,10 @@ export const Catalog = () => {
     }
 
     setSearchParams(params);
+  };
+
+  const clearFilters = () => {
+    setSearchParams({});
   };
 
   const filters: Filter[] = [
@@ -68,8 +77,8 @@ export const Catalog = () => {
         break;
     }
 
-    if (perPage !== null) {
-      return sorted.slice(0, +perPage);
+    if (perPage !== null && page !== null) {
+      return sorted.slice(start, end);
     }
 
     return sorted;
@@ -82,6 +91,7 @@ export const Catalog = () => {
         title={catalogTitles[category ?? ''] ?? 'Catalog'}
         subtitle={`${items.length} models`}
         filters={filters}
+        clearFilters={clearFilters}
       />
 
       <div className={styles.content}>
@@ -89,6 +99,12 @@ export const Catalog = () => {
           return <ProductCard product={product} key={product.id} />;
         })}
       </div>
+
+      {perPage !== null && (
+        <div className={styles.footer}>
+          <Pagination itemsAmount={items.length} />
+        </div>
+      )}
     </section>
   );
 };
