@@ -58,8 +58,10 @@
 .price_container {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .price {

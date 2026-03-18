@@ -88,7 +88,7 @@ export const HomePage = () => {
 
   const currentImages = isMobile
     ? [
-        "./img/BannerMobile.svg",
+        "./img/BannerMobile.png",
         images[1],
         images[2],
         images[3],
