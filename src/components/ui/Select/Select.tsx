@@ -17,7 +17,6 @@ export const Select = ({
 
   const handleSelect = (eventValue: FilterValue) => {
     onChange(eventValue);
-
     setIsOpen(false);
   };
 

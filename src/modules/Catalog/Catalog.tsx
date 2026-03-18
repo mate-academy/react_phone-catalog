@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductCard } from '../../components/layout/ProductCard';
 import {
@@ -9,7 +8,7 @@ import {
   sortByOptions,
 } from '../../store/constants';
 import { ProductsContext } from '../../store/ProductsProvider';
-import { Filter } from '../../types/types';
+import { Filter, FilterParams, FilterValue } from '../../types/types';
 import styles from './Catalog.module.scss';
 
 export const Catalog = () => {
@@ -17,8 +16,37 @@ export const Catalog = () => {
   const products = useContext(ProductsContext);
   const items = products.filter(item => item.category === category);
 
-  const [sortBy, setSortBy] = useState<string | null>(null);
-  const [itemsOnPage, setItemsOnPage] = useState<number | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortBy = searchParams.get('sort') || null;
+  const perPage = searchParams.get('perPage') || null;
+
+  const handleSorting = (value: FilterValue, filter: FilterParams) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === null) {
+      params.delete(filter);
+    } else {
+      params.set(filter, String(value));
+    }
+
+    setSearchParams(params);
+  };
+
+  const filters: Filter[] = [
+    {
+      title: 'Sort by',
+      value: sortBy,
+      onChange: value => handleSorting(value, 'sort'),
+      options: sortByOptions,
+      placeholder: 'Maybe newest?',
+    },
+    {
+      title: 'Items on page',
+      value: perPage,
+      onChange: value => handleSorting(value, 'perPage'),
+      options: itemsOnPageOptions,
+    },
+  ];
 
   const filteredItems = () => {
     const sorted = [...items];
@@ -40,28 +68,12 @@ export const Catalog = () => {
         break;
     }
 
-    if (itemsOnPage !== null) {
-      return sorted.slice(0, itemsOnPage);
+    if (perPage !== null) {
+      return sorted.slice(0, +perPage);
     }
 
     return sorted;
   };
-
-  const filters: Filter[] = [
-    {
-      title: 'Sort by',
-      value: sortBy,
-      onChange: value => setSortBy(value as string | null),
-      options: sortByOptions,
-      placeholder: 'Maybe newest?',
-    },
-    {
-      title: 'Items on page',
-      value: itemsOnPage,
-      onChange: value => setItemsOnPage(value as number | null),
-      options: itemsOnPageOptions,
-    },
-  ];
 
   return (
     <section className={styles.container}>

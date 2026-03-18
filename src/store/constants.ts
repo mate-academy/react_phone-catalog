@@ -24,10 +24,9 @@ export const sortByOptions = [
 ];
 
 export const itemsOnPageOptions = [
-  { label: 'All', value: null },
-  { label: '4', value: 4 },
-  { label: '8', value: 8 },
-  { label: '16', value: 16 },
+  { label: '4', value: '4' },
+  { label: '8', value: '8' },
+  { label: '16', value: '16' },
 ];
 
 export const catalogTitles: Record<string, string> = {

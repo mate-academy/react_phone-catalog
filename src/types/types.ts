@@ -13,7 +13,9 @@ export interface Product {
   image: string;
 }
 
-export type FilterValue = string | number | null;
+export type FilterParams = 'sort' | 'perPage';
+
+export type FilterValue = string | null;
 
 export type FilterOption = {
   value: FilterValue;
