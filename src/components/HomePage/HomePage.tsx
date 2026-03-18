@@ -23,7 +23,9 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <main className={styles.main}>
-        <h1 className={styles.none}>Product Catalog</h1>
+        <h1 style={{ position: 'absolute', left: '-9999px' }}>
+          Product Catalog
+        </h1>
         <p className={styles.title}>{t('title')}</p>
       </main>
 
