@@ -1,0 +1,67 @@
+import React  from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Footer.module.scss';
+import logoLight from '@/assets/logo/Logo.svg';
+import arrowUp from '@/assets/icons/ArrowUp.svg';
+import cn from 'classnames';
+
+export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.footer__container}>
+        <Link to="/" className={styles.footer__logo}>
+          <img
+            src={logoLight}
+            alt="Logo"
+            className={cn(styles.logo, styles.logoLight)}
+          />
+        </Link>
+        <nav className={styles.nav}>
+          <ul className={styles.nav__list}>
+            <li className={styles.nav__item}>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.nav__link}
+              >
+                Github
+              </a>
+            </li>
+            <li className={styles.nav__item}>
+              <a href="#contacts" className={styles.nav__link}>
+                Contacts
+              </a>
+            </li>
+            <li className={styles.nav__item}>
+              <a href="#rights" className={styles.nav__link}>
+                Rights
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div className={styles.backToTop}>
+          <span className={styles.backToTop__text}>Back to top</span>
+          <button
+            type="button"
+            className={styles.backToTop__button}
+            onClick={scrollToTop}
+          >
+            <img
+              src={arrowUp}
+              alt="Go to top"
+              className={styles.backToTop__icon}
+            />
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+}

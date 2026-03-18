@@ -1,0 +1,47 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  border: $border-icon;
+  background-color: $color-icon-bg;
+  color: $color-icon-content;
+
+  cursor: pointer;
+  @include desktop-button;
+  transition: all 0.3s ease;
+
+  &:hover:not(.active) {
+    border: 1px solid $color-primary;
+    background-color: $color-icon-bg-hover;
+  }
+
+  &.active {
+    transform: scale(0.92);
+    color: $color-red;
+
+    .icon path {
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1px;
+
+    transition:
+      fill 0.3s ease,
+      stroke 0.3s ease;
+  }
+}

@@ -1,0 +1,246 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  background-color: $color-page-bg;
+  border-bottom: $border;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  @include tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  @include desktop {
+    height: 64px;
+    gap: 24px;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    @include tablet {
+      justify-content: flex-start;
+      width: auto;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    width: auto;
+    object-fit: contain;
+
+    @include tablet {
+      height: 28px;
+    }
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 100%;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $color-elements;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+
+  :global([data-theme='dark']) & {
+    filter: invert(1) brightness(2);
+  }
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 48px);
+  background-color: $color-page-bg;
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+  &Visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @include tablet {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    position: static;
+    height: 100%;
+    background-color: transparent;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: none;
+  }
+}
+
+.nav {
+  @include tablet {
+    height: 100%;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px 0;
+
+    @include tablet {
+      flex-direction: row;
+      height: 100%;
+      padding: 0;
+      gap: 32px;
+    }
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    @include tablet {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include desktop-uppercase;
+    color: $color-secondary;
+    letter-spacing: 4%;
+    transition: color 0.3s ease;
+
+    &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-primary;
+    bottom: -8px;
+
+    @include tablet { bottom: -16px; }
+    @include desktop { bottom: -22px; }
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    color: $color-primary;
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+    &Active {
+      color: $color-primary;
+
+      &::after {
+        transform: scaleX(1);
+      transition: none;
+      }
+    }
+
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+  border-top: 1px solid $color-elements;
+
+  @include tablet {
+    border-top: none;
+    width: auto;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-right: 1px solid $color-elements;
+    height: 100%;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      background-color: $color-surface-2;
+    }
+
+    @include tablet {
+      height: 48px;
+      width: 48px;
+      border-right: none;
+      border-left: 1px solid $color-elements;
+    }
+
+    @include desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+}

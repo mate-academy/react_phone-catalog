@@ -1,0 +1,148 @@
+@use 'variables' as *;
+
+@mixin typography($weight, $size, $lineHeight, $letterSpacing: 0) {
+  font-family: $font-main;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin desktop-h1 {
+  @include typography($font-weight-bold, 48px, 56px, -0.01em);
+}
+
+@mixin desktop-h2 {
+  @include typography($font-weight-bold, 32px, 41px, -0.01em);
+}
+
+@mixin desktop-h3 {
+  @include typography($font-weight-bold, 22px, 31px);
+}
+
+@mixin desktop-uppercase {
+  @include typography($font-weight-bold, 12px, 21px);
+}
+
+@mixin desktop-h4 {
+  @include typography($font-weight-semibold, 20px, 26px);
+}
+
+@mixin desktop-button {
+  @include typography($font-weight-semibold, 14px, 21px);
+}
+
+@mixin desktop-body {
+  @include typography($font-weight-regular, 14px, 21px);
+}
+
+@mixin desktop-small-text {
+  @include typography($font-weight-semibold, 12px, 15px);
+}
+
+
+// MOBILE
+@mixin mobile-h1 {
+  @include typography($font-weight-bold, 32px, 41px, -0.01em);
+}
+
+@mixin mobile-h2 {
+  @include typography($font-weight-bold, 22px, 31px);
+}
+
+@mixin mobile-h3 {
+  @include typography($font-weight-semibold, 20px, 26px);
+}
+
+@mixin mobile-h4 {
+  @include typography($font-weight-semibold, 16px, 20px);
+}
+
+
+// grid layoyt
+@function col-width($col-count, $total-cols) {
+  @return calc(100% / #{$total-cols} * #{$col-count});
+}
+
+// container
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $gutter;
+
+  @media (min-width: $tablet) {
+    padding: 0 $tablet-margin;
+  }
+
+  @media (min-width: $desktop) {
+    max-width: $desktop;
+    padding: 0;
+  }
+}
+
+// media query
+@mixin mobile {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile-large {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+
+
+
+// grid product list
+@mixin product-grid-layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  .card {
+    grid-column: span 4;
+  }
+
+
+  @include mobile-large {
+    .card {
+      grid-column: span 2;
+    }
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+    .card {
+      grid-column: span 4;
+    }
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+    .card {
+      grid-column: span 6;
+    }
+  }
+
+}
