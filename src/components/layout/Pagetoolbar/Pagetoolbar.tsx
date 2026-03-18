@@ -1,5 +1,6 @@
 import { Filter } from '../../../types/types';
 import { Breadcrumbs } from '../../features/Breadcrumbs';
+import { Button } from '../../ui/Button';
 import { Select } from '../../ui/Select';
 import styles from './Pagetoolbar.module.scss';
 
@@ -16,6 +17,14 @@ export const Pagetoolbar = ({
   subtitle,
   filters,
 }: Props) => {
+  const clearFilters = () => {
+    filters?.forEach(filter => {
+      if (!filter.hasDefaultValue) {
+        filter.onChange(null);
+      }
+    });
+  };
+
   return (
     <div className={styles.toolbar}>
       {breadcrumbs && <Breadcrumbs />}
@@ -34,9 +43,18 @@ export const Pagetoolbar = ({
                 placeholder={item.placeholder}
                 value={item.value}
                 onChange={item.onChange}
+                hasDefaultValue={item.hasDefaultValue}
               />
             );
           })}
+
+          {filters.some(
+            item => item.value !== null && !item.hasDefaultValue,
+          ) && (
+            <Button color="#D64545" onClick={clearFilters}>
+              Clear filters
+            </Button>
+          )}
         </div>
       )}
     </div>

@@ -14,7 +14,21 @@ export const App = () => {
         <ProductsProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/phones" element={<Catalog />} />
+            <Route path="/:category" element={<Catalog />} />
+            {/* <Route
+              path="/phones"
+              element={<Catalog category="phones" />}
+            />
+
+            <Route
+              path="/tablets"
+              element={<Catalog category="tablets" />}
+            />
+
+            <Route
+              path="/accessories"
+              element={<Catalog category="accessories" />}
+            /> */}
           </Routes>
         </ProductsProvider>
       </main>

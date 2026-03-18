@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { navigation } from '../../../store/constants';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Header.module.scss';
 
@@ -19,36 +20,32 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <Link to="/" className={styles.logo__link}>
+          <NavLink to="/" className={styles.logo__link}>
             <img
               src={imageUrl('icons/Logo.svg')}
               alt=""
               className={styles.logo__img}
             />
-          </Link>
+          </NavLink>
         </div>
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
-            <li className={styles.nav__item}>
-              <Link to="/" className={styles.nav__link}>
-                Home
-              </Link>
-            </li>
-            <li className={styles.nav__item}>
-              <Link to="/phones" className={styles.nav__link}>
-                Phones
-              </Link>
-            </li>
-            <li className={styles.nav__item}>
-              <Link to="/" className={styles.nav__link}>
-                Tablets
-              </Link>
-            </li>
-            <li className={styles.nav__item}>
-              <Link to="/" className={styles.nav__link}>
-                Accessories
-              </Link>
-            </li>
+            {navigation.map((item, index) => {
+              return (
+                <li key={index} className={styles.nav__item}>
+                  <NavLink
+                    to={item.href}
+                    className={({ isActive }) =>
+                      classNames(styles.nav__link, {
+                        [styles.nav__link_active]: isActive,
+                      })
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </nav>
         <div className={styles.buttons}>

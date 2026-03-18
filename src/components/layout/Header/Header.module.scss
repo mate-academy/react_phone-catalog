@@ -89,7 +89,8 @@
       transition: $transition;
     }
 
-    &:hover {
+    &:hover,
+    &_active {
       color: $main;
 
       &::after {

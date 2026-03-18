@@ -26,4 +26,5 @@ export interface Filter {
   onChange: (value: FilterValue) => void;
   options: FilterOption[];
   placeholder?: string;
+  hasDefaultValue?: boolean;
 }

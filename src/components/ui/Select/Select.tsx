@@ -10,6 +10,7 @@ export const Select = ({
   onChange,
   placeholder = 'Choose one',
   title,
+  hasDefaultValue,
 }: Filter) => {
   const [isOpen, setIsOpen] = useState(false);
   const selected = options.find(item => item.value === value);
@@ -22,7 +23,21 @@ export const Select = ({
 
   return (
     <div className={styles.container}>
-      {title && <p className={styles.title}>{title}</p>}
+      <div className={styles.group}>
+        {title && <p className={styles.title}>{title}</p>}
+        {/* {order && <button
+          type="button"
+          className={styles.order}
+        >
+          <img
+            src={imageUrl('icons/ArrowUp.svg')}
+            alt="order"
+            className={classNames(styles.icon, {
+              [styles.icon__desc]: order === 'desc'
+            })}
+          />
+        </button>} */}
+      </div>
       <div
         className={classNames(styles.select, {
           [styles.select__active]: isOpen,
@@ -45,6 +60,14 @@ export const Select = ({
               [styles.list__active]: isOpen,
             })}
           >
+            {!hasDefaultValue && (
+              <li
+                className={styles.list__item}
+                onClick={() => handleSelect(null)}
+              >
+                Reset
+              </li>
+            )}
             {options.map((item, index) => {
               return (
                 <li

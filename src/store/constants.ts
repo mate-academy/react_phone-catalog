@@ -1,0 +1,37 @@
+export const navigation = [
+  {
+    href: '/',
+    label: 'Home',
+  },
+  {
+    href: '/phones',
+    label: 'Phones',
+  },
+  {
+    href: '/tablets',
+    label: 'Tablets',
+  },
+  {
+    href: '/accessories',
+    label: 'Accessories',
+  },
+];
+
+export const sortByOptions = [
+  { label: 'Newest', value: 'year' },
+  { label: 'Alphabetically', value: 'alph' },
+  { label: 'Price', value: 'price' },
+];
+
+export const itemsOnPageOptions = [
+  { label: 'All', value: null },
+  { label: '4', value: 4 },
+  { label: '8', value: 8 },
+  { label: '16', value: 16 },
+];
+
+export const catalogTitles: Record<string, string> = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};

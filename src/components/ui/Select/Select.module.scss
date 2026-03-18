@@ -3,10 +3,17 @@
   font-size: 12px;
   line-height: 100%;
   color: $secondary;
+}
+
+.group {
   padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .select {
+  z-index: 999;
   background-color: $white;
   position: relative;
   width: 176px;
@@ -43,10 +50,23 @@
   }
 }
 
+.order {
+  height: 16px;
+  width: 16px;
+}
+
+.icon {
+  @extend %hover-transition;
+
+  &__desc {
+    transform: rotate(180deg);
+  }
+}
+
 .list {
   @extend %hover-transition;
 
-  max-height: 200px;
+  max-height: 320px;
   overflow-y: auto;
 
   transform: scaleY(0);

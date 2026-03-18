@@ -10,6 +10,10 @@
   @extend %page-title;
 
   margin-bottom: 10px;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .subtitle {
@@ -21,5 +25,6 @@
 
 .inline {
   display: flex;
+  align-items: flex-end;
   gap: 20px;
 }
