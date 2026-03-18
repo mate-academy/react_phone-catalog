@@ -1,0 +1,51 @@
+@import '../../styles/index';
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selectContent {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sortBySelect {
+  width: 100%;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.itemsOnPageSelect {
+  width: 100%;
+
+  @include on-tablet {
+    width: 136px;
+  }
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.productsListSection {
+  margin-top: 24px;
+}
+
+.paginationSection {
+  margin-top: 24px;
+  margin-inline: auto;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}

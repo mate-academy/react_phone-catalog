@@ -1,0 +1,46 @@
+@import '../../styles/index';
+
+.productSpec {
+  position: relative;
+  width: 100%;
+}
+
+.productId {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: 700;
+  font-size: 12px;
+  color: $icons-color;
+}
+
+.productSpecContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+
+  @include on-tablet {
+    max-width: 320px;
+  }
+}
+
+.priceAndButtonsContent {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 48px;
+}
+
+.mainSpecsSection {
+  margin-top: 8px;
+}

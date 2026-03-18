@@ -1,0 +1,69 @@
+@import '../../styles/index';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+
+  @include on-tablet {
+    height: clamp(190px, 30vw, 400px);
+  }
+}
+
+.viewport {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  animation: fade-in 0.5s ease;
+
+  @include on-tablet {
+    border-radius: 8px;
+  }
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 0 0;
+  padding: 0;
+  height: 24px;
+}
+
+.indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 24px;
+  list-style: none;
+}
+
+.indicatorButton {
+  width: 14px;
+  height: 4px;
+  background-color: $elements-color;
+  border: none;
+  cursor: pointer;
+}
+
+.indicatorButtonActive {
+  background-color: $primary-color;
+}

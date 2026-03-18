@@ -1,0 +1,80 @@
+@import '../../styles/index';
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+}
+
+.categoryItem {
+  flex: 1 1 100%;
+  width: 100%;
+
+  @include on-tablet {
+    flex: 1 1 calc(33.33% - 16px);
+  }
+}
+
+.categoryLink {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.categoryFigure {
+  margin: 0;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.categoryImg {
+  width: 100%;
+  max-height: 288px;
+  object-fit: cover;
+  object-position: 25px 25px;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  background: #22c1c3;
+  background: linear-gradient(
+    280deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 95%
+  );
+
+  @include on-tablet {
+    flex: 1 1 100%;
+    max-width: 368px;
+    max-height: 368px;
+
+    @include hover(scale, 1.07);
+  }
+}
+
+.categoryCaption {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+}
+
+.categoryTitle {
+  margin: 0;
+  color: $primary-color;
+  font-size: 20px;
+}
+
+.categoryQty {
+  margin: 0;
+  color: $secondary-color;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
