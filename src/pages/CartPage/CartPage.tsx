@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import '../../styles/style.scss';
 import { CartItem } from '../../types/CartItem';
 import { CartsContext } from '../../components/Context/CartsContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { icons } from '../../utils/icons';
 
 export const CartsPage = () => {
@@ -91,13 +91,21 @@ export const CartsPage = () => {
                       </button>
                     </div>
                     <div className="cart__img">
-                      <img
-                        src={c.image}
-                        alt="cartImg"
-                        className="cart__img--photo"
-                      />
+                      <NavLink
+                        to={`/${c.category}/${c.itemId}`}
+                        end
+                        className="product__image__link"
+                      >
+                        <img
+                          src={c.image}
+                          alt="cartImg"
+                          className="cart__img--photo"
+                        />
+                      </NavLink>
                     </div>
-                    <div className="cart__title">{c.name}</div>
+                    <NavLink to={`/${c.category}/${c.itemId}`}>
+                      <div className="cart__title">{c.name}</div>
+                    </NavLink>
                   </div>
                   <div className="cart__rightContainer">
                     <div className="cart__amount">
