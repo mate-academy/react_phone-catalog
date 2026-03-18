@@ -1,0 +1,9 @@
+@import '../../../styles/index';
+
+.arrow {
+  @include round-button;
+}
+
+.disabled {
+  @include disabled;
+}
