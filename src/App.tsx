@@ -18,6 +18,7 @@ import { ProductDetailsPage } from './pages/ProductDetails/ProductDetailsPage';
 export const App = () => {
   return (
     <div data-cy="app" className="app">
+      <h1 className="visually-hidden">Product Catalog</h1>
       <Header />
 
       <main className="app__content">

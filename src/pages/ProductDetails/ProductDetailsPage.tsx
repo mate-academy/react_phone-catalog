@@ -86,6 +86,8 @@ export const ProductDetailsPage = () => {
 
   const getParam = (key: string, fallback?: string) =>
     searchParams.get(key) ?? fallback ?? '';
+  const normalizeColor = (value: string) =>
+    value.replace(/\s+/g, '').toLowerCase();
 
   const selectedColor = getParam('color', product?.color);
   const selectedCapacity = getParam('capacity', product?.capacity);
@@ -130,7 +132,7 @@ export const ProductDetailsPage = () => {
     const matched = variants.find(
       p =>
         p.namespaceId === product.namespaceId &&
-        p.color === newColor &&
+        normalizeColor(p.color) === normalizeColor(newColor) &&
         p.capacity === newCapacity,
     );
 
@@ -140,7 +142,7 @@ export const ProductDetailsPage = () => {
 
     const params = new URLSearchParams(searchParams);
 
-    params.set('color', newColor);
+    params.set('color', matched.color);
     params.set('capacity', newCapacity);
 
     navigate(`/${category}/${matched.id}?${params.toString()}`);
@@ -233,14 +235,14 @@ export const ProductDetailsPage = () => {
                   {product.colorsAvailable.map((c, i) => (
                     <div
                       className={
-                        c === selectedColor
+                        normalizeColor(c) === normalizeColor(selectedColor)
                           ? 'pageDetails__color__container--border--active'
                           : 'pageDetails__color__container--border'
                       }
                       key={i}
                     >
                       <div
-                        className={`pageDetails__color--option product-${c}`}
+                        className={`pageDetails__color--option product-${normalizeColor(c)}`}
                         onClick={() => handleChange('color', c)}
                       ></div>
                     </div>

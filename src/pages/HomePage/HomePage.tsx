@@ -106,7 +106,6 @@ export const HomePage = () => {
     <>
       <div className="page home">
         <section className="home__top">
-          <h1 className="visually-hidden">Product Catalog</h1>
           <h2 className="home__title text-h1">
             Welcome to Nice Gadgets store!
           </h2>
