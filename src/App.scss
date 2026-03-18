@@ -2,10 +2,11 @@
 @import './style/mixins';
 @import './style/vars';
 @import './style/extends';
+@import './style/fonts';
 
 html,
 body {
-  background-color: var(--page-bg);
+  background-color: var(--main-bg);
   color: var(--text-main);
   transition:
     color $transition ease,

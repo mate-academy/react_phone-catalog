@@ -13,7 +13,7 @@
   opacity: 0;
   transition: all $transition;
   z-index: 2;
-  background-color: var(--page-bg);
+  background-color: var(--main-bg);
 
   &--open {
     transform: translateY(0);

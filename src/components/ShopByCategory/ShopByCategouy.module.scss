@@ -1,0 +1,79 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+@import '../../style/extends';
+
+.shopByCategory {
+  @include content-padding-inline;
+  @include page-grid;
+
+  &__title {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+
+    @extend %h2;
+    @include title-margin-block;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__listItem {
+    flex: 1 1 0;
+  }
+
+  &__link {
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+
+    @include on-tablet {
+      border-radius: 0;
+    }
+
+    &--phones {
+      background-color: $phone-category;
+    }
+
+    &--tablets {
+      background-color: $tablet-category;
+    }
+
+    &--accessories {
+      background-color: $accessory-category;
+    }
+  }
+
+  &__img {
+    width: 90%;
+    object-fit: cover;
+    position: absolute;
+    left: 20%;
+    top: 15%;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__categoryTitle {
+    @extend %h4;
+
+    margin-top: 24px;
+  }
+
+  &__count {
+    @extend %body-text-14;
+
+    color: var(--text-secondary);
+  }
+}

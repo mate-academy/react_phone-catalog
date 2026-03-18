@@ -1,20 +1,32 @@
 // LIGHT THEME
-$lt-primary: #0F0F11; // Main text
-$lt-secondary: #89939A; // Secondary text
-$lt-elements: #E2E6E9; // border
-$lt-purple: #4219D0; // bvutton/ button text
-$lt-main-bg: #FAFBFC; // background
+$lt-primary: #0f0f11; // Main text
+$lt-secondary: #89939a; // Secondary text
+$lt-elements: #e2e6e9; // border
+$lt-purple: #4219d0; // bvutton/ button text
+$lt-main-bg: #fafbfc; // background
 $lt-white: #fff; // card background
+$lt-bt-sl-bd: #b4bdc3;
+$lt-bt-sl-bg: #fff;
+$c-gray: #eee;
+$lt-shadow-add-bt: #17203166;
+$lt-shadow-card: #252525e3;
+$phone-category: #6D6474;
+$tablet-category: #8d8d92;
+$accessory-category: #973d5f;
+
 
 // DARK THEME
-$dt-black: #0F0F11; // page backgroun
+$dt-black: #0f0f11; // page backgroun
 $dt-elements: #3b3e4a; // border
-$dt-secondary: #75767F;
+$dt-secondary: #89939a;
 $dt-card-bg: #161827;
-$dt-purple: #905BFF; // bvutton/ button text
+$dt-purple: #905bff; // bvutton/ button text
 $dt-white: #f1f2f9; // Text and light accents
-
-
+$dt-bt-sl-bd: #323542;
+$dt-bt-sl-bg: #323542;
+$dt-shadow-add-bt: #E8DFCE66;
+$dt-disabled-icon: #4A4D58;
+$dt-shadow-card: #DADADAE3;
 $transition: 0.3s;
 $table-min-width: 640px;
 $desktop-min-width: 1200px;
@@ -28,6 +40,12 @@ $desktop-min-width: 1200px;
   --btn-bg: #{$lt-purple};
   --btn-text: #{$lt-white};
   --icon-color: #{$lt-primary};
+  --border-sl-bt: #{$lt-bt-sl-bd};
+  --sl-bt-bg: #{$lt-bt-sl-bg};
+  --main-bg: #{$c-gray};
+  --shadow-add-bt: #{$lt-shadow-add-bt};
+  --shasow-card: #{$lt-shadow-card};
+  --icon-disabled: #{$lt-bt-sl-bd};
 }
 
 [data-theme='dark'] {
@@ -39,4 +57,10 @@ $desktop-min-width: 1200px;
   --btn-bg: #{$dt-purple};
   --btn-text: #{$dt-white};
   --icon-color: #{$dt-white};
+  --border-sl-bt: #{$dt-bt-sl-bd};
+  --sl-bt-bg: #{$dt-bt-sl-bg};
+  --main-bg: #{$dt-black};
+  --shadow-add-bt: #{$dt-shadow-add-bt};
+  --shasow-card: #{$dt-shadow-card};
+  --icon-disabled: #{$dt-disabled-icon};
 }

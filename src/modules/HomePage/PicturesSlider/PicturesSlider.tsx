@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import style from './PicturesSlider.module.scss';
 import classNames from 'classnames';
+import { Icon } from '../../../components/ui/Icon/Icon';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -46,6 +47,16 @@ export const PicturesSlider = () => {
 
   return (
     <section className={style.slider}>
+      <button
+        onClick={previosBunner}
+        className={classNames(
+          style.slider__button,
+          style['slider__button--left'],
+        )}
+      >
+        <Icon className={style.slider__arrowSlider} nameIcon="left" />
+      </button>
+
       <div
         className={style.slider__container}
         onTouchStart={handleTouchStart}
@@ -53,18 +64,34 @@ export const PicturesSlider = () => {
       >
         <div
           className={style.slider__viewport}
-          style={{ transform: `translateX(-${currentIndex * 100}vw)` }}
+          style={{ transform: `translate3d(-${currentIndex * 100}%, 0, 0)` }}
         >
           {pictures.map(banner => (
             <img
               key={banner}
-              className={style.slider__img}
+              className={classNames(style.slider__img, {
+                [style['slider__img--contain']]:
+                  currentIndex === 3 ||
+                  currentIndex === 4 ||
+                  currentIndex === 5,
+              })}
               src={banner}
               alt={`banner ${currentIndex + 1}`}
             />
           ))}
         </div>
       </div>
+
+      <button
+        onClick={nextBunner}
+        className={classNames(
+          style.slider__button,
+          style['slider__button--right'],
+        )}
+      >
+        <Icon className={style.slider__arrowSlider} nameIcon="right" />
+      </button>
+
       <div className={style['slider__dots-container']}>
         {pictures.map((_, index) => (
           <button
