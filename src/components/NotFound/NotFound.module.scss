@@ -1,0 +1,56 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.text {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  text-transform: uppercase;
+
+  color: var(--color-secondary);
+
+  @include mobile {
+    font-size: 38px;
+  }
+}
+
+.backbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 66px;
+  height: 16px;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--color-secondary);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrowimg {
+  height: 30px;
+  width: 30px;
+}

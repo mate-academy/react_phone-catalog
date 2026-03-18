@@ -1,0 +1,116 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.footer {
+  border: 1px solid var(--color-elements);
+
+  @include mobile {
+    padding-top: 32px;
+  }
+}
+
+.containetfotter {
+  @include container;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+}
+
+.logo {
+  justify-self: start;
+}
+
+.nav {
+  justify-self: center;
+
+  @include mobile {
+    justify-self: start;
+  }
+}
+
+.upscrole {
+  display: flex;
+  gap: 16px;
+  justify-self: end;
+
+  @include mobile {
+    justify-self: center;
+  }
+}
+
+.link {
+  position: relative;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--color-primary);
+}
+
+.li_links {
+  list-style: none;
+}
+
+.textscrole {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-secondary);
+}
+
+.boxArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-icons);
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 16px;
+  height: 16px;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+  }
+}

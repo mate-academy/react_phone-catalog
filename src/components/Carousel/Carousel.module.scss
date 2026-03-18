@@ -1,0 +1,252 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.Carousel {
+  @include container;
+
+  position: relative;
+  padding: 0;
+}
+
+.decorBlock {
+  position: absolute;
+  left: 60px;
+  top: 200px;
+  transform: translateY(-50%);
+  width: 450px;
+  border-radius: 7%;
+  height: 380px;
+  background: var(--color-primary);
+  z-index: 10;
+
+  @include tablet {
+    width: 228.96px;
+    height: 179.55px;
+    left: 84px;
+    top: 95px;
+  }
+
+  @include mobile {
+    top: 100px;
+    background: none;
+    left: 60px;
+    pointer-events: none;
+  }
+}
+
+.content {
+  padding-left: 40px;
+
+  @media (max-width: 1199px) {
+    padding-left: 20px;
+  }
+}
+
+.titlecard {
+  padding-top: 50px;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  width: 380px;
+
+  background: linear-gradient(90deg, #6a4dff 0%, #a855f7 50%, #c084fc 100%);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+
+  @include tablet {
+    width: 170px;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    padding-top: 20px;
+  }
+
+  @include mobile {
+    width: auto;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    padding-top: 20px;
+  }
+}
+
+.germanText {
+  font-size: 38px;
+
+  @include tablet {
+    font-size: 18px;
+  }
+}
+
+.ukrainianText {
+  font-size: 38px;
+
+  @include tablet {
+    font-size: 18px;
+  }
+}
+
+.textp {
+  padding-top: 15px;
+  padding-bottom: 82px;
+  position: relative;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+
+  color: var(--color-secondary);
+
+  @include tablet {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 8px;
+    padding-top: 3px;
+    padding-bottom: 30px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.smallText {
+  padding-bottom: 42px;
+
+  @include tablet {
+    padding-bottom: 20px;
+  }
+}
+
+.buttonorder {
+  width: 180px;
+  height: 56px;
+
+  background: transparent;
+  border: 1px solid var(--color-secondary);
+
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  @include tablet {
+    width: 90px;
+    height: 30px;
+    font-size: 7px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.buttonorder:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.carouselContent {
+  @include grid;
+
+  align-items: center;
+  position: relative;
+}
+
+.viewport {
+  @include span(22);
+
+  overflow: hidden;
+
+  @include tablet {
+    @include span(10);
+  }
+}
+
+.track {
+  display: flex;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 400px;
+  display: block;
+
+  @include tablet {
+    height: 189px;
+  }
+
+  @include mobile {
+    height: 320px;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: none;
+  border: 1px solid var(--color-elements);
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-icons);
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-bottom: 24px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: var(--color-elements);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    background-color: var(--color-icons);
+  }
+
+  &.active {
+    background-color: var(--color-primary);
+  }
+}

@@ -1,0 +1,149 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.content {
+  @include container;
+}
+
+.productlist {
+  @include grid;
+
+  row-gap: 40px;
+}
+
+.productItem {
+  @include span(6, 6, 4);
+}
+
+.title {
+  @include span(24);
+
+  margin: 0;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+
+  color: var(--color-primary);
+
+  @include tablet {
+    @include span(8);
+  }
+
+  @include mobile {
+    @include span(4);
+
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.text {
+  margin: 0;
+  padding-top: 18px;
+  position: relative;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: var(--color-secondary);
+}
+
+.smallText {
+font-size: 12px;
+}
+
+.sortcategory {
+  @include grid;
+
+  padding-top: 22px;
+  padding-bottom: 24px;
+}
+
+.selectbox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selectbox:first-child {
+  @include span(4, 4, 2);
+}
+
+.selectbox:last-child {
+  @include span(3, 3, 2);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: var(--color-primary);
+
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid var(--color-elements);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-icons);
+  }
+
+  &.active {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+.hidden {
+  pointer-events: none;
+}
+
+.boxpagebar {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.pagebar {
+  display: flex;
+  flex-direction: row;
+}
+
+select {
+  border: none;
+  width: 100%;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+
+  color: var(--color-primary);
+  cursor: pointer;
+  outline: none;
+}
+
+.selectscore,
+.selectcategory {
+  display: grid;
+  grid-template-areas: 'select';
+  align-items: center;
+  position: relative;
+  border: 1px solid var(--color-icons);
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+}

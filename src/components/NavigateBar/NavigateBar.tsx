@@ -1,0 +1,47 @@
+import React from 'react';
+import styles from './NavigateBar.module.scss';
+import { useLocation, useParams } from 'react-router-dom';
+
+export const NavigateBar: React.FC = () => {
+  const { category, productId } = useParams<{
+    category: string;
+    productId?: string;
+  }>();
+
+  const location = useLocation();
+  const path = location.pathname;
+
+  const isSpecialPage = path === '/favorites' || path === '/cart';
+
+  const pageName = path.replace('/', '');
+
+  return (
+    <>
+      <div className={styles.urlplace}>
+        <img src="/img/icons/Home.svg" alt="" className={styles.aс} />
+        <img src="/img/icons/arrowRight.svg" alt="" className={styles.aс} />
+        {isSpecialPage && (
+          <p className={styles.aс}>
+            {pageName.charAt(0).toUpperCase() + pageName.slice(1)}
+          </p>
+        )}
+
+        {!isSpecialPage && (
+          <>
+            <p className={styles.aс}>
+              {category && category.charAt(0).toUpperCase() + category.slice(1)}
+            </p>
+
+            <img src="/img/icons/arrowRight.svg" alt="" className={styles.aс} />
+
+            {productId && (
+              <p className={styles.acс}>
+                {productId.charAt(0).toUpperCase() + productId.slice(1)}
+              </p>
+            )}
+          </>
+        )}
+      </div>
+    </>
+  );
+};
