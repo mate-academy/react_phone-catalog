@@ -10,11 +10,13 @@ import React from 'react';
 import './styles/style.scss';
 import { FavouritesProvider } from './components/Context/FavouritesContext';
 import { CartsProvider } from './components/Context/CartsContext';
+import { ScrollToTop } from './components/ScrollToTop';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <FavouritesProvider>
     <CartsProvider>
       <Router>
+        <ScrollToTop />
         <App />
       </Router>
     </CartsProvider>

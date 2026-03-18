@@ -2,6 +2,15 @@
   @include page-grid;
 
   row-gap: 16px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desctopmin {
+    margin-bottom: 80px;
+  }
 
   &__container {
     display: flex;
@@ -109,7 +118,8 @@
     padding: 24px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 56px;
+
+    // margin-bottom: 56px;
 
     grid-column: span 4;
 

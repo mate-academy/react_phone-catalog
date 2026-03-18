@@ -1,9 +1,9 @@
 import { Product } from './types/Product';
 import { ProductCategory, ProductDetails } from './types/ProductDetails';
 
-import phones from '../public/api/phones.json';
-import tablets from '../public/api/tablets.json';
-import accessories from '../public/api/accessories.json';
+// import phones from '../public/api/phones.json';
+// import tablets from '../public/api/tablets.json';
+// import accessories from '../public/api/accessories.json';
 
 const API_URL = 'http://localhost:5173/api/';
 
@@ -17,23 +17,23 @@ export async function getProducts(): Promise<Product[]> {
     .then(response => response.json());
 }
 
-export const getProductsByCategory = (
-  category: ProductCategory,
-): ProductDetails[] => {
-  switch (category) {
-    case 'phones':
-      return phones as ProductDetails[];
+// export const getProductsByCategory = (
+//   category: ProductCategory,
+// ): ProductDetails[] => {
+//   switch (category) {
+//     case 'phones':
+//       return phones as ProductDetails[];
 
-    case 'tablets':
-      return tablets as ProductDetails[];
+//     case 'tablets':
+//       return tablets as ProductDetails[];
 
-    case 'accessories':
-      return accessories as ProductDetails[];
+//     case 'accessories':
+//       return accessories as ProductDetails[];
 
-    default:
-      return [];
-  }
-};
+//     default:
+//       return [];
+//   }
+// };
 
 export async function getProductByCategory(
   category: ProductCategory,

@@ -3,8 +3,7 @@ import '../../styles/style.scss';
 import { CartItem } from '../../types/CartItem';
 import { CartsContext } from '../../components/Context/CartsContext';
 import { useNavigate } from 'react-router-dom';
-import arrowIconLeft from '../../logos/Main/Arrow__Left.svg';
-import logoClose from '../../logos/Main/Close.svg';
+import { icons } from '../../utils/icons';
 
 export const CartsPage = () => {
   const { carts, setCarts } = useContext(CartsContext);
@@ -63,7 +62,7 @@ export const CartsPage = () => {
         <div className="cart__back">
           <div className="cart__back--navigate" onClick={() => navigate(-1)}>
             <img
-              src={arrowIconLeft}
+              src={icons.arrowIconLeft}
               alt="Logo arrow"
               className="cart__back--arrow"
             ></img>
@@ -73,12 +72,6 @@ export const CartsPage = () => {
           </div>
         </div>
         <h1 className="title">Cart</h1>
-        {/* {carts.length === 0 && (
-          <div className="cart__notFound">
-            <h1>Cart is empty</h1>
-            <img src="../../public/img/cart-is-empty.png" alt="cartempty" />
-          </div>
-        )} */}
         <div className="cart">
           <div className="cart__container">
             {carts.map(c => (
@@ -92,7 +85,7 @@ export const CartsPage = () => {
                       >
                         <img
                           className="cart__delete--close"
-                          src={logoClose}
+                          src={icons.logoClose}
                           alt="Logo"
                         />
                       </button>
