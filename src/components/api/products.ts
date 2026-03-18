@@ -1,6 +1,6 @@
 import { Product } from "../types/Product";
 
-const BASE_URL = '/api/products.json';
+const BASE_URL = './api/products.json';
 
 
 export const getProducts = async (): Promise<Product[]> => {
