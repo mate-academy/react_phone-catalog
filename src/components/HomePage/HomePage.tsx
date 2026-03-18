@@ -23,7 +23,8 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <main className={styles.main}>
-        <h1 className={styles.title}>{t('title')}</h1>
+        <h1 className={styles.none}>Product Catalog</h1>
+        <p className={styles.title}>{t('title')}</p>
       </main>
 
       <Carousel />

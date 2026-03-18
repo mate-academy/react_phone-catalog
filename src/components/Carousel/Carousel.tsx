@@ -102,7 +102,7 @@ export const Carousel: React.FC = () => {
     <div className={styles.Carousel}>
       <div className={styles.decorBlock}>
         <div className={styles.content}>
-          <h1
+          <p
             className={`${styles.titlecard} ${
               i18n.language.startsWith('de')
                 ? styles.germanText
@@ -112,7 +112,7 @@ export const Carousel: React.FC = () => {
             }`}
           >
             {t('textincarusel')}
-          </h1>
+          </p>
           <p
             className={`${styles.textp} ${
               i18n.language === 'ua' ? styles.smallText : ''
