@@ -10,6 +10,13 @@
 
     padding: 0;
     background-color: $accent-color;
+    transition: box-shadow $effect-duration ease, transform $effect-duration ease;
+
+
+     &:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transform: translateY(-1px);
+    }
 
       @include on-tablet {
          max-width: 125px;
@@ -20,4 +27,6 @@
       }
 
     }
+
+
   }

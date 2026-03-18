@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Button.module.scss';
-import clsx from 'clsx';
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
@@ -18,7 +17,7 @@ export const Button: React.FC<Props> = ({
     type="button"
     {...props}
 
-    className={`${styles.button} ${className ? className : ''} ${isActive ? styles.heart : ''}`}
+    className={`${styles.button} ${className ? className : ''} ${isActive ? styles.like : ''}`}
     aria-pressed={pressed}
   >
     {children}

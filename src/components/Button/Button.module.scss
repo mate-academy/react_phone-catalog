@@ -14,6 +14,7 @@
     text-align: center;
     color: #FFFF;
     box-sizing: border-box;
+    background-color: transparent;
 
     &--favourites {
       margin: 0;
@@ -43,9 +44,19 @@
       box-shadow: none;
       border: 1px solid $secondary-color;
   }
+
   }
 
-.heart {
-  background-color: $accent-color;
-border: 1px solid red;
+.like {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    box-sizing: border-box;
+    background-image: url(/img/icons/icon-favourites-like-2x.png);
+
+    &:hover {
+
+      background-image: url(/img/icons/icon-favourites-like-2x.png);
+    }
 }

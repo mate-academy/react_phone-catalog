@@ -119,16 +119,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+ // width: 40px;
+  ///height: 40px;
   border-radius: 8px;
-  color: var(--text-color);
 }
 
-.cart-badge {
+.badge {
   position: absolute;
-  top: 4px;
-  right: -32px;
   min-width: 10px;
   height: 10px;
   padding-block: 3px;
@@ -142,8 +139,17 @@
   display: inline-block;
   font-weight: 700;
   font-size: 9px;
+  top: 4px;
 }
 
+.cart-badge {
+  right: 200px;
+}
+
+.avorites-badge {
+  right: 300px;
+
+}
 .icon--round {
     width: 32px;
     height: 32px;

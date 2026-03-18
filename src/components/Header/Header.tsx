@@ -57,7 +57,11 @@ export const Header = () => {
             <div className={styles.topBar__icons}>
               <div className={styles.icon__background}>
                 {favorites.length > 0 && (
-                  <span className="badge">{favorites.length}</span>
+                  <span
+                      className={`${styles['icon--absolute']} ${styles.badge} ${styles['favorites-badge']}`}
+                    >
+                    {favorites.length}
+                  </span>
                 )}
                 <FavouritesLink className={styles.header__favIcon} />
               </div>
@@ -68,7 +72,7 @@ export const Header = () => {
                 >
                   {totalQuantity > 0 && (
                     <span
-                      className={`${styles['icon--absolute']} ${styles['cart-badge']}`}
+                      className={`${styles['icon--absolute']} ${styles.badge} $${styles['cart-badge']}`}
                     >
                       {totalQuantity}
                     </span>
