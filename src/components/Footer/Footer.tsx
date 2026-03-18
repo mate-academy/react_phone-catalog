@@ -42,7 +42,7 @@ export const Footer = () => {
             <span className={styles.footer__top_text}>Back to top</span>
 
             <img
-              src="img/TopBtn.svg"
+              src="./img/TopBtn.svg"
               alt=""
               className={styles.footer__top_icon}
             />

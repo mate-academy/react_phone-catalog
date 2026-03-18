@@ -15,7 +15,7 @@ export const CartPage = () => {
   return (
     <div className={styles.cartPage}>
       <button className={styles.backButton} onClick={() => navigate(-1)}>
-        <img src="/img/Back.svg" alt="back" />
+        <img src="./img/Back.svg" alt="back" />
         Back
       </button>
 
@@ -30,7 +30,7 @@ export const CartPage = () => {
                   className={styles.item__remove}
                   onClick={() => removeFromCart(item.id)}
                 >
-                  <img src="/img/Close__.png" alt="remove" />{' '}
+                  <img src="./img/Close__.png" alt="remove" />{' '}
                 </button>
                 <img
                   src={item.image}
@@ -47,7 +47,7 @@ export const CartPage = () => {
                     onClick={() => updateQuantity(item.id, -1)}
                     disabled={item.quantity <= 1}
                   >
-                    <img src="/img/Minus.svg" alt="minus" />
+                    <img src="./img/Minus.svg" alt="minus" />
                   </button>
                   <span className={styles.quantity__count}>
                     {item.quantity || 1}
@@ -56,7 +56,7 @@ export const CartPage = () => {
                     className={styles.quantity__btn}
                     onClick={() => updateQuantity(item.id, 1)}
                   >
-                    <img src="/img/Plus.svg" alt="plus" />
+                    <img src="./img/Plus.svg" alt="plus" />
                   </button>
                 </div>
                 <p className={styles.item__price}>

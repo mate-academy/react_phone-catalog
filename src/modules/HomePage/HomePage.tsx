@@ -8,10 +8,10 @@ import styles from './HomePage.module.scss';
 import { useRef } from 'react';
 
 const images: string[] = [
-  `${process.env.PUBLIC_URL}/img/Banner.png`,
-  `${process.env.PUBLIC_URL}/img/banner-phones.png`,
-  `${process.env.PUBLIC_URL}/img/banner-tablets.png`,
-  `${process.env.PUBLIC_URL}/img/banner-accessories.png`,
+  "./img/Banner.png",
+  "./img/banner-phones.png",
+  "./img/banner-tablets.png",
+  "./img/banner-accessories.png",
 ];
 
 export const HomePage = () => {
@@ -23,7 +23,6 @@ export const HomePage = () => {
   const [brandNewOffset, setBrandNewOffset] = useState(0);
   const [hotPricesOffset, setHotPricesOffset] = useState(0);
 
-  // Рефи для вимірювання реальної ширини контейнерів
   const brandNewRef = useRef<HTMLDivElement>(null);
   const hotPricesRef = useRef<HTMLDivElement>(null);
 
@@ -42,7 +41,6 @@ export const HomePage = () => {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    // scrollWidth - це повна довжина стрічки, offsetWidth - те що бачимо
     const maxOffset = container.scrollWidth - container.offsetWidth;
     const step = getStep();
 
@@ -59,7 +57,6 @@ export const HomePage = () => {
     setOffset(prev => Math.max(prev - step, 0));
   };
 
-  // Допоміжна функція для блокування кнопки "Вперед"
   const isNextDisabled = (
     offset: number,
     containerRef: React.RefObject<HTMLDivElement>,
@@ -91,26 +88,22 @@ export const HomePage = () => {
 
   const currentImages = isMobile
     ? [
-        `${process.env.PUBLIC_URL}/img/BannerMobile.svg`,
+        "./img/BannerMobile.svg",
         images[1],
         images[2],
         images[3],
       ]
     : images;
 
-
   const brandNew = products.filter(product => product.year >= 2022).slice(0, 8);
   const hotPrices = products
     .filter(product => {
-
       const regular = product.priceRegular || product.fullPrice || 0;
 
       const discount = product.priceDiscount || product.price || 0;
 
-
       const diff = regular - discount;
 
-    
       return diff > 50;
     })
     .slice(0, 8);
@@ -202,7 +195,7 @@ export const HomePage = () => {
               <Link to="/phones" className={styles.category}>
                 <div className={styles.category__image_phones}>
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/phones/Phones.png`}
+                    src="./img/phones/Phones.png"
                     alt="Phones"
                   />
                 </div>
@@ -214,7 +207,7 @@ export const HomePage = () => {
               <Link to="/tablets" className={styles.category}>
                 <div className={styles.category__image_tablets}>
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/tablets/Tablets.png`}
+                    src="./img/tablets/Tablets.png"
                     alt="Tablets"
                   />
                 </div>
@@ -226,7 +219,7 @@ export const HomePage = () => {
               <Link to="/accessories" className={styles.category}>
                 <div className={styles.category__image_accessories}>
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/accessories/Accessories.png`}
+                    src="./img/accessories/Accessories.png"
                     alt="Accessories"
                   />
                 </div>

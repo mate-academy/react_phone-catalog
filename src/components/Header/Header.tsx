@@ -37,7 +37,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
         <div className={styles.header__left}>
           <Link to="/" className={styles.logo}>
             <img
-              src={theme === 'dark' ? '/img/LogoDark.svg' : '/img/Logo.svg'}
+              src={theme === 'dark' ? './img/LogoDark.svg' : './img/Logo.svg'}
               alt="Logo"
             />
           </Link>
@@ -109,7 +109,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
                 `${styles.icon_btn} ${isActive ? styles.icon_btn_active : ''}`
               }
             >
-              <img src="/img/Favourites.svg" alt="Favorites" />
+              <img src="./img/Favourites.svg" alt="Favorites" />
               {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
             </NavLink>
 
@@ -119,7 +119,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
                 `${styles.icon_btn} ${isActive ? styles.icon_btn_active : ''}`
               }
             >
-              <img src="/img/Cart.svg" alt="Cart" />
+              <img src="./img/Cart.svg" alt="Cart" />
               {cartCount > 0 && (
                 <span className={styles.badge}>{cartCount}</span>
               )}
@@ -132,7 +132,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             aria-label="Toggle menu"
           >
             <img
-              src={isMenuOpen ? '/img/Close__.png' : '/img/Burger_menu.png'}
+              src={isMenuOpen ? './img/Close__.png' : './img/Burger_menu.png'}
               alt="Menu Icon"
             />
           </button>
@@ -188,7 +188,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             }
             onClick={toggleMenu}
           >
-            <img src="/img/Favourites.png" alt="Favourites" />
+            <img src="./img/Favourites.png" alt="Favourites" />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </NavLink>
 
@@ -199,7 +199,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             }
             onClick={toggleMenu}
           >
-            <img src="/img/Cart.png" alt="Cart" />
+            <img src="./img/Cart.png" alt="Cart" />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </div>

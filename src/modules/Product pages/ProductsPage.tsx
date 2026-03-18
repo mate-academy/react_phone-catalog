@@ -92,13 +92,13 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
         <nav className={styles.breadcrumbs}>
           <Link to="/">
             <img
-              src="/img/HomeIcon.svg"
+              src="./img/HomeIcon.svg"
               alt="home"
               className={styles.homeIcon}
             />
           </Link>
 
-          <img src="/img/Back.svg" alt="arrow" className={styles.arrowIcon} />
+          <img src="./img/Back.svg" alt="arrow" className={styles.arrowIcon} />
           <span>{title === 'Mobile phones' ? 'Phones' : title}</span>
         </nav>
 

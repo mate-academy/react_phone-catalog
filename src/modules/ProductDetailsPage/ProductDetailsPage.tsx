@@ -8,7 +8,6 @@ import { ProductCard } from '../../components/ProductList/ProductCard';
 import { useFavourites } from '../../context/FavouriteContext';
 import { useCart } from '../../context/CartContext';
 
-
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
@@ -121,7 +120,6 @@ export const ProductDetailsPage: React.FC = () => {
     });
   };
 
-
   const handlePrev = () => {
     const step = getStep();
     setRecommendedOffset(prev => Math.max(0, prev - step));
@@ -195,16 +193,16 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.content}>
         <nav className={styles.breadcrumbs}>
           <Link to="/">
-            <img src="/img/HomeIcon.svg" alt="home" />
+            <img src="./img/HomeIcon.svg" alt="home" />
           </Link>
           <img
-            src="/img/ArrowRight.png"
+            src="./img/ArrowRight.png"
             alt="arrow"
             className={styles.arrowIcon}
           />
           <Link to={`/${product.category}`}>{product.category}</Link>
           <img
-            src="/img/ArrowRight.png"
+            src="./img/ArrowRight.png"
             alt="arrow"
             className={styles.arrowIcon}
           />
@@ -215,7 +213,7 @@ export const ProductDetailsPage: React.FC = () => {
           onClick={() => window.history.back()}
           className={styles.backButton}
         >
-          <img src="/img/Back.svg" alt="back" /> Back
+          <img src="./img/Back.svg" alt="back" /> Back
         </button>
 
         <h1 className={styles.title}>{product.name}</h1>
@@ -315,8 +313,8 @@ export const ProductDetailsPage: React.FC = () => {
                   <img
                     src={
                       favorited
-                        ? '/img/FavouritesFilled.png'
-                        : '/img/Favourites.png'
+                        ? './img/FavouritesFilled.png'
+                        : './img/Favourites.png'
                     }
                     alt="fav"
                   />

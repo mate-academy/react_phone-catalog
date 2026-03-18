@@ -17,15 +17,12 @@ export const Pagination: React.FC<Props> = ({
   const totalPages = Math.ceil(total / perPage);
 
   const getVisiblePages = () => {
-    // Якщо сторінок 4 або менше — виводимо всі
     if (totalPages <= 4) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
-    // Розраховуємо старт так, щоб завжди було 4 цифри
     let start = Math.max(1, currentPage - 1);
 
-    // Якщо ми в самому кінці, фіксуємо старт, щоб не було порожніх місць
     if (start + 3 > totalPages) {
       start = totalPages - 3;
     }
@@ -42,7 +39,7 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
-  if (totalPages <= 1) return null; // Не виводимо пагінацію, якщо сторінка одна
+  if (totalPages <= 1) return null;
 
   return (
     <ul className={styles.pagination}>
@@ -53,7 +50,6 @@ export const Pagination: React.FC<Props> = ({
           disabled={currentPage === 1}
           onClick={() => handlePageClick(currentPage - 1)}
         >
-          {/* Можна залишити стрілочку текстом або вставити іконку */}
           <span className={styles.arrow_left}></span>
         </button>
       </li>

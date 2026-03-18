@@ -11,7 +11,11 @@ interface Props {
   className?: string;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, variant, className }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  variant,
+  className,
+}) => {
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
@@ -87,7 +91,7 @@ export const ProductCard: React.FC<Props> = ({ product, variant, className }) =>
         <button className={styles.favorite} onClick={handleFavoriteClick}>
           <img
             src={
-              favorited ? '/img/FavouritesFilled.png' : '/img/Favourites.png'
+              favorited ? './img/FavouritesFilled.png' : './img/Favourites.png'
             }
             alt="fav"
           />

@@ -12,9 +12,9 @@ export const FavouritesPage: React.FC = () => {
       <div className={styles.content}>
         <nav className={styles.breadcrumbs}>
           <Link to="/">
-            <img src="/img/HomeIcon.svg" alt="home" />
+            <img src="./img/HomeIcon.svg" alt="home" />
           </Link>
-          <img src="/img/Back.svg" alt="arrow" className={styles.arrowIcon} />
+          <img src="./img/Back.svg" alt="arrow" className={styles.arrowIcon} />
           <span>Favorites</span>
         </nav>
 
