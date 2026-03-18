@@ -12,7 +12,7 @@ export const getProducts = async (): Promise<Product[]> => {
 
 export const getProductById = async (productId: string): Promise<Product | null> => {
   try {
-    const files = ['/api/phones.json', '/api/tablets.json', '/api/accessories.json'];
+    const files = ['./api/phones.json', './api/tablets.json', './api/accessories.json'];
 
     const responses = await Promise.all(files.map(file => fetch(file)));
     const dataArrays = await Promise.all(
