@@ -1,0 +1,69 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.layout {
+  display: grid;
+  width: 100%; /* ← Додаємо 100% ширину */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 64px;
+  /* Колонки розтягуються пропорційно */
+  grid-template-columns: repeat(24, 1fr); /* ← Змінюємо фіксовані px на 1fr */
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  align-items: stretch; /* ← Додаємо розтягування по вертикалі */
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .layout {
+    padding-top: 49px;
+    max-width: 639px;
+    /* Колонки розтягуються пропорційно */
+    grid-template-columns: repeat(4, 1fr); /* ← Змінюємо фіксовані px на 1fr */
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .layout {
+    padding-top: 49px;
+    max-width: 1199px;
+    /* Колонки розтягуються пропорційно */
+    grid-template-columns: repeat(12, 1fr); /* ← Змінюємо фіксовані px на 1fr */
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+  }
+}/*# sourceMappingURL=layout.css.map */

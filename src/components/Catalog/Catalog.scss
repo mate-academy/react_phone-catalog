@@ -1,0 +1,79 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.catalog {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  margin-bottom: 80px;
+
+
+  .catalog-title {
+    grid-column: 1 / -1;
+    font-size: map-get($h1-styles, font-size);
+    font-weight: map-get($h1-styles, font-weight);
+    line-height: map-get($h1-styles, line-height);
+    letter-spacing: map-get($h1-styles, letter-spacing);
+    color: $color-primary;
+    margin-top: 40px;
+
+
+     @include mobile {
+      font-size: map-get($h1-styles-mobile, font-size);
+      font-weight: map-get($h1-styles-mobile, font-weight);
+      line-height: map-get($h1-styles-mobile, line-height);
+      letter-spacing: map-get($h1-styles-mobile, letter-spacing);
+  }
+  }
+
+  .catalog-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+      @include mobile {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .catalog-count {
+  font-size: 14px;
+  color: #89939a;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+}
+
+.catalog-pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.pagination-arrow,
+.pagination-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(:disabled) {
+    border-color: #313237;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+

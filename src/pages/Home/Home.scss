@@ -1,0 +1,375 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.home {
+  grid-column: 1 / -1;
+}
+
+section {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+h1 {
+  grid-column: 1 / -1;
+  margin-top: 56px;
+
+  font-size: map-get($h1-styles, font-size);
+  font-weight: map-get($h1-styles, font-weight);
+  line-height: map-get($h1-styles, line-height);
+  letter-spacing: map-get($h1-styles, letter-spacing);
+
+  color: $color-primary;
+
+  @include mobile {
+    font-size: map-get($h1-styles-mobile, font-size);
+    font-weight: map-get($h1-styles-mobile, font-weight);
+    line-height: map-get($h1-styles-mobile, line-height);
+    letter-spacing: map-get($h1-styles-mobile, letter-spacing);
+
+    margin-top: 24px;
+  }
+
+  @include tablet {
+    max-width: 20ch;
+    margin-top: 32px;
+  }
+}
+
+
+h2 {
+  grid-column: 1 / -1;
+
+  font-size: map-get($h2-styles, font-size);
+  font-weight: map-get($h2-styles, font-weight);
+  line-height: map-get($h2-styles, line-height);
+  letter-spacing: map-get($h2-styles, letter-spacing);
+
+  color: $color-primary;
+
+
+    @include mobile {
+    font-size: map-get($h2-styles-mobile, font-size);
+    font-weight: map-get($h2-styles-mobile, font-weight);
+    line-height: map-get($h2-styles-mobile, line-height);
+    letter-spacing: map-get($h2-styles-mobile, letter-spacing);
+
+  }
+}
+
+.carousel-wrapper {
+    /* Виходимо за межі grid контейнера */
+  grid-column: 1 / -1;
+  margin-top: 56px;
+
+  /* Нові властивості для full-width */
+  width: 100vw; /* На всю ширину viewport */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  > * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include mobile {
+    margin-top: 24px;
+    gap: 8px; /* Менший gap на мобільній */
+  }
+
+  @include tablet {
+    margin-top: 32px;
+    gap: 19px; /* Менший gap на мобільній */
+  }
+
+  .carousel-arrow.left,
+.carousel-arrow.right {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+
+
+    &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;        // курсор неактивності
+    opacity: 0.4;
+    border-color: $color-elements;
+    img {
+      filter: grayscale(100%);  // робимо стрілку сіркою
+    }
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+
+  .banner-home {
+    /* ФІКСУЄМО розміри контейнера */
+    height: 400px; /* Фіксована висота */
+    max-width: 1040px; /* Максимальна ширина як у дизайні */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ховаємо виступаючі частини */
+
+    @include mobile {
+      height: 320px;
+      max-height: 638px;
+    }
+
+    @include tablet {
+      height: 189px;
+      max-height: 638px;
+    }
+
+    /* Стилі для picture та img всередині */
+    picture, img {
+      display: block;
+      height: 100%;
+      object-fit: contain; /* або cover, залежно від потреб */
+      object-position: center;
+    }
+
+    .banner {
+      height: 100%;
+      object-fit: cover; /* Картинка заповнює контейнер */
+      object-position: center;
+    }
+  }
+
+  .carousel-arrow {
+    height: 400px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-icons;
+    background-color: rgb(255, 255, 255, 1);
+    flex-shrink: 0; /* Забороняємо стрілкам стискатися */
+
+    @include tablet {
+      height: 189px;
+    }
+
+    /* Стилі для іконок стрілок */
+    img {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+  }
+}
+
+/* Додаткові стилі для картинки баннера */
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @include mobile {
+    object-fit: contain; /* На мобільній - вмістити всю картинку */
+  }
+}
+
+.carousel-dots {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  line-height: 0;
+
+
+    > * {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.products-grid {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+
+  @include mobile {
+    display: grid;
+    grid-auto-flow: column; /* Елементи йдуть в рядок */
+    grid-auto-columns: minmax(280px, 1fr); /* Мінімальна ширина картки */
+    grid-template-rows: auto; /* Один рядок */
+    gap: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px; /* Відступ для першої картки */
+    padding-right: 16px; /* Відступ для останньої картки */
+    width: max-content; /* Ширина по контенту */
+
+    /* Додаткові відступи на мобільній */
+    margin-left: -16px;
+    margin-right: -16px;
+    width: calc(100% + 32px);
+    margin-bottom: 56px;
+  }
+}
+
+
+.container-products {
+  margin-top: $top-padding;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+   @include mobile {
+    margin-top: 56px;
+    margin-bottom: 40px;
+    overflow-x: auto; /* На мобільній - горизонтальна прокрутка */
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.carousel-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+
+    @include mobile {
+    display: flex;
+  }
+}
+
+.carousel-arrow.left,
+.carousel-arrow.right {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+
+
+    &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;        // курсор неактивності
+    opacity: 0.4;
+    border-color: $color-elements;
+    img {
+      filter: grayscale(100%);  // робимо стрілку сіркою
+    }
+  }
+}
+
+.carousel-arrow.left img,
+.carousel-arrow.right img {
+  display: block;
+}
+
+.categories__container {
+  margin-top: 24px;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  /* Мобільна версія: стовпчик */
+  @include mobile {
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  /* Стилі для кожної категорії */
+  .categories__category {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Картинка по центру */
+    text-align: left; /* Текст по лівому краю */
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.category__name {
+  margin-top: 24px;
+  color: $color-primary;
+  width: 100%; /* Займає всю ширину батьківського контейнера */
+  text-align: left; /* Текст по лівому краю */
+
+  font-size: map-get($h4-styles, font-size);
+  font-weight: map-get($h4-styles, font-weight);
+  line-height: map-get($h4-styles, line-height);
+  letter-spacing: map-get($h4-styles, letter-spacing);
+
+  @include mobile {
+    margin-top: 16px;
+  }
+}
+
+.number-of-products {
+  color: $color-secondary;
+  margin-top: 4px;
+  width: 100%; /* Займає всю ширину батьківського контейнера */
+  text-align: left; /* Текст по лівому краю */
+
+  font-size: map-get($body-text, font-size);
+  font-weight: map-get($body-text, font-weight);
+  line-height: map-get($body-text, line-height);
+  letter-spacing: map-get($body-text, letter-spacing);
+}
+
+.container-divider {
+  margin-top: $top-padding;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}

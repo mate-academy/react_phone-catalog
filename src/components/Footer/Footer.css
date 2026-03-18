@@ -1,0 +1,181 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.footer {
+  width: 100%;
+  background-color: #FFF;
+  border-top: 1px solid #E2E6E9;
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer {
+    padding: 32px 0;
+  }
+}
+.footer .footer-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  align-items: center;
+  /* Мобільна версія: все в стовпчик */
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start; /* ← ЗМІНА: вирівнювання по лівому краю */
+    text-align: left; /* ← ЗМІНА: текст по лівому краю */
+    padding: 0 16px; /* ← Додаємо бокові відступи */
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer .footer-container {
+    padding: 0 32px;
+  }
+}
+.footer .footer-container .footer-left {
+  grid-column: 1/6;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer .footer-container .footer-left {
+    order: 1;
+    width: 100%;
+  }
+}
+.footer .footer-container .footer-left .footer-logo {
+  width: 120px;
+  height: auto;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer .footer-container .footer-left .footer-logo {
+    width: 89px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer .footer-container .footer-left .footer-logo {
+    width: 89px;
+  }
+}
+.footer .footer-container .footer-center {
+  grid-column: 6/20;
+  display: flex;
+  justify-content: center;
+  gap: 107px;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer .footer-container .footer-center {
+    order: 2;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    justify-content: flex-start; /* ← ЗМІНА: по лівому краю */
+    align-items: flex-start; /* ← ЗМІНА: по лівому краю */
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer .footer-container .footer-center {
+    gap: 13.5px;
+  }
+}
+.footer .footer-container .footer-center a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+.footer .footer-container .footer-center a:hover {
+  color: #313237;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer .footer-container .footer-center a {
+    font-size: 14px;
+    text-align: left; /* ← ЗМІНА: текст по лівому краю */
+  }
+}
+.footer .footer-container .footer-right {
+  grid-column: 20/25;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer .footer-container .footer-right {
+    order: 3;
+    justify-content: center; /* ← ЗМІНА: по лівому краю */
+    width: 100%;
+    margin-top: 8px; /* ← Додаємо відступ зверху */
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer .footer-container .footer-right {
+    width: 12ch;
+  }
+}
+.footer .footer-container .footer-right .back-to-top-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0;
+  color: #89939A;
+}
+.footer .footer-container .footer-right .back-to-top-button {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  border: 1px solid #B4BDC3;
+  transition: border-color 0.3s;
+}
+.footer .footer-container .footer-right .back-to-top-button img {
+  width: 16px;
+  height: 16px;
+}
+.footer .footer-container .footer-right .back-to-top-button:hover {
+  border-color: #313237;
+}/*# sourceMappingURL=Footer.css.map */

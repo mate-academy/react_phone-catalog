@@ -1,0 +1,147 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.footer {
+  width: 100%;
+  background-color: $color-white;
+  border-top: 1px solid $color-elements;
+  padding: 24px 0;
+
+  display: flex;
+  justify-content: center;
+
+  @include tablet {
+    padding: 32px 0;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    align-items: center;
+
+    /* Мобільна версія: все в стовпчик */
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start; /* ← ЗМІНА: вирівнювання по лівому краю */
+      text-align: left; /* ← ЗМІНА: текст по лівому краю */
+      padding: 0 16px; /* ← Додаємо бокові відступи */
+    }
+
+    @include tablet {
+      padding: 0 32px;
+    }
+
+    .footer-left {
+      grid-column: 1 / 6;
+
+      @include mobile {
+        order: 1;
+        width: 100%;
+      }
+
+      .footer-logo {
+        width: 120px;
+        height: auto;
+
+        @include mobile {
+          width: 89px;
+        }
+
+        @include tablet {
+          width: 89px;
+        }
+      }
+    }
+
+    .footer-center {
+      grid-column: 6 / 20;
+      display: flex;
+      justify-content: center;
+      gap: 107px;
+
+      @include mobile {
+        order: 2;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        justify-content: flex-start; /* ← ЗМІНА: по лівому краю */
+        align-items: flex-start; /* ← ЗМІНА: по лівому краю */
+      }
+
+      @include tablet {
+        gap: 13.5px;
+      }
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color-secondary;
+        font-size: map-get($uppercase, font-size);
+        font-weight: map-get($uppercase, font-weight);
+        line-height: map-get($uppercase, line-height);
+        letter-spacing: map-get($uppercase, letter-spacing);
+        transition: color 0.3s;
+
+        &:hover {
+          color: $color-primary;
+        }
+
+        @include mobile {
+          font-size: map-get($body-text, font-size);
+          text-align: left; /* ← ЗМІНА: текст по лівому краю */
+        }
+      }
+    }
+
+    .footer-right {
+      grid-column: 20 / 25;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+
+      @include mobile {
+        order: 3;
+        justify-content: center; /* ← ЗМІНА: по лівому краю */
+        width: 100%;
+        margin-top: 8px; /* ← Додаємо відступ зверху */
+      }
+
+       @include tablet {
+          width: 12ch;
+        }
+
+      .back-to-top-text {
+        font-size: map-get($small-text, font-size);
+        font-weight: map-get($small-text, font-weight);
+        line-height: map-get($small-text, line-height);
+        letter-spacing: map-get($small-text, letter-spacing);
+        color: $color-secondary;
+      }
+
+      .back-to-top-button {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-white;
+        border: 1px solid $color-icons;
+        transition: border-color 0.3s;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          border-color: $color-primary;
+        }
+      }
+    }
+  }
+}

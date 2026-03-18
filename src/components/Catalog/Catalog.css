@@ -1,0 +1,14 @@
+.catalog {
+  width: 100%;
+  padding: 0 16px;
+}
+.catalog .catalog-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.catalog .catalog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+}/*# sourceMappingURL=Catalog.css.map */

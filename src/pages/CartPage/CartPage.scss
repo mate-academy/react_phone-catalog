@@ -1,0 +1,182 @@
+@import '../../variables.scss';
+
+.cart-page {
+  grid-column: 1 / -1;
+}
+
+.cart-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+.product-name {
+  font-size: map-get($body-text, font-size);
+  font-weight: map-get($body-text, font-weight);
+  line-height: map-get($body-text, line-height);
+  letter-spacing: map-get($body-text, letter-spacing);
+}
+
+.quantity {
+  margin-left: 24px;
+  margin-right: 53px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.price {
+  font-size: map-get($h3-styles, font-size);
+  font-weight: map-get($h3-styles, font-weight);
+  line-height: map-get($h3-styles, line-height);
+  letter-spacing: map-get($h3-styles, letter-spacing);
+}
+
+.cart-title {
+  font-size: map-get($h1-styles, font-size);
+  font-weight: map-get($h1-styles, font-weight);
+  line-height: map-get($h1-styles, line-height);
+  letter-spacing: map-get($h1-styles, letter-spacing);
+
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.cart-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;     // вирівнюємо вертикально по центру
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid #e2e2e2;
+  max-height: 128px;
+}
+
+.cart-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.cart-summary {
+  position: sticky;
+  top: 100px;
+  padding: 24px;
+  border: 1px solid #e2e2e2;
+  margin-left: 16px;
+  text-align: center;
+
+  .total-price {
+    font-size: map-get($h2-styles, font-size);
+    font-weight: map-get($h2-styles, font-weight);
+    line-height: map-get($h2-styles, line-height);
+    letter-spacing: map-get($h2-styles, letter-spacing);
+  }
+
+  .summary-text {
+    font-size: map-get($body-text, font-size);
+    font-weight: map-get($body-text, font-weight);
+    line-height: map-get($body-text, line-height);
+    letter-spacing: map-get($body-text, letter-spacing);
+    color: #89939a;
+  }
+
+
+  .checkout-button {
+    width: 100%;            // ❗ ФІКСОВАНА ширина (під макет)
+    height: 40px;
+    padding: 0 40px;
+    background-color: $color-primary;
+    color: $color-white;
+    border: 1px solid $color-primary;
+    cursor: pointer;
+     white-space: nowrap;     // ❗ без переносів
+      overflow: hidden;        // ❗ текст не ламає кнопку
+      text-overflow: ellipsis;
+
+    font-size: map-get($buttons, font-size);
+    font-weight: map-get($buttons, font-weight);
+    line-height: map-get($buttons, line-height);
+    letter-spacing: map-get($buttons, letter-spacing);
+
+    margin: 0px;
+
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+}
+
+
+  hr {
+    margin: 24px 0;
+    border: none;
+    border-top: 1px solid #e2e6e9;
+    width: 100%;
+  }
+
+}
+
+.checkout-button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  .remove-icon {
+  width: 16px;
+  height: 16px;
+}
+}
+
+.minus {
+  background: none;
+  border: 1px solid $color-primary;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 14px;
+
+
+  .minus-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.plus {
+  background: none;
+  border: 1px solid $color-primary;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 14px;
+
+
+  .plus-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+

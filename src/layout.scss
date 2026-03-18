@@ -1,0 +1,31 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.layout {
+  display: grid;
+  width: 100%; /* ← Додаємо 100% ширину */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 64px;
+
+  /* Колонки розтягуються пропорційно */
+  grid-template-columns: repeat(24, 1fr); /* ← Змінюємо фіксовані px на 1fr */
+  column-gap: 16px;
+  align-items: stretch; /* ← Додаємо розтягування по вертикалі */
+
+  @include mobile {
+    padding-top: 49px;
+    max-width: 639px;
+    /* Колонки розтягуються пропорційно */
+    grid-template-columns: repeat(4, 1fr); /* ← Змінюємо фіксовані px на 1fr */
+    column-gap: 16px;
+  }
+
+  @include tablet {
+    padding-top: 49px;
+    max-width: 1199px;
+    /* Колонки розтягуються пропорційно */
+    grid-template-columns: repeat(12, 1fr); /* ← Змінюємо фіксовані px на 1fr */
+    column-gap: 16px;
+  }
+}

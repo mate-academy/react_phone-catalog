@@ -1,0 +1,54 @@
+@import '../../variables';
+
+.favorites-page {
+  grid-column: 1/-1;
+  padding: 24px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    padding: 32px 32px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-primary; // Dark black
+    margin-bottom: 8px;
+    margin-top: 40px;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939a; // Secondary gray
+    margin-bottom: 32px;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    text-align: center;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #313237;
+    }
+
+    p {
+      color: #89939a;
+    }
+  }
+}
+
