@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "https://DebHtm.github.io/react_phone-catalog",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -9,8 +9,13 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
+    "i18next": "^25.8.18",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "i18next-http-backend": "^3.0.2",
     "react": "^18.3.1",
+    "react-content-loader": "^7.1.2",
     "react-dom": "^18.3.1",
+    "react-i18next": "^16.5.8",
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5"
   },
