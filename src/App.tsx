@@ -3,6 +3,7 @@ import './App.scss';
 import { Header } from './components/Header';
 import { SideMenu } from './components/SideMenu';
 import { Main } from './components/Main';
+import { Footer } from './components/Footer';
 
 export const App = () => (
   <div className="App">
@@ -11,5 +12,6 @@ export const App = () => (
     <Main>
       <Outlet />
     </Main>
+    <Footer />
   </div>
 );

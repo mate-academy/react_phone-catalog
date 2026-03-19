@@ -32,7 +32,7 @@ export const ProductsSlider: React.FC<Props> = ({
     const { scrollLeft, scrollWidth, clientWidth } = listRef.current;
 
     setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
+    setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth);
   };
 
   const scrollByCard = (direction: Direction) => {
