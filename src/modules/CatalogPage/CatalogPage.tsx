@@ -1,49 +1,57 @@
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ProductsList } from '@modules/shared/components/ProductsList';
-import { Filters } from './components/Filters';
-import { useProducts } from '@/hooks/useProducts'; // Pobiera wszystkie produkty z JSON
+import { Product } from '@/types/Product';
+import { getProducts } from '@/api/api';
+import { ProductList } from '@/modules/shared/components/ProductList';
+import { Heading } from '@/components/ui/Heading';
+import { Loader } from '@/components/Loader';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
 
-export const CatalogPage = () => {
-  // 1. Pobieramy kategorię z adresu (np. 'phones', 'tablets')
+const categoryNames: Record<string, string> = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
+export const CatalogPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const { products, loading } = useProducts();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // 2. Mapujemy nazwę z adresu na typ w danych JSON
-  const typeMap: Record<string, string> = {
-    phones: 'phone',
-    tablets: 'tablet',
-    accessories: 'accessory',
-  };
+  useEffect(() => {
+    setIsLoading(true);
 
-  // 3. Filtrujemy produkty - ZMIENNA, którą przekażesz niżej
-  const filteredProducts = products.filter(
-    product => product.type === typeMap[category || ''],
-  );
+    getProducts()
+      .then(data => {
+        const filtered = data.filter(p => p.category === category);
 
-  // 4. Dynamiczny tytuł H1 (zgodnie z wytycznymi)
-  const pageTitle = category
-    ? category.charAt(0).toUpperCase() + category.slice(1)
-    : '';
+        setProducts(filtered);
+      })
+      // eslint-disable-next-line no-console
+      .catch(err => console.error(err))
+      .finally(() => {
+        setTimeout(() => setIsLoading(false), 300);
+      });
+  }, [category]);
 
-  if (loading) {
-    return <Loader />;
-  }
+  const displayTitle = category
+    ? categoryNames[category] ||
+      category.charAt(0).toUpperCase() + category.slice(1)
+    : 'Catalog';
 
   return (
-    <div className={styles.container}>
-      {/* Nagłówek zmienia się dynamicznie: Phones page / Tablets page itd. */}
-      <h1 className={styles.title}>{pageTitle} page</h1>
+    <section className={styles.catalog}>
+      <div className={styles.catalog__container}>
+        <Breadcrumbs category={displayTitle} />
 
-      {/* Komponent filtrów (sortowanie, ilość na stronę) */}
-      <Filters total={filteredProducts.length} />
+        <Heading as="h1"> {displayTitle}</Heading>
+        <p className={styles.catalog__count}>{products.length} models</p>
 
-      {/* Produkty - wyświetlą się TYLKO te z danej kategorii */}
-      {filteredProducts.length > 0 ? (
-        <ProductsList products={filteredProducts} />
-      ) : (
-        <p>There are no {category} yet</p>
-      )}
-    </div>
+        {/* Filter */}
+
+        {isLoading ? <Loader /> : <ProductList products={products} />}
+      </div>
+    </section>
   );
 };

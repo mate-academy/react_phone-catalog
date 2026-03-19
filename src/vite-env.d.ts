@@ -1,4 +1,5 @@
 /// <reference types="vite-plugin-svgr/client" />
+/// <reference types="vite/client" />
 
 declare module '*.module.scss' {
   const classes: { [key: string]: string };
@@ -17,13 +18,23 @@ declare module '*.svg' {
   export default src;
 }
 
+declare module '*.svg?react' {
+  import React from 'react';
+  const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
+  export default SVG;
+}
+
 declare module '*.png' {
   const value: string;
   export default value;
 }
 
-declare module '*.svg?react' {
-  import React from 'react';
-  const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
-  export default SVG;
+declare module '*.webp' {
+  const src: string;
+  export default src;
+}
+
+declare module '*.jpg' {
+  const src: string;
+  export default src;
 }

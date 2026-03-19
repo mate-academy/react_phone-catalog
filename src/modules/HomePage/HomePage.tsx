@@ -4,6 +4,8 @@ import { useProducts } from '@/context/ProductsContext';
 import { ProductSlider } from '../shared/components/ProductSlider';
 import { Loader } from '@/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
+import { HeroSlider } from './components/HeroSlider';
+import { Heading } from '@/components/ui/Heading';
 
 export const HomePage: React.FC = () => {
   const { products, loading, error } = useProducts();
@@ -40,10 +42,10 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.home}>
-      <h1 className="visually-hidden">Product Catalog - Home Page</h1>
       <div className="container">
         <>
-          {/* slider */}
+          <Heading as="h1">Welcome to Nice Gadgets store!</Heading>
+          <HeroSlider />
           <section className={styles.home__section}></section>
 
           <section className={styles.home__section}>

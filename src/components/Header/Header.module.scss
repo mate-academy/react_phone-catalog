@@ -97,7 +97,10 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
 
   &Visible {
     opacity: 1;
@@ -163,38 +166,41 @@
     transition: color 0.3s ease;
 
     &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: $color-primary;
-    bottom: -8px;
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-primary;
+      bottom: -8px;
 
-    @include tablet { bottom: -16px; }
-    @include desktop { bottom: -22px; }
+      @include tablet {
+        bottom: -16px;
+      }
+      @include desktop {
+        bottom: -22px;
+      }
 
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    color: $color-primary;
-    &::after {
-      transform: scaleX(1);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
-  }
+
+    &:hover {
+      color: $color-primary;
+      &::after {
+        transform: scaleX(1);
+      }
+    }
 
     &Active {
       color: $color-primary;
 
       &::after {
         transform: scaleX(1);
-      transition: none;
+        transition: none;
       }
     }
-
   }
 }
 

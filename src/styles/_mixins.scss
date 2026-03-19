@@ -40,7 +40,6 @@
   @include typography($font-weight-semibold, 12px, 15px);
 }
 
-
 // MOBILE
 @mixin mobile-h1 {
   @include typography($font-weight-bold, 32px, 41px, -0.01em);
@@ -58,7 +57,6 @@
   @include typography($font-weight-semibold, 16px, 20px);
 }
 
-
 // grid layoyt
 @function col-width($col-count, $total-cols) {
   @return calc(100% / #{$total-cols} * #{$col-count});
@@ -67,25 +65,20 @@
 // container
 @mixin container {
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $gutter;
+  padding: 0 $gap;
 
-  @media (min-width: $tablet) {
+  @include tablet {
     padding: 0 $tablet-margin;
   }
 
-  @media (min-width: $desktop) {
-    max-width: $desktop;
+  @include desktop {
     padding: 0;
   }
 }
 
 // media query
-@mixin mobile {
-  @media (max-width: #{$tablet - 1px}) {
-    @content;
-  }
-}
 
 @mixin mobile-large {
   @media (min-width: 640px) {
@@ -111,38 +104,35 @@
   }
 }
 
-
-
-
-// grid product list
 @mixin product-grid-layout {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(4, 1fr);
 
-  .card {
+  &__item {
     grid-column: span 4;
   }
 
-
   @include mobile-large {
-    .card {
-      grid-column: span 2;
+    grid-template-columns: repeat(12, 1fr);
+
+    &__item {
+      grid-column: span 6;
     }
   }
 
   @include tablet {
     grid-template-columns: repeat(12, 1fr);
-    .card {
+
+    &__item {
       grid-column: span 4;
     }
   }
 
   @include desktop {
     grid-template-columns: repeat(24, 1fr);
-    .card {
+    &__item {
       grid-column: span 6;
     }
   }
-
 }

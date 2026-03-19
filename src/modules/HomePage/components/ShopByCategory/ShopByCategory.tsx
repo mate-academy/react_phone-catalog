@@ -4,9 +4,9 @@ import { getProducts } from '@/api/api';
 import { Product } from '@/types/Product';
 import styles from './ShopByCategory.module.scss';
 
-import categoryPhones from '@/assets/img/categoryPhones.png';
-import categoryTablets from '@/assets/img/categoryTablets.png';
-import categoryAccessories from '@/assets/img/categoryAccessories.png';
+import categoryPhones from '@/assets/img/categoryPhones.webp';
+import categoryTablets from '@/assets/img/categoryTablets.webp';
+import categoryAccessories from '@/assets/img/categoryAccessories.webp';
 import { Heading } from '@/components/ui/Heading';
 
 export const ShopByCategory: React.FC = () => {

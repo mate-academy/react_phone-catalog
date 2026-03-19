@@ -1,8 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './SlideControls.module.scss';
-import arrowLeft from '@/assets/icons/ArrowLeft.svg';
-import arrowRight from '@/assets/icons/ArrowRight.svg';
+import ArrowLeft from '@/assets/icons/ArrowLeft.svg?react';
+import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
 
 interface Props {
   onNext: () => void;
@@ -28,7 +28,7 @@ export const SlideControls: React.FC<Props> = ({
         onClick={onPrev}
         disabled={isPrevDisabled}
       >
-        <img src={arrowLeft} alt="Previous slide" />
+        <ArrowLeft title="Previous slide" aria-label="Previous slide" />
       </button>
 
       <button
@@ -40,7 +40,7 @@ export const SlideControls: React.FC<Props> = ({
         onClick={onNext}
         disabled={isNextDisabled}
       >
-        <img src={arrowRight} alt="Next slide" />
+        <ArrowRight title="Next slide" aria-label="Next slide" />
       </button>
     </div>
   );

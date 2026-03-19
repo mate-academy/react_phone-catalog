@@ -1,4 +1,4 @@
-.category{
+.category {
   margin-bottom: 56px;
 
   &__list {
@@ -53,8 +53,5 @@
   &__count {
     @include desktop-body;
     color: $color-secondary;
-
-
   }
-
 }

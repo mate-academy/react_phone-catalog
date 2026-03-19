@@ -1,4 +1,3 @@
-
 .toggle {
   background: none;
   border: none;
@@ -29,8 +28,7 @@
   @include desktop {
     width: 20px;
     height: 20px;
-
-}
+  }
 }
 
 .icon {
@@ -46,7 +44,6 @@
     transform: scale(1) rotate(0);
   }
 }
-
 
 .sun {
   color: $color-primary;

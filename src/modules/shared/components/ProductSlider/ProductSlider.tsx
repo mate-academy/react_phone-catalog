@@ -86,7 +86,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   return (
     <section className={styles.slider}>
       <div className={styles.slider__header}>
-        <Heading className={styles.slider__title}>{title}</Heading>
+        <Heading as="h2">{title}</Heading>
 
         <SlideControls
           onNext={handleNext}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/Product';
 import styles from './ProductCard.module.scss';
-import { ButtonPrimary } from '@/components/ui/ButtonPrimary';
-import { ButtonFavorite } from '@/components/ui/ButtonFavorite';
+import { ButtonPrimary } from '@/modules/shared/ui/ButtonPrimary';
+import { ButtonFavorite } from '@/modules/shared/ui/ButtonFavorite';
 
 interface Props {
   product: Product;

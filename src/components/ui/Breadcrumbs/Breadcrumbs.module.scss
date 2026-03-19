@@ -1,0 +1,45 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+
+  .homeLink {
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+
+      path {
+        fill: $color-primary;
+        transition: fill 0.2s;
+      }
+    }
+
+    &:hover svg path {
+      fill: $color-secondary;
+    }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .arrow {
+      width: 16px;
+      height: 16px;
+
+      path {
+        stroke: $color-elements;
+      }
+    }
+  }
+
+  .current {
+    @include desktop-small-text;
+    color: #89939a;
+  }
+}

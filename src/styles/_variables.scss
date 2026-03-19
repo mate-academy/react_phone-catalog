@@ -1,21 +1,20 @@
-
 :root {
   // LIGHT THEME (Default)
-  --color-primary: #313237;   // Headings
-  --color-secondary: #89939A; // Body text
-  --color-icons: #B4BDC3;     // Icons
-  --color-elements: #E2E6E9;  // Elements
-  --color-surface-1: #FFF; // Hover bg / Surface
-  --color-surface-2: #FAFBFC;    // Hover bg / Surface
-  --color-page-bg: #FFF;      // Background
+  --color-primary: #313237; // Headings
+  --color-secondary: #89939a; // Body text
+  --color-icons: #b4bdc3; // Icons
+  --color-elements: #e2e6e9; // Elements
+  --color-surface-1: #fff; // Hover bg / Surface
+  --color-surface-2: #fafbfc; // Hover bg / Surface
+  --color-page-bg: #fff; // Background
   --color-button-selected-bg: var(--color-surface-1);
   --color-button-selected-text: #27ae60;
-  --color-icon-bg: #FFF;
-  --color-icon-bg-hover: #FFF;
-  --color-icon-bg-selected: #FFF;
+  --color-icon-bg: #fff;
+  --color-icon-bg-hover: #fff;
+  --color-icon-bg-selected: #fff;
   --color-icon-content: #313237;
 
-  --color-white: #FFF;
+  --color-white: #fff;
   --color-green: #27ae60;
   --color-red: #eb5757;
   --color-accent: #313237;
@@ -23,24 +22,23 @@
 
   --color-button-text: #fff;
   --color-button-shadow: rgba(23, 32, 49, 0.4);
-
 }
 
 [data-theme='dark'] {
   // DARK THEME
-  --color-primary: #F1F2F9;   // headings
-  --color-secondary: #75767F; // main text
-  --color-icons: #4A4D58;     // Icons
-  --color-elements: #3B3E4A;  // Elements
+  --color-primary: #f1f2f9; // headings
+  --color-secondary: #75767f; // main text
+  --color-icons: #4a4d58; // Icons
+  --color-elements: #3b3e4a; // Elements
   --color-surface-1: #161827; // Surface 1
-  --color-surface-2: #323542;// Surface 2
-  --color-page-bg: #0F1121;   // Background
+  --color-surface-2: #323542; // Surface 2
+  --color-page-bg: #0f1121; // Background
   --color-button-selected-bg: var(--color-surface-2);
   --color-button-selected-text: #f1f2f9;
- --color-icon-bg: #323542;
-  --color-icon-bg-hover: #4A4D58;
+  --color-icon-bg: #323542;
+  --color-icon-bg-hover: #4a4d58;
   --color-icon-bg-selected: #161827;
-  --color-icon-content: #F1F2F9;
+  --color-icon-content: #f1f2f9;
 
   --color-white: #f1f2f9;
   --color-green: #27ae60;
@@ -50,7 +48,6 @@
 
   --color-button-text: #fff;
   --color-button-shadow: rgba(144, 91, 255, 0.4);
-
 }
 
 // Themed colors — reference CSS custom properties defined in _base.scss
@@ -68,7 +65,6 @@ $color-icon-bg-hover: var(--color-icon-bg-hover);
 $color-icon-bg-selected: var(--color-icon-bg-selected);
 $color-icon-content: var(--color-icon-content);
 
-
 $color-white: var(--color-white);
 $color-green: var(--color-green);
 $color-red: var(--color-red);
@@ -83,7 +79,6 @@ $box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
 $border: 1px solid var(--color-elements);
 $border-icon: 1px solid var(--color-icons);
 
-
 //transition
 $transition-default: 0.3s ease;
 
@@ -94,10 +89,8 @@ $tablet: 768px;
 $desktop: 1200px;
 
 // Grid Settings
-$gutter: 16px;
 $tablet-margin: 24px;
 $gap: 16px;
-
 
 //fonts
 @font-face {
@@ -123,7 +116,5 @@ $gap: 16px;
 
 $font-main: 'Mont', Arial, sans-serif;
 $font-weight-regular: 500;
-$font-weight-semibold:700;
+$font-weight-semibold: 700;
 $font-weight-bold: 800;
-
-

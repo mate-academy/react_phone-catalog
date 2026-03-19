@@ -9,9 +9,6 @@ interface Props {
 }
 
 export const ButtonFavorite: React.FC<Props> = ({ isFavorite, onClick }) => {
-
-
-
   return (
     <button
       type="button"

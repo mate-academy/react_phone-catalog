@@ -6,7 +6,9 @@ html {
   scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -45,7 +47,6 @@ img {
   max-width: 100%;
 }
 
-
 input,
 select {
   font-family: inherit;
@@ -61,4 +62,3 @@ select {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-

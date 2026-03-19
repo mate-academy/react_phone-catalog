@@ -12,7 +12,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <div className={styles.productList}>
       {products.map(product => (
-        <div key={product.id} className={cn(styles.productList__item, 'card')}>
+        <div key={product.id} className={cn(styles.productList__item)}>
           <ProductCard product={product} />
         </div>
       ))}

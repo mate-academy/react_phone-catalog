@@ -1,8 +1,8 @@
-import React  from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import logoLight from '@/assets/logo/Logo.svg';
-import arrowUp from '@/assets/icons/ArrowUp.svg';
+import ArrowUp from '@/assets/icons/ArrowUp.svg?react';
 import cn from 'classnames';
 
 export const Footer: React.FC = () => {
@@ -54,14 +54,10 @@ export const Footer: React.FC = () => {
             className={styles.backToTop__button}
             onClick={scrollToTop}
           >
-            <img
-              src={arrowUp}
-              alt="Go to top"
-              className={styles.backToTop__icon}
-            />
+            <ArrowUp title="Go to top" className={styles.backToTop__icon} />
           </button>
         </div>
       </div>
     </footer>
   );
-}
+};

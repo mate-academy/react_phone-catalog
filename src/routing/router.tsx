@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '@/modules/HomePage';
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
+import { CatalogPage } from '@/modules/CatalogPage/CatalogPage';
 
 export const router = createBrowserRouter(
   [
@@ -19,16 +20,8 @@ export const router = createBrowserRouter(
           element: <Navigate to="/" replace />,
         },
         {
-          path: 'phones',
-          element: <div>Phones Page</div>,
-        },
-        {
-          path: 'tablets',
-          element: <div>Tablets Page</div>,
-        },
-        {
-          path: 'accessories',
-          element: <div>Accessories Page</div>,
+          path: ':category',
+          element: <CatalogPage />,
         },
         {
           path: 'favorites',
