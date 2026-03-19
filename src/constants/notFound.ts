@@ -1,8 +1,8 @@
 import { getAssetPath } from '../utils/getAssetPath';
 
 export const IMG_NOT_FOUND = {
-  page: getAssetPath('/img/page-not-found.png'),
-  product: getAssetPath('/img/product-not-found.png'),
+  page: getAssetPath('img/page-not-found.png'),
+  product: getAssetPath('img/product-not-found.png'),
 } as const;
 
 export const TITLE_NOT_FOUND = {
