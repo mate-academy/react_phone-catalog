@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.containetfotter}>
         <Link to="/" className={styles.logo}>
-          <img src="/img/logo/Logo.svg" alt="Nice Gadgets" />
+          <img src="img/logo/Logo.svg" alt="Nice Gadgets" />
         </Link>
         <nav className={styles.nav}>
           <ul className={styles.list}>
@@ -58,7 +58,7 @@ export const Footer = () => {
                 })
               }
             >
-              <img src="/img/icons/arrowUp.svg" alt="Arrow" />
+              <img src="img/icons/arrowUp.svg" alt="Arrow" />
             </button>
           </div>
         </div>

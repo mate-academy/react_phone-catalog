@@ -48,10 +48,10 @@ export const CardCarousel: React.FC<Props> = ({
 
         <div className={styles.buttons}>
           <button onClick={scrollLeft} className={styles.naxigatearrow}>
-            <img src="/img/icons/arrowLeft.svg" alt="ArrowLeft" />
+            <img src="img/icons/arrowLeft.svg" alt="ArrowLeft" />
           </button>
           <button onClick={scrollRight} className={styles.naxigatearrow}>
-            <img src="/img/icons/arrowRight.svg" alt="ArrowRight" />
+            <img src="img/icons/arrowRight.svg" alt="ArrowRight" />
           </button>
         </div>
       </div>

@@ -82,7 +82,7 @@ export const App = () => {
           await delay(5000);
         }
 
-        const res = await fetch('/api/products.json');
+        const res = await fetch('api/products.json');
 
         if (!res.ok) {
           throw new Error('Failed to load products');
@@ -109,9 +109,9 @@ export const App = () => {
         }
 
         const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/tablets.json'),
-          fetch('/api/accessories.json'),
+          fetch('api/phones.json'),
+          fetch('api/tablets.json'),
+          fetch('api/accessories.json'),
         ]);
 
         setPhones(await phonesRes.json());

@@ -10,7 +10,7 @@ export const NotProduct = () => {
         <h1 className={styles.text}>Product not found</h1>
         <button className={styles.backbutton} onClick={() => navigate(-1)}>
           <img
-            src="/img/icons/arrowLeft.svg"
+            src="img/icons/arrowLeft.svg"
             alt="Back"
             className={styles.arrowimg}
           />

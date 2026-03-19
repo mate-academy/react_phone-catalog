@@ -22,7 +22,7 @@ export const Category: React.FC<Props> = ({ phones, tablets, accessories }) => {
       <Link className={styles.boxcategory} to={'/phones'}>
         <div className={styles.imgbox1}>
           <img
-            src="/img/category-phones.webp"
+            src="img/category-phones.webp"
             alt="Category"
             className={styles.img}
           />
@@ -49,7 +49,7 @@ export const Category: React.FC<Props> = ({ phones, tablets, accessories }) => {
       <Link className={styles.boxcategory} to={'/tablets'}>
         <div className={styles.imgbox2}>
           <img
-            src="/img/category-tablets.webp"
+            src="img/category-tablets.webp"
             alt="Category"
             className={styles.img}
           />
@@ -76,7 +76,7 @@ export const Category: React.FC<Props> = ({ phones, tablets, accessories }) => {
       <Link className={styles.boxcategory} to={'/accessories'}>
         <div className={styles.imgbox3}>
           <img
-            src="/img/category-accessories.webp"
+            src="img/category-accessories.webp"
             alt="Category"
             className={styles.img}
           />
