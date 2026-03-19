@@ -1,0 +1,59 @@
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    @include desktop-small-text;
+    color: $color-secondary;
+  }
+
+  &__select {
+    appearance: none;
+    height: 40px;
+    width: 136px;
+    padding: 10px 12px;
+    background-color: transparent;
+    border: 1px solid $color-icons;
+    color: $color-primary;
+    cursor: pointer;
+    @include desktop-button;
+
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:hover,
+    &:focus {
+      border-color: $color-primary;
+    }
+
+    // Specyficzna szerokość dla drugiego selecta
+    &:last-of-type {
+      min-width: 128px;
+    }
+  }
+}
+
+.selectIcon {
+  position: absolute;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+
+  path {
+    stroke: $color-icons;
+  }
+}
