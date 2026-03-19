@@ -15,8 +15,8 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { productsApi } from '../services/productsApi';
-import { productDetailsApi } from '../services/productDetailsApi';
+import { productsApi } from '../modules/ProductsPage/services/productsApi';
+import { productDetailsApi } from '../modules/ProductDetailsPage/services/productDetailsApi';
 import { cartReducer, favouritesReducer } from './reducers';
 
 const cartPersistConfig = {

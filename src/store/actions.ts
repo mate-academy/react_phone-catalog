@@ -1,2 +1,2 @@
-export { cartActions } from '../features/cartSlice';
-export { favouritesActions } from '../features/favouritesSlice';
+export { cartActions } from '../modules/CartPage/features/cartSlice';
+export { favouritesActions } from '../modules/FavouritesPage/features/favouritesSlice';

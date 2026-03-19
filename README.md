@@ -45,7 +45,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 Implement Home page at available at `/`.
 
 1. `<h1>Product Catalog</h1>` should be visually hidden. ✅
-2. `BannerSlider`: ✅
+2. `BannersSlider`: ✅
   - Find your own images to personalize the App; ✅
   - Change pictures automatically every 5 seconds; ✅
   - The next buttons should show the first image after the last one; ✅

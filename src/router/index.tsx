@@ -4,14 +4,14 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import { App } from '../App';
-import { HomePage } from '../pages/Home';
-import { ProductsPage } from '../pages/Products';
-import { ProductDetailsPage } from '../pages/ProductDetails';
-import { FavouritesPage } from '../pages/Favourites';
-import { CartPage } from '../pages/Cart';
-import { NotFoundPage } from '../pages/NotFound';
-import { ScrollToTop } from '../components/ScrollToTop';
+import { App } from '../modules/shared/layout/App';
+import { HomePage } from '../modules/HomePage/HomePage';
+import { ProductsPage } from '../modules/ProductsPage/ProductsPage';
+import { ProductDetailsPage } from '../modules/ProductDetailsPage/ProductDetailsPage';
+import { FavouritesPage } from '../modules/FavouritesPage/FavouritesPage';
+import { CartPage } from '../modules/CartPage/CartPage';
+import { NotFoundPage } from '../modules/HomePage/NotFoundPage';
+import { ScrollToTop } from '../modules/shared/components/ScrollToTop';
 import type { FC } from 'react';
 
 export const AppRouter: FC = () => {

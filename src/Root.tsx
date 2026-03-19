@@ -3,7 +3,7 @@ import { Provider as AppProvider } from 'react-redux';
 import { persistor, store } from './store';
 import { AppRouter } from './router';
 import { PersistGate } from 'redux-persist/integration/react';
-import { LanguageProvider } from './providers/LanguageProvider';
+import { LanguageProvider } from './modules/shared/providers/LanguageProvider';
 
 export const Root: FC = () => (
   <StrictMode>
