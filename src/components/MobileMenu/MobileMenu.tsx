@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { ProductsContext } from '../../store/ProductsContext';
 import { useContext } from 'react';
 import CartIcon from '../Counter/Counter';
+import { useTheme } from '../../store/ThemeContext';
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -21,6 +22,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
   const favoritesCount = favorites.length;
+
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <aside
@@ -66,6 +69,19 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           </svg>
           <CartIcon itemCount={itemCount} />
         </Link>
+        <button
+          className={styles.themeToggleBtn}
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          <svg className={styles.icon} width="20" height="20">
+            <use
+              href={
+                theme === 'light' ? `${icons}#icon-sun` : `${icons}#icon-moon`
+              }
+            ></use>
+          </svg>
+        </button>
       </div>
     </aside>
   );

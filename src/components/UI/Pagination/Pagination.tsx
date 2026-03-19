@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
+import icons from '../../../assets/icons/icons.svg';
 
 type Props = {
   totalPages: number;
@@ -12,6 +13,13 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const pageNumbers = React.useMemo(
+    () => Array.from({ length: totalPages }, (_, i) => i + 1),
+    [totalPages],
+  );
+
+  if (totalPages <= 0) return null;
+
   return (
     <div className={styles.paginationContainer}>
       <div className={styles.arrowButtons}>
@@ -22,20 +30,22 @@ export const Pagination: React.FC<Props> = ({
           onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
           aria-label="Previous Page"
         >
-          &lt;
+          <svg className={styles.icon}>
+            <use href={`${icons}#arrow-left-icon`}></use>
+          </svg>
         </button>
       </div>
 
       <div className={styles.pageNumbers}>
-        {Array.from({ length: totalPages }, (_, index) => (
+        {pageNumbers.map(page => (
           <button
-            key={index + 1}
+            key={page}
             className={`${styles.pageButton} ${
-              currentPage === index + 1 ? styles.active : ''
+              currentPage === page ? styles.active : ''
             }`}
-            onClick={() => onPageChange(index + 1)}
+            onClick={() => onPageChange(page)}
           >
-            {index + 1}
+            {page}
           </button>
         ))}
       </div>
@@ -50,7 +60,9 @@ export const Pagination: React.FC<Props> = ({
           }
           aria-label="Next Page"
         >
-          &gt;
+          <svg className={styles.icon}>
+            <use href={`${icons}#arrow-right-icon`}></use>
+          </svg>
         </button>
       </div>
     </div>

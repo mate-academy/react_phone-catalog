@@ -10,7 +10,7 @@
   justify-content: flex-start;
   padding: 24px;
   flex-direction: column;
-  border: 1px solid #3b3e4a;
+  border: 1px solid var(--gray-elements);
   width: 100%;
   max-height: max-content;
 
@@ -19,7 +19,7 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: $gray-white;
+    color: var(--text-color);
   }
 }
 
@@ -29,14 +29,14 @@
   justify-content: center;
   gap: 8px;
   padding: 0;
-  color: $gray-icons;
+  color: var(--gray-secondary);
   background: none;
   border: none;
   transition: all 0.3s ease-in-out;
   margin-bottom: 16px;
 
   .arrowLeft {
-    color: $gray-icons;
+    color: var(--gray-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,11 +49,11 @@
   }
 
   &:hover {
-    color: $main-white-color;
+    color: var(--text-color);
 
     .arrowLeft {
       svg {
-        color: $main-white-color;
+        color: var(--text-color);
       }
     }
   }
@@ -133,6 +133,6 @@
   font-weight: 600;
   line-height: 21px;
   text-align: center;
-  color: $gray-secondary;
+  color: var(--gray-secondary);
   margin-bottom: 48px;
 }

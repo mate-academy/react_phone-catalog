@@ -1,4 +1,4 @@
-@import '../../../styles/mixins';
+@import '../../../styles/global';
 
 .addToCartBtn {
   height: 40px;
@@ -7,10 +7,17 @@
   line-height: 21px;
   text-align: center;
   border: none;
-  color: rgba(241, 242, 249, 1);
-  background: rgba(144, 91, 255, 1);
+  color: var(--theme-btn-text-default);
+  background: var(--theme-btn-bg-default);
+  border-radius: var(--btn-border-radius-default);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 
-  @include hover(background-color, rgba(163, 120, 255, 1));
+  &:hover {
+    background: var(--theme-btn-bg-hover);
+    box-shadow: var(--theme-btn-box-shadow-hover);
+  }
 
   @include on-phone {
     width: 100%;
@@ -32,13 +39,21 @@
   line-height: 21px;
   text-align: center;
   border: none;
-  color: rgba(241, 242, 249, 1);
-  background: #323542;
+  color: var(--theme-btn-text-selected);
+  background: var(--theme-btn-bg-selected);
+  border: var(--theme-btn-border-selected);
+  border-radius: var(--btn-border-radius-default);
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
-    box-shadow: 0 4px 16px rgba(128, 128, 128, 0.3);
-
-    transition: box-shadow 0.3s ease;
+    border: none;
+    color: var(--theme-btn-text-default);
+    background: var(--theme-btn-bg-hover);
+    box-shadow: var(--theme-btn-box-shadow-hover);
   }
 
   @include on-phone {

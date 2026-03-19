@@ -15,53 +15,89 @@
 
 .pageNumbers {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.dots {
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
 }
 
 .arrowButton {
-  padding: 8px 12px;
-  border: none;
-  background: #323542;
-  color: $gray-white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  border-radius: var(--btn-border-radius);
 
-  &.active {
-    background: #4a4d58;
-    color: white;
-    cursor: default;
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+  .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-color);
+    transition: color 0.3s;
   }
 
   &:hover:not(.active, .disabled) {
-    background: #4a4d58;
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
+  }
+
+  &.active {
+    border: var(--btn-border-active);
+    background: var(--btn-bg-active);
+    cursor: default;
+
+    .icon {
+      color: var(--text-color-active);
+    }
+  }
+
+  &.disabled {
+    background: var(--btn-bg-disabled);
+    border: var(--btn-border-disabled);
+    cursor: not-allowed;
+
+    .icon {
+      color: var(--gray-elements);
+      pointer-events: none;
+    }
   }
 }
 
 .pageButton {
-  padding: 8px 12px;
+  width: 32px;
+  height: 32px;
   border: none;
-  background: #161827;
-  color: $gray-white;
+  color: var(--text-color);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  transition: all 0.3s ease-in-out;
+  border-radius: var(--btn-border-radius);
+
+  &:hover:not(.active, .disabled) {
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
+  }
 
   &.active {
-    background: #905bff;
-    color: white;
+    background: var(--pagination-page-bg-active);
+    color: var(--pagination-text-active);
     cursor: default;
   }
 
   &.disabled {
     cursor: not-allowed;
     opacity: 0.5;
-  }
-
-  &:hover:not(.active, .disabled) {
-    background: #905bff;
   }
 }

@@ -12,7 +12,7 @@
     justify-content: center;
     gap: 8px;
     transition: color 0.3s ease-in-out;
-    color: $gray-secondary;
+    color: var(--gray-secondary);
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
@@ -21,7 +21,7 @@
   }
 
   .arrowRight {
-    color: $gray-icons;
+    color: var(--gray-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,19 +46,34 @@
   .homeBtn {
     background: none;
     border: none;
-    color: $gray-icons;
+    color: var(--gray-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-      color: $main-white-color;
+      color: var(--text-color);
     }
 
     svg {
       transition: color 0.3s ease-in-out;
       width: 16px;
       height: 16px;
+    }
+  }
+
+  &.active {
+    svg {
+      transition: color 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+      color: var(--text-color);
+    }
+  }
+
+  &.active:hover {
+    svg {
+      color: var(--gray-secondary);
     }
   }
 }
@@ -78,7 +93,7 @@
     justify-content: center;
     gap: 8px;
     transition: color 0.3s ease-in-out;
-    color: $gray-secondary;
+    color: var(--gray-secondary);
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
@@ -88,9 +103,15 @@
     height: 100%;
   }
 
-  &:hover {
+  &.active {
     .productName {
-      color: $main-white-color;
+      color: var(--text-color);
+    }
+  }
+
+  &.active:hover {
+    .productName {
+      color: var(--gray-secondary);
     }
   }
 }

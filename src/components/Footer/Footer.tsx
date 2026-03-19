@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import logo from '../../assets/images/Logo-phone-version.svg';
+import logoDark from '../../assets/images/Logo-phone-version.svg';
+import logoLight from '../../assets/images/Logo.svg';
+
 import icons from '../../assets/icons/icons.svg';
 import { Container } from '../Container';
+import { useTheme } from '../../store/ThemeContext';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -12,22 +15,33 @@ export const Footer = () => {
     });
   };
 
+  const { theme } = useTheme();
+
   return (
     <footer className={styles.footer}>
       <Container>
         <div className={styles.footerContent}>
           <Link className={styles.logoFooter} to="/">
-            <img src={logo} alt="LogoFooter" />
+            <img
+              src={theme === 'light' ? logoLight : logoDark}
+              alt="LogoFooter"
+            />
           </Link>
 
           <nav className={styles.footerNav}>
-            <Link to={{}} className={styles.footerNavLink}>
+            <Link
+              to="https://github.com/Ehulinian"
+              className={styles.footerNavLink}
+            >
               Github
             </Link>
-            <Link to={{}} className={styles.footerNavLink}>
+            <Link
+              to="https://github.com/Ehulinian?tab=repositories"
+              className={styles.footerNavLink}
+            >
               Contacts
             </Link>
-            <Link to={{}} className={styles.footerNavLink}>
+            <Link to="/rights" className={styles.footerNavLink}>
               Rights
             </Link>
           </nav>

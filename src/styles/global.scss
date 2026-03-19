@@ -9,7 +9,7 @@
 }
 
 html {
-  font-family: $font-primary;
+  font-family: var(--font-primary);
   scroll-behavior: smooth;
 
   input:-webkit-autofill,
@@ -21,15 +21,15 @@ html {
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    -webkit-text-fill-color: $textColor;
-    -webkit-box-shadow: 0 0 0 1000px $pageColor inset;
+    -webkit-text-fill-color: var(--text-color);
+    -webkit-box-shadow: 0 0 0 1000px (--page-bg) inset;
     transition: background-color 5000s ease-in-out 0s;
   }
 }
 
 body {
   min-width: 320px;
-  background-color: $pageColor;
+  background-color: var(--page-bg);
   margin: 0;
 }
 
@@ -40,7 +40,7 @@ h4,
 h5,
 h6,
 p {
-  color: $textColor;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -77,7 +77,7 @@ h2 {
     line-height: 41px;
     letter-spacing: -0.01em;
   }
-  
+
   @include on-desktop {
     font-size: 32px;
     line-height: 41px;
@@ -103,12 +103,12 @@ a {
 }
 
 button {
-  font-family: $font-primary;
+  font-family: var(--font-primary);
   cursor: pointer;
 }
 
 span {
-  font-family: $font-primary;
+  font-family: var(--font-primary);
 }
 
 img {

@@ -8,11 +8,18 @@
   font-weight: 700;
   line-height: 21px;
   text-align: center;
-  background: #905bff;
-  color: $gray-white;
   border: none;
+  color: var(--theme-btn-text-default);
+  background: var(--theme-btn-bg-default);
+  border-radius: var(--btn-border-radius-default);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 
-  @include hover(background-color, rgba(163, 120, 255, 1));
+  &:hover {
+    background: var(--theme-btn-bg-hover);
+    box-shadow: var(--theme-btn-box-shadow-hover);
+  }
 
   &::after {
     content: '';
@@ -20,7 +27,7 @@
     height: 1px;
     top: -24px;
     width: 100%;
-    background: #3b3e4a;
+    background: var(--gray-elements);
     left: 50%;
     transform: translateX(-50%);
   }

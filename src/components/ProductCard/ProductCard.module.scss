@@ -5,21 +5,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(22, 24, 39, 1);
+  background: var(--gray-surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--btn-border-radius-default);
+  transition: all 0.3s ease;
   cursor: pointer;
 
+  &:hover {
+    border: 1px solid var(--text-color);
+  }
+
   .productImage {
-    transition: transform 0.3s ease;
     object-fit: contain;
     width: 100%;
     height: 100%;
     align-self: center;
-  }
-
-  &:hover {
-    .productImage {
-      transform: scale(1.1);
-    }
   }
 
   @include on-phone {
@@ -115,7 +115,7 @@
     display: block;
     width: 100%;
     height: 1px;
-    background-color: rgba(59, 62, 74, 1);
+    background-color: var(--gray-elements);
     top: -8px;
   }
 }
@@ -129,7 +129,7 @@
   padding-top: 16px;
   word-break: break-all;
   text-overflow: ellipsis;
-  color: rgba(241, 242, 249, 1);
+  color: var(--text-color);
 }
 
 .productStrikePrice {
@@ -150,7 +150,7 @@
   font-weight: 800;
   line-height: 30.8px;
   text-align: left;
-  color: rgba(241, 242, 249, 1);
+  color: var(--text-color);
   position: relative;
 }
 
@@ -163,7 +163,7 @@
   line-height: 15.34px;
   text-align: left;
   width: 100%;
-  color: rgba(117, 118, 127, 1);
+  color: var(--gray-secondary);
 }
 
 .productCardButtons {
@@ -179,10 +179,21 @@
   align-items: center;
   justify-content: center;
   height: 40px;
-  border: none;
-  background: rgba(50, 53, 66, 1);
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  border-radius: var(--btn-border-radius);
 
-  @include hover(background-color, rgba(74, 77, 88, 1));
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
+  }
+
+  &.active {
+    border: var(--btn-border-active);
+    background: var(--btn-bg-active);
+  }
 
   @include on-phone {
     min-width: 40px;
@@ -201,7 +212,7 @@
   transition: color 0.3s ease;
   width: 16px;
   height: 16px;
-  color: $main-white-color;
+  color: var(--text-color);
 }
 
 .favoriteIcon {
@@ -214,7 +225,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: right;
-  color: rgb(241, 242, 249);
+  color: var(--text-color);
   overflow: hidden;
   word-break: break-all;
   display: -webkit-box;

@@ -90,20 +90,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #323542;
+  background: var(--button-secondary);
   width: 32px;
   height: 189px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  border-radius: var(--btn-border-radius);
 
   &:hover {
-    background: #4a4d58;
-  }
-
-  &:disabled {
-    background: none;
-    border: 1px solid #3b3e4a;
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
   }
 
   @include on-phone {
@@ -122,11 +121,11 @@
   .icon {
     width: 16px;
     height: 16px;
-    color: $main-white-color;
+    color: var(--text-color);
   }
 
   &:disabled .icon {
-    color: #4a4d58;
+    color: var(--button-secondary-hover);
     pointer-events: none;
   }
 }
@@ -156,9 +155,9 @@
 .paginationBtn {
   width: 14px;
   height: 4px;
-  background: #3b3e4a;
+  background: var(--gray-secondary);
 
   &.active {
-    background: $main-white-color;
+    background: var(--text-color);
   }
 }

@@ -18,24 +18,13 @@ export const BannerSlider: React.FC<SliderProps> = ({
 }) => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const totalSlides = images.length;
-
-  const handleSlideChange = (index: number) => {
-    if (swiperInstance) {
-      swiperInstance.slideTo(index);
-    }
-  };
 
   const handlePrevSlide = () => {
-    const newIndex = (activeIndex - 1 + totalSlides) % totalSlides;
-
-    handleSlideChange(newIndex);
+    swiperInstance?.slidePrev();
   };
 
   const handleNextSlide = () => {
-    const newIndex = (activeIndex + 1) % totalSlides;
-
-    handleSlideChange(newIndex);
+    swiperInstance?.slideNext();
   };
 
   return (
@@ -43,8 +32,8 @@ export const BannerSlider: React.FC<SliderProps> = ({
       <div className={styles.swiperWrapper}>
         <Swiper
           onSwiper={setSwiperInstance}
-          onSlideChange={({ activeIndex: newIndex }: any) => {
-            setActiveIndex(newIndex);
+          onSlideChange={(swiper: any) => {
+            setActiveIndex(swiper.realIndex);
           }}
           spaceBetween={16}
           slidesPerView={1}
@@ -68,21 +57,14 @@ export const BannerSlider: React.FC<SliderProps> = ({
             </SwiperSlide>
           ))}
         </Swiper>
+
         <div className={styles.navigation}>
-          <button
-            className={styles.navigationBtn}
-            onClick={handlePrevSlide}
-            disabled={activeIndex === 0}
-          >
+          <button className={styles.navigationBtn} onClick={handlePrevSlide}>
             <svg className={styles.icon}>
               <use href={`${icons}#arrow-left-icon`}></use>
             </svg>
           </button>
-          <button
-            className={styles.navigationBtn}
-            onClick={handleNextSlide}
-            disabled={activeIndex === totalSlides - 1}
-          >
+          <button className={styles.navigationBtn} onClick={handleNextSlide}>
             <svg className={styles.icon}>
               <use href={`${icons}#arrow-right-icon`}></use>
             </svg>
@@ -90,11 +72,11 @@ export const BannerSlider: React.FC<SliderProps> = ({
         </div>
 
         <div className={styles.pagination}>
-          {Array.from({ length: totalSlides }).map((_, index) => (
+          {images.map((_, index) => (
             <button
               key={index}
               className={styles.paginationItem}
-              onClick={() => handleSlideChange(index)}
+              onClick={() => swiperInstance?.slideToLoop(index)}
             >
               <div
                 className={cn(styles.paginationBtn, {

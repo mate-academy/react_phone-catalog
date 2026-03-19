@@ -1,11 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import icons from '../../assets/icons/icons.svg';
-import logo from '../../assets/images/Logo-phone-version.svg';
+import logoDark from '../../assets/images/Logo-phone-version.svg';
+import logoLight from '../../assets/images/Logo.svg';
+
 import styles from './Header.module.scss';
 import { MobileMenu } from '../MobileMenu';
 import { ProductsContext } from '../../store/ProductsContext';
 import CartIcon from '../Counter/Counter';
+import { useTheme } from '../../store/ThemeContext';
+import { SearchInput } from '../SearchInput';
 
 const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
   isActive ? `${styles.headerNavLink} ${styles.active}` : styles.headerNavLink;
@@ -23,10 +27,31 @@ const getNavLinkCart = ({ isActive }: { isActive: boolean }) =>
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { cart, favorites } = useContext(ProductsContext);
+  const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const { searchTerm: globalSearchTerm, setSearchTerm } =
+    useContext(ProductsContext);
+  const [inputValue, setInputValue] = useState(globalSearchTerm || '');
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const isCategoryPage = ['/phones', '/tablets', '/accessories'].includes(
+    location.pathname,
+  );
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchTerm(inputValue);
+    }, 300);
+
+    return () => clearTimeout(handler);
+  }, [inputValue, setSearchTerm]);
 
   useEffect(() => {
     if (isOpen) {
@@ -34,7 +59,6 @@ export const Header: React.FC = () => {
     } else {
       document.body.style.overflow = '';
     }
-
     return () => {
       document.body.style.overflow = '';
     };
@@ -48,7 +72,10 @@ export const Header: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.headerLogoWrap}>
           <Link className={styles.logoHeader} to="/">
-            <img src={logo} alt="LogoHeader" />
+            <img
+              src={theme === 'light' ? logoLight : logoDark}
+              alt="LogoHeader"
+            />
           </Link>
         </div>
 
@@ -81,6 +108,28 @@ export const Header: React.FC = () => {
               </svg>
             </div>
           )}
+
+          {isCategoryPage && (
+            <SearchInput
+              value={inputValue}
+              onChange={setInputValue}
+              category={location.pathname.slice(1)}
+            />
+          )}
+
+          <button
+            className={styles.themeToggleBtn}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            <svg className={styles.icon} width="20" height="20">
+              <use
+                href={
+                  theme === 'light' ? `${icons}#icon-sun` : `${icons}#icon-moon`
+                }
+              ></use>
+            </svg>
+          </button>
 
           <NavLink to="/catalog" className={getNavLinkFav}>
             <svg className={styles.icon}>

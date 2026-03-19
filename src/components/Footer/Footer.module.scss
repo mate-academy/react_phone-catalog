@@ -3,7 +3,7 @@
 
 .footer {
   height: 100%;
-  border-top: 1px solid $border-header-color;
+  border-top: 1px solid var(--border-header-color);
 }
 
 .footerContent {
@@ -38,21 +38,26 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: none;
-  background: rgba(50, 53, 66, 1);
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  transition: all 0.3s ease-in-out;
+  border-radius: var(--btn-border-radius);
 
-  @include hover(background-color, rgba(74, 77, 88, 1));
+  &:hover {
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
+  }
 }
 
 .icon {
   width: 16px;
   height: 16px;
-  color: $main-white-color;
+  color: var(--text-color);
 }
 
 .footerButton {
   display: flex;
-  color: $gray-secondary;
+  color: var(--gray-secondary);
   background: unset;
   border: unset;
   justify-content: center;
@@ -85,6 +90,6 @@
   line-height: 11px;
   letter-spacing: 0.04em;
   text-align: left;
-  color: $textColor;
+  color: var(--text-color);
   text-transform: uppercase;
 }

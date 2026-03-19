@@ -19,12 +19,14 @@ type State = {
   cart: CartProducts[];
   favorites: Product[];
   isLoading: boolean;
+  searchTerm: string;
 };
 
 type ProductsContextType = State & {
   setProducts: (payload: Product[]) => void;
   setErrorMessage: (payload: string) => void;
   setLoading: (payload: boolean) => void;
+  setSearchTerm: (payload: string) => void;
   SetAddToCart: (product: CartProducts) => void;
   SetRemoveFromCart: (id: string) => void;
   SetUpdateQuantity: (id: string, quantity: number) => void;
@@ -37,6 +39,7 @@ type Action =
   | { type: 'SET_PRODUCTS'; payload: Product[] }
   | { type: 'SET_ERROR_MESSAGE'; payload: string }
   | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_SEARCH_TERM'; payload: string }
   | { type: 'SET_ADD_TO_CART'; product: CartProducts }
   | { type: 'SET_REMOVE_FROM_CART'; id: string }
   | { type: 'SET_UPDATE_QUANTITY'; id: string; quantity: number }
@@ -50,11 +53,13 @@ export const ProductsContext = createContext<ProductsContextType>({
   favorites: [],
   errorMessage: '',
   isLoading: false,
+  searchTerm: '',
   setProducts: () => {},
   setErrorMessage: () => {},
   setLoading: () => {},
   SetAddToCart: () => {},
   SetRemoveFromCart: () => {},
+  setSearchTerm: () => {},
   SetUpdateQuantity: () => {},
   SetAddToFavorites: () => {},
   SetRemoveFromFavorites: () => {},
@@ -67,12 +72,16 @@ const initialState: State = {
   products: [],
   errorMessage: '',
   isLoading: false,
+  searchTerm: '',
 };
 
 const productsReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SET_PRODUCTS':
       return { ...state, products: action.payload };
+
+    case 'SET_SEARCH_TERM':
+      return { ...state, searchTerm: action.payload };
 
     case 'SET_ERROR_MESSAGE':
       return { ...state, errorMessage: action.payload };
@@ -164,6 +173,10 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: 'SET_PRODUCTS', payload: newProducts });
   };
 
+  const setSearchTerm = (term: string) => {
+    dispatch({ type: 'SET_SEARCH_TERM', payload: term });
+  };
+
   const setErrorMessage = (newErrorMessage: string) => {
     dispatch({ type: 'SET_ERROR_MESSAGE', payload: newErrorMessage });
   };
@@ -210,6 +223,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       setProducts,
       setErrorMessage,
       setLoading,
+      setSearchTerm,
       SetAddToCart,
       SetRemoveFromCart,
       SetUpdateQuantity,

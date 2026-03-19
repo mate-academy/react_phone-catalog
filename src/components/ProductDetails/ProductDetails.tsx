@@ -48,13 +48,13 @@ export const ProductDetails: React.FC<Props> = ({
     const matchedVariant = productVariants.find(
       v =>
         v.color.toLowerCase() === newColor.toLowerCase() &&
-        v.capacity.toLowerCase() === currentVariant.capacity.toLowerCase(),
+        v.capacity === currentVariant.capacity &&
+        v.namespaceId === currentVariant.namespaceId,
     );
 
     if (matchedVariant) {
       setCurrentVariant(matchedVariant);
       setDisplayedImageIndex(0);
-
       navigate(`/${product.category}/${matchedVariant.id}`);
     }
   };
@@ -62,8 +62,9 @@ export const ProductDetails: React.FC<Props> = ({
   const handleCapacityChange = (newCapacity: string) => {
     const matchedVariant = productVariants.find(
       v =>
-        v.capacity.toLowerCase() === newCapacity.toLowerCase() &&
-        v.color.toLowerCase() === currentVariant.color.toLowerCase(),
+        v.capacity === newCapacity &&
+        v.color === currentVariant.color &&
+        v.namespaceId === currentVariant.namespaceId,
     );
 
     if (matchedVariant) {

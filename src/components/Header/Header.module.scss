@@ -4,10 +4,10 @@
   @include page-grid;
 
   position: sticky;
-  border-bottom: 1px solid $border-header-color;
+  border-bottom: 1px solid var(--border-header-color);
   z-index: 1001;
   top: 0;
-  background: rgb(15, 17, 33, 0.9);
+  background: var(--header-bg);
 }
 
 .logoHeader {
@@ -38,10 +38,11 @@
 .HeaderMenuWrapper {
   display: flex;
   justify-self: end;
-  border-left: 1px solid $border-header-color;
+  border-left: 1px solid var(--border-header-color);
 
   @include on-phone {
     grid-column: 4 / span 1;
+    flex-direction: row-reverse;
   }
 
   @include on-tablet {
@@ -79,7 +80,7 @@
 
   &.active {
     position: relative;
-    color: $main-white-color;
+    color: var(--text-color);
   }
 
   &.active::after {
@@ -87,7 +88,7 @@
     position: absolute;
     width: 100%;
     height: 3px;
-    background: rgba(241, 242, 249, 1);
+    background: var(--text-color);
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
@@ -116,7 +117,7 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  color: $main-white-color;
+  color: var(--text-color);
 }
 
 .headerMenuIcon {
@@ -159,7 +160,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid $border-header-color;
+  border-left: 1px solid var(--border-header-color);
   cursor: pointer;
 
   &::after {
@@ -180,7 +181,7 @@
 
   &.active {
     position: relative;
-    color: $main-white-color;
+    color: var(--text-color);
   }
 
   &.active::after {
@@ -188,7 +189,69 @@
     position: absolute;
     width: 100%;
     height: 3px;
+    background: var(--text-color);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.themeToggleBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: none;
+  justify-content: center;
+  border: none;
+  border-right: 1px solid var(--border-header-color);
+  padding: 0;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
     background: rgba(241, 242, 249, 1);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+
+    @include on-phone {
+      display: none;
+    }
+  }
+
+  &.active {
+    position: relative;
+    color: var(--text-color);
+  }
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--text-color);
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
@@ -245,7 +308,8 @@
 }
 
 .headerNavLink {
-  color: $gray-secondary;
+  position: relative;
+  color: var(--gray-secondary);
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 800;
@@ -255,12 +319,11 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    color: $main-white-color;
+    color: var(--text-color);
   }
 
   &.active {
-    position: relative;
-    color: $main-white-color;
+    color: var(--text-color);
   }
 
   &.active::after {
@@ -268,7 +331,7 @@
     position: absolute;
     width: 100%;
     height: 3px;
-    background: rgba(241, 242, 249, 1);
+    background: var(--text-color);
     left: 50%;
     transform: translateX(-50%);
 

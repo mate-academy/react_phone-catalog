@@ -17,7 +17,7 @@
   .homeBtn {
     background: none;
     border: none;
-    color: $main-white-color;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +30,7 @@
   }
 
   .arrowRight {
-    color: $gray-icons;
+    color: var(--gray-icons);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@
 
   .productName {
     transition: color 0.3s ease-in-out;
-    color: $gray-secondary;
+    color: var(--gray-secondary);
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
@@ -57,12 +57,12 @@
   &:hover {
     .arrowRight {
       svg {
-        color: $main-white-color;
+        color: var(--text-color);
       }
     }
 
     .productName {
-      color: $main-white-color;
+      color: var(--text-color);
     }
   }
 }
@@ -81,7 +81,7 @@
   font-weight: 600;
   line-height: 21px;
   text-align: left;
-  color: $gray-secondary;
+  color: var(--gray-secondary);
   margin-bottom: 40px;
 }
 

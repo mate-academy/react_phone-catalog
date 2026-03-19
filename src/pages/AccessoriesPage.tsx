@@ -8,16 +8,20 @@ import { Category } from '../types/Category';
 import { useCategoryProducts } from '../hooks/useFilteredProducts';
 
 export const AccessoriesPage = () => {
-  const { products } = useContext(ProductsContext);
+  const { products, searchTerm } = useContext(ProductsContext);
   const category = Category.Accessories;
 
   const { displayedProducts } = useCategoryProducts(products, category);
+
+  const filtered = displayedProducts.filter(p =>
+    p.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <Container>
       <ProductsIntro category={category} />
       <ProductControls />
-      <ProductList filteredProducts={displayedProducts} />
+      <ProductList filteredProducts={filtered} />
     </Container>
   );
 };

@@ -80,7 +80,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className={styles.productCardButtons}>
           <Button product={product} />
           <button
-            className={styles.addToFavouriteBtn}
+            className={cn(styles.addToFavouriteBtn, {
+              [styles.active]: isFavorite,
+            })}
             onClick={event => {
               event.preventDefault();
               event.stopPropagation();

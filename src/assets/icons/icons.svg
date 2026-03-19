@@ -44,5 +44,39 @@
       <path fill-rule="evenodd" clip-rule="evenodd" d="M1.3335 4.00001C1.3335 3.63182 1.63197 3.33334 2.00016 3.33334H14.0002C14.3684 3.33334 14.6668 3.63182 14.6668 4.00001C14.6668 4.3682 14.3684 4.66668 14.0002 4.66668H2.00016C1.63197 4.66668 1.3335 4.3682 1.3335 4.00001Z" fill="currentColor"/>
       <path fill-rule="evenodd" clip-rule="evenodd" d="M5.33341 6C5.7016 6 6.00008 6.29848 6.00008 6.66667C6.00008 7.1971 6.21079 7.70581 6.58587 8.08088C6.96094 8.45595 7.46965 8.66667 8.00008 8.66667C8.53051 8.66667 9.03922 8.45595 9.41429 8.08088C9.78937 7.70581 10.0001 7.1971 10.0001 6.66667C10.0001 6.29848 10.2986 6 10.6667 6C11.0349 6 11.3334 6.29848 11.3334 6.66667C11.3334 7.55072 10.9822 8.39857 10.3571 9.02369C9.73198 9.64881 8.88414 10 8.00008 10C7.11603 10 6.26818 9.64881 5.64306 9.02369C5.01794 8.39857 4.66675 7.55072 4.66675 6.66667C4.66675 6.29848 4.96522 6 5.33341 6Z" fill="currentColor"/>
     </symbol>
+    <symbol id="icon-sun" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="8" fill="black"/>
+      <line x1="16" y1="0" x2="16" y2="6" stroke="black" stroke-width="2"/>
+      <line x1="16" y1="26" x2="16" y2="32" stroke="black" stroke-width="2"/>
+      <line x1="2" y1="2" x2="6" y2="6" stroke="black" stroke-width="2"/>
+      <line x1="26" y1="26" x2="30" y2="30" stroke="black" stroke-width="2"/>
+    </symbol>
+
+    <symbol id="icon-moon" viewBox="0 0 32 32">
+      <path d="M22 16a10 10 0 11-12-12 8 8 0 0012 12z" fill="white"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M5.5 10.7655C5.50003 8.01511 7.44296 5.64777 10.1405 5.1113C12.8381 4.57483 15.539 6.01866 16.5913 8.55977C17.6437 11.1009 16.7544 14.0315 14.4674 15.5593C12.1804 17.0871 9.13257 16.7866 7.188 14.8415C6.10716 13.7604 5.49998 12.2942 5.5 10.7655Z"
+    stroke="#000"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M17.029 16.5295L19.5 19.0005"
+    stroke="#000"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</symbol>
+
+  <symbol id="icon-clear" viewBox="0 0 24 24" width="16"
+  height="16">
+    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </symbol>
   </defs>
 </svg>

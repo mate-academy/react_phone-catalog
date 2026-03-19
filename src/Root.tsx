@@ -10,6 +10,7 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ThemeProvider } from './store/ThemeContext';
+import { RightsPage } from './pages/Rights/Rights';
 
 export const Root = () => (
   <Router>
@@ -35,6 +36,7 @@ export const Root = () => (
             </Route>
 
             <Route path="cart" element={<CartPage />} />
+            <Route path="rights" element={<RightsPage />} />
 
             <Route path="catalog" element={<FavoritesPage />} />
             <Route path="*" element={<NotFoundPage />} />

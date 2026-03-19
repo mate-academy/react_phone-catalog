@@ -5,8 +5,9 @@
   align-items: center;
   padding: 24px;
   gap: 24px;
-  background-color: #161827;
+  background-color: var(--gray-surface);
   transition: opacity 0.5s ease-in-out;
+  border: 1px solid var(--card-border);
 
   &.removing {
     opacity: 0;
@@ -66,30 +67,29 @@
 }
 
 .cartItemName {
-  font-family: $font-primary;
   width: 100%;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   text-align: left;
-  color: $gray-white;
+  color: var(--text-color);
 }
 
 .cartItemPrice {
-  font-family: $font-primary;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
-  color: $gray-white;
+  color: var(--text-color);
   text-align: right;
   margin: 0;
   width: 80px;
 }
 
 .cartItemControlButton {
-  background-color: #323542;
-  color: white;
-  border: none;
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  border-radius: var(--btn-border-radius);
+  color: var(--text-color);
   font-size: 16px;
   width: 32px;
   height: 32px;
@@ -98,13 +98,14 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: #4a4d58;
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
   }
 
   &.disabled {
-    border: 1px solid #3b3e4a;
-    background: none;
-    cursor: not-allowed;
+    border: var(--btn-border-disabled);
+    background: var(--btn-bg-disabled);
+    cursor: default;
   }
 }
 
@@ -128,7 +129,7 @@
   font-weight: 600;
   line-height: 21px;
   text-align: center;
-  color: $gray-secondary;
+  color: var(--gray-secondary);
 
   &::after {
     content: '';
@@ -159,7 +160,7 @@
 
   &:hover {
     svg {
-      color: $gray-white;
+      color: var(--text-color);
     }
   }
 }

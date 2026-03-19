@@ -51,28 +51,30 @@
   width: 32px;
   height: 32px;
   cursor: pointer;
-  background: #323542;
-  border: none;
+  border: var(--btn-border);
+  background: var(--btn-bg);
   transition: all 0.3s ease-in-out;
+  border-radius: var(--btn-border-radius);
 
   &:hover {
-    background: #4a4d58;
+    border: var(--btn-border-hover);
+    background: var(--btn-bg-hover);
   }
 
   &:disabled {
-    background: none;
-    border: 1px solid #3b3e4a;
+    background: var(--btn-bg-disabled);
+    border: var(--btn-border-disabled);
   }
 
   .icon {
     width: 16px;
     height: 16px;
 
-    color: $main-white-color;
+    color: var(--text-color);
   }
 
   &:disabled .icon {
-    color: #4a4d58;
+    color: var(--gray-elements);
     pointer-events: none;
   }
 }

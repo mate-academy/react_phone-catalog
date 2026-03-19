@@ -7,12 +7,11 @@
   gap: 4px;
 
   .sortName {
-    font-family: $font-primary;
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
     text-align: left;
-    color: $gray-secondary;
+    color: var(--gray-secondary);
   }
 
   .dropDownMenu {
@@ -25,15 +24,16 @@
     line-height: 21px;
     width: 176px;
     cursor: pointer;
-    background: #323542;
-    color: $main-white-color;
-    border-color: #323542;
+    background: var(--btn-bg);
+    border: var(--btn-border);
+    color: var(--text-color);
+    border-radius: var(--btn-border-radius-default);
 
     &::-ms-expand {
       display: none;
     }
     &:hover {
-      border-color: $gray-secondary;
+      border-color: var(--gray-secondary);
     }
     &:focus {
       outline: none;
@@ -55,12 +55,12 @@
     svg {
       width: 16px;
       height: 16px;
-      color: $gray-secondary;
+      color: var(--gray-secondary);
       transition: all 0.3s ease-in-out;
     }
   }
 
   .dropDownMenu:hover + .arrow svg {
-    color: $gray-white;
+    color: var(--text-color);
   }
 }
