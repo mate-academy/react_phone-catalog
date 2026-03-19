@@ -1,0 +1,76 @@
+@import '../../styles/index';
+
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdownTrigger {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  color: $primary-color;
+  font-family: inherit;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: inherit;
+
+  cursor: pointer;
+}
+
+.dropdown {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: calc(100% + 4px);
+  width: 100%;
+  background: $hover-bg-color;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+  list-style: none;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  pointer-events: none;
+}
+
+.dropdownOpen {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  color: $secondary-color;
+  background-color: $hover-bg-color;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    color: $primary-color;
+    background-color: $elements-color;
+  }
+}

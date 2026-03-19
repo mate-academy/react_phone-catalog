@@ -1,0 +1,14 @@
+@import '../../styles/index';
+
+.centeredContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 50vh;
+  text-align: center;
+
+  @include on-tablet {
+    margin-top: 10vh;
+  }
+}

@@ -1,0 +1,78 @@
+@import '../../styles/index';
+
+.cartTitle {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 16px;
+  }
+}
+
+.cartContent {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    flex-direction: row;
+    align-items: start;
+    gap: 16px;
+  }
+}
+
+.cartList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex: 2;
+}
+
+.cartSummary {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+
+  @include on-desktop {
+    gap: 24px;
+  }
+
+  &Total {
+    text-align: center;
+  }
+
+  &Amount {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &Subtitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $secondary-color;
+
+    @include on-desktop {
+      font-weight: 500;
+    }
+  }
+
+  &Checkout {
+    @include button-primary;
+
+    height: 48px;
+    width: 100%;
+  }
+}

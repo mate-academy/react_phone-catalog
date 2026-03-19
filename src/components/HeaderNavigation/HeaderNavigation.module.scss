@@ -1,0 +1,104 @@
+@import '../../styles/index';
+
+.navList {
+  display: none;
+  margin: 0;
+  margin-left: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  flex: 1 1 auto;
+  height: 100%;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+  }
+}
+
+.navButtons {
+  display: flex;
+}
+
+.navSearch {
+  @include header-button;
+
+  @include on-tablet {
+    width: 36px;
+  }
+
+  @include on-desktop {
+    width: $header-nav-desktop-height;
+    height: $header-nav-desktop-height;
+  }
+}
+
+.navItem {
+  position: relative;
+  list-style: none;
+}
+
+.navLink {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: $secondary-color;
+  line-height: $header-nav-mobile-height;
+
+  @include on-desktop {
+    line-height: $header-nav-desktop-height;
+  }
+
+  @include hover(color, $primary-color);
+
+  &IsActive {
+    @include active-link;
+  }
+}
+
+.navItem:not(:first-child) {
+  margin-left: 24px;
+
+  @include on-desktop {
+    margin-left: 64px;
+  }
+}
+
+.navButtonsTablet {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.navButtonMobile {
+  display: flex;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.navButton {
+  position: relative;
+
+  @include header-button;
+
+  @include on-tablet {
+    width: 36px;
+  }
+
+  @include on-desktop {
+    width: $header-nav-desktop-height;
+    height: $header-nav-desktop-height;
+  }
+
+  &IsActive {
+    @include active-link;
+  }
+}

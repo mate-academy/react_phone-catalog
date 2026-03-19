@@ -1,0 +1,29 @@
+@import '../../styles/index';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  &List {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+  }
+
+  &Item {
+    @include round-button;
+
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+  }
+}
+
+.isActive {
+  color: $bg-color;
+  background-color: $primary-color;
+}

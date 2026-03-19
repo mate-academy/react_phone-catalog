@@ -1,0 +1,26 @@
+@import '../../styles/index';
+
+.specsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: var(--font-size);
+  font-weight: 600;
+  color: $secondary-color;
+}
+
+.value {
+  font-size: var(--font-size);
+  font-weight: 600;
+}

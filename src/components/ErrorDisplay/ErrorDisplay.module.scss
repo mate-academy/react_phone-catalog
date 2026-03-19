@@ -1,0 +1,43 @@
+@import '../../styles/index';
+
+.errorContainer {
+  padding: 24px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 24px;
+  border: 1px solid #e57373;
+  background-color: $bg-color;
+  border-radius: 8px;
+  text-align: center;
+
+  @include on-desktop {
+    width: 520px;
+    height: 260px;
+    padding: 64px;
+  }
+}
+
+.message {
+  margin: 0;
+  color: $primary-color;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reloadButton {
+  padding: 10px 18px;
+  background-color: $red-color;
+  color: $bg-color;
+  font-size: 16px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
