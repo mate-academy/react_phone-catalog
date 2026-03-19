@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../../../../types/Product';
 import { ProductList } from '../../../shared/components/ProductList/ProductList';
-import styles from './NewModels.module.scss';
+import styles from './ProductSection.module.scss';
 
 type Props = {
+  title: string;
   products: Product[];
+  showDiscount?: boolean;
 };
 
-export const NewModels: React.FC<Props> = ({ products }) => {
+export const ProductSection: React.FC<Props> = ({
+  title,
+  products,
+  showDiscount = false,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [step, setStep] = useState(228);
   const [cardsPerView, setCardsPerView] = useState(1);
@@ -55,7 +61,7 @@ export const NewModels: React.FC<Props> = ({ products }) => {
   return (
     <section className={styles.newModels}>
       <div className={styles.top}>
-        <h2 className={styles.title}>Brand new models</h2>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.controls}>
           <button
@@ -85,6 +91,8 @@ export const NewModels: React.FC<Props> = ({ products }) => {
           products={products}
           currentIndex={currentIndex}
           step={step}
+          showDiscount={showDiscount}
+          isSlider
         />
       </div>
     </section>

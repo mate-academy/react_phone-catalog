@@ -1,19 +1,25 @@
+import { Link } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
+import React from 'react';
 
-export const MobileMenu = () => {
+type Props = {
+  onClose: () => void;
+};
+
+export const MobileMenu: React.FC<Props> = ({ onClose }) => {
   return (
     <aside className={styles.mobileMenu}>
       <nav className={styles.mobileNav}>
         <ul className={styles.menuList}>
           <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
+            <Link to="/" className={styles.menuLink}>
               Home
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
+            <Link to="/phones" className={styles.menuLink} onClick={onClose}>
               Phones
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
             <a href="#" className={styles.menuLink}>

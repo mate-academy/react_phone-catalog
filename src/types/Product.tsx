@@ -12,3 +12,5 @@ export type Product = {
   year: number;
   image: string;
 };
+
+export type SortType = 'newest' | 'alphabetically' | 'cheapest';

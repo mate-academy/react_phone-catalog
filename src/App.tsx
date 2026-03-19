@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { Main } from './modules/HomePage/components/Main/Main';
 import { Header } from './modules/shared/components/Header/Header';
 import { Product } from './types/Product';
+import { Footer } from './modules/shared/components/Footer';
+import { HomePage } from './modules/HomePage';
+import { PhonesPage } from './modules/PhonesPage';
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +20,11 @@ export const App = () => {
   return (
     <div className="page-backgraund">
       <Header openMenu={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <Main products={products} />
+      <Routes>
+        <Route path="/" element={<HomePage products={products} />} />
+        <Route path="/phones" element={<PhonesPage products={products} />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };

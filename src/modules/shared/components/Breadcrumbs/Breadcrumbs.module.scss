@@ -1,0 +1,32 @@
+@use '../../../../styles/mixins.scss';
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-block: 24px;
+    padding-inline: 16px;
+
+    @include mixins.on-tablet {
+        padding-inline: 32px;
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+}
+
+.homeLink {
+    display: flex;
+
+    &:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+}
+
+.currentPage {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+}

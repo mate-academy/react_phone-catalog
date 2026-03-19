@@ -3,9 +3,13 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showDiscount = false,
+}) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardContent}>
@@ -20,7 +24,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <h3 className={styles.title}>{product.name}</h3>
         </div>
         <div className={styles.priceBlock}>
-          <span className={styles.price}>${product.fullPrice}</span>
+          {showDiscount ? (
+            <div className={styles.priceRow}>
+              <span className={styles.price}>${product.price}</span>
+              <span className={styles.oldPrice}>${product.fullPrice}</span>
+            </div>
+          ) : (
+            <span className={styles.price}>${product.fullPrice}</span>
+          )}
         </div>
         <div className={styles.specs}>
           <div className={styles.specRow}>

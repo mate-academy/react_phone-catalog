@@ -1,5 +1,17 @@
 @use '../../../../styles/mixins';
 
+.main {
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        margin-bottom: 80px;
+    }
+}
+
 .layoutGrid {
     @include mixins.grid-columns(4, 1fr, 16px);
 

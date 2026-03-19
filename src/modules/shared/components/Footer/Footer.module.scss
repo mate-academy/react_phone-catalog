@@ -1,0 +1,104 @@
+@use '../../../../styles/mixins.scss';
+
+.footer {
+    border-top: 1px solid rgba(226, 230, 233, 1);
+}
+
+.footerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 16px;
+
+    @include mixins.on-tablet {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        padding: 32px;
+    }
+
+    @include mixins.on-desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.logoLink {
+    display: flex;
+
+    @include mixins.on-tablet {
+        flex: 1;
+    }
+}
+
+.logoImage {
+    display: block;
+    width: 89px;
+    height: 32px;
+}
+
+.nav {
+    @include mixins.on-tablet {
+        width: 100%;
+    }
+}
+
+.menuList {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+
+    @include mixins.on-tablet {
+        gap: 0;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+.menuLink {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(137, 147, 154, 1);
+}
+
+.backToTopBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include mixins.on-tablet {
+        flex: 1;
+        justify-content: end;
+    }
+}
+
+.backToTopText {
+    margin: 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+}
+
+.backToTopButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid rgba(180, 189, 195, 1);
+    cursor: pointer;
+}

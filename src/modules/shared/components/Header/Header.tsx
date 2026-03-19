@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 
@@ -14,7 +15,7 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
   return (
     <>
       <header className={styles.header}>
-        <a href="#" className={styles.logoLink}>
+        <Link to="/" className={styles.logoLink}>
           <picture>
             <source
               media="(min-width: 1024px)"
@@ -26,19 +27,19 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
               className={styles.logo}
             />
           </picture>
-        </a>
+        </Link>
 
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link to="/" className={styles.menuLink}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className={styles.navItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link to="/phones" className={styles.menuLink}>
                 Phones
-              </a>
+              </Link>
             </li>
             <li className={styles.navItem}>
               <a href="#" className={styles.menuLink}>
@@ -75,7 +76,7 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
           />
         </button>
       </header>
-      {openMenu && <MobileMenu />}
+      {openMenu && <MobileMenu onClose={() => setIsMenuOpen(false)} />}
     </>
   );
 };

@@ -26,3 +26,11 @@
   grid-template-columns: repeat($columns, $column-width);
   gap: $gap;
 }
+
+@mixin hover-scale($scale: 1.1) {
+  overflow: hidden;
+
+  &:hover .image {
+    transform: scale($scale);
+  }
+}

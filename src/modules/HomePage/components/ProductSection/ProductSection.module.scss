@@ -1,18 +1,16 @@
 @use '../../../../styles/mixins';
 
 .newModels {
-  // padding-top: 56px;
-  // padding-bottom: 56px;
-  margin-block: 56px;
+  margin-top: 56px;
 
   @include mixins.on-tablet {
-    // padding-block: 64px;
-    margin-block: 64px;
+
+    margin-top: 64px;
   }
 
   @include mixins.on-desktop {
-    // padding-block: 80px;
-    margin-block: 80px;
+
+    margin-top: 80px;
   }
 }
 
@@ -75,16 +73,20 @@
 
 .sliderWrapper {
   overflow: hidden;
-  padding-left: 16px;
-  padding-right: 0;
+  // padding-left: 16px;
+  // padding-right: 0;
+  margin-right: 0;
+  margin-left: 16px;
 
   @include mixins.on-tablet {
-    padding-left: 24px;
-    padding-right: 0;
+    // padding-left: 24px;
+    // padding-right: 0;
+
+    margin-left: 24px;
   }
 
   @include mixins.on-desktop {
     margin-inline: 32px;
-    padding: 0;
+    // padding: 0;
   }
 }

@@ -1,41 +1,53 @@
 @use '../../../../styles/mixins.scss';
 
 .card {
-  width: 212px;
   flex: 0 0 212px;
   border: 1px solid rgba(226, 230, 233, 1);
 
   @include mixins.on-tablet {
-    width: 237px;
     flex: 0 0 237px;
   }
 
   @include mixins.on-desktop {
-    width: 272px;
     flex: 0 0 272px;
   }
 }
 
 .cardContent {
   display: grid;
-  grid-template-rows: auto 42px auto 1fr auto;
+  row-gap: 8px;
+  grid-template-rows: auto auto auto 1fr auto;
   height: 100%;
   padding: 32px;
 }
 
 .imageLink {
   display: flex;
-  margin-bottom: 24px;
-  aspect-ratio: 1 / 1;
+  justify-content: center;
+  align-items: center;
+  height: 129px;
+  text-decoration: none;
+  
+  @include mixins.on-tablet {
+    height: 173px;
+  }
+
+  @include mixins.on-desktop {
+    height: 196px;
+  }
 }
 
 .image {
+  display: block;
   width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .titleWrapper {
-  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-end;
+  min-height: 63px;
 }
 
 .title {
@@ -47,25 +59,38 @@
 }
 
 .priceBlock {
-  margin-bottom: 8px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(226, 230, 233, 1);
 }
 
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .price {
   margin: 0;
+  margin-right: 8px;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
   color: rgba(49, 50, 55, 1);
 }
 
+.oldPrice {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: rgba(137, 147, 154, 1);
+  text-decoration: line-through;
+}
+
 .specs {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-block: 8px;
-  margin-bottom: 8px;
 }
 
 .specRow {
@@ -100,6 +125,7 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
+  padding: 0;
   color: rgba(255, 255, 255, 1);
   background-color: rgba(49, 50, 55, 1);
   border: none;
@@ -112,6 +138,7 @@
   align-items: center;
   width: 40px;
   height: 40px;
+  padding: 0;
   border: 1px solid rgba(180, 189, 195, 1);
   background-color: transparent;
   cursor: pointer;
