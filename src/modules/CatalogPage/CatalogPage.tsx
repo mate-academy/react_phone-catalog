@@ -3,13 +3,14 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { Product } from '@/types/Product';
 import { getProducts } from '@/api/api';
 import { ProductList } from '@/modules/shared/components/ProductList';
-import { Pagination } from '@/modules/shared/components/Pagination';
+import { Pagination } from '@/modules/CatalogPage/components/Pagination';
 import { Heading } from '@/components/ui/Heading';
 import { Loader } from '@/components/Loader';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
-import { CatalogFilters } from '@/modules/shared/components/CatalogFilter';
+import { CatalogFilters } from '@/modules/CatalogPage/components/CatalogFilter';
 
+//----mapping object
 const categoryNames: Record<string, string> = {
   phones: 'Mobile phones',
   tablets: 'Tablets',
@@ -19,10 +20,11 @@ const categoryNames: Record<string, string> = {
 export const CatalogPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isFiltering, setIsFiltering] = useState(false);
 
+  //---Data Fetching
   useEffect(() => {
     setIsLoading(true);
 
@@ -39,12 +41,12 @@ export const CatalogPage: React.FC = () => {
       });
   }, [category]);
 
-  //ODCZYT Z URL
+  //---Reading URL Parameters
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = Number(searchParams.get('page')) || 1;
 
-  // --- 2. LOGIKA SORTOWANIA ---
+  //--- Sorting Logic
   const sortedProducts = [...products].sort((a, b) => {
     switch (sort) {
       case 'title':
@@ -57,7 +59,7 @@ export const CatalogPage: React.FC = () => {
     }
   });
 
-  // ---  LOGIKA PAGINACJI ---
+  //---Pagination Calculations
   const isAll = perPage === 'all';
   const itemsPerPage = isAll ? sortedProducts.length : Number(perPage);
 
@@ -65,8 +67,10 @@ export const CatalogPage: React.FC = () => {
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentProducts = sortedProducts.slice(firstItemIndex, lastItemIndex);
 
-  // --- Funkcja aktualizująca URL
+  //---URL Update Function (updateParams)
   const updateParams = (newValues: Record<string, string | number>) => {
+    setIsFiltering(true);
+
     const params = new URLSearchParams(searchParams);
 
     Object.entries(newValues).forEach(([key, value]) => {
@@ -80,16 +84,23 @@ export const CatalogPage: React.FC = () => {
         params.set(key, value.toString());
       }
     });
+
     if (!newValues.hasOwnProperty('page')) {
       params.delete('page');
     }
 
     setSearchParams(params);
+
+    setTimeout(() => {
+      setIsFiltering(false);
+    }, 300);
   };
 
+  //----Conditional Rendering Logic
   const shouldShowPagination = !isAll && sortedProducts.length > itemsPerPage;
+  const showLoader = isLoading || isFiltering;
 
-  //--- pobieranie nagłówka z kategorii
+  //---- fetching the header from the category
   const displayTitle = category
     ? categoryNames[category] ||
       category.charAt(0).toUpperCase() + category.slice(1)
@@ -112,8 +123,10 @@ export const CatalogPage: React.FC = () => {
           onPerPageChange={val => updateParams({ perPage: val })}
         />
 
-        {isLoading ? (
-          <Loader />
+        {showLoader ? (
+          <div className={styles.loaderWrapper}>
+            <Loader />
+          </div>
         ) : (
           <>
             <ProductList products={currentProducts} />

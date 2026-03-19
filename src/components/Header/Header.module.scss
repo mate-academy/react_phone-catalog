@@ -5,7 +5,6 @@
   background-color: $color-page-bg;
   border-bottom: $border;
   z-index: 1000;
-  transition: all 0.3s ease;
 
   @include tablet {
     position: fixed;
@@ -56,6 +55,11 @@
   }
 }
 
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .menuButton {
   background: none;
   border: none;
@@ -66,6 +70,7 @@
   align-items: center;
   justify-content: center;
   border-left: 1px solid $color-elements;
+  color: $color-primary;
 
   @include tablet {
     display: none;
@@ -76,10 +81,6 @@
   width: 16px;
   height: 16px;
   object-fit: contain;
-
-  :global([data-theme='dark']) & {
-    filter: invert(1) brightness(2);
-  }
 }
 
 .menuContent {
@@ -96,30 +97,28 @@
 
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: translateY(-20px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    visibility 0.3s;
+  //transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.3s;
 
   &Visible {
     opacity: 1;
     visibility: visible;
+    pointer-events: all;
     transform: translateY(0);
   }
 
   @include tablet {
-    display: flex !important;
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    flex: 1;
+    pointer-events: all;
     position: static;
     height: 100%;
-    background-color: transparent;
+    width: auto;
+    flex: 1;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
-    transition: none;
+    transform: none;
   }
 }
 
@@ -228,6 +227,7 @@
     position: relative;
     border-right: 1px solid $color-elements;
     height: 100%;
+    color: $color-primary;
 
     &:last-child {
       border-right: none;

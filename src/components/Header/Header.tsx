@@ -1,33 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 
 import { useTheme } from '@/context/ThemeContext';
 import { ThemeToggle } from '../ThemeToggle';
 
-import logoLight from '@/assets/logo/Logo.svg';
-import logoDark from '@/assets/logo/Logo-dark.svg';
-import CloseIcon from '@/assets/icons/Close.svg';
-import MenuIcon from '@/assets/icons/Menu.svg';
-import CartIcon from '@/assets/icons/Cart.svg';
-import FavoritesIcon from '@/assets/icons/Favorites.svg';
+import LogoLight from '@/assets/logo/Logo.svg?react';
+import LogoDark from '@/assets/logo/Logo-dark.svg?react';
+import CloseIcon from '@/assets/icons/Close.svg?react';
+import MenuIcon from '@/assets/icons/Menu.svg?react';
+import CartIcon from '@/assets/icons/Cart.svg?react';
+import FavoritesIcon from '@/assets/icons/Favorites.svg?react';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+
+   useEffect(() => {
+     document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
+
+     return () => {
+       document.body.style.overflow = 'unset';
+     };
+   }, [isMenuOpen]);
+
+   useEffect(() => {
+     setIsMenuOpen(false);
+   }, [location.pathname]);
 
   const isDark = theme === 'dark';
   const closeMenu = () => setIsMenuOpen(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
 
   const NAV_LINKS = [
     { id: 'home', title: 'Home', path: '/' },
@@ -43,19 +48,19 @@ export const Header: React.FC = () => {
     <header className={styles.header} id="top">
       <div className={styles.header__inner}>
         <NavLink to="/" className={styles.logoContainer} onClick={closeMenu}>
-          <img
-            src={isDark ? logoDark : logoLight}
-            alt="Nice Gadgets"
-            className={styles.header__logo}
-          />
+          {isDark ? (
+            <LogoDark className={styles.logo} />
+          ) : (
+            <LogoLight className={styles.logo} />
+          )}
         </NavLink>
 
         <button className={styles.menuButton} onClick={toggleMenu}>
-          <img
-            src={isMenuOpen ? CloseIcon : MenuIcon}
-            alt="menu toggle"
-            className={styles.icon}
-          />
+          {isMenuOpen ? (
+            <CloseIcon className={styles.icon} />
+          ) : (
+            <MenuIcon className={styles.icon} />
+          )}
         </button>
       </div>
 
@@ -82,7 +87,11 @@ export const Header: React.FC = () => {
 
         <div className={styles.actions}>
           <div className={styles.actions__item}>
-            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+            <ThemeToggle
+              isDark={isDark}
+              onToggle={toggleTheme}
+              onClick={closeMenu}
+            />
           </div>
 
           <NavLink
@@ -90,7 +99,7 @@ export const Header: React.FC = () => {
             className={styles.actions__item}
             onClick={closeMenu}
           >
-            <img src={FavoritesIcon} alt="Favorites" className={styles.icon} />
+            <FavoritesIcon className={styles.icon} />
           </NavLink>
 
           <NavLink
@@ -98,7 +107,7 @@ export const Header: React.FC = () => {
             className={styles.actions__item}
             onClick={closeMenu}
           >
-            <img src={CartIcon} alt="Cart" className={styles.icon} />
+            <CartIcon className={styles.icon} />
           </NavLink>
         </div>
       </div>

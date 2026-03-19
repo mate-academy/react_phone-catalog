@@ -16,7 +16,7 @@
   width: 32px;
   height: 32px;
   border: 1px solid $color-elements;
-  background: $color-page-bg;
+  background: $color-icon-bg;
   transition: all 0.2s;
   @include desktop-small-text;
   color: $color-primary;
@@ -31,9 +31,9 @@
   }
 
   &--active {
-    background-color: $color-primary;
-    color: $color-page-bg;
-    border-color: $color-primary;
+    background-color: $color-icon-bg-accent;
+    color: $color-white;
+    border-color: none;
   }
 
 

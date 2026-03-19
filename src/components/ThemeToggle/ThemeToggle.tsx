@@ -5,15 +5,24 @@ import styles from './ThemeToggle.module.scss';
 interface Props {
   isDark: boolean;
   onToggle: () => void;
+  onClick?: () => void;
 }
 
-export const ThemeToggle: React.FC<Props> = ({ isDark, onToggle }) => {
+export const ThemeToggle: React.FC<Props> = ({ isDark, onToggle, onClick }) => {
+
+  const handleClick = () => {
+    onToggle();
+    if (onClick) {
+      onClick();
+    }
+  };
   return (
     <button
       type="button"
       className={cn(styles.toggle, { [styles.toggleDark]: isDark })}
-      onClick={onToggle}
+      onClick={handleClick}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      
     >
       <div className={styles.iconWrapper}>
         {/* Sun icon */}

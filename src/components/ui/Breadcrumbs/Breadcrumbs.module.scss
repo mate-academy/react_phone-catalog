@@ -40,6 +40,11 @@
 
   .current {
     @include desktop-small-text;
-    color: #89939a;
+    color: $color-secondary;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 }

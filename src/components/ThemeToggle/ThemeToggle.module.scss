@@ -32,6 +32,7 @@
 }
 
 .icon {
+  color: $color-primary;
   position: absolute;
   opacity: 0;
   transform: scale(0.5) rotate(-45deg);
@@ -43,12 +44,4 @@
     opacity: 1;
     transform: scale(1) rotate(0);
   }
-}
-
-.sun {
-  color: $color-primary;
-}
-
-.moon {
-  color: $color-primary;
 }

@@ -13,6 +13,7 @@
   --color-icon-bg-hover: #fff;
   --color-icon-bg-selected: #fff;
   --color-icon-content: #313237;
+  --color-icon-bg-accent: #313237;
 
   --color-white: #fff;
   --color-green: #27ae60;
@@ -39,6 +40,7 @@
   --color-icon-bg-hover: #4a4d58;
   --color-icon-bg-selected: #161827;
   --color-icon-content: #f1f2f9;
+  --color-icon-bg-accent: #905bff;
 
   --color-white: #f1f2f9;
   --color-green: #27ae60;
@@ -64,6 +66,7 @@ $color-icon-bg: var(--color-icon-bg);
 $color-icon-bg-hover: var(--color-icon-bg-hover);
 $color-icon-bg-selected: var(--color-icon-bg-selected);
 $color-icon-content: var(--color-icon-content);
+$color-icon-bg-accent:var(--color-icon-bg-accent);
 
 $color-white: var(--color-white);
 $color-green: var(--color-green);

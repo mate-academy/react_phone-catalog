@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import logoLight from '@/assets/logo/Logo.svg';
+import LogoLight from '@/assets/logo/Logo.svg?react';
+import LogoDark from '@/assets/logo/Logo-dark.svg?react';
 import ArrowUp from '@/assets/icons/ArrowUp.svg?react';
-import cn from 'classnames';
+import { useTheme } from '@/context/ThemeContext';
 
 export const Footer: React.FC = () => {
+  const { theme } = useTheme(); 
+  const isDark = theme === 'dark';
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -17,11 +21,11 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
         <Link to="/" className={styles.footer__logo}>
-          <img
-            src={logoLight}
-            alt="Logo"
-            className={cn(styles.logo, styles.logoLight)}
-          />
+          {isDark ? (
+            <LogoDark className={styles.logo} />
+          ) : (
+            <LogoLight className={styles.logo} />
+          )}
         </Link>
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
