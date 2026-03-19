@@ -5,6 +5,8 @@ import { CartsContext } from '../../components/Context/CartsContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { icons } from '../../utils/icons';
 
+const emptyCartImage = `${import.meta.env.BASE_URL}img/cart-is-empty.png`;
+
 export const CartsPage = () => {
   const { carts, setCarts } = useContext(CartsContext);
 
@@ -51,7 +53,7 @@ export const CartsPage = () => {
     return (
       <div className="page__notFound">
         <h1>Your cart is empty :&#40;</h1>
-        <img src="/img/cart-is-empty.png" alt="cartempty" />
+        <img src={emptyCartImage} alt="cartempty" />
       </div>
     );
   }
