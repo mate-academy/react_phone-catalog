@@ -5,9 +5,9 @@ import { getAssetPath } from '../utils/getAssetPath';
 import { client } from '../utils/httpClient';
 
 export function fetchAllProducts() {
-  return client.get<Product[]>(getAssetPath('api/products.json'));
+  return client.get<Product[]>(getAssetPath('/api/products.json'));
 }
 
 export function fetchProductsByCategory(category: Category) {
-  return client.get<ExtendedProduct[]>(getAssetPath(`api/${category}.json`));
+  return client.get<ExtendedProduct[]>(getAssetPath(`/api/${category}.json`));
 }
