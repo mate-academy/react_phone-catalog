@@ -1,11 +1,7 @@
 import { Product } from './types/Product';
 import { ProductCategory, ProductDetails } from './types/ProductDetails';
 
-// import phones from '../public/api/phones.json';
-// import tablets from '../public/api/tablets.json';
-// import accessories from '../public/api/accessories.json';
-
-const API_URL = 'http://localhost:5173/api/';
+const API_URL = `${process.env.PUBLIC_URL}/api/`;
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
