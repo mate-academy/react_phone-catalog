@@ -145,11 +145,9 @@ h5 {
       background-color: #FAFBFC;
       min-height: 100vh;
       max-width: $max-width;
-
+      overflow: hidden;
      // width: 100vw;
       box-sizing: border-box;
-
-   //  overflow: hidden;
    }
 
 }

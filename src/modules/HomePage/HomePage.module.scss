@@ -3,14 +3,14 @@
 
 
 .homePage {
-  @include page-grid;
+ // @include page-grid;
 
 
   &__content {
       display: flex;
       flex-direction: column;
 
-      border: 5px solid red;
+
       max-width: $max-width;
       box-sizing: border-box;
   }
@@ -38,7 +38,6 @@
     @include on-desktop {
       height: 168px;
     }
-
   }
 
   &__title-welcome {
@@ -50,7 +49,7 @@
     }
 
     @include on-desktop {
-      width: 1040px;
+      width: auto;
 
       margin: auto 0;
     }

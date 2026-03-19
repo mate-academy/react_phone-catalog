@@ -7,12 +7,14 @@
   top: 0;
   z-index: 1;
   box-sizing: border-box;
-  width: 100vw;
+
+ // flex: 1 1 0;
   left: 50%;
 
   background-color: $header-background-color;
   border-bottom: 1px solid $header-border-color;
   height: 48px;
+
 
     @include on-tablet {
       height: 48px;
@@ -33,37 +35,44 @@
 }
 
 .topBar {
-  width: 100%;
+   width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: row;
   align-items: center;
   height: 100%;
+
   box-sizing: border-box;
   background-color: transparent;
-
 &__inner {
   width: 100vw;
-  max-width: $max-width;
-  margin: 0 auto;
+
+ margin: 0 auto;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  @include on-desktop {
+     min-width: $max-width-no-padding;
+  }
 }
 &__menu {
   display: none;
 
-  @include on-tablet {
+@include on-tablet {
   display: flex;
   height: 48px;
   width: 100%;
   align-items: center;
   gap: 32px;
+  margin: 0px;
 }
 
   @include on-desktop {
     gap: 64px;
+    width: 1136px;
+
+margin-inline: 24px;
   }
 }
 &__icons {
