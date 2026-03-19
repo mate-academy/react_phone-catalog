@@ -1,0 +1,65 @@
+@use './styles/utils' as *;
+
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  font-style: normal;
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 800;
+  font-style: normal;
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $primary;
+
+  background-color: $hover-bg;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+button {
+  cursor: pointer;
+
+  padding: 0;
+  border: none;
+
+  font-family: inherit;
+
+  background: transparent;
+}

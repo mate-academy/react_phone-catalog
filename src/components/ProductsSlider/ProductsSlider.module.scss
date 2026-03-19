@@ -1,0 +1,68 @@
+// fin
+@use '../../styles/utils' as *;
+
+.slider {
+  position: relative;
+}
+
+.controls {
+  position: absolute;
+  top: -60px;
+  right: 0;
+
+  display: flex;
+  gap: 16px;
+}
+
+.arrowBtn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+
+  color: $primary;
+
+  background-color: $white;
+
+  transition: all 0.3s;
+
+  &:disabled {
+    cursor: default;
+    border-color: $elements;
+    color: $elements;
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+  }
+}
+
+.window {
+  touch-action: pan-y;
+  user-select: none;
+
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.track {
+  will-change: transform;
+  display: flex;
+  gap: 16px;
+}
+
+.cardWrapper {
+  box-sizing: border-box;
+  width: 272px;
+  min-width: 272px;
+}

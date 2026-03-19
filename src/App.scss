@@ -1,1 +1,36 @@
-// not empty
+@use './styles/utils' as *;
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex-grow: 1;
+  gap: 16px;
+
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 16px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    max-width: 1200px;
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+}
+
+.main > * {
+  grid-column: 1 / -1;
+}
