@@ -5,6 +5,12 @@
 
 .footer {
   padding-block: 32px;
+  background-color: var(--page-bg);
+  margin-top: 64px;
+
+  @include on-tablet {
+    margin-top: 80px;
+  }
 
   @include content-padding-inline;
 
@@ -60,15 +66,11 @@
     align-self: center;
     gap: 16px;
     width: fit-content;
+    background-color: var(--page-bg);
     cursor: pointer;
 
     @include hover(color, var(--text-main));
-
   }
-
-  &__buttonBack:hover &__buttonIcon {
-      border-color: var(--text-main);
-    }
 
   &__buttonIcon {
     width: 32px;
@@ -77,6 +79,10 @@
     border-radius: 50%;
     display: flex;
     transition: all $transition;
+  }
+
+  &__buttonBack:hover &__buttonIcon {
+    border-color: var(--text-main);
   }
 
   &__arrow {
