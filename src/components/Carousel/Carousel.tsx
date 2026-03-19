@@ -3,9 +3,9 @@ import styles from './Carousel.module.scss';
 import React, { useEffect, useState } from 'react';
 
 const images = [
-  'img/imgcarousel/phone1.jpg',
-  'img/imgcarousel/phone2.jpg',
-  'img/imgcarousel/phone3.jpg',
+  './img/imgcarousel/phone1.jpg',
+  './img/imgcarousel/phone2.jpg',
+  './img/imgcarousel/phone3.jpg',
 ];
 
 export const Carousel: React.FC = () => {
@@ -129,7 +129,7 @@ export const Carousel: React.FC = () => {
         onMouseLeave={() => setIsPaused(false)}
       >
         <button className={styles.button} onClick={handlePrev}>
-          <img src="img/icons/arrowLeft.svg" alt="Arrow" />
+          <img src="./img/icons/arrowLeft.svg" alt="Arrow" />
         </button>
         <div
           className={styles.viewport}
@@ -146,13 +146,13 @@ export const Carousel: React.FC = () => {
           >
             {extendedImages.map((img, index) => (
               <div className={styles.slide} key={index}>
-                <img src={img} alt="" className={styles.carimg} />
+                <img src={`./${img}`} alt="" className={styles.carimg} />
               </div>
             ))}
           </div>
         </div>
         <button className={styles.button} onClick={handleNext}>
-          <img src="img/icons/arrowRight.svg" alt="Arrow" />
+          <img src="./img/icons/arrowRight.svg" alt="Arrow" />
         </button>
       </div>
 

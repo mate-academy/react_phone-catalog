@@ -91,7 +91,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.product}>
         <NavigateBar />
         <button className={styles.backbutton} onClick={() => navigate(-1)}>
-          <img src="img/icons/arrowLeft.svg" alt="Back" />
+          <img src="./img/icons/arrowLeft.svg" alt="Back" />
           {t('back')}
         </button>
         <h1 className={styles.title}>{selectProduct?.name}</h1>
@@ -107,14 +107,14 @@ export const ProductDetailsPage: React.FC = () => {
                 }
                 onClick={() => setActiveImage(im)}
               >
-                <img src={`${im}`} alt="ProductIM" className={styles.img} />
+                <img src={`./${im}`} alt="ProductIM" className={styles.img} />
               </div>
             ))}
           </div>
           <div className={styles.mainImage}>
             {activeImage && (
               <img
-                src={`${activeImage}`}
+                src={`./${activeImage}`}
                 alt="Product"
                 className={styles.imgmain}
               />
@@ -210,11 +210,14 @@ export const ProductDetailsPage: React.FC = () => {
                     onClick={() => toggleFavorite(selectProduct.id, false)}
                   >
                     {!isFavorite && (
-                      <img src="img/icons/heart.svg" alt="Heart" />
+                      <img src="./img/icons/heart.svg" alt="Heart" />
                     )}
 
                     {isFavorite && (
-                      <img src="img/icons/heartactive.svg" alt="HeartActive" />
+                      <img
+                        src="./img/icons/heartactive.svg"
+                        alt="HeartActive"
+                      />
                     )}
                   </button>
                 </div>

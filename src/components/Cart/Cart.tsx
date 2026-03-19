@@ -80,19 +80,23 @@ export const Cart = () => {
                   className={styles.delet}
                   onClick={() => deletCard(product.itemId)}
                 >
-                  <img src="img/icons/clouse.svg" alt="Close" />
+                  <img src="./img/icons/clouse.svg" alt="Close" />
                 </button>
                 <div className={styles.boximg}>
-                  <img src={product.image} alt="Img" className={styles.img} />
+                  <img
+                    src={`./${product.image}`}
+                    alt="Img"
+                    className={styles.img}
+                  />
                 </div>
                 <p className={styles.text}>{product.name}</p>
                 <div className={styles.count}>
                   <button className={styles.add} onClick={() => increase(item)}>
-                    <img src="img/icons/Plus.svg" alt="Plus" />
+                    <img src="./img/icons/Plus.svg" alt="Plus" />
                   </button>
                   <p className={styles.howmuch}>{score}</p>
                   <button className={styles.add} onClick={() => decrease(item)}>
-                    <img src="img/icons/Minus.svg" alt="Minus" />
+                    <img src="./img/icons/Minus.svg" alt="Minus" />
                   </button>
                 </div>
                 <p className={styles.pryce}>${product.fullPrice}</p>

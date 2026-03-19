@@ -224,7 +224,7 @@ export const ProductPage: React.FC = () => {
                 className={`${styles.button} ${page === 1 ? styles.hidden : ''}`}
                 onClick={() => handlePageChange(page - 1)}
               >
-                <img src="img/icons/arrowLeft.svg" alt="ArrowLeft" />
+                <img src="./img/icons/arrowLeft.svg" alt="ArrowLeft" />
               </button>
               {page > 4 && (
                 <>
@@ -259,7 +259,7 @@ export const ProductPage: React.FC = () => {
                 }`}
                 onClick={() => handlePageChange(page + 1)}
               >
-                <img src="img/icons/arrowRight.svg" alt="ArrowRight" />
+                <img src="./img/icons/arrowRight.svg" alt="ArrowRight" />
               </button>
             </div>
           )}

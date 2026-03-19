@@ -58,13 +58,13 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
         <div className={styles.boxAction}>
           <Link to="/favorites" className={styles.icon} onClick={onClose}>
             <div className={styles.cyrcle}>{favorites.length}</div>
-            <img src="img/icons/heart.svg" alt="Favorites" />
+            <img src="./img/icons/heart.svg" alt="Favorites" />
           </Link>
         </div>
         <div className={styles.boxAction}>
           <Link to="/cart" className={styles.icon} onClick={onClose}>
             <div className={styles.cyrcle}>{cart.length}</div>
-            <img src="img/icons/cart.svg" alt="Cart" />
+            <img src="./img/icons/cart.svg" alt="Cart" />
           </Link>
         </div>
       </div>

@@ -18,8 +18,8 @@ export const NavigateBar: React.FC = () => {
   return (
     <>
       <div className={styles.urlplace}>
-        <img src="img/icons/Home.svg" alt="" className={styles.aс} />
-        <img src="img/icons/arrowRight.svg" alt="" className={styles.aс} />
+        <img src="./img/icons/Home.svg" alt="" className={styles.aс} />
+        <img src="./img/icons/arrowRight.svg" alt="" className={styles.aс} />
         {isSpecialPage && (
           <p className={styles.aс}>
             {pageName.charAt(0).toUpperCase() + pageName.slice(1)}
@@ -32,7 +32,11 @@ export const NavigateBar: React.FC = () => {
               {category && category.charAt(0).toUpperCase() + category.slice(1)}
             </p>
 
-            <img src="img/icons/arrowRight.svg" alt="" className={styles.aс} />
+            <img
+              src="./img/icons/arrowRight.svg"
+              alt=""
+              className={styles.aс}
+            />
 
             {productId && (
               <p className={styles.acс}>

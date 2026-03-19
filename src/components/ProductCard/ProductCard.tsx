@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
           className={styles.linkstyle}
         >
           <img
-            src={`${product.image}`}
+            src={`./${product.image}`}
             alt={product.name}
             className={styles.image}
           />
@@ -82,11 +82,11 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
             onClick={() => toggleFavorite(product.itemId, turnon)}
           >
             {!favorites.some(item => item.id === product.itemId) && (
-              <img src="img/icons/heart.svg" alt="Heart" />
+              <img src="./img/icons/heart.svg" alt="Heart" />
             )}
 
             {favorites.some(item => item.id === product.itemId) && (
-              <img src="img/icons/heartactive.svg" alt="HeartActive" />
+              <img src="./img/icons/heartactive.svg" alt="HeartActive" />
             )}
           </button>
         </div>
