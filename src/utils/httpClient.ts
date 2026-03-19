@@ -1,5 +1,3 @@
-const BASE_URL = '/api';
-
 const handleResponse = (response: Response) => {
   if (!response.ok) {
     throw new Error(`${response.status} ${response.statusText}`);
@@ -10,7 +8,7 @@ const handleResponse = (response: Response) => {
 
 export const client = {
   async get<T>(url: string): Promise<T> {
-    const response = await fetch(BASE_URL + url);
+    const response = await fetch(url);
 
     return handleResponse(response);
   },

@@ -9,8 +9,8 @@ import { useCart } from '../../hooks/useCart';
 import { isItemInCart } from '../../utils/isItemInCart';
 import { buildProductPath } from '../../utils/buildProductPath';
 import { Product } from '../../types/Product';
-import style from './ProductCard.module.scss';
 import { isItemInFavorite } from '../../utils/isItemInFavorite';
+import style from './ProductCard.module.scss';
 
 type Props = {
   product: Product;

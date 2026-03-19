@@ -79,6 +79,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
           className={footerLinkClass}
           ariaLabel={'Favorite'}
           qty={totalFavoriteProducts}
+          onClick={onClose}
         />
 
         <IconNavLink
@@ -87,6 +88,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
           className={footerLinkClass}
           ariaLabel={'Cart'}
           qty={totalCartItems}
+          onClick={onClose}
         />
       </nav>
     </aside>

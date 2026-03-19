@@ -1,4 +1,5 @@
 import { ROUTES } from '../../router/routes';
+import { getAssetPath } from '../../utils/getAssetPath';
 
 export const PRODUCTS_CATEGORIES = {
   phones: 'phones',
@@ -15,17 +16,17 @@ export const PRODUCTS_PAGES_TITLES = {
 export const CATEGORY_LIST = [
   {
     key: PRODUCTS_CATEGORIES.phones,
-    image: '/img/category-phones.png',
+    image: getAssetPath('img/category-phones.png'),
     to: ROUTES.phones,
   },
   {
     key: PRODUCTS_CATEGORIES.tablets,
-    image: '/img/category-tablets.png',
+    image: getAssetPath('img/category-tablets.png'),
     to: ROUTES.tablets,
   },
   {
     key: PRODUCTS_CATEGORIES.accessories,
-    image: '/img/category-accessories.png',
+    image: getAssetPath('img/category-accessories.png'),
     to: ROUTES.accessories,
   },
 ];

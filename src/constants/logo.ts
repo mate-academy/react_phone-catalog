@@ -1,3 +1,5 @@
+import { getAssetPath } from '../utils/getAssetPath';
+
 export const LOGO = {
-  img: '/img/logo.png',
+  img: getAssetPath('img/logo.png'),
 };

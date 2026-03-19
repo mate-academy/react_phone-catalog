@@ -1,10 +1,10 @@
 import { ROUTES } from '../router/routes';
 
 export const HEADER_NAV_ITEMS = [
-  { to: '/', label: 'header.home' },
-  { to: '/phones', label: 'header.phones' },
-  { to: '/tablets', label: 'header.tablets' },
-  { to: '/accessories', label: 'header.accessories' },
+  { to: ROUTES.home, label: 'header.home' },
+  { to: ROUTES.phones, label: 'header.phones' },
+  { to: ROUTES.tablets, label: 'header.tablets' },
+  { to: ROUTES.accessories, label: 'header.accessories' },
 ];
 
 export const FOOTER_NAV_ITEMS = [
