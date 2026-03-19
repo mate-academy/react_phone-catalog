@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Preview } from '../../components/layout/Preview';
+import { Preview } from './components/Preview';
 import { ProductColection } from '../../components/layout/ProductColection';
 import { SectionTitle } from '../../components/ui/SectionTitle';
 import { ProductsContext } from '../../store/ProductsProvider';

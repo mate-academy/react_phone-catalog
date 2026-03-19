@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
-import { imageUrl } from '../../../utils/imageUrl';
+import { imageUrl } from '../../../../utils/imageUrl';
 import styles from './Preview.module.scss';
 
 export const Preview = () => {

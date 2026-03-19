@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useState } from 'react';
 import { Filter, FilterValue } from '../../../types/types';
 import { imageUrl } from '../../../utils/imageUrl';
@@ -13,6 +15,7 @@ export const Select = ({
   hasDefaultValue,
 }: Filter) => {
   const [isOpen, setIsOpen] = useState(false);
+  const selectRef = useRef<HTMLDivElement | null>(null);
   const selected = options.find(item => item.value === value);
 
   const handleSelect = (eventValue: FilterValue) => {
@@ -20,22 +23,29 @@ export const Select = ({
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const close = (e: MouseEvent) => {
+      if (
+        selectRef.current &&
+        selectRef.current.contains(e.target as Node)
+      ) {
+        return;
+      }
+
+      setIsOpen(false);
+    };
+
+    document.addEventListener('mousedown', close);
+
+    return () => {
+      document.removeEventListener('mousedown', close);
+    };
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={selectRef}>
       <div className={styles.group}>
         {title && <p className={styles.title}>{title}</p>}
-        {/* {order && <button
-          type="button"
-          className={styles.order}
-        >
-          <img
-            src={imageUrl('icons/ArrowUp.svg')}
-            alt="order"
-            className={classNames(styles.icon, {
-              [styles.icon__desc]: order === 'desc'
-            })}
-          />
-        </button>} */}
       </div>
       <div
         className={classNames(styles.select, {
