@@ -1,0 +1,16 @@
+@import '../../../styles/index';
+
+.addToCart {
+  @include button-primary;
+}
+
+.isAdded {
+  cursor: auto;
+  color: $accent-color;
+  background-color: transparent;
+  border: 1px solid $elements-color;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

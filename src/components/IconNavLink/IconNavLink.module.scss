@@ -1,0 +1,28 @@
+@import '../../styles/index';
+
+.navIconContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.qty {
+  margin: 0;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 0;
+  right: 0;
+  text-align: center;
+
+  font-size: 9px;
+  font-weight: 700;
+  color: $bg-color;
+
+  background-color: $secondary-accent-color;
+  border-radius: 50%;
+  border: 1px solid $bg-color;
+}

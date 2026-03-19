@@ -1,0 +1,39 @@
+@import '../../styles/index';
+
+.picturesSliderSection {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+}
+
+.homeSection {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.byCategoryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fullWidthMobile {
+  margin-inline: -16px;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+}
