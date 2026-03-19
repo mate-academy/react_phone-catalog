@@ -18,7 +18,9 @@ export const Pagination: React.FC<Props> = ({
     [totalPages],
   );
 
-  if (totalPages <= 0) return null;
+  if (totalPages <= 0) {
+    return null;
+  }
 
   return (
     <div className={styles.paginationContainer}>

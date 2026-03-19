@@ -1,39 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ProductsContext } from '../../store/ProductsContext';
 import styles from './SearchInput.module.scss';
 import icons from '../../assets/icons/icons.svg';
 
 interface Props {
-  value: string;
-  onChange: (v: string) => void;
   category: string;
 }
 
-export const SearchInput: React.FC<Props> = ({ value, onChange, category }) => {
-  const [inputValue, setInputValue] = useState(value);
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleClear = () => {
-    setInputValue('');
-  };
+export const SearchInput: React.FC<Props> = ({ category }) => {
+  const { searchTerm, setSearchTerm } = useContext(ProductsContext);
+  const [localValue, setLocalValue] = useState(searchTerm);
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      onChange(inputValue);
+    setLocalValue('');
+    setSearchTerm('');
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchTerm(localValue.trim());
     }, 300);
 
-    return () => clearTimeout(handler);
-  }, [inputValue, onChange]);
+    return () => clearTimeout(timer);
+  }, [localValue, setSearchTerm]);
+
+  const handleClear = () => {
+    setLocalValue('');
+  };
 
   return (
     <div className={styles.searchWrapper}>
-      {inputValue ? (
+      {localValue ? (
         <button
           type="button"
           className={styles.clearButton}
           onClick={handleClear}
+          aria-label="Clear search"
         >
           <svg className={styles.iconClear}>
             <use href={`${icons}#icon-clear`} />
@@ -47,8 +49,8 @@ export const SearchInput: React.FC<Props> = ({ value, onChange, category }) => {
 
       <input
         type="text"
-        value={inputValue}
-        onChange={handleInput}
+        value={localValue}
+        onChange={e => setLocalValue(e.target.value)}
         placeholder={`Search in ${category}...`}
         className={styles.headerSearchInput}
       />

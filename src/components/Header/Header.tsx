@@ -29,13 +29,8 @@ export const Header: React.FC = () => {
   const { cart, favorites } = useContext(ProductsContext);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
-  const { searchTerm: globalSearchTerm, setSearchTerm } =
-    useContext(ProductsContext);
-  const [inputValue, setInputValue] = useState(globalSearchTerm || '');
 
-  const handleToggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleToggleMenu = () => setIsOpen(!isOpen);
 
   const isCategoryPage = ['/phones', '/tablets', '/accessories'].includes(
     location.pathname,
@@ -44,14 +39,6 @@ export const Header: React.FC = () => {
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setSearchTerm(inputValue);
-    }, 300);
-
-    return () => clearTimeout(handler);
-  }, [inputValue, setSearchTerm]);
 
   useEffect(() => {
     if (isOpen) {
@@ -72,10 +59,7 @@ export const Header: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.headerLogoWrap}>
           <Link className={styles.logoHeader} to="/">
-            <img
-              src={theme === 'light' ? logoLight : logoDark}
-              alt="LogoHeader"
-            />
+            <img src={theme === 'light' ? logoLight : logoDark} alt="Logo" />
           </Link>
         </div>
 
@@ -98,21 +82,20 @@ export const Header: React.FC = () => {
           {!isOpen ? (
             <div className={styles.headerMenuIcon} onClick={handleToggleMenu}>
               <svg className={styles.icon}>
-                <use href={`${icons}#icon-burger-menu`}></use>
+                <use href={`${icons}#icon-burger-menu`} />
               </svg>
             </div>
           ) : (
             <div className={styles.headerCloseIcon} onClick={handleToggleMenu}>
               <svg className={styles.icon}>
-                <use href={`${icons}#icon-close-menu`}></use>
+                <use href={`${icons}#icon-close-menu`} />
               </svg>
             </div>
           )}
 
           {isCategoryPage && (
             <SearchInput
-              value={inputValue}
-              onChange={setInputValue}
+              key={location.pathname}
               category={location.pathname.slice(1)}
             />
           )}
@@ -127,20 +110,20 @@ export const Header: React.FC = () => {
                 href={
                   theme === 'light' ? `${icons}#icon-sun` : `${icons}#icon-moon`
                 }
-              ></use>
+              />
             </svg>
           </button>
 
           <NavLink to="/catalog" className={getNavLinkFav}>
             <svg className={styles.icon}>
-              <use href={`${icons}#header-icon-header`}></use>
+              <use href={`${icons}#header-icon-header`} />
             </svg>
             <CartIcon itemCount={favoritesCount} />
           </NavLink>
 
           <NavLink to="/cart" className={getNavLinkCart}>
             <svg className={styles.icon}>
-              <use href={`${icons}#shopping-bag-icon`}></use>
+              <use href={`${icons}#shopping-bag-icon`} />
             </svg>
             <CartIcon itemCount={itemCount} />
           </NavLink>

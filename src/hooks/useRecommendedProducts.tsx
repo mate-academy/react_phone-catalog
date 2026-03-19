@@ -6,7 +6,9 @@ export const useRecommendedProducts = (currentProduct?: Product) => {
   const { products } = useContext(ProductsContext);
 
   const recommendedProducts = useMemo(() => {
-    if (!currentProduct) return [];
+    if (!currentProduct) {
+      return [];
+    }
 
     const modelMatch = currentProduct.name.match(/^[^\d]*\d+/);
     const model = modelMatch ? modelMatch[0].trim() : currentProduct.name;
