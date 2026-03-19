@@ -4,16 +4,18 @@ import type { FC } from 'react';
 import { Category, Sort } from '../types';
 import { DropdownProvider } from '../providers/DropdownProvider';
 import { Dropdown } from '../components/Dropdown';
+import { NoResults } from '../components/NoResults';
 import { ProductList } from '../components/Product/ProductList';
 import { Pagination } from '../components/Pagination/Pagination';
-import { Search } from '../components/Search';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { NotFoundPage } from './NotFound';
+import { useTranslations } from 'use-intl';
 
-interface Props {
-  category: Category;
-  title: string;
-}
+export const ProductsPage: FC = () => {
+  const { category } = useParams<{ category: string }>();
+  const validCategory = category as Category;
 
-export const ProductsPage: FC<Props> = ({ category, title }) => {
   const { isLoading } = useGetProductsQuery();
   const {
     visibleProducts,
@@ -22,62 +24,101 @@ export const ProductsPage: FC<Props> = ({ category, title }) => {
     visiblePages,
     totalPages,
     setPage,
-  } = usePagination(category);
+  } = usePagination(validCategory);
 
-  if (isLoading) {
-    return (
-      <span className="text-h1 text-primary dark:text-d-white mt-6 inline-block sm:mt-10">
-        Loading...
-      </span>
-    );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const t = useTranslations('products');
+
+  const handleSortChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', value);
+    params.delete('page');
+    setSearchParams(params);
+  };
+
+  const handlePerPageChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === 'all') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', value);
+    }
+
+    params.delete('page');
+    setSearchParams(params);
+  };
+
+  const tNav = useTranslations('nav');
+  const localizedTitle = tNav(validCategory.toLowerCase());
+
+  if (!category || !(Object.values(Category) as string[]).includes(category)) {
+    return <NotFoundPage />;
   }
 
   if (!isLoading && (!visibleProducts || visibleProducts.length < 1)) {
-    return (
-      <span className="text-h1 text-primary dark:text-d-white mt-6 inline-block sm:mt-10">
-        There are no {category} yet
-      </span>
-    );
+    return <NoResults text={t('noResults', { category: validCategory })} />;
   }
 
   return (
-    <>
-      <h1 className="sr-only">{title} page</h1>
+    <div>
+      <Breadcrumbs
+        className="mt-6"
+        routes={[
+          {
+            path: '/:category',
+            breadcrumb: localizedTitle,
+          },
+        ]}
+      />
+      <h1 className="sr-only">{localizedTitle} page</h1>
       <span className="text-h1 text-primary dark:text-d-white mt-6 inline-block sm:mt-10">
-        {title}
+        {localizedTitle}
       </span>
 
       <p className="text-body text-secondary dark:text-d-secondary mt-2">
-        {totalProducts} {totalProducts === 1 ? 'model' : 'models'}
+        {t('modelCount', { count: totalProducts })}
       </p>
 
       <div className="pageGrid mt-8 gap-y-4 sm:mt-10">
         <DropdownProvider>
           <Dropdown
-            description="Sort by"
+            id="sort"
+            label={t('sortLabel')}
             options={{
-              Newest: Sort.Age,
-              Alphabetically: Sort.Title,
-              Cheapest: Sort.Price,
+              [t('sortOptions.newest')]: Sort.Age,
+              [t('sortOptions.alphabetically')]: Sort.Title,
+              [t('sortOptions.cheapest')]: Sort.Price,
             }}
-            searchParam="sort"
-            defaultValue={Sort.Age}
+            value={searchParams.get('sort') || Sort.Age}
+            onChange={handleSortChange}
             className="col-span-2 sm:col-span-4"
           />
           <Dropdown
-            description="Items on page"
-            options={{ 4: '4', 8: '8', 16: '16', All: 'all' }}
-            searchParam="perPage"
-            defaultValue="all"
+            id="perPage"
+            label={t('perPageLabel')}
+            options={{
+              4: '4',
+              8: '8',
+              16: '16',
+              [t('perPageOptions.all')]: 'all',
+            }}
+            value={searchParams.get('perPage') || 'all'}
+            onChange={handlePerPageChange}
             className="col-span-2 sm:col-span-3"
           />
         </DropdownProvider>
-        <Search className="col-span-4 sm:-order-1 sm:col-span-5 xl:col-span-17" />
       </div>
 
-      <ProductList products={visibleProducts} className="mt-6" />
+      <ProductList
+        products={visibleProducts}
+        isLoading={isLoading}
+        skeletonCount={8}
+        className="mt-6"
+      />
 
-      {totalPages > 1 && (
+      {totalPages > 1 && !isLoading && (
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setPage}
@@ -85,6 +126,6 @@ export const ProductsPage: FC<Props> = ({ category, title }) => {
           totalPages={totalPages}
         />
       )}
-    </>
+    </div>
   );
 };

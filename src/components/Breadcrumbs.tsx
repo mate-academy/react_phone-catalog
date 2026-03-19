@@ -12,7 +12,7 @@ type CustomBreadcrumbsRoute = BreadcrumbsRoute & {
   linkTo?: string;
 };
 
-const HomeBreadcrumb: BreadcrumbComponentType = () => (
+export const HomeBreadcrumb: BreadcrumbComponentType = () => (
   <Home className="fill-primary dark:fill-d-white size-4" />
 );
 
@@ -44,13 +44,13 @@ export const Breadcrumbs: FC<Props> = ({ routes = [], className }) => {
               )}
 
               {isCurrent ? (
-                <span className="text-small text-secondary line-clamp-1">
+                <span className="text-small text-secondary dark:text-d-secondary line-clamp-1">
                   {breadcrumb}
                 </span>
               ) : (
                 <NavLink
                   to={targetPath}
-                  className="text-small text-primary dark:text-d-secondary flex"
+                  className="text-small text-primary dark:text-d-white flex"
                 >
                   {breadcrumb}
                 </NavLink>

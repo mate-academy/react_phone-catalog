@@ -1,5 +1,4 @@
 import { FC, useContext, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import cn from 'clsx';
 import { Button } from './Button';
 import ArrowUp from '/src/images/icons/arrow-up.svg?react';
@@ -7,44 +6,35 @@ import ArrowDown from '/src/images/icons/arrow-down.svg?react';
 import { DropdownContext } from '../contexts/DropdownContext';
 
 type DropdownProps = {
-  description: string;
+  id: string;
+  label?: string;
   options: { [key: string]: string };
-  searchParam: 'sort' | 'perPage';
-  defaultValue: string;
+  value: string;
+  onChange: (value: string) => void;
   className?: string;
 };
 
 export const Dropdown: FC<DropdownProps> = ({
-  description,
+  id,
+  label = '',
   options,
-  searchParam,
-  defaultValue,
+  value,
+  onChange,
   className,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedOption = searchParams.get(searchParam) || defaultValue;
+  const selectedOption = Object.values(options).includes(value) ? value : '';
+
   const { activeDropdown, setActiveDropdown } = useContext(DropdownContext);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const isDropdownOpen = activeDropdown === searchParam;
+  const isDropdownOpen = activeDropdown === id;
+  const hasLabel = !!label && label.length > 0;
 
   const toggleDropdown = () => {
-    setActiveDropdown(isDropdownOpen ? null : searchParam);
+    setActiveDropdown(isDropdownOpen ? null : id);
   };
 
-  const handleClick = (value: string) => {
-    const params = new URLSearchParams(searchParams);
-
-    if (searchParam === 'perPage' && value === 'all') {
-      params.delete('perPage');
-    } else {
-      params.set(searchParam, value);
-    }
-
-    if (params.has('page')) {
-      params.delete('page');
-    }
-
-    setSearchParams(params);
+  const handleClick = (clickedValue: string) => {
+    onChange(clickedValue);
     setActiveDropdown(null);
   };
 
@@ -79,9 +69,11 @@ export const Dropdown: FC<DropdownProps> = ({
       ref={dropdownRef}
       className={cn('relative flex flex-col gap-1', className)}
     >
-      <span className="text-small text-secondary dark:text-d-secondary">
-        {description}
-      </span>
+      {hasLabel && (
+        <span className="text-small text-secondary dark:text-d-secondary">
+          {label}
+        </span>
+      )}
 
       <Button
         onClick={toggleDropdown}
@@ -92,7 +84,8 @@ export const Dropdown: FC<DropdownProps> = ({
             : 'dark:hover:shadow-d-icons hover:shadow-secondary shadow-elements dark:shadow-transparent',
         )}
       >
-        {Object.keys(options).find(key => options[key] === selectedOption)}
+        {Object.keys(options).find(key => options[key] === selectedOption) ||
+          'Select'}
         {isDropdownOpen ? (
           <ArrowUp className="fill-icons dark:fill-d-secondary size-4" />
         ) : (
@@ -107,13 +100,13 @@ export const Dropdown: FC<DropdownProps> = ({
             : 'hidden',
         )}
       >
-        {Object.entries(options).map(([key, value]) => (
-          <li key={value}>
+        {Object.entries(options).map(([optionKey, optionValue]) => (
+          <li key={optionValue}>
             <Button
-              onClick={() => handleClick(value)}
+              onClick={() => handleClick(optionValue)}
               className="hover:bg-hover-bg dark:hover:bg-d-surface2 dark:bg-d-black text-body text-secondary dark:text-d-secondary hover:text-primary dark:hover:text-d-white size-full h-8 bg-white px-3 text-left transition"
             >
-              {key}
+              {optionKey}
             </Button>
           </li>
         ))}

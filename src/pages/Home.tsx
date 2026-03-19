@@ -8,25 +8,27 @@ import { BANNERS, CATEGORIES } from '../constants';
 import type { FC } from 'react';
 import type { RootState } from '../store';
 import { Sort } from '../types';
+import { useTranslations } from 'use-intl';
 
 export const HomePage: FC = () => {
   useGetProductsQuery();
+  const t = useTranslations('home');
 
   const { visibleProducts: brandNewProducts } = useSelector(
     (state: RootState) =>
-      selectPreparedProducts(state, null, Sort.Age, Infinity, 1),
+      selectPreparedProducts(state, null, Sort.Age, Infinity, 1, ''),
   );
 
   const { visibleProducts: hotPricesProducts } = useSelector(
     (state: RootState) =>
-      selectPreparedProducts(state, null, Sort.Discount, Infinity, 1),
+      selectPreparedProducts(state, null, Sort.Discount, Infinity, 1, ''),
   );
 
   return (
     <div className="">
-      <h1 className="sr-only">Product Catalog</h1>
+      <h1 className="sr-only">{t('srTitle')}</h1>
       <span className="text-h1 text-primary dark:text-d-white mt-6 inline-block sm:mt-8 xl:mt-14">
-        Welcome to Nice Gadgets store!
+        {t('welcome')}
       </span>
 
       <BannerSlider
@@ -36,7 +38,7 @@ export const HomePage: FC = () => {
 
       {brandNewProducts && brandNewProducts.length > 0 && (
         <ProductSlider
-          title="Brand new models"
+          title={t('brandNew')}
           products={brandNewProducts}
           className="mt-14 sm:mt-16 xl:mt-20"
         />
@@ -46,7 +48,7 @@ export const HomePage: FC = () => {
 
       {hotPricesProducts && hotPricesProducts.length > 0 && (
         <ProductSlider
-          title="Hot prices"
+          title={t('hotPrices')}
           products={hotPricesProducts}
           className="mt-14 sm:mt-16 xl:mt-20"
         />

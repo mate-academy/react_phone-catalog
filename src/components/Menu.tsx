@@ -7,6 +7,9 @@ import { useSelector } from 'react-redux';
 import { cartSelectors } from '../selectors/cartSelectors';
 import { favouritesSelectors } from '../selectors/favouritesSelectors';
 import { IconWithBadge } from './IconWithBadge';
+import { LanguageDropdown } from './LanguageDropdown';
+import { ThemeDropdown } from './ThemeDropdown';
+import { useTranslations } from 'use-intl';
 
 type Props = {
   className?: string;
@@ -17,6 +20,7 @@ export const Menu: FC<Props> = ({ className }) => {
   const location = useLocation();
   const cartCount = useSelector(cartSelectors.selectTotalQuantity);
   const favouritesCount = useSelector(favouritesSelectors.selectTotal);
+  const t = useTranslations('nav');
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -61,12 +65,15 @@ export const Menu: FC<Props> = ({ className }) => {
                       )
                     }
                   >
-                    {title}
+                    {t(title.toLowerCase())}
                   </NavLink>
                 </li>
               ))}
             </ul>
           </nav>
+
+          <LanguageDropdown />
+          <ThemeDropdown />
         </div>
         <div className="shadow-top shadow-elements dark:shadow-d-surface2 flex">
           <NavLink

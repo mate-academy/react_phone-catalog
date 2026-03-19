@@ -9,6 +9,7 @@ import { useCart } from '../../hooks/useCart';
 import { useFavourites } from '../../hooks/useFavourites';
 import { formatScreen } from '../../utils/formatScreen';
 import { formatMemory } from '../../utils/formatMemory';
+import { useTranslations } from 'use-intl';
 
 type Props = {
   product: Product;
@@ -22,8 +23,12 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const { isInCart, handleAddToCart } = useCart(product);
   const { isInFavourites, handleToggleFavourite } = useFavourites(product);
 
+  const tSpecs = useTranslations('productDetails.specs');
+  const tPD = useTranslations('productDetails');
+
   return (
     <div className="shadow-elements dark:bg-d-surface1 dark:hover:shadow-d-surface2 flex h-full flex-col gap-2 p-8 shadow-inner transition dark:shadow-none dark:hover:shadow-inner">
+      {/* Image */}
       <Link
         to={`/product/${itemId}`}
         className="flex flex-[1_1_auto] justify-center"
@@ -36,13 +41,15 @@ export const ProductCard: FC<Props> = ({ product }) => {
         />
       </Link>
 
+      {/* Title */}
       <Link
         to={`/product/${itemId}`}
-        className="text-body text-primary dark:text-d-white flex-[0_0_auto] pt-4 transition hover:underline"
+        className="text-body text-primary dark:text-d-white mt-4 flex-[0_0_auto] transition hover:underline"
       >
         {name}
       </Link>
 
+      {/* Price */}
       <div className="flex flex-[0_0_auto] items-center gap-2">
         <h3 className="text-h3 text-primary dark:text-d-white">${price}</h3>
 
@@ -51,13 +58,15 @@ export const ProductCard: FC<Props> = ({ product }) => {
         </span>
       </div>
 
+      {/* Divider */}
       <div className="bg-elements dark:bg-d-elements h-px flex-[0_0_auto]"></div>
 
+      {/* Specs */}
       <ul className="flex flex-[0_0_auto] flex-col gap-2 py-2">
         {[
-          { title: 'Screen', text: formatScreen(screen) },
-          { title: 'Capacity', text: formatMemory(capacity) },
-          { title: 'RAM', text: formatMemory(ram) },
+          { title: tSpecs('screen'), text: formatScreen(screen) },
+          { title: tSpecs('builtInMemory'), text: formatMemory(capacity) },
+          { title: tSpecs('ram'), text: formatMemory(ram) },
         ].map(({ title, text }) => (
           <li
             key={title}
@@ -71,6 +80,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         ))}
       </ul>
 
+      {/* Buttons */}
       <div className="flex flex-[0_0_auto] gap-2">
         <Button
           onClick={handleAddToCart}
@@ -81,7 +91,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
               : 'bg-primary dark:bg-d-accent hover:shadow-hover-bs dark:hover:bg-d-hover-bs dark:text-d-white text-white hover:shadow-[0_3px_13px_0]',
           )}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? tPD('addedToCart') : tPD('addToCart')}
         </Button>
 
         <Button

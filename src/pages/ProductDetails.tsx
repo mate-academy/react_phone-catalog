@@ -8,21 +8,24 @@ import { selectAllProducts } from '../selectors/productsSelectors';
 import { selectProductDetailsById } from '../selectors/productDetailsSelectors';
 import { useCart } from '../hooks/useCart';
 import { useFavourites } from '../hooks/useFavourites';
+import { useRandomProducts } from '../hooks/useRandomProducts';
 import { formatCell } from '../utils/formatCell';
 import { formatMemory } from '../utils/formatMemory';
 import { formatScreen } from '../utils/formatScreen';
 import { Button } from '../components/Button';
+import { NoResults } from '../components/NoResults';
 import { BackButton } from '../components/BackButton';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PhotoSlider } from '../components/Slider/Photo';
+import { ColorSelector } from '../components/ColorSelector';
 import { ProductSlider } from '../components/Slider/Product';
+import { CapacitySelector } from '../components/CapacitySelector';
+import { ProductDetailsSkeleton } from '../components/Loader/ProductDetailsSkeleton';
 import Favourites from '/src/images/icons/favourites.svg?react';
 import FavouritesFilled from '/src/images/icons/favourites-filled.svg?react';
 import type { RootState } from '../store';
 import { Category, Product, ProductDetails } from '../types';
-import { useRandomProducts } from '../hooks/useRandomProducts';
-import { ColorSelector } from '../components/ColorSelector';
-import { CapacitySelector } from '../components/CapacitySelector';
+import { useTranslations } from 'use-intl';
 
 interface Props {
   product: Product;
@@ -37,6 +40,8 @@ const ProductDetailsContent: FC<Props> = ({
 }) => {
   const { isInCart, handleAddToCart } = useCart(product);
   const { isInFavourites, handleToggleFavourite } = useFavourites(product);
+  const t = useTranslations('productDetails');
+  const tNav = useTranslations('nav');
 
   const {
     id,
@@ -66,7 +71,7 @@ const ProductDetailsContent: FC<Props> = ({
         routes={[
           {
             path: '/product',
-            breadcrumb: category[0].toUpperCase() + category.slice(1),
+            breadcrumb: tNav(category.toLowerCase()),
             linkTo: `/${category}`,
           },
           { path: '/product/:itemId', breadcrumb: name },
@@ -76,12 +81,14 @@ const ProductDetailsContent: FC<Props> = ({
 
       <BackButton className="mt-10" />
 
+      {/* Title */}
       <h1 className="text-h1 text-primary dark:text-d-white mt-4">{name}</h1>
 
       <div className="sm:pageGrid mt-8 sm:mt-10">
+        {/* Image */}
         <PhotoSlider images={images} className="sm:col-span-7 xl:col-span-12" />
 
-        <div className="sm:col-span-5 sm:col-start-8 xl:col-span-7 xl:col-start-14">
+        <div className="mt-10 sm:col-span-5 sm:col-start-8 sm:mt-0 xl:col-span-7 xl:col-start-14">
           <ColorSelector
             namespaceId={namespaceId}
             capacity={capacity}
@@ -95,7 +102,7 @@ const ProductDetailsContent: FC<Props> = ({
           />
 
           <div className="mt-8 flex items-center gap-2">
-            <h2 className="text-h2 text-primary dark:text-d-white">
+            <h2 className="text-primary dark:text-d-white text-[32px] leading-10.25 font-bold tracking-[-0.01em]">
               ${priceDiscount}
             </h2>
 
@@ -114,7 +121,7 @@ const ProductDetailsContent: FC<Props> = ({
                   : 'bg-primary dark:bg-d-accent hover:shadow-hover-bs dark:hover:bg-d-hover-bs dark:text-d-white text-white hover:shadow-[0_3px_13px_0]',
               )}
             >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
+              {isInCart ? t('addedToCart') : t('addToCart')}
             </Button>
 
             <Button
@@ -137,10 +144,10 @@ const ProductDetailsContent: FC<Props> = ({
           <table className="mt-8 block">
             <tbody className="flex flex-col gap-2">
               {[
-                { title: 'Screen', text: formatScreen(screen) },
-                { title: 'Resolution', text: resolution },
-                { title: 'Processor', text: processor },
-                { title: 'RAM', text: formatMemory(ram) },
+                { title: t('specs.screen'), text: formatScreen(screen) },
+                { title: t('specs.resolution'), text: resolution },
+                { title: t('specs.processor'), text: processor },
+                { title: t('specs.ram'), text: formatMemory(ram) },
               ].map(({ title, text }) => (
                 <tr key={title} className="flex justify-between">
                   <td className="text-body text-secondary dark:text-d-secondary">
@@ -157,7 +164,7 @@ const ProductDetailsContent: FC<Props> = ({
 
         <section className="mt-14 sm:col-span-12 sm:mt-16 xl:mt-20">
           <h3 className="text-h3 text-primary dark:text-d-white shadow-bottom shadow-elements dark:shadow-d-elements pb-4">
-            About
+            {t('about')}
           </h3>
 
           {description.map(({ title, text }) => (
@@ -179,7 +186,7 @@ const ProductDetailsContent: FC<Props> = ({
 
         <section className="mt-14 sm:col-span-12 sm:mt-16 xl:col-span-11 xl:col-start-14 xl:mt-20">
           <h3 className="text-h3 text-primary dark:text-d-white shadow-bottom shadow-elements dark:shadow-d-elements pb-4">
-            Tech specs
+            {t('techSpecs')}
           </h3>
 
           <div className="shadow-bottom shadow-elements mt-4 w-full content-['']"></div>
@@ -187,14 +194,17 @@ const ProductDetailsContent: FC<Props> = ({
           <table className="mt-6 block">
             <tbody className="flex flex-col gap-2">
               {[
-                { title: 'Screen', text: formatScreen(screen) },
-                { title: 'Resolution', text: resolution },
-                { title: 'Processor', text: processor },
-                { title: 'RAM', text: formatMemory(ram) },
-                { title: 'Built in memory', text: formatMemory(capacity) },
-                { title: 'Camera', text: capacity },
-                { title: 'Zoom', text: capacity },
-                { title: 'Cell', text: formatCell(cell) },
+                { title: t('specs.screen'), text: formatScreen(screen) },
+                { title: t('specs.resolution'), text: resolution },
+                { title: t('specs.processor'), text: processor },
+                { title: t('specs.ram'), text: formatMemory(ram) },
+                {
+                  title: t('specs.builtInMemory'),
+                  text: formatMemory(capacity),
+                },
+                { title: t('specs.camera'), text: capacity },
+                { title: t('specs.zoom'), text: capacity },
+                { title: t('specs.cell'), text: formatCell(cell) },
               ].map(({ title, text }) => (
                 <tr key={title} className="flex justify-between">
                   <td className="text-body text-secondary dark:text-d-secondary">
@@ -210,13 +220,17 @@ const ProductDetailsContent: FC<Props> = ({
                 category === Category.Tablets) && (
                 <>
                   <tr className="flex justify-between">
-                    <td className="text-body text-secondary">Camera</td>
+                    <td className="text-body text-secondary">
+                      {t('specs.camera')}
+                    </td>
                     <td className="text-body text-primary">
                       {productDetails.camera}
                     </td>
                   </tr>
                   <tr className="flex justify-between">
-                    <td className="text-body text-secondary">Zoom</td>
+                    <td className="text-body text-secondary">
+                      {t('specs.zoom')}
+                    </td>
                     <td className="text-body text-primary">
                       {productDetails.zoom}
                     </td>
@@ -229,7 +243,7 @@ const ProductDetailsContent: FC<Props> = ({
       </div>
 
       <ProductSlider
-        title="You may also like"
+        title={t('youMayAlsoLike')}
         products={randomProducts}
         className="mt-14 sm:mt-16 xl:mt-20"
       />
@@ -239,6 +253,7 @@ const ProductDetailsContent: FC<Props> = ({
 
 export const ProductDetailsPage: FC = () => {
   const { itemId } = useParams();
+  const tPD = useTranslations('productDetails');
   const { isLoading: isLoadingProducts } = useGetProductsQuery();
   const allProducts = useSelector(selectAllProducts);
 
@@ -254,33 +269,20 @@ export const ProductDetailsPage: FC = () => {
     { skip: !productCategory },
   );
 
+  const isLoading = isLoadingProducts || isLoadingProductDetails;
+
   const productDetails = useSelector((state: RootState) =>
     productCategory && itemId
       ? selectProductDetailsById(state, productCategory, itemId)
       : null,
   );
 
-  if (isLoadingProducts || isLoadingProductDetails) {
-    return (
-      <h1 className="text-h1 text-primary dark:text-d-white">Loading...</h1>
-    );
+  if (isLoading) {
+    return <ProductDetailsSkeleton />;
   }
 
   if (!itemId || !product || !productDetails) {
-    return (
-      <div className="mt-6 flex flex-col items-center justify-center gap-6 sm:mt-8 xl:mt-14">
-        <img
-          src="images/product-not-found.webp"
-          alt="Page not found"
-          width={819}
-          height={787}
-          className="w-full max-w-1/2 sm:max-w-1/3"
-        />
-        <h1 className="text-h1 text-primary dark:text-d-white text-center">
-          Product not found
-        </h1>
-      </div>
-    );
+    return <NoResults text={tPD('notFound')} />;
   }
 
   return (

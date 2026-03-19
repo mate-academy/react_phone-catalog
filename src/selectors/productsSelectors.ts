@@ -29,11 +29,25 @@ export const selectPreparedProducts = createSelector(
       _perPage: number,
       currentPage: number,
     ) => currentPage,
+    (
+      _state: RootState,
+      _category: Category | null,
+      _sortBy: Sort,
+      _perPage: number,
+      _currentPage: number,
+      query: string,
+    ) => query,
   ],
-  (products, category, sortBy, perPage, currentPage) => {
-    const filteredProducts = category
+  (products, category, sortBy, perPage, currentPage, query) => {
+    let filteredProducts = category
       ? products.filter(product => product.category === category)
       : products;
+
+    if (query) {
+      filteredProducts = filteredProducts.filter(product =>
+        product.name.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
 
     const sortedProducts = [...filteredProducts].sort((a, b) => {
       switch (sortBy) {

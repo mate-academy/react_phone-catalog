@@ -4,6 +4,7 @@ import { cartActions } from '../store/actions';
 import { cartSelectors } from '../selectors/cartSelectors';
 import { Button } from './Button';
 import type { FC } from 'react';
+import { useTranslations } from 'use-intl';
 
 type CheckoutProps = {
   className: string;
@@ -11,6 +12,7 @@ type CheckoutProps = {
 
 export const Checkout: FC<CheckoutProps> = ({ className }) => {
   const dispatch = useDispatch();
+  const t = useTranslations('misc');
 
   const totalAmount = useSelector(cartSelectors.selectTotalAmount);
   const totalQuantity = useSelector(cartSelectors.selectTotalQuantity);
@@ -37,7 +39,7 @@ export const Checkout: FC<CheckoutProps> = ({ className }) => {
           ${totalAmount}
         </h2>
         <p className="text-body text-secondary dark:text-d-secondary text-center">
-          Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
+          {t('totalFor', { count: totalQuantity })}
         </p>
       </div>
       <div className="border-elements dark:border-d-elements my-[-0.5px] border-[0.5px]"></div>
@@ -45,7 +47,7 @@ export const Checkout: FC<CheckoutProps> = ({ className }) => {
         onClick={handleCheckout}
         className="bg-primary dark:bg-d-accent dark:hover:bg-d-hover-bs hover:shadow-hover-bs text-buttons dark:text-d-white flex h-12 w-full flex-[1_1_auto] items-center justify-center text-white transition hover:shadow-[0_3px_13px_0]"
       >
-        Checkout
+        {t('checkout')}
       </Button>
     </div>
   );

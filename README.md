@@ -35,10 +35,10 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 4. The footer with the link to the GitHub repo and `BackButton to top` button. ✅
   - The content should be limited to the same width as the page content; ✅
   - `BackButton to top` button should scroll to the top smoothly; ✅
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs. ✅
+6. All changes the hover effects should be smooth. ✅
+7. Scale all image links by 10% on hover. ✅
+8. Implement all form elements and icons according to the UI Kit. ✅
 
 ## Home page
 
@@ -63,12 +63,12 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`. ✅
 1. Each page loads the data of the required `type`. ✅
 2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required). ✅
 3. Add `ProductList` component showing all the `productsApi`. ✅
-4. Implement a `Loader` to show it while waiting for the data from the server. ❌
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no productsApi available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort productsApi by `age`, `title`, or `price` (after discount).
-  - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
+4. Implement a `Loader` to show it while waiting for the data from the server. ✅
+5. In case of a loading error show the something went wrong message with a reload button. ❌
+6. If there are no productsApi available show the `There are no phones/tablets/accessories yet` message (choose required). ✅
+7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort productsApi by `age`, `title`, or `price` (after discount). ✅
+  - Save the sort value in the URL `?sort=age` and apply it after the page reload. ✅
+8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options. ✅
   - It should limit the productsApi you show to the user; ✅
   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL; ✅
   - Hide pagination elements if they do not make sense; ✅
@@ -78,21 +78,21 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`. ✅
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-  - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-  - `About` section should contain a subheader with description;
-  - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with productsApi chosen randomly:
-  - Create `getSuggestedProducts` method fetching the suggested productsApi.
+1. `ProductCard` image and title should be links to the product details page. ✅
+2. Use `Loader` when fetching the product details. ✅
+3. Show the details on the page: ✅
+  - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options; ✅
+  - `About` section should contain a subheader with description; ✅
+  - Choose `Tech specs` you want to show. ✅
+4. Add the ability to choose a picture. ✅
+5. Implement `You may also like` block with productsApi chosen randomly: ✅
+  - Create `getSuggestedProducts` method fetching the suggested productsApi. ✅
 6. Add `BackButton` button working the same way as a Browser `BackButton` button. ✅
-7. Add `Breadcrumbs` at the top with:
-  - A Home page link;
-  - A category page link (`Phones`, `Tablets`, `Accessories`);
-  - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+7. Add `Breadcrumbs` at the top with: ✅
+  - A Home page link; ✅
+  - A category page link (`Phones`, `Tablets`, `Accessories`); ✅
+  - The name of the product (just a text). ✅
+8. Show `Product was not found` if there is no product with a given id on the server. ✅
 
 ## Shopping Cart page
 
@@ -126,18 +126,18 @@ Create `Favorites` page with a `ProductList` showing favorite productsApi at `/f
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`. ✅
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+2. Implement the `Product was not found` state for the `ProductDetailsPage`. ❌
 
 ## (*) Advanced tasks
 
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
+- Implement color theme switching! ❌
+- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural. ✅
+- Add the ability to change page language. ❌
 
 ### Search
 
-Show `input:search` in the header when a page contains a `ProductList` to search in.
+Show `input:search` in the header when a page contains a `ProductList` to search in. ❌
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/productsApi matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+1. Save the `Search` value in the URL as a `?query=value` to apply on page load. ❌
+2. Show `There are no phones/tablets/accessories/productsApi matching the query` instead of `ProductList` when needed. ❌
+3. Add `debounce` to the search field. ❌

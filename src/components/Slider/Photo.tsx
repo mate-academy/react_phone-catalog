@@ -45,7 +45,7 @@ export const PhotoSlider: FC<Props> = ({ images }) => {
       </div>
 
       <div
-        className="overflow-hidden sm:-order-1 sm:col-span-1 sm:col-start-1 xl:col-span-2"
+        className="mt-4 overflow-hidden sm:-order-1 sm:col-span-1 sm:col-start-1 sm:mt-0 xl:col-span-2"
         ref={emblaThumbsRef}
       >
         <div className="flex gap-2 sm:flex-col">
@@ -54,10 +54,10 @@ export const PhotoSlider: FC<Props> = ({ images }) => {
               key={image}
               onClick={() => onThumbButtonClick(index)}
               className={cn(
-                'aspect-square size-full shrink-0 grow-0 basis-1/4 border',
+                'aspect-square size-full flex-[0_0_25%] border',
                 selectedIndex === index
                   ? 'border-primary dark:border-d-white'
-                  : 'border-elements dark:border-d-elements',
+                  : 'border-elements dark:border-d-elements hover:border-primary dark:hover:border-d-white transition',
               )}
             >
               <img

@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 import type { RootState } from '../store';
 import { CategoriesType } from '../constants/categories';
-import { Category } from '../types';
+import { Category, Sort } from '../types';
+import { useTranslations } from 'use-intl';
 
 type Props = {
   categories: CategoriesType;
@@ -16,17 +17,24 @@ type Props = {
 export const Categories: FC<Props> = ({ categories, className }) => {
   useGetProductsQuery();
 
-  const phonesCount = useSelector((state: RootState) =>
-    selectPreparedProducts(state, Category.Phones),
-  ).length;
+  const { totalProducts: phonesCount } = useSelector((state: RootState) =>
+    selectPreparedProducts(state, Category.Phones, Sort.Age, Infinity, 1, ''),
+  );
 
-  const tabletsCount = useSelector((state: RootState) =>
-    selectPreparedProducts(state, Category.Tablets),
-  ).length;
+  const { totalProducts: tabletsCount } = useSelector((state: RootState) =>
+    selectPreparedProducts(state, Category.Tablets, Sort.Age, Infinity, 1, ''),
+  );
 
-  const accessoriesCount = useSelector((state: RootState) =>
-    selectPreparedProducts(state, Category.Accessories),
-  ).length;
+  const { totalProducts: accessoriesCount } = useSelector((state: RootState) =>
+    selectPreparedProducts(
+      state,
+      Category.Accessories,
+      Sort.Age,
+      Infinity,
+      1,
+      '',
+    ),
+  );
 
   const categoriesCounts = {
     Phones: phonesCount,
@@ -34,10 +42,14 @@ export const Categories: FC<Props> = ({ categories, className }) => {
     Accessories: accessoriesCount,
   };
 
+  const tNav = useTranslations('nav');
+  const tComp = useTranslations('components');
+  const tProd = useTranslations('products');
+
   return (
     <section className={cn('', className)}>
       <h2 className="text-h2 text-primary dark:text-d-white">
-        Shop by category
+        {tComp('shopByCategory')}
       </h2>
 
       <ul className="pageGrid mt-6">
@@ -58,10 +70,10 @@ export const Categories: FC<Props> = ({ categories, className }) => {
                   />
                 </div>
                 <h4 className="text-h4 text-primary dark:text-d-white mt-6">
-                  {title}
+                  {tNav(title.toLowerCase())}
                 </h4>
                 <p className="text-body text-secondary dark:text-d-secondary mt-1">
-                  {categoryCount} {categoryCount === 1 ? 'model' : 'models'}
+                  {tProd('modelCount', { count: categoryCount })}
                 </p>
               </Link>
             </li>
