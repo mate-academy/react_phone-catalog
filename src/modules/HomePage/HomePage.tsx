@@ -45,8 +45,10 @@ export const HomePage: React.FC = () => {
       <div className="container">
         <>
           <Heading as="h1">Welcome to Nice Gadgets store!</Heading>
-          <HeroSlider />
-          <section className={styles.home__section}></section>
+
+          <section className={styles.home__section}>
+            <HeroSlider />
+          </section>
 
           <section className={styles.home__section}>
             <ProductSlider
@@ -55,7 +57,9 @@ export const HomePage: React.FC = () => {
             />
           </section>
 
-          <ShopByCategory />
+          <section className={styles.home__section}>
+            <ShopByCategory />
+          </section>
 
           {hotPriceProducts.length > 0 && (
             <section className={styles.home__section}>

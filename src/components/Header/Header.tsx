@@ -95,7 +95,7 @@ export const Header: React.FC = () => {
           </div>
 
           <NavLink
-            to="/favorite"
+            to="/favorites"
             className={styles.actions__item}
             onClick={closeMenu}
           >

@@ -5,18 +5,47 @@ import HomeIcon from '@/assets/icons/Home.svg?react';
 import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
 
 interface Props {
-  category: string;
+  category?: string;
+  productName?: string;
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ category }) => {
+export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
   return (
     <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-      <Link to="/" className={styles.homeLink}>
-        <HomeIcon title="Home" />
-      </Link>
+      <ul className={styles.breadcrumbs__list}>
+        <li className={styles.breadcrumbs__item}>
+          <Link to="/" className={styles.breadcrumbs__link}>
+            <HomeIcon className={styles.breadcrumbs__icon} />
+          </Link>
+        </li>
 
-      <ArrowRight className={styles.arrow} />
-      <span className={styles.current}>{category}</span>
+        {category && (
+          <>
+            <li className={styles.breadcrumbs__separator}>
+              <ArrowRight className={styles.breadcrumbs__icon} />
+            </li>
+            <li className={styles.breadcrumbs__item}>
+              <Link
+                to={`/${category.toLowerCase()}`}
+                className={styles.breadcrumbs__link}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </Link>
+            </li>
+          </>
+        )}
+
+        {productName && (
+          <>
+            <li className={styles.breadcrumbs__separator}>
+              <ArrowRight className={styles.breadcrumbs__icon} />
+            </li>
+            <li className={styles.breadcrumbs__item}>
+              <span className={styles.breadcrumbs__current}>{productName}</span>
+            </li>
+          </>
+        )}
+      </ul>
     </nav>
   );
 };

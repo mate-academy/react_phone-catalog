@@ -87,12 +87,13 @@ $transition-default: 0.3s ease;
 
 // Breakpoints
 $mobile: 320px;
-$mobile-large: 640px;
-$tablet: 768px;
+$tablet: 640px;
+$tablet-large: 768px;
 $desktop: 1200px;
 
-// Grid Settings
-$tablet-margin: 24px;
+// Container padding
+$padding-tablet: 24px;
+$padding-desktop: 24px;
 $gap: 16px;
 
 //fonts

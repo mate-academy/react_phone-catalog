@@ -1,11 +1,11 @@
 .heading {
-  
+
   color: $color-primary;
   font-family: inherit;
 
   &.h2 {
     @include mobile-h2;
-    margin: 0;
+    margin-bottom: 24px;
 
     @include tablet {
       @include desktop-h2;

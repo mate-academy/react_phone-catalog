@@ -5,7 +5,7 @@ import FavoritesHeartLike from '@/assets/icons/FavoritesHeartLike.svg?react';
 
 interface Props {
   isFavorite: boolean;
-  onClick?: () => void;
+  onClick: (e: React.MouseEvent) => void;
 }
 
 export const ButtonFavorite: React.FC<Props> = ({ isFavorite, onClick }) => {

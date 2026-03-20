@@ -1,0 +1,105 @@
+.label{
+  @include desktop-small-text;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.colors {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-elements;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+  outline-offset: 1px;
+  outline: 1px solid $color-elements;
+
+  &Active {
+   outline: 1px solid $color-primary;
+  }
+
+  &:hover:not(&Active) {
+    transform: scale(1.1);
+  }
+}
+
+.divider {
+  width: 100%;
+  border: 1px solid $color-elements;
+  margin: 24px 0;
+
+  &Price{
+    margin-bottom: 32px;
+  }
+
+}
+
+.capacities {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.capacityBtn {
+  @include desktop-body;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 8px;
+  border: 1px solid $color-icons;
+  background: $color-icon-bg-selected;
+  cursor: pointer;
+  color: $color-primary;
+
+  &Active {
+    background-color: $color-icon-bg-accent;
+    border-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+.priceSection{
+  margin-bottom: 16px;
+  justify-content: space-between;
+  gap: 8px;
+
+}
+
+.buttons {
+ display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 32px;
+
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+    display: flex;
+    justify-content: space-between;
+    @include desktop-small-text;
+
+    span:first-child {
+      color: $color-secondary;
+    }
+
+    span:last-child {
+      color: $color-primary;
+      
+    }
+  }

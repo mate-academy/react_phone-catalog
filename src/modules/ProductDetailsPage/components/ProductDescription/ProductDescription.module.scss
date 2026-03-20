@@ -1,0 +1,65 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include desktop {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+}
+
+.section {
+  .title {
+    @include mobile-h3;
+  }
+
+  .divider {
+    height: 1px;
+    background-color: $color-elements;
+    margin: 16px 0 32px;
+  }
+}
+
+.about {
+  flex:1 ;
+
+  .article {
+    margin-bottom: 32px;
+  }
+  .subtitle {
+    @include mobile-h4;
+    margin-bottom: 16px;
+  }
+
+  .text {
+    @include desktop-body;
+    color: $color-secondary;
+    margin-bottom: 32px;
+  }
+}
+
+.specs {
+  flex: 1;
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    @include desktop-body;
+
+    .label {
+      flex: 1;
+      color: $color-secondary;
+      white-space: nowrap;
+    flex-shrink: 0;
+    }
+    .value {
+      flex: 2;
+      color: $color-primary;
+      text-align: right;
+      word-break: break-word;
+    }
+  }
+}

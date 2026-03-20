@@ -5,6 +5,7 @@
   background-color: $color-page-bg;
   border-bottom: $border;
   z-index: 1000;
+  gap: 16px;
 
   @include tablet {
     position: fixed;
@@ -32,28 +33,25 @@
       width: auto;
     }
   }
-
-  &__logo {
-    height: 22px;
-    width: auto;
-    object-fit: contain;
-
-    @include tablet {
-      height: 28px;
-    }
-  }
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 16px 16px;
   height: 100%;
 
-  @include tablet {
-    padding: 0 24px;
-  }
 }
+
+.logo {
+    width: 64px;
+    height: auto;
+    object-fit: contain;
+
+    @include desktop {
+      width: 80px;
+    }
+  }
 
 .hidden {
   opacity: 0;

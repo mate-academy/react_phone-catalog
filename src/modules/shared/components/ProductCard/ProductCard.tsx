@@ -1,37 +1,47 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '@/types/Product';
 import styles from './ProductCard.module.scss';
 import { ButtonPrimary } from '@/modules/shared/ui/ButtonPrimary';
 import { ButtonFavorite } from '@/modules/shared/ui/ButtonFavorite';
+import { Price } from '../../ui/Price';
+import { useFavorites } from '@/context/FavoritesContext';
 
 interface Props {
   product: Product;
   showDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({
-  product,
-  showDiscount = true,
-}) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
   const [isAdded, setIsAdded] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  const { name, price, fullPrice, screen, capacity, ram, image } = product;
-  const isDiscounted = showDiscount && Number(fullPrice) > Number(price);
+  const { itemId, name, screen, capacity, ram, image } = product;
+  const imageSrc = image.startsWith('/') ? image : `/${product.image}`;
+  const favorite = isFavorite(product.itemId);
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (favorite) {
+      removeFromFavorites(product.itemId);
+    } else {
+      addToFavorites(product);
+    }
+  };
 
   return (
     <article className={styles.card}>
-      <div className={styles.card__imageContainer}>
-        <img src={image} alt={name} className={styles.card__image} />
-      </div>
-      <h3 className={styles.card__title}>{name}</h3>
-      <div className={styles.card__price}>
-        <span className={styles.card__priceCurrent}>
-          ${isDiscounted ? price : fullPrice}
-        </span>
-        {isDiscounted && (
-          <span className={styles.card__priceFull}>${fullPrice}</span>
-        )}
+      <Link to={`/product/${itemId}`} className={styles.card__imageContainer}>
+        <img src={imageSrc} alt={name} className={styles.card__image} />
+      </Link>
+
+      <Link to={`/product/${itemId}`} className={styles.card__titleLink}>
+        <h3 className={styles.card__title}>{name}</h3>
+      </Link>
+
+      <div className={styles.priceSection}>
+        <Price price={product.price} fullPrice={product.fullPrice} />
       </div>
 
       <div className={styles.card__divider} />
@@ -55,10 +65,7 @@ export const ProductCard: React.FC<Props> = ({
           isSelected={isAdded}
           onClick={() => setIsAdded(!isAdded)}
         />
-        <ButtonFavorite
-          isFavorite={isFavorite}
-          onClick={() => setIsFavorite(!isFavorite)}
-        />
+        <ButtonFavorite isFavorite={favorite} onClick={handleToggleFavorite} />
       </div>
     </article>
   );

@@ -109,7 +109,7 @@ export const CatalogPage: React.FC = () => {
   return (
     <section className={styles.catalog}>
       <div className={styles.catalog__container}>
-        <Breadcrumbs category={displayTitle} />
+        <Breadcrumbs category={category} />
 
         <Heading as="h1" className={styles.catalog__title}>
           {displayTitle}

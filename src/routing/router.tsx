@@ -3,6 +3,8 @@ import { App } from '../App';
 import { HomePage } from '@/modules/HomePage';
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
 import { CatalogPage } from '@/modules/CatalogPage/CatalogPage';
+import { ProductDetailsPage } from '@/modules/ProductDetailsPage';
+import { FavoritesPage } from '@/modules/FavoritesPage/FavoritesPage';
 
 export const router = createBrowserRouter(
   [
@@ -20,12 +22,16 @@ export const router = createBrowserRouter(
           element: <Navigate to="/" replace />,
         },
         {
+          path: 'product/:productId',
+          element: <ProductDetailsPage />,
+        },
+        {
           path: ':category',
           element: <CatalogPage />,
         },
         {
           path: 'favorites',
-          element: <div>Favorites Page</div>,
+          element: <FavoritesPage />,
         },
         {
           path: 'cart',

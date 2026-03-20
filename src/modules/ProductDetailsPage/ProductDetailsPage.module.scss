@@ -1,0 +1,54 @@
+.productContent {
+  display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 8px;
+    margin-bottom: 56px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 17px;
+  }
+
+  @include desktop {
+    gap: 64px;
+  }
+}
+
+.galleryWrapper {
+  width: 100%;
+
+  @include tablet {
+    flex: 3;
+  }
+
+  @include desktop {
+    flex: 1;
+  }
+}
+
+.actionsWrapper {
+  width: 100%;
+
+  @include tablet {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  @include desktop {
+    flex: 1;
+  }
+}
+
+.descriptionWrapper {
+  margin-bottom: 56px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+}
