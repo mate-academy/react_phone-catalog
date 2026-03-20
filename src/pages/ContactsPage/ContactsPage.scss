@@ -1,0 +1,28 @@
+.contacts {
+  &__title {
+    padding-block: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__text {
+    color: color(gray-secondary);
+    padding-top: 10px;
+  }
+
+  &__tel {
+    color: color(gray-secondary);
+  }
+
+  &__email {
+    color: color(gray-secondary);
+    padding-top: 20px;
+  }
+
+  &__adress {
+    color: color(gray-secondary);
+    padding-top: 20px;
+  }
+}

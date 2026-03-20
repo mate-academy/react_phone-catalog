@@ -4,11 +4,15 @@ import { CartItem } from '../../types/CartItem';
 type CartsContextType = {
   carts: CartItem[];
   setCarts: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  totalItems: number;
+  totalPrice: number;
 };
 
 export const CartsContext = React.createContext<CartsContextType>({
   carts: [],
   setCarts: () => {},
+  totalItems: 0,
+  totalPrice: 0,
 });
 
 type Props = {
@@ -22,6 +26,16 @@ export const CartsProvider: React.FC<Props> = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const totalItems = useMemo(
+    () => carts.reduce((sum, item) => sum + item.quantity, 0),
+    [carts],
+  );
+
+  const totalPrice = useMemo(
+    () => carts.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [carts],
+  );
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(carts));
   }, [carts]);
@@ -30,8 +44,10 @@ export const CartsProvider: React.FC<Props> = ({ children }) => {
     () => ({
       carts,
       setCarts,
+      totalItems,
+      totalPrice,
     }),
-    [carts],
+    [carts, totalItems, totalPrice],
   );
 
   return (

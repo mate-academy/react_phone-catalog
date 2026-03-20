@@ -9,8 +9,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { MenuPage } from './pages/ProductDetails/MenuPage';
 import './styles/style.scss';
 import { Footer } from './components/Footer/Footer';
-import { ContactsPage } from './pages/ContactsPage';
-import { RightsPage } from './pages/RightsPage';
+import { ContactsPage } from './pages/ContactsPage/ContactsPage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { CartsPage } from './pages/CartPage/CartPage';
 import { ProductDetailsPage } from './pages/ProductDetails/ProductDetailsPage';
@@ -32,7 +31,6 @@ export const App = () => {
           <Route path="carts" element={<CartsPage />} />
           <Route path="menu" element={<MenuPage />} />
           <Route path="contacts" element={<ContactsPage />} />
-          <Route path="rights" element={<RightsPage />} />
           <Route path=":category/:itemId" element={<ProductDetailsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

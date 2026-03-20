@@ -75,9 +75,14 @@ export const Footer = () => {
               Contacts
             </NavLink>
 
-            <NavLink to="/rights" end className="nav__item">
+            <a
+              className="nav__item"
+              href="https://github.com/zaurmamedov"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Rights
-            </NavLink>
+            </a>
           </div>
 
           <div className="footer__bottom">

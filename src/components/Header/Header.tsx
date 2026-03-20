@@ -10,7 +10,7 @@ export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { favourites } = useContext(FavouritesContext);
-  const { carts } = useContext(CartsContext);
+  const { carts, totalItems } = useContext(CartsContext);
 
   const isMenuOpen = location.pathname === '/menu';
   // const isFavouriteOpen = location.pathname === '/favourites';
@@ -85,7 +85,7 @@ export const Header = () => {
                 alt="Logo"
               />
               {isCart && (
-                <span className="badge badge--count">{carts.length}</span>
+                <span className="badge badge--count">{totalItems}</span>
               )}
             </div>
           </NavLink>

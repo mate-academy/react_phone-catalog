@@ -5,17 +5,10 @@ import { CartsContext } from '../../components/Context/CartsContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { icons } from '../../utils/icons';
 
-const emptyCartImage = `${import.meta.env.BASE_URL}img/cart-is-empty.png`;
-
 export const CartsPage = () => {
-  const { carts, setCarts } = useContext(CartsContext);
+  const { carts, setCarts, totalItems, totalPrice } = useContext(CartsContext);
 
   const navigate = useNavigate();
-  const totalItems = carts.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = carts.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
 
   const increase = (item: CartItem) => {
     setCarts(prev =>
@@ -53,7 +46,7 @@ export const CartsPage = () => {
     return (
       <div className="page__notFound">
         <h1>Your cart is empty :&#40;</h1>
-        <img src={emptyCartImage} alt="cartempty" />
+        <img src="/img/cart-is-empty.png" alt="cartempty" />
       </div>
     );
   }
@@ -77,59 +70,57 @@ export const CartsPage = () => {
         <div className="cart">
           <div className="cart__container">
             {carts.map(c => (
-              <>
-                <div className="cart__productCard" key={c.id}>
-                  <div className="cart__leftContainer">
-                    <div className="cart__close">
-                      <button
-                        className="cart__delete"
-                        onClick={() => deleteCart(c)}
-                      >
-                        <img
-                          className="cart__delete--close"
-                          src={icons.logoClose}
-                          alt="Logo"
-                        />
-                      </button>
-                    </div>
-                    <div className="cart__img">
-                      <NavLink
-                        to={`/${c.category}/${c.itemId}`}
-                        end
-                        className="product__image__link"
-                      >
-                        <img
-                          src={c.image}
-                          alt="cartImg"
-                          className="cart__img--photo"
-                        />
-                      </NavLink>
-                    </div>
-                    <NavLink to={`/${c.category}/${c.itemId}`}>
-                      <div className="cart__title">{c.name}</div>
+              <div className="cart__productCard" key={c.id}>
+                <div className="cart__leftContainer">
+                  <div className="cart__close">
+                    <button
+                      className="cart__delete"
+                      onClick={() => deleteCart(c)}
+                    >
+                      <img
+                        className="cart__delete--close"
+                        src={icons.logoClose}
+                        alt="Logo"
+                      />
+                    </button>
+                  </div>
+                  <div className="cart__img">
+                    <NavLink
+                      to={`/${c.category}/${c.itemId}`}
+                      end
+                      className="product__image__link"
+                    >
+                      <img
+                        src={c.image}
+                        alt="cartImg"
+                        className="cart__img--photo"
+                      />
                     </NavLink>
                   </div>
-                  <div className="cart__rightContainer">
-                    <div className="cart__amount">
-                      <button
-                        className="cart__button"
-                        onClick={() => decrease(c)}
-                        disabled={c.quantity === 1}
-                      >
-                        -
-                      </button>
-                      <span className="cart__button--title">{c.quantity}</span>
-                      <button
-                        className="cart__button"
-                        onClick={() => increase(c)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <div className="cart__price text-h3">${c.price}</div>
-                  </div>
+                  <NavLink to={`/${c.category}/${c.itemId}`}>
+                    <div className="cart__title">{c.name}</div>
+                  </NavLink>
                 </div>
-              </>
+                <div className="cart__rightContainer">
+                  <div className="cart__amount">
+                    <button
+                      className="cart__button"
+                      onClick={() => decrease(c)}
+                      disabled={c.quantity === 1}
+                    >
+                      -
+                    </button>
+                    <span className="cart__button--title">{c.quantity}</span>
+                    <button
+                      className="cart__button"
+                      onClick={() => increase(c)}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div className="cart__price text-h3">${c.price}</div>
+                </div>
+              </div>
             ))}
           </div>
           <div className="cart__totalSum">
@@ -138,7 +129,7 @@ export const CartsPage = () => {
               Total for {totalItems} items
             </div>
             <button className="cart__totalSum__button" onClick={handleCheckout}>
-              Checkout
+              <div className="cart__totalSum__button--text">Checkout</div>
             </button>
           </div>
         </div>
