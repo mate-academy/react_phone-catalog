@@ -47,6 +47,9 @@ export const Header: React.FC = () => {
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(styles.nav__link, { [styles.nav__linkActive]: isActive });
 
+  const getActionLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn(styles.actions__item, { [styles.actions__itemActive]: isActive });
+
   return (
     <header className={styles.header} id="top">
       <div className={styles.header__inner}>
@@ -99,7 +102,7 @@ export const Header: React.FC = () => {
 
           <NavLink
             to="/favorites"
-            className={styles.actions__item}
+            className={getActionLinkClass}
             onClick={closeMenu}
           >
             <div className={styles.iconWrapper}>
@@ -112,10 +115,11 @@ export const Header: React.FC = () => {
 
           <NavLink
             to="/cart"
-            className={styles.actions__item}
+            className={getActionLinkClass}
             onClick={closeMenu}
           >
-            <CartIcon className={styles.icon} />
+              <CartIcon className={styles.icon} />
+
           </NavLink>
         </div>
       </div>

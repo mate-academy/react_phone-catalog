@@ -73,6 +73,8 @@
   @include tablet {
     display: none;
   }
+
+
 }
 
 .icon {
@@ -233,6 +235,25 @@
 
     &:hover {
       background-color: $color-surface-2;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: transparent;
+      transition: background-color 0.3s;
+    }
+
+    &Active {
+      &::after {
+        background-color: $color-primary;
+        
+      }
+
     }
 
     @include tablet {
