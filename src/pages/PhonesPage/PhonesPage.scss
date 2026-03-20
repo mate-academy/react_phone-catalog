@@ -9,6 +9,7 @@
 
     &--title {
       color: color(gray-primary);
+      cursor: pointer;
     }
   }
 
@@ -35,6 +36,11 @@
     &--arrow {
       height: 16px;
       width: 16px;
+      cursor: pointer;
+    }
+
+    &--title {
+      cursor: pointer;
     }
   }
 

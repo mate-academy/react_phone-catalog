@@ -201,6 +201,7 @@ export const HomePage = () => {
             <SwiperSlide key={product.id}>
               <ProductCard
                 products={product}
+                productsDiscount={product.price}
                 isFavourite={id => favouriteIds.has(id)}
                 isCarts={id => cartIds.has(id)}
                 handleToggleFavourite={toggleFavourite}

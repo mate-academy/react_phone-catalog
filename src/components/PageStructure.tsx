@@ -160,6 +160,7 @@ export const PageStructure: React.FC<Props> = ({
             <ProductCard
               key={item.id}
               products={item}
+              productsDiscount={item.price}
               isFavourite={id => favourites.some(f => f.id === id)}
               isCarts={id => carts.some(c => c.id === id)}
               handleToggleFavourite={toggleFavourite}

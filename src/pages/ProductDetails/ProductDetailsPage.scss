@@ -62,6 +62,7 @@
     border: 1px solid color(gray-elements);
     height: 100%;
     width: 100%;
+          cursor: pointer;
 
     @include on-tablet {
       height: auto;
@@ -129,13 +130,14 @@
         height: 32px;
         width: 32px;
         border: 1px solid color(gray-elements);
+        cursor: pointer;
 
     &--active {
       display: flex;
       align-items: center;
       justify-content: center;
-        background-color: white;
-        border-radius: 50%;
+      background-color: white;
+      border-radius: 50%;
         height: 32px;
         width: 32px;
       border: 1px solid color(gray-primary);
@@ -169,10 +171,12 @@
       &--border {
         padding: 7px 8px 4px;
         border: 1px solid color(gray-primary);
+        cursor: pointer;
 
        &--active {
           background-color: color(gray-primary);
           color: white;
+          cursor: auto;
         }
       }
     }

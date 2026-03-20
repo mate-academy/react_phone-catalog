@@ -5,6 +5,7 @@ import { ProductCardItem } from '../../types/CartItem';
 
 type Props = {
   products: ProductCardItem;
+  productsDiscount?: number;
 
   isFavourite: (id: string) => boolean;
   isCarts: (id: string) => boolean;
@@ -15,6 +16,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({
   products,
+  productsDiscount,
   isFavourite,
   isCarts,
   handleToggleFavourite,
@@ -39,8 +41,20 @@ export const ProductCard: React.FC<Props> = ({
         <div className="product__title text-body">{products.name}</div>
       </NavLink>
       <div className="product__price">
-        <div className="product__price--sale text-h3">${products.price}</div>
-        <div className="product__price--fullprice">${products.fullPrice}</div>
+        {productsDiscount ? (
+          <>
+            <div className="product__price--sale text-h3">
+              ${products.price}
+            </div>
+            <div className="product__price--fullprice">
+              ${products.fullPrice}
+            </div>
+          </>
+        ) : (
+          <div className="product__price--sale text-h3">
+            ${products.fullPrice}
+          </div>
+        )}
       </div>
       <div className="product__info text-small">
         <div className="product__info__section">
