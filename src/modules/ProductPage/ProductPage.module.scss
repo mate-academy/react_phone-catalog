@@ -1,0 +1,14 @@
+.container {
+  @extend %container;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.footer {
+  margin-top: 40px;
+}

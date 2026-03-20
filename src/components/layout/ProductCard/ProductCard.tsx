@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../../types/types';
 import { imageUrl } from '../../../utils/imageUrl';
 import { Button } from '../../ui/Button';
@@ -9,8 +10,10 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
+  const path = `/catalog/${product.category}/${product.itemId}`;
+
   return (
-    <div className={styles.product}>
+    <Link to={path} className={styles.product}>
       <img src={imageUrl(product.image)} alt="" className={styles.img} />
       <h3 className={styles.title}>{product.name}</h3>
       <div className={styles.group}>
@@ -32,9 +35,11 @@ export const ProductCard = ({ product }: Props) => {
         </p>
       </div>
       <div className={styles.footer}>
-        <Button maxWidth="160px">Add to cart</Button>
+        <Button onClick={() => {}} maxWidth="160px">
+          Add to cart
+        </Button>
         <ButtonLiked type="button" />
       </div>
-    </div>
+    </Link>
   );
 };

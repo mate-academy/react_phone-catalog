@@ -3,12 +3,11 @@
 }
 
 .content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  gap: 16px;
-}
-
-.footer {
   margin-top: 40px;
+
+  & > section {
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+  }
 }

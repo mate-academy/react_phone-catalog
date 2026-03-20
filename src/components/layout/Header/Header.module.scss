@@ -117,11 +117,36 @@
   }
 
   &__link {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $main;
+      opacity: 0;
+      visibility: hidden;
+      transition: $transition;
+    }
+
+    &:hover,
+    &_active {
+      color: $main;
+
+      &::after {
+        opacity: 1;
+        visibility: visible;
+        transition: $transition;
+      }
+    }
   }
 
   &__hidden {

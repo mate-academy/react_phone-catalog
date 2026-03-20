@@ -35,6 +35,7 @@ export const Header = () => {
                 <li key={index} className={styles.nav__item}>
                   <NavLink
                     to={item.href}
+                    end={item.href === item.href}
                     className={({ isActive }) =>
                       classNames(styles.nav__link, {
                         [styles.nav__link_active]: isActive,
@@ -50,22 +51,36 @@ export const Header = () => {
         </nav>
         <div className={styles.buttons}>
           <div className={classNames(styles.block, styles.block__hidden)}>
-            <Link to="/" className={styles.block__link}>
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                classNames(styles.block__link, {
+                  [styles.block__link_active]: isActive,
+                })
+              }
+            >
               <img
                 src={imageUrl('icons/Favourites.svg')}
                 alt=""
                 className={styles.block__img}
               />
-            </Link>
+            </NavLink>
           </div>
           <div className={classNames(styles.block, styles.block__hidden)}>
-            <Link to="/" className={styles.block__link}>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                classNames(styles.block__link, {
+                  [styles.block__link_active]: isActive,
+                })
+              }
+            >
               <img
                 src={imageUrl('icons/Shopping_Cart.svg')}
                 alt=""
                 className={styles.block__img}
               />
-            </Link>
+            </NavLink>
           </div>
           <div className={classNames(styles.block, styles.block__burger)}>
             <button

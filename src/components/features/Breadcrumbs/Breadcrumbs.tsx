@@ -1,18 +1,46 @@
+import classNames from 'classnames';
+import { NavLink, useLocation } from 'react-router-dom';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Breadcrumbs.module.scss';
 
-export const Breadcrumbs = () => {
+type Props = {
+  breadcrumbsName?: string;
+};
+
+export const Breadcrumbs = ({ breadcrumbsName }: Props) => {
+  const location = useLocation();
+  const paths = location.pathname.split('/').filter(Boolean);
+
+  if (breadcrumbsName) {
+    paths.splice(-1, 1, breadcrumbsName);
+  }
+
   return (
     <div className={styles.breadcrumbs}>
-      <img
-        src={imageUrl('icons/Home.svg')}
-        alt="home-icon"
-        className={styles.home}
-      />
-      {/* <div className={styles.group}> */}
-      <span className={styles.arrow}></span>
-      <p className={styles.path}>Phones</p>
-      {/* </div> */}
+      <NavLink to="/">
+        <img
+          src={imageUrl('icons/Home.svg')}
+          alt="home-icon"
+          className={styles.home}
+        />
+      </NavLink>
+      {paths.map((item, index) => {
+        const path = '/' + paths.slice(0, index + 1).join('/');
+
+        return (
+          <div key={index} className={styles.group}>
+            <span className={styles.arrow}></span>
+            <NavLink
+              to={path}
+              className={classNames(styles.path, {
+                [styles.path__disabled]: item === paths.at(-1),
+              })}
+            >
+              {item}
+            </NavLink>
+          </div>
+        );
+      })}
     </div>
   );
 };

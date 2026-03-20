@@ -13,6 +13,32 @@ export interface Product {
   image: string;
 }
 
+type DescriptionProduct = {
+  title: string;
+  text: string[];
+};
+
+export interface ProductDetailsType {
+  camera: string;
+  capacity: string;
+  capacityAvailable: string[];
+  category: string;
+  cell: string[];
+  color: string;
+  colorsAvailable: string[];
+  description: DescriptionProduct[];
+  id: string;
+  name: string;
+  namespaceId: string;
+  priceDiscount: number;
+  priceRegular: number;
+  processor: string;
+  ram: string;
+  resolution: string;
+  screen: string;
+  zoom: string;
+}
+
 export type FilterParams = 'sort' | 'perPage';
 
 export type FilterValue = string | null;

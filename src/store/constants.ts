@@ -4,15 +4,19 @@ export const navigation = [
     label: 'Home',
   },
   {
-    href: '/phones',
+    href: '/catalog',
+    label: 'Catalog',
+  },
+  {
+    href: 'catalog/phones',
     label: 'Phones',
   },
   {
-    href: '/tablets',
+    href: 'catalog/tablets',
     label: 'Tablets',
   },
   {
-    href: '/accessories',
+    href: 'catalog/accessories',
     label: 'Accessories',
   },
 ];

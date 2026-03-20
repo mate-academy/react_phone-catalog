@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import { Filter } from '../../../types/types';
+import { imageUrl } from '../../../utils/imageUrl';
 import { Breadcrumbs } from '../../features/Breadcrumbs';
 import { Button } from '../../ui/Button';
 import { Select } from '../../ui/Select';
@@ -6,6 +8,8 @@ import styles from './Pagetoolbar.module.scss';
 
 type Props = {
   breadcrumbs?: boolean;
+  breadcrumbsName?: string;
+  back?: boolean;
   title: string;
   subtitle?: string;
   filters?: Filter[];
@@ -14,14 +18,32 @@ type Props = {
 
 export const Pagetoolbar = ({
   breadcrumbs,
+  breadcrumbsName,
+  back,
   title,
   subtitle,
   filters,
   clearFilters,
 }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.toolbar}>
-      {breadcrumbs && <Breadcrumbs />}
+      {breadcrumbs && <Breadcrumbs breadcrumbsName={breadcrumbsName} />}
+      {back && (
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className={styles.back}
+        >
+          <img
+            src={imageUrl('icons/ArrowLeft.svg')}
+            alt=""
+            className={styles.back__icon}
+          />
+          <span className={styles.back__title}>Back</span>
+        </button>
+      )}
       <div className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
         {subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}

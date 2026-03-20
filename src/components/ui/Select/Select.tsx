@@ -25,10 +25,7 @@ export const Select = ({
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
-      if (
-        selectRef.current &&
-        selectRef.current.contains(e.target as Node)
-      ) {
+      if (selectRef.current && selectRef.current.contains(e.target as Node)) {
         return;
       }
 
