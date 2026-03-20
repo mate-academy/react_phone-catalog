@@ -248,3 +248,30 @@
     }
   }
 }
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+
+  min-width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $color-red;
+  color: $color-white;
+  font-family: 'Mont', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--body-bg-color);
+}

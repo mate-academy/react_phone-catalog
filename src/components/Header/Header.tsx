@@ -12,11 +12,14 @@ import CloseIcon from '@/assets/icons/Close.svg?react';
 import MenuIcon from '@/assets/icons/Menu.svg?react';
 import CartIcon from '@/assets/icons/Cart.svg?react';
 import FavoritesIcon from '@/assets/icons/Favorites.svg?react';
+import { useFavorites } from '@/context/FavoritesContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const { favorites } = useFavorites();
+  const favoritesCount = favorites.length;
 
    useEffect(() => {
      document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
@@ -99,7 +102,12 @@ export const Header: React.FC = () => {
             className={styles.actions__item}
             onClick={closeMenu}
           >
-            <FavoritesIcon className={styles.icon} />
+            <div className={styles.iconWrapper}>
+              <FavoritesIcon className={styles.icon} />
+              {favoritesCount > 0 && (
+                <span className={styles.badge}>{favoritesCount}</span>
+              )}
+            </div>
           </NavLink>
 
           <NavLink

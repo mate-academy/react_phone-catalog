@@ -7,9 +7,10 @@ import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
 interface Props {
   category?: string;
   productName?: string;
+  pageName?: string;
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
+export const Breadcrumbs: React.FC<Props> = ({ category, productName, pageName }) => {
   return (
     <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
       <ul className={styles.breadcrumbs__list}>
@@ -18,6 +19,16 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
             <HomeIcon className={styles.breadcrumbs__icon} />
           </Link>
         </li>
+
+        <li className={styles.breadcrumbs__separator}>
+          <ArrowRight className={styles.breadcrumbs__icon} />
+        </li>
+
+        {pageName && (
+        <li className={styles.breadcrumbs__item}>
+          <span className={styles.current}>{pageName}</span>
+        </li>
+        )}
 
         {category && (
           <>

@@ -10,7 +10,7 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs />
+      <Breadcrumbs pageName="Favorites" />
       <div className={styles.header}>
         <Heading as="h1" className={styles.title}>
           Favorites
@@ -37,5 +37,3 @@ export const FavoritesPage: React.FC = () => {
     </div>
   );
 };
-
-
