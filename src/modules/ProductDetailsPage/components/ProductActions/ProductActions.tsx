@@ -32,14 +32,20 @@ export const ProductActions: React.FC<Props> = ({
 
   // Helper to generate the new URL when a variant is selected
   const handleVariantChange = (newColor: string, newCapacity: string) => {
-    const newId = `${namespaceId}-${newCapacity.toLowerCase()}-${newColor.toLowerCase().replace(/\s+/g, '')}`;
+    const colorSlug = newColor.toLowerCase().replace(/\s+/g, '-');
+    const capacitySlug = newCapacity.toLowerCase();
+
+    const newId = `${namespaceId}-${capacitySlug}-${colorSlug}`;
 
     navigate(`/product/${newId}`);
   };
 
   // Helper to get the correct hex or CSS color name
-  const getBtnColor = (color: string) =>
-    COLOR_MAP[color.toLowerCase()] || color.toLowerCase().replace(/\s+/g, '');
+  const getBtnColor = (color: string) => {
+    const normalizedInput = color.toLowerCase().replace(/\s+/g, '');
+
+    return COLOR_MAP[normalizedInput] || normalizedInput;
+  };
 
   return (
     <div className={styles.actions}>
