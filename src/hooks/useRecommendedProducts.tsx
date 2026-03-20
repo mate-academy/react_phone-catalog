@@ -1,28 +1,24 @@
-import { useContext, useMemo } from 'react';
-import { Product } from '../types/Product';
-import { ProductsContext } from '../store/ProductsContext';
+import { Product, ProductSpecs } from '../types/Product';
 
-export const useRecommendedProducts = (currentProduct?: Product) => {
-  const { products } = useContext(ProductsContext);
+export const getSuggestedProducts = (
+  products: Product[],
+  currentProduct?: ProductSpecs,
+  limit: number = 6,
+): Product[] => {
+  if (!products.length) return [];
 
-  const recommendedProducts = useMemo(() => {
-    if (!currentProduct) {
-      return [];
-    }
-
-    const modelMatch = currentProduct.name.match(/^[^\d]*\d+/);
-    const model = modelMatch ? modelMatch[0].trim() : currentProduct.name;
-
-    return products
-      .filter(
+  const filtered = currentProduct
+    ? products.filter(
         p =>
-          p.category === currentProduct.category &&
-          p.id !== currentProduct.id &&
-          p.name.includes(model),
+          p.id !== currentProduct.id && p.category === currentProduct.category,
       )
-      .sort((a, b) => b.year - a.year)
-      .slice(0, 6);
-  }, [products, currentProduct]);
+    : products;
 
-  return recommendedProducts;
+  const shuffled = [...filtered];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled.slice(0, limit);
 };

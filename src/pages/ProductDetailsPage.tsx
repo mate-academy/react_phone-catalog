@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { ProductSpecs } from '../types/Product';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -8,7 +8,7 @@ import { Loader } from '../components/Loader';
 import { Container } from '../components/Container';
 import { ProductsContext } from '../store/ProductsContext';
 import { RecommendedProducts } from '../components/RecomendedProducts';
-import { useRecommendedProducts } from '../hooks/useRecommendedProducts';
+import { getSuggestedProducts } from '../hooks/useRecommendedProducts';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -19,7 +19,9 @@ export const ProductDetailsPage = () => {
   const product = products.find(item => item.itemId === productId);
   const selectedProduct = productsDetails.find(item => item.id === productId);
 
-  const recommendedProducts = useRecommendedProducts(product);
+  const recommendedProducts = useMemo(() => {
+    return getSuggestedProducts(products, selectedProduct, 6);
+  }, [products, selectedProduct]);
 
   const { name } = selectedProduct || {};
 

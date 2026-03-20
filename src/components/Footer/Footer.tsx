@@ -29,18 +29,23 @@ export const Footer = () => {
           </Link>
 
           <nav className={styles.footerNav}>
-            <Link
-              to="https://github.com/Ehulinian"
+            <a
+              href="https://github.com/Ehulinian"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.footerNavLink}
             >
               Github
-            </Link>
-            <Link
-              to="https://github.com/Ehulinian?tab=repositories"
+            </a>
+
+            <a
+              href="https://github.com/Ehulinian?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.footerNavLink}
             >
               Contacts
-            </Link>
+            </a>
             <Link to="/rights" className={styles.footerNavLink}>
               Rights
             </Link>
