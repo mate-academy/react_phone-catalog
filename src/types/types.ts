@@ -28,6 +28,7 @@ export interface ProductDetailsType {
   colorsAvailable: string[];
   description: DescriptionProduct[];
   id: string;
+  images: string[];
   name: string;
   namespaceId: string;
   priceDiscount: number;

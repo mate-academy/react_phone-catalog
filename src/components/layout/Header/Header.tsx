@@ -35,7 +35,7 @@ export const Header = () => {
                 <li key={index} className={styles.nav__item}>
                   <NavLink
                     to={item.href}
-                    end={item.href === item.href}
+                    end={item.href === '/catalog'}
                     className={({ isActive }) =>
                       classNames(styles.nav__link, {
                         [styles.nav__link_active]: isActive,
@@ -105,26 +105,23 @@ export const Header = () => {
       >
         <nav className={styles.menu__nav}>
           <ul className={styles.menu__list}>
-            <li className={styles.menu__list_item}>
-              <Link to="/" className={styles.menu__list_link}>
-                <span className={styles.menu__list_text}>Home</span>
-              </Link>
-            </li>
-            <li className={styles.menu__list_item}>
-              <Link to="/" className={styles.menu__list_link}>
-                <span className={styles.menu__list_text}>Phone</span>
-              </Link>
-            </li>
-            <li className={styles.menu__list_item}>
-              <Link to="/" className={styles.menu__list_link}>
-                <span className={styles.menu__list_text}>Tablets</span>
-              </Link>
-            </li>
-            <li className={styles.menu__list_item}>
-              <Link to="/" className={styles.menu__list_link}>
-                <span className={styles.menu__list_text}>Accessories</span>
-              </Link>
-            </li>
+            {navigation.map((item, index) => {
+              return (
+                <li key={index} className={styles.menu__list_item}>
+                  <NavLink
+                    to={item.href}
+                    end={item.href === '/catalog'}
+                    className={({ isActive }) =>
+                      classNames(styles.menu__list_link, {
+                        [styles.menu__list_link_active]: isActive,
+                      })
+                    }
+                  >
+                    <span className={styles.menu__list_text}>{item.label}</span>
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </nav>
         <div className={styles.menu__footer}>

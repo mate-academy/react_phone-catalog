@@ -6,6 +6,14 @@
 .home {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .path {

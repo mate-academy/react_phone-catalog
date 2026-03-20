@@ -10,7 +10,7 @@ type Props = {
   breadcrumbs?: boolean;
   breadcrumbsName?: string;
   back?: boolean;
-  title: string;
+  title?: string;
   subtitle?: string;
   filters?: Filter[];
   clearFilters?: () => void;
@@ -44,10 +44,12 @@ export const Pagetoolbar = ({
           <span className={styles.back__title}>Back</span>
         </button>
       )}
-      <div className={styles.header}>
-        <h1 className={styles.title}>{title}</h1>
-        {subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
-      </div>
+      {title && (
+        <div className={styles.header}>
+          <h1 className={styles.title}>{title}</h1>
+          {subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
+        </div>
+      )}
       {filters && (
         <div className={styles.inline}>
           {filters.map((item, index) => {

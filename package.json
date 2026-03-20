@@ -7,8 +7,10 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "@uiw/react-color-name": "^2.9.6",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
+    "color-name": "^2.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^7.13.1",

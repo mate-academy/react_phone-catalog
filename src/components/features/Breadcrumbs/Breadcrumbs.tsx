@@ -24,23 +24,25 @@ export const Breadcrumbs = ({ breadcrumbsName }: Props) => {
           className={styles.home}
         />
       </NavLink>
-      {paths.map((item, index) => {
-        const path = '/' + paths.slice(0, index + 1).join('/');
+      <div className={styles.wrapper}>
+        {paths.map((item, index) => {
+          const path = '/' + paths.slice(0, index + 1).join('/');
 
-        return (
-          <div key={index} className={styles.group}>
-            <span className={styles.arrow}></span>
-            <NavLink
-              to={path}
-              className={classNames(styles.path, {
-                [styles.path__disabled]: item === paths.at(-1),
-              })}
-            >
-              {item}
-            </NavLink>
-          </div>
-        );
-      })}
+          return (
+            <div key={index} className={styles.group}>
+              <span className={styles.arrow}></span>
+              <NavLink
+                to={path}
+                className={classNames(styles.path, {
+                  [styles.path__disabled]: item === paths.at(-1),
+                })}
+              >
+                {item}
+              </NavLink>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

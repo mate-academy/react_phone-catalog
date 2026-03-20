@@ -3,7 +3,8 @@ import { imageUrl } from '../../../utils/imageUrl';
 import styles from './ButtonLiked.module.scss';
 
 type Props = {
-  type: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset';
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   isActive?: boolean;
 };
 
