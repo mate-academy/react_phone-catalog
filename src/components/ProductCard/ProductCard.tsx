@@ -67,11 +67,11 @@ export const ProductCard: React.FC<Props> = ({
             onClick={() => handleToggleCarts(products)}
           >
             {isCarts(products.id) ? (
-              <p className="product__button__name--active text-buttons">
+              <p className="product__button__name--active text-button">
                 Added to cart
               </p>
             ) : (
-              <p className="product__button__name text-buttons">Add to cart</p>
+              <p className="product__button__name text-button">Add to cart</p>
             )}
           </button>
         </div>

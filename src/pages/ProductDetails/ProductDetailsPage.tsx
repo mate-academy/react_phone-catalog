@@ -300,11 +300,11 @@ export const ProductDetailsPage = () => {
                         }
                       >
                         {isCarts(currentItemId) ? (
-                          <p className="product__button__name--active text-buttons">
+                          <p className="product__button__name--active text-button">
                             Added to cart
                           </p>
                         ) : (
-                          <p className="product__button__name text-buttons">
+                          <p className="product__button__name text-button">
                             Add to cart
                           </p>
                         )}

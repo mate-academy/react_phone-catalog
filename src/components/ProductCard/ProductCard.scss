@@ -118,9 +118,24 @@
 
     &__name {
       color: color(white);
+      margin: 0;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 12px;
+      line-height: 15px;
 
       &--active {
         color: color(green);
+        margin: 0;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      @include on-tablet {
+        font-size: 14px;
+        line-height: 21px;
       }
     }
   }
