@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFavorites } from '@/context/FavoritesContext';
 import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Heading } from '@/components/ui/Heading';
 import styles from './FavoritesPage.module.scss';
+import { Pagination } from '../CatalogPage/components/Pagination';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+  const lastItemIndex = currentPage * itemsPerPage;
+  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const currentFavorites = favorites.slice(firstItemIndex, lastItemIndex);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const shouldShowPagination = favorites.length > itemsPerPage;
 
   return (
     <div className={styles.container}>
@@ -20,7 +34,7 @@ export const FavoritesPage: React.FC = () => {
 
       {favorites.length > 0 ? (
         <div className={styles.content}>
-          {favorites.map(product => (
+          {currentFavorites.map(product => (
             <div key={product.itemId} className={styles.content__item}>
               <ProductCard product={product} />
             </div>
@@ -33,6 +47,15 @@ export const FavoritesPage: React.FC = () => {
             Go back to the store and find something you love!
           </p>
         </div>
+      )}
+
+      {shouldShowPagination && (
+        <Pagination
+          total={favorites.length}
+          perPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       )}
     </div>
   );

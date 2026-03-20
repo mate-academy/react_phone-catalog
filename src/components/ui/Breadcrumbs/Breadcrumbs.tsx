@@ -20,14 +20,15 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName, pageName }
           </Link>
         </li>
 
-        <li className={styles.breadcrumbs__separator}>
-          <ArrowRight className={styles.breadcrumbs__icon} />
-        </li>
-
         {pageName && (
-        <li className={styles.breadcrumbs__item}>
-          <span className={styles.current}>{pageName}</span>
-        </li>
+          <>
+            <li className={styles.breadcrumbs__separator}>
+              <ArrowRight className={styles.breadcrumbs__icon} />
+            </li>
+            <li className={styles.breadcrumbs__item}>
+              <span className={styles.current}>{pageName}</span>
+            </li>
+          </>
         )}
 
         {category && (
