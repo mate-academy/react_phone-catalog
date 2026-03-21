@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Phone Catalog</title>
+    <script>
+      // GitHub Pages 404 redirect fix for BrowserRouter
+      // Redirects /react_phone-catalog/phones → /react_phone-catalog/?/phones
+      // React Router then picks it up and renders the correct page
+      var path = window.location.pathname;
+      var base = '/react_phone-catalog';
+      var route = path.slice(base.length);
+
+      if (route && route !== '/') {
+        window.location.replace(
+          window.location.origin + base + '/?/' + route.replace(/^\//, '')
+        );
+      } else {
+        window.location.replace(window.location.origin + base + '/');
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
