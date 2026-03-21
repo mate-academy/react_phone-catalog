@@ -38,6 +38,7 @@ const Header = () => {
           <div className="top-bar__icons">
             <a href="" className="icon icon--heart"></a>
             <a href="" className="icon icon--basket"></a>
+            <a href="#menu" className="icon icon--menu"></a>
           </div>
         </div>
       </div>

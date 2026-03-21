@@ -66,7 +66,6 @@
   height: 100%;
   display: flex;
   text-decoration: none;
-  color: b;
   font-size: 12px;
   line-height: 92%;
   text-align: center;
@@ -127,7 +126,31 @@ display: flex;
  background-image: url('../../../public/img/icons/icon--heart.png');
  border-right: 1px solid #e2e6e9;
  border-left: 1px solid #e2e6e9;
+ display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+  @media (min-width: 1200px) {
+    display: block;
+  }
 };
 .icon--basket {
   background-image: url('../../../public/img/icons/icon--basket.png');
+   display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+  @media (min-width: 1200px) {
+    display: block;
+  }
+};
+.icon--menu {
+  display: block;
+  background-image:url('../../../public/img/icons/icon--menu.png');
+  @media (min-width: 640px) {
+    display: none;
+  }
+  @media (min-width: 1200px) {
+    display: none;
+  }
 };
