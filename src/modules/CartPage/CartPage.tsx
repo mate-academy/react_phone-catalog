@@ -10,6 +10,8 @@ import CloseIcon from '@/assets/icons/Close.svg?react';
 import PlusIcon from '@/assets/icons/Plus.svg?react';
 import MinusIcon from '@/assets/icons/Minus.svg?react';
 import { ButtonPrimary } from '../shared/ui/ButtonPrimary';
+import { EmptyState } from '../shared/components/EmptyState';
+import emptyCart from '@/assets/img/EmptyCart.png';
 
 export interface CartItem {
   itemId: string;
@@ -38,7 +40,16 @@ export const CartPage: React.FC = () => {
   };
 
   if (cartItems.length === 0) {
-    return <h2 className={styles.empty}>Your cart is empty</h2>;
+    return (
+      <div className={styles.container}>
+        <EmptyState
+          title="Your cart is empty"
+          imgUrl={emptyCart}
+          text="But it doesn't have to be! Check out our latest gadgets."
+          showCategories={true}
+        />
+      </div>
+    );
   }
 
   return (

@@ -5,6 +5,8 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Heading } from '@/components/ui/Heading';
 import styles from './FavoritesPage.module.scss';
 import { Pagination } from '../CatalogPage/components/Pagination';
+import { EmptyState } from '../shared/components/EmptyState';
+import emptyFavorite from '@/assets/img/Emptyfavorite.jpg';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();
@@ -21,6 +23,18 @@ export const FavoritesPage: React.FC = () => {
   };
 
   const shouldShowPagination = favorites.length > itemsPerPage;
+
+  if (favorites.length === 0) {
+    return (
+      <div className={styles.container}>
+        <EmptyState
+          title="You haven't liked anything yet"
+          text="Save your favorite gadgets here to find them easily later."
+          imgUrl={emptyFavorite}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
