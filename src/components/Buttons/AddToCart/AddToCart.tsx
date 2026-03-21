@@ -9,14 +9,13 @@ type Props = {
 
 export const AddToCart: React.FC<Props> = ({ isInCart, handleClick }) => {
   const t = useTranslate();
-  const title = isInCart ? 'button.added' : 'button.add';
+  const title = isInCart ? 'button.remove' : 'button.add';
 
   return (
     <button
       type="button"
       className={cn(style.addToCart, { [style.isAdded]: isInCart })}
       onClick={handleClick}
-      disabled={isInCart}
     >
       {t(title)}
     </button>

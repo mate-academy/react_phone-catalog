@@ -71,7 +71,7 @@ const en: Dictionary = {
   'footer.back-to-top': 'Back to top',
 
   'button.add': 'Add to cart',
-  'button.added': 'In cart',
+  'button.remove': 'Remove',
 };
 
 const ua: Dictionary = {
@@ -145,7 +145,7 @@ const ua: Dictionary = {
   'footer.back-to-top': 'Вгору',
 
   'button.add': 'Купити',
-  'button.added': 'В кошику',
+  'button.remove': 'Прибрати',
 };
 
 export const dictionaries = { en, ua };

@@ -19,7 +19,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product, discount = false }) => {
   const { favoriteProducts, toggleFavorite } = useFavorite();
-  const { cartList, addToCart } = useCart();
+  const { cartList, addToCart, deleteFromCart } = useCart();
   const {
     name,
     fullPrice,
@@ -42,7 +42,10 @@ export const ProductCard: React.FC<Props> = ({ product, discount = false }) => {
   ];
 
   const handleFavoriteClick = () => toggleFavorite(product);
-  const handleAddToCartClick = () => addToCart(product);
+  const handleAddToCartClick = () =>
+    isItemInCart(cartList, itemId)
+      ? deleteFromCart(itemId)
+      : addToCart(product);
 
   const productPath = buildProductPath(category, itemId);
 

@@ -6,8 +6,8 @@ export const ROUTES = {
   cart: '/cart',
   github:
     'https://github.com/alexmotalex/react_phone-catalog?tab=readme-ov-file',
-  contacts: '/contacts',
-  rights: '/rights',
+  contacts: 'https://mate.academy/',
+  rights: 'https://mate.academy/agreement/flex',
   phones: '/phones',
   tablets: '/tablets',
   accessories: '/accessories',

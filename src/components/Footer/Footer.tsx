@@ -24,7 +24,7 @@ export const Footer = () => {
           <ul className={styles.footerList}>
             {FOOTER_NAV_ITEMS.map(item => (
               <li key={item.to} className={styles.footerItem}>
-                <Link className={styles.footerLink} to={item.to}>
+                <Link className={styles.footerLink} to={item.to} target="blank">
                   {t(item.label)}
                 </Link>
               </li>
