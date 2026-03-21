@@ -1,7 +1,21 @@
 import './App.scss';
+import Home from './Pages/Home';
+import Phones from './Pages/Phones';
+import Accessories from './Pages/Accessories';
+import Tablets from './Pages/Tablets';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <div className="App"></div>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/phones" element={<Phones />} />
+        <Route path="/tablets" element={<Tablets />} />
+        <Route path="/accessories" element={<Accessories />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};

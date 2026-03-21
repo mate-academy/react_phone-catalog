@@ -1,0 +1,107 @@
+.header {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 64px;
+ padding: 0;
+ margin: 0;
+};
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-inline: 64px;
+};
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+};
+
+.nav__item {
+ height: 64px;
+ list-style: none;
+};
+
+.nav__item:first-child{
+  position: relative;
+};
+
+.nav__link {
+  height: 100%;
+  display: flex;
+  text-decoration: none;
+  color: b;
+  font-size: 12px;
+  line-height: 92%;
+  text-align: center;
+  padding: 0;
+  white-space: nowrap;
+  transition: color 0.2s;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 64px;
+  letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #89939A;
+position: relative;
+};
+
+.nav__link:hover {
+  color: black;
+};
+
+.nav__link.is-active {
+  position: relative;
+};
+
+.nav__link:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: black;
+  border-radius: 4px;
+};
+
+.nav__link.is-active:first-child {
+  color: black;
+};
+
+.logo {
+  display: block;
+};
+
+.top-bar__icons {
+display: flex;
+};
+
+.icon {
+ width: 64px;
+ height: 64px;
+ display: block;
+ background-repeat: no-repeat;
+ background-position: center;
+};
+
+.icon--heart {
+ background-image: url('../../../public/img/icons/icon--heart.png');
+};
+
+.icon--basket {
+  background-image: url('../../../public/img/icons/icon--basket.png');
+};
+
