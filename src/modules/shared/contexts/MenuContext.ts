@@ -2,14 +2,14 @@ import { createContext } from 'react';
 
 interface MenuContextType {
   isMenuOpen: boolean;
+  openMenu: () => void;
   closeMenu: () => void;
-  toggleMenu: () => void;
 }
 
 const defaultMenuContext: MenuContextType = {
   isMenuOpen: false,
+  openMenu: () => {},
   closeMenu: () => {},
-  toggleMenu: () => {},
 };
 
 export const MenuContext = createContext(defaultMenuContext);

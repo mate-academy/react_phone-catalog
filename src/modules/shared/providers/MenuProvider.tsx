@@ -7,15 +7,15 @@ type Props = {
 
 export const MenuProvider: FC<Props> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const openMenu = useCallback(() => {
+    setIsMenuOpen(true);
+  }, [setIsMenuOpen]);
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
   }, [setIsMenuOpen]);
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prevState => !prevState);
-  }, [setIsMenuOpen]);
 
   return (
-    <MenuContext.Provider value={{ isMenuOpen, closeMenu, toggleMenu }}>
+    <MenuContext.Provider value={{ isMenuOpen, openMenu, closeMenu }}>
       {children}
     </MenuContext.Provider>
   );

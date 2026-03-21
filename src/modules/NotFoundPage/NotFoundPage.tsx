@@ -1,5 +1,6 @@
-import type { FC } from 'react';
 import { useTranslations } from 'use-intl';
+import { GoHomeButton } from '../shared/components/ui/Button/GoHomeButton';
+import type { FC } from 'react';
 
 export const NotFoundPage: FC = () => {
   const t = useTranslations('misc');
@@ -16,6 +17,7 @@ export const NotFoundPage: FC = () => {
       <h2 className="text-h1 text-primary dark:text-d-white text-center">
         {t('pageNotFound')}
       </h2>
+      <GoHomeButton />
     </div>
   );
 };

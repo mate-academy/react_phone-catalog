@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { GoHomeButton } from './ui/Button/GoHomeButton';
+import type { FC } from 'react';
 
 interface Props {
   text: string;
@@ -17,6 +18,7 @@ export const NoResults: FC<Props> = ({ text }) => {
       <h2 className="text-h1 text-primary dark:text-d-white text-center">
         {text}
       </h2>
+      <GoHomeButton />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'clsx';
-import { getProductDetailsPath } from '../utilities/productDetailsUtilities';
+import { getProductDetailsPath } from '../utilities/getProductDetailsPath';
 import { COLOR_MAP } from '../constants/colors';
 import type { FC } from 'react';
 import { useTranslations } from 'use-intl';

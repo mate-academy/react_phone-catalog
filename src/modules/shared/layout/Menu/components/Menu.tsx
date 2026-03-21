@@ -1,15 +1,16 @@
+import { useSelector } from 'react-redux';
+import { useTranslations } from 'use-intl';
 import { FC, useContext, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import cn from 'clsx';
 import { MenuContext } from '../../../contexts/MenuContext';
 import { MENU_NAVIGATION as NAVIGATION } from '../constants/menu_navigation';
-import cn from 'clsx';
-import { useSelector } from 'react-redux';
 import { cartSelectors } from '../../../../CartPage/selectors/cartSelectors';
 import { favouritesSelectors } from '../../../../FavouritesPage/selectors/favouritesSelectors';
+import { Button } from '../../../components/ui/Button/Button';
 import { IconWithBadge } from '../../../components/ui/IconWithBadge';
-import { LanguageDropdown } from '../../../components/ui/Dropdown/LanguageDropdown';
-import { ThemeDropdown } from '../../../components/ui/Dropdown/ThemeDropdown';
-import { useTranslations } from 'use-intl';
+import Logo from '/src/images/logo.svg?react';
+import Close from '/src/images/icons/close.svg?react';
 
 type Props = {
   className?: string;
@@ -37,7 +38,7 @@ export const Menu: FC<Props> = ({ className }) => {
   return (
     <aside
       className={cn(
-        'dark:bg-d-black bg-white',
+        'dark:bg-d-black flex flex-col bg-white',
         {
           'pointer-events-all overflow-auto opacity-100': isMenuOpen,
           'pointer-events-none opacity-0': !isMenuOpen,
@@ -45,7 +46,22 @@ export const Menu: FC<Props> = ({ className }) => {
         className,
       )}
     >
-      <div className="flex h-full flex-col justify-between">
+      <div className="shadow-bottom shadow-elements dark:shadow-d-surface2 dark:bg-d-black flex shrink-0 grow-0 basis-(--header-height-xs) justify-between gap-4 bg-white">
+        <NavLink
+          to="/"
+          className="flex flex-[0_0_auto] items-center px-4 xl:px-6"
+        >
+          <Logo className="fill-primary dark:fill-d-white h-5.5 xl:h-7" />
+        </NavLink>
+
+        <Button
+          onClick={closeMenu}
+          className="shadow-left shadow-elements dark:shadow-d-surface2 aspect-square p-4"
+        >
+          <Close className="fill-primary dark:fill-d-white" />
+        </Button>
+      </div>
+      <div className="flex-[1_1_auto]">
         <div className="container">
           <nav className="my-6">
             <ul className="flex flex-col items-center gap-4">
@@ -71,28 +87,23 @@ export const Menu: FC<Props> = ({ className }) => {
               ))}
             </ul>
           </nav>
-
-          <LanguageDropdown />
-          <ThemeDropdown />
         </div>
-        <div className="shadow-top shadow-elements dark:shadow-d-surface2 flex">
-          <NavLink
-            to="favourites"
-            className="shadow-left shadow-elements flex flex-[1_1_50%] items-center justify-center py-6"
-          >
-            <IconWithBadge
-              variant="favourites"
-              badgeContent={favouritesCount}
-            />
-          </NavLink>
+      </div>
 
-          <NavLink
-            to="cart"
-            className="shadow-left shadow-elements dark:shadow-d-surface2 flex flex-[1_1_50%] items-center justify-center py-6"
-          >
-            <IconWithBadge variant="cart" badgeContent={cartCount} />
-          </NavLink>
-        </div>
+      <div className="shadow-top shadow-elements dark:shadow-d-surface2 flex flex-[0_0_auto]">
+        <NavLink
+          to="favourites"
+          className="shadow-left shadow-elements flex flex-[1_1_50%] items-center justify-center py-6"
+        >
+          <IconWithBadge variant="favourites" badgeContent={favouritesCount} />
+        </NavLink>
+
+        <NavLink
+          to="cart"
+          className="shadow-left shadow-elements dark:shadow-d-surface2 flex flex-[1_1_50%] items-center justify-center py-6"
+        >
+          <IconWithBadge variant="cart" badgeContent={cartCount} />
+        </NavLink>
       </div>
     </aside>
   );

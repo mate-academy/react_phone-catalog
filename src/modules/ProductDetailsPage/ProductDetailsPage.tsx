@@ -14,6 +14,7 @@ import { formatMemory } from '../shared/utilities/formatMemory';
 import { formatScreen } from '../shared/utilities/formatScreen';
 import { Button } from '../shared/components/ui/Button/Button';
 import { NoResults } from '../shared/components/NoResults';
+import { ErrorMessage } from '../shared/components/ErrorMessage';
 import { BackButton } from '../shared/components/ui/Button/BackButton';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { PhotosSlider } from './components/PhotosSlider';
@@ -86,7 +87,10 @@ const ProductDetailsContent: FC<Props> = ({
 
       <div className="sm:pageGrid mt-8 sm:mt-10">
         {/* Image */}
-        <PhotosSlider images={images} className="sm:col-span-7 xl:col-span-12" />
+        <PhotosSlider
+          images={images}
+          className="sm:col-span-7 xl:col-span-12"
+        />
 
         <div className="mt-10 sm:col-span-5 sm:col-start-8 sm:mt-0 xl:col-span-7 xl:col-start-14">
           <ColorSelector
@@ -193,50 +197,45 @@ const ProductDetailsContent: FC<Props> = ({
 
           <table className="mt-6 block">
             <tbody className="flex flex-col gap-2">
-              {[
-                { title: t('specs.screen'), text: formatScreen(screen) },
-                { title: t('specs.resolution'), text: resolution },
-                { title: t('specs.processor'), text: processor },
-                { title: t('specs.ram'), text: formatMemory(ram) },
-                {
-                  title: t('specs.builtInMemory'),
-                  text: formatMemory(capacity),
-                },
-                { title: t('specs.camera'), text: capacity },
-                { title: t('specs.zoom'), text: capacity },
-                { title: t('specs.cell'), text: formatCell(cell) },
-              ].map(({ title, text }) => (
-                <tr key={title} className="flex justify-between">
-                  <td className="text-body text-secondary dark:text-d-secondary">
-                    {title}
-                  </td>
-                  <td className="text-body text-primary dark:text-d-white">
-                    {text}
-                  </td>
-                </tr>
-              ))}
+              {(() => {
+                const specs = [
+                  { title: t('specs.screen'), text: formatScreen(screen) },
+                  { title: t('specs.resolution'), text: resolution },
+                  { title: t('specs.processor'), text: processor },
+                  { title: t('specs.ram'), text: formatMemory(ram) },
+                  {
+                    title: t('specs.builtInMemory'),
+                    text: formatMemory(capacity),
+                  },
+                ];
 
-              {(category === Category.Phones ||
-                category === Category.Tablets) && (
-                <>
-                  <tr className="flex justify-between">
-                    <td className="text-body text-secondary">
-                      {t('specs.camera')}
+                if (
+                  category === Category.Phones ||
+                  category === Category.Tablets
+                ) {
+                  specs.push({
+                    title: t('specs.camera'),
+                    text: productDetails.camera,
+                  });
+                  specs.push({
+                    title: t('specs.zoom'),
+                    text: productDetails.zoom,
+                  });
+                }
+
+                specs.push({ title: t('specs.cell'), text: formatCell(cell) });
+
+                return specs.map(({ title, text }) => (
+                  <tr key={title} className="flex justify-between">
+                    <td className="text-body text-secondary dark:text-d-secondary">
+                      {title}
                     </td>
-                    <td className="text-body text-primary">
-                      {productDetails.camera}
+                    <td className="text-body text-primary dark:text-d-white">
+                      {text}
                     </td>
                   </tr>
-                  <tr className="flex justify-between">
-                    <td className="text-body text-secondary">
-                      {t('specs.zoom')}
-                    </td>
-                    <td className="text-body text-primary">
-                      {productDetails.zoom}
-                    </td>
-                  </tr>
-                </>
-              )}
+                ));
+              })()}
             </tbody>
           </table>
         </section>
@@ -253,8 +252,12 @@ const ProductDetailsContent: FC<Props> = ({
 
 export const ProductDetailsPage: FC = () => {
   const { itemId } = useParams();
-  const tPD = useTranslations('productDetails');
-  const { isLoading: isLoadingProducts } = useGetProductsQuery();
+  const t = useTranslations('productDetails');
+  const {
+    isLoading: isLoadingProducts,
+    isError: isErrorProducts,
+    refetch: refetchProducts,
+  } = useGetProductsQuery();
   const allProducts = useSelector(selectAllProducts);
 
   const product = useMemo(
@@ -264,12 +267,16 @@ export const ProductDetailsPage: FC = () => {
 
   const productCategory = product?.category;
 
-  const { isLoading: isLoadingProductDetails } = useGetProductsByCategoryQuery(
-    productCategory!,
-    { skip: !productCategory },
-  );
+  const {
+    isLoading: isLoadingProductDetails,
+    isError: isErrorDetails,
+    refetch: refetchDetails,
+  } = useGetProductsByCategoryQuery(productCategory!, {
+    skip: !productCategory,
+  });
 
   const isLoading = isLoadingProducts || isLoadingProductDetails;
+  const isError = isErrorProducts || isErrorDetails;
 
   const productDetails = useSelector((state: RootState) =>
     productCategory && itemId
@@ -281,8 +288,21 @@ export const ProductDetailsPage: FC = () => {
     return <ProductDetailsSkeleton />;
   }
 
+  if (isError) {
+    return (
+      <ErrorMessage
+        onRetry={() => {
+          refetchProducts();
+          if (productCategory) {
+            refetchDetails();
+          }
+        }}
+      />
+    );
+  }
+
   if (!itemId || !product || !productDetails) {
-    return <NoResults text={tPD('notFound')} />;
+    return <NoResults text={t('notFound')} />;
   }
 
   return (

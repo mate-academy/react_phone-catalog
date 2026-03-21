@@ -10,7 +10,7 @@ import { ProductsPage } from '../modules/ProductsPage/ProductsPage';
 import { ProductDetailsPage } from '../modules/ProductDetailsPage/ProductDetailsPage';
 import { FavouritesPage } from '../modules/FavouritesPage/FavouritesPage';
 import { CartPage } from '../modules/CartPage/CartPage';
-import { NotFoundPage } from '../modules/HomePage/NotFoundPage';
+import { NotFoundPage } from '../modules/NotFoundPage/NotFoundPage';
 import { ScrollToTop } from '../modules/shared/components/ScrollToTop';
 import type { FC } from 'react';
 

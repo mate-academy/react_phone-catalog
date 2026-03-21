@@ -14,4 +14,18 @@ export const favouritesSelectors = {
     selectors.selectById,
     product => !!product,
   ),
+  selectFiltered: createSelector(
+    [selectors.selectAll, (_state: RootState, query: string) => query],
+    (favourites, query) => {
+      const lowerQuery = query.toLowerCase().trim();
+
+      if (!lowerQuery) {
+        return favourites;
+      }
+
+      return favourites.filter(product =>
+        product.name.toLowerCase().includes(lowerQuery),
+      );
+    },
+  ),
 };

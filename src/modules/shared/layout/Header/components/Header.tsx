@@ -1,18 +1,17 @@
 import { FC, useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslations } from 'use-intl';
 import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'clsx';
-import { Search } from './Search';
-import { cartSelectors } from '../../../../CartPage/selectors/cartSelectors';
-import { favouritesSelectors } from '../../../../FavouritesPage/selectors/favouritesSelectors';
 import { MenuContext } from '../../../contexts/MenuContext';
 import { HEADER_NAVIGATION as NAVIGATION } from '../constants/header_navigation';
+import { cartSelectors } from '../../../../CartPage/selectors/cartSelectors';
+import { favouritesSelectors } from '../../../../FavouritesPage/selectors/favouritesSelectors';
+import { Search } from './Search';
 import { Button } from '../../../components/ui/Button/Button';
 import { IconWithBadge } from '../../../components/ui/IconWithBadge';
 import Logo from '/src/images/logo.svg?react';
 import MenuIcon from '/src/images/icons/menu.svg?react';
-import Close from '/src/images/icons/close.svg?react';
-import { useTranslations } from 'use-intl';
 
 type Props = {
   className?: string;
@@ -21,17 +20,16 @@ type Props = {
 export const Header: FC<Props> = ({ className }) => {
   const cartCount = useSelector(cartSelectors.selectTotalQuantity);
   const favouritesCount = useSelector(favouritesSelectors.selectTotal);
-  const { isMenuOpen, toggleMenu } = useContext(MenuContext);
+  const { openMenu } = useContext(MenuContext);
   const { pathname } = useLocation();
   const t = useTranslations('nav');
 
-  const isSearchVisible =
-    [
-      '/phones',
-      '/tablets',
-      '/accessories',
-      // '/favourites',
-    ].includes(pathname) && !isMenuOpen;
+  const isSearchVisible = [
+    '/phones',
+    '/tablets',
+    '/accessories',
+    '/favourites',
+  ].includes(pathname);
 
   return (
     <header
@@ -105,14 +103,10 @@ export const Header: FC<Props> = ({ className }) => {
 
         <div className="flex lg:hidden">
           <Button
-            onClick={toggleMenu}
+            onClick={openMenu}
             className="shadow-left shadow-elements dark:shadow-d-surface2 aspect-square p-4"
           >
-            {isMenuOpen ? (
-              <Close className="fill-primary dark:fill-d-white" />
-            ) : (
-              <MenuIcon className="fill-primary dark:fill-d-white" />
-            )}
+            <MenuIcon className="fill-primary dark:fill-d-white" />
           </Button>
         </div>
       </div>

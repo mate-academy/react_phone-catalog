@@ -9,14 +9,15 @@ import { ProductList } from './components/ProductList';
 import { Pagination } from '../shared/components/ui/Pagination/Pagination';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { NotFoundPage } from '../HomePage/NotFoundPage';
+import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import { useTranslations } from 'use-intl';
+import { ErrorMessage } from '../shared/components/ErrorMessage';
 
 export const ProductsPage: FC = () => {
   const { category } = useParams<{ category: string }>();
   const validCategory = category as Category;
 
-  const { isLoading } = useGetProductsQuery();
+  const { isLoading, isError, refetch } = useGetProductsQuery();
   const {
     visibleProducts,
     totalProducts,
@@ -57,8 +58,18 @@ export const ProductsPage: FC = () => {
     return <NotFoundPage />;
   }
 
+  if (isError) {
+    return <ErrorMessage onRetry={refetch} />;
+  }
+
   if (!isLoading && (!visibleProducts || visibleProducts.length < 1)) {
-    return <NoResults text={t('noResults', { category: validCategory })} />;
+    return (
+      <NoResults
+        text={t('noResults', {
+          category: localizedTitle?.toLowerCase() || validCategory,
+        })}
+      />
+    );
   }
 
   return (

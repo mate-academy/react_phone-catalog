@@ -1,9 +1,9 @@
 # React Product Catalog
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+Implement the catalog with a shopping cart and favorites page according to one of the next designs: ✅
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
+- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original) ✅
+- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark) ✅
 - [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
 - [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
 - [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
@@ -12,25 +12,25 @@ You may also implement color theme switching!
 
 ## If you work in a team
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team) ✅
 
 ## Project Setup from scratch
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy. ✅
 
 ## Data
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like. ✅
 
 ## App
 
-1. Put components into the `src/components` folder. ✅
+1. Put components into the `src/components` folder. ❌
   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files. ❌
   - Use CSS modules. ❌
   - Keep `.module.scss` files together with their components. ❌
-2. Advanced project structure: ❌
-  - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules. ❌
-  - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on. ❌
+2. Advanced project structure: ✅
+  - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules. ✅
+  - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on. ✅
 3. Add the sticky header with a logo, navigation, favorites, and cart. ✅
 4. The footer with the link to the GitHub repo and `BackButton to top` button. ✅
   - The content should be limited to the same width as the page content; ✅
@@ -42,7 +42,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 
 ## Home page
 
-Implement Home page at available at `/`.
+Implement Home page at available at `/`. ✅
 
 1. `<h1>Product Catalog</h1>` should be visually hidden. ✅
 2. `BannersSlider`: ✅
@@ -64,7 +64,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`. ✅
 2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required). ✅
 3. Add `ProductList` component showing all the `productsApi`. ✅
 4. Implement a `Loader` to show it while waiting for the data from the server. ✅
-5. In case of a loading error show the something went wrong message with a reload button. ❌
+5. In case of a loading error show the something went wrong message with a reload button. ✅
 6. If there are no productsApi available show the `There are no phones/tablets/accessories yet` message (choose required). ✅
 7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort productsApi by `age`, `title`, or `price` (after discount). ✅
   - Save the sort value in the URL `?sort=age` and apply it after the page reload. ✅
@@ -76,7 +76,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`. ✅
 
 ## Product details page
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+Create `ProductDetailsPage` available at `/product/:productId`. ✅
 
 1. `ProductCard` image and title should be links to the product details page. ✅
 2. Use `Loader` when fetching the product details. ✅
@@ -126,18 +126,18 @@ Create `Favorites` page with a `ProductList` showing favorite productsApi at `/f
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`. ✅
-2. Implement the `Product was not found` state for the `ProductDetailsPage`. ❌
+2. Implement the `Product was not found` state for the `ProductDetailsPage`. ✅
 
 ## (*) Advanced tasks
 
-- Implement color theme switching! ❌
+- Implement color theme switching! ✅
 - Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural. ✅
-- Add the ability to change page language. ❌
+- Add the ability to change page language. ✅
 
 ### Search
 
-Show `input:search` in the header when a page contains a `ProductList` to search in. ❌
+Show `input:search` in the header when a page contains a `ProductList` to search in. ✅
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load. ❌
-2. Show `There are no phones/tablets/accessories/productsApi matching the query` instead of `ProductList` when needed. ❌
-3. Add `debounce` to the search field. ❌
+1. Save the `Search` value in the URL as a `?query=value` to apply on page load. ✅
+2. Show `There are no phones/tablets/accessories/productsApi matching the query` instead of `ProductList` when needed. ✅
+3. Add `debounce` to the search field. ✅

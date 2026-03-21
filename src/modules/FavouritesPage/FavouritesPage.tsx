@@ -1,16 +1,15 @@
-import { useSelector } from 'react-redux';
-import { favouritesSelectors } from './selectors/favouritesSelectors';
 import { ProductList } from '../ProductsPage/components/ProductList';
 import { FC } from 'react';
-import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { useTranslations } from 'use-intl';
+import { NoResults } from '../shared/components/NoResults';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { useFavourites } from '../shared/hooks/useFavourites';
 
 export const FavouritesPage: FC = () => {
-  const favouritesProducts = useSelector(favouritesSelectors.selectAll);
-  const totalFavourites = favouritesProducts.length;
   const t = useTranslations('favourites');
+  const { filteredFavourites, totalFavourites, query } = useFavourites();
 
-  if (!favouritesProducts || totalFavourites < 1) {
+  if (totalFavourites < 1) {
     return (
       <div className="mt-6 flex flex-col items-center justify-center gap-6 sm:mt-8 xl:mt-14">
         <img
@@ -24,6 +23,8 @@ export const FavouritesPage: FC = () => {
       </div>
     );
   }
+
+  const visibleCount = filteredFavourites.length;
 
   return (
     <div>
@@ -40,10 +41,14 @@ export const FavouritesPage: FC = () => {
         {t('title')}
       </h1>
       <p className="text-body text-secondary dark:text-d-secondary mt-2">
-        {t('itemCount', { count: totalFavourites })}
+        {t('itemCount', { count: visibleCount })}
       </p>
 
-      <ProductList products={favouritesProducts} className="mt-6" />
+      {query && visibleCount === 0 ? (
+        <NoResults text={t('noResults')} />
+      ) : (
+        <ProductList products={filteredFavourites} className="mt-6" />
+      )}
     </div>
   );
 };

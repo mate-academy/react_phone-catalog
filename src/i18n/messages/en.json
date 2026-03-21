@@ -32,14 +32,14 @@
   "favourites": {
     "title": "Favourites",
     "empty": "Favourites is empty",
-    "itemCount": "{count, plural, one {# item} other {# items}}"
+    "itemCount": "{count, plural, one {# item} other {# items}}",
+    "noResults": "There are no products matching the query"
   },
   "products": {
     "modelCount": "{count, plural, one {# model} other {# models}}",
     "sortLabel": "Sort by",
     "perPageLabel": "Items on page",
-    "noResults": "There are no {category} yet",
-    "notFound": "Product not found",
+    "noResults": "There are no {category} matching the query",
     "sortOptions": {
       "newest": "Newest",
       "alphabetically": "Alphabetically",
@@ -64,7 +64,8 @@
       "camera": "Camera",
       "zoom": "Zoom",
       "cell": "Cell"
-    }
+    },
+    "notFound": "Product not found"
   },
   "misc": {
     "back": "Back",
@@ -72,7 +73,10 @@
     "searchPlaceholder": "Search...",
     "checkout": "Checkout",
     "totalFor": "Total for {count, plural, one {# item} other {# items}}",
-    "pageNotFound": "Page not found"
+    "pageNotFound": "Page not found",
+    "error": "Something went wrong",
+    "reload": "Reload",
+    "goHome": "Go home"
   },
   "theme": {
     "label": "Theme",
