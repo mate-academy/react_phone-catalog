@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CategoryTypes, PathType } from '../../types/Types';
-import { useCategoruCount } from '../hook/useCategoryCount';
+import { useCategoruCount } from '../../hook/useCategoryCount';
 import style from './ShopByCategouy.module.scss';
 import classNames from 'classnames';
 

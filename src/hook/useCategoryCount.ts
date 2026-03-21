@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { CategoryTypes, Products } from '../../types/Types';
-import { getData } from '../../api/data';
+import { CategoryTypes, Products } from '../types/Types';
+import { getData } from '../api/data';
 
 export const useCategoruCount = () => {
   const [count, setCount] = useState({

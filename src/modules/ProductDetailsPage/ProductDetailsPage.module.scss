@@ -1,0 +1,30 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+@import '../../style/extends';
+
+.productDetails {
+  @include content-padding-inline;
+
+  &__buttonBack {
+    display: flex;
+    height: 16px;
+    gap: 4px;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background-color: var(--main-bg);
+  }
+
+  &__iconBack {
+    width: 16px;
+    height: 16px;
+    color: var(--text-main);
+  }
+
+  &__back {
+    color: var(--text-secondary);
+    font-family: Mont, serif;
+    font-weight: 700;
+    font-size: 12px;
+  }
+}

@@ -7,7 +7,7 @@ $lt-main-bg: #fafbfc; // background
 $lt-white: #fff; // card background
 $lt-bt-sl-bd: #b4bdc3;
 $lt-bt-sl-bg: #fff;
-$c-gray: #eee;
+$c-gray: #FAFBFC;
 $lt-shadow-add-bt: #17203166;
 $lt-shadow-card: #252525e3;
 $phone-category: #6D6474;
@@ -41,14 +41,17 @@ $desktop-min-width: 1200px;
   --btn-text: #{$lt-white};
   --icon-color: #{$lt-primary};
   --border-sl-bt: #{$lt-bt-sl-bd};
+  --icon-bc-ar: #{$lt-bt-sl-bd};
   --sl-bt-bg: #{$lt-bt-sl-bg};
   --main-bg: #{$c-gray};
   --shadow-add-bt: #{$lt-shadow-add-bt};
   --shasow-card: #{$lt-shadow-card};
   --icon-disabled: #{$lt-bt-sl-bd};
+  --borde-hover-mini:#{$lt-secondary};
 }
 
 [data-theme='dark'] {
+  --icon-bc-ar: #{$dt-disabled-icon};
   --page-bg: #{$dt-black};
   --card-bg: #{$dt-card-bg};
   --text-main: #{$dt-white};
@@ -63,4 +66,5 @@ $desktop-min-width: 1200px;
   --shadow-add-bt: #{$dt-shadow-add-bt};
   --shasow-card: #{$dt-shadow-card};
   --icon-disabled: #{$dt-disabled-icon};
+  --borde-hover-mini:#{$lt-secondary};
 }

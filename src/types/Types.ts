@@ -3,6 +3,7 @@ export enum PathType {
   PHONES = 'phones',
   TABLETS = 'tablets',
   ACCESSORIES = 'accessories',
+  PRODUCTS = 'products',
   FAVOURITES = 'favorites',
   CART = './cart',
 }
@@ -38,3 +39,38 @@ export enum CategoryTypes {
   TABLETS = 'tablets',
   ACCESSORIES = 'accessories',
 }
+
+export type ProductDescription = {
+  title: string;
+  text: string[];
+};
+export interface BaseProduct {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: ProductDescription[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  cell: string;
+}
+
+export interface WithCamera extends BaseProduct {
+  camera: string;
+  zoom: string;
+}
+
+type PhoneType = WithCamera;
+type TabletType = WithCamera;
+type AccessoriesType = BaseProduct;
+
+export type Product = PhoneType | TabletType | AccessoriesType;
