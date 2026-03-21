@@ -1,0 +1,73 @@
+@import '../../styles/main';
+
+.productPage {
+  @include content-padding-inline;
+
+  &__title {
+    margin-bottom: 8px;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    color: var(--color-gray-primary);
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__description {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--color-gray-secondary);
+  }
+
+  &__dropdown {
+    gap: 16px;
+    margin-top: 32px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &--sortBy {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--itemsPerPage {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    margin-top: 24px;
+  }
+
+  &__no-products {
+    margin-top: 40px;
+
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--color-gray-secondary);
+    text-align: center;
+  }
+}

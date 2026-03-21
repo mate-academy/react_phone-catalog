@@ -1,0 +1,118 @@
+@import '../../../styles/main';
+
+.productsSlider {
+  padding-left: 16px;
+
+  @include on-desktop {
+    margin-block: 80px;
+
+    @include content-padding-inline;
+  }
+
+  &__container-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 72px;
+
+    margin-bottom: 24px;
+    padding-right: 16px;
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--color-gray-primary);
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-gray-icons-placeholders);
+
+    background-color: var(--color-bg);
+
+    transition:
+      border 0.3s,
+      background-color 0.3s;
+
+    &--disabled {
+      cursor: not-allowed;
+      border: 1px solid var(--color-gray-elements);
+      background-color: inherit;
+
+      &:hover {
+        border-color: var(--color-gray-elements);
+      }
+    }
+  }
+
+  &__viewport {
+    width: 100%;
+    overflow: hidden;
+
+    @include on-desktop {
+      width: 1136px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    width: 212px;
+    height: 442px;
+
+    @include on-tablet {
+      width: 237px;
+      height: 515px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 509px;
+    }
+  }
+}
+
+body.theme_dark .productsSlider__button {
+  border: none;
+  background-color: var(--color-surface-2);
+}
+
+.productsSlider__button:not(.productsSlider__button--disabled):hover {
+  border: 1px solid var(--color-gray-primary);
+  background-color: var(--color-hover);
+}
+
+body.theme_dark
+  .productsSlider__button:not(.productsSlider__button--disabled):hover {
+  border: none;
+  background-color: var(--color-gray-icons-placeholders);
+}
+
+body.theme_dark .productsSlider__button--disabled {
+  border: 1px solid var(--color-gray-elements);
+  background-color: inherit;
+}

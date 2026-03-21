@@ -1,0 +1,88 @@
+@import '../../../styles/main';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  height: 32px;
+  margin: 40px auto 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination__button-container {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination__button-page,
+.pagination__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--color-gray-elements);
+
+  cursor: pointer;
+
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-primary);
+
+  background-color: var(--color-bg);
+
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+body.theme_dark .pagination__button-page,
+body.theme_dark .pagination__button {
+  border: none;
+  color: var(--color-gray-primary);
+  background-color: var(--color-surface-1);
+}
+
+.pagination__button-page:not(.pagination__button-page--active):hover {
+  border-color: var(--color-gray-primary);
+}
+
+body.theme_dark
+  .pagination__button-page:not(.pagination__button-page--active):hover {
+  background-color: var(--color-gray-elements);
+}
+
+.pagination__button:not(.pagination__button--disabled):hover {
+  border-color: var(--color-gray-primary);
+}
+
+body.theme_dark .pagination__button:not(.pagination__button--disabled):hover {
+  background-color: var(--color-gray-elements);
+}
+
+.pagination__button-page--active {
+  color: var(--color-bg);
+  background-color: var(--color-gray-primary);
+}
+
+body.theme_dark .pagination__button-page--active {
+  background-color: var(--color-accent);
+}
+
+.pagination__button--disabled {
+  cursor: not-allowed;
+}
+
+body.theme_dark .pagination__button--disabled {
+  border: 1px solid var(--color-gray-elements);
+  background-color: var(--color-bg);
+}

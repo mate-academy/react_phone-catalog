@@ -1,0 +1,130 @@
+@import '../../../../styles/main';
+
+.detailsPage {
+  &__content-buttom {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-block: 80px;
+
+      @include page-grid;
+    }
+  }
+
+  &__block {
+    &-about {
+      width: 100%;
+
+      @include on-desktop {
+        grid-column: 1 / 13;
+      }
+    }
+
+    &-techSpecs {
+      width: 100%;
+
+      @include on-desktop {
+        grid-column: 14 / -1;
+      }
+    }
+
+    &-title {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 25.56px;
+      color: var(--color-gray-primary);
+
+      @include on-tablet {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 30.8px;
+      }
+    }
+  }
+
+  &__line-bottom {
+    width: 100%;
+    height: 1px;
+    margin-top: 16px;
+    background-color: var(--color-gray-elements);
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20.45px;
+      color: var(--color-gray-primary);
+
+      @include on-tablet {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 25.56px;
+      }
+
+      &--bottom {
+        margin-top: 80px;
+        margin-bottom: 24px;
+      }
+    }
+
+    &-description {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: var(--color-gray-secondary);
+    }
+  }
+
+  &__techSpecs {
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    &-block {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    &-title {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: var(--color-gray-secondary);
+    }
+
+    &-value {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: var(--color-gray-primary);
+    }
+  }
+}

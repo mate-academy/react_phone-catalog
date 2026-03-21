@@ -1,0 +1,62 @@
+@import '../../../styles/main';
+
+.menu {
+  position: fixed;
+  top: 48px;
+  bottom: 64px;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  pointer-events: none;
+  transform: translateX(-100%);
+  opacity: 0;
+  background-color: var(--color-bg);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 24px;
+  list-style: none;
+}
+
+.menu__link {
+  position: relative;
+  display: flex;
+
+  font-family: Molt-Bold, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-gray-secondary);
+
+  &:hover {
+    color: var(--color-gray-primary);
+  }
+
+  &:hover::after {
+    height: 1px;
+  }
+}
+
+.menu--open {
+  pointer-events: all;
+  transform: translateX(0);
+  opacity: 1;
+}
