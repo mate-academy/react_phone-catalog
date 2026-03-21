@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 import HomeIcon from '@/assets/icons/Home.svg?react';
 import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   category?: string;
@@ -11,11 +12,17 @@ interface Props {
 }
 
 export const Breadcrumbs: React.FC<Props> = ({ category, productName, pageName }) => {
+  const { t } = useTranslation();
+
   return (
     <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
       <ul className={styles.breadcrumbs__list}>
         <li className={styles.breadcrumbs__item}>
-          <Link to="/" className={styles.breadcrumbs__link}>
+          <Link
+            to="/"
+            className={styles.breadcrumbs__link}
+            aria-label={t('nav.home')}
+          >
             <HomeIcon className={styles.breadcrumbs__icon} />
           </Link>
         </li>
@@ -41,7 +48,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName, pageName }
                 to={`/${category.toLowerCase()}`}
                 className={styles.breadcrumbs__link}
               >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
+                {t(`nav.${category.toLowerCase()}`)}
               </Link>
             </li>
           </>

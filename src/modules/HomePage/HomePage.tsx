@@ -6,9 +6,11 @@ import { Loader } from '@/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
 import { HeroSlider } from './components/HeroSlider';
 import { Heading } from '@/components/ui/Heading';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
   const { products, loading, error } = useProducts();
+  const { t } = useTranslation();
 
   const brandNewProducts = useMemo(() => {
     return [...products]
@@ -44,17 +46,14 @@ export const HomePage: React.FC = () => {
     <div className={styles.home}>
       <div className="container">
         <>
-          <Heading as="h1">Welcome to Nice Gadgets store!</Heading>
+          <Heading as="h1">{t('home.welcome')}</Heading>
 
           <section className={styles.home__section}>
             <HeroSlider />
           </section>
 
           <section className={styles.home__section}>
-            <ProductSlider
-              title="Brand new models"
-              products={brandNewProducts}
-            />
+            <ProductSlider title="home.newModels" products={brandNewProducts} />
           </section>
 
           <section className={styles.home__section}>
@@ -63,7 +62,7 @@ export const HomePage: React.FC = () => {
 
           {hotPriceProducts.length > 0 && (
             <section className={styles.home__section}>
-              <ProductSlider title="Hot prices" products={hotPriceProducts} />
+              <ProductSlider title="home.hotPrices" products={hotPriceProducts} />
             </section>
           )}
         </>

@@ -10,13 +10,7 @@ import styles from './CatalogPage.module.scss';
 import { CatalogFilters } from '@/modules/CatalogPage/components/CatalogFilter';
 import { NotFoundPage } from '../NotFoundPage';
 import { Skeleton } from '@/components/Skelton';
-
-//----mapping object
-const categoryNames: Record<string, string> = {
-  phones: 'Mobile phones',
-  tablets: 'Tablets',
-  accessories: 'Accessories',
-};
+import { useTranslation } from 'react-i18next';
 
 const validCategories = ['phones', 'tablets', 'accessories'];
 
@@ -26,6 +20,7 @@ export const CatalogPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isFiltering, setIsFiltering] = useState(false);
+  const { t } = useTranslation();
 
   //---Data Fetching
   useEffect(() => {
@@ -105,9 +100,8 @@ export const CatalogPage: React.FC = () => {
 
   //---- fetching the header from the category
   const displayTitle = category
-    ? categoryNames[category] ||
-      category.charAt(0).toUpperCase() + category.slice(1)
-    : 'Catalog';
+    ? t(`categories.${category.toLowerCase()}`)
+    : t('nav.catalog');
 
   if (category && !validCategories.includes(category)) {
     return <NotFoundPage />;
@@ -124,7 +118,10 @@ export const CatalogPage: React.FC = () => {
         <Heading as="h1" className={styles.catalog__title}>
           {displayTitle}
         </Heading>
-        <p className={styles.catalog__count}>{products.length} models</p>
+        <p className={styles.catalog__count}>
+
+          {t('catalog.modelsCount', { count: products.length })}
+        </p>
 
         <CatalogFilters
           sort={sort}

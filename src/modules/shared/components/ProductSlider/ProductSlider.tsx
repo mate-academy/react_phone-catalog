@@ -4,6 +4,7 @@ import { Product } from '@/types/Product';
 import { ProductCard } from '../ProductCard';
 import { SlideControls } from '../SliderControls';
 import { Heading } from '@/components/ui/Heading';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   products: Product[];
@@ -17,6 +18,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
+  const { t } = useTranslation();
 
   // how many cards will be visible
   const getVisibleCount = (w: number) => {
@@ -85,8 +87,9 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
 
   return (
     <section className={styles.slider}>
+      <div className={styles.headerWrapper}></div>
       <div className={styles.slider__header}>
-        <Heading as="h2">{title}</Heading>
+        <Heading as="h2">{t(title)}</Heading>
 
         <SlideControls
           onNext={handleNext}

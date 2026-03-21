@@ -14,6 +14,8 @@ import CloseIcon from '@/assets/icons/Close.svg?react';
 import MenuIcon from '@/assets/icons/Menu.svg?react';
 import CartIcon from '@/assets/icons/Cart.svg?react';
 import FavoritesIcon from '@/assets/icons/Favorites.svg?react';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 
 
 export const Header: React.FC = () => {
@@ -22,6 +24,7 @@ export const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const { favorites } = useFavorites();
   const { totalQuantity } = useCart();
+  const { t } = useTranslation();
 
   const favoritesCount = favorites.length;
   const cartCount = totalQuantity;
@@ -43,10 +46,10 @@ export const Header: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const NAV_LINKS = [
-    { id: 'home', title: 'Home', path: '/' },
-    { id: 'phones', title: 'Phones', path: '/phones' },
-    { id: 'tablets', title: 'Tablets', path: '/tablets' },
-    { id: 'accessories', title: 'Accessories', path: '/accessories' },
+    { id: 1, title: 'nav.home', path: '/' },
+    { id: 2, title: 'nav.phones', path: '/phones' },
+    { id: 3, title: 'nav.tablets', path: '/tablets' },
+    { id: 4, title: 'nav.accessories', path: '/accessories' },
   ];
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -89,7 +92,7 @@ export const Header: React.FC = () => {
                   className={getNavLinkClass}
                   onClick={closeMenu}
                 >
-                  {title}
+                  {t(title)}
                 </NavLink>
               </li>
             ))}
@@ -97,6 +100,8 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className={styles.actions}>
+          <LanguageSwitcher />
+
           <div className={styles.actions__item}>
             <ThemeToggle
               isDark={isDark}

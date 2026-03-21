@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CatalogFilters.module.scss';
 import { Dropdown } from '../Dropdown';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   sort: string;
@@ -10,9 +11,9 @@ interface Props {
 }
 
 const sortOptions = [
-  { label: 'Newest', value: 'age' },
-  { label: 'Alphabetically', value: 'title' },
-  { label: 'Cheapest', value: 'cheapest' },
+  { label: 'catalog.sortOptions.newest', value: 'age' },
+  { label: 'catalog.sortOptions.alphabetically', value: 'title' },
+  { label: 'catalog.sortOptions.cheapest', value: 'cheapest' },
 ];
 
 const perPageOptions = [
@@ -22,24 +23,38 @@ const perPageOptions = [
   { label: 'All', value: 'all' },
 ];
 
+
 export const CatalogFilters: React.FC<Props> = ({
   sort,
   perPage,
   onSortChange,
   onPerPageChange,
 }) => {
+  const { t } = useTranslation();
+
+  const translatedSortOptions = sortOptions.map(option => ({
+    ...option,
+    label: t(option.label),
+  }));
+
+
+  const translatedPerPageOptions = perPageOptions.map(option => ({
+    ...option,
+    label: option.value === 'all' ? t('catalog.sortOptions.all') : option.label,
+  }));
+
   return (
     <div className={styles.filters}>
       <Dropdown
-        label="Sort by"
-        options={sortOptions}
+        label={t('catalog.sortBy')}
+        options={translatedSortOptions}
         value={sort}
         onChange={onSortChange}
       />
 
       <Dropdown
-        label="Items on page"
-        options={perPageOptions}
+        label={t('catalog.itemsOnPage')}
+        options={translatedPerPageOptions}
         value={perPage}
         onChange={onPerPageChange}
         variant="perPage"

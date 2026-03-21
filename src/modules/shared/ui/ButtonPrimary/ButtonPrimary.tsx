@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ButtonPrimary.module.scss';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   isSelected?: boolean;
@@ -15,6 +16,8 @@ export const ButtonPrimary: React.FC<Props> = ({
   className = '',
   children,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <button
       type="button"
@@ -23,7 +26,7 @@ export const ButtonPrimary: React.FC<Props> = ({
       })}
       onClick={onClick}
     >
-      {children || (isSelected ? 'Added' : 'Add to cart')}
+      {children || (isSelected ? t('buttons.added') : t('buttons.addToCart'))}
     </button>
   );
 };

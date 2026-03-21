@@ -8,6 +8,7 @@ import categoryPhones from '@/assets/img/categoryPhones.webp';
 import categoryTablets from '@/assets/img/categoryTablets.webp';
 import categoryAccessories from '@/assets/img/categoryAccessories.webp';
 import { Heading } from '@/components/ui/Heading';
+import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory: React.FC = () => {
   const [counts, setCounts] = useState<{ [key: string]: number }>({
@@ -15,6 +16,8 @@ export const ShopByCategory: React.FC = () => {
     tablets: 0,
     accessories: 0,
   });
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getProducts()
@@ -34,24 +37,24 @@ export const ShopByCategory: React.FC = () => {
   const CATEGORIES = [
     {
       id: 'phones',
-      title: 'Mobile phones',
-      count: `${counts.phones} models`,
+      title: 'categories.phones',
+      count: counts.phones,
       image: categoryPhones,
       path: '/phones',
       bgColor: '#6D6474',
     },
     {
       id: 'tablets',
-      title: 'Tablets',
-      count: `${counts.tablets} models`,
+      title: 'categories.tablets',
+      count: counts.tablets,
       image: categoryTablets,
       path: '/tablets',
       bgColor: '#8D8D92',
     },
     {
       id: 'accessories',
-      title: 'Accessories',
-      count: `${counts.accessories} models`,
+      title: 'categories.accessories',
+      count: counts.accessories,
       image: categoryAccessories,
       path: '/accessories',
       bgColor: '#973D5F',
@@ -60,7 +63,7 @@ export const ShopByCategory: React.FC = () => {
 
   return (
     <section className={styles.category}>
-      <Heading>Shop by category</Heading>
+      <Heading>{t('home.shopByCategory')}</Heading>
 
       <div className={styles.category__list}>
         {CATEGORIES.map(cat => (
@@ -71,12 +74,14 @@ export const ShopByCategory: React.FC = () => {
             >
               <img
                 src={cat.image}
-                alt={cat.title}
+                alt={t(cat.title)}
                 className={styles.category__image}
               />
             </div>
-            <h3 className={styles.category__subtitle}>{cat.title}</h3>
-            <p className={styles.category__count}>{cat.count}</p>
+            <h3 className={styles.category__subtitle}>{t(cat.title)}</h3>
+            <p className={styles.category__count}>
+              {t('catalog.modelsCount', { count: cat.count })}
+            </p>
           </Link>
         ))}
       </div>

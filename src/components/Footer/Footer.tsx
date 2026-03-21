@@ -5,9 +5,11 @@ import LogoLight from '@/assets/logo/Logo.svg?react';
 import LogoDark from '@/assets/logo/Logo-dark.svg?react';
 import ArrowUp from '@/assets/icons/ArrowUp.svg?react';
 import { useTheme } from '@/context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
-  const { theme } = useTheme(); 
+  const { t } = useTranslation();
+  const { theme } = useTheme();
   const isDark = theme === 'dark';
 
   const scrollToTop = () => {
@@ -36,23 +38,25 @@ export const Footer: React.FC = () => {
                 rel="noreferrer"
                 className={styles.nav__link}
               >
-                Github
+                {t('footer.github')}
               </a>
             </li>
             <li className={styles.nav__item}>
               <a href="#contacts" className={styles.nav__link}>
-                Contacts
+                {t('footer.contacts')}
               </a>
             </li>
             <li className={styles.nav__item}>
               <a href="#rights" className={styles.nav__link}>
-                Rights
+                {t('footer.rights')}
               </a>
             </li>
           </ul>
         </nav>
         <div className={styles.backToTop}>
-          <span className={styles.backToTop__text}>Back to top</span>
+          <span className={styles.backToTop__text}>
+            {t('buttons.backToTop')}
+          </span>
           <button
             type="button"
             className={styles.backToTop__button}

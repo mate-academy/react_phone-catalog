@@ -4,6 +4,7 @@ import ArrowDown from '@/assets/icons/ArrowDown.svg?react';
 import styles from './Dropdown.module.scss';
 import { useClickOutside } from '../../hooks/useClickOutside';
 
+
 interface Option {
   label: string;
   value: string;

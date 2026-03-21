@@ -28,8 +28,8 @@ export const FavoritesPage: React.FC = () => {
     return (
       <div className={styles.container}>
         <EmptyState
-          title="You haven't liked anything yet"
-          text="Save your favorite gadgets here to find them easily later."
+          title="empty.favorites.title"
+          text="empty.favorites.text"
           imgUrl={emptyFavorite}
         />
       </div>

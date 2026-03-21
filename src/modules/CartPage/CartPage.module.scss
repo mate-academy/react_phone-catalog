@@ -1,4 +1,3 @@
-
 .content {
   display: flex;
   flex-direction: column;
@@ -66,7 +65,6 @@
         justify-content: flex-end;
       }
     }
-
   }
 
   &__icon {
@@ -75,7 +73,7 @@
     color: $color-icons;
   }
 
-  &__imgWrapper{
+  &__imgWrapper {
     width: 80px;
     height: 80px;
     min-width: 80px;
@@ -91,7 +89,7 @@
     object-fit: contain;
   }
 
-  &__name{
+  &__name {
     flex: 1;
     @include desktop-body;
     align-self: flex-start;
@@ -105,37 +103,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 13px;
+    flex-shrink: 0;
+    width: 98px;
 
     &Btn {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $color-icons;
-    cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $color-icons;
+      cursor: pointer;
 
-    &:hover {
-      border-color: $color-primary;
+      &Count {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      &:hover {
+        border-color: $color-primary;
+      }
+
+      &:disabled {
+        border-color: $color-elements;
+      }
     }
-
-    &:disabled {
-      border-color: $color-elements;
-    }
-  }
-
   }
 
   &__price {
     @include desktop-h3;
-
-    @include tablet {
-      margin-left: 29px;
-    }
+    flex-shrink: 0;
+    width: 80px;
+    text-align: right;
   }
-
 }
 
 .summary {
@@ -144,7 +147,6 @@
   border: 1px solid $color-elements;
   padding: 24px;
   background-color: $color-page-bg;
-
 
   @include desktop {
     flex: 1;
@@ -157,14 +159,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
   }
 
   &__totalPrice {
     @include desktop-h2;
   }
 
-  &__totalCount{
+  &__totalCount {
     @include desktop-body;
     color: $color-secondary;
   }

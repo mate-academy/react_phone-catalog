@@ -35,7 +35,7 @@ export const ProductDetailsPage: React.FC = () => {
         .catch(error => {
           // eslint-disable-next-line no-console
           console.error(error);
-          setErrorMessage('Product not found');
+          setErrorMessage('empty.product.title');
           setProduct(null);
         })
         .finally(() => {
@@ -59,9 +59,8 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <BackButton />
         <EmptyState
-          title="Product was not found"
-          text="The specific model you are
-          looking for is currently unavailable or doesn't exist."
+          title="empty.product.title"
+          text="empty.product.text"
           imgUrl={notFoundImg}
           showCategories={true}
         />
@@ -93,7 +92,7 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       )}
 
-      <ProductSlider products={suggestedProducts} title="You may also like" />
+      <ProductSlider products={suggestedProducts} title="catalog.likesSlider" />
     </div>
   );
 };

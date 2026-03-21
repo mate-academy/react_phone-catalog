@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import styles from './CartPage.module.scss';
 import cn from 'classnames';
@@ -12,6 +12,8 @@ import MinusIcon from '@/assets/icons/Minus.svg?react';
 import { ButtonPrimary } from '../shared/ui/ButtonPrimary';
 import { EmptyState } from '../shared/components/EmptyState';
 import emptyCart from '@/assets/img/EmptyCart.png';
+import { CheckoutModal } from '@/components/CheckoutModal';
+import { useTranslation } from 'react-i18next';
 
 export interface CartItem {
   itemId: string;
@@ -29,33 +31,35 @@ export const CartPage: React.FC = () => {
     clearCart,
   } = useCart();
 
-  const handleCheckout = () => {
-    const confirmClear = window.confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?',
-    );
+  const { t } = useTranslation();
 
-    if (confirmClear) {
-      clearCart();
-    }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCheckout = () => setIsModalOpen(true);
+
+  const confirmClear = () => {
+    clearCart();
+    setIsModalOpen(false);
   };
 
   if (cartItems.length === 0) {
     return (
       <div className={styles.container}>
         <EmptyState
-          title="Your cart is empty"
+          title="empty.cart.title"
           imgUrl={emptyCart}
-          text="But it doesn't have to be! Check out our latest gadgets."
+          text="empty.cart.text"
           showCategories={true}
         />
       </div>
     );
   }
 
+
   return (
     <div className={styles.container}>
       <BackButton />
-      <Heading as="h1">Cart</Heading>
+      <Heading as="h1">{t('cart.title')}</Heading>
 
       <div className={styles.content}>
         <div className={styles.itemList}>
@@ -120,16 +124,23 @@ export const CartPage: React.FC = () => {
           <div className={styles.summary__price}>
             <h3 className={styles.summary__totalPrice}>${totalAmount}</h3>
             <p className={styles.summary__totalCount}>
-              Total for {totalQuantity} items
+              {t('cart.total', { count: totalQuantity })}
             </p>
           </div>
           <div className={styles.summary__divider} />
+
           <ButtonPrimary
             onClick={handleCheckout}
             className={styles.btnCheckout}
           >
-            Checkout
+            {t('cart.checkout')}
           </ButtonPrimary>
+
+          <CheckoutModal
+            isOpen={isModalOpen}
+            onConfirm={confirmClear}
+            onCancel={() => setIsModalOpen(false)}
+          />
         </div>
       </div>
     </div>
