@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductDetails, getSuggestedProducts } from '@/api/api';
@@ -7,11 +6,11 @@ import { ProductDetail } from '@/types/ProductDetail';
 import { Product } from '@/types/Product';
 import { ProductGallery } from './components/ProductGallery';
 import { ProductActions } from './components/ProductActions';
-import { Loader } from '@/components/Loader';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Heading } from '@/components/ui/Heading';
 import { ProductDescription } from './components/ProductDescription';
 import { ProductSlider } from '../shared/components/ProductSlider';
+import { ProductDetailsSkeleton } from '@/components/ProductDetailsSkeleton';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -31,6 +30,7 @@ export const ProductDetailsPage: React.FC = () => {
           setProduct(data);
         })
         .catch(error => {
+          // eslint-disable-next-line no-console
           console.error(error);
           setErrorMessage('Product not found');
           setProduct(null);
@@ -48,7 +48,7 @@ export const ProductDetailsPage: React.FC = () => {
   }, [productId]);
 
   if (loading) {
-    return <Loader />;
+    return <ProductDetailsSkeleton />;
   }
 
   if (errorMessage || !product) {
