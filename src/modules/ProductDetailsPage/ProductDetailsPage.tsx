@@ -11,6 +11,9 @@ import { Heading } from '@/components/ui/Heading';
 import { ProductDescription } from './components/ProductDescription';
 import { ProductSlider } from '../shared/components/ProductSlider';
 import { ProductDetailsSkeleton } from '@/components/ProductDetailsSkeleton';
+import { BackButton } from '@/components/ui/BackButton';
+import { EmptyState } from '../shared/components/EmptyState';
+import notFoundImg from '@/assets/img/ProductNotFound.png';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -53,7 +56,16 @@ export const ProductDetailsPage: React.FC = () => {
 
   if (errorMessage || !product) {
     return (
-      <h1 className={styles.error}>{errorMessage || 'Product not found'}</h1>
+      <div className={styles.container}>
+        <BackButton />
+        <EmptyState
+          title="Product was not found"
+          text="The specific model you are
+          looking for is currently unavailable or doesn't exist."
+          imgUrl={notFoundImg}
+          showCategories={true}
+        />
+      </div>
     );
   }
 
