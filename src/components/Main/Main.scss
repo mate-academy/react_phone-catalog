@@ -1,0 +1,31 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  @media (min-width: 320px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+};
+
+.title {
+  color: black;
+  grid-column: 1 /  17;
+  @media (min-width: 1200px) {
+    grid-column: 1 / 17;
+  }
+  @media (min-width: 640px) {
+    grid-column: 1 / 8 ;
+  }
+  @media (min-width: 320px) {
+    grid-column: 1 / 4;
+  }
+};

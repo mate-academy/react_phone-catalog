@@ -36,9 +36,16 @@
   width: 100%;
 };
 .nav {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between ;
+  @media (min-width: 1200px) {
+    display: flex;
+  }
+  @media (min-width: 640px) {
+    display: flex;
+  }
+
 }
 .nav__list {
   display: flex;
@@ -46,6 +53,7 @@
   justify-content: space-between;
   padding: 0;
   margin: 0;
+
 };
 .nav__item {
  height: 64px;
@@ -64,16 +72,19 @@
   text-align: center;
   padding: 0;
   white-space: nowrap;
+  margin-left: 64px;
   transition: color 0.2s;
   cursor: pointer;
   align-items: center;
   justify-content: space-between;
-  margin-left: 64px;
   letter-spacing: 0.04em;
 text-transform: uppercase;
 color: #89939A;
 position: relative;
 };
+.nav__link:not(:first-child) {
+  margin-left: 64px;
+}
 .nav__link:hover {
   color: black;
 };
@@ -97,6 +108,9 @@ position: relative;
 };
 .logo {
   display: block;
+  @media (max-width: 639px) {
+    background-image: url(../../../public/img/Logo/logo--tablet.png);
+  }
 };
 .top-bar__icons {
 display: flex;
