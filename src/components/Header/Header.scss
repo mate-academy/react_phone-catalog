@@ -5,22 +5,41 @@
  height: 64px;
  padding: 0;
  margin: 0;
+ border-bottom: 1px solid #e2e6e9;
+ &__left {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+ }
+
+  &__right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+ }
+
+@media (min-width: 640px){
+ &__left {
+  gap: 16px;
+ }
+ &__right {
+  gap: 16px;
+ }
+ }
 };
+
 
 .container {
   display: flex;
   align-items: center;
-  width: 100%;
-
   justify-content: space-between;
+  width: 100%;
 };
-
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between ;
 }
-
 .nav__list {
   display: flex;
   align-items: center;
@@ -28,16 +47,13 @@
   padding: 0;
   margin: 0;
 };
-
 .nav__item {
  height: 64px;
  list-style: none;
 };
-
 .nav__item:first-child{
   position: relative;
 };
-
 .nav__link {
   height: 100%;
   display: flex;
@@ -58,15 +74,12 @@ text-transform: uppercase;
 color: #89939A;
 position: relative;
 };
-
 .nav__link:hover {
   color: black;
 };
-
 .nav__link.is-active {
   position: relative;
 };
-
 .nav__link:hover::after {
   content: '';
   position: absolute;
@@ -79,19 +92,15 @@ position: relative;
 };
 
 
-
 .nav__link.is-active:first-child {
   color: black;
 };
-
 .logo {
   display: block;
 };
-
 .top-bar__icons {
 display: flex;
 };
-
 .icon {
  width: 64px;
  height: 64px;
@@ -99,12 +108,11 @@ display: flex;
  background-repeat: no-repeat;
  background-position: center;
 };
-
 .icon--heart {
  background-image: url('../../../public/img/icons/icon--heart.png');
+ border-right: 1px solid #e2e6e9;
+ border-left: 1px solid #e2e6e9;
 };
-
 .icon--basket {
   background-image: url('../../../public/img/icons/icon--basket.png');
 };
-

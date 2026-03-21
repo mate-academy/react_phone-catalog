@@ -1,8 +1,8 @@
 import './App.scss';
-import Home from './Pages/Home';
-import Phones from './Pages/Phones';
-import Accessories from './Pages/Accessories';
-import Tablets from './Pages/Tablets';
+import Home from './pages/Home';
+import Phones from './pages/Phones';
+import Accessories from './pages/Accessories';
+import Tablets from './pages/Tablets';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
 export const App = () => {
