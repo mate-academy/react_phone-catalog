@@ -12,3 +12,9 @@
     }
   }
 }
+
+.loaderGrid {
+  @include product-grid-layout;
+
+  margin-top: 24px;
+}

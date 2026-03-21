@@ -5,10 +5,11 @@ import { getProducts } from '@/api/api';
 import { ProductList } from '@/modules/shared/components/ProductList';
 import { Pagination } from '@/modules/CatalogPage/components/Pagination';
 import { Heading } from '@/components/ui/Heading';
-import { Loader } from '@/components/Loader';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
 import { CatalogFilters } from '@/modules/CatalogPage/components/CatalogFilter';
+import { NotFoundPage } from '../NotFoundPage';
+import { Skeleton } from '@/components/Skelton';
 
 //----mapping object
 const categoryNames: Record<string, string> = {
@@ -16,6 +17,8 @@ const categoryNames: Record<string, string> = {
   tablets: 'Tablets',
   accessories: 'Accessories',
 };
+
+const validCategories = ['phones', 'tablets', 'accessories'];
 
 export const CatalogPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -106,6 +109,13 @@ export const CatalogPage: React.FC = () => {
       category.charAt(0).toUpperCase() + category.slice(1)
     : 'Catalog';
 
+  if (category && !validCategories.includes(category)) {
+    return <NotFoundPage />;
+  }
+
+  //=== Skelton
+  const skeletonCount = perPage === 'all' ? 12 : Number(perPage);
+
   return (
     <section className={styles.catalog}>
       <div className={styles.catalog__container}>
@@ -124,8 +134,12 @@ export const CatalogPage: React.FC = () => {
         />
 
         {showLoader ? (
-          <div className={styles.loaderWrapper}>
-            <Loader />
+          <div className={styles.loaderGrid}>
+            {Array.from({ length: skeletonCount }).map((_, index) => (
+              <div key={index} className={styles.loaderGrid__item}>
+                <Skeleton />
+              </div>
+            ))}
           </div>
         ) : (
           <>

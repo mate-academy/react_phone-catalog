@@ -6,6 +6,7 @@ import { CatalogPage } from '@/modules/CatalogPage/CatalogPage';
 import { ProductDetailsPage } from '@/modules/ProductDetailsPage';
 import { FavoritesPage } from '@/modules/FavoritesPage/FavoritesPage';
 import { CartPage } from '@/modules/CartPage';
+import { NotFoundPage } from '@/modules/NotFoundPage';
 
 export const router = createBrowserRouter(
   [
@@ -23,6 +24,14 @@ export const router = createBrowserRouter(
           element: <Navigate to="/" replace />,
         },
         {
+          path: 'favorites',
+          element: <FavoritesPage />,
+        },
+        {
+          path: 'cart',
+          element: <CartPage />,
+        },
+        {
           path: 'product/:productId',
           element: <ProductDetailsPage />,
         },
@@ -31,12 +40,8 @@ export const router = createBrowserRouter(
           element: <CatalogPage />,
         },
         {
-          path: 'favorites',
-          element: <FavoritesPage />,
-        },
-        {
-          path: 'cart',
-          element: <CartPage />,
+          path: '*',
+          element: <NotFoundPage />,
         },
       ],
     },
