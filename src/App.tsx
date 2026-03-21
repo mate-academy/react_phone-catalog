@@ -15,7 +15,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import './App.scss';
 
 export const App: React.FC = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/react_phone-catalog">
     <CartProvider>
       <FavoritesProvider>
         <div className="layout">
