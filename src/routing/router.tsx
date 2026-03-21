@@ -5,6 +5,7 @@ import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
 import { CatalogPage } from '@/modules/CatalogPage/CatalogPage';
 import { ProductDetailsPage } from '@/modules/ProductDetailsPage';
 import { FavoritesPage } from '@/modules/FavoritesPage/FavoritesPage';
+import { CartPage } from '@/modules/CartPage';
 
 export const router = createBrowserRouter(
   [
@@ -35,7 +36,7 @@ export const router = createBrowserRouter(
         },
         {
           path: 'cart',
-          element: <div>Cart Page</div>,
+          element: <CartPage />,
         },
       ],
     },

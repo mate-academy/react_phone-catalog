@@ -4,6 +4,8 @@ import cn from 'classnames';
 import styles from './Header.module.scss';
 
 import { useTheme } from '@/context/ThemeContext';
+import { useFavorites } from '@/context/FavoritesContext';
+import { useCart } from '@/context/CartContext';
 import { ThemeToggle } from '../ThemeToggle';
 
 import LogoLight from '@/assets/logo/Logo.svg?react';
@@ -12,14 +14,17 @@ import CloseIcon from '@/assets/icons/Close.svg?react';
 import MenuIcon from '@/assets/icons/Menu.svg?react';
 import CartIcon from '@/assets/icons/Cart.svg?react';
 import FavoritesIcon from '@/assets/icons/Favorites.svg?react';
-import { useFavorites } from '@/context/FavoritesContext';
+
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { favorites } = useFavorites();
+  const { totalQuantity } = useCart();
+
   const favoritesCount = favorites.length;
+  const cartCount = totalQuantity;
 
    useEffect(() => {
      document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
@@ -118,8 +123,12 @@ export const Header: React.FC = () => {
             className={getActionLinkClass}
             onClick={closeMenu}
           >
+            <div className={styles.iconWrapper}>
               <CartIcon className={styles.icon} />
-
+              {cartCount > 0 && (
+                <span className={styles.badge}>{cartCount}</span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>

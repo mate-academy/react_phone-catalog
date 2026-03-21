@@ -4,22 +4,26 @@ import cn from 'classnames';
 
 interface Props {
   isSelected?: boolean;
-  onClick?: () => void;
+  onClick: (e: React.MouseEvent) => void;
+  className?: string;
+  children?: React.ReactNode;
 }
 
 export const ButtonPrimary: React.FC<Props> = ({
   isSelected = false,
   onClick,
+  className = '',
+  children,
 }) => {
   return (
     <button
       type="button"
-      className={cn(styles.button, {
+      className={cn(styles.button, className, {
         [styles.buttonSelected]: isSelected,
       })}
       onClick={onClick}
     >
-      {isSelected ? 'Added' : 'Add to cart'}
+      {children || (isSelected ? 'Added' : 'Add to cart')}
     </button>
   );
 };

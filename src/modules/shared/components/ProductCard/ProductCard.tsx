@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '@/types/Product';
 import styles from './ProductCard.module.scss';
@@ -6,6 +6,7 @@ import { ButtonPrimary } from '@/modules/shared/ui/ButtonPrimary';
 import { ButtonFavorite } from '@/modules/shared/ui/ButtonFavorite';
 import { Price } from '../../ui/Price';
 import { useFavorites } from '@/context/FavoritesContext';
+import { useCart } from '@/context/CartContext';
 
 interface Props {
   product: Product;
@@ -14,11 +15,13 @@ interface Props {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
-  const [isAdded, setIsAdded] = useState(false);
+  const { cartItems, addToCart } = useCart();
 
   const { itemId, name, screen, capacity, ram, image } = product;
   const imageSrc = image.startsWith('/') ? image : `/${product.image}`;
+
   const favorite = isFavorite(product.itemId);
+  const isAdded = cartItems.some(item => item.itemId === product.itemId);
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -27,6 +30,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       removeFromFavorites(product.itemId);
     } else {
       addToFavorites(product);
+    }
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!isAdded) {
+      addToCart(product);
     }
   };
 
@@ -61,10 +71,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className={styles.card__buttons}>
-        <ButtonPrimary
-          isSelected={isAdded}
-          onClick={() => setIsAdded(!isAdded)}
-        />
+        <ButtonPrimary isSelected={isAdded} onClick={handleAddToCart} />
         <ButtonFavorite isFavorite={favorite} onClick={handleToggleFavorite} />
       </div>
     </article>

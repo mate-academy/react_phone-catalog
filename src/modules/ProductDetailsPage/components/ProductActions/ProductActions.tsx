@@ -1,25 +1,55 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { ProductDetail } from '@/types/ProductDetail';
+import { Product } from '@/types/Product';
 import { COLOR_MAP } from '@/types/ColorMap';
 import styles from './ProductActions.module.scss';
 import { ButtonPrimary } from '@/modules/shared/ui/ButtonPrimary';
 import { ButtonFavorite } from '@/modules/shared/ui/ButtonFavorite';
 import { Price } from '@/modules/shared/ui/Price';
+import { useCart } from '@/context/CartContext';
+import { useFavorites } from '@/context/FavoritesContext';
 
 interface Props {
   product: ProductDetail;
-  isFavorite: boolean;
-  handleFavorite: () => void;
 }
 
-export const ProductActions: React.FC<Props> = ({
-  product,
-  isFavorite,
-  handleFavorite,
-}) => {
-  const [isAdded, setIsAdded] = useState(false);
+export const ProductActions: React.FC<Props> = ({ product }) => {
+  const { addToCart, cartItems } = useCart();
+  const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
+
+  const isAdded = cartItems.some(item => item.itemId === product.id);
+  const favorite = isFavorite(product?.id || '');
+
+  const getProductForStorage = (): Product => ({
+    id: 0,
+    itemId: product.id,
+    name: product.name,
+    fullPrice: product.priceRegular,
+    price: product.priceDiscount,
+    screen: product.screen,
+    capacity: product.capacity,
+    ram: product.ram,
+    image: product.images[0],
+    color: product.color,
+    category: product.category,
+    year: 2022,
+  });
+
+  const handleCartClick = () => {
+    if (!isAdded) {
+      addToCart(getProductForStorage());
+    }
+  };
+
+  const handleFavoriteClick = () => {
+    if (favorite) {
+      removeFromFavorites(product.id);
+    } else {
+      addToFavorites(getProductForStorage());
+    }
+  };
 
   const navigate = useNavigate();
   const {
@@ -100,14 +130,10 @@ export const ProductActions: React.FC<Props> = ({
       </div>
 
       <div className={styles.buttons}>
-        <ButtonPrimary
-          isSelected={isAdded}
-          onClick={() => setIsAdded(!isAdded)}
-        />
-        <ButtonFavorite isFavorite={isFavorite} onClick={handleFavorite} />
+        <ButtonPrimary isSelected={isAdded} onClick={handleCartClick} />
+        <ButtonFavorite isFavorite={favorite} onClick={handleFavoriteClick} />
       </div>
 
-      {/* SHORT TECH SPECS */}
       <div className={styles.shortSpecs}>
         <div className={styles.specRow}>
           <span>Screen</span>
