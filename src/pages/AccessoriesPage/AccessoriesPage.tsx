@@ -124,7 +124,7 @@ export const AccessoriesPage: React.FC = () => {
       )}
 
       {!isLoading && !isError && products.length === 0 && (
-        <h2>There are no accessories yet 😔</h2>
+        <h2>There are no accessories yet </h2>
       )}
 
       {isError && <h1>Something went wrong</h1>}

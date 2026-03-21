@@ -47,7 +47,7 @@ export const ProductDetailsPage: React.FC = () => {
         setProduct(foundProduct || null);
 
         if (foundProduct) {
-          fetch(`/api/${foundProduct.category}.json`)
+          fetch(`./api/${foundProduct.category}.json`)
             .then(res => res.json())
             .then((detailsData: ProductDetails[]) => {
               const details = detailsData.find(d => d.id === productId);
@@ -187,7 +187,7 @@ export const ProductDetailsPage: React.FC = () => {
                 onClick={() => setCurrentImage(img)}
               >
                 <img
-                  src={`/${img}`}
+                  src={`${img}`}
                   alt="Thumbnail"
                   className={styles.thumbnail}
                 />
@@ -197,7 +197,7 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.mainImageWrapper}>
             <img
-              src={`/${currentImage}`}
+              src={`${currentImage}`}
               alt={p.name}
               className={styles.mainImage}
             />

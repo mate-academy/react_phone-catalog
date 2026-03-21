@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
+import { Link } from 'react-router-dom';
 
 interface BannerSlide {
   id: number;
@@ -91,7 +92,7 @@ export const PicturesSlider: React.FC = () => {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {banners.map(banner => (
-              <a href={banner.link} key={banner.id} className={styles.slide}>
+              <Link to={banner.link} key={banner.id} className={styles.slide}>
                 <div className={styles.infoBlock}>
                   <div className={styles.textContent}>
                     <h2 className={styles.title}>
@@ -111,7 +112,7 @@ export const PicturesSlider: React.FC = () => {
                     className={styles.bannerImg}
                   />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

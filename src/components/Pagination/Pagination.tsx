@@ -21,11 +21,36 @@ export const Pagination: React.FC<Props> = ({
     return null;
   }
 
-  const pages = [];
+  const getPages = () => {
+    const pages: (number | string)[] = [];
 
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+    const left = Math.max(1, currentPage - 2);
+    const right = Math.min(totalPages, currentPage + 2);
+
+    if (left > 1) {
+      pages.push(1);
+    }
+
+    if (left > 2) {
+      pages.push('...');
+    }
+
+    for (let i = left; i <= right; i++) {
+      pages.push(i);
+    }
+
+    if (right < totalPages - 1) {
+      pages.push('...');
+    }
+
+    if (right < totalPages) {
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  const pages = getPages();
 
   const handlePrev = () => {
     if (currentPage > 1) {
@@ -49,17 +74,23 @@ export const Pagination: React.FC<Props> = ({
         {'<'}
       </button>
 
-      {pages.map(page => (
-        <button
-          key={page}
-          className={classNames(styles.button, {
-            [styles.isActive]: page === currentPage,
-          })}
-          onClick={() => onPageChange(page)}
-        >
-          {page}
-        </button>
-      ))}
+      {pages.map((page, index) =>
+        page === '...' ? (
+          <span key={`dots-${index}`} className={styles.dots}>
+            ...
+          </span>
+        ) : (
+          <button
+            key={`${page}-${index}`}
+            className={classNames(styles.button, {
+              [styles.isActive]: page === currentPage,
+            })}
+            onClick={() => onPageChange(Number(page))}
+          >
+            {page}
+          </button>
+        ),
+      )}
 
       <button
         className={styles.button}
