@@ -3,19 +3,19 @@ import Home from './Pages/Home';
 import Phones from './Pages/Phones';
 import Accessories from './Pages/Accessories';
 import Tablets from './Pages/Tablets';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App"></div>
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="/phones" element={<Phones />} />
         <Route path="/tablets" element={<Tablets />} />
         <Route path="/accessories" element={<Accessories />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
