@@ -1,0 +1,58 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+%btn-base {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.arrowBtn {
+  @extend %btn-base;
+
+  /* disabled BEFORE :not(:disabled) — no-descending-specificity */
+  &:disabled {
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  &:not(:disabled):hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-1-hover);
+  }
+}
+
+/* pageBtnActive BEFORE pageBtn hover — no-descending-specificity */
+.pageBtnActive {
+  background: var(--color-text-primary);
+  color: var(--color-bg-0);
+  border-color: var(--color-text-primary);
+  cursor: default;
+}
+
+.pageBtn {
+  @extend %btn-base;
+
+  font-family: var(--font-semibold);
+  font-size: 14px;
+
+  &:not(.pageBtnActive):hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-1-hover);
+  }
+}

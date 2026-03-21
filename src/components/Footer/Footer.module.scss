@@ -1,0 +1,138 @@
+.footer {
+  background: var(--color-bg-1);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    height: auto;
+    padding: 32px 24px;
+    gap: 32px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 100%;
+  padding: 0 24px;
+  border-right: 1px solid var(--color-border);
+  text-decoration: none;
+  flex-shrink: 0;
+  letter-spacing: 2px;
+
+  @media (max-width: 640px) {
+    height: auto;
+    padding: 0;
+    border-right: none;
+  }
+}
+
+.logoNice {
+  font-family: var(--font-bold);
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.logoDot {
+  font-size: 10px;
+  color: var(--color-accent);
+  margin: 0 1px;
+}
+
+.logoGadgets {
+  font-family: var(--font-bold);
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.navLink {
+  font-family: var(--font-semibold);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  height: 100%;
+  border: none;
+  border-left: 1px solid var(--color-border);
+  background: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font-semibold);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &Icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+  }
+
+  &:hover {
+    color: var(--color-text-primary);
+
+    .backToTopIcon {
+      border-color: var(--color-text-primary);
+    }
+  }
+
+  @media (max-width: 640px) {
+    height: auto;
+    padding: 0;
+    border-left: none;
+  }
+}
+
+.backToTopLabel {
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+
