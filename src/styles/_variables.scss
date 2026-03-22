@@ -23,6 +23,9 @@
 
   --color-button-text: #fff;
   --color-button-shadow: rgba(23, 32, 49, 0.4);
+  --color-search-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --color-search-border: transparent;
+  --color-search-bg: var(--color-page-bg);
 }
 
 [data-theme='dark'] {
@@ -50,6 +53,9 @@
 
   --color-button-text: #fff;
   --color-button-shadow: rgba(144, 91, 255, 0.4);
+  --color-search-shadow: 0 20px 20px -5px rgba(87, 87, 87, 0.5);
+  --color-search-border: 1px solid rgba(255, 255, 255, 0.1);
+  --color-search-bg: var(var(--color-page-bg));
 }
 
 // Themed colors — reference CSS custom properties defined in _base.scss
@@ -76,6 +82,10 @@ $color-accent: var(--color-accent);
 $color-button-text: var(--color-button-text);
 $color-button-shadow: var(--color-button-shadow);
 $box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+
+$color-search-shadow: var(--color-search-shadow);
+$color-search-border: var(--color-search-border);
+$color-search-bg: var(--color-page-bg);
 
 // border
 

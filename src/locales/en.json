@@ -73,5 +73,19 @@
     "title": "Oops! Something went wrong",
     "reload": "Try to refresh",
     "default": "An unexpected error occurred"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "resultsTitle": "Search results",
+    "resultsFor": "Results for \"{{query}}\"",
+    "resultsCount": "Znaleziono {{count}} produktów dla „{{query}}”",
+    "noResults": "No products match your search.",
+    "categories": {
+      "phones": "phones",
+      "tablets": "tablets",
+      "accessories": "accessories",
+      "products": "products"
+    },
+    "tryAgain": "Please try a different keyword or browse our categories."
   }
 }

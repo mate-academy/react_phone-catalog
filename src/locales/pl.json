@@ -78,5 +78,19 @@
     "title": "Ups! Coś poszło nie tak",
     "reload": "Odśwież stronę",
     "default": "Wystąpił nieoczekiwany błąd"
+  },
+  "search": {
+    "placeholder": "Szukaj...",
+    "resultsTitle": "Wyniki wyszukiwania",
+    "resultsFor": "Wyniki dla „{{query}}”",
+    "resultsCount": "Found {{count}} products for \"{{query}}\"",
+    "noResults": "Brak produktów pasujących do wyszukiwania.",
+    "categories": {
+      "phones": "telefony",
+      "tablets": "tablety",
+      "accessories": "akcesoria",
+      "products": "produkty"
+    },
+    "tryAgain": "Spróbuj wpisać inną nazwę lub wybierz jedną z kategorii poniżej."
   }
 }

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import styles from './CartPage.module.scss';
 import cn from 'classnames';
-import { Heading } from '@/components/ui/Heading';
-import { BackButton } from '@/components/ui/BackButton';
+import { Heading } from '@/modules/shared/ui/Heading';
+import { BackButton } from '@/modules/CartPage/components/BackButton';
 import { Product } from '@/types/Product';
 
 import CloseIcon from '@/assets/icons/Close.svg?react';
@@ -12,7 +12,7 @@ import MinusIcon from '@/assets/icons/Minus.svg?react';
 import { ButtonPrimary } from '../shared/ui/ButtonPrimary';
 import { EmptyState } from '../shared/components/EmptyState';
 import emptyCart from '@/assets/img/EmptyCart.png';
-import { CheckoutModal } from '@/components/CheckoutModal';
+import { CheckoutModal } from '@/modules/CartPage/components/CheckoutModal';
 import { useTranslation } from 'react-i18next';
 
 export interface CartItem {
@@ -54,7 +54,6 @@ export const CartPage: React.FC = () => {
       </div>
     );
   }
-
 
   return (
     <div className={styles.container}>

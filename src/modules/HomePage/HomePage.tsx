@@ -5,7 +5,7 @@ import { ProductSlider } from '../shared/components/ProductSlider';
 import { Loader } from '@/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
 import { HeroSlider } from './components/HeroSlider';
-import { Heading } from '@/components/ui/Heading';
+import { Heading } from '@/modules/shared/ui/Heading';
 import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
@@ -46,7 +46,7 @@ export const HomePage: React.FC = () => {
     <div className={styles.home}>
       <div className="container">
         <>
-          <Heading as="h1">{t('home.welcome')}</Heading>
+          <Heading as="h1" className={styles.topHeading}>{t('home.welcome')}</Heading>
 
           <section className={styles.home__section}>
             <HeroSlider />
@@ -62,7 +62,10 @@ export const HomePage: React.FC = () => {
 
           {hotPriceProducts.length > 0 && (
             <section className={styles.home__section}>
-              <ProductSlider title="home.hotPrices" products={hotPriceProducts} />
+              <ProductSlider
+                title="home.hotPrices"
+                products={hotPriceProducts}
+              />
             </section>
           )}
         </>

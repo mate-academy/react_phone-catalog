@@ -56,7 +56,7 @@
 
 .categoryBtn {
   @extend %button-base;
-  background-color: $color-primary;
+  background-color: $color-accent;
   color: $color-white;
 
   &:hover {

@@ -3,13 +3,21 @@ import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import styles from './LanguageSwitcher.module.scss';
 
-export const LanguageSwitcher: React.FC = () => {
+interface Props {
+  onClose?: () => void;
+}
+
+export const LanguageSwitcher: React.FC<Props> = ({ onClose}) => {
   const { i18n } = useTranslation();
 
   const currentLang = i18n.language.split('-')[0];
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
+
+    if (onClose) {
+      onClose();
+    }
   };
 
   return (

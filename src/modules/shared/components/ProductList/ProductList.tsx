@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const ProductList: React.FC<Props> = ({ products }) => {
+
   return (
     <div className={styles.productList}>
       {products.map(product => (

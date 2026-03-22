@@ -6,7 +6,7 @@ import styles from './Header.module.scss';
 import { useTheme } from '@/context/ThemeContext';
 import { useFavorites } from '@/context/FavoritesContext';
 import { useCart } from '@/context/CartContext';
-import { ThemeToggle } from '../ThemeToggle';
+import { ThemeToggle } from './components/ThemeToggle';
 
 import LogoLight from '@/assets/logo/Logo.svg?react';
 import LogoDark from '@/assets/logo/Logo-dark.svg?react';
@@ -15,7 +15,8 @@ import MenuIcon from '@/assets/icons/Menu.svg?react';
 import CartIcon from '@/assets/icons/Cart.svg?react';
 import FavoritesIcon from '@/assets/icons/Favorites.svg?react';
 import { useTranslation } from 'react-i18next';
-import { LanguageSwitcher } from '../ui/LanguageSwitcher';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { Search } from '../Search';
 
 
 export const Header: React.FC = () => {
@@ -69,13 +70,19 @@ export const Header: React.FC = () => {
           )}
         </NavLink>
 
-        <button className={styles.menuButton} onClick={toggleMenu}>
-          {isMenuOpen ? (
-            <CloseIcon className={styles.icon} />
-          ) : (
-            <MenuIcon className={styles.icon} />
-          )}
-        </button>
+        <div className={styles.mobileActions}>
+          <div className={styles.searchMobileWrapper}>
+            <Search onClose={closeMenu} />
+          </div>
+
+          <button className={styles.menuButton} onClick={toggleMenu}>
+            {isMenuOpen ? (
+              <CloseIcon className={styles.icon} />
+            ) : (
+              <MenuIcon className={styles.icon} />
+            )}
+          </button>
+        </div>
       </div>
 
       <div
@@ -100,7 +107,9 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className={styles.actions}>
-          <LanguageSwitcher />
+          <div className={styles.searchDesktopWrapper}>
+            <Search />
+          </div>
 
           <div className={styles.actions__item}>
             <ThemeToggle
@@ -135,6 +144,8 @@ export const Header: React.FC = () => {
               )}
             </div>
           </NavLink>
+
+          <LanguageSwitcher onClose={closeMenu} />
         </div>
       </div>
     </header>

@@ -3,9 +3,9 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { Product } from '@/types/Product';
 import { getProducts } from '@/api/api';
 import { ProductList } from '@/modules/shared/components/ProductList';
-import { Pagination } from '@/modules/CatalogPage/components/Pagination';
-import { Heading } from '@/components/ui/Heading';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Pagination } from '@/modules/shared/ui/Pagination';
+import { Heading } from '@/modules/shared/ui/Heading';
+import { Breadcrumbs } from '@/modules/shared/ui/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
 import { CatalogFilters } from '@/modules/CatalogPage/components/CatalogFilter';
 import { NotFoundPage } from '../NotFoundPage';
@@ -119,7 +119,6 @@ export const CatalogPage: React.FC = () => {
           {displayTitle}
         </Heading>
         <p className={styles.catalog__count}>
-
           {t('catalog.modelsCount', { count: products.length })}
         </p>
 

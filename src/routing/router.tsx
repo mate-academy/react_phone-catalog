@@ -7,6 +7,7 @@ import { ProductDetailsPage } from '@/modules/ProductDetailsPage';
 import { FavoritesPage } from '@/modules/FavoritesPage/FavoritesPage';
 import { CartPage } from '@/modules/CartPage';
 import { NotFoundPage } from '@/modules/NotFoundPage';
+import { SearchPage } from '@/modules/SearchPage';
 
 export const router = createBrowserRouter(
   [
@@ -22,6 +23,10 @@ export const router = createBrowserRouter(
         {
           path: 'home',
           element: <Navigate to="/" replace />,
+        },
+        {
+          path: 'search',
+          element: <SearchPage />,
         },
         {
           path: 'favorites',

@@ -1,5 +1,7 @@
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   height: 48px;
   background-color: $color-page-bg;
@@ -58,6 +60,28 @@
   pointer-events: none;
 }
 
+.mobileActions {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid $color-elements;
+}
+
+.searchMobileWrapper {
+  display: block;
+  width: 48px;
+
+  @include tablet {
+  display: none;
+  }
+}
+
+.searchDesktopWrapper {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
 .menuButton {
   background: none;
   border: none;
@@ -94,7 +118,6 @@
   height: calc(100vh - 48px);
   background-color: $color-page-bg;
   z-index: 999;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -251,9 +274,7 @@
     &Active {
       &::after {
         background-color: $color-primary;
-
       }
-
     }
 
     @include tablet {
@@ -268,6 +289,8 @@
       width: 64px;
     }
   }
+
+
 }
 
 .iconWrapper {

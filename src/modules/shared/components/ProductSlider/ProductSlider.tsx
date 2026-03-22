@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './ProductSlider.module.scss';
 import { Product } from '@/types/Product';
 import { ProductCard } from '../ProductCard';
-import { SlideControls } from '../SliderControls';
-import { Heading } from '@/components/ui/Heading';
+import { SlideControls } from './components/SliderControls';
+import { Heading } from '@/modules/shared/ui/Heading';
 import { useTranslation } from 'react-i18next';
 
 interface Props {

@@ -1,0 +1,91 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $color-elements;
+  }
+
+  @include desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &__trigger {
+      display: flex;
+  align-items: center;
+  justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    color: $color-primary;
+  }
+
+
+}
+
+.wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  background-color: $color-search-bg;
+  overflow: hidden;
+  z-index: 100;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $color-search-shadow;
+
+  &--active {
+    height: 80px;
+  }
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  color: $color-primary;
+
+  &__icon {
+    width: 20px;
+    opacity: 0.5;
+    color: $color-primary;
+
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    @include desktop-body;
+    background: transparent;
+
+    &::placeholder {
+      color: $color-secondary;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+
+    img { width: 20px; height: 20px; }
+  }
+}

@@ -6,12 +6,12 @@ import { ProductDetail } from '@/types/ProductDetail';
 import { Product } from '@/types/Product';
 import { ProductGallery } from './components/ProductGallery';
 import { ProductActions } from './components/ProductActions';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Heading } from '@/components/ui/Heading';
+import { Breadcrumbs } from '@/modules/shared/ui/Breadcrumbs';
+import { Heading } from '@/modules/shared/ui/Heading';
 import { ProductDescription } from './components/ProductDescription';
 import { ProductSlider } from '../shared/components/ProductSlider';
 import { ProductDetailsSkeleton } from '@/components/ProductDetailsSkeleton';
-import { BackButton } from '@/components/ui/BackButton';
+import { BackButton } from '@/modules/CartPage/components/BackButton';
 import { EmptyState } from '../shared/components/EmptyState';
 import notFoundImg from '@/assets/img/ProductNotFound.png';
 

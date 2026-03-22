@@ -7,7 +7,7 @@ import styles from './ShopByCategory.module.scss';
 import categoryPhones from '@/assets/img/categoryPhones.webp';
 import categoryTablets from '@/assets/img/categoryTablets.webp';
 import categoryAccessories from '@/assets/img/categoryAccessories.webp';
-import { Heading } from '@/components/ui/Heading';
+import { Heading } from '@/modules/shared/ui/Heading';
 import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory: React.FC = () => {

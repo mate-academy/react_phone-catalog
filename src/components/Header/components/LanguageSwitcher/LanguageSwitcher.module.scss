@@ -1,10 +1,10 @@
 .switcher {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   padding: 0 16px;
   height: 64px;
-  border-right: 1px solid $color-elements;
   @include desktop-small-text;
 
   @include tablet {

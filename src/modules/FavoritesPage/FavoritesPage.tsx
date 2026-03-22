@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useFavorites } from '@/context/FavoritesContext';
 import { ProductCard } from '@/modules/shared/components/ProductCard';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Heading } from '@/components/ui/Heading';
+import { Breadcrumbs } from '@/modules/shared/ui/Breadcrumbs';
+import { Heading } from '@/modules/shared/ui/Heading';
 import styles from './FavoritesPage.module.scss';
-import { Pagination } from '../CatalogPage/components/Pagination';
+import { Pagination } from '../shared/ui/Pagination';
 import { EmptyState } from '../shared/components/EmptyState';
 import emptyFavorite from '@/assets/img/Emptyfavorite.jpg';
 
