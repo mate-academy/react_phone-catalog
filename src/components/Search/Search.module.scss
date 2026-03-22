@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 
   @include tablet {
     width: 48px;
@@ -33,13 +33,14 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 0;
   background-color: $color-search-bg;
   overflow: hidden;
   z-index: 100;
   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: $color-search-shadow;
+  backface-visibility: hidden;
 
   &--active {
     height: 80px;
@@ -75,9 +76,15 @@
     outline: none;
     @include desktop-body;
     background: transparent;
+    font-size: 16px;
+
+    @include tablet {
+      @include desktop-body;
+    }
 
     &::placeholder {
       color: $color-secondary;
+
     }
   }
 
