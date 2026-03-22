@@ -1,17 +1,17 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-.page {
-  padding: 24px 16px 80px;
-
-  @include on-tablet {
-    padding: 32px 24px 80px;
-  }
-}
-
 .container {
   max-width: $bp-desktop;
-  margin: 0 auto;
+  margin: 0 auto 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
 }
 
 .backButton {
@@ -52,19 +52,20 @@
 .content {
   display: grid;
   align-items: flex-start;
+  margin-top: 32px;
 
   grid-template-columns: 1fr;
   gap: 32px;
 
   @include on-desktop {
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr 368px;
+    gap: 16px;
   }
 }
 
 .listWrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .checkoutWrapper {

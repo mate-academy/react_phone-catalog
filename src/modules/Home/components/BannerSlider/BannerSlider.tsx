@@ -21,48 +21,50 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
   } = useBannerSlider(banners.length);
 
   return (
-    <div className={styles.slider}>
-      <button
-        className={classNames(styles.button, styles.buttonPrev)}
-        onClick={handlePrev}
-        aria-label="Previous slide"
-      >
-        <span className="icon icon--left">
-          <ArrowUpIcon />
-        </span>
-      </button>
-
-      <div
-        className={styles.window}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div
-          className={styles.track}
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    <div className={styles.container}>
+      <div className={styles.mainRow}>
+        <button
+          className={classNames(styles.button, styles.buttonPrev)}
+          onClick={handlePrev}
+          aria-label="Previous slide"
         >
-          {banners.map(banner => (
-            <Link key={banner.img} to={banner.link} className={styles.slide}>
-              <img
-                src={`${import.meta.env.BASE_URL}/${banner.img}`}
-                alt={banner.alt}
-                className={styles.image}
-              />
-            </Link>
-          ))}
-        </div>
-      </div>
+          <span className="icon icon--left">
+            <ArrowUpIcon />
+          </span>
+        </button>
 
-      <button
-        className={classNames(styles.button, styles.buttonNext)}
-        onClick={handleNext}
-        aria-label="Next slide"
-      >
-        <span className="icon icon--right">
-          <ArrowUpIcon />
-        </span>
-      </button>
+        <div
+          className={styles.window}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className={styles.track}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {banners.map(banner => (
+              <Link key={banner.img} to={banner.link} className={styles.slide}>
+                <img
+                  src={`${import.meta.env.BASE_URL}/${banner.img}`}
+                  alt={banner.alt}
+                  className={styles.image}
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <button
+          className={classNames(styles.button, styles.buttonNext)}
+          onClick={handleNext}
+          aria-label="Next slide"
+        >
+          <span className="icon icon--right">
+            <ArrowUpIcon />
+          </span>
+        </button>
+      </div>
 
       <div className={styles.dots}>
         {banners.map((banner, index) => (

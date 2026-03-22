@@ -4,25 +4,28 @@
   border: 1px solid $c-elements;
   background-color: $c-white;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 .price {
   font-size: 32px;
+  line-height: 41px;
   font-weight: 800;
   color: $c-primary;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  letter-spacing: -1%;
 }
 
 .text {
   font-size: 14px;
+  line-height: 21px;
   font-weight: 600;
   color: $c-secondary;
 }
@@ -30,7 +33,6 @@
 .divider {
   height: 1px;
   background-color: $c-elements;
-  margin-bottom: 24px;
   width: 100%;
 }
 
@@ -45,8 +47,8 @@
   border: none;
   font-family: inherit;
   font-size: 14px;
+  line-height: 21px;
   font-weight: 700;
-  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
 

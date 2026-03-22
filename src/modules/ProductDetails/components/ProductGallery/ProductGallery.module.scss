@@ -22,6 +22,7 @@
   aspect-ratio: 1 / 1;
 
   min-width: 280px;
+  max-width: 464px;
 
   .mainImage {
     width: 100%;
@@ -39,6 +40,7 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
   scrollbar-width: none;
 
   @include on-tablet {

@@ -1,7 +1,7 @@
 @import 'src/styles/variables';
 
 .config {
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .section {
@@ -10,6 +10,7 @@
 
 .label {
   font-size: 12px;
+  line-height: 15px;
   font-weight: 700;
   color: $c-secondary;
   margin-bottom: 8px;

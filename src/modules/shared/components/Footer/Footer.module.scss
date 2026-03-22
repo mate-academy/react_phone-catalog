@@ -51,7 +51,9 @@
 
   &__link {
     font-size: 12px;
+    line-height: 11px;
     font-weight: 800;
+    letter-spacing: 4%;
     text-transform: uppercase;
     text-decoration: none;
     color: $c-secondary;
@@ -86,8 +88,6 @@
   &__text {
     font-size: 12px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
   &__icon {

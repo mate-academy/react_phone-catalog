@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .container {
   @include empty-state-container;
@@ -9,13 +9,13 @@
 
 .image {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   height: auto;
   margin-bottom: 32px;
   object-fit: contain;
 
   @include on-tablet {
-    max-width: 350px;
+    max-width: 250px;
     margin-bottom: 40px;
   }
 }

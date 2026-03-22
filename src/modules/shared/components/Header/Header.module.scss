@@ -6,10 +6,14 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: 48px;
   background-color: $c-white;
   border-bottom: 1px solid $c-elements;
   z-index: 100;
+
+  @include on-desktop {
+    height: 64px;
+  }
 }
 
 .container {
@@ -33,6 +37,7 @@
   padding-top: 32px;
   z-index: 99;
   margin-right: 0;
+  gap: 16px;
 
   &.menuOpen {
     display: flex;
@@ -41,10 +46,11 @@
   &__link {
     display: flex;
     align-items: center;
-    padding: 0 16px;
-    height: 64px;
-    font-size: 14px;
-    font-weight: 700;
+    padding: 8px 0;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
     color: $c-secondary;
@@ -55,9 +61,8 @@
       content: '';
       position: absolute;
       bottom: 0;
-      left: 16px;
-      right: 16px;
       height: 3px;
+      width: 100%;
       background-color: transparent;
       transition: background-color 0.3s ease;
     }
@@ -82,11 +87,15 @@
     align-items: stretch;
     padding-top: 0;
     margin-right: auto;
+    gap: 32px;
 
     &__link {
       height: auto;
       font-size: 12px;
     }
+  }
+  @include on-desktop {
+    gap: 64px
   }
 }
 
@@ -172,12 +181,18 @@
 
     &__link {
       flex: none;
-      width: 64px;
+      width: 48px;
       border-left: 1px solid $c-elements;
 
       &:first-child {
         border-right: none;
       }
+    }
+  }
+
+  @include on-desktop {
+    &__link {
+      width: 64px;
     }
   }
 }
@@ -186,7 +201,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
+  width: 48px;
   border: none;
   border-left: 1px solid $c-elements;
   background-color: transparent;

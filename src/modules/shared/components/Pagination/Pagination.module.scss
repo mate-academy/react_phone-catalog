@@ -1,15 +1,35 @@
-.pagination {
+@import '../../../../styles/variables';
+
+.container {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
+
+  max-width: 248px;
+  margin: 0 auto;
+}
+
+.paginationList {
+  display: flex;
   align-items: center;
   gap: 8px;
   list-style: none;
   padding: 0;
-  margin: 40px 0 80px;
+  margin: 0;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
 }
 
 .item {
   display: flex;
+  flex-shrink: 0;
 }
 
 .button {
@@ -18,9 +38,12 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  border: 1px solid #E2E6E9;
-  background-color: #fff;
-  color: #313237;
+
+  flex-shrink: 0;
+
+  border: 1px solid $c-elements;
+  background-color: $c-white;
+  color: $c-primary;
   cursor: pointer;
   font-family: inherit;
   font-weight: 600;
@@ -28,25 +51,24 @@
   transition: all 0.2s ease-in-out;
 
   &:hover:not(.disabled, .active) {
-    border-color: #313237;
+    border-color: $c-primary;
   }
 
   &.active {
-    background-color: #313237;
-    border-color: #313237;
-    color: #fff;
+    background-color: $c-primary;
+    border-color: $c-primary;
+    color: $c-white;
     cursor: default;
   }
 
   &.disabled {
-    border-color: #E2E6E9;
-    color: #E2E6E9;
+    border-color: $c-elements;
+    color: $c-elements;
     cursor: not-allowed;
-    background-color: #F1F2F3;
   }
 
   &.arrow {
-    background-color: #fff;
+    background-color: $c-white;
     svg {
       width: 16px;
       height: 16px;

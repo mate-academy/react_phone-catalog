@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,8 +9,9 @@
 
 .label {
   font-size: 12px;
+  line-height: 15px;
   font-weight: 700;
-  color: #89939A;
+  color: $c-secondary;
 }
 
 .wrapper {
@@ -21,17 +24,19 @@
   appearance: none;
   width: 100%;
   padding: 10px 40px 10px 12px;
-  background: #fff;
-  border: 1px solid #E2E6E9;
+  background: $c-white;
+  border: 1px solid $c-elements;
   font-family: inherit;
+  font-size: 14px;
+  line-height: 21px;
   font-weight: 700;
   cursor: pointer;
   outline: none;
-  color: #313237;
+  color: $c-primary;
   transition: border-color 0.2s;
 
-  &:hover { border-color: #B4BDC3; }
-  &:focus { border-color: #313237; }
+  &:hover { border-color: $c-icons; }
+  &:focus { border-color: $c-primary; }
 }
 
 .icon {
@@ -39,7 +44,7 @@
   right: 12px;
   pointer-events: none;
   display: flex;
-  color: #89939A;
+  color: $c-secondary;
 
   svg {
     width: 16px;

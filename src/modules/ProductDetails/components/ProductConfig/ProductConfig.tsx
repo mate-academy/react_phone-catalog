@@ -56,6 +56,7 @@ export const ProductConfig: React.FC<Props> = ({ product }) => {
           ))}
         </div>
       </div>
+      <div className={styles.divider} />
     </div>
   );
 };

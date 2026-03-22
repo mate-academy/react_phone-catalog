@@ -2,22 +2,26 @@
 @import '../../styles/mixins';
 
 .homePage {
-  padding-block: 32px;
   max-width: $bp-desktop;
-  margin: 0 auto;
+  margin: 0 auto 64px;
 }
 
 .mainTitle {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 32px;
   line-height: 41px;
-  letter-spacing: -0.01em;
+  letter-spacing: -1%;
   color: $c-primary;
-  margin-bottom: 32px;
+  margin-block: 24px;
 
   @include on-tablet {
     font-size: 48px;
     line-height: 56px;
+    margin-block: 32px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
   }
 }
 
@@ -25,6 +29,10 @@
   margin-bottom: 56px;
 
   @include on-tablet {
-    margin-bottom: 72px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
   }
 }

@@ -24,8 +24,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 24px;
   color: $c-secondary;
   transition: color 0.2s ease;
 
@@ -36,14 +34,9 @@
 
 .imageBox {
   order: 2;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
-
-  @include on-tablet {
-    width: 80px;
-    height: 80px;
-  }
 
   img {
     width: 100%;
@@ -62,12 +55,8 @@
   font-weight: 600;
   color: $c-primary;
   margin: 0;
-  line-height: 1.4;
+  line-height: 21px;
   font-size: 14px;
-
-  @include on-tablet {
-    font-size: 16px;
-  }
 }
 
 .footer {
@@ -88,7 +77,6 @@
 .controls {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .controlBtn {
@@ -114,7 +102,8 @@
 }
 
 .quantity {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 21px;
   font-weight: 600;
   color: $c-primary;
   width: 32px;
@@ -124,12 +113,12 @@
 .price {
   font-weight: 800;
   color: $c-primary;
-  font-size: 20px;
+  font-size: 22px;
+  line-height: 140%;
   text-align: right;
   white-space: nowrap;
 
   @include on-tablet {
-    font-size: 22px;
-    width: 100px;
+    width: 80px;
   }
 }

@@ -9,7 +9,7 @@
 
 .main {
   flex: 1;
-  padding-top: 64px;
+  padding-top: 48px;
   padding-inline: 16px;
 
   max-width: $bp-desktop;
@@ -22,5 +22,6 @@
 
   @include on-desktop {
     padding-inline: 32px;
+    padding-top: 64px;
   }
 }

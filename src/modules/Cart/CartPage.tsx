@@ -12,37 +12,34 @@ export const CartPage: React.FC = () => {
   const { cartProducts, totalPrice, totalQuantity, isEmpty } = useCartPage();
 
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <BackButton />
+    <div className={styles.container}>
+      <BackButton />
 
-        <PageTitle>Cart</PageTitle>
-
-        {isEmpty ? (
-          <div className={styles.emptyState}>
-            <h2>Your cart is empty</h2>
-            <button
-              className={styles.continueShopping}
-              onClick={() => navigate('/')}
-            >
-              Continue Shopping
-            </button>
+      <PageTitle>Cart</PageTitle>
+      {isEmpty ? (
+        <div className={styles.emptyState}>
+          <h2>Your cart is empty</h2>
+          <button
+            className={styles.continueShopping}
+            onClick={() => navigate('/')}
+          >
+            Continue Shopping
+          </button>
+        </div>
+      ) : (
+        <div className={styles.content}>
+          <div className={styles.listWrapper}>
+            <CartList products={cartProducts} />
           </div>
-        ) : (
-          <div className={styles.content}>
-            <div className={styles.listWrapper}>
-              <CartList products={cartProducts} />
-            </div>
 
-            <div className={styles.checkoutWrapper}>
-              <CartCheckout
-                totalPrice={totalPrice}
-                totalQuantity={totalQuantity}
-              />
-            </div>
+          <div className={styles.checkoutWrapper}>
+            <CartCheckout
+              totalPrice={totalPrice}
+              totalQuantity={totalQuantity}
+            />
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

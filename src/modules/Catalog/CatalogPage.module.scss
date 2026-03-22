@@ -1,28 +1,43 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .container {
-  max-width: $bp-desktop;
-  margin: 0 auto;
-  padding: 24px 16px;
+  @include page-container;
 }
 
-.title {
-  margin-bottom: 8px;
-  font-size: 32px;
-  line-height: 41px;
-  color: $c-primary;
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.header > :first-child {
+  margin-bottom: 0;
 }
 
 .count {
-  margin-bottom: 32px;
+  font-size: 14px;
   font-weight: 600;
   color: $c-secondary;
+  margin: 0;
 }
 
 .paginationWrapper {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
 }
 
 .noProducts {

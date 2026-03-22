@@ -1,9 +1,18 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .container {
   max-width: $bp-desktop;
   margin: 0 auto;
-  padding: 24px 16px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
 }
 
 .title {
@@ -14,7 +23,13 @@
 }
 
 .count {
+  font-size: 14px;
+  line-height: 21px;
   margin-bottom: 32px;
   font-weight: 600;
   color: $c-secondary;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
 }

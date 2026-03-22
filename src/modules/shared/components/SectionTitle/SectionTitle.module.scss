@@ -1,6 +1,14 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .sectionTitle {
-  font-size: 32px;
+  font-size: 22px;
+  line-height: 140%;
   font-weight: 800;
-  margin-bottom: 24px;
-  color: #313237;
+  color: $c-primary;
+
+  @include on-tablet {
+    font-size: 32px;
+    letter-spacing: -1%;
+  }
 }

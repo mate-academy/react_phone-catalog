@@ -32,11 +32,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .priceDiscount {
   font-size: 32px;
+  line-height: 41px;
   font-weight: 800;
   color: $c-primary;
   letter-spacing: -0.01em;

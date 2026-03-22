@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .image {
   width: 100%;
   height: 100%;
@@ -7,8 +9,8 @@
 
 .card {
   padding: 32px;
-  border: 1px solid #E2E6E9;
-  background-color: #fff;
+  border: 1px solid $c-elements;
+  background-color: $c-white;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s;
@@ -24,17 +26,16 @@
 
 .imageLink {
   display: block;
-  margin-bottom: 8px;
   aspect-ratio: 1 / 1;
 }
 
 .title {
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.5;
-  color: #313237;
+  line-height: 21px;
+  color: $c-primary;
   margin-bottom: 8px;
-  height: 42px;
+  padding-top: 16px;
   overflow: hidden;
 }
 
@@ -48,23 +49,24 @@
 .price {
   font-size: 22px;
   font-weight: 800;
-  color: #313237;
+  line-height: 140%;
+  color: $c-primary;
 }
 
 .fullPrice {
   font-size: 14px;
-  color: #89939A;
+  color: $c-secondary;
   text-decoration: line-through;
 }
 
 .divider {
   height: 1px;
-  background-color: #E2E6E9;
-  margin: 8px 0;
+  background-color: $c-elements;
+  margin: 0 0 8px;
 }
 
 .specs {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .buttons {

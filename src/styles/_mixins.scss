@@ -19,3 +19,94 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin page-title {
+  font-weight: 800;
+  color: $c-primary;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+
+  /* Mobile Base */
+  font-size: 24px;
+  line-height: 1.2;
+
+  @include on-tablet {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+}
+
+// For massive titles like HomePage or Catalog
+@mixin hero-title {
+  font-weight: 800;
+  color: $c-primary;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  font-size: 32px;
+  line-height: 41px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin primary-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: $height-button;
+  padding: 0 32px;
+  background-color: $c-primary;
+  color: $c-white;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    // background-color: $c-secondary;
+    box-shadow: 0 4px 8px rgba(23, 32, 49, 0.4);
+  }
+
+  &:disabled {
+    background-color: $c-elements;
+    color: $c-icons;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+@mixin page-container {
+  max-width: $bp-desktop;
+  margin: 0 auto;
+
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+@mixin empty-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 16px;
+  min-height: 50vh;
+
+  @include on-tablet {
+    padding: 80px 24px;
+    min-height: 60vh;
+  }
+}

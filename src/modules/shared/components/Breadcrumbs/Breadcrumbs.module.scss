@@ -1,15 +1,22 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
   padding-top: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
 }
 
 .homeLink {
   display: flex;
   align-items: center;
-  color: #313237;
+  color: $c-primary;
   transition: opacity 0.2s;
 
   &:hover {
@@ -20,7 +27,7 @@
 .separator {
   display: flex;
   align-items: center;
-  color: #B4BDC3;
+  color: $c-icons;
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.icon) {
@@ -35,12 +42,12 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  color: #89939A;
+  color: $c-secondary;
   text-decoration: none;
   transition: color 0.2s;
 
   &:hover {
-    color: #313237;
+    color: $c-primary;
   }
 }
 
@@ -48,5 +55,5 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  color: #89939A;
+  color: $c-secondary;
 }

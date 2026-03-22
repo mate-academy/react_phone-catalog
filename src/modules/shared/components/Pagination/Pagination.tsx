@@ -24,23 +24,21 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <nav className={styles.container} aria-label="Page navigation">
-      <ul className={styles.pagination}>
-        <li className={styles.item}>
-          <button
-            type="button"
-            className={classNames(styles.button, styles.arrow, {
-              [styles.disabled]: isFirstPage,
-            })}
-            onClick={handlePrev}
-            disabled={isFirstPage}
-            aria-label="Previous page"
-          >
-            <span className="icon icon--left">
-              <ArrowUpIcon />
-            </span>
-          </button>
-        </li>
+      <button
+        type="button"
+        className={classNames(styles.button, styles.arrow, {
+          [styles.disabled]: isFirstPage,
+        })}
+        onClick={handlePrev}
+        disabled={isFirstPage}
+        aria-label="Previous page"
+      >
+        <span className="icon icon--left">
+          <ArrowUpIcon />
+        </span>
+      </button>
 
+      <ul className={styles.paginationList}>
         {pages.map(page => (
           <li key={page} className={styles.item}>
             <button
@@ -55,23 +53,21 @@ export const Pagination: React.FC<Props> = ({
             </button>
           </li>
         ))}
-
-        <li className={styles.item}>
-          <button
-            type="button"
-            className={classNames(styles.button, styles.arrow, {
-              [styles.disabled]: isLastPage,
-            })}
-            onClick={handleNext}
-            disabled={isLastPage}
-            aria-label="Next page"
-          >
-            <span className="icon icon--right">
-              <ArrowUpIcon />
-            </span>
-          </button>
-        </li>
       </ul>
+
+      <button
+        type="button"
+        className={classNames(styles.button, styles.arrow, {
+          [styles.disabled]: isLastPage,
+        })}
+        onClick={handleNext}
+        disabled={isLastPage}
+        aria-label="Next page"
+      >
+        <span className="icon icon--right">
+          <ArrowUpIcon />
+        </span>
+      </button>
     </nav>
   );
 };

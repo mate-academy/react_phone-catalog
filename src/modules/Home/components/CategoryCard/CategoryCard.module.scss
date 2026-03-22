@@ -6,16 +6,12 @@
   cursor: pointer;
   color: inherit;
 
-  &:hover img {
-    transform: scale(1.05);
-  }
-
   &__imageWrapper {
     aspect-ratio: 1 / 1;
     background-color: $c-elements;
     border-radius: 0;
     overflow: hidden;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 
     img {
       width: 100%;
@@ -25,17 +21,23 @@
     }
   }
 
+  &:hover img {
+    transform: scale(1.05);
+  }
+
   &__title {
     font-weight: 700;
     margin-bottom: 4px;
     color: $c-primary;
 
     font-size: 20px;
+    line-height: 26px;
   }
 
   &__count {
     color: $c-secondary;
 
     font-size: 14px;
+    line-height: 21px;
   }
 }

@@ -1,6 +1,7 @@
+@import '../../../../styles/variables';
+
 .list {
   list-style: none;
-  padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -13,16 +14,17 @@
 }
 
 .label {
-  color: #89939a;
+  color: $c-secondary;
 }
 
 .value {
-  color: #313237;
+  color: $c-primary;
 }
 
 
 .card {
   gap: 8px;
+  padding: 8px 0;
 
   .item {
     font-size: 12px;
@@ -35,6 +37,7 @@
 
   .item {
     font-size: 12px;
+    line-height: 15px;
     font-weight: 600;
   }
 }

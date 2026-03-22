@@ -3,10 +3,11 @@
 .categoryGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 32px;
+  margin-top: 24px;
 
   @include on-tablet {
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 16px;
   }
 }

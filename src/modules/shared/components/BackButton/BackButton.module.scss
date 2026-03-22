@@ -1,3 +1,6 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .backButton {
   display: flex;
   align-items: center;
@@ -7,19 +10,27 @@
   padding: 0;
   margin: 24px 0;
   font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  color: #89939a;
-  text-transform: uppercase;
+  color: $c-secondary;
   cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #313237;
+    color: $c-primary;
   }
 
   .icon {
     display: flex;
     transform: rotate(-90deg);
+  }
+
+  .text {
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+
+  @include on-tablet {
+    margin: 40px 0 16px;
   }
 }

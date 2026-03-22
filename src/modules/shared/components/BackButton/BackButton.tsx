@@ -10,7 +10,7 @@ export const BackButton = () => {
       <span className="icon icon--left">
         <ArrowUpIcon />
       </span>
-      Back
+      <span className={styles.text}>Back</span>
     </button>
   );
 };

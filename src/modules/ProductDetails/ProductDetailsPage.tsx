@@ -6,10 +6,10 @@ import { ProductActions } from './components/ProductActions';
 import { ProductGallery } from './components/ProductGallery';
 import { ProductAbout } from './components/ProductAbout';
 import { TechSpecs } from '../shared/components/TechSpecs';
-import { PageTitle } from '../shared/components/PageTitle';
 import { BackButton } from '../shared/components/BackButton';
 import { useProductDetailsPage } from './useProductDetailsPage';
 import { Loader } from '../shared/components/Loader';
+import { ProductNotFound } from './components/ProductNotFound/ProductNotFound';
 
 export const ProductDetailsPage: React.FC = () => {
   const { product, baseProduct, suggestedProducts, loading } =
@@ -20,11 +20,7 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (!product) {
-    return (
-      <div className={styles.container}>
-        <h2>Product not found</h2>
-      </div>
-    );
+    return <ProductNotFound />;
   }
 
   return (
@@ -33,7 +29,7 @@ export const ProductDetailsPage: React.FC = () => {
       <BackButton />
 
       <div className={styles.product}>
-        <PageTitle>{product.name}</PageTitle>
+        <h2 className={styles.title}>{product.name}</h2>
 
         <div className={styles.productMain}>
           <ProductGallery images={product.images} />
@@ -44,7 +40,7 @@ export const ProductDetailsPage: React.FC = () => {
           <ProductAbout description={product.description} />
 
           <div className={styles.productTechSpecs}>
-            <h2>Tech specs</h2>
+            <h2 className={styles.techSpecsTitle}>Tech specs</h2>
             <TechSpecs product={product} variant="full" />
           </div>
         </div>

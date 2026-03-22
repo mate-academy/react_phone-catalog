@@ -24,16 +24,24 @@ export const CatalogPage: React.FC = () => {
     return null;
   }
 
+  const hasProducts = categoryProducts.length > 0;
+
   return (
     <div className={styles.container}>
       <Breadcrumbs />
 
-      <PageTitle>{currentCategory.navTitle || currentCategory.title}</PageTitle>
+      <div className={styles.header}>
+        <PageTitle>
+          {currentCategory.navTitle || currentCategory.title}
+        </PageTitle>
 
-      {categoryProducts.length > 0 ? (
-        <>
+        {hasProducts && (
           <p className={styles.count}>{categoryProducts.length} models</p>
+        )}
+      </div>
 
+      {hasProducts ? (
+        <>
           <CatalogControls
             sort={sort}
             perPage={perPage}

@@ -3,14 +3,12 @@
 
 .productsGrid {
   display: grid;
-  margin-top: 32px;
 
   grid-template-columns: 1fr;
-  gap: 24px 16px;
+  gap: 40px 16px;
 
 
   @include on-tablet {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 40px 16px;
   }
 }

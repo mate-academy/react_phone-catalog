@@ -1,5 +1,16 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
 .sliderContainer {
-  margin-bottom: 80px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
 }
 
 .header {
@@ -17,8 +28,8 @@
 .navBtn {
   width: 32px;
   height: 32px;
-  border: 1px solid #B4BDC3;
-  background: #fff;
+  border: 1px solid $c-icons;
+  background: $c-white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,28 +37,28 @@
   transition: all 0.3s;
 
   &:hover {
-    border-color: #313237;
+    border-color: $c-primary;
   }
 
   .prevIcon {
     transform: rotate(-90deg);
-    color: #313237;
+    color: $c-primary;
   }
 
   .nextIcon {
     transform: rotate(90deg);
-    color: #313237;
+    color: $c-primary;
   }
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   &:global(.swiper-button-disabled) {
     opacity: 0.5;
     cursor: default;
-    border-color: #E2E6E9;
+    border-color: $c-elements;
   }
 }
 
 .slide {
   height: auto;
-  width: 272px;
+  // width: 272px;
 }

@@ -1,3 +1,5 @@
+@import '../../../../styles/mixins';
+
 .container {
   display: flex;
   gap: 16px;
@@ -5,9 +7,22 @@
 }
 
 .sortSelect {
-  min-width: 176px;
+  min-width: 136px;
+
+  @include on-tablet {
+    min-width: 187px;
+  }
+
+  @include on-desktop {
+    min-width: 176px;
+  }
 }
 
 .perPageSelect {
-  min-width: 128px;
+  min-width: 136px;
+
+  @include on-desktop {
+    min-width: 128px;
+  }
 }
+

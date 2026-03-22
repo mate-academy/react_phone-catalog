@@ -1,24 +1,17 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-.page {
-  padding-block: 24px;
-
-  @include on-tablet {
-    padding-block: 32px;
-  }
-}
-
 .title {
   font-weight: 800;
   color: $c-primary;
-  letter-spacing: -0.01em;
 
-  font-size: 24px;
-  margin: 0 0 24px;
+  font-size: 22px;
+  line-height: 140%;
+  margin-bottom: 32px;
 
   @include on-tablet {
     font-size: 32px;
+    line-height: 41px;
     margin-bottom: 40px;
   }
 }
@@ -26,25 +19,13 @@
 .productMain {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
-  margin-bottom: 56px;
-
-  @include on-tablet {
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    margin-bottom: 80px;
-  }
-}
-
-.productDetails {
-  display: grid;
-  grid-template-columns: 1fr;
   gap: 40px;
   margin-bottom: 56px;
 
   @include on-tablet {
-    gap: 32px;
-    margin-bottom: 80px;
+    grid-template-columns: 2fr minmax(237px, 1fr);
+    gap: 17px;
+    margin-bottom: 64px;
   }
 
   @include on-desktop {
@@ -53,10 +34,42 @@
   }
 }
 
+.productDetails {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 80px;
+  }
+}
+
+.techSpecsTitle {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  color: $c-primary;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid $c-elements;
+  margin-bottom: 30px;
+}
+
 .productSuggestions {
   margin-bottom: 56px;
 
   @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
     margin-bottom: 80px;
   }
 }
