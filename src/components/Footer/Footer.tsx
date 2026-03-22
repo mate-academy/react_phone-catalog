@@ -32,9 +32,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer__right">
-          <a href="#" className="footer__right--link">Back to top</a>
-          <a href="#" className="icon--slider">
+          <a href="#" className="footer__right--link">
+            Back to top
           </a>
+          <a href="#" className="icon--slider"></a>
         </div>
       </div>
     </footer>

@@ -1,8 +1,5 @@
 import './HeroSwiper.scss';
 
-
-const HeroSwiper = () => {
-  return ();
-};
+const HeroSwiper = () => {};
 
 export default Swiper;
