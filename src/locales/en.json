@@ -12,6 +12,12 @@
     "shopByCategory": "Shop by category",
     "hotPrices": "Hot prices"
   },
+  "favorites": {
+    "title": "Favorites",
+    "empty": "Your favorites list is empty",
+    "items_one": "item",
+    "items_other": "items"
+  },
   "categories": {
     "phones": "Mobile phones",
     "tablets": "Tablets",

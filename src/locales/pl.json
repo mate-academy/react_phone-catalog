@@ -3,13 +3,21 @@
     "home": "Start",
     "phones": "Telefony",
     "tablets": "Tablety",
-    "accessories": "Akcesoria"
+    "accessories": "Akcesoria",
+    "catalog": "Katalog"
   },
   "home": {
     "welcome": "Witaj w sklepie Nice Gadgets!",
     "newModels": "Najnowsze modele",
     "shopByCategory": "Kupuj według kategorii",
     "hotPrices": "Gorące okazje"
+  },
+  "favorites": {
+    "title": "Ulubione",
+    "empty": "Twoja lista ulubionych jest pusta",
+    "items_one": "produkt",
+    "items_few": "produkty",
+    "items_many": "produktów"
   },
   "categories": {
     "phones": "Telefony komórkowe",

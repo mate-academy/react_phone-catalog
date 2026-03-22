@@ -7,10 +7,13 @@ import styles from './FavoritesPage.module.scss';
 import { Pagination } from '../shared/ui/Pagination';
 import { EmptyState } from '../shared/components/EmptyState';
 import emptyFavorite from '@/assets/img/Emptyfavorite.jpg';
+import { useTranslation } from 'react-i18next';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();
   const [currentPage, setCurrentPage] = useState(1);
+  const { t } = useTranslation();
+
   const itemsPerPage = 12;
 
   // --- PAGINATION LOGIC ---
@@ -43,30 +46,24 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs pageName="Favorites" />
+      <Breadcrumbs pageName={t('favorites.title')} />
+
       <div className={styles.header}>
         <Heading as="h1" className={styles.title}>
-          Favorites
+          {t('favorites.title')}
         </Heading>
-        <p className={styles.count}>{favorites.length} items</p>
+        <p className={styles.count}>
+          {favorites.length} {t('favorites.items', { count: favorites.length })}
+        </p>
       </div>
 
-      {favorites.length > 0 ? (
-        <div className={styles.content}>
-          {currentFavorites.map(product => (
-            <div key={product.itemId} className={styles.content__item}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className={styles.emptyState}>
-          <h2 className={styles.emptyTitle}>Your favorites list is empty</h2>
-          <p className={styles.emptyText}>
-            Go back to the store and find something you love!
-          </p>
-        </div>
-      )}
+      <div className={styles.content}>
+        {currentFavorites.map(product => (
+          <div key={product.itemId} className={styles.content__item}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </div>
 
       {shouldShowPagination && (
         <Pagination

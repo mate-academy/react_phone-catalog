@@ -71,7 +71,7 @@ export const Search: React.FC<Props> = ({ onClose }) => {
     });
   }, [debouncedValue, navigate, pathname]);
 
-  
+
   // Resets local input state when user navigates away or clears the search via URL
   useEffect(() => {
     const queryInUrl = searchParams.get('query');
@@ -81,6 +81,8 @@ export const Search: React.FC<Props> = ({ onClose }) => {
       setIsOpen(false);
     }
   }, [pathname, searchParams]);
+
+
 
   return (
     <div className={styles.search} ref={containerRef}>
@@ -126,6 +128,7 @@ export const Search: React.FC<Props> = ({ onClose }) => {
             </button>
           </form>
         </div>
+        <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       </div>
     </div>
   );
