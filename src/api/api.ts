@@ -48,11 +48,22 @@ export const getProductDetails = async (
     ]);
 
     const allDetails = [...phones, ...tablets, ...accessories];
+    const product = allDetails.find(item => item.id === productId);
 
-    return allDetails.find(item => item.id === productId) || null;
+    if (!product) {
+      return null;
+    }
+
+    const BASE_URL = import.meta.env.VITE_API_URL || '';
+
+    return {
+      ...product,
+      images: product.images.map(
+        img => `${BASE_URL}/${img.replace(/^\//, '')}`,
+      ),
+    };
   } catch (error) {
     console.error('Error fetching product details:', error);
-
     return null;
   }
 };
