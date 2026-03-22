@@ -36,7 +36,6 @@ export const HomePage: React.FC = () => {
   const brandNew = useMemo(
     () =>
       [...products]
-        .filter(p => p.fullPrice === p.price)
         .sort((a, b) => b.year - a.year || b.fullPrice - a.fullPrice)
         .slice(0, 20),
     [],

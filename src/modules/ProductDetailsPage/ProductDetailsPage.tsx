@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ProductDetails, Product, Category } from '../../types/index';
+import { ProductDetails, Product, Category } from '../../types';
 import { Loader } from '../../components/Loader/index';
 import { Breadcrumbs } from '../../components/Breadcrumbs/index';
 import { ProductCard } from '../../components/ProductCard/index';
@@ -121,7 +121,7 @@ export const ProductDetailsPage: React.FC = () => {
       .slice(0, 10);
   }, [product]);
 
-  const { addToCart, removeFromCart, isInCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const inCart = summaryProduct ? isInCart(summaryProduct.id) : false;
   const fav = summaryProduct ? isFavorite(summaryProduct.id) : false;
@@ -212,19 +212,13 @@ export const ProductDetailsPage: React.FC = () => {
               onClick={() => setActiveImg(i)}
               aria-label={`View image ${i + 1}`}
             >
-              <img
-                src={`${import.meta.env.BASE_URL}${img}`}
-                alt={`${product.name} view ${i + 1}`}
-              />
+              <img src={img} alt={`${product.name} view ${i + 1}`} />
             </button>
           ))}
         </div>
 
         <div className={styles.mainImg}>
-          <img
-            src={`${import.meta.env.BASE_URL}${product.images[activeImg]}`}
-            alt={product.name}
-          />
+          <img src={product.images[activeImg]} alt={product.name} />
         </div>
 
         <div className={styles.options}>
@@ -290,12 +284,10 @@ export const ProductDetailsPage: React.FC = () => {
               className={[styles.addBtn, inCart ? styles.addBtnAdded : ''].join(
                 ' ',
               )}
+              disabled={inCart}
               onClick={() => {
                 if (summaryProduct) {
-                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                  inCart
-                    ? removeFromCart(summaryProduct.id)
-                    : addToCart(summaryProduct);
+                  addToCart(summaryProduct);
                 }
               }}
             >

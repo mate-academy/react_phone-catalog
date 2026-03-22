@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CartItem } from '../../types';
 import { useCart } from '../../context/CartContext';
 import { Modal } from '../../components/Modal';
 import styles from './CartPage.module.scss';
@@ -52,62 +51,58 @@ export const CartPage: React.FC = () => {
 
       <div className={styles.layout}>
         <div className={styles.items}>
-          {items.map((item: CartItem) => {
-            const { product, quantity } = item;
+          {items.map(({ product, quantity }) => (
+            <div key={product.id} className={styles.item}>
+              <button
+                className={styles.removeBtn}
+                onClick={() => removeFromCart(product.id)}
+                aria-label={`Remove ${product.name}`}
+              >
+                <IconClose />
+              </button>
 
-            return (
-              <div key={product.id} className={styles.item}>
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className={styles.imgLink}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.img}
+                />
+              </Link>
+
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className={styles.name}
+              >
+                {product.name}
+              </Link>
+
+              <div className={styles.qty}>
                 <button
-                  className={styles.removeBtn}
-                  onClick={() => removeFromCart(product.id)}
-                  aria-label={`Remove ${product.name}`}
+                  className={styles.qtyBtn}
+                  onClick={() => updateQuantity(product.id, quantity - 1)}
+                  disabled={quantity <= 1}
+                  aria-label="Decrease quantity"
                 >
-                  <IconClose />
+                  −
                 </button>
-
-                <Link
-                  to={`/${product.category}/${product.itemId}`}
-                  className={styles.imgLink}
+                <span className={styles.qtyValue}>{quantity}</span>
+                <button
+                  className={styles.qtyBtn}
+                  onClick={() => updateQuantity(product.id, quantity + 1)}
+                  aria-label="Increase quantity"
                 >
-                  <img
-                    src={`${import.meta.env.BASE_URL}${product.image}`}
-                    alt={product.name}
-                    className={styles.img}
-                  />
-                </Link>
-
-                <Link
-                  to={`/${product.category}/${product.itemId}`}
-                  className={styles.name}
-                >
-                  {product.name}
-                </Link>
-
-                <div className={styles.qty}>
-                  <button
-                    className={styles.qtyBtn}
-                    onClick={() => updateQuantity(product.id, quantity - 1)}
-                    disabled={quantity <= 1}
-                    aria-label="Decrease quantity"
-                  >
-                    −
-                  </button>
-                  <span className={styles.qtyValue}>{quantity}</span>
-                  <button
-                    className={styles.qtyBtn}
-                    onClick={() => updateQuantity(product.id, quantity + 1)}
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
-                </div>
-
-                <span className={styles.itemPrice}>
-                  ${product.price * quantity}
-                </span>
+                  +
+                </button>
               </div>
-            );
-          })}
+
+              <span className={styles.itemPrice}>
+                ${product.price * quantity}
+              </span>
+            </div>
+          ))}
         </div>
 
         <div className={styles.summary}>

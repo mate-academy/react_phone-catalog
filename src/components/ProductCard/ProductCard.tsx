@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { addToCart, removeFromCart, isInCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const inCart = isInCart(product.id);
@@ -31,19 +31,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const detailPath = `/${product.category}/${product.itemId}`;
   const hasDiscount = product.fullPrice > product.price;
 
-  const handleCartClick = () => {
-    if (inCart) {
-      removeFromCart(product.id);
-    } else {
-      addToCart(product);
-    }
-  };
-
   return (
     <article className={styles.card}>
       <Link to={detailPath} className={styles.imgWrap}>
         <img
-          src={`${import.meta.env.BASE_URL}${product.image}`}
+          src={product.image}
           alt={product.name}
           className={styles.img}
           loading="lazy"
@@ -80,7 +72,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={styles.actions}>
           <button
             className={`${styles.addBtn} ${inCart ? styles.addBtnAdded : ''}`}
-            onClick={handleCartClick}
+            onClick={() => addToCart(product)}
+            disabled={inCart}
           >
             {inCart ? 'Added to cart' : 'Add to cart'}
           </button>
