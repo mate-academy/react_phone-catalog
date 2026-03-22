@@ -13,7 +13,7 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: 'price', label: 'Cheapest' },
 ];
 
-const PER_PAGE_OPTIONS: PerPageOption[] = [4, 8, 16, 'all'];
+const PER_PAGE_OPTIONS: string[] = ['4', '8', '16', 'all'];
 
 function sortProducts(products: Product[], sort: SortOption): Product[] {
   return [...products].sort((a, b) => {
@@ -28,6 +28,20 @@ function sortProducts(products: Product[], sort: SortOption): Product[] {
         return 0;
     }
   });
+}
+
+function parsePerPage(value: string): PerPageOption {
+  if (value === 'all') {
+    return 'all';
+  }
+
+  const n = Number(value);
+
+  if (n === 4 || n === 8 || n === 16) {
+    return n;
+  }
+
+  return 'all';
 }
 
 interface Props {
@@ -49,8 +63,7 @@ export const ProductsListPage: React.FC<Props> = ({
   const perPageParam = searchParams.get('perPage') || 'all';
   const queryParam = searchParams.get('query') || '';
 
-  const perPage: PerPageOption =
-    perPageParam === 'all' ? 'all' : (Number(perPageParam) as PerPageOption);
+  const perPage: PerPageOption = parsePerPage(perPageParam);
 
   useEffect(() => {
     setLoading(true);
@@ -98,12 +111,11 @@ export const ProductsListPage: React.FC<Props> = ({
       return sorted;
     }
 
-    const start = (pageParam - 1) * (perPage as number);
+    const start = (pageParam - 1) * perPage;
 
-    return sorted.slice(start, start + (perPage as number));
+    return sorted.slice(start, start + perPage);
   }, [sorted, perPage, pageParam]);
 
-  /* states */
   const noProducts = !loading && data.length === 0;
   const noResults = !loading && data.length > 0 && filtered.length === 0;
 
@@ -111,16 +123,13 @@ export const ProductsListPage: React.FC<Props> = ({
     <main className={styles.main}>
       <Breadcrumbs crumbs={[{ label: title }]} />
 
-      {/* Page heading */}
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>{title}</h1>
         <p className={styles.count}>{totalCount} models</p>
       </div>
 
-      {/* Controls */}
       {!loading && data.length > 0 && (
         <div className={styles.controls}>
-          {/* Sort */}
           <div className={styles.selectGroup}>
             <label className={styles.selectLabel} htmlFor="sort-select">
               Sort by
@@ -139,7 +148,6 @@ export const ProductsListPage: React.FC<Props> = ({
             </select>
           </div>
 
-          {/* Items per page */}
           <div className={styles.selectGroup}>
             <label className={styles.selectLabel} htmlFor="per-page-select">
               Items on page
@@ -147,7 +155,7 @@ export const ProductsListPage: React.FC<Props> = ({
             <select
               id="per-page-select"
               className={styles.select}
-              value={perPage}
+              value={perPageParam}
               onChange={e => {
                 setParam('perPage', e.target.value);
                 setParam('page', '1');
@@ -161,7 +169,6 @@ export const ProductsListPage: React.FC<Props> = ({
             </select>
           </div>
 
-          {/* Search */}
           <div className={styles.searchGroup}>
             <label className={styles.selectLabel} htmlFor="search-input">
               Search
@@ -181,22 +188,18 @@ export const ProductsListPage: React.FC<Props> = ({
         </div>
       )}
 
-      {/* Loading */}
       {loading && <Loader />}
 
-      {/* Empty — no products at all */}
       {noProducts && (
         <p className={styles.emptyMsg}>There are no {category} yet</p>
       )}
 
-      {/* Empty — query has no results */}
       {noResults && (
         <p className={styles.emptyMsg}>
           There are no {category} matching the query
         </p>
       )}
 
-      {/* Product grid */}
       {!loading && paginated.length > 0 && (
         <>
           <div className={styles.grid}>
@@ -208,7 +211,7 @@ export const ProductsListPage: React.FC<Props> = ({
           {perPage !== 'all' && (
             <Pagination
               total={totalCount}
-              perPage={perPage as number}
+              perPage={perPage}
               currentPage={pageParam}
               onPageChange={p => setParam('page', String(p))}
             />
