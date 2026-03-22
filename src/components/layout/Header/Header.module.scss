@@ -147,6 +147,21 @@
         transition: $transition;
       }
     }
+
+    &_fav {
+      top: 17px;
+      right: 17px;
+      width: 14px;
+      height: 14px;
+      border-radius: 100%;
+      background: $red;
+      font-size: 9px;
+      line-height: 14px;
+      font-weight: 500;
+      color: $white;
+      position: absolute;
+      text-align: center;
+    }
   }
 
   &__hidden {

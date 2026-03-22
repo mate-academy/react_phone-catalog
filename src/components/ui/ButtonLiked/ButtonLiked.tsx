@@ -9,10 +9,11 @@ type Props = {
 };
 
 export const ButtonLiked = (props: Props) => {
-  const { type = 'button', isActive = false } = props;
+  const { type = 'button', isActive = false, onClick } = props;
 
   return (
     <button
+      onClick={onClick}
       type={type}
       className={classNames(styles.button, {
         [styles.button__active]: isActive,

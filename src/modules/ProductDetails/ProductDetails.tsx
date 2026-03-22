@@ -7,6 +7,8 @@ import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductColection } from '../../components/layout/ProductColection';
 import { Button } from '../../components/ui/Button';
 import { ButtonLiked } from '../../components/ui/ButtonLiked';
+import { useFavourites } from '../../hooks/useFavourites';
+import { toggleFavourites } from '../../store/favourites/FavouritesReducer';
 import { ProductsContext } from '../../store/ProductsProvider';
 import { ProductDetailsType } from '../../types/types';
 import { imageUrl } from '../../utils/imageUrl';
@@ -16,6 +18,7 @@ export const ProductDetails = () => {
   const navigate = useNavigate();
   const { category, productId } = useParams();
   const products = useContext(ProductsContext);
+  const { favourites, setFavourites } = useFavourites();
   const [product, setProduct] = useState<ProductDetailsType | undefined>();
   const [preview, setPreview] = useState<string>('');
 
@@ -196,7 +199,18 @@ export const ProductDetails = () => {
                   <Button maxWidth={'100%'} onClick={() => {}}>
                     Add to cart
                   </Button>
-                  <ButtonLiked onClick={() => {}} />
+                  <ButtonLiked
+                    isActive={favourites.some(
+                      item => item.itemId === product.id,
+                    )}
+                    onClick={() => {
+                      setFavourites(
+                        toggleFavourites(
+                          products.find(item => item.itemId === product.id)!,
+                        ),
+                      );
+                    }}
+                  />
                 </div>
               </div>
               <ul className={styles.specs}>

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useFavourites } from '../../../hooks/useFavourites';
+import { toggleFavourites } from '../../../store/favourites/FavouritesReducer';
 import { Product } from '../../../types/types';
 import { imageUrl } from '../../../utils/imageUrl';
 import { Button } from '../../ui/Button';
@@ -10,6 +12,7 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
+  const { favourites, setFavourites } = useFavourites();
   const path = `/catalog/${product.category}/${product.itemId}`;
 
   return (
@@ -38,7 +41,14 @@ export const ProductCard = ({ product }: Props) => {
         <Button onClick={() => {}} maxWidth="160px">
           Add to cart
         </Button>
-        <ButtonLiked type="button" />
+        <ButtonLiked
+          isActive={favourites.some(item => item.id === product.id)}
+          onClick={e => {
+            e.preventDefault();
+            e.stopPropagation();
+            setFavourites(toggleFavourites(product));
+          }}
+        />
       </div>
     </Link>
   );

@@ -10,31 +10,34 @@ import { PageNotFound } from './modules/PageNotFound';
 import { ProductDetails } from './modules/ProductDetails';
 import { ProductsProvider } from './store/ProductsProvider';
 import { Catalog } from './modules/Catalog';
+import { FavouritesProvider } from './store/favourites/FavouritesProvider';
 
 export const App = () => {
   return (
-    <div className="app">
-      <Header />
-      <main className="wrapper">
-        <ProductsProvider>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/favourites" element={<Favourites />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="*" element={<PageNotFound />} />
+    <FavouritesProvider>
+      <div className="app">
+        <Header />
+        <main className="wrapper">
+          <ProductsProvider>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/favourites" element={<Favourites />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="*" element={<PageNotFound />} />
 
-            <Route path="/catalog">
-              <Route index element={<Catalog />} />
+              <Route path="/catalog">
+                <Route index element={<Catalog />} />
 
-              <Route path=":category">
-                <Route index element={<ProductPage />} />
-                <Route path=":productId" element={<ProductDetails />} />
+                <Route path=":category">
+                  <Route index element={<ProductPage />} />
+                  <Route path=":productId" element={<ProductDetails />} />
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </ProductsProvider>
-      </main>
-      <Footer />
-    </div>
+            </Routes>
+          </ProductsProvider>
+        </main>
+        <Footer />
+      </div>
+    </FavouritesProvider>
   );
 };
