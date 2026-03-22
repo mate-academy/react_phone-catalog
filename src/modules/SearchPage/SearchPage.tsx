@@ -19,10 +19,12 @@ export const SearchPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
+  // --- PARAMS ---
+  // Extracting search query and current page from the URL
   const query = searchParams.get('query')?.toLowerCase().trim() || '';
   const currentPage = Number(searchParams.get('page')) || 1;
 
-
+  // --- DATA FETCHING ---
   useEffect(() => {
     setIsLoading(true);
     getProducts()
@@ -34,24 +36,45 @@ export const SearchPage: React.FC = () => {
       });
   }, []);
 
-  // FILTERS
+  // --- SMART FILTERING LOGIC ---
+  // Filters products based on name, category, and color.
+  // Supports both full phrase matches and individual word matches.
   const filteredProducts = useMemo(() => {
     if (!query) return [];
 
-    return products.filter(
-      p =>
-        p.name.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query),
-    );
+    const searchTerm = query.toLowerCase().trim();
+    const searchWords = searchTerm.split(/\s+/);
+
+    return products.filter(p => {
+      const productName = p.name.toLowerCase();
+      const productCategory = p.category?.toLowerCase() || '';
+      const productColor = p.color?.toLowerCase() || '';
+
+      const fullPhraseMatch =
+        productName.includes(searchTerm) ||
+        productCategory.includes(searchTerm) ||
+        productColor.includes(searchTerm);
+
+      const allWordsMatch = searchWords.every(
+        word =>
+          productName.includes(word) ||
+          productColor.includes(word) ||
+          productCategory.includes(word),
+      );
+
+      return fullPhraseMatch || allWordsMatch;
+    });
   }, [products, query]);
 
-
+  // --- PAGINATION CALCULATIONS ---
+  // Slicing the filtered array to display only the items for the current page
   const visibleProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
     return filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   }, [filteredProducts, currentPage]);
 
+  // --- HANDLERS ---
   const handlePageChange = (page: number) => {
     const nextParams = new URLSearchParams(searchParams);
     nextParams.set('page', page.toString());
@@ -60,6 +83,8 @@ export const SearchPage: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // --- RESET PAGE EFFECT ---
+  // Automatically returns to page 1 when the search query changes
   useEffect(() => {
     if (currentPage !== 1 && query !== '') {
       const nextParams = new URLSearchParams(searchParams);
@@ -67,7 +92,6 @@ export const SearchPage: React.FC = () => {
       setSearchParams(nextParams, { replace: true });
     }
   }, [query]);
-
 
   return (
     <section className={styles.searchPage}>

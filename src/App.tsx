@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { AppProviders } from '@/context/AppProvider';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-// eslint-disable-next-line max-len
 import './styles/App.scss';
 import './i18n';
 

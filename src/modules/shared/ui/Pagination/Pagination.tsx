@@ -17,12 +17,18 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  // --- CALCULATIONS ---
+  // Determine total number of pages based on total items and items per page
   const totalPages = Math.ceil(total / perPage);
 
+  // Do not render pagination if there is only one page or no items
   if (totalPages <= 1) {
     return null;
   }
 
+  // --- SLIDING WINDOW LOGIC ---
+  // Calculates which page numbers should be visible to the user.
+  // This prevents the pagination bar from becoming too long on large datasets.
   const getVisiblePages = () => {
     const pages = [];
     const startPage = Math.max(1, Math.min(currentPage - 1, totalPages - 3));

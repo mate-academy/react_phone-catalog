@@ -14,15 +14,23 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  // --- CONTEXT HOOKS ---
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
   const { cartItems, addToCart } = useCart();
 
+  // --- PRODUCT DATA DESTRUCTURING ---
   const { itemId, name, screen, capacity, ram, image } = product;
+
+  // --- IMAGE PATH LOGIC ---
+  // Ensures the image path is correct regardless of whether the API provides a relative or absolute string
   const imageSrc = image.startsWith('/') ? image : `/${product.image}`;
 
+  // --- CHECKING COMPONENT STATE ---
   const favorite = isFavorite(product.itemId);
   const isAdded = cartItems.some(item => item.itemId === product.itemId);
 
+  // --- EVENT HANDLERS ---
+  // Toggles the favorite status of the product.
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
 
@@ -33,6 +41,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
   };
 
+  // Adds the product to the global cart state
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!isAdded) {

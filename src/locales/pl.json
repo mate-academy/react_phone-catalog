@@ -77,7 +77,9 @@
   "error": {
     "title": "Ups! Coś poszło nie tak",
     "reload": "Odśwież stronę",
-    "default": "Wystąpił nieoczekiwany błąd"
+    "default": "Wystąpił nieoczekiwany błąd",
+    "productsLoad": "Nie udało się załadować produktów. Spróbuj odświeżyć stronę.",
+    "notFound": "Nie znaleziono produktu."
   },
   "search": {
     "placeholder": "Szukaj...",

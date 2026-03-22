@@ -11,7 +11,7 @@ interface Props {
   onClose?: () => void;
 }
 
-export const Search: React.FC<Props> = ( { onClose}) => {
+export const Search: React.FC<Props> = ({ onClose }) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -22,12 +22,57 @@ export const Search: React.FC<Props> = ( { onClose}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Custom hook to delay the update of the search term
-  const debouncedValue = useDebounce(value, 400);
-
+  // ----CUSTOM HOOK ---
+  // // Automatically closes the search bar when the mouse leaves the container area
   useMouseLeave(containerRef, () => setIsOpen(false), isOpen);
 
-  // Reset search state when navigating via Menu (if URL has no query)
+  // --- CUSTOM HOOKS ---
+  // Delays updating the search term to prevent excessive URL updates while typing
+  const debouncedValue = useDebounce(value, 400);
+
+  // --- SEARCH HANDLER ---
+  const handleSearch = (searchTerm: string) => {
+    const trimmed = searchTerm.trim();
+
+    if (trimmed === '') {
+      const params = new URLSearchParams(searchParams);
+      params.delete('query');
+      navigate({ pathname, search: params.toString() }, { replace: true });
+    } else {
+      navigate(`/search?query=${encodeURIComponent(trimmed)}`, {
+        replace: true,
+      });
+    }
+
+    setIsOpen(false);
+    if (onClose) onClose();
+  };
+
+  // --- EFFECTS ---
+  // Syncs the URL with the debounced input value (live search updates)
+  useEffect(() => {
+    if (!isOpen && !searchParams.has('query')) return;
+
+    const trimmedValue = debouncedValue.trim();
+
+    if (trimmedValue === '') {
+      if (searchParams.has('query')) {
+        const params = new URLSearchParams(searchParams);
+        params.delete('query');
+
+        navigate({ pathname, search: params.toString() }, { replace: true });
+      }
+
+      return;
+    }
+
+    navigate(`/search?query=${encodeURIComponent(trimmedValue)}`, {
+      replace: true,
+    });
+  }, [debouncedValue, navigate, pathname]);
+
+  
+  // Resets local input state when user navigates away or clears the search via URL
   useEffect(() => {
     const queryInUrl = searchParams.get('query');
 
@@ -36,35 +81,6 @@ export const Search: React.FC<Props> = ( { onClose}) => {
       setIsOpen(false);
     }
   }, [pathname, searchParams]);
-
-  // Handle Search Navigation & URL Cleanup
-  useEffect(() => {
-    if (!isOpen && !searchParams.has('query')) return;
-
-    const trimmedValue = debouncedValue.trim();
-
-    // CASE: Input is empty -> Remove "query" from URL
-    if (trimmedValue === '') {
-      if (searchParams.has('query')) {
-        const params = new URLSearchParams(searchParams);
-        params.delete('query');
-
-        navigate({ pathname, search: params.toString() }, { replace: true });
-
-        if (onClose) {
-          onClose();
-          setIsOpen(false);
-        }
-      }
-      return;
-    }
-
-    // CASE: Navigate to global search results
-    navigate(`/search?query=${encodeURIComponent(trimmedValue)}`, {
-      replace: true,
-    });
-  }, [debouncedValue, navigate, pathname]);
-
 
   return (
     <div className={styles.search} ref={containerRef}>
@@ -86,7 +102,7 @@ export const Search: React.FC<Props> = ( { onClose}) => {
             className={styles.form}
             onSubmit={e => {
               e.preventDefault();
-              setIsOpen(false);
+              handleSearch(value);
             }}
           >
             <SearchIcon className={styles.form__icon} />
@@ -113,4 +129,4 @@ export const Search: React.FC<Props> = ( { onClose}) => {
       </div>
     </div>
   );
-};;
+};

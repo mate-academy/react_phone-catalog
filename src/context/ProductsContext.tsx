@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '@/types/Product';
 import { getProducts } from '@/api/api';
+import { useTranslation } from 'react-i18next';
 
+// 1. Definition of the context state shape
 interface ProductsContextType {
   products: Product[];
   loading: boolean;
@@ -19,6 +21,11 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const { t } = useTranslation();
+
+  // --- GLOBAL DATA FETCHING ---
+  // This effect runs once when the app starts, fetching the entire product catalog.
+  // By doing this at the context level, we avoid redundant API calls when navigating between pages.
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
@@ -27,7 +34,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
         setProducts(data);
       } catch (err) {
-        setError('Failed to load products. Please try refreshing the page.');
+        setError(t('errors.productsLoad'));
         // eslint-disable-next-line no-console
         console.error(err);
       } finally {
@@ -45,6 +52,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
+// --- CUSTOM HOOK ---
 export const useProducts = () => {
   const context = useContext(ProductsContext);
 

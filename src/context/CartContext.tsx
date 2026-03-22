@@ -1,16 +1,16 @@
-/* eslint-disable */
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '@/types/Product';
 import { ProductDetail } from '@/types/ProductDetail';
 
-// 1. Definicja elementu koszyka
+// 1. Definition of a single cart item structure
 export interface CartItem {
   itemId: string;
   quantity: number;
   product: Product;
 }
 
-// 2. Definicja interfejsu kontekstu
+// 2. Interface for the Cart Context values and methods
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
@@ -26,7 +26,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  // Odczyt z localStorage na starcie
+  // --- INITIALIZATION ---
+  // Read existing cart data from localStorage on startup to persist the session
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('cart');
 
@@ -37,20 +38,28 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   });
 
-  // Zapis do localStorage przy każdej zmianie
+  // --- PERSISTENCE ---
+  // Automatically save to localStorage whenever cartItems state changes
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // --- ACTIONS ---
+
+  // Handles adding products from both Catalog (Product) and Details Page (ProductDetail)
   const addToCart = (item: Product | ProductDetail) => {
     setCartItems((prev: CartItem[]) => {
+      // Determine unique ID depending on the source object type
       const itemId = 'itemId' in item ? item.itemId : item.id;
 
+      // Prevent duplicate items from being added
       if (prev.find(prevItem => prevItem.itemId === itemId)) {
         return prev;
       }
 
-      // Mapujemy dane do spójnego formatu Product
+      // DATA NORMALIZATION:
+      // Since ProductDetail and Product have different structures,
+      // we map them into a consistent format used by the cart UI.
       const productData: Product =
         'itemId' in item
           ? item
@@ -69,7 +78,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
               image: item.images[0],
             };
 
-      // Tworzymy nowy obiekt CartItem
       const newItem: CartItem = {
         itemId: itemId,
         quantity: 1,
@@ -80,6 +88,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
+  // Adjusts quantity while ensuring it never drops below 1
   const removeFromCart = (itemId: string) => {
     setCartItems(prev => prev.filter(item => item.itemId !== itemId));
   };
@@ -96,6 +105,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const clearCart = () => setCartItems([]);
 
+  // --- DERIVED STATE (Calculated on the fly) ---
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const totalAmount = cartItems.reduce(
@@ -120,6 +130,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
+// --- CUSTOM HOOK ---
 export const useCart = () => {
   const context = useContext(CartContext);
 

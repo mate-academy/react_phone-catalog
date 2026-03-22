@@ -72,7 +72,9 @@
   "error": {
     "title": "Oops! Something went wrong",
     "reload": "Try to refresh",
-    "default": "An unexpected error occurred"
+    "default": "An unexpected error occurred",
+    "productsLoad": "Failed to load products. Please try refreshing the page.",
+    "notFound": "Product not found."
   },
   "search": {
     "placeholder": "Search...",

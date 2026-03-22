@@ -12,6 +12,7 @@ import { NotFoundPage } from '../NotFoundPage';
 import { Skeleton } from '@/components/Skelton';
 import { useTranslation } from 'react-i18next';
 
+// Valid categories for routing guard
 const validCategories = ['phones', 'tablets', 'accessories'];
 
 export const CatalogPage: React.FC = () => {
@@ -22,7 +23,8 @@ export const CatalogPage: React.FC = () => {
   const [isFiltering, setIsFiltering] = useState(false);
   const { t } = useTranslation();
 
-  //---Data Fetching
+  // --- DATA FETCHING ---
+  // Fetches products from API and filters them by the current URL category
   useEffect(() => {
     setIsLoading(true);
 
@@ -39,12 +41,14 @@ export const CatalogPage: React.FC = () => {
       });
   }, [category]);
 
-  //---Reading URL Parameters
+  // --- READING URL PARAMETERS ---
+  // Default values are used if parameters are missing from the URL
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = Number(searchParams.get('page')) || 1;
 
-  //--- Sorting Logic
+  // --- SORTING LOGIC ---
+  // Returns a new sorted array based on the chosen criteria (title, price, or year)
   const sortedProducts = [...products].sort((a, b) => {
     switch (sort) {
       case 'title':
@@ -57,7 +61,8 @@ export const CatalogPage: React.FC = () => {
     }
   });
 
-  //---Pagination Calculations
+  // --- PAGINATION CALCULATIONS ---
+  // Determines which slice of the sorted array should be displayed
   const isAll = perPage === 'all';
   const itemsPerPage = isAll ? sortedProducts.length : Number(perPage);
 
@@ -65,7 +70,8 @@ export const CatalogPage: React.FC = () => {
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentProducts = sortedProducts.slice(firstItemIndex, lastItemIndex);
 
-  //---URL Update Function (updateParams)
+  // --- URL UPDATE FUNCTION ---
+  // Synchronizes filter/pagination state with URL search parameters
   const updateParams = (newValues: Record<string, string | number>) => {
     setIsFiltering(true);
 
@@ -83,6 +89,7 @@ export const CatalogPage: React.FC = () => {
       }
     });
 
+    // Reset to page 1 when sort or perPage changes (unless explicitly setting page)
     if (!newValues.hasOwnProperty('page')) {
       params.delete('page');
     }
@@ -94,11 +101,11 @@ export const CatalogPage: React.FC = () => {
     }, 300);
   };
 
-  //----Conditional Rendering Logic
+  // --- CONDITIONAL RENDERING LOGIC ---
   const shouldShowPagination = !isAll && sortedProducts.length > itemsPerPage;
   const showLoader = isLoading || isFiltering;
 
-  //---- fetching the header from the category
+  // Dynamic title based on category translation
   const displayTitle = category
     ? t(`categories.${category.toLowerCase()}`)
     : t('nav.catalog');
@@ -107,7 +114,7 @@ export const CatalogPage: React.FC = () => {
     return <NotFoundPage />;
   }
 
-  //=== Skelton
+  // Skelton
   const skeletonCount = perPage === 'all' ? 12 : Number(perPage);
 
   return (

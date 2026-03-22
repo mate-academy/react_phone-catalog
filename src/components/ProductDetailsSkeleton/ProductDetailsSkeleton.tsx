@@ -7,9 +7,9 @@ export const ProductDetailsSkeleton: React.FC = () => {
       <div className={styles.breadcrumbs} />
       <div className={styles.title} />
 
-      {/* ODPOWIEDNIK .productContent */}
+
       <div className={styles.productContent}>
-        {/* ODPOWIEDNIK .gallery */}
+
         <div className={styles.gallery}>
           <div className={styles.thumbnails}>
             {[1, 2, 3, 4].map(i => (
@@ -19,7 +19,7 @@ export const ProductDetailsSkeleton: React.FC = () => {
           <div className={styles.mainImageContainer} />
         </div>
 
-        {/* ODPOWIEDNIK .actions */}
+
         <div className={styles.actions}>
           <div className={styles.section}>
             <div className={styles.labelSmall} />
@@ -41,7 +41,7 @@ export const ProductDetailsSkeleton: React.FC = () => {
         </div>
       </div>
 
-      {/* ODPOWIEDNIK .description */}
+      
       <div className={styles.description}>
         <div className={styles.about}>
           <div className={styles.labelMedium} />

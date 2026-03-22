@@ -32,16 +32,18 @@ export const CartPage: React.FC = () => {
   } = useCart();
 
   const { t } = useTranslation();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // --- HANDLERS ---
   const handleCheckout = () => setIsModalOpen(true);
 
+  // Clears the cart and closes the modal after successful "checkout"
   const confirmClear = () => {
     clearCart();
     setIsModalOpen(false);
   };
 
+  // --- CONDITIONAL RENDERING: EMPTY STATE ---
   if (cartItems.length === 0) {
     return (
       <div className={styles.container}>

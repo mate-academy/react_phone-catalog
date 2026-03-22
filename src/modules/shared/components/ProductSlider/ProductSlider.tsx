@@ -20,7 +20,8 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const touchStartX = useRef(0);
   const { t } = useTranslation();
 
-  // how many cards will be visible
+  // --- RESPONSIVE CONFIG ---
+  // Determines how many cards (or fractions of cards) are visible based on screen width
   const getVisibleCount = (w: number) => {
     if (w >= 1200) {
       return 4;
@@ -37,7 +38,8 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
     return 1.3;
   };
 
-  // real card width
+  // --- MEASUREMENT EFFECT ---
+  // Tracks the slider container width to recalculate card sizes on window resize
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -51,15 +53,18 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
+  // --- CALCULATIONS ---
   const visibleCards = getVisibleCount(containerWidth || 1200);
 
-  // dynamic width
+  // Dynamic calculation of card width and the translation step
   const cardWidth =
     (containerWidth - (Math.ceil(visibleCards) - 1) * GAP) / visibleCards;
   const step = cardWidth + GAP;
 
+  // Prevents sliding into empty space at the end of the list
   const maxIndex = Math.max(0, products.length - Math.floor(visibleCards));
 
+  // --- HANDLERS ---
   const handleNext = () => {
     setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
   };
@@ -68,6 +73,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
     setCurrentIndex(prev => Math.max(prev - 1, 0));
   };
 
+  // --- TOUCH NAVIGATION (Mobile Swipe) ---
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };

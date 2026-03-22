@@ -13,10 +13,13 @@ export const FavoritesPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
 
+  // --- PAGINATION LOGIC ---
+  // Calculating the slice of the favorites array to display on the current page
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentFavorites = favorites.slice(firstItemIndex, lastItemIndex);
 
+  // --- HANDLERS ---
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -24,6 +27,8 @@ export const FavoritesPage: React.FC = () => {
 
   const shouldShowPagination = favorites.length > itemsPerPage;
 
+  // --- CONDITIONAL RENDERING: GLOBAL EMPTY STATE ---
+  // Shown when the user hasn't added any products to favorites yet
   if (favorites.length === 0) {
     return (
       <div className={styles.container}>

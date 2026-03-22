@@ -17,11 +17,14 @@ import notFoundImg from '@/assets/img/ProductNotFound.png';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
+
   const [product, setProduct] = useState<ProductDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
+  // --- EFFECT: FETCH PRODUCT DETAILS ---
+  // Runs every time the productId changes (e.g., when clicking a suggested product)
   useEffect(() => {
     window.scrollTo(0, 0);
     setLoading(true);
@@ -44,16 +47,20 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [productId]);
 
+  // --- EFFECT: FETCH SUGGESTIONS ---
+  // Fetches a list of related products to display in the bottom slider
   useEffect(() => {
     if (productId) {
       getSuggestedProducts(productId).then(setSuggestedProducts);
     }
   }, [productId]);
 
+  // --- LOADING STATE ---
   if (loading) {
     return <ProductDetailsSkeleton />;
   }
 
+  // --- ERROR / NOT FOUND STATE ---
   if (errorMessage || !product) {
     return (
       <div className={styles.container}>

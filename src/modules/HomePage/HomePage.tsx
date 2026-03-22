@@ -12,6 +12,8 @@ export const HomePage: React.FC = () => {
   const { products, loading, error } = useProducts();
   const { t } = useTranslation();
 
+  // --- COMPUTED DATA (New Arrivals) ---
+  // Filters and sorts products by year to show the latest models
   const brandNewProducts = useMemo(() => {
     return [...products]
       .sort((a, b) => b.year - a.year)
@@ -22,6 +24,8 @@ export const HomePage: React.FC = () => {
       }));
   }, [products]);
 
+  // --- COMPUTED DATA (Deals/Discounts) ---
+  // Filters products where the original price is higher than current price
   const hotPriceProducts = useMemo(() => {
     return [...products]
       .filter(p => p.fullPrice > p.price)
@@ -34,6 +38,7 @@ export const HomePage: React.FC = () => {
       .slice(0, 24);
   }, [products]);
 
+  // --- ERROR & LOADING STATES ---
   if (loading) {
     return <Loader />;
   }
@@ -46,7 +51,9 @@ export const HomePage: React.FC = () => {
     <div className={styles.home}>
       <div className="container">
         <>
-          <Heading as="h1" className={styles.topHeading}>{t('home.welcome')}</Heading>
+          <Heading as="h1" className={styles.topHeading}>
+            {t('home.welcome')}
+          </Heading>
 
           <section className={styles.home__section}>
             <HeroSlider />
