@@ -30,11 +30,16 @@ const IconChevronRight = () => (
 interface Props {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 }
 
 const SCROLL_STEP = 288 * 2;
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  showDiscount = true,
+}) => {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: 'left' | 'right') => {
@@ -72,7 +77,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         <div className={styles.track} ref={trackRef}>
           {products.map(p => (
             <div key={p.id} className={styles.item}>
-              <ProductCard product={p} />
+              <ProductCard product={p} showDiscount={showDiscount} />
             </div>
           ))}
         </div>

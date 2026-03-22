@@ -66,7 +66,11 @@ export const HomePage: React.FC = () => {
 
       <PicturesSlider />
 
-      <ProductsSlider title="Brand new models" products={brandNew} />
+      <ProductsSlider
+        title="Brand new models"
+        products={brandNew}
+        showDiscount={false}
+      />
 
       <section className={styles.categories}>
         <h2 className={styles.sectionTitle}>Shop by category</h2>

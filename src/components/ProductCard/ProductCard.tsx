@@ -19,10 +19,14 @@ const IconHeart = ({ filled }: { filled: boolean }) => (
 
 interface Props {
   product: Product;
+  showDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { addToCart, isInCart } = useCart();
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showDiscount = true,
+}) => {
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const inCart = isInCart(product.id);
@@ -30,6 +34,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const detailPath = `/${product.category}/${product.itemId}`;
   const hasDiscount = product.fullPrice > product.price;
+
+  const handleCartClick = () => {
+    if (inCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
 
   return (
     <article className={styles.card}>
@@ -49,7 +61,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className={styles.prices}>
           <span className={styles.price}>${product.price}</span>
-          {hasDiscount && (
+          {showDiscount && hasDiscount && (
             <span className={styles.fullPrice}>${product.fullPrice}</span>
           )}
         </div>
@@ -72,8 +84,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={styles.actions}>
           <button
             className={`${styles.addBtn} ${inCart ? styles.addBtnAdded : ''}`}
-            onClick={() => addToCart(product)}
-            disabled={inCart}
+            onClick={handleCartClick}
           >
             {inCart ? 'Added to cart' : 'Add to cart'}
           </button>
