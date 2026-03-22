@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import {  createHashRouter, Navigate } from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '@/modules/HomePage';
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
@@ -9,7 +9,7 @@ import { CartPage } from '@/modules/CartPage';
 import { NotFoundPage } from '@/modules/NotFoundPage';
 import { SearchPage } from '@/modules/SearchPage';
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   [
     {
       path: '/',

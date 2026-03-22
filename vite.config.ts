@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 
 export default defineConfig({
+  base: '/react_phone-catalog/',
   plugins: [react(), svgr()],
   resolve: {
     alias: {

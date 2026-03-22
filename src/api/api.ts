@@ -2,7 +2,7 @@
 import { Product } from '../types/Product';
 import { ProductDetail } from '../types/ProductDetail';
 
-const BASE_URL = '';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 //====Helper to simulate network delay for testing loading states
 function wait(delay: number): Promise<void> {
