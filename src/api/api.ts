@@ -2,7 +2,7 @@
 import { Product } from '../types/Product';
 import { ProductDetail } from '../types/ProductDetail';
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL || '';
 
 //====Helper to simulate network delay for testing loading states
 function wait(delay: number): Promise<void> {
@@ -12,14 +12,14 @@ function wait(delay: number): Promise<void> {
 }
 
 // =====Generic request wrapper with a built-in delay
-async function request<T>(url: string): Promise<T> {
-  // Simulating 300ms delay to see Loaders in action
+async function request<T>(endpoint: string): Promise<T> {
   await wait(300);
 
-  const response = await fetch(BASE_URL + '/api/products.json');
+  const fullUrl = `${BASE_URL}/${endpoint.replace(/^\//, '')}`;
+  const response = await fetch(fullUrl);
 
   if (!response.ok) {
-    throw new Error(`${response.status} ${response.statusText}`);
+    throw new Error(`${response.status} ${response.statusText} at ${fullUrl}`);
   }
 
   return response.json();
@@ -27,14 +27,14 @@ async function request<T>(url: string): Promise<T> {
 
 // === Specific API Calls ===
 
-export const getProducts = () => request<Product[]>('/api/products.json');
+export const getProducts = () => request<Product[]>('api/products.json');
 
-export const getPhones = () => request<ProductDetail[]>('/api/phones.json');
+export const getPhones = () => request<ProductDetail[]>('api/phones.json');
 
-export const getTablets = () => request<ProductDetail[]>('/api/tablets.json');
+export const getTablets = () => request<ProductDetail[]>('api/tablets.json');
 
 export const getAccessories = () =>
-  request<ProductDetail[]>('/api/accessories.json');
+  request<ProductDetail[]>('api/accessories.json');
 
 // =======Fetches specific product details by checking all category files.
 export const getProductDetails = async (
