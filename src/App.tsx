@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { Header } from './components/Header';
@@ -12,10 +12,12 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { ContactsPage } from './modules/ContactsPage';
+import { RightsPage } from './modules/RightsPage';
 import './App.scss';
 
 export const App: React.FC = () => (
-  <BrowserRouter basename="/react_phone-catalog">
+  <HashRouter>
     <CartProvider>
       <FavoritesProvider>
         <div className="layout">
@@ -40,6 +42,8 @@ export const App: React.FC = () => (
               />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/contacts" element={<ContactsPage />} />
+              <Route path="/rights" element={<RightsPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
@@ -47,5 +51,5 @@ export const App: React.FC = () => (
         </div>
       </FavoritesProvider>
     </CartProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
