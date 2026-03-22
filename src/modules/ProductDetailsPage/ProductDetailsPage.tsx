@@ -10,14 +10,14 @@ export const ProductDetailsPage = () => {
   const {
     selectedProsuct,
     product,
-    // eslint-disable-next-line
     suggested,
-    // eslint-disable-next-line
     setProductImage,
-    // eslint-disable-next-line
     productImage,
     isLoading,
   } = useProductDetails(productId);
+
+  // eslint-disable-next-line
+  console.log(suggested, setProductImage, productImage);
 
   return (
     <div className={style.productDetails}>

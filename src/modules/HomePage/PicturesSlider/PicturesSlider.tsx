@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import style from './PicturesSlider.module.scss';
 import classNames from 'classnames';
 import { Icon } from '../../../components/ui/Icon/Icon';
+import { useSwipe } from '../../../hook/useSwipe';
 
 export const PicturesSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const startXRef = useRef(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const startXRef = useRef(0);
   const pictures = [
     'img/banner-accessories.webp',
     'img/banner-phones.webp',
@@ -14,30 +15,40 @@ export const PicturesSlider = () => {
     'img/banner-2.webp',
     'img/banner-3.webp',
   ];
+  const {
+    previosBunner,
+    nextBunner,
+    handleTouchStart,
+    handleTouchEnd,
+    currentIndex,
+    setCurrentIndex,
+  } = useSwipe({
+    images: pictures,
+  });
 
-  const nextBunner = useCallback(
-    () => setCurrentIndex(prevIndex => (prevIndex + 1) % pictures.length),
-    [pictures.length],
-  );
+  // const nextBunner = useCallback(
+  //   () => setCurrentIndex(prevIndex => (prevIndex + 1) % pictures.length),
+  //   [pictures.length],
+  // );
 
-  const previosBunner = () =>
-    setCurrentIndex(
-      prevIndex => (prevIndex - 1 + pictures.length) % pictures.length,
-    );
+  // const previosBunner = () =>
+  //   setCurrentIndex(
+  //     prevIndex => (prevIndex - 1 + pictures.length) % pictures.length,
+  //   );
 
-  const handleTouchStart = (event: React.TouchEvent) => {
-    startXRef.current = event.touches[0].clientX;
-  };
+  // const handleTouchStart = (event: React.TouchEvent) => {
+  //   startXRef.current = event.touches[0].clientX;
+  // };
 
-  const handleTouchEnd = (event: React.TouchEvent) => {
-    const endX = event.changedTouches[0].clientX;
+  // const handleTouchEnd = (event: React.TouchEvent) => {
+  //   const endX = event.changedTouches[0].clientX;
 
-    if (startXRef.current - endX > 50) {
-      nextBunner();
-    } else if (endX - startXRef.current > 50) {
-      previosBunner();
-    }
-  };
+  //   if (startXRef.current - endX > 50) {
+  //     nextBunner();
+  //   } else if (endX - startXRef.current > 50) {
+  //     previosBunner();
+  //   }
+  // };
 
   useEffect(() => {
     const intervalId = setInterval(nextBunner, 5000);
