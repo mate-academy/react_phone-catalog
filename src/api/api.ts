@@ -16,7 +16,7 @@ async function request<T>(url: string): Promise<T> {
   // Simulating 300ms delay to see Loaders in action
   await wait(300);
 
-  const response = await fetch(BASE_URL + url);
+  const response = await fetch(BASE_URL + '/api/products.json');
 
   if (!response.ok) {
     throw new Error(`${response.status} ${response.statusText}`);
