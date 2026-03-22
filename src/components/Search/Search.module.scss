@@ -23,6 +23,7 @@
     cursor: pointer;
     z-index: 101;
     color: $color-primary;
+
   }
 }
 
@@ -38,10 +39,13 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
 
+
+
   &--active {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
+
   }
 
   &__content {
@@ -54,6 +58,7 @@
     align-items: center;
     padding: 0 20px;
     box-shadow: 0 4px 12px $color-search-shadow;
+    border-bottom: 1px solid $color-elements;
 
     transform: translateY(-100%);
     transition: transform 0.4s ease;
