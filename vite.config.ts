@@ -7,8 +7,8 @@ import svgr from 'vite-plugin-svgr';
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 
-export default defineConfig({
-  base: '/react_phone-catalog/',
+export default defineConfig (({ command }) =>({
+  base: command === 'build' ? '/react_phone-catalog/' : '/',
   plugins: [react(), svgr()],
   resolve: {
     alias: {
@@ -32,4 +32,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
