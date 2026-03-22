@@ -15,11 +15,13 @@ function wait(delay: number): Promise<void> {
 async function request<T>(endpoint: string): Promise<T> {
   await wait(300);
 
-  const fullUrl = `${BASE_URL}/${endpoint.replace(/^\//, '')}`;
+  const cleanEndpoint = endpoint.replace(/^\//, '');
+  const fullUrl = `${BASE_URL}/${cleanEndpoint}`;
+
   const response = await fetch(fullUrl);
 
   if (!response.ok) {
-    throw new Error(`${response.status} ${response.statusText} at ${fullUrl}`);
+    throw new Error(`Błąd API: ${response.status} pod adresem ${fullUrl}`);
   }
 
   return response.json();
@@ -27,7 +29,14 @@ async function request<T>(endpoint: string): Promise<T> {
 
 // === Specific API Calls ===
 
-export const getProducts = () => request<Product[]>('api/products.json');
+export const getProducts = async (): Promise<Product[]> => {
+  const products = await request<Product[]>('api/products.json');
+
+  return products.map(product => ({
+    ...product,
+    image: `${BASE_URL}/${product.image.replace(/^\//, '')}`,
+  }));
+};
 
 export const getPhones = () => request<ProductDetail[]>('api/phones.json');
 
