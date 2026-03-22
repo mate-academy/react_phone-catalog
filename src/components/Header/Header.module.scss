@@ -111,11 +111,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 48px;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: calc(100vh - 48px);
+  height: auto;
   background-color: $color-page-bg;
   z-index: 999;
   opacity: 0;
@@ -232,9 +234,11 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 64px;
+  min-height: 80px;
+  margin-top: auto;
   border-top: 1px solid $color-elements;
   padding-bottom: env(safe-area-inset-bottom, 20px);
+
 
   @include tablet {
     border-top: none;
