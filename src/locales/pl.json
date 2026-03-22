@@ -85,7 +85,7 @@
     "placeholder": "Szukaj...",
     "resultsTitle": "Wyniki wyszukiwania",
     "resultsFor": "Wyniki dla „{{query}}”",
-    "resultsCount": "Found {{count}} products for \"{{query}}\"",
+    "resultsCount": "Znaleziono {{count}} produktów dla „{{query}}”",
     "noResults": "Brak produktów pasujących do wyszukiwania.",
     "categories": {
       "phones": "telefony",
