@@ -1,16 +1,12 @@
-import { getPhones } from '../../api';
 import './ProductList.scss';
-import { useEffect, useState } from 'react';
 import { Phone } from '../../types/Phone';
 import ProductCard from '../ProductCard/ProductCard';
 
-const ProductList = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+type ProductListProps = {
+  phones: Phone[];
+};
 
-  useEffect(() => {
-    getPhones().then(setPhones);
-  }, []);
-
+const ProductList = ({ phones }: ProductListProps) => {
   return (
     <div className="product__list">
       {phones.map(phone => (

@@ -39,16 +39,31 @@
   }
 };
 
-.category {
-
+.category__section {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
 };
 
-.category__banner {
-  width: 288px;
-  height: 288px;
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+    flex-direction: column;
   @media (min-width: 640px) {
-    width: 187px;
+   flex-direction: row;
+  }
+  @media (min-width: 1200px) {
+   flex-direction: row;
+  }
+}
+
+.category__banner {
+   width: 187px;
     height: 187px;
+  @media (min-width: 640px) {
+   width: 288px;
+  height: 288px;
   }
   @media (min-width: 1200px) {
     width: 368px;
