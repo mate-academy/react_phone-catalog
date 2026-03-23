@@ -12,34 +12,42 @@ import { ProductsProvider } from './store/ProductsProvider';
 import { Catalog } from './modules/Catalog';
 import { FavouritesProvider } from './store/favourites/FavouritesProvider';
 import { CartProvider } from './store/cart/CartProvider';
+import { Checkout } from './modules/Checkout';
+import { OrderProvider } from './store/OrderProvider/OrderProvider';
+import { Confirm } from './components/layout/Confirm';
 
 export const App = () => {
   return (
     <FavouritesProvider>
       <CartProvider>
-        <div className="app">
-          <Header />
-          <main className="wrapper">
-            <ProductsProvider>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/favourites" element={<Favourites />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="*" element={<PageNotFound />} />
+        <OrderProvider>
+          <div className="app">
+            <Header />
+            <main className="wrapper">
+              <ProductsProvider>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="*" element={<PageNotFound />} />
+                  <Route path="/favourites" element={<Favourites />} />
+                  <Route path="/cart" element={<Cart />} />
 
-                <Route path="/catalog">
-                  <Route index element={<Catalog />} />
+                  <Route path="/:orderId" element={<Checkout />} />
+                  <Route path="/confirm" element={<Confirm />} />
 
-                  <Route path=":category">
-                    <Route index element={<ProductPage />} />
-                    <Route path=":productId" element={<ProductDetails />} />
+                  <Route path="/catalog">
+                    <Route index element={<Catalog />} />
+
+                    <Route path=":category">
+                      <Route index element={<ProductPage />} />
+                      <Route path=":productId" element={<ProductDetails />} />
+                    </Route>
                   </Route>
-                </Route>
-              </Routes>
-            </ProductsProvider>
-          </main>
-          <Footer />
-        </div>
+                </Routes>
+              </ProductsProvider>
+            </main>
+            <Footer />
+          </div>
+        </OrderProvider>
       </CartProvider>
     </FavouritesProvider>
   );

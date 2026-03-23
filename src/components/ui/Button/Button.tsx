@@ -3,7 +3,7 @@ import styles from './Button.module.scss';
 
 type Props = {
   children: React.ReactNode;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   maxWidth?: string;
   color?: string;
   type?: 'button' | 'submit' | 'reset';

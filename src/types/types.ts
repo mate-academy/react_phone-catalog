@@ -56,7 +56,7 @@ export type FilterOption = {
 };
 
 export interface Filter {
-  title: string;
+  title?: string;
   value: FilterValue;
   onChange: (value: FilterValue) => void;
   options: FilterOption[];

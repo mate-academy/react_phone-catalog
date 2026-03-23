@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom';
 import { imageUrl } from '../../../utils/imageUrl';
+import { scrollToTop } from '../../../utils/scrollToTop';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>

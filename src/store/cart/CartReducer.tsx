@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 const CHANGE_COUNT = 'CHANGE_COUNT';
+const CLEAR_CART = 'CLEAR_CART';
 
 type AddProduct = {
   type: typeof ADD_PRODUCT;
@@ -23,11 +24,21 @@ type ChangeCount = {
   };
 };
 
-export type CartAction = AddProduct | DeleteProduct | ChangeCount;
+type ClearCart = {
+  type: typeof CLEAR_CART;
+};
+
+export type CartAction = AddProduct | DeleteProduct | ChangeCount | ClearCart;
 
 export const cartReducer = (state: CartProduct[], action: CartAction) => {
   switch (action.type) {
     case ADD_PRODUCT:
+      if (state.some(item => item.product.id === action.payload.product.id)) {
+        return state.filter(
+          item => item.product.id !== action.payload.product.id,
+        );
+      }
+
       return [...state, action.payload];
     case DELETE_PRODUCT:
       return state.filter(item => item.id !== action.payload);
@@ -42,7 +53,8 @@ export const cartReducer = (state: CartProduct[], action: CartAction) => {
 
         return item;
       });
-
+    case CLEAR_CART:
+      return [];
     default:
       return state;
   }
@@ -71,4 +83,8 @@ export const changeProductQuantity = (
     id,
     delta,
   },
+});
+
+export const clearCart = (): ClearCart => ({
+  type: CLEAR_CART,
 });

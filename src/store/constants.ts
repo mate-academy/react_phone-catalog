@@ -38,3 +38,8 @@ export const catalogTitles: Record<string, string> = {
   tablets: 'Tablets',
   accessories: 'Accessories',
 };
+
+export const PaymentMethods = [
+  { label: 'Card', value: 'card' },
+  { label: 'Cash', value: 'cash' },
+];

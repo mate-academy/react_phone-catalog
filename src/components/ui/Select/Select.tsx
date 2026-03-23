@@ -41,9 +41,11 @@ export const Select = ({
 
   return (
     <div className={styles.container} ref={selectRef}>
-      <div className={styles.group}>
-        {title && <p className={styles.title}>{title}</p>}
-      </div>
+      {title && (
+        <div className={styles.group}>
+          <p className={styles.title}>{title}</p>
+        </div>
+      )}
       <div
         className={classNames(styles.select, {
           [styles.select__active]: isOpen,

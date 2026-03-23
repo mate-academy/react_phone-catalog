@@ -7,7 +7,9 @@ import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductColection } from '../../components/layout/ProductColection';
 import { Button } from '../../components/ui/Button';
 import { ButtonLiked } from '../../components/ui/ButtonLiked';
+import { useCart } from '../../hooks/useCart';
 import { useFavourites } from '../../hooks/useFavourites';
+import { addProductToCart } from '../../store/cart/CartReducer';
 import { toggleFavourites } from '../../store/favourites/FavouritesReducer';
 import { ProductsContext } from '../../store/ProductsProvider';
 import { ProductDetailsType } from '../../types/types';
@@ -19,6 +21,7 @@ export const ProductDetails = () => {
   const { category, productId } = useParams();
   const products = useContext(ProductsContext);
   const { favourites, setFavourites } = useFavourites();
+  const { cart, setCart } = useCart();
   const [product, setProduct] = useState<ProductDetailsType | undefined>();
   const [preview, setPreview] = useState<string>('');
 
@@ -196,7 +199,19 @@ export const ProductDetails = () => {
                   )}
                 </div>
                 <div className={styles.buttons}>
-                  <Button maxWidth={'100%'} onClick={() => {}}>
+                  <Button
+                    isActive={cart.some(
+                      item => item.product.itemId === product.id,
+                    )}
+                    maxWidth={'100%'}
+                    onClick={() => {
+                      setCart(
+                        addProductToCart(
+                          products.find(item => item.itemId === product.id)!,
+                        ),
+                      );
+                    }}
+                  >
                     Add to cart
                   </Button>
                   <ButtonLiked

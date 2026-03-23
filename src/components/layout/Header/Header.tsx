@@ -7,10 +7,13 @@ import { navigation } from '../../../store/constants';
 import { useLocation } from 'react-router-dom';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Header.module.scss';
+import { scrollToTop } from '../../../utils/scrollToTop';
+import { useOrder } from '../../../hooks/useOrder';
 
 export const Header = () => {
   const { favourites } = useFavourites();
   const { cart } = useCart();
+  const { order } = useOrder();
   const location = useLocation();
   const [showBurger, setShowBurger] = useState<boolean>(false);
 
@@ -24,6 +27,7 @@ export const Header = () => {
 
   useEffect(() => {
     setShowBurger(false);
+    scrollToTop();
   }, [location.pathname]);
 
   return (
@@ -60,6 +64,20 @@ export const Header = () => {
           </ul>
         </nav>
         <div className={styles.buttons}>
+          {order.orderId && (
+            <div className={classNames(styles.block, styles.block__hidden)}>
+              <NavLink
+                to={`/${order.orderId}`}
+                className={({ isActive }) =>
+                  classNames(styles.block__link, {
+                    [styles.block__link_active]: isActive,
+                  })
+                }
+              >
+                $
+              </NavLink>
+            </div>
+          )}
           <div className={classNames(styles.block, styles.block__hidden)}>
             <NavLink
               to="/favourites"
