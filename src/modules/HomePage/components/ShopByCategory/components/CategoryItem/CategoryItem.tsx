@@ -24,7 +24,7 @@ export const CategoryItem: React.FC<Props> = ({
     <Link to={`/${link}`} className={styles.item} onClick={scrollToTop}>
       <div className={styles.imageBox} style={{ backgroundColor: bgColor }}>
         <img
-          src={`${import.meta.env.BASE_URL}${image}`}
+          src={`${import.meta.env.BASE_URL}/${image}`}
           alt={categoryName}
           className={styles.image}
         />

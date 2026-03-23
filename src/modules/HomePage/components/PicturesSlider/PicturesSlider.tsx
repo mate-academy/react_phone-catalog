@@ -62,11 +62,11 @@ export const PicturesSlider = () => {
               <picture>
                 <source
                   media="(min-width: 640px)"
-                  srcSet={`${import.meta.env.BASE_URL}${slide.desktopImg}`}
+                  srcSet={`${import.meta.env.BASE_URL}/${slide.desktopImg.replace(/^\//, '')}`}
                 />
 
                 <img
-                  src={`${import.meta.env.BASE_URL}${slide.mobileImg}`}
+                  src={`${import.meta.env.BASE_URL}/${slide.mobileImg.replace(/^\//, '')}`}
                   alt={slide.alt}
                   className={styles.bannerImage}
                 />
