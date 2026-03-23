@@ -45,14 +45,16 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <article className={styles.card}>
-      <Link to={detailPath} className={styles.imgWrap}>
-        <img
-          src={product.image}
-          alt={product.name}
-          className={styles.img}
-          loading="lazy"
-        />
-      </Link>
+      <div className={styles.imgClip}>
+        <Link to={detailPath} className={styles.imgWrap}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className={styles.img}
+            loading="lazy"
+          />
+        </Link>
+      </div>
 
       <div className={styles.body}>
         <Link to={detailPath} className={styles.name}>

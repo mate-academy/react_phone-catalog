@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ProductDetails, Product, Category } from '../../types';
+import { ProductDetails, Product, Category } from '../../types/index';
 import { Loader } from '../../components/Loader/index';
 import { Breadcrumbs } from '../../components/Breadcrumbs/index';
 import { ProductCard } from '../../components/ProductCard/index';
@@ -121,7 +121,7 @@ export const ProductDetailsPage: React.FC = () => {
       .slice(0, 10);
   }, [product]);
 
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const inCart = summaryProduct ? isInCart(summaryProduct.id) : false;
   const fav = summaryProduct ? isFavorite(summaryProduct.id) : false;
@@ -284,10 +284,12 @@ export const ProductDetailsPage: React.FC = () => {
               className={[styles.addBtn, inCart ? styles.addBtnAdded : ''].join(
                 ' ',
               )}
-              disabled={inCart}
               onClick={() => {
                 if (summaryProduct) {
-                  addToCart(summaryProduct);
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  inCart
+                    ? removeFromCart(summaryProduct.id)
+                    : addToCart(summaryProduct);
                 }
               }}
             >
@@ -357,7 +359,11 @@ export const ProductDetailsPage: React.FC = () => {
           <h2 className={styles.sectionTitle}>You may also like</h2>
           <div className={styles.suggestedTrack}>
             {suggested.map((p: Product) => (
-              <div key={p.id} className={styles.suggestedItem}>
+              <div
+                key={p.id}
+                className={styles.suggestedItem}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
                 <ProductCard product={p} />
               </div>
             ))}
