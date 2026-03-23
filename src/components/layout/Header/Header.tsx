@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '../../../hooks/useCart';
 import { useFavourites } from '../../../hooks/useFavourites';
 import { navigation } from '../../../store/constants';
 import { imageUrl } from '../../../utils/imageUrl';
@@ -8,6 +9,7 @@ import styles from './Header.module.scss';
 
 export const Header = () => {
   const { favourites } = useFavourites();
+  const { cart } = useCart();
   const [showBurger, setShowBurger] = useState<boolean>(false);
 
   useEffect(() => {
@@ -87,6 +89,9 @@ export const Header = () => {
                 alt=""
                 className={styles.block__img}
               />
+              {cart.length > 0 && (
+                <span className={styles.block__link_fav}>{cart.length}</span>
+              )}
             </NavLink>
           </div>
           <div className={classNames(styles.block, styles.block__burger)}>

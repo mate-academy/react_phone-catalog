@@ -13,6 +13,12 @@ export interface Product {
   image: string;
 }
 
+export interface CartProduct {
+  id: string;
+  quantity: number;
+  product: Product;
+}
+
 type DescriptionProduct = {
   title: string;
   text: string[];

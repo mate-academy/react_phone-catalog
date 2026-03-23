@@ -14,7 +14,7 @@ export const Button = (props: Props) => {
   const {
     children,
     maxWidth = '160px',
-    color = '#313237',
+    color,
     type = 'button',
     isActive = false,
     onClick,

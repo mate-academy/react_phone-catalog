@@ -10,6 +10,8 @@
   text-align: center;
   font-weight: 400;
   color: $white;
+  background: $main;
+  border-color: $main;
 
   &__active {
     background: $white;

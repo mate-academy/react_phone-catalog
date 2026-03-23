@@ -1,17 +1,36 @@
+import { useNavigate } from 'react-router-dom';
 import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductCard } from '../../components/layout/ProductCard';
+import { Button } from '../../components/ui/Button';
 import { useFavourites } from '../../hooks/useFavourites';
+import { imageUrl } from '../../utils/imageUrl';
 import styles from './Favourites.module.scss';
 
 export const Favourites = () => {
   const { favourites } = useFavourites();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
-      <Pagetoolbar breadcrumbs title="Favourites" subtitle="5 items" />
+      <Pagetoolbar
+        breadcrumbs
+        title="Favourites"
+        subtitle={`${favourites.length} items`}
+      />
       <div className={styles.content}>
         {favourites.length === 0 ? (
-          <h2 className={styles.title}>Add your favourites products!</h2>
+          <div className={styles.empty}>
+            <img
+              src={imageUrl('icons/Favourites.svg')}
+              alt=""
+              className={styles.empty__img}
+            />
+            <h3 className={styles.empty__title}>Yout wishlist is empty!</h3>
+            <p className={styles.empty__subtitle}>
+              Add your favourites products
+            </p>
+            <Button onClick={() => navigate('/catalog')}>Catalog</Button>
+          </div>
         ) : (
           <div className={styles.products}>
             {favourites.map(item => {

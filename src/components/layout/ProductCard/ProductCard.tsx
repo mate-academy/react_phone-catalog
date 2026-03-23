@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import { useCart } from '../../../hooks/useCart';
 import { useFavourites } from '../../../hooks/useFavourites';
+import { addProductToCart } from '../../../store/cart/CartReducer';
 import { toggleFavourites } from '../../../store/favourites/FavouritesReducer';
 import { Product } from '../../../types/types';
 import { imageUrl } from '../../../utils/imageUrl';
@@ -13,6 +15,7 @@ type Props = {
 
 export const ProductCard = ({ product }: Props) => {
   const { favourites, setFavourites } = useFavourites();
+  const { cart, setCart } = useCart();
   const path = `/catalog/${product.category}/${product.itemId}`;
 
   return (
@@ -38,7 +41,15 @@ export const ProductCard = ({ product }: Props) => {
         </p>
       </div>
       <div className={styles.footer}>
-        <Button onClick={() => {}} maxWidth="160px">
+        <Button
+          isActive={cart.some(item => item.product.id === product.id)}
+          onClick={e => {
+            e.preventDefault();
+            e.stopPropagation();
+            setCart(addProductToCart(product));
+          }}
+          maxWidth="160px"
+        >
           Add to cart
         </Button>
         <ButtonLiked

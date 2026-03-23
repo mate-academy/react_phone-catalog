@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import { useEffect } from 'react';
 import { useReducer } from 'react';
 import { Product } from '../../types/types';
+import { getLocaleStorage } from '../../utils/getLocaleStorage';
 import { FavouritesAction, favouritesReducer } from './FavouritesReducer';
 
 type FavouritesContextType = {
@@ -13,21 +14,13 @@ export const FavouritesContext = createContext<FavouritesContextType | null>(
   null,
 );
 
-const getInitialState = (): Product[] => {
-  const data = localStorage.getItem('favourites');
-
-  return data ? JSON.parse(data) : [];
-};
-
 export const FavouritesProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [favourites, setFavourites] = useReducer(
-    favouritesReducer,
-    [],
-    getInitialState,
+  const [favourites, setFavourites] = useReducer(favouritesReducer, [], () =>
+    getLocaleStorage('favourites'),
   );
 
   useEffect(() => {
