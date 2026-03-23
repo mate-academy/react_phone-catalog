@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash/debounce';
 import cl from 'classnames';
@@ -42,22 +42,23 @@ export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
     setLocalQuery(query);
   }, [query]);
 
-  const applyQuery = useCallback(
-    debounce((newQuery: string) => {
-      setSearchParams(prevParams => {
-        const params = new URLSearchParams(prevParams);
+  const applyQuery = useMemo(
+    () =>
+      debounce((newQuery: string) => {
+        setSearchParams(prevParams => {
+          const params = new URLSearchParams(prevParams);
 
-        if (!newQuery.trim()) {
-          params.delete('query');
-        } else {
-          params.set('query', newQuery.trim());
-        }
+          if (!newQuery.trim()) {
+            params.delete('query');
+          } else {
+            params.set('query', newQuery.trim());
+          }
 
-        params.delete('page');
+          params.delete('page');
 
-        return params;
-      });
-    }, 500),
+          return params;
+        });
+      }, 500),
     [setSearchParams],
   );
 
