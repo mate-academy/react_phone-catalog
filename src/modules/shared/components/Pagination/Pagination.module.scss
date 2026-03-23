@@ -1,10 +1,11 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: $spacing-xs;
 
   max-width: 248px;
   margin: 0 auto;
@@ -13,7 +14,7 @@
 .paginationList {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: $spacing-xs;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -24,6 +25,7 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
   scrollbar-width: none;
 }
 
@@ -33,27 +35,9 @@
 }
 
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
+  @include action-square-button;
 
-  flex-shrink: 0;
-
-  border: 1px solid $c-elements;
-  background-color: $c-white;
-  color: $c-primary;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.2s ease-in-out;
-
-  &:hover:not(.disabled, .active) {
-    border-color: $c-primary;
-  }
-
+  /* Active state (Specific to Pagination numbers) */
   &.active {
     background-color: $c-primary;
     border-color: $c-primary;
@@ -61,14 +45,8 @@
     cursor: default;
   }
 
-  &.disabled {
-    border-color: $c-elements;
-    color: $c-elements;
-    cursor: not-allowed;
-  }
-
+  /* Arrow SVG sizing */
   &.arrow {
-    background-color: $c-white;
     svg {
       width: 16px;
       height: 16px;

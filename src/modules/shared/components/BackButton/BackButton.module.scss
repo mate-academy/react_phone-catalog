@@ -4,15 +4,15 @@
 .backButton {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: $spacing-xxs;
   background: none;
   border: none;
   padding: 0;
-  margin: 24px 0;
+  margin: $spacing-m 0;
   font-family: inherit;
   color: $c-secondary;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: $transition-color;
 
   &:hover {
     color: $c-primary;
@@ -25,12 +25,11 @@
 
   .text {
     display: block;
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 700;
+
+    @include text-small-bold;
   }
 
   @include on-tablet {
-    margin: 40px 0 16px;
+    margin: $spacing-xl 0 $spacing-s;
   }
 }

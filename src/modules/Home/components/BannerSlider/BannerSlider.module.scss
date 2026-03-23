@@ -4,7 +4,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: $spacing-s;
   padding-bottom: 12px;
 
   margin-inline: -16px;
@@ -19,7 +19,7 @@
 .mainRow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: $spacing-s;
   width: 100%;
 }
 
@@ -40,7 +40,7 @@
 
 .track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: $transition-transform;
   height: 100%;
 }
 
@@ -67,7 +67,7 @@
   align-self: stretch;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s;
+  transition: $transition-default;
 
   display: none;
 
@@ -97,7 +97,7 @@
   background-color: $c-elements;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: $transition-default;
 
   &Active {
     background-color: $c-primary;

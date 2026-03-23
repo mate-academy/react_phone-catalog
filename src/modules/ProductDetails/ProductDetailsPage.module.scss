@@ -2,75 +2,65 @@
 @import '../../styles/mixins';
 
 .title {
-  font-weight: 800;
-  color: $c-primary;
+  @include page-title;
 
-  font-size: 22px;
-  line-height: 140%;
-  margin-bottom: 32px;
+  margin-bottom: $spacing-l;
 
   @include on-tablet {
-    font-size: 32px;
-    line-height: 41px;
-    margin-bottom: 40px;
+    margin-bottom: $spacing-xl;
   }
 }
 
 .productMain {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
-  margin-bottom: 56px;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-xxl;
 
   @include on-tablet {
     grid-template-columns: 2fr minmax(237px, 1fr);
     gap: 17px;
-    margin-bottom: 64px;
+    margin-bottom: $spacing-3xl;
   }
 
   @include on-desktop {
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: $spacing-3xl;
   }
 }
 
 .productDetails {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 56px;
-  margin-bottom: 56px;
+  gap: $spacing-xxl;
+  margin-bottom: $spacing-xxl;
 
   @include on-tablet {
-    gap: 64px;
-    margin-bottom: 64px;
+    gap: $spacing-3xl;
+    margin-bottom: $spacing-3xl;
   }
 
   @include on-desktop {
     grid-template-columns: 1fr 1fr;
-    margin-bottom: 80px;
+    margin-bottom: $spacing-4xl;
   }
 }
 
 .techSpecsTitle {
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: 700;
-  color: $c-primary;
+  @include section-title-bordered;
 
-  padding-bottom: 16px;
-  border-bottom: 1px solid $c-elements;
   margin-bottom: 30px;
 }
 
 .productSuggestions {
-  margin-bottom: 56px;
+  margin-bottom: $spacing-xxl;
 
   @include on-tablet {
-    margin-bottom: 64px;
+    margin-bottom: $spacing-3xl;
   }
 
   @include on-desktop {
-    margin-bottom: 80px;
+    margin-bottom: $spacing-4xl;
   }
 }
 

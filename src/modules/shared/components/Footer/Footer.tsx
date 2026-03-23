@@ -9,7 +9,11 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo} onClick={() => scrollToTop()}>
-          <span className={styles.logo__text}>Nice Gadgets</span>
+          <img
+            src="img/logo.png"
+            alt="Nice Gadgets"
+            className={styles.logoImage}
+          />
         </Link>
 
         <nav className={styles.nav}>

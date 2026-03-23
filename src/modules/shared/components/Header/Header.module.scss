@@ -6,13 +6,13 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 48px;
+  height: $size-header-mobile;
   background-color: $c-white;
   border-bottom: 1px solid $c-elements;
-  z-index: 100;
+  z-index: $z-header;
 
   @include on-desktop {
-    height: 64px;
+    height: $size-header-desktop;
   }
 }
 
@@ -22,22 +22,28 @@
   justify-content: space-between;
   height: 100%;
   margin: 0 auto;
+  gap: $spacing-s;
+
+  @include on-tablet {
+    gap: $spacing-m;
+  }
 }
 
 .nav {
   display: none;
   position: fixed;
-  top: 64px;
+  top: $size-header-mobile;
   left: 0;
   width: 100%;
-  height: calc(100vh - 64px);
+  height: calc(100vh - $size-header-mobile);
+
   background-color: $c-white;
   flex-direction: column;
   align-items: center;
-  padding-top: 32px;
-  z-index: 99;
+  padding-top: $spacing-l;
+  z-index: $z-menu;
   margin-right: 0;
-  gap: 16px;
+  gap: $spacing-s;
 
   &.menuOpen {
     display: flex;
@@ -46,16 +52,14 @@
   &__link {
     display: flex;
     align-items: center;
-    padding: 8px 0;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 4%;
-    font-weight: 800;
-    text-transform: uppercase;
+    padding: $spacing-xs 0;
+
+    @include text-nav-link;
+
     text-decoration: none;
     color: $c-secondary;
     position: relative;
-    transition: color 0.3s ease;
+    transition: $transition-color;
 
     &::after {
       content: '';
@@ -64,7 +68,7 @@
       height: 3px;
       width: 100%;
       background-color: transparent;
-      transition: background-color 0.3s ease;
+      transition: $transition-color;
     }
 
     &:hover {
@@ -87,32 +91,37 @@
     align-items: stretch;
     padding-top: 0;
     margin-right: auto;
-    gap: 32px;
+    gap: $spacing-l;
 
     &__link {
       height: auto;
-      font-size: 12px;
     }
   }
+
   @include on-desktop {
-    gap: 64px
+    gap: $spacing-3xl;
   }
 }
 
 .logo {
   display: flex;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 $spacing-s;
   flex-shrink: 0;
   text-decoration: none;
 
-  &Text {
-    font-size: 14px;
-    font-weight: 800;
-    color: $c-primary;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    white-space: nowrap;
+  &Image {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+
+    @include on-desktop {
+      height: 32px;
+    }
+  }
+
+  @include on-tablet {
+    padding: 0 $spacing-m;
   }
 }
 
@@ -130,10 +139,11 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 64px;
+    height: $size-header-desktop;
+
     background-color: $c-white;
     border-top: 1px solid $c-elements;
-    z-index: 99;
+    z-index: $z-menu;
   }
 
   &__link {
@@ -143,7 +153,7 @@
     flex: 1;
     color: $c-primary;
     position: relative;
-    transition: color 0.3s ease;
+    transition: $transition-color;
 
     &:first-child {
       border-right: 1px solid $c-elements;
@@ -157,7 +167,7 @@
       right: 0;
       height: 3px;
       background-color: transparent;
-      transition: background-color 0.3s ease;
+      transition: $transition-color;
     }
 
     &:hover {
@@ -181,7 +191,7 @@
 
     &__link {
       flex: none;
-      width: 48px;
+      width: $size-header-mobile;
       border-left: 1px solid $c-elements;
 
       &:first-child {
@@ -192,7 +202,7 @@
 
   @include on-desktop {
     &__link {
-      width: 64px;
+      width: $size-header-desktop;
     }
   }
 }
@@ -201,13 +211,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
+  width: $size-header-mobile;
   border: none;
   border-left: 1px solid $c-elements;
   background-color: transparent;
   color: $c-primary;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: $transition-color;
 
   &:hover {
     color: $c-secondary;
@@ -216,4 +226,27 @@
   @include on-tablet {
     display: none;
   }
+}
+
+.badge {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+
+  background-color: $c-red;
+  border: 1px solid $c-white;
+  border-radius: 16px;
+
+  color: $c-white;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  line-height: 1;
 }

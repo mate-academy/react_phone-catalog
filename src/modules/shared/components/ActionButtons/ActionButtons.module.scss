@@ -1,30 +1,41 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .buttons {
   display: flex;
-  gap: 8px;
+  gap: $spacing-xs;
   width: 100%;
 }
 
 .addToCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
   background-color: $c-primary;
   color: $c-white;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s;
   font-family: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  font-weight: $fw-semibold;
+  line-height: 21px;
+
+  transition: $transition-color;
 
   &:hover {
-    background-color: #000;
+    background-color: $c-secondary;
   }
-}
 
-.addToCart.inCart {
-  background-color: $c-white;
-  color: $c-green;
-  border: 1px solid $c-elements;
+  &.inCart {
+    background-color: $c-white;
+    color: $c-green;
+    border-color: $c-elements;
+
+    &:hover {
+      border-color: $c-green;
+    }
+  }
 }
 
 .favorite {
@@ -32,10 +43,12 @@
   align-items: center;
   justify-content: center;
   border: 1px solid $c-icons;
-  background: transparent;
-  cursor: pointer;
+  background-color: transparent;
   color: $c-primary;
-  transition: all 0.3s;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  transition: $transition-color;
 
   &:hover {
     border-color: $c-primary;
@@ -46,6 +59,10 @@
     border-color: $c-elements;
   }
 }
+
+/* =========================================
+   SIZE MODIFIERS
+   ========================================= */
 
 .small {
   .addToCart {
@@ -60,11 +77,11 @@
 
 .large {
   .addToCart {
-    height: 48px;
+    height: $size-primary-btn-height;
     font-size: 14px;
   }
   .favorite {
-    width: 48px;
-    height: 48px;
+    width: $size-primary-btn-height;
+    height: $size-primary-btn-height;
   }
 }

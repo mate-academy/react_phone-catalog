@@ -1,6 +1,8 @@
+@import 'src/styles/variables';
+
 .cartList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: $spacing-s;
   width: 100%;
 }

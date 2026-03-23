@@ -1,4 +1,5 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .categoryCard {
   display: block;
@@ -9,15 +10,15 @@
   &__imageWrapper {
     aspect-ratio: 1 / 1;
     background-color: $c-elements;
-    border-radius: 0;
+    border-radius: $border-radius-default;
     overflow: hidden;
-    margin-bottom: 24px;
+    margin-bottom: $spacing-m;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: scale-down;
-      transition: transform 0.3s ease;
+      transition: $transition-transform;
     }
   }
 
@@ -26,18 +27,12 @@
   }
 
   &__title {
-    font-weight: 700;
-    margin-bottom: 4px;
-    color: $c-primary;
+    @include text-subtitle;
 
-    font-size: 20px;
-    line-height: 26px;
+    margin-bottom: $spacing-xxs;
   }
 
   &__count {
-    color: $c-secondary;
-
-    font-size: 14px;
-    line-height: 21px;
+    @include text-secondary-regular;
   }
 }

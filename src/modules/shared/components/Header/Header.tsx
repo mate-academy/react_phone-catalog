@@ -34,7 +34,11 @@ export const Header: React.FC<Props> = ({
           aria-label="Go to home page"
           onClick={closeMenu}
         >
-          <span className={styles.logoText}>Nice Gadgets</span>
+          <img
+            src="img/logo.png"
+            alt="Nice Gadgets"
+            className={styles.logoImage}
+          />
         </NavLink>
 
         <nav

@@ -1,16 +1,16 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .container {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: $spacing-xxs;
   min-width: 128px;
 }
 
 .label {
-  font-size: 12px;
-  line-height: 15px;
-  font-weight: 700;
+  @include text-small-bold;
+
   color: $c-secondary;
 }
 
@@ -27,13 +27,11 @@
   background: $c-white;
   border: 1px solid $c-elements;
   font-family: inherit;
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 700;
   cursor: pointer;
   outline: none;
-  color: $c-primary;
-  transition: border-color 0.2s;
+  transition: $transition-color;
+
+  @include text-primary-semibold;
 
   &:hover { border-color: $c-icons; }
   &:focus { border-color: $c-primary; }

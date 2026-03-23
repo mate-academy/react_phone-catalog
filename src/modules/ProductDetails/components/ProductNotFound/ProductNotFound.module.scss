@@ -3,6 +3,7 @@
 
 .container {
   @include empty-state-container;
+
   margin: 0 auto;
   max-width: $bp-desktop;
 }
@@ -11,30 +12,31 @@
   width: 100%;
   max-width: 200px;
   height: auto;
-  margin-bottom: 32px;
+  margin-bottom: $spacing-l;
   object-fit: contain;
 
   @include on-tablet {
     max-width: 250px;
-    margin-bottom: 40px;
+    margin-bottom: $spacing-xl;
   }
 }
 
 .title {
   @include page-title;
-  margin-bottom: 16px;
+
+  margin-bottom: $spacing-s;
 }
 
 .description {
-  font-size: 14px;
-  color: $c-secondary;
-  margin: 0 0 32px;
+  @include text-secondary-regular;
+
+  margin: 0 0 $spacing-l;
   max-width: 400px;
-  line-height: 1.5;
 
   @include on-tablet {
     font-size: 16px;
-    margin-bottom: 40px;
+    line-height: 24px;
+    margin-bottom: $spacing-xl;
   }
 }
 

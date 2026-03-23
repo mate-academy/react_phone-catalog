@@ -1,10 +1,13 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .list {
-  list-style: none;
-  margin: 0;
   display: flex;
   flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-xs;
 }
 
 .item {
@@ -19,35 +22,29 @@
 
 .value {
   color: $c-primary;
+  text-align: right;
 }
 
+/* =========================================
+   VARIANTS
+   ========================================= */
 
 .card {
-  gap: 8px;
-  padding: 8px 0;
+  padding: $spacing-xs 0;
 
   .item {
-    font-size: 12px;
-    font-weight: 700;
+    @include text-small-bold;
   }
 }
 
 .short {
-  gap: 8px;
-
   .item {
-    font-size: 12px;
-    line-height: 15px;
-    font-weight: 600;
+    @include text-small-bold;
   }
 }
 
 .full {
-  gap: 8px;
-
   .item {
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 500;
+    @include text-secondary-regular;
   }
 }

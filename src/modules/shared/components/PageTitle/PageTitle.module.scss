@@ -1,17 +1,10 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .title {
-  font-family: inherit;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -1%;
-  color: $c-primary;
-  margin: 0;
-  margin-bottom: 8px;
+  @include hero-title;
 
-  @media (min-width: 640px) {
-    font-size: 48px;
-    line-height: 56px;
-  }
+  font-family: inherit;
+
+  margin: 0 0 $spacing-xs;
 }

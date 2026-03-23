@@ -2,34 +2,15 @@
 @import '../../styles/mixins';
 
 .container {
-  max-width: $bp-desktop;
-  margin: 0 auto;
-  margin-bottom: 56px;
-
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
-}
-
-.title {
-  margin-bottom: 8px;
-  font-size: 32px;
-  line-height: 41px;
-  color: $c-primary;
+  @include page-container;
 }
 
 .count {
-  font-size: 14px;
-  line-height: 21px;
-  margin-bottom: 32px;
-  font-weight: 600;
-  color: $c-secondary;
+  @include text-secondary-semibold;
+
+  margin-bottom: $spacing-l;
 
   @include on-tablet {
-    margin-bottom: 40px;
+    margin-bottom: $spacing-xl;
   }
 }

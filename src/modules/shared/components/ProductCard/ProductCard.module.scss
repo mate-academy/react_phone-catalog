@@ -1,22 +1,23 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.3s ease-in-out;
+  transition: $transition-transform;
 }
 
 .card {
-  padding: 32px;
+  padding: $spacing-l;
   border: 1px solid $c-elements;
   background-color: $c-white;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadow-md;
 
     .image {
       transform: scale(1.1);
@@ -30,27 +31,22 @@
 }
 
 .title {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
-  color: $c-primary;
-  margin-bottom: 8px;
-  padding-top: 16px;
+  @include text-primary-semibold;
+
+  margin-bottom: $spacing-xs;
+  padding-top: $spacing-s;
   overflow: hidden;
 }
 
 .priceContainer {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-xs;
 }
 
 .price {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 140%;
-  color: $c-primary;
+  @include text-price-medium;
 }
 
 .fullPrice {
@@ -62,11 +58,11 @@
 .divider {
   height: 1px;
   background-color: $c-elements;
-  margin: 0 0 8px;
+  margin: 0 0 $spacing-xs;
 }
 
 .specs {
-  margin-bottom: 8px;
+  margin-bottom: $spacing-xs;
 }
 
 .buttons {

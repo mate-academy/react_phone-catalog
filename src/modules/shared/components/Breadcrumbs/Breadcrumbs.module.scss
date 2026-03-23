@@ -4,12 +4,12 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  padding-top: 24px;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-m;
+  padding-top: $spacing-m;
 
   @include on-tablet {
-    margin-bottom: 40px;
+    margin-bottom: $spacing-xl;
   }
 }
 
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   color: $c-primary;
-  transition: opacity 0.2s;
+  transition: $transition-default;
 
   &:hover {
     opacity: 0.7;
@@ -39,12 +39,11 @@
 }
 
 .link {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
+  @include text-small-bold;
+
   color: $c-secondary;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: $transition-color;
 
   &:hover {
     color: $c-primary;
@@ -52,8 +51,7 @@
 }
 
 .current {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
+  @include text-small-bold;
+
   color: $c-secondary;
 }

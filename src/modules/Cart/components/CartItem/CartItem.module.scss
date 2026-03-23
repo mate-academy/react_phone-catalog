@@ -5,17 +5,16 @@
   display: flex;
   background-color: $c-white;
   border: 1px solid $c-elements;
-  transition: box-shadow 0.3s ease;
 
   flex-wrap: wrap;
   align-items: center;
-  padding: 16px;
-  gap: 16px;
+  padding: $spacing-s;
+  gap: $spacing-s;
 
   @include on-tablet {
     flex-wrap: nowrap;
-    padding: 24px;
-    gap: 24px;
+    padding: $spacing-m;
+    gap: $spacing-m;
   }
 }
 
@@ -25,7 +24,7 @@
   justify-content: center;
   align-items: center;
   color: $c-secondary;
-  transition: color 0.2s ease;
+  transition: $transition-color;
 
   &:hover {
     color: $c-primary;
@@ -34,8 +33,8 @@
 
 .imageBox {
   order: 2;
-  width: 80px;
-  height: 80px;
+  width: $size-img-cart;
+  height: $size-img-cart;
   flex-shrink: 0;
 
   img {
@@ -52,11 +51,9 @@
 }
 
 .name {
-  font-weight: 600;
-  color: $c-primary;
+  @include text-primary-semibold;
+
   margin: 0;
-  line-height: 21px;
-  font-size: 14px;
 }
 
 .footer {
@@ -70,7 +67,7 @@
     width: auto;
     flex: 1;
     justify-content: flex-end;
-    gap: 24px;
+    gap: $spacing-m;
   }
 }
 
@@ -80,45 +77,23 @@
 }
 
 .controlBtn {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $c-white;
-  border: 1px solid $c-elements;
-  color: $c-primary;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-
-  &:hover:not(:disabled) {
-    border-color: $c-primary;
-  }
+  @include action-square-button;
 }
 
 .quantity {
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 600;
-  color: $c-primary;
-  width: 32px;
+  @include text-primary-semibold;
+
+  width: $size-action-btn;
   text-align: center;
 }
 
 .price {
-  font-weight: 800;
-  color: $c-primary;
-  font-size: 22px;
-  line-height: 140%;
+  @include text-price-medium;
+
   text-align: right;
   white-space: nowrap;
 
   @include on-tablet {
-    width: 80px;
+    width: $size-price-col;
   }
 }

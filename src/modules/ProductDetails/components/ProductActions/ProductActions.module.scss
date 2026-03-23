@@ -9,7 +9,7 @@
   @include on-desktop {
     display: grid;
     grid-template-columns: 320px auto;
-    gap: 32px;
+    gap: $spacing-l;
   }
 }
 
@@ -19,8 +19,8 @@
 }
 
 .productId {
-  font-size: 12px;
-  font-weight: 600;
+  @include text-small-bold;
+
   color: $c-secondary;
 
   position: absolute;
@@ -31,23 +31,19 @@
 .priceBlock {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-s;
 }
 
 .priceDiscount {
-  font-size: 32px;
-  line-height: 41px;
-  font-weight: 800;
-  color: $c-primary;
-  letter-spacing: -0.01em;
+  @include text-price-massive;
 }
 
 .priceRegular {
   font-size: 22px;
-  font-weight: 500;
+  font-weight: $fw-regular;
   color: $c-secondary;
   text-decoration: line-through;
 }
 
-.buttonsRow { margin-bottom: 32px; }
+.buttonsRow { margin-bottom: $spacing-l; }

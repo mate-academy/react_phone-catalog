@@ -2,24 +2,13 @@
 @import '../../../../styles/mixins';
 
 .title {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  color: $c-primary;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid $c-elements;
-  letter-spacing: -0.01em;
+  @include section-title-bordered;
 
-  @include on-tablet {
-    font-size: 22px;
-    line-height: 31px;
-    font-weight: 800;
-  }
+  margin-bottom: $spacing-l;
 }
 
 .productDescription {
-  margin-bottom: 32px;
+  margin-bottom: $spacing-l;
 
   &:last-child {
     margin-bottom: 0;
@@ -27,24 +16,15 @@
 }
 
 .subtitle {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 700;
-  color: $c-primary;
-  margin-bottom: 16px;
+  @include text-subtitle;
 
-  @include on-tablet {
-    font-size: 20px;
-    line-height: 26px;
-  }
+  margin-bottom: $spacing-s;
 }
 
 .paragraph {
-  font-size: 14px;
-  line-height: 21px;
-  color: $c-secondary;
-  margin-bottom: 16px;
-  font-weight: 500;
+  @include text-secondary-regular;
+
+  margin-bottom: $spacing-s;
 
   &:last-child {
     margin-bottom: 0;

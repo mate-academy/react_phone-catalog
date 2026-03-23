@@ -2,33 +2,23 @@
 @import '../../styles/mixins';
 
 .container {
-  max-width: $bp-desktop;
-  margin: 0 auto 56px;
-
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
+  @include page-container;
 }
 
 .backButton {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: $spacing-xxs;
   background: none;
   border: none;
   padding: 0;
-  margin-bottom: 24px;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
+  margin-bottom: $spacing-m;
   color: $c-secondary;
-  text-transform: uppercase;
   cursor: pointer;
-  transition: color 0.3s ease;
+
+  @include text-nav-link;
+
+  transition: $transition-color;
 
   &:hover {
     color: $c-primary;
@@ -36,30 +26,20 @@
 }
 
 .title {
-  font-weight: 800;
-  color: $c-primary;
-  letter-spacing: -0.01em;
-
-  font-size: 24px;
-  margin: 0 0 24px;
-
-  @include on-tablet {
-    font-size: 32px;
-    margin: 0 0 32px;
-  }
+  @include page-title;
 }
 
 .content {
   display: grid;
   align-items: flex-start;
-  margin-top: 32px;
+  margin-top: $spacing-l;
 
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: $spacing-l;
 
   @include on-desktop {
     grid-template-columns: 1fr 368px;
-    gap: 16px;
+    gap: $spacing-s;
   }
 }
 
@@ -71,27 +51,24 @@
 .checkoutWrapper {
   @include on-desktop {
     position: sticky;
-    top: 24px;
+    top: $spacing-m;
   }
 }
 
 .emptyState {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  @include empty-state-container;
 
-  padding: 40px 0;
+  padding: $spacing-xl 0;
 
   @include on-tablet {
-    padding: 64px 0;
+    padding: $spacing-3xl 0;
   }
 
   h2 {
     color: $c-secondary;
+    font-weight: $fw-semibold;
     font-size: 20px;
-    margin-bottom: 24px;
+    margin-bottom: $spacing-m;
 
     @include on-tablet {
       font-size: 24px;
@@ -99,17 +76,6 @@
   }
 
   .continueShopping {
-    padding: 16px 32px;
-    background-color: $c-primary;
-    color: $c-white;
-    border: none;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: $c-secondary;
-    }
+    @include primary-button;
   }
 }

@@ -2,13 +2,5 @@
 @import '../../../../styles/mixins';
 
 .sectionTitle {
-  font-size: 22px;
-  line-height: 140%;
-  font-weight: 800;
-  color: $c-primary;
-
-  @include on-tablet {
-    font-size: 32px;
-    letter-spacing: -1%;
-  }
+  @include text-section-title;
 }

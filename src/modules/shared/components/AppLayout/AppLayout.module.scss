@@ -9,19 +9,19 @@
 
 .main {
   flex: 1;
-  padding-top: 48px;
-  padding-inline: 16px;
+  padding-top: $spacing-2xl;
+  padding-inline: $spacing-s;
 
   max-width: $bp-desktop;
   width: 100%;
   margin: 0 auto;
 
   @include on-tablet {
-    padding-inline: 24px;
+    padding-inline: $spacing-m;
   }
 
   @include on-desktop {
-    padding-inline: 32px;
-    padding-top: 64px;
+    padding-inline: $spacing-l;
+    padding-top: $spacing-3xl;
   }
 }

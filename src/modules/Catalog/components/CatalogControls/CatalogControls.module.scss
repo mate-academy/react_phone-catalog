@@ -1,9 +1,10 @@
+@import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
 .container {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: $spacing-s;
+  margin-bottom: $spacing-m;
 }
 
 .sortSelect {
@@ -25,4 +26,3 @@
     min-width: 128px;
   }
 }
-

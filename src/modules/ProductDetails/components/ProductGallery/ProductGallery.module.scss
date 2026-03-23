@@ -3,7 +3,7 @@
 
 .gallery {
   display: flex;
-  gap: 16px;
+  gap: $spacing-s;
   flex-direction: column;
   min-width: 0;
 
@@ -34,7 +34,7 @@
 .thumbnails {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: $spacing-xs;
   overflow-x: auto;
 
   &::-webkit-scrollbar {
@@ -67,7 +67,7 @@
   border: 1px solid $c-elements;
   background-color: $c-white;
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: $transition-color;
 
   @include on-tablet {
     width: 100%;

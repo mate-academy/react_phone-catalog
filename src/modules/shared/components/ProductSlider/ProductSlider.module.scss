@@ -2,14 +2,14 @@
 @import '../../../../styles/mixins';
 
 .sliderContainer {
-  margin-bottom: 56px;
+  margin-bottom: $spacing-xxl;
 
   @include on-tablet {
-    margin-bottom: 64px;
+    margin-bottom: $spacing-3xl;
   }
 
   @include on-desktop {
-    margin-bottom: 80px;
+    margin-bottom: $spacing-4xl;
   }
 }
 
@@ -17,48 +17,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: $spacing-m;
 }
 
 .navigation {
   display: flex;
-  gap: 16px;
+  gap: $spacing-s;
 }
 
 .navBtn {
-  width: 32px;
-  height: 32px;
-  border: 1px solid $c-icons;
-  background: $c-white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-
-  &:hover {
-    border-color: $c-primary;
-  }
+  @include action-square-button;
 
   .prevIcon {
     transform: rotate(-90deg);
-    color: $c-primary;
   }
 
   .nextIcon {
     transform: rotate(90deg);
-    color: $c-primary;
   }
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   &:global(.swiper-button-disabled) {
     opacity: 0.5;
-    cursor: default;
+    cursor: not-allowed;
     border-color: $c-elements;
+    color: $c-icons;
   }
 }
 
 .slide {
   height: auto;
-  // width: 272px;
 }
