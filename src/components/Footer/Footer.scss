@@ -64,6 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 8px;
 };
 .footer__right--link {
   color: #e2e6e9;
@@ -74,4 +75,15 @@
   height: 16px;
   width: 16px;
   border: 1px solid #e2e6e9;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 };
+
+.footer--closed {
+  height: 64px;
+  overflow: hidden;
+};
+
+.icon--rotated {
+  transform: rotate(180deg);
+}

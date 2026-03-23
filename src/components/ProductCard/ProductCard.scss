@@ -1,0 +1,96 @@
+.product__card {
+  width: 212px;
+  border: 1px solid #e2e6e9;
+  padding: 32px;
+  @media (min-width: 640px) {
+   width: 237px;
+  }
+  @media (min-width: 1200px) {
+    width: 272px;
+  }
+};
+
+.card__price {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+};
+
+.card__price--regular {
+  font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+color: #313237;
+};
+
+.card__price--discount {
+  text-decoration: line-through;
+  color: #e2e6e9;
+  font-weight: 600;
+font-size: 22px;
+}
+
+.card__description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #e2e6e9;
+};
+
+.card__spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+};
+
+.card__label {
+  color: #e2e6e9;
+  font-size: 12px;
+};
+
+.card__value {
+  color: #313237;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: right;
+};
+
+.card__buttons {
+  display: flex;
+  gap: 8px;
+};
+
+.card__button--add-to-cart {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #313237;
+  width: 208px;
+height: 40px;
+text-decoration: none;
+};
+
+.card__button--add-to-cart:hover{
+ background-color: white;
+ color: #313237;
+ border: 1px solid #e2e6e9;
+};
+
+.card__button--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e2e6e9;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../../public/img/icons/icon--heart.png');
+};
+
+.card__button--icon:hover {
+  background-image: url('../../../public/img/icons/icon--heart--filled.png')
+};
+

@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 import { getAccessories } from '../../api';
 import { getPhones } from '../../api';
 import { getTablets } from '../../api';
-import Models from './NewModels/BrandNewModels';
-import HotModels from './hotprices/HotModels';
 
 type Counts = {
   phones: number;
@@ -39,7 +37,6 @@ const Main = () => {
     <div className="main">
       <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
       <h2 className="second__title">Brand new models</h2>
-      <Models />
       <h2 className="second__title">Shop by category</h2>
       <div className="category">
         <a href="" className="category__banner">
@@ -65,7 +62,6 @@ const Main = () => {
         )}
       </div>
       <h2 className="second__title">Hot prices</h2>
-      <HotModels />
     </div>
   );
 };
