@@ -1,4 +1,8 @@
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap";
+
 :root {
+  --font-sans: "Manrope", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Manrope", "Inter", "Segoe UI", sans-serif;
   --accent-light: #b8aaff;
   --accent-dark: #5c3dcc;
   --accent: #905BFF;
@@ -40,6 +44,10 @@ body {
   margin: 0;
   background-color: color(disabled);
   color: color(text);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {

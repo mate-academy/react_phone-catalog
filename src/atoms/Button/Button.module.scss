@@ -17,11 +17,9 @@
     }
   }
 
-  &:hover {
-    @if not disabled {
-      cursor: pointer;
-      background-color: $bg;
-      border-color: $text;
-    }
+  &:not(:disabled):hover {
+    cursor: pointer;
+    background-color: $bg;
+    border-color: $text;
   }
 }

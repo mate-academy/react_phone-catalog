@@ -16,10 +16,24 @@ const Slider = ({ title = 'Welcome to Nice Gadgets store!' }: Props) => {
   ];
 
   const [slide, setSlide] = useState(0);
+  const isFirstSlide = slide === 0;
+  const isLastSlide = slide === b.length - 1;
 
-  const next = () => setSlide(prev => (prev + 1) % b.length);
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  const prev = () => setSlide(prev => (prev - 1 + b.length) % b.length);
+  const next = () => {
+    if (isLastSlide) {
+      return;
+    }
+
+    setSlide(prev => prev + 1);
+  };
+
+  const prev = () => {
+    if (isFirstSlide) {
+      return;
+    }
+
+    setSlide(prev => prev - 1);
+  };
 
   return (
     <Section>
@@ -28,25 +42,35 @@ const Slider = ({ title = 'Welcome to Nice Gadgets store!' }: Props) => {
       </div>
 
       <div className={styles.slider}>
-        <Button classNames={styles.button__left} onClick={prev}>
+        <Button
+          classNames={styles.button__left}
+          onClick={prev}
+          disabled={isFirstSlide}
+        >
           <Chevron />
         </Button>
 
         <div className={styles.slider__insider}>
-          <div className={styles.slider__container}>
+          <div className={styles.slider__modalBlock}>
             <div className={styles.modal}></div>
           </div>
-          <img
-            key={slide}
-            src={b[slide]}
-            width="600"
-            height="300"
-            decoding="async"
-            draggable="false"
-          />
+          <div className={styles.slider__imageBlock}>
+            <img
+              key={slide}
+              src={b[slide]}
+              width="600"
+              height="300"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
         </div>
 
-        <Button classNames={styles.button__right} onClick={next}>
+        <Button
+          classNames={styles.button__right}
+          onClick={next}
+          disabled={isLastSlide}
+        >
           <Chevron />
         </Button>
 

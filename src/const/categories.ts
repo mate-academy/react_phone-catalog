@@ -4,7 +4,7 @@ export const CATEGORY_LIST = {
   phones: 'phones',
 } as const;
 
-const INITIAL_PATH = '../../public/img/';
+const INITIAL_PATH = '/img/';
 
 export const CATEGORY_IMG_PATH = {
   tablets: INITIAL_PATH + 'category-tablets.webp',
