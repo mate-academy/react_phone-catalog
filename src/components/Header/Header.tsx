@@ -6,7 +6,7 @@ import { MobileMenu } from '../MobileMenu';
 import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
-  const { cart, favorites } = useContext(ProductsContext);
+  const { favorites, totalItems } = useContext(ProductsContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
@@ -97,7 +97,7 @@ export const Header = () => {
           </div>
           <div className={styles.boxAction}>
             <Link to="/cart" className={styles.icon}>
-              <div className={styles.cyrcle}>{cart.length}</div>
+              <div className={styles.cyrcle}>{totalItems}</div>
               <img src="./img/icons/cart.svg" alt="Cart" />
             </Link>
           </div>

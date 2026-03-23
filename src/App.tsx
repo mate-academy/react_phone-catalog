@@ -129,6 +129,49 @@ export const App = () => {
     loadData();
   }, []);
 
+  const [counts, setCounts] = useState<Record<string, number>>(() => {
+    try {
+      const savedCounts = localStorage.getItem('counts');
+
+      return savedCounts ? JSON.parse(savedCounts) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('counts', JSON.stringify(counts));
+  }, [counts]);
+
+  const increase = (id: string) => {
+    setCounts(prev => ({
+      ...prev,
+      [id]: (prev[id] || 1) + 1,
+    }));
+  };
+
+  const decrease = (id: string) => {
+    setCounts(prev => ({
+      ...prev,
+      [id]: Math.max((prev[id] || 1) - 1, 1),
+    }));
+  };
+
+  const totalItems = cart.reduce((sum, item) => {
+    return sum + (counts[item.id] || 1);
+  }, 0);
+
+  const productsMap = Object.fromEntries(
+    products.map(product => [product.itemId, product]),
+  );
+
+  const total = cart.reduce((sum, item) => {
+    const product = productsMap[item.id];
+    const count = counts[item.id] || 1;
+
+    return product ? sum + product.fullPrice * count : sum;
+  }, 0);
+
   return (
     <div className="App">
       <ProductsContext.Provider
@@ -143,6 +186,15 @@ export const App = () => {
           toggleCart,
           toggleFavorite,
           deletCard,
+          counts,
+          totalItems,
+          total,
+          increase,
+          decrease,
+
+          // toggleCart,
+          // toggleFavorite,
+          // deletCard,
         }}
       >
         <Header />

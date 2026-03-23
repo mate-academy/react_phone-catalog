@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import { useContext } from 'react';
@@ -14,10 +14,10 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
   const { cart, favorites, toggleCart, toggleFavorite } =
     useContext(ProductsContext);
 
-  const { category } = useParams<{
-    category: string;
-    productId?: string;
-  }>();
+  // const { category } = useParams<{
+  //   category: string;
+  //   productId?: string;
+  // }>();
   const { t } = useTranslation();
 
   const location = useLocation();
@@ -33,11 +33,26 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
     }
   };
 
+  const getCategory = () => {
+    if (product.category.includes('phones')) {
+      return 'phones';
+    }
+
+    if (product.category.includes('tablets')) {
+      return 'tablets';
+    }
+
+    return 'accessories';
+  };
+
+  const category = getCategory();
+
   return (
     <article className={styles.card}>
       <Link
         to={`/${category}/${product.itemId}`}
         className={styles.linkOverlay}
+        onClick={handleClick}
       />
       <div className={styles.container}>
         <Link
@@ -84,7 +99,6 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
             onClick={e => {
               e.stopPropagation();
               toggleCart(product.itemId);
-              handleClick();
             }}
           >
             <p

@@ -23,6 +23,13 @@ type ProductsContextType = {
   toggleCart: (id: string) => void;
   toggleFavorite: (id: string, active: boolean) => void;
   deletCard: (id: string) => void;
+
+  counts: Record<string, number>;
+  totalItems: number;
+  total: number;
+
+  increase: (id: string) => void;
+  decrease: (id: string) => void;
 };
 
 export const ProductsContext = createContext<ProductsContextType>({
@@ -38,4 +45,11 @@ export const ProductsContext = createContext<ProductsContextType>({
   toggleCart: () => {},
   toggleFavorite: () => {},
   deletCard: () => {},
+
+  counts: {},
+  totalItems: 0,
+  total: 0,
+
+  increase: () => {},
+  decrease: () => {},
 });

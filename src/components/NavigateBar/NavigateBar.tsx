@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './NavigateBar.module.scss';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 export const NavigateBar: React.FC = () => {
   const { category, productId } = useParams<{
@@ -18,7 +18,10 @@ export const NavigateBar: React.FC = () => {
   return (
     <>
       <div className={styles.urlplace}>
-        <img src="./img/icons/Home.svg" alt="" className={styles.aс} />
+        <Link to={'/home'} className={styles.aсli}>
+          <img src="./img/icons/Home.svg" alt="" className={styles.aс} />
+        </Link>
+
         <img src="./img/icons/arrowRight.svg" alt="" className={styles.aс} />
         {isSpecialPage && (
           <p className={styles.aс}>
@@ -28,9 +31,12 @@ export const NavigateBar: React.FC = () => {
 
         {!isSpecialPage && (
           <>
-            <p className={styles.aс}>
-              {category && category.charAt(0).toUpperCase() + category.slice(1)}
-            </p>
+            <Link to={`/${category}`} className={styles.aсli}>
+              <p className={styles.aс}>
+                {category &&
+                  category.charAt(0).toUpperCase() + category.slice(1)}
+              </p>
+            </Link>
 
             <img
               src="./img/icons/arrowRight.svg"
@@ -39,9 +45,11 @@ export const NavigateBar: React.FC = () => {
             />
 
             {productId && (
-              <p className={styles.acс}>
-                {productId.charAt(0).toUpperCase() + productId.slice(1)}
-              </p>
+              <Link to={`/${category}/${productId}`} className={styles.aсli}>
+                <p className={styles.acс}>
+                  {productId.charAt(0).toUpperCase() + productId.slice(1)}
+                </p>
+              </Link>
             )}
           </>
         )}

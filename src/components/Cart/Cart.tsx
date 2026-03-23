@@ -1,61 +1,20 @@
 import styles from './Cart.module.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { ProductsContext } from '../../context/ProductsContext';
 import { useProducts } from '../../hooks/useProducts';
 import { NavigateBar } from '../NavigateBar';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export const Cart = () => {
-  const { cart, deletCard } = useContext(ProductsContext);
+  const { cart, counts, total, totalItems, increase, decrease, deletCard } =
+    useContext(ProductsContext);
   const { products } = useProducts();
   const { t } = useTranslation();
-
-  const [counts, setCounts] = useState<Record<string, number>>(() => {
-    try {
-      const savedCounts = localStorage.getItem('counts');
-
-      return savedCounts ? JSON.parse(savedCounts) : {};
-    } catch {
-      return {};
-    }
-  });
-
-  useEffect(() => {
-    localStorage.setItem('counts', JSON.stringify(counts));
-  }, [counts]);
 
   const productsMap = Object.fromEntries(
     products.map(product => [product.itemId, product]),
   );
-
-  const total = cart.reduce((sum, item) => {
-    const product = productsMap[item.id];
-    const count = counts[item.id] || 1;
-
-    if (!product) {
-      return sum;
-    }
-
-    return sum + product.fullPrice * count;
-  }, 0);
-
-  const totalItems = cart.reduce((sum, item) => {
-    return sum + (counts[item.id] || 1);
-  }, 0);
-
-  const increase = (id: string) => {
-    setCounts(prev => ({
-      ...prev,
-      [id]: (prev[id] || 1) + 1,
-    }));
-  };
-
-  const decrease = (id: string) => {
-    setCounts(prev => ({
-      ...prev,
-      [id]: Math.max((prev[id] || 1) - 1, 1),
-    }));
-  };
 
   const handleCheckout = () => {
     const confirmed = window.confirm(t('check'));
@@ -83,10 +42,18 @@ export const Cart = () => {
             const cartprice = score * product.fullPrice;
 
             return (
-              <div key={item.id} className={styles.productItem}>
+              <Link
+                key={item.id}
+                className={styles.productItem}
+                to={`/${product.category}/${product.itemId}`}
+              >
                 <button
                   className={styles.delet}
-                  onClick={() => deletCard(item.id)}
+                  onClick={e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    deletCard(item.id);
+                  }}
                 >
                   <img src="./img/icons/clouse.svg" alt="Close" />
                 </button>
@@ -104,7 +71,11 @@ export const Cart = () => {
                 <div className={styles.count}>
                   <button
                     className={styles.add}
-                    onClick={() => increase(item.id)}
+                    onClick={e => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      increase(item.id);
+                    }}
                   >
                     <img src="./img/icons/Plus.svg" alt="Plus" />
                   </button>
@@ -113,14 +84,18 @@ export const Cart = () => {
 
                   <button
                     className={styles.add}
-                    onClick={() => decrease(item.id)}
+                    onClick={e => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      decrease(item.id);
+                    }}
                   >
                     <img src="./img/icons/Minus.svg" alt="Minus" />
                   </button>
                 </div>
 
                 <p className={styles.pryce}>${cartprice}</p>
-              </div>
+              </Link>
             );
           })}
         </div>

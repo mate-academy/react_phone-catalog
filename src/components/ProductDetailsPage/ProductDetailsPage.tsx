@@ -12,7 +12,7 @@ import ContentLoader from 'react-content-loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { products, phones, tablets, accessories } = useProducts();
-  const { productId } = useParams();
+  const { category, productId } = useParams();
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -162,7 +162,7 @@ export const ProductDetailsPage: React.FC = () => {
                   return (
                     <NavLink
                       key={color}
-                      to={`/products/${newId}`}
+                      to={`/${category}/${newId}`}
                       className={({ isActive }) =>
                         isActive
                           ? `${styles.color} ${styles.activeColor}`
@@ -190,7 +190,7 @@ export const ProductDetailsPage: React.FC = () => {
                   return (
                     <NavLink
                       key={cap}
-                      to={`/products/${newId}`}
+                      to={`/${category}/${newId}`}
                       className={({ isActive }) =>
                         isActive
                           ? `${styles.capacity} ${styles.activecapacity}`
