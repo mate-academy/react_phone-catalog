@@ -1,15 +1,17 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useCart } from '../../../hooks/useCart';
 import { useFavourites } from '../../../hooks/useFavourites';
 import { navigation } from '../../../store/constants';
+import { useLocation } from 'react-router-dom';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { favourites } = useFavourites();
   const { cart } = useCart();
+  const location = useLocation();
   const [showBurger, setShowBurger] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,6 +21,10 @@ export const Header = () => {
       document.body.classList.remove('locked');
     }
   }, [showBurger]);
+
+  useEffect(() => {
+    setShowBurger(false);
+  }, [location.pathname]);
 
   return (
     <header className={styles.header}>
@@ -137,20 +143,46 @@ export const Header = () => {
           </ul>
         </nav>
         <div className={styles.menu__footer}>
-          <Link to="/" className={styles.menu__link}>
-            <img
-              src={imageUrl('icons/Favourites.svg')}
-              alt=""
-              className={styles.menu__img}
-            />
-          </Link>
-          <Link to="/" className={styles.menu__link}>
-            <img
-              src={imageUrl('icons/Shopping_Cart.svg')}
-              alt=""
-              className={styles.menu__img}
-            />
-          </Link>
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) =>
+              classNames(styles.menu__link, {
+                [styles.menu__link_active]: isActive,
+              })
+            }
+          >
+            <div className={styles.menu__link_group}>
+              <img
+                src={imageUrl('icons/Favourites.svg')}
+                alt="favourites"
+                className={styles.menu__img}
+              />
+              {favourites.length > 0 && (
+                <span className={styles.menu__link_count}>
+                  {favourites.length}
+                </span>
+              )}
+            </div>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              classNames(styles.menu__link, {
+                [styles.menu__link_active]: isActive,
+              })
+            }
+          >
+            <div className={styles.menu__link_group}>
+              <img
+                src={imageUrl('icons/Shopping_Cart.svg')}
+                alt="cart"
+                className={styles.menu__img}
+              />
+              {cart.length > 0 && (
+                <span className={styles.menu__link_count}>{cart.length}</span>
+              )}
+            </div>
+          </NavLink>
         </div>
       </div>
     </header>
