@@ -7,10 +7,12 @@ import { useStore } from '../../context';
 
 interface Props {
   product: Product;
+  hideOldPrice?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { cart, addToCart, favorites, addToFavorites } = useStore();
+export const ProductCard: React.FC<Props> = ({ product, hideOldPrice }) => {
+  const { cart, addToCart, removeFromCart, favorites, addToFavorites } =
+    useStore();
 
   const {
     image,
@@ -27,6 +29,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const isAddedToCart = cart.some(item => item.id === itemId);
   const isFavorite = favorites.some(item => item.itemId === itemId);
 
+  const toggleCart = () => {
+    if (isAddedToCart) {
+      removeFromCart(itemId);
+    } else {
+      addToCart(product);
+    }
+  };
+
   return (
     <div className={styles.card}>
       <Link to={`/${category}/${itemId}`} className={styles.imageWrapper}>
@@ -39,7 +49,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.priceBox}>
         <span className={styles.price}>${price}</span>
-        {fullPrice !== price && (
+        {fullPrice !== price && !hideOldPrice && (
           <span className={styles.fullPrice}>${fullPrice}</span>
         )}
       </div>
@@ -66,7 +76,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={classNames(styles.addToCart, {
             [styles.isAdded]: isAddedToCart,
           })}
-          onClick={() => addToCart(product)}
+          onClick={toggleCart}
         >
           {isAddedToCart ? 'Added' : 'Add to cart'}
         </button>

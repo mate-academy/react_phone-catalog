@@ -118,7 +118,7 @@ export const ProductsSlider: React.FC<Props> = ({ sortBy }) => {
         >
           {products.map(product => (
             <div key={product.id} className={styles.cardWrapper}>
-              <ProductCard product={product} />
+              <ProductCard product={product} hideOldPrice={sortBy === 'age'} />
             </div>
           ))}
         </div>

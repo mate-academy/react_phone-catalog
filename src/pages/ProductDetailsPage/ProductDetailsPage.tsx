@@ -25,7 +25,8 @@ const colorMap: Record<string, string> = {
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const { addToCart, favorites, addToFavorites, cart } = useStore();
+  const { addToCart, removeFromCart, favorites, addToFavorites, cart } =
+    useStore();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
@@ -136,6 +137,14 @@ export const ProductDetailsPage: React.FC = () => {
     const formattedColor = color.toLowerCase().replace(/\s+/g, '-');
 
     return `/${p.category}/${d.namespaceId}-${formattedCapacity}-${formattedColor}`;
+  };
+
+  const toggleCart = () => {
+    if (isAdded) {
+      removeFromCart(p.itemId);
+    } else {
+      addToCart(p);
+    }
   };
 
   return (
@@ -268,7 +277,7 @@ export const ProductDetailsPage: React.FC = () => {
               className={classNames(styles.addToCart, {
                 [styles.isAdded]: isAdded,
               })}
-              onClick={() => addToCart(p)}
+              onClick={toggleCart}
             >
               {isAdded ? 'Added to cart' : 'Add to cart'}
             </button>

@@ -1,4 +1,3 @@
-// fin
 @use '../../styles/utils' as *;
 
 .card {
@@ -46,6 +45,9 @@
 }
 
 .title {
+  overflow: hidden;
+
+  min-height: 42px;
   margin-bottom: 8px;
 
   font-size: 14px;
