@@ -1,0 +1,15 @@
+@import '../../../../assets/styles/variables';
+
+.wrapper {
+  margin-top: 60px;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: var(--color-primary);
+}

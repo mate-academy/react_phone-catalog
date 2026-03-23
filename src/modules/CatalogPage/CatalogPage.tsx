@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import debounce from 'lodash/debounce';
 import cl from 'classnames';
 
 import { Product } from '../../types/Product';
@@ -10,6 +11,7 @@ import { ProductsList } from './components/ProductsList';
 import { Pagination } from './components/Pagination';
 
 import styles from './CatalogPage.module.scss';
+import { NoResults } from './components/NoResults';
 
 type Props = {
   categoryType: 'phones' | 'tablets' | 'accessories';
@@ -27,11 +29,43 @@ const PER_PAGE_OPTIONS = ['4', '8', '16', 'all'];
 
 export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
   const [isLoading, setIsLoading] = useState(true);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'newest';
   const perPage = searchParams.get('perPage') || 'all';
   const query = searchParams.get('query') || '';
+
+  const [localQuery, setLocalQuery] = useState(query);
+
+  useEffect(() => {
+    setLocalQuery(query);
+  }, [query]);
+
+  const applyQuery = useCallback(
+    debounce((newQuery: string) => {
+      setSearchParams(prevParams => {
+        const params = new URLSearchParams(prevParams);
+
+        if (!newQuery.trim()) {
+          params.delete('query');
+        } else {
+          params.set('query', newQuery.trim());
+        }
+
+        params.delete('page');
+
+        return params;
+      });
+    }, 500),
+    [setSearchParams],
+  );
+
+  useEffect(() => {
+    return () => {
+      applyQuery.cancel();
+    };
+  }, [applyQuery]);
 
   const handleParamsChange = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -153,13 +187,20 @@ export const CatalogPage: React.FC<Props> = ({ categoryType, products }) => {
             type="search"
             placeholder="Type here"
             className={styles.input}
-            value={query}
-            onChange={e => handleParamsChange('query', e.target.value)}
+            value={localQuery}
+            onChange={e => {
+              setLocalQuery(e.target.value);
+              applyQuery(e.target.value);
+            }}
           />
         </div>
       </div>
 
-      <ProductsList isLoading={isLoading} products={productsToDisplay} />
+      {productsToDisplay.length === 0 ? (
+        <NoResults text={categoryType} />
+      ) : (
+        <ProductsList isLoading={isLoading} products={productsToDisplay} />
+      )}
 
       <Pagination
         totalPages={totalPages}
