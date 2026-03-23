@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styles from './Carousel.module.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ProductsContext } from '../../context/ProductsContext';
 
 const images = [
   './img/imgcarousel/phone1.jpg',
@@ -15,6 +16,7 @@ export const Carousel: React.FC = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const { t, i18n } = useTranslation();
+  const { cart, deletCard } = useContext(ProductsContext);
 
   const extendedImages = [images[images.length - 1], ...images, images[0]];
 
@@ -98,6 +100,14 @@ export const Carousel: React.FC = () => {
         ? 0
         : currentIndex - 1;
 
+  const handleCheckout = () => {
+    const confirmed = window.confirm(t('check'));
+
+    if (confirmed) {
+      cart.forEach(item => deletCard(item.id));
+    }
+  };
+
   return (
     <div className={styles.Carousel}>
       <div className={styles.decorBlock}>
@@ -120,7 +130,9 @@ export const Carousel: React.FC = () => {
           >
             {t('secoundtext')}
           </p>
-          <button className={styles.buttonorder}>{t('buttuncarusel')}</button>
+          <button className={styles.buttonorder} onClick={handleCheckout}>
+            {t('buttuncarusel')}
+          </button>
         </div>
       </div>
       <div

@@ -15,7 +15,8 @@ export const Footer = () => {
           <ul className={styles.list}>
             <li className={styles.li_links}>
               <NavLink
-                to="/GITHUB"
+                // eslint-disable-next-line max-len
+                to="https://github.com/mate-academy/react_phone-catalog/pull/941"
                 end
                 className={({ isActive }) =>
                   isActive ? `${styles.link} ${styles.active}` : styles.link
@@ -26,7 +27,7 @@ export const Footer = () => {
             </li>
             <li className={styles.li_links}>
               <NavLink
-                to="/CONTACTS"
+                to="https://github.com/DebHtm"
                 className={({ isActive }) =>
                   isActive ? `${styles.link} ${styles.active}` : styles.link
                 }
@@ -36,7 +37,7 @@ export const Footer = () => {
             </li>
             <li className={styles.li_links}>
               <NavLink
-                to="/RIGHTS"
+                to="https://github.com/DebHtm"
                 className={({ isActive }) =>
                   isActive ? `${styles.link} ${styles.active}` : styles.link
                 }
