@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cl from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -7,8 +7,11 @@ import { ArrowLeftIcon } from '../../components/Icons/ArrowLeftIcon';
 import { CartList } from './components/CartList';
 
 import styles from './CartPage.module.scss';
+import { CartModuleWindow } from './components/CartModuleWindow';
 
 export const CartPage = () => {
+  const [isShowing, setIsShowing] = useState(false);
+
   const { cartItems } = useCart();
 
   const totalPrice = cartItems.reduce(
@@ -66,9 +69,13 @@ export const CartPage = () => {
 
           <hr className={styles.line} />
 
-          <button className={styles.button}>Checkout</button>
+          <button className={styles.button} onClick={() => setIsShowing(true)}>
+            Checkout
+          </button>
         </div>
       </div>
+
+      <CartModuleWindow isShowing={isShowing} changeShowing={setIsShowing} />
     </section>
   );
 };

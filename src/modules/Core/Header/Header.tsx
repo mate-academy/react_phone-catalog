@@ -7,14 +7,20 @@ import { CloseIcon } from '../../../components/Icons/CloseIcon';
 import { CartIcon } from '../../../components/Icons/CartIcon';
 import { FavouritesIcon } from '../../../components/Icons/FavouritesIcon/';
 import { scrollToTop } from '../../../utils/scrollToTop';
+import { ThemeSwitcher } from './components';
 import { useFavourites } from '../../../hooks/useFavourites';
 import { useCart } from '../../../hooks/useCart';
+import { useTheme } from '../../../hooks/useTheme';
 
-import LOGO from '../../../assets/icons/logo/Logo.svg';
+import logoLight from '../../../assets/icons/logo/LogoLight.svg';
+import logoDark from '../../../assets/icons/logo/LogoDark.svg';
+
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { theme } = useTheme();
   const { favourites } = useFavourites();
   const { cartItems } = useCart();
 
@@ -58,6 +64,8 @@ export const Header = () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
+
+  const LOGO = theme === 'light' ? logoLight : logoDark;
 
   return (
     <>
@@ -105,6 +113,8 @@ export const Header = () => {
           </nav>
 
           <div className={styles.actions}>
+            <ThemeSwitcher />
+
             <NavLink
               to="/favourites"
               className={getIconButtonClass}
@@ -114,6 +124,7 @@ export const Header = () => {
 
               {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
             </NavLink>
+
             <NavLink
               to="/cart"
               className={getIconButtonClass}

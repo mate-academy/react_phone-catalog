@@ -88,7 +88,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           onClick={() => handleAddToCart(product.id)}
           disabled={isAdded}
         >
-          {isAdded ? 'Added to cart' : 'Add to cart'}
+          {isAdded ? 'Added' : 'Add to cart'}
         </button>
 
         <button

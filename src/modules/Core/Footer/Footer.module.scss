@@ -8,6 +8,8 @@
 
   padding: 32px 16px;
 
+  background-color: var(--color-white);
+
   @include on-tablet {
     height: 96px;
 

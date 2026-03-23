@@ -91,7 +91,7 @@ export const ProductControls: React.FC<Props> = ({
           onClick={() => !isInCart && onAddToCart()}
           disabled={isInCart === true}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Added' : 'Add to cart'}
         </button>
         <button
           className={cl(styles.favButton, { [styles.liked]: isLiked })}

@@ -11,8 +11,20 @@
   --color-white: #FFF;
   --color-green: #27AE60;
   --color-red: #EB5757;
+  --color-bg: #fafbfc;
+  --shadow-card: rgba(0, 0, 0, 0.1);
 
   // --------Colors--------
 
   --transition-default: all 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --color-white: #1d1f27;
+  --color-primary: #f8f9fa;
+  --color-secondary: #6b767e;
+  --color-elements: #2f333e;
+  --color-icons: #757d85;
+  --color-bg: #16181e;
+  --shadow-card: rgba(255, 255, 255, 0.05);
 }

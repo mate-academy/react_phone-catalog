@@ -17,7 +17,7 @@
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px var(--shadow-card);
   }
 }
 
@@ -140,7 +140,7 @@
   height: 40px;
 
   background-color: var(--color-accent);
-  color: var(--color-white);
+  color: #fff;
 
   border: none;
   border-radius: 48px;
@@ -152,7 +152,7 @@
   transition: var(--transition-default);
 
   &:hover {
-    box-shadow: 0 3px 13px 0 #17203166;
+    box-shadow: 0 3px 13px 0 var(--shadow-card);
   }
 }
 

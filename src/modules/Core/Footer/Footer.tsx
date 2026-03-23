@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ArrowUpIcon } from '../../../components/Icons/ArrowUpIcon';
-import styles from './Footer.module.scss';
-import LOGO from '../../../assets/icons/logo/Logo.svg';
 import { scrollToTop } from '../../../utils/scrollToTop';
+import { useTheme } from '../../../hooks/useTheme';
+import { ArrowUpIcon } from '../../../components/Icons/ArrowUpIcon';
+
+import logoLight from '../../../assets/icons/logo/LogoLight.svg';
+import logoDark from '../../../assets/icons/logo/LogoDark.svg';
+
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
+  const { theme } = useTheme();
+
+  const LOGO = theme === 'light' ? logoLight : logoDark;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
