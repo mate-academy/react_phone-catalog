@@ -56,10 +56,10 @@ export const Header: React.FC = () => {
 
         <nav className="header__nav">
           <ul className="menu">
-            <li className="active">HOME</li>
-            <li>PHONES</li>
-            <li>TABLETS</li>
-            <li>ACCESSORIES</li>
+            <li className="active menu__item">HOME</li>
+            <li className="menu__item">PHONES</li>
+            <li className="menu__item">TABLETS</li>
+            <li className="menu__item">ACCESSORIES</li>
           </ul>
         </nav>
 

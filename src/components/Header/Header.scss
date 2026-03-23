@@ -3,6 +3,8 @@
   justify-content: space-between;
   position: sticky;
   top: 0;
+  background-color: white;
+
   /* margin: 0 1rem; */
 
   &__logo {
@@ -32,10 +34,14 @@
       color: #89939a;
       cursor: pointer;
 
-      li {
+      &__item {
         height: 100%;
         display: flex;
         align-items: center;
+
+        &:hover{
+          color: #000;
+       }
       }
 
       .active {
@@ -61,8 +67,9 @@
     align-items: center;
     padding: 24px;
     cursor: pointer;
+
     /* border-left: 1px solid #e2e6e9; */
-    box-shadow: -1px 0px 0px #e2e6e9;
+    box-shadow: -1px 0 0 #e2e6e9;
 
     &:hover {
       outline: 1px solid black;
@@ -91,6 +98,7 @@
     &__cart,
     &__favorites {
       padding: 16px;
+      height: min-content;
     }
   }
 }
@@ -122,15 +130,16 @@
     padding: 16px;
     outline: none;
     border: none;
+
     /* border-left: 1px solid #e2e6e9; */
-    box-shadow: -1px 0px 0px #e2e6e9;
+    box-shadow: -1px 0 0 #e2e6e9;
     cursor: pointer;
 
     &:hover {
       // outline: 1px solid black;
       // border-bottom: 1px solid black;
       // border-left: 1px solid black;
-      box-shadow: -1px 1px 0px black;
+      box-shadow: -1px 1px 0 black;
     }
   }
 }
@@ -190,6 +199,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   /* box-shadow: 0px 1px 0px #e2e6e9; */
   border-bottom: 1px solid #e2e6e9;
 }
@@ -209,14 +219,15 @@
   cursor: pointer;
   line-height: 1;
   padding: 16px;
+
   /* border-left: 1px solid #e2e6e9; */
-  box-shadow: -1px 0px 0px #e2e6e9;
+  box-shadow: -1px 0 0 #e2e6e9;
 
   &:hover {
     // outline: 1px solid black;
     // border-bottom: 1px solid black;
     // border-left: 1px solid black;
-    box-shadow: -1px 1px 0px black;
+    box-shadow: -1px 1px 0 black;
   }
 }
 
@@ -244,6 +255,10 @@
     cursor: pointer;
     position: relative;
 
+    &:hover{
+      color: #000;
+    }
+
     &.active {
       color: black;
 
@@ -263,8 +278,9 @@
 .mobile-menu__bottom {
   display: flex;
   justify-content: center;
+
   /* border-top: 1px solid #e2e6e9; */
-  box-shadow: 0px -1px 0px #e2e6e9;
+  box-shadow: 0 -1px 0 #e2e6e9;
 
   .mobile-menu__action {
     display: flex;
@@ -272,7 +288,8 @@
     align-items: center;
     justify-content: center;
     padding: 24px 72px;
-    box-shadow: -1px 0px 0px #e2e6e9;
+    box-shadow: -1px 0 0 #e2e6e9;
+    cursor: pointer;
 
     &:hover {
       outline: 1px solid black;
@@ -280,8 +297,8 @@
   }
 }
 
-.mobile-menu__action {
-  cursor: pointer;
-  padding: 8px;
-}
+// .mobile-menu__action {
+//   cursor: pointer;
+//   padding: 8px;
+// }
 
