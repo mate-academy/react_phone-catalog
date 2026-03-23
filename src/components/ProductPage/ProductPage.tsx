@@ -180,7 +180,7 @@ export const ProductPage: React.FC = () => {
               value={perPage}
               onChange={e => handlePerPageChange(e.target.value)}
             >
-              <option value=""></option>
+              <option value={t('all')}>{t('all')}</option>
               <option value="4">4</option>
               <option value="8">8</option>
               <option value="16">16</option>

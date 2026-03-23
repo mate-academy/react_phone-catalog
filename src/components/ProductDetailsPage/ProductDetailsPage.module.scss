@@ -5,6 +5,12 @@
   @include container;
 }
 
+.loadclass {
+  @include container;
+
+  margin-top: 110px;
+}
+
 .imgstyle {
   width: 100%;
   height: 80px;

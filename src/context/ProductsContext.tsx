@@ -6,6 +6,10 @@ type Favorite = {
   active: boolean;
 };
 
+type CartItem = {
+  id: string;
+};
+
 type ProductsContextType = {
   products: Product[];
   phones: Products[];
@@ -13,7 +17,7 @@ type ProductsContextType = {
   accessories: Products[];
   isLoading: boolean;
 
-  cart: string[];
+  cart: CartItem[];
   favorites: Favorite[];
 
   toggleCart: (id: string) => void;

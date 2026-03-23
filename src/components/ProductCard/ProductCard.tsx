@@ -22,6 +22,10 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
 
   return (
     <article className={styles.card}>
+      <Link
+        to={`/${category}/${product.itemId}`}
+        className={styles.linkOverlay}
+      />
       <div className={styles.container}>
         <Link
           to={`/${category}/${product.itemId}`}
@@ -60,26 +64,32 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
         <div className={styles.actions}>
           <button
             className={
-              cart.includes(product.itemId)
+              cart.some(item => item.id === product.itemId)
                 ? `${styles.button} ${styles.active}`
                 : styles.button
             }
-            onClick={() => toggleCart(product.itemId)}
+            onClick={e => {
+              e.stopPropagation();
+              toggleCart(product.itemId);
+            }}
           >
             <p
               className={
-                cart.includes(product.itemId)
-                  ? `${styles.buttontext} ${styles.active}`
+                cart.some(item => item.id === product.itemId)
+                  ? `${styles.buttontext} ${styles.activetext}`
                   : styles.buttontext
               }
             >
-              {!cart.includes(product.itemId) && t('button')}
-              {cart.includes(product.itemId) && t('buttonadd')}
+              {!cart.some(item => item.id === product.itemId) && t('button')}
+              {cart.some(item => item.id === product.itemId) && t('buttonadd')}
             </p>
           </button>
           <button
             className={styles.icon}
-            onClick={() => toggleFavorite(product.itemId, turnon)}
+            onClick={e => {
+              e.stopPropagation();
+              toggleFavorite(product.itemId, turnon);
+            }}
           >
             {!favorites.some(item => item.id === product.itemId) && (
               <img src="./img/icons/heart.svg" alt="Heart" />

@@ -28,7 +28,7 @@ export const App = () => {
   const [accessories, setAccessories] = useState<Products[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [cart, setCart] = useState<string[]>(() => {
+  const [cart, setCart] = useState<{ id: string }[]>(() => {
     try {
       const savedCart = localStorage.getItem('cart');
 
@@ -37,6 +37,7 @@ export const App = () => {
       return [];
     }
   });
+
   const [favorites, setFavorites] = useState<Favorite[]>(() => {
     try {
       const savedfavorites = localStorage.getItem('favorites');
@@ -57,7 +58,9 @@ export const App = () => {
 
   const toggleCart = (id: string) => {
     setCart(prev =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id],
+      prev.some(item => item.id === id)
+        ? prev.filter(item => item.id !== id)
+        : [...prev, { id }],
     );
   };
 
@@ -70,7 +73,7 @@ export const App = () => {
   };
 
   const deletCard = (id: string) => {
-    setCart(prev => prev.filter(item => item !== id));
+    setCart(prev => prev.filter(item => item.id !== id));
   };
 
   useEffect(() => {

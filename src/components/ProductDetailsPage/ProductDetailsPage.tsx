@@ -8,6 +8,7 @@ import { Products } from '../../types';
 import { ProductsContext } from '../../context/ProductsContext';
 import { NotProduct } from '../NotProduct';
 import { useTranslation } from 'react-i18next';
+import ContentLoader from 'react-content-loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { products, phones, tablets, accessories } = useProducts();
@@ -16,7 +17,7 @@ export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const { cart, favorites, toggleCart, toggleFavorite } =
+  const { cart, favorites, toggleCart, toggleFavorite, isLoading } =
     useContext(ProductsContext);
 
   const specLabels: Record<string, string> = {
@@ -80,11 +81,38 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [selectProduct]);
 
+  if (isLoading) {
+    return (
+      <ContentLoader
+        speed={2}
+        width={300}
+        height={506}
+        viewBox="0 0 300 506"
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb"
+        className={styles.loadclass}
+      >
+        <rect x="7" y="19" rx="0" ry="0" width="56" height="53" />
+        <rect x="146" y="271" rx="0" ry="0" width="91" height="7" />
+        <rect x="146" y="281" rx="0" ry="0" width="91" height="7" />
+        <rect x="10" y="225" rx="0" ry="0" width="97" height="31" />
+        <rect x="10" y="271" rx="0" ry="0" width="91" height="26" />
+        <rect x="11" y="302" rx="0" ry="0" width="91" height="26" />
+        <rect x="12" y="333" rx="0" ry="0" width="91" height="26" />
+        <rect x="7" y="77" rx="0" ry="0" width="56" height="53" />
+        <rect x="7" y="134" rx="0" ry="0" width="56" height="53" />
+        <rect x="76" y="20" rx="0" ry="0" width="180" height="171" />
+        <rect x="144" y="225" rx="0" ry="0" width="97" height="31" />
+      </ContentLoader>
+    );
+  }
+
   if (!selectProduct) {
     return <NotProduct />;
   }
 
   const isFavorite = favorites.some(item => item.id === selectProduct.id);
+  const isInCart = cart.some(item => item.id === selectProduct.id);
 
   return (
     <section>
@@ -188,7 +216,7 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className={styles.actions}>
                   <button
                     className={
-                      cart.includes(selectProduct.id)
+                      isInCart
                         ? `${styles.button} ${styles.activee}`
                         : styles.button
                     }
@@ -196,13 +224,13 @@ export const ProductDetailsPage: React.FC = () => {
                   >
                     <p
                       className={
-                        cart.includes(selectProduct.id)
+                        isInCart
                           ? `${styles.buttontext} ${styles.activee}`
                           : styles.buttontext
                       }
                     >
-                      {!cart.includes(selectProduct.id) && t('button')}
-                      {cart.includes(selectProduct.id) && t('buttonadd')}
+                      {!isInCart && t('button')}
+                      {isInCart && t('buttonadd')}
                     </p>
                   </button>
                   <button

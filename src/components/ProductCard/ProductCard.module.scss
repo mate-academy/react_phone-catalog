@@ -9,6 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  position: relative;
+  
+  @include hover-scale(1.03);
 
   @include tablet {
     height: 512px;
@@ -17,6 +21,12 @@
   @include mobile {
     height: 439px;
   }
+}
+
+.linkOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .container {
@@ -35,6 +45,8 @@
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
+  position: relative;
+  z-index: 2;
 }
 
 .image {
@@ -172,11 +184,11 @@
   }
 
   @include tablet {
-      width: 125px;
+    width: 125px;
   }
 
   @include mobile {
-      width: 100px;
+    width: 100px;
   }
 }
 
@@ -198,6 +210,9 @@
 
 .active {
   background: white;
-  color: #27AE60;
-  pointer-events: none;
+  border: 1px solid var(--color-elements);
+}
+
+.activetext {
+  color: #27ae60;
 }

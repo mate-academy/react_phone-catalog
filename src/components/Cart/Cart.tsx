@@ -9,6 +9,7 @@ export const Cart = () => {
   const { cart, deletCard } = useContext(ProductsContext);
   const { products } = useProducts();
   const { t } = useTranslation();
+
   const [counts, setCounts] = useState<Record<string, number>>(() => {
     try {
       const savedCounts = localStorage.getItem('counts');
@@ -27,15 +28,19 @@ export const Cart = () => {
     products.map(product => [product.itemId, product]),
   );
 
-  const total = cart.reduce((sum, id) => {
-    const product = productsMap[id];
-    const count = counts[id] || 1;
+  const total = cart.reduce((sum, item) => {
+    const product = productsMap[item.id];
+    const count = counts[item.id] || 1;
 
     if (!product) {
       return sum;
     }
 
     return sum + product.fullPrice * count;
+  }, 0);
+
+  const totalItems = cart.reduce((sum, item) => {
+    return sum + (counts[item.id] || 1);
   }, 0);
 
   const increase = (id: string) => {
@@ -56,7 +61,7 @@ export const Cart = () => {
     const confirmed = window.confirm(t('check'));
 
     if (confirmed) {
-      cart.forEach(id => deletCard(id));
+      cart.forEach(item => deletCard(item.id));
     }
   };
 
@@ -64,24 +69,28 @@ export const Cart = () => {
     <div className={styles.box}>
       <NavigateBar />
       <h1 className={styles.title}>{t('cart')}</h1>
+
       <div className={styles.productlist}>
         <div className={styles.boxlist}>
           {cart.map(item => {
-            const product = productsMap[item];
-            const score = counts[item] || 1;
+            const product = productsMap[item.id];
 
             if (!product) {
               return null;
             }
 
+            const score = counts[item.id] || 1;
+            const cartprice = score * product.fullPrice;
+
             return (
-              <div key={item} className={styles.productItem}>
+              <div key={item.id} className={styles.productItem}>
                 <button
                   className={styles.delet}
-                  onClick={() => deletCard(product.itemId)}
+                  onClick={() => deletCard(item.id)}
                 >
                   <img src="./img/icons/clouse.svg" alt="Close" />
                 </button>
+
                 <div className={styles.boximg}>
                   <img
                     src={`./${product.image}`}
@@ -89,17 +98,28 @@ export const Cart = () => {
                     className={styles.img}
                   />
                 </div>
+
                 <p className={styles.text}>{product.name}</p>
+
                 <div className={styles.count}>
-                  <button className={styles.add} onClick={() => increase(item)}>
+                  <button
+                    className={styles.add}
+                    onClick={() => increase(item.id)}
+                  >
                     <img src="./img/icons/Plus.svg" alt="Plus" />
                   </button>
+
                   <p className={styles.howmuch}>{score}</p>
-                  <button className={styles.add} onClick={() => decrease(item)}>
+
+                  <button
+                    className={styles.add}
+                    onClick={() => decrease(item.id)}
+                  >
                     <img src="./img/icons/Minus.svg" alt="Minus" />
                   </button>
                 </div>
-                <p className={styles.pryce}>${product.fullPrice}</p>
+
+                <p className={styles.pryce}>${cartprice}</p>
               </div>
             );
           })}
@@ -109,10 +129,13 @@ export const Cart = () => {
           <p className={styles.total}>
             {t('total')}: ${total}
           </p>
+
           <p className={styles.howitms}>
-            {t('otalfor')} {cart.length} {t('items')}
+            {t('otalfor')} {totalItems} {t('items')}
           </p>
+
           <div className={styles.line}></div>
+
           <button className={styles.checkout} onClick={handleCheckout}>
             {t('checkout')}
           </button>
