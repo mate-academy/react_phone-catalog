@@ -1,0 +1,24 @@
+.section {
+  width: 100%;
+  padding-block: space(4);
+
+  @include respond(tablet) {
+    padding-block: space(5);
+  }
+}
+
+.title {
+  margin: 0 0 space(3);
+  color: $text;
+  text-transform: none;
+  letter-spacing: 0;
+
+  @include mont(700);
+
+  font-size: calc($space-unit * 6);
+  line-height: 1.2;
+
+  @include respond(tablet) {
+    font-size: calc($space-unit * 8);
+  }
+}

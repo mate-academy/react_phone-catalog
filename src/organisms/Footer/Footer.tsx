@@ -2,13 +2,18 @@ import FooterLinks from '@/molecules/FooterLinks';
 
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
+import Section from '@/atoms/Section';
 
 import Chevron from '@/assets/icons/chevron.svg?react';
 import Button from '@/atoms/Button';
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <Section as="footer" unstyled className={styles.footer}>
+      <Section.Title as="h2" className={styles.visuallyHidden}>
+        Footer navigation
+      </Section.Title>
+
       <div className={styles.footer__nav}>
         <Link className={styles.logo} to="/">
           <div className={styles.logo__img} />
@@ -26,7 +31,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-    </footer>
+    </Section>
   );
 };
 

@@ -15,6 +15,8 @@
 
   &__img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
     display: block;
   }
 
@@ -27,11 +29,13 @@
   }
 
   &__name {
+    min-height: max-content;
     font-size: medium;
     font-weight: 400;
   }
 
   &__footer {
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: space(2);
@@ -43,4 +47,3 @@
     }
   }
 }
-

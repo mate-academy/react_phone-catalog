@@ -2,12 +2,17 @@ import Menu from '@/molecules/Menu';
 import styles from './Header.module.scss';
 import BagIcon from '@/assets/icons/shoping_bag.svg?react';
 import HeartIcon from '@/assets/icons/heart.svg?react';
+import Section from '@/atoms/Section';
 
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className={styles.header}>
+    <Section as="header" unstyled className={styles.header}>
+      <Section.Title as="h1" className={styles.visuallyHidden}>
+        Phone catalog
+      </Section.Title>
+
       <Link className={styles.logo} to="/">
         <div className={styles.logo__img} />
       </Link>
@@ -30,7 +35,7 @@ const Header = () => {
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
           htmlFor="menu-checkbox"
-          className={`check-box-label  ${styles.control__button}`}
+          className={`check-box-label ${styles.control__button}`}
           tabIndex={0}
           role="button"
         >
@@ -62,7 +67,7 @@ const Header = () => {
           </svg>
         </label>
       </nav>
-    </header>
+    </Section>
   );
 };
 

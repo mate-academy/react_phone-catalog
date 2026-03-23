@@ -1,12 +1,6 @@
-import { useEffect, useState } from 'react';
+import { Phone } from '@/types';
 import phonesData from '../../public/api/phones.json';
 
 export const usePhones = () => {
-  const [phones, setPhones] = useState<typeof phonesData>([]);
-
-  useEffect(() => {
-    setPhones(phonesData);
-  }, []);
-
-  return phones;
+  return phonesData as Phone[];
 };

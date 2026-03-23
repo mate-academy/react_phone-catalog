@@ -1,0 +1,22 @@
+.categories {
+  width: 100%;
+}
+
+.container {
+  @include grid;
+}
+
+.title {
+  grid-column: 1 / -1;
+}
+
+.content {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+
+}

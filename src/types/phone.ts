@@ -1,25 +1,5 @@
-export interface Description {
-  title: string;
-  text: string[];
-}
+import { Good } from './good';
 
-export type Phone = {
-  id: string;
-  category: string;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: string[];
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
-  images: string[];
-  description: Description[];
-  screen: string;
-  resolution: string;
-  ram: string;
-  camera: string;
+export type Phone = Good & {
   zoom: string;
-  cell: string[];
 };

@@ -1,5 +1,6 @@
 .list {
   grid-column: 1/-1;
+  grid-row: 2;
 
   grid-auto-flow: column;
   overflow-x: auto;
@@ -21,6 +22,16 @@
   @include grid;
 }
 
+.title {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin: 0;
+  align-self: center;
+
+  @include respond(tablet) {
+    grid-column: 1 / -3;
+  }
+}
 
 .button__left,
 .button__right {

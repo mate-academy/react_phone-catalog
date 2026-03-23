@@ -3,6 +3,7 @@ import { GoodCard } from './ui/GoodCard';
 import { Phone } from '@/types/phone';
 import styles from './GoodList.module.scss';
 import Button from '@/atoms/Button';
+import Section from '@/atoms/Section';
 import Chevron from '@/assets/icons/chevron.svg?react';
 
 type Props = {
@@ -21,28 +22,32 @@ export const GoodList: FC<Props> = ({ items }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <Button
-        classNames={styles.button__left}
-        onClick={prev}
-        disabled={page === 0}
-      >
-        <Chevron />
-      </Button>
+    <Section>
+      <div className={styles.container}>
+        <Section.Title className={styles.title}>Brand new models</Section.Title>
 
-      <Button
-        classNames={styles.button__right}
-        onClick={next}
-        disabled={page + 4 >= items.length}
-      >
-        <Chevron />
-      </Button>
+        <Button
+          classNames={styles.button__left}
+          onClick={prev}
+          disabled={page === 0}
+        >
+          <Chevron />
+        </Button>
 
-      <div className={styles.list}>
-        {items.slice(page, page + 4).map(item => (
-          <GoodCard key={item.id} item={item} />
-        ))}
+        <Button
+          classNames={styles.button__right}
+          onClick={next}
+          disabled={page + 4 >= items.length}
+        >
+          <Chevron />
+        </Button>
+
+        <div className={styles.list}>
+          {items.slice(page, page + 4).map(item => (
+            <GoodCard key={item.id} item={item} />
+          ))}
+        </div>
       </div>
-    </div>
+    </Section>
   );
 };
