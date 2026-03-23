@@ -1,19 +1,16 @@
 .footer {
   display: block;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-
   border-top: 1px solid #e2e6e9;
-  height: 64px;
+  max-width: 1136px;
 };
 
 .footer__container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  height: 64px;
 };
 .footer__left {
   display: flex;

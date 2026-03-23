@@ -35,4 +35,29 @@
   @media (min-width: 1200px) {
     grid-column: 1 / 7;
   }
-}
+};
+
+.category {
+
+};
+
+.category__banner {
+  width: 288px;
+  height: 288px;
+  @media (min-width: 640px) {
+    width: 187px;
+    height: 187px;
+  }
+  @media (min-width: 1200px) {
+    width: 368px;
+    height: 368px;
+  }
+};
+
+.category__text {
+  color: black;
+};
+
+.category__count {
+  color: #e2e6e9;
+};
