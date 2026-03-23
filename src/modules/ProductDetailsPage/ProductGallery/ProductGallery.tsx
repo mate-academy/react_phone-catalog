@@ -20,7 +20,7 @@ export const ProductGallery: React.FC<Props> = ({
     <div className={styles.gallery}>
       <div className={styles.mainImageWrapper}>
         <img
-          src={activeImage || images[0]}
+          src={`${import.meta.env.BASE_URL}${activeImage || images[0]}`}
           alt={name}
           className={styles.mainImage}
         />
@@ -36,7 +36,7 @@ export const ProductGallery: React.FC<Props> = ({
             onClick={() => setActiveImage(img)}
           >
             <img
-              src={img}
+              src={`${import.meta.env.BASE_URL}${img}`}
               alt={`Thumbnail ${index + 1}`}
               className={styles.thumbnailImage}
             />

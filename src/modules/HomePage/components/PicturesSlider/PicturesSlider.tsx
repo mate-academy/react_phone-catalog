@@ -60,10 +60,13 @@ export const PicturesSlider = () => {
           {slides.map((slide, index) => (
             <SwiperSlide key={index} className={styles.slide}>
               <picture>
-                <source media="(min-width: 640px)" srcSet={slide.desktopImg} />
+                <source
+                  media="(min-width: 640px)"
+                  srcSet={`${import.meta.env.BASE_URL}${slide.desktopImg}`}
+                />
 
                 <img
-                  src={slide.mobileImg}
+                  src={`${import.meta.env.BASE_URL}${slide.mobileImg}`}
                   alt={slide.alt}
                   className={styles.bannerImage}
                 />

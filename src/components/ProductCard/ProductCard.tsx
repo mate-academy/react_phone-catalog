@@ -45,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={styles.imageWrapper}>
           <img
             className={styles.image}
-            src={product.image}
+            src={`${import.meta.env.BASE_URL}${product.image}`}
             alt={`${product.name} image`}
           />
         </div>
