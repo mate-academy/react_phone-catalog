@@ -32,6 +32,7 @@ const Slider = ({ title = 'Welcome to Nice Gadgets store!' }: Props) => {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     setSlide(prev => prev - 1);
   };
 
