@@ -1,21 +1,51 @@
 import ProductList from '../ProductList/ProductList';
 import './Catalog.scss';
 import { useState, useEffect } from 'react';
-import { getPhones } from '../../api';
-import { Phone } from '../../types/Phone';
+import { getProducts } from '../../api';
+import Footer from '../Footer/Footer';
+import { Product } from '../../types/Product';
 
 const Catalog = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getPhones().then(setPhones);
+    getProducts().then(setProducts);
   }, []);
 
   return (
     <div className="catalog">
       <h1 className="catalog__title">Mobile phones</h1>
-      <p className="catalog__models--counter">{phones.length} models</p>
-      <ProductList phones={phones} />
+      <p className="catalog__models--counter">{products.length} models</p>
+      <ProductList products={products} />
+      <div className="catalog__sliders">
+        <div className="catalog__slider--left">
+          <a href="" className="catalog__slider--left--icon"></a>
+        </div>
+        <div>
+          <a href="" className="catalog__slider--number">
+            1
+          </a>
+        </div>
+        <div>
+          <a href="" className="catalog__slider--number">
+            2
+          </a>
+        </div>
+        <div>
+          <a href="" className="catalog__slider--number">
+            3
+          </a>
+        </div>
+        <div>
+          <a href="" className="catalog__slider--number">
+            4
+          </a>
+        </div>
+        <div className="catalog__slider--right">
+          <a href="" className="catalog__slider--right--icon"></a>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import './ProductList.scss';
-import { Phone } from '../../types/Phone';
 import ProductCard from '../ProductCard/ProductCard';
+import { Product } from '../../types/Product';
 
 type ProductListProps = {
-  phones: Phone[];
+  products: Product[];
 };
 
-const ProductList = ({ phones }: ProductListProps) => {
+const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="product__list">
-      {phones.map(phone => (
-        <ProductCard key={phone.id} phone={phone} />
+      {products.map(product => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
