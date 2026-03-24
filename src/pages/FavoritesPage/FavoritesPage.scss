@@ -1,54 +1,59 @@
-@import '../../variables';
+@import '../../variables.scss';
+@import '../../mixins.scss';
 
 .favorites-page {
-  grid-column: 1/-1;
-  padding: 24px 16px;
-  max-width: 1200px;
-  margin: 0 auto;
+   grid-column: 1 / -1;
 
-  @media (min-width: 640px) {
-    padding: 32px 32px;
+  // 1. Хлібні крихти на всю ширину
+  .breadcrumbs {
+    grid-column: 1 / -1;
+    margin-top: 24px;
   }
 
-  &__title {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $color-primary; // Dark black
-    margin-bottom: 8px;
-    margin-top: 40px;
+  // 2. Хедер (Заголовок + лічильник) на всю ширину
+  &__header {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+    margin-bottom: 24px;
 
-    @media (min-width: 640px) {
-      font-size: 48px;
-      line-height: 56px;
+    h1 {
+      margin-bottom: 8px;
     }
   }
 
   &__count {
-    font-size: 14px;
-    font-weight: 600;
-    color: #89939a; // Secondary gray
-    margin-bottom: 32px;
+    color: $color-secondary;
   }
 
+  // 3. Повідомлення про порожній список
   &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 0;
+    grid-column: 1 / -1;
+    padding: 60px 0;
     text-align: center;
+    color: $color-secondary;
+  }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 8px;
-      color: #313237;
+  // 4. СІТКА ТОВАРІВ
+  .products-grid {
+    grid-column: 1 / -1; // ОБОВ'ЯЗКОВО: займає всі 24 колонки лейауту
+
+    // Тепер всередині цієї секції створюємо власну сітку для карток
+    display: grid;
+    gap: 40px 16px;
+    margin-bottom: 80px;
+
+    // Налаштовуємо кількість карток у рядку
+    grid-template-columns: repeat(4, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px 16px;
     }
 
-    p {
-      color: #89939a;
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
     }
   }
 }
-

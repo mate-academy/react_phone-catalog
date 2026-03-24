@@ -16,9 +16,11 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
   onConfirm,
   onCancel,
   confirmText = 'Видалити',
-  cancelText = 'Скасувати'
+  cancelText = 'Скасувати',
 }) => {
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   // Закриття при кліку на фон (overlay)
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -30,21 +32,17 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
-        <button className="modal-close" onClick={onCancel}>&times;</button>
+        <button className="modal-close" onClick={onCancel}>
+          &times;
+        </button>
 
         <p className="modal-message">{message}</p>
 
         <div className="modal-actions">
-          <button
-            className="modal-btn modal-btn--cancel"
-            onClick={onCancel}
-          >
+          <button className="modal-btn modal-btn--cancel" onClick={onCancel}>
             {cancelText}
           </button>
-          <button
-            className="modal-btn modal-btn--confirm"
-            onClick={onConfirm}
-          >
+          <button className="modal-btn modal-btn--confirm" onClick={onConfirm}>
             {confirmText}
           </button>
         </div>
@@ -52,5 +50,3 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
     </div>
   );
 };
-
-

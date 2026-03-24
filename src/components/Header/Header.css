@@ -47,7 +47,6 @@
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
-  /* BURGER МЕНЮ */
 }
 .header nav {
   display: flex;
@@ -92,7 +91,6 @@
   list-style: none;
   display: flex;
   gap: 64px;
-  /* MOBILE MENU */
 }
 @media (min-width: 320px) and (max-width: 639px) {
   .header .nav-links {
@@ -111,7 +109,6 @@
   position: relative;
   padding: 25px 0;
   transition: color 0.3s;
-  /* Додаємо псевдоелемент для зайняття простору (опційно) */
 }
 @media (min-width: 320px) and (max-width: 639px) {
   .header .nav-links .nav-link {
@@ -122,6 +119,9 @@
   .header .nav-links .nav-link {
     padding: 18px 0;
   }
+}
+.header .nav-links .nav-link {
+  /* Додаємо псевдоелемент для зайняття простору (опційно) */
 }
 .header .nav-links .nav-link::before {
   content: "";
@@ -148,6 +148,9 @@
   .header .nav-links .nav-link.active::after {
     height: 2px;
   }
+}
+.header .nav-links {
+  /* MOBILE MENU */
 }
 @media (min-width: 320px) and (max-width: 639px) {
   .header .nav-links {
@@ -227,6 +230,9 @@
   width: 16px;
   height: 16px;
 }
+.header {
+  /* BURGER МЕНЮ */
+}
 .header .burger-menu {
   display: none;
 }
@@ -242,7 +248,6 @@
     position: relative;
     z-index: 10001;
     /* Прибираємо зайві стилі для span */
-    /* Якщо потрібна анімація зміни іконки */
   }
   .header .burger-menu span {
     display: none;
@@ -252,6 +257,9 @@
     height: 16px;
     transition: opacity 0.3s;
     padding: 16px;
+  }
+  .header .burger-menu {
+    /* Якщо потрібна анімація зміни іконки */
   }
   .header .burger-menu.open img {
     opacity: 0.7;

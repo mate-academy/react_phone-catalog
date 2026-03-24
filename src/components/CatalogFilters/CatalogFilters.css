@@ -1,0 +1,153 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.catalog-filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .catalog-filters {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter__label {
+  font-size: 12px;
+  color: #89939a;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.filter__control {
+  position: relative;
+  width: 176px;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .filter__control {
+    width: 100%;
+  }
+}
+
+/* Кастомний dropdown стилі */
+.custom-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 40px;
+  border: 1px solid #b4bdc3;
+  background-color: #ffffff;
+  font-family: inherit;
+  color: #313237;
+  cursor: pointer;
+  text-align: left;
+}
+.dropdown-toggle:hover {
+  border-color: #313237;
+}
+.dropdown-toggle:focus {
+  outline: none;
+  border-color: #313237;
+  box-shadow: 0 0 0 2px rgba(49, 50, 55, 0.1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background-color: #ffffff;
+  border: 1px solid #e2e6e9;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #313237;
+  cursor: pointer;
+}
+.dropdown-item:hover {
+  background-color: #f8f8f8;
+  color: #313237;
+}
+.dropdown-item.selected {
+  background-color: #f0f0f0;
+  color: #313237;
+  font-weight: 600;
+}
+.dropdown-item:first-child {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.dropdown-item:last-child {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.filter__arrow {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: url("/img/Arrow_Down_Grey.svg") center/contain no-repeat;
+  pointer-events: none;
+}
+
+/* Старий select для порівняння (можна видалити) */
+.filter__select {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 12px;
+  font-size: 14px;
+  line-height: 40px;
+  border: 1px solid #b4bdc3;
+  background-color: #fff;
+  border-radius: 8px;
+  font-family: inherit;
+  color: #313237;
+  font-weight: 600;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}/*# sourceMappingURL=CatalogFilters.css.map */

@@ -46,9 +46,7 @@ const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
             alt="Arrow"
             className="breadcrumbs__arrow"
           />
-          <span className="breadcrumbs__current">
-            {productName}
-          </span>
+          <span className="breadcrumbs__current">{productName}</span>
         </>
       )}
     </nav>

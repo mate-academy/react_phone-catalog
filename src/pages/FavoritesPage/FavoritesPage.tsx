@@ -10,7 +10,7 @@ import './FavoritesPage.scss';
 export function FavoritesPage() {
   const dispatch = useAppDispatch();
   // Тепер тип стейту підтягується автоматично
-  const favorites = useAppSelector((state) => state.favorites.items);
+  const favorites = useAppSelector(state => state.favorites.items);
 
   const [idToDelete, setIdToDelete] = useState<string | null>(null);
 

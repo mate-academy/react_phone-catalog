@@ -9,9 +9,11 @@ export interface FavoritesState {
 const loadFavorites = (): CatalogProduct[] => {
   try {
     const saved = localStorage.getItem('favorites');
+
     return saved ? JSON.parse(saved) : [];
   } catch (error) {
     console.error('Error loading favorites:', error);
+
     return [];
   }
 };
@@ -28,6 +30,7 @@ const favoritesSlice = createSlice({
     addToFavorites: (state, action: PayloadAction<CatalogProduct>) => {
       // Перевірка, щоб не додати той самий товар двічі (про всяк випадок)
       const exists = state.items.find(item => item.id === action.payload.id);
+
       if (!exists) {
         state.items.push(action.payload);
         localStorage.setItem('favorites', JSON.stringify(state.items));

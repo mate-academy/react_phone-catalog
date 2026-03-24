@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Layout from "./Layout";
-import Home from "./pages/Home/Home";
-import Catalog from "./components/Catalog/Catalog";
-import ProductPage from "./pages/ProductPage/ProductPage";
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Layout from './Layout';
+import Home from './pages/Home/Home';
+import Catalog from './components/Catalog/Catalog';
+import ProductPage from './pages/ProductPage/ProductPage';
 import { CartProvider } from './components/CartContext/CartContext';
 import CartPage from './pages/CartPage/CartPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage'; // 2. Імпортуй майбутню сторінку
-import './App.scss'
+import './App.scss';
 
 function App() {
   const [allProducts, setAllProducts] = useState<any[]>([]);
@@ -22,18 +22,21 @@ function App() {
         const responses = await Promise.all([
           fetch('/api/phones.json'),
           fetch('/api/tablets.json'),
-          fetch('/api/accessories.json')
+          fetch('/api/accessories.json'),
         ]);
 
         const productsData: any[] = [];
+
         for (const res of responses) {
           if (res.ok) {
             const data = await res.json();
+
             if (Array.isArray(data)) {
               productsData.push(...data);
             }
           }
         }
+
         setAllProducts(productsData);
       } catch (error) {
         console.error('Error loading products:', error);
@@ -50,32 +53,37 @@ function App() {
   }
 
   return (
-      <CartProvider>
-        <Header />
-        <main>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<CartPage />} />
+    <CartProvider>
+      <Header />
+      <main>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<CartPage />} />
 
-              {/* 4. Додай маршрут для сторінки Обраного */}
-              <Route path="/favorites" element={<FavoritesPage />} />
+            {/* 4. Додай маршрут для сторінки Обраного */}
+            <Route path="/favorites" element={<FavoritesPage />} />
 
-              {/* Каталоги */}
-              <Route path="/:category" element={<Catalog products={allProducts} />} />
+            {/* Каталоги */}
+            <Route
+              path="/:category"
+              element={<Catalog products={allProducts} />}
+            />
 
-              {/* Сторінка продукту */}
-              <Route path="/:category/:productId" element={<ProductPage products={allProducts} />} />
-            </Routes>
-          </Layout>
-        </main>
-        <Footer />
-      </CartProvider>
+            {/* Сторінка продукту */}
+            <Route
+              path="/:category/:productId"
+              element={<ProductPage products={allProducts} />}
+            />
+          </Routes>
+        </Layout>
+      </main>
+      <Footer />
+    </CartProvider>
   );
 }
 
 export default App;
-
 
 /*
 import './App.css'

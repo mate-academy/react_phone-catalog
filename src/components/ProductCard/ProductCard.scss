@@ -29,7 +29,6 @@
     height: 200px;      // обмеження висоти
     object-fit: contain;    // зберігає пропорції
     margin-bottom: 16px;
-    border-radius: 8px;
 
     @include mobile {
       max-height: 129px;
@@ -40,7 +39,7 @@
   .product-name {
   font-size: map-get($body-text, font-size);
   font-weight: map-get($body-text, font-weight);
-  line-height: 20px; // або map-get($body-text, line-height)
+  line-height: map-get($body-text, line-height);
   letter-spacing: map-get($body-text, letter-spacing);
 
   min-height: 40px; // 2 рядки × line-height
@@ -121,6 +120,7 @@
   align-items: center;
   gap: 8px;
   height: 40px;
+  width: 100%;
 
   @include mobile {
     justify-content: center;
@@ -136,7 +136,7 @@
 
 
     .add-to-cart-button {
-    width: 176px;            // ❗ ФІКСОВАНА ширина (під макет)
+    width: 80%;            // ❗ ФІКСОВАНА ширина (під макет)
     height: 40px;
     padding: 0 40px;
     background-color: $color-primary;
@@ -158,10 +158,6 @@
       box-shadow: 0px 3px 13px 0px #17203166;
     }
 
-      @include mobile {
-      width: 148px;
-    }
-
      &.added-to-cart {
       background-color: $color-white;
       border-color: $color-elements;
@@ -171,7 +167,7 @@
 
 
     .like-button {
-    width: 40px;
+    width: 20%;
     padding: 0;
     border: 1px solid $color-icons;
     background-color: $color-white;

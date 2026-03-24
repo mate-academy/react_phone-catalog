@@ -4,7 +4,10 @@ import { Product, Phone, Tablet, Accessory } from '../../../public/types';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { useCart } from '../../components/CartContext/CartContext';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addToFavorites, removeFromFavorites } from '../../features/favorites/favoritesSlice';
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from '../../features/favorites/favoritesSlice';
 import { colorMap } from '../../../public/utils/colorMap';
 import './ProductPage.scss';
 
@@ -24,16 +27,19 @@ const ProductPage = ({ products }: ProductPageProps) => {
   const [loading, setLoading] = useState(true);
 
   // Отримуємо актуальний стан з Redux
-  const favorites = useAppSelector((state) => state.favorites.items);
+  const favorites = useAppSelector(state => state.favorites.items);
   // Перевірка, чи лайкнутий товар (безпечна перевірка через опціональний ланцюжок)
   const isLiked = favorites.some(item => item.id === product?.id);
 
   const { addToCart } = useCart();
 
   useEffect(() => {
-    if (!productId || products.length === 0) return;
+    if (!productId || products.length === 0) {
+      return;
+    }
 
     const foundProduct = products.find(p => p.id === productId);
+
     setProduct(foundProduct || null);
     setLoading(false);
     setSelectedImage(0); // Скидаємо картинку при зміні продукту
@@ -41,7 +47,9 @@ const ProductPage = ({ products }: ProductPageProps) => {
 
   // Обробка кліку на сердечко
   const handleLikeClick = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
@@ -52,7 +60,11 @@ const ProductPage = ({ products }: ProductPageProps) => {
   };
 
   if (loading) {
-    return <div className="product-page product-page--loading"><p>Loading product...</p></div>;
+    return (
+      <div className="product-page product-page--loading">
+        <p>Loading product...</p>
+      </div>
+    );
   }
 
   if (!product) {
@@ -66,18 +78,23 @@ const ProductPage = ({ products }: ProductPageProps) => {
   }
 
   // Розрахунок варіантів
-  const colorVariants = products.filter(p =>
-    p.namespaceId === product.namespaceId && p.capacity === product.capacity
+  const colorVariants = products.filter(
+    p =>
+      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
-  const capacityVariants = products.filter(p =>
-    p.namespaceId === product.namespaceId && p.color === product.color
+  const capacityVariants = products.filter(
+    p => p.namespaceId === product.namespaceId && p.color === product.color,
   );
 
   return (
     <div className="product-page">
       <Breadcrumbs productName={product.name} />
       <div className="back-button" onClick={() => navigate(-1)}>
-        <img src="/img/Arrow_Left.svg" alt="Arrow" className="breadcrumbs__arrow" />
+        <img
+          src="/img/Arrow_Left.svg"
+          alt="Arrow"
+          className="breadcrumbs__arrow"
+        />
         Back
       </div>
 
@@ -97,7 +114,11 @@ const ProductPage = ({ products }: ProductPageProps) => {
             ))}
           </div>
           <div className="gallery-main">
-            <img src={product.images[selectedImage]} alt={product.name} className="product-main-image" />
+            <img
+              src={product.images[selectedImage]}
+              alt={product.name}
+              className="product-main-image"
+            />
           </div>
         </div>
 
@@ -143,13 +164,15 @@ const ProductPage = ({ products }: ProductPageProps) => {
           <div className="product-actions">
             <button
               className="action-button"
-              onClick={() => addToCart({
-                id: product.id,
-                name: product.name,
-                price: product.priceDiscount,
-                image: product.images[0],
-                quantity: 1,
-              })}
+              onClick={() =>
+                addToCart({
+                  id: product.id,
+                  name: product.name,
+                  price: product.priceDiscount,
+                  image: product.images[0],
+                  quantity: 1,
+                })
+              }
             >
               Add to cart
             </button>
@@ -197,22 +220,26 @@ const ProductPage = ({ products }: ProductPageProps) => {
           <div className="about-title">Tech specs</div>
           <hr className="divider" />
           <div className="product-specs2">
-             <div className="spec-row">
-                <span className="spec-name">Screen</span>
-                <span className="spec-value">{product.screen}</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">Built in memory</span>
-                <span className="spec-value">{product.capacity}</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">Camera</span>
-                <span className="spec-value">{'camera' in product ? product.camera : 'N/A'}</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">Cell</span>
-                <span className="spec-value">{'cell' in product ? product.cell.join(', ') : 'N/A'}</span>
-              </div>
+            <div className="spec-row">
+              <span className="spec-name">Screen</span>
+              <span className="spec-value">{product.screen}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Built in memory</span>
+              <span className="spec-value">{product.capacity}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Camera</span>
+              <span className="spec-value">
+                {'camera' in product ? product.camera : 'N/A'}
+              </span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Cell</span>
+              <span className="spec-value">
+                {'cell' in product ? product.cell.join(', ') : 'N/A'}
+              </span>
+            </div>
           </div>
         </section>
       </div>

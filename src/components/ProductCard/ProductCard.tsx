@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product, Phone, Tablet, Accessory } from '../../../public/types';
 import { useAppDispatch, useAppSelector } from '../../app/hooks'; // Твої типізовані хуки
-import { addToFavorites, removeFromFavorites } from '../../features/favorites/favoritesSlice';
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from '../../features/favorites/favoritesSlice';
 import './ProductCard.scss';
 
 type ProductType = Phone | Tablet | Accessory;
@@ -13,11 +16,15 @@ interface ProductCardProps {
   onRemove?: () => void; // Новий пропс для перехоплення видалення (для модалки)
 }
 
-function ProductCard({ product, showDiscount = false, onRemove }: ProductCardProps) {
+function ProductCard({
+  product,
+  showDiscount = false,
+  onRemove,
+}: ProductCardProps) {
   const dispatch = useAppDispatch();
 
   // Отримуємо список обраного з Redux
-  const favorites = useAppSelector((state) => state.favorites.items);
+  const favorites = useAppSelector(state => state.favorites.items);
   const isLiked = favorites.some(item => item.id === product.id);
 
   // Стан для кошика (потім теж перенесеш в Redux)
@@ -40,17 +47,28 @@ function ProductCard({ product, showDiscount = false, onRemove }: ProductCardPro
   };
 
   // Визначення ціни та зображення (твоя логіка)
-  const price = 'priceDiscount' in product ? product.priceDiscount : product.price;
-  const fullPrice = 'priceRegular' in product ? product.priceRegular : (product as Product).fullPrice;
-  const image = 'images' in product ? product.images[0] : (product as Product).image;
+  const price =
+    'priceDiscount' in product ? product.priceDiscount : product.price;
+  const fullPrice =
+    'priceRegular' in product
+      ? product.priceRegular
+      : (product as Product).fullPrice;
+  const image =
+    'images' in product ? product.images[0] : (product as Product).image;
 
   return (
     <div className="product-card">
-      <Link to={`/${product.category}/${product.id}`} className="product-image-link">
+      <Link
+        to={`/${product.category}/${product.id}`}
+        className="product-image-link"
+      >
         <img src={image} alt={product.name} className="product-image" />
       </Link>
 
-      <Link to={`/${product.category}/${product.id}`} className="product-name-link">
+      <Link
+        to={`/${product.category}/${product.id}`}
+        className="product-name-link"
+      >
         <div className="product-name">{product.name}</div>
       </Link>
 

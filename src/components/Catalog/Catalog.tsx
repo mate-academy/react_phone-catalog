@@ -29,7 +29,7 @@ const TITLES_MAP: Record<string, string> = {
 
 const Catalog: React.FC<CatalogProps> = ({ products }) => {
   const { category } = useParams<{ category: string }>();
-  const title = category ? TITLES_MAP[category] ?? 'Catalog' : 'Catalog';
+  const title = category ? (TITLES_MAP[category] ?? 'Catalog') : 'Catalog';
 
   const [sort, setSort] = useState('newest');
   const [perPage, setPerPage] = useState<'all' | number>(8);
@@ -41,24 +41,35 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
     setCurrentPage(1);
   }, [category]);
 
-  if (!category) return <p>No category selected</p>;
+  if (!category) {
+    return <p>No category selected</p>;
+  }
 
   const filteredProducts = products.filter(p => p.category === category);
   const totalCount = filteredProducts.length;
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sort) {
-      case 'alphabet': return a.name.localeCompare(b.name);
-      case 'cheapest': return a.priceDiscount - b.priceDiscount;
-      case 'expensive': return b.priceDiscount - a.priceDiscount;
-      default: return 0;
+      case 'alphabet':
+        return a.name.localeCompare(b.name);
+      case 'cheapest':
+        return a.priceDiscount - b.priceDiscount;
+      case 'expensive':
+        return b.priceDiscount - a.priceDiscount;
+      default:
+        return 0;
     }
   });
 
-  const totalPages = perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / Number(perPage));
-  const visibleProducts = perPage === 'all'
-    ? sortedProducts
-    : sortedProducts.slice((currentPage - 1) * Number(perPage), currentPage * Number(perPage));
+  const totalPages =
+    perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / Number(perPage));
+  const visibleProducts =
+    perPage === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(
+        (currentPage - 1) * Number(perPage),
+        currentPage * Number(perPage),
+      );
 
   const handlePerPageChange = (value: 'all' | number) => {
     setPerPage(value);
@@ -69,7 +80,9 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
     <section className="catalog">
       <Breadcrumbs />
       <h1 className="catalog-title">{title}</h1>
-      <p className="catalog-count">{totalCount} {totalCount === 1 ? 'model' : 'models'}</p>
+      <p className="catalog-count">
+        {totalCount} {totalCount === 1 ? 'model' : 'models'}
+      </p>
 
       <CatalogFilters
         sort={sort}
@@ -79,9 +92,13 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
       />
 
       <div className="catalog-grid">
-        {visibleProducts.length ? visibleProducts.map(product => (
-          <ProductCard key={product.id} product={product} showDiscount />
-        )) : <p>No products found</p>}
+        {visibleProducts.length ? (
+          visibleProducts.map(product => (
+            <ProductCard key={product.id} product={product} showDiscount />
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </div>
 
       {perPage !== 'all' && totalPages > 1 && (
@@ -120,7 +137,6 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
           </button>
         </div>
       )}
-
     </section>
   );
 };
