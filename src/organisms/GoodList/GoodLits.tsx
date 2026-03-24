@@ -11,14 +11,15 @@ type Props = {
 };
 
 export const GoodList: FC<Props> = ({ items }) => {
+  const pageSize = 4;
   const [page, setPage] = useState(0);
 
   const next = () => {
-    setPage(page + 4);
+    setPage(prevPage => prevPage + pageSize);
   };
 
   const prev = () => {
-    setPage(page - 4);
+    setPage(prevPage => prevPage - pageSize);
   };
 
   return (
@@ -37,13 +38,13 @@ export const GoodList: FC<Props> = ({ items }) => {
         <Button
           classNames={styles.button__right}
           onClick={next}
-          disabled={page + 4 >= items.length}
+          disabled={page + pageSize >= items.length}
         >
           <Chevron />
         </Button>
 
         <div className={styles.list}>
-          {items.slice(page, page + 4).map(item => (
+          {items.slice(page, page + pageSize).map(item => (
             <GoodCard key={item.id} item={item} />
           ))}
         </div>

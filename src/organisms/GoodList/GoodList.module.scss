@@ -1,9 +1,12 @@
 .list {
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
   grid-row: 2;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   grid-auto-flow: column;
-  overflow-x: auto;
+  overflow: auto hidden;
   gap: space(2);
 
   -ms-overflow-style: none;
@@ -13,58 +16,62 @@
 
   @include respond (tablet) {
     grid-auto-flow: unset;
+    overflow: visible;
   }
 }
 
 .container {
   grid-template-rows: auto 1fr;
+  min-width: 0;
 
   @include grid;
 }
 
 .title {
-  grid-column: 1 / -1;
+  grid-column: 1 / -3;
   grid-row: 1;
   margin: 0;
   align-self: center;
-
-  @include respond(tablet) {
-    grid-column: 1 / -3;
-  }
 }
+
 
 .button__left,
 .button__right {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 1/1;
+  grid-column: -2 / -1;
+  grid-row: 1;
 
-  @include respond(tablet) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  max-width: space(4);
+  max-height: space(4);
+
+  @include respond (tablet) {
+    max-width: none;
+    max-height: none;
   }
 }
 
 .button__left {
-  @include respond(tablet) {
-    grid-column: -3 / -2;
-    grid-row: 1;
+  place-self: center start;
 
-    svg {
-      transform: rotate(-90deg);
-      transition: transform 0.3s ease;
-    }
+  @include respond (tablet) {
+    grid-column: -3 / -2;
+    place-self: center;
+  }
+
+  svg {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
   }
 }
 
 .button__right {
-  @include respond(tablet) {
-    grid-column: -2 / -1;
-    grid-row: 1;
+  place-self: center end;
 
-    svg {
-      transform: rotate(90deg);
-      transition: transform 0.3s ease;
-    }
+  svg {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
   }
 }

@@ -1,13 +1,21 @@
 .card {
   width: 100%;
+  min-width: 212px;
   display: flex;
   flex-direction: column;
   gap: space(3);
   background-color: $bg;
   box-sizing: border-box;
   border: calc($space-unit / 4) solid transparent;
-  padding: space(4);
   scroll-snap-align: center;
+
+  min-height: 350px;
+  padding: space(3);
+
+  @include respond (tablet) {
+    padding: space(4);
+    min-height: 550px;
+  }
 
   &:hover {
     border-color: $secondary;
@@ -46,4 +54,9 @@
       gap: space(2);
     }
   }
+}
+
+.button__cart,
+.button__like {
+  min-width: none;
 }

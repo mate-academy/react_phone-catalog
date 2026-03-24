@@ -55,7 +55,7 @@
 
   @include respond (tablet) {
     row-gap: space(2);
-    
+
     @include grid;
   }
 }
@@ -79,6 +79,7 @@
 .button__right {
   display: none;
   grid-row: 1 / 2;
+  max-height: none;
 
   @include respond(tablet) {
     display: flex;
