@@ -67,7 +67,7 @@ export const Header = () => {
           {order.orderId && (
             <div className={classNames(styles.block, styles.block__hidden)}>
               <NavLink
-                to={`/${order.orderId}`}
+                to={`/cart/${order.orderId}`}
                 className={({ isActive }) =>
                   classNames(styles.block__link, {
                     [styles.block__link_active]: isActive,

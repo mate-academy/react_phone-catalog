@@ -29,10 +29,19 @@ export const App = () => {
                   <Route path="/" element={<HomePage />} />
                   <Route path="*" element={<PageNotFound />} />
                   <Route path="/favourites" element={<Favourites />} />
-                  <Route path="/cart" element={<Cart />} />
+                  {/* <Route path="/cart" element={<Cart />} /> */}
 
-                  <Route path="/:orderId" element={<Checkout />} />
-                  <Route path="/confirm" element={<Confirm />} />
+                  {/* <Route path="/:orderId" element={<Checkout />} /> */}
+                  {/* <Route path="/confirm" element={<Confirm />} /> */}
+
+                  <Route path="/cart">
+                    <Route index element={<Cart />} />
+
+                    <Route path=":orderId">
+                      <Route index element={<Checkout />} />
+                      <Route path="confirm" element={<Confirm />} />
+                    </Route>
+                  </Route>
 
                   <Route path="/catalog">
                     <Route index element={<Catalog />} />

@@ -81,7 +81,17 @@ export const ProductDetails = () => {
   return (
     <div className={styles.container}>
       <Pagetoolbar breadcrumbs breadcrumbsName={product && product.name} back />
-      {product && (
+      {!product ? (
+        <div className={styles.empty}>
+          <img
+            src={imageUrl('img/page-not-found.png')}
+            alt=""
+            className={styles.empty__img}
+          />
+          <h2 className={styles.empty__title}>Page not found!</h2>
+          <Button onClick={() => navigate('/')}>Go home</Button>
+        </div>
+      ) : (
         <div className={styles.content}>
           <h1 className={styles.title}>{product.name}</h1>
           <div className={styles.header}>

@@ -9,6 +9,7 @@ import {
   deleteProductFromCart,
 } from '../../store/cart/CartReducer';
 import { createOrder } from '../../store/OrderProvider/OrderReducer';
+import { useTotalPrice } from '../../hooks/useTotalPrice';
 import { imageUrl } from '../../utils/imageUrl';
 import styles from './Cart.module.scss';
 
@@ -16,12 +17,7 @@ export const Cart = () => {
   const { cart, setCart } = useCart();
   const { order, setOrder } = useOrder();
   const navigate = useNavigate();
-
-  const getTotalPrice = () => {
-    return cart.reduce((sum, item) => {
-      return sum + item.product.price * item.quantity;
-    }, 0);
-  };
+  const totalPrice = useTotalPrice();
 
   const generateOrderId = () => {
     const random = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -42,7 +38,7 @@ export const Cart = () => {
       setOrder(createOrder({ orderId, expiresAt }));
     }
 
-    navigate(`/${orderId}`);
+    navigate(`/cart/${orderId}`);
   };
 
   return (
@@ -64,7 +60,7 @@ export const Cart = () => {
         <div className={styles.wrapper}>
           <div className={styles.sidebar}>
             <div className={styles.sidebar__header}>
-              <h3 className={styles.sidebar__price}>{`$${getTotalPrice()}`}</h3>
+              <h3 className={styles.sidebar__price}>{`$${totalPrice}`}</h3>
               <p className={styles.sidebar__subtitle}>
                 Total for {cart.length} items
               </p>
