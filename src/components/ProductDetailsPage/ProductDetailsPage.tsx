@@ -69,6 +69,10 @@ export const ProductDetailsPage: React.FC = () => {
     yellow: '#F2C94C',
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const allProducts = useMemo(() => {
     return [...phones, ...tablets, ...accessories];
   }, [phones, tablets, accessories]);

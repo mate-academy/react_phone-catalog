@@ -13,11 +13,6 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
   const { cart, favorites, toggleCart, toggleFavorite } =
     useContext(ProductsContext);
-
-  // const { category } = useParams<{
-  //   category: string;
-  //   productId?: string;
-  // }>();
   const { t } = useTranslation();
 
   const location = useLocation();
@@ -99,6 +94,7 @@ export const ProductCard: React.FC<Props> = ({ product, turnon }) => {
             onClick={e => {
               e.stopPropagation();
               toggleCart(product.itemId);
+              handleClick();
             }}
           >
             <p

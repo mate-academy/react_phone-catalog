@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
 
@@ -14,36 +14,35 @@ export const Footer = () => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li className={styles.li_links}>
-              <NavLink
+              <a
                 // eslint-disable-next-line max-len
-                to="https://github.com/mate-academy/react_phone-catalog/pull/941"
-                end
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
+                href="https://github.com/mate-academy/react_phone-catalog/pull/941"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {t('git')}
-              </NavLink>
+              </a>
             </li>
             <li className={styles.li_links}>
-              <NavLink
-                to="https://github.com/DebHtm"
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
+              <a
+                href="https://github.com/DebHtm"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {t('contact')}
-              </NavLink>
+              </a>
             </li>
             <li className={styles.li_links}>
-              <NavLink
-                to="https://github.com/DebHtm"
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
+              <a
+                href="https://github.com/DebHtm"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {t('right')}
-              </NavLink>
+              </a>
             </li>
           </ul>
         </nav>
