@@ -31,7 +31,7 @@ export const CartPage = () => {
           <h2 className={styles.empty}>Your cart is empty</h2>
 
           <img
-            src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
+            src={`${import.meta.env.BASE_URL}/img/cart-is-empty.png`}
             alt="Empty cart photo"
             className={styles.img}
           />
