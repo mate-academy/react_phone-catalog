@@ -110,7 +110,7 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
             onClick={() => setCurrentPage(prev => prev - 1)}
             aria-label="Previous page"
           >
-            <img src="/img/Arrow_Left.svg" alt="Previous" />
+            <img src="img/Arrow_Left.svg" alt="Previous" />
           </button>
 
           {/* Pages */}
@@ -133,7 +133,7 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
             onClick={() => setCurrentPage(prev => prev + 1)}
             aria-label="Next page"
           >
-            <img src="/img/Arrow_Right.svg" alt="Next" />
+            <img src="img/Arrow_Right.svg" alt="Next" />
           </button>
         </div>
       )}
