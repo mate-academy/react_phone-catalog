@@ -36,11 +36,15 @@
     }
   }
 
-  .product-name {
+  .product-name-link {
+  text-decoration: none;
   font-size: map-get($body-text, font-size);
   font-weight: map-get($body-text, font-weight);
   line-height: map-get($body-text, line-height);
   letter-spacing: map-get($body-text, letter-spacing);
+  font-family: $font-main;
+  font-weight: 600;
+  color: $color-primary;
 
   min-height: 40px; // 2 рядки × line-height
   margin-bottom: 8px;
@@ -136,16 +140,18 @@
 
 
     .add-to-cart-button {
-    width: 80%;            // ❗ ФІКСОВАНА ширина (під макет)
+    width: 80%;
     height: 40px;
     padding: 0 40px;
     background-color: $color-primary;
     color: $color-white;
     border: 1px solid $color-primary;
+    font-family: $font-main;
+    font-weight: 700;
     cursor: pointer;
-     white-space: nowrap;     // ❗ без переносів
-      overflow: hidden;        // ❗ текст не ламає кнопку
-      text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     font-size: map-get($buttons, font-size);
     font-weight: map-get($buttons, font-weight);

@@ -59,14 +59,14 @@ function ProductCard({
   return (
     <div className="product-card">
       <Link
-        to={`/${product.category}/${product.id}`}
+        to={`/${product.category}/${(product as any).itemId || product.id}`} 
         className="product-image-link"
       >
         <img src={image} alt={product.name} className="product-image" />
       </Link>
 
       <Link
-        to={`/${product.category}/${product.id}`}
+        to={`/${product.category}/${(product as any).itemId || product.id}`}
         className="product-name-link"
       >
         <div className="product-name">{product.name}</div>

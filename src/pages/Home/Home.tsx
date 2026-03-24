@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import productsData from '../../../public/api/products.json';
-import { Product } from '../../../public/types';
+import { CatalogProduct } from '../../../public/types';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
 
@@ -40,7 +40,7 @@ function Home() {
   // -------------------
   // BRAND NEW MODELS
   // -------------------
-  const sortedProducts: Product[] = [...productsData]
+  const sortedProducts: CatalogProduct[] = [...productsData]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
 
@@ -61,7 +61,7 @@ function Home() {
   // -------------------
   // HOT PRICES
   // -------------------
-  const discountProducts: Product[] = [...productsData]
+  const discountProducts: CatalogProduct[] = [...productsData]
     .filter(product => product.fullPrice && product.fullPrice > product.price)
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
     .slice(0, 10); // обмеження на 10 карток
@@ -161,8 +161,8 @@ function Home() {
           </div>
         </div>
         <div className="products-grid">
-          {visibleProducts.map(item => (
-            <ProductCard key={item.id} product={item} />
+          {visibleProducts.map(product => (
+            <ProductCard key={product.itemId} product={product} />
           ))}
         </div>
       </section>
@@ -234,8 +234,8 @@ function Home() {
           </div>
         </div>
         <div className="products-grid">
-          {visibleDiscountProducts.map(item => (
-            <ProductCard key={item.id} product={item} showDiscount />
+          {visibleDiscountProducts.map(product => (
+            <ProductCard key={product.itemId} product={product} showDiscount />
           ))}
         </div>
       </section>
