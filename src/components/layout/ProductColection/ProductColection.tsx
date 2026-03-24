@@ -29,7 +29,7 @@ export const ProductColection = ({ title, products }: Props) => {
         const gap = parseInt(style.columnGap || style.gap || '0', 10);
 
         const totalCardWidth = cardWidth + gap;
-        const visibleCards = Math.round(containerWidth / cardWidth);
+        const visibleCards = Math.floor(containerWidth / cardWidth);
 
         setCardsPerView(visibleCards);
         setCardSize(totalCardWidth);
@@ -68,22 +68,24 @@ export const ProductColection = ({ title, products }: Props) => {
         </div>
       </div>
       <div className={styles.content}>
-        <div
-          ref={containerRef}
-          style={{ transform: `translateX(-${cardSize * currentIndex}px)` }}
-          className={styles.slider}
-        >
-          {products?.map((product, index) => {
-            return (
-              <div
-                key={product.id}
-                ref={index === 0 ? cardRef : null}
-                className={styles.card}
-              >
-                <ProductCard product={product} />
-              </div>
-            );
-          })}
+        <div className={styles.hidden}>
+          <div
+            ref={containerRef}
+            style={{ transform: `translateX(-${cardSize * currentIndex}px)` }}
+            className={styles.slider}
+          >
+            {products?.map((product, index) => {
+              return (
+                <div
+                  key={product.id}
+                  ref={index === 0 ? cardRef : null}
+                  className={styles.card}
+                >
+                  <ProductCard product={product} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

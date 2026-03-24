@@ -13,7 +13,12 @@
 
 .content {
   overflow: hidden;
-  padding: 10px 0;
+  margin-left: -15px;
+  width: calc(100% + 30px);
+}
+
+.hidden {
+  padding: 15px;
 }
 
 .slider {
