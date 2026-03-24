@@ -1,5 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
-import './BannerCarousel.scss';
+import styles from './BannerCarousel.module.scss';
+import '../../pages/HomePage/HomePage.scss';
+
+import ArrowLeft from '../../assets/Icons/Arrow_left.svg';
+import ArrowRight from '../../assets/Icons/Arrow_right.svg';
 
 interface SlideContent {
   id: number;
@@ -318,7 +322,7 @@ const slides: SlideContent[] = [
   },
   {
     id: 3,
-    headline: 'AirPods Pro\nPure Sound. ✧',
+    headline: 'AirPods Pro\nPure Sound.',
     subheadline: 'Adaptive Audio. Always.',
     body: 'Silence the world around you.',
     cta: 'SHOP NOW',
@@ -362,44 +366,64 @@ export const BannerCarousel = () => {
 
   return (
     <>
-      <div className="carousel-root">
-        <div className="carousel-wrapper">
+      <div className={styles['carousel-root']}>
+        <div className={styles['carousel-wrapper']}>
+          {/* ВИПРАВЛЕНО: Два класи з модулів об'єднані правильно */}
           <button
-            className="nav-btn nav-prev"
+            className={`${styles['nav-btn']} ${styles['nav-prev']}`}
             onClick={prev}
             aria-label="Previous"
           >
-            ‹
+            <img
+              src={ArrowLeft}
+              alt="arrow_left"
+              style={{ filter: 'brightness(0)' }}
+            />
           </button>
-          <button className="nav-btn nav-next" onClick={next} aria-label="Next">
-            ›
+          <button
+            className={`${styles['nav-btn']} ${styles['nav-next']}`}
+            onClick={next}
+            aria-label="Next"
+          >
+            <img
+              src={ArrowRight}
+              alt="arrow_left"
+              style={{ filter: 'brightness(0)' }}
+            />
           </button>
 
-          <div className="carousel-track">
+          <div className={styles['carousel-track']}>
+            {/* ВИПРАВЛЕНО: Динамічні класи тепер теж беруться зі styles */}
             <div
-              className={`carousel-slide ${animating ? (direction === 'right' ? 'enter-right' : 'enter-left') : 'visible'}`}
+              className={`${styles['carousel-slide']} ${
+                animating
+                  ? direction === 'right'
+                    ? styles['enter-right']
+                    : styles['enter-left']
+                  : styles.visible
+              }`}
               style={{ background: slide.bgColor }}
             >
               {/* Left: text */}
-              <div className="slide-content">
+              <div className={styles['slide-content']}>
                 <h2
-                  className="slide-headline"
+                  className={styles['slide-headline']}
                   style={{ color: slide.accentColor }}
                 >
                   {slide.headline}
                 </h2>
                 {slide.subheadline && (
-                  <p className="slide-sub" style={{ color: '#fff' }}>
+                  <p className={styles['slide-sub']} style={{ color: '#fff' }}>
                     {slide.subheadline}
                   </p>
                 )}
                 {slide.body && (
-                  <p className="slide-body" style={{ color: '#fff' }}>
+                  <p className={styles['slide-body']} style={{ color: '#fff' }}>
                     {slide.body}
                   </p>
                 )}
                 <button
-                  className="slide-cta"
+                  className={styles['slide-cta']}
                   style={{
                     borderColor: `${slide.accentColor}55`,
                     color: slide.accentColor,
@@ -410,20 +434,16 @@ export const BannerCarousel = () => {
               </div>
 
               {/* Right: visual */}
-              <div className="slide-visual">{slide.visual}</div>
+              <div className={styles['slide-visual']}>{slide.visual}</div>
             </div>
           </div>
 
-          <div className="dots">
+          {/* ВИПРАВЛЕНО: Класи крапок теж підключені до стилів */}
+          <div className={styles.dots}>
             {slides.map((s, i) => (
               <button
                 key={s.id}
-                className={`dot${i === current ? ' active' : ''}`}
-                // style={
-                //   i === current
-                //     ? { background: slides[current].accentColor }
-                //     : {}
-                // }
+                className={`${styles.dot} ${i === current ? styles.active : ''}`}
                 onClick={() => go(i, i > current ? 'right' : 'left')}
                 aria-label={`Go to slide ${i + 1}`}
               />

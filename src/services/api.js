@@ -1,6 +1,9 @@
 // src/services/api.js
 const API_BASE = '/api';
 
+/**
+ * Returns URL for specific type (phones|tablets|accessories).
+ */
 export const getTypeUrl = type => `${API_BASE}/${type}.json`;
 export const getAllUrl = () => `${API_BASE}/products.json`;
 /**
