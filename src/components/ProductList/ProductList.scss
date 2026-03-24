@@ -1,4 +1,7 @@
 .product__list {
   width: 100%;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
 }
 

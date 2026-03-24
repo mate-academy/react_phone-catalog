@@ -4,13 +4,16 @@
   width: 212px;
   border: 1px solid #e2e6e9;
   padding: 32px;
+   grid-column: span 12;
 
   @media (min-width: 640px) {
     width: 237px;
+     grid-column: span 6;
   }
 
   @media (min-width: 1200px) {
     width: 272px;
+    grid-column: span 3;
   }
 }
 
