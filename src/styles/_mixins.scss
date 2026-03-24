@@ -37,10 +37,9 @@
 }
 
 @mixin empty-state-container {
-  display: flex;
+  @include flex-center;
+
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   padding: $spacing-3xl $spacing-s;
   min-height: 50vh;
@@ -54,9 +53,7 @@
 // --- Interactive Elements ---
 
 @mixin primary-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   height: $size-primary-btn-height;
   padding: 0 $spacing-l;
   background-color: $c-primary;
@@ -82,9 +79,7 @@
 }
 
 @mixin action-square-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   width: $size-action-btn;
   height: $size-action-btn;
   flex-shrink: 0;
@@ -115,7 +110,7 @@
 
 /* H1 Logic */
 @mixin hero-title {
-  font-weight: $fw-bold;
+  font-weight: $fw-bold-h;
   color: $c-primary;
   letter-spacing: -0.01em;
   margin-bottom: $spacing-l;
@@ -133,7 +128,7 @@
 
 /* H2 Logic */
 @mixin page-title {
-  font-weight: $fw-bold;
+  font-weight: $fw-bold-h;
   color: $c-primary;
   margin-bottom: $spacing-m;
 
@@ -157,13 +152,13 @@
   letter-spacing: 0;
 
   /* Mobile H3 */
-  font-weight: $fw-semibold;
+  font-weight: $fw-semibold-h;
   font-size: 20px;
   line-height: 26px;
 
   @include on-tablet {
     /* Desktop H3 */
-    font-weight: $fw-bold;
+    font-weight: $fw-bold-h;
     font-size: 22px;
     line-height: 31px;
   }
@@ -177,7 +172,7 @@
   letter-spacing: 0;
 
   /* Mobile H4 */
-  font-weight: $fw-semibold;
+  font-weight: $fw-semibold-h;
   font-size: 16px;
   line-height: 20px;
 
@@ -194,7 +189,7 @@
   letter-spacing: 0;
 
   /* Mobile H4 */
-  font-weight: $fw-semibold;
+  font-weight: $fw-semibold-h;
   font-size: 16px;
   line-height: 20px;
 

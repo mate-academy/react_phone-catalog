@@ -9,6 +9,7 @@ export const CATEGORIES: Category[] = [
     path: 'phones',
     banner: 'img/banner-phones.png',
     bannerAlt: 'Newest phones',
+    count: 0,
   },
   {
     id: 'tablets',
@@ -17,6 +18,7 @@ export const CATEGORIES: Category[] = [
     path: 'tablets',
     banner: 'img/banner-tablets.png',
     bannerAlt: 'Powerful tablets',
+    count: 0,
   },
   {
     id: 'accessories',
@@ -25,5 +27,6 @@ export const CATEGORIES: Category[] = [
     path: 'accessories',
     banner: 'img/banner-accessories.png',
     bannerAlt: 'Cool accessories',
+    count: 0,
   },
 ];

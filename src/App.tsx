@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { useAppInit } from './hooks/useAppInit';
 import { CATEGORIES } from './modules/shared/constants/categories';
-import { getProducts } from './modules/shared/services/productService';
 
 import { AppLayout } from './modules/shared/components/AppLayout';
 import { HomePage } from './modules/Home/HomePage';
@@ -13,26 +12,8 @@ import { FavoritesPage } from './modules/Favorites';
 import { NotFoundPage } from './modules/NotFound';
 import { Loader } from './modules/shared/components/Loader';
 
-import { Product } from './types/Product';
-
 export const App = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    getProducts()
-      .then(fetchedProducts => {
-        setProducts(fetchedProducts);
-        setHasError(false);
-      })
-      .catch(() => {
-        setHasError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+  const { products, categoriesWithCounts, isLoading, hasError } = useAppInit();
 
   if (isLoading) {
     return (
@@ -45,7 +26,7 @@ export const App = () => {
   if (hasError) {
     return (
       <div className="app-initial-state">
-        <h1 className="error-message">Something went wrong</h1>
+        <h1 className="error-title">Something went wrong</h1>
         <button
           type="button"
           className="reload-button"
@@ -62,7 +43,9 @@ export const App = () => {
       <Routes>
         <Route
           path="/"
-          element={<AppLayout categories={CATEGORIES} products={products} />}
+          element={
+            <AppLayout categories={categoriesWithCounts} products={products} />
+          }
         >
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />

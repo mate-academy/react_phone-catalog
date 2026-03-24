@@ -8,9 +8,8 @@
 }
 
 .addToCart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
+
   flex: 1;
   background-color: $c-primary;
   color: $c-white;
@@ -39,9 +38,8 @@
 }
 
 .favorite {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
+
   border: 1px solid $c-icons;
   background-color: transparent;
   color: $c-primary;

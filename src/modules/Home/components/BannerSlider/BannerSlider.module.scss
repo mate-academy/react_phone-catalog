@@ -75,9 +75,6 @@
     border: 1px solid $c-primary;
   }
 
-  &Prev .icon { transform: rotate(-90deg); }
-  &Next .icon { transform: rotate(90deg); }
-
   @include on-tablet {
     display: flex;
   }

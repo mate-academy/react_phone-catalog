@@ -1,20 +1,23 @@
 @import './reset';
 @import './variables';
+@import './fonts';
 @import './mixins';
 
 .root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
   font-family: $font-family;
   color: $c-primary;
   background-color: $c-white;
 }
 
 .page-container {
-  max-width: $bp-desktop;
-  margin: 0 auto;
-  padding: 0 16px;
+  @include page-container;
+
+  padding-left: $spacing-s;
+  padding-right: $spacing-s;
   width: 100%;
 }
 
@@ -28,7 +31,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: $transition-transform;
 
   &--down {
     transform: rotate(180deg);
@@ -44,34 +47,23 @@ body, html {
 }
 
 .app-initial-state {
-  display: flex;
+  @include flex-center;
+
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex: 1;
   height: 100vh;
-  gap: 24px;
+  gap: $spacing-m;
   background-color: $c-bg-hover;
 }
 
 .error-title {
   font-size: 32px;
-  font-weight: 700;
+  font-weight: $fw-bold-h;
   margin: 0;
 }
 
 .reload-button {
-  padding: 12px 24px;
-  background-color: $c-primary;
-  color: $c-white;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.8;
-  }
+  @include primary-button;
 }
 
 .visually-hidden {

@@ -6,4 +6,5 @@ export interface Category {
   path: string;
   banner: string;
   bannerAlt: string;
+  count: number;
 }

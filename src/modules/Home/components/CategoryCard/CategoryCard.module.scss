@@ -1,38 +1,43 @@
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
-.categoryCard {
+.card {
   display: block;
   text-decoration: none;
   cursor: pointer;
   color: inherit;
 
-  &__imageWrapper {
-    aspect-ratio: 1 / 1;
-    background-color: $c-elements;
-    border-radius: $border-radius-default;
-    overflow: hidden;
-    margin-bottom: $spacing-m;
-
+  &:hover {
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: scale-down;
-      transition: $transition-transform;
+      transform: scale(1.05);
     }
   }
+}
 
-  &:hover img {
-    transform: scale(1.05);
+.imageWrapper {
+  aspect-ratio: 1 / 1;
+  background-color: $c-elements;
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  margin-bottom: $spacing-m;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    transition: $transition-transform;
   }
+}
 
-  &__title {
-    @include text-subtitle;
+.title {
+  @include text-subtitle;
 
-    margin-bottom: $spacing-xxs;
-  }
+  margin-bottom: $spacing-xxs;
+  margin-top: 0;
+}
 
-  &__count {
-    @include text-secondary-regular;
-  }
+.count {
+  @include text-secondary-regular;
+
+  margin: 0;
 }

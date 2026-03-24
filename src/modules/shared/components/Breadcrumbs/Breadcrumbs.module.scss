@@ -28,14 +28,6 @@
   display: flex;
   align-items: center;
   color: $c-icons;
-
-  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-  :global(.icon) {
-    width: 16px;
-    height: 16px;
-    transform: rotate(90deg);
-    display: flex;
-  }
 }
 
 .link {
