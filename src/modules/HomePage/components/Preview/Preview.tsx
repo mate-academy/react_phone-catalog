@@ -7,9 +7,9 @@ import styles from './Preview.module.scss';
 
 export const Preview = () => {
   const images = [
-    '/img/banner-accessories.png',
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png',
+    '/img/preview-1.jpg',
+    '/img/preview-2.jpg',
+    '/img/preview-3.jpg',
   ];
   const autoTimer = useRef<NodeJS.Timeout | null>(null);
   const manualTimeout = useRef<NodeJS.Timeout | null>(null);

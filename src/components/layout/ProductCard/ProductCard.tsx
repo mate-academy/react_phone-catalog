@@ -50,7 +50,9 @@ export const ProductCard = ({ product }: Props) => {
           }}
           maxWidth="160px"
         >
-          Add to cart
+          {cart.some(item => item.product.id === product.id)
+            ? 'Delete from cart'
+            : 'Add to cart'}
         </Button>
         <ButtonLiked
           isActive={favourites.some(item => item.id === product.id)}

@@ -17,7 +17,10 @@ export const Footer = () => {
         <nav className={styles.menu}>
           <ul className={styles.list}>
             <li className={styles.list__item}>
-              <Link to="https://github.com/HiBlurryface" className={styles.list__link}>
+              <Link
+                to="https://github.com/HiBlurryface"
+                className={styles.list__link}
+              >
                 Github
               </Link>
             </li>

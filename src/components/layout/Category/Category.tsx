@@ -9,7 +9,7 @@ export const Category = () => {
       <SectionTitle>Shop by category</SectionTitle>
       <div className={styles.category__content}>
         <div className={styles.category__block}>
-          <Link to="phones" className={styles.category__link}>
+          <Link to="catalog/phones" className={styles.category__link}>
             <img
               src={imageUrl('img/Phones.png')}
               alt=""
@@ -20,7 +20,7 @@ export const Category = () => {
           <p className={styles.category__info}>95 models</p>
         </div>
         <div className={styles.category__block}>
-          <Link to="tablets" className={styles.category__link}>
+          <Link to="catalog/tablets" className={styles.category__link}>
             <img
               src={imageUrl('img/Tablets.png')}
               alt=""
@@ -31,7 +31,7 @@ export const Category = () => {
           <p className={styles.category__info}>24 models</p>
         </div>
         <div className={styles.category__block}>
-          <Link to="accessories" className={styles.category__link}>
+          <Link to="catalog/accessories" className={styles.category__link}>
             <img
               src={imageUrl('img/Accessories.png')}
               alt=""

@@ -222,7 +222,9 @@ export const ProductDetails = () => {
                       );
                     }}
                   >
-                    Add to cart
+                    {cart.some(item => item.product.itemId === product.id)
+                      ? 'Delete from cart'
+                      : 'Add to cart'}
                   </Button>
                   <ButtonLiked
                     isActive={favourites.some(
