@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-import { CartProvider } from './components/CartContext/CartContext';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import App from './App';
 
@@ -12,9 +11,7 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <Router>
         <ScrollToTop />
-        <CartProvider>
           <App />
-        </CartProvider>
       </Router>
     </Provider>
   </StrictMode>,

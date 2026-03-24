@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 // Імпортуй свій редюсер (перевір правильність шляху до файлу)
 import favoritesReducer from '../features/favorites/favoritesSlice';
+import cartReducer from '../features/cart/cartSlice';
 
 export const store = configureStore({
   reducer: {
     // Тут ми реєструємо наш слайс обраного
     favorites: favoritesReducer,
-    // Надалі тут будуть інші редюсери, наприклад:
-    // cart: cartReducer,
+    cart: cartReducer,
     // products: productsReducer,
   },
 });

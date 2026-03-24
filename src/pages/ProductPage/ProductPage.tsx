@@ -2,12 +2,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Product, Phone, Tablet, Accessory } from '../../../public/types';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import { useCart } from '../../components/CartContext/CartContext';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   addToFavorites,
   removeFromFavorites,
 } from '../../features/favorites/favoritesSlice';
+import { addToCart } from '../../features/cart/cartSlice'; // Імпорт екшну кошика
 import { colorMap } from '../../../public/utils/colorMap';
 import './ProductPage.scss';
 
@@ -18,20 +18,21 @@ interface ProductPageProps {
 }
 
 const ProductPage = ({ products }: ProductPageProps) => {
-  const { productId } = useParams<{ productId: string }>();
+  const { category, productId } = useParams<{ category: string; productId: string }>();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch(); // Ініціалізація dispatch
+  const dispatch = useAppDispatch();
 
   const [product, setProduct] = useState<ProductType | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // Отримуємо актуальний стан з Redux
+  // Redux Favorites
   const favorites = useAppSelector(state => state.favorites.items);
-  // Перевірка, чи лайкнутий товар (безпечна перевірка через опціональний ланцюжок)
   const isLiked = favorites.some(item => item.id === product?.id);
 
-  const { addToCart } = useCart();
+  // Redux Cart
+  const cartItems = useAppSelector(state => state.cart.items);
+  const isInCart = cartItems.some(item => item.id === product?.id);
 
   useEffect(() => {
     if (!productId || products.length === 0) {
@@ -42,20 +43,28 @@ const ProductPage = ({ products }: ProductPageProps) => {
 
     setProduct(foundProduct || null);
     setLoading(false);
-    setSelectedImage(0); // Скидаємо картинку при зміні продукту
+    setSelectedImage(0);
   }, [productId, products]);
 
-  // Обробка кліку на сердечко
   const handleLikeClick = () => {
-    if (!product) {
-      return;
-    }
+    if (!product) return;
 
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
     } else {
-      // Приводимо до типу Product для збереження в стор
+      // Приведення до CatalogProduct-подібної структури для стору
       dispatch(addToFavorites(product as unknown as Product));
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (product && !isInCart) {
+      dispatch(addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.priceDiscount,
+        image: product.images[0],
+      }));
     }
   };
 
@@ -77,10 +86,9 @@ const ProductPage = ({ products }: ProductPageProps) => {
     );
   }
 
-  // Розрахунок варіантів
+  // Розрахунок варіантів (використовуємо категорію з URL для навігації)
   const colorVariants = products.filter(
-    p =>
-      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
+    p => p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
   const capacityVariants = products.filter(
     p => p.namespaceId === product.namespaceId && p.color === product.color,
@@ -89,12 +97,9 @@ const ProductPage = ({ products }: ProductPageProps) => {
   return (
     <div className="product-page">
       <Breadcrumbs productName={product.name} />
-      <div className="back-button" onClick={() => navigate(-1)}>
-        <img
-          src="/img/Arrow_Left.svg"
-          alt="Arrow"
-          className="breadcrumbs__arrow"
-        />
+
+      <div className="back-button" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+        <img src="/img/Arrow_Left.svg" alt="Arrow" className="breadcrumbs__arrow" />
         Back
       </div>
 
@@ -131,11 +136,12 @@ const ProductPage = ({ products }: ProductPageProps) => {
                   key={variant.id}
                   className={`color-dot ${variant.color === product.color ? 'color-dot--active' : ''}`}
                   style={{ backgroundColor: colorMap[variant.color] || '#ccc' }}
-                  onClick={() => navigate(`/products/${variant.id}`)}
+                  onClick={() => navigate(`/${category}/${variant.id}`)}
                 />
               ))}
             </div>
           </div>
+
           <hr className="divider" />
 
           <div className="product-capacity">
@@ -145,13 +151,14 @@ const ProductPage = ({ products }: ProductPageProps) => {
                 <span
                   key={variant.id}
                   className={`capacity-item ${variant.capacity === product.capacity ? 'capacity-item--active' : ''}`}
-                  onClick={() => navigate(`/products/${variant.id}`)}
+                  onClick={() => navigate(`/${category}/${variant.id}`)}
                 >
                   {variant.capacity}
                 </span>
               ))}
             </div>
           </div>
+
           <hr className="divider" />
 
           <div className="product-pricing">
@@ -163,19 +170,12 @@ const ProductPage = ({ products }: ProductPageProps) => {
 
           <div className="product-actions">
             <button
-              className="action-button"
-              onClick={() =>
-                addToCart({
-                  id: product.id,
-                  name: product.name,
-                  price: product.priceDiscount,
-                  image: product.images[0],
-                  quantity: 1,
-                })
-              }
+              className={`action-button ${isInCart ? 'action-button--added' : ''}`}
+              onClick={handleAddToCart}
             >
-              Add to cart
+              {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
+
             <button
               className={`favorite-button ${isLiked ? 'is-liked' : ''}`}
               onClick={handleLikeClick}
@@ -188,10 +188,17 @@ const ProductPage = ({ products }: ProductPageProps) => {
           </div>
 
           <div className="product-specs">
-            {/* ... твій код специфікацій */}
             <div className="spec-row">
               <span className="spec-name">Screen</span>
               <span className="spec-value">{product.screen}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Resolution</span>
+              <span className="spec-value">{product.resolution}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Processor</span>
+              <span className="spec-value">{product.processor}</span>
             </div>
             <div className="spec-row">
               <span className="spec-name">RAM</span>
@@ -201,7 +208,6 @@ const ProductPage = ({ products }: ProductPageProps) => {
         </div>
       </div>
 
-      {/* Description sections */}
       <div className="product-description">
         <section className="about-section">
           <div className="about-title">About</div>

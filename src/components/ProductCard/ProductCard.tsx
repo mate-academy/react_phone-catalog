@@ -1,19 +1,19 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Product, Phone, Tablet, Accessory } from '../../../public/types';
-import { useAppDispatch, useAppSelector } from '../../app/hooks'; // Твої типізовані хуки
+import { CatalogProduct, Phone, Tablet, Accessory } from '../../../public/types';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   addToFavorites,
   removeFromFavorites,
 } from '../../features/favorites/favoritesSlice';
+import { addToCart } from '../../features/cart/cartSlice';
 import './ProductCard.scss';
 
 type ProductType = Phone | Tablet | Accessory;
 
 interface ProductCardProps {
-  product: Product | ProductType;
+  product: CatalogProduct | ProductType;
   showDiscount?: boolean;
-  onRemove?: () => void; // Новий пропс для перехоплення видалення (для модалки)
+  onRemove?: () => void;
 }
 
 function ProductCard({
@@ -23,50 +23,62 @@ function ProductCard({
 }: ProductCardProps) {
   const dispatch = useAppDispatch();
 
-  // Отримуємо список обраного з Redux
+  // 1. Визначаємо стабільний ID (itemId для CatalogProduct або id для деталей)
+  const productId = (product as CatalogProduct).itemId || product.id;
+
+  // 2. Отримуємо стан із Redux за допомогою productId
   const favorites = useAppSelector(state => state.favorites.items);
-  const isLiked = favorites.some(item => item.id === product.id);
+  // Перевіряємо по обох полях для надійності
+  const isLiked = favorites.some(item => (item.itemId === productId || item.id === productId));
 
-  // Стан для кошика (потім теж перенесеш в Redux)
-  const [added, setAdded] = useState(false);
+  const cartItems = useAppSelector(state => state.cart.items);
+  const isInCart = cartItems.some(item => item.id === productId);
 
-  // Обробка кліку на сердечко
+  // 3. Обробка цін та зображень
+  const price = 'priceDiscount' in product ? product.priceDiscount : product.price;
+
+  const fullPrice = 'priceRegular' in product
+    ? product.priceRegular
+    : (product as CatalogProduct).fullPrice;
+
+  const image = 'images' in product ? product.images[0] : (product as CatalogProduct).image;
+
   const handleLikeClick = () => {
     if (isLiked) {
       if (onRemove) {
-        // Якщо передано onRemove (ми на сторінці Favorites), відкриваємо модалку
         onRemove();
       } else {
-        // Якщо ні (ми на головній), просто видаляємо
-        dispatch(removeFromFavorites(product.id));
+        // Видаляємо за тим самим ID, за яким шукали
+        dispatch(removeFromFavorites(productId));
       }
     } else {
-      // Додаємо в обране (передаємо весь об'єкт product як Product)
-      dispatch(addToFavorites(product as Product));
+      // Приводимо до CatalogProduct, щоб стейт був консистентним
+      dispatch(addToFavorites(product as CatalogProduct));
     }
   };
 
-  // Визначення ціни та зображення (твоя логіка)
-  const price =
-    'priceDiscount' in product ? product.priceDiscount : product.price;
-  const fullPrice =
-    'priceRegular' in product
-      ? product.priceRegular
-      : (product as Product).fullPrice;
-  const image =
-    'images' in product ? product.images[0] : (product as Product).image;
+  const handleAddToCart = () => {
+    if (!isInCart) {
+      dispatch(addToCart({
+        id: productId, // ПередаємоitemId як id для кошика
+        name: product.name,
+        price: price,
+        image: image
+      }));
+    }
+  };
 
   return (
     <div className="product-card">
       <Link
-        to={`/${product.category}/${(product as any).itemId || product.id}`} 
+        to={`/${product.category}/${productId}`}
         className="product-image-link"
       >
         <img src={image} alt={product.name} className="product-image" />
       </Link>
 
       <Link
-        to={`/${product.category}/${(product as any).itemId || product.id}`}
+        to={`/${product.category}/${productId}`}
         className="product-name-link"
       >
         <div className="product-name">{product.name}</div>
@@ -94,15 +106,18 @@ function ProductCard({
 
       <div className="product-actions">
         <button
-          className={`add-to-cart-button ${added ? 'added-to-cart' : ''}`}
-          onClick={() => setAdded(prev => !prev)}
+          className={`add-to-cart-button ${isInCart ? 'added-to-cart' : ''}`}
+          onClick={handleAddToCart}
+          type="button"
         >
-          {added ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <button
           className={`like-button ${isLiked ? 'is-liked' : ''}`}
           onClick={handleLikeClick}
+          type="button"
+          aria-label="Add to favorites"
         >
           <img
             src={isLiked ? '/img/HeartFilled.svg' : '/img/Like.svg'}
