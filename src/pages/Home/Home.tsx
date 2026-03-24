@@ -80,8 +80,12 @@ function Home() {
   );
 
   const phonesCount = productsData.filter(p => p.category === 'phones').length;
-  const tabletsCount = productsData.filter(p => p.category === 'tablets').length;
-  const accessoriesCount = productsData.filter(p => p.category === 'accessories').length;
+  const tabletsCount = productsData.filter(
+    p => p.category === 'tablets',
+  ).length;
+  const accessoriesCount = productsData.filter(
+    p => p.category === 'accessories',
+  ).length;
 
   return (
     <div className="home">
@@ -91,7 +95,7 @@ function Home() {
       <section className="banner">
         <div className="carousel-wrapper">
           <button className="carousel-arrow left" onClick={prevBanner}>
-            <img src="/img/Arrow_Left.svg" alt="Left" />
+            <img src="./img/Arrow_Left.svg" alt="Left" />
           </button>
 
           <div className="banner-home">
@@ -109,7 +113,7 @@ function Home() {
           </div>
 
           <button className="carousel-arrow right" onClick={nextBanner}>
-            <img src="/img/Arrow_Right.svg" alt="Right" />
+            <img src="./img/Arrow_Right.svg" alt="Right" />
           </button>
         </div>
 
@@ -145,14 +149,14 @@ function Home() {
               onClick={handlePrev}
               disabled={startIndex === 0}
             >
-              <img src="/img/Arrow_Left.svg" alt="Left" />
+              <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
             <button
               className="carousel-arrow right"
               onClick={handleNext}
               disabled={startIndex + visibleCount >= sortedProducts.length}
             >
-              <img src="/img/Arrow_Right.svg" alt="Right" />
+              <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
         </div>
@@ -163,52 +167,50 @@ function Home() {
         </div>
       </section>
 
-{/* Categories */}
-<section className="categories">
-  <h2 className="categories__title">Shop by category</h2>
-  <div className="categories__container">
+      {/* Categories */}
+      <section className="categories">
+        <h2 className="categories__title">Shop by category</h2>
+        <div className="categories__container">
+          {/* Категорія: Телефони */}
+          <Link
+            to="/phones"
+            className="categories__category"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <div className="categories__category-img-container">
+              <img src="./img/Phones.png" alt="Phones" />
+            </div>
+            <div className="category__name">Mobile phones</div>
+            <div className="number-of-products">{phonesCount} models</div>
+          </Link>
 
-    {/* Категорія: Телефони */}
-    <Link
-      to="/phones"
-      className="categories__category"
-      onClick={() => window.scrollTo(0, 0)}
-    >
-      <div className="categories__category-img-container">
-        <img src="/img/Phones.png" alt="Phones" />
-      </div>
-      <div className="category__name">Mobile phones</div>
-      <div className="number-of-products">{phonesCount} models</div>
-    </Link>
+          {/* Категорія: Планшети */}
+          <Link
+            to="/tablets"
+            className="categories__category"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <div className="categories__category-img-container">
+              <img src="./img/Tablets.png" alt="Tablets" />
+            </div>
+            <div className="category__name">Tablets</div>
+            <div className="number-of-products">{tabletsCount} models</div>
+          </Link>
 
-    {/* Категорія: Планшети */}
-    <Link
-      to="/tablets"
-      className="categories__category"
-      onClick={() => window.scrollTo(0, 0)}
-    >
-      <div className="categories__category-img-container">
-        <img src="/img/Tablets.png" alt="Tablets" />
-      </div>
-      <div className="category__name">Tablets</div>
-      <div className="number-of-products">{tabletsCount} models</div>
-    </Link>
-
-    {/* Категорія: Аксесуари */}
-    <Link
-      to="/accessories"
-      className="categories__category"
-      onClick={() => window.scrollTo(0, 0)} // Додано сюди теж
-    >
-      <div className="categories__category-img-container">
-        <img src="/img/Accessories.png" alt="Accessories" />
-      </div>
-      <div className="category__name">Accessories</div>
-      <div className="number-of-products">{accessoriesCount} models</div>
-    </Link>
-
-  </div>
-</section>
+          {/* Категорія: Аксесуари */}
+          <Link
+            to="/accessories"
+            className="categories__category"
+            onClick={() => window.scrollTo(0, 0)} // Додано сюди теж
+          >
+            <div className="categories__category-img-container">
+              <img src="./img/Accessories.png" alt="Accessories" />
+            </div>
+            <div className="category__name">Accessories</div>
+            <div className="number-of-products">{accessoriesCount} models</div>
+          </Link>
+        </div>
+      </section>
 
       {/* Hot prices */}
       <section className="hot-prices">
@@ -220,14 +222,14 @@ function Home() {
               onClick={handleHotPrev}
               disabled={hotStartIndex === 0}
             >
-              <img src="/img/Arrow_Left.svg" alt="Left" />
+              <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
             <button
               className="carousel-arrow right"
               onClick={handleHotNext}
               disabled={hotStartIndex + visibleCount >= discountProducts.length}
             >
-              <img src="/img/Arrow_Right.svg" alt="Right" />
+              <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
         </div>
