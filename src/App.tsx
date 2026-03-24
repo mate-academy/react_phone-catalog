@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 // import useFetch from './hooks/useFetch';
 
 import './App.scss';
+import { HomePage } from './pages/HomePage';
 
 export const App = () => {
   // const { data: phones, loading, error, reload } = useFetch('/api/phones.json');
@@ -15,7 +16,7 @@ export const App = () => {
         <Header />
 
         <Routes>
-          <Route path="/" element={<h1>Product Catalog</h1>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
         {/* <h1>Product Catalog</h1> */}
