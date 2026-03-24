@@ -6,15 +6,17 @@
   min-width: 0;
 
   grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  align-items: stretch;
   overflow: auto hidden;
   gap: space(2);
 
   -ms-overflow-style: none;
-  grid-template-rows: min-content;
+  grid-auto-rows: 1fr;
 
   @include grid;
 
-  @include respond (tablet) {
+  @include respond (desktop) {
     grid-auto-flow: unset;
     overflow: visible;
   }

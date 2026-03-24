@@ -8,9 +8,10 @@ import Chevron from '@/assets/icons/chevron.svg?react';
 
 type Props = {
   items: Phone[];
+  title: string;
 };
 
-export const GoodList: FC<Props> = ({ items }) => {
+export const GoodList: FC<Props> = ({ items, title }) => {
   const pageSize = 4;
   const [page, setPage] = useState(0);
 
@@ -25,7 +26,7 @@ export const GoodList: FC<Props> = ({ items }) => {
   return (
     <Section>
       <div className={styles.container}>
-        <Section.Title className={styles.title}>Brand new models</Section.Title>
+        <Section.Title className={styles.title}>{title}</Section.Title>
 
         <Button
           classNames={styles.button__left}

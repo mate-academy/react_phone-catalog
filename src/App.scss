@@ -40,6 +40,13 @@
   @return var(--#{$name});
 }
 
+
+html,
+body,
+body > div {
+  min-width: 360px;
+}
+
 body {
   margin: 0;
   background-color: color(disabled);

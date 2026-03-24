@@ -13,8 +13,6 @@ export const CategoryCard: React.FC<Props> = ({ category, counts }) => {
         className={style.img}
         src={CATEGORY_IMG_PATH[category]}
         alt={category}
-        width={100}
-        height={100}
       />
       <span>{CATEGORY_LIST[category]}</span>
       <span>{counts[category]}</span>

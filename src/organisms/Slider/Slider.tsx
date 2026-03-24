@@ -5,10 +5,10 @@ import Section from '@/atoms/Section';
 import { useState } from 'react';
 
 type Props = {
-  title?: string;
+  title: string;
 };
 
-const Slider = ({ title = 'Welcome to Nice Gadgets store!' }: Props) => {
+const Slider = ({ title }: Props) => {
   const b = [
     '/img/banners/banner_0.jpg',
     '/img/banners/banner_1.jpg',

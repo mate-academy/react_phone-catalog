@@ -5,12 +5,14 @@ import Slider from '@/organisms/Slider';
 
 const Home = () => {
   const phones = usePhones();
+  const hotPrices = usePhones();
 
   return (
     <div>
-      <Slider />
-      <GoodList items={phones} />
-      <Categories />
+      <Slider title="Welcome to Nice Gadgets store!" />
+      <GoodList items={phones} title="Brand new models" />
+      <Categories title="Shop by category" />
+      <GoodList items={hotPrices} title="Hot prices" />
     </div>
   );
 };
