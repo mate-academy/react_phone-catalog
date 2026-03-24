@@ -3,5 +3,13 @@
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 24px;
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 40px;
+  }
 }
 

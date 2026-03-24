@@ -1,11 +1,13 @@
 import Header from '../../components/Header/Header';
-import Catalog from '../../components/Catalog/Catalog';
+import PhonesCatalog from '../../components/CatalogPhones/PhonesCatalog';
+import Footer from '../../components/Footer/Footer';
 
 const Phones: React.FC = () => {
   return (
     <>
       <Header />
-      <Catalog />
+      <PhonesCatalog />
+      <Footer />
     </>
   );
 };

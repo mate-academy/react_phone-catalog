@@ -1,7 +1,11 @@
 import '../../variable.scss';
 import './Header.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
+import { useState } from 'react';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="header">
       <div className="container">
@@ -38,10 +42,16 @@ const Header = () => {
           <div className="top-bar__icons">
             <a href="" className="icon icon--heart"></a>
             <a href="" className="icon icon--basket"></a>
-            <a href="#menu" className="icon icon--menu"></a>
+            <button
+              className="icon icon--menu"
+              onClick={() => setIsMenuOpen(true)}
+            ></button>
           </div>
         </div>
       </div>
+      {isMenuOpen && (
+        <BurgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      )}
     </header>
   );
 };
