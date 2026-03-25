@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { BannerCarousel } from '../../components/BannerCarousel';
 // eslint-disable-next-line max-len
-import ProductCarousel, {
+import {
+  ProductCarousel,
   Product,
 } from '../../components/ProductCarousel/ProductCarousel';
 
 import './HomePage.scss';
 import { fetchProducts } from '../../services/api';
+import { Categories } from '../../components/Categories';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -29,6 +31,7 @@ export const HomePage = () => {
         </h1>
         <BannerCarousel />
         <ProductCarousel products={products} title={'Brand new models'} />
+        <Categories />
       </div>
     </>
   );

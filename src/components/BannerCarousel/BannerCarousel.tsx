@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import styles from './BannerCarousel.module.scss';
-import '../../pages/HomePage/HomePage.scss';
+// import '../../pages/HomePage/HomePage.scss';
 
 import ArrowLeft from '../../assets/Icons/Arrow_left.svg';
 import ArrowRight from '../../assets/Icons/Arrow_right.svg';
