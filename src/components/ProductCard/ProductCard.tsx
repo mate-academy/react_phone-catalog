@@ -16,7 +16,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
-  const { isInCart, addToCart } = useCart();
+  const { isInCart, addToCart, removeFromCart } = useCart();
 
   const handleLike = (productId: number) => {
     if (isFavourite(productId)) {
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const handleAddToCart = (productId: number) => {
     if (isInCart(productId)) {
-      return;
+      removeFromCart(product.id);
     } else {
       addToCart(product);
     }
@@ -86,7 +86,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             [styles.disabled]: isAdded,
           })}
           onClick={() => handleAddToCart(product.id)}
-          disabled={isAdded}
         >
           {isAdded ? 'Added' : 'Add to cart'}
         </button>

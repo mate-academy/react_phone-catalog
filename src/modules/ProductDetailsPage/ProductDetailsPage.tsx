@@ -34,7 +34,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [isVariantLoading, setIsVariantLoading] = useState(false);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, isInCart, removeFromCart } = useCart();
   const { addToFavourites, removeFromFavourites, isFavourite } =
     useFavourites();
 
@@ -78,7 +78,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
     const product = products.find(p => p.itemId === device.id);
 
     if (product) {
-      addToCart(product);
+      if (isInCart(product.id)) {
+        removeFromCart(product.id);
+      } else {
+        addToCart(product);
+      }
     }
   };
 
