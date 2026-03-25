@@ -11,6 +11,7 @@ import { CartPage } from './modules/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ContactsPage } from './modules/ContactsPage';
+import { RightsPage } from './modules/RightsPage';
 
 export const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -67,6 +68,8 @@ export const App = () => {
         />
 
         <Route path="contacts" element={<ContactsPage />} />
+
+        <Route path="rights" element={<RightsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

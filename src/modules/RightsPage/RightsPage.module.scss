@@ -1,0 +1,29 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.section {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.title {
+  margin-bottom: 40px;
+
+  color: var(--color-primary);
+}
+
+.textBlock {
+  margin-bottom: 32px;
+
+  h3 {
+    color: var(--color-primary);
+
+    margin-bottom: 16px;
+  }
+
+  p {
+    @include body-text;
+
+    color: var(--color-secondary);
+  }
+}
