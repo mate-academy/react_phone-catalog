@@ -6,6 +6,11 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 // Стилі підтягуються з модульного файлу каруселі
 import styles from '../ProductCarousel/ProductCarousel.module.scss';
 
+type Props = {
+  product: Product;
+  discount?: boolean;
+};
+
 const HeartIcon = ({ filled }: { filled: boolean }) =>
   // <svg
   //   width="18"
@@ -23,7 +28,7 @@ const HeartIcon = ({ filled }: { filled: boolean }) =>
     <img src={Favourite} alt="favorite_icon" />
   );
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({ product, discount }: Props) => {
   const [liked, setLiked] = useState(false);
   const [added, setAdded] = useState(false);
 
@@ -51,7 +56,14 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <h3 className={styles['card-title']}>
           {product.name} {product.color}
         </h3>
-        <p className={styles['card-price']}>${product.price}</p>
+        <p className={styles['card-price']}>
+          ${product.price}
+          {discount && (
+            <span className={styles['card-discount']}>
+              ${product.fullPrice}
+            </span>
+          )}
+        </p>
 
         <div className={styles['card-specs']}>
           <div className={styles['spec-row']}>

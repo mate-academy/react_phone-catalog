@@ -24,6 +24,7 @@ export interface Product {
 type Props = {
   products: Product[];
   title: string;
+  discount?: boolean;
 };
 
 const useVisibleCount = () => {
@@ -51,7 +52,7 @@ const useVisibleCount = () => {
   return count;
 };
 
-export const ProductCarousel = ({ products, title }: Props) => {
+export const ProductCarousel = ({ products, title, discount }: Props) => {
   const [index, setIndex] = useState(0);
   const visibleCount = useVisibleCount();
   const maxIndex = Math.max(0, products.length - visibleCount);
@@ -163,7 +164,7 @@ export const ProductCarousel = ({ products, title }: Props) => {
               style={{ transform: `translateX(${translateX})` }}
             >
               {products.map(p => (
-                <ProductCard key={p.id} product={p} />
+                <ProductCard key={p.id} product={p} discount={discount} />
               ))}
             </div>
           </div>

@@ -10,8 +10,7 @@
 
 .carousel-section {
   font-family: 'DM Sans', sans-serif;
-  background: #fafafa;
-  padding: 40px 24px;
+  padding: 40px 0;
 
   // min-height: 100vh;
   grid-column: 1 / -1;
@@ -69,6 +68,13 @@
   overflow: visible;
   cursor: grab;
   user-select: none;
+
+  padding-top: 10px; 
+  padding-bottom: 50px; 
+
+  /* Компенсуємо цей простір, щоб карусель не стала візуально більшою */
+  margin-top: -10px;
+  margin-bottom: -50px;
 }
 
 .carousel-viewport:active {
@@ -85,17 +91,20 @@
 .product-card {
   min-width: 0;
   background: #fff;
-
-  // border-radius: 16px;
   border: 1px solid #ebebeb;
   overflow: hidden;
-  transition:
-    box-shadow 0.25s,
-    transform 0.25s;
+  transition: box-shadow 0.25s, transform 0.25s;
+  
+  /* Додаємо простір для стрибка (мінімум 3px, краще 4-5px) */
+  margin-top: 4px; 
+
+  /* Також даємо місце знизу для тіні, щоб її теж не зрізало */
+  margin-bottom: 16px; 
+  cursor: pointer;
 }
 
 .product-card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
 }
 
@@ -140,6 +149,13 @@
   color: #111;
   margin-bottom: 12px;
   letter-spacing: -0.5px;
+}
+
+.card-discount{
+  text-decoration: line-through;
+  font-weight: 600;
+  color: #89939A;
+  margin-left: 8px;
 }
 
 .card-specs {

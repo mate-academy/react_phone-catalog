@@ -4,7 +4,17 @@ import Tablets from '../../assets/Category/Tablets_category.png';
 import Accessories from '../../assets/Category/Accessories_category.png';
 import Phones from '../../assets/Category/Phones_category.png';
 
-export const Categories = () => {
+type Props = {
+  tabletLength: number;
+  phoneLength: number;
+  accessoriesLength: number;
+};
+
+export const Categories = ({
+  tabletLength,
+  phoneLength,
+  accessoriesLength,
+}) => {
   return (
     <>
       <div className={styles.title}>Shop by category</div>
@@ -21,7 +31,9 @@ export const Categories = () => {
           </div>
           <div className={styles.category__item__info}>
             <p className={styles.category__item__info__name}>Mobile phones</p>
-            <p className={styles.category__item__info__count}>20 models</p>
+            <p className={styles.category__item__info__count}>
+              {phoneLength} models
+            </p>
           </div>
         </div>
 
@@ -37,7 +49,9 @@ export const Categories = () => {
           {/* Додав обгортку info, щоб було як у першому блоці */}
           <div className={styles.category__item__info}>
             <p className={styles.category__item__info__name}>Tablets</p>
-            <p className={styles.category__item__info__count}>20 models</p>
+            <p className={styles.category__item__info__count}>
+              {tabletLength} models
+            </p>
           </div>
         </div>
 
@@ -52,7 +66,9 @@ export const Categories = () => {
           </div>
           <div className={styles.category__item__info}>
             <p className={styles.category__item__info__name}>Accessories</p>
-            <p className={styles.category__item__info__count}>20 models</p>
+            <p className={styles.category__item__info__count}>
+              {accessoriesLength} models
+            </p>
           </div>
         </div>
       </div>
