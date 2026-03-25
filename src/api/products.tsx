@@ -1,7 +1,10 @@
 import { Product, ProductDetailsType } from '../types/types';
 
+const BASE = import.meta.env.DEV ? '/' : '/react_phone-catalog/';
+
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  // const response = await fetch('/api/products.json');
+  const response = await fetch(`${BASE}api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch products');
@@ -22,7 +25,7 @@ export const getProductDetailsById = async (
   category: string,
   productId: string | undefined,
 ): Promise<ProductDetailsType | undefined> => {
-  const response = await fetch(`/api/${category}.json`);
+  const response = await fetch(`${BASE}api/${category}.json`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch ${category}`);

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { imageUrl } from '../../../utils/imageUrl';
 import styles from './ButtonArrow.module.scss';
 
 type Props = {
@@ -22,7 +23,7 @@ export const ButtonArrow = ({
       onClick={onClick}
     >
       <img
-        src="/icons/ArrowUp.svg"
+        src={imageUrl('icons/ArrowUp.svg')}
         alt=""
         className={classNames(
           styles.button__icon,

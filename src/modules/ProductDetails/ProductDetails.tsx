@@ -79,7 +79,7 @@ export const ProductDetails = () => {
             alt=""
             className={styles.empty__img}
           />
-          <h2 className={styles.empty__title}>Page not found!</h2>
+          <h2 className={styles.empty__title}>Product not found!</h2>
           <Button onClick={() => navigate('/')}>Go home</Button>
         </div>
       ) : (
