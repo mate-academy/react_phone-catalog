@@ -12,4 +12,9 @@ export const COLOR_MAP: Record<string, string> = {
   rosegold: '#EAD1BB',
   coral: '#EE7762',
   midnight: '#191919',
+  spaceblack: '#1E1E1E',
+  blue: '#215E7C',
+  pink: '#FAD7BD',
+  graphite: '#5C5B57',
+  sierrablue: '#9BB5CE',
 };

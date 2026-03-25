@@ -21,6 +21,11 @@ export const CartPage: React.FC = () => {
       <PageTitle>Cart</PageTitle>
       {isEmpty ? (
         <div className={styles.emptyState}>
+          <img
+            src="img/cart-is-empty.png"
+            alt="Cart is empty"
+            className={styles.emptyImage}
+          />
           <h2>Your cart is empty</h2>
           <button
             className={styles.continueShopping}
