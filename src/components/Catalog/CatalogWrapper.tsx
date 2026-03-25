@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import ProductCard from '../ProductCard/ProductCard';
+import Catalog from './Catalog'; // Імпортуємо наш складний компонент з фільтрами
 
 interface CatalogWrapperProps {
   products: any[];
@@ -8,25 +8,19 @@ interface CatalogWrapperProps {
 const CatalogWrapper: React.FC<CatalogWrapperProps> = ({ products }) => {
   const { category } = useParams<{ category: string }>();
 
+  // 1. Перевірка наявності категорії
   if (!category) {
     return <h2>No category provided</h2>;
   }
 
-  if (products.length === 0) {
-    return <p>Loading...</p>;
+  // 2. Перевірка завантаження даних
+  if (!products || products.length === 0) {
+    return <div className="loader">Loading products...</div>;
   }
 
-  return (
-    <div className="catalog">
-      <h1 className="catalog-title">{category.toUpperCase()}</h1>
-
-      <div className="catalog-grid">
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
-  );
+  // 3. ПЕРЕДАЄМО ДАНІ В ОСНОВНИЙ КАТАЛОГ
+  // Не малюємо сітку тут, а віддаємо це компоненту Catalog, де є сортування
+  return <Catalog products={products} />;
 };
 
 export default CatalogWrapper;

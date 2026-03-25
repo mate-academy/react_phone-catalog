@@ -1,12 +1,14 @@
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import CatalogFilters from '../CatalogFilters/CatalogFilters';
 import './Catalog.scss';
 
+// 1. Оновлений інтерфейс згідно з твоїм JSON
 interface Product {
-  id: string;
+  id: string; // У тебе це рядок: "apple-iphone-11..."
+  category: string;
   name: string;
   priceRegular: number;
   priceDiscount: number;
@@ -14,7 +16,7 @@ interface Product {
   screen: string;
   capacity: string;
   ram: string;
-  category: string;
+  // Додай інші поля, якщо вони потрібні в ProductCard
 }
 
 interface CatalogProps {
@@ -35,50 +37,71 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
   const [perPage, setPerPage] = useState<'all' | number>(8);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Скидаємо сторінку при зміні категорії або фільтрів
   useEffect(() => {
-    setSort('newest');
-    setPerPage(8);
     setCurrentPage(1);
-  }, [category]);
+  }, [category, sort, perPage]);
 
-  if (!category) {
-    return <p>No category selected</p>;
-  }
+  // 2. Виправлена логіка сортування під твої поля
+  const sortedProducts = useMemo(() => {
+    const filtered = products.filter(p => p.category === category);
 
-  const filteredProducts = products.filter(p => p.category === category);
-  const totalCount = filteredProducts.length;
+    return [...filtered].sort((a, b) => {
+      switch (sort) {
+        case 'alphabet':
+          return a.name.localeCompare(b.name);
 
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sort) {
-      case 'alphabet':
-        return a.name.localeCompare(b.name);
-      case 'cheapest':
-        return a.priceDiscount - b.priceDiscount;
-      case 'expensive':
-        return b.priceDiscount - a.priceDiscount;
-      default:
-        return 0;
+        case 'cheapest':
+          // Використовуємо ціну зі знижкою (priceDiscount)
+          return a.priceDiscount - b.priceDiscount;
+
+        case 'expensive':
+          return b.priceDiscount - a.priceDiscount;
+
+        case 'newest':
+          // Оскільки явного поля 'year' немає, сортуємо по ID у зворотному порядку
+          // (зазвичай новіші моделі мають "вищий" алфавітний порядок або довші ID)
+          return b.id.localeCompare(a.id);
+
+        default:
+          return 0;
+      }
+    });
+  }, [products, category, sort]);
+
+  const totalCount = sortedProducts.length;
+  const isAllSelected = perPage === 'all';
+  const itemsPerPage = isAllSelected ? totalCount : Number(perPage);
+  const totalPages = Math.ceil(totalCount / itemsPerPage);
+
+  const visibleProducts = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return sortedProducts.slice(start, start + itemsPerPage);
+  }, [sortedProducts, currentPage, itemsPerPage]);
+
+  const getVisiblePages = () => {
+    const pages: number[] = [];
+    const maxVisible = 4;
+    let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+    let end = start + maxVisible - 1;
+
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(1, end - maxVisible + 1);
     }
-  });
 
-  const totalPages =
-    perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / Number(perPage));
-  const visibleProducts =
-    perPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(
-        (currentPage - 1) * Number(perPage),
-        currentPage * Number(perPage),
-      );
-
-  const handlePerPageChange = (value: 'all' | number) => {
-    setPerPage(value);
-    setCurrentPage(1);
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+    return pages;
   };
+
+  if (!category) return <p>No category selected</p>;
 
   return (
     <section className="catalog">
       <Breadcrumbs />
+
       <h1 className="catalog-title">{title}</h1>
       <p className="catalog-count">
         {totalCount} {totalCount === 1 ? 'model' : 'models'}
@@ -88,50 +111,53 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
         sort={sort}
         perPage={perPage}
         onSortChange={setSort}
-        onPerPageChange={handlePerPageChange}
+        onPerPageChange={setPerPage}
       />
 
       <div className="catalog-grid">
-        {visibleProducts.length ? (
-          visibleProducts.map(product => (
-            <ProductCard key={product.id} product={product} showDiscount />
+        {visibleProducts.length > 0 ? (
+          visibleProducts.map((product) => (
+            <ProductCard
+              // Використовуємо id як унікальний ключ
+              key={product.id}
+              product={product as any}
+              showDiscount
+            />
           ))
         ) : (
-          <p>No products found</p>
+          <p className="catalog-empty">No products found in this category</p>
         )}
       </div>
 
-      {perPage !== 'all' && totalPages > 1 && (
+      {!isAllSelected && totalPages > 1 && (
         <div className="catalog-pagination">
-          {/* Prev */}
           <button
+            type="button"
             className="pagination-arrow"
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(prev => prev - 1)}
-            aria-label="Previous page"
           >
-            <img src="img/Arrow_Left.svg" alt="Previous" />
+            <img src="img/Arrow_Left.svg" alt="Prev" />
           </button>
 
-          {/* Pages */}
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              className={`pagination-button ${
-                currentPage === i + 1 ? 'active' : ''
-              }`}
-              onClick={() => setCurrentPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
+          <div className="pagination-list">
+            {getVisiblePages().map(page => (
+              <button
+                key={`page-${page}`}
+                type="button"
+                className={`pagination-button ${currentPage === page ? 'active' : ''}`}
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
 
-          {/* Next */}
           <button
+            type="button"
             className="pagination-arrow"
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
-            aria-label="Next page"
           >
             <img src="img/Arrow_Right.svg" alt="Next" />
           </button>

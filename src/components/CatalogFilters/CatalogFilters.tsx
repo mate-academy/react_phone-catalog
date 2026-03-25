@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './CatalogFilters.scss';
 
 interface CatalogFiltersProps {
@@ -8,14 +8,12 @@ interface CatalogFiltersProps {
   onPerPageChange: (value: number | 'all') => void;
 }
 
-const CatalogFilters = ({
-  sort,
-  perPage,
-  onSortChange,
-  onPerPageChange,
-}: CatalogFiltersProps) => {
+const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: CatalogFiltersProps) => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
+
+  const sortRef = useRef<HTMLDivElement>(null);
+  const perPageRef = useRef<HTMLDivElement>(null);
 
   const sortOptions = [
     { value: 'newest', label: 'Newest' },
@@ -31,25 +29,38 @@ const CatalogFilters = ({
     { value: 'all', label: 'All' },
   ];
 
-  const getSortLabel = (value: string) =>
-    sortOptions.find(opt => opt.value === value)?.label || 'Newest';
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Перевіряємо, чи клік був ПОЗА сортуванням
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+      // Перевіряємо, чи клік був ПОЗА пагінацією
+      if (perPageRef.current && !perPageRef.current.contains(event.target as Node)) {
+        setIsPerPageOpen(false);
+      }
+    };
 
-  const getPerPageLabel = (value: number | 'all') =>
-    perPageOptions.find(opt => opt.value === value)?.label || '8';
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div className="catalog-filters">
-      {/* Кастомний Sort dropdown */}
-      <div className="filter custom-dropdown">
-        <label className="filter__label">Sort by</label>
+      {/* SORT BY */}
+      <div className="filter custom-dropdown" ref={sortRef}>
+        <span className="filter__label">Sort by</span>
         <div className="filter__control">
           <button
-            className="dropdown-toggle"
-            onClick={() => setIsSortOpen(!isSortOpen)}
-            onBlur={() => setTimeout(() => setIsSortOpen(false), 200)}
+            type="button"
+            className={`dropdown-toggle ${isSortOpen ? 'active' : ''}`}
+            onClick={() => {
+              setIsSortOpen(!isSortOpen);
+              setIsPerPageOpen(false);
+            }}
           >
-            <span>{getSortLabel(sort)}</span>
-            <div className="filter__arrow" />
+            {sortOptions.find(o => o.value === sort)?.label || 'Newest'}
+            <div className={`filter__arrow ${isSortOpen ? 'active' : ''}`} />
           </button>
 
           {isSortOpen && (
@@ -58,7 +69,10 @@ const CatalogFilters = ({
                 <div
                   key={option.value}
                   className={`dropdown-item ${sort === option.value ? 'selected' : ''}`}
-                  onClick={() => {
+                  // ВАЖЛИВО: Використовуємо onMouseDown + stopPropagation
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     onSortChange(option.value);
                     setIsSortOpen(false);
                   }}
@@ -71,17 +85,20 @@ const CatalogFilters = ({
         </div>
       </div>
 
-      {/* Кастомний Items per page dropdown */}
-      <div className="filter custom-dropdown">
-        <label className="filter__label">Items on page</label>
+      {/* ITEMS ON PAGE */}
+      <div className="filter custom-dropdown" ref={perPageRef}>
+        <span className="filter__label">Items on page</span>
         <div className="filter__control">
           <button
-            className="dropdown-toggle"
-            onClick={() => setIsPerPageOpen(!isPerPageOpen)}
-            onBlur={() => setTimeout(() => setIsPerPageOpen(false), 200)}
+            type="button"
+            className={`dropdown-toggle ${isPerPageOpen ? 'active' : ''}`}
+            onClick={() => {
+              setIsPerPageOpen(!isPerPageOpen);
+              setIsSortOpen(false);
+            }}
           >
-            <span>{getPerPageLabel(perPage)}</span>
-            <div className="filter__arrow" />
+            {perPage === 'all' ? 'All' : perPage}
+            <div className={`filter__arrow ${isPerPageOpen ? 'active' : ''}`} />
           </button>
 
           {isPerPageOpen && (
@@ -90,8 +107,10 @@ const CatalogFilters = ({
                 <div
                   key={option.value}
                   className={`dropdown-item ${perPage === option.value ? 'selected' : ''}`}
-                  onClick={() => {
-                    onPerPageChange(option.value);
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onPerPageChange(option.value as number | 'all');
                     setIsPerPageOpen(false);
                   }}
                 >
