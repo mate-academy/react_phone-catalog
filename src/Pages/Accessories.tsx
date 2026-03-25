@@ -1,6 +1,5 @@
 import Header from '../components/Header/Header';
-import AccessoriesCatalog from
-'../components/CatalogAccessories/AccessoriesCatalog';
+import AccessoriesCatalog from '../components/CatalogAccessories/AccessoriesCatalog';
 import Footer from '../components/Footer/Footer';
 
 const Accessories: React.FC = () => {

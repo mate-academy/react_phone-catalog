@@ -46,11 +46,18 @@ const TabletsCatalog = () => {
     itemsPerPage === 'all'
       ? sortedProducts
       : sortedProducts.slice(
-          (currentPage - 1) * itemsPerPage,
-          currentPage * itemsPerPage,
-        );
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage,
+      );
 
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const pagesPerBlock = 4;
+  const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);
+  const startPage = currentBlock * pagesPerBlock + 1;
+  const endPage = Math.min(startPage + pagesPerBlock - 1, totalPages);
+  const visiblePageButtons = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, i) => startPage + i,
+  );
 
   return (
     <div className="catalog">
@@ -97,7 +104,7 @@ const TabletsCatalog = () => {
           onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
         />
 
-        {pages.map(page => (
+        {visiblePageButtons.map(page => (
           <button
             key={page}
             onClick={() => setCurrentPage(page)}

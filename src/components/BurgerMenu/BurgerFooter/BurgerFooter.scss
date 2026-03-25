@@ -1,0 +1,72 @@
+.burger-footer {
+  border-top: 1px solid #e2e6e9;
+  width: 100%;
+ margin-top: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
+
+.burger-footer--heart {
+  border-right: 1px solid #e2e6e9;
+}
+
+.burger-footer--basket,
+.burger-footer--heart {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  position: relative;
+}
+
+.burger-footer--heart::after,
+.burger-footer--basket::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+  background-color: black;
+
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.burger-footer--heart:hover::after,
+.burger-footer--basket:hover::after {
+  opacity: 1;
+}
+
+.burger-footer__icon--heart {
+  background-image: url('../../../../public/img/icons/icon--heart.png');
+  background-repeat: no-repeat;
+  width: 32px;
+height: 32px;
+background-repeat: no-repeat;
+background-position: center;
+background-size: 16px 16px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: white;
+}
+
+.burger-footer__icon--basket {
+  background-image: url('../../../../public/img/icons/icon--basket.png');
+  width: 32px;
+height: 32px;
+background-repeat: no-repeat;
+background-position: center;
+background-size: 16px 16px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: white;
+}
+

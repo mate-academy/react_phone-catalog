@@ -4,7 +4,7 @@
   border: 1px solid #e2e6e9;
   padding: 32px;
    grid-column: span 12;
-
+  transition: border ease 0.4s;
   @media (min-width: 768px) {
      grid-column: span 6;
   }
