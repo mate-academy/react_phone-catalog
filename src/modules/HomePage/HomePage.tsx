@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { Preview } from './components/Preview';
 import { ProductColection } from '../../components/layout/ProductColection';
-import { ProductsContext } from '../../store/ProductsProvider';
 import styles from './HomePage.module.scss';
 import { Category } from '../../components/layout/Category';
+import { useProducts } from '../../hooks/useProducts';
 
 export const HomePage = () => {
-  const products = useContext(ProductsContext);
+  const { products, isLoading } = useProducts();
 
   const getNewest = () => {
     if (!products.length) {
@@ -34,7 +33,7 @@ export const HomePage = () => {
 
         return discountMax - discountMin;
       })
-      .slice(0, 24);
+      .slice(0, 12);
   };
 
   return (
@@ -44,9 +43,17 @@ export const HomePage = () => {
       </div>
       <Preview />
       <div className={styles.content}>
-        <ProductColection title="Brand new models" products={getNewest()} />
+        <ProductColection
+          title="Brand new models"
+          products={getNewest()}
+          loading={isLoading}
+        />
         <Category />
-        <ProductColection title="Hot prices" products={getHotPrices()} />
+        <ProductColection
+          title="Hot prices"
+          products={getHotPrices()}
+          loading={isLoading}
+        />
       </div>
     </>
   );

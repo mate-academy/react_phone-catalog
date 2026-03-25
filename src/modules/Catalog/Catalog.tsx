@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { Category } from '../../components/layout/Category';
 import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductColection } from '../../components/layout/ProductColection';
-import { ProductsContext } from '../../store/ProductsProvider';
+import { useProducts } from '../../hooks/useProducts';
 import styles from './Catalog.module.scss';
 
 export const Catalog = () => {
-  const products = useContext(ProductsContext);
+  const { products, isLoading } = useProducts();
 
   const getCategoryProducts = (category: string) => {
     if (!products.length) {
@@ -24,14 +23,17 @@ export const Catalog = () => {
         <ProductColection
           title="Phones"
           products={getCategoryProducts('phones')}
+          loading={isLoading}
         />
         <ProductColection
           title="Tablets"
           products={getCategoryProducts('tablets')}
+          loading={isLoading}
         />
         <ProductColection
           title="Accessories"
           products={getCategoryProducts('accessories')}
+          loading={isLoading}
         />
       </div>
     </div>

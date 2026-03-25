@@ -8,7 +8,7 @@ import {
   changeProductQuantity,
   deleteProductFromCart,
 } from '../../store/cart/CartReducer';
-import { createOrder } from '../../store/OrderProvider/OrderReducer';
+import { createOrder } from '../../store/order/OrderReducer';
 import { useTotalPrice } from '../../hooks/useTotalPrice';
 import { imageUrl } from '../../utils/imageUrl';
 import styles from './Cart.module.scss';

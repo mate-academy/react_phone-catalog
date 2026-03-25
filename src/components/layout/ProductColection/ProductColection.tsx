@@ -6,14 +6,16 @@ import { Product } from '../../../types/types';
 import { ButtonArrow } from '../../ui/ButtonArrow';
 import { SectionTitle } from '../../ui/SectionTitle';
 import { ProductCard } from '../ProductCard';
+import { CardSkeleton } from '../ProductCard/skeleton';
 import styles from './ProductColection.module.scss';
 
 type Props = {
   title: string;
   products: Product[] | null;
+  loading?: boolean;
 };
 
-export const ProductColection = ({ title, products }: Props) => {
+export const ProductColection = ({ title, products, loading }: Props) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [cardSize, setCardSize] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,6 +52,22 @@ export const ProductColection = ({ title, products }: Props) => {
     return Math.max(products.length - cardsPerView, 0);
   }, [products, cardsPerView]);
 
+  const renderProducts = () => {
+    if (loading) {
+      return Array.from({ length: 4 }).map((_, i) => <CardSkeleton key={i} />);
+    }
+
+    return products?.map((product, index) => (
+      <div
+        key={product.id}
+        ref={index === 0 ? cardRef : null}
+        className={styles.card}
+      >
+        <ProductCard product={product} />
+      </div>
+    ));
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.section__header}>
@@ -74,17 +92,7 @@ export const ProductColection = ({ title, products }: Props) => {
             style={{ transform: `translateX(-${cardSize * currentIndex}px)` }}
             className={styles.slider}
           >
-            {products?.map((product, index) => {
-              return (
-                <div
-                  key={product.id}
-                  ref={index === 0 ? cardRef : null}
-                  className={styles.card}
-                >
-                  <ProductCard product={product} />
-                </div>
-              );
-            })}
+            {renderProducts()}
           </div>
         </div>
       </div>

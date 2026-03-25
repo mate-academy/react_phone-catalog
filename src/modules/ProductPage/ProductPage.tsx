@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
 import { ProductCard } from '../../components/layout/ProductCard';
@@ -8,14 +8,31 @@ import {
   itemsOnPageOptions,
   sortByOptions,
 } from '../../store/constants';
-import { ProductsContext } from '../../store/ProductsProvider';
-import { Filter, FilterParams, FilterValue } from '../../types/types';
+import { Filter, FilterParams, FilterValue, Product } from '../../types/types';
+
+import 'react-loading-skeleton/dist/skeleton.css';
 import styles from './ProductPage.module.scss';
+import { CardSkeleton } from '../../components/layout/ProductCard/skeleton';
+import { getCategoryOfProducts } from '../../api/products';
 
 export const ProductPage = () => {
   const { category } = useParams();
-  const products = useContext(ProductsContext);
-  const items = products.filter(item => item.category === category);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await getCategoryOfProducts(category);
+
+        setProducts(data);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
+  }, [category]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || null;
@@ -23,7 +40,7 @@ export const ProductPage = () => {
   const page = searchParams.get('page') || null;
 
   const start = (Number(page) - 1) * Number(perPage);
-  const end = Math.min(start + Number(perPage), items.length);
+  const end = Math.min(start + Number(perPage), products.length);
 
   const handleSorting = (value: FilterValue, filter: FilterParams) => {
     const params = new URLSearchParams(searchParams);
@@ -58,7 +75,7 @@ export const ProductPage = () => {
   ];
 
   const filteredItems = () => {
-    const sorted = [...items];
+    const sorted = [...products];
 
     switch (sortBy) {
       case 'year':
@@ -89,13 +106,15 @@ export const ProductPage = () => {
       <Pagetoolbar
         breadcrumbs
         title={catalogTitles[category ?? ''] ?? 'Catalog'}
-        subtitle={`${items.length} models`}
+        subtitle={isLoading ? 'Loading ...' : `${products.length} models`}
         filters={filters}
         clearFilters={clearFilters}
       />
 
       <div className={styles.content}>
-        {filteredItems().length === 0 ? (
+        {isLoading ? (
+          Array.from({ length: 16 }).map((_, i) => <CardSkeleton key={i} />)
+        ) : filteredItems().length === 0 ? (
           <div className={styles.empty}>
             <h2 className={styles.empty__title}>:(</h2>
             <p className={styles.empty__subtitle}>
@@ -111,7 +130,7 @@ export const ProductPage = () => {
 
       {perPage !== null && (
         <div className={styles.footer}>
-          <Pagination itemsAmount={items.length} />
+          <Pagination itemsAmount={products.length} />
         </div>
       )}
     </section>

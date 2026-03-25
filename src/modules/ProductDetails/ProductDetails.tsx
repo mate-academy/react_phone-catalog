@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -9,33 +8,23 @@ import { Button } from '../../components/ui/Button';
 import { ButtonLiked } from '../../components/ui/ButtonLiked';
 import { useCart } from '../../hooks/useCart';
 import { useFavourites } from '../../hooks/useFavourites';
+import { useProductDetails } from '../../hooks/useProductDetails';
+import { useProducts } from '../../hooks/useProducts';
 import { addProductToCart } from '../../store/cart/CartReducer';
 import { toggleFavourites } from '../../store/favourites/FavouritesReducer';
-import { ProductsContext } from '../../store/ProductsProvider';
-import { ProductDetailsType } from '../../types/types';
 import { imageUrl } from '../../utils/imageUrl';
 import styles from './ProductDetails.module.scss';
+import { ProductSkeleton } from './skeleton';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
   const { category, productId } = useParams();
-  const products = useContext(ProductsContext);
   const { favourites, setFavourites } = useFavourites();
   const { cart, setCart } = useCart();
-  const [product, setProduct] = useState<ProductDetailsType | undefined>();
+
+  const { products, isLoading } = useProducts();
+  const { product, isProductLoading } = useProductDetails(productId, category);
   const [preview, setPreview] = useState<string>('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`/api/${category}.json`);
-      const json: ProductDetailsType[] = await response.json();
-      const currentProduct = json.find(item => item.id === productId);
-
-      setProduct(currentProduct);
-    };
-
-    fetchData();
-  }, [productId, category]);
 
   useEffect(() => {
     if (product) {
@@ -43,7 +32,7 @@ export const ProductDetails = () => {
     }
   }, [product]);
 
-  const handleColors = ({
+  const handleSettings = ({
     selectedColor,
     selectedCapacity,
   }: {
@@ -81,7 +70,9 @@ export const ProductDetails = () => {
   return (
     <div className={styles.container}>
       <Pagetoolbar breadcrumbs breadcrumbsName={product && product.name} back />
-      {!product ? (
+      {isProductLoading ? (
+        <ProductSkeleton />
+      ) : !product ? (
         <div className={styles.empty}>
           <img
             src={imageUrl('img/page-not-found.png')}
@@ -140,7 +131,7 @@ export const ProductDetails = () => {
                             value={item}
                             checked={item === product.color}
                             onChange={() =>
-                              handleColors({ selectedColor: item })
+                              handleSettings({ selectedColor: item })
                             }
                             className={styles.color__input}
                           />
@@ -177,7 +168,7 @@ export const ProductDetails = () => {
                             value={item}
                             checked={item === product.capacity}
                             onChange={() =>
-                              handleColors({ selectedCapacity: item })
+                              handleSettings({ selectedCapacity: item })
                             }
                             className={styles.capacity__input}
                           />
@@ -342,10 +333,12 @@ export const ProductDetails = () => {
           </div>
         </div>
       )}
+
       <div className={styles.more}>
         <ProductColection
           title="You may also like"
           products={getRandomProducts()}
+          loading={isLoading}
         />
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useCart } from '../../../../hooks/useCart';
 import { useOrder } from '../../../../hooks/useOrder';
 import { clearCart } from '../../../../store/cart/CartReducer';
 import { PaymentMethods } from '../../../../store/constants';
-import { clearOrder } from '../../../../store/OrderProvider/OrderReducer';
+import { clearOrder } from '../../../../store/order/OrderReducer';
 import { useTotalPrice } from '../../../../hooks/useTotalPrice';
 import { Button } from '../../../../components/ui/Button';
 import { Input } from '../../../../components/ui/Input';
