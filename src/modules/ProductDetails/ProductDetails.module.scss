@@ -41,7 +41,7 @@
 
 .photos {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   gap: 16px;
 
   @media (max-width: 768px) {
@@ -55,6 +55,7 @@
     width: 80px;
     height: 80px;
     border: 1px solid $elements;
+    flex-shrink: 0;
 
     &_active,
     &:hover {
@@ -76,8 +77,9 @@
   height: 464px;
 
   @media (max-width: 768px) {
-    max-width: 100%;
+    height: 320px;
     order: 1;
+    margin: 0 auto;
   }
 
   &__img {
