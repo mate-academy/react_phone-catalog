@@ -1,6 +1,6 @@
-@import '../../styles/fonts.scss';
-@import '../../styles/mixins.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .slider {
   &__titleBreak {
@@ -55,35 +55,16 @@
   }
   &__title {
     @include font-h2-mobile;
+
     @include on-tablet {
       @include font-h2;
     }
   }
   &__container {
+    max-width: 1200px;
+    margin: 0 auto;
     :global(.swiper-slide) {
       height: auto !important;
-      width: 212px !important;
-
-      @include on-tablet {
-        width: 237px !important;
-      }
-
-      @include on-desktop {
-        width: auto !important;
-      }
-    }
-
-    &__swSlider {
-      height: auto !important;
-      width: 212px !important;
-
-      @include on-tablet {
-        width: 237px !important;
-      }
-
-      @include on-desktop {
-        width: auto !important;
-      }
     }
   }
 }

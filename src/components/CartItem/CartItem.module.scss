@@ -1,11 +1,12 @@
 // CartItem.module.scss
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
-@import '../../styles/mixins.scss';
+@import '../../styles/variables';
+@import '../../styles/fonts';
+@import '../../styles/mixins';
 
 .cartItem {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
   gap: 16px;
   padding: 16px;
   border: 1px solid $elements-color;
@@ -63,6 +64,7 @@
 
   &__name {
     @include font-body;
+
     color: $primary-color;
   }
 
@@ -73,7 +75,6 @@
 
     &__btn {
       display: flex;
-      background: none;
       align-items: center;
       justify-content: center;
       width: 32px;
@@ -81,6 +82,7 @@
       border: 1px solid #b4bdc3;
       background: transparent;
       cursor: pointer;
+
       @include font-body;
 
       &:hover {
@@ -90,6 +92,8 @@
 
     &__value {
       @include font-body;
+      color: $primary-color;
+
       width: 24px;
       text-align: center;
     }
@@ -97,6 +101,7 @@
 
   &__price {
     @include font-h3;
+
     color: $primary-color;
     min-width: 80px;
   }

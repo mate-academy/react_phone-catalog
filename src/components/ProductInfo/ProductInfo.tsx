@@ -81,7 +81,6 @@ export const ProductInfo: React.FC<Props> = ({
             isInCart ? styles['info__addToCart--active'] : ''
           }`}
           onClick={onAddToCart}
-          disabled={isInCart}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>

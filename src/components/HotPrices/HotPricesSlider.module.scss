@@ -1,6 +1,6 @@
-@import '../../styles/fonts.scss';
-@import '../../styles/mixins.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .slider {
   &__titleBreak {
@@ -55,6 +55,7 @@
   }
   &__title {
     @include font-h2-mobile;
+
     @include on-tablet {
       @include font-h2;
     }

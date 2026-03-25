@@ -1,11 +1,13 @@
-@import '../../styles/mixins.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
 .card {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
   padding-inline: 16px;
   padding-bottom: 56px;
+
   @include on-tablet {
     padding-inline: 40px;
     padding-bottom: 64px;
@@ -15,15 +17,18 @@
     padding-inline: 32px;
     padding-bottom: 80px;
   }
+
   @include on-tablet {
     padding-inline: 24px;
   }
+
   @include on-desktop {
     padding-inline: 32px;
   }
 
   &__empty {
     @include font-h1-mobile;
+
     @include on-tablet {
       @include font-h1-mobile;
     }
@@ -32,6 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+
     @include on-tablet {
       gap: 16px;
     }

@@ -1,5 +1,6 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
 .pageNavigation {
   display: flex;
   align-items: center;
@@ -18,12 +19,14 @@
 
   &__current {
     color: $secondary-color;
+
     @include font-small-text;
   }
 
   &__link {
     text-decoration: none;
     color: $primary-color;
+
     @include font-small-text;
     &__homeImg {
       width: 16px;

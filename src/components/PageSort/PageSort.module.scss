@@ -1,4 +1,5 @@
-@import '../../styles/fonts.scss';
+@import '../../styles/fonts';
+
 .filter {
   display: flex;
   gap: 16px;
@@ -20,7 +21,9 @@
     letter-spacing: 0%;
     color: #89939a;
   }
-
+  &__sortBy select {
+    width: 176px;
+  }
   select {
     appearance: none;
     -webkit-appearance: none;
@@ -44,10 +47,6 @@
       outline: none;
       border-color: #313237;
     }
-  }
-
-  &__sortBy select {
-    width: 176px;
   }
 
   &__itemPages {

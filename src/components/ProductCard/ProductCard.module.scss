@@ -1,6 +1,6 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
 
 .card {
   display: flex;
@@ -9,7 +9,7 @@
   overflow: hidden;
   border: 1px solid #e2e6e9;
   width: 100%;
-  height: 439px;
+  height: 100%;
   box-sizing: border-box;
   gap: 8px;
   padding: 32px; // перемісти сюди
@@ -27,7 +27,7 @@
 
   &:hover {
     // вкладені правила в кінці
-    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   }
 
   &__InfoPrice {
@@ -38,6 +38,7 @@
 
   &__price {
     @include font-h3;
+
     font-size: 22px;
     font-weight: 800;
     color: $primary-color;
@@ -71,7 +72,7 @@
       justify-content: center;
       transition: all 0.3s ease;
       &:hover {
-        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
       }
       &--added {
         color: $green-color;
@@ -101,6 +102,7 @@
   }
   &__name {
     @include font-body;
+
     white-space: pre-wrap;
     min-height: 48px;
     max-height: 72px;
@@ -120,11 +122,13 @@
 
       &__text {
         @include font-small-text;
+
         color: $primary-color;
       }
 
       &__title {
         @include font-small-text;
+
         color: #89939a;
       }
     }
@@ -136,9 +140,11 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 8px;
+
     @include on-tablet {
       height: 181px;
     }
+
     @include on-desktop {
       height: 196px;
     }

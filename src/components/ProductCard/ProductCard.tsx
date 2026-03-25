@@ -10,7 +10,7 @@ type Props = {
   discount: boolean;
 };
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, isInCart, toggleCart } = useCart();
   const { toggleFavorite, isInFavorites } = useFavorite();
 
   if (!product) {
@@ -65,7 +65,9 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           className={`${styles.card__btn__add}  ${
             isInCart(product.itemId) ? styles['card__btn__add--added'] : ''
           }`}
-          onClick={() => addToCart(product)}
+          onClick={() =>
+            isInCart(product.itemId) ? toggleCart(product) : addToCart(product)
+          }
         >
           {isInCart(product.itemId) ? 'Added' : 'Add to cart'}
         </button>

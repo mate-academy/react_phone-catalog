@@ -1,6 +1,6 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
 
 .main {
   display: flex;
@@ -21,6 +21,7 @@
 
   &__section {
     padding-inline: 16px;
+
     @include on-tablet {
       padding-inline: 24px;
     }
@@ -33,6 +34,7 @@
 
     @include on-desktop {
       margin-top: -32px;
+
       @include font-h1;
     }
 

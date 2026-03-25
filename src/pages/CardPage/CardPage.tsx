@@ -7,11 +7,6 @@ import styles from './CardPage.module.scss';
 export const CardPage = () => {
   const { cart } = useCart();
 
-  const total = cart.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
-
   return (
     <div className={styles.card}>
       {cart.length === 0 ? (
@@ -34,7 +29,7 @@ export const CardPage = () => {
               ))}
             </div>
 
-            <Checkout total={total} />
+            <Checkout />
           </div>
         </>
       )}

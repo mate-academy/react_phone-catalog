@@ -36,6 +36,7 @@
 
     &--left {
       order: -1;
+
       @include on-tablet {
         margin-right: 19px;
       }
@@ -47,6 +48,7 @@
 
     &--right {
       order: 1;
+
       @include on-tablet {
         margin-left: 19px;
       }

@@ -1,15 +1,17 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
-@import '../../styles/mixins.scss';
+@import '../../styles/variables';
+@import '../../styles/fonts';
+@import '../../styles/mixins';
 
 .product {
-  padding-block: 56px;
+  padding: 24px 0px 56px 0px;
+
   @include on-tablet {
-    padding-block: 64px;
+    padding: 24px 0px 80px 0px;
   }
 
   &__notFoundTitle {
     @include font-h2-mobile;
+
     @include on-tablet {
       @include font-h2;
     }
@@ -31,10 +33,11 @@
   &__top {
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
+
     padding-inline: 16px;
     gap: 24px;
     margin-bottom: 16px;
+
     @include on-tablet {
       padding-inline: 24px;
       gap: 40px;
@@ -76,9 +79,11 @@
     align-items: start;
     grid-template-columns: 1fr;
     gap: 56px;
+
     @include on-tablet {
       padding-inline: 24px;
     }
+
     @include on-desktop {
       padding-inline: 32px;
       margin-top: 80px;
@@ -96,6 +101,7 @@
 
     &__about {
       grid-column: 1 / -1;
+
       @include on-desktop {
         grid-column: 1 / 2;
       }
@@ -111,15 +117,16 @@
   }
 
   &__alsoLike {
-    padding: 56px 0 56px 0;
+    padding: 56px 0;
     padding-inline: 16px;
+
     @include on-tablet {
-      padding: 64px 0 64px 0;
+      padding: 64px 0;
       padding-inline: 24px;
     }
 
     @include on-desktop {
-      padding: 80px 0 80px 0;
+      padding: 80px 0;
       padding-inline: 32px;
     }
   }

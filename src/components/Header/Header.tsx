@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const [menuOpened, setMenuOpened] = useState(false);
   const { favorites } = useFavorite();
-  const { cart } = useCart();
+  const { cart, totalCount } = useCart();
 
   return (
     <header className={styles.header}>
@@ -56,7 +56,11 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className={styles.header__actions}>
-            <div className={styles.header__actions__wrapper}>
+            <div
+              className={classNames(styles.header__actions__wrapper, {
+                [styles.isActive]: pathname === '/favorites',
+              })}
+            >
               <Link
                 to="/favorites"
                 className={classNames(styles.header__actions__btn, {
@@ -71,7 +75,11 @@ export const Header: React.FC = () => {
                 )}
               </Link>
             </div>
-            <div className={styles.header__actions__wrapper}>
+            <div
+              className={classNames(styles.header__actions__wrapper, {
+                [styles.isActive]: pathname === '/cart',
+              })}
+            >
               <Link
                 to="/cart"
                 className={classNames(styles.header__actions__btn, {
@@ -81,7 +89,7 @@ export const Header: React.FC = () => {
                 <img src="img/icons/bag.svg" alt="Cart" />
                 {cart.length > 0 && (
                   <span className={styles.header__actions__badge}>
-                    {cart.length}
+                    {totalCount}
                   </span>
                 )}
               </Link>

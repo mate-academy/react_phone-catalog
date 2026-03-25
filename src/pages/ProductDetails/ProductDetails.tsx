@@ -3,7 +3,7 @@ import styles from './ProductDetails.module.scss';
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getPhones, getTablets, getAccessories } from '../../api/client';
-
+// eslint-disable-next-line max-len
 import { ProductDetails as PhoneTabletDetails } from '../../types/ProductDetails';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
 
@@ -55,7 +55,7 @@ export const ProductDetails: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
   const { toggleFavorite, isInFavorites } = useFavorite();
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, isInCart, removeFromCart } = useCart();
 
   const handleColorChange = (color: string) => {
     const parts = productId.split('-');
@@ -117,7 +117,7 @@ export const ProductDetails: React.FC = () => {
         <Breadcrumbs product={{ name: '', category }} />
         <div className={styles.product__notFound}>
           <img
-            src="/img/product-not-found.png"
+            src="img/product-not-found.png"
             alt=""
             className={styles.product__notFoundImg}
           />
@@ -169,7 +169,17 @@ export const ProductDetails: React.FC = () => {
           selectedCapacity={selectedCapacity}
           onColorChange={handleColorChange}
           onCapacityChange={handleCapacityChange}
-          onAddToCart={() => productForCart && addToCart(productForCart)}
+          onAddToCart={() => {
+            if (!productForCart) {
+              return;
+            }
+
+            if (isInCart(productForCart.itemId)) {
+              removeFromCart(productForCart.itemId);
+            } else {
+              addToCart(productForCart);
+            }
+          }}
           onFavorite={() => productForCart && toggleFavorite(productForCart)}
           isFavorite={
             productForCart ? isInFavorites(productForCart.itemId) : false

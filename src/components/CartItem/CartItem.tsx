@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CartItem.module.scss';
 import { useCart } from '../../context/CartContext';
 import { Product } from '../../types/Product';
+import { Link } from 'react-router-dom';
 type Props = {
   product: Product;
   quantity: number;
@@ -10,11 +11,16 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   const { removeFromCart, updateQuantity } = useCart();
 
   return (
-    <div className={styles.cartItem}>
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      className={styles.cartItem}
+    >
       <div className={styles.cartItem__top}>
         <button
           className={styles.cartItem__remove}
-          onClick={() => {
+          onClick={e => {
+            e.preventDefault();
+            e.stopPropagation();
             removeFromCart(product.itemId);
           }}
         >
@@ -32,7 +38,11 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
         <div className={styles.cartItem__counter}>
           <button
             className={styles.cartItem__counter__btn}
-            onClick={() => updateQuantity(product.itemId, quantity - 1)}
+            onClick={e => {
+              e.preventDefault();
+              e.stopPropagation();
+              updateQuantity(product.itemId, quantity - 1);
+            }}
             disabled={quantity <= 1}
           >
             —
@@ -40,13 +50,17 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
           <span className={styles.cartItem__counter__value}>{quantity}</span>
           <button
             className={styles.cartItem__counter__btn}
-            onClick={() => updateQuantity(product.itemId, quantity + 1)}
+            onClick={e => {
+              e.preventDefault();
+              e.stopPropagation();
+              updateQuantity(product.itemId, quantity + 1);
+            }}
           >
             +
           </button>
         </div>
         <p className={styles.cartItem__price}>${product.price * quantity}</p>
       </div>
-    </div>
+    </Link>
   );
 };

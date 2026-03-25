@@ -1,6 +1,6 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
 
 .menu {
   position: fixed;
@@ -61,6 +61,7 @@
     &__item {
       &__link {
         @include font-uppercase;
+
         text-decoration: none;
         font-weight: 800px;
         font-size: 12px;

@@ -1,6 +1,6 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
 
 $border-color: $elements-color;
 $hover-bg: $hover-color;
@@ -34,37 +34,19 @@ $nav-letter-spacing: 0.08em;
 
   &__actions {
     display: none;
+
     @include on-tablet {
       display: flex;
-      align-items: center;
+      align-items: stretch;
+      height: 100%;
     }
     &__wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
+      width: 64px;
       height: 100%;
       border-left: 1px solid $elements-color;
-
-      &:last-child {
-        border-right: 1px solid $elements-color;
-      }
-    }
-    &__btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-
-      text-decoration: none;
-      background: transparent;
-      cursor: pointer;
-      position: relative;
-      size: 16px;
-
-      position: relative;
-
       position: relative;
 
       &::after {
@@ -84,6 +66,24 @@ $nav-letter-spacing: 0.08em;
         transform: scaleX(1);
       }
 
+      &:last-child {
+        border-right: 1px solid $elements-color;
+      }
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      size: 16px;
+
+      position: relative;
+
       img {
         width: 16px;
         height: 16px;
@@ -93,7 +93,7 @@ $nav-letter-spacing: 0.08em;
     &__badge {
       position: absolute;
       top: 17px;
-      right: 3px;
+      right: 16px;
       display: flex;
       text-align: center;
       justify-content: center;
@@ -102,10 +102,10 @@ $nav-letter-spacing: 0.08em;
       background-color: $red-color;
       border-radius: 100%;
       padding: 2.33px;
-      outline: 1px solid #ffffff;
+      outline: 1px solid #fff;
       font-family: Mont, sans-serif;
       font-size: 9px;
-      color: #ffffff;
+      color: #fff;
       line-height: 1;
     }
   }
@@ -181,6 +181,7 @@ $nav-letter-spacing: 0.08em;
   color: $secondary-color;
   text-decoration: none;
   position: relative;
+
   @include font-uppercase;
   &::after {
     content: '';

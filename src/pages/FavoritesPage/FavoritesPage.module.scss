@@ -1,11 +1,13 @@
-@import '../../styles/mixins.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
 .favorites {
   &__flex {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
     padding-inline: 16px;
+
     @include on-tablet {
       padding-inline: 24px;
     }
@@ -21,6 +23,7 @@
 
     @include on-tablet {
       margin-top: 40px;
+
       @include font-h1;
     }
   }
@@ -34,6 +37,7 @@
   }
   &__productsList {
     margin-bottom: 56px;
+
     @include on-tablet {
       margin-bottom: 64px;
     }
