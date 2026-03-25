@@ -6,17 +6,17 @@ import {
   ReactNode,
   useMemo,
 } from 'react';
+import { Product } from '../../public/api/types/Product';
 
 interface CartItem {
   id: string;
-  product: any;
+  product: Product;
   quantity: number;
-
 }
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (product: any) => boolean;
+  addToCart: (product: Product) => boolean;
   removeFromCart: (id: string) => void;
   increase: (id: string) => void;
   decrease: (id: string) => void;
@@ -36,14 +36,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
-
     localStorage.setItem('cart', JSON.stringify(items));
   }, [items]);
 
-  const addToCart = (product) => {
+  const addToCart = product => {
     const exists = items.find(item => item.product.id === product.id);
-console.log('addToCart');
-console.log(product.id);
+
     if (exists) {
       return false;
     }

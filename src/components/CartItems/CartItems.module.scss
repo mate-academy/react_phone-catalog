@@ -6,15 +6,15 @@
 
   &__productInfo {
     min-width: 288px;
-    grid-column: 1/-1;
 
     padding: 32px;
     margin-block: 16px ;
     border-radius: 8px;
     border: 1px solid $elements-color;
-    background: #FFFFFF;
+    background: #FFF;
 
     @include page-grid;
+
     grid-column: 1/-1;
     grid-auto-rows: minmax(min-content, auto);
 
@@ -86,6 +86,7 @@
 
     &__buttons {
        @include page-grid;
+
         align-content: center;
         justify-items: center;
         grid-column: span 2;
@@ -96,6 +97,7 @@
         grid-column: 6 / 10;
         grid-row: 1;
        }
+
         @include on-desktop {
         grid-column: 10 / 12;
         grid-row: 1;
@@ -116,12 +118,14 @@
       height: 22px;
       grid-column: 4;
       grid-row: 2;
+
       @include on-tablet {
          grid-column: 13 / 14;
           grid-row: 1;
 
           width: fit-content;
        }
+
        @include on-desktop {
          grid-column: 13 / 16;
           grid-row: 1;

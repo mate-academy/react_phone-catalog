@@ -23,8 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const visibleOnTablet = 2;
   const visibleOnDesktop = 4;
   const { items, addToCart } = useCart();
-  const { toggleFavorite, isFavorite, favorites } = useFavorites();
-  //  const isInCart = items.find(i => String(i.product.id) === String(product.id));
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   const isInCart = items.find(item => item.product.id === product.id);
 
@@ -81,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
             onClick={() => toggleFavorite(String(product.id))}
             isActive={isFavorite(product.id)}
-        //    pressed={isFavorite(String(product.id))}
+            //    pressed={isFavorite(String(product.id))}
           >
             <FavouritesLink
               className={clsx(

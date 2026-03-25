@@ -16,7 +16,6 @@ export const Button: React.FC<Props> = ({
   <button
     type="button"
     {...props}
-
     className={`${styles.button} ${className ? className : ''} ${isActive ? styles.like : ''}`}
     aria-pressed={pressed}
   >

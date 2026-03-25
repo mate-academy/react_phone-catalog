@@ -16,12 +16,6 @@
     box-sizing: border-box;
     background-color: transparent;
 
-    &--favourites {
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
-    }
-
     &--history-back {
       font-size: 12px;
       color: $secondary-color;
@@ -56,7 +50,6 @@
     background-image: url(/img/icons/icon-favourites-like-2x.png);
 
     &:hover {
-
       background-image: url(/img/icons/icon-favourites-like-2x.png);
     }
 }

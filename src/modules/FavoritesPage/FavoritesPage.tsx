@@ -6,7 +6,7 @@ import { useFavorites } from '../../context/FavoritesContext';
 
 export const FavoritesPage: React.FC = ({}) => {
   const { favorites } = useFavorites();
- // const { addToCart, items } = useCart();
+  // const { addToCart, items } = useCart();
 
   const { products, loading, error } = useProducts();
 
@@ -24,9 +24,7 @@ export const FavoritesPage: React.FC = ({}) => {
       {favoriteProducts.length === 0 ? (
         <div>There are no favorites yet</div>
       ) : (
-        <ProductsList
-          products={favoriteProducts}
-        />
+        <ProductsList products={favoriteProducts} />
       )}
       {loading && <div>Loading...</div>}
       {error && <div role="alert">Error: {error}</div>}

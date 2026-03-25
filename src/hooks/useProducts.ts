@@ -81,8 +81,8 @@ export const useProduct = (productId: string, url = URL) => {
         const found = data.find(
           (p: Product) =>
             String(p.id) === String(productId) ||
-            String((p as any).itemId) === String(productId) ||
-            String((p as any).namespaceId) === String(productId),
+            String((p as Product).itemId) === String(productId) ||
+            String((p as Product).namespaceId) === String(productId),
         );
 
         if (!found) {
@@ -93,16 +93,15 @@ export const useProduct = (productId: string, url = URL) => {
         }
 
         const hasColors =
-          Array.isArray((found as any).colorsAvailable) &&
-          (found as any).colorsAvailable.length > 0;
+          Array.isArray(found.colorsAvailable) &&
+          found.colorsAvailable.length > 0;
         const hasCapacities =
-          Array.isArray((found as any).capacityAvailable) &&
-          (found as any).capacityAvailable.length > 0;
+          Array.isArray(found.capacityAvailable) &&
+          found.capacityAvailable.length > 0;
 
         if (!hasColors || !hasCapacities) {
-
           const detailsUrl = `api/${found.category}.json`;
-          let detailsData: any = null;
+          let detailsData = null;
 
           try {
             const detailsRes = await fetch(detailsUrl, { signal: ctrl.signal });
@@ -116,16 +115,16 @@ export const useProduct = (productId: string, url = URL) => {
             if ((e as DOMException)?.name === 'AbortError') {
               throw e;
             }
+            // console.warn('Failed to load product details', e);
 
-            console.warn('Failed to load product details', e);
             detailsData = null;
           }
 
-          let detailsItem: any = null;
+          let detailsItem = null;
 
           if (Array.isArray(detailsData)) {
             detailsItem = detailsData.find(
-              (d: any) => String(d.id) === String(found.itemId),
+              (d: object) => String(d.id) === String(found.itemId),
             );
           } else if (detailsData && typeof detailsData === 'object') {
             detailsItem = detailsData;

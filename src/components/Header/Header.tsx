@@ -55,24 +55,31 @@ export const Header = () => {
               <Menu handleMenuClick={handleMenuClick} />
             </div>
             <div className={styles.topBar__icons}>
-              <div className={styles.icon__background}>
+              <div
+                className={`${styles.icon__background} ${styles['icon__background--hidden']}`}
+              >
                 {favorites.length > 0 && (
                   <span
-                      className={`${styles['icon--absolute']} ${styles.badge} ${styles['favorites-badge']}`}
-                    >
+                    className={`${styles['icon--absolute']} ${styles.badge} ${styles['favorites-badge']}`}
+                  >
                     {favorites.length}
                   </span>
                 )}
-                <FavouritesLink className={styles.header__favIcon} />
+                <FavouritesLink
+                  to="/favorites"
+                  className={`${styles['icon--absolute']} ${styles.header__favIcon}`}
+                />
               </div>
-              <div className={styles.icon__background}>
+              <div
+                className={`${styles.icon__background} ${styles['icon__background--hidden']}`}
+              >
                 <Link
                   to="/cart"
-                  className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
+                  className={`${styles['icon--absolute']} ${styles.icon} ${styles['icon--shopping-bag-cart']}`}
                 >
                   {totalQuantity > 0 && (
                     <span
-                      className={`${styles['icon--absolute']} ${styles.badge} $${styles['cart-badge']}`}
+                      className={`${styles['icon--absolute']} ${styles.badge} ${styles['cart-badge']}`}
                     >
                       {totalQuantity}
                     </span>

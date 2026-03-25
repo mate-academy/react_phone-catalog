@@ -1,5 +1,7 @@
+import { Product } from '../../public/api/types/Product';
+
 export const productsCount = (
-  products: Array<any> | null | undefined,
+  products: Array<Product> | null | undefined,
   type: string,
 ): number => {
   if (!Array.isArray(products) || products.length === 0) {

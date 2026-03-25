@@ -67,7 +67,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
     if (sort === 'price') {
       const effective = (p: Product) =>
-        Number(p.price) * (1 - (Number((p as any).discount) || 0) / 100);
+        Number(p.price) * (1 - (Number((p as Product).discount) || 0) / 100);
 
       return copy.sort((a, b) => effective(a) - effective(b));
     }

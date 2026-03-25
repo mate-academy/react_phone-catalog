@@ -1,6 +1,11 @@
 import styles from './MainMenu.module.scss';
 import Logo from '../Logo/index';
-import Menu from '../Menu';
+
+import Menu from '../Menu/index';
+import FavouritesLink from '../FavouritesLink';
+import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   isMenuOpen: boolean;
@@ -13,33 +18,69 @@ export const MainMenu: React.FC<Props> = ({
   onClose,
   handleMenuClick,
 }) => {
+  const { totalQuantity } = useCart();
+  const { favorites } = useFavorites();
+
   return (
     <aside
       className={`${styles.mainMenu} ${isMenuOpen ? styles.open : ''}`}
       id="main-menu"
       aria-hidden={!isMenuOpen}
     >
-      <div className={styles.mainMenu__content}>
-        <div className={`${styles.topBar} ${styles.mainMenu__top}`}>
-          <Logo handleMenuClick={handleMenuClick} />
-          <div className={styles.topBar__icons}>
-            <div className={styles.icon__background}>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close menu"
-                className={`${styles.icon} ${styles['icon--close']}`}
-              ></button>
+      <div className={styles.mainMenu__layout}>
+        <div className={styles.mainMenu__content}>
+          <div className={`${styles.topBar} ${styles.mainMenu__top}`}>
+            <Logo handleMenuClick={handleMenuClick} />
+            <div className={styles.topBar__icons}>
+              <div className={styles.icon__background}>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close menu"
+                  className={`${styles.icon} ${styles['icon--close']}`}
+                ></button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className={styles.mainMenu__bottom}>
-          <Menu
-            className={styles.mainMenu__nav}
-            handleMenuClick={handleMenuClick}
-          />
+          <div className={styles.mainMenu__bottom}>
+            <Menu
+              className={styles.mainMenu__nav}
+              handleMenuClick={handleMenuClick}
+            />
+          </div>
         </div>
+        <footer className={styles.footer}>
+          <div className={styles.footer__col}>
+            {favorites.length > 0 && (
+              <span
+                className={`${styles['icon--absolute']} ${styles.badge} ${styles['favorites-badge']}`}
+              >
+                {favorites.length}
+              </span>
+            )}
+            <FavouritesLink
+              to="/favorites"
+              className={`${styles['icon--absolute']} ${styles.header__favIcon}`}
+              handleMenuClick={handleMenuClick}
+            />
+          </div>
+          <div className={styles.footer__col}>
+            <Link
+              to="/cart"
+              className={`${styles['icon--absolute']} ${styles.icon} ${styles['icon--shopping-bag-cart']}`}
+              onClick={handleMenuClick}
+            >
+              {totalQuantity > 0 && (
+                <span
+                  className={`${styles['icon--absolute']} ${styles.badge} ${styles['cart-badge']}`}
+                >
+                  {totalQuantity}
+                </span>
+              )}
+            </Link>
+          </div>
+        </footer>
       </div>
     </aside>
   );

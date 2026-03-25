@@ -25,6 +25,14 @@
     border-left: 1px solid #E2E6E9;
   }
 
+  &__background--hidden {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
   &--menu {
     background-image: url(/img/icons/icon-burger-menu-2x.png);
     width: 16px;
@@ -38,17 +46,14 @@
   }
 
   &--shopping-bag-cart {
-    display: none;
+ //   display: none;
 
-    @include on-tablet {
-      display: block;
+    display: block;
       background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
       width: 16px;
       height: 16px;
+      transform: scale(1.1);
     }
-
-    }
-
 
   &--close {
     background-image: url(/img/icons/icon-close-2x.png);
@@ -109,7 +114,12 @@
 
 
   &--favourites{
+    display: none;
     background-image: url(/img/icons/icon-favourites-2x.png);
+
+    @include on-tablet {
+      display: block;
+  }
   }
 
  }
@@ -119,12 +129,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
- // width: 40px;
-  ///height: 40px;
   border-radius: 8px;
+
 }
 
 .badge {
+  z-index: 5;
   position: absolute;
   min-width: 10px;
   height: 10px;
@@ -139,17 +149,35 @@
   display: inline-block;
   font-weight: 700;
   font-size: 9px;
-  top: 4px;
+
+
 }
 
 .cart-badge {
-  right: 200px;
+   right: -1px;
+    top: -16px;
+
+  @include on-tablet {
+    right: -1px;
+    top: -16px;
+  }
 }
 
-.avorites-badge {
-  right: 300px;
+.favorites-badge {
+ right: 274px;
+ bottom: 40px;
 
+   @include on-tablet {
+     right: 64px;
+      top: 0;
+  }
+
+   @include on-desktop {
+     right: 64px;
+     top: 8px;
+  }
 }
+
 .icon--round {
     width: 32px;
     height: 32px;

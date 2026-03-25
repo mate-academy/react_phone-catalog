@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import buttonStyles from '../../components/Button/Button.module.scss';
@@ -81,13 +82,13 @@ export const ProductDetailsPage = () => {
       setLoadingSuggested(true);
       setErrorSuggested(null);
       try {
-        const items = await getSuggestedProducts({
+        const newItems = await getSuggestedProducts({
           productId: product.id,
           category: product.category,
           count: 4,
         });
 
-        setSuggested(items);
+        setSuggested(newItems);
       } catch (err) {
         setErrorSuggested('Failed to load suggested products');
         setSuggested([]);
@@ -108,7 +109,7 @@ export const ProductDetailsPage = () => {
         : null,
     );
     loadSuggested();
-  }, [product]);
+  }, [product, URL]);
 
   if (!productId) {
     return <div>Product was not found</div>;
@@ -184,10 +185,10 @@ export const ProductDetailsPage = () => {
                   </div>
                   {Array.isArray(product.images) &&
                     product.images.length > 0 && (
-                    <div
-                      className={`${styles.slider} ${styles.productDetailsPage__slider}`}
-                    >
-                      {Array.isArray(product.images) &&
+                      <div
+                        className={`${styles.slider} ${styles.productDetailsPage__slider}`}
+                      >
+                        {Array.isArray(product.images) &&
                           product.images.map((img, i) => (
                             <div
                               key={i}
@@ -205,8 +206,8 @@ export const ProductDetailsPage = () => {
                               />
                             </div>
                           ))}
-                    </div>
-                  )}
+                      </div>
+                    )}
 
                   <div className={styles.productDetailsPage__productInfo}>
                     <div
@@ -215,10 +216,13 @@ export const ProductDetailsPage = () => {
                       aria-label="Available colors"
                     >
                       <fieldset className={styles.fieldset}>
-                        <label className={styles.label}>Available colors</label>
+                        <label className={styles.label} htmlFor="color">
+                          Available colors
+                        </label>
                         {product.colorsAvailable.map(color => (
-                          <label key={color} className={styles.colorOption}>
+                          <span key={color} className={styles.colorOption}>
                             <input
+                              id="color"
                               type="radio"
                               name="color"
                               value={color}
@@ -230,7 +234,7 @@ export const ProductDetailsPage = () => {
                               style={{ backgroundColor: color }}
                               aria-hidden="true"
                             />
-                          </label>
+                          </span>
                         ))}
                       </fieldset>
                       <p
@@ -242,35 +246,39 @@ export const ProductDetailsPage = () => {
                     <div className={styles.productDetailsPage__fieldsetTable}>
                       {Array.isArray(product.colorsAvailable) &&
                         product.colorsAvailable.length > 0 && (
-                        <div
-                          className={styles.optionsRow}
-                          role="radiogroup"
-                          aria-label="Available capacities"
-                        >
-                          <fieldset className={styles.fieldset}>
-                            <label className={styles.label}>
+                          <div
+                            className={styles.optionsRow}
+                            role="radiogroup"
+                            aria-label="Available capacities"
+                          >
+                            <fieldset className={styles.fieldset}>
+                              <label
+                                className={styles.label}
+                                htmlFor="capacity"
+                              >
                                 Select capacity
-                            </label>
-                            {product.capacityAvailable.map(cap => (
-                              <label key={cap} className={styles.option}>
-                                <input
-                                  type="radio"
-                                  name="capacity"
-                                  value={cap}
-                                  checked={selectedCapacity === cap}
-                                  onChange={() => setSelectedCapacity(cap)}
-                                />
-                                <span
-                                  className={styles.optionText}
-                                  aria-hidden="true"
-                                >
-                                  {cap}
-                                </span>
                               </label>
-                            ))}
-                          </fieldset>
-                        </div>
-                      )}
+                              {product.capacityAvailable.map(cap => (
+                                <label key={cap} className={styles.option}>
+                                  <input
+                                    id="capacity"
+                                    type="radio"
+                                    name="capacity"
+                                    value={cap}
+                                    checked={selectedCapacity === cap}
+                                    onChange={() => setSelectedCapacity(cap)}
+                                  />
+                                  <span
+                                    className={styles.optionText}
+                                    aria-hidden="true"
+                                  >
+                                    {cap}
+                                  </span>
+                                </label>
+                              ))}
+                            </fieldset>
+                          </div>
+                        )}
                     </div>
                     <div className={styles.productPriceRow}>
                       <p className={styles.productDetailsPage__productPrice}>
@@ -403,23 +411,23 @@ export const ProductDetailsPage = () => {
               {!loadingSuggested &&
                 !errorSuggested &&
                 Array.isArray(suggested) && (
-                <>
-                  <section
-                    id="suggested-products"
-                    aria-label="Suggeste Products"
-                    className={`${styles.section} ${styles['section--suggested']}`}
-                  >
-                    <ProductsSlider
-                      products={suggested}
-                      currentIndex={suggestedIndex}
-                      handlePrev={handlePrev}
-                      handleNext={handleNext}
+                  <>
+                    <section
+                      id="suggested-products"
+                      aria-label="Suggeste Products"
+                      className={`${styles.section} ${styles['section--suggested']}`}
                     >
+                      <ProductsSlider
+                        products={suggested}
+                        currentIndex={suggestedIndex}
+                        handlePrev={handlePrev}
+                        handleNext={handleNext}
+                      >
                         You may also like
-                    </ProductsSlider>
-                  </section>
-                </>
-              )}
+                      </ProductsSlider>
+                    </section>
+                  </>
+                )}
             </>
           )}
         </div>

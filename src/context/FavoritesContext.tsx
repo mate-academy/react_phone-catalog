@@ -32,7 +32,6 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   });
   const addFavorite = useCallback((id: ID) => {
     setFavorites(prev => (prev.includes(id) ? prev : [...prev, id]));
-
   }, []);
   const removeFavorite = useCallback((id: ID) => {
     setFavorites(prev => prev.filter(x => x !== id));
@@ -43,13 +42,14 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
       const next = prev.includes(id)
         ? prev.filter(x => x !== id)
         : [...prev, id];
-console.log(favorites);
-    //console.log( localStorage.getItem('favorites'));
+
       return next;
     });
   }, []);
   const isFavorite = useCallback(
-    (id: ID) => {return favorites.includes(String(id))},
+    (id: ID) => {
+      return favorites.includes(String(id));
+    },
     [favorites],
   );
 

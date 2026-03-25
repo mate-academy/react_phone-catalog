@@ -1,8 +1,8 @@
 import styles from './ProductsList.module.scss';
 import ProductCard from '../ProductCard/index';
-
+import { Product } from '../../../public/api/types/Product';
 interface ProductsListProps {
-  products?: any[];
+  products?: Product[];
   emptyMessage?: string;
 }
 
