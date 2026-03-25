@@ -12,14 +12,14 @@
 
   // Головне налаштування грида
   grid-template-columns: repeat(24, 1fr);
-  column-gap: 16px;
+  column-gap: 40px;
 
   // Центрування самого грида та його елементів
   justify-content: center;
   align-items: stretch;
 
   @include tablet {
-    padding: 49px 16px 0;
+    padding: 49px 0 0;
     max-width: 1199px;
     grid-template-columns: repeat(12, 1fr);
   }

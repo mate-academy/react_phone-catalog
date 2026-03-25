@@ -7,6 +7,19 @@
   display: contents; // Дозволяє секціям взаємодіяти безпосередньо з grid-контейнером
 
 
+@include mobile {
+ .product-card {
+  width: 212px;
+  height: 100%;
+ }
+}
+
+@include tablet {
+ .product-card {
+  width: 237px;
+ }
+}
+
   // Заголовки
 &__title {
   grid-column: 1 / -1;

@@ -25,7 +25,7 @@
     // --- TABLET ---
     @include tablet {
       grid-template-columns: repeat(12, 1fr);
-      padding: 0 16px;
+      padding: 0 24px;
       max-width: 1199px;
     }
 

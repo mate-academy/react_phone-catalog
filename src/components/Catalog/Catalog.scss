@@ -7,7 +7,7 @@
   margin-bottom: 80px;
 
   @include mobile { margin-bottom: 64px; }
-
+  @include tablet { margin-bottom: 64px; }
 
   .catalog-title {
     grid-column: 1 / -1;
@@ -17,6 +17,7 @@
     letter-spacing: map-get($h1-styles, letter-spacing);
     color: $color-primary;
     margin-top: 40px;
+    margin-bottom: 8px;
 
 
      @include mobile {
@@ -33,13 +34,19 @@
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+
 
       @include mobile {
       grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
       gap: 40px;
       margin-top: 0;
-    }
+      }
+
+      @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 0;
+      justify-content: center;
+      }
   }
 
   .catalog-count {
@@ -83,6 +90,9 @@
 
 
     @include mobile { gap: 4px;  margin-top: 24px; }
+
+    @include tablet { gap: 4px;  margin-top: 40px; }
+
 
     .pagination-list {
       display: flex;
@@ -129,8 +139,8 @@
     }
   }
 
-
-
 }
+
+
 
 

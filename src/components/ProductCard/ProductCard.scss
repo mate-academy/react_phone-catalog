@@ -8,6 +8,8 @@
   overflow: hidden;
   padding: 32px;
   background-color: $color-white;
+  box-sizing: border-box;
+  width: 100%;
 
 
     @include mobile {
@@ -16,8 +18,8 @@
   }
 
    @include tablet {
-    width: 173px;
-    height: 448px;
+    width: 100%;
+    height: 100%;
   }
 
   &::-webkit-scrollbar {
