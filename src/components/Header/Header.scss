@@ -47,7 +47,7 @@
     @include mobile {
     gap: 0;
     width: 100%;
-    justify-content: space-between; 
+    justify-content: space-between;
     }
 
     @include tablet {
@@ -219,21 +219,6 @@
     /* Прибираємо зайві стилі для span */
     span {
       display: none;
-    }
-
-    img {
-      width: 16px;
-      height: 16px;
-      transition: opacity 0.3s;
-      padding: 16px;
-    }
-
-    /* Якщо потрібна анімація зміни іконки */
-    &.open {
-      img {
-        opacity: 0.7;
-        /* або змінити src через JS */
-      }
     }
   }
 }
