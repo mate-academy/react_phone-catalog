@@ -1,0 +1,36 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './FavouritesPage.scss';
+import { useProducts } from '../context/ProductContext';
+import { ProductCard } from '../ProductCard/ProductCard';
+
+export const FavouritesPage: React.FC = () => {
+  const { favorites, getCardProductById } = useProducts();
+
+  return (
+    <div className="favourites-page">
+      <div className="favourites-page__wrapper">
+        <div className="elements__wrapper">
+          <Link to="/" className="icon icon--home"></Link>
+          <div className="icon icon--right"></div>
+          <div className="elements__nav-text small-text">Favourites</div>
+        </div>
+        <h1 className="favourites-page__title">Favourites</h1>
+        <div className="favourites-page__subtitle">
+          {favorites.length} items
+        </div>
+        <div className="elements__products favourites-page__products">
+          {favorites.map(f => {
+            const p = getCardProductById(f.id);
+
+            if (!p) {
+              throw new Error('Error');
+            } else {
+              return <ProductCard product={p} discounted={true} key={p.id} />;
+            }
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};

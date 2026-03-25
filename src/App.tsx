@@ -1,7 +1,128 @@
 import './App.scss';
+import { NavLink, Outlet } from 'react-router-dom';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <div className="app__wrapper">
+        <header className="header">
+          <div className="header__left">
+            <div className="header__logo-div">
+              <img
+                src="../public/img/icons/logo.png"
+                alt="header__logo"
+                className="logo"
+              />
+            </div>
+            <nav className="header__nav">
+              <ul className="header__nav-list">
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'header__nav-link uppercase is-active'
+                        : 'header__nav-link uppercase'
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/phones"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'header__nav-link uppercase is-active'
+                        : 'header__nav-link uppercase'
+                    }
+                  >
+                    Phones
+                  </NavLink>
+                </li>
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/tablets"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'header__nav-link uppercase is-active'
+                        : 'header__nav-link uppercase'
+                    }
+                  >
+                    Tablets
+                  </NavLink>
+                </li>
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/accessories"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'header__nav-link uppercase is-active'
+                        : 'header__nav-link uppercase'
+                    }
+                  >
+                    Accessoires
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <ul className="header__icons-list">
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                isActive ? 'header__icons-item is-active' : 'header__icons-item'
+              }
+            >
+              <div className="icon icon--favourite"></div>
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                isActive ? 'header__icons-item is-active' : 'header__icons-item'
+              }
+            >
+              <div className="icon icon--cart"></div>
+            </NavLink>
+          </ul>
+        </header>
+        <Outlet />
+      </div>
+
+      <footer className="footer">
+        <div className="footer__wrapper">
+          <a href="#" className="footer__logo-div">
+            <img
+              src="../public/img/icons/logo.png"
+              alt="footer__logo"
+              className="logo"
+            />
+          </a>
+          <ul className="footer__list">
+            <li className="footer__link uppercase">
+              <a href="#" className="footer__link">
+                Github
+              </a>
+            </li>
+            <li className="footer__link uppercase">
+              <a href="#" className="footer__link">
+                Contacts
+              </a>
+            </li>
+            <li className="footer__link uppercase">
+              <a href="#" className="footer__link">
+                Rights
+              </a>
+            </li>
+          </ul>
+          <div className="footer__back">
+            <div className="small-text">Back to top</div>
+            <a href="#" className="footer__back-button button">
+              <div className="icon icon--up"></div>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};

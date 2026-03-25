@@ -1,1 +1,45 @@
-// not empty
+@import './style/variables';
+@import './style/mixins';
+@import './style/typography';
+@import './style/icons';
+@import './style/header';
+@import './style/welcome';
+@import './style/slider';
+@import './style/categories';
+@import './style/footer';
+@import './style/elements';
+
+@font-face {
+  font-family: Mont;
+  src: url('../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../public/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../public/fonts/Mont-SemiBold.otf');
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app__wrapper {
+  min-height: calc(100vh - 96px);
+}
