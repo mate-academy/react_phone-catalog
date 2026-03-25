@@ -6,8 +6,11 @@ import { CartCheckout } from './components/CartCheckout';
 import { PageTitle } from '../shared/components/PageTitle';
 import { BackButton } from '../shared/components/BackButton';
 import { useCartPage } from './useCartPage';
+import { useTitle } from '../../hooks/useTitle';
 
 export const CartPage: React.FC = () => {
+  useTitle('Cart');
+
   const navigate = useNavigate();
   const { cartProducts, totalPrice, totalQuantity, isEmpty } = useCartPage();
 

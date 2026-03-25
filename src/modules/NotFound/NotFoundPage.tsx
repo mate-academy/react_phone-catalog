@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import styles from './NotFoundPage.module.scss';
+import { useTitle } from '../../hooks/useTitle';
 
 export const NotFoundPage = () => {
+  useTitle('404 Not Found');
+
   return (
     <div className={styles.container}>
       <img

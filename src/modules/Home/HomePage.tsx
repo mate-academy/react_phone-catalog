@@ -5,8 +5,10 @@ import { ProductSlider } from '../shared/components/ProductSlider';
 import { CategoryGrid } from './components/CategoryGrid';
 import { useHomePage } from './useHomePage';
 import { SectionTitle } from '../shared/components/SectionTitle';
+import { useTitle } from '../../hooks/useTitle';
 
 export const HomePage: React.FC = () => {
+  useTitle('Home');
   const { banners, newModels, hotPrices } = useHomePage();
 
   return (

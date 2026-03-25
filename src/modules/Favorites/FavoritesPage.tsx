@@ -4,8 +4,11 @@ import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ProductsGrid } from '../shared/components/ProductsGrid';
 import { PageTitle } from '../shared/components/PageTitle';
 import { useFavoritesPage } from './useFavoritesPage';
+import { useTitle } from '../../hooks/useTitle';
 
 export const FavoritesPage: React.FC = () => {
+  useTitle('Favorites');
+
   const { favoriteProducts, count } = useFavoritesPage();
 
   return (

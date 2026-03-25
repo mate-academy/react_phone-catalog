@@ -6,6 +6,7 @@ import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { CatalogControls } from './components/CatalogControls';
 import { ProductsGrid } from '../shared/components/ProductsGrid';
 import { PageTitle } from '../shared/components/PageTitle';
+import { useTitle } from '../../hooks/useTitle';
 
 export const CatalogPage: React.FC = () => {
   const {
@@ -19,6 +20,12 @@ export const CatalogPage: React.FC = () => {
     isPaginationVisible,
     handleParamChange,
   } = useCatalog();
+
+  useTitle(
+    currentCategory
+      ? currentCategory.navTitle || currentCategory.title
+      : 'Catalog',
+  );
 
   if (!currentCategory) {
     return null;

@@ -10,10 +10,13 @@ import { BackButton } from '../shared/components/BackButton';
 import { useProductDetailsPage } from './useProductDetailsPage';
 import { Loader } from '../shared/components/Loader';
 import { ProductNotFound } from './components/ProductNotFound/ProductNotFound';
+import { useTitle } from '../../hooks/useTitle';
 
 export const ProductDetailsPage: React.FC = () => {
   const { product, baseProduct, suggestedProducts, loading } =
     useProductDetailsPage();
+
+  useTitle(product ? product.name : 'Product not found');
 
   if (loading) {
     return <Loader />;
