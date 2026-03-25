@@ -63,6 +63,7 @@ export const HomePage = () => {
           title="Brand new models"
           products={newProducts}
           isLoading={isLoading}
+          showDiscount={false}
         />
 
         <ShopByCategory
@@ -75,6 +76,7 @@ export const HomePage = () => {
           title="Hot prices"
           products={hotPriceProducts}
           isLoading={isLoading}
+          showDiscount={true}
         />
       </div>
     </section>

@@ -25,7 +25,7 @@ export const ProductsList: React.FC<Props> = ({ isLoading, products }) => {
           ))
         : products.map(product => (
             <div key={product.id} className={styles.item}>
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={true} />
             </div>
           ))}
     </div>

@@ -252,6 +252,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
           products={suggestedProducts}
           title={'You may also like'}
           isLoading={isLoading}
+          showDiscount={true}
         />
       </div>
     </section>

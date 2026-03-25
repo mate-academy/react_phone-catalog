@@ -16,12 +16,14 @@ import { ProductSkeleton } from '../ProductSkeleton';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount: boolean;
   isLoading: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
+  showDiscount,
   isLoading,
 }) => {
   const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
@@ -64,7 +66,7 @@ export const ProductsSlider: React.FC<Props> = ({
               ))
             : products.map(product => (
                 <SwiperSlide key={product.id} className={styles.slide}>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} showDiscount={showDiscount} />
                 </SwiperSlide>
               ))}
         </Swiper>

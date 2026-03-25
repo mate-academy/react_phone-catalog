@@ -10,10 +10,11 @@ import { useCart } from '../../hooks/useCart';
 import styles from './ProductCard.module.scss';
 
 type Props = {
+  showDiscount: boolean;
   product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
   const { isInCart, addToCart, removeFromCart } = useCart();
@@ -56,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.prices}>
         <span className={styles.currentPrice}>${product.price}</span>
 
-        {product.fullPrice !== product.price && (
+        {product.fullPrice !== product.price && showDiscount && (
           <span className={styles.oldPrice}>${product.fullPrice}</span>
         )}
       </div>
