@@ -1,0 +1,80 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.section {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.title {
+  margin-bottom: 40px;
+  color: var(--color-primary);
+}
+
+.subtitle {
+  @include body-text;
+
+  font-size: 16px;
+
+  color: var(--color-secondary);
+
+  margin-bottom: 40px;
+
+  b {
+    color: var(--color-primary);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  padding: 32px;
+
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+
+  background-color: var(--color-surface);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    border-color: var(--color-icons);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.cardTitle {
+  margin-bottom: 16px;
+
+  color: var(--color-primary);
+}
+
+.cardText {
+  @include body-text;
+
+  color: var(--color-secondary);
+
+  margin-bottom: 24px;
+}
+
+.link {
+  @include buttons-text;
+
+  color: var(--color-accent);
+
+  text-decoration: none;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

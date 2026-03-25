@@ -10,6 +10,7 @@ import { FavouritesPage } from './modules/FavouritesPage';
 import { CartPage } from './modules/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { ContactsPage } from './modules/ContactsPage';
 
 export const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -64,6 +65,8 @@ export const App = () => {
           path=":category/:itemId"
           element={<ProductDetailsPage products={products} />}
         />
+
+        <Route path="contacts" element={<ContactsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
