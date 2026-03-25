@@ -10,4 +10,5 @@ export interface ContextProps {
   addToCart: (productId: string) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, delta: number) => void;
+  clearCart: () => void;
 }

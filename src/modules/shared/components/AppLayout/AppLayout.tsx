@@ -15,7 +15,8 @@ interface Props {
 
 export const AppLayout: React.FC<Props> = ({ categories, products }) => {
   const { favorites, toggleFavorite } = useFavorites();
-  const { cart, addToCart, removeFromCart, updateQuantity } = useCart();
+  const { cart, addToCart, removeFromCart, updateQuantity, clearCart } =
+    useCart();
 
   const favoritesCount = favorites.length;
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -30,6 +31,7 @@ export const AppLayout: React.FC<Props> = ({ categories, products }) => {
       addToCart,
       removeFromCart,
       updateQuantity,
+      clearCart,
     }),
     [
       categories,
@@ -40,6 +42,7 @@ export const AppLayout: React.FC<Props> = ({ categories, products }) => {
       addToCart,
       removeFromCart,
       updateQuantity,
+      clearCart,
     ],
   );
 
