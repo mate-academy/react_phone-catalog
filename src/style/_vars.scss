@@ -48,6 +48,7 @@ $desktop-min-width: 1200px;
   --shasow-card: #{$lt-shadow-card};
   --icon-disabled: #{$lt-bt-sl-bd};
   --borde-hover-mini:#{$lt-secondary};
+  --text-id: #{$lt-bt-sl-bd};
 }
 
 [data-theme='dark'] {
@@ -67,4 +68,5 @@ $desktop-min-width: 1200px;
   --shasow-card: #{$dt-shadow-card};
   --icon-disabled: #{$dt-disabled-icon};
   --borde-hover-mini:#{$lt-secondary};
+  --text-id: #{$dt-disabled-icon};
 }

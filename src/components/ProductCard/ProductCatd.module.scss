@@ -59,7 +59,7 @@
   }
 
   &__priceContainer {
-    @extend %h3;
+    @extend %h3-price;
 
     color: var(--text-main);
     display: flex;

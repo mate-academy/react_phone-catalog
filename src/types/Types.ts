@@ -4,6 +4,7 @@ export enum PathType {
   TABLETS = 'tablets',
   ACCESSORIES = 'accessories',
   PRODUCTS = 'products',
+  PRODUCT = 'product',
   FAVOURITES = 'favorites',
   CART = './cart',
 }
