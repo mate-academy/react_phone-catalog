@@ -6,8 +6,6 @@ import { useFavorites } from '../../context/FavoritesContext';
 
 export const FavoritesPage: React.FC = ({}) => {
   const { favorites } = useFavorites();
-  // const { addToCart, items } = useCart();
-
   const { products, loading, error } = useProducts();
 
   const favoriteProducts = useMemo(() => {

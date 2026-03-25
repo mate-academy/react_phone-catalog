@@ -80,7 +80,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
             onClick={() => toggleFavorite(String(product.id))}
             isActive={isFavorite(product.id)}
-            //    pressed={isFavorite(String(product.id))}
           >
             <FavouritesLink
               className={clsx(

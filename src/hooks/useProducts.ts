@@ -115,7 +115,6 @@ export const useProduct = (productId: string, url = URL) => {
             if ((e as DOMException)?.name === 'AbortError') {
               throw e;
             }
-            // console.warn('Failed to load product details', e);
 
             detailsData = null;
           }

@@ -50,12 +50,6 @@
     min-height: 0;
     box-sizing: border-box;
 
-  //  display: grid;
-   // grid-template-columns: repeat(1,1fr);
-   // grid-column: 1/4;
-
-
-
     display: grid;
 
 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
