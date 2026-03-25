@@ -14,3 +14,7 @@
     margin-bottom: $spacing-xl;
   }
 }
+
+.emptyMessage {
+  @include page-title;
+}

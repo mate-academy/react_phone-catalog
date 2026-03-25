@@ -1,4 +1,3 @@
-// hooks/useAppInit.ts
 import { useState, useEffect, useMemo } from 'react';
 import { Product } from '../types/Product';
 import { CATEGORIES } from '../modules/shared/constants/categories';

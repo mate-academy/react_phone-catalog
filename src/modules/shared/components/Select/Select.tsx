@@ -7,6 +7,7 @@ interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   options: { value: string; label: string }[];
   containerClass?: string;
+  id: string;
 }
 
 export const Select: React.FC<Props> = ({

@@ -18,6 +18,7 @@ export const ActionButtons: React.FC<Props> = ({ product, size = 'small' }) => {
   return (
     <div className={classNames(styles.buttons, styles[size])}>
       <button
+        type="button"
         className={classNames(styles.addToCart, {
           [styles.inCart]: isInCart,
         })}
@@ -27,6 +28,7 @@ export const ActionButtons: React.FC<Props> = ({ product, size = 'small' }) => {
       </button>
 
       <button
+        type="button"
         className={classNames(styles.favorite, {
           [styles.favoriteActive]: isFavorite,
         })}

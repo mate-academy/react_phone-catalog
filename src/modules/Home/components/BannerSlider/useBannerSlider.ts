@@ -24,7 +24,7 @@ export const useBannerSlider = (length: number) => {
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) {
+    if (touchStart === null || touchEnd === null) {
       return;
     }
 

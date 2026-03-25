@@ -11,28 +11,47 @@ export const useProductDetailsPage = () => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const baseProduct = useMemo(
+    () => products.find(p => p.itemId === productId),
+    [products, productId],
+  );
+
   useEffect(() => {
     if (!productId) {
       return;
     }
 
+    let isMounted = true;
+
     setLoading(true);
-    getProductById(productId)
-      .then(setProduct)
-      .catch(() => setProduct(null))
-      .finally(() => setLoading(false));
-  }, [productId]);
+
+    getProductById(productId, baseProduct?.category)
+      .then(data => {
+        if (isMounted) {
+          setProduct(data);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setProduct(null);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [productId, baseProduct?.category]);
 
   useEffect(() => {
     if (!loading) {
       scrollToTop();
     }
   }, [productId, loading]);
-
-  const baseProduct = useMemo(
-    () => products.find(p => p.itemId === productId),
-    [products, productId],
-  );
 
   const suggestedProducts = useMemo(() => {
     if (!product) {

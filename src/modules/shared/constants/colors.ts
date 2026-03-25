@@ -11,4 +11,5 @@ export const COLOR_MAP: Record<string, string> = {
   midnightgreen: '#4E5851',
   rosegold: '#EAD1BB',
   coral: '#EE7762',
+  midnight: '#191919',
 };

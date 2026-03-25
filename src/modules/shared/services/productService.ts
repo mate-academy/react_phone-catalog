@@ -2,8 +2,6 @@ import { Category } from '../../../types/Category';
 import { Product } from '../../../types/Product';
 import { ProductDetails } from '../../../types/ProductDetails';
 
-const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 const BASE_PATH = import.meta.env.BASE_URL;
 
 export const getProducts = async (): Promise<Product[]> => {
@@ -13,11 +11,7 @@ export const getProducts = async (): Promise<Product[]> => {
     throw new Error('Failed to fetch products');
   }
 
-  const data = await response.json();
-
-  await wait(500);
-
-  return data;
+  return response.json();
 };
 
 export const getCategories = async (): Promise<Category[]> => {
@@ -32,19 +26,35 @@ export const getCategories = async (): Promise<Category[]> => {
 
 export const getProductById = async (
   productId: string,
+  category?: string,
 ): Promise<ProductDetails | null> => {
-  const categories = ['phones', 'tablets', 'accessories'];
-
   try {
-    for (const category of categories) {
+    if (category) {
       const response = await fetch(`${BASE_PATH}/api/${category}.json`);
 
-      if (!response.ok) {
-        continue;
+      if (response.ok) {
+        const products: ProductDetails[] = await response.json();
+        const found = products.find(p => p.id === productId);
+
+        if (found) {
+          return found;
+        }
       }
 
-      const products: ProductDetails[] = await response.json();
-      const found = products.find(p => p.id === productId);
+      return null;
+    }
+
+    const categories = ['phones', 'tablets', 'accessories'];
+    const fetchPromises = categories.map(cat =>
+      fetch(`${BASE_PATH}/api/${cat}.json`)
+        .then(res => (res.ok ? res.json() : []))
+        .catch(() => []),
+    );
+
+    const allCategoriesData = await Promise.all(fetchPromises);
+
+    for (const products of allCategoriesData) {
+      const found = products.find((p: ProductDetails) => p.id === productId);
 
       if (found) {
         return found;
@@ -57,4 +67,16 @@ export const getProductById = async (
     console.error('API Error:', error);
     throw new Error('Network error or invalid JSON');
   }
+};
+
+export const getCategoryDetailsArray = async (
+  category: string,
+): Promise<ProductDetails[]> => {
+  const response = await fetch(`${BASE_PATH}/api/${category}.json`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${category}.json`);
+  }
+
+  return response.json();
 };

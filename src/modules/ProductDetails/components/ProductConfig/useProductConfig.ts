@@ -1,8 +1,21 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ProductDetails } from '../../../../types/ProductDetails';
 import { COLOR_MAP } from '../../../shared/constants/colors';
 
+const BASE_PATH = import.meta.env.BASE_URL;
+
 export const useProductConfig = (product: ProductDetails) => {
+  const [availableIds, setAvailableIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch(`${BASE_PATH}/api/${product.category}.json`)
+      .then(res => res.json())
+      .then((data: ProductDetails[]) => {
+        setAvailableIds(data.map(p => p.id));
+      })
+      .catch(() => setAvailableIds([]));
+  }, [product.category]);
+
   const getProductLink = useCallback(
     (newCapacity: string, newColor: string) => {
       const formattedCapacity = newCapacity.toLowerCase().replace(/\s+/g, '');
@@ -22,5 +35,6 @@ export const useProductConfig = (product: ProductDetails) => {
   return {
     getProductLink,
     getColorHex,
+    availableIds,
   };
 };

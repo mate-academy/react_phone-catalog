@@ -1,6 +1,18 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
+.page {
+  margin-bottom: $spacing-xxl;
+
+  @include on-tablet {
+    margin-bottom: $spacing-3xl;
+  }
+
+  @include on-desktop {
+    margin-bottom: $spacing-4xl;
+  }
+}
+
 .title {
   @include page-title;
 
@@ -50,18 +62,6 @@
   @include section-title-bordered;
 
   margin-bottom: 30px;
-}
-
-.productSuggestions {
-  margin-bottom: $spacing-xxl;
-
-  @include on-tablet {
-    margin-bottom: $spacing-3xl;
-  }
-
-  @include on-desktop {
-    margin-bottom: $spacing-4xl;
-  }
 }
 
 .statusContainer {

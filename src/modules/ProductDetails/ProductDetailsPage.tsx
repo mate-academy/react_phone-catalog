@@ -28,8 +28,8 @@ export const ProductDetailsPage: React.FC = () => {
       <Breadcrumbs />
       <BackButton />
 
-      <div className={styles.product}>
-        <h2 className={styles.title}>{product.name}</h2>
+      <div>
+        <h1 className={styles.title}>{product.name}</h1>
 
         <div className={styles.productMain}>
           <ProductGallery images={product.images} />
@@ -39,16 +39,14 @@ export const ProductDetailsPage: React.FC = () => {
         <div className={styles.productDetails}>
           <ProductAbout description={product.description} />
 
-          <div className={styles.productTechSpecs}>
+          <div>
             <h2 className={styles.techSpecsTitle}>Tech specs</h2>
             <TechSpecs product={product} variant="full" />
           </div>
         </div>
       </div>
 
-      <div className={styles.productSuggestions}>
-        <ProductSlider title="You may also like" products={suggestedProducts} />
-      </div>
+      <ProductSlider title="You may also like" products={suggestedProducts} />
     </div>
   );
 };

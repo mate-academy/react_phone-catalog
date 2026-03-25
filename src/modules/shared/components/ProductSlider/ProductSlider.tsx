@@ -38,13 +38,12 @@ export const ProductSlider: React.FC<Props> = ({
       <div className={styles.header}>
         <SectionTitle>{title}</SectionTitle>
         <div className={styles.navigation}>
-          {/* Присваиваем кнопкам уникальные ID */}
-          <button id={prevBtnId} className={styles.navBtn}>
+          <button type="button" id={prevBtnId} className={styles.navBtn}>
             <span className={classNames(styles.separator, 'icon icon--left')}>
               <ArrowUpIcon />
             </span>
           </button>
-          <button id={nextBtnId} className={styles.navBtn}>
+          <button type="button" id={nextBtnId} className={styles.navBtn}>
             <span className={classNames(styles.separator, 'icon icon--right')}>
               <ArrowUpIcon />
             </span>

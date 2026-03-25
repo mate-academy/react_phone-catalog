@@ -25,12 +25,22 @@ export const Footer: React.FC = () => {
           >
             Github
           </a>
-          <Link to="/contacts" className={styles.nav__link}>
+          <a
+            href="https://github.com/1umamaster"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.nav__link}
+          >
             Contacts
-          </Link>
-          <Link to="/rights" className={styles.nav__link}>
+          </a>
+          <a
+            href="https://www.un.org/sites/un2.un.org/files/2021/03/udhr.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.nav__link}
+          >
             Rights
-          </Link>
+          </a>
         </nav>
 
         <div className={styles.backToTopWrapper}>

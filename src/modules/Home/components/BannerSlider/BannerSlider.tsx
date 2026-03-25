@@ -24,6 +24,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
     <div className={styles.container}>
       <div className={styles.mainRow}>
         <button
+          type="button"
           className={classNames(styles.button, styles.buttonPrev)}
           onClick={handlePrev}
           aria-label="Previous slide"
@@ -56,6 +57,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
         </div>
 
         <button
+          type="button"
           className={classNames(styles.button, styles.buttonNext)}
           onClick={handleNext}
           aria-label="Next slide"
@@ -70,6 +72,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
         {banners.map((banner, index) => (
           <button
             key={banner.img}
+            type="button"
             className={classNames(styles.dot, {
               [styles.dotActive]: index === currentIndex,
             })}

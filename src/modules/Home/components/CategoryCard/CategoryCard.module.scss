@@ -1,19 +1,6 @@
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
-.card {
-  display: block;
-  text-decoration: none;
-  cursor: pointer;
-  color: inherit;
-
-  &:hover {
-    img {
-      transform: scale(1.05);
-    }
-  }
-}
-
 .imageWrapper {
   aspect-ratio: 1 / 1;
   background-color: $c-elements;
@@ -26,6 +13,19 @@
     height: 100%;
     object-fit: scale-down;
     transition: $transition-transform;
+  }
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
   }
 }
 

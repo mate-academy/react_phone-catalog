@@ -12,7 +12,7 @@ export const NotFoundPage = () => {
       <h1 className={styles.title}>Page not found</h1>
       <p className={styles.description}>
         We couldn&apos;t find this page. The link might be broken, or the page
-        have been removed.
+        has been removed.
       </p>
       <Link to="/" className={styles.button}>
         Go to Home Page

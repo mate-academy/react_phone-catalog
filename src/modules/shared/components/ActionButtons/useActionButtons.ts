@@ -1,11 +1,10 @@
-import { useOutletContext, useNavigate } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import { ContextProps } from '../../../../types/ContextProps';
 import { Product } from '../../../../types/Product';
 import { ProductDetails } from '../../../../types/ProductDetails';
 
 export const useActionButtons = (product: Product | ProductDetails) => {
-  const navigate = useNavigate();
-  const { favorites, toggleFavorite, cart, addToCart } =
+  const { favorites, toggleFavorite, cart, addToCart, removeFromCart } =
     useOutletContext<ContextProps>();
 
   const targetId = 'itemId' in product ? product.itemId : product.id;
@@ -24,7 +23,7 @@ export const useActionButtons = (product: Product | ProductDetails) => {
     e.stopPropagation();
 
     if (isInCart) {
-      navigate('/cart');
+      removeFromCart(targetId);
     } else {
       addToCart(targetId);
     }

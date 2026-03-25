@@ -6,7 +6,11 @@ export const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate(-1)} className={styles.backButton}>
+    <button
+      type="button"
+      onClick={() => navigate(-1)}
+      className={styles.backButton}
+    >
       <span className="icon icon--left">
         <ArrowUpIcon />
       </span>
