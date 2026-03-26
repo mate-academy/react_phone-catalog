@@ -4,6 +4,7 @@ import cn from 'classnames';
 import React, { Dispatch, SetStateAction, useContext } from 'react';
 import { FavouritesContext } from '../../contexts/FavouritesContext';
 import { CartContext } from '../../contexts/CartContext';
+import logo from '/img/my/Logo.svg';
 
 type HeaderProps = {
   isMenuOpen: boolean;
@@ -20,11 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className={header.header}>
       <Link to="/" className={header.header__logo}>
-        <img
-          src="./public/img/my/logo.svg"
-          alt=""
-          className={header.header__logo__img}
-        />
+        <img src={logo} alt="" className={header.header__logo__img} />
       </Link>
       <nav className={header.nav}>
         <ul className={header.nav__list}>
