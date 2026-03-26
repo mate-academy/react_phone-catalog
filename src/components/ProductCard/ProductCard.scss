@@ -11,17 +11,6 @@
   box-sizing: border-box;
   width: 100%;
 
-
-    @include mobile {
-    width: 223px;
-    height: 375px;
-  }
-
-   @include tablet {
-    width: 100%;
-    height: 100%;
-  }
-
   &::-webkit-scrollbar {
     display: none;
   }

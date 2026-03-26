@@ -182,13 +182,7 @@ h2 {
   @include mobile {
     display: flex;
     overflow-x: auto;
-    // Використовуємо calc для точного виходу за межі контейнера сторінки
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
 
-    // Додаємо відступи всередині, щоб перша і остання картки не липли до країв екрану
-    padding: 0 16px 16px 16px;
     gap: 16px;
 
     scroll-snap-type: x mandatory;

@@ -35,25 +35,30 @@
 
   // 4. СІТКА ТОВАРІВ
   .products-grid {
-    grid-column: 1 / -1; // ОБОВ'ЯЗКОВО: займає всі 24 колонки лейауту
-
-    // Тепер всередині цієї секції створюємо власну сітку для карток
+    grid-column: 1 / -1;
     display: grid;
-    gap: 40px 16px;
-    margin-bottom: 80px;
-
-    // Налаштовуємо кількість карток у рядку
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 80px;
 
     @include tablet {
       grid-template-columns: repeat(3, 1fr);
       gap: 32px 16px;
+      margin-bottom: 64px;
     }
 
     @include mobile {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 16px;
       margin-bottom: 56px;
+      gap: 40px 16px;
+      justify-items: center;
     }
+
+    .product-card {
+      width: 100%;
+      height: 100%;
+    }
+
+
   }
 }
