@@ -102,9 +102,12 @@
 }
 
 .pagination {
+  justify-content: center;
+  align-items: center;
   margin-top: 8px;
   justify-self: center;
   display: flex;
+  width: 100%;
 
   &__point {
     display: flex;
