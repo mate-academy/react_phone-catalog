@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import select from './Select.module.scss';
 import { useSearchParams, useLocation } from 'react-router-dom';
+import arrow from '/img/my/breadcrumbs/ArrowRight.svg';
 
 type Props = {
   data: {
@@ -43,17 +44,9 @@ export const Select: React.FC<Props> = ({
         >
           {selectedOption}
           {isOpen ? (
-            <img
-              className={select.select__img}
-              src="../../../../../public/img/my/breadcrumbs/ArrowRight.svg"
-              alt="ArrowDown"
-            />
+            <img className={select.select__img} src={arrow} alt="ArrowDown" />
           ) : (
-            <img
-              className={select.select__imgUp}
-              src="../../../../../public/img/my/breadcrumbs/ArrowRight.svg"
-              alt="ArrowDown"
-            />
+            <img className={select.select__imgUp} src={arrow} alt="ArrowDown" />
           )}
         </button>
         {isOpen && (

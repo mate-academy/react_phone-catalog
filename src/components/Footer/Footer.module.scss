@@ -31,7 +31,8 @@
 
     @include onMobile {
       grid-column: 1 / -1;
-      margin-inline: 16px
+      margin-inline: 16px;
+      margin-bottom: 32px;
     }
   }
 
@@ -66,13 +67,18 @@
     border: none;
 
     @include onTablet {
-      grid-column: 9 / -1;
+      grid-column: 10 / -1;
 
     }
 
     @include onMobile {
       grid-column: 1 / -1;
-      margin-inline: 16px
+      margin-inline: 16px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-position: right 130px center;
     }
 
     &:hover {

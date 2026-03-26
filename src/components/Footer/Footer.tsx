@@ -1,16 +1,13 @@
 import footer from './Footer.module.scss';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '/img/my/Logo.svg';
 
 export const Footer = () => {
   return (
     <footer className={footer.footer}>
       <div className={footer.footer__content}>
         <Link to="/" className={footer.footer__logo}>
-          <img
-            src="/public/img/my/logo.svg"
-            alt=""
-            className={footer.footer__logo__img}
-          />
+          <img src={logo} alt="" className={footer.footer__logo__img} />
         </Link>
         <nav className={footer.footer__nav}>
           <ul className={footer.footer__nav__list}>
