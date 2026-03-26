@@ -2,6 +2,8 @@
 @import '../../assets/styles/variables';
 
 .section {
+  overflow-x: hidden;
+
   @include on-tablet {
     margin-top: -8px;
   }
@@ -9,8 +11,6 @@
   @include on-desktop {
     margin-top: -32px;
   }
-
-  overflow-x: hidden;
 }
 
 .page {

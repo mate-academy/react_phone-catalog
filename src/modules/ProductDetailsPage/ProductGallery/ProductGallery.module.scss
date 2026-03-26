@@ -57,12 +57,12 @@
 
   padding: 4px;
 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 
   @include on-tablet {
     flex-direction: column;
