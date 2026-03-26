@@ -1,0 +1,16 @@
+.breadcrumbs{
+  display: grid;
+  grid-column: 1 / -1;
+
+  margin-top: 24px;
+
+  ol{
+    display: flex;
+    gap: 8px;
+    list-style: none
+  }
+
+  @media (max-width: 639px) {
+    margin: 24px 16px 0;
+  }
+}

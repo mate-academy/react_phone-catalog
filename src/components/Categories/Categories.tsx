@@ -14,7 +14,7 @@ export const Categories = ({
   tabletLength,
   phoneLength,
   accessoriesLength,
-}) => {
+}: Props) => {
   return (
     <>
       <div className={styles.title}>Shop by category</div>

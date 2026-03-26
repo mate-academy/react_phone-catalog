@@ -32,6 +32,16 @@ export const ProductCard = ({ product, discount }: Props) => {
   const [liked, setLiked] = useState(false);
   const [added, setAdded] = useState(false);
 
+  // ✅ УНІВЕРСАЛЬНА ЛОГІКА (ФОЛБЕКИ)
+  // Якщо є масив images - беремо першу картинку з нього. Якщо ні - беремо старе поле image.
+  const displayImage = product.images?.[0] || product.image;
+
+  // Якщо є priceDiscount - беремо його, якщо ні - беремо price.
+  const currentPrice = product.priceDiscount || product.price;
+
+  // Те ж саме для повної ціни
+  const oldPrice = product.priceRegular || product.fullPrice;
+
   const handleAdd = () => {
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
@@ -40,8 +50,9 @@ export const ProductCard = ({ product, discount }: Props) => {
   return (
     <div className={styles['product-card']}>
       <div className={styles['card-image-wrap']}>
+        {/* Використовуємо нашу універсальну змінну для картинки */}
         <img
-          src={product.image}
+          src={displayImage}
           alt={`${product.name} ${product.color}`}
           className={styles['card-image']}
           onError={e => {
@@ -53,15 +64,13 @@ export const ProductCard = ({ product, discount }: Props) => {
         />
       </div>
       <div className={styles['card-body']}>
-        <h3 className={styles['card-title']}>
-          {product.name} {product.color}
-        </h3>
+        <h3 className={styles['card-title']}>{product.name}</h3>
+
+        {/* Використовуємо наші універсальні змінні для цін */}
         <p className={styles['card-price']}>
-          ${product.price}
-          {discount && (
-            <span className={styles['card-discount']}>
-              ${product.fullPrice}
-            </span>
+          ${currentPrice}
+          {discount && oldPrice && (
+            <span className={styles['card-discount']}>${oldPrice}</span>
           )}
         </p>
 
@@ -81,7 +90,6 @@ export const ProductCard = ({ product, discount }: Props) => {
         </div>
 
         <div className={styles['card-actions']}>
-          {/* ✅ Правильно склеєний статичний та динамічний клас з модулів */}
           <button
             className={`${styles['btn-add']} ${added ? styles.added : ''}`}
             onClick={handleAdd}

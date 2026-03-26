@@ -7,18 +7,27 @@ import ArrowLeft from '../../assets/Icons/Arrow_left.svg';
 import ArrowRight from '../../assets/Icons/Arrow_right.svg';
 
 export interface Product {
-  id: number;
-  category: string;
-  itemId: string;
+  id: string | number;
+  itemId?: string;
   name: string;
-  fullPrice: number;
-  price: number;
+
+  // Старі поля (з якими ти працював раніше)
+  price?: number;
+  fullPrice?: number;
+  image?: string;
+  category?: string;
+
+  // Нові поля (з якими ти працюєш зараз)
+  priceDiscount?: number;
+  priceRegular?: number;
+  images?: string[];
+
+  // Спільні поля
   screen: string;
   capacity: string;
   color: string;
   ram: string;
-  year: number;
-  image: string;
+  year: string;
 }
 
 type Props = {
