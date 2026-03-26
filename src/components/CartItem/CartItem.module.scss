@@ -92,6 +92,7 @@
 
     &__value {
       @include font-body;
+
       color: $primary-color;
 
       width: 24px;

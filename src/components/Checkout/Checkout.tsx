@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './Checkout.module.scss';
 import { useCart } from '../../context/CartContext';
-
-export const Checkout: React.FC = () => {
+type Props = {
+  handleCheckout: () => void;
+};
+export const Checkout: React.FC<Props> = ({ handleCheckout }) => {
   const { totalCount, totalPrice } = useCart();
 
   return (
@@ -14,7 +16,9 @@ export const Checkout: React.FC = () => {
         </span>
       </div>
       <div className={styles.checOut__divider} />
-      <button className={styles.checOut__btnBy}>Checkout</button>
+      <button className={styles.checOut__btnBy} onClick={handleCheckout}>
+        Checkout
+      </button>
     </div>
   );
 };

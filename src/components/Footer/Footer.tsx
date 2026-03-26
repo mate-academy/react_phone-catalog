@@ -10,17 +10,32 @@ export const Footer = () => {
         />
         <ul className={styles.footer__list}>
           <li className={styles.footer__item}>
-            <a className={styles.footer__link} href="#">
+            <a
+              className={styles.footer__link}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/mate-academy/react_phone-catalog"
+            >
               Github
             </a>
           </li>
           <li className={styles.footer__item}>
-            <a className={styles.footer__link} href="#">
+            <a
+              className={styles.footer__link}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="#"
+            >
               Contacts
             </a>
           </li>
           <li className={styles.footer__item}>
-            <a className={styles.footer__link} href="#">
+            <a
+              className={styles.footer__link}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="#"
+            >
               rights
             </a>
           </li>

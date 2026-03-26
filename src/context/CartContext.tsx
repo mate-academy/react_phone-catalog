@@ -14,6 +14,7 @@ type CartContextType = {
   updateQuantity: (itemId: string, quantity: number) => void;
   totalCount: number;
   totalPrice: number;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -34,7 +35,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
-
+  const clearCart = () => setCart([]);
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const totalPrice = cart.reduce(
@@ -89,6 +90,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <CartContext.Provider
       value={{
+        clearCart,
         updateQuantity,
         cart,
         addToCart,

@@ -27,6 +27,8 @@ const CATEGORY_LABELS: Record<string, string> = {
   accessories: 'Accessories',
 };
 
+const normalize = (str: string) => str.toLowerCase().replace(/[\s-]/g, '');
+
 async function fetchDetails(
   category: string,
   productId: string,
@@ -39,7 +41,7 @@ async function fetchDetails(
     items = await getAccessories();
   }
 
-  return items.find(p => p.id === productId) ?? null;
+  return items.find(p => normalize(p.id) === normalize(productId)) ?? null;
 }
 
 export const ProductDetails: React.FC = () => {
@@ -51,17 +53,27 @@ export const ProductDetails: React.FC = () => {
   const [product, setProduct] = useState<AnyDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('null');
+  const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
   const { toggleFavorite, isInFavorites } = useFavorite();
   const { addToCart, isInCart, removeFromCart } = useCart();
 
-  const handleColorChange = (color: string) => {
-    const parts = productId.split('-');
+  const normalizeColor = (color: string) =>
+    color.toLowerCase().replace(/\s+/g, '-');
 
-    parts[parts.length - 1] = color;
-    const newId = parts.join('-');
+  const handleColorChange = (color: string) => {
+    const normalizedColor = normalizeColor(color);
+
+    const currentColorSlug = normalizeColor(selectedColor);
+
+    if (!productId.endsWith(currentColorSlug)) {
+      return;
+    }
+
+    const base = productId.slice(0, -currentColorSlug.length);
+
+    const newId = `${base}${normalizedColor}`;
 
     navigate(`/${category}/${newId}`);
   };

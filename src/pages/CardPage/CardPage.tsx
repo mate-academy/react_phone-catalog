@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BtnBack } from '../../components/BtnBack';
 import { CartItem } from '../../components/CartItem';
 import { Checkout } from '../../components/Checkout';
@@ -5,7 +6,21 @@ import { Checkout } from '../../components/Checkout';
 import { useCart } from '../../context/CartContext';
 import styles from './CardPage.module.scss';
 export const CardPage = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
+  const [ordered, setOrdered] = useState(false);
+
+  const handleCheckout = () => {
+    clearCart();
+    setOrdered(true);
+  };
+
+  if (ordered) {
+    return (
+      <div className={styles.card}>
+        <h1 className={styles.card__empty}>Thanks for your order! 🎉</h1>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.card}>
@@ -29,7 +44,7 @@ export const CardPage = () => {
               ))}
             </div>
 
-            <Checkout />
+            <Checkout handleCheckout={handleCheckout} />
           </div>
         </>
       )}
