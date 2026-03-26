@@ -203,6 +203,7 @@ export const HomePage: React.FC = () => {
             currentIndex={currentNewProductIndex}
             handlePrev={handlePrevNewProduct}
             handleNext={handleNextNewProduct}
+            skipDiscount="true"
           >
             Brand new models
           </ProductsSlider>

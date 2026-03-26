@@ -11,6 +11,7 @@ type ProductsSliderProps = {
   handlePrev: () => void;
   handleNext: () => void;
   children?: React.ReactNode;
+  skipDiscount?: boolean;
 };
 
 export const ProductsSlider: React.FC<ProductsSliderProps> = ({
@@ -19,6 +20,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   handlePrev,
   handleNext,
   children,
+  skipDiscount,
 }) => {
   const hasProducts = Array.isArray(products) && products.length > 0;
   const safeIndex = Number.isInteger(currentIndex) ? currentIndex : 0;
@@ -62,6 +64,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
               index={i}
               className={styles.productsSlider__product}
               key={product?.id}
+              skipDiscount={skipDiscount}
             />
           ))}
         </div>

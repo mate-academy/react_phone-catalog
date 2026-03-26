@@ -14,11 +14,13 @@ type ProductCardProps = {
   product: Product;
   index: number;
   className?: string;
+  skipDiscount?: boolean;
 };
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   index,
   className,
+  skipDiscount = false,
 }) => {
   const visibleOnTablet = 2;
   const visibleOnDesktop = 4;
@@ -54,11 +56,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </Link>
         <div className={styles.productPriceRow}>
           <p className={styles.productCard__productPrice}>
-            <span>${product.price}</span>
+            <span>${product.price}&nbsp;</span>
           </p>
-          <p className={styles.productCard__productFullPrice}>
-            $ ${product.fullPrice ? product.fullPrice : null}
-          </p>
+          {!skipDiscount && (
+            <p className={styles.productCard__productFullPrice}>
+              ${product.fullPrice ? product.fullPrice : null}
+            </p>
+          )}
         </div>
         <div className={styles.productCard__productInfoTable}>
           <div className={styles.productFeature}>Screen</div>
