@@ -46,9 +46,9 @@ const TabletsCatalog = () => {
     itemsPerPage === 'all'
       ? sortedProducts
       : sortedProducts.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage,
-      );
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage,
+        );
 
   const pagesPerBlock = 4;
   const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);

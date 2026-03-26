@@ -3,6 +3,8 @@ import './Header.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
 import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -10,38 +12,39 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="header__left">
-          <a href="#" className="logo">
+          <Link to="/" className="logo">
             <img src={Logo} alt="Logo" />
-          </a>
-          <div className="nav menu__nav">
+          </Link>
+
+          <div className="nav">
             <ul className="nav__list">
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <Link to="/" className="nav__link">
                   HOME
-                </a>
+                </Link>
               </li>
               <li className="nav__item">
-                <a href="#phones" className="nav__link">
+                <Link to="/phones" className="nav__link">
                   PHONES
-                </a>
+                </Link>
               </li>
               <li className="nav__item">
-                <a href="#tablets" className="nav__link">
+                <Link to="/tablets" className="nav__link">
                   TABLETS
-                </a>
+                </Link>
               </li>
               <li className="nav__item">
-                <a href="#accessories" className="nav__link">
+                <Link to="/accessories" className="nav__link">
                   ACCESSORIES
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="header__right">
           <div className="top-bar__icons">
-            <a href="" className="icon icon--heart"></a>
-            <a href="" className="icon icon--basket"></a>
+            <Link to="/heart" className="icon icon--heart"></Link>
+            <Link to="/heart" className="icon icon--basket"></Link>
             <button
               className="icon icon--menu"
               onClick={() => setIsMenuOpen(true)}

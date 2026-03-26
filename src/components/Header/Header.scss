@@ -29,13 +29,13 @@
  }
 };
 
-
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 };
+
 .nav {
   display: none;
   align-items: center;
@@ -108,6 +108,7 @@ position: relative;
 .nav__link.is-active:first-child {
   color: black;
 };
+
 .logo {
   display: block;
   transition: transform 0.3s ease;

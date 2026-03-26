@@ -1,5 +1,6 @@
 import './Footer.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const goTop = () => {
@@ -15,9 +16,9 @@ const Footer = () => {
       <footer className="footer">
         <div className="footer__container">
           <div className="footer__left">
-            <a href="#" className="logo">
+            <Link to="/" className="logo">
               <img src={Logo} alt="Logo" />
-            </a>
+            </Link>
           </div>
 
           <div className="footer__center">
