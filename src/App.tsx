@@ -20,9 +20,7 @@ export const App = () => {
   useEffect(() => {
     getProducts()
       .then(setProducts)
-      .catch(error => {
-        throw new Error('Error loading products:', error);
-      });
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
