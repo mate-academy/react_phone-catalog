@@ -14,14 +14,14 @@ export const PictureSlider: React.FC = () => {
   const swiperRef = useRef<SwiperInstance | null>(null);
 
   const images = [
-    { id: 1, link: '/img/my/slider/img_1.jpg', className: PS.slider__picture },
-    { id: 2, link: '/img/my/slider/img_2.jpg', className: PS.slider__picture },
-    { id: 3, link: '/img/my/slider/img_3.jpg', className: PS.slider__picture },
-    { id: 4, link: '/img/my/slider/img_4.jpg', className: PS.slider__picture },
+    { id: 1, link: './img/my/slider/img_1.jpg', className: PS.slider__picture },
+    { id: 2, link: './img/my/slider/img_2.jpg', className: PS.slider__picture },
+    { id: 3, link: './img/my/slider/img_3.jpg', className: PS.slider__picture },
+    { id: 4, link: './img/my/slider/img_4.jpg', className: PS.slider__picture },
     //{ id: 5, link: '/img/my/slider/img_5.jpg', className: PS.slider__picture },
     //{ id: 6, link: '/img/my/slider/img_6.jpg', className: PS.slider__picture },
-    { id: 7, link: '/img/my/slider/img_7.jpg', className: PS.slider__picture },
-    { id: 8, link: '/img/my/slider/img_8.png', className: PS.slider__picture },
+    { id: 7, link: './img/my/slider/img_7.jpg', className: PS.slider__picture },
+    { id: 8, link: './img/my/slider/img_8.png', className: PS.slider__picture },
   ];
 
   return (

@@ -3,7 +3,7 @@ import { Footer } from '../Footer';
 import { Outlet } from 'react-router-dom';
 import layout from './Layout.module.scss';
 import { useEffect, useState } from 'react';
-import { BurgerMenu } from '../Burger menu';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
