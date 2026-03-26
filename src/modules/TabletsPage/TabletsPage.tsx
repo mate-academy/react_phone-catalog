@@ -9,18 +9,18 @@ type Props = {
   onToggleFavourite: (product: Product) => void;
 };
 
-export const PhonesPage: React.FC<Props> = ({
+export const TabletsPage: React.FC<Props> = ({
   products,
   favourites,
   onToggleFavourite,
 }) => {
-  const phones = getProductsByCategory(products, 'phones');
+  const tablets = getProductsByCategory(products, 'tablets');
 
   return (
     <CatalogPageContent
-      title="Mobile phones"
-      breadcrumb="Phones"
-      products={phones}
+      title="Tablets"
+      breadcrumb="Tablets"
+      products={tablets}
       favourites={favourites}
       onToggleFavourite={onToggleFavourite}
     />

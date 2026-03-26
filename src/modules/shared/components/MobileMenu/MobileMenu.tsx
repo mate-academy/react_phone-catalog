@@ -12,7 +12,7 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
       <nav className={styles.mobileNav}>
         <ul className={styles.menuList}>
           <li className={styles.menuItem}>
-            <Link to="/" className={styles.menuLink}>
+            <Link to="/" className={styles.menuLink} onClick={onClose}>
               Home
             </Link>
           </li>
@@ -22,22 +22,26 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
             </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
+            <Link to="/tablets" className={styles.menuLink} onClick={onClose}>
               Tablets
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
+            <Link
+              to="/accessories"
+              className={styles.menuLink}
+              onClick={onClose}
+            >
               Accessories
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
 
       <div className={styles.menuIcons}>
-        <a href="#" className={styles.menuIcon}>
+        <Link to="/favourites" className={styles.menuIcon}>
           <img src="/img/icon/favourites-logo.svg" alt="Favourites" />
-        </a>
+        </Link>
 
         <a href="#" className={styles.menuIcon}>
           <img src="/img/icon/shopping-bag-logo.svg" alt="Shopping bag" />

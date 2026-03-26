@@ -1,0 +1,49 @@
+@use '../../../../styles/mixins.scss';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 64px;
+  padding-inline: 36px;
+
+  @include mixins.on-tablet {
+    margin-top: 40px;
+  }
+
+  @include mixins.on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.pageList {
+    display: flex;
+    gap: 8px;
+}
+
+.arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid rgba(180, 189, 195, 1);
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  color: rgba(49, 50, 55, 1);
+  border: 1px solid rgba(226, 230, 233, 1);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.active {
+  background: rgba(49, 50, 55, 1);
+  color: rgba(255, 255, 255, 1);
+  border-color: rgba(49, 50, 55, 1);
+}

@@ -1,0 +1,8 @@
+@use '../../../../styles/mixins.scss';
+
+.productInfo {
+  @include mixins.on-tablet {
+    flex: 1;
+    min-width: 0;
+  }
+}

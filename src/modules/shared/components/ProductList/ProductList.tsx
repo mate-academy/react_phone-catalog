@@ -4,6 +4,8 @@ import styles from './ProductList.module.scss';
 
 type Props = {
   products: Product[];
+  favourites: Product[];
+  onToggleFavourite: (product: Product) => void;
   currentIndex?: number;
   step?: number;
   showDiscount?: boolean;
@@ -12,6 +14,8 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({
   products,
+  favourites,
+  onToggleFavourite,
   currentIndex,
   step,
   showDiscount = false,
@@ -26,13 +30,19 @@ export const ProductList: React.FC<Props> = ({
           : undefined
       }
     >
-      {products.map(product => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          showDiscount={showDiscount}
-        />
-      ))}
+      {products.map(product => {
+        const isFavourite = favourites.some(item => item.id === product.id);
+
+        return (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onToggleFavourite={onToggleFavourite}
+            isFavourite={isFavourite}
+            showDiscount={showDiscount}
+          />
+        );
+      })}
     </div>
   );
 };

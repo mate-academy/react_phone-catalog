@@ -142,4 +142,12 @@
   border: 1px solid rgba(180, 189, 195, 1);
   background-color: transparent;
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgba(49, 50, 55, 1);
+  }
+}
+
+.favouriteButtonActive {
+  border: 1px solid rgba(226, 230, 233, 1);
 }

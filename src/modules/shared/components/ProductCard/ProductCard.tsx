@@ -1,25 +1,30 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  onToggleFavourite: (product: Product) => void;
+  isFavourite: boolean;
   showDiscount?: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({
   product,
+  onToggleFavourite,
+  isFavourite,
   showDiscount = false,
 }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardContent}>
-        <a href="#" className={styles.imageLink}>
+        <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
           <img
-            src={product.image}
+            src={`/${product.image}`}
             alt={product.name}
             className={styles.image}
           />
-        </a>
+        </Link>
         <div className={styles.titleWrapper}>
           <h3 className={styles.title}>{product.name}</h3>
         </div>
@@ -53,10 +58,20 @@ export const ProductCard: React.FC<Props> = ({
           </button>
           <button
             type="button"
-            className={styles.favouriteButton}
+            className={`${styles.favouriteButton} ${
+              isFavourite ? styles.favouriteButtonActive : ''
+            }`}
             aria-label="Add to favourites"
+            onClick={() => onToggleFavourite(product)}
           >
-            <img src="/img/icon/favourites-logo.svg" alt="" />
+            <img
+              src={
+                isFavourite
+                  ? '/img/icon/favourites-red.svg'
+                  : '/img/icon/favourites-logo.svg'
+              }
+              alt=""
+            />
           </button>
         </div>
       </div>

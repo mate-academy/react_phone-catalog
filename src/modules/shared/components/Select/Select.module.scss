@@ -1,0 +1,32 @@
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.controlLabel { 
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+}
+
+.controlSelect {
+    height: 40px;
+    padding: 0 12px;
+    background-color: #fff;
+    border: 1px solid rgba(180, 189, 195, 1);
+    cursor: pointer;
+    appearance: none;
+    background-image: url('/img/icon/chevron-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: rgba(49, 50, 55, 1);
+}

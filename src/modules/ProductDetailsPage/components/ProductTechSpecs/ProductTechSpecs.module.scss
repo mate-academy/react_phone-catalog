@@ -1,0 +1,56 @@
+@use '../../../../styles/mixins.scss';
+
+.techSpecs {
+    @include mixins.on-desktop {
+        flex-basis: 512px;
+    }
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(226, 230, 233, 1);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(49, 50, 55, 1);
+
+    @include mixins.on-tablet {
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 8px;
+    align-items: start;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+}
+
+.value {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: rgba(49, 50, 55, 1);
+    text-align: right;
+    word-break: break-word;
+}

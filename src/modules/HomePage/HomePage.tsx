@@ -4,8 +4,20 @@ import { Main } from './components/Main';
 
 type Props = {
   products: Product[];
+  favourites: Product[];
+  onToggleFavourite: (product: Product) => void;
 };
 
-export const HomePage: React.FC<Props> = ({ products }) => {
-  return <Main products={products} />;
+export const HomePage: React.FC<Props> = ({
+  products,
+  favourites,
+  onToggleFavourite,
+}) => {
+  return (
+    <Main
+      products={products}
+      favourites={favourites}
+      onToggleFavourite={onToggleFavourite}
+    />
+  );
 };

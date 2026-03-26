@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../../../../types/Product';
+// eslint-disable-next-line max-len
 import { ProductList } from '../../../shared/components/ProductList/ProductList';
 import styles from './ProductSection.module.scss';
 
 type Props = {
   title: string;
   products: Product[];
+  favourites: Product[];
+  onToggleFavourite: (product: Product) => void;
   showDiscount?: boolean;
 };
 
 export const ProductSection: React.FC<Props> = ({
   title,
   products,
+  favourites,
+  onToggleFavourite,
   showDiscount = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,6 +94,8 @@ export const ProductSection: React.FC<Props> = ({
       <div className={styles.sliderWrapper}>
         <ProductList
           products={products}
+          favourites={favourites}
+          onToggleFavourite={onToggleFavourite}
           currentIndex={currentIndex}
           step={step}
           showDiscount={showDiscount}

@@ -42,22 +42,22 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
               </Link>
             </li>
             <li className={styles.navItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link to="/tablets" className={styles.menuLink}>
                 Tablets
-              </a>
+              </Link>
             </li>
             <li className={styles.navItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link to="/accessories" className={styles.menuLink}>
                 Accessories
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
 
         <div className={styles.actions}>
-          <a href="#" className={styles.actionsLink}>
+          <Link to="/favourites" className={styles.actionsLink}>
             <img src="/img/icon/favourites-logo.svg" alt="Favourites" />
-          </a>
+          </Link>
           <a href="#" className={styles.actionsLink}>
             <img src="/img/icon/shopping-bag-logo.svg" alt="Shopping bag" />
           </a>

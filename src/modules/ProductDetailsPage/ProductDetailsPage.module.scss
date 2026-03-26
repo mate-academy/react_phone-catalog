@@ -1,0 +1,100 @@
+@use '../../styles/mixins.scss';
+
+.main {
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        margin-bottom: 80px;
+    }
+}
+
+.back {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    padding-inline: 16px;
+
+    @include mixins.on-tablet {
+        padding-inline: 24px;
+    }
+
+    @include mixins.on-desktop {
+        padding-inline: 32px;
+    }
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+    text-decoration: none;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 32px;
+    padding-inline: 16px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: rgba(49, 50, 55, 1);
+
+    @include mixins.on-tablet {
+        padding-inline: 24px;
+        margin-bottom: 40px;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+    }
+
+    @include mixins.on-desktop {
+        padding-inline: 32px;
+    }
+}
+
+.content {
+    display: block;
+    padding-inline: 16px;
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding-inline: 24px;
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        gap: 64px;
+        padding-inline: 32px;
+        margin-bottom: 109px;
+    }
+}
+
+.detailsSection {
+    display: block;
+    margin-bottom: 56px;
+    padding-inline: 16px;
+
+    @include mixins.on-tablet {
+        padding-inline: 24px;
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        display: flex;
+        gap: 64px;
+        padding-inline: 32px;
+        margin-bottom: 80px;
+    }
+}

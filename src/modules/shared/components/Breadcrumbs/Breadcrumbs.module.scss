@@ -8,9 +8,13 @@
     padding-inline: 16px;
 
     @include mixins.on-tablet {
-        padding-inline: 32px;
+        padding-inline: 24px;
         margin-top: 24px;
         margin-bottom: 40px;
+    }
+
+    @include mixins.on-desktop {
+        padding-inline: 32px;
     }
 }
 
@@ -24,6 +28,17 @@
 }
 
 .currentPage {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+}
+
+.currentProduct {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-weight: 600;
     font-size: 12px;
     line-height: 100%;
