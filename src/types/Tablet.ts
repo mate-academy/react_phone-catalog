@@ -1,6 +1,6 @@
 export type Tablet = {
   id: string;
-  category: string;
+  category: 'tablets';
   namespaceId: string;
   name: string;
   capacityAvailable: CapacityTablet[];

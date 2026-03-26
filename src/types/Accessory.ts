@@ -1,6 +1,6 @@
-export type Phone = {
+export type Accessory = {
   id: string;
-  category: string;
+  category: 'accessories';
   namespaceId: string;
   name: string;
   capacityAvailable: CapacityAccessories[];

@@ -1,13 +1,14 @@
 import './BurgerFooter.scss';
+import { Link } from 'react-router-dom';
 
 const BurgerFooter = () => {
   return (
     <footer className="burger-footer">
       <div className="burger-footer--heart">
-        <a href="" className="burger-footer__icon--heart"></a>
+        <Link to="/heart" className="burger-footer__icon--heart"></Link>
       </div>
       <div className="burger-footer--basket">
-        <a href="" className="burger-footer__icon--basket"></a>
+        <Link to="/basket" className="burger-footer__icon--basket"></Link>
       </div>
     </footer>
   );

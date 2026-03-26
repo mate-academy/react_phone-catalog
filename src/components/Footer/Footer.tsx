@@ -25,26 +25,28 @@ const Footer = () => {
             <div className="nav__footer menu__nav">
               <ul className="footer__list">
                 <li className="footer__item">
-                  <a href="#github" className="footer__link">
+                  <Link to="" className="footer__link">
                     GITHUB
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__item">
-                  <a href="#contacts" className="footer__link">
+                  <Link to="" className="footer__link">
                     CONTACTS
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__item">
-                  <a href="#rights" className="footer__link">
+                  <Link to="" className="footer__link">
                     RIGHTS
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="footer__right">
-            <a className="footer__right--link">Back to top</a>
+            <Link to="" className="footer__right--link">
+              Back to top
+            </Link>
             <button onClick={goTop} className="icon--slider"></button>
           </div>
         </div>

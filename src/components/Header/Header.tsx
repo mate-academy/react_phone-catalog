@@ -44,7 +44,7 @@ const Header = () => {
         <div className="header__right">
           <div className="top-bar__icons">
             <Link to="/heart" className="icon icon--heart"></Link>
-            <Link to="/heart" className="icon icon--basket"></Link>
+            <Link to="/basket" className="icon icon--basket"></Link>
             <button
               className="icon icon--menu"
               onClick={() => setIsMenuOpen(true)}

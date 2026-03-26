@@ -22,3 +22,31 @@ export const getAccessories = (): Promise<Accessory[]> => {
 export const getProducts = (): Promise<Product[]> => {
   return Promise.resolve(products);
 };
+
+export const getProduct = async (
+  category: 'phones' | 'tablets' | 'accessories',
+  itemId: string,
+) => {
+  switch (category) {
+    case 'phones': {
+      const phones = await getPhones();
+
+      return phones.find(p => p.id === itemId);
+    }
+
+    case 'tablets': {
+      const tablets = await getTablets();
+
+      return tablets.find(p => p.id === itemId);
+    }
+
+    case 'accessories': {
+      const accessories = await getAccessories();
+
+      return accessories.find(p => p.id === itemId);
+    }
+
+    default:
+      return undefined;
+  }
+};

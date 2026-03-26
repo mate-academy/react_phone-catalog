@@ -8,6 +8,7 @@ import { getAccessories } from '../../api';
 import { getPhones } from '../../api';
 import { getTablets } from '../../api';
 import Slider from '../Slider/Slider';
+import { Link } from 'react-router-dom';
 
 type Counts = {
   phones: number;
@@ -32,7 +33,7 @@ const Main = () => {
 
   useEffect(() => {
     getCounts().then(data => setCounts(data));
-  });
+  }, []);
 
   return (
     <div className="main">
@@ -43,31 +44,31 @@ const Main = () => {
         <h2 className="second__title">Shop by category</h2>
         <div className="categories">
           <div className="category">
-            <a href="">
+            <Link to="">
               <img src={Phonecategory} alt="" className="category__banner" />
-            </a>
+            </Link>
             <h3 className="category__text">Mobile phones</h3>
             {counts && (
               <p className="category__count">{counts.phones} models</p>
             )}
           </div>
           <div className="category">
-            <a href="">
+            <Link to="">
               <img src={Tabletcategory} alt="" className="category__banner" />
-            </a>
+            </Link>
             <h3 className="category__text">Tablets</h3>
             {counts && (
               <p className="category__count">{counts.tablets} models</p>
             )}
           </div>
           <div className="category">
-            <a href="">
+            <Link to="">
               <img
                 src={Accessorycategory}
                 alt=""
                 className="category__banner"
               />
-            </a>
+            </Link>
             <h3 className="category__text">Accessories</h3>
             {counts && (
               <p className="category__count">{counts.accessories} models</p>

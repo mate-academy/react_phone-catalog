@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../../api';
 import { Product } from '../../types/Product';
 import HomeIcon from '../../../public/img/icons/icon--home.png';
+import { Link } from 'react-router-dom';
 
 const Catalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -62,10 +63,10 @@ const Catalog = () => {
   return (
     <div className="catalog">
       <div className="catalog__top--icons">
-        <a href="#">
+        <Link to="/">
           <img src={HomeIcon} alt="" className="catalog__icon--home" />
-        </a>
-        <a href="" className="catalog__icon--slider--right--gray"></a>
+        </Link>
+        <Link to="" className="catalog__icon--slider--right--gray"></Link>
         <p className="catalog__top--text">Phones</p>
       </div>
       <h1 className="catalog__title">Mobile phones</h1>

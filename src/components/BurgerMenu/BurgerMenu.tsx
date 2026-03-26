@@ -1,6 +1,7 @@
 import './BurgerMenu.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
 import BurgerFooter from './BurgerFooter/BurgerFooter';
+import { Link } from 'react-router-dom';
 
 type BurgerMenuProps = {
   isOpen: boolean;
@@ -11,9 +12,9 @@ const BurgerMenu = ({ isOpen, onClose }: BurgerMenuProps) => {
   return (
     <aside className={`menu page__menu ${isOpen ? 'active' : ''}`} id="menu">
       <div className="top-bar">
-        <a href="#homePage" className="top-bar__logo">
+        <Link to="/" className="top-bar__logo">
           <img src={Logo} alt="NiceGadgets logo" />
-        </a>
+        </Link>
         <button
           onClick={onClose}
           className="top-bar__icon icon--close"
@@ -22,24 +23,24 @@ const BurgerMenu = ({ isOpen, onClose }: BurgerMenuProps) => {
       <div className="menu__content">
         <ul className="menu__list">
           <li className="menu__item">
-            <a href="#" className="menu__link">
+            <Link to="/" className="menu__link">
               Home
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a href="#" className="menu__link">
+            <Link to="/phones" className="menu__link">
               Phones
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a href="#" className="menu__link">
+            <Link to="/tablets" className="menu__link">
               Tablets
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a href="#" className="menu__link">
+            <Link to="/accessories" className="menu__link">
               Accessories
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
