@@ -85,13 +85,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin-top: 64px;
+    gap: 16px;
+    margin-top: 40px;
 
 
-    @include mobile { gap: 4px;  margin-top: 24px; }
+    @include mobile { gap: 16px;  margin-top: 24px; }
 
-    @include tablet { gap: 4px;  margin-top: 40px; }
+    @include tablet { gap: 16px;  margin-top: 40px; }
 
 
     .pagination-list {
@@ -99,7 +99,7 @@
       gap: 8px;
       font-family: $font-main;
 
-      @include mobile { gap: 4px; }
+      @include mobile { gap: 8px; }
     }
 
     .pagination-button,
