@@ -1,0 +1,151 @@
+@import '../../styles/main';
+
+.BM {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - $header-height-mobile-or-tablet);
+
+  @include onMobile {
+    padding-top: $header-height-mobile-or-tablet;
+  }
+  &__content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__nav {
+    margin-top: 24px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.nav {
+  &__list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 27px;
+    letter-spacing: 4%;
+    color: $secondary-text-color;
+
+    &__active {
+      color: $primary-color;
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  border: 1px solid $border-color;
+  margin-top: auto;
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__item {
+    grid-column: span 1;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    background-size: 16px;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 $border-color;
+
+    @include onMobile {
+      height: 64px;
+    }
+
+    &__cart {
+      background-image: url(/public/img/my/Shopping_bag_Cart.svg);
+    }
+
+    &__fav {
+      background-image: url(/public/img/my/Favourites_Heart_Like.svg);
+    }
+
+    &__active {
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+.counter {
+  &__container {
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  &__value {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    background-color: $red-color;
+    border: 1px solid $bg-color;
+    border-radius: 14px;
+    color: $bg-color;
+  }
+}

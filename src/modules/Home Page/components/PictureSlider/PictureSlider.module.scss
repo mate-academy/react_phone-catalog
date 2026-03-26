@@ -1,0 +1,149 @@
+@import '../../../../styles/main';
+
+.allSliderBloc {
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.slider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+
+  &__viewport {
+    width: 100%;
+    max-width: 1104px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__swiper {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__picture {
+    display: block;
+  }
+
+  &__button {
+    height: 100%;
+    width: 32px;
+    z-index: 20;
+    border: 1px solid $icon-color;
+    cursor: pointer;
+    text-decoration: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    transition: border 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onMobile {
+      display: none;
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &__left {
+      left: 0;
+      transform: scaleX(-1);
+      background-image: url(../../../../../public/img/my/Slider_button\ -\ Default_right.svg);
+    }
+
+    &__right {
+      right: 0;
+      background-image: url(../../../../../public/img/my/Slider_button\ -\ Default_right.svg);
+    }
+  }
+}
+
+:global(.swiper) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:global(.swiper-wrapper) {
+  margin: 0 !important;
+  transition-timing-function: linear !important;
+  min-width: 0 !important;
+}
+
+:global(.swiper-slide) {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.pagination {
+  margin-top: 8px;
+  justify-self: center;
+  display: flex;
+
+  &__point {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    box-shadow: none;
+
+    &::after {
+      content: '';
+      width: 14px;
+      height: 4px;
+      background-color: $icon-color;
+    }
+
+    &__active {
+      &::after {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+
+  &__inner {
+    aspect-ratio: 1104 / 400;
+    max-width: 1104px;
+    width: 100%;
+
+    @include onMobile {
+      min-height: 320px;
+    }
+  }
+}

@@ -1,0 +1,165 @@
+@import '../../../../styles/main';
+
+.items {
+  grid-column: span 16;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    grid-column: span 12;
+  }
+
+  @include onMobile {
+    grid-column: span 4;
+  }
+
+  &__item {
+    height: 128px;
+    width: 752px;
+    border: 1px solid $border-color;
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    @include onMobile {
+      height: 160px;
+      width: 100%;
+    }
+  }
+}
+
+.item {
+  &__content {
+    margin: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: start;
+      gap: 16px;
+    }
+  }
+
+  &__leftSide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__RightSide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    @include onMobile {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__name {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 14px;
+    color: $primary-color;
+    line-height: 21px;
+    letter-spacing: 0%;
+    padding-right: 10px;
+  }
+
+  &__img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__remove {
+    width: 16px;
+    height: 16px;
+    background-image: url(/img/my/remove.svg);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: $main-bg-color;
+    cursor: pointer;
+    transition: background-image 0.3s ease-in-out;
+
+    &:hover {
+      background-image: url(/img/my/Close.svg);
+    }
+  }
+
+  &__count {
+    display: flex;
+  }
+
+  &__amount {
+    height: 32px;
+    width: 32px;
+    background-color: $main-bg-color;
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 14px;
+    color: $primary-color;
+    line-height: 21px;
+    letter-spacing: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    margin-left: 4px;
+    margin-right: 4px;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $border-color;
+    background-color: $main-bg-color;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: center;
+    cursor: pointer;
+
+    &__disabled {
+      pointer-events: none;
+      background-image: url(/public/img/my/Minus.svg);
+    }
+
+    &__minus {
+      background-image: url(/public/img/my/Minus_a.svg);
+
+      &__disabled {
+        pointer-events: none;
+        background-image: url(/public/img/my/Minus.svg);
+      }
+    }
+
+    &__plus {
+      background-image: url(/public/img/my/Plus.svg);
+    }
+  }
+
+  &__total {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 22px;
+    width: 80px;
+    color: $primary-color;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}

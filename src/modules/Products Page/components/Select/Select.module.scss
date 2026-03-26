@@ -1,0 +1,101 @@
+@import '../../../../styles/main';
+
+.select {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    font-family: Mont;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary-text-color;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    font-family: Mont, sans-serif;
+    width: 176px;
+    height: 40px;
+    padding: 10px 12px;
+    align-items: center;
+    color: $primary-color;
+    border: 1px solid $border-color;
+    background-color: $bg-color;
+    cursor: pointer;
+
+    @include onMobile {
+      width: 136px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    right: 16px;
+    transform: rotate(90deg);
+  }
+
+  &__imgUp {
+    position: absolute;
+    right: 16px;
+    transform: rotate(-90deg);
+  }
+  &__dropdown {
+    margin-top: 4px;
+    position: absolute;
+    z-index: 10;
+    border: 1px solid $border-color;
+    width: 176px;
+    background-color: $bg-color;
+    box-sizing: border-box;
+
+    @include onMobile {
+      width: 136px;
+    }
+  }
+
+  &__list {
+    margin: 8px;
+  }
+
+  &__item {
+    text-decoration: none;
+    display: flex;
+    height: 32px;
+  }
+
+  &__option {
+    position: relative;
+    display: flex;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    font-family: Mont, sans-serif;
+    width: 176px;
+    height: 32px;
+    align-items: center;
+    color: $secondary-text-color;
+    border: none;
+    background-color: $bg-color;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    @include onMobile {
+      width: 136px;
+    }
+  }
+}

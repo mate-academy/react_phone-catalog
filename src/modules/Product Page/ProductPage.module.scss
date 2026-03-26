@@ -1,0 +1,222 @@
+@import '../../styles/main';
+
+.product {
+  margin-bottom: 80px;
+  padding-top: $header-height-desktop;
+
+  @include onTablet {
+    padding-top: $header-height-mobile-or-tablet;
+    margin-bottom: 64px;
+  }
+
+  @include onMobile {
+    padding-top: $header-height-mobile-or-tablet;
+    margin-bottom: 56px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__back {
+    display: inline-flex;
+    width: 66px;
+    height: 16px;
+    font-family: Mont;
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-text-color;
+    text-decoration: none;
+    justify-content: center;
+    letter-spacing: 0%;
+    padding-left: 8px;
+
+    background-image: url(/public/img/my/Chevron_Arrow_Right.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 16px;
+    cursor: pointer;
+    border: none;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__main {
+    margin-top: 16px;
+
+    @include pageGrid;
+
+    row-gap: 40px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    font-family: Mont;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $primary-color;
+  }
+
+  &__bottom {
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+    @include pageGrid;
+
+    @include onTablet {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+
+    @include onMobile {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__about {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      grid-column: 1 / -1;
+    }
+
+    @include onMobile {
+      grid-column: 1 / -1;
+    }
+
+    &__title {
+      font-family: Mont;
+      font-weight: 800;
+      font-size: 22px;
+      color: $primary-color;
+      line-height: 140%;
+      letter-spacing: 0%;
+
+      @include onMobile {
+        font-family: Mont;
+        font-weight: 700;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      margin-top: 16px;
+      gap: 32px;
+    }
+
+    &__line {
+      width: 100%;
+      height: 1px;
+      background-color: $border-color;
+    }
+
+    &__article {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__subtitle {
+      font-family: Mont;
+      font-weight: 700;
+      font-size: 20px;
+      color: $primary-color;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin-bottom: 16px;
+
+      @include onMobile {
+        font-family: Mont;
+        font-weight: 700;
+        font-style: SemiBold;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+    }
+
+    &__desc {
+      font-family: Mont;
+      font-weight: 500;
+      font-size: 14px;
+      color: $secondary-text-color;
+      line-height: 21px;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__specs {
+    grid-column: span 11 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      grid-column: 1 / -1;
+      margin-top: 64px;
+    }
+
+    @include onMobile {
+      grid-column: span 4;
+      margin-top: 56px;
+    }
+  }
+}
+
+.specs {
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $border-color;
+    margin-top: 16px;
+    margin-bottom: 25px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__article {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__subtitle {
+    font-family: Mont;
+    font-weight: 500;
+    font-size: 14px;
+    color: $secondary-text-color;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+
+  &__desc {
+    font-family: Mont;
+    font-weight: 500;
+    font-size: 14px;
+    color: $primary-color;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}

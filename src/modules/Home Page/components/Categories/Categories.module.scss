@@ -1,0 +1,112 @@
+@import '../../../../styles/main';
+
+.cat {
+  width: 100%;
+
+  &__content {
+    @include pageGrid;
+
+    row-gap: 24px;
+    grid-auto-flow: dense;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $primary-color;
+  }
+
+  &__link {
+    grid-column: span 8;
+    display: grid;
+    gap: 24px;
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__category {
+    height: 368px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+
+    &--phones {
+      background-color: #6d6474;
+
+      @include onTablet {
+        height: 187px;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-image: url(/public/img/image-6.svg);
+      }
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+
+      @include onTablet {
+        height: 187px;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-image: url(/public/img/image-5.png);
+      }
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+
+      @include onTablet {
+        height: 187px;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-image: url(/public/img/image-7.png);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+    }
+
+    &__title {
+      font-family: Mont;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: 0%;
+      color: $primary-color;
+      margin: 0;
+    }
+
+    &__amount {
+      margin: 0;
+      font-family: Mont;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: $secondary-text-color;
+    }
+  }
+}

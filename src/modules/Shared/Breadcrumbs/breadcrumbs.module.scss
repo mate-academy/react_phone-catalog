@@ -1,0 +1,54 @@
+@import '../../../styles/main';
+
+.nav {
+  margin-top: 24px;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    height: 16px;
+    margin: 0;
+  }
+
+  &__item {
+    align-items: center;
+
+  }
+
+  &__arrow {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  &__home {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    background-image: url(../../../../public/img/my/breadcrumbs/Home.svg);
+    background-size: 16px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__text {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0%;
+    color: $secondary-text-color;
+  }
+
+  &__link {
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $primary-color;
+    text-decoration: none;
+    align-items: center;
+    align-self: center;
+  }
+}

@@ -1,0 +1,50 @@
+@import '../../styles/main';
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(
+    100vh - $header-height-desktop - $footer-height-desktop-or-tablet
+  );
+  text-align: center;
+  padding-top: $header-height-desktop;
+
+  @include onTablet {
+    padding-top: $header-height-mobile-or-tablet;
+  }
+
+  @include onMobile {
+    padding-top: $header-height-mobile-or-tablet;
+  }
+
+  &__title {
+    font-family: Mont;
+    color: $secondary-text-color;
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__image {
+    background-image: url(/public/img/page-not-found.png);
+    width: 360px;
+    height: 360px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include onTablet {
+      width: 240px;
+      height: 240px;
+    }
+
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
