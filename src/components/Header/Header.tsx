@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className={header.header}>
       <Link to="/" className={header.header__logo}>
         <img
-          src="public/img/my/logo.svg"
+          src="./public/img/my/logo.svg"
           alt=""
           className={header.header__logo__img}
         />

@@ -2,7 +2,7 @@ import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { HomePage } from './modules/Home Page';
+import { HomePage } from './modules/HomePage';
 import { Product } from './types/Product';
 import { ProductDetails } from './types/ProductDetails';
 import { useContext, useEffect, useState } from 'react';
