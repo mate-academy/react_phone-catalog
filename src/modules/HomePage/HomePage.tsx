@@ -21,7 +21,7 @@ export const HomePage: React.FC<Props> = ({ products, loading }) => {
       <div className="container">
         <div className={HP.home__content}>
           <h1 className={HP['home__sr-only']}>Product Catalog</h1>
-          <h2 className={HP.home__title}>Welcome to Nice Gadgets store!+++</h2>
+          <h2 className={HP.home__title}>Welcome to Nice Gadgets store!</h2>
           <div className={HP.home__mainContent}>
             <PictureSlider />
 
