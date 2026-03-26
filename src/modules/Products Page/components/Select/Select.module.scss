@@ -1,10 +1,19 @@
 @import '../../../../styles/main';
 
 .select {
+
   &__content {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    @include onMobile {
+      width: 100%;
+    }
+  }
+
+  &__mainContent {
+    width: 100%;
+    position: relative;
   }
 
   &__title {
@@ -17,7 +26,6 @@
   }
 
   &__button {
-    position: relative;
     display: flex;
     font-weight: 400;
     font-size: 14px;
@@ -34,7 +42,8 @@
     cursor: pointer;
 
     @include onMobile {
-      width: 136px;
+      width: 100%;
+      flex: none;
     }
   }
 
@@ -59,7 +68,7 @@
     box-sizing: border-box;
 
     @include onMobile {
-      width: 136px;
+      width: 100%;
     }
   }
 
@@ -95,7 +104,7 @@
     }
 
     @include onMobile {
-      width: 136px;
+      width: 100%;
     }
   }
 }
