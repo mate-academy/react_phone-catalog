@@ -36,9 +36,7 @@ export const HomePage = () => {
 
         setHotPriceProducts(sortedByDiscount);
       })
-      .catch(() => {
-        throw new Error(`Can't load products`);
-      })
+      .catch(() => {})
       .finally(() => setIsLoading(false));
   }, []);
 
