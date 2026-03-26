@@ -1,0 +1,122 @@
+@use 'variables' as *;
+
+/// Applies styles from the given breakpoint and up (mobile-first).
+/// Example: @include media-up($breakpoint-tablet) { ... }
+@mixin media-up($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+/// Applies styles below the given breakpoint (exclusive).
+/// Uses -1px to avoid overlap with media-up at the same value.
+@mixin media-down($breakpoint) {
+  @media (max-width: ($breakpoint - 1px)) {
+    @content;
+  }
+}
+
+/// Applies styles within a range: from $from to $to (exclusive).
+/// Useful for targeting only a specific viewport segment.
+@mixin media-between($from, $to) {
+  @media (min-width: $from) and (max-width: ($to - 1px)) {
+    @content;
+  }
+}
+
+/// Main layout grid based on design specs:
+/// mobile: 4 columns, tablet: 12, desktop: 24 (fixed container).
+/// Use on parent layout wrappers/sections.
+@mixin layout-grid {
+  display: grid;
+  column-gap: $grid-gutter;
+  grid-template-columns: repeat($grid-columns-mobile, minmax(0, 1fr));
+  padding-inline: $grid-padding-mobile;
+
+  @include media-up($breakpoint-tablet) {
+    grid-template-columns: repeat($grid-columns-tablet, minmax(0, 1fr));
+    padding-inline: $grid-padding-tablet;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    width: $grid-desktop-container;
+    margin-inline: auto;
+    padding-inline: 0;
+    grid-template-columns: repeat($grid-columns-desktop, $grid-desktop-column-width);
+  }
+}
+
+/// Controls how many columns an item spans per breakpoint.
+/// Use on children inside a layout-grid container.
+/// tablet/desktop fallback to the previous value if omitted.
+@mixin grid-span($mobile, $tablet: $mobile, $desktop: $tablet) {
+  grid-column: span $mobile;
+
+  @include media-up($breakpoint-tablet) {
+    grid-column: span $tablet;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    grid-column: span $desktop;
+  }
+}
+
+/// Controls the starting grid column per breakpoint.
+/// Combine with grid-span for precise positioning.
+@mixin grid-start($mobile, $tablet: $mobile, $desktop: $tablet) {
+  grid-column-start: $mobile;
+
+  @include media-up($breakpoint-tablet) {
+    grid-column-start: $tablet;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    grid-column-start: $desktop;
+  }
+}
+
+/// Quick flex centering on both axes.
+/// Great for icons, buttons, loaders, empty states.
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Flex layout with space-between and vertical centering.
+/// Common for header rows, toolbars, card tops.
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/// Content container similar to Bootstrap container:
+/// max-width + centered + responsive horizontal paddings.
+@mixin content-width {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding: 0 $content-padding-mobile;
+
+  @include media-up($breakpoint-tablet) {
+    padding: 0 $content-padding-tablet;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    padding: 0 $content-padding-desktop;
+  }
+}
+
+/// Visually hides an element while keeping it accessible
+/// for screen readers (a11y helper).
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
