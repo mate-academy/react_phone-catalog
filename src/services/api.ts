@@ -1,7 +1,7 @@
 import { ProductDetails } from '../types/ProductDetails';
 import { Product } from '../types/Product';
 
-const API_URL = `${import.meta.env.BASE_URL}api`;
+const API_URL = './api';
 
 function wait(delay: number) {
   return new Promise(resolve => {

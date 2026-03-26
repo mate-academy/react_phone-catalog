@@ -7,7 +7,6 @@ import { Product } from '../../../types/Product';
 import { ProductCard } from '../Product card/ProductCard';
 import cn from 'classnames';
 
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
