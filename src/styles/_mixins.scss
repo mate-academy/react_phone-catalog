@@ -15,3 +15,60 @@
 // @include respond-to('tablet')
 // @include respond-to('mobile')
 // @include respond-to(900px)
+
+@mixin title {
+  color: $color-primary;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -1%;
+
+  @include respond-to('mobile') {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+// @include title();
+
+@mixin subtitle {
+  color: $color-primary;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+
+  @include respond-to('mobile') {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+@mixin arrow-icon-style() {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $border-icons;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+
+  &:hover:not(:disabled) {
+    background-color: $bg-color-hover;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    border-color: $border-color;
+    color: $border-icons;
+    opacity: 0.4;
+  }
+
+  svg {
+    stroke: $color-primary;
+  }
+}
+// @include arrow-icon-style();
+

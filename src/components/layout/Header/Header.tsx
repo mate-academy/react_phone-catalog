@@ -75,7 +75,7 @@ export const Header = () => {
         </NavLink>
         <button
           className={styles.burgerBtn}
-          onClick={() => setIsMenuOpen((prev) => !prev)}
+          onClick={() => setIsMenuOpen(prev => !prev)}
         >
           <div className={styles.burgerBox}>
             <motion.span

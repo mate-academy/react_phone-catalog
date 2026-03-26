@@ -217,3 +217,17 @@ Add the correct display in Chrome and Safari.
 summary {
   display: list-item;
 }
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}

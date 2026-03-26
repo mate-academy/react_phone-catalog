@@ -1,6 +1,7 @@
-@use "./normalize";
+@use './normalize';
 @use './variables' as *;
 @use './typography' as *;
+@use './mixins' as *;
 
 body {
   background-color: $bg-color-body;
@@ -11,4 +12,12 @@ body {
 .container {
   max-width: 1140px;
   margin: 0 auto;
+
+  @include respond-to('tablet') {
+    max-width: 600px;
+  }
+
+  @include respond-to('mobile') {
+    max-width: 320px;
+  }
 }

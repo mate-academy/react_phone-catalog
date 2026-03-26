@@ -27,7 +27,7 @@ export const MobileMenu = ({ isOpen, onClose, navItems }: Props) => {
           transition={{
             type: 'tween',
             ease: [0.4, 0, 0.2, 1],
-            duration: 0.4
+            duration: 0.4,
           }}
         >
           <div className={styles.header}>

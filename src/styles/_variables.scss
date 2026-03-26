@@ -5,11 +5,17 @@ $breakpoints: (
   'tablet': 640px,
   'mobile': 320px,
 );
+$padding-desktop: 32px;
 $color-primary: var(--color-primary);
-$color-primary-invert:var(--color-primary-invert);
+$color-primary-invert: var(--color-primary-invert);
 $color-secondary: var(--color-secondary);
 $border-color: var(--border-color);
 $border-icons: var(--border-icons);
+$border-card: var(--border-card);
 $bg-color-body: var(--bg-color-body);
+$bg-color-header-footer: var(--bg-color-header-footer);
 $bg-color-hover: var(--bg-color-hover);
-$bg-accent:#905BFF;
+$bg-color-card: var(--bg-color-card);
+$bg-accent: #905bff;
+$bg-accent-hover: #a378ff;
+$bg-favorite-btn: #eb5757;

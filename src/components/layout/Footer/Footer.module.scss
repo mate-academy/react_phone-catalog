@@ -3,21 +3,24 @@
 
 .footer {
   border-top: 1px solid $border-color;
-  background-color: $bg-color-body;
+  background-color: $bg-color-header-footer;
 }
 
 .inner {
   height: 96px;
-  padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop;
+  }
 
   @include respond-to(530px) {
     height: 100%;
     flex-direction: column;
     align-items: start;
-    padding: 32px 16px;
+    padding: 32px $padding-desktop;
     gap: 32px;
   }
 }
@@ -57,19 +60,21 @@
 }
 
 .backToTop {
-  align-self:center;
-  display: flex;
-  align-items: center;
+  align-self: center;
   gap: 16px;
   font-size: 12px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   color: $color-primary;
   transition: color 0.3s;
 
   span {
     color: $color-secondary;
 
-    &:hover {
+    &:hover:not(:disabled) {
       color: $color-primary;
     }
   }
@@ -77,62 +82,6 @@
 
 .iconWrap {
   margin-top: -3px;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $border-icons;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.3s;
 
-  &:hover {
-    border-color: $color-primary;
-  }
+  @include arrow-icon-style();
 }
-
-// .backToTop {
-//   // Скидаємо стандартні стилі кнопки
-//   background: none;
-//   border: none;
-//   padding: 0;
-//   cursor: pointer;
-
-//   display: flex;
-//   align-items: center; // Вирівнює текст та іконку по центру вертикалі
-//   gap: 12px;
-
-//   font-family: 'MyCustomFont', sans-serif; // Ваш новий шрифт
-//   font-size: 12px;
-//   font-weight: 700;
-//   text-transform: uppercase;
-//   color: $color-secondary;
-//   transition: all 0.3s;
-
-//   span {
-//     color: inherit; // Наслідує колір від кнопки
-//     line-height: 1; // Допомагає з вертикальним центруванням
-//   }
-
-//   .iconWrap {
-//     width: 32px;
-//     height: 32px;
-//     border: 1px solid $border-icons;
-//     border-radius: 50%;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     transition: all 0.3s;
-//     color: $color-primary; // Колір самої іконки (Chevron)
-//   }
-
-//   // ГОЛОВНЕ: Ефект при наведенні на ВСЮ кнопку
-//   &:hover {
-//     color: $color-primary; // Текст стає активним
-
-//     .iconWrap {
-//       border-color: $color-primary; // Рамка стає активною
-//       background-color: rgba($color-primary, 0.05); // Опціонально: легкий фон
-//     }
-//   }
-// }

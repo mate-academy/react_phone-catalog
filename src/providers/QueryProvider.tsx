@@ -8,9 +8,9 @@ export const QueryProvider = ({ children }: { children: ReactNode }) => {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 60 * 1000, // Дані вважаються "свіжими" 1 хвилину
-            refetchOnWindowFocus: false, // Не перекачувати дані щоразу, як ти повернувся в браузер
-            retry: 1, // Спробувати завантажити ще раз 1 раз, якщо сталася помилка
+            staleTime: 60 * 1000,
+            refetchOnWindowFocus: false,
+            retry: 1,
           },
         },
       }),

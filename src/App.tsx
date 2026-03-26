@@ -7,6 +7,7 @@ export const App = () => {
 
   return (
     <div className={`app theme-${theme}`}>
+      <h1 hidden>Product Catalog</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <AppRoutes />
       </Suspense>

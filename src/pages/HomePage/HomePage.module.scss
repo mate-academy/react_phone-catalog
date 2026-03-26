@@ -4,5 +4,10 @@
 .title {
   display: block;
   padding: 56px 0;
-  color: $color-primary;
+
+  @include title();
+
+   @include respond-to('desktop') {
+    padding: 56px $padding-desktop;
+  }
 }

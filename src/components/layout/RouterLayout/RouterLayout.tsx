@@ -1,14 +1,20 @@
 import styles from './RouterLayout.module.scss';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const RouterLayout = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className={styles.appContainer}>
       <Header />
       <main className={styles.mainContent}>
-        <Outlet />
+        <div className="container">
+          {pathname !== '/' && <Breadcrumbs />}
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

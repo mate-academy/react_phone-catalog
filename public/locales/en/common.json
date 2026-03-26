@@ -13,7 +13,8 @@
   },
 
   "btn": {
-    "back": "Back to top"
+    "back": "Back to top",
+    "backArr": "Back"
   },
 
   "banners": {
@@ -32,5 +33,50 @@
 
   "home": {
     "orderNow": "ORDER NOW"
+  },
+
+  "titles": {
+    "homePageTitle": "Welcome to Nice Gadgets store!",
+    "brandNew": "Brand new models",
+    "hotPrices": "Hot prices"
+  },
+
+  "products": {
+    "specs": {
+      "screen": "Screen",
+      "capacity": "Capacity",
+      "ram": "RAM"
+    },
+    "actions": {
+      "addToCart": "Add to cart",
+      "added": "Added"
+    }
+  },
+
+  "categories": {
+    "title": "Shop by category",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models_one": "{{count}} model",
+    "models_other": "{{count}} models"
+  },
+
+  "breadcrumbs": {
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites"
+  },
+  "catalog": {
+    "controls": {
+      "sortBy": "Sort by",
+      "itemsOnPage": "Items on page"
+    },
+    "sort": {
+      "newest": "Newest",
+      "priceDesc": "Price: High to Low",
+      "priceAsc": "Price: Low to High"
+    }
   }
 }

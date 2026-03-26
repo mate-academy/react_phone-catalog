@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.title {
+  display: block;
+  padding: 56px 0;
+
+  @include title();
+
+   @include respond-to('desktop') {
+    padding: 56px $padding-desktop;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939A;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  // По замовчуванню 4 колонки (Desktop)
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px; // 40px між рядами, 16px між колонками
+  margin-bottom: 40px;
+
+  /* Адаптивність */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); // Планшети
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); // Малі планшети
+    gap: 32px 12px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; // Мобільні
+    max-width: 280px; // Обмежуємо ширину картки на мобільці, щоб вона не була завеликою
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.card {
+  height: 100%; // Щоб усі картки в ряду були однакової висоти
+  display: flex;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  :global(.p-paginator) {
+    display: flex;
+    gap: 8px;
+    background: transparent;
+    border: none;
+  }
+
+  :global(.p-paginator-page),
+  :global(.p-paginator-prev),
+  :global(.p-paginator-next) {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    color: #313237;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    min-width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  // Активна сторінка (чорний кружечок)
+  :global(.p-paginator-page.p-highlight) {
+    background-color: #313237;
+    border-color: #313237;
+    color: #fff;
+  }
+
+  // Вимкнені стрілочки (якщо на 1 сторінці і назад не можна)
+  :global(.p-disabled) {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
