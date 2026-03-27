@@ -4,7 +4,7 @@ import React, { Fragment } from 'react'; // Обов'язково імпорту
 import Home from '../../assets/Icons/Home.svg';
 import ArrowRight from '../../assets/Icons/Arrow_right.svg';
 
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 type Crumb = { label: string; to?: string };
 interface Props {
   // опціонально: можна передати додаткові crumbs зверху
@@ -35,33 +35,33 @@ export const Breadcrumbs: React.FC<Props> = ({
   productCategory,
 }) => {
   const location = useLocation();
-  const params = useParams(); // може містити productId
+  // const params = useParams();
   // базовий Home crumb
   const crumbs: Crumb[] = [{ label: 'Home', to: '/' }, ...extra];
   const segments = location.pathname.split('/').filter(Boolean);
+  // Приклад: /phones -> ['phones']; /phones/apple-iphone -> ['phones', 'apple-iphone']
 
-  // приклад: /phones -> ['phones']; /product/123 -> ['product','123']
-  // логіка побудови: якщо маршрут містить явну категорію — додаємо її
-  if (segments.length) {
-    // випадок: /phones або /tablets або /accessories
-    const first = segments[0];
+  if (segments.length > 0) {
+    const firstSegment = segments[0];
 
-    if (['phones', 'tablets', 'accessories'].includes(first)) {
-      crumbs.push({ label: prettyName(first), to: `/${first}` });
+    // 1. Додаємо категорію (якщо це phones, tablets або accessories)
+    if (['phones', 'tablets', 'accessories'].includes(firstSegment)) {
+      crumbs.push({ label: prettyName(firstSegment), to: `/${firstSegment}` });
+    } else if (firstSegment === 'product' && productCategory) {
+      // Якщо URL починається з /product, але ми знаємо категорію з пропсів
+      crumbs.push({
+        label: prettyName(productCategory),
+        to: `/${productCategory}`,
+      });
     }
 
-    // product page: /product/:id
-    if (first === 'product' && params.productId) {
-      // якщо в компонент передано дані productCategory/productTitle — використовуємо їх
-      if (productCategory) {
-        crumbs.push({
-          label: prettyName(productCategory),
-          to: `/${productCategory}`,
-        });
-      }
+    // 2. Додаємо назву продукту (якщо є другий сегмент у URL)
+    if (segments.length > 1) {
+      const urlProductId = segments[1]; // Це і є твій ID з URL
 
-      // останній елемент — назва продукту (без посилання)
-      crumbs.push({ label: productTitle ?? `Product ${params.productId}` });
+      // Якщо нам передали productTitle (наприклад, "Apple iPhone 11"),
+      // показуємо його. Якщо ні - показуємо просто ID з URL.
+      crumbs.push({ label: productTitle ?? urlProductId });
     }
   }
 

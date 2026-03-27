@@ -1,3 +1,6 @@
+import { BackCrumb } from '../../components/BackCrumb';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+
 type Props = {
   category: string;
 };
@@ -5,8 +8,12 @@ type Props = {
 export const ProductDetailPage = ({ category }: Props) => {
   return (
     <>
-      <div>{category}</div>
-      <div>ProductDetailPage</div>
+      <div className="grid">
+        <Breadcrumbs />
+        <BackCrumb />
+        <div>{category}</div>
+        <div>ProductDetailPage</div>
+      </div>
     </>
   );
 };

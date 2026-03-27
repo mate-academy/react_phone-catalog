@@ -3,11 +3,20 @@
   grid-column: 1 / -1;
 
   margin-top: 24px;
-
+  
   ol{
     display: flex;
     gap: 8px;
-    list-style: none
+    list-style: none;
+
+    a{
+      text-decoration: none;
+      color: #000;
+    }
+
+    span{
+      color: #89939A;
+    }
   }
 
   @media (max-width: 639px) {
