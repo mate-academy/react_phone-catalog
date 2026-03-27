@@ -7,6 +7,8 @@ import Close from '../../assets/Icons/Close.svg';
 import './Header.scss';
 import { useEffect, useRef, useState } from 'react';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 
 export const Header: React.FC = () => {
   const BREAKPOINT = 640; // відповідає твоєму @media max-width: 639px
@@ -14,6 +16,8 @@ export const Header: React.FC = () => {
 
   const navRef = useRef<HTMLElement | null>(null);
   const burgerRef = useRef<HTMLButtonElement | null>(null);
+  const location = useLocation();
+  const pathname = location.pathname;
 
   useOnClickOutside(navRef, target => {
     if (burgerRef.current && burgerRef.current.contains(target as Node)) {
@@ -56,10 +60,42 @@ export const Header: React.FC = () => {
 
         <nav className="header__nav">
           <ul className="menu">
-            <li className="active menu__item">HOME</li>
-            <li className="menu__item">PHONES</li>
-            <li className="menu__item">TABLETS</li>
-            <li className="menu__item">ACCESSORIES</li>
+            <Link
+              to="/"
+              className={classNames(
+                'menu__item',
+                pathname === '/' ? 'active' : '',
+              )}
+            >
+              HOME
+            </Link>
+            <Link
+              to="/phones"
+              className={classNames(
+                'menu__item',
+                pathname.includes('phones') ? 'active' : '',
+              )}
+            >
+              PHONES
+            </Link>
+            <Link
+              to="/tablets"
+              className={classNames(
+                'menu__item',
+                pathname.includes('tablets') ? 'active' : '',
+              )}
+            >
+              TABLETS
+            </Link>
+            <Link
+              to="/accessories"
+              className={classNames(
+                'menu__item',
+                pathname.includes('accessories') ? 'active' : '',
+              )}
+            >
+              ACCESSORIES
+            </Link>
           </ul>
         </nav>
 

@@ -33,15 +33,19 @@
       font-weight: 800;
       text-transform: uppercase;
       color: #89939a;
-      cursor: pointer;
+
+      // cursor: pointer;
 
       &__item {
         height: 100%;
         display: flex;
         align-items: center;
+        text-decoration: none;
+        color: #89939A;
 
         &:hover{
           color: #000;
+          cursor: pointer;
        }
       }
 
