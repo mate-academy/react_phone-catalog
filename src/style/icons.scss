@@ -1,3 +1,7 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
 .icon {
   width: 16px;
 
@@ -22,70 +26,70 @@
 
 
   &--cart {
-    -webkit-mask-image: url('../../public/img/icons/icon__cart.svg');
+    -webkit-mask-image: url('..//img/icons/icon__cart.svg');
 
-    mask-image: url('../../public/img/icons/icon__cart.svg');
+    mask-image: url('..//img/icons/icon__cart.svg');
   }
 
   &--home {
-    -webkit-mask-image: url('../../public/img/icons/icon__home.svg');
+    -webkit-mask-image: url('..//img/icons/icon__home.svg');
 
-    mask-image: url('../../public/img/icons/icon__home.svg');
+    mask-image: url('..//img/icons/icon__home.svg');
   }
 
   &--favourite {
-    -webkit-mask-image: url('../../public/img/icons/icon__favourite.svg');
+    -webkit-mask-image: url('..//img/icons/icon__favourite.svg');
 
-    mask-image: url('../../public/img/icons/icon__favourite.svg');
+    mask-image: url('..//img/icons/icon__favourite.svg');
   }
 
   &--favourite-filled {
     background-color: $red;
 
-    -webkit-mask-image: url('../../public/img/icons/icon__favourites-filled.svg');
+    -webkit-mask-image: url('..//img/icons/icon__favourites-filled.svg');
 
-    mask-image: url('../../public/img/icons/icon__favourites-filled.svg');
+    mask-image: url('..//img/icons/icon__favourites-filled.svg');
   }
 
   &--close {
-    -webkit-mask-image: url('../../public/img/icons/icon__close.svg');
+    -webkit-mask-image: url('..//img/icons/icon__close.svg');
 
-    mask-image: url('../../public/img/icons/icon__close.svg');
+    mask-image: url('..//img/icons/icon__close.svg');
   }
 
   &--left {
-    -webkit-mask-image: url('../../public/img/icons/icon__left.svg');
+    -webkit-mask-image: url('..//img/icons/icon__left.svg');
 
-    mask-image: url('../../public/img/icons/icon__left.svg');
+    mask-image: url('..//img/icons/icon__left.svg');
   }
 
   &--right {
-    -webkit-mask-image: url('../../public/img/icons/icon__right.svg');
+    -webkit-mask-image: url('..//img/icons/icon__right.svg');
 
-    mask-image: url('../../public/img/icons/icon__right.svg');
+    mask-image: url('..//img/icons/icon__right.svg');
   }
 
   &--up {
-    -webkit-mask-image: url('../../public/img/icons/icon__up.svg');
+    -webkit-mask-image: url('..//img/icons/icon__up.svg');
 
-    mask-image: url('../../public/img/icons/icon__up.svg');
+    mask-image: url('..//img/icons/icon__up.svg');
   }
 
   &--down {
-    -webkit-mask-image: url('../../public/img/icons/icon__down.svg');
+    -webkit-mask-image: url('..//img/icons/icon__down.svg');
 
-    mask-image: url('../../public/img/icons/icon__down.svg');
+    mask-image: url('..//img/icons/icon__down.svg');
   }
 
   &--plus {
-    -webkit-mask-image: url('../../public/img/icons/icon__plus.svg');
+    -webkit-mask-image: url('..//img/icons/icon__plus.svg');
 
-    mask-image: url('../../public/img/icons/icon__plus.svg');
+    mask-image: url('..//img/icons/icon__plus.svg');
   }
 
   &--minus {
-    -webkit-mask-image: url('../../public/img/icons/icon__minus.svg');
+    -webkit-mask-image: url('..//img/icons/icon__minus.svg');
 
-    mask-image: url('../../public/img/icons/icon__minus.svg');
+    mask-image: url('..//img/icons/icon__minus.svg');
   }
 }

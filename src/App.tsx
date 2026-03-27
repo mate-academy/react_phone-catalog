@@ -9,7 +9,7 @@ export const App = () => {
           <div className="header__left">
             <div className="header__logo-div">
               <img
-                src="../public/img/icons/logo.png"
+                src="/img/icons/logo.png"
                 alt="header__logo"
                 className="logo"
               />
@@ -93,7 +93,7 @@ export const App = () => {
         <div className="footer__wrapper">
           <a href="#" className="footer__logo-div">
             <img
-              src="../public/img/icons/logo.png"
+              src="/img/icons/logo.png"
               alt="footer__logo"
               className="logo"
             />

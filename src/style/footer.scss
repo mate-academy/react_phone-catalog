@@ -1,3 +1,7 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
 .footer {
   display: flex;
 

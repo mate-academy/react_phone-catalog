@@ -1,3 +1,6 @@
+@use './mixins.scss' as *;
+@use './variables.scss' as *;
+
 .categories {
   @include on-grid;
 

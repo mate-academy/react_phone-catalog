@@ -20,17 +20,17 @@
                 style={{ transform: `translateX(-${currentSlide}00%)` }}
               >
                 <img
-                  src="../public/img/banner.png"
+                  src="/img/banner.png"
                   alt="banner"
                   className="welcome__banner"
                 />
                 <img
-                  src="../public/img/banner.png"
+                  src="/img/banner.png"
                   alt="banner"
                   className="welcome__banner"
                 />
                 <img
-                  src="../public/img/banner.png"
+                  src="/img/banner.png"
                   alt="banner"
                   className="welcome__banner"
                 />
@@ -125,7 +125,7 @@
           <a href="/" className="categories__card">
             <div className="categories__card-img-wrapper categories--gray">
               <img
-                src="../public/img/category-phones.webp"
+                src="/img/category-phones.webp"
                 alt="caategory image"
                 className="categories__card-img"
               />
@@ -138,7 +138,7 @@
           <a href="/" className="categories__card">
             <div className="categories__card-img-wrapper categories--light">
               <img
-                src="../public/img/category-tablets.webp"
+                src="/img/category-tablets.webp"
                 alt="caategory image"
                 className="categories__card-img"
               />
@@ -151,7 +151,7 @@
           <a href="/" className="categories__card">
             <div className="categories__card-img-wrapper categories--pink">
               <img
-                src="../public/img/category-accessories.webp"
+                src="/img/category-accessories.webp"
                 alt="caategory image"
                 className="categories__card-img"
               />

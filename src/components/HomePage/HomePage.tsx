@@ -74,17 +74,17 @@ export const HomePage: React.FC = () => {
               style={{ transform: `translateX(-${currentSlide}00%)` }}
             >
               <img
-                src="../public/img/banner.png"
+                src="/img/banner.png"
                 alt="banner"
                 className="welcome__banner"
               />
               <img
-                src="../public/img/banner.png"
+                src="/img/banner.png"
                 alt="banner"
                 className="welcome__banner"
               />
               <img
-                src="../public/img/banner.png"
+                src="/img/banner.png"
                 alt="banner"
                 className="welcome__banner"
               />
@@ -153,7 +153,7 @@ export const HomePage: React.FC = () => {
         <Link to="/phones" className="categories__card">
           <div className="categories__card-img-wrapper categories--gray">
             <img
-              src="../public/img/category-phones.webp"
+              src="/img/category-phones.webp"
               alt="phones"
               className="categories__card-img"
             />
@@ -167,7 +167,7 @@ export const HomePage: React.FC = () => {
         <Link to="/tablets" className="categories__card">
           <div className="categories__card-img-wrapper categories--light">
             <img
-              src="../public/img/category-tablets.webp"
+              src="/img/category-tablets.webp"
               alt="tablets"
               className="categories__card-img"
             />
@@ -181,7 +181,7 @@ export const HomePage: React.FC = () => {
         <Link to="/accessories" className="categories__card">
           <div className="categories__card-img-wrapper categories--pink">
             <img
-              src="../public/img/category-accessories.webp"
+              src="/img/category-accessories.webp"
               alt="accessories"
               className="categories__card-img"
             />
