@@ -8,7 +8,10 @@ type ProductCardProps = {
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="product__card">
-      <Link to={`/:${product.category}/:${product.id}`} className="card__link">
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="card__link"
+      >
         <img src={product.image} alt="" className="card__image" />
         <h4 className="card__name">{product.name}</h4>
       </Link>

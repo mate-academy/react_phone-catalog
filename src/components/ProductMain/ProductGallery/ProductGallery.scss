@@ -1,0 +1,35 @@
+.product-gallery {
+  display: flex;
+  gap: 20px;
+}
+
+.product-gallery__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-gallery__thumb {
+  width: 51.2px;
+  height: 49px;
+  object-fit: cover;
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  @media (min-width: 640px) {
+    width: 35px;
+    height: 35px;
+  }
+  @media (min-width: 1200px) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.product-gallery__thumb:hover {
+  border-color: black;
+}
+
+.product-gallery__main-image {
+
+}
