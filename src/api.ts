@@ -1,26 +1,30 @@
-import phones from '../public/api/phones.json';
-import tablets from '../public/api/tablets.json';
-import products from '../public/api/products.json';
-import accessories from '../public/api/accessories.json';
 import { Phone } from '../src/types/Phone';
 import { Tablet } from './types/Tablet';
 import { Accessory } from './types/Accessory';
 import { Product } from './types/Product';
 
-export const getPhones = (): Promise<Phone[]> => {
-  return Promise.resolve(phones as Phone[]);
+export const getPhones = async (): Promise<Phone[]> => {
+  const res = await fetch('/api/phones.json');
+
+  return res.json();
 };
 
-export const getTablets = (): Promise<Tablet[]> => {
-  return Promise.resolve(tablets as Tablet[]);
+export const getTablets = async (): Promise<Tablet[]> => {
+  const res = await fetch('/api/tablets.json');
+
+  return res.json();
 };
 
-export const getAccessories = (): Promise<Accessory[]> => {
-  return Promise.resolve(accessories as Accessory[]);
+export const getAccessories = async (): Promise<Accessory[]> => {
+  const res = await fetch('/api/accessories.json');
+
+  return res.json();
 };
 
-export const getProducts = (): Promise<Product[]> => {
-  return Promise.resolve(products);
+export const getProducts = async (): Promise<Product[]> => {
+  const res = await fetch('/api/products.json');
+
+  return res.json();
 };
 
 export const getProduct = async (
@@ -31,19 +35,19 @@ export const getProduct = async (
     case 'phones': {
       const somePhones = await getPhones();
 
-      return somePhones.find(p => p.id === id);
+      return somePhones.find(p => p.id.includes(id));
     }
 
     case 'tablets': {
       const someTablets = await getTablets();
 
-      return someTablets.find(p => p.id === id);
+      return someTablets.find(p => p.id.includes(id));
     }
 
     case 'accessories': {
       const someAccessories = await getAccessories();
 
-      return someAccessories.find(p => p.id === id);
+      return someAccessories.find(p => p.id.includes(id));
     }
 
     default:
