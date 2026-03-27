@@ -8,6 +8,7 @@ import './App.scss';
 import { HomePage } from './pages/HomePage';
 import { PhonePage } from './pages/PhonePage';
 import { TabletPage } from './pages/TabletPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 export const App = () => {
   // const { data: phones, loading, error, reload } = useFetch('/api/phones.json');
@@ -21,6 +22,7 @@ export const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/phones" element={<PhonePage />} />
           <Route path="/tablets" element={<TabletPage />} />
+          <Route path="/accessories" element={<AccessoriesPage />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
         {/* <h1>Product Catalog</h1> */}
