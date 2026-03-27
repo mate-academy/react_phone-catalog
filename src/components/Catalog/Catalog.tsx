@@ -17,12 +17,9 @@ type Props = {
 
 export const Catalog = ({ products }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortVal = searchParams.get('sort') ?? '';
-  const perPage = searchParams.get('perPage') ?? '16'; // дефолт
+  const sortVal = searchParams.get('sort') ?? 'newest';
+  const perPage = searchParams.get('perPage') ?? '16';
   const page = Number(searchParams.get('page') ?? '1');
-
-  // const [sortVal, setSortVal] = useState<string>('');
-  // const [pagintationVal, setPagintationVal] = useState<string>('');
 
   const handleSortChange = (value: string) => {
     const next = new URLSearchParams(searchParams.toString());
@@ -172,7 +169,7 @@ export const Catalog = ({ products }: Props) => {
 
       <div className={styles.catalog}>
         {visible.map(product => (
-          <ProductCard key={product.id} product={product} discount={true} />
+          <ProductCard product={product} discount={true} key={product.id} />
         ))}
       </div>
 

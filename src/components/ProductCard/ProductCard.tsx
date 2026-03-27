@@ -5,6 +5,7 @@ import Favourite from '../../assets/Icons/Favourites.svg';
 import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 // Стилі підтягуються з модульного файлу каруселі
 import styles from '../ProductCarousel/ProductCarousel.module.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -32,7 +33,6 @@ export const ProductCard = ({ product, discount }: Props) => {
   const [liked, setLiked] = useState(false);
   const [added, setAdded] = useState(false);
 
-  // ✅ УНІВЕРСАЛЬНА ЛОГІКА (ФОЛБЕКИ)
   // Якщо є масив images - беремо першу картинку з нього. Якщо ні - беремо старе поле image.
   const displayImage = product.images?.[0] || product.image;
 
@@ -48,63 +48,76 @@ export const ProductCard = ({ product, discount }: Props) => {
   };
 
   return (
-    <div className={styles['product-card']}>
-      <div className={styles['card-image-wrap']}>
-        {/* Використовуємо нашу універсальну змінну для картинки */}
-        <img
-          src={displayImage}
-          alt={`${product.name} ${product.color}`}
-          className={styles['card-image']}
-          onError={e => {
-            (e.target as HTMLImageElement).setAttribute(
-              'src',
-              'https://via.placeholder.com/200x240/f0f0f0/999?text=iPhone',
-            );
-          }}
-        />
-      </div>
-      <div className={styles['card-body']}>
-        <h3 className={styles['card-title']}>{product.name}</h3>
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <div className={styles['product-card']}>
+        <div className={styles['card-image-wrap']}>
+          {/* Використовуємо нашу універсальну змінну для картинки */}
+          <img
+            src={displayImage}
+            alt={`${product.name} ${product.color}`}
+            className={styles['card-image']}
+            onError={e => {
+              (e.target as HTMLImageElement).setAttribute(
+                'src',
+                'https://via.placeholder.com/200x240/f0f0f0/999?text=iPhone',
+              );
+            }}
+          />
+        </div>
+        <div className={styles['card-body']}>
+          <h3 className={styles['card-title']}>{product.name}</h3>
 
-        {/* Використовуємо наші універсальні змінні для цін */}
-        <p className={styles['card-price']}>
-          ${currentPrice}
-          {discount && oldPrice && (
-            <span className={styles['card-discount']}>${oldPrice}</span>
-          )}
-        </p>
+          {/* Використовуємо наші універсальні змінні для цін */}
+          <p className={styles['card-price']}>
+            ${currentPrice}
+            {discount && oldPrice && (
+              <span className={styles['card-discount']}>${oldPrice}</span>
+            )}
+          </p>
 
-        <div className={styles['card-specs']}>
-          <div className={styles['spec-row']}>
-            <span className={styles['spec-label']}>Screen</span>
-            <span className={styles['spec-value']}>{product.screen}</span>
+          <div className={styles['card-specs']}>
+            <div className={styles['spec-row']}>
+              <span className={styles['spec-label']}>Screen</span>
+              <span className={styles['spec-value']}>{product.screen}</span>
+            </div>
+            <div className={styles['spec-row']}>
+              <span className={styles['spec-label']}>Capacity</span>
+              <span className={styles['spec-value']}>{product.capacity}</span>
+            </div>
+            <div className={styles['spec-row']}>
+              <span className={styles['spec-label']}>RAM</span>
+              <span className={styles['spec-value']}>{product.ram}</span>
+            </div>
           </div>
-          <div className={styles['spec-row']}>
-            <span className={styles['spec-label']}>Capacity</span>
-            <span className={styles['spec-value']}>{product.capacity}</span>
-          </div>
-          <div className={styles['spec-row']}>
-            <span className={styles['spec-label']}>RAM</span>
-            <span className={styles['spec-value']}>{product.ram}</span>
+
+          <div className={styles['card-actions']}>
+            <button
+              className={`${styles['btn-add']} ${added ? styles.added : ''}`}
+              onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+                handleAdd();
+              }}
+            >
+              {added ? '✓ Added' : 'Add to cart'}
+            </button>
+
+            <button
+              className={`${styles['btn-like']} ${liked ? styles.liked : ''}`}
+              onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+                setLiked(!liked);
+              }}
+            >
+              <HeartIcon filled={liked} />
+            </button>
           </div>
         </div>
-
-        <div className={styles['card-actions']}>
-          <button
-            className={`${styles['btn-add']} ${added ? styles.added : ''}`}
-            onClick={handleAdd}
-          >
-            {added ? '✓ Added' : 'Add to cart'}
-          </button>
-
-          <button
-            className={`${styles['btn-like']} ${liked ? styles.liked : ''}`}
-            onClick={() => setLiked(!liked)}
-          >
-            <HeartIcon filled={liked} />
-          </button>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };

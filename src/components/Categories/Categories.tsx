@@ -3,6 +3,7 @@ import styles from './Categories.module.scss';
 import Tablets from '../../assets/Category/Tablets_category.png';
 import Accessories from '../../assets/Category/Accessories_category.png';
 import Phones from '../../assets/Category/Phones_category.png';
+import { Link } from 'react-router-dom';
 
 type Props = {
   tabletLength: number;
@@ -22,13 +23,15 @@ export const Categories = ({
       <div className={styles.categories__container}>
         {/* Категорія 1 */}
         <div className={styles.category__item}>
-          <div className={styles.category__item__container}>
-            <img
-              className={styles['category__item__container-img']}
-              src={Phones}
-              alt="phones_category"
-            />
-          </div>
+          <Link to="/phones">
+            <div className={styles.category__item__container}>
+              <img
+                className={styles['category__item__container-img']}
+                src={Phones}
+                alt="phones_category"
+              />
+            </div>
+          </Link>
           <div className={styles.category__item__info}>
             <p className={styles.category__item__info__name}>Mobile phones</p>
             <p className={styles.category__item__info__count}>
@@ -39,13 +42,15 @@ export const Categories = ({
 
         {/* Категорія 2 */}
         <div className={styles.category__item}>
-          <div className={styles.category__item__container}>
-            <img
-              className={styles['category__item__container-img']}
-              src={Tablets}
-              alt="tablets_category"
-            />
-          </div>
+          <Link to="/tablets">
+            <div className={styles.category__item__container}>
+              <img
+                className={styles['category__item__container-img']}
+                src={Tablets}
+                alt="tablets_category"
+              />
+            </div>
+          </Link>
           {/* Додав обгортку info, щоб було як у першому блоці */}
           <div className={styles.category__item__info}>
             <p className={styles.category__item__info__name}>Tablets</p>
@@ -57,13 +62,15 @@ export const Categories = ({
 
         {/* Категорія 3 */}
         <div className={styles.category__item}>
-          <div className={styles.category__item__container}>
-            <img
-              className={styles['category__item__container-img']}
-              src={Accessories}
-              alt="accessories_category"
-            />
-          </div>
+          <Link to="/accessories">
+            <div className={styles.category__item__container}>
+              <img
+                className={styles['category__item__container-img']}
+                src={Accessories}
+                alt="accessories_category"
+              />
+            </div>
+          </Link>
           <div className={styles.category__item__info}>
             <p className={styles.category__item__info__name}>Accessories</p>
             <p className={styles.category__item__info__count}>
