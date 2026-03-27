@@ -3,16 +3,16 @@
 .home {
   padding-top: $header-height-desktop;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: $header-height-mobile-or-tablet;
   }
 
-  @include onMobile {
+  @include on-mobile {
     padding-top: $header-height-mobile-or-tablet;
   }
 
   &__content {
-    @include pageGrid;
+    @include page-grid;
 
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
 
   &__title {
     grid-column: 1/17;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-style: Bold;
     font-size: 48px;
@@ -42,12 +42,12 @@
     margin-top: 56px;
     margin-bottom: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1/9;
       margin-inline: 24px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: 1/-1;
       font-size: 32px;
       line-height: 41px;
@@ -63,11 +63,11 @@
     gap: 80px;
     margin-bottom: 80px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       gap: 56px;
     }
   }

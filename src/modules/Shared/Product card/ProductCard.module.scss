@@ -7,11 +7,8 @@
   background-color: $bg-color;
   border: 1px solid $border-color;
 
-  @include onMobile {
+  @include on-mobile {
     height: 440px;
-  }
-
-  @include onTablet {
   }
 
   &__wrapper {
@@ -28,7 +25,7 @@
     align-self: center;
     transition: transform 0.3s ease-in-out;
 
-    @include onMobile {
+    @include on-mobile {
       max-height: 130px;
     }
 
@@ -41,7 +38,7 @@
     height: 42px;
     text-decoration: none;
     color: $primary-color;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -56,7 +53,7 @@
   }
 
   &__price {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
@@ -97,7 +94,7 @@
     background: none;
     border: none;
     background-color: $primary-color;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 14px;
     color: $bg-color;
@@ -120,7 +117,7 @@
     background-color: $bg-color;
     color: $green-color;
     border: 1px solid $icon-color;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
@@ -167,7 +164,7 @@
   align-items: center;
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 12px;
     color: $secondary-text-color;
@@ -176,7 +173,7 @@
   }
 
   &__value {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     color: $primary-color;

@@ -4,19 +4,19 @@
   margin-bottom: 80px;
   padding-top: $header-height-desktop;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: $header-height-mobile-or-tablet;
   }
 
-  @include onMobile {
+  @include on-mobile {
     padding-top: $header-height-mobile-or-tablet;
   }
 
-  @include onMobile {
+  @include on-mobile {
     margin-bottom: 64px;
   }
 
-  @include onTablet {
+  @include on-tablet {
     margin-bottom: 64px;
   }
 
@@ -38,7 +38,7 @@
   }
 
   &__amount {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -47,7 +47,7 @@
   }
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-style: Bold;
     font-size: 48px;
@@ -55,7 +55,7 @@
     letter-spacing: -1%;
     color: $primary-color;
 
-    @include onMobile {
+    @include on-mobile {
       font-size: 32px;
       line-height: 41px;
     }
@@ -66,14 +66,14 @@
     flex-direction: row;
     gap: 16px;
 
-    @include onMobile {
+    @include on-mobile {
       justify-content: center;
       justify-content: space-between;
     }
   }
 
   &__list {
-    @include pageGrid;
+    @include page-grid;
 
     row-gap: 40px;
   }
@@ -81,11 +81,11 @@
   &__product {
     grid-column: span 6;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 6;
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: 1 / -1;
     }
   }
@@ -99,7 +99,7 @@
   text-align: center;
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     color: $secondary-text-color;
     font-size: 32px;
     font-weight: 700;
@@ -116,12 +116,12 @@
     background-size: contain;
     background-repeat: no-repeat;
 
-    @include onTablet {
+    @include on-tablet {
       width: 240px;
       height: 240px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       width: 200px;
       height: 200px;
     }

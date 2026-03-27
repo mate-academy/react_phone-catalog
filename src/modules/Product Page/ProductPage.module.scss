@@ -4,12 +4,12 @@
   margin-bottom: 80px;
   padding-top: $header-height-desktop;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: $header-height-mobile-or-tablet;
     margin-bottom: 64px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     padding-top: $header-height-mobile-or-tablet;
     margin-bottom: 56px;
   }
@@ -27,7 +27,7 @@
     display: inline-flex;
     width: 66px;
     height: 16px;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     color: $secondary-text-color;
@@ -53,14 +53,14 @@
   &__main {
     margin-top: 16px;
 
-    @include pageGrid;
+    @include page-grid;
 
     row-gap: 40px;
   }
 
   &__title {
     grid-column: 1 / -1;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -1%;
@@ -71,14 +71,14 @@
     margin-top: 80px;
     margin-bottom: 80px;
 
-    @include pageGrid;
+    @include page-grid;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 64px;
       margin-bottom: 64px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       margin-top: 56px;
       margin-bottom: 56px;
     }
@@ -89,24 +89,24 @@
     display: flex;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / -1;
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: 1 / -1;
     }
 
     &__title {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 800;
       font-size: 22px;
       color: $primary-color;
       line-height: 140%;
       letter-spacing: 0%;
 
-      @include onMobile {
-        font-family: Mont;
+      @include on-mobile {
+        font-family: Mont, sans-serif;
         font-weight: 700;
         font-style: SemiBold;
         font-size: 20px;
@@ -135,7 +135,7 @@
     }
 
     &__subtitle {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 20px;
       color: $primary-color;
@@ -143,8 +143,8 @@
       letter-spacing: 0%;
       margin-bottom: 16px;
 
-      @include onMobile {
-        font-family: Mont;
+      @include on-mobile {
+        font-family: Mont, sans-serif;
         font-weight: 700;
         font-style: SemiBold;
         font-size: 16px;
@@ -154,7 +154,7 @@
     }
 
     &__desc {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 500;
       font-size: 14px;
       color: $secondary-text-color;
@@ -168,12 +168,12 @@
     display: flex;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / -1;
       margin-top: 64px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: span 4;
       margin-top: 56px;
     }
@@ -202,7 +202,7 @@
   }
 
   &__subtitle {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 500;
     font-size: 14px;
     color: $secondary-text-color;
@@ -211,7 +211,7 @@
   }
 
   &__desc {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 500;
     font-size: 14px;
     color: $primary-color;

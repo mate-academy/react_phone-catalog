@@ -6,12 +6,12 @@
   box-shadow: 0 -1px 0 0 $border-color;
   align-content: center;
 
-    @include onMobile {
-      height: $footer-height-mobile;
-    }
+  @include on-mobile {
+    height: $footer-height-mobile;
+  }
 
   &__content {
-    @include pageGrid;
+    @include page-grid;
 
     justify-content: center;
     align-items: center;
@@ -23,13 +23,12 @@
   &__logo {
     grid-column: 1 / 8;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / 4;
-      margin-inline: 24px
-
+      margin-inline: 24px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: 1 / -1;
       margin-inline: 16px;
       margin-bottom: 32px;
@@ -39,14 +38,13 @@
   &__logo__img {
     width: 89px;
     height: 31px;
-
   }
 
   &__icon {
     grid-column: 17 / -1;
     text-decoration: none;
     color: $secondary-text-color;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 100%;
@@ -66,12 +64,11 @@
     cursor: pointer;
     border: none;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 10 / -1;
-
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: 1 / -1;
       margin-inline: 16px;
       margin-top: 32px;
@@ -93,7 +90,7 @@
       outline: none;
     }
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: column;
       gap: 32px;
       justify-self: center;
@@ -103,11 +100,11 @@
   &__nav {
     grid-column: 9 / 17;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 5 / 9;
     }
 
-    @include onMobile {
+    @include on-mobile {
       grid-column: 1 / -1;
     }
 
@@ -116,10 +113,10 @@
       list-style: none;
       justify-content: space-between;
 
-      @include onMobile {
+      @include on-mobile {
         flex-direction: column;
         gap: 16px;
-        margin-inline: 16px
+        margin-inline: 16px;
       }
     }
 
@@ -128,7 +125,7 @@
     }
 
     &__link {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 800;
       font-size: 12px;
       line-height: 11px;

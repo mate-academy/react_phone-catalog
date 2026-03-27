@@ -5,7 +5,7 @@
   flex-direction: column;
   min-height: calc(100vh - $header-height-mobile-or-tablet);
 
-  @include onMobile {
+  @include on-mobile {
     padding-top: $header-height-mobile-or-tablet;
   }
   &__content {
@@ -44,7 +44,7 @@
     display: flex;
     text-align: center;
     text-decoration: none;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 12px;
     line-height: 27px;
@@ -95,7 +95,7 @@
     background-position: center;
     box-shadow: -1px 0 0 0 $border-color;
 
-    @include onMobile {
+    @include on-mobile {
       height: 64px;
     }
 

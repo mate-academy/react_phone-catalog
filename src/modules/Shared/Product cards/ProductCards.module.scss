@@ -16,7 +16,7 @@
   }
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
@@ -67,6 +67,7 @@
   width: 100% !important;
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 :global(.swiper-slide) {
   min-width: 0;
 }

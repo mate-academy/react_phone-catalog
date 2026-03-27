@@ -1,12 +1,12 @@
 @import '../../../../styles/main';
 
 .select {
-
   &__content {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    @include onMobile {
+
+    @include on-mobile {
       width: 100%;
     }
   }
@@ -17,7 +17,7 @@
   }
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
@@ -41,7 +41,7 @@
     background-color: $bg-color;
     cursor: pointer;
 
-    @include onMobile {
+    @include on-mobile {
       width: 100%;
       flex: none;
     }
@@ -67,7 +67,7 @@
     background-color: $bg-color;
     box-sizing: border-box;
 
-    @include onMobile {
+    @include on-mobile {
       width: 100%;
     }
   }
@@ -103,7 +103,7 @@
       color: $primary-color;
     }
 
-    @include onMobile {
+    @include on-mobile {
       width: 100%;
     }
   }

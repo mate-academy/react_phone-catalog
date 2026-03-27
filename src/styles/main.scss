@@ -4,7 +4,7 @@
 @import './font';
 
 body {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   background-color: $main-bg-color;
   margin: 0;
   padding: 0;
@@ -13,7 +13,6 @@ body {
 ul {
   padding: 0;
   margin: 0;
-
 }
 
 h3 {
@@ -40,13 +39,11 @@ a {
 .container {
   margin-inline: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-inline: 24px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     margin-inline: 16px;
   }
 }
-
-

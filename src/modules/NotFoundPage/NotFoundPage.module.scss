@@ -11,16 +11,16 @@
   text-align: center;
   padding-top: $header-height-desktop;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: $header-height-mobile-or-tablet;
   }
 
-  @include onMobile {
+  @include on-mobile {
     padding-top: $header-height-mobile-or-tablet;
   }
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     color: $secondary-text-color;
     font-size: 32px;
     font-weight: 700;
@@ -37,12 +37,12 @@
     background-size: contain;
     background-repeat: no-repeat;
 
-    @include onTablet {
+    @include on-tablet {
       width: 240px;
       height: 240px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       width: 200px;
       height: 200px;
     }
