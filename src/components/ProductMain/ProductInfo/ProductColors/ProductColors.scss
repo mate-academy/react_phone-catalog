@@ -1,0 +1,31 @@
+.product-info__color-list {
+  display: flex;
+  gap: 8px;
+}
+
+.product-info__color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.product-info__color.active {
+  border-color: black;
+  transform: scale(1.1);
+}
+
+.product-info__color--silver {
+  background-color: #c0c0c0;
+}
+
+.product-info__color--space-gray {
+  background-color: #4a4a4a;
+}
+
+.product-info__color--gold {
+  background-color: #d4af37;
+}

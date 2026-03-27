@@ -1,0 +1,18 @@
+.product-info__capacity-list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.product-info__capacity-item {
+  padding: 7px 8px 4px 8px;
+   border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+}
+.product-info__capacity-item.active {
+
+  border-color: black;
+  background: black;
+  color: white;
+}
