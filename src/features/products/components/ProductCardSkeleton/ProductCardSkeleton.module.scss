@@ -1,0 +1,7 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+}

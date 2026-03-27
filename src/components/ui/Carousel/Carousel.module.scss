@@ -18,7 +18,7 @@
 }
 
 .title {
-  @include subtitle();
+  @include subtitle;
 }
 
 .navButtons {
@@ -27,7 +27,7 @@
 }
 
 .navBtn {
-  @include arrow-icon-style();
+  @include arrow-icon-style;
 }
 
 .leftArr {
@@ -54,7 +54,7 @@
   padding-left: 8px;
 
   @include respond-to(1024px) {
-    flex: 0 0 calc(33.333% - 8px);
+    flex: 0 0 calc(33.33% - 8px);
   }
 
   @include respond-to(768px) {

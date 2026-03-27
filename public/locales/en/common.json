@@ -1,4 +1,16 @@
 {
+  "notFound": {
+    "title": "Page not found",
+    "description": "Looks like this page got lost in space. Let's get you back home.",
+    "button": "Go back"
+  },
+
+  "productNotFound": {
+    "title": "Product not found",
+    "description": "Looks like this product vanished into thin air. Let's get you back.",
+    "button": "Go back"
+  },
+
   "nav": {
     "home": "HOME",
     "phones": "PHONES",
@@ -71,7 +83,8 @@
   "catalog": {
     "controls": {
       "sortBy": "Sort by",
-      "itemsOnPage": "Items on page"
+      "itemsOnPage": "Items on page",
+      "all": "All"
     },
     "sort": {
       "newest": "Newest",

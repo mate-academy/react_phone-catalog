@@ -1,0 +1,83 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   height: calc(100vh - 250px);
+     overflow: hidden;
+   padding: 0 16px;
+  text-align: center;
+}
+
+.numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+.number {
+  font-size: clamp(300px, 40vw, 400px);
+  font-weight: 800;
+  color: $color-primary;
+  line-height: 1;
+  opacity: 0.08;
+  user-select: none;
+}
+
+.imageWrapper {
+  width: clamp(400px, 50vw, 560px);
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  :global([data-theme='dark']) & {
+    filter: invert(1);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 480px;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 800;
+  color: $color-primary;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-secondary;
+  line-height: 1.6;
+  height: calc(16px * 1.6 * 2);
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: $bg-accent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 48px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $bg-accent-hover;
+  }
+}

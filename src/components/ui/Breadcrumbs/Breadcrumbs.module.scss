@@ -2,7 +2,11 @@
 @use '../../../styles/variables' as *;
 
 .container {
-  padding: 25px 0 40px 0;
+  padding: 25px 0 40px;
+
+  @include respond-to('desktop') {
+    padding: 25px $padding-desktop 40px;
+  }
 }
 
 .breadcrumbs {

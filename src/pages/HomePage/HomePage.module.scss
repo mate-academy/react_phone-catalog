@@ -5,9 +5,9 @@
   display: block;
   padding: 56px 0;
 
-  @include title();
+  @include title;
 
-   @include respond-to('desktop') {
+  @include respond-to('desktop') {
     padding: 56px $padding-desktop;
   }
 }

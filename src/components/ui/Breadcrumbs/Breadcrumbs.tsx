@@ -1,4 +1,3 @@
-// Breadcrumbs.tsx
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Home, ChevronRight } from 'lucide-react';
@@ -8,7 +7,7 @@ export const Breadcrumbs = () => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
 
-  const pathnames = pathname.split('/').filter((x) => x);
+  const pathnames = pathname.split('/').filter(x => x);
 
   return (
     <nav aria-label="breadcrumb" className={styles.container}>

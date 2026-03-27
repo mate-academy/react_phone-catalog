@@ -12,15 +12,9 @@ export const BackButton = () => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleGoBack}
-      className={styles.backButton}
-    >
+    <button type="button" onClick={handleGoBack} className={styles.backButton}>
       <ChevronLeft size={16} className={styles.icon} />
-      <span className={styles.text}>
-        {t('btn.backArr', 'Back')}
-      </span>
+      <span className={styles.text}>{t('btn.backArr', 'Back')}</span>
     </button>
   );
 };

@@ -1,9 +1,12 @@
+import styles from './NewModelsSection.module.scss';
 import { fetchAllProducts } from '@/api/products';
 import { Carousel } from '@/components/ui/Carousel';
 import { ProductCard } from '@/features/products/components/ProductCard';
 import { getNewestModels } from '@/utils/getNewestModels';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { ProductCardSkeleton } from '@/features/products/components/ProductCardSkeleton';
+import { motion } from 'motion/react';
 
 export const NewModelsSection = () => {
   const { t } = useTranslation();
@@ -15,7 +18,25 @@ export const NewModelsSection = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <section className={styles.section}>
+        <h2 className={styles.title}>{t('titles.brandNew')}</h2>
+        <div className={styles.skeletonGrid}>
+          {Array.from({ length: 4 }).map((_, i) => (
+            <motion.div
+              className={styles.skeletonItem}
+              key={`skeleton-${i}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <ProductCardSkeleton />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    );
   }
 
   return (

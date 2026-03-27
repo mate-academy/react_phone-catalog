@@ -1,0 +1,49 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 80px;
+}
+
+.page,
+.arrow {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-primary;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.active {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $bg-color-card;
+}
+
+.dots {
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-secondary;
+  padding: 0 4px;
+}

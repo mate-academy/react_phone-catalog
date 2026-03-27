@@ -7,8 +7,11 @@ import { ProductCard } from '@/features/products/components/ProductCard';
 import { Product } from '@/features/products/types/product';
 import { fetchAllProducts } from '@/api/products';
 import { useProductFilters } from '@/features/products/hooks/useProductFilters';
-import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
 import { CatalogControls } from '@/features/products/components/CatalogControls';
+import { Pagination } from '@/components/ui/Pagination';
+import { useProductsWithDetails } from '@/features/products/hooks/useProductsWithDetails';
+import { ProductCardSkeleton } from '@/features/products/components/ProductCardSkeleton';
+import { AnimatePresence, motion } from 'motion/react';
 
 export const CatalogPage = () => {
   const { t } = useTranslation();
@@ -18,16 +21,26 @@ export const CatalogPage = () => {
   const config = CATEGORY_CONFIG[categoryKey];
 
   const sortBy = searchParams.get('sort') || 'newest';
-  const perPage = Number(searchParams.get('perPage')) || 16;
+
   const currentPage = Number(searchParams.get('page')) || 1;
+  const perPageParam = searchParams.get('perPage');
+  const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam) || 16;
 
   const { data: allProducts = [], isLoading } = useQuery<Product[]>({
     queryKey: ['products'],
     queryFn: fetchAllProducts,
   });
 
+  const { data: details = [] } = useQuery({
+    queryKey: [`${categoryKey}Details`],
+    queryFn: config.fetchDetails,
+    enabled: !!config,
+  });
+
+  const productsWithDetails = useProductsWithDetails(allProducts, details);
+
   const { paginatedProducts, totalCount } = useProductFilters(
-    allProducts,
+    productsWithDetails,
     categoryKey,
     sortBy,
     currentPage,
@@ -36,14 +49,19 @@ export const CatalogPage = () => {
 
   const updateParams = (key: string, value: string) => {
     searchParams.set(key, value);
-    if (key !== 'page') searchParams.set('page', '1'); // Скидаємо сторінку при зміні фільтрів
+    if (key !== 'page') {
+      searchParams.set('page', '1');
+    }
+
     setSearchParams(searchParams);
   };
 
-  if (!config) return null;
+  if (!config) {
+    return null;
+  }
 
   return (
-    <div>
+    <div className={styles.page}>
       <h1 className={styles.title}>{t(config.titleKey)}</h1>
       <p className={styles.count}>
         {t('categories.models', { count: totalCount })}
@@ -54,36 +72,44 @@ export const CatalogPage = () => {
         perPage={perPage}
         onUpdate={updateParams}
       />
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {/* Сітка товарів */}
-          <div className={styles.grid}>
-            {paginatedProducts.map((product: Product) => (
-              <div key={product.id} className={styles.card}>
-                <ProductCard product={product} />
-              </div>
+      <AnimatePresence mode="popLayout">
+        {isLoading ? (
+          <div className={styles.sceletonWraper}>
+            {Array.from({ length: 16 }).map((_, i) => (
+              <motion.div
+                key={`skeleton-${i}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <ProductCardSkeleton />
+              </motion.div>
             ))}
           </div>
-
-          {/* Пагінація */}
-          {totalCount > perPage && (
-            <div className={styles.paginationWrapper}>
-              <Paginator
-                first={(currentPage - 1) * perPage}
-                rows={perPage}
-                totalRecords={totalCount}
-                onPageChange={(e: PaginatorPageChangeEvent) =>
-                  updateParams('page', String(e.page + 1))
-                }
-                template="PrevPageLink PageLinks NextPageLink"
-              />
+        ) : (
+          <>
+            <div className={styles.grid}>
+              {paginatedProducts.map((product: Product) => (
+                <div key={product.id} className={styles.card}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
             </div>
-          )}
-        </>
-      )}
+
+            {perPage !== 'all' && totalCount > perPage && (
+              <div className={styles.paginationWraper}>
+                <Pagination
+                  currentPage={currentPage}
+                  totalCount={totalCount}
+                  perPage={perPage}
+                  onPageChange={page => updateParams('page', String(page))}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

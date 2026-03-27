@@ -8,7 +8,8 @@
 }
 
 .title {
-  @include subtitle();
+  @include subtitle;
+  
   margin-bottom: 32px;
 }
 

@@ -6,69 +6,8 @@
   gap: 16px;
   margin-bottom: 24px;
 
-  @media (max-width: 640px) {
+  @include respond-to(420px) {
     flex-direction: column;
+    gap: 20px;
   }
 }
-
-.group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #89939a;
-}
-
-.dropdown {
-  width: 176px;
-  height: 40px;
-  border: 1px solid #b4bdc3;
-  border-radius: 8px;
-  background: #fff;
-
-  &:hover {
-    border-color: #313237;
-  }
-
-  // Стилізація тексту всередині
-  :global(.p-dropdown-label) {
-    font-size: 14px;
-    font-weight: 600;
-    color: #313237;
-    padding: 8px 12px;
-  }
-
-  // Стилізація іконки стрілочки
-  :global(.p-dropdown-trigger) {
-    width: 32px;
-    color: #b4bdc3;
-  }
-}
-
-// :global(.dropdown) {
-//   width: 176px; // Ширина як на дизайні
-//   height: 40px;
-//   border: 1px solid #b4bdc3;
-//   border-radius: 8px;
-//   background-color: #fff;
-//   display: flex;
-//   align-items: center;
-
-//   &:hover {
-//     border-color: #89939a; // Hover стан
-//   }
-
-//   &:focus-within {
-//     border-color: #313237; // Focus стан
-//   }
-// }
-
-// :global(.dropdown-label) {
-//   font-size: 14px;
-//   color: #313237;
-//   padding: 0 12px;
-// }
