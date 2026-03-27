@@ -44,7 +44,7 @@ const Main = () => {
         <h2 className="second__title">Shop by category</h2>
         <div className="categories">
           <div className="category">
-            <Link to="">
+            <Link to="/phones">
               <img src={Phonecategory} alt="" className="category__banner" />
             </Link>
             <h3 className="category__text">Mobile phones</h3>
@@ -53,7 +53,7 @@ const Main = () => {
             )}
           </div>
           <div className="category">
-            <Link to="">
+            <Link to="/tablets">
               <img src={Tabletcategory} alt="" className="category__banner" />
             </Link>
             <h3 className="category__text">Tablets</h3>
@@ -62,7 +62,7 @@ const Main = () => {
             )}
           </div>
           <div className="category">
-            <Link to="">
+            <Link to="/accessories">
               <img
                 src={Accessorycategory}
                 alt=""

@@ -8,15 +8,15 @@ import { Accessory } from './types/Accessory';
 import { Product } from './types/Product';
 
 export const getPhones = (): Promise<Phone[]> => {
-  return Promise.resolve(phones);
+  return Promise.resolve(phones as Phone[]);
 };
 
 export const getTablets = (): Promise<Tablet[]> => {
-  return Promise.resolve(tablets);
+  return Promise.resolve(tablets as Tablet[]);
 };
 
 export const getAccessories = (): Promise<Accessory[]> => {
-  return Promise.resolve(accessories);
+  return Promise.resolve(accessories as Accessory[]);
 };
 
 export const getProducts = (): Promise<Product[]> => {
@@ -25,25 +25,25 @@ export const getProducts = (): Promise<Product[]> => {
 
 export const getProduct = async (
   category: 'phones' | 'tablets' | 'accessories',
-  itemId: string,
+  id: string,
 ) => {
   switch (category) {
     case 'phones': {
-      const phones = await getPhones();
+      const somePhones = await getPhones();
 
-      return phones.find(p => p.id === itemId);
+      return somePhones.find(p => p.id === id);
     }
 
     case 'tablets': {
-      const tablets = await getTablets();
+      const someTablets = await getTablets();
 
-      return tablets.find(p => p.id === itemId);
+      return someTablets.find(p => p.id === id);
     }
 
     case 'accessories': {
-      const accessories = await getAccessories();
+      const someAccessories = await getAccessories();
 
-      return accessories.find(p => p.id === itemId);
+      return someAccessories.find(p => p.id === id);
     }
 
     default:

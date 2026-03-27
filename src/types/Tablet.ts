@@ -1,6 +1,6 @@
 export type Tablet = {
   id: string;
-  category: 'tablets';
+  category: string;
   namespaceId: string;
   name: string;
   capacityAvailable: CapacityTablet[];
@@ -10,7 +10,7 @@ export type Tablet = {
   colorsAvailable: ColorTablet[];
   color: ColorTablet;
   images: string[];
-  description: DescriptionItem;
+  description: DescriptionItem[];
   screen: string;
   resolution: string;
   processor: string;

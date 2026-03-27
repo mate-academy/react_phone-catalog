@@ -1,6 +1,6 @@
 export type Accessory = {
   id: string;
-  category: 'accessories';
+  category: string;
   namespaceId: string;
   name: string;
   capacityAvailable: CapacityAccessories[];
@@ -10,7 +10,7 @@ export type Accessory = {
   colorsAvailable: ColorAccessories[];
   color: ColorAccessories;
   images: string[];
-  description: DescriptionItem;
+  description: DescriptionItem[];
   screen: string;
   resolution: string;
   processor: string;
@@ -22,7 +22,7 @@ export type Accessory = {
 
 type CapacityAccessories = '128GB' | '256GB' | '512GB' | '1TB' | '2TB';
 type ColorAccessories = 'spacegray' | 'silver';
-type CellAccessories = 'Not applicable';
+type CellAccessories = 'Wi-Fi' | 'Bluetooth' | 'LTE' | 'Not applicable';
 type DescriptionItem = {
   title: string;
   text: string[];

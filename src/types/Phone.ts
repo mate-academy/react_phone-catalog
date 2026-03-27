@@ -1,6 +1,6 @@
 export type Phone = {
   id: string;
-  category: 'phones';
+  category: string;
   namespaceId: string;
   name: string;
   capacityAvailable: CapacityPhone[];
@@ -10,7 +10,7 @@ export type Phone = {
   colorsAvailable: ColorPhone[];
   color: ColorPhone;
   images: string[];
-  description: DescriptionItem;
+  description: DescriptionItem[];
   screen: string;
   resolution: string;
   processor: string;

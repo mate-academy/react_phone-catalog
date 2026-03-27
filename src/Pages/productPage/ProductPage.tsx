@@ -35,7 +35,11 @@ const ProductPage = () => {
     <div className="product-page">
       <Header />
 
-      <ProductMain someProduct={someProduct} />
+      {someProduct === null ? (
+        <p>Loading...</p>
+      ) : (
+        <ProductMain someProduct={someProduct} />
+      )}
       <Footer />
     </div>
   );

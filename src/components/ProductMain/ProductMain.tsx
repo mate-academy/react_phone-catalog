@@ -9,8 +9,8 @@ const ProductMain = ({ someProduct }: ProductMainProps) => {
   return (
     <div className="product-main">
       {someProduct.images.map(img => (
-  <img key={img} src={img} />
-))}
+        <img key={img} src={img} />
+      ))}
       <h1 className="product__name">{someProduct.name}</h1>
       <span className="product__price">${someProduct.priceRegular}</span>
       <span className="product__sreen">{someProduct.screen}</span>
