@@ -1,13 +1,13 @@
-@import './style/variables';
-@import './style/mixins';
-@import './style/typography';
-@import './style/icons';
-@import './style/header';
-@import './style/welcome';
-@import './style/slider';
-@import './style/categories';
-@import './style/footer';
-@import './style/elements';
+@use './style/variables';
+@use './style/mixins';
+@use './style/typography';
+@use './style/icons';
+@use './style/header';
+@use './style/welcome';
+@use './style/slider';
+@use './style/categories';
+@use './style/footer';
+@use './style/elements';
 
 @font-face {
   font-family: Mont;

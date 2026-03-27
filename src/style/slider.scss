@@ -23,8 +23,15 @@
     }
   }
 
+
   &__wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    column-gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     grid-column: 1 / -1;
     width: max-content;
     transition-duration: 0.3s;
