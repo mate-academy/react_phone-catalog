@@ -3,6 +3,10 @@
   gap: 8px;
 }
 
+.prduct-info__color--title {
+  color: #B4BDC3;
+}
+
 .product-info__color {
   width: 32px;
   height: 32px;
@@ -19,7 +23,7 @@
 }
 
 .product-info__color--silver {
-  background-color: #c0c0c0;
+  background-color: #f2f2f7;
 }
 
 .product-info__color--space-gray {
@@ -27,5 +31,62 @@
 }
 
 .product-info__color--gold {
-  background-color: #d4af37;
+ background-color: #f5e1c0;
+}
+
+.product-info__color--space-black {
+  background-color: #2c2c2e;
+}
+
+.product-info__color--purple {
+  background-color: #b8a9f3;
+}
+
+.product-info__color--yellow {
+  background-color: #ffe680;
+}
+
+.product-info__color--sierra-blue {
+  background-color: #a7c7e7;
+}
+
+.product-info__color--graphite {
+  background-color: #3a3a3c;
+}
+
+.product-info__color--white {
+  background-color: #f9f9f9;
+  border: 1px solid #d2d2d7;
+}
+
+.product-info__color--midnight {
+  background-color: #1a1a2e;
+}
+
+.product-info__color--green {
+  background-color: #5f8f6f;
+}
+
+.product-info__color--red {
+  background-color: #c62828;
+}
+
+.product-info__color--coral {
+  background-color: coral;
+}
+
+.product-info__color--rosegold {
+  background-color: #b76e79;
+}
+
+.product-info__color--pink {
+  background-color: pink;
+}
+
+.product-info__color--starlight {
+  background-color: #f5f5f7;
+}
+
+.product-info__color--skyblue {
+  background-color: skyblue;
 }

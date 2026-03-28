@@ -1,0 +1,20 @@
+.product-info__price {
+   display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.product-info__price--regular {
+  font-weight: 800;
+font-size: 32px;
+line-height: 128%;
+letter-spacing: -0.01em;
+}
+
+.product-info_price--discount {
+   font-weight: 800;
+font-size: 32px;
+line-height: 128%;
+letter-spacing: -0.01em;
+text-decoration: line-through;
+color: #B4BDC3;
+}

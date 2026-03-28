@@ -1,14 +1,18 @@
+// eslint-disable-next-line max-len
+import { ProductCapacityType } from '../components/ProductMain/ProductInfo/ProductCapacity/ProductCapacity';
+import { ProductColor } from '../components/ProductMain/ProductMain';
+
 export type Accessory = {
   id: string;
   category: string;
   namespaceId: string;
   name: string;
-  capacityAvailable: CapacityAccessories[];
-  capacity: CapacityAccessories;
+  capacityAvailable: ProductCapacityType[];
+  capacity: ProductCapacityType;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: ColorAccessories[];
-  color: ColorAccessories;
+  colorsAvailable: ProductColor[];
+  color: ProductColor;
   images: string[];
   description: DescriptionItem[];
   screen: string;
@@ -20,8 +24,6 @@ export type Accessory = {
   cell: CellAccessories[];
 };
 
-type CapacityAccessories = '128GB' | '256GB' | '512GB' | '1TB' | '2TB';
-type ColorAccessories = 'spacegray' | 'silver';
 type CellAccessories = 'Wi-Fi' | 'Bluetooth' | 'LTE' | 'Not applicable';
 type DescriptionItem = {
   title: string;

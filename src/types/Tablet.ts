@@ -1,14 +1,18 @@
+// eslint-disable-next-line max-len
+import { ProductCapacityType } from '../components/ProductMain/ProductInfo/ProductCapacity/ProductCapacity';
+import { ProductColor } from '../components/ProductMain/ProductMain';
+
 export type Tablet = {
   id: string;
   category: string;
   namespaceId: string;
   name: string;
-  capacityAvailable: CapacityTablet[];
-  capacity: CapacityTablet;
+  capacityAvailable: ProductCapacityType[];
+  capacity: ProductCapacityType;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: ColorTablet[];
-  color: ColorTablet;
+  colorsAvailable: ProductColor[];
+  color: ProductColor;
   images: string[];
   description: DescriptionItem[];
   screen: string;
@@ -20,8 +24,6 @@ export type Tablet = {
   cell: Cell[];
 };
 
-type CapacityTablet = '128GB' | '256GB' | '512GB' | '1TB' | '2TB';
-type ColorTablet = 'spacegray' | 'silver';
 type Cell =
   | 'GPRS'
   | 'EDGE'
