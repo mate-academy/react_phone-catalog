@@ -2,13 +2,13 @@
   grid-column: 1 / -1;
   grid-row: 2;
   width: 100%;
-  max-width: 100%;
   min-width: 0;
+  padding-bottom: space(4);
 
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
   align-items: stretch;
-  overflow: auto hidden;
+  overflow: auto visible;
   gap: space(2);
 
   -ms-overflow-style: none;
@@ -16,9 +16,10 @@
 
   @include grid;
 
-  @include respond (desktop) {
+  @include respond(desktop) {
     grid-auto-flow: unset;
     overflow: visible;
+    padding-bottom: 0;
   }
 }
 
@@ -36,29 +37,40 @@
   align-self: center;
 }
 
+.button__container {
+  grid-column: -3 / -1;
+  grid-row: 1;
+  display: flex;
+  place-self: center end;
+  gap: space(1);
+
+  @include respond(desktop) {
+    display: contents;
+  }
+}
+
 
 .button__left,
 .button__right {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   grid-column: -2 / -1;
   grid-row: 1;
 
-  max-width: space(4);
-  max-height: space(4);
+  max-width: space(5);
+  min-width: space(4);
 
-  @include respond (tablet) {
+  @include respond(desktop) {
     max-width: none;
-    max-height: none;
   }
 }
 
 .button__left {
-  place-self: center start;
+  place-self: center end;
 
-  @include respond (tablet) {
+  @include respond(tablet) {
     grid-column: -3 / -2;
     place-self: center;
   }

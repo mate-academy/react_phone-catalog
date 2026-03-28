@@ -3,47 +3,81 @@
 :root {
   --font-sans: "Manrope", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: "Plus Jakarta Sans", "Manrope", "Inter", "Segoe UI", sans-serif;
+  --border-radius: #{space(2)};
+  --green: #27ae60;
+  --red: #eb5757;
+}
+
+@mixin theme-dark-vars {
   --accent-light: #b8aaff;
   --accent-dark: #5c3dcc;
-  --accent: #905BFF;
+  --accent: #905bff;
+  --shadow-base: 0 2px 6px rgb(0 0 0 / 12%);
+  --shadow-strong: 0 5px 12px rgb(0 0 0 / 16%);
+  --shadow-accent: 0 6px 14px rgb(144 91 255 / 14%);
+  --shadow-sm: var(--shadow-base);
+  --shadow-md: var(--shadow-strong);
+  --shadow-lg: var(--shadow-accent);
   --secondary: #75767f;
   --icons: #3a3d58;
   --elements: #3b3e4a;
-  --hover: #323542;
+  --hover: #262836;
   --disabled: #0f1121;
   --bg: #161827;
   --white: #f1f2f9;
-  --green: #27ae60;
-  --red: #eb5757;
   --text: #f1f2f9;
+  --hover2: #161827;
+}
+
+@mixin theme-light-vars {
+  --accent-light: #6548ff;
+  --accent-dark: #2e0f99;
+  --accent: #4219d0;
+  --shadow-base: 0 2px 6px rgb(15 23 42 / 8%);
+  --shadow-strong: 0 5px 12px rgb(15 23 42 / 12%);
+  --shadow-accent: 0 6px 14px rgb(66 25 208 / 10%);
+  --shadow-sm: var(--shadow-base);
+  --shadow-md: var(--shadow-strong);
+  --shadow-lg: var(--shadow-accent);
+  --secondary: #89939a;
+  --icons: #b4bdc3;
+  --elements: #e2e6e9;
+  --hover: #fafbfc;
+  --bg: #fafbfc;
+  --disabled: #fff;
+  --white: #fff;
+  --text: #333;
+  --hover2: #6548ff;
+}
+
+:root,
+:root[data-theme='dark'] {
+  @include theme-dark-vars;
+
+  --logo-image: url('/logo/logo-dark.svg');
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    --accent-light: #6548ff;
-    --accent-dark: #2e0f99;
-    --accent: #4219d0;
-    --secondary: #89939a;
-    --icons: #b4bdc3;
-    --elements: #e2e6e9;
-    --hover: #fafbfc;
-    --bg: #fafbfc;
-    --disabled: #fff;
-    --white: #fff;
-    --green: #27ae60;
-    --red: #eb5757;
-    --text: #333;
+  :root:not([data-theme]) {
+    @include theme-light-vars;
+
+    --logo-image: url('/logo/logo-dark.svg');
   }
+}
+
+:root[data-theme='light'] {
+  @include theme-light-vars;
+
+  --logo-image: url('/logo/logo-light.svg');
 }
 
 @function color($name) {
   @return var(--#{$name});
 }
 
-
 html,
 body,
-body > div {
+body>div {
   min-width: 360px;
 }
 
@@ -87,77 +121,6 @@ button {
 
   cursor: pointer;
 }
-
-/*
-  Purpose:
-    These rules are slightly nested on purpose to achieve a clever menu toggle
-    behavior without any JS magic, all while respecting the hashed class (.module)
-    structure as much as possible.
-
-  Related classes/files:
-    - .response in `Header.module.scss` — handles UI changes depending on screen size
-    - .control &__button in `Header.module.scss` — styles for the buttons
-    - `Aside.module.scss` — styles for the Aside component
-
-  Notes:
-    - When resizing from small to large screens and back, the checkbox state
-      preserves its previous value — no reset
-    - Pure CSS solution: no JS involved, just smart selectors and media queries
-*/
-
-/* stylelint-disable-next-line selector-max-id */
-#menu-checkbox {
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-
-/* stylelint-disable-next-line selector-max-id */
-#menu-checkbox:checked~aside[data-menu-aside] {
-  left: 0;
-
-  @include respond (tablet) {
-    display: none;
-  }
-}
-
-header label.check-box-label {
-  display: flex;
-
-  @include respond(tablet) {
-    display: none;
-  }
-}
-
-.menuIcon line {
-  stroke: $text;
-  transform-origin: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-
-// animations for the menu button
-/* stylelint-disable selector-max-id */
-
-#menu-checkbox:checked~header .menuIcon .line1 {
-  transform: rotate(45deg) translate(4.17%, 20.8%) scaleX(1.2);
-}
-
-#menu-checkbox:checked~header .menuIcon .line2 {
-  opacity: 0;
-  transform: rotate(90deg);
-  transition: transform 0.2s ease-in, opacity 0.1s ease-in;
-}
-
-#menu-checkbox:checked~header .menuIcon .line3 {
-  transform: rotate(-45deg) translate(4.17%, -20.8%) scaleX(1.2);
-}
-
-#menu-checkbox:checked~header .menuIcon {
-  transform: translateX(-5.4%);
-}
-
-/* stylelint-enable selector-max-id */
 
 ul {
   margin: 0;

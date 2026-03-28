@@ -2,22 +2,28 @@ import styles from './Slider.module.scss';
 import Chevron from '@/assets/icons/chevron.svg?react';
 import Button from '@/atoms/Button';
 import Section from '@/atoms/Section';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { cn } from '@/utils/cn';
+import { AUTOPLAY_DELAY, SLIDES } from '@/const';
 
 type Props = {
   title: string;
 };
 
 const Slider = ({ title }: Props) => {
-  const b = [
-    '/img/banners/banner_0.jpg',
-    '/img/banners/banner_1.jpg',
-    '/img/banners/banner_2.jpg',
-  ];
-
   const [slide, setSlide] = useState(0);
   const isFirstSlide = slide === 0;
-  const isLastSlide = slide === b.length - 1;
+  const isLastSlide = slide === SLIDES.length - 1;
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setSlide(prev => (prev + 1) % SLIDES.length);
+    }, AUTOPLAY_DELAY);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [slide]);
 
   const next = () => {
     if (isLastSlide) {
@@ -37,7 +43,7 @@ const Slider = ({ title }: Props) => {
   };
 
   return (
-    <Section>
+    <Section className={styles.slider__section}>
       <div className={styles.sectionHeader}>
         <Section.Title className={styles.sectionTitle}>{title}</Section.Title>
       </div>
@@ -53,17 +59,37 @@ const Slider = ({ title }: Props) => {
 
         <div className={styles.slider__insider}>
           <div className={styles.slider__modalBlock}>
-            <div className={styles.modal}></div>
+            <div className={styles.modal}>
+              {SLIDES.map((item, index) => (
+                <div
+                  key={item.title}
+                  className={cn(styles.modalContent, {
+                    [styles.modalContentActive]: slide === index,
+                  })}
+                >
+                  <p className={styles.modalEyebrow}>{item.eyebrow}</p>
+                  <h3 className={styles.modalTitle}>{item.title}</h3>
+                  <p className={styles.modalDescription}>{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className={styles.slider__imageBlock}>
-            <img
-              key={slide}
-              src={b[slide]}
-              width="600"
-              height="300"
-              decoding="async"
-              draggable="false"
-            />
+            {SLIDES.map((item, index) => (
+              <img
+                key={item.image}
+                className={cn(styles.slideImage, {
+                  [styles.slideImageActive]: slide === index,
+                })}
+                src={item.image}
+                alt={`Banner ${index + 1}`}
+                width="600"
+                height="300"
+                decoding="async"
+                draggable="false"
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+            ))}
           </div>
         </div>
 
@@ -76,15 +102,16 @@ const Slider = ({ title }: Props) => {
         </Button>
 
         <div className={styles.pagination}>
-          {b.map((_, index) => (
+          {SLIDES.map((_, index) => (
             <div
               key={index}
               className={styles.pagination__block}
               onClick={() => setSlide(index)}
             >
               <div
-                className={`${styles.pagination__anchor}
-            ${slide === index ? styles['pagination__anchor--active'] : ''}`}
+                className={cn(styles.pagination__anchor, {
+                  [styles['pagination__anchor--active']]: slide === index,
+                })}
               />
             </div>
           ))}

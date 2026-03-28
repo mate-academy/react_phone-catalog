@@ -28,21 +28,23 @@ export const GoodList: FC<Props> = ({ items, title }) => {
       <div className={styles.container}>
         <Section.Title className={styles.title}>{title}</Section.Title>
 
-        <Button
-          classNames={styles.button__left}
-          onClick={prev}
-          disabled={page === 0}
-        >
-          <Chevron />
-        </Button>
+        <div className={styles.button__container}>
+          <Button
+            classNames={styles.button__left}
+            onClick={prev}
+            disabled={page === 0}
+          >
+            <Chevron />
+          </Button>
 
-        <Button
-          classNames={styles.button__right}
-          onClick={next}
-          disabled={page + pageSize >= items.length}
-        >
-          <Chevron />
-        </Button>
+          <Button
+            classNames={styles.button__right}
+            onClick={next}
+            disabled={page + pageSize >= items.length}
+          >
+            <Chevron />
+          </Button>
+        </div>
 
         <div className={styles.list}>
           {items.slice(page, page + pageSize).map(item => (

@@ -1,0 +1,66 @@
+@mixin animation($animation) {
+  transition: transform 0.2s ease;
+  transform: $animation;
+}
+
+$live-gradient: linear-gradient(90deg,
+    var(--accent) 0%,
+    var(--accent-light) 25%,
+    var(--accent) 50%,
+    var(--accent-dark) 75%,
+    var(--accent) 100%);
+
+@mixin on-hover($scale: 1.1) {
+  &:hover {
+    @include animation(scale($scale));
+  }
+}
+
+*,
+*::before,
+*::after {
+  transition: background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    fill 0.2s ease;
+}
+
+@mixin live-color-bg($duration: 5s) {
+  background: $live-gradient;
+  background-size: 400% 100%;
+  animation: gradient-move $duration linear infinite;
+}
+
+@mixin live-color-text($duration: 5s) {
+  background: $live-gradient;
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-move $duration linear infinite;
+}
+
+@mixin live-color-border(
+  $duration: 5s,
+  $border-width: 1px,
+  $inner-bg: transparent
+) {
+  border: $border-width solid transparent;
+  background:
+    linear-gradient($inner-bg, $inner-bg) padding-box,
+    $live-gradient border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 400% 100%;
+  animation: gradient-move $duration linear infinite;
+}
+
+@mixin live-color-fill($duration: 5s) {
+  fill: var(--accent);
+  animation: fill-gradient-move $duration linear infinite;
+}
+
+@mixin live-color-stroke($duration: 5s) {
+  stroke: var(--accent);
+  animation: stroke-gradient-move $duration linear infinite;
+}

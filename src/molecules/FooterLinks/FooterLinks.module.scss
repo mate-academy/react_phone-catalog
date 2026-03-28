@@ -13,7 +13,7 @@
   &__link {
     padding-block: space(1);
 
-    @include respond (tablet) {
+    @include respond(tablet) {
       padding-block: space(3);
     }
 
@@ -21,12 +21,6 @@
 
     &:hover {
       @include live-color-text;
-
-      &::after {
-        transform: scaleX(1);
-
-        @include live-color-bg;
-      }
     }
   }
 }

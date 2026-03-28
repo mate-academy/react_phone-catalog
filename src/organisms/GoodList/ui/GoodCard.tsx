@@ -10,19 +10,42 @@ type Props = {
 };
 
 export const GoodCard: FC<Props> = ({ item }) => {
-  return (
-    <div className={styles.card}>
-      <img className={styles.card__img} src={item.images[0]} alt={item.name} />
-      <div className={styles.card__footer}>
-        <label className={styles.card__name}>{item.name}</label>
+  const { images, name, priceRegular, screen, capacity, ram } = item;
 
+  return (
+    <article className={styles.card}>
+      <img className={styles.card__img} src={images[0]} alt={name} />
+      <div className={styles.card__footer}>
+        <h3 className={styles.card__name}>{name}</h3>
+        <p className={styles.card__priceRegular}>${priceRegular}</p>
+        <div className={styles.card__br} />
+        <dl className={styles.card__specs}>
+          <div className={styles.card__stat}>
+            <dt className={styles.card__stat__Name}>Screen</dt>
+            <dd className={styles.card__stat__Info}>{screen}</dd>
+          </div>
+          <div className={styles.card__stat}>
+            <dt className={styles.card__stat__Name}>Capacity</dt>
+            <dd className={styles.card__stat__Info}>{capacity}</dd>
+          </div>
+          <div className={styles.card__stat}>
+            <dt className={styles.card__stat__Name}>Ram</dt>
+            <dd className={styles.card__stat__Info}>{ram}</dd>
+          </div>
+        </dl>
         <div className={styles.card__footer__controls}>
-          <Button className={styles.button__cart}>Add to cart</Button>
-          <Button className={styles.button__like}>
+          <Button classNames={styles.button__cart} variant="primary">
+            Add to cart
+          </Button>
+          <Button
+            variant="secondary"
+            classNames={styles.button__like}
+            aria-label="Add to favorites"
+          >
             <Heart />
           </Button>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

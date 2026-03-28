@@ -5,10 +5,6 @@
   @include respond(tablet) {
     display: flex;
     align-items: center;
-    gap: space(3);
-  }
-
-  @include respond(tablet) {
     gap: space(4);
   }
 
@@ -26,13 +22,12 @@
 }
 
 .nav {
-  @include respond (tablet) {
+  @include respond(tablet) {
     height: 100%;
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
   }
 
-  @include respond (desktop) {
+  @include respond(desktop) {
     grid-column: unset;
-
   }
 }

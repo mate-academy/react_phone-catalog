@@ -1,5 +1,6 @@
 import type { FC, HTMLAttributes, ReactNode } from 'react';
 import styles from './Section.module.scss';
+import { cn } from '@/utils/cn';
 
 type SectionTitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -14,7 +15,7 @@ export const SectionTitle: FC<SectionTitleProps> = ({
   children,
   ...props
 }) => {
-  const classes = [styles.title, className].filter(Boolean).join(' ');
+  const classes = cn(styles.title, className);
 
   return (
     <Component className={classes} {...props}>

@@ -2,6 +2,15 @@
   @include grid;
 }
 
+.slider__section {
+  padding-top: space(4);
+
+
+  @include respond(tablet) {
+    padding-top: space(5);
+  }
+}
+
 .sectionTitle {
   grid-column: 1 / -1;
 }
@@ -9,19 +18,16 @@
 .slider {
   padding-inline: 0;
   display: grid;
-  grid-template-rows: 33fr 2fr;
+  grid-template-rows: auto auto;
   row-gap: space(1);
 
   &__insider {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
     overflow: hidden;
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+    @include respond (tablet) {
+      border-radius: $border-radius;
+      border: 1px solid $hover;
     }
 
     @include respond(tablet) {
@@ -29,7 +35,6 @@
       grid-template-columns: 1fr 1fr;
       grid-column: 2 / -2;
       grid-row: 1 / 2;
-
     }
   }
 
@@ -45,6 +50,8 @@
   }
 
   &__imageBlock {
+    position: relative;
+    overflow: hidden;
     background-color: black;
     min-height: calc($space-unit * 80);
 
@@ -53,33 +60,104 @@
     }
   }
 
-  @include respond (tablet) {
+  @include respond(tablet) {
     row-gap: space(2);
 
     @include grid;
   }
 }
 
+.slideImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+}
+
+.slideImageActive {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
 .modal {
+  position: relative;
+  overflow: hidden;
   height: 90%;
   width: 80%;
   max-width: calc($space-unit * 180);
   max-height: calc($space-unit * 105);
 
   background: rgba(255, 255, 255, 0);
-  border-radius: space(3);
-  box-shadow:
-    0 calc($space-unit) calc($space-unit * 7.5) rgb(0 0 0 / 10%);
+  border-radius: var(--border-radius);
+
+  @include shadow-lg;
+
   backdrop-filter: blur(calc($space-unit * 1.75));
   -webkit-backdrop-filter: blur(calc($space-unit * 1.75));
   border: calc($space-unit / 4) solid rgb(255 255 255 / 21%);
+}
+
+.modalContent {
+  position: absolute;
+  inset: calc($space-unit * 7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: space(2);
+  opacity: 0;
+  transform: translateY(calc($space-unit * 2));
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+.modalContentActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modalEyebrow {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+
+  @include mont(700);
+  @include live-color-text;
+}
+
+.modalTitle {
+  margin: 0;
+  color: $white;
+
+  @include mont(800);
+
+  font-size: calc($space-unit * 7);
+  line-height: 1.2;
+}
+
+.modalDescription {
+  margin: 0;
+  color: $secondary;
+
+  @include mont(600);
+
+  font-size: calc($space-unit * 4);
+  line-height: 1.5;
 }
 
 .button__left,
 .button__right {
   display: none;
   grid-row: 1 / 2;
-  max-height: none;
+  max-width: space(4);
 
   @include respond(tablet) {
     display: flex;
@@ -90,11 +168,18 @@
       transition: transform 0.3s ease;
     }
   }
+
+  @include respond(desktop) {
+    max-width: none;
+  }
+
+  @include on-hover(1.01);
 }
 
 .button__left {
   @include respond(tablet) {
     grid-column: 1 / 2;
+    justify-self: end;
 
     svg {
       transform: rotate(-90deg);
@@ -105,6 +190,7 @@
 .button__right {
   @include respond(tablet) {
     grid-column: -2 / -1;
+    justify-self: start;
 
     svg {
       transform: rotate(90deg);
@@ -125,12 +211,11 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-
   }
 
   &__anchor {
     width: 100%;
-    height: calc(space(2));
+    height: space(2);
     background-color: $elements;
     transition: background-color 0.3s ease;
 

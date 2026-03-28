@@ -1,21 +1,26 @@
-// Related global rules in App.scss
-
 .aside {
   position: fixed;
   top: calc(space(5) + 1px);
-  left: -101%;
+  left: 0;
   width: 100%;
   height: calc(100vh - space(5) - 1px);
 
   background-color: $bg;
   z-index: 1000;
 
-  transition: left 0.3s ease-in-out;
-  border-right: 1px $secondary solid;
+  transform: translateX(-104%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.22s ease;
+  border-right: 1px solid $secondary;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include respond(tablet) {
+    display: none;
+  }
 
   &__menu {
     display: flex;
@@ -23,17 +28,22 @@
     align-items: center;
     gap: space(3);
     padding: calc($space-unit * 6) 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: transform 0.28s ease, opacity 0.28s ease;
   }
 
   &__link {
     min-height: calc($space-unit * 7);
     width: min-content;
+    opacity: 0;
+    transform: translateX(-14px);
   }
 }
 
 .control {
   display: flex;
-  border-top: 1px $secondary solid;
+  border-top: 1px solid $secondary;
   gap: 1px;
   background-color: $secondary;
 
@@ -44,7 +54,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
 
   &__icon {
@@ -60,5 +69,40 @@
   }
 }
 
+.asideOpen {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 
+  .aside__menu {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.06s;
+  }
 
+  .aside__link {
+    animation: aside-link-in 0.34s ease forwards;
+  }
+
+  .aside__link:nth-child(1) {
+    animation-delay: 0.08s;
+  }
+
+  .aside__link:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .aside__link:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .aside__link:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  .control__button {
+    animation: aside-link-in 0.32s ease forwards;
+    animation-delay: 0.22s;
+    opacity: 0;
+  }
+}

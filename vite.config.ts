@@ -11,8 +11,11 @@ export default defineConfig({
         additionalData: `
         @use "@/styles/mixins/fonts.scss" as *;
         @use "@/styles/mixins/respond.scss" as *;
+        @use "@/styles/mixins/shadows.scss" as *;
         @use "@/styles/tockens/colors.scss" as *;
-        @use "@/styles/mixins/animation.scss" as *;
+        @use "@/styles/tockens/other.scss" as *;
+        @use "@/styles/animation/animation.scss" as *;
+        @use "@/styles/keyframes/keyframes.scss" as *;
         `
 
       }

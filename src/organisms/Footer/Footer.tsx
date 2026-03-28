@@ -3,6 +3,7 @@ import FooterLinks from '@/molecules/FooterLinks';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import Section from '@/atoms/Section';
+import Logo from '@/atoms/Logo';
 
 import Chevron from '@/assets/icons/chevron.svg?react';
 import Button from '@/atoms/Button';
@@ -15,9 +16,7 @@ const Footer = () => {
       </Section.Title>
 
       <div className={styles.footer__nav}>
-        <Link className={styles.logo} to="/">
-          <div className={styles.logo__img} />
-        </Link>
+        <Logo />
         <FooterLinks />
 
         <div className={styles.goUp}>

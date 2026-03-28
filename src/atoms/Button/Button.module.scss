@@ -1,26 +1,104 @@
 .button {
+  --button-bg: inherit;
+  --button-color: #{$text};
+  --button-border: #{$elements};
+  --button-hover-bg: #{$bg};
+  --button-hover-color: #{$text};
+  --button-hover-border: #{$text};
+  --button-disabled-bg: transparent;
+  --button-disabled-color: #{$elements};
+  --button-disabled-border: #{$elements};
+
   width: 100%;
   height: 100%;
+  border-radius: $border-radius;
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  border: calc($space-unit / 4) solid var(--button-border);
 
-  background-color: $hover;
-  border: calc($space-unit / 4) solid $elements;
+  &:not(:disabled) {
+    @include shadow-xs;
+  }
 
-  svg {
-    fill: $text;
+  svg,
+  svg * {
+    fill: currentColor;
+  }
+
+  .content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
   &:disabled {
-    background-color: $bg;
+    background-color: var(--button-disabled-bg);
+    color: var(--button-disabled-color);
+    border-color: var(--button-disabled-border);
     cursor: default;
-
-    svg {
-      fill: $elements;
-    }
+    box-shadow: none;
   }
 
   &:not(:disabled):hover {
+    color: var(--button-hover-color);
     cursor: pointer;
-    background-color: $bg;
-    border-color: $text;
+    background-color: var(--button-hover-bg);
+    border-color: var(--button-hover-border);
+  }
+}
+
+.secondary {
+  --button-bg: inherit;
+  --button-color: #{$white};
+  --button-border: #{$white};
+  --button-hover-bg: #{$bg};
+  --button-hover-border: #{$text};
+}
+
+[data-theme='light'] .secondary {
+  --button-color: #{$text};
+  --button-border: #{$text};
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .secondary {
+    --button-color: #{$accent};
+    --button-border: #{$text};
+  }
+}
+
+.primary {
+  --button-bg: #{$accent};
+  --button-color: #{$white};
+  --button-border: #{$accent};
+  --button-hover-bg: #{$bg};
+  --button-hover-border: #{$white};
+
+}
+
+.ghost {
+  --button-bg: transparent;
+  --button-color: #{$secondary};
+  --button-border: #{$secondary};
+  --button-hover-bg: #{$hover};
+  --button-hover-border: #{$accent};
+
+
+}
+
+.buttonAnimated {
+  &:not(:disabled):hover {
+    @include live-color-border(5s, calc($space-unit / 4), var(--button-hover-bg));
+  }
+
+  &:not(:disabled):hover .content {
+    @include live-color-text;
+  }
+
+  &:not(:disabled):hover svg,
+  &:not(:disabled):hover svg * {
+    @include live-color-fill;
   }
 }

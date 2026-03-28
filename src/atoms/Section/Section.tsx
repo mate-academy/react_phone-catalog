@@ -1,6 +1,7 @@
 import type { FC, HTMLAttributes, ReactNode } from 'react';
 import styles from './Section.module.scss';
 import { SectionTitle } from './SectionTitle';
+import { cn } from '@/utils/cn';
 
 type SectionTag = 'section' | 'article' | 'div' | 'header' | 'footer' | 'main';
 
@@ -17,9 +18,7 @@ const SectionBase: FC<SectionProps> = ({
   children,
   ...props
 }) => {
-  const classes = [unstyled ? '' : styles.section, className]
-    .filter(Boolean)
-    .join(' ');
+  const classes = cn(!unstyled && styles.section, className);
 
   return (
     <Component className={classes} {...props}>

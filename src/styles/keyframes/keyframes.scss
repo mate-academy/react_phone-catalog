@@ -1,0 +1,82 @@
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fill-gradient-move {
+  0% {
+    fill: var(--accent);
+  }
+
+  25% {
+    fill: var(--accent-light);
+  }
+
+  50% {
+    fill: var(--accent);
+  }
+
+  75% {
+    fill: var(--accent-dark);
+  }
+
+  100% {
+    fill: var(--accent);
+  }
+}
+
+@keyframes stroke-gradient-move {
+  0% {
+    stroke: var(--accent);
+  }
+
+  25% {
+    stroke: var(--accent-light);
+  }
+
+  50% {
+    stroke: var(--accent);
+  }
+
+  75% {
+    stroke: var(--accent-dark);
+  }
+
+  100% {
+    stroke: var(--accent);
+  }
+}
+
+@keyframes aside-link-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.38;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+}

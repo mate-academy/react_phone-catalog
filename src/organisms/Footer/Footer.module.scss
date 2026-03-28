@@ -1,7 +1,7 @@
 .footer {
   padding-block: space(3);
 
-  @include respond (tablet) {
+  @include respond(tablet) {
     padding-block: 0;
   }
 
@@ -23,36 +23,6 @@
   }
 }
 
-.logo {
-  height: 100%;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-
-  &__img {
-    min-width: space(6);
-    min-height: $space-unit * 5.5; // 22px
-
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    background-image: url('/logo/logo-dark.svg');
-
-    @media (prefers-color-scheme: light) {
-      background-image: url('/logo/logo-light.svg');
-    }
-
-    @include respond(desktop) {
-      width: calc($space-unit * 20);
-      height: calc($space-unit * 7);
-    }
-
-    @include on-hover;
-
-  }
-}
-
 .goUp {
   width: 100%;
   display: flex;
@@ -60,7 +30,7 @@
   align-items: center;
   justify-content: center;
 
-  @include respond (tablet) {
+  @include respond(tablet) {
     padding-block: space(3);
   }
 

@@ -4,10 +4,6 @@
   @include mont(700);
 }
 
-.checkbox {
-  display: none;
-}
-
-.borders{
-  border-block: calc($space-unit / 4) solid $secondary;
+.borders {
+  border-bottom: calc($space-unit / 4) solid $secondary;
 }

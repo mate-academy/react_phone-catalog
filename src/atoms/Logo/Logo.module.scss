@@ -1,0 +1,30 @@
+.logo {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.logo__img {
+  min-width: space(6);
+  min-height: $space-unit * 5.5; // 22px
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: var(--logo-image);
+
+  @include respond(desktop) {
+    width: calc($space-unit * 20);
+    height: calc($space-unit * 7);
+  }
+
+  @include on-hover;
+}
+
+.logo__imgHeader {
+  margin: 0 space(3);
+
+  @include respond(desktop) {
+    margin: 0 calc($space-unit * 5.5);
+  }
+}
