@@ -3,6 +3,7 @@ import { AddToCartContext } from '../../../../contexts/AddToCartContext';
 import { CartProduct } from '../../../../types/CartProduct';
 import style from './CartItems.module.scss';
 import cn from 'classnames';
+import { ImageWithSkeleton } from '../../../../components/ImageWithSkeleton';
 
 export const CartItems = () => {
   const { cart, setCart } = useContext(AddToCartContext);
@@ -41,7 +42,7 @@ export const CartItems = () => {
                 className={style.item__remove}
                 onClick={() => handleDelete(item)}
               ></button>
-              <img
+              <ImageWithSkeleton
                 src={item.image}
                 alt={item.name}
                 className={style.item__img}

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import style from './Gallery.module.scss';
 import cn from 'classnames';
 import { DetailedProduct } from '../../../../types/DetailedProduct';
+import { ImageWithSkeleton } from '../../../../components/ImageWithSkeleton';
 
 type Props = {
   product: DetailedProduct;
@@ -24,7 +25,7 @@ export const Gallery: React.FC<Props> = ({ product }) => {
             key={index}
             onClick={() => swiper?.slideToLoop(index)}
           >
-            <img
+            <ImageWithSkeleton
               src={imgSrc}
               alt={`${product.name} image ${index + 1}`}
               className={style['gallery__thumbnail-img']}

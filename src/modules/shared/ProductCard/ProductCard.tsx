@@ -7,6 +7,7 @@ import { ScrollToSectContext } from '../../../contexts/ScrollToSectContext';
 import { AddToCartContext } from '../../../contexts/AddToCartContext';
 import { AddToFavContext } from '../../../contexts/AddToFavContext';
 import { CartProduct } from '../../../types/CartProduct';
+import { ImageWithSkeleton } from '../../../components/ImageWithSkeleton';
 
 type Props = {
   product: Product;
@@ -56,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({
           className={card.card__img}
           onClick={() => scrollToSect('top')}
         >
-          <img
+          <ImageWithSkeleton
             src={product.image}
             alt={product.itemId}
             className={card.card__img}

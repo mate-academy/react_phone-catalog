@@ -3,6 +3,7 @@ import categories from './Categories.module.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import React from 'react';
+import { ImageWithSkeleton } from '../../../../components/ImageWithSkeleton';
 
 type Props = {
   products: Product[];
@@ -32,7 +33,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
                 categories.category,
               )}
             >
-              <img
+              <ImageWithSkeleton
                 src="img\home\phones-category.png"
                 alt="phones"
                 className={cn(
@@ -54,7 +55,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
                 categories.category,
               )}
             >
-              <img
+              <ImageWithSkeleton
                 src="img\home\tablets-category.png"
                 alt="tablets"
                 className={cn(
@@ -76,7 +77,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
                 categories.category,
               )}
             >
-              <img
+              <ImageWithSkeleton
                 src="img\home\accessories-category.png"
                 alt="accessories"
                 className={cn(
