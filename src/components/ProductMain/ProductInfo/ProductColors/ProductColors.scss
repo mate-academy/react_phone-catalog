@@ -1,6 +1,7 @@
 .product-info__color-list {
   display: flex;
   gap: 8px;
+  border-bottom: 1px solid #e2e6e9;
 }
 
 .prduct-info__color--title {
@@ -13,6 +14,7 @@
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
+  margin-bottom: 24px;
 
   transition: transform 0.2s, border-color 0.2s;
 }

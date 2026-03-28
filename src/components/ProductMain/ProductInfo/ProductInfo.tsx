@@ -27,24 +27,27 @@ const ProductInfo = ({
   return (
     <>
       <h1 className="product-info__title">{someProduct.name}</h1>
-      <ProductColors
-        someProduct={someProduct}
-        selectedColor={selectedColor}
-        setSelectedColor={setSelectedColor}
-      />
-      <ProductCapacity
-        someProduct={someProduct}
-        setSelectedCapacity={setSelectedCapacity}
-        selectedCapacity={selectedCapacity}
-      />
-      <ProductPrice someProduct={someProduct} />
-      <div className="product-info__buttons">
-        <Link to="" className="product-info__button--add-to-cart">
-          Add to cart
-        </Link>
-        <Link to="" className="product-info__button--icon"></Link>
+      <div className="product-info__controls">
+        <ProductColors
+          someProduct={someProduct}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+        />
+        <ProductCapacity
+          someProduct={someProduct}
+          setSelectedCapacity={setSelectedCapacity}
+          selectedCapacity={selectedCapacity}
+        />
+        <ProductPrice someProduct={someProduct} />
+        <div className="product-info__buttons">
+          <Link to="" className="product-info__button--add-to-cart">
+            Add to cart
+          </Link>
+          <Link to="" className="product-info__button--icon"></Link>
+        </div>
+        <ProductSpec someProduct={someProduct} />
       </div>
-      <ProductSpec someProduct={someProduct} />
+
       <ProductAbout someProduct={someProduct} />
     </>
   );
