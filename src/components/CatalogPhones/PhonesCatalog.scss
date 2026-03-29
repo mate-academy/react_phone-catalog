@@ -14,23 +14,29 @@
 .catalog__top--icons {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
 };
 
-.catalog__icon--slider--right-gray {
+.catalog__icon--home {
+   width: 16px;
+  height: 16px;
+  background-image: url('../../../public/img/icons/icon--home.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.catalog__icon--slider--right--gray {
  background-image: url('/public/img/icons/icon--slider--right--gray.png');
- display: flex;
-  align-items: center;
-  justify-content: center;
 
   width: 16px;
   height: 16px;
 
   background-repeat: no-repeat;
   background-position: center;
-
-  border: 1px solid black;
-  background-color: white;
+  background-size: contain;
 };
 
 .catalog__top--text {
@@ -117,6 +123,7 @@ select {
   appearance: none;
   cursor: pointer;
 };
+
 
 .catalog__select-wrapper::after {
   content: "";

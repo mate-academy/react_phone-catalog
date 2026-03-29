@@ -4,6 +4,14 @@
   padding: 0;
   border-top: 1px solid #e2e6e9;
   width: 100%;
+  padding-inline: 16px;
+  padding-top: 32px;
+  @media (min-width: 640px) {
+    padding-top: 0;
+  }
+  @media (min-width: 1200px) {
+    padding-top: 0;
+  }
 };
 
 .footer__container {
@@ -25,7 +33,6 @@
   justify-content: flex-start;
   align-self: flex-start;
   margin-bottom: 32px;
-  padding-inline: 20px;
   @media (min-width: 640px) {
     margin: 0;
     align-self: normal;

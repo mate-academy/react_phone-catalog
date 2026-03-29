@@ -12,6 +12,12 @@ const ProductGallery = ({ someProduct }: ProductGalleryProps) => {
   return (
     <>
       <div className="product-gallery">
+        <img
+          src={activeImg}
+          alt="product"
+          className="product-gallery__main-image"
+        />
+
         <div className="product-gallery__list">
           {someProduct.images.map(img => (
             <img
@@ -24,10 +30,6 @@ const ProductGallery = ({ someProduct }: ProductGalleryProps) => {
             />
           ))}
         </div>
-
-
-          <img src={activeImg} alt="product" className="product-gallery__main-image" />
-
       </div>
     </>
   );

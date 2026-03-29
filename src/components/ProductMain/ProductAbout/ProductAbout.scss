@@ -2,6 +2,14 @@
 display: flex;
  flex-direction: column;
  gap: 32px;
+ grid-column: 1 / -1;
+  @media (min-width: 640px) {
+   grid-column: 1 / 6;
+  }
+  @media (min-width: 1200px) {
+     grid-column: 1 / 13;
+  }
+
 }
 
 .product-about__title {
@@ -20,7 +28,8 @@ margin-bottom: 16px;
 .product-about__subtitle {
 font-weight: 700;
 font-size: 20px;
-margin: 0;
+margin-top: 0;
+margin-bottom: 16px;
 }
 
 .product-about__text {

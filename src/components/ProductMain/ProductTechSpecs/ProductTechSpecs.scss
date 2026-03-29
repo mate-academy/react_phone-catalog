@@ -1,5 +1,11 @@
 .product-info__tech-specs {
-
+ grid-column: 1 / -1;
+  @media (min-width: 640px) {
+    grid-column: 7 / -1;
+  }
+  @media (min-width: 1200px) {
+    grid-column: 14 / -1;
+  }
 }
 
 .product-info__tech-specs--title {

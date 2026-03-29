@@ -4,11 +4,14 @@
   column-gap: 16px;
   width: 100%;
   padding-inline: 16px;
+  margin-bottom: 56px;
+  margin-top: 24px;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
     padding-inline: 24px;
+    margin-bottom: 64px;
   }
    @media (min-width: 1200px) {
     grid-template-columns: repeat(24, 1fr);
@@ -16,7 +19,58 @@
     column-gap: 24px;
     margin: 0 auto;
      padding-inline: 152px;
+     margin-bottom: 81px;
 }
+}
+
+.product-main__icons {
+  display: flex;
+  align-items: center;
+  grid-column: 1 / -1;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 8px;
+  text-decoration: none;
+  @media (min-width: 640px) {
+    grid-column: 1 / 11;
+  }
+  @media (min-width: 1200px) {
+    grid-column: 1 / 11;
+  }
+};
+
+.product-main__icon--home {
+   width: 16px;
+  height: 16px;
+  background-size: cover;
+  background-image: url('../../../public/img/icons/icon--home.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.product-main__icon--slider--right--gray {
+ background-image: url('/public/img/icons/icon--slider--right--gray.png');
+
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+};
+
+.product-main__top--category {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+font-size: 12px;
+};
+
+.product-main__top--name {
+  color: #b4bdc3;
+  font-weight: 600;
+font-size: 12px;
 }
 
 .product-main__title {
@@ -25,4 +79,36 @@
 font-size: 32px;
 line-height: 128%;
 letter-spacing: -0.01em;
+}
+
+.product-main__buttons--back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  grid-column: 1 / -1;
+  @media (min-width: 640px) {
+    grid-column: 1 / 3;
+  }
+  @media (min-width: 1200px) {
+    grid-column: 1 / 3;
+  }
+}
+.product-main__icon--back {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../public/img/icons/icon--slider--left.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.product-main__text--back {
+  font-weight: 700;
+font-size: 12px;
+color: #b4bdc3;
+}
+.product-main__text--back:hover {
+ color: black;
+ transition: color 0.6s ease;
 }

@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { getAccessories } from '../../api';
 import { getPhones } from '../../api';
 import { getTablets } from '../../api';
-import Slider from '../Slider/Slider';
 import { Link } from 'react-router-dom';
 
 type Counts = {
@@ -38,7 +37,6 @@ const Main = () => {
   return (
     <div className="main">
       <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
-      <Slider />
       <h2 className="second__title">Brand new models</h2>
       <div className="category__section">
         <h2 className="second__title">Shop by category</h2>

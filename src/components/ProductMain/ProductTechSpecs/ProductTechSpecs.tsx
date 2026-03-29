@@ -1,5 +1,5 @@
 import './ProductTechSpecs.scss';
-import { ProductDetails } from '../../../../pages/productPage/ProductPage';
+import { ProductDetails } from '../../../pages/productPage/ProductPage';
 
 type ProductTechSpecsProps = {
   someProduct: ProductDetails;

@@ -3,7 +3,6 @@ import './PhonesCatalog.scss';
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../api';
 import { Product } from '../../types/Product';
-import HomeIcon from '../../../public/img/icons/icon--home.png';
 import { Link } from 'react-router-dom';
 
 const Catalog = () => {
@@ -63,10 +62,8 @@ const Catalog = () => {
   return (
     <div className="catalog">
       <div className="catalog__top--icons">
-        <Link to="/">
-          <img src={HomeIcon} alt="" className="catalog__icon--home" />
-        </Link>
-        <Link to="" className="catalog__icon--slider--right--gray"></Link>
+        <Link to="/" className="catalog__icon--home"></Link>
+        <Link to="/" className="catalog__icon--slider--right--gray"></Link>
         <p className="catalog__top--text">Phones</p>
       </div>
       <h1 className="catalog__title">Mobile phones</h1>

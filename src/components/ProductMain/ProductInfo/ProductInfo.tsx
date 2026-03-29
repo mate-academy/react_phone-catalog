@@ -4,8 +4,6 @@ import ProductColors from './ProductColors/ProductColors';
 import ProductCapacity from './ProductCapacity/ProductCapacity';
 import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
-import ProductAbout from './ProductAbout/ProductAbout';
-import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
 import { ProductColor } from '../ProductMain';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -54,11 +52,6 @@ const ProductInfo = ({
               <ProductSpec someProduct={someProduct} />
             </div>
           </div>
-        </div>
-        <div className="product-info__bottom">
-          <ProductTechSpecs someProduct={someProduct} />
-
-          <ProductAbout someProduct={someProduct} />
         </div>
       </div>
     </>
