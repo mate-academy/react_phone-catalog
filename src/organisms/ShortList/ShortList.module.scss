@@ -9,8 +9,7 @@
   grid-auto-flow: column;
   grid-auto-columns: minmax(212px, 1fr);
   align-items: stretch;
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: auto visible;
   gap: space(2);
   scroll-snap-type: x proximity;
 

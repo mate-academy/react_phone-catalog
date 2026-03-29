@@ -15,12 +15,6 @@
     border-radius: $border-radius;
     overflow: hidden;
     isolation: isolate;
-
-    &:hover {
-      .modal::before {
-        border-color: $elements;
-      }
-    }
   }
 
   &__option {
@@ -46,12 +40,27 @@
       border-color: var(--option-hover-border);
       background-color: var(--option-hover-bg);
       z-index: 2;
+
       @include live-color-border(5s, calc($space-unit / 4), var(--option-hover-bg));
     }
+  }
+}
 
-    &:hover .option {
-      @include live-color-text;
-    }
+.dropdown {
+  display: flex;
+  background-color: $elements;
+  padding: calc(space(1) * 2.5) space(3);
+  border-radius: $border-radius;
+
+  &__label {
+    text-transform: capitalize;
+  }
+
+  &__chevron {
+    align-self: flex-end;
+    aspect-ratio: 1/1;
+    height: 100%;
+    fill: currentColor;
   }
 }
 
@@ -59,23 +68,6 @@
   box-sizing: border-box;
   border: calc($space-unit / 4) solid transparent;
   border-radius: $border-radius;
-
-  &:hover {
-    border-color: $elements;
-    @include live-color-border;
-
-    .dropdown {
-      background-color: $bg;
-
-      &__label {
-        @include live-color-text;
-      }
-
-      &__chevron {
-        @include live-color-fill;
-      }
-    }
-  }
 
   &__active {
     border-color: $secondary;
@@ -92,19 +84,23 @@
       }
     }
   }
-}
 
-.dropdown {
-  display: flex;
-  background-color: $elements;
-  padding: calc(space(1) * 2.5) space(3);
-  border-radius: $border-radius;
+  &:hover {
+    border-color: $elements;
 
-  &__chevron {
-    align-self: flex-end;
-    aspect-ratio: 1/1;
-    height: 100%;
-    fill: currentColor;
+    @include live-color-border;
+
+    .dropdown {
+      background-color: $bg;
+
+      &__label {
+        @include live-color-text;
+      }
+
+      &__chevron {
+        @include live-color-fill;
+      }
+    }
   }
 }
 
@@ -136,5 +132,12 @@
   min-width: fit-content;
   background-color: transparent;
   border-radius: inherit;
+}
 
+.root__modal:hover .modal::before {
+  border-color: $elements;
+}
+
+.root__option:hover .option {
+  @include live-color-text;
 }

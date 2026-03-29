@@ -1,6 +1,7 @@
 .section {
   width: 100%;
   padding-bottom: space(4);
+
   @include grid;
 
   @include respond(tablet) {

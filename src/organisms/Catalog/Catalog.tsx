@@ -5,18 +5,26 @@ type Props = {
 };
 
 export const Catalog = ({ title }: Props) => {
-
-  const options = ['first', 'second', 'third',
-    'first', 'second', 'third',
-    'first', 'second', 'third',
-    'first', 'second', 'third',
+  const options = [
+    'first',
+    'second',
+    'third',
+    'first',
+    'second',
+    'third',
+    'first',
+    'second',
+    'third',
+    'first',
+    'second',
+    'third',
   ];
 
   return (
     <Section>
       <Section.Title>{title}</Section.Title>
       <div className={s.catalog}></div>
-      <Dropdown label='text' options={options } />
+      <Dropdown label="text" options={options} />
     </Section>
   );
 };

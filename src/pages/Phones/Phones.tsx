@@ -1,5 +1,5 @@
-import { Page } from "@/atoms";
-import { Catalog } from "@/organisms";
+import { Page } from '@/atoms';
+import { Catalog } from '@/organisms';
 
 const Phones = () => {
   return (

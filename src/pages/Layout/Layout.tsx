@@ -1,7 +1,6 @@
 import s from './Layout.module.scss';
 import { Aside } from '@/molecules';
 import { Footer, Header } from '@/organisms';
-import { Page } from '@/atoms';
 import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
