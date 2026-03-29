@@ -1,7 +1,13 @@
 .catalog {
   margin-bottom: 64px;
+  padding-inline: 16px;
+   @media (min-width: 640px) {
+    margin-bottom: 80px;
+    padding-inline: 24px;
+  }
   @media (min-width: 1200px) {
     margin-bottom: 80px;
+    padding-inline: 152px;
   }
 };
 

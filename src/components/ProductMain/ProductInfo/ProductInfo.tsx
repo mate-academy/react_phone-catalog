@@ -27,36 +27,39 @@ const ProductInfo = ({
 
   return (
     <>
-      <div className="product-info__top">
-        <div className="product-info__controls">
-          <div className="product-info__left">
-            <ProductColors
-              someProduct={someProduct}
-              selectedColor={selectedColor}
-              setSelectedColor={setSelectedColor}
-            />
-            <ProductCapacity
-              someProduct={someProduct}
-              setSelectedCapacity={setSelectedCapacity}
-              selectedCapacity={selectedCapacity}
-            />
-            <ProductPrice someProduct={someProduct} />
-            <div className="product-info__buttons">
-              <Link to="" className="product-info__button--add-to-cart">
-                Add to cart
-              </Link>
-              <Link to="" className="product-info__button--icon"></Link>
+      {' '}
+      <div className="product-info">
+        <div className="product-info__top">
+          <div className="product-info__controls">
+            <div className="product-info__left">
+              <ProductColors
+                someProduct={someProduct}
+                selectedColor={selectedColor}
+                setSelectedColor={setSelectedColor}
+              />
+              <ProductCapacity
+                someProduct={someProduct}
+                setSelectedCapacity={setSelectedCapacity}
+                selectedCapacity={selectedCapacity}
+              />
+              <ProductPrice someProduct={someProduct} />
+              <div className="product-info__buttons">
+                <Link to="" className="product-info__button--add-to-cart">
+                  Add to cart
+                </Link>
+                <Link to="" className="product-info__button--icon"></Link>
+              </div>
+            </div>
+            <div className="product-info__right">
+              <ProductSpec someProduct={someProduct} />
             </div>
           </div>
-          <div className="product-info__right">
-            <ProductSpec someProduct={someProduct} />
-          </div>
         </div>
-      </div>
-      <div className="product-info__bottom">
-        <ProductTechSpecs someProduct={someProduct} />
+        <div className="product-info__bottom">
+          <ProductTechSpecs someProduct={someProduct} />
 
-        <ProductAbout someProduct={someProduct} />
+          <ProductAbout someProduct={someProduct} />
+        </div>
       </div>
     </>
   );

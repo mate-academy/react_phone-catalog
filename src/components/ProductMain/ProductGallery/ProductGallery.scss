@@ -1,10 +1,10 @@
 .product-gallery {
-  grid-column: span 24;
+  grid-column: 1 / -1;
   @media (min-width: 640px) {
-    grid-column: span 6;
+    grid-column: 1 / 6;
   }
   @media (min-width: 1200px) {
-    grid-column: 1 / 11;
+    grid-column: 1 / 14;
   }
   display: flex;
   gap: 20px;
@@ -38,5 +38,5 @@
 }
 
 .product-gallery__main-image {
-
+  width: 100%;
 }
