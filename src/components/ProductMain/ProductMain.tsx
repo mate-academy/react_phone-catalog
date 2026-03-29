@@ -33,6 +33,7 @@ const ProductMain = ({ someProduct }: ProductMainProps) => {
 
   return (
     <div className="product-main">
+      <h1 className="product-main__title">{someProduct.name}</h1>
       <ProductGallery someProduct={someProduct} />
       <ProductInfo
         someProduct={someProduct}

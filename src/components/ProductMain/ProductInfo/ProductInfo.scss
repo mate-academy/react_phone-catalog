@@ -1,4 +1,27 @@
+.product-info__controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: 1 / -1;
+  gap: 32px;
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    grid-column: 8 / -1;
+  }
 
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    grid-column: 14 / -1;
+  }
+}
+
+.product-info__left,
+.product-info__right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 .product-info__buttons {
   display: flex;
