@@ -1,5 +1,5 @@
-import Section from '@/atoms/Section';
-import styles from './Categories.module.scss';
+import { Section } from '@/atoms';
+import s from './Categories.module.scss';
 import { CategoryCard } from './ui/CategoryCard';
 import { Category, CATEGORY_LIST } from '@/const';
 import { useCategoryCount } from '@/hooks/useCategoryCount';
@@ -13,10 +13,10 @@ export const Categories = ({ title }: Props) => {
   const counts = useCategoryCount();
 
   return (
-    <Section className={styles.categories}>
-      <div className={styles.container}>
-        <Section.Title className={styles.title}>{title}</Section.Title>
-        <div className={styles.content}>
+    <Section className={s.categories}>
+      <div className={s.container}>
+        <Section.Title className={s.title}>{title}</Section.Title>
+        <div className={s.content}>
           {categories.map(category => (
             <CategoryCard key={category} category={category} counts={counts} />
           ))}

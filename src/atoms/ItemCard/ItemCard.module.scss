@@ -54,11 +54,26 @@
     font-weight: 400;
   }
 
+  &__price {
+    display: flex;
+    gap: space(2);
+    justify-content: baseline;
+  }
+
   &__priceRegular {
     margin: 0;
     font-weight: 800;
     line-height: 1.4;
     font-size: large;
+  }
+
+  &__priceDiscount {
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.4;
+    font-size: large;
+    text-decoration: line-through;
+    color: $secondary;
   }
 
   &__specs {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Button.module.scss';
+import s from './Button.module.scss';
 import { cn } from '@/utils/cn';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -21,13 +21,13 @@ const Button: React.FC<ButtonProps> = ({
       {...props}
       type={type}
       className={cn(
-        styles.button,
-        styles[variant],
-        { [styles.buttonAnimated]: animation },
+        s.button,
+        s[variant],
+        { [s.buttonAnimated]: animation },
         classNames,
       )}
     >
-      <span className={styles.content}>{children}</span>
+      <span className={s.content}>{children}</span>
     </button>
   );
 };

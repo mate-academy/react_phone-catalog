@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Link.module.scss';
+import s from './Link.module.scss';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/utils/cn';
 
@@ -15,7 +15,7 @@ const Link: React.FC<Props> = ({ children, to, onClick }) => {
       to={to}
       onClick={onClick}
       className={({ isActive }) =>
-        cn(styles.link, { [styles.active]: isActive })
+        cn(s.link, { [s.active]: isActive })
       }
     >
       {children}

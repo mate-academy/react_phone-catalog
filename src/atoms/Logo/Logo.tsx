@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { cn } from '@/utils/cn';
-import styles from './Logo.module.scss';
+import s from './Logo.module.scss';
 
 type Props = {
   className?: string;
@@ -10,13 +10,13 @@ type Props = {
 const Logo = ({ className = '', variant = 'default' }: Props) => {
   return (
     <Link
-      className={cn(styles.logo, className)}
+      className={cn(s.logo, className)}
       to="/"
       aria-label="Go to homepage"
     >
       <div
-        className={cn(styles.logo__img, {
-          [styles.logo__imgHeader]: variant === 'header',
+        className={cn(s.logo__img, {
+          [s.logo__imgHeader]: variant === 'header',
         })}
       />
     </Link>

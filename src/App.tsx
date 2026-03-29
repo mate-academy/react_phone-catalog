@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Layout from '@/pages/Layout';
-import Home from '@/pages/Home';
-import Phones from '@/pages/Phones';
+import { Layout, Home, Phones } from '@/pages';
 
 import '@/App.scss';
 

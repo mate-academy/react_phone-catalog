@@ -1,8 +1,7 @@
-import styles from './Layout.module.scss';
-import Aside from '@/molecules/Aside';
-import Footer from '@/organisms/Footer';
-import Header from '@/organisms/Header';
-import Page from '@/atoms/Page';
+import s from './Layout.module.scss';
+import { Aside } from '@/molecules';
+import { Footer, Header } from '@/organisms';
+import { Page } from '@/atoms';
 import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -46,7 +45,7 @@ const Layout = () => {
   };
 
   return (
-    <div className={styles.layout}>
+    <div className={s.layout}>
       <Header
         theme={theme}
         onThemeToggle={handleThemeToggle}
@@ -54,7 +53,7 @@ const Layout = () => {
         onMenuButtonClick={handleMenuButtonClick}
       />
       <Aside isOpen={isMenuOpen} onNavigate={handleAsideNavigate} />
-      <div className={styles.borders}>
+      <div className={s.borders}>
         <Page>
           <Outlet />
         </Page>

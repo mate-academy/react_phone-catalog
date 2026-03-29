@@ -1,5 +1,5 @@
 import type { FC, HTMLAttributes, ReactNode } from 'react';
-import styles from './Page.module.scss';
+import s from './Page.module.scss';
 import { cn } from '@/utils/cn';
 
 type PageTag = 'main' | 'div' | 'section';
@@ -16,7 +16,7 @@ const Page: FC<PageProps> = ({
   ...props
 }) => {
   return (
-    <Component className={cn(styles.page, className)} {...props}>
+    <Component className={cn(s.page, className)} {...props}>
       {children}
     </Component>
   );

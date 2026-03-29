@@ -1,7 +1,6 @@
-import styles from './Slider.module.scss';
+import s from './Slider.module.scss';
 import Chevron from '@/assets/icons/chevron.svg?react';
-import Button from '@/atoms/Button';
-import Section from '@/atoms/Section';
+import { Button, Section } from '@/atoms';
 import { useEffect, useState } from 'react';
 import { cn } from '@/utils/cn';
 import { AUTOPLAY_DELAY, SLIDES } from '@/const';
@@ -43,43 +42,43 @@ const Slider = ({ title }: Props) => {
   };
 
   return (
-    <Section className={styles.slider__section}>
-      <div className={styles.sectionHeader}>
-        <Section.Title className={styles.sectionTitle}>{title}</Section.Title>
+    <Section className={s.slider__section}>
+      <div className={s.sectionHeader}>
+        <Section.Title className={s.sectionTitle}>{title}</Section.Title>
       </div>
 
-      <div className={styles.slider}>
+      <div className={s.slider}>
         <Button
-          classNames={styles.button__left}
+          classNames={s.button__left}
           onClick={prev}
           disabled={isFirstSlide}
         >
           <Chevron />
         </Button>
 
-        <div className={styles.slider__insider}>
-          <div className={styles.slider__modalBlock}>
-            <div className={styles.modal}>
+        <div className={s.slider__insider}>
+          <div className={s.slider__modalBlock}>
+            <div className={s.modal}>
               {SLIDES.map((item, index) => (
                 <div
                   key={item.title}
-                  className={cn(styles.modalContent, {
-                    [styles.modalContentActive]: slide === index,
+                  className={cn(s.modalContent, {
+                    [s.modalContentActive]: slide === index,
                   })}
                 >
-                  <p className={styles.modalEyebrow}>{item.eyebrow}</p>
-                  <h3 className={styles.modalTitle}>{item.title}</h3>
-                  <p className={styles.modalDescription}>{item.description}</p>
+                  <p className={s.modalEyebrow}>{item.eyebrow}</p>
+                  <h3 className={s.modalTitle}>{item.title}</h3>
+                  <p className={s.modalDescription}>{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className={styles.slider__imageBlock}>
+          <div className={s.slider__imageBlock}>
             {SLIDES.map((item, index) => (
               <img
                 key={item.image}
-                className={cn(styles.slideImage, {
-                  [styles.slideImageActive]: slide === index,
+                className={cn(s.slideImage, {
+                  [s.slideImageActive]: slide === index,
                 })}
                 src={item.image}
                 alt={`Banner ${index + 1}`}
@@ -94,23 +93,23 @@ const Slider = ({ title }: Props) => {
         </div>
 
         <Button
-          classNames={styles.button__right}
+          classNames={s.button__right}
           onClick={next}
           disabled={isLastSlide}
         >
           <Chevron />
         </Button>
 
-        <div className={styles.pagination}>
+        <div className={s.pagination}>
           {SLIDES.map((_, index) => (
             <div
               key={index}
-              className={styles.pagination__block}
+              className={s.pagination__block}
               onClick={() => setSlide(index)}
             >
               <div
-                className={cn(styles.pagination__anchor, {
-                  [styles['pagination__anchor--active']]: slide === index,
+                className={cn(s.pagination__anchor, {
+                  [s['pagination__anchor--active']]: slide === index,
                 })}
               />
             </div>

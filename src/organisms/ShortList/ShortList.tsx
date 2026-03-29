@@ -1,18 +1,17 @@
 import { FC, useState } from 'react';
-import { GoodCard } from './ui/GoodCard';
+import { Button, ItemCard, Section } from '@/atoms';
 import { Phone } from '@/types/phone';
-import styles from './GoodList.module.scss';
-import Button from '@/atoms/Button';
-import Section from '@/atoms/Section';
+import s from './ShortList.module.scss';
 import Chevron from '@/assets/icons/chevron.svg?react';
 
 type Props = {
   items: Phone[];
   title: string;
+  pageSize?: number;
+  discount?: boolean;
 };
 
-export const GoodList: FC<Props> = ({ items, title }) => {
-  const pageSize = 4;
+export const ShortList: FC<Props> = ({ items, title, pageSize = 4, discount }) => {
   const [page, setPage] = useState(0);
 
   const next = () => {
@@ -25,12 +24,12 @@ export const GoodList: FC<Props> = ({ items, title }) => {
 
   return (
     <Section>
-      <div className={styles.container}>
-        <Section.Title className={styles.title}>{title}</Section.Title>
+      <div className={s.container}>
+        <Section.Title className={s.title}>{title}</Section.Title>
 
-        <div className={styles.button__container}>
+        <div className={s.button__container}>
           <Button
-            classNames={styles.button__left}
+            classNames={s.button__left}
             onClick={prev}
             disabled={page === 0}
           >
@@ -38,7 +37,7 @@ export const GoodList: FC<Props> = ({ items, title }) => {
           </Button>
 
           <Button
-            classNames={styles.button__right}
+            classNames={s.button__right}
             onClick={next}
             disabled={page + pageSize >= items.length}
           >
@@ -46,9 +45,9 @@ export const GoodList: FC<Props> = ({ items, title }) => {
           </Button>
         </div>
 
-        <div className={styles.list}>
+        <div className={s.list}>
           {items.slice(page, page + pageSize).map(item => (
-            <GoodCard key={item.id} item={item} />
+            <ItemCard key={item.id} item={item} discount={discount} />
           ))}
         </div>
       </div>

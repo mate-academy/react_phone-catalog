@@ -1,5 +1,5 @@
 import { Category, CATEGORY_IMG_PATH, CATEGORY_LIST } from '@/const';
-import style from './CategoryCard.module.scss';
+import s from './CategoryCard.module.scss';
 import { CategoriesCounts } from '@/hooks/useCategoryCount';
 type Props = {
   category: Category;
@@ -8,14 +8,14 @@ type Props = {
 
 export const CategoryCard: React.FC<Props> = ({ category, counts }) => {
   return (
-    <div className={style.card}>
+    <div className={s.card}>
       <img
-        className={style.img}
+        className={s.img}
         src={CATEGORY_IMG_PATH[category]}
         alt={category}
       />
-      <span className={style.card__name}>{CATEGORY_LIST[category]}</span>
-      <span className={style.card__count}>{counts[category]} models</span>
+      <span className={s.card__name}>{CATEGORY_LIST[category]}</span>
+      <span className={s.card__count}>{counts[category]} models</span>
     </div>
   );
 };

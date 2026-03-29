@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn';
-import styles from './ThemeSwitch.module.scss';
+import s from './ThemeSwitch.module.scss';
 
 type Props = {
   className?: string;
@@ -13,13 +13,13 @@ const ThemeSwitch = ({ className = '', theme, onToggle }: Props) => {
   return (
     <button
       type="button"
-      className={cn(styles.button, className)}
+      className={cn(s.button, className)}
       aria-label={`Switch to ${nextTheme} theme`}
       onClick={onToggle}
     >
       {theme === 'dark' ? (
         <svg
-          className={cn(styles.icon, styles.iconSun)}
+          className={cn(s.icon, s.iconSun)}
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -35,12 +35,12 @@ const ThemeSwitch = ({ className = '', theme, onToggle }: Props) => {
         </svg>
       ) : (
         <svg
-          className={cn(styles.icon, styles.iconMoon)}
+          className={cn(s.icon, s.iconMoon)}
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
           <path
-            className={styles.moonCrescent}
+            className={s.moonCrescent}
             d="M20.8 14.2A8.8 8.8 0 1 1 9.9 3.2a7.2 7.2 0 1 0 10.9 11Z"
           />
         </svg>

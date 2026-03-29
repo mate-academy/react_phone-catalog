@@ -1,5 +1,5 @@
 import type { FC, HTMLAttributes, ReactNode } from 'react';
-import styles from './Section.module.scss';
+import s from './Section.module.scss';
 import { SectionTitle } from './SectionTitle';
 import { cn } from '@/utils/cn';
 
@@ -18,7 +18,7 @@ const SectionBase: FC<SectionProps> = ({
   children,
   ...props
 }) => {
-  const classes = cn(!unstyled && styles.section, className);
+  const classes = cn(!unstyled && s.section, className);
 
   return (
     <Component className={classes} {...props}>
