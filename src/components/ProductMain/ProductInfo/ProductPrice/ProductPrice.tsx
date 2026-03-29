@@ -2,18 +2,18 @@ import './ProductPrice.scss';
 import { ProductDetails } from '../../../../pages/productPage/ProductPage';
 
 type ProductPriceProps = {
-  someProduct: ProductDetails;
+  currentProduct: ProductDetails;
 };
 
-const ProductPrice = ({ someProduct }: ProductPriceProps) => {
+const ProductPrice = ({ currentProduct }: ProductPriceProps) => {
   return (
     <>
       <div className="product-info__price">
         <span className="product-info__price--regular">
-          ${someProduct.priceRegular}
+          ${currentProduct.priceRegular}
         </span>
         <span className="product-info_price--discount">
-          ${someProduct.priceDiscount}
+          ${currentProduct.priceDiscount}
         </span>
       </div>
     </>

@@ -1,7 +1,9 @@
 import './ProductInfo.scss';
 import { ProductDetails } from '../../../pages/productPage/ProductPage';
 import ProductColors from './ProductColors/ProductColors';
-import ProductCapacity from './ProductCapacity/ProductCapacity';
+import ProductCapacity, {
+  ProductCapacityType,
+} from './ProductCapacity/ProductCapacity';
 import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../ProductMain';
@@ -11,16 +13,20 @@ import { Link } from 'react-router-dom';
 type ProductInfoProps = {
   selectedColor: string;
   setSelectedColor: React.Dispatch<React.SetStateAction<ProductColor>>;
-  someProduct: ProductDetails;
+  currentProduct: ProductDetails;
+  selectedCapacity: string;
+  setSelectedCapacity: React.Dispatch<
+    React.SetStateAction<ProductCapacityType>
+  >;
 };
 
 const ProductInfo = ({
-  someProduct,
+  currentProduct,
   selectedColor,
   setSelectedColor,
 }: ProductInfoProps) => {
   const [selectedCapacity, setSelectedCapacity] = useState(
-    someProduct.capacityAvailable[0],
+    currentProduct.capacityAvailable[0],
   );
 
   return (
@@ -31,16 +37,16 @@ const ProductInfo = ({
           <div className="product-info__controls">
             <div className="product-info__left">
               <ProductColors
-                someProduct={someProduct}
+                currentProduct={currentProduct}
                 selectedColor={selectedColor}
                 setSelectedColor={setSelectedColor}
               />
               <ProductCapacity
-                someProduct={someProduct}
+                currentProduct={currentProduct}
                 setSelectedCapacity={setSelectedCapacity}
                 selectedCapacity={selectedCapacity}
               />
-              <ProductPrice someProduct={someProduct} />
+              <ProductPrice currentProduct={currentProduct} />
               <div className="product-info__buttons">
                 <Link to="" className="product-info__button--add-to-cart">
                   Add to cart
@@ -49,7 +55,7 @@ const ProductInfo = ({
               </div>
             </div>
             <div className="product-info__right">
-              <ProductSpec someProduct={someProduct} />
+              <ProductSpec currentProduct={currentProduct} />
             </div>
           </div>
         </div>

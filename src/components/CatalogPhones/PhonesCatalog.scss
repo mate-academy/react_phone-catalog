@@ -1,13 +1,16 @@
 .catalog {
   margin-bottom: 64px;
   padding-inline: 16px;
+  margin-top: 24px;
    @media (min-width: 640px) {
     margin-bottom: 80px;
     padding-inline: 24px;
+    margin-top: 24px;
   }
   @media (min-width: 1200px) {
     margin-bottom: 80px;
     padding-inline: 152px;
+    margin-top: 24px;
   }
 };
 
@@ -39,7 +42,9 @@
 };
 
 .catalog__top--text {
-  color: #e2e6e9;
+  color: #b4bdc3;
+  font-weight: 600;
+font-size: 12px;
 };
 
 .catalog__title {

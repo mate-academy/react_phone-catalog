@@ -3,12 +3,13 @@ import { ProductDetails } from '../../pages/productPage/ProductPage';
 import ProductGallery from './ProductGallery/ProductGallery';
 import ProductInfo from './ProductInfo/ProductInfo';
 import ProductAbout from './ProductAbout/ProductAbout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
 import { Link } from 'react-router-dom';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
+  models: ProductDetails[];
 };
 
 export type ProductColor =
@@ -29,10 +30,29 @@ export type ProductColor =
   | 'starlight'
   | 'skyblue';
 
-const ProductMain = ({ someProduct }: ProductMainProps) => {
+const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
   );
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    someProduct.capacityAvailable[0],
+  );
+
+  const [currentProduct, setCurrentProduct] = useState(someProduct);
+
+  useEffect(() => {
+    setCurrentProduct(someProduct);
+  }, [someProduct]);
+
+  useEffect(() => {
+    const foundProduct = models.find(p => {
+      return p.color === selectedColor && p.capacity === selectedCapacity;
+    });
+
+    if (foundProduct) {
+      setCurrentProduct(foundProduct);
+    }
+  }, [selectedColor, selectedCapacity, models]);
 
   return (
     <div className="product-main">
@@ -40,28 +60,30 @@ const ProductMain = ({ someProduct }: ProductMainProps) => {
         <Link to="/" className="product-main__icon--home"></Link>
         <Link to="/" className="product-main__icon--slider--right--gray"></Link>
         <Link
-          to={`/${someProduct.category}`}
+          to={`/${currentProduct.category}`}
           className="product-main__top--category"
         >
-          {someProduct.category.charAt(0).toUpperCase() +
-            someProduct.category.slice(1)}
+          {currentProduct.category.charAt(0).toUpperCase() +
+            currentProduct.category.slice(1)}
         </Link>
         <Link to="/" className="product-main__icon--slider--right--gray"></Link>
-        <p className="product-main__top--name">{someProduct.name}</p>
+        <p className="product-main__top--name">{currentProduct.name}</p>
       </div>
       <Link to="/" className="product-main__buttons--back">
         <Link to="/" className="product-main__icon--back"></Link>
         <p className="product-main__text--back">Back</p>
       </Link>
-      <h1 className="product-main__title">{someProduct.name}</h1>
-      <ProductGallery someProduct={someProduct} />
+      <h1 className="product-main__title">{currentProduct.name}</h1>
+      <ProductGallery currentProduct={currentProduct} />
       <ProductInfo
-        someProduct={someProduct}
+        currentProduct={currentProduct}
         selectedColor={selectedColor}
         setSelectedColor={setSelectedColor}
+        selectedCapacity={selectedCapacity}
+        setSelectedCapacity={setSelectedCapacity}
       />
-      <ProductAbout someProduct={someProduct} />
-      <ProductTechSpecs someProduct={someProduct} />
+      <ProductAbout currentProduct={currentProduct} />
+      <ProductTechSpecs currentProduct={currentProduct} />
     </div>
   );
 };

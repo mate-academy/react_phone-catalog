@@ -2,15 +2,15 @@ import './ProductAbout.scss';
 import { ProductDetails } from '../../../pages/productPage/ProductPage';
 
 type ProductAboutProps = {
-  someProduct: ProductDetails;
+  currentProduct: ProductDetails;
 };
 
-const ProductAbout = ({ someProduct }: ProductAboutProps) => {
+const ProductAbout = ({ currentProduct }: ProductAboutProps) => {
   return (
     <>
       <div className="product-about">
         <h2 className="product-about__title">About</h2>
-        {someProduct.description.map(item => (
+        {currentProduct.description.map(item => (
           <div key={item.title} className="product-about__section">
             <h3 className="product-about__subtitle">{item.title}</h3>
             {item.text.map((paragraph, index) => (

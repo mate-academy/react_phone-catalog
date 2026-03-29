@@ -3,11 +3,11 @@ import { ProductDetails } from '../../../pages/productPage/ProductPage';
 import { useState } from 'react';
 
 type ProductGalleryProps = {
-  someProduct: ProductDetails;
+  currentProduct: ProductDetails;
 };
 
-const ProductGallery = ({ someProduct }: ProductGalleryProps) => {
-  const [activeImg, setActiveImg] = useState(someProduct.images[0]);
+const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
+  const [activeImg, setActiveImg] = useState(currentProduct.images[0]);
 
   return (
     <>
@@ -19,7 +19,7 @@ const ProductGallery = ({ someProduct }: ProductGalleryProps) => {
         />
 
         <div className="product-gallery__list">
-          {someProduct.images.map(img => (
+          {currentProduct.images.map(img => (
             <img
               key={img}
               src={img}

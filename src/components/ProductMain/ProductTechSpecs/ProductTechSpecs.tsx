@@ -2,10 +2,10 @@ import './ProductTechSpecs.scss';
 import { ProductDetails } from '../../../pages/productPage/ProductPage';
 
 type ProductTechSpecsProps = {
-  someProduct: ProductDetails;
+  currentProduct: ProductDetails;
 };
 
-const ProductTechSpecs = ({ someProduct }: ProductTechSpecsProps) => {
+const ProductTechSpecs = ({ currentProduct }: ProductTechSpecsProps) => {
   return (
     <>
       <div className="product-info__tech-specs">
@@ -13,37 +13,37 @@ const ProductTechSpecs = ({ someProduct }: ProductTechSpecsProps) => {
         <div className="product-info__tech-specs--section">
           <span className="product-info__tech-spec--label">Screen</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.screen}
+            {currentProduct.screen}
           </span>
           <span className="product-info__tech-spec--label">Resolution</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.resolution}
+            {currentProduct.resolution}
           </span>
           <span className="product-info__tech-spec--label">Processor</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.processor}
+            {currentProduct.processor}
           </span>
           <span className="product-info__tech-spec--label">RAM</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.ram}
+            {currentProduct.ram}
           </span>
           <span className="product-info__tech-spec--label">
             Built in memory
           </span>
           <span className="product-info__tech-spec--value">
-            {someProduct.capacity}
+            {currentProduct.capacity}
           </span>
           <span className="product-info__tech-spec--label">Camera</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.camera}
+            {currentProduct.camera}
           </span>
           <span className="product-info__tech-spec--label">Zoom</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.zoom}
+            {currentProduct.zoom}
           </span>
           <span className="product-info__tech-spec--label">Cell</span>
           <span className="product-info__tech-spec--value">
-            {someProduct.cell.join(', ')}
+            {currentProduct.cell.join(', ')}
           </span>
         </div>
       </div>
