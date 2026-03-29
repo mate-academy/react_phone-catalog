@@ -25,7 +25,9 @@ export interface Product {
   // Спільні поля
   screen: string;
   capacity: string;
+  capacityAvailable?: string[]; // Додано для списку доступних обсягів пам'яті
   color: string;
+  colorsAvailable?: string[]; // Додано для списку доступних кольорів
   ram: string;
   year: string;
 }

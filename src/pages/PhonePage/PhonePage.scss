@@ -1,12 +1,12 @@
 .grid {
   display: grid;
   gap: 16px; /* gutter */
-  grid-template-columns: repeat(4, 1fr); /* мобілка */
+  grid-template-columns: repeat(4, 32px); /* мобілка */
 }
 
 @media (min-width: 640px) {
   .grid {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 32px);
     justify-content: center;
     margin: 0 12px;
   }

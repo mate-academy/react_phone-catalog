@@ -56,15 +56,15 @@ export const ProductCard = ({ product, discount }: Props) => {
         <div className={styles['card-image-wrap']}>
           {/* Використовуємо нашу універсальну змінну для картинки */}
           <img
-            src={displayImage}
+            src={`/${displayImage}`}
             alt={`${product.name} ${product.color}`}
             className={styles['card-image']}
-            onError={e => {
-              (e.target as HTMLImageElement).setAttribute(
-                'src',
-                'https://via.placeholder.com/200x240/f0f0f0/999?text=iPhone',
-              );
-            }}
+            // onError={e => {
+            //   (e.target as HTMLImageElement).setAttribute(
+            //     'src',
+            //     'https://via.placeholder.com/200x240/f0f0f0/999?text=iPhone',
+            //   );
+            // }}
           />
         </div>
         <div className={styles['card-body']}>

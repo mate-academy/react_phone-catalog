@@ -3,6 +3,7 @@
   align-items: center;
   cursor: pointer;
   gap: 4px;
+  grid-column: 1 / -1;
 
   &__arrow {
     display: flex;
