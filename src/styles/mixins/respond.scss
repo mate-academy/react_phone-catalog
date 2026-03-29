@@ -32,7 +32,7 @@ $space: (
     margin: 0 auto;
     grid-template-columns: repeat(4, 1fr);
     gap: space(3);
-    padding-inline: space(3);
+    padding-inline: 0;
   }
 
   @include respond(tablet) {

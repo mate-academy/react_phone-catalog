@@ -1,10 +1,11 @@
 .sectionHeader {
-  @include grid;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
 }
 
 .slider__section {
   padding-top: space(4);
-
 
   @include respond(tablet) {
     padding-top: space(5);
@@ -16,8 +17,10 @@
 }
 
 .slider {
+  grid-column: 1 / -1;
   padding-inline: 0;
   display: grid;
+  grid-template-columns: subgrid;
   grid-template-rows: auto auto;
   row-gap: space(1);
 
@@ -62,8 +65,6 @@
 
   @include respond(tablet) {
     row-gap: space(2);
-
-    @include grid;
   }
 }
 

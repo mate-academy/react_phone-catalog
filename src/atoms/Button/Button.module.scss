@@ -50,23 +50,11 @@
 }
 
 .secondary {
-  --button-bg: inherit;
-  --button-color: #{$white};
-  --button-border: #{$white};
-  --button-hover-bg: #{$bg};
-  --button-hover-border: #{$text};
-}
-
-[data-theme='light'] .secondary {
+  --button-bg: #{$elements};
   --button-color: #{$text};
-  --button-border: #{$text};
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) .secondary {
-    --button-color: #{$accent};
-    --button-border: #{$text};
-  }
+  --button-border: transparent;
+  --button-hover-bg: #{$bg};
+  --button-hover-border: #{$elements};
 }
 
 .primary {

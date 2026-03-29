@@ -1,5 +1,12 @@
+import { Page } from "@/atoms";
+import { Catalog } from "@/organisms";
+
 const Phones = () => {
-  return <h1>Phones</h1>;
+  return (
+    <Page>
+      <Catalog title="Phones" />
+    </Page>
+  );
 };
 
 export default Phones;

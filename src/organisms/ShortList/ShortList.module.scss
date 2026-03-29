@@ -4,17 +4,23 @@
   width: 100%;
   min-width: 0;
   padding-bottom: space(4);
+  display: grid;
 
   grid-auto-flow: column;
-  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-columns: minmax(212px, 1fr);
   align-items: stretch;
-  overflow: auto visible;
+  overflow-x: auto;
+  overflow-y: visible;
   gap: space(2);
+  scroll-snap-type: x proximity;
 
   -ms-overflow-style: none;
   grid-auto-rows: 1fr;
 
-  @include grid;
+  @include respond(tablet) {
+    grid-template-columns: subgrid;
+    grid-auto-columns: minmax(0, 1fr);
+  }
 
   @include respond(desktop) {
     grid-auto-flow: unset;
@@ -24,10 +30,11 @@
 }
 
 .container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
   grid-template-rows: auto 1fr;
   min-width: 0;
-
-  @include grid;
 }
 
 .title {

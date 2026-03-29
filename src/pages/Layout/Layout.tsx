@@ -54,9 +54,7 @@ const Layout = () => {
       />
       <Aside isOpen={isMenuOpen} onNavigate={handleAsideNavigate} />
       <div className={s.borders}>
-        <Page>
-          <Outlet />
-        </Page>
+        <Outlet />
       </div>
       <Footer />
     </div>

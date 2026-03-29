@@ -1,3 +1,140 @@
+.root {
+  position: relative;
+  font-weight: 500;
+  text-transform: none;
+  text-transform: capitalize;
+  width: 100%;
+
+  &__modal {
+    position: absolute;
+    top: calc(100% + space(1));
+    left: 0;
+    width: max-content;
+    min-width: fit-content;
+    max-width: min(100vw - space(3) * 2, calc($space-unit * 120));
+    border-radius: $border-radius;
+    overflow: hidden;
+    isolation: isolate;
+
+    &:hover {
+      .modal::before {
+        border-color: $elements;
+      }
+    }
+  }
+
+  &__option {
+    --option-bg: transparent;
+    --option-color: #{$text};
+    --option-border: transparent;
+    --option-hover-bg: #{$bg};
+    --option-hover-color: #{$text};
+    --option-hover-border: #{$text};
+
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: fit-content;
+    border-radius: inherit;
+    border: calc($space-unit / 4) solid var(--option-border);
+    background-color: var(--option-bg);
+    color: var(--option-color);
+
+    &:hover {
+      color: var(--option-hover-color);
+      border-color: var(--option-hover-border);
+      background-color: var(--option-hover-bg);
+      z-index: 2;
+      @include live-color-border(5s, calc($space-unit / 4), var(--option-hover-bg));
+    }
+
+    &:hover .option {
+      @include live-color-text;
+    }
+  }
+}
+
+.wrapper {
+  box-sizing: border-box;
+  border: calc($space-unit / 4) solid transparent;
+  border-radius: $border-radius;
+
+  &:hover {
+    border-color: $elements;
+    @include live-color-border;
+
+    .dropdown {
+      background-color: $bg;
+
+      &__label {
+        @include live-color-text;
+      }
+
+      &__chevron {
+        @include live-color-fill;
+      }
+    }
+  }
+
+  &__active {
+    border-color: $secondary;
+
+    .dropdown {
+      background-color: $bg;
+
+      &__label {
+        color: $secondary;
+      }
+
+      &__chevron {
+        color: $secondary;
+      }
+    }
+  }
+}
+
 .dropdown {
-  margin: auto;
+  display: flex;
+  background-color: $elements;
+  padding: calc(space(1) * 2.5) space(3);
+  border-radius: $border-radius;
+
+  &__chevron {
+    align-self: flex-end;
+    aspect-ratio: 1/1;
+    height: 100%;
+    fill: currentColor;
+  }
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  min-width: fit-content;
+  background-color: $bg;
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: calc($space-unit / 4) solid $elements;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.option {
+  box-sizing: border-box;
+  padding: calc(space(1) * 2.5) space(3);
+  width: 100%;
+  min-width: fit-content;
+  background-color: transparent;
+  border-radius: inherit;
+
 }

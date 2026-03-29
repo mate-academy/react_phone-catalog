@@ -1,6 +1,7 @@
 .section {
   width: 100%;
   padding-bottom: space(4);
+  @include grid;
 
   @include respond(tablet) {
     padding-bottom: space(5);
@@ -8,6 +9,8 @@
 }
 
 .title {
+  width: 100%;
+  grid-column: 1 / -1;
   margin: 0 0 space(3);
   color: $text;
   text-transform: none;
