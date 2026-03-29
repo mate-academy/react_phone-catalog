@@ -6,6 +6,7 @@ import styles from './MobileMenu.module.scss';
 import { ThemeToggler } from '@/components/ui/ThemeToggle';
 import { LangSwitcher } from '@/components/ui/LanguageSwitcher';
 import { AnimatePresence, motion } from 'motion/react';
+import { useProductStore } from '@/store/productStore';
 
 interface Props {
   isOpen: boolean;
@@ -15,6 +16,10 @@ interface Props {
 
 export const MobileMenu = ({ isOpen, onClose, navItems }: Props) => {
   const { t } = useTranslation('common');
+  const favorites = useProductStore(state => state.favorites);
+  const cart = useProductStore(state => state.cart);
+  const favCount = favorites.length;
+  const cartCount = cart.length;
 
   return (
     <AnimatePresence>
@@ -58,11 +63,13 @@ export const MobileMenu = ({ isOpen, onClose, navItems }: Props) => {
               onClick={onClose}
             >
               <Heart size={16} strokeWidth={1.5} />
-              {/* <span className={styles.badge}>12</span> */}
+              {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
             </NavLink>
             <NavLink to="/cart" className={styles.actionBtn} onClick={onClose}>
               <ShoppingBag size={16} strokeWidth={1.5} />
-              {/* <span className={styles.badge}>5</span> */}
+              {cartCount > 0 && (
+                <span className={styles.badge}>{cartCount}</span>
+              )}
             </NavLink>
           </div>
         </motion.div>

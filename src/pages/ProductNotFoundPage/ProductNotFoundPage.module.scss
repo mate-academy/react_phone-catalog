@@ -23,6 +23,7 @@
   object-fit: contain;
   transition: filter 0.3s ease;
 
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global([data-theme='dark']) & {
     filter: invert(1);
   }
@@ -43,6 +44,7 @@
 }
 
 .description {
+  max-width: 350px;
   font-size: 16px;
   font-weight: 500;
   color: $color-secondary;

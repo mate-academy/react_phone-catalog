@@ -1,0 +1,59 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-bottom: 80px;
+
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop 80px;
+  }
+}
+
+.title {
+  @include title;
+  padding-bottom: 8px;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-secondary;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+
+  @include respond-to(1150px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(880px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 12px;
+  }
+
+  @include respond-to(620px) {
+    grid-template-columns: minmax(auto, 320px);
+    justify-content: center;
+  }
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  min-width: 0;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-secondary;
+}

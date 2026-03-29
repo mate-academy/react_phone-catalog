@@ -8,7 +8,7 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { MobileMenu } from '@/components/layout/MobileMenu';
 import { useEffect, useState } from 'react';
-// import { useCartStore } from '@/store/cartStore';
+import { useProductStore } from '@/store/productStore';
 
 export const NAV_ITEMS = [
   { key: 'nav.home', href: '/' },
@@ -20,8 +20,12 @@ export const NAV_ITEMS = [
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation('common');
-  // const cartCount = useCartStore(state => state.cartItems.length);
-  // const favCount = useFavoritesStore((state) => state.favorites.length);
+  const favorites = useProductStore(state => state.favorites);
+  const cart = useProductStore(state =>
+    state.cart.reduce((sum, item) => sum + item.quantity, 0),
+  );
+  const favCount = favorites.length;
+  const cartCount = cart;
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
@@ -61,7 +65,7 @@ export const Header = () => {
           aria-label="Favorites"
         >
           <Heart size={16} strokeWidth={1.5} />
-          {/* {favCount > 0 && <span className={styles.badge}>{favCount}</span>} */}
+          {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
         </NavLink>
         <NavLink
           to="/cart"
@@ -71,7 +75,7 @@ export const Header = () => {
           aria-label="Cart"
         >
           <ShoppingBag size={16} strokeWidth={1.5} />
-          {/* {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>} */}
+          {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
         </NavLink>
         <button
           className={styles.burgerBtn}

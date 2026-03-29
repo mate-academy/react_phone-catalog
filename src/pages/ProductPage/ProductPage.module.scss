@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-bottom: 80px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-primary;
+  margin-bottom: 40px;
+  line-height: 140%;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  gap: 64px;
+  margin-bottom: 80px;
+
+  @include respond-to(880px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.productId {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-secondary;
+  text-align: right;
+  margin-bottom: 8px;
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @include respond-to(880px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
+}

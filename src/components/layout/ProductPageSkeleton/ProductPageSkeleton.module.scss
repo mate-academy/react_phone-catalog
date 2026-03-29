@@ -1,0 +1,141 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.page {
+  padding-bottom: 80px;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 80px;
+
+  @include respond-to(880px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+
+  @include respond-to(880px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include respond-to(880px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.thumbnail {
+  border-radius: 8px;
+}
+
+.mainImage {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.colorsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.divider {
+  margin: 16px 0;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.btnMain {
+  flex: 1;
+  border-radius: 48px;
+}
+
+.btnFav {
+  border-radius: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @include respond-to(880px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.description,
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+}
+
+.descBlock {
+  margin-bottom: 24px;
+}
+
+.mb4 { margin-bottom: 4px; }
+.mb8 { margin-bottom: 8px; }
+.mb24 { margin-bottom: 24px; }

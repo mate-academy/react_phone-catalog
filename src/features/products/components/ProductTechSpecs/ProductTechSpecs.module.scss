@@ -1,0 +1,46 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $color-primary;
+  margin-bottom: 16px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $border-color;
+  margin-bottom: 16px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.specLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-secondary;
+}
+
+.specValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-primary;
+  text-align: right;
+}

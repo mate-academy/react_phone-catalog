@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     useProductStore();
 
   const isFavorite = favorites.includes(product.id);
-  const isInCart = cart.some(item => item.id === product.id);
+  const isInCart = cart.some(item => item.product.id === product.id);
 
   const handleCartAction = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -32,7 +32,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className={styles.card}>
-      <Link to={`/products/${product.id}`} className={styles.productLink}>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.productLink}
+      >
         <div className={styles.imageWrapper}>
           <img
             src={`/${product.image}`}
@@ -41,7 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
         </div>
       </Link>
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/${product.category}/${product.itemId}`}>
         <h3 className={styles.title}>{product.name}</h3>
       </Link>
       <div className={styles.priceWrapper}>

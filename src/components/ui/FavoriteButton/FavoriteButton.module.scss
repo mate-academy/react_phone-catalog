@@ -9,8 +9,8 @@
   transition: color 0.2s ease, transform 0.2s ease;
   width: 40px;
   height: 40px;
-  aspect-ratio: 1;   // завжди квадрат → з border-radius: 50% = коло
-  flex-shrink: 0;    // не стискається
+  aspect-ratio: 1;
+  flex-shrink: 0;
   padding: 0;
   display: flex;
   align-items: center;

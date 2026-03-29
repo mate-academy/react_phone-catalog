@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Home, ChevronRight } from 'lucide-react';
 import styles from './Breadcrumbs.module.scss';
 
-export const Breadcrumbs = () => {
+interface BreadcrumbsProps {
+  productName?: string;
+}
+
+export const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
 
@@ -22,17 +26,20 @@ export const Breadcrumbs = () => {
           const last = index === pathnames.length - 1;
           const to = `/${pathnames.slice(0, index + 1).join('/')}`;
 
+          const label =
+            last && productName
+              ? productName
+              : t(`breadcrumbs.${value}`, value);
+
           return (
             <li key={to} className={styles.item}>
               <ChevronRight size={16} className={styles.separator} />
 
               {last ? (
-                <span className={styles.current}>
-                  {t(`breadcrumbs.${value}`, value)}
-                </span>
+                <span className={styles.current}>{label}</span>
               ) : (
                 <Link to={to} className={styles.link}>
-                  {t(`breadcrumbs.${value}`, value)}
+                  {label}
                 </Link>
               )}
             </li>

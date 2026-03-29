@@ -25,13 +25,13 @@
   cursor: pointer;
   transition: all 0.2s ease;
 
-  &:hover:not(:disabled) {
-    border-color: $color-primary;
-  }
-
   &:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
   }
 }
 

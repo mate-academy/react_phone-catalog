@@ -57,7 +57,13 @@
     "specs": {
       "screen": "Екран",
       "capacity": "Пам'ять",
-      "ram": "ОЗП"
+      "resolution": "Роздільна здатність",
+      "processor": "Процесор",
+      "ram": "Оперативна памʼять",
+      "builtInMemory": "Вбудована памʼять",
+      "camera": "Камера",
+      "zoom": "Зум",
+      "cell": "Мережі"
     },
 
     "actions": {
@@ -65,6 +71,14 @@
       "added": "У кошику"
     }
   },
+
+  "product": {
+    "about": "Про продукт",
+    "techSpecs": "Технічні характеристики",
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Оберіть обʼєм памʼяті"
+  },
+
   "categories": {
     "title": "Купити за категоріями",
     "phones": "Мобільні телефони",
@@ -92,5 +106,22 @@
       "priceDesc": "За спаданням ціни",
       "priceAsc": "За зростанням ціни"
     }
+  },
+
+  "favorites": {
+    "title": "Обрані",
+    "count_one": "{{count}} товар",
+    "count_few": "{{count}} товари",
+    "count_many": "{{count}} товарів",
+    "empty": "Немає обраних товарів"
+  },
+  "cart": {
+    "title": "Кошик",
+    "totalFor_one": "Разом за {{count}} товар",
+    "totalFor_few": "Разом за {{count}} товари",
+    "totalFor_many": "Разом за {{count}} товарів",
+    "checkout": "Оформити замовлення",
+    "empty": "Кошик порожній",
+    "checkoutAlert": "Дякуємо за замовлення!"
   }
 }

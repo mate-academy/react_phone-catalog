@@ -1,10 +1,15 @@
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductNotFoundPage.module.scss';
 
 export const ProductNotFoundPage = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className={styles.page}>
@@ -38,9 +43,13 @@ export const ProductNotFoundPage = () => {
         <p className={styles.description}>{t('productNotFound.description')}</p>
 
         <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-          <Link to="/" className={styles.button}>
+          <button
+            type="button"
+            onClick={handleGoBack}
+            className={styles.button}
+          >
             {t('productNotFound.button')}
-          </Link>
+          </button>
         </motion.div>
       </motion.div>
     </div>

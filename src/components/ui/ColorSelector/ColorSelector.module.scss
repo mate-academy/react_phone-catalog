@@ -1,0 +1,38 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.section {
+  margin-bottom: 8px;
+}
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.colorBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  cursor: pointer;
+  transition: outline-color 0.2s ease;
+  padding: 0;
+
+  &:hover {
+    outline-color: $color-secondary;
+  }
+
+  &.active {
+    outline-color: $color-primary;
+  }
+}

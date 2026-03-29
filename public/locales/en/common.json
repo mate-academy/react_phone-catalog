@@ -57,12 +57,25 @@
     "specs": {
       "screen": "Screen",
       "capacity": "Capacity",
-      "ram": "RAM"
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "ram": "RAM",
+      "builtInMemory": "Built in memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell"
     },
     "actions": {
       "addToCart": "Add to cart",
       "added": "Added"
     }
+  },
+
+  "product": {
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity"
   },
 
   "categories": {
@@ -91,5 +104,20 @@
       "priceDesc": "Price: High to Low",
       "priceAsc": "Price: Low to High"
     }
+  },
+
+  "favorites": {
+    "title": "Favourites",
+    "count_one": "{{count}} item",
+    "count_other": "{{count}} items",
+    "empty": "No favourite items yet"
+  },
+  "cart": {
+    "title": "Cart",
+    "totalFor_one": "Total for {{count}} item",
+    "totalFor_other": "Total for {{count}} items",
+    "checkout": "Checkout",
+    "empty": "Your cart is empty",
+    "checkoutAlert": "Thank you for your order!"
   }
 }

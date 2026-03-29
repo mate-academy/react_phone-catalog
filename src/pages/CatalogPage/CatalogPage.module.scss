@@ -52,9 +52,8 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
+  place-content: start center;
   gap: 40px 16px;
-  align-content: start;
   margin: 0 0 40px;
 
   @include respond-to(1150px) {

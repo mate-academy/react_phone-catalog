@@ -119,27 +119,28 @@
   }
 }
 
-// .badge {
-//   position: absolute;
-//   top: 14px;      // Регулюй під свій макет
-//   right: 14px;
+.badge {
+  position: absolute;
+  top: 20px;
+  right: 16px;
 
-//   background-color: #EB5757; // Червоний колір Nice Gadgets
-//   color: white;
-//   font-size: 9px;
-//   font-weight: 700;
+  background-color: $bg-accent;
+  color: #F1F2F9;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
 
-//   min-width: 14px;
-//   height: 14px;
-//   padding: 0 2px;
+  min-width: 12px;
+  height: 12px;
+  padding: 0 2px;
 
-//   border-radius: 50%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
 
-//   border: 1px solid white; // Біла обводка, щоб бадж не зливався з іконкою
-// }
+  border: 1px solid $color-primary;
+}
 
 nav,
 .actions > *:not(.burgerBtn) {
