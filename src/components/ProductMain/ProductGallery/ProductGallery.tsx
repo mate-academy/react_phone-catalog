@@ -25,9 +25,9 @@ const ProductGallery = ({ someProduct }: ProductGalleryProps) => {
           ))}
         </div>
 
-        <div className="product-gallery__main-image">
-          <img src={activeImg} alt="product" />
-        </div>
+
+          <img src={activeImg} alt="product" className="product-gallery__main-image" />
+
       </div>
     </>
   );

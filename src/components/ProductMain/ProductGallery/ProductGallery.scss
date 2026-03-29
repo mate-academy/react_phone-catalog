@@ -4,7 +4,7 @@
     grid-column: 1 / 6;
   }
   @media (min-width: 1200px) {
-    grid-column: 1 / 14;
+    grid-column: 1 / 13;
   }
   display: flex;
   gap: 20px;
@@ -38,5 +38,5 @@
 }
 
 .product-gallery__main-image {
-  width: 100%;
+  max-width: 100%;
 }
