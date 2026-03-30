@@ -38,7 +38,7 @@ export const ShoppingCartPage = () => {
       {items.length === 0 && (
         <div className={style.shoppingCart__emptyContainer}>
           <img
-            src="/img/cart-is-empty.png"
+            src="./img/cart-is-empty.png"
             alt="cart-is-empty"
             className={style.shoppingCart__emptyImg}
           />
@@ -56,7 +56,7 @@ export const ShoppingCartPage = () => {
                 <div className={style.cartCard} key={item.id}>
                   <div className={style.cartCard__info}>
                     <img
-                      src="/img/close.svg"
+                      src="./img/close.svg"
                       alt="close"
                       className={style.cartCard__close}
                       onClick={() => handleDelete(item.id)}

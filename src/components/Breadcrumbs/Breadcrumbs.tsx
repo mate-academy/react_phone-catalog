@@ -24,7 +24,7 @@ export const Breadcrumbs = () => {
 
         return (
           <>
-            <img src="/img/arrow-next.svg" alt="arrow-next" />
+            <img src="./img/arrow-next.svg" alt="arrow-next" />
             {isLast ? (
               <span className={style.breadcrumbs__categoryActive}>
                 {formattedName}

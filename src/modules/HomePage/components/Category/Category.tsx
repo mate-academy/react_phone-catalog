@@ -22,7 +22,7 @@ export const Category = () => {
             onClick={scrollToTop}
           >
             <img
-              src={`/img/${category}.png`}
+              src={`./img/${category}.png`}
               alt={category}
               className={style.category__img}
             />

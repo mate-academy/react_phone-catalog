@@ -4,7 +4,7 @@ export const ProductNotFound = () => {
   return (
     <div className={style.notFound}>
       <img
-        src="/img/product-not-found.png"
+        src="./img/product-not-found.png"
         alt="product-not-found"
         className={style.notFound__img}
       />

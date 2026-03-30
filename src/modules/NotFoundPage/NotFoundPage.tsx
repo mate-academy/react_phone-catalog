@@ -5,7 +5,7 @@ export const NotFoundPage = () => {
   return (
     <div className={style.notFoundPage}>
       <img
-        src="/img/page-not-found.png"
+        src="./img/page-not-found.png"
         alt="page-not-found"
         className={style.notFoundPage__img}
       />

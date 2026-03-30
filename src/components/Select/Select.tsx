@@ -61,9 +61,9 @@ export const Select: React.FC<Props> = ({
         >
           <p className={style.select__title}>{selectedOption.label}</p>
           {isOpen ? (
-            <img src="/img/arrow-up.svg" alt="arrow-up" />
+            <img src="./img/arrow-up.svg" alt="arrow-up" />
           ) : (
-            <img src="/img/arrow-down.svg" alt="arrow-down" />
+            <img src="./img/arrow-down.svg" alt="arrow-down" />
           )}
         </button>
 

@@ -173,6 +173,9 @@
     margin-top: 32px;
     height: 48px;
     width: 100%;
+    
+    @include add-button;
+
     &::before {
       content: '';
       position: absolute;
@@ -182,8 +185,7 @@
       width: 100%;
     }
 
-    @include add-button;
-    
+
     @include on-desktop {
       margin-top: 49px
     }

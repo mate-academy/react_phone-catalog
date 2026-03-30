@@ -18,7 +18,7 @@ export const FavoritesPage = () => {
       {favItems.length === 0 && (
         <div className={style.favoritesPage__emptyFav}>
           <img
-            src="/img/product-not-found.png"
+            src="./img/product-not-found.png"
             alt="product-not-found"
             className={style.favoritesPage__emptyFavImg}
           />

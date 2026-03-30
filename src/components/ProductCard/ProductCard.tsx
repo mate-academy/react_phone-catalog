@@ -167,7 +167,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                 onClick={handleToggleFav}
               >
                 {favIsAdded ? (
-                  <img src="/img/favourites-active.svg" alt="fav-active" />
+                  <img src="./img/favourites-active.svg" alt="fav-active" />
                 ) : (
                   <img
                     src={theme === 'dark' ? ICONS.darkFav : ICONS.fav}

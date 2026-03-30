@@ -81,7 +81,7 @@ export const Card: React.FC<Props> = ({ product, fullPrice }) => {
         </button>
         <button className={style.card__favButton} onClick={handleToggleFav}>
           {favIsAdded ? (
-            <img src="/img/favourites-active.svg" alt="fav-active" />
+            <img src="./img/favourites-active.svg" alt="fav-active" />
           ) : (
             <img src={theme === 'dark' ? ICONS.darkFav : ICONS.fav} alt="fav" />
           )}

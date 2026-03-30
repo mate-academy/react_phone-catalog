@@ -8,10 +8,21 @@
     height: 40px;
     width: 100%;
     padding-inline: 12px;
-
-    @include default-button;
-    
+    background-color: $default-button-color;
+    border: 1px solid $icons__color;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+    @include font-buttons;
+
+    &:hover {
+      border: 1px solid $primary__color;
+      transform: translateY(-0.5px);
+    }
 
     &__active {
       border-color: $secondary__color;

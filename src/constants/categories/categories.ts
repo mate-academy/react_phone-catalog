@@ -13,15 +13,15 @@ export const CATEGORY_LABELS: Record<ProductCategory, string> = {
 export const FOOTER_LINKS = ['github', 'contacts', 'rights'] as const;
 
 export const IMAGES_FOR_BUNNER = [
-  '/img/banner.png',
-  '/img/banner.png',
-  '/img/banner.png',
+  './img/banner.png',
+  './img/banner.png',
+  './img/banner.png',
 ];
 
 export const IMAGES_FOR_MOBILE_BUNNER = [
-  '/img/banner-slider.png',
-  '/img/banner-slider.png',
-  '/img/banner-slider.png',
+  './img/banner-slider.png',
+  './img/banner-slider.png',
+  './img/banner-slider.png',
 ];
 
 export const COLOR_MAP: Record<string, string> = {
