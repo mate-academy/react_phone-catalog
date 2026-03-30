@@ -1,5 +1,5 @@
 //hooks
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 //styles
 import styles from './Cart.module.scss';
@@ -9,8 +9,6 @@ import { Loader } from '../../components/Loader';
 
 //services
 import { CartContext } from '../../services/CartContext';
-import { getProductsGeneral } from '../../services/api';
-import { ProductGeneral } from '../../types/product';
 import classNames from 'classnames';
 
 //assets
@@ -18,10 +16,13 @@ import closeIcon from './assets/icons/Close.svg';
 import plusIcon from './assets/icons/Plus.svg';
 import minusIcon from './assets/icons/Minus.svg';
 import minusDisabledIcon from './assets/icons/MinusDisabled.svg';
+import { useProductsGeneral } from '../../hooks/useProducts';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [products, setProducts] = useState<ProductGeneral[]>([]);
+  const navigate = useNavigate();
+  const { data: allProducts = [], isLoading } = useProductsGeneral();
+
   const cart = useContext(CartContext)!.cart;
   const setCart = useContext(CartContext)!.setCart;
 
@@ -55,27 +56,12 @@ export const Cart = () => {
     });
   };
 
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        setIsLoading(true);
-        const data = await getProductsGeneral();
-
-        setProducts(data);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadProducts();
-  }, []);
-
   if (isLoading) {
     return <Loader className={styles.loader} />;
   }
 
   const total = cart.reduce((sum, id) => {
-    const product = products.find(p => p.itemId === id);
+    const product = allProducts.find(p => p.itemId === id);
 
     return sum + (product?.price ?? 0);
   }, 0);
@@ -92,7 +78,7 @@ export const Cart = () => {
 
       <div className={styles.cartList}>
         {cartToRender.map((el, index) => {
-          const product = products.find(p => p.itemId === el.id);
+          const product = allProducts.find(p => p.itemId === el.id);
           const isSingle = el.count === 1;
 
           return (
@@ -109,9 +95,19 @@ export const Cart = () => {
                   src={product?.image}
                   alt="product-image"
                   className={styles.itemImg}
+                  onClick={() =>
+                    navigate(`/${product?.category}/${product?.itemId}`)
+                  }
                 />
 
-                <p className={styles.itemName}>{product?.name}</p>
+                <p
+                  className={styles.itemName}
+                  onClick={() =>
+                    navigate(`/${product?.category}/${product?.itemId}`)
+                  }
+                >
+                  {product?.name}
+                </p>
               </div>
 
               <div className={styles.cartCounter}>

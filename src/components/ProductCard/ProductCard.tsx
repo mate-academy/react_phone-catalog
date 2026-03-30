@@ -30,8 +30,8 @@ export const ProductCard: React.FC<Props> = ({
   className,
   onClick,
 }) => {
-  const { inCart, toggleCart } = useCart(product.id);
-  const { inFav, toggleFavourites } = useFavourites(product.id);
+  const { inCart, toggleCart, isCheckingCart } = useCart(product.id);
+  const { inFav, toggleFavourites, isCheckingFav } = useFavourites(product.id);
 
   return (
     <div onClick={onClick} className={classNames(styles.card, className)}>
@@ -74,7 +74,7 @@ export const ProductCard: React.FC<Props> = ({
           selected={inCart}
           onClick={toggleCart}
         >
-          {inCart ? 'Added' : 'Add to cart'}
+          {isCheckingCart ? 'Checking...' : inCart ? 'Added' : 'Add to cart'}
         </Button>
 
         <Button
@@ -82,7 +82,9 @@ export const ProductCard: React.FC<Props> = ({
           className={styles.favButton}
           onClick={toggleFavourites}
         >
-          {inFav ? (
+          {isCheckingFav ? (
+            '...'
+          ) : inFav ? (
             <img src={favouritesIconFilled} alt="favorites-icon" />
           ) : (
             <img src={favouritesIcon} alt="favorites-icon" />

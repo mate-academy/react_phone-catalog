@@ -1,5 +1,6 @@
 //hooks
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
+import { useProducts } from '../../hooks/useProducts';
 
 //react-router
 import { useNavigate } from 'react-router-dom';
@@ -13,11 +14,7 @@ import { Carousel } from '../../components/Carousel';
 import { Categories } from './components/Slider/Categories';
 import { ProductCard } from '../../components/ProductCard';
 
-//types
-import { ProductDetailed } from '../../types/product';
-
 //services
-import { getProductsByType } from '../../services/api';
 import { getSortedProducts } from '../../utils/productSortHelper';
 
 //assets
@@ -26,44 +23,30 @@ import sliderTablets from '/img/banner-tablets.png';
 import sliderAccessories from '/img/banner-accessories.png';
 
 export const HomePage = () => {
-  const [recomend, setRecomend] = useState<ProductDetailed[]>([]);
-  const [cheap, setCheap] = useState<ProductDetailed[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0 });
-  };
+  const { data: allProducts = [], isLoading } = useProducts();
+
+  const { cheap, recommend } = useMemo(() => {
+    const categories = ['phones', 'tablets', 'accessories'];
+
+    return {
+      cheap: categories.flatMap(category =>
+        getSortedProducts(
+          allProducts.filter(p => p.category === category),
+          'price',
+        ).slice(0, 5),
+      ),
+
+      recommend: categories.flatMap(category =>
+        allProducts.filter(p => p.category === category).slice(0, 5),
+      ),
+    };
+  }, [allProducts]);
 
   useEffect(() => {
-    async function loadProducts() {
-      try {
-        setIsLoading(true);
-        scrollToTop();
-        const [phones, tablets, accessories] = await Promise.all([
-          getProductsByType('phones'),
-          getProductsByType('tablets'),
-          getProductsByType('accessories'),
-        ]);
-
-        setRecomend(
-          [phones, tablets, accessories].flatMap(items => items.slice(0, 5)),
-        );
-
-        setCheap(
-          [phones, tablets, accessories].flatMap(items =>
-            getSortedProducts(items, 'price').slice(0, 5),
-          ),
-        );
-      } catch {
-        navigate('*');
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadProducts();
-  }, [navigate]);
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <div className={styles.page}>
@@ -81,7 +64,7 @@ export const HomePage = () => {
         loaderStyle={styles.loader}
         className={styles.carousel}
       >
-        {recomend.map(p => (
+        {recommend.map(p => (
           <ProductCard
             key={p.id}
             product={p}

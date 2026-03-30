@@ -1,15 +1,8 @@
 .categories {
-  padding: 0 16px;
-
   @include page-grid;
 }
 
 .title {
-  font-family: $font-family;
-  font-size: $h2-fs-mobile;
-  line-height: $h2-lh-mobile;
-  margin-bottom: 24px;
-
   @include fullsize-grid;
 
   @include for-tablet {
@@ -17,6 +10,11 @@
     line-height: $h2-lh;
     letter-spacing: $h2-ls;
   }
+
+  font-family: $font-family;
+  font-size: $h2-fs-mobile;
+  line-height: $h2-lh-mobile;
+  margin-bottom: 24px;
 }
 
 .block-link {
@@ -50,11 +48,6 @@
 }
 
 .link {
-  margin: 0 0 32px;
-  text-decoration: none;
-
-  grid-column: span 4;
-
   @include for-tablet {
     margin: 0;
   }
@@ -62,6 +55,11 @@
   @include for-desktop {
     grid-column: span 8;
   }
+
+  margin: 0 0 32px;
+  text-decoration: none;
+
+  grid-column: span 4;
 }
 
 .categories .link:nth-last-of-type(1) {

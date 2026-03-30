@@ -9,7 +9,7 @@
     }
 
     @include for-desktop {
-      padding: 0 32px;
+      padding: 0;
     }
 
     padding: 0 16px;
@@ -17,15 +17,6 @@
 }
 
 .title {
-  padding: 23px 16px 0;
-  margin: 0 0 24px;
-  font-family: $font-family;
-  font-size: $h1-fs-mobile;
-  font-weight: $h1-fw-mobile;
-  line-height: $h1-lh-mobile;
-  letter-spacing: $h1-ls-mobile;
-  grid-column: span 4;
-
   @include for-tablet {
     padding: 31px 24px 0;
     margin: 0 0 32px;
@@ -39,12 +30,20 @@
     margin: 0 0 56px;
     grid-column: span 24;
   }
+
+  padding: 23px 16px 0;
+  margin: 0 0 24px;
+  font-family: $font-family;
+  font-size: $h1-fs-mobile;
+  font-weight: $h1-fw-mobile;
+  line-height: $h1-lh-mobile;
+  letter-spacing: $h1-ls-mobile;
+  grid-column: span 4;
 }
 
 .slider {
   @include for-desktop {
     margin: 0 0 80px;
-    padding: 0 32px;
   }
 
   @include for-tablet {

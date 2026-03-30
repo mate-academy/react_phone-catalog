@@ -29,8 +29,10 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ product, className }) => {
-  const { inCart, toggleCart } = useCart(product?.id ?? null);
-  const { inFav, toggleFavourites } = useFavourites(product?.id ?? null);
+  const { inCart, toggleCart, isCheckingCart } = useCart(product?.id ?? null);
+  const { inFav, toggleFavourites, isCheckingFav } = useFavourites(
+    product?.id ?? null,
+  );
 
   return (
     <header className={classNames(styles.header, className)}>
@@ -60,11 +62,18 @@ export const Header: React.FC<Props> = ({ product, className }) => {
             selected={inCart}
             onClick={toggleCart}
           >
-            {inCart ? 'Added' : 'Add to cart'}
+            {isCheckingCart ? 'Checking...' : inCart ? 'Added' : 'Add to cart'}
           </Button>
 
-          <Button variant="iconType" size="md" onClick={toggleFavourites}>
-            {inFav ? (
+          <Button
+            variant="iconType"
+            size="md"
+            onClick={toggleFavourites}
+            className={styles.favButton}
+          >
+            {isCheckingFav ? (
+              '...'
+            ) : inFav ? (
               <img src={favouritesIconFilled} alt="favorites-icon" />
             ) : (
               <img src={favouritesIcon} alt="favorites-icon" />

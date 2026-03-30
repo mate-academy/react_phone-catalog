@@ -1,5 +1,8 @@
 //react
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
+
+//hooks
+import { useProducts } from '../../hooks/useProducts';
 
 //styles
 import styles from './Favourites.module.scss';
@@ -8,39 +11,15 @@ import styles from './Favourites.module.scss';
 import { Loader } from '../../components/Loader';
 import { ProductCard } from '../../components/ProductCard';
 
-//types
-import { ProductDetailed } from '../../types/product';
-
 //services
 import { FavouritesContext } from '../../services/FavouritesContext';
-import { getProductsByType } from '../../services/api';
 
 export const Favourites = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [products, setProducts] = useState<ProductDetailed[]>([]);
+  const { data: allProducts = [], isLoading } = useProducts();
   const { favourites } = useContext(FavouritesContext)!;
 
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        setIsLoading(true);
-        const [phones, tablets, accessories] = await Promise.all([
-          getProductsByType('phones'),
-          getProductsByType('tablets'),
-          getProductsByType('accessories'),
-        ]);
-
-        setProducts([...phones, ...tablets, ...accessories]);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadProducts();
-  }, []);
-
   const favouriteProducts = favourites
-    .map(id => products.find(p => p.id === id))
+    .map(id => allProducts.find(p => p.id === id))
     .filter(Boolean)
     .filter(product => product !== undefined);
 

@@ -167,7 +167,8 @@
   font-size: $body-text-fs;
   font-weight: 400;
   line-height: $body-text-lh;
-  color: $color-primary
+  color: $color-primary;
+  cursor: pointer;
 }
 
 .itemImg {
