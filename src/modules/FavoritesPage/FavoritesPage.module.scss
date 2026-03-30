@@ -6,9 +6,11 @@
   margin-bottom: 56px;
 
   @include page-container;
+
   @include on-tablet {
     margin-bottom: 64px;
   }
+  
   @include on-desktop {
     margin-bottom: 80px;
   }
@@ -16,12 +18,14 @@
   &__title {
     margin-top: 24px;
     color: $primary__color;
+
     @include font-h1;
   }
 
   &__items {
     margin-top: 8px;
     color: $secondary__color;
+
     @include font-body-text;
   }
 
@@ -41,6 +45,7 @@
 
   &__emptyFavText {
     color: $primary__color;
+
     @include font-h4;
   }
 
@@ -49,6 +54,7 @@
     display: grid;
     gap: 40px 16px;
     grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+
     @include on-tablet {
       margin-top: 40px;
     }

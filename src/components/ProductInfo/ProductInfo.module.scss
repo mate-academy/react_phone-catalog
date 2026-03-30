@@ -5,6 +5,7 @@
   &__title {
     color: $primary__color;
     position: relative;
+
     @include font-h3;
 
       &::after {
@@ -32,11 +33,13 @@
 
   &__sectionTitle {
     color: $primary__color;
+
     @include font-h4;
   }
 
   &__sectionText {
     color: $secondary__color;
+    
     @include font-body-text;
   }
 }

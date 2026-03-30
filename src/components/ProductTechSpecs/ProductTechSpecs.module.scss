@@ -5,6 +5,7 @@
   &__title {
     color: $primary__color;
     position: relative;
+
     @include font-h3;
 
       &::after {
@@ -27,6 +28,7 @@
   &__characteristic {
     display: flex;
     justify-content: space-between;
+    
     @include font-body-text;
 
     span:first-child {

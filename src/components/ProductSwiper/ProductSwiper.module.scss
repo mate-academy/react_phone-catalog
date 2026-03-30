@@ -10,7 +10,9 @@
   &__tiile {
     max-width: 136px;
     color: $primary__color;
+
     @include font-h2;
+
     @include on-tablet {
       max-width: 100%;
     }
@@ -23,6 +25,7 @@
     &__button {
       height: 32px;
       width: 32px;
+      
       @include default-button;
 
       &:disabled {

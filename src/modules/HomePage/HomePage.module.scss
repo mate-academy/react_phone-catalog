@@ -1,13 +1,13 @@
 @use '/src/styles/mixins.scss' as *;
 
 .homePage {
-
   margin-top: 24px;
   margin-bottom: 64px;
 
   display: flex;
   flex-direction: column;
   gap: 56px;
+
   @include page-container;
 
   @include on-tablet {

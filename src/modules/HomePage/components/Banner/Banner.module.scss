@@ -5,6 +5,7 @@
   &__text {
     color: $primary__color;
     max-width: 288px;
+    
     @include font-h1;
 
     @include on-tablet {

@@ -15,6 +15,7 @@
   &__button {
     height: 32px;
     width: 32px;
+
     @include default-button;
 
     &:disabled {

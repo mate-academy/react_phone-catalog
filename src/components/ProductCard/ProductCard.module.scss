@@ -6,6 +6,7 @@
   &__name {
     color: $primary__color;
     margin-bottom: 32px;
+
     @include font-h2;
   }
 
@@ -49,7 +50,6 @@
       max-width: none;
       min-width: 288px;
       align-self: flex-start;
-
     }
   }
 
@@ -68,7 +68,6 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    flex-wrap: wrap;
 
     @include on-tablet {
       flex-direction: column;
@@ -130,6 +129,7 @@
 
   &__colorsTitle {
     color: $secondary__color;
+
     @include font-small-text;
   }
 
@@ -165,6 +165,7 @@
 
   &__productId {
     color: $icons__color;
+
     @include font-small-text;
   }
 
@@ -187,6 +188,7 @@
 
   &__capacityTitle {
     color: $secondary__color;
+
     @include font-small-text;
   }
 
@@ -203,9 +205,9 @@
     justify-content: center;
     padding: 7px 8px;
     cursor: pointer;
-
     text-decoration: none;
     color: $primary__color;
+
     @include font-body-text;
   }
 
@@ -230,12 +232,14 @@
   &__discountPrice {
     color: $primary__color;
     font-size: 32px;
+
     @include font-h2;
   }
 
   &__fullPrice {
     color: $secondary__color;
     text-decoration: line-through;
+
     @include font-h3;
   }
 
@@ -248,18 +252,21 @@
   &__addButton {
     height: 40px;
     width: 100%;
+
     @include add-button;
   }
 
   &__addedButton {
     height: 40px;
     width: 100%;
+
     @include added-button;
   }
 
   &__favButton {
     height: 40px;
     width: 40px;
+
     @include default-button;
   }
 
@@ -273,6 +280,7 @@
   &__characteristic {
     display: flex;
     justify-content: space-between;
+
     @include font-small-text;
 
     span:first-child {

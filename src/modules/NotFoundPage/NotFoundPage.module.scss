@@ -16,11 +16,13 @@
 
   &__title {
     color: $primary__color;
+
     @include font-h3;
   }
 
   &__text {
     color: $secondary__color;
+
     @include font-body-text;
   }
 
@@ -35,10 +37,11 @@
     background-color: $primary__color;
     color: $white__color;
     transition: box-shadow 0.3s ease-in-out;
+
     @include font-buttons;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+      box-shadow: 0 3px 13px 0 #17203166;
     }
   }
 }

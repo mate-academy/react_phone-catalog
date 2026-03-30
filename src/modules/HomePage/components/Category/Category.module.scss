@@ -5,6 +5,7 @@
   &__title {
     color: $primary__color;
     margin-bottom: 24px;
+
     @include font-h2;
   }
 
@@ -41,11 +42,13 @@
 
   &__bigText {
     color: $primary__color;
+
     @include font-h4;
   }
 
   &__smallText {
     color: $secondary__color;
+    
     @include font-body-text;
   }
 }

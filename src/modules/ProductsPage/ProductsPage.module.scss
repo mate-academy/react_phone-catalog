@@ -29,13 +29,14 @@
 
   &__category {
     color: $secondary__color;
+
     @include font-small-text;
-    line-height: 100%;
   }
 
   &__title {
     margin-top: 24px;
     color: $primary__color;
+
     @include font-h1;
 
     @include on-tablet {
@@ -46,6 +47,7 @@
   &__modelsText {
     margin-top: 8px;
     color: $secondary__color;
+
     @include font-body-text;
   }
 
@@ -68,6 +70,7 @@
 
     &__text {
       color: $secondary__color;
+
       @include font-small-text;
     }
   }
@@ -88,6 +91,7 @@
 
     &__text {
       color: $secondary__color;
+
       @include font-h3;
     }
 
@@ -102,7 +106,7 @@
 
       &:hover {
         transform: scale(1.03);
-        box-shadow: 0px 3px 13px 0px #17203166;
+        box-shadow: 0 3px 13px 0 #17203166;
       }
     }
   }

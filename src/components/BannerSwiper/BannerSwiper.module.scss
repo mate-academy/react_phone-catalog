@@ -17,6 +17,7 @@
   &__button {
     height: 189px;
     width: 32px;
+    
     @include default-button;
 
     @include on-desktop {

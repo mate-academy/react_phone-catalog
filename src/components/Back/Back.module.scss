@@ -19,10 +19,11 @@
   &__text {
     color: $secondary__color;
     transition: color 0.2s ease-in-out;
-    
+
     &:hover {
       color: $primary__color;
     }
+    
     @include font-small-text;
   }
 }

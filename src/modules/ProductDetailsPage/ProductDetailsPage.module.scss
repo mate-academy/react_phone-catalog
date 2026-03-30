@@ -6,9 +6,11 @@
   margin-bottom: 56px;
 
   @include page-container;
+
   @include on-tablet {
     margin-bottom: 64px;
   }
+  
   @include on-desktop {
     margin-bottom: 80px;
   }
@@ -35,11 +37,13 @@
 
   &__category {
     color: $primary__color;
+
     @include font-small-text;
   }
 
   &__productId {
     color: $secondary__color;
+
     @include font-small-text;
   }
 
@@ -55,6 +59,7 @@
   &__notFoundImg {
     object-fit: contain;
     width: 200px;
+
     @include on-tablet {
       width: 300px;
     }
@@ -62,6 +67,7 @@
 
   &__notFoundText {
     color: $primary__color;
+
     @include font-h2;
   }
 
@@ -82,7 +88,7 @@
   &__containerInformaiton {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 56px; 
+    gap: 56px;
 
     @include on-desktop {
       grid-template-columns: 1fr 1fr;

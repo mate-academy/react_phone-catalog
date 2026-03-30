@@ -33,11 +33,13 @@
     color: $primary__color;
     max-width: 250px;
     text-align: center;
+
     @include font-h2;
   }
 
   &__info {
     color: $secondary__color;
+
     @include font-body-text;
   }
 
@@ -52,6 +54,7 @@
     height: 40px;
     width: 100%;
     color: $primary__color;
+
     @include default-button;
   }
 
@@ -59,6 +62,7 @@
     height: 40px;
     width: 100%;
     color: $white__color;
+    
     @include add-button;
   }
 }

@@ -8,7 +8,9 @@
     height: 40px;
     width: 100%;
     padding-inline: 12px;
+
     @include default-button;
+    
     justify-content: space-between;
 
     &__active {
@@ -18,6 +20,7 @@
 
   &__title {
     color: $primary__color;
+
     @include font-buttons;
   }
 
@@ -52,6 +55,7 @@
     height: 32px;
     width: 100%;
     color: $secondary__color;
+
     @include font-body-text;
 
     &:hover {

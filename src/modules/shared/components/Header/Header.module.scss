@@ -60,6 +60,7 @@
   height: 48px;
   border-left: 1px solid $elements__color;
   cursor: pointer;
+
   @include on-tablet {
     display: none;
   }
@@ -95,7 +96,9 @@
     align-items: center;
     height: 47px;
     position: relative;
+
     @include font-uppercase;
+    
     color: $secondary__color;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -187,6 +190,7 @@
     &__badge {
       right: 9px;
       top: 8px;
+
       @include badge;
     }
 

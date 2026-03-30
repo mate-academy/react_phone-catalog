@@ -12,6 +12,7 @@
   &__img {
     object-fit: contain;
     width: 200px;
+
     @include on-tablet {
       width: 300px;
     }
@@ -19,6 +20,7 @@
 
   &__text {
     color: $primary__color;
+    
     @include font-h2;
   }
 }
