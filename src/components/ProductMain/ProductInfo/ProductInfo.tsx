@@ -24,11 +24,9 @@ const ProductInfo = ({
   currentProduct,
   selectedColor,
   setSelectedColor,
+  selectedCapacity,
+  setSelectedCapacity,
 }: ProductInfoProps) => {
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    currentProduct.capacityAvailable[0],
-  );
-
   return (
     <>
       {' '}

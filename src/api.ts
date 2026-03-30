@@ -2,6 +2,7 @@ import { Phone } from '../src/types/Phone';
 import { Tablet } from './types/Tablet';
 import { Accessory } from './types/Accessory';
 import { Product } from './types/Product';
+import { useEffect, useState } from 'react';
 
 export const getPhones = async (): Promise<Phone[]> => {
   const res = await fetch('/api/phones.json');
@@ -54,3 +55,17 @@ export const getProduct = async (
       return undefined;
   }
 };
+
+export function useLocalStorage<T>(key: string, initialValue: T) {
+  const [value, setValue] = useState<T>(() => {
+    const stored = localStorage.getItem(key);
+
+    return stored ? JSON.parse(stored) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue] as const;
+}

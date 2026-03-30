@@ -1,0 +1,55 @@
+.catalog-favorites {
+   margin-bottom: 64px;
+  padding-inline: 16px;
+  margin-top: 24px;
+   @media (min-width: 640px) {
+    margin-bottom: 80px;
+    padding-inline: 24px;
+    margin-top: 24px;
+  }
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+    padding-inline: 152px;
+    margin-top: 24px;
+  }
+}
+
+.catalog-favorites__top--icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+};
+
+.catalog-favorites__icon--home {
+   width: 16px;
+  height: 16px;
+  background-image: url('../../../public/img/icons/icon--home.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.catalog-favorites__icon--slider--right--gray {
+ background-image: url('/public/img/icons/icon--slider--right--gray.png');
+
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+};
+
+.catalog-favorites__top--text {
+  color: #b4bdc3;
+  font-weight: 600;
+font-size: 12px;
+};
+
+.catalog-favorites__models--counter {
+  font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+color: #e2e6e9;
+};

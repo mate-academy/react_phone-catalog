@@ -10,7 +10,9 @@ const ProductSpec = ({ currentProduct }: ProductSpecProps) => {
     <>
       <div className="product-info__spec">
         <span className="product-info__spec--label">Screen</span>
-        <span className="product-info__spec--value">{currentProduct.screen}</span>
+        <span className="product-info__spec--value">
+          {currentProduct.screen}
+        </span>
         <span className="product-info__spec--label">Resolution</span>
         <span className="product-info__spec--value">
           {currentProduct.resolution}

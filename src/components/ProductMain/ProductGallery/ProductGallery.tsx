@@ -1,6 +1,6 @@
 import './ProductGallery.scss';
 import { ProductDetails } from '../../../pages/productPage/ProductPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type ProductGalleryProps = {
   currentProduct: ProductDetails;
@@ -8,6 +8,10 @@ type ProductGalleryProps = {
 
 const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
   const [activeImg, setActiveImg] = useState(currentProduct.images[0]);
+
+  useEffect(() => {
+    setActiveImg(currentProduct.images[0]);
+  }, [currentProduct]);
 
   return (
     <>

@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo/ProductInfo';
 import ProductAbout from './ProductAbout/ProductAbout';
 import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
@@ -39,6 +39,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   );
 
   const [currentProduct, setCurrentProduct] = useState(someProduct);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentProduct(someProduct);
@@ -51,8 +52,9 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
 
     if (foundProduct) {
       setCurrentProduct(foundProduct);
+      navigate(`/${foundProduct.category}/${foundProduct.id}`);
     }
-  }, [selectedColor, selectedCapacity, models]);
+  }, [selectedColor, selectedCapacity, models, navigate]);
 
   return (
     <div className="product-main">
@@ -63,8 +65,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
           to={`/${currentProduct.category}`}
           className="product-main__top--category"
         >
-          {currentProduct.category.charAt(0).toUpperCase() +
-            currentProduct.category.slice(1)}
+          {currentProduct.category}
         </Link>
         <Link to="/" className="product-main__icon--slider--right--gray"></Link>
         <p className="product-main__top--name">{currentProduct.name}</p>

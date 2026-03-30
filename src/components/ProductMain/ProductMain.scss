@@ -69,6 +69,10 @@
 font-size: 12px;
 };
 
+.product-main__top--category::first-letter {
+  text-transform: uppercase;
+}
+
 .product-main__top--name {
   color: #b4bdc3;
   font-weight: 600;

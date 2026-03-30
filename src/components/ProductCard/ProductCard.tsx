@@ -1,3 +1,4 @@
+import { useLocalStorage } from '../../api';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
@@ -6,6 +7,18 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+
+  const isFavorite = favorites.some(favorite => favorite.id === product.id);
+
+  const handleToggleFavorite = () => {
+    if (isFavorite) {
+      setFavorites(a => a.filter(b => b.id !== product.id));
+    } else {
+      setFavorites(c => [...c, product]);
+    }
+  };
+
   return (
     <div className="product__card">
       <Link
@@ -39,7 +52,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <Link to="" className="card__button--add-to-cart">
           Add to cart
         </Link>
-        <Link to="" className="card__button--icon"></Link>
+        <button
+          className={`card__button--icon ${isFavorite ? 'active' : ''}`}
+          onClick={handleToggleFavorite}
+        ></button>
       </div>
     </div>
   );
