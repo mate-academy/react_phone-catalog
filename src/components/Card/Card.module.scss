@@ -1,0 +1,109 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.card {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  max-width: 100%;
+  border: 1px solid $elements__color;
+  padding: 32px;
+  transition: transform 0.3s ease-in-out;
+  background-color: $card-background-color;
+  z-index: 1;
+  @include on-desktop {
+    max-width: 272px;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 3px 14px 0px #17203166;
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__name {
+    min-height: 58px;
+    margin-top: 24px;
+    color: $primary__color;
+    @include font-body-text;
+  }
+
+  &__priceWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid $elements__color;
+  }
+
+  &__price {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: $primary__color;
+    @include font-h3;
+  }
+
+  &__discount {
+    color: $secondary__color;
+    text-decoration: line-through;
+    @include font-h3;
+  }
+
+  &__characteristics {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    @include font-small-text;
+
+    span:first-child {
+      color: $secondary__color;
+    }
+
+    span:last-child {
+      color: $primary__color;
+      font-weight: 700;
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__addButton {
+    height: 40px;
+    width: 100%;
+    @include add-button;
+  }
+
+  &__addedButton {
+    height: 40px;
+    width: 100%;
+    @include added-button;
+  }
+
+  &__favButton {
+    height: 40px;
+    width: 40px;
+    @include default-button;
+  }
+}

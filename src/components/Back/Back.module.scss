@@ -1,0 +1,28 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  max-width: 66px;
+  margin-top: 24px;
+  background-color: $white__color;
+  border: 0;
+  cursor: pointer;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__text {
+    color: $secondary__color;
+    transition: color 0.2s ease-in-out;
+    
+    &:hover {
+      color: $primary__color;
+    }
+    @include font-small-text;
+  }
+}

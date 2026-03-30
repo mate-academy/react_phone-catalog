@@ -1,0 +1,93 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+
+.swiperBanner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 32px;
+  gap: 18px;
+
+  &__swiper {
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__button {
+    height: 189px;
+    width: 32px;
+    @include default-button;
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    img {
+      width: 32px;
+      height: 16px;
+    }
+  }
+
+  &__img {
+    height: 189px;
+    width: 100%;
+    display: block;
+    background-color: $primary__color;
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__bullets {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__bullet {
+    height: 4px;
+    width: 14px;
+    background-color: $elements__color;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &__active {
+      background-color: $primary__color;
+    }
+  }
+}
+
+.swiperBannerMobile {
+  margin-top: 24px;
+  margin-left: -16px;
+  margin-right: -16px;
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+  }
+
+  &__bullets {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__bullet {
+    height: 4px;
+    width: 14px;
+    background-color: $elements__color;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &__active {
+      background-color: $primary__color;
+    }
+  }
+}

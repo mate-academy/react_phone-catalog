@@ -1,0 +1,18 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.banner {
+  &__text {
+    color: $primary__color;
+    max-width: 288px;
+    @include font-h1;
+
+    @include on-tablet {
+      max-width: 592px;
+    }
+
+    @include on-desktop {
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.select {
+  position: relative;
+
+  &__button {
+    height: 40px;
+    width: 100%;
+    padding-inline: 12px;
+    @include default-button;
+    justify-content: space-between;
+
+    &__active {
+      border-color: $secondary__color;
+    }
+  }
+
+  &__title {
+    color: $primary__color;
+    @include font-buttons;
+  }
+
+  &__content {
+    position: absolute;
+    margin-top: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $elements__color;
+    background-color: $white__color;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-5%);
+    transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 100;
+
+    &__active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__option {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 12px;
+    height: 32px;
+    width: 100%;
+    color: $secondary__color;
+    @include font-body-text;
+
+    &:hover {
+      background-color: $default-button-color;
+      color: $primary__color;
+      cursor: pointer;
+    }
+  }
+}

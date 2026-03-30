@@ -1,0 +1,35 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  gap: 8px;
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__categoryActive {
+    margin-top: 2px;
+    color: $secondary__color;
+    @include font-small-text;
+  }
+
+  &__category {
+    margin-top: 2px;
+    color: $primary__color;
+    @include font-small-text;
+  }
+
+  &__productId {
+    color: $secondary__color;
+    @include font-small-text;
+  }
+
+}
+

@@ -1,0 +1,56 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.favoritesPage {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include page-container;
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-top: 24px;
+    color: $primary__color;
+    @include font-h1;
+  }
+
+  &__items {
+    margin-top: 8px;
+    color: $secondary__color;
+    @include font-body-text;
+  }
+
+  &__emptyFav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    min-height: 45vh;
+  }
+
+  &__emptyFavImg {
+    object-fit: contain;
+    width: 200px;
+  }
+
+  &__emptyFavText {
+    color: $primary__color;
+    @include font-h4;
+  }
+
+  &__cards {
+    margin-top: 32px;
+    display: grid;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}

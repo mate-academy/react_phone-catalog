@@ -1,0 +1,37 @@
+@use '/src/styles/mixins.scss' as *;
+
+.homePage {
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  @include page-container;
+
+  @include on-tablet {
+    margin-top: 32px;
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    gap: 80px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+
+  border: 0;
+  white-space: nowrap;
+}

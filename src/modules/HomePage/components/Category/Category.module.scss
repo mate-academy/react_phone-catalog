@@ -1,0 +1,51 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.category {
+  &__title {
+    color: $primary__color;
+    margin-bottom: 24px;
+    @include font-h2;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  &__info {
+    margin-top: 24px;
+  }
+
+  &__bigText {
+    color: $primary__color;
+    @include font-h4;
+  }
+
+  &__smallText {
+    color: $secondary__color;
+    @include font-body-text;
+  }
+}

@@ -1,0 +1,35 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.buttons {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  @include on_tablet {
+    margin-top: 40px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    @include default-button;
+
+    &:disabled {
+      border: 1px solid $elements__color;
+      cursor: no-drop;
+      transform: none;
+    }
+
+    &__active {
+      @include add-button;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+}

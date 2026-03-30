@@ -1,0 +1,60 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+
+.cardskeleton {
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid $elements__color;
+  height: 100%;
+
+  &__shimmer {
+    @include skeleton;
+  }
+
+  &__image {
+    width: 208px;
+    height: 196px;
+    margin: 0 auto;
+  }
+
+  &__name {
+    height: 40px;
+    margin-top: 24px;
+  }
+
+  &__price {
+    height: 30px;
+    width: 100px;
+    margin-top: 20px;
+  }
+
+  &__underline {
+    height: 8px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  &__char {
+    height: 12px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  &__btn {
+    height: 40px;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__btnSmall {
+    height: 40px;
+    width: 40px;
+    margin-top: 16px;
+  }
+}
+
+.flex {
+  display: flex;
+  gap: 8px;
+}

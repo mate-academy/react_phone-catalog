@@ -1,0 +1,180 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.shoppingCart {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include page-container;
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    color: $primary__color;
+    margin-top: 16px;
+    @include font-h1;
+  }
+
+  &__emptyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 45vh;
+  }
+
+  &__emptyImg {
+    object-fit: contain;
+    width: 200px;
+  }
+
+  &__emptyTitle {
+    color: $primary__color;
+    @include font-h4;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  }
+}
+
+.cartCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $elements__color;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 23px;
+  }
+
+  &__close {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+  }
+
+  &__name {
+    color: $primary__color;
+    @include font-body-text;
+
+    @include on-tablet {
+      width: 100%;
+      max-width: 176px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      justify-content: flex-end;
+      gap: 53px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__quantityCount {
+    color: $primary__color;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    @include default-button;
+  }
+
+  &__price {
+    color: $primary__color;
+    @include font-h3;
+  }
+}
+
+.purchase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border: 1px solid $elements__color;
+
+  @include on-desktop {
+    width:  368px;
+    height: 206px;
+  }
+
+  &__price {
+    color: $primary__color;
+    @include font-h2;
+  }
+
+  &__totalItems {
+    color: $secondary__color;
+    @include font-body-text;
+  }
+
+  &__button {
+    margin-top: 32px;
+    height: 48px;
+    width: 100%;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -16px;
+      border-top: 1px solid $elements__color;
+      width: 100%;
+    }
+    @include add-button;
+    @include on-desktop {
+      margin-top: 49px
+    }
+  }
+}
