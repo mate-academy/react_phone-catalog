@@ -27,8 +27,9 @@ export const ProductsList = ({
             <ProductCard
               product={product}
               index={i}
-              className={styles.productsList__product}
+              className={`${styles.productsList__product}`}
               key={product?.id}
+              skipDiscount={true}
             />
           ))}
         </div>

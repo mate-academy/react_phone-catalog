@@ -5,8 +5,22 @@
 .productCard {
    @include page-grid;
 
+    max-width: 212px;
+   font-family: Mont, sans-serif;
+     grid-column: span 3;
 
-  &__productInfo {
+   @include on-tablet {
+    max-width: 237px;
+    grid-column: span 5;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+     grid-column: span 6;
+  }
+
+
+  &__productInfo{
     width: fit-content;
     min-width: 0;
     min-height: 0;
@@ -20,7 +34,7 @@
     background: #FFFF;
 
      @include on-tablet {
-        width: auto;
+       // width: auto;
         grid-row: span 5;
       }
 
@@ -36,12 +50,13 @@
 
       @include on-tablet {
         width: 173px;
-        height: 181;
+        height: 181px;
+
       }
 
        @include on-desktop {
         width: 173px;
-        height: 181;
+        height: 181px;
       }
 
     }
@@ -59,27 +74,42 @@
     }
 
     &__productName {
-      font-size: 14px;
-      line-height: 21px;
-      letter-spacing: 0%;
       color: #0F0F11;
       text-decoration: none;
-      height: 79px;
       display: block;
-      padding-block: 8px;
-
       overflow: hidden;
       text-overflow: ellipsis;
 
+      font-weight: 600;
+      font-size: 14px;
+
+      line-height: 21px;
+      letter-spacing: 0%;
+      align-items: end;
+      padding-top:  16px;
+      max-height: 58px;
+      width: 148px;
+
+      @include on-tablet {
+        max-height: 42px;
+        width: 173px;
+      }
+
+      @include on-desktop {
+        height: 42px;
+        width: 173px;
+      }
     }
 
      &__productPrice {
-      font-size: 22px;
       line-height: 140%;
-      letter-spacing: 0%;
-      font-weight: bold;
       color: #0F0F11;
-      height: 22px;
+      margin: 0;
+      padding-block: 8px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0%;
+
     }
 
     &__productFullPrice {
@@ -93,11 +123,11 @@
    &__productInfoTable {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px 0;
+
+    gap: 8px;
     align-items: center;
     border-top: 1px solid $elements-color;
-    margin-block: 8px;
-    padding-top: 16px;
+     padding: 8px;
   }
 
 .productPriceRow {
@@ -118,7 +148,10 @@
   grid-column: 2 / 3;
   font-weight: 700;
   font-size: 12px;
-  color: $primary-color;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: #0F0F11;
   text-align: right;
   align-self: center;
 }
@@ -127,13 +160,13 @@
   display: flex;
   align-items: center;
   align-items: flex-start ;
-  gap: 8px;
-  padding-top:  8px;
+
+///  gap: 8px;
+ // padding-top:  8px;
   box-sizing: border-box;
-  padding-block: 8px;
+
+ // padding-block: 8px;
 }
-
-
 
 &__product {
   margin: 0;

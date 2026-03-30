@@ -69,56 +69,41 @@
 
   }
     &__shopByCategory {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-column: 1/-1;
+    @include page-grid;
 
-    gap: 24px 0;
+      grid-column: 1/-1;
+      gap: 107px 16px;
 
-    @include on-tablet {
-      grid-template-columns: repeat(3, 1fr);
-          grid-column: 1/-1;
-          gap: 32px 16px;
-    }
-
-     @include on-desktop {
-        grid-column: 1/-1;
+      @include on-tablet {
+        gap: 16px;
       }
 
     }
 
     &__categoryCard {
-      display: block;
-      height: 363px;
-      grid-column: 1 / -1;
+      grid-column: span 4;
+      grid-row: span 4;
 
     @include on-tablet {
-      grid-column: auto;
-      height: 327px;
+      grid-column: span 4;
+      grid-row: span 4;
     }
 
     @include on-desktop {
-      height: 508px;
+      grid-column:  span 8;
+      grid-row: span 8;
+
     }
   }
 
   &__categoryImg {
-      display: block;
-      height: 288px;
+     display: block;
      background-color: transparent;
      background-repeat: no-repeat;
      background-position: center;
      background-size: cover;
      box-sizing: border-box;
      aspect-ratio: 1 / 1;
-
-      @include on-tablet {
-        height: 187px;
-    }
-
-    @include on-desktop {
-        height: 368px;
-    }
   }
 
   &__categoryImg--phones {
@@ -163,7 +148,6 @@
       }
   }
 
-
   &__categoryTitle {
     font-weight: 700;
     font-size: 20px;
@@ -172,6 +156,15 @@
     color: $primary-color;
     text-decoration: none;
     padding-top: 24px;
+    grid-column: 1 / -1;
+
+     @include on-tablet {
+        grid-column: 1 / 4;
+      }
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
   }
 
   &__categoryTotal {

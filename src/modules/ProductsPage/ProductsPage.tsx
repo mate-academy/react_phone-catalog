@@ -180,6 +180,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 <ProductsList
                   products={visibleProducts}
                   emptyMessage={`There are no ${category} yet`}
+                  skipDiscount="true"
                 />
               </>
             )}

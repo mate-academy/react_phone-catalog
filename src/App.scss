@@ -1,10 +1,6 @@
 @use './utils/vars' as *;
 @import './utils/mixins' ;
 
-  @font-face {
-    font-family: Monte, sans-serif;
-    src: url('/fonts/Mont.otf') format('opentype');
-  }
 
 .page {
   box-sizing: border-box;

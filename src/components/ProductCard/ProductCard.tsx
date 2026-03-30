@@ -55,13 +55,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {product.name}
         </Link>
         <div className={styles.productPriceRow}>
-          <p className={styles.productCard__productPrice}>
+          <div className={styles.productCard__productPrice}>
             <span>${product.price}&nbsp;</span>
-          </p>
+          </div>
           {!skipDiscount && (
-            <p className={styles.productCard__productFullPrice}>
+            <div className={styles.productCard__productFullPrice}>
               ${product.fullPrice ? product.fullPrice : null}
-            </p>
+            </div>
           )}
         </div>
         <div className={styles.productCard__productInfoTable}>

@@ -68,21 +68,15 @@
     min-width: 0;
     min-height: 0;
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    grid-column: 1/4;
 
-    gap: 16px;
+    @include page-grid;
 
-    @include on-tablet {
-          grid-template-columns: repeat(2,1fr);
-          grid-column: 1/10;
-    }
+    grid-column: 1/-1;
 
-     @include on-desktop {
-        grid-template-columns: repeat(4,1fr);
-        grid-column: 1/-1;
-      }
+    margin: 0;
+    padding: 0;
+    gap:  16px;
+
 
   }
 
