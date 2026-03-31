@@ -20,7 +20,7 @@ i18n
       // loadPath: '/locales/{{lng}}/{{ns}}.json',
       // loadPath: './locales/{{lng}}/{{ns}}.json',
 
-      loadPath: `locales/{{lng}}/{{ns}}.json`,
+      loadPath: `/locales/{{lng}}/{{ns}}.json`,
     },
 
     ns: ['common'],

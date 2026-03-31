@@ -8,7 +8,7 @@ export const Logo = () => {
   return (
     <Link to="/" className={styles.logo} aria-label="Nice Gadgets Home">
       <img
-        src={theme === 'light' ? 'icons/logo.svg' : 'icons/logo-dark.svg'}
+        src={theme === 'light' ? '/icons/logo.svg' : '/icons/logo-dark.svg'}
         className={styles.image}
         alt="Logo"
       />
