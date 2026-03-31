@@ -98,6 +98,10 @@
     height: 66px;
   }
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__name {
     color: $primary__color;
 
@@ -173,7 +177,7 @@
     margin-top: 32px;
     height: 48px;
     width: 100%;
-    
+
     @include add-button;
 
     &::before {

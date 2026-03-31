@@ -14,6 +14,7 @@ export const Header = () => {
   const { items } = useCartState();
   const { favItems } = useFavoritesState();
   const { theme, toggleTheme } = useTheme();
+  const totalProducts = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <header className={style.header}>
@@ -78,8 +79,8 @@ export const Header = () => {
                 src={theme === 'dark' ? ICONS.darkBag : ICONS.bag}
                 alt="shoppingBag"
               />
-              {items.length > 0 && (
-                <span className={style.nav__icons__badge}>{items.length}</span>
+              {totalProducts > 0 && (
+                <span className={style.nav__icons__badge}>{totalProducts}</span>
               )}
             </NavLink>
           </div>

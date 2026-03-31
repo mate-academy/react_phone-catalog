@@ -99,7 +99,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               <p className={style.productCard__colorsTitle}>Available colors</p>
               <div className={style.productCard__colors}>
                 {product?.colorsAvailable.map(color => {
-                  const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+                  const formattedColor = color.replace(/\s+/g, '-');
+                  const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${formattedColor}`;
 
                   return (
                     <Link
@@ -127,7 +128,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             <p className={style.productCard__capacityTitle}>Select capacity</p>
             <div className={style.productCard__capacityButtons}>
               {product?.capacityAvailable.map(capacity => {
-                const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+                const formattedColor = product.color.replace(/\s+/g, '-');
+                const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${formattedColor}`;
 
                 return (
                   <Link

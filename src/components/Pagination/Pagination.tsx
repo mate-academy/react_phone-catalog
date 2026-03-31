@@ -49,14 +49,16 @@ export const Pagination: React.FC<Props> = ({
     pages.push(i);
   }
 
+  const handlePageChange = (page: number) => {
+    onPageChange(page);
+    scrollToTop();
+  };
+
   return (
     <div className={style.buttons}>
       <button
         className={style.buttons__button}
-        onClick={() => {
-          onPageChange(currentPage - 1);
-          scrollToTop();
-        }}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         <img
@@ -80,10 +82,7 @@ export const Pagination: React.FC<Props> = ({
               [style.buttons__button__active]: page === currentPage,
             })}
             style={theme === 'dark' ? { color: 'white' } : undefined}
-            onClick={() => {
-              scrollToTop();
-              onPageChange(page);
-            }}
+            onClick={() => handlePageChange(page)}
           >
             {page}
           </button>
@@ -91,10 +90,7 @@ export const Pagination: React.FC<Props> = ({
       </div>
       <button
         className={style.buttons__button}
-        onClick={() => {
-          onPageChange(currentPage + 1);
-          scrollToTop();
-        }}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         <img

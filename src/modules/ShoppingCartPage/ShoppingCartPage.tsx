@@ -18,6 +18,8 @@ export const ShoppingCartPage = () => {
     return fullItemPrice + sum;
   }, 0);
 
+  const totalProducts = items.reduce((sum, item) => sum + item.quantity, 0);
+
   const handleDelete = (itemId: string) => {
     dispatch({ type: 'DELETE_ITEM', payload: itemId });
   };
@@ -68,9 +70,11 @@ export const ShoppingCartPage = () => {
                         className={style.cartCard__img}
                       />
                     </Link>
-                    <span className={style.cartCard__name}>
-                      {item.product.name}
-                    </span>
+                    <Link to={productUrl} className={style.cartCard__link}>
+                      <span className={style.cartCard__name}>
+                        {item.product.name}
+                      </span>
+                    </Link>
                   </div>
                   <div className={style.cartCard__controls}>
                     <div className={style.cartCard__quantity}>
@@ -123,7 +127,7 @@ export const ShoppingCartPage = () => {
           <div className={style.purchase}>
             <h2 className={style.purchase__price}>{`$${checkoutPrice}`}</h2>
             <span className={style.purchase__totalItems}>
-              {`Total for ${items.length} items`}
+              {`Total for ${totalProducts} items`}
             </span>
             <button
               className={style.purchase__button}

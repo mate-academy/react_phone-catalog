@@ -17,6 +17,11 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   const { items } = useCartState();
   const { favItems } = useFavoritesState();
   const { theme } = useTheme();
+  const totalProducts = items.reduce((sum, item) => sum + item.quantity, 0);
+  const handleScroll = () => {
+    onClose(false);
+    scrollToTop();
+  };
 
   return (
     <div className={`${style.burgerMenu} ${isOpen ? style.isOpen : ''}`}>
@@ -29,10 +34,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
                 className={({ isActive }) =>
                   `${style.navMenu__link} ${isActive ? style.navMenu__link_active : ''}`
                 }
-                onClick={() => {
-                  onClose(false);
-                  scrollToTop();
-                }}
+                onClick={handleScroll}
               >
                 {link}
               </NavLink>
@@ -45,10 +47,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
             className={({ isActive }) =>
               `${style.navMenu__iconLink} ${isActive ? style.navMenu__iconLink_active : ''}`
             }
-            onClick={() => {
-              onClose(false);
-              scrollToTop();
-            }}
+            onClick={handleScroll}
           >
             <div className={style.navMenu__iconWrapper}>
               <img
@@ -65,18 +64,15 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
             className={({ isActive }) =>
               `${style.navMenu__iconLink} ${isActive ? style.navMenu__iconLink_active : ''}`
             }
-            onClick={() => {
-              onClose(false);
-              scrollToTop();
-            }}
+            onClick={handleScroll}
           >
             <div className={style.navMenu__iconWrapper}>
               <img
                 src={theme === 'dark' ? ICONS.darkBag : ICONS.bag}
                 alt="shoppingBag"
               />
-              {items.length > 0 && (
-                <span className={style.navMenu__badge}>{items.length}</span>
+              {totalProducts > 0 && (
+                <span className={style.navMenu__badge}>{totalProducts}</span>
               )}
             </div>
           </NavLink>
