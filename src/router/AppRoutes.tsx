@@ -59,9 +59,9 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  // {
-  //   basename: import.meta.env.BASE_URL,
-  // },
+  {
+    basename: '/react_phone-catalog',
+  },
 );
 
 export const AppRoutes = () => {
