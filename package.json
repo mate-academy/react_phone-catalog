@@ -1,9 +1,8 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "/react_phone-catalog/",
   "version": "0.1.0",
   "keywords": [],
-  "author": "Mate Academy",
+  "author": "Mate Academy, Heorhii Lytvynenko",
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
