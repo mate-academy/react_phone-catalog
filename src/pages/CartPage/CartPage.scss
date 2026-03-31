@@ -1,4 +1,5 @@
 @import '../../variables.scss';
+@import '../../mixins.scss';
 
 .cart-page {
   grid-column: 1 / -1;
@@ -9,6 +10,18 @@
   grid-template-columns: 2fr 1fr;
   align-items: start;
   margin-bottom: 80px;
+
+  @include mobile {
+    grid-template-columns: 1fr; // на мобільних одна колонка
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr; // на мобільних одна колонка
+    gap: 32px;
+    margin-bottom: 64px;
+  }
 }
 
 .product-name {
@@ -16,11 +29,41 @@
   font-weight: map-get($body-text, font-weight);
   line-height: map-get($body-text, line-height);
   letter-spacing: map-get($body-text, letter-spacing);
+  max-width: 50%;
+  flex: 1;             /* Займає весь доступний простір */
+  min-width: 0;
+
+
+  @include mobile {
+      grid-column: 3;
+      grid-row: 1;
+      font-size: 14px; // трохи менше для мобілок
+    }
 }
 
 .quantity {
-  margin-left: 24px;
-  margin-right: 53px;
+  display: flex;        /* Додаємо flex, щоб вишикувати дітей в ряд */
+  flex-direction: row;  /* За замовчуванням */
+  align-items: center;  /* Вирівнюємо кнопки та цифру по вертикалі */
+  gap: 12px;
+
+  margin-right: 24px;
+  margin-left: 0;
+
+  @include mobile {
+    margin: 0;          /* На мобільних прибираємо великі відступи */
+    justify-content: center; /* Центруємо блок керування кількістю */
+  }
+}
+
+
+.quantity-value {
+  min-width: 32px; /* Щоб цифра не стрибала, коли змінюється з 1 на 10 */
+  text-align: center;
+  width: 32px;         /* Фіксована ширина замість min-width */
+  text-align: center;
+  font-variant-numeric: tabular-nums; /* Цифри однакової ширини */
+  flex-shrink: 0;
 }
 
 .cart-items {
@@ -34,6 +77,14 @@
   font-weight: map-get($h3-styles, font-weight);
   line-height: map-get($h3-styles, line-height);
   letter-spacing: map-get($h3-styles, letter-spacing);
+  width: 80px;
+  margin-left: auto;
+  text-align: right;
+
+
+  @include mobile {
+    margin-left: auto;
+  }
 }
 
 .cart-title {
@@ -41,9 +92,18 @@
   font-weight: map-get($h1-styles, font-weight);
   line-height: map-get($h1-styles, line-height);
   letter-spacing: map-get($h1-styles, letter-spacing);
+  color: $color-primary;
 
   margin-top: 16px;
   margin-bottom: 32px;
+
+  @include mobile {
+    margin-top: 24px;
+    font-size: map-get($h1-styles-mobile, font-size);
+    font-weight: map-get($h1-styles-mobile, font-weight);
+    line-height: map-get($h1-styles-mobile, line-height);
+    letter-spacing: map-get($h1-styles-mobile, letter-spacing);
+  }
 }
 
 .cart-card {
@@ -54,12 +114,27 @@
   padding: 24px;
   border: 1px solid #e2e2e2;
   max-height: 128px;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 40px 80px 1fr; // хрестик | фото | назва
+    grid-template-rows: auto auto;
+    max-height: none;
+    padding: 16px;
+    column-gap: 16px;
+    row-gap: 16px;
+  }
 }
 
 .cart-card img {
   width: 80px;
   height: 80px;
   object-fit: contain;
+
+  @include mobile {
+      grid-column: 2;
+      grid-row: 1;
+    }
 }
 
 .cart-info {
@@ -74,6 +149,15 @@
   align-items: center;
   margin-left: auto;
   flex-shrink: 0;
+
+  @include mobile {
+    grid-column: 1 / -1; // Розтягуємо блок на всю ширину картки (від 1 до останньої лінії)
+    grid-row: 2;        // Ставимо у другий рядок
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between; // Кнопки вліво, ціна вправо
+    margin-top: 8px;    // Відступ від верхнього ряду
+  }
 }
 
 .cart-summary {
@@ -83,6 +167,14 @@
   border: 1px solid #e2e2e2;
   margin-left: 16px;
   text-align: center;
+
+  @include mobile {
+      margin-left: 0;
+  }
+
+  @include tablet {
+      margin-left: 0;
+  }
 
   .total-price {
     font-size: map-get($h2-styles, font-size);
@@ -150,14 +242,23 @@
   width: 16px;
   height: 16px;
 }
+
+@include mobile {
+      grid-column: 1;
+      grid-row: 1;
+    }
 }
 
 .minus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;  /* Однаковий розмір для зручності */
+  height: 32px;
   background: none;
   border: 1px solid $color-primary;
   cursor: pointer;
   padding: 8px;
-  margin-right: 14px;
 
 
   .minus-icon {
@@ -167,11 +268,15 @@
 }
 
 .plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;  /* Однаковий розмір для зручності */
+  height: 32px;
   background: none;
   border: 1px solid $color-primary;
   cursor: pointer;
   padding: 8px;
-  margin-left: 14px;
 
 
   .plus-icon {
@@ -180,3 +285,10 @@
   }
 }
 
+.back-button {
+  margin-top: 40px;
+
+  @include mobile {
+     margin-top: 24px;
+  }
+}
