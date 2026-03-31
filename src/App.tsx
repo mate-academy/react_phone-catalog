@@ -14,14 +14,19 @@ import { fetchProducts } from './features/products/productsSlice';
 
 function App() {
   const dispatch = useAppDispatch();
-  const { loading, error } = useAppSelector((state) => state.products);
+  const { loading, error } = useAppSelector(state => state.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <div className="loader">Loading products...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
+  if (loading) {
+    return <div className="loader">Loading products...</div>;
+  }
+
+  if (error) {
+    return <div className="error">Error: {error}</div>;
+  }
 
   return (
     <div className="app-wrapper">
@@ -43,4 +48,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

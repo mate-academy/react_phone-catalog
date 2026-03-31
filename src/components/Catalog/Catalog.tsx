@@ -28,7 +28,7 @@ const Catalog: React.FC = () => {
   const { category } = useParams<{ category: string }>();
 
   // Отримуємо дані з Redux
-  const allProducts = useAppSelector((state) => state.products.items);
+  const allProducts = useAppSelector(state => state.products.items);
 
   // Стейт для фільтрів та пагінації
   const [sort, setSort] = useState('newest');
@@ -71,6 +71,7 @@ const Catalog: React.FC = () => {
 
   const visibleProducts = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
+
     return sortedProducts.slice(start, start + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
 
@@ -86,12 +87,17 @@ const Catalog: React.FC = () => {
     }
 
     for (let i = start; i <= end; i++) {
-      if (i > 0) pages.push(i);
+      if (i > 0) {
+        pages.push(i);
+      }
     }
+
     return pages;
   };
 
-  if (!category) return <p>No category selected</p>;
+  if (!category) {
+    return <p>No category selected</p>;
+  }
 
   return (
     <section className="catalog">
@@ -111,7 +117,7 @@ const Catalog: React.FC = () => {
 
       <div className="catalog-grid">
         {visibleProducts.length > 0 ? (
-          visibleProducts.map((product) => (
+          visibleProducts.map(product => (
             <ProductCard
               key={product.id}
               product={product as any}

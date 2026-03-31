@@ -22,16 +22,19 @@ export const fetchProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const responses = await Promise.all([
-        fetch('/api/phones.json'),
-        fetch('/api/tablets.json'),
-        fetch('/api/accessories.json'),
+        fetch('api/phones.json'),
+        fetch('api/tablets.json'),
+        fetch('api/accessories.json'),
       ]);
 
       const results = await Promise.all(
-        responses.map((res) => {
-          if (!res.ok) throw new Error(`Failed to fetch: ${res.url}`);
+        responses.map(res => {
+          if (!res.ok) {
+            throw new Error(`Failed to fetch: ${res.url}`);
+          }
+
           return res.json();
-        })
+        }),
       );
 
       // Об'єднуємо всі масиви в один
@@ -39,23 +42,26 @@ export const fetchProducts = createAsyncThunk(
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
+      .addCase(fetchProducts.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<AnyProduct[]>) => {
-        state.loading = false;
-        state.items = action.payload;
-      })
+      .addCase(
+        fetchProducts.fulfilled,
+        (state, action: PayloadAction<AnyProduct[]>) => {
+          state.loading = false;
+          state.items = action.payload;
+        },
+      )
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;

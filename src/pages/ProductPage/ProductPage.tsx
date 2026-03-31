@@ -14,7 +14,10 @@ import './ProductPage.scss';
 type ProductType = Phone | Tablet | Accessory;
 
 const ProductPage = () => {
-  const { category, productId } = useParams<{ category: string; productId: string }>();
+  const { category, productId } = useParams<{
+    category: string;
+    productId: string;
+  }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -24,9 +27,11 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(true);
 
   // 2. Отримуємо дані зі стору
-  const products = useAppSelector((state) => state.products.items) as ProductType[];
-  const favorites = useAppSelector((state) => state.favorites.items);
-  const cartItems = useAppSelector((state) => state.cart.items);
+  const products = useAppSelector(
+    state => state.products.items,
+  ) as ProductType[];
+  const favorites = useAppSelector(state => state.favorites.items);
+  const cartItems = useAppSelector(state => state.cart.items);
 
   // 3. Визначаємо статуси (liked/in cart)
   const isLiked = favorites.some(item => item.id === product?.id);
@@ -49,7 +54,9 @@ const ProductPage = () => {
   }, [productId, products]);
 
   const handleLikeClick = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
@@ -61,12 +68,14 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (product && !isInCart) {
-      dispatch(addToCart({
-        id: product.id,
-        name: product.name,
-        price: product.priceDiscount,
-        image: product.images[0],
-      }));
+      dispatch(
+        addToCart({
+          id: product.id,
+          name: product.name,
+          price: product.priceDiscount,
+          image: product.images[0],
+        }),
+      );
     }
   };
 
@@ -84,14 +93,17 @@ const ProductPage = () => {
         <Breadcrumbs />
         <h1>Product not found</h1>
         <p>We couldn't find product with id: {productId}</p>
-        <button onClick={() => navigate('/')} className="back-button">Go Home</button>
+        <button onClick={() => navigate('/')} className="back-button">
+          Go Home
+        </button>
       </div>
     );
   }
 
   // Розрахунок варіантів
   const colorVariants = products.filter(
-    p => p.namespaceId === product.namespaceId && p.capacity === product.capacity,
+    p =>
+      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
   const capacityVariants = products.filter(
     p => p.namespaceId === product.namespaceId && p.color === product.color,
@@ -104,7 +116,13 @@ const ProductPage = () => {
       <div
         className="back-button"
         onClick={() => navigate(-1)}
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
+        style={{
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          marginBottom: '16px',
+        }}
       >
         <img src="/img/Arrow_Left.svg" alt="Arrow" />
         <span>Back</span>

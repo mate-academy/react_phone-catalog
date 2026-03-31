@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // Імпортуй свій редюсер (перевір правильність шляху до файлу)
 import favoritesReducer from '../features/favorites/favoritesSlice';
 import cartReducer from '../features/cart/cartSlice';
-import productsReducer from '../features/products/productsSlice'
+import productsReducer from '../features/products/productsSlice';
 
 export const store = configureStore({
   reducer: {
