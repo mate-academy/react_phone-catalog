@@ -21,8 +21,7 @@ $live-gradient: linear-gradient(90deg,
 *::after {
   transition: background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease,
-    fill 0.2s ease;
+    border-color 0.2s ease;
 }
 
 @mixin live-color-bg($duration: 5s) {

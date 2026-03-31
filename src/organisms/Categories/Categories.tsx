@@ -8,7 +8,8 @@ type Props = {
   title: string;
 };
 
-export const Categories = ({ title }: Props) => {
+
+const Categories = ({ title }: Props) => {
   const categories = Object.keys(CATEGORY_LIST) as Category[];
   const counts = useCategoryCount();
 
@@ -25,3 +26,5 @@ export const Categories = ({ title }: Props) => {
     </Section>
   );
 };
+
+export default Categories;

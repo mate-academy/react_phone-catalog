@@ -1,0 +1,30 @@
+.section {
+  padding: space(2);
+
+  @include respond(tablet) {
+    padding: space(3) 0 space(3) 0;
+  }
+}
+
+.path {
+  color: $secondary;
+  display: flex;
+  align-items: center;
+  gap: space(2);
+  text-transform: capitalize;
+  font-weight: 200;
+
+  &__chevron {
+    align-self: center;
+    aspect-ratio: 1/1;
+    height: 100%;
+    fill: currentColor;
+    transform: rotate(90deg);
+  }
+
+  &__home {
+    align-self: center;
+    aspect-ratio: 1/1;
+    fill: $white;
+  }
+}

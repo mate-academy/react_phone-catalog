@@ -2,11 +2,11 @@ import { Button } from '@/atoms';
 import s from './ItemCard.module.scss';
 import Heart from '@/assets/icons/heart.svg?react';
 
-import { Phone } from '@/types/phone';
 import { FC } from 'react';
+import { Good } from '@/types';
 
 type Props = {
-  item: Phone;
+  item: Good;
   discount?: boolean;
 };
 

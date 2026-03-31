@@ -11,7 +11,7 @@ type Props = {
   discount?: boolean;
 };
 
-export const ShortList: FC<Props> = ({ items, title, pageSize = 4, discount }) => {
+const ShortList: FC<Props> = ({ items, title, pageSize = 4, discount }) => {
   const [page, setPage] = useState(0);
 
   const next = () => {
@@ -54,3 +54,5 @@ export const ShortList: FC<Props> = ({ items, title, pageSize = 4, discount }) =
     </Section>
   );
 };
+
+export default ShortList;

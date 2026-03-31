@@ -1,10 +1,16 @@
 import { Page } from '@/atoms';
 import { Catalog } from '@/organisms';
+import { usePhones } from '@/hooks';
 
 const Phones = () => {
+  const phones = usePhones();
+
   return (
     <Page>
-      <Catalog title="Phones" />
+      <Page.Breadcrumps />
+      <Catalog title="Mobile phones">
+        <Catalog.List items={phones} />
+      </Catalog>
     </Page>
   );
 };
