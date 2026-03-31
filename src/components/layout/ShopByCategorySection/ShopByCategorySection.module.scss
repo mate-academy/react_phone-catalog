@@ -8,9 +8,9 @@
 }
 
 .title {
-  @include subtitle;
-  
   margin-bottom: 32px;
+  
+  @include subtitle;
 }
 
 .grid {
