@@ -9,6 +9,10 @@
   @include respond-to('desktop') {
     padding: 0 $padding-desktop;
   }
+
+  @include respond-to(800px) {
+    padding-top: 32px;
+  }
 }
 
 .sceletonWraper {

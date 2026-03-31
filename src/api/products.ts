@@ -3,7 +3,7 @@ import { Product } from '@/features/products/types/product';
 // export const PRODUCTS_QUERY_KEY = ['products', 'all'] as const;
 
 export const fetchAllProducts = async (): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch('./api/products.json');
 
   if (!response.ok) {
     throw new Error('Failed to fetch products');

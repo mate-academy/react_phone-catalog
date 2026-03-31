@@ -20,7 +20,7 @@ export const ProductNotFoundPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <motion.img
-          src="/img/product-not-found.png"
+          src="./img/product-not-found.png"
           alt="Product not found"
           className={styles.image}
           animate={{ rotate: [0, -3, 3, -3, 0] }}

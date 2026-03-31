@@ -25,7 +25,7 @@ export const NotFoundPage = () => {
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
           <motion.img
-            src="/img/page-not-found.png"
+            src="./img/page-not-found.png"
             alt="404 cat"
             className={styles.image}
             animate={{ rotate: [0, -3, 3, -3, 0] }}

@@ -7,6 +7,10 @@
   @include respond-to('desktop') {
     padding: 0 $padding-desktop 80px;
   }
+
+  @include respond-to(800px) {
+    padding-top: 32px;
+  }
 }
 
 .title {

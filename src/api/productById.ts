@@ -5,7 +5,7 @@ export const fetchProductByItemId = async (
   itemId: string,
   category: string,
 ): Promise<ProductDetails> => {
-  const response = await fetch(`/api/${category}.json`);
+  const response = await fetch(`./api/${category}.json`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch product');
