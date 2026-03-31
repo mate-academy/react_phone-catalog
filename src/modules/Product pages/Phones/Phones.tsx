@@ -28,7 +28,7 @@ export const PhonesPage = () => {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.title}>Mobile phones</h1>
+      <h1 className={`{styles.title} h1`}>Mobile phones</h1>
       <p className={styles.count}>{products.length} models</p>
 
       <div className={styles.productList}>

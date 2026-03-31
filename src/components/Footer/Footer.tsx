@@ -21,14 +21,14 @@ export const Footer = () => {
             href="https://github.com/"
             target="_blank"
             rel="noreferrer"
-            className={styles.footer__link}
+            className={`${styles.footer__link} uppercase`}
           >
             Github
           </a>
-          <a href="#contacts" className={styles.footer__link}>
+          <a href="#contacts" className={`${styles.footer__link} uppercase`}>
             Contacts
           </a>
-          <a href="#rights" className={styles.footer__link}>
+          <a href="#rights" className={`${styles.footer__link} uppercase`}>
             Rights
           </a>
         </nav>
@@ -39,7 +39,9 @@ export const Footer = () => {
             className={styles.footer__top_button}
             onClick={scrollToTop}
           >
-            <span className={styles.footer__top_text}>Back to top</span>
+            <span className={`${styles.footer__top_text} small-text12`}>
+              Back to top
+            </span>
 
             <img
               src="./img/TopBtn.svg"

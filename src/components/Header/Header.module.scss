@@ -76,10 +76,7 @@
     position: relative;
     text-decoration: none;
     color: #89939a;
-    font-weight: 700;
-    font-family: 'Mont', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
+
     transition: color 0.3s ease;
 
     &::after {
@@ -88,7 +85,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 3px;
+      height: 2px;
       background-color: transparent;
       transition: background-color 0.3s ease;
     }
@@ -248,10 +245,7 @@
   &__link {
     text-decoration: none;
     color: #89939a;
-    font-weight: 700;
-    font-family: 'Mont', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
+   
     position: relative;
     padding: 8px 0;
     transition: color 0.3s ease;
@@ -265,7 +259,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 3px;
+        height: 2px;
         background-color: #313237;
       }
     }
@@ -315,15 +309,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Mont', sans-serif;
-  font-weight: 700;
-  font-size: 9px;
+  
   border: 1px solid #ffffff;
   pointer-events: none;
   z-index: 1;
 }
 
-.theme-toggle {
+.theme_toggle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,7 +331,7 @@
   transition: color 0.3s ease;
 }
 
-.switch-circle {
+.switch_circle {
   width: 20px;
   height: 20px;
 

@@ -1,0 +1,112 @@
+/* ===== HEADINGS ===== */
+
+h1 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 639px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h2 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+h3 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+h4 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+/* ===== TEXT ===== */
+
+.uppercase {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.button-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.small-text12 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.small-text12Light {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.body-text14 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.body-text14Bold {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: right;
+}
+
+.label-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  color: #89939A;
+}
+
+/* ===== PRICE ===== */
+
+.price-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.price-old-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 22px;
+  text-decoration: line-through;
+  color: #89939A;
+}

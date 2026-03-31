@@ -49,7 +49,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
                   to="/"
                   end
                   className={({ isActive }) =>
-                    `${styles.nav__link} ${isActive ? styles.nav__link_active : ''}`
+                    `${styles.nav__link} uppercase ${isActive ? styles.nav__link_active : ''}`
                   }
                 >
                   Home
@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
                 <NavLink
                   to="/phones"
                   className={({ isActive }) =>
-                    `${styles.nav__link} ${isActive ? styles.nav__link_active : ''}`
+                    `${styles.nav__link} uppercase ${isActive ? styles.nav__link_active : ''}`
                   }
                 >
                   Phones
@@ -69,7 +69,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
                 <NavLink
                   to="/tablets"
                   className={({ isActive }) =>
-                    `${styles.nav__link} ${isActive ? styles.nav__link_active : ''}`
+                    `${styles.nav__link} uppercase ${isActive ? styles.nav__link_active : ''}`
                   }
                 >
                   Tablets
@@ -79,7 +79,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
                 <NavLink
                   to="/accessories"
                   className={({ isActive }) =>
-                    `${styles.nav__link} ${isActive ? styles.nav__link_active : ''}`
+                    `${styles.nav__link} uppercase ${isActive ? styles.nav__link_active : ''}`
                   }
                 >
                   Accessories
@@ -91,17 +91,17 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
 
         <div className={styles.header__right}>
           <div className={styles.desktop_actions}>
-            {/* 
-<button
-  className={styles.theme_toggle}
-  onClick={toggleTheme}
-  aria-label="Toggle theme"
->
-  <span className={styles.switch_circle}>
-    {theme === 'dark' ? '☀️' : '🌙'}
-  </span>
-</button>
-*/}
+            {false && (
+              <button
+                className={styles.theme_toggle}
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+              >
+                <span className={styles.switch_circle}>
+                  {theme === 'dark' ? '☀️' : '🌙'}
+                </span>
+              </button>
+            )}
 
             <NavLink
               to="/favourites"
@@ -110,7 +110,11 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
               }
             >
               <img src="./img/Favourites.svg" alt="Favorites" />
-              {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
+              {favCount > 0 && (
+                <span className={`${styles.badge} small-text12`}>
+                  {favCount}
+                </span>
+              )}
             </NavLink>
 
             <NavLink
@@ -145,7 +149,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             to="/"
             end
             className={({ isActive }) =>
-              `${styles.menu__link} ${isActive ? styles.menu__link_active : ''}`
+              `${styles.menu__link} uppercase ${isActive ? styles.menu__link_active : ''}`
             }
             onClick={toggleMenu}
           >
@@ -154,7 +158,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
           <NavLink
             to="/phones"
             className={({ isActive }) =>
-              `${styles.menu__link} ${isActive ? styles.menu__link_active : ''}`
+              `${styles.menu__link} uppercase ${isActive ? styles.menu__link_active : ''}`
             }
             onClick={toggleMenu}
           >
@@ -163,7 +167,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
           <NavLink
             to="/tablets"
             className={({ isActive }) =>
-              `${styles.menu__link} ${isActive ? styles.menu__link_active : ''}`
+              `${styles.menu__link} uppercase ${isActive ? styles.menu__link_active : ''}`
             }
             onClick={toggleMenu}
           >
@@ -172,7 +176,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
           <NavLink
             to="/accessories"
             className={({ isActive }) =>
-              `${styles.menu__link} ${isActive ? styles.menu__link_active : ''}`
+              `${styles.menu__link} uppercase ${isActive ? styles.menu__link_active : ''}`
             }
             onClick={toggleMenu}
           >

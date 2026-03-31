@@ -19,7 +19,9 @@ export const FavouritesPage: React.FC = () => {
         </nav>
 
         <h1 className={styles.title}>Favorites</h1>
-        <p className={styles.modelsCount}>{favourites.length} items</p>
+        <p className={`${styles.modelsCount} body-text14Bold`}>
+          {favourites.length} items
+        </p>
 
         {favourites.length > 0 ? (
           <ProductList products={favourites} className={styles.productList} />

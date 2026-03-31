@@ -1,3 +1,5 @@
+@import './typography.scss';
+
 a,
 button,
 .icon {
@@ -49,4 +51,10 @@ html {
   scrollbar-gutter: stable;
 }
 
-
+body {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-color);
+}

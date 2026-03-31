@@ -27,10 +27,7 @@
     width: 100%;
     max-width: 1136px;
     margin: 0 auto 32px;
-    font-family: 'Mont', sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
+
     line-height: 1.2;
     word-wrap: break-word;
     overflow-wrap: anywhere;
@@ -144,9 +141,7 @@
   }
 
   &__title {
-    font-family: 'Mont', sans-serif;
-    font-weight: 800;
-    font-size: 32px;
+
     color: #0F0F11;
 
     @media (max-width: 639px) {
@@ -226,26 +221,6 @@
   }
 }
 
-.card_home_custom {
-  // Базова ширина для десктопа (1200px++)
-  flex: 0 0 272px !important;
-  width: 272px !important;
-  min-width: 272px !important;
-
-  @media (max-width: 1199px) {
-    // Планшет (640px - 1199px)
-    flex: 0 0 237px !important;
-    width: 237px !important;
-    min-width: 237px !important;
-  }
-
-  @media (max-width: 639px) {
-    // Мобілка (до 639px)
-    flex: 0 0 212px !important;
-    width: 212px !important;
-    min-width: 212px !important;
-  }
-}
 
 /* 6. КАТЕГОРІЇ */
 .categories {
@@ -258,9 +233,7 @@
   }
 
   &__title {
-    font-family: 'Mont', sans-serif;
-    font-weight: 800;
-    font-size: 32px;
+
     margin-bottom: 24px;
 
     @media (max-width: 639px) {

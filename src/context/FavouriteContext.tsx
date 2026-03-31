@@ -26,15 +26,18 @@ export const FavouritesProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [favourites]);
 
   const addToFavourites = (product: Product) => {
-    setFavourites(prev => [...prev, product]);
+    if (!favourites.some(item => item.itemId === product.itemId)) {
+      setFavourites(prev => [...prev, product]);
+    }
+
   };
 
   const removeFromFavourites = (productId: string | number) => {
-    setFavourites(prev => prev.filter(item => item.id !== productId));
+    setFavourites(prev => prev.filter(item => item.itemId !== productId));
   };
 
   const isFavourite = (productId: string | number) => {
-    return favourites.some(item => item.id === productId);
+    return favourites.some(item => item.itemId === productId);
   };
 
   return (

@@ -18,11 +18,7 @@
         }
 
   &__title {
-    font-family: 'Mont', sans-serif;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
+
     margin-bottom: 32px;
     color: #0F0F11;
   }
@@ -71,13 +67,10 @@
   gap: 4px; // Гап 4 пк
   background: none;
   border: none;
-  font-family: 'Mont', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
+
   color: #89939A;
   cursor: pointer;
-  margin-bottom: 24px; // Між Back і карт 24 пк
+  margin-bottom: 24px;
   padding: 0;
 
   img {
@@ -145,10 +138,7 @@
   }
 
   &__name {
-    font-family: 'Mont', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
+
     color: #0F0F11;
     flex: 1;
   }
@@ -168,12 +158,32 @@
   }
 
   &__price {
-    font-family: 'Mont', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
+
     color: #0F0F11;
   }
+
+&__link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+&__name {
+  transition: color 0.2s ease;
+}
+
+&__link:hover &__name {
+  color: #4219D0;
+}
 }
 
 .quantity {
@@ -184,7 +194,7 @@
   &__btn {
     width: 32px;
     height: 32px;
-    border-radius: 50%; // В кружечку
+    border-radius: 50%;
     border: 1px solid #E2E6E9;
     background: #fff;
     display: flex;
@@ -194,13 +204,12 @@
     padding: 0;
 
     &:disabled {
-      opacity: 0.3; // - неактивний
+      opacity: 0.3;
     }
   }
 
   &__count {
-    font-family: 'Mont', sans-serif;
-    font-size: 14px;
+
     font-weight: 600;
   }
 }
@@ -224,22 +233,20 @@
 
   @media (min-width: 1200px) {
     width: 368px;
-    height: 206px;
+    min-height: 206px;
+    height: auto;
     flex-shrink: 0;
     margin-top: 0 !important;
   }
 
   &__total {
-    font-family: 'Mont', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
+
     margin: 0;
   }
 
   &__text {
-    font-family: 'Mont', sans-serif;
+
     color: #89939A;
-    font-size: 14px;
     margin: 0;
   }
 
@@ -260,13 +267,12 @@
   &__checkout {
     width: 240px;
     height: 48px;
+    flex-shrink: 0;
     background: #4219D0;
     color: #fff;
     border: none;
     border-radius: 48px;
-    font-family: 'Mont', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
+
     cursor: pointer;
 
     @media (min-width: 640px) {
@@ -277,6 +283,14 @@
       max-width: 320px;
     }
   }
+
+    .checkoutMessage {
+      margin: 0;
+      font-size: 14px;
+      text-align: center;
+      color: #27ae60;
+      line-height: 1.4;
+    }
 }
 
   .item {

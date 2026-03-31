@@ -71,7 +71,7 @@ export const Pagination: React.FC<Props> = ({
       <li className={styles.pagination__item}>
         <button
           type="button"
-          className={`${styles.pagination__btn} ${styles.pagination__btn_arrow}`}
+          className={`${styles.pagination__btn} body-text14Bold ${styles.pagination__btn_arrow}`}
           disabled={currentPage === totalPages}
           onClick={() => handlePageClick(currentPage + 1)}
         >

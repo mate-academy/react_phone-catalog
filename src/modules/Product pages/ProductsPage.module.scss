@@ -36,9 +36,7 @@ h1,
     }
 
     span:last-child {
-      font-family: 'Mont', sans-serif;
-        font-weight: 600;
-        font-size: 12px;
+
 
         line-height: 1;
         display: flex;
@@ -53,20 +51,13 @@ h1,
 }
 
 h1 {
-  font-family: 'Mont', sans-serif;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em; // -1%
+
   color: #0F0F11;
   margin: 24px 0 8px;
 }
 
 .modelsCount {
-  font-family: 'Mont', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+
   color: #89939A;
   margin-bottom: 32px;
 }
@@ -195,13 +186,9 @@ h1 {
       background: #fff;
       outline: none;
       cursor: pointer;
-
+      color: #0F0F11;
       font-family: 'Mont', sans-serif;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 21px;
-        color: #0F0F11;
-    
+
       &:hover {
         border-color: #313237;
       }

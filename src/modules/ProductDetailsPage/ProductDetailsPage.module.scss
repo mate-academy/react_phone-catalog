@@ -1,9 +1,9 @@
 .container {
   margin: 0 auto;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: visible;
   width: 100%;
-  max-width: 100%;
+  max-width: 1136px;
   padding: 0 16px;
 
   @media (min-width: 640px) {
@@ -52,7 +52,7 @@
 
   // 3. СТРУКТУРА ДЛЯ ДЕСКТОПА (1200px+)
   @media (min-width: 1200px) {
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 560px 320px;
     grid-template-areas:
       "gallery actions"
       "about   specs";
@@ -63,65 +63,58 @@
 
 .gallery {
   grid-area: gallery;
+  @media (min-width: 1200px) {
+      max-width: 560px;
+    }
 }
 
 .productActions {
-  position: relative;
-  width: 100%;
-  padding-top: 0;
+  grid-area: actions;
+
+  @media (min-width: 1200px) {
+    width: 320px;
+  }
 }
 
-.about {
-  grid-area: about;
-  max-width: 560px;
-
-  @media (max-width: 1199px) {
-    max-width: 100%;
-  }
+.mainSpecs {
+  grid-area: mainSpecs;
 }
 
 .techSpecs {
   grid-area: specs;
 
   @media (min-width: 1200px) {
-    padding-top: 0; // На десктопі Specs починаються зверху своєї клітинки
+    width: 512px;
   }
-}
-
-.gallery {
-  grid-area: gallery;
-}
-
-.productActions {
-  grid-area: actions;
 }
 
 .about {
   grid-area: about;
+
+  @media (min-width: 1200px) {
+    width: 560px;
+  }
 }
 
-.techSpecs {
-  grid-area: specs;
-}
 
 // --- ГАЛЕРЕЯ ---
 .gallery {
   display: flex;
-  flex-direction: row; // Мініатюри в ряд на мобілці, але в стовпчик на десктопі
+  flex-direction: row;
   gap: 16px;
   margin-bottom: 40px;
 
   @media (max-width: 639px) {
-    flex-direction: column-reverse; // Мініатюри під фото на мобілці
+    flex-direction: column-reverse;
   }
 
   .thumbnails {
     display: flex;
-    flex-direction: column; // Стовпчик
+    flex-direction: column;
     gap: 8px;
 
     @media (max-width: 639px) {
-      flex-direction: row; // Ряд на мобільних
+      flex-direction: row;
       justify-content: center;
     }
 
@@ -151,6 +144,8 @@
     //flex: 1;
     display: flex;
     justify-content: center;
+    width: 100%;
+      height: auto;
 
     @media (min-width: 1200px) {
       width: 464px;
@@ -171,16 +166,30 @@
     width: 100%;
     padding-top: 0;
 
+    .actionsHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+          margin-bottom: 8px;
+      }
+
   .productId {
-    position: absolute;
+    position: static;
       top: 0;
-      right: 0;
-      font-family: 'Mont', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
+      //right: 0;
+
       color: #B4BDC3;
       line-height: 15px;
   }
+
+    @media (min-width: 640px) {
+      .productId {
+        position: absolute !important;
+        right: 0;
+        top: 0;
+      }
+    }
 
   .priceBlock {
     display: flex;
@@ -243,6 +252,19 @@
     color: #313237;
     font-size: 14px;
     transition: all 0.2s;
+    //display: flex;
+    border-radius: 4px;
+
+    font-family: 'Mont', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+    
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #B4BDC3;
 
     &.activeCapacity {
       background-color: #0F0F11;
@@ -268,12 +290,11 @@
         color: #ffffff;
         border: 1px solid transparent;
         border-radius: 48px;
-        font-family: 'Mont', sans-serif;
-        font-weight: 700;
-        font-size: 14px;
+
         cursor: pointer;
         transition: background 0.3s;
-        width: 231px;
+        width: 100%;
+          max-width: 100%;
 
         @media (min-width: 640px) {
             width: 180px;
@@ -329,41 +350,6 @@
 }
 
 
-
-    .addToCart {
-  
-      height: 48px;
-  
-      background: #4219D0;
-  
-      border: none;
-  
-      border-radius: 48px;
-  
-      color: #FFFFFF;
-  
-      font-family: 'Mont', sans-serif;
-  
-      font-weight: 700;
-  
-      font-size: 14px;
-  
-      line-height: 21px;
-  
-      cursor: pointer;
-  
-      display: flex;
-  
-      align-items: center;
-  
-      justify-content: center;
-  
-      transition: background 0.3s;
-  
-      width: 231px; // Мобілка
-    }
-
-
 // --- (About) ---
 .about {
   .subtitle {
@@ -406,24 +392,7 @@
     margin-bottom: 24px;
     color: #313237;
   }
-
-  .specRow {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    font-size: 14px;
-
-    span:first-child {
-      color: #89939A;
-    }
-
-    span:last-child {
-      font-weight: 600;
-      color: #313237;
-    }
-  }
 }
-
 
 .backButton {
   display: flex;
@@ -434,19 +403,65 @@
   padding: 0;
   margin: 24px 0;
   cursor: pointer;
-  font-family: 'Mont', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
+
   color: #89939A;
   align-self: flex-start;
 
   img {
     width: 16px;
     height: 16px;
-
   }
 }
 
+.techSpecLabel {
+  font-family: 'Mont', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939A;
+}
+
+.techSpecValue {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #0F0F11;
+  text-align: right;
+}
+
+.specsTable {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 16px;
+  width: 100%;
+}
+
+/* ===== MAIN SPECS (маленькі) ===== */
+
+.mainSpecLabel {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 21px;
+  color: #89939A;
+}
+
+.mainSpecValue {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 21px;
+  color: #0F0F11;
+  text-align: right;
+}
 
 .section {
   width: 100%;
@@ -462,9 +477,7 @@
   }
 
   &__title {
-    font-family: 'Mont', sans-serif;
-    font-weight: 800;
-    font-size: 32px;
+
     color: #0F0F11;
 
     @media (max-width: 639px) {
@@ -518,40 +531,35 @@
     width: 416px;
   }
 
+  a {
 
-  a,
-  span {
-    font-family: 'Mont', sans-serif;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
     text-decoration: none;
     display: flex;
     align-items: center;
-  }
-
-  // Стиль для категорій (Phones, etc.)
-  a {
     font-weight: 700;
     color: #0F0F11;
     transition: opacity 0.2s;
     text-transform: capitalize;
+
+    span {
+        display: inline;
+      }
 
     &:hover {
       opacity: 0.7;
     }
   }
 
-  // Стиль для назви товару (останній елемент)
+
   span {
     font-weight: 600;
     color: #89939A;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; // Щоб довга назва не ламала верстку
+    text-overflow: ellipsis;
   }
 
-  // Іконки (Home та стрілочки)
+
   img {
     width: 16px;
     height: 16px;
@@ -567,10 +575,16 @@
 }
 
 .product_list_container {
-  //width: 100%;
-  overflow: hidden;
+  width: 100%;
+  overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   position: relative;
-  //max-width: calc(272px * 4 + 16px * 3);
+
+  @media (min-width: 1200px) {
+      max-width: calc(272px * 4 + 16px * 3);
+        margin: 0 auto;
+        overflow: hidden;
+}
 }
 
 .product_list {
@@ -582,14 +596,23 @@
 }
 
 .card_home_custom {
-  flex: 0 0 272px;
-
-  @media (max-width: 1199px) and (min-width: 640px) {
-    flex: 0 0 237px;
-  }
-
   @media (max-width: 639px) {
-    flex: 0 0 212px;
-  }
+      flex: 0 0 212px;
+    }
+  
+    @media (min-width: 640px) and (max-width: 1199px) {
+      flex: 0 0 237px;
+    }
+  
+    @media (min-width: 1200px) {
+      flex: 0 0 272px;
+    }
+}
+
+.selectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
 }
 

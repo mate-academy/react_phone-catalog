@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useParams } from 'react-router-dom';
 import { getProducts } from '../../components/api/products';
 import { Product } from '../../components/types/Product';
 import { ProductList } from '../../components/ProductList/ProductList';
@@ -23,6 +23,8 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = Number(searchParams.get('page')) || 1;
+
+  const { productId } = useParams<{ productId: string }>();
 
   // 1. Сортування
   const sortedProducts = useMemo(() => {
@@ -64,7 +66,7 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
     startIndex + itemsCount,
   );
 
-  // Функція для оновлення URL
+
   const updateParams = (params: { [key: string]: string }) => {
     const newParams = new URLSearchParams(searchParams);
     Object.entries(params).forEach(([key, value]) => {
@@ -99,18 +101,23 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
           </Link>
 
           <img src="./img/Back.svg" alt="arrow" className={styles.arrowIcon} />
-          <span>{title === 'Mobile phones' ? 'Phones' : title}</span>
+          <span className="small-text12">
+            {title === 'Mobile phones' ? 'Phones' : title}
+          </span>
         </nav>
 
-        <h1>{title}</h1>
-        <p className={styles.modelsCount}>{products.length} models</p>
+        <h1 className="h1">{title}</h1>
+        <p className={`${styles.modelsCount} body-text14Bold`}>
+          {products.length} models
+        </p>
 
         <div className={styles.dropdowns}>
           <div className={styles.dropdown}>
-            <label>Sort by</label>
+            <label className="small-text12">Sort by</label>
             <select
+              className={`${styles.select} button-text`}
               value={sort}
-              onChange={e => updateParams({ sort: e.target.value, page: '1' })} // ВИПРАВЛЕНО НА updateParams
+              onChange={e => updateParams({ sort: e.target.value, page: '1' })}
             >
               <option value="age">Newest</option>
               <option value="title">Alphabetically</option>
@@ -119,8 +126,9 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
           </div>
 
           <div className={styles.dropdown}>
-            <label>Items on page</label>
+            <label className="small-text12">Items on page</label>
             <select
+              className={`${styles.select} button-text`}
               value={perPage}
               onChange={e =>
                 updateParams({ perPage: e.target.value, page: '1' })

@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const CartPage = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate();
+  const [checkoutMessage, setCheckoutMessage] = useState<string | null>(null);
+  //const { clearCart } = useCart();
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
     0,
   );
 
+  const handleCheckout = () => {
+    //clearCart();
+    setCheckoutMessage(
+      '✅ Thank you for your purchase! Your order is being processed.',
+    );
+  };
+
+
   return (
     <div className={styles.cartPage}>
-      <button className={styles.backButton} onClick={() => navigate(-1)}>
+      <button
+        className={`${styles.backButton} small-text12`}
+        onClick={() => navigate(-1)}
+      >
         <img src="./img/Back.svg" alt="back" />
         Back
       </button>
 
-      <h1 className={styles.cartPage__title}>Cart</h1>
+      <h1 className={`${styles.cartPage__title} h1`}>Cart</h1>
 
       <div className={styles.cartPage__content}>
         <div className={styles.cartPage__itemsList}>
@@ -32,12 +46,21 @@ export const CartPage = () => {
                 >
                   <img src="./img/Close__.png" alt="remove" />{' '}
                 </button>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className={styles.item__img}
-                />
-                <p className={styles.item__name}>{item.name}</p>
+
+                <Link
+                  to={`/${item.category}/${item.id}`}
+                  className={styles.item__link}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className={styles.item__img}
+                  />
+
+                  <span className={`${styles.item__name} body-text14Bold`}>
+                    {item.name}
+                  </span>
+                </Link>
               </div>
 
               <div className={styles.item__footer}>
@@ -49,7 +72,7 @@ export const CartPage = () => {
                   >
                     <img src="./img/Minus.svg" alt="minus" />
                   </button>
-                  <span className={styles.quantity__count}>
+                  <span className={`${styles.quantity__count} body-text14Bold`}>
                     {item.quantity || 1}
                   </span>
                   <button
@@ -59,7 +82,7 @@ export const CartPage = () => {
                     <img src="./img/Plus.svg" alt="plus" />
                   </button>
                 </div>
-                <p className={styles.item__price}>
+                <p className={`${styles.item__price} price-text`}>
                   ${item.price * (item.quantity || 1)}
                 </p>
               </div>
@@ -70,12 +93,21 @@ export const CartPage = () => {
         {/* Блок Summary */}
         {cart.length > 0 && (
           <div className={styles.summary}>
-            <h2 className={styles.summary__total}>${totalPrice}</h2>
-            <p className={styles.summary__text}>
+            <h2 className={`${styles.summary__total} h2`}>${totalPrice}</h2>
+            <p className={`${styles.summary__text} body-text14Bold`}>
               Total for {cart.length} items
             </p>
             <div className={styles.summary__line}></div>
-            <button className={styles.summary__checkout}>Checkout</button>
+            <button
+              className={`${styles.summary__checkout} button-text`}
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
+
+            {checkoutMessage && (
+              <p className={styles.checkoutMessage}>{checkoutMessage}</p>
+            )}
           </div>
         )}
       </div>

@@ -6,6 +6,7 @@ import { Product } from '../../components/types/Product';
 import { getProducts } from '../../components/api/products';
 import styles from './HomePage.module.scss';
 import { useRef } from 'react';
+import { getCarouselStep } from '../../utils/carouselHelpers';
 
 const images: string[] = [
   "./img/Banner.png",
@@ -25,24 +26,26 @@ export const HomePage = () => {
 
   const brandNewRef = useRef<HTMLDivElement>(null);
   const hotPricesRef = useRef<HTMLDivElement>(null);
-
-  const getStep = () => {
-    const width = window.innerWidth;
-    if (width < 640) return 228; // 212px картка + 16px gap
-    if (width < 1200) return 253; // 237px картка + 16px gap
-    return 288; // 272px картка + 16px gap
-  };
+  
+  //const getStep = () => {
+   // const width = window.innerWidth;
+    //if (width < 640) return 228; // 212px картка + 16px gap
+   // if (width < 1200) return 253; // 237px картка + 16px gap
+   // return 288; // 272px картка + 16px gap
+  //};
 
   const handleNext = (
-    currentOffset: number,
     setOffset: React.Dispatch<React.SetStateAction<number>>,
     containerRef: React.RefObject<HTMLDivElement>,
   ) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !containerRef.current.parentElement) return;
 
-    const container = containerRef.current;
-    const maxOffset = container.scrollWidth - container.offsetWidth;
-    const step = getStep();
+    const step = getCarouselStep(containerRef);
+    //const listNode = containerRef.current;
+    //const wrapperNode = containerRef.current.parentElement;
+    const maxOffset =
+      containerRef.current.scrollWidth -
+      containerRef.current.parentElement!.offsetWidth;
 
     setOffset(prev => {
       const next = prev + step;
@@ -52,8 +55,9 @@ export const HomePage = () => {
 
   const handlePrev = (
     setOffset: React.Dispatch<React.SetStateAction<number>>,
+    containerRef: React.RefObject<HTMLDivElement>,
   ) => {
-    const step = getStep();
+    const step = getCarouselStep(containerRef);
     setOffset(prev => Math.max(prev - step, 0));
   };
 
@@ -61,9 +65,11 @@ export const HomePage = () => {
     offset: number,
     containerRef: React.RefObject<HTMLDivElement>,
   ) => {
-    if (!containerRef.current) return false;
+    if (!containerRef.current || !containerRef.current.parentElement)
+      return false;
     const maxOffset =
-      containerRef.current.scrollWidth - containerRef.current.offsetWidth;
+      containerRef.current.scrollWidth -
+      containerRef.current.parentElement!.offsetWidth;
     return offset >= maxOffset - 5;
   };
 
@@ -95,18 +101,24 @@ export const HomePage = () => {
       ]
     : images;
 
-  const brandNew = products.filter(product => product.year >= 2022).slice(0, 8);
-  const hotPrices = products
-    .filter(product => {
-      const regular = product.priceRegular || product.fullPrice || 0;
+ const brandNewNoDiscount = products
+   .filter(product => product.year >= 2022)
+   .slice(0, 8)
+   .map(product => ({
+     ...product,
+     price: product.fullPrice,
+     discount: 0,
+   }));
 
-      const discount = product.priceDiscount || product.price || 0;
 
-      const diff = regular - discount;
+ const hotPrices = products
+   .filter(product => {
+     const regular = product.priceRegular || product.fullPrice || 0;
+     const discount = product.priceDiscount || product.price || 0;
+     return regular - discount > 50;
+   })
+   .slice(0, 8);
 
-      return diff > 50;
-    })
-    .slice(0, 8);
 
   const nextBanner = () =>
     setCurrentBannerIndex(prev => (prev + 1) % images.length);
@@ -118,7 +130,9 @@ export const HomePage = () => {
   return (
     <main className={styles.home}>
       <div className={styles.container}>
-        <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
+        <h1 className={`${styles.home__title} h1`}>
+          Welcome to Nice Gadgets store!
+        </h1>
 
         {/* 1. БАНЕР */}
         <section className={styles.slider}>
@@ -150,20 +164,18 @@ export const HomePage = () => {
         {/* 2. BRAND NEW MODELS */}
         <section className={styles.section}>
           <div className={styles.section__header}>
-            <h2 className={styles.section__title}>Brand new models</h2>
+            <h2 className={`${styles.section__title} h2`}>Brand new models</h2>
             <div className={styles.arrows}>
               <button
                 className={styles.arrow_btn}
-                onClick={() => handlePrev(setBrandNewOffset)}
+                onClick={() => handlePrev(setBrandNewOffset, brandNewRef)}
                 disabled={brandNewOffset <= 0}
               >
                 {'<'}
               </button>
               <button
                 className={styles.arrow_btn}
-                onClick={() =>
-                  handleNext(brandNewOffset, setBrandNewOffset, brandNewRef)
-                }
+                onClick={() => handleNext(setBrandNewOffset, brandNewRef)}
                 disabled={isNextDisabled(brandNewOffset, brandNewRef)}
               >
                 {'>'}
@@ -171,16 +183,18 @@ export const HomePage = () => {
             </div>
           </div>
 
-          <div className={styles.product_list_container} ref={brandNewRef}>
+          <div className={styles.product_list_container}>
             <div
               className={styles.product_list}
+              ref={brandNewRef}
               style={{ transform: `translateX(-${brandNewOffset}px)` }}
             >
-              {brandNew.map(product => (
+              {brandNewNoDiscount.map(product => (
                 <ProductCard
                   key={product.id}
                   product={product}
                   className={styles.card_home_custom}
+                  hideDiscount={true}
                 />
               ))}
             </div>
@@ -190,14 +204,13 @@ export const HomePage = () => {
         {/* 3. CATEGORIES */}
         <section className={styles.categories}>
           <div className={styles.categories__content}>
-            <h2 className={styles.categories__title}>Shop by category</h2>
+            <h2 className={`${styles.categories__title} h2`}>
+              Shop by category
+            </h2>
             <div className={styles.categories__list}>
               <Link to="/phones" className={styles.category}>
                 <div className={styles.category__image_phones}>
-                  <img
-                    src="./img/phones/Phones.png"
-                    alt="Phones"
-                  />
+                  <img src="./img/phones/Phones.png" alt="Phones" />
                 </div>
                 <h4 className={styles.category__name}>Mobile phones</h4>
                 <p className={styles.category__count}>
@@ -206,10 +219,7 @@ export const HomePage = () => {
               </Link>
               <Link to="/tablets" className={styles.category}>
                 <div className={styles.category__image_tablets}>
-                  <img
-                    src="./img/tablets/Tablets.png"
-                    alt="Tablets"
-                  />
+                  <img src="./img/tablets/Tablets.png" alt="Tablets" />
                 </div>
                 <h4 className={styles.category__name}>Tablets</h4>
                 <p className={styles.category__count}>
@@ -240,16 +250,14 @@ export const HomePage = () => {
             <div className={styles.arrows}>
               <button
                 className={styles.arrow_btn}
-                onClick={() => handlePrev(setHotPricesOffset)}
+                onClick={() => handlePrev(setHotPricesOffset, hotPricesRef)}
                 disabled={hotPricesOffset <= 0}
               >
                 {'<'}
               </button>
               <button
                 className={styles.arrow_btn}
-                onClick={() =>
-                  handleNext(hotPricesOffset, setHotPricesOffset, hotPricesRef)
-                }
+                onClick={() => handleNext(setHotPricesOffset, hotPricesRef)}
                 disabled={isNextDisabled(hotPricesOffset, hotPricesRef)}
               >
                 {'>'}
@@ -257,9 +265,10 @@ export const HomePage = () => {
             </div>
           </div>
 
-          <div className={styles.product_list_container} ref={hotPricesRef}>
+          <div className={styles.product_list_container}>
             <div
               className={styles.product_list}
+              ref={hotPricesRef}
               style={{ transform: `translateX(-${hotPricesOffset}px)` }}
             >
               {hotPrices.map(product => (
