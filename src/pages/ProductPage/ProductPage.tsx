@@ -7,31 +7,29 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../features/favorites/favoritesSlice';
-import { addToCart } from '../../features/cart/cartSlice'; // Імпорт екшну кошика
+import { addToCart } from '../../features/cart/cartSlice';
 import { colorMap } from '../../../public/utils/colorMap';
 import './ProductPage.scss';
 
 type ProductType = Phone | Tablet | Accessory;
 
-interface ProductPageProps {
-  products: ProductType[];
-}
-
-const ProductPage = ({ products }: ProductPageProps) => {
+const ProductPage = () => {
   const { category, productId } = useParams<{ category: string; productId: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  // 1. Стейт для локального збереження знайденого продукту
   const [product, setProduct] = useState<ProductType | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // Redux Favorites
-  const favorites = useAppSelector(state => state.favorites.items);
-  const isLiked = favorites.some(item => item.id === product?.id);
+  // 2. Отримуємо дані зі стору
+  const products = useAppSelector((state) => state.products.items) as ProductType[];
+  const favorites = useAppSelector((state) => state.favorites.items);
+  const cartItems = useAppSelector((state) => state.cart.items);
 
-  // Redux Cart
-  const cartItems = useAppSelector(state => state.cart.items);
+  // 3. Визначаємо статуси (liked/in cart)
+  const isLiked = favorites.some(item => item.id === product?.id);
   const isInCart = cartItems.some(item => item.id === product?.id);
 
   useEffect(() => {
@@ -41,9 +39,13 @@ const ProductPage = ({ products }: ProductPageProps) => {
 
     const foundProduct = products.find(p => p.id === productId);
 
-    setProduct(foundProduct || null);
-    setLoading(false);
-    setSelectedImage(0);
+    if (foundProduct) {
+      setProduct(foundProduct);
+      setLoading(false);
+      setSelectedImage(0);
+    } else {
+      setLoading(false);
+    }
   }, [productId, products]);
 
   const handleLikeClick = () => {
@@ -52,7 +54,7 @@ const ProductPage = ({ products }: ProductPageProps) => {
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
     } else {
-      // Приведення до CatalogProduct-подібної структури для стору
+      // Приведення до загального типу Product для стору
       dispatch(addToFavorites(product as unknown as Product));
     }
   };
@@ -71,7 +73,7 @@ const ProductPage = ({ products }: ProductPageProps) => {
   if (loading) {
     return (
       <div className="product-page product-page--loading">
-        <p>Loading product...</p>
+        <div className="loader">Loading product...</div>
       </div>
     );
   }
@@ -82,11 +84,12 @@ const ProductPage = ({ products }: ProductPageProps) => {
         <Breadcrumbs />
         <h1>Product not found</h1>
         <p>We couldn't find product with id: {productId}</p>
+        <button onClick={() => navigate('/')} className="back-button">Go Home</button>
       </div>
     );
   }
 
-  // Розрахунок варіантів (використовуємо категорію з URL для навігації)
+  // Розрахунок варіантів
   const colorVariants = products.filter(
     p => p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
@@ -98,9 +101,13 @@ const ProductPage = ({ products }: ProductPageProps) => {
     <div className="product-page">
       <Breadcrumbs productName={product.name} />
 
-      <div className="back-button" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
-        <img src="/img/Arrow_Left.svg" alt="Arrow" className="breadcrumbs__arrow" />
-        Back
+      <div
+        className="back-button"
+        onClick={() => navigate(-1)}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
+      >
+        <img src="/img/Arrow_Left.svg" alt="Arrow" />
+        <span>Back</span>
       </div>
 
       <h1 className="product-title">{product.name}</h1>
@@ -110,17 +117,17 @@ const ProductPage = ({ products }: ProductPageProps) => {
           <div className="gallery-thumbnails">
             {product.images.map((img, index) => (
               <button
-                key={img}
+                key={`${img}-${index}`}
                 className={`thumbnail ${selectedImage === index ? 'thumbnail--active' : ''}`}
                 onClick={() => setSelectedImage(index)}
               >
-                <img src={img} alt={`${product.name} ${index}`} />
+                <img src={`/${img}`} alt={`${product.name} ${index}`} />
               </button>
             ))}
           </div>
           <div className="gallery-main">
             <img
-              src={product.images[selectedImage]}
+              src={`/${product.images[selectedImage]}`}
               alt={product.name}
               className="product-main-image"
             />
@@ -132,11 +139,12 @@ const ProductPage = ({ products }: ProductPageProps) => {
             <span className="color-label">Available colors</span>
             <div className="color-dots">
               {colorVariants.map(variant => (
-                <span
+                <button
                   key={variant.id}
                   className={`color-dot ${variant.color === product.color ? 'color-dot--active' : ''}`}
                   style={{ backgroundColor: colorMap[variant.color] || '#ccc' }}
                   onClick={() => navigate(`/${category}/${variant.id}`)}
+                  title={variant.color}
                 />
               ))}
             </div>
@@ -148,13 +156,13 @@ const ProductPage = ({ products }: ProductPageProps) => {
             <span className="capacity-label">Select capacity</span>
             <div className="capacity-buttons">
               {capacityVariants.map(variant => (
-                <span
+                <button
                   key={variant.id}
                   className={`capacity-item ${variant.capacity === product.capacity ? 'capacity-item--active' : ''}`}
                   onClick={() => navigate(`/${category}/${variant.id}`)}
                 >
                   {variant.capacity}
-                </span>
+                </button>
               ))}
             </div>
           </div>
@@ -172,6 +180,7 @@ const ProductPage = ({ products }: ProductPageProps) => {
             <button
               className={`action-button ${isInCart ? 'action-button--added' : ''}`}
               onClick={handleAddToCart}
+              type="button"
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
@@ -179,6 +188,8 @@ const ProductPage = ({ products }: ProductPageProps) => {
             <button
               className={`favorite-button ${isLiked ? 'is-liked' : ''}`}
               onClick={handleLikeClick}
+              type="button"
+              aria-label="Toggle favorite"
             >
               <img
                 src={isLiked ? '/img/HeartFilled.svg' : '/img/Like.svg'}

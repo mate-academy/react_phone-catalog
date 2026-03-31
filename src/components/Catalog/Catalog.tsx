@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks'; // Перевір шлях до hooks
 import ProductCard from '../ProductCard/ProductCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import CatalogFilters from '../CatalogFilters/CatalogFilters';
 import './Catalog.scss';
 
-// 1. Оновлений інтерфейс згідно з твоїм JSON
 interface Product {
-  id: string; // У тебе це рядок: "apple-iphone-11..."
+  id: string;
   category: string;
   name: string;
   priceRegular: number;
@@ -16,11 +16,6 @@ interface Product {
   screen: string;
   capacity: string;
   ram: string;
-  // Додай інші поля, якщо вони потрібні в ProductCard
-}
-
-interface CatalogProps {
-  products: Product[];
 }
 
 const TITLES_MAP: Record<string, string> = {
@@ -29,46 +24,46 @@ const TITLES_MAP: Record<string, string> = {
   accessories: 'Accessories',
 };
 
-const Catalog: React.FC<CatalogProps> = ({ products }) => {
+const Catalog: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const title = category ? (TITLES_MAP[category] ?? 'Catalog') : 'Catalog';
 
+  // Отримуємо дані з Redux
+  const allProducts = useAppSelector((state) => state.products.items);
+
+  // Стейт для фільтрів та пагінації
   const [sort, setSort] = useState('newest');
   const [perPage, setPerPage] = useState<'all' | number>(8);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const title = category ? (TITLES_MAP[category] ?? 'Catalog') : 'Catalog';
 
   // Скидаємо сторінку при зміні категорії або фільтрів
   useEffect(() => {
     setCurrentPage(1);
   }, [category, sort, perPage]);
 
-  // 2. Виправлена логіка сортування під твої поля
+  // Логіка фільтрації та сортування
   const sortedProducts = useMemo(() => {
-    const filtered = products.filter(p => p.category === category);
+    const filtered = allProducts.filter(p => p.category === category);
 
     return [...filtered].sort((a, b) => {
       switch (sort) {
         case 'alphabet':
           return a.name.localeCompare(b.name);
-
         case 'cheapest':
-          // Використовуємо ціну зі знижкою (priceDiscount)
           return a.priceDiscount - b.priceDiscount;
-
         case 'expensive':
           return b.priceDiscount - a.priceDiscount;
-
         case 'newest':
-          // Оскільки явного поля 'year' немає, сортуємо по ID у зворотному порядку
-          // (зазвичай новіші моделі мають "вищий" алфавітний порядок або довші ID)
+          // Сортування за ID (від нових до старих)
           return b.id.localeCompare(a.id);
-
         default:
           return 0;
       }
     });
-  }, [products, category, sort]);
+  }, [allProducts, category, sort]);
 
+  // Розрахунок пагінації
   const totalCount = sortedProducts.length;
   const isAllSelected = perPage === 'all';
   const itemsPerPage = isAllSelected ? totalCount : Number(perPage);
@@ -91,7 +86,7 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
     }
 
     for (let i = start; i <= end; i++) {
-      pages.push(i);
+      if (i > 0) pages.push(i);
     }
     return pages;
   };
@@ -118,7 +113,6 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
         {visibleProducts.length > 0 ? (
           visibleProducts.map((product) => (
             <ProductCard
-              // Використовуємо id як унікальний ключ
               key={product.id}
               product={product as any}
               showDiscount
@@ -137,7 +131,7 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(prev => prev - 1)}
           >
-            <img src="img/Arrow_Left.svg" alt="Prev" />
+            <img src="/img/Arrow_Left.svg" alt="Prev" />
           </button>
 
           <div className="pagination-list">
@@ -159,7 +153,7 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
           >
-            <img src="img/Arrow_Right.svg" alt="Next" />
+            <img src="/img/Arrow_Right.svg" alt="Next" />
           </button>
         </div>
       )}
