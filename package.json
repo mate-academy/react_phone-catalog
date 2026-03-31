@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "https://yuliiakosenchuk.github.io/react_phone-catalog/",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -70,7 +70,8 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "mate-scripts deploy",
+    "preview": "vite preview"
   },
   "browserslist": {
     "production": [
