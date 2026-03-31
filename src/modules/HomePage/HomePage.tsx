@@ -7,6 +7,12 @@ import { getProducts } from '../../components/api/products';
 import styles from './HomePage.module.scss';
 import { useRef } from 'react';
 import { getCarouselStep } from '../../utils/carouselHelpers';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 
 const images: string[] = [
   "./img/Banner.png",

@@ -1,9 +1,9 @@
 .container {
   margin: 0 auto;
   box-sizing: border-box;
-  overflow-x: visible;
+  //overflow-x: visible;
   width: 100%;
-  max-width: 1136px;
+  //max-width: 1136px;
   padding: 0 16px;
 
   @media (min-width: 640px) {
@@ -16,6 +16,7 @@
 
   @media (min-width: 1290px) {
     padding: 0 152px;
+    max-width: 1440px;
   }
 }
 
@@ -29,6 +30,7 @@
   display: grid;
   width: 100%;
   margin-top: 40px;
+  justify-content: center;
 
   // 1. СТРУКТУРА ДЛЯ МОБІЛКИ (одна колонка)
   grid-template-areas:
@@ -46,17 +48,18 @@
       "gallery actions"
       "about   about"
       "specs   specs";
-    column-gap: 32px;
+    column-gap: 17px;
     row-gap: 64px;
   }
 
   // 3. СТРУКТУРА ДЛЯ ДЕСКТОПА (1200px+)
   @media (min-width: 1200px) {
-    grid-template-columns: 560px 320px;
+    grid-template-columns: 560px 1fr;
     grid-template-areas:
       "gallery actions"
       "about   specs";
     column-gap: 64px;
+    row-gap: 80px;
   }
 }
 
@@ -70,6 +73,9 @@
 
 .productActions {
   grid-area: actions;
+  width: 100%;
+  max-width: 320px;
+  justify-self: start;
 
   @media (min-width: 1200px) {
     width: 320px;
@@ -77,14 +83,19 @@
 }
 
 .mainSpecs {
-  grid-area: mainSpecs;
+  grid-area: actions;
+  align-self: end;
+  max-width: 320px;
 }
 
 .techSpecs {
   grid-area: specs;
+  width: 100%;
+  max-width: 512px;
+  justify-self: start;
 
   @media (min-width: 1200px) {
-    width: 512px;
+    max-width: 512px;
   }
 }
 
@@ -465,7 +476,10 @@
 
 .section {
   width: 100%;
-  margin: 80px 0;
+  display: flex;
+  flex-direction: column;
+  margin: 80px auto 0;
+
 
   &__header {
     display: flex;

@@ -8,6 +8,10 @@ import { ProductCard } from '../../components/ProductList/ProductCard';
 import { useFavourites } from '../../context/FavouriteContext';
 import { useCart } from '../../context/CartContext';
 import { getCarouselStep } from '../../utils/carouselHelpers';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 
 export const ProductDetailsPage: React.FC = () => {
@@ -17,6 +21,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [isError, setIsError] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string>('');
   const [numericId, setNumericId] = useState<number | string>('');
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
@@ -46,7 +51,6 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
-  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
   const [recommendedOffset, setRecommendedOffset] = useState(0);
   const recommendedRef = useRef<HTMLDivElement>(null);
@@ -70,9 +74,15 @@ export const ProductDetailsPage: React.FC = () => {
 
             getProducts().then(allProducts => {
               const found = allProducts.find(p => p.itemId === productId);
-              if (found) {
-                setNumericId(String(found.id));
-              }
+              if (found) setNumericId(String(found.id));
+
+              const random = allProducts
+                .filter(
+                  p => p.category === data.category && p.itemId !== productId,
+                )
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 10);
+              setRecommendedProducts(random);
             });
           } else {
             setIsError(true);
@@ -375,38 +385,41 @@ export const ProductDetailsPage: React.FC = () => {
           <div className={styles.section__header}>
             <h2 className={`${styles.section__title} h2`}>You may also like</h2>
             <div className={styles.arrows}>
-              <button
-                className={`${styles.arrow_btn}`}
-                onClick={handlePrev}
-                disabled={recommendedOffset === 0}
-              >
+              <button className={`${styles.arrow_btn} js-prev-recommended`}>
                 {'<'}
               </button>
 
-              <button
-                className={`${styles.arrow_btn}`}
-                onClick={handleNext}
-                disabled={isNextDisabled()}
-              >
+              <button className={`${styles.arrow_btn} js-next-recommended`}>
                 {'>'}
               </button>
             </div>
           </div>
 
-          <div className={styles.product_list_container} ref={containerRef}>
-            <div
-              ref={listRef}
-              className={styles.product_list}
-              style={{ transform: `translateX(-${recommendedOffset}px)` }}
+          <div className={styles.swiper_container}>
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={16}
+              slidesPerView={'auto'}
+              navigation={{
+                prevEl: '.js-prev-recommended',
+                nextEl: '.js-next-recommended',
+              }}
+              breakpoints={{
+
+                320: { slidesPerView: 1.3, spaceBetween: 10 },
+                640: { slidesPerView: 2.5, spaceBetween: 16 },
+                1024: { slidesPerView: 4, spaceBetween: 16 },
+              }}
             >
-              {recommendedProducts.map(product => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  className={styles.card_home_custom}
-                />
+              {recommendedProducts.map(item => (
+                <SwiperSlide key={item.id} style={{ width: 'auto' }}>
+                  <ProductCard
+                    product={item}
+                    className={styles.card_home_custom}
+                  />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         </section>
       </div>
