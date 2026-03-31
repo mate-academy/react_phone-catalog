@@ -16,7 +16,7 @@ type Props<T extends Good> = {
   getItemKey?: (item: T, index: number) => Key;
 };
 
-const List = <T extends Good,>({
+const List = <T extends Good>({
   items,
   itemsOnPage = 16,
   page = 1,
@@ -27,7 +27,10 @@ const List = <T extends Good,>({
   getItemKey,
 }: Props<T>) => {
   const normalizedItemsOnPage = Math.max(1, Math.floor(itemsOnPage));
-  const totalPages = Math.max(1, Math.ceil(items.length / normalizedItemsOnPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(items.length / normalizedItemsOnPage),
+  );
   const normalizedPage = Math.min(totalPages, Math.max(1, Math.floor(page)));
 
   const { firstItemIndex, visibleItems } = useMemo(() => {
@@ -41,7 +44,9 @@ const List = <T extends Good,>({
   }, [items, normalizedItemsOnPage, normalizedPage]);
 
   if (visibleItems.length === 0) {
-    return emptyState ? <div className={cn(s.empty, className)}>{emptyState}</div> : null;
+    return emptyState ? (
+      <div className={cn(s.empty, className)}>{emptyState}</div>
+    ) : null;
   }
 
   return (

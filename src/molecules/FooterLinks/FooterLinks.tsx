@@ -5,10 +5,7 @@ import s from './FooterLinks.module.scss';
 const FooterLinks = () => {
   return (
     <nav className={s.nav}>
-      <Link
-        className={s.nav__link}
-        to="https://github.com/heorhii-lytvynenko"
-      >
+      <Link className={s.nav__link} to="https://github.com/heorhii-lytvynenko">
         Github
       </Link>
       <Link

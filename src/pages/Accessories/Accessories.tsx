@@ -1,4 +1,4 @@
-import { Page, Section } from "@/atoms"
+import { Page, Section } from '@/atoms';
 
 const Accessories = () => {
   return (
@@ -8,7 +8,7 @@ const Accessories = () => {
         <Section.Title>Accessories</Section.Title>
       </Section>
     </Page>
-  )
-}
+  );
+};
 
 export default Accessories;

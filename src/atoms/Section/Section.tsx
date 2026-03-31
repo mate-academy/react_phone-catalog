@@ -31,6 +31,8 @@ const SectionBase: FC<SectionProps> = ({
   );
 };
 
-export const Section = Object.assign(SectionBase, { Title: SectionTitle }) as SectionComponent;
+export const Section = Object.assign(SectionBase, {
+  Title: SectionTitle,
+}) as SectionComponent;
 
 export default Section;

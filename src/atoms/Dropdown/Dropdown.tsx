@@ -46,7 +46,9 @@ const Dropdown = ({ label, options, defaultValue, value, onClick }: Props) => {
 
   return (
     <div className={s.base}>
-      <label htmlFor={`dropdown-${label}`} className={s.label}>{label}</label>
+      <label htmlFor={`dropdown-${label}`} className={s.label}>
+        {label}
+      </label>
       <div ref={rootRef} className={s.root}>
         <div className={s.root__sizer} aria-hidden="true">
           {options.map((o, index) => (
@@ -70,7 +72,11 @@ const Dropdown = ({ label, options, defaultValue, value, onClick }: Props) => {
           <div className={s.root__modal}>
             <div id={`dropdown-${label}`} className={s.modal}>
               {options.map((o, index) => (
-                <div className={s.root__option} key={`${o}-${index}`} onClick={() => handleOptionClick(o)}>
+                <div
+                  className={s.root__option}
+                  key={`${o}-${index}`}
+                  onClick={() => handleOptionClick(o)}
+                >
                   <div className={s.option}>{o}</div>
                 </div>
               ))}

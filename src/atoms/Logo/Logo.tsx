@@ -9,11 +9,7 @@ type Props = {
 
 const Logo = ({ className = '', variant = 'default' }: Props) => {
   return (
-    <Link
-      className={cn(s.logo, className)}
-      to="/"
-      aria-label="Go to homepage"
-    >
+    <Link className={cn(s.logo, className)} to="/" aria-label="Go to homepage">
       <div
         className={cn(s.logo__img, {
           [s.logo__imgHeader]: variant === 'header',

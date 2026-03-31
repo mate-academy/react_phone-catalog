@@ -29,4 +29,3 @@ const CatalogBase: FC<CatalogProps> = ({
 
 export const Catalog = Object.assign(CatalogBase, { List }) as CatalogComponent;
 export default Catalog;
-

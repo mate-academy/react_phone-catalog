@@ -2,7 +2,7 @@
   padding: space(2);
 
   @include respond(tablet) {
-    padding: space(3) 0 space(3) 0;
+    padding: space(3) 0;
   }
 }
 

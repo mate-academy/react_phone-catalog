@@ -8,7 +8,6 @@ type Props = {
   title: string;
 };
 
-
 const Categories = ({ title }: Props) => {
   const categories = Object.keys(CATEGORY_LIST) as Category[];
   const counts = useCategoryCount();

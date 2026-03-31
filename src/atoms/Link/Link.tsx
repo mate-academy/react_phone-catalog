@@ -14,9 +14,7 @@ const Link: React.FC<Props> = ({ children, to, onClick }) => {
     <NavLink
       to={to}
       onClick={onClick}
-      className={({ isActive }) =>
-        cn(s.link, { [s.active]: isActive })
-      }
+      className={({ isActive }) => cn(s.link, { [s.active]: isActive })}
     >
       {children}
     </NavLink>

@@ -36,16 +36,10 @@ const Header = ({
           onToggle={onThemeToggle}
           className={cn(s.control__button, s.themeButton)}
         />
-        <Link
-          to="/liked"
-          className={cn(s.control__button, s.response)}
-        >
+        <Link to="/liked" className={cn(s.control__button, s.response)}>
           <HeartIcon className={s.control__icon} />
         </Link>
-        <Link
-          to="/shopping_bag"
-          className={cn(s.control__button, s.response)}
-        >
+        <Link to="/shopping_bag" className={cn(s.control__button, s.response)}>
           <BagIcon className={s.control__icon} />
         </Link>
         <button

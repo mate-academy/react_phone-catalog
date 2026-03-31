@@ -11,21 +11,22 @@ type Props = {
 };
 
 const ItemCard: FC<Props> = ({ item, discount = false }) => {
-  const { images, name, priceRegular, screen, capacity, ram, priceDiscount } = item;
+  const { images, name, priceRegular, screen, capacity, ram, priceDiscount } =
+    item;
 
   return (
     <article className={s.card}>
       <img className={s.card__img} src={images[0]} alt={name} />
       <div className={s.card__footer}>
         <h3 className={s.card__name}>{name}</h3>
-        {discount ?
+        {discount ? (
           <div className={s.card__price}>
             <p className={s.card__priceRegular}>${priceDiscount}</p>
             <p className={s.card__priceDiscount}>${priceRegular}</p>
           </div>
-          :
+        ) : (
           <p className={s.card__priceRegular}>${priceRegular}</p>
-        }
+        )}
         <div className={s.card__br} />
         <dl className={s.card__specs}>
           <div className={s.card__stat}>
