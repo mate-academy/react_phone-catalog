@@ -57,8 +57,8 @@ export interface ProductDetails {
   resolution: string;
   processor: string;
   ram: string;
-  camera?: string;               // phones & tablets — absent on accessories
-  zoom?: string;                 // phones & tablets — absent on accessories
+  camera?: string;               // phones & tablets
+  zoom?: string;                 // phones & tablets
   cell: string[];                // network standards or ["Not applicable"]
 }
 
