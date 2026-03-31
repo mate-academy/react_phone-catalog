@@ -9,6 +9,7 @@ type Props = {
   products: Product[];
   favourites: Product[];
   onToggleFavourite: (product: Product) => void;
+  onAddToCart: (product: Product) => void;
   showDiscount?: boolean;
 };
 
@@ -17,6 +18,7 @@ export const ProductSection: React.FC<Props> = ({
   products,
   favourites,
   onToggleFavourite,
+  onAddToCart,
   showDiscount = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -96,6 +98,7 @@ export const ProductSection: React.FC<Props> = ({
           products={products}
           favourites={favourites}
           onToggleFavourite={onToggleFavourite}
+          onAddToCart={onAddToCart}
           currentIndex={currentIndex}
           step={step}
           showDiscount={showDiscount}

@@ -38,5 +38,11 @@ export type ProductDetails = {
   cell: string[];
 };
 
+export type CartItems = {
+  id: string;
+  product: Product;
+  quantity: number;
+};
+
 export type SortType = 'newest' | 'alphabetically' | 'cheapest';
 export type ItemsPerPage = 4 | 8 | 16 | 'all';

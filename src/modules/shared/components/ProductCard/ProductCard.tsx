@@ -5,6 +5,7 @@ import styles from './ProductCard.module.scss';
 type Props = {
   product: Product;
   onToggleFavourite: (product: Product) => void;
+  onAddToCart: (product: Product) => void;
   isFavourite: boolean;
   showDiscount?: boolean;
 };
@@ -12,6 +13,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({
   product,
   onToggleFavourite,
+  onAddToCart,
   isFavourite,
   showDiscount = false,
 }) => {
@@ -53,7 +55,11 @@ export const ProductCard: React.FC<Props> = ({
           </div>
         </div>
         <div className={styles.actions}>
-          <button type="button" className={styles.addToCart}>
+          <button
+            type="button"
+            className={styles.addToCart}
+            onClick={() => onAddToCart(product)}
+          >
             Add to cart
           </button>
           <button

@@ -7,12 +7,14 @@ type Props = {
   products: Product[];
   favourites: Product[];
   onToggleFavourite: (product: Product) => void;
+  onAddToCart: (product: Product) => void;
 };
 
 export const TabletsPage: React.FC<Props> = ({
   products,
   favourites,
   onToggleFavourite,
+  onAddToCart,
 }) => {
   const tablets = getProductsByCategory(products, 'tablets');
 
@@ -23,6 +25,7 @@ export const TabletsPage: React.FC<Props> = ({
       products={tablets}
       favourites={favourites}
       onToggleFavourite={onToggleFavourite}
+      onAddToCart={onAddToCart}
     />
   );
 };

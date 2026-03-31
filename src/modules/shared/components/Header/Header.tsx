@@ -58,9 +58,9 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
           <Link to="/favourites" className={styles.actionsLink}>
             <img src="/img/icon/favourites-logo.svg" alt="Favourites" />
           </Link>
-          <a href="#" className={styles.actionsLink}>
+          <Link to="/cart" className={styles.actionsLink}>
             <img src="/img/icon/shopping-bag-logo.svg" alt="Shopping bag" />
-          </a>
+          </Link>
         </div>
 
         <button

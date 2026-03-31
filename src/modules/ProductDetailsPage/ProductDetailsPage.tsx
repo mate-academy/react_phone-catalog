@@ -14,12 +14,14 @@ type Props = {
   products: Product[];
   favourites: Product[];
   onToggleFavourite: (product: Product) => void;
+  onAddToCart: (product: Product) => void;
 };
 
 export const ProductDetailsPage: React.FC<Props> = ({
   products,
   favourites,
   onToggleFavourite,
+  onAddToCart,
 }) => {
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
@@ -132,6 +134,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
           products={hotPriceProducts}
           favourites={favourites}
           onToggleFavourite={onToggleFavourite}
+          onAddToCart={onAddToCart}
           showDiscount
         />
       </div>

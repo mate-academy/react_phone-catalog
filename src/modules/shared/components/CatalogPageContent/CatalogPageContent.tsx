@@ -12,6 +12,7 @@ type Props = {
   products: Product[];
   favourites: Product[];
   onToggleFavourite: (product: Product) => void;
+  onAddToCart: (product: Product) => void;
 };
 
 export const CatalogPageContent: React.FC<Props> = ({
@@ -20,6 +21,7 @@ export const CatalogPageContent: React.FC<Props> = ({
   products,
   favourites,
   onToggleFavourite,
+  onAddToCart,
 }) => {
   const [sortBy, setSortBy] = useState<SortType>('newest');
   const [perPage, setPerPage] = useState<ItemsPerPage>(4);
@@ -115,6 +117,7 @@ export const CatalogPageContent: React.FC<Props> = ({
         products={visibleProducts}
         favourites={favourites}
         onToggleFavourite={onToggleFavourite}
+        onAddToCart={onAddToCart}
       />
 
       {perPage !== 'all' && totalPages > 1 && (

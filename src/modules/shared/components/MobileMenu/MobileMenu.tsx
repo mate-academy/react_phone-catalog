@@ -39,13 +39,13 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
       </nav>
 
       <div className={styles.menuIcons}>
-        <Link to="/favourites" className={styles.menuIcon}>
+        <Link to="/favourites" className={styles.menuIcon} onClick={onClose}>
           <img src="/img/icon/favourites-logo.svg" alt="Favourites" />
         </Link>
 
-        <a href="#" className={styles.menuIcon}>
+        <Link to="/cart" className={styles.menuIcon} onClick={onClose}>
           <img src="/img/icon/shopping-bag-logo.svg" alt="Shopping bag" />
-        </a>
+        </Link>
       </div>
     </aside>
   );
