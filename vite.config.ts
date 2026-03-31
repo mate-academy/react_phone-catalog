@@ -1,10 +1,11 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react(), svgr(),],
+  base: '/',
+  plugins: [react(), svgr()],
   css: {
     preprocessorOptions: {
       scss: {
@@ -16,14 +17,13 @@ export default defineConfig({
         @use "@/styles/tockens/other.scss" as *;
         @use "@/styles/animation/animation.scss" as *;
         @use "@/styles/keyframes/keyframes.scss" as *;
-        `
-
-      }
-    }
+        `,
+      },
+    },
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
-  }
-})
+  },
+});
