@@ -1,6 +1,7 @@
 import { Page } from '@/atoms';
 import { usePhones } from '@/hooks/usePhones';
-import { Categories, ShortList, Slider } from '@/organisms';
+import { ShortList } from '@/molecules';
+import { Categories, Slider } from '@/organisms';
 
 const Home = () => {
   const phones = usePhones();
