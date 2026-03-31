@@ -32,6 +32,7 @@
   max-width: 50%;
   flex: 1;             /* Займає весь доступний простір */
   min-width: 0;
+  color: $color-primary;
 
 
   @include mobile {
@@ -64,6 +65,7 @@
   text-align: center;
   font-variant-numeric: tabular-nums; /* Цифри однакової ширини */
   flex-shrink: 0;
+  color: $color-primary;
 }
 
 .cart-items {
@@ -80,6 +82,7 @@
   width: 80px;
   margin-left: auto;
   text-align: right;
+  color: $color-primary;
 
 
   @include mobile {
@@ -112,7 +115,7 @@
   align-items: center;     // вирівнюємо вертикально по центру
   gap: 16px;
   padding: 24px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid $color-elements;
   max-height: 128px;
 
   @include mobile {
@@ -164,9 +167,10 @@
   position: sticky;
   top: 100px;
   padding: 24px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid $color-elements;
   margin-left: 16px;
   text-align: center;
+  color: $color-primary;
 
   @include mobile {
       margin-left: 0;
@@ -188,7 +192,7 @@
     font-weight: map-get($body-text, font-weight);
     line-height: map-get($body-text, line-height);
     letter-spacing: map-get($body-text, letter-spacing);
-    color: #89939a;
+    color: $color-secondary;
   }
 
 
@@ -222,7 +226,7 @@
   hr {
     margin: 24px 0;
     border: none;
-    border-top: 1px solid #e2e6e9;
+    border-top: 1px solid $color-elements;
     width: 100%;
   }
 
@@ -256,7 +260,7 @@
   width: 32px;  /* Однаковий розмір для зручності */
   height: 32px;
   background: none;
-  border: 1px solid $color-primary;
+  border: 1px solid $color-icons;
   cursor: pointer;
   padding: 8px;
 
@@ -274,7 +278,7 @@
   width: 32px;  /* Однаковий розмір для зручності */
   height: 32px;
   background: none;
-  border: 1px solid $color-primary;
+  border: 1px solid $color-icons;
   cursor: pointer;
   padding: 8px;
 
