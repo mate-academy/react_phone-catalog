@@ -2,16 +2,17 @@
 @use '../../styles/mixins' as *;
 
 .page {
-  padding-bottom: 80px;
+  padding:40px 0 80px;
 
   @include respond-to('desktop') {
-    padding: 0 $padding-desktop 80px;
+    padding: 40px $padding-desktop 80px;
   }
 }
 
 .title {
-  @include title;
   padding-bottom: 24px;
+
+  @include title;
 }
 
 .layout {
@@ -20,8 +21,9 @@
   gap: 16px;
   align-items: start;
 
-  @include respond-to(880px) {
+  @include respond-to(980px) {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
 

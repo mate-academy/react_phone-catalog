@@ -1,10 +1,6 @@
 @use '../../../styles/mixins' as *;
 @use '../../../styles/variables' as *;
 
-.section {
-  margin-bottom: 8px;
-}
-
 .sectionLabel {
   font-size: 12px;
   font-weight: 600;
@@ -14,7 +10,7 @@
 
 .colors {
   display: flex;
-  gap: 8px;
+  gap: 18px;
 }
 
 .colorBtn {
@@ -22,7 +18,7 @@
   height: 32px;
   border-radius: 50%;
   border: 2px solid transparent;
-  outline: 2px solid transparent;
+  outline: 2px solid $border-color;
   outline-offset: 2px;
   cursor: pointer;
   transition: outline-color 0.2s ease;

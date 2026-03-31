@@ -1,5 +1,5 @@
 import { ProductDetails } from '@/features/products/types/productDetails';
-import { delayOnPurpose } from './delayOnPurpose';
+// import { delayOnPurpose } from './delayOnPurpose';
 
 export const fetchProductByItemId = async (
   itemId: string,
@@ -18,7 +18,7 @@ export const fetchProductByItemId = async (
     throw new Error('Product not found');
   }
 
-  await delayOnPurpose(1500);
+  // await delayOnPurpose(1000);
 
   return product;
 };

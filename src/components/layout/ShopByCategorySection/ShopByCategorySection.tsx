@@ -1,10 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { fetchPhoneDetails } from '@/api/phoneDetails';
 import { fetchTabletDetails } from '@/api/tabletDetails';
 import { fetchAccessoriesDetails } from '@/api/accessoriesDetails';
 import styles from './ShopByCategorySection.module.scss';
+import { useAllCategoryDetails } from '@/features/products/hooks/useCategoryDetails';
 
 const CATEGORIES = [
   {
@@ -38,27 +38,7 @@ const CATEGORIES = [
 
 export const ShopByCategorySection = () => {
   const { t } = useTranslation();
-
-  const { data: phones = [] } = useQuery({
-    queryKey: ['phoneDetails'],
-    queryFn: fetchPhoneDetails,
-  });
-
-  const { data: tablets = [] } = useQuery({
-    queryKey: ['tabletDetails'],
-    queryFn: fetchTabletDetails,
-  });
-
-  const { data: accessories = [] } = useQuery({
-    queryKey: ['accessoriesDetails'],
-    queryFn: fetchAccessoriesDetails,
-  });
-
-  const counts: Record<string, number> = {
-    phones: phones.length,
-    tablets: tablets.length,
-    accessories: accessories.length,
-  };
+  const { counts } = useAllCategoryDetails();
 
   return (
     <section className={`container ${styles.section}`}>
@@ -93,7 +73,9 @@ export const ShopByCategorySection = () => {
                 </h3>
               </Link>
               <p className={styles.count}>
-                {t('categories.models', { count: counts[key] })}
+                {t('categories.models', {
+                  count: counts[key as keyof typeof counts],
+                })}
               </p>
             </div>
           </div>

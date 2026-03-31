@@ -24,6 +24,8 @@ export const CapacitySelector = ({ product }: CapacitySelectorProps) => {
 
     if (targetProduct) {
       navigate(`/${targetProduct.category}/${targetProduct.itemId}`);
+    } else {
+      navigate('/product-not-found');
     }
   };
 

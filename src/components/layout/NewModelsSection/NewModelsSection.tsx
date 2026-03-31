@@ -7,12 +7,13 @@ import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { ProductCardSkeleton } from '@/features/products/components/ProductCardSkeleton';
 import { motion } from 'motion/react';
+import { QUERY_KEYS } from '@/api/queryKeys';
 
 export const NewModelsSection = () => {
   const { t } = useTranslation();
 
   const { data: products, isLoading } = useQuery({
-    queryKey: ['products', 'newest'],
+    queryKey: QUERY_KEYS.products,
     queryFn: fetchAllProducts,
     select: data => getNewestModels(data, 10),
   });

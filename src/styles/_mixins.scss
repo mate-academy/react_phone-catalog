@@ -12,10 +12,6 @@
   }
 }
 
-// @include respond-to('tablet')
-// @include respond-to('mobile')
-// @include respond-to(900px)
-
 @mixin title {
   color: $color-primary;
   font-size: 48px;
@@ -28,8 +24,6 @@
     line-height: 41px;
   }
 }
-
-// @include title();
 
 @mixin subtitle {
   color: $color-primary;
@@ -70,6 +64,4 @@
     stroke: $color-primary;
   }
 }
-
-// @include arrow-icon-style();
 

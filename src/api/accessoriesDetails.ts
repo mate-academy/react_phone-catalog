@@ -1,5 +1,5 @@
 import { ProductDetails } from '@/features/products/types/productDetails';
-import { delayOnPurpose } from './delayOnPurpose';
+// import { delayOnPurpose } from './delayOnPurpose';
 
 export const fetchAccessoriesDetails = async (): Promise<ProductDetails[]> => {
   const response = await fetch('/api/accessories.json');
@@ -8,7 +8,7 @@ export const fetchAccessoriesDetails = async (): Promise<ProductDetails[]> => {
     throw new Error('Failed to fetch accessories details');
   }
 
-  await delayOnPurpose(1500);
+  // await delayOnPurpose(1000);
 
   return response.json();
 };

@@ -1,24 +1,18 @@
+import styles from './CartPage.module.scss';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'motion/react';
-// import { useNavigate } from 'react-router-dom';
+import { AnimatePresence, motion } from 'motion/react';
 import { useProductStore } from '@/store/productStore';
 import { CartItem } from '@/features/cart/components/CartItem';
 import { CartSummary } from '@/features/cart/components/CartSummary';
-// import { BackButton } from '@/components/ui/BackButton';
-import styles from './CartPage.module.scss';
+import { BackButton } from '@/components/ui/BackButton';
 
 export const CartPage = () => {
   const { t } = useTranslation();
-  // const navigate = useNavigate();
   const { cart } = useProductStore();
-
-  const handleCheckout = () => {
-    alert(t('cart.checkoutAlert'));
-  };
 
   return (
     <div className={styles.page}>
-      {/* <BackButton label={t('common.back')} href="/" /> */}
+      <BackButton />
       <h1 className={styles.title}>{t('cart.title')}</h1>
 
       {cart.length === 0 ? (
@@ -48,13 +42,14 @@ export const CartPage = () => {
         </>
       ) : (
         <div className={styles.layout}>
-          <div className={styles.items}>
-            {cart.map(item => (
-              <CartItem key={item.product.id} item={item} />
-            ))}
-          </div>
-
-          <CartSummary items={cart} onCheckout={handleCheckout} />
+          <AnimatePresence mode="popLayout">
+            <div className={styles.items}>
+              {cart.map(item => (
+                <CartItem key={item.product.id} item={item} />
+              ))}
+            </div>
+          </AnimatePresence>
+          <CartSummary items={cart} />
         </div>
       )}
     </div>

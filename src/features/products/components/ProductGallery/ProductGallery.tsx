@@ -12,7 +12,6 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
 
   return (
     <div className={styles.gallery}>
-      {/* мініатюри */}
       <div className={styles.thumbnails}>
         {images.map((img, i) => (
           <button
@@ -24,8 +23,6 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
           </button>
         ))}
       </div>
-
-      {/* головне фото */}
       <div className={styles.mainImage}>
         <AnimatePresence mode="wait">
           <motion.img

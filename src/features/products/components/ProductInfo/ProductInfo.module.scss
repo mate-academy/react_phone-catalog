@@ -6,19 +6,38 @@
   flex-direction: column;
 }
 
-// .productId {
-//   font-size: 12px;
-//   font-weight: 600;
-//   color: $color-secondary;
-//   text-align: right;
-//   margin-bottom: 8px;
-// }
-
-.divider {
-  width: 100%;
+.dividerTop {
+  max-width: 320px;
   height: 1px;
   background-color: $border-color;
-  margin: 16px 0;
+  margin: 24px 0;
+
+  @include respond-to(980px) {
+    max-width: 100%;
+  }
+}
+
+.dividerBottom {
+  max-width: 320px;
+  height: 1px;
+  background-color: $border-color;
+  margin: 24px 0 32px;
+
+  @include respond-to(980px) {
+    max-width: 100%;
+  }
+}
+
+.productId {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  text-align: right;
+}
+
+.IDWrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 .priceWrapper {
@@ -54,9 +73,14 @@
 }
 
 .actions {
+  max-width: 320px;
   display: flex;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 34px;
+
+  @include respond-to(1100px) {
+    max-width: 100%;
+  }
 }
 
 .favoriteBtn {
@@ -83,21 +107,21 @@
 }
 
 .shortSpecs {
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  @include respond-to(1100px) {
+    max-width: 100%;
+  }
 }
 
 .specRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid $border-color;
-
-  &:last-child {
-    border-bottom: none;
-  }
+  margin-bottom: 8px;
 }
 
 .specLabel {

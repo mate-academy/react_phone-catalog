@@ -4,23 +4,21 @@ import { useTranslation } from 'react-i18next';
 import { Carousel } from '@/components/ui/Carousel/Carousel';
 import { ProductCard } from '@/features/products/components/ProductCard';
 import { fetchAllProducts } from '@/api/products';
-import { fetchPhoneDetails } from '@/api/phoneDetails';
 import { getHotPrices } from '@/utils/getHotPrices';
 import { ProductCardSkeleton } from '@/features/products/components/ProductCardSkeleton';
 import { motion } from 'motion/react';
+import { QUERY_KEYS } from '@/api/queryKeys';
+import { usePhoneDetails } from '@/features/products/hooks/useCategoryDetails';
 
 export const HotPricesSection = () => {
   const { t } = useTranslation();
 
   const { data: products = [], isLoading } = useQuery({
-    queryKey: ['products'],
+    queryKey: QUERY_KEYS.products,
     queryFn: fetchAllProducts,
   });
 
-  const { data: details = [] } = useQuery({
-    queryKey: ['productDetails'],
-    queryFn: fetchPhoneDetails,
-  });
+  const { data: details = [] } = usePhoneDetails();
 
   const hotProducts = getHotPrices(products, details, 10);
 

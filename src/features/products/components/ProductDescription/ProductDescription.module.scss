@@ -4,16 +4,16 @@
 .description {
   display: flex;
   flex-direction: column;
-  padding-right: 32px;
+  width: 560px;
 
-  @media (max-width: 880px) {
-    padding-right: 0;
+  @include respond-to(900px) {
+    width: 100%;
   }
 }
 
 .title {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 800;
   color: $color-primary;
   margin-bottom: 16px;
 }
@@ -22,10 +22,6 @@
   width: 100%;
   height: 1px;
   background-color: $border-color;
-  margin-bottom: 24px;
-}
-
-.section {
   margin-bottom: 32px;
 }
 
@@ -34,17 +30,13 @@
   font-weight: 700;
   color: $color-primary;
   margin-bottom: 16px;
-  line-height: 140%;
 }
 
 .paragraph {
+  display: block;
   font-size: 14px;
   font-weight: 500;
   color: $color-secondary;
-  line-height: 160%;
-  margin-bottom: 12px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  line-height: 150%;
+  margin-bottom: 32px;
 }

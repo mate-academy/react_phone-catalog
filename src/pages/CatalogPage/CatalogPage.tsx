@@ -12,6 +12,20 @@ import { Pagination } from '@/components/ui/Pagination';
 import { useProductsWithDetails } from '@/features/products/hooks/useProductsWithDetails';
 import { ProductCardSkeleton } from '@/features/products/components/ProductCardSkeleton';
 import { AnimatePresence, motion } from 'motion/react';
+import {
+  useAccessoriesDetails,
+  usePhoneDetails,
+  useTabletDetails,
+} from '@/features/products/hooks/useCategoryDetails';
+import { QUERY_KEYS } from '@/api/queryKeys';
+
+type Category = 'phones' | 'tablets' | 'accessories';
+
+export const DETAIL_HOOKS = {
+  phones: usePhoneDetails,
+  tablets: useTabletDetails,
+  accessories: useAccessoriesDetails,
+} as const;
 
 export const CatalogPage = () => {
   const { t } = useTranslation();
@@ -26,16 +40,22 @@ export const CatalogPage = () => {
   const perPageParam = searchParams.get('perPage');
   const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam) || 16;
 
-  const { data: allProducts = [], isLoading } = useQuery<Product[]>({
-    queryKey: ['products'],
+  const { data: allProducts = [], isLoading } = useQuery({
+    queryKey: QUERY_KEYS.products,
     queryFn: fetchAllProducts,
   });
 
-  const { data: details = [] } = useQuery({
-    queryKey: [`${categoryKey}Details`],
-    queryFn: config.fetchDetails,
-    enabled: !!config,
-  });
+  const { data: phones = [] } = usePhoneDetails();
+  const { data: tablets = [] } = useTabletDetails();
+  const { data: accessories = [] } = useAccessoriesDetails();
+
+  const detailsByCategory: Record<Category, typeof phones> = {
+    phones,
+    tablets,
+    accessories,
+  };
+
+  const details = detailsByCategory[categoryKey as Category] ?? [];
 
   const productsWithDetails = useProductsWithDetails(allProducts, details);
 

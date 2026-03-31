@@ -1,13 +1,10 @@
 @use '../../../styles/mixins' as *;
 @use '../../../styles/variables' as *;
 
-.section {
-  margin-bottom: 8px;
-}
 
 .sectionLabel {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   color: $color-secondary;
   margin-bottom: 8px;
 }
@@ -19,12 +16,11 @@
 }
 
 .capacityBtn {
-  padding: 6px 12px;
+  padding: 7px 8px;
   border: 1px solid $border-color;
   border-radius: 4px;
-  background: transparent;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   color: $color-primary;
   cursor: pointer;
   transition: all 0.2s ease;

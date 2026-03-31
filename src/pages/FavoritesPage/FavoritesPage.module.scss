@@ -10,8 +10,9 @@
 }
 
 .title {
-  @include title;
   padding-bottom: 8px;
+
+  @include title;
 }
 
 .count {
@@ -24,7 +25,9 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  place-content: start center;
   gap: 40px 16px;
+  margin: 0 0 40px;
 
   @include respond-to(1150px) {
     grid-template-columns: repeat(3, 1fr);
@@ -37,16 +40,12 @@
 
   @include respond-to(620px) {
     grid-template-columns: minmax(auto, 320px);
-    justify-content: center;
+
+    max-width: 280px;
+    margin: 0 auto 40px;
   }
 }
 
-.card {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  min-width: 0;
-}
 
 .empty {
   display: flex;

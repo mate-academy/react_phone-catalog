@@ -2,7 +2,7 @@
   "notFound": {
     "title": "Page not found",
     "description": "Looks like this page got lost in space. Let's get you back home.",
-    "button": "Go back"
+    "button": "Go Home"
   },
 
   "productNotFound": {
@@ -50,7 +50,8 @@
   "titles": {
     "homePageTitle": "Welcome to Nice Gadgets store!",
     "brandNew": "Brand new models",
-    "hotPrices": "Hot prices"
+    "hotPrices": "Hot prices",
+    "YML": "You may also like"
   },
 
   "products": {
@@ -119,5 +120,12 @@
     "checkout": "Checkout",
     "empty": "Your cart is empty",
     "checkoutAlert": "Thank you for your order!"
+  },
+
+  "checkoutPopup": {
+    "title": "Hold your horses! 🐎",
+    "message": "The checkout feature is still brewing. Don't worry, your wallet is safe!. But hey, since you're here, why not check out the developer who built this store?",
+    "githubBtn": "Meet the Developer on GitHub",
+    "clearCartBtn": "Empty my imaginary cart"
   }
 }

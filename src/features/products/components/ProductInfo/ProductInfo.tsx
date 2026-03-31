@@ -20,7 +20,7 @@ export const ProductInfo = ({ product, baseProduct }: ProductInfoProps) => {
 
   const isFavorite = baseProduct ? favorites.includes(baseProduct.id) : false;
   const isInCart = baseProduct
-    ? cart.some(item => item.id === baseProduct.id)
+    ? cart.some(item => item.product.id === baseProduct.id)
     : false;
 
   const handleCartAction = () => {
@@ -31,33 +31,20 @@ export const ProductInfo = ({ product, baseProduct }: ProductInfoProps) => {
     return isInCart ? removeFromCart(baseProduct.id) : addToCart(baseProduct); //дописала ретьорн
   };
 
-  // const { cart, addToCart, removeFromCart, toggleFavorite, favorites } =
-  //   useProductStore();
-
-  // const isFavorite = favorites.includes(product.id);
-  // const isInCart = cart.some(item => item.id === product.id);
-
-  // const handleCartAction = (e: React.MouseEvent) => {
-  //   e.stopPropagation();
-
-  //   if (isInCart) {
-  //     removeFromCart(product.id);
-  //   } else {
-  //     addToCart(product);
-  //   }
-  // };
-
   return (
     <div className={styles.info}>
-      {/* <p className={styles.productId}>ID: {baseProduct?.id}</p> */}
+      <div className={styles.IDWrapper}>
+        <ColorSelector product={product} />
+        <p className={styles.productId}>
+          ID: {String(baseProduct?.id).padStart(6, '0')}
+        </p>
+      </div>
 
-      <ColorSelector product={product} />
-
-      <div className={styles.divider} />
+      <div className={styles.dividerTop} />
 
       <CapacitySelector product={product} />
 
-      <div className={styles.divider} />
+      <div className={styles.dividerBottom} />
 
       <div className={styles.priceWrapper}>
         <span className={styles.price}>${product.priceDiscount}</span>

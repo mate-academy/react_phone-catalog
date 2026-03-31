@@ -14,6 +14,7 @@ interface CardState {
   removeFromCart: (id: number) => void;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
+  clearCart: () => void;
   toggleFavorite: (id: number) => void;
   currentProductName: string | undefined;
   setCurrentProductName: (name: string | undefined) => void;
@@ -60,6 +61,8 @@ export const useProductStore = create<CardState>()(
               : item,
           ),
         })),
+
+      clearCart: () => set({ cart: [] }),
 
       toggleFavorite: id =>
         set(state => ({

@@ -1,9 +1,11 @@
 import styles from './RouterLayout.module.scss';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useProductStore } from '@/store/productStore';
+
+const HIDDEN_BREADCRUMBS = ['/', '/cart'];
 
 export const RouterLayout = () => {
   const { pathname } = useLocation();
@@ -14,11 +16,14 @@ export const RouterLayout = () => {
       <Header />
       <main className={styles.mainContent}>
         <div className="container">
-          {pathname !== '/' && <Breadcrumbs productName={currentProductName} />}
+          {!HIDDEN_BREADCRUMBS.includes(pathname) && (
+            <Breadcrumbs productName={currentProductName} />
+          )}
           <Outlet />
         </div>
       </main>
       <Footer />
+      <ScrollRestoration />
     </div>
   );
 };
