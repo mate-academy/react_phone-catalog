@@ -1,0 +1,61 @@
+.button {
+  display: flex;
+}
+
+.icon {
+  width: calc($space-unit * 6);
+  height: calc($space-unit * 6);
+  stroke: $text;
+  color: $text;
+  fill: none;
+  transition:
+    transform 0.3s ease,
+    stroke 0.3s ease,
+    color 0.3s ease;
+}
+
+.iconSun {
+  transform: rotate(0deg);
+}
+
+.iconMoon {
+  transform: rotate(-10deg);
+  overflow: visible;
+}
+
+.moonCrescent {
+  fill: currentColor;
+}
+
+.moonStar {
+  fill: $accent;
+  opacity: 0.9;
+  animation: star-twinkle 2.4s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+  filter: drop-shadow(0 0 1px rgb(66 25 208 / 35%));
+}
+
+.starOne {
+  opacity: 0.95;
+}
+
+.starTwo {
+  opacity: 0.82;
+  animation-delay: 0.3s;
+}
+
+.starThree {
+  opacity: 0.78;
+  animation-delay: 0.6s;
+}
+
+.button:hover .icon {
+  stroke: $accent;
+  color: $accent;
+  transform: rotate(16deg) scale(1.08);
+}
+
+.button:hover .moonCrescent {
+  @include live-color-fill(3s);
+}

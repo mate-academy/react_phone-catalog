@@ -1,0 +1,32 @@
+.search {
+  display: none;
+
+  @include respond(tablet) {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__input {
+    width: calc($space-unit * 42);
+    height: calc($space-unit * 10);
+    border: calc($space-unit / 4) solid $elements;
+    background-color: $bg;
+    color: $text;
+    padding: 0 calc($space-unit * 3);
+    border-radius: var(--border-radius);
+    outline: none;
+
+    @include mont(600);
+
+    text-transform: none;
+
+    &::placeholder {
+      color: $secondary;
+    }
+
+    &:focus {
+      border-color: $accent;
+    }
+  }
+}

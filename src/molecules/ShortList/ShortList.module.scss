@@ -1,0 +1,97 @@
+.list {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  width: 100%;
+  min-width: 0;
+  padding-bottom: space(4);
+  display: grid;
+
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(212px, 1fr);
+  align-items: stretch;
+  overflow: auto visible;
+  gap: space(2);
+  scroll-snap-type: x proximity;
+
+  -ms-overflow-style: none;
+  grid-auto-rows: 1fr;
+
+  @include respond(tablet) {
+    grid-template-columns: subgrid;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+
+  @include respond(desktop) {
+    grid-auto-flow: unset;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+}
+
+.container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+}
+
+.title {
+  grid-column: 1 / -3;
+  grid-row: 1;
+  margin: 0;
+  align-self: center;
+}
+
+.button__container {
+  grid-column: -3 / -1;
+  grid-row: 1;
+  display: flex;
+  place-self: center end;
+  gap: space(1);
+
+  @include respond(desktop) {
+    display: contents;
+  }
+}
+
+
+.button__left,
+.button__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  grid-column: -2 / -1;
+  grid-row: 1;
+
+  max-width: space(5);
+  min-width: space(4);
+
+  @include respond(desktop) {
+    max-width: none;
+  }
+}
+
+.button__left {
+  place-self: center end;
+
+  @include respond(tablet) {
+    grid-column: -3 / -2;
+    place-self: center;
+  }
+
+  svg {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+  }
+}
+
+.button__right {
+  place-self: center end;
+
+  svg {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+  }
+}

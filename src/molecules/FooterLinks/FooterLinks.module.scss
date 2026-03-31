@@ -1,0 +1,26 @@
+.nav {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  gap: space(2);
+
+  @include respond(tablet) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    padding-block: space(1);
+
+    @include respond(tablet) {
+      padding-block: space(3);
+    }
+
+    @include on-hover;
+
+    &:hover {
+      @include live-color-text;
+    }
+  }
+}

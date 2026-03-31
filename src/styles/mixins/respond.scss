@@ -1,0 +1,50 @@
+$breakpoints: (
+  mobile: 320px,
+  tablet: 700px,
+  desktop: 1200px,
+  wide: 1440px
+);
+
+@mixin respond($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+$space-unit: 4px;
+$space: (
+  1: $space-unit * 1, // 4px
+  2: $space-unit * 2, // 8px
+  3: $space-unit * 4, // 16px
+  4: $space-unit * 8, // 32px
+  5: $space-unit * 12, // 48px
+  6: $space-unit * 16 // 64px
+);
+
+@function space($step) {
+  @return map-get($space, $step);
+}
+
+@mixin grid {
+  & {
+    display: grid;
+    max-width: 1440px;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: space(3);
+    padding-inline: 0;
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include respond(desktop) {
+    grid-template-columns: repeat(24, 1fr);
+    padding-inline: calc($space-unit * 5.5);
+  }
+
+  @include respond(wide) {
+    padding-inline: 0;
+  }
+}

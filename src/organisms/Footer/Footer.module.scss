@@ -1,0 +1,84 @@
+.footer {
+  padding-block: space(3);
+
+  @include respond(tablet) {
+    padding-block: 0;
+  }
+
+  @include grid;
+
+  &__nav {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc($space-unit * 7);
+
+    @include respond(tablet) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: space(4);
+    }
+  }
+}
+
+.goUp {
+  width: 100%;
+  display: flex;
+  gap: space(3);
+  align-items: center;
+  justify-content: center;
+
+  @include respond(tablet) {
+    padding-block: space(3);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__label {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: none;
+    color: $secondary;
+
+    @include mont(400);
+  }
+
+  &__button {
+    width: calc($space-unit * 8);
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .goUp:hover & {
+      background-color: $bg;
+      border-color: $text;
+    }
+  }
+
+  &__icon {
+    fill: $text;
+  }
+
+  @include respond(tablet) {
+    width: fit-content;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

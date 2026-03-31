@@ -1,0 +1,33 @@
+.menu {
+  display: none;
+  height: 100%;
+
+  @include respond(tablet) {
+    display: flex;
+    align-items: center;
+    gap: space(4);
+  }
+
+  @include respond(desktop) {
+    gap: space(5);
+  }
+
+  @include respond(wide) {
+    gap: space(6);
+  }
+
+  &__item {
+    height: 100%;
+  }
+}
+
+.nav {
+  @include respond(tablet) {
+    height: 100%;
+    grid-column: 1 / -1;
+  }
+
+  @include respond(desktop) {
+    grid-column: unset;
+  }
+}

@@ -1,0 +1,10 @@
+.layout {
+  text-transform: uppercase;
+
+  @include mont(700);
+}
+
+.borders {
+  width: 100%;
+  border-bottom: calc($space-unit / 4) solid $secondary;
+}

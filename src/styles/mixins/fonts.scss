@@ -1,0 +1,4 @@
+@mixin mont($weight) {
+  font-family: var(--font-display), "Plus Jakarta Sans", Manrope, "Segoe UI", sans-serif;
+  font-weight: $weight;
+}
