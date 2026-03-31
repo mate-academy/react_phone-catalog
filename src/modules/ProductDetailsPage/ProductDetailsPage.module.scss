@@ -173,32 +173,41 @@
 
 // --- (Actions) ---
 .productActions {
-  position: relative;
+  grid-area: actions;
+    display: flex;
+    flex-direction: column;
+    //position: relative;
     width: 100%;
-    padding-top: 0;
+
+    @media (min-width: 1200px) {
+        //max-width: none;
+        justify-self: stretch;
+      }
 
     .actionsHeader {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-          margin-bottom: 8px;
+        margin-bottom: 8px;
+        position: relative;
       }
 
   .productId {
     position: static;
-      top: 0;
-      //right: 0;
-
-      color: #B4BDC3;
-      line-height: 15px;
+    top: 0;
+    color: #B4BDC3;
+    line-height: 15px;
   }
 
-    @media (min-width: 640px) {
+    @media (min-width: 1200px) {
       .productId {
+        //position: fixed;
         position: absolute !important;
         right: 0;
-        top: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          white-space: nowrap;
       }
     }
 
@@ -220,6 +229,20 @@
       color: #89939A;
     }
   }
+
+    .priceBlock,
+    .selection,
+    .capacity,
+    .buttons,
+    .mainSpecs {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+
+      @media (min-width: 1200px) {
+          max-width: 320px;
+    }
+}
 }
 
 .selection,
@@ -392,6 +415,9 @@
 
 // --- ТЕХНІЧНІ ХАРАКТЕРИСТИКИ (Tech Specs) ---
 .techSpecs {
+  grid-area: specs;
+    width: 100%;
+    max-width: none;
   @media (min-width: 640px) and (max-width: 1199px) {
       margin-top: 64px;
       width: 100%;

@@ -284,7 +284,6 @@ export const ProductDetailsPage: React.FC = () => {
                 ))}
               </div>
             </div>
-
             <div className={styles.capacity}>
               <p className={`${styles.label} label-text`}>Select capacity</p>
               <div className={styles.capacityList}>
@@ -405,7 +404,6 @@ export const ProductDetailsPage: React.FC = () => {
                 nextEl: '.js-next-recommended',
               }}
               breakpoints={{
-
                 320: { slidesPerView: 1.3, spaceBetween: 10 },
                 640: { slidesPerView: 2.5, spaceBetween: 16 },
                 1024: { slidesPerView: 4, spaceBetween: 16 },
