@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &__arrow,
+  &__page {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid $color-elements;
+    border-radius: $radius-md;
+    @include text-style($button-text);
+    color: $color-white;
+    cursor: pointer;
+    transition: border-color $transition-fast, background-color $transition-fast;
+
+    &:hover:not(:disabled) {
+      border-color: $color-white;
+    }
+
+    &:disabled {
+      color: $color-secondary;
+      border-color: $color-elements;
+      cursor: default;
+    }
+  }
+
+  &__page--active {
+    background-color: $color-white;
+    border-color: $color-white;
+    color: $color-black;
+  }
+}

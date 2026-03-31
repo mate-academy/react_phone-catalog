@@ -1,0 +1,37 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.color-selector {
+  &__label {
+    @include text-style($small-text);
+    color: $color-secondary;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__swatches {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    border: 2px solid $color-elements;
+    cursor: pointer;
+    transition:
+      border-color $transition-fast,
+      outline $transition-fast;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &--active {
+      border-color: $color-white;
+      outline-color: $color-white;
+    }
+  }
+}
