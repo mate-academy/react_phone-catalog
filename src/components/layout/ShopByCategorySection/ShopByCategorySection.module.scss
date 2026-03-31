@@ -9,14 +9,14 @@
 
 .title {
   margin-bottom: 32px;
-  
+
   @include subtitle;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 18px;
 
   @include respond-to('tablet') {
     grid-template-columns: 1fr;
