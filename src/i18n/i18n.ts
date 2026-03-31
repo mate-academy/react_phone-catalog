@@ -17,10 +17,12 @@ i18n
     },
 
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      // loadPath: '/locales/{{lng}}/{{ns}}.json',
+
+      loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/{{ns}}.json`,
     },
 
-    ns: ['common'], // вказуємо, які файли (namespaces) ми використовуємо
+    ns: ['common'],
     defaultNS: 'common',
 
     detection: {

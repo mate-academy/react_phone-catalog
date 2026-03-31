@@ -34,30 +34,35 @@ const prefetchAll = () =>
     }),
   ]);
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <RouterLayout />,
+      loader: prefetchAll,
+      errorElement: <NotFoundPage />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: 'phones', element: <CatalogPage /> },
+        { path: 'tablets', element: <CatalogPage /> },
+        {
+          path: 'accessories',
+          element: <CatalogPage />,
+        },
+        { path: 'phones/:productId', element: <ProductPage /> },
+        { path: 'tablets/:productId', element: <ProductPage /> },
+        { path: 'accessories/:productId', element: <ProductPage /> },
+        { path: 'product-not-found', element: <ProductNotFoundPage /> },
+        { path: 'favorites', element: <FavoritesPage /> },
+        { path: 'cart', element: <CartPage /> },
+        { path: '*', element: <NotFoundPage /> },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <RouterLayout />,
-    loader: prefetchAll,
-    errorElement: <NotFoundPage />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: 'phones', element: <CatalogPage /> },
-      { path: 'tablets', element: <CatalogPage /> },
-      {
-        path: 'accessories',
-        element: <CatalogPage />,
-      },
-      { path: 'phones/:productId', element: <ProductPage /> },
-      { path: 'tablets/:productId', element: <ProductPage /> },
-      { path: 'accessories/:productId', element: <ProductPage /> },
-      { path: 'product-not-found', element: <ProductNotFoundPage /> },
-      { path: 'favorites', element: <FavoritesPage /> },
-      { path: 'cart', element: <CartPage /> },
-      { path: '*', element: <NotFoundPage /> },
-    ],
+    basename: import.meta.env.BASE_URL,
   },
-]);
+);
 
 export const AppRoutes = () => {
   return <RouterProvider router={router} />;
