@@ -81,14 +81,14 @@ export const Header = () => {
 
         <ul className={styles.headerActionsList}>
           <li className={styles.headerActionsItem}>
-            <Link to={'favorites'} className={styles.headerActionsLink}>
+            <Link to="/favorites" className={styles.headerActionsLink}>
               <span>Favorites</span>
               <img src={iconFavorites} alt="" aria-hidden="true" />
             </Link>
           </li>
           <li className={styles.headerActionsItem}>
-            <Link to={'card'} className={styles.headerActionsLink}>
-              <span>Card</span>
+            <Link to="/cart" className={styles.headerActionsLink}>
+              <span>Cart</span>
               <img src={iconCart} alt="" aria-hidden="true" />
             </Link>
           </li>
