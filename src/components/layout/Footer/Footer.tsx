@@ -5,8 +5,11 @@ import styles from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
 
 const FOOTER_LINKS = [
-  { to: 'https://github.com', key: 'footer.github' },
-  { to: '/contacts', key: 'footer.contacts' },
+  {
+    to: 'https://github.com/YuliiaKosenchuk/react_phone-catalog',
+    key: 'footer.github',
+  },
+  { to: 'mailto:your.email@gmail.com', key: 'footer.contacts' },
   { to: '/rights', key: 'footer.rights' },
 ];
 

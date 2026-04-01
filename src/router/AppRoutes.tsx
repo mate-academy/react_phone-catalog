@@ -13,6 +13,7 @@ import { fetchPhoneDetails } from '@/api/phoneDetails';
 import { fetchTabletDetails } from '@/api/tabletDetails';
 import { QUERY_KEYS } from '@/api/queryKeys';
 import { fetchAccessoriesDetails } from '@/api/accessoriesDetails';
+import { RightsPage } from '@/pages/RightsPage';
 // const basename = import.meta.env.DEV ? '/' : '/react_phone-catalog/';
 
 const prefetchAll = () =>
@@ -56,6 +57,7 @@ const router = createHashRouter(
         { path: 'product-not-found', element: <ProductNotFoundPage /> },
         { path: 'favorites', element: <FavoritesPage /> },
         { path: 'cart', element: <CartPage /> },
+        { path: 'rights', element: <RightsPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],
     },

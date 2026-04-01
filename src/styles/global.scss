@@ -3,6 +3,10 @@
 @use './typography' as *;
 @use './mixins' as *;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: $bg-color-body;
   font-family: Mont, sans-serif;

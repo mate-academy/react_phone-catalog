@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 0;
+
+  @include respond-to('desktop') {
+    padding: 25px $padding-desktop;
+  }
+}
+
+.brand {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-secondary;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: $color-primary;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.notice {
+  border-left: 2px solid $border-color;
+  padding-left: 1.25rem;
+  margin-bottom: 2rem;
+  color: $color-secondary;
+  line-height: 1.7;
+}
+
+.card {
+  background: $bg-color-card;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+
+  p {
+    color: $color-secondary;
+    line-height: 1.7;
+    margin: 0;
+  }
+}
+
+.cardLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-primary;
+  margin-bottom: 0.5rem;
+}
