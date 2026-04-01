@@ -1,23 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './CartsPage.module.scss';
-import { CartItems } from '../../types/Product';
-import React from 'react';
 import { CartItem } from './components/CartItem';
+import { useShop } from '../../store/ShopContext';
 
-type Props = {
-  carts: CartItems[];
-  onRemove: (id: string) => void;
-  onDecrease: (id: string) => void;
-  onIncrease: (id: string) => void;
-};
-
-export const CartsPage: React.FC<Props> = ({
-  carts,
-  onRemove,
-  onDecrease,
-  onIncrease,
-}) => {
+export const CartsPage = () => {
   const navigate = useNavigate();
+  const { carts } = useShop();
   const totalQuantity = carts.reduce((sum, item) => {
     return sum + item.quantity;
   }, 0);
@@ -43,13 +31,7 @@ export const CartsPage: React.FC<Props> = ({
       <div className={styles.cartContent}>
         <div className={styles.list}>
           {carts.map(cart => (
-            <CartItem
-              key={cart.id}
-              cart={cart}
-              onRemove={onRemove}
-              onDecrease={onDecrease}
-              onIncrease={onIncrease}
-            />
+            <CartItem key={cart.id} cart={cart} />
           ))}
         </div>
 

@@ -1,20 +1,15 @@
-import React from 'react';
-import { CartItems } from '../../../../types/Product';
 import styles from './CartItem.module.scss';
+import { useShop } from '../../../../store/ShopContext';
+import { CartItems } from '../../../../types/Product';
+import React from 'react';
 
 type Props = {
   cart: CartItems;
-  onRemove: (id: string) => void;
-  onDecrease: (id: string) => void;
-  onIncrease: (id: string) => void;
 };
 
-export const CartItem: React.FC<Props> = ({
-  cart,
-  onRemove,
-  onDecrease,
-  onIncrease,
-}) => {
+export const CartItem: React.FC<Props> = ({ cart }) => {
+  const { removeFromCart, decreaseQuantity, increaseQuantity } = useShop();
+
   return (
     <article className={styles.cartItem}>
       <div className={styles.top}>
@@ -22,7 +17,7 @@ export const CartItem: React.FC<Props> = ({
           type="button"
           className={styles.removeButton}
           aria-label="Remove from cart"
-          onClick={() => onRemove(cart.id)}
+          onClick={() => removeFromCart(cart.id)}
         >
           <img src="/img/icon/close.svg" alt="" />
         </button>
@@ -41,7 +36,7 @@ export const CartItem: React.FC<Props> = ({
             type="button"
             className={styles.quantityButton}
             aria-label="Decrease quantity"
-            onClick={() => onDecrease(cart.id)}
+            onClick={() => decreaseQuantity(cart.id)}
           >
             <img src="/img/icon/minus.svg" alt="" />
           </button>
@@ -50,7 +45,7 @@ export const CartItem: React.FC<Props> = ({
             type="button"
             className={styles.quantityButton}
             aria-label="Increase quantity"
-            onClick={() => onIncrease(cart.id)}
+            onClick={() => increaseQuantity(cart.id)}
           >
             <img src="/img/icon/plus.svg" alt="" />
           </button>

@@ -1,12 +1,10 @@
+import { useShop } from '../../../../store/ShopContext';
 import { Product } from '../../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './ProductList.module.scss';
 
 type Props = {
   products: Product[];
-  favourites: Product[];
-  onToggleFavourite: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
   currentIndex?: number;
   step?: number;
   showDiscount?: boolean;
@@ -15,14 +13,13 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({
   products,
-  favourites,
-  onToggleFavourite,
-  onAddToCart,
   currentIndex,
   step,
   showDiscount = false,
   isSlider = false,
 }) => {
+  const { favourites } = useShop();
+
   return (
     <div
       className={isSlider ? styles.sliderTrack : styles.cardGrid}
@@ -39,8 +36,6 @@ export const ProductList: React.FC<Props> = ({
           <ProductCard
             key={product.id}
             product={product}
-            onToggleFavourite={onToggleFavourite}
-            onAddToCart={onAddToCart}
             isFavourite={isFavourite}
             showDiscount={showDiscount}
           />

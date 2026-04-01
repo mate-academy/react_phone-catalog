@@ -7,18 +7,12 @@ import styles from './ProductSection.module.scss';
 type Props = {
   title: string;
   products: Product[];
-  favourites: Product[];
-  onToggleFavourite: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
   showDiscount?: boolean;
 };
 
 export const ProductSection: React.FC<Props> = ({
   title,
   products,
-  favourites,
-  onToggleFavourite,
-  onAddToCart,
   showDiscount = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -96,9 +90,6 @@ export const ProductSection: React.FC<Props> = ({
       <div className={styles.sliderWrapper}>
         <ProductList
           products={products}
-          favourites={favourites}
-          onToggleFavourite={onToggleFavourite}
-          onAddToCart={onAddToCart}
           currentIndex={currentIndex}
           step={step}
           showDiscount={showDiscount}

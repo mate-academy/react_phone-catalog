@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Product, ProductDetails } from '../../types/Product';
+import { useEffect, useState } from 'react';
+import { ProductDetails } from '../../types/Product';
 import { ProductGallery } from './components/ProductGallery';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
@@ -9,26 +9,16 @@ import { ProductAbout } from './components/ProductAbout';
 import { ProductTechSpecs } from './components/ProductTechSpecs';
 import { ProductSection } from '../HomePage/components/ProductSection';
 import { getHotPriceProducts } from '../../utils/products';
+import { useShop } from '../../store/ShopContext';
 
-type Props = {
-  products: Product[];
-  favourites: Product[];
-  onToggleFavourite: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
-};
-
-export const ProductDetailsPage: React.FC<Props> = ({
-  products,
-  favourites,
-  onToggleFavourite,
-  onAddToCart,
-}) => {
+export const ProductDetailsPage = () => {
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
   );
   const [categoryProducts, setCategoryProducts] = useState<ProductDetails[]>(
     [],
   );
+  const { products } = useShop();
   const { productId } = useParams();
   const currentProduct = products.find(product => product.itemId === productId);
   const hotPriceProducts = getHotPriceProducts(products);
@@ -132,9 +122,6 @@ export const ProductDetailsPage: React.FC<Props> = ({
         <ProductSection
           title="You may also like"
           products={hotPriceProducts}
-          favourites={favourites}
-          onToggleFavourite={onToggleFavourite}
-          onAddToCart={onAddToCart}
           showDiscount
         />
       </div>

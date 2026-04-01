@@ -1,22 +1,21 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import styles from './ProductCard.module.scss';
+import { useShop } from '../../../../store/ShopContext';
 
 type Props = {
   product: Product;
-  onToggleFavourite: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
   isFavourite: boolean;
   showDiscount?: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({
   product,
-  onToggleFavourite,
-  onAddToCart,
   isFavourite,
   showDiscount = false,
 }) => {
+  const { toggleFavourite, addToCart } = useShop();
+
   return (
     <div className={styles.card}>
       <div className={styles.cardContent}>
@@ -58,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({
           <button
             type="button"
             className={styles.addToCart}
-            onClick={() => onAddToCart(product)}
+            onClick={() => addToCart(product)}
           >
             Add to cart
           </button>
@@ -68,7 +67,7 @@ export const ProductCard: React.FC<Props> = ({
               isFavourite ? styles.favouriteButtonActive : ''
             }`}
             aria-label="Add to favourites"
-            onClick={() => onToggleFavourite(product)}
+            onClick={() => toggleFavourite(product)}
           >
             <img
               src={

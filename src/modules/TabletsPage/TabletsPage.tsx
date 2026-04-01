@@ -1,21 +1,9 @@
-import React from 'react';
-import { Product } from '../../types/Product';
+import { useShop } from '../../store/ShopContext';
 import { getProductsByCategory } from '../../utils/products';
 import { CatalogPageContent } from '../shared/components/CatalogPageContent';
 
-type Props = {
-  products: Product[];
-  favourites: Product[];
-  onToggleFavourite: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
-};
-
-export const TabletsPage: React.FC<Props> = ({
-  products,
-  favourites,
-  onToggleFavourite,
-  onAddToCart,
-}) => {
+export const TabletsPage = () => {
+  const { products } = useShop();
   const tablets = getProductsByCategory(products, 'tablets');
 
   return (
@@ -23,9 +11,6 @@ export const TabletsPage: React.FC<Props> = ({
       title="Tablets"
       breadcrumb="Tablets"
       products={tablets}
-      favourites={favourites}
-      onToggleFavourite={onToggleFavourite}
-      onAddToCart={onAddToCart}
     />
   );
 };
