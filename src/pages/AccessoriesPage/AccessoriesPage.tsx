@@ -33,7 +33,7 @@ export const AccessoriesPage = () => {
             {products.length} models
           </div>
         </div>
-        <Catalog products={products} />
+        <Catalog products={products} showFilters={true} />
       </div>
     </>
   );

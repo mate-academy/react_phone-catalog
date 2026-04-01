@@ -10,6 +10,7 @@ import { PhonePage } from './pages/PhonePage';
 import { TabletPage } from './pages/TabletPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 export const App = () => {
   // const { data: phones, loading, error, reload } = useFetch('/api/phones.json');
@@ -30,6 +31,7 @@ export const App = () => {
             path="/accessories/:productId"
             element={<ProductDetailPage />}
           />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
         {/* <h1>Product Catalog</h1> */}

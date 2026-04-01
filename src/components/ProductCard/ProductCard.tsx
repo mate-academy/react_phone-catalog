@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Product } from '../ProductCarousel';
 
 import Favourite from '../../assets/Icons/Favourites.svg';
@@ -6,6 +6,7 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 // Стилі підтягуються з модульного файлу каруселі
 import styles from '../ProductCarousel/ProductCarousel.module.scss';
 import { Link } from 'react-router-dom';
+import { loadFavorites, saveFavorites } from '../../services/favorites';
 
 type Props = {
   product: Product;
@@ -30,7 +31,7 @@ const HeartIcon = ({ filled }: { filled: boolean }) =>
   );
 
 export const ProductCard = ({ product, discount }: Props) => {
-  const [liked, setLiked] = useState(false);
+  const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
   const [added, setAdded] = useState(false);
 
   // Якщо є масив images - беремо першу картинку з нього. Якщо ні - беремо старе поле image.
@@ -42,9 +43,52 @@ export const ProductCard = ({ product, discount }: Props) => {
   // Те ж саме для повної ціни
   const oldPrice = product.priceRegular || product.fullPrice;
 
+  const liked = favorites.some(p => p.itemId === product.itemId);
+
+  // useEffect(() => {
+  //   if (!product) {
+  //     return;
+  //   }
+  // }, [product]);
+
+  useEffect(() => {
+    const syncFavorites = () => {
+      setFavorites(loadFavorites());
+    };
+
+    // Слухаємо нашу кастомну подію
+    window.addEventListener('favorites-updated', syncFavorites);
+
+    return () => {
+      window.removeEventListener('favorites-updated', syncFavorites);
+    };
+  }, []);
+
   const handleAdd = () => {
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
+  };
+
+  const toggleFavorite = () => {
+    // ✅ 1. Завжди беремо найсвіжіші дані з localStorage ПЕРЕД зміною
+    const currentFavorites = loadFavorites();
+
+    // ✅ 2. Перевіряємо по свіжих даних
+    const isAlreadyFav = currentFavorites.some(
+      item => String(item.itemId) === String(product.itemId),
+    );
+
+    // ✅ 3. Формуємо новий масив
+    const nextFavorites = isAlreadyFav
+      ? currentFavorites.filter(item => item.id !== product.id)
+      : [...currentFavorites, product];
+
+    // ✅ 4. Зберігаємо в localStorage
+    saveFavorites(nextFavorites);
+
+    // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
+    // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
+    window.dispatchEvent(new Event('favorites-updated'));
   };
 
   return (
@@ -110,7 +154,7 @@ export const ProductCard = ({ product, discount }: Props) => {
               onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
-                setLiked(!liked);
+                toggleFavorite();
               }}
             >
               <HeartIcon filled={liked} />

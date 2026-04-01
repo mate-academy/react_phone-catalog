@@ -2,7 +2,7 @@
 import { ProductCard } from '../ProductCard';
 import { Product } from '../ProductCarousel';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './Catalog.module.scss';
@@ -13,13 +13,27 @@ import ArrowRight from '../../assets/Icons/Arrow_right.svg';
 
 type Props = {
   products: Product[];
+  showFilters?: boolean;
+  infScroll?: boolean;
 };
 
-export const Catalog = ({ products }: Props) => {
+export const Catalog = ({ products, showFilters, infScroll }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortVal = searchParams.get('sort') ?? 'newest';
   const perPage = searchParams.get('perPage') ?? '16';
   const page = Number(searchParams.get('page') ?? '1');
+
+  useState(() => {
+    if (infScroll) {
+      setSearchParams(prev => {
+        const next = new URLSearchParams(prev.toString());
+
+        next.set('perPage', 'all');
+
+        return next;
+      });
+    }
+  });
 
   const handleSortChange = (value: string) => {
     const next = new URLSearchParams(searchParams.toString());
@@ -145,27 +159,31 @@ export const Catalog = ({ products }: Props) => {
 
   return (
     <>
-      <div className={styles.toolBar}>
-        <div className={styles.toolBar__sort}>
-          <div className={styles.toolBar__sort__title}>Sort by</div>
-          <Select
-            options={sortOptions}
-            value={sortVal}
-            placeholder="Default"
-            onChange={handleSortChange}
-          />
-        </div>
+      {showFilters && (
+        <div className={styles.toolBar}>
+          <div className={styles.toolBar__sort}>
+            <div className={styles.toolBar__sort__title}>Sort by</div>
+            <Select
+              options={sortOptions}
+              value={sortVal}
+              placeholder="Default"
+              onChange={handleSortChange}
+            />
+          </div>
 
-        <div className={styles.toolBar__pagination}>
-          <div className={styles.toolBar__pagination__title}>Items on page</div>
-          <Select
-            options={pagintationOptions}
-            value={perPage}
-            placeholder="Default"
-            onChange={handlePerPageChange}
-          />
+          <div className={styles.toolBar__pagination}>
+            <div className={styles.toolBar__pagination__title}>
+              Items on page
+            </div>
+            <Select
+              options={pagintationOptions}
+              value={perPage}
+              placeholder="Default"
+              onChange={handlePerPageChange}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={styles.catalog}>
         {visible.map(product => (
@@ -173,35 +191,37 @@ export const Catalog = ({ products }: Props) => {
         ))}
       </div>
 
-      <div className={styles.pagination}>
-        <button
-          className={styles.pagination__navBack}
-          onClick={handlePrev}
-          disabled={page <= 1}
-        >
-          <img src={ArrowLeft} alt="arrow_left" />
-        </button>
+      {infScroll ? null : (
+        <div className={styles.pagination}>
+          <button
+            className={styles.pagination__navBack}
+            onClick={handlePrev}
+            disabled={page <= 1}
+          >
+            <img src={ArrowLeft} alt="arrow_left" />
+          </button>
 
-        <ul className={styles.pagination__list}>
-          {visiblePages.map(pageNum => (
-            <li
-              key={pageNum}
-              className={`${styles.pagination__list__item} ${page === pageNum ? styles.active : ''}`}
-              onClick={() => handlePageChange(pageNum)}
-            >
-              {pageNum}
-            </li>
-          ))}
-        </ul>
+          <ul className={styles.pagination__list}>
+            {visiblePages.map(pageNum => (
+              <li
+                key={pageNum}
+                className={`${styles.pagination__list__item} ${page === pageNum ? styles.active : ''}`}
+                onClick={() => handlePageChange(pageNum)}
+              >
+                {pageNum}
+              </li>
+            ))}
+          </ul>
 
-        <button
-          className={`${styles.pagination__navNext} ${page < totalPages ? '' : styles.disabled}`}
-          onClick={handleNext}
-          disabled={page >= totalPages}
-        >
-          <img src={ArrowRight} alt="arrow_right" />
-        </button>
-      </div>
+          <button
+            className={`${styles.pagination__navNext} ${page < totalPages ? '' : styles.disabled}`}
+            onClick={handleNext}
+            disabled={page >= totalPages}
+          >
+            <img src={ArrowRight} alt="arrow_right" />
+          </button>
+        </div>
+      )}
     </>
   );
 };

@@ -9,6 +9,7 @@ import Favourite from '../../assets/Icons/Favourites.svg';
 import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 
 import styles from './/ProductDetailPage.module.scss';
+import { loadFavorites, saveFavorites } from '../../services/favorites';
 
 interface CategoryProduct {
   id: string;
@@ -40,10 +41,14 @@ export const ProductDetailPage = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState<CategoryProduct>();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [liked, setLiked] = useState(false);
   const [added, setAdded] = useState(false);
   const [idProducts, setIdProducts] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
+
+  const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
+  const [favProduct, setFavProduct] = useState<Product | null>(null);
+
+  const liked = favorites.some(p => p.itemId === productId);
 
   useEffect(() => {
     fetchProductById(productId)
@@ -55,6 +60,12 @@ export const ProductDetailPage = () => {
       });
 
     fetchProducts().then(data => {
+      const foundFavProduct = data.find((p: Product) => p.itemId === productId);
+
+      if (foundFavProduct) {
+        setFavProduct(foundFavProduct);
+      }
+
       const foundProduct = [...data].find(p => p.itemId === productId);
 
       if (foundProduct) {
@@ -76,6 +87,32 @@ export const ProductDetailPage = () => {
     });
   }, [product?.category, product?.priceRegular, productId]);
 
+  useEffect(() => {
+    let mounted = true;
+
+    fetchProductById(productId)
+      .then(data => {
+        if (!mounted) {
+          return;
+        }
+
+        setProduct(data);
+      })
+      .catch(error => {
+        throw error;
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, [productId]);
+  // синхронізація liked
+  useEffect(() => {
+    if (!productId) {
+      return;
+    }
+  }, [productId, favorites]);
+
   // Словник: Назва з бекенду -> Реальний колір (Hex)
   const COLOR_MAP: Record<string, string> = {
     spacegray: '#4C4C4B',
@@ -89,6 +126,27 @@ export const ProductDetailPage = () => {
     yellow: '#FFE681',
     purple: '#D1CDDA',
     green: '#AEE1CD',
+  };
+
+  const toggleFavorite = () => {
+    if (!favProduct) {
+      return;
+    }
+
+    setFavorites(prev => {
+      // Використовуємо String() для 100% гарантії збігу типів
+      const isAlreadyFav = prev.some(
+        item => String(item.id) === String(favProduct.id),
+      );
+
+      const next = isAlreadyFav
+        ? prev.filter(item => String(item.id) !== String(favProduct.id))
+        : [...prev, favProduct];
+
+      saveFavorites(next);
+
+      return next;
+    });
   };
 
   const handleColorClick = (color: string) => {
@@ -247,7 +305,7 @@ export const ProductDetailPage = () => {
                   onClick={e => {
                     e.stopPropagation();
                     e.preventDefault();
-                    setLiked(!liked);
+                    toggleFavorite();
                   }}
                 >
                   <HeartIcon filled={liked} />

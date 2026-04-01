@@ -72,12 +72,34 @@
     align-items: center;
     padding: 24px;
     cursor: pointer;
+    position: relative;
 
     /* border-left: 1px solid #e2e6e9; */
     box-shadow: -1px 0 0 #e2e6e9;
 
     &:hover {
       outline: 1px solid black;
+    }
+
+    &__count {
+      display: flex;
+      color: white;
+      font-size: 9px;
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid white;
+
+      @media (max-width: 1024px) {
+        top: 10px;
+        right: 10px;
+      }
     }
   }
 

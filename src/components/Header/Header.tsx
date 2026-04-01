@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from 'react';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { Product } from '../ProductCarousel';
+import { loadFavorites } from '../../services/favorites';
 
 export const Header: React.FC = () => {
   const BREAKPOINT = 640; // відповідає твоєму @media max-width: 639px
@@ -18,6 +20,20 @@ export const Header: React.FC = () => {
   const burgerRef = useRef<HTMLButtonElement | null>(null);
   const location = useLocation();
   const pathname = location.pathname;
+
+  const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
+
+  useEffect(() => {
+    const syncFavorites = () => {
+      setFavorites(loadFavorites());
+    };
+
+    window.addEventListener('favorites-updated', syncFavorites);
+
+    return () => {
+      window.removeEventListener('favorites-updated', syncFavorites);
+    };
+  }, []);
 
   useOnClickOutside(navRef, target => {
     if (burgerRef.current && burgerRef.current.contains(target as Node)) {
@@ -99,9 +115,10 @@ export const Header: React.FC = () => {
           </ul>
         </nav>
 
-        <div className="header__favorites">
+        <Link to={'/favorites'} className="header__favorites">
+          <div className="header__favorites__count">{favorites.length}</div>
           <img src={Favorites} alt="Favorites" />
-        </div>
+        </Link>
 
         <div className="header__cart">
           <img src={Cart} alt="Cart" />
