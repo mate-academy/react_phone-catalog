@@ -5,6 +5,7 @@ import { fetchAllProducts } from '@/api/products';
 import { ProductDetails } from '@/features/products/types/productDetails';
 import styles from './ColorSelector.module.scss';
 import { COLOR_MAP } from '@/constants/colorMap';
+import { QUERY_KEYS } from '@/api/queryKeys';
 
 interface ColorSelectorProps {
   product: ProductDetails;
@@ -15,7 +16,7 @@ export const ColorSelector = ({ product }: ColorSelectorProps) => {
   const navigate = useNavigate();
 
   const { data: allProducts = [] } = useQuery({
-    queryKey: ['products'],
+    queryKey: QUERY_KEYS.products,
     queryFn: fetchAllProducts,
   });
 

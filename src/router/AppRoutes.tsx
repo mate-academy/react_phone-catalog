@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { RouterLayout } from '@/components/layout/RouterLayout';
 import { HomePage } from '@/pages/HomePage';
 import { CatalogPage } from '@/pages/CatalogPage';
@@ -13,6 +13,7 @@ import { fetchPhoneDetails } from '@/api/phoneDetails';
 import { fetchTabletDetails } from '@/api/tabletDetails';
 import { QUERY_KEYS } from '@/api/queryKeys';
 import { fetchAccessoriesDetails } from '@/api/accessoriesDetails';
+// const basename = import.meta.env.DEV ? '/' : '/react_phone-catalog/';
 
 const prefetchAll = () =>
   Promise.all([
@@ -34,30 +35,35 @@ const prefetchAll = () =>
     }),
   ]);
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RouterLayout />,
-    loader: prefetchAll,
-    errorElement: <NotFoundPage />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: 'phones', element: <CatalogPage /> },
-      { path: 'tablets', element: <CatalogPage /> },
-      {
-        path: 'accessories',
-        element: <CatalogPage />,
-      },
-      { path: 'phones/:productId', element: <ProductPage /> },
-      { path: 'tablets/:productId', element: <ProductPage /> },
-      { path: 'accessories/:productId', element: <ProductPage /> },
-      { path: 'product-not-found', element: <ProductNotFoundPage /> },
-      { path: 'favorites', element: <FavoritesPage /> },
-      { path: 'cart', element: <CartPage /> },
-      { path: '*', element: <NotFoundPage /> },
-    ],
-  },
-]);
+const router = createHashRouter(
+  [
+    {
+      path: '/',
+      element: <RouterLayout />,
+      loader: prefetchAll,
+      errorElement: <NotFoundPage />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: 'phones', element: <CatalogPage /> },
+        { path: 'tablets', element: <CatalogPage /> },
+        {
+          path: 'accessories',
+          element: <CatalogPage />,
+        },
+        { path: 'phones/:productId', element: <ProductPage /> },
+        { path: 'tablets/:productId', element: <ProductPage /> },
+        { path: 'accessories/:productId', element: <ProductPage /> },
+        { path: 'product-not-found', element: <ProductNotFoundPage /> },
+        { path: 'favorites', element: <FavoritesPage /> },
+        { path: 'cart', element: <CartPage /> },
+        { path: '*', element: <NotFoundPage /> },
+      ],
+    },
+  ],
+  // {
+  //   basename: basename,
+  // },
+);
 
 export const AppRoutes = () => {
   return <RouterProvider router={router} />;

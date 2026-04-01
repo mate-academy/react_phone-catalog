@@ -19,7 +19,7 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
             className={`${styles.thumbnail} ${i === activeIndex ? styles.active : ''}`}
             onClick={() => setActiveIndex(i)}
           >
-            <img src={`/${img}`} alt={`${name} ${i + 1}`} />
+            <img src={`./${img}`} alt={`${name} ${i + 1}`} />
           </button>
         ))}
       </div>
@@ -27,7 +27,7 @@ export const ProductGallery = ({ images, name }: ProductGalleryProps) => {
         <AnimatePresence mode="wait">
           <motion.img
             key={activeIndex}
-            src={`/${images[activeIndex]}`}
+            src={`./${images[activeIndex]}`}
             alt={name}
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}

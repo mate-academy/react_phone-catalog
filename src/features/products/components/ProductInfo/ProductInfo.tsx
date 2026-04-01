@@ -28,7 +28,7 @@ export const ProductInfo = ({ product, baseProduct }: ProductInfoProps) => {
       return;
     }
 
-    return isInCart ? removeFromCart(baseProduct.id) : addToCart(baseProduct); //дописала ретьорн
+    return isInCart ? removeFromCart(baseProduct.id) : addToCart(baseProduct);
   };
 
   return (

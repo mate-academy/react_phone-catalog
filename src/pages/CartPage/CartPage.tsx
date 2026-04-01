@@ -24,7 +24,7 @@ export const CartPage = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
           >
             <motion.img
-              src="/img/cart-is-empty.png"
+              src="./img/cart-is-empty.png"
               alt="404 cat"
               className={styles.image}
               animate={{ rotate: [0, -3, 3, -3, 0] }}

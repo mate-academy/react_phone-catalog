@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { fetchAllProducts } from '@/api/products';
 import { ProductDetails } from '@/features/products/types/productDetails';
 import styles from './CapacitySelector.module.scss';
+import { QUERY_KEYS } from '@/api/queryKeys';
 
 interface CapacitySelectorProps {
   product: ProductDetails;
@@ -14,7 +15,7 @@ export const CapacitySelector = ({ product }: CapacitySelectorProps) => {
   const navigate = useNavigate();
 
   const { data: allProducts = [] } = useQuery({
-    queryKey: ['products'],
+    queryKey: QUERY_KEYS.products,
     queryFn: fetchAllProducts,
   });
 

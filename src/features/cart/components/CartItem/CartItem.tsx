@@ -36,7 +36,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         </button>
 
         <img
-          src={`/${product.image}`}
+          src={`./${product.image}`}
           alt={product.name}
           className={styles.image}
         />
