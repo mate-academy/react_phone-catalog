@@ -1,0 +1,10 @@
+import { CartItem } from '../shared/components/CartItem';
+
+export const CartPage = () => {
+  return (
+    <>
+      <h1>Cart page</h1>
+      <CartItem />
+    </>
+  );
+};
