@@ -33,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={styles.card}>
       <Link
-        to={`./${product.category}/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
         className={styles.productLink}
       >
         <div className={styles.imageWrapper}>
@@ -44,7 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
         </div>
       </Link>
-      <Link to={`./${product.category}/${product.itemId}`}>
+      <Link to={`/${product.category}/${product.itemId}`}>
         <h3 className={styles.title}>{product.name}</h3>
       </Link>
       <div className={styles.priceWrapper}>
