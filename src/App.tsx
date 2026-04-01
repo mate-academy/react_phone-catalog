@@ -35,7 +35,7 @@ export const App = () => {
       document.head.appendChild(link);
     }
 
-    link.href = '/img/Favicon.svg';
+    link.href = 'img/Favicon.svg';
   }, []);
 
   return (
