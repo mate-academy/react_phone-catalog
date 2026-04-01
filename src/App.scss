@@ -1,1 +1,8 @@
 // not empty
+
+// Prevent scrolling when menu is open
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
