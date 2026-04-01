@@ -11,6 +11,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../ProductCarousel';
 import { loadFavorites } from '../../services/favorites';
+import { loadCart } from '../../services/cart';
 
 export const Header: React.FC = () => {
   const BREAKPOINT = 640; // відповідає твоєму @media max-width: 639px
@@ -22,16 +23,23 @@ export const Header: React.FC = () => {
   const pathname = location.pathname;
 
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
+  const [cart, setCart] = useState<Product[]>(() => loadCart());
 
   useEffect(() => {
     const syncFavorites = () => {
       setFavorites(loadFavorites());
     };
 
+    const syncCart = () => {
+      setCart(loadCart());
+    };
+
     window.addEventListener('favorites-updated', syncFavorites);
+    window.addEventListener('cart-updated', syncCart);
 
     return () => {
       window.removeEventListener('favorites-updated', syncFavorites);
+      window.removeEventListener('cart-updated', syncCart);
     };
   }, []);
 
@@ -120,9 +128,10 @@ export const Header: React.FC = () => {
           <img src={Favorites} alt="Favorites" />
         </Link>
 
-        <div className="header__cart">
+        <Link to={'/cart'} className="header__cart">
+          <div className="header__cart__count">{cart.length}</div>
           <img src={Cart} alt="Cart" />
-        </div>
+        </Link>
 
         <button
           ref={burgerRef}

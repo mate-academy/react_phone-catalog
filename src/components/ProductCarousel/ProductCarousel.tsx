@@ -21,6 +21,7 @@ export interface Product {
   priceDiscount?: number;
   priceRegular?: number;
   images?: string[];
+  amount?: number;
 
   // Спільні поля
   screen: string;

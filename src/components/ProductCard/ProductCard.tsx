@@ -7,6 +7,7 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 import styles from '../ProductCarousel/ProductCarousel.module.scss';
 import { Link } from 'react-router-dom';
 import { loadFavorites, saveFavorites } from '../../services/favorites';
+import { loadCart, saveCart } from '../../services/cart';
 
 type Props = {
   product: Product;
@@ -32,6 +33,7 @@ const HeartIcon = ({ filled }: { filled: boolean }) =>
 
 export const ProductCard = ({ product, discount }: Props) => {
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
+  const [cart, setCart] = useState<Product[]>(() => loadCart());
   const [added, setAdded] = useState(false);
 
   // Якщо є масив images - беремо першу картинку з нього. Якщо ні - беремо старе поле image.
@@ -44,23 +46,24 @@ export const ProductCard = ({ product, discount }: Props) => {
   const oldPrice = product.priceRegular || product.fullPrice;
 
   const liked = favorites.some(p => p.itemId === product.itemId);
-
-  // useEffect(() => {
-  //   if (!product) {
-  //     return;
-  //   }
-  // }, [product]);
+  const inCart = cart.some(p => p.itemId === product.itemId);
 
   useEffect(() => {
     const syncFavorites = () => {
       setFavorites(loadFavorites());
     };
 
+    const syncCart = () => {
+      setCart(loadCart());
+    };
+
     // Слухаємо нашу кастомну подію
     window.addEventListener('favorites-updated', syncFavorites);
+    window.addEventListener('cart-updated', syncCart);
 
     return () => {
       window.removeEventListener('favorites-updated', syncFavorites);
+      window.removeEventListener('cart-updated', syncCart);
     };
   }, []);
 
@@ -89,6 +92,28 @@ export const ProductCard = ({ product, discount }: Props) => {
     // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
     // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
     window.dispatchEvent(new Event('favorites-updated'));
+  };
+
+  const toggleCart = () => {
+    // ✅ 1. Завжди беремо найсвіжіші дані з localStorage ПЕРЕД зміною
+    const currentCart = loadCart();
+
+    // ✅ 2. Перевіряємо по свіжих даних
+    const isAlreadyFav = currentCart.some(
+      item => String(item.itemId) === String(product.itemId),
+    );
+
+    // ✅ 3. Формуємо новий масив
+    const nextCart = isAlreadyFav
+      ? currentCart.filter(item => item.id !== product.id)
+      : [...currentCart, product];
+
+    // ✅ 4. Зберігаємо в localStorage
+    saveCart(nextCart);
+
+    // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
+    // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
+    window.dispatchEvent(new Event('cart-updated'));
   };
 
   return (
@@ -144,9 +169,10 @@ export const ProductCard = ({ product, discount }: Props) => {
                 e.stopPropagation();
                 e.preventDefault();
                 handleAdd();
+                toggleCart();
               }}
             >
-              {added ? '✓ Added' : 'Add to cart'}
+              {inCart ? '✓ Added' : 'Add to cart'}
             </button>
 
             <button
