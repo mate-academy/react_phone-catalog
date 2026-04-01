@@ -1,5 +1,9 @@
 @use 'variables' as *;
 
+body {
+  font-family: $font-family-base;
+}
+
 h1,
 h2,
 h3,
