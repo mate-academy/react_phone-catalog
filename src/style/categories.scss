@@ -6,6 +6,7 @@
 
   @include on-tablet {
     width: 100%;
+    box-sizing: border-box;
   }
 
   @include on-mobile {

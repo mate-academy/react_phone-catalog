@@ -118,20 +118,37 @@ export const HomePage: React.FC = () => {
       </section>
 
       <section className="slider">
-        <h2 className="slider__title">Brand new models</h2>
+        <h2 className="slider__title slider__pc">Brand new models</h2>
         <button
-          className="slider__button button"
+          className="slider__button button slider__pc"
           onClick={() => sliderOne > 0 && setSliderOne(s => s - 1)}
         >
           <div className="icon icon--left"></div>
         </button>
         <button
-          className="slider__button button"
+          className="slider__button button slider__pc"
           disabled={sliderOne >= newestProducts.length - 4}
           onClick={() => setSliderOne(s => s + 1)}
         >
           <div className="icon icon--right"></div>
         </button>
+
+        <div className="slider__mobile">
+          <h2 className="slider__title">Brand new models</h2>
+          <button
+            className="slider__button button"
+            onClick={() => sliderTwo > 0 && setSliderTwo(s => s - 1)}
+          >
+            <div className="icon icon--left"></div>
+          </button>
+          <button
+            className="slider__button button"
+            disabled={sliderTwo >= discountedProducts.length - 4}
+            onClick={() => setSliderTwo(s => s + 1)}
+          >
+            <div className="icon icon--right"></div>
+          </button>
+        </div>
 
         <div className="slider__wrapper-wrap">
           <div
@@ -194,20 +211,37 @@ export const HomePage: React.FC = () => {
       </section>
 
       <section className="slider">
-        <h2 className="slider__title">Discounted products</h2>
+        <h2 className="slider__title slider__pc">Discounted products</h2>
         <button
-          className="slider__button button"
+          className="slider__button button slider__pc"
           onClick={() => sliderTwo > 0 && setSliderTwo(s => s - 1)}
         >
           <div className="icon icon--left"></div>
         </button>
         <button
-          className="slider__button button"
+          className="slider__button button slider__pc"
           disabled={sliderTwo >= discountedProducts.length - 4}
           onClick={() => setSliderTwo(s => s + 1)}
         >
           <div className="icon icon--right"></div>
         </button>
+
+        <div className="slider__mobile">
+          <h2 className="slider__title">Discounted products</h2>
+          <button
+            className="slider__button button"
+            onClick={() => sliderTwo > 0 && setSliderTwo(s => s - 1)}
+          >
+            <div className="icon icon--left"></div>
+          </button>
+          <button
+            className="slider__button button"
+            disabled={sliderTwo >= discountedProducts.length - 4}
+            onClick={() => setSliderTwo(s => s + 1)}
+          >
+            <div className="icon icon--right"></div>
+          </button>
+        </div>
 
         <div className="slider__wrapper-wrap">
           <div

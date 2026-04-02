@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import './App.scss';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="App">
       <div className="app__wrapper">
@@ -85,7 +88,95 @@ export const App = () => {
               <div className="icon icon--cart"></div>
             </NavLink>
           </ul>
+
+          <button
+            className="header__icons-item menu__unlock button"
+            onClick={() => setMenuOpen(true)}
+          >
+            <div className="icon icon--menu"></div>
+          </button>
         </header>
+
+        {menuOpen && (
+          <div className="menu">
+            <div className="menu__header">
+              <div className="menu__logo">
+                <img
+                  src="/img/icons/logo.png"
+                  alt="logo"
+                  className="menu__logo-img"
+                />
+              </div>
+              <button
+                className="button menu__button"
+                onClick={() => setMenuOpen(false)}
+              >
+                <div className="icon icon--close"></div>
+              </button>
+            </div>
+
+            <ul className="menu__list" onClick={() => setMenuOpen(false)}>
+              <li className="menu__list-item">
+                <NavLink
+                  to={'/home'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'menu__list-link uppercase'
+                      : 'menu__list-link uppercase menu__active'
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="menu__list-item">
+                <NavLink
+                  to={'/phones'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'menu__list-link uppercase'
+                      : 'menu__list-link uppercase menu__active'
+                  }
+                >
+                  Phones
+                </NavLink>
+              </li>
+              <li className="menu__list-item">
+                <NavLink
+                  to={'/tablets'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'menu__list-link uppercase'
+                      : 'menu__list-link uppercase menu__active'
+                  }
+                >
+                  Tablets
+                </NavLink>
+              </li>
+              <li className="menu__list-item">
+                <NavLink
+                  to={'/accessories'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'menu__list-link uppercase'
+                      : 'menu__list-link uppercase menu__active'
+                  }
+                >
+                  Accessories
+                </NavLink>
+              </li>
+            </ul>
+
+            <ul className="menu__icons">
+              <li className="menu__icon">
+                <div className="icon icon--favourite"></div>
+              </li>
+              <li className="menu__icon">
+                <div className="icon icon--cart"></div>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <Outlet />
       </div>
 

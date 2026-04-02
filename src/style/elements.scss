@@ -5,6 +5,11 @@
 .elements {
   @include on-grid;
 
+  @include on-tablet {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   &__wrapper {
     display: flex;
 

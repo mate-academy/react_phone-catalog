@@ -11,7 +11,6 @@
   margin-top: 80px;
 
   @include on-tablet {
-    max-width: 640px;
   }
 
   &__title {
@@ -27,13 +26,26 @@
     }
   }
 
+  &__pc {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    }
+  }
 
   &__wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
-    column-gap: 16px;
+    display: flex;
+    flex-direction: row;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     grid-column: 1 / -1;
@@ -53,6 +65,10 @@
   &__button {
     width: 32px;
     height: 32px;
+
+    @include on-tablet {
+      justify-self: end;
+    }
   }
 
   &__button:first-of-type {

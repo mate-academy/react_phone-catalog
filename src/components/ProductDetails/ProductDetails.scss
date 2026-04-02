@@ -40,6 +40,15 @@
     @include on-tablet {
       grid-column: span 1;
     }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+
+      flex-direction: row;
+      grid-row: 4;
+
+      margin-bottom: 40px;
+    }
   }
 
   &__image {
@@ -64,6 +73,12 @@
     @include on-tablet {
       grid-column: span 6;
     }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+
+      margin-bottom: 16px;
+    }
   }
 
   &__main-img {
@@ -87,6 +102,12 @@
 
     @include on-tablet {
       grid-column: span 5;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+
+      margin-bottom: 56px;
     }
   }
 
@@ -300,6 +321,10 @@
 
   &__about {
     grid-column: span 12;
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
 
     &-title {
       // пусто

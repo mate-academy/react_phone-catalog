@@ -34,6 +34,7 @@
 
     @include on-tablet {
       height: 190px;
+      object-fit: cover;
     }
 
     @include on-mobile {

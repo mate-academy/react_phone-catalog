@@ -37,6 +37,12 @@
     mask-image: url('..//img/icons/icon__home.svg');
   }
 
+  &--menu {
+    -webkit-mask-image: url('..//img/icons/Menu.svg');
+
+    mask-image: url('..//img/icons/Menu.svg');
+  }
+
   &--favourite {
     -webkit-mask-image: url('..//img/icons/icon__favourite.svg');
 

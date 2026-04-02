@@ -26,7 +26,14 @@ export const FavouritesPage: React.FC = () => {
             if (!p) {
               throw new Error('Error');
             } else {
-              return <ProductCard product={p} discounted={true} key={p.id} />;
+              return (
+                <ProductCard
+                  product={p}
+                  discounted={true}
+                  key={p.id}
+                  cn="product__card product__card--page"
+                />
+              );
             }
           })}
         </div>

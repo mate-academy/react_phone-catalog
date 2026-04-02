@@ -2,29 +2,24 @@
 @use './typography.scss' as *;
 @use './variables.scss' as *;
 
+.logo {
+  @include on-mobile {
+    height: 20px;
+  }
+}
+
 .header {
   display: flex;
-
   flex-direction: row;
-
   width: 100%;
-
   height: 64px;
-
   align-items: center;
-
   justify-content: space-between;
-
   box-sizing: border-box;
-
   border-bottom: 1px solid $elements;
-
   position: sticky;
-
   top: 0;
-
   background-color: $white;
-
   z-index: 1;
 
   @include on-tablet {
@@ -33,16 +28,15 @@
 
   &__logo-div {
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     width: 128px;
-
     height: 100%;
-
     margin-right: 24px;
+
+    @include on-mobile {
+      width: 98px;
+    }
   }
 
   &__left {
@@ -73,6 +67,10 @@
 
       @include on-tablet {
         gap: 32px;
+      }
+
+      @include on-mobile {
+        display: none;
       }
     }
 
@@ -170,6 +168,10 @@
       margin: 0;
 
       padding: 0;
+
+      @include on-mobile {
+        display: none;
+      }
     }
 
     &-item {

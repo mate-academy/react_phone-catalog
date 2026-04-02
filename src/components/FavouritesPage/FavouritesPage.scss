@@ -10,6 +10,11 @@
 
   &__wrapper {
     @include on-grid();
+    box-sizing: border-box;
+
+    @include on-tablet {
+      width: 100%;
+    }
   }
 
   &__title {

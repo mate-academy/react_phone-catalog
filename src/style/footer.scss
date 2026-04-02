@@ -15,6 +15,12 @@
 
   height: 96px;
 
+  @include on-mobile {
+    height: max-content;
+    padding: 32px 0;
+    box-sizing: border-box
+  }
+
   &__wrapper {
     @include on-grid;
 
@@ -22,6 +28,10 @@
       width: 100%;
 
       padding: 0 24px;
+    }
+
+    @include on-mobile {
+      row-gap: 32px;
     }
   }
 
@@ -67,6 +77,11 @@
     @include on-tablet {
       grid-column: span 4;
     }
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 
   &__link {
@@ -90,6 +105,11 @@
 
     @include on-tablet {
       grid-column: span 4;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      justify-content: center;
     }
 
     &-button {

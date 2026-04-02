@@ -293,20 +293,37 @@ export const ProductDetails: React.FC = () => {
             </div>
 
             <section className="slider">
-              <h2 className="slider__title">You may also like</h2>
+              <h2 className="slider__title slider__pc">You may also like</h2>
               <button
-                className="slider__button button"
+                className="slider__button button slider__pc"
                 onClick={() => sliderOne > 0 && setSliderOne(s => s - 1)}
               >
                 <div className="icon icon--left"></div>
               </button>
               <button
-                className="slider__button button"
+                className="slider__button button slider__pc"
                 disabled={sliderOne >= newestProducts.length - 4}
                 onClick={() => setSliderOne(s => s + 1)}
               >
                 <div className="icon icon--right"></div>
               </button>
+
+              <div className="slider__mobile">
+                <h2 className="slider__title">You may also like</h2>
+                <button
+                  className="slider__button button"
+                  onClick={() => sliderOne > 0 && setSliderOne(s => s - 1)}
+                >
+                  <div className="icon icon--left"></div>
+                </button>
+                <button
+                  className="slider__button button"
+                  disabled={sliderOne >= newestProducts.length - 4}
+                  onClick={() => setSliderOne(s => s + 1)}
+                >
+                  <div className="icon icon--right"></div>
+                </button>
+              </div>
 
               <div className="slider__wrapper-wrap">
                 <div
