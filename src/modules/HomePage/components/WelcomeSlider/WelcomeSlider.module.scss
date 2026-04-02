@@ -1,12 +1,27 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
-.slider {
+.wrapper {
+  margin-inline: -$content-padding-mobile;
+
+  @include media-up($breakpoint-tablet) {
+    margin-inline: 0;
+  }
+}
+
+.track {
   position: relative;
+
+  @include media-up($breakpoint-tablet) {
+    padding-inline: #{$spacing-xl + 19px};
+  }
+}
+
+.swiper {
   width: 100%;
 }
 
-.slide {
+.image {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -57,11 +72,13 @@
   }
 }
 
-.dots {
+.pagination {
   @include flex-center;
 
-  gap: $spacing-xs;
-  margin-top: $spacing-sm;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+  margin-bottom: $spacing-md;
+  cursor: pointer;
 
   :global(.swiper-pagination-bullet) {
     width: 14px;
