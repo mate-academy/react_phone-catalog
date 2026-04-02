@@ -4,20 +4,26 @@ import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 type ProductCardProps = {
   product: Product;
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, setProducts }: ProductCardProps) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
 
-  const isFavorite = favorites.some(favorite => favorite.id === product.id);
-
   const handleToggleFavorite = () => {
-    if (isFavorite) {
-      setFavorites(a => a.filter(b => b.id !== product.id));
-    } else {
-      setFavorites(c => [...c, product]);
-    }
+    setFavorites(prev => {
+      const exists = prev.some(p => p.itemId === product.itemId);
+
+      if (exists) {
+        return prev.filter(p => p.itemId !== product.itemId);
+      } else {
+        return [...prev, product];
+      }
+    });
+    setProducts(prev => prev.filter(p => p.itemId !== product.itemId));
   };
+
+  const isFavorite = favorites.some(p => p.itemId === product.itemId);
 
   return (
     <div className="product__card">

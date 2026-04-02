@@ -2,6 +2,7 @@
   width: 100%;
   display: grid;
   column-gap: 16px;
+  row-gap: 40px;
   grid-template-columns: repeat(12, 1fr);
   margin-bottom: 24px;
   @media (min-width: 640px) {
@@ -11,4 +12,18 @@
   @media (min-width: 1200px) {
     margin-bottom: 40px;
   }
+}
+
+.favorites-list__models--counter {
+  font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+color: #e2e6e9;
+};
+
+.favorites-list__models--counter--empty {
+  font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+color: black;
 }

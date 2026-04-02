@@ -7,7 +7,6 @@ type ProductListProps = {
 };
 
 const ProductList = ({ products }: ProductListProps) => {
-
   return (
     <div className="product__list">
       {products.map(product => (
