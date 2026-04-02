@@ -187,7 +187,8 @@ useEffect(() => {
                     onClick={() => {
                       const target = allProducts.find(
                         p =>
-                          p.id === product.id &&
+                          p.name.split(' ').slice(0, 3).join(' ') ===
+                            product.name.split(' ').slice(0, 3).join(' ') &&
                           p.color === colorName &&
                           p.capacity === product.capacity,
                       );
@@ -213,7 +214,8 @@ useEffect(() => {
                     onClick={() => {
                       const target = allProducts.find(
                         p =>
-                          p.id === product.id &&
+                          p.name.split(' ').slice(0, 3).join(' ') ===
+                            product.name.split(' ').slice(0, 3).join(' ') &&
                           p.capacity === cap &&
                           p.color === product.color,
                       );
@@ -340,7 +342,14 @@ useEffect(() => {
               }}
             >
               {recommendedProducts.map(item => (
-                <SwiperSlide key={item.id} style={{ width: 'auto' }}>
+                <SwiperSlide
+                  key={item.id}
+                  style={{ width: 'auto' }}
+                  onClick={() => {
+                    navigate(`/${item.category}/${item.itemId}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
                   <ProductCard
                     product={item}
                     className={styles.card_home_custom}
