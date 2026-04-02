@@ -11,6 +11,12 @@
   }
 }
 
+@mixin on-tablet-md {
+  @media (min-width: $table-md-min-width) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
@@ -43,13 +49,13 @@
   @include on-tablet {
     --columns: 12;
 
-    column-gap: 24px;
+    // column-gap: 24px;
   }
 
   @include on-desktop {
     --columns: 24;
 
-    column-gap: 16px;
+    // column-gap: 16px;
     grid-template-columns: repeat(var(--columns), 32px);
   }
 }

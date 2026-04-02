@@ -7,15 +7,15 @@ $lt-main-bg: #fafbfc; // background
 $lt-white: #fff; // card background
 $lt-bt-sl-bd: #b4bdc3;
 $lt-bt-sl-bg: #fff;
-$c-gray: #FAFBFC;
+$c-gray: #fafbfc;
 $lt-shadow-add-bt: #17203166;
 $lt-shadow-card: #252525e3;
-$phone-category: #6D6474;
+$phone-category: #6d6474;
 $tablet-category: #8d8d92;
 $accessory-category: #973d5f;
 
-
 // DARK THEME
+$dt-black-text-pag: #000;
 $dt-black: #0f0f11; // page backgroun
 $dt-elements: #3b3e4a; // border
 $dt-secondary: #89939a;
@@ -24,11 +24,12 @@ $dt-purple: #905bff; // bvutton/ button text
 $dt-white: #f1f2f9; // Text and light accents
 $dt-bt-sl-bd: #323542;
 $dt-bt-sl-bg: #323542;
-$dt-shadow-add-bt: #E8DFCE66;
-$dt-disabled-icon: #4A4D58;
-$dt-shadow-card: #DADADAE3;
+$dt-shadow-add-bt: #e8dfce66;
+$dt-disabled-icon: #4a4d58;
+$dt-shadow-card: #dadadae3;
 $transition: 0.3s;
 $table-min-width: 640px;
+$table-md-min-width: 768px;
 $desktop-min-width: 1200px;
 
 :root {
@@ -47,8 +48,9 @@ $desktop-min-width: 1200px;
   --shadow-add-bt: #{$lt-shadow-add-bt};
   --shasow-card: #{$lt-shadow-card};
   --icon-disabled: #{$lt-bt-sl-bd};
-  --borde-hover-mini:#{$lt-secondary};
+  --borde-hover-mini: #{$lt-secondary};
   --text-id: #{$lt-bt-sl-bd};
+  --pagination-text: #{$lt-white};
 }
 
 [data-theme='dark'] {
@@ -67,6 +69,7 @@ $desktop-min-width: 1200px;
   --shadow-add-bt: #{$dt-shadow-add-bt};
   --shasow-card: #{$dt-shadow-card};
   --icon-disabled: #{$dt-disabled-icon};
-  --borde-hover-mini:#{$lt-secondary};
+  --borde-hover-mini: #{$lt-secondary};
   --text-id: #{$dt-disabled-icon};
+  --pagination-text: #{$dt-black-text-pag};
 }

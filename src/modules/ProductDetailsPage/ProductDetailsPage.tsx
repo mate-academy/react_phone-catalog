@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import style from './ProductDetailsPage.module.scss';
 import { useProductDetails } from '../../hook/useProductDetails';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -9,20 +9,17 @@ import { CapacityOptions } from './CapacityOptions';
 import classNames from 'classnames';
 import { TechSpec } from './TechSpec/TechSpec';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { SkeletonDetails } from '../../components/SkeletonDetails';
+import { ErrorScreen } from '../../components/ErrorScreen';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const {
-    selectedProsuct,
-    product,
-    suggested,
-    setProductImage,
-    productImage,
-    isLoading,
-  } = useProductDetails(productId);
+  const navigate = useNavigate();
+  const { selectedProsuct, product, suggested, isLoading, errorMessage } =
+    useProductDetails(productId);
 
   // eslint-disable-next-line
-  console.log(setProductImage, productImage);
+  // console.log(setProductImage, productImage);
 
   const spec = [
     { nameSpec: 'Screen', value: product?.screen },
@@ -39,15 +36,28 @@ export const ProductDetailsPage = () => {
           productName={selectedProsuct?.name}
         />
       </div>
-
       <div className={style.productDetails__containerBack}>
-        <button className={style.productDetails__buttonBack}>
+        <button
+          className={style.productDetails__buttonBack}
+          onClick={() => navigate(-1)}
+        >
           <Icon className={style.productDetails__iconBack} nameIcon="left" />
           <span className={style.productDetails__back}>Back</span>
         </button>
       </div>
+      {isLoading && (
+        <div className={style.productDetails__skeleton}>
+          <SkeletonDetails />
+        </div>
+      )}
 
-      {!isLoading && product && (
+      {!isLoading && errorMessage && <ErrorScreen title={errorMessage} />}
+
+      {!product && (
+        <p className={style.productDetails__notFound}>Product was not found.</p>
+      )}
+
+      {!isLoading && product && !errorMessage && (
         <>
           <h2 className={style.productDetails__title}>
             {selectedProsuct?.name}

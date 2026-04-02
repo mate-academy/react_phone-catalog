@@ -22,6 +22,7 @@
     padding: 0;
     border: none;
     background-color: var(--main-bg);
+    cursor: pointer;
   }
 
   &__iconBack {
@@ -256,6 +257,31 @@
 
     @include on-desktop {
       margin-inline: -32px;
+    }
+  }
+
+  &__skeleton {
+    grid-column: 1 / -1;
+
+    margin-block: 16px 32px;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
+    }
+  }
+
+  &__notFound {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-main);
+
+    @extend %body-text-14;
+    
+    font-size: 20px;
+    margin-block: 16px 32px;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
     }
   }
 }

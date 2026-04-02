@@ -12,6 +12,7 @@ export const useProductDetails = (productId: string | undefined) => {
   const [suggested, setSuggested] = useState<Products[] | null>(null);
   const [productImage, setProductImage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const fetchProducts = useCallback(async () => {
     if (!productId) {
@@ -19,13 +20,14 @@ export const useProductDetails = (productId: string | undefined) => {
     }
 
     try {
+      setErrorMessage('');
       const allProducts = await getProducts();
       const catalogProduct = allProducts.find(
         item => item.itemId === productId,
       );
 
       if (!catalogProduct) {
-        throw new Error('Prroduct not found in the cut');
+        throw new Error('Product was not found');
       }
 
       setSelectedProsuct(catalogProduct);
@@ -33,7 +35,7 @@ export const useProductDetails = (productId: string | undefined) => {
       const data = await getProductById(catalogProduct.category, productId);
 
       if (!data) {
-        throw new Error('Not found product details');
+        throw new Error('Product was not found');
       }
 
       setProduct(data);
@@ -43,7 +45,11 @@ export const useProductDetails = (productId: string | undefined) => {
 
       setSuggested(suggestedProducts);
     } catch (error) {
-      throw new Error('Product was not found');
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage(String(error));
+      }
     } finally {
       setIsLoading(false);
     }
@@ -60,5 +66,6 @@ export const useProductDetails = (productId: string | undefined) => {
     setProductImage,
     productImage,
     isLoading,
+    errorMessage,
   };
 };

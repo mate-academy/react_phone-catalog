@@ -1,0 +1,100 @@
+@import '../../../../style/extends';
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  position: relative;
+
+  &__label {
+    @extend %small-text-12;
+
+    color: var(--text-secondary);
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--icon-bc-ar);
+    border-radius: 8px;
+    padding-inline: 12px;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include hover(border-color, var(--text-secondary));
+
+    &--active {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__buttonValue {
+    @extend %buttons;
+
+    color: var(--text-main);
+    line-height: normal;
+  }
+
+  &__arrow {
+    height: 16px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    color: var(--icon-bc-ar);
+    transition: transform $transition ease;
+
+    &--up {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__item {
+    height: 32px;
+    padding: 6px 12px;
+  }
+
+  &__menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    z-index: 5;
+
+    background-color: var(--main-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 15px 0 #0000000d;
+
+    transform: translateY(-10%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition ease;
+
+    &--open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__link {
+    @extend %body-text-14;
+
+    color: var(--text-secondary);
+    display: block;
+    height: 21px;
+
+    @include hover(color, var(--text-main));
+
+    &--active {
+      color: var(--text-main);
+    }
+  }
+}

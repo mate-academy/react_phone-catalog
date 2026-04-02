@@ -8,22 +8,11 @@
   flex-direction: column;
   gap: 8px;
   padding: 32px;
-  width: 212px;
-  height: 439px;
+  height: 100%;
   background-color: var(--card-bg);
   border: 1px solid var(--border);
 
   @include hover(box-shadow, 0 2px 15px var(--shasow-card));
-
-  @include on-tablet {
-    width: 237px;
-    height: 512px;
-  }
-
-  @include on-desktop {
-    width: 272px;
-    height: 506px;
-  }
 
   &__nameLink {
     @extend %body-text-14;

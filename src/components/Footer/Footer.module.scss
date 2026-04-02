@@ -93,3 +93,12 @@
     margin: auto;
   }
 }
+
+.container {
+  background-color: var(--page-bg);
+  width: 100%;
+
+  // @include on-desktop {
+  //   margin-top: 80px;
+  // }
+}

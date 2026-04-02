@@ -1,0 +1,44 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+
+.productPage {
+  @include content-padding-inline;
+
+  &__dropdownContainer {
+    margin-block: 32px 24px;
+
+    @include on-tablet {
+      margin-block: 40px 24px;
+    }
+
+    @include page-grid;
+  }
+
+  &__wraperSort {
+    grid-column: 1 / span 2;
+
+    @include on-tablet {
+      grid-column: 1 / span 4;
+    }
+  }
+
+  &__wraperPage {
+    grid-column: 3 / span 2;
+
+    @include on-tablet {
+      grid-column: 5 / span 3;
+    }
+  }
+
+  &__pagination {
+    padding-block: 24px 64px;
+
+    @include on-tablet {
+      padding-block: 40px 64px;
+    }
+
+    @include on-desktop {
+      padding-block: 40px 80px;
+    }
+  }
+}

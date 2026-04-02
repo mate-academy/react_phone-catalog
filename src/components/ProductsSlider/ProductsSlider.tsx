@@ -106,7 +106,9 @@ export const ProductsSlider: React.FC<Props> = ({
       <div className={style.slider__listContainer}>
         <div ref={listRef} className={style.slider__productsList}>
           {visibleProducts.map((product, index) => (
-            <ProductCard key={index} product={product} />
+            <div key={index} className={style.slider__cardContainer}>
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       </div>

@@ -35,4 +35,18 @@
       display: none;
     }
   }
+
+  &__error {
+    background-image: url('img/product-not-found.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    width: 100%;
+    height: 190px;
+
+    text-align: center;
+
+    @include content-padding-inline;
+
+  }
 }

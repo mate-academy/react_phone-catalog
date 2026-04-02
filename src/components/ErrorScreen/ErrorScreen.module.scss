@@ -1,0 +1,67 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+@import '../../style/extends';
+
+.error {
+  grid-column: 1 / -1;
+
+  @include content-padding-inline;
+  @include page-grid;
+
+
+  &__title {
+    @extend %h2;
+
+    margin-block: 24px 32px;
+    text-align: center;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / span 6;
+      align-self: center;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 12;
+    }
+  }
+
+  &__img {
+    grid-column: 1 / -1;
+    object-fit: contain;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 7 / span 6;
+    }
+
+    @include on-desktop {
+      grid-column: 13 / span 12;
+    }
+  }
+
+  &__button {
+    justify-self: center;
+    grid-column: 2 / span 2;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 32px;
+    background-color: transparent;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+
+
+    @extend %body-text-14;
+    @include hover(color, var(--text-secondary));
+
+    @include on-tablet {
+      grid-column: 6 / span 2;
+    }
+
+    @include on-desktop {
+      grid-column: 11 / span 2;
+    }
+  }
+}

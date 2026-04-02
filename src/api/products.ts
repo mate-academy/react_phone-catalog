@@ -7,6 +7,14 @@ export const getProducts = async () => {
   return allProducts;
 };
 
+export const getCategoryProducts = async (
+  category: CategoryTypes[keyof CategoryTypes],
+) => {
+  const all = await getProducts();
+
+  return all.filter(el => el.category === category);
+};
+
 export const getProductById = async (category: string, itemId: string) => {
   let path = '';
 

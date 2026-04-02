@@ -9,6 +9,28 @@ export enum PathType {
   CART = './cart',
 }
 
+export enum SortType {
+  AGE = 'age',
+  TITLE = 'title',
+  PRICE = 'price',
+}
+
+export enum PerPageType {
+  FOUR = '4',
+  EIGHT = '8',
+  SIXTEEN = '16',
+}
+
+export type SortOption = {
+  name: string;
+  value: SortType;
+};
+
+export type PerPageOption = {
+  name: string;
+  value: PerPageType | null;
+};
+
 // HOME = '/',
 //   PHONES = '/phones',
 //   TABLETS = '/tablets',

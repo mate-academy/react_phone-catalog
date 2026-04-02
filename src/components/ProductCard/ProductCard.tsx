@@ -18,14 +18,24 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   ];
   const productCardLink = `/product/${itemId}`;
 
+  const handleOnClick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <article className={style.productCard}>
-      <Link to={productCardLink} className={style.productCard__imageLink}>
+      <Link
+        to={productCardLink}
+        className={style.productCard__imageLink}
+        onClick={handleOnClick}
+      >
         <img className={style.productCard__img} src={image} alt={name} />
       </Link>
 
       <p className={style.productCard__name}>
-        <Link to={productCardLink} className={style.productCard__nameLink}>
+        <Link
+          to={productCardLink}
+          className={style.productCard__nameLink}
+          onClick={handleOnClick}
+        >
           {name}
         </Link>
       </p>

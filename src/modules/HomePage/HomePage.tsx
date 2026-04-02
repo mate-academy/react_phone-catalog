@@ -50,14 +50,26 @@ export const HomePage = () => {
         Welcome to Nice <br className={style.homePage__breake} />
         Gadgets store!
       </h2>
+
       <PicturesSlider />
+
       <ProductsSlider
         titleLine1="Brand new"
         titleLine2="models"
         products={brendNewProducts}
       />
+
+      {errorMessage && (
+        <div className={style.homePage__error}>{errorMessage}</div>
+      )}
+
       <ShopByCategory />
+
       <HotPrice title="Hot price" products={hotPriceProducts} />
+
+      {errorMessage && (
+        <div className={style.homePage__error}>{errorMessage}</div>
+      )}
     </div>
   );
 };
