@@ -57,6 +57,10 @@
   grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
   
   gap: 16px;
+
+  @media (max-width: 639px) {
+    margin: 0 16px;
+  }
 }
 
 .pagination{

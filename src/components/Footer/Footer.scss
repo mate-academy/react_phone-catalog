@@ -5,6 +5,12 @@
   color: #89939A;
   flex-shrink: 0;
   width: 100%;
+  margin-top: 80px;
+  border-top: 1px solid #e2e6e9;
+
+  @media (max-width: 639px) {
+    margin-top: 60px;
+  }
 
   &__logo{
     flex-grow: 1;

@@ -26,6 +26,10 @@ const prettyName = (seg: string) => {
     return 'Accessories';
   }
 
+  if (seg === 'favorites') {
+    return 'Favorites';
+  }
+
   return seg.charAt(0).toUpperCase() + seg.slice(1);
 };
 
@@ -45,7 +49,9 @@ export const Breadcrumbs: React.FC<Props> = ({
     const firstSegment = segments[0];
 
     // 1. Додаємо категорію (якщо це phones, tablets або accessories)
-    if (['phones', 'tablets', 'accessories'].includes(firstSegment)) {
+    if (
+      ['phones', 'tablets', 'accessories', 'favorites'].includes(firstSegment)
+    ) {
       crumbs.push({ label: prettyName(firstSegment), to: `/${firstSegment}` });
     } else if (firstSegment === 'product' && productCategory) {
       // Якщо URL починається з /product, але ми знаємо категорію з пропсів

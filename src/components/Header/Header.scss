@@ -1,100 +1,70 @@
+// Змінні для чистоти
+$color-border: #e2e6e9;
+$color-gray: #89939a;
+$color-black: #000;
+
 .header {
-  display: flex;
-  justify-content: space-between;
   position: sticky;
   top: 0;
-  background-color: white;
   z-index: 100000;
-
-  /* margin: 0 1rem; */
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom: 1px solid $color-border;
 
   &__logo {
     display: flex;
     align-items: center;
-    cursor: pointer;
     padding: 18px 24px;
+    cursor: pointer;
   }
 
   &__nav {
-    flex: 1;
     display: flex;
+    flex: 1;
     justify-content: flex-start;
     margin-left: 24px;
-
-    .menu {
-      padding: 0;
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 4rem;
-
-      font-family: Mont, sans-serif, serif;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #89939a;
-
-      // cursor: pointer;
-
-      &__item {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: #89939A;
-
-        &:hover{
-          color: #000;
-          cursor: pointer;
-       }
-      }
-
-      .active {
-        color: black;
-        position: relative;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background-color: black;
-        }
-      }
-    }
   }
 
   &__cart,
   &__favorites {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 24px;
+    box-shadow: -1px 0 0 $color-border;
+    transition: 0.3s ease-in-out;
     cursor: pointer;
-    position: relative;
-
-    /* border-left: 1px solid #e2e6e9; */
-    box-shadow: -1px 0 0 #e2e6e9;
 
     &:hover {
-      outline: 1px solid black;
+      transform: translateY(-3px);
+      box-shadow: -1px 1px 5px $color-border;
+    }
+
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-black;
     }
 
     &__count {
-      display: flex;
-      color: white;
-      font-size: 9px;
-      height: 14px;
-      width: 14px;
-      border-radius: 50%;
-      background-color: red;
       position: absolute;
       top: 20px;
       right: 20px;
+      display: flex;
       align-items: center;
       justify-content: center;
+      width: 14px;
+      height: 14px;
       border: 1px solid white;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+      font-size: 9px;
 
       @media (max-width: 1024px) {
         top: 10px;
@@ -108,6 +78,49 @@
   }
 }
 
+// Виносимо .menu, щоб уникнути занадто глибокої вкладеність
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 0;
+  list-style: none;
+  color: $color-gray;
+  font-family: Mont, sans-serif, serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $color-gray;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-black;
+      cursor: pointer;
+    }
+  }
+
+  .active {
+    position: relative;
+    color: $color-black;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-black;
+    }
+  }
+}
+
+// Медіа-запити для header та burger
 @media (min-width: 640px) and (max-width: 1024px) {
   .header {
     &__logo {
@@ -124,15 +137,15 @@
 
     &__cart,
     &__favorites {
-      padding: 16px;
       height: min-content;
+      padding: 16px;
     }
   }
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
   .header {
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $color-border;
 
     &__logo {
       padding: 13px 16px;
@@ -155,18 +168,13 @@
   .burger {
     display: block;
     padding: 16px;
-    outline: none;
     border: none;
-
-    /* border-left: 1px solid #e2e6e9; */
-    box-shadow: -1px 0 0 #e2e6e9;
+    outline: none;
+    box-shadow: -1px 0 0 $color-border;
     cursor: pointer;
 
     &:hover {
-      // outline: 1px solid black;
-      // border-bottom: 1px solid black;
-      // border-left: 1px solid black;
-      box-shadow: -1px 1px 0 black;
+      box-shadow: -1px 1px 0 $color-black;
     }
   }
 }
@@ -202,130 +210,146 @@
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   background: white;
   transform: translateY(100%);
   transition: transform 0.28s ease;
-  z-index: 100000;
-  display: flex;
-  flex-direction: column;
-}
 
-.mobile-menu--open {
-  transform: translateY(0);
-}
-
-.mobile-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 150;
-}
-
-.mobile-menu__top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  /* box-shadow: 0px 1px 0px #e2e6e9; */
-  border-bottom: 1px solid #e2e6e9;
-}
-
-.mobile-menu__title {
-  padding: 13px 16px;
-
-  img {
-    width: 64px;
-    height: 22px;
+  &--open {
+    transform: translateY(0);
   }
-}
 
-.mobile-menu__close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
-  padding: 16px;
-
-  /* border-left: 1px solid #e2e6e9; */
-  box-shadow: -1px 0 0 #e2e6e9;
-
-  &:hover {
-    // outline: 1px solid black;
-    // border-bottom: 1px solid black;
-    // border-left: 1px solid black;
-    box-shadow: -1px 1px 0 black;
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-border;
   }
-}
 
-.mobile-menu__nav {
-  flex: 1;
-  padding: 40px 20px;
-}
+  &__title {
+    padding: 13px 16px;
 
-.mobile-menu__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
+    img {
+      width: 64px;
+      height: 22px;
+    }
+  }
 
-  font-family: Mont, sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  color: #89939a;
-  text-transform: uppercase;
-
-  li {
+  &__close {
+    padding: 16px;
+    background: none;
+    border: none;
+    box-shadow: -1px 0 0 $color-border;
+    line-height: 1;
     cursor: pointer;
-    position: relative;
 
-    &:hover{
-      color: #000;
+    &:hover {
+      box-shadow: -1px 1px 0 $color-black;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    padding: 40px 20px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    color: $color-gray;
+    font-family: Mont, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    list-style: none;
+    text-transform: uppercase;
+
+    li {
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-black;
+      }
+
+      &.active {
+        color: $color-black;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $color-black;
+        }
+      }
     }
 
-    &.active {
-      color: black;
+    .active {
+      position: relative;
+      color: $color-black;
 
       &::after {
         content: '';
         position: absolute;
-        bottom: -4px;
+        bottom: -8px;
         left: 0;
         width: 100%;
         height: 2px;
-        background: black;
+        background-color: $color-black;
       }
     }
   }
-}
 
-.mobile-menu__bottom {
-  display: flex;
-  justify-content: center;
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -1px 0 $color-border;
+  }
 
-  /* border-top: 1px solid #e2e6e9; */
-  box-shadow: 0 -1px 0 #e2e6e9;
-
-  .mobile-menu__action {
+  &__action {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
     padding: 24px 72px;
-    box-shadow: -1px 0 0 #e2e6e9;
+    box-shadow: -1px 0 0 $color-border;
     cursor: pointer;
 
     &:hover {
-      outline: 1px solid black;
+      transform: none;
+      outline: 1px solid $color-black;
+    }
+
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-black;
+    }
+
+    .header__favorites__count,
+    .header__cart__count {
+      top: 20px;
+      right: 85px;
     }
   }
 }
 
-// .mobile-menu__action {
-//   cursor: pointer;
-//   padding: 8px;
-// }
-
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.4);
+}

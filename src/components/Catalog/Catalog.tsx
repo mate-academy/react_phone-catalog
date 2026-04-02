@@ -95,7 +95,8 @@ export const Catalog = ({ products, showFilters, infScroll }: Props) => {
     }
   };
 
-  const itemsPerPage = perPage === 'all' ? Infinity : Number(perPage);
+  const itemsPerPage = infScroll ? Infinity : Number(perPage);
+  // const itemsPerPage = perPage === 'all' ? Infinity : Number(perPage);
   const sorted = useMemo(
     () => sortProducts(products, sortVal),
     [products, sortVal],

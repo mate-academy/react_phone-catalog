@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { loadFavorites } from '../../services/favorites';
 import { Product } from '../../components/ProductCarousel';
 import { Catalog } from '../../components/Catalog';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const FavoritesPage = () => {
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
@@ -21,10 +22,9 @@ export const FavoritesPage = () => {
   return (
     <div className="grid">
       <div className="full-width">
-        <h1>Favorites</h1>
-        <p style={{ color: '#89939A', fontSize: '14px' }}>
-          {favorites.length} items
-        </p>
+        <Breadcrumbs />
+        <h1 className="page-title">Favorites</h1>
+        <p className="underTitle">{favorites.length} items</p>
       </div>
       <Catalog products={favorites} showFilters={false} infScroll={true} />
     </div>

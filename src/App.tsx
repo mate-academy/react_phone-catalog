@@ -18,6 +18,12 @@ export const App = () => {
 
   return (
     <div className="App">
+      <h1
+        className="item-12 full-width home-title"
+        style={{ visibility: 'hidden' }}
+      >
+        Product Catalog
+      </h1>
       <div className="app-wrapper">
         <Header />
 

@@ -123,12 +123,24 @@ export const Header: React.FC = () => {
           </ul>
         </nav>
 
-        <Link to={'/favorites'} className="header__favorites">
+        <Link
+          to={'/favorites'}
+          className={classNames(
+            'header__favorites',
+            pathname.includes('favorites') ? 'active' : '',
+          )}
+        >
           <div className="header__favorites__count">{favorites.length}</div>
           <img src={Favorites} alt="Favorites" />
         </Link>
 
-        <Link to={'/cart'} className="header__cart">
+        <Link
+          to={'/cart'}
+          className={classNames(
+            'header__cart',
+            pathname.includes('cart') ? 'active' : '',
+          )}
+        >
           <div className="header__cart__count">{cart.length}</div>
           <img src={Cart} alt="Cart" />
         </Link>
@@ -162,20 +174,79 @@ export const Header: React.FC = () => {
 
         <nav className="mobile-menu__nav">
           <ul className="mobile-menu__list">
-            <li className="active">HOME</li>
-            <li>PHONES</li>
-            <li>TABLETS</li>
-            <li>ACCESSORIES</li>
+            <Link
+              to="/"
+              className={classNames(
+                'menu__item',
+                pathname === '/' ? 'active' : '',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              HOME
+            </Link>
+            <Link
+              to="/phones"
+              className={classNames(
+                'menu__item',
+                pathname.includes('phones') ? 'active' : '',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              PHONES
+            </Link>
+            <Link
+              to="/tablets"
+              className={classNames(
+                'menu__item',
+                pathname.includes('tablets') ? 'active' : '',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              TABLETS
+            </Link>
+            <Link
+              to="/accessories"
+              className={classNames(
+                'menu__item',
+                pathname.includes('accessories') ? 'active' : '',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              ACCESSORIES
+            </Link>
           </ul>
         </nav>
 
         <div className="mobile-menu__bottom">
-          <div className="mobile-menu__action">
+          {/* <div className="mobile-menu__action">
             <img src={Favorites} alt="Favorites" />
           </div>
           <div className="mobile-menu__action">
             <img src={Cart} alt="Cart" />
-          </div>
+          </div> */}
+          <Link
+            to={'/favorites'}
+            className={classNames(
+              'header__favorites mobile-menu__action',
+              pathname.includes('favorites') ? 'active' : '',
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="header__favorites__count">{favorites.length}</div>
+            <img src={Favorites} alt="Favorites" />
+          </Link>
+
+          <Link
+            to={'/cart'}
+            className={classNames(
+              'header__cart mobile-menu__action',
+              pathname.includes('cart') ? 'active' : '',
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="header__cart__count">{cart.length}</div>
+            <img src={Cart} alt="Cart" />
+          </Link>
         </div>
       </aside>
 

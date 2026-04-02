@@ -46,3 +46,26 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.page-title {
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: #000;
+
+  @media (max-width: 639px) {
+    font-size: 32px;
+    margin: 0 16px;
+  }
+}
+
+.underTitle {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #89939A;
+
+  @media (max-width: 639px) {
+    margin: 0 16px;
+  }
+}
