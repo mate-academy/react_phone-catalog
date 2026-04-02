@@ -1,1 +1,65 @@
-// not empty
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+}
+
+:root {
+  --header-height: 64px;
+
+  --color-bg: #0f1121;
+  --color-surface: #0f1b2d;
+  --color-surface-2: #0c1626;
+
+  --color-text: #f1f2f9;
+  --color-muted: rgba(234, 242, 255, 0.65);
+
+  --color-accent: #F1F2F9;
+
+  --color-border: #3B3E4A;
+  --background-button-hover: #A378FF;
+  --background-button: #905BFF;
+  --color-button: #323542;
+  --color-text-grey: #75767F;
+
+  --radius: 16px;
+  --radius-lg: 20px;
+
+  --transition: 0.2s ease;
+
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+  body {
+    margin: 0;
+    font-family: 'Mont' sans-serif;
+    background: radial-gradient(1200px 600px at 50% -10%, transparent 60%),
+      var(--color-bg);
+    color: var(--color-text);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+}
+
+* {
+  outline: 1px silid red;
+}

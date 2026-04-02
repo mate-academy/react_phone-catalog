@@ -1,0 +1,57 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  display: block;
+  background: rgba(12, 22, 38, 0.65);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+
+  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.imageWrap {
+  overflow: hidden;
+  aspect-ratio: 3 / 3;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform var(--transition);
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.meta {
+  padding: 16px;
+}
+
+.cardTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.cardSubtitle {
+  margin: 0;
+  color: var(--color-muted);
+}

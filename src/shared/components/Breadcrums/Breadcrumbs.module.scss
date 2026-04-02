@@ -1,0 +1,30 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-size: 12px;
+  color: var(--color-text-grey);
+  margin-top: 25px;
+  align-items: center;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.homeIcon {
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.separator {
+  color: var(--color-text-grey);
+}
+
+.current {
+  color: var(--color-text-grey);
+}
+
+.link {
+  color: white;
+}
+

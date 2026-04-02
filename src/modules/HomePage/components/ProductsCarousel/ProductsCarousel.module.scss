@@ -1,0 +1,69 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.ctrl {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  background: #323542;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+
+    &:hover {
+    background: #4A4D58;
+  }
+
+    &:disabled {
+    border: 1px solid var(--color-border);
+    color: var(--color-border);
+    background: none;
+    cursor: default;
+  }
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+}
+
+.track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.track::-webkit-scrollbar-thumb {
+  background: rgba(90, 162, 255, 0.25);
+  border-radius: 999px;
+}
+
+.cardWrap {
+  flex: 0 0 272px;
+}

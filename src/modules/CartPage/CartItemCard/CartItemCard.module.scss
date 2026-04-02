@@ -1,0 +1,72 @@
+.item {
+  display: grid;
+  grid-template-columns: 32px 80px 1fr 120px 100px;
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px;
+  border: none;
+  margin-bottom: 16px;
+
+  background: #161827;
+}
+
+.remove {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #89939a;
+}
+
+.image {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.info {
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  background: #323542;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+
+    &:hover {
+    background: #4A4D58;
+  }
+
+    &:disabled {
+    border: 1px solid var(--color-border);
+    color: var(--color-border);
+    background: none;
+    cursor: default;
+  }
+}
+
+.quantity {
+  width: 24px;
+  text-align: center;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: right;
+}
