@@ -1,0 +1,78 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.slider {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+
+  @include media-up($breakpoint-tablet) {
+    aspect-ratio: 490 / 189;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.prev,
+.next {
+  @include flex-center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  display: none;
+  width: $spacing-xl;
+  background: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  @include media-up($breakpoint-tablet) {
+    display: flex;
+  }
+}
+
+.prev {
+  left: 0;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.next {
+  right: 0;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.dots {
+  @include flex-center;
+
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    background: $color-elements;
+    border-radius: 0;
+    opacity: 1;
+    transition: background $transition-base;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background: $color-primary;
+  }
+}
