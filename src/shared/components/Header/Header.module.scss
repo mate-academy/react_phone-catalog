@@ -37,6 +37,7 @@
 .nav {
   display: flex;
   gap: 64px;
+
   @media (max-width: 639px) {
     display: none;
   }
@@ -64,6 +65,7 @@
   @media (max-width: 639px) {
     display: none;
   }
+
   position: relative;
   width: 64px;
   height: var(--header-height);
@@ -79,12 +81,6 @@
  &.active {
   border-bottom: 3px solid var(--color-accent);
  }
-}
-
-
-.active {
-border-bottom: 3px solid var(--color-accent);
-color: var(--color-accent);
 }
 
 .badge {
@@ -127,7 +123,6 @@ color: var(--color-accent);
 
 .menu {
   position: fixed;
-  background: red;
   top: 0;
   left: 0;
   width: 100%;
@@ -174,8 +169,8 @@ color: var(--color-accent);
 }
 
 .active {
-border-bottom: 3px solid var(--color-accent);
-color: var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
+  color: var(--color-accent);
 }
 
 
