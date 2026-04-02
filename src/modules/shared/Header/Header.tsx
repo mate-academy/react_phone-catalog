@@ -81,16 +81,30 @@ export const Header = () => {
 
         <ul className={styles.headerActionsList}>
           <li className={styles.headerActionsItem}>
-            <Link to="/favorites" className={styles.headerActionsLink}>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                classNames(styles.headerActionsLink, {
+                  [styles.headerActionsLinkActive]: isActive,
+                })
+              }
+            >
               <span>Favorites</span>
               <img src={iconFavorites} alt="" aria-hidden="true" />
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.headerActionsItem}>
-            <Link to="/cart" className={styles.headerActionsLink}>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                classNames(styles.headerActionsLink, {
+                  [styles.headerActionsLinkActive]: isActive,
+                })
+              }
+            >
               <span>Cart</span>
               <img src={iconCart} alt="" aria-hidden="true" />
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
