@@ -27,7 +27,7 @@ export function Header() {
         <NavLink to="/" className="header__logo-link" aria-label="Home">
           <img
             className="header__logo"
-            src="/img/logo-2.png"
+            src={assetUrl('/img/logo-2.png')}
             alt="Nice Gadgets"
           />
         </NavLink>
@@ -58,7 +58,7 @@ export function Header() {
             }
             aria-label="Favourites"
           >
-            <img src={assetUrl(assetUrl('/icons/icon--favourites.svg'))} alt="" aria-hidden="true" />
+            <img src={assetUrl('/icons/icon--favourites.svg')} alt="" aria-hidden="true" />
             {favCount > 0 && (
               <span className="header__badge">{favCount}</span>
             )}
@@ -71,7 +71,7 @@ export function Header() {
             }
             aria-label="Cart"
           >
-            <img src={assetUrl(assetUrl('/icons/icon--empty-cart.svg'))} alt="" aria-hidden="true" />
+            <img src={assetUrl('/icons/icon--empty-cart.svg')} alt="" aria-hidden="true" />
             {cartCount > 0 && (
               <span className="header__badge">{cartCount}</span>
             )}
@@ -84,7 +84,7 @@ export function Header() {
             aria-expanded={menuOpen}
           >
             <img
-              src={menuOpen ? assetUrl(assetUrl('/icons/icon--close.svg')) : assetUrl(assetUrl('/icons/icon--burger-menu.svg'))}
+              src={menuOpen ? assetUrl('/icons/icon--close.svg') : assetUrl('/icons/icon--burger-menu.svg')}
               alt=""
               aria-hidden="true"
             />

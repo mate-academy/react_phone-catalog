@@ -81,7 +81,7 @@ export const ProductCard = ({ product }: Props) => {
           >
             <img
               className="card__button-like-icon"
-              src={isFavourite ? assetUrl(assetUrl('/icons/icon--favourites-filled.svg')) : assetUrl(assetUrl('/icons/icon--favourites.svg'))}
+              src={isFavourite ? assetUrl('/icons/icon--favourites-filled.svg') : assetUrl('/icons/icon--favourites.svg')}
               alt=""
             />
           </button>

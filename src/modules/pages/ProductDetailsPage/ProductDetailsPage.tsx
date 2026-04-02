@@ -191,7 +191,7 @@ export function ProductDetailsPage() {
               aria-label={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
             >
               <img
-                src={isFavourite ? assetUrl(assetUrl('/icons/icon--favourites-filled.svg')) : assetUrl(assetUrl('/icons/icon--favourites.svg'))}
+                src={isFavourite ? assetUrl('/icons/icon--favourites-filled.svg') : assetUrl('/icons/icon--favourites.svg')}
                 alt=""
               />
             </button>
