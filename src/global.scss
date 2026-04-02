@@ -1,0 +1,48 @@
+@use './styles/reset';
+@use './styles/variables' as *;
+
+// =============================================================================
+// @font-face declarations
+// =============================================================================
+
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mont-SemiBold';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mont-Regular';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// =============================================================================
+// Base
+// =============================================================================
+
+body {
+  background-color: $color-black;
+  color: $color-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

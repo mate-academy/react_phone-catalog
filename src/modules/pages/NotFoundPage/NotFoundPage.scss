@@ -1,0 +1,18 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.not-found-page {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  &__link {
+    @include text-style($button-text);
+    color: $color-accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

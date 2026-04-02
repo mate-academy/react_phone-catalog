@@ -1,0 +1,231 @@
+// =============================================================================
+// _variables.scss — Design Tokens
+// Single source of truth for all visual constants.
+// Import in every component SCSS: @use '../../styles/variables' as *;
+// (adjust relative path to match file depth)
+// =============================================================================
+
+@use 'sass:color';
+
+// =============================================================================
+// FONTS
+// =============================================================================
+
+$font-bold:     'Mont-Bold',     sans-serif;
+$font-semibold: 'Mont-SemiBold', sans-serif;
+$font-regular:  'Mont-Regular',  sans-serif;
+
+// =============================================================================
+// COLOR PALETTE — Dark Theme
+// =============================================================================
+
+// --- Backgrounds & Surfaces ---
+$color-black:     #0f0f1a; // page background
+$color-surface-1: #181827; // cards, panels, hover rows
+$color-surface-2: #232334; // dropdowns, disabled button bg, inputs
+
+// --- UI Chrome ---
+$color-elements:  #3b3e4a; // borders, dividers, selected button bg, slider tracks
+$color-icons:     #4a4d65; // default icon fill
+$color-secondary: #75737f; // secondary text, placeholders, disabled text
+
+// --- Text ---
+$color-white: #f1f3f9; // primary text, icon hover, button text on dark bg
+
+// --- Accent ---
+$color-accent: #905bff; // purple accent — links, active indicators, focus rings
+$color-accent-light: #a378ff; // lighter purple for hover states on accent
+
+// --- Semantic ---
+$color-green: #37a640; // success, "added to cart" confirmation
+$color-red:   #e85157; // error, sale/discount badge, destructive actions
+
+// =============================================================================
+// BUTTON STATES
+// =============================================================================
+
+$btn-primary-bg:    #7c4dff;
+$btn-primary-text:  $color-white;
+$btn-primary-hover: color.adjust(#7c4dff, $lightness: 5%);
+
+$btn-selected-bg:   $color-elements;
+$btn-selected-text: $color-white;
+
+$btn-disabled-bg:   $color-surface-2;
+$btn-disabled-text: $color-secondary;
+
+// =============================================================================
+// TYPOGRAPHY — Size / Line-height maps
+// Used with: @include text-style($map)  (defined in _mixins.scss)
+// =============================================================================
+
+// --- Desktop / Tablet ---
+$h1-desktop: (
+  font-family:    $font-bold,
+  size:           48px,
+  line-height:    56px,
+  letter-spacing: -0.01em,
+);
+
+$h2-desktop: (
+  font-family:    $font-bold,
+  size:           32px,
+  line-height:    44px,
+  letter-spacing: -0.01em,
+);
+
+$h3-desktop: (
+  font-family:    $font-bold,
+  size:           24px,
+  line-height:    31px,
+);
+
+$h4-desktop: (
+  font-family:    $font-semibold,
+  size:           20px,
+  line-height:    26px,
+);
+
+// --- Mobile ---
+$h1-mobile: (
+  font-family:    $font-bold,
+  size:           32px,
+  line-height:    40px,
+  letter-spacing: -0.01em,
+);
+
+$h2-mobile: (
+  font-family:    $font-bold,
+  size:           24px,
+  line-height:    31px,
+);
+
+$h3-mobile: (
+  font-family:    $font-semibold,
+  size:           20px,
+  line-height:    26px,
+);
+
+$h4-mobile: (
+  font-family:    $font-semibold,
+  size:           16px,
+  line-height:    20px,
+);
+
+// --- Body / UI ---
+$body-text: (
+  font-family: $font-regular,
+  size:        14px,
+  line-height: 21px,
+);
+
+$button-text: (
+  font-family: $font-semibold,
+  size:        14px,
+  line-height: 21px,
+);
+
+$small-text: (
+  font-family: $font-semibold,
+  size:        12px,
+  line-height: 15px,
+);
+
+$uppercase-label: (
+  font-family:    $font-bold,
+  size:           12px,
+  line-height:    17px,
+  letter-spacing: 0.04em,
+);
+
+// =============================================================================
+// SPACING SCALE
+// =============================================================================
+
+// --- Layout padding (inline / horizontal) ---
+$padding-desktop: 152px;
+$padding-tablet:   24px;
+$padding-mobile:   16px;
+
+// --- Vertical gap between page sections ---
+$gap-desktop: 80px;
+$gap-tablet:  64px;
+$gap-mobile:  32px;
+
+// --- Component-level spacing ---
+$spacing-xs:  4px;
+$spacing-sm:  8px;
+$spacing-md:  16px;
+$spacing-lg:  24px;
+$spacing-xl:  32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+$spacing-4xl: 80px;
+
+// =============================================================================
+// GRID
+// =============================================================================
+
+$grid-gutter:          16px;
+
+$grid-cols-mobile:      4;
+$grid-cols-tablet:     12;
+$grid-cols-desktop:    24;
+
+// =============================================================================
+// BORDER RADIUS
+// =============================================================================
+
+$radius-sm:    4px;  // tags, badges, small chips
+$radius-md:    8px;  // cards, buttons, inputs
+$radius-lg:   16px;  // modals, large panels
+$radius-full: 50%;   // circular icon buttons, color swatches
+
+// =============================================================================
+// SHADOWS
+// =============================================================================
+
+// Cards lift on hover (dark theme — shadow is subtle)
+$shadow-card:  0 2px 12px rgba(0, 0, 0, 0.4);
+$shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+// Focused interactive elements
+$shadow-focus: 0 0 0 2px $color-accent;
+
+// =============================================================================
+// TRANSITIONS
+// =============================================================================
+
+$transition-fast:   150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow:   400ms ease;
+
+// =============================================================================
+// Z-INDEX SCALE
+// =============================================================================
+
+$z-dropdown:  100;
+$z-header:    200;
+$z-burger:    300;
+$z-modal:     400;
+$z-toast:     500;
+
+// =============================================================================
+// DROPDOWNS (reused across Dropdown + Select components)
+// =============================================================================
+
+$dropdown-bg:       $color-surface-2;
+$dropdown-border:   $color-elements;
+$dropdown-hover-bg: $color-elements;
+$dropdown-text:     $color-white;
+$dropdown-radius:   $radius-md;
+
+// =============================================================================
+// PRODUCT CARD
+// =============================================================================
+
+$card-bg:           $color-surface-1;
+$card-border:       $color-elements;
+$card-border-hover: $color-white;
+$card-radius:       $radius-md;
+$card-padding:      $spacing-md;

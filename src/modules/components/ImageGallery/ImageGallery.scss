@@ -1,0 +1,81 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.image-gallery {
+  display: flex;
+  gap: $spacing-md;
+
+  @include phone {
+    flex-direction: column-reverse;
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    flex-shrink: 0;
+
+    @include phone {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__thumb {
+    width: 80px;
+    height: 80px;
+    padding: $spacing-xs;
+    border: 1px solid $color-elements;
+    border-radius: $radius-md;
+    background: $color-surface-1;
+    cursor: pointer;
+    transition: border-color $transition-fast;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include phone {
+      width: 50px;
+      height: 50px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &--active {
+      border-color: $color-white;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    background: $color-surface-1;
+    min-height: 300px;
+
+    @include tablet {
+      min-height: 400px;
+    }
+
+    @include desktop-big {
+      min-height: 460px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 460px;
+      object-fit: contain;
+    }
+  }
+}

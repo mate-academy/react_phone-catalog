@@ -1,0 +1,33 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.empty-state {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-4xl $spacing-md;
+  text-align: center;
+
+  &__image {
+    width: 160px;
+    height: auto;
+    opacity: 0.8;
+  }
+
+  &__title {
+    @include text-style($h3-desktop);
+    color: $color-white;
+    margin: 0;
+
+    @include phone {
+      @include text-style($h3-mobile);
+    }
+  }
+
+  &__description {
+    @include text-style($body-text);
+    color: $color-secondary;
+    margin: 0;
+    max-width: 320px;
+  }
+}

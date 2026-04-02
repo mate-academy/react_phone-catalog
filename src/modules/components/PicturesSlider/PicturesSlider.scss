@@ -1,0 +1,74 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.pictures-slider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+
+  &__btn {
+    flex-shrink: 0;
+    width: 32px;
+    background: $color-surface-2;
+    color: $color-white;
+    border: 1px solid $color-elements;
+    border-radius: $radius-sm;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background $transition-fast,
+      border-color $transition-fast;
+    z-index: 2;
+
+    &:hover {
+      background: $color-elements;
+      border-color: $color-white;
+    }
+  }
+
+  &__track {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1040 / 400;
+    object-fit: cover;
+    display: block;
+    border-radius: $radius-sm;
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: $spacing-sm;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $spacing-xs;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border-radius: 2px;
+    background: $color-elements;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $color-secondary;
+    }
+
+    &--active {
+      background: $color-white;
+    }
+  }
+}
