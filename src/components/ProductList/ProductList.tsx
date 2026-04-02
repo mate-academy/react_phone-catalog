@@ -12,9 +12,7 @@ export const ProductList: React.FC<Props> = ({ products, className }) => {
   return (
     <div className={className}>
       {products.map(product => (
-        <ProductCard
-          key={product.id}
-          product={product} />
+        <ProductCard key={product.itemId} product={product} />
       ))}
     </div>
   );

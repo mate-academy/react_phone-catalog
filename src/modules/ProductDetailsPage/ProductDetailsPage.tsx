@@ -7,9 +7,9 @@ import { getProducts, getProductById } from '../../components/api/products';
 import { ProductCard } from '../../components/ProductList/ProductCard';
 import { useFavourites } from '../../context/FavouriteContext';
 import { useCart } from '../../context/CartContext';
-import { getCarouselStep } from '../../utils/carouselHelpers';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -22,6 +22,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<string>('');
   const [numericId, setNumericId] = useState<number | string>('');
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const navigate = useNavigate();
 
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
@@ -51,132 +53,29 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+useEffect(() => {
+  if (!productId) return;
 
-  const [recommendedOffset, setRecommendedOffset] = useState(0);
-  const recommendedRef = useRef<HTMLDivElement>(null);
+  setIsLoading(true);
+  setIsError(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
+  Promise.all([getProductById(productId), getProducts()])
+    .then(([data, all]) => {
+      if (!data) {
+        setIsError(true);
+        return;
+      }
 
-  console.log(recommendedOffset);
+      setProduct(data);
+      setSelectedPhoto(data.images?.[0] || '');
+      setAllProducts(all);
 
-  useEffect(() => {
-    if (productId) {
-      setRecommendedOffset(0);
-      setIsLoading(true);
-      setIsError(false);
-
-      getProductById(productId)
-        .then(data => {
-          if (data) {
-            setProduct(data);
-            setSelectedPhoto(data.images?.[0] || '');
-
-            getProducts().then(allProducts => {
-              const found = allProducts.find(p => p.itemId === productId);
-              if (found) setNumericId(String(found.id));
-
-              const random = allProducts
-                .filter(
-                  p => p.category === data.category && p.itemId !== productId,
-                )
-                .sort(() => 0.5 - Math.random())
-                .slice(0, 10);
-              setRecommendedProducts(random);
-            });
-          } else {
-            setIsError(true);
-          }
-        })
-        .catch(() => setIsError(true))
-        .finally(() => setIsLoading(false));
-    }
-  }, [productId]);
-
-  useEffect(() => {
-    if (product?.category) {
-      getProducts().then(allProducts => {
-        const random = allProducts
-          .filter(p => p.category === product.category && p.id !== product.id)
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 8);
-        setRecommendedProducts(random);
-      });
-    }
-  }, [product?.id]);
-
-  //const getStep = () => {
-   // if (!listRef.current) return 288;
-   // const card = listRef.current.firstElementChild as HTMLElement;
-  //  return card ? card.offsetWidth + 16 : 288;
-  //};
-
-  //const step = 272 + 16;
-
-  const handleNext = () => {
-    if (!containerRef.current || !listRef.current) return;
-
-    const step = getCarouselStep(listRef);
-
-    const containerWidth = containerRef.current.offsetWidth;
-    const scrollWidth = listRef.current.scrollWidth;
-
-    setRecommendedOffset(prev => {
-      const maxOffset = scrollWidth - containerWidth;
-      const nextOffset = prev + step;
-      return nextOffset > maxOffset ? maxOffset : nextOffset;
-    });
-  };
-
-  const handlePrev = () => {
-    if (!listRef.current) return;
-    const step = getCarouselStep(listRef);
-    setRecommendedOffset(prev => Math.max(0, prev - step));
-  };
-
-  const isNextDisabled = () => {
-    if (
-      !containerRef.current ||
-      !listRef.current ||
-      recommendedProducts.length === 0
-    ) {
-      return true;
-    }
-
-    const containerWidth = containerRef.current.offsetWidth;
-    const scrollWidth = listRef.current.scrollWidth;
-
-    return recommendedOffset >= scrollWidth - containerWidth - 5;
-  };
-
-  const renderDescription = () => {
-    if (!product?.description) return null;
-
-    return product.description.map((section, idx) => (
-      <div key={idx} className={styles.descriptionSection}>
-        <h3 className={styles.descriptionTitle}>{section.title}</h3>
-        {section.text.map((paragraph, pIdx) => (
-          <p key={pIdx} className={styles.descriptionText}>
-            {paragraph}
-          </p>
-        ))}
-      </div>
-    ));
-  };
-
-  const getNewIdByColor = (newColor: string) => {
-    if (!product) return '';
-    const idParts = product.id.split('-');
-    idParts[idParts.length - 1] = newColor.toLowerCase().replace(' ', '-');
-    return idParts.join('-');
-  };
-
-  const getNewIdByCapacity = (newCapacity: string) => {
-    if (!product) return '';
-    const idParts = product.id.split('-');
-    idParts[idParts.length - 2] = newCapacity.toLowerCase();
-    return idParts.join('-');
-  };
+      const found = all.find(p => p.itemId === productId);
+      if (found) setNumericId(String(found.id));
+    })
+    .catch(() => setIsError(true))
+    .finally(() => setIsLoading(false));
+}, [productId]);
 
   if (isLoading) return <Loader />;
 
@@ -258,7 +157,18 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.about}>
             <h2 className={styles.subtitle}>About</h2>
-            <div className={styles.description}>{renderDescription()}</div>
+            <div className={styles.description}>
+              {product.description?.map((section, idx) => (
+                <div key={idx} className={styles.descriptionSection}>
+                  <h3 className={styles.descriptionTitle}>{section.title}</h3>
+                  {section.text.map((paragraph, pIdx) => (
+                    <p key={pIdx} className={styles.descriptionText}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className={styles.productActions}>
@@ -272,9 +182,19 @@ export const ProductDetailsPage: React.FC = () => {
 
               <div className={styles.colors}>
                 {product.colorsAvailable.map(colorName => (
-                  <Link
-                    key={colorName}
-                    to={`/${product.category}/${getNewIdByColor(colorName)}`}
+                  <button
+                    key={`color-${colorName}`}
+                    onClick={() => {
+                      const target = allProducts.find(
+                        p =>
+                          p.id === product.id &&
+                          p.color === colorName &&
+                          p.capacity === product.capacity,
+                      );
+                      if (target) {
+                        navigate(`/${target.category}/${target.itemId}`);
+                      }
+                    }}
                     className={`${styles.colorCircle} ${product.color === colorName ? styles.activeColor : ''}`}
                     style={{
                       backgroundColor: colorMap[colorName] || colorName,
@@ -288,13 +208,23 @@ export const ProductDetailsPage: React.FC = () => {
               <p className={`${styles.label} label-text`}>Select capacity</p>
               <div className={styles.capacityList}>
                 {product.capacityAvailable.map(cap => (
-                  <Link
-                    key={cap}
-                    to={`/${product.category}/${getNewIdByCapacity(cap)}`}
+                  <button
+                    key={`capacity-${cap}`}
+                    onClick={() => {
+                      const target = allProducts.find(
+                        p =>
+                          p.id === product.id &&
+                          p.capacity === cap &&
+                          p.color === product.color,
+                      );
+                      if (target) {
+                        navigate(`/${target.category}/${target.itemId}`);
+                      }
+                    }}
                     className={`${styles.capacityItem} ${product.capacity === cap ? styles.activeCapacity : ''}`}
                   >
                     {cap}
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>

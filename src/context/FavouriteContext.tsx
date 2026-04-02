@@ -26,10 +26,13 @@ export const FavouritesProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [favourites]);
 
   const addToFavourites = (product: Product) => {
-    if (!favourites.some(item => item.itemId === product.itemId)) {
-      setFavourites(prev => [...prev, product]);
-    }
+    setFavourites(prev => {
+      const exists = prev.some(item => item.itemId === product.itemId);
 
+      if (exists) return prev;
+
+      return [...prev, product];
+    });
   };
 
   const removeFromFavourites = (productId: string | number) => {
