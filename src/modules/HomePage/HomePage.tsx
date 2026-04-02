@@ -6,7 +6,9 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>Product Catalog</h1>
+      <h1 className={styles.hiddenTitle}>Product Catalog</h1>
+      <h2 className={styles.pageTitle}>Welcome to Nice Gadgets store!</h2>
+
       <WelcomeSlider />
       <ProductsSlider title="Hot prices" />
       <ShopByCategory />
