@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { clearCart } from '../../../store/cartSlice';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -21,7 +22,7 @@ export function CartPage() {
       <div className="cart-page">
         <Breadcrumbs items={[{ label: 'Cart' }]} />
         <EmptyState
-          imageSrc="/img/cart-is-empty.png"
+          imageSrc={assetUrl('/img/cart-is-empty.png')}
           title="Your cart is empty"
           description="Add some products to get started."
         />

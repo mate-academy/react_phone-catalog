@@ -1,8 +1,9 @@
 import type { Category, Product, ProductDetails } from '../types';
 
-const BASE = '/api';
+const BASE = `${import.meta.env.BASE_URL}api`;
 
-const toAbsolute = (p: string) => (p.startsWith('/') ? p : `/${p}`);
+const toAbsolute = (p: string) =>
+  `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`;
 
 export async function fetchAllProducts(): Promise<Product[]> {
   const response = await fetch(`${BASE}/products.json`);

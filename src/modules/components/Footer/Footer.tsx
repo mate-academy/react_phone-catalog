@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 
@@ -17,7 +18,7 @@ export function Footer() {
       <Link to="/" className="footer__logo-link" aria-label="Home">
         <img
           className="footer__logo"
-          src="/img/logo-2.png"
+          src={assetUrl('/img/logo-2.png')}
           alt="Nice Gadgets"
         />
       </Link>

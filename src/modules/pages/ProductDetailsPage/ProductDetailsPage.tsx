@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchAllProducts, fetchProductById } from '../../../api/fetchProducts';
@@ -190,7 +191,7 @@ export function ProductDetailsPage() {
               aria-label={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
             >
               <img
-                src={isFavourite ? '/icons/icon--favourites-filled.svg' : '/icons/icon--favourites.svg'}
+                src={isFavourite ? assetUrl(assetUrl('/icons/icon--favourites-filled.svg')) : assetUrl(assetUrl('/icons/icon--favourites.svg'))}
                 alt=""
               />
             </button>

@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { addToCart } from '../../../store/cartSlice';
@@ -80,7 +81,7 @@ export const ProductCard = ({ product }: Props) => {
           >
             <img
               className="card__button-like-icon"
-              src={isFavourite ? '/icons/icon--favourites-filled.svg' : '/icons/icon--favourites.svg'}
+              src={isFavourite ? assetUrl(assetUrl('/icons/icon--favourites-filled.svg')) : assetUrl(assetUrl('/icons/icon--favourites.svg'))}
               alt=""
             />
           </button>

@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../../store';
@@ -62,7 +63,7 @@ export function BurgerMenu({ isOpen, onClose }: Props) {
             onClick={onClose}
             aria-label="Favourites"
           >
-            <img src="/icons/icon--favourites.svg" alt="" aria-hidden="true" />
+            <img src={assetUrl('/icons/icon--favourites.svg')} alt="" aria-hidden="true" />
             {favCount > 0 && (
               <span className="burger-menu__badge">{favCount}</span>
             )}
@@ -74,7 +75,7 @@ export function BurgerMenu({ isOpen, onClose }: Props) {
             onClick={onClose}
             aria-label="Cart"
           >
-            <img src="/icons/icon--empty-cart.svg" alt="" aria-hidden="true" />
+            <img src={assetUrl('/icons/icon--empty-cart.svg')} alt="" aria-hidden="true" />
             {cartCount > 0 && (
               <span className="burger-menu__badge">{cartCount}</span>
             )}

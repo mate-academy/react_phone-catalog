@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { useAppSelector } from '../../../store';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { EmptyState } from '../../components/EmptyState';
@@ -15,7 +16,7 @@ export function FavouritesPage() {
 
       {items.length === 0 ? (
         <EmptyState
-          imageSrc="/img/product-not-found.png"
+          imageSrc={assetUrl('/img/product-not-found.png')}
           title="No favourites yet"
           description="Add products to your favourites to see them here."
         />

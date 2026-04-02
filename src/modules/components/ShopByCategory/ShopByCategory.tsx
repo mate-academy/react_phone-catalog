@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { Link } from 'react-router-dom';
 import './ShopByCategory.scss';
 
@@ -18,7 +19,7 @@ export const ShopByCategory = ({ counts }: Props) => {
         <Link to="/phones" className="shop-by-category__item">
           <img
             className="shop-by-category__image"
-            src="/img/category-phones.webp"
+            src={assetUrl('/img/category-phones.webp')}
             alt="Mobile phones"
           />
           <h4 className="shop-by-category__name">Mobile phones</h4>
@@ -28,7 +29,7 @@ export const ShopByCategory = ({ counts }: Props) => {
         <Link to="/tablets" className="shop-by-category__item">
           <img
             className="shop-by-category__image"
-            src="/img/category-tablets.webp"
+            src={assetUrl('/img/category-tablets.webp')}
             alt="Tablets"
           />
           <h4 className="shop-by-category__name">Tablets</h4>
@@ -38,7 +39,7 @@ export const ShopByCategory = ({ counts }: Props) => {
         <Link to="/accessories" className="shop-by-category__item">
           <img
             className="shop-by-category__image"
-            src="/img/category-accessories.webp"
+            src={assetUrl('/img/category-accessories.webp')}
             alt="Accessories"
           />
           <h4 className="shop-by-category__name">Accessories</h4>

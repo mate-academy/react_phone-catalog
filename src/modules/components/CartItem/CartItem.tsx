@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../store';
 import {
@@ -23,7 +24,7 @@ export function CartItem({ item }: Props) {
         onClick={() => dispatch(removeFromCart(product.itemId))}
         aria-label="Remove from cart"
       >
-        <img src="/icons/icon--close.svg" alt="" />
+        <img src={assetUrl('/icons/icon--close.svg')} alt="" />
       </button>
 
       <img

@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../../store';
@@ -57,7 +58,7 @@ export function Header() {
             }
             aria-label="Favourites"
           >
-            <img src="/icons/icon--favourites.svg" alt="" aria-hidden="true" />
+            <img src={assetUrl(assetUrl('/icons/icon--favourites.svg'))} alt="" aria-hidden="true" />
             {favCount > 0 && (
               <span className="header__badge">{favCount}</span>
             )}
@@ -70,7 +71,7 @@ export function Header() {
             }
             aria-label="Cart"
           >
-            <img src="/icons/icon--empty-cart.svg" alt="" aria-hidden="true" />
+            <img src={assetUrl(assetUrl('/icons/icon--empty-cart.svg'))} alt="" aria-hidden="true" />
             {cartCount > 0 && (
               <span className="header__badge">{cartCount}</span>
             )}
@@ -83,7 +84,7 @@ export function Header() {
             aria-expanded={menuOpen}
           >
             <img
-              src={menuOpen ? '/icons/icon--close.svg' : '/icons/icon--burger-menu.svg'}
+              src={menuOpen ? assetUrl(assetUrl('/icons/icon--close.svg')) : assetUrl(assetUrl('/icons/icon--burger-menu.svg'))}
               alt=""
               aria-hidden="true"
             />

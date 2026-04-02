@@ -1,3 +1,4 @@
+import { assetUrl } from '../../../utils/url';
 import { useEffect, useState } from 'react';
 import { fetchAllProducts } from '../../../api/fetchProducts';
 import { HotPrices } from '../../components/HotPrices';
@@ -8,9 +9,9 @@ import type { Product } from '../../../types';
 import './HomePage.scss';
 
 const slides = [
-  { image: '/img/banner-accessories.png', alt: 'Accessories' },
-  { image: '/img/banner-phones.png', alt: 'Phones' },
-  { image: '/img/banner-tablets.png', alt: 'Tablets' },
+  { image: assetUrl('/img/banner-accessories.png'), alt: 'Accessories' },
+  { image: assetUrl('/img/banner-phones.png'), alt: 'Phones' },
+  { image: assetUrl('/img/banner-tablets.png'), alt: 'Tablets' },
 ];
 
 export const HomePage = () => {
