@@ -111,22 +111,24 @@ export const ProductPage = () => {
         clearFilters={clearFilters}
       />
 
-      <div className={styles.content}>
-        {isLoading ? (
-          Array.from({ length: 16 }).map((_, i) => <CardSkeleton key={i} />)
-        ) : filteredItems().length === 0 ? (
-          <div className={styles.empty}>
-            <h2 className={styles.empty__title}>:(</h2>
-            <p className={styles.empty__subtitle}>
-              There are no {category} yet
-            </p>
-          </div>
-        ) : (
-          filteredItems().map(product => {
+      {isLoading ? (
+        <div className={styles.content}>
+          {Array.from({ length: 16 }).map((_, i) => <CardSkeleton key={i} />)}
+        </div>
+      ) : filteredItems().length === 0 ? (
+        <div className={styles.empty}>
+          <h2 className={styles.empty__title}>:(</h2>
+          <p className={styles.empty__subtitle}>
+            There are no {category} yet
+          </p>
+        </div>
+      ) : (
+        <div className={styles.content}>
+          {filteredItems().map(product => {
             return <ProductCard product={product} key={product.id} />;
-          })
-        )}
-      </div>
+          })}
+        </div>
+      )}
 
       {perPage !== null && (
         <div className={styles.footer}>
