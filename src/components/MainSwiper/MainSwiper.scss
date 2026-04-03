@@ -1,0 +1,158 @@
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+
+.main-swiper {
+ width: 100%;
+  height: 100%;
+  grid-column: 1 / -1;
+  position: relative;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 3px;
+  border-radius: 0;
+  background-color: white;
+  opacity: 0.7;
+  margin: 0 4px;
+  transition: all 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: black;
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 400px;
+  background: #0b0d17;
+
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  color: white;
+
+}
+
+.custom-prev {
+  background-image: url('../../../public/img/icons/icon--slider--left.png');
+  margin-right: 16px;
+}
+
+.custom-next {
+  background-image: url('../../../public/img/icons/icon--slider--right.png');
+}
+
+
+.custom-prev,
+  .custom-next {
+    position: absolute;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    background-color: transparent;
+  border: none;
+  padding: 0;
+   width: 40px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+.custom-prev {
+    left: 10px;
+  }
+
+.custom-next {
+    right: 10px;
+  }
+
+.slide__content--1 {
+  width: 50%;
+  height: 100%;
+  border-radius: 24px;
+  background: #0F172A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide__content--2 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide__title--1 {
+  font-size: 28px;
+    color: #8b5cf6;
+    margin-bottom: 10px;
+}
+
+.slide__title--2 {
+color: white;
+font-size: 28px;
+}
+
+.slide__text--1 {
+   margin-bottom: 20px;
+    opacity: 0.8;
+    color: white;
+}
+
+.slide__text--2 {
+  color: white;
+}
+
+.slide__button {
+   padding: 12px 24px;
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slide__button:hover {
+   border: 2px solid #444;
+      color: black;
+}
+
+.slide__image {
+    height: 100px;
+    object-fit: contain;
+}

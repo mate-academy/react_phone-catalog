@@ -4,10 +4,13 @@ import Logo from '../../../public/img/Logo/Logo.png';
 import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
+import { Product } from '../../types/Product';
+import { useLocalStorage } from '../../api';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [favorites] = useLocalStorage<Product[]>('favorites', []);
 
   const isPhones = location.pathname.startsWith('/phones');
   const isTablets = location.pathname.startsWith('/tablets');
@@ -61,7 +64,11 @@ const Header = () => {
         </div>
         <div className="header__right">
           <div className="top-bar__icons">
-            <Link to="/heart" className="icon icon--heart"></Link>
+            <Link to="/heart" className="icon icon--heart">
+              {favorites.length > 0 && (
+                <span className="icon--badge">{favorites.length}</span>
+              )}
+            </Link>
             <Link to="/basket" className="icon icon--basket"></Link>
             <button
               className="icon icon--menu"

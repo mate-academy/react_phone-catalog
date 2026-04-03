@@ -8,6 +8,7 @@ import { getAccessories } from '../../api';
 import { getPhones } from '../../api';
 import { getTablets } from '../../api';
 import { Link } from 'react-router-dom';
+import Swiper from '../../components/MainSwiper/MainSwiper';
 
 type Counts = {
   phones: number;
@@ -37,12 +38,17 @@ const Main = () => {
   return (
     <div className="main">
       <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
+      <Swiper />
       <h2 className="second__title">Brand new models</h2>
       <div className="category__section">
         <h2 className="second__title">Shop by category</h2>
         <div className="categories">
           <div className="category">
-            <Link to="/phones">
+            <Link to="/phones" className="category__image-wrapper">
+              <Link
+                to="/phones"
+                className="category__background--purple"
+              ></Link>
               <img src={Phonecategory} alt="" className="category__banner" />
             </Link>
             <h3 className="category__text">Mobile phones</h3>
@@ -51,7 +57,8 @@ const Main = () => {
             )}
           </div>
           <div className="category">
-            <Link to="/tablets">
+            <Link to="/phones" className="category__image-wrapper">
+              <Link to="/tablets" className="category__background--gray"></Link>
               <img src={Tabletcategory} alt="" className="category__banner" />
             </Link>
             <h3 className="category__text">Tablets</h3>
@@ -60,7 +67,11 @@ const Main = () => {
             )}
           </div>
           <div className="category">
-            <Link to="/accessories">
+            <Link to="/phones" className="category__image-wrapper">
+              <Link
+                to="/accessories"
+                className="category__background--rose"
+              ></Link>
               <img
                 src={Accessorycategory}
                 alt=""
