@@ -2,15 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
+import { useShop } from '../../../../store/ShopContext';
 
 type Props = {
   openMenu: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
+  const { carts, favourites } = useShop();
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
+
+  const totalQuantity = carts.reduce((sum, item) => {
+    return sum + item.quantity;
+  }, 0);
+
+  const totalFavourites = favourites.length;
 
   return (
     <>
@@ -57,9 +65,17 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
         <div className={styles.actions}>
           <Link to="/favourites" className={styles.actionsLink}>
             <img src="/img/icon/favourites-logo.svg" alt="Favourites" />
+
+            {totalFavourites > 0 && (
+              <span className={styles.cartBadge}>{totalFavourites}</span>
+            )}
           </Link>
           <Link to="/cart" className={styles.actionsLink}>
             <img src="/img/icon/shopping-bag-logo.svg" alt="Shopping bag" />
+
+            {totalQuantity > 0 && (
+              <span className={styles.cartBadge}>{totalQuantity}</span>
+            )}
           </Link>
         </div>
 

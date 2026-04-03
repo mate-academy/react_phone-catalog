@@ -10,8 +10,10 @@ import { ProductTechSpecs } from './components/ProductTechSpecs';
 import { ProductSection } from '../HomePage/components/ProductSection';
 import { getHotPriceProducts } from '../../utils/products';
 import { useShop } from '../../store/ShopContext';
+import { Loader } from '../shared/components/Loader';
 
 export const ProductDetailsPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
   );
@@ -31,21 +33,31 @@ export const ProductDetailsPage = () => {
     }
 
     const loadDetails = async () => {
-      const response = await fetch(`/api/${currentProduct.category}.json`);
-      const data: ProductDetails[] = await response.json();
+      try {
+        setIsLoading(true);
+        const response = await fetch(`/api/${currentProduct.category}.json`);
+        const data: ProductDetails[] = await response.json();
 
-      setCategoryProducts(data);
+        setCategoryProducts(data);
+        const foundDetails = data.find(
+          item => item.id === currentProduct.itemId,
+        );
 
-      const foundDetails = data.find(item => item.id === currentProduct.itemId);
-
-      setProductDetails(foundDetails || null);
+        setProductDetails(foundDetails || null);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     loadDetails();
   }, [currentProduct]);
 
-  if (!currentProduct) {
-    return;
+  if (products.length === 0 || isLoading) {
+    return <Loader />;
+  }
+
+  if (!currentProduct || !productDetails) {
+    return <p>Product was not found</p>;
   }
 
   const breadcrumb =
@@ -103,21 +115,17 @@ export const ProductDetailsPage = () => {
         <h1 className={styles.title}>{currentProduct.name}</h1>
 
         <div className={styles.content}>
-          {productDetails && <ProductGallery productDetails={productDetails} />}
+          <ProductGallery productDetails={productDetails} />
 
-          {productDetails && (
-            <ProductInfo
-              productDetails={productDetails}
-              onColorChange={handleColorChange}
-              onCapacityChange={handleCapacityChange}
-            />
-          )}
+          <ProductInfo
+            productDetails={productDetails}
+            onColorChange={handleColorChange}
+            onCapacityChange={handleCapacityChange}
+          />
         </div>
         <div className={styles.detailsSection}>
-          {productDetails && <ProductAbout productDetails={productDetails} />}
-          {productDetails && (
-            <ProductTechSpecs productDetails={productDetails} />
-          )}
+          <ProductAbout productDetails={productDetails} />
+          <ProductTechSpecs productDetails={productDetails} />
         </div>
         <ProductSection
           title="You may also like"

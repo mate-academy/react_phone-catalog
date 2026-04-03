@@ -12,6 +12,8 @@ export const Breadcrumbs: React.FC<Props> = ({
   breadcrumb,
   currentProduct,
 }) => {
+  const category = currentProduct?.category;
+
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles.homeLink}>
@@ -22,7 +24,14 @@ export const Breadcrumbs: React.FC<Props> = ({
         alt="Arrow Right"
         className={styles.image}
       />
-      <span className={styles.currentPage}>{breadcrumb}</span>
+
+      {currentProduct ? (
+        <Link to={`/${category}`} className={styles.currentPage}>
+          {breadcrumb}
+        </Link>
+      ) : (
+        <span className={styles.currentPage}>{breadcrumb}</span>
+      )}
 
       {currentProduct && (
         <>

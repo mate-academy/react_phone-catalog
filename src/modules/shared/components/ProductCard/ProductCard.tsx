@@ -14,7 +14,8 @@ export const ProductCard: React.FC<Props> = ({
   isFavourite,
   showDiscount = false,
 }) => {
-  const { toggleFavourite, addToCart } = useShop();
+  const { toggleFavourite, addToCart, carts } = useShop();
+  const isCart = carts.some(item => item.product.itemId === product.itemId);
 
   return (
     <div className={styles.card}>
@@ -27,7 +28,9 @@ export const ProductCard: React.FC<Props> = ({
           />
         </Link>
         <div className={styles.titleWrapper}>
-          <h3 className={styles.title}>{product.name}</h3>
+          <Link to={`/product/${product.itemId}`} className={styles.title}>
+            {product.name}
+          </Link>
         </div>
         <div className={styles.priceBlock}>
           {showDiscount ? (
@@ -56,10 +59,11 @@ export const ProductCard: React.FC<Props> = ({
         <div className={styles.actions}>
           <button
             type="button"
-            className={styles.addToCart}
+            className={`${isCart ? styles.selected : styles.addToCart}`}
             onClick={() => addToCart(product)}
+            disabled={isCart}
           >
-            Add to cart
+            {`${isCart ? 'Added to cart' : 'Add to cart'}`}
           </button>
           <button
             type="button"

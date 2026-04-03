@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { CartItems, Product } from '../types/Product';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type ShopContextType = {
   products: Product[];
@@ -16,6 +17,7 @@ type ShopContextType = {
   removeFromCart: (cartId: string) => void;
   increaseQuantity: (cartId: string) => void;
   decreaseQuantity: (cartId: string) => void;
+  clearCart: () => void;
 };
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
@@ -26,8 +28,11 @@ type Props = {
 
 export const ShopProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [favourites, setFavourites] = useState<Product[]>([]);
-  const [carts, setCarts] = useState<CartItems[]>([]);
+  const [carts, setCarts] = useLocalStorage<CartItems[]>('carts', []);
+  const [favourites, setFavourites] = useLocalStorage<Product[]>(
+    'favourites',
+    [],
+  );
 
   useEffect(() => {
     fetch('/api/products.json')
@@ -90,6 +95,10 @@ export const ShopProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
+  const clearCart = () => {
+    setCarts([]);
+  };
+
   const value = useMemo(
     () => ({
       products,
@@ -100,6 +109,7 @@ export const ShopProvider: React.FC<Props> = ({ children }) => {
       removeFromCart,
       increaseQuantity,
       decreaseQuantity,
+      clearCart,
     }),
     [products, favourites, carts],
   );

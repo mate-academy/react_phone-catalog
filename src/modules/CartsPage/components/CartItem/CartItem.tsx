@@ -37,6 +37,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             className={styles.quantityButton}
             aria-label="Decrease quantity"
             onClick={() => decreaseQuantity(cart.id)}
+            disabled={cart.quantity === 1}
           >
             <img src="/img/icon/minus.svg" alt="" />
           </button>

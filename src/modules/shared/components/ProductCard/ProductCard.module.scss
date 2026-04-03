@@ -55,6 +55,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
+  text-decoration: none;
   color: rgba(49, 50, 55, 1);
 }
 
@@ -130,6 +131,31 @@
   background-color: rgba(49, 50, 55, 1);
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    background-color: rgba(49, 50, 55, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: default;
+    box-shadow: none;
+  }
+
+  &:not(:disabled):hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.selected {
+  flex: 1;
+  height: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  padding: 0;
+  color: rgba(39, 174, 96, 1);
+  background-color: #fff;
+  border: 1px solid rgba(226, 230, 233, 1);
+  box-shadow: none;
 }
 
 .favouriteButton {

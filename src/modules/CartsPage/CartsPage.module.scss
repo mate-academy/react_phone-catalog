@@ -36,6 +36,8 @@
     letter-spacing: 0%;
     color: rgba(137, 147, 154, 1);
     text-decoration: none;
+    border: none;
+    background-color: transparent;
 }
 
 .title {
@@ -55,6 +57,25 @@
     @include mixins.on-desktop {
         padding-inline: 32px;
     }
+}
+
+.empty {
+    margin: 0;
+    padding-inline: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: rgba(137, 147, 154, 1);
+
+    @include mixins.on-tablet {
+        padding-inline: 24px;
+    }
+
+    @include mixins.on-desktop {
+        padding-inline: 32px;
+    }
+    
 }
 
 .cartContent {
