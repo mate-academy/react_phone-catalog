@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Pagetoolbar } from '../../components/layout/Pagetoolbar';
@@ -48,7 +48,7 @@ export const ProductDetails = () => {
     );
   };
 
-  const getRandomProducts = () => {
+  const getRandomProducts = useMemo(() => {
     if (!products.length) {
       return null;
     }
@@ -65,7 +65,7 @@ export const ProductDetails = () => {
     }
 
     return shuffled.slice(0, 12);
-  };
+  }, [products, category]);
 
   return (
     <div className={styles.container}>
@@ -337,7 +337,7 @@ export const ProductDetails = () => {
       <div className={styles.more}>
         <ProductColection
           title="You may also like"
-          products={getRandomProducts()}
+          products={getRandomProducts}
           loading={isLoading}
         />
       </div>

@@ -113,14 +113,14 @@ export const ProductPage = () => {
 
       {isLoading ? (
         <div className={styles.content}>
-          {Array.from({ length: 16 }).map((_, i) => <CardSkeleton key={i} />)}
+          {Array.from({ length: 16 }).map((_, i) => (
+            <CardSkeleton key={i} />
+          ))}
         </div>
       ) : filteredItems().length === 0 ? (
         <div className={styles.empty}>
           <h2 className={styles.empty__title}>:(</h2>
-          <p className={styles.empty__subtitle}>
-            There are no {category} yet
-          </p>
+          <p className={styles.empty__subtitle}>There are no {category} yet</p>
         </div>
       ) : (
         <div className={styles.content}>
