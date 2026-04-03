@@ -1,3 +1,86 @@
-.root {
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  width: 100%;
+  margin-top: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+
+  @include media-up($breakpoint-tablet) {
+    margin-top: $spacing-3xl;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.title {
+  margin: 0 0 $spacing-md;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: $color-primary;
+
+  @include media-up($breakpoint-tablet) {
+    margin-bottom: $spacing-lg;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
   display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform $transition-base;
+  object-fit: contain;
+  object-position: center bottom;
+
+  .card:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.info {
+  margin-top: $spacing-sm;
+}
+
+.cardTitle {
+  margin: 0 0 $spacing-xs;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: $color-primary;
+}
+
+.cardCount {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-secondary;
 }
