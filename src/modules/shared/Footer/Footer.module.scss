@@ -1,0 +1,101 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+  padding: $spacing-xl $spacing-md;
+  background: $color-white;
+  box-shadow: 0 -1px 0 $color-elements;
+
+  @include media-up($breakpoint-tablet) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0;
+    padding: $spacing-xl;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+
+  @include media-up($breakpoint-tablet) {
+    flex: 1;
+  }
+}
+
+.logoImage {
+  display: block;
+  width: auto;
+  height: 32px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-3xl;
+  }
+}
+
+.navLink {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+.backToTopText {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  text-align: right;
+  color: $color-secondary;
+}
+
+.backToTopButton {
+  @include flex-center;
+
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+
+  img {
+    transform: rotate(-90deg);
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
