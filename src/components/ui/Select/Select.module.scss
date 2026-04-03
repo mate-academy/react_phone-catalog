@@ -13,12 +13,12 @@
 }
 
 .select {
-  z-index: 999;
+  z-index: 9;
   background-color: $white;
   position: relative;
   width: 176px;
   height: 40px;
-  border: 1px solid $icons;
+  outline: 1px solid $icons;
 
   &:hover {
     cursor: pointer;
@@ -47,6 +47,7 @@
     line-height: 40px;
     padding: 0 10px;
     color: $main;
+    background: $button;
   }
 }
 
@@ -77,7 +78,7 @@
   position: absolute;
   width: 100%;
   top: 45px;
-  background: $white;
+  background: $button;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   outline: 1px solid;
   outline-color: $white;
@@ -102,7 +103,7 @@
     &_active {
       font-weight: 600;
       color: $main;
-      background-color: $hover;
+      background-color: $elements;
     }
   }
 }

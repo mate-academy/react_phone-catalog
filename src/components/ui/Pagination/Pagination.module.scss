@@ -17,13 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: $main;
   border: 1px solid $elements;
-  background: $white;
+  background: $button;
 
   &:hover,
   &__active {
-    background: $main;
+    background: $buttonCard;
     color: $white;
-    border-color: $main;
+    border-color: $secondary;
   }
 }

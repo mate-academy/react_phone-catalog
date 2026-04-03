@@ -2,6 +2,7 @@
 @import "fonts";
 
 body {
+  background: $theme;
   font-family: Mont, sans-serif;
 
   &.locked {

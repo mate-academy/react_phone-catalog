@@ -1,9 +1,9 @@
 .header {
-  z-index: 9999;
+  z-index: 99;
   height: 64px;
   width: 100%;
   position: fixed;
-  background: $white;
+  background: $theme;
 
   @media (max-width: 1024px) {
     height: 48px;
@@ -116,7 +116,13 @@
     width: 48px;
   }
 
+  &__img {
+    height: 16px;
+  }
+
   &__link {
+    color: $main;
+
     position: relative;
     display: flex;
     align-items: center;
@@ -230,7 +236,7 @@
 }
 
 .menu {
-  background: $white;
+  background: $theme;
   display: flex;
   flex-direction: column;
   position: absolute;

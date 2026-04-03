@@ -1,0 +1,87 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: 0.4s ease-in-out;
+  background: $theme;
+  z-index: -1;
+
+  &__active {
+    opacity: 1;
+    z-index: 999;
+  }
+}
+
+.bg {
+  height: 100%;
+  width: 100%;
+  transition: 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.hidden {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: $theme;
+  transition: 0.4s ease-in-out;
+}
+
+/* Контейнер вращения */
+.orbit {
+  transition: 0.8s ease-in-out;
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: rotate(180deg);
+
+  &__active {
+    transform: rotate(0);
+  }
+}
+
+/* 🌙 Луна */
+.moon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* ☀️ Солнце */
+.sun {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* 🔄 Вращение */
+// @keyframes rotate {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(180deg);
+//   }
+// }

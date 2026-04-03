@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './ButtonLiked.module.scss';
+import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   type?: 'button' | 'submit' | 'reset';
@@ -10,6 +11,7 @@ type Props = {
 
 export const ButtonLiked = (props: Props) => {
   const { type = 'button', isActive = false, onClick } = props;
+  const { theme } = useTheme();
 
   return (
     <button
@@ -21,7 +23,11 @@ export const ButtonLiked = (props: Props) => {
     >
       <img
         className={styles.icon}
-        src={imageUrl('icons/Favourites.svg')}
+        src={
+          theme === 'dark'
+            ? imageUrl('icons/Favourites_white.svg')
+            : imageUrl('icons/Favourites.svg')
+        }
         alt="favourites-icon"
       />
       <img

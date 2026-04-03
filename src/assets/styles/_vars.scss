@@ -1,12 +1,44 @@
+:root {
+  --green: #27ae60;
+  --red: #eb5757;
+  --white: #fff;
+}
+
+[data-theme="light"] {
+  --main: #313237;
+  --secondary: #89939a;
+  --icons: #b4bdc3;
+  --elements: #e2e6e9;
+  --hover: #fafbfc;
+  --theme: #fff;
+  --button: #fff;
+  --button-card: #313237;
+}
+
+[data-theme="dark"] {
+  --main: #f1f2f9;
+  --secondary: #75767f;
+  --icons: #4a4d58;
+  --elements: #3b3e4a;
+  --hover: #fafbfc;
+  --white: #fff;
+  --theme: #0f1121;
+  --button: #323542;
+  --button-card: #905bff;
+}
+
 /* SCSS variables */
-$main: #313237;
-$secondary: #89939a;
-$icons: #b4bdc3;
-$elements: #e2e6e9;
-$hover: #fafbfc;
-$white: #fff;
-$green: #27ae60;
-$red: #eb5757;
+$main: var(--main);
+$secondary: var(--secondary);
+$icons: var(--icons);
+$elements: var(--elements);
+$hover: var(--hover);
+$white: var(--white);
+$green: var(--green);
+$red: var(--red);
+$theme: var(--theme);
+$button: var(--button);
+$buttonCard: var(--button-card);
 $transition: 0.2s ease-in;
 
 %hover-transition {

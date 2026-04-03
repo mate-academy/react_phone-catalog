@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { imageUrl } from '../../../../utils/imageUrl';
 import styles from './Preview.module.scss';
+import { useTheme } from '../../../../hooks/useTheme';
 
 export const Preview = () => {
   const images = [
@@ -18,6 +19,7 @@ export const Preview = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const sliderRef = useRef(null);
+  const { theme } = useTheme();
 
   // auto slider
   const startAutoPlay = () => {
@@ -129,12 +131,17 @@ export const Preview = () => {
     <div className={styles.preview}>
       <div className={styles.container}>
         <button
+          style={{ transform: 'rotate(180deg)' }}
           type="button"
           className={classNames(styles.arrow, styles.arrow__left)}
           onClick={prevSlide}
         >
           <img
-            src={imageUrl('icons/ArrowLeft.svg')}
+            src={
+              theme === 'dark'
+                ? imageUrl('icons/Arrow_white.svg')
+                : imageUrl('icons/ArrowRight.svg')
+            }
             alt=""
             className={styles.arrow__img}
           />
@@ -173,7 +180,11 @@ export const Preview = () => {
           onClick={nextSlide}
         >
           <img
-            src={imageUrl('icons/ArrowRight.svg')}
+            src={
+              theme === 'dark'
+                ? imageUrl('icons/Arrow_white.svg')
+                : imageUrl('icons/ArrowRight.svg')
+            }
             alt=""
             className={styles.arrow__img}
           />

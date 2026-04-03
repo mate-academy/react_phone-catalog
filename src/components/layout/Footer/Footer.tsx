@@ -2,14 +2,21 @@ import { Link } from 'react-router-dom';
 import { imageUrl } from '../../../utils/imageUrl';
 import { scrollToTop } from '../../../utils/scrollToTop';
 import styles from './Footer.module.scss';
+import { useTheme } from '../../../hooks/useTheme';
 
 export const Footer = () => {
+  const { theme } = useTheme();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
           <img
-            src={imageUrl('icons/Logo.svg')}
+            src={
+              theme === 'dark'
+                ? imageUrl('icons/Logo_white.svg')
+                : imageUrl('icons/Logo.svg')
+            }
             alt=""
             className={styles.logo__img}
           />
@@ -40,7 +47,12 @@ export const Footer = () => {
           Back to top
           <div className={styles.button__icon}>
             <img
-              src={imageUrl('icons/ArrowUp.svg')}
+              style={{ transform: 'rotate(270deg)' }}
+              src={
+                theme === 'dark'
+                  ? imageUrl('icons/Arrow_white.svg')
+                  : imageUrl('icons/ArrowRight.svg')
+              }
               alt=""
               className={styles.button__icon_pic}
             />

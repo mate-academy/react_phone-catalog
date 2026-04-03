@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { NavLink, useLocation } from 'react-router-dom';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Breadcrumbs.module.scss';
+import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   breadcrumbsName?: string;
@@ -10,6 +11,7 @@ type Props = {
 export const Breadcrumbs = ({ breadcrumbsName }: Props) => {
   const location = useLocation();
   const paths = location.pathname.split('/').filter(Boolean);
+  const { theme } = useTheme();
 
   if (breadcrumbsName) {
     paths.splice(-1, 1, breadcrumbsName);
@@ -19,7 +21,11 @@ export const Breadcrumbs = ({ breadcrumbsName }: Props) => {
     <div className={styles.breadcrumbs}>
       <NavLink to="/">
         <img
-          src={imageUrl('icons/Home.svg')}
+          src={
+            theme === 'dark'
+              ? imageUrl('icons/Home_white.svg')
+              : imageUrl('icons/Home.svg')
+          }
           alt="home-icon"
           className={styles.home}
         />

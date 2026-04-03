@@ -50,6 +50,7 @@
 
   border: 1px solid $icons;
   width: 32px;
+  background: $button;
 
   @media (max-width: 768px) {
     display: none;

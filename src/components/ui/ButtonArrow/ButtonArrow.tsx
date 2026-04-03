@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { imageUrl } from '../../../utils/imageUrl';
 import styles from './ButtonArrow.module.scss';
+import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   direction: string;
@@ -13,6 +14,8 @@ export const ButtonArrow = ({
   disabled = false,
   onClick,
 }: Props) => {
+  const { theme } = useTheme();
+
   return (
     <button
       type="button"
@@ -23,7 +26,11 @@ export const ButtonArrow = ({
       onClick={onClick}
     >
       <img
-        src={imageUrl('icons/ArrowUp.svg')}
+        src={
+          theme === 'dark'
+            ? imageUrl('icons/Arrow_white.svg')
+            : imageUrl('icons/ArrowRight.svg')
+        }
         alt=""
         className={classNames(
           styles.button__icon,

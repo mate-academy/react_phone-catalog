@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid $elements;
-  background: $white;
+  background: $button;
 
   &__disabled {
     opacity: 0.3;
@@ -16,21 +16,20 @@
 
   &:hover {
     border-color: $main;
-    background: $hover;
   }
 
   &__icon {
     &_up {
-      transform: rotate(0);
+      transform: rotate(270deg);
     }
     &_right {
-      transform: rotate(90deg);
+      transform: rotate(0);
     }
     &_down {
-      transform: rotate(180deg);
+      transform: rotate(90deg);
     }
     &_left {
-      transform: rotate(270deg);
+      transform: rotate(180deg);
     }
   }
 }

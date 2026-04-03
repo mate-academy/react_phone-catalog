@@ -9,12 +9,14 @@ import { imageUrl } from '../../../utils/imageUrl';
 import styles from './Header.module.scss';
 import { scrollToTop } from '../../../utils/scrollToTop';
 import { useOrder } from '../../../hooks/useOrder';
+import { useTheme } from '../../../hooks/useTheme';
 
 export const Header = () => {
   const { favourites } = useFavourites();
   const { cart } = useCart();
   const { order } = useOrder();
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
   const [showBurger, setShowBurger] = useState<boolean>(false);
 
   useEffect(() => {
@@ -36,7 +38,11 @@ export const Header = () => {
         <div className={styles.logo}>
           <NavLink to="/" className={styles.logo__link}>
             <img
-              src={imageUrl('icons/Logo.svg')}
+              src={
+                theme === 'dark'
+                  ? imageUrl('icons/Logo_white.svg')
+                  : imageUrl('icons/Logo.svg')
+              }
               alt=""
               className={styles.logo__img}
             />
@@ -64,8 +70,21 @@ export const Header = () => {
           </ul>
         </nav>
         <div className={styles.buttons}>
+          <div className={classNames(styles.block)}>
+            <button onClick={toggleTheme} className={styles.block__link}>
+              <img
+                src={
+                  theme === 'dark'
+                    ? imageUrl('icons/Moon.svg')
+                    : imageUrl('icons/Sun.svg')
+                }
+                alt=""
+                className={styles.block__img}
+              />
+            </button>
+          </div>
           {order.orderId && (
-            <div className={classNames(styles.block, styles.block__hidden)}>
+            <div className={classNames(styles.block)}>
               <NavLink
                 to={`/cart/${order.orderId}`}
                 className={({ isActive }) =>
@@ -88,7 +107,11 @@ export const Header = () => {
               }
             >
               <img
-                src={imageUrl('icons/Favourites.svg')}
+                src={
+                  theme === 'dark'
+                    ? imageUrl('icons/Favourites_white.svg')
+                    : imageUrl('icons/Favourites.svg')
+                }
                 alt=""
                 className={styles.block__img}
               />
@@ -109,7 +132,11 @@ export const Header = () => {
               }
             >
               <img
-                src={imageUrl('icons/Shopping_Cart.svg')}
+                src={
+                  theme === 'dark'
+                    ? imageUrl('icons/Shopping_Cart_white.svg')
+                    : imageUrl('icons/Shopping_Cart.svg')
+                }
                 alt=""
                 className={styles.block__img}
               />
@@ -171,7 +198,11 @@ export const Header = () => {
           >
             <div className={styles.menu__link_group}>
               <img
-                src={imageUrl('icons/Favourites.svg')}
+                src={
+                  theme === 'dark'
+                    ? imageUrl('icons/Favourites_white.svg')
+                    : imageUrl('icons/Favourites.svg')
+                }
                 alt="favourites"
                 className={styles.menu__img}
               />
@@ -192,7 +223,11 @@ export const Header = () => {
           >
             <div className={styles.menu__link_group}>
               <img
-                src={imageUrl('icons/Shopping_Cart.svg')}
+                src={
+                  theme === 'dark'
+                    ? imageUrl('icons/Shopping_Cart_white.svg')
+                    : imageUrl('icons/Shopping_Cart.svg')
+                }
                 alt="cart"
                 className={styles.menu__img}
               />

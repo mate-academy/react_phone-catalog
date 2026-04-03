@@ -10,13 +10,13 @@
   text-align: center;
   font-weight: 400;
   color: $white;
-  background: $main;
-  border-color: $main;
+  background: $buttonCard;
+  border-color: $buttonCard;
 
   &__active {
-    background: $white;
+    background: $button;
     color: $green;
-    border-color: $elements;
+    border-color: $icons;
   }
 
   &:hover {

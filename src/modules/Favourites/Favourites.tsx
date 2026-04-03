@@ -5,9 +5,11 @@ import { Button } from '../../components/ui/Button';
 import { useFavourites } from '../../hooks/useFavourites';
 import { imageUrl } from '../../utils/imageUrl';
 import styles from './Favourites.module.scss';
+import { useTheme } from '../../hooks/useTheme';
 
 export const Favourites = () => {
   const { favourites } = useFavourites();
+  const { theme } = useTheme();
   const navigate = useNavigate();
 
   return (
@@ -21,7 +23,11 @@ export const Favourites = () => {
         {favourites.length === 0 ? (
           <div className={styles.empty}>
             <img
-              src={imageUrl('icons/Favourites.svg')}
+              src={
+                theme === 'dark'
+                  ? imageUrl('icons/Favourites_white.svg')
+                  : imageUrl('icons/Favourites.svg')
+              }
               alt=""
               className={styles.empty__img}
             />
