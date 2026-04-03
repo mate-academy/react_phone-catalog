@@ -8,6 +8,8 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { ContactsPage } from './modules/ContactsPage';
+import { RightsPage } from './modules/RightsPage';
 
 export const AppRouter = () => {
   return (
@@ -20,6 +22,8 @@ export const AppRouter = () => {
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/rights" element={<RightsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
