@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import styles from './WelcomeSlider.module.scss';
+import iconChevron from '@/assets/icons/icon-chevron.svg';
 
 const SLIDES = [
   { src: '/img/banner-phones.png', alt: 'New models iPhone' },
@@ -35,27 +36,11 @@ export const WelcomeSlider = () => {
         </Swiper>
 
         <button className={styles.prev} aria-label="Previous slide">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M10 12L6 8L10 4"
-              stroke="#313237"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <img src={iconChevron} alt="" aria-hidden="true" />
         </button>
 
         <button className={styles.next} aria-label="Next slide">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M6 4L10 8L6 12"
-              stroke="#313237"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <img src={iconChevron} alt="" aria-hidden="true" />
         </button>
       </div>
 

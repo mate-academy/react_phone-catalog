@@ -68,8 +68,18 @@
   }
 }
 
+.navBtnLeft {
+  img {
+    transform: rotate(180deg);
+  }
+}
+
 .navBtnDisabled {
   border-color: $color-elements;
   cursor: default;
   color: $color-icons;
+
+  img {
+    opacity: 0.4;
+  }
 }

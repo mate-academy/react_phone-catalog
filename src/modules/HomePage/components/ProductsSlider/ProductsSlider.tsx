@@ -7,6 +7,7 @@ import 'swiper/css';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import type { Product } from '@/types/Product';
 import styles from './ProductsSlider.module.scss';
+import iconChevron from '@/assets/icons/icon-chevron.svg';
 
 type SliderType = 'brand-new' | 'hot-prices';
 
@@ -47,20 +48,12 @@ export const ProductsSlider = ({ title, type }: Props) => {
 
         <div className={styles.controls}>
           <button
-            className={`${styles.navBtn} ${isBeginning ? styles.navBtnDisabled : ''}`}
+            className={`${styles.navBtn} ${styles.navBtnLeft} ${isBeginning ? styles.navBtnDisabled : ''}`}
             onClick={handlePrev}
             aria-label="Previous"
             disabled={isBeginning}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M10 12L6 8L10 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <img src={iconChevron} alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -69,15 +62,7 @@ export const ProductsSlider = ({ title, type }: Props) => {
             aria-label="Next"
             disabled={isEnd}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M6 4L10 8L6 12"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <img src={iconChevron} alt="" aria-hidden="true" />
           </button>
         </div>
       </div>

@@ -60,6 +60,10 @@
 .prev {
   left: 0;
 
+  img {
+    transform: rotate(180deg);
+  }
+
   &:hover {
     border-color: $color-primary;
   }
