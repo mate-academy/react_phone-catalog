@@ -63,21 +63,17 @@
 
     }
 
-
    &__list {
     min-width: 0;
     min-height: 0;
     box-sizing: border-box;
 
     @include page-grid;
-
+    gap: 16px;
     grid-column: 1/-1;
 
     margin: 0;
     padding: 0;
-    gap:  16px;
-
-
   }
 
   .icons {
@@ -89,7 +85,6 @@
     gap: 16px;
 
   }
-
 
 .icon {
     width: 32px;

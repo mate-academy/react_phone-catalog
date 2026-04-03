@@ -7,10 +7,12 @@
     height: 40px;
     margin: 0;
     white-space: nowrap;
-    padding: 9.5px;
     margin-right: 8px;
     background-color: $accent-color;
     transition: box-shadow $effect-duration ease, transform $effect-duration ease;
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
 
      &:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
@@ -28,4 +30,9 @@
     }
 
 
+    &--in-cart {
+      background-color: #FFFF;
+      color: $accent-color;
+      outline: 1px solid #E2E6E9;
+    }
   }

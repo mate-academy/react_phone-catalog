@@ -16,6 +16,17 @@
     box-sizing: border-box;
     background-color: transparent;
 
+     &--disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+
+      background-color: #FFFF;
+      color: $secondary-color;
+      transform: none;
+      box-shadow: none;
+      border: 1px solid $secondary-color;
+    }
+
     &--history-back {
       font-size: 12px;
       color: $secondary-color;

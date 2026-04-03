@@ -37,7 +37,7 @@ export const ProductDetailsPage = () => {
   const [loadingSuggested, setLoadingSuggested] = useState(false);
   const [errorSuggested, setErrorSuggested] = useState<string | null>(null);
   const [suggestedIndex, setSuggestedIndex] = useState(0);
-  const { items, addToCart } = useCart();
+  const { items, addToCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
@@ -293,16 +293,18 @@ export const ProductDetailsPage = () => {
                     <div className={styles.productDetailsPage__bottom}>
                       <AddToCartButton
                         onClick={() => addToCart(product)}
-                        isInCart={items.find(
+                        isInCart={!!items.find(
                           item => item.product.id === product.id,
                         )}
+                        removeFromCart={() =>
+                          removeFromCart(String(product.id))
+                        }
                       />
 
                       <Button
                         className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
                         onClick={() => toggleFavorite(String(product.id))}
                         pressed={isFavorite(String(product.id))}
-                        і
                       >
                         <FavouritesLink
                           className={`${styles['icon--large']} ${styles['icon--favourites']} ${isFavorite(product.id) ? styles.active : ''}`}

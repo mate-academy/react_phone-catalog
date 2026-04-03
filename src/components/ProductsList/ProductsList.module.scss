@@ -58,7 +58,7 @@
     }
 
      @include on-desktop {
-      grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
         grid-column: 1/-1;
       }
 

@@ -24,10 +24,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const visibleOnTablet = 2;
   const visibleOnDesktop = 4;
-  const { items, addToCart } = useCart();
+  const { items, addToCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
-
-  const isInCart = items.find(item => item.product.id === product.id);
 
   return (
     <div
@@ -75,7 +73,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className={styles.productCard__bottom}>
           <AddToCartButton
             onClick={() => addToCart(product)}
-            isInCart={isInCart}
+            isInCart={!!items.find(item => item.product.id === product.id)}
+            removeFromCart={() => removeFromCart(product.id)}
           />
           <Button
             className={clsx(
