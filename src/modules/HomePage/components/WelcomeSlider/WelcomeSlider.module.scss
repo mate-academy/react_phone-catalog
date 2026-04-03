@@ -3,6 +3,7 @@
 
 .wrapper {
   margin-inline: -$content-padding-mobile;
+  display: flow-root;
 
   @include media-up($breakpoint-tablet) {
     margin-inline: 0;
