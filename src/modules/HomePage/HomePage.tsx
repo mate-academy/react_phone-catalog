@@ -10,9 +10,10 @@ export const HomePage = () => {
       <h2 className={styles.pageTitle}>Welcome to Nice Gadgets store!</h2>
 
       <WelcomeSlider />
-      <ProductsSlider title="Hot prices" />
+      <ProductsSlider title="Brand new models" type="brand-new" />
+
       <ShopByCategory />
-      <ProductsSlider title="Brand new" />
+      <ProductsSlider title="Hot prices" type="hot-prices" />
     </div>
   );
 };
