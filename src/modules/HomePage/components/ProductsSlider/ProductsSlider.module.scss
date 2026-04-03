@@ -1,4 +1,74 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
 
-.root {
-  display: block;
+.section {
+  width: 100%;
+  margin-top: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+
+  :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
+
+  :global(.swiper-slide) {
+    height: auto;
+  }
+}
+
+.header {
+  @include flex-between;
+
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.title {
+  font-family: $font-family-base;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: $color-primary;
+  margin: 0;
+
+  @include media-up($breakpoint-tablet) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.navBtn {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  color: $color-primary;
+  transition:
+    border-color $transition-base,
+    color $transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+.navBtnDisabled {
+  border-color: $color-elements;
+  color: $color-icons;
+  cursor: default;
 }
