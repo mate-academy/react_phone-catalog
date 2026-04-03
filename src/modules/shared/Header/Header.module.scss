@@ -3,14 +3,14 @@
 
 .header {
   position: sticky;
-  z-index: 999;
   top: 0;
+  z-index: 999;
   display: flex;
   align-items: center;
   min-height: $header-height-mobile;
+  background-color: $color-white;
 
   border-bottom: 1px solid $color-elements;
-  background-color: $color-white;
 
   @include media-down($breakpoint-tablet) {
     justify-content: space-between;
@@ -24,12 +24,12 @@
 .logoLink {
   display: inline-flex;
   align-items: center;
-  margin-right: $spacing-md;
   padding-inline: $spacing-md;
+  margin-right: $spacing-md;
 
   @include media-up($breakpoint-desktop) {
-    margin-right: $spacing-lg;
     padding-inline: $spacing-lg;
+    margin-right: $spacing-lg;
   }
 }
 
@@ -46,13 +46,13 @@
 .menuButton {
   width: $spacing-2xl;
   height: $spacing-2xl;
-
-  @include flex-center;
+  background: none;
 
   border: none;
   border-left: 1px solid $color-elements;
-  background: none;
   cursor: pointer;
+
+  @include flex-center;
 
   @include media-up($breakpoint-tablet) {
     display: none;
@@ -62,23 +62,23 @@
 .nav {
   position: absolute;
   top: $header-height-mobile + 1px; // 1px for border
-  left: 0;
   right: 0;
+  left: 0;
   z-index: 9999;
   display: flex;
   flex-direction: column;
   height: calc(100vh - #{$header-height-mobile} - 1px);
 
   background-color: $color-white;
-  transform: translateX(-100%);
   transition: transform $transition-base;
+  transform: translateX(-100%);
 
   @include media-up($breakpoint-tablet) {
     position: static;
-    flex-direction: row;
-    height: auto;
     flex: 1;
+    flex-direction: row;
     align-self: stretch;
+    height: auto;
 
     transform: translateX(0);
   }
@@ -89,12 +89,12 @@
 }
 
 .navList {
-  list-style: none;
-  padding: $spacing-md 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
+  padding: $spacing-md 0;
+  margin: 0;
+  list-style: none;
 
   @include media-up($breakpoint-tablet) {
     flex-direction: row;
@@ -115,13 +115,13 @@
   display: block;
   padding-top: $spacing-sm;
   padding-bottom: $spacing-sm;
-  color: $color-secondary;
-  font-weight: 800;
   font-size: 12px;
+  font-weight: 800;
   line-height: 11px;
   letter-spacing: 4%;
-  text-transform: uppercase;
   text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
 
   @include media-up($breakpoint-tablet) {
     height: 100%;
@@ -136,24 +136,24 @@
 
   @include media-up($breakpoint-tablet) {
     &::after {
-      content: '';
       position: absolute;
+      right: 0;
       bottom: 0;
       left: 0;
-      right: 0;
       height: 3px;
       background-color: $color-primary;
+      content: '';
     }
   }
 }
 
 .headerActionsList {
-  list-style: none;
-  padding: 0;
-  margin: auto 0 0;
   display: flex;
   width: 100%;
+  padding: 0;
+  margin: auto 0 0;
   border-top: 1px solid $color-elements;
+  list-style: none;
 
   @include media-up($breakpoint-tablet) {
     width: auto;
@@ -188,8 +188,8 @@
 
 .headerActionsLink {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   text-decoration: none;
@@ -205,13 +205,13 @@
   color: $color-primary;
 
   &::after {
-    content: '';
     position: absolute;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     height: 2px;
     background-color: $color-primary;
+    content: '';
 
     @include media-up($breakpoint-tablet) {
       height: 3px;

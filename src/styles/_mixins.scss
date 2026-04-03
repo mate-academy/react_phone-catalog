@@ -29,8 +29,8 @@
 /// Use on parent layout wrappers/sections.
 @mixin layout-grid {
   display: grid;
-  column-gap: $grid-gutter;
   grid-template-columns: repeat($grid-columns-mobile, minmax(0, 1fr));
+  column-gap: $grid-gutter;
   padding-inline: $grid-padding-mobile;
 
   @include media-up($breakpoint-tablet) {
@@ -39,10 +39,10 @@
   }
 
   @include media-up($breakpoint-desktop) {
-    width: $grid-desktop-container;
-    margin-inline: auto;
-    padding-inline: 0;
     grid-template-columns: repeat($grid-columns-desktop, $grid-desktop-column-width);
+    width: $grid-desktop-container;
+    padding-inline: 0;
+    margin-inline: auto;
   }
 }
 
@@ -79,24 +79,24 @@
 /// Great for icons, buttons, loaders, empty states.
 @mixin flex-center {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 /// Flex layout with space-between and vertical centering.
 /// Common for header rows, toolbars, card tops.
 @mixin flex-between {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 /// Content container similar to Bootstrap container:
 /// max-width + centered + responsive horizontal paddings.
 @mixin content-width {
   max-width: $content-max-width;
-  margin: 0 auto;
   padding: 0 $content-padding-mobile;
+  margin: 0 auto;
 
   @include media-up($breakpoint-tablet) {
     padding: 0 $content-padding-tablet;
@@ -116,7 +116,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
   border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
 }

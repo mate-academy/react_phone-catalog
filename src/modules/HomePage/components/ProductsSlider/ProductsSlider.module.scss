@@ -27,12 +27,12 @@
 }
 
 .title {
+  margin: 0;
   font-family: $font-family-base;
-  font-weight: 800;
   font-size: 22px;
+  font-weight: 800;
   line-height: 140%;
   color: $color-primary;
-  margin: 0;
 
   @include media-up($breakpoint-tablet) {
     font-size: 32px;
@@ -51,9 +51,10 @@
 .navBtn {
   @include flex-center;
 
+  flex-shrink: 0;
+
   width: 32px;
   height: 32px;
-  flex-shrink: 0;
   background: $color-white;
   border: 1px solid $color-icons;
   cursor: pointer;
@@ -69,6 +70,6 @@
 
 .navBtnDisabled {
   border-color: $color-elements;
-  color: $color-icons;
   cursor: default;
+  color: $color-icons;
 }
