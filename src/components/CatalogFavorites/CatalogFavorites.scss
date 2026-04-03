@@ -2,6 +2,7 @@
    margin-bottom: 64px;
   padding-inline: 16px;
   margin-top: 24px;
+  min-height: 640px;
    @media (min-width: 640px) {
     margin-bottom: 80px;
     padding-inline: 24px;
@@ -47,16 +48,3 @@
 font-size: 12px;
 };
 
-.catalog-favorites__models--counter {
-  font-weight: 600;
-font-size: 14px;
-line-height: 150%;
-color: #e2e6e9;
-};
-
-.catalog-favorites__models--counter--empty {
-  font-weight: 600;
-font-size: 14px;
-line-height: 150%;
-color: black;
-}

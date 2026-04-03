@@ -3,7 +3,6 @@ import './CatalogFavorites.scss';
 import FavoritesList from '../FavoritesList/FavoritesList';
 
 const CatalogFavorites = () => {
-
   return (
     <div className="catalog-favorites">
       <div className="catalog-favorites__top--icons">

@@ -4,29 +4,26 @@ import './FavoritesList.scss';
 import { useLocalStorage } from '../../api';
 
 const FavoritesList = () => {
-  const [favorites] = useLocalStorage<Product[]>('favorites', []);
-  const [products, setProducts] = useLocalStorage<Product[]>('favorites', []);
-
-  const favoriteProducts = products.filter(pr =>
-    favorites.some(fav => fav.itemId === pr.itemId),
-  );
+  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
 
   return (
     <>
       <div className="favorites-list">
-        <p className="favorites-list__models--counter">
-          {favorites.length} models
+        <div className="favorites-list__container"></div>
+        <p className="favorites-list__items--counter">
+          {favorites.length} items
         </p>
         {favorites.length ? (
-          favoriteProducts.map(product => (
+          favorites.map(product => (
             <ProductCard
               key={product.itemId}
               product={product}
-              setProducts={setProducts}
+              favorites={favorites}
+              setFavorites={setFavorites}
             />
           ))
         ) : (
-          <p className="favorites-list__models--counter--empty">
+          <p className="favorites-list__items--counter--empty">
             No favouri items selected
           </p>
         )}
