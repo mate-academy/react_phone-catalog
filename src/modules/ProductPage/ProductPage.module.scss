@@ -3,9 +3,9 @@
 }
 
 .content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  justify-content: start;
   gap: 16px;
 }
 

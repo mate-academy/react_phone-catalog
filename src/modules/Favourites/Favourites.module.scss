@@ -9,8 +9,9 @@
 }
 
 .products {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  justify-content: start;
   gap: 16px;
 }
 
