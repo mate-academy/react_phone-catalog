@@ -4,20 +4,20 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../../api';
 import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
+import CatalogSort1 from './CatalogSort1/CatalogSort1';
+import CatalogSort2 from './CatalogSort2/CatalogSort2';
 
 const Catalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [IsSortOpen, setIsSortOpen] = useState(false);
+  const [IsPageOpen, setIsPageOpen] = useState(false);
 
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
-
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortType(e.target.value as 'newest' | 'oldest');
-  };
 
   const productPhones = products.filter(
     product => product.category === 'phones',
@@ -29,13 +29,6 @@ const Catalog = () => {
 
     return product1.year - product2.year;
   });
-
-  const handlePageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-
-    setItemsPerPage(value === 'all' ? 'all' : Number(value));
-    setCurrentPage(1);
-  };
 
   const totalItems = sortedProducts.length;
 
@@ -66,33 +59,27 @@ const Catalog = () => {
         <Link to="/" className="catalog__icon--slider--right--gray"></Link>
         <p className="catalog__top--text">Phones</p>
       </div>
-      <h1 className="catalog__title">Mobile phones</h1>
+      <h1 className="catalog__title">Mobile Phones</h1>
       <p className="catalog__models--counter">{productPhones.length} models</p>
       <div className="catalog__sorts">
-        <div className="catalog__sort sort--1">
-          <label className="catalog__title--sort" htmlFor="sort">
-            Sort by
-          </label>
-          <div className="catalog__select-wrapper">
-            <select id="sort" value={sortType} onChange={handleSortChange}>
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-            </select>
-          </div>
-        </div>
+        <CatalogSort1
+          sortType={sortType}
+          setSortType={setSortType}
+          IsSortOpen={IsSortOpen}
+          setIsSortOpen={setIsSortOpen}
+        />
         <div className="catalog__sort sort--2">
           <label className="catalog__title--sort" htmlFor="items-per-page">
             Items on page
           </label>
 
-          <div className="catalog__select-wrapper">
-            <select onChange={handlePageChange}>
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">All</option>
-            </select>
-          </div>
+          <CatalogSort2
+            IsPageOpen={IsPageOpen}
+            setIsPageOpen={setIsPageOpen}
+            itemsPerPage={itemsPerPage}
+            setItemsPerPage={setItemsPerPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
       <ProductList products={visibleProducts} />
