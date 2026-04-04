@@ -1,0 +1,79 @@
+.actions {
+  display: flex;
+  margin-left: auto;
+
+  height: 100%;
+}
+
+.actionItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  border-left: solid 1px #E2E6E9;
+
+  width: 64px;
+
+  &Icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &Count {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+
+    width: 14px;
+    height: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1px;
+
+    background-color: #4219D0;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 50%;
+
+    border: 1px solid #fff;
+  }
+
+  &Menu {
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 100%;
+    
+    border-left: 1px solid #E2E6E9;
+  }
+}
+
+
+@include on-tablet {
+  .actionItem {
+    width: 48px;
+
+    &Count {
+      top: 10px;
+      right: 8px;
+    }
+  }
+}
+
+@include on-mobile {
+  .actionItem {
+    display: none;
+
+    &Menu {
+      display: flex;
+    }
+  }
+}
