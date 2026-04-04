@@ -4,6 +4,10 @@ import { Product } from '../../components/ProductCarousel';
 import { Catalog } from '../../components/Catalog';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
+import noFavorites from '../../../public/img/product-not-found.png';
+
+import styles from './Favorites.module.scss';
+
 export const FavoritesPage = () => {
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
 
@@ -24,9 +28,17 @@ export const FavoritesPage = () => {
       <div className="full-width">
         <Breadcrumbs />
         <h1 className="page-title">Favorites</h1>
-        <p className="underTitle">{favorites.length} items</p>
+        {favorites.length !== 0 && (
+          <p className="underTitle">{favorites.length} items</p>
+        )}
       </div>
-      <Catalog products={favorites} showFilters={false} infScroll={true} />
+      {favorites.length === 0 ? (
+        <div className={styles.favorites_empty}>
+          <img src={noFavorites} alt="no favorites" />
+        </div>
+      ) : (
+        <Catalog products={favorites} showFilters={false} infScroll={true} />
+      )}
     </div>
   );
 };

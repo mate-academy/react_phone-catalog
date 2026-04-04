@@ -25,11 +25,13 @@ export const CartPage = () => {
 
     setCartItems(items);
     saveCart(items);
+    window.dispatchEvent(new Event('cart-updated')); // ← додай
   };
 
   const handleClearCart = () => {
     setCartItems([]);
     saveCart([]);
+    window.dispatchEvent(new Event('cart-updated')); // ← додай
   };
 
   // Загальна сума тепер рахується легко:

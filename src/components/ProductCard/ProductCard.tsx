@@ -8,6 +8,7 @@ import styles from '../ProductCarousel/ProductCarousel.module.scss';
 import { Link } from 'react-router-dom';
 import { loadFavorites, saveFavorites } from '../../services/favorites';
 import { loadCart, saveCart } from '../../services/cart';
+import { BASE_URL } from '../../services/baseUrl';
 
 type Props = {
   product: Product;
@@ -125,7 +126,7 @@ export const ProductCard = ({ product, discount }: Props) => {
         <div className={styles['card-image-wrap']}>
           {/* Використовуємо нашу універсальну змінну для картинки */}
           <img
-            src={`${import.meta.env.BASE_URL}${displayImage}`}
+            src={`${BASE_URL}${displayImage}`}
             alt={`${product.name} ${product.color}`}
             className={styles['card-image']}
             // onError={e => {

@@ -1,6 +1,8 @@
 // src/services/api.js
 // const API_BASE = `api`;
-const API_BASE = `${import.meta.env.BASE_URL}api`;
+import { BASE_URL } from './baseUrl';
+
+const API_BASE = `${BASE_URL}api`;
 
 /**
  * Returns URL for specific type (phones|tablets|accessories).

@@ -10,6 +10,7 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 
 import styles from './/ProductDetailPage.module.scss';
 import { loadFavorites, saveFavorites } from '../../services/favorites';
+import { BASE_URL } from '../../services/baseUrl';
 
 interface CategoryProduct {
   id: string;
@@ -243,7 +244,7 @@ export const ProductDetailPage = () => {
           <div className={styles.detail_page__preview}>
             <div className={styles.detail_page__preview__main_photo}>
               <img
-                src={`${import.meta.env.BASE_URL}${selectedImage || product?.images?.[0]}`}
+                src={`${BASE_URL}${selectedImage || product?.images?.[0]}`}
                 alt="img"
               />
             </div>
@@ -255,7 +256,7 @@ export const ProductDetailPage = () => {
                   onClick={() => setSelectedImage(img)}
                 >
                   <img
-                    src={`${import.meta.env.BASE_URL}${img}`}
+                    src={`${BASE_URL}${img}`}
                     alt="img"
                     className={
                       selectedImage === img
