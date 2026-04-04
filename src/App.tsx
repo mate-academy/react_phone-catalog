@@ -12,18 +12,19 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => {
   // const { data: phones, loading, error, reload } = useFetch('/api/phones.json');
 
   return (
     <div className="App">
-      <h1
+      {/* <h1
         className="item-12 full-width home-title"
         style={{ visibility: 'hidden' }}
       >
         Product Catalog
-      </h1>
+      </h1> */}
       <div className="app-wrapper">
         <Header />
 
@@ -40,7 +41,7 @@ export const App = () => {
           />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<h1>404</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         {/* <h1>Product Catalog</h1> */}
 

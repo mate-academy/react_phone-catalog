@@ -81,3 +81,16 @@
     margin: 0 16px;
   }
 }
+
+.cart_empty {
+  grid-column: 1 / -1;
+  margin-top: 50px;
+
+  img {
+    width: 100%;
+    margin-bottom: 32px;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    object-position: center;
+  }
+}

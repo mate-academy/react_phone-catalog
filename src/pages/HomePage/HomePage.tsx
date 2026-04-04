@@ -53,9 +53,7 @@ export const HomePage = () => {
   return (
     <>
       <div className="grid">
-        <h1 className="item-12 full-width home-title">
-          Welcome to Nice <br /> Gadgets store!
-        </h1>
+        <h1 className="item-12 full-width home-title">Product Catalog</h1>
         <BannerCarousel />
         <ProductCarousel
           products={newProducts}
