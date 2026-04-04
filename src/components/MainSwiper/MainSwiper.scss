@@ -6,7 +6,6 @@
  width: 100%;
   height: 100%;
   grid-column: 1 / -1;
-  position: relative;
 }
 
 .swiper-slide {
@@ -74,7 +73,7 @@
 
 .custom-prev,
   .custom-next {
-    position: absolute;
+
     cursor: pointer;
     display: flex;
     align-items: center;
