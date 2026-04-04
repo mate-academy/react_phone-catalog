@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from './App';
 
 const Root = () => (
-  <Router>
+  <Router basename="/react_phone-catalog">
     <App />
   </Router>
 );

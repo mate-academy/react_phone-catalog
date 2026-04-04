@@ -149,37 +149,75 @@ export const ProductDetailPage = () => {
     });
   };
 
+  // const handleColorClick = (color: string) => {
+  //   const id = product?.id;
+
+  //   const splitId = id?.toString().split('-');
+
+  //   if (splitId) {
+  //     splitId.pop();
+  //     splitId.push(color.toLowerCase());
+  //     const newId = splitId.join('-');
+
+  //     setSelectedImage(null); // Скидаємо вибрану картинку, щоб показати першу з нового кольору
+
+  //     return newId;
+  //   }
+
+  //   return id;
+  // };
+
+  // const handleCapacityClick = (capacity: string) => {
+  //   const id = product?.id;
+
+  //   const splitId = id?.toString().split('-');
+
+  //   if (splitId) {
+  //     splitId[splitId.length - 2] = capacity.toLowerCase();
+  //     const newId = splitId.join('-');
+
+  //     return newId;
+  //   }
+
+  //   return id;
+  // };
+
   const handleColorClick = (color: string) => {
-    const id = product?.id;
+    const id = product?.id; // напр: "apple-iphone-11-64gb-space-gray"
+    const currentColor = product?.color; // напр: "space-gray"
 
-    const splitId = id?.toString().split('-');
-
-    if (splitId) {
-      splitId.pop();
-      splitId.push(color.toLowerCase());
-      const newId = splitId.join('-');
-
-      setSelectedImage(null); // Скидаємо вибрану картинку, щоб показати першу з нового кольору
-
-      return newId;
+    if (!id || !currentColor) {
+      return;
     }
 
-    return id;
+    // Замінюємо поточний колір на новий в кінці id
+    const colorSegments = currentColor.toLowerCase().split(' ').join('-');
+    const newColorSegments = color.toLowerCase().split(' ').join('-');
+
+    const newId = id.replace(
+      new RegExp(`-${colorSegments}$`),
+      `-${newColorSegments}`,
+    );
+
+    setSelectedImage(null);
+
+    return newId;
   };
 
   const handleCapacityClick = (capacity: string) => {
-    const id = product?.id;
+    const id = product?.id; // напр: "apple-iphone-11-64gb-space-gray"
+    const currentCapacity = product?.capacity; // напр: "64GB"
 
-    const splitId = id?.toString().split('-');
-
-    if (splitId) {
-      splitId[splitId.length - 2] = capacity.toLowerCase();
-      const newId = splitId.join('-');
-
-      return newId;
+    if (!id || !currentCapacity) {
+      return;
     }
 
-    return id;
+    const newId = id.replace(
+      new RegExp(currentCapacity.toLowerCase()),
+      capacity.toLowerCase(),
+    );
+
+    return newId;
   };
 
   const handleAdd = () => {
@@ -205,7 +243,7 @@ export const ProductDetailPage = () => {
           <div className={styles.detail_page__preview}>
             <div className={styles.detail_page__preview__main_photo}>
               <img
-                src={`/${selectedImage || product?.images?.[0]}`}
+                src={`${import.meta.env.BASE_URL}${selectedImage || product?.images?.[0]}`}
                 alt="img"
               />
             </div>
@@ -217,7 +255,7 @@ export const ProductDetailPage = () => {
                   onClick={() => setSelectedImage(img)}
                 >
                   <img
-                    src={`/${img}`}
+                    src={`${import.meta.env.BASE_URL}${img}`}
                     alt="img"
                     className={
                       selectedImage === img
@@ -255,7 +293,7 @@ export const ProductDetailPage = () => {
                       onClick={() => {
                         const newId = handleColorClick(color);
 
-                        navigate(`/phones/${newId}`);
+                        navigate(`/${product?.category}/${newId}`);
                       }}
                     ></span>
                   );
@@ -275,7 +313,7 @@ export const ProductDetailPage = () => {
                       onClick={() => {
                         const newId = handleCapacityClick(capacity);
 
-                        navigate(`/phones/${newId}`);
+                        navigate(`/${product?.category}/${newId}`);
                       }}
                     >
                       {capacity}

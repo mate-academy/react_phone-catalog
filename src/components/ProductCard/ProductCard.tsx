@@ -125,7 +125,7 @@ export const ProductCard = ({ product, discount }: Props) => {
         <div className={styles['card-image-wrap']}>
           {/* Використовуємо нашу універсальну змінну для картинки */}
           <img
-            src={`/${displayImage}`}
+            src={`${import.meta.env.BASE_URL}${displayImage}`}
             alt={`${product.name} ${product.color}`}
             className={styles['card-image']}
             // onError={e => {

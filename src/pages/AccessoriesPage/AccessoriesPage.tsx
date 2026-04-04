@@ -12,11 +12,11 @@ export const AccessoriesPage = () => {
   useEffect(() => {
     fetchProducts()
       .then(data => {
-        const phones = data.filter(
+        const accessories = data.filter(
           (product: Product) => product.category === 'accessories',
         );
 
-        setProducts(phones);
+        setProducts(accessories);
       })
       .catch(error => {
         throw error;
@@ -28,7 +28,7 @@ export const AccessoriesPage = () => {
       <div className="grid">
         <Breadcrumbs />
         <div className="accessories-header">
-          <div className="accessories-header__title">Tablets</div>
+          <div className="accessories-header__title">Accessories</div>
           <div className="accessories-header__proucts-count">
             {products.length} models
           </div>
