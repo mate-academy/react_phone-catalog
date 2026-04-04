@@ -9,27 +9,33 @@ export const CartPage = () => {
   const [clickOnCheckout, setClickOnCheckout] = useState(false);
   const [cartWithCount, setCartWithCount] = useState(() => {
     const stored = localStorage.getItem('cartWithCount');
-    if (stored) return JSON.parse(stored);
+
+    if (stored) {
+      return JSON.parse(stored);
+    }
+
     return cartItems.map(item => ({ ...item, count: 1 }));
   });
 
-useEffect(() => {
-  setCartWithCount(prev => {
-    // 1. Створюємо список ID, які вже є в кошику з підрахунком
-    const existingIds = new Set(prev.map(item => item.id));
+  useEffect(() => {
+    setCartWithCount(prev => {
+      // 1. Створюємо список ID, які вже є в кошику з підрахунком
+      const existingIds = new Set(prev.map(item => item.id));
 
-    // 2. Знаходимо нові товари, яких ще немає в локальному стейті
-    const newItems = cartItems
-      .filter(item => !existingIds.has(item.id))
-      .map(item => ({ ...item, count: 1 }));
+      // 2. Знаходимо нові товари, яких ще немає в локальному стейті
+      const newItems = cartItems
+        .filter(item => !existingIds.has(item.id))
+        .map(item => ({ ...item, count: 1 }));
 
-    // 3. Якщо нових товарів немає, повертаємо старий стейт (щоб не було зайвих рендерів)
-    if (newItems.length === 0) return prev;
+      // 3. Якщо нових товарів немає, повертаємо старий стейт (щоб не було зайвих рендерів)
+      if (newItems.length === 0) {
+        return prev;
+      }
 
-    // 4. Додаємо нові товари до існуючих
-    return [...prev, ...newItems];
-  });
-}, [cartItems]); // Слідкуємо за змінами в контексті
+      // 4. Додаємо нові товари до існуючих
+      return [...prev, ...newItems];
+    });
+  }, [cartItems]); // Слідкуємо за змінами в контексті
 
   const deletePhone = (itemToDelete: Gargets) => {
     removeFromCart(itemToDelete.id); // Видаляємо з глобального списку
@@ -59,104 +65,85 @@ useEffect(() => {
 
   return (
     <div className="cart">
-           {' '}
+      {' '}
       <div className="cart__nav">
-                <span className="cart__arrow"></span>       {' '}
+        <span className="cart__arrow"></span>       {' '}
         <NavLink to="/phones" className="cart__back">
                     Back        {' '}
-        </NavLink>
-             {' '}
+        </NavLink>{' '}
       </div>
-            <h2 className="cart__h2">Cart</h2>     {' '}
+      <h2 className="cart__h2">Cart</h2>     {' '}
       <div className="cart__block">
-               {' '}
+        {' '}
         <div className="cart__items">
-                   {' '}
+          {' '}
           {cartWithCount.length === 0 && (
             <img
               src="./img/cart-is-empty.png"
               alt="cart__empty"
               className="cart__empty"
             />
-          )}
-                   {' '}
+          )}{' '}
           {cartWithCount.map((item, index) => (
             <div key={index} className="cart__position">
-                           {' '}
+              {' '}
               <div className="cart__close">
-                               {' '}
+                {' '}
                 <img
                   src="./img/Close.png"
                   alt="close-button"
                   onClick={() => deletePhone(item)}
-                />
-                             {' '}
-              </div>
-                           {' '}
+                />{' '}
+              </div>{' '}
               <img src={item.images[0]} alt="" className="cart__image" />       
-                    <h3 className="cart__name-garget">{item.name}</h3>         
-                 {' '}
+              <h3 className="cart__name-garget">{item.name}</h3>         {' '}
               <div className="cart__counter">
-                               {' '}
+                {' '}
                 <button
                   className="cart__button-minus"
                   onClick={() => handleDecrement(item.id)}
                 >
                                     -                {' '}
-                </button>
-                               {' '}
-                <div className="cart__count-garget">{item.count}</div>         
-                     {' '}
+                </button>{' '}
+                <div className="cart__count-garget">{item.count}</div>         {' '}
                 <button
                   className="cart__button-plus"
                   onClick={() => handleIncrement(item.id)}
                 >
                                     +                {' '}
-                </button>
-                             {' '}
-              </div>
-                           {' '}
+                </button>{' '}
+              </div>{' '}
               <div className="cart__cost">
                                 ${item.priceRegular * item.count}             {' '}
-              </div>
-                         {' '}
+              </div>{' '}
             </div>
-          ))}
-                 {' '}
-        </div>
-               {' '}
+          ))}{' '}
+        </div>{' '}
         {cartWithCount.length > 0 && (
           <div className="cart__block-total">
-                        <div className="cart__total-amount">${total}</div>     
-                 {' '}
+            <div className="cart__total-amount">${total}</div>     {' '}
             <div className="cart__count-item">
                             Total for              {' '}
-              {cartWithCount.reduce((sum, item) => sum + item.count, 0)} items  
-                       {' '}
+              {cartWithCount.reduce((sum, item) => sum + item.count, 0)} items  {' '}
             </div>
-                        <div className="cart__small-line"></div>           {' '}
+            <div className="cart__small-line"></div>           {' '}
             <button
               className="cart__button-checkout"
               onClick={() => setClickOnCheckout(true)}
               disabled={clickOnCheckout}
             >
-                            {clickOnCheckout ? 'Processing...' : 'Checkout'}   
-                     {' '}
-            </button>
-                     {' '}
+              {clickOnCheckout ? 'Processing...' : 'Checkout'}   {' '}
+            </button>{' '}
           </div>
-        )}
-             {' '}
+        )}{' '}
       </div>
-            {/* === Модальне вікно винесене окремо — не змінює layout === */}   
-       {' '}
+      {/* === Модальне вікно винесене окремо — не змінює layout === */}   {' '}
       {clickOnCheckout && (
         <div className="cart__modal-widnow">
-                   {' '}
-          <p className="cart__questions">Do you want to clear the Cart?</p>     
-             {' '}
+          {' '}
+          <p className="cart__questions">Do you want to clear the Cart?</p>     {' '}
           <div className="cart__position-button">
-                       {' '}
+            {' '}
             <button
               className="cart__button-yes"
               onClick={() => {
@@ -167,20 +154,16 @@ useEffect(() => {
               }}
             >
                             Yes            {' '}
-            </button>
-                       {' '}
+            </button>{' '}
             <button
               className="cart__button-no"
               onClick={() => setClickOnCheckout(false)}
             >
                             No            {' '}
-            </button>
-                     {' '}
-          </div>
-                 {' '}
+            </button>{' '}
+          </div>{' '}
         </div>
-      )}
-         {' '}
+      )}{' '}
     </div>
   );
 };

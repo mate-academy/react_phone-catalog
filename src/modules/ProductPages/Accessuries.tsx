@@ -42,12 +42,14 @@ export const Accessories = () => {
   // Синхронізуємо стан sortBy зі значенням у URL
   useEffect(() => {
     const sortParam = searchParams.get('sort') ?? 'newest';
+
     setSortBy(sortParam);
   }, [searchParams]);
 
   // Синхронізуємо itemsPerPage зі значенням у URL і довжиною accessories
   useEffect(() => {
     const limitParam = searchParams.get('perPage');
+
     if (limitParam === 'all') {
       setItemsPerPage(accessories.length);
     } else if (limitParam) {
@@ -58,6 +60,7 @@ export const Accessories = () => {
   // Синхронізуємо currentPage зі значенням у URL
   useEffect(() => {
     const pageParam = Number(searchParams.get('page')) || 1;
+
     setCurrentPage(pageParam);
   }, [searchParams]);
 
@@ -119,7 +122,9 @@ export const Accessories = () => {
 
     setSearchParams(params => {
       const updated = new URLSearchParams(params);
+
       updated.set('page', String(pageNumber));
+
       return updated;
     });
 
@@ -167,9 +172,11 @@ export const Accessories = () => {
             value={sortBy}
             onChange={e => {
               const sortType = e.target.value;
+
               setSortBy(sortType);
 
               const newParams = new URLSearchParams(searchParams.toString());
+
               newParams.set('sort', sortType);
               newParams.set('page', '1'); // при зміні сортування скидаємо сторінку
               setSearchParams(newParams);
@@ -192,12 +199,15 @@ export const Accessories = () => {
             }
             onChange={e => {
               const perPageValue = e.target.value;
+
               setCurrentPage(1);
 
               setSearchParams(params => {
                 const updated = new URLSearchParams(params);
+
                 updated.set('perPage', perPageValue);
                 updated.set('page', '1'); // скидаємо сторінку при зміні кількості
+
                 return updated;
               });
             }}

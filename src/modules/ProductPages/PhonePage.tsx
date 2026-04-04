@@ -23,9 +23,18 @@ export const PhonePage = () => {
   );
   const [sortBy, setSortBy] = useState(sortParam ?? 'newest');
   const [itemsPerPage, setItemsPerPage] = useState(() => {
-    if (perPageParam === 'all') return Infinity; // Зроблю Infinity, щоб коректно відрізати всі
-    if (perPageParam) return Number(perPageParam);
-    if (itemsParam) return Number(itemsParam);
+    if (perPageParam === 'all') {
+      return Infinity;
+    } // Зроблю Infinity, щоб коректно відрізати всі
+
+    if (perPageParam) {
+      return Number(perPageParam);
+    }
+
+    if (itemsParam) {
+      return Number(itemsParam);
+    }
+
     return 4;
   });
 
@@ -47,7 +56,9 @@ export const PhonePage = () => {
 
   // Сортування телефонів
   useEffect(() => {
-    if (!phones.length) return;
+    if (!phones.length) {
+      return;
+    }
 
     const sortedPhones = [...phones];
 
@@ -100,10 +111,13 @@ export const PhonePage = () => {
 
   // Обробка зміни сторінки
   const handlePageChange = (pageNumber: number) => {
-    if (pageNumber < 1 || pageNumber > totalPages) return;
+    if (pageNumber < 1 || pageNumber > totalPages) {
+      return;
+    }
 
     setSearchParams(params => {
       const updated = new URLSearchParams(params);
+
       updated.set('page', String(pageNumber));
       // Обов’язково зберігаємо інші параметри
       if (itemsPerPage === Infinity) {
@@ -111,7 +125,9 @@ export const PhonePage = () => {
       } else {
         updated.set('perPage', String(itemsPerPage));
       }
+
       updated.set('sort', sortBy);
+
       return updated;
     });
     setCurrentPage(pageNumber);
@@ -123,9 +139,11 @@ export const PhonePage = () => {
 
     setSearchParams(params => {
       const updated = new URLSearchParams(params);
+
       updated.set('perPage', perPageValue);
       updated.set('page', '1'); // Переходимо на першу сторінку при зміні кількості
       updated.set('sort', sortBy);
+
       return updated;
     });
 
@@ -139,12 +157,14 @@ export const PhonePage = () => {
 
     setSearchParams(params => {
       const updated = new URLSearchParams(params);
+
       updated.set('sort', sortType);
       updated.set('page', '1'); // Переходимо на першу сторінку при зміні сортування
       updated.set(
         'perPage',
         itemsPerPage === Infinity ? 'all' : String(itemsPerPage),
       );
+
       return updated;
     });
     setCurrentPage(1);
@@ -246,6 +266,7 @@ export const PhonePage = () => {
             value={itemsPerPage === Infinity ? 'all' : itemsPerPage.toString()}
             onChange={e => {
               const val = e.target.value;
+
               handleItemsPerPageChange(val === 'all' ? 'all' : Number(val));
             }}
           >

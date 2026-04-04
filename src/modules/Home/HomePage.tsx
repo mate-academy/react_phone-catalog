@@ -16,8 +16,14 @@ export const HomePage = () => {
   const [clickOnButton, setClickOnButton] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(true);
   const [phones, setPhones] = useState<Gargets[]>([]);
-  const { cartItems, favoriteItems, addToCart, removeFromCart, addFavorite, removeFavorite } =
-    useCart();
+  const {
+    cartItems,
+    favoriteItems,
+    addToCart,
+    removeFromCart,
+    addFavorite,
+    removeFavorite,
+  } = useCart();
   const navigate = useNavigate();
 
   const images = ['./img/Banner.png', './img/banner2.jpg', './img/banner3.jpg'];
@@ -122,7 +128,6 @@ export const HomePage = () => {
                         removeFromCart(phone.id);
                       }
                     }}
-                    
                   >
                     {isInCart ? 'Added to cart' : 'Add to cart'}
                   </NavLink>
