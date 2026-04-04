@@ -43,6 +43,7 @@ export const CartPage = () => {
               key={item.id}
               className={`${styles['cart-item']} ${styles.cartPage__list}`}
             >
+
               <CartItems
                 product={item.product}
                 quantity={item.quantity}

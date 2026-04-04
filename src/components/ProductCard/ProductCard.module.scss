@@ -4,6 +4,7 @@
 
 .productCard {
    @include page-grid;
+
     gap: 16px;
     max-width: 212px;
    font-family: Mont, sans-serif;
@@ -157,11 +158,10 @@
 
   &__bottom {
   display: flex;
-  align-items: center;
-  align-items: flex-start ;
+  align-items: end;
+  align-items: flex-end;
+  justify-content: flex-end;
 
-///  gap: 8px;
- // padding-top:  8px;
   box-sizing: border-box;
 
  // padding-block: 8px;

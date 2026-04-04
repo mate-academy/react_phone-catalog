@@ -69,6 +69,7 @@
     box-sizing: border-box;
 
     @include page-grid;
+
     gap: 16px;
     grid-column: 1/-1;
 

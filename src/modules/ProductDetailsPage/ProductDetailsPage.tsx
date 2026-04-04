@@ -216,13 +216,10 @@ export const ProductDetailsPage = () => {
                       aria-label="Available colors"
                     >
                       <fieldset className={styles.fieldset}>
-                        <label className={styles.label} htmlFor="color">
-                          Available colors
-                        </label>
+                        <span className={styles.label}>Available colors</span>
                         {product.colorsAvailable.map(color => (
-                          <span key={color} className={styles.colorOption}>
+                          <label key={color} className={styles.colorOption}>
                             <input
-                              id="color"
                               type="radio"
                               name="color"
                               value={color}
@@ -234,7 +231,7 @@ export const ProductDetailsPage = () => {
                               style={{ backgroundColor: color }}
                               aria-hidden="true"
                             />
-                          </span>
+                          </label>
                         ))}
                       </fieldset>
                       <p
@@ -293,9 +290,9 @@ export const ProductDetailsPage = () => {
                     <div className={styles.productDetailsPage__bottom}>
                       <AddToCartButton
                         onClick={() => addToCart(product)}
-                        isInCart={!!items.find(
-                          item => item.product.id === product.id,
-                        )}
+                        isInCart={
+                          !!items.find(item => item.product.id === product.id)
+                        }
                         removeFromCart={() =>
                           removeFromCart(String(product.id))
                         }

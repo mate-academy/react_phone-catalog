@@ -4,7 +4,6 @@
   .button {
 
     &--add-to-card {
-    height: 40px;
     margin: 0;
     white-space: nowrap;
     margin-right: 8px;
@@ -24,7 +23,7 @@
       }
 
       @include on-desktop {
-         max-width: 160px;
+         max-width: 125px;
       }
 
     }
