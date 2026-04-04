@@ -219,6 +219,8 @@ export const ProductDetailsPage = () => {
                         <span className={styles.label}>Available colors</span>
                         {product.colorsAvailable.map(color => (
                           <label key={color} className={styles.colorOption}>
+                            {' '}
+                            &nbsp;
                             <input
                               type="radio"
                               name="color"

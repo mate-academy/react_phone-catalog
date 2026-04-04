@@ -21,6 +21,7 @@ const App = () => {
       <div className="app-container">
         <main className="main">
           <div className="main__content">
+            <h1 className="visually-hidden">Product Catalog</h1>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route
