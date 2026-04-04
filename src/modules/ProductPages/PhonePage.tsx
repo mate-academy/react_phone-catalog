@@ -214,7 +214,10 @@ export const PhonePage = () => {
     <div className="gargets">
       <div className="gargets__back-to-home">
         <NavLink to="/" className="gargets__home-img" />
-        <span className="gargets__arrow"></span>
+        <img
+          src="../../../public/img/arrow.png"
+          className="gargets__arrow"
+        ></img>
         <span className="gargets__back-home-h2">Phones</span>
       </div>
       <h1 className="gargets__mobile-phones-h1">Mobile phones</h1>
@@ -264,17 +267,15 @@ export const PhonePage = () => {
           {'<'}
         </button>
 
-        <div className="page-buttons">
-          {getVisiblePages().map(page => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`page-btn ${currentPage === page ? 'active' : ''}`}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+        {getVisiblePages().map(page => (
+          <button
+            key={page}
+            onClick={() => handlePageChange(page)}
+            className={`page-btn ${currentPage === page ? 'active' : ''}`}
+          >
+            {page}
+          </button>
+        ))}
 
         <button
           onClick={() => handlePageChange(currentPage + 1)}

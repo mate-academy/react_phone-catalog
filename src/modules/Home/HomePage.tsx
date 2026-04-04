@@ -16,7 +16,7 @@ export const HomePage = () => {
   const [clickOnButton, setClickOnButton] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(true);
   const [phones, setPhones] = useState<Gargets[]>([]);
-  const { cartItems, favoriteItems, addToCart, addFavorite, removeFavorite } =
+  const { cartItems, favoriteItems, addToCart, removeFromCart, addFavorite, removeFavorite } =
     useCart();
   const navigate = useNavigate();
 
@@ -118,9 +118,11 @@ export const HomePage = () => {
                       e.preventDefault();
                       if (!isInCart) {
                         addToCart(phone);
+                      } else {
+                        removeFromCart(phone.id);
                       }
                     }}
-                    style={{ pointerEvents: isInCart ? 'none' : 'auto' }}
+                    
                   >
                     {isInCart ? 'Added to cart' : 'Add to cart'}
                   </NavLink>

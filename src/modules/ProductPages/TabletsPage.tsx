@@ -155,7 +155,7 @@ export const TabletsPage = () => {
     <div className="gargets">
       <div className="gargets__back-to-home">
         <NavLink to="/" className="gargets__home-img" />
-        <span className="gargets__arrow"></span>
+        <img src='../../../public/img/arrow.png' className="gargets__arrow"></img>
         <span className="gargets__back-home-h2">Tablets</span>
       </div>
       <h1 className="gargets__mobile-phones-h1">Tablets</h1>
@@ -190,13 +190,11 @@ export const TabletsPage = () => {
             {'<'}
           </button>
 
-          <div className="page-buttons">
             {getVisiblePages().map(page => (
               <button key={page} onClick={() => handlePageChange(page)} className={`page-btn ${currentPage === page ? 'active' : ''}`}>
                 {page}
               </button>
             ))}
-          </div>
 
           <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
             {'>'}

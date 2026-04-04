@@ -10,6 +10,7 @@ export const Accessories = () => {
   const [reloadButton, setReloadButton] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const [changePag, setChangePag] = useState(1);
 
   // Ініціалізуємо стани зі значень URL або дефолтні
   const sortFromUrl = searchParams.get('sort') ?? 'newest';
@@ -106,7 +107,10 @@ export const Accessories = () => {
   // Розрахунок елементів для поточної сторінки
   const indexOfLastPhone = currentPage * itemsPerPage;
   const indexOfFirstPhone = indexOfLastPhone - itemsPerPage;
-  const currentAccesssuries = accessories.slice(indexOfFirstPhone, indexOfLastPhone);
+  const currentAccesssuries = accessories.slice(
+    indexOfFirstPhone,
+    indexOfLastPhone,
+  );
 
   const handlePageChange = (pageNumber: number) => {
     if (pageNumber < 1 || pageNumber > totalPages) {
@@ -144,7 +148,10 @@ export const Accessories = () => {
     <div className="gargets">
       <div className="gargets__back-to-home">
         <NavLink to="/" className="gargets__home-img" />
-        <span className="gargets__arrow"></span>
+        <img
+          src="../../../public/img/arrow.png"
+          className="gargets__arrow"
+        ></img>
         <span className="gargets__back-home-h2">Accessories</span>
       </div>
       <h1 className="gargets__mobile-phones-h1">Accessories</h1>
@@ -180,7 +187,9 @@ export const Accessories = () => {
             name="choose"
             id=""
             className="gargets__items-on-page-choose-item"
-            value={itemsPerPage === accessories.length ? 'all' : String(itemsPerPage)}
+            value={
+              itemsPerPage === accessories.length ? 'all' : String(itemsPerPage)
+            }
             onChange={e => {
               const perPageValue = e.target.value;
               setCurrentPage(1);
@@ -211,17 +220,15 @@ export const Accessories = () => {
           {'<'}
         </button>
 
-        <div className="page-buttons">
-          {getVisiblePages().map(page => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`page-btn ${currentPage === page ? 'active' : ''}`}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+        {getVisiblePages().map(page => (
+          <button
+            key={page}
+            onClick={() => handlePageChange(page)}
+            className={`page-btn ${currentPage === page ? 'active' : ''}`}
+          >
+            {page}
+          </button>
+        ))}
 
         <button
           onClick={() => handlePageChange(currentPage + 1)}

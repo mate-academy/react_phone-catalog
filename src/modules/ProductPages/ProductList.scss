@@ -143,7 +143,7 @@ body {
     line-height: 100%;
   }
 
-  &-add-to-cart {
+  .-add-to-cart {
     text-decoration: none;
     color: white;
     background-color: #4219d0;
@@ -156,6 +156,7 @@ body {
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
+    cursor: pointer;
 
     &:hover {
       text-decoration: none;
@@ -171,6 +172,7 @@ body {
       font-weight: 700;
       line-height: 21px;
       border: 1px solid #b4bdc3;
+      cursor: pointer;
     }
   }
 
@@ -341,6 +343,7 @@ body {
       font-size: 14px;
       font-weight: 700;
       line-height: 21px;
+      cursor: pointer;
 
       &:hover {
         text-decoration: none;
@@ -356,6 +359,7 @@ body {
         font-weight: 700;
         line-height: 21px;
         border: 1px solid #b4bdc3;
+        cursor: pointer;
       }
     }
 
@@ -510,6 +514,7 @@ body {
       font-size: 14px;
       font-weight: 700;
       line-height: 21px;
+      cursor: pointer;
 
       &:hover {
         text-decoration: none;
@@ -525,6 +530,7 @@ body {
         font-weight: 700;
         line-height: 21px;
         border: 1px solid #b4bdc3;
+        cursor: pointer;
       }
     }
 

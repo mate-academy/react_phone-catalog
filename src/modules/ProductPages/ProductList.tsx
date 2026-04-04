@@ -69,9 +69,11 @@ export const ProductList: React.FC<ProductListProps> = ({
                   e.preventDefault();
                   if (!isInCart) {
                     addToCart(item);
+                  } else {
+                     removeFromCart(item.id);
                   }
 
-                  removeFromCart(item.id);
+                 
                 }}
                 style={{ pointerEvents: 'auto' }}
               >
