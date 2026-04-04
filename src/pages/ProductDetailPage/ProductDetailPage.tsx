@@ -11,6 +11,7 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 import styles from './/ProductDetailPage.module.scss';
 import { loadFavorites, saveFavorites } from '../../services/favorites';
 import { BASE_URL } from '../../services/baseUrl';
+import { loadCart, saveCart } from '../../services/cart';
 
 interface CategoryProduct {
   id: string;
@@ -42,12 +43,15 @@ export const ProductDetailPage = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState<CategoryProduct>();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [added, setAdded] = useState(false);
+  // const [added, setAdded] = useState(false);
   const [idProducts, setIdProducts] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
 
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
   const [favProduct, setFavProduct] = useState<Product | null>(null);
+
+  const [cart, setCart] = useState<Product[]>(() => loadCart());
+  const inCart = cart.some(p => p.itemId === productId);
 
   const liked = favorites.some(p => p.itemId === productId);
 
@@ -150,38 +154,24 @@ export const ProductDetailPage = () => {
     });
   };
 
-  // const handleColorClick = (color: string) => {
-  //   const id = product?.id;
+  const toggleCart = () => {
+    if (!favProduct) {
+      return;
+    }
 
-  //   const splitId = id?.toString().split('-');
+    setCart(prev => {
+      const isInCart = prev.some(
+        item => String(item.id) === String(favProduct.id),
+      );
+      const next = isInCart
+        ? prev.filter(item => String(item.id) !== String(favProduct.id))
+        : [...prev, favProduct];
 
-  //   if (splitId) {
-  //     splitId.pop();
-  //     splitId.push(color.toLowerCase());
-  //     const newId = splitId.join('-');
+      saveCart(next);
 
-  //     setSelectedImage(null); // Скидаємо вибрану картинку, щоб показати першу з нового кольору
-
-  //     return newId;
-  //   }
-
-  //   return id;
-  // };
-
-  // const handleCapacityClick = (capacity: string) => {
-  //   const id = product?.id;
-
-  //   const splitId = id?.toString().split('-');
-
-  //   if (splitId) {
-  //     splitId[splitId.length - 2] = capacity.toLowerCase();
-  //     const newId = splitId.join('-');
-
-  //     return newId;
-  //   }
-
-  //   return id;
-  // };
+      return next;
+    });
+  };
 
   const handleColorClick = (color: string) => {
     const id = product?.id; // напр: "apple-iphone-11-64gb-space-gray"
@@ -221,10 +211,10 @@ export const ProductDetailPage = () => {
     return newId;
   };
 
-  const handleAdd = () => {
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1500);
-  };
+  // const handleAdd = () => {
+  //   setAdded(true);
+  //   setTimeout(() => setAdded(false), 1500);
+  // };
 
   const HeartIcon = ({ filled }: { filled: boolean }) =>
     filled ? (
@@ -330,14 +320,14 @@ export const ProductDetailPage = () => {
               </span>
               <div className={styles['card-actions']}>
                 <button
-                  className={`${styles['btn-add']} ${added ? styles.added : ''}`}
+                  className={`${styles['btn-add']} ${inCart ? styles.added : ''}`}
                   onClick={e => {
                     e.stopPropagation();
                     e.preventDefault();
-                    handleAdd();
+                    toggleCart();
                   }}
                 >
-                  {added ? '✓ Added' : 'Add to cart'}
+                  {inCart ? '✓ Added' : 'Add to cart'}
                 </button>
                 <button
                   className={`${styles['btn-like']} ${liked ? styles.liked : ''}`}

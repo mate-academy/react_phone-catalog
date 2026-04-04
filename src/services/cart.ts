@@ -22,6 +22,7 @@ export const loadCart = (): Product[] => {
 export const saveCart = (product: Product[]) => {
   try {
     localStorage.setItem(CART_KEY, JSON.stringify(product));
+    window.dispatchEvent(new Event('cart-updated')); // ← один раз тут
   } catch (e) {
     console.error('saveCart error', e);
   }
