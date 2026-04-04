@@ -3,7 +3,7 @@
 @import 'swiper/css/navigation';
 
 .main-swiper {
- width: 100%;
+  width: 100%;
   height: 100%;
   grid-column: 1 / -1;
 }
@@ -12,7 +12,6 @@
   text-align: center;
   font-size: 18px;
   background: black;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,12 +44,10 @@
   width: 100%;
   height: 400px;
   background: #0b0d17;
-
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 
 .slide {
   display: flex;
@@ -58,7 +55,6 @@
   justify-content: space-between;
   height: 100%;
   color: white;
-
 }
 
 .custom-prev {
@@ -70,31 +66,29 @@
   background-image: url('../../../public/img/icons/icon--slider--right.png');
 }
 
-
 .custom-prev,
-  .custom-next {
-
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    background-color: transparent;
+.custom-next {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  background-color: transparent;
   border: none;
   padding: 0;
-   width: 40px;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+  width: 40px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .custom-prev {
-    left: 10px;
-  }
+  left: 10px;
+}
 
 .custom-next {
-    right: 10px;
-  }
+  right: 10px;
+}
 
 .slide__content--1 {
   width: 50%;
@@ -118,19 +112,19 @@
 
 .slide__title--1 {
   font-size: 28px;
-    color: #8b5cf6;
-    margin-bottom: 10px;
+  color: #8b5cf6;
+  margin-bottom: 10px;
 }
 
 .slide__title--2 {
-color: white;
-font-size: 28px;
+  color: white;
+  font-size: 28px;
 }
 
 .slide__text--1 {
-   margin-bottom: 20px;
-    opacity: 0.8;
-    color: white;
+  margin-bottom: 20px;
+  opacity: 0.8;
+  color: white;
 }
 
 .slide__text--2 {
@@ -138,20 +132,20 @@ font-size: 28px;
 }
 
 .slide__button {
-   padding: 12px 24px;
-    border-radius: 30px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .slide__button:hover {
-   border: 2px solid #444;
-      color: black;
+  border: 2px solid #444;
+  color: black;
 }
 
 .slide__image {
-    height: 100px;
-    object-fit: contain;
+  height: 100px;
+  object-fit: contain;
 }
