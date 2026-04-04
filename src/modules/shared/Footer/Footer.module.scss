@@ -2,19 +2,27 @@
 @use '@/styles/mixins' as *;
 
 .footer {
+  background: $color-white;
+  box-shadow: 0 -1px 0 $color-elements;
+}
+
+.footerInner {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: $spacing-xl;
   padding: $spacing-xl $spacing-md;
-  background: $color-white;
-  box-shadow: 0 -1px 0 $color-elements;
 
   @include media-up($breakpoint-tablet) {
     flex-direction: row;
-    justify-content: center;
     gap: 0;
-    padding: $spacing-xl;
+    padding: $spacing-xl $spacing-lg;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    max-width: $content-max-width;
+    padding: $spacing-xl $content-padding-desktop;
+    margin-inline: auto;
   }
 }
 
@@ -49,7 +57,7 @@
 
 .navLink {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -75,7 +83,7 @@
 
 .backToTopText {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 15px;
   text-align: right;
   color: $color-secondary;
