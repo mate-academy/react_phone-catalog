@@ -40,7 +40,6 @@
   transition: 0.4s ease-in-out;
 }
 
-/* Контейнер вращения */
 .orbit {
   transition: 0.8s ease-in-out;
 
@@ -54,7 +53,6 @@
   }
 }
 
-/* 🌙 Луна */
 .moon {
   position: absolute;
   top: 0;
@@ -65,7 +63,6 @@
   transform: translateX(-50%);
 }
 
-/* ☀️ Солнце */
 .sun {
   position: absolute;
   bottom: 0;
@@ -75,13 +72,3 @@
   border-radius: 50%;
   transform: translateX(-50%);
 }
-
-/* 🔄 Вращение */
-// @keyframes rotate {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(180deg);
-//   }
-// }
