@@ -90,26 +90,26 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
     const target = allProducts.find(
       p =>
-        p.itemId === product.namespaceId &&
+        p.itemId.includes(product.namespaceId) &&
         p.capacity === product.capacity &&
         normalize(p.color) === normalize(newColor),
     );
 
     if (target) {
-      navigate(`/product/${target.id}`);
+      navigate(`/product/${target.itemId}`);
     }
   };
 
   const onSelectCapacity = (newCapacity: string) => {
     const target = allProducts.find(
       p =>
-        p.itemId === product.namespaceId &&
+        p.itemId.includes(product.namespaceId) &&
         p.color === product.color &&
         p.capacity === newCapacity,
     );
 
     if (target) {
-      navigate(`/product/${target.id}`);
+      navigate(`/product/${target.itemId}`);
     }
   };
 
@@ -142,7 +142,9 @@ export const ProductDetailsPage: React.FC<Props> = ({
     color: product.color,
   };
 
-  const currentProduct = allProducts.find(p => p.itemId === product.id);
+  const currentProduct = allProducts.find(p =>
+    p.itemId.includes(product.namespaceId),
+  );
 
   return (
     <Container>
