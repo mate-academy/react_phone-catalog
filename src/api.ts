@@ -6,20 +6,21 @@ import { useEffect, useState } from 'react';
 
 const BASE_URL = 'https://yar14k.github.io/react_phone-catalog/';
 
+
 export const getPhones = async (): Promise<Phone[]> => {
-  const res = await fetch('/api/phones.json');
+  const res = await fetch(`${BASE_URL}api/phones.json`);
 
   return res.json();
 };
 
 export const getTablets = async (): Promise<Tablet[]> => {
-  const res = await fetch('/api/tablets.json');
+  const res = await fetch(`${BASE_URL}api/tablets.json`);
 
   return res.json();
 };
 
 export const getAccessories = async (): Promise<Accessory[]> => {
-  const res = await fetch('/api/accessories.json');
+  const res = await fetch(`${BASE_URL}api/accessories.json`);
 
   return res.json();
 };
