@@ -4,8 +4,9 @@ import { Accessory } from './types/Accessory';
 import { Product } from './types/Product';
 import { useEffect, useState } from 'react';
 
-const BASE_URL = 'https://yar14k.github.io/react_phone-catalog/';
-
+// eslint-disable-next-line max-len
+const BASE_URL =
+  'https://yar14k.github.io/react_phone-catalog/api/products.json';
 
 export const getPhones = async (): Promise<Phone[]> => {
   const res = await fetch(`${BASE_URL}api/phones.json`);
