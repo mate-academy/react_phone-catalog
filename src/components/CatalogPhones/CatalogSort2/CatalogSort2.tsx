@@ -15,30 +15,35 @@ const CatalogSort2 = ({
 }: CatalogSort2Props) => {
   return (
     <>
-      <div className="catalog__select">
-        <div
-          className="catalog__select--selected"
-          onClick={() => setIsPageOpen(prev => !prev)}
-        >
-          {itemsPerPage === 'all' ? 'All' : itemsPerPage}
-        </div>
-        {IsPageOpen && (
-          <div className="catalog__select--options">
-            {[4, 8, 16, 'all'].map(value => (
-              <div
-                key={value}
-                className="catalog__option"
-                onClick={() => {
-                  setItemsPerPage(value as number | 'all');
-                  setCurrentPage(1);
-                  setIsPageOpen(false);
-                }}
-              >
-                {value === 'all' ? 'All' : value}
-              </div>
-            ))}
+      <div className="catalog__sort sort--2">
+        <label className="catalog__title--sort" htmlFor="items-per-page">
+          Items on page
+        </label>
+        <div className="catalog__select">
+          <div
+            className="catalog__select--selected"
+            onClick={() => setIsPageOpen(prev => !prev)}
+          >
+            {itemsPerPage === 'all' ? 'All' : itemsPerPage}
           </div>
-        )}
+          {IsPageOpen && (
+            <div className="catalog__select--options">
+              {[4, 8, 16, 'all'].map(value => (
+                <div
+                  key={value}
+                  className="catalog__option"
+                  onClick={() => {
+                    setItemsPerPage(value as number | 'all');
+                    setCurrentPage(1);
+                    setIsPageOpen(false);
+                  }}
+                >
+                  {value === 'all' ? 'All' : value}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

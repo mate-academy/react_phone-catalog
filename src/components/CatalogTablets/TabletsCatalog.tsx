@@ -5,20 +5,21 @@ import { getProducts } from '../../api';
 import { Product } from '../../types/Product';
 import HomeIcon from '../../../public/img/icons/icon--home.png';
 import { Link } from 'react-router-dom';
+import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
+import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
+import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 
 const TabletsCatalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [IsSortOpen, setIsSortOpen] = useState(false);
+  const [IsPageOpen, setIsPageOpen] = useState(false);
 
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
-
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortType(e.target.value as 'newest' | 'oldest');
-  };
 
   const productTablets = products.filter(
     product => product.category === 'tablets',
@@ -30,13 +31,6 @@ const TabletsCatalog = () => {
 
     return product1.year - product2.year;
   });
-
-  const handlePageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-
-    setItemsPerPage(value === 'all' ? 'all' : Number(value));
-    setCurrentPage(1);
-  };
 
   const totalItems = sortedProducts.length;
 
@@ -72,56 +66,27 @@ const TabletsCatalog = () => {
       <h1 className="catalog__title">Mobile Tablets</h1>
       <p className="catalog__models--counter">{productTablets.length} models</p>
       <div className="catalog__sorts">
-        <div className="catalog__sort sort--1">
-          <label className="catalog__title--sort" htmlFor="sort">
-            Sort by
-          </label>
-          <div className="catalog__select-wrapper">
-            <select id="sort" value={sortType} onChange={handleSortChange}>
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-            </select>
-          </div>
-        </div>
-        <div className="catalog__sort sort--2">
-          <label className="catalog__title--sort" htmlFor="items-per-page">
-            Items on page
-          </label>
-
-          <div className="catalog__select-wrapper">
-            <select onChange={handlePageChange}>
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">All</option>
-            </select>
-          </div>
-        </div>
+        <CatalogSort1
+          sortType={sortType}
+          setSortType={setSortType}
+          IsSortOpen={IsSortOpen}
+          setIsSortOpen={setIsSortOpen}
+        />
+        <CatalogSort2
+          IsPageOpen={IsPageOpen}
+          setIsPageOpen={setIsPageOpen}
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={setItemsPerPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <ProductList products={visibleProducts} />
-      <div className="catalog__sliders">
-        <button
-          className="catalog__slider--left--icon"
-          onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
-        />
-
-        {visiblePageButtons.map(page => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`catalog__slider--number ${
-              currentPage === page ? 'catalog__slider--number--active' : ''
-            }`}
-          >
-            {page}
-          </button>
-        ))}
-
-        <button
-          className="catalog__slider--right--icon"
-          onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-        />
-      </div>
+      <CatalogSlider
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        visiblePageButtons={visiblePageButtons}
+        totalPages={totalPages}
+      />
     </div>
   );
 };

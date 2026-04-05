@@ -6,6 +6,7 @@ import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import CatalogSort1 from './CatalogSort1/CatalogSort1';
 import CatalogSort2 from './CatalogSort2/CatalogSort2';
+import CatalogSlider from './CatalogSlider/CatalogSlider';
 
 const Catalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -68,44 +69,21 @@ const Catalog = () => {
           IsSortOpen={IsSortOpen}
           setIsSortOpen={setIsSortOpen}
         />
-        <div className="catalog__sort sort--2">
-          <label className="catalog__title--sort" htmlFor="items-per-page">
-            Items on page
-          </label>
-
-          <CatalogSort2
-            IsPageOpen={IsPageOpen}
-            setIsPageOpen={setIsPageOpen}
-            itemsPerPage={itemsPerPage}
-            setItemsPerPage={setItemsPerPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </div>
+        <CatalogSort2
+          IsPageOpen={IsPageOpen}
+          setIsPageOpen={setIsPageOpen}
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={setItemsPerPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <ProductList products={visibleProducts} />
-      <div className="catalog__sliders">
-        <button
-          className="catalog__slider--left--icon"
-          onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
-        />
-
-        {visiblePageButtons.map(page => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`catalog__slider--number ${
-              currentPage === page ? 'catalog__slider--number--active' : ''
-            }`}
-          >
-            {page}
-          </button>
-        ))}
-
-        <button
-          className="catalog__slider--right--icon"
-          onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-        />
-      </div>
+      <CatalogSlider
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        visiblePageButtons={visiblePageButtons}
+        totalPages={totalPages}
+      />
     </div>
   );
 };
