@@ -9,6 +9,7 @@
   align-items: center;
   grid-column: 1 / -1;
   width: 100%;
+  position: relative;
 }
 
 .main-swiper {
@@ -63,18 +64,16 @@
 
 .custom-prev {
   background-image: url('../../../public/img/icons/icon--slider--left.png');
-
 }
 
 .custom-next {
   background-image: url('../../../public/img/icons/icon--slider--right.png');
-
 }
 
 .custom-prev,
 .custom-next {
   position: absolute;
-  z-index: 10;
+  z-index: 2;
   cursor: pointer;
   display: flex;
   align-items: center;
