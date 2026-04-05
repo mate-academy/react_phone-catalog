@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line max-len
 const BASE_URL =
-  'https://yar14k.github.io/react_phone-catalog/api/products.json';
+  'https://yar14k.github.io/react_phone-catalog/';
 
 export const getPhones = async (): Promise<Phone[]> => {
   const res = await fetch(`${BASE_URL}api/phones.json`);
