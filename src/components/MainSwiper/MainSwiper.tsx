@@ -20,13 +20,13 @@ const MainSwiper = () => {
 
   return (
     <>
+
       <div className="main-swiper">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="custom-prev"
         ></button>{' '}
-        <div className="slide">
-          <div className="slide__content--1">
+         <div className="slide__content--1">
             <h2 className="slide__title--1">
               Now available in our store
               <Link to="" className="slide__logo"></Link>
@@ -34,20 +34,22 @@ const MainSwiper = () => {
             <p className="slide__text--1">Be the first!</p>
             <button className="slide__button">ORDER NOW</button>
           </div>
+        <Swiper
+          onSwiper={swiper => (swiperRef.current = swiper)}
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          modules={[Autoplay, Pagination]}
+          onAutoplayTimeLeft={onAutoplayTimeLeft}
+          className="mySwiper"
+        >
 
-          <Swiper
-            onSwiper={swiper => (swiperRef.current = swiper)}
-            spaceBetween={30}
-            centeredSlides={true}
-            autoplay={{
-              delay: 6000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            modules={[Autoplay, Pagination]}
-            onAutoplayTimeLeft={onAutoplayTimeLeft}
-            className="mySwiper"
-          >
+
+          <div className="slide__content--2">
             <SwiperSlide>
               <img src="img/phones/apple-iphone-14-pro/spaceblack/00.webp" />
             </SwiperSlide>
@@ -57,8 +59,8 @@ const MainSwiper = () => {
             <SwiperSlide>
               <img src="img/phones/apple-iphone-14-pro/silver/00.webp" />
             </SwiperSlide>
-          </Swiper>
-        </div>
+          </div>
+        </Swiper>
         <button
           onClick={() => swiperRef.current?.slideNext()}
           className="custom-next"

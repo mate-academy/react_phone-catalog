@@ -85,7 +85,7 @@ const AccessoriesCatalog = () => {
         </div>
       </div>
       <ProductList products={visibleProducts} />
-     <CatalogSlider
+      <CatalogSlider
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         visiblePageButtons={visiblePageButtons}
