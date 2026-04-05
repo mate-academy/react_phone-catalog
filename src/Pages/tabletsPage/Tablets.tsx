@@ -3,15 +3,17 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import TabletsCatalog from '../../components/CatalogTablets/TabletsCatalog';
 import { Product } from '../../types/Product';
-import { useLocalStorage } from '../../api';
 
-const Tablets: React.FC = () => {
-  const [favorites] = useLocalStorage<Product[]>('favorites', []);
+type TabletsProps = {
+  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+};
 
+const Tablets = ({ favorites, setFavorites }: TabletsProps) => {
   return (
     <>
       <Header favorites={favorites} />
-      <TabletsCatalog />
+      <TabletsCatalog favorites={favorites} setFavorites={setFavorites} />
       <Footer />
     </>
   );

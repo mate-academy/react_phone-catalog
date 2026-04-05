@@ -1,15 +1,18 @@
 import './ProductList.scss';
 import ProductCard from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
-import { useLocalStorage } from '../../api';
 
 type ProductListProps = {
   products: Product[];
+  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
-const ProductList = ({ products }: ProductListProps) => {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-
+const ProductList = ({
+  products,
+  favorites,
+  setFavorites,
+}: ProductListProps) => {
   return (
     <div className="product__list">
       {products.map(product => (

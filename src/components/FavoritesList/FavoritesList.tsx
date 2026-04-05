@@ -1,11 +1,13 @@
 import { Product } from '../../types/Product';
 import ProductCard from '../ProductCard/ProductCard';
 import './FavoritesList.scss';
-import { useLocalStorage } from '../../api';
 
-const FavoritesList = () => {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+type FavoritesListProps = {
+  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+};
 
+const FavoritesList = ({ favorites, setFavorites }: FavoritesListProps) => {
   return (
     <>
       <div className="favorites-list">

@@ -9,14 +9,16 @@ import { Phone } from '../../types/Phone';
 import { Tablet } from '../../types/Tablet';
 import { getAccessories, getPhones, getProduct, getTablets } from '../../api';
 import { Product } from '../../types/Product';
-import { useLocalStorage } from '../../api';
+
+type ProductPageProps = {
+  favorites: Product[];
+};
 
 export type ProductDetails = Phone | Tablet | Accessory;
-const ProductPage = () => {
+const ProductPage = ({ favorites }: ProductPageProps) => {
   const { category, id } = useParams();
   const [someProduct, setSomeProduct] = useState<ProductDetails | null>(null);
   const [modelProducts, setModelProducts] = useState<ProductDetails[]>([]);
-  const [favorites] = useLocalStorage<Product[]>('favorites', []);
 
   useEffect(() => {
     if (!category || !id) {

@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import './CatalogFavorites.scss';
 import FavoritesList from '../FavoritesList/FavoritesList';
+import { Product } from '../../types/Product';
 
-const CatalogFavorites = () => {
+type CatalogFavoritesProps = {
+  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+};
+
+const CatalogFavorites = ({
+  favorites,
+  setFavorites,
+}: CatalogFavoritesProps) => {
   return (
     <div className="catalog-favorites">
       <div className="catalog-favorites__top--icons">
@@ -14,7 +23,7 @@ const CatalogFavorites = () => {
         <p className="catalog-favorites__top--text">Favorites</p>
       </div>
       <h1 className="catalog-favorites__title">Favorites</h1>
-      <FavoritesList />
+      <FavoritesList favorites={favorites} setFavorites={setFavorites} />
     </div>
   );
 };

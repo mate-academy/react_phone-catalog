@@ -3,11 +3,12 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import BasketMain from '../../components/BasketMain/BasketMain';
 import { Product } from '../../types/Product';
-import { useLocalStorage } from '../../api';
 
-const Basket = () => {
-  const [favorites] = useLocalStorage<Product[]>('favorites', []);
+type BasketProps = {
+  favorites: Product[];
+};
 
+const Basket = ({ favorites }: BasketProps) => {
   return (
     <div className="basket">
       <Header favorites={favorites} />

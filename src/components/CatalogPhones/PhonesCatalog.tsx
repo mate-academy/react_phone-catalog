@@ -8,7 +8,12 @@ import CatalogSort1 from './CatalogSort1/CatalogSort1';
 import CatalogSort2 from './CatalogSort2/CatalogSort2';
 import CatalogSlider from './CatalogSlider/CatalogSlider';
 
-const Catalog = () => {
+type CatalogProps = {
+  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+};
+
+const Catalog = ({ favorites, setFavorites }: CatalogProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(4);
@@ -77,7 +82,11 @@ const Catalog = () => {
           setCurrentPage={setCurrentPage}
         />
       </div>
-      <ProductList products={visibleProducts} />
+      <ProductList
+        products={visibleProducts}
+        favorites={favorites}
+        setFavorites={setFavorites}
+      />
       <CatalogSlider
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
