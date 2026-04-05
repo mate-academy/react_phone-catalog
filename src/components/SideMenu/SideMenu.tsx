@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PathType } from '../../types/Types';
 import { Icon } from '../ui/Icon/Icon';
+import { getSearchWith } from '../../utils/searchHelper';
 
 export const SideMenu = () => {
   const [searchParams] = useSearchParams();
@@ -20,7 +21,10 @@ export const SideMenu = () => {
       <Nav className="sideMenu__nav" />
 
       <Link
-        to={PathType.FAVOURITES}
+        to={{
+          pathname: PathType.FAVOURITES,
+          search: getSearchWith(searchParams, { sideMenu: null }),
+        }}
         className={classNames(
           style.sideMenu__actionLink,
           style['sideMenu__actionLink--left'],
