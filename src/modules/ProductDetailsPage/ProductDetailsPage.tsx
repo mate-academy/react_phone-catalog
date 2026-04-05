@@ -25,12 +25,22 @@ export const ProductDetailsPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
 
+
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
 
   const isAdded = !!product && isInCart(product.itemId);
   const favorited = !!product && isFavourite(product.itemId);
+
+  const [isFading, setIsFading] = useState(false);
+
+  const handleNavigate = (url: string) => {
+    setIsFading(true);
+    setTimeout(() => {
+      navigate(url);
+    }, 300);
+  };
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -53,6 +63,10 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
 useEffect(() => {
   if (!productId) return;
 
@@ -72,6 +86,13 @@ useEffect(() => {
 
       const found = all.find(p => p.itemId === productId);
       if (found) setNumericId(String(found.id));
+
+      const recommended = all
+        .filter(p => p.category === data.category && p.itemId !== data.itemId)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 8);
+
+      setRecommendedProducts(recommended);
     })
     .catch(() => setIsError(true))
     .finally(() => setIsLoading(false));
@@ -86,6 +107,8 @@ useEffect(() => {
       </div>
     );
   }
+
+  
 
   const colorMap: Record<string, string> = {
     black: '#212121',
@@ -103,7 +126,7 @@ useEffect(() => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isFading ? styles.fadeOut : ''}`}>
       <div className={styles.content}>
         <nav className={styles.breadcrumbs}>
           <Link to="/">
@@ -315,6 +338,7 @@ useEffect(() => {
         <section className={styles.section}>
           <div className={styles.section__header}>
             <h2 className={`${styles.section__title} h2`}>You may also like</h2>
+
             <div className={styles.arrows}>
               <button className={`${styles.arrow_btn} js-prev-recommended`}>
                 {'<'}
@@ -330,7 +354,7 @@ useEffect(() => {
             <Swiper
               modules={[Navigation]}
               spaceBetween={16}
-              slidesPerView={'auto'}
+              slidesPerView={4}
               navigation={{
                 prevEl: '.js-prev-recommended',
                 nextEl: '.js-next-recommended',
@@ -342,18 +366,25 @@ useEffect(() => {
               }}
             >
               {recommendedProducts.map(item => (
-                <SwiperSlide
-                  key={item.id}
-                  style={{ width: 'auto' }}
-                  onClick={() => {
-                    navigate(`/${item.category}/${item.itemId}`);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  <ProductCard
-                    product={item}
-                    className={styles.card_home_custom}
-                  />
+                <SwiperSlide key={item.itemId}>
+                  <div
+                    onClick={e => {
+                      const target = e.target as HTMLElement;
+
+                      // ❗ якщо клік по кнопці — не навігуємо
+                      if (target.closest('button')) {
+                        return;
+                      }
+
+                      navigate(`/${item.category}/${item.itemId}`);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    <ProductCard
+                      product={item}
+                      className={styles.card_home_custom}
+                    />
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -183,15 +183,15 @@
   position: relative;
 
   @media (max-width: 1199px) {
-    max-width: none;
-    margin: 0 -24px;
+    max-width: 1056px;
+    margin: 0 auto;
     width: calc(100% + 48px);
     padding-left: 24px;
   }
 
   @media (max-width: 639px) {
-    margin: 0 -16px;
-    width: calc(100% + 32px);
+    max-width: 896px;
+    margin: 0 auto;
     padding-left: 16px;
   }
 }
@@ -206,18 +206,7 @@
     content: "";
     display: block;
     flex-shrink: 0;
-
-    @media (max-width: 1439px) {
-      width: 32px;
-    }
-
-    @media (max-width: 1199px) {
-      width: 24px;
-    }
-
-    @media (max-width: 639px) {
-      width: 16px;
-    }
+    width: 0;
   }
 }
 

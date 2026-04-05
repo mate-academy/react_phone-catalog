@@ -5,6 +5,12 @@
   width: 100%;
   //max-width: 1136px;
   padding: 0 16px;
+  opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  
+    &.fadeOut {
+      opacity: 0;
+    }
 
   @media (min-width: 640px) {
     padding: 0 24px;

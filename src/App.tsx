@@ -7,6 +7,9 @@ import { ProductsPage } from './modules/Product pages/ProductsPage';
 import { CartPage } from './modules/CartPage/CartPage';
 import { FavouritesPage } from './modules/FavouritesPage/FavouritesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { ContactsPage } from './modules/ContactsPage/ContactsPage';
+import { RightsPage } from './modules/RightsPage/RightsPage';
+
 import './App.scss';
 import './theme.scss';
 
@@ -64,6 +67,8 @@ export const App = () => {
             path="/:category/:productId"
             element={<ProductDetailsPage />}
           />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/rights" element={<RightsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
