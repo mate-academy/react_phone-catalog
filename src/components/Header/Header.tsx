@@ -5,12 +5,14 @@ import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { useLocalStorage } from '../../api';
 
-const Header = () => {
+type HeaderProps = {
+  favorites: Product[];
+};
+
+const Header = ({ favorites }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const [favorites] = useLocalStorage<Product[]>('favorites', []);
 
   const isPhones = location.pathname.startsWith('/phones');
   const isTablets = location.pathname.startsWith('/tablets');

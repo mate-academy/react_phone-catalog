@@ -20,20 +20,19 @@ const MainSwiper = () => {
 
   return (
     <>
-
       <div className="main-swiper">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="custom-prev"
         ></button>{' '}
-         <div className="slide__content--1">
-            <h2 className="slide__title--1">
-              Now available in our store
-              <Link to="" className="slide__logo"></Link>
-            </h2>
-            <p className="slide__text--1">Be the first!</p>
-            <button className="slide__button">ORDER NOW</button>
-          </div>
+        <div className="slide__content--1">
+          <h2 className="slide__title--1">
+            Now available in our store
+            <Link to="" className="slide__logo"></Link>
+          </h2>
+          <p className="slide__text--1">Be the first!</p>
+          <button className="slide__button">ORDER NOW</button>
+        </div>
         <Swiper
           onSwiper={swiper => (swiperRef.current = swiper)}
           spaceBetween={30}
@@ -47,8 +46,6 @@ const MainSwiper = () => {
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
         >
-
-
           <div className="slide__content--2">
             <SwiperSlide>
               <img src="img/phones/apple-iphone-14-pro/spaceblack/00.webp" />

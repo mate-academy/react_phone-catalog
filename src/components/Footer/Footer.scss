@@ -7,6 +7,7 @@
   padding-inline: 16px;
   padding-top: 32px;
   flex-shrink: 0;
+  box-sizing: border-box;
   @media (min-width: 640px) {
     padding-top: 0;
   }
