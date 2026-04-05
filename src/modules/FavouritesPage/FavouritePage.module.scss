@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.favourites {
+  margin-top: 24px;
+
+  @include page-container;
+
+  &__title {
+    color: var(--text-main);
+    margin-bottom: 8px;
+
+    @include h1;
+  }
+
+  &__quantity {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+
+    @include body-text;
+
+    @include respond-to('tablet') {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+  }
+}

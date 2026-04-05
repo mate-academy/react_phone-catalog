@@ -1,0 +1,51 @@
+/* --- LIGHT THEME PALETTE --- */
+$lt-primary: #313233; // Main text, buttons
+$lt-secondary: #89939a; // Secondary text
+$lt-icons: #b4bdc3; // Icon color (Default)
+$lt-elements: #e2e6e9; // Borders, dividers
+$lt-hover-bg: #fafbfc; // Hover state and block background
+$lt-white: #fff; // Pure white (page background)
+
+/* Highlights (common to both topics) */
+$cl-green: #27ae60; // Success
+$cl-red: #eb5757; // Favourite
+
+/* --- DARK THEME PALETTE --- */
+$dt-black: #0f1121; // Main page background (Black)
+$dt-surface-1: #161927; // Product cards, menus
+$dt-surface-2: #212642; // Selected items
+$dt-elements: #3b3e4a; // Borders in dark theme
+$dt-icons: #4a4d58; // Icons in dark theme
+$dt-secondary: #75767f; // Secondary text
+$dt-white: #f1f2f9; // Text and light accents
+$dt-accent: #8970ef; // Purple accent (Primary Button in dark theme)
+
+:root {
+  --page-bg: #{$lt-white};
+  --card-bg: #{$lt-white};
+  --text-main: #{$lt-primary};
+  --text-secondary: #{$lt-secondary};
+  --border: #{$lt-elements};
+  --btn-bg: #{$lt-primary};
+  --btn-text: #{$lt-white};
+  --icon-color: #{$lt-icons};
+  --accent: #{$lt-primary};
+}
+
+[data-theme='dark'] {
+  --page-bg: #{$dt-black};
+  --card-bg: #{$dt-surface-1};
+  --text-main: #{$dt-white};
+  --text-secondary: #{$dt-secondary};
+  --border: #{$dt-elements};
+  --btn-bg: #{$dt-accent};
+  --btn-text: #{$dt-white};
+  --icon-color: #{$dt-icons};
+  --accent: #{$dt-accent};
+}
+
+$breakpoints: (
+  'tablet': 640px,
+  'tablet-md': 768px,
+  'desktop': 1200px,
+);

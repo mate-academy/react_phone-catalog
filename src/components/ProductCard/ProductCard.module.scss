@@ -1,0 +1,192 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 3;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 32px;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+
+  @include hover-transition(box-shadow);
+
+  @include respond-to('tablet') {
+    grid-column: span 5;
+  }
+
+  @include respond-to('desktop') {
+    grid-column: span 6;
+  }
+
+  @include hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &__imageLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 196px;
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    @include hover-image-scale;
+  }
+
+  &__image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    height: 42px;
+    margin-bottom: 8px;
+
+    &Link {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+
+      color: var(--text-main);
+      font-weight: 600;
+      text-decoration: none;
+
+      @include body-text;
+      @include hover-transition(color);
+
+      @include hover {
+        color: var(--text-secondary);
+      }
+    }
+  }
+
+  &__priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    color: var(--text-main);
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+  }
+
+  &__fullPrice {
+    color: var(--text-secondary);
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    margin: 0 0 8px;
+
+    background-color: var(--border);
+    border: none;
+  }
+
+  &__specsContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px 0;
+  }
+
+  &__specs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &Name {
+      color: var(--text-secondary);
+
+      @include small-text;
+    }
+
+    &Value {
+      color: var(--text-main);
+      text-align: right;
+
+      @include small-text;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__actionAddButton {
+    flex: 1;
+    height: 40px;
+
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-bg);
+    cursor: pointer;
+
+    @include button-text;
+    @include hover-transition(all);
+
+    &--active {
+      background-color: var(--page-bg);
+      color: $cl-green;
+      border-color: var(--border);
+      cursor: default;
+    }
+
+    &:not(&--active) {
+      @include hover {
+        filter: brightness(1.2);
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+    }
+  }
+
+  &__actionFavouriteIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+
+    background: transparent;
+    border: 1px solid var(--icon-color);
+    cursor: pointer;
+
+    @include hover-transition(all);
+
+    @include hover {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__icon {
+    display: block;
+    fill: none;
+    color: var(--text-main);
+
+    @include hover-image-scale;
+  }
+}
