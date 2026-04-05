@@ -4,6 +4,8 @@ import { Accessory } from './types/Accessory';
 import { Product } from './types/Product';
 import { useEffect, useState } from 'react';
 
+const BASE_URL = 'https://yar14k.github.io/react_phone-catalog/';
+
 export const getPhones = async (): Promise<Phone[]> => {
   const res = await fetch('/api/phones.json');
 
@@ -23,7 +25,7 @@ export const getAccessories = async (): Promise<Accessory[]> => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const res = await fetch('/api/products.json');
+  const res = await fetch(`${BASE_URL}api/products.json`);
 
   return res.json();
 };
