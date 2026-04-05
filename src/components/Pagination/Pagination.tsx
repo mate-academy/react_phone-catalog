@@ -40,7 +40,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             <ArrowLeftIcon />
           </button>
         </li>
-        {pages.map((page, index) => {
+        {pages.map(page => {
           return (
             <li className={styles.pagination__item} key={page}>
               <button
