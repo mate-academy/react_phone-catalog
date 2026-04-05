@@ -11,7 +11,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../ProductCarousel';
 import { loadFavorites } from '../../services/favorites';
-import { loadCart } from '../../services/cart';
+import { CartItem, loadCart } from '../../services/cart';
 
 export const Header: React.FC = () => {
   const BREAKPOINT = 640; // відповідає твоєму @media max-width: 639px
@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
   const pathname = location.pathname;
 
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
-  const [cart, setCart] = useState<Product[]>(() => loadCart());
+  const [cart, setCart] = useState<CartItem[]>(() => loadCart());
 
   useEffect(() => {
     const syncFavorites = () => {
@@ -141,7 +141,9 @@ export const Header: React.FC = () => {
             pathname.includes('cart') ? 'active' : '',
           )}
         >
-          <div className="header__cart__count">{cart.length}</div>
+          <div className="header__cart__count">
+            {cart.reduce((sum, item) => sum + item.quantity, 0)}
+          </div>
           <img src={Cart} alt="Cart" />
         </Link>
 
@@ -244,7 +246,9 @@ export const Header: React.FC = () => {
             )}
             onClick={() => setIsOpen(false)}
           >
-            <div className="header__cart__count">{cart.length}</div>
+            <div className="header__cart__count">
+              {cart.reduce((sum, item) => sum + item.quantity, 0)}
+            </div>
             <img src={Cart} alt="Cart" />
           </Link>
         </div>

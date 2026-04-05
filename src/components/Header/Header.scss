@@ -96,7 +96,14 @@ $color-black: #000;
     align-items: center;
     height: 100%;
     color: $color-gray;
+    font-family: Mont, sans-serif, serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
     text-decoration: none;
+
 
     &:hover {
       color: $color-black;

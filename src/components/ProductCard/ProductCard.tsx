@@ -7,7 +7,7 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 import styles from '../ProductCarousel/ProductCarousel.module.scss';
 import { Link } from 'react-router-dom';
 import { loadFavorites, saveFavorites } from '../../services/favorites';
-import { loadCart, saveCart } from '../../services/cart';
+import { loadCart, saveCart, CartItem } from '../../services/cart';
 import { BASE_URL } from '../../services/baseUrl';
 
 type Props = {
@@ -34,8 +34,11 @@ const HeartIcon = ({ filled }: { filled: boolean }) =>
 
 export const ProductCard = ({ product, discount }: Props) => {
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
-  const [cart, setCart] = useState<Product[]>(() => loadCart());
+  // const [cart, setCart] = useState<Product[]>(() => loadCart());
   const [added, setAdded] = useState(false);
+
+  // стейт
+  const [cart, setCart] = useState<CartItem[]>(() => loadCart());
 
   // Якщо є масив images - беремо першу картинку з нього. Якщо ні - беремо старе поле image.
   const displayImage = product.images?.[0] || product.image;
@@ -47,7 +50,9 @@ export const ProductCard = ({ product, discount }: Props) => {
   const oldPrice = product.priceRegular || product.fullPrice;
 
   const liked = favorites.some(p => p.itemId === product.itemId);
-  const inCart = cart.some(p => p.itemId === product.itemId);
+  const inCart = cart.some(
+    item => String(item.product.itemId) === String(product.itemId),
+  );
 
   useEffect(() => {
     const syncFavorites = () => {
@@ -95,25 +100,40 @@ export const ProductCard = ({ product, discount }: Props) => {
     window.dispatchEvent(new Event('favorites-updated'));
   };
 
-  const toggleCart = () => {
-    // ✅ 1. Завжди беремо найсвіжіші дані з localStorage ПЕРЕД зміною
-    const currentCart = loadCart();
+  // const toggleCart = () => {
+  //   // ✅ 1. Завжди беремо найсвіжіші дані з localStorage ПЕРЕД зміною
+  //   const currentCart = loadCart();
 
-    // ✅ 2. Перевіряємо по свіжих даних
-    const isAlreadyFav = currentCart.some(
-      item => String(item.itemId) === String(product.itemId),
+  //   // ✅ 2. Перевіряємо по свіжих даних
+  //   const isAlreadyFav = currentCart.some(
+  //     item => String(item.itemId) === String(product.itemId),
+  //   );
+
+  //   // ✅ 3. Формуємо новий масив
+  //   const nextCart = isAlreadyFav
+  //     ? currentCart.filter(item => item.id !== product.id)
+  //     : [...currentCart, product];
+
+  //   // ✅ 4. Зберігаємо в localStorage
+  //   saveCart(nextCart);
+
+  //   // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
+  //   // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
+  //   window.dispatchEvent(new Event('cart-updated'));
+  // };
+
+  const toggleCart = () => {
+    const currentCart = loadCart();
+    const existingIndex = currentCart.findIndex(
+      item => String(item.product.itemId) === String(product.itemId),
     );
 
-    // ✅ 3. Формуємо новий масив
-    const nextCart = isAlreadyFav
-      ? currentCart.filter(item => item.id !== product.id)
-      : [...currentCart, product];
+    const nextCart =
+      existingIndex >= 0
+        ? currentCart.filter((_, i) => i !== existingIndex) // видалити
+        : [...currentCart, { product, quantity: 1 }]; // додати з quantity: 1
 
-    // ✅ 4. Зберігаємо в localStorage
     saveCart(nextCart);
-
-    // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
-    // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
     window.dispatchEvent(new Event('cart-updated'));
   };
 

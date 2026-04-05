@@ -3,7 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Phone Catalog</title>
+    <link rel="icon" type="image/svg+xml" href="./public/img/category-accessories.webp" />
+    <script>
+      (function () {
+        const redirect = new URLSearchParams(window.location.search).get('redirect');
+        if (redirect) {
+          const url = '/' + redirect;
+          window.history.replaceState(null, '', '/react_phone-catalog/' + redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -27,24 +27,24 @@ export const App = () => {
       </h1> */}
       <div className="app-wrapper">
         <Header />
-
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<PhonePage />} />
-          <Route path="/phones/:productId" element={<ProductDetailPage />} />
-          <Route path="/tablets" element={<TabletPage />} />
-          <Route path="/tablets/:productId" element={<ProductDetailPage />} />
-          <Route path="/accessories" element={<AccessoriesPage />} />
-          <Route
-            path="/accessories/:productId"
-            element={<ProductDetailPage />}
-          />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        {/* <h1>Product Catalog</h1> */}
-
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/phones" element={<PhonePage />} />
+            <Route path="/phones/:productId" element={<ProductDetailPage />} />
+            <Route path="/tablets" element={<TabletPage />} />
+            <Route path="/tablets/:productId" element={<ProductDetailPage />} />
+            <Route path="/accessories" element={<AccessoriesPage />} />
+            <Route
+              path="/accessories/:productId"
+              element={<ProductDetailPage />}
+            />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+          {/* <h1>Product Catalog</h1> */}
+        </main>
         <Footer />
       </div>
     </div>

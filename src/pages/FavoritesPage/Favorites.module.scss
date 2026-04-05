@@ -1,11 +1,13 @@
 .favorites_empty {
   grid-column: 1 / -1;
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
 
   img {
-    width: 100%;
+    max-width: 100%;  /* замість width: 100% */
+    max-height: 300px;
     margin-bottom: 32px;
-    aspect-ratio: 16 / 9;
     object-fit: contain;
     object-position: center;
   }

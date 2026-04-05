@@ -28,6 +28,11 @@
 
     &__item{
       cursor: pointer;
+      font-family: Mont, sans-serif, serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
       text-transform: uppercase;
 
       &:hover{
