@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
       <div className={styles.containner}>
         <div className={styles.left}>
           <NavLink to="/" className={styles.logo}>
-            <img src="/img/logo.png" alt="Nice Gadgets" />
+            <img src="./img/logo.png" alt="Nice Gadgets" />
           </NavLink>
           <nav className={styles.nav}>
             <NavLink to="/" end className={getNavLinkClass}>
@@ -60,7 +60,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
           }
           aria-label="Favorites"
         >
-          <img src="/img/heart.svg" alt="heart" />
+          <img src="./img/heart.svg" alt="heart" />
           {favoritesCount > 0 && (
             <span className={styles.badge}>{favoritesCount}</span>
           )}
@@ -72,7 +72,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
           }
           aria-label="Cart"
         >
-          <img src="/img/basket.png" alt="basket" />
+          <img src="./img/basket.png" alt="basket" />
           {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
         </NavLink>
       </div>
@@ -84,7 +84,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
               className={styles.logo}
               onClick={() => setIsMenuOpen(false)}
             >
-              <img src="/img/logo.png" alt="Nice Gadgets" />
+              <img src="./img/logo.png" alt="Nice Gadgets" />
             </NavLink>
 
             <button
@@ -148,7 +148,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
               aria-label="Cart"
               onClick={() => setIsMenuOpen(false)}
             >
-              <img src="/img/basket.png" alt="basket" />
+              <img src="./img/basket.png" alt="basket" />
               {cartCount > 0 && (
                 <span className={styles.badge}>{cartCount}</span>
               )}

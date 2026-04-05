@@ -12,3 +12,24 @@
     padding: 0 32px;
   }
 }
+
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+
+// @mixin content-padding-inline() {
+//   padding-inline: 20px;
+
+//   @include on-tablet {
+//     padding-inline: 72px;
+//   }
+
+//   @include on-desktop {
+//     padding-inline: 120px;
+//     max-width: 1020px;
+//     margin-inline: auto;
+//   }
+// }

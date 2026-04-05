@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  '/img/banner.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
+  './img/banner.png',
+  './img/banner-phones.png',
+  './img/banner-tablets.png',
+  './img/banner-accessories.png',
 ];
 
 export const PicturesSlider = () => {
@@ -35,7 +36,17 @@ export const PicturesSlider = () => {
       </button>
 
       <div className={styles.window}>
-        <img className={styles.image} src={images[active]} alt="Banner" />
+        {active === 0 ? (
+          <picture>
+            <source
+              media="(max-width: 639px)"
+              srcSet="/img/banner-mobile.png"
+            />
+            <img className={styles.image} src="/img/banner.png" alt="Banner" />
+          </picture>
+        ) : (
+          <img className={styles.image} src={images[active]} alt="Banner" />
+        )}
       </div>
 
       <button

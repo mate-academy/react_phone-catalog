@@ -4,6 +4,10 @@
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
   gap: 16px;
+
+    @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .window {
@@ -19,6 +23,10 @@
   aspect-ratio: 10.4 / 4;
   object-fit: cover;
   display: block;
+
+   @media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .arrow {
@@ -36,6 +44,10 @@
     &:hover {
     transform: translateY(-1px);
     background: #4A4D58;
+  }
+
+    @media (max-width: 639px) {
+    display: none;
   }
 }
 
