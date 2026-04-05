@@ -10,7 +10,7 @@ import { FavouritesProvider } from './context/FavouritesContext';
 import { CategoryPage } from './modules/CategoryPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CategoriesType, PathType } from './types/Types';
-import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const App = () => (
   <div className="App">
@@ -26,7 +26,7 @@ export const App = () => (
                   path={PathType.PHONES}
                   element={
                     <CategoryPage
-                      title={'Mobile phones'}
+                      title={'Phones page'}
                       category={CategoriesType.PHONES}
                     />
                   }
@@ -35,7 +35,7 @@ export const App = () => (
                   path={PathType.TABLETS}
                   element={
                     <CategoryPage
-                      title={'Tablets'}
+                      title={'Tablets page'}
                       category={CategoriesType.TABLETS}
                     />
                   }
@@ -44,7 +44,7 @@ export const App = () => (
                   path={PathType.ACCESSORIES}
                   element={
                     <CategoryPage
-                      title={'Accessories'}
+                      title={'Accessories page'}
                       category={CategoriesType.ACCESSORIES}
                     />
                   }

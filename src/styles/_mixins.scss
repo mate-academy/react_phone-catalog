@@ -9,7 +9,9 @@
 }
 
 @mixin hover-transition($property: all, $duration: 0.3s, $timing: ease-in-out) {
-  transition: $property $duration $timing;
+  & {
+    transition: $property $duration $timing;
+  }
 }
 
 @mixin hover-image-scale {

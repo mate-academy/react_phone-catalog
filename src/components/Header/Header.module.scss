@@ -160,11 +160,11 @@
     width: 14px;
     height: 14px;
 
-    background: $cl-red;
+    background: var(--counter-bg);
     border-radius: 50%;
 
     font-size: 9px;
     text-align: center;
-    color: $lt-white;
+    color: var(--counter-text);
   }
 }

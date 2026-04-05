@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Catalog } from '../../components/Catalog';
 import { CatalogProducts, CategoriesType } from '../../types/Types';
-import { getAccessories, getPhones, getTablets } from '../../api/product';
+import { getProductsByCategory } from '../../api/product';
 
 interface CategoryPageProps {
   title: string;
@@ -21,21 +21,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
     setErrorMessage('');
 
     try {
-      let data: CatalogProducts[] = [];
-
-      switch (category) {
-        case CategoriesType.PHONES:
-          data = await getPhones();
-          break;
-        case CategoriesType.TABLETS:
-          data = await getTablets();
-          break;
-        case CategoriesType.ACCESSORIES:
-          data = await getAccessories();
-          break;
-        default:
-          data = [];
-      }
+      const data = await getProductsByCategory(category);
 
       setProducts(data);
     } catch (error) {

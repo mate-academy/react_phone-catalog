@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { CatalogProducts, PerPageType } from '../../types/Types';
+import { CatalogProducts, CategoriesType, PerPageType } from '../../types/Types';
 import { Loader } from '../Loader';
 import { ProductList } from '../ProductList';
 import { Pagination } from '../Pagination';
@@ -9,14 +9,15 @@ import { getPaginatedProducts, getSortedProducts } from '../../utils/helper';
 import { Dropdown } from '../ui/Dropdown';
 import { PER_PAGE_OPTIONS, SORT_OPTIONS } from '../../constants';
 import { Breadcrumbs } from '../Breadcrumbs';
-import noProductsMatching from '../../../public/img/product-not-found.png';
+
 import styles from './Catalog.module.scss';
 
-const EMPTY_MESSAGES: Record<string, string> = {
-  'Mobile phones': 'There are no phones yet',
-  Tablets: 'There are no tablets yet',
-  Accessories: 'There are no accessories yet',
+const EMPTY_MESSAGES: Record<CategoriesType, string> = {
+  [CategoriesType.PHONES]: 'There are no phones yet',
+  [CategoriesType.TABLETS]: 'There are no tablets yet',
+  [CategoriesType.ACCESSORIES]: 'There are no accessories yet',
 };
+
 
 interface CatalogProps {
   title: string;
@@ -24,7 +25,7 @@ interface CatalogProps {
   errorMessage: string;
   isLoading: boolean;
   onReload: () => void;
-  category?: string;
+  category?: CategoriesType;
 }
 
 export const Catalog: React.FC<CatalogProps> = ({
@@ -69,8 +70,8 @@ export const Catalog: React.FC<CatalogProps> = ({
   }, [sort, page, perPage, filteredProducts]);
 
   const emptyStateMessage =
-    EMPTY_MESSAGES[title] || 'There are no products yet';
-  const noResultsMessage = `There are no ${title.toLowerCase()} matching ${query}`;
+    (category && EMPTY_MESSAGES[category]) || 'There are no products yet';
+  const noResultsMessage = `There are no ${category ?? 'products'} matching ${query}`;
 
   return (
     <section className={styles.catalog}>
@@ -103,7 +104,7 @@ export const Catalog: React.FC<CatalogProps> = ({
             <div className={styles.catalog__emptyContent}>
               <h2 className={styles.catalog__emptyText}>{noResultsMessage}</h2>
               <img
-                src={noProductsMatching}
+                src="/img/product-not-found.png"
                 alt="No products matching"
                 className={styles.catalog__emptyImage}
               />

@@ -92,8 +92,6 @@
     }
 
     &.active {
-      color: var(--btn-text);
-
       &::after {
         transform: scaleX(1);
       }

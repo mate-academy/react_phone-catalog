@@ -10,26 +10,10 @@ export const getProducts = () => {
   return getData<CatalogProducts[]>(`${PathType.PRODUCTS}.json`);
 };
 
-export const getPhones = async () => {
+export const getProductsByCategory = async (category: CategoriesType) => {
   const products = await getProducts();
 
-  return products.filter(product => product.category === CategoriesType.PHONES);
-};
-
-export const getTablets = async () => {
-  const products = await getProducts();
-
-  return products.filter(
-    product => product.category === CategoriesType.TABLETS,
-  );
-};
-
-export const getAccessories = async () => {
-  const products = await getProducts();
-
-  return products.filter(
-    product => product.category === CategoriesType.ACCESSORIES,
-  );
+  return products.filter(product => product.category === category);
 };
 
 export const getProductById = async (category: string, itemId: string) => {

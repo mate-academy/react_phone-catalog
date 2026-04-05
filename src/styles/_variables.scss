@@ -30,6 +30,8 @@ $dt-accent: #8970ef; // Purple accent (Primary Button in dark theme)
   --btn-text: #{$lt-white};
   --icon-color: #{$lt-icons};
   --accent: #{$lt-primary};
+  --counter-bg: #{$cl-red};
+  --counter-text: #{$lt-white};
 }
 
 [data-theme='dark'] {
@@ -42,6 +44,8 @@ $dt-accent: #8970ef; // Purple accent (Primary Button in dark theme)
   --btn-text: #{$dt-white};
   --icon-color: #{$dt-icons};
   --accent: #{$dt-accent};
+  --counter-bg: #{$cl-red};
+  --counter-text: #{$dt-white};
 }
 
 $breakpoints: (

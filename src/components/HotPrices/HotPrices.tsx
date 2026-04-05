@@ -8,5 +8,9 @@ interface HotPricesProps {
 }
 
 export const HotPrices: React.FC<HotPricesProps> = ({ title, products }) => {
-  return <ProductSlider title={title} products={products} />;
+  const sortedProducts = [...products].sort(
+    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
+  );
+
+  return <ProductSlider title={title} products={sortedProducts} />;
 };
