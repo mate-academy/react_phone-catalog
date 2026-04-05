@@ -9,6 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
 import { Skeleton } from '../../components/Skeleton';
 import { ErrorScreen } from '../../components/ErrorScreen';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 type Props = {
   title: string;
@@ -91,16 +92,28 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     return true;
   }, [totalCountItems, perPage]);
 
+  const categoryBreadcrumbs =
+    category.toString().charAt(0).toUpperCase() + category.toString().slice(1);
+
   return (
     <div className={style.productPage}>
+      <Breadcrumbs category={categoryBreadcrumbs} />
       {isLoading && <Skeleton />}
 
       {!isLoading && errorMessage && <ErrorScreen title={errorMessage} />}
 
-      {!isLoading && !errorMessage && (
+      {products.length && !totalCountItems && (
+        <ErrorScreen
+          title={`There are no products matching the query ${query}`}
+        />
+      )}
+
+      {!isLoading && !errorMessage && totalCountItems !== 0 && (
         <>
           <h1 className={style.productPage__title}>{title}</h1>
-          <span>{`${totalCountItems} models`}</span>
+          <span
+            className={style.productPage__countItems}
+          >{`${totalCountItems} models`}</span>
 
           <div className={style.productPage__dropdownContainer}>
             <div className={style.productPage__wraperSort}>

@@ -7,9 +7,13 @@ import { getSearchWith } from '../../utils/searchHelper';
 import { useTheme } from '../../context/ThemeContext';
 import classNames from 'classnames';
 import { Search } from '../Search';
+import { useFavorite } from '../../context/FavoriteContext';
 
 export const TopBar = () => {
   const { theme, themeToggle } = useTheme();
+
+  const { favorites } = useFavorite();
+  const countFavoriteItems = favorites.length;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sideMenu = searchParams.get('sideMenu');
@@ -45,6 +49,12 @@ export const TopBar = () => {
         >
           <div className={style.topBar__containerIcon}>
             <Icon className={style.topBar__iconAction} nameIcon="favorites" />
+
+            {countFavoriteItems && (
+              <span className={style.topBar__countFavorite}>
+                {countFavoriteItems}
+              </span>
+            )}
           </div>
         </Link>
 

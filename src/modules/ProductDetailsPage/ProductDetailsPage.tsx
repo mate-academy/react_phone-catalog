@@ -11,6 +11,7 @@ import { TechSpec } from './TechSpec/TechSpec';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { SkeletonDetails } from '../../components/SkeletonDetails';
 import { ErrorScreen } from '../../components/ErrorScreen';
+import { useFavorite } from '../../context/FavoriteContext';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -18,8 +19,16 @@ export const ProductDetailsPage = () => {
   const { selectedProsuct, product, suggested, isLoading, errorMessage } =
     useProductDetails(productId);
 
-  // eslint-disable-next-line
-  // console.log(setProductImage, productImage);
+  const { isFavorite, toggleFavorite } = useFavorite();
+  const isAddedToFavorite = selectedProsuct
+    ? isFavorite(selectedProsuct.id)
+    : false;
+
+  const handleActionFavoriteClick = () => {
+    if (selectedProsuct) {
+      toggleFavorite(selectedProsuct);
+    }
+  };
 
   const spec = [
     { nameSpec: 'Screen', value: product?.screen },
@@ -100,11 +109,21 @@ export const ProductDetailsPage = () => {
                 Add to cart
               </button>
 
-              <button className={style.productDetails__actonFavorite}>
-                <Icon
-                  className={style.productDetails__favoriteIcon}
-                  nameIcon="addFavorite"
-                />
+              <button
+                className={style.productDetails__actonFavorite}
+                onClick={handleActionFavoriteClick}
+              >
+                {isAddedToFavorite ? (
+                  <Icon
+                    className={style.productDetails__favoriteIcon}
+                    nameIcon="addedToFavorite"
+                  />
+                ) : (
+                  <Icon
+                    className={style.productDetails__favoriteIcon}
+                    nameIcon="addFavorite"
+                  />
+                )}
               </button>
             </div>
 

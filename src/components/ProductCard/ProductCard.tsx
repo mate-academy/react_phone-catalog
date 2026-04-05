@@ -3,12 +3,15 @@ import style from './ProductCatd.module.scss';
 import React from 'react';
 import { Products } from '../../types/Types';
 import { Icon } from '../ui/Icon/Icon';
+import { useFavorite } from '../../context/FavoriteContext';
 
 type Props = {
   product: Products;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { isFavorite, toggleFavorite } = useFavorite();
+  const isAddedToFavorite = isFavorite(product.id);
   const { image, name, price, screen, fullPrice, capacity, ram, itemId } =
     product;
   const spec = [
@@ -61,11 +64,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={style.productCard__actionContainer}>
         <button className={style.productCard__actionAdd}>Add to cart</button>
 
-        <button className={style.productCard__actonFavorite}>
-          <Icon
-            className={style.productCard__favoriteIcon}
-            nameIcon="addFavorite"
-          />
+        <button
+          className={style.productCard__actonFavorite}
+          onClick={() => toggleFavorite(product)}
+        >
+          {isAddedToFavorite ? (
+            <Icon
+              className={style.productCard__favoriteIcon}
+              nameIcon="addedToFavorite"
+            />
+          ) : (
+            <Icon
+              className={style.productCard__favoriteIcon}
+              nameIcon="addFavorite"
+            />
+          )}
         </button>
       </div>
     </article>

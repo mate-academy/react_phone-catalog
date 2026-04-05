@@ -2,12 +2,12 @@
 @import '../../style/vars';
 
 .skeleton {
-  @include page-grid;
-
   row-gap: 40px;
   padding: 0;
   margin: 0;
 
+  @include page-grid;
+  
   &__container {
     grid-column: span 4;
 

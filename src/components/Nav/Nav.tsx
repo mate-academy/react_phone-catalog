@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { PathType } from '../../types/Types';
 import classNames from 'classnames';
 import React from 'react';
@@ -11,6 +11,7 @@ type Props = {
 };
 
 export const Nav: React.FC<Props> = ({ className }) => {
+  const { search } = useLocation();
   const getClassName = ({ isActive }: { isActive: boolean }) =>
     classNames(style.nav__link, { [style.nav__linkIsActive]: isActive });
 
@@ -24,7 +25,10 @@ export const Nav: React.FC<Props> = ({ className }) => {
       >
         {navLinks.map(linkText => (
           <li key={linkText} className={style.nav__item}>
-            <NavLink className={getClassName} to={PathType[linkText]}>
+            <NavLink
+              className={getClassName}
+              to={{ pathname: PathType[linkText], search: search }}
+            >
               {linkText}
             </NavLink>
           </li>

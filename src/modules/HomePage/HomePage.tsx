@@ -12,9 +12,6 @@ export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMesage] = useState('');
 
-  // eslint-disable-next-line no-console
-  console.log(isLoading, errorMessage);
-
   useEffect(() => {
     getData<Products>('/products.json')
       .then(data => {
@@ -53,11 +50,13 @@ export const HomePage = () => {
 
       <PicturesSlider />
 
-      <ProductsSlider
-        titleLine1="Brand new"
-        titleLine2="models"
-        products={brendNewProducts}
-      />
+      {!isLoading && (
+        <ProductsSlider
+          titleLine1="Brand new"
+          titleLine2="models"
+          products={brendNewProducts}
+        />
+      )}
 
       {errorMessage && (
         <div className={style.homePage__error}>{errorMessage}</div>

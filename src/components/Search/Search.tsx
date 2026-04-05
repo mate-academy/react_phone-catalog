@@ -26,14 +26,7 @@ export const Search = () => {
       setSearchParams(newPar);
       prevQueryRef.current = debounceQuery;
     }
-
-    // setSearchParams(prevParams =>
-    //   getSearchWith(prevParams, {
-    //     query: debounceQuery || null,
-    //     page: null,
-    //   }),
-    // );
-  }, [setSearchParams, debounceQuery]);
+  }, [setSearchParams, debounceQuery, searchParams]);
 
   const isShowSearch = SEARCHABLE_PATH.includes(
     pathname.replace('/', '') as PathType,

@@ -51,6 +51,7 @@ $desktop-min-width: 1200px;
   --borde-hover-mini: #{$lt-secondary};
   --text-id: #{$lt-bt-sl-bd};
   --pagination-text: #{$lt-white};
+  --count-favorite-bg: #{$lt-purple};
 }
 
 [data-theme='dark'] {
@@ -72,4 +73,5 @@ $desktop-min-width: 1200px;
   --borde-hover-mini: #{$lt-secondary};
   --text-id: #{$dt-disabled-icon};
   --pagination-text: #{$dt-black-text-pag};
+  --count-favorite-bg: #{$dt-purple};
 }
