@@ -21,7 +21,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  aspect-ratio: 1 / 1;
 }
 
 .image {
@@ -37,9 +36,8 @@
 
 .title {
   margin: 0;
-  font-family: $font-family-base;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 21px;
   color: $color-primary;
 }
@@ -52,7 +50,6 @@
 }
 
 .currentPrice {
-  font-family: $font-family-base;
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
@@ -60,7 +57,6 @@
 }
 
 .oldPrice {
-  font-family: $font-family-base;
   font-size: 22px;
   font-weight: 600;
   line-height: 28px;
@@ -92,17 +88,15 @@
 }
 
 .specLabel {
-  font-family: $font-family-base;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 15px;
   color: $color-secondary;
 }
 
 .specValue {
-  font-family: $font-family-base;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 15px;
   text-align: right;
   color: $color-primary;
@@ -124,9 +118,8 @@
   background: $color-primary;
   border: none;
   cursor: pointer;
-  font-family: $font-family-base;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 21px;
   color: $color-white;
   transition: background $transition-base;
