@@ -10,22 +10,27 @@ import { AccessoriesPage } from './modules/AccessoriesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CartsPage } from './modules/CartsPage';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="page-backgraund">
+    <div className="page">
       <Header openMenu={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
-        <Route path="/product/:productId" element={<ProductDetailsPage />} />
-        <Route path="/favourites" element={<FavouritesPage />} />
-        <Route path="/cart" element={<CartsPage />} />
-      </Routes>
+      <div className="page__content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/tablets" element={<TabletsPage />} />
+          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="/product/:productId" element={<ProductDetailsPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/cart" element={<CartsPage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

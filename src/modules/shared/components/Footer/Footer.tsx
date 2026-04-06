@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -11,18 +12,18 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <a href="#" className={styles.logoLink}>
+        <Link to="/" className={styles.logoLink}>
           <img
             src="/img/icon/nice-gadgets-desktop.svg"
             alt="Nice Gadgets"
             className={styles.logoImage}
           />
-        </a>
+        </Link>
 
         <nav className={styles.nav}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
+              <a href="https://github.com/" className={styles.menuLink}>
                 Github
               </a>
             </li>
@@ -42,6 +43,7 @@ export const Footer = () => {
         <div className={styles.backToTopBlock}>
           <p className={styles.backToTopText}>Back to top</p>
           <button
+            type="button"
             className={styles.backToTopButton}
             onClick={handleScrollToTop}
           >

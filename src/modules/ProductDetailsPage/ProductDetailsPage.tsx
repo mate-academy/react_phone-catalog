@@ -8,7 +8,7 @@ import { ProductInfo } from './components/ProductInfo';
 import { ProductAbout } from './components/ProductAbout';
 import { ProductTechSpecs } from './components/ProductTechSpecs';
 import { ProductSection } from '../HomePage/components/ProductSection';
-import { getHotPriceProducts } from '../../utils/products';
+import { getSuggestedProducts } from '../../utils/products';
 import { useShop } from '../../store/ShopContext';
 import { Loader } from '../shared/components/Loader';
 
@@ -23,8 +23,6 @@ export const ProductDetailsPage = () => {
   const { products } = useShop();
   const { productId } = useParams();
   const currentProduct = products.find(product => product.itemId === productId);
-  const hotPriceProducts = getHotPriceProducts(products);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -98,9 +96,13 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  const suggestedProducts = currentProduct
+    ? getSuggestedProducts(products, currentProduct.itemId)
+    : [];
+
   return (
     <main className={styles.main}>
-      <div className={styles.container}>
+      <div className="container">
         <Breadcrumbs breadcrumb={breadcrumb} currentProduct={currentProduct} />
         <div className={styles.back}>
           <img
@@ -127,12 +129,13 @@ export const ProductDetailsPage = () => {
           <ProductAbout productDetails={productDetails} />
           <ProductTechSpecs productDetails={productDetails} />
         </div>
-        <ProductSection
-          title="You may also like"
-          products={hotPriceProducts}
-          showDiscount
-        />
       </div>
+
+      <ProductSection
+        title="You may also like"
+        products={suggestedProducts}
+        showDiscount
+      />
     </main>
   );
 };

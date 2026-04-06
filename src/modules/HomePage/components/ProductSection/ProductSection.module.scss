@@ -1,16 +1,9 @@
 @use '../../../../styles/mixins';
 
-.newModels {
-  margin-top: 56px;
-
-  @include mixins.on-tablet {
-
-    margin-top: 64px;
-  }
-
+.sectionInner {
   @include mixins.on-desktop {
-
-    margin-top: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
 
@@ -73,20 +66,14 @@
 
 .sliderWrapper {
   overflow: hidden;
-  // padding-left: 16px;
-  // padding-right: 0;
   margin-right: 0;
   margin-left: 16px;
 
   @include mixins.on-tablet {
-    // padding-left: 24px;
-    // padding-right: 0;
-
     margin-left: 24px;
   }
 
   @include mixins.on-desktop {
     margin-inline: 32px;
-    // padding: 0;
   }
 }

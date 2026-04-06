@@ -1,7 +1,21 @@
 @use '../../../../styles/mixins';
 
 .bannerSlider {
+  margin-bottom: 56px;
+
   @include mixins.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include mixins.on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.bannerInner {
+  @include mixins.on-tablet {
+    max-width: 1200px;
+    margin: 0 auto;
     padding-inline: 24px;
   }
 
@@ -38,7 +52,7 @@
   align-items: center;
   height: 100%;
   padding: 0;
-  border: none;
+  border: 1px solid rgba(180, 189, 195, 1);
   background: transparent;
   cursor: pointer;
 }

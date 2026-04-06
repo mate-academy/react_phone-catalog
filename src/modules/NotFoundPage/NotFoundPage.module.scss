@@ -1,15 +1,10 @@
-@use '../../../../styles/mixins';
+@use '../../styles/mixins.scss';
 
-.hero {
-    margin-bottom: 24px;
-
-    @include mixins.on-tablet {
-        margin-bottom: 32px;
-    }
-
-    @include mixins.on-desktop {
-        margin-bottom: 56px;
-    }
+.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 .title {
@@ -19,7 +14,6 @@
     line-height: 41px;
     letter-spacing: -1%;
     color: rgba(49, 50, 55, 1);
-    grid-column: 1/-1;
 
     @include mixins.on-tablet {
         font-size: 48px;

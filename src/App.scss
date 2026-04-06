@@ -1,12 +1,10 @@
+@use './styles/mixins.scss';
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
-// html {
-//     scroll-behavior: smooth;
-// }
 
 body {
     background-color: #fff;
@@ -14,7 +12,34 @@ body {
     font-family: Montserrat, sans-serif;
 }
 
-.page-backgraund {
-    max-width: 1440px;
-    margin: 0 auto;
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-top: 48px;
+
+    @include mixins.on-desktop {
+        padding-top: 64px;
+    }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include mixins.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+  }
 }

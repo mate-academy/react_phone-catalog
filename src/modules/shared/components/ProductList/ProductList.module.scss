@@ -10,16 +10,13 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  padding-inline: 16px;
 
   @include mixins.on-tablet {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    padding-inline: 24px;
   }
 
   @include mixins.on-desktop {
     grid-template-columns: repeat(4, 1fr);
-    padding-inline: 32px;
   }
 }

@@ -10,6 +10,9 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type ShopContextType = {
   products: Product[];
+  isLoadingProducts: boolean;
+  error: string;
+  reloadProducts: () => void;
   favourites: Product[];
   carts: CartItems[];
   toggleFavourite: (product: Product) => void;
@@ -28,16 +31,36 @@ type Props = {
 
 export const ShopProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+  const [error, setError] = useState('');
   const [carts, setCarts] = useLocalStorage<CartItems[]>('carts', []);
   const [favourites, setFavourites] = useLocalStorage<Product[]>(
     'favourites',
     [],
   );
 
+  const loadProducts = async () => {
+    try {
+      setIsLoadingProducts(true);
+      setError('');
+      const response = await fetch('/api/products.json');
+
+      if (!response.ok) {
+        throw new Error('Failed to load products');
+      }
+
+      const dataProducts: Product[] = await response.json();
+
+      setProducts(dataProducts);
+    } catch {
+      setError('Something went wrong');
+    } finally {
+      setIsLoadingProducts(false);
+    }
+  };
+
   useEffect(() => {
-    fetch('/api/products.json')
-      .then(res => res.json())
-      .then((dataProducts: Product[]) => setProducts(dataProducts));
+    loadProducts();
   }, []);
 
   const toggleFavourite = (product: Product) => {
@@ -102,6 +125,9 @@ export const ShopProvider: React.FC<Props> = ({ children }) => {
   const value = useMemo(
     () => ({
       products,
+      isLoadingProducts,
+      error,
+      reloadProducts: loadProducts,
       favourites,
       carts,
       toggleFavourite,
@@ -111,7 +137,7 @@ export const ShopProvider: React.FC<Props> = ({ children }) => {
       decreaseQuantity,
       clearCart,
     }),
-    [products, favourites, carts],
+    [products, isLoadingProducts, error, favourites, carts],
   );
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

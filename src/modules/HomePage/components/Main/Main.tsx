@@ -14,13 +14,15 @@ export const Main = () => {
     <main className={styles.main}>
       <Hero />
       <BannerSlider />
-      <ProductSection title="Brand new models" products={products} />
-      <ShopByCategory />
-      <ProductSection
-        title="Hot prices"
-        products={hotPriceProducts}
-        showDiscount
-      />
+      <div className={styles.sections}>
+        <ProductSection title="Brand new models" products={products} />
+        <ShopByCategory />
+        <ProductSection
+          title="Hot prices"
+          products={hotPriceProducts}
+          showDiscount
+        />
+      </div>
     </main>
   );
 };

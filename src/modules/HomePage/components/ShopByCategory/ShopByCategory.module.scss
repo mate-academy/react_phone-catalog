@@ -1,20 +1,5 @@
 @use '../../../../styles/mixins.scss';
 
-.shopByCategory {
-    margin-top: 56px;
-    padding-inline: 16px;
-
-    @include mixins.on-tablet {
-        margin-top: 64px;
-        padding-inline: 24px;
-    }
-
-    @include mixins.on-desktop {
-        margin-top: 80px;
-        padding-inline: 32px;
-    }
-}
-
 .title {
     margin: 0;
     margin-bottom: 24px;

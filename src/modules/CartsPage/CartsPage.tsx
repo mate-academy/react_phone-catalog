@@ -27,47 +27,49 @@ export const CartsPage = () => {
 
   return (
     <main className={styles.main}>
-      <div className={styles.back}>
-        <img
-          src="/img/icon/chevron-arrow-left.svg"
-          alt="Arrow Left"
-          className={styles.backIcon}
-        />
-        <button className={styles.backButton} onClick={() => navigate(-1)}>
-          Back
-        </button>
-      </div>
-      <h1 className={styles.title}>Cart</h1>
-
-      {isEmpty ? (
-        <p className={styles.empty}>Your cart is empty</p>
-      ) : (
-        <div className={styles.cartContent}>
-          <div className={styles.list}>
-            {carts.map(cart => (
-              <CartItem key={cart.id} cart={cart} />
-            ))}
-          </div>
-
-          <div className={styles.summary}>
-            <div className={styles.summaryContent}>
-              <p className={styles.summaryPrice}>{`$${totalPrice}`}</p>
-              <p className={styles.summaryText}>
-                {`Total for ${totalQuantity} items`}
-              </p>
-            </div>
-            <div className={styles.summaryAction}>
-              <button
-                type="button"
-                className={styles.checkoutButton}
-                onClick={handleCheckout}
-              >
-                Checkout
-              </button>
-            </div>
-          </div>
+      <div className="container">
+        <div className={styles.back}>
+          <img
+            src="/img/icon/chevron-arrow-left.svg"
+            alt="Arrow Left"
+            className={styles.backIcon}
+          />
+          <button className={styles.backButton} onClick={() => navigate(-1)}>
+            Back
+          </button>
         </div>
-      )}
+        <h1 className={styles.title}>Cart</h1>
+
+        {isEmpty ? (
+          <p className={styles.empty}>Your cart is empty</p>
+        ) : (
+          <div className={styles.cartContent}>
+            <div className={styles.list}>
+              {carts.map(cart => (
+                <CartItem key={cart.id} cart={cart} />
+              ))}
+            </div>
+
+            <div className={styles.summary}>
+              <div className={styles.summaryContent}>
+                <p className={styles.summaryPrice}>{`$${totalPrice}`}</p>
+                <p className={styles.summaryText}>
+                  {`Total for ${totalQuantity} items`}
+                </p>
+              </div>
+              <div className={styles.summaryAction}>
+                <button
+                  type="button"
+                  className={styles.checkoutButton}
+                  onClick={handleCheckout}
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </main>
   );
 };

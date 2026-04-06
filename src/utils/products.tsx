@@ -5,6 +5,21 @@ export const getHotPriceProducts = (products: Product[]) => {
   return products.filter(product => product.price < product.fullPrice);
 };
 
+export const getSuggestedProducts = (
+  products: Product[],
+  currentProductId: string,
+  count: number = 16,
+) => {
+  const filteredProducts = products.filter(
+    product => product.itemId !== currentProductId,
+  );
+  const shuffledProducts = [...filteredProducts].sort(
+    () => Math.random() - 0.5,
+  );
+
+  return shuffledProducts.slice(0, count);
+};
+
 export const getProductsByCategory = (
   products: Product[],
   category: string,

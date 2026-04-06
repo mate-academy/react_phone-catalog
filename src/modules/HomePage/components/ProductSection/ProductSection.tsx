@@ -60,41 +60,43 @@ export const ProductSection: React.FC<Props> = ({
   }, [currentIndex, maxIndex]);
 
   return (
-    <section className={styles.newModels}>
-      <div className={styles.top}>
-        <h2 className={styles.title}>{title}</h2>
+    <section className={styles.productSection}>
+      <div className={styles.sectionInner}>
+        <div className={styles.top}>
+          <h2 className={styles.title}>{title}</h2>
 
-        <div className={styles.controls}>
-          <button
-            type="button"
-            className={styles.arrowLeft}
-            onClick={handlePrev}
-            aria-label="Previous slide"
-            disabled={currentIndex === 0}
-          >
-            <img src="/img/icon/chevron-arrow-left.svg" alt="" />
-          </button>
+          <div className={styles.controls}>
+            <button
+              type="button"
+              className={styles.arrowLeft}
+              onClick={handlePrev}
+              aria-label="Previous slide"
+              disabled={currentIndex === 0}
+            >
+              <img src="/img/icon/chevron-arrow-left.svg" alt="" />
+            </button>
 
-          <button
-            type="button"
-            className={styles.arrowRight}
-            onClick={handleNext}
-            aria-label="Next slide"
-            disabled={currentIndex >= maxIndex}
-          >
-            <img src="/img/icon/chevron-arrow-right.svg" alt="" />
-          </button>
+            <button
+              type="button"
+              className={styles.arrowRight}
+              onClick={handleNext}
+              aria-label="Next slide"
+              disabled={currentIndex >= maxIndex}
+            >
+              <img src="/img/icon/chevron-arrow-right.svg" alt="" />
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.sliderWrapper}>
-        <ProductList
-          products={products}
-          currentIndex={currentIndex}
-          step={step}
-          showDiscount={showDiscount}
-          isSlider
-        />
+        <div className={styles.sliderWrapper}>
+          <ProductList
+            products={products}
+            currentIndex={currentIndex}
+            step={step}
+            showDiscount={showDiscount}
+            isSlider
+          />
+        </div>
       </div>
     </section>
   );

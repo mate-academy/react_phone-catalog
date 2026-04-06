@@ -8,11 +8,13 @@ export const FavouritesPage = () => {
 
   return (
     <main className={styles.main}>
-      <Breadcrumbs breadcrumb="Favourites" />
-      <h1 className={styles.title}>Favourites</h1>
-      <p className={styles.amount}>{`${favourites.length} items`}</p>
+      <div className="container">
+        <Breadcrumbs breadcrumb="Favourites" />
+        <h1 className={styles.title}>Favourites</h1>
+        <p className={styles.amount}>{`${favourites.length} items`}</p>
 
-      <ProductList products={favourites} />
+        <ProductList products={favourites} />
+      </div>
     </main>
   );
 };
