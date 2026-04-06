@@ -1,0 +1,26 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  @include content-width;
+
+  padding-top: $spacing-md;
+  padding-bottom: $spacing-3xl;
+}
+
+.title {
+  margin: $spacing-lg 0 $spacing-sm;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-primary;
+}
+
+.count {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-secondary;
+}
