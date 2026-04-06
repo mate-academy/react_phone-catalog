@@ -130,7 +130,9 @@ export const Header: React.FC = () => {
             pathname.includes('favorites') ? 'active' : '',
           )}
         >
-          <div className="header__favorites__count">{favorites.length}</div>
+          {favorites.length > 0 && (
+            <div className="header__favorites__count">{favorites.length}</div>
+          )}
           <img src={Favorites} alt="Favorites" />
         </Link>
 
@@ -141,9 +143,11 @@ export const Header: React.FC = () => {
             pathname.includes('cart') ? 'active' : '',
           )}
         >
-          <div className="header__cart__count">
-            {cart.reduce((sum, item) => sum + item.quantity, 0)}
-          </div>
+          {cart.length > 0 && (
+            <div className="header__cart__count">
+              {cart.reduce((sum, item) => sum + item.quantity, 0)}
+            </div>
+          )}
           <img src={Cart} alt="Cart" />
         </Link>
 
@@ -234,7 +238,9 @@ export const Header: React.FC = () => {
             )}
             onClick={() => setIsOpen(false)}
           >
-            <div className="header__favorites__count">{favorites.length}</div>
+            {favorites.length > 0 && (
+              <div className="header__favorites__count">{favorites.length}</div>
+            )}
             <img src={Favorites} alt="Favorites" />
           </Link>
 
@@ -246,9 +252,11 @@ export const Header: React.FC = () => {
             )}
             onClick={() => setIsOpen(false)}
           >
-            <div className="header__cart__count">
-              {cart.reduce((sum, item) => sum + item.quantity, 0)}
-            </div>
+            {cart.length > 0 && (
+              <div className="header__cart__count">
+                {cart.reduce((sum, item) => sum + item.quantity, 0)}
+              </div>
+            )}
             <img src={Cart} alt="Cart" />
           </Link>
         </div>
