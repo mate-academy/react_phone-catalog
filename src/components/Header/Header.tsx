@@ -143,11 +143,16 @@ export const Header: React.FC = () => {
             pathname.includes('cart') ? 'active' : '',
           )}
         >
-          {cart.length > 0 && (
-            <div className="header__cart__count">
-              {cart.reduce((sum, item) => sum + item.quantity, 0)}
-            </div>
-          )}
+          {(() => {
+            const total = cart.reduce(
+              (sum, item) => sum + (item?.quantity ?? 1),
+              0,
+            );
+
+            return total > 0 ? (
+              <div className="header__cart__count">{total}</div>
+            ) : null;
+          })()}
           <img src={Cart} alt="Cart" />
         </Link>
 
@@ -252,11 +257,16 @@ export const Header: React.FC = () => {
             )}
             onClick={() => setIsOpen(false)}
           >
-            {cart.length > 0 && (
-              <div className="header__cart__count">
-                {cart.reduce((sum, item) => sum + item.quantity, 0)}
-              </div>
-            )}
+            {(() => {
+              const total = cart.reduce(
+                (sum, item) => sum + (item?.quantity ?? 1),
+                0,
+              );
+
+              return total > 0 ? (
+                <div className="header__cart__count">{total}</div>
+              ) : null;
+            })()}
             <img src={Cart} alt="Cart" />
           </Link>
         </div>
