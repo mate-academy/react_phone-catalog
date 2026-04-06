@@ -8,18 +8,13 @@ import { Product } from '../../types/Product';
 type HeartProps = {
   favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  isFavorite: boolean;
 };
 
-const Heart = ({ favorites, setFavorites, isFavorite }: HeartProps) => {
+const Heart = ({ favorites, setFavorites }: HeartProps) => {
   return (
     <div className="heart">
       <Header favorites={favorites} />
-      <CatalogFavorites
-        favorites={favorites}
-        setFavorites={setFavorites}
-        isFavorite={isFavorite}
-      />
+      <CatalogFavorites favorites={favorites} setFavorites={setFavorites} />
       <Footer />
     </div>
   );

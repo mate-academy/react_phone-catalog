@@ -12,7 +12,13 @@ import { Product } from './types/Product';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-  const isFavorite = favorites.some(p => p.itemId === product.itemId);
+  const handleToggleFavorite = (productId: number) => {
+    setFavorites(prev =>
+      prev.includes(productId)
+        ? prev.filter(id => id !== productId)
+        : [...prev, productId],
+    );
+  };
 
   return (
     <HashRouter>
@@ -22,52 +28,32 @@ export const App = () => {
           <Route
             path="/phones"
             element={
-              <Phones
-                favorites={favorites}
-                setFavorites={setFavorites}
-                isFavorite={isFavorite}
-              />
+              <Phones favorites={favorites} setFavorites={setFavorites} />
             }
           />
           <Route
             path="/tablets"
             element={
-              <Tablets
-                favorites={favorites}
-                setFavorites={setFavorites}
-                isFavorite={isFavorite}
-              />
+              <Tablets favorites={favorites} setFavorites={setFavorites} />
             }
           />
           <Route
             path="/accessories"
             element={
-              <Accessories
-                favorites={favorites}
-                setFavorites={setFavorites}
-                isFavorite={isFavorite}
-              />
+              <Accessories favorites={favorites} setFavorites={setFavorites} />
             }
           />
           <Route
             path="/heart"
             element={
-              <Heart
-                favorites={favorites}
-                setFavorites={setFavorites}
-                isFavorite={isFavorite}
-              />
+              <Heart favorites={favorites} setFavorites={setFavorites} />
             }
           />
           <Route path="/basket" element={<Basket favorites={favorites} />} />
           <Route
             path="/:category/:id"
             element={
-              <ProductPage
-                favorites={favorites}
-                isFavorite={isFavorite}
-                setFavorites={setFavorites}
-              />
+              <ProductPage favorites={favorites} setFavorites={setFavorites} />
             }
           />
         </Routes>

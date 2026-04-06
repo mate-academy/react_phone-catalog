@@ -6,13 +6,11 @@ import { Product } from '../../types/Product';
 type CatalogFavoritesProps = {
   favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  isFavorite: boolean;
 };
 
 const CatalogFavorites = ({
   favorites,
   setFavorites,
-  isFavorite,
 }: CatalogFavoritesProps) => {
   return (
     <div className="catalog-favorites">
@@ -25,11 +23,7 @@ const CatalogFavorites = ({
         <p className="catalog-favorites__top--text">Favorites</p>
       </div>
       <h1 className="catalog-favorites__title">Favorites</h1>
-      <FavoritesList
-        favorites={favorites}
-        setFavorites={setFavorites}
-        isFavorite={isFavorite}
-      />
+      <FavoritesList favorites={favorites} setFavorites={setFavorites} />
     </div>
   );
 };

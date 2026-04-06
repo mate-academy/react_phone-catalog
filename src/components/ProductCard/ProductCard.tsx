@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 type ProductCardProps = {
   product: Product;
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  isFavorite: boolean;
+  favorites: Product[];
 };
 
 const ProductCard = ({
+  favorites,
   product,
   setFavorites,
-  isFavorite,
 }: ProductCardProps) => {
+  const isFavorite = favorites.some(p => p.itemId === product.itemId);
   const handleToggleFavorite = () => {
     setFavorites(prev => {
       const exists = prev.some(p => p.itemId === product.itemId);

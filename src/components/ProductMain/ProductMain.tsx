@@ -11,8 +11,8 @@ import { Product } from '../../types/Product';
 export type ProductMainProps = {
   someProduct: ProductDetails;
   models: ProductDetails[];
-  isFavorite: boolean;
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: Product[];
 };
 
 export type ProductColor =
@@ -36,8 +36,8 @@ export type ProductColor =
 const ProductMain = ({
   someProduct,
   models,
-  isFavorite,
   setFavorites,
+  favorites,
 }: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
@@ -63,6 +63,8 @@ const ProductMain = ({
       navigate(`/${foundProduct.category}/${foundProduct.id}`);
     }
   }, [selectedColor, selectedCapacity, models, navigate]);
+
+  const isFavorite = favorites.some(p => p.itemId === currentProduct.id);
 
   return (
     <div className="product-main">
@@ -90,8 +92,8 @@ const ProductMain = ({
         setSelectedColor={setSelectedColor}
         selectedCapacity={selectedCapacity}
         setSelectedCapacity={setSelectedCapacity}
-        isFavorite={isFavorite}
         setFavorites={setFavorites}
+        isFavorite={isFavorite}
       />
       <ProductAbout currentProduct={currentProduct} />
       <ProductTechSpecs currentProduct={currentProduct} />

@@ -12,16 +12,11 @@ import { Product } from '../../types/Product';
 
 type ProductPageProps = {
   favorites: Product[];
-  isFavorite: boolean;
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
 export type ProductDetails = Phone | Tablet | Accessory;
-const ProductPage = ({
-  favorites,
-  isFavorite,
-  setFavorites,
-}: ProductPageProps) => {
+const ProductPage = ({ favorites, setFavorites }: ProductPageProps) => {
   const { category, id } = useParams();
   const [someProduct, setSomeProduct] = useState<ProductDetails | null>(null);
   const [modelProducts, setModelProducts] = useState<ProductDetails[]>([]);
@@ -93,8 +88,8 @@ const ProductPage = ({
         <ProductMain
           models={modelProducts}
           someProduct={someProduct}
-          isFavorite={isFavorite}
           setFavorites={setFavorites}
+          favorites={favorites}
         />
       )}
       <Footer />

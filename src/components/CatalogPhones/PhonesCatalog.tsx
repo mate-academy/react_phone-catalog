@@ -10,10 +10,10 @@ import CatalogSlider from './CatalogSlider/CatalogSlider';
 
 type CatalogProps = {
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  isFavorite: boolean;
+  favorites: Product[];
 };
 
-const Catalog = ({ setFavorites, isFavorite }: CatalogProps) => {
+const Catalog = ({ setFavorites, favorites }: CatalogProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(4);
@@ -85,7 +85,7 @@ const Catalog = ({ setFavorites, isFavorite }: CatalogProps) => {
       <ProductList
         products={visibleProducts}
         setFavorites={setFavorites}
-        isFavorite={isFavorite}
+        favorites={favorites}
       />
       <CatalogSlider
         currentPage={currentPage}

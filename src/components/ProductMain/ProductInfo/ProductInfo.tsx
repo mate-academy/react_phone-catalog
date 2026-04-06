@@ -18,8 +18,8 @@ type ProductInfoProps = {
   setSelectedCapacity: React.Dispatch<
     React.SetStateAction<ProductCapacityType>
   >;
-  isFavorite: boolean;
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  isFavorite: boolean;
 };
 
 const ProductInfo = ({
@@ -29,18 +29,7 @@ const ProductInfo = ({
   selectedCapacity,
   setSelectedCapacity,
   isFavorite,
-  setFavorites,
 }: ProductInfoProps) => {
-  const handleToggleFavorite = () => {
-    setFavorites(prev => {
-      const exists = prev.some(p => p.itemId === currentProduct.id);
-
-      return exists
-        ? prev.filter(p => p.itemId !== currentProduct.id)
-        : [...prev, currentProduct];
-    });
-  };
-
   return (
     <>
       {' '}
@@ -65,7 +54,6 @@ const ProductInfo = ({
                 </Link>
                 <button
                   className={`product-info__button--icon ${isFavorite ? 'active' : ''}`}
-                  onClick={handleToggleFavorite}
                 ></button>
               </div>
             </div>

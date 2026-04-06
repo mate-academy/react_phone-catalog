@@ -5,13 +5,13 @@ import { Product } from '../../types/Product';
 type ProductListProps = {
   products: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  isFavorite: boolean;
+  favorites: Product[];
 };
 
 const ProductList = ({
   products,
   setFavorites,
-  isFavorite,
+  favorites,
 }: ProductListProps) => {
   return (
     <div className="product__list">
@@ -20,7 +20,7 @@ const ProductList = ({
           key={product.itemId}
           product={product}
           setFavorites={setFavorites}
-          isFavorite={isFavorite}
+          favorites={favorites}
         />
       ))}
     </div>

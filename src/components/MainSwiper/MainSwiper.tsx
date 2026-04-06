@@ -3,6 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import FirstImage from '../../../public/img/category-phones.webp';
+import SecondImage from '../../../public/img/category-phones--gold.png';
+import ThirdImage from '../../../public/img/category-phones--purple.png';
 
 const MainSwiper = () => {
   const swiperRef = useRef(null);
@@ -20,11 +23,12 @@ const MainSwiper = () => {
 
   return (
     <>
+      {' '}
+      <button
+        onClick={() => swiperRef.current?.slidePrev()}
+        className="custom-prev"
+      ></button>{' '}
       <div className="swiper__container">
-        <button
-          onClick={() => swiperRef.current?.slidePrev()}
-          className="custom-prev"
-        ></button>{' '}
         <div className="main-swiper">
           <div className="slide__content--1">
             <h2 className="slide__title--1">
@@ -34,37 +38,40 @@ const MainSwiper = () => {
             <p className="slide__text--1">Be the first!</p>
             <button className="slide__button">ORDER NOW</button>
           </div>
-          <Swiper
-            onSwiper={swiper => (swiperRef.current = swiper)}
-            spaceBetween={30}
-            centeredSlides={true}
-            autoplay={{
-              delay: 6000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            modules={[Autoplay, Pagination]}
-            onAutoplayTimeLeft={onAutoplayTimeLeft}
-            className="mySwiper"
-          >
-            <div className="slide__content--2">
+          <div className="slide__content--2">
+            {' '}
+            <h3 className="slide__title--2">iPhone 14 Pro</h3>
+            <p className="slide__text--2">Pro Beyond</p>
+            <Swiper
+              onSwiper={swiper => (swiperRef.current = swiper)}
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 6000,
+                disableOnInteraction: false,
+              }}
+              pagination={{ clickable: true }}
+              modules={[Autoplay, Pagination]}
+              onAutoplayTimeLeft={onAutoplayTimeLeft}
+              className="mySwiper"
+            >
               <SwiperSlide>
-                <img src="img/phones/apple-iphone-14-pro/spaceblack/00.webp" />
+                <img src={FirstImage} className="slide__image" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="img/phones/apple-iphone-14-pro/gold/00.webp" />
+                <img src={SecondImage} className="slide__image" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="img/phones/apple-iphone-14-pro/silver/00.webp" />
+                <img src={ThirdImage} className="slide__image" />
               </SwiperSlide>
-            </div>
-          </Swiper>
+            </Swiper>
+          </div>
         </div>{' '}
-        <button
-          onClick={() => swiperRef.current?.slideNext()}
-          className="custom-next"
-        ></button>
-      </div>
+      </div>{' '}
+      <button
+        onClick={() => swiperRef.current?.slideNext()}
+        className="custom-next"
+      ></button>
     </>
   );
 };
