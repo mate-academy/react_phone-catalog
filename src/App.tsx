@@ -12,6 +12,7 @@ import { Product } from './types/Product';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+  const isFavorite = favorites.some(p => p.itemId === product.itemId);
 
   return (
     <HashRouter>
@@ -21,31 +22,53 @@ export const App = () => {
           <Route
             path="/phones"
             element={
-              <Phones favorites={favorites} setFavorites={setFavorites} />
+              <Phones
+                favorites={favorites}
+                setFavorites={setFavorites}
+                isFavorite={isFavorite}
+              />
             }
           />
           <Route
             path="/tablets"
             element={
-              <Tablets favorites={favorites} setFavorites={setFavorites} />
+              <Tablets
+                favorites={favorites}
+                setFavorites={setFavorites}
+                isFavorite={isFavorite}
+              />
             }
           />
           <Route
             path="/accessories"
             element={
-              <Accessories favorites={favorites} setFavorites={setFavorites} />
+              <Accessories
+                favorites={favorites}
+                setFavorites={setFavorites}
+                isFavorite={isFavorite}
+              />
             }
           />
           <Route
             path="/heart"
             element={
-              <Heart favorites={favorites} setFavorites={setFavorites} />
+              <Heart
+                favorites={favorites}
+                setFavorites={setFavorites}
+                isFavorite={isFavorite}
+              />
             }
           />
           <Route path="/basket" element={<Basket favorites={favorites} />} />
           <Route
             path="/:category/:id"
-            element={<ProductPage favorites={favorites} />}
+            element={
+              <ProductPage
+                favorites={favorites}
+                isFavorite={isFavorite}
+                setFavorites={setFavorites}
+              />
+            }
           />
         </Routes>
       </div>

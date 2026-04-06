@@ -1,24 +1,17 @@
-import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 type ProductCardProps = {
   product: Product;
-  favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  isFavorite: boolean;
 };
 
 const ProductCard = ({
   product,
-  favorites,
   setFavorites,
+  isFavorite,
 }: ProductCardProps) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  useEffect(() => {
-    setIsFavorite(favorites.some(p => p.itemId === product.itemId));
-  }, [favorites, product.itemId]);
-
   const handleToggleFavorite = () => {
     setFavorites(prev => {
       const exists = prev.some(p => p.itemId === product.itemId);
@@ -59,9 +52,7 @@ const ProductCard = ({
         </div>
       </div>
       <div className="card__buttons">
-        <Link to="" className="card__button--add-to-cart">
-          Add to cart
-        </Link>
+        <button className="card__button--add-to-cart">Add to cart</button>
         <button
           className={`card__button--icon ${isFavorite ? 'active' : ''}`}
           onClick={handleToggleFavorite}

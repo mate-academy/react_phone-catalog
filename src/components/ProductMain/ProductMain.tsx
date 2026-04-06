@@ -6,10 +6,13 @@ import ProductAbout from './ProductAbout/ProductAbout';
 import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
 import { Link, useNavigate } from 'react-router-dom';
+import { Product } from '../../types/Product';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
   models: ProductDetails[];
+  isFavorite: boolean;
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
 export type ProductColor =
@@ -30,7 +33,12 @@ export type ProductColor =
   | 'starlight'
   | 'skyblue';
 
-const ProductMain = ({ someProduct, models }: ProductMainProps) => {
+const ProductMain = ({
+  someProduct,
+  models,
+  isFavorite,
+  setFavorites,
+}: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
   );
@@ -82,6 +90,8 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
         setSelectedColor={setSelectedColor}
         selectedCapacity={selectedCapacity}
         setSelectedCapacity={setSelectedCapacity}
+        isFavorite={isFavorite}
+        setFavorites={setFavorites}
       />
       <ProductAbout currentProduct={currentProduct} />
       <ProductTechSpecs currentProduct={currentProduct} />

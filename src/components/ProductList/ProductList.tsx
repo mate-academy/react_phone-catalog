@@ -4,14 +4,14 @@ import { Product } from '../../types/Product';
 
 type ProductListProps = {
   products: Product[];
-  favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  isFavorite: boolean;
 };
 
 const ProductList = ({
   products,
-  favorites,
   setFavorites,
+  isFavorite,
 }: ProductListProps) => {
   return (
     <div className="product__list">
@@ -19,8 +19,8 @@ const ProductList = ({
         <ProductCard
           key={product.itemId}
           product={product}
-          favorites={favorites}
           setFavorites={setFavorites}
+          isFavorite={isFavorite}
         />
       ))}
     </div>

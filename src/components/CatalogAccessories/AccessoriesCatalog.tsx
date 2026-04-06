@@ -10,13 +10,13 @@ import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
 import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 
 type AccessoriesCatalogProps = {
-  favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  isFavorite: boolean;
 };
 
 const AccessoriesCatalog = ({
-  favorites,
   setFavorites,
+  isFavorite,
 }: AccessoriesCatalogProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
@@ -94,8 +94,8 @@ const AccessoriesCatalog = ({
       </div>
       <ProductList
         products={visibleProducts}
-        favorites={favorites}
         setFavorites={setFavorites}
+        isFavorite={isFavorite}
       />
       <CatalogSlider
         currentPage={currentPage}

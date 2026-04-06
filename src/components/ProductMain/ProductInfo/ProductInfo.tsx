@@ -7,8 +7,8 @@ import ProductCapacity, {
 import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../ProductMain';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Product } from '../../../types/Product';
 
 type ProductInfoProps = {
   selectedColor: string;
@@ -18,6 +18,8 @@ type ProductInfoProps = {
   setSelectedCapacity: React.Dispatch<
     React.SetStateAction<ProductCapacityType>
   >;
+  isFavorite: boolean;
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
 const ProductInfo = ({
@@ -26,7 +28,19 @@ const ProductInfo = ({
   setSelectedColor,
   selectedCapacity,
   setSelectedCapacity,
+  isFavorite,
+  setFavorites,
 }: ProductInfoProps) => {
+  const handleToggleFavorite = () => {
+    setFavorites(prev => {
+      const exists = prev.some(p => p.itemId === currentProduct.id);
+
+      return exists
+        ? prev.filter(p => p.itemId !== currentProduct.id)
+        : [...prev, currentProduct];
+    });
+  };
+
   return (
     <>
       {' '}
@@ -49,7 +63,10 @@ const ProductInfo = ({
                 <Link to="" className="product-info__button--add-to-cart">
                   Add to cart
                 </Link>
-                <Link to="" className="product-info__button--icon"></Link>
+                <button
+                  className={`product-info__button--icon ${isFavorite ? 'active' : ''}`}
+                  onClick={handleToggleFavorite}
+                ></button>
               </div>
             </div>
             <div className="product-info__right">

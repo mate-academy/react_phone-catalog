@@ -5,9 +5,14 @@ import './FavoritesList.scss';
 type FavoritesListProps = {
   favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  isFavorite: boolean;
 };
 
-const FavoritesList = ({ favorites, setFavorites }: FavoritesListProps) => {
+const FavoritesList = ({
+  favorites,
+  setFavorites,
+  isFavorite,
+}: FavoritesListProps) => {
   return (
     <>
       <div className="favorites-list">
@@ -20,8 +25,8 @@ const FavoritesList = ({ favorites, setFavorites }: FavoritesListProps) => {
             <ProductCard
               key={product.itemId}
               product={product}
-              favorites={favorites}
               setFavorites={setFavorites}
+              isFavorite={isFavorite}
             />
           ))
         ) : (
