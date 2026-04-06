@@ -6,6 +6,11 @@
   margin-top: $spacing-2xl;
   margin-bottom: $spacing-2xl;
 
+  :global(.swiper) {
+    padding: $spacing-sm;
+    margin: -$spacing-sm;
+  }
+
   :global(.swiper-wrapper) {
     align-items: stretch;
   }
@@ -59,9 +64,8 @@
   border: 1px solid $color-icons;
   cursor: pointer;
   color: $color-primary;
-  transition:
-    border-color $transition-base,
-    color $transition-base;
+  transition: border-color $transition-base,
+  color $transition-base;
 
   &:hover:not(:disabled) {
     border-color: $color-primary;
