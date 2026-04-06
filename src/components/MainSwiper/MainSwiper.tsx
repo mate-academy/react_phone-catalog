@@ -3,9 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import FirstImage from '../../../public/img/category-phones.webp';
+// eslint-disable-next-line max-len
+import FirstImage from '../../../public/img/category-phones--purple--otherSide.png';
 import SecondImage from '../../../public/img/category-phones--gold.png';
-import ThirdImage from '../../../public/img/category-phones--purple.png';
+import ThirdImage from '../../../public/img/category-phones.webp';
 
 const MainSwiper = () => {
   const swiperRef = useRef(null);
@@ -22,57 +23,54 @@ const MainSwiper = () => {
   };
 
   return (
-    <>
-      {' '}
+    <div className="swiper__container">
       <button
         onClick={() => swiperRef.current?.slidePrev()}
         className="custom-prev"
       ></button>{' '}
-      <div className="swiper__container">
-        <div className="main-swiper">
-          <div className="slide__content--1">
-            <h2 className="slide__title--1">
-              Now available in our store
-              <Link to="" className="slide__logo"></Link>
-            </h2>
-            <p className="slide__text--1">Be the first!</p>
-            <button className="slide__button">ORDER NOW</button>
-          </div>
-          <div className="slide__content--2">
-            {' '}
-            <h3 className="slide__title--2">iPhone 14 Pro</h3>
-            <p className="slide__text--2">Pro Beyond</p>
-            <Swiper
-              onSwiper={swiper => (swiperRef.current = swiper)}
-              spaceBetween={30}
-              centeredSlides={true}
-              autoplay={{
-                delay: 6000,
-                disableOnInteraction: false,
-              }}
-              pagination={{ clickable: true }}
-              modules={[Autoplay, Pagination]}
-              onAutoplayTimeLeft={onAutoplayTimeLeft}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <img src={FirstImage} className="slide__image" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={SecondImage} className="slide__image" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={ThirdImage} className="slide__image" />
-              </SwiperSlide>
-            </Swiper>
-          </div>
-        </div>{' '}
-      </div>{' '}
+      <div className="main-swiper">
+        <div className="slide__content--1">
+          <h2 className="slide__title--1">
+            Now available in our store
+            <Link to="" className="slide__logo"></Link>
+          </h2>
+          <p className="slide__text--1">Be the first!</p>
+          <button className="slide__button">ORDER NOW</button>
+        </div>
+        <div className="slide__content--2">
+          {' '}
+          <h3 className="slide__title--2">iPhone 14 Pro</h3>
+          <p className="slide__text--2">Pro Beyond</p>
+          <Swiper
+            onSwiper={swiper => (swiperRef.current = swiper)}
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+            }}
+            pagination={{ clickable: true }}
+            modules={[Autoplay, Pagination]}
+            onAutoplayTimeLeft={onAutoplayTimeLeft}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img src={FirstImage} className="slide__image" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={SecondImage} className="slide__image" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={ThirdImage} className="slide__image" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </div>
       <button
         onClick={() => swiperRef.current?.slideNext()}
         className="custom-next"
       ></button>
-    </>
+    </div>
   );
 };
 

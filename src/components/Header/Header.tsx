@@ -4,10 +4,10 @@ import Logo from '../../../public/img/Logo/Logo.png';
 import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type HeaderProps = {
-  favorites: Product[];
+  favorites: FavoriteProduct[];
 };
 
 const Header = ({ favorites }: HeaderProps) => {

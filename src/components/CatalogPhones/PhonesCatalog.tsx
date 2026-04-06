@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 import CatalogSort1 from './CatalogSort1/CatalogSort1';
 import CatalogSort2 from './CatalogSort2/CatalogSort2';
 import CatalogSlider from './CatalogSlider/CatalogSlider';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type CatalogProps = {
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  favorites: FavoriteProduct[];
 };
 
 const Catalog = ({ setFavorites, favorites }: CatalogProps) => {

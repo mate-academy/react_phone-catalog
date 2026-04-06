@@ -8,17 +8,13 @@ import ProductPage from './pages/productPage/ProductPage';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Basket from './pages/basketPage/Basket';
 import { useLocalStorage } from './api';
-import { Product } from './types/Product';
+import { FavoriteProduct } from './types/FavoriteProduct';
 
 export const App = () => {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-  const handleToggleFavorite = (productId: number) => {
-    setFavorites(prev =>
-      prev.includes(productId)
-        ? prev.filter(id => id !== productId)
-        : [...prev, productId],
-    );
-  };
+  const [favorites, setFavorites] = useLocalStorage<FavoriteProduct[]>(
+    'favorites',
+    [],
+  );
 
   return (
     <HashRouter>

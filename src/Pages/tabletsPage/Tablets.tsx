@@ -2,11 +2,11 @@ import './Tablets.scss';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import TabletsCatalog from '../../components/CatalogTablets/TabletsCatalog';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type TabletsProps = {
-  favorites: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: FavoriteProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const Tablets = ({ favorites, setFavorites }: TabletsProps) => {

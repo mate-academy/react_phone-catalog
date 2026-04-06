@@ -1,11 +1,12 @@
 import './ProductList.scss';
 import ProductCard from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type ProductListProps = {
   products: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  favorites: FavoriteProduct[];
 };
 
 const ProductList = ({

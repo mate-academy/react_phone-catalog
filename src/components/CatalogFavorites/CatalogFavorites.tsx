@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import './CatalogFavorites.scss';
 import FavoritesList from '../FavoritesList/FavoritesList';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type CatalogFavoritesProps = {
-  favorites: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: FavoriteProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const CatalogFavorites = ({

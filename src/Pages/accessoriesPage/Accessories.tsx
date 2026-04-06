@@ -2,11 +2,11 @@ import Header from '../../components/Header/Header';
 // eslint-disable-next-line max-len
 import AccessoriesCatalog from '../../components/CatalogAccessories/AccessoriesCatalog';
 import Footer from '../../components/Footer/Footer';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type AccessoriesProps = {
-  favorites: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: FavoriteProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const Accessories = ({ favorites, setFavorites }: AccessoriesProps) => {

@@ -3,11 +3,11 @@ import CatalogFavorites from '../../components/CatalogFavorites/CatalogFavorites
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import './Heart.scss';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type HeartProps = {
-  favorites: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: FavoriteProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const Heart = ({ favorites, setFavorites }: HeartProps) => {

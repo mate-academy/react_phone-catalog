@@ -1,10 +1,10 @@
-import { Product } from '../../types/Product';
 import ProductCard from '../ProductCard/ProductCard';
 import './FavoritesList.scss';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type FavoritesListProps = {
-  favorites: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: FavoriteProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const FavoritesList = ({ favorites, setFavorites }: FavoritesListProps) => {

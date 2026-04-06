@@ -1,10 +1,12 @@
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
+
 type ProductCardProps = {
   product: Product;
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  favorites: FavoriteProduct[];
 };
 
 const ProductCard = ({

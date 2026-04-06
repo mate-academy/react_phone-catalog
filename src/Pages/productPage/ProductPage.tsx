@@ -8,11 +8,11 @@ import { Accessory } from '../../types/Accessory';
 import { Phone } from '../../types/Phone';
 import { Tablet } from '../../types/Tablet';
 import { getAccessories, getPhones, getProduct, getTablets } from '../../api';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type ProductPageProps = {
-  favorites: Product[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
+  favorites: FavoriteProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 export type ProductDetails = Phone | Tablet | Accessory;

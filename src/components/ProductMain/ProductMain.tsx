@@ -6,13 +6,13 @@ import ProductAbout from './ProductAbout/ProductAbout';
 import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
 import { Link, useNavigate } from 'react-router-dom';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
   models: ProductDetails[];
-  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
-  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  favorites: FavoriteProduct[];
 };
 
 export type ProductColor =
@@ -64,7 +64,30 @@ const ProductMain = ({
     }
   }, [selectedColor, selectedCapacity, models, navigate]);
 
-  const isFavorite = favorites.some(p => p.itemId === currentProduct.id);
+  const stateProduct: FavoriteProduct = {
+    category: currentProduct.category,
+    itemId: currentProduct.id,
+    name: currentProduct.name,
+    fullPrice: currentProduct.priceRegular,
+    price: currentProduct.priceDiscount,
+    screen: currentProduct.screen,
+    capacity: currentProduct.capacity,
+    color: currentProduct.color,
+    ram: currentProduct.ram,
+    image: currentProduct.images[0],
+  };
+
+  const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
+
+  const handleToggleFavorite = () => {
+    setFavorites(prev => {
+      const exists = prev.some(p => p.itemId === stateProduct.itemId);
+
+      return exists
+        ? prev.filter(p => p.itemId !== stateProduct.itemId)
+        : [...prev, stateProduct];
+    });
+  };
 
   return (
     <div className="product-main">
@@ -94,6 +117,7 @@ const ProductMain = ({
         setSelectedCapacity={setSelectedCapacity}
         setFavorites={setFavorites}
         isFavorite={isFavorite}
+        handleToggleFavorite={handleToggleFavorite}
       />
       <ProductAbout currentProduct={currentProduct} />
       <ProductTechSpecs currentProduct={currentProduct} />
