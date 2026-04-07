@@ -35,7 +35,7 @@
 .link {
   font-size: 12px;
   font-weight: 600;
-  line-height: 15px;
+  line-height: 1;
   text-decoration: none;
   color: $color-primary;
   transition: color $transition-base;
@@ -46,8 +46,10 @@
 }
 
 .current {
+  position: relative;
+  top: 1px;
   font-size: 12px;
   font-weight: 600;
-  line-height: 15px;
+  line-height: 1;
   color: $color-secondary;
 }
