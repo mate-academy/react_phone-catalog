@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Fragment, useEffect, useState } from 'react';
 import { BackCrumb } from '../../components/BackCrumb';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -11,7 +12,7 @@ import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
 import styles from './/ProductDetailPage.module.scss';
 import { loadFavorites, saveFavorites } from '../../services/favorites';
 import { BASE_URL } from '../../services/baseUrl';
-import { loadCart, saveCart } from '../../services/cart';
+import { loadCart, saveCart, CartItem } from '../../services/cart';
 
 interface CategoryProduct {
   id: string;
@@ -50,8 +51,10 @@ export const ProductDetailPage = () => {
   const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
   const [favProduct, setFavProduct] = useState<Product | null>(null);
 
-  const [cart, setCart] = useState<Product[]>(() => loadCart());
-  const inCart = cart.some(p => p.itemId === productId);
+  const [cart, setCart] = useState<CartItem[]>(() => loadCart());
+  const inCart = cart.some(
+    item => String(item.product.itemId) === String(productId),
+  );
 
   const liked = favorites.some(p => p.itemId === productId);
 
@@ -159,18 +162,19 @@ export const ProductDetailPage = () => {
       return;
     }
 
-    setCart(prev => {
-      const isInCart = prev.some(
-        item => String(item.id) === String(favProduct.id),
-      );
-      const next = isInCart
-        ? prev.filter(item => String(item.id) !== String(favProduct.id))
-        : [...prev, favProduct];
+    const currentCart = loadCart();
+    const exists = currentCart.some(
+      item => String(item.product.itemId) === String(favProduct.itemId),
+    );
 
-      saveCart(next);
+    const nextCart = exists
+      ? currentCart.filter(
+        item => String(item.product.itemId) !== String(favProduct.itemId),
+      )
+      : [...currentCart, { product: favProduct, quantity: 1 }];
 
-      return next;
-    });
+    saveCart(nextCart);
+    setCart(nextCart);
   };
 
   const handleColorClick = (color: string) => {

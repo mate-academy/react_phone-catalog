@@ -13,6 +13,7 @@ import { ProductDetailPage } from './pages/ProductDetailPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 
 export const App = () => {
   // const { data: phones, loading, error, reload } = useFetch('/api/phones.json');
@@ -36,6 +37,7 @@ export const App = () => {
       <div className="app-wrapper">
         <Header />
         <main style={{ flex: 1 }}>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/phones" element={<PhonePage />} />

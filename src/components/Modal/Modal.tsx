@@ -8,6 +8,7 @@ interface ModalProps {
   onConfirm?: () => void;
   title?: string;
   children: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -16,6 +17,7 @@ export const Modal: React.FC<ModalProps> = ({
   onConfirm,
   title,
   children,
+  footer,
 }) => {
   // Закриття на клавішу Escape
   useEffect(() => {
@@ -53,20 +55,25 @@ export const Modal: React.FC<ModalProps> = ({
           </button>
         </div>
         <div className={styles.body}>{children}</div>
-        <div className={styles.footer}>
-          <button
-            className={styles.btn + ' ' + styles.confirm}
-            onClick={onConfirm}
-          >
-            Confirm
-          </button>
-          <button
-            className={styles.btn + ' ' + styles.decline}
-            onClick={onClose}
-          >
-            Decline
-          </button>
-        </div>
+        {footer ? (
+          <div className={styles.footer}>{footer}</div>
+        ) : onConfirm ? (
+          // Якщо є onConfirm — стандартні кнопки
+          <div className={styles.footer}>
+            <button
+              className={`${styles.btn} ${styles.confirm}`}
+              onClick={onConfirm}
+            >
+              Confirm
+            </button>
+            <button
+              className={`${styles.btn} ${styles.decline}`}
+              onClick={onClose}
+            >
+              Decline
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>,
     modalRoot,
