@@ -32,12 +32,14 @@ export const Footer = () => {
 
         <ul className="footer__nav">
           <Link
+            target="_blank"
             to="https://github.com/Evg3n22/react_phone-catalog"
             className="footer__nav__item"
           >
             Github
           </Link>
           <Link
+            target="_blank"
             to="https://www.linkedin.com/in/%D1%94%D0%B2%D0%B3%D0%B5%D0%BD-%D0%B3%D1%83%D0%BB%D0%B5%D0%B2%D0%B0%D1%82%D0%B8%D0%B9-34728a336/"
             className="footer__nav__item"
           >
