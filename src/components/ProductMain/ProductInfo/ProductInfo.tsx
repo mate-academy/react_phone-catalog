@@ -7,7 +7,6 @@ import ProductCapacity, {
 import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../ProductMain';
-import { Link } from 'react-router-dom';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
 
 type ProductInfoProps = {
@@ -21,6 +20,8 @@ type ProductInfoProps = {
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   isFavorite: boolean;
   handleToggleFavorite: React.MouseEventHandler<HTMLButtonElement>;
+  isBasket: boolean;
+  handleToggleBasket: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const ProductInfo = ({
@@ -31,6 +32,8 @@ const ProductInfo = ({
   setSelectedCapacity,
   isFavorite,
   handleToggleFavorite,
+  handleToggleBasket,
+  isBasket,
 }: ProductInfoProps) => {
   return (
     <>
@@ -51,9 +54,12 @@ const ProductInfo = ({
               />
               <ProductPrice currentProduct={currentProduct} />
               <div className="product-info__buttons">
-                <Link to="" className="product-info__button--add-to-cart">
+                <button
+                  className={`product-info__button--add-to-cart ${isBasket ? 'active' : ''}`}
+                  onClick={handleToggleBasket}
+                >
                   Add to cart
-                </Link>
+                </button>
                 <button
                   className={`product-info__button--icon ${isFavorite ? 'active' : ''}`}
                   onClick={handleToggleFavorite}

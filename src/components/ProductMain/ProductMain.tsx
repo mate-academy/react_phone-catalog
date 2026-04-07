@@ -13,6 +13,8 @@ export type ProductMainProps = {
   models: ProductDetails[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
+  baskets: FavoriteProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 export type ProductColor =
@@ -38,6 +40,8 @@ const ProductMain = ({
   models,
   setFavorites,
   favorites,
+  baskets,
+  setBaskets,
 }: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
@@ -78,9 +82,20 @@ const ProductMain = ({
   };
 
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
+  const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
 
   const handleToggleFavorite = () => {
     setFavorites(prev => {
+      const exists = prev.some(p => p.itemId === stateProduct.itemId);
+
+      return exists
+        ? prev.filter(p => p.itemId !== stateProduct.itemId)
+        : [...prev, stateProduct];
+    });
+  };
+
+  const handleToggleBasket = () => {
+    setBaskets(prev => {
       const exists = prev.some(p => p.itemId === stateProduct.itemId);
 
       return exists
@@ -117,7 +132,9 @@ const ProductMain = ({
         setSelectedCapacity={setSelectedCapacity}
         setFavorites={setFavorites}
         isFavorite={isFavorite}
+        isBasket={isBasket}
         handleToggleFavorite={handleToggleFavorite}
+        handleToggleBasket={handleToggleBasket}
       />
       <ProductAbout currentProduct={currentProduct} />
       <ProductTechSpecs currentProduct={currentProduct} />

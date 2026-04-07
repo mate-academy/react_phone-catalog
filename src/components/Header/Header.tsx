@@ -4,10 +4,10 @@ import Logo from '../../../public/img/Logo/Logo.png';
 import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { Product } from '../../types/Product';
 
 type HeaderProps = {
-  favorites: FavoriteProduct[];
+  favorites: Product[];
 };
 
 const Header = ({ favorites }: HeaderProps) => {
@@ -17,6 +17,8 @@ const Header = ({ favorites }: HeaderProps) => {
   const isPhones = location.pathname.startsWith('/phones');
   const isTablets = location.pathname.startsWith('/tablets');
   const isAcccessories = location.pathname.startsWith('/accessories');
+  const isHeart = location.pathname.startsWith('/heart');
+  const isBasket = location.pathname.startsWith('/basket');
   const isHome = location.pathname === '';
 
   return (
@@ -66,12 +68,18 @@ const Header = ({ favorites }: HeaderProps) => {
         </div>
         <div className="header__right">
           <div className="top-bar__icons">
-            <Link to="/heart" className="icon icon--heart">
+            <Link
+              to="/heart"
+              className={`icon icon--heart ${isHeart ? 'is-active' : ''}`}
+            >
               {favorites.length > 0 && (
                 <span className="icon--badge">{favorites.length}</span>
               )}
             </Link>
-            <Link to="/basket" className="icon icon--basket"></Link>
+            <Link
+              to="/basket"
+              className={`icon icon--basket ${isBasket ? 'is-active' : ''}`}
+            ></Link>
             <button
               className="icon icon--menu"
               onClick={() => setIsMenuOpen(true)}

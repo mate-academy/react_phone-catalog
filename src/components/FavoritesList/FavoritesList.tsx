@@ -5,9 +5,16 @@ import { FavoriteProduct } from '../../types/FavoriteProduct';
 type FavoritesListProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: FavoriteProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
-const FavoritesList = ({ favorites, setFavorites }: FavoritesListProps) => {
+const FavoritesList = ({
+  favorites,
+  setFavorites,
+  baskets,
+  setBaskets,
+}: FavoritesListProps) => {
   return (
     <>
       <div className="favorites-list">
@@ -22,6 +29,8 @@ const FavoritesList = ({ favorites, setFavorites }: FavoritesListProps) => {
               product={product}
               setFavorites={setFavorites}
               favorites={favorites}
+              baskets={baskets}
+              setBaskets={setBaskets}
             />
           ))
         ) : (

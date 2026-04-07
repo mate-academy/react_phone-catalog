@@ -7,12 +7,16 @@ type ProductListProps = {
   products: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
+  baskets: FavoriteProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const ProductList = ({
   products,
   setFavorites,
   favorites,
+  baskets,
+  setBaskets,
 }: ProductListProps) => {
   return (
     <div className="product__list">
@@ -22,6 +26,8 @@ const ProductList = ({
           product={product}
           setFavorites={setFavorites}
           favorites={favorites}
+          baskets={baskets}
+          setBaskets={setBaskets}
         />
       ))}
     </div>

@@ -7,16 +7,31 @@ type ProductCardProps = {
   product: Product;
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
+  baskets: FavoriteProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const ProductCard = ({
   favorites,
   product,
   setFavorites,
+  baskets,
+  setBaskets,
 }: ProductCardProps) => {
   const isFavorite = favorites.some(p => p.itemId === product.itemId);
+  const isBasket = baskets.some(p => p.itemId === product.itemId);
   const handleToggleFavorite = () => {
     setFavorites(prev => {
+      const exists = prev.some(p => p.itemId === product.itemId);
+
+      return exists
+        ? prev.filter(p => p.itemId !== product.itemId)
+        : [...prev, product];
+    });
+  };
+
+  const handleToggleBasket = () => {
+    setBaskets(prev => {
       const exists = prev.some(p => p.itemId === product.itemId);
 
       return exists
@@ -55,7 +70,12 @@ const ProductCard = ({
         </div>
       </div>
       <div className="card__buttons">
-        <button className="card__button--add-to-cart">Add to cart</button>
+        <button
+          className={`card__button--add-to-cart ${isBasket ? 'active' : ''}`}
+          onClick={handleToggleBasket}
+        >
+          Add to cart
+        </button>
         <button
           className={`card__button--icon ${isFavorite ? 'active' : ''}`}
           onClick={handleToggleFavorite}

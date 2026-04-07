@@ -6,11 +6,15 @@ import { FavoriteProduct } from '../../types/FavoriteProduct';
 type CatalogFavoritesProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: FavoriteProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 const CatalogFavorites = ({
   favorites,
   setFavorites,
+  baskets,
+  setBaskets,
 }: CatalogFavoritesProps) => {
   return (
     <div className="catalog-favorites">
@@ -23,7 +27,12 @@ const CatalogFavorites = ({
         <p className="catalog-favorites__top--text">Favorites</p>
       </div>
       <h1 className="catalog-favorites__title">Favorites</h1>
-      <FavoritesList favorites={favorites} setFavorites={setFavorites} />
+      <FavoritesList
+        favorites={favorites}
+        setFavorites={setFavorites}
+        baskets={baskets}
+        setBaskets={setBaskets}
+      />
     </div>
   );
 };

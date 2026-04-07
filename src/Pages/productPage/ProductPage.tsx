@@ -13,10 +13,17 @@ import { FavoriteProduct } from '../../types/FavoriteProduct';
 type ProductPageProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: FavoriteProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
 export type ProductDetails = Phone | Tablet | Accessory;
-const ProductPage = ({ favorites, setFavorites }: ProductPageProps) => {
+const ProductPage = ({
+  favorites,
+  setFavorites,
+  baskets,
+  setBaskets,
+}: ProductPageProps) => {
   const { category, id } = useParams();
   const [someProduct, setSomeProduct] = useState<ProductDetails | null>(null);
   const [modelProducts, setModelProducts] = useState<ProductDetails[]>([]);
@@ -90,6 +97,8 @@ const ProductPage = ({ favorites, setFavorites }: ProductPageProps) => {
           someProduct={someProduct}
           setFavorites={setFavorites}
           favorites={favorites}
+          baskets={baskets}
+          setBaskets={setBaskets}
         />
       )}
       <Footer />

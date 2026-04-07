@@ -15,6 +15,10 @@ export const App = () => {
     'favorites',
     [],
   );
+  const [baskets, setBaskets] = useLocalStorage<FavoriteProduct[]>(
+    'baskets',
+    [],
+  );
 
   return (
     <HashRouter>
@@ -24,32 +28,66 @@ export const App = () => {
           <Route
             path="/phones"
             element={
-              <Phones favorites={favorites} setFavorites={setFavorites} />
+              <Phones
+                favorites={favorites}
+                setFavorites={setFavorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
             }
           />
           <Route
             path="/tablets"
             element={
-              <Tablets favorites={favorites} setFavorites={setFavorites} />
+              <Tablets
+                favorites={favorites}
+                setFavorites={setFavorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
             }
           />
           <Route
             path="/accessories"
             element={
-              <Accessories favorites={favorites} setFavorites={setFavorites} />
+              <Accessories
+                favorites={favorites}
+                setFavorites={setFavorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
             }
           />
           <Route
             path="/heart"
             element={
-              <Heart favorites={favorites} setFavorites={setFavorites} />
+              <Heart
+                favorites={favorites}
+                setFavorites={setFavorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
             }
           />
-          <Route path="/basket" element={<Basket favorites={favorites} />} />
+          <Route
+            path="/basket"
+            element={
+              <Basket
+                favorites={favorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
+            }
+          />
           <Route
             path="/:category/:id"
             element={
-              <ProductPage favorites={favorites} setFavorites={setFavorites} />
+              <ProductPage
+                favorites={favorites}
+                setFavorites={setFavorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
             }
           />
         </Routes>
