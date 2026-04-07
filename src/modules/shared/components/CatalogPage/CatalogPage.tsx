@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Product } from '@/types/Product';
+import { Breadcrumbs } from '../Breadcrumbs';
 import { ProductsList } from '../ProductsList';
 import styles from './CatalogPage.module.scss';
 
@@ -21,6 +22,7 @@ export const CatalogPage = ({ category, title }: Props) => {
 
   return (
     <div className={styles.page}>
+      <Breadcrumbs items={[{ label: title }]} />
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.count}>{products.length} models</p>
 

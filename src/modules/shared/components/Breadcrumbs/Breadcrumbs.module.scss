@@ -1,3 +1,53 @@
+@use '@/styles/variables' as *;
+
 .root {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 16px;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  color: $color-primary;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  color: $color-icons;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-decoration: none;
+  color: $color-primary;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+.current {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $color-secondary;
 }

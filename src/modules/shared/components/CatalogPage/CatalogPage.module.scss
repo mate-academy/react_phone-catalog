@@ -3,9 +3,6 @@
 
 .page {
   @include content-width;
-
-  padding-top: $spacing-md;
-  padding-bottom: $spacing-3xl;
 }
 
 .title {
@@ -15,6 +12,10 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   color: $color-primary;
+
+  @include media-up($breakpoint-tablet) {
+    margin-top: $spacing-2xl;
+  }
 }
 
 .count {
