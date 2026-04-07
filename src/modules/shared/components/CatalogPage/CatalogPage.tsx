@@ -12,6 +12,12 @@ type Props = {
   title: string;
 };
 
+const EMPTY_MESSAGES: Record<Category, string> = {
+  phones: 'There are no phones yet',
+  tablets: 'There are no tablets yet',
+  accessories: 'There are no accessories yet',
+};
+
 export const CatalogPage = ({ category, title }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +64,7 @@ export const CatalogPage = ({ category, title }: Props) => {
           </button>
         </div>
       ) : products.length === 0 ? (
-        <p>No products found</p>
+        <p>{EMPTY_MESSAGES[category]}</p>
       ) : (
         <>
           <p className={styles.count}>{products.length} models</p>
