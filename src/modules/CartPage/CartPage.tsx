@@ -3,12 +3,13 @@ import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 export const CartPage = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart  } = useCart();
   const navigate = useNavigate();
   const [checkoutMessage, setCheckoutMessage] = useState<string | null>(null);
-  //const { clearCart } = useCart();
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
@@ -16,11 +17,21 @@ export const CartPage = () => {
   );
 
   const handleCheckout = () => {
-    //clearCart();
+    clearCart();
     setCheckoutMessage(
       '✅ Thank you for your purchase! Your order is being processed.',
     );
   };
+
+  useEffect(() => {
+    if (checkoutMessage) {
+      const timer = setTimeout(() => {
+        setCheckoutMessage(null);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [checkoutMessage]);
 
 
   return (
@@ -91,7 +102,7 @@ export const CartPage = () => {
         </div>
 
         {/* Блок Summary */}
-        {cart.length > 0 && (
+        {(cart.length > 0 || checkoutMessage) && (
           <div className={styles.summary}>
             <h2 className={`${styles.summary__total} h2`}>${totalPrice}</h2>
             <p className={`${styles.summary__text} body-text14Bold`}>

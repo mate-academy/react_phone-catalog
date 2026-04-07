@@ -35,6 +35,7 @@ export const HomePage = () => {
   const hotPrevRef = useRef<HTMLButtonElement | null>(null);
   const hotNextRef = useRef<HTMLButtonElement | null>(null);
 
+
   useEffect(() => {
     getProducts()
       .then(data => {

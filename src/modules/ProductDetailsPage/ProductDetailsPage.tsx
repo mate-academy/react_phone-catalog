@@ -30,8 +30,10 @@ export const ProductDetailsPage: React.FC = () => {
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
 
-  const isAdded = !!product && isInCart(product.itemId);
-  const favorited = !!product && isFavourite(product.itemId);
+  const productIdSafe = product?.itemId;
+
+  const isAdded = !!product && isInCart(productIdSafe);
+  const favorited = !!product && isFavourite(productIdSafe);
 
   const [isFading, setIsFading] = useState(false);
 
@@ -45,8 +47,8 @@ export const ProductDetailsPage: React.FC = () => {
   const handleAddToCart = () => {
     if (!product) return;
 
-    if (isAdded) {
-      removeFromCart(product.itemId);
+    if (isInCart(productIdSafe)) {
+      removeFromCart(productIdSafe);
     } else {
       addToCart(product);
     }
@@ -57,7 +59,7 @@ export const ProductDetailsPage: React.FC = () => {
     if (!product) return;
 
     if (favorited) {
-      removeFromFavourites(product.itemId);
+      removeFromFavourites(productIdSafe);
     } else {
       addToFavourites(product);
     }
@@ -269,6 +271,7 @@ useEffect(() => {
 
             <div className={styles.buttons}>
               <button
+                key={productIdSafe + String(isAdded)}
                 className={`${styles.addToCart} button-text ${isAdded ? styles.selected : ''}`}
                 onClick={handleAddToCart}
                 disabled={!product}
@@ -371,7 +374,6 @@ useEffect(() => {
                     onClick={e => {
                       const target = e.target as HTMLElement;
 
-                      // ❗ якщо клік по кнопці — не навігуємо
                       if (target.closest('button')) {
                         return;
                       }

@@ -111,7 +111,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             >
               <img src="./img/Favourites.svg" alt="Favorites" />
               {favCount > 0 && (
-                <span className={`${styles.badge} small-text12`}>
+                <span className={styles.badge}>
                   {favCount}
                 </span>
               )}

@@ -35,6 +35,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [cart]);
 
   const addToCart = (product: Product) => {
+      const productId = product.itemId;
+
     setCart(prev => {
       const existing = prev.find(item => item.id === product.itemId);
 
