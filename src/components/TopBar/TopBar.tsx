@@ -8,12 +8,16 @@ import { useTheme } from '../../context/ThemeContext';
 import classNames from 'classnames';
 import { Search } from '../Search';
 import { useFavorite } from '../../context/FavoriteContext';
+import { useCart } from '../../context/CartContext';
 
 export const TopBar = () => {
   const { theme, themeToggle } = useTheme();
 
   const { favorites } = useFavorite();
   const countFavoriteItems = favorites.length;
+
+  const { cartItems } = useCart();
+  const countCartItems = cartItems.length;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sideMenu = searchParams.get('sideMenu');
@@ -41,7 +45,10 @@ export const TopBar = () => {
         </button>
 
         <Link
-          to={PathType.FAVOURITES}
+          to={{
+            pathname: PathType.FAVOURITES,
+            search: searchParams.toString(),
+          }}
           className={classNames(
             style.topBar__actionLink,
             style['topBar__actionLink--fixed'],
@@ -58,9 +65,18 @@ export const TopBar = () => {
           </div>
         </Link>
 
-        <Link to={PathType.CART} className={style.topBar__actionLink}>
+        <Link
+          to={{ pathname: PathType.CART, search: searchParams.toString() }}
+          className={style.topBar__actionLink}
+        >
           <div className={style.topBar__containerIcon}>
             <Icon className={style.topBar__iconAction} nameIcon="cart" />
+
+            {countCartItems && (
+              <span className={style.topBar__countFavorite}>
+                {countCartItems}
+              </span>
+            )}
           </div>
         </Link>
 

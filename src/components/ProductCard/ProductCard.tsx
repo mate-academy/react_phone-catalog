@@ -4,6 +4,8 @@ import React from 'react';
 import { Products } from '../../types/Types';
 import { Icon } from '../ui/Icon/Icon';
 import { useFavorite } from '../../context/FavoriteContext';
+import { useCart } from '../../context/CartContext';
+import classNames from 'classnames';
 
 type Props = {
   product: Products;
@@ -11,9 +13,14 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { isFavorite, toggleFavorite } = useFavorite();
+  const { addToCart, isInTheCart } = useCart();
+
   const isAddedToFavorite = isFavorite(product.id);
+  const isAddedToCart = isInTheCart(product.id);
+
   const { image, name, price, screen, fullPrice, capacity, ram, itemId } =
     product;
+
   const spec = [
     { nameSpec: 'Screen', value: screen },
     { nameSpec: 'Capacity', value: capacity },
@@ -62,7 +69,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={style.productCard__actionContainer}>
-        <button className={style.productCard__actionAdd}>Add to cart</button>
+        <button
+          className={classNames(style.productCard__actionAdd, {
+            [style['productCard__actionAdd--selected']]: isAddedToCart,
+          })}
+          onClick={() => addToCart(product)}
+        >
+          {`${isAddedToCart ? 'Added' : 'Add'} to cart`}
+        </button>
 
         <button
           className={style.productCard__actonFavorite}

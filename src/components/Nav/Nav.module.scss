@@ -21,6 +21,7 @@
   }
 
   &__link {
+    position: relative;
     font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 12px;
@@ -30,9 +31,27 @@
     color: var(--text-secondary);
 
     @include hover(color, var(--text-main));
-  }
 
-  &__linkIsActive {
-    color: var(--text-main);
+    &::after {
+      display: block;
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: var(--text-main);
+      left: 0;
+      bottom: 0;
+      transform: scaleX(0);
+      transition: transform $transition;
+    }
+
+    &--active {
+      color: var(--text-main);
+
+      &::after {
+        transform: scaleX(100%);
+        transform-origin: left;
+      }
+    }
   }
 }

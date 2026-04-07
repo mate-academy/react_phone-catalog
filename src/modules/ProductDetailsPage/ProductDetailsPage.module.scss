@@ -124,6 +124,12 @@
     border-radius: 48px;
 
     @include hover(box-shadow, 0 3px 13px 0 var(--shadow-add-bt));
+
+    &--selected {
+      background-color: transparent;
+      color: var(--btn-bg);
+      border: 1px solid var(--border);
+    }
   }
 
   &__actonFavorite {

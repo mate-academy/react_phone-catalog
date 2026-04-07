@@ -17,7 +17,7 @@ export const Nav: React.FC<Props> = ({ className }) => {
   const sideMenu = searchParams.get('sideMenu');
 
   const getClassName = ({ isActive }: { isActive: boolean }) =>
-    classNames(style.nav__link, { [style.nav__linkIsActive]: isActive });
+    classNames(style.nav__link, { [style['nav__link--active']]: isActive });
 
   return (
     <nav className={classNames(style.nav, className && styleMenu[className])}>

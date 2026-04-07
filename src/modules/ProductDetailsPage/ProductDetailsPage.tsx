@@ -12,12 +12,18 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { SkeletonDetails } from '../../components/SkeletonDetails';
 import { ErrorScreen } from '../../components/ErrorScreen';
 import { useFavorite } from '../../context/FavoriteContext';
+import { useCart } from '../../context/CartContext';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { selectedProsuct, product, suggested, isLoading, errorMessage } =
     useProductDetails(productId);
+
+  const { addToCart, isInTheCart } = useCart();
+  const isAddedToCart = selectedProsuct
+    ? isInTheCart(selectedProsuct.id)
+    : false;
 
   const { isFavorite, toggleFavorite } = useFavorite();
   const isAddedToFavorite = selectedProsuct
@@ -105,8 +111,15 @@ export const ProductDetailsPage = () => {
             </h3>
 
             <div className={style.productDetails__actionContainer}>
-              <button className={style.productDetails__actionAdd}>
-                Add to cart
+              <button
+                className={classNames(style.productDetails__actionAdd, {
+                  [style['productDetails__actionAdd--selected']]: isAddedToCart,
+                })}
+                onClick={() =>
+                  selectedProsuct ? addToCart(selectedProsuct) : null
+                }
+              >
+                {`${isAddedToCart ? 'Added' : 'Add'} to cart`}
               </button>
 
               <button

@@ -6,7 +6,7 @@ export enum PathType {
   PRODUCTS = 'products',
   PRODUCT = 'product',
   FAVOURITES = 'favorites',
-  CART = './cart',
+  CART = 'cart',
 }
 
 export enum SortType {
@@ -97,3 +97,9 @@ type TabletType = WithCamera;
 type AccessoriesType = BaseProduct;
 
 export type Product = PhoneType | TabletType | AccessoriesType;
+
+export type CartItemType = {
+  id: number;
+  quantity: number;
+  product: Products;
+};
