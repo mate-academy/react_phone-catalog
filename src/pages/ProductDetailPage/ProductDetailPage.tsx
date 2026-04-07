@@ -59,6 +59,14 @@ export const ProductDetailPage = () => {
   const liked = favorites.some(p => p.itemId === productId);
 
   useEffect(() => {
+    const syncCart = () => setCart(loadCart());
+
+    window.addEventListener('cart-updated', syncCart);
+
+    return () => window.removeEventListener('cart-updated', syncCart);
+  }, []);
+
+  useEffect(() => {
     fetchProductById(productId)
       .then(data => {
         setProduct(data);
