@@ -17,6 +17,14 @@ import { NotFoundPage } from './pages/NotFoundPage';
 export const App = () => {
   // const { data: phones, loading, error, reload } = useFetch('/api/phones.json');
 
+  // На початку App.tsx або main.tsx
+  const CART_VERSION = 'v2';
+
+  if (localStorage.getItem('cart_version') !== CART_VERSION) {
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart_version', CART_VERSION);
+  }
+
   return (
     <div className="App">
       {/* <h1
