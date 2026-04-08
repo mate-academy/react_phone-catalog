@@ -1,0 +1,21 @@
+$accent: red;
+$primary: #313237;
+$secondary: #89939A;
+$white: #FFF;
+$hover-bg: #FAFBFC;
+$desktop-width: 1200px;
+$col-gap: 16px;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $desktop-width;
+  margin: 0 auto;
+  padding: 0 16px;
+}

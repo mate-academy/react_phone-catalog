@@ -1,0 +1,19 @@
+@import '../../styles/utils';
+
+.page {
+  padding-bottom: 80px;
+}
+
+.count {
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+  justify-items: center;
+}

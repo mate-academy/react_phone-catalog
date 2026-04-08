@@ -1,0 +1,90 @@
+@import '../../../../styles/utils';
+
+.categories {
+  margin-bottom: 80px
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.imageWrapper {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1;
+  width: 100%;
+  margin-bottom: 24px;
+
+  background-color: #89939a;
+
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.categoryName {
+  margin-bottom: 8px;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: $primary;
+
+  transition: color 0.3s;
+}
+
+.categoryCount {
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.3s;
+
+  &:hover {
+    .image {
+      transform: scale(1.05);
+    }
+
+    .categoryName {
+      color: $accent; // Or $primary
+    }
+  }
+
+  &:nth-child(1) .imageWrapper {
+    background-color: #FCDBC1;
+  }
+
+  &:nth-child(2) .imageWrapper {
+    background-color: #8D8D92;
+  }
+
+  &:nth-child(3) .imageWrapper {
+    background-color: rgb(89, 119, 89);
+  }
+}

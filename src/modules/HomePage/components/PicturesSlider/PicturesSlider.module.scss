@@ -1,0 +1,94 @@
+@import '../../../../styles/utils';
+
+.slider {
+  margin-bottom: 64px;
+}
+
+.container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  height: 400px;
+
+  @media (max-width: 1199px) {
+    height: 189px;
+  }
+
+  @media (max-width: 639px) {
+    gap: 0;
+    height: 320px;
+  }
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.strip {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.arrow {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 100%;
+  border: 1px solid #E2E6E9;
+
+  background: none;
+
+  img {
+    width: 10px;
+    height: 10px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.dot {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+
+  background-color: #E2E6E9;
+
+  transition: background-color 0.3s;
+
+  &.active {
+    background-color: $primary;
+  }
+}

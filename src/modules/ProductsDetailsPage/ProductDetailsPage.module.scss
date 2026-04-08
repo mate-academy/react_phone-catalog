@@ -1,0 +1,329 @@
+@import '../../styles/utils';
+
+.page {
+  padding-bottom: 80px;
+}
+
+.backButton {
+  cursor: pointer;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin: 24px 0;
+  padding: 0;
+  border: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+
+  background: none;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  font-size: 32px;
+  color: $primary;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+  height: 450px;
+
+  @media (max-width: 640px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: auto;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 16px;
+
+  }
+}
+
+.thumbnail {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid #E2E6E9;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &.selected {
+    border-color: $primary;
+  }
+}
+
+.mainImage {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 640px) {
+      display: block;
+      width: 50%;
+    }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 320px;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.selectorBlock {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.selectorLabel {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.colorsGrid, .capacityGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.colorCircle {
+  cursor: pointer;
+
+  position: relative;
+
+  width: 32px;
+  height: 32px;
+  ;
+  border: 1px solid #E2E6E9;
+
+  &.selected {
+    border-color: $primary;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 1px solid $primary;
+      ;
+    }
+  }
+}
+
+.capacityButton {
+  cursor: pointer;
+
+  padding: 8px 16px;
+  border: 1px solid #E2E6E9;
+
+  font-size: 14px;
+  color: $primary;
+  text-decoration: none;
+
+  background: $white;
+
+  transition: all 0.2s;
+
+  &.selected {
+    border-color: $primary;
+    color: $white;
+    background-color: $primary;
+  }
+
+  &:hover:not(.selected) {
+    border-color: $primary;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.priceDiscount {
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary;
+}
+
+.priceRegular {
+  font-size: 22px;
+  color: $secondary;
+  text-decoration: line-through;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+
+  button {
+    cursor: pointer;
+    height: 48px;
+    font-weight: 700;
+  }
+}
+
+.addToCart {
+  flex-grow: 1;
+  border: none;
+  color: $white;
+  background-color: $primary;
+
+
+  &:hover {
+    opacity: 0.9
+  }
+}
+
+.addToFavorite {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border: 1px solid #B4BDC3;
+
+  background: transparent;
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.specsSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+
+    .specRow {
+      display: flex;
+      justify-content: space-between;
+    }
+
+  .specName {
+    color: $secondary;
+  }
+  .specValue {
+    color: $primary;
+  }
+}
+
+.bottomSection  {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 80px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about {
+  h3 {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E2E6E9;
+    font-size: 24px;
+  }
+
+  .aboutSection {
+    margin-bottom: 32px;
+    h4 {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    p {
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: $secondary;
+    }
+  }
+}
+
+.techSpecs {
+  h3 {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E2E6E9;
+    font-size: 24px;
+  }
+
+  .specRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .specName {
+    color: $secondary
+  }
+
+  .specValue {
+    font-weight: 600;
+    color: $primary;
+  }
+}

@@ -1,0 +1,48 @@
+@import '../../styles/utils';
+
+.homePage {
+  padding-bottom: 80px;
+}
+
+.title {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+.heading {
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 640px) {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 48px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 56px;
+    margin-bottom: 56px;
+    font-size: 48px;
+  }
+}
+
+.section {
+  margin-bottom: 80px;
+}

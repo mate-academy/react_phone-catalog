@@ -1,0 +1,100 @@
+@import '../../styles/utils';
+
+.footer {
+  margin-top: auto;
+  padding: 32px 0;
+  border-top: 1px solid #E2E6E9;
+  background-color: $white;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 106px;
+
+  a {
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+.arrowButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #B4BDC3;
+
+  background-color: transparent;
+
+  transition: all 0.3s;
+
+  img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+}
+
+.backToTop {
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+
+  background: none;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: $primary;
+
+    .arrowButton {
+      border-color: $primary;
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,158 @@
+@import '../../styles/utils';
+
+.count {
+  margin-bottom: 40px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $secondary;
+  letter-spacing: 0%;
+}
+
+.page {
+  max-width: 1136px;
+  padding-bottom: 80px;
+}
+
+.title {
+  display: flex;
+
+  margin-bottom: 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  color: $primary;
+  letter-spacing: -1%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+  justify-items: center;
+
+  margin-bottom: 40px;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controlBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+}
+
+.select {
+  cursor: pointer;
+
+  min-width: 130px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #B4BDC3;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: $primary;
+
+  background-color: $white;
+  outline: none;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:focus {
+    border-color: $primary;
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton {
+  cursor: pointer;
+
+  ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+
+  font-family: inherit;
+  font-size: 14px;
+  color: $primary;
+
+  background-color: $white;
+
+  transition: all 0.3s;
+
+  &:disabled {
+    cursor: default;
+    border-color: #E2E6E9;
+    color: $secondary;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+  }
+
+  &.active {
+    border-color: $primary;
+    color: $white;
+    background-color: $primary;
+  }
+}
+
+.pageArrow {
+  cursor: pointer;
+
+  ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+
+  background-color: $white;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+  }
+}
