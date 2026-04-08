@@ -1,0 +1,59 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: $color-secondary;
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  padding-right: $spacing-2xl;
+  padding-left: 12px;
+  background: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: $color-primary;
+  transition: border-color $transition-base;
+  -webkit-appearance: none;
+
+  appearance: none;
+
+  &:hover,
+  &:focus {
+    border-color: $color-primary;
+    outline: none;
+  }
+}
+
+.chevron {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: $color-secondary;
+  transition: color $transition-base;
+}
+
+.selectWrapper:hover .chevron {
+  color: $color-primary;
+}
