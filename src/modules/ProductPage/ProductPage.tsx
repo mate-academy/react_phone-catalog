@@ -102,7 +102,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
 
       {!isLoading && errorMessage && <ErrorScreen title={errorMessage} />}
 
-      {products.length && !totalCountItems && (
+      {products.length > 0 && !totalCountItems && (
         <ErrorScreen
           title={`There are no products matching the query ${query}`}
         />
