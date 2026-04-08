@@ -38,6 +38,31 @@
   color: $color-primary;
 }
 
+.controls {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.sortControl {
+  flex: 1;
+
+  @include media-up($breakpoint-tablet) {
+    flex: none;
+    width: 187px;
+  }
+}
+
+.perPageControl {
+  flex: 1;
+
+  @include media-up($breakpoint-tablet) {
+    flex: none;
+    width: 136px;
+  }
+}
+
 .reloadButton {
   padding: 9px $spacing-xl 7px;
   background-color: $color-primary;
