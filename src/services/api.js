@@ -13,13 +13,51 @@ export const getAllUrl = () => `${API_BASE}/products.json`;
  * Fetch products by type (phones|tablets|accessories).
  * If type file doesn't exist, fallback to products.json and filter by type.
  */
+// export async function fetchProducts(type) {
+//   // Try to fetch specific file first
+//   try {
+//     const res = await fetch(getTypeUrl(type));
+
+//     if (!res.ok) {
+//       // fallback to all products
+//       throw new Error('Type file not found');
+//     }
+
+//     const json = await res.json();
+
+//     return json;
+//   } catch (e) {
+//     // Fallback: load all products and filter by type
+//     const resAll = await fetch(getAllUrl());
+
+//     if (!resAll.ok) {
+//       throw new Error('Products not found');
+//     }
+
+//     const all = await resAll.json();
+
+//     // assume each product has a `type` field
+//     return Array.isArray(all) ? all.filter(p => p.type === type) : [];
+//   }
+// }
+
 export async function fetchProducts(type) {
-  // Try to fetch specific file first
+  // 1. ЗАХИСТ: Якщо тип не передали взагалі, просто вантажимо всі товари
+  if (!type || type === 'undefined') {
+    const resAll = await fetch(getAllUrl());
+
+    if (!resAll.ok) {
+      throw new Error('Products not found');
+    }
+
+    return resAll.json();
+  }
+
+  // 2. Якщо тип передали (наприклад 'phones')
   try {
     const res = await fetch(getTypeUrl(type));
 
     if (!res.ok) {
-      // fallback to all products
       throw new Error('Type file not found');
     }
 
@@ -27,7 +65,7 @@ export async function fetchProducts(type) {
 
     return json;
   } catch (e) {
-    // Fallback: load all products and filter by type
+    // Fallback: завантажити всі і відфільтрувати
     const resAll = await fetch(getAllUrl());
 
     if (!resAll.ok) {
@@ -36,7 +74,6 @@ export async function fetchProducts(type) {
 
     const all = await resAll.json();
 
-    // assume each product has a `type` field
     return Array.isArray(all) ? all.filter(p => p.type === type) : [];
   }
 }
@@ -46,6 +83,10 @@ export async function fetchProducts(type) {
  * Searches in specific type file(s) first, then in products.json.
  */
 export async function fetchProductById(id) {
+  if (!id || id === 'undefined') {
+    throw new Error('Invalid Product ID');
+  }
+
   // Try to fetch all possible files one by one (optional optimization)
   const types = ['phones', 'tablets', 'accessories'];
 

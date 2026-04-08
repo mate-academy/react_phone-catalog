@@ -3,6 +3,10 @@
   font-size: 32px;
   font-weight: 800;
   margin: 24px 0;
+
+  @media (max-width: 639px) {
+    padding: 0 16px;
+  }
 }
 
 .categories__container {
