@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './BannerSlider.module.scss';
 import mainStyles from '../Main/Main.module.scss';
 
@@ -22,6 +22,14 @@ const slides = [
 
 export const BannerSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentSlide]);
 
   const handlePrev = () => {
     setCurrentSlide(prev => (prev === 0 ? slides.length - 1 : prev - 1));

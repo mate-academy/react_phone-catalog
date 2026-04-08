@@ -34,3 +34,16 @@
     transform: scale($scale);
   }
 }
+
+@mixin typography($weight, $size, $line-height, $letter-spacing: 0) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

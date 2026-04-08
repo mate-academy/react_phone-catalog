@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Product, SortType, ItemsPerPage } from '../../../../types/Product';
+import { Product, SortType } from '../../../../types/Product';
 import { Breadcrumbs } from '../Breadcrumbs';
 import styles from './CatalogPageContent.module.scss';
 import { getSortedProducts } from '../../../../utils/products';
@@ -20,12 +20,20 @@ export const CatalogPageContent: React.FC<Props> = ({
   breadcrumb,
   products,
 }) => {
-  const [perPage, setPerPage] = useState<ItemsPerPage>('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const { isLoadingProducts, error, reloadProducts } = useShop();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { isLoadingProducts, error, reloadProducts } = useShop();
   const sortParam = searchParams.get('sort') as SortType;
   const [sortBy, setSortBy] = useState<SortType>(sortParam || 'newest');
+
+  const pageParam = Number(searchParams.get('page')) || 1;
+  const perPageParam =
+    searchParams.get('perPage') === 'all'
+      ? 'all'
+      : Number(searchParams.get('perPage')) || 'all';
+
+  const currentPage = pageParam;
+  const perPage = perPageParam;
+
   const maxVisiblePages = 4;
   let startPage = 1;
 
@@ -39,10 +47,30 @@ export const CatalogPageContent: React.FC<Props> = ({
     setSearchParams(params);
   };
 
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (page === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(page));
+    }
+
+    setSearchParams(params);
+  };
+
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
+    const params = new URLSearchParams(searchParams);
 
-    setPerPage(value === 'all' ? 'all' : (Number(value) as ItemsPerPage));
+    if (value === 'all') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', value);
+    }
+
+    params.delete('page');
+    setSearchParams(params);
   };
 
   const sortedProducts = getSortedProducts(products, sortBy);
@@ -150,7 +178,7 @@ export const CatalogPageContent: React.FC<Props> = ({
                 currentPage={currentPage}
                 totalPages={totalPages}
                 visiblePages={visiblePages}
-                onPageChange={setCurrentPage}
+                onPageChange={handlePageChange}
               />
             )}
           </>

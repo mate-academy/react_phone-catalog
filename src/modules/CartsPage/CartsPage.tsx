@@ -6,7 +6,9 @@ import { useShop } from '../../store/ShopContext';
 export const CartsPage = () => {
   const navigate = useNavigate();
   const { carts, clearCart } = useShop();
+
   const isEmpty = carts.length === 0;
+
   const totalQuantity = carts.reduce((sum, item) => {
     return sum + item.quantity;
   }, 0);
