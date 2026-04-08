@@ -83,7 +83,7 @@ export async function fetchProducts(type) {
  * Searches in specific type file(s) first, then in products.json.
  */
 export async function fetchProductById(id) {
-  if (!id || id === 'undefined') {
+  if (!id || String(id) === 'undefined') {
     throw new Error('Invalid Product ID');
   }
 
