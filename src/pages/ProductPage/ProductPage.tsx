@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 //hooks
 import { useNavigate, useParams } from 'react-router-dom';
-import { useProducts } from '../../hooks/useProducts';
+import { useProduct, useProducts } from '../../hooks/useProducts';
 import { useEffect } from 'react';
 
 //styles
@@ -22,9 +22,10 @@ import classNames from 'classnames';
 
 
 export const ProductPage = () => {
-  const { data: allProducts = [], isLoading } = useProducts();
+
   const { productId } = useParams<{ productId: string }>();
-  const product = allProducts.find(el => el.id === productId) || null;
+  const { data: product = null, isLoading } = useProduct(productId || '');
+  const { data: allProducts = []} = useProducts();
   const recomend =
     allProducts.filter(el => el.namespaceId === product?.namespaceId);
   const navigate = useNavigate();

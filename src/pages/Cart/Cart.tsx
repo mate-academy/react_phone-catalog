@@ -77,12 +77,12 @@ export const Cart = () => {
       )}
 
       <div className={styles.cartList}>
-        {cartToRender.map((el, index) => {
+        {cartToRender.map(el => {
           const product = allProducts.find(p => p.itemId === el.id);
           const isSingle = el.count === 1;
 
           return (
-            <div key={index} className={styles.cartItem}>
+            <div key={el.id} className={styles.cartItem}>
               <div className={styles.cartInfo}>
                 <button
                   className={styles.itemDeleteButton}

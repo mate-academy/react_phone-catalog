@@ -1,5 +1,5 @@
 //hooks
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 //style
 import styles from './Navbar.module.scss';
@@ -16,9 +16,14 @@ import closeIcon from './assets/icons/Close.svg';
 
 //services
 import classNames from 'classnames';
+import { CartContext } from '../../services/CartContext';
+import { FavouritesContext } from '../../services/FavouritesContext';
 
 export const NavBar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+
+  const cart = useContext(CartContext)!.cart;
+  const fav = useContext(FavouritesContext)!.favourites;
 
   const closeMenu = () => setMenuIsOpen(false);
 
@@ -84,11 +89,14 @@ export const NavBar = () => {
               })
             }
           >
-            <img
-              src={favouriteIcon}
-              alt="favourites"
-              className={styles['client-icon']}
-            />
+            <div className={styles['client-icon']}>
+              {fav.length > 0 && (
+                <div className={styles.counter}>
+                  <p>{fav.length}</p>
+                </div>
+              )}
+              <img src={favouriteIcon} alt="favourites" />
+            </div>
           </NavLink>
 
           <NavLink
@@ -99,7 +107,14 @@ export const NavBar = () => {
               })
             }
           >
-            <img src={cartIcon} alt="cart" className={styles['client-icon']} />
+            <div className={styles['client-icon']}>
+              {cart.length > 0 && (
+                <div className={styles.counter}>
+                  <p>{cart.length}</p>
+                </div>
+              )}
+              <img src={cartIcon} alt="cart" />
+            </div>
           </NavLink>
         </div>
 
