@@ -5,6 +5,7 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { ProductsList } from '../ProductsList';
 import { Loader } from '../Loader';
 import { Dropdown } from '../Dropdown';
+import { Pagination } from '../Pagination';
 import styles from './CatalogPage.module.scss';
 
 type Category = 'phones' | 'tablets' | 'accessories';
@@ -63,6 +64,7 @@ export const CatalogPage = ({ category, title }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortFromUrl = searchParams.get('sort');
   const perPageFromUrl = searchParams.get('perPage');
+  const pageFromUrl = searchParams.get('page');
 
   const sortParam: SortKey = isSortKey(sortFromUrl)
     ? sortFromUrl
@@ -70,6 +72,7 @@ export const CatalogPage = ({ category, title }: Props) => {
   const perPageParam = isPerPageValue(perPageFromUrl)
     ? perPageFromUrl
     : DEFAULT_PER_PAGE;
+  const pageParam = Math.max(1, Math.floor(Number(pageFromUrl) || 0));
 
   const handleSortChange = (value: string) => {
     setSearchParams(prev => {
@@ -89,6 +92,8 @@ export const CatalogPage = ({ category, title }: Props) => {
     setSearchParams(prev => {
       const params = new URLSearchParams(prev);
 
+      params.delete('page');
+
       if (value === DEFAULT_PER_PAGE) {
         params.delete('perPage');
       } else {
@@ -97,6 +102,22 @@ export const CatalogPage = ({ category, title }: Props) => {
 
       return params;
     });
+  };
+
+  const handlePageChange = (page: number) => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+
+      if (page === 1) {
+        params.delete('page');
+      } else {
+        params.set('page', String(page));
+      }
+
+      return params;
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -136,10 +157,19 @@ export const CatalogPage = ({ category, title }: Props) => {
 
     return 0;
   });
+  const totalPages =
+    perPageParam === 'all'
+      ? 1
+      : Math.ceil(sortedProducts.length / Number(perPageParam));
+
+  const currentPage = Math.min(pageParam, Math.max(totalPages, 1));
+
+  const perPageNum = Number(perPageParam);
+  const sliceStart = (currentPage - 1) * perPageNum;
   const visibleProducts: Product[] =
     perPageParam === 'all'
       ? sortedProducts
-      : sortedProducts.slice(0, Number(perPageParam));
+      : sortedProducts.slice(sliceStart, sliceStart + perPageNum);
 
   return (
     <div className={styles.page}>
@@ -182,6 +212,14 @@ export const CatalogPage = ({ category, title }: Props) => {
             </div>
           </div>
           <ProductsList products={visibleProducts} />
+
+          {perPageParam !== 'all' && totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
         </>
       )}
     </div>

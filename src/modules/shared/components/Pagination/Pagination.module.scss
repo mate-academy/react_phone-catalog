@@ -1,3 +1,81 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
 .root {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $spacing-sm;
+  width: fit-content;
+  padding: 0;
+  margin: $spacing-2xl auto;
+  list-style: none;
+}
+
+.button {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: $color-white;
+  border: none;
+  cursor: pointer;
+  transition: border-color $transition-base;
+}
+
+.arrow {
+  border: 1px solid $color-icons;
+  color: $color-primary;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+.icon {
+  display: flex;
+}
+
+.arrowLeft .icon {
+  transform: scaleX(-1);
+}
+
+.page {
+  border: 1px solid $color-elements;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-primary;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.ellipsis {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 32px;
+  height: 32px;
+  padding-bottom: $spacing-xs;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.active {
+  background: $color-primary;
+  border-color: transparent;
+  color: $color-white;
+
+  &:hover {
+    border-color: transparent;
+  }
 }
