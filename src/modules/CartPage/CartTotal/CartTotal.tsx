@@ -1,8 +1,12 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useCart } from '../../../context/CartContext';
 import style from './CartTotal.module.scss';
 
-export const CartTotal = () => {
+type Props = {
+  handleSetIsCheckout: () => void;
+};
+
+export const CartTotal: React.FC<Props> = ({ handleSetIsCheckout }) => {
   const { totalPrice, cartItems } = useCart();
   const totalCost = totalPrice();
   const totalItems = useCallback(
@@ -23,7 +27,12 @@ export const CartTotal = () => {
 
       <hr className={style.cartTotal__hr} />
 
-      <button className={style.cartTotal__checkout}>Checkout</button>
+      <button
+        onClick={handleSetIsCheckout}
+        className={style.cartTotal__checkout}
+      >
+        Checkout
+      </button>
     </aside>
   );
 };

@@ -1,3 +1,9 @@
 @import '../../style/mixins';
 @import '../../style/vars';
 
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+

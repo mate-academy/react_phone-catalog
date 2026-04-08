@@ -57,7 +57,7 @@ export const TopBar = () => {
           <div className={style.topBar__containerIcon}>
             <Icon className={style.topBar__iconAction} nameIcon="favorites" />
 
-            {countFavoriteItems && (
+            {countFavoriteItems > 0 && (
               <span className={style.topBar__countFavorite}>
                 {countFavoriteItems}
               </span>
@@ -72,7 +72,7 @@ export const TopBar = () => {
           <div className={style.topBar__containerIcon}>
             <Icon className={style.topBar__iconAction} nameIcon="cart" />
 
-            {countCartItems && (
+            {countCartItems > 0 && (
               <span className={style.topBar__countFavorite}>
                 {countCartItems}
               </span>

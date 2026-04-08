@@ -6,11 +6,6 @@
 .footer {
   padding-block: 32px;
   background-color: var(--page-bg);
-  margin-top: 64px;
-
-  @include on-tablet {
-    margin-top: 80px;
-  }
 
   @include content-padding-inline;
 

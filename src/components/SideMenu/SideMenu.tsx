@@ -58,7 +58,7 @@ export const SideMenu = () => {
         <div className={style.sideMenu__containerIcon}>
           <Icon className={style.sideMenu__iconAction} nameIcon="favorites" />
 
-          {countFavoriteItems && (
+          {countFavoriteItems > 0 && (
             <span className={style.sideMenu__countItems}>
               {countFavoriteItems}
             </span>
@@ -83,7 +83,7 @@ export const SideMenu = () => {
         <div className={style.sideMenu__containerIcon}>
           <Icon className={style.sideMenu__iconAction} nameIcon="cart" />
 
-          {countCartItems && (
+          {countCartItems > 0 && (
             <span className={style.sideMenu__countItems}>{countCartItems}</span>
           )}
         </div>

@@ -13,6 +13,7 @@ $lt-shadow-card: #252525e3;
 $phone-category: #6d6474;
 $tablet-category: #8d8d92;
 $accessory-category: #973d5f;
+$lt-overlay: #00000080;
 
 // DARK THEME
 $dt-black-text-pag: #000;
@@ -31,6 +32,7 @@ $transition: 0.3s;
 $table-min-width: 640px;
 $table-md-min-width: 768px;
 $desktop-min-width: 1200px;
+$dt-overlay: #FFF3;
 
 :root {
   --page-bg: #{$lt-white};
@@ -52,6 +54,7 @@ $desktop-min-width: 1200px;
   --text-id: #{$lt-bt-sl-bd};
   --pagination-text: #{$lt-white};
   --count-favorite-bg: #{$lt-purple};
+  --overlay-bg: #{$lt-overlay};
 }
 
 [data-theme='dark'] {
@@ -74,4 +77,5 @@ $desktop-min-width: 1200px;
   --text-id: #{$dt-disabled-icon};
   --pagination-text: #{$dt-black-text-pag};
   --count-favorite-bg: #{$dt-purple};
+  --overlay-bg: #{$dt-overlay};
 }

@@ -3,23 +3,35 @@
 @import '../../style/extends';
 
 .favorites {
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
   @include content-padding-inline;
 
-  &__title{
+  &__title {
     @extend %h1;
   }
 
-  &__countItems{
+  &__countItems {
     color: var(--text-secondary);
 
     @extend %body-text-14;
   }
 
-  &__containerTitle{
+  &__containerTitle {
     margin-bottom: 32px;
 
     @include on-tablet {
       margin-bottom: 40px;
     }
+  }
+
+  &__emptyTitle {
+    text-align: center;
+    
+    @extend %h2;
   }
 }

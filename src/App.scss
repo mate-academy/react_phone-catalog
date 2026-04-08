@@ -12,3 +12,9 @@ body {
     color $transition ease,
     background-color $transition ease;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

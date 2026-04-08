@@ -33,7 +33,13 @@ export const FavoritePage = () => {
         >{`${totalCountItems} models`}</span>
       </div>
 
-      {favorites.length && !filtredFavorites.length && (
+      {favorites.length === 0 && (
+        <h2 className={style.favorites__emptyTitle}>
+          Your favorites list is empty
+        </h2>
+      )}
+
+      {favorites.length > 0 && !filtredFavorites.length && (
         <ErrorScreen
           title={`There are no products matching the query ${query}`}
         />
