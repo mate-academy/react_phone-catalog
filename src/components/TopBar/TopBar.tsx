@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { PathType } from '../../types/Types';
 import { Icon } from '../ui/Icon/Icon';
 import { Nav } from '../Nav';
@@ -12,6 +12,7 @@ import { useCart } from '../../context/CartContext';
 
 export const TopBar = () => {
   const { theme, themeToggle } = useTheme();
+  const { pathname } = useLocation();
 
   const { favorites } = useFavorite();
   const countFavoriteItems = favorites.length;
@@ -52,6 +53,10 @@ export const TopBar = () => {
           className={classNames(
             style.topBar__actionLink,
             style['topBar__actionLink--fixed'],
+            {
+              [style['topBar__actionLink--active']]:
+                pathname === `/${PathType.FAVOURITES}`,
+            },
           )}
         >
           <div className={style.topBar__containerIcon}>
@@ -67,7 +72,10 @@ export const TopBar = () => {
 
         <Link
           to={{ pathname: PathType.CART, search: searchParams.toString() }}
-          className={style.topBar__actionLink}
+          className={classNames(style.topBar__actionLink, {
+            [style['topBar__actionLink--active']]:
+              pathname === `/${PathType.CART}`,
+          })}
         >
           <div className={style.topBar__containerIcon}>
             <Icon className={style.topBar__iconAction} nameIcon="cart" />

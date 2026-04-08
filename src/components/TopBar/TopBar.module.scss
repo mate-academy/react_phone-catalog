@@ -31,9 +31,28 @@
 
   &__actionLink {
     display: none;
+    position: relative;
 
     @include on-tablet {
       display: block;
+    }
+
+    &::after {
+      display: block;
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: var(--text-main);
+      left: 0;
+      bottom: 0;
+      transform: scaleX(0);
+      transition: transform $transition;
+    }
+
+    &--active::after {
+      transform: scaleX(100%);
+      transform-origin: left;
     }
   }
 

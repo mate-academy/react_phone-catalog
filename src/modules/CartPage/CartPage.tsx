@@ -41,7 +41,7 @@ export const CartPage = () => {
           <h2 className={style.cartPage__emptyTitle}>Your cart is empty</h2>
           <img
             className={style.cartPage__imageEmptycart}
-            src="/img/cart-is-empty.webp"
+            src="img/cart-is-empty.webp"
             alt="empty cart"
           />
         </div>
