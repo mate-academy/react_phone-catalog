@@ -597,7 +597,6 @@ export const ProductDetailPage = () => {
                     className={
                       styles.detail_page__tech_specs__content__specific__text
                     }
-                    style={{ display: 'flex', gap: '8px' }}
                   >
                     {product?.cell.map((text: string, index: number) => (
                       <div key={index}>

@@ -46,6 +46,7 @@
 
   &__name {
     grid-area: name;
+
     // font-family: Mont, sans-serif, serif;
     font-size: 14px;
     font-weight: 600;
@@ -99,11 +100,16 @@
   &__price {
     grid-area: price;
     grid-column: span 4;
+
     // font-family: Mont, sans-serif, serif;
     font-size: 22px;
     font-weight: 600;
     text-align: right;
     color: #313237;
     flex: 1;
+
+    @media (max-width: 639px) {
+      grid-column: span 2;
+    }
   }
 }

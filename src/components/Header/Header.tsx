@@ -26,6 +26,21 @@ export const Header: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>(() => loadCart());
 
   useEffect(() => {
+    if (isOpen) {
+      // Забороняємо скрол
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Повертаємо скрол
+      document.body.style.overflow = '';
+    }
+
+    // Очищення при закритті меню або розмонтуванні компонента
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const syncFavorites = () => {
       setFavorites(loadFavorites());
     };
