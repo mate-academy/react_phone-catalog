@@ -72,7 +72,8 @@ export const ProductDetailPage = () => {
         setProduct(data);
       })
       .catch(error => {
-        throw error;
+        // eslint-disable-next-line no-console
+        console.error("Помилка завантаження товару:", error);
       });
 
     fetchProducts().then(data => {
