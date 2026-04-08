@@ -2,6 +2,7 @@
 @use '@/styles/mixins' as *;
 
 .footer {
+  margin-top: $spacing-3xl;
   background: $color-white;
   box-shadow: 0 -1px 0 $color-elements;
 }
