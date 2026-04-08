@@ -186,7 +186,10 @@ export const ProductDetailsPage: React.FC<Props> = ({
         <div className={styles.topRow}>
           <div className={styles.info}>
             <div>
-              <p className={styles.titleLeft}>Available colors</p>
+              <div className={styles.colorsHeader}>
+                <p className={styles.titleLeft}>Available colors</p>
+                <div className={styles.id__tabl}>ID: {currentProduct?.id}</div>
+              </div>
               <div className={styles.colorList}>
                 {product.colorsAvailable.map(c => {
                   const normalize = (str: string) =>

@@ -1,18 +1,22 @@
 .error {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   padding: 16px;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
+  border: none;
 }
 
 .text {
+  font-size: 48px;
+  font-weight: 800;
   margin: 0 0 12px;
 }
 
 .button {
   padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid #111;
-  background: #111;
+  border: none;
+  background: none;
   color: #fff;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -20,4 +24,10 @@
 
 .button:hover {
   transform: translateY(-1px);
+}
+
+.image {
+  width: 230px;
+  margin: auto;
+  display: block;
 }

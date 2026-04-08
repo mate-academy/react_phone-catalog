@@ -40,7 +40,7 @@ export const CartPage: React.FC<Props> = ({
           <span className={styles.arrow}>{'<'}</span>
           Back
         </button>
-        <h1>Cart</h1>
+        <h1 style={{ fontSize: 'clamp(32px, 5vw, 48px)' }}>Cart</h1>
         <div className={styles.content}>
           <div className={styles.items}>
             {cart.map(item => (

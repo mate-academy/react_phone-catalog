@@ -119,10 +119,12 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
             }
             onClick={() => setIsMenuOpen(false)}
           >
-            <img src="/img/heart.svg" alt="heart" />
-            {favoritesCount > 0 && (
-              <span className={styles.badge}>{favoritesCount}</span>
-            )}
+            <div className={styles.iconWrapper}>
+              <img src="/img/heart.svg" alt="heart" />
+              {favoritesCount > 0 && (
+                <span className={styles.badge}>{favoritesCount}</span>
+              )}
+            </div>
           </NavLink>
           <NavLink
             to="/cart"
@@ -132,8 +134,12 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
             aria-label="Cart"
             onClick={() => setIsMenuOpen(false)}
           >
-            <img src="./img/basket.png" alt="basket" />
-            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+            <div className={styles.iconWrapper}>
+              <img src="./img/basket.png" alt="basket" />
+              {cartCount > 0 && (
+                <span className={styles.badge}>{cartCount}</span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>

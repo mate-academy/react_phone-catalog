@@ -7,6 +7,10 @@
   grid-template-columns: 1fr 320px;
   gap: 32px;
   align-items: start;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .summary {

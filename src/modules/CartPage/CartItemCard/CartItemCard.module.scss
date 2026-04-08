@@ -3,12 +3,17 @@
   grid-template-columns: 32px 80px 1fr 120px 100px;
   align-items: center;
   gap: 16px;
-
   padding: 16px;
   border: none;
   margin-bottom: 16px;
-
   background: #161827;
+
+    @media (max-width: 639px) {
+      grid-template-columns: 32px 80px 1fr;
+      grid-template-areas:
+        "remove image info"
+        ". controls price";
+  }
 }
 
 .remove {
@@ -17,26 +22,43 @@
   font-size: 18px;
   cursor: pointer;
   color: #89939a;
+
+  @media (max-width: 639px) {
+    grid-area: remove;
+  }
 }
 
 .image {
   width: 66px;
   height: 66px;
   object-fit: contain;
+
+  @media (max-width: 639px) {
+    grid-area: image;
+  }
 }
 
 .info {
   font-size: 14px;
+
+  @media (max-width: 639px) {
+    grid-area: info;
+  }
 }
 
 .controls {
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media (max-width: 639px) {
+    grid-area: controls;
+    justify-content: flex-start;
+  }
 }
 
 .controlButton {
-  width: 32px;
+  min-width: 32px;
   height: 32px;
   border: 1px solid var(--color-border);
   display: flex;
@@ -69,4 +91,10 @@
   font-size: 18px;
   font-weight: 800;
   text-align: right;
+
+  @media (max-width: 639px) {
+    grid-area: price;
+    text-align: right;
+    align-self: center;
+  }
 }

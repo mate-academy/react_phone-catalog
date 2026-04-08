@@ -59,6 +59,7 @@
   display: flex;
   align-items: center;
   height: 64px;
+  font-weight: 800;
   color: var(--color-muted);
   border-bottom: 3px solid transparent;
   transition: background var(--transition), color var(--transition), transform var(--transition);
@@ -99,10 +100,22 @@
  }
 }
 
+.iconWrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
 .badge {
   position: absolute;
   top: 18px;
   right: 18px;
+
+  @media (max-width: 639px) {
+    top: 0;
+    right: 0;
+    transform: translate(30%, -30%);
+  }
 
   background: #eb5757;
   color: white;
@@ -111,7 +124,6 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;

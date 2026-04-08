@@ -13,6 +13,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+
+    @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -43,7 +47,7 @@
 }
 
 .meta {
-  padding: 16px;
+  margin: 24px 0;
 }
 
 .cardTitle {

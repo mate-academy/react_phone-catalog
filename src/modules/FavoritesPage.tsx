@@ -23,7 +23,7 @@ export const FavoritesPage: React.FC<Props> = ({
   return (
     <Container>
       <Breadcrumbs />
-      <h1>Favorites</h1>
+      <h1 style={{ fontSize: 'clamp(32px, 5vw, 48px)' }}>Favorites</h1>
 
       {favorites.length === 0 ? (
         <p>No favorites yet</p>

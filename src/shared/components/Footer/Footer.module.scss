@@ -1,16 +1,23 @@
 .footer {
   border-top: 1px solid var(--color-border);
-  padding: 24px 0;
+  padding: 32px 0;
 }
 
 .content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .logo {
-  font-weight: 700;
+  @media (max-width: 639px) {
+    margin-bottom: 32px;
+  }
 }
 
 .links {
@@ -21,6 +28,12 @@
     text-decoration: none;
     font-size: 14px;
     color: white;
+  }
+
+    @media (max-width: 639px) {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 16px;
   }
 }
 
@@ -34,6 +47,10 @@
   font-size: 12px;
   color: #89939a;
 
+  @media (max-width: 639px) {
+    margin-top: 32px;
+    align-self: center;
+  }
 }
 
 .ctrl {

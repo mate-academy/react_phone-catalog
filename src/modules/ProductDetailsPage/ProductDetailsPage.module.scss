@@ -3,19 +3,36 @@
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   margin-top: 40px;
+
+     @media (max-width: 639px) {
+     display: flex;
+     flex-direction: column;
+   }
 }
 
 .gallery {
   display: flex;
   gap: 24px;
+
+  @media (max-width: 639px) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
 }
 
 .thumbs {
   display: flex;
   flex-direction: column;
-  width: 80px;
+  width: 100%;
+  max-width: 80px;
   height: 80px;
   gap: 16px;
+
+  @media (max-width: 639px) {
+    flex-direction: row;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .thumbBtn {
@@ -25,6 +42,11 @@
   border: 1px solid var(--color-border);
   cursor: pointer;
   transition: border 0.2s;
+
+  @media (max-width: 639px) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .thumbBtn:hover {
@@ -41,8 +63,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 442px;
-  height: 442px;
+  width: 100%;
+  max-width: 442px;
+  max-height: 442px;
+
+  @media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .mainImage {
@@ -156,6 +183,30 @@
 .id {
   font-size: 12px;
   color: #75767f;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
+
+    &__tabl {
+      display: none;
+  
+      @media (max-width: 1199px) {
+        display: block;
+        font-size: 12px;
+        color: #75767f;
+    }
+  }
+}
+
+.colorsHeader {
+  display: block;
+
+  @media (max-width: 1199px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .bottom {
@@ -163,6 +214,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   margin-top: 80px;
+
+   @media (max-width: 1199px) {
+     display: flex;
+     flex-direction: column;
+   }
 }
 
 .spec {

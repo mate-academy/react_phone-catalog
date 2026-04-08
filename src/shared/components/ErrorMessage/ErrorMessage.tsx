@@ -13,6 +13,11 @@ export const ErrorMessage = ({ message, onRetry }: Props) => {
       <button type="button" className={styles.button} onClick={onRetry}>
         Reload
       </button>
+      <img
+        src="/img/product-not-found.png"
+        alt="Product not found"
+        className={styles.image}
+      />
     </div>
   );
 };
