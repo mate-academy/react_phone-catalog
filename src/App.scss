@@ -1,7 +1,6 @@
 @use './utils/vars' as *;
 @import './utils/mixins' ;
 
-
 .page {
   box-sizing: border-box;
   height: 100%;
@@ -149,3 +148,78 @@ h5 {
 
 }
 
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: $primary-color transparent;
+}
+
+
+.slider-wrapper {
+  position: relative;
+  padding-bottom: 50px; /* Create space for the pagination below the slider */
+}
+
+.swiper-custom-pagination {
+  top: 60%;
+  width: 100%;
+  text-align: center;
+}
+.swiper-button-next,
+.swiper-button-prev {
+
+  display: none;
+
+  @include on-tablet {
+    display: block;
+
+    color: $icons-color;
+
+    height: 189px;
+    top: 8px !important;
+    transform: translateY(0);
+    background-color: #FFFF;
+    border: 1px solid $icons-color;
+    border-radius: 48px;
+    padding: 0 16px;
+    outline: 16px solid #FFFF;
+
+              &:hover {
+                @include hover(transform, scale(1.1));
+                }
+
+     @include on-desktop {
+        height: 400px;
+     }
+
+}
+
+.swiper-button-next::after,
+              .swiper-button-prev::after {
+                font-size: 32px;
+                font-weight: bold;
+              }
+
+}
+ .swiper-button-prev {
+    left: 0px  !important;
+    }
+
+ .swiper-button-next {
+    right: 0px  !important;
+}
+
+:root {
+  --swiper-navigation-size: 16px;
+}
+
+ .swiper-pagination-bullets {
+  //position: relative;
+  bottom: -35px  !important;
+  left:  50%  !important;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}

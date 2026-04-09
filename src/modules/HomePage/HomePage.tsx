@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { productsCount } from '../../utils/products';
 import { useProducts } from '../../hooks/useProducts';
 
+
 const TYPES = {
   PHONE: 'phones',
   TABLET: 'tablets',
@@ -159,6 +160,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+
       <div className={styles.homePage}>
         <div className={styles.homePage__content}>
           <div className={styles.homePage__bottom}>
@@ -169,26 +171,13 @@ export const HomePage: React.FC = () => {
                 </span>
               </h2>
             </div>
-
             {!loading && !error && Array.isArray(products) && (
               <PicturesSlider
                 products={products}
                 currentIndex={currentPictureIndex}
-                handlePrev={handlePrevPicture}
-                handleNext={handleNextPicture}
-                handleTouchStart={handleTouchStartPicture}
-                handleTouchEnd={handleTouchEndPicture}
-                sliderRef={sliderPictureRef}
               />
             )}
 
-            <div className={styles.homePage__dots}>
-              <img
-                src="img/dots-2x.png"
-                alt="Dots Style"
-                className={styles.homePage__dots}
-              />
-            </div>
           </div>
         </div>
       </div>
