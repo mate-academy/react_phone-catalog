@@ -12,10 +12,10 @@ type HeartProps = {
   setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
 };
 
-const Heart = ({ favorites, setFavorites }: HeartProps) => {
+const Heart = ({ favorites, setFavorites, baskets }: HeartProps) => {
   return (
     <div className="heart">
-      <Header favorites={favorites} />
+      <Header favorites={favorites} baskets={baskets} />
       <CatalogFavorites
         favorites={favorites}
         setFavorites={setFavorites}

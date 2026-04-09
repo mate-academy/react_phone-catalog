@@ -1,0 +1,10 @@
+.basket-list {
+  grid-column: 1 / -1;
+  @media (min-width: 640px) {
+    grid-column: 1 / -1 ;
+  }
+
+  @media (min-width: 1200px) {
+    grid-column: 1 / 16;
+  }
+}

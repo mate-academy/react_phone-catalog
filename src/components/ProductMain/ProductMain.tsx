@@ -76,7 +76,7 @@ const ProductMain = ({
     price: currentProduct.priceDiscount,
     screen: currentProduct.screen,
     capacity: currentProduct.capacity,
-    color: currentProduct.color,
+    color: currentProduct.color as ProductColor,
     ram: currentProduct.ram,
     image: currentProduct.images[0],
   };

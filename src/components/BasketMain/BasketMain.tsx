@@ -14,7 +14,7 @@ const BasketMain = ({ baskets, setBaskets }: BasketMainProps) => {
       <div className="main-basket">
         <h2 className="main-basket__title">Cart</h2>
         <BasketList baskets={baskets} setBaskets={setBaskets} />
-        <BasketCheckout />
+        <BasketCheckout baskets={baskets} />
       </div>
     </>
   );

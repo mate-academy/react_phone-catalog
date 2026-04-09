@@ -10,9 +10,16 @@ type BasketListProps = {
 const BasketList = ({ baskets, setBaskets }: BasketListProps) => {
   return (
     <>
-      {baskets.map(basketProduct => (
-        <BasketCard key={basketProduct.itemId} basketProduct={basketProduct} />
-      ))}
+      {' '}
+      <div className="basket-list">
+        {baskets.map(basketProduct => (
+          <BasketCard
+            key={basketProduct.itemId}
+            basketProduct={basketProduct}
+            baskets={baskets}
+          />
+        ))}
+      </div>
     </>
   );
 };

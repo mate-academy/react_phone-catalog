@@ -18,7 +18,7 @@ const Phones = ({
 }: PhonesProps) => {
   return (
     <>
-      <Header favorites={favorites} />
+      <Header favorites={favorites} baskets={baskets} />
       <PhonesCatalog
         setFavorites={setFavorites}
         favorites={favorites}

@@ -2,6 +2,7 @@ import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { ProductColor } from '../ProductMain/ProductMain';
 
 type ProductCardProps = {
   product: Product;
@@ -18,25 +19,38 @@ const ProductCard = ({
   baskets,
   setBaskets,
 }: ProductCardProps) => {
-  const isFavorite = favorites.some(p => p.itemId === product.itemId);
-  const isBasket = baskets.some(p => p.itemId === product.itemId);
+  const stateProduct: FavoriteProduct = {
+    category: product.category,
+    itemId: product.itemId,
+    name: product.name,
+    fullPrice: product.fullPrice,
+    price: product.price,
+    screen: product.screen,
+    capacity: product.capacity,
+    color: product.color as ProductColor,
+    ram: product.ram,
+    image: product.image,
+  };
+
+  const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
+  const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
   const handleToggleFavorite = () => {
     setFavorites(prev => {
-      const exists = prev.some(p => p.itemId === product.itemId);
+      const exists = prev.some(p => p.itemId === stateProduct.itemId);
 
       return exists
-        ? prev.filter(p => p.itemId !== product.itemId)
-        : [...prev, product];
+        ? prev.filter(p => p.itemId !== stateProduct.itemId)
+        : [...prev, stateProduct];
     });
   };
 
   const handleToggleBasket = () => {
     setBaskets(prev => {
-      const exists = prev.some(p => p.itemId === product.itemId);
+      const exists = prev.some(p => p.itemId === stateProduct.itemId);
 
       return exists
-        ? prev.filter(p => p.itemId !== product.itemId)
-        : [...prev, product];
+        ? prev.filter(p => p.itemId !== stateProduct.itemId)
+        : [...prev, stateProduct];
     });
   };
 

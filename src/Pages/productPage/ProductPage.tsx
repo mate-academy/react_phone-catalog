@@ -87,7 +87,7 @@ const ProductPage = ({
 
   return (
     <div className="product-page">
-      <Header favorites={favorites} />
+      <Header favorites={favorites} baskets={baskets} />
 
       {someProduct === null ? (
         <p>Loading...</p>

@@ -1,0 +1,48 @@
+.basket-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+  border: 1px solid #e2e6e9;
+  padding-inline: 24px;
+  padding-block: 24px;
+}
+
+.basket-card:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.basket-card__button--delete {
+  background-image: url('../../../public//img/icons/icon--close.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.basket-card__image {
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  padding: 7px 7px;
+}
+
+.basket-card__name {
+  color: black;
+  font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+width: 100%;
+}
+
+.basket-card__price {
+  color: black;
+  font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+}

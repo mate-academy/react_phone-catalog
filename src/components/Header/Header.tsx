@@ -5,12 +5,14 @@ import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
 
 type HeaderProps = {
   favorites: Product[];
+  baskets: FavoriteProduct[];
 };
 
-const Header = ({ favorites }: HeaderProps) => {
+const Header = ({ favorites, baskets }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -79,7 +81,11 @@ const Header = ({ favorites }: HeaderProps) => {
             <Link
               to="/basket"
               className={`icon icon--basket ${isBasket ? 'is-active' : ''}`}
-            ></Link>
+            >
+              {baskets.length > 0 && (
+                <span className="icon--badge">{baskets.length}</span>
+              )}
+            </Link>
             <button
               className="icon icon--menu"
               onClick={() => setIsMenuOpen(true)}

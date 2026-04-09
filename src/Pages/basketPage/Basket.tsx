@@ -14,7 +14,7 @@ type BasketProps = {
 const Basket = ({ favorites, baskets, setBaskets }: BasketProps) => {
   return (
     <div className="basket">
-      <Header favorites={favorites} />
+      <Header favorites={favorites} baskets={baskets} />
       <BasketMain baskets={baskets} setBaskets={setBaskets} />
       <Footer />
     </div>

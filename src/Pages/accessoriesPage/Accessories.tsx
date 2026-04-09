@@ -7,12 +7,17 @@ import { FavoriteProduct } from '../../types/FavoriteProduct';
 type AccessoriesProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: FavoriteProduct[];
 };
 
-const Accessories = ({ favorites, setFavorites }: AccessoriesProps) => {
+const Accessories = ({
+  favorites,
+  setFavorites,
+  baskets,
+}: AccessoriesProps) => {
   return (
     <>
-      <Header favorites={favorites} />
+      <Header favorites={favorites} baskets={baskets} />
       <AccessoriesCatalog setFavorites={setFavorites} favorites={favorites} />
       <Footer />
     </>
