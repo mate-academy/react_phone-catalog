@@ -12,7 +12,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-  const { addToCart, cart } = useCart();
+  const { addToCart, removeFromCart, cart } = useCart();
 
   const isFav = isFavorite(product);
   const isInCart = cart.some(item => item.id === product.id);
@@ -33,7 +33,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   const handleCartClick = () => {
-    if (!isInCart) {
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
       addToCart(product);
     }
   };
@@ -57,7 +59,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className={styles.priceContainer}>
           <span className={styles.price}>${product.price}</span>
-          <span className={styles.fullPrice}>${product.fullPrice}</span>
+          {product.price < product.fullPrice && (
+            <span className={styles.fullPrice}>${product.fullPrice}</span>
+          )}
         </div>
 
         <div className={styles.divider} />
@@ -84,7 +88,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             })}
             onClick={handleCartClick}
           >
-            {isInCart ? `Added to cart` : `Add to cart`}
+            {isInCart ? `Remove from cart` : `Add to cart`}
           </button>
           <button
             className={classname(styles.addToFavorite, {

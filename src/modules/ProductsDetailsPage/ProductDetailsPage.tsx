@@ -22,7 +22,7 @@ export const ProductDetailsPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-  const { addToCart, cart } = useCart();
+  const { addToCart, removeFromCart, cart } = useCart();
 
   useEffect(() => {
     window.scrollTo({
@@ -103,7 +103,9 @@ export const ProductDetailsPage = () => {
   };
 
   const isFav = isFavorite(productToAdd);
-  const isInCart = cart.some(item => item.id === product.id);
+  const isInCart = cart.some(
+    item => item.product.itemId === product.id || item.id === product.id,
+  );
 
   const handleFavoriteClick = () => {
     if (isFav) {
@@ -114,7 +116,9 @@ export const ProductDetailsPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (!isInCart) {
+    if (isInCart) {
+      removeFromCart(productToAdd.id);
+    } else {
       addToCart(productToAdd);
     }
   };
@@ -203,7 +207,7 @@ export const ProductDetailsPage = () => {
               })}
               onClick={handleAddToCart}
             >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
+              {isInCart ? 'Remove from cart' : 'Add to cart'}
             </button>
             <button
               className={classnames(styles.addToFavorite, {

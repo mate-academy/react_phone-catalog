@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props) => {
 
         <div className="product__prices">
           <p className="product__price">${product.price}</p>
-          {product.discount ? (
+          {product ? (
             <p className="product__price-discount">${product.fullPrice}</p>
           ) : null}
         </div>
