@@ -10,15 +10,15 @@ export const navLinks: (keyof typeof PathType)[] = [
 export const footerNav = [
   {
     textLink: 'github',
-    href: 'https://github.com/Sertavr/react_phone-catalog',
+    href: 'https://github.com/',
   },
   {
     textLink: 'contacts',
-    href: 'https://github.com/Sertavr/react_phone-catalog',
+    href: 'contacts',
   },
   {
     textLink: 'rights',
-    href: 'https://github.com/Sertavr/react_phone-catalog',
+    href: 'rights',
   },
 ];
 

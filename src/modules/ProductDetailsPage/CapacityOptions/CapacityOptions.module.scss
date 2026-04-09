@@ -44,6 +44,7 @@
     border: 1px solid var(--icon-disabled);
     border-radius: 4px;
     white-space: nowrap;
+    cursor: pointer;
 
     @include hover(border-color, var(--borde-hover-mini));
 

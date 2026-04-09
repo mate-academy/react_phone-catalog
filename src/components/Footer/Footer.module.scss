@@ -35,6 +35,10 @@
       flex-direction: row;
       align-items: center;
     }
+    
+    @include on-desktop {
+      gap: 107px;
+    }
   }
 
   &__link {

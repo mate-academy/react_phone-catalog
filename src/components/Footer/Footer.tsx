@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { footerNav } from '../../constants/constants';
 import { Icon } from '../ui/Icon/Icon';
 import style from './Footer.module.scss';
@@ -18,14 +19,24 @@ export const Footer = () => {
             <ul className={style.footer__list}>
               {footerNav.map(item => (
                 <li key={item.textLink} className={style.footer__item}>
-                  <a
-                    className={style.footer__link}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.textLink}
-                  </a>
+                  {item.textLink === 'github' ? (
+                    <a
+                      className={style.footer__link}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.textLink}
+                    </a>
+                  ) : (
+                    <Link
+                      className={style.footer__link}
+                      to={item.href}
+                      target="_blank"
+                    >
+                      {item.textLink}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
