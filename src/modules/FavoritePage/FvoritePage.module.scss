@@ -29,9 +29,31 @@
     }
   }
 
+  &__wraperSearch {
+    padding-bottom: 24px;
+
+    @include page-grid;
+  }
+
+  &__search {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / span 6;
+    }
+
+    @include on-tablet-md {
+      grid-column: 1 / span 4;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 6;
+    }
+  }
+
   &__emptyTitle {
     text-align: center;
-    
+
     @extend %h2;
   }
 }

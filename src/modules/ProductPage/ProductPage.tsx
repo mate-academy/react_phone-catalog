@@ -10,6 +10,7 @@ import { Pagination } from '../../components/Pagination';
 import { Skeleton } from '../../components/Skeleton';
 import { ErrorScreen } from '../../components/ErrorScreen';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Search } from '../../components/Search';
 
 type Props = {
   title: string;
@@ -126,6 +127,10 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
                 label="Items on page"
                 options={PER_PAGE_OPTIONS}
               />
+            </div>
+
+            <div className={style.productPage__wraperSearch}>
+              <Search />
             </div>
           </div>
 

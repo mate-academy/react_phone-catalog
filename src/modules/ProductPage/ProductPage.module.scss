@@ -11,7 +11,7 @@
 
   &__countItems{
     color: var(--text-secondary);
-    
+
     @extend %body-text-14;
   }
 
@@ -38,6 +38,16 @@
 
     @include on-tablet {
       grid-column: 5 / span 3;
+    }
+  }
+
+  &__wraperSearch {
+    grid-column: 1 / -1;
+    padding-top: 8px;
+
+    @include on-tablet {
+      grid-column: span 5;
+      align-self: self-end;
     }
   }
 

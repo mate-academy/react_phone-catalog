@@ -6,7 +6,6 @@ import style from './TopBar.module.scss';
 import { getSearchWith } from '../../utils/searchHelper';
 import { useTheme } from '../../context/ThemeContext';
 import classNames from 'classnames';
-import { Search } from '../Search';
 import { useFavorite } from '../../context/FavoriteContext';
 import { useCart } from '../../context/CartContext';
 
@@ -38,7 +37,6 @@ export const TopBar = () => {
       <Nav />
 
       <div className={style.topBar__actions}>
-        <Search />
         <button className={style.topBar__button} onClick={themeToggle}>
           <div className={style.topBar__containerIcon}>
             <Icon className={style.topBar__iconAction} nameIcon={theme} />

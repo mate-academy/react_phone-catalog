@@ -1,11 +1,14 @@
 import React from 'react';
 import style from './ErrorScreen.module.scss';
+import { useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../../utils/searchHelper';
 
 type Props = {
   title: string;
 };
 
 export const ErrorScreen: React.FC<Props> = ({ title }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const isEmpty = title.includes('There are no products matching the query');
 
   return (
@@ -17,6 +20,17 @@ export const ErrorScreen: React.FC<Props> = ({ title }) => {
         src="img/product-not-found.webp"
         alt="Error loading"
       />
+
+      {isEmpty && (
+        <button
+          onClick={() =>
+            setSearchParams(getSearchWith(searchParams, { query: null }))
+          }
+          className={style.error__button}
+        >
+          Clear Search
+        </button>
+      )}
 
       {title !== 'Product was not found' && !isEmpty && (
         <button

@@ -5,6 +5,7 @@ import { useFavorite } from '../../context/FavoriteContext';
 import style from './FvoritePage.module.scss';
 import { useCallback } from 'react';
 import { ErrorScreen } from '../../components/ErrorScreen';
+import { Search } from '../../components/Search';
 
 export const FavoritePage = () => {
   const [searchParams] = useSearchParams();
@@ -32,6 +33,14 @@ export const FavoritePage = () => {
           className={style.favorites__countItems}
         >{`${totalCountItems} models`}</span>
       </div>
+
+      {filtredFavorites.length > 0 && (
+        <div className={style.favorites__wraperSearch}>
+          <div className={style.favorites__search}>
+            <Search />
+          </div>
+        </div>
+      )}
 
       {favorites.length === 0 && (
         <h2 className={style.favorites__emptyTitle}>

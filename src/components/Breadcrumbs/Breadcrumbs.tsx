@@ -31,7 +31,10 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
       {category && (
         <>
           <Icon className={style.breadcrumbs__icon} nameIcon="right" />
-          <Link className={style.breadcrumbs__category} to={`/${category}`}>
+          <Link
+            className={style.breadcrumbs__category}
+            to={`/${category.toLowerCase()}`}
+          >
             {categoryText[category] || category}
           </Link>
         </>
