@@ -22,7 +22,14 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
         className={styles.arrowButton}
       >
-        <img src="/img/icon/chevron-arrow-left.svg" alt="Arrow Left" />
+        <img
+          src={
+            currentPage === 1
+              ? '/img/icon/arrow-left-disabled.svg'
+              : '/img/icon/chevron-arrow-left.svg'
+          }
+          alt="Previous page"
+        />
       </button>
 
       <div className={styles.pageList}>
@@ -46,7 +53,14 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === totalPages}
         className={styles.arrowButton}
       >
-        <img src="/img/icon/chevron-arrow-right.svg" alt="Arrow Right" />
+        <img
+          src={
+            currentPage === totalPages
+              ? '/img/icon/arrow-right-disabled.svg'
+              : '/img/icon/chevron-arrow-right.svg'
+          }
+          alt="Previous page"
+        />
       </button>
     </div>
   );

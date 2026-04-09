@@ -1,3 +1,4 @@
+@use '../../styles/colors.scss' as c;
 @use '../../styles/mixins.scss';
 
 .main {
@@ -21,28 +22,25 @@
 .backLink {
     display: flex;
     align-items: center;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+
+    @include mixins.typography(700, 12px, 1);
+
+    color: c.$color-secondary;
     text-decoration: none;
 }
 
 .title {
     margin: 0;
     margin-bottom: 32px;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(800, 22px, 1.4);
+
+    color: c.$color-primary;
 
     @include mixins.on-tablet {
         margin-bottom: 40px;
-        font-size: 32px;
-        line-height: 41px;
-        letter-spacing: -1%;
+
+        @include mixins.typography(800, 32px, 41px, -0.01em);
     }
 }
 

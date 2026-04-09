@@ -1,9 +1,9 @@
+@use '../../../../styles/colors.scss' as c;
 @use '../../../../styles/mixins.scss';
 
 .sectionAbout {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+    @include mixins.flex-column(32px);
+
     margin-bottom: 56px;
 
     @include mixins.on-tablet {
@@ -19,33 +19,27 @@
 .title {
     margin: 0;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(226, 230, 233, 1);
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(700, 20px, 1);
+
+    border-bottom: 1px solid c.$color-hover;
+    color: c.$color-primary;
 
     @include mixins.on-tablet {
-        font-weight: 800;
-        font-size: 22px;
-        line-height: 140%;
+        @include mixins.typography(800, 22px, 1.4);
     }
 }
 
 .block {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include mixins.flex-column(16px);
 }
 
 .subtitle {
     margin: 0;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(700, 16px, 1);
+    
+    color: c.$color-primary;
 
     @include mixins.on-tablet {
         font-size: 20px;
@@ -54,9 +48,8 @@
 
 .text {
     margin: 0;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: c.$color-secondary;
 }

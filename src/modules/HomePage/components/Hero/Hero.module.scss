@@ -1,3 +1,4 @@
+@use '../../../../styles/colors.scss' as c;
 @use '../../../../styles/mixins';
 
 .hero {
@@ -14,12 +15,11 @@
 
 .title {
     margin: 0;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
-    color: rgba(49, 50, 55, 1);
-    grid-column: 1/-1;
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+
+    color: c.$color-primary;
+    grid-column: 1 / -1;
 
     @include mixins.on-tablet {
         font-size: 48px;

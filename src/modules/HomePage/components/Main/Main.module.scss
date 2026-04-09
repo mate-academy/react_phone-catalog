@@ -13,9 +13,7 @@
 }
 
 .sections {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
+    @include mixins.flex-column(56px);
     
     @include mixins.on-tablet {
         gap: 64px;

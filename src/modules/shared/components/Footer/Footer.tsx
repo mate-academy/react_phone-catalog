@@ -12,7 +12,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <Link to="/" className={styles.logoLink}>
+        <Link to="/" className={styles.logoLink} onClick={handleScrollToTop}>
           <img
             src="/img/icon/nice-gadgets-desktop.svg"
             alt="Nice Gadgets"
@@ -23,7 +23,12 @@ export const Footer = () => {
         <nav className={styles.nav}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <a href="https://github.com/" className={styles.menuLink}>
+              <a
+                href="https://github.com/"
+                className={styles.menuLink}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Github
               </a>
             </li>

@@ -1,3 +1,5 @@
+@use './styles/colors.scss' as c;
+@use './styles/variables.scss' as v;
 @use './styles/mixins.scss';
 
 *,
@@ -7,7 +9,7 @@
 }
 
 body {
-  background-color: #fff;
+  background-color: c.$color-white;
   margin: 0;
   font-family: Montserrat, sans-serif;
 }
@@ -31,7 +33,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: v.$container-width;
   margin: 0 auto;
   padding-inline: 16px;
 

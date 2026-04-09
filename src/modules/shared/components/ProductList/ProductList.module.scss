@@ -1,9 +1,10 @@
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .sliderTrack {
   display: flex;
   gap: 16px;
-  transition: transform 0.3s ease;
+  transition: v.$transition;
 }
 
 .cardGrid {

@@ -1,15 +1,17 @@
 import React from 'react';
-import { ProductDetails } from '../../../../types/Product';
+import { Product, ProductDetails } from '../../../../types/Product';
 import { ProductOptions } from '../ProductOptions';
 import styles from './ProductInfo.module.scss';
 
 type Props = {
+  currentProduct: Product;
   productDetails: ProductDetails;
   onColorChange: (color: string) => void;
   onCapacityChange: (capacity: string) => void;
 };
 
 export const ProductInfo: React.FC<Props> = ({
+  currentProduct,
   productDetails,
   onColorChange,
   onCapacityChange,
@@ -17,6 +19,7 @@ export const ProductInfo: React.FC<Props> = ({
   return (
     <div className={styles.productInfo}>
       <ProductOptions
+        product={currentProduct}
         productDetails={productDetails}
         onColorChange={onColorChange}
         onCapacityChange={onCapacityChange}

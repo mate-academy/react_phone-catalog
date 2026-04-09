@@ -1,3 +1,5 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .gallery {
@@ -12,9 +14,8 @@
 }
 
 .mainImageWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex-center;
+
     width: 100%;
     max-width: 288px;
     aspect-ratio: 1/1;
@@ -43,14 +44,19 @@
 }
 
 .thumbnail {
+    @include mixins.flex-center;
+
     width: 51px;
     height: 49px;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgba(196, 196, 196, 1);
+    border: 1px solid c.$color-icons;
     background-color: transparent;
+    transition: border-color v.$transition;
+    cursor: pointer;
+
+    &:hover {
+        border-color: c.$color-primary;
+    }
 
     @include mixins.on-tablet {
         width: 35px;
@@ -61,6 +67,10 @@
         width: 80px;
         height: 80px;
     }
+}
+
+.active {
+    border-color: c.$color-primary;
 }
 
 .thumbnailImage {

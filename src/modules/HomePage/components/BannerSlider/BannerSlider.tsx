@@ -49,7 +49,7 @@ export const BannerSlider = () => {
             onClick={handlePrev}
             aria-label="Previous slide"
           >
-            <img src="/img/icon/chevron-arrow-left.svg" alt="Arrow Left" />
+            <img src="/img/icon/chevron-arrow-left.svg" alt="" />
           </button>
 
           <div className={styles.viewport}>
@@ -77,7 +77,7 @@ export const BannerSlider = () => {
             onClick={handleNext}
             aria-label="Next slide"
           >
-            <img src="/img/icon/chevron-arrow-right.svg" alt="Arrow Right" />
+            <img src="/img/icon/chevron-arrow-right.svg" alt="" />
           </button>
         </div>
 

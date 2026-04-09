@@ -26,7 +26,12 @@ export const Breadcrumbs: React.FC<Props> = ({
       />
 
       {currentProduct ? (
-        <Link to={`/${category}`} className={styles.currentPage}>
+        <Link
+          to={`/${category}`}
+          className={`${styles.currentPage} ${
+            currentProduct ? styles.active : ''
+          }`}
+        >
           {breadcrumb}
         </Link>
       ) : (

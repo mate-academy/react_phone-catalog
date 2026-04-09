@@ -1,10 +1,11 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .cartItem {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    border: 1px solid rgba(226, 230, 233, 1);
+    @include mixins.flex-column(16px);
+    
+    border: 1px solid c.$color-elements;
 
     @include mixins.on-tablet {
         flex-direction: row;
@@ -28,9 +29,8 @@
 }
 
 .removeButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex-center;
+
     width: 16px;
     height: 16px;
     padding: 0;
@@ -40,12 +40,12 @@
 }
 
 .imageLink {
-    display: flex;
+    @include mixins.flex-center;
+
     width: 80px;
     height: 80px;
-    justify-content: center;
-    align-items: center;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .image {
@@ -53,15 +53,20 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: transform v.$transition;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
 }
 
 .title {
     margin: 0;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: c.$color-primary;
+    text-decoration: none;
     min-width: 0;
 }
 
@@ -80,36 +85,38 @@
 
 .quantityControls {
     display: flex;
+    align-items: center;
 }
 
 .quantityButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex-center;
+
     width: 32px;
     height: 32px;
     padding: 0;
-    border: 1px solid rgba(180, 189, 195, 1);
+    border: 1px solid c.$color-elements;
     background-color: transparent;
+    transition: border-color v.$transition;
     cursor: pointer;
+
+    &:hover {
+        border-color: c.$color-primary;
+    }
 }
 
 .quantity {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex-center;
+
     min-width: 32px;
     height: 32px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: c.$color-primary;
 }
 
 .price {
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+    @include mixins.typography(800, 22px, 1.4);
+
+    color: c.$color-primary;
 }

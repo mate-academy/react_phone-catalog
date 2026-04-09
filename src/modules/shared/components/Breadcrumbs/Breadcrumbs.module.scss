@@ -1,3 +1,5 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .breadcrumbs {
@@ -7,36 +9,36 @@
     margin-block: 24px;
 
     @include mixins.on-tablet {
-        margin-top: 24px;
-        margin-bottom: 40px;
+        margin: 24px 0 40px;
     }
 }
 
 .homeLink {
     display: flex;
+    transition: transform v.$transition;
 
     &:hover {
         transform: scale(1.1);
-        transition: transform 0.3s ease;
     }
 }
 
 .currentPage {
+    @include mixins.typography(600, 12px, 1);
+
     text-decoration: none;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+    color: c.$color-secondary;
+}
+
+.active {
+    color: c.$color-primary;
 }
 
 .currentProduct {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+
+    @include mixins.typography(600, 12px, 1);
+
+    color: c.$color-secondary;
 }

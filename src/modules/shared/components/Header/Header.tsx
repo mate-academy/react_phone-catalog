@@ -83,6 +83,7 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
           type="button"
           className={styles.menuButton}
           onClick={toggleMenu}
+          aria-label={openMenu ? 'Close menu' : 'Open menu'}
         >
           <img
             src={

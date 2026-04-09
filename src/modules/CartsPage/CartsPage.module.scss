@@ -1,3 +1,5 @@
+@use '../../styles/colors.scss' as c;
+@use '../../styles/variables.scss' as v;
 @use '../../styles/mixins.scss';
 
 .main {
@@ -24,15 +26,15 @@
 
     @include mixins.typography(700, 12px, 1);
 
-    color: rgba(137, 147, 154, 1);
+    color: c.$color-secondary;
     text-decoration: none;
     border: none;
     background-color: transparent;
-    transition: color 0.3s ease;
+    transition: color v.$transition;
     cursor: pointer;
 
     &:hover {
-        color: rgba(49, 50, 55, 1);
+        color: c.$color-primary;
     }
 }
 
@@ -41,14 +43,16 @@
     margin-bottom: 32px;
 
     @include mixins.typography(800, 32px, 41px, -0.01em);
-    color: rgba(49, 50, 55, 1);
+
+    color: c.$color-primary;
 }
 
 .empty {
     margin: 0;
 
     @include mixins.typography(600, 14px, 21px);
-    color: rgba(137, 147, 154, 1);
+
+    color: c.$color-secondary;
 }
 
 .cartContent {
@@ -61,9 +65,8 @@
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include mixins.flex-column(16px);
+
     margin-bottom: 32px;
 
     @include mixins.on-desktop {
@@ -72,7 +75,7 @@
 }
 
 .summary {
-    border: 1px solid rgba(226, 230, 233, 1);
+    border: 1px solid c.$color-elements;
 
     @include mixins.on-desktop {
         height: 206px;
@@ -89,18 +92,20 @@
     margin: 0;
 
     @include mixins.typography(800, 32px, 41px, -0.01em);
+
     text-align: center;
-    color: rgba(49, 50, 55, 1);
+    color: c.$color-primary;
 }
 
 .summaryText {
     margin: 0;
 
     @include mixins.typography(600, 14px, 21px);
-    text-align: center;
-    color: rgba(137, 147, 154, 1);
 
-    border-bottom: 1px solid rgb(226, 230, 233);
+    text-align: center;
+    color: c.$color-secondary;
+
+    border-bottom: 1px solid c.$color-elements;
     padding-bottom: 16px;
 }
 
@@ -117,12 +122,13 @@
     border: none;
 
     @include mixins.typography(700, 14px, 21px);
-    background-color: rgba(49, 50, 55, 1);
-    color: rgba(255, 255, 255, 1);
-    transition: box-shadow 0.3s ease;
+
+    background-color: c.$color-primary;
+    color: c.$color-white;
+    transition: box-shadow v.$transition;
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      box-shadow: v.$shadow-hover;
     }
 }

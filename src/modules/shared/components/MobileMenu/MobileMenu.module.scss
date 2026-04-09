@@ -1,3 +1,5 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .mobileMenu {
@@ -6,7 +8,7 @@
   left: 0;
   width: 100%;
   height: calc(100vh - 48px);
-  background-color: white;
+  background-color: c.$color-white;
   display: flex;
   flex-direction: column;
   z-index: 10;
@@ -17,10 +19,9 @@
 }
 
 .menuList {
-  display: flex;
+  @include mixins.flex-column(16px);
+
   align-items: center;
-  gap: 16px;
-  flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -31,12 +32,18 @@
 }
 
 .menuLink {
-  @include mixins.menu-link;
+  @include mixins.typography(800, 12px, 11px, 0.04);
+
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  color: c.$color-secondary;
   
   position: relative;
   display: flex;
   align-items: center;
   padding: 8px 0;
+
   &::after {
     content: '';
     position: absolute;
@@ -44,8 +51,9 @@
     right: 0;
     bottom: -6px;
     height: 2px;
-    background-color: #313237;
+    background-color: c.$color-primary;
     opacity: 0;
+    transition: opacity v.$transition;
   }
 
   &:hover::after {
@@ -59,11 +67,13 @@
 }
 
 .menuIcon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flex-center;
+
   width: 50%;
   height: 64px;
-  border-top: 1px solid #e2e6e9;
-  border-right: 1px solid #e2e6e9;
+  border-top: 1px solid c.$color-hover;
+}
+
+.menuIcon:first-child {
+  border-right: 1px solid c.$color-hover;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Product, SortType } from '../../../../types/Product';
 import { Breadcrumbs } from '../Breadcrumbs';
 import styles from './CatalogPageContent.module.scss';
@@ -23,7 +23,10 @@ export const CatalogPageContent: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const { isLoadingProducts, error, reloadProducts } = useShop();
   const sortParam = searchParams.get('sort') as SortType;
-  const [sortBy, setSortBy] = useState<SortType>(sortParam || 'newest');
+  const sortBy: SortType =
+    sortParam === 'alphabetically' || sortParam === 'cheapest'
+      ? sortParam
+      : 'newest';
 
   const pageParam = Number(searchParams.get('page')) || 1;
   const perPageParam =
@@ -39,11 +42,15 @@ export const CatalogPageContent: React.FC<Props> = ({
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value as SortType;
-
-    setSortBy(value);
     const params = new URLSearchParams(searchParams);
 
-    params.set('sort', value);
+    if (value === 'newest') {
+      params.delete('sort');
+    } else {
+      params.set('sort', value);
+    }
+
+    params.delete('page');
     setSearchParams(params);
   };
 

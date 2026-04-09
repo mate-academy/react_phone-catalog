@@ -1,3 +1,4 @@
+@use '../../styles/colors.scss' as c;
 @use '../../styles/mixins.scss';
 
 .main {
@@ -15,11 +16,10 @@
 .title {
     margin: 0;
     margin-bottom: 8px;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+    
+    color: c.$color-primary;
 
     @include mixins.on-tablet {
         font-size: 48px;
@@ -30,11 +30,10 @@
 .amount {
     margin: 0;
     margin-bottom: 32px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: c.$color-secondary;
 
     @include mixins.on-tablet {
         margin-bottom: 40px;

@@ -1,3 +1,5 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins';
 
 .bannerSlider {
@@ -14,7 +16,7 @@
 
 .bannerInner {
   @include mixins.on-tablet {
-    max-width: 1200px;
+    max-width: v.$container-width;
     margin: 0 auto;
     padding-inline: 24px;
   }
@@ -42,7 +44,7 @@
   }
 
   @include mixins.on-desktop {
-    grid-column: -1/-2;
+    grid-column: -1 / -2;
   }
 }
 
@@ -52,16 +54,21 @@
   align-items: center;
   height: 100%;
   padding: 0;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid c.$color-icons;
   background: transparent;
+  transition: border-color v.$transition;
   cursor: pointer;
+
+  &:hover {
+    border-color: c.$color-primary;
+  }
 }
 
 .viewport {
   width: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
 
   @include mixins.on-tablet {
     grid-column: 2 / 12;
@@ -77,7 +84,7 @@
 .track {
   display: flex;
   height: 100%;
-  transition: transform 0.3s ease;
+  transition: transform v.$transition;
 }
 
 .slide {
@@ -100,23 +107,22 @@
 }
 
 .dot {
+  @include mixins.flex-center;
+
   width: 24px;
   height: 24px;
   border: none;
   background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 
   &::before {
     content: '';
     width: 14px;
     height: 4px;
-    background-color: rgba(226, 230, 233, 1);
+    background-color: c.$color-elements;
   }
 }
 
 .activeDot::before {
-  background-color: rgba(49, 50, 55, 1);
+  background-color: c.$color-primary;
 }

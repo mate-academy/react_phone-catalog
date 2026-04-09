@@ -1,7 +1,9 @@
 import styles from './ProductOptions.module.scss';
-import { ProductDetails } from '../../../../types/Product';
+import { Product, ProductDetails } from '../../../../types/Product';
+import { useShop } from '../../../../store/ShopContext';
 
 type Props = {
+  product: Product;
   productDetails: ProductDetails;
   onColorChange: (color: string) => void;
   onCapacityChange: (capacity: string) => void;
@@ -29,10 +31,15 @@ const colorMap: Record<string, string> = {
 };
 
 export const ProductOptions: React.FC<Props> = ({
+  product,
   productDetails,
   onColorChange,
   onCapacityChange,
 }) => {
+  const { toggleFavourite, addToCart, favourites, carts } = useShop();
+  const isFavourite = favourites.some(item => item.itemId === product.itemId);
+  const isCart = carts.some(cart => cart.product.itemId === product.itemId);
+
   return (
     <>
       <div className={styles.section}>
@@ -85,9 +92,30 @@ export const ProductOptions: React.FC<Props> = ({
               </span>
             </div>
             <div className={styles.actions}>
-              <button className={styles.addToCart}>Add to cart</button>
-              <button className={styles.favouriteButton}>
-                <img src="/img/icon/favourites-logo.svg" alt="Favourites" />
+              <button
+                type="button"
+                className={`${isCart ? styles.selected : styles.addToCart}`}
+                onClick={() => addToCart(product)}
+                disabled={isCart}
+              >
+                {isCart ? 'Added to cart' : 'Add to cart'}
+              </button>
+              <button
+                type="button"
+                className={`${styles.favouriteButton} ${
+                  isFavourite ? styles.favouriteButtonActive : ''
+                }`}
+                aria-label="Add to favourites"
+                onClick={() => toggleFavourite(product)}
+              >
+                <img
+                  src={
+                    isFavourite
+                      ? '/img/icon/favourites-red.svg'
+                      : '/img/icon/favourites-logo.svg'
+                  }
+                  alt=""
+                />
               </button>
             </div>
           </div>

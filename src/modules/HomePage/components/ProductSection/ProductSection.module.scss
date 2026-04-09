@@ -1,8 +1,10 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins';
 
 .sectionInner {
   @include mixins.on-desktop {
-    max-width: 1200px;
+    max-width: v.$container-width;
     margin: 0 auto;
   }
 }
@@ -24,15 +26,13 @@
 
 .title {
   margin: 0;
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 140%;
-  color: rgba(49, 50, 55, 1);
+
+  @include mixins.typography(800, 22px, 1.4);
+  
+  color: c.$color-primary;
 
   @include mixins.on-tablet {
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
+    @include mixins.typography(800, 32px, 41px, -0.01em);
   }
 }
 
@@ -44,14 +44,14 @@
 
 .arrowLeft,
 .arrowRight {
+  @include mixins.flex-center;
+
   padding: 0;
   width: 32px;
   height: 32px;
   background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid c.$color-icons;
+  transition: border-color v.$transition;
   cursor: pointer;
 
   &:disabled {
@@ -60,7 +60,7 @@
   }
 
   &:hover {
-    border: 1px solid rgba(180, 189, 195, 1);
+    border-color: c.$color-primary;
   }
 }
 

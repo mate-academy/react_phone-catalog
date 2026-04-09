@@ -1,14 +1,3 @@
-@mixin menu-link {
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 4%;
-  color: rgba(137, 147, 154, 1);
-}
-
 @mixin on-tablet {
   @media (min-width: 640px) {
     @content;
@@ -46,4 +35,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin flex-column($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
 }

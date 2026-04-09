@@ -2,6 +2,7 @@ import styles from './CartItem.module.scss';
 import { useShop } from '../../../../store/ShopContext';
 import { CartItems } from '../../../../types/Product';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type Props = {
   cart: CartItems;
@@ -21,14 +22,19 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
         >
           <img src="/img/icon/close.svg" alt="" />
         </button>
-        <a href="" className={styles.imageLink}>
+        <Link
+          to={`/product/${cart.product.itemId}`}
+          className={styles.imageLink}
+        >
           <img
             src={`/${cart.product.image}`}
             alt={cart.product.name}
             className={styles.image}
           />
-        </a>
-        <p className={styles.title}>{cart.product.name}</p>
+        </Link>
+        <Link to={`/product/${cart.product.itemId}`} className={styles.title}>
+          {cart.product.name}
+        </Link>
       </div>
       <div className={styles.bottom}>
         <div className={styles.quantityControls}>
@@ -39,7 +45,14 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             onClick={() => decreaseQuantity(cart.id)}
             disabled={cart.quantity === 1}
           >
-            <img src="/img/icon/minus.svg" alt="" />
+            <img
+              src={
+                cart.quantity === 1
+                  ? '/img/icon/minus-disabled.svg'
+                  : '/img/icon/minus.svg'
+              }
+              alt=""
+            />
           </button>
           <span className={styles.quantity}>{cart.quantity}</span>
           <button

@@ -1,7 +1,8 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .header {
-  // position: sticky;
   position: fixed;
   left: 0;
   right: 0;
@@ -12,7 +13,7 @@
   align-items: center;
   width: 100%;
   height: 48px;
-  background-color: #fff;
+  background-color: c.$color-white;
 
   &::after {
     content: '';
@@ -21,7 +22,7 @@
     bottom: 0;
     left: 0;
     height: 1px;
-    background-color: #e2e6e9;
+    background-color: c.$color-elements;
   }
 
   @include mixins.on-tablet {
@@ -38,13 +39,14 @@
   display: flex;
   align-items: center;
   padding: 13px 16px;
+  overflow: hidden;
 
   @include mixins.on-desktop {
     padding: 18px 24px;
   }
 }
 
-.logoLink img {
+.logo {
   display: block;
 }
 
@@ -91,7 +93,7 @@
   display: flex;
   align-items: center;
   padding: 16px;
-  border-left: 1px solid rgba(226, 230, 233, 1);
+  border-left: 1px solid c.$color-hover;
 
   @include mixins.on-desktop {
     padding: 24px;
@@ -99,6 +101,8 @@
 }
 
 .cartBadge {
+  @include mixins.flex-center;
+
   position: absolute;
   top: 0;
   right: 0;
@@ -106,22 +110,20 @@
   min-width: 14px;
   height: 14px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.typography(600, 9px, 1);
 
-  font-weight: 600;
-  font-size: 9px;
-  line-height: 100%;
-  letter-spacing: 0%;
-
-  color: rgba(235, 87, 87, 1);
-  background-color: rgba(255, 255, 255, 1);
+  color: c.$color-red;
+  background-color: c.$color-white;
   border-radius: 50%;
 }
 
 .menuLink {
-  @include mixins.menu-link;
+  @include mixins.typography(800, 12px, 11px, 0.04em);
+
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  color: c.$color-secondary;
 
   @include mixins.on-tablet {
     position: relative;
@@ -136,7 +138,7 @@
       bottom: 0;
       left: 0;
       height: 3px;
-      background-color: #313237;
+      background-color: c.$color-primary;
       opacity: 0;
     }
 
@@ -151,12 +153,11 @@
 }
 
 .menuButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flex-center;
+
   padding: 16px;
   border: none;
-  border-left: 1px solid #e2e6e9;
+  border-left: 1px solid c.$color-hover;
   background-color: transparent;
   cursor: pointer;
 

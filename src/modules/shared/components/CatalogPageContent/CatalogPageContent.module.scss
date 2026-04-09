@@ -1,26 +1,25 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .pageTitle {
     margin: 0;
     margin-bottom: 8px;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
-    color: rgba(49, 50, 55, 1);
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+
+    color: c.$color-primary;
 
     @include mixins.on-tablet {
-        font-size: 48px;
-        line-height: 56px;
+        @include mixins.typography(800, 48px, 56px);
     }
 }
 
 .error,
 .empty {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flex-column(16px);
+
   align-items: center;
-  gap: 16px;
   padding: 40px 0;
 }
 
@@ -28,19 +27,18 @@
   height: 40px;
   padding-inline: 16px;
   border: none;
-  background-color: #313237;
-  color: #fff;
+  background-color: c.$color-primary;
+  color: c.$color-white;
   cursor: pointer;
 }
 
 .modelsCount {
     margin: 0;
     margin-bottom: 32px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: c.$color-secondary;
 
     @include mixins.on-tablet {
         margin-bottom: 40px;
@@ -54,34 +52,39 @@
 }
 
 .control {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    @include mixins.flex-column(4px);
+
     flex: 1;
 }
 
-.controlLabel { 
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+.controlLabel {
+    @include mixins.typography(700, 12px, 1);
+
+    color: c.$color-secondary;
 }
 
 .controlSelect {
     height: 40px;
     padding: 0 12px;
-    background-color: #fff;
-    border: 1px solid rgba(180, 189, 195, 1);
+    background-color: c.$color-white;
+    border: 1px solid c.$color-icons;
     cursor: pointer;
     appearance: none;
     background-image: url('/img/icon/chevron-arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 12px center;
 
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+    @include mixins.typography(700, 14px, 21px);
+    
+    color: c.$color-primary;
+    transition: border-color v.$transition;
+
+    &:hover {
+      border-color: c.$color-primary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: c.$color-primary;
+    }
 }

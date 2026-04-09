@@ -1,3 +1,4 @@
+@use '../../../../styles/colors.scss' as c;
 @use '../../../../styles/mixins.scss';
 
 .techSpecs {
@@ -10,24 +11,19 @@
     margin: 0;
     margin-bottom: 30px;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(226, 230, 233, 1);
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+    border-bottom: 1px solid c.$color-elements;
+
+    @include mixins.typography(700, 20px, 1);
+    
+    color: c.$color-primary;
 
     @include mixins.on-tablet {
-        font-weight: 800;
-        font-size: 22px;
-        line-height: 140%;
+        @include mixins.typography(800, 22px, 1.4);
     }
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    @include mixins.flex-column(8px);
 }
 
 .row {
@@ -38,19 +34,15 @@
 }
 
 .label {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+    @include mixins.typography(500, 14px, 21px);
+
+    color: c.$color-secondary;
 }
 
 .value {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+    @include mixins.typography(500, 14px, 21px);
+
+    color: c.$color-primary;
     text-align: right;
     word-break: break-word;
 }

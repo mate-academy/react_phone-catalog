@@ -1,3 +1,5 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .pagination {
@@ -22,27 +24,42 @@
 }
 
 .arrowButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    border: 1px solid rgba(180, 189, 195, 1);
+  @include mixins.flex-center;
+
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid c.$color-icons;
+  transition: border-color v.$transition;
+  cursor: pointer;
+
+  &:hover {
+    border-color: c.$color-primary;
+  }
+
+  &:disabled {
+    border-color: c.$color-elements;
+    cursor: not-allowed;
+  }
 }
 
 .pageButton {
   width: 32px;
   height: 32px;
-  color: rgba(49, 50, 55, 1);
-  border: 1px solid rgba(226, 230, 233, 1);
+  color: c.$color-primary;
+  border: 1px solid c.$color-elements;
   background-color: transparent;
+  transition: border-color v.$transition;
   cursor: pointer;
+
+  &:hover {
+    border-color: c.$color-primary;
+  }
 }
 
 .active {
-  background: rgba(49, 50, 55, 1);
-  color: rgba(255, 255, 255, 1);
-  border-color: rgba(49, 50, 55, 1);
+  background: c.$color-primary;
+  color: c.$color-white;
+  border-color: c.$color-primary;
 }

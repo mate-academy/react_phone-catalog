@@ -1,8 +1,10 @@
+@use '../../../../styles/colors.scss' as c;
+@use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .card {
   flex: 0 0 212px;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid c.$color-elements;
 
   @include mixins.on-tablet {
     flex: 0 0 237px;
@@ -22,11 +24,11 @@
 }
 
 .imageLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flex-center;
+
   height: 129px;
   text-decoration: none;
+  overflow: hidden;
   
   @include mixins.on-tablet {
     height: 173px;
@@ -42,6 +44,11 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: transform v.$transition;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
 }
 
 .titleWrapper {
@@ -52,16 +59,16 @@
 
 .title {
   margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  
+  @include mixins.typography(600, 14px, 21px);
+
   text-decoration: none;
-  color: rgba(49, 50, 55, 1);
+  color: c.$color-primary;
 }
 
 .priceBlock {
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  border-bottom: 1px solid c.$color-elements;
 }
 
 .priceRow {
@@ -73,25 +80,21 @@
 .price {
   margin: 0;
   margin-right: 8px;
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 140%;
-  color: rgba(49, 50, 55, 1);
+
+  @include mixins.typography(800, 22px, 1.4);
+
+  color: c.$color-primary;
 }
 
 .oldPrice {
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: rgba(137, 147, 154, 1);
+  @include mixins.typography(600, 22px, 1);
+
+  color: c.$color-secondary;
   text-decoration: line-through;
 }
 
 .specs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  @include mixins.flex-column(8px);
 }
 
 .specRow {
@@ -100,17 +103,15 @@
 }
 
 .specName {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  color: rgba(137, 147, 154, 1);
+  @include mixins.typography(700, 12px, 1);
+
+  color: c.$color-secondary;
 }
 
 .specValue {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  color: rgba(49, 50, 55, 1);
+  @include mixins.typography(700, 12px, 1);
+
+  color: c.$color-primary;
 }
 
 .actions {
@@ -122,58 +123,60 @@
 .addToCart {
   flex: 1;
   height: 40px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
+
+  @include mixins.typography(700, 14px, 21px);
+
   text-align: center;
   padding: 0;
-  color: rgba(255, 255, 255, 1);
-  background-color: rgba(49, 50, 55, 1);
+  color: c.$color-white;
+  background-color: c.$color-primary;
   border: none;
+  transition: box-shadow v.$transition;
   cursor: pointer;
 
   &:disabled {
-    background-color: rgba(49, 50, 55, 1);
-    color: rgba(255, 255, 255, 1);
+    background-color: c.$color-primary;
+    color: c.$color-white;
     cursor: default;
     box-shadow: none;
   }
 
   &:not(:disabled):hover {
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    box-shadow: v.$shadow-hover;
   }
 }
 
 .selected {
   flex: 1;
   height: 40px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
+
+  @include mixins.typography(700, 14px, 21px);
+
   text-align: center;
   padding: 0;
-  color: rgba(39, 174, 96, 1);
-  background-color: #fff;
-  border: 1px solid rgba(226, 230, 233, 1);
+  color: c.$color-green;
+  background-color: c.$color-white;
+  border: 1px solid c.$color-elements;
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 .favouriteButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flex-center;
+
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 1px solid rgba(180, 189, 195, 1);
+  border: 1px solid c.$color-icons;
   background-color: transparent;
+  transition: border-color v.$transition;
   cursor: pointer;
 
   &:hover {
-    border: 1px solid rgba(49, 50, 55, 1);
+    border-color: c.$color-primary;
   }
 }
 
 .favouriteButtonActive {
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid c.$color-elements;
 }

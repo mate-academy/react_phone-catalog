@@ -120,6 +120,7 @@ export const ProductDetailsPage = () => {
           <ProductGallery productDetails={productDetails} />
 
           <ProductInfo
+            currentProduct={currentProduct}
             productDetails={productDetails}
             onColorChange={handleColorChange}
             onCapacityChange={handleCapacityChange}
