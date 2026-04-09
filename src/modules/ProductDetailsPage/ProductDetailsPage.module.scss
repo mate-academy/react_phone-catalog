@@ -1,0 +1,22 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  @include content-width;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.title {
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+
+  @include media-up($breakpoint-tablet) {
+    width: 50%;
+  }
+}
