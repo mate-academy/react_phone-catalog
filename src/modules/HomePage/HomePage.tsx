@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import styles from './HomePage.module.scss';
 import ProductsSlider from './components/ProductsSlider/index';
 import PicturesSlider from './components/PicturesSlider/index';
 import { Link } from 'react-router-dom';
 import { productsCount } from '../../utils/products';
 import { useProducts } from '../../hooks/useProducts';
-
 
 const TYPES = {
   PHONE: 'phones',
@@ -14,26 +13,19 @@ const TYPES = {
 };
 
 export const HomePage: React.FC = () => {
-  const THRESHOLD = 30;
-
   const { products, loading, error } = useProducts();
-  const [paused, setPaused] = useState<boolean>(false);
 
   const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const [currentNewProductIndex, setCurrentNewProductIndex] = useState(0);
 
-  const startPictureX = useRef<number | null>(null);
-  const startPictureY = useRef<number | null>(null);
-
-  const sliderPictureRef = useRef<HTMLDivElement | null>(null);
   const newestProducts = Array.isArray(products)
     ? [...products].sort((a, b) => Number(b.year) - Number(a.year)).slice(0, 8)
     : [];
   const lenOfProducts = products?.length ?? 0;
 
   useEffect(() => {
-    if (lenOfProducts > 0 && !paused) {
+    if (lenOfProducts > 0) {
       const id = setInterval(
         () => setCurrentPictureIndex(i => (i + 1) % lenOfProducts),
         5000,
@@ -43,7 +35,7 @@ export const HomePage: React.FC = () => {
     }
 
     return;
-  }, [lenOfProducts, paused]);
+  }, [lenOfProducts]);
 
   useEffect(() => {
     if (!loading && !error) {
@@ -66,58 +58,6 @@ export const HomePage: React.FC = () => {
   }, [products]);
 
   const lenOfHotPricesproducts = hotPrices?.length ?? 0;
-
-  const wrapNext = (index: number, len: number) =>
-    len ? (index + 1) % len : 0;
-
-  const wrapPrev = (index: number, len: number) =>
-    len ? (index === 0 ? len - 1 : index - 1) : 0;
-
-  const handleNextPicture = () => {
-    if (lenOfProducts === 0) {
-      return;
-    }
-
-    setCurrentPictureIndex(i => wrapNext(i, lenOfProducts));
-  };
-
-  const handlePrevPicture = () => {
-    if (lenOfProducts === 0) {
-      return;
-    }
-
-    setCurrentPictureIndex(i => wrapPrev(i, lenOfProducts));
-  };
-
-  const handleTouchStartPicture = (
-    e: React.TouchEvent<HTMLDivElement>,
-  ): void => {
-    startPictureX.current = e.touches[0].clientX;
-    startPictureY.current = e.touches[0].clientY;
-    setPaused(true);
-  };
-
-  const handleTouchEndPicture = (e: React.TouchEvent<HTMLDivElement>): void => {
-    const endX = e.changedTouches[0].clientX;
-    const endY = e.changedTouches[0].clientY;
-
-    if (startPictureX.current == null || startPictureY.current == null) {
-      return;
-    }
-
-    const dx = endX - startPictureX.current;
-    const dy = endY - startPictureY.current;
-
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESHOLD) {
-      if (dx < 0) {
-        handlePrevPicture();
-      } else {
-        handleNextPicture();
-      }
-    }
-
-    setPaused(false);
-  };
 
   const handlePrevProduct = () => {
     if (lenOfHotPricesproducts === 0) {
@@ -160,7 +100,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-
       <div className={styles.homePage}>
         <div className={styles.homePage__content}>
           <div className={styles.homePage__bottom}>
@@ -177,7 +116,6 @@ export const HomePage: React.FC = () => {
                 currentIndex={currentPictureIndex}
               />
             )}
-
           </div>
         </div>
       </div>

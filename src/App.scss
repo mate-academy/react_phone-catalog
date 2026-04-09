@@ -148,12 +148,6 @@ h5 {
 
 }
 
-:root {
-  scrollbar-width: thin;
-  scrollbar-color: $primary-color transparent;
-}
-
-
 .slider-wrapper {
   position: relative;
   padding-bottom: 50px; /* Create space for the pagination below the slider */
@@ -164,9 +158,9 @@ h5 {
   width: 100%;
   text-align: center;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
-
   display: none;
 
   @include on-tablet {
@@ -200,12 +194,13 @@ h5 {
               }
 
 }
+
  .swiper-button-prev {
-    left: 0px  !important;
+    left: 0  !important;
     }
 
  .swiper-button-next {
-    right: 0px  !important;
+    right: 0  !important;
 }
 
 :root {
@@ -213,7 +208,6 @@ h5 {
 }
 
  .swiper-pagination-bullets {
-  //position: relative;
   bottom: -35px  !important;
   left:  50%  !important;
 }

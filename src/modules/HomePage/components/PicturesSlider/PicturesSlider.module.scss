@@ -5,12 +5,8 @@
 .picturesSlider {
   width: 100%;
   display: flex;
-  //justify-content: center;
   align-items: stretch;
   margin: 0 auto;
-
-  //gap: 16px;
-
       &__button {
         height: 100%;
 
@@ -36,12 +32,8 @@
      }
 
   &__layout {
-    display: flex;
-   // background-color: #FFFF;
     width: 100%;
       height: 320px;
-    // margin-bottom: 200px;
-      //box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -71,7 +63,6 @@
       background-image: url('/img/header-bg-tablet-2x.png');
       width: 100%;
       height: 189px;
-      //border: 5px solid #FFFF;
       background-color: $primary-color;
       outline: 10px solid #FFFF;
     }
@@ -98,12 +89,10 @@
     @include on-desktop{
         max-width: 1136px;
         outline: 10px solid #FFFF;
-        //border: 10px solid #FFFF;
     }
   }
 
  &__productImage {
-
     display: block;
     height: 100%;
     width: auto;
@@ -115,6 +104,7 @@
       width: auto;
       height: 189px;
     }
+
      @include on-desktop {
         height: 400px;
      }

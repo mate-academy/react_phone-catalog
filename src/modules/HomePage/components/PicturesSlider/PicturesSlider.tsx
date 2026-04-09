@@ -23,7 +23,6 @@ export const PicturesSlider: React.FC<PicturesSliderProps> = ({ products }) => {
               delay: 5000,
               disableOnInteraction: false,
             }}
-
             effect={'fade'}
             navigation={true}
             pagination={{
