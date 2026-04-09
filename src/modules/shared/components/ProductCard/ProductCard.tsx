@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import heartIcon from '@/assets/icons/icon-favorites.svg';
 import type { Product } from '@/types/Product';
 import styles from './ProductCard.module.scss';
@@ -12,15 +13,19 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
-        <img
-          src={`/${product.image}`}
-          alt={product.name}
-          className={styles.image}
-        />
+        <Link to={`/product/${product.itemId}`}>
+          <img
+            src={`/${product.image}`}
+            alt={product.name}
+            className={styles.image}
+          />
+        </Link>
       </div>
 
       <div className={styles.titleWrapper}>
-        <p className={styles.title}>{product.name}</p>
+        <Link to={`/product/${product.itemId}`} className={styles.title}>
+          {product.name}
+        </Link>
       </div>
 
       <div className={styles.price}>
