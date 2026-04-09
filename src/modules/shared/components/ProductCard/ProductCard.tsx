@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
 import classname from 'classnames';
-import Product from '../../../../types/Product';
+import Product from '../../../../types/product';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';

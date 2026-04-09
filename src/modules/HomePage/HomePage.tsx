@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 // eslint-disable-next-line max-len
 import { ProductsSlider } from '../shared/components/ProductsSlider/ProductsSlider';
 import { getProducts } from '../../api/Products';
-import { Product } from '../../types/Product';
+import Product from '../../types/product';
 import { Categories } from './components/Categories/Categories';
 
 export const HomePage = () => {

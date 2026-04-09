@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { Product } from '../../types/Product';
+import Product from '../../types/product';
 import { getProducts } from '../../api/Products';
 import { ProductCard } from '../shared/components/ProductCard/ProductCard';
 import { Loader } from '../../components/Loader/Loader';

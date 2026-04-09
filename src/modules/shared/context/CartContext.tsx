@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo } from 'react';
-import { Product } from '../../../types/Product';
+import Product from '../../../types/product';
 import { CartItem } from '../../../types/CartItem';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 

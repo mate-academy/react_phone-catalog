@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './ProductsSlider.module.scss';
-import { Product } from '../../../../types/Product';
+import Product from '../../../../types/product';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
@@ -11,12 +11,7 @@ type Props = {
   scrollOnCardClick?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({
-  title,
-  products,
-  showDiscount = true,
-  scrollOnCardClick = false,
-}: Props) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products }: Props) => {
   const [step, setStep] = useState(0);
   const itemWidth = 272;
   const gap = 16;
@@ -93,11 +88,7 @@ export const ProductsSlider: React.FC<Props> = ({
         >
           {products.map(product => (
             <div key={product.id} className={styles.cardWrapper}>
-              <ProductCard
-                product={product}
-                showDiscount={showDiscount}
-                scrollToTopOnClick={scrollOnCardClick}
-              />
+              <ProductCard product={product} />
             </div>
           ))}
         </div>

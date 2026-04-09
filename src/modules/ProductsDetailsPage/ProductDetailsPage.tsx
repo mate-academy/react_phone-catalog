@@ -5,7 +5,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { getProductDetails, getSuggestedProducts } from '../../api/Products';
 import { Loader } from '../../components/Loader/Loader';
 import styles from './ProductDetailsPage.module.scss';
-import Product from '../../types/Product';
+import Product from '../../types/product';
 import { useFavorites } from '../shared/context/FavoritesContext';
 import { useCart } from '../shared/context/CartContext';
 // eslint-disable-next-line max-len

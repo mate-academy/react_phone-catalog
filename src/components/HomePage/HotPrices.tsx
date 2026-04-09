@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../../types/Product';
+import Product from '../../types/product';
 import pagination from '../../utils/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
 
