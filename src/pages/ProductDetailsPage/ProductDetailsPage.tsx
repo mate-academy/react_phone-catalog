@@ -27,49 +27,55 @@ export const ProductDetailsPage = () => {
 
   const { addToCart, addToFavorites, isInCart, isInFavorites } = useCart();
 
-useEffect(() => {
-  if (!productId) return;
-
-  setLoading(true);
-  setError(false);
-  setSelectedImage(0);
-
-  try {
-    const allProducts = productsData as { itemId: string; category: string }[];
-    const found = allProducts.find(p => p.itemId === productId);
-
-    if (!found) {
-      setError(true);
-      setLoading(false);
+  useEffect(() => {
+    if (!productId) {
       return;
     }
 
-    const dataMap: Record<string, unknown[]> = {
-      phones: phonesData,
-      tablets: tabletsData,
-      accessories: accessoriesData,
-    };
+    setLoading(true);
+    setError(false);
+    setSelectedImage(0);
 
-    const categoryData = dataMap[found.category];
-    const detail = (categoryData as ProductDetails[]).find(
-      p => p.id === productId
-    );
+    try {
+      const allProducts = productsData as {
+        itemId: string;
+        category: string;
+      }[];
+      const found = allProducts.find(p => p.itemId === productId);
 
-    if (!detail) {
+      if (!found) {
+        setError(true);
+        setLoading(false);
+
+        return;
+      }
+
+      const dataMap: Record<string, unknown[]> = {
+        phones: phonesData,
+        tablets: tabletsData,
+        accessories: accessoriesData,
+      };
+
+      const categoryData = dataMap[found.category];
+      const detail = (categoryData as ProductDetails[]).find(
+        p => p.id === productId,
+      );
+
+      if (!detail) {
+        setError(true);
+      } else {
+        setProduct(detail);
+        setSelectedColor(detail.color);
+        setSelectedCapacity(detail.capacity);
+        getSuggestedProducts(productId).then(setSuggested);
+      }
+
+      setLoading(false);
+    } catch {
       setError(true);
-    } else {
-      setProduct(detail);
-      setSelectedColor(detail.color);
-      setSelectedCapacity(detail.capacity);
-      getSuggestedProducts(productId).then(setSuggested);
+      setLoading(false);
     }
-
-    setLoading(false);
-  } catch {
-    setError(true);
-    setLoading(false);
-  }
-}, [productId]);
+  }, [productId]);
 
   if (loading) {
     return (

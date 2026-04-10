@@ -34,18 +34,19 @@ export const ProductPage = ({ category }: Props) => {
   const page = Number(searchParams.get('page')) || 1;
   const perPage = searchParams.get('perPage') || 'all';
 
-useEffect(() => {
-  try {
-    const filtered = (productsData as Product[]).filter(
-      p => p.category === category
-    );
-    setProducts(filtered);
-    setLoading(false);
-  } catch {
-    setError(true);
-    setLoading(false);
-  }
-}, [category]);
+  useEffect(() => {
+    try {
+      const filtered = (productsData as Product[]).filter(
+        p => p.category === category,
+      );
+
+      setProducts(filtered);
+      setLoading(false);
+    } catch {
+      setError(true);
+      setLoading(false);
+    }
+  }, [category]);
 
   const updateParams = (key: string, value: string) => {
     setSearchParams(prevParams => {

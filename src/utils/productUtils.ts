@@ -27,9 +27,6 @@ export const toCartProduct = (product: ProductDetails): Product => ({
   ram: product.ram,
   year: 0,
 });
-
-import { Product } from '../types/Product';
-
 export const getSuggestedProducts = async (
   currentId: string,
 ): Promise<Product[]> => {
@@ -37,8 +34,10 @@ export const getSuggestedProducts = async (
   const filtered = allProducts.filter(p => p.itemId !== currentId);
 
   const shuffled = [...filtered];
+
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
+
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
