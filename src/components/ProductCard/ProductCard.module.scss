@@ -131,6 +131,15 @@
     color: var(--color-button-card-select-text);
     border: 1px solid var(--color-button-card-border);
   }
+    &--active {
+    background-color: var(--color-button-card-select);
+    color: var(--color-button-card-select-text);
+    border: 1px solid var(--color-button-card-border);
+    &:hover{
+          background-color: var(--color-button-card-select);
+    box-shadow: 0 3px 13px 0 rgba(206, 208, 210, 0.4);
+    }
+  }
 }
 
 .button_favorite {

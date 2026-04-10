@@ -114,6 +114,7 @@ body {
 .slider {
   margin: 32px auto 56px;
   max-width: 288px;
+  overflow: hidden;
 }
 @media (min-width: 640px) and (max-width: 1199px) {
   .slider {
@@ -194,5 +195,5 @@ body {
 .slider__container {
   padding: 4px;
   margin: -4px;
-  overflow: hidden;
+  overflow: visible;
 }

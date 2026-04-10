@@ -274,6 +274,7 @@ body {
   padding: 24px 50px;
   background-color: inherit;
   text-transform: uppercase;
+  border: 1px solid var(--secondary-color);
 }
 .buttons:hover {
   background-color: black;

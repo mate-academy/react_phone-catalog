@@ -3,6 +3,7 @@
 .slider {
   margin: 32px auto 56px;
   max-width: 288px;
+  overflow: hidden;
 
   @include on-tablet {
     max-width: 592px;
@@ -68,6 +69,6 @@
   &__container {
     padding: 4px;
     margin: -4px;
-    overflow: hidden;
+    overflow: visible;
   }
 }

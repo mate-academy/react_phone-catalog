@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { useCart } from '../../context/CartContext';
+import cn from 'classnames';
 interface Props {
   product: Product;
 }
@@ -46,7 +47,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
       <div className={styles.card__buttons}>
         <button
-          className={`${styles.button_add} ${isAddedToCart ? styles.button_add_active : ''}`}
+          type="button"
+          className={cn(styles.button_add, {
+            [styles['button_add--active']]: isAddedToCart, // Додається динамічно
+          })}
           onClick={() => addToCart(product)}
         >
           {isAddedToCart ? 'Added' : 'Add to cart'}
