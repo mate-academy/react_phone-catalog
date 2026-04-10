@@ -9,14 +9,67 @@
   gap: $spacing-lg;
 }
 
-.title {
-  margin: 0;
+.back {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  width: fit-content;
+  min-width: 66px;
+  min-height: 16px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-secondary;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary;
+  }
 }
 
-.image {
-  width: 100%;
+.backText {
+  position: relative;
+  top: 1px;
+}
+
+.backChevron {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.contentGrid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
 
   @include media-up($breakpoint-tablet) {
-    width: 50%;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.imageSection {
+  @include media-up($breakpoint-tablet) {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.details {
+  @include media-up($breakpoint-tablet) {
+    flex: 1;
+    min-width: 0;
   }
 }
