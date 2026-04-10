@@ -15,7 +15,9 @@ export const FavoritePage = () => {
   const query = searchParams.get('query');
   const getFilteredFavorites = useCallback(() => {
     if (query) {
-      return favorites.filter(item => item.name.includes(query));
+      return favorites.filter(item =>
+        item.name.toLocaleLowerCase().includes(query.toLowerCase()),
+      );
     }
 
     return favorites;
