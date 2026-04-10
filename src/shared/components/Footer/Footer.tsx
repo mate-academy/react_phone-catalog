@@ -11,6 +11,9 @@ export const Footer: React.FC<Props> = ({ className }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const LICENSE_URL =
+    'https://github.com/ivanilnytskyy/react_phone-catalog/blob/master/LICENSE';
+
   return (
     <footer className={`${styles.footer} ${className || ''}`}>
       <Container className={styles.content}>
@@ -25,8 +28,8 @@ export const Footer: React.FC<Props> = ({ className }) => {
           >
             GitHub
           </a>
-          <a href="#">Contacts</a>
-          <a href="#">Rights</a>
+          <a href="https://github.com/IvanIlnytskyy">Contacts</a>
+          <a href={LICENSE_URL}>Rights</a>
         </nav>
 
         <button type="button" className={styles.back}>
