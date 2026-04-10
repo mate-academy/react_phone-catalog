@@ -32,7 +32,7 @@ export const ProductDetailsPage = () => {
     setError(false);
     setSelectedImage(0);
 
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(res => res.json())
       .then(products => {
         const found = products.find(
@@ -46,7 +46,7 @@ export const ProductDetailsPage = () => {
           return null;
         }
 
-        return fetch(`/api/${found.category}.json`);
+        return fetch(`${import.meta.env.BASE_URL}api/${found.category}.json`);
       })
       .then(res => res?.json())
       .then(details => {

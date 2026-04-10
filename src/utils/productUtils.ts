@@ -29,7 +29,7 @@ export const toCartProduct = (product: ProductDetails): Product => ({
 export const getSuggestedProducts = async (
   currentId: string,
 ): Promise<Product[]> => {
-  const res = await fetch('/api/products.json');
+  const res = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
   const allProducts: Product[] = await res.json();
 
   const filtered = allProducts.filter(p => p.itemId !== currentId);

@@ -36,7 +36,7 @@ export const ProductPage = ({ category }: Props) => {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(res => res.json())
       .then((data: Product[]) => {
         const filtered = data.filter(p => p.category === category);
