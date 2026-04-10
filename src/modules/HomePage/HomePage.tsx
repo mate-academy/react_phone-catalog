@@ -23,7 +23,7 @@ export const HomePage: React.FC<Props> = ({
 
   return (
     <Container>
-      <h1 className={styles.tytle}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.tytle}>Product Catalog</h1>
 
       <div className={styles.stack}>
         <PicturesSlider />
