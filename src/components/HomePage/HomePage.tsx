@@ -74,17 +74,17 @@ export const HomePage: React.FC = () => {
               style={{ transform: `translateX(-${currentSlide}00%)` }}
             >
               <img
-                src="/img/banner.png"
+                src={`${import.meta.env.BASE_URL}img/banner.png`}
                 alt="banner"
                 className="welcome__banner"
               />
               <img
-                src="/img/banner.png"
+                src={`${import.meta.env.BASE_URL}img/banner.png`}
                 alt="banner"
                 className="welcome__banner"
               />
               <img
-                src="/img/banner.png"
+                src={`${import.meta.env.BASE_URL}img/banner.png`}
                 alt="banner"
                 className="welcome__banner"
               />
@@ -170,7 +170,7 @@ export const HomePage: React.FC = () => {
         <Link to="/phones" className="categories__card">
           <div className="categories__card-img-wrapper categories--gray">
             <img
-              src="/img/category-phones.webp"
+              src={`${import.meta.env.BASE_URL}img/category-phones.webp`}
               alt="phones"
               className="categories__card-img"
             />
@@ -184,7 +184,7 @@ export const HomePage: React.FC = () => {
         <Link to="/tablets" className="categories__card">
           <div className="categories__card-img-wrapper categories--light">
             <img
-              src="/img/category-tablets.webp"
+              src={`${import.meta.env.BASE_URL}img/category-tablets.webp`}
               alt="tablets"
               className="categories__card-img"
             />
@@ -198,7 +198,7 @@ export const HomePage: React.FC = () => {
         <Link to="/accessories" className="categories__card">
           <div className="categories__card-img-wrapper categories--pink">
             <img
-              src="/img/category-accessories.webp"
+              src={`${import.meta.env.BASE_URL}img/category-accessories.webp`}
               alt="accessories"
               className="categories__card-img"
             />

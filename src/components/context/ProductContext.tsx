@@ -44,28 +44,28 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(res => res.json())
       .then(setProducts)
       .catch(() => {
         throw new Error('Error');
       });
 
-    fetch('/api/phones.json')
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(res => res.json())
       .then(setPhones)
       .catch(() => {
         throw new Error('Error');
       });
 
-    fetch('/api/tablets.json')
+    fetch(`${import.meta.env.BASE_URL}api/tablets.json`)
       .then(res => res.json())
       .then(setTablets)
       .catch(() => {
         throw new Error('Error');
       });
 
-    fetch('/api/accessories.json')
+    fetch(`${import.meta.env.BASE_URL}api/accessories.json`)
       .then(res => res.json())
       .then(setAccessories)
       .catch(() => {
