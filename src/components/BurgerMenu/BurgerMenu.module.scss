@@ -1,0 +1,141 @@
+@import '../../styles/main';
+
+.menuWrapper {
+  position: fixed;
+  inset: 64px 0 0;
+  background-color: var(--bg-color);
+  z-index: 1000;
+  animation: slide-in 0.3s ease-out forwards;
+  box-shadow: 0 0 0 1px var(--elements-color);
+
+  &--closing {
+    animation: slide-out 0.3s ease-in forwards !important;
+  }
+
+  @include on-tablet {
+    top: 48px;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__nav {
+    flex: 1;
+    padding-top: 40px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    height: 80px;
+    border-top: 1px solid var(--elements-color);
+  }
+
+  &__icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &:first-child {
+      border-right: 1px solid var(--elements-color);
+    }
+
+    a {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Використовуємо звичайні селектори для активних станів, щоб уникнути помилки :global */
+.menu__link.active {
+  color: var(--primary-color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+  }
+}
+
+.menu__icon a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-border-burger);
+}
+
+.count {
+  position: absolute;
+  top: 20px;
+  right: 30%;
+  background-color: var(--color-count);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+
+  @include on-mobile {
+    right: 44%;
+  }
+}

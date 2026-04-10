@@ -1,0 +1,14 @@
+@import './fonts';
+@import './variables';
+@import './mixins';
+
+html,
+body{
+  font-family: Mont, sans-serif;
+  color: var(--primary-color);
+  scroll-behavior: smooth;
+  margin: 0;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100%;
+}
