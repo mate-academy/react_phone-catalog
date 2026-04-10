@@ -58,17 +58,17 @@ export const Header = () => {
               <div
                 className={`${styles.icon__background} ${styles['icon__background--hidden']}`}
               >
+                <FavouritesLink
+                  to="/favorites"
+                  className={`${styles.icon} ${styles['icon--absolute']} ${styles.header__favIcon}`}
+                />
                 {favorites.length > 0 && (
                   <span
-                    className={`${styles['icon--absolute']} ${styles.badge} ${styles['favorites-badge']}`}
+                    className={`${styles.badge} ${styles['favorites-badge']}`}
                   >
                     {favorites.length}
                   </span>
                 )}
-                <FavouritesLink
-                  to="/favorites"
-                  className={`${styles['icon--absolute']} ${styles.header__favIcon}`}
-                />
               </div>
               <div
                 className={`${styles.icon__background} ${styles['icon__background--hidden']}`}
@@ -78,9 +78,7 @@ export const Header = () => {
                   className={`${styles['icon--absolute']} ${styles.icon} ${styles['icon--shopping-bag-cart']}`}
                 >
                   {totalQuantity > 0 && (
-                    <span
-                      className={`${styles['icon--absolute']} ${styles.badge} ${styles['cart-badge']}`}
-                    >
+                    <span className={`${styles.badge} ${styles['cart-badge']}`}>
                       {totalQuantity}
                     </span>
                   )}

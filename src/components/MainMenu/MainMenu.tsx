@@ -52,18 +52,16 @@ export const MainMenu: React.FC<Props> = ({
         </div>
         <footer className={styles.footer}>
           <div className={styles.footer__col}>
+            <FavouritesLink
+              to="/favorites"
+              className={`${styles['icon--absolute']} ${styles.icon} ${styles.header__favIcon}`}
+              handleMenuClick={handleMenuClick}
+            />
             {favorites.length > 0 && (
-              <span
-                className={`${styles['icon--absolute']} ${styles.badge} ${styles['favorites-badge']}`}
-              >
+              <span className={`${styles.badge} ${styles['favorites-badge']}`}>
                 {favorites.length}
               </span>
             )}
-            <FavouritesLink
-              to="/favorites"
-              className={`${styles['icon--absolute']} ${styles.header__favIcon}`}
-              handleMenuClick={handleMenuClick}
-            />
           </div>
           <div className={styles.footer__col}>
             <Link
@@ -72,9 +70,7 @@ export const MainMenu: React.FC<Props> = ({
               onClick={handleMenuClick}
             >
               {totalQuantity > 0 && (
-                <span
-                  className={`${styles['icon--absolute']} ${styles.badge} ${styles['cart-badge']}`}
-                >
+                <span className={` ${styles.badge} ${styles['cart-badge']}`}>
                   {totalQuantity}
                 </span>
               )}

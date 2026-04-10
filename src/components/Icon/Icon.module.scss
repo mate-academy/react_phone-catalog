@@ -92,7 +92,6 @@
 
     border: 1px solid $icons-color;
 
-
     &:hover {
        background-color: $hover-bg-color;
        border-color: $primary-color;
@@ -110,7 +109,6 @@
       box-shadow: none;
   }
 
-
   &--favourites{
     display: none;
     background-image: url(/img/icons/icon-favourites-2x.png);
@@ -124,11 +122,6 @@
 
  .icon--absolute {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-
 }
 
 .badge {
@@ -147,32 +140,26 @@
   display: inline-block;
   font-weight: 700;
   font-size: 9px;
-
-
 }
 
 .cart-badge {
-   right: -1px;
-    top: -16px;
+   right: -4px;
+    top: -8px;
 
-  @include on-tablet {
-    right: -1px;
-    top: -16px;
-  }
 }
 
 .favorites-badge {
- right: 274px;
- bottom: 40px;
+ right: 269px;
+ bottom: 35px;
 
    @include on-tablet {
-     right: 64px;
-      top: 0;
+    right: 60px;
+     top: 8px;
   }
 
    @include on-desktop {
-     right: 64px;
-     top: 8px;
+     right: 62px;
+     top: 16px;
   }
 }
 

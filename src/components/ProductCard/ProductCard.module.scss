@@ -20,8 +20,7 @@
      grid-column: span 6;
   }
 
-  &__productInfo{
-  //  width: fit-content;
+  &__productInfo {
     min-width: 0;
     min-height: 0;
     box-sizing: border-box;
@@ -163,8 +162,6 @@
   justify-content: flex-end;
 
   box-sizing: border-box;
-
- // padding-block: 8px;
 }
 
 &__product {
@@ -172,19 +169,21 @@
   padding: 0;
   display: none;
   box-sizing: border-box;
-  min-width: 0;
+  min-width: 212px;
 
   &.mobile {
       display: block;
     }
 
   @include on-tablet {
+    min-width: 300px;
     &.tablet {
       display: block;
     }
   }
 
   @include on-desktop {
+    min-width: 276px;
     &.desktop {
       display: block;
     }

@@ -58,7 +58,7 @@
     }
 
      @include on-desktop {
-        grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
         grid-column: 1/-1;
       }
 
@@ -109,8 +109,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-width: 0;
+  min-width: 212px;
 
+  @include on-tablet {
+    min-width: 237px;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+  }
 }
 
 

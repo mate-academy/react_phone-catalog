@@ -114,7 +114,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 
       @include hover(transform, scale(1.1));
-  }
+    }
 
   @include on-tablet {
     width: 100%;
@@ -386,6 +386,8 @@
   position: absolute;
   opacity: 0;
   pointer-events: none;
+
+
 }
 
 .optionText {
@@ -396,6 +398,12 @@
   padding: 4px 8px;
   border: 1px solid $icons-color;
   color: $primary-color;
+
+     &:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+
+      @include hover(transform, scale(1.1));
+    }
 }
 
 .option input:checked + .optionText {
@@ -407,10 +415,6 @@
   transform: scale(1.1);
   box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px, rgb(51, 51, 51) 0 0 0 3px;
 
-   &:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      transform: translateY(-1px);
-    }
 }
 
 .colorOption {
@@ -423,13 +427,7 @@
 
   cursor: pointer;
   position: relative;
-
-  &:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-
-      @include hover(transform, scale(1.1));
-  }
-
+}
 
 .colorOption input {
   position: absolute;
@@ -446,11 +444,10 @@
   transition: transform 120ms ease, box-shadow 120ms ease;
 
 
-  &:hover {
+     &:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 
       @include hover(transform, scale(1.1));
-    }
     }
 
 }

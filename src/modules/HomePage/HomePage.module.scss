@@ -3,7 +3,9 @@
 
 
 .homePage {
-
+   a {
+    text-decoration: none;
+  }
   &__content {
       display: flex;
       flex-direction: column;
@@ -71,6 +73,12 @@
 
       grid-column: 1/-1;
       gap: 107px 16px;
+
+      a:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+
+      @include hover(transform, scale(1.1));
+    }
 
       @include on-tablet {
         gap: 16px;
@@ -176,13 +184,6 @@
   }
 
 }
-
- a {
-  text-decoration: none;
-}
-
-
-
 
 .swiper {
   width: 100%;

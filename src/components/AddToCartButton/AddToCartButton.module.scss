@@ -19,11 +19,11 @@
     }
 
       @include on-tablet {
-         max-width: 125px;
+         width: 125px;
       }
 
       @include on-desktop {
-         max-width: 125px;
+         width: 160px;
       }
 
     }

@@ -132,8 +132,17 @@ h5 {
   }
 
   a img  {
+    &:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+
      @include hover(transform, scale(1.1));
+    }
   }
+
+  button:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transform: translateY(-1px);
+    }
 
    .main__content {
       @include content-padding-inline;
@@ -210,6 +219,14 @@ h5 {
  .swiper-pagination-bullets {
   bottom: -35px  !important;
   left:  50%  !important;
+
+  @include on-tablet {
+    left:  47%  !important;
+  }
+
+  @include on-desktop {
+    left:  46%  !important;
+  }
 }
 
 .swiper {
