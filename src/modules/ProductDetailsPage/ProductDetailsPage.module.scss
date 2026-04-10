@@ -427,6 +427,12 @@
   border-radius: 50%;
   box-shadow: 0 0 0 2px rgba(0,0,0,0.06) inset;
   transition: transform 120ms ease, box-shadow 120ms ease;
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transform: translateY(-1px);
+    }
+
 }
 
 .colorOption input:checked + .colorCircle {
@@ -435,7 +441,7 @@
   border: 1px solid $primary-color;
   box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
 }
- 
+
   :hover input:not(:checked) + .colorCircle {
     border-color: #999;
     transform: scale(1.05);
