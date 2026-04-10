@@ -8,6 +8,10 @@ import styles from './ProductDetails.module.scss';
 import { Loader } from '../../components/Loader';
 import { ProductSlider } from '../../components/ProductSlider';
 import { Product } from '../../types/Product';
+import productsData from '../../../public/api/products.json';
+import phonesData from '../../../public/api/phones.json';
+import tabletsData from '../../../public/api/tablets.json';
+import accessoriesData from '../../../public/api/accessories.json';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -23,55 +27,49 @@ export const ProductDetailsPage = () => {
 
   const { addToCart, addToFavorites, isInCart, isInFavorites } = useCart();
 
-  useEffect(() => {
-    if (!productId) {
+useEffect(() => {
+  if (!productId) return;
+
+  setLoading(true);
+  setError(false);
+  setSelectedImage(0);
+
+  try {
+    const allProducts = productsData as { itemId: string; category: string }[];
+    const found = allProducts.find(p => p.itemId === productId);
+
+    if (!found) {
+      setError(true);
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
-    setError(false);
-    setSelectedImage(0);
+    const dataMap: Record<string, unknown[]> = {
+      phones: phonesData,
+      tablets: tabletsData,
+      accessories: accessoriesData,
+    };
 
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
-      .then(res => res.json())
-      .then(products => {
-        const found = products.find(
-          (p: { itemId: string; category: string }) => p.itemId === productId,
-        );
+    const categoryData = dataMap[found.category];
+    const detail = (categoryData as ProductDetails[]).find(
+      p => p.id === productId
+    );
 
-        if (!found) {
-          setLoading(false);
-          setError(true);
+    if (!detail) {
+      setError(true);
+    } else {
+      setProduct(detail);
+      setSelectedColor(detail.color);
+      setSelectedCapacity(detail.capacity);
+      getSuggestedProducts(productId).then(setSuggested);
+    }
 
-          return null;
-        }
-
-        return fetch(`${import.meta.env.BASE_URL}api/${found.category}.json`);
-      })
-      .then(res => res?.json())
-      .then(details => {
-        if (!details) {
-          return;
-        }
-
-        const detail = details.find((p: ProductDetails) => p.id === productId);
-
-        if (!detail) {
-          setError(true);
-        } else {
-          setProduct(detail);
-          setSelectedColor(detail.color);
-          setSelectedCapacity(detail.capacity);
-          getSuggestedProducts(productId).then(setSuggested);
-        }
-
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-  }, [productId]);
+    setLoading(false);
+  } catch {
+    setError(true);
+    setLoading(false);
+  }
+}, [productId]);
 
   if (loading) {
     return (

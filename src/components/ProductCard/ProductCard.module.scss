@@ -7,15 +7,15 @@
   border: 1px solid var(--color-button-card-border);
   background-color: var(--bg-card);
   transition: all 0.3s ease;
-  width: 272px;
+  width: 100%;  
   box-sizing: border-box;
 
   @include on-tablet {
-    width: 237px;
+    width: 100%;  
   }
 
   @include on-mobile {
-    width: 212px;
+    width: 100%;  
   }
 
   &:hover {

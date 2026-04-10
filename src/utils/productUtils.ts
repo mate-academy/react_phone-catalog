@@ -1,5 +1,6 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
+import productsData from '../../public/api/products.json';
 
 const hashCode = (str: string): number => {
   let hash = 0;
@@ -26,19 +27,18 @@ export const toCartProduct = (product: ProductDetails): Product => ({
   ram: product.ram,
   year: 0,
 });
+
+import { Product } from '../types/Product';
+
 export const getSuggestedProducts = async (
   currentId: string,
 ): Promise<Product[]> => {
-  const res = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
-  const allProducts: Product[] = await res.json();
-
+  const allProducts = productsData as Product[];
   const filtered = allProducts.filter(p => p.itemId !== currentId);
 
   const shuffled = [...filtered];
-
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 

@@ -124,18 +124,18 @@ body {
   background-color: var(--bg-card);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  width: 272px;
+  width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 @media (min-width: 640px) and (max-width: 1199px) {
   .card {
-    width: 237px;
+    width: 100%;
   }
 }
 @media (max-width: 639px) {
   .card {
-    width: 212px;
+    width: 100%;
   }
 }
 .card:hover {

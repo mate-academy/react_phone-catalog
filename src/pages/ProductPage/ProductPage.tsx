@@ -5,6 +5,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Icon } from '../../components/Icon';
 import { Loader } from '../../components/Loader';
 import { ProductCard } from '../../components/ProductCard';
+import productsData from '../../../public/api/products.json';
 
 interface Props {
   category: 'phones' | 'tablets' | 'accessories';
@@ -33,22 +34,18 @@ export const ProductPage = ({ category }: Props) => {
   const page = Number(searchParams.get('page')) || 1;
   const perPage = searchParams.get('perPage') || 'all';
 
-  useEffect(() => {
-    setLoading(true);
-    setError(false);
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
-      .then(res => res.json())
-      .then((data: Product[]) => {
-        const filtered = data.filter(p => p.category === category);
-
-        setProducts(filtered);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-  }, [category]);
+useEffect(() => {
+  try {
+    const filtered = (productsData as Product[]).filter(
+      p => p.category === category
+    );
+    setProducts(filtered);
+    setLoading(false);
+  } catch {
+    setError(true);
+    setLoading(false);
+  }
+}, [category]);
 
   const updateParams = (key: string, value: string) => {
     setSearchParams(prevParams => {
