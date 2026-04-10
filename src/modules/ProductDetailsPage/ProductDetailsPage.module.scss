@@ -288,7 +288,7 @@
   .capacityItem {
     padding: 8px 12px;
     border: 1px solid #B4BDC3;
-    text-decoration: none;
+    //text-decoration: none;
     color: #313237;
     font-size: 14px;
     transition: all 0.2s;
@@ -306,10 +306,39 @@
       justify-content: center;
       border: 1px solid #B4BDC3;
 
+      cursor: pointer;
+      
+        transition:
+          transform 0.1s ease,
+          opacity 0.2s ease,
+          box-shadow 0.15s ease;
+
+          &:hover {
+              opacity: 0.8;
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            }
+          
+            &:active {
+              transform: scale(0.95);
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
     &.activeCapacity {
       background-color: #0F0F11;
       color: #fff;
       border-color: #0F0F11;
+
+      cursor: default;
+      
+        // прибираємо ефекти
+        &:hover {
+          opacity: 1;
+          box-shadow: none;
+        }
+      
+        &:active {
+          transform: none;
+        }
     }
   }
 }

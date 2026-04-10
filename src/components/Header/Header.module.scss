@@ -12,19 +12,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
+    //padding: 0 24px;
     height: 100%;
 
     @media (max-width: 1199px) {
-      padding: 0 16px;
+      //padding: 0 16px;
       //height: 48px;
     }
+        @media (max-width: 639px) {
+          padding: 0;
+        }
   }
 
   &__left {
     display: flex;
     align-items: center;
     height: 100%;
+
+    @media (max-width: 639px) {
+//padding-left: 16px;
+      }
   }
 
   &__right {
@@ -33,6 +40,10 @@
     align-items: center;
     flex-grow: 1;
     justify-content: flex-end;
+
+    @media (max-width: 639px) {
+        //padding-right: 16px;
+      }
   }
 }
 

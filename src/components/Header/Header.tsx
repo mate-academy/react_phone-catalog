@@ -136,7 +136,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             aria-label="Toggle menu"
           >
             <img
-              src={isMenuOpen ? './img/Close__.png' : './img/Burger_menu.png'}
+              src={isMenuOpen ? './img/Close.svg' : './img/Burger_menu.svg'}
               alt="Menu Icon"
             />
           </button>
@@ -192,7 +192,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             }
             onClick={toggleMenu}
           >
-            <img src="./img/Favourites.png" alt="Favourites" />
+            <img src="./img/Favourites.svg" alt="Favourites" />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </NavLink>
 
@@ -203,7 +203,7 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             }
             onClick={toggleMenu}
           >
-            <img src="./img/Cart.png" alt="Cart" />
+            <img src="./img/Shopping_bag.svg" alt="Cart" />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </div>

@@ -132,6 +132,10 @@ h1 {
       @media (min-width: 1200px) {
         max-width: 1136px;
       }
+
+      .dropdown:not(:last-child) {
+        margin-right: 16px;
+     }
 }
 
 .dropdown {
@@ -169,6 +173,8 @@ h1 {
         width: 136px;
       }
     }
+
+
 
   label {
     font-family: 'Mont', sans-serif;
@@ -234,5 +240,9 @@ h1 {
       grid-template-columns: repeat(4, 1fr);
       max-width: 1136px;
     }
+}
+
+.paginationWrapper {
+  margin-bottom: 80px;
 }
 

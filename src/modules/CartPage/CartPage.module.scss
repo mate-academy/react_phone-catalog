@@ -90,6 +90,8 @@
   border: 1px solid #E2E6E9;
   background: #fff;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
 
   @media (min-width: 640px) and (max-width: 1199px) {
       flex-direction: row;
@@ -190,6 +192,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-content: center;
+  
+  min-width: 100px;
 
   &__btn {
     width: 32px;
@@ -311,3 +316,8 @@
       gap: 32px;
     }
   }
+
+    .item__price {
+      min-width: 80px;
+      text-align: right;
+    }
