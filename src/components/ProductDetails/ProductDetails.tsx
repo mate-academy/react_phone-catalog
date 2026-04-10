@@ -14,8 +14,14 @@ export const ProductDetails: React.FC = () => {
 
   const { products } = useProducts();
 
-  const { getProductById, addToCart, toggleFavorite, isFavorite, isInCart } =
-    useProducts();
+  const {
+    getProductById,
+    addToCart,
+    removeFromCart,
+    toggleFavorite,
+    isFavorite,
+    isInCart,
+  } = useProducts();
   const product = getProductById(productId);
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const [sliderOne, setSliderOne] = useState(0);
@@ -148,7 +154,9 @@ export const ProductDetails: React.FC = () => {
                     inCart ? 'button' : 'primary-button',
                   )}
                   onClick={() => {
-                    if (product && !inCart) {
+                    if (inCart) {
+                      removeFromCart(product.id);
+                    } else {
                       addToCart(product);
                     }
                   }}

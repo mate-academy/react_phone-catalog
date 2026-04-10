@@ -19,24 +19,32 @@ export const FavouritesPage: React.FC = () => {
         <div className="favourites-page__subtitle">
           {favorites.length} items
         </div>
-        <div className="elements__products favourites-page__products">
-          {favorites.map(f => {
-            const p = getCardProductById(f.id);
+        {favorites.length === 0 ? (
+          <img
+            src={`${import.meta.env.BASE_URL}img/product-not-found.png`}
+            alt="product not found"
+            className="favourites-page__empty"
+          />
+        ) : (
+          <div className="elements__products favourites-page__products">
+            {favorites.map(f => {
+              const p = getCardProductById(f.id);
 
-            if (!p) {
-              throw new Error('Error');
-            } else {
-              return (
-                <ProductCard
-                  product={p}
-                  discounted={true}
-                  key={p.id}
-                  cn="product__card product__card--page"
-                />
-              );
-            }
-          })}
-        </div>
+              if (!p) {
+                throw new Error('Error');
+              } else {
+                return (
+                  <ProductCard
+                    product={p}
+                    discounted={true}
+                    key={p.id}
+                    cn="product__card product__card--page"
+                  />
+                );
+              }
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

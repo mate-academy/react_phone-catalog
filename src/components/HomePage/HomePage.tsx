@@ -105,7 +105,15 @@ export const HomePage: React.FC = () => {
 
         <ul className="welcome__slider">
           {[0, 1, 2].map(idx => (
-            <li key={idx} className="welcome__slider-item">
+            <li
+              key={idx}
+              className="welcome__slider-item"
+              onClick={() => {
+                setCurrentSlide(idx);
+                setIsAnimated(false);
+                setTimeout(() => setIsAnimated(true), 2000);
+              }}
+            >
               <div
                 className={classNames(
                   'welcome__slider-icon',
@@ -158,7 +166,7 @@ export const HomePage: React.FC = () => {
             }}
           >
             {newestProducts.map(p => (
-              <ProductCard key={p.id} product={p} discounted={true} />
+              <ProductCard key={p.id} product={p} discounted={false} />
             ))}
           </div>
         </div>
@@ -167,7 +175,11 @@ export const HomePage: React.FC = () => {
       <section className="categories">
         <h2 className="categories__title">Shop by category</h2>
 
-        <Link to="/phones" className="categories__card">
+        <Link
+          to="/phones"
+          className="categories__card"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <div className="categories__card-img-wrapper categories--gray">
             <img
               src={`${import.meta.env.BASE_URL}img/category-phones.webp`}
@@ -181,7 +193,11 @@ export const HomePage: React.FC = () => {
           </div>
         </Link>
 
-        <Link to="/tablets" className="categories__card">
+        <Link
+          to="/tablets"
+          className="categories__card"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <div className="categories__card-img-wrapper categories--light">
             <img
               src={`${import.meta.env.BASE_URL}img/category-tablets.webp`}
@@ -195,7 +211,11 @@ export const HomePage: React.FC = () => {
           </div>
         </Link>
 
-        <Link to="/accessories" className="categories__card">
+        <Link
+          to="/accessories"
+          className="categories__card"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <div className="categories__card-img-wrapper categories--pink">
             <img
               src={`${import.meta.env.BASE_URL}img/category-accessories.webp`}

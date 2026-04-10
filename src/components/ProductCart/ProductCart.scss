@@ -114,6 +114,13 @@
     }
   }
 
+  &__empty {
+    grid-column: 1 / -1;
+    width: 320px;
+    max-width: 100%;
+    margin: 40px auto;
+  }
+
   &__order {
     box-sizing: border-box;
 

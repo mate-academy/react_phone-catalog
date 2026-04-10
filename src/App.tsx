@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import './App.scss';
 import { NavLink, Outlet } from 'react-router-dom';
+import { useProducts } from './components/context/ProductContext';
 
 export const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { favorites, getTotalItems } = useProducts();
+
+  const favCount = favorites.length;
+  const cartCount = getTotalItems();
 
   return (
     <div className="App">
@@ -78,6 +83,9 @@ export const App = () => {
               }
             >
               <div className="icon icon--favourite"></div>
+              {favCount > 0 && (
+                <div className="header__red small-text">{favCount}</div>
+              )}
             </NavLink>
             <NavLink
               to="/cart"
@@ -86,6 +94,9 @@ export const App = () => {
               }
             >
               <div className="icon icon--cart"></div>
+              {cartCount > 0 && (
+                <div className="header__red small-text">{cartCount}</div>
+              )}
             </NavLink>
           </ul>
 
@@ -169,9 +180,15 @@ export const App = () => {
             <ul className="menu__icons">
               <li className="menu__icon">
                 <div className="icon icon--favourite"></div>
+                {favCount > 0 && (
+                  <div className="menu__red small-text">{favCount}</div>
+                )}
               </li>
               <li className="menu__icon">
                 <div className="icon icon--cart"></div>
+                {cartCount > 0 && (
+                  <div className="menu__red small-text">{cartCount}</div>
+                )}
               </li>
             </ul>
           </div>

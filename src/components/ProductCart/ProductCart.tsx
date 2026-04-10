@@ -19,6 +19,14 @@ export const ProductCart: React.FC = () => {
 
         <h1 className="product-cart__title">Cart</h1>
 
+        {cart.length === 0 && (
+          <img
+            src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
+            alt="cart is empty"
+            className="product-cart__empty"
+          />
+        )}
+
         <div className="elements__products product-cart__products">
           {cart.map(f => (
             <div className="product-cart__card" key={f.product.id}>
@@ -63,23 +71,25 @@ export const ProductCart: React.FC = () => {
                 </div>
 
                 <h3 className="product-cart__card-title">
-                  ${f.product.priceDiscount}
+                  ${f.product.priceDiscount * f.quantity}
                 </h3>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="product-cart__order">
-          <h2 className="product-cart__total-price">${getTotalPrice()}</h2>
-          <div className="product-cart__price-text body-text">
-            Total for {getTotalItems()} items
+        {cart.length > 0 && (
+          <div className="product-cart__order">
+            <h2 className="product-cart__total-price">${getTotalPrice()}</h2>
+            <div className="product-cart__price-text body-text">
+              Total for {getTotalItems()} items
+            </div>
+            <div className="product-cart__line"></div>
+            <button className="primary-button product-cart__checkout ">
+              Checkout
+            </button>
           </div>
-          <div className="product-cart__line"></div>
-          <button className="primary-button product-cart__checkout ">
-            Checkout
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );

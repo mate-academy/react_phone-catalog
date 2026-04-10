@@ -12,8 +12,14 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, discounted, cn }) => {
-  const { addToCart, toggleFavorite, isFavorite, getProductById, isInCart } =
-    useProducts();
+  const {
+    addToCart,
+    removeFromCart,
+    toggleFavorite,
+    isFavorite,
+    getProductById,
+    isInCart,
+  } = useProducts();
 
   const fullProduct = getProductById(product.itemId);
   const isFav = isFavorite(product.itemId);
@@ -35,7 +41,9 @@ export const ProductCard: React.FC<Props> = ({ product, discounted, cn }) => {
       <div className="product__card-title body-text">{product.name}</div>
 
       <div className="product__card-price-wrapper">
-        <h3 className="product__card-price">${product.price}</h3>
+        <h3 className="product__card-price">
+          ${discounted ? product.price : product.fullPrice}
+        </h3>
         {discounted && (
           <h3 className="product__card-price discounted">
             ${product.fullPrice}
@@ -69,7 +77,9 @@ export const ProductCard: React.FC<Props> = ({ product, discounted, cn }) => {
           onClick={e => {
             e.preventDefault();
 
-            if (fullProduct && !inCart) {
+            if (inCart) {
+              removeFromCart(product.itemId);
+            } else if (fullProduct) {
               addToCart(fullProduct);
             }
           }}

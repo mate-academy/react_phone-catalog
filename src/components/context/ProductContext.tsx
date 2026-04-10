@@ -40,8 +40,24 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
 
-  const [favorites, setFavorites] = useState<Product[]>([]);
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [favorites, setFavorites] = useState<Product[]>(() => {
+    const saved = localStorage.getItem('favorites');
+
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const saved = localStorage.getItem('cart');
+
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}api/products.json`)

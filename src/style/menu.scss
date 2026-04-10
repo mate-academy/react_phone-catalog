@@ -108,6 +108,7 @@
   }
 
   &__icon {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,5 +116,23 @@
     width: 50%;
     border: 1px solid $elements;
     box-sizing: border-box;
+  }
+
+
+  &__red {
+    position: absolute;
+    display: flex;
+    background-color: $red;
+    color: $white;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid $white;
+    top: 16px;
+    right: 43%;
+    font-size: 9px;
   }
 }
