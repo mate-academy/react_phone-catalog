@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export type CartItem = {
-  id: string;
+  id: string; // внутрішній id (наприклад product.id)
+  itemId: string; // використовується для URL
   name: string;
   price: number;
   image: string;
@@ -14,9 +15,9 @@ type Product = any;
 interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  isInCart: (productId: string) => boolean;
-  updateQuantity: (productId: string, delta: number) => void;
+  removeFromCart: (itemId: string) => void;
+  isInCart: (itemId: string) => boolean;
+  updateQuantity: (itemId: string, delta: number) => void;
   clearCart: () => void;
 }
 
@@ -35,14 +36,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [cart]);
 
   const addToCart = (product: Product) => {
-      const productId = product.itemId;
-
     setCart(prev => {
-      const existing = prev.find(item => item.id === product.itemId);
+      // шукаємо товар по itemId
+      const existing = prev.find(item => item.itemId === product.itemId);
 
       if (existing) {
+        // якщо вже є — збільшуємо кількість
         return prev.map(item =>
-          item.id === product.itemId
+          item.itemId === product.itemId
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
@@ -52,7 +53,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       const safePrice = Number(rawPrice);
 
       const newItem: CartItem = {
-        id: product.itemId,
+        id: product.id, // внутрішній id
+        itemId: product.itemId, // для URL
         name: product.name,
         price: isNaN(safePrice) ? 0 : safePrice,
         image: product.images?.[0] || product.image || '',
@@ -64,14 +66,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  const removeFromCart = (productId: string) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
+  const removeFromCart = (itemId: string) => {
+    setCart(prev => prev.filter(item => item.itemId !== itemId));
   };
 
-  const updateQuantity = (productId: string, delta: number) => {
+  const updateQuantity = (itemId: string, delta: number) => {
     setCart(prev =>
       prev.map(item => {
-        if (item.id === productId) {
+        if (item.itemId === itemId) {
           const newQty = (item.quantity || 1) + delta;
           return { ...item, quantity: newQty > 0 ? newQty : 1 };
         }
@@ -80,14 +82,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const isInCart = (productId: string) => {
-    return cart.some(item => item.id === productId);
+  const isInCart = (itemId: string) => {
+    return cart.some(item => item.itemId === itemId);
   };
 
   const clearCart = () => {
     setCart([]);
   };
-
 
   return (
     <CartContext.Provider

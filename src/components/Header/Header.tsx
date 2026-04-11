@@ -16,7 +16,8 @@ export const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
   const { cart } = useCart();
 
   const favCount = favourites ? favourites.length : 0;
-  const cartCount = cart ? cart.length : 0;
+  //const cartCount = cart ? cart.length : 0;
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => {

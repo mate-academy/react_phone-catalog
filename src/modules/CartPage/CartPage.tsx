@@ -59,7 +59,7 @@ export const CartPage = () => {
                 </button>
 
                 <Link
-                  to={`/${item.category}/${item.id}`}
+                  to={`/${item.category}/${item.itemId}`}
                   className={styles.item__link}
                 >
                   <img
@@ -78,7 +78,7 @@ export const CartPage = () => {
                 <div className={styles.quantity}>
                   <button
                     className={styles.quantity__btn}
-                    onClick={() => updateQuantity(item.id, -1)}
+                    onClick={() => updateQuantity(item.itemId, -1)}
                     disabled={item.quantity <= 1}
                   >
                     <img src="./img/Minus.svg" alt="minus" />
@@ -88,7 +88,7 @@ export const CartPage = () => {
                   </span>
                   <button
                     className={styles.quantity__btn}
-                    onClick={() => updateQuantity(item.id, 1)}
+                    onClick={() => updateQuantity(item.itemId, 1)}
                   >
                     <img src="./img/Plus.svg" alt="plus" />
                   </button>
@@ -106,7 +106,8 @@ export const CartPage = () => {
           <div className={styles.summary}>
             <h2 className={`${styles.summary__total} h2`}>${totalPrice}</h2>
             <p className={`${styles.summary__text} body-text14Bold`}>
-              Total for {cart.length} items
+              Total for {cart.reduce((sum, item) => sum + item.quantity, 0)}{' '}
+              items
             </p>
             <div className={styles.summary__line}></div>
             <button

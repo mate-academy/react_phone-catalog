@@ -18,7 +18,7 @@ export const Footer = () => {
 
         <nav className={styles.footer__nav}>
           <a
-            href="https://github.com/"
+            href="https://github.com/EStasyuk"
             target="_blank"
             rel="noreferrer"
             className={`${styles.footer__link} uppercase`}

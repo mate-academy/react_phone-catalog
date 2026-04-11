@@ -1,4 +1,7 @@
 @import './typography.scss';
+* {
+  box-sizing: border-box;
+}
 
 a,
 button,
@@ -27,6 +30,11 @@ body, #root {
   padding: 0;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .app {
   display: flex !important;
   flex-direction: column;
@@ -42,9 +50,15 @@ body, #root {
 }
 
 .container {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
+  //flex: 1 0 auto;
+  //display: flex;
+  //flex-direction: column;
+
+  max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 html {
