@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
+  box-sizing: border-box;
+
+  // мобілка
+  padding-inline: 16px;
+
+  // планшет
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 24px;
+  }
+
+  // десктоп 1200px
+  @media (min-width: 1200px) {
+    padding-inline: 32px;
+  }
+
+  // десктоп 1230+ (1268px і більше)
+  @media (min-width: 1268px) {
+    padding-inline: 152px;
+    max-width: 1440px;
+  }
+}
+
+.content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1136px;
+}
