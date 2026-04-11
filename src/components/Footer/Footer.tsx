@@ -19,7 +19,7 @@ export const Footer = () => {
           <ul className={styles.footer__list}>
             <li className={styles.footer__item}>
               <a
-                href="https://github.com"
+                href="https://github.com/PavloYurievich"
                 target="_blank"
                 rel="noreferrer"
                 className={styles.footer__link}
@@ -28,14 +28,24 @@ export const Footer = () => {
               </a>
             </li>
             <li className={styles.footer__item}>
-              <Link to="/contacts" className={styles.footer__link}>
+              <a
+                href="https://github.com/PavloYurievich"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
                 Contacts
-              </Link>
+              </a>
             </li>
             <li className={styles.footer__item}>
-              <Link to="/rights" className={styles.footer__link}>
+              <a
+                href="https://github.com/PavloYurievich"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
                 Rights
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

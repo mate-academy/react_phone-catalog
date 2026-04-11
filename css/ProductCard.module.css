@@ -157,6 +157,18 @@ body {
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
+@media (min-width: 640px) and (max-width: 1199px) {
+  .card__image {
+    width: 173px;
+    height: 202px;
+  }
+}
+@media (max-width: 639px) {
+  .card__image {
+    width: 148px;
+    height: 129px;
+  }
+}
 .card__image:hover {
   -webkit-transform: scale(1.05);
       -ms-transform: scale(1.05);

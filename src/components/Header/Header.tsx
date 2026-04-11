@@ -69,7 +69,9 @@ export const Header = () => {
           <NavLink to="/cart" className={styles.actions__link}>
             <Icon name="cart" />
             {cart.length > 0 && (
-              <span className={styles.actions__count}>{cart.length}</span>
+              <span className={styles.actions__count}>
+                {cart.reduce((sum, item) => sum + item.quantity, 0)}
+              </span>
             )}
           </NavLink>
         </div>

@@ -94,7 +94,9 @@ export const BurgerMenu = () => {
             <NavLink to="/cart">
               <Icon name="cart" />
               {cart.length > 0 && (
-                <span className={styles.count}>{cart.length}</span>
+                <span className={styles.count}>
+                  {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                </span>
               )}
             </NavLink>
           </div>

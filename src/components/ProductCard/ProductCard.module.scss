@@ -34,6 +34,16 @@
     object-fit: contain;
     transition: transform 0.3s ease;
 
+    @include on-tablet {
+          width: 173px;
+    height: 202px;
+    }
+    
+    @include on-mobile {
+      width: 148px;
+      height: 129px;
+    }
+
     &:hover {
       transform: scale(1.05);
     }

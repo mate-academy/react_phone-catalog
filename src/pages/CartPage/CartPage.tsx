@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Icon } from '../../components/Icon';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
@@ -43,7 +43,12 @@ export const CartPage = () => {
                   alt={item.name}
                   className={styles.item__img}
                 />
-                <p className={styles.item__name}>{item.name}</p>
+                <Link
+                  to={`/product/${item.itemId}`}
+                  className={styles.item__name}
+                >
+                  {item.name}
+                </Link>
                 <div className={styles.item__quantity}>
                   <button
                     className={styles.item__btn}

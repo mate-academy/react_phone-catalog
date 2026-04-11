@@ -81,6 +81,11 @@
     font-size: 14px;
     line-height: 21px;
     color: var(--primary-color);
+    text-decoration: none;
+    transition:  color 0,2s ease;
+    &:hover{
+      color: var(--secondary-color);
+    }
   }
 
   &__quantity {
