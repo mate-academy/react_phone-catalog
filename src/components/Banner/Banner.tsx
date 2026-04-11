@@ -6,6 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Icon } from '../Icon';
 import classNames from 'classnames';
+import sliderPhoto1 from '../../assets/image/sliderPhoto1.png';
+import sliderPhoto2 from '../../assets/image/sliderPhoto2png.png';
+import sliderPhoto3 from '../../assets/image/sliderPhoto3.png';
 
 export const Banner = () => {
   return (
@@ -37,7 +40,7 @@ export const Banner = () => {
             <picture>
               <source
                 media="(max-width: 640px)"
-                srcSet="src/assets/image/sliderPhoto1.png"
+                srcSet={sliderPhoto1}
               />
               <img
                 src="img/banner-phones.png"
@@ -50,12 +53,12 @@ export const Banner = () => {
             <button className={styles.buttons}>ORDER NOW</button>
             <picture>
               <source
-                media="(max-width:640px)"
-                srcSet="src/assets/image/sliderPhoto2png.png"
+                media="(max-width: 640px)"
+                srcSet={sliderPhoto2}
               />
               <img
                 src="img/banner-tablets.png"
-                alt="Phones"
+                alt="Tablets"
                 className={styles.banner__image}
               />
             </picture>
@@ -64,12 +67,12 @@ export const Banner = () => {
             <button className={styles.buttons}>ORDER NOW</button>
             <picture>
               <source
-                media="(max-width:640px)"
-                srcSet="src/assets/image/sliderPhoto3.png"
+                media="(max-width: 640px)"
+                srcSet={sliderPhoto3}
               />
               <img
                 src="img/banner-accessoriess.png"
-                alt="Phones"
+                alt="Accessories"
                 className={styles.banner__image}
               />
             </picture>
