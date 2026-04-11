@@ -115,7 +115,7 @@ h1 {
 .dropdowns {
   display: flex;
     flex-direction: row;
-    gap: 16px;
+    //gap: 16px;
     width: 100%;
     margin: 0 0 24px;
     justify-content: flex-start;
@@ -185,10 +185,13 @@ h1 {
   }
 
   select {
+    appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
     height: 40px;
       border: 1px solid #B4BDC3;
       border-radius: 8px;
-      padding: 0 12px;
+      padding: 0 32px 0 12px;
       background: #fff;
       outline: none;
       cursor: pointer;
@@ -199,6 +202,18 @@ h1 {
         border-color: #313237;
       }
   }
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .card {

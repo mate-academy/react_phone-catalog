@@ -114,31 +114,42 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
         <div className={styles.dropdowns}>
           <div className={styles.dropdown}>
             <label className="small-text12">Sort by</label>
-            <select
-              className={`${styles.select} button-text`}
-              value={sort}
-              onChange={e => updateParams({ sort: e.target.value, page: '1' })}
-            >
-              <option value="age">Newest</option>
-              <option value="title">Alphabetically</option>
-              <option value="price">Cheapest</option>
-            </select>
+
+            <div className={styles.selectWrapper}>
+              <select
+                className={`${styles.select} button-text`}
+                value={sort}
+                onChange={e =>
+                  updateParams({ sort: e.target.value, page: '1' })
+                }
+              >
+                <option value="age">Newest</option>
+                <option value="title">Alphabetically</option>
+                <option value="price">Cheapest</option>
+              </select>
+
+              <img src="/img/Arrow_Down.svg" alt="" className={styles.arrow} />
+            </div>
           </div>
 
           <div className={styles.dropdown}>
             <label className="small-text12">Items on page</label>
-            <select
-              className={`${styles.select} button-text`}
-              value={perPage}
-              onChange={e =>
-                updateParams({ perPage: e.target.value, page: '1' })
-              }
-            >
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">All</option>
-            </select>
+            <div className={styles.selectWrapper}>
+              <select
+                className={`${styles.select} button-text`}
+                value={perPage}
+                onChange={e =>
+                  updateParams({ perPage: e.target.value, page: '1' })
+                }
+              >
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="all">All</option>
+              </select>
+
+              <img src="/img/Arrow_Down.svg" alt="" className={styles.arrow} />
+            </div>
           </div>
         </div>
 

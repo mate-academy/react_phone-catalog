@@ -32,6 +32,8 @@
     margin-right: auto;
     flex: 0 0 auto;
     min-width: 0;
+    object-fit: contain;
+      transform: translateX(-15px);
 
     @media (max-width: 639px) {
         margin-right: 0;
@@ -55,12 +57,16 @@
         justify-content: flex-start;
       }
 
-    img {
-      height: 32px;
-      display: block;
-      width: 89px;
-      object-fit: contain;
-    }
+     img {
+       width: 100px;
+       height: 48px;
+       object-fit: contain;
+       transition: transform 0.3s ease;
+     }
+  
+     &:hover img {
+       transform: scale(1.1);
+     }
   }
 
   &__nav {
