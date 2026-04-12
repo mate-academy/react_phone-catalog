@@ -2,13 +2,14 @@ import './ProductList.scss';
 import ProductCard from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type ProductListProps = {
   products: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const ProductList = ({

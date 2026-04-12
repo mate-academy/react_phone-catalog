@@ -9,12 +9,13 @@ import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
 import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
 import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type TabletsCatalogProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const TabletsCatalog = ({

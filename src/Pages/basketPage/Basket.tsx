@@ -2,13 +2,13 @@ import './Basket.scss';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import BasketMain from '../../components/BasketMain/BasketMain';
-import { Product } from '../../types/Product';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type BasketProps = {
-  favorites: Product[];
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  favorites: FavoriteProduct[];
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const Basket = ({ favorites, baskets, setBaskets }: BasketProps) => {

@@ -9,22 +9,23 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import Basket from './pages/basketPage/Basket';
 import { useLocalStorage } from './api';
 import { FavoriteProduct } from './types/FavoriteProduct';
+import { BasketProduct } from './types/BasketProduct';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<FavoriteProduct[]>(
     'favorites',
     [],
   );
-  const [baskets, setBaskets] = useLocalStorage<FavoriteProduct[]>(
-    'baskets',
-    [],
-  );
+  const [baskets, setBaskets] = useLocalStorage<BasketProduct[]>('baskets', []);
 
   return (
     <HashRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home favorites={favorites} />} />
+          <Route
+            path="/"
+            element={<Home favorites={favorites} baskets={baskets} />}
+          />
           <Route
             path="/phones"
             element={

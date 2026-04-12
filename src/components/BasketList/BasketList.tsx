@@ -1,10 +1,10 @@
 import './BasketList.scss';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
 import BasketCard from '../BasketCard/BasketCard';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type BasketListProps = {
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const BasketList = ({ baskets, setBaskets }: BasketListProps) => {
@@ -17,6 +17,7 @@ const BasketList = ({ baskets, setBaskets }: BasketListProps) => {
             key={basketProduct.itemId}
             basketProduct={basketProduct}
             baskets={baskets}
+            setBaskets={setBaskets}
           />
         ))}
       </div>

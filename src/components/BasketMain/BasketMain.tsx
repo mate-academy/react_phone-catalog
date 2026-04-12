@@ -1,11 +1,11 @@
 import './BasketMain.scss';
 import BasketList from '../BasketList/BasketList';
 import BasketCheckout from './BasketCheckout/BasketCheckout';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type BasketMainProps = {
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const BasketMain = ({ baskets, setBaskets }: BasketMainProps) => {

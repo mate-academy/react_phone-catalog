@@ -9,15 +9,20 @@ import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
 import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
 import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type AccessoriesCatalogProps = {
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const AccessoriesCatalog = ({
   setFavorites,
   favorites,
+  baskets,
+  setBaskets,
 }: AccessoriesCatalogProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
@@ -97,6 +102,8 @@ const AccessoriesCatalog = ({
         products={visibleProducts}
         setFavorites={setFavorites}
         favorites={favorites}
+        baskets={baskets}
+        setBaskets={setBaskets}
       />
       <CatalogSlider
         currentPage={currentPage}

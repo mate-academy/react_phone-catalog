@@ -1,6 +1,9 @@
 .basket-card__counter {
   width: 100%;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .basket-card__counter--decrease {
@@ -31,4 +34,14 @@
 
 .basket-card__counter--increase:hover {
   color: black;
+}
+
+.basket-card__counter--value {
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer ;
 }

@@ -7,14 +7,15 @@ import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
 import { Link, useNavigate } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
   models: ProductDetails[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 export type ProductColor =
@@ -94,13 +95,33 @@ const ProductMain = ({
     });
   };
 
+  const basketOfProduct: BasketProduct = {
+    category: currentProduct.category,
+    itemId: currentProduct.id,
+    name: currentProduct.name,
+    fullPrice: currentProduct.priceRegular,
+    price: currentProduct.priceDiscount,
+    screen: currentProduct.screen,
+    capacity: currentProduct.capacity,
+    color: currentProduct.color as ProductColor,
+    ram: currentProduct.ram,
+    image: currentProduct.images[0],
+    quantity: 1,
+  };
+
   const handleToggleBasket = () => {
     setBaskets(prev => {
-      const exists = prev.some(p => p.itemId === stateProduct.itemId);
+      const existing = prev.find(p => p.itemId === basketOfProduct.itemId);
 
-      return exists
-        ? prev.filter(p => p.itemId !== stateProduct.itemId)
-        : [...prev, stateProduct];
+      if (existing) {
+        return prev.map(p =>
+          p.itemId === basketOfProduct.itemId
+            ? { ...p, quantity: p.quantity + 1 }
+            : p,
+        );
+      }
+
+      return [...prev, basketOfProduct];
     });
   };
 

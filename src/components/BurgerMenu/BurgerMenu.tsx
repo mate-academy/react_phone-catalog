@@ -2,23 +2,29 @@ import './BurgerMenu.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
 import BurgerFooter from './BurgerFooter/BurgerFooter';
 import { Link } from 'react-router-dom';
+import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type BurgerMenuProps = {
   isOpen: boolean;
   onClose: () => void;
+  favorites: FavoriteProduct[];
+  baskets: BasketProduct[];
 };
 
-const BurgerMenu = ({ isOpen, onClose }: BurgerMenuProps) => {
+const BurgerMenu = ({
+  isOpen,
+  onClose,
+  favorites,
+  baskets,
+}: BurgerMenuProps) => {
   return (
     <aside className={`menu page__menu ${isOpen ? 'active' : ''}`} id="menu">
       <div className="top-bar">
         <Link to="/" className="top-bar__logo">
           <img src={Logo} alt="NiceGadgets logo" />
         </Link>
-        <button
-          onClick={onClose}
-          className="top-bar__icon icon--close"
-        ></button>
+        <div onClick={onClose} className="top-bar__icon icon--close"></div>
       </div>
       <div className="menu__content">
         <ul className="menu__list">
@@ -44,7 +50,7 @@ const BurgerMenu = ({ isOpen, onClose }: BurgerMenuProps) => {
           </li>
         </ul>
       </div>
-      <BurgerFooter />
+      <BurgerFooter favorites={favorites} baskets={baskets} />
     </aside>
   );
 };

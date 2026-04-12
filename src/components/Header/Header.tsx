@@ -4,12 +4,12 @@ import Logo from '../../../public/img/Logo/Logo.png';
 import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
-import { Product } from '../../types/Product';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type HeaderProps = {
-  favorites: Product[];
-  baskets: FavoriteProduct[];
+  favorites: FavoriteProduct[];
+  baskets: BasketProduct[];
 };
 
 const Header = ({ favorites, baskets }: HeaderProps) => {
@@ -94,7 +94,12 @@ const Header = ({ favorites, baskets }: HeaderProps) => {
         </div>
       </div>
       {isMenuOpen && (
-        <BurgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <BurgerMenu
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+          favorites={favorites}
+          baskets={baskets}
+        />
       )}
     </header>
   );

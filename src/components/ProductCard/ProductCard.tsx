@@ -3,13 +3,14 @@ import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { ProductColor } from '../ProductMain/ProductMain';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type ProductCardProps = {
   product: Product;
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   favorites: FavoriteProduct[];
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const ProductCard = ({
@@ -44,13 +45,27 @@ const ProductCard = ({
     });
   };
 
+  const basketOfProduct: BasketProduct = {
+    category: product.category,
+    itemId: product.itemId,
+    name: product.name,
+    fullPrice: product.fullPrice,
+    price: product.price,
+    screen: product.screen,
+    capacity: product.capacity,
+    color: product.color as ProductColor,
+    ram: product.ram,
+    image: product.image,
+    quantity: 1,
+  };
+
   const handleToggleBasket = () => {
     setBaskets(prev => {
-      const exists = prev.some(p => p.itemId === stateProduct.itemId);
+      const exists = prev.some(p => p.itemId === basketOfProduct.itemId);
 
       return exists
-        ? prev.filter(p => p.itemId !== stateProduct.itemId)
-        : [...prev, stateProduct];
+        ? prev.filter(p => p.itemId !== basketOfProduct.itemId)
+        : [...prev, basketOfProduct];
     });
   };
 
