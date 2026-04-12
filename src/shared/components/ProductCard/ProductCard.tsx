@@ -27,7 +27,7 @@ export const ProductCard = ({
       <Link to={`/product/${productId}`} className={styles.mediaLink}>
         <img
           className={styles.image}
-          src={`${import.meta.env.BASE_URL}${image}`}
+          src={`./${image}`}
           alt={name}
           loading="lazy"
         />
