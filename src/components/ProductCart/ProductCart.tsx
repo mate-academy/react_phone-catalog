@@ -44,7 +44,7 @@ export const ProductCart: React.FC = () => {
                   />
                 </div>
 
-                <div className="product-cart__card-title body-text">
+                <div className="product-cart__card-name body-text">
                   {f.product.name}
                 </div>
               </div>

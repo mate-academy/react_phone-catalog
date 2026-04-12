@@ -106,8 +106,6 @@
 
     @include on-mobile {
       grid-column: 1 / -1;
-
-      margin-bottom: 56px;
     }
   }
 
@@ -320,6 +318,8 @@
   }
 
   &__about {
+    margin-top: 80px;
+
     grid-column: span 12;
 
     @include on-mobile {
@@ -342,6 +342,8 @@
   }
 
   &__specs {
+    margin-top: 80px;
+
     grid-column: span 11;
 
     @include on-tablet {

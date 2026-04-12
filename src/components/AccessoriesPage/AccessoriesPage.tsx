@@ -202,8 +202,10 @@ export const AccessoriesPage: React.FC = () => {
                 params={{
                   page: String(Math.max(currentPageNumber - 1, 1)),
                 }}
-                className="elements__pages-button button icon icon--left"
-              />
+                className="elements__pages-button button"
+              >
+                <div className="icon icon--left"></div>
+              </SearchLink>
 
               {visiblePages.map(num => (
                 <SearchLink
@@ -222,8 +224,10 @@ export const AccessoriesPage: React.FC = () => {
                 params={{
                   page: String(Math.min(currentPageNumber + 1, totalPages)),
                 }}
-                className="elements__pages-button button icon icon--right"
-              />
+                className="elements__pages-button button"
+              >
+                <div className="icon icon--right"></div>
+              </SearchLink>
             </div>
           </nav>
         )}

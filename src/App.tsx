@@ -17,7 +17,7 @@ export const App = () => {
           <div className="header__left">
             <div className="header__logo-div">
               <img
-                src={`${import.meta.env.BASE_URL}img/icons/logo.png`}
+                src={`${import.meta.env.BASE_URL}img/icons/logo.svg`}
                 alt="header__logo"
                 className="logo"
               />
@@ -113,7 +113,7 @@ export const App = () => {
             <div className="menu__header">
               <div className="menu__logo">
                 <img
-                  src={`${import.meta.env.BASE_URL}img/icons/logo.png`}
+                  src={`${import.meta.env.BASE_URL}img/icons/logo.svg`}
                   alt="logo"
                   className="menu__logo-img"
                 />
@@ -201,7 +201,7 @@ export const App = () => {
         <div className="footer__wrapper">
           <a href="#" className="footer__logo-div">
             <img
-              src={`${import.meta.env.BASE_URL}img/icons/logo.png`}
+              src={`${import.meta.env.BASE_URL}img/icons/logo.svg`}
               alt="footer__logo"
               className="logo"
             />

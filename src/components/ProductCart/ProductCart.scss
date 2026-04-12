@@ -93,6 +93,18 @@
       object-fit: contain;
     }
 
+    &-name {
+      flex: 1;
+    }
+
+    &-title {
+      width: 80px;
+
+      text-align: right;
+
+      flex-shrink: 0;
+    }
+
     &-buttons {
       display: flex;
 
