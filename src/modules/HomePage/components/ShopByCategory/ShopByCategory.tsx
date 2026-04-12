@@ -21,7 +21,7 @@ const categories: Category[] = [
     title: 'Mobile phones',
     category: 'phones',
     to: '/phones',
-    img: '.img/category-phones.png',
+    img: './img/category-phones.png',
   },
   {
     title: 'Tablets',
