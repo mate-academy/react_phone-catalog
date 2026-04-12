@@ -16,14 +16,12 @@ type Category = {
   category: CategoryType;
 };
 
-const BASE = import.meta.env.BASE_URL;
-
 const categories: Category[] = [
   {
     title: 'Mobile phones',
     category: 'phones',
     to: '/phones',
-    img: `${BASE}img/category-phones.png`,
+    img: '.img/category-phones.png',
   },
   {
     title: 'Tablets',
