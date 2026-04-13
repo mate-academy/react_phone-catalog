@@ -2,3 +2,6 @@ body {
  margin: 0;
 };
 
+.App {
+  min-height:calc(100vh - 160px);
+}

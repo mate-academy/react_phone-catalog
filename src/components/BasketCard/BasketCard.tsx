@@ -7,6 +7,8 @@ type BasketCardProps = {
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
   removeBasket: (itemid: string) => void;
+  handleIncrease: (itemId: string) => void;
+  handleDecrease: (itemId: string) => void;
 };
 
 const BasketCard = ({
@@ -14,6 +16,8 @@ const BasketCard = ({
   baskets,
   setBaskets,
   removeBasket,
+  handleIncrease,
+  handleDecrease,
 }: BasketCardProps) => {
   return (
     <>
@@ -32,7 +36,12 @@ const BasketCard = ({
         </div>
 
         <div className="basket-card__right">
-          <CardCounter basketProduct={basketProduct} setBaskets={setBaskets} />
+          <CardCounter
+            basketProduct={basketProduct}
+            setBaskets={setBaskets}
+            handleIncrease={handleIncrease}
+            handleDecrease={handleDecrease}
+          />
           <div className="basket-card__price">${basketProduct.price}</div>
         </div>
       </div>

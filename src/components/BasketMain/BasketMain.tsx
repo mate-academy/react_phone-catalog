@@ -7,12 +7,16 @@ type BasketMainProps = {
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
   removeBaskets: (itemId: string) => void;
+  handleIncrease: (itemId: string) => void;
+  handleDecrease: (itemId: string) => void;
 };
 
 const BasketMain = ({
   baskets,
   setBaskets,
   removeBaskets,
+  handleIncrease,
+  handleDecrease,
 }: BasketMainProps) => {
   return (
     <>
@@ -22,6 +26,8 @@ const BasketMain = ({
           baskets={baskets}
           setBaskets={setBaskets}
           removeBasket={removeBaskets}
+          handleIncrease={handleIncrease}
+          handleDecrease={handleDecrease}
         />
         <BasketCheckout baskets={baskets} />
       </div>

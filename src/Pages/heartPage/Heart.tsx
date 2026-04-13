@@ -1,7 +1,5 @@
 // eslint-disable-next-line max-len
 import CatalogFavorites from '../../components/CatalogFavorites/CatalogFavorites';
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
 import './Heart.scss';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
@@ -21,14 +19,12 @@ const Heart = ({
 }: HeartProps) => {
   return (
     <div className="heart">
-      <Header favorites={favorites} baskets={baskets} />
       <CatalogFavorites
         favorites={favorites}
         setFavorites={setFavorites}
         baskets={baskets}
         setBaskets={setBaskets}
       />
-      <Footer />
     </div>
   );
 };

@@ -10,6 +10,8 @@ import Basket from './pages/basketPage/Basket';
 import { useLocalStorage } from './api';
 import { FavoriteProduct } from './types/FavoriteProduct';
 import { BasketProduct } from './types/BasketProduct';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<FavoriteProduct[]>(
@@ -23,8 +25,30 @@ export const App = () => {
     setBaskets(updatedBaskets);
   };
 
+  const handleIncrease = (itemId: string) => {
+    setBaskets(prev =>
+      prev.map(item =>
+        item.itemId === itemId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      ),
+    );
+  };
+
+  const handleDecrease = (itemId: string) => {
+    setBaskets(prev =>
+      prev.map(item =>
+        item.itemId === itemId
+          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+          : item,
+      ),
+    );
+  };
+
   return (
     <HashRouter>
+      {' '}
+      <Header favorites={favorites} baskets={baskets} />
       <div className="App">
         <Routes>
           <Route
@@ -83,6 +107,8 @@ export const App = () => {
                 baskets={baskets}
                 setBaskets={setBaskets}
                 removeBaskets={removeBaskets}
+                handleIncrease={handleIncrease}
+                handleDecrease={handleDecrease}
               />
             }
           />
@@ -99,6 +125,7 @@ export const App = () => {
           />
         </Routes>
       </div>
+      <Footer />
     </HashRouter>
   );
 };

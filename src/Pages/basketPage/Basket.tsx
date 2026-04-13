@@ -1,6 +1,4 @@
 import './Basket.scss';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 import BasketMain from '../../components/BasketMain/BasketMain';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
@@ -10,23 +8,26 @@ type BasketProps = {
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
   removeBaskets: (itemId: string) => void;
+  handleIncrease: (itemId: string) => void;
+  handleDecrease: (itemId: string) => void;
 };
 
 const Basket = ({
-  favorites,
   baskets,
   setBaskets,
   removeBaskets,
+  handleIncrease,
+  handleDecrease,
 }: BasketProps) => {
   return (
     <div className="basket">
-      <Header favorites={favorites} baskets={baskets} />
       <BasketMain
         baskets={baskets}
         setBaskets={setBaskets}
         removeBaskets={removeBaskets}
+        handleIncrease={handleIncrease}
+        handleDecrease={handleDecrease}
       />
-      <Footer />
     </div>
   );
 };

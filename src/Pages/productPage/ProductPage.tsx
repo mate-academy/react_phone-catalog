@@ -1,6 +1,4 @@
 import { useParams } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 import ProductMain from '../../components/ProductMain/ProductMain';
 import './ProductPage.scss';
 import { useEffect, useState } from 'react';
@@ -88,8 +86,6 @@ const ProductPage = ({
 
   return (
     <div className="product-page">
-      <Header favorites={favorites} baskets={baskets} />
-
       {someProduct === null ? (
         <p>Loading...</p>
       ) : (
@@ -102,7 +98,6 @@ const ProductPage = ({
           setBaskets={setBaskets}
         />
       )}
-      <Footer />
     </div>
   );
 };

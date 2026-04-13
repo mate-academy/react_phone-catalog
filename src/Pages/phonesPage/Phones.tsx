@@ -1,6 +1,4 @@
-import Header from '../../components/Header/Header';
 import PhonesCatalog from '../../components/CatalogPhones/PhonesCatalog';
-import Footer from '../../components/Footer/Footer';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 
@@ -19,14 +17,12 @@ const Phones = ({
 }: PhonesProps) => {
   return (
     <>
-      <Header favorites={favorites} baskets={baskets} />
       <PhonesCatalog
         setFavorites={setFavorites}
         favorites={favorites}
         baskets={baskets}
         setBaskets={setBaskets}
       />
-      <Footer />
     </>
   );
 };
