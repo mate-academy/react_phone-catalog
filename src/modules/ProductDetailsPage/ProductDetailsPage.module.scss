@@ -301,3 +301,97 @@
   text-align: right;
   color: $color-primary;
 }
+
+.bottomSections {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3xl;
+  margin-top: $spacing-3xl;
+
+  @include media-up($breakpoint-desktop) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $spacing-2xl;
+  }
+}
+
+.aboutSection,
+.techSpecsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  @include media-up($breakpoint-desktop) {
+    flex: 1;
+  }
+}
+
+.sectionTitle {
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $color-elements;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: $color-primary;
+
+  @include media-up($breakpoint-tablet) {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+}
+
+.descriptionItem {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.descriptionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: $color-primary;
+
+  @include media-up($breakpoint-tablet) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.descriptionText {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-secondary;
+}
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin: 0;
+}
+
+.techSpecRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.techSpecLabel {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-secondary;
+}
+
+.techSpecValue {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: right;
+  color: $color-primary;
+}

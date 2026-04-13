@@ -11,6 +11,17 @@ import favoritesIcon from '@/assets/icons/icon-favorites.svg';
 import favoritesSelectedIcon from '@/assets/icons/icon-favorites-selected.svg';
 import styles from './ProductDetailsPage.module.scss';
 
+const TECH_SPEC_FIELDS: [string, keyof ProductDetail][] = [
+  ['Screen', 'screen'],
+  ['Resolution', 'resolution'],
+  ['Processor', 'processor'],
+  ['RAM', 'ram'],
+  ['Built in memory', 'capacity'],
+  ['Camera', 'camera'],
+  ['Zoom', 'zoom'],
+  ['Cell', 'cell'],
+];
+
 const COLOR_MAP: Record<string, string> = {
   black: '#1C1C1E',
   blue: '#276787',
@@ -247,6 +258,43 @@ export const ProductDetailsPage = () => {
           )}
         </div>
       </div>
+
+      {detail && (
+        <div className={styles.bottomSections}>
+          <section className={styles.aboutSection}>
+            <h2 className={styles.sectionTitle}>About</h2>
+            {detail.description.map((item, idx) => (
+              <div key={idx} className={styles.descriptionItem}>
+                <h3 className={styles.descriptionTitle}>{item.title}</h3>
+                {item.text.map((para, pIdx) => (
+                  <p key={pIdx} className={styles.descriptionText}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </section>
+
+          <section className={styles.techSpecsSection}>
+            <h2 className={styles.sectionTitle}>Tech specs</h2>
+            <dl className={styles.techSpecs}>
+              {TECH_SPEC_FIELDS.map(([label, key]): [string, string] => {
+                const raw = detail[key];
+                const value = Array.isArray(raw) ? raw.join(', ') : String(raw);
+
+                return [label, value];
+              })
+                .filter(([, value]) => Boolean(value))
+                .map(([label, value]) => (
+                  <div key={label} className={styles.techSpecRow}>
+                    <dt className={styles.techSpecLabel}>{label}</dt>
+                    <dd className={styles.techSpecValue}>{value}</dd>
+                  </div>
+                ))}
+            </dl>
+          </section>
+        </div>
+      )}
     </div>
   );
 };
