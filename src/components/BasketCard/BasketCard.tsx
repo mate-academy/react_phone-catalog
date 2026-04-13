@@ -6,18 +6,23 @@ type BasketCardProps = {
   basketProduct: BasketProduct;
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
+  removeBasket: (itemid: string) => void;
 };
 
 const BasketCard = ({
   basketProduct,
   baskets,
   setBaskets,
+  removeBasket,
 }: BasketCardProps) => {
   return (
     <>
       <div className="basket-card">
         <div className="basket-card__left">
-          <button className="basket-card__button--delete"></button>
+          <button
+            className="basket-card__button--delete"
+            onClick={() => removeBasket(basketProduct.itemId)}
+          ></button>
           <img
             className="basket-card__image"
             src={basketProduct.image}

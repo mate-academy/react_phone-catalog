@@ -9,13 +9,23 @@ type BasketProps = {
   favorites: FavoriteProduct[];
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
+  removeBaskets: (itemId: string) => void;
 };
 
-const Basket = ({ favorites, baskets, setBaskets }: BasketProps) => {
+const Basket = ({
+  favorites,
+  baskets,
+  setBaskets,
+  removeBaskets,
+}: BasketProps) => {
   return (
     <div className="basket">
       <Header favorites={favorites} baskets={baskets} />
-      <BasketMain baskets={baskets} setBaskets={setBaskets} />
+      <BasketMain
+        baskets={baskets}
+        setBaskets={setBaskets}
+        removeBaskets={removeBaskets}
+      />
       <Footer />
     </div>
   );
