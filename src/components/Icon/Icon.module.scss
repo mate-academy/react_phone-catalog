@@ -1,6 +1,7 @@
 @use '../../utils/vars' as *;
 @import '../../utils/mixins';
 
+
 .icon,
 .icon--large {
   cursor: pointer;
@@ -122,43 +123,44 @@
 
  .icon--absolute {
   position: relative;
+
 }
 
 .badge {
+  background-color: #476DF4;
+  color: #fff;
+  text-align: center;
+  transform: translate(0, 0);
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 9px;
   z-index: 5;
   position: absolute;
   min-width: 10px;
   height: 10px;
-  padding-block: 3px;
-  border-radius: 999px;
-  background-color: #476DF4;
-  color: #fff;
   line-height: 10px;
-  text-align: center;
-  transform: translate(0, 0);
-  pointer-events: none;
-  display: inline-block;
-  font-weight: 700;
-  font-size: 9px;
+  padding: 3px;
+  border-radius: 50%;
+
 }
 
 .cart-badge {
-   right: -4px;
-    top: -8px;
+   right: -9px;
+    bottom: 8px;
 
 }
 
 .favorites-badge {
- right: 269px;
- bottom: 35px;
+  right: 264px;
+   bottom: 34px;
 
-   @include on-tablet {
-    right: 60px;
-     top: 8px;
+  @include on-tablet {
+      right: 56px;
+      top: 8px;
   }
 
    @include on-desktop {
-     right: 62px;
+     right: 56px;
      top: 16px;
   }
 }
@@ -176,6 +178,7 @@
     border: 1px solid $icons-color;
     color: $primary-color;
     font-size: 14px;
+
 
     &:hover {
         border-color: $primary-color;

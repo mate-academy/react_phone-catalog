@@ -131,17 +131,16 @@ h5 {
     border: none;
   }
 
-  a img  {
-    &:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 
+a {
+  text-decoration: none;
+
+  & img  {
      @include hover(transform, scale(1.1));
-    }
-  }
+  }}
 
   button:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      transform: translateY(-1px);
+       @include hover(transform, scale(1.1));
     }
 
    .main__content {

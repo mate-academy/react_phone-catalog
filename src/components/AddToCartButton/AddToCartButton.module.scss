@@ -13,10 +13,6 @@
     height: 40px;
     box-sizing: border-box;
 
-     &:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      transform: translateY(-1px);
-    }
 
       @include on-tablet {
          width: 125px;
@@ -27,7 +23,6 @@
       }
 
     }
-
 
     &--in-cart {
       background-color: #FFFF;
