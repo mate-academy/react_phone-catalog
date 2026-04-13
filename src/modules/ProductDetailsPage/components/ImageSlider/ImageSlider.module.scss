@@ -57,6 +57,10 @@
   }
 }
 
+.thumb:hover {
+  border-color: $color-icons;
+}
+
 .thumbActive {
   border-color: $color-primary;
 }
