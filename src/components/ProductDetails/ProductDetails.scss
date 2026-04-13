@@ -116,7 +116,7 @@
 
     gap: 8px;
 
-    margin: 8px 0 0 0;
+    margin: 8px 0 0;
 
     padding: 0;
 
@@ -147,7 +147,7 @@
     list-style: none;
 
     &-title {
-      margin: 24px 0 8px 0;
+      margin: 24px 0 8px;
     }
 
     &-button {
@@ -204,7 +204,7 @@
 
     list-style: none;
 
-    margin: 32px 0 0 0;
+    margin: 32px 0 0;
 
     padding: 0;
 
@@ -236,7 +236,7 @@
   }
 
   &__value {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
 
     font-weight: 300;
 
@@ -262,7 +262,7 @@
 
     list-style: none;
 
-    margin: 32px 0 0 0;
+    margin: 32px 0 0;
 
     padding: 0;
 
@@ -290,7 +290,7 @@
   }
 
   &__block-value {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
 
     font-weight: 300;
 
@@ -326,9 +326,6 @@
       grid-column: 1 / -1;
     }
 
-    &-title {
-      // пусто
-    }
   }
 
   &__line-des {
@@ -336,7 +333,7 @@
 
     width: 100%;
 
-    margin: 16px 0 32px 0;
+    margin: 16px 0 32px;
 
     background-color: $elements;
   }

@@ -75,12 +75,16 @@ h4 {
   letter-spacing: 0%;
 }
 
-.body-text {
+%body-text {
   font-family: Mont, sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
+}
+
+.body-text {
+  @extend %body-text;
 }
 
 .small-text {
@@ -91,7 +95,7 @@ h4 {
   letter-spacing: 0%;
 }
 
-.button {
+%button {
   box-sizing: border-box;
   height: 32px;
   border: 1px solid $elements;
@@ -102,7 +106,7 @@ h4 {
   justify-content: center;
   cursor: pointer;
   transition-duration: 0.3s;
-  @extend .body-text;
+  @extend %body-text;
 
   &:hover {
     border-color: $primary;
@@ -122,9 +126,14 @@ h4 {
     border-color: $elements;
     color: $icons;
   }
+}
+
+.button {
+  @extend %button;
 
   &__icons {
-    @extend .button;
+    @extend %button;
+
     width: 32px;
   }
 
@@ -173,7 +182,7 @@ h4 {
   cursor: pointer;
   transition-duration: 0.3s;
 
-  @extend .button;
+  @extend %button;
 
   &:hover {
     box-shadow: 0 3px 13px $primary;

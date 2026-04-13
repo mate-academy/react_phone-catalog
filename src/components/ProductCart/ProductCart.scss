@@ -15,6 +15,7 @@
 
   &__wrapper {
     @include on-grid;
+
     box-sizing: border-box;
 
     @include on-tablet {
@@ -159,12 +160,6 @@
     }
   }
 
-  &__total-price {
-  }
-
-  &__price-text {
-  }
-
   &__line {
     width: 100%;
 
@@ -177,6 +172,4 @@
     background-color: $elements;
   }
 
-  &__checkout {
-  }
 }
