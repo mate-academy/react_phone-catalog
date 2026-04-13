@@ -55,7 +55,7 @@ export const HomePage: React.FC = () => {
   return (
     <main className="main">
       <section className="welcome">
-        <h1 className="welcome__title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="welcome__title">Product Catalog</h1>
         <div className="welcome__wrapper">
           <button
             className="button welcome__button"
