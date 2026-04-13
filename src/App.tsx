@@ -17,6 +17,11 @@ export const App = () => {
     [],
   );
   const [baskets, setBaskets] = useLocalStorage<BasketProduct[]>('baskets', []);
+  const removeBaskets = (itemid: string) => {
+    const updatedBaskets = baskets.filter(basket => basket.itemId !== itemid);
+
+    setBaskets(updatedBaskets);
+  };
 
   return (
     <HashRouter>
@@ -77,6 +82,7 @@ export const App = () => {
                 favorites={favorites}
                 baskets={baskets}
                 setBaskets={setBaskets}
+                removeBaskets={removeBaskets}
               />
             }
           />

@@ -5,9 +5,10 @@ import { BasketProduct } from '../../types/BasketProduct';
 type BasketListProps = {
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
+  removeBasket: (itemid: string) => void;
 };
 
-const BasketList = ({ baskets, setBaskets }: BasketListProps) => {
+const BasketList = ({ baskets, setBaskets, removeBasket }: BasketListProps) => {
   return (
     <>
       {' '}
@@ -18,6 +19,7 @@ const BasketList = ({ baskets, setBaskets }: BasketListProps) => {
             basketProduct={basketProduct}
             baskets={baskets}
             setBaskets={setBaskets}
+            removeBasket={removeBasket}
           />
         ))}
       </div>

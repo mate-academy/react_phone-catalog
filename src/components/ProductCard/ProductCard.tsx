@@ -61,11 +61,17 @@ const ProductCard = ({
 
   const handleToggleBasket = () => {
     setBaskets(prev => {
-      const exists = prev.some(p => p.itemId === basketOfProduct.itemId);
+      const existing = prev.find(p => p.itemId === basketOfProduct.itemId);
 
-      return exists
-        ? prev.filter(p => p.itemId !== basketOfProduct.itemId)
-        : [...prev, basketOfProduct];
+      if (existing) {
+        return prev.map(p =>
+          p.itemId === basketOfProduct.itemId
+            ? { ...p, quantity: p.quantity + 1 }
+            : p,
+        );
+      }
+
+      return [...prev, basketOfProduct];
     });
   };
 

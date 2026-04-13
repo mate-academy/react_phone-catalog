@@ -2,12 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row;
-  gap: 24px;
+  flex-direction: column;
   width: 100%;
   border: 1px solid #e2e6e9;
-  padding-inline: 24px;
+  padding-inline: 16px;
+  padding-block: 16px;
+  @media (min-width: 640px) {
+    flex-direction: row;
+    padding-inline: 24px;
   padding-block: 24px;
+  }
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    padding-inline: 24px;
+  padding-block: 24px;
+  }
 }
 
 .basket-card:not(:last-child) {
@@ -44,6 +53,7 @@
 font-size: 14px;
 line-height: 150%;
 width: 100%;
+text-decoration: none;
 }
 
 .basket-card__right {
@@ -51,6 +61,16 @@ width: 100%;
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  width: 100%;
+  @media (min-width: 640px) {
+    width: 50%;
+    justify-content: flex-end;
+
+  }
+  @media (min-width: 1200px) {
+    width: 50%;
+    justify-content: flex-end;
+  }
 }
 
 .basket-card__price {
@@ -58,4 +78,6 @@ width: 100%;
   font-weight: 800;
 font-size: 22px;
 line-height: 140%;
+text-align: right;
+width: 50%;
 }

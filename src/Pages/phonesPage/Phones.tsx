@@ -2,12 +2,13 @@ import Header from '../../components/Header/Header';
 import PhonesCatalog from '../../components/CatalogPhones/PhonesCatalog';
 import Footer from '../../components/Footer/Footer';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type PhonesProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 const Phones = ({

@@ -12,7 +12,7 @@ const BasketCheckout = ({ baskets }: BasketCheckoutProps) => {
     <>
       <div className="basket-checkout">
         <div className="basket-checkout__sum">${totalSum}</div>
-        <p className="basket-chekout__counter--items">
+        <p className="basket-checkout__counter--items">
           Total for {baskets.length} items
         </p>
         <button className="basket-checkout__button">Checkout</button>

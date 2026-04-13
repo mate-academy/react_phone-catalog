@@ -19,7 +19,6 @@ const FavoritesList = ({
   return (
     <>
       <div className="favorites-list">
-        <div className="favorites-list__container"></div>
         <p className="favorites-list__items--counter">
           {favorites.length} items
         </p>

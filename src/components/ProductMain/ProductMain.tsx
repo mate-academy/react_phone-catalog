@@ -140,7 +140,7 @@ const ProductMain = ({
         <p className="product-main__top--name">{currentProduct.name}</p>
       </div>
       <Link to="/" className="product-main__buttons--back">
-        <Link to="/" className="product-main__icon--back"></Link>
+        <span className="product-main__icon--back"></span>
         <p className="product-main__text--back">Back</p>
       </Link>
       <h1 className="product-main__title">{currentProduct.name}</h1>

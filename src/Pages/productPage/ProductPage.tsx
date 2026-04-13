@@ -9,12 +9,13 @@ import { Phone } from '../../types/Phone';
 import { Tablet } from '../../types/Tablet';
 import { getAccessories, getPhones, getProduct, getTablets } from '../../api';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { BasketProduct } from '../../types/BasketProduct';
 
 type ProductPageProps = {
   favorites: FavoriteProduct[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: FavoriteProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  baskets: BasketProduct[];
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 export type ProductDetails = Phone | Tablet | Accessory;
