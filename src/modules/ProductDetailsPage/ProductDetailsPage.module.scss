@@ -6,7 +6,6 @@
 
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
 }
 
 .back {
@@ -43,7 +42,8 @@
 }
 
 .title {
-  margin: 0;
+  margin-top: 16px;
+  margin-bottom: 32px;
   font-size: 22px;
   font-weight: 800;
   line-height: 1.4;
@@ -52,24 +52,252 @@
 .contentGrid {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: $spacing-2xl;
 
   @include media-up($breakpoint-tablet) {
     flex-direction: row;
     align-items: flex-start;
+    gap: $spacing-md;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    gap: $spacing-3xl;
   }
 }
 
 .imageSection {
+  max-width: 560px;
+
   @include media-up($breakpoint-tablet) {
     flex: 1;
-    min-width: 0;
+    min-width: 338px;
   }
 }
 
 .details {
+  flex: 1;
+}
+
+.detailsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  max-width: 320px;
+
   @include media-up($breakpoint-tablet) {
-    flex: 1;
+    gap: $spacing-lg;
     min-width: 0;
   }
+}
+
+.colorsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-sm;
+
+  @include media-up($breakpoint-desktop) {
+    flex-direction: row-reverse;
+  }
+}
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $color-secondary;
+}
+
+.productId {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: $color-icons;
+}
+
+.colorSwatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.colorSwatch {
+  position: relative;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  &::after {
+    position: absolute;
+    background: var(--swatch-color, #888);
+    border: 2px solid $color-white;
+    border-radius: 50%;
+    content: '';
+    inset: 2px;
+  }
+
+  &:hover {
+    border-color: $color-icons;
+  }
+
+  &.colorSwatchSelected {
+    border-color: $color-primary;
+  }
+}
+
+.divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid $color-elements;
+}
+
+.capacitySection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.capacityButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.capacityBtn {
+  height: 32px;
+  padding: 0 $spacing-sm;
+  background: transparent;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-primary;
+  transition: background $transition-base,
+  color $transition-base,
+  border-color $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &.capacityBtnSelected {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-primary;
+}
+
+.priceOld {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  text-decoration: line-through;
+  color: $color-secondary;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  background: $color-primary;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: $color-white;
+  transition: background $transition-base;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &.addToCartAdded {
+    background: $color-white;
+    border: 1px solid $color-elements;
+    color: $color-primary;
+  }
+}
+
+.addToFavorites {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &.addToFavoritesActive {
+    border-color: $color-elements;
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin: 0;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $color-secondary;
+}
+
+.specValue {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: right;
+  color: $color-primary;
 }
