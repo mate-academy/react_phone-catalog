@@ -4,7 +4,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: $spacing-md;
 
   @include media-up($breakpoint-tablet) {
     flex-direction: row;
