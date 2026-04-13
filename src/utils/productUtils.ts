@@ -2,31 +2,26 @@ import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 import productsData from '../../public/api/products.json';
 
-const hashCode = (str: string): number => {
-  let hash = 0;
+export const toCartProduct = (product: ProductDetails): Product => {
+  const allProducts = productsData as Product[];
+  const found = allProducts.find(p => p.itemId === product.id);
 
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i);
-    hash |= 0;
-  }
-
-  return Math.abs(hash);
+  return {
+    id: found ? found.id : 0,
+    name: product.name,
+    price: product.priceDiscount,
+    fullPrice: product.priceRegular,
+    image: product.images[0],
+    category: product.category,
+    itemId: product.id,
+    screen: product.screen,
+    capacity: product.capacity,
+    color: product.color,
+    ram: product.ram,
+    year: found ? found.year : 0,
+  };
 };
 
-export const toCartProduct = (product: ProductDetails): Product => ({
-  id: hashCode(product.id),
-  name: product.name,
-  price: product.priceDiscount,
-  fullPrice: product.priceRegular,
-  image: product.images[0],
-  category: product.category,
-  itemId: product.id,
-  screen: product.screen,
-  capacity: product.capacity,
-  color: product.color,
-  ram: product.ram,
-  year: 0,
-});
 export const getSuggestedProducts = async (
   currentId: string,
 ): Promise<Product[]> => {

@@ -75,6 +75,11 @@
     width: 80px;
     height: 80px;
     object-fit: contain;
+    transition: all 0.3s ease;
+    &:hover{
+          transition: all 0.3s ease;
+      transform: scale(1.1);
+    }
   }
 
   &__name {

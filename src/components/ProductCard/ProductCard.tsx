@@ -6,8 +6,12 @@ import { useCart } from '../../context/CartContext';
 import cn from 'classnames';
 interface Props {
   product: Product;
+  showDiscount?: boolean;
 }
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showDiscount = true,
+}) => {
   const { addToCart, addToFavorites, isInCart, isInFavorites } = useCart();
   const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
     product;
@@ -26,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </h3>
       <div className={styles.card__price}>
         <span className={styles.card__price_current}>${price}</span>
-        {fullPrice > price && (
+        {showDiscount && fullPrice > price && (
           <span className={styles.card__price_old}>${fullPrice}</span>
         )}
       </div>

@@ -38,11 +38,13 @@ export const CartPage = () => {
                 >
                   <Icon name="closeCart" />
                 </button>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className={styles.item__img}
-                />
+                <Link to={`/product/${item.itemId}`}>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className={styles.item__img}
+                  />
+                </Link>
                 <Link
                   to={`/product/${item.itemId}`}
                   className={styles.item__name}

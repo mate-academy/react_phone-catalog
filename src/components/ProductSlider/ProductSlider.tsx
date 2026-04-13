@@ -12,6 +12,7 @@ interface Props {
   products: Product[];
   id: string;
   autoplay?: boolean;
+  showDiscount?: boolean;
 }
 
 export const ProductSlider: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const ProductSlider: React.FC<Props> = ({
   products,
   id,
   autoplay = false,
+  showDiscount = true,
 }) => {
   const prevClass = `prev-${id}`;
   const nextClass = `next-${id}`;
@@ -72,7 +74,7 @@ export const ProductSlider: React.FC<Props> = ({
       >
         {products.map(product => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} showDiscount={showDiscount} />
           </SwiperSlide>
         ))}
       </Swiper>

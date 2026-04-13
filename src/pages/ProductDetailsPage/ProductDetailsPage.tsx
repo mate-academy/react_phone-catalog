@@ -21,11 +21,9 @@ export const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedCapacity, setSelectedCapacity] = useState('');
   const [suggested, setSuggested] = useState<Product[]>([]);
 
-  const { addToCart, addToFavorites, isInCart, isInFavorites } = useCart();
+  const { cart, addToCart, addToFavorites, favorites } = useCart();
 
   useEffect(() => {
     if (!productId) {
@@ -50,11 +48,11 @@ export const ProductDetailsPage = () => {
         return;
       }
 
-      const dataMap: Record<string, unknown[]> = {
-        phones: phonesData,
-        tablets: tabletsData,
-        accessories: accessoriesData,
-      };
+const dataMap: Record<string, ProductDetails[]> = {
+  phones: phonesData as unknown as ProductDetails[],
+  tablets: tabletsData as unknown as ProductDetails[],
+  accessories: accessoriesData as unknown as ProductDetails[],
+};
 
       const categoryData = dataMap[found.category];
       const detail = (categoryData as ProductDetails[]).find(
@@ -63,19 +61,33 @@ export const ProductDetailsPage = () => {
 
       if (!detail) {
         setError(true);
+        setLoading(false);
       } else {
         setProduct(detail);
-        setSelectedColor(detail.color);
-        setSelectedCapacity(detail.capacity);
         getSuggestedProducts(productId).then(setSuggested);
+        setLoading(false);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
       }
-
-      setLoading(false);
     } catch {
       setError(true);
       setLoading(false);
     }
   }, [productId]);
+
+  const getNewPath = (newCapacity?: string, newColor?: string) => {
+    if (!product) {
+      return '';
+    }
+
+    const cap = (newCapacity || product.capacity).toLowerCase();
+    const col = (newColor || product.color).toLowerCase();
+    const newId = `${product.namespaceId}-${cap}-${col}`.replaceAll(' ', '-');
+
+    return `/product/${newId}`;
+  };
 
   if (loading) {
     return (
@@ -98,8 +110,8 @@ export const ProductDetailsPage = () => {
   }
 
   const cartProduct = toCartProduct(product);
-  const inCart = isInCart(cartProduct.id);
-  const inFavorites = isInFavorites(cartProduct.id);
+  const inCart = cart.some(item => item.itemId === product.id);
+  const inFavorites = favorites.some(item => item.itemId === product.id);
 
   const techSpecs = [
     { label: 'Screen', value: product.screen },
@@ -172,13 +184,13 @@ export const ProductDetailsPage = () => {
             <span className={styles.options__label}>Available colors</span>
             <div className={styles.options__colors}>
               {product.colorsAvailable.map(color => (
-                <button
+                <Link
                   key={color}
+                  to={getNewPath(undefined, color)}
                   className={`${styles.colorBtn} ${
-                    selectedColor === color ? styles['colorBtn--active'] : ''
+                    product.color === color ? styles['colorBtn--active'] : ''
                   }`}
                   style={{ backgroundColor: color }}
-                  onClick={() => setSelectedColor(color)}
                   title={color}
                 />
               ))}
@@ -191,15 +203,15 @@ export const ProductDetailsPage = () => {
             <span className={styles.options__label}>Select capacity</span>
             <div className={styles.options__capacities}>
               {product.capacityAvailable.map(cap => (
-                <button
+                <Link
                   key={cap}
+                  to={getNewPath(cap, undefined)}
                   className={`${styles.capBtn} ${
-                    selectedCapacity === cap ? styles['capBtn--active'] : ''
+                    product.capacity === cap ? styles['capBtn--active'] : ''
                   }`}
-                  onClick={() => setSelectedCapacity(cap)}
                 >
                   {cap}
-                </button>
+                </Link>
               ))}
             </div>
           </div>

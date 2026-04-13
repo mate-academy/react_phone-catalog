@@ -21,6 +21,7 @@ export const HomePage = () => {
           id="brand-new"
           title="Brand new models"
           products={brandNew}
+          showDiscount={false}
         />
         <ShopByCategory products={productsData} />
         <ProductSlider id="hot-prices" title="Hot prices" products={hotPrice} />

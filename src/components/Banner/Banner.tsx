@@ -38,10 +38,7 @@ export const Banner = () => {
           <SwiperSlide>
             <button className={styles.buttons}>ORDER NOW</button>
             <picture>
-              <source
-                media="(max-width: 640px)"
-                srcSet={sliderPhoto1}
-              />
+              <source media="(max-width: 640px)" srcSet={sliderPhoto1} />
               <img
                 src="img/banner-phones.png"
                 alt="Phones"
@@ -52,10 +49,7 @@ export const Banner = () => {
           <SwiperSlide>
             <button className={styles.buttons}>ORDER NOW</button>
             <picture>
-              <source
-                media="(max-width: 640px)"
-                srcSet={sliderPhoto2}
-              />
+              <source media="(max-width: 640px)" srcSet={sliderPhoto2} />
               <img
                 src="img/banner-tablets.png"
                 alt="Tablets"
@@ -66,10 +60,7 @@ export const Banner = () => {
           <SwiperSlide>
             <button className={styles.buttons}>ORDER NOW</button>
             <picture>
-              <source
-                media="(max-width: 640px)"
-                srcSet={sliderPhoto3}
-              />
+              <source media="(max-width: 640px)" srcSet={sliderPhoto3} />
               <img
                 src="img/banner-accessoriess.png"
                 alt="Accessories"
