@@ -2,10 +2,10 @@
 @use '@/styles/mixins' as *;
 
 .page {
-  @include content-width;
-
   display: flex;
   flex-direction: column;
+
+  @include content-width;
 }
 
 .back {
