@@ -1,6 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useMemo } from 'react';
-import { CatalogProduct, Phone, Tablet, Accessory } from '../../../public/types';
+import {
+  CatalogProduct,
+  Phone,
+  Tablet,
+  Accessory,
+} from '../../../public/types';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -15,7 +20,10 @@ import './ProductPage.scss';
 type ProductType = Phone | Tablet | Accessory;
 
 const ProductPage = () => {
-  const { category, productId } = useParams<{ category: string; productId: string; }>();
+  const { category, productId } = useParams<{
+    category: string;
+    productId: string;
+  }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -26,7 +34,9 @@ const ProductPage = () => {
   const [startIndex, setStartIndex] = useState(0);
 
   // 2. Селектори Redux
-  const products = useAppSelector(state => state.products.items) as ProductType[];
+  const products = useAppSelector(
+    state => state.products.items,
+  ) as ProductType[];
   const favorites = useAppSelector(state => state.favorites.items);
   const cartItems = useAppSelector(state => state.cart.items);
 
@@ -45,7 +55,7 @@ const ProductPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Скрол вгору при зміні продукту
 
-    if (!productId || products.length === 0) return;
+    if (!productId || products.length === 0) {return;}
 
     const foundProduct = products.find(p => p.id === productId);
 
@@ -61,7 +71,7 @@ const ProductPage = () => {
 
   // 5. Обробники подій
   const handleLikeClick = () => {
-    if (!product) return;
+    if (!product) {return;}
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
     } else {
@@ -70,26 +80,31 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (!product) return;
+    if (!product) {return;}
     if (isInCart) {
       dispatch(removeFromCart(product.id));
     } else {
-      dispatch(addToCart({
-        id: product.id,
-        name: product.name,
-        price: product.priceDiscount,
-        image: product.images[0],
-      }));
+      dispatch(
+        addToCart({
+          id: product.id,
+          name: product.name,
+          price: product.priceDiscount,
+          image: product.images[0],
+        }),
+      );
     }
   };
 
   const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
   const handleNext = () =>
     setStartIndex(prev =>
-      Math.min(prev + 1, Math.max(0, sortedProducts.length - visibleCount))
+      Math.min(prev + 1, Math.max(0, sortedProducts.length - visibleCount)),
     );
 
-  const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount);
+  const visibleProducts = sortedProducts.slice(
+    startIndex,
+    startIndex + visibleCount,
+  );
 
   // 6. Умовний рендер (ТІЛЬКИ після всіх хуків)
   if (loading) {
@@ -106,17 +121,20 @@ const ProductPage = () => {
         <Breadcrumbs />
         <h1>Product not found</h1>
         <p>We couldn't find product with id: {productId}</p>
-        <button onClick={() => navigate('/')} className="back-button">Go Home</button>
+        <button onClick={() => navigate('/')} className="back-button">
+          Go Home
+        </button>
       </div>
     );
   }
 
   // Обчислення варіантів
   const colorVariants = products.filter(
-    p => p.namespaceId === product.namespaceId && p.capacity === product.capacity
+    p =>
+      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
   const capacityVariants = products.filter(
-    p => p.namespaceId === product.namespaceId && p.color === product.color
+    p => p.namespaceId === product.namespaceId && p.color === product.color,
   );
 
   return (
@@ -126,7 +144,13 @@ const ProductPage = () => {
       <div
         className="back-button"
         onClick={() => navigate(-1)}
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
+        style={{
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          marginBottom: '16px',
+        }}
       >
         <img src="/img/Arrow_Left.svg" alt="Arrow" />
         <span>Back</span>
@@ -252,7 +276,9 @@ const ProductPage = () => {
             <div key={section.title} className="about-section-content">
               <h4 className="section-title">{section.title}</h4>
               {section.text.map((paragraph, i) => (
-                <p className="paragraph" key={i}>{paragraph}</p>
+                <p className="paragraph" key={i}>
+                  {paragraph}
+                </p>
               ))}
             </div>
           ))}
@@ -262,45 +288,66 @@ const ProductPage = () => {
           <div className="about-title">Tech specs</div>
           <hr className="divider" />
           <div className="product-specs2">
-            <div className="spec-row"><span className="spec-name">Screen</span><span className="spec-value">{product.screen}</span></div>
-            <div className="spec-row"><span className="spec-name">Resolution</span><span className="spec-value">{product.resolution}</span></div>
-            <div className="spec-row"><span className="spec-name">Processor</span><span className="spec-value">{product.processor}</span></div>
-            <div className="spec-row"><span className="spec-name">RAM</span><span className="spec-value">{product.ram}</span></div>
-            <div className="spec-row"><span className="spec-name">Built in memory</span><span className="spec-value">{product.capacity}</span></div>
+            <div className="spec-row">
+              <span className="spec-name">Screen</span>
+              <span className="spec-value">{product.screen}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Resolution</span>
+              <span className="spec-value">{product.resolution}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Processor</span>
+              <span className="spec-value">{product.processor}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">RAM</span>
+              <span className="spec-value">{product.ram}</span>
+            </div>
+            <div className="spec-row">
+              <span className="spec-name">Built in memory</span>
+              <span className="spec-value">{product.capacity}</span>
+            </div>
             <div className="spec-row">
               <span className="spec-name">Camera</span>
-              <span className="spec-value">{'camera' in product ? product.camera : 'N/A'}</span>
+              <span className="spec-value">
+                {'camera' in product ? product.camera : 'N/A'}
+              </span>
             </div>
             <div className="spec-row">
               <span className="spec-name">Zoom</span>
-              <span className="spec-value">{'zoom' in product ? product.zoom : 'N/A'}</span>
+              <span className="spec-value">
+                {'zoom' in product ? product.zoom : 'N/A'}
+              </span>
             </div>
             <div className="spec-row">
               <span className="spec-name">Cell</span>
-              <span className="spec-value">{'cell' in product ? product.cell.join(', ') : 'N/A'}</span>
+              <span className="spec-value">
+                {'cell' in product ? product.cell.join(', ') : 'N/A'}
+              </span>
             </div>
           </div>
         </section>
       </div>
 
-        <section className="brand-new-models">
-          <div className="container-products">
-            <h2>You may also like</h2>
-            <div className="carousel-buttons">
-              <button className="carousel-arrow left" onClick={handlePrev} disabled={startIndex === 0}>
-                <img src="/img/Arrow_Left.svg" alt="Left" />
-              </button>
-              <button className="carousel-arrow right" onClick={handleNext} disabled={startIndex + visibleCount >= sortedProducts.length}>
-                <img src="/img/Arrow_Right.svg" alt="Right" />
-              </button>
-            </div>
+      <section className="brand-new-models">
+        <div className="container-products">
+          <h2>You may also like</h2>
+          <div className="carousel-buttons">
+            <button className="carousel-arrow left" onClick={handlePrev} disabled={startIndex === 0}>
+              <img src="/img/Arrow_Left.svg" alt="Left" />
+            </button>
+            <button className="carousel-arrow right" onClick={handleNext} disabled={startIndex + visibleCount >= sortedProducts.length}>
+              <img src="/img/Arrow_Right.svg" alt="Right" />
+            </button>
           </div>
-          <div className="products-grid">
-            {visibleProducts.map(item => (
-              <ProductCard key={item.id} product={item} />
-            ))}
-          </div>
-        </section>
+        </div>
+        <div className="products-grid">
+          {visibleProducts.map(item => (
+            <ProductCard key={item.id} product={item} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
