@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
+import { useFavorites } from '@/contexts/FavoritesContext';
 
 import logoMobile1x from '@/assets/images/nice-gadgets-logo-mobile.png';
 import logoMobile2x from '@/assets/images/nice-gadgets-logo-mobile@2x.png';
@@ -21,6 +22,8 @@ const navItems = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
+  const favCount = favorites.length;
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -90,7 +93,12 @@ export const Header = () => {
               }
             >
               <span>Favorites</span>
-              <img src={iconFavorites} alt="" aria-hidden="true" />
+              <span className={styles.iconWrapper}>
+                <img src={iconFavorites} alt="" aria-hidden="true" />
+                {favCount > 0 && (
+                  <span className={styles.badge}>{favCount}</span>
+                )}
+              </span>
             </NavLink>
           </li>
           <li className={styles.headerActionsItem}>

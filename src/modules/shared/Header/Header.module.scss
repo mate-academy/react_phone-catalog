@@ -195,9 +195,32 @@
   text-decoration: none;
   color: $color-primary;
 
-  span {
+  > span:first-child {
     @include visually-hidden;
   }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 $spacing-xs;
+  background: $color-error;
+  border: 1px solid $color-white;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+  color: $color-white;
+  box-sizing: border-box;
 }
 
 .headerActionsLinkActive {
