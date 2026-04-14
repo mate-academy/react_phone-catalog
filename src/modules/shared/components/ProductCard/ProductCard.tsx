@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import heartIcon from '@/assets/icons/icon-favorites.svg';
+import heartIconSelected from '@/assets/icons/icon-favorites-selected.svg';
 import type { Product } from '@/types/Product';
+import { useFavorites } from '@/contexts/FavoritesContext';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -9,6 +11,8 @@ type Props = {
 
 export const ProductCard = ({ product }: Props) => {
   const hasDiscount = product.fullPrice > product.price;
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const isProductFavorited = isFavorite(product.id);
 
   return (
     <div className={styles.card}>
@@ -57,8 +61,13 @@ export const ProductCard = ({ product }: Props) => {
         <button
           className={styles.addToFavorites}
           aria-label="Add to favourites"
+          onClick={() => toggleFavorite(product)}
         >
-          <img src={heartIcon} alt="" aria-hidden="true" />
+          <img
+            src={isProductFavorited ? heartIconSelected : heartIcon}
+            alt=""
+            aria-hidden="true"
+          />
         </button>
       </div>
     </div>
