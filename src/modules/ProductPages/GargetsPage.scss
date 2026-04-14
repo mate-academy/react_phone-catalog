@@ -50,11 +50,14 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
-
-  &__arrow {
-    width: 16px;
-    height: 16px;
-    padding: 3.3px 5.3px;
+ &__arrow {
+   width: 5.33px;
+    height: 9.33px;
+    background-image: url(./img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
   }
 
   &__back-home-h2 {
@@ -194,4 +197,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+@media screen and (max-width: 649px) {
+  .gargets {
+    margin: 16px;
+  }
 }

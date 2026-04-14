@@ -67,7 +67,8 @@ export const Footer = () => {
               'has-background-grey-lighter': isActive,
             })
           }
-          to="/top"
+          to={''}
+          onClick={() => scrollTop()}
         >
           Back to top
         </NavLink>

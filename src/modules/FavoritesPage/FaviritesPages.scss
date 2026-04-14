@@ -40,7 +40,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0 16px;
+  /* overflow: hidden; */
+
   @include contentPaddingInline;
 
   &__nav-bar {
@@ -58,11 +61,14 @@
   }
 
   &__arrow {
-      width: 16px;
-      height: 16px;
-      background-image: url('/img/arrow.png');
-
-    }
+    width: 5.33px;
+    height: 9.33px;
+    background-image: url(./img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
+  }
 
   &__h2 {
     font-size: 12px;
@@ -90,5 +96,13 @@
     width: 400px;
     height: 400px;
     object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .favorites__empty {
+    object-fit: contain;
+    display: flex;
+    flex-grow: 1;
   }
 }

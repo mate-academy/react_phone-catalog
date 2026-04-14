@@ -40,8 +40,14 @@ export const ProductDetailsPage = () => {
   const [chooseButtonGB, setChooseButtonGB] = useState<string>(item.capacity);
   const [chooseColor, setChooseColor] = useState(item.color);
   const navigate = useNavigate();
-  const { cartItems, favoriteItems, addToCart, addFavorite, removeFavorite } =
-    useCart();
+  const {
+    cartItems,
+    favoriteItems,
+    addToCart,
+    addFavorite,
+    removeFavorite,
+    removeFromCart,
+  } = useCart();
   const [like, setLike] = useState(false);
   const [addedCart, setAddedCart] = useState(false);
   const [likedIds, setLikedIds] = useState<string[]>([]);
@@ -107,8 +113,7 @@ export const ProductDetailsPage = () => {
         </div>
 
         <h2 className="details__phone-name">
-          {item.name.replace(/\d+GB/, `${chooseButtonGB}`) ||
-            item.name.replace(/\d+GB/, `${chooseButtonGB} GB`)}
+         {currentModel?.name}
         </h2>
 
         <div className="details__phone-colums">
@@ -223,9 +228,10 @@ export const ProductDetailsPage = () => {
                 e.preventDefault();
                 if (!isInCart) {
                   addToCart(item);
+                } else {
+                  removeFromCart(item.id);
                 }
               }}
-              style={{ pointerEvents: isInCart ? 'none' : 'auto' }}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </NavLink>
@@ -355,7 +361,17 @@ export const ProductDetailsPage = () => {
       <div className="details__roundabout">
         <div className="swiper">
           <div className="swiper__top-bar">
-            <h2 className="swiper__brand-h2">You may also like</h2>
+            <h2
+              className="swiper__brand-h2"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              You may also like
+            </h2>
             <div className="swiper__nav-buttons">
               <div className="swiper-button-prev" />
               <div className="swiper-button-next" />
@@ -376,6 +392,12 @@ export const ProductDetailsPage = () => {
                 1200: { slidesPerView: 4 },
               }}
               className="swiper__slide"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
             >
               {garg.map(phone => {
                 const phoneIsInCart = cartItems.some(

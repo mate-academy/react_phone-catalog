@@ -755,12 +755,12 @@ html {
   }
 
   &__like {
-    position: absolute;
+   position: absolute;
     text-decoration: none;
-    background-image: url('/img/arrow.png');
-    width: 15.33px;
-    height: 13.55px;
-    background-size: contain;
+    background-image: url(/react_phone-catalog/img/arrow.png);
+    width: 16px;
+    height: 16px;
+    /* background-size: cover; */
     background-repeat: no-repeat;
     z-index: 1;
   }

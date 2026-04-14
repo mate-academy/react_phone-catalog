@@ -83,6 +83,8 @@ body {
     width: 16px;
     height: 16px;
     background-image: url('/img/arrow.png');
+    background-repeat: no-repeat;
+    object-fit: contain;
   }
 
   &__phone-models {
@@ -452,7 +454,7 @@ body {
   &__about {
     &-h3 {
       color: #0f0f11;
-      font-family: 'Mont-Bold', 'sans-serif';
+      // font-family: 'Mont-Bold', 'sans-serif';
       font-size: 22px;
       font-weight: 800;
       padding-top: 80px;
@@ -469,7 +471,7 @@ body {
     &-desc-h4 {
       color: #0f0f11;
       font-size: 20px;
-      font-family: 'Mont-Bold', 'sans-serif';
+      // font-family: 'Mont-Bold', 'sans-serif';
       font-weight: 700;
       padding-top: 32px;
     }
@@ -479,7 +481,7 @@ body {
       font-weight: 500;
       padding-top: 16px;
       font-size: 14px;
-      font-family: 'Mont-Bold', 'sans-serif';
+      // font-family: 'Mont-Bold', 'sans-serif';
     }
   }
 
@@ -557,7 +559,7 @@ body {
   .details {
     // @include contentPaddingInline;
     padding-inline: 24px;
-    font-family: 'Mont-Bold', 'sans-serif';
+    // font-family: 'Mont-Bold', 'sans-serif';
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 
@@ -1033,7 +1035,7 @@ body {
   .details {
     padding-left: 16px;
     padding-right: 16px;
-    font-family: 'Mont-Bold', 'sans-serif';
+    // font-family: 'Mont-Bold', 'sans-serif';
     display: flex;
     flex-direction: column;
 
@@ -1411,7 +1413,7 @@ body {
       order: 4;
       &-h3 {
         color: #0f0f11;
-        font-family: 'Mont-Bold', 'sans-serif';
+        // font-family: 'Mont-Bold', 'sans-serif';
         font-size: 22px;
         font-weight: 800;
         padding-top: 56px;
@@ -1428,7 +1430,7 @@ body {
       &-desc-h4 {
         color: #0f0f11;
         font-size: 20px;
-        font-family: 'Mont-Bold', 'sans-serif';
+        // font-family: 'Mont-Bold', 'sans-serif';
         font-weight: 700;
         padding-top: 32px;
       }
@@ -1438,7 +1440,7 @@ body {
         font-weight: 500;
         padding-top: 16px;
         font-size: 14px;
-        font-family: 'Mont-Bold', 'sans-serif';
+        // font-family: 'Mont-Bold', 'sans-serif';
       }
     }
 

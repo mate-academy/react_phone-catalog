@@ -67,12 +67,12 @@ export const CartPage = () => {
     <div className="cart">
       {' '}
       <div className="cart__nav">
-        <span className="cart__arrow"></span>       {' '}
+        <span className="cart__arrow"></span>{' '}
         <NavLink to="/phones" className="cart__back">
-                    Back        {' '}
+          Back{' '}
         </NavLink>{' '}
       </div>
-      <h2 className="cart__h2">Cart</h2>     {' '}
+      <h2 className="cart__h2">Cart</h2>{' '}
       <div className="cart__block">
         {' '}
         <div className="cart__items">
@@ -95,53 +95,55 @@ export const CartPage = () => {
                   onClick={() => deletePhone(item)}
                 />{' '}
               </div>{' '}
-              <img src={item.images[0]} alt="" className="cart__image" />       
-              <h3 className="cart__name-garget">{item.name}</h3>         {' '}
+              <img src={item.images[0]} alt="" className="cart__image" />
+              <h3 className="cart__name-garget">{item.name}</h3>{' '}
               <div className="cart__counter">
                 {' '}
                 <button
                   className="cart__button-minus"
                   onClick={() => handleDecrement(item.id)}
                 >
-                                    -                {' '}
+                  {' '}
+                  -{' '}
                 </button>{' '}
-                <div className="cart__count-garget">{item.count}</div>         {' '}
+                <div className="cart__count-garget">{item.count}</div>{' '}
                 <button
                   className="cart__button-plus"
                   onClick={() => handleIncrement(item.id)}
                 >
-                                    +                {' '}
+                  {' '}
+                  +{' '}
                 </button>{' '}
               </div>{' '}
               <div className="cart__cost">
-                                ${item.priceRegular * item.count}             {' '}
+                ${item.priceRegular * item.count}{' '}
               </div>{' '}
             </div>
           ))}{' '}
         </div>{' '}
         {cartWithCount.length > 0 && (
           <div className="cart__block-total">
-            <div className="cart__total-amount">${total}</div>     {' '}
+            <div className="cart__total-amount">${total}</div>{' '}
             <div className="cart__count-item">
-                            Total for              {' '}
-              {cartWithCount.reduce((sum, item) => sum + item.count, 0)} items  {' '}
+              Total for{' '}
+              {cartWithCount.reduce((sum, item) => sum + item.count, 0)} items{' '}
             </div>
-            <div className="cart__small-line"></div>           {' '}
+            <div className="cart__small-line"></div>{' '}
             <button
               className="cart__button-checkout"
               onClick={() => setClickOnCheckout(true)}
               disabled={clickOnCheckout}
             >
-              {clickOnCheckout ? 'Processing...' : 'Checkout'}   {' '}
+              {clickOnCheckout ? 'Processing...' : 'Checkout'}{' '}
             </button>{' '}
           </div>
         )}{' '}
       </div>
-      {/* === Модальне вікно винесене окремо — не змінює layout === */}   {' '}
+      {/* === Модальне вікно винесене окремо — не змінює layout === */}{' '}
       {clickOnCheckout && (
         <div className="cart__modal-widnow">
           {' '}
-          <p className="cart__questions">Do you want to clear the Cart?</p>     {' '}
+          <p className="cart__questions">Do you want to clear the Cart?</p>{' '}
           <div className="cart__position-button">
             {' '}
             <button
@@ -153,13 +155,13 @@ export const CartPage = () => {
                 });
               }}
             >
-                            Yes            {' '}
+              Yes{' '}
             </button>{' '}
             <button
               className="cart__button-no"
               onClick={() => setClickOnCheckout(false)}
             >
-                            No            {' '}
+              No{' '}
             </button>{' '}
           </div>{' '}
         </div>

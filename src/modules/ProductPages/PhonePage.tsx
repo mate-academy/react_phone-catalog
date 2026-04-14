@@ -234,10 +234,8 @@ export const PhonePage = () => {
     <div className="gargets">
       <div className="gargets__back-to-home">
         <NavLink to="/" className="gargets__home-img" />
-        <img
-          src="../../../public/img/arrow.png"
-          className="gargets__arrow"
-        ></img>
+        <span className="gargets__arrow"></span>
+        
         <span className="gargets__back-home-h2">Phones</span>
       </div>
       <h1 className="gargets__mobile-phones-h1">Mobile phones</h1>
