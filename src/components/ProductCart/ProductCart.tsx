@@ -36,17 +36,25 @@ export const ProductCart: React.FC = () => {
                   onClick={() => removeFromCart(f.product.id)}
                 ></button>
 
-                <div className="product-cart__card-image">
+                <Link
+                  to={`/${f.product.category}/${f.product.id}`}
+                  className="product-cart__card-image"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   <img
                     src={f.product.images[0]}
                     alt="product-image"
                     className="product-cart__card-img"
                   />
-                </div>
+                </Link>
 
-                <div className="product-cart__card-name body-text">
+                <Link
+                  to={`/${f.product.category}/${f.product.id}`}
+                  className="product-cart__card-name body-text"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   {f.product.name}
-                </div>
+                </Link>
               </div>
 
               <div className="product-cart__card-wrapper">
@@ -85,7 +93,18 @@ export const ProductCart: React.FC = () => {
               Total for {getTotalItems()} items
             </div>
             <div className="product-cart__line"></div>
-            <button className="primary-button product-cart__checkout ">
+            <button
+              className="primary-button product-cart__checkout "
+              onClick={() => {
+                if (
+                  confirm(
+                    `Checkout is not implemented yet. Do you want to clear the Cart?`,
+                  )
+                ) {
+                  cart.forEach(f => removeFromCart(f.product.id));
+                }
+              }}
+            >
               Checkout
             </button>
           </div>

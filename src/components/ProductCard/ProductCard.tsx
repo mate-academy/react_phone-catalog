@@ -29,6 +29,7 @@ export const ProductCard: React.FC<Props> = ({ product, discounted, cn }) => {
     <Link
       to={`/${product.category}/${product.itemId}`}
       className={classNames(cn ? cn : 'product__card')}
+      onClick={() => window.scrollTo(0, 0)}
     >
       <div className="product__card-image-wrapper">
         <img
