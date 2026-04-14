@@ -16,7 +16,16 @@
   }
 
   :global(.swiper-slide) {
+    width: 212px;
     height: auto;
+
+    @include media-up($breakpoint-tablet) {
+      width: 237px;
+    }
+
+    @include media-up($breakpoint-desktop) {
+      width: auto;
+    }
   }
 }
 

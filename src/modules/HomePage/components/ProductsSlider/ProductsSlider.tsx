@@ -9,7 +9,7 @@ import type { Product } from '@/types/Product';
 import styles from './ProductsSlider.module.scss';
 import iconChevron from '@/assets/icons/icon-chevron.svg';
 
-type SliderType = 'brand-new' | 'hot-prices';
+type SliderType = 'brand-new' | 'hot-prices' | 'you-may-also-like';
 
 type Props = {
   title: string;
@@ -34,6 +34,10 @@ export const ProductsSlider = ({ title, type }: Props) => {
         if (type === 'hot-prices') {
           data.sort((a, b) => b.fullPrice - a.fullPrice);
           setProducts(data.slice(0, 10));
+        }
+
+        if (type === 'you-may-also-like') {
+          setProducts([...data].sort(() => Math.random() - 0.5).slice(0, 10));
         }
       });
   }, [type]);
@@ -71,9 +75,8 @@ export const ProductsSlider = ({ title, type }: Props) => {
         <Swiper
           modules={[Navigation]}
           spaceBetween={16}
-          slidesPerView={1.5}
+          slidesPerView="auto"
           breakpoints={{
-            640: { slidesPerView: 2.5 },
             1200: { slidesPerView: 4 },
           }}
           onSwiper={swiper => {
