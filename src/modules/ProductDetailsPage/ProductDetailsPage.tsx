@@ -5,6 +5,7 @@ import type { Product } from '@/types/Product';
 import type { ProductDetail } from '@/types/ProductDetail';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { Loader } from '../shared/components/Loader';
+import { useFavorites } from '@/contexts/FavoritesContext';
 import { ImageSlider } from './components/ImageSlider';
 import chevronIcon from '@/assets/icons/icon-chevron.svg';
 import favoritesIcon from '@/assets/icons/icon-favorites.svg';
@@ -66,7 +67,8 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const [isInCart, setIsInCart] = useState(false);
-  const [isInFavorites, setIsInFavorites] = useState(false);
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const isProductFavorited = product ? isFavorite(product.id) : false;
 
   useEffect(() => {
     setLoading(true);
@@ -224,14 +226,16 @@ export const ProductDetailsPage = () => {
                   </button>
                   <button
                     className={classNames(styles.addToFavorites, {
-                      [styles.addToFavoritesActive]: isInFavorites,
+                      [styles.addToFavoritesActive]: isProductFavorited,
                     })}
-                    onClick={() => setIsInFavorites(v => !v)}
+                    onClick={() => toggleFavorite(product)}
                     aria-label="Add to favourites"
                   >
                     <img
                       src={
-                        isInFavorites ? favoritesSelectedIcon : favoritesIcon
+                        isProductFavorited
+                          ? favoritesSelectedIcon
+                          : favoritesIcon
                       }
                       alt=""
                       aria-hidden="true"
