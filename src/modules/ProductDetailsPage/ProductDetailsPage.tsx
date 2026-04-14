@@ -9,6 +9,7 @@ import { ImageSlider } from './components/ImageSlider';
 import chevronIcon from '@/assets/icons/icon-chevron.svg';
 import favoritesIcon from '@/assets/icons/icon-favorites.svg';
 import favoritesSelectedIcon from '@/assets/icons/icon-favorites-selected.svg';
+import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 import styles from './ProductDetailsPage.module.scss';
 
 const TECH_SPEC_FIELDS: [string, keyof ProductDetail][] = [
@@ -295,6 +296,8 @@ export const ProductDetailsPage = () => {
           </section>
         </div>
       )}
+
+      <ProductsSlider title="You may also like" type="you-may-also-like" />
     </div>
   );
 };
