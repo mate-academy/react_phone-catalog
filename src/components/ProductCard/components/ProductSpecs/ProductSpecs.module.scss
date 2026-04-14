@@ -1,0 +1,28 @@
+
+.specs {
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+
+.specRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.specLabel {
+  line-height: 100%;
+  letter-spacing: 0%;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.specValue {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-align: right;
+  flex: 1;
+}

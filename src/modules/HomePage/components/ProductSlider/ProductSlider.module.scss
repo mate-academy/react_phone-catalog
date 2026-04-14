@@ -1,0 +1,43 @@
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+  height: 32px;
+}
+
+.viewport {
+  width: auto;
+  overflow: hidden;
+  position: relative;
+
+  padding: 20px 15px;
+  margin: -20px -15px;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: max-content;
+  overflow: visible;
+}
+
+.sliderCatalog {
+  display: flex !important;
+  gap: 16px;
+
+  & > article {
+    flex-shrink: 0;
+    width: 272px;
+  }
+}

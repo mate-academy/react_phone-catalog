@@ -1,0 +1,24 @@
+
+$color-accent: #4219D0;
+$color-secondary-accent: #F4BA47;
+$color-primary: #0F0F11;
+$color-secondary: #89939A;
+$color-icons: #B4BDC3;
+$color-elements: #E2E6E9;
+$color-hover-bg: #FAFBFC;
+$color-white: #FFF;
+$color-green: #27AE60;
+$color-red: #EB5757;
+$header-height-desktop: 64px;
+$header-height-mobile: 48px;
+$transition-base: 0.3s ease;
+$tablet: 1199px;
+$mobile: 639px;
+$shadows: (
+  'dropdown': 0 4px 16px rgba(0, 0, 0, 0.05),
+  'button': 0 3px 13px rgba(23, 32, 49, 0.3),
+  'card': 0 2px 15px rgba(0, 0, 0, 0.1),
+  'selector': inset 0 0 0 2px #fff,
+  'modal': 0 4px 20px rgba(0, 0, 0, 0.1),
+  'category': 0 4px 15px rgba(0, 0, 0, 0.2),
+);

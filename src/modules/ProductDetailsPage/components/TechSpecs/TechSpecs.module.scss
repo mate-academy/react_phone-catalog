@@ -1,0 +1,31 @@
+.fullTechSpecs {
+  grid-column: 14 / span 11;
+  margin-top: 40px;
+
+  @include respond-to('tablet') {
+    grid-column: span 12;
+    margin-top: 24px;
+  }
+
+  @include respond-to('mobile') {
+    grid-column: span 4;
+    margin-top: 16px;
+  }
+}
+
+.sectionTitle {
+  line-height: 140%;
+  border-bottom: 1px solid var(--color-elements);
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.fullTechSpecsValue {
+  color: var(--color-primary);
+}

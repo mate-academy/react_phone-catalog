@@ -1,0 +1,47 @@
+@use "sass:map";
+@import './variables';
+
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "tablet" {
+    @media (max-width: $tablet) { @content; }
+  } @else if $breakpoint == "mobile" {
+    @media (max-width: $mobile) { @content; }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+
+@mixin typography($size, $weight, $line-height, $letter-spacing: normal) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+
+@mixin flex-center($justify: center, $align: center, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+    max-width: 1200px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 32px;
+  }
+}
+
+@mixin shadow($type: 'dropdown') {
+  box-shadow: map.get($shadows, $type);
+}

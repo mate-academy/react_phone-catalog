@@ -1,0 +1,18 @@
+export const COLORS_MAP: Record<string, string> = {
+  black: '#212121',
+  white: '#F0F0F0',
+  red: '#df1160',
+  gold: '#f9dcc9',
+  silver: '#E2E6E9',
+  spacegray: '#535150',
+  midnight: '#191970',
+  purple: '#B8AFE6',
+  yellow: '#FEE75C',
+  green: '#c3f1e1',
+  rosegold: '#E6C7C2',
+  skyblue: '#c7d7f1',
+  graphite: '#464646',
+  sierrablue: '#6a8dcd',
+  pink: '#faddd7',
+  blue: '#437791',
+};

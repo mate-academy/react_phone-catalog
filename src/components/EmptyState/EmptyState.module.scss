@@ -1,0 +1,32 @@
+.container {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 16px;
+
+  min-height: calc(100vh - 200px);
+  width: 100%;
+  text-align: center;
+
+
+  grid-column: 1 / -1;
+
+  .text {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-secondary);
+  }
+
+  .image {
+    max-width: 300px;
+    height: 300px; 
+    object-fit: contain;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+
+    :global(body.dark) & {
+     filter: invert(1) brightness(0.7) opacity(0.8);
+    }
+  }
+
+}

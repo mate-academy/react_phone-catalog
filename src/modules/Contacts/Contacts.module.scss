@@ -1,0 +1,149 @@
+h1 {
+  margin-top: 32px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 32px;
+  margin-top: 32px;
+  margin-bottom: 80px;
+
+  @include respond-to('tablet') {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 40px;
+    margin-bottom: 64px;
+  }
+
+  @include respond-to('mobile') {
+    margin-bottom: 56px;
+    gap: 32px;
+  }
+}
+
+.infoBlock {
+  grid-column: span 10;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include respond-to('tablet') {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  @include respond-to('mobile') {
+    display: flex;
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 16px;
+  padding: 24px;
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    &:hover { color: var(--color-primary); }
+  }
+
+  span {
+    color: var(--color-accent);
+    font-weight: 600;
+    &:hover { color: var(--color-primary); }
+  }
+
+  &:last-child {
+    @include respond-to('tablet') {
+      grid-column: span 2;
+    }
+  }
+
+}
+
+.formBlock {
+  grid-column: span 14;
+  background: var(--color-elements);
+  padding: 32px;
+  border-radius: 16px;
+
+  @include respond-to('mobile') {
+    padding: 20px 16px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2 {
+    @include respond-to('mobile') {
+      font-size: 22px;
+      line-height: 31px;
+    } }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  input, textarea {
+    padding: 12px 16px;
+    border: 1px solid var(--color-elements);
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--color-hover-bg);
+    color: var(--color-primary);
+
+    &::placeholder {
+      color: var(--color-icons);
+      opacity: 1;
+      background-color: var(--color-hover-bg);
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+
+    &:focus { border-color: var(--color-secondary) }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--color-white) inset;
+    -webkit-text-fill-color: var(--color-primary);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+
+.submitBtn {
+  margin-top: 12px;
+  width: 100%;
+}
+
+:global(body.dark) {
+  .inputGroup {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px var(--color-hover-bg) inset;
+      -webkit-text-fill-color: var(--color-primary);
+    }
+  }
+}

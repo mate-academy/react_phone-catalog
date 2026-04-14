@@ -1,0 +1,52 @@
+.container {
+  @include flex-center;
+
+  flex-direction: column;
+  grid-column: 1 / -1;
+
+  height: 200px;
+  width: 100%;
+  padding: 32px 16px;
+  text-align: center;
+  gap: 24px;
+
+
+  button {
+    background-color: var(--color-accent);
+    width: 100%;
+    max-width: 200px;
+    height: 48px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+  }
+
+  @include respond-to('tablet') {
+    gap: 12px;
+
+    button {
+      width: max-content;
+      padding: 0 32px;
+    }
+  }
+
+  @include respond-to('mobile') {
+    min-height: 100px;
+  }
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-secondary);
+
+    @include respond-to('mobile') {
+    font-size: 16px;
+  }
+  }

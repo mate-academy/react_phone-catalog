@@ -1,0 +1,30 @@
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  margin-top: 40px;
+
+  span {
+    line-height: 1;
+    transition: $transition-base;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+    @include respond-to('mobile') {
+      margin-top: 24px;
+  }
+
+}
+
+.backIcon {
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+}
