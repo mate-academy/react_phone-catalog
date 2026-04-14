@@ -8,12 +8,18 @@ export const ContactsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className="h1">Contacts</h1>
+      <h1 className={styles.h1}>Contacts</h1>
 
       <div className={styles.content}>
-        <p>Email: support@nicegadgets.com</p>
-        <p>Phone: +380 (99) 123-45-67</p>
-        <p>Address: Lviv, Ukraine</p>
+        <p className={styles['body-text14']}>Email: support@nicegadgets.com</p>
+        <p className={styles['body-text14']}>Phone: +380 (99) 123-45-67</p>
+        <p className={styles['body-text14']}>Address: Lviv, Ukraine</p>
+      </div>
+
+      <div className={styles.footer}>
+        <p className={styles['small-text12Light']}>
+          © 2026 Nice Gadgets. All rights reserved.
+        </p>
       </div>
     </div>
   );

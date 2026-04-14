@@ -1,3 +1,23 @@
+
+.capacityList,
+.colors,
+.buttons,
+.thumbnails {
+  flex-wrap: wrap;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs span {
+  word-break: break-word;
+}
+
+
+
+
 .container {
   margin: 0 auto;
   box-sizing: border-box;
@@ -36,7 +56,7 @@
   display: grid;
   width: 100%;
   margin-top: 40px;
-  justify-content: center;
+  //justify-content: stretch;
 
   // 1. СТРУКТУРА ДЛЯ МОБІЛКИ (одна колонка)
   grid-template-areas:
@@ -69,19 +89,11 @@
   }
 }
 
-
-.gallery {
-  grid-area: gallery;
-  @media (min-width: 1200px) {
-      max-width: 560px;
-    }
-}
-
 .productActions {
   grid-area: actions;
   width: 100%;
-  max-width: 320px;
-  justify-self: start;
+  max-width: none;
+    justify-self: stretch;
 
   @media (min-width: 1200px) {
     width: 320px;
@@ -121,6 +133,12 @@
   gap: 16px;
   margin-bottom: 40px;
 
+  grid-area: gallery;
+  
+    @media (min-width: 1200px) {
+      max-width: 560px;
+    }
+
   @media (max-width: 639px) {
     flex-direction: column-reverse;
   }
@@ -132,18 +150,25 @@
 
     @media (max-width: 639px) {
       flex-direction: row;
-      justify-content: center;
-    }
+      }
 
     .thumbWrapper {
+     
       width: 80px;
       height: 80px;
       border: 1px solid #E2E6E9;
       border-radius: 8px;
       display: flex;
-      justify-content: center;
       align-items: center;
       cursor: pointer;
+
+      @media (max-width: 639px) {
+          flex: 1;
+          max-width: 64px;
+          aspect-ratio: 1 / 1;
+          height: auto;
+          border-radius: 4px;
+        }
 
       &.activeThumb {
         border-color: #313237;
@@ -266,6 +291,7 @@
 .colors {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 
   .colorCircle {
     width: 32px;
@@ -284,6 +310,7 @@
 .capacityList {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 
   .capacityItem {
     padding: 8px 12px;
@@ -348,7 +375,7 @@
   gap: 8px;
   margin-bottom: 32px;
   width: 100%;
-  align-items: center;
+  align-items: wrap;
 
 
 
@@ -359,6 +386,7 @@
         color: #ffffff;
         border: 1px solid transparent;
         border-radius: 48px;
+        width: 100%;
 
         cursor: pointer;
         transition: background 0.3s;
@@ -601,6 +629,7 @@
   gap: 8px;
   margin-top: 24px;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 
   @media (min-width: 1201px) {
     width: 416px;

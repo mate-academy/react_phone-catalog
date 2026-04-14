@@ -34,6 +34,25 @@ export const CartPage = () => {
   }, [checkoutMessage]);
 
 
+
+  /*const handleGoToProduct = (item: any) => {
+
+    const foundProduct = products.find(
+      p => p.itemId === item.itemId && p.category === item.category,
+    );
+
+    if (foundProduct) {
+      navigate(`/${foundProduct.category}/${foundProduct.itemId}`);
+    } else {
+      console.log('Product not found:', item);
+    }
+  }; */
+
+  const handleGoToProduct = (item: any) => {
+    navigate(`/${item.category}/${item.itemId}`);
+  };
+
+
   return (
     <div className={styles.cartPage}>
       <button
@@ -49,11 +68,11 @@ export const CartPage = () => {
       <div className={styles.cartPage__content}>
         <div className={styles.cartPage__itemsList}>
           {cart.map(item => (
-            <div key={item.id} className={styles.item}>
+            <div key={item.uniqueId} className={styles.item}>
               <div className={styles.item__header}>
                 <button
                   className={styles.item__remove}
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => removeFromCart(item.uniqueId)}
                 >
                   <img src="./img/Close__.png" alt="remove" />{' '}
                 </button>
@@ -78,7 +97,7 @@ export const CartPage = () => {
                 <div className={styles.quantity}>
                   <button
                     className={styles.quantity__btn}
-                    onClick={() => updateQuantity(item.itemId, -1)}
+                    onClick={() => updateQuantity(item.uniqueId, -1)}
                     disabled={item.quantity <= 1}
                   >
                     <img src="./img/Minus.svg" alt="minus" />
@@ -88,7 +107,7 @@ export const CartPage = () => {
                   </span>
                   <button
                     className={styles.quantity__btn}
-                    onClick={() => updateQuantity(item.itemId, 1)}
+                    onClick={() => updateQuantity(item.uniqueId, 1)}
                   >
                     <img src="./img/Plus.svg" alt="plus" />
                   </button>

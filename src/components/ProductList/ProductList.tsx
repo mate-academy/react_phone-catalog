@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../types/Product';
-import { ProductCard } from './ProductCard'; // Шлях до твоєї картки
+import { ProductCard } from './ProductCard';
 //import styles from './ProductList.module.scss';
 
 interface Props {

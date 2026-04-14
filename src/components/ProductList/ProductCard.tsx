@@ -21,8 +21,12 @@ export const ProductCard: React.FC<Props> = ({
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
+  
+  const uniqueId = `${product.itemId}-${product.color}-${product.capacity}`;
+  const isAdded = isInCart(uniqueId);
 
-  const isAdded = isInCart(product.itemId);
+
+  //const isAdded = isInCart(product.itemId);
   const favorited = isFavourite(product.itemId);
 
   const currentPrice = product.priceDiscount || product.price || 0;
@@ -32,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({
 
   const handleAddToCart = () => {
     if (isAdded) {
-      removeFromCart(product.itemId);
+      removeFromCart(uniqueId);
     } else {
       addToCart(product);
     }

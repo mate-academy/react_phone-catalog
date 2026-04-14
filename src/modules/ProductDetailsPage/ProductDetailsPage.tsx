@@ -15,7 +15,7 @@ import 'swiper/css/navigation';
 
 
 export const ProductDetailsPage: React.FC = () => {
-  const { productId } = useParams<{ productId: string }>();
+
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -24,31 +24,40 @@ export const ProductDetailsPage: React.FC = () => {
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
+  const { productId } = useParams<{
+    category: string;
+    productId: string;
+  }>();
 
+  //const getCartId = (product: Product) => {
+  //  return `${product.itemId}-${product.color}-${product.capacity}`;
+  //};
 
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
-
-  const productIdSafe = product?.itemId;
-
-  const isAdded = !!product && isInCart(productIdSafe);
-  const favorited = !!product && isFavourite(productIdSafe);
-
+  
   const [isFading, setIsFading] = useState(false);
 
-  const handleNavigate = (url: string) => {
-    setIsFading(true);
-    setTimeout(() => {
-      navigate(url);
-    }, 300);
-  };
+    const handleNavigate = (url: string) => {
+      setIsFading(true);
+      setTimeout(() => {
+        navigate(url);
+      }, 300);
+    };
+
+  const uniqueId = product
+    ? `${product.itemId}-${product.color}-${product.capacity}`
+    : '';
+
+  const isAdded = !!product && isInCart(uniqueId);
+  const favorited = !!product && isFavourite(product?.itemId);
 
   const handleAddToCart = () => {
     if (!product) return;
 
-    if (isInCart(productIdSafe)) {
-      removeFromCart(productIdSafe);
+    if (isAdded) {
+      removeFromCart(uniqueId);
     } else {
       addToCart(product);
     }
@@ -59,7 +68,7 @@ export const ProductDetailsPage: React.FC = () => {
     if (!product) return;
 
     if (favorited) {
-      removeFromFavourites(productIdSafe);
+      removeFromFavourites(product.itemId);
     } else {
       addToFavourites(product);
     }
@@ -75,22 +84,38 @@ useEffect(() => {
   setIsLoading(true);
   setIsError(false);
 
-  Promise.all([getProductById(productId), getProducts()])
-    .then(([data, all]) => {
-      if (!data) {
+  getProducts()
+    .then(all => {
+      setAllProducts(all);
+
+      // 🔥 УНІВЕРСАЛЬНИЙ ПОШУК
+      const foundProduct = all.find(
+        p =>
+          p.itemId === productId ||
+          String(p.id) === productId ||
+          p.name.toLowerCase().replace(/\s+/g, '-') === productId,
+      );
+
+      if (!foundProduct) {
+        console.log('NOT FOUND productId:', productId);
+        console.log(
+          'ALL IDS:',
+          all.map(p => p.itemId),
+        );
         setIsError(true);
         return;
       }
 
-      setProduct(data);
-      setSelectedPhoto(data.images?.[0] || '');
-      setAllProducts(all);
-
-      const found = all.find(p => p.itemId === productId);
-      if (found) setNumericId(String(found.id));
+      setProduct(foundProduct);
+      setSelectedPhoto(foundProduct.images?.[0] || '');
+      setNumericId(String(foundProduct.id));
 
       const recommended = all
-        .filter(p => p.category === data.category && p.itemId !== data.itemId)
+        .filter(
+          p =>
+            p.category === foundProduct.category &&
+            p.itemId !== foundProduct.itemId,
+        )
         .sort(() => 0.5 - Math.random())
         .slice(0, 8);
 
@@ -99,7 +124,6 @@ useEffect(() => {
     .catch(() => setIsError(true))
     .finally(() => setIsLoading(false));
 }, [productId]);
-
   if (isLoading) return <Loader />;
 
   if (isError || !product) {
@@ -149,7 +173,7 @@ useEffect(() => {
         </nav>
 
         <button
-          onClick={() => window.history.back()}
+          onClick={() => handleNavigate(`/${product.category}`)}
           className={`${styles.backButton} small-text12`}
         >
           <img src="./img/Back.svg" alt="back" /> Back
@@ -218,7 +242,7 @@ useEffect(() => {
                           p.capacity === product.capacity,
                       );
                       if (target) {
-                        navigate(`/${target.category}/${target.itemId}`);
+                        handleNavigate(`/${target.category}/${target.itemId}`);
                       }
                     }}
                     className={`${styles.colorCircle} ${product.color === colorName ? styles.activeColor : ''}`}
@@ -245,7 +269,7 @@ useEffect(() => {
                           p.color === product.color,
                       );
                       if (target) {
-                        navigate(`/${target.category}/${target.itemId}`);
+                        handleNavigate(`/${target.category}/${target.itemId}`);
                       }
                     }}
                     className={`${styles.capacityItem} ${product.capacity === cap ? styles.activeCapacity : ''}`}
@@ -271,10 +295,10 @@ useEffect(() => {
 
             <div className={styles.buttons}>
               <button
-                key={productIdSafe + String(isAdded)}
+                //key={uniqueId}
                 className={`${styles.addToCart} button-text ${isAdded ? styles.selected : ''}`}
                 onClick={handleAddToCart}
-                disabled={!product}
+                //disabled={isAdded}
               >
                 {isAdded ? 'Added' : 'Add to cart'}
               </button>
