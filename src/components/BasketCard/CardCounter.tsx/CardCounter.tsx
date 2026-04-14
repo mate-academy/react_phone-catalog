@@ -10,15 +10,16 @@ type CardCounterProps = {
 
 const CardCounter = ({
   basketProduct,
-  setBaskets,
   handleIncrease,
   handleDecrease,
 }: CardCounterProps) => {
+  const isQuantityLow = basketProduct.quantity > 1;
+
   return (
     <>
       <div className="basket-card__counter">
         <button
-          className="basket-card__counter--decrease"
+          className={`basket-card__counter--decrease ${!isQuantityLow ? 'active' : ''}`}
           onClick={() => handleDecrease(basketProduct.itemId)}
         >
           -
@@ -27,7 +28,7 @@ const CardCounter = ({
           {basketProduct.quantity}
         </span>
         <button
-          className="basket-card__counter--increase"
+          className={`basket-card__counter--increase ${!isQuantityLow ? 'active' : ''}`}
           onClick={() => handleIncrease(basketProduct.itemId)}
         >
           +

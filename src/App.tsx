@@ -19,20 +19,23 @@ export const App = () => {
     [],
   );
   const [baskets, setBaskets] = useLocalStorage<BasketProduct[]>('baskets', []);
-  const removeBaskets = (itemid: string) => {
-    const updatedBaskets = baskets.filter(basket => basket.itemId !== itemid);
+  const removeBaskets = (itemId: string) => {
+    const updatedBaskets = baskets.filter(basket => basket.itemId !== itemId);
 
     setBaskets(updatedBaskets);
   };
 
   const handleIncrease = (itemId: string) => {
-    setBaskets(prev =>
-      prev.map(item =>
+    setBaskets(prev => {
+      console.log('clicked id:', itemId);
+      console.log('prev:', prev);
+
+      return prev.map(item =>
         item.itemId === itemId
           ? { ...item, quantity: item.quantity + 1 }
           : item,
-      ),
-    );
+      );
+    });
   };
 
   const handleDecrease = (itemId: string) => {

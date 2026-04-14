@@ -97,20 +97,21 @@ const AccessoriesCatalog = ({
             setCurrentPage={setCurrentPage}
           />
         </div>
+
+        <ProductList
+          products={visibleProducts}
+          setFavorites={setFavorites}
+          favorites={favorites}
+          baskets={baskets}
+          setBaskets={setBaskets}
+        />
+        <CatalogSlider
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          visiblePageButtons={visiblePageButtons}
+          totalPages={totalPages}
+        />
       </div>
-      <ProductList
-        products={visibleProducts}
-        setFavorites={setFavorites}
-        favorites={favorites}
-        baskets={baskets}
-        setBaskets={setBaskets}
-      />
-      <CatalogSlider
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        visiblePageButtons={visiblePageButtons}
-        totalPages={totalPages}
-      />
     </>
   );
 };

@@ -58,7 +58,7 @@ const ProductInfo = ({
                   className={`product-info__button--add-to-cart ${isBasket ? 'active' : ''}`}
                   onClick={handleToggleBasket}
                 >
-                  Add to cart
+                  {isBasket ? 'Added to Cart' : 'Add to Cart'}
                 </button>
                 <button
                   className={`product-info__button--icon ${isFavorite ? 'active' : ''}`}

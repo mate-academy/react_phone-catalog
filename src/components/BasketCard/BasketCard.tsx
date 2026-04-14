@@ -4,16 +4,14 @@ import { BasketProduct } from '../../types/BasketProduct';
 
 type BasketCardProps = {
   basketProduct: BasketProduct;
-  baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-  removeBasket: (itemid: string) => void;
+  removeBasket: (itemId: string) => void;
   handleIncrease: (itemId: string) => void;
   handleDecrease: (itemId: string) => void;
 };
 
 const BasketCard = ({
   basketProduct,
-  baskets,
   setBaskets,
   removeBasket,
   handleIncrease,

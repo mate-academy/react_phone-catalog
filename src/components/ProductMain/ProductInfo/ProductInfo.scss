@@ -66,6 +66,12 @@ flex-shrink: 0;
   border: 1px solid #e2e6e9;
 }
 
+.product-info__button--add-to-cart.active {
+  background-color: white;
+  color: black;
+  border: 1px solid #e2e6e9;
+}
+
 .product-info__button--icon {
   display: flex;
   align-items: center;

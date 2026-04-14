@@ -11,15 +11,15 @@
   width: 32px;
   height: 32px;
   box-sizing: border-box;
-  border: 1px solid #e2e6e9;
+  border: 1px solid black;
   padding: 8px;
-  color: #e2e6e9;
-  background-color: white;
+  color: black;  background-color: white;
   cursor: pointer;
 }
 
-.basket-card__counter--decrease:hover {
-  color: black;
+.basket-card__counter--decrease.active {
+  border: 1px solid #e2e6e9;
+ color: #e2e6e9;
 }
 
 .basket-card__counter--increase {
@@ -28,13 +28,14 @@
   box-sizing: border-box;
   border: 1px solid #e2e6e9;
   padding: 8px;
-  color: #e2e6e9;
+ color: #e2e6e9;
   background-color: white;
    cursor: pointer;
 }
 
 .basket-card__counter--increase:hover {
   color: black;
+  border: 1px solid black;
 }
 
 .basket-card__counter--value {

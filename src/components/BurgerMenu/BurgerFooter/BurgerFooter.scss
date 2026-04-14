@@ -73,7 +73,7 @@ background-color: white;
 .burger-footer__icon--badge {
   position: absolute;
   top: 24%;
-  right: 43%;
+  right: 40%;
   background-color: #f08080;
   color: white;
   font-size: 8px;
@@ -83,4 +83,7 @@ background-color: white;
   text-align: center;
   line-height: 13px;
   height: 12px;
+  @media (min-width: 640px) {
+    right: 46%;
+  }
 }

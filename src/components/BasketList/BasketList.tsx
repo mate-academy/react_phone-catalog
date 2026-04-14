@@ -5,7 +5,7 @@ import { BasketProduct } from '../../types/BasketProduct';
 type BasketListProps = {
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-  removeBasket: (itemid: string) => void;
+  removeBasket: (itemId: string) => void;
   handleIncrease: (itemId: string) => void;
   handleDecrease: (itemId: string) => void;
 };
@@ -25,7 +25,6 @@ const BasketList = ({
           <BasketCard
             key={basketProduct.itemId}
             basketProduct={basketProduct}
-            baskets={baskets}
             setBaskets={setBaskets}
             removeBasket={removeBasket}
             handleIncrease={handleIncrease}

@@ -61,27 +61,23 @@ const ProductCard = ({
 
   const handleToggleBasket = () => {
     setBaskets(prev => {
-      const existing = prev.find(p => p.itemId === basketOfProduct.itemId);
+      const exists = prev.find(p => p.itemId === basketOfProduct.itemId);
 
-      if (existing) {
-        return prev.map(p =>
-          p.itemId === basketOfProduct.itemId
-            ? { ...p, quantity: p.quantity + 1 }
-            : p,
-        );
+      if (exists) {
+        return prev.filter(p => p.itemId !== basketOfProduct.itemId);
       }
 
-      return [...prev, basketOfProduct];
+      return [...prev, { ...basketOfProduct, quantity: 1 }];
     });
   };
 
   return (
     <div className="product__card">
+      <img src={product.image} alt="" className="card__image" />
       <Link
         to={`/${product.category}/${product.itemId}`}
         className="card__link"
       >
-        <img src={product.image} alt="" className="card__image" />
         <h4 className="card__name">{product.name}</h4>
       </Link>
       <div className="card__price">
@@ -109,7 +105,7 @@ const ProductCard = ({
           className={`card__button--add-to-cart ${isBasket ? 'active' : ''}`}
           onClick={handleToggleBasket}
         >
-          Add to cart
+          {isBasket ? 'Added to Cart' : 'Add to Cart'}
         </button>
         <button
           className={`card__button--icon ${isFavorite ? 'active' : ''}`}
