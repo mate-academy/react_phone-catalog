@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from 'react';
 import type { Product } from '@/types/Product';
+import { loadFromStorage } from '@/utils/storage';
 
 const STORAGE_KEY = 'favorites';
 
@@ -17,22 +18,14 @@ type FavoritesContextType = {
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
-function loadFromStorage(): Product[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-
-    return raw ? (JSON.parse(raw) as Product[]) : [];
-  } catch {
-    return [];
-  }
-}
-
 type Props = {
   children: ReactNode;
 };
 
 export const FavoritesProvider = ({ children }: Props) => {
-  const [favorites, setFavorites] = useState<Product[]>(loadFromStorage);
+  const [favorites, setFavorites] = useState<Product[]>(() =>
+    loadFromStorage<Product[]>(STORAGE_KEY, []),
+  );
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
