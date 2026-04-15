@@ -16,9 +16,13 @@ export const PicturesSlider = () => {
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    timerRef.current = window.setInterval(() => {
-      setActive(prev => (prev < lastIndex ? prev + 1 : prev));
-    }, 5000);
+    const startTimer = () => {
+      timerRef.current = window.setInterval(() => {
+        setActive(prev => (prev < lastIndex ? prev + 1 : prev));
+      }, 5000);
+    };
+
+    startTimer();
 
     return () => {
       if (timerRef.current) {
