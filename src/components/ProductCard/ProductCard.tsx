@@ -1,7 +1,8 @@
 import styles from './ProductCard.module.scss';
 
 import { Product } from '../../../public/api/types/Product';
-import { Link } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+
 import FavouritesLink from '../FavouritesLink/index';
 import AddToCartButton from '../AddToCartButton';
 import Button from '../Button/index';
@@ -26,6 +27,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const visibleOnDesktop = 4;
   const { items, addToCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
+  const location = useLocation();
 
   return (
     <div
@@ -46,12 +48,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             className={styles.productCard__productImage}
           />
         </div>
-        <Link
-          to={`/product/${product.id}`}
-          className={styles.productCard__productName}
+        <NavLink
+          to={{
+            pathname: `/${product.category}/${product.id}`,
+            search: location.search,
+          }}
+          className={({ isActive }) =>
+            `${styles.productCard__productName} ${styles.nav__link} ${isActive ? styles.active : ''}`
+          }
         >
           {product.name}
-        </Link>
+        </NavLink>
         <div className={styles.productPriceRow}>
           <div className={styles.productCard__productPrice}>
             <span>${product.price}&nbsp;</span>

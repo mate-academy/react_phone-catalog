@@ -24,32 +24,38 @@ const App = () => {
             <h1 className="visually-hidden">Product Catalog</h1>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route
-                path="/phones"
-                element={<ProductsPage category="phones" title="Phones page" />}
-              />
-              <Route
-                path="/tablets"
-                element={
-                  <ProductsPage category="tablets" title="Tablets page" />
-                }
-              />
-              <Route
-                path="/accessories"
-                element={
-                  <ProductsPage
-                    category="accessories"
-                    title="Accessories page"
-                  />
-                }
-              />
+              <Route path="/phones">
+                <Route
+                  index
+                  element={
+                    <ProductsPage category="phones" title="Phones page" />
+                  }
+                />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="/tablets">
+                <Route
+                  index
+                  element={
+                    <ProductsPage category="tablets" title="Tablets page" />
+                  }
+                />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="/accessories">
+                <Route
+                  index
+                  element={
+                    <ProductsPage
+                      category="accessories"
+                      title="Accessories page"
+                    />
+                  }
+                />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
               <Route path="/cart" element={<CartPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
-
-              <Route
-                path="/product/:productId"
-                element={<ProductDetailsPage />}
-              />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>

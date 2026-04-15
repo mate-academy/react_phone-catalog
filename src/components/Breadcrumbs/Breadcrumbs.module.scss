@@ -4,6 +4,7 @@
 .breadcrumbs {
   font-size: 12px;
   color: $primary-color;
+  text-transform: capitalize;
 
  .nav__link {
     font-size: 12px;
@@ -11,7 +12,13 @@
     &:hover {
       border-bottom: 2px solid $active-menu-color;
       color: $active-menu-color; }
-    &.active { background: $secondary-color; color: $accent-color;
+    &.active {
+      color: $primary-color;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+
     }
 }
   .current {

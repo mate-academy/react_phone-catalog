@@ -1,5 +1,5 @@
 import styles from './MenuNav.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 type MenuNavProps = {
   className?: string;
@@ -10,6 +10,8 @@ export const MenuNav: React.FC<MenuNavProps> = ({
   className,
   handleMenuClick,
 }) => {
+  const location = useLocation();
+
   return (
     <div className={`${styles.menu}`}>
       <nav
@@ -18,7 +20,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
             <NavLink
-              to="/"
+              to={`/${location.search}`}
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
@@ -29,7 +31,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({
           </li>
           <li className={styles.nav__item}>
             <NavLink
-              to="/phones"
+              to={`/phones` || `/product`}
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
@@ -40,7 +42,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({
           </li>
           <li className={styles.nav__item}>
             <NavLink
-              to="/tablets"
+              to={`/tablets${location.search}`}
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
@@ -52,7 +54,7 @@ export const MenuNav: React.FC<MenuNavProps> = ({
 
           <li className={styles.nav__item}>
             <NavLink
-              to="/accessories"
+              to={`/accessories${location.search}`}
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }

@@ -69,6 +69,11 @@
     }
 
     &__productName {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $primary-color;
+
       grid-column: 4 / 6;
       grid-row: 1;
 
@@ -118,6 +123,8 @@
       height: 22px;
       grid-column: 4;
       grid-row: 2;
+      justify-self: end;
+      text-align: left;
 
       @include on-tablet {
          grid-column: 13 / 14;

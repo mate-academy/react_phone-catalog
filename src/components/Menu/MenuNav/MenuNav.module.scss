@@ -12,27 +12,7 @@
      padding-inline: 24px;
   }
 
-  &__link {
-    color: $menu-color;
-    text-decoration: none;
-    position: relative;
-    font-weight: 800;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 4%;
-    text-transform: uppercase;
 
-    padding-block: 8px;
-
-    &:hover {
-      border-bottom: 2px solid $active-menu-color;
-      color: $active-menu-color;
-    }
-
-    &:active {
-      color: $menu-color;
-    }
-  }
 
   &__list {
     margin: 0;
@@ -47,6 +27,29 @@
     @include on-tablet {
       flex-direction: row;
        gap: 32px;
+    }
+  }
+
+  &__link {
+    color: $menu-color;
+    text-decoration: none;
+    position: relative;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+
+    padding-block: 8px;
+
+    &.is-active {
+      color: $active-menu-color;
+      border-bottom: 2px solid $active-menu-color;
+    }
+
+    &[aria-current="page"] {
+      color: $active-menu-color;
+      border-bottom: 2px solid $active-menu-color;
     }
   }
 }

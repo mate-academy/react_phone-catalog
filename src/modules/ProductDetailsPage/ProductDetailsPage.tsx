@@ -64,8 +64,6 @@ export const ProductDetailsPage = () => {
           return prev;
         }
 
-        // const params = new URLSearchParams(search);
-
         if (value) {
           params.set('color', value);
         } else {
@@ -223,7 +221,7 @@ export const ProductDetailsPage = () => {
         params.set('color', String(selectedColor));
         params.set('capacity', String(selectedCapacity));
         const newSearch = `?${params.toString()}`;
-        const newPath = `/product/${item.id}${newSearch}`;
+        const newPath = `/${productCategory}/${item.id}${newSearch}`;
 
         if (newPath !== `${location.pathname}${location.search}`) {
           navigate(newPath, { replace: false });
@@ -287,7 +285,10 @@ export const ProductDetailsPage = () => {
     <>
       <div className={styles.productDetailsPage}>
         <div className={styles.productDetailsPage__breadcrumbs}>
-          <Breadcrumbs productName={product?.name} />
+          <Breadcrumbs
+            categoryName={productCategory}
+            productName={product?.name}
+          />
         </div>
         <nav className={styles.productDetailsPage__nav}>
           <HistoryBackButton />

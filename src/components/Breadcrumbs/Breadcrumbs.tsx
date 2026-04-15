@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 import iconStyles from '../Icon/Icon.module.scss';
 
-export const Breadcrumbs = ({ productName }) => {
+export const Breadcrumbs = ({ categoryName, productName }) => {
   return (
     <nav
       aria-label="Breadcrumb"
@@ -23,7 +23,7 @@ export const Breadcrumbs = ({ productName }) => {
             `${styles.nav__link} ${isActive ? styles.active : ''}`
           }
         >
-          Phones
+          {categoryName}
         </NavLink>
 
         <>
