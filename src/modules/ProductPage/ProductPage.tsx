@@ -1,4 +1,4 @@
-import productsData from '../../../public/api/products.json';
+import productsData from '../../api/products.json';
 import { Product, RawProductFromApi } from '../../modules/shared/types/Product';
 import { Catalog } from '../../components/Catalog';
 import { Icon } from '../../components/Icon';

@@ -1,7 +1,7 @@
 import styles from './HomePage.module.scss';
 import classNames from 'classnames';
 import { Categories } from './components/Categories/Categories';
-import productsData from '../../../public/api/products.json';
+import productsData from '../../api/products.json';
 import { getHotPrices, getNewModels } from '../shared/utils/products';
 import { BannerWrapper } from './components/BannerWrapper/BannerWrapper';
 import { Product, RawProductFromApi } from '../shared/types/Product';

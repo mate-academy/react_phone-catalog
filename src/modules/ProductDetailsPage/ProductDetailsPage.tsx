@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { useParams, useLocation } from 'react-router-dom';
 import { ProductDetails } from '../../modules/shared/types/ProductDetails';
-import productsData from '../../../public/api/products.json';
+import productsData from '../../api/products.json';
 import { getRandomProducts } from '../../modules/shared/utils/products';
 import { RawProductFromApi } from '../../modules/shared/types/Product';
 import { ProductBreadcrumbs } from './components/ProductBreadcrumbs';
