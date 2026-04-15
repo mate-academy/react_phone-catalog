@@ -11,11 +11,11 @@ export const Breadcrumbs = ({ productName }) => {
       <div className={styles.iconsRow}>
         <NavLink
           to="/"
-          className={`${iconStyles.icon} ${iconStyles['icon--home']}`}
+          className={`${iconStyles.icon} ${styles.icon} ${iconStyles['icon--home']}`}
         ></NavLink>
 
         <span
-          className={`${iconStyles.icon} ${iconStyles['icon--button-right']}`}
+          className={`${iconStyles.icon}  ${styles.icon} ${iconStyles['icon--button-right']}`}
         ></span>
         <NavLink
           to="/phones"
@@ -28,7 +28,7 @@ export const Breadcrumbs = ({ productName }) => {
 
         <>
           <span
-            className={`${iconStyles.icon} ${iconStyles['icon--button-right']}`}
+            className={`${iconStyles.icon} ${styles.icon} ${iconStyles['icon--button-right']}`}
           ></span>
           <span className={styles.current}>{productName}</span>
         </>

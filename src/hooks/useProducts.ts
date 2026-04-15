@@ -80,7 +80,7 @@ export const useProduct = (productId: string, url = URL) => {
 
         const found = data.find(
           (p: Product) =>
-            String(p.id) === String(productId) ||
+            (String(p.id) === String(productId) && String(p.color) !== '') ||
             String((p as Product).itemId) === String(productId) ||
             String((p as Product).namespaceId) === String(productId),
         );
@@ -131,6 +131,7 @@ export const useProduct = (productId: string, url = URL) => {
 
           const merged = { ...found, ...(detailsItem || {}) };
 
+          //console.log(merged);
           setProduct(merged);
         } else {
           setProduct(found);

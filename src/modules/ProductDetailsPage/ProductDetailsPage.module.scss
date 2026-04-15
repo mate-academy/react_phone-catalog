@@ -18,12 +18,15 @@
   }
 
   &__nav {
-     grid-column: 1/-1;
+   grid-column: 1/-1;
+   padding: 0;
+   margin: 0;
+
   }
 
    &__breadcrumbs {
      grid-column: 1/-1;
-     margin-block: 24px;
+      margin-block: 0;
   }
 
   .section--breadcrumbs {
@@ -198,7 +201,7 @@
     }
 
     @include on-desktop {
-      grid-column: 14 / -1;
+      grid-column: 14 / 23;
       grid-row: 1;
 
     }
@@ -238,7 +241,7 @@
      @include on-desktop {
         @include page-grid;
 
-        grid-column: 11/23;
+        grid-column: 11/-1;
         grid-row: 2;
         height: 296px;
         white-space: nowrap;
@@ -360,7 +363,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding-bottom: 24px;
+  padding-block: 24px;
   box-sizing: border-box;
   border-bottom: 1px solid $elements-color;
   justify-content: space-between;

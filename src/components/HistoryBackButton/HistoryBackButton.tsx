@@ -17,7 +17,7 @@ export const HistoryBackButton: React.FC = ({}) => {
 
   return (
     <Button
-      className={`${buttonStyles.button} ${buttonStyles['button--history-back']}`}
+      className={`${buttonStyles.button} ${styles.button} ${buttonStyles['button--history-back']}`}
       type="button"
       aria-label="Back"
     >

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
+
 import { useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import buttonStyles from '../../components/Button/Button.module.scss';
@@ -15,6 +16,10 @@ import Breadcrumbs from '../../components/Breadcrumbs/index';
 import HistoryBackButton from '../../components/HistoryBackButton';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
+import { COLOR_HEX_MAP } from '../../constants/colors';
 
 type Types = {
   productId: string;
@@ -24,21 +29,111 @@ type Types = {
 
 export const ProductDetailsPage = () => {
   const URL = `api/products.json`;
+
   const { productId } = useParams();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [mainImage, setMainImage] = useState<string | null>(null);
-  const { product, loading, error } = useProduct((productId as string) ?? '');
+
   const title = 'Product Details';
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [loadingSuggested, setLoadingSuggested] = useState(false);
   const [errorSuggested, setErrorSuggested] = useState<string | null>(null);
   const [suggestedIndex, setSuggestedIndex] = useState(0);
   const { items, addToCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
+
+  const { product, loading, error } = useProduct(productId as string, URL);
+  const capacityAvailable = product?.capacityAvailable;
+
+  const Id = product?.id ?? null;
+  const productCategory = product?.category ?? null;
+  const search = searchParams.toString();
+  const params = new URLSearchParams(search);
+
+  const handleColorChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.currentTarget.value.trim(); // '' -> порожній
+
+      setSelectedColor(prev => {
+        if (prev === (value || null)) {
+          return prev;
+        }
+
+        // const params = new URLSearchParams(search);
+
+        if (value) {
+          params.set('color', value);
+        } else {
+          params.delete('color');
+        }
+
+        setSearchParams(params);
+
+        return value || null;
+      });
+    },
+    [search, setSearchParams],
+  );
+  const handleCapacityChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.currentTarget.value.trim();
+
+      setSelectedCapacity(prev => {
+        if (prev === (value || null)) {
+          return prev;
+        }
+
+        if (value) {
+          params.set('capacity', value);
+        } else {
+          params.delete('capacity');
+        }
+
+        setSearchParams(params);
+
+        return value || null;
+      });
+    },
+    [search, params],
+  );
+
+  const getAllProducts = useCallback(async () => {
+    const res = await fetch(URL);
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch');
+    }
+
+    return res.json();
+  }, [URL]);
+
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
+
+    setMainImage(product.image ?? null);
+    if (!params.has('capacity')) {
+      setSelectedCapacity(product?.capacity);
+    }
+
+    if (!params.has('color')) {
+      setSelectedColor(product?.color);
+    }
+  }, [
+    Id,
+    productCategory,
+    capacityAvailable,
+    searchParams,
+    selectedColor,
+    selectedCapacity,
+    product,
+  ]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -49,18 +144,12 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    async function getSuggestedProducts({
+    const getSuggestedProducts = async ({
       productId: id,
       category,
       count = 4,
-    }: Types) {
-      const res = await fetch(URL);
-
-      if (!res.ok) {
-        throw new Error('Failed to fetch');
-      }
-
-      const all = await res.json();
+    }: Types) => {
+      const all = await getAllProducts();
 
       const others = all.filter(
         p =>
@@ -76,16 +165,15 @@ export const ProductDetailsPage = () => {
       }
 
       return others.slice(0, count);
-    }
+    };
 
     const loadSuggested = async () => {
       setLoadingSuggested(true);
       setErrorSuggested(null);
       try {
         const newItems = await getSuggestedProducts({
-          productId: product.id,
+          productId: String(product.id),
           category: product.category,
-          count: 4,
         });
 
         setSuggested(newItems);
@@ -98,18 +186,57 @@ export const ProductDetailsPage = () => {
     };
 
     setMainImage(product.image ?? null);
-    setSelectedColor(
-      Array.isArray(product.colorsAvailable)
-        ? product.colorsAvailable[0]
-        : null,
-    );
-    setSelectedCapacity(
-      Array.isArray(product.capacityAvailable)
-        ? product.capacityAvailable[0]
-        : null,
-    );
     loadSuggested();
-  }, [product, URL]);
+  }, [
+    Id,
+    productCategory,
+    capacityAvailable,
+    searchParams,
+    selectedColor,
+    selectedCapacity,
+    getAllProducts,
+  ]);
+
+  useEffect(() => {
+    if (!productId || !selectedColor || !selectedCapacity) {
+      return;
+    }
+
+    let cancelled = false;
+    const load = async () => {
+      const all = await getAllProducts();
+
+      if (cancelled) {
+        return;
+      }
+
+      const candidates = all.filter(
+        p =>
+          String(p.id) !== String(productId) &&
+          String(p.category) === String(productCategory) &&
+          String(p.color) === String(selectedColor) &&
+          String(p.capacity) === String(selectedCapacity),
+      );
+      const item = candidates[0];
+
+      if (item) {
+        params.set('color', String(selectedColor));
+        params.set('capacity', String(selectedCapacity));
+        const newSearch = `?${params.toString()}`;
+        const newPath = `/product/${item.id}${newSearch}`;
+
+        if (newPath !== `${location.pathname}${location.search}`) {
+          navigate(newPath, { replace: false });
+        }
+      }
+    };
+
+    load();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedColor, selectedCapacity]);
 
   if (!productId) {
     return <div>Product was not found</div>;
@@ -140,6 +267,20 @@ export const ProductDetailsPage = () => {
     }
 
     setSuggestedIndex(prev => (prev - 1 + suggested.length) % suggested.length);
+  };
+
+  const getColorName = (name?: string): string => {
+    if (!name) {
+      return 'transparent';
+    }
+
+    const v = name.trim().toLowerCase();
+
+    if (v.startsWith('#') || v.startsWith('rgb') || v.startsWith('hsl')) {
+      return name;
+    }
+
+    return COLOR_HEX_MAP[v] ?? name;
   };
 
   return (
@@ -226,11 +367,14 @@ export const ProductDetailsPage = () => {
                               name="color"
                               value={color}
                               checked={selectedColor === color}
-                              onChange={() => setSelectedColor(color)}
+                              title={color}
+                              onChange={handleColorChange}
                             />
                             <span
                               className={styles.colorCircle}
-                              style={{ backgroundColor: color }}
+                              style={{
+                                backgroundColor: getColorName(color),
+                              }}
                               aria-hidden="true"
                             />
                           </label>
@@ -265,7 +409,7 @@ export const ProductDetailsPage = () => {
                                     name="capacity"
                                     value={cap}
                                     checked={selectedCapacity === cap}
-                                    onChange={() => setSelectedCapacity(cap)}
+                                    onChange={handleCapacityChange}
                                   />
                                   <span
                                     className={styles.optionText}
