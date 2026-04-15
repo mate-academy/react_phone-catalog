@@ -35,8 +35,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #323542;
-  background: #323542;
+  border: 1px solid var(--color-button);
+  background: var(--color-button);
   color: #F1F2F9;
   cursor: pointer;
   transition: transform var(--transition), background var(--transition), border-color var(--transition);
@@ -62,7 +62,7 @@
 .dot {
   width: 14px;
   height: 4px;
-  background: #3B3E4A;
+  background: var(--color-border);
   cursor: pointer;
   border: none;
 }

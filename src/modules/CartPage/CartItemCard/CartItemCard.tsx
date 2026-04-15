@@ -21,7 +21,7 @@ export const CartItemCard: React.FC<Props> = ({
         className={styles.remove}
         onClick={() => onRemove(item.product.itemId)}
       >
-        <img src="/img/close.png" alt="close" />
+        <img src="./img/close.png" alt="close" />
       </button>
       <img
         className={styles.image}

@@ -3,7 +3,7 @@ export const NotFoundPage = () => {
     <>
       <h1>Page not found</h1>
       <img
-        src="/img/page-not-found.png"
+        src="./img/page-not-found.png"
         alt="Page not found"
         style={{
           width: '230px',

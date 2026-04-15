@@ -14,7 +14,7 @@ export const ErrorMessage = ({ message, onRetry }: Props) => {
         Reload
       </button>
       <img
-        src="/img/product-not-found.png"
+        src="./img/product-not-found.png"
         alt="Product not found"
         className={styles.image}
       />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
@@ -13,16 +13,39 @@ export const PicturesSlider = () => {
 
   const lastIndex = images.length - 1;
 
-  const goPrev = () => setActive(i => (i - 1 + images.length) % images.length);
-  const goNext = () => setActive(i => (i + 1) % images.length);
+  const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setActive(prev => (prev === lastIndex ? 0 : prev + 1));
+    timerRef.current = window.setInterval(() => {
+      setActive(prev => (prev < lastIndex ? prev + 1 : prev));
     }, 5000);
 
-    return () => window.clearInterval(id);
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
   }, [lastIndex]);
+
+  const resetTimer = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    timerRef.current = window.setInterval(() => {
+      setActive(prev => (prev < lastIndex ? prev + 1 : prev));
+    }, 5000);
+  };
+
+  const goNext = () => {
+    setActive(i => (i < lastIndex ? i + 1 : i));
+    resetTimer();
+  };
+
+  const goPrev = () => {
+    setActive(i => (i > 0 ? i - 1 : i));
+    resetTimer();
+  };
 
   return (
     <section className={styles.slider} aria-label="Promotions slider">
@@ -40,9 +63,9 @@ export const PicturesSlider = () => {
           <picture>
             <source
               media="(max-width: 639px)"
-              srcSet="/img/banner-mobile.png"
+              srcSet="./img/banner-mobile.png"
             />
-            <img className={styles.image} src="/img/banner.png" alt="Banner" />
+            <img className={styles.image} src="./img/banner.png" alt="Banner" />
           </picture>
         ) : (
           <img className={styles.image} src={images[active]} alt="Banner" />
