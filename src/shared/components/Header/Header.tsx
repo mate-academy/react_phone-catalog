@@ -120,7 +120,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
             onClick={() => setIsMenuOpen(false)}
           >
             <div className={styles.iconWrapper}>
-              <img src="/img/heart.svg" alt="heart" />
+              <img src="./img/heart.svg" alt="heart" />
               {favoritesCount > 0 && (
                 <span className={styles.badge}>{favoritesCount}</span>
               )}

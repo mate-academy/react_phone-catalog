@@ -18,7 +18,7 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/">
-        <img src="/img/home.png" alt="home" className={styles.homeIcon} />
+        <img src="./img/home.png" alt="home" className={styles.homeIcon} />
       </Link>
       {!product && path && (
         <>

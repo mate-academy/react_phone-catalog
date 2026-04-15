@@ -18,7 +18,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
     <footer className={`${styles.footer} ${className || ''}`}>
       <Container className={styles.content}>
         <NavLink to="/" className={styles.logo}>
-          <img src="/img/logo.png" alt="Nice Gadgets" />
+          <img src="./img/logo.png" alt="Nice Gadgets" />
         </NavLink>
         <nav className={styles.links}>
           <a
@@ -35,7 +35,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
         <button type="button" className={styles.back}>
           Back to top{' '}
           <span className={styles.ctrl} onClick={handleBackToTop}>
-            <img src="/img/up.png" alt="up" />
+            <img src="./img/up.png" alt="up" />
           </span>
         </button>
       </Container>

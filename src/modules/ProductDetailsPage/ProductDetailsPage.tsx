@@ -118,7 +118,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
       return '';
     }
 
-    return path.startsWith('/') ? path : `/${path}`;
+    return path.startsWith('/') ? path : `./${path}`;
   };
 
   const cartIds = new Set(cart.map(item => item.product.itemId));
