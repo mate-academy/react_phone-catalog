@@ -26,10 +26,11 @@
 
       @include on-desktop {
         align-items: center;
-        grid-column: 1 / 16;
+        grid-column: 1 / -1;
         margin-block: 0 16px ;
         margin-right: 16px;
         box-sizing: border-box;
+
       }
   }
 
@@ -68,16 +69,21 @@
        grid-row: 1;
     }
 
-    &__productName {
+    &__productName  {
       font-weight: 600;
       font-size: 14px;
       line-height: 21px;
-      color: $primary-color;
+      a {
+        color: $primary-color;
 
+      }
+
+      min-width: 128px;
       grid-column: 4 / 6;
       grid-row: 1;
 
       @include on-tablet {
+        min-width: 176px;
         grid-column: 4 / 6;
         grid-row: 1;
        }
@@ -85,6 +91,7 @@
       @include on-desktop{
         grid-column: 4 / 10;
         grid-row: 1;
+        max-width: 336px;
        }
 
     }
@@ -123,20 +130,23 @@
       height: 22px;
       grid-column: 4;
       grid-row: 2;
-      justify-self: end;
-      text-align: left;
+      place-self: end end;
+      text-align: right;
+      min-width: 128px;
 
       @include on-tablet {
          grid-column: 13 / 14;
           grid-row: 1;
-
-          width: fit-content;
+      align-self: center;
+         min-width: 80px;
        }
 
        @include on-desktop {
-         grid-column: 13 / 16;
+         grid-column: 13 / 23;
           grid-row: 1;
-          width: fit-content;
+          min-width: 80px;
+          justify-self: end;
+          text-align: center;
        }
     }
 }

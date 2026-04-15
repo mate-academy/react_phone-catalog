@@ -23,44 +23,47 @@ export const CartItems: React.FC<CartItemsProps> = ({
 
   return (
     <>
-      <Link
-        to={`/${product.category}/${product.id}`}
-        className={styles.cartLink}
-      >
-        <div className={styles.productCard__productInfo}>
-          <div className={styles.productCard__productImageContainer}>
-            <img
-              src={product?.image}
-              alt={product?.name ?? 'Product Image'}
-              className={styles.productCard__productImage}
-            />
-          </div>
-          <div className={styles.productCard__productName}>{product.name}</div>
-          <div className={styles.productCard__buttons}>
-            <button
-              className={`${styles.button} ${isDisabled ? styles.disabled : ''}`}
-              onClick={handleDecrease}
-              disabled={isDisabled}
-            >
-              <span className={`${iconStyles['icon--round']}`}>-</span>
-            </button>
-            <span className={styles.productCard__quantity}>{quantity}</span>
-            <button onClick={handleIncrease} className={styles.button}>
-              <span className={`${iconStyles['icon--round']}`}>+</span>
-            </button>
-          </div>
-          <p className={styles.productCard__productPrice}>
-            ${(Number(product.price) * quantity).toFixed(2)}
-          </p>
-
-          <button
-            type="button"
-            onClick={handleRemoveFromCart}
-            aria-label="Remove from cart"
-            className={`${iconStyles.icon} ${iconStyles['icon--close']} ${styles.productCard__removeIcon}`}
-          ></button>
+      <div className={styles.productCard__productInfo}>
+        <div className={styles.productCard__productImageContainer}>
+          <img
+            src={product?.image}
+            alt={product?.name ?? 'Product Image'}
+            className={styles.productCard__productImage}
+          />
         </div>
-      </Link>
+        <div className={styles.productCard__productName}>
+          <Link
+            to={`/${product.category}/${product.id}`}
+            className={styles.cartLink}
+          >
+            {product.name}
+          </Link>
+        </div>
+
+        <div className={styles.productCard__buttons}>
+          <button
+            className={`${styles.button} ${isDisabled ? styles.disabled : ''}`}
+            onClick={handleDecrease}
+            disabled={isDisabled}
+          >
+            <span className={`${iconStyles['icon--round']}`}>-</span>
+          </button>
+          <span className={styles.productCard__quantity}>{quantity}</span>
+          <button onClick={handleIncrease} className={styles.button}>
+            <span className={`${iconStyles['icon--round']}`}>+</span>
+          </button>
+        </div>
+        <p className={styles.productCard__productPrice}>
+          ${(Number(product.price) * quantity).toFixed(2)}
+        </p>
+
+        <button
+          type="button"
+          onClick={handleRemoveFromCart}
+          aria-label="Remove from cart"
+          className={`${iconStyles.icon} ${iconStyles['icon--close']} ${styles.productCard__removeIcon}`}
+        ></button>
+      </div>
     </>
   );
 };
