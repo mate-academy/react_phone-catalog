@@ -25,8 +25,7 @@ export const PicturesSlider = () => {
         clearInterval(timerRef.current);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [lastIndex]);
 
   const resetTimer = () => {
     if (timerRef.current) {
@@ -90,7 +89,10 @@ export const PicturesSlider = () => {
             className={
               idx === active ? `${styles.dot} ${styles.dotActive}` : styles.dot
             }
-            onClick={() => setActive(idx)}
+            onClick={() => {
+              setActive(idx);
+              resetTimer();
+            }}
             aria-label={`Go to banner ${idx + 1}`}
             aria-pressed={idx === active}
           />
