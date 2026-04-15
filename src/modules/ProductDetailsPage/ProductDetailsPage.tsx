@@ -14,8 +14,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 
-export const ProductDetailsPage: React.FC = () => {
 
+
+export const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -24,27 +25,23 @@ export const ProductDetailsPage: React.FC = () => {
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
-  const { productId } = useParams<{
+  const { category, productId } = useParams<{
     category: string;
     productId: string;
   }>();
 
-  //const getCartId = (product: Product) => {
-  //  return `${product.itemId}-${product.color}-${product.capacity}`;
-  //};
-
   const { isInCart, addToCart, removeFromCart } = useCart();
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
-  
+
   const [isFading, setIsFading] = useState(false);
 
-    const handleNavigate = (url: string) => {
-      setIsFading(true);
-      setTimeout(() => {
-        navigate(url);
-      }, 300);
-    };
+  const handleNavigate = (url: string) => {
+    setIsFading(true);
+    setTimeout(() => {
+      navigate(url);
+    }, 300);
+  };
 
   const uniqueId = product
     ? `${product.itemId}-${product.color}-${product.capacity}`
@@ -78,53 +75,49 @@ export const ProductDetailsPage: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productId]);
 
-useEffect(() => {
-  if (!productId) return;
+  useEffect(() => {
+    if (!productId || !category) return;
 
-  setIsLoading(true);
-  setIsError(false);
+    setIsLoading(true);
+    setIsError(false);
 
-  getProducts()
-    .then(all => {
-      setAllProducts(all);
+    getProducts()
+      .then(all => {
+        setAllProducts(all);
 
-      // 🔥 УНІВЕРСАЛЬНИЙ ПОШУК
-      const foundProduct = all.find(
-        p =>
-          p.itemId === productId ||
-          String(p.id) === productId ||
-          p.name.toLowerCase().replace(/\s+/g, '-') === productId,
-      );
-
-      if (!foundProduct) {
-        console.log('NOT FOUND productId:', productId);
-        console.log(
-          'ALL IDS:',
-          all.map(p => p.itemId),
-        );
-        setIsError(true);
-        return;
-      }
-
-      setProduct(foundProduct);
-      setSelectedPhoto(foundProduct.images?.[0] || '');
-      setNumericId(String(foundProduct.id));
-
-      const recommended = all
-        .filter(
+        const foundProduct = all.find(
           p =>
-            p.category === foundProduct.category &&
-            p.itemId !== foundProduct.itemId,
-        )
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 8);
+            p => p.itemId === productId && p.category === category ||
+            String(p.id) === productId ||
+            p.name.toLowerCase().replace(/\s+/g, '-') === productId,
+        );
 
-      setRecommendedProducts(recommended);
-    })
-    .catch(() => setIsError(true))
-    .finally(() => setIsLoading(false));
-}, [productId]);
+        if (!foundProduct) {
+          setIsError(true);
+          return;
+        }
+
+        setProduct(foundProduct);
+        setSelectedPhoto(foundProduct.images?.[0] || '');
+        setNumericId(String(foundProduct.id));
+
+        const recommended = all
+          .filter(
+            p =>
+              p.category === foundProduct.category &&
+              p.itemId !== foundProduct.itemId,
+          )
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 8);
+
+        setRecommendedProducts(recommended);
+      })
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
+  }, [productId, category]);
+
   if (isLoading) return <Loader />;
+  if (!product) return null;
 
   if (isError || !product) {
     return (
@@ -133,8 +126,6 @@ useEffect(() => {
       </div>
     );
   }
-
-  
 
   const colorMap: Record<string, string> = {
     black: '#212121',
@@ -150,6 +141,11 @@ useEffect(() => {
     rosegold: '#E6C7C2',
     coral: '#FF6F61',
   };
+
+  console.log('productId:', productId);
+  console.log('product:', product);
+  console.log('allProducts:', allProducts);
+  console.log('colorsAvailable:', product.colorsAvailable);
 
   return (
     <div className={`${styles.container} ${isFading ? styles.fadeOut : ''}`}>
@@ -184,15 +180,16 @@ useEffect(() => {
         <div className={styles.mainGrid}>
           <div className={styles.gallery}>
             <div className={styles.thumbnails}>
-              {product.images?.map(img => (
-                <div
-                  key={img}
-                  className={`${styles.thumbWrapper} ${selectedPhoto === img ? styles.activeThumb : ''}`}
-                  onClick={() => setSelectedPhoto(img)}
-                >
-                  <img src={img} alt="thumbnail" className={styles.thumb} />
-                </div>
-              ))}
+              {Array.isArray(product.images) &&
+                product.images.map(img => (
+                  <div
+                    key={img}
+                    className={`${styles.thumbWrapper} ${selectedPhoto === img ? styles.activeThumb : ''}`}
+                    onClick={() => setSelectedPhoto(img)}
+                  >
+                    <img src={img} alt="thumbnail" className={styles.thumb} />
+                  </div>
+                ))}
             </div>
 
             <div className={styles.mainImageWrapper}>
@@ -207,16 +204,17 @@ useEffect(() => {
           <div className={styles.about}>
             <h2 className={styles.subtitle}>About</h2>
             <div className={styles.description}>
-              {product.description?.map((section, idx) => (
-                <div key={idx} className={styles.descriptionSection}>
-                  <h3 className={styles.descriptionTitle}>{section.title}</h3>
-                  {section.text.map((paragraph, pIdx) => (
-                    <p key={pIdx} className={styles.descriptionText}>
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              ))}
+              {Array.isArray(product.description) &&
+                product.description.map((section, idx) => (
+                  <div key={idx} className={styles.descriptionSection}>
+                    <h3 className={styles.descriptionTitle}>{section.title}</h3>
+                    {section.text.map((paragraph, pIdx) => (
+                      <p key={pIdx} className={styles.descriptionText}>
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ))}
             </div>
           </div>
 
@@ -230,53 +228,57 @@ useEffect(() => {
               </div>
 
               <div className={styles.colors}>
-                {product.colorsAvailable.map(colorName => (
-                  <button
-                    key={`color-${colorName}`}
-                    onClick={() => {
-                      const target = allProducts.find(
-                        p =>
-                          p.name.split(' ').slice(0, 3).join(' ') ===
-                            product.name.split(' ').slice(0, 3).join(' ') &&
-                          p.color === colorName &&
-                          p.capacity === product.capacity,
-                      );
-                      if (target) {
-                        handleNavigate(`/${target.category}/${target.itemId}`);
-                      }
-                    }}
-                    className={`${styles.colorCircle} ${product.color === colorName ? styles.activeColor : ''}`}
-                    style={{
-                      backgroundColor: colorMap[colorName] || colorName,
-                    }}
-                    title={colorName}
-                  />
-                ))}
+                {Array.isArray(product.colorsAvailable) &&
+                  product.colorsAvailable.map(colorName => (
+                    <button
+                      key={`color-${colorName}`}
+                      onClick={() => {
+                        const target = allProducts.find(
+                          p =>
+                            p.namespaceId === product.namespaceId &&
+                            p.color === colorName &&
+                            p.capacity === product.capacity,
+                        );
+                        if (target) {
+                          handleNavigate(
+                            `/${target.category}/${target.itemId}`,
+                          );
+                        }
+                      }}
+                      className={`${styles.colorCircle} ${product.color === colorName ? styles.activeColor : ''}`}
+                      style={{
+                        backgroundColor: colorMap[colorName] || colorName,
+                      }}
+                      title={colorName}
+                    />
+                  ))}
               </div>
             </div>
             <div className={styles.capacity}>
               <p className={`${styles.label} label-text`}>Select capacity</p>
               <div className={styles.capacityList}>
-                {product.capacityAvailable.map(cap => (
-                  <button
-                    key={`capacity-${cap}`}
-                    onClick={() => {
-                      const target = allProducts.find(
-                        p =>
-                          p.name.split(' ').slice(0, 3).join(' ') ===
-                            product.name.split(' ').slice(0, 3).join(' ') &&
-                          p.capacity === cap &&
-                          p.color === product.color,
-                      );
-                      if (target) {
-                        handleNavigate(`/${target.category}/${target.itemId}`);
-                      }
-                    }}
-                    className={`${styles.capacityItem} ${product.capacity === cap ? styles.activeCapacity : ''}`}
-                  >
-                    {cap}
-                  </button>
-                ))}
+                {Array.isArray(product.capacityAvailable) &&
+                  product.capacityAvailable.map(cap => (
+                    <button
+                      key={`capacity-${cap}`}
+                      onClick={() => {
+                        const target = allProducts.find(
+                          p =>
+                            p.namespaceId === product.namespaceId &&
+                            p.capacity === cap &&
+                            p.color === product.color,
+                        );
+                        if (target) {
+                          handleNavigate(
+                            `/${target.category}/${target.itemId}`,
+                          );
+                        }
+                      }}
+                      className={`${styles.capacityItem} ${product.capacity === cap ? styles.activeCapacity : ''}`}
+                    >
+                      {cap}
+                    </button>
+                  ))}
               </div>
             </div>
 

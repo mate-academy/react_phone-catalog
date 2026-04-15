@@ -48,11 +48,6 @@ export const CartPage = () => {
     }
   }; */
 
-  const handleGoToProduct = (item: any) => {
-    navigate(`/${item.category}/${item.itemId}`);
-  };
-
-
   return (
     <div className={styles.cartPage}>
       <button
@@ -80,6 +75,9 @@ export const CartPage = () => {
                 <Link
                   to={`/${item.category}/${item.itemId}`}
                   className={styles.item__link}
+                  onClick={() =>
+                    console.log('Clicked category:', item.category)
+                  }
                 >
                   <img
                     src={item.image}

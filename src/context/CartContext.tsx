@@ -9,6 +9,9 @@ export type CartItem = {
   category: string;
   quantity: number;
   uniqueId: string;
+  color: string;
+  capacity: string;
+  colorsAvailable?: string[];
 };
 
 type Product = any;
@@ -61,6 +64,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         category: product.category,
         quantity: 1,
         uniqueId,
+        color: product.color,
+        capacity: product.capacity,
+        colorsAvailable: product.colorsAvailable,
       };
 
       return [...prev, newItem];

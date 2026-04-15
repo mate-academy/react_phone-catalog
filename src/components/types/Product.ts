@@ -3,13 +3,14 @@ export interface Product {
   itemId: string;
   category: string;
   name: string;
+  namespaceId?: string;
   capacity: string;
   capacityAvailable: string[];
   priceRegular?: number;
   priceDiscount?: number;
   fullPrice?: number;
   price?: number;
-  colorsAvailable: string[];
+  colorsAvailable?: string[];
   color: string;
   images: string[];
   image?: string;
