@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-  base: '/react_phone-catalog/',
   plugins: [react(), svgr()],
   css: {
     preprocessorOptions: {

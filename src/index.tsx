@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
 import { CartProvider } from './modules/shared/context/CartContext';
 import { FavoritesProvider } from './modules/shared/context/FavoritesContext';

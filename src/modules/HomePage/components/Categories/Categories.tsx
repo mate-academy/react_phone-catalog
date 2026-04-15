@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './Categories.module.scss';
 import { Link } from 'react-router-dom';
+import { getPublicPath } from '../../../shared/utils/pathHelper';
 
 const CATEGORIES = [
   {
@@ -36,7 +37,7 @@ export const Categories = () => {
         <Link key={cat.to} to={cat.to} className={styles.categoryItem}>
           <div className={classNames(styles.imageWrapper, cat.bgClass)}>
             <img
-              src={cat.img}
+              src={getPublicPath(cat.img)}
               alt={cat.title}
               className={classNames(styles.categoryImage, cat.imgClass)}
             />

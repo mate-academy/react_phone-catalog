@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProductGallery.module.scss';
 import { ProductDetails } from '../../../shared/types/ProductDetails';
 import classNames from 'classnames';
+import { getPublicPath } from '../../../shared/utils/pathHelper';
 
 interface Props {
   product: ProductDetails;
@@ -18,7 +19,7 @@ export const ProductGallery: React.FC<Props> = ({ product, selectedImage, onSele
         {product.images.map(img => (
           <img
             key={img}
-            src={`/${img}`}
+            src={getPublicPath(img)}
             alt="Preview"
             className={classNames(styles.preview, {
               [styles.active]: img === selectedImage,
@@ -28,7 +29,7 @@ export const ProductGallery: React.FC<Props> = ({ product, selectedImage, onSele
         ))}
       </div>
       <div className={styles.mainPhoto}>
-        <img src={`/${mainPhoto}`} alt={product.name} />
+        <img src={getPublicPath(mainPhoto)} alt={product.name} />
       </div>
     </div>
   );
