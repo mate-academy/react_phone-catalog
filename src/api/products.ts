@@ -21,7 +21,9 @@ export async function getProductById(productId: string) {
     throw new Error('Product not found in products.json');
   }
 
-  const detailsList = await request<ProductDetails[]>(`/${base.category}.json`);
+  const detailsList = await request<ProductDetails[]>(
+    `./${base.category}.json`,
+  );
 
   const details = detailsList.find(d => d.id === productId);
 
