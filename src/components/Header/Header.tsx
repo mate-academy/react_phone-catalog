@@ -22,6 +22,7 @@ const Header = ({ favorites, baskets }: HeaderProps) => {
   const isHeart = location.pathname.startsWith('/heart');
   const isBasket = location.pathname.startsWith('/basket');
   const isHome = location.pathname === '';
+  const totalItemsInBasket = baskets.reduce((sum, product) => sum + product.quantity, 0);
 
   return (
     <header className="header">
@@ -82,8 +83,8 @@ const Header = ({ favorites, baskets }: HeaderProps) => {
               to="/basket"
               className={`icon icon--basket ${isBasket ? 'is-active' : ''}`}
             >
-              {baskets.length > 0 && (
-                <span className="icon--badge">{baskets.length}</span>
+              {totalItemsInBasket > 0 && (
+                <span className="icon--badge">{totalItemsInBasket}</span>
               )}
             </Link>
             <button
