@@ -25,7 +25,8 @@ export const PicturesSlider = () => {
         clearInterval(timerRef.current);
       }
     };
-  }, [lastIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const resetTimer = () => {
     if (timerRef.current) {
