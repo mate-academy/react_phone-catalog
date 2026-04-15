@@ -3,6 +3,7 @@ import heartIcon from '@/assets/icons/icon-favorites.svg';
 import heartIconSelected from '@/assets/icons/icon-favorites-selected.svg';
 import type { Product } from '@/types/Product';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useCart } from '@/contexts/CartContext';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -13,6 +14,8 @@ export const ProductCard = ({ product }: Props) => {
   const hasDiscount = product.fullPrice > product.price;
   const { toggleFavorite, isFavorite } = useFavorites();
   const isProductFavorited = isFavorite(product.id);
+  const { addToCart, isInCart } = useCart();
+  const isProductInCart = isInCart(product.id);
 
   return (
     <div className={styles.card}>
@@ -57,7 +60,13 @@ export const ProductCard = ({ product }: Props) => {
       </div>
 
       <div className={styles.buttons}>
-        <button className={styles.addToCart}>Add to cart</button>
+        <button
+          className={styles.addToCart}
+          onClick={() => addToCart(product)}
+          disabled={isProductInCart}
+        >
+          {isProductInCart ? 'Added to cart' : 'Add to cart'}
+        </button>
         <button
           className={styles.addToFavorites}
           aria-label="Add to favourites"
