@@ -9,11 +9,11 @@ export async function getProducts(category: Product['category']) {
 }
 
 export function getAllProducts() {
-  return request<Product[]>('/products.json');
+  return request<Product[]>('./products.json');
 }
 
 export async function getProductById(productId: string) {
-  const items = await request<Product[]>('/products.json');
+  const items = await request<Product[]>('./products.json');
 
   const base = items.find(p => p.itemId === productId);
 
