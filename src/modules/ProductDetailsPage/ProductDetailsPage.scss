@@ -80,11 +80,13 @@ body {
   }
 
   &__arrow {
-    width: 16px;
-    height: 16px;
-    background-image: url('/img/arrow.png');
+    width: 5.33px;
+    height: 9.33px;
+    background-image: url(./img/arrow.png);
     background-repeat: no-repeat;
-    object-fit: contain;
+    background-position: center;
+    background-size: contain;
+    display: block;
   }
 
   &__phone-models {
@@ -607,9 +609,13 @@ body {
     }
 
     &__arrow {
-      width: 16px;
-      height: 16px;
-      background-image: url('/img/arrow.png');
+       width: 5.33px;
+    height: 9.33px;
+    background-image: url(./img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
     }
 
     &__phone-models {
@@ -1067,7 +1073,7 @@ body {
     }
 
     &__phone-models {
-      white-space: nowrap;
+      white-space: normal;
       font-weight: 600;
       font-size: 12px;
       line-height: 12px;
@@ -1082,9 +1088,13 @@ body {
     }
 
     &__arrow {
-      width: 16px;
-      height: 16px;
-      background-image: url('/img/arrow.png');
+       width: 5.33px;
+    height: 9.33px;
+    background-image: url(./img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
     }
 
     &__phone-colums {

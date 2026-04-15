@@ -66,12 +66,11 @@ export const CartPage = () => {
   return (
     <div className="cart">
       {' '}
-      <div className="cart__nav">
-        <span className="cart__arrow"></span>{' '}
-        <NavLink to="/phones" className="cart__back">
-          Back{' '}
-        </NavLink>{' '}
-      </div>
+       <div className="favorites__nav-bar">
+              <NavLink to={'/'} className="favorites__back-home" />
+              <div className="favorites__arrow"></div>
+              <h2 className="favorites__h2">Cart</h2>
+            </div>
       <h2 className="cart__h2">Cart</h2>{' '}
       <div className="cart__block">
         {' '}
