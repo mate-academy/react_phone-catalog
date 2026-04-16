@@ -15,6 +15,7 @@ import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { Loader } from '../../components/Loader';
 import productNotFound from '/img/product-not-found.png';
 import { EmptyState } from '../../components/EmptyState';
+import { getPublicPath } from '../shared/utils/pathHelper';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -37,7 +38,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/${category}.json`)
+    fetch(getPublicPath(`/api/${category}.json`))
       .then(response => response.json())
       .then((data: ProductDetails[]) => {
         const foundProduct = data.find(p => p.id === productId);
