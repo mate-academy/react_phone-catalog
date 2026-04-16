@@ -4,7 +4,17 @@ import { CartItem } from '../shared/components/CartItem';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const { cartItems, cartCount, cartTotal } = useCart();
+  const { cartItems, cartCount, cartTotal, clearCart } = useCart();
+
+  const handleCheckout = () => {
+    const confirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (confirmed) {
+      clearCart();
+    }
+  };
 
   return (
     <div className={styles.page}>
@@ -31,7 +41,9 @@ export const CartPage = () => {
 
             <hr className={styles.divider} />
 
-            <button className={styles.checkout}>Checkout</button>
+            <button className={styles.checkout} onClick={handleCheckout}>
+              Checkout
+            </button>
           </div>
         </div>
       )}
