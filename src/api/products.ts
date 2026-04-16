@@ -3,17 +3,17 @@ import type { Product } from '../types';
 import type { ProductDetails } from '../types';
 
 export async function getProducts(category: Product['category']) {
-  const products = await request<Product[]>('./products.json');
+  const products = await request<Product[]>('products.json');
 
   return products.filter(product => product.category === category);
 }
 
 export function getAllProducts() {
-  return request<Product[]>('./products.json');
+  return request<Product[]>('products.json');
 }
 
 export async function getProductById(productId: string) {
-  const items = await request<Product[]>('./products.json');
+  const items = await request<Product[]>('products.json');
 
   const base = items.find(p => p.itemId === productId);
 

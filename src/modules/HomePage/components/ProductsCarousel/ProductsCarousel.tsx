@@ -71,7 +71,7 @@ export const ProductsCarousel: React.FC<Props> = ({
 
     const cardWidth = el.firstElementChild?.getBoundingClientRect().width ?? 0;
     const gap = 16;
-    const step = Math.round(cardWidth + gap) * 2;
+    const step = Math.round(cardWidth + gap);
 
     el.scrollBy({
       left: direction === 'left' ? -step : step,
@@ -112,7 +112,13 @@ export const ProductsCarousel: React.FC<Props> = ({
       )}
 
       {!isLoading && !error && (
-        <div ref={trackRef} className={styles.track}>
+        <div
+          ref={trackRef}
+          className={styles.track}
+          onScroll={e =>
+            setScrollPosition((e.target as HTMLDivElement).scrollLeft)
+          }
+        >
           {prepared.map(p => {
             const isInCart = cart.some(
               item => item.product.itemId === p.itemId,
