@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { useCart } from '@/contexts/CartContext';
 
@@ -23,6 +23,8 @@ const navItems = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
   const { favorites } = useFavorites();
   const favCount = favorites.length;
   const { cartCount } = useCart();
@@ -38,6 +40,10 @@ export const Header = () => {
       document.body.classList.remove('no-scroll');
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(prev => !prev);
