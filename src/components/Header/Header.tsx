@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styles from './Header.module.css';
-// import { FavoritesIcon } from '../../utils/icons';
+import { FavoritesIcon } from '../../utils/icons';
 
 type Props = {
   cartCount?: number;
@@ -11,7 +11,10 @@ type Props = {
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   `navbar-item  ${isActive ? 'has-background-white-lighter' : ''}`;
 
-export const Header: React.FC<Props> = ({ cartCount = 0 }) => {
+export const Header: React.FC<Props> = ({
+  cartCount = 0,
+  favoritesCount = 0,
+}) => {
   return (
     <header className={styles.header} role="banner">
       <div className={styles.container}>
@@ -23,7 +26,7 @@ export const Header: React.FC<Props> = ({ cartCount = 0 }) => {
         >
           <div className="navbar-brand">
             <NavLink to="/" className="navbar-item">
-              <img src="img/logo.png" alt="Logo" className={styles.logo} />
+              <img src="/img/logo.png" alt="Logo" className={styles.logo} />
             </NavLink>
             <NavLink to="/" className={getLinkClass}>
               HOME
@@ -47,11 +50,11 @@ export const Header: React.FC<Props> = ({ cartCount = 0 }) => {
           </div>
         </nav>
         <div className={styles.actions}>
-          {/* <FavoritesIcon count={0} /> */}
+          <FavoritesIcon count={favoritesCount} />
 
           <NavLink to="/cart" className={styles.icon} aria-label="Card">
-            <img src="img/cart.png" alt="Cart" />
-            <i className="fas fa-shopping-cart" />
+            <img src="/img/cart.png" alt="Cart" />
+            {/* <i className="fas fa-shopping-cart" /> */}
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </div>

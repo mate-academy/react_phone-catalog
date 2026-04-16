@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ProductCarts.module.css';
-// import { FavoritesIcon } from '../../utils/icons';
+import { FavoritesIcon } from '../../utils/icons';
 
 type Props = {
   id: string;
@@ -35,7 +35,7 @@ export const ProductCarts: React.FC<Props> = ({
         <button className={styles.cardAddTo} data-qa="card-hover">
           Add to cart
         </button>
-        {/* <FavoritesIcon count={0} /> */}
+        <FavoritesIcon count={0} />
       </div>
     </div>
   );
