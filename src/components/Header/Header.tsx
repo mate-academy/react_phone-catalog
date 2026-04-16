@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import styles from './Header.module.scss';
+import styles from './Header.module.css';
 // import { FavoritesIcon } from '../../utils/icons';
 
 type Props = {

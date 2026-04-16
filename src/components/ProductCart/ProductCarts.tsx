@@ -1,15 +1,14 @@
-import imac from '../images/imac.jpeg';
 import { NavLink } from 'react-router-dom';
-import styles from './ProductCarts.module.scss';
-import { FavoritesIcon } from '../../utils/icons';
+import styles from './ProductCarts.module.css';
+// import { FavoritesIcon } from '../../utils/icons';
 
 type Props = {
   id: string;
   title: string;
   price: number;
-  screen: string;
-  capacity: string;
-  ram: string;
+  screen?: string;
+  capacity?: string;
+  ram?: string;
 };
 
 export const ProductCarts: React.FC<Props> = ({
@@ -24,19 +23,19 @@ export const ProductCarts: React.FC<Props> = ({
     <div className={styles.container}>
       <h2 className={styles.productTitle}>
         <NavLink to={`/product/${id}`}>
-          <img className={styles.cardPhoto} src={imac} alt={title} />
+          <img className={styles.cardPhoto} src="/img/imac.jpeg" alt={title} />
         </NavLink>
       </h2>
-      <div className={styles.cardPrice}>{price}</div>
+      <div className={styles.cardPrice}>${price}</div>
 
       <div className={styles.cardScreen}>{screen}</div>
       <div className={styles.cardCapacity}>{capacity}</div>
       <div className={styles.cardRAM}>{ram}</div>
-      <div>
+      <div className={styles.actions}>
         <button className={styles.cardAddTo} data-qa="card-hover">
           Add to cart
         </button>
-        <FavoritesIcon count={0} />
+        {/* <FavoritesIcon count={0} /> */}
       </div>
     </div>
   );

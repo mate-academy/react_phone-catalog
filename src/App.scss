@@ -1,1 +1,17 @@
-// not empty
+html{
+  @font-face {
+      font-family: Mont;
+      src: url(fonts/Mont-Regular.ttf);
+    }
+
+    @font-face {
+      font-family: Mont;
+      src: url(fonts/Mont-Regular.ttf);
+      font-weight: bold;
+    }
+}
+
+body {
+  margin: 0;
+}
+

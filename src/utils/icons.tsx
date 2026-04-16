@@ -1,6 +1,7 @@
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
+
 export const FavoritesIcon: React.FC<{ count: string | number }> = ({
   count,
 }) => {
