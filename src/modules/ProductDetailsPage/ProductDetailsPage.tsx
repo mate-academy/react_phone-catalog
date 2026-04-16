@@ -78,46 +78,27 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     if (!productId || !category) return;
 
+    setProduct(null);
     setIsLoading(true);
     setIsError(false);
 
-    getProducts()
-      .then(all => {
-        setAllProducts(all);
-
-        const foundProduct = all.find(
-          p =>
-            p => p.itemId === productId && p.category === category ||
-            String(p.id) === productId ||
-            p.name.toLowerCase().replace(/\s+/g, '-') === productId,
-        );
-
-        if (!foundProduct) {
+    getProductById(productId)
+      .then(productData => {
+        if (!productData) {
           setIsError(true);
           return;
         }
 
-        setProduct(foundProduct);
-        setSelectedPhoto(foundProduct.images?.[0] || '');
-        setNumericId(String(foundProduct.id));
-
-        const recommended = all
-          .filter(
-            p =>
-              p.category === foundProduct.category &&
-              p.itemId !== foundProduct.itemId,
-          )
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 8);
-
-        setRecommendedProducts(recommended);
+        setProduct(productData);
+        setSelectedPhoto(productData.images?.[0] || '');
+        setNumericId(String(productData.id));
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, [productId, category]);
+  }, [productId]);
+
 
   if (isLoading) return <Loader />;
-  if (!product) return null;
 
   if (isError || !product) {
     return (
@@ -142,10 +123,10 @@ export const ProductDetailsPage: React.FC = () => {
     coral: '#FF6F61',
   };
 
-  console.log('productId:', productId);
-  console.log('product:', product);
-  console.log('allProducts:', allProducts);
   console.log('colorsAvailable:', product.colorsAvailable);
+  console.log('capacityAvailable:', product.capacityAvailable);
+  console.log('images:', product.images);
+  console.log('description:', product.description);
 
   return (
     <div className={`${styles.container} ${isFading ? styles.fadeOut : ''}`}>
