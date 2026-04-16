@@ -77,7 +77,6 @@ export const ProductsCarousel: React.FC<Props> = ({
       left: direction === 'left' ? -step : step,
       behavior: 'smooth',
     });
-    setScrollPosition(el.scrollLeft);
   };
 
   return (
