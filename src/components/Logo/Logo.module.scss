@@ -1,55 +1,32 @@
 @use "../../styles/variables.module" as *;
+@use "../../styles/effects" as *;
+@use "../../styles/themes" as *;
 
 .logo {
   position: relative;
 
-  width: 64px;
-  height: auto;
+  display: flex;
+  align-items: center;
+
+  width: 48px;
+  height: 22px;
   text-decoration: none;
-  color: var(--color-logo);
   transition: opacity 0.4s ease;
+  color: var(--color-logo);
 
   @media (min-width: $breakpoint-desktop) {
-    width: 128px;
-    height: auto;
+    width: 80px;
+    height: 28px;
   }
 
   &:hover {
     opacity: 0.8;
   }
-
-  svg {
-    display: block;
-  }
-}
-
-.logoImg {
-  width: 64px;
-  height: auto;
-
-  @media (min-width: $breakpoint-desktop) {
-    width: 80px;
-  }
-}
-
-
-.logoText {
-  fill: currentColor;
-  transition: fill 0.4s ease;
 }
 
 .logoIcon {
-  position: absolute;
-  top: 0;
-  left: 32px;
+  width: 100%;
+  height: 100%;
 
-  width: 9px;
-  height: 12px;
-
-  @media (min-width: $breakpoint-desktop) {
-    left: 40px;
-
-    width: 11px;
-    height: 15px;
-  }
+  @include hover-scale(1.1);
 }

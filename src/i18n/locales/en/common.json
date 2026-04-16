@@ -39,10 +39,11 @@
   "items": "Items on page",
 
   "title": {
-    "productCatalog": "Product Catalog",
+    "productCatalog": "Welcome to Nice Gadgets store!",
     "newModels": "Brand new models",
     "shopByCategory": "Shop by category",
-    "hotPrices": "Hot prices"
+    "hotPrices": "Hot prices",
+    "mayAlsoLike": "You may also like"
   },
 
   "footer": {
@@ -92,9 +93,9 @@
   "colors": {
     "originalLight": "Original Light",
     "originalDark": "Original Dark",
-    "roundedPurpleBlue": "Rounded Purple Blue",
-    "purpleBlue": "Rounded Purple Blue",
-    "purpleOrange": "Rounded Purple Orange"
+    "roundedPurpleBlue": "Ice Cap",
+    "purpleBlue": "Neon Wave",
+    "purpleOrange": "Apricot Sorbet"
   },
 
   "languages": {

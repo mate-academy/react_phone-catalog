@@ -16,7 +16,7 @@ export const Router: React.FC = () => {
         <Route index element={<HomePage />} />
 
         <Route
-          path="products/:productId"
+          path=":category/:productId"
           element={<ProductDetailsPage key={location.pathname} />}
         />
 

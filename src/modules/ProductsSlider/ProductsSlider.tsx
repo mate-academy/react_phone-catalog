@@ -11,12 +11,14 @@ import { useSlider } from '../../hooks/useSlider';
 import { ArrowButton } from '../../components/ArrowButton';
 import { sortProducts } from '../../utils/sorting';
 import { filterProductsByCategory } from '../../utils/filtering';
+import classNames from 'classnames';
 
 interface ProductsSliderProps {
   title: string;
   productsPresetType?: ProductsPresetType;
   category?: string;
   excludeItemId?: string;
+  className?: string;
 }
 
 const resolveProductsByPreset = (
@@ -64,14 +66,18 @@ const resolveProductsByPreset = (
 
 export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   title,
-  // productsPreset,
   productsPresetType,
   category,
   excludeItemId,
+  className,
 }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [, setWindowWidth] = useState(window.innerWidth);
+  const { sliderRef, next, prev, pause, resume } = useSlider({
+    mode: 'scroll',
+    autoDelay: 5000,
+  });
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -80,8 +86,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const itemsPerView = windowWidth < 640 ? 1.5 : windowWidth < 1024 ? 2.5 : 4;
 
   useEffect(() => {
     setLoading(true);
@@ -102,52 +106,41 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       .finally(() => setLoading(false));
   }, [productsPresetType, category, excludeItemId]);
 
-  const { currentIndex, next, prev, canNext, canPrev } = useSlider({
-    itemsCount: products.length,
-    autoDelay: 5000,
-    itemsPerView,
-    loop: true,
-  });
-
   if (loading) {
     return <Spinner />;
   }
 
   return (
-    <section className={styles.productSlider}>
+    <section className={classNames(styles.productSlider, className)}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{title}</h1>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.buttonBox}>
           <ArrowButton
             onClick={prev}
             className={styles.buttonLeft}
             arrowClassName={styles.arrowLeft}
-            disabled={!canPrev}
           />
 
           <ArrowButton
             onClick={next}
             className={styles.buttonRight}
             arrowClassName={styles.arrowRight}
-            disabled={!canNext}
           />
         </div>
       </div>
 
-      <div className={styles.sliderWindow}>
-        <div
-          className={styles.sliderContainer}
-          style={{
-            transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-          }}
-        >
-          {products.map(product => (
-            <div className={styles.cardWrapper} key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
+      <div
+        ref={sliderRef}
+        className={styles.slider}
+        onMouseEnter={pause}
+        onMouseLeave={resume}
+      >
+        {products.map(product => (
+          <div className={styles.slide} key={product.id}>
+            <ProductCard className={styles.productCard} product={product} />
+          </div>
+        ))}
       </div>
     </section>
   );

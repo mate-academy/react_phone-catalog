@@ -35,32 +35,38 @@ export const NavIcons: React.FC<NavIconsProps> = ({ styles, onClose }) => {
         className={styles.navigation__iconLink}
         onClick={onClose}
       >
-        <HeartIcon
-          isSelected={favoritesCount > 0}
-          className={styles.heartIcon}
-          trigger={favoritesCount}
-        />
+        <div className={styles.containerIcon}>
+          <HeartIcon
+            isSelected={favoritesCount > 0}
+            className={styles.heartIcon}
+            trigger={favoritesCount}
+          />
 
-        {favoritesCount > 0 && (
-          <span className={baseStyles.counter}>{favoritesCount}</span>
-        )}
+          {favoritesCount > 0 && (
+            <span className={baseStyles.counter}>{favoritesCount}</span>
+          )}
+        </div>
       </Link>
+
+      <div className={baseStyles.divider}></div>
 
       <Link
         to="/cart"
         className={styles.navigation__iconLink}
         onClick={onClose}
       >
-        <WiredTrolley
-          ref={cartRef}
-          className={getClassName('navigation__icon')}
-          icon={wiredTrolley}
-          trigger={cartCount}
-        />
+        <div className={styles.containerIcon}>
+          <WiredTrolley
+            ref={cartRef}
+            className={getClassName('navigation__icon')}
+            icon={wiredTrolley}
+            trigger={cartCount}
+          />
 
-        {cartCount > 0 && (
-          <span className={baseStyles.counter}>{cartCount}</span>
-        )}
+          {cartCount > 0 && (
+            <span className={baseStyles.counter}>{cartCount}</span>
+          )}
+        </div>
       </Link>
     </div>
   );

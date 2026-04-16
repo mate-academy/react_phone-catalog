@@ -1,4 +1,5 @@
 @use '../../styles/variables.module' as *;
+@use "../../styles/mixins" as *;
 
 .container {
   display: flex;
@@ -9,7 +10,20 @@
 
 .main {
   flex: 1;
-  margin-inline: 30px;
+  margin-inline: $padding-inline-mobile;
+  margin-top: 72px;
 
-  margin-top: 50px;
+  @include on-tablet {
+    margin-top: 72px;
+    margin-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    margin-inline: $padding-inline-desktop;
+    margin-top: 120px;
+  }
+
+  @include on-xx-desktop {
+    margin-inline: $padding-inline-XXDesktop;
+  }
 }

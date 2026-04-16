@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { ProductsSlider } from '../../../ProductsSlider';
 
@@ -12,9 +13,11 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
 }) => {
   const { productId } = useParams<{ productId: string }>();
 
+  const { t } = useTranslation();
+
   return (
     <ProductsSlider
-      title="You may also like"
+      title={t('title.mayAlsoLike')}
       category={category}
       excludeItemId={productId || ''}
       limit={12}

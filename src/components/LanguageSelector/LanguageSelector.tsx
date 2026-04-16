@@ -38,6 +38,7 @@ export const LanguageSelector = () => {
         onClick={toggle}
       >
         <Player
+          className={styles.globeIcon}
           ref={playerRef}
           icon={globeIcon}
           colors={`primary:${currentConfig.textColor},secondary:${currentConfig.accentColor}`}

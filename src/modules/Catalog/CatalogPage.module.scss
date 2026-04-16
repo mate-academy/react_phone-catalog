@@ -4,23 +4,37 @@
   display: flex;
   flex-direction: column;
 
-  width: 288px;
+  min-width: 288px;
   margin-inline: auto;
 
   .title {
     color: var(--color-primary);
-    padding-block: 16px;
+    padding-block-end: 16px;
+  }
+
+  .countBadge {
+    color: var(--color-secondary);
+    margin-block-end: 32px;
+  }
+
+  .sortSelect {
+    margin-block-end: 24px;
+  }
+
+  .productsList {
+    margin-top: 24px;
+  }
+
+  .pagination {
+    margin-top: 50px;
   }
 }
 
-.error {
-  /* TODO: styles will be added later */
-}
+.empty, .error {
+  text-align: center;
 
-.empty {
-  /* TODO: styles will be added later */
-}
+  color: red;
+  margin-block-start: 50px;
 
-.products {
-  /* TODO: styles will be added later */
+  font-size: 28px;
 }

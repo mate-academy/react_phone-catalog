@@ -27,7 +27,7 @@ export const CategoryLinks: React.FC = () => {
 
   return (
     <div className={styles.homePage}>
-      <h2>{t('title.shopByCategory')}</h2>
+      <h2 className={styles.homePageTitle}>{t('title.shopByCategory')}</h2>
 
       <div className={styles.homePageBox}>
         {HOME_CATEGORIES.map(cate => (

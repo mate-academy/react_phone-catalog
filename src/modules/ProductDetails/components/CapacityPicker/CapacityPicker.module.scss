@@ -6,24 +6,36 @@
   padding: 10px;
 
   .label {
-    color: #3D7FFF;
+    color: var(--color-secondary);
+    margin-block-end: 8px;
 
     font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
   }
 
   .capacitySelection {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: 8px;
 
     .capacityButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       width: 52px;
       height: 32px;
-      color: #03a9f4;
-      border: 2px solid transparent;
+      color: var(--color-primary);
+      border: 1px solid #e2e6e9;
       cursor: pointer;
       transition: transform 0.2s ease;
-      outline: 1px solid #e2e6e9;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      letter-spacing: 0;
 
       &:hover {
         transform: scale(1.1);

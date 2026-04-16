@@ -1,13 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import styles from './Button.module.scss';
 
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary';
   disabled?: boolean;
   type?: 'button' | 'submit';
+  className?: string;
+  variant?: 'primary' | 'secondary';
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -16,11 +18,16 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   disabled = false,
   type = 'button',
+  className,
 }) => {
   return (
     <button
       type={type}
-      className={`${styles.button} ${styles[variant]}`}
+      className={classNames(
+        styles.button,
+        styles[`button--${variant}`],
+        className,
+      )}
       disabled={disabled}
       onClick={onClick}
     >

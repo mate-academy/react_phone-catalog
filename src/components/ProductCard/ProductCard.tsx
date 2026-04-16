@@ -6,12 +6,17 @@ import styles from './ProductCard.module.scss';
 import { ProductType } from '../../types/product.types';
 import { getProductPrice } from '../../utils/priceHelper';
 import { ProductActions } from '../ProductActions';
+import classNames from 'classnames';
 
 interface ProductCardProps {
   product: ProductType;
+  className?: string;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  className,
+}) => {
   const { id: productId, name, screen, capacity, ram } = product;
 
   const { oldPrice, currentPrice } = getProductPrice(product);
@@ -20,8 +25,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className={styles.card}>
-      <Link to={`/products/${productId}`} className={styles.link}>
-        <div style={{ minWidth: 221, minHeight: 300 }}>
+      <Link to={`/${product.category}/${productId}`} className={styles.link}>
+        <div className={styles.boxIcon}>
           <img
             src={
               productImage
@@ -29,11 +34,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 : `${import.meta.env.BASE_URL}img/page-not-found.png`
             }
             alt={name}
-            className={styles.image}
+            className={styles.icon}
           />
         </div>
 
-        <h2 className={styles.name}>{name}</h2>
+        <h4 className={styles.name}>{name}</h4>
 
         <div className={styles.priceContainer}>
           <span className={styles.newPrice}>{currentPrice}</span>
@@ -60,7 +65,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </Link>
 
-      <ProductActions product={product} />
+      <ProductActions
+        className={classNames(styles.productActions, className)}
+        product={product}
+      />
     </div>
   );
 };

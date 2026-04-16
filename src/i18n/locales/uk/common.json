@@ -32,17 +32,18 @@
 
   "sorts": {
     "Newest" : "Найновіші",
-    "Alphabetically":  "За алфавітом",
+    "Alphabetically": "За алфавітом",
     "Cheapest": "Найдешевші"
   },
 
   "items": "Елементи на сторінці",
 
   "title": {
-    "productCatalog": "Каталог продукції",
+    "productCatalog": "Ласкаво просимо до магазину Гарних Гаджетів!",
     "newModels": "Зовсім нові моделі",
     "shopByCategory": "Купуйте за категоріями",
-    "hotPrices": "Гарячі ціни"
+    "hotPrices": "Гарячі ціни",
+    "mayAlsoLike": "Вам також може сподобатися"
   },
 
   "footer": {
@@ -94,9 +95,9 @@
   "colors": {
     "originalLight": "Оригінальний світлий",
     "originalDark": "Оригінальний темний",
-    "purpleBlue": "Фіолетово-синій",
-    "roundedPurpleBlue": "Закруглений Фіолетово-синій",
-    "purpleOrange": "Фіолетово-помаранчевий"
+    "purpleBlue": "Крижана шапка",
+    "roundedPurpleBlue": "Неонова хвиля",
+    "purpleOrange": "Абрикосовий сорбет"
   },
 
   "languages": {

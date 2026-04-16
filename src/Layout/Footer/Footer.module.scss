@@ -1,5 +1,7 @@
 @use "../../styles/variables.module" as *;
 @use "../../styles/effects" as *;
+@use "../../styles/themes" as *;
+@use "../../styles/mixins" as *;
 
 .footer {
   display: flex;
@@ -26,32 +28,13 @@
     gap: 106px;
   }
 
-  .logo {
-    @media (min-width: $breakpoint-desktop) {
-      width: 80px;
-      padding: 0 24px;
-    }
-
-    .logoImg {
-      display: block;
-
-      width: 64px;
-      height: auto;
-
-      @media (min-width: $breakpoint-desktop) {
-        width: 80px;
-      }
-    }
-  }
-
   .navigation {
-    width: 100%;
-
     display: flex;
     flex-direction: column;
-
-    background-color: var(--background-page);
     gap: 16px;
+
+    width: 100%;
+    background-color: var(--background-page);
 
     @media (min-width: $breakpoint-tablet) {
       flex-direction: row;
@@ -67,19 +50,13 @@
     }
 
     &__link {
-      color: $c-white-off;
-      text-decoration: none;
-      text-transform: uppercase;
-
       font-weight: 800;
       font-size: 12px;
+      text-decoration: none;
+      text-transform: uppercase;
       line-height: 11px;
 
-      @include smooth-transition(color);
-
-      &:hover {
-        color: $c-white-off;
-      }
+      color: var(--footer-uppercase);
     }
   }
 
@@ -89,9 +66,8 @@
     justify-content: center;
     gap: 16px;
 
-    width: 100%;
     height: 32px;
-    color: $c-grey-dark;
+    color: $c-grey-medium;
     background-color: transparent;
 
     font-family: Mont, sans-serif;
@@ -104,11 +80,12 @@
       justify-content: right;
 
       width: 200px;
+    }
 
-      .scrollButtonToTop {
-        width: 32px;
-        height: 32px;
-      }
+
+    .scrollButtonToTop {
+      width: 32px;
+      height: 32px;
     }
 
     .boxArrowToTop {
@@ -128,9 +105,6 @@
 }
 
 .arrowIcon {
+  width: 32px;
   transform: rotate(-90deg);
-}
-
-.scrollButtonToTop {
-  /* TODO: styles will be added later */
 }

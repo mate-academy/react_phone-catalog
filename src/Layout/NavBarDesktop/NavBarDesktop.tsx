@@ -15,18 +15,20 @@ export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ onClose }) => {
 
   return (
     <nav className={styles.navigation}>
-      <Link to="/" className={styles.navigation__link}>
-        {t('nav.home')}
-      </Link>
-      <Link to="/phones" className={styles.navigation__link}>
-        {t('nav.phones')}
-      </Link>
-      <Link to="/tablets" className={styles.navigation__link}>
-        {t('nav.tablets')}
-      </Link>
-      <Link to="/accessories" className={styles.navigation__link}>
-        {t('nav.accessories')}
-      </Link>
+      <div className={styles.navigation__container}>
+        <Link to="/" className={styles.navigation__link}>
+          {t('nav.home')}
+        </Link>
+        <Link to="/phones" className={styles.navigation__link}>
+          {t('nav.phones')}
+        </Link>
+        <Link to="/tablets" className={styles.navigation__link}>
+          {t('nav.tablets')}
+        </Link>
+        <Link to="/accessories" className={styles.navigation__link}>
+          {t('nav.accessories')}
+        </Link>
+      </div>
 
       <NavIcons styles={styles} onClose={onClose} />
     </nav>

@@ -1,7 +1,25 @@
 @use "../../styles/variables.module" as *;
 @use "../../styles/effects" as *;
 
+.navigation__right {
+  height: 100%;
+}
+
+.divider {
+  width: 1px;
+  height: 100%;
+  background-color: var(--border-color);
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
 .counter {
+  position: relative;
+  left: 45px;
+  bottom: 30px;
+
   margin-top: -8px;
   margin-left: -13px;
   width: 14px;

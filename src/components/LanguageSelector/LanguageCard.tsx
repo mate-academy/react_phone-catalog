@@ -25,11 +25,6 @@ export const LanguageCard: React.FC<LanguageCardProps> = ({
     <label
       htmlFor={inputId}
       className={`${styles.optionCard} ${isActive ? styles.active : ''}`}
-      style={{
-        backgroundColor: language.backgroundColor,
-        color: language.textColor,
-        marginBottom: '8px',
-      }}
     >
       <div className={styles.cardContent}>
         <span className={styles.cardLabel}>

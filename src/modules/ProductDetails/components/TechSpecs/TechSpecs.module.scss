@@ -1,19 +1,47 @@
+@use "../../../../styles/themes" as *;
+
 .techSpecsBlock {
   .sectionTitle {
-    // I'll fill it in later!
+    color: var(--color-primary);
+    margin-block-end: 16px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
   }
 
   .techSpecs {
-    // I'll fill it in later!
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
 .specRow {
+  display: flex;
+  justify-content: space-between;
+
+  .label, .value {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
   .label {
-    // I'll fill it in later!
+    color: var(--color-secondary);
+
+    font-weight: 500;
   }
 
   .value {
-    // I'll fill it in later!
+    color: var(--color-primary);
+
+    font-weight: 600;
   }
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--separator);
+  margin-block-end: 30px;
 }

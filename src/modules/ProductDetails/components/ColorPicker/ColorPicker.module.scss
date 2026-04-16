@@ -1,20 +1,43 @@
+@use "../../../../styles/themes" as *;
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables.module" as *;
+
 .colorsSelectionBox {
   display: flex;
   flex-direction: column;
   gap: 8px;
 
+  width: 100%;
   padding: 10px;
 
-  .label {
-    color: #3D7FFF;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    font-size: 12px;
+    width: 100%;
+    height: 15px;
+    margin-block-end: 8px;
+
+    .label, .idNumber {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .label {
+      color: var(--color-secondary);
+    }
+
+    .idNumber {
+      color: $c-grey-light;
+    }
   }
 
   .colorsSelection {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: 8px;
 
     .colorButton {
       width: 32px;

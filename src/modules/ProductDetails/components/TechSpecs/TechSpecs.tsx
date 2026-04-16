@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './TechSpecs.module.scss';
 import { ProductDetailsType } from '../../../../types/product-details.types';
+import classNames from 'classnames';
 
 const techSpecsLabels: Record<string, string> = {
   screen: 'Screen',
@@ -40,12 +41,14 @@ interface TechSpecsProps {
   | 'cell'
   >
   >;
+  className: string;
 }
 
-export const TechSpecs: React.FC<TechSpecsProps> = ({ details }) => {
+export const TechSpecs: React.FC<TechSpecsProps> = ({ details, className }) => {
   return (
-    <div className={styles.techSpecsBlock}>
+    <div className={classNames(styles.techSpecsBlock, className)}>
       <h3 className={styles.sectionTitle}>Tech specs</h3>
+      <div className={styles.separator} />
       <div className={styles.techSpecs}>
         {specsToShow.map(key => {
           const value = details[key as keyof typeof details];

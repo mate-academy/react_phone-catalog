@@ -4,23 +4,12 @@
   transition: $prop $time $func;
 }
 
-@mixin hover-scale($scale: 1.1) {
+@mixin hover-scale($scale: 1.03) {
   @include smooth-transition(transform);
 
   &:hover {
     transform: scale($scale);
-  }
-}
-
-@mixin hover-scale-icon($scale: 1.1, $icon-selector: ".icon") {
-  &:hover {
-    #{$icon-selector} {
-      transform: scale($scale);
-    }
-  }
-
-  #{$icon-selector} {
-    @include smooth-transition(transform, 0.2s);
+    box-shadow: 0 4px 12px var(--border-color);
   }
 }
 
@@ -31,8 +20,6 @@
   &::after {
     content: "";
     position: absolute;
-
-    background-color: $line-color;
 
     transform: scaleX(0);
     transform-origin: left;

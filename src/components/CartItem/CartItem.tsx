@@ -32,7 +32,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
           X
         </button>
         <img
-          className={styles.img}
+          className={styles.icon}
           src={`${import.meta.env.BASE_URL}${productImage}`}
           alt={product.name}
           onError={event => {
@@ -41,7 +41,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             target.src = 'img/product-not-found.png';
           }}
         />
-        <p>{product.name}</p>
+        <p className={styles.productName}>{product.name}</p>
       </div>
 
       <div className={styles.rightBloc}>
@@ -53,7 +53,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
           >
             -
           </button>
-          <span>{quantity}</span>
+          <span className={styles.quantity}>{quantity}</span>
           <button
             className={styles.buttonQuantity}
             onClick={() => increaseQuantity(product.id)}
@@ -61,7 +61,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             +
           </button>
         </div>
-        <span className={styles.price}>${totalItemPrice}</span>
+        <div className={styles.price}>${totalItemPrice}</div>
       </div>
     </div>
   );

@@ -1,4 +1,25 @@
+@use "../../styles/themes" as *;
+
 .arrowButton {
-  width: 32px;
-  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 32px;
+  min-height: 32px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-color);
+
+  &:hover {
+    border-color: var(--hover-color-primary);
+  }
+
+  &:active {
+    background-color: var(--hover-color-primary);
+
+    .arrowIcon {
+      color: var(--background-page);
+    }
+  }
 }

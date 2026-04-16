@@ -1,35 +1,20 @@
-@use "../../styles/variables.module";
+@use "../../styles/themes" as *;
 
 .button {
   height: 40px;
+  color: var(--button-text-add);
+  background-color: var(--button-primary);
   padding: 0 16px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   transition: all 0.25s ease;
 
   font-weight: 600;
 
   &:disabled {
+    color: var(--button-text-added);
+    background-color: var(--button-default);
     cursor: not-allowed;
     opacity: 0.6;
-  }
-}
-
-.primary {
-  background-color: var(--color-primary);
-  color: white;
-
-  &:hover:not(:disabled) {
-    // Styles to come later!
-  }
-}
-
-.secondary {
-  background-color: white;
-  color: var(--color-primary);
-
-  &:hover:not(:disabled) {
-    background-color: var(--color-primary);
   }
 }

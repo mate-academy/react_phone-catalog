@@ -31,7 +31,7 @@ export const THEMES: ThemeConfig[] = [
     iconAccent: styles.whiteOff,
   },
   {
-    id: 'rounded-purple-blue' as const,
+    id: 'ice-cap' as const,
     nameKey: 'roundedPurpleBlue',
     backgroundColor: styles.whiteOff,
     textColor: styles.black,
@@ -39,7 +39,7 @@ export const THEMES: ThemeConfig[] = [
     iconAccent: styles.blueBright,
   },
   {
-    id: 'rounded-blue' as const,
+    id: 'electric-cyan' as const,
     nameKey: 'purpleBlue',
     backgroundColor: styles.cyanNeon,
     textColor: styles.black,
@@ -47,7 +47,7 @@ export const THEMES: ThemeConfig[] = [
     iconAccent: styles.blueViolet,
   },
   {
-    id: 'rounded-purple-orange' as const,
+    id: 'apricot-sorbet' as const,
     nameKey: 'purpleOrange',
     backgroundColor: styles.peach,
     textColor: styles.black,

@@ -1,10 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import styles from './ProductView.module.scss';
 
 import { Breadcrumbs } from '../../../../components/Breadcrumbs';
-import { ArrowButton } from '../../../../components/ArrowButton';
 import { ColorPicker } from '../ColorPicker';
 import { CapacityPicker } from '../CapacityPicker';
 import { ProductDetailsType } from '../../../../types/product-details.types';
@@ -13,10 +11,13 @@ import { TechSpecs } from '../TechSpecs';
 import { AboutSection } from '../AboutSection';
 import { ProductActions } from '../../../../components/ProductActions';
 import { Skeleton } from '../../../../components/Skeleton';
+import { BackButton } from '../../../../components/BackButton';
+import classNames from 'classnames';
 
 interface ProductViewProps {
   details: ProductDetailsType;
   isLoading?: boolean;
+  className?: string;
 }
 
 const getNewPath = (
@@ -37,23 +38,17 @@ const getNewPath = (
 export const ProductView: React.FC<ProductViewProps> = ({
   details,
   isLoading,
+  className,
 }) => {
-  const navigate = useNavigate();
-
   return (
     <div className={styles.container}>
       <nav className={styles.breadcrumbs}>
         <Breadcrumbs />
       </nav>
 
-      <ArrowButton
-        onClick={() => navigate(-1)}
-        className={styles.arrowButtonBack}
-      >
-        Back
-      </ArrowButton>
+      <BackButton />
 
-      <h1 className={styles.title}>{details.name}</h1>
+      <h2 className={styles.title}>{details.name}</h2>
 
       <div className={styles.productDetails}>
         <div className={styles.productPageHero}>
@@ -67,37 +62,64 @@ export const ProductView: React.FC<ProductViewProps> = ({
 
           <section className={styles.selectionBlock}>
             <ColorPicker
+              className={styles.colorsAvailable}
               colors={details.colorsAvailable}
               currentColor={details.color}
               getNewPath={color => getNewPath(details, color, undefined)}
+              itemId={details.id}
             />
 
+            <div className={styles.divider}></div>
+
             <CapacityPicker
+              className={styles.capacityAvailable}
               capacity={details.capacityAvailable}
               currentCapacity={details.capacity}
               getNewPath={capacity => getNewPath(details, undefined, capacity)}
             />
 
-            <p>Price: ${details.priceDiscount || details.priceRegular}</p>
+            <div className={styles.divider}></div>
 
-            <ProductActions product={details} />
+            <div className={styles.priceContainer}>
+              <p className={styles.newPrice}>${details.priceDiscount}</p>
+              <p className={styles.oldPrice}>${details.priceRegular}</p>
+            </div>
+
+            <ProductActions
+              className={styles.productActions}
+              product={details}
+            />
 
             <div className={styles.technicalInformation}>
-              <div>
-                <span>Screen:</span>
-                <span>{details.screen}</span>
+              <div className={styles.specRow}>
+                <span className={styles.specLabel}>Screen:</span>
+                <span className={styles.specValue}>{details.screen}</span>
               </div>
-              <div>
-                <span>Resolution:</span>
-                <span>{details.resolution}</span>
+              <div className={styles.specRow}>
+                <span className={styles.specLabel}>Resolution:</span>
+                <span className={styles.specValue}>{details.resolution}</span>
+              </div>
+              <div className={styles.specRow}>
+                <span className={styles.specLabel}>Processor:</span>
+                <span className={styles.specValue}>{details.processor}</span>
+              </div>
+              <div className={styles.specRow}>
+                <span className={styles.specLabel}>RAM:</span>
+                <span className={styles.specValue}>{details.ram}</span>
               </div>
             </div>
           </section>
         </div>
 
         <div className={styles.description}>
-          <AboutSection details={details} />
-          <TechSpecs details={details} />
+          <AboutSection
+            className={classNames(styles.aboutSection, className)}
+            details={details}
+          />
+          <TechSpecs
+            className={classNames(styles.techSpecs, className)}
+            details={details}
+          />
         </div>
       </div>
     </div>

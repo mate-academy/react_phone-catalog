@@ -46,14 +46,14 @@ export const CatalogPage: React.FC = () => {
     return <p className={styles.error}>Error: {error}</p>;
   }
 
-  if (!products.length) {
-    return <p className={styles.empty}>Product not found</p>;
-  }
-
   const visibleProducts = filterProductsByCategory(
     products,
     currentCategory.apiEndpoint,
   );
+
+  if (!products.length || visibleProducts.length === 0) {
+    return <p className={styles.empty}>Product not found</p>;
+  }
 
   const sortedProducts = sortProducts(visibleProducts, sortBy);
 
@@ -87,20 +87,22 @@ export const CatalogPage: React.FC = () => {
         {category ? t(`categories.${category}`) : ''}
       </h1>
 
-      <p>
+      <p className={styles.countBadge}>
         {visibleProducts.length} {t('models')}
       </p>
 
       <SortSelect
+        className={styles.sortSelect}
         sortBy={sortBy}
         perPage={perPage}
         onSortChange={onSortChange}
         onPerPage={onPerPageChange}
       />
 
-      <ProductsList products={finalProducts} />
+      <ProductsList className={styles.productsList} products={finalProducts} />
 
       <Pagination
+        className={styles.pagination}
         total={totalPages}
         current={currentPage}
         onPageChange={setCurrentPage}

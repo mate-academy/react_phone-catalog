@@ -2,10 +2,5 @@
 @include dropdown-selector-system;
 
 .switcher {
-  align-items: center;
-  display: flex;
-
-  height: 100%;
-  border-left: 1px solid #3B3E4A;
-  padding: 10px;
+  @include nav-button;
 }

@@ -16,7 +16,7 @@ export const ArrowButton: React.FC<ArrowButtonProps> = ({
 }) => {
   return (
     <button className={`${styles.arrowButton} ${className}`} {...rest}>
-      <ArrowIcon className={arrowClassName || ''} />
+      <ArrowIcon className={`${arrowClassName} ${styles.arrowIcon}`} />
     </button>
   );
 };

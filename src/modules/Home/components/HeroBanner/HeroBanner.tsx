@@ -25,7 +25,8 @@ export const HeroBanner: React.FC = () => {
     },
   ];
 
-  const { currentIndex, next, prev, goTo } = useSlider({
+  const { currentIndex, next, prev, goTo, pause, resume } = useSlider({
+    mode: 'transform',
     itemsCount: banners.length,
     autoDelay: 5000,
     loop: true,
@@ -35,8 +36,8 @@ export const HeroBanner: React.FC = () => {
     <div className={styles.bannerContainer}>
       <div className={styles.mainContent}>
         <ArrowButton
-          className={`${styles.buttonLeft} ${styles.btn}`}
-          arrowClassName={`${styles.arrowLeft} ${styles.arrow}`}
+          className={styles.btn}
+          arrowClassName={styles.arrowLeft}
           onClick={prev}
         />
 
@@ -44,6 +45,8 @@ export const HeroBanner: React.FC = () => {
           <div
             className={styles.slidersWrapper}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            onMouseEnter={pause}
+            onMouseLeave={resume}
           >
             {banners.map(banner => (
               <Link to={banner.link} key={banner.id} className={styles.slide}>
@@ -53,11 +56,7 @@ export const HeroBanner: React.FC = () => {
           </div>
         </div>
 
-        <ArrowButton
-          className={`${styles.buttonRight} ${styles.btn}`}
-          arrowClassName={`${styles.arrowRight} ${styles.arrow}`}
-          onClick={next}
-        />
+        <ArrowButton className={styles.btn} onClick={next} />
       </div>
 
       <div className={styles.dots}>

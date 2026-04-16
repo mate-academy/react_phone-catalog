@@ -1,10 +1,17 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/themes" as *;
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 
-  margin-top: 40px;
+  margin-block: 40px 64px;
+
+  @include on-desktop {
+    margin-block-end: 80px;
+  }
 }
 
 .page, .arrow {
@@ -12,30 +19,76 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
-  background-color: #FFF;
-  border-radius: 50%;
-  border: 1px solid #E2E6E9;
+  width: 26px;
+  height: 26px;
+  border: 1px solid;
   cursor: pointer;
   transition: all 0.3s;
 
   font-size: 14px;
 
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.arrow {
+  color: var(--color-primary);
+  background-color: var(--pagination-buttons-forward-back-background-primary);
+  border-color: var(--pagination-buttons-forward-back-border-primary);
+
+  &:first-child {
+    margin-right: 8px;
+  }
+
+  &:last-child {
+    margin-left: 8px;
+  }
+
   &:hover:not(.disabled) {
-    border-color: #313237;
+    background-color: var(--pagination-buttons-forward-back-background-hover);
+    border-color: var(--pagination-buttons-forward-back-border-hover);
+  }
+}
+
+.page {
+  color: var(--pagination-buttons-color-primary);
+  background-color: var(--pagination-buttons-background-primary);
+  border-color: var(--pagination-buttons-border-primary);
+
+  &:first-child {
+    margin-right: 8px;
+  }
+
+  &:last-child {
+    margin-left: 8px;
+  }
+
+  &:hover {
+    color: var(--pagination-buttons-color-hover);
+    background-color: var(--pagination-buttons-background-hover);
+    border-color: var(--pagination-buttons-border-hover);
   }
 }
 
 .active {
-  background-color: #313237;
-
-  color: #fff;
-  border-color: #313237;
+  color: var(--pagination-buttons-color-selected);
+  background-color: var(--pagination-buttons-background-selected);
+  border-color: var(--pagination-buttons-border-selected);
 }
 
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: #F1F2F3;
+  background-color: transparent;
+  border-color: var(--divider-cart);
+}
+
+.dots {
+  width: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: default;
+  pointer-events: none;
 }

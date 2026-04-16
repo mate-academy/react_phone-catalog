@@ -1,19 +1,61 @@
+@use "../../../../styles/mixins" as *;
+@use '../../../../styles/themes' as *;
+
 .summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  width: 100%;
+  max-height: 206px;
+  border: 1px solid var(--divider-cart);
+  padding: 24px;
+
+  @include on-desktop {
+    width: 33%;
+  }
+
   .info {
+    display: flex;
+    flex-direction: column;
+
     .totalPrice {
-      /* TODO: styles will be added later */
+      color: var(--color-primary);
+      margin: auto;
+
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -1%;
     }
 
     .countText {
-      /* TODO: styles will be added later */
+      color: var(--color-secondary);
+
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0;
     }
   }
 
   .divider {
-    /* TODO: styles will be added later */
+    width: 100%;
+    height: 1px;
+    background-color: var(--divider-cart);
   }
 
   .checkoutButton {
-    /* TODO: styles will be added later */
+    width: 100%;
+    height: 48px;
+    color: var(--checkout-button);
+    background-color: var(--button-primary);
+    margin-bottom: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0;
   }
 }

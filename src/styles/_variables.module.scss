@@ -1,5 +1,5 @@
 $breakpoint-tablet: 640px;
-$breakpoint-desktop: 1200px;
+$breakpoint-desktop: 1040px;
 $breakpoint-XXDesktop: 1400px;
 $padding-inline-mobile: 16px;
 $padding-inline-tablet: 24px;
@@ -23,6 +23,7 @@ $font-weight-bold: 700; // Bold
 $font-weight-extrabold: 800; // Extra Bold
 $font-weight-black: 900; // Black
 
+$c-transparent: rgba(0, 0, 0, 0);
 $c-white: #FFF;
 $c-white-off: #F1F2F9;
 $c-white-soft: #FAFBFC;
@@ -36,6 +37,7 @@ $c-grey-night: #323542;
 $c-black-blue: #161827;
 $c-black-deep: #0F1121;
 $c-black: #0F0F11;
+$c-black-true: #000;
 $c-purple: #905BFF;
 $c-purple-light: #A378FF;
 $c-purple-deep: #4219D0;
@@ -52,6 +54,9 @@ $c-peach: #FFC4AA;
 $c-peach-dark: #FEA77E;
 $c-yellow: #FFEE15;
 $c-bright-blue: #0057b7;
+$c-anthracite: #373F43;
+$c-anthracite-blue: #3B3E4A;
+$c-green: #27AE60;
 
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
 :export {
@@ -69,157 +74,4 @@ $c-bright-blue: #0057b7;
   yellow: #{$c-yellow};
   brightBlue: #{$c-bright-blue};
   blueSky: #{$c-blue-sky};
-}
-/* stylelint-enable selector-pseudo-class-no-unknown, property-no-unknown */
-
-:root,
-body.original-light {
-  //  Фони
-  --background-page: #{$c-white};
-  --background-card: #{$c-white};
-
-  //  Лого
-  --color-logo: #{$c-grey-charcoal};
-
-  //  UPPERCASE
-  --color-primary: #{$c-grey-charcoal};
-  --color-secondary: #{$c-grey-medium};
-
-  //  Іконки Фаворит і Кошик
-  --color-favorites-cart: #{$c-grey-charcoal};
-
-  //  Кнопка вибору "Теми"
-  --button-temu: #{$c-grey-charcoal};
-
-  //  Кнопки
-  --button-primary: #{$c-grey-charcoal};
-  --button-hover: #{$c-grey-slate};
-  --button-default: #{$c-grey-light};
-
-  //  Favorite button
-  --favorite-border: #{$c-grey-light};
-  --favorite-icon: #{$c-grey-charcoal};
-
-  //  Інші
-  --separator: #{$c-grey-pale};
-  --border-color: #{$c-grey-pale};
-}
-
-body.original-dark {
-  // Фони
-  --background-page: #{$c-black-deep};
-  --background-card: #{$c-black-blue};
-
-  // Лого
-  --color-logo: #{$c-white-off};
-
-  // Тексти
-  --color-primary: #{$c-white-off};
-  --color-secondary: #{$c-grey-dark};
-
-  // Фаворит і кошик
-  --color-favorites-cart: #{$c-white-off};
-
-  // Кнопка вибору "Теми"
-  --button-temu: #{$c-white-off};
-
-  // Кнопки
-  --button-primary: #{$c-purple};
-  --button-hover: #{$c-purple-light};
-  --button-secondary: #{$c-grey-night};
-  --button-default: #{$c-grey-night};
-
-  // Favorite button
-  --favorite-border: #{$c-grey-night};
-  --favorite-bg: #{$c-grey-night};
-  --favorite-icon: #{$c-white-off};
-
-  // Інші
-  --separator: #3B3E4A;
-  --border-color: #{$c-black-deep};
-}
-
-body.rounded-purple-blue {
-  // Фони
-  --background-page: #{$c-white-off};
-  --background-card: #{$c-white};
-
-  // Лого
-  --color-logo: #{$c-black};
-
-  // Тексти
-  --color-primary: #{$c-black};
-  --color-secondary: #{$c-grey-medium};
-
-  // Кнопка вибору "Теми"
-  --button-temu: #{$c-grey-charcoal};
-
-  // Кнопки
-  --button-primary: #{$c-purple-deep};
-  --button-hover: #{$c-purple-vivid};
-  --button-secondary: #{$c-white};
-  --button-default: #{$c-grey-light};
-
-  // Favorite button
-  --favorite-border: #{$c-grey-light};
-  --favorite-bg: #{$c-white};
-  --favorite-icon: #{$c-black};
-
-  // Інші
-  --separator: #{$c-grey-pale};
-  --border-color: #{$c-grey-pale};
-}
-
-body.rounded-blue {
-  // Фони
-  --background-page: #{$c-cyan-neon};
-  --background-card: #{$c-cyan-dark};
-
-  // Лого
-  --color-logo: #{$c-black};
-
-  // Тексти
-  --color-primary: #{$c-black};
-  --color-secondary: #{$c-grey-medium};
-
-  // Кнопки
-  --button-primary: #{$c-blue-bright};
-  --button-hover: #{$c-blue-sky};
-  --button-default: #{$c-grey-light};
-
-  // Favorite button
-  --favorite-border: #{$c-grey-light};
-  --favorite-bg: #{$c-white};
-  --favorite-icon: #{$c-black};
-
-  // Інші
-  --separator: #{$c-grey-pale};
-  --border-color: #{$c-grey-pale};
-}
-
-body.rounded-purple-orange {
-  // Фони
-  --background-page: #{$c-peach};
-  --background-card: #{$c-peach-dark};
-
-  // Лого
-  --color-logo: #{$c-deep-pink};
-
-  // Тексти
-  --color-primary: #{$c-black};
-  --color-secondary: #{$c-grey-medium};
-
-  // Кнопки
-  --button-primary: #{$c-orange};
-  --button-hover: #{$c-orange-light};
-  --button-default: #{$c-grey-light};
-
-  // Favorite button
-  --favorite-border: #{$c-grey-light};
-  --favorite-bg: #{$c-white};
-  --favorite-icon: #{$c-black};
-
-  // Інші
-  --separator: #{$c-grey-pale};
-  --border-color: #{$c-grey-pale};
 }

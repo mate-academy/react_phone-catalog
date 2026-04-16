@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './ColorPicker.module.scss';
+import classNames from 'classnames';
 
 export const colorMap: Record<string, string> = {
   silver: '#c0c0c0',
@@ -35,16 +36,42 @@ interface ColorPickerProps {
   colors: string[];
   currentColor: string;
   getNewPath: (color: string) => string;
+  itemId: string;
+  className?: string;
 }
+
+export const generateNumericId = (str: string): number => {
+  if (!str) {
+    return 0;
+  }
+
+  let hash = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+
+    hash = (hash << 5) - hash + char;
+    hash |= 0;
+  }
+
+  return Math.abs(hash) % 1000000;
+};
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({
   colors,
   currentColor,
   getNewPath,
+  itemId,
+  className,
 }) => {
+  const numericId = generateNumericId(itemId);
+
   return (
-    <div className={styles.colorsSelectionBox}>
-      <p className={styles.label}>Available colors</p>
+    <div className={classNames(styles.colorsSelectionBox, className)}>
+      <div className={styles.header}>
+        <p className={styles.label}>Available colors</p>
+        <p className={styles.idNumber}>ID: {numericId}</p>
+      </div>
       <div className={styles.colorsSelection}>
         {colors.map(color => (
           <Link

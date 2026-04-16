@@ -4,11 +4,10 @@
 
 .navigation {
   width: 100%;
-  background-color: var(--background-page);
+  height: 100%;
 
   display: none;
   align-items: center;
-  gap: 32px;
   text-align: center;
 
   @media (min-width: $breakpoint-tablet) {
@@ -20,6 +19,11 @@
     margin-left: 24px;
   }
 
+  .navigation__container {
+    display: flex;
+    gap: 26px;
+  }
+
   &__link {
     @include nav-link-base;
 
@@ -29,6 +33,7 @@
 
       width: 100%;
       height: 2px;
+      background-color: var(--hover-color-primary);
 
       @media (min-width: $breakpoint-desktop) {
         bottom: -27px;
@@ -38,24 +43,17 @@
 
   &__right {
     display: flex;
-    justify-content: space-around;
 
     height: 100%;
     margin-left: auto;
   }
 
   &__iconLink {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     height: 100%;
-    border-left: 1px solid #3B3E4A;
-    padding: 10px;
+    border-left: 1px solid var(--border-color);
   }
 
   &__icon {
-    height: auto;
     z-index: 1;
   }
 }

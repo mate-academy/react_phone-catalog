@@ -1,6 +1,17 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables.module" as *;
+
 .productSlider {
+  margin-right: -$padding-inline-mobile;
   margin-bottom: 80px;
-  padding: 0 16px;
+
+  @include on-tablet {
+    margin-right: -$padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    margin-right: initial;
+  }
 
   .header {
     display: flex;
@@ -15,43 +26,60 @@
 
     .buttonBox {
       display: flex;
-
-      .buttonLeft {
-        // I know. I'll fill it in later!
-      }
-
-      .buttonRight {
-        // I know. I'll fill it in later!
-      }
+      gap: 16px;
     }
   }
 
-  .sliderWindow {
-    overflow: hidden;
-    width: 100%;
+  .slider {
+    --gap: clamp(8px, 2vw, 42px);
+    --items: 1.5;
 
-    .sliderContainer {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      gap: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
 
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 
+    &::-webkit-scrollbar {
+      display: none;
     }
+
+    @include on-tablet {
+      --items: 2.5;
+    }
+
+    @include on-desktop {
+      --items: 4;
+    }
+
+    @media (min-width: 1700px) {
+      --items: 5;
+    }
+  }
+
+  .slide {
+    flex: 0 0 auto;
+
+    scroll-snap-align: start;
+
+    width: calc(
+    (100% - (var(--items) - 1) * var(--gap)) / var(--items)
+    );
+    height: 100%;
+
+    .productCard {
+      height: 100%;
+    }
+  }
 
     .cardWrapper {
-      flex: 0 0 calc(100% / 1.5);
-
-      @media (min-width: 640px) {
-        flex-basis: calc(100% / 2.5);
-      }
-
-      @media (min-width: 1024px) {
-        flex-basis: calc(100% / 4);
-      }
+      width: 100%;
     }
   }
-
-}
 
 .arrowLeft {
   transform: rotate(180deg);

@@ -19,9 +19,36 @@
   }
 }
 
+@mixin products-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px 16px;
+
+    width: 100%;
+    max-width: 100%;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 838px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include on-xx-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
 @mixin nav-link-base {
   width: min-content;
   color: var(--color-secondary);
+
+  font-size: 11px;
   text-transform: uppercase;
   font-weight: 800;
   line-height: 11px;
@@ -30,31 +57,42 @@
   @include underline-hover(white);
 
   &:hover {
-    color: $c-white-off;
+    color: var(--hover-color-primary);
+  }
+}
+
+@mixin nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  border-left: 1px solid var(--border-color);
+  padding: 10px;
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@mixin toggle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  background: none;
+  cursor: pointer;
+  padding: 10px;
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 64px;
+    height: 64px;
   }
 }
 
 @mixin dropdown-selector-system {
-  // 2. Кнопка-перемикач (ромашка або глобус)
-  .toggleButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    height: 32px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: var(--icons-color);
-    transition: color 0.4s ease, transform 0.4s ease;
-
-    &:hover {
-      color: var(--color-accent);
-    }
-  }
-
-  // 3. Контейнер випадаючого списку
   .dropdown {
     position: absolute;
     top: calc(100% + 8px);
@@ -64,7 +102,6 @@
 
   }
 
-  // 4. Внутрішня частина списку
   .dropdownContent {
     display: flex;
     flex-direction: column;
@@ -81,7 +118,6 @@
     }
   }
 
-  // 5. Картка (теми або мови)
   .optionCard {
     position: relative;
     display: flex;
@@ -103,7 +139,6 @@
       border-color: var(--color-accent, #4219D0);
     }
 
-    // Внутрішні елементи картки
     .cardContent {
       display: flex;
       align-items: center;
@@ -112,6 +147,8 @@
     }
 
     .cardLabel {
+      color: $c-grey-charcoal;
+
       font-size: 14px;
       font-weight: 600;
     }
@@ -119,11 +156,12 @@
     .cardBadge {
       width: 32px;
       height: 24px;
+      color: $c-grey-charcoal;
       border-radius: 4px;
+      margin-inline-start: auto;
     }
   }
 
-  // 6. Кастомна радіокнопка
   .radioCustom {
     display: flex;
     justify-content: center;
@@ -144,7 +182,33 @@
   }
 }
 
-// Анімації виносимо окремо, щоб вони не дублювалися
+@mixin price-container {
+  .priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .newPrice {
+      color: var(--color-primary);
+
+      font-size: $font-size-2xl;
+      line-height: 140%;
+      letter-spacing: 0;
+      font-weight: $font-weight-extrabold;
+    }
+
+    .oldPrice {
+      color: var(--color-secondary);
+      text-decoration: line-through;
+
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-semibold;
+      line-height: 100%;
+      letter-spacing: 0;
+    }
+  }
+}
+
 @keyframes dropdown-fade-in {
   from {
     opacity: 0; transform: translateY(-10px);

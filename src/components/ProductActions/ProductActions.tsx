@@ -8,15 +8,18 @@ import { useCart } from '../../hooks/useCart';
 import { useFavorites } from '../../hooks/useFavorites';
 import { HeartIcon } from '../HeartIcon';
 import { Button } from '../Button';
+import classNames from 'classnames';
 
 interface ProductActionsProps {
   product: ProductType;
   variant?: 'card' | 'details';
+  className: string;
 }
 
 export const ProductActions: React.FC<ProductActionsProps> = ({
   product,
   variant = 'card',
+  className,
 }) => {
   const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorites } = useFavorites();
@@ -28,8 +31,14 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className={`${styles.actions} ${styles[`actions--${variant}`]}`}>
+    <div
+      className={classNames(
+        `${styles.actions} ${styles[`actions--${variant}`]}`,
+        className,
+      )}
+    >
       <Button
+        className={styles.addButton}
         variant={added ? 'secondary' : 'primary'}
         disabled={added}
         onClick={() => addToCart(product)}

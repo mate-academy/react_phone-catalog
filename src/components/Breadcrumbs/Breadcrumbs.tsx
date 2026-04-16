@@ -9,35 +9,55 @@ import homeIcon from '../../img/home.json';
 import { ArrowIcon } from '../ArrowIcon';
 import { useLordicon } from '../../hooks/useLordicon';
 
+import { getCategoryByPath } from '../../utils/categories';
+
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
-  const pathNames = pathname.split('/').filter(x => x);
   const { t } = useTranslation();
+
+  const pathNames = pathname.split('/').filter(Boolean);
+
+  const category = getCategoryByPath(pathNames[0] || '');
+
+  const productSlug = pathNames[1] || null;
+
+  const formatSlug = (slug: string) => {
+    return slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   const { playerRef, handleMouseEnter } = useLordicon();
 
   return (
     <nav className={styles.breadcrumbs}>
-      <Link to="/" className={styles.homeLink} onMouseEnter={handleMouseEnter}>
-        <Player ref={playerRef} icon={homeIcon} />
+      <Link to="/" onMouseEnter={handleMouseEnter}>
+        <Player icon={homeIcon} ref={playerRef} />
       </Link>
 
-      {pathNames.map((name, index) => {
-        const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`;
-        const isLast = index === pathNames.length - 1;
+      {category && (
+        <>
+          <ArrowIcon className={styles.arrow} />
 
-        return (
-          <React.Fragment key={routeTo}>
-            <ArrowIcon className={styles.arrow} />
-            {isLast ? (
-              <span className={styles.current}>{t(`categories.${name}`)}</span>
-            ) : (
-              <Link to={routeTo} className={styles.link}>
-                {t(`categories.${name}`)}
-              </Link>
-            )}
-          </React.Fragment>
-        );
-      })}
+          {!productSlug ? (
+            <span className={styles.current}>
+              {t(`categories.${category.title}`, category.label)}
+            </span>
+          ) : (
+            <Link className={styles.categoryTitle} to={`/${category.path}`}>
+              {t(`categories.${category.title}`, category.label)}
+            </Link>
+          )}
+        </>
+      )}
+
+      {productSlug && (
+        <>
+          <ArrowIcon className={styles.arrow} />
+          <span className={styles.current}>{formatSlug(productSlug)}</span>
+        </>
+      )}
     </nav>
   );
 };

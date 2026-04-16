@@ -1,7 +1,10 @@
 import React, { forwardRef, useEffect, useCallback } from 'react';
 import { Player } from '@lordicon/react';
 
+import styles from './WiredTrolley.module.scss';
+
 import wiredTrolley from '../../img/wiredTrolley1.json';
+import classNames from 'classnames';
 
 interface WiredTrolleyProps {
   className?: string;
@@ -23,7 +26,10 @@ export const WiredTrolley = forwardRef<Player, WiredTrolleyProps>(
     }, [trigger, playAnimation]);
 
     return (
-      <div className={className} onMouseEnter={playAnimation}>
+      <div
+        className={classNames(styles.wiredTrolley, className)}
+        onMouseEnter={playAnimation}
+      >
         <Player icon={wiredTrolley} ref={playerRef} />
       </div>
     );
