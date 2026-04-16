@@ -3,12 +3,12 @@
 
 .container {
   @include content-width;
-}
 
-h1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 200px;
+  h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  }
 }
 
 .homeLink {
