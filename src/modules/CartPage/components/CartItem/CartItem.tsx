@@ -5,6 +5,7 @@ import styles from './CartItem.module.scss';
 import { Button } from '../../../../components/Button';
 import { useCart } from '../../../shared/context/CartContext';
 import classNames from 'classnames';
+import { getPublicPath } from '../../../shared/utils/pathHelper';
 
 interface Props {
   cartItem: CartItemType;
@@ -28,7 +29,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
 
       <div className={styles.imageWrapper}>
         <img
-          src={`/${cartItem.image}`}
+          src={getPublicPath(`/${cartItem.image}`)}
           alt={`Product: ${cartItem.name}`}
           className={styles.image}
         />
