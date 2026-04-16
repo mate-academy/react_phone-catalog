@@ -9,14 +9,13 @@
   border: 1px solid #E2E6E9;
   padding: 16px;
 
+  @include hover-scale;
+
   @include on-tablet {
     flex-direction: row;
     justify-content: space-between;
-
     padding: 24px;
   }
-
-  @include hover-scale;
 
   .leftBloc {
     display: flex;

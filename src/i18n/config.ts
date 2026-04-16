@@ -12,7 +12,8 @@ const resources: Resource = {
 
 const i18nConfig = {
   resources,
-  fallbackLng: 'en',
+  lng: 'uk',
+  fallbackLng: 'uk',
   supportedLngs: ['en', 'uk'],
   ns: ['common'],
   defaultNS: 'common',
@@ -20,8 +21,10 @@ const i18nConfig = {
     escapeValue: false,
   },
   detection: {
-    order: ['localStorage', 'cookie', 'navigator'],
-    caches: ['localStorage'],
+    order: ['navigator'], // Приберіть localStorage з черги
+    caches:[],
+    // order: ['localStorage', 'cookie', 'navigator'],
+    // caches: ['localStorage'],
   },
 } as InitOptions;
 
