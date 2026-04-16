@@ -44,22 +44,25 @@
 
 
    &__list {
-    min-width: 0;
-    min-height: 0;
-    box-sizing: border-box;
+    @include page-grid;
 
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     gap: 40px 16px;
 
+    box-sizing: border-box;
+
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+
     @include on-tablet {
-        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
         grid-column: 1/-1;
     }
 
      @include on-desktop {
-        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-        grid-column: 1/-1;
+       grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+
       }
 
   }
@@ -101,13 +104,12 @@
       box-shadow: none;
   }
 
-
  }
 
  &__product {
-  display: block;
-  margin: 0;
-  padding: 0;
+  display: grid;
+
+
   box-sizing: border-box;
   min-width: 212px;
 

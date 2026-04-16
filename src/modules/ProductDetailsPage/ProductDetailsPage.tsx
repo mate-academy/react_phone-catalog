@@ -52,6 +52,7 @@ export const ProductDetailsPage = () => {
 
   const Id = product?.id ?? null;
   const productCategory = product?.category ?? null;
+  const namespaceId = product?.namespaceId ?? null;
   const search = searchParams.toString();
   const params = new URLSearchParams(search);
 
@@ -211,6 +212,7 @@ export const ProductDetailsPage = () => {
       const candidates = all.filter(
         p =>
           String(p.id) !== String(productId) &&
+          String(p.namespaceId) === String(namespaceId) &&
           String(p.category) === String(productCategory) &&
           String(p.color) === String(selectedColor) &&
           String(p.capacity) === String(selectedCapacity),
