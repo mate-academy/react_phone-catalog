@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import styles from './Footer.module.scss';
@@ -16,15 +15,32 @@ export const Footer: React.FC = () => {
       <Logo />
 
       <nav className={styles.navigation}>
-        <Link to="/" className={styles.navigation__link}>
+        <a
+          href="https://github.com/Bukavyna"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.navigation__link}
+        >
           Github
-        </Link>
-        <Link to="/phones" className={styles.navigation__link}>
+        </a>
+
+        <a
+          href="https://www.apple.com/contact/"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.navigation__link}
+        >
           {t('footer.contacts')}
-        </Link>
-        <Link to="/tablets" className={styles.navigation__link}>
+        </a>
+
+        <a
+          href="https://www.apple.com/legal/privacy/en-ww/"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.navigation__link}
+        >
           {t('footer.rights')}
-        </Link>
+        </a>
       </nav>
 
       <div className={styles.scrollToTop}>
