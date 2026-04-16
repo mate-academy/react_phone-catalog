@@ -5,7 +5,14 @@
 .cartItem {
     @include mixins.flex-column(16px);
     
-    border: 1px solid c.$color-elements;
+    border: 1px solid var(--color-surface-border);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-add-card);
+    transition: border-color v.$transition;
+
+    &:hover {
+        border-color: var(--color-hover);
+    }
 
     @include mixins.on-tablet {
         flex-direction: row;
@@ -65,7 +72,7 @@
 
     @include mixins.typography(600, 14px, 21px);
 
-    color: c.$color-primary;
+    color: var(--color-primary);
     text-decoration: none;
     min-width: 0;
 }
@@ -94,13 +101,23 @@
     width: 32px;
     height: 32px;
     padding: 0;
-    border: 1px solid c.$color-elements;
-    background-color: transparent;
-    transition: border-color v.$transition;
+
+    background-color: var(--color-control);
+    border: 1px solid var(--color-icons);
+    transition:
+      border-color v.$transition,
+      background-color v.$transition;
     cursor: pointer;
 
-    &:hover {
-        border-color: c.$color-primary;
+    &:disabled {
+      border: 1px solid var(--color-control-disabled);
+      background-color: var(--color-surface);
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      border-color: var(--color-control-hover-border);
+      background-color: var(--color-control-hover-bg);
     }
 }
 
@@ -112,11 +129,11 @@
 
     @include mixins.typography(600, 14px, 21px);
 
-    color: c.$color-primary;
+    color: var(--color-primary);
 }
 
 .price {
     @include mixins.typography(800, 22px, 1.4);
 
-    color: c.$color-primary;
+    color: var(--color-primary);
 }

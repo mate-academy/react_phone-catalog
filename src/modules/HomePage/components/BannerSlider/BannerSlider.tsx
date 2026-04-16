@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import styles from './BannerSlider.module.scss';
-import mainStyles from '../Main/Main.module.scss';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { arrowLeftIconMap } from '../../../shared/config/arrowLeftIconMap';
+import { arrowRightIconMap } from '../../../shared/config/arrowRightIconMap';
 
 const slides = [
   {
@@ -22,6 +24,7 @@ const slides = [
 
 export const BannerSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,14 +45,14 @@ export const BannerSlider = () => {
   return (
     <section className={styles.bannerSlider}>
       <div className={styles.bannerInner}>
-        <div className={mainStyles.layoutGrid}>
+        <div className="layoutGrid">
           <button
             type="button"
             className={styles.arrowLeft}
             onClick={handlePrev}
             aria-label="Previous slide"
           >
-            <img src="/img/icon/chevron-arrow-left.svg" alt="" />
+            <img src={arrowLeftIconMap[theme].default} alt="" />
           </button>
 
           <div className={styles.viewport}>
@@ -77,7 +80,7 @@ export const BannerSlider = () => {
             onClick={handleNext}
             aria-label="Next slide"
           >
-            <img src="/img/icon/chevron-arrow-right.svg" alt="" />
+            <img src={arrowRightIconMap[theme].default} alt="" />
           </button>
         </div>
 

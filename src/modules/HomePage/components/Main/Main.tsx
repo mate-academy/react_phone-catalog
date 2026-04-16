@@ -4,7 +4,7 @@ import { ProductSection } from '../ProductSection/ProductSection';
 import { ShopByCategory } from '../ShopByCategory';
 import { getHotPriceProducts } from '../../../../utils/products';
 import styles from './Main.module.scss';
-import { useShop } from '../../../../store/ShopContext';
+import { useShop } from '../../../../store/shop/ShopContext';
 
 export const Main = () => {
   const { products } = useShop();

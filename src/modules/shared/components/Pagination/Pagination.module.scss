@@ -1,4 +1,3 @@
-@use '../../../../styles/colors.scss' as c;
 @use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
@@ -29,37 +28,43 @@
   padding: 0;
   width: 32px;
   height: 32px;
-  background-color: transparent;
-  border: 1px solid c.$color-icons;
-  transition: border-color v.$transition;
+  background-color: var(--color-control);
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-button);
+  transition:
+    border-color v.$transition,
+    background-color v.$transition;
   cursor: pointer;
 
-  &:hover {
-    border-color: c.$color-primary;
+  &:disabled {
+    border: 1px solid var(--color-control-disabled);
+    background-color: var(--color-bg);
+    cursor: not-allowed;
   }
 
-  &:disabled {
-    border-color: c.$color-elements;
-    cursor: not-allowed;
+  &:not(:disabled):hover {
+    border-color: var(--color-control-hover-border);
+    background-color: var(--color-control-hover-bg);
   }
 }
 
 .pageButton {
   width: 32px;
   height: 32px;
-  color: c.$color-primary;
-  border: 1px solid c.$color-elements;
-  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-button);
+  background-color: var(--color-surface);
   transition: border-color v.$transition;
   cursor: pointer;
 
   &:hover {
-    border-color: c.$color-primary;
+    border-color: var(--color-control-hover-border);
   }
 }
 
 .active {
-  background: c.$color-primary;
-  color: c.$color-white;
-  border-color: c.$color-primary;
+  color: var(--color-control-default-text);
+  background-color: var(--color-control-default-bg);
+  border: var(--color-control-default-border);
 }

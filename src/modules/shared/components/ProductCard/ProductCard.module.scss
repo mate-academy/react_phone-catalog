@@ -1,10 +1,12 @@
-@use '../../../../styles/colors.scss' as c;
 @use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
 .card {
   flex: 0 0 212px;
-  border: 1px solid c.$color-elements;
+  border: 1px solid var(--color-surface-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  transition: border-color v.$transition;
 
   @include mixins.on-tablet {
     flex: 0 0 237px;
@@ -12,6 +14,10 @@
 
   @include mixins.on-desktop {
     flex: 0 0 272px;
+  }
+
+  &:hover {
+    border-color: var(--color-icons);
   }
 }
 
@@ -63,12 +69,12 @@
   @include mixins.typography(600, 14px, 21px);
 
   text-decoration: none;
-  color: c.$color-primary;
+  color: var(--color-primary);
 }
 
 .priceBlock {
   padding-bottom: 8px;
-  border-bottom: 1px solid c.$color-elements;
+  border-bottom: 1px solid var(--color-surface-devider);
 }
 
 .priceRow {
@@ -83,13 +89,13 @@
 
   @include mixins.typography(800, 22px, 1.4);
 
-  color: c.$color-primary;
+  color: var(--color-primary);
 }
 
 .oldPrice {
   @include mixins.typography(600, 22px, 1);
 
-  color: c.$color-secondary;
+  color: var(--color-secondary);
   text-decoration: line-through;
 }
 
@@ -105,13 +111,13 @@
 .specName {
   @include mixins.typography(700, 12px, 1);
 
-  color: c.$color-secondary;
+  color: var(--color-secondary);
 }
 
 .specValue {
   @include mixins.typography(700, 12px, 1);
 
-  color: c.$color-primary;
+  color: var(--color-primary);
 }
 
 .actions {
@@ -128,15 +134,20 @@
 
   text-align: center;
   padding: 0;
-  color: c.$color-white;
-  background-color: c.$color-primary;
-  border: none;
+  color: var(--color-control-default-text);
+  background-color: var(--color-control-default-bg);
+  border: var(--color-control-default-border);
+  border-radius: var(--radius-button-main);
   transition: box-shadow v.$transition;
   cursor: pointer;
+  
+  &:hover {
+    box-shadow: v.$shadow-hover;
+  }
 
   &:disabled {
-    background-color: c.$color-primary;
-    color: c.$color-white;
+    color: var(--color-control-selected-text);
+    background-color: var(--color-control-selected-bg);
     cursor: default;
     box-shadow: none;
   }
@@ -154,9 +165,10 @@
 
   text-align: center;
   padding: 0;
-  color: c.$color-green;
-  background-color: c.$color-white;
-  border: 1px solid c.$color-elements;
+  color: var(--color-control-selected-text);
+  background-color: var(--color-control-selected-bg);
+  border: 1px solid var(--color-control-selected-border);
+  border-radius: var(--radius-button-main);
   box-shadow: none;
   cursor: not-allowed;
 }
@@ -167,16 +179,21 @@
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 1px solid c.$color-icons;
-  background-color: transparent;
-  transition: border-color v.$transition;
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-button);
+  background-color: var(--color-control);
+  transition:
+    border-color v.$transition,
+    background-color v.$transition;
   cursor: pointer;
 
   &:hover {
-    border-color: c.$color-primary;
+    background-color: var(--color-control-hover-bg);
+    border: 1px solid var(--color-control-hover-border);
   }
 }
 
 .favouriteButtonActive {
-  border: 1px solid c.$color-elements;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-control-disabled);
 }

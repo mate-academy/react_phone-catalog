@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom';
 import styles from './ShopByCategory.module.scss';
+import { useShop } from '../../../../store/shop/ShopContext';
 
 export const ShopByCategory = () => {
+  const { products } = useShop();
+  const phonesCount = products.filter(
+    item => item.category === 'phones',
+  ).length;
+  const tabletsCount = products.filter(
+    item => item.category === 'tablets',
+  ).length;
+  const accessoriesCount = products.filter(
+    item => item.category === 'accessories',
+  ).length;
+
   return (
     <section className={styles.shopByCategory}>
       <div className="container">
@@ -27,7 +39,7 @@ export const ShopByCategory = () => {
             </Link>
 
             <h3 className={styles.name}>Mobile phones</h3>
-            <p className={styles.modelsCount}>95 models</p>
+            <p className={styles.modelsCount}>{`${phonesCount} models`}</p>
           </div>
 
           <div className={styles.categoryCard}>
@@ -50,7 +62,7 @@ export const ShopByCategory = () => {
             </Link>
 
             <h3 className={styles.name}>Tablets</h3>
-            <p className={styles.modelsCount}>24 models</p>
+            <p className={styles.modelsCount}>{`${tabletsCount} models`}</p>
           </div>
 
           <div className={styles.categoryCard}>
@@ -73,7 +85,7 @@ export const ShopByCategory = () => {
             </Link>
 
             <h3 className={styles.name}>Accessories</h3>
-            <p className={styles.modelsCount}>100 models</p>
+            <p className={styles.modelsCount}>{`${accessoriesCount} models`}</p>
           </div>
         </div>
       </div>

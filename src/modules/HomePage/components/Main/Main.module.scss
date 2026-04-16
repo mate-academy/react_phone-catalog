@@ -23,15 +23,3 @@
         gap: 80px;
     }
 }
-
-.layoutGrid {
-    @include mixins.grid-columns(4, 1fr, 16px);
-
-    @include mixins.on-tablet {
-        @include mixins.grid-columns(12, 1fr, 16px);
-    };
-
-    @include mixins.on-desktop {
-        @include mixins.grid-columns(24, 1fr, 16px);
-    };
-}

@@ -5,7 +5,7 @@ import styles from './CatalogPageContent.module.scss';
 import { getSortedProducts } from '../../../../utils/products';
 import { ProductList } from '../ProductList/ProductList';
 import { Pagination } from '../Pagination';
-import { useShop } from '../../../../store/ShopContext';
+import { useShop } from '../../../../store/shop/ShopContext';
 import { Loader } from '../Loader';
 import { useSearchParams } from 'react-router-dom';
 
@@ -13,15 +13,20 @@ type Props = {
   title: string;
   breadcrumb: string;
   products: Product[];
+  totalProductCount: number;
+  emptySearchLabel?: string;
 };
 
 export const CatalogPageContent: React.FC<Props> = ({
   title,
   breadcrumb,
   products,
+  totalProductCount,
+  emptySearchLabel = 'products',
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { isLoadingProducts, error, reloadProducts } = useShop();
+  const query = searchParams.get('query')?.trim() || '';
   const sortParam = searchParams.get('sort') as SortType;
   const sortBy: SortType =
     sortParam === 'alphabetically' || sortParam === 'cheapest'
@@ -113,6 +118,8 @@ export const CatalogPageContent: React.FC<Props> = ({
     visiblePages.push(page);
   }
 
+  const showNoResults = query.length > 0 && products.length === 0;
+
   return (
     <main>
       <div className="container">
@@ -134,15 +141,17 @@ export const CatalogPageContent: React.FC<Props> = ({
           </div>
         )}
 
-        {!isLoadingProducts && !error && products.length === 0 && (
+        {!isLoadingProducts && !error && showNoResults && (
           <div className={styles.empty}>
-            <p>{`There are no ${breadcrumb.toLowerCase()} yet`}</p>
+            <p>{`There are no ${emptySearchLabel} matching the query`}</p>
           </div>
         )}
 
         {!isLoadingProducts && !error && products.length > 0 && (
           <>
-            <p className={styles.modelsCount}>{`${products.length} models`}</p>
+            <p className={styles.modelsCount}>
+              {`${totalProductCount} models`}
+            </p>
             <div className={styles.controls}>
               <div className={styles.control}>
                 <label htmlFor="sortBy" className={styles.controlLabel}>

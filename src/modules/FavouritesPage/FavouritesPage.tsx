@@ -1,7 +1,7 @@
 import styles from './FavouritesPage.module.scss';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ProductList } from '../shared/components/ProductList/ProductList';
-import { useShop } from '../../store/ShopContext';
+import { useShop } from '../../store/shop/ShopContext';
 
 export const FavouritesPage = () => {
   const { favourites } = useShop();

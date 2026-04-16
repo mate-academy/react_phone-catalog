@@ -1,5 +1,9 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
+import { arrowLeftIconMap } from '../../config/arrowLeftIconMap';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { arrowRightIconMap } from '../../config/arrowRightIconMap';
+import { useScrollToTop } from '../../../../hooks/useScrollToTop';
 
 type Props = {
   currentPage: number;
@@ -14,19 +18,25 @@ export const Pagination: React.FC<Props> = ({
   visiblePages,
   onPageChange,
 }) => {
+  const { theme } = useTheme();
+  const scrollToTop = useScrollToTop();
+
   return (
     <div className={styles.pagination}>
       <button
         type="button"
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
         className={styles.arrowButton}
+        disabled={currentPage === 1}
+        onClick={() => {
+          onPageChange(currentPage - 1);
+          scrollToTop();
+        }}
       >
         <img
           src={
             currentPage === 1
-              ? '/img/icon/arrow-left-disabled.svg'
-              : '/img/icon/chevron-arrow-left.svg'
+              ? arrowLeftIconMap[theme].disabled
+              : arrowLeftIconMap[theme].default
           }
           alt="Previous page"
         />
@@ -49,15 +59,18 @@ export const Pagination: React.FC<Props> = ({
 
       <button
         type="button"
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
         className={styles.arrowButton}
+        disabled={currentPage === totalPages}
+        onClick={() => {
+          onPageChange(currentPage + 1);
+          scrollToTop();
+        }}
       >
         <img
           src={
             currentPage === totalPages
-              ? '/img/icon/arrow-right-disabled.svg'
-              : '/img/icon/chevron-arrow-right.svg'
+              ? arrowRightIconMap[theme].disabled
+              : arrowRightIconMap[theme].default
           }
           alt="Previous page"
         />

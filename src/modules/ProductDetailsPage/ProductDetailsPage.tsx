@@ -9,7 +9,7 @@ import { ProductAbout } from './components/ProductAbout';
 import { ProductTechSpecs } from './components/ProductTechSpecs';
 import { ProductSection } from '../HomePage/components/ProductSection';
 import { getSuggestedProducts } from '../../utils/products';
-import { useShop } from '../../store/ShopContext';
+import { useShop } from '../../store/shop/ShopContext';
 import { Loader } from '../shared/components/Loader';
 
 export const ProductDetailsPage = () => {

@@ -3,6 +3,9 @@ import { Product } from '../../../../types/Product';
 // eslint-disable-next-line max-len
 import { ProductList } from '../../../shared/components/ProductList/ProductList';
 import styles from './ProductSection.module.scss';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { arrowLeftIconMap } from '../../../shared/config/arrowLeftIconMap';
+import { arrowRightIconMap } from '../../../shared/config/arrowRightIconMap';
 
 type Props = {
   title: string;
@@ -19,6 +22,7 @@ export const ProductSection: React.FC<Props> = ({
   const [step, setStep] = useState(228);
   const [cardsPerView, setCardsPerView] = useState(1);
   const [slidesPerClick, setSlidesPerClick] = useState(1);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const updateSliderSettings = () => {
@@ -44,6 +48,9 @@ export const ProductSection: React.FC<Props> = ({
   }, []);
 
   const maxIndex = Math.max(0, products.length - cardsPerView);
+
+  const isPrevDisabled = currentIndex === 0;
+  const isNextDisabled = currentIndex >= maxIndex;
 
   const handlePrev = () => {
     setCurrentIndex(prev => Math.max(prev - slidesPerClick, 0));
@@ -71,9 +78,16 @@ export const ProductSection: React.FC<Props> = ({
               className={styles.arrowLeft}
               onClick={handlePrev}
               aria-label="Previous slide"
-              disabled={currentIndex === 0}
+              disabled={isPrevDisabled}
             >
-              <img src="/img/icon/chevron-arrow-left.svg" alt="" />
+              <img
+                src={
+                  isPrevDisabled
+                    ? arrowLeftIconMap[theme].disabled
+                    : arrowLeftIconMap[theme].default
+                }
+                alt=""
+              />
             </button>
 
             <button
@@ -81,9 +95,16 @@ export const ProductSection: React.FC<Props> = ({
               className={styles.arrowRight}
               onClick={handleNext}
               aria-label="Next slide"
-              disabled={currentIndex >= maxIndex}
+              disabled={isNextDisabled}
             >
-              <img src="/img/icon/chevron-arrow-right.svg" alt="" />
+              <img
+                src={
+                  isNextDisabled
+                    ? arrowRightIconMap[theme].disabled
+                    : arrowRightIconMap[theme].default
+                }
+                alt=""
+              />
             </button>
           </div>
         </div>

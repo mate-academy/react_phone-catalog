@@ -1,6 +1,6 @@
-@use './styles/colors.scss' as c;
 @use './styles/variables.scss' as v;
 @use './styles/mixins.scss';
+@import './styles/theme';
 
 *,
 *::before,
@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: c.$color-white;
+  background-color: var(--color-bg);
   margin: 0;
   font-family: Montserrat, sans-serif;
 }
@@ -31,6 +31,14 @@ body {
   }
 }
 
+.page__preferences {
+  display: none;
+
+  @include mixins.on-tablet {
+    display: block;
+  }
+}
+
 .container {
   width: 100%;
   max-width: v.$container-width;
@@ -44,4 +52,16 @@ body {
   @include mixins.on-desktop {
     padding-inline: 32px;
   }
+}
+
+.layoutGrid {
+  @include mixins.grid-columns(4, 1fr, 16px);
+
+  @include mixins.on-tablet {
+    @include mixins.grid-columns(12, 1fr, 16px);
+  };
+
+  @include mixins.on-desktop {
+    @include mixins.grid-columns(24, 1fr, 16px);
+  };
 }

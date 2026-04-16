@@ -1,4 +1,4 @@
-import { useShop } from '../../../../store/ShopContext';
+import { useShop } from '../../../../store/shop/ShopContext';
 import { Product } from '../../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './ProductList.module.scss';

@@ -1,4 +1,3 @@
-@use '../../styles/colors.scss' as c;
 @use '../../styles/mixins.scss';
 
 .main {
@@ -25,7 +24,7 @@
 
     @include mixins.typography(700, 12px, 1);
 
-    color: c.$color-secondary;
+    color: var(--color-nav-text-footer);
     text-decoration: none;
 }
 
@@ -35,7 +34,7 @@
 
     @include mixins.typography(800, 22px, 1.4);
 
-    color: c.$color-primary;
+    color: var(--color-primary);
 
     @include mixins.on-tablet {
         margin-bottom: 40px;

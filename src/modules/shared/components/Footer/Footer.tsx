@@ -1,20 +1,22 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import { logoMap } from '../../config/logoMap';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { arrowTopIconMap } from '../../config/arrowTopIconMap';
+import { useScrollToTop } from '../../../../hooks/useScrollToTop';
 
 export const Footer = () => {
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+  const { theme } = useTheme();
+  const scrollToTop = useScrollToTop();
+
+  const currentLogo = logoMap[theme];
 
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <Link to="/" className={styles.logoLink} onClick={handleScrollToTop}>
+        <Link to="/" className={styles.logoLink} onClick={scrollToTop}>
           <img
-            src="/img/icon/nice-gadgets-desktop.svg"
+            src={currentLogo.desktop}
             alt="Nice Gadgets"
             className={styles.logoImage}
           />
@@ -50,9 +52,9 @@ export const Footer = () => {
           <button
             type="button"
             className={styles.backToTopButton}
-            onClick={handleScrollToTop}
+            onClick={scrollToTop}
           >
-            <img src="/img/icon/chevron-arrow-top.svg" alt="Arrow Top" />
+            <img src={arrowTopIconMap[theme]} alt="Arrow Top" />
           </button>
         </div>
       </div>

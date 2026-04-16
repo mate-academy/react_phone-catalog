@@ -18,7 +18,7 @@
 
     @include mixins.typography(800, 32px, 41px, -0.01em);
 
-    color: c.$color-primary;
+    color: var(--color-primary);
     grid-column: 1 / -1;
 
     @include mixins.on-tablet {

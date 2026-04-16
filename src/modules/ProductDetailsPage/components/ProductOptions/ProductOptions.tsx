@@ -1,6 +1,8 @@
 import styles from './ProductOptions.module.scss';
 import { Product, ProductDetails } from '../../../../types/Product';
-import { useShop } from '../../../../store/ShopContext';
+import { useShop } from '../../../../store/shop/ShopContext';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { favouriteIconMap } from '../../../shared/config/favouriteIconMap';
 
 type Props = {
   product: Product;
@@ -37,6 +39,7 @@ export const ProductOptions: React.FC<Props> = ({
   onCapacityChange,
 }) => {
   const { toggleFavourite, addToCart, favourites, carts } = useShop();
+  const { theme } = useTheme();
   const isFavourite = favourites.some(item => item.itemId === product.itemId);
   const isCart = carts.some(cart => cart.product.itemId === product.itemId);
 
@@ -111,8 +114,8 @@ export const ProductOptions: React.FC<Props> = ({
                 <img
                   src={
                     isFavourite
-                      ? '/img/icon/favourites-red.svg'
-                      : '/img/icon/favourites-logo.svg'
+                      ? favouriteIconMap[theme].active
+                      : favouriteIconMap[theme].default
                   }
                   alt=""
                 />

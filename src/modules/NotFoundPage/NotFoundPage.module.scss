@@ -1,4 +1,3 @@
-@use '../../styles/colors.scss' as c;
 @use '../../styles/mixins.scss';
 
 .notFound {
@@ -12,7 +11,7 @@
 
     @include mixins.typography(800, 32px, 41px, -0.01em);
    
-    color: c.$color-primary;
+    color: var(--color-primary);
 
     @include mixins.on-tablet {
         font-size: 48px;

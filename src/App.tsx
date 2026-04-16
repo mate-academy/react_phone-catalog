@@ -11,6 +11,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CartsPage } from './modules/CartsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { Preferences } from './modules/shared/components/Preferences';
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +20,9 @@ export const App = () => {
     <div className="page">
       <Header openMenu={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className="page__content">
+        <div className="page__preferences">
+          <Preferences />
+        </div>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/phones" element={<PhonesPage />} />

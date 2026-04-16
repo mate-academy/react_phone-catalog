@@ -19,7 +19,7 @@
 
     @include mixins.typography(800, 32px, 41px, -0.01em);
     
-    color: c.$color-primary;
+    color: var(--color-primary);
 
     @include mixins.on-tablet {
         font-size: 48px;
@@ -33,7 +33,7 @@
 
     @include mixins.typography(600, 14px, 21px);
 
-    color: c.$color-secondary;
+    color: var(--color-secondary);
 
     @include mixins.on-tablet {
         margin-bottom: 40px;

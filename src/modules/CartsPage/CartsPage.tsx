@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './CartsPage.module.scss';
 import { CartItem } from './components/CartItem';
-import { useShop } from '../../store/ShopContext';
+import { useShop } from '../../store/shop/ShopContext';
 
 export const CartsPage = () => {
   const navigate = useNavigate();

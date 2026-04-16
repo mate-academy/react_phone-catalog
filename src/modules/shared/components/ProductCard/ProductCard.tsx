@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import styles from './ProductCard.module.scss';
-import { useShop } from '../../../../store/ShopContext';
+import { useShop } from '../../../../store/shop/ShopContext';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { favouriteIconMap } from '../../config/favouriteIconMap';
 
 type Props = {
   product: Product;
@@ -15,6 +17,7 @@ export const ProductCard: React.FC<Props> = ({
   showDiscount = false,
 }) => {
   const { toggleFavourite, addToCart, carts } = useShop();
+  const { theme } = useTheme();
   const isCart = carts.some(item => item.product.itemId === product.itemId);
 
   return (
@@ -76,8 +79,8 @@ export const ProductCard: React.FC<Props> = ({
             <img
               src={
                 isFavourite
-                  ? '/img/icon/favourites-red.svg'
-                  : '/img/icon/favourites-logo.svg'
+                  ? favouriteIconMap[theme].active
+                  : favouriteIconMap[theme].default
               }
               alt=""
             />

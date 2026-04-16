@@ -1,4 +1,3 @@
-@use '../../../../styles/colors.scss' as c;
 @use '../../../../styles/variables.scss' as v;
 @use '../../../../styles/mixins.scss';
 
@@ -26,11 +25,11 @@
     @include mixins.typography(600, 12px, 1);
 
     text-decoration: none;
-    color: c.$color-secondary;
+    color: var(--color-secondary);
 }
 
 .active {
-    color: c.$color-primary;
+    color: var(--color-primary);
 }
 
 .currentProduct {
@@ -40,5 +39,5 @@
 
     @include mixins.typography(600, 12px, 1);
 
-    color: c.$color-secondary;
+    color: var(--color-secondary);
 }

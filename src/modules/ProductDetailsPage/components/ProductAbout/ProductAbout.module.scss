@@ -22,8 +22,8 @@
 
     @include mixins.typography(700, 20px, 1);
 
-    border-bottom: 1px solid c.$color-hover;
-    color: c.$color-primary;
+    border-bottom: 1px solid var(--color-surface-devider);
+    color: var(--color-primary);
 
     @include mixins.on-tablet {
         @include mixins.typography(800, 22px, 1.4);
@@ -39,7 +39,7 @@
 
     @include mixins.typography(700, 16px, 1);
     
-    color: c.$color-primary;
+    color: var(--color-primary);
 
     @include mixins.on-tablet {
         font-size: 20px;
@@ -51,5 +51,5 @@
 
     @include mixins.typography(600, 14px, 21px);
 
-    color: c.$color-secondary;
+    color: var(--color-secondary);
 }

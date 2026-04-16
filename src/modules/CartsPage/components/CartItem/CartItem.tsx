@@ -1,8 +1,12 @@
 import styles from './CartItem.module.scss';
-import { useShop } from '../../../../store/ShopContext';
+import { useShop } from '../../../../store/shop/ShopContext';
 import { CartItems } from '../../../../types/Product';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { closeIconMap } from '../../../shared/config/closeIconMap';
+import { minusIconMap } from '../../../shared/config/minusIconMap';
+import { plusIconMap } from '../../../shared/config/plusIconMap';
 
 type Props = {
   cart: CartItems;
@@ -10,6 +14,7 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ cart }) => {
   const { removeFromCart, decreaseQuantity, increaseQuantity } = useShop();
+  const { theme } = useTheme();
 
   return (
     <article className={styles.cartItem}>
@@ -20,7 +25,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
           aria-label="Remove from cart"
           onClick={() => removeFromCart(cart.id)}
         >
-          <img src="/img/icon/close.svg" alt="" />
+          <img src={closeIconMap[theme].gray} alt="" />
         </button>
         <Link
           to={`/product/${cart.product.itemId}`}
@@ -48,8 +53,8 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             <img
               src={
                 cart.quantity === 1
-                  ? '/img/icon/minus-disabled.svg'
-                  : '/img/icon/minus.svg'
+                  ? minusIconMap[theme].disabled
+                  : minusIconMap[theme].active
               }
               alt=""
             />
@@ -60,8 +65,16 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             className={styles.quantityButton}
             aria-label="Increase quantity"
             onClick={() => increaseQuantity(cart.id)}
+            disabled={cart.quantity >= 99}
           >
-            <img src="/img/icon/plus.svg" alt="" />
+            <img
+              src={
+                cart.quantity >= 99
+                  ? plusIconMap[theme].disabled
+                  : plusIconMap[theme].active
+              }
+              alt=""
+            />
           </button>
         </div>
         <span className={styles.price}>{`$${cart.product.price}`}</span>
