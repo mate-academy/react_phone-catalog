@@ -32,7 +32,7 @@ export const ProductsSlider = ({ title, type }: Props) => {
         }
 
         if (type === 'hot-prices') {
-          data.sort((a, b) => b.fullPrice - a.fullPrice);
+          data.sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
           setProducts(data.slice(0, 10));
         }
 
