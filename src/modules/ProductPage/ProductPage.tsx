@@ -27,10 +27,8 @@ export const ProductPage = ({ category }: Props) => {
   const query = searchParams.get('query') || '';
 
   useEffect(() => {
-    if (page !== 1) {
-      updateSearchWith({ page: '1' });
-    }
-  }, [category, page, updateSearchWith]);
+    updateSearchWith({ page: '1' });
+  }, [category]);
 
   const normalizedProducts = (productsData as RawProductFromApi[]).map(product => ({
     ...product,
