@@ -12,7 +12,7 @@ export const App = () => {
 
   useEffect(() => {
     document.title = t('pageTitle');
-  }, [t])
+  }, [t]);
 
   return (
     <ThemeProvider>
