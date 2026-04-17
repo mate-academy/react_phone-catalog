@@ -23,10 +23,10 @@ export const scrollToPosition = (target: number, duration = 400) => {
   requestAnimationFrame(animate);
 };
 
-export const goTo = () => scrollToPosition(0, 3000);
+export const goTo = () => scrollToPosition(0, 500);
 
 export const goBottom = () => {
   const fullHeight = document.documentElement.scrollHeight;
 
-  scrollToPosition(fullHeight, 3000);
+  scrollToPosition(fullHeight, 1000);
 };

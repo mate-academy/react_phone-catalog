@@ -7,6 +7,7 @@ import { ProductType } from '../../types/product.types';
 import { getProductPrice } from '../../utils/priceHelper';
 import { ProductActions } from '../ProductActions';
 import classNames from 'classnames';
+import { goTo } from '../../utils/scrollToPosition';
 
 interface ProductCardProps {
   product: ProductType;
@@ -25,7 +26,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <Link to={`/${product.category}/${productId}`} className={styles.link}>
+      <Link
+        to={`/${product.category}/${productId}`}
+        onClick={goTo}
+        className={styles.link}
+      >
         <div className={styles.boxIcon}>
           <img
             src={

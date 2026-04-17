@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
 
+  min-height: 540px;
+
   @include on-tablet {
     flex-direction: row-reverse;
     justify-content: space-between;
