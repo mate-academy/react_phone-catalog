@@ -2,9 +2,9 @@
 @use '@/styles/mixins' as *;
 
 .container {
-  @include content-width;
-
   padding-bottom: $spacing-3xl;
+
+  @include content-width;
 }
 
 .title {
