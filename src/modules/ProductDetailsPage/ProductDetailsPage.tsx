@@ -6,6 +6,7 @@ import type { ProductDetail } from '@/types/ProductDetail';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { Loader } from '../shared/components/Loader';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useCart } from '@/contexts/CartContext';
 import { ImageSlider } from './components/ImageSlider';
 import chevronIcon from '@/assets/icons/icon-chevron.svg';
 import favoritesIcon from '@/assets/icons/icon-favorites.svg';
@@ -66,7 +67,7 @@ export const ProductDetailsPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
-  const [isInCart, setIsInCart] = useState(false);
+  const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const isProductFavorited = product ? isFavorite(product.id) : false;
 
@@ -84,7 +85,7 @@ export const ProductDetailsPage = () => {
         const foundProduct = data.find(p => p.itemId === productId);
 
         if (!foundProduct) {
-          setError('Product not found');
+          setError('Product was not found');
 
           return;
         }
@@ -128,7 +129,7 @@ export const ProductDetailsPage = () => {
   }
 
   if (!product) {
-    return <p>Product not found.</p>;
+    return <p>Product was not found</p>;
   }
 
   const categoryLabel = CATEGORY_LABELS[product.category] ?? product.category;
@@ -169,19 +170,28 @@ export const ProductDetailsPage = () => {
                 <div className={styles.colorsSection}>
                   <div className={styles.colorSwatches}>
                     {detail.colorsAvailable.map(color => (
-                      <button
-                        key={color}
-                        className={classNames(styles.colorSwatch, {
-                          [styles.colorSwatchSelected]: color === selectedColor,
-                        })}
-                        style={
-                          {
-                            '--swatch-color': colorToHex(color),
-                          } as React.CSSProperties
-                        }
-                        onClick={() => setSelectedColor(color)}
-                        aria-label={`Select color ${color.replace(/-/g, ' ')}`}
-                      />
+                      <label key={color} className={styles.colorSwatchLabel}>
+                        <input
+                          type="radio"
+                          name="color"
+                          value={color}
+                          checked={color === selectedColor}
+                          onChange={() => setSelectedColor(color)}
+                          className={styles.radioInput}
+                          aria-label={`Select color ${color.replace(/-/g, ' ')}`}
+                        />
+                        <span
+                          className={classNames(styles.colorSwatch, {
+                            [styles.colorSwatchSelected]:
+                              color === selectedColor,
+                          })}
+                          style={
+                            {
+                              '--swatch-color': colorToHex(color),
+                            } as React.CSSProperties
+                          }
+                        />
+                      </label>
                     ))}
                   </div>
                 </div>
@@ -192,16 +202,24 @@ export const ProductDetailsPage = () => {
                   <span className={styles.sectionLabel}>Select capacity</span>
                   <div className={styles.capacityButtons}>
                     {detail.capacityAvailable.map(cap => (
-                      <button
-                        key={cap}
-                        className={classNames(styles.capacityBtn, {
-                          [styles.capacityBtnSelected]:
-                            cap === selectedCapacity,
-                        })}
-                        onClick={() => setSelectedCapacity(cap)}
-                      >
-                        {cap}
-                      </button>
+                      <label key={cap} className={styles.capacityLabel}>
+                        <input
+                          type="radio"
+                          name="capacity"
+                          value={cap}
+                          checked={cap === selectedCapacity}
+                          onChange={() => setSelectedCapacity(cap)}
+                          className={styles.radioInput}
+                        />
+                        <span
+                          className={classNames(styles.capacityBtn, {
+                            [styles.capacityBtnSelected]:
+                              cap === selectedCapacity,
+                          })}
+                        >
+                          {cap}
+                        </span>
+                      </label>
                     ))}
                   </div>
                 </div>
@@ -218,11 +236,12 @@ export const ProductDetailsPage = () => {
                 <div className={styles.actions}>
                   <button
                     className={classNames(styles.addToCart, {
-                      [styles.addToCartAdded]: isInCart,
+                      [styles.addToCartAdded]: isInCart(product.id),
                     })}
-                    onClick={() => setIsInCart(true)}
+                    disabled={isInCart(product.id)}
+                    onClick={() => addToCart(product)}
                   >
-                    {isInCart ? 'Added to cart' : 'Add to cart'}
+                    {isInCart(product.id) ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
                     className={classNames(styles.addToFavorites, {
