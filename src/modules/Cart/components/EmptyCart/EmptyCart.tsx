@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from './EmptyCart.module.scss';
 
-import emptyCartImg from "../../../../img/cart-is-empty.png";
+import emptyCartImg from '../../../../img/cart-is-empty.png';
 
 export const EmptyCart: React.FC = () => {
   const { t } = useTranslation();
@@ -12,11 +12,7 @@ export const EmptyCart: React.FC = () => {
   return (
     <div className={styles.emptyCart}>
       <div className={styles.imageWrapper}>
-        <img
-          src={emptyCartImg}
-          alt="Empty cart"
-          className={styles.image}
-        />
+        <img src={emptyCartImg} alt="Empty cart" className={styles.image} />
       </div>
 
       <h2>{t('emptyCart.title')}</h2>
