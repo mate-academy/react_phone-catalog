@@ -22,7 +22,7 @@ export const ProductCard = ({ product }: Props) => {
       <div className={styles.imageWrapper}>
         <Link to={`/product/${product.itemId}`}>
           <img
-            src={`/${product.image}`}
+            src={`./${product.image}`}
             alt={product.name}
             className={styles.image}
           />

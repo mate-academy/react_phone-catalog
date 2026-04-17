@@ -5,9 +5,9 @@ import styles from './WelcomeSlider.module.scss';
 import iconChevron from '@/assets/icons/icon-chevron.svg';
 
 const SLIDES = [
-  { src: '/img/banner-phones.png', alt: 'New models iPhone' },
-  { src: '/img/banner-tablets.png', alt: 'New models iPad' },
-  { src: '/img/banner-accessories.png', alt: 'New accessories' },
+  { src: './img/banner-phones.png', alt: 'New models iPhone' },
+  { src: './img/banner-tablets.png', alt: 'New models iPad' },
+  { src: './img/banner-accessories.png', alt: 'New accessories' },
 ];
 
 export const WelcomeSlider = () => {

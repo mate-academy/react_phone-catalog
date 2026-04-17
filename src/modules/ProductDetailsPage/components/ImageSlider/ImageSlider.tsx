@@ -31,7 +31,7 @@ export const ImageSlider = ({ images, alt }: Props) => {
             onClick={() => handleThumbnailClick(i)}
             aria-label={`${alt} - thumbnail ${i + 1}`}
           >
-            <img src={`/${src}`} alt="" aria-hidden="true" />
+            <img src={`./${src}`} alt="" aria-hidden="true" />
           </button>
         ))}
       </div>

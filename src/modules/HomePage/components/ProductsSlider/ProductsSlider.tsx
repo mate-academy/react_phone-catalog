@@ -23,7 +23,7 @@ export const ProductsSlider = ({ title, type }: Props) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then((data: Product[]) => {
         if (type === 'brand-new') {

@@ -79,7 +79,7 @@ export const ProductDetailsPage = () => {
 
     const controller = new AbortController();
 
-    fetch('/api/products.json', { signal: controller.signal })
+    fetch('./api/products.json', { signal: controller.signal })
       .then(res => res.json())
       .then((data: Product[]) => {
         const foundProduct = data.find(p => p.itemId === productId);
@@ -92,7 +92,7 @@ export const ProductDetailsPage = () => {
 
         setProduct(foundProduct);
 
-        return fetch(`/api/${foundProduct.category}.json`, {
+        return fetch(`./api/${foundProduct.category}.json`, {
           signal: controller.signal,
         });
       })

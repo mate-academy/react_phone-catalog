@@ -126,7 +126,7 @@ export const CatalogPage = ({ category, title }: Props) => {
     setError(false);
     setIsLoading(true);
 
-    fetch('/api/products.json', { signal: controller.signal })
+    fetch('./api/products.json', { signal: controller.signal })
       .then<Product[]>(res => res.json())
       .then(data => {
         setProducts(data.filter(p => p.category === category));

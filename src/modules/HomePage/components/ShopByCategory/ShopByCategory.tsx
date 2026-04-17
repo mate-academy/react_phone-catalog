@@ -14,19 +14,19 @@ const categories: Category[] = [
     name: 'Mobile phones',
     path: '/phones',
     bg: '#6D6474',
-    image: '/img/category-phones.webp',
+    image: './img/category-phones.webp',
   },
   {
     name: 'Tablets',
     path: '/tablets',
     bg: '#8D8D92',
-    image: '/img/category-tablets.webp',
+    image: './img/category-tablets.webp',
   },
   {
     name: 'Accessories',
     path: '/accessories',
     bg: '#973D5F',
-    image: '/img/category-accessories.webp',
+    image: './img/category-accessories.webp',
   },
 ];
 
@@ -34,7 +34,7 @@ export const ShopByCategory = () => {
   const [counts, setCounts] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then((data: { category: string }[]) => {
         const result = data.reduce<Record<string, number>>(
