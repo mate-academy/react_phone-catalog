@@ -1,0 +1,45 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  @include content-width;
+
+  padding-bottom: $spacing-3xl;
+}
+
+.title {
+  margin-bottom: $spacing-xl;
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+
+  @include media-up($breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+}
+
+.cardTitle {
+  margin-bottom: $spacing-xs;
+  color: $color-primary;
+}
+
+.link {
+  text-decoration: underline;
+  color: $color-primary;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

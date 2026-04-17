@@ -14,7 +14,11 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
-  { href: 'https://github.com/nicegadgets', label: 'Github', external: true },
+  {
+    href: 'https://github.com/redfield-mp/react_phone-catalog',
+    label: 'Github',
+    external: true,
+  },
   { href: '/contacts', label: 'Contacts', external: false },
   { href: '/rights', label: 'Rights', external: false },
 ];
