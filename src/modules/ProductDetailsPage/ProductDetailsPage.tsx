@@ -72,6 +72,10 @@ export const ProductDetailsPage = () => {
   const isProductFavorited = product ? isFavorite(product.id) : false;
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
+  useEffect(() => {
     setLoading(true);
     setError(null);
     setProduct(null);
