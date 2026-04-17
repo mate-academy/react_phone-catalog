@@ -39,6 +39,9 @@
     align-items: center;
     gap: var(--gap);
 
+    padding: 24px 10px;
+    scroll-padding: 0 10px;
+
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;

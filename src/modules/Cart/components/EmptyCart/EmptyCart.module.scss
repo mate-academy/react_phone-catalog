@@ -1,4 +1,27 @@
 .emptyCart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .description {
+    font-size: 14px;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 250px;
+    height: 40px;
+    color: var(--button-text-add);
+    background-color: var(--button-primary);
+    padding: 0 16px;
+
+    font-size: 16px;
+    font-weight: 600;
+  }
+
   .imageWrapper {
     .image {
       width: 100%;

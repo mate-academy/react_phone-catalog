@@ -53,6 +53,8 @@
     justify-content: space-between;
     align-items: center;
 
+    width: 220px;
+
     @include on-tablet {
       gap: 24px;
     }

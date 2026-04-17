@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -25,6 +25,10 @@ export const CatalogPage: React.FC = () => {
   const [perPage, setPerPage] = useState<string>('16');
 
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [category]);
 
   const { t } = useTranslation();
 

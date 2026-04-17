@@ -11,13 +11,13 @@ export const EmptyCart: React.FC = () => {
     <div className={styles.emptyCart}>
       <div className={styles.imageWrapper}>
         <img
-          src="/img/cart-is-empty.png"
+          src="src/img/cart-is-empty.png"
           alt="Empty cart"
           className={styles.image}
         />
       </div>
 
-      <h2 className={styles.title}>{t('emptyCart.title')}</h2>
+      <h2>{t('emptyCart.title')}</h2>
       <p className={styles.description}>{t('emptyCart.description')}</p>
 
       <Link to="/phones" className={styles.button}>
