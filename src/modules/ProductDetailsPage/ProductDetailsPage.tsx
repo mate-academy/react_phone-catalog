@@ -52,6 +52,19 @@ const COLOR_MAP: Record<string, string> = {
 
 const colorToHex = (name: string): string => COLOR_MAP[name] ?? '#888888';
 
+const findVariant = (
+  allDetails: ProductDetail[],
+  namespaceId: string,
+  color: string,
+  capacity: string,
+): ProductDetail | undefined =>
+  allDetails.find(
+    d =>
+      d.namespaceId === namespaceId &&
+      d.color === color &&
+      d.capacity === capacity,
+  );
+
 const CATEGORY_LABELS: Record<string, string> = {
   phones: 'Phones',
   tablets: 'Tablets',
@@ -63,6 +76,7 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
   const [detail, setDetail] = useState<ProductDetail | null>(null);
+  const [allDetails, setAllDetails] = useState<ProductDetail[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('');
@@ -80,6 +94,7 @@ export const ProductDetailsPage = () => {
     setError(null);
     setProduct(null);
     setDetail(null);
+    setAllDetails([]);
 
     const controller = new AbortController();
 
@@ -105,6 +120,8 @@ export const ProductDetailsPage = () => {
         if (!data) {
           return;
         }
+
+        setAllDetails(data);
 
         const foundDetail = data.find(d => d.id === productId);
 
@@ -180,7 +197,18 @@ export const ProductDetailsPage = () => {
                           name="color"
                           value={color}
                           checked={color === selectedColor}
-                          onChange={() => setSelectedColor(color)}
+                          onChange={() => {
+                            const target = findVariant(
+                              allDetails,
+                              detail.namespaceId,
+                              color,
+                              selectedCapacity,
+                            );
+
+                            if (target) {
+                              navigate(`/product/${target.id}`);
+                            }
+                          }}
                           className={styles.radioInput}
                           aria-label={`Select color ${color.replace(/-/g, ' ')}`}
                         />
@@ -212,7 +240,18 @@ export const ProductDetailsPage = () => {
                           name="capacity"
                           value={cap}
                           checked={cap === selectedCapacity}
-                          onChange={() => setSelectedCapacity(cap)}
+                          onChange={() => {
+                            const target = findVariant(
+                              allDetails,
+                              detail.namespaceId,
+                              selectedColor,
+                              cap,
+                            );
+
+                            if (target) {
+                              navigate(`/product/${target.id}`);
+                            }
+                          }}
                           className={styles.radioInput}
                         />
                         <span
