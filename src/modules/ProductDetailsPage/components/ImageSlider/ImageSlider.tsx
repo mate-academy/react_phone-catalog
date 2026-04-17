@@ -48,7 +48,7 @@ export const ImageSlider = ({ images, alt }: Props) => {
           {images.map((src, i) => (
             <SwiperSlide key={src}>
               <img
-                src={`/${src}`}
+                src={`./${src}`}
                 alt={`${alt} - image ${i + 1}`}
                 className={styles.slide}
               />
