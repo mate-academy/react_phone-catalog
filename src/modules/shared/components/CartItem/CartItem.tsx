@@ -56,7 +56,7 @@ export const CartItem = ({ item }: Props) => {
             <img src={plusIcon} alt="" />
           </button>
         </div>
-        <p className={styles.price}>${product.price}</p>
+        <p className={styles.price}>${product.price * quantity}</p>
       </div>
     </div>
   );
