@@ -8,10 +8,11 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  hideOldPrice?: boolean;
 };
 
-export const ProductCard = ({ product }: Props) => {
-  const hasDiscount = product.fullPrice > product.price;
+export const ProductCard = ({ product, hideOldPrice = false }: Props) => {
+  const hasDiscount = !hideOldPrice && product.fullPrice > product.price;
   const { toggleFavorite, isFavorite } = useFavorites();
   const isProductFavorited = isFavorite(product.id);
   const { addToCart, isInCart } = useCart();

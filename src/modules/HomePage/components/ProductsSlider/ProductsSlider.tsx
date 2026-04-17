@@ -91,7 +91,10 @@ export const ProductsSlider = ({ title, type }: Props) => {
         >
           {products.map(product => (
             <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard
+                product={product}
+                hideOldPrice={type === 'brand-new'}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
