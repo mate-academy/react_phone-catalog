@@ -58,6 +58,7 @@ flex-shrink: 0;
   height: 40px;
   text-decoration: none;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .product-info__button--add-to-cart:hover {
@@ -82,6 +83,8 @@ flex-shrink: 0;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url('../../../public/img/icons/icon--heart.png');
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .product-info__button--icon:hover {

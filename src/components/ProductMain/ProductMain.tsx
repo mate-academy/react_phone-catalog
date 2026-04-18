@@ -141,8 +141,8 @@ const ProductMain = ({
       </div>
       <Link to="/" className="product-main__buttons--back">
         <span className="product-main__icon--back"></span>
-        <p className="product-main__text--back">Back</p>
       </Link>
+      <p className="product-main__text--back">Back</p>
       <h1 className="product-main__title">{currentProduct.name}</h1>
       <ProductGallery currentProduct={currentProduct} />
       <ProductInfo

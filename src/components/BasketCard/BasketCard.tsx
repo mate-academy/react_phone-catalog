@@ -1,6 +1,7 @@
 import CardCounter from './CardCounter.tsx/CardCounter';
 import './BasketCard.scss';
 import { BasketProduct } from '../../types/BasketProduct';
+import { Link } from 'react-router-dom';
 
 type BasketCardProps = {
   basketProduct: BasketProduct;
@@ -25,12 +26,16 @@ const BasketCard = ({
             className="basket-card__button--delete"
             onClick={() => removeBasket(basketProduct.itemId)}
           ></button>
-          <img
-            className="basket-card__image"
-            src={basketProduct.image}
-            alt={basketProduct.name}
-          />
-          <div className="basket-card__name">{basketProduct.name}</div>
+          <Link to={`/${basketProduct.category}/${basketProduct.itemId}`}>
+            <img
+              className="basket-card__image"
+              src={basketProduct.image}
+              alt={basketProduct.name}
+            />
+          </Link>
+          <Link to={`/${basketProduct.category}/${basketProduct.itemId}`} className="basket-card__name">
+            {basketProduct.name}
+          </Link>
         </div>
 
         <div className="basket-card__right">

@@ -73,7 +73,9 @@ const ProductCard = ({
 
   return (
     <div className="product__card">
-      <img src={product.image} alt="" className="card__image" />
+      <Link to={`/${product.category}/${product.itemId}`}>
+        <img src={product.image} alt="" className="card__image" />
+      </Link>
       <Link
         to={`/${product.category}/${product.itemId}`}
         className="card__link"

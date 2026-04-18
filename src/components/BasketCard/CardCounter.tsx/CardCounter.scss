@@ -15,6 +15,7 @@
   padding: 8px;
   color: black;  background-color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .basket-card__counter--decrease.active {
@@ -31,6 +32,7 @@
  color: #e2e6e9;
   background-color: white;
    cursor: pointer;
+   border-radius: 5px;
 }
 
 .basket-card__counter--increase:hover {
@@ -49,4 +51,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
 }

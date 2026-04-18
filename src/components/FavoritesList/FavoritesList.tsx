@@ -18,10 +18,8 @@ const FavoritesList = ({
 }: FavoritesListProps) => {
   return (
     <>
+      <p className="favorites-list__items--counter">{favorites.length} items</p>
       <div className="favorites-list">
-        <p className="favorites-list__items--counter">
-          {favorites.length} items
-        </p>
         {favorites.length ? (
           favorites.map(product => (
             <ProductCard
