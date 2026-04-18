@@ -16,7 +16,7 @@ import { useCart } from './modules/CartContext/CartContext';
 export const App = () => {
   const [clickOnLogoBar, setClickOnLogoBar] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 639);
-  const { cartItems, favoriteItems } = useCart();
+  const { cartItems, favoriteItems, totalCartCount } = useCart();
 
   const links = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -57,6 +57,7 @@ export const App = () => {
               clickOnLogoBar={clickOnLogoBar}
               cartItems={cartItems}
               favoriteItems={favoriteItems}
+              totalCartCount={totalCartCount}
             />
 
             {clickOnLogoBar && (

@@ -422,9 +422,19 @@ body {
     }
   }
 
+@media screen and (max-width: 639px) {
   .footer {
-      margin-bottom: 32px;
+    flex-direction: column;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    &__brand {
+      flex-direction: column;
+      margin: 0;
+      gap: 16px;
     }
+  }
+}
 
   // Показуємо кнопки, коли меню відкрито
   .menu--open .navbar__button {
@@ -563,12 +573,14 @@ body.no-scroll {
   margin-inline: auto;
   padding-inline: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: left;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
   padding-left: 24px;
+  padding-right: 32px;
   font-family: Mont;
   z-index: 100;
   border-top: 1px solid #e2e6e9;
@@ -592,11 +604,10 @@ body.no-scroll {
       transform: scale(1.1);
     }
   }
-  &__item:first-child .menu__link {
-    padding-top: 0;
-  }
-  &__item:last-child .menu__link {
-    padding-bottom: 26.5px;
+  &__brand {
+    display: flex;
+    list-style-type: none;
+    margin: 0 auto;
   }
   &__left {
     margin: 32px 0;
@@ -645,7 +656,7 @@ body.no-scroll {
   .footer {
     width: 100%;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     z-index: 1000;
     
@@ -657,7 +668,7 @@ body.no-scroll {
       align-items: center;
       flex-direction: row;
       padding-left: 16px;
-      margin: 0;
+      margin: 0 auto;
       padding: 0;
     }
     &__item {
@@ -673,7 +684,7 @@ body.no-scroll {
     }
     &__right {
       justify-content: space-between;
-      padding-right: 74px;
+      padding-right: 32px;
       padding-left: 29.5px;
       gap: 12px;
     }
@@ -684,14 +695,16 @@ body.no-scroll {
   .footer {
     &__brand {
       list-style-type: none;
+      margin: 0 auto;
     }
     &__right {
       margin-top: 0;
       padding-top: 0;
       padding-left: 64px;
+      padding-right: 32px;
     }
     &__link__logo {
-      padding-left: 195px;
+      padding-left: 0;
     }
     &__item {
       padding-left: 64px;
