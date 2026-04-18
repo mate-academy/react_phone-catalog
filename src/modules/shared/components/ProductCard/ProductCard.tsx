@@ -15,7 +15,7 @@ export const ProductCard = ({ product, hideOldPrice = false }: Props) => {
   const hasDiscount = !hideOldPrice && product.fullPrice > product.price;
   const { toggleFavorite, isFavorite } = useFavorites();
   const isProductFavorited = isFavorite(product.id);
-  const { addToCart, isInCart } = useCart();
+  const { toggleCart, isInCart } = useCart();
   const isProductInCart = isInCart(product.id);
 
   return (
@@ -63,8 +63,7 @@ export const ProductCard = ({ product, hideOldPrice = false }: Props) => {
       <div className={styles.buttons}>
         <button
           className={styles.addToCart}
-          onClick={() => addToCart(product)}
-          disabled={isProductInCart}
+          onClick={() => toggleCart(product)}
         >
           {isProductInCart ? 'Added to cart' : 'Add to cart'}
         </button>

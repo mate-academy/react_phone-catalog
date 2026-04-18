@@ -81,9 +81,10 @@ export const ProductDetailsPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
-  const { addToCart, isInCart } = useCart();
+  const { toggleCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const isProductFavorited = product ? isFavorite(product.id) : false;
+  const isProductInCart = product ? isInCart(product.id) : false;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -279,12 +280,11 @@ export const ProductDetailsPage = () => {
                 <div className={styles.actions}>
                   <button
                     className={classNames(styles.addToCart, {
-                      [styles.addToCartAdded]: isInCart(product.id),
+                      [styles.addToCartAdded]: isProductInCart,
                     })}
-                    disabled={isInCart(product.id)}
-                    onClick={() => addToCart(product)}
+                    onClick={() => toggleCart(product)}
                   >
-                    {isInCart(product.id) ? 'Added to cart' : 'Add to cart'}
+                    {isProductInCart ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
                     className={classNames(styles.addToFavorites, {

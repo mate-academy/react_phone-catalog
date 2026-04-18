@@ -15,6 +15,7 @@ type CartContextType = {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
+  toggleCart: (product: Product) => void;
   updateQuantity: (productId: number, quantity: number) => void;
   clearCart: () => void;
   isInCart: (productId: number) => boolean;
@@ -79,6 +80,9 @@ export const CartProvider = ({ children }: Props) => {
   const isInCart = (productId: number) =>
     cartItems.some(item => item.product.id === productId);
 
+  const toggleCart = (product: Product) =>
+    isInCart(product.id) ? removeFromCart(product.id) : addToCart(product);
+
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const cartTotal = cartItems.reduce(
@@ -92,6 +96,7 @@ export const CartProvider = ({ children }: Props) => {
         cartItems,
         addToCart,
         removeFromCart,
+        toggleCart,
         updateQuantity,
         clearCart,
         isInCart,
