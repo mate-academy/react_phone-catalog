@@ -25,11 +25,16 @@ export const CartItems: React.FC<CartItemsProps> = ({
     <>
       <div className={styles.productCard__productInfo}>
         <div className={styles.productCard__productImageContainer}>
-          <img
-            src={product?.image}
-            alt={product?.name ?? 'Product Image'}
-            className={styles.productCard__productImage}
-          />
+          <Link
+            to={`/${product.category}/${product.id}`}
+            className={styles.cartLink}
+          >
+            <img
+              src={product?.image}
+              alt={product?.name ?? 'Product Image'}
+              className={styles.productCard__productImage}
+            />
+          </Link>
         </div>
         <div className={styles.productCard__productName}>
           <Link

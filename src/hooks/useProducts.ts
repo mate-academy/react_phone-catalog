@@ -129,9 +129,13 @@ export const useProduct = (productId: string, url = URL) => {
             detailsItem = detailsData;
           }
 
-          const merged = { ...found, ...(detailsItem || {}) };
+          const merged = {
+            ...found,
+            ...(detailsItem || {}),
+            productId: found?.id ?? null,
+            productObj: found ?? null,
+          };
 
-          //console.log(merged);
           setProduct(merged);
         } else {
           setProduct(found);

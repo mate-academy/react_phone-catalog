@@ -24,32 +24,39 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   const [favorites, setFavorites] = useState<ID[]>(() => {
     try {
       const raw = localStorage.getItem('favorites');
+      const parsed = raw ? JSON.parse(raw) : [];
 
-      return raw ? (JSON.parse(raw) as ID[]) : [];
+      if (!Array.isArray(parsed)) {
+        return [];
+      }
+
+      return parsed.map((x: string) => String(x));
     } catch {
       return [];
     }
   });
+
   const addFavorite = useCallback((id: ID) => {
-    setFavorites(prev => (prev.includes(id) ? prev : [...prev, id]));
+    const s = String(id);
+
+    setFavorites(prev => (prev.includes(s) ? prev : [...prev, s]));
   }, []);
   const removeFavorite = useCallback((id: ID) => {
-    setFavorites(prev => prev.filter(x => x !== id));
-  }, []);
+    const s = String(id);
 
+    setFavorites(prev => prev.filter(x => x !== s));
+  }, []);
   const toggleFavorite = useCallback((id: ID) => {
-    setFavorites(prev => {
-      const next = prev.includes(id)
-        ? prev.filter(x => x !== id)
-        : [...prev, id];
+    const s = String(id);
 
-      return next;
-    });
+    setFavorites(prev =>
+      prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s],
+    );
   }, []);
+
   const isFavorite = useCallback(
-    (id: ID) => {
-      return favorites.includes(String(id));
-    },
+    (id: ID) => favorites.includes(id),
+    // Removed String(id) to strictly match the ID type
     [favorites],
   );
 
@@ -60,6 +67,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
       // ignore
     }
   }, [favorites]);
+
   const value = useMemo(
     () => ({
       favorites,

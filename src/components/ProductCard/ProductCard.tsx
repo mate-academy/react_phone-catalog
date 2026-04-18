@@ -42,11 +42,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     >
       <div className={styles.productCard__productInfo}>
         <div className={styles.productCard__productImageContainer}>
-          <img
-            src={product.image}
-            alt={product.name ?? 'Product Image'}
-            className={styles.productCard__productImage}
-          />
+          <NavLink
+            to={{
+              pathname: `/${product.category}/${product.id}`,
+              search: location.search,
+            }}
+          >
+            <img
+              src={product.image}
+              alt={product.name ?? 'Product Image'}
+              className={styles.productCard__productImage}
+            />
+          </NavLink>
         </div>
         <NavLink
           to={{

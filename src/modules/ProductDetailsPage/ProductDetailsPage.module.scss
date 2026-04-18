@@ -197,7 +197,7 @@
 
   &__productInfo {
      @include on-tablet {
-      grid-column: 8/-1;
+      grid-column: 8/12;
     }
 
     @include on-desktop {

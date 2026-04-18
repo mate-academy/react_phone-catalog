@@ -31,7 +31,7 @@
     border: 1px solid $elements-color;
     background: #FFF;
     box-sizing: border-box;
-
+    
     @include page-grid;
 
     grid-column: 1/-1;
@@ -42,8 +42,8 @@
       }
 
       @include on-desktop {
-        width:  fit-content;
-        grid-column: 16 / 23;
+       // width: fit-content;
+        grid-column: 16 / -1;
         grid-row: 1;
         box-sizing: border-box;
 

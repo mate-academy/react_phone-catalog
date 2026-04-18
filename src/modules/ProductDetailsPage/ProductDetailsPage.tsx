@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/indent */
 
 import { useParams } from 'react-router-dom';
@@ -28,8 +29,7 @@ type Types = {
 };
 
 export const ProductDetailsPage = () => {
-  const URL = `api/products.json`;
-
+  const URL: string = 'api/products.json';
   const { productId } = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,70 +46,98 @@ export const ProductDetailsPage = () => {
   const [suggestedIndex, setSuggestedIndex] = useState(0);
   const { items, addToCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
-
   const { product, loading, error } = useProduct(productId as string, URL);
+  const [loadingNewProduct, setloadingNewProduct] = useState<boolean>(true);
+  const [errorNewProduct, setErrorNewProduct] = useState<string | null>(null);
   const capacityAvailable = product?.capacityAvailable;
-
   const Id = product?.id ?? null;
   const productCategory = product?.category ?? null;
   const namespaceId = product?.namespaceId ?? null;
-  const search = searchParams.toString();
-  const params = new URLSearchParams(search);
 
   const handleColorChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.currentTarget.value.trim(); // '' -> порожній
+      const value = e.currentTarget.value.trim();
 
       setSelectedColor(prev => {
-        if (prev === (value || null)) {
+        const newValue = value || null;
+
+        if (prev === newValue) {
           return prev;
         }
 
+        const newParams = new URLSearchParams(searchParams.toString());
+
         if (value) {
-          params.set('color', value);
+          newParams.set('color', value);
         } else {
-          params.delete('color');
+          newParams.delete('color');
         }
 
-        setSearchParams(params);
+        setSearchParams(newParams);
 
-        return value || null;
+        return newValue;
       });
     },
-    [search, setSearchParams],
+    [searchParams, setSearchParams],
   );
+
   const handleCapacityChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.currentTarget.value.trim();
 
       setSelectedCapacity(prev => {
-        if (prev === (value || null)) {
+        const newValue = value || null;
+
+        if (prev === newValue) {
           return prev;
         }
 
+        const newParams = new URLSearchParams(searchParams.toString());
+
         if (value) {
-          params.set('capacity', value);
+          newParams.set('capacity', value);
         } else {
-          params.delete('capacity');
+          newParams.delete('capacity');
         }
 
-        setSearchParams(params);
+        setSearchParams(newParams);
 
-        return value || null;
+        return newValue;
       });
     },
-    [search, params],
+    [searchParams, setSearchParams],
   );
 
-  const getAllProducts = useCallback(async () => {
-    const res = await fetch(URL);
+  const getAllProducts = useCallback(async detailsUrl => {
+    setloadingNewProduct(true);
+    setErrorNewProduct(null);
+    try {
+      const res = await fetch(detailsUrl);
 
-    if (!res.ok) {
-      throw new Error('Failed to fetch');
+      if (!res.ok) {
+        setErrorNewProduct('Failed to load new products');
+        throw new Error('network');
+      }
+
+      const data = await res.json();
+
+      return data;
+    } catch (err) {
+      setErrorNewProduct('');
+      throw err;
+    } finally {
+      setloadingNewProduct(false);
     }
+  }, []);
 
-    return res.json();
-  }, [URL]);
+  useEffect(() => {
+    const newP = new URLSearchParams(searchParams.toString());
+
+    newP.delete('query');
+    newP.delete('capacity');
+    newP.delete('color');
+    setSearchParams(newP, { replace: true });
+  }, []);
 
   useEffect(() => {
     if (!product) {
@@ -117,22 +145,33 @@ export const ProductDetailsPage = () => {
     }
 
     setMainImage(product.image ?? null);
-    if (!params.has('capacity')) {
-      setSelectedCapacity(product?.capacity);
+
+    const p = new URLSearchParams(searchParams.toString());
+
+    if (p.has('capacity')) {
+      const capacityFromUrl = p.get('capacity') ?? null;
+
+      setSelectedCapacity(capacityFromUrl);
+    } else {
+      const capacityFromProduct =
+        product?.capacity ?? product?.capacityAvailable?.[0] ?? null;
+
+      setSelectedCapacity(capacityFromProduct);
     }
 
-    if (!params.has('color')) {
-      setSelectedColor(product?.color);
+    if (p.has('color')) {
+      const colorFromUrl = p.get('color') ?? null;
+
+      setSelectedColor(colorFromUrl);
+    } else {
+      const colorFromProduct =
+        product?.color ?? product?.colorsAvailable?.[0] ?? null;
+
+      setSelectedColor(colorFromProduct);
+
+      setSelectedColor(colorFromProduct);
     }
-  }, [
-    Id,
-    productCategory,
-    capacityAvailable,
-    searchParams,
-    selectedColor,
-    selectedCapacity,
-    product,
-  ]);
+  }, [product, searchParams, productCategory, capacityAvailable, Id]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -148,7 +187,7 @@ export const ProductDetailsPage = () => {
       category,
       count = 4,
     }: Types) => {
-      const all = await getAllProducts();
+      const all = await getAllProducts(URL);
 
       const others = all.filter(
         p =>
@@ -171,8 +210,8 @@ export const ProductDetailsPage = () => {
       setErrorSuggested(null);
       try {
         const newItems = await getSuggestedProducts({
-          productId: String(product.id),
-          category: product.category,
+          productId: product?.id,
+          category: product?.category,
         });
 
         setSuggested(newItems);
@@ -186,24 +225,18 @@ export const ProductDetailsPage = () => {
 
     setMainImage(product.image ?? null);
     loadSuggested();
-  }, [
-    Id,
-    productCategory,
-    capacityAvailable,
-    searchParams,
-    selectedColor,
-    selectedCapacity,
-    getAllProducts,
-  ]);
+  }, [Id, productCategory, getAllProducts, product]);
 
   useEffect(() => {
+    /*
     if (!productId || !selectedColor || !selectedCapacity) {
       return;
     }
-
+*/ const newParams = new URLSearchParams(searchParams.toString());
+    const detailsUrl = `api/${productCategory}.json`;
     let cancelled = false;
     const load = async () => {
-      const all = await getAllProducts();
+      const all = await getAllProducts(detailsUrl);
 
       if (cancelled) {
         return;
@@ -217,17 +250,15 @@ export const ProductDetailsPage = () => {
           String(p.color) === String(selectedColor) &&
           String(p.capacity) === String(selectedCapacity),
       );
-      const item = candidates[0];
+      const found = candidates[0];
 
-      if (item) {
-        params.set('color', String(selectedColor));
-        params.set('capacity', String(selectedCapacity));
-        const newSearch = `?${params.toString()}`;
-        const newPath = `/${productCategory}/${item.id}${newSearch}`;
+      newParams.set('color', String(selectedColor));
+      newParams.set('capacity', String(selectedCapacity));
+      const newSearch = `?${newParams.toString()}`;
+      const newPath = `/${productCategory}/${found.id}${newSearch}`;
 
-        if (newPath !== `${location.pathname}${location.search}`) {
-          navigate(newPath, { replace: false });
-        }
+      if (newPath !== `${location.pathname}${location.search}`) {
+        navigate(newPath, { replace: false });
       }
     };
 
@@ -236,7 +267,7 @@ export const ProductDetailsPage = () => {
     return () => {
       cancelled = true;
     };
-  }, [selectedColor, selectedCapacity]);
+  }, [selectedCapacity, selectedColor]);
 
   if (!productId) {
     return <div>Product was not found</div>;
@@ -303,12 +334,14 @@ export const ProductDetailsPage = () => {
             className={`${styles.section} ${styles['section--breadcrumbs']}`}
           >
             <div className="product-errors">
-              {loading && <div>Loading...</div>}
-              {error && (
-                <div role="alert">
-                  {error} <button onClick={handleRetry}>Retry</button>
-                </div>
-              )}
+              {loading || (loadingNewProduct && <div>Loading...</div>)}
+              {error ||
+                (errorNewProduct && (
+                  <div role="alert">
+                    {error || errorNewProduct}{' '}
+                    <button onClick={handleRetry}>Retry</button>
+                  </div>
+                ))}
               {!product && <div>Product was not found</div>}
             </div>
             {!loading && !error && product && (
@@ -386,7 +419,7 @@ export const ProductDetailsPage = () => {
                       <p
                         className={`${styles.label} ${styles.productDetailsPage__id}`}
                       >
-                        ID: {productId}
+                        ID: {product?.productId}
                       </p>
                     </div>
                     <div className={styles.productDetailsPage__fieldsetTable}>
@@ -438,22 +471,26 @@ export const ProductDetailsPage = () => {
                     </div>
                     <div className={styles.productDetailsPage__bottom}>
                       <AddToCartButton
-                        onClick={() => addToCart(product)}
+                        onClick={() => addToCart(product.productObj)}
                         isInCart={
-                          !!items.find(item => item.product.id === product.id)
+                          !!items.find(
+                            item => item.product.id === product.productId,
+                          )
                         }
-                        removeFromCart={() =>
-                          removeFromCart(String(product.id))
-                        }
+                        removeFromCart={() => removeFromCart(product.productId)}
                       />
 
                       <Button
                         className={`${buttonStyles.button} ${buttonStyles['button--favourites']}`}
-                        onClick={() => toggleFavorite(String(product.id))}
-                        pressed={isFavorite(String(product.id))}
+                        onClick={() =>
+                          toggleFavorite(String(product.productId))
+                        }
+                        pressed={isFavorite(String(product.productId))}
                       >
                         <FavouritesLink
-                          className={`${styles['icon--large']} ${styles['icon--favourites']} ${isFavorite(product.id) ? styles.active : ''}`}
+                          className={`${styles['icon--large']}
+                          ${styles['icon--favourites']}
+                          ${isFavorite(product.productId) ? styles.active : ''}`}
                           iconSize="lg"
                         />
                       </Button>

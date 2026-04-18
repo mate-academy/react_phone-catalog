@@ -58,31 +58,37 @@ export const Header = () => {
               <div
                 className={`${styles.icon__background} ${styles['icon__background--hidden']}`}
               >
-                <FavouritesLink
-                  to="/favorites"
-                  className={`${styles.icon} ${styles['icon--absolute']} ${styles.header__favIcon}`}
-                />
-                {favorites.length > 0 && (
-                  <span
-                    className={`${styles.badge} ${styles['favorites-badge']}`}
-                  >
-                    {favorites.length}
-                  </span>
-                )}
+                <div className={styles.iconWrap}>
+                  <FavouritesLink
+                    to="/favorites"
+                    className={`${styles.icon} ${styles.header__favIcon}`}
+                    handleMenuClick={handleMenuClick}
+                  />
+                  {favorites.length > 0 && (
+                    <span
+                      className={`${styles.badge} ${styles['favorites-badge']}`}
+                    >
+                      {favorites.length}
+                    </span>
+                  )}
+                </div>
               </div>
+
               <div
                 className={`${styles.icon__background} ${styles['icon__background--hidden']}`}
               >
-                <Link
-                  to="/cart"
-                  className={`${styles['icon--absolute']} ${styles.icon} ${styles['icon--shopping-bag-cart']}`}
-                >
+                <div className={styles.iconWrap}>
+                  <Link
+                    to="/cart"
+                    className={`${styles.icon} ${styles['icon--shopping-bag-cart']}`}
+                    onClick={handleMenuClick}
+                  ></Link>
                   {totalQuantity > 0 && (
                     <span className={`${styles.badge} ${styles['cart-badge']}`}>
                       {totalQuantity}
                     </span>
                   )}
-                </Link>
+                </div>
               </div>
               <div className={styles.icon__background}>
                 <button

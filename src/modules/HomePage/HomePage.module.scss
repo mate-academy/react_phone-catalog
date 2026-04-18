@@ -94,9 +94,8 @@
     }
 
     @include on-desktop {
-      grid-column:  span 8;
+      grid-column:  span 7;
       grid-row: span 8;
-
     }
   }
 
@@ -108,6 +107,7 @@
      background-size: cover;
      box-sizing: border-box;
      aspect-ratio: 1 / 1;
+     margin: 10px;
   }
 
   &__categoryImg--phones {

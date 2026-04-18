@@ -121,12 +121,13 @@
 
  }
 
- .icon--absolute {
+.iconWrap {
   position: relative;
-
+  display: block;
 }
 
 .badge {
+  border: 1px solid blue;
   background-color: #476DF4;
   color: #fff;
   text-align: center;
@@ -141,28 +142,15 @@
   line-height: 10px;
   padding: 3px;
   border-radius: 50%;
+  top: 8px;
+  right: 4px;
 
-}
-
-.cart-badge {
-   right: -9px;
-    bottom: 8px;
-
-}
-
-.favorites-badge {
-  right: 264px;
-   bottom: 34px;
 
   @include on-tablet {
-      right: 56px;
-      top: 8px;
+    top: -8px;
+    right: 6px;
   }
 
-   @include on-desktop {
-     right: 56px;
-     top: 16px;
-  }
 }
 
 .icon--round {
