@@ -16,12 +16,9 @@ import { SortType } from '../../types/sorting.types';
 import { Pagination } from './components/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-
 export const CatalogPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const { t } = useTranslation();
-
-
 
   // 1. ХУКИ ЗАВЖДИ ЗВЕРХУ (до будь-яких return)
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,18 +46,31 @@ export const CatalogPage: React.FC = () => {
 
   // 4. useMemo для фільтрації (теж хук, тому до return)
   const visibleProducts = useMemo(() => {
-    if (!products) return [];
+    if (!products) {
+      return [];
+    }
+
     return filterProductsByCategory(products, category || 'phones');
   }, [products, category]);
 
   // 5. ТЕПЕР МОЖНА РОБИТИ ПЕРЕВІРКИ (Early returns)
-  if (!category) return <NotFound />;
+  if (!category) {
+    return <NotFound />;
+  }
 
   const currentCategory = CATEGORIES.find(cat => cat.apiEndpoint === category);
-  if (!currentCategory) return <NotFound />;
 
-  if (loading) return <Spinner />;
-  if (error) return <p className={styles.error}>Error: {error}</p>;
+  if (!currentCategory) {
+    return <NotFound />;
+  }
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <p className={styles.error}>Error: {error}</p>;
+  }
 
   if (!products.length || visibleProducts.length === 0) {
     return <p className={styles.empty}>Product not found</p>;
@@ -68,23 +78,32 @@ export const CatalogPage: React.FC = () => {
 
   // 6. Логіка обчислень
   const sortedProducts = sortProducts(visibleProducts, sortBy);
-  const itemsPerPage = perPage === 'all' ? sortedProducts.length : Number(perPage);
+  const itemsPerPage =
+    perPage === 'all' ? sortedProducts.length : Number(perPage);
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-  const finalProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const finalProducts = sortedProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
 
   // 7. Обробники
-  const onSortChange = (value: string) => updateSearchWith({ sort: value, page: '1' });
-  const onPerPageChange = (value: string) => updateSearchWith({ perPage: value, page: '1' });
-  const onPageChange = (page: number) => updateSearchWith({ page: page.toString() });
+  const onSortChange = (value: string) =>
+    updateSearchWith({ sort: value, page: '1' });
+  const onPerPageChange = (value: string) =>
+    updateSearchWith({ perPage: value, page: '1' });
+  const onPageChange = (page: number) =>
+    updateSearchWith({ page: page.toString() });
 
   return (
     <div className={styles.productsBox}>
       <Breadcrumbs />
       <h1 className={styles.title}>{t(`categories.${category}`)}</h1>
-      <p className={styles.countBadge}>{visibleProducts.length} {t('models')}</p>
+      <p className={styles.countBadge}>
+        {visibleProducts.length} {t('models')}
+      </p>
 
       <SortSelect
         className={styles.sortSelect}
