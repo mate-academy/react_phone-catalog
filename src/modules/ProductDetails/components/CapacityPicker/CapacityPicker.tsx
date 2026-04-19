@@ -9,6 +9,7 @@ interface CapacityPickerProps {
   currentCapacity: string;
   getNewPath: (capacity: string) => string;
   className;
+  disabled?: boolean;
 }
 
 export const CapacityPicker: React.FC<CapacityPickerProps> = ({
@@ -16,6 +17,7 @@ export const CapacityPicker: React.FC<CapacityPickerProps> = ({
   currentCapacity,
   getNewPath,
   className,
+  disabled,
 }) => {
   return (
     <div className={classNames(styles.capacitySelectionBox, className)}>
@@ -26,6 +28,11 @@ export const CapacityPicker: React.FC<CapacityPickerProps> = ({
             to={getNewPath(cap)}
             key={cap}
             className={`${styles.capacityButton} ${currentCapacity === cap ? styles.active : ''}`}
+            onClick={e => {
+              if (disabled) {
+                e.preventDefault();
+              }
+            }}
           >
             {cap}
           </Link>

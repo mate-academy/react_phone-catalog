@@ -10,7 +10,6 @@ import { ImageGallery } from '../ImageGallery';
 import { TechSpecs } from '../TechSpecs';
 import { AboutSection } from '../AboutSection';
 import { ProductActions } from '../../../../components/ProductActions';
-import { Skeleton } from '../../../../components/Skeleton';
 import { BackButton } from '../../../../components/BackButton';
 import classNames from 'classnames';
 
@@ -41,8 +40,11 @@ export const ProductView: React.FC<ProductViewProps> = ({
   className,
 }) => {
   return (
-    <div className={styles.container}>
-      <nav className={styles.breadcrumbs}>
+    <div className={classNames(styles.container, {
+      [styles.loading]: isLoading,
+    })}
+    >
+      <nav>
         <Breadcrumbs />
       </nav>
 
@@ -53,20 +55,20 @@ export const ProductView: React.FC<ProductViewProps> = ({
       <div className={styles.productDetails}>
         <div className={styles.productPageHero}>
           <div className={styles.imageGallery}>
-            {isLoading ? (
-              <Skeleton className={styles.imageGallery} />
-            ) : (
-              <ImageGallery className={styles.imageGallery} details={details} />
-            )}
+            <ImageGallery
+              className={styles.imageGallery}
+              details={details}
+              isLoading={isLoading}
+            />
           </div>
 
           <section className={styles.selectionBlock}>
             <ColorPicker
-              className={styles.colorsAvailable}
               colors={details.colorsAvailable}
               currentColor={details.color}
               getNewPath={color => getNewPath(details, color, undefined)}
               itemId={details.id}
+              disabled={!!isLoading}
             />
 
             <div className={styles.divider}></div>
@@ -76,13 +78,14 @@ export const ProductView: React.FC<ProductViewProps> = ({
               capacity={details.capacityAvailable}
               currentCapacity={details.capacity}
               getNewPath={capacity => getNewPath(details, undefined, capacity)}
+              disabled={!!isLoading}
             />
 
             <div className={styles.divider}></div>
 
             <div className={styles.priceContainer}>
-              <p className={styles.newPrice}>${details.priceDiscount}</p>
-              <p className={styles.oldPrice}>${details.priceRegular}</p>
+              <p>${details.priceDiscount}</p>
+              <p>${details.priceRegular}</p>
             </div>
 
             <ProductActions

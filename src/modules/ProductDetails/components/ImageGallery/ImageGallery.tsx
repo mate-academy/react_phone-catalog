@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 import styles from './ImageGallery.module.scss';
 
@@ -10,10 +11,9 @@ interface ImageGalleryProps {
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({ details }) => {
   const [mainImage, setMainImage] = useState(details.images[0]);
+  const [isImageLoading, setIsImageLoading] = useState(false);
 
   useEffect(() => {
-    setMainImage(details.images[0]);
-
     if (details.images.length > 0) {
       setMainImage(details.images[0]);
     }
@@ -26,7 +26,21 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ details }) => {
   return (
     <div className={styles.imagesBlock}>
       <div className={styles.mainImageBoss}>
-        <img className={styles.imageBoss} src={mainImage} alt={details.name} />
+        <img
+          className={classNames(
+            styles.imageBoss,
+            {
+              [styles.imageLoading]: isImageLoading,
+            }
+          )}
+          src={mainImage}
+          alt={details.name}
+          onLoad={() => setIsImageLoading(false)}
+        />
+
+        {isImageLoading && (
+          <div className={styles.overlay} />
+        )}
       </div>
 
       <div className={styles.imagesBox}>
@@ -34,8 +48,21 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ details }) => {
           <button
             key={img}
             type="button"
-            className={`${styles.imgButton} ${mainImage === img ? styles.active : ''}`}
-            onClick={() => setMainImage(img)}
+            disabled={isImageLoading}
+            className={classNames(
+              styles.imgButton,
+              {
+                [styles.active]: mainImage === img,
+                [styles.disabled]: isImageLoading,
+              }
+            )}
+
+            onClick={() => {
+              if (mainImage !== img) {
+                setIsImageLoading(true);
+                setMainImage(img);
+              }
+            }}
           >
             <img className={styles.thumbnail} src={img} alt="Thumbnail" />
           </button>

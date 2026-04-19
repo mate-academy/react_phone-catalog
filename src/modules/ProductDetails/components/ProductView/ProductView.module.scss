@@ -131,4 +131,8 @@
   }
 }
 
+.loading {
+  pointer-events: none;
+}
+
 @include price-container;

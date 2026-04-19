@@ -38,6 +38,7 @@ interface ColorPickerProps {
   getNewPath: (color: string) => string;
   itemId: string;
   className?: string;
+  disabled?: boolean;
 }
 
 export const generateNumericId = (str: string): number => {
@@ -63,6 +64,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   getNewPath,
   itemId,
   className,
+  disabled,
 }) => {
   const numericId = generateNumericId(itemId);
 
@@ -80,6 +82,11 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
             className={`${styles.colorButton} ${currentColor === color ? styles.active : ''}`}
             style={{ backgroundColor: colorMap[color] || color }}
             title={color}
+            onClick={e => {
+              if (disabled) {
+                e.preventDefault();
+              }
+            }}
           />
         ))}
       </div>
