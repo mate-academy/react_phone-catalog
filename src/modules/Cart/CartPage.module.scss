@@ -1,14 +1,14 @@
 @use "../../styles/mixins" as *;
 
 .cartPage {
-  margin-block: 24px 56px;
+  margin-block: 0 56px;
 
   @include on-tablet {
-    margin-block: 40px 64px;
+    margin-block: 0 64px;
   }
 
   @include on-desktop {
-    margin-block: 40px 80px;
+    margin-block: 0 80px;
   }
 
   .title {

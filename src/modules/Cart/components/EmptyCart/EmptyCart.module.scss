@@ -1,7 +1,11 @@
 .emptyCart {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 24px;
+  text-align: center;
 
   .description {
     font-size: 14px;
@@ -23,8 +27,13 @@
   }
 
   .imageWrapper {
+    width: 100%;
+    max-width: 300px;
+
     .image {
       width: 100%;
+      height: auto;
+      object-fit: contain;
     }
   }
 }

@@ -85,8 +85,8 @@ export const ProductView: React.FC<ProductViewProps> = ({
             <div className={styles.divider}></div>
 
             <div className={styles.priceContainer}>
-              <p>${details.priceDiscount}</p>
-              <p>${details.priceRegular}</p>
+              <p className={styles.newPrice}>{details.priceDiscount}</p>
+              <p className={styles.oldPrice}>{details.priceRegular}</p>
             </div>
 
             <ProductActions
