@@ -37,26 +37,47 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   const addFavorite = useCallback((id: ID) => {
-    const s = String(id);
+    const n = Number(id);
 
-    setFavorites(prev => (prev.includes(s) ? prev : [...prev, s]));
+    if (!Number.isFinite(n)) {
+      return;
+    }
+
+    setFavorites(prev => (prev.includes(n) ? prev : [...prev, String(n)]));
   }, []);
-  const removeFavorite = useCallback((id: ID) => {
-    const s = String(id);
 
-    setFavorites(prev => prev.filter(x => x !== s));
+  const removeFavorite = useCallback((id: ID) => {
+    const n = Number(id);
+
+    if (!Number.isFinite(n)) {
+      return;
+    }
+
+    setFavorites(prev => prev.filter(x => x !== String(n)));
   }, []);
   const toggleFavorite = useCallback((id: ID) => {
-    const s = String(id);
+    const n = Number(id);
+
+    if (!Number.isFinite(n)) {
+      return;
+    }
 
     setFavorites(prev =>
-      prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s],
+      prev.includes(String(n))
+        ? prev.filter(x => x !== String(n))
+        : [...prev, String(n)],
     );
   }, []);
-
   const isFavorite = useCallback(
-    (id: ID) => favorites.includes(id),
-    // Removed String(id) to strictly match the ID type
+    (id: ID) => {
+      const n = Number(id);
+
+      if (!Number.isFinite(n)) {
+        return false;
+      }
+
+      return favorites.includes(String(n));
+    },
     [favorites],
   );
 

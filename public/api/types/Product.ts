@@ -10,5 +10,6 @@ export interface Product {
   color: string;
   ram: string;
   image?: string;
+  namespaceId?: string;
   [key: string]: unknown;
 }
