@@ -27,20 +27,15 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ details }) => {
     <div className={styles.imagesBlock}>
       <div className={styles.mainImageBoss}>
         <img
-          className={classNames(
-            styles.imageBoss,
-            {
-              [styles.imageLoading]: isImageLoading,
-            }
-          )}
+          className={classNames(styles.imageBoss, {
+            [styles.imageLoading]: isImageLoading,
+          })}
           src={mainImage}
           alt={details.name}
           onLoad={() => setIsImageLoading(false)}
         />
 
-        {isImageLoading && (
-          <div className={styles.overlay} />
-        )}
+        {isImageLoading && <div className={styles.overlay} />}
       </div>
 
       <div className={styles.imagesBox}>
@@ -49,14 +44,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ details }) => {
             key={img}
             type="button"
             disabled={isImageLoading}
-            className={classNames(
-              styles.imgButton,
-              {
-                [styles.active]: mainImage === img,
-                [styles.disabled]: isImageLoading,
-              }
-            )}
-
+            className={classNames(styles.imgButton, {
+              [styles.active]: mainImage === img,
+              [styles.disabled]: isImageLoading,
+            })}
             onClick={() => {
               if (mainImage !== img) {
                 setIsImageLoading(true);

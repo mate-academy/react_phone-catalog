@@ -40,9 +40,10 @@ export const ProductView: React.FC<ProductViewProps> = ({
   className,
 }) => {
   return (
-    <div className={classNames(styles.container, {
-      [styles.loading]: isLoading,
-    })}
+    <div
+      className={classNames(styles.container, {
+        [styles.loading]: isLoading,
+      })}
     >
       <nav>
         <Breadcrumbs />

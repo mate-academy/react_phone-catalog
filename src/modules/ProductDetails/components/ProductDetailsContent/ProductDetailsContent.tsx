@@ -27,19 +27,13 @@ export const ProductDetailsContent: React.FC = () => {
         <div className={styles.fadeWrapper}>
           {previous && (
             <div className={styles.fadeLayerOld}>
-              <ProductView
-                details={previous}
-                isLoading={false}
-              />
+              <ProductView details={previous} isLoading={false} />
             </div>
           )}
 
           {current && (
             <div className={styles.fadeLayerNew}>
-              <ProductView
-                details={current}
-                isLoading={loading}
-              />
+              <ProductView details={current} isLoading={loading} />
             </div>
           )}
         </div>
