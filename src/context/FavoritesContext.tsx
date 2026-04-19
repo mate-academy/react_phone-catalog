@@ -63,7 +63,9 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     }
 
     setFavorites(prev =>
-      prev.includes(String(n)) ? prev.filter(x => x !== String(n)) : [...prev, String(n)],
+      prev.includes(String(n))
+        ? prev.filter(x => x !== String(n))
+        : [...prev, String(n)],
     );
   }, []);
   const isFavorite = useCallback(

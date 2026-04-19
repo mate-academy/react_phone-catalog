@@ -17,8 +17,8 @@ const App = () => {
 
   return (
     <>
-      <Header />
       <div className="app-container">
+        <Header />
         <main className="main">
           <div className="main__content">
             <h1 className="visually-hidden">Product Catalog</h1>
@@ -60,8 +60,9 @@ const App = () => {
             </Routes>
           </div>
         </main>
+
+        <Footer onBackToTop={onBackToTop} />
       </div>
-      <Footer onBackToTop={onBackToTop} />
     </>
   );
 };

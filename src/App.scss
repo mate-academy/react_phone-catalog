@@ -143,15 +143,20 @@ a {
        @include hover(transform, scale(1.1));
     }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+  .main {
+     flex: 1;
+  }
    .main__content {
       @include content-padding-inline;
 
       background-color: #FAFBFC;
-      min-height: 100vh;
       max-width: $max-width;
-      overflow: hidden;
-height: max-content;
-      box-sizing: border-box;
    }
 
 }
