@@ -23,7 +23,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [favorites, setFavorites] = useState<ID[]>(() => {
     try {
-      const raw = localStorage.getItem('favorites');
+      const raw = localStorage.getItem('favorites_v1');
       const parsed = raw ? JSON.parse(raw) : [];
 
       if (!Array.isArray(parsed)) {
@@ -63,9 +63,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     }
 
     setFavorites(prev =>
-      prev.includes(String(n))
-        ? prev.filter(x => x !== String(n))
-        : [...prev, String(n)],
+      prev.includes(String(n)) ? prev.filter(x => x !== String(n)) : [...prev, String(n)],
     );
   }, []);
   const isFavorite = useCallback(
@@ -83,7 +81,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     try {
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+      localStorage.setItem('favorites_v1', JSON.stringify(favorites));
     } catch (e) {
       // ignore
     }
