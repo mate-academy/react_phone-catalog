@@ -33,7 +33,7 @@ export const ProductDetailsPage = () => {
     const loadDetails = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/${currentProduct.category}.json`);
+        const response = await fetch(`api/${currentProduct.category}.json`);
         const data: ProductDetails[] = await response.json();
 
         setCategoryProducts(data);
