@@ -64,6 +64,7 @@
 .nav__item:first-child{
   position: relative;
 };
+
 .nav__link {
   height: 100%;
   display: flex;
@@ -84,9 +85,6 @@ color: #89939A;
 position: relative;
 };
 
-.nav__link:not(:first-child) {
-  margin-left: 64px;
-}
 .nav__link:hover {
   color: black;
 };

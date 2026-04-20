@@ -9,14 +9,14 @@
     flex-direction: row;
   }
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
 }
 
 .product-gallery__list {
   order: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
   @media (min-width: 640px) {
     flex-direction: column;

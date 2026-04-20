@@ -116,5 +116,4 @@ const AccessoriesCatalog = ({
   );
 };
 
-
 export default AccessoriesCatalog;

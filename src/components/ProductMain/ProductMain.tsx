@@ -123,38 +123,46 @@ const ProductMain = ({
 
   return (
     <div className="product-main">
-      <div className="product-main__icons">
-        <Link to="/" className="product-main__icon--home"></Link>
-        <Link to="/" className="product-main__icon--slider--right--gray"></Link>
-        <Link
-          to={`/${currentProduct.category}`}
-          className="product-main__top--category"
-        >
-          {currentProduct.category}
-        </Link>
-        <Link to="/" className="product-main__icon--slider--right--gray"></Link>
-        <p className="product-main__top--name">{currentProduct.name}</p>
+      <div className="product-main__container">
+        <div className="product-main__icons">
+          <Link to="/" className="product-main__icon--home"></Link>
+          <Link
+            to="/"
+            className="product-main__icon--slider--right--gray"
+          ></Link>
+          <Link
+            to={`/${currentProduct.category}`}
+            className="product-main__top--category"
+          >
+            {currentProduct.category}
+          </Link>
+          <Link
+            to="/"
+            className="product-main__icon--slider--right--gray"
+          ></Link>
+          <p className="product-main__top--name">{currentProduct.name}</p>
+        </div>
+        <div className="product-main__back-buttons">
+          <Link to="/" className="product-main__icon--back"></Link>
+          <span className="product-main__text--back">Back</span>
+        </div>
+        <h1 className="product-main__title">{currentProduct.name}</h1>
+        <ProductGallery currentProduct={currentProduct} />
+        <ProductInfo
+          currentProduct={currentProduct}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+          selectedCapacity={selectedCapacity}
+          setSelectedCapacity={setSelectedCapacity}
+          setFavorites={setFavorites}
+          isFavorite={isFavorite}
+          isBasket={isBasket}
+          handleToggleFavorite={handleToggleFavorite}
+          handleToggleBasket={handleToggleBasket}
+        />
+        <ProductAbout currentProduct={currentProduct} />
+        <ProductTechSpecs currentProduct={currentProduct} />
       </div>
-      <div className="product-main__back-buttons">
-        <Link to="/" className="product-main__icon--back"></Link>
-        <span className="product-main__text--back">Back</span>
-      </div>
-      <h1 className="product-main__title">{currentProduct.name}</h1>
-      <ProductGallery currentProduct={currentProduct} />
-      <ProductInfo
-        currentProduct={currentProduct}
-        selectedColor={selectedColor}
-        setSelectedColor={setSelectedColor}
-        selectedCapacity={selectedCapacity}
-        setSelectedCapacity={setSelectedCapacity}
-        setFavorites={setFavorites}
-        isFavorite={isFavorite}
-        isBasket={isBasket}
-        handleToggleFavorite={handleToggleFavorite}
-        handleToggleBasket={handleToggleBasket}
-      />
-      <ProductAbout currentProduct={currentProduct} />
-      <ProductTechSpecs currentProduct={currentProduct} />
     </div>
   );
 };

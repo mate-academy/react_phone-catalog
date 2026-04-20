@@ -12,6 +12,7 @@ import Swiper from '../../components/MainSwiper/MainSwiper';
 import NewModelsSlider from '../NewModelsSlider/NewModelsSlider';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
+import HotPricesSwiper from '../HotPricesSwiper/HotPricesSwiper';
 
 type Counts = {
   phones: number;
@@ -93,6 +94,12 @@ const Main = ({ favorites, baskets, setFavorites, setBaskets }: MainProps) => {
         </div>
       </div>
       <h2 className="second__title">Hot prices</h2>
+      <HotPricesSwiper
+        favorites={favorites}
+        setFavorites={setFavorites}
+        baskets={baskets}
+        setBaskets={setBaskets}
+      />
     </div>
   );
 };

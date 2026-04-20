@@ -11,7 +11,7 @@ const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
 
   useEffect(() => {
     setActiveImg(currentProduct.images[0]);
-  }, [currentProduct]);
+  }, [currentProduct.id]);
 
   return (
     <>
@@ -30,7 +30,10 @@ const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
               className={`product-gallery__thumb ${
                 activeImg === img ? 'active' : ''
               }`}
-              onClick={() => setActiveImg(img)}
+              onClick={() => {
+                console.log('clicked img:', img);
+                setActiveImg(img);
+              }}
             />
           ))}
         </div>
