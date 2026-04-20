@@ -25,12 +25,16 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
               <a
                 href="https://github.com/zhyliaieva/"
                 className={`${styles.link} ${styles.footer__contacts}`}
+                target="_blank"
+                rel="noreferrer"
               >
                 Contacts
               </a>
               <a
                 href="https://github.com/zhyliaieva/"
                 className={`${styles.link} ${styles.footer__rights}`}
+                target="_blank"
+                rel="noreferrer"
               >
                 rights
               </a>
