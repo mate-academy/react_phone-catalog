@@ -16,7 +16,7 @@ export const Footer = () => {
           <ul className={styles.navList}>
             <li>
               <a
-                href="https://github.com"
+                href="https://github.com/TaniaFedortsi"
                 target="_blank"
                 rel="noreferrer"
                 className={classNames(styles.navLink, 'uppercase')}

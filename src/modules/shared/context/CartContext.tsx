@@ -4,6 +4,7 @@ import { useProductlist } from '../hooks/useLocalStorageList/useProductList';
 
 interface Props {
   cartItems: CartItem[];
+  totalItems: number;
   addToCart: (product: Product) => void;
   deleteFromCart: (id: string) => void;
   isProductInCart(id: string): boolean;
@@ -18,10 +19,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const { items, add, remove, has, increaseQuantity, decreaseQuantity, clearCart } =
     useProductlist('cart');
 
+  const totalItems = (items as CartItem[]).reduce((total, item) => {
+    return total + (item.quantity || 1);
+  }, 0);
+
   return (
     <CartContext.Provider
       value={{
         cartItems: items as CartItem[],
+        totalItems: totalItems,
         addToCart: add,
         deleteFromCart: remove,
         isProductInCart: has,

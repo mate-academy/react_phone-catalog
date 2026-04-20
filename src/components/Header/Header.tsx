@@ -16,7 +16,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const { favorites } = useFavorites();
-  const { cartItems } = useCart();
+  const { totalItems } = useCart();
 
   const isSearchVisible = ['/phones', '/tablets', '/accessories'].includes(pathname);
 
@@ -38,7 +38,7 @@ export const Header = () => {
             <ThemeToggler />
           </div>
 
-          <Actions cartCount={cartItems.length} favCount={favorites.length} />
+          <Actions cartCount={totalItems} favCount={favorites.length} />
 
           <div className={styles.burger} onClick={toggleMenu}>
             <Icon variant={isMenuOpen ? 'close' : 'menu'} />
@@ -49,7 +49,7 @@ export const Header = () => {
       <BurgerMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
-        cartCount={cartItems.length}
+        cartCount={totalItems}
         favCount={favorites.length}
       />
     </header>
