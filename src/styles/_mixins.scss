@@ -1,0 +1,121 @@
+@use 'variables' as *;
+
+// Responsive breakpoints
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+// Visually hidden (for h1 on HomePage)
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Page container
+@mixin page-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding-mobile);
+
+  @include on-tablet {
+    padding: 0 var(--page-padding-tablet);
+  }
+
+  @include on-desktop {
+    padding: 0 var(--page-padding-desktop);
+  }
+}
+
+// Smooth hover transition
+@mixin hover-transition($property: all) {
+  transition: $property var(--transition);
+}
+
+// Typography mixins
+@mixin h1 {
+  font-weight: 700;
+  font-size: var(--font-size-h1-mobile);
+  line-height: var(--line-height-h1-mobile);
+  letter-spacing: var(--letter-spacing-h1-mobile);
+
+  @include on-tablet {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+  }
+}
+
+@mixin h2 {
+  font-weight: 700;
+  font-size: var(--font-size-h2-mobile);
+  line-height: var(--line-height-h2-mobile);
+
+  @include on-tablet {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    letter-spacing: var(--letter-spacing-h2);
+  }
+}
+
+@mixin h3 {
+  font-weight: 600;
+  font-size: var(--font-size-h3-mobile);
+  line-height: var(--line-height-h3-mobile);
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+}
+
+@mixin h4 {
+  font-weight: 600;
+  font-size: var(--font-size-h4-mobile);
+  line-height: var(--line-height-h4-mobile);
+
+  @include on-tablet {
+    font-size: var(--font-size-h4);
+    line-height: var(--line-height-h4);
+  }
+}
+
+@mixin uppercase {
+  font-weight: 700;
+  font-size: var(--font-size-uppercase);
+  line-height: var(--line-height-uppercase);
+  letter-spacing: var(--letter-spacing-uppercase);
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-weight: 600;
+  font-size: var(--font-size-button);
+  line-height: var(--line-height-button);
+}
+
+@mixin body-text {
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+@mixin small-text {
+  font-weight: 600;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}

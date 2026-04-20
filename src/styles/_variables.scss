@@ -1,0 +1,72 @@
+// Breakpoints
+$mobile: 320px;
+$tablet: 640px;
+$desktop: 1200px;
+
+// Colors — Original Figma Design
+:root {
+  --color-white: #ffffff;
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-surface-1: #f1f2f4;
+  --color-surface-2: #f4f5f6;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+
+  // Font family
+  --font-family: 'Mont', sans-serif;
+
+  // Desktop/Tablet typography
+  --font-size-h1: 48px;
+  --line-height-h1: 56px;
+  --letter-spacing-h1: -0.01em;
+
+  --font-size-h2: 32px;
+  --line-height-h2: 41px;
+  --letter-spacing-h2: -0.01em;
+
+  --font-size-h3: 22px;
+  --line-height-h3: 31px;
+
+  --font-size-h4: 20px;
+  --line-height-h4: 26px;
+
+  --font-size-uppercase: 12px;
+  --line-height-uppercase: 11px;
+  --letter-spacing-uppercase: 0.04em;
+
+  --font-size-button: 14px;
+  --line-height-button: 21px;
+
+  --font-size-body: 14px;
+  --line-height-body: 21px;
+
+  --font-size-small: 12px;
+  --line-height-small: 15px;
+
+  // Mobile typography
+  --font-size-h1-mobile: 32px;
+  --line-height-h1-mobile: 41px;
+  --letter-spacing-h1-mobile: -0.01em;
+
+  --font-size-h2-mobile: 22px;
+  --line-height-h2-mobile: 31px;
+
+  --font-size-h3-mobile: 20px;
+  --line-height-h3-mobile: 26px;
+
+  --font-size-h4-mobile: 16px;
+  --line-height-h4-mobile: 20px;
+
+  // Layout
+  --content-max-width: 1200px;
+  --page-padding-mobile: 16px;
+  --page-padding-tablet: 24px;
+  --page-padding-desktop: 32px;
+
+  // Transitions
+  --transition: 0.3s ease;
+}
