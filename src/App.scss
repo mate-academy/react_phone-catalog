@@ -50,7 +50,6 @@
     clip-path: inset(50%);
     height: 1px;
 
-  //  overflow: hidden;
     position: absolute;
     white-space: nowrap;
     width: 1px;
@@ -237,4 +236,7 @@ a {
   width: 100%;
   height: 100%;
   overflow: visible;
+}
+.massage {
+  white-space: nowrap;
 }

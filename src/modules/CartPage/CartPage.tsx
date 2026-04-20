@@ -36,7 +36,7 @@ export const CartPage = () => {
       </div>
       <div className={styles.cartPage__content}>
         {items.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p className="massage">Your cart is empty</p>
         ) : (
           items.map(item => (
             <div

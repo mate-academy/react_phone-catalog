@@ -22,18 +22,18 @@ export const Footer: React.FC<Props> = ({ onBackToTop }) => {
               >
                 Github
               </a>
-              <Link
-                to="contacts"
+              <a
+                href="https://github.com/zhyliaieva/"
                 className={`${styles.link} ${styles.footer__contacts}`}
               >
                 Contacts
-              </Link>
-              <Link
-                to="rights"
+              </a>
+              <a
+                href="https://github.com/zhyliaieva/"
                 className={`${styles.link} ${styles.footer__rights}`}
               >
                 rights
-              </Link>
+              </a>
             </div>
             <button
               className={`${styles.link} ${styles.footer__backToTop}`}
