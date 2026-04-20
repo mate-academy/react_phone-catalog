@@ -111,17 +111,13 @@ const ProductMain = ({
 
   const handleToggleBasket = () => {
     setBaskets(prev => {
-      const existing = prev.find(p => p.itemId === basketOfProduct.itemId);
+      const exists = prev.find(p => p.itemId === basketOfProduct.itemId);
 
-      if (existing) {
-        return prev.map(p =>
-          p.itemId === basketOfProduct.itemId
-            ? { ...p, quantity: p.quantity + 1 }
-            : p,
-        );
+      if (exists) {
+        return prev.filter(p => p.itemId !== basketOfProduct.itemId);
       }
 
-      return [...prev, basketOfProduct];
+      return [...prev, { ...basketOfProduct, quantity: 1 }];
     });
   };
 
@@ -139,10 +135,10 @@ const ProductMain = ({
         <Link to="/" className="product-main__icon--slider--right--gray"></Link>
         <p className="product-main__top--name">{currentProduct.name}</p>
       </div>
-      <Link to="/" className="product-main__buttons--back">
-        <span className="product-main__icon--back"></span>
-      </Link>
-      <p className="product-main__text--back">Back</p>
+      <div className="product-main__back-buttons">
+        <Link to="/" className="product-main__icon--back"></Link>
+        <span className="product-main__text--back">Back</span>
+      </div>
       <h1 className="product-main__title">{currentProduct.name}</h1>
       <ProductGallery currentProduct={currentProduct} />
       <ProductInfo

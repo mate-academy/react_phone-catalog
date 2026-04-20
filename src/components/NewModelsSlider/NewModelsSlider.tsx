@@ -43,14 +43,17 @@ const NewModelsSlider = ({
           className="mySwiper"
         >
           {newProducts.map(product => (
-           <SwiperSlide> <ProductCard
-              key={product.itemId}
-              product={product}
-              favorites={favorites}
-              setFavorites={setFavorites}
-              baskets={baskets}
-              setBaskets={setBaskets}
-            /></SwiperSlide>
+            <SwiperSlide>
+              {' '}
+              <ProductCard
+                key={product.itemId}
+                product={product}
+                favorites={favorites}
+                setFavorites={setFavorites}
+                baskets={baskets}
+                setBaskets={setBaskets}
+              />
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>

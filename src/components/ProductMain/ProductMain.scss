@@ -87,11 +87,10 @@ line-height: 128%;
 letter-spacing: -0.01em;
 }
 
-.product-main__buttons--back {
+.product-main__back-buttons {
   display: flex;
   align-items: center;
   gap: 4px;
-  text-decoration: none;
   grid-column: 1 / -1;
   @media (min-width: 640px) {
     grid-column: 1 / 3;

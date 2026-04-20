@@ -15,7 +15,7 @@ const CatalogSort2 = ({
 }: CatalogSort2Props) => {
   return (
     <>
-      <div className="catalog__sort sort--2">
+      <div className="catalog__sort catalog__sort--2">
         <label className="catalog__title--sort" htmlFor="items-per-page">
           Items on page
         </label>

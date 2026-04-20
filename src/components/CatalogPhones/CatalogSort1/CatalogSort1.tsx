@@ -15,7 +15,7 @@ const CatalogSort1 = ({
 }: CatalogSort1Props) => {
   return (
     <>
-      <div className="catalog__sort sort--1">
+      <div className="catalog__sort catalog__sort--1">
         <label className="catalog__title--sort" htmlFor="sort">
           Sort by
         </label>
