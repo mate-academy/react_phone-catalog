@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './CatalogFavorites.scss';
-import FavoritesList from '../FavoritesList/FavoritesList';
+import FavoritesList from './FavoritesList/FavoritesList';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 

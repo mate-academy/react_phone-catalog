@@ -6,7 +6,7 @@ import { getProducts } from '../../api';
 import { Product } from '../../types/Product';
 import { BasketProduct } from '../../types/BasketProduct';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../ProductList/ProductCard/ProductCard';
 
 type NewModelsSliderProps = {
   favorites: FavoriteProduct[];

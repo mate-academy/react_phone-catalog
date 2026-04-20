@@ -1,6 +1,6 @@
 import './BasketList.scss';
-import BasketCard from '../BasketCard/BasketCard';
-import { BasketProduct } from '../../types/BasketProduct';
+import BasketCard from '../../BasketCard/BasketCard';
+import { BasketProduct } from '../../../types/BasketProduct';
 
 type BasketListProps = {
   baskets: BasketProduct[];

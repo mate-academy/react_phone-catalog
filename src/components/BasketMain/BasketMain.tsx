@@ -1,5 +1,5 @@
 import './BasketMain.scss';
-import BasketList from '../BasketList/BasketList';
+import BasketList from './BasketList/BasketList';
 import BasketCheckout from './BasketCheckout/BasketCheckout';
 import { BasketProduct } from '../../types/BasketProduct';
 

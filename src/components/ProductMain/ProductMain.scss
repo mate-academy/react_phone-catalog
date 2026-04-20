@@ -3,14 +3,12 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
   width: 100%;
-  padding-inline: 16px;
   margin-bottom: 56px;
   margin-top: 24px;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
-    padding-inline: 24px;
     margin-bottom: 64px;
     margin-top: 24px;
   }
@@ -92,6 +90,8 @@ letter-spacing: -0.01em;
   align-items: center;
   gap: 4px;
   grid-column: 1 / -1;
+  margin-top: 40px;
+  margin-bottom: 16px;
   @media (min-width: 640px) {
     grid-column: 1 / 3;
   }

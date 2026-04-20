@@ -1,7 +1,7 @@
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../../ProductList/ProductCard/ProductCard';
 import './FavoritesList.scss';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
+import { FavoriteProduct } from '../../../types/FavoriteProduct';
+import { BasketProduct } from '../../../types/BasketProduct';
 
 type FavoritesListProps = {
   favorites: FavoriteProduct[];
