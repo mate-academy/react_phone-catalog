@@ -1,0 +1,70 @@
+@use '../../styles/utils/variables' as *;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  gap: 32px;
+
+  @media (min-width: $tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 0 32px;
+  }
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #32353d;
+  padding: 32px 0;
+  width: 100%;
+}
+.logoFooter {
+  align-items: flex-start;
+  .img {
+    display: block;
+  }
+}
+.navi {
+  // display: grid;
+  font-weight: 800;
+  text-transform: uppercase;
+  gap: 16px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  @media (min-width: $tablet) {
+    flex-direction: row;
+    gap: 13.5px;
+  }
+
+  @media (min-width: $desktop) {
+    gap: 106.83px;
+  }
+}
+.but_foot {
+  cursor: pointer;
+  background-color: #4a4d58;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+.buttonTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: #75767f;
+}

@@ -1,0 +1,100 @@
+@use '../../styles/utils/variables' as *;
+
+.title {
+  padding-top: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 56px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.h2_title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: #f1f2f9;
+
+  @media (min-width: $tablet) {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+.section {
+  display: flex;
+  flex-direction: column;
+}
+.gridWrapper {
+  overflow: hidden;
+  // width: 100%;
+  box-sizing: border-box;
+  // border: 2px solid red;
+}
+
+.gridContainer {
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.arrows {
+  gap: 16px;
+  display: flex;
+}
+.arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid #4e5261;
+    cursor: default;
+  }
+
+  &:not(:disabled) {
+    background-color: #323542;
+    border: 1px solid #323542;
+
+    img {
+      opacity: 1;
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover {
+      background-color: #4e5261;
+    }
+  }
+}
+.slideCard {
+  flex-shrink: 0;
+  width: 212px;
+
+  @media (min-width: $tablet) {
+    width: 237px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 272px;
+  }
+}

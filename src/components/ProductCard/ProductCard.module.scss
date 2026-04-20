@@ -1,0 +1,129 @@
+@use '../../styles/utils/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #161827;
+  padding: 32px;
+  border: #3b3e49;
+  width: 100%;
+  box-sizing: border-box;
+  height: 440px;
+
+  @media (min-width: $tablet) {
+    height: 512px;
+  }
+  @media (min-width: $desktop) {
+    height: 506px;
+  }
+}
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.itemImage {
+  width: 148px;
+  height: 129px;
+  top: 32px;
+  left: 32px;
+  object-fit: contain;
+}
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  margin-bottom: 8px;
+}
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  :global(.price-current) {
+    font-size: 22px;
+    font-weight: 800;
+    color: #f1f2f9;
+  }
+
+  :global(.price-old) {
+    font-size: 22px;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+}
+.strip {
+  border: 1px solid #3b3e4a;
+}
+.specRow {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  span {
+    color: #75767f;
+  }
+  p {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #f1f2f9;
+  }
+}
+.buttons {
+  margin: auto;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.addButton {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  width: 148px;
+  height: 40px;
+  color: #f1f2f9;
+  background-color: #905bff;
+  border: none;
+  flex: 1;
+  &:hover {
+    background-color: #a378ff;
+  }
+
+  &Active {
+    background-color: #323542;
+  }
+}
+
+.addedButton {
+  background-color: #323542;
+}
+.favotiteButton {
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: #323542;
+  &:hover {
+    background-color: #4a4d58;
+  }
+}
+.oldPrice {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: line-through;
+  color: #89939a;
+}

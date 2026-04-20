@@ -1,0 +1,34 @@
+.techTitle {
+  color: #f1f2f9;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 700;
+  border-bottom: 1px solid #3b3e4a;
+  padding-bottom: 16px;
+}
+.specs {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .labelText {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #75767f;
+    text-transform: capitalize;
+  }
+  .valueText {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #f1f2f9;
+  }
+
+  .specRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -1,0 +1,28 @@
+@use '../../styles/utils/variables' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .discount {
+    font-weight: 800;
+    font-size: 22px;
+    color: #f1f2f9;
+  }
+  .regular {
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #89939a;
+  }
+
+  &.large {
+    .discount {
+      font-size: 32px;
+    }
+    .regular {
+      font-size: 22px;
+    }
+  }
+}

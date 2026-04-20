@@ -1,0 +1,48 @@
+.capacityBlock {
+  border-bottom: 1px solid #3b3e4a;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+.labelCapacity {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #75767f;
+}
+
+.capacityButton {
+  cursor: pointer;
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.capacityButton {
+  padding-top: 7px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #3b3e4a;
+  color: #f1f2f9;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #f1f2f9;
+  }
+
+  &Active {
+    background-color: #f1f2f9;
+    color: #0f1121;
+    border-color: #f1f2f9;
+  }
+}

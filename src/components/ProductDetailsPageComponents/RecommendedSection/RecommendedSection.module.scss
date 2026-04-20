@@ -1,0 +1,68 @@
+@use '../../../styles/utils/variables' as *;
+
+.recommended {
+  margin-top: 56.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.recTitle {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: #f1f2f9;
+}
+.arrows {
+  gap: 16px;
+  display: flex;
+}
+.arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid #4e5261;
+    cursor: default;
+  }
+
+  &:not(:disabled) {
+    background-color: #323542;
+    border: 1px solid #323542;
+
+    img {
+      opacity: 1;
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover {
+      background-color: #4e5261;
+    }
+  }
+}
+.gridContainer {
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.gridWrapper {
+  overflow: hidden;
+  width: 100%;
+}
