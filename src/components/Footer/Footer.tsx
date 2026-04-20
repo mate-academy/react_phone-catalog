@@ -1,6 +1,5 @@
 import styles from './Footer.module.scss';
 import Logo from '../Logo/index';
-import { Link } from 'react-router-dom';
 
 type Props = {
   onBackToTop: () => void;
