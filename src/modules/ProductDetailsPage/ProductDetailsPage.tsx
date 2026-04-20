@@ -106,7 +106,7 @@ export const ProductDetailsPage = () => {
         <Breadcrumbs breadcrumb={breadcrumb} currentProduct={currentProduct} />
         <div className={styles.back}>
           <img
-            src="/img/icon/chevron-arrow-left.svg"
+            src="img/icon/chevron-arrow-left.svg"
             alt="Arrow Left"
             className={styles.image}
           />

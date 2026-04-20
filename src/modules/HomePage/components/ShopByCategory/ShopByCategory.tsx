@@ -24,14 +24,14 @@ export const ShopByCategory = () => {
               <picture>
                 <source
                   media="(min-width: 1200px)"
-                  srcSet="/img/icon/phones-desk.png"
+                  srcSet="img/icon/phones-desk.png"
                 />
                 <source
                   media="(min-width: 640px)"
-                  srcSet="/img/icon/phones-tablet.png"
+                  srcSet="img/icon/phones-tablet.png"
                 />
                 <img
-                  src="/img/icon/phones.png"
+                  src="img/icon/phones.png"
                   alt=""
                   className={styles.image}
                 />
@@ -47,14 +47,14 @@ export const ShopByCategory = () => {
               <picture>
                 <source
                   media="(min-width: 1200px)"
-                  srcSet="/img/icon/tablets-desk.png"
+                  srcSet="img/icon/tablets-desk.png"
                 />
                 <source
                   media="(min-width: 640px)"
-                  srcSet="/img/icon/tablets-tablet.png"
+                  srcSet="img/icon/tablets-tablet.png"
                 />
                 <img
-                  src="/img/icon/tablets.png"
+                  src="img/icon/tablets.png"
                   alt=""
                   className={styles.image}
                 />
@@ -70,14 +70,14 @@ export const ShopByCategory = () => {
               <picture>
                 <source
                   media="(min-width: 1200px)"
-                  srcSet="/img/icon/accessories-desk.png"
+                  srcSet="img/icon/accessories-desk.png"
                 />
                 <source
                   media="(min-width: 640px)"
-                  srcSet="/img/icon/accessories-tablet.png"
+                  srcSet="img/icon/accessories-tablet.png"
                 />
                 <img
-                  src="/img/icon/accessories.png"
+                  src="img/icon/accessories.png"
                   alt=""
                   className={styles.image}
                 />

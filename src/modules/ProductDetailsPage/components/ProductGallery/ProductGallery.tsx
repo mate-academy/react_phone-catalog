@@ -17,7 +17,7 @@ export const ProductGallery: React.FC<Props> = ({ productDetails }) => {
     <div className={styles.gallery}>
       <div className={styles.mainImageWrapper}>
         <img
-          src={`/${selectedImage}`}
+          src={`${selectedImage}`}
           alt={productDetails.name}
           className={styles.mainImage}
         />
@@ -33,7 +33,7 @@ export const ProductGallery: React.FC<Props> = ({ productDetails }) => {
             onClick={() => setSelectedImage(img)}
           >
             <img
-              src={`/${img}`}
+              src={`${img}`}
               alt={productDetails.name}
               className={styles.thumbnailImage}
             />

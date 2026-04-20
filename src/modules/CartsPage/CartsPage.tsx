@@ -32,7 +32,7 @@ export const CartsPage = () => {
       <div className="container">
         <div className={styles.back}>
           <img
-            src="/img/icon/chevron-arrow-left.svg"
+            src="img/icon/chevron-arrow-left.svg"
             alt="Arrow Left"
             className={styles.backIcon}
           />

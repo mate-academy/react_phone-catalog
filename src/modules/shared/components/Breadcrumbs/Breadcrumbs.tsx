@@ -23,7 +23,7 @@ export const Breadcrumbs: React.FC<Props> = ({
         <img src={homeIconMap[theme]} alt="Home" />
       </Link>
       <img
-        src="/img/icon/chevron-arrow-right.svg"
+        src="img/icon/chevron-arrow-right.svg"
         alt="Arrow Right"
         className={styles.image}
       />
@@ -44,7 +44,7 @@ export const Breadcrumbs: React.FC<Props> = ({
       {currentProduct && (
         <>
           <img
-            src="/img/icon/chevron-arrow-right.svg"
+            src="img/icon/chevron-arrow-right.svg"
             alt="Arrow Right"
             className={styles.image}
           />
