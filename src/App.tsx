@@ -27,9 +27,6 @@ export const App = () => {
 
   const handleIncrease = (itemId: string) => {
     setBaskets(prev => {
-      console.log('clicked id:', itemId);
-      console.log('prev:', prev);
-
       return prev.map(item =>
         item.itemId === itemId
           ? { ...item, quantity: item.quantity + 1 }
@@ -56,7 +53,14 @@ export const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Home favorites={favorites} baskets={baskets} />}
+            element={
+              <Home
+                favorites={favorites}
+                baskets={baskets}
+                setFavorites={setFavorites}
+                setBaskets={setBaskets}
+              />
+            }
           />
           <Route
             path="/phones"

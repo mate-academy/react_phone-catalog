@@ -6,13 +6,20 @@ import { BasketProduct } from '../../types/BasketProduct';
 type HomeProps = {
   favorites: FavoriteProduct[];
   baskets: BasketProduct[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
+  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
-const Home = ({}: HomeProps) => {
+const Home = ({ favorites, baskets, setFavorites, setBaskets }: HomeProps) => {
   return (
     <>
       <div className="home">
-        <Main />
+        <Main
+          favorites={favorites}
+          baskets={baskets}
+          setBaskets={setBaskets}
+          setFavorites={setFavorites}
+        />
       </div>
     </>
   );

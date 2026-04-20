@@ -33,7 +33,10 @@ const BasketCard = ({
               alt={basketProduct.name}
             />
           </Link>
-          <Link to={`/${basketProduct.category}/${basketProduct.itemId}`} className="basket-card__name">
+          <Link
+            to={`/${basketProduct.category}/${basketProduct.itemId}`}
+            className="basket-card__name"
+          >
             {basketProduct.name}
           </Link>
         </div>

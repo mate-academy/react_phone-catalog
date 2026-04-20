@@ -75,6 +75,12 @@
 }
 .custom-prev {
   background-image: url('../../../public/img/icons/icon--slider--left.png');
+  @media (min-width: 640px) {
+    display: none;
+  }
+  @media (min-width: 1200px) {
+    display: none;
+  }
 }
 .custom-next {
   background-image: url('../../../public/img/icons/icon--slider--right.png');
