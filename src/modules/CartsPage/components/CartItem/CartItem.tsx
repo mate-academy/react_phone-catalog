@@ -28,16 +28,16 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
           <img src={closeIconMap[theme].gray} alt="" />
         </button>
         <Link
-          to={`/product/${cart.product.itemId}`}
+          to={`product/${cart.product.itemId}`}
           className={styles.imageLink}
         >
           <img
-            src={`/${cart.product.image}`}
+            src={`${cart.product.image}`}
             alt={cart.product.name}
             className={styles.image}
           />
         </Link>
-        <Link to={`/product/${cart.product.itemId}`} className={styles.title}>
+        <Link to={`product/${cart.product.itemId}`} className={styles.title}>
           {cart.product.name}
         </Link>
       </div>
