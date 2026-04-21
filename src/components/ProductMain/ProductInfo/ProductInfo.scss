@@ -82,17 +82,17 @@ flex-shrink: 0;
   border: 1px solid #e2e6e9;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../../../public/img/icons/icon--heart.png');
+  background-image: url('/public/img/icons/icon--heart.png');
   border-radius: 5px;
   cursor: pointer;
 }
 
 .product-info__button--icon:hover {
-  background-image: url('../../../public/img/icons/icon--heart--filled.png');
+  background-image: url('/public/img/icons/icon--heart--filled.png');
 }
 
 .product-info__button--icon.active {
-  background-image: url('../../../public/img/icons/icon--heart--filled.png');
+  background-image: url('/public/img/icons/icon--heart--filled.png');
   width: 40px;
   height: 40px;
 }
