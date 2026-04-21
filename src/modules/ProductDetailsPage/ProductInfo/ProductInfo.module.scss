@@ -18,6 +18,19 @@
     }
   }
 
+  &_title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    border-bottom: 1px solid $borderColor;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
   &_text {
     color: $textColor;
   }
@@ -35,7 +48,7 @@
 
     &_title {
       padding-bottom: 16px;
-      font-family: Mont-Bold, sans-serif;
+      font-family: Mont, sans-serif;
       font-size: 16px;
       line-height: 100%;
 

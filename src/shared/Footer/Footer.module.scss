@@ -52,7 +52,7 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     @include on-desktop {
       gap: 106px;
     }
@@ -111,8 +111,8 @@
       content: '';
       height: 16px;
       width: 16px;
-      background-image: url('../../../images/icons/chevron_arrow_up-2x.png');
+      background-image: url('../../images/icons/chevron_arrow_up-2x.png');
       background-size: cover;
-    }
+       }
   }
 }
