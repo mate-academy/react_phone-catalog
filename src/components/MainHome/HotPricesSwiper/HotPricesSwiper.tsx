@@ -2,11 +2,11 @@ import './HotPricesSwiper.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../api';
-import { Product } from '../../types/Product';
-import { BasketProduct } from '../../types/BasketProduct';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import ProductCard from '../ProductList/ProductCard/ProductCard';
+import { getProducts } from '../../../api';
+import { Product } from '../../../types/Product';
+import { BasketProduct } from '../../../types/BasketProduct';
+import { FavoriteProduct } from '../../../types/FavoriteProduct';
+import ProductCard from '../../ProductList/ProductCard/ProductCard';
 
 type HotPricesSwiperProps = {
   favorites: FavoriteProduct[];
@@ -45,10 +45,8 @@ const HotPricesSwiper = ({
           className="mySwiper"
         >
           {hotPriceProducts.map(product => (
-            <SwiperSlide>
-              {' '}
+            <SwiperSlide key={product.itemId}>
               <ProductCard
-                key={product.itemId}
                 product={product}
                 favorites={favorites}
                 setFavorites={setFavorites}

@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-len
-import AccessoriesCatalog from '../../components/CatalogAccessories/AccessoriesCatalog';
+import AccessoriesCatalog from '../../components/Catalogs/CatalogAccessories/AccessoriesCatalog';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 

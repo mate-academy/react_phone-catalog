@@ -55,6 +55,12 @@
   gap: 64px;
   padding: 0;
   margin: 0;
+  @media (min-width: 640px) {
+   margin: 0;
+  }
+  @media (min-width: 1200px) {
+    margin-left: 64px;
+  }
 
 };
 .nav__item {

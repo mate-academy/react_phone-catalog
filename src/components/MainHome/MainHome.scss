@@ -60,35 +60,3 @@
    flex-direction: row;
   }
 }
-
-.category__banner {
-    transition: transform 0.3s ease;
-   width: 100%;
-};
-
-.category__banner:hover {
-  transform: scale(1.01);
-}
-
-.category__text {
-  color: black;
-};
-
-.category__count {
-  color: #e2e6e9;
-};
-
-.category__image-wrapper {
- width: 187px;
-    height: 187px;
-
- @media (min-width: 640px) {
-   width: 288px;
-  height: 288px;
-  }
-  @media (min-width: 1200px) {
-    width: 368px;
-    height: 368px;
-  }
-
-}

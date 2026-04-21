@@ -1,4 +1,4 @@
-import './MainSwiper.scss';
+import './BannerSwiper.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { useRef } from 'react';
