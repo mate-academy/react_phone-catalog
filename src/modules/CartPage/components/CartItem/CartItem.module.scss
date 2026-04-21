@@ -22,6 +22,20 @@
   }
 }
 
+.productLink {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-grow: 1;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+
+  @include respond-to('mobile') {
+    display: contents;
+  }
+}
+
 .imageWrapper {
   @include flex-center;
 
@@ -41,7 +55,6 @@
 }
 
 .name {
-  flex-grow: 1;
   color: var(--color-primary);
   margin: 0;
 

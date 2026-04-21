@@ -6,6 +6,7 @@ import { Button } from '../../../../components/Button';
 import { useCart } from '../../../shared/context/CartContext';
 import classNames from 'classnames';
 import { getPublicPath } from '../../../shared/utils/pathHelper';
+import { Link } from 'react-router-dom';
 
 interface Props {
   cartItem: CartItemType;
@@ -27,15 +28,16 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
         <Icon variant="close" />
       </Button>
 
-      <div className={styles.imageWrapper}>
-        <img
-          src={getPublicPath(`/${cartItem.image}`)}
-          alt={`Product: ${cartItem.name}`}
-          className={styles.image}
-        />
-      </div>
-
-      <p className={classNames(styles.name, 'body-text')}>{cartItem.name}</p>
+      <Link to={`/${cartItem.category}/${cartItem.itemId}`} className={styles.productLink}>
+        <div className={styles.imageWrapper}>
+          <img
+            src={getPublicPath(`/${cartItem.image}`)}
+            alt={cartItem.name}
+            className={styles.image}
+          />
+        </div>
+        <p className={classNames(styles.name, 'body-text')}>{cartItem.name}</p>
+      </Link>
 
       <div className={styles.counterBlock}>
         <Button
