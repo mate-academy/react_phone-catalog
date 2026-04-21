@@ -1,7 +1,9 @@
+@use 'swiper/css' as *;
+@use 'swiper/css/navigation' as *;
+@use 'swiper/css/pagination' as *;
 body {
  margin: 0;
 };
-
 .App {
   min-height:calc(100vh - 160px);
 }

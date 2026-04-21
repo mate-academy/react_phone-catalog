@@ -8,6 +8,7 @@ import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../ProductMain';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
+import { Link } from 'react-router-dom';
 
 type ProductInfoProps = {
   selectedColor: string;
@@ -19,7 +20,7 @@ type ProductInfoProps = {
   >;
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   isFavorite: boolean;
-  handleToggleFavorite: React.MouseEventHandler<HTMLButtonElement>;
+  handleToggleFavorite:  React.MouseEventHandler<HTMLImageElement>;
   isBasket: boolean;
   handleToggleBasket: React.MouseEventHandler<HTMLButtonElement>;
 };
@@ -60,10 +61,18 @@ const ProductInfo = ({
                 >
                   {isBasket ? 'Added to Cart' : 'Add to Cart'}
                 </button>
-                <button
-                  className={`product-info__button--icon ${isFavorite ? 'active' : ''}`}
-                  onClick={handleToggleFavorite}
-                ></button>
+                <Link to="">
+                  <img
+                    src={
+                      isFavorite
+                        ? '../../../../public/img/icons/icon--heart--filled.png'
+                        : '../../../../public/img/icons/icon--heart.png'
+                    }
+                    alt="Favorite"
+                    className="product-info__button--icon"
+                    onClick={handleToggleFavorite}
+                  />
+                </Link>
               </div>
             </div>
             <div className="product-info__right">

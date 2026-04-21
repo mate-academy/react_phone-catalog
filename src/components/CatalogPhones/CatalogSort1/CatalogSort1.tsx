@@ -3,7 +3,7 @@ import './CatalogSort1.scss';
 type CatalogSort1Props = {
   sortType: 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
   setSortType: React.Dispatch<
-  React.SetStateAction<'newest' | 'oldest' | 'mostExpensive' | 'cheapest'>
+    React.SetStateAction<'newest' | 'oldest' | 'mostExpensive' | 'cheapest'>
   >;
   IsSortOpen: boolean;
   setIsSortOpen: React.Dispatch<React.SetStateAction<boolean>>;

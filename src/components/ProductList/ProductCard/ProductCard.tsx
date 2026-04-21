@@ -12,7 +12,6 @@ type ProductCardProps = {
   baskets: BasketProduct[];
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
-
 const ProductCard = ({
   favorites,
   product,
@@ -32,7 +31,6 @@ const ProductCard = ({
     ram: product.ram,
     image: product.image,
   };
-
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
   const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
   const handleToggleFavorite = () => {
@@ -58,7 +56,6 @@ const ProductCard = ({
     image: product.image,
     quantity: 1,
   };
-
   const handleToggleBasket = () => {
     setBaskets(prev => {
       const exists = prev.find(p => p.itemId === basketOfProduct.itemId);
@@ -73,7 +70,10 @@ const ProductCard = ({
 
   return (
     <div className="product__card">
-      <Link to={`/${product.category}/${product.itemId}`}>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="card__image-wrapper"
+      >
         <img src={product.image} alt="" className="card__image" />
       </Link>
       <Link
@@ -91,12 +91,10 @@ const ProductCard = ({
           <span className="card__label">Screen</span>
           <span className="card__value">{product.screen}</span>
         </div>
-
         <div className="card__spec">
           <span className="card__label">Capacity</span>
           <span className="card__value">{product.capacity}</span>
         </div>
-
         <div className="card__spec">
           <span className="card__label">RAM</span>
           <span className="card__value">{product.ram}</span>
@@ -109,10 +107,18 @@ const ProductCard = ({
         >
           {isBasket ? 'Added to Cart' : 'Add to Cart'}
         </button>
-        <button
-          className={`card__button--icon ${isFavorite ? 'active' : ''}`}
-          onClick={handleToggleFavorite}
-        ></button>
+        <Link to="">
+          <img
+            src={
+              isFavorite
+                ? '../../../../public/img/icons/icon--heart--filled.png'
+                : '../../../../public/img/icons/icon--heart.png'
+            }
+            alt="Favorite"
+            className="card__button--icon"
+            onClick={handleToggleFavorite}
+          />
+        </Link>
       </div>
     </div>
   );
