@@ -47,6 +47,18 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
     return () => clearTimeout(timeout);
   }, [inputValue]);
 
+  useEffect(() => {
+    if (openMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [openMenu]);
+
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
