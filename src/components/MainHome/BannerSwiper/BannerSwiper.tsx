@@ -3,10 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-// eslint-disable-next-line max-len
-import FirstImage from '../../../public/img/category-phones--purple--otherSide.png';
-import SecondImage from '../../../public/img/category-phones--gold.png';
-import ThirdImage from '../../../public/img/category-phones.webp';
 
 const MainSwiper = () => {
   const swiperRef = useRef(null);
@@ -55,13 +51,22 @@ const MainSwiper = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img src={FirstImage} className="slide__image" />
+              <img
+                src="../../../public/img/category-phones--purple--otherSide.png"
+                className="slide__image"
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={SecondImage} className="slide__image" />
+              <img
+                src="../../../public/img/category-phones--gold.png"
+                className="slide__image"
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={ThirdImage} className="slide__image" />
+              <img
+                src="../../../public/img/category-phones.webp"
+                className="slide__image"
+              />
             </SwiperSlide>
           </Swiper>
         </div>

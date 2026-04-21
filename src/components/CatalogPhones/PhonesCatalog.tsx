@@ -24,7 +24,9 @@ const Catalog = ({
   setBaskets,
 }: CatalogProps) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [sortType, setSortType] = useState<'newest' | 'oldest'>('newest');
+  const [sortType, setSortType] = useState<
+    'newest' | 'oldest' | 'mostExpensive' | 'cheapest'
+  >('newest');
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [IsSortOpen, setIsSortOpen] = useState(false);
@@ -42,7 +44,19 @@ const Catalog = ({
       return product2.year - product1.year;
     }
 
-    return product1.year - product2.year;
+    if (sortType === 'oldest') {
+      return product1.year - product2.year;
+    }
+
+    if (sortType === 'mostExpensive') {
+      return product2.price - product1.price;
+    }
+
+    if (sortType === 'cheapest') {
+      return product1.price - product2.price;
+    }
+
+    return 0;
   });
 
   const totalItems = sortedProducts.length;

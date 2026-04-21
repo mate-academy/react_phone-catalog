@@ -1,5 +1,6 @@
 import './Tablets.scss';
-import TabletsCatalog from '../../components/CatalogTablets/TabletsCatalog';
+// eslint-disable-next-line max-len
+import TabletsCatalog from '../../components/Catalogs/CatalogTablets/TabletsCatalog';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 

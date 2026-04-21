@@ -1,4 +1,4 @@
-import Main from '../../components/Main/MainHome';
+import Main from '../../components/MainHome/MainHome';
 import '../homePage/Home.scss';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';

@@ -1,9 +1,8 @@
 import ProductList from '../../ProductList/ProductList';
-import '../CatalogPhones/PhonesCatalog.scss';
+import '../../CatalogPhones/PhonesCatalog.scss';
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../../api';
 import { Product } from '../../../types/Product';
-import HomeIcon from '../../../public/img/icons/icon--home.png';
 import { Link } from 'react-router-dom';
 import CatalogSort1 from '../../CatalogPhones/CatalogSort1/CatalogSort1';
 import CatalogSort2 from '../../CatalogPhones/CatalogSort2/CatalogSort2';
@@ -73,7 +72,11 @@ const AccessoriesCatalog = ({
       <div className="catalog">
         <div className="catalog__top--icons">
           <Link to="/">
-            <img src={HomeIcon} alt="" className="catalog__icon--home" />
+            <img
+              src="../../../public/img/icons/icon--home.png"
+              alt=""
+              className="catalog__icon--home"
+            />
           </Link>
           <Link to="" className="catalog__icon--slider--right--gray"></Link>
           <p className="catalog__top--text">Accessories</p>
