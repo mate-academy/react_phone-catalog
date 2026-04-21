@@ -1,0 +1,120 @@
+@import '../../../mainStyles/main.scss';
+
+.productDetails {
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  padding-bottom: 56px;
+  padding-inline: 16px;
+  font-family: Mont, sans-serif;
+  color: $textColor;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-bottom: 64px;
+    padding-inline: 0;
+  }
+
+  @include on on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+    padding-bottom: 81px;
+  }
+
+  &_navContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+
+    &_img {
+      display: block;
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+    }
+
+    &_category {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      line-height: 15.34px;
+      text-transform: capitalize;
+      color: $textSecondaryColor;
+
+      &::before {
+        content: '';
+        display: block;
+        height: 16px;
+        width: 16px;
+        margin-right: 8px;
+        background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+        background-repeat: no-repeat;
+        color: $textSecondaryColor;
+      }
+
+      &:hover {
+        color: $textColor;
+        cursor: pointer;
+      }
+    }
+
+    &_name {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: $textSecondaryColor;
+
+      &::before {
+        content: '';
+        display: block;
+        height: 16px;
+        width: 16px;
+        margin-right: 8px;
+        color: $textSecondaryColor;
+        background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &_backContainer {
+    padding-top: 24px;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &_backText {
+    display: flex;
+    align-items: flex-end;
+    max-width: fit-content;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+
+    &:hover {
+      color: $textColor;
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-image: url('../../../images/icons/chevron_arrow_left-2x.png');
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+
+  @include on-tablet {
+    margin-top: 20vh;
+  }
+}

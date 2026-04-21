@@ -1,0 +1,63 @@
+@import '../../../mainStyles//main.scss';
+
+.hot {
+  padding-bottom: 64px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+    padding-inline: 0;
+  }
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &_title {
+    width: 136px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+
+    @include on-tablet {
+      width: 100%;
+      font-size: 32px;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &_buttonPrev {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    cursor: pointer;
+    background-image: url('../../../images/icons/chevron_arrow_left-2x.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  &_buttonNext {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    background-color: $white;
+    cursor: pointer;
+    background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+}

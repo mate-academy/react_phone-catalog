@@ -1,3 +1,4 @@
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { RootState } from '../../app/store/store';
@@ -42,13 +43,35 @@ export const ProductCard: React.FC<Props> = ({
   );
   const cartProducts = useSelector((state: RootState) => state.cart.items);
 
-  const isInCart = cartProducts.some(product => product.itemId === itemId);
-  const isFavorite = favoritesProducts.some(
-    product => product.itemId === itemId,
+  const isInCart = useMemo(
+    () => cartProducts.some(p => p.itemId === itemId),
+    [cartProducts, itemId],
   );
 
-  const handleFavoriteClick = () => {
-    handleAddToFavourites(
+  const isFavorite = useMemo(
+    () => favoritesProducts.some(p => p.itemId === itemId),
+    [favoritesProducts, itemId],
+  );
+
+  const handleFavoriteClick = useCallback(
+    (event: React.MouseEvent) => {
+      event.stopPropagation();
+      handleAddToFavourites(
+        id,
+        itemId,
+        image,
+        name,
+        price,
+        fullPrice,
+        screen,
+        capacity,
+        ram,
+        category,
+        favoritesProducts,
+        dispatch,
+      );
+    },
+    [
       id,
       itemId,
       image,
@@ -61,28 +84,32 @@ export const ProductCard: React.FC<Props> = ({
       category,
       favoritesProducts,
       dispatch,
-    );
-  };
+    ],
+  );
 
-  const handleCartClick = () => {
-    handleAddToCart(
-      id,
-      itemId,
-      image,
-      name,
-      price,
-      category,
-      1,
-      cartProducts,
-      dispatch,
-    );
-  };
+  const handleCartClick = useCallback(
+    (event: React.MouseEvent) => {
+      event.stopPropagation();
+      handleAddToCart(
+        id,
+        itemId,
+        image,
+        name,
+        price,
+        category,
+        1,
+        cartProducts,
+        dispatch,
+      );
+    },
+    [id, itemId, image, name, price, category, cartProducts, dispatch],
+  );
 
   return (
     <div className={classNames(styles.phones_card, className)}>
       <img
         src={image}
-        alt="phone"
+        alt="name"
         className={styles.phones_img}
         onClick={onClick}
       />
