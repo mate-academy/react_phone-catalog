@@ -1,4 +1,4 @@
-@import '../../../mainStyles/main.scss';
+@import '../../../src/mainStyles/main';
 
 .footer {
   width: 100%;
@@ -52,6 +52,7 @@
       align-items: center;
       justify-content: center;
     }
+    
     @include on-desktop {
       gap: 106px;
     }

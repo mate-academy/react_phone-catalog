@@ -21,9 +21,10 @@ export const Categories: React.FC = () => {
       (acc, product) => {
         const { category } = product;
 
-        acc[category] = (acc[category] || 0) + 1;
-
-        return acc;
+        return {
+          ...acc,
+          [category]: (acc[category] || 0) + 1,
+        };
       },
       {} as Record<string, number>,
     );

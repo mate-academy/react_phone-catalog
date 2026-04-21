@@ -1,4 +1,4 @@
-@import '../../mainStyles/main.scss';
+@import '../../mainStyles/main';
 
 .nfPage {
   display: flex;
@@ -41,6 +41,7 @@
     @include on-tablet {
       max-width: 500px;
     }
+
     @include on-desktop {
       max-width: 600px;
     }

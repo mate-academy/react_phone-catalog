@@ -1,4 +1,4 @@
-@import '../../../mainStyles/main.scss';
+@import '../../../mainStyles/main';
 
 .overview {
   &_title {
@@ -187,7 +187,7 @@
       border: 1px solid $borderColorDark;
       font-size: 14px;
       line-height: 21px;
-      color: $textMainColor;
+      color: $textColor;
       cursor: pointer;
 
       &:hover {

@@ -1,4 +1,4 @@
-@import '../../../mainStyles/main.scss';
+@import '../../../mainStyles/main';
 
 .productDetails {
   min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
@@ -13,7 +13,7 @@
     padding-inline: 0;
   }
 
-  @include on on-desktop {
+  @include on-desktop {
     min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
     padding-bottom: 81px;
   }

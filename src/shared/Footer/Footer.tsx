@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
-import Logo from '../../../images/Logo/logo-2x.png';
+import Logo from '../../images/Logo/logo-2x.png';
 import styles from './Footer.module.scss';
 
 interface FooterLink {

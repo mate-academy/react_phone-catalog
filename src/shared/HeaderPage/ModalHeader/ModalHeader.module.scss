@@ -1,4 +1,4 @@
-@import '../../../../mainStyles/main.scss';
+@import '../../../mainStyles/main';
 
 .header {
   position: fixed;
@@ -85,7 +85,7 @@
 
 .is_active {
   border-bottom: 3px solid $textColor;
-  color: $textMainColor;
+  color: $textColor;
 }
 
 @keyframes enter-case {

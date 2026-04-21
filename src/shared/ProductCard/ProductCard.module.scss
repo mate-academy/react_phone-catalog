@@ -1,4 +1,4 @@
-@import '../../../mainStyles/main.scss';
+@import '../../../src/mainStyles/main';
 
 .phones {
   min-height: 100vh;
@@ -16,7 +16,7 @@
     font-family: Mont, sans-serif;
     font-size: 14px;
     line-height: 21px;
-    color: $textMainColor;
+    color: $textColor;
     transition: all #{$animation};
 
     &:hover {
@@ -105,7 +105,7 @@
     font-family: Mont-Bold, sans-serif;
     font-size: 12px;
     line-height: 15.34px;
-    color: $textMainColor;
+    color: $textColor;
   }
 
   &_buttonsContainer {

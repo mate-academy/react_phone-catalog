@@ -1,4 +1,4 @@
-@import '../../../mainStyles/main.scss';
+@import '../../../mainStyles/main';
 
 .slaider {
   position: relative;
@@ -41,6 +41,7 @@
       max-width: calc(100% - 50px);
       margin: 0 auto;
     }
+
     @include on-desktop {
       height: 400px;
     }
@@ -67,6 +68,7 @@
       font-size: 12px;
       background-color: #222;
     }
+    
     @include on-desktop {
       height: 60px;
       font-size: 16px;
