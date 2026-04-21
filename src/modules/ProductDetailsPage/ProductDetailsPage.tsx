@@ -189,7 +189,7 @@ export const ProductDetailsPage: React.FC = () => {
         </nav>
 
         <button
-          onClick={() => handleNavigate(`/${product.category}`)}
+          onClick={() => navigate(-1)}
           className={`${styles.backButton} small-text12`}
         >
           <img src="./img/Back.svg" alt="back" /> Back
@@ -263,8 +263,7 @@ export const ProductDetailsPage: React.FC = () => {
                             p.capacity === product.capacity,
                         );
 
-                          console.log('👉 FOUND TARGET:', target);
-
+                        console.log('👉 FOUND TARGET:', target);
 
                         if (target) {
                           navigate(`/${target.category}/${getItemId(target)}`);
@@ -289,7 +288,7 @@ export const ProductDetailsPage: React.FC = () => {
                     <button
                       key={`capacity-${cap}`}
                       onClick={() => {
-                          console.log('👉 CLICK CAP:', cap);
+                        console.log('👉 CLICK CAP:', cap);
 
                         const normalize = (str: string) =>
                           str.toLowerCase().replace(/\s/g, '');
@@ -321,7 +320,6 @@ export const ProductDetailsPage: React.FC = () => {
                         );
 
                         console.log('👉 FOUND TARGET:', target);
-                        
 
                         if (target) {
                           console.log('👉 NAVIGATE TO:', target.itemId);

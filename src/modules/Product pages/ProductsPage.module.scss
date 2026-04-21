@@ -174,8 +174,6 @@ h1 {
       }
     }
 
-
-
   label {
     font-family: 'Mont', sans-serif;
       font-weight: 700;
@@ -188,7 +186,7 @@ h1 {
     appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
-    height: 40px;
+      height: 40px;
       border: 1px solid #B4BDC3;
       border-radius: 8px;
       padding: 0 32px 0 12px;
@@ -197,10 +195,29 @@ h1 {
       cursor: pointer;
       color: #0F0F11;
       font-family: 'Mont', sans-serif;
+      font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        color: #0F0F11;
 
       &:hover {
         border-color: #313237;
       }
+
+            option {
+              font-family: 'Mont', sans-serif;
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 21px;
+              color: #89939A;
+              //background: transparent;
+            }
+      
+            /* активний рядок */
+            option:checked {
+              color: #0F0F11;
+              //background: transparent;
+            }
   }
 }
 
@@ -214,6 +231,9 @@ h1 {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  width: 12px;
+    height: 12px;
+    fill: #B4BDC3;
 }
 
 .card {
