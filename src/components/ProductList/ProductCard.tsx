@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { useFavourites } from '../../context/FavouriteContext';
 import { useCart } from '../../context/CartContext';
 import { Product } from '../types/Product';
+import { getUniqueId } from '../../utils/getItemId';
 
 interface Props {
   product: Product;
@@ -22,17 +23,17 @@ export const ProductCard: React.FC<Props> = ({
   const { isFavourite, addToFavourites, removeFromFavourites } =
     useFavourites();
   
-  const uniqueId = `${product.itemId}-${product.color}-${product.capacity}`;
+  const uniqueId = getUniqueId(product);
   const isAdded = isInCart(uniqueId);
 
-
-  //const isAdded = isInCart(product.itemId);
   const favorited = isFavourite(product.itemId);
 
   const currentPrice = product.priceDiscount || product.price || 0;
   const oldPrice = product.priceRegular || product.fullPrice;
 
   const productPath = `/${product.category}/${product.itemId}`;
+
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     if (isAdded) {
@@ -49,6 +50,28 @@ export const ProductCard: React.FC<Props> = ({
     } else {
       addToFavourites(product);
     }
+  };
+
+  const handleColorClick = (color: string) => {
+    const newId = getUniqueId({ ...product, color });
+    console.log(
+      'handleColorClick → newId:',
+      newId,
+      'productId:',
+      product.itemId,
+    );
+    navigate(`/${product.category}/${newId}`);
+  };
+
+  const handleCapacityClick = (capacity: string) => {
+    const newId = getUniqueId({ ...product, capacity });
+    console.log(
+      'handleCapacityClick → newId:',
+      newId,
+      'productId:',
+      product.itemId,
+    );
+    navigate(`/${product.category}/${newId}`);
   };
 
   const cardClass = `${styles.card} ${variant === 'full' ? styles.card_full : ''} ${className || ''}`;
@@ -88,6 +111,22 @@ export const ProductCard: React.FC<Props> = ({
         <p className={`${styles.characteristic} small-text12`}>
           <span>RAM</span> <b>{product.ram}</b>
         </p>
+      </div>
+
+      <div>
+        {product.colorsAvailable?.map(c => (
+          <button key={c} onClick={() => handleColorClick(c)}>
+            {c}
+          </button>
+        ))}
+      </div>
+
+      <div>
+        {product.capacityAvailable?.map(c => (
+          <button key={c} onClick={() => handleCapacityClick(c)}>
+            {c}
+          </button>
+        ))}
       </div>
 
       <div className={styles.actions}>

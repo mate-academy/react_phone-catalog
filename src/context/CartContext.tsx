@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { getItemId, getUniqueId } from '../utils/getItemId';
 
 export type CartItem = {
-  id: string; // внутрішній id (наприклад product.id)
-  itemId: string; // використовується для URL
+  id: string;
+  itemId: string;
   name: string;
   price: number;
   image: string;
@@ -39,9 +40,23 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  const getItemId = (product: Product) => {
+    // phones мають itemId, tablets/accessories мають namespaceId
+    if (product.itemId) return product.itemId;
+    if (product.namespaceId) return product.namespaceId;
+    if (typeof product.id === 'string') return product.id;
+    return String(product.id || '');
+  };
+
   const addToCart = (product: Product) => {
     setCart(prev => {
-      const uniqueId = `${product.itemId}-${product.color}-${product.capacity}`;
+      const baseId = getItemId(product);
+
+      const normalize = (str?: string) => (str ? str.toLowerCase() : '');
+
+      // формуємо стабільний ключ
+      const uniqueId = getUniqueId(product);
+
       const existing = prev.find(item => item.uniqueId === uniqueId);
 
       if (existing) {
@@ -52,12 +67,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         );
       }
 
-      const rawPrice = product.priceDiscount ?? product.price ?? 0;
+      const rawPrice =
+        product.priceDiscount ?? product.priceRegular ?? product.price ?? 0;
       const safePrice = Number(rawPrice);
 
       const newItem: CartItem = {
-        id: product.id,
-        itemId: product.itemId,
+        id: baseId, // тепер завжди рядковий і стабільний
+        itemId: getItemId(product),
         name: product.name,
         price: isNaN(safePrice) ? 0 : safePrice,
         image: product.images?.[0] || product.image || '',
@@ -72,6 +88,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       return [...prev, newItem];
     });
   };
+
 
 
   const removeFromCart = (uniqueId: string) => {

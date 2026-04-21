@@ -10,6 +10,7 @@ import { useCart } from '../../context/CartContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
+import { getItemId, getUniqueId } from '../../utils/getItemId';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -43,12 +44,6 @@ export const ProductDetailsPage: React.FC = () => {
     }, 300);
   };
 
-  const uniqueId = product
-    ? `${product.itemId}-${product.color}-${product.capacity}`
-    : '';
-
-  const isAdded = !!product && isInCart(uniqueId);
-  const favorited = !!product && isFavourite(product?.itemId);
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -59,6 +54,9 @@ export const ProductDetailsPage: React.FC = () => {
       addToCart(product);
     }
   };
+
+  const normalize = (str: string) => str?.toLowerCase();
+
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -71,31 +69,70 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  const uniqueId = product ? getUniqueId(product) : '';
+  
+  const isAdded = !!product && isInCart(uniqueId);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productId]);
 
   useEffect(() => {
-    if (!productId || !category) return;
+    if (product?.images?.length) {
+      setSelectedPhoto(product.images[0]);
+    }
+  }, [product]);
 
-    setProduct(null);
+  useEffect(() => {
+    if (!productId) return;
+
     setIsLoading(true);
     setIsError(false);
 
-    getProductById(productId)
-      .then(productData => {
-        if (!productData) {
+    console.log('useEffect → productId from URL:', productId);
+
+
+    getProducts()
+      .then(all => {
+        console.log('All products count:', all.length);
+        setAllProducts(all);
+
+        const baseProduct = all.find(p => getItemId(p) === productId);
+        console.log('Found baseProduct:', baseProduct);
+
+        if (!baseProduct) {
           setIsError(true);
           return;
         }
 
-        setProduct(productData);
-        setSelectedPhoto(productData.images?.[0] || '');
-        setNumericId(String(productData.id));
+         const recommended = all
+           .filter(
+             p =>
+               p.category === baseProduct.category &&
+               getItemId(p) !== getItemId(baseProduct),
+           )
+           .sort(() => 0.5 - Math.random())
+           .slice(0, 8);
+
+         setRecommendedProducts(recommended);
+
+        return getProductById(getItemId(baseProduct));
+      })
+      .then(fullProduct => {
+        if (!fullProduct) {
+          setIsError(true);
+          return;
+        }
+
+        setProduct(fullProduct);
+        setSelectedPhoto(fullProduct.images?.[0] || '');
+        setNumericId(String(fullProduct.id));
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
   }, [productId]);
+
+  const favorited = !!product && isFavourite(product.itemId);
 
 
   if (isLoading) return <Loader />;
@@ -127,6 +164,8 @@ export const ProductDetailsPage: React.FC = () => {
   console.log('capacityAvailable:', product.capacityAvailable);
   console.log('images:', product.images);
   console.log('description:', product.description);
+  console.log(productId);
+
 
   return (
     <div className={`${styles.container} ${isFading ? styles.fadeOut : ''}`}>
@@ -214,16 +253,23 @@ export const ProductDetailsPage: React.FC = () => {
                     <button
                       key={`color-${colorName}`}
                       onClick={() => {
+                        console.log('👉 CLICK COLOR:', colorName);
+
                         const target = allProducts.find(
                           p =>
-                            p.namespaceId === product.namespaceId &&
+                            (p.namespaceId === product.namespaceId ||
+                              getItemId(p)?.includes(product.namespaceId)) &&
                             p.color === colorName &&
                             p.capacity === product.capacity,
                         );
+
+                          console.log('👉 FOUND TARGET:', target);
+
+
                         if (target) {
-                          handleNavigate(
-                            `/${target.category}/${target.itemId}`,
-                          );
+                          navigate(`/${target.category}/${getItemId(target)}`);
+                        } else {
+                          console.log('❌ TARGET NOT FOUND');
                         }
                       }}
                       className={`${styles.colorCircle} ${product.color === colorName ? styles.activeColor : ''}`}
@@ -243,16 +289,45 @@ export const ProductDetailsPage: React.FC = () => {
                     <button
                       key={`capacity-${cap}`}
                       onClick={() => {
+                          console.log('👉 CLICK CAP:', cap);
+
+                        const normalize = (str: string) =>
+                          str.toLowerCase().replace(/\s/g, '');
+
+                        console.log('🔎 product:', product);
+                        console.log('🔎 product.itemId:', product?.itemId);
+
+                        const baseId = getItemId(product)
+                          .split('-')
+                          .slice(0, 3)
+                          .join('-');
+
+                        console.log('🔎 baseId:', baseId);
+                        console.log(
+                          '🔎 product.capacityAvailable:',
+                          product.capacityAvailable,
+                        );
+                        console.log(
+                          '🔎 allProducts capacities:',
+                          allProducts.map(p => p.capacity),
+                        );
+                        console.log('🔎 normalized cap:', normalize(cap));
+
                         const target = allProducts.find(
                           p =>
-                            p.namespaceId === product.namespaceId &&
-                            p.capacity === cap &&
+                            p.itemId.startsWith(baseId) &&
+                            normalize(p.capacity) === normalize(cap) &&
                             p.color === product.color,
                         );
+
+                        console.log('👉 FOUND TARGET:', target);
+                        
+
                         if (target) {
-                          handleNavigate(
-                            `/${target.category}/${target.itemId}`,
-                          );
+                          console.log('👉 NAVIGATE TO:', target.itemId);
+                          navigate(`/${target.category}/${target.itemId}`);
+                        } else {
+                          console.log('❌ TARGET NOT FOUND');
                         }
                       }}
                       className={`${styles.capacityItem} ${product.capacity === cap ? styles.activeCapacity : ''}`}

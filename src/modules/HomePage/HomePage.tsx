@@ -10,6 +10,7 @@ import { getCarouselStep } from '../../utils/carouselHelpers';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
+import { getItemId } from '../../utils/getItemId';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -156,7 +157,7 @@ export const HomePage = () => {
                       return;
                     }
 
-                    navigate(`/${product.category}/${product.itemId}`);
+                    navigate(`/${product.category}/${getItemId(product)}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
@@ -257,7 +258,7 @@ export const HomePage = () => {
                       return;
                     }
 
-                    navigate(`/${product.category}/${product.itemId}`);
+                    navigate(`/${product.category}/${getItemId(product)}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
