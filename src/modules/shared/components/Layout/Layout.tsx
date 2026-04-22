@@ -1,13 +1,16 @@
 import { Outlet } from 'react-router-dom';
+import { Header } from '../Header';
 
 export const Layout = () => (
   <div className="app">
-    <header className="header">{/* Nav, logo, icons will go here */}</header>
+    <Header />
 
-    <main className="main">
+    <main className="main" data-cy="main-content">
       <Outlet />
     </main>
 
-    <footer className="footer">{/* Footer content will go here */}</footer>
+    <footer className="footer" data-cy="footer">
+      {/* Footer content will go here */}
+    </footer>
   </div>
 );

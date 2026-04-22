@@ -46,6 +46,17 @@
   transition: $property var(--transition);
 }
 
+// Scale image links by 10% on hover (scales the img inside, not the container)
+@mixin hover-scale {
+  img {
+    transition: transform var(--transition);
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
 // Typography mixins
 @mixin h1 {
   font-weight: 700;
