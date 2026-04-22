@@ -23,6 +23,7 @@ export const TechSpecBlock: React.FC<Props> = ({ product }) => {
         : product.cell,
     },
   ];
+
   return (
     <>
       <h2 className={styles.techTitle}>Tech specs</h2>

@@ -3,6 +3,7 @@
   padding-bottom: 24px;
   margin-bottom: 24px;
 }
+
 .labelCapacity {
   font-weight: 700;
   font-size: 12px;
@@ -10,20 +11,13 @@
   color: #75767f;
 }
 
-.capacityButton {
-  cursor: pointer;
-}
-
 .capacityList {
   display: flex;
   gap: 8px;
   margin-top: 8px;
 }
+
 .capacityButton {
-  padding-top: 7px;
-  padding-bottom: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
   display: flex;
   justify-content: center;
   align-items: center;

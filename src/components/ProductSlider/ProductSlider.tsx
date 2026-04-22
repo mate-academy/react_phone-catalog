@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './ProductSlider.module.scss';
 
 export const ProductSlider = () => {
@@ -21,18 +21,19 @@ export const ProductSlider = () => {
     },
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex(prevIndex =>
       prevIndex === IMAGES.length - 1 ? 0 : prevIndex + 1,
     );
-  };
+  }, [IMAGES.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
+
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [nextSlide]);
 
   const prevSlide = () => {
     setCurrentIndex(prevIndex =>

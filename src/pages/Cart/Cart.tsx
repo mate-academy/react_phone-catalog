@@ -1,28 +1,37 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { CartContext, CartItem } from '../../context/CartContext';
+import { Product } from '../../components/types/Product';
 
 export const Cart = () => {
   const { cart, clearCart, updateQuantity, removeFromCart } =
     useContext(CartContext);
+
   const totalItems = cart.reduce(
-    (sum: number, item: any) => sum + item.quantity,
+    (sum: number, item: { quantity: number }) => sum + item.quantity,
     0,
   );
-  const totalPrice = cart.reduce((sum: number, item: any) => {
-    const actualPrice = item.product.priceDiscount || item.product.price;
-    return sum + actualPrice * item.quantity;
-  }, 0);
+  const totalPrice = cart.reduce(
+    (sum: number, item: { product: Product; quantity: number }) => {
+      const actualPrice = item.product.priceDiscount || item.product.price || 0;
+
+      return sum + actualPrice * item.quantity;
+    },
+    0,
+  );
   const handleCheckout = () => {
     const isConfirmed = window.confirm(
       'Checkout is not implemented yet. Do you want to clear the Cart?',
     );
+
     if (isConfirmed) {
       clearCart();
     }
   };
+
   const navigate = useNavigate();
+
   return (
     <div className={styles.cartBlock}>
       <div className={styles.backButton}>
@@ -38,9 +47,9 @@ export const Cart = () => {
           {cart.length === 0 ? (
             <h2 className={styles.emptyCartMessage}>Your cart is empty</h2>
           ) : (
-            cart.map((item: any) => {
+            cart.map((item: CartItem) => {
               const actualPrice =
-                item.product.priceDiscount || item.product.price;
+                item.product.priceDiscount || item.product.price || 0;
               const rawImage = item.product.images?.length
                 ? item.product.images[0]
                 : item.product.image;
@@ -57,14 +66,22 @@ export const Cart = () => {
                     >
                       ✕
                     </button>
-                    <div className={styles.itemImageWrapper}>
-                      <img
-                        src={finalImage}
-                        alt={item.product.name}
-                        className={styles.itemImage}
-                      />
-                    </div>
-                    <p className={styles.itemName}>{item.product.name}</p>
+                    <Link
+                      to={`/product/${item.product.itemId || item.product.id}`}
+                    >
+                      <div className={styles.itemImageWrapper}>
+                        <img
+                          src={finalImage}
+                          alt={item.product.name}
+                          className={styles.itemImage}
+                        />
+                      </div>
+                    </Link>
+                    <Link
+                      to={`/product/${item.product.itemId || item.product.id}`}
+                    >
+                      <p className={styles.itemName}>{item.product.name}</p>
+                    </Link>
                   </div>
 
                   <div className={styles.itemBottom}>

@@ -37,6 +37,7 @@ export const CategoryPage = ({ title, category }: Props) => {
     searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
+
   const filteredProducts = productsData.filter(
     product => product.category === category,
   );
@@ -45,11 +46,23 @@ export const CategoryPage = ({ title, category }: Props) => {
     searchParams.set('sort', e.target.value);
     setSearchParams(searchParams);
   };
+
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sort === 'title') return a.name.localeCompare(b.name);
-    if (sort === 'price')
-      return (a.price || a.fullPrice) - (b.price || b.fullPrice);
-    if (sort === 'age') return b.year - a.year;
+    if (sort === 'title') {
+      return a.name.localeCompare(b.name);
+    }
+
+    if (sort === 'price') {
+      const priceA = a.price || a.fullPrice || 0;
+      const priceB = b.price || b.fullPrice || 0;
+
+      return priceA - priceB;
+    }
+
+    if (sort === 'age') {
+      return b.year - a.year;
+    }
+
     return 0;
   });
 
@@ -68,6 +81,7 @@ export const CategoryPage = ({ title, category }: Props) => {
   if (isLoading) {
     return <Loader />;
   }
+
   if (hasError) {
     return (
       <div className={styles.errorContainer}>
@@ -85,22 +99,29 @@ export const CategoryPage = ({ title, category }: Props) => {
   if (filteredProducts.length === 0) {
     return <h1 className={styles.title}>There are no {category} yet</h1>;
   }
+
   const visiblePages = (() => {
     const maxVisible = 4;
 
     let start = currentPage - 1;
-    if (start <= 0) start = 1;
+
+    if (start <= 0) {
+      start = 1;
+    }
 
     let end = start + maxVisible - 1;
+
     if (end > totalPages) {
       end = totalPages;
       start = Math.max(1, end - maxVisible + 1);
     }
 
     const pages = [];
+
     for (let i = start; i <= end; i++) {
       pages.push(i);
     }
+
     return pages;
   })();
 
@@ -125,8 +146,11 @@ export const CategoryPage = ({ title, category }: Props) => {
 
       <div className={styles.filtersRow}>
         <div className={styles.filterBlock}>
-          <label className={styles.label}>Sort by</label>
+          <label className={styles.label} htmlFor="sort-select">
+            Sort by
+          </label>
           <select
+            id="sort-select"
             className={styles.select}
             value={sort}
             onChange={handleSortChange}
@@ -138,8 +162,12 @@ export const CategoryPage = ({ title, category }: Props) => {
         </div>
 
         <div className={styles.filterBlock}>
-          <label className={styles.label}> Items on page</label>
+          <label className={styles.label} htmlFor="sort-select">
+            {' '}
+            Items on page
+          </label>
           <select
+            id="sort-select"
             className={styles.select}
             value={perPage}
             onChange={handlePerPageChange}

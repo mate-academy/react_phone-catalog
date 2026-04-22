@@ -24,23 +24,27 @@
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -1%;
+
   @media (min-width: $tablet) {
     font-size: 48px;
     line-height: 56px;
   }
 }
+
 .cartContent {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 32px;
   margin-bottom: 32px;
+
   @media (min-width: 1200px) {
     flex-direction: row;
     align-items: flex-start;
     gap: 16px;
   }
 }
+
 .backBtn {
   display: flex;
   align-items: center;
@@ -54,6 +58,7 @@
   line-height: 100%;
   cursor: pointer;
 }
+
 .totalBlock {
   border: 1px solid #3b3e4a;
   display: flex;
@@ -96,6 +101,7 @@
     margin-bottom: 16px;
   }
 }
+
 .checkoutButton {
   background-color: #905bff;
   width: 250px;
@@ -111,6 +117,7 @@
     background-color: #a378ff;
   }
 }
+
 .gridItems {
   display: flex;
   flex-direction: column;

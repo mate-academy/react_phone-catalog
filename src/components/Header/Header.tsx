@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useContext, useState } from 'react';
 import { FavoritesContext } from '../../context/FavoritesContext';
-import { CartContext } from '../../context/CartContext';
+import { CartContext, CartItem } from '../../context/CartContext';
 
 export const Header = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -10,20 +10,23 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const totalCartItems = cart.reduce(
-    (sum: number, item: any) => sum + item.quantity,
+    (sum: number, item: CartItem) => sum + item.quantity,
     0,
   );
 
   const toggleMenu = () => {
     setIsOpen(prev => {
       document.body.style.overflow = !prev ? 'hidden' : '';
+
       return !prev;
     });
   };
+
   const closeMenu = () => {
     setIsOpen(false);
     document.body.style.overflow = '';
   };
+
   const getNavClassLink = ({ isActive }: { isActive: boolean }) =>
     isActive ? styles.activeLink : styles.link;
 

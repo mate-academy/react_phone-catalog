@@ -1,21 +1,71 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 import styles from './ProductDetailsPage.module.scss';
 import { Price } from '../../components/Price/Price';
+/* eslint-disable max-len */
 import { AboutBlock } from '../../components/ProductDetailsPageComponents/AboutBlock/AboutBlock';
 import { TechSpecBlock } from '../../components/ProductDetailsPageComponents/TechSpecBlock/TechSpecBlock';
 import { CapacityBlock } from '../../components/ProductDetailsPageComponents/CapacityBlock/CapacityBlock';
 import { ColorSelector } from '../../components/ProductDetailsPageComponents/ColorSelector/ColorSelector';
 import { RecommendedSection } from '../../components/ProductDetailsPageComponents/RecommendedSection/RecommendedSection';
+/* eslint-enable max-len */
+import { CartContext } from '../../context/CartContext';
+import { FavoritesContext } from '../../context/FavoritesContext';
+import { Product } from '../../components/types/Product';
+interface ProductExtended extends Product {
+  description: { title: string; text: string[] }[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
+  colorsAvailable: string[];
+  color: string;
+  capacityAvailable: string[];
+  capacity: string;
+  images: string[];
+  priceRegular: number;
+  priceDiscount: number;
+}
 
 export const ProductDetailsPage = () => {
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
   const [selectedImage, setSelectedImage] = useState('');
   const navigate = useNavigate();
   const { productId } = useParams();
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<ProductExtended | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const currentProductId = product ? String(product.itemId || product.id) : '';
+  const isInCart = cart.some(
+    (item: { id: string }) => item.id === currentProductId,
+  );
+
+  // const { favorites, toggleFavorite } = useContext(FavoritesContext);
+  const favoriteContext = useContext(FavoritesContext);
+  const favorites = favoriteContext?.favorites || [];
+  const toggleFavorite = favoriteContext?.toggleFavorite || (() => {});
+
+  const isFavorite = favorites.some(
+    (item: Product) => String(item.itemId || item.id) === currentProductId,
+  );
+
+  const handleCartClick = () => {
+    if (!product) {
+      return;
+    }
+
+    const targetId = String(product.itemId || product.id);
+
+    if (isInCart) {
+      removeFromCart(targetId);
+    } else {
+      addToCart(product as Product);
+    }
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -43,7 +93,7 @@ export const ProductDetailsPage = () => {
         }
       } catch (error) {
         setHasError(true);
-        console.error('Download error:', error);
+        // console.error('Download error:', error);
       } finally {
         setTimeout(() => setIsLoading(false), 500);
       }
@@ -136,13 +186,13 @@ export const ProductDetailsPage = () => {
           <ColorSelector
             colorsAvailable={product.colorsAvailable}
             currentColor={product.color}
-            productId={product.id}
+            productId={String(product.id)}
           />
 
           <CapacityBlock
             capacityAvailable={product.capacityAvailable}
             currentCapacity={product.capacity}
-            productId={product.id}
+            productId={String(product.id)}
           />
 
           <div className={styles.detailsPrices}>
@@ -154,10 +204,25 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className={styles.buttonsBlock}>
-            <button className={styles.addButton}>Add to cart</button>
+            <button
+              // className={styles.addButton}
+              className={`${styles.addButton} ${isInCart ? styles.addedButton : ''}`}
+              onClick={handleCartClick}
+            >
+              {/* Add to cart */}
+              {isInCart ? 'Added to cart' : 'Add to cart'}
+            </button>
 
-            <button className={styles.favotiteButton}>
-              <img src="/img/icons/heart.svg" alt="" />
+            <button
+              className={styles.favotiteButton}
+              onClick={() => toggleFavorite(product)}
+            >
+              <img
+                src={
+                  isFavorite ? '/img/icons/Union.png' : '/img/icons/heart.svg'
+                }
+                alt="favorite"
+              />
             </button>
           </div>
 

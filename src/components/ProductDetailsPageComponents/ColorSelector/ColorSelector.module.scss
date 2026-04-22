@@ -11,12 +11,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-  // gap: 105px;
   width: 100%;
   margin-top: 40px;
 
-  @media (min-width: $tablet) {
-    // gap: 54px;
+  @media (min-width: $desktop) {
+    // gap: 150px ;
   }
 }
 
@@ -45,12 +44,14 @@
     outline-offset: -4px;
   }
 }
+
 .label {
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   color: #75767f;
 }
+
 .productId {
   font-weight: 700;
   font-size: 12px;

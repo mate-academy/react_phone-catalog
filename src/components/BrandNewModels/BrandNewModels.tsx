@@ -20,6 +20,7 @@ export const BrandNewModels = () => {
   const handlePrev = () => {
     setOffset(prev => Math.max(prev - step, 0));
   };
+
   return (
     <div>
       <div className={styles.top}>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Price } from '../Price/Price';
 import { useContext } from 'react';
 import { FavoritesContext } from '../../context/FavoritesContext';
-import { CartContext } from '../../context/CartContext';
+import { CartContext, CartItem } from '../../context/CartContext';
 
 interface Props {
   product: Product;
@@ -29,7 +29,7 @@ export const ProductCard: React.FC<Props> = ({
     itemId,
   } = product;
   const { favorites, toggleFavorite } = useContext(FavoritesContext);
-  const { cart, addToCart } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
   const isFavorite = favorites.some((item: Product) => item.itemId === itemId);
   const currentPrice = priceDiscount || price;
   const oldPrice = priceRegular || fullPrice;
@@ -38,7 +38,17 @@ export const ProductCard: React.FC<Props> = ({
   const productUrl = `/product/${product.itemId}`;
   const rawImage = product.images?.length ? product.images[0] : product.image; // ?
   const finalImage = rawImage?.startsWith('http') ? rawImage : `/${rawImage}`;
-  const isInCart = cart.some((item: any) => item.id === itemId);
+  const isInCart = cart.some((item: CartItem) => item.id === itemId);
+
+  const handleCartClick = () => {
+    const targetId = String(product.itemId || product.id);
+
+    if (isInCart) {
+      removeFromCart(targetId);
+    } else {
+      addToCart(product);
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -79,7 +89,8 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.buttons}>
         <button
           className={`${styles.addButton} ${isInCart ? styles.addedButton : ''}`}
-          onClick={() => addToCart(product)}
+          // onClick={() => addToCart(product)}
+          onClick={handleCartClick}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>

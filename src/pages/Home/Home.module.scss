@@ -1,4 +1,5 @@
 @use '../../styles//utils/variables' as *;
+
 .container {
   padding: 0 16px;
   box-sizing: border-box;
@@ -20,9 +21,11 @@
 
 .title {
   padding-top: 24px;
+
   @media (min-width: $tablet) {
     padding-top: 32px;
   }
+
   @media (min-width: $desktop) {
     padding-top: 56px;
   }

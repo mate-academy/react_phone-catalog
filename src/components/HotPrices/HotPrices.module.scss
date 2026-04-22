@@ -19,6 +19,7 @@
   padding-left: 16px;
   padding-right: 16px;
 }
+
 .top {
   display: flex;
   justify-content: space-between;
@@ -27,6 +28,7 @@
   width: 100%;
   box-sizing: border-box;
 }
+
 // .gridContainer {
 //   display: flex;
 //   grid-template-columns: repeat(2, 1fr);
@@ -65,6 +67,7 @@
   gap: 16px;
   display: flex;
 }
+
 .arrow {
   width: 32px;
   height: 32px;
@@ -101,6 +104,7 @@
     }
   }
 }
+
 .slideCard {
   flex-shrink: 0;
   width: 212px;

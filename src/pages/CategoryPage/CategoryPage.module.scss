@@ -9,16 +9,19 @@
 
   @media (min-width: $tablet) {
     padding: 0 24px;
+
     // padding-bottom: 80px;
   }
 
   @media (min-width: $desktop) {
     padding: 0 32px;
   }
+
   @media (min-width: 1201px) {
     padding: 0 152px;
   }
 }
+
 .headerBlock {
   .title {
     color: #f1f2f9;
@@ -35,6 +38,7 @@
     letter-spacing: 0%;
   }
 }
+
 .label {
   color: #75767f;
   font-weight: 700;
@@ -42,21 +46,25 @@
   line-height: 100%;
   letter-spacing: 0%;
 }
+
 .separator {
   width: 16px;
   height: 16px;
 }
+
 .homeIcon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .breadCrumbs {
   margin-top: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .currentCategory {
   text-transform: capitalize;
   font-weight: 700;
@@ -74,12 +82,8 @@
   appearance: none;
   -webkit-appearance: none;
   background-color: #323542;
-  border: none;
   color: #f1f2f9;
-  padding-left: 12px;
-  padding-right: 71px;
-  padding-top: 10px;
-  padding-bottom: 9px;
+  padding: 10px 71px 9px 12px;
   border: 1px solid #323542;
 
   background-image: url('/img/icons/arrowDown.png');
@@ -87,6 +91,7 @@
   background-size: 16px;
   background-position: right 12px center;
 }
+
 .filtersRow {
   display: flex;
   gap: 16px;
@@ -97,16 +102,19 @@
     width: 176px;
   }
 }
+
 .filterBlock {
   display: flex;
   flex-direction: column;
   gap: 8px;
   flex: 1;
 }
+
 .pagination {
   display: flex;
   justify-content: center;
   gap: 8px;
+
   // margin-bottom: 64px;
   margin-top: 24px;
 
@@ -148,6 +156,7 @@
     cursor: default;
   }
 }
+
 .errorContainer {
   display: flex;
   flex-direction: column;

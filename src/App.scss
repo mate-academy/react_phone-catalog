@@ -7,12 +7,14 @@ body {
   height: 100%;
   background-color: $color-black;
   color: $color-white;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 }
+
 a {
   text-decoration: none;
   color: $color-white;
 }
+
 .app {
   display: flex;
   flex-direction: column;

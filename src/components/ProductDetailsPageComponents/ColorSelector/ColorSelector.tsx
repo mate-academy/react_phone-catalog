@@ -34,7 +34,9 @@ export const ColorSelector: React.FC<Props> = ({
       <div className={styles.colorsHeader}>
         <span className={styles.label}>Available colors</span>
         {/* <span className={styles.productId}>ID: {productId}</span> */}
-        <span className={styles.productId}>ID: {productId.split('-').pop()}</span>
+        <span className={styles.productId}>
+          ID: {productId.split('-').pop()}
+        </span>
       </div>
 
       <div className={styles.colorsList}>

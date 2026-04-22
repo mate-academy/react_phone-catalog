@@ -3,9 +3,11 @@ import styles from './Favorites.module.scss';
 import { useContext } from 'react';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { Product } from '../../components/types/Product';
 
 export const Favorites = () => {
-  const { favorites } = useContext(FavoritesContext);
+  const { favorites } = useContext(FavoritesContext) || { favorites: [] };
+
   return (
     <div className={styles.favouriteBlock}>
       <div className={styles.breadCrumbs}>
@@ -23,7 +25,7 @@ export const Favorites = () => {
 
       <h1 className={styles.title}>Favourites</h1>
       <div className={styles.productGrid}>
-        {favorites.map((product: any) => (
+        {favorites.map((product: Product) => (
           <ProductCard key={product.itemId} product={product} />
         ))}
       </div>

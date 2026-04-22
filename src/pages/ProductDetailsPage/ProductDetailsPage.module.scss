@@ -9,9 +9,11 @@
     padding-left: 24px;
     padding-right: 24px;
   }
+
   @media (min-width: $desktop) {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 152px;
+    padding-right: 152px;
+    padding-bottom: 81px;
   }
 }
 
@@ -23,6 +25,10 @@
     flex-direction: row;
     align-items: flex-start;
     gap: 17px;
+  }
+
+  @media (min-width: $desktop) {
+    gap: 64px;
   }
 }
 
@@ -180,19 +186,20 @@
   display: flex;
   gap: 8px;
   align-items: center;
-
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.price-current) {
     font-size: 32px;
     font-weight: 800;
     color: #f1f2f9;
   }
-
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.price-old) {
     font-size: 22px;
     color: #89939a;
     text-decoration: line-through;
   }
 }
+
 .buttonsBlock {
   margin: auto;
   display: flex;
@@ -200,6 +207,7 @@
   width: 100%;
   margin-top: 16px;
 }
+
 .addButton {
   cursor: pointer;
   font-weight: 700;
@@ -216,6 +224,15 @@
     background-color: #a378ff;
   }
 }
+
+.addedButton {
+  background-color: #323542 !important;
+
+  &:hover {
+    background-color: #4a4d58 !important;
+  }
+}
+
 .favotiteButton {
   flex-shrink: 0;
   border: none;
@@ -228,6 +245,7 @@
     background-color: #4a4d58;
   }
 }
+
 .specs {
   margin-top: 32px;
   display: flex;
@@ -254,6 +272,7 @@
     align-items: center;
   }
 }
+
 .aboutBlock {
   margin-top: 56px;
 
@@ -261,6 +280,7 @@
     width: 100%;
   }
 }
+
 .techSpecBlock {
   margin-top: 56px;
   flex: 1;
@@ -272,6 +292,7 @@
     flex-shrink: 0;
   }
 }
+
 .bottomSection {
   display: flex;
   flex-direction: column;

@@ -24,6 +24,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
+
     if (savedCart) {
       setCart(JSON.parse(savedCart));
     }
@@ -35,11 +36,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const addToCart = (product: Product) => {
     setCart(prev => {
-      const isExist = prev.find(item => item.id === product.itemId);
+      const safeId = String(product.itemId || product.id);
+      const isExist = prev.find(item => item.id === safeId);
 
-      if (isExist) return prev;
+      if (isExist) {
+        return prev;
+      }
 
-      return [...prev, { id: product.itemId || '', quantity: 1, product }];
+      // return [...prev, { id: product.itemId || '', quantity: 1, product }];
+      return [...prev, { id: safeId, quantity: 1, product }];
     });
   };
 
@@ -52,8 +57,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       prev.map(item => {
         if (item.id === id) {
           const newQuantity = item.quantity + amount;
+
           return { ...item, quantity: newQuantity > 0 ? newQuantity : 1 };
         }
+
         return item;
       }),
     );
