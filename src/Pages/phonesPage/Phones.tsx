@@ -1,4 +1,5 @@
-import PhonesCatalog from '../../components/CatalogPhones/PhonesCatalog';
+/* eslint-disable max-len */
+import PhonesCatalog from '../../components/Catalogs/CatalogPhones/PhoneCatalog';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 

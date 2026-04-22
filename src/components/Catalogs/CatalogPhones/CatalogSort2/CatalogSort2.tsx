@@ -2,8 +2,8 @@ type CatalogSort2Props = {
   IsPageOpen: boolean;
   setIsPageOpen: React.Dispatch<React.SetStateAction<boolean>>;
   itemsPerPage: number | 'all';
-  setItemsPerPage: (value: number | 'all') => void;
-  setCurrentPage: (value: number) => void;
+  setItemsPerPage: React.Dispatch<React.SetStateAction<number | 'all'>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const CatalogSort2 = ({

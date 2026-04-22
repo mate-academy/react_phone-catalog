@@ -1,12 +1,12 @@
 import ProductList from '../../ProductList/ProductList';
-import '../../CatalogPhones/PhonesCatalog.scss';
+import '../CatalogPhones/PhoneCatalog.scss';
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../../api';
 import { Product } from '../../../types/Product';
 import { Link } from 'react-router-dom';
-import CatalogSort1 from '../../CatalogPhones/CatalogSort1/CatalogSort1';
-import CatalogSort2 from '../../CatalogPhones/CatalogSort2/CatalogSort2';
-import CatalogSlider from '../../CatalogPhones/CatalogSlider/CatalogSlider';
+import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
+import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
+import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
 import { BasketProduct } from '../../../types/BasketProduct';
 import { useSearchParams } from 'react-router-dom';

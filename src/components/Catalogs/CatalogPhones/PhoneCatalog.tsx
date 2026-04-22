@@ -1,14 +1,15 @@
-import ProductList from '../ProductList/ProductList';
-import './PhonesCatalog.scss';
+import ProductList from '../../ProductList/ProductList';
+import './PhoneCatalog.scss';
 import { useState, useEffect } from 'react';
-import { getProducts } from '../../api';
-import { Link, useSearchParams } from 'react-router-dom';
+import { getProducts } from '../../../api';
+import { Product } from '../../../types/Product';
+import { Link } from 'react-router-dom';
 import CatalogSort1 from './CatalogSort1/CatalogSort1';
 import CatalogSort2 from './CatalogSort2/CatalogSort2';
 import CatalogSlider from './CatalogSlider/CatalogSlider';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
-import { Product } from '../../types/Product';
+import { FavoriteProduct } from '../../../types/FavoriteProduct';
+import { BasketProduct } from '../../../types/BasketProduct';
+import { useSearchParams } from 'react-router-dom';
 
 type CatalogProps = {
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
@@ -23,46 +24,47 @@ const Catalog = ({
   baskets,
   setBaskets,
 }: CatalogProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortType =
-    (searchParams.get('sort') as
-      | 'newest'
-      | 'oldest'
-      | 'mostExpensive'
-      | 'cheapest') || 'newest';
+   const [searchParams, setSearchParams] = useSearchParams();
 
-  const itemsPerPage =
-    searchParams.get('perPage') === 'all'
-      ? 'all'
-      : Number(searchParams.get('perPage')) || 4;
-  const currentPage = Number(searchParams.get('page')) || 1;
-  const updateSearchParams = (paramsUpdated: Record<string, string>) => {
-    const params = new URLSearchParams(searchParams);
+    const sortType =
+      (searchParams.get('sort') as
+        | 'newest'
+        | 'oldest'
+        | 'mostExpensive'
+        | 'cheapest') || 'newest';
 
-    Object.entries(paramsUpdated).forEach(([keyBy, value]) => {
-      params.set(keyBy, value);
-    });
-    setSearchParams(params);
-  };
+    const itemsPerPage =
+      searchParams.get('perPage') === 'all'
+        ? 'all'
+        : Number(searchParams.get('perPage')) || 4;
+    const currentPage = Number(searchParams.get('page')) || 1;
+    const updateSearchParams = (paramsUpdated: Record<string, string>) => {
+      const params = new URLSearchParams(searchParams);
 
-  const setSortType = (value: string) => {
-    updateSearchParams({ sort: value, page: '1' });
-  };
+      Object.entries(paramsUpdated).forEach(([keyBy, value]) => {
+        params.set(keyBy, value);
+      });
+      setSearchParams(params);
+    };
 
-  const setItemsPerPage = (value: number | 'all') => {
-    updateSearchParams({
-      perPage: value.toString(),
-      page: '1',
-    });
-  };
+    const setSortType = (value: string) => {
+      updateSearchParams({ sort: value, page: '1' });
+    };
 
-  const setCurrentPage = (value: number) => {
-    updateSearchParams({ page: value.toString() });
-  };
+    const setItemsPerPage = (value: number | 'all') => {
+      updateSearchParams({
+        perPage: value.toString(),
+        page: '1',
+      });
+    };
+
+    const setCurrentPage = (value: number) => {
+      updateSearchParams({ page: value.toString() });
+    };
 
   useEffect(() => {
     getProducts().then(setProducts);
@@ -91,15 +93,18 @@ const Catalog = ({
     return 0;
   });
 
-  const perPage =
-    itemsPerPage === 'all' ? sortedProducts.length : Number(itemsPerPage);
+  const totalItems = sortedProducts.length;
 
-  const totalPages = Math.ceil(sortedProducts.length / perPage);
+  const totalPages =
+    itemsPerPage === 'all' ? 1 : Math.ceil(totalItems / itemsPerPage);
 
-  const visibleProducts = sortedProducts.slice(
-    (currentPage - 1) * perPage,
-    currentPage * perPage,
-  );
+  const visibleProducts =
+    itemsPerPage === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage,
+        );
 
   const pagesPerBlock = 4;
   const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);

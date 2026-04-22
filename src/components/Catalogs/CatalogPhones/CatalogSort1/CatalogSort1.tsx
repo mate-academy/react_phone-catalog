@@ -2,9 +2,9 @@ import './CatalogSort1.scss';
 
 type CatalogSort1Props = {
   sortType: 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
-  setSortType: (
-    value: 'newest' | 'oldest' | 'mostExpensive' | 'cheapest',
-  ) => void;
+  setSortType: React.Dispatch<
+    React.SetStateAction<'newest' | 'oldest' | 'mostExpensive' | 'cheapest'>
+  >;
   IsSortOpen: boolean;
   setIsSortOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
