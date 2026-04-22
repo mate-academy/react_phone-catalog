@@ -5,7 +5,7 @@ import { RootState } from '../../app/store/store';
 import { ProductCard } from '../../shared/ProductCard/ProductCard';
 import styles from './FavouritesPage.module.scss';
 import productNotFound from '../../images/other_images/product-not-found.png';
-import homeIcon from '../../images/icons/home-2x.png';
+import homeIcon from '../../images/icons/home.svg';
 
 export const FavouritesPage: React.FC = () => {
   const navigate = useNavigate();

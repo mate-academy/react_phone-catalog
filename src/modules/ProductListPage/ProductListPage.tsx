@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
@@ -18,7 +19,7 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../../shared/ProductCard/ProductCard';
 import { Pagination } from '../../shared/Pagination/Pagination';
 import { ProductDetails } from '../ProductDetailsPage/ProductDetails/ProductDetails';
-import home from '../../images/icons/home-2x.png';
+import home from '../../images/icons/home.svg';
 import styles from './ProductListPage.module.scss';
 
 type Props = {
@@ -30,10 +31,10 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const allProducts = useSelector((state: RootState) => state.products.items);
   const statusPhones = useSelector((state: RootState) => state.phones.status);
   const statusTablets = useSelector((state: RootState) => state.tablets.status);
+
   const statusAccessories = useSelector(
     (state: RootState) => state.accessories.status,
   );
@@ -41,6 +42,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
   const currentPage = useSelector(
     (state: RootState) => state.pagination.currentPage,
   );
+
   const totalPages = useSelector(
     (state: RootState) => state.pagination.totalPages,
   );
@@ -58,13 +60,10 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageFromUrl);
   const [product, setProduct] = useState<Product[]>([]);
   const [sortType, setSortType] = useState(sortTypeFromUrl);
-
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [itemsDropdownOpen, setItemsDropdownOpen] = useState(false);
-
   const productId = location.pathname.split('/').pop();
   const isProductPage = productId !== category;
-
   const sortDropdownRef = useRef<HTMLDivElement | null>(null);
   const itemsDropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -73,6 +72,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
     dispatch(resetStatusProducts());
     dispatch(clearName());
     dispatch(fetchProducts());
+
     if (category === 'phones') {
       dispatch(fetchPhones());
     }
@@ -92,6 +92,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
     );
 
     setProduct(filteredProducts);
+
     const total = Math.ceil(filteredProducts.length / itemsPerPage);
 
     dispatch(setTotalPages(total));
@@ -125,6 +126,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
 
   const getProductsForCurrentPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
+
     const endIndex = startIndex + itemsPerPage;
 
     return sortedPhones.slice(startIndex, endIndex);
@@ -147,17 +149,25 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
     dispatch(setCurrentPage(1));
 
     searchParams.set('perPage', parsedValue.toString());
-    searchParams.set('page', 1);
+
+    searchParams.set('page', '1');
+
     setSearchParams(searchParams);
+
     setItemsDropdownOpen(false);
   };
 
   const handleSortChange = (value: string) => {
     setSortType(value);
+
     dispatch(setCurrentPage(1));
+
     searchParams.set('sort', value);
-    searchParams.set('page', 1);
+
+    searchParams.set('page', '1');
+
     setSearchParams(searchParams);
+
     setSortDropdownOpen(false);
   };
 
@@ -177,6 +187,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
       !itemsDropdownRef.current.contains(event.target as Node)
     ) {
       setSortDropdownOpen(false);
+
       setItemsDropdownOpen(false);
     }
   };
@@ -189,6 +200,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
 
   const toggleItemsDropdown = () => {
     setItemsDropdownOpen(prev => !prev);
+
     setSortDropdownOpen(false);
   };
 
@@ -213,6 +225,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
               className={styles.productList_backContainer_img}
               onClick={back}
             />
+
             <span className={styles.productList_backContainer_category}>
               {category}
             </span>
@@ -229,37 +242,55 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
               <p className={styles.productList_count}>
                 {product.length} models
               </p>
+
               <div className={styles.productList_filters}>
                 <div className={styles.productList_container}>
                   <p className={styles.productList_filterText}>Sort by</p>
+
                   <div
                     ref={sortDropdownRef}
                     className={classNames(styles.productList_customDropdown)}
                     onClick={toggleSortDropdown}
                   >
                     <span>{sortType}</span>
+
                     <span
                       className={classNames(styles.productList_dropdownIcon, {
                         [styles.open]: sortDropdownOpen,
                       })}
                     ></span>
+
                     {sortDropdownOpen && (
                       <div className={styles.productList_dropdownMenu}>
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleSortChange('Newest')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleSortChange('Newest');
+                          }}
                         >
                           Newest
                         </div>
+
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleSortChange('Alphabetically')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleSortChange('Alphabetically');
+                          }}
                         >
                           Alphabetically
                         </div>
+
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleSortChange('Cheapest')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleSortChange('Cheapest');
+                          }}
                         >
                           Cheapest
                         </div>
@@ -267,8 +298,10 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
                     )}
                   </div>
                 </div>
+
                 <div className={styles.productList_container}>
                   <p className={styles.productList_filterText}>Items on page</p>
+
                   <div
                     ref={itemsDropdownRef}
                     className={classNames(styles.productList_customDropdown)}
@@ -277,34 +310,55 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
                     <span>
                       {itemsPerPage === product.length ? 'All' : itemsPerPage}
                     </span>
+
                     <span
                       className={classNames(styles.productList_dropdownIcon, {
                         [styles.open]: itemsDropdownOpen,
                       })}
                     ></span>
+
                     {itemsDropdownOpen && (
                       <div className={styles.productList_dropdownMenu}>
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleItemsPerPageChange('4')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleItemsPerPageChange('4');
+                          }}
                         >
                           4
                         </div>
+
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleItemsPerPageChange('8')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleItemsPerPageChange('8');
+                          }}
                         >
                           8
                         </div>
+
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleItemsPerPageChange('16')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleItemsPerPageChange('16');
+                          }}
                         >
                           16
                         </div>
+
                         <div
                           className={styles.productList_dropdownItem}
-                          onClick={() => handleItemsPerPageChange('all')}
+                          onClick={e => {
+                            e.stopPropagation();
+
+                            handleItemsPerPageChange('all');
+                          }}
                         >
                           All
                         </div>
@@ -313,6 +367,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
                   </div>
                 </div>
               </div>
+
               <ul className={styles.productList_list}>
                 {getProductsForCurrentPage().map(item => (
                   <ProductCard
@@ -322,6 +377,7 @@ export const ProductListPage: React.FC<Props> = ({ category }) => {
                   />
                 ))}
               </ul>
+
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

@@ -43,7 +43,7 @@
     transition: all #{$animation};
 
     &:hover {
-      transform: scale(1.1);
+      transform: $standartScale;
       cursor: pointer;
     }
 
@@ -120,7 +120,7 @@
     font-family: Mont, sans-serif;
     font-size: 14px;
     line-height: 21px;
-    color: #fff;
+    color: $white;
     background-color: $textColor;
     transition: all $animation;
     cursor: pointer;
@@ -134,7 +134,7 @@
     height: 40px;
     min-width: 40px;
     border: 1px solid $borderColorDark;
-    background-color: #fff;
+    background-color: $white;
     transition: all $animation;
     cursor: pointer;
 
@@ -144,26 +144,26 @@
 
     &_heartIcon {
       display: block;
-      height: 16px;
-      width: 16px;
+      height: $iconHeight;
+      width: $iconWidth;
       margin: 0 auto;
       background-size: cover;
-      background-image: url('../../../src/images/icons/favourites_heart_like-2x.png');
+      background-image: url('../../../src/images/icons/favourites_heart_like.svg');
     }
 
     &_heartIconFull {
       display: block;
-      height: 16px;
-      width: 16px;
+      height: $iconHeight;
+      width: $iconWidth;
       margin: 0 auto;
       background-size: cover;
-      background-image: url('../../../src/images/icons/favourites_filled_heart_like-2x.png');
+      background-image: url('../../../src/images/icons/favourites_filled_heart_like.svg');
     }
   }
 }
 
 .added {
   border: 1px solid $borderColor;
-  color: #27ae60;
-  background-color: #fff;
+  color: $whiteGreen;
+  background-color: $white;
 }

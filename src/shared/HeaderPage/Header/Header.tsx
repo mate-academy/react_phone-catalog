@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { RootState } from '../../../app/store/store';
 import { ModalHeader } from '../ModalHeader/ModalHeader';
-import Logo from '../../../images/Logo/logo-2x.png';
+import Logo from '../../../images/logo/logo.svg';
 import styles from './Header.module.scss';
 
 const navLinks = [

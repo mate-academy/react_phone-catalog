@@ -20,13 +20,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
-    width: 32px;
+    height: $buttonHeight;
+    width: $buttonWidth;
     border: 1px solid $borderColor;
     font-family: Mont, sans-serif;
     font-size: 14px;
     line-height: 21px;
-    background-color: #fff;
+    background-color: $white;
     transition: all $animation;
     cursor: pointer;
 
@@ -38,10 +38,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 32px;
-      width: 32px;
+      height: $buttonHeight;
+      width: $buttonWidth;
       border: 1px solid $borderColorDark;
-      background-color: #fff;
+      background-color: $white;
       transition: all $animation;
       cursor: pointer;
 
@@ -57,8 +57,8 @@
 
     &_iconLeft,
     &_iconRight {
-      height: 16px;
-      width: 16px;
+      height: $iconHeight;
+      width: $iconWidth;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -66,11 +66,11 @@
     }
 
     &_iconLeft {
-      background-image: url('../../../images/icons/chevron_arrow_left-2x.png');
+      background-image: url('../../images/icons/chevron_arrow_left.svg');
     }
 
     &_iconRight {
-      background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+      background-image: url('../../images/icons/сhevron_arrow_right.svg');
     }
   }
 

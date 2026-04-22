@@ -20,7 +20,7 @@ import { ProductNotFound } from '../ProductNotFound/ProductNotFound';
 import { ProductOverview } from '../ProductOverview';
 import { ProductInfo } from '../ProductInfo';
 import { MayYouLike } from '../MayYouLike';
-import home from '../../../images/icons/home-2x.png';
+import home from '../../../images/icons/home.svg';
 import styles from './ProductDetails.module.scss';
 
 type Props = {

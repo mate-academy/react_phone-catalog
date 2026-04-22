@@ -10,6 +10,6 @@ export type Product = {
   image: string;
   screen: string;
   ram: string;
-  year: string;
+  year: number;
   quantity: number;
 };

@@ -33,11 +33,12 @@
 
   &_buttonPrev {
     display: block;
-    height: 32px;
-    width: 32px;
+    height: $buttonHeight;
+    width: $buttonWidth;
     border: 1px solid $borderColorDark;
+    background-color: $white;
     cursor: pointer;
-    background-image: url('../../../images/icons/chevron_arrow_left-2x.png');
+    background-image: url('../../../images/icons/chevron_arrow_left.svg');
     background-repeat: no-repeat;
     background-position: center;
     &:disabled {
@@ -48,12 +49,12 @@
 
   &_buttonNext {
     display: block;
-    height: 32px;
-    width: 32px;
+    height: $buttonHeight;
+    width: $buttonWidth;
     border: 1px solid $borderColorDark;
     background-color: $white;
     cursor: pointer;
-    background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+    background-image: url('../../../images/icons/сhevron_arrow_right.svg');
 
     &:disabled {
       opacity: 0.5;

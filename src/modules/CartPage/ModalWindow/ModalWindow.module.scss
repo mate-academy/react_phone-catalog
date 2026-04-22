@@ -3,6 +3,7 @@
 .overlay {
   display: flex;
   justify-content: center;
+  align-items: center;
   background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   visibility: hidden;
@@ -54,7 +55,7 @@
   font-family: Mont-Bold, sans-serif;
   font-size: 18px;
   color: $textColor;
-  background-color: #27ae60;
+  background-color: $whiteGreen;
   cursor: pointer;
   transition: all $animation;
 

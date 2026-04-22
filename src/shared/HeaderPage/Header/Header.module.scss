@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid $white;
     text-decoration: none;
     text-transform: uppercase;
     font-family: Mont-Bold, sans-serif;
@@ -102,10 +102,10 @@
   &_heartIcon {
     position: relative;
     display: block;
-    height: 16px;
-    width: 16px;
+    height: $iconHeight;
+    width: $iconWidth;
     background-size: cover;
-    background-image: url('../../../images/icons/favourites_heart_like-2x.png');
+    background-image: url('../../../images/icons/favourites_heart_like.svg');
     transition:
       background-image 0.5s ease,
       transform 0.5s ease;
@@ -129,10 +129,10 @@
   &_cartIcon {
     position: relative;
     display: block;
-    width: 16px;
-    height: 16px;
+    height: $iconHeight;
+    width: $iconWidth;
     background-size: cover;
-    background-image: url('../../../images/icons/shopping_bag_cart-2x.png');
+    background-image: url('../../../images/icons/shopping_\ bag_cart.svg');
     transition:
       background-image 0.5s ease,
       transform 0.5s ease;
@@ -152,21 +152,21 @@
     background-color: $favouritesIconColor;
     font-size: 9px;
     line-height: 11.5px;
-    color: #fff;
+    color: $white;
   }
 
   &_icon {
     display: block;
-    height: 16px;
-    width: 16px;
+    height: $iconHeight;
+    width: $iconWidth;
     background-size: cover;
 
     &_open {
-      background-image: url('../../../images/icons/menu-2x.png');
+      background-image: url('../../../images/icons/menu.svg');
     }
 
     &_close {
-      background-image: url('../../../images/icons/close-2x.png');
+      background-image: url('../../../images/icons/close.svg');
     }
   }
 
@@ -184,7 +184,7 @@
 
 .header_favourites:hover .header_heartIcon,
 .header_cart:hover .header_cartIcon {
-  transform: scale(1.2);
+  transform: $standartScale;
 }
 
 .is_active {

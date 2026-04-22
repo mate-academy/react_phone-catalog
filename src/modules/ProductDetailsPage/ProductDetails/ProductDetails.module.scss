@@ -26,8 +26,8 @@
 
     &_img {
       display: block;
-      height: 16px;
-      width: 16px;
+      height: $iconHeight;
+      width: $iconWidth;
       cursor: pointer;
     }
 
@@ -42,10 +42,10 @@
       &::before {
         content: '';
         display: block;
-        height: 16px;
-        width: 16px;
+        height: $iconHeight;
+        width: $iconWidth;
         margin-right: 8px;
-        background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+        background-image: url('../../../images/icons/сhevron_arrow_right.svg');
         background-repeat: no-repeat;
         color: $textSecondaryColor;
       }
@@ -66,11 +66,11 @@
       &::before {
         content: '';
         display: block;
-        height: 16px;
-        width: 16px;
+        height: $iconHeight;
+        width: $iconWidth;
         margin-right: 8px;
         color: $textSecondaryColor;
-        background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+        background-image: url('../../../images/icons/сhevron_arrow_right.svg');
         background-repeat: no-repeat;
       }
     }
@@ -101,9 +101,10 @@
     &::before {
       content: '';
       display: block;
-      height: 16px;
-      width: 16px;
-      background-image: url('../../../images/icons/chevron_arrow_left-2x.png');
+      height: $iconHeight;
+      width: $iconWidth;
+      background-image: url('../../../images/icons/chevron_arrow_left.svg');
+      background-repeat: no-repeat;
     }
   }
 }

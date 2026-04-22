@@ -28,11 +28,11 @@
 
   &_buttonPrev {
     display: block;
-    height: 32px;
-    width: 32px;
+    height: $buttonHeight;
+    width: $buttonWidth;
     border: 1px solid $borderColorDark;
     cursor: pointer;
-    background-image: url('../../../images/icons/chevron_arrow_left-2x.png');
+    background-image: url('../../../images/icons/chevron_arrow_left.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-color: $white;
@@ -45,11 +45,11 @@
 
   &_buttonNext {
     display: block;
-    height: 32px;
-    width: 32px;
+    height: $buttonHeight;
+    width: $buttonWidth;
     border: 1px solid $borderColorDark;
     cursor: pointer;
-    background-image: url('../../../images/icons/chevron_arrow_right-2x.png');
+    background-image: url('../../../images/icons/сhevron_arrow_right.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-color: $white;

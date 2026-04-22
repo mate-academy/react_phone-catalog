@@ -31,8 +31,8 @@
 
     &_img {
       display: block;
-      height: 16px;
-      width: 16px;
+      height: $iconHeight;
+      width: $iconWidth;
       cursor: pointer;
     }
 
@@ -46,10 +46,10 @@
       &::before {
         content: '';
         display: block;
-        height: 16px;
-        width: 16px;
+        height: $iconHeight;
+        width: $iconWidth;
         margin-right: 8px;
-        background-image: url(../../images/icons/chevron_arrow_right-2x.png);
+        background-image: url('../../images/icons/сhevron_arrow_right.svg');
         background-repeat: no-repeat;
         color: $textColor;
       }

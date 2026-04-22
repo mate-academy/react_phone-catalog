@@ -102,16 +102,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
-    width: 32px;
+    height: $buttonHeight;
+    width: $buttonWidth;
     border: 1px solid $borderColorDark;
     cursor: pointer;
 
     &::after {
       content: '';
-      height: 16px;
-      width: 16px;
-      background-image: url('../../images/icons/chevron_arrow_up-2x.png');
+      height: $iconHeight;
+      width: $iconWidth;
+      background-image: url('../../images/icons/chevron_arrow_up.svg');
       background-size: cover;
        }
   }

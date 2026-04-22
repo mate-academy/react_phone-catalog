@@ -274,21 +274,21 @@
 
       &_heartIcon {
         display: block;
-        height: 16px;
-        width: 16px;
+        height: $iconHeight;
+        width: $iconWidth;
         margin-left: auto;
         margin-right: auto;
-        background-image: url('../../../images/icons/favourites_heart_like-2x.png');
+        background-image: url('../../../images/icons/favourites_heart_like.svg');
         background-size: cover;
       }
 
       &_heartIconFull {
         display: block;
-        height: 16px;
-        width: 16px;
+        height: $iconHeight;
+        width: $iconWidth;
         margin-left: auto;
         margin-right: auto;
-        background-image: url('../../../images/icons/favourites_filled_heart_like-2x.png');
+        background-image: url('../../../images/icons/favourites_filled_heart_like.svg');
         background-size: cover;
       }
     }
