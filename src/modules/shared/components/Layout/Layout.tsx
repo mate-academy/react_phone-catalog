@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../Header';
+import { Footer } from '../Footer';
 
 export const Layout = () => (
   <div className="app">
@@ -9,8 +10,6 @@ export const Layout = () => (
       <Outlet />
     </main>
 
-    <footer className="footer" data-cy="footer">
-      {/* Footer content will go here */}
-    </footer>
+    <Footer />
   </div>
 );

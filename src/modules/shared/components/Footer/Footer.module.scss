@@ -1,0 +1,113 @@
+@use '../../../../styles/mixins' as *;
+
+.footer {
+  box-shadow: 0px -1px 0px 0px var(--color-elements);
+  margin-top: auto;
+
+}
+
+.container {
+  @include page-container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 42.5px;
+    padding-bottom: 42.5px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-bottom: 32px;
+
+  img {
+    width: 64px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  @include hover-scale;
+
+  @include on-tablet {
+    margin-bottom: 0;
+    margin-right: 0;
+    flex: 1;
+    justify-content: flex-start;
+  }
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include on-desktop {
+    gap: 106.83px;
+  }
+}
+
+.navLink {
+  display: block;
+  font-family: var(--font-family);
+  font-size: var(--font-size-uppercase);
+  font-weight: 800;
+  line-height: var(--line-height-uppercase);
+  letter-spacing: var(--letter-spacing-uppercase);
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-decoration: none;
+  @include hover-transition(color);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-uppercase);
+  font-weight: 800;
+  line-height: var(--line-height-uppercase);
+  letter-spacing: var(--letter-spacing-uppercase);
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  @include hover-transition(color);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  @include on-tablet {
+    flex: 1;
+    justify-content: flex-end;
+    margin-left: 0;
+    align-self: auto;
+  }
+}
