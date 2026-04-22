@@ -5,7 +5,7 @@ export const Hero = () => {
     <section className={styles.hero}>
       <div className="container">
         <div className="layoutGrid">
-          <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+          <h1 className={styles.title}>Product Catalog</h1>
         </div>
       </div>
     </section>

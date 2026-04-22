@@ -7,6 +7,7 @@ import { useTheme } from '../../../../store/theme/ThemeContext';
 import { closeIconMap } from '../../../shared/config/closeIconMap';
 import { minusIconMap } from '../../../shared/config/minusIconMap';
 import { plusIconMap } from '../../../shared/config/plusIconMap';
+import { useSmoothNavigate } from '../../../../hooks/useSmoothNavigate';
 
 type Props = {
   cart: CartItems;
@@ -15,6 +16,8 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ cart }) => {
   const { removeFromCart, decreaseQuantity, increaseQuantity } = useShop();
   const { theme } = useTheme();
+
+  const smoothNavigate = useSmoothNavigate();
 
   return (
     <article className={styles.cartItem}>
@@ -30,6 +33,9 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
         <Link
           to={`/product/${cart.product.itemId}`}
           className={styles.imageLink}
+          onClick={event => {
+            smoothNavigate(event, `/product/${cart.product.itemId}`);
+          }}
         >
           <img
             src={`${cart.product.image}`}
@@ -37,7 +43,13 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             className={styles.image}
           />
         </Link>
-        <Link to={`/product/${cart.product.itemId}`} className={styles.title}>
+        <Link
+          to={`/product/${cart.product.itemId}`}
+          className={styles.title}
+          onClick={event => {
+            smoothNavigate(event, `/product/${cart.product.itemId}`);
+          }}
+        >
           {cart.product.name}
         </Link>
       </div>

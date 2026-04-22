@@ -128,17 +128,22 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
             onClick={scrollTotop}
             className={styles.actionsLink}
           >
-            <img src={favouriteIconMap[theme].default} alt="Favourites" />
-            {totalFavourites > 0 && (
-              <span className={styles.cartBadge}>{totalFavourites}</span>
-            )}
+            <span className={styles.iconWrapper}>
+              <img src={favouriteIconMap[theme].default} alt="Favourites" />
+
+              {totalFavourites > 0 && (
+                <span className={styles.cartBadge}>{totalFavourites}</span>
+              )}
+            </span>
           </Link>
           <Link to="/cart" onClick={scrollTotop} className={styles.actionsLink}>
-            <img src={shoppingBagMap[theme]} alt="Shopping bag" />
+            <span className={styles.iconWrapper}>
+              <img src={shoppingBagMap[theme]} alt="Shopping bag" />
 
-            {totalQuantity > 0 && (
-              <span className={styles.cartBadge}>{totalQuantity}</span>
-            )}
+              {totalQuantity > 0 && (
+                <span className={styles.cartBadge}>{totalQuantity}</span>
+              )}
+            </span>
           </Link>
         </div>
 

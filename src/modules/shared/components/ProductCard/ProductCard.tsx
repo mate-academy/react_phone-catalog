@@ -4,6 +4,7 @@ import styles from './ProductCard.module.scss';
 import { useShop } from '../../../../store/shop/ShopContext';
 import { useTheme } from '../../../../store/theme/ThemeContext';
 import { favouriteIconMap } from '../../config/favouriteIconMap';
+import { useSmoothNavigate } from '../../../../hooks/useSmoothNavigate';
 
 type Props = {
   product: Product;
@@ -20,10 +21,18 @@ export const ProductCard: React.FC<Props> = ({
   const { theme } = useTheme();
   const isCart = carts.some(item => item.product.itemId === product.itemId);
 
+  const smoothNavigate = useSmoothNavigate();
+
   return (
     <div className={styles.card}>
       <div className={styles.cardContent}>
-        <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
+        <Link
+          to={`/product/${product.itemId}`}
+          className={styles.imageLink}
+          onClick={event => {
+            smoothNavigate(event, `/product/${product.itemId}`);
+          }}
+        >
           <img
             src={`${product.image}`}
             alt={product.name}
@@ -31,7 +40,13 @@ export const ProductCard: React.FC<Props> = ({
           />
         </Link>
         <div className={styles.titleWrapper}>
-          <Link to={`/product/${product.itemId}`} className={styles.title}>
+          <Link
+            to={`/product/${product.itemId}`}
+            className={styles.title}
+            onClick={event => {
+              smoothNavigate(event, `/product/${product.itemId}`);
+            }}
+          >
             {product.name}
           </Link>
         </div>

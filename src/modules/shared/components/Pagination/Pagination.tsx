@@ -47,7 +47,10 @@ export const Pagination: React.FC<Props> = ({
           <button
             key={page}
             type="button"
-            onClick={() => onPageChange(page)}
+            onClick={() => {
+              onPageChange(page);
+              scrollToTop();
+            }}
             className={`${styles.pageButton} ${
               page === currentPage ? styles.active : ''
             }`}

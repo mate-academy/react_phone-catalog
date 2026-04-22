@@ -116,13 +116,34 @@
   }
 }
 
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+
+  @include mixins.on-desktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .cartBadge {
   @include mixins.flex-center;
 
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(-65%, 50%);
+  transform: translate(50%, -50%);
   min-width: 14px;
   height: 14px;
 

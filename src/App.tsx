@@ -12,6 +12,7 @@ import { FavouritesPage } from './modules/FavouritesPage';
 import { CartsPage } from './modules/CartsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { Preferences } from './modules/shared/components/Preferences';
+import { ScrollToTop } from './modules/shared/components/ScrollToTop';
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,6 +24,7 @@ export const App = () => {
         <div className="page__preferences">
           <Preferences />
         </div>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/phones" element={<PhonesPage />} />
