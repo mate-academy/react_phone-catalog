@@ -18,6 +18,8 @@ type CatalogProps = {
   setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
+type SortType = 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
+
 const Catalog = ({
   setFavorites,
   favorites,
@@ -28,43 +30,42 @@ const Catalog = ({
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
 
-   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    const sortType =
-      (searchParams.get('sort') as
-        | 'newest'
-        | 'oldest'
-        | 'mostExpensive'
-        | 'cheapest') || 'newest';
+  const sortType =
+    (searchParams.get('sort') as 'newest' | 'oldest') || 'newest';
 
-    const itemsPerPage =
-      searchParams.get('perPage') === 'all'
-        ? 'all'
-        : Number(searchParams.get('perPage')) || 4;
-    const currentPage = Number(searchParams.get('page')) || 1;
-    const updateSearchParams = (paramsUpdated: Record<string, string>) => {
-      const params = new URLSearchParams(searchParams);
+  const itemsPerPageParam = searchParams.get('perPage');
 
-      Object.entries(paramsUpdated).forEach(([keyBy, value]) => {
-        params.set(keyBy, value);
-      });
-      setSearchParams(params);
-    };
+  const itemsPerPage =
+    itemsPerPageParam === 'all' ? 'all' : Number(itemsPerPageParam) || 4;
 
-    const setSortType = (value: string) => {
-      updateSearchParams({ sort: value, page: '1' });
-    };
+  const currentPage = Number(searchParams.get('page')) || 1;
 
-    const setItemsPerPage = (value: number | 'all') => {
-      updateSearchParams({
-        perPage: value.toString(),
-        page: '1',
-      });
-    };
+  const updateParams = (params: Record<string, string>) => {
+    const newParams = new URLSearchParams(searchParams);
 
-    const setCurrentPage = (value: number) => {
-      updateSearchParams({ page: value.toString() });
-    };
+    Object.entries(params).forEach(([key, value]) => {
+      newParams.set(key, value);
+    });
+
+    setSearchParams(newParams);
+  };
+
+  const handleSortChange = (value: SortType) => {
+    updateParams({ sort: value, page: '1' });
+  };
+
+  const handleItemsChange = (value: number | 'all') => {
+    updateParams({
+      perPage: String(value),
+      page: '1',
+    });
+  };
+
+  const handlePageChange = (page: number) => {
+    updateParams({ page: String(page) });
+  };
 
   useEffect(() => {
     getProducts().then(setProducts);
@@ -127,7 +128,7 @@ const Catalog = ({
       <div className="catalog__sorts">
         <CatalogSort1
           sortType={sortType}
-          setSortType={setSortType}
+          handleSortChange={handleSortChange}
           IsSortOpen={IsSortOpen}
           setIsSortOpen={setIsSortOpen}
         />
@@ -135,8 +136,8 @@ const Catalog = ({
           IsPageOpen={IsPageOpen}
           setIsPageOpen={setIsPageOpen}
           itemsPerPage={itemsPerPage}
-          setItemsPerPage={setItemsPerPage}
-          setCurrentPage={setCurrentPage}
+          handleItemsChange={handleItemsChange}
+          handlePageChange={handlePageChange}
         />
       </div>
       <ProductList
@@ -148,7 +149,7 @@ const Catalog = ({
       />
       <CatalogSlider
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        handlePageChange={handlePageChange}
         visiblePageButtons={visiblePageButtons}
         totalPages={totalPages}
       />

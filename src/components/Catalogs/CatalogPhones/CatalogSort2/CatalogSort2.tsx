@@ -2,16 +2,16 @@ type CatalogSort2Props = {
   IsPageOpen: boolean;
   setIsPageOpen: React.Dispatch<React.SetStateAction<boolean>>;
   itemsPerPage: number | 'all';
-  setItemsPerPage: React.Dispatch<React.SetStateAction<number | 'all'>>;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  handleItemsChange: (value: number | 'all') => void;
+  handlePageChange: (value: number) => void;
 };
 
 const CatalogSort2 = ({
   IsPageOpen,
   setIsPageOpen,
   itemsPerPage,
-  setItemsPerPage,
-  setCurrentPage,
+  handleItemsChange,
+  handlePageChange,
 }: CatalogSort2Props) => {
   return (
     <>
@@ -33,8 +33,7 @@ const CatalogSort2 = ({
                   key={value}
                   className="catalog__option"
                   onClick={() => {
-                    setItemsPerPage(value as number | 'all');
-                    setCurrentPage(1);
+                    handleItemsChange(value as number | 'all');
                     setIsPageOpen(false);
                   }}
                 >

@@ -2,16 +2,16 @@ import './CatalogSort1.scss';
 
 type CatalogSort1Props = {
   sortType: 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
-  setSortType: React.Dispatch<
-    React.SetStateAction<'newest' | 'oldest' | 'mostExpensive' | 'cheapest'>
-  >;
+  handleSortChange: (
+    value: 'newest' | 'oldest' | 'mostExpensive' | 'cheapest',
+  ) => void;
   IsSortOpen: boolean;
   setIsSortOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const CatalogSort1 = ({
   sortType,
-  setSortType,
+  handleSortChange,
   IsSortOpen,
   setIsSortOpen,
 }: CatalogSort1Props) => {
@@ -49,7 +49,7 @@ const CatalogSort1 = ({
               <div
                 className="catalog__option"
                 onClick={() => {
-                  setSortType('newest');
+                  handleSortChange('newest');
                   setIsSortOpen(false);
                 }}
               >
@@ -59,7 +59,7 @@ const CatalogSort1 = ({
               <div
                 className="catalog__option"
                 onClick={() => {
-                  setSortType('oldest');
+                  handleSortChange('oldest');
                   setIsSortOpen(false);
                 }}
               >
@@ -69,7 +69,7 @@ const CatalogSort1 = ({
               <div
                 className="catalog__option"
                 onClick={() => {
-                  setSortType('mostExpensive');
+                  handleSortChange('mostExpensive');
                   setIsSortOpen(false);
                 }}
               >
@@ -79,7 +79,7 @@ const CatalogSort1 = ({
               <div
                 className="catalog__option"
                 onClick={() => {
-                  setSortType('cheapest');
+                  handleSortChange('cheapest');
                   setIsSortOpen(false);
                 }}
               >
