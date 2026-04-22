@@ -61,15 +61,9 @@ flex-shrink: 0;
   border-radius: 10px;
 }
 
-.product-info__button--add-to-cart:hover {
-  background-color: white;
-  color: #313237;
-  border: 1px solid #e2e6e9;
-}
-
 .product-info__button--add-to-cart.active {
   background-color: white;
-  color: black;
+  color: green;
   border: 1px solid #e2e6e9;
 }
 
@@ -80,19 +74,8 @@ flex-shrink: 0;
   width: 40px;
   height: 40px;
   border: 1px solid #e2e6e9;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('/public/img/icons/icon--heart.png');
   border-radius: 5px;
+  box-sizing: border-box;
   cursor: pointer;
-}
-
-.product-info__button--icon:hover {
-  background-image: url('/public/img/icons/icon--heart--filled.png');
-}
-
-.product-info__button--icon.active {
-  background-image: url('/public/img/icons/icon--heart--filled.png');
-  width: 40px;
-  height: 40px;
+  padding: 8px;
 }

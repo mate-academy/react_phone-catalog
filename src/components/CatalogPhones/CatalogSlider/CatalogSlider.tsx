@@ -2,7 +2,7 @@ import './CatalogSlider.scss';
 
 type CatalogSliderProps = {
   currentPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentPage: (value: number) => void;
   visiblePageButtons: number[];
   totalPages: number;
 };
@@ -18,7 +18,7 @@ const CatalogSlider = ({
       <div className="catalog__sliders">
         <button
           className="catalog__slider--left--icon"
-          onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+          onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
         />
 
         {visiblePageButtons.map(page => (

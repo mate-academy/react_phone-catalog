@@ -1,6 +1,6 @@
 import CardCounter from './CardCounter.tsx/CardCounter';
 import './BasketCard.scss';
-import { BasketProduct } from '../../types/BasketProduct';
+import { BasketProduct } from '../../../types/BasketProduct';
 import { Link } from 'react-router-dom';
 
 type BasketCardProps = {

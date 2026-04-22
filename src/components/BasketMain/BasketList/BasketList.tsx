@@ -1,5 +1,5 @@
 import './BasketList.scss';
-import BasketCard from '../../BasketCard/BasketCard';
+import BasketCard from '../BasketCard/BasketCard';
 import { BasketProduct } from '../../../types/BasketProduct';
 
 type BasketListProps = {

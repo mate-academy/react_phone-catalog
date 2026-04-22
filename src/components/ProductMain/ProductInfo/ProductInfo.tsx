@@ -20,7 +20,7 @@ type ProductInfoProps = {
   >;
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   isFavorite: boolean;
-  handleToggleFavorite:  React.MouseEventHandler<HTMLImageElement>;
+  handleToggleFavorite: React.MouseEventHandler<HTMLImageElement>;
   isBasket: boolean;
   handleToggleBasket: React.MouseEventHandler<HTMLButtonElement>;
 };

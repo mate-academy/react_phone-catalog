@@ -2,13 +2,13 @@ import ProductList from '../ProductList/ProductList';
 import './PhonesCatalog.scss';
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../api';
-import { Product } from '../../types/Product';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import CatalogSort1 from './CatalogSort1/CatalogSort1';
 import CatalogSort2 from './CatalogSort2/CatalogSort2';
 import CatalogSlider from './CatalogSlider/CatalogSlider';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
+import { Product } from '../../types/Product';
 
 type CatalogProps = {
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
@@ -23,14 +23,46 @@ const Catalog = ({
   baskets,
   setBaskets,
 }: CatalogProps) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [sortType, setSortType] = useState<
-    'newest' | 'oldest' | 'mostExpensive' | 'cheapest'
-  >('newest');
-  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(4);
-  const [currentPage, setCurrentPage] = useState(1);
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortType =
+    (searchParams.get('sort') as
+      | 'newest'
+      | 'oldest'
+      | 'mostExpensive'
+      | 'cheapest') || 'newest';
+
+  const itemsPerPage =
+    searchParams.get('perPage') === 'all'
+      ? 'all'
+      : Number(searchParams.get('perPage')) || 4;
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const updateSearchParams = (paramsUpdated: Record<string, string>) => {
+    const params = new URLSearchParams(searchParams);
+
+    Object.entries(paramsUpdated).forEach(([keyBy, value]) => {
+      params.set(keyBy, value);
+    });
+    setSearchParams(params);
+  };
+
+  const setSortType = (value: string) => {
+    updateSearchParams({ sort: value, page: '1' });
+  };
+
+  const setItemsPerPage = (value: number | 'all') => {
+    updateSearchParams({
+      perPage: value.toString(),
+      page: '1',
+    });
+  };
+
+  const setCurrentPage = (value: number) => {
+    updateSearchParams({ page: value.toString() });
+  };
 
   useEffect(() => {
     getProducts().then(setProducts);
@@ -59,18 +91,15 @@ const Catalog = ({
     return 0;
   });
 
-  const totalItems = sortedProducts.length;
+  const perPage =
+    itemsPerPage === 'all' ? sortedProducts.length : Number(itemsPerPage);
 
-  const totalPages =
-    itemsPerPage === 'all' ? 1 : Math.ceil(totalItems / itemsPerPage);
+  const totalPages = Math.ceil(sortedProducts.length / perPage);
 
-  const visibleProducts =
-    itemsPerPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(
-          (currentPage - 1) * itemsPerPage,
-          currentPage * itemsPerPage,
-        );
+  const visibleProducts = sortedProducts.slice(
+    (currentPage - 1) * perPage,
+    currentPage * perPage,
+  );
 
   const pagesPerBlock = 4;
   const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);
