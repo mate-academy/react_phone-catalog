@@ -1,57 +1,70 @@
 import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AppRoutes } from '../../../../utils/routes';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { to: AppRoutes.HOME, label: 'Home' },
+    { to: AppRoutes.PHONES, label: 'Phones' },
+    { to: AppRoutes.TABLETS, label: 'Tablets' },
+    { to: AppRoutes.ACCESSORIES, label: 'Accessories' },
+  ];
 
   return (
     <>
       <header className={styles.header} data-cy="header">
         <div className={styles.container}>
           {/* Logo */}
-          <a href="/" className={styles.logo} aria-label="Go to home">
+          <Link
+            to={AppRoutes.HOME}
+            className={styles.logo}
+            aria-label="Go to home"
+          >
             <img src="/img/icons/Logo.svg" alt="Nice Gadgets logo" />
-          </a>
+          </Link>
 
           {/* Tablet+ nav links */}
           <nav className={styles.nav} aria-label="Main navigation">
             <ul className={styles.navList}>
-              <li>
-                <a href="/" className={styles.navLink}>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/phones" className={styles.navLink}>
-                  Phones
-                </a>
-              </li>
-              <li>
-                <a href="/tablets" className={styles.navLink}>
-                  Tablets
-                </a>
-              </li>
-              <li>
-                <a href="/accessories" className={styles.navLink}>
-                  Accessories
-                </a>
-              </li>
+              {navLinks.map(({ to, label }) => (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    className={({ isActive }) =>
+                      `${styles.navLink}${isActive ? ` ${styles.navLinkActive}` : ''}`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </nav>
 
           {/* Right side buttons */}
           <div className={styles.actions}>
             {/* Tablet+ icon buttons */}
-            <a
-              href="/favourites"
-              className={styles.iconButton}
+            <NavLink
+              to={AppRoutes.FAVOURITES}
+              className={({ isActive }) =>
+                `${styles.iconButton}${isActive ? ` ${styles.iconButtonActive}` : ''}`
+              }
               aria-label="Favourites"
             >
               <img src="/img/icons/Favourites.svg" alt="Favourites" />
-            </a>
-            <a href="/cart" className={styles.iconButton} aria-label="Cart">
+            </NavLink>
+            <NavLink
+              to={AppRoutes.CART}
+              className={({ isActive }) =>
+                `${styles.iconButton}${isActive ? ` ${styles.iconButtonActive}` : ''}`
+              }
+              aria-label="Cart"
+            >
               <img src="/img/icons/Cart.svg" alt="Cart" />
-            </a>
+            </NavLink>
 
             {/* Mobile-only menu button */}
             <button
@@ -74,39 +87,42 @@ export const Header = () => {
         aria-label="Mobile navigation"
       >
         <ul className={styles.mobileNavList}>
-          <li>
-            <a href="/" className={styles.mobileNavLink}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/phones" className={styles.mobileNavLink}>
-              Phones
-            </a>
-          </li>
-          <li>
-            <a href="/tablets" className={styles.mobileNavLink}>
-              Tablets
-            </a>
-          </li>
-          <li>
-            <a href="/accessories" className={styles.mobileNavLink}>
-              Accessories
-            </a>
-          </li>
+          {navLinks.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  `${styles.mobileNavLink}${isActive ? ` ${styles.mobileNavLinkActive}` : ''}`
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         <div className={styles.menuBottomActions}>
-          <a
-            href="/favourites"
-            className={styles.menuIconButton}
+          <NavLink
+            to={AppRoutes.FAVOURITES}
+            className={({ isActive }) =>
+              `${styles.menuIconButton}${isActive ? ` ${styles.menuIconButtonActive}` : ''}`
+            }
             aria-label="Favourites"
+            onClick={() => setMenuOpen(false)}
           >
             <img src="/img/icons/Favourites.svg" alt="Favourites" />
-          </a>
-          <a href="/cart" className={styles.menuIconButton} aria-label="Cart">
+          </NavLink>
+          <NavLink
+            to={AppRoutes.CART}
+            className={({ isActive }) =>
+              `${styles.menuIconButton}${isActive ? ` ${styles.menuIconButtonActive}` : ''}`
+            }
+            aria-label="Cart"
+            onClick={() => setMenuOpen(false)}
+          >
             <img src="/img/icons/Cart.svg" alt="Cart" />
-          </a>
+          </NavLink>
         </div>
       </nav>
     </>

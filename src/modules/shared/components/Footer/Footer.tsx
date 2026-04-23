@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { AppRoutes } from '../../../../utils/routes';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -8,15 +10,19 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <a href="/" className={styles.logo} aria-label="Go to home">
+        <Link
+          to={AppRoutes.HOME}
+          className={styles.logo}
+          aria-label="Go to home"
+        >
           <img src="/img/icons/Logo.svg" alt="Nice Gadgets logo" />
-        </a>
+        </Link>
 
         <nav aria-label="Footer navigation">
           <ul className={styles.navList}>
             <li>
               <a
-                href="https://github.com"
+                href={AppRoutes.GITHUB}
                 className={styles.navLink}
                 target="_blank"
                 rel="noreferrer"
@@ -25,14 +31,20 @@ export const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className={styles.navLink}>
+              <button
+                className={styles.navLink}
+                onClick={() => alert('Here supposed to be contacts')}
+              >
                 Contacts
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className={styles.navLink}>
+              <button
+                className={styles.navLink}
+                onClick={() => alert('Here supposed to be rights')}
+              >
                 Rights
-              </a>
+              </button>
             </li>
           </ul>
         </nav>

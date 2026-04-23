@@ -7,7 +7,7 @@ import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
-import { FavoritesPage } from './modules/FavoritesPage';
+import { FavouritesPage } from './modules/FavouritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App = () => (
@@ -19,7 +19,7 @@ export const App = () => (
       <Route path="accessories" element={<AccessoriesPage />} />
       <Route path=":category/:productId" element={<ProductDetailsPage />} />
       <Route path="cart" element={<CartPage />} />
-      <Route path="favorites" element={<FavoritesPage />} />
+      <Route path="favourites" element={<FavouritesPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>
