@@ -72,7 +72,14 @@ export const CartPage: React.FC = () => {
                           navigate(`/${item.category}/${item.itemId}`)
                         }
                       />
-                      <p className={styles.cart_name}>{item.name}</p>
+                      <p
+                        className={styles.cart_name}
+                        onClick={() =>
+                          navigate(`/${item.category}/${item.itemId}`)
+                        }
+                      >
+                        {item.name}
+                      </p>
                     </div>
                     <div className={styles.cart_containerCountPrice}>
                       <div className={styles.cart_buttons}>

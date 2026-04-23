@@ -156,6 +156,12 @@
   font-size: 14px;
   line-height: 21px;
   color: $textColor;
+  transition: all $animation;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 
   @include on-tablet {
     margin-right: 24px;
