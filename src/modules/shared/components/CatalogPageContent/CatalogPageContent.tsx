@@ -8,6 +8,7 @@ import { Pagination } from '../Pagination';
 import { useShop } from '../../../../store/shop/ShopContext';
 import { Loader } from '../Loader';
 import { useSearchParams } from 'react-router-dom';
+import { Preferences } from '../Preferences';
 
 type Props = {
   title: string;
@@ -123,6 +124,7 @@ export const CatalogPageContent: React.FC<Props> = ({
   return (
     <main>
       <div className="container">
+        <Preferences />
         <Breadcrumbs breadcrumb={breadcrumb} />
         <h1 className={styles.pageTitle}>{title}</h1>
 

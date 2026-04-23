@@ -40,3 +40,9 @@ export const getSortedProducts = (products: Product[], sortBy: SortType) => {
       return productsCopy.sort((a, b) => b.year - a.year);
   }
 };
+
+export const getNewModelsProducts = (products: Product[]) => {
+  const productsCopy = [...products];
+
+  return productsCopy.sort((a, b) => b.year - a.year);
+};

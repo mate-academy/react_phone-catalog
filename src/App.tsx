@@ -11,7 +11,6 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CartsPage } from './modules/CartsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { Preferences } from './modules/shared/components/Preferences';
 import { ScrollToTop } from './modules/shared/components/ScrollToTop';
 
 export const App = () => {
@@ -21,9 +20,6 @@ export const App = () => {
     <div className="page">
       <Header openMenu={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className="page__content">
-        <div className="page__preferences">
-          <Preferences />
-        </div>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />

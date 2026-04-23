@@ -26,7 +26,7 @@ export const Footer = () => {
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
               <a
-                href="https://github.com/"
+                href="https://github.com/horbenkoOleksandr"
                 className={styles.menuLink}
                 target="_blank"
                 rel="noreferrer"

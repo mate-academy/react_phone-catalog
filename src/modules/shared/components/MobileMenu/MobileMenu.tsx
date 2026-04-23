@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 import React from 'react';
-import { Preferences } from '../Preferences';
+// import { Preferences } from '../Preferences';
 import { useTheme } from '../../../../store/theme/ThemeContext';
 import { favouriteIconMap } from '../../config/favouriteIconMap';
 import { shoppingBagMap } from '../../config/shoppingBagMap';
 import { useScrollToTop } from '../../../../hooks/useScrollToTop';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 type Props = {
   isOpen: boolean;
@@ -73,7 +74,10 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
         </ul>
       </nav>
 
-      <Preferences />
+      <div className={styles.themeRow}>
+        <span className={styles.themeLabel}>Theme</span>
+        <ThemeSwitcher />
+      </div>
 
       <div className={styles.menuIcons}>
         <Link

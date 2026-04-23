@@ -85,6 +85,10 @@
     display: flex;
     margin-left: auto;
   }
+
+  @include mixins.on-desktop {
+    height: 64px;
+  }
 }
 
 .actionsLink {

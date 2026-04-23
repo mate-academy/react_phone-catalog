@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { themes, useTheme } from '../../../../store/theme/ThemeContext';
-import { Theme } from '../../../../types/Theme';
+import { useEffect, useState } from 'react';
 import styles from './Preferences.module.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const Preferences = () => {
-  const { theme, setTheme } = useTheme();
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const query = searchParams.get('query') || '';
@@ -14,6 +11,17 @@ export const Preferences = () => {
     location.pathname === '/tablets' ||
     location.pathname === '/accessories';
   const [inputValue, setInputValue] = useState(query);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -33,37 +41,17 @@ export const Preferences = () => {
     return () => clearTimeout(timeout);
   }, [inputValue]);
 
-  const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setTheme(event.target.value as Theme);
-  };
+  if (!showSearch || isMobile) {
+    return null;
+  }
 
   return (
     <div className={styles.preferences}>
-      {!showSearch && (
-        <div className={styles.control}>
-          <label htmlFor="theme-select" className={styles.label}>
-            Theme
-          </label>
-          <select
-            id="theme-select"
-            className={styles.themeSelect}
-            value={theme}
-            onChange={handleThemeChange}
-          >
-            {themes.map(item => (
-              <option key={item.value} value={item.value} className={styles.a}>
-                {item.value}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
-
       {showSearch && (
         <div className={styles.control}>
-          <label htmlFor="search" className={styles.labelSearch}>
+          {/* <label htmlFor="search" className={styles.labelSearch}>
             Search
-          </label>
+          </label> */}
           <input
             name="search"
             type="search"

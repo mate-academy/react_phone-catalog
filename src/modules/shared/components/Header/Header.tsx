@@ -10,6 +10,7 @@ import { shoppingBagMap } from '../../config/shoppingBagMap';
 import { menuIconMap } from '../../config/menuIconMap';
 import { closeIconMap } from '../../config/closeIconMap';
 import { useScrollToTop } from '../../../../hooks/useScrollToTop';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 type Props = {
   openMenu: boolean;
@@ -123,6 +124,7 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
         </nav>
 
         <div className={styles.actions}>
+          <ThemeSwitcher />
           <Link
             to="/favourites"
             onClick={scrollTotop}
@@ -147,7 +149,7 @@ export const Header: React.FC<Props> = ({ openMenu, setIsMenuOpen }) => {
           </Link>
         </div>
 
-        {showSearch && (
+        {showSearch && !openMenu && (
           <input
             name="search"
             type="search"

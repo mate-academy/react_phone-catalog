@@ -72,6 +72,20 @@
   }
 }
 
+.themeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 16px 0;
+}
+
+.themeLabel {
+  @include mixins.typography(700, 12px, 1);
+
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
 .menuIcons{
   display: flex;
   margin-top: auto;

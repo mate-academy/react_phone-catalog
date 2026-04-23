@@ -31,14 +31,6 @@ body {
   }
 }
 
-.page__preferences {
-  display: none;
-
-  @include mixins.on-tablet {
-    display: block;
-  }
-}
-
 .container {
   width: 100%;
   max-width: v.$container-width;
