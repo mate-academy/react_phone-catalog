@@ -2,13 +2,11 @@
 
 .list {
   display: grid;
-  gap: 40px;
+  gap: 16px;
   width: 100%;
-
-  @media (min-width: $mobile) {
-    gap: 16px;
-    grid-template-columns: repeat(1, 1fr);
-  }
+  max-width: 1440px;
+  margin: 0 auto;
+  grid-template-columns: repeat(1, 1fr);
 
   @media (min-width: $tablet) {
     grid-template-columns: repeat(2, 1fr);
@@ -16,7 +14,8 @@
   }
 
   @media (min-width: $desktop) {
-    gap: 16px;
     grid-template-columns: repeat(4, 1fr);
+    // grid-template-columns: repeat(4, 272px);
+    // justify-content: center;
   }
 }

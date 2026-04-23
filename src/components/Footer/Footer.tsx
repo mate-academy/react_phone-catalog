@@ -16,7 +16,14 @@ export const Footer = () => {
         </div>
 
         <div className={styles.navi}>
-          <Link to="/">github </Link>
+          {/* <Link >github </Link> */}
+          <a
+            href="https://github.com/7uckingbad?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github
+          </a>
           <Link to="/">contacts</Link>
           <Link to="/">rights</Link>
         </div>

@@ -6,7 +6,8 @@
   background-color: #161827;
   padding: 32px;
   border: #3b3e49;
-  width: 100%;
+
+  // width: 100%;
   box-sizing: border-box;
 
   // width: 212px;
@@ -35,8 +36,6 @@
 .itemImage {
   width: 148px;
   height: 129px;
-  top: 32px;
-  left: 32px;
   object-fit: contain;
 }
 
@@ -53,13 +52,13 @@
   display: flex;
   gap: 8px;
   align-items: center;
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.price-current) {
     font-size: 22px;
     font-weight: 800;
     color: #f1f2f9;
   }
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.price-old) {
     font-size: 22px;
     color: #89939a;

@@ -6,19 +6,15 @@
   overflow: hidden;
   width: 100%;
   padding-bottom: 64px;
+  margin: 0 auto;
 
   @media (min-width: $tablet) {
     padding: 0 24px;
-
-    // padding-bottom: 80px;
   }
 
   @media (min-width: $desktop) {
-    padding: 0 32px;
-  }
-
-  @media (min-width: 1201px) {
-    padding: 0 152px;
+    padding: 0 300px;
+    // max-width: 1440px;
   }
 }
 
