@@ -130,7 +130,14 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
                 <option value="price">Cheapest</option>
               </select>
 
-              <img src="/img/Arrow_Down.svg" alt="" className={styles.arrow} />
+              <svg className={styles.arrow} viewBox="0 0 16 16">
+                <path
+                  d="M4 6l4 4 4-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+              </svg>
             </div>
           </div>
 
@@ -158,8 +165,6 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
                   strokeWidth="2"
                 />
               </svg>
-
-              
             </div>
           </div>
         </div>
