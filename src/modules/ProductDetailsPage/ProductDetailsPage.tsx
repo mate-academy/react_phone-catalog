@@ -126,7 +126,7 @@ export const ProductDetailsPage: React.FC = () => {
 
         setProduct(fullProduct);
         setSelectedPhoto(fullProduct.images?.[0] || '');
-        setNumericId(String(fullProduct.id));
+        setNumericId(fullProduct.id);
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
@@ -243,7 +243,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.actionsHeader}>
                 <p className="label-text">Available colors</p>
                 <span className={`${styles.productId} small-text12`}>
-                  ID: 800{numericId}
+                  ID: {`800${numericId}`}
                 </span>
               </div>
 

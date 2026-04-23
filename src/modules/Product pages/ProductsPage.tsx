@@ -6,6 +6,8 @@ import { ProductList } from '../../components/ProductList/ProductList';
 import { Loader } from '../../components/Loader/Loader';
 import { Pagination } from '../../components/Pagination/Pagination';
 
+
+
 import styles from './ProductsPage.module.scss';
 
 interface Props {
