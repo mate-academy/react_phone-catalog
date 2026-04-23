@@ -35,7 +35,7 @@ export const Cart = () => {
         }}
         className={styles.cart__back}
       >
-        <img src="/img/icons/Arrow_Left.png" alt="Back" />
+        <img src="img/icons/Arrow_Left.png" alt="Back" />
         Back
       </button>
 

@@ -54,7 +54,7 @@ export const ItemCard = () => {
     const capacity = newCapacity || currentProduct.capacity;
     const color = newColor || currentProduct.color;
 
-    return `/catalog/${category}/${currentProduct.namespaceId}-${capacity.toLowerCase()}-${color.replace(/\s+/g, '-')}`;
+    return `/${category}/${currentProduct.namespaceId}-${capacity.toLowerCase()}-${color.replace(/\s+/g, '-')}`;
   };
 
   const productSummary = useMemo(() => {
@@ -113,13 +113,13 @@ export const ItemCard = () => {
 
       switch (category) {
         case 'phones':
-          currentURL = '/api/phones.json';
+          currentURL = 'api/phones.json';
           break;
         case 'tablets':
-          currentURL = '/api/tablets.json';
+          currentURL = 'api/tablets.json';
           break;
         case 'accessories':
-          currentURL = '/api/accessories.json';
+          currentURL = 'api/accessories.json';
           break;
         default:
           setIsError(true);
@@ -192,7 +192,7 @@ export const ItemCard = () => {
         onClick={() => navigate(-1)}
         className={styles['button-back']}
       >
-        <img src="/img/icons/Arrow_Left.png" alt="Back" />
+        <img src="img/icons/Arrow_Left.png" alt="Back" />
         <p className={styles.button__title}>Back</p>
       </button>
 
@@ -203,7 +203,7 @@ export const ItemCard = () => {
           {currentProduct.images.map((img, index) => (
             <img
               key={index}
-              src={`/${img}`}
+              src={`${img}`}
               alt="preview"
               className={styles.cartItem__preview}
               onClick={() => setCurrentImage(index)}
@@ -212,7 +212,7 @@ export const ItemCard = () => {
         </article>
 
         <img
-          src={`/${currentProduct.images[currentImage]}`}
+          src={`${currentProduct.images[currentImage]}`}
           alt={currentProduct.name}
           className={styles.cartItem__photo}
         />
