@@ -130,8 +130,10 @@ export const ItemCard = () => {
 
       try {
         const data = await getProducts<ProductItem[]>(currentURL);
-        const simProductsResponse = await getProducts<Product[]>();
+
         const foundProduct = data.find(item => item.id === product);
+
+        const simProductsResponse = await getProducts<Product[]>();
 
         if (foundProduct) {
           setCurrentProduct(foundProduct);

@@ -263,6 +263,10 @@
   margin-block: 24px;
   font-size: 12px;
   transition: color 0.3s;
+  width: 32px;
+  height: 16px;
+  background-color: $white;
+  border: none;
 
   &:hover {
     color: $Primary;

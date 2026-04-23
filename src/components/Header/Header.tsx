@@ -164,7 +164,13 @@ export const Header = () => {
                   styles.buttons__icon,
                   styles['buttons__icon--fav'],
                 )}
-              />
+              >
+                {favoritesItems.length > 0 && (
+                  <div className={classNames(styles.counter)}>
+                    {favoritesItems.length}
+                  </div>
+                )}
+              </div>
             </NavLink>
           </li>
           <li className={styles['burger-menu__footer-item']}>
@@ -182,7 +188,13 @@ export const Header = () => {
                   styles.buttons__icon,
                   styles['buttons__icon--cart'],
                 )}
-              />
+              >
+                {cartItems.length > 0 && (
+                  <div className={classNames(styles.counter)}>
+                    {cartItemsCount()}
+                  </div>
+                )}
+              </div>
             </NavLink>
           </li>
         </ul>
