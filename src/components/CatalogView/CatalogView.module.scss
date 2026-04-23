@@ -14,7 +14,7 @@
   }
 
   &__title {
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-size: 32px;
     font-weight: 800;
     margin-block: 24px 8px;
@@ -45,7 +45,7 @@
     padding-inline: 12px;
     border: 1px solid $Icons;
     background-color: $white;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 700;
     cursor: pointer;
     min-width: 128px;
@@ -104,7 +104,7 @@
     border: 1px solid $Icons;
     background: $white;
     cursor: pointer;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 600;
     transition: all 0.3s;
 

@@ -50,6 +50,7 @@ export const Cart = () => {
       <article className={styles.cart__summary}>
         <p className={styles.cart__total}>${totalPrice}</p>
         <p className={styles.cart__count}>Total for {totalQuantity} items</p>
+        <div className={styles.cart__line} />
 
         <button
           className={styles.cart__checkout}

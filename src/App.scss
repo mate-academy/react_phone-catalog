@@ -1,10 +1,12 @@
 // not empty
+@import './variables.scss';
 *{
   margin: 0;
   padding: 0;
 }
 
 .App{
+  font-family: $font-family;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -12,4 +14,11 @@
 
 .is-hidden{
   display: none;
+}
+
+.line{
+  height: 1px;
+  width: 100%;
+  background-color: $Elements;
+  margin: 0;
 }

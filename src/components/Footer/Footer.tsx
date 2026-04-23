@@ -24,12 +24,15 @@ export const Footer = () => {
 
       <ul className={styles.list}>
         <li>
-          <Link className={styles.list__item} to="/">
+          <Link
+            className={styles.list__item}
+            to="https://github.com/IvanovvvIhor"
+          >
             Github
           </Link>
         </li>
         <li>
-          <Link className={styles.list__item} to="/">
+          <Link className={styles.list__item} to="tel:+380667210048">
             Contacts
           </Link>
         </li>

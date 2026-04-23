@@ -14,7 +14,7 @@
   }
 
   &__title{
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 800;
     font-style: Bold;
     font-size: 48px;
@@ -25,7 +25,7 @@
   }
 
   &__itemsCount{
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 600;
     font-size: 14px;
 

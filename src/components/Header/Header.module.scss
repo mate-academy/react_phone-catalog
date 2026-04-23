@@ -54,7 +54,7 @@
 
   &__item {
     text-decoration: none;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 800;
     font-size: 12px;
     text-transform: uppercase;
@@ -167,7 +167,7 @@
   border-radius: 50%;
   border: 2px solid $white;
 
-  font-family: Mont, sans-serif;
+  font-family: $font-family;
   font-weight: 700;
   font-size: 9px;
   line-height: 1;
@@ -261,7 +261,7 @@
   }
 
   &__item {
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-size: 20px;
     font-weight: 800;
     text-transform: uppercase;

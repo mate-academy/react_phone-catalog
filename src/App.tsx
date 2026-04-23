@@ -23,6 +23,7 @@ export const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
+      <div className="line" />
       <Footer />
     </div>
   );

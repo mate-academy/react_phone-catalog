@@ -10,7 +10,7 @@
 
   &__title {
     grid-column: 1 / -1;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
@@ -65,7 +65,7 @@
   }
 
   &__linkTitle {
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 600;
     font-size: 20px;
     line-height: 100%;
@@ -80,7 +80,7 @@
   }
 
   &__count {
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;

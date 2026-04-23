@@ -13,7 +13,7 @@
 
   &__title {
     grid-column: 1 / -1;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-size: 32px;
     font-weight: 800;
     margin-block: 24px 40px;
@@ -312,7 +312,7 @@
 .capacity-button {
   padding: 10px 12px;
   border: 1px solid $Icons;
-  font-family: Mont, sans-serif;
+  font-family: $font-family;
   font-weight: 500;
   font-size: 14px;
   color: $Primary;
@@ -336,7 +336,7 @@
   background-color: $Primary;
   color: $white;
   border: 1px solid $Primary;
-  font-family: Mont, sans-serif;
+  font-family: $font-family;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;

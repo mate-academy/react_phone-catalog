@@ -24,7 +24,7 @@
   }
 
   &__title {
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-size: 32px;
     font-weight: 800;
     margin-bottom: 8px;
@@ -65,7 +65,7 @@
     padding-inline: 12px;
     border: 1px solid $Icons;
     background-color: $white;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 700;
     min-width: 128px;
     cursor: pointer;
@@ -101,7 +101,7 @@
     border: 1px solid $Icons;
     background: $white;
     cursor: pointer;
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 600;
     transition: all 0.3s;
 
@@ -152,7 +152,7 @@
   margin-block: 24px;
   height: 16px;
   grid-column: 1 / -1;
-  font-family: Mont, sans-serif;
+  font-family: $font-family;
   font-weight: 600;
   font-size: 12px;
 
@@ -181,7 +181,7 @@
 }
 
 .catalog__current-page-category{
-  font-family: Mont, sans-serif;
+  font-family: $font-family;
   font-size: 12px;
   font-weight: 700;
   text-transform: capitalize;
@@ -192,7 +192,7 @@
 }
 
 .catalog__current-page {
-  font-family: Mont, sans-serif;
+  font-family: $font-family;
   font-size: 12px;
   font-weight: 700;
   color: $Secondary;

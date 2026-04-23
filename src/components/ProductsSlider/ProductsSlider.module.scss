@@ -15,7 +15,7 @@
   }
 
   &__title {
-    font-family: Mont, sans-serif;
+    font-family: $font-family;
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
@@ -67,7 +67,7 @@
 
       @include on-desktop {
         width: 256px;
-        height: 506px;
+        height: 505px;
       }
 
       @include on-tablet {
