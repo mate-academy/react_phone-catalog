@@ -1,0 +1,15 @@
+@import '../../utils/mixins';
+
+.HomePage{
+  @include inline-padding;
+
+  width: 100%;
+}
+
+.title{
+  padding-block: 56px;
+}
+
+.hidden{
+  display: none;
+}

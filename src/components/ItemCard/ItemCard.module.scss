@@ -1,0 +1,364 @@
+@import '../../variables';
+@import '../../utils/mixins';
+
+.cartItem {
+  @include inline-padding;
+  @include grid;
+
+  padding-bottom: 80px;
+
+  &__nav {
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    margin-block: 24px 40px;
+    color: $Primary;
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    @include grid;
+
+    margin-bottom: 80px;
+    align-items: flex-start;
+    row-gap: 40px;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / span 2;
+    }
+
+    @include on-tablet {
+      grid-column: 1 / span 1;
+      gap: 8px;
+    }
+
+    @include on-phone {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      justify-content: center;
+      height: 50px;
+      order: 2;
+    }
+  }
+
+  &__preview {
+    object-fit: contain;
+    border: 1px solid $Elements;
+    cursor: pointer;
+    background-color: $white;
+    transition: border-color 0.3s;
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-phone {
+      height: 50px;
+      width: 50px;
+    }
+
+    &:hover {
+      border-color: $Primary;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    object-fit: contain;
+
+    @include on-desktop {
+      grid-column: 3 / span 10;
+      height: 464px;
+    }
+
+    @include on-tablet {
+      grid-column: 2 / span 6;
+      height: auto;
+    }
+
+    @include on-phone {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__select {
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / span 5;
+    }
+
+    @include on-phone {
+      grid-column: 1 / -1;
+      order: 3;
+    }
+
+    &_title {
+      font-size: 12px;
+      font-weight: 700;
+      color: $Secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__idProduct {
+    font-size: 12px;
+    color: $Icons;
+
+    @include on-desktop {
+      grid-column: 21 / span 4;
+      text-align: right;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / span 5;
+      text-align: left;
+      margin-top: 8px;
+    }
+
+    @include on-phone {
+      grid-column: 1 / -1;
+      text-align: right;
+      order: 2;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $Elements;
+    margin-block: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__info_cell {
+    &_title {
+      font-size: 12px;
+      font-weight: 600;
+      color: $Secondary;
+      padding-block: 4px;
+    }
+
+    &_value {
+      font-size: 12px;
+      font-weight: 600;
+      color: $Primary;
+      text-align: right;
+      padding-block: 4px;
+    }
+  }
+}
+
+.description {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 1 / span 12;
+  }
+
+  row-gap: 32px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    border-bottom: 1px solid $Elements;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    color: $Primary;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: $Primary;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 21px;
+    color: $Secondary;
+    margin-bottom: 32px;
+  }
+}
+
+.techSpecs {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 14 / span 11;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 800;
+    border-bottom: 1px solid $Elements;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    color: $Primary;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__row {
+    display: table-row;
+  }
+
+  &__cell {
+    padding-block: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $Primary;
+    text-align: right;
+
+    &-title {
+      text-align: left;
+      color: $Secondary;
+    }
+  }
+}
+
+.button-back {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: $Secondary;
+  font-weight: 700;
+  margin-block: 24px;
+  font-size: 12px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $Primary;
+  }
+}
+
+.button__title {
+  margin: 0;
+}
+
+.colors-list {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.color-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $Elements;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0.3s;
+
+  &--active {
+    border-color: $Primary;
+  }
+
+  &__internal {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+}
+
+.capacity-list {
+  display: flex;
+  gap: 8px;
+}
+
+.capacity-button {
+  padding: 10px 12px;
+  border: 1px solid $Icons;
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: $Primary;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  &--active {
+    background-color: $Primary;
+    color: $white;
+    border-color: $Primary;
+  }
+
+  &:hover:not(.capacity-button--active) {
+    border-color: $Primary;
+  }
+}
+
+.buttonCard {
+  flex-grow: 1;
+  height: 40px;
+  background-color: $Primary;
+  color: $white;
+  border: 1px solid $Primary;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &--selected {
+    background-color: $white;
+    color: $Green;
+    border: 1px solid $Elements;
+  }
+}
+
+.buttonFavorites {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $Icons;
+  background: $white url('/img/icons/noneLike.png') no-repeat center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: $Primary;
+  }
+
+  &--selected {
+    background-image: url('/img/icons/like.png');
+    border-color: $Elements;
+  }
+}

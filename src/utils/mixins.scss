@@ -1,0 +1,56 @@
+@import '../variables';
+
+@mixin on-phone {
+  @media (max-width: $phone-max-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin inline-padding {
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 16px;
+  box-sizing: border-box;
+
+  @include on-desktop{
+    max-width: 1200px;
+    padding-inline: 64px;
+  }
+
+  @include on-tablet{
+    padding-inline: 32px;
+  }
+
+  @include on-phone{
+    padding: 16px;
+  }
+}
+
+@mixin grid{
+  display: grid;
+  column-gap: 16px;
+
+  @include on-desktop{
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  @include on-tablet{
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-phone{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

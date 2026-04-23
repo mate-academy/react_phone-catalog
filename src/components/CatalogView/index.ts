@@ -1,0 +1,1 @@
+export { CatalogView } from './CatalogView';

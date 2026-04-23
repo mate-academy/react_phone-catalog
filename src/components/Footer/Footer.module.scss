@@ -1,0 +1,98 @@
+@import '../../utils/mixins';
+@import '../../variables';
+
+.footer {
+  @include inline-padding;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 32px;
+
+  @include on-phone {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    row-gap: 32px;
+  }
+}
+
+.logo {
+  &--footer {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    &--footer {
+      height: 32px;
+      width: 89px;
+      display: block;
+      background-image: url('/img/icons/Logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.list {
+  list-style-type: none;
+  display: flex;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+
+  @include on-phone {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__item {
+    text-decoration: none;
+    color: $Secondary;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
+
+.backTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+
+  @include on-phone {
+    gap: 8px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $Secondary;
+    white-space: nowrap;
+  }
+
+  &__button {
+    background-image: url('../../../public/img/icons/ToTop.png');
+    height: 32px;
+    width: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $white;
+    flex-shrink: 0;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+}

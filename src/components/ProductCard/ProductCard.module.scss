@@ -1,0 +1,154 @@
+@import '../../variables';
+@import '../../utils/mixins';
+
+.ProductCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px;
+  border: 1px solid $Elements;
+  background-color: $white;
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+
+  .photo {
+    width: 100%;
+    height: 196px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+
+    @include on-phone {
+      height: 129px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+
+    .photo {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $Primary;
+  text-align: left;
+  align-self: flex-start;
+  min-height: 42px;
+  margin: 0;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+  color: $Primary;
+}
+
+.fullPrice {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: line-through;
+  color: $Secondary;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $Elements;
+  margin-block: 8px;
+}
+
+.infoTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.infoCellTitle {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $Secondary;
+}
+
+.infoCellDetails {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $Primary;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.buttonCard {
+  flex-grow: 1;
+  height: 40px;
+  background-color: $Primary;
+  color: $white;
+  border: 1px solid $Primary;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &--selected {
+  background-color: $white;
+  color: $Green;
+  border: 1px solid #E2E6E9;
+  }
+}
+
+.buttonFavorites {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $Icons;
+  background: $white url('/img/icons/noneLike.png') no-repeat center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: $Primary;
+  }
+
+  &--selected {
+    background-image: url('/img/icons/like.png');
+    border-color: $Elements;
+  }
+}

@@ -1,1 +1,15 @@
 // not empty
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.is-hidden{
+  display: none;
+}

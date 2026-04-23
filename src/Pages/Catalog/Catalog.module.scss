@@ -1,0 +1,204 @@
+@import '../../variables';
+@import '../../utils/mixins';
+
+.catalog {
+  @include inline-padding;
+
+  padding-bottom: 80px;
+
+  &__grid {
+    @include grid;
+
+    gap: 40px 16px;
+    margin-bottom: 80px;
+    align-items: stretch;
+  }
+
+  &__grid-card {
+    @include on-desktop { grid-column: span 6; }
+
+
+    @include on-tablet { grid-column: span 6; }
+
+    @include on-phone { grid-column: 1/-1; }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: $Primary;
+  }
+
+  &__models-count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $Secondary;
+    margin-bottom: 40px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-phone {
+      flex-direction: column;
+    }
+  }
+
+  &__filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: $Secondary;
+  }
+
+  &__select {
+    height: 40px;
+    padding-inline: 12px;
+    border: 1px solid $Icons;
+    background-color: $white;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    min-width: 128px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $Secondary;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $Icons;
+    background: $white;
+    cursor: pointer;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    transition: all 0.3s;
+
+    &:hover:not(&--active) {
+      border-color: $Primary;
+    }
+
+    &--active {
+      background: $Primary;
+      color: $white;
+      border-color: $Primary;
+      cursor: default;
+    }
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $Icons;
+    background: $white no-repeat center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $Primary;
+    }
+
+
+    &--left {
+      background-image: url('/img/icons/Arrow_Left.png');
+    }
+
+    &--right {
+      background-image: url('/img/icons/Arrow_Right.png');
+    }
+  }
+}
+
+.catalog__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 24px;
+  height: 16px;
+  grid-column: 1 / -1;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: $Secondary;
+}
+
+.catalog__home-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url('/img/icons/Home.png') no-repeat center;
+  background-size: contain;
+  flex-shrink: 0;
+}
+
+.catalog__arrow {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url('/img/icons/Arrow_Right.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.catalog__current-page-category{
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  color: $Primary;
+}
+
+.catalog__current-page {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $Secondary;
+  text-transform: capitalize;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
