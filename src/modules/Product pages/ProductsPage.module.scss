@@ -233,7 +233,8 @@ h1 {
   pointer-events: none;
   width: 12px;
     height: 12px;
-    fill: #B4BDC3;
+    //fill: #B4BDC3;
+    color: #B4BDC3;
 }
 
 .card {
@@ -281,3 +282,4 @@ h1 {
   margin-bottom: 80px;
 }
 
+//<img src="/img/Arrow_Down.svg" alt="" className={styles.arrow} />
