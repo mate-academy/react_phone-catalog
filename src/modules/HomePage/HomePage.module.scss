@@ -1,0 +1,106 @@
+@use '../../styles/mixins' as *;
+
+.homePage {
+  @include page-container;
+}
+
+.productCatalog {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.title {
+  font-size: var(--font-size-h1-mobile);
+  line-height: var(--line-height-h1-mobile);
+  letter-spacing: var(--letter-spacing-h1);
+  font-weight: 800;
+  color: var(--color-primary);
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h2-mobile);
+  line-height: var(--line-height-h2-mobile);
+  letter-spacing: var(--letter-spacing-h2);
+  font-weight: 800;
+  color: var(--color-primary);
+
+  @include on-tablet {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+  }
+}
+
+// Temporary placeholder for PicturesSlider
+.sliderPlaceholder {
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-surface-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  font-size: var(--font-size-body);
+
+  @include on-tablet {
+    height: 400px;
+  }
+}
+
+.cardGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include on-tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
