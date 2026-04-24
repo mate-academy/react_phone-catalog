@@ -13,21 +13,6 @@
   flex: 1;
 }
 
-.label,
-.labelSearch {
-  @include mixins.typography(700, 12px, 1);
-
-  color: var(--color-secondary);
-}
-
-.labelSearch {
-  display: none;
-
-  @include mixins.on-tablet {
-    display: block;
-  }
-}
-
 .search {
   display: none;
   height: 40px;

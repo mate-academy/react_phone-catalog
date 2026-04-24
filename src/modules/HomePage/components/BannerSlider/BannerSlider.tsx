@@ -6,19 +6,19 @@ import { arrowRightIconMap } from '../../../shared/config/arrowRightIconMap';
 
 const slides = [
   {
-    mobile: 'img/icon/slider-iphone14.png',
-    tablet: 'img/icon/slider-iphone14-tablet.png',
-    desktop: 'img/icon/slider-iphone14-desk.png',
+    mobile: 'img/banner-phones.png',
+    tablet: 'img/banner-phones.png',
+    desktop: 'img/banner-phones.png',
   },
   {
-    mobile: 'img/icon/slider-iphone.jpg',
-    tablet: 'img/icon/slider-iphone-tablet.jpg',
-    desktop: 'img/icon/slider-iphone-desk.jpg',
+    mobile: 'img/banner-tablets.png',
+    tablet: 'img/banner-tablets.png',
+    desktop: 'img/banner-tablets.png',
   },
   {
-    mobile: 'img/icon/slider-iphone14.png',
-    tablet: 'img/icon/slider-iphone14-tablet.png',
-    desktop: 'img/icon/slider-iphone14-desk.png',
+    mobile: 'img/category-accessories.png',
+    tablet: 'img/category-accessories.png',
+    desktop: 'img/category-accessories.png',
   },
 ];
 

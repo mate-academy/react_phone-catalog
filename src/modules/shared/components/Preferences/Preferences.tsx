@@ -49,9 +49,6 @@ export const Preferences = () => {
     <div className={styles.preferences}>
       {showSearch && (
         <div className={styles.control}>
-          {/* <label htmlFor="search" className={styles.labelSearch}>
-            Search
-          </label> */}
           <input
             name="search"
             type="search"

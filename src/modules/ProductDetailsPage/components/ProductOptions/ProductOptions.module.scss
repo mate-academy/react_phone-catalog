@@ -206,8 +206,8 @@
     height: 48px;
     border-radius: var(--radius-button);
     transition:
-      border v.$transition,
-      background-color v.$transition;
+    border v.$transition,
+    background-color v.$transition;
     border: 1px solid var(--color-icons);
     background-color: var(--color-control);
     cursor: pointer;
