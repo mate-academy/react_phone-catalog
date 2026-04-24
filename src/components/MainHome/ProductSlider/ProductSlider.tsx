@@ -3,28 +3,17 @@ import './ProductSlider.scss';
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { Product } from '../../types/Product';
-import { BasketProduct } from '../../types/BasketProduct';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import ProductCard from '../ProductList/ProductCard/ProductCard';
+import { Product } from '../../../types/Product';
+import ProductCard from '../../ProductList/ProductCard/ProductCard';
+import useAppContext from '../../../useAppContext';
 type ProductSliderProps = {
   title: string;
   products: Product[];
-  favorites: FavoriteProduct[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
-const ProductSlider = ({
-  title,
-  products,
-  favorites,
-  setFavorites,
-  baskets,
-  setBaskets,
-}: ProductSliderProps) => {
+const ProductSlider = ({ title, products }: ProductSliderProps) => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
 
   return (
     <div className="product-slider">

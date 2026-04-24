@@ -1,21 +1,14 @@
 import './MainHome.scss';
 import { useEffect, useState } from 'react';
 import BannerSwiper from './BannerSwiper/BannerSwiper';
-import ProductSlider from '../ProductSlider/ProductSlider';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
+import ProductSlider from './ProductSlider/ProductSlider';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api';
 import CategoryPhones from './CategoryPhones/CategoryPhones';
 import CategoryTablets from './CategoryTablets/CategoryTablets';
 import CategoryAccessories from './CategoryAccessories/CategoryAccessories';
-type MainProps = {
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-};
-const Main = ({ favorites, baskets, setFavorites, setBaskets }: MainProps) => {
+
+const Main = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -30,14 +23,7 @@ const Main = ({ favorites, baskets, setFavorites, setBaskets }: MainProps) => {
     <div className="main">
       <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
       <BannerSwiper />
-      <ProductSlider
-        title="Brand new models"
-        products={newModels}
-        favorites={favorites}
-        setFavorites={setFavorites}
-        baskets={baskets}
-        setBaskets={setBaskets}
-      />
+      <ProductSlider title="Brand new models" products={newModels} />
       <div className="category__section">
         <h2 className="second__title">Shop by category</h2>
         <div className="categories">
@@ -46,14 +32,7 @@ const Main = ({ favorites, baskets, setFavorites, setBaskets }: MainProps) => {
           <CategoryAccessories />
         </div>
       </div>
-      <ProductSlider
-        title="Hot prices"
-        products={hotPrices}
-        favorites={favorites}
-        setFavorites={setFavorites}
-        baskets={baskets}
-        setBaskets={setBaskets}
-      />
+      <ProductSlider title="Hot prices" products={hotPrices} />
     </div>
   );
 };

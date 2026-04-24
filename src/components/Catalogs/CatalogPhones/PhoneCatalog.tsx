@@ -7,25 +7,11 @@ import { Link } from 'react-router-dom';
 import CatalogSort1 from './CatalogSort1/CatalogSort1';
 import CatalogSort2 from './CatalogSort2/CatalogSort2';
 import CatalogSlider from './CatalogSlider/CatalogSlider';
-import { FavoriteProduct } from '../../../types/FavoriteProduct';
-import { BasketProduct } from '../../../types/BasketProduct';
 import { useSearchParams } from 'react-router-dom';
-
-type CatalogProps = {
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-};
 
 type SortType = 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
 
-const Catalog = ({
-  setFavorites,
-  favorites,
-  baskets,
-  setBaskets,
-}: CatalogProps) => {
+const Catalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
@@ -140,13 +126,7 @@ const Catalog = ({
           handlePageChange={handlePageChange}
         />
       </div>
-      <ProductList
-        products={visibleProducts}
-        setFavorites={setFavorites}
-        favorites={favorites}
-        baskets={baskets}
-        setBaskets={setBaskets}
-      />
+      <ProductList products={visibleProducts} />
       <CatalogSlider
         currentPage={currentPage}
         handlePageChange={handlePageChange}

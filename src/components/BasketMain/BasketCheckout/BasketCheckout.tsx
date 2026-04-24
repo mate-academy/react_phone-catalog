@@ -1,11 +1,8 @@
-import { BasketProduct } from '../../../types/BasketProduct';
+import useAppContext from '../../../useAppContext';
 import './BasketCheckout.scss';
 
-type BasketCheckoutProps = {
-  baskets: BasketProduct[];
-};
-
-const BasketCheckout = ({ baskets }: BasketCheckoutProps) => {
+const BasketCheckout = () => {
+  const { baskets } = useAppContext();
   const totalSum = baskets.reduce(
     (sum, product) => sum + product.price * product.quantity,
     0,

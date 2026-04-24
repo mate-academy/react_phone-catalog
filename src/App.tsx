@@ -12,6 +12,8 @@ import { FavoriteProduct } from './types/FavoriteProduct';
 import { BasketProduct } from './types/BasketProduct';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import BurgerMenu from './pages/BurgerMenu/BurgerMenu';
+import { AppContext } from './AppContext';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<FavoriteProduct[]>(
@@ -48,88 +50,29 @@ export const App = () => {
   return (
     <HashRouter>
       {' '}
-      <Header favorites={favorites} baskets={baskets} />
+      <AppContext.Provider
+        value={{
+          favorites,
+          setFavorites,
+          baskets,
+          setBaskets,
+          removeBaskets,
+          handleIncrease,
+          handleDecrease,
+        }}
+      />
+      <Header />
       <div className="App">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                favorites={favorites}
-                baskets={baskets}
-                setFavorites={setFavorites}
-                setBaskets={setBaskets}
-              />
-            }
-          />
-          <Route
-            path="/phones"
-            element={
-              <Phones
-                favorites={favorites}
-                setFavorites={setFavorites}
-                baskets={baskets}
-                setBaskets={setBaskets}
-              />
-            }
-          />
-          <Route
-            path="/tablets"
-            element={
-              <Tablets
-                favorites={favorites}
-                setFavorites={setFavorites}
-                baskets={baskets}
-                setBaskets={setBaskets}
-              />
-            }
-          />
-          <Route
-            path="/accessories"
-            element={
-              <Accessories
-                favorites={favorites}
-                setFavorites={setFavorites}
-                baskets={baskets}
-                setBaskets={setBaskets}
-              />
-            }
-          />
-          <Route
-            path="/heart"
-            element={
-              <Heart
-                favorites={favorites}
-                setFavorites={setFavorites}
-                baskets={baskets}
-                setBaskets={setBaskets}
-              />
-            }
-          />
-          <Route
-            path="/basket"
-            element={
-              <Basket
-                favorites={favorites}
-                baskets={baskets}
-                setBaskets={setBaskets}
-                removeBaskets={removeBaskets}
-                handleIncrease={handleIncrease}
-                handleDecrease={handleDecrease}
-              />
-            }
-          />
-          <Route
-            path="/:category/:id"
-            element={
-              <ProductPage
-                favorites={favorites}
-                setFavorites={setFavorites}
-                baskets={baskets}
-                setBaskets={setBaskets}
-              />
-            }
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/phones" element={<Phones />} />
+          <Route path="/tablets" element={<Tablets />} />
+          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/heart" element={<Heart />} />
+          <Route path="/basket" element={<Basket />} />
+          <Route path="/:category/:id" element={<ProductPage />} />
+
+          <Route path="/burgermenu" element={<BurgerMenu />} />
         </Routes>
       </div>
       <Footer />

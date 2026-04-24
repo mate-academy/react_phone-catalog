@@ -1,22 +1,10 @@
 import './BasketList.scss';
 import BasketCard from '../BasketCard/BasketCard';
-import { BasketProduct } from '../../../types/BasketProduct';
+import useAppContext from '../../../useAppContext';
 
-type BasketListProps = {
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-  removeBasket: (itemId: string) => void;
-  handleIncrease: (itemId: string) => void;
-  handleDecrease: (itemId: string) => void;
-};
+const BasketList = () => {
+  const { baskets } = useAppContext();
 
-const BasketList = ({
-  baskets,
-  setBaskets,
-  removeBasket,
-  handleIncrease,
-  handleDecrease,
-}: BasketListProps) => {
   return (
     <>
       {' '}
@@ -25,10 +13,6 @@ const BasketList = ({
           <BasketCard
             key={basketProduct.itemId}
             basketProduct={basketProduct}
-            setBaskets={setBaskets}
-            removeBasket={removeBasket}
-            handleIncrease={handleIncrease}
-            handleDecrease={handleDecrease}
           />
         ))}
       </div>

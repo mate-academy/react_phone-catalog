@@ -7,7 +7,6 @@ import ProductCapacity, {
 import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../ProductMain';
-import { FavoriteProduct } from '../../../types/FavoriteProduct';
 import { Link } from 'react-router-dom';
 
 type ProductInfoProps = {
@@ -18,7 +17,6 @@ type ProductInfoProps = {
   setSelectedCapacity: React.Dispatch<
     React.SetStateAction<ProductCapacityType>
   >;
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
   isFavorite: boolean;
   handleToggleFavorite: React.MouseEventHandler<HTMLImageElement>;
   isBasket: boolean;

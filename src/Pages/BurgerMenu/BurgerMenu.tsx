@@ -1,30 +1,23 @@
 import './BurgerMenu.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
 import BurgerFooter from './BurgerFooter/BurgerFooter';
-import { Link } from 'react-router-dom';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
+import { Link, useNavigate } from 'react-router-dom';
+import useAppContext from '../../useAppContext';
 
-type BurgerMenuProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-};
+const BurgerMenu = () => {
+  const navigate = useNavigate();
+  const { favorites, baskets } = useAppContext();
 
-const BurgerMenu = ({
-  isOpen,
-  onClose,
-  favorites,
-  baskets,
-}: BurgerMenuProps) => {
   return (
-    <aside className={`menu page__menu ${isOpen ? 'active' : ''}`} id="menu">
+    <aside className="menu page__menu active" id="menu">
       <div className="top-bar">
         <Link to="/" className="top-bar__logo">
           <img src={Logo} alt="NiceGadgets logo" />
         </Link>
-        <div onClick={onClose} className="top-bar__icon icon--close"></div>
+        <div
+          onClick={() => navigate(-1)}
+          className="top-bar__icon icon--close"
+        ></div>
       </div>
       <div className="menu__content">
         <ul className="menu__list">

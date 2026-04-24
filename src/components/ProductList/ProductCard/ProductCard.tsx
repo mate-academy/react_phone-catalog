@@ -4,21 +4,13 @@ import { Link } from 'react-router-dom';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
 import { ProductColor } from '../../ProductMain/ProductMain';
 import { BasketProduct } from '../../../types/BasketProduct';
+import useAppContext from '../../../useAppContext';
 
 type ProductCardProps = {
   product: Product;
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
-const ProductCard = ({
-  favorites,
-  product,
-  setFavorites,
-  baskets,
-  setBaskets,
-}: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
+  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
   const stateProduct: FavoriteProduct = {
     category: product.category,
     itemId: product.itemId,

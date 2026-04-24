@@ -1,18 +1,13 @@
-import { BasketProduct } from '../../../types/BasketProduct';
+import { BasketProduct } from '../../../../types/BasketProduct';
+import useAppContext from '../../../../useAppContext';
 import './CardCounter.scss';
 
 type CardCounterProps = {
   basketProduct: BasketProduct;
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-  handleIncrease: (itemId: string) => void;
-  handleDecrease: (itemId: string) => void;
 };
 
-const CardCounter = ({
-  basketProduct,
-  handleIncrease,
-  handleDecrease,
-}: CardCounterProps) => {
+const CardCounter = ({ basketProduct }: CardCounterProps) => {
+  const { handleIncrease, handleDecrease } = useAppContext();
   const isQuantityLow = basketProduct.quantity > 1;
 
   return (

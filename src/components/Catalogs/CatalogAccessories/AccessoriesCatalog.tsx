@@ -7,28 +7,16 @@ import { Link } from 'react-router-dom';
 import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
 import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
 import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
-import { FavoriteProduct } from '../../../types/FavoriteProduct';
-import { BasketProduct } from '../../../types/BasketProduct';
 import { useSearchParams } from 'react-router-dom';
-
-type AccessoriesCatalogProps = {
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-};
+import useAppContext from '../../../useAppContext';
 
 type SortType = 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
 
-const AccessoriesCatalog = ({
-  setFavorites,
-  favorites,
-  baskets,
-  setBaskets,
-}: AccessoriesCatalogProps) => {
+const AccessoriesCatalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
+  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
 
   const [searchParams, setSearchParams] = useSearchParams();
 

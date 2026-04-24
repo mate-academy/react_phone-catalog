@@ -1,21 +1,10 @@
 import ProductCard from '../../ProductList/ProductCard/ProductCard';
+import useAppContext from '../../../useAppContext';
 import './FavoritesList.scss';
-import { FavoriteProduct } from '../../../types/FavoriteProduct';
-import { BasketProduct } from '../../../types/BasketProduct';
 
-type FavoritesListProps = {
-  favorites: FavoriteProduct[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-};
+const FavoritesList = () => {
+  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
 
-const FavoritesList = ({
-  favorites,
-  setFavorites,
-  baskets,
-  setBaskets,
-}: FavoritesListProps) => {
   return (
     <>
       <p className="favorites-list__items--counter">{favorites.length} items</p>

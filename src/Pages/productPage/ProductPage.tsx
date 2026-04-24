@@ -6,23 +6,9 @@ import { Accessory } from '../../types/Accessory';
 import { Phone } from '../../types/Phone';
 import { Tablet } from '../../types/Tablet';
 import { getAccessories, getPhones, getProduct, getTablets } from '../../api';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
-
-type ProductPageProps = {
-  favorites: FavoriteProduct[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-};
 
 export type ProductDetails = Phone | Tablet | Accessory;
-const ProductPage = ({
-  favorites,
-  setFavorites,
-  baskets,
-  setBaskets,
-}: ProductPageProps) => {
+const ProductPage = () => {
   const { category, id } = useParams();
   const [someProduct, setSomeProduct] = useState<ProductDetails | null>(null);
   const [modelProducts, setModelProducts] = useState<ProductDetails[]>([]);
@@ -89,14 +75,7 @@ const ProductPage = ({
       {someProduct === null ? (
         <p>Loading...</p>
       ) : (
-        <ProductMain
-          models={modelProducts}
-          someProduct={someProduct}
-          setFavorites={setFavorites}
-          favorites={favorites}
-          baskets={baskets}
-          setBaskets={setBaskets}
-        />
+        <ProductMain models={modelProducts} someProduct={someProduct} />
       )}
     </div>
   );

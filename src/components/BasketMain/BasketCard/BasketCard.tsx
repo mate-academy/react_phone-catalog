@@ -2,29 +2,22 @@ import CardCounter from './CardCounter.tsx/CardCounter';
 import './BasketCard.scss';
 import { BasketProduct } from '../../../types/BasketProduct';
 import { Link } from 'react-router-dom';
+import useAppContext from '../../../useAppContext';
 
 type BasketCardProps = {
   basketProduct: BasketProduct;
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-  removeBasket: (itemId: string) => void;
-  handleIncrease: (itemId: string) => void;
-  handleDecrease: (itemId: string) => void;
 };
 
-const BasketCard = ({
-  basketProduct,
-  setBaskets,
-  removeBasket,
-  handleIncrease,
-  handleDecrease,
-}: BasketCardProps) => {
+const BasketCard = ({ basketProduct }: BasketCardProps) => {
+  const { removeBaskets } = useAppContext();
+
   return (
     <>
       <div className="basket-card">
         <div className="basket-card__left">
           <button
             className="basket-card__button--delete"
-            onClick={() => removeBasket(basketProduct.itemId)}
+            onClick={() => removeBaskets(basketProduct.itemId)}
           ></button>
           <Link to={`/${basketProduct.category}/${basketProduct.itemId}`}>
             <img
@@ -42,12 +35,7 @@ const BasketCard = ({
         </div>
 
         <div className="basket-card__right">
-          <CardCounter
-            basketProduct={basketProduct}
-            setBaskets={setBaskets}
-            handleIncrease={handleIncrease}
-            handleDecrease={handleDecrease}
-          />
+          <CardCounter basketProduct={basketProduct} />
           <div className="basket-card__price">${basketProduct.price}</div>
         </div>
       </div>

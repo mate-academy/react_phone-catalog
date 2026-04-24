@@ -1,19 +1,12 @@
 import '../../variable.scss';
 import './Header.scss';
 import Logo from '../../../public/img/Logo/Logo.png';
-import { useState } from 'react';
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { Link, useLocation } from 'react-router-dom';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
+import useAppContext from '../../useAppContext';
 
-type HeaderProps = {
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-};
+const Header = () => {
+  const { favorites, baskets } = useAppContext();
 
-const Header = ({ favorites, baskets }: HeaderProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const isPhones = location.pathname.startsWith('/phones');
@@ -21,7 +14,7 @@ const Header = ({ favorites, baskets }: HeaderProps) => {
   const isAcccessories = location.pathname.startsWith('/accessories');
   const isHeart = location.pathname.startsWith('/heart');
   const isBasket = location.pathname.startsWith('/basket');
-  const isHome = location.pathname === '';
+  const isHome = location.pathname === '/';
   const totalItemsInBasket = baskets.reduce(
     (sum, product) => sum + product.quantity,
     0,
@@ -90,21 +83,10 @@ const Header = ({ favorites, baskets }: HeaderProps) => {
                 <span className="icon--badge">{totalItemsInBasket}</span>
               )}
             </Link>
-            <button
-              className="icon icon--menu"
-              onClick={() => setIsMenuOpen(true)}
-            ></button>
+            <Link to="/burgermenu" className="icon icon--menu"></Link>
           </div>
         </div>
       </div>
-      {isMenuOpen && (
-        <BurgerMenu
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-          favorites={favorites}
-          baskets={baskets}
-        />
-      )}
     </header>
   );
 };

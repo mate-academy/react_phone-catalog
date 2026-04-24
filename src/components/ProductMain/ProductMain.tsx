@@ -8,14 +8,11 @@ import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
 import { Link, useNavigate } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
+import useAppContext from '../../useAppContext';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
   models: ProductDetails[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  favorites: FavoriteProduct[];
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
 };
 
 export type ProductColor =
@@ -36,14 +33,7 @@ export type ProductColor =
   | 'starlight'
   | 'skyblue';
 
-const ProductMain = ({
-  someProduct,
-  models,
-  setFavorites,
-  favorites,
-  baskets,
-  setBaskets,
-}: ProductMainProps) => {
+const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
   );
@@ -53,6 +43,7 @@ const ProductMain = ({
 
   const [currentProduct, setCurrentProduct] = useState(someProduct);
   const navigate = useNavigate();
+  const { favorites, baskets, setBaskets, setFavorites } = useAppContext();
 
   useEffect(() => {
     setCurrentProduct(someProduct);
@@ -154,7 +145,6 @@ const ProductMain = ({
           setSelectedColor={setSelectedColor}
           selectedCapacity={selectedCapacity}
           setSelectedCapacity={setSelectedCapacity}
-          setFavorites={setFavorites}
           isFavorite={isFavorite}
           isBasket={isBasket}
           handleToggleFavorite={handleToggleFavorite}

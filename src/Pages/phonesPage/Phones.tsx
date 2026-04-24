@@ -1,29 +1,10 @@
 /* eslint-disable max-len */
 import PhonesCatalog from '../../components/Catalogs/CatalogPhones/PhoneCatalog';
-import { FavoriteProduct } from '../../types/FavoriteProduct';
-import { BasketProduct } from '../../types/BasketProduct';
 
-type PhonesProps = {
-  favorites: FavoriteProduct[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteProduct[]>>;
-  baskets: BasketProduct[];
-  setBaskets: React.Dispatch<React.SetStateAction<BasketProduct[]>>;
-};
-
-const Phones = ({
-  favorites,
-  setFavorites,
-  baskets,
-  setBaskets,
-}: PhonesProps) => {
+const Phones = () => {
   return (
     <>
-      <PhonesCatalog
-        setFavorites={setFavorites}
-        favorites={favorites}
-        baskets={baskets}
-        setBaskets={setBaskets}
-      />
+      <PhonesCatalog />
     </>
   );
 };
