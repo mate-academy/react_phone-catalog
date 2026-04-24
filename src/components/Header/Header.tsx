@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Categories } from '../../types/product';
@@ -25,6 +25,18 @@ export const Header = () => {
     { to: `/${Categories.Tablets}`, name: 'tablets' },
     { to: `/${Categories.Accessories}`, name: 'accessories' },
   ];
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className={styles.header}>

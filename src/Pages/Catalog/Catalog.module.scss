@@ -189,6 +189,7 @@
   line-height: 1;
   white-space: nowrap;
   color: $Primary;
+  overflow: visible;
 }
 
 .catalog__current-page {
@@ -200,5 +201,6 @@
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
+  @include truncate(1);
 }
 

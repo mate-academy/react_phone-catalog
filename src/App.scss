@@ -1,5 +1,6 @@
 // not empty
-@import './variables.scss';
+@import './variables';
+
 *{
   margin: 0;
   padding: 0;
@@ -21,4 +22,9 @@
   width: 100%;
   background-color: $Elements;
   margin: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

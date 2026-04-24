@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/product';
 import { ProductCard } from '../ProductCard';
 import { getSearchParams } from '../../utils/searchParams';
+import { getPaginationRange } from '../../utils/pagination';
 
 type Props = {
   products: Product[];
@@ -49,20 +50,30 @@ export const CatalogView: React.FC<Props> = ({ products, styles }) => {
           />
 
           <ul className={styles.pagination__list}>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-              <li key={page} className={styles.pagination__item}>
-                <button
-                  className={`${styles.pagination__button} ${
-                    page === currentPage
-                      ? styles['pagination__button--active']
-                      : ''
-                  }`}
-                  onClick={() => handlePageChange(page)}
-                >
-                  {page}
-                </button>
-              </li>
-            ))}
+            {getPaginationRange(currentPage, totalPages).map((page, index) => {
+              if (page === '...') {
+                return (
+                  <li key={`dots-${index}`} className={styles.pagination__item}>
+                    <span className={styles.pagination__dots}>...</span>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={page} className={styles.pagination__item}>
+                  <button
+                    className={`${styles.pagination__button} ${
+                      page === currentPage
+                        ? styles['pagination__button--active']
+                        : ''
+                    }`}
+                    onClick={() => handlePageChange(page as number)}
+                  >
+                    {page}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
           <button

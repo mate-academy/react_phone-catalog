@@ -175,7 +175,6 @@ export const ItemCard = () => {
         <Link
           to={`/${category}`}
           className={classNames(
-            catalogStyles['catalog__current-page'],
             catalogStyles['catalog__current-page-category'],
           )}
         >
