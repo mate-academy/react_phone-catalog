@@ -54,6 +54,22 @@ export const Catalog = () => {
     }
   }, [products, sortBy]);
 
+  if (isLoading) {
+    return (
+      <main className={styles.catalog}>
+        <Loader />
+      </main>
+    );
+  }
+
+  if (isError) {
+    return (
+      <main className={styles.catalog}>
+        <ErrorMessage onRetry={handleRetry} />
+      </main>
+    );
+  }
+
   return (
     <main className={styles.catalog}>
       <nav className={styles.catalog__nav}>
@@ -65,6 +81,7 @@ export const Catalog = () => {
       <h1 className={styles.catalog__title}>
         {category === 'phones' ? 'Mobile phones' : category}
       </h1>
+
       <p className={styles['catalog__models-count']}>
         {products.length} models
       </p>
@@ -102,12 +119,7 @@ export const Catalog = () => {
         </div>
       </div>
 
-      {isLoading && <Loader />}
-      {isError && <ErrorMessage onRetry={handleRetry} />}
-
-      {!isLoading && !isError && (
-        <CatalogView products={sortedProducts} styles={styles} />
-      )}
+      <CatalogView products={sortedProducts} styles={styles} />
     </main>
   );
 };

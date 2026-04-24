@@ -6,6 +6,8 @@
 
   padding-bottom: 80px;
 
+  flex-grow: 1;
+
   &__grid {
     @include grid;
 
@@ -201,6 +203,7 @@
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
+
   @include truncate(1);
 }
 

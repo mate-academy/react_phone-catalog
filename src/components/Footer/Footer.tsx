@@ -27,6 +27,8 @@ export const Footer = () => {
           <Link
             className={styles.list__item}
             to="https://github.com/IvanovvvIhor"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Github
           </Link>
