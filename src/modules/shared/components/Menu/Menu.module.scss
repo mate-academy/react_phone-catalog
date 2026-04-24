@@ -1,0 +1,121 @@
+@use '/src/modules/shared/styles/mixins.scss' as *;
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+.mobile_menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+
+
+  transform: translateX(+100%);
+  transition: all 0.8s ease;
+
+  &.open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+
+  .header {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-color;
+    height: $header-height;
+    width: 100%;
+
+    .navLogo {
+      display: flex;
+      box-sizing: border-box;
+      justify-self: center;
+      align-items: center;
+
+      height: $header-height;
+      width: 96px;
+      padding: 0 16px;
+
+      img {
+        width: 64px;
+      }
+    }
+
+    .burger {
+      width: 48px;
+      height: $header-height;
+      border: none;
+      border-left: 1px solid $border-color;
+      background: none;
+      cursor: pointer;
+
+    }
+
+  }
+
+  .nav_links {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 16px;
+    gap: 24px;
+
+    .nav_link {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 4%;
+
+      text-transform: uppercase;
+      position: relative;
+      color: #75767F;
+      text-decoration: none;
+      box-sizing: border-box;
+
+
+      @include hover-underline;
+
+      &.active {
+        color: $text-hover;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    border-top: 1px solid $border-color;
+
+    .footerItem {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 64px;
+      
+      @include hover-underline(0px);
+
+
+      &:first-child {
+        border-right: 1px solid $border-color;
+      }
+    }
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+}

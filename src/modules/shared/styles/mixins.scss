@@ -1,0 +1,26 @@
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+@mixin hover-underline($bottom: -8px) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: $bottom;
+    width: 0;
+    height: 2px;
+    background-color: $text-hover;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: $text-hover;
+    transition: color 0.3s ease;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}

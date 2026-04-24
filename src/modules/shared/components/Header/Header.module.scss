@@ -1,0 +1,154 @@
+@use '/src/modules/shared/styles/mixins.scss' as *;
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  position: fixed;
+  z-index: 99;
+  align-items: center;
+  height: $header-height;
+  width: 100%;
+  background-color: $bg-color;
+  border-bottom: 1px solid $border-color;
+  justify-content: space-between;
+
+  @media (min-width: 1440px) {
+    height: 64px;
+  }
+
+  .navLogo {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: start;
+    justify-self: center;
+    align-items: center;
+
+    height: $header-height;
+    width: 96px;
+    padding: 0 16px;
+
+    img {
+      width: 64px;
+    }
+
+
+    @media (min-width: 1440px) {
+      height: 64px;
+      width: 128px;
+      padding: 0 24px;
+
+      img {
+        width: 80px;
+      }
+    }
+  }
+
+  .nav {
+    display: none;
+    box-sizing: border-box;
+
+    gap: 32px;
+    align-items: center;
+    height: 100%;
+
+
+
+
+    .nav_link {
+      font-size: $text-size;
+      font-weight: $text-weight;
+      line-height: 11px;
+      letter-spacing: 4%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+
+
+      text-transform: uppercase;
+      position: relative;
+      color: $text-color;
+      text-decoration: none;
+
+      &.active {
+        color: $text-hover;
+      }
+
+      @include hover-underline(0px);
+      
+    }
+
+    @media (min-width: 640px) {
+      display: flex;
+      gap: 32px;
+    }
+
+    @media (min-width: 1440px) {
+      gap: 64px;
+    }
+
+    .navOpen {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding-left: 16px;
+    }
+  }
+
+  .icons {
+    display: none;
+    margin-left: auto;
+
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid $border-color;
+      height: $header-height;
+      width: 48px;
+
+
+
+      @media (min-width: 640px) {
+        display: flex;
+
+
+      }
+
+      @media (min-width: 1440px) {
+        height: 64px;
+        width: 64px;
+
+      }
+
+    }
+
+    @media (min-width: 640px) {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+
+      width: 183px;
+    }
+  }
+
+  .burger {
+    font-size: 16px;
+    width: 48px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid $border-color;
+    background: none;
+    cursor: pointer;
+
+    @media (min-width: 640px) {
+      display: none;
+    }
+
+  }
+}
