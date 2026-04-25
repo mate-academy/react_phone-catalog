@@ -9,29 +9,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 import useAppContext from '../../useAppContext';
+import ProductTopIcons from './ProductTopIcons/ProductTopIcons';
+import { ProductColor } from '../../types/ProductColor';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
   models: ProductDetails[];
 };
-
-export type ProductColor =
-  | 'black'
-  | 'green'
-  | 'yellow'
-  | 'white'
-  | 'purple'
-  | 'red'
-  | 'spacegray'
-  | 'silver'
-  | 'gold'
-  | 'spaceblack'
-  | 'sierrablue'
-  | 'graphite'
-  | 'midnight'
-  | 'coral'
-  | 'starlight'
-  | 'skyblue';
 
 const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
@@ -115,24 +99,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   return (
     <div className="product-main">
       <div className="product-main__container">
-        <div className="product-main__icons">
-          <Link to="/" className="product-main__icon--home"></Link>
-          <Link
-            to="/"
-            className="product-main__icon--slider--right--gray"
-          ></Link>
-          <Link
-            to={`/${currentProduct.category}`}
-            className="product-main__top--category"
-          >
-            {currentProduct.category}
-          </Link>
-          <Link
-            to="/"
-            className="product-main__icon--slider--right--gray"
-          ></Link>
-          <p className="product-main__top--name">{currentProduct.name}</p>
-        </div>
+        <ProductTopIcons currentProduct={currentProduct} />
         <div className="product-main__back-buttons">
           <Link to="/" className="product-main__icon--back"></Link>
           <span className="product-main__text--back">Back</span>

@@ -6,8 +6,8 @@ import ProductCapacity, {
 } from './ProductCapacity/ProductCapacity';
 import ProductPrice from './ProductPrice/ProductPrice';
 import ProductSpec from './ProductSpecs/ProductSpec';
-import { ProductColor } from '../ProductMain';
-import { Link } from 'react-router-dom';
+import { ProductColor } from '../../../types/ProductColor';
+import ProductButtons from './ProductButtons/ProductButtons';
 
 type ProductInfoProps = {
   selectedColor: string;
@@ -52,26 +52,12 @@ const ProductInfo = ({
                 selectedCapacity={selectedCapacity}
               />
               <ProductPrice currentProduct={currentProduct} />
-              <div className="product-info__buttons">
-                <button
-                  className={`product-info__button--add-to-cart ${isBasket ? 'active' : ''}`}
-                  onClick={handleToggleBasket}
-                >
-                  {isBasket ? 'Added to Cart' : 'Add to Cart'}
-                </button>
-                <Link to="">
-                  <img
-                    src={
-                      isFavorite
-                        ? '../../../../public/img/icons/icon--heart--filled.png'
-                        : '../../../../public/img/icons/icon--heart.png'
-                    }
-                    alt="Favorite"
-                    className="product-info__button--icon"
-                    onClick={handleToggleFavorite}
-                  />
-                </Link>
-              </div>
+              <ProductButtons
+                handleToggleFavorite={handleToggleFavorite}
+                handleToggleBasket={handleToggleBasket}
+                isFavorite={isFavorite}
+                isBasket={isBasket}
+              />
             </div>
             <div className="product-info__right">
               <ProductSpec currentProduct={currentProduct} />
