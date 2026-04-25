@@ -1,0 +1,63 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include page-container;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 64px;
+}
+
+.title {
+  @include h1;
+  padding-top: 24px;
+}
+
+.count {
+  @include small-text;
+  color: var(--color-secondary);
+  padding-top: 8px;
+}
+
+.controls {
+  padding-top: 32px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 24px;
+}
+
+// ── Tablet ──────────────────────────────────────────────────────────────────
+@include on-tablet {
+  .page {
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+
+  .title {
+    padding-top: 40px;
+  }
+
+  .controls {
+    padding-top: 40px;
+  }
+
+  .grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+    padding-top: 24px;
+  }
+}
+
+// ── Desktop ──────────────────────────────────────────────────────────────────
+@include on-desktop {
+  .page {
+    padding-bottom: 40px;
+  }
+}
+
