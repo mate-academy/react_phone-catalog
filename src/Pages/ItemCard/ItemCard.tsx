@@ -3,14 +3,14 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product, ProductItem } from '../../types/product';
 import { getProducts } from '../../api/getProducts';
-import { ProductsSlider } from '../ProductsSlider';
+import { ProductsSlider } from '../../components/ProductsSlider';
 import { useCart, useFavorites } from '../../ItemsProvider';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './ItemCard.module.scss';
 import catalogStyles from '../../Pages/Catalog/Catalog.module.scss';
-import { Loader } from '../Loader';
-import { ErrorMessage } from '../ErrorMessage';
+import { Loader } from '../../components/Loader';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 const colorMap: Record<string, string> = {
   black: '#212122',

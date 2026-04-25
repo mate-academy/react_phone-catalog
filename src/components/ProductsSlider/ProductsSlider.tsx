@@ -13,6 +13,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [step, setStep] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
+  const showFullPrice = title !== 'Brand new models';
 
   const filteredProducts = useMemo(() => {
     if (products.length === 0) {
@@ -115,7 +116,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           style={{ transform: `translateX(-${currentIndex * step}px)` }}
         >
           {filteredProducts.map(product => (
-            <ProductCard product={product} key={product.id} />
+            <ProductCard
+              product={product}
+              key={product.id}
+              discount={showFullPrice}
+            />
           ))}
         </div>
       </div>

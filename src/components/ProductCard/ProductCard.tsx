@@ -8,9 +8,14 @@ import { useCart, useFavorites } from '../../ItemsProvider';
 type Props = {
   product: Product;
   classForCard?: string;
+  discount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, classForCard }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  classForCard,
+  discount = true,
+}) => {
   const { cartItems, setCartItems } = useCart();
   const { favoritesItems, setFavoritesItems } = useFavorites();
 
@@ -58,7 +63,9 @@ export const ProductCard: React.FC<Props> = ({ product, classForCard }) => {
 
       <div className={styles.priceContainer}>
         <span className={styles.price}>${product.price}</span>
-        <span className={styles.fullPrice}>${product.fullPrice}</span>
+        {discount && (
+          <span className={styles.fullPrice}>${product.fullPrice}</span>
+        )}
       </div>
 
       <div className={styles.divider} />
