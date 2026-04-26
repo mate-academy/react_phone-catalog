@@ -159,7 +159,7 @@ const ProductPage = () => {
                   className={`thumbnail ${selectedImage === index ? 'thumbnail--active' : ''}`}
                   onClick={() => setSelectedImage(index)}
                 >
-                  <img src={`/${img}`} alt={`${product.name} ${index}`} />
+                  <img src={`./${img}`} alt={`${product.name} ${index}`} />
                 </button>
               ))}
             </div>
@@ -249,7 +249,7 @@ const ProductPage = () => {
                 onClick={handleLikeClick}
               >
                 <img
-                  src={isLiked ? './img/HeartFilled.svg' : '/img/Like.svg'}
+                  src={isLiked ? './img/HeartFilled.svg' : './img/Like.svg'}
                   alt="Like"
                 />
               </button>
