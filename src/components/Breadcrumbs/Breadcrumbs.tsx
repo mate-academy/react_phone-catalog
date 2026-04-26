@@ -22,13 +22,13 @@ const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
   return (
     <nav className="breadcrumbs">
       <Link to="/" className="breadcrumbs__home">
-        <img src="/img/Home.svg" alt="Home" />
+        <img src="./img/Home.svg" alt="Home" />
       </Link>
 
       {title && (
         <>
           <img
-            src="/img/Arrow_Right_Grey.svg"
+            src="./img/Arrow_Right_Grey.svg"
             alt="Arrow"
             className="breadcrumbs__arrow"
           />
@@ -42,7 +42,7 @@ const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
       {productName && (
         <>
           <img
-            src="/img/Arrow_Right_Grey.svg"
+            src="./img/Arrow_Right_Grey.svg"
             alt="Arrow"
             className="breadcrumbs__arrow"
           />

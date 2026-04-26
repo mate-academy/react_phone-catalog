@@ -120,7 +120,7 @@ function ProductCard({
           aria-label="Add to favorites"
         >
           <img
-            src={isLiked ? '/img/HeartFilled.svg' : '/img/Like.svg'}
+            src={isLiked ? './img/HeartFilled.svg' : '/img/Like.svg'}
             alt="Like"
           />
         </button>

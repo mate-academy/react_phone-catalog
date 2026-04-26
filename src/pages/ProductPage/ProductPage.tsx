@@ -142,7 +142,7 @@ const ProductPage = () => {
       <Breadcrumbs productName={product.name} />
 
       <div className="back-button" onClick={() => navigate(-1)}>
-        <img src="/img/Arrow_Left.svg" alt="Arrow" />
+        <img src="./img/Arrow_Left.svg" alt="Arrow" />
         <span>Back</span>
       </div>
 
@@ -249,7 +249,7 @@ const ProductPage = () => {
                 onClick={handleLikeClick}
               >
                 <img
-                  src={isLiked ? '/img/HeartFilled.svg' : '/img/Like.svg'}
+                  src={isLiked ? './img/HeartFilled.svg' : '/img/Like.svg'}
                   alt="Like"
                 />
               </button>
@@ -331,14 +331,14 @@ const ProductPage = () => {
               onClick={handlePrev}
               disabled={startIndex === 0}
             >
-              <img src="/img/Arrow_Left.svg" alt="Left" />
+              <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
             <button
               className="carousel-arrow right"
               onClick={handleNext}
               disabled={startIndex + visibleCount >= sortedProducts.length}
             >
-              <img src="/img/Arrow_Right.svg" alt="Right" />
+              <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
         </div>

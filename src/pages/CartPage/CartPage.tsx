@@ -18,7 +18,7 @@ const CartPage = () => {
     <div className="cart-page">
       <div className="back-button" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
         <img
-          src="/img/Arrow_Left.svg"
+          src="./img/Arrow_Left.svg"
           alt="Arrow"
           className="breadcrumbs__arrow"
         />
@@ -41,7 +41,7 @@ const CartPage = () => {
                   onClick={() => dispatch(removeFromCart(item.id))}
                 >
                   <img
-                    src="/img/Close.svg"
+                    src="./img/Close.svg"
                     alt="Remove"
                     className="remove-icon"
                   />
@@ -64,7 +64,7 @@ const CartPage = () => {
                       disabled={item.quantity <= 1}
                     >
                       <img
-                        src="/img/Minus.svg"
+                        src="./img/Minus.svg"
                         alt="Minus"
                         className="minus-icon"
                       />
@@ -74,7 +74,7 @@ const CartPage = () => {
                       className="plus"
                       onClick={() => dispatch(changeQuantity({ id: item.id, amount: 1 }))}
                     >
-                      <img src="/img/Plus.svg" alt="Plus" className="plus-icon" />
+                      <img src="./img/Plus.svg" alt="Plus" className="plus-icon" />
                     </button>
                   </div>
 

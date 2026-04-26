@@ -12,7 +12,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-left">
-          <img src="/img/Logo.svg" alt="Logo" className="footer-logo" />
+          <img src="./img/Logo.svg" alt="Logo" className="footer-logo" />
         </div>
         <div className="footer-center">
           <a href="/github">Github</a>
@@ -25,7 +25,7 @@ function Footer() {
             className="back-to-top-button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/img/Arrow_Top.svg" alt="Arrow up" />
+            <img src="./img/Arrow_Top.svg" alt="Arrow up" />
           </button>
         </div>
       </div>

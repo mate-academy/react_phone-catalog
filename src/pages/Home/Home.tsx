@@ -13,7 +13,7 @@ function Home() {
       id: 2,
       desktop: './img/banner2.png',
       mobile: './img/banner2.png',
-    }, // замініть на ваші шляхи
+    },
     {
       id: 3,
       desktop: './img/banner3.png',
@@ -178,7 +178,7 @@ function Home() {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="categories__category-img-container">
-              <img src="img/Phones.png" alt="Phones" />
+              <img src="./img/Phones.png" alt="Phones" />
             </div>
             <div className="category__name">Mobile phones</div>
             <div className="number-of-products">{phonesCount} models</div>
@@ -191,7 +191,7 @@ function Home() {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="categories__category-img-container">
-              <img src="img/Tablets.png" alt="Tablets" />
+              <img src="./img/Tablets.png" alt="Tablets" />
             </div>
             <div className="category__name">Tablets</div>
             <div className="number-of-products">{tabletsCount} models</div>
@@ -204,7 +204,7 @@ function Home() {
             onClick={() => window.scrollTo(0, 0)} // Додано сюди теж
           >
             <div className="categories__category-img-container">
-              <img src="img/Accessories.png" alt="Accessories" />
+              <img src="./img/Accessories.png" alt="Accessories" />
             </div>
             <div className="category__name">Accessories</div>
             <div className="number-of-products">{accessoriesCount} models</div>
