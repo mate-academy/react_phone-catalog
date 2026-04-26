@@ -1,5 +1,5 @@
-@import '../../styles/utils/variables.scss';
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
 
 .catalog {
   display: flex;
@@ -24,6 +24,14 @@
     gap: 4px;
     z-index: 10;
     width: 176px;
+  }
+
+  &__sliderSortIcon {
+    width: 16px;
+    height: 16px;
+    background-image: url('../../images/Icons/Arrow-Down-Gray.png');
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   &__sliderSortSelector {
@@ -51,14 +59,6 @@
     box-shadow: inset 0 0 0 1px #905BFF;
   }
 
-  &__sliderSortIcon {
-    width: 16px;
-    height: 16px;
-    background-image: url('../../images/Icons/Arrow-Down-Gray.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
   &__menuIconActive {
     background-image: url('../../images/Icons/Arrow-Up-Gray.png');
   }
@@ -76,7 +76,7 @@
   }
 
   &__SliderSortOption {
-    padding: 5px 0px 5px 12px;
+    padding: 5px 5px 12px;
 
     &:hover {
       background-color: $surface-color-2;
@@ -106,7 +106,7 @@
       background-color: $gray-icons;
     }
   }
-
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.paginationBullets) {
   display: flex;
   gap: 8px;
@@ -123,7 +123,7 @@
       background-color: #3B3E4A;
     }
   }
-
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   &__paginationBullet:global(.swiper-pagination-bullet-active) {
     background-color: #905BFF;
   }

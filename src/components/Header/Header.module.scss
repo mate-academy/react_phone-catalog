@@ -1,5 +1,5 @@
-@import '../../styles/utils/variables.scss';
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
 
 .container {
   margin: 0;
@@ -11,7 +11,6 @@
 
 
   &__content {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;

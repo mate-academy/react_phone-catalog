@@ -1,8 +1,8 @@
-@import './styles/utils/variables.scss';
-@import './styles/utils/mixins.scss';
+@import './styles/utils/variables';
+@import './styles/utils/mixins';
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../public/fonts/Mont-Regular.otf');
   font-weight: 400;
   font-style: normal;
@@ -10,7 +10,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../public/fonts/Mont-SemiBold.otf');
   font-weight: 600;
   font-style: normal;
@@ -18,7 +18,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../public/fonts/Mont-Bold.otf');
   font-weight: 700;
   font-style: normal;
@@ -26,8 +26,7 @@
 }
 
 html,
-body,
-#root {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -36,5 +35,5 @@ body,
 }
 
 body {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 }

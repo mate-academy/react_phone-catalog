@@ -1,5 +1,5 @@
-@import '../../styles/utils/variables.scss';
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
 
 .productsSlider {
   grid-column: 1 / -1;
@@ -30,6 +30,10 @@
     display: flex;
   }
 
+  &__btnRight {
+    margin-left: 16px;
+  }
+
   &__btnLeft,
   &__btnRight {
     width: 32px;
@@ -39,10 +43,6 @@
     &:hover {
           background-color: $icons-hover-color;
         }
-  }
-
-  &__btnRight {
-    margin-left: 16px;
   }
 
   &__slider {

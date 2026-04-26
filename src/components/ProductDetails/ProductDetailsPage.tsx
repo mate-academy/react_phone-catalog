@@ -19,7 +19,6 @@ import { CartContext } from '../../contexts/cart';
 import { useCart } from '../../hooks/useCart';
 import { ProductsContext } from '../../contexts/products';
 import 'swiper/css';
-import { useFilters } from '../../hooks/useFilters';
 
 type Props = {
   category: string;
