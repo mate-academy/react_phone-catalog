@@ -49,7 +49,6 @@ export const App = () => {
 
   return (
     <HashRouter>
-      {' '}
       <AppContext.Provider
         value={{
           favorites,
@@ -60,22 +59,23 @@ export const App = () => {
           handleIncrease,
           handleDecrease,
         }}
-      />
-      <Header />
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/phones" element={<Phones />} />
-          <Route path="/tablets" element={<Tablets />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/heart" element={<Heart />} />
-          <Route path="/basket" element={<Basket />} />
-          <Route path="/:category/:id" element={<ProductPage />} />
+      >
+        <Header />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/phones" element={<Phones />} />
+            <Route path="/tablets" element={<Tablets />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/heart" element={<Heart />} />
+            <Route path="/basket" element={<Basket />} />
+            <Route path="/:category/:id" element={<ProductPage />} />
 
-          <Route path="/burgermenu" element={<BurgerMenu />} />
-        </Routes>
-      </div>
-      <Footer />
+            <Route path="/burgermenu" element={<BurgerMenu />} />
+          </Routes>
+        </div>
+        <Footer />
+      </AppContext.Provider>
     </HashRouter>
   );
 };

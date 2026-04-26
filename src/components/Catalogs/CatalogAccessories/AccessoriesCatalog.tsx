@@ -8,7 +8,6 @@ import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
 import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
 import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 import { useSearchParams } from 'react-router-dom';
-import useAppContext from '../../../useAppContext';
 
 type SortType = 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
 
@@ -16,7 +15,6 @@ const AccessoriesCatalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
-  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -126,13 +124,7 @@ const AccessoriesCatalog = () => {
           />
         </div>
 
-        <ProductList
-          products={visibleProducts}
-          setFavorites={setFavorites}
-          favorites={favorites}
-          baskets={baskets}
-          setBaskets={setBaskets}
-        />
+        <ProductList products={visibleProducts} />
         <CatalogSlider
           currentPage={currentPage}
           handlePageChange={handlePageChange}
