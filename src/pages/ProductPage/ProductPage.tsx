@@ -165,7 +165,7 @@ const ProductPage = () => {
             </div>
             <div className="gallery-main">
               <img
-                src={`/${product.images[selectedImage]}`}
+                src={`./${product.images[selectedImage]}`}
                 alt={product.name}
                 className="product-main-image"
               />
