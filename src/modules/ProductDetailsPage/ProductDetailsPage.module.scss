@@ -257,3 +257,36 @@
   }
 }
 
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+
+  &__img {
+    width: 200px;
+    height: auto;
+  }
+
+  &__title {
+    color: $colors-primary;
+    margin: 0;
+
+    @include h2-text;
+  }
+
+  &__link {
+    color: $colors-secondary;
+    margin: 0;
+
+    @include body-text;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $colors-primary;
+    }
+  }
+}

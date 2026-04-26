@@ -37,7 +37,10 @@
   }
 
   &__item {
-    flex: 0 0 272px;
+    flex: 0 0 229px;
 
+    @include onDesktop {
+      flex: 0 0 calc((100% - 48px) / 4);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { Product, ProductCategory } from '../../features/types/productType';
 import { useEffect, useMemo, useState } from 'react';
 import { ProductDetails } from '../../features/types/productDetailsType';
@@ -34,12 +34,12 @@ export const ProductDetailsPage = () => {
   const [recommendedError, setRecommendedError] = useState('');
 
   const [mainImage, setMainImage] = useState('');
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!category || !productId) {
-      setDetailsError('Product not found');
       setDetailsLoading(false);
 
       return;
@@ -61,9 +61,13 @@ export const ProductDetailsPage = () => {
         setMainImage(data.images[0] ? `/${data.images[0]}` : '');
       })
       .catch(error => {
-        setDetailsError(
-          error instanceof Error ? error.message : 'Something went wrong',
-        );
+        if (error instanceof Error && error.message === 'Product not found') {
+          setProduct(null);
+
+          return;
+        }
+
+        setDetailsError('Something went wrong');
       })
       .finally(() => setDetailsLoading(false));
   }, [category, productId]);
@@ -77,6 +81,19 @@ export const ProductDetailsPage = () => {
       .catch(() => setRecommendedError('Failed to load recommended products'))
       .finally(() => setRecommendedLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+
+      return;
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [productId, isFirstRender]);
 
   const recommended = useMemo(() => {
     if (!category || !product) {
@@ -109,14 +126,16 @@ export const ProductDetailsPage = () => {
 
   if (!product || !category) {
     return (
-      <div className={styles.productDetails}>
-        <div className={styles.productDetails__wrapper}>
-          <div className={styles.productDetails__state}>
-            <p className={styles.productDetails__stateText}>
-              Product not found
-            </p>
-          </div>
-        </div>
+      <div className={styles.notFound}>
+        <img
+          src="/img/product-not-found.png"
+          alt="Product not found"
+          className={styles.notFound__img}
+        />
+        <h4 className={styles.notFound__title}>Product not found</h4>
+        <NavLink to="/" className={styles.notFound__link}>
+          Back to Home
+        </NavLink>
       </div>
     );
   }

@@ -54,6 +54,7 @@ export const HomePage = () => {
 
   return (
     <div className={styles.home}>
+      <h1 className={styles.home__titleHiden}>Product Catalog</h1>
       <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
       <div className={styles.home__content}>
         <section className={styles.home__banner}>
