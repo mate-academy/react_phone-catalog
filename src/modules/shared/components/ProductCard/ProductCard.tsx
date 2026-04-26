@@ -1,4 +1,5 @@
 import { Product } from '../../../../types';
+import { useFavorites } from '../../../../context/FavoritesContext';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
 export const ProductCard = ({ product }: Props) => {
   const { name, price, fullPrice, image, screen, capacity, ram } = product;
   const hasDiscount = price !== fullPrice;
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const isInFavorites = isFavorite(product.id);
 
   return (
     <article className={styles.card}>
@@ -41,8 +44,21 @@ export const ProductCard = ({ product }: Props) => {
 
       <div className={styles.buttons}>
         <button className={styles.addToCart}>Add to cart</button>
-        <button className={styles.favourites} aria-label="Add to favourites">
-          <img src="public/img/icons/Favourites.svg" alt="Favourites" />
+        <button
+          className={`${styles.favourites}${isInFavorites ? ` ${styles['favourites--active']}` : ''}`}
+          aria-label={
+            isInFavorites ? 'Remove from favourites' : 'Add to favourites'
+          }
+          onClick={() => toggleFavorite(product)}
+        >
+          <img
+            src={
+              isInFavorites
+                ? '/img/icons/FavouritesHilight.svg'
+                : '/img/icons/Favourites.svg'
+            }
+            alt="Favourites"
+          />
         </button>
       </div>
     </article>

@@ -1,0 +1,58 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include page-container;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 64px;
+  gap: 24px;
+}
+
+.title {
+  @include h1;
+  padding-top: 24px;
+}
+
+.count {
+  @include button-text;
+  color: var(--color-secondary);
+}
+
+.empty {
+  @include h2;
+  color: var(--color-secondary);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@include on-tablet {
+  .page {
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+
+  .title {
+    padding-top: 40px;
+  }
+
+  .grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+  }
+}
+
+@include on-desktop {
+  .page {
+    padding-bottom: 40px;
+  }
+}
+

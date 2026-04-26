@@ -140,6 +140,7 @@
     height: 48px;
     border-left: 1px solid var(--color-elements);
     flex-shrink: 0;
+    position: relative;
 
     img {
       width: 16px;
@@ -151,6 +152,33 @@
   @include on-desktop {
     height: 64px;
     width: 64px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 30%;
+  right: 43%;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+
+  @include on-tablet {
+    top: 25%;
+    right: 25%;
+  }
+  @include on-desktop {
+    top: 30%;
+    right: 25%;
   }
 }
 
@@ -267,21 +295,17 @@
 }
 
 .menuIconButton {
+  flex: 1;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
-  padding: 24px;
-  flex: 1;
   border-right: 1px solid var(--color-elements);
+  position: relative;
+
 
   img {
     width: 16px;
     height: 16px;
-    object-fit: contain;
-  }
-
-  &:last-child {
-    border-right: none;
   }
 }

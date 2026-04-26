@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
+import { useFavorites } from '../../../../context/FavoritesContext';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
 
   const navLinks = [
     { to: AppRoutes.HOME, label: 'Home' },
@@ -55,6 +57,9 @@ export const Header = () => {
               aria-label="Favourites"
             >
               <img src="/img/icons/Favourites.svg" alt="Favourites" />
+              {favorites.length > 0 && (
+                <span className={styles.badge}>{favorites.length}</span>
+              )}
             </NavLink>
             <NavLink
               to={AppRoutes.CART}
@@ -112,6 +117,9 @@ export const Header = () => {
             onClick={() => setMenuOpen(false)}
           >
             <img src="/img/icons/Favourites.svg" alt="Favourites" />
+            {favorites.length > 0 && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
           </NavLink>
           <NavLink
             to={AppRoutes.CART}
