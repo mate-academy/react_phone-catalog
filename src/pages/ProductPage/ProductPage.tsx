@@ -51,7 +51,9 @@ const ProductPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (!productId || products.length === 0) return;
+    if (!productId || products.length === 0) {
+      return;
+    }
 
     const foundProduct = products.find(p => p.id === productId);
 
@@ -66,7 +68,10 @@ const ProductPage = () => {
   }, [productId, products]);
 
   const handleLikeClick = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
+
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
     } else {
@@ -75,7 +80,10 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
+
     if (isInCart) {
       dispatch(removeFromCart(product.id));
     } else {
@@ -122,7 +130,8 @@ const ProductPage = () => {
   }
 
   const colorVariants = products.filter(
-    p => p.namespaceId === product.namespaceId && p.capacity === product.capacity,
+    p =>
+      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
   const capacityVariants = products.filter(
     p => p.namespaceId === product.namespaceId && p.color === product.color,
@@ -170,7 +179,9 @@ const ProductPage = () => {
               <div key={section.title} className="about-section-content">
                 <h3 className="section-title">{section.title}</h3>
                 {section.text.map((paragraph, i) => (
-                  <p className="paragraph" key={i}>{paragraph}</p>
+                  <p className="paragraph" key={i}>
+                    {paragraph}
+                  </p>
                 ))}
               </div>
             ))}
@@ -190,7 +201,9 @@ const ProductPage = () => {
                   <button
                     key={variant.id}
                     className={`color-dot ${variant.color === product.color ? 'color-dot--active' : ''}`}
-                    style={{ backgroundColor: colorMap[variant.color] || '#ccc' }}
+                    style={{
+                      backgroundColor: colorMap[variant.color] || '#ccc',
+                    }}
                     onClick={() => navigate(`/${category}/${variant.id}`)}
                   />
                 ))}
@@ -288,15 +301,21 @@ const ProductPage = () => {
               </div>
               <div className="spec-row">
                 <span className="spec-name">Camera</span>
-                <span className="spec-value">{'camera' in product ? product.camera : 'N/A'}</span>
+                <span className="spec-value">
+                  {'camera' in product ? product.camera : 'N/A'}
+                </span>
               </div>
               <div className="spec-row">
                 <span className="spec-name">Zoom</span>
-                <span className="spec-value">{'zoom' in product ? product.zoom : 'N/A'}</span>
+                <span className="spec-value">
+                  {'zoom' in product ? product.zoom : 'N/A'}
+                </span>
               </div>
               <div className="spec-row">
                 <span className="spec-name">Cell</span>
-                <span className="spec-value">{'cell' in product ? product.cell.join(', ') : 'N/A'}</span>
+                <span className="spec-value">
+                  {'cell' in product ? product.cell.join(', ') : 'N/A'}
+                </span>
               </div>
             </div>
           </section>
@@ -307,10 +326,18 @@ const ProductPage = () => {
         <div className="container-products">
           <h2>You may also like</h2>
           <div className="carousel-buttons">
-            <button className="carousel-arrow left" onClick={handlePrev} disabled={startIndex === 0}>
+            <button
+              className="carousel-arrow left"
+              onClick={handlePrev}
+              disabled={startIndex === 0}
+            >
               <img src="/img/Arrow_Left.svg" alt="Left" />
             </button>
-            <button className="carousel-arrow right" onClick={handleNext} disabled={startIndex + visibleCount >= sortedProducts.length}>
+            <button
+              className="carousel-arrow right"
+              onClick={handleNext}
+              disabled={startIndex + visibleCount >= sortedProducts.length}
+            >
               <img src="/img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>

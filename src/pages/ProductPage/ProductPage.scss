@@ -225,10 +225,17 @@
   width: 100%;
 
   .divider {
+    margin-top: 24px;
+    border: 1px solid $color-elements;
+  }
+
+  @include desktop {
+    .divider {
     max-width: 320px;
     margin-top: 24px;
     border: 1px solid $color-elements;
   }
+}
 
 
   .label {
@@ -348,7 +355,12 @@
     display: flex;
     gap: 8px;
     margin-bottom: 32px;
-    max-width: 320px;
+    width: 100%;
+
+    @include desktop {
+      max-width: 320px;
+    }
+  }
 
     .action-button {
       flex: 1;
@@ -382,7 +394,6 @@
       }
     }
   }
-}
 
 /* СЕКЦІЇ ТЕКСТУ ТА ХАРАКТЕРИСТИК */
 .about-section, .tech-specs-section {
@@ -460,8 +471,12 @@
 
 .product-specs-short {
   margin-top: 32px;
-  max-width: 320px;
+  width: 100%;
   font-weight: 600;
+
+    @include desktop {
+      max-width: 320px;
+    }
 
 
   .spec-name {
@@ -492,7 +507,6 @@
     color: $color-primary;
   }
 }
-
 
 
 
