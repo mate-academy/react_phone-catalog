@@ -1,0 +1,62 @@
+@import '../../styles/global';
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.45);
+
+  &__content {
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    border: 1px solid $colors-elements;
+    background-color: $colors-white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  &__title {
+    margin: 0 0 12px;
+    color: $colors-primary;
+
+    @include h3-text;
+  }
+
+  &__text {
+    margin: 0 0 24px;
+    color: $colors-secondary;
+
+    @include body-text;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  &__buttonSecondary,
+  &__buttonPrimary {
+    height: 40px;
+    padding: 0 40px;
+    border: none;
+    cursor: pointer;
+
+    @include button-text;
+  }
+
+  &__buttonSecondary {
+    background-color: $colors-white;
+    border: 1px solid $colors-elements;
+    color: $colors-primary;
+  }
+
+  &__buttonPrimary {
+    background-color: $colors-primary;
+    color: $colors-white;
+  }
+}

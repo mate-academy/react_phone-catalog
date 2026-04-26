@@ -1,0 +1,129 @@
+@import '../../styles/global';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid $colors-elements;
+  justify-content: space-between;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+
+  &__part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+    &:first-child {
+      flex: 1;
+      min-width: 0;
+    }
+
+    &:nth-child(2) {
+      justify-content: space-between;
+
+      @include onTablet {
+        justify-content: flex-start;
+      }
+    }
+
+    @include onDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__removeButton {
+    border: none;
+    background: none;
+    color: $colors-icons;
+    transition: all 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      color: $colors-primary;
+      transform: scale(1.1);
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    text-decoration: none;
+    align-items: center;
+    min-width: 0;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__imageWrapper {
+    width: 66px;
+    height: 66px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @include onDesktop {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__name {
+    color: $colors-primary;
+    min-width: 128px;
+    max-width: 336px;
+
+    @include body-text;
+
+    @include onTablet {
+      width: 176px;
+    }
+
+    @include onDesktop {
+      width: 336px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__quantityValue {
+    min-width: 2ch;
+    text-align: center;
+
+    @include body-text;
+  }
+
+  &__price {
+    color: $colors-primary;
+    min-width: 80px;
+    text-align: right;
+    flex-shrink: 0;
+
+    @include h3-text;
+  }
+}

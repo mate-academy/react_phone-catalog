@@ -1,0 +1,259 @@
+@import '../../styles/global';
+
+.productDetails {
+  margin-top: 24px;
+  row-gap: 40px;
+
+  @include pageGrid;
+
+  &__wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include onTablet {
+      gap: 64px;
+    }
+
+    @include onDesktop {
+      gap: 80px;
+    }
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__headerText {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__backIcon {
+    display: inline-flex;
+    stroke: $colors-primary;
+  }
+
+  &__backText {
+    margin: 0;
+
+    @include body-text;
+
+    color: $colors-primary;
+  }
+
+  &__title {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h1-text;
+  }
+
+  &__hero {
+    row-gap: 16px;
+
+    @include pageGrid;
+  }
+
+  &__gallery {
+    min-width: 0;
+    grid-column: 1 / -1;
+
+
+    @include onTablet {
+      grid-column: 1 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 12;
+    }
+  }
+
+  &__sidebar {
+    min-width: 0;
+    grid-column:1 / -1;
+
+    @include onTablet {
+      grid-column: 8 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 14 / 20;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__priceBlock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__priceDiscount {
+    color: $colors-primary;
+
+    @include h3-text;
+  }
+
+  &__priceRegular {
+    color: $colors-secondary;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.4;
+    text-decoration: line-through;
+    text-decoration-color: $colors-secondary;
+    text-decoration-thickness: 2px;
+  }
+
+  &__shortSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__shortSpec {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__shortSpecLabel {
+    margin: 0;
+    color: $colors-secondary;
+
+    @include body-text;
+  }
+
+  &__shortSpecValue {
+    margin: 0;
+    color: $colors-primary;
+    text-align: right;
+
+    @include body-text;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    @include onDesktop {
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+      gap: 64px;
+    }
+  }
+
+  &__about,
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $colors-elements;
+  }
+
+  &__sectionTitle {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h2-text;
+  }
+
+  &__descriptionBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__descriptionTitle {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h3-text;
+  }
+
+  &__descriptionText {
+    margin: 0;
+    color: $colors-secondary;
+
+    @include body-text;
+  }
+
+  &__techList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__techRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__techLabel {
+    margin: 0;
+    color: $colors-secondary;
+
+    @include body-text;
+  }
+
+  &__techValue {
+    margin: 0;
+    color: $colors-primary;
+    text-align: right;
+
+    @include body-text;
+  }
+
+  &__recommended {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 240px;
+  }
+
+  &__stateText {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h3-text;
+  }
+}
+

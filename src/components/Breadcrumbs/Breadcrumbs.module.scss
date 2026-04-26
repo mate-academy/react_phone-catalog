@@ -1,0 +1,42 @@
+@import '../../styles/global';
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+
+  &__home {
+    display: inline-flex;
+  }
+
+  &__chevron {
+    display: inline-flex;
+    stroke: $colors-secondary;
+  }
+
+  &__category,
+  &__product {
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  &__categoryActive {
+    color: $colors-primary;
+  }
+
+  &__categoryMuted {
+    color: $colors-secondary;
+  }
+
+  &__product {
+    max-width: 380px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $colors-secondary;
+  }
+}

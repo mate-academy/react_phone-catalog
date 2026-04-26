@@ -1,0 +1,43 @@
+@import '../../styles/global';
+
+.carousel {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h2-text;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__track {
+    display: flex;
+    overflow: auto hidden;
+    gap: 16px;
+
+    scrollbar-width: none;
+  }
+
+  &__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__item {
+    flex: 0 0 272px;
+
+  }
+}

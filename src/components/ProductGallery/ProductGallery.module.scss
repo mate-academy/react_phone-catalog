@@ -1,0 +1,84 @@
+@import '../../styles/global';
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    order: 2;
+
+    overflow: auto hidden;
+    max-width: 100%;
+
+    @include onTablet {
+      flex-direction: column;
+      order: -1;
+
+      overflow: hidden auto;
+    }
+  }
+
+  &__thumbnailButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: 1px solid $colors-elements;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $colors-secondary;
+    }
+
+    @include onTablet {
+      width: clamp(35px, 4vw + 10px, 80px);
+      height: clamp(35px, 4vw + 10px, 80px);
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__thumbnailButtonActive {
+    border-color: $colors-primary;
+  }
+
+
+  &__thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__main {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__mainImage {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}

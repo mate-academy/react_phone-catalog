@@ -1,0 +1,233 @@
+@import '../../styles/global';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  background-color: $colors-white;
+  border-bottom: 1px solid $colors-elements;
+
+  @include onTablet {
+    height: 48px;
+  }
+
+  &__container {
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 100%;
+    padding-right: 0;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    transition: transform 0.3s ease;
+    width: 80px;
+    height: auto;
+
+    @include onTablet {
+      width: 64px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include onDesktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__navLink {
+    position: relative;
+
+    @include uppercase-text;
+
+    text-decoration: none;
+    color: $colors-secondary;
+
+    transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: -2px;
+      bottom: -26.5px;
+
+      width: 110%;
+      height: 3px;
+      background-color: $colors-primary;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+
+      @include onTablet {
+        bottom: -18.5px;
+      }
+    }
+
+    &:hover {
+      color: $colors-primary;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__navLinkActive {
+    color: $colors-primary;
+    text-decoration: none;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__right {
+    display: none;
+    align-items: center;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__iconLink {
+    position: relative;
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-left: 1px solid $colors-elements;
+    text-decoration: none;
+
+    @include onTablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      width: 100%;
+      height: 3px;
+      background-color: $colors-primary;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    & > * {
+      transform: scale(1.05);
+    }
+
+    &:hover>* {
+      transform: scale(1.1);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__iconLinkActive {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__burgerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    box-shadow: -1px 0 0 $colors-elements;
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__burger {
+    width: 16px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    span {
+      height: 2px;
+      width: 100%;
+      background: $colors-primary;
+      border-radius: 2px;
+
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+  }
+
+  &__burgerOpen {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}

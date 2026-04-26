@@ -1,0 +1,35 @@
+@import '../../../styles/global';
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.icon {
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $colors-red;
+  border: 1px solid $colors-white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 1;
+  color: $colors-white;
+  z-index: 1;
+}

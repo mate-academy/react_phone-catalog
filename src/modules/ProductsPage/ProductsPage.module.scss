@@ -1,0 +1,85 @@
+@import '../../styles/global';
+
+.productPage {
+  margin-top: 24px;
+
+  @include pageGrid;
+
+  &__wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+
+    @include h1-text;
+  }
+
+  &__count {
+    margin: 0;
+
+    @include body-text;
+
+    color: $colors-secondary;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__controls {
+    @include innerGrid;
+  }
+
+  &__controlsSort {
+    grid-column: span 2;
+
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__controlsPerPage {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__paginationButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  &__dots {
+    width: 20px;
+    height: 32px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 12px;
+  }
+}

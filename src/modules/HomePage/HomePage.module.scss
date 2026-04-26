@@ -1,0 +1,57 @@
+@import '../../styles/global';
+
+.home {
+  margin-top: 56px;
+
+  @include pageGrid;
+
+  &__title {
+    grid-column: 1 / -1;
+    color: $colors-primary;
+
+    @include h1-text;
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include onTablet {
+      gap: 64px;
+    }
+
+    @include onDesktop {
+      gap: 80px;
+    }
+  }
+
+  &__banner {
+    @include pageGrid;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__categoriesTitle {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h2-text;
+  }
+
+  &__categoriesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+}
