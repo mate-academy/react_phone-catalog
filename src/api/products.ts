@@ -9,7 +9,7 @@ const DETAILS_FILE_BY_CATEGORY: Record<ProductCategory, string> = {
 };
 
 export function getProducts(): Promise<Product[]> {
-  return getData<Product[]>('/products.json');
+  return getData<Product[]>('/api/products.json');
 }
 
 export async function getProductDetails(
