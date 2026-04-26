@@ -1,0 +1,19 @@
+.searchBar {
+  width: 190px;
+  max-height: 40px;
+  padding: 5px 16px;
+  margin-left: auto;
+  border-radius: 999px;
+   border: 1px solid #ccc;
+  background-color: #3B3E4A;
+  color: white;
+
+  &:focus {
+      border-color: #666;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+  &::placeholder {
+      color: #ffffff;
+    }
+}

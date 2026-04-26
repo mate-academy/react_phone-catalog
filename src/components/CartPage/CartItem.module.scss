@@ -1,0 +1,100 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins.scss';
+
+.cartItem {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 24px;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $surface-color-1;
+
+  @include on-mobile {
+    flex-direction: column;
+  }
+
+  &__productInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #F1F2F9;
+  }
+
+  &__priceSettings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include on-mobile {
+      gap: 0;
+      width: 100%;
+    }
+  }
+
+  &__quantityBox {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__quantityBtn {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background-color: $surface-color-2;
+    align-items: center;
+    justify-content: center;
+    border: $box-shadow-settings;
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+  }
+
+  &__quantityBtn img {
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+  }
+
+  &__btnOff {
+    background-color: $surface-color-1;
+  }
+
+  &__quantityBox p {
+    font-weight: 600;
+    font-size: 14px;
+    color: #F1F2F9;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    text-align: right;
+    padding-left: 29px;
+    color: #F1F2F9;
+  }
+}

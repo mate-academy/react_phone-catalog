@@ -1,0 +1,42 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins.scss';
+
+ .path {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+
+  &__homeLink {
+    display: flex;
+    align-items: center;
+    height: 16px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__titleWhite {
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+}

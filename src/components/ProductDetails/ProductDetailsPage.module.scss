@@ -1,0 +1,322 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins.scss';
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 80px;
+
+  &__labels {
+    gap: 16px;
+  }
+
+  &__backBtnArrow {
+    margin-right: 4px;
+  }
+
+  &__mainTitle {
+    margin-top: 16px;
+    font-weight: 800;
+    font-size: 32px;
+    color: #F1F2F9;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+
+  &__topPage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: clamp(17px, 4vw, 64px);
+
+    @include on-mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__imgsSlider {
+    display: flex;
+    gap: 16px;
+    min-width: 0;
+    align-items: flex-start;
+
+    @include on-mobile {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__thumSwiper {
+    width: clamp(22px, 8vw, 80px);
+    height: clamp(210px, 40vw, 464px);
+    flex-shrink: 0;
+
+    @include on-mobile {
+    width: 100%;
+    height: auto;
+  }
+  }
+
+  &__thumSlide {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+  }
+
+  &__thumSlide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__mainSwiper {
+     width: 100%;
+    min-width: 0;
+  }
+
+  &__mainSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+  }
+
+  &__mainSlide img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__optionsBar {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &__optionsBar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__options {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #3B3E4A;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__options p {
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__optionsList {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorLink {
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    border: 2px solid #0F1121;
+    box-shadow: 0 0 0 2px #3B3E4A;
+  }
+
+  &__colorLinkActive {
+    box-shadow: 0 0 0 2px #F1F2F9;
+  }
+
+  &__capacityLink {
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #4A4D58;
+    padding-inline: 8px;
+    padding-block: 4px;
+    color: #F1F2F9;
+  }
+
+  &__capacityLinkActive {
+    background-color: #F1F2F9;
+    color: #0F1121;
+  }
+
+  &__mainBtnsAndPrice {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__newPrice {
+    font-weight: 800;
+    font-size: 32px;
+    color: #F1F2F9;
+
+  }
+
+  &__oldPrice {
+    font-weight: 600;
+    font-size: 22px;
+    color: #75767F;
+    text-decoration: line-through;
+  }
+
+  &__mainBtns {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__addBtn {
+    width: 100%;
+    height: 48px;
+    background-color: $accent;
+    font-weight: 700;
+    font-size: 14px;
+    color: #F1F2F9;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+  }
+
+  &__addBtnAdded {
+    background-color: $surface-color-2;
+  }
+
+  &__favBtn {
+    flex: 0 0 48px;
+    height: 48px;
+    background-color: $surface-color-2;
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+  }
+
+  &__favBtnAdded {
+    background-color: $surface-color-1;
+    border: $box-shadow-settings;
+  }
+
+  &__basicSpecs {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specsRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  &__specsLabel,
+  &__specsValue  {
+    margin: 0;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &__specsLabel {
+    color: $secondary-color;
+  }
+
+  &__specsValue {
+    color: #F1F2F9;
+  }
+
+  &__bottomPage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: clamp(17px, 4vw, 64px);
+
+    @include on-tablet {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__bottomPageTitle {
+    font-weight: 800;
+    font-size: 22px;
+    color: #F1F2F9;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3B3E4A;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__descriptionTitle {
+    font-weight: 700;
+    font-size: 20px;
+    color: #F1F2F9;
+  }
+
+  &__descriptionText {
+    font-weight: 600;
+    font-size: 14px;
+    color: $secondary-color;
+  }
+
+  &__mainSpecsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &__mainSpecsLabel,
+  &__mainSpecsValue  {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  &__mainSpecsLabel {
+    color: $secondary-color;
+  }
+
+  &__mainSpecsValue {
+    color: #F1F2F9;
+  }
+}

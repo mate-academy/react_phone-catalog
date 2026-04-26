@@ -1,1 +1,17 @@
-// not empty
+@import './styles/utils/mixins.scss';
+@import './styles/utils/variables.scss';
+
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  @include content-padding-inline;
+}

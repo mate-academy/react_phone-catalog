@@ -1,0 +1,40 @@
+@import './styles/utils/variables.scss';
+@import './styles/utils/mixins.scss';
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-Regular.otf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-Bold.otf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-width: 320px;
+  background-color: $main-page-background-color;
+}
+
+body {
+  font-family: 'Mont', sans-serif;
+}
