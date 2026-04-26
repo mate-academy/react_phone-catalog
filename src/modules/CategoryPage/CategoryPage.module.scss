@@ -14,7 +14,7 @@
 }
 
 .count {
-  @include small-text;
+  @include button-text;
   color: var(--color-secondary);
   padding-top: 8px;
 }
