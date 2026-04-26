@@ -27,20 +27,17 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  // 1. Усі хуки стану (повинні бути на самому початку)
   const [product, setProduct] = useState<ProductType | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
 
-  // 2. Селектори Redux
   const products = useAppSelector(
     state => state.products.items,
   ) as ProductType[];
   const favorites = useAppSelector(state => state.favorites.items);
   const cartItems = useAppSelector(state => state.cart.items);
 
-  // 3. Обчислення (useMemo)
   const sortedProducts: CatalogProduct[] = useMemo(() => {
     return [...(products as unknown as CatalogProduct[])]
       .sort((a, b) => b.year - a.year)
@@ -51,11 +48,10 @@ const ProductPage = () => {
   const isLiked = favorites.some(item => item.id === product?.id);
   const isInCart = cartItems.some(item => item.id === product?.id);
 
-  // 4. Ефекти
   useEffect(() => {
-    window.scrollTo(0, 0); // Скрол вгору при зміні продукту
+    window.scrollTo(0, 0);
 
-    if (!productId || products.length === 0) {return;}
+    if (!productId || products.length === 0) return;
 
     const foundProduct = products.find(p => p.id === productId);
 
@@ -63,15 +59,14 @@ const ProductPage = () => {
       setProduct(foundProduct);
       setLoading(false);
       setSelectedImage(0);
-      setStartIndex(0); // Скидаємо слайдер при переході на новий товар
+      setStartIndex(0);
     } else {
       setLoading(false);
     }
   }, [productId, products]);
 
-  // 5. Обробники подій
   const handleLikeClick = () => {
-    if (!product) {return;}
+    if (!product) return;
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
     } else {
@@ -80,7 +75,7 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (!product) {return;}
+    if (!product) return;
     if (isInCart) {
       dispatch(removeFromCart(product.id));
     } else {
@@ -106,7 +101,6 @@ const ProductPage = () => {
     startIndex + visibleCount,
   );
 
-  // 6. Умовний рендер (ТІЛЬКИ після всіх хуків)
   if (loading) {
     return (
       <div className="product-page product-page--loading">
@@ -120,7 +114,6 @@ const ProductPage = () => {
       <div className="product-page product-page--error">
         <Breadcrumbs />
         <h1>Product not found</h1>
-        <p>We couldn't find product with id: {productId}</p>
         <button onClick={() => navigate('/')} className="back-button">
           Go Home
         </button>
@@ -128,10 +121,8 @@ const ProductPage = () => {
     );
   }
 
-  // Обчислення варіантів
   const colorVariants = products.filter(
-    p =>
-      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
+    p => p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
   const capacityVariants = products.filter(
     p => p.namespaceId === product.namespaceId && p.color === product.color,
@@ -141,193 +132,175 @@ const ProductPage = () => {
     <div className="product-page">
       <Breadcrumbs productName={product.name} />
 
-      <div
-        className="back-button"
-        onClick={() => navigate(-1)}
-        style={{
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          marginBottom: '16px',
-        }}
-      >
+      <div className="back-button" onClick={() => navigate(-1)}>
         <img src="/img/Arrow_Left.svg" alt="Arrow" />
         <span>Back</span>
       </div>
 
       <h1 className="product-title">{product.name}</h1>
 
-      <div className="product-content">
-        <div className="product-gallery">
-          <div className="gallery-thumbnails">
-            {product.images.map((img, index) => (
-              <button
-                key={`${img}-${index}`}
-                className={`thumbnail ${selectedImage === index ? 'thumbnail--active' : ''}`}
-                onClick={() => setSelectedImage(index)}
-              >
-                <img src={`/${img}`} alt={`${product.name} ${index}`} />
-              </button>
-            ))}
-          </div>
-          <div className="gallery-main">
-            <img
-              src={`/${product.images[selectedImage]}`}
-              alt={product.name}
-              className="product-main-image"
-            />
-          </div>
-        </div>
-
-        <div className="product-info">
-          <div className="product-colors">
-            <div className="top-container">
-              <span className="color-label">Available colors</span>
-              <span className="product-id">ID: {product.id}</span>
-            </div>
-            <div className="color-dots">
-              {colorVariants.map(variant => (
+      <div className="product-two-columns">
+        {/* ЛІВА КОЛОНКА */}
+        <div className="left-side">
+          <div className="product-gallery">
+            <div className="gallery-thumbnails">
+              {product.images.map((img, index) => (
                 <button
-                  key={variant.id}
-                  className={`color-dot ${variant.color === product.color ? 'color-dot--active' : ''}`}
-                  style={{ backgroundColor: colorMap[variant.color] || '#ccc' }}
-                  onClick={() => navigate(`/${category}/${variant.id}`)}
-                  title={variant.color}
-                />
-              ))}
-            </div>
-          </div>
-
-          <hr className="divider" />
-
-          <div className="product-capacity">
-            <span className="capacity-label">Select capacity</span>
-            <div className="capacity-buttons">
-              {capacityVariants.map(variant => (
-                <button
-                  key={variant.id}
-                  className={`capacity-item ${variant.capacity === product.capacity ? 'capacity-item--active' : ''}`}
-                  onClick={() => navigate(`/${category}/${variant.id}`)}
+                  key={`${img}-${index}`}
+                  className={`thumbnail ${selectedImage === index ? 'thumbnail--active' : ''}`}
+                  onClick={() => setSelectedImage(index)}
                 >
-                  {variant.capacity}
+                  <img src={`/${img}`} alt={`${product.name} ${index}`} />
                 </button>
               ))}
             </div>
-          </div>
-
-          <hr className="divider" />
-
-          <div className="product-pricing">
-            <span className="current-price">${product.priceDiscount}</span>
-            {product.priceRegular !== product.priceDiscount && (
-              <span className="original-price">${product.priceRegular}</span>
-            )}
-          </div>
-
-          <div className="product-actions">
-            <button
-              className={`action-button ${isInCart ? 'action-button--added-to-cart' : ''}`}
-              onClick={handleAddToCart}
-              type="button"
-            >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
-            </button>
-
-            <button
-              className={`favorite-button ${isLiked ? 'is-liked' : ''}`}
-              onClick={handleLikeClick}
-              type="button"
-              aria-label="Toggle favorite"
-            >
+            <div className="gallery-main">
               <img
-                src={isLiked ? '/img/HeartFilled.svg' : '/img/Like.svg'}
-                alt="Like"
+                src={`/${product.images[selectedImage]}`}
+                alt={product.name}
+                className="product-main-image"
               />
-            </button>
+            </div>
           </div>
 
-          <div className="product-specs">
-            <div className="spec-row">
-              <span className="spec-name">Screen</span>
-              <span className="spec-value">{product.screen}</span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">Resolution</span>
-              <span className="spec-value">{product.resolution}</span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">Processor</span>
-              <span className="spec-value">{product.processor}</span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">RAM</span>
-              <span className="spec-value">{product.ram}</span>
-            </div>
-          </div>
+          <section className="about-section">
+            <h2 className="about-title">About</h2>
+            <hr className="divider" />
+            {product.description.map(section => (
+              <div key={section.title} className="about-section-content">
+                <h3 className="section-title">{section.title}</h3>
+                {section.text.map((paragraph, i) => (
+                  <p className="paragraph" key={i}>{paragraph}</p>
+                ))}
+              </div>
+            ))}
+          </section>
         </div>
-      </div>
 
-      <div className="product-description">
-        <section className="about-section">
-          <div className="about-title">About</div>
-          <hr className="divider" />
-          {product.description.map(section => (
-            <div key={section.title} className="about-section-content">
-              <h4 className="section-title">{section.title}</h4>
-              {section.text.map((paragraph, i) => (
-                <p className="paragraph" key={i}>
-                  {paragraph}
-                </p>
-              ))}
+        {/* ПРАВА КОЛОНКА */}
+        <div className="right-side">
+          <div className="product-info-card">
+            <div className="product-colors">
+              <div className="top-container">
+                <span className="label">Available colors</span>
+                <span className="product-id">ID: {product.id}</span>
+              </div>
+              <div className="color-dots">
+                {colorVariants.map(variant => (
+                  <button
+                    key={variant.id}
+                    className={`color-dot ${variant.color === product.color ? 'color-dot--active' : ''}`}
+                    style={{ backgroundColor: colorMap[variant.color] || '#ccc' }}
+                    onClick={() => navigate(`/${category}/${variant.id}`)}
+                  />
+                ))}
+              </div>
             </div>
-          ))}
-        </section>
 
-        <section className="about-section">
-          <div className="about-title">Tech specs</div>
-          <hr className="divider" />
-          <div className="product-specs2">
-            <div className="spec-row">
-              <span className="spec-name">Screen</span>
-              <span className="spec-value">{product.screen}</span>
+            <hr className="divider" />
+
+            <div className="product-capacity">
+              <span className="label">Select capacity</span>
+              <div className="capacity-buttons">
+                {capacityVariants.map(variant => (
+                  <button
+                    key={variant.id}
+                    className={`capacity-item ${variant.capacity === product.capacity ? 'capacity-item--active' : ''}`}
+                    onClick={() => navigate(`/${category}/${variant.id}`)}
+                  >
+                    {variant.capacity}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="spec-row">
-              <span className="spec-name">Resolution</span>
-              <span className="spec-value">{product.resolution}</span>
+
+            <hr className="divider" />
+
+            <div className="product-pricing">
+              <span className="current-price">${product.priceDiscount}</span>
+              {product.priceRegular !== product.priceDiscount && (
+                <span className="original-price">${product.priceRegular}</span>
+              )}
             </div>
-            <div className="spec-row">
-              <span className="spec-name">Processor</span>
-              <span className="spec-value">{product.processor}</span>
+
+            <div className="product-actions">
+              <button
+                className={`action-button ${isInCart ? 'action-button--added-to-cart' : ''}`}
+                onClick={handleAddToCart}
+              >
+                {isInCart ? 'Added to cart' : 'Add to cart'}
+              </button>
+
+              <button
+                className={`favorite-button ${isLiked ? 'liked' : ''}`}
+                onClick={handleLikeClick}
+              >
+                <img
+                  src={isLiked ? '/img/HeartFilled.svg' : '/img/Like.svg'}
+                  alt="Like"
+                />
+              </button>
             </div>
-            <div className="spec-row">
-              <span className="spec-name">RAM</span>
-              <span className="spec-value">{product.ram}</span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">Built in memory</span>
-              <span className="spec-value">{product.capacity}</span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">Camera</span>
-              <span className="spec-value">
-                {'camera' in product ? product.camera : 'N/A'}
-              </span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">Zoom</span>
-              <span className="spec-value">
-                {'zoom' in product ? product.zoom : 'N/A'}
-              </span>
-            </div>
-            <div className="spec-row">
-              <span className="spec-name">Cell</span>
-              <span className="spec-value">
-                {'cell' in product ? product.cell.join(', ') : 'N/A'}
-              </span>
+
+            <div className="product-specs-short">
+              <div className="spec-row">
+                <span className="spec-name">Screen</span>
+                <span className="spec-value">{product.screen}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Resolution</span>
+                <span className="spec-value">{product.resolution}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Processor</span>
+                <span className="spec-value">{product.processor}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">RAM</span>
+                <span className="spec-value">{product.ram}</span>
+              </div>
             </div>
           </div>
-        </section>
+
+          <section className="tech-specs-section">
+            <h2 className="about-title">Tech specs</h2>
+            <hr className="divider" />
+            <div className="product-specs-full">
+              <div className="spec-row">
+                <span className="spec-name">Screen</span>
+                <span className="spec-value">{product.screen}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Resolution</span>
+                <span className="spec-value">{product.resolution}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Processor</span>
+                <span className="spec-value">{product.processor}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">RAM</span>
+                <span className="spec-value">{product.ram}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Built in memory</span>
+                <span className="spec-value">{product.capacity}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Camera</span>
+                <span className="spec-value">{'camera' in product ? product.camera : 'N/A'}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Zoom</span>
+                <span className="spec-value">{'zoom' in product ? product.zoom : 'N/A'}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Cell</span>
+                <span className="spec-value">{'cell' in product ? product.cell.join(', ') : 'N/A'}</span>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
 
       <section className="brand-new-models">

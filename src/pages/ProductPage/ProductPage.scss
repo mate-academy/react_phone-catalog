@@ -1,401 +1,498 @@
 @import '../../variables';
+@import '../../mixins';
 
 .product-page {
+  grid-column: 1/-1;
   margin-top: 24px;
-  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+  @include mobile {
+  .product-card {
+    width: 212px;
+    height: 100%;
+  }
+  }
+
+  @include tablet {
+  .product-card {
+    width: 237px;
+  }
+  }
 
 
   .brand-new-models {
-    grid-column: 1 / -1;
     margin-bottom: 80px;
+
+    @include mobile {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+
+    @include tablet {
+      margin-bottom: 64px;
+      margin-top: 64px;
+    }
   }
 
   .product-title {
-    margin-top: 16px;
+    margin-bottom: 40px;
     font-size: map-get($h2-styles, font-size);
     font-weight: map-get($h2-styles, font-weight);
     line-height: map-get($h2-styles, line-height);
-    letter-spacing: map-get($h2-styles, letter-spacing);
+
+    @include mobile {
+      font-size: map-get($h2-styles-mobile, font-size);
+    }
+  }
+
+  .product-two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Чіткий розподіл на 2 колонки
+    gap: 64px;
+    align-items: start;
+
+    @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+
+    .left-side, .right-side {
+      display: contents;
+    }
+
+    .product-gallery {
+      order: 1;
+    }
+
+    .product-info-card {
+      order: 2;
+    }
+
+    .about-section {
+      order: 3;
+    }
+
+    .tech-specs-section {
+      order: 4;
+    }
+  }
+
+  @include tablet {
+    gap: 30px;
+    // Ми НЕ використовуємо flex на планшеті, залишаємо grid,
+    // щоб мати можливість розтягувати елементи на всю ширину
+
+    .left-side, .right-side {
+      display: contents; // "Вивільняємо" елементи з колонок для гріда
+    }
+
+    // Перший ряд: Фото зліва, Картка справа
+    .product-gallery {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .product-info-card {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    // Другий ряд: About на всю ширину (від 1 до останньої лінії)
+    .about-section {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      margin-top: 40px;
+    }
+
+    // Третій ряд: Характеристики на всю ширину
+    .tech-specs-section {
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
+  }
+  }
+
+  // ЛІВА СТОРОНА
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    min-width: 0;
+
+    @include mobile {
+      gap: 56px;
+    }
+  }
+
+  // ПРАВА СТОРОНА
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    width: 100%;
+    align-items: normal;
   }
 }
 
-.top-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.product-id {
-  color: $color-icons;
-}
-
-.product-content {
-  display: flex;
-  gap: 64px;
-  margin-top: 30px;
-}
-
-.back-button {
-  margin-top: 40px;
-  background: none;
-  border: none;
-  color: #89939a;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-
-  &:hover {
-    color: #313237;
-  }
-}
-
-
-/* ===== GALLERY ===== */
-
+/* ГАЛЕРЕЯ */
 .product-gallery {
   display: flex;
   gap: 16px;
-}
 
-/* Стовпчик мініатюр */
-.gallery-thumbnails {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.thumbnail {
-  width: 80px;
-  height: 80px;
-  border: 1px solid $color-elements;
-  padding: 7px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background-color: $color-white;
-
-  img {
+  @include mobile {
+    flex-direction: column-reverse;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
-  &:hover {
-    border-color: $color-primary;
-  }
-}
+  .gallery-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
-.thumbnail--active {
-  border: 1px solid $color-primary;
-}
-
-/* Велике фото */
-.gallery-main {
-  height: calc(80px * 4 + 12px * 3); // висота 4 мініатюр + відступи
-  width: 420px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-
-.product-main-image {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* ===== INFO ===== */
-
-.product-info {
-  grid-column: 16 / -1;
-  gap: 20px;
-  flex: 1
-}
-
-.product-colors {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
-
-  font-size: map-get($small-text, font-size);
-  font-weight: map-get($small-text, font-weight);
-  line-height: map-get($small-text, line-height);
-  letter-spacing: map-get($small-text, letter-spacing);
-  color: $color-secondary;
-}
-
-.color-dots {
-  display: flex;
-  gap: 12px;
-}
-
-
-.color-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  cursor: pointer;
-  outline: 2px solid $color-elements;
-  outline-offset: 2px;
-
-  // Прибираємо будь-який дефолтний бордер
-  border: none;
-
-  // Додаємо плавний перехід для візуального ефекту
-  transition: outline 0.2s ease-in-out;
-
-  &--active {
-    /* 1. Малюємо лінію навколо (outline)
-       2. outline-offset: 2px "відштовхує" цю лінію від краю точки,
-          створюючи прозорий проміжок.
-    */
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-  }
-}
-
-.divider {
-  color: $color-elements;
-  border: none;
-  border-top: 1px solid $color-elements;
-}
-
-.product-capacity {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 24px;
-  margin-bottom: 24px;
-
-  font-size: map-get($small-text, font-size);
-  font-weight: map-get($small-text, font-weight);
-  line-height: map-get($small-text, line-height);
-  letter-spacing: map-get($small-text, letter-spacing);
-  color: $color-secondary;
-}
-
-.capacity-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.capacity-item {
-  padding: 7px 7px;
-  border: 1px solid #e2e6e9;
-  background-color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s;
-
-  &:hover {
-    border-color: #313237;
-  }
-
-  &--active {
-    border: 2px solid #313237;
-    background-color: #313237;
-    color: #fff;
-  }
-}
-
-
-.product-pricing {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 32px;
-  margin-bottom: 16px;
-  align-items: center;
-
-  .current-price {
-    font-size: map-get($h2-styles, font-size);
-    font-weight: map-get($h2-styles, font-weight);
-    line-height: map-get($h2-styles, line-height);
-    letter-spacing: map-get($h2-styles, letter-spacing);
-  }
-
-  .original-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 41px;
-    letter-spacing: 0.1;
-  }
-}
-
-.product-actions {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 8px;
-  max-width: 320px;
-
-  .action-button {
-    width: 100%;
-    padding: 12px 20px;
-    border: none;
-    background: #333;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-    font-family: $font-main;
-
-     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+    @include mobile {
+      flex-direction: row;
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 8px;
     }
 
-     &--added-to-cart {
-      background-color: $color-white;
+     @include tablet {
+      gap: 8px;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
       border: 1px solid $color-elements;
-      color: $color-green;
+      padding: 7px;
+      cursor: pointer;
+      background-color: $color-white;
+      transition: border-color 0.2s;
+
+
+      @include mobile {
+        width: 50px;
+        height: 50px;
+      }
+
+      @include tablet {
+        width: 35px;
+        height: 35px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      &--active {
+        border-color: $color-primary;
+      }
     }
   }
 
-  .favorite-button {
-  width: 48px;
-  height: 48px; // Обов'язково додайте висоту, щоб кнопка була квадратною
-  padding: 0;   // Скидаємо стандартні відступи браузера
-  flex-shrink: 0;
+  .gallery-main {
+    flex: 1;
+    height: 464px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    @include mobile {
+    max-height: 288px;
+    }
 
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-  font-size: 20px;
-  line-height: 0; // Прибираємо вплив висоти рядка на іконку
+    @include tablet {
+    max-height: 288px;
+    }
 
-  &.liked {
-    color: red;
-    border-color: red;
+
+    .product-main-image {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
   }
 }
-}
 
-/* ===== SPECS ===== */
-
-.product-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
-  margin-top: 32px;
-  max-width: 320px;
-
-
-
-
-  .spec-name {
-  font-family: $font-main;
-  font-size: map-get($small-text, font-size);
-  font-weight: map-get($small-text, font-weight);
-  line-height: map-get($small-text, line-height);
-  letter-spacing: map-get($small-text, letter-spacing);
-  color: $color-secondary;
-}
-
-.spec-value {
-  font-family: $font-main;
-  font-size: map-get($small-text, font-size);
-  font-weight: map-get($small-text, font-weight);
-  line-height: map-get($small-text, line-height);
-  letter-spacing: map-get($small-text, letter-spacing);
-  color: $color-primary;
-}
-
-}
-
-.product-specs2 {
-  display: flex;
+/* ІНФО ТА ЦІНА */
+.product-info-card {
   width: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 14px;
-  margin-top: 32px;
+
+  .divider {
+    max-width: 320px;
+    margin-top: 24px;
+    border: 1px solid $color-elements;
+  }
 
 
-  .spec-name {
-  font-family: $font-main;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: map-get($small-text, letter-spacing);
-  color: $color-secondary;
+  .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-secondary;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .top-container {
+    display: flex;
+    justify-content: space-between; // Розштовхує контент по краях
+    align-items: center;
+    width: 100%; // Контейнер має розтягнутися на всю ширину правої колонки
+    margin-bottom: 8px;
+  }
+
+  .product-id {
+    font-size: 12px;
+    color: $color-icons;
+    text-align: right; // Додаткова страховка
+    white-space: nowrap; // Щоб ID не переносився
+
+
+   @include mobile {
+    width: 150px;
+    overflow: hidden;       // Приховуємо все, що виходить за межі 150px
+    text-overflow: ellipsis; // Додаємо три крапки в кінці
+    display: block;          // Переконуємось, що елемент поводиться як блок (для span це важливо)
+  }
+
+    @include tablet {
+    width: 150px;
+    overflow: hidden;       // Приховуємо все, що виходить за межі 150px
+    text-overflow: ellipsis; // Додаємо три крапки в кінці
+    display: block;          // Переконуємось, що елемент поводиться як блок (для span це важливо)
+  }
+  }
+
+ .color-dots {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+
+  .color-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: 2px solid $color-elements;
+    outline-offset: 2px;
+
+    transition: outline-color 0.2s ease;
+
+    &:hover {
+      outline-color: $color-primary;
+    }
+
+    &--active {
+      outline-color: $color-primary;
+      outline-width: 2px;
+    }
+  }
 }
 
-.spec-value {
-  font-family: $font-main;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: map-get($small-text, letter-spacing);
-  color: $color-primary;
+  .product-capacity {
+    margin-top: 24px;
+  }
+
+
+  .capacity-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+
+
+    .capacity-item {
+      padding: 10px 12px;
+      border: 1px solid $color-elements;
+      background: $color-white;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-family: $font-main;
+
+      &--active {
+        background: $color-primary;
+        color: $color-white;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  .product-pricing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 32px 0 16px;
+    max-width: 320px;
+
+    .current-price {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .original-price {
+      font-size: 22px;
+      color: $color-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  .product-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    max-width: 320px;
+
+    .action-button {
+      flex: 1;
+      height: 48px;
+      background: $color-primary;
+      color: $color-white;
+      border: none;
+      font-weight: 500;
+      font-family: $font-main;
+      cursor: pointer;
+
+      &--added-to-cart {
+        background: $color-white;
+        color: $color-green;
+        border: 1px solid $color-elements;
+      }
+    }
+
+    .favorite-button {
+      width: 48px;
+      height: 48px;
+      background: $color-white;
+      border: 1px solid $color-elements;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &.liked {
+        border-color: $color-primary;
+      }
+    }
+  }
 }
 
+/* СЕКЦІЇ ТЕКСТУ ТА ХАРАКТЕРИСТИК */
+.about-section, .tech-specs-section {
+  width: 100%;
+
+  .about-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid $color-elements;
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin: 32px 0 16px;
+    color: $color-primary;
+  }
+
+  .paragraph {
+    color: $color-secondary;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+  }
 }
 
 .spec-row {
   display: flex;
-  justify-content: space-between; // name ліворуч, value праворуч
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  width: 100%;
+  min-width: 0;
+
+  .spec-name {
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+    color: $color-secondary;
+    margin-right: 16px;
+  }
+
+  .spec-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-primary;
+    text-align: right;
+
+   @include mobile {
+      // 1. Змушуємо блок зайняти все вільне місце справа
+      flex: 1;
+
+      // 2. Цей марджин гарантує, що значення не наїде на назву
+      margin-left: auto;
+
+      // 3. Змінюємо тип відображення на block або flex
+      display: inline-block;
+      width: 100%;
+
+      /* Переноси */
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
+
+      // 4. Додаткове вирівнювання для коротких слів
+      float: right;
+    }
+  }
 }
 
-.divider {
-  width: 320px;
+.product-specs-short {
+  margin-top: 32px;
+  max-width: 320px;
+  font-weight: 600;
+
+
+  .spec-name {
+    font-weight: 600;
+  }
+
+  .spec-value {
+    font-weight: 600;
+  }
 }
 
-.about-title {
-  font-family: $font-main;
-  font-size: map-get($h3-styles, font-size);
-  font-weight: map-get($h3-styles, font-weight);
-  line-height: map-get($h3-styles, line-height);
-  letter-spacing: map-get($h3-styles, letter-spacing);
-  color: $color-primary;
-
-  margin-bottom: 16px;
+.product-specs-full {
+  .spec-row {
+    margin-bottom: 12px;
+  }
 }
 
-.product-description {
+.back-button {
   display: flex;
-  grid-column: 1 / -1;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  margin-top: 80px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  color: $color-secondary;
+  font-size: 12px;
 
-
-  .divider {
-    width: 100%;
-  }
-
-  .about-section {
-    width: 100%;
-
-    .section-title {
-      margin-top: 32px;
-      margin-bottom: 16px;
-
-      font-family: $font-main;
-      font-size: map-get($h4-styles, font-size);
-      font-weight: map-get($h4-styles, font-weight);
-      line-height: map-get($h4-styles, line-height);
-      letter-spacing: map-get($h4-styles, letter-spacing);
-      color: $color-primary;
-    }
-
-    .paragraph {
-      font-family: $font-main;
-      font-size: map-get($body-text, font-size);
-      font-weight: map-get($body-text, font-weight);
-      line-height: map-get($body-text, line-height);
-      letter-spacing: map-get($body-text, letter-spacing);
-      color: $color-secondary;
-    }
+  &:hover {
+    color: $color-primary;
   }
 }
+
+
+
 
