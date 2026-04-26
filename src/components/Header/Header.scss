@@ -49,17 +49,21 @@
 
 }
 .nav__list {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
-  gap: 64px;
+  gap: 15px;
   padding: 0;
   margin: 0;
   @media (min-width: 640px) {
    margin: 0;
+   gap: 20px;
+   display: flex;
   }
   @media (min-width: 1200px) {
     margin-left: 64px;
+    gap: 64px;
+    display: flex;
   }
 
 };
