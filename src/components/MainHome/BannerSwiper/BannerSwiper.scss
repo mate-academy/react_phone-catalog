@@ -141,10 +141,12 @@
     border-radius: 24px;
     background: #0f172a;
     padding-inline: 20px;
+    align-items: flex-start;
   }
   @media (min-width: 1200px) {
     background: #0f172a;
     padding-inline: 20px;
+    align-items: flex-start;
   }
 }
 
@@ -187,9 +189,11 @@
   @media (min-width: 640px) {
     font-size: 28px;
     margin: 0;
+    margin-bottom: 10px;
   }
   @media (min-width: 1200px) {
     font-size: 28px;
+    margin-bottom: 20px;
   }
 }
 .slide__text--1 {
@@ -214,9 +218,11 @@
   font-size: 5px;
   @media (min-width: 640px) {
     font-size: 15px;
+    margin-bottom: 10px;
   }
   @media (min-width: 1200px) {
     font-size: 18px;
+    margin-bottom: 20px;
   }
 }
 .slide__button {
