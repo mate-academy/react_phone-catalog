@@ -53,11 +53,11 @@
   overflow: hidden;
 }
 .mySwiper .swiper-slide .slide__image {
-  height: 250px;
+  height: 330px;
   object-fit: cover;
   object-position: top;
-  @media (min-width: 640px) {
-    height: 150px;
+  @media (min-width:640px) {
+    height: 200px;
   }
 }
 .swiper-pagination-bullet {
@@ -89,7 +89,7 @@
   justify-content: space-between;
 }
 .custom-prev {
-  background-image: url('../../../public/img/icons/icon--slider--left.png');
+  background-image: url('../../../../public/img/icons/icon--slider--left.png');
   @media (min-width: 640px) {
     display: none;
   }
@@ -98,7 +98,7 @@
   }
 }
 .custom-next {
-  background-image: url('../../../public/img/icons/icon--slider--right.png');
+  background-image: url('../../../..public/img/icons/icon--slider--right.png');
 }
 .custom-prev,
 .custom-next {
