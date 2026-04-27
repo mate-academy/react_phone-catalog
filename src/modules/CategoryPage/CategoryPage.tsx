@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import { useProducts } from '../../context/ProductContext';
 import { ProductCard } from '../shared/components/ProductCard';
 import { Dropdown } from '../shared/components/Dropdown';
+import { NotFoundPage } from '../NotFoundPage';
 import styles from './CategoryPage.module.scss';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 type SortBy = 'newest' | 'alphabetically' | 'cheapest';
+
+const VALID_CATEGORIES: Category[] = ['phones', 'tablets', 'accessories'];
 
 const categoryTitles: Record<Category, string> = {
   phones: 'Mobile Phones',
@@ -24,6 +27,10 @@ export const CategoryPage = () => {
   const { category } = useParams<{ category: Category }>();
   const { products, loading, error } = useProducts();
   const [sortBy, setSortBy] = useState<SortBy>('newest');
+
+  if (!VALID_CATEGORIES.includes(category as Category)) {
+    return <NotFoundPage />;
+  }
 
   const validCategory = category as Category;
   const title = categoryTitles[validCategory] ?? 'Products';

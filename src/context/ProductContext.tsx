@@ -37,4 +37,12 @@ export const ProductProvider = ({
   );
 };
 
-export const useProducts = () => useContext(ProductContext);
+export const useProducts = () => {
+  const context = useContext(ProductContext);
+
+  if (!context) {
+    throw new Error('useFavorites must be used within FavoritesProvider');
+  }
+
+  return context;
+};
