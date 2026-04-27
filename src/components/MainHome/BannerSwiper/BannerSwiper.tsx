@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Tablets from '../../../pages/tabletsPage/Tablets';
 
 const MainSwiper = () => {
   const progressCircle = useRef<SVGSVGElement | null>(null);
@@ -21,24 +20,6 @@ const MainSwiper = () => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     }
   };
-
-  const slides = [
-    {
-      mobile: './img/category-phones--purple--otherSide--phone.png',
-      tablet: './img/category-phones--purple--otherSide--desktop.png',
-      desktop: './img/category-phones--purple--otherSide--desktop.png',
-    },
-    {
-      mobile: './img/category-phones--purple--phone.png',
-      tablet: './img/category-phones--purple--desktop.png',
-      desktop: './img/category-phones--purple--desktop.png',
-    },
-    {
-      mobile: './img/category-phones--space-black--phone.webp',
-      tablet: './img/category-phones--space-black--desktop.webp',
-      desktop: './img/category-phones--space-black--desktop.webp',
-    },
-  ];
 
   return (
     <div className="swiper__container">
@@ -65,8 +46,12 @@ const MainSwiper = () => {
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
         >
-          {slides.map((slide, i) => (
-            <SwiperSlide key={i}>
+          {[
+            './img/category-phones--purple--otherSide--desktop.png',
+            './img/category-phones--purple.png',
+            './img/category-phones--space-black--desktop.webp',
+          ].map(slide => (
+            <SwiperSlide key={slide}>
               <div className="main-swiper">
                 <div className="slide__content--1">
                   <h2 className="slide__title--1">
@@ -84,14 +69,9 @@ const MainSwiper = () => {
                 <div className="slide__content--2">
                   <h3 className="slide__title--2">iPhone 14 Pro</h3>
                   <p className="slide__text--2">Pro Beyond</p>
-                  <picture>
-                    <source
-                      srcSet={slide.desktop}
-                      media="(min-width: 1200px)"
-                    />
-                    <source srcSet={slide.tablet} media="(min-width: 640px)" />
-                    <img src={slide.mobile} className="slide__image" />
-                  </picture>
+                  <Link to="/phones/apple-iphone-14-pro-128gb-spaceblack">
+                    <img src={slide} className="slide__image" />
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>
