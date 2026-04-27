@@ -225,19 +225,17 @@ display: flex;
 
 .icon--menu {
   display: block;
-  background-image:url('../../../public/img/icons/icon--menu.png');
+  background-image: url('../../../public/img/icons/icon--menu.png');
   background-color: #fff;
   border-left: 1px solid #e2e6e9;
   border-bottom: 1px solid #e2e6e9;
   border-right: none;
   border-top: none;
-  @media (min-width: 680px) {
+  @media (min-width: 321px) {
     display: none;
   }
-  @media (min-width: 1200px) {
-    display: none;
-  }
-};
+}
+
 
 .icon--badge {
   position: absolute;
