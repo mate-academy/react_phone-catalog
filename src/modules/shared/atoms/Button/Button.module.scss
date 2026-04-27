@@ -1,0 +1,53 @@
+$size-small: 32px;
+$size-medium: 40px;
+$size-large: 48px;
+
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.button {
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-inline: 8px;
+
+  cursor: pointer;
+
+  transition: all var(--animation_duration, 0.3s) ease;
+
+  @include focus-visible;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &--square {
+    aspect-ratio: 1;
+  }
+
+  &--small {
+    height: $size-small;
+  }
+
+  &--medium {
+    height: $size-medium;
+  }
+
+  &--large {
+    height: $size-large;
+  }
+
+  &--fullWidth {
+    width: 100%;
+  }
+
+  &--fullHeight {
+    height: 100%;
+  }
+}

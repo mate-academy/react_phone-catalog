@@ -1,0 +1,44 @@
+@use './../../styles/utils/mixins.scss' as *;
+
+.product_controls {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.button {
+  background-color: var(--surface2-color);
+
+  &__text {
+    &--active {
+      color: var(--buttons-text-color-primary-active);
+    }
+  }
+
+  &--primary {
+    flex-grow: 1;
+
+    background-color: var(--buttons-background-active);
+
+    &:not(:disabled):hover {
+      background-color: var(--buttons-background-active-hover);
+    }
+
+    &--active {
+      background-color: var(--surface2-color);
+    }
+  }
+
+  &--favourite {
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: var(--icons-color);
+    }
+
+    &--active {
+      background-color: transparent;
+
+      border: 1px solid var(--elements-color);
+    }
+  }
+}

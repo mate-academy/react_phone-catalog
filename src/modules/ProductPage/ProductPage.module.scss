@@ -1,0 +1,271 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.page {
+  box-sizing: border-box;
+
+  &__back {
+    margin-bottom: 16px;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.product {
+  @include page-grid;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-small-desktop {
+    row-gap: 80px;
+  }
+
+  &__block {
+    height: fit-content;
+  }
+
+  &__slider,
+  &__image,
+  &__interactive,
+  &__description,
+  &__gallery,
+  &__specifications,
+  &__recommendations {
+    grid-column: 1 / -1;
+  }
+
+  &__gallery {
+    row-gap: 16px;
+    @include page-grid;
+    --columns: 4;
+
+    @include on-tablet {
+      --columns: 7;
+      grid-column: span var(--columns);
+    }
+
+    @include on-small-desktop {
+      --columns: 12;
+      grid-column: span var(--columns);
+    }
+  }
+
+  &__slider {
+    display: flex;
+
+    overflow: scroll;
+
+    gap: 8px;
+
+    @include on-tablet {
+      grid-column: span 1;
+      flex-direction: column;
+      order: -2;
+    }
+
+    @include on-small-desktop {
+      grid-column: span 2;
+    }
+    &__img {
+      box-sizing: border-box;
+
+      border: 1px solid var(--main-text-color-secondary);
+
+      &--active {
+        border-color: var(--main-text-color-primary);
+      }
+
+      @include hover(border-color, var(--main-text-color-primary));
+
+      cursor: pointer;
+
+      display: block;
+
+      object-fit: contain;
+
+      width: 100%;
+      height: 100%;
+
+      aspect-ratio: 1/1;
+    }
+  }
+
+  &__image {
+    order: -2;
+
+    aspect-ratio: 1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-small-desktop {
+      grid-column: span 10;
+    }
+    &__img {
+      display: block;
+
+      object-fit: contain;
+
+      width: 100%;
+
+      aspect-ratio: 1/1;
+    }
+  }
+
+  &__colors {
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-small-desktop {
+      grid-column: 14 / span 11;
+    }
+  }
+
+  &__interactive {
+    @include page-grid;
+    --columns: 4;
+
+    @include on-tablet {
+      --columns: 5;
+      grid-column: span 5;
+    }
+
+    @include on-small-desktop {
+      --columns: 11;
+      grid-column: 14 / span 11;
+    }
+  }
+
+  &__description {
+    @include on-small-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__specifications {
+    @include on-small-desktop {
+      grid-column: 14 / span 11;
+    }
+  }
+}
+
+.interactive {
+  @include page-grid;
+
+  @include on-tablet {
+    --columns: 5;
+  }
+
+  @include on-small-desktop {
+    --columns: 11;
+  }
+
+  height: fit-content;
+
+  row-gap: 24px;
+
+  &__heading {
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &__colors {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  &__buttons {
+    grid-column: 1 / -1;
+
+    @include on-small-desktop {
+      grid-column: span 7;
+    }
+  }
+  &__list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+  }
+
+  &__priceblock {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 32px;
+
+    &_up {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    &_down {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.color {
+  width: 32px;
+  aspect-ratio: 1;
+}

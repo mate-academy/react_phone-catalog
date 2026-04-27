@@ -1,0 +1,63 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+$colors: (
+  'black': #000000,
+  'white': #f5f5f7,
+  'silver': #e4e4e2,
+  'gold': #f5ddc5,
+  'rosegold': #f6c8be,
+  'yellow': #ffe681,
+  'red': #ff3b30,
+  'purple': #d1cdda,
+  'green': #aee1cd,
+  'coral': #ff725f,
+  'midnightgreen': #4e5851,
+  'graphite': #535150,
+  'sierrablue': #9bb5ce,
+  'blue': #007aff,
+  'pink': #ffb6c1,
+  'starlight': #f8f9f2,
+  'midnight': #171e27,
+  'skyblue': #87ceeb,
+  'spacegray': #7d7d7d,
+  'spaceblack': #1b1b1b,
+);
+
+.color-button {
+  border-radius: 50%;
+  padding: 2px;
+  overflow: hidden;
+  border: 2px solid;
+  background-color: transparent;
+  outline-offset: -3px;
+  border-color: var(--main-text-color-secondary);
+  position: relative;
+
+  @include hover(border-color, var(--main-text-color-primary));
+
+  &--unavailable::after {
+    content: '';
+    background-color: red;
+    position: absolute;
+    z-index: 1;
+    height: 2px;
+    width: 100%;
+    transform: rotate(-45deg);
+  }
+
+  &--active {
+    border-color: var(--main-text-color-primary);
+  }
+
+  &__color {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    @each $name, $color in $colors {
+      &--#{$name} {
+        background-color: $color;
+      }
+    }
+  }
+}

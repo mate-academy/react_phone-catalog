@@ -1,0 +1,95 @@
+@use '@shared/styles/utils/mixins' as *;
+@use '@shared/styles/buttons' as *;
+
+.cart_item {
+  background-color: var(--surface1-color);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__body {
+    display: flex;
+    gap: 23px;
+    align-items: center;
+  }
+
+  &__close_btn {
+    background-color: unset;
+
+    border-radius: 50%;
+
+    &__icon {
+      color: var(--icons-color);
+    }
+
+    &:hover &__icon {
+      color: var(--elements-color);
+    }
+  }
+
+  &__image {
+    width: 80px;
+    aspect-ratio: 1;
+    padding: 7px;
+
+    &_el {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+  }
+
+  &__name {
+    @include on-tablet {
+      max-width: 176px;
+    }
+
+    @include on-small-desktop {
+      max-width: 336px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: end;
+      gap: 50px;
+      flex-grow: 1;
+    }
+  }
+
+  &__price {
+    min-width: 6ch;
+    text-align: end;
+
+    &::before {
+      content: '$';
+    }
+  }
+
+  &__count {
+    background-color: unset;
+    pointer-events: none;
+  }
+
+  &__button {
+    @include control-button;
+  }
+
+  &__controls {
+    display: flex;
+  }
+}

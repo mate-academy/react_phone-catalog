@@ -1,0 +1,87 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.back {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.cart {
+  opacity: 0;
+  animation: fadeIn var(--animation_duration, 0.3s) ease forwards;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-small-desktop {
+    @include page-grid;
+    column-gap: 16px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @include on-tablet {
+    gap: 24px;
+    flex-direction: column;
+    margin-bottom: 80px;
+  }
+
+  @include on-small-desktop {
+    grid-column: span 16;
+  }
+}
+
+.total {
+  box-sizing: border-box;
+  border: 1px solid var(--surface2-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-small-desktop {
+    height: fit-content;
+    grid-column: span 8;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__price {
+    &::before {
+      content: '$';
+    }
+  }
+
+  &__button {
+    color: var(--buttons-text-color-primary-active);
+    background-color: var(--buttons-background-active);
+
+    @include hover(background-color, var(--buttons-background-active-hover));
+  }
+}

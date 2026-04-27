@@ -1,0 +1,27 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__list {
+    @include page-grid;
+    row-gap: 32px;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  grid-column: span 4;
+
+  @include on-small-desktop {
+    grid-column: span 8;
+  }
+
+  @include hover(transform, scale(1.1));
+}

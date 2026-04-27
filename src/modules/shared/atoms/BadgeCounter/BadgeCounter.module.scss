@@ -1,0 +1,20 @@
+.badgecounter {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  background-color: var(--red-accent-color);
+  border-radius: 50%;
+  border: 1px solid var(--main-background-color);
+
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}

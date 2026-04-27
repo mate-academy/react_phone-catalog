@@ -1,0 +1,134 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} var(--animation_duration, 0.3s);
+  &:hover {
+    #{$property}: $value;
+    cursor: pointer;
+  }
+}
+
+@mixin outline-selection($important: false) {
+  outline: 2px solid var(--a11y-focus-color);
+  outline-offset: 2px;
+
+  @if $important {
+    outline: 2px solid var(--a11y-focus-color) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+@mixin focus-visible($important: false) {
+  &:focus-visible {
+    @include outline-selection($important);
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-small-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+  @include on-small-desktop {
+    padding-inline: 32px;
+  }
+  @include on-large-desktop {
+    padding-inline: 152px;
+  }
+}
+
+@mixin span-columns($count, $total, $gap: 16px) {
+  $gap-count: $total - 1;
+  $total-gap: $gap-count * $gap;
+
+  width: calc(
+    (100% - #{$total-gap}) / #{$total} * #{$count} + (#{$count - 1} * #{$gap})
+  );
+}
+
+@mixin margin-compensation(
+  $top: 0,
+  $right: $top,
+  $bottom: $top,
+  $left: $right
+) {
+  margin: -#{$top} -#{$right} -#{$bottom} -#{$left};
+  padding: $top $right $bottom $left;
+}
+
+@mixin underline-animate(
+  $color: var(--buttons-text-color-primary),
+  $height: 3px,
+  $duration: var(--animation_duration, 0.3s)
+) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform $duration ease-in-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@mixin flex-column($gap: null, $align: null, $justify: null) {
+  display: flex;
+  flex-direction: column;
+
+  @if $gap != null {
+    gap: $gap;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+}

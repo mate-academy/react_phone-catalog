@@ -1,0 +1,32 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.toast {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 320px;
+
+  box-sizing: border-box;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  border: 2px solid var(--buttons-background-active);
+
+  background-color: var(--main-background-color);
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__dismiss {
+    background-color: transparent;
+
+    color: var(--main-text-color-primary);
+    @include hover(color, var(--main-text-color-secondary));
+  }
+}
