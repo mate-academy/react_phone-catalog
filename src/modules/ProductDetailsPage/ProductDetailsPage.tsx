@@ -105,6 +105,8 @@ export const ProductDetailsPage: React.FC = () => {
           return;
         }
 
+        setNumericId(baseProduct.id);
+
          const recommended = all
            .filter(
              p =>
@@ -126,7 +128,7 @@ export const ProductDetailsPage: React.FC = () => {
 
         setProduct(fullProduct);
         setSelectedPhoto(fullProduct.images?.[0] || '');
-        setNumericId(fullProduct.id);
+        //setNumericId(baseProduct.id);
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
