@@ -1,0 +1,247 @@
+.productDetailsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .loader,
+  .error {
+    text-align: center;
+    padding: 50px;
+  }
+
+  .error {
+    p {
+      font-size: 18px;
+      color: #dc3545;
+    }
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #6c757d;
+
+    .backButton {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 16px;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #e9ecef;
+      }
+    }
+  }
+
+  .productContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+
+    .productImages {
+      .mainImage {
+        margin-bottom: 20px;
+
+        img {
+          width: 100%;
+          height: 400px;
+          object-fit: contain;
+          background: #f8f9fa;
+          border-radius: 8px;
+        }
+      }
+
+      .thumbnailImages {
+        display: flex;
+        gap: 10px;
+
+        img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          cursor: pointer;
+          border-radius: 4px;
+          opacity: 0.7;
+          transition: opacity 0.3s;
+
+          &.active {
+            opacity: 1;
+            border: 2px solid #007bff;
+          }
+
+          &:hover {
+            opacity: 1;
+            border: 2px solid #007bff;
+          }
+        }
+      }
+    }
+
+    .productInfo {
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .price {
+        margin-bottom: 30px;
+
+        .currentPrice {
+          font-size: 28px;
+          font-weight: bold;
+          color: #007bff;
+          margin-right: 16px;
+        }
+
+        .oldPrice {
+          font-size: 20px;
+          color: #6c757d;
+          text-decoration: line-through;
+        }
+      }
+
+      .options {
+        margin-bottom: 30px;
+
+        .option {
+          margin-bottom: 20px;
+
+          label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+
+          .colorOptions,
+          .capacityOptions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+          }
+
+          .colorOption,
+          .capacityOption {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+
+            input {
+              display: none;
+            }
+
+            span {
+              font-size: 14px;
+            }
+
+            &:has(input:checked) {
+              border-color: #007bff;
+              background: #f8f9ff;
+            }
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 16px;
+
+        .favoriteButton {
+          background: #f8f9fa;
+          border: 1px solid #dee2e6;
+          padding: 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 18px;
+          transition: all 0.3s;
+
+          &:hover {
+            border-color: #dc3545;
+            color: #dc3545;
+          }
+
+          &.active {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .suggestedProducts h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .productDetails {
+    margin-bottom: 60px;
+
+    .about,
+    .techSpecs {
+      margin-bottom: 40px;
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #007bff;
+      }
+
+      p {
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+    }
+
+    .techSpecs {
+      .specs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+
+        .spec {
+          display: flex;
+          justify-content: space-between;
+          padding: 12px 0;
+          border-bottom: 1px solid #e9ecef;
+
+          .specName {
+            font-weight: 500;
+            color: #6c757d;
+          }
+
+          .specValue {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .suggestedProducts {
+    .suggestedGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+  }
+}
