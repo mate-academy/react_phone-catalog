@@ -1,0 +1,142 @@
+.slider {
+  display: grid;
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.arrow {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background-color: var(--color-surface-strong);
+}
+
+.arrow:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.viewport {
+  position: relative;
+  min-height: 440px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 480px);
+  align-items: center;
+  gap: 28px;
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 209, 102, 0.26), transparent 36%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.2), transparent 34%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 28px 50px -40px var(--color-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(24px);
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.eyebrow,
+.title,
+.description {
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 14px;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1.05;
+}
+
+.description {
+  max-width: 520px;
+  margin-top: 18px;
+  color: var(--color-text-muted);
+  font-size: 18px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.cta:hover {
+  background-color: var(--color-accent-strong);
+  transform: translateY(-1px);
+}
+
+.imageLink {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image {
+  max-height: 320px;
+  object-fit: contain;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(20, 33, 61, 0.16);
+}
+
+.dotActive {
+  width: 36px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+}
+
+@media (max-width: 767px) {
+  .viewport {
+    min-height: 620px;
+  }
+
+  .slide {
+    grid-template-columns: 1fr;
+  }
+}

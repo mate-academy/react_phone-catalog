@@ -1,0 +1,34 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background-color: var(--color-surface-strong);
+  box-shadow: 0 16px 30px -24px var(--color-shadow);
+}
+
+.toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-accent);
+}
+
+.toggleActive {
+  background-color: rgba(255, 209, 102, 0.14);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+}

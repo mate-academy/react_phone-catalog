@@ -1,0 +1,21 @@
+.empty {
+  padding: 32px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+.title,
+.description {
+  margin: 0;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+}

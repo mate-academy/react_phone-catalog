@@ -1,0 +1,15 @@
+.layout {
+  min-height: 100vh;
+}
+
+.main {
+  padding: calc(var(--header-height) + 28px) 20px 72px;
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding-top: calc(var(--header-height) + 18px);
+    padding-inline: 16px;
+    padding-bottom: 56px;
+  }
+}

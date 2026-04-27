@@ -1,0 +1,26 @@
+.search {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+.input {
+  width: 100%;
+  padding: 14px 18px 14px 46px;
+  border-radius: 999px;
+  background-color: var(--color-surface-strong);
+  box-shadow: 0 16px 30px -24px var(--color-shadow);
+}
+
+.input:hover,
+.input:focus {
+  border-color: var(--color-accent);
+}

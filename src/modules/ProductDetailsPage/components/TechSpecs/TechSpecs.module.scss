@@ -1,0 +1,26 @@
+.specs {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row dt,
+.row dd {
+  margin: 0;
+}
+
+.row dt {
+  color: var(--color-text-muted);
+}
+
+.row dd {
+  font-weight: 600;
+}

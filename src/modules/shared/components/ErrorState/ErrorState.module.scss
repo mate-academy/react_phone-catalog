@@ -1,0 +1,26 @@
+.error {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding: 28px;
+  border: 1px solid rgba(209, 73, 91, 0.2);
+  border-radius: var(--radius-md);
+  background-color: rgba(209, 73, 91, 0.08);
+}
+
+.message {
+  margin: 0;
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+.button {
+  padding: 12px 18px;
+  border-radius: 999px;
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}

@@ -1,0 +1,21 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+.current {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.separator {
+  opacity: 0.6;
+}

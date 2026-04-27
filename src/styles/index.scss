@@ -1,0 +1,150 @@
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+:root {
+  --color-bg: #f5f7fb;
+  --color-surface: rgba(255, 255, 255, 0.9);
+  --color-surface-strong: #fff;
+  --color-border: rgba(20, 33, 61, 0.12);
+  --color-text: #14213d;
+  --color-text-muted: #596780;
+  --color-accent: #ff6b35;
+  --color-accent-strong: #e85d2b;
+  --color-success: #2d8f52;
+  --color-danger: #d1495b;
+  --color-shadow: rgba(20, 33, 61, 0.12);
+  --color-backdrop: linear-gradient(135deg, #fff6ec 0%, #edf4ff 52%, #ecfff6 100%);
+  --color-header-bg: rgba(245, 247, 251, 0.78);
+  --color-footer-bg: rgba(255, 255, 255, 0.35);
+  --container-width: 1200px;
+  --header-height: 88px;
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+  --transition: 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --color-bg: #111827;
+  --color-surface: rgba(17, 24, 39, 0.88);
+  --color-surface-strong: #1f2937;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-text: #f5f7fb;
+  --color-text-muted: #c0cbdd;
+  --color-accent: #ffd166;
+  --color-accent-strong: #ffbe0b;
+  --color-success: #5cc98e;
+  --color-danger: #f28482;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-backdrop: linear-gradient(160deg, #111827 0%, #172033 54%, #0f2a22 100%);
+  --color-header-bg: rgba(17, 24, 39, 0.84);
+  --color-footer-bg: rgba(17, 24, 39, 0.4);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-backdrop);
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family: Mont, sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a,
+button,
+input,
+select {
+  transition:
+    color var(--transition),
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+input,
+select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-strong);
+  color: var(--color-text);
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
