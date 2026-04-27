@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../../../types';
-import { useFavorites } from '../../../../context/FavoritesContext';
+import { useProducts } from '../../../../context/ProductContext';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -7,18 +8,30 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props) => {
-  const { name, price, fullPrice, image, screen, capacity, ram } = product;
+  const {
+    name,
+    price,
+    fullPrice,
+    image,
+    screen,
+    capacity,
+    ram,
+    category,
+    itemId,
+  } = product;
   const hasDiscount = price !== fullPrice;
-  const { isFavorite, toggleFavorite } = useFavorites();
+  const { isFavorite, toggleFavorite } = useProducts();
   const isInFavorites = isFavorite(product.id);
 
   return (
     <article className={styles.card}>
-      <div className={styles.imageWrapper}>
+      <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
         <img src={image} alt={name} className={styles.image} />
-      </div>
+      </Link>
 
-      <p className={styles.name}>{name}</p>
+      <Link to={`/${category}/${itemId}`} className={styles.nameLink}>
+        <p className={styles.name}>{name}</p>
+      </Link>
 
       <div className={styles.prices}>
         <span className={styles.price}>${price}</span>

@@ -9,8 +9,6 @@ import styles from './CategoryPage.module.scss';
 type Category = 'phones' | 'tablets' | 'accessories';
 type SortBy = 'newest' | 'alphabetically' | 'cheapest';
 
-const VALID_CATEGORIES: Category[] = ['phones', 'tablets', 'accessories'];
-
 const categoryTitles: Record<Category, string> = {
   phones: 'Mobile Phones',
   tablets: 'Tablets',
@@ -28,7 +26,7 @@ export const CategoryPage = () => {
   const { products, loading, error } = useProducts();
   const [sortBy, setSortBy] = useState<SortBy>('newest');
 
-  if (!VALID_CATEGORIES.includes(category as Category)) {
+  if (!Object.keys(categoryTitles).includes(category as string)) {
     return <NotFoundPage />;
   }
 

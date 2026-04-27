@@ -1,9 +1,9 @@
-import { useFavorites } from '../../context/FavoritesContext';
+import { useProducts } from '../../context/ProductContext';
 import { ProductCard } from '../shared/components/ProductCard';
 import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage = () => {
-  const { favorites } = useFavorites();
+  const { favorites } = useProducts();
 
   return (
     <div className={styles.page}>

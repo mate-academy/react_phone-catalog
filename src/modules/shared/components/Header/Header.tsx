@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
-import { useFavorites } from '../../../../context/FavoritesContext';
+import { useProducts } from '../../../../context/ProductContext';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { favorites } = useFavorites();
+  const { favorites } = useProducts();
 
   const navLinks = [
     { to: AppRoutes.HOME, label: 'Home' },

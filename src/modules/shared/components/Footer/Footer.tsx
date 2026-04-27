@@ -50,7 +50,10 @@ export const Footer = () => {
         </nav>
 
         <button className={styles.backToTop} onClick={handleBackToTop}>
-          Back to top
+          <span>Back to top</span>
+          <div className={styles.backToTopArrow}>
+            <img src="/img/icons/arrow-down.svg" alt="Arrow up" />
+          </div>
         </button>
       </div>
     </footer>

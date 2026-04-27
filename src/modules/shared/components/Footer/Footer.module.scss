@@ -20,6 +20,7 @@
     align-items: center;
     padding-top: 42.5px;
     padding-bottom: 42.5px;
+    justify-content: space-between;
   }
 }
 
@@ -40,7 +41,6 @@
   @include on-tablet {
     margin-bottom: 0;
     margin-right: 0;
-    flex: 1;
     justify-content: flex-start;
   }
 }
@@ -57,8 +57,8 @@
     flex-direction: row;
     gap: 13.5px;
     margin: 0;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex: 1;
   }
 
   @include on-desktop {
@@ -87,7 +87,7 @@
 .backToTop {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   align-self: center;
   background: none;
   border: none;
@@ -101,14 +101,47 @@
   color: var(--color-secondary);
   @include hover-transition(color);
 
+  @include on-tablet {
+  }
+
   &:hover {
     color: var(--color-primary);
+
+    .backToTopArrow {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &:active {
+    .backToTopArrow {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+
+      img {
+        filter: invert(1);
+      }
+    }
   }
 
   @include on-tablet {
-    flex: 1;
-    justify-content: flex-end;
-    margin-left: 0;
-    align-self: auto;
+    flex-shrink: 0;
+  }
+}
+
+.backToTopArrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-icons);
+  flex-shrink: 0;
+  transition: border-color var(--transition), background-color var(--transition);
+
+  img {
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+    transition: filter var(--transition);
   }
 }
