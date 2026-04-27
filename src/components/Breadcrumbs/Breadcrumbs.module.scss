@@ -6,13 +6,25 @@
   align-items: center;
   gap: 6px;
   margin-top: 24px;
+  min-height: 16px;
 
-  &__home {
-    display: inline-flex;
+  &__home,
+  &__chevron,
+  &__category,
+  &__product {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__homeImg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-0.5px);
   }
 
   &__chevron {
-    display: inline-flex;
     stroke: $colors-secondary;
   }
 
@@ -22,6 +34,8 @@
     font-size: 12px;
     text-decoration: none;
     line-height: 1;
+    margin: 0;
+    transform: translateY(1px);
   }
 
   &__categoryActive {

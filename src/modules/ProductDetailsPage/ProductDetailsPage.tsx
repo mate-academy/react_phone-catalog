@@ -108,7 +108,7 @@ export const ProductDetailsPage = () => {
     );
   }, [products, category, product]);
 
-  if (detailsLoading) {
+  if (detailsLoading && !product) {
     return <Loader />;
   }
 
@@ -200,9 +200,11 @@ export const ProductDetailsPage = () => {
                 selectedColor={product.color}
                 capacities={product.capacityAvailable}
                 selectedCapacity={product.capacity}
-                onColorChange={color => navigate(buildVariantLink({ color }))}
+                onColorChange={color =>
+                  navigate(buildVariantLink({ color }), { replace: true })
+                }
                 onCapacityChange={capacity =>
-                  navigate(buildVariantLink({ capacity }))
+                  navigate(buildVariantLink({ capacity }), { replace: true })
                 }
               />
               <div className={styles.productDetails__summary}>

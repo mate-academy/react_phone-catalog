@@ -25,7 +25,7 @@ export const Breadcrumbs: React.FC<Props> = ({ productName }) => {
   return (
     <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
       <NavLink to="/" className={styles.breadcrumbs__home}>
-        <img src={home} alt="Home" />
+        <img className={styles.breadcrumbs__homeImg} src={home} alt="Home" />
       </NavLink>
 
       <span className={styles.breadcrumbs__chevron}>

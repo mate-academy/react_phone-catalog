@@ -28,8 +28,8 @@
     display: flex;
     overflow: auto hidden;
     gap: 16px;
-
     scrollbar-width: none;
+    scroll-snap-type: x mandatory;
   }
 
   &__track::-webkit-scrollbar {
@@ -38,6 +38,7 @@
 
   &__item {
     flex: 0 0 229px;
+    scroll-snap-align: start;
 
     @include onDesktop {
       flex: 0 0 calc((100% - 48px) / 4);

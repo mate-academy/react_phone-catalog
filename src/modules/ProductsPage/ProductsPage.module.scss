@@ -2,7 +2,7 @@
 
 .productPage {
   margin-top: 24px;
-
+  min-height: 100vh;
   @include pageGrid;
 
   &__wrapper {
@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+    flex: 1;
   }
 
   &__textBlock {
@@ -36,6 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    flex: 1;
   }
 
   &__controls {
