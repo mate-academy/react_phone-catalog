@@ -1,1 +1,18 @@
-// not empty
+@import './styles/fonts';
+@import './styles/colors';
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  color: var(--color-primary);
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
