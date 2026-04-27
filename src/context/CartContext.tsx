@@ -41,7 +41,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [cart]);
 
   const getItemId = (product: Product) => {
-    // phones мають itemId, tablets/accessories мають namespaceId
     if (product.itemId) return product.itemId;
     if (product.namespaceId) return product.namespaceId;
     if (typeof product.id === 'string') return product.id;
@@ -54,7 +53,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
       const normalize = (str?: string) => (str ? str.toLowerCase() : '');
 
-      // формуємо стабільний ключ
+
       const uniqueId = getUniqueId(product);
 
       const existing = prev.find(item => item.uniqueId === uniqueId);
@@ -72,7 +71,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       const safePrice = Number(rawPrice);
 
       const newItem: CartItem = {
-        id: baseId, // тепер завжди рядковий і стабільний
+        id: baseId,
         itemId: getItemId(product),
         name: product.name,
         price: isNaN(safePrice) ? 0 : safePrice,
@@ -88,8 +87,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       return [...prev, newItem];
     });
   };
-
-
 
   const removeFromCart = (uniqueId: string) => {
     setCart(prev => prev.filter(item => item.uniqueId !== uniqueId));

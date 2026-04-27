@@ -5,17 +5,21 @@
   box-sizing: border-box;
   padding-top: 24px;
   padding-inline: 16px;
+  margin-bottom: 56px;
 
   @media (min-width: 640px) {
     padding-inline: 24px;
+    margin-bottom: 64px;
   }
 
   @media (min-width: 1200px) {
     padding-inline: 32px;
+    margin-bottom: 80px;
   }
 
   @media (min-width: 1268px) {
     padding-inline: 152px;
+    margin-bottom: 80px;
   }
 }
 
@@ -30,6 +34,7 @@
 
   @media (min-width: 640px) {
     max-width: 590px;
+    
   }
 
   @media (min-width: 768px) {
@@ -47,6 +52,10 @@
   gap: 8px;
   height: 16px;
   margin-bottom: 24px;
+
+    img {
+        display: block;
+      }
 
   img:first-of-type {
     width: 13.33px;

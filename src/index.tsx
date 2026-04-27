@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Router>
     {' '}
-    {/* РОЗЕТКА ТУТ */}
+
     <FavouritesProvider>
       <CartProvider>
         <App />

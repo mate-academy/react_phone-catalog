@@ -16,7 +16,7 @@ export const ContactsPage: React.FC = () => {
         <p className={styles['body-text14']}>Address: Lviv, Ukraine</p>
       </div>
 
-      <div className={styles.footer}>
+      <div className={styles.copyright}>
         <p className={styles['small-text12Light']}>
           © 2026 Nice Gadgets. All rights reserved.
         </p>

@@ -1,8 +1,11 @@
 .container {
-  width: 100%;
-  margin: 0 auto;
-  max-width: 1440px;
-  box-sizing: border-box;
+  display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1440px;
+    box-sizing: border-box;
 
   // мобілка
   padding-inline: 16px;
@@ -28,6 +31,16 @@
   margin: 0 auto;
   width: 100%;
   max-width: 1136px;
+
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer {
+  text-align: center;
 }
 
 .h1 {
@@ -36,6 +49,7 @@
     font-size: 48px;
     line-height: 56px;
     letter-spacing: -0.01em;
+    //margin-top: 0;
 }
 
 .body-text14 {
@@ -55,4 +69,19 @@
 .footer {
   margin-top: 40px;
   text-align: center;
+}
+
+.copyright {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+
+  text-align: left; // базове значення для мобілки і планшета
+  padding-bottom: 64px; // відступ до низу
+
+  @media (min-width: 1200px) {
+    text-align: center; // на десктопі по центру
+    padding-bottom: 80px; // відступ до низу
+  }
 }
