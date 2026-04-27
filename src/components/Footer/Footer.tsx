@@ -26,7 +26,7 @@ export const Footer = () => {
             </li>
             <li className={styles.li_links}>
               <a
-                href="https://github.com/DebHtm"
+                href="https://github.com/AnnaAAA3432"
                 className={styles.link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -36,7 +36,7 @@ export const Footer = () => {
             </li>
             <li className={styles.li_links}>
               <a
-                href="https://github.com/DebHtm"
+                href="https://github.com/AnnaAAA3432"
                 className={styles.link}
                 target="_blank"
                 rel="noopener noreferrer"
