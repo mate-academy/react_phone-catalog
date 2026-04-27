@@ -59,7 +59,12 @@ const MainSwiper = () => {
                     <Link to="" className="slide__logo"></Link>
                   </h2>
                   <p className="slide__text--1">Be the first!</p>
-                  <Link to="/phones/apple-iphone-14-pro-128gb-spaceblack" className="slide__button">ORDER NOW</Link>
+                  <Link
+                    to="/phones/apple-iphone-14-pro-128gb-spaceblack"
+                    className="slide__button"
+                  >
+                    ORDER NOW
+                  </Link>
                 </div>
                 <div className="slide__content--2">
                   <h3 className="slide__title--2">iPhone 14 Pro</h3>
