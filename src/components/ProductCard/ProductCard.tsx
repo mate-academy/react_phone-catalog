@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { CatalogProduct, Phone, Tablet, Accessory } from '../../../public/types';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -6,7 +7,9 @@ import {
   removeFromFavorites,
 } from '../../features/favorites/favoritesSlice';
 import { addToCart } from '../../features/cart/cartSlice';
-import './ProductCard.scss';
+
+// Імпортуємо стилі
+import s from './ProductCard.module.scss';
 
 type ProductType = Phone | Tablet | Accessory;
 
@@ -16,25 +19,21 @@ interface ProductCardProps {
   onRemove?: () => void;
 }
 
-function ProductCard({
+const ProductCard: React.FC<ProductCardProps> = ({
   product,
   showDiscount = false,
   onRemove,
-}: ProductCardProps) {
+}) => {
   const dispatch = useAppDispatch();
 
-  // 1. Визначаємо стабільний ID (itemId для CatalogProduct або id для деталей)
   const productId = (product as CatalogProduct).itemId || product.id;
 
-  // 2. Отримуємо стан із Redux за допомогою productId
   const favorites = useAppSelector(state => state.favorites.items);
-  // Перевіряємо по обох полях для надійності
   const isLiked = favorites.some(item => (item.itemId === productId || item.id === productId));
 
   const cartItems = useAppSelector(state => state.cart.items);
   const isInCart = cartItems.some(item => item.id === productId);
 
-  // 3. Обробка цін та зображень
   const price = 'priceDiscount' in product ? product.priceDiscount : product.price;
 
   const fullPrice = 'priceRegular' in product
@@ -48,11 +47,9 @@ function ProductCard({
       if (onRemove) {
         onRemove();
       } else {
-        // Видаляємо за тим самим ID, за яким шукали
         dispatch(removeFromFavorites(productId));
       }
     } else {
-      // Приводимо до CatalogProduct, щоб стейт був консистентним
       dispatch(addToFavorites(product as CatalogProduct));
     }
   };
@@ -60,7 +57,7 @@ function ProductCard({
   const handleAddToCart = () => {
     if (!isInCart) {
       dispatch(addToCart({
-        id: productId, // ПередаємоitemId як id для кошика
+        id: productId,
         name: product.name,
         price: price,
         image: image
@@ -69,44 +66,44 @@ function ProductCard({
   };
 
   return (
-    <div className="product-card">
+    <div className={s.productCard}>
       <Link
         to={`/${product.category}/${productId}`}
-        className="product-image-link"
+        className={s.productImageLink}
       >
-        <img src={image} alt={product.name} className="product-image" />
+        <img src={image} alt={product.name} className={s.productImage} />
       </Link>
 
       <Link
         to={`/${product.category}/${productId}`}
-        className="product-name-link"
+        className={s.productNameLink}
       >
-        <div className="product-name">{product.name}</div>
+        <div className={s.productName}>{product.name}</div>
       </Link>
 
-      <h3 className="product-price">
-        <span className="discount">${price}</span>
-        {showDiscount && <span className="full-price">${fullPrice}</span>}
+      <h3 className={s.productPrice}>
+        <span className={s.discount}>${price}</span>
+        {showDiscount && <span className={s.fullPrice}>${fullPrice}</span>}
       </h3>
 
-      <hr />
+      <hr className={s.divider} />
 
-      <div className="product-description">
-        <div className="product-description__left">
-          <div className="characteristic-name">Screen</div>
-          <div className="characteristic-name">Capacity</div>
-          <div className="characteristic-name">RAM</div>
+      <div className={s.productDescription}>
+        <div className={s.descriptionLeft}>
+          <div className={s.characteristicName}>Screen</div>
+          <div className={s.characteristicName}>Capacity</div>
+          <div className={s.characteristicName}>RAM</div>
         </div>
-        <div className="product-description__right">
-          <div className="characteristic-value">{product.screen}</div>
-          <div className="characteristic-value">{product.capacity}</div>
-          <div className="characteristic-value">{product.ram}</div>
+        <div className={s.descriptionRight}>
+          <div className={s.characteristicValue}>{product.screen}</div>
+          <div className={s.characteristicValue}>{product.capacity}</div>
+          <div className={s.characteristicValue}>{product.ram}</div>
         </div>
       </div>
 
-      <div className="product-actions">
+      <div className={s.productActions}>
         <button
-          className={`add-to-cart-button ${isInCart ? 'added-to-cart' : ''}`}
+          className={`${s.addToCartButton} ${isInCart ? s.addedToCart : ''}`}
           onClick={handleAddToCart}
           type="button"
         >
@@ -114,7 +111,7 @@ function ProductCard({
         </button>
 
         <button
-          className={`like-button ${isLiked ? 'is-liked' : ''}`}
+          className={`${s.likeButton} ${isLiked ? s.isLiked : ''}`}
           onClick={handleLikeClick}
           type="button"
           aria-label="Add to favorites"

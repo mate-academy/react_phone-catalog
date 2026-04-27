@@ -1,0 +1,178 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-elements;
+  overflow: hidden;
+  padding: 32px;
+  background-color: $color-white;
+  box-sizing: border-box;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+
+    .productImage {
+      opacity: 0.8;
+    }
+  }
+
+  .productImageLink {
+    display: block;
+    text-decoration: none;
+  }
+
+  .productImage {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    transition: opacity 0.3s ease;
+
+    @include mobile {
+      max-height: 129px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .productNameLink {
+    text-decoration: none;
+    font-family: $font-main;
+    font-weight: 600;
+    color: $color-primary;
+    font-size: map-get($body-text, font-size);
+    line-height: map-get($body-text, line-height);
+
+    min-height: 40px;
+    margin-bottom: 8px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .productPrice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    .discount {
+      font-size: map-get($h3-styles, font-size);
+      font-weight: map-get($h3-styles, font-weight);
+      color: $color-primary;
+    }
+
+    .fullPrice {
+      font-size: map-get($h3-styles, font-size);
+      font-weight: map-get($h3-styles, font-weight);
+      color: $color-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  .divider {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e2e6e9;
+  }
+
+  .productDescription {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 8px;
+    column-gap: 24px;
+    margin: 8px 0;
+
+    .characteristicName {
+      font-size: map-get($small-text, font-size);
+      color: $color-secondary;
+      padding-bottom: 8px;
+      text-align: left;
+    }
+
+    .characteristicValue {
+      font-size: map-get($small-text, font-size);
+      color: $color-primary;
+      padding-bottom: 8px;
+      text-align: right;
+    }
+  }
+
+  .productActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    width: 100%;
+
+    @include mobile {
+      justify-content: center;
+    }
+
+    .addToCartButton {
+      width: 80%;
+      height: 40px;
+      background-color: $color-primary;
+      color: $color-white;
+      border: 1px solid $color-primary;
+      font-family: $font-main;
+      font-weight: map-get($buttons, font-weight);
+      font-size: map-get($buttons, font-size);
+      cursor: pointer;
+      transition: 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px #17203166;
+      }
+
+      &.addedToCart {
+        background-color: $color-white;
+        border-color: $color-elements;
+        color: $color-green;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .likeButton {
+      width: 20%;
+      height: 40px;
+      border: 1px solid $color-icons;
+      background-color: $color-white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      transition: border-color 0.3s;
+
+      @include mobile {
+        margin-left: 0;
+        width: 25%;
+      }
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        border-color: $color-primary;
+      }
+
+      &.isLiked {
+        border-color: $color-elements;
+      }
+    }
+  }
+}

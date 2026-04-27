@@ -1,22 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../app/hooks'; // Перевір шлях до hooks
+import { useAppSelector } from '../../app/hooks';
 import ProductCard from '../ProductCard/ProductCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import CatalogFilters from '../CatalogFilters/CatalogFilters';
-import './Catalog.scss';
 
-interface Product {
-  id: string;
-  category: string;
-  name: string;
-  priceRegular: number;
-  priceDiscount: number;
-  images: string[];
-  screen: string;
-  capacity: string;
-  ram: string;
-}
+// Імпортуємо модульні стилі
+import s from './Catalog.module.scss';
 
 const TITLES_MAP: Record<string, string> = {
   phones: 'Mobile phones',
@@ -24,46 +14,34 @@ const TITLES_MAP: Record<string, string> = {
   accessories: 'Accessories',
 };
 
-const Catalog: React.FC = () => {
+export const Catalog: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-
-  // Отримуємо дані з Redux
   const allProducts = useAppSelector(state => state.products.items);
 
-  // Стейт для фільтрів та пагінації
   const [sort, setSort] = useState('newest');
   const [perPage, setPerPage] = useState<'all' | number>(8);
   const [currentPage, setCurrentPage] = useState(1);
 
   const title = category ? (TITLES_MAP[category] ?? 'Catalog') : 'Catalog';
 
-  // Скидаємо сторінку при зміні категорії або фільтрів
   useEffect(() => {
     setCurrentPage(1);
   }, [category, sort, perPage]);
 
-  // Логіка фільтрації та сортування
   const sortedProducts = useMemo(() => {
     const filtered = allProducts.filter(p => p.category === category);
 
     return [...filtered].sort((a, b) => {
       switch (sort) {
-        case 'alphabet':
-          return a.name.localeCompare(b.name);
-        case 'cheapest':
-          return a.priceDiscount - b.priceDiscount;
-        case 'expensive':
-          return b.priceDiscount - a.priceDiscount;
-        case 'newest':
-          // Сортування за ID (від нових до старих)
-          return b.id.localeCompare(a.id);
-        default:
-          return 0;
+        case 'alphabet': return a.name.localeCompare(b.name);
+        case 'cheapest': return a.priceDiscount - b.priceDiscount;
+        case 'expensive': return b.priceDiscount - a.priceDiscount;
+        case 'newest': return b.id.localeCompare(a.id);
+        default: return 0;
       }
     });
   }, [allProducts, category, sort]);
 
-  // Розрахунок пагінації
   const totalCount = sortedProducts.length;
   const isAllSelected = perPage === 'all';
   const itemsPerPage = isAllSelected ? totalCount : Number(perPage);
@@ -71,7 +49,6 @@ const Catalog: React.FC = () => {
 
   const visibleProducts = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
-
     return sortedProducts.slice(start, start + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
 
@@ -87,24 +64,19 @@ const Catalog: React.FC = () => {
     }
 
     for (let i = start; i <= end; i++) {
-      if (i > 0) {
-        pages.push(i);
-      }
+      if (i > 0) pages.push(i);
     }
-
     return pages;
   };
 
-  if (!category) {
-    return <p>No category selected</p>;
-  }
+  if (!category) return <p>No category selected</p>;
 
   return (
-    <section className="catalog">
+    <section className={s.catalog}>
       <Breadcrumbs />
 
-      <h1 className="catalog-title">{title}</h1>
-      <p className="catalog-count">
+      <h1 className={s.catalogTitle}>{title}</h1>
+      <p className={s.catalogCount}>
         {totalCount} {totalCount === 1 ? 'model' : 'models'}
       </p>
 
@@ -115,7 +87,7 @@ const Catalog: React.FC = () => {
         onPerPageChange={setPerPage}
       />
 
-      <div className="catalog-grid">
+      <div className={s.catalogGrid}>
         {visibleProducts.length > 0 ? (
           visibleProducts.map(product => (
             <ProductCard
@@ -125,27 +97,27 @@ const Catalog: React.FC = () => {
             />
           ))
         ) : (
-          <p className="catalog-empty">No products found in this category</p>
+          <p className={s.catalogEmpty}>No products found in this category</p>
         )}
       </div>
 
       {!isAllSelected && totalPages > 1 && (
-        <div className="catalog-pagination">
+        <div className={s.catalogPagination}>
           <button
             type="button"
-            className="pagination-arrow"
+            className={s.paginationArrow}
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(prev => prev - 1)}
           >
             <img src="/img/Arrow_Left.svg" alt="Prev" />
           </button>
 
-          <div className="pagination-list">
+          <div className={s.paginationList}>
             {getVisiblePages().map(page => (
               <button
                 key={`page-${page}`}
                 type="button"
-                className={`pagination-button ${currentPage === page ? 'active' : ''}`}
+                className={`${s.paginationButton} ${currentPage === page ? s.active : ''}`}
                 onClick={() => setCurrentPage(page)}
               >
                 {page}
@@ -155,7 +127,7 @@ const Catalog: React.FC = () => {
 
           <button
             type="button"
-            className="pagination-arrow"
+            className={s.paginationArrow}
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
           >
@@ -166,5 +138,3 @@ const Catalog: React.FC = () => {
     </section>
   );
 };
-
-export default Catalog;

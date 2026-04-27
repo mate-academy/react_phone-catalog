@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConfirmationModalFavorites.scss';
+import s from './ConfirmationModalFavorites.module.scss';
 
 interface Props {
   isOpen: boolean;
@@ -22,7 +22,6 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
     return null;
   }
 
-  // Закриття при кліку на фон (overlay)
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onCancel();
@@ -30,19 +29,25 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
   };
 
   return (
-    <div className="modal-overlay" onClick={handleOverlayClick}>
-      <div className="modal-content">
-        <button className="modal-close" onClick={onCancel}>
+    <div className={s.modalOverlay} onClick={handleOverlayClick}>
+      <div className={s.modalContent}>
+        <button className={s.modalClose} onClick={onCancel}>
           &times;
         </button>
 
-        <p className="modal-message">{message}</p>
+        <p className={s.modalMessage}>{message}</p>
 
-        <div className="modal-actions">
-          <button className="modal-btn modal-btn--cancel" onClick={onCancel}>
+        <div className={s.modalActions}>
+          <button
+            className={`${s.modalBtn} ${s.cancel}`}
+            onClick={onCancel}
+          >
             {cancelText}
           </button>
-          <button className="modal-btn modal-btn--confirm" onClick={onConfirm}>
+          <button
+            className={`${s.modalBtn} ${s.confirm}`}
+            onClick={onConfirm}
+          >
             {confirmText}
           </button>
         </div>

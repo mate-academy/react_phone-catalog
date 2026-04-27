@@ -1,12 +1,12 @@
-import './Header.scss';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import s from './Header.module.scss';
 
-function Header() {
+export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Обробка скролу для зміни стилю хедера
+  // Обробка скролу
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -15,56 +15,51 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Блокування скролу body, коли меню відкрите
+  // Блокування скролу body
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
   }, [isMenuOpen]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  // ФУНКЦІЯ ДЛЯ ЗАКРИТТЯ МЕНЮ
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Допоміжна функція для активного посилання NavLink
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `${s.navLink} ${isActive ? s.active : ''}`;
+
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <nav>
-        <div className="nav-left">
-          {/* При кліку на лого теж закриваємо меню */}
+    <header className={`${s.header} ${isScrolled ? s.scrolled : ''}`}>
+      <nav className={s.nav}>
+        <div className={s.navLeft}>
           <NavLink to="/" onClick={closeMenu}>
-            <img src="./img/Logo.svg" alt="Logo" className="logo" />
+            <img src="./img/Logo.svg" alt="Logo" className={s.logo} />
           </NavLink>
 
-          {/* Desktop & Mobile Links */}
-          <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          <ul className={`${s.navLinks} ${isMenuOpen ? s.open : ''}`}>
             <li>
-              <NavLink to="/" className="nav-link" onClick={closeMenu}>
+              <NavLink to="/" className={getNavLinkClass} onClick={closeMenu}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/phones" className="nav-link" onClick={closeMenu}>
+              <NavLink to="/phones" className={getNavLinkClass} onClick={closeMenu}>
                 Phones
               </NavLink>
             </li>
             <li>
-              <NavLink to="/tablets" className="nav-link" onClick={closeMenu}>
+              <NavLink to="/tablets" className={getNavLinkClass} onClick={closeMenu}>
                 Tablets
               </NavLink>
             </li>
             <li>
-              <NavLink to="/accessories" className="nav-link" onClick={closeMenu}>
+              <NavLink to="/accessories" className={getNavLinkClass} onClick={closeMenu}>
                 Accessories
               </NavLink>
             </li>
           </ul>
 
-          {/* Burger Menu Button */}
           <div
-            className={`burger-menu ${isMenuOpen ? 'open' : ''}`}
+            className={`${s.burgerMenu} ${isMenuOpen ? s.open : ''}`}
             onClick={toggleMenu}
           >
             <img
@@ -74,18 +69,15 @@ function Header() {
           </div>
         </div>
 
-        {/* Icons Group */}
-        <div
-          className={`button-group-header ${isMenuOpen ? 'mobile-visible' : ''}`}
-        >
-          <div className="button-group-header-block">
-            <NavLink to="/favorites" onClick={closeMenu}>
-              <img src="./img/Like.svg" alt="Like" className="like" />
+        <div className={`${s.buttonGroupHeader} ${isMenuOpen ? s.mobileVisible : ''}`}>
+          <div className={s.buttonGroupHeaderBlock}>
+            <NavLink to="/favorites" onClick={closeMenu} className={({ isActive }) => isActive ? s.activeIcon : ''}>
+              <img src="./img/Like.svg" alt="Like" className={s.like} />
             </NavLink>
           </div>
-          <div className="button-group-header-block">
-            <NavLink to="/cart" onClick={closeMenu}>
-              <img src="./img/Cart.svg" alt="Cart" className="cart" />
+          <div className={s.buttonGroupHeaderBlock}>
+            <NavLink to="/cart" onClick={closeMenu} className={({ isActive }) => isActive ? s.activeIcon : ''}>
+              <img src="./img/Cart.svg" alt="Cart" className={s.cart} />
             </NavLink>
           </div>
         </div>
@@ -93,5 +85,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

@@ -1,29 +1,29 @@
 import React from 'react';
-import './Footer.scss';
-import logo from '../../../public/img/Logo.svg';
-import arrowUp from '../../../public/img/Arrow_Right.svg';
+import s from './Footer.module.scss';
 
-function Footer() {
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-left">
-          <img src="./img/Logo.svg" alt="Logo" className="footer-logo" />
+    <footer className={s.footer}>
+      <div className={s.footerContainer}>
+        <div className={s.footerLeft}>
+          <img src="./img/Logo.svg" alt="Logo" className={s.footerLogo} />
         </div>
-        <div className="footer-center">
+
+        <div className={s.footerCenter}>
           <a href="/github">Github</a>
           <a href="/contacts">Contacts</a>
           <a href="/rights">Rights</a>
         </div>
-        <div className="footer-right">
-          <div className="back-to-top-text">Back to top</div>
+
+        <div className={s.footerRight}>
+          <div className={s.backToTopText}>Back to top</div>
           <button
-            className="back-to-top-button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={s.backToTopButton}
+            onClick={scrollToTop}
           >
             <img src="./img/Arrow_Top.svg" alt="Arrow up" />
           </button>
@@ -33,4 +33,3 @@ function Footer() {
   );
 }
 
-export default Footer;

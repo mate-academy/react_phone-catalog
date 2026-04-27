@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import productsData from '../../../public/api/products.json';
 import { CatalogProduct } from '../../../public/types';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { Link } from 'react-router-dom';
 
-import './Home.scss';
+// Імпортуємо стилі як об'єкт 's'
+import s from './Home.module.scss';
 
-function Home() {
-  const banners = [
-    { id: 1, desktop: './img/Banner.png', mobile: './img/banner-mobile.svg' },
-    {
-      id: 2,
-      desktop: './img/banner2.png',
-      mobile: './img/banner2.png',
-    },
-    {
-      id: 3,
-      desktop: './img/banner3.png',
-      mobile: './img/banner3.png',
-    },
-  ];
+const banners = [
+  { id: 1, desktop: './img/Banner.png', mobile: './img/banner-mobile.svg' },
+  { id: 2, desktop: './img/banner2.png', mobile: './img/banner2.png' },
+  { id: 3, desktop: './img/banner3.png', mobile: './img/banner3.png' },
+];
 
+export const Home: React.FC = () => {
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  const visibleCount = 4;
 
+  // --- BANNER LOGIC ---
   const nextBanner = () => {
     setCurrentBannerIndex(prev => (prev + 1) % banners.length);
   };
@@ -31,74 +26,55 @@ function Home() {
     setCurrentBannerIndex(prev => (prev - 1 + banners.length) % banners.length);
   };
 
-  // Бонус: Автоперемикання кожні 5 секунд
   useEffect(() => {
     const interval = setInterval(nextBanner, 5000);
-
     return () => clearInterval(interval);
   }, []);
-  // -------------------
-  // BRAND NEW MODELS
-  // -------------------
-  const sortedProducts: CatalogProduct[] = [...productsData]
+
+  // --- BRAND NEW MODELS LOGIC ---
+  const sortedProducts: CatalogProduct[] = [...(productsData as CatalogProduct[])]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
 
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 4;
 
   const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
   const handleNext = () =>
-    setStartIndex(prev =>
-      Math.min(prev + 1, sortedProducts.length - visibleCount),
-    );
+    setStartIndex(prev => Math.min(prev + 1, sortedProducts.length - visibleCount));
 
-  const visibleProducts = sortedProducts.slice(
-    startIndex,
-    startIndex + visibleCount,
-  );
+  const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount);
 
-  // -------------------
-  // HOT PRICES
-  // -------------------
-  const discountProducts: CatalogProduct[] = [...productsData]
+  // --- HOT PRICES LOGIC ---
+  const discountProducts: CatalogProduct[] = [...(productsData as CatalogProduct[])]
     .filter(product => product.fullPrice && product.fullPrice > product.price)
-    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .slice(0, 10); // обмеження на 10 карток
+    .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price))
+    .slice(0, 10);
 
   const [hotStartIndex, setHotStartIndex] = useState(0);
 
   const handleHotPrev = () => setHotStartIndex(prev => Math.max(prev - 1, 0));
   const handleHotNext = () =>
-    setHotStartIndex(prev =>
-      Math.min(prev + 1, discountProducts.length - visibleCount),
-    );
+    setHotStartIndex(prev => Math.min(prev + 1, discountProducts.length - visibleCount));
 
-  const visibleDiscountProducts = discountProducts.slice(
-    hotStartIndex,
-    hotStartIndex + visibleCount,
-  );
+  const visibleDiscountProducts = discountProducts.slice(hotStartIndex, hotStartIndex + visibleCount);
 
+  // --- CATEGORIES COUNT ---
   const phonesCount = productsData.filter(p => p.category === 'phones').length;
-  const tabletsCount = productsData.filter(
-    p => p.category === 'tablets',
-  ).length;
-  const accessoriesCount = productsData.filter(
-    p => p.category === 'accessories',
-  ).length;
+  const tabletsCount = productsData.filter(p => p.category === 'tablets').length;
+  const accessoriesCount = productsData.filter(p => p.category === 'accessories').length;
 
   return (
-    <div className="home">
-      <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+    <div className={s.home}>
+      <h1 className={s.homeTitle}>Welcome to Nice Gadgets store!</h1>
 
       {/* Banner carousel */}
-      <section className="banner">
-        <div className="carousel-wrapper">
-          <button className="carousel-arrow left" onClick={prevBanner}>
+      <section className={s.bannerSection}>
+        <div className={s.carouselWrapper}>
+          <button className={`${s.carouselArrow} ${s.left}`} onClick={prevBanner}>
             <img src="./img/Arrow_Left.svg" alt="Left" />
           </button>
 
-          <div className="banner-home">
+          <div className={s.bannerHome}>
             <picture>
               <source
                 srcSet={banners[currentBannerIndex].mobile}
@@ -107,31 +83,25 @@ function Home() {
               <img
                 src={banners[currentBannerIndex].desktop}
                 alt={`Banner ${currentBannerIndex + 1}`}
-                className="banner"
+                className={s.bannerImage}
               />
             </picture>
           </div>
 
-          <button className="carousel-arrow right" onClick={nextBanner}>
+          <button className={`${s.carouselArrow} ${s.right}`} onClick={nextBanner}>
             <img src="./img/Arrow_Right.svg" alt="Right" />
           </button>
         </div>
 
-        {/* Динамічні точки (dots) */}
-        <div className="carousel-dots">
+        <div className={s.carouselDots}>
           {banners.map((_, index) => (
             <span
               key={index}
-              className={`dot ${index === currentBannerIndex ? 'active' : ''}`}
-              onClick={() => setCurrentBannerIndex(index)} // можливість клікнути на точку
-              style={{ cursor: 'pointer' }}
+              className={`${s.dot} ${index === currentBannerIndex ? s.active : ''}`}
+              onClick={() => setCurrentBannerIndex(index)}
             >
               <img
-                src={
-                  index === currentBannerIndex
-                    ? './img/Carousel_Dot_Active.svg'
-                    : './img/Carousel_Dot.svg'
-                }
+                src={index === currentBannerIndex ? './img/Carousel_Dot_Active.svg' : './img/Carousel_Dot.svg'}
                 alt="Dot"
               />
             </span>
@@ -140,27 +110,19 @@ function Home() {
       </section>
 
       {/* Brand new models */}
-      <section className="brand-new-models">
-        <div className="container-products">
+      <section className={s.brandNewModels}>
+        <div className={s.containerProducts}>
           <h2>Brand new models</h2>
-          <div className="carousel-buttons">
-            <button
-              className="carousel-arrow left"
-              onClick={handlePrev}
-              disabled={startIndex === 0}
-            >
+          <div className={s.carouselButtons}>
+            <button className={s.carouselArrowSmall} onClick={handlePrev} disabled={startIndex === 0}>
               <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
-            <button
-              className="carousel-arrow right"
-              onClick={handleNext}
-              disabled={startIndex + visibleCount >= sortedProducts.length}
-            >
+            <button className={s.carouselArrowSmall} onClick={handleNext} disabled={startIndex + visibleCount >= sortedProducts.length}>
               <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
         </div>
-        <div className="products-grid">
+        <div className={s.productsGrid}>
           {visibleProducts.map(product => (
             <ProductCard key={product.itemId} product={product} />
           ))}
@@ -168,72 +130,49 @@ function Home() {
       </section>
 
       {/* Categories */}
-      <section className="categories">
-        <h2 className="categories__title">Shop by category</h2>
-        <div className="categories__container">
-          {/* Категорія: Телефони */}
-          <Link
-            to="/phones"
-            className="categories__category"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="categories__category-img-container">
+      <section className={s.categories}>
+        <h2 className={s.categoriesTitle}>Shop by category</h2>
+        <div className={s.categoriesContainer}>
+          <Link to="/phones" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
+            <div className={s.categoryImgContainer}>
               <img src="./img/Phones.png" alt="Phones" />
             </div>
-            <div className="category__name">Mobile phones</div>
-            <div className="number-of-products">{phonesCount} models</div>
+            <div className={s.categoryName}>Mobile phones</div>
+            <div className={s.numberOfProducts}>{phonesCount} models</div>
           </Link>
 
-          {/* Категорія: Планшети */}
-          <Link
-            to="/tablets"
-            className="categories__category"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="categories__category-img-container">
+          <Link to="/tablets" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
+            <div className={s.categoryImgContainer}>
               <img src="./img/Tablets.png" alt="Tablets" />
             </div>
-            <div className="category__name">Tablets</div>
-            <div className="number-of-products">{tabletsCount} models</div>
+            <div className={s.categoryName}>Tablets</div>
+            <div className={s.numberOfProducts}>{tabletsCount} models</div>
           </Link>
 
-          {/* Категорія: Аксесуари */}
-          <Link
-            to="/accessories"
-            className="categories__category"
-            onClick={() => window.scrollTo(0, 0)} // Додано сюди теж
-          >
-            <div className="categories__category-img-container">
+          <Link to="/accessories" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
+            <div className={s.categoryImgContainer}>
               <img src="./img/Accessories.png" alt="Accessories" />
             </div>
-            <div className="category__name">Accessories</div>
-            <div className="number-of-products">{accessoriesCount} models</div>
+            <div className={s.categoryName}>Accessories</div>
+            <div className={s.numberOfProducts}>{accessoriesCount} models</div>
           </Link>
         </div>
       </section>
 
       {/* Hot prices */}
-      <section className="hot-prices">
-        <div className="container-divider">
+      <section className={s.hotPrices}>
+        <div className={s.containerDivider}>
           <h2>Hot prices</h2>
-          <div className="carousel-buttons">
-            <button
-              className="carousel-arrow left"
-              onClick={handleHotPrev}
-              disabled={hotStartIndex === 0}
-            >
+          <div className={s.carouselButtons}>
+            <button className={s.carouselArrowSmall} onClick={handleHotPrev} disabled={hotStartIndex === 0}>
               <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
-            <button
-              className="carousel-arrow right"
-              onClick={handleHotNext}
-              disabled={hotStartIndex + visibleCount >= discountProducts.length}
-            >
+            <button className={s.carouselArrowSmall} onClick={handleHotNext} disabled={hotStartIndex + visibleCount >= discountProducts.length}>
               <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
         </div>
-        <div className="products-grid">
+        <div className={s.productsGrid}>
           {visibleDiscountProducts.map(product => (
             <ProductCard key={product.itemId} product={product} showDiscount />
           ))}
@@ -241,6 +180,5 @@ function Home() {
       </section>
     </div>
   );
-}
+};
 
-export default Home;

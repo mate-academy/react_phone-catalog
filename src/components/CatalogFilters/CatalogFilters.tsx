@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import './CatalogFilters.scss';
+import s from './CatalogFilters.module.scss';
 
 interface CatalogFiltersProps {
   sort: string;
@@ -31,11 +31,9 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Перевіряємо, чи клік був ПОЗА сортуванням
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setIsSortOpen(false);
       }
-      // Перевіряємо, чи клік був ПОЗА пагінацією
       if (perPageRef.current && !perPageRef.current.contains(event.target as Node)) {
         setIsPerPageOpen(false);
       }
@@ -46,30 +44,29 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
   }, []);
 
   return (
-    <div className="catalog-filters">
+    <div className={s.catalogFilters}>
       {/* SORT BY */}
-      <div className="filter custom-dropdown" ref={sortRef}>
-        <span className="filter__label">Sort by</span>
-        <div className="filter__control">
+      <div className={`${s.filter} ${s.customDropdown}`} ref={sortRef}>
+        <span className={s.filterLabel}>Sort by</span>
+        <div className={s.filterControl}>
           <button
             type="button"
-            className={`dropdown-toggle ${isSortOpen ? 'active' : ''}`}
+            className={`${s.dropdownToggle} ${isSortOpen ? s.active : ''}`}
             onClick={() => {
               setIsSortOpen(!isSortOpen);
               setIsPerPageOpen(false);
             }}
           >
             {sortOptions.find(o => o.value === sort)?.label || 'Newest'}
-            <div className={`filter__arrow ${isSortOpen ? 'active' : ''}`} />
+            <div className={`${s.filterArrow} ${isSortOpen ? s.active : ''}`} />
           </button>
 
           {isSortOpen && (
-            <div className="dropdown-menu">
+            <div className={s.dropdownMenu}>
               {sortOptions.map(option => (
                 <div
                   key={option.value}
-                  className={`dropdown-item ${sort === option.value ? 'selected' : ''}`}
-                  // ВАЖЛИВО: Використовуємо onMouseDown + stopPropagation
+                  className={`${s.dropdownItem} ${sort === option.value ? s.selected : ''}`}
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -86,27 +83,27 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
       </div>
 
       {/* ITEMS ON PAGE */}
-      <div className="filter custom-dropdown" ref={perPageRef}>
-        <span className="filter__label">Items on page</span>
-        <div className="filter__control">
+      <div className={`${s.filter} ${s.customDropdown}`} ref={perPageRef}>
+        <span className={s.filterLabel}>Items on page</span>
+        <div className={s.filterControl}>
           <button
             type="button"
-            className={`dropdown-toggle ${isPerPageOpen ? 'active' : ''}`}
+            className={`${s.dropdownToggle} ${isPerPageOpen ? s.active : ''}`}
             onClick={() => {
               setIsPerPageOpen(!isPerPageOpen);
               setIsSortOpen(false);
             }}
           >
             {perPage === 'all' ? 'All' : perPage}
-            <div className={`filter__arrow ${isPerPageOpen ? 'active' : ''}`} />
+            <div className={`${s.filterArrow} ${isPerPageOpen ? s.active : ''}`} />
           </button>
 
           {isPerPageOpen && (
-            <div className="dropdown-menu">
+            <div className={s.dropdownMenu}>
               {perPageOptions.map(option => (
                 <div
                   key={option.value}
-                  className={`dropdown-item ${perPage === option.value ? 'selected' : ''}`}
+                  className={`${s.dropdownItem} ${perPage === option.value ? s.selected : ''}`}
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();

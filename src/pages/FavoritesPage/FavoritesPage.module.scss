@@ -1,0 +1,63 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.favoritesPage {
+  grid-column: 1 / -1;
+  padding-bottom: 80px;
+
+  @include mobile {
+    padding-bottom: 56px;
+  }
+}
+
+.favoritesHeader {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  h1 {
+    margin-bottom: 8px;
+    font-size: map-get($h1-styles, font-size);
+    color: $color-primary;
+
+    @include mobile {
+      font-size: map-get($h1-styles-mobile, font-size);
+    }
+  }
+}
+
+.favoritesCount {
+  color: $color-secondary;
+  font-size: 14px;
+}
+
+.favoritesEmpty {
+  grid-column: 1 / -1;
+  padding: 60px 0;
+  text-align: center;
+  color: $color-secondary;
+  font-size: 18px;
+}
+
+// Сітка товарів, специфічна для цієї сторінки
+.productsGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px; // Вертикальний та горизонтальний відступи
+  margin-bottom: 80px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr); // Змінив на 2 для кращого вигляду на планшеті
+    gap: 32px 16px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 40px 16px;
+  }
+
+  // Оскільки ми використовуємо перевикористовуваний компонент ProductCard,
+  // нам зазвичай не потрібно стилізувати його тут, він сам знає свою ширину.
+}

@@ -1,98 +1,94 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { removeFromCart, changeQuantity } from '../../features/cart/cartSlice';
-import './CartPage.scss';
 
-const CartPage = () => {
+// Імпортуємо модульні стилі
+import s from './CartPage.module.scss';
+
+export const CartPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  // Отримуємо товари з Redux
   const cart = useAppSelector(state => state.cart.items);
 
-  // Розрахунок загальної суми та кількості
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="cart-page">
-      <div className="back-button" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+    <div className={s.cartPage}>
+      <div className={s.backButton} onClick={() => navigate(-1)}>
         <img
           src="./img/Arrow_Left.svg"
-          alt="Arrow"
-          className="breadcrumbs__arrow"
+          alt=""
+          className={s.backArrow}
         />
-        Back
+        <span>Back</span>
       </div>
 
-      <div className="cart-title">Cart</div>
+      <h1 className={s.cartTitle}>Cart</h1>
 
       {cart.length === 0 ? (
-        <div className="cart-empty">Your cart is empty</div>
+        <div className={s.cartEmpty}>Your cart is empty</div>
       ) : (
-        <div className="cart-container">
+        <div className={s.cartContainer}>
           {/* LEFT - items */}
-          <div className="cart-items">
+          <div className={s.cartItems}>
             {cart.map(item => (
-              <div key={item.id} className="cart-card">
-                {/* Кнопка видалення */}
+              <div key={item.id} className={s.cartCard}>
                 <button
-                  className="remove"
+                  className={s.remove}
                   onClick={() => dispatch(removeFromCart(item.id))}
+                  aria-label={`Remove ${item.name} from cart`}
                 >
                   <img
                     src="./img/Close.svg"
-                    alt="Remove"
-                    className="remove-icon"
+                    alt=""
+                    className={s.removeIcon}
                   />
                 </button>
 
-                {/* Зображення */}
-                <div className="cart-card__image-container">
+                <div className={s.cartCardImageContainer}>
                   <img src={item.image} alt={item.name} />
                 </div>
 
-                {/* Назва продукту */}
-                <div className="product-name">{item.name}</div>
+                <div className={s.productName}>{item.name}</div>
 
-                {/* Правий блок з кількістю та ціною */}
-                <div className="right-side">
-                  <div className="quantity">
+                <div className={s.rightSide}>
+                  <div className={s.quantity}>
                     <button
-                      className="minus"
+                      className={s.minus}
                       onClick={() => dispatch(changeQuantity({ id: item.id, amount: -1 }))}
                       disabled={item.quantity <= 1}
+                      aria-label="Decrease quantity"
                     >
-                      <img
-                        src="./img/Minus.svg"
-                        alt="Minus"
-                        className="minus-icon"
-                      />
+                      <img src="./img/Minus.svg" alt="" className={s.minusIcon} />
                     </button>
-                    <span>{item.quantity}</span>
+                    <span className={s.quantityValue}>{item.quantity}</span>
                     <button
-                      className="plus"
+                      className={s.plus}
                       onClick={() => dispatch(changeQuantity({ id: item.id, amount: 1 }))}
+                      aria-label="Increase quantity"
                     >
-                      <img src="./img/Plus.svg" alt="Plus" className="plus-icon" />
+                      <img src="./img/Plus.svg" alt="" className={s.plusIcon} />
                     </button>
                   </div>
 
-                  <div className="price">${item.price * item.quantity}</div>
+                  <div className={s.price}>${item.price * item.quantity}</div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* RIGHT - summary */}
-          <div className="cart-summary">
-            <div className="total-price">${total}</div>
-            <div className="summary-text">
+          <div className={s.cartSummary}>
+            <div className={s.totalPrice}>${total}</div>
+            <div className={s.summaryText}>
               Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
             </div>
-            <hr className="divider" />
+            <hr className={s.divider} />
             <button
-              className="checkout-button"
+              className={s.checkoutButton}
               onClick={() => alert('Checkout functionality is coming soon!')}
             >
               Checkout
@@ -103,5 +99,3 @@ const CartPage = () => {
     </div>
   );
 };
-
-export default CartPage;

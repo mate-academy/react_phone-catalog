@@ -1,14 +1,24 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Layout from './Layout';
-import Home from './pages/Home/Home';
-import Catalog from './components/Catalog/Catalog';
-import ProductPage from './pages/ProductPage/ProductPage';
-import CartPage from './pages/CartPage/CartPage';
-import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
-import './App.scss';
+import { useEffect } from 'react';
+
+// Імпортуємо компоненти (React автоматично шукає index.ts у папках)
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { Layout } from './Layout'; // якщо Layout теж папка з index.ts, то так
+
+// Імпортуємо сторінки
+import { Home } from './pages/Home';
+import { ProductPage } from './pages/ProductPage';
+import { CartPage }  from './pages/CartPage';
+import { FavoritesPage } from './pages/FavoritesPage';
+
+// Для Catalog ми використовуємо іменований імпорт, бо там 2 компоненти
+import { Catalog } from './components/Catalog';
+
+// Стилі
+import s from './App.module.scss';
+
+// Redux
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { fetchProducts } from './features/products/productsSlice';
 
@@ -21,15 +31,15 @@ function App() {
   }, [dispatch]);
 
   if (loading) {
-    return <div className="loader">Loading products...</div>;
+    return <div className={s.loader}>Loading products...</div>;
   }
 
   if (error) {
-    return <div className="error">Error: {error}</div>;
+    return <div className={s.error}>Error: {error}</div>;
   }
 
   return (
-    <div className="app-wrapper">
+    <div className={s.appWrapper}>
       <Header />
       <main>
         <Layout>
@@ -38,7 +48,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
 
-            {/* Прибираємо products={[]}, бо дані тепер у Redux */}
+            {/* Маршрути категорій */}
             <Route path="/:category" element={<Catalog />} />
             <Route path="/:category/:productId" element={<ProductPage />} />
           </Routes>

@@ -10,11 +10,10 @@
   display: flex;
   justify-content: center;
 
-  .footer-container {
+  .footerContainer {
     display: grid;
     width: 100%;
     max-width: 1200px;
-    // Копіюємо боковий паддінг з вашого .layout
     padding: 0 20px;
     box-sizing: border-box;
 
@@ -31,8 +30,6 @@
 
     // --- MOBILE ---
     @include mobile {
-      // На мобільних зазвичай простіше перейти на Flex,
-      // щоб елементи йшли один під одним
       display: flex;
       flex-direction: column;
       gap: 32px;
@@ -40,8 +37,8 @@
       max-width: 639px;
     }
 
-    .footer-left {
-      grid-column: 1 / 5; // Займає 4 колонки зліва
+    .footerLeft {
+      grid-column: 1 / 5;
       display: flex;
       align-items: center;
 
@@ -53,22 +50,22 @@
         width: auto;
       }
 
-      .footer-logo {
+      .footerLogo {
         width: 89px;
         height: auto;
         display: block;
       }
     }
 
-    .footer-center {
-      grid-column: 7 / 19; // Рівно по центру десктопної сітки
+    .footerCenter {
+      grid-column: 7 / 19;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 32px;
 
       @include tablet {
-        grid-column: 4 / 10; // Центр на 12-колонній сітці
+        grid-column: 4 / 10;
         gap: 16px;
       }
 
@@ -93,8 +90,8 @@
       }
     }
 
-    .footer-right {
-      grid-column: 21 / 25; // Останні 4 колонки справа
+    .footerRight {
+      grid-column: 21 / 25;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -109,13 +106,13 @@
         justify-content: center;
       }
 
-      .back-to-top-text {
+      .backToTopText {
         color: $color-secondary;
         font-size: 12px;
         white-space: nowrap;
       }
 
-      .back-to-top-button {
+      .backToTopButton {
         width: 32px;
         height: 32px;
         display: flex;
@@ -129,7 +126,7 @@
         img {
           width: 16px;
           height: 16px;
-          // Якщо іконка стрілки дивиться вправо, повернемо її вгору
+          // Поворот, якщо стрілка в ресурсах за замовчуванням дивиться не туди
           transform: rotate(-90deg);
         }
 

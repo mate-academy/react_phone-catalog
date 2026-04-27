@@ -9,8 +9,7 @@
   @include mobile { margin-bottom: 64px; }
   @include tablet { margin-bottom: 64px; }
 
-  .catalog-title {
-    grid-column: 1 / -1;
+  .catalogTitle {
     font-size: map-get($h1-styles, font-size);
     font-weight: map-get($h1-styles, font-weight);
     line-height: map-get($h1-styles, line-height);
@@ -19,91 +18,66 @@
     margin-top: 40px;
     margin-bottom: 8px;
 
-
-     @include mobile {
+    @include mobile {
       font-size: map-get($h1-styles-mobile, font-size);
-      font-weight: map-get($h1-styles-mobile, font-weight);
-      line-height: map-get($h1-styles-mobile, line-height);
-      letter-spacing: map-get($h1-styles-mobile, letter-spacing);
-
       margin-top: 24px;
-  }
-  }
-
-  .catalog-grid {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-
-      @include mobile {
-      grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
-      gap: 40px;
-      margin-top: 0;
-      }
-
-      @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 0;
-      justify-content: center;
-      }
+    }
   }
 
-  .catalog-count {
-  font-size: 14px;
-  color: #89939a;
-  margin-top: 8px;
-  margin-bottom: 40px;
-
-  @include mobile {
-    margin-bottom: 32px;
-  }
-}
-
-
-
-&-count {
+  .catalogCount {
+    font-size: 14px;
     color: $color-secondary;
     margin-top: 8px;
-    font-size: 14px;
+    margin-bottom: 40px;
+
+    @include mobile {
+      margin-bottom: 32px;
+    }
   }
 
-  &-grid {
+  .catalogGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px 16px;
     margin-top: 40px;
 
-    @include tablet { grid-template-columns: repeat(2, 1fr); }
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     @include mobile {
       grid-template-columns: 1fr;
       justify-items: center;
+      gap: 40px;
     }
   }
 
-  &-pagination {
+  .catalogEmpty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: $color-secondary;
+    margin-top: 40px;
+  }
+
+  .catalogPagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 16px;
     margin-top: 40px;
 
-
-    @include mobile { gap: 16px;  margin-top: 24px; }
-
-    @include tablet { gap: 16px;  margin-top: 40px; }
-
-
-    .pagination-list {
-      display: flex;
-      gap: 8px;
-      font-family: $font-main;
-
-      @include mobile { gap: 8px; }
+    @include mobile {
+      gap: 16px;
+      margin-top: 24px;
     }
 
-    .pagination-button,
-    .pagination-arrow {
+    .paginationList {
+      display: flex;
+      gap: 8px;
+    }
+
+    .paginationButton,
+    .paginationArrow {
       width: 40px;
       height: 40px;
       display: flex;
@@ -115,7 +89,7 @@
       transition: all 0.3s;
       flex-shrink: 0;
       font-family: $font-main;
-      font-size: map-get($buttons, font-size);;
+      font-size: map-get($buttons, font-size);
 
       &:disabled {
         opacity: 0.3;
@@ -138,9 +112,4 @@
       }
     }
   }
-
 }
-
-
-
-

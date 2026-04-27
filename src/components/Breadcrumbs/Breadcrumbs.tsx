@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import './Breadcrumbs.scss';
+import s from './Breadcrumbs.module.scss';
 
 const TITLE_MAP: Record<string, string> = {
   phones: 'Phones',
@@ -14,14 +14,11 @@ interface BreadcrumbsProps {
 const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
   const { category } = useParams();
 
-  const formattedCategory =
-    category && category[0].toUpperCase() + category.slice(1);
-
   const title = category ? TITLE_MAP[category] : '';
 
   return (
-    <nav className="breadcrumbs">
-      <Link to="/" className="breadcrumbs__home">
+    <nav className={s.breadcrumbs}>
+      <Link to="/" className={s.breadcrumbsHome}>
         <img src="./img/Home.svg" alt="Home" />
       </Link>
 
@@ -30,23 +27,22 @@ const Breadcrumbs = ({ productName }: BreadcrumbsProps) => {
           <img
             src="./img/Arrow_Right_Grey.svg"
             alt="Arrow"
-            className="breadcrumbs__arrow"
+            className={s.breadcrumbsArrow}
           />
-          <Link to={`/${category}`} className="breadcrumbs__current">
+          <Link to={`/${category}`} className={s.breadcrumbsCurrent}>
             {title}
           </Link>
         </>
       )}
 
-      {/* NEW: Arrow + Product name */}
       {productName && (
         <>
           <img
             src="./img/Arrow_Right_Grey.svg"
             alt="Arrow"
-            className="breadcrumbs__arrow"
+            className={s.breadcrumbsArrow}
           />
-          <span className="breadcrumbs__current">{productName}</span>
+          <span className={s.breadcrumbsCurrent}>{productName}</span>
         </>
       )}
     </nav>

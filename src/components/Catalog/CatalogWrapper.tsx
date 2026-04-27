@@ -1,5 +1,9 @@
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import Catalog from './Catalog'; // Імпортуємо наш складний компонент з фільтрами
+import { Catalog } from './Catalog';
+
+// Імпортуємо модульні стилі
+import s from './Catalog.module.scss';
 
 interface CatalogWrapperProps {
   products: any[];
@@ -10,17 +14,20 @@ const CatalogWrapper: React.FC<CatalogWrapperProps> = ({ products }) => {
 
   // 1. Перевірка наявності категорії
   if (!category) {
-    return <h2>No category provided</h2>;
+    return <h2 className={s.errorMessage}>No category provided</h2>;
   }
 
   // 2. Перевірка завантаження даних
   if (!products || products.length === 0) {
-    return <div className="loader">Loading products...</div>;
+    return (
+      <div className={s.loaderWrapper}>
+        <div className={s.loader}>Loading products...</div>
+      </div>
+    );
   }
 
   // 3. ПЕРЕДАЄМО ДАНІ В ОСНОВНИЙ КАТАЛОГ
-  // Не малюємо сітку тут, а віддаємо це компоненту Catalog, де є сортування
-  return <Catalog products={products} />;
+  return <Catalog />;
 };
 
 export default CatalogWrapper;

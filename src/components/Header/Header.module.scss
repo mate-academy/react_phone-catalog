@@ -1,0 +1,186 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  border-bottom: 1px solid $color-elements;
+  background-color: $color-white;
+
+  font-size: map-get($uppercase, font-size);
+  font-weight: map-get($uppercase, font-weight);
+  line-height: map-get($uppercase, line-height);
+  letter-spacing: map-get($uppercase, letter-spacing);
+  transition: box-shadow 0.3s ease;
+
+  &.scrolled {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border-bottom-color: transparent;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .logo {
+    width: 80px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+
+    @include mobile { width: 64px; padding: 13px 16px; }
+    @include tablet { width: 64px; padding: 13px 24px; }
+  }
+
+  .navLeft {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+    @include mobile {
+      gap: 0;
+      width: 100%;
+      justify-content: space-between;
+    }
+    @include tablet { gap: 16px; }
+  }
+
+  .navLinks {
+    list-style: none;
+    display: flex;
+    gap: 64px;
+
+    @include mobile {
+      position: fixed;
+      top: 49px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 32px;
+      padding-top: 48px;
+      background-color: $color-white;
+      z-index: 9999;
+      overflow-y: auto;
+
+      &.open {
+        display: flex;
+      }
+    }
+
+    @include tablet { gap: 32px; }
+
+    .navLink {
+      color: $color-secondary;
+      text-decoration: none;
+      text-transform: uppercase;
+      position: relative;
+      padding: 25px 0;
+      transition: color 0.3s;
+
+      @include mobile { padding: 8px 0; }
+      @include tablet { padding: 18px 0; }
+
+      &:hover,
+      &.active {
+        color: $color-primary;
+      }
+
+      &.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-primary;
+        @include mobile { height: 2px; }
+      }
+    }
+  }
+
+  .buttonGroupHeader {
+    display: flex;
+    align-items: stretch;
+
+    @include mobile {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      padding-bottom: env(safe-area-inset-bottom);
+      background-color: $color-white;
+      border-top: 1px solid $color-elements;
+      z-index: 10000;
+
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(100%);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+
+      &.mobileVisible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .buttonGroupHeaderBlock {
+    width: 64px;
+    display: flex;
+    border-left: 1px solid $color-elements;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-hover-BG;
+    }
+
+    @include mobile {
+      width: 50%;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      // Стиль для активної іконки, якщо потрібно
+      &.activeIcon {
+        // наприклад, border-bottom: 3px solid $color-primary;
+      }
+    }
+  }
+
+  .cart, .like {
+    width: 16px;
+    height: 16px;
+  }
+
+  .burgerMenu {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 100%;
+      border-left: 1px solid $color-elements;
+      cursor: pointer;
+      z-index: 10001;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0; // Додав невеликий відступ для зручності
+
+  // Стилі для посилань всередині хлібних крихт
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  .breadcrumbsHome {
+    img {
+      width: 16px;
+      max-height: 16px;
+    }
+  }
+
+  .breadcrumbsArrow {
+    // Якщо потрібно змінити колір через filter або просто стилізувати
+    opacity: 1;
+  }
+
+  .breadcrumbsCurrent {
+    font-size: 12px;
+    font-weight: 500;
+    color: $color-icons;
+    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    // Якщо це span (останній елемент), колір зазвичай темніший або відрізняється
+    &:not(a) {
+      color: $color-secondary;
+    }
+  }
+}
