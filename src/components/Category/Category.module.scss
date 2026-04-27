@@ -1,0 +1,142 @@
+@use '../../styles/grid' as *;
+@use '../../styles/hover-scale' as *;
+@use '../../styles/breakpoints' as *;
+
+.categorycontainer {
+  @include container;
+  @include grid;
+}
+
+.title {
+  @include span(24, 12, 4);
+
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  color: var(--color-primary);
+
+  @include span(24, 12, 4);
+
+  margin: 0;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+}
+
+.boxcategory {
+  @include span(8, 4, 4);
+
+  height: 443px;
+
+  @include hover-scale(1.03);
+
+  text-decoration: none;
+
+  @include tablet {
+    height: 262px;
+  }
+
+  @include mobile {
+    height: 363px;
+  }
+}
+
+.img {
+  position: absolute;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imgbox1 .img {
+  height: 115%;
+  top: 15%;
+  left: 22%;
+}
+
+.imgbox2 .img {
+  height: 115%;
+  top: 10%;
+  left: 17%;
+}
+
+.imgbox3 .img {
+  height: 90%;
+  top: 5%;
+  left: 15%;
+}
+
+.imgbox1 {
+  background-color: #6d6474;
+  width: 100%;
+  position: relative;
+  height: 368px;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  @include tablet {
+    height: 187px;
+  }
+
+  @include mobile {
+    height: 288px;
+  }
+}
+
+.imgbox2 {
+  background-color: #8d8d92;
+  width: 100%;
+  position: relative;
+  height: 368px;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  @include tablet {
+    height: 187px;
+  }
+
+  @include mobile {
+    height: 288px;
+  }
+}
+
+.imgbox3 {
+  background-color: #d53c51;
+  width: 100%;
+  position: relative;
+  height: 368px;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  @include tablet {
+    height: 187px;
+  }
+
+  @include mobile {
+    height: 288px;
+  }
+}
+
+.categorytitle {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin: 0;
+  padding-bottom: 4px;
+
+  color: var(--color-primary);
+}
+
+.text {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  margin: 0;
+
+  color: var(--color-secondary);
+}

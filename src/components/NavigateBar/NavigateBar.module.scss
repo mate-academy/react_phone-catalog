@@ -1,0 +1,26 @@
+.urlplace {
+  display: flex;
+  margin: 0;
+}
+
+.aс {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  color: var(--color-primary);
+}
+
+.acс {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-primary);
+}
+
+.aсli {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
