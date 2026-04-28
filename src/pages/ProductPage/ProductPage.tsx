@@ -79,12 +79,10 @@ export const ProductPage = () => {
     }
   };
 
-  const handleAddToCart = () => {
+const handleAddToCart = () => {
     if (!product) return;
 
-    if (isInCart) {
-      dispatch(removeFromCart(product.id));
-    } else {
+    if (!isInCart) {
       dispatch(
         addToCart({
           id: product.id,

@@ -47,3 +47,13 @@ main {
 }
 
 
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Контейнер займає мінімум 100% висоти вікна
+}
+
+main {
+  flex: 1; // Ця частина розтягується і заповнює весь вільний простір
+}
+

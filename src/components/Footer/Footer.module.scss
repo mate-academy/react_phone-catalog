@@ -2,15 +2,17 @@
 @import '../../mixins.scss';
 
 .footer {
-  grid-column: 1 / -1;
+  // Видаляємо grid-column, якщо він заважає у flex-контейнері App
   width: 100%;
   background-color: $color-white;
   border-top: 1px solid $color-elements;
   padding: 32px 0;
   display: flex;
   justify-content: center;
+  flex-shrink: 0; // Важливо: футер не повинен стискатися
 
   .footerContainer {
+    // Твій існуючий код залишається без змін...
     display: grid;
     width: 100%;
     max-width: 1200px;
@@ -126,8 +128,6 @@
         img {
           width: 16px;
           height: 16px;
-          // Поворот, якщо стрілка в ресурсах за замовчуванням дивиться не туди
-          transform: rotate(-90deg);
         }
 
         &:hover {

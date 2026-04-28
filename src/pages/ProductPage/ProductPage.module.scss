@@ -3,7 +3,6 @@
 
 .productPage {
   grid-column: 1 / -1;
-  margin-top: 24px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -270,6 +269,7 @@
     color: $color-white;
     border: none;
     font-weight: 500;
+    font-family: $font-main;
     cursor: pointer;
 
     &AddedToCart {
@@ -374,13 +374,20 @@
     &:disabled { opacity: 0.3; }
   }
 
-  .productsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
 
-    @include tablet { grid-template-columns: repeat(2, 1fr); }
-    @include mobile { grid-template-columns: 1fr; justify-items: center; }
+  .productsGrid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @include mobile {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    &::-webkit-scrollbar { display: none; }
+    & > * { flex: 0 0 212px; scroll-snap-align: center; }
   }
+}
 }
 

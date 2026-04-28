@@ -38,15 +38,16 @@
 
   .breadcrumbsCurrent {
     font-size: 12px;
-    font-weight: 500;
-    color: $color-icons;
+    font-weight: 600;
     line-height: 16px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    // Якщо це span (останній елемент), колір зазвичай темніший або відрізняється
-    &:not(a) {
+    color: $color-primary;
+
+
+    &:last-child {
       color: $color-secondary;
     }
   }

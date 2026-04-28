@@ -14,6 +14,7 @@ import { FavoritesPage } from './pages/FavoritesPage';
 
 // Для Catalog ми використовуємо іменований імпорт, бо там 2 компоненти
 import { Catalog } from './components/Catalog';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 // Стилі
 import s from './App.module.scss';
@@ -51,6 +52,12 @@ function App() {
             {/* Маршрути категорій */}
             <Route path="/:category" element={<Catalog />} />
             <Route path="/:category/:productId" element={<ProductPage />} />
+
+            <Route path="/github" element={<NotFoundPage />} />
+            <Route path="/contacts" element={<NotFoundPage />} />
+            <Route path="/rights" element={<NotFoundPage />} />
+
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
       </main>

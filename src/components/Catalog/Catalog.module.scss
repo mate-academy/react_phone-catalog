@@ -3,7 +3,6 @@
 
 .catalog {
   grid-column: 1 / -1;
-  margin-top: 24px;
   margin-bottom: 80px;
 
   @include mobile { margin-bottom: 64px; }

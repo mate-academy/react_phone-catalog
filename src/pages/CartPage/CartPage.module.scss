@@ -158,7 +158,6 @@
   .quantityValue {
     width: 32px;
     text-align: center;
-    font-variant-numeric: tabular-nums;
     color: $color-primary;
   }
 }
@@ -203,7 +202,8 @@
     background-color: $color-primary;
     color: $color-white;
     border: none;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: $font-main;
     cursor: pointer;
     transition: 0.3s;
 

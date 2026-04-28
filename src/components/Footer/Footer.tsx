@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Імпортуємо Link
 import s from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
@@ -10,18 +11,22 @@ export const Footer: React.FC = () => {
     <footer className={s.footer}>
       <div className={s.footerContainer}>
         <div className={s.footerLeft}>
-          <img src="./img/Logo.svg" alt="Logo" className={s.footerLogo} />
+          {/* Логотип краще теж обгорнути в Link на головну */}
+          <Link to="/">
+            <img src="./img/Logo.svg" alt="Logo" className={s.footerLogo} />
+          </Link>
         </div>
 
         <div className={s.footerCenter}>
-          <a href="/github">Github</a>
-          <a href="/contacts">Contacts</a>
-          <a href="/rights">Rights</a>
+        <Link to="/github">Github</Link>
+        <Link to="/contacts">Contacts</Link>
+        <Link to="/rights">Rights</Link>
         </div>
 
         <div className={s.footerRight}>
           <div className={s.backToTopText}>Back to top</div>
           <button
+            type="button"
             className={s.backToTopButton}
             onClick={scrollToTop}
           >
@@ -31,5 +36,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-}
-
+};
