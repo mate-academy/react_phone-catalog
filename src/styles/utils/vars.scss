@@ -12,11 +12,11 @@ $colors-green: #27AE60;
 $colors-red: #EB5757;
 
 :root {
-  --header-height: 64px;
+  --header-height: 48px;
 }
 
-@include onTablet {
+@include onDesktop {
   :root {
-    --header-height: 48px;
+    --header-height: 64px;
   }
 }

@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { IconWithBadge } from '../../icons/IconWithBadge';
 import classNames from 'classnames';
+import { cartItemsCount } from '../../../features/utils/selectors';
 
 type Props = {
   isOpen: boolean;
@@ -18,7 +19,7 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
     (state: RootState) => state.favorites.items,
   );
 
-  const cartItems = useSelector((state: RootState) => state.cartList.items);
+  const cartItems = useSelector(cartItemsCount);
 
   const getNavClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.mobileMenu__navLink, {
@@ -77,7 +78,7 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           <IconWithBadge
             icon={shoppingBag}
             alt="ShoppingBag"
-            badgeCount={cartItems.length}
+            badgeCount={cartItems}
           />
         </NavLink>
       </div>

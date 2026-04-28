@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { IconWithBadge } from '../icons/IconWithBadge';
 import classNames from 'classnames';
+import { cartItemsCount } from '../../features/utils/selectors';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ export const Header = () => {
     (state: RootState) => state.favorites.items,
   );
 
-  const cartItems = useSelector((state: RootState) => state.cartList.items);
+  const cartItems = useSelector(cartItemsCount);
 
   return (
     <>
@@ -66,7 +67,7 @@ export const Header = () => {
               <IconWithBadge
                 icon={shoppingBag}
                 alt="Shopping Bag"
-                badgeCount={cartItems.length}
+                badgeCount={cartItems}
               />
             </NavLink>
           </div>

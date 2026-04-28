@@ -27,6 +27,7 @@
   &__left {
     display: flex;
     align-items: center;
+    height: 100%;
     gap: 48px;
 
     @include onTablet {
@@ -57,6 +58,7 @@
 
   &__nav {
     display: none;
+    height: 100%;
 
     @include onTablet {
       display: flex;
@@ -71,6 +73,9 @@
 
   &__navLink {
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
 
     @include uppercase-text;
 
@@ -83,7 +88,7 @@
       content: '';
       position: absolute;
       left: -2px;
-      bottom: -26.5px;
+      bottom: 0;
 
       width: 110%;
       height: 3px;
@@ -92,10 +97,6 @@
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.3s ease;
-
-      @include onTablet {
-        bottom: -18.5px;
-      }
     }
 
     &:hover {
@@ -127,8 +128,8 @@
 
   &__iconLink {
     position: relative;
-    width: 64px;
-    height: 64px;
+    width: var(--header-height);
+    height: var(--header-height);
 
     display: flex;
     align-items: center;
@@ -137,10 +138,6 @@
     border-left: 1px solid $colors-elements;
     text-decoration: none;
 
-    @include onTablet {
-      width: 48px;
-      height: 48px;
-    }
 
     &::after {
       content: '';
@@ -157,7 +154,7 @@
       transition: transform 0.3s ease;
     }
 
-    & > * {
+    &>* {
       transform: scale(1.05);
     }
 

@@ -15,6 +15,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Chevron } from '../../components/icons/Chevron';
 import { CartItemCard } from '../../components/CartItemCard';
 import { CheckoutModal } from '../../components/CheckoutModal';
+import { cartItemsCount } from '../../features/utils/selectors';
 
 export const CartPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -42,9 +43,7 @@ export const CartPage = () => {
     }, 0);
   }, [cartProducts, cartItemsMap]);
 
-  const totalItems = useMemo(() => {
-    return cartListItems.reduce((acc, item) => acc + item.quantity, 0);
-  }, [cartListItems]);
+  const cartItems = useSelector(cartItemsCount);
 
   useEffect(() => {
     setLoading(true);
@@ -59,7 +58,7 @@ export const CartPage = () => {
     return <Loader />;
   }
 
-  if (!totalItems) {
+  if (!cartItems) {
     return (
       <div className={styles.cartEmpty}>
         <img
@@ -106,12 +105,12 @@ export const CartPage = () => {
 
       <div className={styles.cart__summary}>
         <h2 className={styles.cart__summaryPrice}>${totalSum}</h2>
-        <p className={styles.cart__summaryItem}>Total for {totalItems} items</p>
+        <p className={styles.cart__summaryItem}>Total for {cartItems} items</p>
         <div className={styles.cart__summaryLine}></div>
         <button
           type="button"
           className={styles.cart__checkoutButton}
-          disabled={!totalItems}
+          disabled={!cartItems}
           onClick={() => setIsCheckoutModalOpen(true)}
         >
           Checkout

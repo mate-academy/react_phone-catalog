@@ -27,10 +27,20 @@ export const Footer = () => {
           >
             GitHub
           </a>
-          <a href="///" className={styles.mainLinks__link}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/Vladislav-Korsun"
+            className={styles.mainLinks__link}
+          >
             Contacts
           </a>
-          <a href="///" className={styles.mainLinks__link}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/Vladislav-Korsun"
+            className={styles.mainLinks__link}
+          >
             Rights
           </a>
         </div>
