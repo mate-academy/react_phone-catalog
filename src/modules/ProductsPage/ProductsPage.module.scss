@@ -3,6 +3,7 @@
 .productPage {
   margin-top: 24px;
   min-height: 100vh;
+
   @include pageGrid;
 
   &__wrapper {

@@ -1,3 +1,5 @@
+@import './mixins';
+
 $tablet-min-width: 640px;
 $desktop-min-width: 1199px;
 $colors-primary: #313237;
@@ -8,3 +10,13 @@ $colors-hover-bg: #FAFBFC;
 $colors-white: #fff;
 $colors-green: #27AE60;
 $colors-red: #EB5757;
+
+:root {
+  --header-height: 64px;
+}
+
+@include onTablet {
+  :root {
+    --header-height: 48px;
+  }
+}

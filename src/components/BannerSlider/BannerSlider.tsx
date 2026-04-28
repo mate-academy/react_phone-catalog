@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './BannerSlider.module.scss';
 import { Chevron } from '../icons/Chevron';
 
-export const banners = [
+const banners = [
   {
     id: 0,
     img: '/img/banner-accessories.png',
