@@ -109,7 +109,7 @@ export const Catalog: React.FC = () => {
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(prev => prev - 1)}
           >
-            <img src="/img/Arrow_Left.svg" alt="Prev" />
+            <img src="./img/Arrow_Left.svg" alt="Prev" />
           </button>
 
           <div className={s.paginationList}>
@@ -131,7 +131,7 @@ export const Catalog: React.FC = () => {
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
           >
-            <img src="/img/Arrow_Right.svg" alt="Next" />
+            <img src="./img/Arrow_Right.svg" alt="Next" />
           </button>
         </div>
       )}
