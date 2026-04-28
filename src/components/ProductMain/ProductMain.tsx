@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo/ProductInfo';
 import ProductAbout from './ProductAbout/ProductAbout';
 import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 import useAppContext from '../../useAppContext';
@@ -18,6 +18,7 @@ export type ProductMainProps = {
 };
 
 const ProductMain = ({ someProduct, models }: ProductMainProps) => {
+  const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
   );
@@ -26,7 +27,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   );
 
   const [currentProduct, setCurrentProduct] = useState(someProduct);
-  const navigate = useNavigate();
+
   const { favorites, baskets, setBaskets, setFavorites } = useAppContext();
 
   useEffect(() => {
@@ -101,7 +102,10 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
       <div className="product-main__container">
         <ProductTopIcons currentProduct={currentProduct} />
         <div className="product-main__back-buttons">
-          <Link to="/" className="product-main__icon--back"></Link>
+          <div
+            onClick={() => navigate(-1)}
+            className="product-main__icon--back"
+          ></div>
           <span className="product-main__text--back">Back</span>
         </div>
         <h1 className="product-main__title">{currentProduct.name}</h1>

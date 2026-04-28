@@ -25,6 +25,17 @@
   background-position: center;
 }
 
+.product-main__icon--slider--right-home--gray {
+   background-image: url('/public/img/icons/icon--slider--right--gray.png');
+
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
 .product-main__icon--slider--right--gray {
  background-image: url('/public/img/icons/icon--slider--right--gray.png');
 
@@ -34,6 +45,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  cursor: pointer;
 };
 
 

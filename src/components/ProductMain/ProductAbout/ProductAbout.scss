@@ -3,11 +3,14 @@ display: flex;
  flex-direction: column;
  gap: 32px;
  grid-column: 1 / -1;
+ margin-top: 51px;
   @media (min-width: 640px) {
    grid-column: 1 / 6;
+   margin-top: 0;
   }
   @media (min-width: 1200px) {
      grid-column: 1 / 13;
+     margin-top: 0;
   }
 
 }
@@ -19,10 +22,6 @@ line-height: 140%;
 border-bottom: 1px solid #E2E6E9;
 margin-top: 0;
 margin-bottom: 16px;
-}
-
-.product-about__section {
-
 }
 
 .product-about__subtitle {
