@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <Router>
         <ScrollToTop />
-          <App />
+        <App />
       </Router>
     </Provider>
   </StrictMode>,

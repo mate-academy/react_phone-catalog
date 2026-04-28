@@ -1,7 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { removeFromCart, changeQuantity, clearCart } from '../../features/cart/cartSlice';
+import {
+  removeFromCart,
+  changeQuantity,
+  clearCart,
+} from '../../features/cart/cartSlice';
 
 import s from './CartPage.module.scss';
 
@@ -16,7 +20,7 @@ export const CartPage = () => {
 
   const handleCheckout = () => {
     const isConfirmed = window.confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?'
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
     );
 
     if (isConfirmed) {
@@ -44,7 +48,11 @@ export const CartPage = () => {
                   className={s.remove}
                   onClick={() => dispatch(removeFromCart(item.id))}
                 >
-                  <img src="./img/Close.svg" alt="Remove" className={s.removeIcon} />
+                  <img
+                    src="./img/Close.svg"
+                    alt="Remove"
+                    className={s.removeIcon}
+                  />
                 </button>
 
                 <div className={s.cartCardImageContainer}>
@@ -57,7 +65,9 @@ export const CartPage = () => {
                   <div className={s.quantity}>
                     <button
                       className={s.minus}
-                      onClick={() => dispatch(changeQuantity({ id: item.id, amount: -1 }))}
+                      onClick={() =>
+                        dispatch(changeQuantity({ id: item.id, amount: -1 }))
+                      }
                       disabled={item.quantity <= 1}
                     >
                       <img src="./img/Minus.svg" alt="" />
@@ -67,7 +77,9 @@ export const CartPage = () => {
 
                     <button
                       className={s.plus}
-                      onClick={() => dispatch(changeQuantity({ id: item.id, amount: 1 }))}
+                      onClick={() =>
+                        dispatch(changeQuantity({ id: item.id, amount: 1 }))
+                      }
                     >
                       <img src="./img/Plus.svg" alt="" />
                     </button>
@@ -85,10 +97,7 @@ export const CartPage = () => {
               Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
             </div>
             <hr className={s.divider} />
-            <button
-              className={s.checkoutButton}
-              onClick={handleCheckout}
-            >
+            <button className={s.checkoutButton} onClick={handleCheckout}>
               Checkout
             </button>
           </div>

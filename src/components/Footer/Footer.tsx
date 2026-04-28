@@ -17,9 +17,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className={s.footerCenter}>
-        <Link to="/github">Github</Link>
-        <Link to="/contacts">Contacts</Link>
-        <Link to="/rights">Rights</Link>
+          <Link to="/github">Github</Link>
+          <Link to="/contacts">Contacts</Link>
+          <Link to="/rights">Rights</Link>
         </div>
 
         <div className={s.footerRight}>

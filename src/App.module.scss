@@ -1,5 +1,5 @@
-@import 'variables.scss';
-@import 'mixins.scss';
+@import 'variables';
+@import 'mixins';
 
 div, section, article, header, footer, main, aside, nav {
   margin: 0;
@@ -10,7 +10,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 }
 
 * {

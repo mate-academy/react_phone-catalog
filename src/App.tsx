@@ -7,7 +7,7 @@ import { Layout } from './Layout';
 
 import { Home } from './pages/Home';
 import { ProductPage } from './pages/ProductPage';
-import { CartPage }  from './pages/CartPage';
+import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 
 import { Catalog } from './components/Catalog';

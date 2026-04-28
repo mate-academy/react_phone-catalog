@@ -38,16 +38,10 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
         <p className={s.modalMessage}>{message}</p>
 
         <div className={s.modalActions}>
-          <button
-            className={`${s.modalBtn} ${s.cancel}`}
-            onClick={onCancel}
-          >
+          <button className={`${s.modalBtn} ${s.cancel}`} onClick={onCancel}>
             {cancelText}
           </button>
-          <button
-            className={`${s.modalBtn} ${s.confirm}`}
-            onClick={onConfirm}
-          >
+          <button className={`${s.modalBtn} ${s.confirm}`} onClick={onConfirm}>
             {confirmText}
           </button>
         </div>

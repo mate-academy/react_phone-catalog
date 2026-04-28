@@ -26,10 +26,13 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(nextBanner, 5000);
+
     return () => clearInterval(interval);
   }, []);
 
-  const sortedProducts: CatalogProduct[] = [...(productsData as CatalogProduct[])]
+  const sortedProducts: CatalogProduct[] = [
+    ...(productsData as CatalogProduct[]),
+  ]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
 
@@ -37,26 +40,42 @@ export const Home: React.FC = () => {
 
   const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
   const handleNext = () =>
-    setStartIndex(prev => Math.min(prev + 1, sortedProducts.length - visibleCount));
+    setStartIndex(prev =>
+      Math.min(prev + 1, sortedProducts.length - visibleCount),
+    );
 
-  const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount);
+  const visibleProducts = sortedProducts.slice(
+    startIndex,
+    startIndex + visibleCount,
+  );
 
-  const discountProducts: CatalogProduct[] = [...(productsData as CatalogProduct[])]
+  const discountProducts: CatalogProduct[] = [
+    ...(productsData as CatalogProduct[]),
+  ]
     .filter(product => product.fullPrice && product.fullPrice > product.price)
-    .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price))
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
     .slice(0, 10);
 
   const [hotStartIndex, setHotStartIndex] = useState(0);
 
   const handleHotPrev = () => setHotStartIndex(prev => Math.max(prev - 1, 0));
   const handleHotNext = () =>
-    setHotStartIndex(prev => Math.min(prev + 1, discountProducts.length - visibleCount));
+    setHotStartIndex(prev =>
+      Math.min(prev + 1, discountProducts.length - visibleCount),
+    );
 
-  const visibleDiscountProducts = discountProducts.slice(hotStartIndex, hotStartIndex + visibleCount);
+  const visibleDiscountProducts = discountProducts.slice(
+    hotStartIndex,
+    hotStartIndex + visibleCount,
+  );
 
   const phonesCount = productsData.filter(p => p.category === 'phones').length;
-  const tabletsCount = productsData.filter(p => p.category === 'tablets').length;
-  const accessoriesCount = productsData.filter(p => p.category === 'accessories').length;
+  const tabletsCount = productsData.filter(
+    p => p.category === 'tablets',
+  ).length;
+  const accessoriesCount = productsData.filter(
+    p => p.category === 'accessories',
+  ).length;
 
   return (
     <div className={s.home}>
@@ -65,7 +84,10 @@ export const Home: React.FC = () => {
 
       <section className={s.bannerSection}>
         <div className={s.carouselWrapper}>
-          <button className={`${s.carouselArrow} ${s.left}`} onClick={prevBanner}>
+          <button
+            className={`${s.carouselArrow} ${s.left}`}
+            onClick={prevBanner}
+          >
             <img src="./img/Arrow_Left.svg" alt="Left" />
           </button>
 
@@ -83,7 +105,10 @@ export const Home: React.FC = () => {
             </picture>
           </div>
 
-          <button className={`${s.carouselArrow} ${s.right}`} onClick={nextBanner}>
+          <button
+            className={`${s.carouselArrow} ${s.right}`}
+            onClick={nextBanner}
+          >
             <img src="./img/Arrow_Right.svg" alt="Right" />
           </button>
         </div>
@@ -96,7 +121,11 @@ export const Home: React.FC = () => {
               onClick={() => setCurrentBannerIndex(index)}
             >
               <img
-                src={index === currentBannerIndex ? './img/Carousel_Dot_Active.svg' : './img/Carousel_Dot.svg'}
+                src={
+                  index === currentBannerIndex
+                    ? './img/Carousel_Dot_Active.svg'
+                    : './img/Carousel_Dot.svg'
+                }
                 alt="Dot"
               />
             </span>
@@ -108,10 +137,18 @@ export const Home: React.FC = () => {
         <div className={s.containerProducts}>
           <h3>Brand new models</h3>
           <div className={s.carouselButtons}>
-            <button className={s.carouselArrowSmall} onClick={handlePrev} disabled={startIndex === 0}>
+            <button
+              className={s.carouselArrowSmall}
+              onClick={handlePrev}
+              disabled={startIndex === 0}
+            >
               <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
-            <button className={s.carouselArrowSmall} onClick={handleNext} disabled={startIndex + visibleCount >= sortedProducts.length}>
+            <button
+              className={s.carouselArrowSmall}
+              onClick={handleNext}
+              disabled={startIndex + visibleCount >= sortedProducts.length}
+            >
               <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
@@ -126,7 +163,11 @@ export const Home: React.FC = () => {
       <section className={s.categories}>
         <h3 className={s.categoriesTitle}>Shop by category</h3>
         <div className={s.categoriesContainer}>
-          <Link to="/phones" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to="/phones"
+            className={s.categoriesCategory}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className={s.categoryImgContainer}>
               <img src="./img/Phones.png" alt="Phones" />
             </div>
@@ -134,7 +175,11 @@ export const Home: React.FC = () => {
             <div className={s.numberOfProducts}>{phonesCount} models</div>
           </Link>
 
-          <Link to="/tablets" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to="/tablets"
+            className={s.categoriesCategory}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className={s.categoryImgContainer}>
               <img src="./img/Tablets.png" alt="Tablets" />
             </div>
@@ -142,7 +187,11 @@ export const Home: React.FC = () => {
             <div className={s.numberOfProducts}>{tabletsCount} models</div>
           </Link>
 
-          <Link to="/accessories" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to="/accessories"
+            className={s.categoriesCategory}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className={s.categoryImgContainer}>
               <img src="./img/Accessories.png" alt="Accessories" />
             </div>
@@ -156,10 +205,18 @@ export const Home: React.FC = () => {
         <div className={s.containerDivider}>
           <h3>Hot prices</h3>
           <div className={s.carouselButtons}>
-            <button className={s.carouselArrowSmall} onClick={handleHotPrev} disabled={hotStartIndex === 0}>
+            <button
+              className={s.carouselArrowSmall}
+              onClick={handleHotPrev}
+              disabled={hotStartIndex === 0}
+            >
               <img src="./img/Arrow_Left.svg" alt="Left" />
             </button>
-            <button className={s.carouselArrowSmall} onClick={handleHotNext} disabled={hotStartIndex + visibleCount >= discountProducts.length}>
+            <button
+              className={s.carouselArrowSmall}
+              onClick={handleHotNext}
+              disabled={hotStartIndex + visibleCount >= discountProducts.length}
+            >
               <img src="./img/Arrow_Right.svg" alt="Right" />
             </button>
           </div>
@@ -173,4 +230,3 @@ export const Home: React.FC = () => {
     </div>
   );
 };
-

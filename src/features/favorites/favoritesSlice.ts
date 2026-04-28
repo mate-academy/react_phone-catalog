@@ -17,7 +17,6 @@ const loadFavorites = (): CatalogProduct[] => {
   }
 };
 
-
 const initialState: FavoritesState = {
   items: loadFavorites(),
 };

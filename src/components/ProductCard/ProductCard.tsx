@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CatalogProduct, Phone, Tablet, Accessory } from '../../../public/types';
+import {
+  CatalogProduct,
+  Phone,
+  Tablet,
+  Accessory,
+} from '../../../public/types';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   addToFavorites,
@@ -28,18 +33,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const productId = (product as CatalogProduct).itemId || product.id;
 
   const favorites = useAppSelector(state => state.favorites.items);
-  const isLiked = favorites.some(item => (item.itemId === productId || item.id === productId));
+  const isLiked = favorites.some(
+    item => item.itemId === productId || item.id === productId,
+  );
 
   const cartItems = useAppSelector(state => state.cart.items);
   const isInCart = cartItems.some(item => item.id === productId);
 
-  const price = 'priceDiscount' in product ? product.priceDiscount : product.price;
+  const price =
+    'priceDiscount' in product ? product.priceDiscount : product.price;
 
-  const fullPrice = 'priceRegular' in product
-    ? product.priceRegular
-    : (product as CatalogProduct).fullPrice;
+  const fullPrice =
+    'priceRegular' in product
+      ? product.priceRegular
+      : (product as CatalogProduct).fullPrice;
 
-  const image = 'images' in product ? product.images[0] : (product as CatalogProduct).image;
+  const image =
+    'images' in product ? product.images[0] : (product as CatalogProduct).image;
 
   const handleLikeClick = () => {
     if (isLiked) {
@@ -55,12 +65,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const handleAddToCart = () => {
     if (!isInCart) {
-      dispatch(addToCart({
-        id: productId,
-        name: product.name,
-        price: price,
-        image: image
-      }));
+      dispatch(
+        addToCart({
+          id: productId,
+          name: product.name,
+          price: price,
+          image: image,
+        }),
+      );
     }
   };
 
@@ -123,6 +135,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
     </div>
   );
-}
+};
 
 export default ProductCard;

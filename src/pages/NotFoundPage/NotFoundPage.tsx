@@ -8,10 +8,7 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className={s.notFound}>
       <h1 className={s.title}>Page not found</h1>
-      <button
-        className={s.backButton}
-        onClick={() => navigate('/')}
-      >
+      <button className={s.backButton} onClick={() => navigate('/')}>
         Go to Home
       </button>
     </div>

@@ -10,7 +10,9 @@ export const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -39,17 +41,29 @@ export const Header: React.FC = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/phones" className={getNavLinkClass} onClick={closeMenu}>
+              <NavLink
+                to="/phones"
+                className={getNavLinkClass}
+                onClick={closeMenu}
+              >
                 Phones
               </NavLink>
             </li>
             <li>
-              <NavLink to="/tablets" className={getNavLinkClass} onClick={closeMenu}>
+              <NavLink
+                to="/tablets"
+                className={getNavLinkClass}
+                onClick={closeMenu}
+              >
                 Tablets
               </NavLink>
             </li>
             <li>
-              <NavLink to="/accessories" className={getNavLinkClass} onClick={closeMenu}>
+              <NavLink
+                to="/accessories"
+                className={getNavLinkClass}
+                onClick={closeMenu}
+              >
                 Accessories
               </NavLink>
             </li>
@@ -60,20 +74,30 @@ export const Header: React.FC = () => {
             onClick={toggleMenu}
           >
             <img
-              src={isMenuOpen ? "./img/Close_black.svg" : "./img/Menu.svg"}
+              src={isMenuOpen ? './img/Close_black.svg' : './img/Menu.svg'}
               alt="Toggle menu"
             />
           </div>
         </div>
 
-        <div className={`${s.buttonGroupHeader} ${isMenuOpen ? s.mobileVisible : ''}`}>
+        <div
+          className={`${s.buttonGroupHeader} ${isMenuOpen ? s.mobileVisible : ''}`}
+        >
           <div className={s.buttonGroupHeaderBlock}>
-            <NavLink to="/favorites" onClick={closeMenu} className={({ isActive }) => isActive ? s.activeIcon : ''}>
+            <NavLink
+              to="/favorites"
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? s.activeIcon : '')}
+            >
               <img src="./img/Like.svg" alt="Like" className={s.like} />
             </NavLink>
           </div>
           <div className={s.buttonGroupHeaderBlock}>
-            <NavLink to="/cart" onClick={closeMenu} className={({ isActive }) => isActive ? s.activeIcon : ''}>
+            <NavLink
+              to="/cart"
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? s.activeIcon : '')}
+            >
               <img src="./img/Cart.svg" alt="Cart" className={s.cart} />
             </NavLink>
           </div>
@@ -81,4 +105,4 @@ export const Header: React.FC = () => {
       </nav>
     </header>
   );
-}
+};

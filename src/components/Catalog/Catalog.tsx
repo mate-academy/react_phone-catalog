@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import ProductCard from '../ProductCard/ProductCard';
@@ -17,7 +17,11 @@ export const Catalog: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const { items: allProducts, loading, error } = useAppSelector(state => state.products);
+  const {
+    items: allProducts,
+    loading,
+    error,
+  } = useAppSelector(state => state.products);
 
   const sort = searchParams.get('sort') || 'newest';
   const perPage = searchParams.get('perPage') || 'all';
@@ -27,7 +31,11 @@ export const Catalog: React.FC = () => {
     const newParams = new URLSearchParams(searchParams);
 
     Object.entries(params).forEach(([key, value]) => {
-      if (value === null || value === 'all' || (key === 'page' && value === 1)) {
+      if (
+        value === null ||
+        value === 'all' ||
+        (key === 'page' && value === 1)
+      ) {
         newParams.delete(key);
       } else {
         newParams.set(key, value.toString());
@@ -37,17 +45,23 @@ export const Catalog: React.FC = () => {
     setSearchParams(newParams);
   };
 
-  const title = category ? (TITLES_MAP[category] ?? 'Catalog page') : 'Catalog page';
+  const title = category
+    ? (TITLES_MAP[category] ?? 'Catalog page')
+    : 'Catalog page';
 
   const sortedProducts = useMemo(() => {
     const filtered = allProducts.filter(p => p.category === category);
 
     return [...filtered].sort((a, b) => {
       switch (sort) {
-        case 'alphabet': return a.name.localeCompare(b.name);
-        case 'cheapest': return a.priceDiscount - b.priceDiscount;
-        case 'newest': return b.year - a.year; // Сортування за роком (age)
-        default: return 0;
+        case 'alphabet':
+          return a.name.localeCompare(b.name);
+        case 'cheapest':
+          return a.priceDiscount - b.priceDiscount;
+        case 'newest':
+          return b.year - a.year;
+        default:
+          return 0;
       }
     });
   }, [allProducts, category, sort]);
@@ -62,7 +76,6 @@ export const Catalog: React.FC = () => {
     return sortedProducts.slice(start, start + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
 
-
   const getVisiblePages = () => {
     const pages: number[] = [];
     const maxVisible = 4;
@@ -75,21 +88,32 @@ export const Catalog: React.FC = () => {
     }
 
     for (let i = start; i <= end; i++) {
-      if (i > 0) pages.push(i);
+      if (i > 0) {
+        pages.push(i);
+      }
     }
+
     return pages;
   };
 
-  if (loading) return <div className={s.loader}>Loading products...</div>;
+  if (loading) {
+    return <div className={s.loader}>Loading products...</div>;
+  }
 
-  if (error) return (
-    <div className={s.error}>
-      <p>Something went wrong</p>
-      <button type="button" onClick={() => window.location.reload()}>Reload</button>
-    </div>
-  );
+  if (error) {
+    return (
+      <div className={s.error}>
+        <p>Something went wrong</p>
+        <button type="button" onClick={() => window.location.reload()}>
+          Reload
+        </button>
+      </div>
+    );
+  }
 
-  if (!category) return <p>No category selected</p>;
+  if (!category) {
+    return <p>No category selected</p>;
+  }
 
   return (
     <section className={s.catalog}>
@@ -103,8 +127,8 @@ export const Catalog: React.FC = () => {
       <CatalogFilters
         sort={sort}
         perPage={perPage === 'all' ? 'all' : Number(perPage)}
-        onSortChange={(val) => updateParams({ sort: val, page: 1 })}
-        onPerPageChange={(val) => updateParams({ perPage: val, page: 1 })}
+        onSortChange={val => updateParams({ sort: val, page: 1 })}
+        onPerPageChange={val => updateParams({ perPage: val, page: 1 })}
       />
 
       <div className={s.catalogGrid}>

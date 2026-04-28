@@ -1,11 +1,12 @@
-@import '../../variables.scss';
-@import '../../mixins.scss';
+@import '../../variables';
+@import '../../mixins';
 
 .catalog {
   grid-column: 1 / -1;
   margin-bottom: 80px;
 
   @include mobile { margin-bottom: 64px; }
+
   @include tablet { margin-bottom: 64px; }
 
   .catalogTitle {

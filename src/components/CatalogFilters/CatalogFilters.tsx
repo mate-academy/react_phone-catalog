@@ -8,7 +8,12 @@ interface CatalogFiltersProps {
   onPerPageChange: (value: number | 'all') => void;
 }
 
-const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: CatalogFiltersProps) => {
+const CatalogFilters = ({
+  sort,
+  perPage,
+  onSortChange,
+  onPerPageChange,
+}: CatalogFiltersProps) => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
 
@@ -34,12 +39,17 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setIsSortOpen(false);
       }
-      if (perPageRef.current && !perPageRef.current.contains(event.target as Node)) {
+
+      if (
+        perPageRef.current &&
+        !perPageRef.current.contains(event.target as Node)
+      ) {
         setIsPerPageOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
@@ -67,7 +77,7 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
                 <div
                   key={option.value}
                   className={`${s.dropdownItem} ${sort === option.value ? s.selected : ''}`}
-                  onMouseDown={(e) => {
+                  onMouseDown={e => {
                     e.preventDefault();
                     e.stopPropagation();
                     onSortChange(option.value);
@@ -95,7 +105,9 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
             }}
           >
             {perPage === 'all' ? 'All' : perPage}
-            <div className={`${s.filterArrow} ${isPerPageOpen ? s.active : ''}`} />
+            <div
+              className={`${s.filterArrow} ${isPerPageOpen ? s.active : ''}`}
+            />
           </button>
 
           {isPerPageOpen && (
@@ -104,7 +116,7 @@ const CatalogFilters = ({ sort, perPage, onSortChange, onPerPageChange }: Catalo
                 <div
                   key={option.value}
                   className={`${s.dropdownItem} ${perPage === option.value ? s.selected : ''}`}
-                  onMouseDown={(e) => {
+                  onMouseDown={e => {
                     e.preventDefault();
                     e.stopPropagation();
                     onPerPageChange(option.value as number | 'all');

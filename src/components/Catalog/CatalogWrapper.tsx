@@ -22,6 +22,7 @@ const CatalogWrapper: React.FC<CatalogWrapperProps> = ({ products }) => {
       </div>
     );
   }
+
   return <Catalog />;
 };
 

@@ -33,7 +33,9 @@ export const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
 
-  const products = useAppSelector(state => state.products.items) as ProductType[];
+  const products = useAppSelector(
+    state => state.products.items,
+  ) as ProductType[];
   const favorites = useAppSelector(state => state.favorites.items);
   const cartItems = useAppSelector(state => state.cart.items);
 
@@ -42,7 +44,7 @@ export const ProductPage = () => {
       .sort(() => Math.random() - 0.5)
       .slice(0, 10)
       .map(p => p as unknown as CatalogProduct);
-  }, [products, productId]); 
+  }, [products, productId]);
 
   const visibleCount = 4;
   const isLiked = favorites.some(item => item.id === product?.id);
@@ -51,7 +53,9 @@ export const ProductPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (!productId || products.length === 0) return;
+    if (!productId || products.length === 0) {
+      return;
+    }
 
     const foundProduct = products.find(p => p.id === productId);
 
@@ -62,7 +66,10 @@ export const ProductPage = () => {
   }, [productId, products]);
 
   const handleLikeClick = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
+
     if (isLiked) {
       dispatch(removeFromFavorites(product.id));
     } else {
@@ -71,21 +78,30 @@ export const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (!product || isInCart) return;
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.priceDiscount,
-      image: product.images[0],
-    }));
+    if (!product || isInCart) {
+      return;
+    }
+
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.priceDiscount,
+        image: product.images[0],
+      }),
+    );
   };
 
   const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
-  const handleNext = () => setStartIndex(prev =>
-    Math.min(prev + 1, Math.max(0, suggestedProducts.length - visibleCount))
-  );
+  const handleNext = () =>
+    setStartIndex(prev =>
+      Math.min(prev + 1, Math.max(0, suggestedProducts.length - visibleCount)),
+    );
 
-  const visibleProducts = suggestedProducts.slice(startIndex, startIndex + visibleCount);
+  const visibleProducts = suggestedProducts.slice(
+    startIndex,
+    startIndex + visibleCount,
+  );
 
   if (loading) {
     return (
@@ -100,14 +116,20 @@ export const ProductPage = () => {
       <div className={s.productPageError}>
         <Breadcrumbs productName="Product was not found" />
         <h1 className={s.productTitle}>Product was not found</h1>
-        <button onClick={() => navigate(-1)} className={s.backButton}>Back</button>
+        <button onClick={() => navigate(-1)} className={s.backButton}>
+          Back
+        </button>
       </div>
     );
   }
 
-
-  const colorVariants = products.filter(p => p.namespaceId === product.namespaceId && p.capacity === product.capacity);
-  const capacityVariants = products.filter(p => p.namespaceId === product.namespaceId && p.color === product.color);
+  const colorVariants = products.filter(
+    p =>
+      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
+  );
+  const capacityVariants = products.filter(
+    p => p.namespaceId === product.namespaceId && p.color === product.color,
+  );
 
   return (
     <div className={s.productPage}>
@@ -135,7 +157,11 @@ export const ProductPage = () => {
               ))}
             </div>
             <div className={s.galleryMain}>
-              <img src={`./${product.images[selectedImage]}`} alt={product.name} className={s.productMainImage} />
+              <img
+                src={`./${product.images[selectedImage]}`}
+                alt={product.name}
+                className={s.productMainImage}
+              />
             </div>
           </div>
 
@@ -146,7 +172,9 @@ export const ProductPage = () => {
               <div key={section.title} className={s.aboutSectionContent}>
                 <h3 className={s.sectionTitle}>{section.title}</h3>
                 {section.text.map((paragraph, i) => (
-                  <p className={s.paragraph} key={i}>{paragraph}</p>
+                  <p className={s.paragraph} key={i}>
+                    {paragraph}
+                  </p>
                 ))}
               </div>
             ))}
@@ -172,7 +200,9 @@ export const ProductPage = () => {
                     />
                     <span
                       className={`${s.colorDot} ${variant.color === product.color ? s.colorDotActive : ''}`}
-                      style={{ backgroundColor: colorMap[variant.color] || '#ccc' }}
+                      style={{
+                        backgroundColor: colorMap[variant.color] || '#ccc',
+                      }}
                     />
                   </label>
                 ))}
@@ -193,7 +223,9 @@ export const ProductPage = () => {
                       checked={variant.capacity === product.capacity}
                       onChange={() => navigate(`/${category}/${variant.id}`)}
                     />
-                    <span className={`${s.capacityItem} ${variant.capacity === product.capacity ? s.capacityItemActive : ''}`}>
+                    <span
+                      className={`${s.capacityItem} ${variant.capacity === product.capacity ? s.capacityItemActive : ''}`}
+                    >
                       {variant.capacity}
                     </span>
                   </label>
@@ -217,8 +249,14 @@ export const ProductPage = () => {
               >
                 {isInCart ? 'Added to cart' : 'Add to cart'}
               </button>
-              <button className={`${s.favoriteButton} ${isLiked ? s.liked : ''}`} onClick={handleLikeClick}>
-                <img src={isLiked ? './img/HeartFilled.svg' : './img/Like.svg'} alt="" />
+              <button
+                className={`${s.favoriteButton} ${isLiked ? s.liked : ''}`}
+                onClick={handleLikeClick}
+              >
+                <img
+                  src={isLiked ? './img/HeartFilled.svg' : './img/Like.svg'}
+                  alt=""
+                />
               </button>
             </div>
 
@@ -227,7 +265,7 @@ export const ProductPage = () => {
                 { label: 'Screen', value: product.screen },
                 { label: 'Resolution', value: product.resolution },
                 { label: 'Processor', value: product.processor },
-                { label: 'RAM', value: product.ram }
+                { label: 'RAM', value: product.ram },
               ].map(spec => (
                 <div key={spec.label} className={s.specRow}>
                   <span className={s.specName}>{spec.label}</span>
@@ -241,14 +279,44 @@ export const ProductPage = () => {
             <h2 className={s.aboutTitle}>Tech specs</h2>
             <hr className={s.divider} />
             <div className={s.productSpecsFull}>
-              <div className={s.specRow}><span className={s.specName}>Screen</span><span className={s.specValue}>{product.screen}</span></div>
-              <div className={s.specRow}><span className={s.specName}>Resolution</span><span className={s.specValue}>{product.resolution}</span></div>
-              <div className={s.specRow}><span className={s.specName}>Processor</span><span className={s.specValue}>{product.processor}</span></div>
-              <div className={s.specRow}><span className={s.specName}>RAM</span><span className={s.specValue}>{product.ram}</span></div>
-              <div className={s.specRow}><span className={s.specName}>Built in memory</span><span className={s.specValue}>{product.capacity}</span></div>
-              <div className={s.specRow}><span className={s.specName}>Camera</span><span className={s.specValue}>{'camera' in product ? product.camera : 'N/A'}</span></div>
-              <div className={s.specRow}><span className={s.specName}>Zoom</span><span className={s.specValue}>{'zoom' in product ? product.zoom : 'N/A'}</span></div>
-              <div className={s.specRow}><span className={s.specName}>Cell</span><span className={s.specValue}>{'cell' in product ? product.cell.join(', ') : 'N/A'}</span></div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Screen</span>
+                <span className={s.specValue}>{product.screen}</span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Resolution</span>
+                <span className={s.specValue}>{product.resolution}</span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Processor</span>
+                <span className={s.specValue}>{product.processor}</span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>RAM</span>
+                <span className={s.specValue}>{product.ram}</span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Built in memory</span>
+                <span className={s.specValue}>{product.capacity}</span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Camera</span>
+                <span className={s.specValue}>
+                  {'camera' in product ? product.camera : 'N/A'}
+                </span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Zoom</span>
+                <span className={s.specValue}>
+                  {'zoom' in product ? product.zoom : 'N/A'}
+                </span>
+              </div>
+              <div className={s.specRow}>
+                <span className={s.specName}>Cell</span>
+                <span className={s.specValue}>
+                  {'cell' in product ? product.cell.join(', ') : 'N/A'}
+                </span>
+              </div>
             </div>
           </section>
         </div>
@@ -258,16 +326,26 @@ export const ProductPage = () => {
         <div className={s.containerProducts}>
           <h2>You may also like</h2>
           <div className={s.carouselButtons}>
-            <button className={s.carouselArrow} onClick={handlePrev} disabled={startIndex === 0}>
+            <button
+              className={s.carouselArrow}
+              onClick={handlePrev}
+              disabled={startIndex === 0}
+            >
               <img src="./img/Arrow_Left.svg" alt="" />
             </button>
-            <button className={s.carouselArrow} onClick={handleNext} disabled={startIndex + visibleCount >= suggestedProducts.length}>
+            <button
+              className={s.carouselArrow}
+              onClick={handleNext}
+              disabled={startIndex + visibleCount >= suggestedProducts.length}
+            >
               <img src="./img/Arrow_Right.svg" alt="" />
             </button>
           </div>
         </div>
         <div className={s.productsGrid}>
-          {visibleProducts.map(item => <ProductCard key={item.id} product={item} />)}
+          {visibleProducts.map(item => (
+            <ProductCard key={item.id} product={item} />
+          ))}
         </div>
       </section>
     </div>

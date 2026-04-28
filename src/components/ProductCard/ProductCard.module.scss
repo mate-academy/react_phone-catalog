@@ -1,5 +1,5 @@
-@import '../../variables.scss';
-@import '../../mixins.scss';
+@import '../../variables';
+@import '../../mixins';
 
 .productCard {
   display: flex;
@@ -13,7 +13,7 @@
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 
     .productImage {
       opacity: 0.8;
@@ -84,8 +84,7 @@
   .productDescription {
     display: grid;
     grid-template-columns: 1fr auto;
-    row-gap: 8px;
-    column-gap: 24px;
+    gap: 8px 24px;
     margin: 8px 0;
 
     .characteristicName {
@@ -130,7 +129,7 @@
       text-overflow: ellipsis;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px #17203166;
+        box-shadow: 0 3px 13px 0 #17203166;
       }
 
       &.addedToCart {
