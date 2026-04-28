@@ -2,25 +2,27 @@
 
 .page {
   opacity: 0;
-  animation: fadeIn var(--animation_duration, 0.3s) ease forwards;
-}
+  animation: fade-in var(--animation-duration, 0.3s) ease forwards;
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.page {
   &__content {
     display: flex;
-
     flex-direction: column;
-
     gap: 32px;
 
     @include on-tablet {
       gap: 40px;
     }
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
   }
 }

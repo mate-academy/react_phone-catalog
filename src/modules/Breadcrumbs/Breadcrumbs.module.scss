@@ -60,6 +60,7 @@
 
 .clickable {
   color: var(--main-text-color-primary);
+
   @include hover(color, var(--purple-accent-color));
 }
 

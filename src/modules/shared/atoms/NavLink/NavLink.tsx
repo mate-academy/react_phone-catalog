@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import {
   NavLink as RouterNavLink,
   NavLinkProps as RouterNavLinkProps,
@@ -66,7 +67,8 @@ export const NavLink: React.FC<NavLinkProps> = ({
       className={({ isActive }: NavLinkRenderProps) =>
         getNavLinkClass(isActive, className)
       }
-      children={({ isActive }) => content(isActive)}
-    />
+    >
+      {({ isActive }) => content(isActive)}
+    </RouterNavLink>
   );
 };

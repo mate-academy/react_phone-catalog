@@ -21,7 +21,7 @@ import { add } from '../../../../../features/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import { generateDeviceModel } from '../../../../../helpers/generateDeviceModel';
 import { useTranslation } from 'react-i18next';
-import { toast } from '../../../../NotificationToast';
+import { showToast } from '../../../../NotificationToast';
 
 type Props = {
   productDetails: ProductDetails;
@@ -68,7 +68,7 @@ export const ProductInfoSection: React.FC<Props> = ({
   const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     dispatch(toggleFavourite(selectedProduct));
-    toast({
+    showToast({
       description: t(
         `notification.${isInFavourites ? 'remove' : 'add'}.favourites`,
         { name: selectedProduct.name },
@@ -79,7 +79,7 @@ export const ProductInfoSection: React.FC<Props> = ({
   const addToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     dispatch(add(selectedProduct));
-    toast({
+    showToast({
       description: t(`notification.${isInCart ? 'remove' : 'add'}.cart`, {
         name: selectedProduct.name,
       }),

@@ -14,13 +14,13 @@ import { ProductControls } from '../../molecules/ProductControls';
 import { Icon } from '../../atoms/Icon';
 import { HeartFilledIcon } from '../../../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../../../assets/icons/heart-icon';
-import { toast } from '../../../NotificationToast';
+import { showToast } from '../../../NotificationToast';
 
 type Props = {
   product: Product;
 };
 
-export const ProductCard = memo(({ product }: Props) => {
+const ProductCardComponent: React.FC<Props> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
@@ -35,7 +35,7 @@ export const ProductCard = memo(({ product }: Props) => {
     event.preventDefault();
     event.stopPropagation();
     dispatch(toggleFavourite(product));
-    toast({
+    showToast({
       description: t(
         `notification.${isInFavourites ? 'remove' : 'add'}.favourites`,
         { name: product.name },
@@ -47,7 +47,7 @@ export const ProductCard = memo(({ product }: Props) => {
     event.preventDefault();
     event.stopPropagation();
     dispatch(add(product));
-    toast({
+    showToast({
       description: t(`notification.${isInCart ? 'remove' : 'add'}.cart`, {
         name: product.name,
       }),
@@ -100,4 +100,6 @@ export const ProductCard = memo(({ product }: Props) => {
       </div>
     </Link>
   );
-});
+};
+
+export const ProductCard = memo(ProductCardComponent);

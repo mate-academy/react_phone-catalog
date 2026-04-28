@@ -49,11 +49,10 @@ export const SearchField: React.FC = () => {
 
   return (
     <div className={classNames(styles.search, 'search_field_container')}>
-      <label htmlFor="searchInput">
-        <Icon color="secondary">
-          <SearchIcon />
-        </Icon>
-      </label>
+      <Icon color="secondary" className={styles.search__icon}>
+        <SearchIcon />
+      </Icon>
+
       <input
         type="text"
         id="searchInput"

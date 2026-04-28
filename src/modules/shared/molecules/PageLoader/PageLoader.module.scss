@@ -8,12 +8,12 @@
 }
 
 .astronaut {
-  animation: flyUp 2.5s ease-in-out forwards;
+  animation: fly-up 2.5s ease-in-out forwards;
   width: min(100%, 480px);
   aspect-ratio: 1;
 }
 
-@keyframes flyUp {
+@keyframes fly-up {
   0% {
     transform: translateY(100vh);
     opacity: 0;

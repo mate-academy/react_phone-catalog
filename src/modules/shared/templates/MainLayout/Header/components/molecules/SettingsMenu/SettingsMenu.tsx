@@ -44,7 +44,7 @@ export const SettingsMenu: React.FC<Props> = ({ className, children }) => {
     const updatePopupPosition = () => {
       if (isOpen && buttonRef.current) {
         const rect = buttonRef.current.getBoundingClientRect();
-        
+
         setPopupStyles({
           top: rect.bottom + 5,
           left: rect.left,
@@ -55,6 +55,7 @@ export const SettingsMenu: React.FC<Props> = ({ className, children }) => {
     updatePopupPosition();
 
     window.addEventListener('resize', updatePopupPosition);
+
     return () => window.removeEventListener('resize', updatePopupPosition);
   }, [isOpen]);
 

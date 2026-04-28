@@ -24,6 +24,36 @@ type Props = {
   ) => void;
 };
 
+const SingleValue = (props: SingleValueProps<DropdownOption, false>) => (
+  <components.SingleValue {...props}>
+    <Typography variant="buttons">{props.children}</Typography>
+  </components.SingleValue>
+);
+
+const DropdownIndicator = (
+  props: DropdownIndicatorProps<DropdownOption, false>,
+) => {
+  const {
+    selectProps: { menuIsOpen },
+  } = props;
+
+  return (
+    <components.DropdownIndicator {...props}>
+      <Icon color="secondary" direction={menuIsOpen ? 'up' : 'down'}>
+        <ArrowIcon />
+      </Icon>
+    </components.DropdownIndicator>
+  );
+};
+
+const Option = (props: OptionProps<DropdownOption, false>) => {
+  return (
+    <components.Option {...props}>
+      <Typography variant="buttons">{props.data.label}</Typography>
+    </components.Option>
+  );
+};
+
 export const Dropdown: React.FC<Props> = ({
   label,
   options,
@@ -74,35 +104,5 @@ export const Dropdown: React.FC<Props> = ({
         />
       </div>
     </div>
-  );
-};
-
-const SingleValue = (props: SingleValueProps<DropdownOption, false>) => (
-  <components.SingleValue {...props}>
-    <Typography variant="buttons">{props.children}</Typography>
-  </components.SingleValue>
-);
-
-const DropdownIndicator = (
-  props: DropdownIndicatorProps<DropdownOption, false>,
-) => {
-  const {
-    selectProps: { menuIsOpen },
-  } = props;
-
-  return (
-    <components.DropdownIndicator {...props}>
-      <Icon color="secondary" direction={menuIsOpen ? 'up' : 'down'}>
-        <ArrowIcon />
-      </Icon>
-    </components.DropdownIndicator>
-  );
-};
-
-const Option = (props: OptionProps<DropdownOption, false>) => {
-  return (
-    <components.Option {...props}>
-      <Typography variant="buttons">{props.data.label}</Typography>
-    </components.Option>
   );
 };

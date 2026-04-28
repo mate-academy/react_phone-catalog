@@ -4,11 +4,10 @@
 @use './themes/dark';
 @use './themes/variables';
 @use './utils/normalize.scss';
-
-@include normalize();
+@include normalize;
 
 :root {
-  font-family: 'Mont', system-ui, Ubuntu, sans-serif;
+  font-family: Mont, system-ui, Ubuntu, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

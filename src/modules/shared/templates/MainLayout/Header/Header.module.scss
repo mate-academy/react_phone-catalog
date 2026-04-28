@@ -30,7 +30,7 @@
     justify-content: space-between;
     gap: 16px;
     height: 100%;
-    width: min(100%, var(--maxwidth_header_footer, 100%));
+    width: min(100%, var(--maxwidth-header-footer, 100%));
   }
 
   &__icon {

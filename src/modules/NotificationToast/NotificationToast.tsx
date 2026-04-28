@@ -12,12 +12,6 @@ interface ToastProps {
   description: string;
 }
 
-export function toast(toast: Omit<ToastProps, 'id'>) {
-  return sonnerToast.custom(id => (
-    <NotificationToast id={id} description={toast.description} />
-  ));
-}
-
 export const NotificationToast: React.FC<ToastProps> = ({
   description,
   id,
@@ -28,11 +22,10 @@ export const NotificationToast: React.FC<ToastProps> = ({
     <div className={styles.toast}>
       <div className={styles.toast__head}>
         <Typography variant="h4">{t('notification.title')}</Typography>
+
         <IconButton
           size="small"
-          onClick={() => {
-            sonnerToast.dismiss(id);
-          }}
+          onClick={() => sonnerToast.dismiss(id)}
           className={styles.toast__dismiss}
         >
           <Icon color="inherit">
@@ -40,9 +33,16 @@ export const NotificationToast: React.FC<ToastProps> = ({
           </Icon>
         </IconButton>
       </div>
+
       <div className={styles.toast__body}>
         <Typography variant="body">{description}</Typography>
       </div>
     </div>
   );
 };
+
+export function showToast(data: Omit<ToastProps, 'id'>) {
+  return sonnerToast.custom(id => (
+    <NotificationToast id={id} description={data.description} />
+  ));
+}

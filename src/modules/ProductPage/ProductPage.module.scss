@@ -45,16 +45,20 @@
 
   &__gallery {
     row-gap: 16px;
+
     @include page-grid;
+
     --columns: 4;
 
     @include on-tablet {
       --columns: 7;
+
       grid-column: span var(--columns);
     }
 
     @include on-small-desktop {
       --columns: 12;
+
       grid-column: span var(--columns);
     }
   }
@@ -134,15 +138,18 @@
 
   &__interactive {
     @include page-grid;
+
     --columns: 4;
 
     @include on-tablet {
       --columns: 5;
+
       grid-column: span 5;
     }
 
     @include on-small-desktop {
       --columns: 11;
+
       grid-column: 14 / span 11;
     }
   }
@@ -192,12 +199,29 @@
   }
 
   &__buttons {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 
-    @include on-small-desktop {
-      grid-column: span 7;
-    }
+  @include on-small-desktop {
+    grid-column: span 7;
   }
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &_up {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &_down {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
   &__list {
     display: flex;
 
@@ -212,26 +236,6 @@
     flex-direction: column;
 
     gap: 16px;
-  }
-
-  &__buttons {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 32px;
-
-    &_up {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    &_down {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
   }
 
   &__capacity {

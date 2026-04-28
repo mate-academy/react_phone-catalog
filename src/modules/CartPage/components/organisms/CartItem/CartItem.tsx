@@ -10,7 +10,7 @@ import { Product } from '../../../../../types/Product';
 import { IconButton } from '../../../../shared/atoms/IconButton';
 import { Typography } from '../../../../shared/atoms/Typography';
 import { useTranslation } from 'react-i18next';
-import { toast } from '../../../../NotificationToast';
+import { showToast } from '../../../../NotificationToast';
 
 type Props = {
   product: Product;
@@ -26,7 +26,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const removeFromCart = () => {
     dispatch(remove(product));
-    toast({
+    showToast({
       description: t('notification.remove.cart', {
         name: product.name,
       }),

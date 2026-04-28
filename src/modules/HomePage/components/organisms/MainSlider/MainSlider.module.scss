@@ -1,5 +1,9 @@
 @use '@shared/styles/utils/mixins.scss' as *;
 
+.sliderButton {
+  width: 32px;
+}
+
 .slider {
   @include page-grid;
 
@@ -30,7 +34,7 @@
     &__bullet {
       display: block;
       cursor: pointer;
-      transition: background-color var(--animation_duration, 0.3s);
+      transition: background-color var(--animation-duration, 0.3s);
     }
   }
 }
@@ -49,8 +53,4 @@
 
 .swiper {
   width: 100%;
-}
-
-.sliderButton {
-  width: 32px;
 }

@@ -14,7 +14,7 @@
   @include underline-animate;
 
   &__text {
-    transition: color var(--animation_duration, 0.3s);
+    transition: color var(--animation-duration, 0.3s);
   }
 
   &:hover &__text {

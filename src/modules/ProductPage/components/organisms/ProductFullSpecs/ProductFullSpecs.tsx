@@ -12,66 +12,76 @@ type Props = {
   selectedCategory: string;
 };
 
-export const ProductFullSpecs = memo(
-  ({ productDetails, selectedCategory }: Props) => {
-    const { t } = useTranslation();
-    return (
-      <div
-        className={classNames(
-          styles.product__block,
-          styles.product__specifications,
-          styles.about,
-        )}
-      >
-        <Typography variant="h3" tag="h3" className={styles.about__title}>
-          {t('product.specifications.label')}
-        </Typography>
-        <div className={styles.about__body}>
-          <Divider />
-          <div className={styles.about__specs}>
-            <ProductSpec
-              label={t('product.specifications.screen')}
-              value={productDetails?.screen}
-            />
-            <ProductSpec
-              label={t('product.specifications.resolution')}
-              value={productDetails?.resolution}
-            />
-            <ProductSpec
-              label={t('product.specifications.processor')}
-              value={productDetails?.processor}
-            />
-            <ProductSpec
-              label={t('product.specifications.ram')}
-              value={productDetails?.ram}
-            />
-            <ProductSpec
-              label={t(
-                selectedCategory === 'accessories'
-                  ? 'product.specifications.display'
-                  : 'product.specifications.builtInMemory',
-              )}
-              value={productDetails?.capacity}
-            />
-            {productDetails?.camera && (
-              <ProductSpec
-                label={t('product.specifications.camera')}
-                value={productDetails?.camera}
-              />
+const ProductFullSpecsComponent: React.FC<Props> = ({
+  productDetails,
+  selectedCategory,
+}) => {
+  const { t } = useTranslation();
+
+  return (
+    <div
+      className={classNames(
+        styles.product__block,
+        styles.product__specifications,
+        styles.about,
+      )}
+    >
+      <Typography variant="h3" tag="h3" className={styles.about__title}>
+        {t('product.specifications.label')}
+      </Typography>
+
+      <div className={styles.about__body}>
+        <Divider />
+
+        <div className={styles.about__specs}>
+          <ProductSpec
+            label={t('product.specifications.screen')}
+            value={productDetails?.screen}
+          />
+          <ProductSpec
+            label={t('product.specifications.resolution')}
+            value={productDetails?.resolution}
+          />
+          <ProductSpec
+            label={t('product.specifications.processor')}
+            value={productDetails?.processor}
+          />
+          <ProductSpec
+            label={t('product.specifications.ram')}
+            value={productDetails?.ram}
+          />
+
+          <ProductSpec
+            label={t(
+              selectedCategory === 'accessories'
+                ? 'product.specifications.display'
+                : 'product.specifications.builtInMemory',
             )}
-            {productDetails?.zoom && (
-              <ProductSpec
-                label={t('product.specifications.zoom')}
-                value={productDetails?.zoom}
-              />
-            )}
+            value={productDetails?.capacity}
+          />
+
+          {productDetails?.camera && (
             <ProductSpec
-              label={t('product.specifications.cell')}
-              value={productDetails?.cell.join(', ')}
+              label={t('product.specifications.camera')}
+              value={productDetails.camera}
             />
-          </div>
+          )}
+
+          {productDetails?.zoom && (
+            <ProductSpec
+              label={t('product.specifications.zoom')}
+              value={productDetails.zoom}
+            />
+          )}
+
+          <ProductSpec
+            label={t('product.specifications.cell')}
+            value={productDetails?.cell.join(', ')}
+          />
         </div>
       </div>
-    );
-  },
-);
+    </div>
+  );
+};
+
+export const ProductFullSpecs = memo(ProductFullSpecsComponent);

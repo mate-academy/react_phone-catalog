@@ -27,6 +27,7 @@
     background-color: transparent;
 
     color: var(--main-text-color-primary);
+
     @include hover(color, var(--main-text-color-secondary));
   }
 }

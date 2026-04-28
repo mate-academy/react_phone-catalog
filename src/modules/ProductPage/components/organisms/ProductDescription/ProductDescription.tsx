@@ -10,7 +10,7 @@ type Props = {
   productDetails: ProductDetails;
 };
 
-export const ProductDescription = memo(({ productDetails }: Props) => {
+const ProductDescriptionComponent: React.FC<Props> = ({ productDetails }) => {
   const { t } = useTranslation();
 
   return (
@@ -24,22 +24,25 @@ export const ProductDescription = memo(({ productDetails }: Props) => {
       <Typography variant="h3" tag="h3" className={styles.about__title}>
         {t('product.about.title')}
       </Typography>
+
       <div className={styles.about__body}>
         <Divider />
+
         {productDetails?.description.map(article => (
           <article key={article.title} className={styles.article}>
             <Typography variant="h4" tag="h4" className={styles.article__title}>
               {article.title}
             </Typography>
-            {article.text.map(paragragh => (
+
+            {article.text.map(paragraph => (
               <Typography
-                key={paragragh}
+                key={paragraph}
                 variant="body"
                 tag="p"
                 color="secondary"
                 className={styles.article__description}
               >
-                {paragragh}
+                {paragraph}
               </Typography>
             ))}
           </article>
@@ -47,4 +50,6 @@ export const ProductDescription = memo(({ productDetails }: Props) => {
       </div>
     </div>
   );
-});
+};
+
+export const ProductDescription = memo(ProductDescriptionComponent);

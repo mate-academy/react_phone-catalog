@@ -5,18 +5,16 @@
 
   &__button {
     position: relative;
-
     background-color: unset;
-
     padding: 0;
+
+    .hover_effect {
+      transition: color var(--animation-duration, 0.3s);
+    }
 
     &:hover .hover_effect {
       color: var(--buttons-background-active);
       cursor: pointer;
-    }
-
-    .hover_effect {
-      transition: color var(--animation_duration, 0.3s);
     }
 
     &::after {

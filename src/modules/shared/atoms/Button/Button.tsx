@@ -3,7 +3,8 @@ import classNames from 'classnames';
 import React, { forwardRef } from 'react';
 import styles from './Button.module.scss';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'medium' | 'large';
   isSquare?: boolean;
   children: React.ReactNode;

@@ -4,11 +4,12 @@
   display: flex;
 
   align-items: center;
+
   // padding: 4px;
 
   &__option:hover &__language {
     color: var(--buttons-text-color-primary);
-    transition: color var(--animation_duration, 0.3s) ease;
+    transition: color var(--animation-duration, 0.3s) ease;
   }
 
   &__option {
@@ -18,7 +19,7 @@
 
     &--active {
       color: var(--buttons-text-color-primary);
-      transition: color var(--animation_duration, 0.3s);
+      transition: color var(--animation-duration, 0.3s);
     }
 
     @include underline-animate;

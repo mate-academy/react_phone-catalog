@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import 'react-i18next';
 import { TranslationKey } from '../enums/i18n/Keys';
 

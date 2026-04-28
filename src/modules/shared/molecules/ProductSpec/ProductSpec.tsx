@@ -7,7 +7,7 @@ type Props = {
   value: string;
 };
 
-export const ProductSpec = memo(({ label, value }: Props) => (
+const ProductSpecComponent: React.FC<Props> = ({ label, value }) => (
   <div className={styles.field}>
     <Typography
       variant="small"
@@ -16,8 +16,11 @@ export const ProductSpec = memo(({ label, value }: Props) => (
     >
       {label}
     </Typography>
+
     <Typography variant="small" className={styles.field__value}>
       {value}
     </Typography>
   </div>
-));
+);
+
+export const ProductSpec = memo(ProductSpecComponent);

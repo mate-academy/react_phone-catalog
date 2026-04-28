@@ -17,7 +17,7 @@ $padding-inline: 12px;
 
 .dropdown .dropdown {
   &__menu {
-    box-shadow: 0px 2px 15px 0px #0000000d;
+    box-shadow: 0 2px 15px 0 #0000000d;
     box-sizing: border-box;
     border: $border-width solid var(--elements-color);
     padding-block: $menu-padding-block;
@@ -50,6 +50,7 @@ $padding-inline: 12px;
 
     &--is-focused {
       background-color: var(--surface2-color);
+
       @include outline-selection;
     }
   }
@@ -64,7 +65,6 @@ $padding-inline: 12px;
     cursor: pointer;
     background-color: var(--surface2-color);
     height: $control-height;
-    border: none;
     box-sizing: border-box;
     padding-right: 12px;
     border-radius: $border-radius;

@@ -25,11 +25,11 @@
     display: flex;
     flex-direction: column;
     opacity: 0;
-    animation: fadeIn var(--animation_duration, 0.3s) ease forwards;
+    animation: fade-in var(--animation-duration, 0.3s) ease forwards;
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   to {
     opacity: 1;
   }

@@ -15,7 +15,7 @@ $size-large: 48px;
 
   cursor: pointer;
 
-  transition: all var(--animation_duration, 0.3s) ease;
+  transition: all var(--animation-duration, 0.3s) ease;
 
   @include focus-visible;
 

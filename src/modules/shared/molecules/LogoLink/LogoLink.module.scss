@@ -9,7 +9,6 @@
   box-sizing: border-box;
 
   @include hover(transform, scale(1.1));
-
   @include focus-visible;
 }
 

@@ -29,7 +29,7 @@ export const ProductControls: React.FC<Props> = ({
       <Button
         size={size}
         onClick={onAddToCart}
-        className={classNames(styles['button'], styles['button--primary'], {
+        className={classNames(styles.button, styles['button--primary'], {
           [styles['button--primary--active']]: isInCart,
         })}
         disabled={isInCart}
@@ -46,7 +46,7 @@ export const ProductControls: React.FC<Props> = ({
       <IconButton
         size={size}
         onClick={onToggleFavourite}
-        className={classNames(styles['button'], styles['button--favourite'], {
+        className={classNames(styles.button, styles['button--favourite'], {
           [styles['button--favourite--active']]: isFavourite,
         })}
       >

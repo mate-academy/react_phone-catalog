@@ -26,7 +26,7 @@ export const PageStateWrapper: React.FC<PageStateWrapperProps> = ({
   if (isLoading) {
     return fallback;
   }
-  
+
   if (hasError) {
     return errorComponent;
   }

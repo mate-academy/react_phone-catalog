@@ -17,7 +17,7 @@
 }
 
 @mixin hover($property, $value) {
-  transition: #{$property} var(--animation_duration, 0.3s);
+  transition: #{$property} var(--animation-duration, 0.3s);
   &:hover {
     #{$property}: $value;
     cursor: pointer;
@@ -62,9 +62,11 @@
   @include on-tablet {
     padding-inline: 24px;
   }
+
   @include on-small-desktop {
     padding-inline: 32px;
   }
+
   @include on-large-desktop {
     padding-inline: 152px;
   }
@@ -92,7 +94,7 @@
 @mixin underline-animate(
   $color: var(--buttons-text-color-primary),
   $height: 3px,
-  $duration: var(--animation_duration, 0.3s)
+  $duration: var(--animation-duration, 0.3s)
 ) {
   position: relative;
 
@@ -120,15 +122,15 @@
   display: flex;
   flex-direction: column;
 
-  @if $gap != null {
+  @if $gap {
     gap: $gap;
   }
 
-  @if $align != null {
+  @if $align {
     align-items: $align;
   }
 
-  @if $justify != null {
+  @if $justify {
     justify-content: $justify;
   }
 }

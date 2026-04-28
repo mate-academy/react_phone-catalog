@@ -7,7 +7,7 @@ export function wait(delay: number) {
 export const fetchData = async <T>(url: string): Promise<T> => {
   await wait(1200);
 
-  const response = await fetch(url);
+  const response = await fetch(`${import.meta.env.BASE_URL}${url}`);
 
   // throw new Error('test error');
 
