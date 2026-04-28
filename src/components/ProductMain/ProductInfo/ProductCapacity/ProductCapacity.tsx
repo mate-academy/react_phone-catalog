@@ -3,12 +3,12 @@ import { ProductDetails } from '../../../../pages/productPage/ProductPage';
 
 export type ProductCapacityType = '128GB' | '256GB' | '512GB' | '1TB' | '2TB';
 
+type SetCapacity = React.Dispatch<React.SetStateAction<ProductCapacityType>>;
+
 type ProductCapacityProps = {
   currentProduct: ProductDetails;
-  selectedCapacity: string;
-  setSelectedCapacity: React.Dispatch<
-    React.SetStateAction<ProductCapacityType>
-  >;
+  selectedCapacity: ProductCapacityType;
+  setSelectedCapacity: SetCapacity;
 };
 
 const ProductCapacity = ({
@@ -27,7 +27,7 @@ const ProductCapacity = ({
             className={`product-info__capacity-item ${
               selectedCapacity === capacity ? 'active' : ''
             }`}
-            onClick={() => setSelectedCapacity(capacity as ProductCapacityType)}
+            onClick={() => setSelectedCapacity(capacity)}
           >
             {capacity}
           </button>

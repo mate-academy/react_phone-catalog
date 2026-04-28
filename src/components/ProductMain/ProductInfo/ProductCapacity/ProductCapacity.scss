@@ -6,17 +6,21 @@
 }
 
 .product-info__capacity-item {
-  padding: 7px 8px 4px 8px;
-   border: 1px solid #ccc;
-    background: white;
-    cursor: pointer;
-    margin-bottom: 24px;
-    color: black;
+  cursor: pointer;
+
+  margin-bottom: 24px;
+  padding: 7px 8px 4px;
+  border: 1px solid #ccc;
+
+  color: black;
+
+  background: white;
 }
+
 .product-info__capacity-item.active {
   border-color: black;
-  background: black;
   color: white;
+  background: black;
 }
 
 .product-info__capacity--title {

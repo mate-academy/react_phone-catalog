@@ -8,7 +8,6 @@ import CatalogSort1 from '../CatalogPhones/CatalogSort1/CatalogSort1';
 import CatalogSort2 from '../CatalogPhones/CatalogSort2/CatalogSort2';
 import CatalogSlider from '../CatalogPhones/CatalogSlider/CatalogSlider';
 import { useSearchParams } from 'react-router-dom';
-import useAppContext from '../../../useAppContext';
 
 type SortType = 'newest' | 'oldest' | 'mostExpensive' | 'cheapest';
 
@@ -16,7 +15,6 @@ const TabletsCatalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [IsSortOpen, setIsSortOpen] = useState(false);
   const [IsPageOpen, setIsPageOpen] = useState(false);
-  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -75,13 +73,18 @@ const TabletsCatalog = () => {
   const totalPages =
     itemsPerPage === 'all' ? 1 : Math.ceil(totalItems / itemsPerPage);
 
-  const visibleProducts =
-    itemsPerPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(
-          (currentPage - 1) * itemsPerPage,
-          currentPage * itemsPerPage,
-        );
+  const getVisibleProducts = () => {
+    if (itemsPerPage === 'all') {
+      return sortedProducts;
+    }
+
+    return sortedProducts.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage,
+    );
+  };
+
+  const visibleProducts = getVisibleProducts();
 
   const pagesPerBlock = 4;
   const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);
@@ -119,16 +122,9 @@ const TabletsCatalog = () => {
           setIsPageOpen={setIsPageOpen}
           itemsPerPage={itemsPerPage}
           handleItemsChange={handleItemsChange}
-          handlePageChange={handlePageChange}
         />
       </div>
-      <ProductList
-        products={visibleProducts}
-        setFavorites={setFavorites}
-        favorites={favorites}
-        baskets={baskets}
-        setBaskets={setBaskets}
-      />
+      <ProductList products={visibleProducts} />
       <CatalogSlider
         currentPage={currentPage}
         handlePageChange={handlePageChange}

@@ -11,7 +11,7 @@ const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
 
   useEffect(() => {
     setActiveImg(currentProduct.images[0]);
-  }, [currentProduct.id]);
+  }, [currentProduct.images]);
 
   return (
     <>
@@ -31,7 +31,6 @@ const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
                 activeImg === img ? 'active' : ''
               }`}
               onClick={() => {
-                console.log('clicked img:', img);
                 setActiveImg(img);
               }}
             />

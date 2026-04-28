@@ -73,13 +73,18 @@ const AccessoriesCatalog = () => {
   const totalPages =
     itemsPerPage === 'all' ? 1 : Math.ceil(totalItems / itemsPerPage);
 
-  const visibleProducts =
-    itemsPerPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(
-          (currentPage - 1) * itemsPerPage,
-          currentPage * itemsPerPage,
-        );
+  const getVisibleProducts = () => {
+    if (itemsPerPage === 'all') {
+      return sortedProducts;
+    }
+
+    return sortedProducts.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage,
+    );
+  };
+
+  const visibleProducts = getVisibleProducts();
 
   const pagesPerBlock = 4;
   const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);
@@ -120,7 +125,6 @@ const AccessoriesCatalog = () => {
             setIsPageOpen={setIsPageOpen}
             itemsPerPage={itemsPerPage}
             handleItemsChange={handleItemsChange}
-            handlePageChange={handlePageChange}
           />
         </div>
 

@@ -1,9 +1,11 @@
 .main-basket {
-  min-height: 820px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding-inline: 16px;
+
+  min-height: 820px;
   padding-block: 41px;
+  padding-inline: 16px;
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(12, 1fr);
     padding-inline: 24px;
@@ -16,16 +18,18 @@
 }
 
 .main-basket__title {
-  font-weight: 800;
-font-size: 48px;
-line-height: 117%;
-letter-spacing: -0.01em;
-grid-column: 1 / 3;
-margin-bottom: 32px;
-@media (min-width: 640px) {
   grid-column: 1 / 3;
-}
-@media (min-width: 1200px) {
-  grid-column: 1 / 4;
-}
+  margin-bottom: 32px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 117%;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 640px) {
+    grid-column: 1 / 3;
+  }
+
+  @media (min-width: 1200px) {
+    grid-column: 1 / 4;
+  }
 }

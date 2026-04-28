@@ -9,14 +9,14 @@ import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../../../types/ProductColor';
 import ProductButtons from './ProductButtons/ProductButtons';
 
+type SetCapacity = React.Dispatch<React.SetStateAction<ProductCapacityType>>;
+
 type ProductInfoProps = {
   selectedColor: string;
   setSelectedColor: React.Dispatch<React.SetStateAction<ProductColor>>;
   currentProduct: ProductDetails;
-  selectedCapacity: string;
-  setSelectedCapacity: React.Dispatch<
-    React.SetStateAction<ProductCapacityType>
-  >;
+  selectedCapacity: ProductCapacityType;
+  setSelectedCapacity: SetCapacity;
   isFavorite: boolean;
   handleToggleFavorite: React.MouseEventHandler<HTMLImageElement>;
   isBasket: boolean;

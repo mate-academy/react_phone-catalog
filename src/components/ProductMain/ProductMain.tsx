@@ -11,6 +11,8 @@ import { BasketProduct } from '../../types/BasketProduct';
 import useAppContext from '../../useAppContext';
 import ProductTopIcons from './ProductTopIcons/ProductTopIcons';
 import { ProductColor } from '../../types/ProductColor';
+// eslint-disable-next-line max-len
+import { ProductCapacityType } from './ProductInfo/ProductCapacity/ProductCapacity';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
@@ -21,7 +23,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   const [selectedColor, setSelectedColor] = useState(
     someProduct.colorsAvailable[0] as ProductColor,
   );
-  const [selectedCapacity, setSelectedCapacity] = useState(
+  const [selectedCapacity, setSelectedCapacity] = useState<ProductCapacityType>(
     someProduct.capacityAvailable[0],
   );
 

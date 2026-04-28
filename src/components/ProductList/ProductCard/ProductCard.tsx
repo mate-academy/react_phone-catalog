@@ -2,7 +2,7 @@ import { Product } from '../../../types/Product';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
-import { ProductColor } from '../../ProductMain/ProductMain';
+import { ProductColor } from '../../../types/ProductColor';
 import { BasketProduct } from '../../../types/BasketProduct';
 import useAppContext from '../../../useAppContext';
 

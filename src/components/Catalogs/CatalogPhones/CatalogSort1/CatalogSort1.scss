@@ -1,28 +1,37 @@
 .catalog__select {
-  position: relative;
-  width: 100%;
-  font-size: 18px;
-  border: 1px solid #e2e6e9;
-  background-color: white;
-  appearance: none;
   cursor: pointer;
+
+  position: relative;
+
+  width: 100%;
+  border: 1px solid #e2e6e9;
+
+  font-size: 18px;
+
+  appearance: none;
+  background-color: white;
+
   @media (min-width: 640px) {
     width: 187px;
   }
+
   @media (min-width: 1200px) {
     width: 187px;
   }
 }
 
 .catalog__select::after {
-  content: "";
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
   pointer-events: none;
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
   width: 16px;
   height: 16px;
+
   background-image: url('/public/img/icons/icon--slider--down--gray.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -34,29 +43,29 @@
 }
 
 .catalog__select--selected {
+  cursor: pointer;
   padding: 10px;
   background: white;
-  cursor: pointer;
 }
 
 .catalog__select--options {
   position: absolute;
+  z-index: 10;
   top: 110%;
-  left: 0;
   right: 0;
+  left: 0;
 
   border: 1px solid #e2e6e9;
+
   background: white;
-  z-index: 10;
 }
 
 .catalog__option {
   padding: 10px;
-  cursor: pointer;
   color: #b4bdc3;
 }
 
 .catalog__option:hover {
- background: #f1f1f1;
- color: black;
+  color: black;
+  background: #f1f1f1;
 }

@@ -5,34 +5,40 @@
 }
 
 .product-info__button--add-to-cart {
-  flex: 1;
+  cursor: pointer;
+
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  color: white;
-  background-color: #313237;
+
   height: 40px;
-  text-decoration: none;
-  cursor: pointer;
   border-radius: 10px;
+
+  color: white;
+  text-decoration: none;
+
+  background-color: #313237;
 }
 
 .product-info__button--add-to-cart.active {
-  background-color: white;
-  color: green;
   border: 1px solid #e2e6e9;
+  color: green;
+  background-color: white;
 }
 
 .product-info__button--icon {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
   width: 40px;
   height: 40px;
+  padding: 8px;
   border: 1px solid #e2e6e9;
   border-radius: 5px;
-  box-sizing: border-box;
-  cursor: pointer;
-  padding: 8px;
 }
 

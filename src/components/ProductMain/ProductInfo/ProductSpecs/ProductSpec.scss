@@ -1,9 +1,7 @@
 .product-info__spec {
   display: grid;
   grid-template-columns: auto 1fr;
-  row-gap: 8px;
-  column-gap: 16px;
-
+  gap: 8px 16px;
 }
 
 .product-info__spec--label {
@@ -11,8 +9,8 @@
 }
 
 .product-info__spec--value {
+  font-size: 14px;
   font-weight: 500;
-font-size: 14px;
-line-height: 150%;
-text-align: right;
+  line-height: 150%;
+  text-align: right;
 }

@@ -1,20 +1,22 @@
 .product-info__price {
-   display: flex;
-  align-items: center;
+  display: flex;
   gap: 8px;
+  align-items: center;
 }
+
 .product-info__price--regular {
+  font-size: 32px;
   font-weight: 800;
-font-size: 32px;
-line-height: 128%;
-letter-spacing: -0.01em;
+  line-height: 128%;
+  text-decoration: none;
+  letter-spacing: -0.01em;
 }
 
 .product-info_price--discount {
-   font-weight: 800;
-font-size: 32px;
-line-height: 128%;
-letter-spacing: -0.01em;
-text-decoration: line-through;
-color: #B4BDC3;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 128%;
+  color: #B4BDC3;
+  text-decoration: line-through;
+  letter-spacing: -0.01em;
 }
