@@ -36,8 +36,11 @@
  background-color: #f5e1c0;
 }
 
-.product-info__color--space-black {
+.product-info__color--spaceblack {
   background-color: #2c2c2e;
+}
+.product-info__color--spaceblack.active {
+border: 1px solid #D2D2D7;
 }
 
 .product-info__color--purple {

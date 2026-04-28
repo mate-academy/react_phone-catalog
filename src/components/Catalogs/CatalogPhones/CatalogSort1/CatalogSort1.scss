@@ -23,10 +23,14 @@
   pointer-events: none;
   width: 16px;
   height: 16px;
-  background-image: url('/public/img/icons/icon--slider--bottom.png');
+  background-image: url('/public/img/icons/icon--slider--down--gray.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+.catalog__select.active::after {
+  background-image: url('/public/img/icons/icon--slider--top--gray.png');
 }
 
 .catalog__select--selected {

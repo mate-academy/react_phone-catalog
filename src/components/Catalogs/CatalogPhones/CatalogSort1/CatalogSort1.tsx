@@ -36,7 +36,7 @@ const CatalogSort1 = ({
         <label className="catalog__title--sort" htmlFor="sort">
           Sort by
         </label>
-        <div className="catalog__select">
+        <div className={`catalog__select ${IsSortOpen ? 'active' : ''}`}>
           <div
             className="catalog__select--selected"
             onClick={() => setIsSortOpen(prev => !prev)}

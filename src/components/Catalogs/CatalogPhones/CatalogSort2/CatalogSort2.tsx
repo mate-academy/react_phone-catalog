@@ -3,7 +3,6 @@ type CatalogSort2Props = {
   setIsPageOpen: React.Dispatch<React.SetStateAction<boolean>>;
   itemsPerPage: number | 'all';
   handleItemsChange: (value: number | 'all') => void;
-  handlePageChange: (value: number) => void;
 };
 
 const CatalogSort2 = ({
@@ -11,7 +10,6 @@ const CatalogSort2 = ({
   setIsPageOpen,
   itemsPerPage,
   handleItemsChange,
-  handlePageChange,
 }: CatalogSort2Props) => {
   return (
     <>
@@ -19,7 +17,7 @@ const CatalogSort2 = ({
         <label className="catalog__title--sort" htmlFor="items-per-page">
           Items on page
         </label>
-        <div className="catalog__select">
+        <div className={`catalog__select ${IsPageOpen ? 'active' : ''}`}>
           <div
             className="catalog__select--selected"
             onClick={() => setIsPageOpen(prev => !prev)}
