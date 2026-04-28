@@ -2,35 +2,30 @@
 @import '../../mixins.scss';
 
 .footer {
-  // Видаляємо grid-column, якщо він заважає у flex-контейнері App
   width: 100%;
   background-color: $color-white;
   border-top: 1px solid $color-elements;
   padding: 32px 0;
   display: flex;
   justify-content: center;
-  flex-shrink: 0; // Важливо: футер не повинен стискатися
+  flex-shrink: 0;
 
   .footerContainer {
-    // Твій існуючий код залишається без змін...
     display: grid;
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
     box-sizing: border-box;
 
-    // --- DESKTOP (Default) ---
     grid-template-columns: repeat(24, 1fr);
     column-gap: 16px;
 
-    // --- TABLET ---
     @include tablet {
       grid-template-columns: repeat(12, 1fr);
       padding: 0 24px;
       max-width: 1199px;
     }
 
-    // --- MOBILE ---
     @include mobile {
       display: flex;
       flex-direction: column;

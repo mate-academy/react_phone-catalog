@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Phone, Tablet, Accessory } from '../../../public/types';
 
-// Об'єднаний тип для всіх продуктів
 export type AnyProduct = Phone | Tablet | Accessory;
 
 export interface ProductsState {
@@ -16,7 +15,6 @@ const initialState: ProductsState = {
   error: null,
 };
 
-// Асинхронний екшн для завантаження даних
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, { rejectWithValue }) => {
@@ -37,7 +35,6 @@ export const fetchProducts = createAsyncThunk(
         }),
       );
 
-      // Об'єднуємо всі масиви в один
       return results.flat() as AnyProduct[];
     } catch (error: any) {
       return rejectWithValue(error.message);

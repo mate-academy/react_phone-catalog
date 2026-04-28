@@ -1,4 +1,4 @@
-@import './variables'; 
+@import './variables';
 @import './mixins';
 
 .layout {
@@ -9,7 +9,6 @@
   margin: 0 auto;
   padding: 64px 20px 0;
 
-  // Налаштування грида
   grid-template-columns: repeat(24, 1fr);
   column-gap: 40px;
 

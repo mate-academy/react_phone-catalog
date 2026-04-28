@@ -8,7 +8,6 @@ import {
 } from '../../features/favorites/favoritesSlice';
 import { addToCart } from '../../features/cart/cartSlice';
 
-// Імпортуємо стилі
 import s from './ProductCard.module.scss';
 
 type ProductType = Phone | Tablet | Accessory;

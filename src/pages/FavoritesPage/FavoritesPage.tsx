@@ -5,7 +5,6 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { ConfirmationModalFavorites } from '../../components/ConfirmationModalFavorites/ConfirmationModalFavorites';
 
-// Імпорт стилів як об'єкта 's'
 import s from './FavoritesPage.module.scss';
 
 export function FavoritesPage() {
@@ -22,7 +21,6 @@ export function FavoritesPage() {
 
   return (
     <div className={s.favoritesPage}>
-      {/* breadcrumbs мають власний модульний стиль, тому просто рендеримо */}
       <Breadcrumbs productName="Favorites" />
 
       <div className={s.favoritesHeader}>
@@ -46,7 +44,6 @@ export function FavoritesPage() {
         </div>
       )}
 
-      {/* Модалка підтвердження */}
       <ConfirmationModalFavorites
         isOpen={!!idToDelete}
         message="Ви впевнені, що хочете видалити товар з обраного?"

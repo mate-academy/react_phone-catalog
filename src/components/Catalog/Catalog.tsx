@@ -1,32 +1,43 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useMemo } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import ProductCard from '../ProductCard/ProductCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import CatalogFilters from '../CatalogFilters/CatalogFilters';
 
-// Імпортуємо модульні стилі
 import s from './Catalog.module.scss';
 
 const TITLES_MAP: Record<string, string> = {
-  phones: 'Mobile phones',
+  phones: 'Phones',
   tablets: 'Tablets',
   accessories: 'Accessories',
 };
 
 export const Catalog: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const allProducts = useAppSelector(state => state.products.items);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [sort, setSort] = useState('newest');
-  const [perPage, setPerPage] = useState<'all' | number>(8);
-  const [currentPage, setCurrentPage] = useState(1);
+  const { items: allProducts, loading, error } = useAppSelector(state => state.products);
 
-  const title = category ? (TITLES_MAP[category] ?? 'Catalog') : 'Catalog';
+  const sort = searchParams.get('sort') || 'newest';
+  const perPage = searchParams.get('perPage') || 'all';
+  const currentPage = Number(searchParams.get('page')) || 1;
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [category, sort, perPage]);
+  const updateParams = (params: Record<string, string | number | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === null || value === 'all' || (key === 'page' && value === 1)) {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value.toString());
+      }
+    });
+
+    setSearchParams(newParams);
+  };
+
+  const title = category ? (TITLES_MAP[category] ?? 'Catalog page') : 'Catalog page';
 
   const sortedProducts = useMemo(() => {
     const filtered = allProducts.filter(p => p.category === category);
@@ -35,8 +46,7 @@ export const Catalog: React.FC = () => {
       switch (sort) {
         case 'alphabet': return a.name.localeCompare(b.name);
         case 'cheapest': return a.priceDiscount - b.priceDiscount;
-        case 'expensive': return b.priceDiscount - a.priceDiscount;
-        case 'newest': return b.id.localeCompare(a.id);
+        case 'newest': return b.year - a.year; // Сортування за роком (age)
         default: return 0;
       }
     });
@@ -51,6 +61,7 @@ export const Catalog: React.FC = () => {
     const start = (currentPage - 1) * itemsPerPage;
     return sortedProducts.slice(start, start + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
+
 
   const getVisiblePages = () => {
     const pages: number[] = [];
@@ -69,6 +80,15 @@ export const Catalog: React.FC = () => {
     return pages;
   };
 
+  if (loading) return <div className={s.loader}>Loading products...</div>;
+
+  if (error) return (
+    <div className={s.error}>
+      <p>Something went wrong</p>
+      <button type="button" onClick={() => window.location.reload()}>Reload</button>
+    </div>
+  );
+
   if (!category) return <p>No category selected</p>;
 
   return (
@@ -82,9 +102,9 @@ export const Catalog: React.FC = () => {
 
       <CatalogFilters
         sort={sort}
-        perPage={perPage}
-        onSortChange={setSort}
-        onPerPageChange={setPerPage}
+        perPage={perPage === 'all' ? 'all' : Number(perPage)}
+        onSortChange={(val) => updateParams({ sort: val, page: 1 })}
+        onPerPageChange={(val) => updateParams({ perPage: val, page: 1 })}
       />
 
       <div className={s.catalogGrid}>
@@ -97,7 +117,7 @@ export const Catalog: React.FC = () => {
             />
           ))
         ) : (
-          <p className={s.catalogEmpty}>No products found in this category</p>
+          <p className={s.catalogEmpty}>There are no {category} yet</p>
         )}
       </div>
 
@@ -107,7 +127,7 @@ export const Catalog: React.FC = () => {
             type="button"
             className={s.paginationArrow}
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage(prev => prev - 1)}
+            onClick={() => updateParams({ page: currentPage - 1 })}
           >
             <img src="./img/Arrow_Left.svg" alt="Prev" />
           </button>
@@ -118,7 +138,7 @@ export const Catalog: React.FC = () => {
                 key={`page-${page}`}
                 type="button"
                 className={`${s.paginationButton} ${currentPage === page ? s.active : ''}`}
-                onClick={() => setCurrentPage(page)}
+                onClick={() => updateParams({ page })}
               >
                 {page}
               </button>
@@ -129,7 +149,7 @@ export const Catalog: React.FC = () => {
             type="button"
             className={s.paginationArrow}
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(prev => prev + 1)}
+            onClick={() => updateParams({ page: currentPage + 1 })}
           >
             <img src="./img/Arrow_Right.svg" alt="Next" />
           </button>

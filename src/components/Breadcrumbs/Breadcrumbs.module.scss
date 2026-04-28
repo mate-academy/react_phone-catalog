@@ -5,9 +5,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 24px 0; // Додав невеликий відступ для зручності
+  margin: 24px 0; 
 
-  // Стилі для посилань всередині хлібних крихт
   a {
     display: inline-flex;
     align-items: center;
@@ -32,7 +31,6 @@
   }
 
   .breadcrumbsArrow {
-    // Якщо потрібно змінити колір через filter або просто стилізувати
     opacity: 1;
   }
 

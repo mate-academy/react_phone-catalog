@@ -5,7 +5,6 @@ export interface FavoritesState {
   items: CatalogProduct[];
 }
 
-// 1. Спочатку оголошуємо функцію ( hoisting для const не працює так, як для function )
 const loadFavorites = (): CatalogProduct[] => {
   try {
     const saved = localStorage.getItem('favorites');
@@ -18,7 +17,7 @@ const loadFavorites = (): CatalogProduct[] => {
   }
 };
 
-// 2. Тепер створюємо initialState (ТІЛЬКИ ОДИН РАЗ)
+
 const initialState: FavoritesState = {
   items: loadFavorites(),
 };
@@ -28,7 +27,6 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites: (state, action: PayloadAction<CatalogProduct>) => {
-      // Перевірка, щоб не додати той самий товар двічі (про всяк випадок)
       const exists = state.items.find(item => item.id === action.payload.id);
 
       if (!exists) {

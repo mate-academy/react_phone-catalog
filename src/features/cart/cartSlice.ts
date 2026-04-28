@@ -12,13 +12,11 @@ export interface CartState {
   items: CartItem[];
 }
 
-// Функція завантаження з localStorage
 const loadCart = (): CartItem[] => {
   try {
     const saved = localStorage.getItem('cart');
     return saved ? JSON.parse(saved) : [];
   } catch (error) {
-    console.error('Error loading cart:', error);
     return [];
   }
 };
@@ -34,15 +32,10 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<Omit<CartItem, 'quantity'>>) => {
       const existingItem = state.items.find(item => item.id === action.payload.id);
 
-      if (existingItem) {
-        // Якщо товар вже є, збільшуємо кількість
-        existingItem.quantity += 1;
-      } else {
-        // Якщо немає, додаємо новий об'єкт з quantity: 1
+      if (!existingItem) {
         state.items.push({ ...action.payload, quantity: 1 });
+        localStorage.setItem('cart', JSON.stringify(state.items));
       }
-
-      localStorage.setItem('cart', JSON.stringify(state.items));
     },
 
     removeFromCart: (state, action: PayloadAction<string>) => {
@@ -50,21 +43,23 @@ const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.items));
     },
 
-    // Зміна кількості (з кроком +1 або -1)
     changeQuantity: (state, action: PayloadAction<{ id: string; amount: number }>) => {
       const { id, amount } = action.payload;
       const item = state.items.find(i => i.id === id);
 
       if (item) {
-        item.quantity = Math.max(1, item.quantity + amount);
-        localStorage.setItem('cart', JSON.stringify(state.items));
+        const newQuantity = item.quantity + amount;
+
+        if (newQuantity >= 1) {
+          item.quantity = newQuantity;
+          localStorage.setItem('cart', JSON.stringify(state.items));
+        }
       }
     },
 
-    // Повне очищення кошика (наприклад, після оформлення замовлення)
     clearCart: (state) => {
       state.items = [];
-      localStorage.removeItem('cart');
+      localStorage.removeItem('cart'); 
     },
   },
 });

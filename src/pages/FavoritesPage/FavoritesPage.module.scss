@@ -39,16 +39,16 @@
   font-size: 18px;
 }
 
-// Сітка товарів, специфічна для цієї сторінки
+
 .productsGrid {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px 16px; // Вертикальний та горизонтальний відступи
+  gap: 40px 16px;
   margin-bottom: 80px;
 
   @include tablet {
-    grid-template-columns: repeat(2, 1fr); // Змінив на 2 для кращого вигляду на планшеті
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px 16px;
   }
 
@@ -57,7 +57,4 @@
     justify-items: center;
     gap: 40px 16px;
   }
-
-  // Оскільки ми використовуємо перевикористовуваний компонент ProductCard,
-  // нам зазвичай не потрібно стилізувати його тут, він сам знає свою ширину.
 }

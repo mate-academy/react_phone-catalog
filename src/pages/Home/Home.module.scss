@@ -22,11 +22,24 @@
   }
 }
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 section {
   grid-column: 1 / -1;
 }
 
-h2 {
+h3 {
   color: $color-primary;
   font-size: map-get($h2-styles, font-size);
   margin: 0;
@@ -103,7 +116,6 @@ h2 {
   .dot {
     cursor: pointer;
     line-height: 0;
-    &.active { /* можна додати стилі для активної точки тут */ }
     img { width: 24px; height: 24px; }
   }
 }

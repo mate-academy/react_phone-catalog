@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Імпортуємо Link
+import { Link } from 'react-router-dom';
 import s from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
@@ -11,7 +11,6 @@ export const Footer: React.FC = () => {
     <footer className={s.footer}>
       <div className={s.footerContainer}>
         <div className={s.footerLeft}>
-          {/* Логотип краще теж обгорнути в Link на головну */}
           <Link to="/">
             <img src="./img/Logo.svg" alt="Logo" className={s.footerLogo} />
           </Link>

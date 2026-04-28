@@ -4,7 +4,6 @@ import productsData from '../../../public/api/products.json';
 import { CatalogProduct } from '../../../public/types';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
-// Імпортуємо стилі як об'єкт 's'
 import s from './Home.module.scss';
 
 const banners = [
@@ -17,7 +16,6 @@ export const Home: React.FC = () => {
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   const visibleCount = 4;
 
-  // --- BANNER LOGIC ---
   const nextBanner = () => {
     setCurrentBannerIndex(prev => (prev + 1) % banners.length);
   };
@@ -31,7 +29,6 @@ export const Home: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // --- BRAND NEW MODELS LOGIC ---
   const sortedProducts: CatalogProduct[] = [...(productsData as CatalogProduct[])]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
@@ -44,7 +41,6 @@ export const Home: React.FC = () => {
 
   const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount);
 
-  // --- HOT PRICES LOGIC ---
   const discountProducts: CatalogProduct[] = [...(productsData as CatalogProduct[])]
     .filter(product => product.fullPrice && product.fullPrice > product.price)
     .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price))
@@ -58,16 +54,15 @@ export const Home: React.FC = () => {
 
   const visibleDiscountProducts = discountProducts.slice(hotStartIndex, hotStartIndex + visibleCount);
 
-  // --- CATEGORIES COUNT ---
   const phonesCount = productsData.filter(p => p.category === 'phones').length;
   const tabletsCount = productsData.filter(p => p.category === 'tablets').length;
   const accessoriesCount = productsData.filter(p => p.category === 'accessories').length;
 
   return (
     <div className={s.home}>
-      <h1 className={s.homeTitle}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={s.visuallyHidden}>Product Catalog</h1>
+      <h2 className={s.homeTitle}>Welcome to Nice Gadgets store!</h2>
 
-      {/* Banner carousel */}
       <section className={s.bannerSection}>
         <div className={s.carouselWrapper}>
           <button className={`${s.carouselArrow} ${s.left}`} onClick={prevBanner}>
@@ -109,10 +104,9 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Brand new models */}
       <section className={s.brandNewModels}>
         <div className={s.containerProducts}>
-          <h2>Brand new models</h2>
+          <h3>Brand new models</h3>
           <div className={s.carouselButtons}>
             <button className={s.carouselArrowSmall} onClick={handlePrev} disabled={startIndex === 0}>
               <img src="./img/Arrow_Left.svg" alt="Left" />
@@ -129,9 +123,8 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Categories */}
       <section className={s.categories}>
-        <h2 className={s.categoriesTitle}>Shop by category</h2>
+        <h3 className={s.categoriesTitle}>Shop by category</h3>
         <div className={s.categoriesContainer}>
           <Link to="/phones" className={s.categoriesCategory} onClick={() => window.scrollTo(0, 0)}>
             <div className={s.categoryImgContainer}>
@@ -159,10 +152,9 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Hot prices */}
       <section className={s.hotPrices}>
         <div className={s.containerDivider}>
-          <h2>Hot prices</h2>
+          <h3>Hot prices</h3>
           <div className={s.carouselButtons}>
             <button className={s.carouselArrowSmall} onClick={handleHotPrev} disabled={hotStartIndex === 0}>
               <img src="./img/Arrow_Left.svg" alt="Left" />

@@ -1,15 +1,11 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-
-/* Додатковий reset для специфічних елементів */
 div, section, article, header, footer, main, aside, nav {
   margin: 0;
   padding: 0;
 }
 
-
-// not empty
 html {
   margin: 0;
   padding: 0;
@@ -31,8 +27,6 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 60px;
-
-  /* Для центрування контенту всередині */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,10 +44,10 @@ main {
 .appWrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // Контейнер займає мінімум 100% висоти вікна
+  min-height: 100vh;
 }
 
 main {
-  flex: 1; // Ця частина розтягується і заповнює весь вільний простір
+  flex: 1; 
 }
 

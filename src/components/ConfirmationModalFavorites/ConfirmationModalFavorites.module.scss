@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000; // Робимо вище за хедер, якщо потрібно
+  z-index: 10000;
   backdrop-filter: blur(2px);
 }
 
@@ -74,7 +74,7 @@
   }
 
   &.confirm {
-    background-color: #eb5757; // Червоний для видалення
+    background-color: #eb5757;
     color: $color-white;
   }
 
