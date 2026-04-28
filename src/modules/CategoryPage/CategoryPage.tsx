@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useProducts } from '../../context/ProductContext';
-import { ProductCard } from '../shared/components/ProductCard';
+import { getProductsByCategory } from '../../api';
+import { Product } from '../../types';
+import { ProductsList } from './components/ProductsList';
 import { Dropdown } from '../shared/components/Dropdown';
 import { NotFoundPage } from '../NotFoundPage';
+import { Loader } from '../shared/components/Loader';
 import styles from './CategoryPage.module.scss';
 
 type Category = 'phones' | 'tablets' | 'accessories';
@@ -23,21 +25,29 @@ const sortOptions: { value: SortBy; label: string }[] = [
 
 export const CategoryPage = () => {
   const { category } = useParams<{ category: Category }>();
-  const { products, loading, error } = useProducts();
   const [sortBy, setSortBy] = useState<SortBy>('newest');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setError(false);
+    setProducts([]);
+
+    getProductsByCategory(category as Category)
+      .then(setProducts)
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, [category]);
 
   if (!Object.keys(categoryTitles).includes(category as string)) {
     return <NotFoundPage />;
   }
 
-  const validCategory = category as Category;
-  const title = categoryTitles[validCategory] ?? 'Products';
+  const title = categoryTitles[category as Category];
 
-  const filtered = products.filter(
-    product => product.category === validCategory,
-  );
-
-  const sorted = [...filtered].sort((a, b) => {
+  const sorted = [...products].sort((a, b) => {
     switch (sortBy) {
       case 'alphabetically':
         return a.name.localeCompare(b.name);
@@ -49,18 +59,10 @@ export const CategoryPage = () => {
     }
   });
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>{title}</h1>
-      <p className={styles.count}>{filtered.length} models</p>
+      <p className={styles.count}>{products.length} models</p>
 
       <div className={styles.controls}>
         <Dropdown
@@ -71,11 +73,15 @@ export const CategoryPage = () => {
         />
       </div>
 
-      <div className={styles.grid}>
-        {sorted.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {loading && <Loader />}
+
+      {!loading && error && <p>Something went wrong. Please try again.</p>}
+
+      {!loading && !error && products.length === 0 && <p>No products found.</p>}
+
+      {!loading && !error && products.length > 0 && (
+        <ProductsList products={sorted} />
+      )}
     </div>
   );
 };

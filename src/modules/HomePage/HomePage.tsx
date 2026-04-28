@@ -1,9 +1,25 @@
+import { useEffect, useState } from 'react';
+import { getProducts } from '../../api';
+import { Product } from '../../types';
 import styles from './HomePage.module.scss';
-import { useProducts } from '../../context/ProductContext';
 import { ProductCard } from '../shared/components/ProductCard';
+import { Loader } from '../shared/components/Loader';
 
 export const HomePage = () => {
-  const { products, loading, error } = useProducts();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setError(false);
+
+    getProducts()
+      .then(setProducts)
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, []);
+
   const phones = products.filter(p => p.category === 'phones');
 
   return (
@@ -21,8 +37,9 @@ export const HomePage = () => {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Brand new models</h2>
 
-          {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
+          {loading && <Loader />}
+
+          {!loading && error && <p>Something went wrong. Please try again.</p>}
 
           {!loading && !error && (
             <ul className={styles.cardGrid}>

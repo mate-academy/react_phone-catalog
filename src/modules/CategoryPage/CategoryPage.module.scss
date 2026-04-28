@@ -23,14 +23,6 @@
   padding-top: 32px;
 }
 
-.grid {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  gap: 40px;
-  padding-top: 24px;
-}
-
 // ── Tablet ──────────────────────────────────────────────────────────────────
 @include on-tablet {
   .page {
@@ -45,15 +37,6 @@
   .controls {
     padding-top: 40px;
   }
-
-  .grid {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    row-gap: 40px;
-    padding-top: 24px;
-  }
 }
 
 // ── Desktop ──────────────────────────────────────────────────────────────────
@@ -62,4 +45,3 @@
     padding-bottom: 40px;
   }
 }
-

@@ -149,7 +149,7 @@
     }
 
     &.iconButtonActive {
-      border-bottom-color: var(--color-primary);
+      border-bottom: 3px solid var(--color-primary);
     }
 
     img {

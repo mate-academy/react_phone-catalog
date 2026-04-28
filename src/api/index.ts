@@ -28,3 +28,13 @@ export const getProductsByCategory = (
   category: 'phones' | 'tablets' | 'accessories',
 ): Promise<Product[]> =>
   getProducts().then(products => products.filter(p => p.category === category));
+
+export const getBrandNew = (): Promise<Product[]> =>
+  getProducts().then(products => [...products].sort((a, b) => b.year - a.year));
+
+export const getHotPrices = (): Promise<Product[]> =>
+  getProducts().then(products =>
+    [...products]
+      .filter(p => p.fullPrice > p.price)
+      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price)),
+  );

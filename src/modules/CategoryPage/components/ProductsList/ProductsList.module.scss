@@ -1,0 +1,21 @@
+@use '../../../../styles/mixins' as *;
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 40px;
+  padding-top: 24px;
+}
+
+@include on-tablet {
+  .grid {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+    padding-top: 24px;
+  }
+}
+
