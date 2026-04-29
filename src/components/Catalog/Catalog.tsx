@@ -53,18 +53,22 @@ export const Catalog: React.FC = () => {
     const filtered = allProducts.filter(p => p.category === category);
 
     return [...filtered].sort((a, b) => {
-      switch (sort) {
-        case 'alphabet':
-          return a.name.localeCompare(b.name);
-        case 'cheapest':
-          return a.priceDiscount - b.priceDiscount;
-        case 'newest':
-          return b.year - a.year;
-        default:
-          return 0;
-      }
-    });
-  }, [allProducts, category, sort]);
+
+    const itemA = a as any;
+    const itemB = b as any;
+
+    switch (sort) {
+      case 'alphabet':
+        return itemA.name.localeCompare(itemB.name);
+      case 'cheapest':
+        return (itemA.priceDiscount || itemA.price) - (itemB.priceDiscount || itemB.price);
+      case 'newest':
+        return (itemB.year || 0) - (itemA.year || 0);
+      default:
+        return 0;
+    }
+  });
+}, [allProducts, category, sort]);
 
   const totalCount = sortedProducts.length;
   const isAllSelected = perPage === 'all';
