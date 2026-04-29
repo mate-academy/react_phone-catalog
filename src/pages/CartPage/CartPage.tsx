@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   removeFromCart,
@@ -7,7 +7,6 @@ import {
   clearCart,
 } from '../../features/cart/cartSlice';
 
-// eslint-disable-next-line max-len
 import { ConfirmationModalFavorites } from '../../components/ConfirmationModalFavorites/ConfirmationModalFavorites';
 
 import s from './CartPage.module.scss';
@@ -17,7 +16,6 @@ export const CartPage = () => {
   const dispatch = useAppDispatch();
 
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
-
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
 
   const cart = useAppSelector(state => state.cart.items);
@@ -26,12 +24,14 @@ export const CartPage = () => {
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleCheckout = () => setIsCheckoutModalOpen(true);
+
   const confirmCheckout = () => {
     dispatch(clearCart());
     setIsCheckoutModalOpen(false);
   };
 
   const handleRemoveClick = (id: string) => setItemToDelete(id);
+
   const confirmDelete = () => {
     if (itemToDelete) {
       dispatch(removeFromCart(itemToDelete));
@@ -41,8 +41,9 @@ export const CartPage = () => {
 
   return (
     <div className={s.cartPage}>
+      {/* Кнопка назад */}
       <div className={s.backButton} onClick={() => navigate(-1)}>
-        <img src="./img/Arrow_Left.svg" alt="" className={s.backArrow} />
+        <img src="./img/Arrow_Left.svg" alt="Back" className={s.backArrow} />
         <span>Back</span>
       </div>
 
@@ -53,53 +54,64 @@ export const CartPage = () => {
       ) : (
         <div className={s.cartContainer}>
           <div className={s.cartItems}>
-            {cart.map(item => (
-              <div key={item.id} className={s.cartCard}>
-                <button
-                  className={s.remove}
-                  onClick={() => handleRemoveClick(item.id)}
-                >
-                  <img
-                    src="./img/Close.svg"
-                    alt="Remove"
-                    className={s.removeIcon}
-                  />
-                </button>
+            {cart.map(item => {
 
-                <div className={s.cartCardImageContainer}>
-                  <img src={item.image} alt={item.name} />
-                </div>
+              const category = (item as any).category ||
+                               (item.id.includes('ipad') ? 'tablets' :
+                                item.id.includes('watch') ? 'accessories' : 'phones');
 
-                <div className={s.productName}>{item.name}</div>
+              const productPath = `/${category}/${item.id}`;
 
-                <div className={s.rightSide}>
-                  <div className={s.quantity}>
-                    <button
-                      className={s.minus}
-                      onClick={() =>
-                        dispatch(changeQuantity({ id: item.id, amount: -1 }))
-                      }
-                      disabled={item.quantity <= 1}
-                    >
-                      <img src="./img/Minus.svg" alt="" />
-                    </button>
+              return (
+                <div key={item.id} className={s.cartCard}>
+                  <button
+                    className={s.remove}
+                    onClick={() => handleRemoveClick(item.id)}
+                  >
+                    <img
+                      src="./img/Close.svg"
+                      alt="Remove"
+                      className={s.removeIcon}
+                    />
+                  </button>
 
-                    <span className={s.quantityValue}>{item.quantity}</span>
+                  <Link to={productPath} className={s.cartCardImageContainer}>
+                    <img src={item.image} alt={item.name} />
+                  </Link>
 
-                    <button
-                      className={s.plus}
-                      onClick={() =>
-                        dispatch(changeQuantity({ id: item.id, amount: 1 }))
-                      }
-                    >
-                      <img src="./img/Plus.svg" alt="" />
-                    </button>
+                  <Link to={productPath} className={s.productName}>
+                    {item.name}
+                  </Link>
+
+                  <div className={s.rightSide}>
+                    <div className={s.quantity}>
+                      <button
+                        className={s.minus}
+                        onClick={() =>
+                          dispatch(changeQuantity({ id: item.id, amount: -1 }))
+                        }
+                        disabled={item.quantity <= 1}
+                      >
+                        <img src="./img/Minus.svg" alt="Decrease" />
+                      </button>
+
+                      <span className={s.quantityValue}>{item.quantity}</span>
+
+                      <button
+                        className={s.plus}
+                        onClick={() =>
+                          dispatch(changeQuantity({ id: item.id, amount: 1 }))
+                        }
+                      >
+                        <img src="./img/Plus.svg" alt="Increase" />
+                      </button>
+                    </div>
+
+                    <div className={s.price}>${item.price * item.quantity}</div>
                   </div>
-
-                  <div className={s.price}>${item.price * item.quantity}</div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className={s.cartSummary}>
@@ -117,7 +129,6 @@ export const CartPage = () => {
 
       <ConfirmationModalFavorites
         isOpen={isCheckoutModalOpen}
-        // eslint-disable-next-line max-len
         message="Checkout is not implemented yet. Do you want to clear the Cart?"
         confirmText="Clear Cart"
         cancelText="Cancel"

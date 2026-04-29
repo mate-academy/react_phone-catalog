@@ -109,6 +109,7 @@
     color: $color-primary;
     font-size: map-get($body-text, font-size);
     font-weight: map-get($body-text, font-weight);
+    text-decoration: none;
 
     @include mobile {
       grid-column: 3;
