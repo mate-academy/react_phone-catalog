@@ -10,10 +10,10 @@
   border-bottom: 1px solid $color-elements;
   background-color: $color-white;
 
-  font-size: map-get($uppercase, font-size);
-  font-weight: map-get($uppercase, font-weight);
-  line-height: map-get($uppercase, line-height);
-  letter-spacing: map-get($uppercase, letter-spacing);
+  font-size: map.get($uppercase, font-size);
+  font-weight: map.get($uppercase, font-weight);
+  line-height: map.get($uppercase, line-height);
+  letter-spacing: map.get($uppercase, letter-spacing);
   transition: box-shadow 0.3s ease;
 
   &.scrolled {
@@ -142,6 +142,7 @@
     display: flex;
     border-left: 1px solid $color-elements;
     transition: background-color 0.3s;
+    position: relative;
 
     &:hover {
       background-color: $color-hover-BG;
@@ -155,6 +156,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       width: 100%;
       height: 100%;
     }
@@ -178,5 +180,29 @@
       cursor: pointer;
       z-index: 10001;
     }
+  }
+
+  .badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    background-color: $color-red;
+    color: $color-white;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+
+    min-width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+
+    border: 1px solid $color-white;
+    pointer-events: none;
+    z-index: 10;
   }
 }

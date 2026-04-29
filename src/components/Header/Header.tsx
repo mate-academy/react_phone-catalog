@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
 import s from './Header.module.scss';
 
 export const Header: React.FC = () => {
@@ -25,6 +26,12 @@ export const Header: React.FC = () => {
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     `${s.navLink} ${isActive ? s.active : ''}`;
+
+  const cartItems = useAppSelector(state => state.cart.items);
+  const favoriteItems = useAppSelector(state => state.favorites.items);
+
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const favoritesCount = favoriteItems.length;
 
   return (
     <header className={`${s.header} ${isScrolled ? s.scrolled : ''}`}>
@@ -90,6 +97,9 @@ export const Header: React.FC = () => {
               className={({ isActive }) => (isActive ? s.activeIcon : '')}
             >
               <img src="./img/Like.svg" alt="Like" className={s.like} />
+              {favoritesCount > 0 && (
+                <span className={s.badge}>{favoritesCount}</span>
+              )}
             </NavLink>
           </div>
           <div className={s.buttonGroupHeaderBlock}>
@@ -99,6 +109,7 @@ export const Header: React.FC = () => {
               className={({ isActive }) => (isActive ? s.activeIcon : '')}
             >
               <img src="./img/Cart.svg" alt="Cart" className={s.cart} />
+              {cartCount > 0 && <span className={s.badge}>{cartCount}</span>}
             </NavLink>
           </div>
         </div>

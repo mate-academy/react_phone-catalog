@@ -36,14 +36,20 @@ const cartSlice = createSlice({
       );
 
       if (!existingItem) {
-        state.items.push({ ...action.payload, quantity: 1 });
-        localStorage.setItem('cart', JSON.stringify(state.items));
+        const newItems = [...state.items, { ...action.payload, quantity: 1 }];
+
+        localStorage.setItem('cart', JSON.stringify(newItems));
+
+        return { ...state, items: newItems };
       }
     },
 
     removeFromCart: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      const newItems = state.items.filter(item => item.id !== action.payload);
+
+      localStorage.setItem('cart', JSON.stringify(newItems));
+
+      return { ...state, items: newItems };
     },
 
     changeQuantity: (
@@ -51,21 +57,29 @@ const cartSlice = createSlice({
       action: PayloadAction<{ id: string; amount: number }>,
     ) => {
       const { id, amount } = action.payload;
-      const item = state.items.find(i => i.id === id);
 
-      if (item) {
-        const newQuantity = item.quantity + amount;
+      const newItems = state.items.map(item => {
+        if (item.id === id) {
+          const nextQuantity = item.quantity + amount;
 
-        if (newQuantity >= 1) {
-          item.quantity = newQuantity;
-          localStorage.setItem('cart', JSON.stringify(state.items));
+          return {
+            ...item,
+            quantity: nextQuantity >= 1 ? nextQuantity : item.quantity,
+          };
         }
-      }
+
+        return item;
+      });
+
+      localStorage.setItem('cart', JSON.stringify(newItems));
+
+      return { ...state, items: newItems };
     },
 
     clearCart: state => {
-      state.items = [];
       localStorage.removeItem('cart');
+
+      return { ...state, items: [] };
     },
   },
 });

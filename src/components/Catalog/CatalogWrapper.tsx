@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Catalog } from './Catalog';
+import { CatalogProduct } from '../../../public/types';
 
 import s from './Catalog.module.scss';
 
 interface CatalogWrapperProps {
-  products: any[];
+  products: CatalogProduct[];
 }
 
 const CatalogWrapper: React.FC<CatalogWrapperProps> = ({ products }) => {

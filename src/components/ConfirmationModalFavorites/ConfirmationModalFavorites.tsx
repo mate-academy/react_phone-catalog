@@ -15,8 +15,8 @@ export const ConfirmationModalFavorites: React.FC<Props> = ({
   message,
   onConfirm,
   onCancel,
-  confirmText = 'Видалити',
-  cancelText = 'Скасувати',
+  confirmText = 'Confirm',
+  cancelText = 'Cancel',
 }) => {
   if (!isOpen) {
     return null;

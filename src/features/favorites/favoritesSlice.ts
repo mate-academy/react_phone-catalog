@@ -11,8 +11,6 @@ const loadFavorites = (): CatalogProduct[] => {
 
     return saved ? JSON.parse(saved) : [];
   } catch (error) {
-    console.error('Error loading favorites:', error);
-
     return [];
   }
 };
@@ -29,13 +27,21 @@ const favoritesSlice = createSlice({
       const exists = state.items.find(item => item.id === action.payload.id);
 
       if (!exists) {
-        state.items.push(action.payload);
-        localStorage.setItem('favorites', JSON.stringify(state.items));
+        const newItems = [...state.items, action.payload];
+
+        localStorage.setItem('favorites', JSON.stringify(newItems));
+
+        return { ...state, items: newItems };
       }
+
+      return state;
     },
     removeFromFavorites: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
-      localStorage.setItem('favorites', JSON.stringify(state.items));
+      const newItems = state.items.filter(item => item.id !== action.payload);
+
+      localStorage.setItem('favorites', JSON.stringify(newItems));
+
+      return { ...state, items: newItems };
     },
   },
 });

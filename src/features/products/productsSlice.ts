@@ -36,8 +36,12 @@ export const fetchProducts = createAsyncThunk(
       );
 
       return results.flat() as AnyProduct[];
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      }
+
+      return rejectWithValue('An unknown error occurred');
     }
   },
 );
@@ -49,19 +53,28 @@ const productsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchProducts.pending, state => {
-        state.loading = true;
-        state.error = null;
+        return {
+          ...state,
+          loading: true,
+          error: null,
+        };
       })
       .addCase(
         fetchProducts.fulfilled,
         (state, action: PayloadAction<AnyProduct[]>) => {
-          state.loading = false;
-          state.items = action.payload;
+          return {
+            ...state,
+            loading: false,
+            items: action.payload,
+          };
         },
       )
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
+        return {
+          ...state,
+          loading: false,
+          error: (action.payload as string) || 'Something went wrong',
+        };
       });
   },
 });

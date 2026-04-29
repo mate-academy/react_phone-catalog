@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
@@ -7,24 +7,35 @@ import {
   clearCart,
 } from '../../features/cart/cartSlice';
 
+// eslint-disable-next-line max-len
+import { ConfirmationModalFavorites } from '../../components/ConfirmationModalFavorites/ConfirmationModalFavorites';
+
 import s from './CartPage.module.scss';
 
 export const CartPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+
+  const [itemToDelete, setItemToDelete] = useState<string | null>(null);
+
   const cart = useAppSelector(state => state.cart.items);
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const handleCheckout = () => {
-    const isConfirmed = window.confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?',
-    );
+  const handleCheckout = () => setIsCheckoutModalOpen(true);
+  const confirmCheckout = () => {
+    dispatch(clearCart());
+    setIsCheckoutModalOpen(false);
+  };
 
-    if (isConfirmed) {
-      dispatch(clearCart());
+  const handleRemoveClick = (id: string) => setItemToDelete(id);
+  const confirmDelete = () => {
+    if (itemToDelete) {
+      dispatch(removeFromCart(itemToDelete));
+      setItemToDelete(null);
     }
   };
 
@@ -46,7 +57,7 @@ export const CartPage = () => {
               <div key={item.id} className={s.cartCard}>
                 <button
                   className={s.remove}
-                  onClick={() => dispatch(removeFromCart(item.id))}
+                  onClick={() => handleRemoveClick(item.id)}
                 >
                   <img
                     src="./img/Close.svg"
@@ -103,6 +114,25 @@ export const CartPage = () => {
           </div>
         </div>
       )}
+
+      <ConfirmationModalFavorites
+        isOpen={isCheckoutModalOpen}
+        // eslint-disable-next-line max-len
+        message="Checkout is not implemented yet. Do you want to clear the Cart?"
+        confirmText="Clear Cart"
+        cancelText="Cancel"
+        onConfirm={confirmCheckout}
+        onCancel={() => setIsCheckoutModalOpen(false)}
+      />
+
+      <ConfirmationModalFavorites
+        isOpen={!!itemToDelete}
+        message="Are you sure you want to remove this item from the cart?"
+        confirmText="Remove"
+        cancelText="Keep it"
+        onConfirm={confirmDelete}
+        onCancel={() => setItemToDelete(null)}
+      />
     </div>
   );
 };

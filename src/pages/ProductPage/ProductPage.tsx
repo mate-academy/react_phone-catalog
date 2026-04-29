@@ -44,7 +44,7 @@ export const ProductPage = () => {
       .sort(() => Math.random() - 0.5)
       .slice(0, 10)
       .map(p => p as unknown as CatalogProduct);
-  }, [products, productId]);
+  }, [products]);
 
   const visibleCount = 4;
   const isLiked = favorites.some(item => item.id === product?.id);
@@ -127,6 +127,7 @@ export const ProductPage = () => {
     p =>
       p.namespaceId === product.namespaceId && p.capacity === product.capacity,
   );
+
   const capacityVariants = products.filter(
     p => p.namespaceId === product.namespaceId && p.color === product.color,
   );
@@ -189,23 +190,34 @@ export const ProductPage = () => {
                 <span className={s.productId}>ID: {product.id}</span>
               </div>
               <div className={s.colorDots}>
-                {colorVariants.map(variant => (
-                  <label key={variant.id} className={s.colorLabel}>
-                    <input
-                      type="radio"
-                      name="color"
-                      className={s.visuallyHidden}
-                      checked={variant.color === product.color}
-                      onChange={() => navigate(`/${category}/${variant.id}`)}
-                    />
-                    <span
-                      className={`${s.colorDot} ${variant.color === product.color ? s.colorDotActive : ''}`}
-                      style={{
-                        backgroundColor: colorMap[variant.color] || '#ccc',
-                      }}
-                    />
-                  </label>
-                ))}
+                {colorVariants.map(variant => {
+                  const inputId = `color-${variant.id}`;
+
+                  return (
+                    <label
+                      key={variant.id}
+                      htmlFor={inputId}
+                      className={s.colorLabel}
+                    >
+                      <span className={s.visuallyHidden}>{variant.color}</span>
+                      <input
+                        id={inputId}
+                        type="radio"
+                        name="color"
+                        className={s.visuallyHidden}
+                        checked={variant.color === product.color}
+                        onChange={() => navigate(`/${category}/${variant.id}`)}
+                      />
+                      <span
+                        className={`${s.colorDot} ${variant.color === product.color ? s.colorDotActive : ''}`}
+                        style={{
+                          backgroundColor: colorMap[variant.color] || '#ccc',
+                        }}
+                        aria-hidden="true"
+                      />
+                    </label>
+                  );
+                })}
               </div>
             </div>
 

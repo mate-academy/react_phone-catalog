@@ -6,6 +6,7 @@ import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import CatalogFilters from '../CatalogFilters/CatalogFilters';
 
 import s from './Catalog.module.scss';
+import { CatalogProduct } from '../../../public/types';
 
 const TITLES_MAP: Record<string, string> = {
   phones: 'Phones',
@@ -53,22 +54,21 @@ export const Catalog: React.FC = () => {
     const filtered = allProducts.filter(p => p.category === category);
 
     return [...filtered].sort((a, b) => {
+      const itemA = a as typeof a & { year: number; priceDiscount: number };
+      const itemB = b as typeof b & { year: number; priceDiscount: number };
 
-    const itemA = a as any;
-    const itemB = b as any;
-
-    switch (sort) {
-      case 'alphabet':
-        return itemA.name.localeCompare(itemB.name);
-      case 'cheapest':
-        return (itemA.priceDiscount || itemA.price) - (itemB.priceDiscount || itemB.price);
-      case 'newest':
-        return (itemB.year || 0) - (itemA.year || 0);
-      default:
-        return 0;
-    }
-  });
-}, [allProducts, category, sort]);
+      switch (sort) {
+        case 'alphabet':
+          return itemA.name.localeCompare(itemB.name);
+        case 'cheapest':
+          return itemA.priceDiscount - itemB.priceDiscount;
+        case 'newest':
+          return itemB.year - itemA.year;
+        default:
+          return 0;
+      }
+    });
+  }, [allProducts, category, sort]);
 
   const totalCount = sortedProducts.length;
   const isAllSelected = perPage === 'all';
@@ -77,6 +77,7 @@ export const Catalog: React.FC = () => {
 
   const visibleProducts = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
+
     return sortedProducts.slice(start, start + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
 
@@ -140,7 +141,7 @@ export const Catalog: React.FC = () => {
           visibleProducts.map(product => (
             <ProductCard
               key={product.id}
-              product={product as any}
+              product={product as unknown as CatalogProduct}
               showDiscount
             />
           ))

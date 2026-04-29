@@ -18,13 +18,13 @@
 .modalContent {
   background: $color-white;
   padding: 32px;
-  border-radius: 8px;
+  border-radius: 0;
   max-width: 400px;
   width: 90%;
   position: relative;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  animation: modalFadeIn 0.3s ease;
+  animation: modal-fade-in 0.3s ease;
 }
 
 .modalClose {
@@ -59,7 +59,7 @@
 .modalBtn {
   padding: 10px 24px;
   border: none;
-  border-radius: 4px;
+  border-radius: 0;
   font-weight: 600;
   font-family: $font-main;
   cursor: pointer;
@@ -74,7 +74,7 @@
   }
 
   &.confirm {
-    background-color: #eb5757;
+    background-color: $color-red;
     color: $color-white;
   }
 
@@ -84,7 +84,7 @@
   }
 }
 
-@keyframes modalFadeIn {
+@keyframes modal-fade-in {
   from {
     transform: translateY(-20px);
     opacity: 0;

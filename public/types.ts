@@ -17,9 +17,8 @@ export interface Phone {
   camera: string;
   zoom: string;
   cell: string[];
-  category: "phones";
+  category: 'phones';
 }
-
 
 export interface Tablet {
   id: string;
@@ -40,7 +39,7 @@ export interface Tablet {
   camera: string;
   zoom: string;
   cell: string[];
-  category: "tablets";
+  category: 'tablets';
 }
 
 export interface DescriptionBlock {
@@ -65,7 +64,7 @@ export interface Accessory {
   processor: string;
   ram: string;
   cell: string[];
-  category: "accessories";
+  category: 'accessories';
 }
 
 export interface CatalogProduct {
@@ -83,6 +82,4 @@ export interface CatalogProduct {
   image: string;
 }
 
-
-
-export type Category = "phones" | "tablets" | "accessories";
+export type Category = 'phones' | 'tablets' | 'accessories';

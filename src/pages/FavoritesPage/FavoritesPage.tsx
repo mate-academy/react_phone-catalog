@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { removeFromFavorites } from '../../features/favorites/favoritesSlice';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+// eslint-disable-next-line max-len
 import { ConfirmationModalFavorites } from '../../components/ConfirmationModalFavorites/ConfirmationModalFavorites';
 
 import s from './FavoritesPage.module.scss';
@@ -46,7 +47,7 @@ export function FavoritesPage() {
 
       <ConfirmationModalFavorites
         isOpen={!!idToDelete}
-        message="Ви впевнені, що хочете видалити товар з обраного?"
+        message="Are you sure you want to remove this item from favorites?"
         onConfirm={confirmDelete}
         onCancel={() => setIdToDelete(null)}
       />
