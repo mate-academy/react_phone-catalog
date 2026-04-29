@@ -1,10 +1,10 @@
 import './App.scss';
-import Home from './pages/homePage/Home.js';
-import Phones from './pages/phonesPage/Phones.js';
-import Accessories from './pages/accessoriesPage/Accessories.js';
-import Tablets from './pages/tabletsPage/Tablets.js';
-import Heart from './pages/heartPage/Heart.js';
-import ProductPage from './pages/productPage/ProductPage.js';
+import Home from './pages/homePage/Home';
+import Phones from './pages/phonesPage/Phones';
+import Accessories from './pages/accessoriesPage/Accessories';
+import Tablets from './pages/tabletsPage/Tablets';
+import Heart from './pages/heartPage/Heart';
+import ProductPage from './pages/productPage/ProductPage';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Basket from './pages/basketPage/Basket';
 import { useLocalStorage } from './api';
@@ -12,7 +12,7 @@ import { FavoriteProduct } from './types/FavoriteProduct';
 import { BasketProduct } from './types/BasketProduct';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import BurgerMenu from './pages/BurgerMenu/BurgerMenu.js';
+import BurgerMenu from './pages/BurgerMenu/BurgerMenu';
 import { AppContext } from './AppContext';
 
 export const App = () => {
