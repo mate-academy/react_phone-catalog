@@ -16,7 +16,7 @@ export const Footer = () => {
             <li className={styles.li_links}>
               <a
                 // eslint-disable-next-line max-len
-                href="https://github.com/mate-academy/react_phone-catalog/pull/941"
+                href="/"
                 className={styles.link}
                 target="_blank"
                 rel="noopener noreferrer"
