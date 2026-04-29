@@ -11,6 +11,7 @@ import { useAppSelector } from '../../../../../hooks/hooks';
 import { selectTotalItems } from '../../../../../features/cartSlice';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '../../../molecules/LanguageSwitcher';
+import { HeaderLogo } from '../../../../../assets/icons/header-logo-icon';
 
 type Props = {
   onClose: () => void;
@@ -31,11 +32,7 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
     <aside className={classNames(styles.menu, { [styles.menuOpen]: isOpen })}>
       <div className={styles.top}>
         <NavLink to="/" className={styles.logo} onClick={onClose}>
-          <img
-            className={styles.logoImage}
-            src="./icons/logo-icon.svg"
-            alt="logo"
-          />
+          <HeaderLogo className={styles.logoImage} />
         </NavLink>
         <button
           className={styles.close}

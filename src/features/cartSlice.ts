@@ -27,7 +27,6 @@ const initialState: CartState = {
   error: false,
 };
 
-// ✅ ВАЖЛИВО — init вище
 export const init = createAsyncThunk<CartItem[]>('cart/init', async () => {
   return loadFromLocalStorage<CartItem[]>(LocalStorageKey.cart);
 });

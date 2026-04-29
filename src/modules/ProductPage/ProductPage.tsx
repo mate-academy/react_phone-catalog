@@ -52,7 +52,10 @@ export const ProductPage: React.FC = () => {
   return (
     <div className={styles.page}>
       <Breadcrumbs />
-      <BackButton className={styles.page__back} />
+      <BackButton
+        className={styles.page__back}
+        category={selectedProduct.category}
+      />
       <Typography tag="h2" variant="h2" className={styles.title}>
         {productDetails?.name} ({productModel})
       </Typography>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './FavouritesPage.module.scss';
 import { useAppSelector } from '../../hooks/hooks';
 import { useSearchParams } from 'react-router-dom';
@@ -19,6 +19,18 @@ export const FavouritesPage: React.FC = () => {
   const favourites = useFilteredProducts(products, '', query, '');
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (favourites.length === 0) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [favourites.length]);
 
   return (
     <>

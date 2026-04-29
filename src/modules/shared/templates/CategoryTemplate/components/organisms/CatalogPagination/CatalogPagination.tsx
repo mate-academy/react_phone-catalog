@@ -32,11 +32,17 @@ export const CatalogPagination: React.FC<Props> = ({
       return;
     }
 
+    const scrollY = window.scrollY;
+
     const updatedSearch = getSearchWith(searchParams, {
       [SearchParam.Page]: newPage.toString(),
     });
 
     navigate({ search: updatedSearch });
+
+    setTimeout(() => {
+      window.scrollTo(0, scrollY);
+    }, 0);
   };
 
   const range = getPageRange(currentPage, totalPages, 4);

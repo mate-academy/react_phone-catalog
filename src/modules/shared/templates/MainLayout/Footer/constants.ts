@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 export const FOOTER_LINKS = [
   {
     label: 'GitHub',
-    path: 'https://github.com/berezandiana/product_catalog/',
+    path: 'https://github.com/berezandiana/react_phone-catalog/tree/develop',
     external: true,
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -15,7 +16,7 @@ export const FOOTER_LINKS = [
   },
   {
     label: 'Rights',
-    path: 'https://github.com/berezandiana/product_catalog/blob/master/LICENSE',
+    path: 'https://github.com/berezandiana/react_phone-catalog/blob/develop/LICENSE',
     external: true,
     target: '_blank',
     rel: 'noopener noreferrer',

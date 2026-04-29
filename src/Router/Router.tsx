@@ -7,9 +7,12 @@ import { FavouritesPage } from '../modules/FavouritesPage';
 import { CartPage } from '../modules/CartPage';
 import { NotFoundPage } from '../modules/NotFoundPage';
 import { ProductPage } from '../modules/ProductPage';
+import { ScrollToTop } from './ScrollToTop';
 
 export const Router: React.FC = () => (
   <HashRouter>
+    <ScrollToTop />
+
     <Routes>
       <Route element={<MainLayout />}>
         <Route index element={<HomePage />} />
