@@ -44,7 +44,16 @@
       width: 136px;
     }
   }
+}
 
+.pagination {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
 }
 
 // ── Tablet ──────────────────────────────────────────────────────────────────

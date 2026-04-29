@@ -117,12 +117,14 @@ export const CategoryPage = () => {
         <>
           <ProductsList products={paginatedProducts} />
           {perPage !== 'all' && totalPages > 1 && (
-            <Pagination
-              total={total}
-              perPage={perPage}
-              currentPage={page}
-              onPageChange={setPage}
-            />
+            <div className={styles.pagination}>
+              <Pagination
+                total={total}
+                perPage={perPage}
+                currentPage={page}
+                onPageChange={setPage}
+              />
+            </div>
           )}
         </>
       )}

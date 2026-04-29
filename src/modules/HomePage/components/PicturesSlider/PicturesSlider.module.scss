@@ -1,0 +1,121 @@
+@use '../../../../styles/mixins' as *;
+
+.slider {
+  position: relative; // ← anchors the absolutely-positioned dots
+  display: flex;
+  align-items: center;
+
+  // Break out of page-container padding on mobile — full bleed
+  margin-inline: calc(-1 * var(--page-padding-mobile));
+  width: calc(100% + 2 * var(--page-padding-mobile));
+
+  @include on-tablet {
+    // Restore normal width on tablet+ — arrows sit inside the container
+    margin-inline: 0;
+    width: 100%;
+  }
+}
+
+.arrow {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-elements);
+    border-radius: 0;
+    background: var(--color-white);
+    cursor: pointer;
+    @include hover-transition(border-color);
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.arrowPrev img {
+  transform: rotate(90deg);
+}
+
+.arrowNext img {
+  transform: rotate(-90deg);
+}
+
+.track {
+  flex: 1;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    aspect-ratio: auto;
+    height: 221px;
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: transform var(--transition);
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+
+.dots {
+  position: absolute;
+  bottom: 16px; // sits inside the image — no overlap issue now
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1; // above the image
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background: var(--color-elements);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  padding: 0;
+  @include hover-transition(background-color);
+
+  &:hover {
+    background: var(--color-secondary);
+  }
+}
+
+.dotActive {
+  background: var(--color-primary);
+}

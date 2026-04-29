@@ -1,7 +1,7 @@
 @use '../../../../styles/mixins' as *;
 
 .card {
-  width: 272px;
+  width: 288px;
   min-height: 506px;
   padding: 32px;
   display: flex;
@@ -9,6 +9,10 @@
   gap: 8px;
   border: 1px solid var(--color-elements);
   background-color: var(--color-white);
+
+  @include on-tablet {
+    width: 272px;
+  }
 }
 
 .imageLink {

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Pagination.module.scss';
 
 type Props = {
   total: number;
@@ -29,11 +30,13 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <ul className="pagination">
-      <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+    <ul className={styles.pagination}>
+      <li
+        className={`${styles.pageItem} ${currentPage === 1 ? styles.disabled : ''}`}
+      >
         <a
           data-cy="prevLink"
-          className="page-link"
+          className={styles.pageLink}
           href="#prev"
           aria-disabled={currentPage === 1}
           onClick={e => handleClick(currentPage - 1, e)}
@@ -42,17 +45,17 @@ export const Pagination: React.FC<Props> = ({
         </a>
       </li>
 
-      {[...Array(totalPages)].map((_: number, index) => {
+      {[...Array(totalPages)].map((_, index) => {
         const page = index + 1;
 
         return (
           <li
             key={page}
-            className={`page-item ${currentPage === page ? 'active' : ''}`}
+            className={`${styles.pageItem} ${currentPage === page ? styles.active : ''}`}
           >
             <a
               data-cy="pageLink"
-              className="page-link"
+              className={styles.pageLink}
               href={`#${page}`}
               onClick={e => handleClick(page, e)}
             >
@@ -61,12 +64,13 @@ export const Pagination: React.FC<Props> = ({
           </li>
         );
       })}
+
       <li
-        className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}
+        className={`${styles.pageItem} ${currentPage === totalPages ? styles.disabled : ''}`}
       >
         <a
           data-cy="nextLink"
-          className="page-link"
+          className={styles.pageLink}
           href="#next"
           aria-disabled={currentPage === totalPages}
           onClick={event => handleClick(currentPage + 1, event)}
