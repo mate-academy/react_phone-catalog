@@ -34,17 +34,27 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const favorites = useAppSelector(state => state.favorites.items);
   const isLiked = favorites.some(
-    item => item.itemId === productId || item.id === productId || (item as any).itemId === productId
+    item =>
+      item.itemId === productId ||
+      item.id === productId ||
+      (item as any).itemId === productId,
   );
 
   const cartItems = useAppSelector(state => state.cart.items);
   const isInCart = cartItems.some(item => item.id === productId);
 
-  const price = 'priceDiscount' in product ? product.priceDiscount : (product as CatalogProduct).price;
+  const price =
+    'priceDiscount' in product
+      ? product.priceDiscount
+      : (product as CatalogProduct).price;
 
-  const fullPrice = 'priceRegular' in product ? product.priceRegular : (product as CatalogProduct).fullPrice;
+  const fullPrice =
+    'priceRegular' in product
+      ? product.priceRegular
+      : (product as CatalogProduct).fullPrice;
 
-  const imagePath = 'images' in product ? product.images[0] : (product as CatalogProduct).image;
+  const imagePath =
+    'images' in product ? product.images[0] : (product as CatalogProduct).image;
 
   const handleLikeClick = () => {
     if (isLiked) {
@@ -77,7 +87,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         to={`/${product.category}/${productId}`}
         className={s.productImageLink}
       >
-        <img src={`./${imagePath}`} alt={product.name} className={s.productImage} />
+        <img
+          src={`./${imagePath}`}
+          alt={product.name}
+          className={s.productImage}
+        />
       </Link>
 
       <Link

@@ -8,8 +8,7 @@
   align-items: flex-end;
 
   @include mobile {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
   }
 }
 

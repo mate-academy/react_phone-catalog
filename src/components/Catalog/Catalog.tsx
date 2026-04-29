@@ -48,7 +48,9 @@ export const Catalog: React.FC = () => {
     setSearchParams(newParams);
   };
 
-  const title = category ? (TITLES_MAP[category] ?? 'Catalog page') : 'Catalog page';
+  const title = category
+    ? (TITLES_MAP[category] ?? 'Catalog page')
+    : 'Catalog page';
 
   // Фільтрація та сортування
   const sortedProducts = useMemo(() => {
@@ -81,6 +83,7 @@ export const Catalog: React.FC = () => {
   // Пагінація: вибираємо товари для поточної сторінки
   const visibleProducts = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
+
     return sortedProducts.slice(start, start + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
 
@@ -96,8 +99,11 @@ export const Catalog: React.FC = () => {
     }
 
     for (let i = start; i <= end; i++) {
-      if (i > 0) pages.push(i);
+      if (i > 0) {
+        pages.push(i);
+      }
     }
+
     return pages;
   };
 
@@ -109,12 +115,16 @@ export const Catalog: React.FC = () => {
     return (
       <div className={s.error}>
         <p>Something went wrong</p>
-        <button type="button" onClick={() => window.location.reload()}>Reload</button>
+        <button type="button" onClick={() => window.location.reload()}>
+          Reload
+        </button>
       </div>
     );
   }
 
-  if (!category) return <p>No category selected</p>;
+  if (!category) {
+    return <p>No category selected</p>;
+  }
 
   return (
     <section className={s.catalog}>

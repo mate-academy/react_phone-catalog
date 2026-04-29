@@ -30,9 +30,10 @@ export const fetchProducts = createAsyncThunk(
       if (error instanceof Error) {
         return rejectWithValue(error.message);
       }
+
       return rejectWithValue('An unknown error occurred');
     }
-  }
+  },
 );
 
 const productsSlice = createSlice({
