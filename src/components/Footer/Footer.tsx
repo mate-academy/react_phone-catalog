@@ -16,8 +16,8 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
 
+        {/* ПРИБРАВ ДУБЛЬ ТУТ */}
         <div className={s.footerCenter}>
-          <div className={s.footerCenter}>
           <a
             href="https://github.com/wolfymmm"
             target="_blank"
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
           >
             Github
           </a>
-           <a
+          <a
             href="https://www.linkedin.com/in/yanamarusina"
             target="_blank"
             rel="noopener noreferrer"
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
             <img src="./img/Arrow_Top.svg" alt="Arrow up" />
           </button>
         </div>
-      </div>
+      </div> 
     </footer>
   );
 };
