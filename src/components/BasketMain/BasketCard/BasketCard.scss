@@ -1,22 +1,32 @@
+.basket-card,
+.basket-card__left,
+.basket-card__right {
+  box-sizing: border-box;
+}
+
 .basket-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
+
   width: 100%;
-  border: 1px solid #e2e6e9;
-  padding-inline: 16px;
   padding-block: 16px;
+  padding-inline: 16px;
+  border: 1px solid #e2e6e9;
   border-radius: 10px;
+
   @media (min-width: 640px) {
     flex-direction: row;
+    padding-block: 24px;
     padding-inline: 24px;
-  padding-block: 24px;
+
   }
+
   @media (min-width: 1200px) {
     flex-direction: row;
+    padding-block: 24px;
     padding-inline: 24px;
-  padding-block: 24px;
   }
 }
 
@@ -26,16 +36,9 @@
 
 .basket-card__left {
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
 }
-
-.basket-card,
-.basket-card__left,
-.basket-card__right {
-  box-sizing: border-box;
-}
-
 
 .basket-card__left,
 .basket-card__right {
@@ -44,54 +47,60 @@
 }
 
 .basket-card__button--delete {
-  background-image: url('../../../public//img/icons/icon--close.png');
-  background-position: center;
-  background-repeat: no-repeat;
+  cursor: pointer;
+
   width: 16px;
   height: 16px;
   border: none;
+
   background-color: white;
-  cursor: pointer;
+  background-image: url('../../../public//img/icons/icon--close.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .basket-card__image {
+  box-sizing: border-box;
   width: 80px;
   height: 80px;
-  box-sizing: border-box;
-  padding: 7px 7px;
+  padding: 7px;
 }
 
 .basket-card__name {
-  color: black;
+  width: 100%;
+
+  font-size: 14px;
   font-weight: 600;
-font-size: 14px;
-line-height: 150%;
-width: 100%;
-text-decoration: none;
+  line-height: 150%;
+  color: black;
+  text-decoration: none;
 }
 
 .basket-card__right {
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 16px;
-  width: 100%;
-  @media (min-width: 640px) {
-    width: 50%;
-    justify-content: flex-end;
+  align-items: center;
 
-  }
-  @media (min-width: 1200px) {
-    width: 50%;
+  width: 100%;
+
+  @media (min-width: 640px) {
     justify-content: flex-end;
+    width: 50%;
+  }
+
+  @media (min-width: 1200px) {
+    justify-content: flex-end;
+    width: 50%;
   }
 }
 
 .basket-card__price {
-  color: black;
+   width: 50%;
+
+  font-size: 22px;
   font-weight: 800;
-font-size: 22px;
-line-height: 140%;
-text-align: right;
-width: 50%;
+  line-height: 140%;
+  color: black;
+  text-align: right;
 }

@@ -3,18 +3,20 @@
   margin-bottom: 64px;
   &__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 24px;
   }
   &__title {
-    color: #313237;
+    margin: 0;
     font-size: 22px;
     font-weight: 800;
-    margin: 0;
+    color: #313237;
+
     @media (min-width: 640px) {
       font-size: 26px;
     }
+
     @media (min-width: 1200px) {
       font-size: 32px;
     }
@@ -24,23 +26,31 @@
     gap: 8px;
   }
   &__nav-btn {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #b4bdc3;
-    background: transparent;
     cursor: pointer;
-    font-size: 20px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+
+    font-size: 20px;
     color: #313237;
+
+    background: transparent;
+
     transition: border-color 0.2s;
+
     &:hover {
       border-color: #313237;
     }
+
     &.swiper-button-disabled {
-      opacity: 0.5;
       cursor: default;
+      opacity: 0.5;
+
       &:hover {
         border-color: #b4bdc3;
       }

@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import ProductMain from '../../components/ProductMain/ProductMain';
-import './ProductPage.scss';
 import { useEffect, useState } from 'react';
 import { Accessory } from '../../types/Accessory';
 import { Phone } from '../../types/Phone';

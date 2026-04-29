@@ -3,23 +3,21 @@
   flex-direction: column;
 
   box-sizing: border-box;
-
   height: 100vh;
-
-  background-color: white;
 
   font-weight: 600;
   text-transform: uppercase;
+
+  background-color: white;
 }
 
 .top-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
-  padding-inline: 20px;
   padding-block: 24px;
-
+  padding-inline: 20px;
   border-bottom: 1px solid #e2e6e9;
 
   @media (min-width: 640px) {
@@ -28,34 +26,27 @@
 }
 
 .page__menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  pointer-events: none;
 
+  position: fixed;
   z-index: 1000;
+  inset: 0;
+  transform: translateX(-100%);
 
   opacity: 0;
 
-  transform: translateX(-100%);
   transition: all 0.3s;
-
-  pointer-events: none;
 }
 
 .page__menu.active {
-  opacity: 1;
-
-  transform: translateX(0);
-
   pointer-events: auto;
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .top-bar__logo {
   width: 64px;
   height: 22px;
-
   transition: transform 0.3s ease;
 }
 
@@ -65,31 +56,29 @@
 
 .top-bar__icon {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   width: 32px;
   height: 32px;
 }
 
 .icon--close {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
   width: 32px;
   height: 32px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  background-color: white;
   background-image: url('../../../public/img/icons/icon--close.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
-
-  background-color: white;
-
-  box-sizing: border-box;
-
-  cursor: pointer;
 
   @media (min-width: 640px) {
     display: none;
@@ -102,14 +91,13 @@
 
 .menu__content {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .menu__list {
   display: flex;
   flex-direction: column;
-
   gap: 16px;
 }
 
@@ -118,19 +106,17 @@
 }
 
 .menu__link {
-  display: inline-block;
-
   position: relative;
 
-  color: #e2e6e9;
+  display: inline-block;
 
   font-size: 12px;
   font-weight: 800;
   line-height: 92%;
-  letter-spacing: 0.04em;
-
-  text-transform: uppercase;
+  color: #e2e6e9;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 
   transition: color 0.3s;
 }
@@ -139,16 +125,14 @@
   content: '';
 
   position: absolute;
-
-  left: 0;
   bottom: -4px;
+  left: 0;
 
   width: 100%;
   height: 2px;
 
-  background-color: black;
-
   opacity: 0;
+  background-color: black;
 
   transition: opacity 0.2s ease;
 }

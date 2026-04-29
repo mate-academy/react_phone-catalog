@@ -1,5 +1,6 @@
 .product__card {
   display: flex;
+  grid-column: span 12;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -9,10 +10,7 @@
   height: 100%;
   padding: 32px;
   border: 1px solid #e2e6e9;
-
   border-radius: 10px;
-
-  grid-column: span 12;
 
   transition: border ease 0.4s;
 
@@ -46,7 +44,6 @@
 .card__image {
   width: 100%;
   height: 100%;
-
   object-fit: contain;
 }
 
@@ -54,9 +51,9 @@
   position: relative;
 
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
 
   width: 100%;
 }
@@ -65,8 +62,8 @@
   content: '';
 
   position: absolute;
-  left: 0;
   bottom: -8px;
+  left: 0;
 
   width: 100%;
   height: 1px;
@@ -78,42 +75,35 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
-
   color: #313237;
 }
 
 .card__price--discount {
   font-size: 22px;
   font-weight: 600;
-
   color: #b4bdc3;
-
   text-decoration: line-through;
 }
 
 .card__describtion {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
 
   width: 100%;
-
   margin-top: 16px;
   margin-bottom: 16px;
 }
 
 .card__spec {
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: space-between;
-
-  gap: 8px;
 }
 
 .card__label {
   font-size: 12px;
-
   color: #e2e6e9;
 }
 
@@ -126,9 +116,7 @@
 
 .card__buttons {
   display: flex;
-
   gap: 8px;
-
   width: 100%;
 }
 
@@ -136,27 +124,25 @@
   cursor: pointer;
 
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  flex: 1;
 
   height: 40px;
-
-  color: white;
-
-  background-color: #313237;
-
+  padding: 0;
+  border: none;
   border-radius: 10px;
 
+  color: white;
   text-decoration: none;
+
+  background-color: #313237;
 }
 
 .card__button--add-to-cart.active {
-  color: green;
-
-  background-color: white;
-
   border: 1px solid #e2e6e9;
+  color: green;
+  background-color: white;
 }
 
 .card__button--icon {
@@ -167,10 +153,8 @@
   justify-content: center;
 
   box-sizing: border-box;
-
   width: 40px;
   height: 40px;
-
   padding: 8px;
   border: 1px solid #e2e6e9;
   border-radius: 5px;
