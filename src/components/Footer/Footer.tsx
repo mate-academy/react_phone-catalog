@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
             <img src="./img/Arrow_Top.svg" alt="Arrow up" />
           </button>
         </div>
-      </div> 
+      </div>
     </footer>
   );
 };
