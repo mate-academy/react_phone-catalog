@@ -34,22 +34,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const favorites = useAppSelector(state => state.favorites.items);
   const isLiked = favorites.some(
-    item => item.itemId === productId || item.id === productId,
+    item => item.itemId === productId || item.id === productId || (item as any).itemId === productId
   );
 
   const cartItems = useAppSelector(state => state.cart.items);
   const isInCart = cartItems.some(item => item.id === productId);
 
-  const price =
-    'priceDiscount' in product ? product.priceDiscount : product.price;
+  const price = 'priceDiscount' in product ? product.priceDiscount : (product as CatalogProduct).price;
 
-  const fullPrice =
-    'priceRegular' in product
-      ? product.priceRegular
-      : (product as CatalogProduct).fullPrice;
+  const fullPrice = 'priceRegular' in product ? product.priceRegular : (product as CatalogProduct).fullPrice;
 
-  const image =
-    'images' in product ? product.images[0] : (product as CatalogProduct).image;
+  const imagePath = 'images' in product ? product.images[0] : (product as CatalogProduct).image;
 
   const handleLikeClick = () => {
     if (isLiked) {
@@ -70,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           id: productId,
           name: product.name,
           price: price,
-          image: image,
+          image: imagePath,
         }),
       );
     }
@@ -82,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         to={`/${product.category}/${productId}`}
         className={s.productImageLink}
       >
-        <img src={image} alt={product.name} className={s.productImage} />
+        <img src={`./${imagePath}`} alt={product.name} className={s.productImage} />
       </Link>
 
       <Link
@@ -92,22 +87,28 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className={s.productName}>{product.name}</div>
       </Link>
 
-      <h3 className={s.productPrice}>
+      <div className={s.productPrice}>
         <span className={s.discount}>${price}</span>
-        {showDiscount && <span className={s.fullPrice}>${fullPrice}</span>}
-      </h3>
+        {showDiscount && price !== fullPrice && (
+          <span className={s.fullPrice}>${fullPrice}</span>
+        )}
+      </div>
 
       <hr className={s.divider} />
 
       <div className={s.productDescription}>
-        <div className={s.descriptionLeft}>
+        <div className={s.characteristicRow}>
           <div className={s.characteristicName}>Screen</div>
-          <div className={s.characteristicName}>Capacity</div>
-          <div className={s.characteristicName}>RAM</div>
-        </div>
-        <div className={s.descriptionRight}>
           <div className={s.characteristicValue}>{product.screen}</div>
+        </div>
+
+        <div className={s.characteristicRow}>
+          <div className={s.characteristicName}>Capacity</div>
           <div className={s.characteristicValue}>{product.capacity}</div>
+        </div>
+
+        <div className={s.characteristicRow}>
+          <div className={s.characteristicName}>RAM</div>
           <div className={s.characteristicValue}>{product.ram}</div>
         </div>
       </div>

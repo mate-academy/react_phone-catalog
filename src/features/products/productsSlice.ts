@@ -1,10 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { Phone, Tablet, Accessory } from '../../../public/types';
-
-export type AnyProduct = Phone | Tablet | Accessory;
+import { CatalogProduct } from '../../../public/types';
 
 export interface ProductsState {
-  items: AnyProduct[];
+  items: CatalogProduct[];
   loading: boolean;
   error: string | null;
 }
@@ -19,31 +17,22 @@ export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, { rejectWithValue }) => {
     try {
-      const responses = await Promise.all([
-        fetch('api/phones.json'),
-        fetch('api/tablets.json'),
-        fetch('api/accessories.json'),
-      ]);
+      const response = await fetch('./api/products.json');
 
-      const results = await Promise.all(
-        responses.map(res => {
-          if (!res.ok) {
-            throw new Error(`Failed to fetch: ${res.url}`);
-          }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch products: ${response.status}`);
+      }
 
-          return res.json();
-        }),
-      );
+      const data = await response.json();
 
-      return results.flat() as AnyProduct[];
+      return data as CatalogProduct[];
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);
       }
-
       return rejectWithValue('An unknown error occurred');
     }
-  },
+  }
 );
 
 const productsSlice = createSlice({
@@ -53,28 +42,19 @@ const productsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchProducts.pending, state => {
-        return {
-          ...state,
-          loading: true,
-          error: null,
-        };
+        state.loading = true;
+        state.error = null;
       })
       .addCase(
         fetchProducts.fulfilled,
-        (state, action: PayloadAction<AnyProduct[]>) => {
-          return {
-            ...state,
-            loading: false,
-            items: action.payload,
-          };
+        (state, action: PayloadAction<CatalogProduct[]>) => {
+          state.loading = false;
+          state.items = action.payload;
         },
       )
       .addCase(fetchProducts.rejected, (state, action) => {
-        return {
-          ...state,
-          loading: false,
-          error: (action.payload as string) || 'Something went wrong',
-        };
+        state.loading = false;
+        state.error = (action.payload as string) || 'Something went wrong';
       });
   },
 });

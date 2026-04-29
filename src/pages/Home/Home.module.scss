@@ -215,5 +215,9 @@ h3 {
     border: 1px solid $color-icons;
     background: $color-white;
     &:disabled { opacity: 0.4; }
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
   }
+}
 }

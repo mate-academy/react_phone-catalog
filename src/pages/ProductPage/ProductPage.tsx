@@ -9,6 +9,7 @@ import {
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { fetchProducts } from '../../features/products/productsSlice';
 import {
   addToFavorites,
   removeFromFavorites,
@@ -19,6 +20,17 @@ import { colorMap } from '../../../public/utils/colorMap';
 import s from './ProductPage.module.scss';
 
 type ProductType = Phone | Tablet | Accessory;
+
+const normalize = (str: string = '') => str.toLowerCase().replace(/[\s-]/g, '');
+
+const getModelBase = (id: string) => {
+  const parts = id.split('-');
+
+  if (parts.length > 3) {
+    return parts.slice(0, -2).join('-');
+  }
+  return parts[0];
+};
 
 export const ProductPage = () => {
   const { category, productId } = useParams<{
@@ -33,111 +45,106 @@ export const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
 
-  const products = useAppSelector(
-    state => state.products.items,
-  ) as ProductType[];
+  const allProducts = useAppSelector(state => state.products.items) as CatalogProduct[];
   const favorites = useAppSelector(state => state.favorites.items);
   const cartItems = useAppSelector(state => state.cart.items);
 
-  const suggestedProducts = useMemo(() => {
-    return [...products]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 10)
-      .map(p => p as unknown as CatalogProduct);
-  }, [products]);
+  const isLiked = favorites.some(item => item.id === productId || (item as any).itemId === productId);
+  const isInCart = cartItems.some(item => item.id === productId);
 
-  const visibleCount = 4;
-  const isLiked = favorites.some(item => item.id === product?.id);
-  const isInCart = cartItems.some(item => item.id === product?.id);
+  const suggestedProducts = useMemo(() => {
+    return [...allProducts]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 10);
+  }, [allProducts]);
+
+  useEffect(() => {
+    if (allProducts.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, allProducts.length]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!productId || !category) return;
 
-    if (!productId || products.length === 0) {
-      return;
-    }
+    setLoading(true);
+    fetch(`api/${category}.json`)
+      .then(res => {
+        if (!res.ok) throw new Error('Product details not found');
+        return res.json();
+      })
+      .then((data: ProductType[]) => {
+        const foundProduct = data.find(p => p.id === productId);
+        if (foundProduct) {
+          setProduct(foundProduct);
+        } else {
+          setProduct(null);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setProduct(null);
+        setLoading(false);
+      });
 
-    const foundProduct = products.find(p => p.id === productId);
-
-    setProduct(foundProduct || null);
-    setLoading(false);
     setSelectedImage(0);
     setStartIndex(0);
-  }, [productId, products]);
+  }, [productId, category]);
+
+const findTargetVariant = (targetColor: string, targetCapacity: string) => {
+  if (!product) return null;
+
+  const baseId = normalize((product as any).namespaceId || getModelBase(productId || ''));
+
+  return allProducts.find(p => {
+    const pBase = normalize((p as any).namespaceId || getModelBase(p.itemId));
+
+    const isSameFamily = pBase.includes(baseId) || baseId.includes(pBase);
+
+    const isSameColor = normalize(p.color) === normalize(targetColor);
+
+    const isSameCapacity = normalize(p.capacity) === normalize(targetCapacity);
+
+    return isSameFamily && isSameColor && isSameCapacity;
+  });
+};
 
   const handleLikeClick = () => {
-    if (!product) {
-      return;
-    }
-
+    if (!product) return;
     if (isLiked) {
-      dispatch(removeFromFavorites(product.id));
+      dispatch(removeFromFavorites(productId!));
     } else {
-      dispatch(addToFavorites(product as unknown as CatalogProduct));
+      const catalogItem = allProducts.find(p => p.itemId === productId) || (product as any);
+      dispatch(addToFavorites(catalogItem));
     }
   };
 
   const handleAddToCart = () => {
-    if (!product || isInCart) {
-      return;
-    }
-
-    dispatch(
-      addToCart({
-        id: product.id,
-        name: product.name,
-        price: product.priceDiscount,
-        image: product.images[0],
-      }),
-    );
+    if (!product || isInCart) return;
+    dispatch(addToCart({
+      id: productId!,
+      name: product.name,
+      price: 'priceDiscount' in product ? product.priceDiscount : (product as any).price,
+      image: product.images[0],
+    }));
   };
 
   const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
-  const handleNext = () =>
-    setStartIndex(prev =>
-      Math.min(prev + 1, Math.max(0, suggestedProducts.length - visibleCount)),
-    );
-
-  const visibleProducts = suggestedProducts.slice(
-    startIndex,
-    startIndex + visibleCount,
+  const handleNext = () => setStartIndex(prev =>
+    Math.min(prev + 1, Math.max(0, suggestedProducts.length - 4))
   );
 
-  if (loading) {
-    return (
-      <div className={s.productPageLoading}>
-        <div className={s.loader}>Loading product details...</div>
-      </div>
-    );
-  }
-
-  if (!product) {
-    return (
-      <div className={s.productPageError}>
-        <Breadcrumbs productName="Product was not found" />
-        <h1 className={s.productTitle}>Product was not found</h1>
-        <button onClick={() => navigate(-1)} className={s.backButton}>
-          Back
-        </button>
-      </div>
-    );
-  }
-
-  const colorVariants = products.filter(
-    p =>
-      p.namespaceId === product.namespaceId && p.capacity === product.capacity,
-  );
-
-  const capacityVariants = products.filter(
-    p => p.namespaceId === product.namespaceId && p.color === product.color,
-  );
+  if (loading) return <div className={s.productPageLoading}><div className={s.loader}>Loading...</div></div>;
+  if (!product) return <div className={s.productPageError}><h1>Product not found</h1><button onClick={() => navigate(-1)}>Back</button></div>;
 
   return (
     <div className={s.productPage}>
       <Breadcrumbs productName={product.name} />
 
       <div className={s.backButton} onClick={() => navigate(-1)}>
-        <img src="./img/Arrow_Left.svg" alt="" />
+        <img src="./img/Arrow_Left.svg" alt="Back" />
         <span>Back</span>
       </div>
 
@@ -149,7 +156,7 @@ export const ProductPage = () => {
             <div className={s.galleryThumbnails}>
               {product.images.map((img, index) => (
                 <button
-                  key={index}
+                  key={img}
                   className={`${s.thumbnail} ${selectedImage === index ? s.thumbnailActive : ''}`}
                   onClick={() => setSelectedImage(index)}
                 >
@@ -158,11 +165,7 @@ export const ProductPage = () => {
               ))}
             </div>
             <div className={s.galleryMain}>
-              <img
-                src={`./${product.images[selectedImage]}`}
-                alt={product.name}
-                className={s.productMainImage}
-              />
+              <img src={`./${product.images[selectedImage]}`} alt={product.name} className={s.productMainImage} />
             </div>
           </div>
 
@@ -172,11 +175,7 @@ export const ProductPage = () => {
             {product.description.map(section => (
               <div key={section.title} className={s.aboutSectionContent}>
                 <h3 className={s.sectionTitle}>{section.title}</h3>
-                {section.text.map((paragraph, i) => (
-                  <p className={s.paragraph} key={i}>
-                    {paragraph}
-                  </p>
-                ))}
+                {section.text.map((paragraph, i) => <p className={s.paragraph} key={i}>{paragraph}</p>)}
               </div>
             ))}
           </section>
@@ -190,30 +189,23 @@ export const ProductPage = () => {
                 <span className={s.productId}>ID: {product.id}</span>
               </div>
               <div className={s.colorDots}>
-                {colorVariants.map(variant => {
-                  const inputId = `color-${variant.id}`;
-
+                {product.colorsAvailable.map(color => {
+                  const variant = findTargetVariant(color, product.capacity);
                   return (
-                    <label
-                      key={variant.id}
-                      htmlFor={inputId}
-                      className={s.colorLabel}
-                    >
-                      <span className={s.visuallyHidden}>{variant.color}</span>
+                    <label key={color} className={s.colorLabel}>
                       <input
-                        id={inputId}
                         type="radio"
                         name="color"
                         className={s.visuallyHidden}
-                        checked={variant.color === product.color}
-                        onChange={() => navigate(`/${category}/${variant.id}`)}
+                        checked={normalize(color) === normalize(product.color)}
+                        onChange={() => {
+                          if (variant) navigate(`/${category}/${variant.itemId}`);
+                        }}
                       />
                       <span
-                        className={`${s.colorDot} ${variant.color === product.color ? s.colorDotActive : ''}`}
-                        style={{
-                          backgroundColor: colorMap[variant.color] || '#ccc',
-                        }}
-                        aria-hidden="true"
+                        className={`${s.colorDot} ${normalize(color) === normalize(product.color) ? s.colorDotActive : ''}`}
+                        style={{ backgroundColor: colorMap[color] || color }}
+                        onClick={() => variant && navigate(`/${category}/${variant.itemId}`)}
                       />
                     </label>
                   );
@@ -226,30 +218,47 @@ export const ProductPage = () => {
             <div className={s.productCapacity}>
               <span className={s.label}>Select capacity</span>
               <div className={s.capacityButtons}>
-                {capacityVariants.map(variant => (
-                  <label key={variant.id} className={s.capacityLabel}>
-                    <input
-                      type="radio"
-                      name="capacity"
-                      className={s.visuallyHidden}
-                      checked={variant.capacity === product.capacity}
-                      onChange={() => navigate(`/${category}/${variant.id}`)}
-                    />
-                    <span
-                      className={`${s.capacityItem} ${variant.capacity === product.capacity ? s.capacityItemActive : ''}`}
-                    >
-                      {variant.capacity}
-                    </span>
-                  </label>
-                ))}
+                {product.capacityAvailable.map(capacity => {
+                  let variant = findTargetVariant(product.color, capacity);
+
+                  if (!variant) {
+                    const baseId = (product as any).namespaceId || getModelBase(productId || '');
+                    variant = allProducts.find(p =>
+                      ((p as any).namespaceId === baseId || getModelBase(p.itemId) === baseId) &&
+                      normalize(p.capacity) === normalize(capacity)
+                    ) || null;
+                  }
+
+                  return (
+                    <label key={capacity} className={s.capacityLabel}>
+                      <input
+                        type="radio"
+                        name="capacity"
+                        className={s.visuallyHidden}
+                        checked={normalize(capacity) === normalize(product.capacity)}
+                        onChange={() => {
+                          if (variant) navigate(`/${category}/${variant.itemId}`);
+                        }}
+                      />
+                      <span
+                        className={`${s.capacityItem} ${normalize(capacity) === normalize(product.capacity) ? s.capacityItemActive : ''}`}
+                        onClick={() => variant && navigate(`/${category}/${variant.itemId}`)}
+                      >
+                        {capacity}
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
             </div>
 
             <hr className={s.divider} />
 
             <div className={s.productPricing}>
-              <span className={s.currentPrice}>${product.priceDiscount}</span>
-              {product.priceRegular !== product.priceDiscount && (
+              <span className={s.currentPrice}>
+                ${'priceDiscount' in product ? product.priceDiscount : (product as any).price}
+              </span>
+              {'priceRegular' in product && product.priceRegular !== product.priceDiscount && (
                 <span className={s.originalPrice}>${product.priceRegular}</span>
               )}
             </div>
@@ -265,25 +274,15 @@ export const ProductPage = () => {
                 className={`${s.favoriteButton} ${isLiked ? s.liked : ''}`}
                 onClick={handleLikeClick}
               >
-                <img
-                  src={isLiked ? './img/HeartFilled.svg' : './img/Like.svg'}
-                  alt=""
-                />
+                <img src={isLiked ? './img/HeartFilled.svg' : './img/Like.svg'} alt="" />
               </button>
             </div>
 
             <div className={s.productSpecsShort}>
-              {[
-                { label: 'Screen', value: product.screen },
-                { label: 'Resolution', value: product.resolution },
-                { label: 'Processor', value: product.processor },
-                { label: 'RAM', value: product.ram },
-              ].map(spec => (
-                <div key={spec.label} className={s.specRow}>
-                  <span className={s.specName}>{spec.label}</span>
-                  <span className={s.specValue}>{spec.value}</span>
-                </div>
-              ))}
+              <div className={s.specRow}><span className={s.specName}>Screen</span><span className={s.specValue}>{product.screen}</span></div>
+              <div className={s.specRow}><span className={s.specName}>Resolution</span><span className={s.specValue}>{product.resolution}</span></div>
+              <div className={s.specRow}><span className={s.specName}>Processor</span><span className={s.specValue}>{product.processor}</span></div>
+              <div className={s.specRow}><span className={s.specName}>RAM</span><span className={s.specValue}>{product.ram}</span></div>
             </div>
           </div>
 
@@ -291,44 +290,14 @@ export const ProductPage = () => {
             <h2 className={s.aboutTitle}>Tech specs</h2>
             <hr className={s.divider} />
             <div className={s.productSpecsFull}>
-              <div className={s.specRow}>
-                <span className={s.specName}>Screen</span>
-                <span className={s.specValue}>{product.screen}</span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>Resolution</span>
-                <span className={s.specValue}>{product.resolution}</span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>Processor</span>
-                <span className={s.specValue}>{product.processor}</span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>RAM</span>
-                <span className={s.specValue}>{product.ram}</span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>Built in memory</span>
-                <span className={s.specValue}>{product.capacity}</span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>Camera</span>
-                <span className={s.specValue}>
-                  {'camera' in product ? product.camera : 'N/A'}
-                </span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>Zoom</span>
-                <span className={s.specValue}>
-                  {'zoom' in product ? product.zoom : 'N/A'}
-                </span>
-              </div>
-              <div className={s.specRow}>
-                <span className={s.specName}>Cell</span>
-                <span className={s.specValue}>
-                  {'cell' in product ? product.cell.join(', ') : 'N/A'}
-                </span>
-              </div>
+               <div className={s.specRow}><span className={s.specName}>Screen</span><span className={s.specValue}>{product.screen}</span></div>
+               <div className={s.specRow}><span className={s.specName}>Resolution</span><span className={s.specValue}>{product.resolution}</span></div>
+               <div className={s.specRow}><span className={s.specName}>Processor</span><span className={s.specValue}>{product.processor}</span></div>
+               <div className={s.specRow}><span className={s.specName}>RAM</span><span className={s.specValue}>{product.ram}</span></div>
+               <div className={s.specRow}><span className={s.specName}>Built in memory</span><span className={s.specValue}>{product.capacity}</span></div>
+               <div className={s.specRow}><span className={s.specName}>Camera</span><span className={s.specValue}>{'camera' in product ? product.camera : 'N/A'}</span></div>
+               <div className={s.specRow}><span className={s.specName}>Zoom</span><span className={s.specValue}>{'zoom' in product ? product.zoom : 'N/A'}</span></div>
+               <div className={s.specRow}><span className={s.specName}>Cell</span><span className={s.specValue}>{'cell' in product ? product.cell.join(', ') : 'N/A'}</span></div>
             </div>
           </section>
         </div>
@@ -338,24 +307,16 @@ export const ProductPage = () => {
         <div className={s.containerProducts}>
           <h2>You may also like</h2>
           <div className={s.carouselButtons}>
-            <button
-              className={s.carouselArrow}
-              onClick={handlePrev}
-              disabled={startIndex === 0}
-            >
-              <img src="./img/Arrow_Left.svg" alt="" />
+            <button className={s.carouselArrow} onClick={handlePrev} disabled={startIndex === 0}>
+              <img src="./img/Arrow_Left.svg" alt="Prev" />
             </button>
-            <button
-              className={s.carouselArrow}
-              onClick={handleNext}
-              disabled={startIndex + visibleCount >= suggestedProducts.length}
-            >
-              <img src="./img/Arrow_Right.svg" alt="" />
+            <button className={s.carouselArrow} onClick={handleNext} disabled={startIndex + 4 >= suggestedProducts.length}>
+              <img src="./img/Arrow_Right.svg" alt="Next" />
             </button>
           </div>
         </div>
         <div className={s.productsGrid}>
-          {visibleProducts.map(item => (
+          {suggestedProducts.slice(startIndex, startIndex + 4).map(item => (
             <ProductCard key={item.id} product={item} />
           ))}
         </div>

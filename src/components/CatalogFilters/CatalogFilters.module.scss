@@ -5,9 +5,11 @@
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
+  align-items: flex-end;
 
   @include mobile {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 

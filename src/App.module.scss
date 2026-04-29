@@ -11,6 +11,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: Mont, sans-serif;
+  overflow-y: scroll;
 }
 
 * {
@@ -48,6 +49,6 @@ main {
 }
 
 main {
-  flex: 1; 
+  flex: 1;
 }
 

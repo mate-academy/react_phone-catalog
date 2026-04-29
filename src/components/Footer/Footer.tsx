@@ -17,8 +17,21 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className={s.footerCenter}>
-          <Link to="/github">Github</Link>
-          <Link to="/contacts">Contacts</Link>
+          <div className={s.footerCenter}>
+          <a
+            href="https://github.com/wolfymmm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </a>
+           <a
+            href="https://www.linkedin.com/in/yanamarusina"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contacts
+          </a>
           <Link to="/rights">Rights</Link>
         </div>
 

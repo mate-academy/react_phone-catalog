@@ -206,6 +206,7 @@
       cursor: pointer;
       display: block;
       line-height: 0;
+      z-index: 1;      // Піднімаємо вище в шарах
     }
 
     .colorDot {

@@ -78,29 +78,36 @@
   .divider {
     margin: 0;
     border: none;
-    border-top: 1px solid #e2e6e9;
+    border-top: 1px solid $color-elements;
   }
 
-  .productDescription {
+ .productDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+
+  .characteristicRow {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 8px 24px;
-    margin: 8px 0;
+    gap: 16px;
+    align-items: baseline;
 
     .characteristicName {
       font-size: map-get($small-text, font-size);
       color: $color-secondary;
-      padding-bottom: 8px;
       text-align: left;
+      line-height: 1.2;
     }
 
     .characteristicValue {
       font-size: map-get($small-text, font-size);
       color: $color-primary;
-      padding-bottom: 8px;
       text-align: right;
+      white-space: nowrap;
     }
   }
+}
 
   .productActions {
     display: flex;
