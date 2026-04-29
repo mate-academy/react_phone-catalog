@@ -1,42 +1,43 @@
 .product-info__tech-specs {
- grid-column: 1 / -1;
+  grid-column: 1 / -1;
+
   @media (min-width: 640px) {
     grid-column: 7 / -1;
   }
+
   @media (min-width: 1200px) {
     grid-column: 14 / -1;
   }
 }
 
 .product-info__tech-specs--title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E6E9;
+
+  font-size: 22px;
   font-weight: 800;
-font-size: 22px;
-line-height: 140%;
-padding-bottom: 16px;
-border-color: 1px solid;
-border-bottom: 1px solid #E2E6E9;
+  line-height: 140%;
 }
 
 .product-info__tech-specs--section {
-   display: grid;
+  display: grid;
   grid-template-columns: 1fr auto;
-  row-gap: 8px;
-  column-gap: 16px;
+  gap: 8px 16px;
   align-items: center;
 }
 
 .product-info__tech-spec--label {
-font-weight: 500;
-font-size: 14px;
-line-height: 150%;
-color: #B4BDC3;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: #B4BDC3;
 }
 
 
 
 .product-info__tech-spec--value {
-font-weight: 500;
-font-size: 14px;
-line-height: 150%;
-text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: right;
 }

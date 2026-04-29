@@ -1,6 +1,6 @@
 .category__banner {
-    transition: transform 0.3s ease;
-   width: 100%;
+  width: 100%;
+  transition: transform 0.3s ease;
 };
 
 .category__banner:hover {
@@ -17,12 +17,13 @@
 
 .category__image-wrapper {
  width: 187px;
-    height: 187px;
+ height: 187px;
 
  @media (min-width: 640px) {
    width: 288px;
   height: 288px;
   }
+
   @media (min-width: 1200px) {
     width: 368px;
     height: 368px;

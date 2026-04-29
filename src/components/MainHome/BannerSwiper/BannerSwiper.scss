@@ -2,16 +2,17 @@
   position: relative;
   grid-column: 1 / -1;
   height: 0;
-  padding-bottom: 38.5%;
+  padding-bottom: 100%;
   margin-bottom: 90px;
-  grid-column: 1 / -1;
   @media (min-width: 640px) {
+    padding-bottom: 38.5%;
     margin-bottom: 64px;
   }
   @media (min-width: 1200px) {
     margin-bottom: 80px;
   }
 }
+
 .swiper__content {
   position: absolute;
   top: 0;
@@ -269,13 +270,17 @@
     width: 400px;
   }
 }
+
 .pagination {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 24px;
 }
 .swiper-bullet {
+  position: relative;
+  top: calc(100% + 8px);
   width: 24px;
   height: 100%;
   display: flex;
@@ -290,6 +295,7 @@
     background-color: #e2e6e9;
   }
 }
+
 .swiper-bullet-active {
   cursor: auto;
   pointer-events: none;
@@ -297,3 +303,4 @@
     background-color: black;
   }
 }
+

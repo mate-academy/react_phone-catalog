@@ -1,4 +1,3 @@
-import './Basket.scss';
 import BasketMain from '../../components/BasketMain/BasketMain';
 
 const Basket = () => {

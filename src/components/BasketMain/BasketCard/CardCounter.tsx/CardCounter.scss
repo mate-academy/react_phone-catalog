@@ -1,55 +1,74 @@
 .basket-card__counter {
-  width: 50%;
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
+
+  width: 50%;
+
   text-align: left;
-  gap: 8px;
 }
 
 .basket-card__counter--decrease {
+  cursor: pointer;
+
+  display: flex;
+
+  box-sizing: border-box;
   width: 32px;
   height: 32px;
-  box-sizing: border-box;
-  border: 1px solid black;
   padding: 8px;
-  color: black;  background-color: white;
-  cursor: pointer;
+  border: 1px solid black;
   border-radius: 5px;
+
+  color: black;
+
+  background-color: white;
 }
 
 .basket-card__counter--decrease.active {
   border: 1px solid #e2e6e9;
- color: #e2e6e9;
+  color: #e2e6e9;
 }
 
 .basket-card__counter--increase {
+  cursor: pointer;
+
+  display: flex;
+
+  box-sizing: border-box;
   width: 32px;
   height: 32px;
-  box-sizing: border-box;
-  border: 1px solid #e2e6e9;
   padding: 8px;
- color: #e2e6e9;
+  border: 1px solid #e2e6e9;
+  border-radius: 5px;
+
+  color: #e2e6e9;
+
   background-color: white;
-   cursor: pointer;
-   border-radius: 5px;
 }
 
 .basket-card__counter--increase:hover {
-  color: black;
   border: 1px solid black;
+  color: black;
 }
 
 .basket-card__counter--value {
-  color: black;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 150%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer ;
+  cursor: pointer;
+
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
   border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 150%;
+  color: black;
 }
+

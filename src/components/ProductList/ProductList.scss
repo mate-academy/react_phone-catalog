@@ -1,18 +1,19 @@
 .product__list {
-  width: 100%;
   display: grid;
-  column-gap: 16px;
-  row-gap: 40px;
   grid-template-columns: repeat(12, 1fr);
+  gap: 40px 16px;
+
+  width: 100%;
   margin-bottom: 24px;
+
   @media (min-width: 640px) {
-    margin-bottom: 40px;
     column-gap: 16px;
+    margin-bottom: 40px;
   }
 
   @media (min-width: 1200px) {
-    margin-bottom: 40px;
     column-gap: 16px;
+    margin-bottom: 40px;
   }
 }
 
