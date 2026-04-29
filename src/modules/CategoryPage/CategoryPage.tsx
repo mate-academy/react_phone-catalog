@@ -6,6 +6,8 @@ import { ProductsList } from './components/ProductsList';
 import { Dropdown } from '../shared/components/Dropdown';
 import { NotFoundPage } from '../NotFoundPage';
 import { Loader } from '../shared/components/Loader';
+import { Pagination } from './components/Pagination';
+import { useQueryParams } from '../../hooks/usePagination';
 import styles from './CategoryPage.module.scss';
 
 type Category = 'phones' | 'tablets' | 'accessories';
@@ -23,12 +25,29 @@ const sortOptions: { value: SortBy; label: string }[] = [
   { value: 'cheapest', label: 'Cheapest' },
 ];
 
+const perPageOptions = [
+  { value: '4', label: '4' },
+  { value: '8', label: '8' },
+  { value: '16', label: '16' },
+  { value: 'all', label: 'All' },
+];
+
 export const CategoryPage = () => {
   const { category } = useParams<{ category: Category }>();
-  const [sortBy, setSortBy] = useState<SortBy>('newest');
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const {
+    page,
+    perPage,
+    sortBy,
+    perPageParam,
+    sortParam,
+    setPage,
+    setPerPage,
+    setSortBy,
+  } = useQueryParams();
 
   useEffect(() => {
     setLoading(true);
@@ -59,19 +78,34 @@ export const CategoryPage = () => {
     }
   });
 
+  const total = sorted.length;
+  const totalPages = perPage === 'all' ? 1 : Math.ceil(total / perPage);
+  const paginatedProducts =
+    perPage === 'all'
+      ? sorted
+      : sorted.slice((page - 1) * perPage, page * perPage);
+
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.count}>{products.length} models</p>
 
-      <div className={styles.controls}>
-        <Dropdown
-          label="Sort by"
-          options={sortOptions}
-          value={sortBy}
-          onChange={setSortBy}
-        />
-      </div>
+      {!loading && !error && products.length > 1 && (
+        <div className={styles.controls}>
+          <Dropdown
+            label="Sort by"
+            options={sortOptions}
+            value={sortParam ?? 'newest'}
+            onChange={setSortBy}
+          />
+          <Dropdown
+            label="Items on page"
+            options={perPageOptions}
+            value={perPageParam || 'all'}
+            onChange={setPerPage}
+          />
+        </div>
+      )}
 
       {loading && <Loader />}
 
@@ -80,7 +114,17 @@ export const CategoryPage = () => {
       {!loading && !error && products.length === 0 && <p>No products found.</p>}
 
       {!loading && !error && products.length > 0 && (
-        <ProductsList products={sorted} />
+        <>
+          <ProductsList products={paginatedProducts} />
+          {perPage !== 'all' && totalPages > 1 && (
+            <Pagination
+              total={total}
+              perPage={perPage}
+              currentPage={page}
+              onPageChange={setPage}
+            />
+          )}
+        </>
       )}
     </div>
   );

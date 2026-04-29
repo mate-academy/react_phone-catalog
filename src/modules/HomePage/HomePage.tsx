@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../api';
+import { getBrandNew, getHotPrices } from '../../api';
 import { Product } from '../../types';
 import styles from './HomePage.module.scss';
 import { ProductCard } from '../shared/components/ProductCard';
 import { Loader } from '../shared/components/Loader';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [brandNew, setBrandNew] = useState<Product[]>([]);
+  const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -14,13 +15,15 @@ export const HomePage = () => {
     setLoading(true);
     setError(false);
 
-    getProducts()
-      .then(setProducts)
+    Promise.all([getBrandNew(), getHotPrices()])
+      .then(([brandNewData, hotPricesData]) => {
+        // Temporary: limit to 5 items for each section to speed up layout/testing
+        setBrandNew(brandNewData.slice(0, 5));
+        setHotPrices(hotPricesData.slice(0, 5));
+      })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
-
-  const phones = products.filter(p => p.category === 'phones');
 
   return (
     <main className={styles.homePage}>
@@ -43,9 +46,9 @@ export const HomePage = () => {
 
           {!loading && !error && (
             <ul className={styles.cardGrid}>
-              {phones.map(phone => (
-                <li key={phone.id}>
-                  <ProductCard product={phone} />
+              {brandNew.map(product => (
+                <li key={product.id}>
+                  <ProductCard product={product} />
                 </li>
               ))}
             </ul>
@@ -59,7 +62,20 @@ export const HomePage = () => {
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Hot prices</h2>
-          {/* ProductsSlider — separate component later */}
+
+          {loading && <Loader />}
+
+          {!loading && error && <p>Something went wrong. Please try again.</p>}
+
+          {!loading && !error && (
+            <ul className={styles.cardGrid}>
+              {hotPrices.map(product => (
+                <li key={product.id}>
+                  <ProductCard product={product} />
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
       </div>
     </main>

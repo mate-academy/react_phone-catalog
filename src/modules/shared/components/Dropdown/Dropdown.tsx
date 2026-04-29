@@ -22,13 +22,13 @@ export const Dropdown = <T extends string>({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const selectedOption = options.find(option => option.value === value);
+  const selectedOption = options.find(o => o.value === value);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(e.target as Node)
       ) {
         setIsOpen(false);
       }
@@ -51,31 +51,37 @@ export const Dropdown = <T extends string>({
       <div className={styles.selectWrapper}>
         <button
           type="button"
-          className={`${styles.select}${isOpen ? ` ${styles.selectOpen}` : ''}`}
-          onClick={() => setIsOpen(!isOpen)}
+          className={`${styles.trigger} ${isOpen ? styles.triggerOpen : ''}`}
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(prev => !prev)}
         >
-          {selectedOption?.label}
+          <span className={styles.triggerLabel}>{selectedOption?.label}</span>
+          <img
+            className={`${styles.arrow} ${isOpen ? styles.arrowOpen : ''}`}
+            src="/img/icons/arrow-down.svg"
+            alt="Toggle dropdown"
+          />
         </button>
 
-        <img
-          src="/img/icons/arrow-down.svg"
-          alt=""
-          className={`${styles.arrow}${isOpen ? ` ${styles.arrowOpen}` : ''}`}
-        />
-
         {isOpen && (
-          <div className={styles.optionsMenu}>
+          <ul role="listbox" className={styles.optionsMenu} aria-label={label}>
             {options.map(option => (
-              <button
+              <li
                 key={option.value}
-                type="button"
-                className={`${styles.option}${option.value === value ? ` ${styles.optionSelected}` : ''}`}
-                onClick={() => handleSelect(option.value)}
+                role="option"
+                aria-selected={option.value === value}
               >
-                {option.label}
-              </button>
+                <button
+                  type="button"
+                  className={`${styles.option} ${option.value === value ? styles.optionSelected : ''}`}
+                  onClick={() => handleSelect(option.value)}
+                >
+                  {option.label}
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </div>

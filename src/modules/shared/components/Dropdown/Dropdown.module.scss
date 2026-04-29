@@ -1,5 +1,9 @@
 @use '../../../../styles/mixins' as *;
 
+// Single source of truth for trigger height
+// optionsMenu top derives from this automatically via CSS
+$trigger-height: 40px;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -13,37 +17,44 @@
 
 .selectWrapper {
   position: relative;
-  width: 176px;
+  width: 100%; // fills whatever the parent gives it
 }
 
-.select {
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 40px;
-  padding-left: 12px;
+  height: $trigger-height;
+  padding: 0 12px;
   background: var(--color-white);
   border: 1px solid var(--color-elements);
+  border-radius: 0;
   @include button-text;
   color: var(--color-primary);
   cursor: pointer;
-  text-align: left;
   @include hover-transition(border-color);
 
   &:hover {
-    border-color: var(--color-hover-bg);
+    border-color: var(--color-icons);
   }
 
-  &.selectOpen {
+  &.triggerOpen {
     border-color: var(--color-primary);
+    // merge visually with the menu below using currentColor background trick
+    border-bottom-color: var(--color-white);
   }
 }
 
+.triggerLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .arrow {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 16px;
-  height: 16px;
-  pointer-events: none;
+  flex-shrink: 0;
+  color: var(--color-secondary);
   @include hover-transition(transform);
 }
 
@@ -53,11 +64,12 @@
 
 .optionsMenu {
   position: absolute;
-  top: 44px;
+  top: $trigger-height; // always in sync — single source
   left: 0;
   width: 100%;
+  list-style: none;
   background: var(--color-white);
-  border: 1px solid var(--color-elements);
+  border: 1px solid var(--color-primary);
   border-top: none;
   z-index: 10;
 }
@@ -66,8 +78,9 @@
   width: 100%;
   height: 32px;
   padding: 6px 12px;
-  background: var(--color-white);
+  background: transparent;
   border: none;
+  border-radius: 0;
   @include button-text;
   font-weight: 500;
   color: var(--color-secondary);
