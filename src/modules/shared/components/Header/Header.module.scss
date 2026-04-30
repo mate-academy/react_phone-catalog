@@ -5,18 +5,16 @@
   box-sizing: border-box;
   display: flex;
   flex: 1;
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 99;
   align-items: center;
   height: $header-height;
   width: 100%;
   background-color: $bg-color;
-  border-bottom: 1px solid $border-color;
+  border-bottom: $border-default;
   justify-content: space-between;
 
-  @media (min-width: 1440px) {
-    height: 64px;
-  }
 
   .navLogo {
     display: flex;
@@ -33,16 +31,6 @@
       width: 64px;
     }
 
-
-    @media (min-width: 1440px) {
-      height: 64px;
-      width: 128px;
-      padding: 0 24px;
-
-      img {
-        width: 80px;
-      }
-    }
   }
 
   .nav {
@@ -72,21 +60,13 @@
       color: $text-color;
       text-decoration: none;
 
+      @include hover-underline(0);
+
       &.active {
-        color: $text-hover;
+        color: $text-white__hover;
       }
 
-      @include hover-underline(0px);
-      
-    }
 
-    @media (min-width: 640px) {
-      display: flex;
-      gap: 32px;
-    }
-
-    @media (min-width: 1440px) {
-      gap: 64px;
     }
 
     .navOpen {
@@ -108,33 +88,12 @@
       box-sizing: border-box;
       align-items: center;
       justify-content: center;
-      border-left: 1px solid $border-color;
-      height: $header-height;
-      width: 48px;
+      border-left: $border-default;
 
-
-
-      @media (min-width: 640px) {
-        display: flex;
-
-
-      }
-
-      @media (min-width: 1440px) {
-        height: 64px;
-        width: 64px;
-
-      }
+      @include hover-underline(0);
 
     }
 
-    @media (min-width: 640px) {
-      display: flex;
-      align-items: center;
-      justify-content: end;
-
-      width: 183px;
-    }
   }
 
   .burger {
@@ -142,13 +101,61 @@
     width: 48px;
     height: 100%;
     border: none;
-    border-left: 1px solid $border-color;
+    border-left: $border-default;
     background: none;
     cursor: pointer;
 
-    @media (min-width: 640px) {
-      display: none;
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    height: $header-height;
+
+    .nav {
+      display: flex;
+      gap: 32px;
     }
 
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+
+      width: 183px;
+
+      .icon {
+        display: flex;
+        height: $header-height;
+        width: 48px;
+      }
+    }
+
+    .burger {
+      display: none;
+    }
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    height: 68px;
+
+    .nav {
+      gap: 64px;
+    }
+
+    .navLogo {
+      height: 64px;
+      width: 128px;
+      padding: 0 24px;
+
+      img {
+        width: 80px;
+      }
+    }
+
+    .icons {
+      .icon {
+        height: 64px;
+        width: 64px;
+      }
+    }
   }
 }

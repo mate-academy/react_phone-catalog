@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid $border-color;
+    border-bottom: $border-default;
     height: $header-height;
     width: 100%;
 
@@ -51,7 +51,7 @@
       width: 48px;
       height: $header-height;
       border: none;
-      border-left: 1px solid $border-color;
+      border-left: $border-default;
       background: none;
       cursor: pointer;
 
@@ -84,7 +84,7 @@
       @include hover-underline;
 
       &.active {
-        color: $text-hover;
+        color: $text-white__hover;
 
         &::after {
           width: 100%;
@@ -95,7 +95,7 @@
 
   .footer {
     display: flex;
-    border-top: 1px solid $border-color;
+    border-top: $border-default;
 
     .footerItem {
       flex: 1;
@@ -103,12 +103,12 @@
       justify-content: center;
       align-items: center;
       height: 64px;
-      
-      @include hover-underline(0px);
+
+      @include hover-underline(0);
 
 
       &:first-child {
-        border-right: 1px solid $border-color;
+        border-right: $border-default;
       }
     }
   }

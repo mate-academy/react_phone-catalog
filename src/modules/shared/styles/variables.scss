@@ -1,10 +1,20 @@
+// main
 $header-height: 48px;
 $text-size: 12px;
 $text-weight: 800;
-
-
-
-$border-color: #3B3E4A;
+$border-default: 1px solid #3B3E4A;
 $bg-color: #0f1121;
-$text-hover: #F1F2F9;
+$bg-color-card: #161827;
+$color-accent: #905BFF;
+$text-white__hover: #F1F2F9;
 $text-color: #75767F;
+
+//icons
+$icons-def: #323542;
+$icons-hover: #4A4D58;
+$icons-dis: #0F1121;
+// tablet
+$tablet-breakpoint: 640px;
+$tablet-gap-footer-item: 16px;
+// desktop
+$desktop-breakpoint: 1440px;

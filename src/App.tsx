@@ -24,6 +24,7 @@ export const App = () => {
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
       <Footer />
     </>
   );
