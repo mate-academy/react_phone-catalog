@@ -100,7 +100,7 @@ const TabletsCatalog = () => {
       <div className="catalog__top--icons">
         <Link to="/">
           <img
-            src="../../../public/img/icons/icon--home.png"
+            src="../../../public/img/icons/icon--home.svg"
             alt=""
             className="catalog__icon--home"
           />

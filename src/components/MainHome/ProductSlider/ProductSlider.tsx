@@ -4,8 +4,8 @@ import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Product } from '../../../types/Product';
-import ProductCard from '../../ProductList/ProductCard/ProductCard';
-import useAppContext from '../../../useAppContext';
+import SliderCard from './SliderCard/SliderCard';
+
 type ProductSliderProps = {
   title: string;
   products: Product[];
@@ -13,7 +13,6 @@ type ProductSliderProps = {
 const ProductSlider = ({ title, products }: ProductSliderProps) => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const { favorites, baskets, setFavorites, setBaskets } = useAppContext();
 
   return (
     <div className="product-slider">
@@ -55,13 +54,7 @@ const ProductSlider = ({ title, products }: ProductSliderProps) => {
       >
         {products.map(product => (
           <SwiperSlide key={product.itemId} className="product-slider__slide">
-            <ProductCard
-              product={product}
-              favorites={favorites}
-              setFavorites={setFavorites}
-              baskets={baskets}
-              setBaskets={setBaskets}
-            />
+            <SliderCard product={product} />
           </SwiperSlide>
         ))}
       </Swiper>

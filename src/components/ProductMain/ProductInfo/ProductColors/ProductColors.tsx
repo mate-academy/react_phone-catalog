@@ -1,6 +1,6 @@
 import { ProductDetails } from '../../../../pages/productPage/ProductPage';
 import './ProductColors.scss';
-import { ProductColor } from '../../ProductMain';
+import { ProductColor } from '../../../../types/ProductColor';
 
 type ProductColorsProps = {
   currentProduct: ProductDetails;

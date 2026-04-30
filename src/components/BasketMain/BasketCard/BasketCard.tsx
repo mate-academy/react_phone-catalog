@@ -36,7 +36,10 @@ const BasketCard = ({ basketProduct }: BasketCardProps) => {
 
         <div className="basket-card__right">
           <CardCounter basketProduct={basketProduct} />
-          <div className="basket-card__price">${basketProduct.price}</div>
+          <div className="basket-card__price">
+            {' '}
+            ${basketProduct.price * basketProduct.quantity}
+          </div>
         </div>
       </div>
     </>

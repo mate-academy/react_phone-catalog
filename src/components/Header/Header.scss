@@ -178,7 +178,7 @@
   border-right: 1px solid #e2e6e9;
   border-left: 1px solid #e2e6e9;
 
-  background-image: url("../../../public/img/icons/icon--heart.png");
+  background-image: url("../../../public/img/icons/icon--heart.svg");
 
   @media (min-width: 640px) {
     display: block;
@@ -192,7 +192,7 @@
 .icon--basket {
   position: relative;
   display: none;
-  background-image: url("../../../public/img/icons/icon--basket.png");
+  background-image: url("../../../public/img/icons/icon--basket.svg");
 
   @media (min-width: 640px) {
     display: block;
@@ -234,7 +234,7 @@
   border-left: 1px solid #e2e6e9;
 
   background-color: #fff;
-  background-image: url("../../../public/img/icons/icon--menu.png");
+  background-image: url("../../../public/img/icons/icon--menu.svg");
 
   @media (min-width: 640px) {
     display: none;

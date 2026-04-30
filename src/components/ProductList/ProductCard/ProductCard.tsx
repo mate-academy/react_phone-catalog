@@ -103,8 +103,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <img
             src={
               isFavorite
-                ? './img/icons/icon--heart--filled.png'
-                : './img/icons/icon--heart.png'
+                ? './img/icons/icon--heart--filled.svg'
+                : './img/icons/icon--heart.svg'
             }
             alt="Favorite"
             className="card__button--icon"

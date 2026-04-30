@@ -27,8 +27,8 @@ const ProductButtons = ({
           <img
             src={
               isFavorite
-                ? './img/icons/icon--heart--filled.png'
-                : './img/icons/icon--heart.png'
+                ? '/public/img/icons/icon--heart--filled.svg'
+                : '/public/img/icons/icon--heart.svg'
             }
             alt="Favorite"
             className="product-info__button--icon"

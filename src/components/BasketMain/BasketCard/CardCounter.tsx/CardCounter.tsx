@@ -16,18 +16,14 @@ const CardCounter = ({ basketProduct }: CardCounterProps) => {
         <button
           className={`basket-card__counter--decrease ${!isQuantityLow ? 'active' : ''}`}
           onClick={() => handleDecrease(basketProduct.itemId)}
-        >
-          -
-        </button>
+        ></button>
         <span className="basket-card__counter--value">
           {basketProduct.quantity}
         </span>
         <button
           className={`basket-card__counter--increase ${!isQuantityLow ? 'active' : ''}`}
           onClick={() => handleIncrease(basketProduct.itemId)}
-        >
-          +
-        </button>
+        ></button>
       </div>
     </>
   );

@@ -30,7 +30,7 @@
   width: 16px;
   height: 16px;
 
-  background-image: url('../../../public/img/icons/icon--home.png');
+  background-image: url('../../../public/img/icons/icon--home.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -40,7 +40,7 @@
   width: 16px;
   height: 16px;
 
-  background-image: url('/public/img/icons/icon--slider--right--gray.png');
+  background-image: url('/public/img/icons/icon--slider--right--gray.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -51,4 +51,18 @@
   font-size: 12px;
   font-weight: 600;
   color: #b4bdc3;
+}
+
+.catalog-favorites__title {
+font-weight: 800;
+font-size: 32px;
+line-height: 128%;
+letter-spacing: -0.01em;
+color: black;
+@media (min-width: 640px) {
+  font-weight: 800;
+font-size: 48px;
+line-height: 117%;
+letter-spacing: -0.01em;
+}
 }

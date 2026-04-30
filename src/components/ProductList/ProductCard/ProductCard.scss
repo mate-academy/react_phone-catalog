@@ -78,12 +78,19 @@
   color: #313237;
 }
 
+.card__fullprice {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: #313237;
+}
 .card__price--discount {
   font-size: 22px;
   font-weight: 600;
   color: #b4bdc3;
   text-decoration: line-through;
 }
+
 
 .card__describtion {
   display: flex;
@@ -104,7 +111,7 @@
 
 .card__label {
   font-size: 12px;
-  color: #e2e6e9;
+  color: #89939A;
 }
 
 .card__value {

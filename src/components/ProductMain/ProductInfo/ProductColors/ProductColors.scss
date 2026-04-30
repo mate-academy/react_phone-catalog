@@ -5,24 +5,23 @@
 }
 
 .prduct-info__color--title {
-  color: #b4bdc3;
+  color: #B4BDC3;
 }
 
 .product-info__color {
-  cursor: pointer;
-
   width: 32px;
   height: 32px;
-  margin-bottom: 24px;
-  border: 2px solid transparent;
   border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  margin-bottom: 24px;
 
-  transition: border-color 0.2s, transform 0.2s;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
 .product-info__color.active {
-  transform: scale(1.1);
   border-color: black;
+  transform: scale(1.1);
 }
 
 .product-info__color--silver {
@@ -34,15 +33,11 @@
 }
 
 .product-info__color--gold {
-  background-color: #f5e1c0;
+ background-color: #f5e1c0;
 }
 
 .product-info__color--spaceblack {
   background-color: #2c2c2e;
-}
-
-.product-info__color--spaceblack.active {
-  border: 1px solid #d2d2d7;
 }
 
 .product-info__color--purple {
@@ -62,8 +57,8 @@
 }
 
 .product-info__color--white {
-  border: 1px solid #d2d2d7;
   background-color: #f9f9f9;
+  border: 1px solid #d2d2d7;
 }
 
 .product-info__color--midnight {
@@ -102,8 +97,8 @@
   background-color: black;
 }
 
-.product-info__color--spacegray {
-  background-color: #4a4a4a;
+.product-info__color--spacegray{
+  background-color: #4A4A4A;
 }
 
 .product-info__color--blue {

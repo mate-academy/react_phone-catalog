@@ -32,14 +32,14 @@
   width: 16px;
   height: 16px;
 
-  background-image: url('/public/img/icons/icon--slider--down--gray.png');
+  background-image: url('/public/img/icons/icon--slider--down--gray.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
 .catalog__select.active::after {
-  background-image: url('/public/img/icons/icon--slider--top--gray.png');
+  background-image: url('/public/img/icons/icon--slider--top--gray.svg');
 }
 
 .catalog__select--selected {
