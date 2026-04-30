@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
@@ -10,10 +11,12 @@ type VariantOptions = {
   colorOptions: { color: string; available: boolean }[];
   capacityOptions: { capacity: string; available: boolean }[];
 };
+export const normalize = (str: string) =>
+  str.toLowerCase().replace(/\s+/g, '-');
 
 export const getVariantOptions = (
+  details: ProductDetails,
   products: Product[],
-  details: ProductDetails = {} as ProductDetails,
 ): VariantOptions => {
   const colors = Array.isArray(details.colorsAvailable)
     ? details.colorsAvailable
@@ -27,11 +30,21 @@ export const getVariantOptions = (
 
   for (const color of colors) {
     for (const capacity of capacities) {
-      const itemId = `${details.namespaceId}-${capacity.toLowerCase()}-${color}`;
+      const itemId = `${details.namespaceId}-${normalize(capacity)}-${normalize(color)}`;
       const existingProduct = productMap.get(itemId);
 
       variantEntries.push({
-        product: existingProduct ?? { itemId, color, capacity },
+        product: existingProduct
+          ? {
+              ...existingProduct,
+              color: normalize(existingProduct.color),
+              capacity: normalize(existingProduct.capacity),
+            }
+          : {
+              itemId,
+              color: normalize(color),
+              capacity: normalize(capacity),
+            },
         available: !!existingProduct,
       });
     }
@@ -40,8 +53,8 @@ export const getVariantOptions = (
   const colorOptions = colors.map(color => {
     const available = variantEntries.some(
       v =>
-        v.product.color === color &&
-        v.product.capacity === details.capacity &&
+        v.product.color === normalize(color) &&
+        v.product.capacity === normalize(details.capacity) &&
         v.available,
     );
 
@@ -51,8 +64,8 @@ export const getVariantOptions = (
   const capacityOptions = capacities.map(capacity => {
     const available = variantEntries.some(
       v =>
-        v.product.capacity === capacity &&
-        v.product.color === details.color &&
+        v.product.capacity === normalize(capacity) &&
+        v.product.color === normalize(details.color) &&
         v.available,
     );
 

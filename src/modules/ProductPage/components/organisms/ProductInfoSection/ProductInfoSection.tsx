@@ -22,6 +22,7 @@ import { useNavigate } from 'react-router-dom';
 import { generateDeviceModel } from '../../../../../helpers/generateDeviceModel';
 import { useTranslation } from 'react-i18next';
 import { showToast } from '../../../../NotificationToast';
+import { normalize } from '../../../../../helpers/getAvailabilityProducts';
 
 type Props = {
   productDetails: ProductDetails;
@@ -52,13 +53,12 @@ export const ProductInfoSection: React.FC<Props> = ({
   );
 
   const { colorOptions, capacityOptions } = useMemo(
-    () => getVariantOptions(products, productDetails),
+    () => getVariantOptions(productDetails, products),
     [products, productDetails],
   );
 
   const switchVariant = (newColor: string, newCapacity: string) => {
-    const newItemId =
-      `${productDetails.namespaceId}-${newCapacity}-${newColor}`.toLowerCase();
+    const newItemId = `${productDetails.namespaceId}-${normalize(newCapacity)}-${normalize(newColor)}`;
 
     if (products.find(product => product.itemId === newItemId)) {
       navigate(`/product/${newItemId}`);
@@ -88,6 +88,9 @@ export const ProductInfoSection: React.FC<Props> = ({
 
   const productModel = generateDeviceModel(selectedProduct.itemId);
 
+  const normalizeColor = (color: string) =>
+    color.toLowerCase().replace(/\s+/g, '-');
+
   return (
     <div
       className={classNames(styles.product__interactive, styles.interactive)}
@@ -114,9 +117,9 @@ export const ProductInfoSection: React.FC<Props> = ({
           {colorOptions.map(({ color, available }) => (
             <ColorButton
               key={color}
-              isActive={color === productDetails?.color}
+              isActive={normalize(color) === normalize(productDetails?.color)}
               isNotAvailable={!available}
-              color={color}
+              color={normalizeColor(color)}
               size="small"
               onClick={() => switchVariant(color, productDetails.capacity)}
             />

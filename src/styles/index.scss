@@ -42,3 +42,19 @@ body {
 body {
   background-color: var(--main-background-color);
 }
+
+input {
+  background-color: var(--surface1-color);
+  color: var(--main-text-color-primary);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--surface1-color) inset;
+  -webkit-text-fill-color: var(--main-text-color-primary) !important;
+  caret-color: var(--main-text-color-primary);
+  background-color: var(--surface1-color) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
