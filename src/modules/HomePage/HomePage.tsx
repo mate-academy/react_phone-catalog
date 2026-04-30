@@ -8,6 +8,20 @@ import { Loader } from '../shared/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
 import { PicturesSlider } from './components/PicturesSlider';
 
+const BANNER_SLIDES = [
+  { id: 1, image: '/img/banner-phones.png', alt: 'New phones — latest models' },
+  {
+    id: 2,
+    image: '/img/banner-tablets.png',
+    alt: 'New tablets — power and portability',
+  },
+  {
+    id: 3,
+    image: '/img/banner-accessories.png',
+    alt: 'Accessories — complete your setup',
+  },
+];
+
 export const HomePage = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
@@ -39,14 +53,14 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <main className={styles.homePage}>
+    <div className={styles.homePage}>
       <h1 className={styles.productCatalog}>Product Catalog</h1>
 
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.sections}>
         <section className={styles.section}>
-          <PicturesSlider />
+          <PicturesSlider slides={BANNER_SLIDES} />
         </section>
 
         <section className={styles.section}>
@@ -88,6 +102,6 @@ export const HomePage = () => {
           )}
         </section>
       </div>
-    </main>
+    </div>
   );
 };

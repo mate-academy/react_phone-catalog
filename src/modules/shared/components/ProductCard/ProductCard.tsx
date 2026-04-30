@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types';
-import { useProducts } from '../../../../context/ProductContext';
+import { useProducts } from '../../../../context';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -25,11 +25,10 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <article className={styles.card}>
-      <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
-        <img src={image} alt={name} className={styles.image} />
-      </Link>
-
-      <Link to={`/${category}/${itemId}`} className={styles.nameLink}>
+      <Link to={`/${category}/${itemId}`} className={styles.linkContainer}>
+        <div className={styles.imageWrapper}>
+          <img src={image} alt={name} className={styles.image} />
+        </div>
         <p className={styles.name}>{name}</p>
       </Link>
 

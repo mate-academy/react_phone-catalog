@@ -1,18 +1,24 @@
 @use '../../../../styles/mixins' as *;
 
+// Outer wrapper — column: image row on top, dots below
 .slider {
-  position: relative; // ← anchors the absolutely-positioned dots
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // space between image and dots
+}
+
+.main {
   display: flex;
   align-items: center;
-
-  // Break out of page-container padding on mobile — full bleed
   margin-inline: calc(-1 * var(--page-padding-mobile));
-  width: calc(100% + 2 * var(--page-padding-mobile));
 
   @include on-tablet {
-    // Restore normal width on tablet+ — arrows sit inside the container
     margin-inline: 0;
-    width: 100%;
+    gap: 19px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
   }
 }
 
@@ -25,10 +31,9 @@
     align-items: center;
     justify-content: center;
     width: 32px;
-    height: 32px;
-    border: 1px solid var(--color-elements);
-    border-radius: 0;
+    height: 189px;
     background: var(--color-white);
+    border: 1px solid var(--color-elements);
     cursor: pointer;
     @include hover-transition(border-color);
 
@@ -39,6 +44,10 @@
     img {
       width: 16px;
       height: 16px;
+    }
+
+    @include on-desktop {
+      height: 400px;
     }
   }
 }
@@ -51,20 +60,21 @@
   transform: rotate(-90deg);
 }
 
+// Track clips the sliding strip
 .track {
   flex: 1;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+  height: 320px;
 
   @include on-tablet {
-    aspect-ratio: auto;
-    height: 221px;
+    height: 189px;
   }
 
   @include on-desktop {
-    height: 432px;
+    height: 400px;
   }
 }
+
 
 .slides {
   display: flex;
@@ -72,7 +82,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  transition: transform var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .slide {
@@ -89,16 +99,13 @@
 }
 
 .dots {
-  position: absolute;
-  bottom: 16px; // sits inside the image — no overlap issue now
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
   list-style: none;
   padding: 0;
   margin: 0;
-  z-index: 1; // above the image
 }
 
 .dot {
@@ -106,7 +113,6 @@
   height: 4px;
   background: var(--color-elements);
   border: none;
-  border-radius: 0;
   cursor: pointer;
   padding: 0;
   @include hover-transition(background-color);

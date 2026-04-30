@@ -87,7 +87,6 @@
   text-decoration: none;
   white-space: nowrap;
   position: relative;
-  transition: color var(--transition);
   @include hover-transition(color);
 
   &::after {
@@ -142,7 +141,7 @@
     border-bottom: 2px solid transparent;
     flex-shrink: 0;
     position: relative;
-    transition: border-color 0.3s ease;
+    @include hover-transition(border-color);
 
     &:hover {
       border-color: var(--color-secondary);
@@ -203,7 +202,7 @@
   border: 1px solid var(--color-elements);
   cursor: pointer;
   flex-shrink: 0;
-  transition: border-color 0.3s ease;
+  @include hover-transition(border-color);
 
   &:hover {
     border-color: var(--color-secondary);
@@ -265,7 +264,6 @@
   text-decoration: none;
   position: relative;
   padding-bottom: 8px;
-  transition: color var(--transition);
   @include hover-transition(color);
 
   &::after {
@@ -317,7 +315,7 @@
   border: 1px solid var(--color-elements);
   border-bottom: 2px solid transparent;
   position: relative;
-  transition: border-color 0.3s ease;
+  @include hover-transition(border-color);
 
   &:hover {
     border-color: var(--color-secondary);

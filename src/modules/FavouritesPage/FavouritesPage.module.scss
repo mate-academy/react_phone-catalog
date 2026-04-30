@@ -47,6 +47,10 @@
     flex-wrap: wrap;
     gap: 16px;
     row-gap: 40px;
+
+    & > * {
+      width: 272px
+    }
   }
 }
 

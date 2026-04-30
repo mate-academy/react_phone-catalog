@@ -1,7 +1,9 @@
 // Product — used in products.json (catalog lists, cards)
+import { Category } from './category';
+
 export interface Product {
   id: number;
-  category: 'phones' | 'tablets' | 'accessories';
+  category: Category;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -23,7 +25,7 @@ export interface ProductDescription {
 // ProductDetails — used in phones.json / tablets.json / accessories.json (detail page)
 export interface ProductDetails {
   id: string;
-  category: 'phones' | 'tablets' | 'accessories';
+  category: Category;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

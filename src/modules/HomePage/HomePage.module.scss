@@ -17,22 +17,11 @@
 }
 
 .title {
-  font-size: var(--font-size-h1-mobile);
-  line-height: var(--line-height-h1-mobile);
-  letter-spacing: var(--letter-spacing-h1);
-  font-weight: 800;
-  color: var(--color-primary);
+  @include h1;
   padding-top: 24px;
 
-  @include on-tablet {
-    padding-top: 32px;
-    font-size: var(--font-size-h1);
-    line-height: var(--line-height-h1);
-  }
-
-  @include on-desktop {
-    padding-top: 56px;
-  }
+  @include on-tablet { padding-top: 32px; }
+  @include on-desktop { padding-top: 56px; }
 }
 
 .sections {
@@ -62,22 +51,10 @@
 }
 
 .sectionTitle {
-  font-size: var(--font-size-h2-mobile);
-  line-height: var(--line-height-h2-mobile);
-  letter-spacing: var(--letter-spacing-h2);
-  font-weight: 800;
-  color: var(--color-primary);
-
-  @include on-tablet {
-    font-size: var(--font-size-h2);
-    line-height: var(--line-height-h2);
-  }
+  @include h2;
 }
 
 .cardGrid {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -86,5 +63,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
+
+    & > * {
+      width: 272px; // ← card width lives HERE, not in the card
+    }
   }
 }

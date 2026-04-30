@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
-import { useProducts } from '../../../../context/ProductContext';
+import { useProducts } from '../../../../context';
 import styles from './Header.module.scss';
 
 export const Header = () => {

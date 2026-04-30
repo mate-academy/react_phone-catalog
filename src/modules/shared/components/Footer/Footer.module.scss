@@ -62,7 +62,7 @@
   }
 
   @include on-desktop {
-    gap: 106.83px;
+    gap: 107px;
   }
 }
 
@@ -100,9 +100,6 @@
   text-transform: uppercase;
   color: var(--color-secondary);
   @include hover-transition(color);
-
-  @include on-tablet {
-  }
 
   &:hover {
     color: var(--color-primary);

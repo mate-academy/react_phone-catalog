@@ -1,50 +1,50 @@
 @use '../../../../styles/mixins' as *;
 
 .card {
-  width: 288px;
-  min-height: 506px;
+  width: 100%;
   padding: 32px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   border: 1px solid var(--color-elements);
   background-color: var(--color-white);
-
-  @include on-tablet {
-    width: 272px;
-  }
 }
 
-.imageLink {
+.linkContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 208px;
-  height: 196px;
-  align-self: center;
-  margin-bottom: 8px;
-  @include hover-scale;
-}
-
-.image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-.nameLink {
   text-decoration: none;
   color: inherit;
+  gap: 8px;
+  @include hover-scale();
 
   &:hover .name {
     color: var(--color-secondary);
   }
 }
 
+
+.imageWrapper {
+  height: 196px;
+  flex-shrink: 1;     // ← shrinks if long text needs space
+  min-height: 80px;   // ← never goes smaller than this
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
 .name {
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  font-weight: 600;
+  @include button-text();
   color: var(--color-primary);
 }
 

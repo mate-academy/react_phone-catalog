@@ -1,4 +1,4 @@
-import { useProducts } from '../../context/ProductContext';
+import { useProducts } from '../../context';
 import { ProductCard } from '../shared/components/ProductCard';
 import styles from './FavouritesPage.module.scss';
 
