@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import BurgerMenu from './pages/BurgerMenu/BurgerMenu';
 import { AppContext } from './AppContext';
+import { useState } from 'react';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<FavoriteProduct[]>(
@@ -21,6 +22,7 @@ export const App = () => {
     [],
   );
   const [baskets, setBaskets] = useLocalStorage<BasketProduct[]>('baskets', []);
+  const [showMessage, setShowMessage] = useState(false);
   const removeBaskets = (itemId: string) => {
     const updatedBaskets = baskets.filter(basket => basket.itemId !== itemId);
 
@@ -47,6 +49,13 @@ export const App = () => {
     );
   };
 
+  const handleCheckout = () => {
+    setBaskets([]);
+    setShowMessage(true);
+
+    setTimeout(() => setShowMessage(false), 3000);
+  };
+
   return (
     <HashRouter>
       <AppContext.Provider
@@ -58,6 +67,8 @@ export const App = () => {
           removeBaskets,
           handleIncrease,
           handleDecrease,
+          handleCheckout,
+          showMessage,
         }}
       >
         <Header />

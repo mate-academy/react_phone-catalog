@@ -178,7 +178,7 @@
   border-right: 1px solid #e2e6e9;
   border-left: 1px solid #e2e6e9;
 
-  background-image: url("../../../public/img/icons/icon--heart.svg");
+  background-image: url("/public/img/icons/icon--heart.svg");
 
   @media (min-width: 640px) {
     display: block;
@@ -192,7 +192,7 @@
 .icon--basket {
   position: relative;
   display: none;
-  background-image: url("../../../public/img/icons/icon--basket.svg");
+  background-image: url("/public/img/icons/icon--basket.svg");
 
   @media (min-width: 640px) {
     display: block;

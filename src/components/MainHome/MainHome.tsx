@@ -7,6 +7,7 @@ import { getProducts } from '../../api';
 import CategoryPhones from './CategoryPhones/CategoryPhones';
 import CategoryTablets from './CategoryTablets/CategoryTablets';
 import CategoryAccessories from './CategoryAccessories/CategoryAccessories';
+import ProductSliderDown from './ProductSliderDown/ProductSliderDown';
 
 const Main = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -32,7 +33,7 @@ const Main = () => {
           <CategoryAccessories />
         </div>
       </div>
-      <ProductSlider title="Hot prices" products={hotPrices} />
+      <ProductSliderDown title="Hot prices" products={hotPrices} />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo/ProductInfo';
 import ProductAbout from './ProductAbout/ProductAbout';
 import { useEffect, useState } from 'react';
 import ProductTechSpecs from './ProductTechSpecs/ProductTechSpecs';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
 import { BasketProduct } from '../../types/BasketProduct';
 import useAppContext from '../../useAppContext';
@@ -101,7 +101,10 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
       <div className="product-main__container">
         <ProductTopIcons currentProduct={currentProduct} />
         <div className="product-main__back-buttons">
-          <Link to="/" className="product-main__icon--back"></Link>
+          <button
+            onClick={() => navigate('/')}
+            className="product-main__icon--back"
+          ></button>
           <span className="product-main__text--back">Back</span>
         </div>
         <h1 className="product-main__title">{currentProduct.name}</h1>
