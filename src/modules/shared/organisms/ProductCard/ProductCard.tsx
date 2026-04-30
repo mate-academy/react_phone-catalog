@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toggleFavourite } from '../../../../features/favouritesSlice';
-import { add } from '../../../../features/cartSlice';
+import { add, remove } from '../../../../features/cartSlice';
 import { Typography } from '../../atoms/Typography';
 import { ProductPrice } from '../../molecules/ProductPrice';
 import { Divider } from '../../atoms/Divider';
@@ -46,12 +46,22 @@ const ProductCardComponent: React.FC<Props> = ({ product }) => {
   const addToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
-    dispatch(add(product));
-    showToast({
-      description: t(`notification.${isInCart ? 'remove' : 'add'}.cart`, {
-        name: product.name,
-      }),
-    });
+
+    if (isInCart) {
+      dispatch(remove(product));
+      showToast({
+        description: t('notification.remove.cart', {
+          name: product.name,
+        }),
+      });
+    } else {
+      dispatch(add(product));
+      showToast({
+        description: t('notification.add.cart', {
+          name: product.name,
+        }),
+      });
+    }
   };
 
   return (

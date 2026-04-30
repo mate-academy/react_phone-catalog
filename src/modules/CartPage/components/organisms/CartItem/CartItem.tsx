@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CartItem.module.scss';
 import { CloseIcon } from '../../../../../assets/icons/close-icon';
 import { Icon } from '../../../../shared/atoms/Icon';
@@ -51,17 +52,23 @@ export const CartItem: React.FC<Props> = ({ product }) => {
               <CloseIcon />
             </Icon>
           </IconButton>
-          <div className={styles.cart_item__image}>
-            <img
-              className={styles.cart_item__image_el}
-              src={product.image}
-              alt={product.name}
-            ></img>
-          </div>
 
-          <Typography variant="body" className={styles.cart_item__name}>
-            {product.name}
-          </Typography>
+          <Link
+            to={`/product/${product.itemId}`}
+            className={styles.cart_item__link}
+          >
+            <div className={styles.cart_item__image}>
+              <img
+                className={styles.cart_item__image_el}
+                src={product.image}
+                alt={product.name}
+              />
+            </div>
+
+            <Typography variant="body" className={styles.cart_item__name}>
+              {product.name}
+            </Typography>
+          </Link>
         </div>
 
         <div className={styles.cart_item__footer}>
@@ -76,6 +83,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
                 <MinusIcon />
               </Icon>
             </IconButton>
+
             <IconButton
               size="small"
               className={styles.cart_item__count}
@@ -83,6 +91,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             >
               <Typography variant="body">{quantity}</Typography>
             </IconButton>
+
             <IconButton
               onClick={increaseQuantity}
               className={styles.cart_item__button}

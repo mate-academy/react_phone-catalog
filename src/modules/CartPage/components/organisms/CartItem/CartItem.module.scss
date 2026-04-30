@@ -37,6 +37,13 @@
     }
   }
 
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+  }
+
   &__image {
     width: 80px;
     aspect-ratio: 1;

@@ -8,6 +8,7 @@ export function getNewestExpensiveProducts(
 
   return products
     .filter(p => p.year === maxYear)
+    .filter(p => p.price < p.fullPrice)
     .sort((a, b) => b.price - a.price)
     .slice(0, n);
 }

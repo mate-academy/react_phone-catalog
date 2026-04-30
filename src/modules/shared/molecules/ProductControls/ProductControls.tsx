@@ -32,7 +32,6 @@ export const ProductControls: React.FC<Props> = ({
         className={classNames(styles.button, styles['button--primary'], {
           [styles['button--primary--active']]: isInCart,
         })}
-        disabled={isInCart}
       >
         <Typography
           variant="buttons"
