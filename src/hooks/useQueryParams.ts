@@ -1,11 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
-
-type SortBy = 'newest' | 'alphabetically' | 'cheapest';
+import { SortBy } from '../types';
 
 export function useQueryParams() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // --- Read ---
   const pageParam = searchParams.get('page');
   const perPageParam = searchParams.get('perPage');
   const sortParam = searchParams.get('sort') as SortBy | null;

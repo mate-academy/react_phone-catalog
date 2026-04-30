@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getBrandNew, getHotPrices, getProducts } from '../../api';
+import { getProducts } from '../../api';
 import { Product } from '../../types';
-import { useProductCounts } from '../../hooks/useProductCounts';
+import { useProductCounts } from '../../hooks';
 import styles from './HomePage.module.scss';
 import { ProductCard } from '../shared/components/ProductCard';
 import { Loader } from '../shared/components/Loader';
@@ -21,11 +21,18 @@ export const HomePage = () => {
     setLoading(true);
     setError(false);
 
-    Promise.all([getProducts(), getBrandNew(), getHotPrices()])
-      .then(([allData, brandNewData, hotPricesData]) => {
-        setAllProducts(allData);
-        setBrandNew(brandNewData.slice(0, 5));
-        setHotPrices(hotPricesData.slice(0, 5));
+    getProducts()
+      .then(all => {
+        setAllProducts(all);
+
+        setBrandNew([...all].sort((a, b) => b.year - a.year).slice(0, 5));
+
+        setHotPrices(
+          [...all]
+            .filter(p => p.fullPrice > p.price)
+            .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+            .slice(0, 5),
+        );
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));

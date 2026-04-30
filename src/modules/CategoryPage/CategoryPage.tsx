@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductsByCategory } from '../../api';
-import { Product } from '../../types';
+import { Product, Category, SortBy } from '../../types';
 import { ProductsList } from './components/ProductsList';
 import { Dropdown } from '../shared/components/Dropdown';
-import { NotFoundPage } from '../NotFoundPage';
 import { Loader } from '../shared/components/Loader';
 import { Pagination } from './components/Pagination';
-import { useQueryParams } from '../../hooks/usePagination';
+import { useQueryParams } from '../../hooks';
 import styles from './CategoryPage.module.scss';
-
-type Category = 'phones' | 'tablets' | 'accessories';
-type SortBy = 'newest' | 'alphabetically' | 'cheapest';
 
 const categoryTitles: Record<Category, string> = {
   phones: 'Mobile Phones',
@@ -49,6 +45,8 @@ export const CategoryPage = () => {
     setSortBy,
   } = useQueryParams();
 
+  // CategoryPageGuard in App.tsx guarantees category is valid here
+  // no guard needed, no fetch wasted on invalid routes
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -59,10 +57,6 @@ export const CategoryPage = () => {
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, [category]);
-
-  if (!Object.keys(categoryTitles).includes(category as string)) {
-    return <NotFoundPage />;
-  }
 
   const title = categoryTitles[category as Category];
 
