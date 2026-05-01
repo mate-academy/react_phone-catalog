@@ -3,15 +3,16 @@ import BasketList from './BasketList/BasketList';
 import BasketCheckout from './BasketCheckout/BasketCheckout';
 import useAppContext from '../../useAppContext';
 import Image from '../../../public/img/cart-is-empty.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const BasketMain = () => {
   const { showMessage, baskets } = useAppContext();
+  const navigate = useNavigate();
 
   return (
     <>
       <div className="main-basket">
-        <div className="main-basket__back-buttons">
+        <div className="main-basket__back-buttons" onClick={() => navigate(-1)}>
           <Link to="/" className="main-basket__icon--back"></Link>
           <span className="main-basket__text--back">Back</span>
         </div>

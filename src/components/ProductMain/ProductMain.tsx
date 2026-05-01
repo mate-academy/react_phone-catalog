@@ -38,11 +38,11 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
       return p.color === selectedColor && p.capacity === selectedCapacity;
     });
 
-    if (foundProduct) {
+    if (foundProduct && foundProduct.id !== currentProduct.id) {
       setCurrentProduct(foundProduct);
       navigate(`/${foundProduct.category}/${foundProduct.id}`);
     }
-  }, [selectedColor, selectedCapacity, models, navigate]);
+  }, [selectedColor, selectedCapacity, models, navigate, currentProduct.id]);
 
   const stateProduct: FavoriteProduct = {
     category: currentProduct.category,
@@ -100,11 +100,11 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     <div className="product-main">
       <div className="product-main__container">
         <ProductTopIcons currentProduct={currentProduct} />
-        <div className="product-main__back-buttons">
-          <button
-            onClick={() => navigate('/')}
-            className="product-main__icon--back"
-          ></button>
+        <div
+          className="product-main__back-buttons"
+          onClick={() => navigate(-1)}
+        >
+          <button type="button" className="product-main__icon--back"></button>
           <span className="product-main__text--back">Back</span>
         </div>
         <h1 className="product-main__title">{currentProduct.name}</h1>

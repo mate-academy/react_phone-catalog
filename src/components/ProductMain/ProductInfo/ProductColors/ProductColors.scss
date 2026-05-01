@@ -9,11 +9,14 @@
 }
 
 .product-info__color {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid transparent;
   cursor: pointer;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  padding: 1px;
+  background-clip: content-box;
+  border: 2px solid transparent;
   margin-bottom: 24px;
 
   transition: transform 0.2s, border-color 0.2s;
