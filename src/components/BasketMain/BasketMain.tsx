@@ -17,6 +17,7 @@ const BasketMain = () => {
           <span className="main-basket__text--back">Back</span>
         </div>
         <h2 className="main-basket__title">Cart</h2>
+        <div className="main-basket__container">
         <BasketList />
         <BasketCheckout />
         {showMessage && (
@@ -31,7 +32,7 @@ const BasketMain = () => {
               alt="Empty cart"
             />
           </div>
-        )}
+        )}</div>
       </div>
     </>
   );

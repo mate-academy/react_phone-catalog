@@ -168,6 +168,7 @@
   }
 }
 .slide__title--1 {
+  font-family: 'Mont', sans-serif;
   font-size: 13px;
   font-weight: 700;
   background: linear-gradient(#891ce8, #7560fa, #e963ff);
@@ -185,6 +186,8 @@
 }
 .slide__title--2 {
   color: white;
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
   font-size: 12px;
   margin: 0 0 4px;
   @media (min-width: 640px) {
@@ -202,6 +205,8 @@
   opacity: 0.8;
   color: white;
   display: none;
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
   font-size: 9px;
   @media (min-width: 640px) {
     display: block;
@@ -216,6 +221,8 @@
 .slide__text--2 {
   color: white;
   margin: 0;
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
   font-size: 5px;
   @media (min-width: 640px) {
     font-size: 15px;
@@ -238,6 +245,8 @@
   display: none;
   text-decoration: none;
   text-transform: lowercase;
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
   font-size: 9px;
   @media (min-width: 640px) {
     display: block;
