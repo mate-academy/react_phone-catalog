@@ -1,23 +1,16 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import logo from '../../images/Icons/Logo.svg';
-import heart from '../../images/Icons/Heart.svg';
-import cart from '../../images/Icons/Cart.svg';
 import menu from '../../images/Icons/Menu.png';
 import close from '../../images/Icons/Close.png';
 import { Navbar } from './Navbar';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu } from './Menu';
-import { getClassLink } from '../../utils/getClassLink';
 import { SearchBar } from './SearchBar';
-import { CartContext } from '../../contexts/cart';
-import { FavContext } from '../../contexts/favorites';
+import { Icons } from './Icons';
 
 export const Header: React.FC = () => {
   const [menuActive, setMenuActive] = useState(false);
-
-  const { cartItems } = useContext(CartContext);
-  const { favorites } = useContext(FavContext);
 
   useEffect(() => {
     if (menuActive) {
@@ -33,15 +26,8 @@ export const Header: React.FC = () => {
 
   const location = useLocation();
 
-  const isCatalogPage =
-    location.pathname.includes('/phones') ||
-    location.pathname.includes('/tablets') ||
-    location.pathname.includes('/accessories');
-
-  const getLinkClass = getClassLink({
-    baseClass: styles.topBar__iconLink,
-    activeClass: styles.activeLink,
-  });
+  const catalogPaths = ['/phones', '/tablets', '/accessories'];
+  const isCatalogPage = catalogPaths.includes(location.pathname);
 
   return (
     <>
@@ -66,26 +52,7 @@ export const Header: React.FC = () => {
                 {isCatalogPage && <SearchBar />}
 
                 <div className={styles.topBar__icons}>
-                  <div className={styles.topBar__iconBlock}>
-                    <NavLink className={getLinkClass} to="/favorites">
-                      {!!favorites.length && (
-                        <div className={styles.topBar__iconCounter}>
-                          {favorites.length}
-                        </div>
-                      )}
-                      <img className={styles.topBar__heartImg} src={heart} />
-                    </NavLink>
-                  </div>
-                  <div className={styles.topBar__iconBlock}>
-                    <NavLink className={getLinkClass} to="/cart">
-                      {!!cartItems.length && (
-                        <div className={styles.topBar__iconCounter}>
-                          {cartItems.length}
-                        </div>
-                      )}
-                      <img className={styles.topBar__cartImg} src={cart} />
-                    </NavLink>
-                  </div>
+                  <Icons />
                 </div>
               </div>
 

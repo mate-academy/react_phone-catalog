@@ -206,9 +206,13 @@
   }
 
   &__favBtn {
+    display: flex;
     flex: 0 0 48px;
     height: 48px;
     background-color: $surface-color-2;
+    justify-content: center;
+    align-items: center;
+
 
     &:hover {
       background-color: $icons-hover-color;

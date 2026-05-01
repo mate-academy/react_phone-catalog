@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: $box-shadow-settings;
+  border-top: $box-shadow-settings;
   margin-top: auto;
 
   @include on-mobile {

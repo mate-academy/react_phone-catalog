@@ -67,7 +67,10 @@ export const ProductsSlider: React.FC<Props> = ({
         }}
       >
         {preperedProducts.map(product => (
-          <SwiperSlide key={product.id}>
+          <SwiperSlide
+            className={styles.ProductsSlider__slide}
+            key={product.id}
+          >
             <ProductCard product={product} />
           </SwiperSlide>
         ))}

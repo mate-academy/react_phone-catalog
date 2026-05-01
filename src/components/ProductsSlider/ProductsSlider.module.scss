@@ -50,6 +50,12 @@
     height: 100%;
   }
 
+  &__slide {
+    display: flex;
+    min-height: 272px;
+    height: 100%;
+  }
+
    &__product {
     display: flex;
     padding: 0;

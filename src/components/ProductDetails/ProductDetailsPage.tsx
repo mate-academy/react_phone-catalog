@@ -3,8 +3,8 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { ProductDetails } from '../../types';
 import styles from './ProductDetailsPage.module.scss';
 import arrow from '../../images/Icons/Arrow-Left.png';
-import heart from '../../images/Icons/Heart.png';
-import likedHeart from '../../images/Icons/Heart Like.png';
+import heart from '../../images/Icons/Heart.svg';
+import likedHeart from '../../images/Icons/HeartLike.svg';
 import { PhonesContext } from '../../contexts/phones';
 import { TabletsContext } from '../../contexts/tablets/TabletsStore';
 import { AccessoriesContext } from '../../contexts/accessories';
@@ -19,6 +19,8 @@ import { CartContext } from '../../contexts/cart';
 import { useCart } from '../../hooks/useCart';
 import { ProductsContext } from '../../contexts/products';
 import 'swiper/css';
+import { useFav } from '../../hooks/useFav';
+import { FavContext } from '../../contexts/favorites';
 
 type Props = {
   category: string;
@@ -26,13 +28,14 @@ type Props = {
 };
 
 export const ProductDetailsPage: React.FC<Props> = ({ category, title }) => {
-  const [addedToFav, setAddedToFav] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   const { cartItems } = useContext(CartContext);
+  const { favorites } = useContext(FavContext);
   const { products } = useContext(ProductsContext);
 
   const { addToCart, removeFromCart } = useCart();
+  const { addToFav, removeFromFav } = useFav();
 
   const { itemId } = useParams();
   const navigate = useNavigate();
@@ -87,6 +90,10 @@ export const ProductDetailsPage: React.FC<Props> = ({ category, title }) => {
 
   const isAddedToCart = previewProduct
     ? cartItems.some(cartItem => cartItem.product.id === previewProduct.id)
+    : false;
+
+  const isAddedToFav = previewProduct
+    ? favorites.some(favItem => favItem.id === previewProduct.id)
     : false;
 
   const getProductByColor = (color: string) => {
@@ -272,11 +279,21 @@ export const ProductDetailsPage: React.FC<Props> = ({ category, title }) => {
                 </button>
                 <button
                   className={classNames(styles.productDetails__favBtn, {
-                    [styles.productDetails__favBtnAdded]: addedToFav,
+                    [styles.productDetails__favBtnAdded]: isAddedToFav,
                   })}
-                  onClick={() => setAddedToFav(prev => !prev)}
+                  onClick={() => {
+                    if (!previewProduct) {
+                      return;
+                    }
+
+                    if (!isAddedToFav) {
+                      addToFav(previewProduct);
+                    } else {
+                      removeFromFav(previewProduct);
+                    }
+                  }}
                 >
-                  <img src={!addedToFav ? heart : likedHeart} />
+                  <img src={!isAddedToFav ? heart : likedHeart} />
                 </button>
               </div>
 

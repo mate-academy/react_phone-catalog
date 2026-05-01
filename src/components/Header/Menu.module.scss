@@ -5,36 +5,22 @@
   height: calc(100vh - 48px);
   display: none;
   flex-direction: column;
+  justify-content: space-between;
 
 
   @include on-mobile {
     display: flex;
   }
 
-  &__icons {
-    display: flex;
-    flex-direction: row;
-    margin-top: auto;
+  &__content {
+    flex-grow: 1;
   }
 
-        &__iconBlock {
-          display: flex;
-          padding: 0;
-          width: 100%;
-          height: 64px;
-          border-top: $box-shadow-settings;
-          border-left: $box-shadow-settings;
-        }
-
-        &__iconLink {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          height: 100%;
-          text-decoration: none;
-         }
-      }
+  &__footer {
+    width: 100%;
+    border-top: $box-shadow-settings;
+  }
+}
 
 .activeLink {
   border-bottom: 3px solid #F1F2F9;
