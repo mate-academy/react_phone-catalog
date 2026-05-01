@@ -28,7 +28,10 @@
 }
 
 .items {
-  border: 1px solid var(--color-elements);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
 }
 
 .checkout {
@@ -41,8 +44,6 @@
 
   @include on-desktop {
     width: 368px;
-    flex-shrink: 0;
-    align-self: flex-start; // ← don't stretch to full height of .content
   }
 }
 

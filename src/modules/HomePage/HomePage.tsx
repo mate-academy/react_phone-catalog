@@ -3,10 +3,10 @@ import { getProducts } from '../../api';
 import { Product } from '../../types';
 import { useProductCounts } from '../../hooks';
 import styles from './HomePage.module.scss';
-import { ProductCard } from '../shared/components/ProductCard';
 import { Loader } from '../shared/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
 import { PicturesSlider } from './components/PicturesSlider';
+import { ProductsSlider } from './components/ProductsSlider';
 
 const BANNER_SLIDES = [
   { id: 1, image: '/img/banner-phones.png', alt: 'New phones — latest models' },
@@ -39,13 +39,12 @@ export const HomePage = () => {
       .then(all => {
         setAllProducts(all);
 
-        setBrandNew([...all].sort((a, b) => b.year - a.year).slice(0, 5));
+        setBrandNew([...all].sort((a, b) => b.year - a.year));
 
         setHotPrices(
           [...all]
             .filter(p => p.fullPrice > p.price)
-            .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-            .slice(0, 5),
+            .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price)),
         );
       })
       .catch(() => setError(true))
@@ -64,18 +63,10 @@ export const HomePage = () => {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Brand new models</h2>
-
           {loading && <Loader />}
           {!loading && error && <p>Something went wrong. Please try again.</p>}
           {!loading && !error && (
-            <ul className={styles.cardGrid}>
-              {brandNew.map(product => (
-                <li key={product.id}>
-                  <ProductCard product={product} />
-                </li>
-              ))}
-            </ul>
+            <ProductsSlider title="Brand new models" products={brandNew} />
           )}
         </section>
 
@@ -87,18 +78,10 @@ export const HomePage = () => {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Hot prices</h2>
-
           {loading && <Loader />}
           {!loading && error && <p>Something went wrong. Please try again.</p>}
           {!loading && !error && (
-            <ul className={styles.cardGrid}>
-              {hotPrices.map(product => (
-                <li key={product.id}>
-                  <ProductCard product={product} />
-                </li>
-              ))}
-            </ul>
+            <ProductsSlider title="Hot prices" products={hotPrices} />
           )}
         </section>
       </div>

@@ -1,0 +1,75 @@
+@use '../../../../styles/mixins' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  @include h2;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-icons);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color var(--transition);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+}
+
+.arrowDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.arrowIconLeft {
+  transform: rotate(90deg);
+}
+
+.arrowIconRight {
+  transform: rotate(-90deg);
+}
+
+.viewport {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  flex: 0 0 272px;
+  width: 272px;
+}
+

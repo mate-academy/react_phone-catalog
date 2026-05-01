@@ -28,3 +28,28 @@ export const getProductsByCategory = (category: Category): Promise<Product[]> =>
   getProducts().then(products =>
     products.filter(product => product.category === category),
   );
+
+const CATEGORY_ENDPOINTS: Record<Category, string> = {
+  phones: 'phones.json',
+  tablets: 'tablets.json',
+  accessories: 'accessories.json',
+};
+
+export const getProductDetails = (
+  category: Category,
+  productId: string,
+): Promise<ProductDetails | null> =>
+  get<ProductDetails[]>(CATEGORY_ENDPOINTS[category]).then(
+    list => list.find(item => item.id === productId) ?? null,
+  );
+
+export const getSuggestedProducts = (
+  excludeId: string,
+  count = 10,
+): Promise<Product[]> =>
+  getProducts().then(all => {
+    const pool = all.filter(p => p.itemId !== excludeId);
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+
+    return shuffled.slice(0, count);
+  });
