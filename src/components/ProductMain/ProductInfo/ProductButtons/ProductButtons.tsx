@@ -1,5 +1,7 @@
 import './ProductButtons.scss';
 import { Link } from 'react-router-dom';
+import Filled from '../../../../../public/img/icons/icon--heart--filled.svg';
+import NotFilled from '../../../../../public/img/icons/icon--heart.svg';
 
 type ProductButtonsProps = {
   isFavorite: boolean;
@@ -27,8 +29,8 @@ const ProductButtons = ({
           <img
             src={
               isFavorite
-                ? '/public/img/icons/icon--heart--filled.svg'
-                : '/public/img/icons/icon--heart.svg'
+                ? Filled
+                : NotFilled
             }
             alt="Favorite"
             className="product-info__button--icon"
