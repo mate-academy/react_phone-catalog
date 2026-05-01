@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
-import { useProducts } from '../../../../context';
+import { useProducts, useCart } from '../../../../context';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { favorites } = useProducts();
+  const { totalQuantity } = useCart();
 
   const navLinks = [
     { to: AppRoutes.HOME, label: 'Home' },
@@ -69,6 +70,9 @@ export const Header = () => {
               aria-label="Cart"
             >
               <img src="/img/icons/Cart.svg" alt="Cart" />
+              {totalQuantity > 0 && (
+                <span className={styles.badge}>{totalQuantity}</span>
+              )}
             </NavLink>
 
             {/* Mobile-only menu button */}
@@ -130,6 +134,9 @@ export const Header = () => {
             onClick={() => setMenuOpen(false)}
           >
             <img src="/img/icons/Cart.svg" alt="Cart" />
+            {totalQuantity > 0 && (
+              <span className={styles.badge}>{totalQuantity}</span>
+            )}
           </NavLink>
         </div>
       </nav>

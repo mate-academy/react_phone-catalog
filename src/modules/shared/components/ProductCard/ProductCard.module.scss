@@ -121,11 +121,17 @@
   border: none;
   cursor: pointer;
 
-  @include hover-transition(background-color);
+  @include hover-transition(box-shadow);
 
   &:hover {
-    background-color: #4a4d58;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   }
+}
+
+.addToCartActive {
+  background-color: var(--color-white);
+  color: var(--color-green);
+  border: 1px solid var(--color-green);
 }
 
 .favourites {
@@ -140,9 +146,15 @@
   flex-shrink: 0;
 
   @include hover-transition(border-color);
+  @include hover-transition(box-shadow);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
 
   &:hover {
     border-color: var(--color-primary);
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   }
 
   img {

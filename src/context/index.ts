@@ -1,2 +1,2 @@
 export { useProducts, ProductProvider } from './ProductContext';
-//export { useCart, CartProvider } from './CartContext';
+export { useCart, CartProvider } from './CartContext';

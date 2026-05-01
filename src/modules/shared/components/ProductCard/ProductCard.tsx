@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types';
-import { useProducts } from '../../../../context';
+import { useProducts, useCart } from '../../../../context';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -22,6 +22,8 @@ export const ProductCard = ({ product }: Props) => {
   const hasDiscount = price !== fullPrice;
   const { isFavorite, toggleFavorite } = useProducts();
   const isInFavorites = isFavorite(product.id);
+  const { isInCart, addToCart } = useCart();
+  const inCart = isInCart(product.id);
 
   return (
     <article className={styles.card}>
@@ -55,7 +57,13 @@ export const ProductCard = ({ product }: Props) => {
       </ul>
 
       <div className={styles.buttons}>
-        <button className={styles.addToCart}>Add to cart</button>
+        <button
+          className={`${styles.addToCart} ${inCart ? styles.addToCartActive : ''}`}
+          onClick={() => addToCart(product)}
+          disabled={inCart}
+        >
+          {inCart ? 'Added to cart' : 'Add to cart'}
+        </button>
         <button
           className={`${styles.favourites}${isInFavorites ? ` ${styles['favourites--active']}` : ''}`}
           aria-label={

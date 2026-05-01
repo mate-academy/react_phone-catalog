@@ -1,0 +1,107 @@
+@use '../../../../styles/mixins' as *;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// Left side: remove + image + name
+.info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap; // name wraps on mobile if too long
+}
+
+.remove {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include hover-transition(opacity);
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.name {
+  @include body-text;
+  color: var(--color-primary);
+  flex: 1;
+  min-width: 120px; // ← wraps on mobile but stays readable
+}
+
+// Right side: quantity controls + price
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantityBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-icons);
+  @include button-text;
+  color: var(--color-primary);
+  @include hover-transition(border-color);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+
+  &:disabled {
+    color: var(--color-icons);
+    cursor: not-allowed;
+  }
+}
+
+.quantityValue {
+  @include h4;
+  min-width: 24px;
+  text-align: center;
+}
+
+.price {
+  @include h3;
+  color: var(--color-primary);
+  min-width: 80px;
+  text-align: right;
+}
