@@ -63,4 +63,3 @@ const ProductSlider = ({ title, products }: ProductSliderProps) => {
 };
 
 export default ProductSlider;
-
