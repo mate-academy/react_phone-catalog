@@ -5,13 +5,13 @@ import { ProductColor } from '../../../../types/ProductColor';
 type ProductColorsProps = {
   currentProduct: ProductDetails;
   selectedColor: string;
-  setSelectedColor: React.Dispatch<React.SetStateAction<ProductColor>>;
+  onSelectColor: (color: ProductColor) => void;
 };
 
 const ProductColors = ({
   currentProduct,
   selectedColor,
-  setSelectedColor,
+  onSelectColor,
 }: ProductColorsProps) => {
   return (
     <>
@@ -28,7 +28,7 @@ const ProductColors = ({
                 className={`product-info__color product-info__color--${normalizedColor} ${
                   selectedColor === color ? 'active' : ''
                 }`}
-                onClick={() => setSelectedColor(color)}
+                onClick={() => onSelectColor(color)}
               />
             );
           })}

@@ -9,14 +9,12 @@ import ProductSpec from './ProductSpecs/ProductSpec';
 import { ProductColor } from '../../../types/ProductColor';
 import ProductButtons from './ProductButtons/ProductButtons';
 
-type SetCapacity = React.Dispatch<React.SetStateAction<ProductCapacityType>>;
-
 type ProductInfoProps = {
   selectedColor: string;
-  setSelectedColor: React.Dispatch<React.SetStateAction<ProductColor>>;
+  onSelectColor: (color: ProductColor) => void;
   currentProduct: ProductDetails;
   selectedCapacity: ProductCapacityType;
-  setSelectedCapacity: SetCapacity;
+  onSelectCapacity: (capacity: string) => void;
   isFavorite: boolean;
   handleToggleFavorite: React.MouseEventHandler<HTMLImageElement>;
   isBasket: boolean;
@@ -26,9 +24,9 @@ type ProductInfoProps = {
 const ProductInfo = ({
   currentProduct,
   selectedColor,
-  setSelectedColor,
+  onSelectColor,
   selectedCapacity,
-  setSelectedCapacity,
+  onSelectCapacity,
   isFavorite,
   handleToggleFavorite,
   handleToggleBasket,
@@ -44,11 +42,11 @@ const ProductInfo = ({
               <ProductColors
                 currentProduct={currentProduct}
                 selectedColor={selectedColor}
-                setSelectedColor={setSelectedColor}
+                onSelectColor={onSelectColor}
               />
               <ProductCapacity
                 currentProduct={currentProduct}
-                setSelectedCapacity={setSelectedCapacity}
+                onSelectCapacity={onSelectCapacity}
                 selectedCapacity={selectedCapacity}
               />
               <ProductPrice currentProduct={currentProduct} />

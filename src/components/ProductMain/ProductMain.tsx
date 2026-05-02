@@ -21,12 +21,6 @@ export type ProductMainProps = {
 };
 
 const ProductMain = ({ someProduct, models }: ProductMainProps) => {
-  const [selectedColor, setSelectedColor] = useState(
-    someProduct.colorsAvailable[0] as ProductColor,
-  );
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    someProduct.capacityAvailable[0],
-  );
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
   const { favorites, baskets, setBaskets, setFavorites } = useAppContext();
@@ -34,31 +28,21 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
-  const currentProduct =
-    models.find(
-      p => p.color === selectedColor && p.capacity === selectedCapacity,
-    ) || someProduct;
 
-  useEffect(() => {
-    const foundProduct = models.find(
-      p => p.color === selectedColor && p.capacity === selectedCapacity,
+  const selectedColor = someProduct.color as ProductColor;
+  const selectedCapacity = someProduct.capacity;
+
+  const currentProduct = someProduct;
+
+  const goToVariant = (color: ProductColor, capacity: string) => {
+    const target = models.find(
+      p => p.color === color && p.capacity === capacity,
     );
 
-    if (foundProduct && foundProduct.id !== someProduct.id) {
-      navigate(`/${foundProduct.category}/${foundProduct.id}`, {
-        replace: true,
-      });
+    if (target && target.id !== someProduct.id) {
+      navigate(`/${target.category}/${target.id}`);
     }
-  }, [selectedColor, selectedCapacity, models, navigate, someProduct.id]);
-
-  useEffect(() => {
-    if (!currentProduct) {
-      return;
-    }
-
-    setSelectedColor(currentProduct.color);
-    setSelectedCapacity(currentProduct.capacity);
-  }, [currentProduct.id]);
+  };
 
   const stateProduct: FavoriteProduct = {
     category: currentProduct.category,
@@ -70,13 +54,19 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     capacity: currentProduct.capacity,
     color: currentProduct.color as ProductColor,
     ram: currentProduct.ram,
-    image: currentProduct.images[0],
+
+    // 🔥 FIX 5: захист від undefined
+    image: currentProduct.images?.[0] || '',
   };
+
   const MayLikeProducts = products.filter(
     product => Math.abs(product.price - currentProduct.priceDiscount) <= 300,
   );
+
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
+
   const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
+
   const handleToggleFavorite = () => {
     setFavorites(prev => {
       const exists = prev.some(p => p.itemId === stateProduct.itemId);
@@ -97,9 +87,12 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     capacity: currentProduct.capacity,
     color: currentProduct.color as ProductColor,
     ram: currentProduct.ram,
-    image: currentProduct.images[0],
+
+    // 🔥 FIX 6: теж захист
+    image: currentProduct.images?.[0] || '',
     quantity: 1,
   };
+
   const handleToggleBasket = () => {
     setBaskets(prev => {
       const exists = prev.find(p => p.itemId === basketOfProduct.itemId);
@@ -108,7 +101,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
         return prev.filter(p => p.itemId !== basketOfProduct.itemId);
       }
 
-      return [...prev, { ...basketOfProduct, quantity: 1 }];
+      return [...prev, basketOfProduct];
     });
   };
 
@@ -116,28 +109,39 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     <div className="product-main">
       <div className="product-main__container">
         <ProductTopIcons currentProduct={currentProduct} />
+
         <div
           className="product-main__back-buttons"
           onClick={() => navigate(-1)}
         >
-          <button type="button" className="product-main__icon--back"></button>
+          <button type="button" className="product-main__icon--back" />
           <span className="product-main__text--back">Back</span>
         </div>
+
         <h1 className="product-main__title">{currentProduct.name}</h1>
+
         <ProductGallery currentProduct={currentProduct} />
+
         <ProductInfo
           currentProduct={currentProduct}
           selectedColor={selectedColor}
-          setSelectedColor={setSelectedColor}
           selectedCapacity={selectedCapacity}
-          setSelectedCapacity={setSelectedCapacity}
+          // 🔥 FIX 7: замість setState — навігація
+          onSelectColor={(color: string) =>
+            goToVariant(color as ProductColor, selectedCapacity)
+          }
+          onSelectCapacity={(capacity: string) =>
+            goToVariant(selectedColor, capacity)
+          }
           isFavorite={isFavorite}
           isBasket={isBasket}
           handleToggleFavorite={handleToggleFavorite}
           handleToggleBasket={handleToggleBasket}
         />
+
         <ProductAbout currentProduct={currentProduct} />
         <ProductTechSpecs currentProduct={currentProduct} />
+
         <ProductSliderMain
           title="You may also like"
           MayLikeProducts={MayLikeProducts}
