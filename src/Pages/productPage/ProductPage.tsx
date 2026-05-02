@@ -57,8 +57,6 @@ const ProductPage = () => {
         return;
       }
 
-      setSomeProduct(product);
-
       const sameModel = allProducts.filter(
         p => p.namespaceId === product.namespaceId,
       );

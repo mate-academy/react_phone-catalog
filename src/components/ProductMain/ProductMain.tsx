@@ -27,7 +27,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   const [selectedCapacity, setSelectedCapacity] = useState(
     someProduct.capacityAvailable[0],
   );
-
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
   const { favorites, baskets, setBaskets, setFavorites } = useAppContext();
@@ -35,7 +34,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
-
   const currentProduct =
     models.find(
       p => p.color === selectedColor && p.capacity === selectedCapacity,
@@ -46,10 +44,12 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
       p => p.color === selectedColor && p.capacity === selectedCapacity,
     );
 
-    if (foundProduct && foundProduct.id !== currentProduct.id) {
-      navigate(`/${foundProduct.category}/${foundProduct.id}`);
+    if (foundProduct && foundProduct.id !== someProduct.id) {
+      navigate(`/${foundProduct.category}/${foundProduct.id}`, {
+        replace: true,
+      });
     }
-  }, [selectedColor, selectedCapacity, models, navigate, currentProduct.id]);
+  }, [selectedColor, selectedCapacity, models, navigate, someProduct.id]);
 
   useEffect(() => {
     if (!currentProduct) {
@@ -72,13 +72,11 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     ram: currentProduct.ram,
     image: currentProduct.images[0],
   };
-
   const MayLikeProducts = products.filter(
     product => Math.abs(product.price - currentProduct.priceDiscount) <= 300,
   );
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
   const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
-
   const handleToggleFavorite = () => {
     setFavorites(prev => {
       const exists = prev.some(p => p.itemId === stateProduct.itemId);
@@ -102,7 +100,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     image: currentProduct.images[0],
     quantity: 1,
   };
-
   const handleToggleBasket = () => {
     setBaskets(prev => {
       const exists = prev.find(p => p.itemId === basketOfProduct.itemId);
