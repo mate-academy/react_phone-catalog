@@ -15,6 +15,7 @@ import Header from './components/Header/Header';
 import BurgerMenu from './pages/BurgerMenu/BurgerMenu';
 import { AppContext } from './AppContext';
 import { useState } from 'react';
+import TermsPage from './pages/termsPage/TermsPage';
 
 export const App = () => {
   const [favorites, setFavorites] = useLocalStorage<FavoriteProduct[]>(
@@ -83,6 +84,7 @@ export const App = () => {
             <Route path="/:category/:id" element={<ProductPage />} />
 
             <Route path="/burgermenu" element={<BurgerMenu />} />
+            <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </div>
         <Footer />

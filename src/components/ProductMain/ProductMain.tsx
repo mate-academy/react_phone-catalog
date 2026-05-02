@@ -32,7 +32,10 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   const selectedColor = someProduct.color as ProductColor;
   const selectedCapacity = someProduct.capacity;
 
-  const currentProduct = someProduct;
+  const currentProduct =
+    models.find(
+      p => p.color === selectedColor && p.capacity === selectedCapacity,
+    ) || someProduct;
 
   const goToVariant = (color: ProductColor, capacity: string) => {
     const target = models.find(
@@ -40,7 +43,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     );
 
     if (target && target.id !== someProduct.id) {
-      navigate(`/${target.category}/${target.id}`);
+      navigate(`/${target.category}/${target.id}`, { replace: true });
     }
   };
 
@@ -55,7 +58,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     color: currentProduct.color as ProductColor,
     ram: currentProduct.ram,
 
-    // 🔥 FIX 5: захист від undefined
     image: currentProduct.images?.[0] || '',
   };
 
@@ -88,7 +90,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     color: currentProduct.color as ProductColor,
     ram: currentProduct.ram,
 
-    // 🔥 FIX 6: теж захист
     image: currentProduct.images?.[0] || '',
     quantity: 1,
   };
@@ -126,7 +127,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
           currentProduct={currentProduct}
           selectedColor={selectedColor}
           selectedCapacity={selectedCapacity}
-          // 🔥 FIX 7: замість setState — навігація
           onSelectColor={(color: string) =>
             goToVariant(color as ProductColor, selectedCapacity)
           }

@@ -1,0 +1,22 @@
+.terms-page__title {
+  font-family: 'Mont', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.terms-page__container--text {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  column-gap: 16px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 24px;
+  }
+}

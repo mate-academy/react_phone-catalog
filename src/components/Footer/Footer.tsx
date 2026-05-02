@@ -41,7 +41,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="footer__item">
-                  <Link to="" className="footer__link">
+                  <Link to="/terms" className="footer__link">
                     RIGHTS
                   </Link>
                 </li>
