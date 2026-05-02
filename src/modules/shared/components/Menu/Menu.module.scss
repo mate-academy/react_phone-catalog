@@ -69,10 +69,7 @@
     gap: 24px;
 
     .nav_link {
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 11px;
-      letter-spacing: 4%;
+      @include font-uppercase;
 
       text-transform: uppercase;
       position: relative;

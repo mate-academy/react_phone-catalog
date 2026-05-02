@@ -1,27 +1,29 @@
 @use '/src/modules/shared/styles/variables.scss' as *;
+@use '/src/modules/shared/styles/mixins.scss' as *;
 
 
 .productCard {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
 
   background-color: $bg-color-card;
 
   max-width: 272px;
   padding: 32px;
 
-  img {
+  .productImage {
     width: 100%;
     height: auto;
     object-fit: contain;
+
+    @include scale-img;
   }
 
   .title {
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0;
+    @include font-body_text;
 
     margin-top: 8px;
 
@@ -36,9 +38,7 @@
     margin: 8px 0;
 
     p {
-      font-size: 22px;
-      line-height: 140%;
-      font-weight: 800;
+     @include font-H3;
     }
 
     :last-child {
@@ -53,18 +53,13 @@
   .another_info {
     display: flex;
     flex-direction: column;
-
-    p {
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 100%;
-      letter-spacing: 0;
-    }
-
     gap: 8px;
-
     border-top: $border-default;
     padding: 16px 0;
+
+    p {
+      @include font-small_text;
+    }
 
     .info {
       display: flex;
@@ -85,15 +80,23 @@
 
     .addToCart {
       height: 40px;
-      width: 160px;
       background-color: $color-accent;
+      flex: 1;
       border: none;
 
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 21px;
-      letter-spacing: 0;
+      @include font-buttons;
       color: $text-white__hover;
+
+      transition: all 0.25s ease;
+
+      &:hover {
+        background-color: $color-accent-hover;
+      }
+    }
+
+    .addedToCart {
+      @extend .addToCart;
+      background-color: $button-selected;
     }
 
     .addToFav {
@@ -102,10 +105,20 @@
       width: 40px;
       height: 40px;
 
-      img {
-        width: 16px;
-        height: 16px;
-      }
+    }
+
+    .addedToFav {
+      @extend .addToFav;
+      border: $border-default;
+      background-color: $bg-color;
+
+    }
+
+    img {
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
     }
 
   }

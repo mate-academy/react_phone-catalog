@@ -36,16 +36,11 @@
     flex-direction: column;
     justify-content: space-between;
     gap: $tablet-gap-footer-item;
-
-
+    width: max-content;
 
     .link {
-      font-size: $text-size;
-      font-weight: $text-weight;
-      line-height: 11px;
-      letter-spacing: 4%;
+      @include font-uppercase;
       color: $text-white__hover;
-
       text-transform: uppercase;
       text-decoration: none;
 
@@ -53,7 +48,6 @@
   }
 
   .button {
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,6 +103,7 @@
       width: auto;
     }
   }
+
   @media (min-width: 1140px) {
     padding: 0 152px;
 

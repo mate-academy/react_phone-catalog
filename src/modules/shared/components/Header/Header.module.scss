@@ -45,10 +45,8 @@
 
 
     .nav_link {
-      font-size: $text-size;
-      font-weight: $text-weight;
-      line-height: 11px;
-      letter-spacing: 4%;
+      @include font-uppercase;
+
       height: 100%;
 
       display: flex;
@@ -97,7 +95,6 @@
   }
 
   .burger {
-    font-size: 16px;
     width: 48px;
     height: 100%;
     border: none;

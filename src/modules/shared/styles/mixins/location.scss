@@ -1,0 +1,27 @@
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-inline: 16px;
+
+
+
+  @media (min-width: $tablet-breakpoint) {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center
+  }
+}

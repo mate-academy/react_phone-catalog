@@ -1,6 +1,8 @@
-import React from 'react';
-import { ProductCard } from '../shared/components/ProductCard';
+import React, { useContext } from 'react';
+import { CartItem } from '../shared/components/CartItem';
 import { Product } from '../../types';
+import { CartContext } from '../../context/CartContext';
+import { ProductCard } from '../shared/components/ProductCard';
 
 const testProduct: Product = {
   id: 1,
@@ -18,5 +20,19 @@ const testProduct: Product = {
 };
 
 export const HomePage = () => {
-  return <ProductCard product={testProduct} />;
+  const { cartItems } = useContext(CartContext);
+
+  return (
+    <>
+      <ProductCard product={testProduct} />
+      {cartItems.map(item => (
+        // eslint-disable-next-line max-len
+        <CartItem
+          key={item.product.id}
+          product={item.product}
+          quantity={item.quantityCarts}
+        />
+      ))}
+    </>
+  );
 };
