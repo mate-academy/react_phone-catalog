@@ -2,7 +2,9 @@
 @import '../../styles/utils/mixins';
 
 .menu {
-  height: calc(100vh - 48px);
+  height: calc(100dvh - 48px);
+  max-height: 100vh;
+  min-height: 100dvh;
   display: none;
   flex-direction: column;
   justify-content: space-between;

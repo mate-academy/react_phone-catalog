@@ -13,10 +13,17 @@ export const Footer: React.FC = () => {
           <img src={logo} alt="Logo" />
         </NavLink>
         <div className={styles.footer__links}>
-          <a className={styles.footer__link} href="#">
+          <a
+            className={styles.footer__link}
+            href="https://github.com/OwlDevcUA"
+          >
             GITHUB
           </a>
-          <a className={styles.footer__link} href="#">
+          <a
+            className={styles.footer__link}
+            // eslint-disable-next-line max-len
+            href="https://www.linkedin.com/in/kyryl-kostiuk-515b05315/?locale=uk"
+          >
             CONTACTS
           </a>
           <a className={styles.footer__link} href="#">
