@@ -28,7 +28,6 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     someProduct.capacityAvailable[0],
   );
 
-  const [currentProduct, setCurrentProduct] = useState(someProduct);
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
   const { favorites, baskets, setBaskets, setFavorites } = useAppContext();
@@ -37,20 +36,29 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     getProducts().then(setProducts);
   }, []);
 
-  useEffect(() => {
-    setCurrentProduct(someProduct);
-  }, [someProduct]);
+  const currentProduct =
+    models.find(
+      p => p.color === selectedColor && p.capacity === selectedCapacity,
+    ) || someProduct;
 
   useEffect(() => {
-    const foundProduct = models.find(p => {
-      return p.color === selectedColor && p.capacity === selectedCapacity;
-    });
+    const foundProduct = models.find(
+      p => p.color === selectedColor && p.capacity === selectedCapacity,
+    );
 
     if (foundProduct && foundProduct.id !== currentProduct.id) {
-      setCurrentProduct(foundProduct);
       navigate(`/${foundProduct.category}/${foundProduct.id}`);
     }
   }, [selectedColor, selectedCapacity, models, navigate, currentProduct.id]);
+
+  useEffect(() => {
+    if (!currentProduct) {
+      return;
+    }
+
+    setSelectedColor(currentProduct.color);
+    setSelectedCapacity(currentProduct.capacity);
+  }, [currentProduct.id]);
 
   const stateProduct: FavoriteProduct = {
     category: currentProduct.category,
@@ -133,7 +141,10 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
         />
         <ProductAbout currentProduct={currentProduct} />
         <ProductTechSpecs currentProduct={currentProduct} />
-        <ProductSliderMain title="You may also like" MayLikeProducts={MayLikeProducts} />
+        <ProductSliderMain
+          title="You may also like"
+          MayLikeProducts={MayLikeProducts}
+        />
       </div>
     </div>
   );
