@@ -10,7 +10,7 @@ const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
   const [activeImg, setActiveImg] = useState(currentProduct.images[0]);
 
   useEffect(() => {
-    if (currentProduct.images?.length) {
+    if (currentProduct.images.length > 0) {
       setActiveImg(currentProduct.images[0]);
     }
   }, [currentProduct.images]);
