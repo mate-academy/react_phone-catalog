@@ -1,6 +1,10 @@
 .product-slider {
   grid-column: 1 / -1;
+  margin-top: 56px;
   margin-bottom: 64px;
+  @media (min-width: 640px) {
+    margin-top: 80px;
+  }
   &__header {
     display: flex;
     align-items: center;

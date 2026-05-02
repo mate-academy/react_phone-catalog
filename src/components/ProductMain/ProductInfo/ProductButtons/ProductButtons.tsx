@@ -27,11 +27,7 @@ const ProductButtons = ({
         </button>
         <Link to="">
           <img
-            src={
-              isFavorite
-                ? Filled
-                : NotFilled
-            }
+            src={isFavorite ? Filled : NotFilled}
             alt="Favorite"
             className="product-info__button--icon"
             onClick={handleToggleFavorite}

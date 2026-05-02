@@ -18,21 +18,24 @@ const BasketMain = () => {
         </div>
         <h2 className="main-basket__title">Cart</h2>
         <div className="main-basket__container">
-        <BasketList />
-        <BasketCheckout />
-        {showMessage && (
-          <div className="main-basket__toast">Order placed successfully ✅</div>
-        )}
-        {baskets.length === 0 && (
-          <div className="main-basket__zero">
-            <h3 className="main-basket__title--zero">Your cart is empty</h3>
-            <img
-              src={Image}
-              className="main-basket__zero--baskets"
-              alt="Empty cart"
-            />
-          </div>
-        )}</div>
+          <BasketList />
+          <BasketCheckout />
+          {showMessage && (
+            <div className="main-basket__toast">
+              Order placed successfully ✅
+            </div>
+          )}
+          {baskets.length === 0 && (
+            <div className="main-basket__zero">
+              <h3 className="main-basket__title--zero">Your cart is empty</h3>
+              <img
+                src={Image}
+                className="main-basket__zero--baskets"
+                alt="Empty cart"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

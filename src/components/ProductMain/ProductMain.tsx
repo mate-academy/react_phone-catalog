@@ -11,6 +11,9 @@ import { BasketProduct } from '../../types/BasketProduct';
 import useAppContext from '../../useAppContext';
 import ProductTopIcons from './ProductTopIcons/ProductTopIcons';
 import { ProductColor } from '../../types/ProductColor';
+import ProductSliderMain from './ProductSliderMain/ProductSliderMain';
+import { Product } from '../../types/Product';
+import { getProducts } from '../../api';
 
 export type ProductMainProps = {
   someProduct: ProductDetails;
@@ -26,8 +29,13 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
   );
 
   const [currentProduct, setCurrentProduct] = useState(someProduct);
+  const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
   const { favorites, baskets, setBaskets, setFavorites } = useAppContext();
+
+  useEffect(() => {
+    getProducts().then(setProducts);
+  }, []);
 
   useEffect(() => {
     setCurrentProduct(someProduct);
@@ -57,6 +65,9 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
     image: currentProduct.images[0],
   };
 
+  const MayLikeProducts = products.filter(
+    product => Math.abs(product.price - currentProduct.priceDiscount) <= 300,
+  );
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
   const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
 
@@ -122,6 +133,7 @@ const ProductMain = ({ someProduct, models }: ProductMainProps) => {
         />
         <ProductAbout currentProduct={currentProduct} />
         <ProductTechSpecs currentProduct={currentProduct} />
+        <ProductSliderMain title="You may also like" MayLikeProducts={MayLikeProducts} />
       </div>
     </div>
   );
