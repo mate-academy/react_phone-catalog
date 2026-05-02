@@ -121,6 +121,8 @@
 }
 
 .footer__right {
+  cursor: pointer;
+
   display: flex;
   gap: 16px;
   align-items: center;
@@ -129,7 +131,7 @@
   padding-inline: 20px;
 }
 
-.footer__right--link {
+.footer__right--text {
   font-family: 'Mont', sans-serif;
   font-size: 12px;
   font-weight: 700;

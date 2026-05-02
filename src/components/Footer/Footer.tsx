@@ -25,12 +25,18 @@ const Footer = () => {
             <div className="nav__footer menu__nav">
               <ul className="footer__list">
                 <li className="footer__item">
-                  <Link to="" className="footer__link">
+                  <Link
+                    to="https://github.com/Yar14k/react_phone-catalog"
+                    className="footer__link"
+                  >
                     GITHUB
                   </Link>
                 </li>
                 <li className="footer__item">
-                  <Link to="" className="footer__link">
+                  <Link
+                    to="https://www.linkedin.com/in/yaroslav-tabachuk-0391232b3/"
+                    className="footer__link"
+                  >
                     CONTACTS
                   </Link>
                 </li>
@@ -43,11 +49,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="footer__right">
-            <Link to="" className="footer__right--link">
-              Back to top
-            </Link>
-            <button onClick={goTop} className="icon--slider"></button>
+          <div className="footer__right" onClick={goTop}>
+            <span className="footer__right--text">Back to top</span>
+            <button className="icon--slider"></button>
           </div>
         </div>
       </footer>
