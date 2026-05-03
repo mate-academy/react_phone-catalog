@@ -1,45 +1,42 @@
-import { Link } from 'react-router-dom';
+import './Footer.scss';
 
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
+  const handleScrollToTop = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
-    <>
-      <Link to="/">
-        <div className="footer__logo"></div>
-      </Link>
-
-      <div className="footer__links">
-        <a
-          href="https://github.com/BodyaRespect"
-          className="footer__link footer__link--github"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub
-        </a>
-
-        <a
-          href="mailto:evilscortez@gmail.com"
-          className="footer__link footer__link--contacts"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Contacts
-        </a>
-
-        <a className="footer__link footer__link--rights">Rights</a>
-      </div>
-
-      <div className="footer__back-to-top">
-        <div className="footer__text" onClick={scrollToTop}>
-          Back to top
+    <footer className="footer">
+      <div className="footer__container">
+        <div className="footer__img">
+          <img src="figmaLogo/Logo.svg" alt="Nice-Gadgets-Logo" />
         </div>
 
-        <button className="footer__arrow" onClick={scrollToTop} />
+        <div className="footer__links">
+          <a
+            href="https://github.com/DavidKuznets?tab=repositories"
+            className="footer__link"
+          >
+            Github
+          </a>
+          <a href="#" className="footer__link">
+            Contacts
+          </a>
+          <a href="#" className="footer__link">
+            Rights
+          </a>
+        </div>
+
+        <a href="#" className="footer__up-link" onClick={handleScrollToTop}>
+          <p>Back to top</p>
+          <img src="public/figmaLogo/Up.svg" alt="up-logo" />
+        </a>
       </div>
-    </>
+    </footer>
   );
 };

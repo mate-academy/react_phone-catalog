@@ -1,117 +1,104 @@
+@use 'src/mixins' as *;
+
 .footer {
-  @include cancel-padding;
+  margin-top: 81px;
+  background-color: #0f1120;
+  padding: 24px 40px;
+  color: white;
 
-  margin-top: 64px;
-  padding: 32px 16px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
 
-  width: 100%;
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-
-  box-shadow: 0 -1px 0 0 #E2E6E9;
-
-  @include on-tablet {
-    padding-inline: 24px;
-
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    height: 96px;
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
   }
 
-  @include on-desktop {
-    margin-top: 80px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-inline: 0;
-  }
-
-  &__logo {
-    background-image: url(../../icons/logo.svg);
-
-    height: 32px;
+  &__img img {
     width: 89px;
+    height: 32px;
   }
 
   &__links {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
-    height: 65px;
+    gap: 12px;
 
     @include on-tablet {
       flex-direction: row;
-      align-items: center;
-
-      width: 192px;
+      gap: 32px;
     }
 
     @include on-desktop {
-      width: 380px;
+      flex-direction: row;
+      gap: 32px;
     }
   }
 
   &__link {
-    @include text-type-full(12px, 11px, "Mont", $secondary-color);
-
-    letter-spacing: 0.04em;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
-
-    transition: all .3s ease-in-out;
+    transition: color 0.3s;
 
     &:hover {
-      color: $primary-color;
+      color: gray;
     }
   }
 
-  &__back-to-top {
+  &__up-link {
     display: flex;
-    gap: 16px;
     align-items: center;
+    gap: 8px;
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 12px;
 
-    align-self: center;
-  }
-
-  &__text {
-    @include text-type-full(12px, 15.34px, 'Mont-semi-bold', $secondary-color);
-
-    cursor: pointer;
-    transition: all .3s ease-in-out .1s;
-
-    &:hover {
-      color: $primary-color;
-    }
-  }
-
-  &__arrow {
-    @include flex-center;
-
-    width: 32px;
-    height: 32px;
-
-    background-color: transparent;
-    border: 1px solid $icon-color;
-
-    transition: all .3s ease-in-out;
-
-    &:hover {
-      border-color: $primary-color;
+    img {
+      width: 24px;
+      height: 24px;
+      background-color: #323542;
+      padding: 4px;
+      border-radius: 4px;
     }
 
-    &::after {
-      content: "";
+    &:hover {
+      color: gray;
+    }
 
-      background-image: url(../../icons/arrows/arrow-right-normal.svg);
-      height: 16px;
-      width: 16px;
+    @include on-phone {
+      align-self: center;
+    }
 
-      transform: rotate(-90deg);
-      cursor: pointer;
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
   }
 }
