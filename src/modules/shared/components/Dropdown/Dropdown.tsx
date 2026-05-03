@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { getImageUrl } from '../../../../utils';
 import styles from './Dropdown.module.scss';
 
 type Option<T extends string> = {
@@ -59,7 +60,7 @@ export const Dropdown = <T extends string>({
           <span className={styles.triggerLabel}>{selectedOption?.label}</span>
           <img
             className={`${styles.arrow} ${isOpen ? styles.arrowOpen : ''}`}
-            src="/img/icons/arrow-down.svg"
+            src={getImageUrl('/img/icons/arrow-down.svg')}
             alt="Toggle dropdown"
           />
         </button>

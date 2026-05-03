@@ -1,6 +1,6 @@
 import { Product, ProductDetails, Category } from '../types';
 
-const BASE_URL = '/api';
+const BASE_URL = `${import.meta.env.BASE_URL}api`;
 
 async function get<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${BASE_URL}/${endpoint}`);

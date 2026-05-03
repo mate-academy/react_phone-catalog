@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
+import { getImageUrl } from '../../../../utils';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -15,7 +16,10 @@ export const Footer = () => {
           className={styles.logo}
           aria-label="Go to home"
         >
-          <img src="/img/icons/Logo.svg" alt="Nice Gadgets logo" />
+          <img
+            src={getImageUrl('/img/icons/Logo.svg')}
+            alt="Nice Gadgets logo"
+          />
         </Link>
 
         <nav aria-label="Footer navigation">
@@ -52,7 +56,10 @@ export const Footer = () => {
         <button className={styles.backToTop} onClick={handleBackToTop}>
           <span>Back to top</span>
           <div className={styles.backToTopArrow}>
-            <img src="/img/icons/arrow-down.svg" alt="Arrow up" />
+            <img
+              src={getImageUrl('/img/icons/arrow-down.svg')}
+              alt="Arrow up"
+            />
           </div>
         </button>
       </div>

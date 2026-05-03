@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types';
 import { useProducts, useCart } from '../../../../context';
+import { getImageUrl } from '../../../../utils';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -29,7 +30,7 @@ export const ProductCard = ({ product }: Props) => {
     <article className={styles.card}>
       <Link to={`/${category}/${itemId}`} className={styles.linkContainer}>
         <div className={styles.imageWrapper}>
-          <img src={image} alt={name} className={styles.image} />
+          <img src={getImageUrl(image)} alt={name} className={styles.image} />
         </div>
         <p className={styles.name}>{name}</p>
       </Link>
@@ -74,8 +75,8 @@ export const ProductCard = ({ product }: Props) => {
           <img
             src={
               isInFavorites
-                ? '/img/icons/FavouritesHilight.svg'
-                : '/img/icons/Favourites.svg'
+                ? getImageUrl('/img/icons/FavouritesHilight.svg')
+                : getImageUrl('/img/icons/Favourites.svg')
             }
             alt="Favourites"
           />

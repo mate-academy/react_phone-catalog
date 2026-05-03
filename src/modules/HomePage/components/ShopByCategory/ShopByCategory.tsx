@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
+import { getImageUrl } from '../../../../utils';
 import styles from './ShopByCategory.module.scss';
 
 interface ProductCounts {
@@ -16,19 +17,19 @@ const categories = [
   {
     title: 'Mobile phones',
     route: AppRoutes.PHONES,
-    image: '/img/category-phones.png',
+    image: getImageUrl('/img/category-phones.png'),
     countKey: 'phones' as const,
   },
   {
     title: 'Tablets',
     route: AppRoutes.TABLETS,
-    image: '/img/category-tablets.png',
+    image: getImageUrl('/img/category-tablets.png'),
     countKey: 'tablets' as const,
   },
   {
     title: 'Accessories',
     route: AppRoutes.ACCESSORIES,
-    image: '/img/category-accessories.png',
+    image: getImageUrl('/img/category-accessories.png'),
     countKey: 'accessories' as const,
   },
 ];

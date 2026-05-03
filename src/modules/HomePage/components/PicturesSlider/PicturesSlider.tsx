@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useInterval } from '../../../../hooks';
+import { getImageUrl } from '../../../../utils';
 import styles from './PicturesSlider.module.scss';
 
 type Slide = {
@@ -57,7 +58,11 @@ export const PicturesSlider = ({ slides }: Props) => {
           onClick={goPrev}
           aria-label="Previous slide"
         >
-          <img src="/img/icons/arrow-down.svg" alt="" aria-hidden="true" />
+          <img
+            src={getImageUrl('/img/icons/arrow-down.svg')}
+            alt=""
+            aria-hidden="true"
+          />
         </button>
 
         <div className={styles.track}>
@@ -83,7 +88,11 @@ export const PicturesSlider = ({ slides }: Props) => {
           onClick={goNext}
           aria-label="Next slide"
         >
-          <img src="/img/icons/arrow-down.svg" alt="" aria-hidden="true" />
+          <img
+            src={getImageUrl('/img/icons/arrow-down.svg')}
+            alt=""
+            aria-hidden="true"
+          />
         </button>
       </div>
 

@@ -1,5 +1,6 @@
 import { CartItem as CartItemType } from '../../../../types';
 import { useCart } from '../../../../context';
+import { getImageUrl } from '../../../../utils';
 import styles from './CartItem.module.scss';
 
 type Props = {
@@ -19,10 +20,18 @@ export const CartItem = ({ item }: Props) => {
           onClick={() => removeFromCart(product.id)}
           aria-label={`Remove ${product.name} from cart`}
         >
-          <img src="/img/icons/Close.svg" alt="" aria-hidden="true" />
+          <img
+            src={getImageUrl('/img/icons/Close.svg')}
+            alt=""
+            aria-hidden="true"
+          />
         </button>
 
-        <img src={product.image} alt={product.name} className={styles.image} />
+        <img
+          src={getImageUrl(product.image)}
+          alt={product.name}
+          className={styles.image}
+        />
 
         <p className={styles.name}>{product.name}</p>
       </div>

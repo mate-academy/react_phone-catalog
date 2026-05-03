@@ -9,6 +9,7 @@ import { Product, ProductDetails } from '../../types';
 import { Category, CATEGORIES } from '../../types';
 import { useCart } from '../../context';
 import { useProducts } from '../../context';
+import { getImageUrl } from '../../utils';
 import { Loader } from '../shared/components/Loader';
 import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 import styles from './ProductDetailsPage.module.scss';
@@ -63,7 +64,6 @@ export const ProductDetailsPage = () => {
         setDetails(det);
         setSuggested(sugg);
 
-        // Find the matching Product entry (for cart / favorites)
         const match = allProducts.find(p => p.itemId === productId) ?? null;
 
         setProduct(match);
@@ -154,7 +154,10 @@ export const ProductDetailsPage = () => {
                   className={`${styles.thumb} ${i === activeImage ? styles.thumbActive : ''}`}
                   onClick={() => setActiveImage(i)}
                 >
-                  <img src={src} alt={`${details.name} view ${i + 1}`} />
+                  <img
+                    src={getImageUrl(src)}
+                    alt={`${details.name} view ${i + 1}`}
+                  />
                 </button>
               </li>
             ))}
@@ -162,7 +165,7 @@ export const ProductDetailsPage = () => {
 
           <div className={styles.mainImage}>
             <img
-              src={details.images[activeImage]}
+              src={getImageUrl(details.images[activeImage])}
               alt={details.name}
               className={styles.mainImg}
             />

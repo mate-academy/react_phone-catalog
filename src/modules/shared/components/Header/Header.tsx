@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
+import { getImageUrl } from '../../../../utils';
 import { useProducts, useCart } from '../../../../context';
 import styles from './Header.module.scss';
 
@@ -26,7 +27,10 @@ export const Header = () => {
             className={styles.logo}
             aria-label="Go to home"
           >
-            <img src="/img/icons/Logo.svg" alt="Nice Gadgets logo" />
+            <img
+              src={getImageUrl('/img/icons/Logo.svg')}
+              alt="Nice Gadgets logo"
+            />
           </Link>
 
           {/* Tablet+ nav links */}
@@ -57,7 +61,10 @@ export const Header = () => {
               }
               aria-label="Favourites"
             >
-              <img src="/img/icons/Favourites.svg" alt="Favourites" />
+              <img
+                src={getImageUrl('/img/icons/Favourites.svg')}
+                alt="Favourites"
+              />
               {favorites.length > 0 && (
                 <span className={styles.badge}>{favorites.length}</span>
               )}
@@ -69,7 +76,7 @@ export const Header = () => {
               }
               aria-label="Cart"
             >
-              <img src="/img/icons/Cart.svg" alt="Cart" />
+              <img src={getImageUrl('/img/icons/Cart.svg')} alt="Cart" />
               {totalQuantity > 0 && (
                 <span className={styles.badge}>{totalQuantity}</span>
               )}
@@ -82,7 +89,11 @@ export const Header = () => {
               onClick={() => setMenuOpen(prev => !prev)}
             >
               <img
-                src={menuOpen ? '/img/icons/Close.svg' : '/img/icons/Menu.svg'}
+                src={
+                  menuOpen
+                    ? getImageUrl('/img/icons/Close.svg')
+                    : getImageUrl('/img/icons/Menu.svg')
+                }
                 alt={menuOpen ? 'Close' : 'Menu'}
               />
             </button>
@@ -120,7 +131,10 @@ export const Header = () => {
             aria-label="Favourites"
             onClick={() => setMenuOpen(false)}
           >
-            <img src="/img/icons/Favourites.svg" alt="Favourites" />
+            <img
+              src={getImageUrl('/img/icons/Favourites.svg')}
+              alt="Favourites"
+            />
             {favorites.length > 0 && (
               <span className={styles.badge}>{favorites.length}</span>
             )}
@@ -133,7 +147,7 @@ export const Header = () => {
             aria-label="Cart"
             onClick={() => setMenuOpen(false)}
           >
-            <img src="/img/icons/Cart.svg" alt="Cart" />
+            <img src={getImageUrl('/img/icons/Cart.svg')} alt="Cart" />
             {totalQuantity > 0 && (
               <span className={styles.badge}>{totalQuantity}</span>
             )}

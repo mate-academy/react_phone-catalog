@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../../api';
 import { Product } from '../../types';
 import { useProductCounts } from '../../hooks';
+import { getImageUrl } from '../../utils';
 import styles from './HomePage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
@@ -9,15 +10,19 @@ import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from './components/ProductsSlider';
 
 const BANNER_SLIDES = [
-  { id: 1, image: '/img/banner-phones.png', alt: 'New phones — latest models' },
+  {
+    id: 1,
+    image: getImageUrl('/img/banner-phones.png'),
+    alt: 'New phones — latest models',
+  },
   {
     id: 2,
-    image: '/img/banner-tablets.png',
+    image: getImageUrl('/img/banner-tablets.png'),
     alt: 'New tablets — power and portability',
   },
   {
     id: 3,
-    image: '/img/banner-accessories.png',
+    image: getImageUrl('/img/banner-accessories.png'),
     alt: 'Accessories — complete your setup',
   },
 ];
