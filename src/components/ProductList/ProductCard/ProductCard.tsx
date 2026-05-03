@@ -1,10 +1,11 @@
 import { Product } from '../../../types/Product';
 import './ProductCard.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
 import { ProductColor } from '../../../types/ProductColor';
 import { BasketProduct } from '../../../types/BasketProduct';
 import useAppContext from '../../../useAppContext';
+import { useEffect } from 'react';
 
 type ProductCardProps = {
   product: Product;
@@ -25,6 +26,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
   const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
+  const navigate = useNavigate();
   const handleToggleFavorite = () => {
     setFavorites(prev => {
       const exists = prev.some(p => p.itemId === stateProduct.itemId);
@@ -59,6 +61,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
       return [...prev, { ...basketOfProduct, quantity: 1 }];
     });
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [product.id]);
 
   return (
     <div className="product__card">

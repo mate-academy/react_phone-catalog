@@ -31,6 +31,7 @@ const ProductSliderMain = ({
         </div>
       </div>
       <Swiper
+        loop={MayLikeProducts.length > 4}
         slidesPerView={1}
         spaceBetween={16}
         breakpoints={{

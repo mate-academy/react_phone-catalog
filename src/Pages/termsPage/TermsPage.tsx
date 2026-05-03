@@ -19,7 +19,9 @@ const TermsPage = () => {
           </span>
         </div>
         <div className="terms-page__paragraph">
-          <h3 className="terms-page__title--paragraph">2. Content and Accuracy</h3>
+          <h3 className="terms-page__title--paragraph">
+            2. Content and Accuracy
+          </h3>
           <span className="terms-page__text">
             All content on PhoneCatalog, including text, images, and design
             elements, is provided for informational purposes only and may be
