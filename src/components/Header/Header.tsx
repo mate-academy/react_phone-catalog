@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable max-len */
 import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
@@ -25,7 +24,7 @@ export const Header = () => {
       <div className="header__top">
         <div className="header__logo">
           <Link to="/">
-            <img src="/img/Logo.svg" alt="NiceGadgets logo" />
+            <img src="/icons/logo.svg" alt="NiceGadgets logo" />
           </Link>
         </div>
 
@@ -48,7 +47,7 @@ export const Header = () => {
           <div className="header__heart">
             <Link to="/favorites" className="header__heart__top">
               <img
-                src="/img/HeartLove.svg"
+                src="/icons/heart.svg"
                 alt="Favorites"
                 className="header__heart__top__btn"
               />
@@ -63,7 +62,7 @@ export const Header = () => {
           <div className="header__packet">
             <Link to="/cart" className="header__packet__top">
               <img
-                src="/img/Packet.svg"
+                src="/icons/cart.svg"
                 alt="Cart"
                 className="header__packet__top__btn"
               />
