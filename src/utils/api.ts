@@ -15,6 +15,7 @@ export const getProducts = async (): Promise<Product[]> => {
   }
 
   const products = await response.json();
+
   return products.map((product: Product) => ({
     ...product,
     image: fixImagePath(product.image),
@@ -29,6 +30,7 @@ export const getPhones = async (): Promise<ProductDetails[]> => {
   }
 
   const phones = await response.json();
+
   return phones.map((phone: ProductDetails) => ({
     ...phone,
     images: phone.images?.map(fixImagePath) || [],
@@ -43,6 +45,7 @@ export const getTablets = async (): Promise<ProductDetails[]> => {
   }
 
   const tablets = await response.json();
+
   return tablets.map((tablet: ProductDetails) => ({
     ...tablet,
     images: tablet.images?.map(fixImagePath) || [],
@@ -57,6 +60,7 @@ export const getAccessories = async (): Promise<ProductDetails[]> => {
   }
 
   const accessories = await response.json();
+
   return accessories.map((accessory: ProductDetails) => ({
     ...accessory,
     images: accessory.images?.map(fixImagePath) || [],

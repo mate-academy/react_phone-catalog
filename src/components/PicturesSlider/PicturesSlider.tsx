@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  `${import.meta.env.BASE_URL}img/banner-phones.png`,
+  `${import.meta.env.BASE_URL}img/banner-tablets.png`,
+  `${import.meta.env.BASE_URL}img/banner-accessories.png`,
 ];
 
 export const PicturesSlider: React.FC = () => {
