@@ -14,7 +14,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 export const App = () => (
   <CartProvider>
     <FavoritesProvider>
-      <Router basename={import.meta.env.PROD ? '/react_phone-catalog/' : ''}>
+      <Router basename={import.meta.env.BASE_URL}>
         <div className="App">
           <Header />
           <main>
