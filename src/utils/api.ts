@@ -1,10 +1,11 @@
 import { Product, ProductDetails } from '../types';
 
-const API_BASE = './api';
+const BASE_URL = import.meta.env.BASE_URL || '/';
+const API_BASE = `${BASE_URL}api`;
 
 const fixImagePath = (imagePath: string): string => {
   // Remove leading slash and prepend with base URL
-  return `${import.meta.env.BASE_URL}${imagePath.slice(1)}`;
+  return `${BASE_URL}${imagePath.replace(/^\//, '')}`;
 };
 
 export const getProducts = async (): Promise<Product[]> => {
